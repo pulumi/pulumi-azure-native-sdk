@@ -49,14 +49,20 @@ type LookupTrackResult struct {
 
 func LookupTrackOutput(ctx *pulumi.Context, args LookupTrackOutputArgs, opts ...pulumi.InvokeOption) LookupTrackResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupTrackResult, error) {
+		ApplyT(func(v interface{}) (LookupTrackResultOutput, error) {
 			args := v.(LookupTrackArgs)
-			r, err := LookupTrack(ctx, &args, opts...)
-			var s LookupTrackResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupTrackResult
+			secret, err := ctx.InvokePackageRaw("azure-native:media/v20230101:getTrack", args, &rv, "", opts...)
+			if err != nil {
+				return LookupTrackResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupTrackResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupTrackResultOutput), nil
+			}
+			return output, nil
 		}).(LookupTrackResultOutput)
 }
 

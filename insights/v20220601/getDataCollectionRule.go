@@ -72,14 +72,20 @@ type LookupDataCollectionRuleResult struct {
 
 func LookupDataCollectionRuleOutput(ctx *pulumi.Context, args LookupDataCollectionRuleOutputArgs, opts ...pulumi.InvokeOption) LookupDataCollectionRuleResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupDataCollectionRuleResult, error) {
+		ApplyT(func(v interface{}) (LookupDataCollectionRuleResultOutput, error) {
 			args := v.(LookupDataCollectionRuleArgs)
-			r, err := LookupDataCollectionRule(ctx, &args, opts...)
-			var s LookupDataCollectionRuleResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupDataCollectionRuleResult
+			secret, err := ctx.InvokePackageRaw("azure-native:insights/v20220601:getDataCollectionRule", args, &rv, "", opts...)
+			if err != nil {
+				return LookupDataCollectionRuleResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupDataCollectionRuleResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupDataCollectionRuleResultOutput), nil
+			}
+			return output, nil
 		}).(LookupDataCollectionRuleResultOutput)
 }
 

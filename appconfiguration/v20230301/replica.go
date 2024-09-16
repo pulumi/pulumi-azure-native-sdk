@@ -56,6 +56,9 @@ func NewReplica(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:appconfiguration/v20230901preview:Replica"),
 		},
+		{
+			Type: pulumi.String("azure-native:appconfiguration/v20240501:Replica"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

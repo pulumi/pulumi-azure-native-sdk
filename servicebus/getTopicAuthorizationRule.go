@@ -14,7 +14,7 @@ import (
 // Returns the specified authorization rule.
 // Azure REST API version: 2022-01-01-preview.
 //
-// Other available API versions: 2014-09-01, 2015-08-01, 2022-10-01-preview, 2023-01-01-preview.
+// Other available API versions: 2014-09-01, 2015-08-01, 2022-10-01-preview, 2023-01-01-preview, 2024-01-01.
 func LookupTopicAuthorizationRule(ctx *pulumi.Context, args *LookupTopicAuthorizationRuleArgs, opts ...pulumi.InvokeOption) (*LookupTopicAuthorizationRuleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTopicAuthorizationRuleResult
@@ -54,14 +54,20 @@ type LookupTopicAuthorizationRuleResult struct {
 
 func LookupTopicAuthorizationRuleOutput(ctx *pulumi.Context, args LookupTopicAuthorizationRuleOutputArgs, opts ...pulumi.InvokeOption) LookupTopicAuthorizationRuleResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupTopicAuthorizationRuleResult, error) {
+		ApplyT(func(v interface{}) (LookupTopicAuthorizationRuleResultOutput, error) {
 			args := v.(LookupTopicAuthorizationRuleArgs)
-			r, err := LookupTopicAuthorizationRule(ctx, &args, opts...)
-			var s LookupTopicAuthorizationRuleResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupTopicAuthorizationRuleResult
+			secret, err := ctx.InvokePackageRaw("azure-native:servicebus:getTopicAuthorizationRule", args, &rv, "", opts...)
+			if err != nil {
+				return LookupTopicAuthorizationRuleResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupTopicAuthorizationRuleResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupTopicAuthorizationRuleResultOutput), nil
+			}
+			return output, nil
 		}).(LookupTopicAuthorizationRuleResultOutput)
 }
 

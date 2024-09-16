@@ -39,14 +39,20 @@ type ListAccountKeysResult struct {
 
 func ListAccountKeysOutput(ctx *pulumi.Context, args ListAccountKeysOutputArgs, opts ...pulumi.InvokeOption) ListAccountKeysResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListAccountKeysResult, error) {
+		ApplyT(func(v interface{}) (ListAccountKeysResultOutput, error) {
 			args := v.(ListAccountKeysArgs)
-			r, err := ListAccountKeys(ctx, &args, opts...)
-			var s ListAccountKeysResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListAccountKeysResult
+			secret, err := ctx.InvokePackageRaw("azure-native:purview/v20201201preview:listAccountKeys", args, &rv, "", opts...)
+			if err != nil {
+				return ListAccountKeysResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListAccountKeysResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListAccountKeysResultOutput), nil
+			}
+			return output, nil
 		}).(ListAccountKeysResultOutput)
 }
 

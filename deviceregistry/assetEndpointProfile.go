@@ -14,10 +14,12 @@ import (
 
 // Asset Endpoint Profile definition.
 // Azure REST API version: 2023-11-01-preview.
+//
+// Other available API versions: 2024-09-01-preview.
 type AssetEndpointProfile struct {
 	pulumi.CustomResourceState
 
-	// Contains connectivity type specific further configuration (e.g. OPC UA, Modbus, ONVIF).
+	// Stringified JSON that contains connectivity type specific further configuration (e.g. OPC UA, Modbus, ONVIF).
 	AdditionalConfiguration pulumi.StringPtrOutput `pulumi:"additionalConfiguration"`
 	// The extended location.
 	ExtendedLocation ExtendedLocationResponseOutput `pulumi:"extendedLocation"`
@@ -66,6 +68,9 @@ func NewAssetEndpointProfile(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:deviceregistry/v20231101preview:AssetEndpointProfile"),
 		},
+		{
+			Type: pulumi.String("azure-native:deviceregistry/v20240901preview:AssetEndpointProfile"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -101,7 +106,7 @@ func (AssetEndpointProfileState) ElementType() reflect.Type {
 }
 
 type assetEndpointProfileArgs struct {
-	// Contains connectivity type specific further configuration (e.g. OPC UA, Modbus, ONVIF).
+	// Stringified JSON that contains connectivity type specific further configuration (e.g. OPC UA, Modbus, ONVIF).
 	AdditionalConfiguration *string `pulumi:"additionalConfiguration"`
 	// Asset Endpoint Profile name parameter.
 	AssetEndpointProfileName *string `pulumi:"assetEndpointProfileName"`
@@ -123,7 +128,7 @@ type assetEndpointProfileArgs struct {
 
 // The set of arguments for constructing a AssetEndpointProfile resource.
 type AssetEndpointProfileArgs struct {
-	// Contains connectivity type specific further configuration (e.g. OPC UA, Modbus, ONVIF).
+	// Stringified JSON that contains connectivity type specific further configuration (e.g. OPC UA, Modbus, ONVIF).
 	AdditionalConfiguration pulumi.StringPtrInput
 	// Asset Endpoint Profile name parameter.
 	AssetEndpointProfileName pulumi.StringPtrInput
@@ -180,7 +185,7 @@ func (o AssetEndpointProfileOutput) ToAssetEndpointProfileOutputWithContext(ctx 
 	return o
 }
 
-// Contains connectivity type specific further configuration (e.g. OPC UA, Modbus, ONVIF).
+// Stringified JSON that contains connectivity type specific further configuration (e.g. OPC UA, Modbus, ONVIF).
 func (o AssetEndpointProfileOutput) AdditionalConfiguration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AssetEndpointProfile) pulumi.StringPtrOutput { return v.AdditionalConfiguration }).(pulumi.StringPtrOutput)
 }

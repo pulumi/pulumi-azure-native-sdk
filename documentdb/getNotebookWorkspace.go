@@ -14,7 +14,7 @@ import (
 // Gets the notebook workspace for a Cosmos DB account.
 // Azure REST API version: 2023-04-15.
 //
-// Other available API versions: 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview.
+// Other available API versions: 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview, 2024-08-15, 2024-09-01-preview.
 func LookupNotebookWorkspace(ctx *pulumi.Context, args *LookupNotebookWorkspaceArgs, opts ...pulumi.InvokeOption) (*LookupNotebookWorkspaceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNotebookWorkspaceResult
@@ -50,14 +50,20 @@ type LookupNotebookWorkspaceResult struct {
 
 func LookupNotebookWorkspaceOutput(ctx *pulumi.Context, args LookupNotebookWorkspaceOutputArgs, opts ...pulumi.InvokeOption) LookupNotebookWorkspaceResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupNotebookWorkspaceResult, error) {
+		ApplyT(func(v interface{}) (LookupNotebookWorkspaceResultOutput, error) {
 			args := v.(LookupNotebookWorkspaceArgs)
-			r, err := LookupNotebookWorkspace(ctx, &args, opts...)
-			var s LookupNotebookWorkspaceResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupNotebookWorkspaceResult
+			secret, err := ctx.InvokePackageRaw("azure-native:documentdb:getNotebookWorkspace", args, &rv, "", opts...)
+			if err != nil {
+				return LookupNotebookWorkspaceResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupNotebookWorkspaceResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupNotebookWorkspaceResultOutput), nil
+			}
+			return output, nil
 		}).(LookupNotebookWorkspaceResultOutput)
 }
 

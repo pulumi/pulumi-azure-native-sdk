@@ -55,14 +55,20 @@ type LookupReferenceDataSetResult struct {
 
 func LookupReferenceDataSetOutput(ctx *pulumi.Context, args LookupReferenceDataSetOutputArgs, opts ...pulumi.InvokeOption) LookupReferenceDataSetResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupReferenceDataSetResult, error) {
+		ApplyT(func(v interface{}) (LookupReferenceDataSetResultOutput, error) {
 			args := v.(LookupReferenceDataSetArgs)
-			r, err := LookupReferenceDataSet(ctx, &args, opts...)
-			var s LookupReferenceDataSetResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupReferenceDataSetResult
+			secret, err := ctx.InvokePackageRaw("azure-native:timeseriesinsights/v20210630preview:getReferenceDataSet", args, &rv, "", opts...)
+			if err != nil {
+				return LookupReferenceDataSetResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupReferenceDataSetResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupReferenceDataSetResultOutput), nil
+			}
+			return output, nil
 		}).(LookupReferenceDataSetResultOutput)
 }
 

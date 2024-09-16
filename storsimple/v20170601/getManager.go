@@ -53,14 +53,20 @@ type LookupManagerResult struct {
 
 func LookupManagerOutput(ctx *pulumi.Context, args LookupManagerOutputArgs, opts ...pulumi.InvokeOption) LookupManagerResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupManagerResult, error) {
+		ApplyT(func(v interface{}) (LookupManagerResultOutput, error) {
 			args := v.(LookupManagerArgs)
-			r, err := LookupManager(ctx, &args, opts...)
-			var s LookupManagerResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupManagerResult
+			secret, err := ctx.InvokePackageRaw("azure-native:storsimple/v20170601:getManager", args, &rv, "", opts...)
+			if err != nil {
+				return LookupManagerResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupManagerResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupManagerResultOutput), nil
+			}
+			return output, nil
 		}).(LookupManagerResultOutput)
 }
 

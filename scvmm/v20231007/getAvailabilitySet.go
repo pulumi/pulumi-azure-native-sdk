@@ -55,14 +55,20 @@ type LookupAvailabilitySetResult struct {
 
 func LookupAvailabilitySetOutput(ctx *pulumi.Context, args LookupAvailabilitySetOutputArgs, opts ...pulumi.InvokeOption) LookupAvailabilitySetResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupAvailabilitySetResult, error) {
+		ApplyT(func(v interface{}) (LookupAvailabilitySetResultOutput, error) {
 			args := v.(LookupAvailabilitySetArgs)
-			r, err := LookupAvailabilitySet(ctx, &args, opts...)
-			var s LookupAvailabilitySetResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupAvailabilitySetResult
+			secret, err := ctx.InvokePackageRaw("azure-native:scvmm/v20231007:getAvailabilitySet", args, &rv, "", opts...)
+			if err != nil {
+				return LookupAvailabilitySetResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupAvailabilitySetResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupAvailabilitySetResultOutput), nil
+			}
+			return output, nil
 		}).(LookupAvailabilitySetResultOutput)
 }
 

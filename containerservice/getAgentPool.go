@@ -14,7 +14,7 @@ import (
 // Agent Pool.
 // Azure REST API version: 2023-04-01.
 //
-// Other available API versions: 2019-02-01, 2019-04-01, 2020-06-01, 2021-02-01, 2021-08-01, 2022-04-02-preview, 2023-05-02-preview, 2023-06-01, 2023-06-02-preview, 2023-07-01, 2023-07-02-preview, 2023-08-01, 2023-08-02-preview, 2023-09-01, 2023-09-02-preview, 2023-10-01, 2023-10-02-preview, 2023-11-01, 2023-11-02-preview, 2024-01-01, 2024-01-02-preview, 2024-02-01, 2024-02-02-preview, 2024-03-02-preview, 2024-04-02-preview, 2024-05-01, 2024-05-02-preview, 2024-06-02-preview, 2024-07-01.
+// Other available API versions: 2019-02-01, 2019-04-01, 2020-06-01, 2021-02-01, 2021-08-01, 2022-04-02-preview, 2023-05-02-preview, 2023-06-01, 2023-06-02-preview, 2023-07-01, 2023-07-02-preview, 2023-08-01, 2023-08-02-preview, 2023-09-01, 2023-09-02-preview, 2023-10-01, 2023-10-02-preview, 2023-11-01, 2023-11-02-preview, 2024-01-01, 2024-01-02-preview, 2024-02-01, 2024-02-02-preview, 2024-03-02-preview, 2024-04-02-preview, 2024-05-01, 2024-05-02-preview, 2024-06-02-preview, 2024-07-01, 2024-07-02-preview.
 func LookupAgentPool(ctx *pulumi.Context, args *LookupAgentPoolArgs, opts ...pulumi.InvokeOption) (*LookupAgentPoolResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAgentPoolResult
@@ -126,14 +126,20 @@ type LookupAgentPoolResult struct {
 
 func LookupAgentPoolOutput(ctx *pulumi.Context, args LookupAgentPoolOutputArgs, opts ...pulumi.InvokeOption) LookupAgentPoolResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupAgentPoolResult, error) {
+		ApplyT(func(v interface{}) (LookupAgentPoolResultOutput, error) {
 			args := v.(LookupAgentPoolArgs)
-			r, err := LookupAgentPool(ctx, &args, opts...)
-			var s LookupAgentPoolResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupAgentPoolResult
+			secret, err := ctx.InvokePackageRaw("azure-native:containerservice:getAgentPool", args, &rv, "", opts...)
+			if err != nil {
+				return LookupAgentPoolResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupAgentPoolResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupAgentPoolResultOutput), nil
+			}
+			return output, nil
 		}).(LookupAgentPoolResultOutput)
 }
 

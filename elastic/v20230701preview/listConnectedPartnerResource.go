@@ -39,14 +39,20 @@ type ListConnectedPartnerResourceResult struct {
 
 func ListConnectedPartnerResourceOutput(ctx *pulumi.Context, args ListConnectedPartnerResourceOutputArgs, opts ...pulumi.InvokeOption) ListConnectedPartnerResourceResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListConnectedPartnerResourceResult, error) {
+		ApplyT(func(v interface{}) (ListConnectedPartnerResourceResultOutput, error) {
 			args := v.(ListConnectedPartnerResourceArgs)
-			r, err := ListConnectedPartnerResource(ctx, &args, opts...)
-			var s ListConnectedPartnerResourceResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListConnectedPartnerResourceResult
+			secret, err := ctx.InvokePackageRaw("azure-native:elastic/v20230701preview:listConnectedPartnerResource", args, &rv, "", opts...)
+			if err != nil {
+				return ListConnectedPartnerResourceResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListConnectedPartnerResourceResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListConnectedPartnerResourceResultOutput), nil
+			}
+			return output, nil
 		}).(ListConnectedPartnerResourceResultOutput)
 }
 

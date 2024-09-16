@@ -64,14 +64,20 @@ type LookupWebAppHybridConnectionResult struct {
 
 func LookupWebAppHybridConnectionOutput(ctx *pulumi.Context, args LookupWebAppHybridConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupWebAppHybridConnectionResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupWebAppHybridConnectionResult, error) {
+		ApplyT(func(v interface{}) (LookupWebAppHybridConnectionResultOutput, error) {
 			args := v.(LookupWebAppHybridConnectionArgs)
-			r, err := LookupWebAppHybridConnection(ctx, &args, opts...)
-			var s LookupWebAppHybridConnectionResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupWebAppHybridConnectionResult
+			secret, err := ctx.InvokePackageRaw("azure-native:web/v20230101:getWebAppHybridConnection", args, &rv, "", opts...)
+			if err != nil {
+				return LookupWebAppHybridConnectionResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupWebAppHybridConnectionResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupWebAppHybridConnectionResultOutput), nil
+			}
+			return output, nil
 		}).(LookupWebAppHybridConnectionResultOutput)
 }
 

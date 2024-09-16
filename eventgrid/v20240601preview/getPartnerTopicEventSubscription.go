@@ -88,14 +88,20 @@ func (val *LookupPartnerTopicEventSubscriptionResult) Defaults() *LookupPartnerT
 
 func LookupPartnerTopicEventSubscriptionOutput(ctx *pulumi.Context, args LookupPartnerTopicEventSubscriptionOutputArgs, opts ...pulumi.InvokeOption) LookupPartnerTopicEventSubscriptionResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupPartnerTopicEventSubscriptionResult, error) {
+		ApplyT(func(v interface{}) (LookupPartnerTopicEventSubscriptionResultOutput, error) {
 			args := v.(LookupPartnerTopicEventSubscriptionArgs)
-			r, err := LookupPartnerTopicEventSubscription(ctx, &args, opts...)
-			var s LookupPartnerTopicEventSubscriptionResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupPartnerTopicEventSubscriptionResult
+			secret, err := ctx.InvokePackageRaw("azure-native:eventgrid/v20240601preview:getPartnerTopicEventSubscription", args, &rv, "", opts...)
+			if err != nil {
+				return LookupPartnerTopicEventSubscriptionResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupPartnerTopicEventSubscriptionResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupPartnerTopicEventSubscriptionResultOutput), nil
+			}
+			return output, nil
 		}).(LookupPartnerTopicEventSubscriptionResultOutput)
 }
 

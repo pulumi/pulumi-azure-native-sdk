@@ -49,14 +49,20 @@ type LookupSubAccountResult struct {
 
 func LookupSubAccountOutput(ctx *pulumi.Context, args LookupSubAccountOutputArgs, opts ...pulumi.InvokeOption) LookupSubAccountResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSubAccountResult, error) {
+		ApplyT(func(v interface{}) (LookupSubAccountResultOutput, error) {
 			args := v.(LookupSubAccountArgs)
-			r, err := LookupSubAccount(ctx, &args, opts...)
-			var s LookupSubAccountResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupSubAccountResult
+			secret, err := ctx.InvokePackageRaw("azure-native:logz:getSubAccount", args, &rv, "", opts...)
+			if err != nil {
+				return LookupSubAccountResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupSubAccountResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupSubAccountResultOutput), nil
+			}
+			return output, nil
 		}).(LookupSubAccountResultOutput)
 }
 

@@ -233,6 +233,9 @@ func NewPublicIPAddress(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20240101:PublicIPAddress"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20240301:PublicIPAddress"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

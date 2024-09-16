@@ -63,14 +63,20 @@ type LookupScheduledActionByScopeResult struct {
 
 func LookupScheduledActionByScopeOutput(ctx *pulumi.Context, args LookupScheduledActionByScopeOutputArgs, opts ...pulumi.InvokeOption) LookupScheduledActionByScopeResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupScheduledActionByScopeResult, error) {
+		ApplyT(func(v interface{}) (LookupScheduledActionByScopeResultOutput, error) {
 			args := v.(LookupScheduledActionByScopeArgs)
-			r, err := LookupScheduledActionByScope(ctx, &args, opts...)
-			var s LookupScheduledActionByScopeResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupScheduledActionByScopeResult
+			secret, err := ctx.InvokePackageRaw("azure-native:costmanagement/v20230301:getScheduledActionByScope", args, &rv, "", opts...)
+			if err != nil {
+				return LookupScheduledActionByScopeResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupScheduledActionByScopeResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupScheduledActionByScopeResultOutput), nil
+			}
+			return output, nil
 		}).(LookupScheduledActionByScopeResultOutput)
 }
 

@@ -57,14 +57,20 @@ type LookupOpenIdConnectProviderResult struct {
 
 func LookupOpenIdConnectProviderOutput(ctx *pulumi.Context, args LookupOpenIdConnectProviderOutputArgs, opts ...pulumi.InvokeOption) LookupOpenIdConnectProviderResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupOpenIdConnectProviderResult, error) {
+		ApplyT(func(v interface{}) (LookupOpenIdConnectProviderResultOutput, error) {
 			args := v.(LookupOpenIdConnectProviderArgs)
-			r, err := LookupOpenIdConnectProvider(ctx, &args, opts...)
-			var s LookupOpenIdConnectProviderResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupOpenIdConnectProviderResult
+			secret, err := ctx.InvokePackageRaw("azure-native:apimanagement/v20230501preview:getOpenIdConnectProvider", args, &rv, "", opts...)
+			if err != nil {
+				return LookupOpenIdConnectProviderResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupOpenIdConnectProviderResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupOpenIdConnectProviderResultOutput), nil
+			}
+			return output, nil
 		}).(LookupOpenIdConnectProviderResultOutput)
 }
 

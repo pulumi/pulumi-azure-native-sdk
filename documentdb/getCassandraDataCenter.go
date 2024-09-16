@@ -14,7 +14,7 @@ import (
 // Get the properties of a managed Cassandra data center.
 // Azure REST API version: 2023-04-15.
 //
-// Other available API versions: 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview.
+// Other available API versions: 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview, 2024-08-15, 2024-09-01-preview.
 func LookupCassandraDataCenter(ctx *pulumi.Context, args *LookupCassandraDataCenterArgs, opts ...pulumi.InvokeOption) (*LookupCassandraDataCenterResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCassandraDataCenterResult
@@ -48,14 +48,20 @@ type LookupCassandraDataCenterResult struct {
 
 func LookupCassandraDataCenterOutput(ctx *pulumi.Context, args LookupCassandraDataCenterOutputArgs, opts ...pulumi.InvokeOption) LookupCassandraDataCenterResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupCassandraDataCenterResult, error) {
+		ApplyT(func(v interface{}) (LookupCassandraDataCenterResultOutput, error) {
 			args := v.(LookupCassandraDataCenterArgs)
-			r, err := LookupCassandraDataCenter(ctx, &args, opts...)
-			var s LookupCassandraDataCenterResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupCassandraDataCenterResult
+			secret, err := ctx.InvokePackageRaw("azure-native:documentdb:getCassandraDataCenter", args, &rv, "", opts...)
+			if err != nil {
+				return LookupCassandraDataCenterResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupCassandraDataCenterResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupCassandraDataCenterResultOutput), nil
+			}
+			return output, nil
 		}).(LookupCassandraDataCenterResultOutput)
 }
 

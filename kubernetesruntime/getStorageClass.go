@@ -70,14 +70,20 @@ type LookupStorageClassResult struct {
 
 func LookupStorageClassOutput(ctx *pulumi.Context, args LookupStorageClassOutputArgs, opts ...pulumi.InvokeOption) LookupStorageClassResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupStorageClassResult, error) {
+		ApplyT(func(v interface{}) (LookupStorageClassResultOutput, error) {
 			args := v.(LookupStorageClassArgs)
-			r, err := LookupStorageClass(ctx, &args, opts...)
-			var s LookupStorageClassResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupStorageClassResult
+			secret, err := ctx.InvokePackageRaw("azure-native:kubernetesruntime:getStorageClass", args, &rv, "", opts...)
+			if err != nil {
+				return LookupStorageClassResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupStorageClassResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupStorageClassResultOutput), nil
+			}
+			return output, nil
 		}).(LookupStorageClassResultOutput)
 }
 

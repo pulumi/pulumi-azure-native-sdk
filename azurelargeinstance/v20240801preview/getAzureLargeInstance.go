@@ -67,14 +67,20 @@ type LookupAzureLargeInstanceResult struct {
 
 func LookupAzureLargeInstanceOutput(ctx *pulumi.Context, args LookupAzureLargeInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupAzureLargeInstanceResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupAzureLargeInstanceResult, error) {
+		ApplyT(func(v interface{}) (LookupAzureLargeInstanceResultOutput, error) {
 			args := v.(LookupAzureLargeInstanceArgs)
-			r, err := LookupAzureLargeInstance(ctx, &args, opts...)
-			var s LookupAzureLargeInstanceResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupAzureLargeInstanceResult
+			secret, err := ctx.InvokePackageRaw("azure-native:azurelargeinstance/v20240801preview:getAzureLargeInstance", args, &rv, "", opts...)
+			if err != nil {
+				return LookupAzureLargeInstanceResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupAzureLargeInstanceResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupAzureLargeInstanceResultOutput), nil
+			}
+			return output, nil
 		}).(LookupAzureLargeInstanceResultOutput)
 }
 

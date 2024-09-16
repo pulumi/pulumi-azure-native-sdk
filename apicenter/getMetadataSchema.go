@@ -52,14 +52,20 @@ type LookupMetadataSchemaResult struct {
 
 func LookupMetadataSchemaOutput(ctx *pulumi.Context, args LookupMetadataSchemaOutputArgs, opts ...pulumi.InvokeOption) LookupMetadataSchemaResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupMetadataSchemaResult, error) {
+		ApplyT(func(v interface{}) (LookupMetadataSchemaResultOutput, error) {
 			args := v.(LookupMetadataSchemaArgs)
-			r, err := LookupMetadataSchema(ctx, &args, opts...)
-			var s LookupMetadataSchemaResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupMetadataSchemaResult
+			secret, err := ctx.InvokePackageRaw("azure-native:apicenter:getMetadataSchema", args, &rv, "", opts...)
+			if err != nil {
+				return LookupMetadataSchemaResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupMetadataSchemaResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupMetadataSchemaResultOutput), nil
+			}
+			return output, nil
 		}).(LookupMetadataSchemaResultOutput)
 }
 

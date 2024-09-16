@@ -47,14 +47,20 @@ type LookupWorkflowAccessKeyResult struct {
 
 func LookupWorkflowAccessKeyOutput(ctx *pulumi.Context, args LookupWorkflowAccessKeyOutputArgs, opts ...pulumi.InvokeOption) LookupWorkflowAccessKeyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupWorkflowAccessKeyResult, error) {
+		ApplyT(func(v interface{}) (LookupWorkflowAccessKeyResultOutput, error) {
 			args := v.(LookupWorkflowAccessKeyArgs)
-			r, err := LookupWorkflowAccessKey(ctx, &args, opts...)
-			var s LookupWorkflowAccessKeyResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupWorkflowAccessKeyResult
+			secret, err := ctx.InvokePackageRaw("azure-native:logic:getWorkflowAccessKey", args, &rv, "", opts...)
+			if err != nil {
+				return LookupWorkflowAccessKeyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupWorkflowAccessKeyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupWorkflowAccessKeyResultOutput), nil
+			}
+			return output, nil
 		}).(LookupWorkflowAccessKeyResultOutput)
 }
 

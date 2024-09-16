@@ -75,14 +75,20 @@ type LookupWorkbookResult struct {
 
 func LookupWorkbookOutput(ctx *pulumi.Context, args LookupWorkbookOutputArgs, opts ...pulumi.InvokeOption) LookupWorkbookResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupWorkbookResult, error) {
+		ApplyT(func(v interface{}) (LookupWorkbookResultOutput, error) {
 			args := v.(LookupWorkbookArgs)
-			r, err := LookupWorkbook(ctx, &args, opts...)
-			var s LookupWorkbookResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupWorkbookResult
+			secret, err := ctx.InvokePackageRaw("azure-native:insights/v20210801:getWorkbook", args, &rv, "", opts...)
+			if err != nil {
+				return LookupWorkbookResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupWorkbookResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupWorkbookResultOutput), nil
+			}
+			return output, nil
 		}).(LookupWorkbookResultOutput)
 }
 

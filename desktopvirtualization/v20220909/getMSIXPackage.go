@@ -67,14 +67,20 @@ type LookupMSIXPackageResult struct {
 
 func LookupMSIXPackageOutput(ctx *pulumi.Context, args LookupMSIXPackageOutputArgs, opts ...pulumi.InvokeOption) LookupMSIXPackageResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupMSIXPackageResult, error) {
+		ApplyT(func(v interface{}) (LookupMSIXPackageResultOutput, error) {
 			args := v.(LookupMSIXPackageArgs)
-			r, err := LookupMSIXPackage(ctx, &args, opts...)
-			var s LookupMSIXPackageResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupMSIXPackageResult
+			secret, err := ctx.InvokePackageRaw("azure-native:desktopvirtualization/v20220909:getMSIXPackage", args, &rv, "", opts...)
+			if err != nil {
+				return LookupMSIXPackageResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupMSIXPackageResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupMSIXPackageResultOutput), nil
+			}
+			return output, nil
 		}).(LookupMSIXPackageResultOutput)
 }
 

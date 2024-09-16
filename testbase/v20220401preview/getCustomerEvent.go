@@ -49,14 +49,20 @@ type LookupCustomerEventResult struct {
 
 func LookupCustomerEventOutput(ctx *pulumi.Context, args LookupCustomerEventOutputArgs, opts ...pulumi.InvokeOption) LookupCustomerEventResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupCustomerEventResult, error) {
+		ApplyT(func(v interface{}) (LookupCustomerEventResultOutput, error) {
 			args := v.(LookupCustomerEventArgs)
-			r, err := LookupCustomerEvent(ctx, &args, opts...)
-			var s LookupCustomerEventResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupCustomerEventResult
+			secret, err := ctx.InvokePackageRaw("azure-native:testbase/v20220401preview:getCustomerEvent", args, &rv, "", opts...)
+			if err != nil {
+				return LookupCustomerEventResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupCustomerEventResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupCustomerEventResultOutput), nil
+			}
+			return output, nil
 		}).(LookupCustomerEventResultOutput)
 }
 

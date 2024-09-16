@@ -86,14 +86,20 @@ type LookupStreamingEndpointResult struct {
 
 func LookupStreamingEndpointOutput(ctx *pulumi.Context, args LookupStreamingEndpointOutputArgs, opts ...pulumi.InvokeOption) LookupStreamingEndpointResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupStreamingEndpointResult, error) {
+		ApplyT(func(v interface{}) (LookupStreamingEndpointResultOutput, error) {
 			args := v.(LookupStreamingEndpointArgs)
-			r, err := LookupStreamingEndpoint(ctx, &args, opts...)
-			var s LookupStreamingEndpointResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupStreamingEndpointResult
+			secret, err := ctx.InvokePackageRaw("azure-native:media:getStreamingEndpoint", args, &rv, "", opts...)
+			if err != nil {
+				return LookupStreamingEndpointResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupStreamingEndpointResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupStreamingEndpointResultOutput), nil
+			}
+			return output, nil
 		}).(LookupStreamingEndpointResultOutput)
 }
 

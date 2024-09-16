@@ -62,14 +62,20 @@ type LookupTargetResult struct {
 
 func LookupTargetOutput(ctx *pulumi.Context, args LookupTargetOutputArgs, opts ...pulumi.InvokeOption) LookupTargetResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupTargetResult, error) {
+		ApplyT(func(v interface{}) (LookupTargetResultOutput, error) {
 			args := v.(LookupTargetArgs)
-			r, err := LookupTarget(ctx, &args, opts...)
-			var s LookupTargetResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupTargetResult
+			secret, err := ctx.InvokePackageRaw("azure-native:iotoperationsorchestrator:getTarget", args, &rv, "", opts...)
+			if err != nil {
+				return LookupTargetResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupTargetResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupTargetResultOutput), nil
+			}
+			return output, nil
 		}).(LookupTargetResultOutput)
 }
 

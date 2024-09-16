@@ -14,7 +14,7 @@ import (
 // Gets the primary and secondary connection strings for the namespace.
 // Azure REST API version: 2022-01-01-preview.
 //
-// Other available API versions: 2015-08-01, 2022-10-01-preview, 2023-01-01-preview.
+// Other available API versions: 2015-08-01, 2022-10-01-preview, 2023-01-01-preview, 2024-01-01.
 func ListNamespaceKeys(ctx *pulumi.Context, args *ListNamespaceKeysArgs, opts ...pulumi.InvokeOption) (*ListNamespaceKeysResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListNamespaceKeysResult
@@ -54,14 +54,20 @@ type ListNamespaceKeysResult struct {
 
 func ListNamespaceKeysOutput(ctx *pulumi.Context, args ListNamespaceKeysOutputArgs, opts ...pulumi.InvokeOption) ListNamespaceKeysResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListNamespaceKeysResult, error) {
+		ApplyT(func(v interface{}) (ListNamespaceKeysResultOutput, error) {
 			args := v.(ListNamespaceKeysArgs)
-			r, err := ListNamespaceKeys(ctx, &args, opts...)
-			var s ListNamespaceKeysResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListNamespaceKeysResult
+			secret, err := ctx.InvokePackageRaw("azure-native:servicebus:listNamespaceKeys", args, &rv, "", opts...)
+			if err != nil {
+				return ListNamespaceKeysResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListNamespaceKeysResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListNamespaceKeysResultOutput), nil
+			}
+			return output, nil
 		}).(ListNamespaceKeysResultOutput)
 }
 

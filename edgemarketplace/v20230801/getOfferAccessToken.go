@@ -43,14 +43,20 @@ type GetOfferAccessTokenResult struct {
 
 func GetOfferAccessTokenOutput(ctx *pulumi.Context, args GetOfferAccessTokenOutputArgs, opts ...pulumi.InvokeOption) GetOfferAccessTokenResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetOfferAccessTokenResult, error) {
+		ApplyT(func(v interface{}) (GetOfferAccessTokenResultOutput, error) {
 			args := v.(GetOfferAccessTokenArgs)
-			r, err := GetOfferAccessToken(ctx, &args, opts...)
-			var s GetOfferAccessTokenResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv GetOfferAccessTokenResult
+			secret, err := ctx.InvokePackageRaw("azure-native:edgemarketplace/v20230801:getOfferAccessToken", args, &rv, "", opts...)
+			if err != nil {
+				return GetOfferAccessTokenResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetOfferAccessTokenResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetOfferAccessTokenResultOutput), nil
+			}
+			return output, nil
 		}).(GetOfferAccessTokenResultOutput)
 }
 

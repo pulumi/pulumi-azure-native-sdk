@@ -61,14 +61,20 @@ type LookupStorageAccountCredentialResult struct {
 
 func LookupStorageAccountCredentialOutput(ctx *pulumi.Context, args LookupStorageAccountCredentialOutputArgs, opts ...pulumi.InvokeOption) LookupStorageAccountCredentialResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupStorageAccountCredentialResult, error) {
+		ApplyT(func(v interface{}) (LookupStorageAccountCredentialResultOutput, error) {
 			args := v.(LookupStorageAccountCredentialArgs)
-			r, err := LookupStorageAccountCredential(ctx, &args, opts...)
-			var s LookupStorageAccountCredentialResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupStorageAccountCredentialResult
+			secret, err := ctx.InvokePackageRaw("azure-native:databoxedge/v20231201:getStorageAccountCredential", args, &rv, "", opts...)
+			if err != nil {
+				return LookupStorageAccountCredentialResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupStorageAccountCredentialResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupStorageAccountCredentialResultOutput), nil
+			}
+			return output, nil
 		}).(LookupStorageAccountCredentialResultOutput)
 }
 

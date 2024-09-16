@@ -14,7 +14,7 @@ import (
 // Gets the status of service.
 // Azure REST API version: 2023-04-15.
 //
-// Other available API versions: 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview.
+// Other available API versions: 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview, 2024-08-15, 2024-09-01-preview.
 func LookupService(ctx *pulumi.Context, args *LookupServiceArgs, opts ...pulumi.InvokeOption) (*LookupServiceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupServiceResult
@@ -48,14 +48,20 @@ type LookupServiceResult struct {
 
 func LookupServiceOutput(ctx *pulumi.Context, args LookupServiceOutputArgs, opts ...pulumi.InvokeOption) LookupServiceResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupServiceResult, error) {
+		ApplyT(func(v interface{}) (LookupServiceResultOutput, error) {
 			args := v.(LookupServiceArgs)
-			r, err := LookupService(ctx, &args, opts...)
-			var s LookupServiceResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupServiceResult
+			secret, err := ctx.InvokePackageRaw("azure-native:documentdb:getService", args, &rv, "", opts...)
+			if err != nil {
+				return LookupServiceResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupServiceResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupServiceResultOutput), nil
+			}
+			return output, nil
 		}).(LookupServiceResultOutput)
 }
 

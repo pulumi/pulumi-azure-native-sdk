@@ -61,14 +61,20 @@ func (val *LookupFailoverGroupResult) Defaults() *LookupFailoverGroupResult {
 
 func LookupFailoverGroupOutput(ctx *pulumi.Context, args LookupFailoverGroupOutputArgs, opts ...pulumi.InvokeOption) LookupFailoverGroupResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupFailoverGroupResult, error) {
+		ApplyT(func(v interface{}) (LookupFailoverGroupResultOutput, error) {
 			args := v.(LookupFailoverGroupArgs)
-			r, err := LookupFailoverGroup(ctx, &args, opts...)
-			var s LookupFailoverGroupResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupFailoverGroupResult
+			secret, err := ctx.InvokePackageRaw("azure-native:azurearcdata:getFailoverGroup", args, &rv, "", opts...)
+			if err != nil {
+				return LookupFailoverGroupResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupFailoverGroupResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupFailoverGroupResultOutput), nil
+			}
+			return output, nil
 		}).(LookupFailoverGroupResultOutput)
 }
 

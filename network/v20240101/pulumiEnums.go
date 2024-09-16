@@ -16787,7 +16787,6 @@ const (
 	PfsGroupECP384  = PfsGroup("ECP384")
 	PfsGroupPFS24   = PfsGroup("PFS24")
 	PfsGroupPFS14   = PfsGroup("PFS14")
-	PfsGroupPFSMM   = PfsGroup("PFSMM")
 )
 
 func (PfsGroup) ElementType() reflect.Type {
@@ -16920,7 +16919,6 @@ func (o PfsGroupPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pul
 //	PfsGroupECP384
 //	PfsGroupPFS24
 //	PfsGroupPFS14
-//	PfsGroupPFSMM
 type PfsGroupInput interface {
 	pulumi.Input
 

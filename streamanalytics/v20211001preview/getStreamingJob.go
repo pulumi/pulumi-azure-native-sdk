@@ -108,14 +108,20 @@ func (val *LookupStreamingJobResult) Defaults() *LookupStreamingJobResult {
 
 func LookupStreamingJobOutput(ctx *pulumi.Context, args LookupStreamingJobOutputArgs, opts ...pulumi.InvokeOption) LookupStreamingJobResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupStreamingJobResult, error) {
+		ApplyT(func(v interface{}) (LookupStreamingJobResultOutput, error) {
 			args := v.(LookupStreamingJobArgs)
-			r, err := LookupStreamingJob(ctx, &args, opts...)
-			var s LookupStreamingJobResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupStreamingJobResult
+			secret, err := ctx.InvokePackageRaw("azure-native:streamanalytics/v20211001preview:getStreamingJob", args, &rv, "", opts...)
+			if err != nil {
+				return LookupStreamingJobResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupStreamingJobResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupStreamingJobResultOutput), nil
+			}
+			return output, nil
 		}).(LookupStreamingJobResultOutput)
 }
 

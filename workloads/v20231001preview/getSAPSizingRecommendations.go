@@ -53,14 +53,20 @@ type GetSAPSizingRecommendationsResult struct {
 
 func GetSAPSizingRecommendationsOutput(ctx *pulumi.Context, args GetSAPSizingRecommendationsOutputArgs, opts ...pulumi.InvokeOption) GetSAPSizingRecommendationsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetSAPSizingRecommendationsResult, error) {
+		ApplyT(func(v interface{}) (GetSAPSizingRecommendationsResultOutput, error) {
 			args := v.(GetSAPSizingRecommendationsArgs)
-			r, err := GetSAPSizingRecommendations(ctx, &args, opts...)
-			var s GetSAPSizingRecommendationsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv GetSAPSizingRecommendationsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:workloads/v20231001preview:getSAPSizingRecommendations", args, &rv, "", opts...)
+			if err != nil {
+				return GetSAPSizingRecommendationsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetSAPSizingRecommendationsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetSAPSizingRecommendationsResultOutput), nil
+			}
+			return output, nil
 		}).(GetSAPSizingRecommendationsResultOutput)
 }
 

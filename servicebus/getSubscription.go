@@ -14,7 +14,7 @@ import (
 // Returns a subscription description for the specified topic.
 // Azure REST API version: 2022-01-01-preview.
 //
-// Other available API versions: 2015-08-01, 2022-10-01-preview, 2023-01-01-preview.
+// Other available API versions: 2015-08-01, 2022-10-01-preview, 2023-01-01-preview, 2024-01-01.
 func LookupSubscription(ctx *pulumi.Context, args *LookupSubscriptionArgs, opts ...pulumi.InvokeOption) (*LookupSubscriptionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSubscriptionResult
@@ -90,14 +90,20 @@ type LookupSubscriptionResult struct {
 
 func LookupSubscriptionOutput(ctx *pulumi.Context, args LookupSubscriptionOutputArgs, opts ...pulumi.InvokeOption) LookupSubscriptionResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSubscriptionResult, error) {
+		ApplyT(func(v interface{}) (LookupSubscriptionResultOutput, error) {
 			args := v.(LookupSubscriptionArgs)
-			r, err := LookupSubscription(ctx, &args, opts...)
-			var s LookupSubscriptionResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupSubscriptionResult
+			secret, err := ctx.InvokePackageRaw("azure-native:servicebus:getSubscription", args, &rv, "", opts...)
+			if err != nil {
+				return LookupSubscriptionResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupSubscriptionResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupSubscriptionResultOutput), nil
+			}
+			return output, nil
 		}).(LookupSubscriptionResultOutput)
 }
 

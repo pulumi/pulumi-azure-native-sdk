@@ -83,14 +83,20 @@ func (val *LookupIotHubDataConnectionResult) Defaults() *LookupIotHubDataConnect
 
 func LookupIotHubDataConnectionOutput(ctx *pulumi.Context, args LookupIotHubDataConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupIotHubDataConnectionResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupIotHubDataConnectionResult, error) {
+		ApplyT(func(v interface{}) (LookupIotHubDataConnectionResultOutput, error) {
 			args := v.(LookupIotHubDataConnectionArgs)
-			r, err := LookupIotHubDataConnection(ctx, &args, opts...)
-			var s LookupIotHubDataConnectionResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupIotHubDataConnectionResult
+			secret, err := ctx.InvokePackageRaw("azure-native:kusto/v20230815:getIotHubDataConnection", args, &rv, "", opts...)
+			if err != nil {
+				return LookupIotHubDataConnectionResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupIotHubDataConnectionResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupIotHubDataConnectionResultOutput), nil
+			}
+			return output, nil
 		}).(LookupIotHubDataConnectionResultOutput)
 }
 

@@ -41,14 +41,20 @@ type ListDnsForwardingRulesetByVirtualNetworkResult struct {
 
 func ListDnsForwardingRulesetByVirtualNetworkOutput(ctx *pulumi.Context, args ListDnsForwardingRulesetByVirtualNetworkOutputArgs, opts ...pulumi.InvokeOption) ListDnsForwardingRulesetByVirtualNetworkResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListDnsForwardingRulesetByVirtualNetworkResult, error) {
+		ApplyT(func(v interface{}) (ListDnsForwardingRulesetByVirtualNetworkResultOutput, error) {
 			args := v.(ListDnsForwardingRulesetByVirtualNetworkArgs)
-			r, err := ListDnsForwardingRulesetByVirtualNetwork(ctx, &args, opts...)
-			var s ListDnsForwardingRulesetByVirtualNetworkResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListDnsForwardingRulesetByVirtualNetworkResult
+			secret, err := ctx.InvokePackageRaw("azure-native:network/v20200401preview:listDnsForwardingRulesetByVirtualNetwork", args, &rv, "", opts...)
+			if err != nil {
+				return ListDnsForwardingRulesetByVirtualNetworkResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListDnsForwardingRulesetByVirtualNetworkResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListDnsForwardingRulesetByVirtualNetworkResultOutput), nil
+			}
+			return output, nil
 		}).(ListDnsForwardingRulesetByVirtualNetworkResultOutput)
 }
 

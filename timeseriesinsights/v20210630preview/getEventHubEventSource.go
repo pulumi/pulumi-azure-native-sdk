@@ -70,14 +70,20 @@ type LookupEventHubEventSourceResult struct {
 
 func LookupEventHubEventSourceOutput(ctx *pulumi.Context, args LookupEventHubEventSourceOutputArgs, opts ...pulumi.InvokeOption) LookupEventHubEventSourceResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupEventHubEventSourceResult, error) {
+		ApplyT(func(v interface{}) (LookupEventHubEventSourceResultOutput, error) {
 			args := v.(LookupEventHubEventSourceArgs)
-			r, err := LookupEventHubEventSource(ctx, &args, opts...)
-			var s LookupEventHubEventSourceResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupEventHubEventSourceResult
+			secret, err := ctx.InvokePackageRaw("azure-native:timeseriesinsights/v20210630preview:getEventHubEventSource", args, &rv, "", opts...)
+			if err != nil {
+				return LookupEventHubEventSourceResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupEventHubEventSourceResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupEventHubEventSourceResultOutput), nil
+			}
+			return output, nil
 		}).(LookupEventHubEventSourceResultOutput)
 }
 

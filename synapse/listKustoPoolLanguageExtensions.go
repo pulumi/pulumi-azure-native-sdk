@@ -40,14 +40,20 @@ type ListKustoPoolLanguageExtensionsResult struct {
 
 func ListKustoPoolLanguageExtensionsOutput(ctx *pulumi.Context, args ListKustoPoolLanguageExtensionsOutputArgs, opts ...pulumi.InvokeOption) ListKustoPoolLanguageExtensionsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListKustoPoolLanguageExtensionsResult, error) {
+		ApplyT(func(v interface{}) (ListKustoPoolLanguageExtensionsResultOutput, error) {
 			args := v.(ListKustoPoolLanguageExtensionsArgs)
-			r, err := ListKustoPoolLanguageExtensions(ctx, &args, opts...)
-			var s ListKustoPoolLanguageExtensionsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListKustoPoolLanguageExtensionsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:synapse:listKustoPoolLanguageExtensions", args, &rv, "", opts...)
+			if err != nil {
+				return ListKustoPoolLanguageExtensionsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListKustoPoolLanguageExtensionsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListKustoPoolLanguageExtensionsResultOutput), nil
+			}
+			return output, nil
 		}).(ListKustoPoolLanguageExtensionsResultOutput)
 }
 

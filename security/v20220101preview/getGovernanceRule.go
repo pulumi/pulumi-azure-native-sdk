@@ -69,14 +69,20 @@ type LookupGovernanceRuleResult struct {
 
 func LookupGovernanceRuleOutput(ctx *pulumi.Context, args LookupGovernanceRuleOutputArgs, opts ...pulumi.InvokeOption) LookupGovernanceRuleResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupGovernanceRuleResult, error) {
+		ApplyT(func(v interface{}) (LookupGovernanceRuleResultOutput, error) {
 			args := v.(LookupGovernanceRuleArgs)
-			r, err := LookupGovernanceRule(ctx, &args, opts...)
-			var s LookupGovernanceRuleResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupGovernanceRuleResult
+			secret, err := ctx.InvokePackageRaw("azure-native:security/v20220101preview:getGovernanceRule", args, &rv, "", opts...)
+			if err != nil {
+				return LookupGovernanceRuleResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupGovernanceRuleResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupGovernanceRuleResultOutput), nil
+			}
+			return output, nil
 		}).(LookupGovernanceRuleResultOutput)
 }
 

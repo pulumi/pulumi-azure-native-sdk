@@ -42,14 +42,20 @@ type LookupSubscriptionTarDirectoryResult struct {
 
 func LookupSubscriptionTarDirectoryOutput(ctx *pulumi.Context, args LookupSubscriptionTarDirectoryOutputArgs, opts ...pulumi.InvokeOption) LookupSubscriptionTarDirectoryResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSubscriptionTarDirectoryResult, error) {
+		ApplyT(func(v interface{}) (LookupSubscriptionTarDirectoryResultOutput, error) {
 			args := v.(LookupSubscriptionTarDirectoryArgs)
-			r, err := LookupSubscriptionTarDirectory(ctx, &args, opts...)
-			var s LookupSubscriptionTarDirectoryResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupSubscriptionTarDirectoryResult
+			secret, err := ctx.InvokePackageRaw("azure-native:subscription:getSubscriptionTarDirectory", args, &rv, "", opts...)
+			if err != nil {
+				return LookupSubscriptionTarDirectoryResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupSubscriptionTarDirectoryResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupSubscriptionTarDirectoryResultOutput), nil
+			}
+			return output, nil
 		}).(LookupSubscriptionTarDirectoryResultOutput)
 }
 

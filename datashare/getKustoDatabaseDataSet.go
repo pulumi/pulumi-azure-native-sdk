@@ -59,14 +59,20 @@ type LookupKustoDatabaseDataSetResult struct {
 
 func LookupKustoDatabaseDataSetOutput(ctx *pulumi.Context, args LookupKustoDatabaseDataSetOutputArgs, opts ...pulumi.InvokeOption) LookupKustoDatabaseDataSetResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupKustoDatabaseDataSetResult, error) {
+		ApplyT(func(v interface{}) (LookupKustoDatabaseDataSetResultOutput, error) {
 			args := v.(LookupKustoDatabaseDataSetArgs)
-			r, err := LookupKustoDatabaseDataSet(ctx, &args, opts...)
-			var s LookupKustoDatabaseDataSetResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupKustoDatabaseDataSetResult
+			secret, err := ctx.InvokePackageRaw("azure-native:datashare:getKustoDatabaseDataSet", args, &rv, "", opts...)
+			if err != nil {
+				return LookupKustoDatabaseDataSetResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupKustoDatabaseDataSetResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupKustoDatabaseDataSetResultOutput), nil
+			}
+			return output, nil
 		}).(LookupKustoDatabaseDataSetResultOutput)
 }
 

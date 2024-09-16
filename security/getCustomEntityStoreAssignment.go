@@ -48,14 +48,20 @@ type LookupCustomEntityStoreAssignmentResult struct {
 
 func LookupCustomEntityStoreAssignmentOutput(ctx *pulumi.Context, args LookupCustomEntityStoreAssignmentOutputArgs, opts ...pulumi.InvokeOption) LookupCustomEntityStoreAssignmentResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupCustomEntityStoreAssignmentResult, error) {
+		ApplyT(func(v interface{}) (LookupCustomEntityStoreAssignmentResultOutput, error) {
 			args := v.(LookupCustomEntityStoreAssignmentArgs)
-			r, err := LookupCustomEntityStoreAssignment(ctx, &args, opts...)
-			var s LookupCustomEntityStoreAssignmentResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupCustomEntityStoreAssignmentResult
+			secret, err := ctx.InvokePackageRaw("azure-native:security:getCustomEntityStoreAssignment", args, &rv, "", opts...)
+			if err != nil {
+				return LookupCustomEntityStoreAssignmentResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupCustomEntityStoreAssignmentResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupCustomEntityStoreAssignmentResultOutput), nil
+			}
+			return output, nil
 		}).(LookupCustomEntityStoreAssignmentResultOutput)
 }
 

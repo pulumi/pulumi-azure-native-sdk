@@ -110,6 +110,9 @@ func NewConnectivityConfiguration(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20240101:ConnectivityConfiguration"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20240301:ConnectivityConfiguration"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

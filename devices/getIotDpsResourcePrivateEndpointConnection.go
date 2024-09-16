@@ -50,14 +50,20 @@ type LookupIotDpsResourcePrivateEndpointConnectionResult struct {
 
 func LookupIotDpsResourcePrivateEndpointConnectionOutput(ctx *pulumi.Context, args LookupIotDpsResourcePrivateEndpointConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupIotDpsResourcePrivateEndpointConnectionResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupIotDpsResourcePrivateEndpointConnectionResult, error) {
+		ApplyT(func(v interface{}) (LookupIotDpsResourcePrivateEndpointConnectionResultOutput, error) {
 			args := v.(LookupIotDpsResourcePrivateEndpointConnectionArgs)
-			r, err := LookupIotDpsResourcePrivateEndpointConnection(ctx, &args, opts...)
-			var s LookupIotDpsResourcePrivateEndpointConnectionResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupIotDpsResourcePrivateEndpointConnectionResult
+			secret, err := ctx.InvokePackageRaw("azure-native:devices:getIotDpsResourcePrivateEndpointConnection", args, &rv, "", opts...)
+			if err != nil {
+				return LookupIotDpsResourcePrivateEndpointConnectionResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupIotDpsResourcePrivateEndpointConnectionResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupIotDpsResourcePrivateEndpointConnectionResultOutput), nil
+			}
+			return output, nil
 		}).(LookupIotDpsResourcePrivateEndpointConnectionResultOutput)
 }
 

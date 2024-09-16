@@ -49,14 +49,20 @@ type LookupWorkspaceTagOperationLinkResult struct {
 
 func LookupWorkspaceTagOperationLinkOutput(ctx *pulumi.Context, args LookupWorkspaceTagOperationLinkOutputArgs, opts ...pulumi.InvokeOption) LookupWorkspaceTagOperationLinkResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupWorkspaceTagOperationLinkResult, error) {
+		ApplyT(func(v interface{}) (LookupWorkspaceTagOperationLinkResultOutput, error) {
 			args := v.(LookupWorkspaceTagOperationLinkArgs)
-			r, err := LookupWorkspaceTagOperationLink(ctx, &args, opts...)
-			var s LookupWorkspaceTagOperationLinkResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupWorkspaceTagOperationLinkResult
+			secret, err := ctx.InvokePackageRaw("azure-native:apimanagement/v20220901preview:getWorkspaceTagOperationLink", args, &rv, "", opts...)
+			if err != nil {
+				return LookupWorkspaceTagOperationLinkResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupWorkspaceTagOperationLinkResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupWorkspaceTagOperationLinkResultOutput), nil
+			}
+			return output, nil
 		}).(LookupWorkspaceTagOperationLinkResultOutput)
 }
 

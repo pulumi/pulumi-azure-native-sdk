@@ -51,14 +51,20 @@ type LookupCacheResult struct {
 
 func LookupCacheOutput(ctx *pulumi.Context, args LookupCacheOutputArgs, opts ...pulumi.InvokeOption) LookupCacheResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupCacheResult, error) {
+		ApplyT(func(v interface{}) (LookupCacheResultOutput, error) {
 			args := v.(LookupCacheArgs)
-			r, err := LookupCache(ctx, &args, opts...)
-			var s LookupCacheResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupCacheResult
+			secret, err := ctx.InvokePackageRaw("azure-native:apimanagement/v20240501:getCache", args, &rv, "", opts...)
+			if err != nil {
+				return LookupCacheResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupCacheResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupCacheResultOutput), nil
+			}
+			return output, nil
 		}).(LookupCacheResultOutput)
 }
 

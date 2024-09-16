@@ -41,14 +41,20 @@ type ListScheduleApplicableResult struct {
 
 func ListScheduleApplicableOutput(ctx *pulumi.Context, args ListScheduleApplicableOutputArgs, opts ...pulumi.InvokeOption) ListScheduleApplicableResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListScheduleApplicableResult, error) {
+		ApplyT(func(v interface{}) (ListScheduleApplicableResultOutput, error) {
 			args := v.(ListScheduleApplicableArgs)
-			r, err := ListScheduleApplicable(ctx, &args, opts...)
-			var s ListScheduleApplicableResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListScheduleApplicableResult
+			secret, err := ctx.InvokePackageRaw("azure-native:devtestlab/v20180915:listScheduleApplicable", args, &rv, "", opts...)
+			if err != nil {
+				return ListScheduleApplicableResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListScheduleApplicableResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListScheduleApplicableResultOutput), nil
+			}
+			return output, nil
 		}).(ListScheduleApplicableResultOutput)
 }
 

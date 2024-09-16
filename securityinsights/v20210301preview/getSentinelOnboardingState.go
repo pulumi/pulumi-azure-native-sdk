@@ -51,14 +51,20 @@ type LookupSentinelOnboardingStateResult struct {
 
 func LookupSentinelOnboardingStateOutput(ctx *pulumi.Context, args LookupSentinelOnboardingStateOutputArgs, opts ...pulumi.InvokeOption) LookupSentinelOnboardingStateResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSentinelOnboardingStateResult, error) {
+		ApplyT(func(v interface{}) (LookupSentinelOnboardingStateResultOutput, error) {
 			args := v.(LookupSentinelOnboardingStateArgs)
-			r, err := LookupSentinelOnboardingState(ctx, &args, opts...)
-			var s LookupSentinelOnboardingStateResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupSentinelOnboardingStateResult
+			secret, err := ctx.InvokePackageRaw("azure-native:securityinsights/v20210301preview:getSentinelOnboardingState", args, &rv, "", opts...)
+			if err != nil {
+				return LookupSentinelOnboardingStateResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupSentinelOnboardingStateResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupSentinelOnboardingStateResultOutput), nil
+			}
+			return output, nil
 		}).(LookupSentinelOnboardingStateResultOutput)
 }
 

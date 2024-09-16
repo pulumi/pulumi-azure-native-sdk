@@ -57,14 +57,20 @@ type LookupForwardingRuleResult struct {
 
 func LookupForwardingRuleOutput(ctx *pulumi.Context, args LookupForwardingRuleOutputArgs, opts ...pulumi.InvokeOption) LookupForwardingRuleResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupForwardingRuleResult, error) {
+		ApplyT(func(v interface{}) (LookupForwardingRuleResultOutput, error) {
 			args := v.(LookupForwardingRuleArgs)
-			r, err := LookupForwardingRule(ctx, &args, opts...)
-			var s LookupForwardingRuleResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupForwardingRuleResult
+			secret, err := ctx.InvokePackageRaw("azure-native:network/v20220701:getForwardingRule", args, &rv, "", opts...)
+			if err != nil {
+				return LookupForwardingRuleResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupForwardingRuleResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupForwardingRuleResultOutput), nil
+			}
+			return output, nil
 		}).(LookupForwardingRuleResultOutput)
 }
 

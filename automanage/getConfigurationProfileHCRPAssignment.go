@@ -50,14 +50,20 @@ type LookupConfigurationProfileHCRPAssignmentResult struct {
 
 func LookupConfigurationProfileHCRPAssignmentOutput(ctx *pulumi.Context, args LookupConfigurationProfileHCRPAssignmentOutputArgs, opts ...pulumi.InvokeOption) LookupConfigurationProfileHCRPAssignmentResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupConfigurationProfileHCRPAssignmentResult, error) {
+		ApplyT(func(v interface{}) (LookupConfigurationProfileHCRPAssignmentResultOutput, error) {
 			args := v.(LookupConfigurationProfileHCRPAssignmentArgs)
-			r, err := LookupConfigurationProfileHCRPAssignment(ctx, &args, opts...)
-			var s LookupConfigurationProfileHCRPAssignmentResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupConfigurationProfileHCRPAssignmentResult
+			secret, err := ctx.InvokePackageRaw("azure-native:automanage:getConfigurationProfileHCRPAssignment", args, &rv, "", opts...)
+			if err != nil {
+				return LookupConfigurationProfileHCRPAssignmentResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupConfigurationProfileHCRPAssignmentResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupConfigurationProfileHCRPAssignmentResultOutput), nil
+			}
+			return output, nil
 		}).(LookupConfigurationProfileHCRPAssignmentResultOutput)
 }
 

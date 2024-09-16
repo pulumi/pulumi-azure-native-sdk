@@ -53,14 +53,20 @@ type ListTopicKeysResult struct {
 
 func ListTopicKeysOutput(ctx *pulumi.Context, args ListTopicKeysOutputArgs, opts ...pulumi.InvokeOption) ListTopicKeysResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListTopicKeysResult, error) {
+		ApplyT(func(v interface{}) (ListTopicKeysResultOutput, error) {
 			args := v.(ListTopicKeysArgs)
-			r, err := ListTopicKeys(ctx, &args, opts...)
-			var s ListTopicKeysResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListTopicKeysResult
+			secret, err := ctx.InvokePackageRaw("azure-native:servicebus/v20221001preview:listTopicKeys", args, &rv, "", opts...)
+			if err != nil {
+				return ListTopicKeysResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListTopicKeysResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListTopicKeysResultOutput), nil
+			}
+			return output, nil
 		}).(ListTopicKeysResultOutput)
 }
 

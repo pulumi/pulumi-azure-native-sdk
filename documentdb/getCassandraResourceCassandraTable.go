@@ -14,7 +14,7 @@ import (
 // Gets the Cassandra table under an existing Azure Cosmos DB database account.
 // Azure REST API version: 2023-04-15.
 //
-// Other available API versions: 2019-08-01, 2023-03-15-preview, 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview.
+// Other available API versions: 2019-08-01, 2023-03-15-preview, 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview, 2024-08-15, 2024-09-01-preview.
 func LookupCassandraResourceCassandraTable(ctx *pulumi.Context, args *LookupCassandraResourceCassandraTableArgs, opts ...pulumi.InvokeOption) (*LookupCassandraResourceCassandraTableResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCassandraResourceCassandraTableResult
@@ -54,14 +54,20 @@ type LookupCassandraResourceCassandraTableResult struct {
 
 func LookupCassandraResourceCassandraTableOutput(ctx *pulumi.Context, args LookupCassandraResourceCassandraTableOutputArgs, opts ...pulumi.InvokeOption) LookupCassandraResourceCassandraTableResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupCassandraResourceCassandraTableResult, error) {
+		ApplyT(func(v interface{}) (LookupCassandraResourceCassandraTableResultOutput, error) {
 			args := v.(LookupCassandraResourceCassandraTableArgs)
-			r, err := LookupCassandraResourceCassandraTable(ctx, &args, opts...)
-			var s LookupCassandraResourceCassandraTableResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupCassandraResourceCassandraTableResult
+			secret, err := ctx.InvokePackageRaw("azure-native:documentdb:getCassandraResourceCassandraTable", args, &rv, "", opts...)
+			if err != nil {
+				return LookupCassandraResourceCassandraTableResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupCassandraResourceCassandraTableResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupCassandraResourceCassandraTableResultOutput), nil
+			}
+			return output, nil
 		}).(LookupCassandraResourceCassandraTableResultOutput)
 }
 

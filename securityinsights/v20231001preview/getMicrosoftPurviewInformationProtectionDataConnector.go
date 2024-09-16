@@ -54,14 +54,20 @@ type LookupMicrosoftPurviewInformationProtectionDataConnectorResult struct {
 
 func LookupMicrosoftPurviewInformationProtectionDataConnectorOutput(ctx *pulumi.Context, args LookupMicrosoftPurviewInformationProtectionDataConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupMicrosoftPurviewInformationProtectionDataConnectorResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupMicrosoftPurviewInformationProtectionDataConnectorResult, error) {
+		ApplyT(func(v interface{}) (LookupMicrosoftPurviewInformationProtectionDataConnectorResultOutput, error) {
 			args := v.(LookupMicrosoftPurviewInformationProtectionDataConnectorArgs)
-			r, err := LookupMicrosoftPurviewInformationProtectionDataConnector(ctx, &args, opts...)
-			var s LookupMicrosoftPurviewInformationProtectionDataConnectorResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupMicrosoftPurviewInformationProtectionDataConnectorResult
+			secret, err := ctx.InvokePackageRaw("azure-native:securityinsights/v20231001preview:getMicrosoftPurviewInformationProtectionDataConnector", args, &rv, "", opts...)
+			if err != nil {
+				return LookupMicrosoftPurviewInformationProtectionDataConnectorResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupMicrosoftPurviewInformationProtectionDataConnectorResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupMicrosoftPurviewInformationProtectionDataConnectorResultOutput), nil
+			}
+			return output, nil
 		}).(LookupMicrosoftPurviewInformationProtectionDataConnectorResultOutput)
 }
 

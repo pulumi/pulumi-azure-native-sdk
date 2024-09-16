@@ -58,14 +58,20 @@ type LookupWebAppSitesControllerResult struct {
 
 func LookupWebAppSitesControllerOutput(ctx *pulumi.Context, args LookupWebAppSitesControllerOutputArgs, opts ...pulumi.InvokeOption) LookupWebAppSitesControllerResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupWebAppSitesControllerResult, error) {
+		ApplyT(func(v interface{}) (LookupWebAppSitesControllerResultOutput, error) {
 			args := v.(LookupWebAppSitesControllerArgs)
-			r, err := LookupWebAppSitesController(ctx, &args, opts...)
-			var s LookupWebAppSitesControllerResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupWebAppSitesControllerResult
+			secret, err := ctx.InvokePackageRaw("azure-native:offazure:getWebAppSitesController", args, &rv, "", opts...)
+			if err != nil {
+				return LookupWebAppSitesControllerResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupWebAppSitesControllerResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupWebAppSitesControllerResultOutput), nil
+			}
+			return output, nil
 		}).(LookupWebAppSitesControllerResultOutput)
 }
 

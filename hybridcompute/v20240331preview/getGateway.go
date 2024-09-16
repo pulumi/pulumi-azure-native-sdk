@@ -57,14 +57,20 @@ type LookupGatewayResult struct {
 
 func LookupGatewayOutput(ctx *pulumi.Context, args LookupGatewayOutputArgs, opts ...pulumi.InvokeOption) LookupGatewayResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupGatewayResult, error) {
+		ApplyT(func(v interface{}) (LookupGatewayResultOutput, error) {
 			args := v.(LookupGatewayArgs)
-			r, err := LookupGateway(ctx, &args, opts...)
-			var s LookupGatewayResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupGatewayResult
+			secret, err := ctx.InvokePackageRaw("azure-native:hybridcompute/v20240331preview:getGateway", args, &rv, "", opts...)
+			if err != nil {
+				return LookupGatewayResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupGatewayResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupGatewayResultOutput), nil
+			}
+			return output, nil
 		}).(LookupGatewayResultOutput)
 }
 

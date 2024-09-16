@@ -14,7 +14,7 @@ import (
 // Gets a description for the specified namespace.
 // Azure REST API version: 2022-01-01-preview.
 //
-// Other available API versions: 2015-08-01, 2022-10-01-preview, 2023-01-01-preview.
+// Other available API versions: 2015-08-01, 2022-10-01-preview, 2023-01-01-preview, 2024-01-01.
 func LookupNamespace(ctx *pulumi.Context, args *LookupNamespaceArgs, opts ...pulumi.InvokeOption) (*LookupNamespaceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNamespaceResult
@@ -95,14 +95,20 @@ func (val *LookupNamespaceResult) Defaults() *LookupNamespaceResult {
 
 func LookupNamespaceOutput(ctx *pulumi.Context, args LookupNamespaceOutputArgs, opts ...pulumi.InvokeOption) LookupNamespaceResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupNamespaceResult, error) {
+		ApplyT(func(v interface{}) (LookupNamespaceResultOutput, error) {
 			args := v.(LookupNamespaceArgs)
-			r, err := LookupNamespace(ctx, &args, opts...)
-			var s LookupNamespaceResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupNamespaceResult
+			secret, err := ctx.InvokePackageRaw("azure-native:servicebus:getNamespace", args, &rv, "", opts...)
+			if err != nil {
+				return LookupNamespaceResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupNamespaceResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupNamespaceResultOutput), nil
+			}
+			return output, nil
 		}).(LookupNamespaceResultOutput)
 }
 

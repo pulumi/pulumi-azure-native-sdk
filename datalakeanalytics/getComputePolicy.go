@@ -52,14 +52,20 @@ type LookupComputePolicyResult struct {
 
 func LookupComputePolicyOutput(ctx *pulumi.Context, args LookupComputePolicyOutputArgs, opts ...pulumi.InvokeOption) LookupComputePolicyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupComputePolicyResult, error) {
+		ApplyT(func(v interface{}) (LookupComputePolicyResultOutput, error) {
 			args := v.(LookupComputePolicyArgs)
-			r, err := LookupComputePolicy(ctx, &args, opts...)
-			var s LookupComputePolicyResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupComputePolicyResult
+			secret, err := ctx.InvokePackageRaw("azure-native:datalakeanalytics:getComputePolicy", args, &rv, "", opts...)
+			if err != nil {
+				return LookupComputePolicyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupComputePolicyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupComputePolicyResultOutput), nil
+			}
+			return output, nil
 		}).(LookupComputePolicyResultOutput)
 }
 

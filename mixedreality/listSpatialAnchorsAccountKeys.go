@@ -42,14 +42,20 @@ type ListSpatialAnchorsAccountKeysResult struct {
 
 func ListSpatialAnchorsAccountKeysOutput(ctx *pulumi.Context, args ListSpatialAnchorsAccountKeysOutputArgs, opts ...pulumi.InvokeOption) ListSpatialAnchorsAccountKeysResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListSpatialAnchorsAccountKeysResult, error) {
+		ApplyT(func(v interface{}) (ListSpatialAnchorsAccountKeysResultOutput, error) {
 			args := v.(ListSpatialAnchorsAccountKeysArgs)
-			r, err := ListSpatialAnchorsAccountKeys(ctx, &args, opts...)
-			var s ListSpatialAnchorsAccountKeysResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListSpatialAnchorsAccountKeysResult
+			secret, err := ctx.InvokePackageRaw("azure-native:mixedreality:listSpatialAnchorsAccountKeys", args, &rv, "", opts...)
+			if err != nil {
+				return ListSpatialAnchorsAccountKeysResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListSpatialAnchorsAccountKeysResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListSpatialAnchorsAccountKeysResultOutput), nil
+			}
+			return output, nil
 		}).(ListSpatialAnchorsAccountKeysResultOutput)
 }
 

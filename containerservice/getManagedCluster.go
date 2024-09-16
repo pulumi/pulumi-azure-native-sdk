@@ -14,7 +14,7 @@ import (
 // Managed cluster.
 // Azure REST API version: 2023-04-01.
 //
-// Other available API versions: 2017-08-31, 2019-02-01, 2019-06-01, 2021-05-01, 2023-05-02-preview, 2023-06-01, 2023-06-02-preview, 2023-07-01, 2023-07-02-preview, 2023-08-01, 2023-08-02-preview, 2023-09-01, 2023-09-02-preview, 2023-10-01, 2023-10-02-preview, 2023-11-01, 2023-11-02-preview, 2024-01-01, 2024-01-02-preview, 2024-02-01, 2024-02-02-preview, 2024-03-02-preview, 2024-04-02-preview, 2024-05-01, 2024-05-02-preview, 2024-06-02-preview, 2024-07-01.
+// Other available API versions: 2017-08-31, 2019-02-01, 2019-06-01, 2021-05-01, 2023-05-02-preview, 2023-06-01, 2023-06-02-preview, 2023-07-01, 2023-07-02-preview, 2023-08-01, 2023-08-02-preview, 2023-09-01, 2023-09-02-preview, 2023-10-01, 2023-10-02-preview, 2023-11-01, 2023-11-02-preview, 2024-01-01, 2024-01-02-preview, 2024-02-01, 2024-02-02-preview, 2024-03-02-preview, 2024-04-02-preview, 2024-05-01, 2024-05-02-preview, 2024-06-02-preview, 2024-07-01, 2024-07-02-preview.
 func LookupManagedCluster(ctx *pulumi.Context, args *LookupManagedClusterArgs, opts ...pulumi.InvokeOption) (*LookupManagedClusterResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupManagedClusterResult
@@ -141,14 +141,20 @@ func (val *LookupManagedClusterResult) Defaults() *LookupManagedClusterResult {
 
 func LookupManagedClusterOutput(ctx *pulumi.Context, args LookupManagedClusterOutputArgs, opts ...pulumi.InvokeOption) LookupManagedClusterResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupManagedClusterResult, error) {
+		ApplyT(func(v interface{}) (LookupManagedClusterResultOutput, error) {
 			args := v.(LookupManagedClusterArgs)
-			r, err := LookupManagedCluster(ctx, &args, opts...)
-			var s LookupManagedClusterResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupManagedClusterResult
+			secret, err := ctx.InvokePackageRaw("azure-native:containerservice:getManagedCluster", args, &rv, "", opts...)
+			if err != nil {
+				return LookupManagedClusterResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupManagedClusterResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupManagedClusterResultOutput), nil
+			}
+			return output, nil
 		}).(LookupManagedClusterResultOutput)
 }
 

@@ -6492,8 +6492,6 @@ func (o RetentionPolicyParametersResponsePtrOutput) Enabled() pulumi.BoolPtrOutp
 type Route struct {
 	// The destination CIDR to which the route applies.
 	AddressPrefix *string `pulumi:"addressPrefix"`
-	// A value indicating whether this route overrides overlapping BGP routes regardless of LPM.
-	HasBgpOverride *bool `pulumi:"hasBgpOverride"`
 	// Resource ID.
 	Id *string `pulumi:"id"`
 	// The name of the resource that is unique within a resource group. This name can be used to access the resource.
@@ -6521,8 +6519,6 @@ type RouteInput interface {
 type RouteArgs struct {
 	// The destination CIDR to which the route applies.
 	AddressPrefix pulumi.StringPtrInput `pulumi:"addressPrefix"`
-	// A value indicating whether this route overrides overlapping BGP routes regardless of LPM.
-	HasBgpOverride pulumi.BoolPtrInput `pulumi:"hasBgpOverride"`
 	// Resource ID.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// The name of the resource that is unique within a resource group. This name can be used to access the resource.
@@ -6592,11 +6588,6 @@ func (o RouteOutput) AddressPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Route) *string { return v.AddressPrefix }).(pulumi.StringPtrOutput)
 }
 
-// A value indicating whether this route overrides overlapping BGP routes regardless of LPM.
-func (o RouteOutput) HasBgpOverride() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v Route) *bool { return v.HasBgpOverride }).(pulumi.BoolPtrOutput)
-}
-
 // Resource ID.
 func (o RouteOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Route) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -6649,7 +6640,7 @@ type RouteResponse struct {
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag string `pulumi:"etag"`
 	// A value indicating whether this route overrides overlapping BGP routes regardless of LPM.
-	HasBgpOverride *bool `pulumi:"hasBgpOverride"`
+	HasBgpOverride bool `pulumi:"hasBgpOverride"`
 	// Resource ID.
 	Id *string `pulumi:"id"`
 	// The name of the resource that is unique within a resource group. This name can be used to access the resource.
@@ -6690,8 +6681,8 @@ func (o RouteResponseOutput) Etag() pulumi.StringOutput {
 }
 
 // A value indicating whether this route overrides overlapping BGP routes regardless of LPM.
-func (o RouteResponseOutput) HasBgpOverride() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RouteResponse) *bool { return v.HasBgpOverride }).(pulumi.BoolPtrOutput)
+func (o RouteResponseOutput) HasBgpOverride() pulumi.BoolOutput {
+	return o.ApplyT(func(v RouteResponse) bool { return v.HasBgpOverride }).(pulumi.BoolOutput)
 }
 
 // Resource ID.

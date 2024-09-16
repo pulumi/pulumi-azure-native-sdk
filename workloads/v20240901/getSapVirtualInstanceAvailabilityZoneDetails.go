@@ -41,14 +41,20 @@ type GetSapVirtualInstanceAvailabilityZoneDetailsResult struct {
 
 func GetSapVirtualInstanceAvailabilityZoneDetailsOutput(ctx *pulumi.Context, args GetSapVirtualInstanceAvailabilityZoneDetailsOutputArgs, opts ...pulumi.InvokeOption) GetSapVirtualInstanceAvailabilityZoneDetailsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetSapVirtualInstanceAvailabilityZoneDetailsResult, error) {
+		ApplyT(func(v interface{}) (GetSapVirtualInstanceAvailabilityZoneDetailsResultOutput, error) {
 			args := v.(GetSapVirtualInstanceAvailabilityZoneDetailsArgs)
-			r, err := GetSapVirtualInstanceAvailabilityZoneDetails(ctx, &args, opts...)
-			var s GetSapVirtualInstanceAvailabilityZoneDetailsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv GetSapVirtualInstanceAvailabilityZoneDetailsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:workloads/v20240901:getSapVirtualInstanceAvailabilityZoneDetails", args, &rv, "", opts...)
+			if err != nil {
+				return GetSapVirtualInstanceAvailabilityZoneDetailsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetSapVirtualInstanceAvailabilityZoneDetailsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetSapVirtualInstanceAvailabilityZoneDetailsResultOutput), nil
+			}
+			return output, nil
 		}).(GetSapVirtualInstanceAvailabilityZoneDetailsResultOutput)
 }
 

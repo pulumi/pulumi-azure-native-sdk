@@ -52,14 +52,20 @@ type LookupPrivateEndpointConnectionsAdtAPIResult struct {
 
 func LookupPrivateEndpointConnectionsAdtAPIOutput(ctx *pulumi.Context, args LookupPrivateEndpointConnectionsAdtAPIOutputArgs, opts ...pulumi.InvokeOption) LookupPrivateEndpointConnectionsAdtAPIResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupPrivateEndpointConnectionsAdtAPIResult, error) {
+		ApplyT(func(v interface{}) (LookupPrivateEndpointConnectionsAdtAPIResultOutput, error) {
 			args := v.(LookupPrivateEndpointConnectionsAdtAPIArgs)
-			r, err := LookupPrivateEndpointConnectionsAdtAPI(ctx, &args, opts...)
-			var s LookupPrivateEndpointConnectionsAdtAPIResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupPrivateEndpointConnectionsAdtAPIResult
+			secret, err := ctx.InvokePackageRaw("azure-native:m365securityandcompliance:getPrivateEndpointConnectionsAdtAPI", args, &rv, "", opts...)
+			if err != nil {
+				return LookupPrivateEndpointConnectionsAdtAPIResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupPrivateEndpointConnectionsAdtAPIResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupPrivateEndpointConnectionsAdtAPIResultOutput), nil
+			}
+			return output, nil
 		}).(LookupPrivateEndpointConnectionsAdtAPIResultOutput)
 }
 

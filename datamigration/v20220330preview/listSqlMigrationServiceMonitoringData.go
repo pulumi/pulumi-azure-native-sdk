@@ -39,14 +39,20 @@ type ListSqlMigrationServiceMonitoringDataResult struct {
 
 func ListSqlMigrationServiceMonitoringDataOutput(ctx *pulumi.Context, args ListSqlMigrationServiceMonitoringDataOutputArgs, opts ...pulumi.InvokeOption) ListSqlMigrationServiceMonitoringDataResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListSqlMigrationServiceMonitoringDataResult, error) {
+		ApplyT(func(v interface{}) (ListSqlMigrationServiceMonitoringDataResultOutput, error) {
 			args := v.(ListSqlMigrationServiceMonitoringDataArgs)
-			r, err := ListSqlMigrationServiceMonitoringData(ctx, &args, opts...)
-			var s ListSqlMigrationServiceMonitoringDataResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListSqlMigrationServiceMonitoringDataResult
+			secret, err := ctx.InvokePackageRaw("azure-native:datamigration/v20220330preview:listSqlMigrationServiceMonitoringData", args, &rv, "", opts...)
+			if err != nil {
+				return ListSqlMigrationServiceMonitoringDataResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListSqlMigrationServiceMonitoringDataResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListSqlMigrationServiceMonitoringDataResultOutput), nil
+			}
+			return output, nil
 		}).(ListSqlMigrationServiceMonitoringDataResultOutput)
 }
 

@@ -59,14 +59,20 @@ type LookupNetworkinterfaceRetrieveResult struct {
 
 func LookupNetworkinterfaceRetrieveOutput(ctx *pulumi.Context, args LookupNetworkinterfaceRetrieveOutputArgs, opts ...pulumi.InvokeOption) LookupNetworkinterfaceRetrieveResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupNetworkinterfaceRetrieveResult, error) {
+		ApplyT(func(v interface{}) (LookupNetworkinterfaceRetrieveResultOutput, error) {
 			args := v.(LookupNetworkinterfaceRetrieveArgs)
-			r, err := LookupNetworkinterfaceRetrieve(ctx, &args, opts...)
-			var s LookupNetworkinterfaceRetrieveResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupNetworkinterfaceRetrieveResult
+			secret, err := ctx.InvokePackageRaw("azure-native:azurestackhci/v20210901preview:getNetworkinterfaceRetrieve", args, &rv, "", opts...)
+			if err != nil {
+				return LookupNetworkinterfaceRetrieveResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupNetworkinterfaceRetrieveResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupNetworkinterfaceRetrieveResultOutput), nil
+			}
+			return output, nil
 		}).(LookupNetworkinterfaceRetrieveResultOutput)
 }
 

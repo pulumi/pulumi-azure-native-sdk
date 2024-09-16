@@ -50,14 +50,20 @@ type LookupActionRequestResult struct {
 
 func LookupActionRequestOutput(ctx *pulumi.Context, args LookupActionRequestOutputArgs, opts ...pulumi.InvokeOption) LookupActionRequestResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupActionRequestResult, error) {
+		ApplyT(func(v interface{}) (LookupActionRequestResultOutput, error) {
 			args := v.(LookupActionRequestArgs)
-			r, err := LookupActionRequest(ctx, &args, opts...)
-			var s LookupActionRequestResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupActionRequestResult
+			secret, err := ctx.InvokePackageRaw("azure-native:testbase:getActionRequest", args, &rv, "", opts...)
+			if err != nil {
+				return LookupActionRequestResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupActionRequestResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupActionRequestResultOutput), nil
+			}
+			return output, nil
 		}).(LookupActionRequestResultOutput)
 }
 

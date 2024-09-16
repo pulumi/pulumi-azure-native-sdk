@@ -80,14 +80,20 @@ func (val *LookupConnectedRegistryResult) Defaults() *LookupConnectedRegistryRes
 
 func LookupConnectedRegistryOutput(ctx *pulumi.Context, args LookupConnectedRegistryOutputArgs, opts ...pulumi.InvokeOption) LookupConnectedRegistryResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupConnectedRegistryResult, error) {
+		ApplyT(func(v interface{}) (LookupConnectedRegistryResultOutput, error) {
 			args := v.(LookupConnectedRegistryArgs)
-			r, err := LookupConnectedRegistry(ctx, &args, opts...)
-			var s LookupConnectedRegistryResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupConnectedRegistryResult
+			secret, err := ctx.InvokePackageRaw("azure-native:containerregistry/v20230101preview:getConnectedRegistry", args, &rv, "", opts...)
+			if err != nil {
+				return LookupConnectedRegistryResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupConnectedRegistryResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupConnectedRegistryResultOutput), nil
+			}
+			return output, nil
 		}).(LookupConnectedRegistryResultOutput)
 }
 

@@ -41,14 +41,20 @@ type ListDnsResolverByVirtualNetworkResult struct {
 
 func ListDnsResolverByVirtualNetworkOutput(ctx *pulumi.Context, args ListDnsResolverByVirtualNetworkOutputArgs, opts ...pulumi.InvokeOption) ListDnsResolverByVirtualNetworkResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListDnsResolverByVirtualNetworkResult, error) {
+		ApplyT(func(v interface{}) (ListDnsResolverByVirtualNetworkResultOutput, error) {
 			args := v.(ListDnsResolverByVirtualNetworkArgs)
-			r, err := ListDnsResolverByVirtualNetwork(ctx, &args, opts...)
-			var s ListDnsResolverByVirtualNetworkResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListDnsResolverByVirtualNetworkResult
+			secret, err := ctx.InvokePackageRaw("azure-native:network/v20220701:listDnsResolverByVirtualNetwork", args, &rv, "", opts...)
+			if err != nil {
+				return ListDnsResolverByVirtualNetworkResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListDnsResolverByVirtualNetworkResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListDnsResolverByVirtualNetworkResultOutput), nil
+			}
+			return output, nil
 		}).(ListDnsResolverByVirtualNetworkResultOutput)
 }
 

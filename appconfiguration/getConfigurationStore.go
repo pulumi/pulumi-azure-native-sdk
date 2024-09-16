@@ -14,7 +14,7 @@ import (
 // Gets the properties of the specified configuration store.
 // Azure REST API version: 2023-03-01.
 //
-// Other available API versions: 2019-02-01-preview, 2023-08-01-preview, 2023-09-01-preview.
+// Other available API versions: 2019-02-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2024-05-01.
 func LookupConfigurationStore(ctx *pulumi.Context, args *LookupConfigurationStoreArgs, opts ...pulumi.InvokeOption) (*LookupConfigurationStoreResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupConfigurationStoreResult
@@ -93,14 +93,20 @@ func (val *LookupConfigurationStoreResult) Defaults() *LookupConfigurationStoreR
 
 func LookupConfigurationStoreOutput(ctx *pulumi.Context, args LookupConfigurationStoreOutputArgs, opts ...pulumi.InvokeOption) LookupConfigurationStoreResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupConfigurationStoreResult, error) {
+		ApplyT(func(v interface{}) (LookupConfigurationStoreResultOutput, error) {
 			args := v.(LookupConfigurationStoreArgs)
-			r, err := LookupConfigurationStore(ctx, &args, opts...)
-			var s LookupConfigurationStoreResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupConfigurationStoreResult
+			secret, err := ctx.InvokePackageRaw("azure-native:appconfiguration:getConfigurationStore", args, &rv, "", opts...)
+			if err != nil {
+				return LookupConfigurationStoreResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupConfigurationStoreResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupConfigurationStoreResultOutput), nil
+			}
+			return output, nil
 		}).(LookupConfigurationStoreResultOutput)
 }
 

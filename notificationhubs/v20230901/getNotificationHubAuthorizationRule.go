@@ -53,14 +53,20 @@ type LookupNotificationHubAuthorizationRuleResult struct {
 
 func LookupNotificationHubAuthorizationRuleOutput(ctx *pulumi.Context, args LookupNotificationHubAuthorizationRuleOutputArgs, opts ...pulumi.InvokeOption) LookupNotificationHubAuthorizationRuleResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupNotificationHubAuthorizationRuleResult, error) {
+		ApplyT(func(v interface{}) (LookupNotificationHubAuthorizationRuleResultOutput, error) {
 			args := v.(LookupNotificationHubAuthorizationRuleArgs)
-			r, err := LookupNotificationHubAuthorizationRule(ctx, &args, opts...)
-			var s LookupNotificationHubAuthorizationRuleResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupNotificationHubAuthorizationRuleResult
+			secret, err := ctx.InvokePackageRaw("azure-native:notificationhubs/v20230901:getNotificationHubAuthorizationRule", args, &rv, "", opts...)
+			if err != nil {
+				return LookupNotificationHubAuthorizationRuleResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupNotificationHubAuthorizationRuleResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupNotificationHubAuthorizationRuleResultOutput), nil
+			}
+			return output, nil
 		}).(LookupNotificationHubAuthorizationRuleResultOutput)
 }
 

@@ -65,14 +65,20 @@ type LookupNetworkConnectionResult struct {
 
 func LookupNetworkConnectionOutput(ctx *pulumi.Context, args LookupNetworkConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupNetworkConnectionResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupNetworkConnectionResult, error) {
+		ApplyT(func(v interface{}) (LookupNetworkConnectionResultOutput, error) {
 			args := v.(LookupNetworkConnectionArgs)
-			r, err := LookupNetworkConnection(ctx, &args, opts...)
-			var s LookupNetworkConnectionResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupNetworkConnectionResult
+			secret, err := ctx.InvokePackageRaw("azure-native:devcenter/v20240701preview:getNetworkConnection", args, &rv, "", opts...)
+			if err != nil {
+				return LookupNetworkConnectionResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupNetworkConnectionResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupNetworkConnectionResultOutput), nil
+			}
+			return output, nil
 		}).(LookupNetworkConnectionResultOutput)
 }
 

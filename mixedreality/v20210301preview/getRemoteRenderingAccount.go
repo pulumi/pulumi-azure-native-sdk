@@ -61,14 +61,20 @@ type LookupRemoteRenderingAccountResult struct {
 
 func LookupRemoteRenderingAccountOutput(ctx *pulumi.Context, args LookupRemoteRenderingAccountOutputArgs, opts ...pulumi.InvokeOption) LookupRemoteRenderingAccountResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupRemoteRenderingAccountResult, error) {
+		ApplyT(func(v interface{}) (LookupRemoteRenderingAccountResultOutput, error) {
 			args := v.(LookupRemoteRenderingAccountArgs)
-			r, err := LookupRemoteRenderingAccount(ctx, &args, opts...)
-			var s LookupRemoteRenderingAccountResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupRemoteRenderingAccountResult
+			secret, err := ctx.InvokePackageRaw("azure-native:mixedreality/v20210301preview:getRemoteRenderingAccount", args, &rv, "", opts...)
+			if err != nil {
+				return LookupRemoteRenderingAccountResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupRemoteRenderingAccountResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupRemoteRenderingAccountResultOutput), nil
+			}
+			return output, nil
 		}).(LookupRemoteRenderingAccountResultOutput)
 }
 

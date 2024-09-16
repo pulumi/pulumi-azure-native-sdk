@@ -64,14 +64,20 @@ type LookupMasterSitesControllerResult struct {
 
 func LookupMasterSitesControllerOutput(ctx *pulumi.Context, args LookupMasterSitesControllerOutputArgs, opts ...pulumi.InvokeOption) LookupMasterSitesControllerResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupMasterSitesControllerResult, error) {
+		ApplyT(func(v interface{}) (LookupMasterSitesControllerResultOutput, error) {
 			args := v.(LookupMasterSitesControllerArgs)
-			r, err := LookupMasterSitesController(ctx, &args, opts...)
-			var s LookupMasterSitesControllerResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupMasterSitesControllerResult
+			secret, err := ctx.InvokePackageRaw("azure-native:offazure/v20231001preview:getMasterSitesController", args, &rv, "", opts...)
+			if err != nil {
+				return LookupMasterSitesControllerResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupMasterSitesControllerResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupMasterSitesControllerResultOutput), nil
+			}
+			return output, nil
 		}).(LookupMasterSitesControllerResultOutput)
 }
 

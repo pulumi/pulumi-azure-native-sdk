@@ -91,14 +91,20 @@ func (val *LookupSourceControlConfigurationResult) Defaults() *LookupSourceContr
 
 func LookupSourceControlConfigurationOutput(ctx *pulumi.Context, args LookupSourceControlConfigurationOutputArgs, opts ...pulumi.InvokeOption) LookupSourceControlConfigurationResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSourceControlConfigurationResult, error) {
+		ApplyT(func(v interface{}) (LookupSourceControlConfigurationResultOutput, error) {
 			args := v.(LookupSourceControlConfigurationArgs)
-			r, err := LookupSourceControlConfiguration(ctx, &args, opts...)
-			var s LookupSourceControlConfigurationResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupSourceControlConfigurationResult
+			secret, err := ctx.InvokePackageRaw("azure-native:kubernetesconfiguration:getSourceControlConfiguration", args, &rv, "", opts...)
+			if err != nil {
+				return LookupSourceControlConfigurationResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupSourceControlConfigurationResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupSourceControlConfigurationResultOutput), nil
+			}
+			return output, nil
 		}).(LookupSourceControlConfigurationResultOutput)
 }
 

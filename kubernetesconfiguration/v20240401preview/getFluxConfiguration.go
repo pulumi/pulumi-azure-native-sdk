@@ -118,14 +118,20 @@ func (val *LookupFluxConfigurationResult) Defaults() *LookupFluxConfigurationRes
 
 func LookupFluxConfigurationOutput(ctx *pulumi.Context, args LookupFluxConfigurationOutputArgs, opts ...pulumi.InvokeOption) LookupFluxConfigurationResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupFluxConfigurationResult, error) {
+		ApplyT(func(v interface{}) (LookupFluxConfigurationResultOutput, error) {
 			args := v.(LookupFluxConfigurationArgs)
-			r, err := LookupFluxConfiguration(ctx, &args, opts...)
-			var s LookupFluxConfigurationResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupFluxConfigurationResult
+			secret, err := ctx.InvokePackageRaw("azure-native:kubernetesconfiguration/v20240401preview:getFluxConfiguration", args, &rv, "", opts...)
+			if err != nil {
+				return LookupFluxConfigurationResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupFluxConfigurationResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupFluxConfigurationResultOutput), nil
+			}
+			return output, nil
 		}).(LookupFluxConfigurationResultOutput)
 }
 

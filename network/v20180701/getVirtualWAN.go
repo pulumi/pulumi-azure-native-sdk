@@ -54,14 +54,20 @@ type LookupVirtualWANResult struct {
 
 func LookupVirtualWANOutput(ctx *pulumi.Context, args LookupVirtualWANOutputArgs, opts ...pulumi.InvokeOption) LookupVirtualWANResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupVirtualWANResult, error) {
+		ApplyT(func(v interface{}) (LookupVirtualWANResultOutput, error) {
 			args := v.(LookupVirtualWANArgs)
-			r, err := LookupVirtualWAN(ctx, &args, opts...)
-			var s LookupVirtualWANResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupVirtualWANResult
+			secret, err := ctx.InvokePackageRaw("azure-native:network/v20180701:getVirtualWAN", args, &rv, "", opts...)
+			if err != nil {
+				return LookupVirtualWANResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupVirtualWANResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupVirtualWANResultOutput), nil
+			}
+			return output, nil
 		}).(LookupVirtualWANResultOutput)
 }
 

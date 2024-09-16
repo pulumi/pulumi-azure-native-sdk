@@ -80,6 +80,9 @@ func NewKeyValue(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:appconfiguration/v20230801preview:KeyValue"),
 		},
+		{
+			Type: pulumi.String("azure-native:appconfiguration/v20240501:KeyValue"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

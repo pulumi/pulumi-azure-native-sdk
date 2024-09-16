@@ -56,14 +56,20 @@ type LookupInternetGatewayRuleResult struct {
 
 func LookupInternetGatewayRuleOutput(ctx *pulumi.Context, args LookupInternetGatewayRuleOutputArgs, opts ...pulumi.InvokeOption) LookupInternetGatewayRuleResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupInternetGatewayRuleResult, error) {
+		ApplyT(func(v interface{}) (LookupInternetGatewayRuleResultOutput, error) {
 			args := v.(LookupInternetGatewayRuleArgs)
-			r, err := LookupInternetGatewayRule(ctx, &args, opts...)
-			var s LookupInternetGatewayRuleResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupInternetGatewayRuleResult
+			secret, err := ctx.InvokePackageRaw("azure-native:managednetworkfabric:getInternetGatewayRule", args, &rv, "", opts...)
+			if err != nil {
+				return LookupInternetGatewayRuleResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupInternetGatewayRuleResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupInternetGatewayRuleResultOutput), nil
+			}
+			return output, nil
 		}).(LookupInternetGatewayRuleResultOutput)
 }
 

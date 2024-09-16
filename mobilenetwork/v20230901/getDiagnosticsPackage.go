@@ -51,14 +51,20 @@ type LookupDiagnosticsPackageResult struct {
 
 func LookupDiagnosticsPackageOutput(ctx *pulumi.Context, args LookupDiagnosticsPackageOutputArgs, opts ...pulumi.InvokeOption) LookupDiagnosticsPackageResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupDiagnosticsPackageResult, error) {
+		ApplyT(func(v interface{}) (LookupDiagnosticsPackageResultOutput, error) {
 			args := v.(LookupDiagnosticsPackageArgs)
-			r, err := LookupDiagnosticsPackage(ctx, &args, opts...)
-			var s LookupDiagnosticsPackageResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupDiagnosticsPackageResult
+			secret, err := ctx.InvokePackageRaw("azure-native:mobilenetwork/v20230901:getDiagnosticsPackage", args, &rv, "", opts...)
+			if err != nil {
+				return LookupDiagnosticsPackageResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupDiagnosticsPackageResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupDiagnosticsPackageResultOutput), nil
+			}
+			return output, nil
 		}).(LookupDiagnosticsPackageResultOutput)
 }
 

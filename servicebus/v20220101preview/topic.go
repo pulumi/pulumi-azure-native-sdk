@@ -104,6 +104,9 @@ func NewTopic(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:servicebus/v20230101preview:Topic"),
 		},
+		{
+			Type: pulumi.String("azure-native:servicebus/v20240101:Topic"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

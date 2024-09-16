@@ -115,6 +115,9 @@ func NewConfigurationStore(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:appconfiguration/v20230801preview:ConfigurationStore"),
 		},
+		{
+			Type: pulumi.String("azure-native:appconfiguration/v20240501:ConfigurationStore"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

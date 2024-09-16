@@ -14,7 +14,7 @@ import (
 // Retrieves the properties of an existing Azure Cosmos DB SQL Role Definition with the given Id.
 // Azure REST API version: 2023-04-15.
 //
-// Other available API versions: 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview.
+// Other available API versions: 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview, 2024-08-15, 2024-09-01-preview.
 func LookupSqlResourceSqlRoleDefinition(ctx *pulumi.Context, args *LookupSqlResourceSqlRoleDefinitionArgs, opts ...pulumi.InvokeOption) (*LookupSqlResourceSqlRoleDefinitionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSqlResourceSqlRoleDefinitionResult
@@ -52,14 +52,20 @@ type LookupSqlResourceSqlRoleDefinitionResult struct {
 
 func LookupSqlResourceSqlRoleDefinitionOutput(ctx *pulumi.Context, args LookupSqlResourceSqlRoleDefinitionOutputArgs, opts ...pulumi.InvokeOption) LookupSqlResourceSqlRoleDefinitionResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSqlResourceSqlRoleDefinitionResult, error) {
+		ApplyT(func(v interface{}) (LookupSqlResourceSqlRoleDefinitionResultOutput, error) {
 			args := v.(LookupSqlResourceSqlRoleDefinitionArgs)
-			r, err := LookupSqlResourceSqlRoleDefinition(ctx, &args, opts...)
-			var s LookupSqlResourceSqlRoleDefinitionResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupSqlResourceSqlRoleDefinitionResult
+			secret, err := ctx.InvokePackageRaw("azure-native:documentdb:getSqlResourceSqlRoleDefinition", args, &rv, "", opts...)
+			if err != nil {
+				return LookupSqlResourceSqlRoleDefinitionResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupSqlResourceSqlRoleDefinitionResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupSqlResourceSqlRoleDefinitionResultOutput), nil
+			}
+			return output, nil
 		}).(LookupSqlResourceSqlRoleDefinitionResultOutput)
 }
 

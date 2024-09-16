@@ -51,14 +51,20 @@ type LookupReplicationMigrationItemResult struct {
 
 func LookupReplicationMigrationItemOutput(ctx *pulumi.Context, args LookupReplicationMigrationItemOutputArgs, opts ...pulumi.InvokeOption) LookupReplicationMigrationItemResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupReplicationMigrationItemResult, error) {
+		ApplyT(func(v interface{}) (LookupReplicationMigrationItemResultOutput, error) {
 			args := v.(LookupReplicationMigrationItemArgs)
-			r, err := LookupReplicationMigrationItem(ctx, &args, opts...)
-			var s LookupReplicationMigrationItemResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupReplicationMigrationItemResult
+			secret, err := ctx.InvokePackageRaw("azure-native:recoveryservices/v20240201:getReplicationMigrationItem", args, &rv, "", opts...)
+			if err != nil {
+				return LookupReplicationMigrationItemResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupReplicationMigrationItemResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupReplicationMigrationItemResultOutput), nil
+			}
+			return output, nil
 		}).(LookupReplicationMigrationItemResultOutput)
 }
 

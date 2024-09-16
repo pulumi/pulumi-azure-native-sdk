@@ -44,14 +44,20 @@ type ListConfigurationsResult struct {
 
 func ListConfigurationsOutput(ctx *pulumi.Context, args ListConfigurationsOutputArgs, opts ...pulumi.InvokeOption) ListConfigurationsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListConfigurationsResult, error) {
+		ApplyT(func(v interface{}) (ListConfigurationsResultOutput, error) {
 			args := v.(ListConfigurationsArgs)
-			r, err := ListConfigurations(ctx, &args, opts...)
-			var s ListConfigurationsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListConfigurationsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:edgeorder:listConfigurations", args, &rv, "", opts...)
+			if err != nil {
+				return ListConfigurationsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListConfigurationsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListConfigurationsResultOutput), nil
+			}
+			return output, nil
 		}).(ListConfigurationsResultOutput)
 }
 

@@ -39,14 +39,20 @@ type ListMonitorMonitoredResourcesResult struct {
 
 func ListMonitorMonitoredResourcesOutput(ctx *pulumi.Context, args ListMonitorMonitoredResourcesOutputArgs, opts ...pulumi.InvokeOption) ListMonitorMonitoredResourcesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListMonitorMonitoredResourcesResult, error) {
+		ApplyT(func(v interface{}) (ListMonitorMonitoredResourcesResultOutput, error) {
 			args := v.(ListMonitorMonitoredResourcesArgs)
-			r, err := ListMonitorMonitoredResources(ctx, &args, opts...)
-			var s ListMonitorMonitoredResourcesResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListMonitorMonitoredResourcesResult
+			secret, err := ctx.InvokePackageRaw("azure-native:datadog/v20230101:listMonitorMonitoredResources", args, &rv, "", opts...)
+			if err != nil {
+				return ListMonitorMonitoredResourcesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListMonitorMonitoredResourcesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListMonitorMonitoredResourcesResultOutput), nil
+			}
+			return output, nil
 		}).(ListMonitorMonitoredResourcesResultOutput)
 }
 

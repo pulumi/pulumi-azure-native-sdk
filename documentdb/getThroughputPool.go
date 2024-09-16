@@ -14,7 +14,7 @@ import (
 // Retrieves the properties of an existing Azure Cosmos DB Throughput Pool
 // Azure REST API version: 2023-11-15-preview.
 //
-// Other available API versions: 2024-02-15-preview, 2024-05-15-preview.
+// Other available API versions: 2024-02-15-preview, 2024-05-15-preview, 2024-09-01-preview.
 func LookupThroughputPool(ctx *pulumi.Context, args *LookupThroughputPoolArgs, opts ...pulumi.InvokeOption) (*LookupThroughputPoolResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupThroughputPoolResult
@@ -54,14 +54,20 @@ type LookupThroughputPoolResult struct {
 
 func LookupThroughputPoolOutput(ctx *pulumi.Context, args LookupThroughputPoolOutputArgs, opts ...pulumi.InvokeOption) LookupThroughputPoolResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupThroughputPoolResult, error) {
+		ApplyT(func(v interface{}) (LookupThroughputPoolResultOutput, error) {
 			args := v.(LookupThroughputPoolArgs)
-			r, err := LookupThroughputPool(ctx, &args, opts...)
-			var s LookupThroughputPoolResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupThroughputPoolResult
+			secret, err := ctx.InvokePackageRaw("azure-native:documentdb:getThroughputPool", args, &rv, "", opts...)
+			if err != nil {
+				return LookupThroughputPoolResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupThroughputPoolResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupThroughputPoolResultOutput), nil
+			}
+			return output, nil
 		}).(LookupThroughputPoolResultOutput)
 }
 

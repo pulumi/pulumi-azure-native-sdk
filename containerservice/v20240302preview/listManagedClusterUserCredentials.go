@@ -41,14 +41,20 @@ type ListManagedClusterUserCredentialsResult struct {
 
 func ListManagedClusterUserCredentialsOutput(ctx *pulumi.Context, args ListManagedClusterUserCredentialsOutputArgs, opts ...pulumi.InvokeOption) ListManagedClusterUserCredentialsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListManagedClusterUserCredentialsResult, error) {
+		ApplyT(func(v interface{}) (ListManagedClusterUserCredentialsResultOutput, error) {
 			args := v.(ListManagedClusterUserCredentialsArgs)
-			r, err := ListManagedClusterUserCredentials(ctx, &args, opts...)
-			var s ListManagedClusterUserCredentialsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListManagedClusterUserCredentialsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:containerservice/v20240302preview:listManagedClusterUserCredentials", args, &rv, "", opts...)
+			if err != nil {
+				return ListManagedClusterUserCredentialsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListManagedClusterUserCredentialsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListManagedClusterUserCredentialsResultOutput), nil
+			}
+			return output, nil
 		}).(ListManagedClusterUserCredentialsResultOutput)
 }
 

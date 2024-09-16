@@ -47,14 +47,20 @@ type LookupSyncSetResult struct {
 
 func LookupSyncSetOutput(ctx *pulumi.Context, args LookupSyncSetOutputArgs, opts ...pulumi.InvokeOption) LookupSyncSetResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSyncSetResult, error) {
+		ApplyT(func(v interface{}) (LookupSyncSetResultOutput, error) {
 			args := v.(LookupSyncSetArgs)
-			r, err := LookupSyncSet(ctx, &args, opts...)
-			var s LookupSyncSetResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupSyncSetResult
+			secret, err := ctx.InvokePackageRaw("azure-native:redhatopenshift/v20230401:getSyncSet", args, &rv, "", opts...)
+			if err != nil {
+				return LookupSyncSetResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupSyncSetResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupSyncSetResultOutput), nil
+			}
+			return output, nil
 		}).(LookupSyncSetResultOutput)
 }
 

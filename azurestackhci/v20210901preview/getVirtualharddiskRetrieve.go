@@ -66,14 +66,20 @@ type LookupVirtualharddiskRetrieveResult struct {
 
 func LookupVirtualharddiskRetrieveOutput(ctx *pulumi.Context, args LookupVirtualharddiskRetrieveOutputArgs, opts ...pulumi.InvokeOption) LookupVirtualharddiskRetrieveResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupVirtualharddiskRetrieveResult, error) {
+		ApplyT(func(v interface{}) (LookupVirtualharddiskRetrieveResultOutput, error) {
 			args := v.(LookupVirtualharddiskRetrieveArgs)
-			r, err := LookupVirtualharddiskRetrieve(ctx, &args, opts...)
-			var s LookupVirtualharddiskRetrieveResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupVirtualharddiskRetrieveResult
+			secret, err := ctx.InvokePackageRaw("azure-native:azurestackhci/v20210901preview:getVirtualharddiskRetrieve", args, &rv, "", opts...)
+			if err != nil {
+				return LookupVirtualharddiskRetrieveResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupVirtualharddiskRetrieveResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupVirtualharddiskRetrieveResultOutput), nil
+			}
+			return output, nil
 		}).(LookupVirtualharddiskRetrieveResultOutput)
 }
 

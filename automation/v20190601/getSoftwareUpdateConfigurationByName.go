@@ -72,14 +72,20 @@ func (val *LookupSoftwareUpdateConfigurationByNameResult) Defaults() *LookupSoft
 
 func LookupSoftwareUpdateConfigurationByNameOutput(ctx *pulumi.Context, args LookupSoftwareUpdateConfigurationByNameOutputArgs, opts ...pulumi.InvokeOption) LookupSoftwareUpdateConfigurationByNameResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSoftwareUpdateConfigurationByNameResult, error) {
+		ApplyT(func(v interface{}) (LookupSoftwareUpdateConfigurationByNameResultOutput, error) {
 			args := v.(LookupSoftwareUpdateConfigurationByNameArgs)
-			r, err := LookupSoftwareUpdateConfigurationByName(ctx, &args, opts...)
-			var s LookupSoftwareUpdateConfigurationByNameResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupSoftwareUpdateConfigurationByNameResult
+			secret, err := ctx.InvokePackageRaw("azure-native:automation/v20190601:getSoftwareUpdateConfigurationByName", args, &rv, "", opts...)
+			if err != nil {
+				return LookupSoftwareUpdateConfigurationByNameResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupSoftwareUpdateConfigurationByNameResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupSoftwareUpdateConfigurationByNameResultOutput), nil
+			}
+			return output, nil
 		}).(LookupSoftwareUpdateConfigurationByNameResultOutput)
 }
 

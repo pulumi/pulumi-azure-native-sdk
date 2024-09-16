@@ -94,6 +94,9 @@ func NewNetworkGroup(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20231101:NetworkGroup"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20240301:NetworkGroup"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

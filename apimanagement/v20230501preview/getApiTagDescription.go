@@ -55,14 +55,20 @@ type LookupApiTagDescriptionResult struct {
 
 func LookupApiTagDescriptionOutput(ctx *pulumi.Context, args LookupApiTagDescriptionOutputArgs, opts ...pulumi.InvokeOption) LookupApiTagDescriptionResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupApiTagDescriptionResult, error) {
+		ApplyT(func(v interface{}) (LookupApiTagDescriptionResultOutput, error) {
 			args := v.(LookupApiTagDescriptionArgs)
-			r, err := LookupApiTagDescription(ctx, &args, opts...)
-			var s LookupApiTagDescriptionResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupApiTagDescriptionResult
+			secret, err := ctx.InvokePackageRaw("azure-native:apimanagement/v20230501preview:getApiTagDescription", args, &rv, "", opts...)
+			if err != nil {
+				return LookupApiTagDescriptionResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupApiTagDescriptionResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupApiTagDescriptionResultOutput), nil
+			}
+			return output, nil
 		}).(LookupApiTagDescriptionResultOutput)
 }
 

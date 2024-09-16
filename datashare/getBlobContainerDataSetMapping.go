@@ -65,14 +65,20 @@ type LookupBlobContainerDataSetMappingResult struct {
 
 func LookupBlobContainerDataSetMappingOutput(ctx *pulumi.Context, args LookupBlobContainerDataSetMappingOutputArgs, opts ...pulumi.InvokeOption) LookupBlobContainerDataSetMappingResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupBlobContainerDataSetMappingResult, error) {
+		ApplyT(func(v interface{}) (LookupBlobContainerDataSetMappingResultOutput, error) {
 			args := v.(LookupBlobContainerDataSetMappingArgs)
-			r, err := LookupBlobContainerDataSetMapping(ctx, &args, opts...)
-			var s LookupBlobContainerDataSetMappingResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupBlobContainerDataSetMappingResult
+			secret, err := ctx.InvokePackageRaw("azure-native:datashare:getBlobContainerDataSetMapping", args, &rv, "", opts...)
+			if err != nil {
+				return LookupBlobContainerDataSetMappingResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupBlobContainerDataSetMappingResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupBlobContainerDataSetMappingResultOutput), nil
+			}
+			return output, nil
 		}).(LookupBlobContainerDataSetMappingResultOutput)
 }
 

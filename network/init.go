@@ -133,6 +133,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &NetworkInterfaceTapConfiguration{}
 	case "azure-native:network:NetworkManager":
 		r = &NetworkManager{}
+	case "azure-native:network:NetworkManagerRoutingConfiguration":
+		r = &NetworkManagerRoutingConfiguration{}
 	case "azure-native:network:NetworkProfile":
 		r = &NetworkProfile{}
 	case "azure-native:network:NetworkSecurityGroup":
@@ -199,6 +201,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RouteTable{}
 	case "azure-native:network:RoutingIntent":
 		r = &RoutingIntent{}
+	case "azure-native:network:RoutingRule":
+		r = &RoutingRule{}
+	case "azure-native:network:RoutingRuleCollection":
+		r = &RoutingRuleCollection{}
 	case "azure-native:network:RulesEngine":
 		r = &RulesEngine{}
 	case "azure-native:network:ScopeConnection":
@@ -211,6 +217,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SecurityRule{}
 	case "azure-native:network:SecurityUserConfiguration":
 		r = &SecurityUserConfiguration{}
+	case "azure-native:network:SecurityUserRule":
+		r = &SecurityUserRule{}
+	case "azure-native:network:SecurityUserRuleCollection":
+		r = &SecurityUserRuleCollection{}
 	case "azure-native:network:ServiceEndpointPolicy":
 		r = &ServiceEndpointPolicy{}
 	case "azure-native:network:ServiceEndpointPolicyDefinition":

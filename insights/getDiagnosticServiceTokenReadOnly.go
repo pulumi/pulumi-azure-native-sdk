@@ -36,14 +36,20 @@ type GetDiagnosticServiceTokenReadOnlyResult struct {
 
 func GetDiagnosticServiceTokenReadOnlyOutput(ctx *pulumi.Context, args GetDiagnosticServiceTokenReadOnlyOutputArgs, opts ...pulumi.InvokeOption) GetDiagnosticServiceTokenReadOnlyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetDiagnosticServiceTokenReadOnlyResult, error) {
+		ApplyT(func(v interface{}) (GetDiagnosticServiceTokenReadOnlyResultOutput, error) {
 			args := v.(GetDiagnosticServiceTokenReadOnlyArgs)
-			r, err := GetDiagnosticServiceTokenReadOnly(ctx, &args, opts...)
-			var s GetDiagnosticServiceTokenReadOnlyResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv GetDiagnosticServiceTokenReadOnlyResult
+			secret, err := ctx.InvokePackageRaw("azure-native:insights:getDiagnosticServiceTokenReadOnly", args, &rv, "", opts...)
+			if err != nil {
+				return GetDiagnosticServiceTokenReadOnlyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetDiagnosticServiceTokenReadOnlyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetDiagnosticServiceTokenReadOnlyResultOutput), nil
+			}
+			return output, nil
 		}).(GetDiagnosticServiceTokenReadOnlyResultOutput)
 }
 

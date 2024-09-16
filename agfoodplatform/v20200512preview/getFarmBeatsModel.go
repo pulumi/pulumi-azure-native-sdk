@@ -53,14 +53,20 @@ type LookupFarmBeatsModelResult struct {
 
 func LookupFarmBeatsModelOutput(ctx *pulumi.Context, args LookupFarmBeatsModelOutputArgs, opts ...pulumi.InvokeOption) LookupFarmBeatsModelResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupFarmBeatsModelResult, error) {
+		ApplyT(func(v interface{}) (LookupFarmBeatsModelResultOutput, error) {
 			args := v.(LookupFarmBeatsModelArgs)
-			r, err := LookupFarmBeatsModel(ctx, &args, opts...)
-			var s LookupFarmBeatsModelResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupFarmBeatsModelResult
+			secret, err := ctx.InvokePackageRaw("azure-native:agfoodplatform/v20200512preview:getFarmBeatsModel", args, &rv, "", opts...)
+			if err != nil {
+				return LookupFarmBeatsModelResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupFarmBeatsModelResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupFarmBeatsModelResultOutput), nil
+			}
+			return output, nil
 		}).(LookupFarmBeatsModelResultOutput)
 }
 

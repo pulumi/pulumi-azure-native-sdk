@@ -57,14 +57,20 @@ type LookupRegistrationResult struct {
 
 func LookupRegistrationOutput(ctx *pulumi.Context, args LookupRegistrationOutputArgs, opts ...pulumi.InvokeOption) LookupRegistrationResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupRegistrationResult, error) {
+		ApplyT(func(v interface{}) (LookupRegistrationResultOutput, error) {
 			args := v.(LookupRegistrationArgs)
-			r, err := LookupRegistration(ctx, &args, opts...)
-			var s LookupRegistrationResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupRegistrationResult
+			secret, err := ctx.InvokePackageRaw("azure-native:azurestack/v20200601preview:getRegistration", args, &rv, "", opts...)
+			if err != nil {
+				return LookupRegistrationResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupRegistrationResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupRegistrationResultOutput), nil
+			}
+			return output, nil
 		}).(LookupRegistrationResultOutput)
 }
 

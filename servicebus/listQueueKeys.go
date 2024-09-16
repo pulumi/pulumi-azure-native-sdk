@@ -14,7 +14,7 @@ import (
 // Primary and secondary connection strings to the queue.
 // Azure REST API version: 2022-01-01-preview.
 //
-// Other available API versions: 2015-08-01, 2022-10-01-preview, 2023-01-01-preview.
+// Other available API versions: 2015-08-01, 2022-10-01-preview, 2023-01-01-preview, 2024-01-01.
 func ListQueueKeys(ctx *pulumi.Context, args *ListQueueKeysArgs, opts ...pulumi.InvokeOption) (*ListQueueKeysResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListQueueKeysResult
@@ -56,14 +56,20 @@ type ListQueueKeysResult struct {
 
 func ListQueueKeysOutput(ctx *pulumi.Context, args ListQueueKeysOutputArgs, opts ...pulumi.InvokeOption) ListQueueKeysResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListQueueKeysResult, error) {
+		ApplyT(func(v interface{}) (ListQueueKeysResultOutput, error) {
 			args := v.(ListQueueKeysArgs)
-			r, err := ListQueueKeys(ctx, &args, opts...)
-			var s ListQueueKeysResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListQueueKeysResult
+			secret, err := ctx.InvokePackageRaw("azure-native:servicebus:listQueueKeys", args, &rv, "", opts...)
+			if err != nil {
+				return ListQueueKeysResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListQueueKeysResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListQueueKeysResultOutput), nil
+			}
+			return output, nil
 		}).(ListQueueKeysResultOutput)
 }
 

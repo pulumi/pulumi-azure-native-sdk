@@ -52,14 +52,20 @@ type LookupCodelessUiDataConnectorResult struct {
 
 func LookupCodelessUiDataConnectorOutput(ctx *pulumi.Context, args LookupCodelessUiDataConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupCodelessUiDataConnectorResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupCodelessUiDataConnectorResult, error) {
+		ApplyT(func(v interface{}) (LookupCodelessUiDataConnectorResultOutput, error) {
 			args := v.(LookupCodelessUiDataConnectorArgs)
-			r, err := LookupCodelessUiDataConnector(ctx, &args, opts...)
-			var s LookupCodelessUiDataConnectorResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupCodelessUiDataConnectorResult
+			secret, err := ctx.InvokePackageRaw("azure-native:securityinsights/v20240101preview:getCodelessUiDataConnector", args, &rv, "", opts...)
+			if err != nil {
+				return LookupCodelessUiDataConnectorResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupCodelessUiDataConnectorResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupCodelessUiDataConnectorResultOutput), nil
+			}
+			return output, nil
 		}).(LookupCodelessUiDataConnectorResultOutput)
 }
 

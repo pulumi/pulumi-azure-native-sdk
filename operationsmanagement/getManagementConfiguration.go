@@ -46,14 +46,20 @@ type LookupManagementConfigurationResult struct {
 
 func LookupManagementConfigurationOutput(ctx *pulumi.Context, args LookupManagementConfigurationOutputArgs, opts ...pulumi.InvokeOption) LookupManagementConfigurationResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupManagementConfigurationResult, error) {
+		ApplyT(func(v interface{}) (LookupManagementConfigurationResultOutput, error) {
 			args := v.(LookupManagementConfigurationArgs)
-			r, err := LookupManagementConfiguration(ctx, &args, opts...)
-			var s LookupManagementConfigurationResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupManagementConfigurationResult
+			secret, err := ctx.InvokePackageRaw("azure-native:operationsmanagement:getManagementConfiguration", args, &rv, "", opts...)
+			if err != nil {
+				return LookupManagementConfigurationResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupManagementConfigurationResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupManagementConfigurationResultOutput), nil
+			}
+			return output, nil
 		}).(LookupManagementConfigurationResultOutput)
 }
 

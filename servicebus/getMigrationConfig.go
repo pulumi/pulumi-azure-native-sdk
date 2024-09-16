@@ -14,7 +14,7 @@ import (
 // Retrieves Migration Config
 // Azure REST API version: 2022-01-01-preview.
 //
-// Other available API versions: 2022-10-01-preview, 2023-01-01-preview.
+// Other available API versions: 2022-10-01-preview, 2023-01-01-preview, 2024-01-01.
 func LookupMigrationConfig(ctx *pulumi.Context, args *LookupMigrationConfigArgs, opts ...pulumi.InvokeOption) (*LookupMigrationConfigResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMigrationConfigResult
@@ -60,14 +60,20 @@ type LookupMigrationConfigResult struct {
 
 func LookupMigrationConfigOutput(ctx *pulumi.Context, args LookupMigrationConfigOutputArgs, opts ...pulumi.InvokeOption) LookupMigrationConfigResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupMigrationConfigResult, error) {
+		ApplyT(func(v interface{}) (LookupMigrationConfigResultOutput, error) {
 			args := v.(LookupMigrationConfigArgs)
-			r, err := LookupMigrationConfig(ctx, &args, opts...)
-			var s LookupMigrationConfigResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupMigrationConfigResult
+			secret, err := ctx.InvokePackageRaw("azure-native:servicebus:getMigrationConfig", args, &rv, "", opts...)
+			if err != nil {
+				return LookupMigrationConfigResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupMigrationConfigResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupMigrationConfigResultOutput), nil
+			}
+			return output, nil
 		}).(LookupMigrationConfigResultOutput)
 }
 

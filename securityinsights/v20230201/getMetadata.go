@@ -85,14 +85,20 @@ type LookupMetadataResult struct {
 
 func LookupMetadataOutput(ctx *pulumi.Context, args LookupMetadataOutputArgs, opts ...pulumi.InvokeOption) LookupMetadataResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupMetadataResult, error) {
+		ApplyT(func(v interface{}) (LookupMetadataResultOutput, error) {
 			args := v.(LookupMetadataArgs)
-			r, err := LookupMetadata(ctx, &args, opts...)
-			var s LookupMetadataResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupMetadataResult
+			secret, err := ctx.InvokePackageRaw("azure-native:securityinsights/v20230201:getMetadata", args, &rv, "", opts...)
+			if err != nil {
+				return LookupMetadataResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupMetadataResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupMetadataResultOutput), nil
+			}
+			return output, nil
 		}).(LookupMetadataResultOutput)
 }
 

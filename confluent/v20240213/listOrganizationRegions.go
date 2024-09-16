@@ -39,14 +39,20 @@ type ListOrganizationRegionsResult struct {
 
 func ListOrganizationRegionsOutput(ctx *pulumi.Context, args ListOrganizationRegionsOutputArgs, opts ...pulumi.InvokeOption) ListOrganizationRegionsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListOrganizationRegionsResult, error) {
+		ApplyT(func(v interface{}) (ListOrganizationRegionsResultOutput, error) {
 			args := v.(ListOrganizationRegionsArgs)
-			r, err := ListOrganizationRegions(ctx, &args, opts...)
-			var s ListOrganizationRegionsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListOrganizationRegionsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:confluent/v20240213:listOrganizationRegions", args, &rv, "", opts...)
+			if err != nil {
+				return ListOrganizationRegionsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListOrganizationRegionsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListOrganizationRegionsResultOutput), nil
+			}
+			return output, nil
 		}).(ListOrganizationRegionsResultOutput)
 }
 

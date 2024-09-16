@@ -47,14 +47,20 @@ type LookupHcxEnterpriseSiteResult struct {
 
 func LookupHcxEnterpriseSiteOutput(ctx *pulumi.Context, args LookupHcxEnterpriseSiteOutputArgs, opts ...pulumi.InvokeOption) LookupHcxEnterpriseSiteResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupHcxEnterpriseSiteResult, error) {
+		ApplyT(func(v interface{}) (LookupHcxEnterpriseSiteResultOutput, error) {
 			args := v.(LookupHcxEnterpriseSiteArgs)
-			r, err := LookupHcxEnterpriseSite(ctx, &args, opts...)
-			var s LookupHcxEnterpriseSiteResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupHcxEnterpriseSiteResult
+			secret, err := ctx.InvokePackageRaw("azure-native:avs/v20230301:getHcxEnterpriseSite", args, &rv, "", opts...)
+			if err != nil {
+				return LookupHcxEnterpriseSiteResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupHcxEnterpriseSiteResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupHcxEnterpriseSiteResultOutput), nil
+			}
+			return output, nil
 		}).(LookupHcxEnterpriseSiteResultOutput)
 }
 

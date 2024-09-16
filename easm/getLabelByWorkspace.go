@@ -52,14 +52,20 @@ type LookupLabelByWorkspaceResult struct {
 
 func LookupLabelByWorkspaceOutput(ctx *pulumi.Context, args LookupLabelByWorkspaceOutputArgs, opts ...pulumi.InvokeOption) LookupLabelByWorkspaceResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupLabelByWorkspaceResult, error) {
+		ApplyT(func(v interface{}) (LookupLabelByWorkspaceResultOutput, error) {
 			args := v.(LookupLabelByWorkspaceArgs)
-			r, err := LookupLabelByWorkspace(ctx, &args, opts...)
-			var s LookupLabelByWorkspaceResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupLabelByWorkspaceResult
+			secret, err := ctx.InvokePackageRaw("azure-native:easm:getLabelByWorkspace", args, &rv, "", opts...)
+			if err != nil {
+				return LookupLabelByWorkspaceResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupLabelByWorkspaceResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupLabelByWorkspaceResultOutput), nil
+			}
+			return output, nil
 		}).(LookupLabelByWorkspaceResultOutput)
 }
 

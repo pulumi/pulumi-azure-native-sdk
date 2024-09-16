@@ -14,7 +14,7 @@ import (
 // Retrieves information about the view of a gateway.
 // Azure REST API version: 2024-03-31-preview.
 //
-// Other available API versions: 2024-05-20-preview.
+// Other available API versions: 2024-05-20-preview, 2024-07-31-preview.
 func LookupGateway(ctx *pulumi.Context, args *LookupGatewayArgs, opts ...pulumi.InvokeOption) (*LookupGatewayResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGatewayResult
@@ -60,14 +60,20 @@ type LookupGatewayResult struct {
 
 func LookupGatewayOutput(ctx *pulumi.Context, args LookupGatewayOutputArgs, opts ...pulumi.InvokeOption) LookupGatewayResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupGatewayResult, error) {
+		ApplyT(func(v interface{}) (LookupGatewayResultOutput, error) {
 			args := v.(LookupGatewayArgs)
-			r, err := LookupGateway(ctx, &args, opts...)
-			var s LookupGatewayResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupGatewayResult
+			secret, err := ctx.InvokePackageRaw("azure-native:hybridcompute:getGateway", args, &rv, "", opts...)
+			if err != nil {
+				return LookupGatewayResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupGatewayResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupGatewayResultOutput), nil
+			}
+			return output, nil
 		}).(LookupGatewayResultOutput)
 }
 

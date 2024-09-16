@@ -49,14 +49,20 @@ type LookupBindingResult struct {
 
 func LookupBindingOutput(ctx *pulumi.Context, args LookupBindingOutputArgs, opts ...pulumi.InvokeOption) LookupBindingResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupBindingResult, error) {
+		ApplyT(func(v interface{}) (LookupBindingResultOutput, error) {
 			args := v.(LookupBindingArgs)
-			r, err := LookupBinding(ctx, &args, opts...)
-			var s LookupBindingResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupBindingResult
+			secret, err := ctx.InvokePackageRaw("azure-native:appplatform/v20230701preview:getBinding", args, &rv, "", opts...)
+			if err != nil {
+				return LookupBindingResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupBindingResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupBindingResultOutput), nil
+			}
+			return output, nil
 		}).(LookupBindingResultOutput)
 }
 

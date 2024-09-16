@@ -55,14 +55,20 @@ type LookupEmailTemplateResult struct {
 
 func LookupEmailTemplateOutput(ctx *pulumi.Context, args LookupEmailTemplateOutputArgs, opts ...pulumi.InvokeOption) LookupEmailTemplateResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupEmailTemplateResult, error) {
+		ApplyT(func(v interface{}) (LookupEmailTemplateResultOutput, error) {
 			args := v.(LookupEmailTemplateArgs)
-			r, err := LookupEmailTemplate(ctx, &args, opts...)
-			var s LookupEmailTemplateResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupEmailTemplateResult
+			secret, err := ctx.InvokePackageRaw("azure-native:apimanagement/v20240501:getEmailTemplate", args, &rv, "", opts...)
+			if err != nil {
+				return LookupEmailTemplateResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupEmailTemplateResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupEmailTemplateResultOutput), nil
+			}
+			return output, nil
 		}).(LookupEmailTemplateResultOutput)
 }
 

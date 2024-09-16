@@ -14,7 +14,7 @@ import (
 // Gets the properties of the specified replica.
 // Azure REST API version: 2023-03-01.
 //
-// Other available API versions: 2023-08-01-preview, 2023-09-01-preview.
+// Other available API versions: 2023-08-01-preview, 2023-09-01-preview, 2024-05-01.
 func LookupReplica(ctx *pulumi.Context, args *LookupReplicaArgs, opts ...pulumi.InvokeOption) (*LookupReplicaResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupReplicaResult
@@ -54,14 +54,20 @@ type LookupReplicaResult struct {
 
 func LookupReplicaOutput(ctx *pulumi.Context, args LookupReplicaOutputArgs, opts ...pulumi.InvokeOption) LookupReplicaResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupReplicaResult, error) {
+		ApplyT(func(v interface{}) (LookupReplicaResultOutput, error) {
 			args := v.(LookupReplicaArgs)
-			r, err := LookupReplica(ctx, &args, opts...)
-			var s LookupReplicaResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupReplicaResult
+			secret, err := ctx.InvokePackageRaw("azure-native:appconfiguration:getReplica", args, &rv, "", opts...)
+			if err != nil {
+				return LookupReplicaResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupReplicaResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupReplicaResultOutput), nil
+			}
+			return output, nil
 		}).(LookupReplicaResultOutput)
 }
 

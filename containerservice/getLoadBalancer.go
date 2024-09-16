@@ -14,7 +14,7 @@ import (
 // The configurations regarding multiple standard load balancers. If not supplied, single load balancer mode will be used. Multiple standard load balancers mode will be used if at lease one configuration is supplied. There has to be a configuration named `kubernetes`.
 // Azure REST API version: 2024-03-02-preview.
 //
-// Other available API versions: 2024-04-02-preview, 2024-05-02-preview, 2024-06-02-preview.
+// Other available API versions: 2024-04-02-preview, 2024-05-02-preview, 2024-06-02-preview, 2024-07-02-preview.
 func LookupLoadBalancer(ctx *pulumi.Context, args *LookupLoadBalancerArgs, opts ...pulumi.InvokeOption) (*LookupLoadBalancerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupLoadBalancerResult
@@ -60,14 +60,20 @@ type LookupLoadBalancerResult struct {
 
 func LookupLoadBalancerOutput(ctx *pulumi.Context, args LookupLoadBalancerOutputArgs, opts ...pulumi.InvokeOption) LookupLoadBalancerResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupLoadBalancerResult, error) {
+		ApplyT(func(v interface{}) (LookupLoadBalancerResultOutput, error) {
 			args := v.(LookupLoadBalancerArgs)
-			r, err := LookupLoadBalancer(ctx, &args, opts...)
-			var s LookupLoadBalancerResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupLoadBalancerResult
+			secret, err := ctx.InvokePackageRaw("azure-native:containerservice:getLoadBalancer", args, &rv, "", opts...)
+			if err != nil {
+				return LookupLoadBalancerResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupLoadBalancerResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupLoadBalancerResultOutput), nil
+			}
+			return output, nil
 		}).(LookupLoadBalancerResultOutput)
 }
 

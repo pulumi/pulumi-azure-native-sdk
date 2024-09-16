@@ -58,14 +58,20 @@ type LookupCustomizableConnectorDefinitionResult struct {
 
 func LookupCustomizableConnectorDefinitionOutput(ctx *pulumi.Context, args LookupCustomizableConnectorDefinitionOutputArgs, opts ...pulumi.InvokeOption) LookupCustomizableConnectorDefinitionResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupCustomizableConnectorDefinitionResult, error) {
+		ApplyT(func(v interface{}) (LookupCustomizableConnectorDefinitionResultOutput, error) {
 			args := v.(LookupCustomizableConnectorDefinitionArgs)
-			r, err := LookupCustomizableConnectorDefinition(ctx, &args, opts...)
-			var s LookupCustomizableConnectorDefinitionResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupCustomizableConnectorDefinitionResult
+			secret, err := ctx.InvokePackageRaw("azure-native:securityinsights/v20231001preview:getCustomizableConnectorDefinition", args, &rv, "", opts...)
+			if err != nil {
+				return LookupCustomizableConnectorDefinitionResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupCustomizableConnectorDefinitionResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupCustomizableConnectorDefinitionResultOutput), nil
+			}
+			return output, nil
 		}).(LookupCustomizableConnectorDefinitionResultOutput)
 }
 

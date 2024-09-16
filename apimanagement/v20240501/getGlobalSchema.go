@@ -51,14 +51,20 @@ type LookupGlobalSchemaResult struct {
 
 func LookupGlobalSchemaOutput(ctx *pulumi.Context, args LookupGlobalSchemaOutputArgs, opts ...pulumi.InvokeOption) LookupGlobalSchemaResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupGlobalSchemaResult, error) {
+		ApplyT(func(v interface{}) (LookupGlobalSchemaResultOutput, error) {
 			args := v.(LookupGlobalSchemaArgs)
-			r, err := LookupGlobalSchema(ctx, &args, opts...)
-			var s LookupGlobalSchemaResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupGlobalSchemaResult
+			secret, err := ctx.InvokePackageRaw("azure-native:apimanagement/v20240501:getGlobalSchema", args, &rv, "", opts...)
+			if err != nil {
+				return LookupGlobalSchemaResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupGlobalSchemaResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupGlobalSchemaResultOutput), nil
+			}
+			return output, nil
 		}).(LookupGlobalSchemaResultOutput)
 }
 

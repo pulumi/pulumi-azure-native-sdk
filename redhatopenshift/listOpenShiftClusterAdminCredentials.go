@@ -40,14 +40,20 @@ type ListOpenShiftClusterAdminCredentialsResult struct {
 
 func ListOpenShiftClusterAdminCredentialsOutput(ctx *pulumi.Context, args ListOpenShiftClusterAdminCredentialsOutputArgs, opts ...pulumi.InvokeOption) ListOpenShiftClusterAdminCredentialsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListOpenShiftClusterAdminCredentialsResult, error) {
+		ApplyT(func(v interface{}) (ListOpenShiftClusterAdminCredentialsResultOutput, error) {
 			args := v.(ListOpenShiftClusterAdminCredentialsArgs)
-			r, err := ListOpenShiftClusterAdminCredentials(ctx, &args, opts...)
-			var s ListOpenShiftClusterAdminCredentialsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListOpenShiftClusterAdminCredentialsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:redhatopenshift:listOpenShiftClusterAdminCredentials", args, &rv, "", opts...)
+			if err != nil {
+				return ListOpenShiftClusterAdminCredentialsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListOpenShiftClusterAdminCredentialsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListOpenShiftClusterAdminCredentialsResultOutput), nil
+			}
+			return output, nil
 		}).(ListOpenShiftClusterAdminCredentialsResultOutput)
 }
 

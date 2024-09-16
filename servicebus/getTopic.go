@@ -14,7 +14,7 @@ import (
 // Returns a description for the specified topic.
 // Azure REST API version: 2022-01-01-preview.
 //
-// Other available API versions: 2015-08-01, 2022-10-01-preview, 2023-01-01-preview.
+// Other available API versions: 2015-08-01, 2022-10-01-preview, 2023-01-01-preview, 2024-01-01.
 func LookupTopic(ctx *pulumi.Context, args *LookupTopicArgs, opts ...pulumi.InvokeOption) (*LookupTopicResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTopicResult
@@ -84,14 +84,20 @@ type LookupTopicResult struct {
 
 func LookupTopicOutput(ctx *pulumi.Context, args LookupTopicOutputArgs, opts ...pulumi.InvokeOption) LookupTopicResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupTopicResult, error) {
+		ApplyT(func(v interface{}) (LookupTopicResultOutput, error) {
 			args := v.(LookupTopicArgs)
-			r, err := LookupTopic(ctx, &args, opts...)
-			var s LookupTopicResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupTopicResult
+			secret, err := ctx.InvokePackageRaw("azure-native:servicebus:getTopic", args, &rv, "", opts...)
+			if err != nil {
+				return LookupTopicResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupTopicResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupTopicResultOutput), nil
+			}
+			return output, nil
 		}).(LookupTopicResultOutput)
 }
 

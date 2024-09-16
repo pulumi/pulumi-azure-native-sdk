@@ -51,14 +51,20 @@ type LookupPrivateEndpointConnectionByWorkspaceResult struct {
 
 func LookupPrivateEndpointConnectionByWorkspaceOutput(ctx *pulumi.Context, args LookupPrivateEndpointConnectionByWorkspaceOutputArgs, opts ...pulumi.InvokeOption) LookupPrivateEndpointConnectionByWorkspaceResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupPrivateEndpointConnectionByWorkspaceResult, error) {
+		ApplyT(func(v interface{}) (LookupPrivateEndpointConnectionByWorkspaceResultOutput, error) {
 			args := v.(LookupPrivateEndpointConnectionByWorkspaceArgs)
-			r, err := LookupPrivateEndpointConnectionByWorkspace(ctx, &args, opts...)
-			var s LookupPrivateEndpointConnectionByWorkspaceResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupPrivateEndpointConnectionByWorkspaceResult
+			secret, err := ctx.InvokePackageRaw("azure-native:desktopvirtualization/v20221014preview:getPrivateEndpointConnectionByWorkspace", args, &rv, "", opts...)
+			if err != nil {
+				return LookupPrivateEndpointConnectionByWorkspaceResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupPrivateEndpointConnectionByWorkspaceResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupPrivateEndpointConnectionByWorkspaceResultOutput), nil
+			}
+			return output, nil
 		}).(LookupPrivateEndpointConnectionByWorkspaceResultOutput)
 }
 

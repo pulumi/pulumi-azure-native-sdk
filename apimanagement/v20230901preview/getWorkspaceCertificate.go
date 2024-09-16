@@ -53,14 +53,20 @@ type LookupWorkspaceCertificateResult struct {
 
 func LookupWorkspaceCertificateOutput(ctx *pulumi.Context, args LookupWorkspaceCertificateOutputArgs, opts ...pulumi.InvokeOption) LookupWorkspaceCertificateResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupWorkspaceCertificateResult, error) {
+		ApplyT(func(v interface{}) (LookupWorkspaceCertificateResultOutput, error) {
 			args := v.(LookupWorkspaceCertificateArgs)
-			r, err := LookupWorkspaceCertificate(ctx, &args, opts...)
-			var s LookupWorkspaceCertificateResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupWorkspaceCertificateResult
+			secret, err := ctx.InvokePackageRaw("azure-native:apimanagement/v20230901preview:getWorkspaceCertificate", args, &rv, "", opts...)
+			if err != nil {
+				return LookupWorkspaceCertificateResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupWorkspaceCertificateResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupWorkspaceCertificateResultOutput), nil
+			}
+			return output, nil
 		}).(LookupWorkspaceCertificateResultOutput)
 }
 

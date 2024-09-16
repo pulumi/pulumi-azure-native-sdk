@@ -77,14 +77,20 @@ func (val *LookupNetworkTapResult) Defaults() *LookupNetworkTapResult {
 
 func LookupNetworkTapOutput(ctx *pulumi.Context, args LookupNetworkTapOutputArgs, opts ...pulumi.InvokeOption) LookupNetworkTapResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupNetworkTapResult, error) {
+		ApplyT(func(v interface{}) (LookupNetworkTapResultOutput, error) {
 			args := v.(LookupNetworkTapArgs)
-			r, err := LookupNetworkTap(ctx, &args, opts...)
-			var s LookupNetworkTapResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupNetworkTapResult
+			secret, err := ctx.InvokePackageRaw("azure-native:managednetworkfabric:getNetworkTap", args, &rv, "", opts...)
+			if err != nil {
+				return LookupNetworkTapResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupNetworkTapResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupNetworkTapResultOutput), nil
+			}
+			return output, nil
 		}).(LookupNetworkTapResultOutput)
 }
 

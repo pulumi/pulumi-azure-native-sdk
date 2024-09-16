@@ -41,14 +41,20 @@ type ListIntegrationRuntimeAuthKeysResult struct {
 
 func ListIntegrationRuntimeAuthKeysOutput(ctx *pulumi.Context, args ListIntegrationRuntimeAuthKeysOutputArgs, opts ...pulumi.InvokeOption) ListIntegrationRuntimeAuthKeysResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListIntegrationRuntimeAuthKeysResult, error) {
+		ApplyT(func(v interface{}) (ListIntegrationRuntimeAuthKeysResultOutput, error) {
 			args := v.(ListIntegrationRuntimeAuthKeysArgs)
-			r, err := ListIntegrationRuntimeAuthKeys(ctx, &args, opts...)
-			var s ListIntegrationRuntimeAuthKeysResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListIntegrationRuntimeAuthKeysResult
+			secret, err := ctx.InvokePackageRaw("azure-native:datafactory/v20180601:listIntegrationRuntimeAuthKeys", args, &rv, "", opts...)
+			if err != nil {
+				return ListIntegrationRuntimeAuthKeysResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListIntegrationRuntimeAuthKeysResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListIntegrationRuntimeAuthKeysResultOutput), nil
+			}
+			return output, nil
 		}).(ListIntegrationRuntimeAuthKeysResultOutput)
 }
 

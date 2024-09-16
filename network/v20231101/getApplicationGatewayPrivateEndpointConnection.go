@@ -64,14 +64,20 @@ func (val *LookupApplicationGatewayPrivateEndpointConnectionResult) Defaults() *
 
 func LookupApplicationGatewayPrivateEndpointConnectionOutput(ctx *pulumi.Context, args LookupApplicationGatewayPrivateEndpointConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupApplicationGatewayPrivateEndpointConnectionResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupApplicationGatewayPrivateEndpointConnectionResult, error) {
+		ApplyT(func(v interface{}) (LookupApplicationGatewayPrivateEndpointConnectionResultOutput, error) {
 			args := v.(LookupApplicationGatewayPrivateEndpointConnectionArgs)
-			r, err := LookupApplicationGatewayPrivateEndpointConnection(ctx, &args, opts...)
-			var s LookupApplicationGatewayPrivateEndpointConnectionResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupApplicationGatewayPrivateEndpointConnectionResult
+			secret, err := ctx.InvokePackageRaw("azure-native:network/v20231101:getApplicationGatewayPrivateEndpointConnection", args, &rv, "", opts...)
+			if err != nil {
+				return LookupApplicationGatewayPrivateEndpointConnectionResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupApplicationGatewayPrivateEndpointConnectionResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupApplicationGatewayPrivateEndpointConnectionResultOutput), nil
+			}
+			return output, nil
 		}).(LookupApplicationGatewayPrivateEndpointConnectionResultOutput)
 }
 

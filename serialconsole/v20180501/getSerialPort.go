@@ -49,14 +49,20 @@ type LookupSerialPortResult struct {
 
 func LookupSerialPortOutput(ctx *pulumi.Context, args LookupSerialPortOutputArgs, opts ...pulumi.InvokeOption) LookupSerialPortResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSerialPortResult, error) {
+		ApplyT(func(v interface{}) (LookupSerialPortResultOutput, error) {
 			args := v.(LookupSerialPortArgs)
-			r, err := LookupSerialPort(ctx, &args, opts...)
-			var s LookupSerialPortResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupSerialPortResult
+			secret, err := ctx.InvokePackageRaw("azure-native:serialconsole/v20180501:getSerialPort", args, &rv, "", opts...)
+			if err != nil {
+				return LookupSerialPortResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupSerialPortResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupSerialPortResultOutput), nil
+			}
+			return output, nil
 		}).(LookupSerialPortResultOutput)
 }
 

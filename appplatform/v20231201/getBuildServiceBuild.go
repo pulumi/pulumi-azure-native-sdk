@@ -60,14 +60,20 @@ func (val *LookupBuildServiceBuildResult) Defaults() *LookupBuildServiceBuildRes
 
 func LookupBuildServiceBuildOutput(ctx *pulumi.Context, args LookupBuildServiceBuildOutputArgs, opts ...pulumi.InvokeOption) LookupBuildServiceBuildResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupBuildServiceBuildResult, error) {
+		ApplyT(func(v interface{}) (LookupBuildServiceBuildResultOutput, error) {
 			args := v.(LookupBuildServiceBuildArgs)
-			r, err := LookupBuildServiceBuild(ctx, &args, opts...)
-			var s LookupBuildServiceBuildResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupBuildServiceBuildResult
+			secret, err := ctx.InvokePackageRaw("azure-native:appplatform/v20231201:getBuildServiceBuild", args, &rv, "", opts...)
+			if err != nil {
+				return LookupBuildServiceBuildResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupBuildServiceBuildResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupBuildServiceBuildResultOutput), nil
+			}
+			return output, nil
 		}).(LookupBuildServiceBuildResultOutput)
 }
 

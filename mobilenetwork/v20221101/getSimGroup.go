@@ -55,14 +55,20 @@ type LookupSimGroupResult struct {
 
 func LookupSimGroupOutput(ctx *pulumi.Context, args LookupSimGroupOutputArgs, opts ...pulumi.InvokeOption) LookupSimGroupResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSimGroupResult, error) {
+		ApplyT(func(v interface{}) (LookupSimGroupResultOutput, error) {
 			args := v.(LookupSimGroupArgs)
-			r, err := LookupSimGroup(ctx, &args, opts...)
-			var s LookupSimGroupResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupSimGroupResult
+			secret, err := ctx.InvokePackageRaw("azure-native:mobilenetwork/v20221101:getSimGroup", args, &rv, "", opts...)
+			if err != nil {
+				return LookupSimGroupResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupSimGroupResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupSimGroupResultOutput), nil
+			}
+			return output, nil
 		}).(LookupSimGroupResultOutput)
 }
 

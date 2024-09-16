@@ -52,14 +52,20 @@ type LookupPartnerRegistrationResult struct {
 
 func LookupPartnerRegistrationOutput(ctx *pulumi.Context, args LookupPartnerRegistrationOutputArgs, opts ...pulumi.InvokeOption) LookupPartnerRegistrationResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupPartnerRegistrationResult, error) {
+		ApplyT(func(v interface{}) (LookupPartnerRegistrationResultOutput, error) {
 			args := v.(LookupPartnerRegistrationArgs)
-			r, err := LookupPartnerRegistration(ctx, &args, opts...)
-			var s LookupPartnerRegistrationResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupPartnerRegistrationResult
+			secret, err := ctx.InvokePackageRaw("azure-native:eventgrid/v20231215preview:getPartnerRegistration", args, &rv, "", opts...)
+			if err != nil {
+				return LookupPartnerRegistrationResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupPartnerRegistrationResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupPartnerRegistrationResultOutput), nil
+			}
+			return output, nil
 		}).(LookupPartnerRegistrationResultOutput)
 }
 

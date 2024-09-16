@@ -71,14 +71,20 @@ type LookupPython3PackageResult struct {
 
 func LookupPython3PackageOutput(ctx *pulumi.Context, args LookupPython3PackageOutputArgs, opts ...pulumi.InvokeOption) LookupPython3PackageResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupPython3PackageResult, error) {
+		ApplyT(func(v interface{}) (LookupPython3PackageResultOutput, error) {
 			args := v.(LookupPython3PackageArgs)
-			r, err := LookupPython3Package(ctx, &args, opts...)
-			var s LookupPython3PackageResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupPython3PackageResult
+			secret, err := ctx.InvokePackageRaw("azure-native:automation/v20220808:getPython3Package", args, &rv, "", opts...)
+			if err != nil {
+				return LookupPython3PackageResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupPython3PackageResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupPython3PackageResultOutput), nil
+			}
+			return output, nil
 		}).(LookupPython3PackageResultOutput)
 }
 

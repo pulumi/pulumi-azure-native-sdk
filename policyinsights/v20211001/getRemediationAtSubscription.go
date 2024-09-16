@@ -67,14 +67,20 @@ type LookupRemediationAtSubscriptionResult struct {
 
 func LookupRemediationAtSubscriptionOutput(ctx *pulumi.Context, args LookupRemediationAtSubscriptionOutputArgs, opts ...pulumi.InvokeOption) LookupRemediationAtSubscriptionResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupRemediationAtSubscriptionResult, error) {
+		ApplyT(func(v interface{}) (LookupRemediationAtSubscriptionResultOutput, error) {
 			args := v.(LookupRemediationAtSubscriptionArgs)
-			r, err := LookupRemediationAtSubscription(ctx, &args, opts...)
-			var s LookupRemediationAtSubscriptionResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupRemediationAtSubscriptionResult
+			secret, err := ctx.InvokePackageRaw("azure-native:policyinsights/v20211001:getRemediationAtSubscription", args, &rv, "", opts...)
+			if err != nil {
+				return LookupRemediationAtSubscriptionResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupRemediationAtSubscriptionResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupRemediationAtSubscriptionResultOutput), nil
+			}
+			return output, nil
 		}).(LookupRemediationAtSubscriptionResultOutput)
 }
 

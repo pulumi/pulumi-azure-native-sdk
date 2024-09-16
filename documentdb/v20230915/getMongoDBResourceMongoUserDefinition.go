@@ -55,14 +55,20 @@ type LookupMongoDBResourceMongoUserDefinitionResult struct {
 
 func LookupMongoDBResourceMongoUserDefinitionOutput(ctx *pulumi.Context, args LookupMongoDBResourceMongoUserDefinitionOutputArgs, opts ...pulumi.InvokeOption) LookupMongoDBResourceMongoUserDefinitionResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupMongoDBResourceMongoUserDefinitionResult, error) {
+		ApplyT(func(v interface{}) (LookupMongoDBResourceMongoUserDefinitionResultOutput, error) {
 			args := v.(LookupMongoDBResourceMongoUserDefinitionArgs)
-			r, err := LookupMongoDBResourceMongoUserDefinition(ctx, &args, opts...)
-			var s LookupMongoDBResourceMongoUserDefinitionResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupMongoDBResourceMongoUserDefinitionResult
+			secret, err := ctx.InvokePackageRaw("azure-native:documentdb/v20230915:getMongoDBResourceMongoUserDefinition", args, &rv, "", opts...)
+			if err != nil {
+				return LookupMongoDBResourceMongoUserDefinitionResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupMongoDBResourceMongoUserDefinitionResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupMongoDBResourceMongoUserDefinitionResultOutput), nil
+			}
+			return output, nil
 		}).(LookupMongoDBResourceMongoUserDefinitionResultOutput)
 }
 

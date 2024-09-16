@@ -82,14 +82,20 @@ func (val *LookupVirtualmachineRetrieveResult) Defaults() *LookupVirtualmachineR
 
 func LookupVirtualmachineRetrieveOutput(ctx *pulumi.Context, args LookupVirtualmachineRetrieveOutputArgs, opts ...pulumi.InvokeOption) LookupVirtualmachineRetrieveResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupVirtualmachineRetrieveResult, error) {
+		ApplyT(func(v interface{}) (LookupVirtualmachineRetrieveResultOutput, error) {
 			args := v.(LookupVirtualmachineRetrieveArgs)
-			r, err := LookupVirtualmachineRetrieve(ctx, &args, opts...)
-			var s LookupVirtualmachineRetrieveResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupVirtualmachineRetrieveResult
+			secret, err := ctx.InvokePackageRaw("azure-native:azurestackhci/v20210901preview:getVirtualmachineRetrieve", args, &rv, "", opts...)
+			if err != nil {
+				return LookupVirtualmachineRetrieveResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupVirtualmachineRetrieveResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupVirtualmachineRetrieveResultOutput), nil
+			}
+			return output, nil
 		}).(LookupVirtualmachineRetrieveResultOutput)
 }
 

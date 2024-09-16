@@ -43,14 +43,20 @@ type ListSignalRKeysResult struct {
 
 func ListSignalRKeysOutput(ctx *pulumi.Context, args ListSignalRKeysOutputArgs, opts ...pulumi.InvokeOption) ListSignalRKeysResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListSignalRKeysResult, error) {
+		ApplyT(func(v interface{}) (ListSignalRKeysResultOutput, error) {
 			args := v.(ListSignalRKeysArgs)
-			r, err := ListSignalRKeys(ctx, &args, opts...)
-			var s ListSignalRKeysResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListSignalRKeysResult
+			secret, err := ctx.InvokePackageRaw("azure-native:signalrservice/v20230601preview:listSignalRKeys", args, &rv, "", opts...)
+			if err != nil {
+				return ListSignalRKeysResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListSignalRKeysResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListSignalRKeysResultOutput), nil
+			}
+			return output, nil
 		}).(ListSignalRKeysResultOutput)
 }
 

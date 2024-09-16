@@ -14,7 +14,7 @@ import (
 // Gets the SQL storedProcedure under an existing Azure Cosmos DB database account.
 // Azure REST API version: 2023-04-15.
 //
-// Other available API versions: 2019-08-01, 2023-03-15-preview, 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview.
+// Other available API versions: 2019-08-01, 2023-03-15-preview, 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview, 2024-08-15, 2024-09-01-preview.
 func LookupSqlResourceSqlStoredProcedure(ctx *pulumi.Context, args *LookupSqlResourceSqlStoredProcedureArgs, opts ...pulumi.InvokeOption) (*LookupSqlResourceSqlStoredProcedureResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSqlResourceSqlStoredProcedureResult
@@ -55,14 +55,20 @@ type LookupSqlResourceSqlStoredProcedureResult struct {
 
 func LookupSqlResourceSqlStoredProcedureOutput(ctx *pulumi.Context, args LookupSqlResourceSqlStoredProcedureOutputArgs, opts ...pulumi.InvokeOption) LookupSqlResourceSqlStoredProcedureResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSqlResourceSqlStoredProcedureResult, error) {
+		ApplyT(func(v interface{}) (LookupSqlResourceSqlStoredProcedureResultOutput, error) {
 			args := v.(LookupSqlResourceSqlStoredProcedureArgs)
-			r, err := LookupSqlResourceSqlStoredProcedure(ctx, &args, opts...)
-			var s LookupSqlResourceSqlStoredProcedureResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupSqlResourceSqlStoredProcedureResult
+			secret, err := ctx.InvokePackageRaw("azure-native:documentdb:getSqlResourceSqlStoredProcedure", args, &rv, "", opts...)
+			if err != nil {
+				return LookupSqlResourceSqlStoredProcedureResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupSqlResourceSqlStoredProcedureResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupSqlResourceSqlStoredProcedureResultOutput), nil
+			}
+			return output, nil
 		}).(LookupSqlResourceSqlStoredProcedureResultOutput)
 }
 

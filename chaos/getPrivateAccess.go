@@ -52,14 +52,20 @@ type LookupPrivateAccessResult struct {
 
 func LookupPrivateAccessOutput(ctx *pulumi.Context, args LookupPrivateAccessOutputArgs, opts ...pulumi.InvokeOption) LookupPrivateAccessResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupPrivateAccessResult, error) {
+		ApplyT(func(v interface{}) (LookupPrivateAccessResultOutput, error) {
 			args := v.(LookupPrivateAccessArgs)
-			r, err := LookupPrivateAccess(ctx, &args, opts...)
-			var s LookupPrivateAccessResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupPrivateAccessResult
+			secret, err := ctx.InvokePackageRaw("azure-native:chaos:getPrivateAccess", args, &rv, "", opts...)
+			if err != nil {
+				return LookupPrivateAccessResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupPrivateAccessResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupPrivateAccessResultOutput), nil
+			}
+			return output, nil
 		}).(LookupPrivateAccessResultOutput)
 }
 

@@ -43,14 +43,20 @@ type ListEdgeModuleProvisioningTokenResult struct {
 
 func ListEdgeModuleProvisioningTokenOutput(ctx *pulumi.Context, args ListEdgeModuleProvisioningTokenOutputArgs, opts ...pulumi.InvokeOption) ListEdgeModuleProvisioningTokenResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListEdgeModuleProvisioningTokenResult, error) {
+		ApplyT(func(v interface{}) (ListEdgeModuleProvisioningTokenResultOutput, error) {
 			args := v.(ListEdgeModuleProvisioningTokenArgs)
-			r, err := ListEdgeModuleProvisioningToken(ctx, &args, opts...)
-			var s ListEdgeModuleProvisioningTokenResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListEdgeModuleProvisioningTokenResult
+			secret, err := ctx.InvokePackageRaw("azure-native:videoanalyzer/v20211101preview:listEdgeModuleProvisioningToken", args, &rv, "", opts...)
+			if err != nil {
+				return ListEdgeModuleProvisioningTokenResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListEdgeModuleProvisioningTokenResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListEdgeModuleProvisioningTokenResultOutput), nil
+			}
+			return output, nil
 		}).(ListEdgeModuleProvisioningTokenResultOutput)
 }
 

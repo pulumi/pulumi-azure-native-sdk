@@ -69,14 +69,20 @@ func (val *LookupTaskRunResult) Defaults() *LookupTaskRunResult {
 
 func LookupTaskRunOutput(ctx *pulumi.Context, args LookupTaskRunOutputArgs, opts ...pulumi.InvokeOption) LookupTaskRunResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupTaskRunResult, error) {
+		ApplyT(func(v interface{}) (LookupTaskRunResultOutput, error) {
 			args := v.(LookupTaskRunArgs)
-			r, err := LookupTaskRun(ctx, &args, opts...)
-			var s LookupTaskRunResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupTaskRunResult
+			secret, err := ctx.InvokePackageRaw("azure-native:containerregistry/v20190601preview:getTaskRun", args, &rv, "", opts...)
+			if err != nil {
+				return LookupTaskRunResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupTaskRunResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupTaskRunResultOutput), nil
+			}
+			return output, nil
 		}).(LookupTaskRunResultOutput)
 }
 

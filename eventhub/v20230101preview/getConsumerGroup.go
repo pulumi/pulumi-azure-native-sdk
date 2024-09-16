@@ -55,14 +55,20 @@ type LookupConsumerGroupResult struct {
 
 func LookupConsumerGroupOutput(ctx *pulumi.Context, args LookupConsumerGroupOutputArgs, opts ...pulumi.InvokeOption) LookupConsumerGroupResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupConsumerGroupResult, error) {
+		ApplyT(func(v interface{}) (LookupConsumerGroupResultOutput, error) {
 			args := v.(LookupConsumerGroupArgs)
-			r, err := LookupConsumerGroup(ctx, &args, opts...)
-			var s LookupConsumerGroupResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupConsumerGroupResult
+			secret, err := ctx.InvokePackageRaw("azure-native:eventhub/v20230101preview:getConsumerGroup", args, &rv, "", opts...)
+			if err != nil {
+				return LookupConsumerGroupResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupConsumerGroupResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupConsumerGroupResultOutput), nil
+			}
+			return output, nil
 		}).(LookupConsumerGroupResultOutput)
 }
 

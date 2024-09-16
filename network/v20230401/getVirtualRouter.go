@@ -61,14 +61,20 @@ type LookupVirtualRouterResult struct {
 
 func LookupVirtualRouterOutput(ctx *pulumi.Context, args LookupVirtualRouterOutputArgs, opts ...pulumi.InvokeOption) LookupVirtualRouterResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupVirtualRouterResult, error) {
+		ApplyT(func(v interface{}) (LookupVirtualRouterResultOutput, error) {
 			args := v.(LookupVirtualRouterArgs)
-			r, err := LookupVirtualRouter(ctx, &args, opts...)
-			var s LookupVirtualRouterResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupVirtualRouterResult
+			secret, err := ctx.InvokePackageRaw("azure-native:network/v20230401:getVirtualRouter", args, &rv, "", opts...)
+			if err != nil {
+				return LookupVirtualRouterResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupVirtualRouterResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupVirtualRouterResultOutput), nil
+			}
+			return output, nil
 		}).(LookupVirtualRouterResultOutput)
 }
 

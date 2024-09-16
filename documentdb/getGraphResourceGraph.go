@@ -14,7 +14,7 @@ import (
 // Gets the Graph resource under an existing Azure Cosmos DB database account with the provided name.
 // Azure REST API version: 2023-03-15-preview.
 //
-// Other available API versions: 2023-09-15-preview, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15-preview.
+// Other available API versions: 2023-09-15-preview, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15-preview, 2024-09-01-preview.
 func LookupGraphResourceGraph(ctx *pulumi.Context, args *LookupGraphResourceGraphArgs, opts ...pulumi.InvokeOption) (*LookupGraphResourceGraphResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGraphResourceGraphResult
@@ -54,14 +54,20 @@ type LookupGraphResourceGraphResult struct {
 
 func LookupGraphResourceGraphOutput(ctx *pulumi.Context, args LookupGraphResourceGraphOutputArgs, opts ...pulumi.InvokeOption) LookupGraphResourceGraphResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupGraphResourceGraphResult, error) {
+		ApplyT(func(v interface{}) (LookupGraphResourceGraphResultOutput, error) {
 			args := v.(LookupGraphResourceGraphArgs)
-			r, err := LookupGraphResourceGraph(ctx, &args, opts...)
-			var s LookupGraphResourceGraphResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupGraphResourceGraphResult
+			secret, err := ctx.InvokePackageRaw("azure-native:documentdb:getGraphResourceGraph", args, &rv, "", opts...)
+			if err != nil {
+				return LookupGraphResourceGraphResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupGraphResourceGraphResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupGraphResourceGraphResultOutput), nil
+			}
+			return output, nil
 		}).(LookupGraphResourceGraphResultOutput)
 }
 

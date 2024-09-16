@@ -46,14 +46,20 @@ type ListAccessServiceAccountsResult struct {
 
 func ListAccessServiceAccountsOutput(ctx *pulumi.Context, args ListAccessServiceAccountsOutputArgs, opts ...pulumi.InvokeOption) ListAccessServiceAccountsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListAccessServiceAccountsResult, error) {
+		ApplyT(func(v interface{}) (ListAccessServiceAccountsResultOutput, error) {
 			args := v.(ListAccessServiceAccountsArgs)
-			r, err := ListAccessServiceAccounts(ctx, &args, opts...)
-			var s ListAccessServiceAccountsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListAccessServiceAccountsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:confluent:listAccessServiceAccounts", args, &rv, "", opts...)
+			if err != nil {
+				return ListAccessServiceAccountsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListAccessServiceAccountsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListAccessServiceAccountsResultOutput), nil
+			}
+			return output, nil
 		}).(ListAccessServiceAccountsResultOutput)
 }
 

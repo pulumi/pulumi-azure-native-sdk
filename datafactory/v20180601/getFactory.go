@@ -65,14 +65,20 @@ type LookupFactoryResult struct {
 
 func LookupFactoryOutput(ctx *pulumi.Context, args LookupFactoryOutputArgs, opts ...pulumi.InvokeOption) LookupFactoryResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupFactoryResult, error) {
+		ApplyT(func(v interface{}) (LookupFactoryResultOutput, error) {
 			args := v.(LookupFactoryArgs)
-			r, err := LookupFactory(ctx, &args, opts...)
-			var s LookupFactoryResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupFactoryResult
+			secret, err := ctx.InvokePackageRaw("azure-native:datafactory/v20180601:getFactory", args, &rv, "", opts...)
+			if err != nil {
+				return LookupFactoryResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupFactoryResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupFactoryResultOutput), nil
+			}
+			return output, nil
 		}).(LookupFactoryResultOutput)
 }
 

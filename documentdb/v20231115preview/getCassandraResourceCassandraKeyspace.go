@@ -51,14 +51,20 @@ type LookupCassandraResourceCassandraKeyspaceResult struct {
 
 func LookupCassandraResourceCassandraKeyspaceOutput(ctx *pulumi.Context, args LookupCassandraResourceCassandraKeyspaceOutputArgs, opts ...pulumi.InvokeOption) LookupCassandraResourceCassandraKeyspaceResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupCassandraResourceCassandraKeyspaceResult, error) {
+		ApplyT(func(v interface{}) (LookupCassandraResourceCassandraKeyspaceResultOutput, error) {
 			args := v.(LookupCassandraResourceCassandraKeyspaceArgs)
-			r, err := LookupCassandraResourceCassandraKeyspace(ctx, &args, opts...)
-			var s LookupCassandraResourceCassandraKeyspaceResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupCassandraResourceCassandraKeyspaceResult
+			secret, err := ctx.InvokePackageRaw("azure-native:documentdb/v20231115preview:getCassandraResourceCassandraKeyspace", args, &rv, "", opts...)
+			if err != nil {
+				return LookupCassandraResourceCassandraKeyspaceResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupCassandraResourceCassandraKeyspaceResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupCassandraResourceCassandraKeyspaceResultOutput), nil
+			}
+			return output, nil
 		}).(LookupCassandraResourceCassandraKeyspaceResultOutput)
 }
 

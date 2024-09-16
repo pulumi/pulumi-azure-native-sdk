@@ -37,14 +37,20 @@ type GetLabAccountRegionalAvailabilityResult struct {
 
 func GetLabAccountRegionalAvailabilityOutput(ctx *pulumi.Context, args GetLabAccountRegionalAvailabilityOutputArgs, opts ...pulumi.InvokeOption) GetLabAccountRegionalAvailabilityResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetLabAccountRegionalAvailabilityResult, error) {
+		ApplyT(func(v interface{}) (GetLabAccountRegionalAvailabilityResultOutput, error) {
 			args := v.(GetLabAccountRegionalAvailabilityArgs)
-			r, err := GetLabAccountRegionalAvailability(ctx, &args, opts...)
-			var s GetLabAccountRegionalAvailabilityResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv GetLabAccountRegionalAvailabilityResult
+			secret, err := ctx.InvokePackageRaw("azure-native:labservices/v20181015:getLabAccountRegionalAvailability", args, &rv, "", opts...)
+			if err != nil {
+				return GetLabAccountRegionalAvailabilityResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetLabAccountRegionalAvailabilityResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetLabAccountRegionalAvailabilityResultOutput), nil
+			}
+			return output, nil
 		}).(GetLabAccountRegionalAvailabilityResultOutput)
 }
 

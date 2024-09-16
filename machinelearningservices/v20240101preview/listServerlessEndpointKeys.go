@@ -41,14 +41,20 @@ type ListServerlessEndpointKeysResult struct {
 
 func ListServerlessEndpointKeysOutput(ctx *pulumi.Context, args ListServerlessEndpointKeysOutputArgs, opts ...pulumi.InvokeOption) ListServerlessEndpointKeysResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListServerlessEndpointKeysResult, error) {
+		ApplyT(func(v interface{}) (ListServerlessEndpointKeysResultOutput, error) {
 			args := v.(ListServerlessEndpointKeysArgs)
-			r, err := ListServerlessEndpointKeys(ctx, &args, opts...)
-			var s ListServerlessEndpointKeysResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListServerlessEndpointKeysResult
+			secret, err := ctx.InvokePackageRaw("azure-native:machinelearningservices/v20240101preview:listServerlessEndpointKeys", args, &rv, "", opts...)
+			if err != nil {
+				return ListServerlessEndpointKeysResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListServerlessEndpointKeysResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListServerlessEndpointKeysResultOutput), nil
+			}
+			return output, nil
 		}).(ListServerlessEndpointKeysResultOutput)
 }
 

@@ -47,14 +47,20 @@ type LookupSkusNestedResourceTypeFirstResult struct {
 
 func LookupSkusNestedResourceTypeFirstOutput(ctx *pulumi.Context, args LookupSkusNestedResourceTypeFirstOutputArgs, opts ...pulumi.InvokeOption) LookupSkusNestedResourceTypeFirstResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSkusNestedResourceTypeFirstResult, error) {
+		ApplyT(func(v interface{}) (LookupSkusNestedResourceTypeFirstResultOutput, error) {
 			args := v.(LookupSkusNestedResourceTypeFirstArgs)
-			r, err := LookupSkusNestedResourceTypeFirst(ctx, &args, opts...)
-			var s LookupSkusNestedResourceTypeFirstResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupSkusNestedResourceTypeFirstResult
+			secret, err := ctx.InvokePackageRaw("azure-native:providerhub/v20210901preview:getSkusNestedResourceTypeFirst", args, &rv, "", opts...)
+			if err != nil {
+				return LookupSkusNestedResourceTypeFirstResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupSkusNestedResourceTypeFirstResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupSkusNestedResourceTypeFirstResultOutput), nil
+			}
+			return output, nil
 		}).(LookupSkusNestedResourceTypeFirstResultOutput)
 }
 

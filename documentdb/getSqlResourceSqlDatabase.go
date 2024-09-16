@@ -14,7 +14,7 @@ import (
 // Gets the SQL database under an existing Azure Cosmos DB database account with the provided name.
 // Azure REST API version: 2023-04-15.
 //
-// Other available API versions: 2019-08-01, 2023-03-15-preview, 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview.
+// Other available API versions: 2019-08-01, 2023-03-15-preview, 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview, 2024-08-15, 2024-09-01-preview.
 func LookupSqlResourceSqlDatabase(ctx *pulumi.Context, args *LookupSqlResourceSqlDatabaseArgs, opts ...pulumi.InvokeOption) (*LookupSqlResourceSqlDatabaseResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSqlResourceSqlDatabaseResult
@@ -52,14 +52,20 @@ type LookupSqlResourceSqlDatabaseResult struct {
 
 func LookupSqlResourceSqlDatabaseOutput(ctx *pulumi.Context, args LookupSqlResourceSqlDatabaseOutputArgs, opts ...pulumi.InvokeOption) LookupSqlResourceSqlDatabaseResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSqlResourceSqlDatabaseResult, error) {
+		ApplyT(func(v interface{}) (LookupSqlResourceSqlDatabaseResultOutput, error) {
 			args := v.(LookupSqlResourceSqlDatabaseArgs)
-			r, err := LookupSqlResourceSqlDatabase(ctx, &args, opts...)
-			var s LookupSqlResourceSqlDatabaseResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupSqlResourceSqlDatabaseResult
+			secret, err := ctx.InvokePackageRaw("azure-native:documentdb:getSqlResourceSqlDatabase", args, &rv, "", opts...)
+			if err != nil {
+				return LookupSqlResourceSqlDatabaseResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupSqlResourceSqlDatabaseResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupSqlResourceSqlDatabaseResultOutput), nil
+			}
+			return output, nil
 		}).(LookupSqlResourceSqlDatabaseResultOutput)
 }
 

@@ -61,14 +61,20 @@ type LookupWebAppPremierAddOnSlotResult struct {
 
 func LookupWebAppPremierAddOnSlotOutput(ctx *pulumi.Context, args LookupWebAppPremierAddOnSlotOutputArgs, opts ...pulumi.InvokeOption) LookupWebAppPremierAddOnSlotResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupWebAppPremierAddOnSlotResult, error) {
+		ApplyT(func(v interface{}) (LookupWebAppPremierAddOnSlotResultOutput, error) {
 			args := v.(LookupWebAppPremierAddOnSlotArgs)
-			r, err := LookupWebAppPremierAddOnSlot(ctx, &args, opts...)
-			var s LookupWebAppPremierAddOnSlotResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupWebAppPremierAddOnSlotResult
+			secret, err := ctx.InvokePackageRaw("azure-native:web/v20231201:getWebAppPremierAddOnSlot", args, &rv, "", opts...)
+			if err != nil {
+				return LookupWebAppPremierAddOnSlotResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupWebAppPremierAddOnSlotResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupWebAppPremierAddOnSlotResultOutput), nil
+			}
+			return output, nil
 		}).(LookupWebAppPremierAddOnSlotResultOutput)
 }
 

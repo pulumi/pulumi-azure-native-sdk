@@ -53,14 +53,20 @@ type LookupSqlServerRegistrationResult struct {
 
 func LookupSqlServerRegistrationOutput(ctx *pulumi.Context, args LookupSqlServerRegistrationOutputArgs, opts ...pulumi.InvokeOption) LookupSqlServerRegistrationResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSqlServerRegistrationResult, error) {
+		ApplyT(func(v interface{}) (LookupSqlServerRegistrationResultOutput, error) {
 			args := v.(LookupSqlServerRegistrationArgs)
-			r, err := LookupSqlServerRegistration(ctx, &args, opts...)
-			var s LookupSqlServerRegistrationResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupSqlServerRegistrationResult
+			secret, err := ctx.InvokePackageRaw("azure-native:azuredata/v20190724preview:getSqlServerRegistration", args, &rv, "", opts...)
+			if err != nil {
+				return LookupSqlServerRegistrationResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupSqlServerRegistrationResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupSqlServerRegistrationResultOutput), nil
+			}
+			return output, nil
 		}).(LookupSqlServerRegistrationResultOutput)
 }
 

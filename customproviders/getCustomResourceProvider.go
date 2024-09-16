@@ -54,14 +54,20 @@ type LookupCustomResourceProviderResult struct {
 
 func LookupCustomResourceProviderOutput(ctx *pulumi.Context, args LookupCustomResourceProviderOutputArgs, opts ...pulumi.InvokeOption) LookupCustomResourceProviderResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupCustomResourceProviderResult, error) {
+		ApplyT(func(v interface{}) (LookupCustomResourceProviderResultOutput, error) {
 			args := v.(LookupCustomResourceProviderArgs)
-			r, err := LookupCustomResourceProvider(ctx, &args, opts...)
-			var s LookupCustomResourceProviderResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupCustomResourceProviderResult
+			secret, err := ctx.InvokePackageRaw("azure-native:customproviders:getCustomResourceProvider", args, &rv, "", opts...)
+			if err != nil {
+				return LookupCustomResourceProviderResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupCustomResourceProviderResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupCustomResourceProviderResultOutput), nil
+			}
+			return output, nil
 		}).(LookupCustomResourceProviderResultOutput)
 }
 

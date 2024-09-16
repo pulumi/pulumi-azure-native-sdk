@@ -40,14 +40,20 @@ type ListWorkflowAccessKeySecretKeysResult struct {
 
 func ListWorkflowAccessKeySecretKeysOutput(ctx *pulumi.Context, args ListWorkflowAccessKeySecretKeysOutputArgs, opts ...pulumi.InvokeOption) ListWorkflowAccessKeySecretKeysResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListWorkflowAccessKeySecretKeysResult, error) {
+		ApplyT(func(v interface{}) (ListWorkflowAccessKeySecretKeysResultOutput, error) {
 			args := v.(ListWorkflowAccessKeySecretKeysArgs)
-			r, err := ListWorkflowAccessKeySecretKeys(ctx, &args, opts...)
-			var s ListWorkflowAccessKeySecretKeysResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListWorkflowAccessKeySecretKeysResult
+			secret, err := ctx.InvokePackageRaw("azure-native:logic/v20150201preview:listWorkflowAccessKeySecretKeys", args, &rv, "", opts...)
+			if err != nil {
+				return ListWorkflowAccessKeySecretKeysResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListWorkflowAccessKeySecretKeysResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListWorkflowAccessKeySecretKeysResultOutput), nil
+			}
+			return output, nil
 		}).(ListWorkflowAccessKeySecretKeysResultOutput)
 }
 

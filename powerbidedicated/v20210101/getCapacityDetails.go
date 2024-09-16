@@ -61,14 +61,20 @@ type LookupCapacityDetailsResult struct {
 
 func LookupCapacityDetailsOutput(ctx *pulumi.Context, args LookupCapacityDetailsOutputArgs, opts ...pulumi.InvokeOption) LookupCapacityDetailsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupCapacityDetailsResult, error) {
+		ApplyT(func(v interface{}) (LookupCapacityDetailsResultOutput, error) {
 			args := v.(LookupCapacityDetailsArgs)
-			r, err := LookupCapacityDetails(ctx, &args, opts...)
-			var s LookupCapacityDetailsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupCapacityDetailsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:powerbidedicated/v20210101:getCapacityDetails", args, &rv, "", opts...)
+			if err != nil {
+				return LookupCapacityDetailsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupCapacityDetailsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupCapacityDetailsResultOutput), nil
+			}
+			return output, nil
 		}).(LookupCapacityDetailsResultOutput)
 }
 

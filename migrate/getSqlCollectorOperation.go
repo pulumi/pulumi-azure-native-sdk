@@ -58,14 +58,20 @@ type LookupSqlCollectorOperationResult struct {
 
 func LookupSqlCollectorOperationOutput(ctx *pulumi.Context, args LookupSqlCollectorOperationOutputArgs, opts ...pulumi.InvokeOption) LookupSqlCollectorOperationResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSqlCollectorOperationResult, error) {
+		ApplyT(func(v interface{}) (LookupSqlCollectorOperationResultOutput, error) {
 			args := v.(LookupSqlCollectorOperationArgs)
-			r, err := LookupSqlCollectorOperation(ctx, &args, opts...)
-			var s LookupSqlCollectorOperationResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupSqlCollectorOperationResult
+			secret, err := ctx.InvokePackageRaw("azure-native:migrate:getSqlCollectorOperation", args, &rv, "", opts...)
+			if err != nil {
+				return LookupSqlCollectorOperationResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupSqlCollectorOperationResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupSqlCollectorOperationResultOutput), nil
+			}
+			return output, nil
 		}).(LookupSqlCollectorOperationResultOutput)
 }
 

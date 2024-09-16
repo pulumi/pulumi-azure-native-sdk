@@ -47,14 +47,20 @@ type LookupDraResult struct {
 
 func LookupDraOutput(ctx *pulumi.Context, args LookupDraOutputArgs, opts ...pulumi.InvokeOption) LookupDraResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupDraResult, error) {
+		ApplyT(func(v interface{}) (LookupDraResultOutput, error) {
 			args := v.(LookupDraArgs)
-			r, err := LookupDra(ctx, &args, opts...)
-			var s LookupDraResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupDraResult
+			secret, err := ctx.InvokePackageRaw("azure-native:datareplication:getDra", args, &rv, "", opts...)
+			if err != nil {
+				return LookupDraResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupDraResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupDraResultOutput), nil
+			}
+			return output, nil
 		}).(LookupDraResultOutput)
 }
 

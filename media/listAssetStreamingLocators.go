@@ -40,14 +40,20 @@ type ListAssetStreamingLocatorsResult struct {
 
 func ListAssetStreamingLocatorsOutput(ctx *pulumi.Context, args ListAssetStreamingLocatorsOutputArgs, opts ...pulumi.InvokeOption) ListAssetStreamingLocatorsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListAssetStreamingLocatorsResult, error) {
+		ApplyT(func(v interface{}) (ListAssetStreamingLocatorsResultOutput, error) {
 			args := v.(ListAssetStreamingLocatorsArgs)
-			r, err := ListAssetStreamingLocators(ctx, &args, opts...)
-			var s ListAssetStreamingLocatorsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListAssetStreamingLocatorsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:media:listAssetStreamingLocators", args, &rv, "", opts...)
+			if err != nil {
+				return ListAssetStreamingLocatorsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListAssetStreamingLocatorsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListAssetStreamingLocatorsResultOutput), nil
+			}
+			return output, nil
 		}).(ListAssetStreamingLocatorsResultOutput)
 }
 

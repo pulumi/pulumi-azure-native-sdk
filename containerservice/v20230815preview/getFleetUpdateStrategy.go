@@ -51,14 +51,20 @@ type LookupFleetUpdateStrategyResult struct {
 
 func LookupFleetUpdateStrategyOutput(ctx *pulumi.Context, args LookupFleetUpdateStrategyOutputArgs, opts ...pulumi.InvokeOption) LookupFleetUpdateStrategyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupFleetUpdateStrategyResult, error) {
+		ApplyT(func(v interface{}) (LookupFleetUpdateStrategyResultOutput, error) {
 			args := v.(LookupFleetUpdateStrategyArgs)
-			r, err := LookupFleetUpdateStrategy(ctx, &args, opts...)
-			var s LookupFleetUpdateStrategyResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupFleetUpdateStrategyResult
+			secret, err := ctx.InvokePackageRaw("azure-native:containerservice/v20230815preview:getFleetUpdateStrategy", args, &rv, "", opts...)
+			if err != nil {
+				return LookupFleetUpdateStrategyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupFleetUpdateStrategyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupFleetUpdateStrategyResultOutput), nil
+			}
+			return output, nil
 		}).(LookupFleetUpdateStrategyResultOutput)
 }
 

@@ -84,14 +84,20 @@ func (val *LookupCustomImageResult) Defaults() *LookupCustomImageResult {
 
 func LookupCustomImageOutput(ctx *pulumi.Context, args LookupCustomImageOutputArgs, opts ...pulumi.InvokeOption) LookupCustomImageResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupCustomImageResult, error) {
+		ApplyT(func(v interface{}) (LookupCustomImageResultOutput, error) {
 			args := v.(LookupCustomImageArgs)
-			r, err := LookupCustomImage(ctx, &args, opts...)
-			var s LookupCustomImageResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupCustomImageResult
+			secret, err := ctx.InvokePackageRaw("azure-native:testbase:getCustomImage", args, &rv, "", opts...)
+			if err != nil {
+				return LookupCustomImageResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupCustomImageResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupCustomImageResultOutput), nil
+			}
+			return output, nil
 		}).(LookupCustomImageResultOutput)
 }
 

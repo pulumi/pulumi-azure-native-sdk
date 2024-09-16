@@ -83,14 +83,20 @@ type LookupServerGroupResult struct {
 
 func LookupServerGroupOutput(ctx *pulumi.Context, args LookupServerGroupOutputArgs, opts ...pulumi.InvokeOption) LookupServerGroupResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupServerGroupResult, error) {
+		ApplyT(func(v interface{}) (LookupServerGroupResultOutput, error) {
 			args := v.(LookupServerGroupArgs)
-			r, err := LookupServerGroup(ctx, &args, opts...)
-			var s LookupServerGroupResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupServerGroupResult
+			secret, err := ctx.InvokePackageRaw("azure-native:dbforpostgresql/v20201005privatepreview:getServerGroup", args, &rv, "", opts...)
+			if err != nil {
+				return LookupServerGroupResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupServerGroupResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupServerGroupResultOutput), nil
+			}
+			return output, nil
 		}).(LookupServerGroupResultOutput)
 }
 

@@ -63,14 +63,20 @@ func (val *LookupFeaturestoreEntityVersionResult) Defaults() *LookupFeaturestore
 
 func LookupFeaturestoreEntityVersionOutput(ctx *pulumi.Context, args LookupFeaturestoreEntityVersionOutputArgs, opts ...pulumi.InvokeOption) LookupFeaturestoreEntityVersionResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupFeaturestoreEntityVersionResult, error) {
+		ApplyT(func(v interface{}) (LookupFeaturestoreEntityVersionResultOutput, error) {
 			args := v.(LookupFeaturestoreEntityVersionArgs)
-			r, err := LookupFeaturestoreEntityVersion(ctx, &args, opts...)
-			var s LookupFeaturestoreEntityVersionResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupFeaturestoreEntityVersionResult
+			secret, err := ctx.InvokePackageRaw("azure-native:machinelearningservices:getFeaturestoreEntityVersion", args, &rv, "", opts...)
+			if err != nil {
+				return LookupFeaturestoreEntityVersionResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupFeaturestoreEntityVersionResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupFeaturestoreEntityVersionResultOutput), nil
+			}
+			return output, nil
 		}).(LookupFeaturestoreEntityVersionResultOutput)
 }
 

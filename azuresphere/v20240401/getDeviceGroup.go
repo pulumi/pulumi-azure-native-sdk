@@ -61,14 +61,20 @@ type LookupDeviceGroupResult struct {
 
 func LookupDeviceGroupOutput(ctx *pulumi.Context, args LookupDeviceGroupOutputArgs, opts ...pulumi.InvokeOption) LookupDeviceGroupResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupDeviceGroupResult, error) {
+		ApplyT(func(v interface{}) (LookupDeviceGroupResultOutput, error) {
 			args := v.(LookupDeviceGroupArgs)
-			r, err := LookupDeviceGroup(ctx, &args, opts...)
-			var s LookupDeviceGroupResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupDeviceGroupResult
+			secret, err := ctx.InvokePackageRaw("azure-native:azuresphere/v20240401:getDeviceGroup", args, &rv, "", opts...)
+			if err != nil {
+				return LookupDeviceGroupResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupDeviceGroupResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupDeviceGroupResultOutput), nil
+			}
+			return output, nil
 		}).(LookupDeviceGroupResultOutput)
 }
 

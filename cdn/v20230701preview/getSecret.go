@@ -52,14 +52,20 @@ type LookupSecretResult struct {
 
 func LookupSecretOutput(ctx *pulumi.Context, args LookupSecretOutputArgs, opts ...pulumi.InvokeOption) LookupSecretResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSecretResult, error) {
+		ApplyT(func(v interface{}) (LookupSecretResultOutput, error) {
 			args := v.(LookupSecretArgs)
-			r, err := LookupSecret(ctx, &args, opts...)
-			var s LookupSecretResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupSecretResult
+			secret, err := ctx.InvokePackageRaw("azure-native:cdn/v20230701preview:getSecret", args, &rv, "", opts...)
+			if err != nil {
+				return LookupSecretResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupSecretResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupSecretResultOutput), nil
+			}
+			return output, nil
 		}).(LookupSecretResultOutput)
 }
 

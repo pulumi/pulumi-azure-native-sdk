@@ -14,7 +14,7 @@ import (
 // Gets a private endpoint connection.
 // Azure REST API version: 2022-12-27.
 //
-// Other available API versions: 2020-08-15-preview, 2023-06-20-preview, 2023-10-03-preview, 2024-03-31-preview, 2024-05-20-preview, 2024-07-10.
+// Other available API versions: 2020-08-15-preview, 2023-06-20-preview, 2023-10-03-preview, 2024-03-31-preview, 2024-05-20-preview, 2024-07-10, 2024-07-31-preview.
 func LookupPrivateEndpointConnection(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivateEndpointConnectionResult
@@ -50,14 +50,20 @@ type LookupPrivateEndpointConnectionResult struct {
 
 func LookupPrivateEndpointConnectionOutput(ctx *pulumi.Context, args LookupPrivateEndpointConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupPrivateEndpointConnectionResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupPrivateEndpointConnectionResult, error) {
+		ApplyT(func(v interface{}) (LookupPrivateEndpointConnectionResultOutput, error) {
 			args := v.(LookupPrivateEndpointConnectionArgs)
-			r, err := LookupPrivateEndpointConnection(ctx, &args, opts...)
-			var s LookupPrivateEndpointConnectionResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupPrivateEndpointConnectionResult
+			secret, err := ctx.InvokePackageRaw("azure-native:hybridcompute:getPrivateEndpointConnection", args, &rv, "", opts...)
+			if err != nil {
+				return LookupPrivateEndpointConnectionResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupPrivateEndpointConnectionResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupPrivateEndpointConnectionResultOutput), nil
+			}
+			return output, nil
 		}).(LookupPrivateEndpointConnectionResultOutput)
 }
 

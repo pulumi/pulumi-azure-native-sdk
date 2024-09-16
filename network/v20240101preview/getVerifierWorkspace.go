@@ -51,14 +51,20 @@ type LookupVerifierWorkspaceResult struct {
 
 func LookupVerifierWorkspaceOutput(ctx *pulumi.Context, args LookupVerifierWorkspaceOutputArgs, opts ...pulumi.InvokeOption) LookupVerifierWorkspaceResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupVerifierWorkspaceResult, error) {
+		ApplyT(func(v interface{}) (LookupVerifierWorkspaceResultOutput, error) {
 			args := v.(LookupVerifierWorkspaceArgs)
-			r, err := LookupVerifierWorkspace(ctx, &args, opts...)
-			var s LookupVerifierWorkspaceResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupVerifierWorkspaceResult
+			secret, err := ctx.InvokePackageRaw("azure-native:network/v20240101preview:getVerifierWorkspace", args, &rv, "", opts...)
+			if err != nil {
+				return LookupVerifierWorkspaceResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupVerifierWorkspaceResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupVerifierWorkspaceResultOutput), nil
+			}
+			return output, nil
 		}).(LookupVerifierWorkspaceResultOutput)
 }
 

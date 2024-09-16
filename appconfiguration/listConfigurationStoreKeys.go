@@ -14,7 +14,7 @@ import (
 // Lists the access key for the specified configuration store.
 // Azure REST API version: 2023-03-01.
 //
-// Other available API versions: 2019-02-01-preview, 2023-08-01-preview, 2023-09-01-preview.
+// Other available API versions: 2019-02-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2024-05-01.
 func ListConfigurationStoreKeys(ctx *pulumi.Context, args *ListConfigurationStoreKeysArgs, opts ...pulumi.InvokeOption) (*ListConfigurationStoreKeysResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListConfigurationStoreKeysResult
@@ -44,14 +44,20 @@ type ListConfigurationStoreKeysResult struct {
 
 func ListConfigurationStoreKeysOutput(ctx *pulumi.Context, args ListConfigurationStoreKeysOutputArgs, opts ...pulumi.InvokeOption) ListConfigurationStoreKeysResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListConfigurationStoreKeysResult, error) {
+		ApplyT(func(v interface{}) (ListConfigurationStoreKeysResultOutput, error) {
 			args := v.(ListConfigurationStoreKeysArgs)
-			r, err := ListConfigurationStoreKeys(ctx, &args, opts...)
-			var s ListConfigurationStoreKeysResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListConfigurationStoreKeysResult
+			secret, err := ctx.InvokePackageRaw("azure-native:appconfiguration:listConfigurationStoreKeys", args, &rv, "", opts...)
+			if err != nil {
+				return ListConfigurationStoreKeysResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListConfigurationStoreKeysResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListConfigurationStoreKeysResultOutput), nil
+			}
+			return output, nil
 		}).(ListConfigurationStoreKeysResultOutput)
 }
 

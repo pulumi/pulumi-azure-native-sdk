@@ -14,7 +14,7 @@ import (
 // Gets the SQL trigger under an existing Azure Cosmos DB database account.
 // Azure REST API version: 2023-04-15.
 //
-// Other available API versions: 2019-08-01, 2023-03-15-preview, 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview.
+// Other available API versions: 2019-08-01, 2023-03-15-preview, 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview, 2024-08-15, 2024-09-01-preview.
 func LookupSqlResourceSqlTrigger(ctx *pulumi.Context, args *LookupSqlResourceSqlTriggerArgs, opts ...pulumi.InvokeOption) (*LookupSqlResourceSqlTriggerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSqlResourceSqlTriggerResult
@@ -55,14 +55,20 @@ type LookupSqlResourceSqlTriggerResult struct {
 
 func LookupSqlResourceSqlTriggerOutput(ctx *pulumi.Context, args LookupSqlResourceSqlTriggerOutputArgs, opts ...pulumi.InvokeOption) LookupSqlResourceSqlTriggerResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSqlResourceSqlTriggerResult, error) {
+		ApplyT(func(v interface{}) (LookupSqlResourceSqlTriggerResultOutput, error) {
 			args := v.(LookupSqlResourceSqlTriggerArgs)
-			r, err := LookupSqlResourceSqlTrigger(ctx, &args, opts...)
-			var s LookupSqlResourceSqlTriggerResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupSqlResourceSqlTriggerResult
+			secret, err := ctx.InvokePackageRaw("azure-native:documentdb:getSqlResourceSqlTrigger", args, &rv, "", opts...)
+			if err != nil {
+				return LookupSqlResourceSqlTriggerResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupSqlResourceSqlTriggerResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupSqlResourceSqlTriggerResultOutput), nil
+			}
+			return output, nil
 		}).(LookupSqlResourceSqlTriggerResultOutput)
 }
 

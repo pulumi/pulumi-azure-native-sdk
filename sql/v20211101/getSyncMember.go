@@ -69,14 +69,20 @@ type LookupSyncMemberResult struct {
 
 func LookupSyncMemberOutput(ctx *pulumi.Context, args LookupSyncMemberOutputArgs, opts ...pulumi.InvokeOption) LookupSyncMemberResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSyncMemberResult, error) {
+		ApplyT(func(v interface{}) (LookupSyncMemberResultOutput, error) {
 			args := v.(LookupSyncMemberArgs)
-			r, err := LookupSyncMember(ctx, &args, opts...)
-			var s LookupSyncMemberResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupSyncMemberResult
+			secret, err := ctx.InvokePackageRaw("azure-native:sql/v20211101:getSyncMember", args, &rv, "", opts...)
+			if err != nil {
+				return LookupSyncMemberResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupSyncMemberResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupSyncMemberResultOutput), nil
+			}
+			return output, nil
 		}).(LookupSyncMemberResultOutput)
 }
 

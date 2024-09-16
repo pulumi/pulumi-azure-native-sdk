@@ -51,14 +51,20 @@ type LookupManagedInstanceKeyResult struct {
 
 func LookupManagedInstanceKeyOutput(ctx *pulumi.Context, args LookupManagedInstanceKeyOutputArgs, opts ...pulumi.InvokeOption) LookupManagedInstanceKeyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupManagedInstanceKeyResult, error) {
+		ApplyT(func(v interface{}) (LookupManagedInstanceKeyResultOutput, error) {
 			args := v.(LookupManagedInstanceKeyArgs)
-			r, err := LookupManagedInstanceKey(ctx, &args, opts...)
-			var s LookupManagedInstanceKeyResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupManagedInstanceKeyResult
+			secret, err := ctx.InvokePackageRaw("azure-native:sql/v20211101:getManagedInstanceKey", args, &rv, "", opts...)
+			if err != nil {
+				return LookupManagedInstanceKeyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupManagedInstanceKeyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupManagedInstanceKeyResultOutput), nil
+			}
+			return output, nil
 		}).(LookupManagedInstanceKeyResultOutput)
 }
 

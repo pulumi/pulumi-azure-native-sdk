@@ -74,14 +74,20 @@ func (val *LookupNetworkToNetworkInterconnectResult) Defaults() *LookupNetworkTo
 
 func LookupNetworkToNetworkInterconnectOutput(ctx *pulumi.Context, args LookupNetworkToNetworkInterconnectOutputArgs, opts ...pulumi.InvokeOption) LookupNetworkToNetworkInterconnectResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupNetworkToNetworkInterconnectResult, error) {
+		ApplyT(func(v interface{}) (LookupNetworkToNetworkInterconnectResultOutput, error) {
 			args := v.(LookupNetworkToNetworkInterconnectArgs)
-			r, err := LookupNetworkToNetworkInterconnect(ctx, &args, opts...)
-			var s LookupNetworkToNetworkInterconnectResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupNetworkToNetworkInterconnectResult
+			secret, err := ctx.InvokePackageRaw("azure-native:managednetworkfabric/v20230201preview:getNetworkToNetworkInterconnect", args, &rv, "", opts...)
+			if err != nil {
+				return LookupNetworkToNetworkInterconnectResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupNetworkToNetworkInterconnectResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupNetworkToNetworkInterconnectResultOutput), nil
+			}
+			return output, nil
 		}).(LookupNetworkToNetworkInterconnectResultOutput)
 }
 

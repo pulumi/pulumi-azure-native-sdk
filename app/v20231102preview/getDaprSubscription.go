@@ -70,14 +70,20 @@ func (val *LookupDaprSubscriptionResult) Defaults() *LookupDaprSubscriptionResul
 
 func LookupDaprSubscriptionOutput(ctx *pulumi.Context, args LookupDaprSubscriptionOutputArgs, opts ...pulumi.InvokeOption) LookupDaprSubscriptionResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupDaprSubscriptionResult, error) {
+		ApplyT(func(v interface{}) (LookupDaprSubscriptionResultOutput, error) {
 			args := v.(LookupDaprSubscriptionArgs)
-			r, err := LookupDaprSubscription(ctx, &args, opts...)
-			var s LookupDaprSubscriptionResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupDaprSubscriptionResult
+			secret, err := ctx.InvokePackageRaw("azure-native:app/v20231102preview:getDaprSubscription", args, &rv, "", opts...)
+			if err != nil {
+				return LookupDaprSubscriptionResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupDaprSubscriptionResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupDaprSubscriptionResultOutput), nil
+			}
+			return output, nil
 		}).(LookupDaprSubscriptionResultOutput)
 }
 

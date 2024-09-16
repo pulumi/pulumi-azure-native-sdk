@@ -57,14 +57,20 @@ type GetApplicationGatewayBackendHealthOnDemandResult struct {
 
 func GetApplicationGatewayBackendHealthOnDemandOutput(ctx *pulumi.Context, args GetApplicationGatewayBackendHealthOnDemandOutputArgs, opts ...pulumi.InvokeOption) GetApplicationGatewayBackendHealthOnDemandResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetApplicationGatewayBackendHealthOnDemandResult, error) {
+		ApplyT(func(v interface{}) (GetApplicationGatewayBackendHealthOnDemandResultOutput, error) {
 			args := v.(GetApplicationGatewayBackendHealthOnDemandArgs)
-			r, err := GetApplicationGatewayBackendHealthOnDemand(ctx, &args, opts...)
-			var s GetApplicationGatewayBackendHealthOnDemandResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv GetApplicationGatewayBackendHealthOnDemandResult
+			secret, err := ctx.InvokePackageRaw("azure-native:network/v20230201:getApplicationGatewayBackendHealthOnDemand", args, &rv, "", opts...)
+			if err != nil {
+				return GetApplicationGatewayBackendHealthOnDemandResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetApplicationGatewayBackendHealthOnDemandResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetApplicationGatewayBackendHealthOnDemandResultOutput), nil
+			}
+			return output, nil
 		}).(GetApplicationGatewayBackendHealthOnDemandResultOutput)
 }
 

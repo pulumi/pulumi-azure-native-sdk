@@ -53,14 +53,20 @@ type GetSapVirtualInstanceSizingRecommendationsResult struct {
 
 func GetSapVirtualInstanceSizingRecommendationsOutput(ctx *pulumi.Context, args GetSapVirtualInstanceSizingRecommendationsOutputArgs, opts ...pulumi.InvokeOption) GetSapVirtualInstanceSizingRecommendationsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetSapVirtualInstanceSizingRecommendationsResult, error) {
+		ApplyT(func(v interface{}) (GetSapVirtualInstanceSizingRecommendationsResultOutput, error) {
 			args := v.(GetSapVirtualInstanceSizingRecommendationsArgs)
-			r, err := GetSapVirtualInstanceSizingRecommendations(ctx, &args, opts...)
-			var s GetSapVirtualInstanceSizingRecommendationsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv GetSapVirtualInstanceSizingRecommendationsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:workloads/v20240901:getSapVirtualInstanceSizingRecommendations", args, &rv, "", opts...)
+			if err != nil {
+				return GetSapVirtualInstanceSizingRecommendationsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetSapVirtualInstanceSizingRecommendationsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetSapVirtualInstanceSizingRecommendationsResultOutput), nil
+			}
+			return output, nil
 		}).(GetSapVirtualInstanceSizingRecommendationsResultOutput)
 }
 

@@ -14,7 +14,7 @@ import (
 // Gets the SQL userDefinedFunction under an existing Azure Cosmos DB database account.
 // Azure REST API version: 2023-04-15.
 //
-// Other available API versions: 2019-08-01, 2023-03-15-preview, 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview.
+// Other available API versions: 2019-08-01, 2023-03-15-preview, 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview, 2024-08-15, 2024-09-01-preview.
 func LookupSqlResourceSqlUserDefinedFunction(ctx *pulumi.Context, args *LookupSqlResourceSqlUserDefinedFunctionArgs, opts ...pulumi.InvokeOption) (*LookupSqlResourceSqlUserDefinedFunctionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSqlResourceSqlUserDefinedFunctionResult
@@ -55,14 +55,20 @@ type LookupSqlResourceSqlUserDefinedFunctionResult struct {
 
 func LookupSqlResourceSqlUserDefinedFunctionOutput(ctx *pulumi.Context, args LookupSqlResourceSqlUserDefinedFunctionOutputArgs, opts ...pulumi.InvokeOption) LookupSqlResourceSqlUserDefinedFunctionResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSqlResourceSqlUserDefinedFunctionResult, error) {
+		ApplyT(func(v interface{}) (LookupSqlResourceSqlUserDefinedFunctionResultOutput, error) {
 			args := v.(LookupSqlResourceSqlUserDefinedFunctionArgs)
-			r, err := LookupSqlResourceSqlUserDefinedFunction(ctx, &args, opts...)
-			var s LookupSqlResourceSqlUserDefinedFunctionResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupSqlResourceSqlUserDefinedFunctionResult
+			secret, err := ctx.InvokePackageRaw("azure-native:documentdb:getSqlResourceSqlUserDefinedFunction", args, &rv, "", opts...)
+			if err != nil {
+				return LookupSqlResourceSqlUserDefinedFunctionResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupSqlResourceSqlUserDefinedFunctionResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupSqlResourceSqlUserDefinedFunctionResultOutput), nil
+			}
+			return output, nil
 		}).(LookupSqlResourceSqlUserDefinedFunctionResultOutput)
 }
 

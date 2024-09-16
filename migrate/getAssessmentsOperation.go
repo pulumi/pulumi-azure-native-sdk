@@ -146,14 +146,20 @@ type LookupAssessmentsOperationResult struct {
 
 func LookupAssessmentsOperationOutput(ctx *pulumi.Context, args LookupAssessmentsOperationOutputArgs, opts ...pulumi.InvokeOption) LookupAssessmentsOperationResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupAssessmentsOperationResult, error) {
+		ApplyT(func(v interface{}) (LookupAssessmentsOperationResultOutput, error) {
 			args := v.(LookupAssessmentsOperationArgs)
-			r, err := LookupAssessmentsOperation(ctx, &args, opts...)
-			var s LookupAssessmentsOperationResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupAssessmentsOperationResult
+			secret, err := ctx.InvokePackageRaw("azure-native:migrate:getAssessmentsOperation", args, &rv, "", opts...)
+			if err != nil {
+				return LookupAssessmentsOperationResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupAssessmentsOperationResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupAssessmentsOperationResultOutput), nil
+			}
+			return output, nil
 		}).(LookupAssessmentsOperationResultOutput)
 }
 

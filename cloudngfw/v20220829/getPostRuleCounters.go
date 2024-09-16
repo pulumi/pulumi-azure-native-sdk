@@ -56,14 +56,20 @@ type GetPostRuleCountersResult struct {
 
 func GetPostRuleCountersOutput(ctx *pulumi.Context, args GetPostRuleCountersOutputArgs, opts ...pulumi.InvokeOption) GetPostRuleCountersResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetPostRuleCountersResult, error) {
+		ApplyT(func(v interface{}) (GetPostRuleCountersResultOutput, error) {
 			args := v.(GetPostRuleCountersArgs)
-			r, err := GetPostRuleCounters(ctx, &args, opts...)
-			var s GetPostRuleCountersResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv GetPostRuleCountersResult
+			secret, err := ctx.InvokePackageRaw("azure-native:cloudngfw/v20220829:getPostRuleCounters", args, &rv, "", opts...)
+			if err != nil {
+				return GetPostRuleCountersResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetPostRuleCountersResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetPostRuleCountersResultOutput), nil
+			}
+			return output, nil
 		}).(GetPostRuleCountersResultOutput)
 }
 

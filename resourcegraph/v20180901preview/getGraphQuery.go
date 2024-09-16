@@ -55,14 +55,20 @@ type LookupGraphQueryResult struct {
 
 func LookupGraphQueryOutput(ctx *pulumi.Context, args LookupGraphQueryOutputArgs, opts ...pulumi.InvokeOption) LookupGraphQueryResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupGraphQueryResult, error) {
+		ApplyT(func(v interface{}) (LookupGraphQueryResultOutput, error) {
 			args := v.(LookupGraphQueryArgs)
-			r, err := LookupGraphQuery(ctx, &args, opts...)
-			var s LookupGraphQueryResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupGraphQueryResult
+			secret, err := ctx.InvokePackageRaw("azure-native:resourcegraph/v20180901preview:getGraphQuery", args, &rv, "", opts...)
+			if err != nil {
+				return LookupGraphQueryResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupGraphQueryResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupGraphQueryResultOutput), nil
+			}
+			return output, nil
 		}).(LookupGraphQueryResultOutput)
 }
 

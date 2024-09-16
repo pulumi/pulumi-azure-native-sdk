@@ -59,14 +59,20 @@ type LookupSmfDeploymentResult struct {
 
 func LookupSmfDeploymentOutput(ctx *pulumi.Context, args LookupSmfDeploymentOutputArgs, opts ...pulumi.InvokeOption) LookupSmfDeploymentResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSmfDeploymentResult, error) {
+		ApplyT(func(v interface{}) (LookupSmfDeploymentResultOutput, error) {
 			args := v.(LookupSmfDeploymentArgs)
-			r, err := LookupSmfDeployment(ctx, &args, opts...)
-			var s LookupSmfDeploymentResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupSmfDeploymentResult
+			secret, err := ctx.InvokePackageRaw("azure-native:mobilepacketcore/v20231015preview:getSmfDeployment", args, &rv, "", opts...)
+			if err != nil {
+				return LookupSmfDeploymentResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupSmfDeploymentResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupSmfDeploymentResultOutput), nil
+			}
+			return output, nil
 		}).(LookupSmfDeploymentResultOutput)
 }
 

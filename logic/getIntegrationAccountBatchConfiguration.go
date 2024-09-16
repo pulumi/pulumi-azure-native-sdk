@@ -50,14 +50,20 @@ type LookupIntegrationAccountBatchConfigurationResult struct {
 
 func LookupIntegrationAccountBatchConfigurationOutput(ctx *pulumi.Context, args LookupIntegrationAccountBatchConfigurationOutputArgs, opts ...pulumi.InvokeOption) LookupIntegrationAccountBatchConfigurationResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupIntegrationAccountBatchConfigurationResult, error) {
+		ApplyT(func(v interface{}) (LookupIntegrationAccountBatchConfigurationResultOutput, error) {
 			args := v.(LookupIntegrationAccountBatchConfigurationArgs)
-			r, err := LookupIntegrationAccountBatchConfiguration(ctx, &args, opts...)
-			var s LookupIntegrationAccountBatchConfigurationResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupIntegrationAccountBatchConfigurationResult
+			secret, err := ctx.InvokePackageRaw("azure-native:logic:getIntegrationAccountBatchConfiguration", args, &rv, "", opts...)
+			if err != nil {
+				return LookupIntegrationAccountBatchConfigurationResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupIntegrationAccountBatchConfigurationResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupIntegrationAccountBatchConfigurationResultOutput), nil
+			}
+			return output, nil
 		}).(LookupIntegrationAccountBatchConfigurationResultOutput)
 }
 

@@ -53,14 +53,20 @@ type LookupWebPubSubPrivateEndpointConnectionResult struct {
 
 func LookupWebPubSubPrivateEndpointConnectionOutput(ctx *pulumi.Context, args LookupWebPubSubPrivateEndpointConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupWebPubSubPrivateEndpointConnectionResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupWebPubSubPrivateEndpointConnectionResult, error) {
+		ApplyT(func(v interface{}) (LookupWebPubSubPrivateEndpointConnectionResultOutput, error) {
 			args := v.(LookupWebPubSubPrivateEndpointConnectionArgs)
-			r, err := LookupWebPubSubPrivateEndpointConnection(ctx, &args, opts...)
-			var s LookupWebPubSubPrivateEndpointConnectionResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupWebPubSubPrivateEndpointConnectionResult
+			secret, err := ctx.InvokePackageRaw("azure-native:webpubsub/v20230601preview:getWebPubSubPrivateEndpointConnection", args, &rv, "", opts...)
+			if err != nil {
+				return LookupWebPubSubPrivateEndpointConnectionResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupWebPubSubPrivateEndpointConnectionResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupWebPubSubPrivateEndpointConnectionResultOutput), nil
+			}
+			return output, nil
 		}).(LookupWebPubSubPrivateEndpointConnectionResultOutput)
 }
 

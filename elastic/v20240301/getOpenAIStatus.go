@@ -39,14 +39,20 @@ type GetOpenAIStatusResult struct {
 
 func GetOpenAIStatusOutput(ctx *pulumi.Context, args GetOpenAIStatusOutputArgs, opts ...pulumi.InvokeOption) GetOpenAIStatusResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetOpenAIStatusResult, error) {
+		ApplyT(func(v interface{}) (GetOpenAIStatusResultOutput, error) {
 			args := v.(GetOpenAIStatusArgs)
-			r, err := GetOpenAIStatus(ctx, &args, opts...)
-			var s GetOpenAIStatusResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv GetOpenAIStatusResult
+			secret, err := ctx.InvokePackageRaw("azure-native:elastic/v20240301:getOpenAIStatus", args, &rv, "", opts...)
+			if err != nil {
+				return GetOpenAIStatusResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetOpenAIStatusResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetOpenAIStatusResultOutput), nil
+			}
+			return output, nil
 		}).(GetOpenAIStatusResultOutput)
 }
 

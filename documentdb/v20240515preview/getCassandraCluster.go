@@ -49,14 +49,20 @@ type LookupCassandraClusterResult struct {
 
 func LookupCassandraClusterOutput(ctx *pulumi.Context, args LookupCassandraClusterOutputArgs, opts ...pulumi.InvokeOption) LookupCassandraClusterResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupCassandraClusterResult, error) {
+		ApplyT(func(v interface{}) (LookupCassandraClusterResultOutput, error) {
 			args := v.(LookupCassandraClusterArgs)
-			r, err := LookupCassandraCluster(ctx, &args, opts...)
-			var s LookupCassandraClusterResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupCassandraClusterResult
+			secret, err := ctx.InvokePackageRaw("azure-native:documentdb/v20240515preview:getCassandraCluster", args, &rv, "", opts...)
+			if err != nil {
+				return LookupCassandraClusterResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupCassandraClusterResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupCassandraClusterResultOutput), nil
+			}
+			return output, nil
 		}).(LookupCassandraClusterResultOutput)
 }
 

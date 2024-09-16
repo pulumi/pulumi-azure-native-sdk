@@ -51,14 +51,20 @@ type LookupVirtualApplianceSiteResult struct {
 
 func LookupVirtualApplianceSiteOutput(ctx *pulumi.Context, args LookupVirtualApplianceSiteOutputArgs, opts ...pulumi.InvokeOption) LookupVirtualApplianceSiteResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupVirtualApplianceSiteResult, error) {
+		ApplyT(func(v interface{}) (LookupVirtualApplianceSiteResultOutput, error) {
 			args := v.(LookupVirtualApplianceSiteArgs)
-			r, err := LookupVirtualApplianceSite(ctx, &args, opts...)
-			var s LookupVirtualApplianceSiteResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupVirtualApplianceSiteResult
+			secret, err := ctx.InvokePackageRaw("azure-native:network/v20230901:getVirtualApplianceSite", args, &rv, "", opts...)
+			if err != nil {
+				return LookupVirtualApplianceSiteResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupVirtualApplianceSiteResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupVirtualApplianceSiteResultOutput), nil
+			}
+			return output, nil
 		}).(LookupVirtualApplianceSiteResultOutput)
 }
 

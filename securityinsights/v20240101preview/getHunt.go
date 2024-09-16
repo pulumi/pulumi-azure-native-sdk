@@ -80,14 +80,20 @@ func (val *LookupHuntResult) Defaults() *LookupHuntResult {
 
 func LookupHuntOutput(ctx *pulumi.Context, args LookupHuntOutputArgs, opts ...pulumi.InvokeOption) LookupHuntResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupHuntResult, error) {
+		ApplyT(func(v interface{}) (LookupHuntResultOutput, error) {
 			args := v.(LookupHuntArgs)
-			r, err := LookupHunt(ctx, &args, opts...)
-			var s LookupHuntResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupHuntResult
+			secret, err := ctx.InvokePackageRaw("azure-native:securityinsights/v20240101preview:getHunt", args, &rv, "", opts...)
+			if err != nil {
+				return LookupHuntResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupHuntResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupHuntResultOutput), nil
+			}
+			return output, nil
 		}).(LookupHuntResultOutput)
 }
 

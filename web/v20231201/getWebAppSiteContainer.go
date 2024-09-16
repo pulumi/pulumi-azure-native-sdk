@@ -69,14 +69,20 @@ type LookupWebAppSiteContainerResult struct {
 
 func LookupWebAppSiteContainerOutput(ctx *pulumi.Context, args LookupWebAppSiteContainerOutputArgs, opts ...pulumi.InvokeOption) LookupWebAppSiteContainerResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupWebAppSiteContainerResult, error) {
+		ApplyT(func(v interface{}) (LookupWebAppSiteContainerResultOutput, error) {
 			args := v.(LookupWebAppSiteContainerArgs)
-			r, err := LookupWebAppSiteContainer(ctx, &args, opts...)
-			var s LookupWebAppSiteContainerResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupWebAppSiteContainerResult
+			secret, err := ctx.InvokePackageRaw("azure-native:web/v20231201:getWebAppSiteContainer", args, &rv, "", opts...)
+			if err != nil {
+				return LookupWebAppSiteContainerResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupWebAppSiteContainerResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupWebAppSiteContainerResultOutput), nil
+			}
+			return output, nil
 		}).(LookupWebAppSiteContainerResultOutput)
 }
 

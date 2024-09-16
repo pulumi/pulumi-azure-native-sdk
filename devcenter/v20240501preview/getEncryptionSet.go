@@ -57,14 +57,20 @@ type LookupEncryptionSetResult struct {
 
 func LookupEncryptionSetOutput(ctx *pulumi.Context, args LookupEncryptionSetOutputArgs, opts ...pulumi.InvokeOption) LookupEncryptionSetResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupEncryptionSetResult, error) {
+		ApplyT(func(v interface{}) (LookupEncryptionSetResultOutput, error) {
 			args := v.(LookupEncryptionSetArgs)
-			r, err := LookupEncryptionSet(ctx, &args, opts...)
-			var s LookupEncryptionSetResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupEncryptionSetResult
+			secret, err := ctx.InvokePackageRaw("azure-native:devcenter/v20240501preview:getEncryptionSet", args, &rv, "", opts...)
+			if err != nil {
+				return LookupEncryptionSetResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupEncryptionSetResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupEncryptionSetResultOutput), nil
+			}
+			return output, nil
 		}).(LookupEncryptionSetResultOutput)
 }
 

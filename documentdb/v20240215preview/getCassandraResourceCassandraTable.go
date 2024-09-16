@@ -53,14 +53,20 @@ type LookupCassandraResourceCassandraTableResult struct {
 
 func LookupCassandraResourceCassandraTableOutput(ctx *pulumi.Context, args LookupCassandraResourceCassandraTableOutputArgs, opts ...pulumi.InvokeOption) LookupCassandraResourceCassandraTableResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupCassandraResourceCassandraTableResult, error) {
+		ApplyT(func(v interface{}) (LookupCassandraResourceCassandraTableResultOutput, error) {
 			args := v.(LookupCassandraResourceCassandraTableArgs)
-			r, err := LookupCassandraResourceCassandraTable(ctx, &args, opts...)
-			var s LookupCassandraResourceCassandraTableResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupCassandraResourceCassandraTableResult
+			secret, err := ctx.InvokePackageRaw("azure-native:documentdb/v20240215preview:getCassandraResourceCassandraTable", args, &rv, "", opts...)
+			if err != nil {
+				return LookupCassandraResourceCassandraTableResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupCassandraResourceCassandraTableResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupCassandraResourceCassandraTableResultOutput), nil
+			}
+			return output, nil
 		}).(LookupCassandraResourceCassandraTableResultOutput)
 }
 

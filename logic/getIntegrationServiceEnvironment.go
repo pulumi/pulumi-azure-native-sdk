@@ -52,14 +52,20 @@ type LookupIntegrationServiceEnvironmentResult struct {
 
 func LookupIntegrationServiceEnvironmentOutput(ctx *pulumi.Context, args LookupIntegrationServiceEnvironmentOutputArgs, opts ...pulumi.InvokeOption) LookupIntegrationServiceEnvironmentResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupIntegrationServiceEnvironmentResult, error) {
+		ApplyT(func(v interface{}) (LookupIntegrationServiceEnvironmentResultOutput, error) {
 			args := v.(LookupIntegrationServiceEnvironmentArgs)
-			r, err := LookupIntegrationServiceEnvironment(ctx, &args, opts...)
-			var s LookupIntegrationServiceEnvironmentResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupIntegrationServiceEnvironmentResult
+			secret, err := ctx.InvokePackageRaw("azure-native:logic:getIntegrationServiceEnvironment", args, &rv, "", opts...)
+			if err != nil {
+				return LookupIntegrationServiceEnvironmentResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupIntegrationServiceEnvironmentResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupIntegrationServiceEnvironmentResultOutput), nil
+			}
+			return output, nil
 		}).(LookupIntegrationServiceEnvironmentResultOutput)
 }
 

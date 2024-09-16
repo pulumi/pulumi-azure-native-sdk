@@ -50,14 +50,20 @@ type LookupEnvironmentSpecificationVersionResult struct {
 
 func LookupEnvironmentSpecificationVersionOutput(ctx *pulumi.Context, args LookupEnvironmentSpecificationVersionOutputArgs, opts ...pulumi.InvokeOption) LookupEnvironmentSpecificationVersionResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupEnvironmentSpecificationVersionResult, error) {
+		ApplyT(func(v interface{}) (LookupEnvironmentSpecificationVersionResultOutput, error) {
 			args := v.(LookupEnvironmentSpecificationVersionArgs)
-			r, err := LookupEnvironmentSpecificationVersion(ctx, &args, opts...)
-			var s LookupEnvironmentSpecificationVersionResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupEnvironmentSpecificationVersionResult
+			secret, err := ctx.InvokePackageRaw("azure-native:machinelearningservices:getEnvironmentSpecificationVersion", args, &rv, "", opts...)
+			if err != nil {
+				return LookupEnvironmentSpecificationVersionResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupEnvironmentSpecificationVersionResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupEnvironmentSpecificationVersionResultOutput), nil
+			}
+			return output, nil
 		}).(LookupEnvironmentSpecificationVersionResultOutput)
 }
 

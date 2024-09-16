@@ -51,14 +51,20 @@ type GetContainerAppAuthTokenResult struct {
 
 func GetContainerAppAuthTokenOutput(ctx *pulumi.Context, args GetContainerAppAuthTokenOutputArgs, opts ...pulumi.InvokeOption) GetContainerAppAuthTokenResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetContainerAppAuthTokenResult, error) {
+		ApplyT(func(v interface{}) (GetContainerAppAuthTokenResultOutput, error) {
 			args := v.(GetContainerAppAuthTokenArgs)
-			r, err := GetContainerAppAuthToken(ctx, &args, opts...)
-			var s GetContainerAppAuthTokenResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv GetContainerAppAuthTokenResult
+			secret, err := ctx.InvokePackageRaw("azure-native:app/v20240202preview:getContainerAppAuthToken", args, &rv, "", opts...)
+			if err != nil {
+				return GetContainerAppAuthTokenResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetContainerAppAuthTokenResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetContainerAppAuthTokenResultOutput), nil
+			}
+			return output, nil
 		}).(GetContainerAppAuthTokenResultOutput)
 }
 

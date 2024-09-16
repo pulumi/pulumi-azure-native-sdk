@@ -1068,6 +1068,8 @@ type IacTemplateProperties struct {
 	InstanceName *string `pulumi:"instanceName"`
 	// the source stage of the template
 	InstanceStage *string `pulumi:"instanceStage"`
+	// Determines the authorization status of requests.
+	QuickStartTemplateType *string `pulumi:"quickStartTemplateType"`
 	// the source store of the template
 	SourceResourceId *string              `pulumi:"sourceResourceId"`
 	TemplateDetails  []IacTemplateDetails `pulumi:"templateDetails"`
@@ -1092,6 +1094,8 @@ type IacTemplatePropertiesArgs struct {
 	InstanceName pulumi.StringPtrInput `pulumi:"instanceName"`
 	// the source stage of the template
 	InstanceStage pulumi.StringPtrInput `pulumi:"instanceStage"`
+	// Determines the authorization status of requests.
+	QuickStartTemplateType pulumi.StringPtrInput `pulumi:"quickStartTemplateType"`
 	// the source store of the template
 	SourceResourceId pulumi.StringPtrInput        `pulumi:"sourceResourceId"`
 	TemplateDetails  IacTemplateDetailsArrayInput `pulumi:"templateDetails"`
@@ -1161,6 +1165,11 @@ func (o IacTemplatePropertiesOutput) InstanceStage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IacTemplateProperties) *string { return v.InstanceStage }).(pulumi.StringPtrOutput)
 }
 
+// Determines the authorization status of requests.
+func (o IacTemplatePropertiesOutput) QuickStartTemplateType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IacTemplateProperties) *string { return v.QuickStartTemplateType }).(pulumi.StringPtrOutput)
+}
+
 // the source store of the template
 func (o IacTemplatePropertiesOutput) SourceResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IacTemplateProperties) *string { return v.SourceResourceId }).(pulumi.StringPtrOutput)
@@ -1202,7 +1211,7 @@ type IacTemplatePropertiesResponse struct {
 	// the source stage of the template
 	InstanceStage *string `pulumi:"instanceStage"`
 	// Determines the authorization status of requests.
-	QuickStartTemplateType string `pulumi:"quickStartTemplateType"`
+	QuickStartTemplateType *string `pulumi:"quickStartTemplateType"`
 	// the source store of the template
 	SourceResourceId *string                      `pulumi:"sourceResourceId"`
 	TemplateDetails  []IacTemplateDetailsResponse `pulumi:"templateDetails"`
@@ -1236,8 +1245,8 @@ func (o IacTemplatePropertiesResponseOutput) InstanceStage() pulumi.StringPtrOut
 }
 
 // Determines the authorization status of requests.
-func (o IacTemplatePropertiesResponseOutput) QuickStartTemplateType() pulumi.StringOutput {
-	return o.ApplyT(func(v IacTemplatePropertiesResponse) string { return v.QuickStartTemplateType }).(pulumi.StringOutput)
+func (o IacTemplatePropertiesResponseOutput) QuickStartTemplateType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IacTemplatePropertiesResponse) *string { return v.QuickStartTemplateType }).(pulumi.StringPtrOutput)
 }
 
 // the source store of the template

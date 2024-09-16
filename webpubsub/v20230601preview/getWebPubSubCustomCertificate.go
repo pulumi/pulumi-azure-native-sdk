@@ -53,14 +53,20 @@ type LookupWebPubSubCustomCertificateResult struct {
 
 func LookupWebPubSubCustomCertificateOutput(ctx *pulumi.Context, args LookupWebPubSubCustomCertificateOutputArgs, opts ...pulumi.InvokeOption) LookupWebPubSubCustomCertificateResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupWebPubSubCustomCertificateResult, error) {
+		ApplyT(func(v interface{}) (LookupWebPubSubCustomCertificateResultOutput, error) {
 			args := v.(LookupWebPubSubCustomCertificateArgs)
-			r, err := LookupWebPubSubCustomCertificate(ctx, &args, opts...)
-			var s LookupWebPubSubCustomCertificateResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupWebPubSubCustomCertificateResult
+			secret, err := ctx.InvokePackageRaw("azure-native:webpubsub/v20230601preview:getWebPubSubCustomCertificate", args, &rv, "", opts...)
+			if err != nil {
+				return LookupWebPubSubCustomCertificateResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupWebPubSubCustomCertificateResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupWebPubSubCustomCertificateResultOutput), nil
+			}
+			return output, nil
 		}).(LookupWebPubSubCustomCertificateResultOutput)
 }
 

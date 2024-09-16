@@ -52,14 +52,20 @@ type LookupSpaceResult struct {
 
 func LookupSpaceOutput(ctx *pulumi.Context, args LookupSpaceOutputArgs, opts ...pulumi.InvokeOption) LookupSpaceResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSpaceResult, error) {
+		ApplyT(func(v interface{}) (LookupSpaceResultOutput, error) {
 			args := v.(LookupSpaceArgs)
-			r, err := LookupSpace(ctx, &args, opts...)
-			var s LookupSpaceResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupSpaceResult
+			secret, err := ctx.InvokePackageRaw("azure-native:integrationspaces:getSpace", args, &rv, "", opts...)
+			if err != nil {
+				return LookupSpaceResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupSpaceResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupSpaceResultOutput), nil
+			}
+			return output, nil
 		}).(LookupSpaceResultOutput)
 }
 

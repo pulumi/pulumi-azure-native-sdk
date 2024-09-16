@@ -14,7 +14,7 @@ import (
 // Lists the access keys for the specified Azure Cosmos DB database account.
 // Azure REST API version: 2023-04-15.
 //
-// Other available API versions: 2020-03-01, 2020-06-01-preview, 2020-09-01, 2021-04-01-preview, 2023-03-15-preview, 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview.
+// Other available API versions: 2020-03-01, 2020-06-01-preview, 2020-09-01, 2021-04-01-preview, 2023-03-15-preview, 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview, 2024-08-15, 2024-09-01-preview.
 func ListDatabaseAccountKeys(ctx *pulumi.Context, args *ListDatabaseAccountKeysArgs, opts ...pulumi.InvokeOption) (*ListDatabaseAccountKeysResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListDatabaseAccountKeysResult
@@ -46,14 +46,20 @@ type ListDatabaseAccountKeysResult struct {
 
 func ListDatabaseAccountKeysOutput(ctx *pulumi.Context, args ListDatabaseAccountKeysOutputArgs, opts ...pulumi.InvokeOption) ListDatabaseAccountKeysResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListDatabaseAccountKeysResult, error) {
+		ApplyT(func(v interface{}) (ListDatabaseAccountKeysResultOutput, error) {
 			args := v.(ListDatabaseAccountKeysArgs)
-			r, err := ListDatabaseAccountKeys(ctx, &args, opts...)
-			var s ListDatabaseAccountKeysResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListDatabaseAccountKeysResult
+			secret, err := ctx.InvokePackageRaw("azure-native:documentdb:listDatabaseAccountKeys", args, &rv, "", opts...)
+			if err != nil {
+				return ListDatabaseAccountKeysResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListDatabaseAccountKeysResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListDatabaseAccountKeysResultOutput), nil
+			}
+			return output, nil
 		}).(ListDatabaseAccountKeysResultOutput)
 }
 

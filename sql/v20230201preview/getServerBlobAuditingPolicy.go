@@ -143,14 +143,20 @@ type LookupServerBlobAuditingPolicyResult struct {
 
 func LookupServerBlobAuditingPolicyOutput(ctx *pulumi.Context, args LookupServerBlobAuditingPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupServerBlobAuditingPolicyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupServerBlobAuditingPolicyResult, error) {
+		ApplyT(func(v interface{}) (LookupServerBlobAuditingPolicyResultOutput, error) {
 			args := v.(LookupServerBlobAuditingPolicyArgs)
-			r, err := LookupServerBlobAuditingPolicy(ctx, &args, opts...)
-			var s LookupServerBlobAuditingPolicyResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupServerBlobAuditingPolicyResult
+			secret, err := ctx.InvokePackageRaw("azure-native:sql/v20230201preview:getServerBlobAuditingPolicy", args, &rv, "", opts...)
+			if err != nil {
+				return LookupServerBlobAuditingPolicyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupServerBlobAuditingPolicyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupServerBlobAuditingPolicyResultOutput), nil
+			}
+			return output, nil
 		}).(LookupServerBlobAuditingPolicyResultOutput)
 }
 

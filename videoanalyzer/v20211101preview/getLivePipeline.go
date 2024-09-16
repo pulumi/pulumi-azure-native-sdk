@@ -55,14 +55,20 @@ type LookupLivePipelineResult struct {
 
 func LookupLivePipelineOutput(ctx *pulumi.Context, args LookupLivePipelineOutputArgs, opts ...pulumi.InvokeOption) LookupLivePipelineResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupLivePipelineResult, error) {
+		ApplyT(func(v interface{}) (LookupLivePipelineResultOutput, error) {
 			args := v.(LookupLivePipelineArgs)
-			r, err := LookupLivePipeline(ctx, &args, opts...)
-			var s LookupLivePipelineResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupLivePipelineResult
+			secret, err := ctx.InvokePackageRaw("azure-native:videoanalyzer/v20211101preview:getLivePipeline", args, &rv, "", opts...)
+			if err != nil {
+				return LookupLivePipelineResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupLivePipelineResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupLivePipelineResultOutput), nil
+			}
+			return output, nil
 		}).(LookupLivePipelineResultOutput)
 }
 

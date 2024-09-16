@@ -61,14 +61,20 @@ type LookupBlobContainerDataSetResult struct {
 
 func LookupBlobContainerDataSetOutput(ctx *pulumi.Context, args LookupBlobContainerDataSetOutputArgs, opts ...pulumi.InvokeOption) LookupBlobContainerDataSetResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupBlobContainerDataSetResult, error) {
+		ApplyT(func(v interface{}) (LookupBlobContainerDataSetResultOutput, error) {
 			args := v.(LookupBlobContainerDataSetArgs)
-			r, err := LookupBlobContainerDataSet(ctx, &args, opts...)
-			var s LookupBlobContainerDataSetResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupBlobContainerDataSetResult
+			secret, err := ctx.InvokePackageRaw("azure-native:datashare:getBlobContainerDataSet", args, &rv, "", opts...)
+			if err != nil {
+				return LookupBlobContainerDataSetResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupBlobContainerDataSetResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupBlobContainerDataSetResultOutput), nil
+			}
+			return output, nil
 		}).(LookupBlobContainerDataSetResultOutput)
 }
 

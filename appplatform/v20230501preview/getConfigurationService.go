@@ -58,14 +58,20 @@ func (val *LookupConfigurationServiceResult) Defaults() *LookupConfigurationServ
 
 func LookupConfigurationServiceOutput(ctx *pulumi.Context, args LookupConfigurationServiceOutputArgs, opts ...pulumi.InvokeOption) LookupConfigurationServiceResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupConfigurationServiceResult, error) {
+		ApplyT(func(v interface{}) (LookupConfigurationServiceResultOutput, error) {
 			args := v.(LookupConfigurationServiceArgs)
-			r, err := LookupConfigurationService(ctx, &args, opts...)
-			var s LookupConfigurationServiceResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupConfigurationServiceResult
+			secret, err := ctx.InvokePackageRaw("azure-native:appplatform/v20230501preview:getConfigurationService", args, &rv, "", opts...)
+			if err != nil {
+				return LookupConfigurationServiceResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupConfigurationServiceResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupConfigurationServiceResultOutput), nil
+			}
+			return output, nil
 		}).(LookupConfigurationServiceResultOutput)
 }
 

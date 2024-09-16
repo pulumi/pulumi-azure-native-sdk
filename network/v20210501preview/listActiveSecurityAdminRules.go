@@ -43,14 +43,20 @@ type ListActiveSecurityAdminRulesResult struct {
 
 func ListActiveSecurityAdminRulesOutput(ctx *pulumi.Context, args ListActiveSecurityAdminRulesOutputArgs, opts ...pulumi.InvokeOption) ListActiveSecurityAdminRulesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListActiveSecurityAdminRulesResult, error) {
+		ApplyT(func(v interface{}) (ListActiveSecurityAdminRulesResultOutput, error) {
 			args := v.(ListActiveSecurityAdminRulesArgs)
-			r, err := ListActiveSecurityAdminRules(ctx, &args, opts...)
-			var s ListActiveSecurityAdminRulesResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListActiveSecurityAdminRulesResult
+			secret, err := ctx.InvokePackageRaw("azure-native:network/v20210501preview:listActiveSecurityAdminRules", args, &rv, "", opts...)
+			if err != nil {
+				return ListActiveSecurityAdminRulesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListActiveSecurityAdminRulesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListActiveSecurityAdminRulesResultOutput), nil
+			}
+			return output, nil
 		}).(ListActiveSecurityAdminRulesResultOutput)
 }
 

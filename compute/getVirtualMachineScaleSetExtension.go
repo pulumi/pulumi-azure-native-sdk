@@ -70,14 +70,20 @@ type LookupVirtualMachineScaleSetExtensionResult struct {
 
 func LookupVirtualMachineScaleSetExtensionOutput(ctx *pulumi.Context, args LookupVirtualMachineScaleSetExtensionOutputArgs, opts ...pulumi.InvokeOption) LookupVirtualMachineScaleSetExtensionResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupVirtualMachineScaleSetExtensionResult, error) {
+		ApplyT(func(v interface{}) (LookupVirtualMachineScaleSetExtensionResultOutput, error) {
 			args := v.(LookupVirtualMachineScaleSetExtensionArgs)
-			r, err := LookupVirtualMachineScaleSetExtension(ctx, &args, opts...)
-			var s LookupVirtualMachineScaleSetExtensionResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupVirtualMachineScaleSetExtensionResult
+			secret, err := ctx.InvokePackageRaw("azure-native:compute:getVirtualMachineScaleSetExtension", args, &rv, "", opts...)
+			if err != nil {
+				return LookupVirtualMachineScaleSetExtensionResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupVirtualMachineScaleSetExtensionResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupVirtualMachineScaleSetExtensionResultOutput), nil
+			}
+			return output, nil
 		}).(LookupVirtualMachineScaleSetExtensionResultOutput)
 }
 

@@ -15,7 +15,7 @@ import (
 // Describes an Arc Gateway.
 // Azure REST API version: 2024-03-31-preview.
 //
-// Other available API versions: 2024-05-20-preview.
+// Other available API versions: 2024-05-20-preview, 2024-07-31-preview.
 type Gateway struct {
 	pulumi.CustomResourceState
 
@@ -57,6 +57,9 @@ func NewGateway(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:hybridcompute/v20240520preview:Gateway"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridcompute/v20240731preview:Gateway"),
 		},
 	})
 	opts = append(opts, aliases)

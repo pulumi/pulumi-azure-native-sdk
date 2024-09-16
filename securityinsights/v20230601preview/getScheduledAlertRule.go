@@ -94,14 +94,20 @@ type LookupScheduledAlertRuleResult struct {
 
 func LookupScheduledAlertRuleOutput(ctx *pulumi.Context, args LookupScheduledAlertRuleOutputArgs, opts ...pulumi.InvokeOption) LookupScheduledAlertRuleResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupScheduledAlertRuleResult, error) {
+		ApplyT(func(v interface{}) (LookupScheduledAlertRuleResultOutput, error) {
 			args := v.(LookupScheduledAlertRuleArgs)
-			r, err := LookupScheduledAlertRule(ctx, &args, opts...)
-			var s LookupScheduledAlertRuleResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupScheduledAlertRuleResult
+			secret, err := ctx.InvokePackageRaw("azure-native:securityinsights/v20230601preview:getScheduledAlertRule", args, &rv, "", opts...)
+			if err != nil {
+				return LookupScheduledAlertRuleResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupScheduledAlertRuleResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupScheduledAlertRuleResultOutput), nil
+			}
+			return output, nil
 		}).(LookupScheduledAlertRuleResultOutput)
 }
 

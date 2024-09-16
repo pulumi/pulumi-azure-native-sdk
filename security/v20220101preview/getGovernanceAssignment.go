@@ -55,14 +55,20 @@ type LookupGovernanceAssignmentResult struct {
 
 func LookupGovernanceAssignmentOutput(ctx *pulumi.Context, args LookupGovernanceAssignmentOutputArgs, opts ...pulumi.InvokeOption) LookupGovernanceAssignmentResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupGovernanceAssignmentResult, error) {
+		ApplyT(func(v interface{}) (LookupGovernanceAssignmentResultOutput, error) {
 			args := v.(LookupGovernanceAssignmentArgs)
-			r, err := LookupGovernanceAssignment(ctx, &args, opts...)
-			var s LookupGovernanceAssignmentResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupGovernanceAssignmentResult
+			secret, err := ctx.InvokePackageRaw("azure-native:security/v20220101preview:getGovernanceAssignment", args, &rv, "", opts...)
+			if err != nil {
+				return LookupGovernanceAssignmentResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupGovernanceAssignmentResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupGovernanceAssignmentResultOutput), nil
+			}
+			return output, nil
 		}).(LookupGovernanceAssignmentResultOutput)
 }
 

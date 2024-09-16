@@ -51,14 +51,20 @@ type LookupSqlResourceSqlDatabaseResult struct {
 
 func LookupSqlResourceSqlDatabaseOutput(ctx *pulumi.Context, args LookupSqlResourceSqlDatabaseOutputArgs, opts ...pulumi.InvokeOption) LookupSqlResourceSqlDatabaseResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSqlResourceSqlDatabaseResult, error) {
+		ApplyT(func(v interface{}) (LookupSqlResourceSqlDatabaseResultOutput, error) {
 			args := v.(LookupSqlResourceSqlDatabaseArgs)
-			r, err := LookupSqlResourceSqlDatabase(ctx, &args, opts...)
-			var s LookupSqlResourceSqlDatabaseResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupSqlResourceSqlDatabaseResult
+			secret, err := ctx.InvokePackageRaw("azure-native:documentdb/v20240215preview:getSqlResourceSqlDatabase", args, &rv, "", opts...)
+			if err != nil {
+				return LookupSqlResourceSqlDatabaseResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupSqlResourceSqlDatabaseResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupSqlResourceSqlDatabaseResultOutput), nil
+			}
+			return output, nil
 		}).(LookupSqlResourceSqlDatabaseResultOutput)
 }
 

@@ -47,14 +47,20 @@ type ListNetworkManagerDeploymentStatusResult struct {
 
 func ListNetworkManagerDeploymentStatusOutput(ctx *pulumi.Context, args ListNetworkManagerDeploymentStatusOutputArgs, opts ...pulumi.InvokeOption) ListNetworkManagerDeploymentStatusResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListNetworkManagerDeploymentStatusResult, error) {
+		ApplyT(func(v interface{}) (ListNetworkManagerDeploymentStatusResultOutput, error) {
 			args := v.(ListNetworkManagerDeploymentStatusArgs)
-			r, err := ListNetworkManagerDeploymentStatus(ctx, &args, opts...)
-			var s ListNetworkManagerDeploymentStatusResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListNetworkManagerDeploymentStatusResult
+			secret, err := ctx.InvokePackageRaw("azure-native:network/v20240101:listNetworkManagerDeploymentStatus", args, &rv, "", opts...)
+			if err != nil {
+				return ListNetworkManagerDeploymentStatusResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListNetworkManagerDeploymentStatusResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListNetworkManagerDeploymentStatusResultOutput), nil
+			}
+			return output, nil
 		}).(ListNetworkManagerDeploymentStatusResultOutput)
 }
 

@@ -74,14 +74,20 @@ func (val *LookupDaprComponentResult) Defaults() *LookupDaprComponentResult {
 
 func LookupDaprComponentOutput(ctx *pulumi.Context, args LookupDaprComponentOutputArgs, opts ...pulumi.InvokeOption) LookupDaprComponentResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupDaprComponentResult, error) {
+		ApplyT(func(v interface{}) (LookupDaprComponentResultOutput, error) {
 			args := v.(LookupDaprComponentArgs)
-			r, err := LookupDaprComponent(ctx, &args, opts...)
-			var s LookupDaprComponentResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupDaprComponentResult
+			secret, err := ctx.InvokePackageRaw("azure-native:app/v20230401preview:getDaprComponent", args, &rv, "", opts...)
+			if err != nil {
+				return LookupDaprComponentResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupDaprComponentResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupDaprComponentResultOutput), nil
+			}
+			return output, nil
 		}).(LookupDaprComponentResultOutput)
 }
 

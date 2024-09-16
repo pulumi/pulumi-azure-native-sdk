@@ -45,14 +45,20 @@ type LookupWebAppScmAllowedResult struct {
 
 func LookupWebAppScmAllowedOutput(ctx *pulumi.Context, args LookupWebAppScmAllowedOutputArgs, opts ...pulumi.InvokeOption) LookupWebAppScmAllowedResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupWebAppScmAllowedResult, error) {
+		ApplyT(func(v interface{}) (LookupWebAppScmAllowedResultOutput, error) {
 			args := v.(LookupWebAppScmAllowedArgs)
-			r, err := LookupWebAppScmAllowed(ctx, &args, opts...)
-			var s LookupWebAppScmAllowedResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupWebAppScmAllowedResult
+			secret, err := ctx.InvokePackageRaw("azure-native:web/v20230101:getWebAppScmAllowed", args, &rv, "", opts...)
+			if err != nil {
+				return LookupWebAppScmAllowedResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupWebAppScmAllowedResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupWebAppScmAllowedResultOutput), nil
+			}
+			return output, nil
 		}).(LookupWebAppScmAllowedResultOutput)
 }
 

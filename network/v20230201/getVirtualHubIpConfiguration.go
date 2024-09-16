@@ -68,14 +68,20 @@ func (val *LookupVirtualHubIpConfigurationResult) Defaults() *LookupVirtualHubIp
 
 func LookupVirtualHubIpConfigurationOutput(ctx *pulumi.Context, args LookupVirtualHubIpConfigurationOutputArgs, opts ...pulumi.InvokeOption) LookupVirtualHubIpConfigurationResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupVirtualHubIpConfigurationResult, error) {
+		ApplyT(func(v interface{}) (LookupVirtualHubIpConfigurationResultOutput, error) {
 			args := v.(LookupVirtualHubIpConfigurationArgs)
-			r, err := LookupVirtualHubIpConfiguration(ctx, &args, opts...)
-			var s LookupVirtualHubIpConfigurationResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupVirtualHubIpConfigurationResult
+			secret, err := ctx.InvokePackageRaw("azure-native:network/v20230201:getVirtualHubIpConfiguration", args, &rv, "", opts...)
+			if err != nil {
+				return LookupVirtualHubIpConfigurationResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupVirtualHubIpConfigurationResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupVirtualHubIpConfigurationResultOutput), nil
+			}
+			return output, nil
 		}).(LookupVirtualHubIpConfigurationResultOutput)
 }
 

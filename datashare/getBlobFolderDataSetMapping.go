@@ -67,14 +67,20 @@ type LookupBlobFolderDataSetMappingResult struct {
 
 func LookupBlobFolderDataSetMappingOutput(ctx *pulumi.Context, args LookupBlobFolderDataSetMappingOutputArgs, opts ...pulumi.InvokeOption) LookupBlobFolderDataSetMappingResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupBlobFolderDataSetMappingResult, error) {
+		ApplyT(func(v interface{}) (LookupBlobFolderDataSetMappingResultOutput, error) {
 			args := v.(LookupBlobFolderDataSetMappingArgs)
-			r, err := LookupBlobFolderDataSetMapping(ctx, &args, opts...)
-			var s LookupBlobFolderDataSetMappingResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupBlobFolderDataSetMappingResult
+			secret, err := ctx.InvokePackageRaw("azure-native:datashare:getBlobFolderDataSetMapping", args, &rv, "", opts...)
+			if err != nil {
+				return LookupBlobFolderDataSetMappingResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupBlobFolderDataSetMappingResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupBlobFolderDataSetMappingResultOutput), nil
+			}
+			return output, nil
 		}).(LookupBlobFolderDataSetMappingResultOutput)
 }
 

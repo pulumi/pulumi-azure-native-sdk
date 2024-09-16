@@ -14,7 +14,7 @@ import (
 // Gets the Gremlin databases under an existing Azure Cosmos DB database account with the provided name.
 // Azure REST API version: 2023-04-15.
 //
-// Other available API versions: 2019-08-01, 2023-03-15-preview, 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview.
+// Other available API versions: 2019-08-01, 2023-03-15-preview, 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview, 2024-08-15, 2024-09-01-preview.
 func LookupGremlinResourceGremlinDatabase(ctx *pulumi.Context, args *LookupGremlinResourceGremlinDatabaseArgs, opts ...pulumi.InvokeOption) (*LookupGremlinResourceGremlinDatabaseResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGremlinResourceGremlinDatabaseResult
@@ -52,14 +52,20 @@ type LookupGremlinResourceGremlinDatabaseResult struct {
 
 func LookupGremlinResourceGremlinDatabaseOutput(ctx *pulumi.Context, args LookupGremlinResourceGremlinDatabaseOutputArgs, opts ...pulumi.InvokeOption) LookupGremlinResourceGremlinDatabaseResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupGremlinResourceGremlinDatabaseResult, error) {
+		ApplyT(func(v interface{}) (LookupGremlinResourceGremlinDatabaseResultOutput, error) {
 			args := v.(LookupGremlinResourceGremlinDatabaseArgs)
-			r, err := LookupGremlinResourceGremlinDatabase(ctx, &args, opts...)
-			var s LookupGremlinResourceGremlinDatabaseResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupGremlinResourceGremlinDatabaseResult
+			secret, err := ctx.InvokePackageRaw("azure-native:documentdb:getGremlinResourceGremlinDatabase", args, &rv, "", opts...)
+			if err != nil {
+				return LookupGremlinResourceGremlinDatabaseResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupGremlinResourceGremlinDatabaseResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupGremlinResourceGremlinDatabaseResultOutput), nil
+			}
+			return output, nil
 		}).(LookupGremlinResourceGremlinDatabaseResultOutput)
 }
 

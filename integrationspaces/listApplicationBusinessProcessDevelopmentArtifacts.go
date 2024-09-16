@@ -40,14 +40,20 @@ type ListApplicationBusinessProcessDevelopmentArtifactsResult struct {
 
 func ListApplicationBusinessProcessDevelopmentArtifactsOutput(ctx *pulumi.Context, args ListApplicationBusinessProcessDevelopmentArtifactsOutputArgs, opts ...pulumi.InvokeOption) ListApplicationBusinessProcessDevelopmentArtifactsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListApplicationBusinessProcessDevelopmentArtifactsResult, error) {
+		ApplyT(func(v interface{}) (ListApplicationBusinessProcessDevelopmentArtifactsResultOutput, error) {
 			args := v.(ListApplicationBusinessProcessDevelopmentArtifactsArgs)
-			r, err := ListApplicationBusinessProcessDevelopmentArtifacts(ctx, &args, opts...)
-			var s ListApplicationBusinessProcessDevelopmentArtifactsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListApplicationBusinessProcessDevelopmentArtifactsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:integrationspaces:listApplicationBusinessProcessDevelopmentArtifacts", args, &rv, "", opts...)
+			if err != nil {
+				return ListApplicationBusinessProcessDevelopmentArtifactsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListApplicationBusinessProcessDevelopmentArtifactsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListApplicationBusinessProcessDevelopmentArtifactsResultOutput), nil
+			}
+			return output, nil
 		}).(ListApplicationBusinessProcessDevelopmentArtifactsResultOutput)
 }
 

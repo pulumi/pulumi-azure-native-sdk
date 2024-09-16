@@ -59,14 +59,20 @@ type LookupStreamingLocatorResult struct {
 
 func LookupStreamingLocatorOutput(ctx *pulumi.Context, args LookupStreamingLocatorOutputArgs, opts ...pulumi.InvokeOption) LookupStreamingLocatorResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupStreamingLocatorResult, error) {
+		ApplyT(func(v interface{}) (LookupStreamingLocatorResultOutput, error) {
 			args := v.(LookupStreamingLocatorArgs)
-			r, err := LookupStreamingLocator(ctx, &args, opts...)
-			var s LookupStreamingLocatorResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupStreamingLocatorResult
+			secret, err := ctx.InvokePackageRaw("azure-native:media/v20180330preview:getStreamingLocator", args, &rv, "", opts...)
+			if err != nil {
+				return LookupStreamingLocatorResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupStreamingLocatorResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupStreamingLocatorResultOutput), nil
+			}
+			return output, nil
 		}).(LookupStreamingLocatorResultOutput)
 }
 

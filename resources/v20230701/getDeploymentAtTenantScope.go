@@ -45,14 +45,20 @@ type LookupDeploymentAtTenantScopeResult struct {
 
 func LookupDeploymentAtTenantScopeOutput(ctx *pulumi.Context, args LookupDeploymentAtTenantScopeOutputArgs, opts ...pulumi.InvokeOption) LookupDeploymentAtTenantScopeResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupDeploymentAtTenantScopeResult, error) {
+		ApplyT(func(v interface{}) (LookupDeploymentAtTenantScopeResultOutput, error) {
 			args := v.(LookupDeploymentAtTenantScopeArgs)
-			r, err := LookupDeploymentAtTenantScope(ctx, &args, opts...)
-			var s LookupDeploymentAtTenantScopeResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupDeploymentAtTenantScopeResult
+			secret, err := ctx.InvokePackageRaw("azure-native:resources/v20230701:getDeploymentAtTenantScope", args, &rv, "", opts...)
+			if err != nil {
+				return LookupDeploymentAtTenantScopeResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupDeploymentAtTenantScopeResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupDeploymentAtTenantScopeResultOutput), nil
+			}
+			return output, nil
 		}).(LookupDeploymentAtTenantScopeResultOutput)
 }
 

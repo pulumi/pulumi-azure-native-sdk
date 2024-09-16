@@ -60,14 +60,20 @@ func (val *LookupGuestConfigurationAssignmentResult) Defaults() *LookupGuestConf
 
 func LookupGuestConfigurationAssignmentOutput(ctx *pulumi.Context, args LookupGuestConfigurationAssignmentOutputArgs, opts ...pulumi.InvokeOption) LookupGuestConfigurationAssignmentResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupGuestConfigurationAssignmentResult, error) {
+		ApplyT(func(v interface{}) (LookupGuestConfigurationAssignmentResultOutput, error) {
 			args := v.(LookupGuestConfigurationAssignmentArgs)
-			r, err := LookupGuestConfigurationAssignment(ctx, &args, opts...)
-			var s LookupGuestConfigurationAssignmentResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupGuestConfigurationAssignmentResult
+			secret, err := ctx.InvokePackageRaw("azure-native:guestconfiguration/v20240405:getGuestConfigurationAssignment", args, &rv, "", opts...)
+			if err != nil {
+				return LookupGuestConfigurationAssignmentResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupGuestConfigurationAssignmentResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupGuestConfigurationAssignmentResultOutput), nil
+			}
+			return output, nil
 		}).(LookupGuestConfigurationAssignmentResultOutput)
 }
 

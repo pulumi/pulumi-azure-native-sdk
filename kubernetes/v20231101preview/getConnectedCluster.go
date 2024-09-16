@@ -110,14 +110,20 @@ func (val *LookupConnectedClusterResult) Defaults() *LookupConnectedClusterResul
 
 func LookupConnectedClusterOutput(ctx *pulumi.Context, args LookupConnectedClusterOutputArgs, opts ...pulumi.InvokeOption) LookupConnectedClusterResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupConnectedClusterResult, error) {
+		ApplyT(func(v interface{}) (LookupConnectedClusterResultOutput, error) {
 			args := v.(LookupConnectedClusterArgs)
-			r, err := LookupConnectedCluster(ctx, &args, opts...)
-			var s LookupConnectedClusterResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupConnectedClusterResult
+			secret, err := ctx.InvokePackageRaw("azure-native:kubernetes/v20231101preview:getConnectedCluster", args, &rv, "", opts...)
+			if err != nil {
+				return LookupConnectedClusterResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupConnectedClusterResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupConnectedClusterResultOutput), nil
+			}
+			return output, nil
 		}).(LookupConnectedClusterResultOutput)
 }
 

@@ -101,14 +101,20 @@ func (val *LookupL3NetworkResult) Defaults() *LookupL3NetworkResult {
 
 func LookupL3NetworkOutput(ctx *pulumi.Context, args LookupL3NetworkOutputArgs, opts ...pulumi.InvokeOption) LookupL3NetworkResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupL3NetworkResult, error) {
+		ApplyT(func(v interface{}) (LookupL3NetworkResultOutput, error) {
 			args := v.(LookupL3NetworkArgs)
-			r, err := LookupL3Network(ctx, &args, opts...)
-			var s LookupL3NetworkResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupL3NetworkResult
+			secret, err := ctx.InvokePackageRaw("azure-native:networkcloud/v20230701:getL3Network", args, &rv, "", opts...)
+			if err != nil {
+				return LookupL3NetworkResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupL3NetworkResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupL3NetworkResultOutput), nil
+			}
+			return output, nil
 		}).(LookupL3NetworkResultOutput)
 }
 

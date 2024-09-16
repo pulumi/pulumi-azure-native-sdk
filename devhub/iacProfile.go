@@ -14,6 +14,8 @@ import (
 
 // Resource representation of a IacProfile.
 // Azure REST API version: 2024-05-01-preview.
+//
+// Other available API versions: 2024-08-01-preview.
 type IacProfile struct {
 	pulumi.CustomResourceState
 
@@ -68,6 +70,9 @@ func NewIacProfile(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:devhub/v20240501preview:IacProfile"),
+		},
+		{
+			Type: pulumi.String("azure-native:devhub/v20240801preview:IacProfile"),
 		},
 	})
 	opts = append(opts, aliases)

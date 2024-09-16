@@ -85,14 +85,20 @@ func (val *LookupPacketCaptureResult) Defaults() *LookupPacketCaptureResult {
 
 func LookupPacketCaptureOutput(ctx *pulumi.Context, args LookupPacketCaptureOutputArgs, opts ...pulumi.InvokeOption) LookupPacketCaptureResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupPacketCaptureResult, error) {
+		ApplyT(func(v interface{}) (LookupPacketCaptureResultOutput, error) {
 			args := v.(LookupPacketCaptureArgs)
-			r, err := LookupPacketCapture(ctx, &args, opts...)
-			var s LookupPacketCaptureResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupPacketCaptureResult
+			secret, err := ctx.InvokePackageRaw("azure-native:mobilenetwork:getPacketCapture", args, &rv, "", opts...)
+			if err != nil {
+				return LookupPacketCaptureResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupPacketCaptureResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupPacketCaptureResultOutput), nil
+			}
+			return output, nil
 		}).(LookupPacketCaptureResultOutput)
 }
 

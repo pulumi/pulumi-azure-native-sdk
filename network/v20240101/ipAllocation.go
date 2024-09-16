@@ -125,6 +125,9 @@ func NewIpAllocation(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20231101:IpAllocation"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20240301:IpAllocation"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

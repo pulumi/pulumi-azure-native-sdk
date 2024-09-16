@@ -45,14 +45,20 @@ type ListStaticSiteAppSettingsResult struct {
 
 func ListStaticSiteAppSettingsOutput(ctx *pulumi.Context, args ListStaticSiteAppSettingsOutputArgs, opts ...pulumi.InvokeOption) ListStaticSiteAppSettingsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListStaticSiteAppSettingsResult, error) {
+		ApplyT(func(v interface{}) (ListStaticSiteAppSettingsResultOutput, error) {
 			args := v.(ListStaticSiteAppSettingsArgs)
-			r, err := ListStaticSiteAppSettings(ctx, &args, opts...)
-			var s ListStaticSiteAppSettingsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListStaticSiteAppSettingsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:web/v20210201:listStaticSiteAppSettings", args, &rv, "", opts...)
+			if err != nil {
+				return ListStaticSiteAppSettingsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListStaticSiteAppSettingsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListStaticSiteAppSettingsResultOutput), nil
+			}
+			return output, nil
 		}).(ListStaticSiteAppSettingsResultOutput)
 }
 

@@ -45,14 +45,20 @@ type ListWebAppAzureStorageAccountsResult struct {
 
 func ListWebAppAzureStorageAccountsOutput(ctx *pulumi.Context, args ListWebAppAzureStorageAccountsOutputArgs, opts ...pulumi.InvokeOption) ListWebAppAzureStorageAccountsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListWebAppAzureStorageAccountsResult, error) {
+		ApplyT(func(v interface{}) (ListWebAppAzureStorageAccountsResultOutput, error) {
 			args := v.(ListWebAppAzureStorageAccountsArgs)
-			r, err := ListWebAppAzureStorageAccounts(ctx, &args, opts...)
-			var s ListWebAppAzureStorageAccountsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListWebAppAzureStorageAccountsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:web/v20231201:listWebAppAzureStorageAccounts", args, &rv, "", opts...)
+			if err != nil {
+				return ListWebAppAzureStorageAccountsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListWebAppAzureStorageAccountsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListWebAppAzureStorageAccountsResultOutput), nil
+			}
+			return output, nil
 		}).(ListWebAppAzureStorageAccountsResultOutput)
 }
 

@@ -14,7 +14,7 @@ import (
 // The operation to get the extension.
 // Azure REST API version: 2022-12-27.
 //
-// Other available API versions: 2019-08-02-preview, 2020-08-15-preview, 2022-05-10-preview, 2023-06-20-preview, 2023-10-03-preview, 2024-03-31-preview, 2024-05-20-preview, 2024-07-10.
+// Other available API versions: 2019-08-02-preview, 2020-08-15-preview, 2022-05-10-preview, 2023-06-20-preview, 2023-10-03-preview, 2024-03-31-preview, 2024-05-20-preview, 2024-07-10, 2024-07-31-preview.
 func LookupMachineExtension(ctx *pulumi.Context, args *LookupMachineExtensionArgs, opts ...pulumi.InvokeOption) (*LookupMachineExtensionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMachineExtensionResult
@@ -54,14 +54,20 @@ type LookupMachineExtensionResult struct {
 
 func LookupMachineExtensionOutput(ctx *pulumi.Context, args LookupMachineExtensionOutputArgs, opts ...pulumi.InvokeOption) LookupMachineExtensionResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupMachineExtensionResult, error) {
+		ApplyT(func(v interface{}) (LookupMachineExtensionResultOutput, error) {
 			args := v.(LookupMachineExtensionArgs)
-			r, err := LookupMachineExtension(ctx, &args, opts...)
-			var s LookupMachineExtensionResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupMachineExtensionResult
+			secret, err := ctx.InvokePackageRaw("azure-native:hybridcompute:getMachineExtension", args, &rv, "", opts...)
+			if err != nil {
+				return LookupMachineExtensionResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupMachineExtensionResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupMachineExtensionResultOutput), nil
+			}
+			return output, nil
 		}).(LookupMachineExtensionResultOutput)
 }
 

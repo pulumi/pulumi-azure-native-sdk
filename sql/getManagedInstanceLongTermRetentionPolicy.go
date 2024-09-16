@@ -56,14 +56,20 @@ type LookupManagedInstanceLongTermRetentionPolicyResult struct {
 
 func LookupManagedInstanceLongTermRetentionPolicyOutput(ctx *pulumi.Context, args LookupManagedInstanceLongTermRetentionPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupManagedInstanceLongTermRetentionPolicyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupManagedInstanceLongTermRetentionPolicyResult, error) {
+		ApplyT(func(v interface{}) (LookupManagedInstanceLongTermRetentionPolicyResultOutput, error) {
 			args := v.(LookupManagedInstanceLongTermRetentionPolicyArgs)
-			r, err := LookupManagedInstanceLongTermRetentionPolicy(ctx, &args, opts...)
-			var s LookupManagedInstanceLongTermRetentionPolicyResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupManagedInstanceLongTermRetentionPolicyResult
+			secret, err := ctx.InvokePackageRaw("azure-native:sql:getManagedInstanceLongTermRetentionPolicy", args, &rv, "", opts...)
+			if err != nil {
+				return LookupManagedInstanceLongTermRetentionPolicyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupManagedInstanceLongTermRetentionPolicyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupManagedInstanceLongTermRetentionPolicyResultOutput), nil
+			}
+			return output, nil
 		}).(LookupManagedInstanceLongTermRetentionPolicyResultOutput)
 }
 

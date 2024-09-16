@@ -114,6 +114,9 @@ func NewHubRouteTable(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20240101:HubRouteTable"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20240301:HubRouteTable"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

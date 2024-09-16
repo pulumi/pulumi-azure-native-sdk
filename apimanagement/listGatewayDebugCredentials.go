@@ -48,14 +48,20 @@ type ListGatewayDebugCredentialsResult struct {
 
 func ListGatewayDebugCredentialsOutput(ctx *pulumi.Context, args ListGatewayDebugCredentialsOutputArgs, opts ...pulumi.InvokeOption) ListGatewayDebugCredentialsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListGatewayDebugCredentialsResult, error) {
+		ApplyT(func(v interface{}) (ListGatewayDebugCredentialsResultOutput, error) {
 			args := v.(ListGatewayDebugCredentialsArgs)
-			r, err := ListGatewayDebugCredentials(ctx, &args, opts...)
-			var s ListGatewayDebugCredentialsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListGatewayDebugCredentialsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:apimanagement:listGatewayDebugCredentials", args, &rv, "", opts...)
+			if err != nil {
+				return ListGatewayDebugCredentialsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListGatewayDebugCredentialsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListGatewayDebugCredentialsResultOutput), nil
+			}
+			return output, nil
 		}).(ListGatewayDebugCredentialsResultOutput)
 }
 

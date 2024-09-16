@@ -54,14 +54,20 @@ type LookupSuppressionResult struct {
 
 func LookupSuppressionOutput(ctx *pulumi.Context, args LookupSuppressionOutputArgs, opts ...pulumi.InvokeOption) LookupSuppressionResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSuppressionResult, error) {
+		ApplyT(func(v interface{}) (LookupSuppressionResultOutput, error) {
 			args := v.(LookupSuppressionArgs)
-			r, err := LookupSuppression(ctx, &args, opts...)
-			var s LookupSuppressionResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupSuppressionResult
+			secret, err := ctx.InvokePackageRaw("azure-native:advisor:getSuppression", args, &rv, "", opts...)
+			if err != nil {
+				return LookupSuppressionResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupSuppressionResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupSuppressionResultOutput), nil
+			}
+			return output, nil
 		}).(LookupSuppressionResultOutput)
 }
 

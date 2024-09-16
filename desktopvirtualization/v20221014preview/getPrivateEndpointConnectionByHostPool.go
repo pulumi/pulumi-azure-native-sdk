@@ -51,14 +51,20 @@ type LookupPrivateEndpointConnectionByHostPoolResult struct {
 
 func LookupPrivateEndpointConnectionByHostPoolOutput(ctx *pulumi.Context, args LookupPrivateEndpointConnectionByHostPoolOutputArgs, opts ...pulumi.InvokeOption) LookupPrivateEndpointConnectionByHostPoolResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupPrivateEndpointConnectionByHostPoolResult, error) {
+		ApplyT(func(v interface{}) (LookupPrivateEndpointConnectionByHostPoolResultOutput, error) {
 			args := v.(LookupPrivateEndpointConnectionByHostPoolArgs)
-			r, err := LookupPrivateEndpointConnectionByHostPool(ctx, &args, opts...)
-			var s LookupPrivateEndpointConnectionByHostPoolResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupPrivateEndpointConnectionByHostPoolResult
+			secret, err := ctx.InvokePackageRaw("azure-native:desktopvirtualization/v20221014preview:getPrivateEndpointConnectionByHostPool", args, &rv, "", opts...)
+			if err != nil {
+				return LookupPrivateEndpointConnectionByHostPoolResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupPrivateEndpointConnectionByHostPoolResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupPrivateEndpointConnectionByHostPoolResultOutput), nil
+			}
+			return output, nil
 		}).(LookupPrivateEndpointConnectionByHostPoolResultOutput)
 }
 

@@ -54,14 +54,20 @@ type LookupCodelessApiPollingDataConnectorResult struct {
 
 func LookupCodelessApiPollingDataConnectorOutput(ctx *pulumi.Context, args LookupCodelessApiPollingDataConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupCodelessApiPollingDataConnectorResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupCodelessApiPollingDataConnectorResult, error) {
+		ApplyT(func(v interface{}) (LookupCodelessApiPollingDataConnectorResultOutput, error) {
 			args := v.(LookupCodelessApiPollingDataConnectorArgs)
-			r, err := LookupCodelessApiPollingDataConnector(ctx, &args, opts...)
-			var s LookupCodelessApiPollingDataConnectorResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupCodelessApiPollingDataConnectorResult
+			secret, err := ctx.InvokePackageRaw("azure-native:securityinsights/v20230801preview:getCodelessApiPollingDataConnector", args, &rv, "", opts...)
+			if err != nil {
+				return LookupCodelessApiPollingDataConnectorResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupCodelessApiPollingDataConnectorResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupCodelessApiPollingDataConnectorResultOutput), nil
+			}
+			return output, nil
 		}).(LookupCodelessApiPollingDataConnectorResultOutput)
 }
 

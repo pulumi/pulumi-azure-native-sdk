@@ -51,14 +51,20 @@ type LookupBgpPeerResult struct {
 
 func LookupBgpPeerOutput(ctx *pulumi.Context, args LookupBgpPeerOutputArgs, opts ...pulumi.InvokeOption) LookupBgpPeerResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupBgpPeerResult, error) {
+		ApplyT(func(v interface{}) (LookupBgpPeerResultOutput, error) {
 			args := v.(LookupBgpPeerArgs)
-			r, err := LookupBgpPeer(ctx, &args, opts...)
-			var s LookupBgpPeerResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupBgpPeerResult
+			secret, err := ctx.InvokePackageRaw("azure-native:kubernetesruntime/v20240301:getBgpPeer", args, &rv, "", opts...)
+			if err != nil {
+				return LookupBgpPeerResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupBgpPeerResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupBgpPeerResultOutput), nil
+			}
+			return output, nil
 		}).(LookupBgpPeerResultOutput)
 }
 

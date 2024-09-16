@@ -79,14 +79,20 @@ func (val *LookupMediaServiceResult) Defaults() *LookupMediaServiceResult {
 
 func LookupMediaServiceOutput(ctx *pulumi.Context, args LookupMediaServiceOutputArgs, opts ...pulumi.InvokeOption) LookupMediaServiceResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupMediaServiceResult, error) {
+		ApplyT(func(v interface{}) (LookupMediaServiceResultOutput, error) {
 			args := v.(LookupMediaServiceArgs)
-			r, err := LookupMediaService(ctx, &args, opts...)
-			var s LookupMediaServiceResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupMediaServiceResult
+			secret, err := ctx.InvokePackageRaw("azure-native:media/v20230101:getMediaService", args, &rv, "", opts...)
+			if err != nil {
+				return LookupMediaServiceResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupMediaServiceResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupMediaServiceResultOutput), nil
+			}
+			return output, nil
 		}).(LookupMediaServiceResultOutput)
 }
 

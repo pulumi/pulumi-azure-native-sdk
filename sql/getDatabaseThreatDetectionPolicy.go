@@ -64,14 +64,20 @@ type LookupDatabaseThreatDetectionPolicyResult struct {
 
 func LookupDatabaseThreatDetectionPolicyOutput(ctx *pulumi.Context, args LookupDatabaseThreatDetectionPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupDatabaseThreatDetectionPolicyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupDatabaseThreatDetectionPolicyResult, error) {
+		ApplyT(func(v interface{}) (LookupDatabaseThreatDetectionPolicyResultOutput, error) {
 			args := v.(LookupDatabaseThreatDetectionPolicyArgs)
-			r, err := LookupDatabaseThreatDetectionPolicy(ctx, &args, opts...)
-			var s LookupDatabaseThreatDetectionPolicyResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupDatabaseThreatDetectionPolicyResult
+			secret, err := ctx.InvokePackageRaw("azure-native:sql:getDatabaseThreatDetectionPolicy", args, &rv, "", opts...)
+			if err != nil {
+				return LookupDatabaseThreatDetectionPolicyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupDatabaseThreatDetectionPolicyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupDatabaseThreatDetectionPolicyResultOutput), nil
+			}
+			return output, nil
 		}).(LookupDatabaseThreatDetectionPolicyResultOutput)
 }
 

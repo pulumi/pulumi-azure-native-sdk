@@ -136,14 +136,20 @@ func (val *LookupWebPubSubResult) Defaults() *LookupWebPubSubResult {
 
 func LookupWebPubSubOutput(ctx *pulumi.Context, args LookupWebPubSubOutputArgs, opts ...pulumi.InvokeOption) LookupWebPubSubResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupWebPubSubResult, error) {
+		ApplyT(func(v interface{}) (LookupWebPubSubResultOutput, error) {
 			args := v.(LookupWebPubSubArgs)
-			r, err := LookupWebPubSub(ctx, &args, opts...)
-			var s LookupWebPubSubResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupWebPubSubResult
+			secret, err := ctx.InvokePackageRaw("azure-native:webpubsub/v20240401preview:getWebPubSub", args, &rv, "", opts...)
+			if err != nil {
+				return LookupWebPubSubResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupWebPubSubResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupWebPubSubResultOutput), nil
+			}
+			return output, nil
 		}).(LookupWebPubSubResultOutput)
 }
 

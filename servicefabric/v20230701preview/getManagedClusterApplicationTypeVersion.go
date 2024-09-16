@@ -55,14 +55,20 @@ type LookupManagedClusterApplicationTypeVersionResult struct {
 
 func LookupManagedClusterApplicationTypeVersionOutput(ctx *pulumi.Context, args LookupManagedClusterApplicationTypeVersionOutputArgs, opts ...pulumi.InvokeOption) LookupManagedClusterApplicationTypeVersionResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupManagedClusterApplicationTypeVersionResult, error) {
+		ApplyT(func(v interface{}) (LookupManagedClusterApplicationTypeVersionResultOutput, error) {
 			args := v.(LookupManagedClusterApplicationTypeVersionArgs)
-			r, err := LookupManagedClusterApplicationTypeVersion(ctx, &args, opts...)
-			var s LookupManagedClusterApplicationTypeVersionResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupManagedClusterApplicationTypeVersionResult
+			secret, err := ctx.InvokePackageRaw("azure-native:servicefabric/v20230701preview:getManagedClusterApplicationTypeVersion", args, &rv, "", opts...)
+			if err != nil {
+				return LookupManagedClusterApplicationTypeVersionResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupManagedClusterApplicationTypeVersionResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupManagedClusterApplicationTypeVersionResultOutput), nil
+			}
+			return output, nil
 		}).(LookupManagedClusterApplicationTypeVersionResultOutput)
 }
 

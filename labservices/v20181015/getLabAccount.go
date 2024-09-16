@@ -57,14 +57,20 @@ type LookupLabAccountResult struct {
 
 func LookupLabAccountOutput(ctx *pulumi.Context, args LookupLabAccountOutputArgs, opts ...pulumi.InvokeOption) LookupLabAccountResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupLabAccountResult, error) {
+		ApplyT(func(v interface{}) (LookupLabAccountResultOutput, error) {
 			args := v.(LookupLabAccountArgs)
-			r, err := LookupLabAccount(ctx, &args, opts...)
-			var s LookupLabAccountResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupLabAccountResult
+			secret, err := ctx.InvokePackageRaw("azure-native:labservices/v20181015:getLabAccount", args, &rv, "", opts...)
+			if err != nil {
+				return LookupLabAccountResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupLabAccountResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupLabAccountResultOutput), nil
+			}
+			return output, nil
 		}).(LookupLabAccountResultOutput)
 }
 

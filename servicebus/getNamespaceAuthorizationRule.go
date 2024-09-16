@@ -14,7 +14,7 @@ import (
 // Gets an authorization rule for a namespace by rule name.
 // Azure REST API version: 2022-01-01-preview.
 //
-// Other available API versions: 2014-09-01, 2015-08-01, 2022-10-01-preview, 2023-01-01-preview.
+// Other available API versions: 2014-09-01, 2015-08-01, 2022-10-01-preview, 2023-01-01-preview, 2024-01-01.
 func LookupNamespaceAuthorizationRule(ctx *pulumi.Context, args *LookupNamespaceAuthorizationRuleArgs, opts ...pulumi.InvokeOption) (*LookupNamespaceAuthorizationRuleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNamespaceAuthorizationRuleResult
@@ -52,14 +52,20 @@ type LookupNamespaceAuthorizationRuleResult struct {
 
 func LookupNamespaceAuthorizationRuleOutput(ctx *pulumi.Context, args LookupNamespaceAuthorizationRuleOutputArgs, opts ...pulumi.InvokeOption) LookupNamespaceAuthorizationRuleResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupNamespaceAuthorizationRuleResult, error) {
+		ApplyT(func(v interface{}) (LookupNamespaceAuthorizationRuleResultOutput, error) {
 			args := v.(LookupNamespaceAuthorizationRuleArgs)
-			r, err := LookupNamespaceAuthorizationRule(ctx, &args, opts...)
-			var s LookupNamespaceAuthorizationRuleResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupNamespaceAuthorizationRuleResult
+			secret, err := ctx.InvokePackageRaw("azure-native:servicebus:getNamespaceAuthorizationRule", args, &rv, "", opts...)
+			if err != nil {
+				return LookupNamespaceAuthorizationRuleResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupNamespaceAuthorizationRuleResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupNamespaceAuthorizationRuleResultOutput), nil
+			}
+			return output, nil
 		}).(LookupNamespaceAuthorizationRuleResultOutput)
 }
 

@@ -52,14 +52,20 @@ type LookupSqlServerInstanceResult struct {
 
 func LookupSqlServerInstanceOutput(ctx *pulumi.Context, args LookupSqlServerInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupSqlServerInstanceResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSqlServerInstanceResult, error) {
+		ApplyT(func(v interface{}) (LookupSqlServerInstanceResultOutput, error) {
 			args := v.(LookupSqlServerInstanceArgs)
-			r, err := LookupSqlServerInstance(ctx, &args, opts...)
-			var s LookupSqlServerInstanceResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupSqlServerInstanceResult
+			secret, err := ctx.InvokePackageRaw("azure-native:azurearcdata:getSqlServerInstance", args, &rv, "", opts...)
+			if err != nil {
+				return LookupSqlServerInstanceResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupSqlServerInstanceResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupSqlServerInstanceResultOutput), nil
+			}
+			return output, nil
 		}).(LookupSqlServerInstanceResultOutput)
 }
 

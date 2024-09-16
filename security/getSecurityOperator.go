@@ -44,14 +44,20 @@ type LookupSecurityOperatorResult struct {
 
 func LookupSecurityOperatorOutput(ctx *pulumi.Context, args LookupSecurityOperatorOutputArgs, opts ...pulumi.InvokeOption) LookupSecurityOperatorResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSecurityOperatorResult, error) {
+		ApplyT(func(v interface{}) (LookupSecurityOperatorResultOutput, error) {
 			args := v.(LookupSecurityOperatorArgs)
-			r, err := LookupSecurityOperator(ctx, &args, opts...)
-			var s LookupSecurityOperatorResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupSecurityOperatorResult
+			secret, err := ctx.InvokePackageRaw("azure-native:security:getSecurityOperator", args, &rv, "", opts...)
+			if err != nil {
+				return LookupSecurityOperatorResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupSecurityOperatorResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupSecurityOperatorResultOutput), nil
+			}
+			return output, nil
 		}).(LookupSecurityOperatorResultOutput)
 }
 

@@ -44,14 +44,20 @@ type ListIntegrationAccountCallbackUrlResult struct {
 
 func ListIntegrationAccountCallbackUrlOutput(ctx *pulumi.Context, args ListIntegrationAccountCallbackUrlOutputArgs, opts ...pulumi.InvokeOption) ListIntegrationAccountCallbackUrlResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListIntegrationAccountCallbackUrlResult, error) {
+		ApplyT(func(v interface{}) (ListIntegrationAccountCallbackUrlResultOutput, error) {
 			args := v.(ListIntegrationAccountCallbackUrlArgs)
-			r, err := ListIntegrationAccountCallbackUrl(ctx, &args, opts...)
-			var s ListIntegrationAccountCallbackUrlResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListIntegrationAccountCallbackUrlResult
+			secret, err := ctx.InvokePackageRaw("azure-native:logic:listIntegrationAccountCallbackUrl", args, &rv, "", opts...)
+			if err != nil {
+				return ListIntegrationAccountCallbackUrlResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListIntegrationAccountCallbackUrlResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListIntegrationAccountCallbackUrlResultOutput), nil
+			}
+			return output, nil
 		}).(ListIntegrationAccountCallbackUrlResultOutput)
 }
 

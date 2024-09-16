@@ -47,14 +47,20 @@ type LookupConnectionRaiBlocklistItemResult struct {
 
 func LookupConnectionRaiBlocklistItemOutput(ctx *pulumi.Context, args LookupConnectionRaiBlocklistItemOutputArgs, opts ...pulumi.InvokeOption) LookupConnectionRaiBlocklistItemResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupConnectionRaiBlocklistItemResult, error) {
+		ApplyT(func(v interface{}) (LookupConnectionRaiBlocklistItemResultOutput, error) {
 			args := v.(LookupConnectionRaiBlocklistItemArgs)
-			r, err := LookupConnectionRaiBlocklistItem(ctx, &args, opts...)
-			var s LookupConnectionRaiBlocklistItemResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupConnectionRaiBlocklistItemResult
+			secret, err := ctx.InvokePackageRaw("azure-native:machinelearningservices/v20240401preview:getConnectionRaiBlocklistItem", args, &rv, "", opts...)
+			if err != nil {
+				return LookupConnectionRaiBlocklistItemResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupConnectionRaiBlocklistItemResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupConnectionRaiBlocklistItemResultOutput), nil
+			}
+			return output, nil
 		}).(LookupConnectionRaiBlocklistItemResultOutput)
 }
 

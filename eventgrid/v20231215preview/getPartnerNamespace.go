@@ -88,14 +88,20 @@ func (val *LookupPartnerNamespaceResult) Defaults() *LookupPartnerNamespaceResul
 
 func LookupPartnerNamespaceOutput(ctx *pulumi.Context, args LookupPartnerNamespaceOutputArgs, opts ...pulumi.InvokeOption) LookupPartnerNamespaceResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupPartnerNamespaceResult, error) {
+		ApplyT(func(v interface{}) (LookupPartnerNamespaceResultOutput, error) {
 			args := v.(LookupPartnerNamespaceArgs)
-			r, err := LookupPartnerNamespace(ctx, &args, opts...)
-			var s LookupPartnerNamespaceResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupPartnerNamespaceResult
+			secret, err := ctx.InvokePackageRaw("azure-native:eventgrid/v20231215preview:getPartnerNamespace", args, &rv, "", opts...)
+			if err != nil {
+				return LookupPartnerNamespaceResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupPartnerNamespaceResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupPartnerNamespaceResultOutput), nil
+			}
+			return output, nil
 		}).(LookupPartnerNamespaceResultOutput)
 }
 

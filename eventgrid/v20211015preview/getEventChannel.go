@@ -72,14 +72,20 @@ func (val *LookupEventChannelResult) Defaults() *LookupEventChannelResult {
 
 func LookupEventChannelOutput(ctx *pulumi.Context, args LookupEventChannelOutputArgs, opts ...pulumi.InvokeOption) LookupEventChannelResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupEventChannelResult, error) {
+		ApplyT(func(v interface{}) (LookupEventChannelResultOutput, error) {
 			args := v.(LookupEventChannelArgs)
-			r, err := LookupEventChannel(ctx, &args, opts...)
-			var s LookupEventChannelResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupEventChannelResult
+			secret, err := ctx.InvokePackageRaw("azure-native:eventgrid/v20211015preview:getEventChannel", args, &rv, "", opts...)
+			if err != nil {
+				return LookupEventChannelResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupEventChannelResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupEventChannelResultOutput), nil
+			}
+			return output, nil
 		}).(LookupEventChannelResultOutput)
 }
 

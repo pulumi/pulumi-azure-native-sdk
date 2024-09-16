@@ -55,14 +55,20 @@ type LookupExportPipelineResult struct {
 
 func LookupExportPipelineOutput(ctx *pulumi.Context, args LookupExportPipelineOutputArgs, opts ...pulumi.InvokeOption) LookupExportPipelineResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupExportPipelineResult, error) {
+		ApplyT(func(v interface{}) (LookupExportPipelineResultOutput, error) {
 			args := v.(LookupExportPipelineArgs)
-			r, err := LookupExportPipeline(ctx, &args, opts...)
-			var s LookupExportPipelineResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupExportPipelineResult
+			secret, err := ctx.InvokePackageRaw("azure-native:containerregistry/v20230801preview:getExportPipeline", args, &rv, "", opts...)
+			if err != nil {
+				return LookupExportPipelineResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupExportPipelineResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupExportPipelineResultOutput), nil
+			}
+			return output, nil
 		}).(LookupExportPipelineResultOutput)
 }
 

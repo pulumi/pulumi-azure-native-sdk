@@ -37,14 +37,20 @@ type ListEndpointKeysResult struct {
 
 func ListEndpointKeysOutput(ctx *pulumi.Context, args ListEndpointKeysOutputArgs, opts ...pulumi.InvokeOption) ListEndpointKeysResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListEndpointKeysResult, error) {
+		ApplyT(func(v interface{}) (ListEndpointKeysResultOutput, error) {
 			args := v.(ListEndpointKeysArgs)
-			r, err := ListEndpointKeys(ctx, &args, opts...)
-			var s ListEndpointKeysResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListEndpointKeysResult
+			secret, err := ctx.InvokePackageRaw("azure-native:machinelearningservices/v20240101preview:listEndpointKeys", args, &rv, "", opts...)
+			if err != nil {
+				return ListEndpointKeysResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListEndpointKeysResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListEndpointKeysResultOutput), nil
+			}
+			return output, nil
 		}).(ListEndpointKeysResultOutput)
 }
 

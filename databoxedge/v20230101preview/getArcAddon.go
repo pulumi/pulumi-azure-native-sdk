@@ -68,14 +68,20 @@ type LookupArcAddonResult struct {
 
 func LookupArcAddonOutput(ctx *pulumi.Context, args LookupArcAddonOutputArgs, opts ...pulumi.InvokeOption) LookupArcAddonResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupArcAddonResult, error) {
+		ApplyT(func(v interface{}) (LookupArcAddonResultOutput, error) {
 			args := v.(LookupArcAddonArgs)
-			r, err := LookupArcAddon(ctx, &args, opts...)
-			var s LookupArcAddonResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupArcAddonResult
+			secret, err := ctx.InvokePackageRaw("azure-native:databoxedge/v20230101preview:getArcAddon", args, &rv, "", opts...)
+			if err != nil {
+				return LookupArcAddonResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupArcAddonResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupArcAddonResultOutput), nil
+			}
+			return output, nil
 		}).(LookupArcAddonResultOutput)
 }
 

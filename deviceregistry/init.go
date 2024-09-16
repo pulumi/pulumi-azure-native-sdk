@@ -25,6 +25,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Asset{}
 	case "azure-native:deviceregistry:AssetEndpointProfile":
 		r = &AssetEndpointProfile{}
+	case "azure-native:deviceregistry:DiscoveredAsset":
+		r = &DiscoveredAsset{}
+	case "azure-native:deviceregistry:DiscoveredAssetEndpointProfile":
+		r = &DiscoveredAssetEndpointProfile{}
+	case "azure-native:deviceregistry:Schema":
+		r = &Schema{}
+	case "azure-native:deviceregistry:SchemaRegistry":
+		r = &SchemaRegistry{}
+	case "azure-native:deviceregistry:SchemaVersion":
+		r = &SchemaVersion{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

@@ -67,14 +67,20 @@ type LookupVirtualNetworkResult struct {
 
 func LookupVirtualNetworkOutput(ctx *pulumi.Context, args LookupVirtualNetworkOutputArgs, opts ...pulumi.InvokeOption) LookupVirtualNetworkResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupVirtualNetworkResult, error) {
+		ApplyT(func(v interface{}) (LookupVirtualNetworkResultOutput, error) {
 			args := v.(LookupVirtualNetworkArgs)
-			r, err := LookupVirtualNetwork(ctx, &args, opts...)
-			var s LookupVirtualNetworkResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupVirtualNetworkResult
+			secret, err := ctx.InvokePackageRaw("azure-native:connectedvmwarevsphere/v20231201:getVirtualNetwork", args, &rv, "", opts...)
+			if err != nil {
+				return LookupVirtualNetworkResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupVirtualNetworkResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupVirtualNetworkResultOutput), nil
+			}
+			return output, nil
 		}).(LookupVirtualNetworkResultOutput)
 }
 

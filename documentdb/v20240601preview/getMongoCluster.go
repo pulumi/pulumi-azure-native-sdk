@@ -49,14 +49,20 @@ type LookupMongoClusterResult struct {
 
 func LookupMongoClusterOutput(ctx *pulumi.Context, args LookupMongoClusterOutputArgs, opts ...pulumi.InvokeOption) LookupMongoClusterResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupMongoClusterResult, error) {
+		ApplyT(func(v interface{}) (LookupMongoClusterResultOutput, error) {
 			args := v.(LookupMongoClusterArgs)
-			r, err := LookupMongoCluster(ctx, &args, opts...)
-			var s LookupMongoClusterResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupMongoClusterResult
+			secret, err := ctx.InvokePackageRaw("azure-native:documentdb/v20240601preview:getMongoCluster", args, &rv, "", opts...)
+			if err != nil {
+				return LookupMongoClusterResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupMongoClusterResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupMongoClusterResultOutput), nil
+			}
+			return output, nil
 		}).(LookupMongoClusterResultOutput)
 }
 

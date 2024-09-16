@@ -55,14 +55,20 @@ type LookupWorkspaceApiVersionSetResult struct {
 
 func LookupWorkspaceApiVersionSetOutput(ctx *pulumi.Context, args LookupWorkspaceApiVersionSetOutputArgs, opts ...pulumi.InvokeOption) LookupWorkspaceApiVersionSetResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupWorkspaceApiVersionSetResult, error) {
+		ApplyT(func(v interface{}) (LookupWorkspaceApiVersionSetResultOutput, error) {
 			args := v.(LookupWorkspaceApiVersionSetArgs)
-			r, err := LookupWorkspaceApiVersionSet(ctx, &args, opts...)
-			var s LookupWorkspaceApiVersionSetResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupWorkspaceApiVersionSetResult
+			secret, err := ctx.InvokePackageRaw("azure-native:apimanagement/v20230301preview:getWorkspaceApiVersionSet", args, &rv, "", opts...)
+			if err != nil {
+				return LookupWorkspaceApiVersionSetResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupWorkspaceApiVersionSetResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupWorkspaceApiVersionSetResultOutput), nil
+			}
+			return output, nil
 		}).(LookupWorkspaceApiVersionSetResultOutput)
 }
 

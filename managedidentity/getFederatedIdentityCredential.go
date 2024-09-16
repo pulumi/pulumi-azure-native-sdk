@@ -54,14 +54,20 @@ type LookupFederatedIdentityCredentialResult struct {
 
 func LookupFederatedIdentityCredentialOutput(ctx *pulumi.Context, args LookupFederatedIdentityCredentialOutputArgs, opts ...pulumi.InvokeOption) LookupFederatedIdentityCredentialResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupFederatedIdentityCredentialResult, error) {
+		ApplyT(func(v interface{}) (LookupFederatedIdentityCredentialResultOutput, error) {
 			args := v.(LookupFederatedIdentityCredentialArgs)
-			r, err := LookupFederatedIdentityCredential(ctx, &args, opts...)
-			var s LookupFederatedIdentityCredentialResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupFederatedIdentityCredentialResult
+			secret, err := ctx.InvokePackageRaw("azure-native:managedidentity:getFederatedIdentityCredential", args, &rv, "", opts...)
+			if err != nil {
+				return LookupFederatedIdentityCredentialResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupFederatedIdentityCredentialResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupFederatedIdentityCredentialResultOutput), nil
+			}
+			return output, nil
 		}).(LookupFederatedIdentityCredentialResultOutput)
 }
 

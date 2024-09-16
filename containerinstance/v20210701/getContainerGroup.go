@@ -78,14 +78,20 @@ type LookupContainerGroupResult struct {
 
 func LookupContainerGroupOutput(ctx *pulumi.Context, args LookupContainerGroupOutputArgs, opts ...pulumi.InvokeOption) LookupContainerGroupResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupContainerGroupResult, error) {
+		ApplyT(func(v interface{}) (LookupContainerGroupResultOutput, error) {
 			args := v.(LookupContainerGroupArgs)
-			r, err := LookupContainerGroup(ctx, &args, opts...)
-			var s LookupContainerGroupResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupContainerGroupResult
+			secret, err := ctx.InvokePackageRaw("azure-native:containerinstance/v20210701:getContainerGroup", args, &rv, "", opts...)
+			if err != nil {
+				return LookupContainerGroupResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupContainerGroupResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupContainerGroupResultOutput), nil
+			}
+			return output, nil
 		}).(LookupContainerGroupResultOutput)
 }
 

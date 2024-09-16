@@ -47,14 +47,20 @@ type LookupIscsiPathResult struct {
 
 func LookupIscsiPathOutput(ctx *pulumi.Context, args LookupIscsiPathOutputArgs, opts ...pulumi.InvokeOption) LookupIscsiPathResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupIscsiPathResult, error) {
+		ApplyT(func(v interface{}) (LookupIscsiPathResultOutput, error) {
 			args := v.(LookupIscsiPathArgs)
-			r, err := LookupIscsiPath(ctx, &args, opts...)
-			var s LookupIscsiPathResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupIscsiPathResult
+			secret, err := ctx.InvokePackageRaw("azure-native:avs/v20230901:getIscsiPath", args, &rv, "", opts...)
+			if err != nil {
+				return LookupIscsiPathResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupIscsiPathResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupIscsiPathResultOutput), nil
+			}
+			return output, nil
 		}).(LookupIscsiPathResultOutput)
 }
 

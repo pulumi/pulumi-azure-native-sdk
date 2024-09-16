@@ -63,14 +63,20 @@ type LookupGlobalRulestackResult struct {
 
 func LookupGlobalRulestackOutput(ctx *pulumi.Context, args LookupGlobalRulestackOutputArgs, opts ...pulumi.InvokeOption) LookupGlobalRulestackResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupGlobalRulestackResult, error) {
+		ApplyT(func(v interface{}) (LookupGlobalRulestackResultOutput, error) {
 			args := v.(LookupGlobalRulestackArgs)
-			r, err := LookupGlobalRulestack(ctx, &args, opts...)
-			var s LookupGlobalRulestackResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupGlobalRulestackResult
+			secret, err := ctx.InvokePackageRaw("azure-native:cloudngfw/v20230901preview:getGlobalRulestack", args, &rv, "", opts...)
+			if err != nil {
+				return LookupGlobalRulestackResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupGlobalRulestackResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupGlobalRulestackResultOutput), nil
+			}
+			return output, nil
 		}).(LookupGlobalRulestackResultOutput)
 }
 

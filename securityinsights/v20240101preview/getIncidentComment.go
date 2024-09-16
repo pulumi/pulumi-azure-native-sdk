@@ -57,14 +57,20 @@ type LookupIncidentCommentResult struct {
 
 func LookupIncidentCommentOutput(ctx *pulumi.Context, args LookupIncidentCommentOutputArgs, opts ...pulumi.InvokeOption) LookupIncidentCommentResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupIncidentCommentResult, error) {
+		ApplyT(func(v interface{}) (LookupIncidentCommentResultOutput, error) {
 			args := v.(LookupIncidentCommentArgs)
-			r, err := LookupIncidentComment(ctx, &args, opts...)
-			var s LookupIncidentCommentResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupIncidentCommentResult
+			secret, err := ctx.InvokePackageRaw("azure-native:securityinsights/v20240101preview:getIncidentComment", args, &rv, "", opts...)
+			if err != nil {
+				return LookupIncidentCommentResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupIncidentCommentResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupIncidentCommentResultOutput), nil
+			}
+			return output, nil
 		}).(LookupIncidentCommentResultOutput)
 }
 

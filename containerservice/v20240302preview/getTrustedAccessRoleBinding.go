@@ -51,14 +51,20 @@ type LookupTrustedAccessRoleBindingResult struct {
 
 func LookupTrustedAccessRoleBindingOutput(ctx *pulumi.Context, args LookupTrustedAccessRoleBindingOutputArgs, opts ...pulumi.InvokeOption) LookupTrustedAccessRoleBindingResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupTrustedAccessRoleBindingResult, error) {
+		ApplyT(func(v interface{}) (LookupTrustedAccessRoleBindingResultOutput, error) {
 			args := v.(LookupTrustedAccessRoleBindingArgs)
-			r, err := LookupTrustedAccessRoleBinding(ctx, &args, opts...)
-			var s LookupTrustedAccessRoleBindingResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupTrustedAccessRoleBindingResult
+			secret, err := ctx.InvokePackageRaw("azure-native:containerservice/v20240302preview:getTrustedAccessRoleBinding", args, &rv, "", opts...)
+			if err != nil {
+				return LookupTrustedAccessRoleBindingResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupTrustedAccessRoleBindingResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupTrustedAccessRoleBindingResultOutput), nil
+			}
+			return output, nil
 		}).(LookupTrustedAccessRoleBindingResultOutput)
 }
 

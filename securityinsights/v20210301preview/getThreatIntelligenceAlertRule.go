@@ -66,14 +66,20 @@ type LookupThreatIntelligenceAlertRuleResult struct {
 
 func LookupThreatIntelligenceAlertRuleOutput(ctx *pulumi.Context, args LookupThreatIntelligenceAlertRuleOutputArgs, opts ...pulumi.InvokeOption) LookupThreatIntelligenceAlertRuleResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupThreatIntelligenceAlertRuleResult, error) {
+		ApplyT(func(v interface{}) (LookupThreatIntelligenceAlertRuleResultOutput, error) {
 			args := v.(LookupThreatIntelligenceAlertRuleArgs)
-			r, err := LookupThreatIntelligenceAlertRule(ctx, &args, opts...)
-			var s LookupThreatIntelligenceAlertRuleResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupThreatIntelligenceAlertRuleResult
+			secret, err := ctx.InvokePackageRaw("azure-native:securityinsights/v20210301preview:getThreatIntelligenceAlertRule", args, &rv, "", opts...)
+			if err != nil {
+				return LookupThreatIntelligenceAlertRuleResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupThreatIntelligenceAlertRuleResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupThreatIntelligenceAlertRuleResultOutput), nil
+			}
+			return output, nil
 		}).(LookupThreatIntelligenceAlertRuleResultOutput)
 }
 

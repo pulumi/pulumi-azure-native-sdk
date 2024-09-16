@@ -37,14 +37,20 @@ type GetApiManagementServiceSsoTokenResult struct {
 
 func GetApiManagementServiceSsoTokenOutput(ctx *pulumi.Context, args GetApiManagementServiceSsoTokenOutputArgs, opts ...pulumi.InvokeOption) GetApiManagementServiceSsoTokenResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetApiManagementServiceSsoTokenResult, error) {
+		ApplyT(func(v interface{}) (GetApiManagementServiceSsoTokenResultOutput, error) {
 			args := v.(GetApiManagementServiceSsoTokenArgs)
-			r, err := GetApiManagementServiceSsoToken(ctx, &args, opts...)
-			var s GetApiManagementServiceSsoTokenResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv GetApiManagementServiceSsoTokenResult
+			secret, err := ctx.InvokePackageRaw("azure-native:apimanagement/v20220901preview:getApiManagementServiceSsoToken", args, &rv, "", opts...)
+			if err != nil {
+				return GetApiManagementServiceSsoTokenResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetApiManagementServiceSsoTokenResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetApiManagementServiceSsoTokenResultOutput), nil
+			}
+			return output, nil
 		}).(GetApiManagementServiceSsoTokenResultOutput)
 }
 

@@ -43,14 +43,20 @@ type GetBuildServiceBuildResultLogResult struct {
 
 func GetBuildServiceBuildResultLogOutput(ctx *pulumi.Context, args GetBuildServiceBuildResultLogOutputArgs, opts ...pulumi.InvokeOption) GetBuildServiceBuildResultLogResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetBuildServiceBuildResultLogResult, error) {
+		ApplyT(func(v interface{}) (GetBuildServiceBuildResultLogResultOutput, error) {
 			args := v.(GetBuildServiceBuildResultLogArgs)
-			r, err := GetBuildServiceBuildResultLog(ctx, &args, opts...)
-			var s GetBuildServiceBuildResultLogResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv GetBuildServiceBuildResultLogResult
+			secret, err := ctx.InvokePackageRaw("azure-native:appplatform/v20231201:getBuildServiceBuildResultLog", args, &rv, "", opts...)
+			if err != nil {
+				return GetBuildServiceBuildResultLogResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetBuildServiceBuildResultLogResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetBuildServiceBuildResultLogResultOutput), nil
+			}
+			return output, nil
 		}).(GetBuildServiceBuildResultLogResultOutput)
 }
 

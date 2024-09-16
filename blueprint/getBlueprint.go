@@ -60,14 +60,20 @@ type LookupBlueprintResult struct {
 
 func LookupBlueprintOutput(ctx *pulumi.Context, args LookupBlueprintOutputArgs, opts ...pulumi.InvokeOption) LookupBlueprintResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupBlueprintResult, error) {
+		ApplyT(func(v interface{}) (LookupBlueprintResultOutput, error) {
 			args := v.(LookupBlueprintArgs)
-			r, err := LookupBlueprint(ctx, &args, opts...)
-			var s LookupBlueprintResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupBlueprintResult
+			secret, err := ctx.InvokePackageRaw("azure-native:blueprint:getBlueprint", args, &rv, "", opts...)
+			if err != nil {
+				return LookupBlueprintResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupBlueprintResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupBlueprintResultOutput), nil
+			}
+			return output, nil
 		}).(LookupBlueprintResultOutput)
 }
 

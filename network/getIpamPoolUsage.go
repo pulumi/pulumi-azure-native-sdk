@@ -56,14 +56,20 @@ type GetIpamPoolUsageResult struct {
 
 func GetIpamPoolUsageOutput(ctx *pulumi.Context, args GetIpamPoolUsageOutputArgs, opts ...pulumi.InvokeOption) GetIpamPoolUsageResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetIpamPoolUsageResult, error) {
+		ApplyT(func(v interface{}) (GetIpamPoolUsageResultOutput, error) {
 			args := v.(GetIpamPoolUsageArgs)
-			r, err := GetIpamPoolUsage(ctx, &args, opts...)
-			var s GetIpamPoolUsageResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv GetIpamPoolUsageResult
+			secret, err := ctx.InvokePackageRaw("azure-native:network:getIpamPoolUsage", args, &rv, "", opts...)
+			if err != nil {
+				return GetIpamPoolUsageResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetIpamPoolUsageResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetIpamPoolUsageResultOutput), nil
+			}
+			return output, nil
 		}).(GetIpamPoolUsageResultOutput)
 }
 

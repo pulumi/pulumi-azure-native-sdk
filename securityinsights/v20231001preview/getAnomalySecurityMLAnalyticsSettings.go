@@ -78,14 +78,20 @@ type LookupAnomalySecurityMLAnalyticsSettingsResult struct {
 
 func LookupAnomalySecurityMLAnalyticsSettingsOutput(ctx *pulumi.Context, args LookupAnomalySecurityMLAnalyticsSettingsOutputArgs, opts ...pulumi.InvokeOption) LookupAnomalySecurityMLAnalyticsSettingsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupAnomalySecurityMLAnalyticsSettingsResult, error) {
+		ApplyT(func(v interface{}) (LookupAnomalySecurityMLAnalyticsSettingsResultOutput, error) {
 			args := v.(LookupAnomalySecurityMLAnalyticsSettingsArgs)
-			r, err := LookupAnomalySecurityMLAnalyticsSettings(ctx, &args, opts...)
-			var s LookupAnomalySecurityMLAnalyticsSettingsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupAnomalySecurityMLAnalyticsSettingsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:securityinsights/v20231001preview:getAnomalySecurityMLAnalyticsSettings", args, &rv, "", opts...)
+			if err != nil {
+				return LookupAnomalySecurityMLAnalyticsSettingsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupAnomalySecurityMLAnalyticsSettingsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupAnomalySecurityMLAnalyticsSettingsResultOutput), nil
+			}
+			return output, nil
 		}).(LookupAnomalySecurityMLAnalyticsSettingsResultOutput)
 }
 

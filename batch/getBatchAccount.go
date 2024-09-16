@@ -93,14 +93,20 @@ func (val *LookupBatchAccountResult) Defaults() *LookupBatchAccountResult {
 
 func LookupBatchAccountOutput(ctx *pulumi.Context, args LookupBatchAccountOutputArgs, opts ...pulumi.InvokeOption) LookupBatchAccountResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupBatchAccountResult, error) {
+		ApplyT(func(v interface{}) (LookupBatchAccountResultOutput, error) {
 			args := v.(LookupBatchAccountArgs)
-			r, err := LookupBatchAccount(ctx, &args, opts...)
-			var s LookupBatchAccountResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupBatchAccountResult
+			secret, err := ctx.InvokePackageRaw("azure-native:batch:getBatchAccount", args, &rv, "", opts...)
+			if err != nil {
+				return LookupBatchAccountResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupBatchAccountResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupBatchAccountResultOutput), nil
+			}
+			return output, nil
 		}).(LookupBatchAccountResultOutput)
 }
 

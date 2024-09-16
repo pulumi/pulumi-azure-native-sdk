@@ -14,7 +14,7 @@ import (
 // Gets the SQL container under an existing Azure Cosmos DB database account.
 // Azure REST API version: 2023-04-15.
 //
-// Other available API versions: 2019-08-01, 2023-03-15-preview, 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview.
+// Other available API versions: 2019-08-01, 2023-03-15-preview, 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview, 2024-08-15, 2024-09-01-preview.
 func LookupSqlResourceSqlContainer(ctx *pulumi.Context, args *LookupSqlResourceSqlContainerArgs, opts ...pulumi.InvokeOption) (*LookupSqlResourceSqlContainerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSqlResourceSqlContainerResult
@@ -65,14 +65,20 @@ func (val *LookupSqlResourceSqlContainerResult) Defaults() *LookupSqlResourceSql
 
 func LookupSqlResourceSqlContainerOutput(ctx *pulumi.Context, args LookupSqlResourceSqlContainerOutputArgs, opts ...pulumi.InvokeOption) LookupSqlResourceSqlContainerResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSqlResourceSqlContainerResult, error) {
+		ApplyT(func(v interface{}) (LookupSqlResourceSqlContainerResultOutput, error) {
 			args := v.(LookupSqlResourceSqlContainerArgs)
-			r, err := LookupSqlResourceSqlContainer(ctx, &args, opts...)
-			var s LookupSqlResourceSqlContainerResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupSqlResourceSqlContainerResult
+			secret, err := ctx.InvokePackageRaw("azure-native:documentdb:getSqlResourceSqlContainer", args, &rv, "", opts...)
+			if err != nil {
+				return LookupSqlResourceSqlContainerResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupSqlResourceSqlContainerResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupSqlResourceSqlContainerResultOutput), nil
+			}
+			return output, nil
 		}).(LookupSqlResourceSqlContainerResultOutput)
 }
 

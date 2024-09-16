@@ -43,14 +43,20 @@ type ListAssetContainerSasResult struct {
 
 func ListAssetContainerSasOutput(ctx *pulumi.Context, args ListAssetContainerSasOutputArgs, opts ...pulumi.InvokeOption) ListAssetContainerSasResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListAssetContainerSasResult, error) {
+		ApplyT(func(v interface{}) (ListAssetContainerSasResultOutput, error) {
 			args := v.(ListAssetContainerSasArgs)
-			r, err := ListAssetContainerSas(ctx, &args, opts...)
-			var s ListAssetContainerSasResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListAssetContainerSasResult
+			secret, err := ctx.InvokePackageRaw("azure-native:media/v20230101:listAssetContainerSas", args, &rv, "", opts...)
+			if err != nil {
+				return ListAssetContainerSasResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListAssetContainerSasResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListAssetContainerSasResultOutput), nil
+			}
+			return output, nil
 		}).(ListAssetContainerSasResultOutput)
 }
 

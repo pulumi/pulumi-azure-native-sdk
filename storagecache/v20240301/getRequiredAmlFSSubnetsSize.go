@@ -37,14 +37,20 @@ type GetRequiredAmlFSSubnetsSizeResult struct {
 
 func GetRequiredAmlFSSubnetsSizeOutput(ctx *pulumi.Context, args GetRequiredAmlFSSubnetsSizeOutputArgs, opts ...pulumi.InvokeOption) GetRequiredAmlFSSubnetsSizeResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetRequiredAmlFSSubnetsSizeResult, error) {
+		ApplyT(func(v interface{}) (GetRequiredAmlFSSubnetsSizeResultOutput, error) {
 			args := v.(GetRequiredAmlFSSubnetsSizeArgs)
-			r, err := GetRequiredAmlFSSubnetsSize(ctx, &args, opts...)
-			var s GetRequiredAmlFSSubnetsSizeResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv GetRequiredAmlFSSubnetsSizeResult
+			secret, err := ctx.InvokePackageRaw("azure-native:storagecache/v20240301:getRequiredAmlFSSubnetsSize", args, &rv, "", opts...)
+			if err != nil {
+				return GetRequiredAmlFSSubnetsSizeResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetRequiredAmlFSSubnetsSizeResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetRequiredAmlFSSubnetsSizeResultOutput), nil
+			}
+			return output, nil
 		}).(GetRequiredAmlFSSubnetsSizeResultOutput)
 }
 

@@ -39,14 +39,20 @@ type ListDomainSharedAccessKeysResult struct {
 
 func ListDomainSharedAccessKeysOutput(ctx *pulumi.Context, args ListDomainSharedAccessKeysOutputArgs, opts ...pulumi.InvokeOption) ListDomainSharedAccessKeysResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListDomainSharedAccessKeysResult, error) {
+		ApplyT(func(v interface{}) (ListDomainSharedAccessKeysResultOutput, error) {
 			args := v.(ListDomainSharedAccessKeysArgs)
-			r, err := ListDomainSharedAccessKeys(ctx, &args, opts...)
-			var s ListDomainSharedAccessKeysResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListDomainSharedAccessKeysResult
+			secret, err := ctx.InvokePackageRaw("azure-native:eventgrid/v20231215preview:listDomainSharedAccessKeys", args, &rv, "", opts...)
+			if err != nil {
+				return ListDomainSharedAccessKeysResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListDomainSharedAccessKeysResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListDomainSharedAccessKeysResultOutput), nil
+			}
+			return output, nil
 		}).(ListDomainSharedAccessKeysResultOutput)
 }
 

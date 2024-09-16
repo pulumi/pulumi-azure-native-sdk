@@ -40,14 +40,20 @@ type ListObjectAnchorsAccountKeysResult struct {
 
 func ListObjectAnchorsAccountKeysOutput(ctx *pulumi.Context, args ListObjectAnchorsAccountKeysOutputArgs, opts ...pulumi.InvokeOption) ListObjectAnchorsAccountKeysResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListObjectAnchorsAccountKeysResult, error) {
+		ApplyT(func(v interface{}) (ListObjectAnchorsAccountKeysResultOutput, error) {
 			args := v.(ListObjectAnchorsAccountKeysArgs)
-			r, err := ListObjectAnchorsAccountKeys(ctx, &args, opts...)
-			var s ListObjectAnchorsAccountKeysResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListObjectAnchorsAccountKeysResult
+			secret, err := ctx.InvokePackageRaw("azure-native:mixedreality:listObjectAnchorsAccountKeys", args, &rv, "", opts...)
+			if err != nil {
+				return ListObjectAnchorsAccountKeysResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListObjectAnchorsAccountKeysResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListObjectAnchorsAccountKeysResultOutput), nil
+			}
+			return output, nil
 		}).(ListObjectAnchorsAccountKeysResultOutput)
 }
 

@@ -51,14 +51,20 @@ type LookupHuntCommentResult struct {
 
 func LookupHuntCommentOutput(ctx *pulumi.Context, args LookupHuntCommentOutputArgs, opts ...pulumi.InvokeOption) LookupHuntCommentResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupHuntCommentResult, error) {
+		ApplyT(func(v interface{}) (LookupHuntCommentResultOutput, error) {
 			args := v.(LookupHuntCommentArgs)
-			r, err := LookupHuntComment(ctx, &args, opts...)
-			var s LookupHuntCommentResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupHuntCommentResult
+			secret, err := ctx.InvokePackageRaw("azure-native:securityinsights/v20230701preview:getHuntComment", args, &rv, "", opts...)
+			if err != nil {
+				return LookupHuntCommentResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupHuntCommentResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupHuntCommentResultOutput), nil
+			}
+			return output, nil
 		}).(LookupHuntCommentResultOutput)
 }
 

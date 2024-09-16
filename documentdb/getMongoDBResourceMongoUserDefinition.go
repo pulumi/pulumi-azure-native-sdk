@@ -14,7 +14,7 @@ import (
 // Retrieves the properties of an existing Azure Cosmos DB Mongo User Definition with the given Id.
 // Azure REST API version: 2023-04-15.
 //
-// Other available API versions: 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview.
+// Other available API versions: 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview, 2024-08-15, 2024-09-01-preview.
 func LookupMongoDBResourceMongoUserDefinition(ctx *pulumi.Context, args *LookupMongoDBResourceMongoUserDefinitionArgs, opts ...pulumi.InvokeOption) (*LookupMongoDBResourceMongoUserDefinitionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMongoDBResourceMongoUserDefinitionResult
@@ -58,14 +58,20 @@ type LookupMongoDBResourceMongoUserDefinitionResult struct {
 
 func LookupMongoDBResourceMongoUserDefinitionOutput(ctx *pulumi.Context, args LookupMongoDBResourceMongoUserDefinitionOutputArgs, opts ...pulumi.InvokeOption) LookupMongoDBResourceMongoUserDefinitionResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupMongoDBResourceMongoUserDefinitionResult, error) {
+		ApplyT(func(v interface{}) (LookupMongoDBResourceMongoUserDefinitionResultOutput, error) {
 			args := v.(LookupMongoDBResourceMongoUserDefinitionArgs)
-			r, err := LookupMongoDBResourceMongoUserDefinition(ctx, &args, opts...)
-			var s LookupMongoDBResourceMongoUserDefinitionResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupMongoDBResourceMongoUserDefinitionResult
+			secret, err := ctx.InvokePackageRaw("azure-native:documentdb:getMongoDBResourceMongoUserDefinition", args, &rv, "", opts...)
+			if err != nil {
+				return LookupMongoDBResourceMongoUserDefinitionResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupMongoDBResourceMongoUserDefinitionResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupMongoDBResourceMongoUserDefinitionResultOutput), nil
+			}
+			return output, nil
 		}).(LookupMongoDBResourceMongoUserDefinitionResultOutput)
 }
 

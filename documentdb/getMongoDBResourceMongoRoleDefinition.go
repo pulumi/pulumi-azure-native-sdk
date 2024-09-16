@@ -14,7 +14,7 @@ import (
 // Retrieves the properties of an existing Azure Cosmos DB Mongo Role Definition with the given Id.
 // Azure REST API version: 2023-04-15.
 //
-// Other available API versions: 2023-03-01-preview, 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview.
+// Other available API versions: 2023-03-01-preview, 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview, 2024-08-15, 2024-09-01-preview.
 func LookupMongoDBResourceMongoRoleDefinition(ctx *pulumi.Context, args *LookupMongoDBResourceMongoRoleDefinitionArgs, opts ...pulumi.InvokeOption) (*LookupMongoDBResourceMongoRoleDefinitionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMongoDBResourceMongoRoleDefinitionResult
@@ -54,14 +54,20 @@ type LookupMongoDBResourceMongoRoleDefinitionResult struct {
 
 func LookupMongoDBResourceMongoRoleDefinitionOutput(ctx *pulumi.Context, args LookupMongoDBResourceMongoRoleDefinitionOutputArgs, opts ...pulumi.InvokeOption) LookupMongoDBResourceMongoRoleDefinitionResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupMongoDBResourceMongoRoleDefinitionResult, error) {
+		ApplyT(func(v interface{}) (LookupMongoDBResourceMongoRoleDefinitionResultOutput, error) {
 			args := v.(LookupMongoDBResourceMongoRoleDefinitionArgs)
-			r, err := LookupMongoDBResourceMongoRoleDefinition(ctx, &args, opts...)
-			var s LookupMongoDBResourceMongoRoleDefinitionResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupMongoDBResourceMongoRoleDefinitionResult
+			secret, err := ctx.InvokePackageRaw("azure-native:documentdb:getMongoDBResourceMongoRoleDefinition", args, &rv, "", opts...)
+			if err != nil {
+				return LookupMongoDBResourceMongoRoleDefinitionResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupMongoDBResourceMongoRoleDefinitionResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupMongoDBResourceMongoRoleDefinitionResultOutput), nil
+			}
+			return output, nil
 		}).(LookupMongoDBResourceMongoRoleDefinitionResultOutput)
 }
 

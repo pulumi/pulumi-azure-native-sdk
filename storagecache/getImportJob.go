@@ -95,14 +95,20 @@ func (val *LookupImportJobResult) Defaults() *LookupImportJobResult {
 
 func LookupImportJobOutput(ctx *pulumi.Context, args LookupImportJobOutputArgs, opts ...pulumi.InvokeOption) LookupImportJobResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupImportJobResult, error) {
+		ApplyT(func(v interface{}) (LookupImportJobResultOutput, error) {
 			args := v.(LookupImportJobArgs)
-			r, err := LookupImportJob(ctx, &args, opts...)
-			var s LookupImportJobResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupImportJobResult
+			secret, err := ctx.InvokePackageRaw("azure-native:storagecache:getImportJob", args, &rv, "", opts...)
+			if err != nil {
+				return LookupImportJobResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupImportJobResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupImportJobResultOutput), nil
+			}
+			return output, nil
 		}).(LookupImportJobResultOutput)
 }
 

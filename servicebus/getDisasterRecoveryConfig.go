@@ -14,7 +14,7 @@ import (
 // Retrieves Alias(Disaster Recovery configuration) for primary or secondary namespace
 // Azure REST API version: 2022-01-01-preview.
 //
-// Other available API versions: 2022-10-01-preview, 2023-01-01-preview.
+// Other available API versions: 2022-10-01-preview, 2023-01-01-preview, 2024-01-01.
 func LookupDisasterRecoveryConfig(ctx *pulumi.Context, args *LookupDisasterRecoveryConfigArgs, opts ...pulumi.InvokeOption) (*LookupDisasterRecoveryConfigResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDisasterRecoveryConfigResult
@@ -60,14 +60,20 @@ type LookupDisasterRecoveryConfigResult struct {
 
 func LookupDisasterRecoveryConfigOutput(ctx *pulumi.Context, args LookupDisasterRecoveryConfigOutputArgs, opts ...pulumi.InvokeOption) LookupDisasterRecoveryConfigResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupDisasterRecoveryConfigResult, error) {
+		ApplyT(func(v interface{}) (LookupDisasterRecoveryConfigResultOutput, error) {
 			args := v.(LookupDisasterRecoveryConfigArgs)
-			r, err := LookupDisasterRecoveryConfig(ctx, &args, opts...)
-			var s LookupDisasterRecoveryConfigResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupDisasterRecoveryConfigResult
+			secret, err := ctx.InvokePackageRaw("azure-native:servicebus:getDisasterRecoveryConfig", args, &rv, "", opts...)
+			if err != nil {
+				return LookupDisasterRecoveryConfigResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupDisasterRecoveryConfigResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupDisasterRecoveryConfigResultOutput), nil
+			}
+			return output, nil
 		}).(LookupDisasterRecoveryConfigResultOutput)
 }
 

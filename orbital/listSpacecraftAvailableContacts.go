@@ -50,14 +50,20 @@ type ListSpacecraftAvailableContactsResult struct {
 
 func ListSpacecraftAvailableContactsOutput(ctx *pulumi.Context, args ListSpacecraftAvailableContactsOutputArgs, opts ...pulumi.InvokeOption) ListSpacecraftAvailableContactsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListSpacecraftAvailableContactsResult, error) {
+		ApplyT(func(v interface{}) (ListSpacecraftAvailableContactsResultOutput, error) {
 			args := v.(ListSpacecraftAvailableContactsArgs)
-			r, err := ListSpacecraftAvailableContacts(ctx, &args, opts...)
-			var s ListSpacecraftAvailableContactsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListSpacecraftAvailableContactsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:orbital:listSpacecraftAvailableContacts", args, &rv, "", opts...)
+			if err != nil {
+				return ListSpacecraftAvailableContactsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListSpacecraftAvailableContactsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListSpacecraftAvailableContactsResultOutput), nil
+			}
+			return output, nil
 		}).(ListSpacecraftAvailableContactsResultOutput)
 }
 

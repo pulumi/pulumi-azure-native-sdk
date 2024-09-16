@@ -59,14 +59,20 @@ type LookupSqlPoolWorkloadClassifierResult struct {
 
 func LookupSqlPoolWorkloadClassifierOutput(ctx *pulumi.Context, args LookupSqlPoolWorkloadClassifierOutputArgs, opts ...pulumi.InvokeOption) LookupSqlPoolWorkloadClassifierResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSqlPoolWorkloadClassifierResult, error) {
+		ApplyT(func(v interface{}) (LookupSqlPoolWorkloadClassifierResultOutput, error) {
 			args := v.(LookupSqlPoolWorkloadClassifierArgs)
-			r, err := LookupSqlPoolWorkloadClassifier(ctx, &args, opts...)
-			var s LookupSqlPoolWorkloadClassifierResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupSqlPoolWorkloadClassifierResult
+			secret, err := ctx.InvokePackageRaw("azure-native:synapse/v20210601preview:getSqlPoolWorkloadClassifier", args, &rv, "", opts...)
+			if err != nil {
+				return LookupSqlPoolWorkloadClassifierResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupSqlPoolWorkloadClassifierResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupSqlPoolWorkloadClassifierResultOutput), nil
+			}
+			return output, nil
 		}).(LookupSqlPoolWorkloadClassifierResultOutput)
 }
 

@@ -55,14 +55,20 @@ type LookupACSSBackupConnectionResult struct {
 
 func LookupACSSBackupConnectionOutput(ctx *pulumi.Context, args LookupACSSBackupConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupACSSBackupConnectionResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupACSSBackupConnectionResult, error) {
+		ApplyT(func(v interface{}) (LookupACSSBackupConnectionResultOutput, error) {
 			args := v.(LookupACSSBackupConnectionArgs)
-			r, err := LookupACSSBackupConnection(ctx, &args, opts...)
-			var s LookupACSSBackupConnectionResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupACSSBackupConnectionResult
+			secret, err := ctx.InvokePackageRaw("azure-native:workloads/v20231001preview:getACSSBackupConnection", args, &rv, "", opts...)
+			if err != nil {
+				return LookupACSSBackupConnectionResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupACSSBackupConnectionResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupACSSBackupConnectionResultOutput), nil
+			}
+			return output, nil
 		}).(LookupACSSBackupConnectionResultOutput)
 }
 

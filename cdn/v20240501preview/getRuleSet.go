@@ -50,14 +50,20 @@ type LookupRuleSetResult struct {
 
 func LookupRuleSetOutput(ctx *pulumi.Context, args LookupRuleSetOutputArgs, opts ...pulumi.InvokeOption) LookupRuleSetResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupRuleSetResult, error) {
+		ApplyT(func(v interface{}) (LookupRuleSetResultOutput, error) {
 			args := v.(LookupRuleSetArgs)
-			r, err := LookupRuleSet(ctx, &args, opts...)
-			var s LookupRuleSetResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupRuleSetResult
+			secret, err := ctx.InvokePackageRaw("azure-native:cdn/v20240501preview:getRuleSet", args, &rv, "", opts...)
+			if err != nil {
+				return LookupRuleSetResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupRuleSetResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupRuleSetResultOutput), nil
+			}
+			return output, nil
 		}).(LookupRuleSetResultOutput)
 }
 

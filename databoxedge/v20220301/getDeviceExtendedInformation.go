@@ -73,14 +73,20 @@ type GetDeviceExtendedInformationResult struct {
 
 func GetDeviceExtendedInformationOutput(ctx *pulumi.Context, args GetDeviceExtendedInformationOutputArgs, opts ...pulumi.InvokeOption) GetDeviceExtendedInformationResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetDeviceExtendedInformationResult, error) {
+		ApplyT(func(v interface{}) (GetDeviceExtendedInformationResultOutput, error) {
 			args := v.(GetDeviceExtendedInformationArgs)
-			r, err := GetDeviceExtendedInformation(ctx, &args, opts...)
-			var s GetDeviceExtendedInformationResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv GetDeviceExtendedInformationResult
+			secret, err := ctx.InvokePackageRaw("azure-native:databoxedge/v20220301:getDeviceExtendedInformation", args, &rv, "", opts...)
+			if err != nil {
+				return GetDeviceExtendedInformationResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetDeviceExtendedInformationResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetDeviceExtendedInformationResultOutput), nil
+			}
+			return output, nil
 		}).(GetDeviceExtendedInformationResultOutput)
 }
 

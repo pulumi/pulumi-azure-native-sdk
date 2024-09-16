@@ -35,14 +35,20 @@ type ListPrivateStoreStopSellOffersPlansNotificationsResult struct {
 
 func ListPrivateStoreStopSellOffersPlansNotificationsOutput(ctx *pulumi.Context, args ListPrivateStoreStopSellOffersPlansNotificationsOutputArgs, opts ...pulumi.InvokeOption) ListPrivateStoreStopSellOffersPlansNotificationsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListPrivateStoreStopSellOffersPlansNotificationsResult, error) {
+		ApplyT(func(v interface{}) (ListPrivateStoreStopSellOffersPlansNotificationsResultOutput, error) {
 			args := v.(ListPrivateStoreStopSellOffersPlansNotificationsArgs)
-			r, err := ListPrivateStoreStopSellOffersPlansNotifications(ctx, &args, opts...)
-			var s ListPrivateStoreStopSellOffersPlansNotificationsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListPrivateStoreStopSellOffersPlansNotificationsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:marketplace/v20211201:listPrivateStoreStopSellOffersPlansNotifications", args, &rv, "", opts...)
+			if err != nil {
+				return ListPrivateStoreStopSellOffersPlansNotificationsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListPrivateStoreStopSellOffersPlansNotificationsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListPrivateStoreStopSellOffersPlansNotificationsResultOutput), nil
+			}
+			return output, nil
 		}).(ListPrivateStoreStopSellOffersPlansNotificationsResultOutput)
 }
 

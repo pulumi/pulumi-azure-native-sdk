@@ -96,6 +96,9 @@ func NewVirtualNetworkGatewayNatRule(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20231101:VirtualNetworkGatewayNatRule"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20240301:VirtualNetworkGatewayNatRule"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -14,7 +14,7 @@ import (
 // Retrieves the properties of an existing Azure Cosmos DB Throughput Pool
 // Azure REST API version: 2023-11-15-preview.
 //
-// Other available API versions: 2024-02-15-preview, 2024-05-15-preview.
+// Other available API versions: 2024-02-15-preview, 2024-05-15-preview, 2024-09-01-preview.
 func LookupThroughputPoolAccount(ctx *pulumi.Context, args *LookupThroughputPoolAccountArgs, opts ...pulumi.InvokeOption) (*LookupThroughputPoolAccountResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupThroughputPoolAccountResult
@@ -56,14 +56,20 @@ type LookupThroughputPoolAccountResult struct {
 
 func LookupThroughputPoolAccountOutput(ctx *pulumi.Context, args LookupThroughputPoolAccountOutputArgs, opts ...pulumi.InvokeOption) LookupThroughputPoolAccountResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupThroughputPoolAccountResult, error) {
+		ApplyT(func(v interface{}) (LookupThroughputPoolAccountResultOutput, error) {
 			args := v.(LookupThroughputPoolAccountArgs)
-			r, err := LookupThroughputPoolAccount(ctx, &args, opts...)
-			var s LookupThroughputPoolAccountResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupThroughputPoolAccountResult
+			secret, err := ctx.InvokePackageRaw("azure-native:documentdb:getThroughputPoolAccount", args, &rv, "", opts...)
+			if err != nil {
+				return LookupThroughputPoolAccountResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupThroughputPoolAccountResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupThroughputPoolAccountResultOutput), nil
+			}
+			return output, nil
 		}).(LookupThroughputPoolAccountResultOutput)
 }
 

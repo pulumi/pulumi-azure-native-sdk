@@ -34,14 +34,20 @@ type ListPrivateStoreNewPlansNotificationsResult struct {
 
 func ListPrivateStoreNewPlansNotificationsOutput(ctx *pulumi.Context, args ListPrivateStoreNewPlansNotificationsOutputArgs, opts ...pulumi.InvokeOption) ListPrivateStoreNewPlansNotificationsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListPrivateStoreNewPlansNotificationsResult, error) {
+		ApplyT(func(v interface{}) (ListPrivateStoreNewPlansNotificationsResultOutput, error) {
 			args := v.(ListPrivateStoreNewPlansNotificationsArgs)
-			r, err := ListPrivateStoreNewPlansNotifications(ctx, &args, opts...)
-			var s ListPrivateStoreNewPlansNotificationsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListPrivateStoreNewPlansNotificationsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:marketplace/v20230101:listPrivateStoreNewPlansNotifications", args, &rv, "", opts...)
+			if err != nil {
+				return ListPrivateStoreNewPlansNotificationsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListPrivateStoreNewPlansNotificationsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListPrivateStoreNewPlansNotificationsResultOutput), nil
+			}
+			return output, nil
 		}).(ListPrivateStoreNewPlansNotificationsResultOutput)
 }
 

@@ -14,7 +14,7 @@ import (
 // Gets the Gremlin graph under an existing Azure Cosmos DB database account.
 // Azure REST API version: 2023-04-15.
 //
-// Other available API versions: 2019-08-01, 2023-03-15-preview, 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview.
+// Other available API versions: 2019-08-01, 2023-03-15-preview, 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview, 2024-08-15, 2024-09-01-preview.
 func LookupGremlinResourceGremlinGraph(ctx *pulumi.Context, args *LookupGremlinResourceGremlinGraphArgs, opts ...pulumi.InvokeOption) (*LookupGremlinResourceGremlinGraphResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGremlinResourceGremlinGraphResult
@@ -65,14 +65,20 @@ func (val *LookupGremlinResourceGremlinGraphResult) Defaults() *LookupGremlinRes
 
 func LookupGremlinResourceGremlinGraphOutput(ctx *pulumi.Context, args LookupGremlinResourceGremlinGraphOutputArgs, opts ...pulumi.InvokeOption) LookupGremlinResourceGremlinGraphResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupGremlinResourceGremlinGraphResult, error) {
+		ApplyT(func(v interface{}) (LookupGremlinResourceGremlinGraphResultOutput, error) {
 			args := v.(LookupGremlinResourceGremlinGraphArgs)
-			r, err := LookupGremlinResourceGremlinGraph(ctx, &args, opts...)
-			var s LookupGremlinResourceGremlinGraphResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupGremlinResourceGremlinGraphResult
+			secret, err := ctx.InvokePackageRaw("azure-native:documentdb:getGremlinResourceGremlinGraph", args, &rv, "", opts...)
+			if err != nil {
+				return LookupGremlinResourceGremlinGraphResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupGremlinResourceGremlinGraphResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupGremlinResourceGremlinGraphResultOutput), nil
+			}
+			return output, nil
 		}).(LookupGremlinResourceGremlinGraphResultOutput)
 }
 

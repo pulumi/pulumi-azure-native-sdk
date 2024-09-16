@@ -58,14 +58,20 @@ type GetLocalRuleCountersResult struct {
 
 func GetLocalRuleCountersOutput(ctx *pulumi.Context, args GetLocalRuleCountersOutputArgs, opts ...pulumi.InvokeOption) GetLocalRuleCountersResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetLocalRuleCountersResult, error) {
+		ApplyT(func(v interface{}) (GetLocalRuleCountersResultOutput, error) {
 			args := v.(GetLocalRuleCountersArgs)
-			r, err := GetLocalRuleCounters(ctx, &args, opts...)
-			var s GetLocalRuleCountersResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv GetLocalRuleCountersResult
+			secret, err := ctx.InvokePackageRaw("azure-native:cloudngfw/v20220829preview:getLocalRuleCounters", args, &rv, "", opts...)
+			if err != nil {
+				return GetLocalRuleCountersResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetLocalRuleCountersResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetLocalRuleCountersResultOutput), nil
+			}
+			return output, nil
 		}).(GetLocalRuleCountersResultOutput)
 }
 

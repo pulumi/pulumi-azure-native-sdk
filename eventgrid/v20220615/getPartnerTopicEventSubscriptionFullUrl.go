@@ -39,14 +39,20 @@ type GetPartnerTopicEventSubscriptionFullUrlResult struct {
 
 func GetPartnerTopicEventSubscriptionFullUrlOutput(ctx *pulumi.Context, args GetPartnerTopicEventSubscriptionFullUrlOutputArgs, opts ...pulumi.InvokeOption) GetPartnerTopicEventSubscriptionFullUrlResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetPartnerTopicEventSubscriptionFullUrlResult, error) {
+		ApplyT(func(v interface{}) (GetPartnerTopicEventSubscriptionFullUrlResultOutput, error) {
 			args := v.(GetPartnerTopicEventSubscriptionFullUrlArgs)
-			r, err := GetPartnerTopicEventSubscriptionFullUrl(ctx, &args, opts...)
-			var s GetPartnerTopicEventSubscriptionFullUrlResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv GetPartnerTopicEventSubscriptionFullUrlResult
+			secret, err := ctx.InvokePackageRaw("azure-native:eventgrid/v20220615:getPartnerTopicEventSubscriptionFullUrl", args, &rv, "", opts...)
+			if err != nil {
+				return GetPartnerTopicEventSubscriptionFullUrlResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetPartnerTopicEventSubscriptionFullUrlResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetPartnerTopicEventSubscriptionFullUrlResultOutput), nil
+			}
+			return output, nil
 		}).(GetPartnerTopicEventSubscriptionFullUrlResultOutput)
 }
 

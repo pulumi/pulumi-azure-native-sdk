@@ -68,14 +68,20 @@ type LookupMLBehaviorAnalyticsAlertRuleResult struct {
 
 func LookupMLBehaviorAnalyticsAlertRuleOutput(ctx *pulumi.Context, args LookupMLBehaviorAnalyticsAlertRuleOutputArgs, opts ...pulumi.InvokeOption) LookupMLBehaviorAnalyticsAlertRuleResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupMLBehaviorAnalyticsAlertRuleResult, error) {
+		ApplyT(func(v interface{}) (LookupMLBehaviorAnalyticsAlertRuleResultOutput, error) {
 			args := v.(LookupMLBehaviorAnalyticsAlertRuleArgs)
-			r, err := LookupMLBehaviorAnalyticsAlertRule(ctx, &args, opts...)
-			var s LookupMLBehaviorAnalyticsAlertRuleResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupMLBehaviorAnalyticsAlertRuleResult
+			secret, err := ctx.InvokePackageRaw("azure-native:securityinsights/v20231201preview:getMLBehaviorAnalyticsAlertRule", args, &rv, "", opts...)
+			if err != nil {
+				return LookupMLBehaviorAnalyticsAlertRuleResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupMLBehaviorAnalyticsAlertRuleResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupMLBehaviorAnalyticsAlertRuleResultOutput), nil
+			}
+			return output, nil
 		}).(LookupMLBehaviorAnalyticsAlertRuleResultOutput)
 }
 

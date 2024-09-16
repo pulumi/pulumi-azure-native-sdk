@@ -37,11 +37,11 @@ type LookupAssetResult struct {
 	AssetType *string `pulumi:"assetType"`
 	// A set of key-value pairs that contain custom attributes set by the customer.
 	Attributes interface{} `pulumi:"attributes"`
-	// Array of data points that are part of the asset. Each data point can reference an asset type capability and have per-data point configuration. See below for more details for the definition of the dataPoints element.
+	// Array of data points that are part of the asset. Each data point can reference an asset type capability and have per-data point configuration.
 	DataPoints []DataPointResponse `pulumi:"dataPoints"`
-	// Protocol-specific default configuration for all data points. Each data point can have its own configuration that overrides the default settings here. This assumes that each asset instance has one protocol.
+	// Stringified JSON that contains protocol-specific default configuration for all data points. Each data point can have its own configuration that overrides the default settings here.
 	DefaultDataPointsConfiguration *string `pulumi:"defaultDataPointsConfiguration"`
-	// Protocol-specific default configuration for all events. Each event can have its own configuration that overrides the default settings here. This assumes that each asset instance has one protocol.
+	// Stringified JSON that contains connector-specific default configuration for all events. Each event can have its own configuration that overrides the default settings here.
 	DefaultEventsConfiguration *string `pulumi:"defaultEventsConfiguration"`
 	// Human-readable description of the asset.
 	Description *string `pulumi:"description"`
@@ -51,7 +51,7 @@ type LookupAssetResult struct {
 	DocumentationUri *string `pulumi:"documentationUri"`
 	// Enabled/Disabled status of the asset.
 	Enabled *bool `pulumi:"enabled"`
-	// Array of events that are part of the asset. Each event can reference an asset type capability and have per-event configuration. See below for more details about the definition of the events element.
+	// Array of events that are part of the asset. Each event can have per-event configuration.
 	Events []EventResponse `pulumi:"events"`
 	// The extended location.
 	ExtendedLocation ExtendedLocationResponse `pulumi:"extendedLocation"`
@@ -95,14 +95,20 @@ type LookupAssetResult struct {
 
 func LookupAssetOutput(ctx *pulumi.Context, args LookupAssetOutputArgs, opts ...pulumi.InvokeOption) LookupAssetResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupAssetResult, error) {
+		ApplyT(func(v interface{}) (LookupAssetResultOutput, error) {
 			args := v.(LookupAssetArgs)
-			r, err := LookupAsset(ctx, &args, opts...)
-			var s LookupAssetResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupAssetResult
+			secret, err := ctx.InvokePackageRaw("azure-native:deviceregistry/v20231101preview:getAsset", args, &rv, "", opts...)
+			if err != nil {
+				return LookupAssetResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupAssetResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupAssetResultOutput), nil
+			}
+			return output, nil
 		}).(LookupAssetResultOutput)
 }
 
@@ -147,17 +153,17 @@ func (o LookupAssetResultOutput) Attributes() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupAssetResult) interface{} { return v.Attributes }).(pulumi.AnyOutput)
 }
 
-// Array of data points that are part of the asset. Each data point can reference an asset type capability and have per-data point configuration. See below for more details for the definition of the dataPoints element.
+// Array of data points that are part of the asset. Each data point can reference an asset type capability and have per-data point configuration.
 func (o LookupAssetResultOutput) DataPoints() DataPointResponseArrayOutput {
 	return o.ApplyT(func(v LookupAssetResult) []DataPointResponse { return v.DataPoints }).(DataPointResponseArrayOutput)
 }
 
-// Protocol-specific default configuration for all data points. Each data point can have its own configuration that overrides the default settings here. This assumes that each asset instance has one protocol.
+// Stringified JSON that contains protocol-specific default configuration for all data points. Each data point can have its own configuration that overrides the default settings here.
 func (o LookupAssetResultOutput) DefaultDataPointsConfiguration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAssetResult) *string { return v.DefaultDataPointsConfiguration }).(pulumi.StringPtrOutput)
 }
 
-// Protocol-specific default configuration for all events. Each event can have its own configuration that overrides the default settings here. This assumes that each asset instance has one protocol.
+// Stringified JSON that contains connector-specific default configuration for all events. Each event can have its own configuration that overrides the default settings here.
 func (o LookupAssetResultOutput) DefaultEventsConfiguration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAssetResult) *string { return v.DefaultEventsConfiguration }).(pulumi.StringPtrOutput)
 }
@@ -182,7 +188,7 @@ func (o LookupAssetResultOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupAssetResult) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// Array of events that are part of the asset. Each event can reference an asset type capability and have per-event configuration. See below for more details about the definition of the events element.
+// Array of events that are part of the asset. Each event can have per-event configuration.
 func (o LookupAssetResultOutput) Events() EventResponseArrayOutput {
 	return o.ApplyT(func(v LookupAssetResult) []EventResponse { return v.Events }).(EventResponseArrayOutput)
 }

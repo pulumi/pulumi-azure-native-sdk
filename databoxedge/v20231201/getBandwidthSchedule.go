@@ -53,14 +53,20 @@ type LookupBandwidthScheduleResult struct {
 
 func LookupBandwidthScheduleOutput(ctx *pulumi.Context, args LookupBandwidthScheduleOutputArgs, opts ...pulumi.InvokeOption) LookupBandwidthScheduleResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupBandwidthScheduleResult, error) {
+		ApplyT(func(v interface{}) (LookupBandwidthScheduleResultOutput, error) {
 			args := v.(LookupBandwidthScheduleArgs)
-			r, err := LookupBandwidthSchedule(ctx, &args, opts...)
-			var s LookupBandwidthScheduleResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupBandwidthScheduleResult
+			secret, err := ctx.InvokePackageRaw("azure-native:databoxedge/v20231201:getBandwidthSchedule", args, &rv, "", opts...)
+			if err != nil {
+				return LookupBandwidthScheduleResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupBandwidthScheduleResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupBandwidthScheduleResultOutput), nil
+			}
+			return output, nil
 		}).(LookupBandwidthScheduleResultOutput)
 }
 

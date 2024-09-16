@@ -63,14 +63,20 @@ type LookupADLSGen2FileDataSetResult struct {
 
 func LookupADLSGen2FileDataSetOutput(ctx *pulumi.Context, args LookupADLSGen2FileDataSetOutputArgs, opts ...pulumi.InvokeOption) LookupADLSGen2FileDataSetResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupADLSGen2FileDataSetResult, error) {
+		ApplyT(func(v interface{}) (LookupADLSGen2FileDataSetResultOutput, error) {
 			args := v.(LookupADLSGen2FileDataSetArgs)
-			r, err := LookupADLSGen2FileDataSet(ctx, &args, opts...)
-			var s LookupADLSGen2FileDataSetResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupADLSGen2FileDataSetResult
+			secret, err := ctx.InvokePackageRaw("azure-native:datashare:getADLSGen2FileDataSet", args, &rv, "", opts...)
+			if err != nil {
+				return LookupADLSGen2FileDataSetResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupADLSGen2FileDataSetResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupADLSGen2FileDataSetResultOutput), nil
+			}
+			return output, nil
 		}).(LookupADLSGen2FileDataSetResultOutput)
 }
 

@@ -55,14 +55,20 @@ type LookupFqdnListLocalRulestackResult struct {
 
 func LookupFqdnListLocalRulestackOutput(ctx *pulumi.Context, args LookupFqdnListLocalRulestackOutputArgs, opts ...pulumi.InvokeOption) LookupFqdnListLocalRulestackResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupFqdnListLocalRulestackResult, error) {
+		ApplyT(func(v interface{}) (LookupFqdnListLocalRulestackResultOutput, error) {
 			args := v.(LookupFqdnListLocalRulestackArgs)
-			r, err := LookupFqdnListLocalRulestack(ctx, &args, opts...)
-			var s LookupFqdnListLocalRulestackResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupFqdnListLocalRulestackResult
+			secret, err := ctx.InvokePackageRaw("azure-native:cloudngfw/v20240207preview:getFqdnListLocalRulestack", args, &rv, "", opts...)
+			if err != nil {
+				return LookupFqdnListLocalRulestackResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupFqdnListLocalRulestackResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupFqdnListLocalRulestackResultOutput), nil
+			}
+			return output, nil
 		}).(LookupFqdnListLocalRulestackResultOutput)
 }
 

@@ -85,6 +85,9 @@ func NewLicenseProfile(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:hybridcompute/v20240710:LicenseProfile"),
 		},
+		{
+			Type: pulumi.String("azure-native:hybridcompute/v20240731preview:LicenseProfile"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

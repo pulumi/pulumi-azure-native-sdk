@@ -66,14 +66,20 @@ func (val *LookupSqlManagedInstanceResult) Defaults() *LookupSqlManagedInstanceR
 
 func LookupSqlManagedInstanceOutput(ctx *pulumi.Context, args LookupSqlManagedInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupSqlManagedInstanceResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSqlManagedInstanceResult, error) {
+		ApplyT(func(v interface{}) (LookupSqlManagedInstanceResultOutput, error) {
 			args := v.(LookupSqlManagedInstanceArgs)
-			r, err := LookupSqlManagedInstance(ctx, &args, opts...)
-			var s LookupSqlManagedInstanceResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupSqlManagedInstanceResult
+			secret, err := ctx.InvokePackageRaw("azure-native:azurearcdata/v20230115preview:getSqlManagedInstance", args, &rv, "", opts...)
+			if err != nil {
+				return LookupSqlManagedInstanceResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupSqlManagedInstanceResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupSqlManagedInstanceResultOutput), nil
+			}
+			return output, nil
 		}).(LookupSqlManagedInstanceResultOutput)
 }
 

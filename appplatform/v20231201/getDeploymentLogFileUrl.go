@@ -41,14 +41,20 @@ type GetDeploymentLogFileUrlResult struct {
 
 func GetDeploymentLogFileUrlOutput(ctx *pulumi.Context, args GetDeploymentLogFileUrlOutputArgs, opts ...pulumi.InvokeOption) GetDeploymentLogFileUrlResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetDeploymentLogFileUrlResult, error) {
+		ApplyT(func(v interface{}) (GetDeploymentLogFileUrlResultOutput, error) {
 			args := v.(GetDeploymentLogFileUrlArgs)
-			r, err := GetDeploymentLogFileUrl(ctx, &args, opts...)
-			var s GetDeploymentLogFileUrlResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv GetDeploymentLogFileUrlResult
+			secret, err := ctx.InvokePackageRaw("azure-native:appplatform/v20231201:getDeploymentLogFileUrl", args, &rv, "", opts...)
+			if err != nil {
+				return GetDeploymentLogFileUrlResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetDeploymentLogFileUrlResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetDeploymentLogFileUrlResultOutput), nil
+			}
+			return output, nil
 		}).(GetDeploymentLogFileUrlResultOutput)
 }
 

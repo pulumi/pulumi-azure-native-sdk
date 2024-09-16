@@ -38,14 +38,20 @@ type ListSaasResourceAccessTokenResult struct {
 
 func ListSaasResourceAccessTokenOutput(ctx *pulumi.Context, args ListSaasResourceAccessTokenOutputArgs, opts ...pulumi.InvokeOption) ListSaasResourceAccessTokenResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListSaasResourceAccessTokenResult, error) {
+		ApplyT(func(v interface{}) (ListSaasResourceAccessTokenResultOutput, error) {
 			args := v.(ListSaasResourceAccessTokenArgs)
-			r, err := ListSaasResourceAccessToken(ctx, &args, opts...)
-			var s ListSaasResourceAccessTokenResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListSaasResourceAccessTokenResult
+			secret, err := ctx.InvokePackageRaw("azure-native:saas:listSaasResourceAccessToken", args, &rv, "", opts...)
+			if err != nil {
+				return ListSaasResourceAccessTokenResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListSaasResourceAccessTokenResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListSaasResourceAccessTokenResultOutput), nil
+			}
+			return output, nil
 		}).(ListSaasResourceAccessTokenResultOutput)
 }
 

@@ -46,14 +46,20 @@ type ListWebPubSubKeysResult struct {
 
 func ListWebPubSubKeysOutput(ctx *pulumi.Context, args ListWebPubSubKeysOutputArgs, opts ...pulumi.InvokeOption) ListWebPubSubKeysResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListWebPubSubKeysResult, error) {
+		ApplyT(func(v interface{}) (ListWebPubSubKeysResultOutput, error) {
 			args := v.(ListWebPubSubKeysArgs)
-			r, err := ListWebPubSubKeys(ctx, &args, opts...)
-			var s ListWebPubSubKeysResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListWebPubSubKeysResult
+			secret, err := ctx.InvokePackageRaw("azure-native:webpubsub:listWebPubSubKeys", args, &rv, "", opts...)
+			if err != nil {
+				return ListWebPubSubKeysResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListWebPubSubKeysResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListWebPubSubKeysResultOutput), nil
+			}
+			return output, nil
 		}).(ListWebPubSubKeysResultOutput)
 }
 

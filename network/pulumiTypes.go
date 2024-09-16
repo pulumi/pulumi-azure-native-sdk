@@ -54708,6 +54708,152 @@ func (o NetworkManagerPropertiesResponseNetworkManagerScopesOutput) Subscription
 	return o.ApplyT(func(v NetworkManagerPropertiesResponseNetworkManagerScopes) []string { return v.Subscriptions }).(pulumi.StringArrayOutput)
 }
 
+// Network manager routing group item.
+type NetworkManagerRoutingGroupItem struct {
+	// Network manager group Id.
+	NetworkGroupId string `pulumi:"networkGroupId"`
+}
+
+// NetworkManagerRoutingGroupItemInput is an input type that accepts NetworkManagerRoutingGroupItemArgs and NetworkManagerRoutingGroupItemOutput values.
+// You can construct a concrete instance of `NetworkManagerRoutingGroupItemInput` via:
+//
+//	NetworkManagerRoutingGroupItemArgs{...}
+type NetworkManagerRoutingGroupItemInput interface {
+	pulumi.Input
+
+	ToNetworkManagerRoutingGroupItemOutput() NetworkManagerRoutingGroupItemOutput
+	ToNetworkManagerRoutingGroupItemOutputWithContext(context.Context) NetworkManagerRoutingGroupItemOutput
+}
+
+// Network manager routing group item.
+type NetworkManagerRoutingGroupItemArgs struct {
+	// Network manager group Id.
+	NetworkGroupId pulumi.StringInput `pulumi:"networkGroupId"`
+}
+
+func (NetworkManagerRoutingGroupItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkManagerRoutingGroupItem)(nil)).Elem()
+}
+
+func (i NetworkManagerRoutingGroupItemArgs) ToNetworkManagerRoutingGroupItemOutput() NetworkManagerRoutingGroupItemOutput {
+	return i.ToNetworkManagerRoutingGroupItemOutputWithContext(context.Background())
+}
+
+func (i NetworkManagerRoutingGroupItemArgs) ToNetworkManagerRoutingGroupItemOutputWithContext(ctx context.Context) NetworkManagerRoutingGroupItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkManagerRoutingGroupItemOutput)
+}
+
+// NetworkManagerRoutingGroupItemArrayInput is an input type that accepts NetworkManagerRoutingGroupItemArray and NetworkManagerRoutingGroupItemArrayOutput values.
+// You can construct a concrete instance of `NetworkManagerRoutingGroupItemArrayInput` via:
+//
+//	NetworkManagerRoutingGroupItemArray{ NetworkManagerRoutingGroupItemArgs{...} }
+type NetworkManagerRoutingGroupItemArrayInput interface {
+	pulumi.Input
+
+	ToNetworkManagerRoutingGroupItemArrayOutput() NetworkManagerRoutingGroupItemArrayOutput
+	ToNetworkManagerRoutingGroupItemArrayOutputWithContext(context.Context) NetworkManagerRoutingGroupItemArrayOutput
+}
+
+type NetworkManagerRoutingGroupItemArray []NetworkManagerRoutingGroupItemInput
+
+func (NetworkManagerRoutingGroupItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NetworkManagerRoutingGroupItem)(nil)).Elem()
+}
+
+func (i NetworkManagerRoutingGroupItemArray) ToNetworkManagerRoutingGroupItemArrayOutput() NetworkManagerRoutingGroupItemArrayOutput {
+	return i.ToNetworkManagerRoutingGroupItemArrayOutputWithContext(context.Background())
+}
+
+func (i NetworkManagerRoutingGroupItemArray) ToNetworkManagerRoutingGroupItemArrayOutputWithContext(ctx context.Context) NetworkManagerRoutingGroupItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkManagerRoutingGroupItemArrayOutput)
+}
+
+// Network manager routing group item.
+type NetworkManagerRoutingGroupItemOutput struct{ *pulumi.OutputState }
+
+func (NetworkManagerRoutingGroupItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkManagerRoutingGroupItem)(nil)).Elem()
+}
+
+func (o NetworkManagerRoutingGroupItemOutput) ToNetworkManagerRoutingGroupItemOutput() NetworkManagerRoutingGroupItemOutput {
+	return o
+}
+
+func (o NetworkManagerRoutingGroupItemOutput) ToNetworkManagerRoutingGroupItemOutputWithContext(ctx context.Context) NetworkManagerRoutingGroupItemOutput {
+	return o
+}
+
+// Network manager group Id.
+func (o NetworkManagerRoutingGroupItemOutput) NetworkGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkManagerRoutingGroupItem) string { return v.NetworkGroupId }).(pulumi.StringOutput)
+}
+
+type NetworkManagerRoutingGroupItemArrayOutput struct{ *pulumi.OutputState }
+
+func (NetworkManagerRoutingGroupItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NetworkManagerRoutingGroupItem)(nil)).Elem()
+}
+
+func (o NetworkManagerRoutingGroupItemArrayOutput) ToNetworkManagerRoutingGroupItemArrayOutput() NetworkManagerRoutingGroupItemArrayOutput {
+	return o
+}
+
+func (o NetworkManagerRoutingGroupItemArrayOutput) ToNetworkManagerRoutingGroupItemArrayOutputWithContext(ctx context.Context) NetworkManagerRoutingGroupItemArrayOutput {
+	return o
+}
+
+func (o NetworkManagerRoutingGroupItemArrayOutput) Index(i pulumi.IntInput) NetworkManagerRoutingGroupItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworkManagerRoutingGroupItem {
+		return vs[0].([]NetworkManagerRoutingGroupItem)[vs[1].(int)]
+	}).(NetworkManagerRoutingGroupItemOutput)
+}
+
+// Network manager routing group item.
+type NetworkManagerRoutingGroupItemResponse struct {
+	// Network manager group Id.
+	NetworkGroupId string `pulumi:"networkGroupId"`
+}
+
+// Network manager routing group item.
+type NetworkManagerRoutingGroupItemResponseOutput struct{ *pulumi.OutputState }
+
+func (NetworkManagerRoutingGroupItemResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkManagerRoutingGroupItemResponse)(nil)).Elem()
+}
+
+func (o NetworkManagerRoutingGroupItemResponseOutput) ToNetworkManagerRoutingGroupItemResponseOutput() NetworkManagerRoutingGroupItemResponseOutput {
+	return o
+}
+
+func (o NetworkManagerRoutingGroupItemResponseOutput) ToNetworkManagerRoutingGroupItemResponseOutputWithContext(ctx context.Context) NetworkManagerRoutingGroupItemResponseOutput {
+	return o
+}
+
+// Network manager group Id.
+func (o NetworkManagerRoutingGroupItemResponseOutput) NetworkGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkManagerRoutingGroupItemResponse) string { return v.NetworkGroupId }).(pulumi.StringOutput)
+}
+
+type NetworkManagerRoutingGroupItemResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (NetworkManagerRoutingGroupItemResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NetworkManagerRoutingGroupItemResponse)(nil)).Elem()
+}
+
+func (o NetworkManagerRoutingGroupItemResponseArrayOutput) ToNetworkManagerRoutingGroupItemResponseArrayOutput() NetworkManagerRoutingGroupItemResponseArrayOutput {
+	return o
+}
+
+func (o NetworkManagerRoutingGroupItemResponseArrayOutput) ToNetworkManagerRoutingGroupItemResponseArrayOutputWithContext(ctx context.Context) NetworkManagerRoutingGroupItemResponseArrayOutput {
+	return o
+}
+
+func (o NetworkManagerRoutingGroupItemResponseArrayOutput) Index(i pulumi.IntInput) NetworkManagerRoutingGroupItemResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworkManagerRoutingGroupItemResponse {
+		return vs[0].([]NetworkManagerRoutingGroupItemResponse)[vs[1].(int)]
+	}).(NetworkManagerRoutingGroupItemResponseOutput)
+}
+
 // Network manager security group item.
 type NetworkManagerSecurityGroupItem struct {
 	// Network manager group Id.
@@ -60896,181 +61042,6 @@ func (o PrivateDnsZoneConfigArrayOutput) Index(i pulumi.IntInput) PrivateDnsZone
 	}).(PrivateDnsZoneConfigOutput)
 }
 
-// PrivateDnsZoneConfig resource.
-type PrivateDnsZoneConfigResponse struct {
-	// Name of the resource that is unique within a resource group. This name can be used to access the resource.
-	Name *string `pulumi:"name"`
-	// The resource id of the private dns zone.
-	PrivateDnsZoneId *string `pulumi:"privateDnsZoneId"`
-	// A collection of information regarding a recordSet, holding information to identify private resources.
-	RecordSets []RecordSetResponse `pulumi:"recordSets"`
-}
-
-// PrivateDnsZoneConfig resource.
-type PrivateDnsZoneConfigResponseOutput struct{ *pulumi.OutputState }
-
-func (PrivateDnsZoneConfigResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateDnsZoneConfigResponse)(nil)).Elem()
-}
-
-func (o PrivateDnsZoneConfigResponseOutput) ToPrivateDnsZoneConfigResponseOutput() PrivateDnsZoneConfigResponseOutput {
-	return o
-}
-
-func (o PrivateDnsZoneConfigResponseOutput) ToPrivateDnsZoneConfigResponseOutputWithContext(ctx context.Context) PrivateDnsZoneConfigResponseOutput {
-	return o
-}
-
-// Name of the resource that is unique within a resource group. This name can be used to access the resource.
-func (o PrivateDnsZoneConfigResponseOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateDnsZoneConfigResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// The resource id of the private dns zone.
-func (o PrivateDnsZoneConfigResponseOutput) PrivateDnsZoneId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateDnsZoneConfigResponse) *string { return v.PrivateDnsZoneId }).(pulumi.StringPtrOutput)
-}
-
-// A collection of information regarding a recordSet, holding information to identify private resources.
-func (o PrivateDnsZoneConfigResponseOutput) RecordSets() RecordSetResponseArrayOutput {
-	return o.ApplyT(func(v PrivateDnsZoneConfigResponse) []RecordSetResponse { return v.RecordSets }).(RecordSetResponseArrayOutput)
-}
-
-type PrivateDnsZoneConfigResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (PrivateDnsZoneConfigResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PrivateDnsZoneConfigResponse)(nil)).Elem()
-}
-
-func (o PrivateDnsZoneConfigResponseArrayOutput) ToPrivateDnsZoneConfigResponseArrayOutput() PrivateDnsZoneConfigResponseArrayOutput {
-	return o
-}
-
-func (o PrivateDnsZoneConfigResponseArrayOutput) ToPrivateDnsZoneConfigResponseArrayOutputWithContext(ctx context.Context) PrivateDnsZoneConfigResponseArrayOutput {
-	return o
-}
-
-func (o PrivateDnsZoneConfigResponseArrayOutput) Index(i pulumi.IntInput) PrivateDnsZoneConfigResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateDnsZoneConfigResponse {
-		return vs[0].([]PrivateDnsZoneConfigResponse)[vs[1].(int)]
-	}).(PrivateDnsZoneConfigResponseOutput)
-}
-
-// PrivateEndpointConnection resource.
-type PrivateEndpointConnectionResponse struct {
-	// A unique read-only string that changes whenever the resource is updated.
-	Etag string `pulumi:"etag"`
-	// Resource ID.
-	Id *string `pulumi:"id"`
-	// The consumer link id.
-	LinkIdentifier string `pulumi:"linkIdentifier"`
-	// The name of the resource that is unique within a resource group. This name can be used to access the resource.
-	Name *string `pulumi:"name"`
-	// The resource of private end point.
-	PrivateEndpoint PrivateEndpointResponse `pulumi:"privateEndpoint"`
-	// The location of the private endpoint.
-	PrivateEndpointLocation string `pulumi:"privateEndpointLocation"`
-	// A collection of information about the state of the connection between service consumer and provider.
-	PrivateLinkServiceConnectionState *PrivateLinkServiceConnectionStateResponse `pulumi:"privateLinkServiceConnectionState"`
-	// The provisioning state of the private endpoint connection resource.
-	ProvisioningState string `pulumi:"provisioningState"`
-	// The resource type.
-	Type string `pulumi:"type"`
-}
-
-// Defaults sets the appropriate defaults for PrivateEndpointConnectionResponse
-func (val *PrivateEndpointConnectionResponse) Defaults() *PrivateEndpointConnectionResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	tmp.PrivateEndpoint = *tmp.PrivateEndpoint.Defaults()
-
-	return &tmp
-}
-
-// PrivateEndpointConnection resource.
-type PrivateEndpointConnectionResponseOutput struct{ *pulumi.OutputState }
-
-func (PrivateEndpointConnectionResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateEndpointConnectionResponse)(nil)).Elem()
-}
-
-func (o PrivateEndpointConnectionResponseOutput) ToPrivateEndpointConnectionResponseOutput() PrivateEndpointConnectionResponseOutput {
-	return o
-}
-
-func (o PrivateEndpointConnectionResponseOutput) ToPrivateEndpointConnectionResponseOutputWithContext(ctx context.Context) PrivateEndpointConnectionResponseOutput {
-	return o
-}
-
-// A unique read-only string that changes whenever the resource is updated.
-func (o PrivateEndpointConnectionResponseOutput) Etag() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Etag }).(pulumi.StringOutput)
-}
-
-// Resource ID.
-func (o PrivateEndpointConnectionResponseOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-// The consumer link id.
-func (o PrivateEndpointConnectionResponseOutput) LinkIdentifier() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.LinkIdentifier }).(pulumi.StringOutput)
-}
-
-// The name of the resource that is unique within a resource group. This name can be used to access the resource.
-func (o PrivateEndpointConnectionResponseOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// The resource of private end point.
-func (o PrivateEndpointConnectionResponseOutput) PrivateEndpoint() PrivateEndpointResponseOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) PrivateEndpointResponse { return v.PrivateEndpoint }).(PrivateEndpointResponseOutput)
-}
-
-// The location of the private endpoint.
-func (o PrivateEndpointConnectionResponseOutput) PrivateEndpointLocation() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.PrivateEndpointLocation }).(pulumi.StringOutput)
-}
-
-// A collection of information about the state of the connection between service consumer and provider.
-func (o PrivateEndpointConnectionResponseOutput) PrivateLinkServiceConnectionState() PrivateLinkServiceConnectionStateResponsePtrOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) *PrivateLinkServiceConnectionStateResponse {
-		return v.PrivateLinkServiceConnectionState
-	}).(PrivateLinkServiceConnectionStateResponsePtrOutput)
-}
-
-// The provisioning state of the private endpoint connection resource.
-func (o PrivateEndpointConnectionResponseOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// The resource type.
-func (o PrivateEndpointConnectionResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type PrivateEndpointConnectionResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (PrivateEndpointConnectionResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PrivateEndpointConnectionResponse)(nil)).Elem()
-}
-
-func (o PrivateEndpointConnectionResponseArrayOutput) ToPrivateEndpointConnectionResponseArrayOutput() PrivateEndpointConnectionResponseArrayOutput {
-	return o
-}
-
-func (o PrivateEndpointConnectionResponseArrayOutput) ToPrivateEndpointConnectionResponseArrayOutputWithContext(ctx context.Context) PrivateEndpointConnectionResponseArrayOutput {
-	return o
-}
-
-func (o PrivateEndpointConnectionResponseArrayOutput) Index(i pulumi.IntInput) PrivateEndpointConnectionResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateEndpointConnectionResponse {
-		return vs[0].([]PrivateEndpointConnectionResponse)[vs[1].(int)]
-	}).(PrivateEndpointConnectionResponseOutput)
-}
-
 func init() {
 	pulumi.RegisterOutputType(ARecordOutput{})
 	pulumi.RegisterOutputType(ARecordArrayOutput{})
@@ -61951,6 +61922,10 @@ func init() {
 	pulumi.RegisterOutputType(NetworkManagerDeploymentStatusResponseArrayOutput{})
 	pulumi.RegisterOutputType(NetworkManagerPropertiesNetworkManagerScopesOutput{})
 	pulumi.RegisterOutputType(NetworkManagerPropertiesResponseNetworkManagerScopesOutput{})
+	pulumi.RegisterOutputType(NetworkManagerRoutingGroupItemOutput{})
+	pulumi.RegisterOutputType(NetworkManagerRoutingGroupItemArrayOutput{})
+	pulumi.RegisterOutputType(NetworkManagerRoutingGroupItemResponseOutput{})
+	pulumi.RegisterOutputType(NetworkManagerRoutingGroupItemResponseArrayOutput{})
 	pulumi.RegisterOutputType(NetworkManagerSecurityGroupItemOutput{})
 	pulumi.RegisterOutputType(NetworkManagerSecurityGroupItemArrayOutput{})
 	pulumi.RegisterOutputType(NetworkManagerSecurityGroupItemResponseOutput{})
@@ -62045,8 +62020,4 @@ func init() {
 	pulumi.RegisterOutputType(PoolAssociationResponseArrayOutput{})
 	pulumi.RegisterOutputType(PrivateDnsZoneConfigOutput{})
 	pulumi.RegisterOutputType(PrivateDnsZoneConfigArrayOutput{})
-	pulumi.RegisterOutputType(PrivateDnsZoneConfigResponseOutput{})
-	pulumi.RegisterOutputType(PrivateDnsZoneConfigResponseArrayOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseArrayOutput{})
 }

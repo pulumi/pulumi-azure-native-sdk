@@ -14,7 +14,7 @@ import (
 // Gets the MongoDB collection under an existing Azure Cosmos DB database account.
 // Azure REST API version: 2023-04-15.
 //
-// Other available API versions: 2019-08-01, 2023-03-15-preview, 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview.
+// Other available API versions: 2019-08-01, 2023-03-15-preview, 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview, 2024-08-15, 2024-09-01-preview.
 func LookupMongoDBResourceMongoDBCollection(ctx *pulumi.Context, args *LookupMongoDBResourceMongoDBCollectionArgs, opts ...pulumi.InvokeOption) (*LookupMongoDBResourceMongoDBCollectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMongoDBResourceMongoDBCollectionResult
@@ -54,14 +54,20 @@ type LookupMongoDBResourceMongoDBCollectionResult struct {
 
 func LookupMongoDBResourceMongoDBCollectionOutput(ctx *pulumi.Context, args LookupMongoDBResourceMongoDBCollectionOutputArgs, opts ...pulumi.InvokeOption) LookupMongoDBResourceMongoDBCollectionResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupMongoDBResourceMongoDBCollectionResult, error) {
+		ApplyT(func(v interface{}) (LookupMongoDBResourceMongoDBCollectionResultOutput, error) {
 			args := v.(LookupMongoDBResourceMongoDBCollectionArgs)
-			r, err := LookupMongoDBResourceMongoDBCollection(ctx, &args, opts...)
-			var s LookupMongoDBResourceMongoDBCollectionResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupMongoDBResourceMongoDBCollectionResult
+			secret, err := ctx.InvokePackageRaw("azure-native:documentdb:getMongoDBResourceMongoDBCollection", args, &rv, "", opts...)
+			if err != nil {
+				return LookupMongoDBResourceMongoDBCollectionResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupMongoDBResourceMongoDBCollectionResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupMongoDBResourceMongoDBCollectionResultOutput), nil
+			}
+			return output, nil
 		}).(LookupMongoDBResourceMongoDBCollectionResultOutput)
 }
 

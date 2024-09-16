@@ -51,14 +51,20 @@ type LookupPrivateEndpointConnectionsForEDMResult struct {
 
 func LookupPrivateEndpointConnectionsForEDMOutput(ctx *pulumi.Context, args LookupPrivateEndpointConnectionsForEDMOutputArgs, opts ...pulumi.InvokeOption) LookupPrivateEndpointConnectionsForEDMResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupPrivateEndpointConnectionsForEDMResult, error) {
+		ApplyT(func(v interface{}) (LookupPrivateEndpointConnectionsForEDMResultOutput, error) {
 			args := v.(LookupPrivateEndpointConnectionsForEDMArgs)
-			r, err := LookupPrivateEndpointConnectionsForEDM(ctx, &args, opts...)
-			var s LookupPrivateEndpointConnectionsForEDMResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupPrivateEndpointConnectionsForEDMResult
+			secret, err := ctx.InvokePackageRaw("azure-native:securityandcompliance/v20210308:getPrivateEndpointConnectionsForEDM", args, &rv, "", opts...)
+			if err != nil {
+				return LookupPrivateEndpointConnectionsForEDMResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupPrivateEndpointConnectionsForEDMResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupPrivateEndpointConnectionsForEDMResultOutput), nil
+			}
+			return output, nil
 		}).(LookupPrivateEndpointConnectionsForEDMResultOutput)
 }
 

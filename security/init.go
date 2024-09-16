@@ -49,6 +49,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CustomAssessmentAutomation{}
 	case "azure-native:security:CustomEntityStoreAssignment":
 		r = &CustomEntityStoreAssignment{}
+	case "azure-native:security:CustomRecommendation":
+		r = &CustomRecommendation{}
 	case "azure-native:security:DefenderForStorage":
 		r = &DefenderForStorage{}
 	case "azure-native:security:DevOpsConfiguration":
@@ -75,12 +77,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SecurityContact{}
 	case "azure-native:security:SecurityOperator":
 		r = &SecurityOperator{}
+	case "azure-native:security:SecurityStandard":
+		r = &SecurityStandard{}
 	case "azure-native:security:ServerVulnerabilityAssessment":
 		r = &ServerVulnerabilityAssessment{}
 	case "azure-native:security:SqlVulnerabilityAssessmentBaselineRule":
 		r = &SqlVulnerabilityAssessmentBaselineRule{}
 	case "azure-native:security:Standard":
 		r = &Standard{}
+	case "azure-native:security:StandardAssignment":
+		r = &StandardAssignment{}
 	case "azure-native:security:WorkspaceSetting":
 		r = &WorkspaceSetting{}
 	default:

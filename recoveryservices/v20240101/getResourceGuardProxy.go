@@ -49,14 +49,20 @@ type LookupResourceGuardProxyResult struct {
 
 func LookupResourceGuardProxyOutput(ctx *pulumi.Context, args LookupResourceGuardProxyOutputArgs, opts ...pulumi.InvokeOption) LookupResourceGuardProxyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupResourceGuardProxyResult, error) {
+		ApplyT(func(v interface{}) (LookupResourceGuardProxyResultOutput, error) {
 			args := v.(LookupResourceGuardProxyArgs)
-			r, err := LookupResourceGuardProxy(ctx, &args, opts...)
-			var s LookupResourceGuardProxyResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupResourceGuardProxyResult
+			secret, err := ctx.InvokePackageRaw("azure-native:recoveryservices/v20240101:getResourceGuardProxy", args, &rv, "", opts...)
+			if err != nil {
+				return LookupResourceGuardProxyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupResourceGuardProxyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupResourceGuardProxyResultOutput), nil
+			}
+			return output, nil
 		}).(LookupResourceGuardProxyResultOutput)
 }
 

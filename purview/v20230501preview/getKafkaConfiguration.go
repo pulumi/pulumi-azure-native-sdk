@@ -75,14 +75,20 @@ func (val *LookupKafkaConfigurationResult) Defaults() *LookupKafkaConfigurationR
 
 func LookupKafkaConfigurationOutput(ctx *pulumi.Context, args LookupKafkaConfigurationOutputArgs, opts ...pulumi.InvokeOption) LookupKafkaConfigurationResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupKafkaConfigurationResult, error) {
+		ApplyT(func(v interface{}) (LookupKafkaConfigurationResultOutput, error) {
 			args := v.(LookupKafkaConfigurationArgs)
-			r, err := LookupKafkaConfiguration(ctx, &args, opts...)
-			var s LookupKafkaConfigurationResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupKafkaConfigurationResult
+			secret, err := ctx.InvokePackageRaw("azure-native:purview/v20230501preview:getKafkaConfiguration", args, &rv, "", opts...)
+			if err != nil {
+				return LookupKafkaConfigurationResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupKafkaConfigurationResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupKafkaConfigurationResultOutput), nil
+			}
+			return output, nil
 		}).(LookupKafkaConfigurationResultOutput)
 }
 

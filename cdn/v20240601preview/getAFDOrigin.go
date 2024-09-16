@@ -93,14 +93,20 @@ func (val *LookupAFDOriginResult) Defaults() *LookupAFDOriginResult {
 
 func LookupAFDOriginOutput(ctx *pulumi.Context, args LookupAFDOriginOutputArgs, opts ...pulumi.InvokeOption) LookupAFDOriginResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupAFDOriginResult, error) {
+		ApplyT(func(v interface{}) (LookupAFDOriginResultOutput, error) {
 			args := v.(LookupAFDOriginArgs)
-			r, err := LookupAFDOrigin(ctx, &args, opts...)
-			var s LookupAFDOriginResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupAFDOriginResult
+			secret, err := ctx.InvokePackageRaw("azure-native:cdn/v20240601preview:getAFDOrigin", args, &rv, "", opts...)
+			if err != nil {
+				return LookupAFDOriginResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupAFDOriginResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupAFDOriginResultOutput), nil
+			}
+			return output, nil
 		}).(LookupAFDOriginResultOutput)
 }
 

@@ -39,14 +39,20 @@ type ListMobileNetworkSimIdsResult struct {
 
 func ListMobileNetworkSimIdsOutput(ctx *pulumi.Context, args ListMobileNetworkSimIdsOutputArgs, opts ...pulumi.InvokeOption) ListMobileNetworkSimIdsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListMobileNetworkSimIdsResult, error) {
+		ApplyT(func(v interface{}) (ListMobileNetworkSimIdsResultOutput, error) {
 			args := v.(ListMobileNetworkSimIdsArgs)
-			r, err := ListMobileNetworkSimIds(ctx, &args, opts...)
-			var s ListMobileNetworkSimIdsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListMobileNetworkSimIdsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:mobilenetwork/v20220401preview:listMobileNetworkSimIds", args, &rv, "", opts...)
+			if err != nil {
+				return ListMobileNetworkSimIdsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListMobileNetworkSimIdsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListMobileNetworkSimIdsResultOutput), nil
+			}
+			return output, nil
 		}).(ListMobileNetworkSimIdsResultOutput)
 }
 

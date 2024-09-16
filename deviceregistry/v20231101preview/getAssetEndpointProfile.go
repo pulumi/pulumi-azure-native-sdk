@@ -31,7 +31,7 @@ type LookupAssetEndpointProfileArgs struct {
 
 // Asset Endpoint Profile definition.
 type LookupAssetEndpointProfileResult struct {
-	// Contains connectivity type specific further configuration (e.g. OPC UA, Modbus, ONVIF).
+	// Stringified JSON that contains connectivity type specific further configuration (e.g. OPC UA, Modbus, ONVIF).
 	AdditionalConfiguration *string `pulumi:"additionalConfiguration"`
 	// The extended location.
 	ExtendedLocation ExtendedLocationResponse `pulumi:"extendedLocation"`
@@ -72,14 +72,20 @@ func (val *LookupAssetEndpointProfileResult) Defaults() *LookupAssetEndpointProf
 
 func LookupAssetEndpointProfileOutput(ctx *pulumi.Context, args LookupAssetEndpointProfileOutputArgs, opts ...pulumi.InvokeOption) LookupAssetEndpointProfileResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupAssetEndpointProfileResult, error) {
+		ApplyT(func(v interface{}) (LookupAssetEndpointProfileResultOutput, error) {
 			args := v.(LookupAssetEndpointProfileArgs)
-			r, err := LookupAssetEndpointProfile(ctx, &args, opts...)
-			var s LookupAssetEndpointProfileResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupAssetEndpointProfileResult
+			secret, err := ctx.InvokePackageRaw("azure-native:deviceregistry/v20231101preview:getAssetEndpointProfile", args, &rv, "", opts...)
+			if err != nil {
+				return LookupAssetEndpointProfileResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupAssetEndpointProfileResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupAssetEndpointProfileResultOutput), nil
+			}
+			return output, nil
 		}).(LookupAssetEndpointProfileResultOutput)
 }
 
@@ -109,7 +115,7 @@ func (o LookupAssetEndpointProfileResultOutput) ToLookupAssetEndpointProfileResu
 	return o
 }
 
-// Contains connectivity type specific further configuration (e.g. OPC UA, Modbus, ONVIF).
+// Stringified JSON that contains connectivity type specific further configuration (e.g. OPC UA, Modbus, ONVIF).
 func (o LookupAssetEndpointProfileResultOutput) AdditionalConfiguration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAssetEndpointProfileResult) *string { return v.AdditionalConfiguration }).(pulumi.StringPtrOutput)
 }

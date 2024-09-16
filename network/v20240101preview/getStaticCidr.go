@@ -49,14 +49,20 @@ type LookupStaticCidrResult struct {
 
 func LookupStaticCidrOutput(ctx *pulumi.Context, args LookupStaticCidrOutputArgs, opts ...pulumi.InvokeOption) LookupStaticCidrResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupStaticCidrResult, error) {
+		ApplyT(func(v interface{}) (LookupStaticCidrResultOutput, error) {
 			args := v.(LookupStaticCidrArgs)
-			r, err := LookupStaticCidr(ctx, &args, opts...)
-			var s LookupStaticCidrResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupStaticCidrResult
+			secret, err := ctx.InvokePackageRaw("azure-native:network/v20240101preview:getStaticCidr", args, &rv, "", opts...)
+			if err != nil {
+				return LookupStaticCidrResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupStaticCidrResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupStaticCidrResultOutput), nil
+			}
+			return output, nil
 		}).(LookupStaticCidrResultOutput)
 }
 

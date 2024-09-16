@@ -151,6 +151,9 @@ func NewNetworkVirtualAppliance(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20231101:NetworkVirtualAppliance"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20240301:NetworkVirtualAppliance"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

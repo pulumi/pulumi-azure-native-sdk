@@ -14,7 +14,7 @@ import (
 // Defines binding between a resource and role
 // Azure REST API version: 2023-05-02-preview.
 //
-// Other available API versions: 2023-06-02-preview, 2023-07-02-preview, 2023-08-02-preview, 2023-09-01, 2023-09-02-preview, 2023-10-01, 2023-10-02-preview, 2023-11-01, 2023-11-02-preview, 2024-01-01, 2024-01-02-preview, 2024-02-01, 2024-02-02-preview, 2024-03-02-preview, 2024-04-02-preview, 2024-05-01, 2024-05-02-preview, 2024-06-02-preview, 2024-07-01.
+// Other available API versions: 2023-06-02-preview, 2023-07-02-preview, 2023-08-02-preview, 2023-09-01, 2023-09-02-preview, 2023-10-01, 2023-10-02-preview, 2023-11-01, 2023-11-02-preview, 2024-01-01, 2024-01-02-preview, 2024-02-01, 2024-02-02-preview, 2024-03-02-preview, 2024-04-02-preview, 2024-05-01, 2024-05-02-preview, 2024-06-02-preview, 2024-07-01, 2024-07-02-preview.
 func LookupTrustedAccessRoleBinding(ctx *pulumi.Context, args *LookupTrustedAccessRoleBindingArgs, opts ...pulumi.InvokeOption) (*LookupTrustedAccessRoleBindingResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTrustedAccessRoleBindingResult
@@ -54,14 +54,20 @@ type LookupTrustedAccessRoleBindingResult struct {
 
 func LookupTrustedAccessRoleBindingOutput(ctx *pulumi.Context, args LookupTrustedAccessRoleBindingOutputArgs, opts ...pulumi.InvokeOption) LookupTrustedAccessRoleBindingResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupTrustedAccessRoleBindingResult, error) {
+		ApplyT(func(v interface{}) (LookupTrustedAccessRoleBindingResultOutput, error) {
 			args := v.(LookupTrustedAccessRoleBindingArgs)
-			r, err := LookupTrustedAccessRoleBinding(ctx, &args, opts...)
-			var s LookupTrustedAccessRoleBindingResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupTrustedAccessRoleBindingResult
+			secret, err := ctx.InvokePackageRaw("azure-native:containerservice:getTrustedAccessRoleBinding", args, &rv, "", opts...)
+			if err != nil {
+				return LookupTrustedAccessRoleBindingResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupTrustedAccessRoleBindingResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupTrustedAccessRoleBindingResultOutput), nil
+			}
+			return output, nil
 		}).(LookupTrustedAccessRoleBindingResultOutput)
 }
 

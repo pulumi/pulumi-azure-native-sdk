@@ -41,14 +41,20 @@ type ListLocalRulestackCountriesResult struct {
 
 func ListLocalRulestackCountriesOutput(ctx *pulumi.Context, args ListLocalRulestackCountriesOutputArgs, opts ...pulumi.InvokeOption) ListLocalRulestackCountriesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListLocalRulestackCountriesResult, error) {
+		ApplyT(func(v interface{}) (ListLocalRulestackCountriesResultOutput, error) {
 			args := v.(ListLocalRulestackCountriesArgs)
-			r, err := ListLocalRulestackCountries(ctx, &args, opts...)
-			var s ListLocalRulestackCountriesResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListLocalRulestackCountriesResult
+			secret, err := ctx.InvokePackageRaw("azure-native:cloudngfw/v20230901:listLocalRulestackCountries", args, &rv, "", opts...)
+			if err != nil {
+				return ListLocalRulestackCountriesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListLocalRulestackCountriesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListLocalRulestackCountriesResultOutput), nil
+			}
+			return output, nil
 		}).(ListLocalRulestackCountriesResultOutput)
 }
 

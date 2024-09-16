@@ -57,14 +57,20 @@ type LookupIncidentRelationResult struct {
 
 func LookupIncidentRelationOutput(ctx *pulumi.Context, args LookupIncidentRelationOutputArgs, opts ...pulumi.InvokeOption) LookupIncidentRelationResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupIncidentRelationResult, error) {
+		ApplyT(func(v interface{}) (LookupIncidentRelationResultOutput, error) {
 			args := v.(LookupIncidentRelationArgs)
-			r, err := LookupIncidentRelation(ctx, &args, opts...)
-			var s LookupIncidentRelationResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupIncidentRelationResult
+			secret, err := ctx.InvokePackageRaw("azure-native:securityinsights/v20231201preview:getIncidentRelation", args, &rv, "", opts...)
+			if err != nil {
+				return LookupIncidentRelationResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupIncidentRelationResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupIncidentRelationResultOutput), nil
+			}
+			return output, nil
 		}).(LookupIncidentRelationResultOutput)
 }
 

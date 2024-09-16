@@ -123,14 +123,20 @@ type LookupAppServiceEnvironmentResult struct {
 
 func LookupAppServiceEnvironmentOutput(ctx *pulumi.Context, args LookupAppServiceEnvironmentOutputArgs, opts ...pulumi.InvokeOption) LookupAppServiceEnvironmentResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupAppServiceEnvironmentResult, error) {
+		ApplyT(func(v interface{}) (LookupAppServiceEnvironmentResultOutput, error) {
 			args := v.(LookupAppServiceEnvironmentArgs)
-			r, err := LookupAppServiceEnvironment(ctx, &args, opts...)
-			var s LookupAppServiceEnvironmentResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupAppServiceEnvironmentResult
+			secret, err := ctx.InvokePackageRaw("azure-native:web/v20190801:getAppServiceEnvironment", args, &rv, "", opts...)
+			if err != nil {
+				return LookupAppServiceEnvironmentResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupAppServiceEnvironmentResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupAppServiceEnvironmentResultOutput), nil
+			}
+			return output, nil
 		}).(LookupAppServiceEnvironmentResultOutput)
 }
 

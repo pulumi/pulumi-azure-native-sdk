@@ -47,14 +47,20 @@ type LookupTagApiLinkResult struct {
 
 func LookupTagApiLinkOutput(ctx *pulumi.Context, args LookupTagApiLinkOutputArgs, opts ...pulumi.InvokeOption) LookupTagApiLinkResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupTagApiLinkResult, error) {
+		ApplyT(func(v interface{}) (LookupTagApiLinkResultOutput, error) {
 			args := v.(LookupTagApiLinkArgs)
-			r, err := LookupTagApiLink(ctx, &args, opts...)
-			var s LookupTagApiLinkResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupTagApiLinkResult
+			secret, err := ctx.InvokePackageRaw("azure-native:apimanagement/v20230501preview:getTagApiLink", args, &rv, "", opts...)
+			if err != nil {
+				return LookupTagApiLinkResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupTagApiLinkResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupTagApiLinkResultOutput), nil
+			}
+			return output, nil
 		}).(LookupTagApiLinkResultOutput)
 }
 

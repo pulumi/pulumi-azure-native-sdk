@@ -55,14 +55,20 @@ type LookupLongTermRetentionPolicyResult struct {
 
 func LookupLongTermRetentionPolicyOutput(ctx *pulumi.Context, args LookupLongTermRetentionPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupLongTermRetentionPolicyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupLongTermRetentionPolicyResult, error) {
+		ApplyT(func(v interface{}) (LookupLongTermRetentionPolicyResultOutput, error) {
 			args := v.(LookupLongTermRetentionPolicyArgs)
-			r, err := LookupLongTermRetentionPolicy(ctx, &args, opts...)
-			var s LookupLongTermRetentionPolicyResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupLongTermRetentionPolicyResult
+			secret, err := ctx.InvokePackageRaw("azure-native:sql/v20230201preview:getLongTermRetentionPolicy", args, &rv, "", opts...)
+			if err != nil {
+				return LookupLongTermRetentionPolicyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupLongTermRetentionPolicyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupLongTermRetentionPolicyResultOutput), nil
+			}
+			return output, nil
 		}).(LookupLongTermRetentionPolicyResultOutput)
 }
 

@@ -14,7 +14,7 @@ import (
 // Gets the properties of the specified key-value. NOTE: This operation is intended for use in ARM Template deployments. For all other scenarios involving App Configuration key-values the data plane API should be used instead.
 // Azure REST API version: 2023-03-01.
 //
-// Other available API versions: 2023-08-01-preview, 2023-09-01-preview.
+// Other available API versions: 2023-08-01-preview, 2023-09-01-preview, 2024-05-01.
 func LookupKeyValue(ctx *pulumi.Context, args *LookupKeyValueArgs, opts ...pulumi.InvokeOption) (*LookupKeyValueResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupKeyValueResult
@@ -66,14 +66,20 @@ type LookupKeyValueResult struct {
 
 func LookupKeyValueOutput(ctx *pulumi.Context, args LookupKeyValueOutputArgs, opts ...pulumi.InvokeOption) LookupKeyValueResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupKeyValueResult, error) {
+		ApplyT(func(v interface{}) (LookupKeyValueResultOutput, error) {
 			args := v.(LookupKeyValueArgs)
-			r, err := LookupKeyValue(ctx, &args, opts...)
-			var s LookupKeyValueResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupKeyValueResult
+			secret, err := ctx.InvokePackageRaw("azure-native:appconfiguration:getKeyValue", args, &rv, "", opts...)
+			if err != nil {
+				return LookupKeyValueResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupKeyValueResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupKeyValueResultOutput), nil
+			}
+			return output, nil
 		}).(LookupKeyValueResultOutput)
 }
 

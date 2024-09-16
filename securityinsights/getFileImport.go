@@ -74,14 +74,20 @@ type LookupFileImportResult struct {
 
 func LookupFileImportOutput(ctx *pulumi.Context, args LookupFileImportOutputArgs, opts ...pulumi.InvokeOption) LookupFileImportResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupFileImportResult, error) {
+		ApplyT(func(v interface{}) (LookupFileImportResultOutput, error) {
 			args := v.(LookupFileImportArgs)
-			r, err := LookupFileImport(ctx, &args, opts...)
-			var s LookupFileImportResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupFileImportResult
+			secret, err := ctx.InvokePackageRaw("azure-native:securityinsights:getFileImport", args, &rv, "", opts...)
+			if err != nil {
+				return LookupFileImportResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupFileImportResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupFileImportResultOutput), nil
+			}
+			return output, nil
 		}).(LookupFileImportResultOutput)
 }
 

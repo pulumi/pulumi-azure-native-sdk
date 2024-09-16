@@ -42,14 +42,20 @@ type GetNetworkDeviceStatusResult struct {
 
 func GetNetworkDeviceStatusOutput(ctx *pulumi.Context, args GetNetworkDeviceStatusOutputArgs, opts ...pulumi.InvokeOption) GetNetworkDeviceStatusResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetNetworkDeviceStatusResult, error) {
+		ApplyT(func(v interface{}) (GetNetworkDeviceStatusResultOutput, error) {
 			args := v.(GetNetworkDeviceStatusArgs)
-			r, err := GetNetworkDeviceStatus(ctx, &args, opts...)
-			var s GetNetworkDeviceStatusResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv GetNetworkDeviceStatusResult
+			secret, err := ctx.InvokePackageRaw("azure-native:managednetworkfabric:getNetworkDeviceStatus", args, &rv, "", opts...)
+			if err != nil {
+				return GetNetworkDeviceStatusResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetNetworkDeviceStatusResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetNetworkDeviceStatusResultOutput), nil
+			}
+			return output, nil
 		}).(GetNetworkDeviceStatusResultOutput)
 }
 

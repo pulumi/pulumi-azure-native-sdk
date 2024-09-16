@@ -54,14 +54,20 @@ type ListFeaturesetVersionMaterializationJobsResult struct {
 
 func ListFeaturesetVersionMaterializationJobsOutput(ctx *pulumi.Context, args ListFeaturesetVersionMaterializationJobsOutputArgs, opts ...pulumi.InvokeOption) ListFeaturesetVersionMaterializationJobsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListFeaturesetVersionMaterializationJobsResult, error) {
+		ApplyT(func(v interface{}) (ListFeaturesetVersionMaterializationJobsResultOutput, error) {
 			args := v.(ListFeaturesetVersionMaterializationJobsArgs)
-			r, err := ListFeaturesetVersionMaterializationJobs(ctx, &args, opts...)
-			var s ListFeaturesetVersionMaterializationJobsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListFeaturesetVersionMaterializationJobsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:machinelearningservices:listFeaturesetVersionMaterializationJobs", args, &rv, "", opts...)
+			if err != nil {
+				return ListFeaturesetVersionMaterializationJobsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListFeaturesetVersionMaterializationJobsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListFeaturesetVersionMaterializationJobsResultOutput), nil
+			}
+			return output, nil
 		}).(ListFeaturesetVersionMaterializationJobsResultOutput)
 }
 

@@ -49,14 +49,20 @@ type LookupCommitmentPlanAssociationResult struct {
 
 func LookupCommitmentPlanAssociationOutput(ctx *pulumi.Context, args LookupCommitmentPlanAssociationOutputArgs, opts ...pulumi.InvokeOption) LookupCommitmentPlanAssociationResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupCommitmentPlanAssociationResult, error) {
+		ApplyT(func(v interface{}) (LookupCommitmentPlanAssociationResultOutput, error) {
 			args := v.(LookupCommitmentPlanAssociationArgs)
-			r, err := LookupCommitmentPlanAssociation(ctx, &args, opts...)
-			var s LookupCommitmentPlanAssociationResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupCommitmentPlanAssociationResult
+			secret, err := ctx.InvokePackageRaw("azure-native:cognitiveservices/v20230501:getCommitmentPlanAssociation", args, &rv, "", opts...)
+			if err != nil {
+				return LookupCommitmentPlanAssociationResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupCommitmentPlanAssociationResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupCommitmentPlanAssociationResultOutput), nil
+			}
+			return output, nil
 		}).(LookupCommitmentPlanAssociationResultOutput)
 }
 

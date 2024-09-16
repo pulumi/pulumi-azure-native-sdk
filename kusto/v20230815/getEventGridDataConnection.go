@@ -89,14 +89,20 @@ func (val *LookupEventGridDataConnectionResult) Defaults() *LookupEventGridDataC
 
 func LookupEventGridDataConnectionOutput(ctx *pulumi.Context, args LookupEventGridDataConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupEventGridDataConnectionResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupEventGridDataConnectionResult, error) {
+		ApplyT(func(v interface{}) (LookupEventGridDataConnectionResultOutput, error) {
 			args := v.(LookupEventGridDataConnectionArgs)
-			r, err := LookupEventGridDataConnection(ctx, &args, opts...)
-			var s LookupEventGridDataConnectionResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupEventGridDataConnectionResult
+			secret, err := ctx.InvokePackageRaw("azure-native:kusto/v20230815:getEventGridDataConnection", args, &rv, "", opts...)
+			if err != nil {
+				return LookupEventGridDataConnectionResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupEventGridDataConnectionResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupEventGridDataConnectionResultOutput), nil
+			}
+			return output, nil
 		}).(LookupEventGridDataConnectionResultOutput)
 }
 

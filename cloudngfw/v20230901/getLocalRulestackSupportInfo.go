@@ -61,14 +61,20 @@ type GetLocalRulestackSupportInfoResult struct {
 
 func GetLocalRulestackSupportInfoOutput(ctx *pulumi.Context, args GetLocalRulestackSupportInfoOutputArgs, opts ...pulumi.InvokeOption) GetLocalRulestackSupportInfoResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetLocalRulestackSupportInfoResult, error) {
+		ApplyT(func(v interface{}) (GetLocalRulestackSupportInfoResultOutput, error) {
 			args := v.(GetLocalRulestackSupportInfoArgs)
-			r, err := GetLocalRulestackSupportInfo(ctx, &args, opts...)
-			var s GetLocalRulestackSupportInfoResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv GetLocalRulestackSupportInfoResult
+			secret, err := ctx.InvokePackageRaw("azure-native:cloudngfw/v20230901:getLocalRulestackSupportInfo", args, &rv, "", opts...)
+			if err != nil {
+				return GetLocalRulestackSupportInfoResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetLocalRulestackSupportInfoResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetLocalRulestackSupportInfoResultOutput), nil
+			}
+			return output, nil
 		}).(GetLocalRulestackSupportInfoResultOutput)
 }
 

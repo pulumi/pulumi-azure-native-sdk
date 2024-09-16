@@ -45,14 +45,20 @@ type LookupManagedNetworkSettingsRuleResult struct {
 
 func LookupManagedNetworkSettingsRuleOutput(ctx *pulumi.Context, args LookupManagedNetworkSettingsRuleOutputArgs, opts ...pulumi.InvokeOption) LookupManagedNetworkSettingsRuleResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupManagedNetworkSettingsRuleResult, error) {
+		ApplyT(func(v interface{}) (LookupManagedNetworkSettingsRuleResultOutput, error) {
 			args := v.(LookupManagedNetworkSettingsRuleArgs)
-			r, err := LookupManagedNetworkSettingsRule(ctx, &args, opts...)
-			var s LookupManagedNetworkSettingsRuleResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupManagedNetworkSettingsRuleResult
+			secret, err := ctx.InvokePackageRaw("azure-native:machinelearningservices/v20240401preview:getManagedNetworkSettingsRule", args, &rv, "", opts...)
+			if err != nil {
+				return LookupManagedNetworkSettingsRuleResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupManagedNetworkSettingsRuleResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupManagedNetworkSettingsRuleResultOutput), nil
+			}
+			return output, nil
 		}).(LookupManagedNetworkSettingsRuleResultOutput)
 }
 

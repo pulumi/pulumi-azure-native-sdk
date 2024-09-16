@@ -59,14 +59,20 @@ type GetPreRuleCountersResult struct {
 
 func GetPreRuleCountersOutput(ctx *pulumi.Context, args GetPreRuleCountersOutputArgs, opts ...pulumi.InvokeOption) GetPreRuleCountersResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetPreRuleCountersResult, error) {
+		ApplyT(func(v interface{}) (GetPreRuleCountersResultOutput, error) {
 			args := v.(GetPreRuleCountersArgs)
-			r, err := GetPreRuleCounters(ctx, &args, opts...)
-			var s GetPreRuleCountersResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv GetPreRuleCountersResult
+			secret, err := ctx.InvokePackageRaw("azure-native:cloudngfw:getPreRuleCounters", args, &rv, "", opts...)
+			if err != nil {
+				return GetPreRuleCountersResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetPreRuleCountersResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetPreRuleCountersResultOutput), nil
+			}
+			return output, nil
 		}).(GetPreRuleCountersResultOutput)
 }
 

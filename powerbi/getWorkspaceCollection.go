@@ -47,14 +47,20 @@ type LookupWorkspaceCollectionResult struct {
 
 func LookupWorkspaceCollectionOutput(ctx *pulumi.Context, args LookupWorkspaceCollectionOutputArgs, opts ...pulumi.InvokeOption) LookupWorkspaceCollectionResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupWorkspaceCollectionResult, error) {
+		ApplyT(func(v interface{}) (LookupWorkspaceCollectionResultOutput, error) {
 			args := v.(LookupWorkspaceCollectionArgs)
-			r, err := LookupWorkspaceCollection(ctx, &args, opts...)
-			var s LookupWorkspaceCollectionResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupWorkspaceCollectionResult
+			secret, err := ctx.InvokePackageRaw("azure-native:powerbi:getWorkspaceCollection", args, &rv, "", opts...)
+			if err != nil {
+				return LookupWorkspaceCollectionResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupWorkspaceCollectionResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupWorkspaceCollectionResultOutput), nil
+			}
+			return output, nil
 		}).(LookupWorkspaceCollectionResultOutput)
 }
 

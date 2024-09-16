@@ -14,7 +14,7 @@ import (
 // Retrieves information about the model view or the instance view of a hybrid machine.
 // Azure REST API version: 2022-12-27.
 //
-// Other available API versions: 2019-03-18-preview, 2019-08-02-preview, 2020-08-02, 2020-08-15-preview, 2022-05-10-preview, 2023-06-20-preview, 2023-10-03-preview, 2024-03-31-preview, 2024-05-20-preview, 2024-07-10.
+// Other available API versions: 2019-03-18-preview, 2019-08-02-preview, 2020-08-02, 2020-08-15-preview, 2022-05-10-preview, 2023-06-20-preview, 2023-10-03-preview, 2024-03-31-preview, 2024-05-20-preview, 2024-07-10, 2024-07-31-preview.
 func LookupMachine(ctx *pulumi.Context, args *LookupMachineArgs, opts ...pulumi.InvokeOption) (*LookupMachineResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMachineResult
@@ -112,14 +112,20 @@ type LookupMachineResult struct {
 
 func LookupMachineOutput(ctx *pulumi.Context, args LookupMachineOutputArgs, opts ...pulumi.InvokeOption) LookupMachineResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupMachineResult, error) {
+		ApplyT(func(v interface{}) (LookupMachineResultOutput, error) {
 			args := v.(LookupMachineArgs)
-			r, err := LookupMachine(ctx, &args, opts...)
-			var s LookupMachineResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupMachineResult
+			secret, err := ctx.InvokePackageRaw("azure-native:hybridcompute:getMachine", args, &rv, "", opts...)
+			if err != nil {
+				return LookupMachineResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupMachineResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupMachineResultOutput), nil
+			}
+			return output, nil
 		}).(LookupMachineResultOutput)
 }
 

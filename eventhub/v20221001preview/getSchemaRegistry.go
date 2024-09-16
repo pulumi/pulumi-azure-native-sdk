@@ -57,14 +57,20 @@ type LookupSchemaRegistryResult struct {
 
 func LookupSchemaRegistryOutput(ctx *pulumi.Context, args LookupSchemaRegistryOutputArgs, opts ...pulumi.InvokeOption) LookupSchemaRegistryResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSchemaRegistryResult, error) {
+		ApplyT(func(v interface{}) (LookupSchemaRegistryResultOutput, error) {
 			args := v.(LookupSchemaRegistryArgs)
-			r, err := LookupSchemaRegistry(ctx, &args, opts...)
-			var s LookupSchemaRegistryResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupSchemaRegistryResult
+			secret, err := ctx.InvokePackageRaw("azure-native:eventhub/v20221001preview:getSchemaRegistry", args, &rv, "", opts...)
+			if err != nil {
+				return LookupSchemaRegistryResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupSchemaRegistryResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupSchemaRegistryResultOutput), nil
+			}
+			return output, nil
 		}).(LookupSchemaRegistryResultOutput)
 }
 

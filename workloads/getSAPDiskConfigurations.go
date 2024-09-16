@@ -50,14 +50,20 @@ type GetSAPDiskConfigurationsResult struct {
 
 func GetSAPDiskConfigurationsOutput(ctx *pulumi.Context, args GetSAPDiskConfigurationsOutputArgs, opts ...pulumi.InvokeOption) GetSAPDiskConfigurationsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetSAPDiskConfigurationsResult, error) {
+		ApplyT(func(v interface{}) (GetSAPDiskConfigurationsResultOutput, error) {
 			args := v.(GetSAPDiskConfigurationsArgs)
-			r, err := GetSAPDiskConfigurations(ctx, &args, opts...)
-			var s GetSAPDiskConfigurationsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv GetSAPDiskConfigurationsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:workloads:getSAPDiskConfigurations", args, &rv, "", opts...)
+			if err != nil {
+				return GetSAPDiskConfigurationsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetSAPDiskConfigurationsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetSAPDiskConfigurationsResultOutput), nil
+			}
+			return output, nil
 		}).(GetSAPDiskConfigurationsResultOutput)
 }
 

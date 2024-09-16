@@ -63,14 +63,20 @@ type LookupDiskEncryptionSetResult struct {
 
 func LookupDiskEncryptionSetOutput(ctx *pulumi.Context, args LookupDiskEncryptionSetOutputArgs, opts ...pulumi.InvokeOption) LookupDiskEncryptionSetResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupDiskEncryptionSetResult, error) {
+		ApplyT(func(v interface{}) (LookupDiskEncryptionSetResultOutput, error) {
 			args := v.(LookupDiskEncryptionSetArgs)
-			r, err := LookupDiskEncryptionSet(ctx, &args, opts...)
-			var s LookupDiskEncryptionSetResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupDiskEncryptionSetResult
+			secret, err := ctx.InvokePackageRaw("azure-native:compute/v20240302:getDiskEncryptionSet", args, &rv, "", opts...)
+			if err != nil {
+				return LookupDiskEncryptionSetResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupDiskEncryptionSetResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupDiskEncryptionSetResultOutput), nil
+			}
+			return output, nil
 		}).(LookupDiskEncryptionSetResultOutput)
 }
 

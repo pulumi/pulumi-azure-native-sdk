@@ -51,14 +51,20 @@ type LookupServerCommunicationLinkResult struct {
 
 func LookupServerCommunicationLinkOutput(ctx *pulumi.Context, args LookupServerCommunicationLinkOutputArgs, opts ...pulumi.InvokeOption) LookupServerCommunicationLinkResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupServerCommunicationLinkResult, error) {
+		ApplyT(func(v interface{}) (LookupServerCommunicationLinkResultOutput, error) {
 			args := v.(LookupServerCommunicationLinkArgs)
-			r, err := LookupServerCommunicationLink(ctx, &args, opts...)
-			var s LookupServerCommunicationLinkResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupServerCommunicationLinkResult
+			secret, err := ctx.InvokePackageRaw("azure-native:sql/v20140401:getServerCommunicationLink", args, &rv, "", opts...)
+			if err != nil {
+				return LookupServerCommunicationLinkResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupServerCommunicationLinkResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupServerCommunicationLinkResultOutput), nil
+			}
+			return output, nil
 		}).(LookupServerCommunicationLinkResultOutput)
 }
 

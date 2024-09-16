@@ -55,14 +55,20 @@ type LookupPrivateLinkServicesForSCCPowershellResult struct {
 
 func LookupPrivateLinkServicesForSCCPowershellOutput(ctx *pulumi.Context, args LookupPrivateLinkServicesForSCCPowershellOutputArgs, opts ...pulumi.InvokeOption) LookupPrivateLinkServicesForSCCPowershellResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupPrivateLinkServicesForSCCPowershellResult, error) {
+		ApplyT(func(v interface{}) (LookupPrivateLinkServicesForSCCPowershellResultOutput, error) {
 			args := v.(LookupPrivateLinkServicesForSCCPowershellArgs)
-			r, err := LookupPrivateLinkServicesForSCCPowershell(ctx, &args, opts...)
-			var s LookupPrivateLinkServicesForSCCPowershellResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupPrivateLinkServicesForSCCPowershellResult
+			secret, err := ctx.InvokePackageRaw("azure-native:m365securityandcompliance/v20210325preview:getPrivateLinkServicesForSCCPowershell", args, &rv, "", opts...)
+			if err != nil {
+				return LookupPrivateLinkServicesForSCCPowershellResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupPrivateLinkServicesForSCCPowershellResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupPrivateLinkServicesForSCCPowershellResultOutput), nil
+			}
+			return output, nil
 		}).(LookupPrivateLinkServicesForSCCPowershellResultOutput)
 }
 

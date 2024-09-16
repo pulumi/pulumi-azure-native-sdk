@@ -78,6 +78,9 @@ func NewTopicAuthorizationRule(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:servicebus/v20221001preview:TopicAuthorizationRule"),
 		},
+		{
+			Type: pulumi.String("azure-native:servicebus/v20240101:TopicAuthorizationRule"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

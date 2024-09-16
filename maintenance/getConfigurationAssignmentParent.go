@@ -62,14 +62,20 @@ type LookupConfigurationAssignmentParentResult struct {
 
 func LookupConfigurationAssignmentParentOutput(ctx *pulumi.Context, args LookupConfigurationAssignmentParentOutputArgs, opts ...pulumi.InvokeOption) LookupConfigurationAssignmentParentResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupConfigurationAssignmentParentResult, error) {
+		ApplyT(func(v interface{}) (LookupConfigurationAssignmentParentResultOutput, error) {
 			args := v.(LookupConfigurationAssignmentParentArgs)
-			r, err := LookupConfigurationAssignmentParent(ctx, &args, opts...)
-			var s LookupConfigurationAssignmentParentResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupConfigurationAssignmentParentResult
+			secret, err := ctx.InvokePackageRaw("azure-native:maintenance:getConfigurationAssignmentParent", args, &rv, "", opts...)
+			if err != nil {
+				return LookupConfigurationAssignmentParentResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupConfigurationAssignmentParentResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupConfigurationAssignmentParentResultOutput), nil
+			}
+			return output, nil
 		}).(LookupConfigurationAssignmentParentResultOutput)
 }
 

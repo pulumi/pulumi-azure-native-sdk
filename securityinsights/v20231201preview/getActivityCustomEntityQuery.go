@@ -72,14 +72,20 @@ type LookupActivityCustomEntityQueryResult struct {
 
 func LookupActivityCustomEntityQueryOutput(ctx *pulumi.Context, args LookupActivityCustomEntityQueryOutputArgs, opts ...pulumi.InvokeOption) LookupActivityCustomEntityQueryResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupActivityCustomEntityQueryResult, error) {
+		ApplyT(func(v interface{}) (LookupActivityCustomEntityQueryResultOutput, error) {
 			args := v.(LookupActivityCustomEntityQueryArgs)
-			r, err := LookupActivityCustomEntityQuery(ctx, &args, opts...)
-			var s LookupActivityCustomEntityQueryResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupActivityCustomEntityQueryResult
+			secret, err := ctx.InvokePackageRaw("azure-native:securityinsights/v20231201preview:getActivityCustomEntityQuery", args, &rv, "", opts...)
+			if err != nil {
+				return LookupActivityCustomEntityQueryResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupActivityCustomEntityQueryResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupActivityCustomEntityQueryResultOutput), nil
+			}
+			return output, nil
 		}).(LookupActivityCustomEntityQueryResultOutput)
 }
 

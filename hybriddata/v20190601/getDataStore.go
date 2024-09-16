@@ -53,14 +53,20 @@ type LookupDataStoreResult struct {
 
 func LookupDataStoreOutput(ctx *pulumi.Context, args LookupDataStoreOutputArgs, opts ...pulumi.InvokeOption) LookupDataStoreResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupDataStoreResult, error) {
+		ApplyT(func(v interface{}) (LookupDataStoreResultOutput, error) {
 			args := v.(LookupDataStoreArgs)
-			r, err := LookupDataStore(ctx, &args, opts...)
-			var s LookupDataStoreResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupDataStoreResult
+			secret, err := ctx.InvokePackageRaw("azure-native:hybriddata/v20190601:getDataStore", args, &rv, "", opts...)
+			if err != nil {
+				return LookupDataStoreResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupDataStoreResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupDataStoreResultOutput), nil
+			}
+			return output, nil
 		}).(LookupDataStoreResultOutput)
 }
 

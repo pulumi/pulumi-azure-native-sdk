@@ -69,14 +69,20 @@ type LookupWatchlistItemResult struct {
 
 func LookupWatchlistItemOutput(ctx *pulumi.Context, args LookupWatchlistItemOutputArgs, opts ...pulumi.InvokeOption) LookupWatchlistItemResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupWatchlistItemResult, error) {
+		ApplyT(func(v interface{}) (LookupWatchlistItemResultOutput, error) {
 			args := v.(LookupWatchlistItemArgs)
-			r, err := LookupWatchlistItem(ctx, &args, opts...)
-			var s LookupWatchlistItemResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupWatchlistItemResult
+			secret, err := ctx.InvokePackageRaw("azure-native:securityinsights/v20240301:getWatchlistItem", args, &rv, "", opts...)
+			if err != nil {
+				return LookupWatchlistItemResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupWatchlistItemResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupWatchlistItemResultOutput), nil
+			}
+			return output, nil
 		}).(LookupWatchlistItemResultOutput)
 }
 

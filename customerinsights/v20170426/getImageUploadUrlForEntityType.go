@@ -47,14 +47,20 @@ type GetImageUploadUrlForEntityTypeResult struct {
 
 func GetImageUploadUrlForEntityTypeOutput(ctx *pulumi.Context, args GetImageUploadUrlForEntityTypeOutputArgs, opts ...pulumi.InvokeOption) GetImageUploadUrlForEntityTypeResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetImageUploadUrlForEntityTypeResult, error) {
+		ApplyT(func(v interface{}) (GetImageUploadUrlForEntityTypeResultOutput, error) {
 			args := v.(GetImageUploadUrlForEntityTypeArgs)
-			r, err := GetImageUploadUrlForEntityType(ctx, &args, opts...)
-			var s GetImageUploadUrlForEntityTypeResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv GetImageUploadUrlForEntityTypeResult
+			secret, err := ctx.InvokePackageRaw("azure-native:customerinsights/v20170426:getImageUploadUrlForEntityType", args, &rv, "", opts...)
+			if err != nil {
+				return GetImageUploadUrlForEntityTypeResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetImageUploadUrlForEntityTypeResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetImageUploadUrlForEntityTypeResultOutput), nil
+			}
+			return output, nil
 		}).(GetImageUploadUrlForEntityTypeResultOutput)
 }
 

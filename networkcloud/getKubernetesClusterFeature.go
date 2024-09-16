@@ -63,14 +63,20 @@ type LookupKubernetesClusterFeatureResult struct {
 
 func LookupKubernetesClusterFeatureOutput(ctx *pulumi.Context, args LookupKubernetesClusterFeatureOutputArgs, opts ...pulumi.InvokeOption) LookupKubernetesClusterFeatureResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupKubernetesClusterFeatureResult, error) {
+		ApplyT(func(v interface{}) (LookupKubernetesClusterFeatureResultOutput, error) {
 			args := v.(LookupKubernetesClusterFeatureArgs)
-			r, err := LookupKubernetesClusterFeature(ctx, &args, opts...)
-			var s LookupKubernetesClusterFeatureResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupKubernetesClusterFeatureResult
+			secret, err := ctx.InvokePackageRaw("azure-native:networkcloud:getKubernetesClusterFeature", args, &rv, "", opts...)
+			if err != nil {
+				return LookupKubernetesClusterFeatureResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupKubernetesClusterFeatureResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupKubernetesClusterFeatureResultOutput), nil
+			}
+			return output, nil
 		}).(LookupKubernetesClusterFeatureResultOutput)
 }
 

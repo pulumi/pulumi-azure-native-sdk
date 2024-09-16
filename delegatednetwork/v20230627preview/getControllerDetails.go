@@ -70,14 +70,20 @@ func (val *LookupControllerDetailsResult) Defaults() *LookupControllerDetailsRes
 
 func LookupControllerDetailsOutput(ctx *pulumi.Context, args LookupControllerDetailsOutputArgs, opts ...pulumi.InvokeOption) LookupControllerDetailsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupControllerDetailsResult, error) {
+		ApplyT(func(v interface{}) (LookupControllerDetailsResultOutput, error) {
 			args := v.(LookupControllerDetailsArgs)
-			r, err := LookupControllerDetails(ctx, &args, opts...)
-			var s LookupControllerDetailsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupControllerDetailsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:delegatednetwork/v20230627preview:getControllerDetails", args, &rv, "", opts...)
+			if err != nil {
+				return LookupControllerDetailsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupControllerDetailsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupControllerDetailsResultOutput), nil
+			}
+			return output, nil
 		}).(LookupControllerDetailsResultOutput)
 }
 

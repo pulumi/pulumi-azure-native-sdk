@@ -58,14 +58,20 @@ type LookupTestLineResult struct {
 
 func LookupTestLineOutput(ctx *pulumi.Context, args LookupTestLineOutputArgs, opts ...pulumi.InvokeOption) LookupTestLineResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupTestLineResult, error) {
+		ApplyT(func(v interface{}) (LookupTestLineResultOutput, error) {
 			args := v.(LookupTestLineArgs)
-			r, err := LookupTestLine(ctx, &args, opts...)
-			var s LookupTestLineResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupTestLineResult
+			secret, err := ctx.InvokePackageRaw("azure-native:voiceservices:getTestLine", args, &rv, "", opts...)
+			if err != nil {
+				return LookupTestLineResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupTestLineResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupTestLineResultOutput), nil
+			}
+			return output, nil
 		}).(LookupTestLineResultOutput)
 }
 

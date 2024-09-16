@@ -62,14 +62,20 @@ type LookupWebAppSourceControlSlotResult struct {
 
 func LookupWebAppSourceControlSlotOutput(ctx *pulumi.Context, args LookupWebAppSourceControlSlotOutputArgs, opts ...pulumi.InvokeOption) LookupWebAppSourceControlSlotResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupWebAppSourceControlSlotResult, error) {
+		ApplyT(func(v interface{}) (LookupWebAppSourceControlSlotResultOutput, error) {
 			args := v.(LookupWebAppSourceControlSlotArgs)
-			r, err := LookupWebAppSourceControlSlot(ctx, &args, opts...)
-			var s LookupWebAppSourceControlSlotResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupWebAppSourceControlSlotResult
+			secret, err := ctx.InvokePackageRaw("azure-native:web:getWebAppSourceControlSlot", args, &rv, "", opts...)
+			if err != nil {
+				return LookupWebAppSourceControlSlotResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupWebAppSourceControlSlotResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupWebAppSourceControlSlotResultOutput), nil
+			}
+			return output, nil
 		}).(LookupWebAppSourceControlSlotResultOutput)
 }
 

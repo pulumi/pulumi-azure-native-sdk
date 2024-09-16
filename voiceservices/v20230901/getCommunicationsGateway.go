@@ -110,14 +110,20 @@ func (val *LookupCommunicationsGatewayResult) Defaults() *LookupCommunicationsGa
 
 func LookupCommunicationsGatewayOutput(ctx *pulumi.Context, args LookupCommunicationsGatewayOutputArgs, opts ...pulumi.InvokeOption) LookupCommunicationsGatewayResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupCommunicationsGatewayResult, error) {
+		ApplyT(func(v interface{}) (LookupCommunicationsGatewayResultOutput, error) {
 			args := v.(LookupCommunicationsGatewayArgs)
-			r, err := LookupCommunicationsGateway(ctx, &args, opts...)
-			var s LookupCommunicationsGatewayResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupCommunicationsGatewayResult
+			secret, err := ctx.InvokePackageRaw("azure-native:voiceservices/v20230901:getCommunicationsGateway", args, &rv, "", opts...)
+			if err != nil {
+				return LookupCommunicationsGatewayResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupCommunicationsGatewayResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupCommunicationsGatewayResultOutput), nil
+			}
+			return output, nil
 		}).(LookupCommunicationsGatewayResultOutput)
 }
 

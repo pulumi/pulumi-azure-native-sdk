@@ -51,14 +51,20 @@ type LookupReportByBillingAccountResult struct {
 
 func LookupReportByBillingAccountOutput(ctx *pulumi.Context, args LookupReportByBillingAccountOutputArgs, opts ...pulumi.InvokeOption) LookupReportByBillingAccountResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupReportByBillingAccountResult, error) {
+		ApplyT(func(v interface{}) (LookupReportByBillingAccountResultOutput, error) {
 			args := v.(LookupReportByBillingAccountArgs)
-			r, err := LookupReportByBillingAccount(ctx, &args, opts...)
-			var s LookupReportByBillingAccountResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupReportByBillingAccountResult
+			secret, err := ctx.InvokePackageRaw("azure-native:costmanagement/v20180801preview:getReportByBillingAccount", args, &rv, "", opts...)
+			if err != nil {
+				return LookupReportByBillingAccountResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupReportByBillingAccountResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupReportByBillingAccountResultOutput), nil
+			}
+			return output, nil
 		}).(LookupReportByBillingAccountResultOutput)
 }
 

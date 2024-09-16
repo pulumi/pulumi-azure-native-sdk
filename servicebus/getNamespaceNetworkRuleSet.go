@@ -14,7 +14,7 @@ import (
 // Gets NetworkRuleSet for a Namespace.
 // Azure REST API version: 2022-01-01-preview.
 //
-// Other available API versions: 2022-10-01-preview, 2023-01-01-preview.
+// Other available API versions: 2022-10-01-preview, 2023-01-01-preview, 2024-01-01.
 func LookupNamespaceNetworkRuleSet(ctx *pulumi.Context, args *LookupNamespaceNetworkRuleSetArgs, opts ...pulumi.InvokeOption) (*LookupNamespaceNetworkRuleSetResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNamespaceNetworkRuleSetResult
@@ -71,14 +71,20 @@ func (val *LookupNamespaceNetworkRuleSetResult) Defaults() *LookupNamespaceNetwo
 
 func LookupNamespaceNetworkRuleSetOutput(ctx *pulumi.Context, args LookupNamespaceNetworkRuleSetOutputArgs, opts ...pulumi.InvokeOption) LookupNamespaceNetworkRuleSetResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupNamespaceNetworkRuleSetResult, error) {
+		ApplyT(func(v interface{}) (LookupNamespaceNetworkRuleSetResultOutput, error) {
 			args := v.(LookupNamespaceNetworkRuleSetArgs)
-			r, err := LookupNamespaceNetworkRuleSet(ctx, &args, opts...)
-			var s LookupNamespaceNetworkRuleSetResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupNamespaceNetworkRuleSetResult
+			secret, err := ctx.InvokePackageRaw("azure-native:servicebus:getNamespaceNetworkRuleSet", args, &rv, "", opts...)
+			if err != nil {
+				return LookupNamespaceNetworkRuleSetResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupNamespaceNetworkRuleSetResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupNamespaceNetworkRuleSetResultOutput), nil
+			}
+			return output, nil
 		}).(LookupNamespaceNetworkRuleSetResultOutput)
 }
 

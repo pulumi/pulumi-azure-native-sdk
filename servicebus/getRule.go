@@ -14,7 +14,7 @@ import (
 // Retrieves the description for the specified rule.
 // Azure REST API version: 2022-01-01-preview.
 //
-// Other available API versions: 2022-10-01-preview, 2023-01-01-preview.
+// Other available API versions: 2022-10-01-preview, 2023-01-01-preview, 2024-01-01.
 func LookupRule(ctx *pulumi.Context, args *LookupRuleArgs, opts ...pulumi.InvokeOption) (*LookupRuleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRuleResult
@@ -77,14 +77,20 @@ func (val *LookupRuleResult) Defaults() *LookupRuleResult {
 
 func LookupRuleOutput(ctx *pulumi.Context, args LookupRuleOutputArgs, opts ...pulumi.InvokeOption) LookupRuleResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupRuleResult, error) {
+		ApplyT(func(v interface{}) (LookupRuleResultOutput, error) {
 			args := v.(LookupRuleArgs)
-			r, err := LookupRule(ctx, &args, opts...)
-			var s LookupRuleResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupRuleResult
+			secret, err := ctx.InvokePackageRaw("azure-native:servicebus:getRule", args, &rv, "", opts...)
+			if err != nil {
+				return LookupRuleResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupRuleResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupRuleResultOutput), nil
+			}
+			return output, nil
 		}).(LookupRuleResultOutput)
 }
 

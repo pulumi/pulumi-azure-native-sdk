@@ -70,14 +70,20 @@ type LookupUpdateRunResult struct {
 
 func LookupUpdateRunOutput(ctx *pulumi.Context, args LookupUpdateRunOutputArgs, opts ...pulumi.InvokeOption) LookupUpdateRunResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupUpdateRunResult, error) {
+		ApplyT(func(v interface{}) (LookupUpdateRunResultOutput, error) {
 			args := v.(LookupUpdateRunArgs)
-			r, err := LookupUpdateRun(ctx, &args, opts...)
-			var s LookupUpdateRunResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupUpdateRunResult
+			secret, err := ctx.InvokePackageRaw("azure-native:containerservice/v20240401:getUpdateRun", args, &rv, "", opts...)
+			if err != nil {
+				return LookupUpdateRunResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupUpdateRunResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupUpdateRunResultOutput), nil
+			}
+			return output, nil
 		}).(LookupUpdateRunResultOutput)
 }
 

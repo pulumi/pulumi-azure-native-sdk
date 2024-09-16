@@ -45,14 +45,20 @@ type LookupServerAzureADOnlyAuthenticationResult struct {
 
 func LookupServerAzureADOnlyAuthenticationOutput(ctx *pulumi.Context, args LookupServerAzureADOnlyAuthenticationOutputArgs, opts ...pulumi.InvokeOption) LookupServerAzureADOnlyAuthenticationResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupServerAzureADOnlyAuthenticationResult, error) {
+		ApplyT(func(v interface{}) (LookupServerAzureADOnlyAuthenticationResultOutput, error) {
 			args := v.(LookupServerAzureADOnlyAuthenticationArgs)
-			r, err := LookupServerAzureADOnlyAuthentication(ctx, &args, opts...)
-			var s LookupServerAzureADOnlyAuthenticationResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupServerAzureADOnlyAuthenticationResult
+			secret, err := ctx.InvokePackageRaw("azure-native:sql/v20230201preview:getServerAzureADOnlyAuthentication", args, &rv, "", opts...)
+			if err != nil {
+				return LookupServerAzureADOnlyAuthenticationResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupServerAzureADOnlyAuthenticationResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupServerAzureADOnlyAuthenticationResultOutput), nil
+			}
+			return output, nil
 		}).(LookupServerAzureADOnlyAuthenticationResultOutput)
 }
 

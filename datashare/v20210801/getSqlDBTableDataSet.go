@@ -60,14 +60,20 @@ type LookupSqlDBTableDataSetResult struct {
 
 func LookupSqlDBTableDataSetOutput(ctx *pulumi.Context, args LookupSqlDBTableDataSetOutputArgs, opts ...pulumi.InvokeOption) LookupSqlDBTableDataSetResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSqlDBTableDataSetResult, error) {
+		ApplyT(func(v interface{}) (LookupSqlDBTableDataSetResultOutput, error) {
 			args := v.(LookupSqlDBTableDataSetArgs)
-			r, err := LookupSqlDBTableDataSet(ctx, &args, opts...)
-			var s LookupSqlDBTableDataSetResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupSqlDBTableDataSetResult
+			secret, err := ctx.InvokePackageRaw("azure-native:datashare/v20210801:getSqlDBTableDataSet", args, &rv, "", opts...)
+			if err != nil {
+				return LookupSqlDBTableDataSetResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupSqlDBTableDataSetResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupSqlDBTableDataSetResultOutput), nil
+			}
+			return output, nil
 		}).(LookupSqlDBTableDataSetResultOutput)
 }
 

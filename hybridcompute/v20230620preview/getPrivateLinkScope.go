@@ -49,14 +49,20 @@ type LookupPrivateLinkScopeResult struct {
 
 func LookupPrivateLinkScopeOutput(ctx *pulumi.Context, args LookupPrivateLinkScopeOutputArgs, opts ...pulumi.InvokeOption) LookupPrivateLinkScopeResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupPrivateLinkScopeResult, error) {
+		ApplyT(func(v interface{}) (LookupPrivateLinkScopeResultOutput, error) {
 			args := v.(LookupPrivateLinkScopeArgs)
-			r, err := LookupPrivateLinkScope(ctx, &args, opts...)
-			var s LookupPrivateLinkScopeResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupPrivateLinkScopeResult
+			secret, err := ctx.InvokePackageRaw("azure-native:hybridcompute/v20230620preview:getPrivateLinkScope", args, &rv, "", opts...)
+			if err != nil {
+				return LookupPrivateLinkScopeResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupPrivateLinkScopeResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupPrivateLinkScopeResultOutput), nil
+			}
+			return output, nil
 		}).(LookupPrivateLinkScopeResultOutput)
 }
 

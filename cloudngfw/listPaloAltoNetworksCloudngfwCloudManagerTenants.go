@@ -34,14 +34,20 @@ type ListPaloAltoNetworksCloudngfwCloudManagerTenantsResult struct {
 
 func ListPaloAltoNetworksCloudngfwCloudManagerTenantsOutput(ctx *pulumi.Context, args ListPaloAltoNetworksCloudngfwCloudManagerTenantsOutputArgs, opts ...pulumi.InvokeOption) ListPaloAltoNetworksCloudngfwCloudManagerTenantsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListPaloAltoNetworksCloudngfwCloudManagerTenantsResult, error) {
+		ApplyT(func(v interface{}) (ListPaloAltoNetworksCloudngfwCloudManagerTenantsResultOutput, error) {
 			args := v.(ListPaloAltoNetworksCloudngfwCloudManagerTenantsArgs)
-			r, err := ListPaloAltoNetworksCloudngfwCloudManagerTenants(ctx, &args, opts...)
-			var s ListPaloAltoNetworksCloudngfwCloudManagerTenantsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListPaloAltoNetworksCloudngfwCloudManagerTenantsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:cloudngfw:listPaloAltoNetworksCloudngfwCloudManagerTenants", args, &rv, "", opts...)
+			if err != nil {
+				return ListPaloAltoNetworksCloudngfwCloudManagerTenantsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListPaloAltoNetworksCloudngfwCloudManagerTenantsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListPaloAltoNetworksCloudngfwCloudManagerTenantsResultOutput), nil
+			}
+			return output, nil
 		}).(ListPaloAltoNetworksCloudngfwCloudManagerTenantsResultOutput)
 }
 

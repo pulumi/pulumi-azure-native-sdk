@@ -56,14 +56,20 @@ type LookupMECRoleResult struct {
 
 func LookupMECRoleOutput(ctx *pulumi.Context, args LookupMECRoleOutputArgs, opts ...pulumi.InvokeOption) LookupMECRoleResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupMECRoleResult, error) {
+		ApplyT(func(v interface{}) (LookupMECRoleResultOutput, error) {
 			args := v.(LookupMECRoleArgs)
-			r, err := LookupMECRole(ctx, &args, opts...)
-			var s LookupMECRoleResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupMECRoleResult
+			secret, err := ctx.InvokePackageRaw("azure-native:databoxedge/v20231201:getMECRole", args, &rv, "", opts...)
+			if err != nil {
+				return LookupMECRoleResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupMECRoleResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupMECRoleResultOutput), nil
+			}
+			return output, nil
 		}).(LookupMECRoleResultOutput)
 }
 

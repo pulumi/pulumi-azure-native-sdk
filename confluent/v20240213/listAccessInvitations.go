@@ -43,14 +43,20 @@ type ListAccessInvitationsResult struct {
 
 func ListAccessInvitationsOutput(ctx *pulumi.Context, args ListAccessInvitationsOutputArgs, opts ...pulumi.InvokeOption) ListAccessInvitationsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListAccessInvitationsResult, error) {
+		ApplyT(func(v interface{}) (ListAccessInvitationsResultOutput, error) {
 			args := v.(ListAccessInvitationsArgs)
-			r, err := ListAccessInvitations(ctx, &args, opts...)
-			var s ListAccessInvitationsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListAccessInvitationsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:confluent/v20240213:listAccessInvitations", args, &rv, "", opts...)
+			if err != nil {
+				return ListAccessInvitationsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListAccessInvitationsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListAccessInvitationsResultOutput), nil
+			}
+			return output, nil
 		}).(ListAccessInvitationsResultOutput)
 }
 

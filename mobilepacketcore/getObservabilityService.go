@@ -58,14 +58,20 @@ type LookupObservabilityServiceResult struct {
 
 func LookupObservabilityServiceOutput(ctx *pulumi.Context, args LookupObservabilityServiceOutputArgs, opts ...pulumi.InvokeOption) LookupObservabilityServiceResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupObservabilityServiceResult, error) {
+		ApplyT(func(v interface{}) (LookupObservabilityServiceResultOutput, error) {
 			args := v.(LookupObservabilityServiceArgs)
-			r, err := LookupObservabilityService(ctx, &args, opts...)
-			var s LookupObservabilityServiceResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupObservabilityServiceResult
+			secret, err := ctx.InvokePackageRaw("azure-native:mobilepacketcore:getObservabilityService", args, &rv, "", opts...)
+			if err != nil {
+				return LookupObservabilityServiceResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupObservabilityServiceResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupObservabilityServiceResultOutput), nil
+			}
+			return output, nil
 		}).(LookupObservabilityServiceResultOutput)
 }
 

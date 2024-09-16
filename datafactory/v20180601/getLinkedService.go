@@ -47,14 +47,20 @@ type LookupLinkedServiceResult struct {
 
 func LookupLinkedServiceOutput(ctx *pulumi.Context, args LookupLinkedServiceOutputArgs, opts ...pulumi.InvokeOption) LookupLinkedServiceResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupLinkedServiceResult, error) {
+		ApplyT(func(v interface{}) (LookupLinkedServiceResultOutput, error) {
 			args := v.(LookupLinkedServiceArgs)
-			r, err := LookupLinkedService(ctx, &args, opts...)
-			var s LookupLinkedServiceResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupLinkedServiceResult
+			secret, err := ctx.InvokePackageRaw("azure-native:datafactory/v20180601:getLinkedService", args, &rv, "", opts...)
+			if err != nil {
+				return LookupLinkedServiceResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupLinkedServiceResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupLinkedServiceResultOutput), nil
+			}
+			return output, nil
 		}).(LookupLinkedServiceResultOutput)
 }
 

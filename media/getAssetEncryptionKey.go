@@ -42,14 +42,20 @@ type GetAssetEncryptionKeyResult struct {
 
 func GetAssetEncryptionKeyOutput(ctx *pulumi.Context, args GetAssetEncryptionKeyOutputArgs, opts ...pulumi.InvokeOption) GetAssetEncryptionKeyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetAssetEncryptionKeyResult, error) {
+		ApplyT(func(v interface{}) (GetAssetEncryptionKeyResultOutput, error) {
 			args := v.(GetAssetEncryptionKeyArgs)
-			r, err := GetAssetEncryptionKey(ctx, &args, opts...)
-			var s GetAssetEncryptionKeyResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv GetAssetEncryptionKeyResult
+			secret, err := ctx.InvokePackageRaw("azure-native:media:getAssetEncryptionKey", args, &rv, "", opts...)
+			if err != nil {
+				return GetAssetEncryptionKeyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetAssetEncryptionKeyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetAssetEncryptionKeyResultOutput), nil
+			}
+			return output, nil
 		}).(GetAssetEncryptionKeyResultOutput)
 }
 

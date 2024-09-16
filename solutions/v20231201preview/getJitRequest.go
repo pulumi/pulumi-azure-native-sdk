@@ -63,14 +63,20 @@ type LookupJitRequestResult struct {
 
 func LookupJitRequestOutput(ctx *pulumi.Context, args LookupJitRequestOutputArgs, opts ...pulumi.InvokeOption) LookupJitRequestResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupJitRequestResult, error) {
+		ApplyT(func(v interface{}) (LookupJitRequestResultOutput, error) {
 			args := v.(LookupJitRequestArgs)
-			r, err := LookupJitRequest(ctx, &args, opts...)
-			var s LookupJitRequestResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupJitRequestResult
+			secret, err := ctx.InvokePackageRaw("azure-native:solutions/v20231201preview:getJitRequest", args, &rv, "", opts...)
+			if err != nil {
+				return LookupJitRequestResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupJitRequestResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupJitRequestResultOutput), nil
+			}
+			return output, nil
 		}).(LookupJitRequestResultOutput)
 }
 

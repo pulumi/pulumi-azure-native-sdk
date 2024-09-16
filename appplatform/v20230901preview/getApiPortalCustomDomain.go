@@ -49,14 +49,20 @@ type LookupApiPortalCustomDomainResult struct {
 
 func LookupApiPortalCustomDomainOutput(ctx *pulumi.Context, args LookupApiPortalCustomDomainOutputArgs, opts ...pulumi.InvokeOption) LookupApiPortalCustomDomainResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupApiPortalCustomDomainResult, error) {
+		ApplyT(func(v interface{}) (LookupApiPortalCustomDomainResultOutput, error) {
 			args := v.(LookupApiPortalCustomDomainArgs)
-			r, err := LookupApiPortalCustomDomain(ctx, &args, opts...)
-			var s LookupApiPortalCustomDomainResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupApiPortalCustomDomainResult
+			secret, err := ctx.InvokePackageRaw("azure-native:appplatform/v20230901preview:getApiPortalCustomDomain", args, &rv, "", opts...)
+			if err != nil {
+				return LookupApiPortalCustomDomainResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupApiPortalCustomDomainResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupApiPortalCustomDomainResultOutput), nil
+			}
+			return output, nil
 		}).(LookupApiPortalCustomDomainResultOutput)
 }
 

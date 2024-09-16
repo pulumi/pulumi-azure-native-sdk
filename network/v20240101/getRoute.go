@@ -38,7 +38,7 @@ type LookupRouteResult struct {
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag string `pulumi:"etag"`
 	// A value indicating whether this route overrides overlapping BGP routes regardless of LPM.
-	HasBgpOverride *bool `pulumi:"hasBgpOverride"`
+	HasBgpOverride bool `pulumi:"hasBgpOverride"`
 	// Resource ID.
 	Id *string `pulumi:"id"`
 	// The name of the resource that is unique within a resource group. This name can be used to access the resource.
@@ -55,14 +55,20 @@ type LookupRouteResult struct {
 
 func LookupRouteOutput(ctx *pulumi.Context, args LookupRouteOutputArgs, opts ...pulumi.InvokeOption) LookupRouteResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupRouteResult, error) {
+		ApplyT(func(v interface{}) (LookupRouteResultOutput, error) {
 			args := v.(LookupRouteArgs)
-			r, err := LookupRoute(ctx, &args, opts...)
-			var s LookupRouteResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupRouteResult
+			secret, err := ctx.InvokePackageRaw("azure-native:network/v20240101:getRoute", args, &rv, "", opts...)
+			if err != nil {
+				return LookupRouteResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupRouteResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupRouteResultOutput), nil
+			}
+			return output, nil
 		}).(LookupRouteResultOutput)
 }
 
@@ -105,8 +111,8 @@ func (o LookupRouteResultOutput) Etag() pulumi.StringOutput {
 }
 
 // A value indicating whether this route overrides overlapping BGP routes regardless of LPM.
-func (o LookupRouteResultOutput) HasBgpOverride() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v LookupRouteResult) *bool { return v.HasBgpOverride }).(pulumi.BoolPtrOutput)
+func (o LookupRouteResultOutput) HasBgpOverride() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupRouteResult) bool { return v.HasBgpOverride }).(pulumi.BoolOutput)
 }
 
 // Resource ID.

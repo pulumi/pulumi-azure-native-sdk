@@ -53,14 +53,20 @@ type LookupApiSchemaResult struct {
 
 func LookupApiSchemaOutput(ctx *pulumi.Context, args LookupApiSchemaOutputArgs, opts ...pulumi.InvokeOption) LookupApiSchemaResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupApiSchemaResult, error) {
+		ApplyT(func(v interface{}) (LookupApiSchemaResultOutput, error) {
 			args := v.(LookupApiSchemaArgs)
-			r, err := LookupApiSchema(ctx, &args, opts...)
-			var s LookupApiSchemaResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupApiSchemaResult
+			secret, err := ctx.InvokePackageRaw("azure-native:apimanagement/v20230301preview:getApiSchema", args, &rv, "", opts...)
+			if err != nil {
+				return LookupApiSchemaResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupApiSchemaResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupApiSchemaResultOutput), nil
+			}
+			return output, nil
 		}).(LookupApiSchemaResultOutput)
 }
 

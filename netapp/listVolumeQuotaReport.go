@@ -44,14 +44,20 @@ type ListVolumeQuotaReportResult struct {
 
 func ListVolumeQuotaReportOutput(ctx *pulumi.Context, args ListVolumeQuotaReportOutputArgs, opts ...pulumi.InvokeOption) ListVolumeQuotaReportResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListVolumeQuotaReportResult, error) {
+		ApplyT(func(v interface{}) (ListVolumeQuotaReportResultOutput, error) {
 			args := v.(ListVolumeQuotaReportArgs)
-			r, err := ListVolumeQuotaReport(ctx, &args, opts...)
-			var s ListVolumeQuotaReportResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListVolumeQuotaReportResult
+			secret, err := ctx.InvokePackageRaw("azure-native:netapp:listVolumeQuotaReport", args, &rv, "", opts...)
+			if err != nil {
+				return ListVolumeQuotaReportResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListVolumeQuotaReportResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListVolumeQuotaReportResultOutput), nil
+			}
+			return output, nil
 		}).(ListVolumeQuotaReportResultOutput)
 }
 

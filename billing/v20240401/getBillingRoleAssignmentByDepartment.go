@@ -49,14 +49,20 @@ type LookupBillingRoleAssignmentByDepartmentResult struct {
 
 func LookupBillingRoleAssignmentByDepartmentOutput(ctx *pulumi.Context, args LookupBillingRoleAssignmentByDepartmentOutputArgs, opts ...pulumi.InvokeOption) LookupBillingRoleAssignmentByDepartmentResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupBillingRoleAssignmentByDepartmentResult, error) {
+		ApplyT(func(v interface{}) (LookupBillingRoleAssignmentByDepartmentResultOutput, error) {
 			args := v.(LookupBillingRoleAssignmentByDepartmentArgs)
-			r, err := LookupBillingRoleAssignmentByDepartment(ctx, &args, opts...)
-			var s LookupBillingRoleAssignmentByDepartmentResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupBillingRoleAssignmentByDepartmentResult
+			secret, err := ctx.InvokePackageRaw("azure-native:billing/v20240401:getBillingRoleAssignmentByDepartment", args, &rv, "", opts...)
+			if err != nil {
+				return LookupBillingRoleAssignmentByDepartmentResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupBillingRoleAssignmentByDepartmentResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupBillingRoleAssignmentByDepartmentResultOutput), nil
+			}
+			return output, nil
 		}).(LookupBillingRoleAssignmentByDepartmentResultOutput)
 }
 

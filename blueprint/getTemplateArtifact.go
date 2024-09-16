@@ -59,14 +59,20 @@ type LookupTemplateArtifactResult struct {
 
 func LookupTemplateArtifactOutput(ctx *pulumi.Context, args LookupTemplateArtifactOutputArgs, opts ...pulumi.InvokeOption) LookupTemplateArtifactResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupTemplateArtifactResult, error) {
+		ApplyT(func(v interface{}) (LookupTemplateArtifactResultOutput, error) {
 			args := v.(LookupTemplateArtifactArgs)
-			r, err := LookupTemplateArtifact(ctx, &args, opts...)
-			var s LookupTemplateArtifactResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupTemplateArtifactResult
+			secret, err := ctx.InvokePackageRaw("azure-native:blueprint:getTemplateArtifact", args, &rv, "", opts...)
+			if err != nil {
+				return LookupTemplateArtifactResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupTemplateArtifactResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupTemplateArtifactResultOutput), nil
+			}
+			return output, nil
 		}).(LookupTemplateArtifactResultOutput)
 }
 

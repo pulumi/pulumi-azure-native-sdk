@@ -53,14 +53,20 @@ type LookupWordpressInstanceResult struct {
 
 func LookupWordpressInstanceOutput(ctx *pulumi.Context, args LookupWordpressInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupWordpressInstanceResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupWordpressInstanceResult, error) {
+		ApplyT(func(v interface{}) (LookupWordpressInstanceResultOutput, error) {
 			args := v.(LookupWordpressInstanceArgs)
-			r, err := LookupWordpressInstance(ctx, &args, opts...)
-			var s LookupWordpressInstanceResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupWordpressInstanceResult
+			secret, err := ctx.InvokePackageRaw("azure-native:workloads/v20211201preview:getWordpressInstance", args, &rv, "", opts...)
+			if err != nil {
+				return LookupWordpressInstanceResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupWordpressInstanceResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupWordpressInstanceResultOutput), nil
+			}
+			return output, nil
 		}).(LookupWordpressInstanceResultOutput)
 }
 

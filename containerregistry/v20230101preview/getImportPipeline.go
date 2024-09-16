@@ -70,14 +70,20 @@ func (val *LookupImportPipelineResult) Defaults() *LookupImportPipelineResult {
 
 func LookupImportPipelineOutput(ctx *pulumi.Context, args LookupImportPipelineOutputArgs, opts ...pulumi.InvokeOption) LookupImportPipelineResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupImportPipelineResult, error) {
+		ApplyT(func(v interface{}) (LookupImportPipelineResultOutput, error) {
 			args := v.(LookupImportPipelineArgs)
-			r, err := LookupImportPipeline(ctx, &args, opts...)
-			var s LookupImportPipelineResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupImportPipelineResult
+			secret, err := ctx.InvokePackageRaw("azure-native:containerregistry/v20230101preview:getImportPipeline", args, &rv, "", opts...)
+			if err != nil {
+				return LookupImportPipelineResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupImportPipelineResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupImportPipelineResultOutput), nil
+			}
+			return output, nil
 		}).(LookupImportPipelineResultOutput)
 }
 

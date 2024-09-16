@@ -14,7 +14,7 @@ import (
 // Retrieves information about the view of a license profile.
 // Azure REST API version: 2023-06-20-preview.
 //
-// Other available API versions: 2023-10-03-preview, 2024-03-31-preview, 2024-05-20-preview, 2024-07-10.
+// Other available API versions: 2023-10-03-preview, 2024-03-31-preview, 2024-05-20-preview, 2024-07-10, 2024-07-31-preview.
 func LookupLicenseProfile(ctx *pulumi.Context, args *LookupLicenseProfileArgs, opts ...pulumi.InvokeOption) (*LookupLicenseProfileResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupLicenseProfileResult
@@ -66,14 +66,20 @@ type LookupLicenseProfileResult struct {
 
 func LookupLicenseProfileOutput(ctx *pulumi.Context, args LookupLicenseProfileOutputArgs, opts ...pulumi.InvokeOption) LookupLicenseProfileResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupLicenseProfileResult, error) {
+		ApplyT(func(v interface{}) (LookupLicenseProfileResultOutput, error) {
 			args := v.(LookupLicenseProfileArgs)
-			r, err := LookupLicenseProfile(ctx, &args, opts...)
-			var s LookupLicenseProfileResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupLicenseProfileResult
+			secret, err := ctx.InvokePackageRaw("azure-native:hybridcompute:getLicenseProfile", args, &rv, "", opts...)
+			if err != nil {
+				return LookupLicenseProfileResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupLicenseProfileResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupLicenseProfileResultOutput), nil
+			}
+			return output, nil
 		}).(LookupLicenseProfileResultOutput)
 }
 

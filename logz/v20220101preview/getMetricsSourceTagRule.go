@@ -48,14 +48,20 @@ type LookupMetricsSourceTagRuleResult struct {
 
 func LookupMetricsSourceTagRuleOutput(ctx *pulumi.Context, args LookupMetricsSourceTagRuleOutputArgs, opts ...pulumi.InvokeOption) LookupMetricsSourceTagRuleResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupMetricsSourceTagRuleResult, error) {
+		ApplyT(func(v interface{}) (LookupMetricsSourceTagRuleResultOutput, error) {
 			args := v.(LookupMetricsSourceTagRuleArgs)
-			r, err := LookupMetricsSourceTagRule(ctx, &args, opts...)
-			var s LookupMetricsSourceTagRuleResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupMetricsSourceTagRuleResult
+			secret, err := ctx.InvokePackageRaw("azure-native:logz/v20220101preview:getMetricsSourceTagRule", args, &rv, "", opts...)
+			if err != nil {
+				return LookupMetricsSourceTagRuleResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupMetricsSourceTagRuleResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupMetricsSourceTagRuleResultOutput), nil
+			}
+			return output, nil
 		}).(LookupMetricsSourceTagRuleResultOutput)
 }
 

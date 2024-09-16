@@ -16,9 +16,9 @@ var _ = utilities.GetEnvOrDefault
 // Defines the asset status error properties.
 type AssetStatusErrorResponse struct {
 	// Error code for classification of errors (ex: 400, 404, 500, etc.).
-	Code *int `pulumi:"code"`
+	Code int `pulumi:"code"`
 	// Human readable helpful error message to provide additional context for error (ex: “capability Id 'foo' does not exist”).
-	Message *string `pulumi:"message"`
+	Message string `pulumi:"message"`
 }
 
 // Defines the asset status error properties.
@@ -37,13 +37,13 @@ func (o AssetStatusErrorResponseOutput) ToAssetStatusErrorResponseOutputWithCont
 }
 
 // Error code for classification of errors (ex: 400, 404, 500, etc.).
-func (o AssetStatusErrorResponseOutput) Code() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v AssetStatusErrorResponse) *int { return v.Code }).(pulumi.IntPtrOutput)
+func (o AssetStatusErrorResponseOutput) Code() pulumi.IntOutput {
+	return o.ApplyT(func(v AssetStatusErrorResponse) int { return v.Code }).(pulumi.IntOutput)
 }
 
 // Human readable helpful error message to provide additional context for error (ex: “capability Id 'foo' does not exist”).
-func (o AssetStatusErrorResponseOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AssetStatusErrorResponse) *string { return v.Message }).(pulumi.StringPtrOutput)
+func (o AssetStatusErrorResponseOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v AssetStatusErrorResponse) string { return v.Message }).(pulumi.StringOutput)
 }
 
 type AssetStatusErrorResponseArrayOutput struct{ *pulumi.OutputState }
@@ -71,7 +71,7 @@ type AssetStatusResponse struct {
 	// Array object to transfer and persist errors that originate from the Edge.
 	Errors []AssetStatusErrorResponse `pulumi:"errors"`
 	// A read only incremental counter indicating the number of times the configuration has been modified from the perspective of the current actual (Edge) state of the Asset. Edge would be the only writer of this value and would sync back up to the cloud. In steady state, this should equal version.
-	Version *int `pulumi:"version"`
+	Version int `pulumi:"version"`
 }
 
 // Defines the asset status properties.
@@ -95,15 +95,15 @@ func (o AssetStatusResponseOutput) Errors() AssetStatusErrorResponseArrayOutput 
 }
 
 // A read only incremental counter indicating the number of times the configuration has been modified from the perspective of the current actual (Edge) state of the Asset. Edge would be the only writer of this value and would sync back up to the cloud. In steady state, this should equal version.
-func (o AssetStatusResponseOutput) Version() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v AssetStatusResponse) *int { return v.Version }).(pulumi.IntPtrOutput)
+func (o AssetStatusResponseOutput) Version() pulumi.IntOutput {
+	return o.ApplyT(func(v AssetStatusResponse) int { return v.Version }).(pulumi.IntOutput)
 }
 
 // Defines the data point properties.
 type DataPoint struct {
 	// The path to the type definition of the capability (e.g. DTMI, OPC UA information model node id, etc.), for example dtmi:com:example:Robot:_contents:__prop1;1.
 	CapabilityId *string `pulumi:"capabilityId"`
-	// Protocol-specific configuration for the data point. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
+	// Stringified JSON that contains connector-specific configuration for the data point. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
 	DataPointConfiguration *string `pulumi:"dataPointConfiguration"`
 	// The address of the source of the data in the asset (e.g. URL) so that a client can access the data source on the asset.
 	DataSource string `pulumi:"dataSource"`
@@ -141,7 +141,7 @@ type DataPointInput interface {
 type DataPointArgs struct {
 	// The path to the type definition of the capability (e.g. DTMI, OPC UA information model node id, etc.), for example dtmi:com:example:Robot:_contents:__prop1;1.
 	CapabilityId pulumi.StringPtrInput `pulumi:"capabilityId"`
-	// Protocol-specific configuration for the data point. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
+	// Stringified JSON that contains connector-specific configuration for the data point. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
 	DataPointConfiguration pulumi.StringPtrInput `pulumi:"dataPointConfiguration"`
 	// The address of the source of the data in the asset (e.g. URL) so that a client can access the data source on the asset.
 	DataSource pulumi.StringInput `pulumi:"dataSource"`
@@ -219,7 +219,7 @@ func (o DataPointOutput) CapabilityId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DataPoint) *string { return v.CapabilityId }).(pulumi.StringPtrOutput)
 }
 
-// Protocol-specific configuration for the data point. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
+// Stringified JSON that contains connector-specific configuration for the data point. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
 func (o DataPointOutput) DataPointConfiguration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DataPoint) *string { return v.DataPointConfiguration }).(pulumi.StringPtrOutput)
 }
@@ -263,7 +263,7 @@ func (o DataPointArrayOutput) Index(i pulumi.IntInput) DataPointOutput {
 type DataPointResponse struct {
 	// The path to the type definition of the capability (e.g. DTMI, OPC UA information model node id, etc.), for example dtmi:com:example:Robot:_contents:__prop1;1.
 	CapabilityId *string `pulumi:"capabilityId"`
-	// Protocol-specific configuration for the data point. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
+	// Stringified JSON that contains connector-specific configuration for the data point. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
 	DataPointConfiguration *string `pulumi:"dataPointConfiguration"`
 	// The address of the source of the data in the asset (e.g. URL) so that a client can access the data source on the asset.
 	DataSource string `pulumi:"dataSource"`
@@ -306,7 +306,7 @@ func (o DataPointResponseOutput) CapabilityId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DataPointResponse) *string { return v.CapabilityId }).(pulumi.StringPtrOutput)
 }
 
-// Protocol-specific configuration for the data point. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
+// Stringified JSON that contains connector-specific configuration for the data point. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
 func (o DataPointResponseOutput) DataPointConfiguration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DataPointResponse) *string { return v.DataPointConfiguration }).(pulumi.StringPtrOutput)
 }
@@ -350,7 +350,7 @@ func (o DataPointResponseArrayOutput) Index(i pulumi.IntInput) DataPointResponse
 type Event struct {
 	// The path to the type definition of the capability (e.g. DTMI, OPC UA information model node id, etc.), for example dtmi:com:example:Robot:_contents:__prop1;1.
 	CapabilityId *string `pulumi:"capabilityId"`
-	// Protocol-specific configuration for the event. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
+	// Stringified JSON that contains connector-specific configuration for the event. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
 	EventConfiguration *string `pulumi:"eventConfiguration"`
 	// The address of the notifier of the event in the asset (e.g. URL) so that a client can access the event on the asset.
 	EventNotifier string `pulumi:"eventNotifier"`
@@ -388,7 +388,7 @@ type EventInput interface {
 type EventArgs struct {
 	// The path to the type definition of the capability (e.g. DTMI, OPC UA information model node id, etc.), for example dtmi:com:example:Robot:_contents:__prop1;1.
 	CapabilityId pulumi.StringPtrInput `pulumi:"capabilityId"`
-	// Protocol-specific configuration for the event. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
+	// Stringified JSON that contains connector-specific configuration for the event. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
 	EventConfiguration pulumi.StringPtrInput `pulumi:"eventConfiguration"`
 	// The address of the notifier of the event in the asset (e.g. URL) so that a client can access the event on the asset.
 	EventNotifier pulumi.StringInput `pulumi:"eventNotifier"`
@@ -466,7 +466,7 @@ func (o EventOutput) CapabilityId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Event) *string { return v.CapabilityId }).(pulumi.StringPtrOutput)
 }
 
-// Protocol-specific configuration for the event. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
+// Stringified JSON that contains connector-specific configuration for the event. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
 func (o EventOutput) EventConfiguration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Event) *string { return v.EventConfiguration }).(pulumi.StringPtrOutput)
 }
@@ -510,7 +510,7 @@ func (o EventArrayOutput) Index(i pulumi.IntInput) EventOutput {
 type EventResponse struct {
 	// The path to the type definition of the capability (e.g. DTMI, OPC UA information model node id, etc.), for example dtmi:com:example:Robot:_contents:__prop1;1.
 	CapabilityId *string `pulumi:"capabilityId"`
-	// Protocol-specific configuration for the event. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
+	// Stringified JSON that contains connector-specific configuration for the event. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
 	EventConfiguration *string `pulumi:"eventConfiguration"`
 	// The address of the notifier of the event in the asset (e.g. URL) so that a client can access the event on the asset.
 	EventNotifier string `pulumi:"eventNotifier"`
@@ -553,7 +553,7 @@ func (o EventResponseOutput) CapabilityId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EventResponse) *string { return v.CapabilityId }).(pulumi.StringPtrOutput)
 }
 
-// Protocol-specific configuration for the event. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
+// Stringified JSON that contains connector-specific configuration for the event. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
 func (o EventResponseOutput) EventConfiguration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EventResponse) *string { return v.EventConfiguration }).(pulumi.StringPtrOutput)
 }
@@ -1131,7 +1131,7 @@ func (o TransportAuthenticationResponsePtrOutput) OwnCertificates() OwnCertifica
 
 // Definition of the client authentication mechanism to the server.
 type UserAuthentication struct {
-	// Defines the mode to authenticate the user of the client at the server.
+	// Defines the method to authenticate the user of the client at the server.
 	Mode string `pulumi:"mode"`
 	// Defines the username and password references when UsernamePassword user authentication mode is selected.
 	UsernamePasswordCredentials *UsernamePasswordCredentials `pulumi:"usernamePasswordCredentials"`
@@ -1164,7 +1164,7 @@ type UserAuthenticationInput interface {
 
 // Definition of the client authentication mechanism to the server.
 type UserAuthenticationArgs struct {
-	// Defines the mode to authenticate the user of the client at the server.
+	// Defines the method to authenticate the user of the client at the server.
 	Mode pulumi.StringInput `pulumi:"mode"`
 	// Defines the username and password references when UsernamePassword user authentication mode is selected.
 	UsernamePasswordCredentials UsernamePasswordCredentialsPtrInput `pulumi:"usernamePasswordCredentials"`
@@ -1261,7 +1261,7 @@ func (o UserAuthenticationOutput) ToUserAuthenticationPtrOutputWithContext(ctx c
 	}).(UserAuthenticationPtrOutput)
 }
 
-// Defines the mode to authenticate the user of the client at the server.
+// Defines the method to authenticate the user of the client at the server.
 func (o UserAuthenticationOutput) Mode() pulumi.StringOutput {
 	return o.ApplyT(func(v UserAuthentication) string { return v.Mode }).(pulumi.StringOutput)
 }
@@ -1300,7 +1300,7 @@ func (o UserAuthenticationPtrOutput) Elem() UserAuthenticationOutput {
 	}).(UserAuthenticationOutput)
 }
 
-// Defines the mode to authenticate the user of the client at the server.
+// Defines the method to authenticate the user of the client at the server.
 func (o UserAuthenticationPtrOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UserAuthentication) *string {
 		if v == nil {
@@ -1332,7 +1332,7 @@ func (o UserAuthenticationPtrOutput) X509Credentials() X509CredentialsPtrOutput 
 
 // Definition of the client authentication mechanism to the server.
 type UserAuthenticationResponse struct {
-	// Defines the mode to authenticate the user of the client at the server.
+	// Defines the method to authenticate the user of the client at the server.
 	Mode string `pulumi:"mode"`
 	// Defines the username and password references when UsernamePassword user authentication mode is selected.
 	UsernamePasswordCredentials *UsernamePasswordCredentialsResponse `pulumi:"usernamePasswordCredentials"`
@@ -1367,7 +1367,7 @@ func (o UserAuthenticationResponseOutput) ToUserAuthenticationResponseOutputWith
 	return o
 }
 
-// Defines the mode to authenticate the user of the client at the server.
+// Defines the method to authenticate the user of the client at the server.
 func (o UserAuthenticationResponseOutput) Mode() pulumi.StringOutput {
 	return o.ApplyT(func(v UserAuthenticationResponse) string { return v.Mode }).(pulumi.StringOutput)
 }
@@ -1408,7 +1408,7 @@ func (o UserAuthenticationResponsePtrOutput) Elem() UserAuthenticationResponseOu
 	}).(UserAuthenticationResponseOutput)
 }
 
-// Defines the mode to authenticate the user of the client at the server.
+// Defines the method to authenticate the user of the client at the server.
 func (o UserAuthenticationResponsePtrOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UserAuthenticationResponse) *string {
 		if v == nil {

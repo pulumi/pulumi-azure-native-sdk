@@ -60,14 +60,20 @@ type LookupKustoClusterDataSetMappingResult struct {
 
 func LookupKustoClusterDataSetMappingOutput(ctx *pulumi.Context, args LookupKustoClusterDataSetMappingOutputArgs, opts ...pulumi.InvokeOption) LookupKustoClusterDataSetMappingResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupKustoClusterDataSetMappingResult, error) {
+		ApplyT(func(v interface{}) (LookupKustoClusterDataSetMappingResultOutput, error) {
 			args := v.(LookupKustoClusterDataSetMappingArgs)
-			r, err := LookupKustoClusterDataSetMapping(ctx, &args, opts...)
-			var s LookupKustoClusterDataSetMappingResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupKustoClusterDataSetMappingResult
+			secret, err := ctx.InvokePackageRaw("azure-native:datashare/v20210801:getKustoClusterDataSetMapping", args, &rv, "", opts...)
+			if err != nil {
+				return LookupKustoClusterDataSetMappingResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupKustoClusterDataSetMappingResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupKustoClusterDataSetMappingResultOutput), nil
+			}
+			return output, nil
 		}).(LookupKustoClusterDataSetMappingResultOutput)
 }
 

@@ -64,14 +64,20 @@ func (val *ListWebAppBackupConfigurationResult) Defaults() *ListWebAppBackupConf
 
 func ListWebAppBackupConfigurationOutput(ctx *pulumi.Context, args ListWebAppBackupConfigurationOutputArgs, opts ...pulumi.InvokeOption) ListWebAppBackupConfigurationResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListWebAppBackupConfigurationResult, error) {
+		ApplyT(func(v interface{}) (ListWebAppBackupConfigurationResultOutput, error) {
 			args := v.(ListWebAppBackupConfigurationArgs)
-			r, err := ListWebAppBackupConfiguration(ctx, &args, opts...)
-			var s ListWebAppBackupConfigurationResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListWebAppBackupConfigurationResult
+			secret, err := ctx.InvokePackageRaw("azure-native:web/v20220901:listWebAppBackupConfiguration", args, &rv, "", opts...)
+			if err != nil {
+				return ListWebAppBackupConfigurationResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListWebAppBackupConfigurationResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListWebAppBackupConfigurationResultOutput), nil
+			}
+			return output, nil
 		}).(ListWebAppBackupConfigurationResultOutput)
 }
 

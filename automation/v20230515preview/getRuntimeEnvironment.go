@@ -57,14 +57,20 @@ type LookupRuntimeEnvironmentResult struct {
 
 func LookupRuntimeEnvironmentOutput(ctx *pulumi.Context, args LookupRuntimeEnvironmentOutputArgs, opts ...pulumi.InvokeOption) LookupRuntimeEnvironmentResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupRuntimeEnvironmentResult, error) {
+		ApplyT(func(v interface{}) (LookupRuntimeEnvironmentResultOutput, error) {
 			args := v.(LookupRuntimeEnvironmentArgs)
-			r, err := LookupRuntimeEnvironment(ctx, &args, opts...)
-			var s LookupRuntimeEnvironmentResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupRuntimeEnvironmentResult
+			secret, err := ctx.InvokePackageRaw("azure-native:automation/v20230515preview:getRuntimeEnvironment", args, &rv, "", opts...)
+			if err != nil {
+				return LookupRuntimeEnvironmentResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupRuntimeEnvironmentResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupRuntimeEnvironmentResultOutput), nil
+			}
+			return output, nil
 		}).(LookupRuntimeEnvironmentResultOutput)
 }
 

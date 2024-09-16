@@ -68,14 +68,20 @@ func (val *LookupScriptResult) Defaults() *LookupScriptResult {
 
 func LookupScriptOutput(ctx *pulumi.Context, args LookupScriptOutputArgs, opts ...pulumi.InvokeOption) LookupScriptResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupScriptResult, error) {
+		ApplyT(func(v interface{}) (LookupScriptResultOutput, error) {
 			args := v.(LookupScriptArgs)
-			r, err := LookupScript(ctx, &args, opts...)
-			var s LookupScriptResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupScriptResult
+			secret, err := ctx.InvokePackageRaw("azure-native:kusto/v20221229:getScript", args, &rv, "", opts...)
+			if err != nil {
+				return LookupScriptResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupScriptResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupScriptResultOutput), nil
+			}
+			return output, nil
 		}).(LookupScriptResultOutput)
 }
 

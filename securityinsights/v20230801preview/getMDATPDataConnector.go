@@ -54,14 +54,20 @@ type LookupMDATPDataConnectorResult struct {
 
 func LookupMDATPDataConnectorOutput(ctx *pulumi.Context, args LookupMDATPDataConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupMDATPDataConnectorResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupMDATPDataConnectorResult, error) {
+		ApplyT(func(v interface{}) (LookupMDATPDataConnectorResultOutput, error) {
 			args := v.(LookupMDATPDataConnectorArgs)
-			r, err := LookupMDATPDataConnector(ctx, &args, opts...)
-			var s LookupMDATPDataConnectorResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupMDATPDataConnectorResult
+			secret, err := ctx.InvokePackageRaw("azure-native:securityinsights/v20230801preview:getMDATPDataConnector", args, &rv, "", opts...)
+			if err != nil {
+				return LookupMDATPDataConnectorResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupMDATPDataConnectorResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupMDATPDataConnectorResultOutput), nil
+			}
+			return output, nil
 		}).(LookupMDATPDataConnectorResultOutput)
 }
 

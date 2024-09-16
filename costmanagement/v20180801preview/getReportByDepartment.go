@@ -51,14 +51,20 @@ type LookupReportByDepartmentResult struct {
 
 func LookupReportByDepartmentOutput(ctx *pulumi.Context, args LookupReportByDepartmentOutputArgs, opts ...pulumi.InvokeOption) LookupReportByDepartmentResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupReportByDepartmentResult, error) {
+		ApplyT(func(v interface{}) (LookupReportByDepartmentResultOutput, error) {
 			args := v.(LookupReportByDepartmentArgs)
-			r, err := LookupReportByDepartment(ctx, &args, opts...)
-			var s LookupReportByDepartmentResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupReportByDepartmentResult
+			secret, err := ctx.InvokePackageRaw("azure-native:costmanagement/v20180801preview:getReportByDepartment", args, &rv, "", opts...)
+			if err != nil {
+				return LookupReportByDepartmentResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupReportByDepartmentResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupReportByDepartmentResultOutput), nil
+			}
+			return output, nil
 		}).(LookupReportByDepartmentResultOutput)
 }
 

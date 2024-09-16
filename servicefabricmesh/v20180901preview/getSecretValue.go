@@ -51,14 +51,20 @@ type LookupSecretValueResult struct {
 
 func LookupSecretValueOutput(ctx *pulumi.Context, args LookupSecretValueOutputArgs, opts ...pulumi.InvokeOption) LookupSecretValueResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSecretValueResult, error) {
+		ApplyT(func(v interface{}) (LookupSecretValueResultOutput, error) {
 			args := v.(LookupSecretValueArgs)
-			r, err := LookupSecretValue(ctx, &args, opts...)
-			var s LookupSecretValueResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupSecretValueResult
+			secret, err := ctx.InvokePackageRaw("azure-native:servicefabricmesh/v20180901preview:getSecretValue", args, &rv, "", opts...)
+			if err != nil {
+				return LookupSecretValueResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupSecretValueResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupSecretValueResultOutput), nil
+			}
+			return output, nil
 		}).(LookupSecretValueResultOutput)
 }
 

@@ -43,14 +43,20 @@ type LookupSupportPlanTypeResult struct {
 
 func LookupSupportPlanTypeOutput(ctx *pulumi.Context, args LookupSupportPlanTypeOutputArgs, opts ...pulumi.InvokeOption) LookupSupportPlanTypeResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSupportPlanTypeResult, error) {
+		ApplyT(func(v interface{}) (LookupSupportPlanTypeResultOutput, error) {
 			args := v.(LookupSupportPlanTypeArgs)
-			r, err := LookupSupportPlanType(ctx, &args, opts...)
-			var s LookupSupportPlanTypeResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupSupportPlanTypeResult
+			secret, err := ctx.InvokePackageRaw("azure-native:addons/v20180301:getSupportPlanType", args, &rv, "", opts...)
+			if err != nil {
+				return LookupSupportPlanTypeResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupSupportPlanTypeResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupSupportPlanTypeResultOutput), nil
+			}
+			return output, nil
 		}).(LookupSupportPlanTypeResultOutput)
 }
 

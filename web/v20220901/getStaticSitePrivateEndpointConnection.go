@@ -52,14 +52,20 @@ type LookupStaticSitePrivateEndpointConnectionResult struct {
 
 func LookupStaticSitePrivateEndpointConnectionOutput(ctx *pulumi.Context, args LookupStaticSitePrivateEndpointConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupStaticSitePrivateEndpointConnectionResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupStaticSitePrivateEndpointConnectionResult, error) {
+		ApplyT(func(v interface{}) (LookupStaticSitePrivateEndpointConnectionResultOutput, error) {
 			args := v.(LookupStaticSitePrivateEndpointConnectionArgs)
-			r, err := LookupStaticSitePrivateEndpointConnection(ctx, &args, opts...)
-			var s LookupStaticSitePrivateEndpointConnectionResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupStaticSitePrivateEndpointConnectionResult
+			secret, err := ctx.InvokePackageRaw("azure-native:web/v20220901:getStaticSitePrivateEndpointConnection", args, &rv, "", opts...)
+			if err != nil {
+				return LookupStaticSitePrivateEndpointConnectionResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupStaticSitePrivateEndpointConnectionResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupStaticSitePrivateEndpointConnectionResultOutput), nil
+			}
+			return output, nil
 		}).(LookupStaticSitePrivateEndpointConnectionResultOutput)
 }
 

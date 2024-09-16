@@ -49,14 +49,20 @@ type ListWorkspacePolicyFragmentReferencesResult struct {
 
 func ListWorkspacePolicyFragmentReferencesOutput(ctx *pulumi.Context, args ListWorkspacePolicyFragmentReferencesOutputArgs, opts ...pulumi.InvokeOption) ListWorkspacePolicyFragmentReferencesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListWorkspacePolicyFragmentReferencesResult, error) {
+		ApplyT(func(v interface{}) (ListWorkspacePolicyFragmentReferencesResultOutput, error) {
 			args := v.(ListWorkspacePolicyFragmentReferencesArgs)
-			r, err := ListWorkspacePolicyFragmentReferences(ctx, &args, opts...)
-			var s ListWorkspacePolicyFragmentReferencesResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListWorkspacePolicyFragmentReferencesResult
+			secret, err := ctx.InvokePackageRaw("azure-native:apimanagement/v20220901preview:listWorkspacePolicyFragmentReferences", args, &rv, "", opts...)
+			if err != nil {
+				return ListWorkspacePolicyFragmentReferencesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListWorkspacePolicyFragmentReferencesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListWorkspacePolicyFragmentReferencesResultOutput), nil
+			}
+			return output, nil
 		}).(ListWorkspacePolicyFragmentReferencesResultOutput)
 }
 

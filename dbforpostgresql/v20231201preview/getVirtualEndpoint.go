@@ -51,14 +51,20 @@ type LookupVirtualEndpointResult struct {
 
 func LookupVirtualEndpointOutput(ctx *pulumi.Context, args LookupVirtualEndpointOutputArgs, opts ...pulumi.InvokeOption) LookupVirtualEndpointResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupVirtualEndpointResult, error) {
+		ApplyT(func(v interface{}) (LookupVirtualEndpointResultOutput, error) {
 			args := v.(LookupVirtualEndpointArgs)
-			r, err := LookupVirtualEndpoint(ctx, &args, opts...)
-			var s LookupVirtualEndpointResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupVirtualEndpointResult
+			secret, err := ctx.InvokePackageRaw("azure-native:dbforpostgresql/v20231201preview:getVirtualEndpoint", args, &rv, "", opts...)
+			if err != nil {
+				return LookupVirtualEndpointResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupVirtualEndpointResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupVirtualEndpointResultOutput), nil
+			}
+			return output, nil
 		}).(LookupVirtualEndpointResultOutput)
 }
 

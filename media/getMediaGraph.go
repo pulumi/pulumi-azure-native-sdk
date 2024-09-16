@@ -56,14 +56,20 @@ type LookupMediaGraphResult struct {
 
 func LookupMediaGraphOutput(ctx *pulumi.Context, args LookupMediaGraphOutputArgs, opts ...pulumi.InvokeOption) LookupMediaGraphResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupMediaGraphResult, error) {
+		ApplyT(func(v interface{}) (LookupMediaGraphResultOutput, error) {
 			args := v.(LookupMediaGraphArgs)
-			r, err := LookupMediaGraph(ctx, &args, opts...)
-			var s LookupMediaGraphResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupMediaGraphResult
+			secret, err := ctx.InvokePackageRaw("azure-native:media:getMediaGraph", args, &rv, "", opts...)
+			if err != nil {
+				return LookupMediaGraphResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupMediaGraphResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupMediaGraphResultOutput), nil
+			}
+			return output, nil
 		}).(LookupMediaGraphResultOutput)
 }
 

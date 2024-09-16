@@ -60,14 +60,20 @@ func (val *LookupGuestConfigurationHCRPAssignmentResult) Defaults() *LookupGuest
 
 func LookupGuestConfigurationHCRPAssignmentOutput(ctx *pulumi.Context, args LookupGuestConfigurationHCRPAssignmentOutputArgs, opts ...pulumi.InvokeOption) LookupGuestConfigurationHCRPAssignmentResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupGuestConfigurationHCRPAssignmentResult, error) {
+		ApplyT(func(v interface{}) (LookupGuestConfigurationHCRPAssignmentResultOutput, error) {
 			args := v.(LookupGuestConfigurationHCRPAssignmentArgs)
-			r, err := LookupGuestConfigurationHCRPAssignment(ctx, &args, opts...)
-			var s LookupGuestConfigurationHCRPAssignmentResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupGuestConfigurationHCRPAssignmentResult
+			secret, err := ctx.InvokePackageRaw("azure-native:guestconfiguration/v20220125:getGuestConfigurationHCRPAssignment", args, &rv, "", opts...)
+			if err != nil {
+				return LookupGuestConfigurationHCRPAssignmentResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupGuestConfigurationHCRPAssignmentResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupGuestConfigurationHCRPAssignmentResultOutput), nil
+			}
+			return output, nil
 		}).(LookupGuestConfigurationHCRPAssignmentResultOutput)
 }
 

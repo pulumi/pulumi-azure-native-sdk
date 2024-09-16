@@ -82,14 +82,20 @@ type LookupKpiResult struct {
 
 func LookupKpiOutput(ctx *pulumi.Context, args LookupKpiOutputArgs, opts ...pulumi.InvokeOption) LookupKpiResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupKpiResult, error) {
+		ApplyT(func(v interface{}) (LookupKpiResultOutput, error) {
 			args := v.(LookupKpiArgs)
-			r, err := LookupKpi(ctx, &args, opts...)
-			var s LookupKpiResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupKpiResult
+			secret, err := ctx.InvokePackageRaw("azure-native:customerinsights:getKpi", args, &rv, "", opts...)
+			if err != nil {
+				return LookupKpiResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupKpiResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupKpiResultOutput), nil
+			}
+			return output, nil
 		}).(LookupKpiResultOutput)
 }
 

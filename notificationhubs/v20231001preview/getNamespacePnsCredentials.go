@@ -67,14 +67,20 @@ type GetNamespacePnsCredentialsResult struct {
 
 func GetNamespacePnsCredentialsOutput(ctx *pulumi.Context, args GetNamespacePnsCredentialsOutputArgs, opts ...pulumi.InvokeOption) GetNamespacePnsCredentialsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetNamespacePnsCredentialsResult, error) {
+		ApplyT(func(v interface{}) (GetNamespacePnsCredentialsResultOutput, error) {
 			args := v.(GetNamespacePnsCredentialsArgs)
-			r, err := GetNamespacePnsCredentials(ctx, &args, opts...)
-			var s GetNamespacePnsCredentialsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv GetNamespacePnsCredentialsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:notificationhubs/v20231001preview:getNamespacePnsCredentials", args, &rv, "", opts...)
+			if err != nil {
+				return GetNamespacePnsCredentialsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetNamespacePnsCredentialsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetNamespacePnsCredentialsResultOutput), nil
+			}
+			return output, nil
 		}).(GetNamespacePnsCredentialsResultOutput)
 }
 

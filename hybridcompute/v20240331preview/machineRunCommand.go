@@ -80,6 +80,9 @@ func NewMachineRunCommand(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:hybridcompute/v20240520preview:MachineRunCommand"),
 		},
+		{
+			Type: pulumi.String("azure-native:hybridcompute/v20240731preview:MachineRunCommand"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -79,14 +79,20 @@ func (val *LookupExternalNetworkResult) Defaults() *LookupExternalNetworkResult 
 
 func LookupExternalNetworkOutput(ctx *pulumi.Context, args LookupExternalNetworkOutputArgs, opts ...pulumi.InvokeOption) LookupExternalNetworkResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupExternalNetworkResult, error) {
+		ApplyT(func(v interface{}) (LookupExternalNetworkResultOutput, error) {
 			args := v.(LookupExternalNetworkArgs)
-			r, err := LookupExternalNetwork(ctx, &args, opts...)
-			var s LookupExternalNetworkResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupExternalNetworkResult
+			secret, err := ctx.InvokePackageRaw("azure-native:managednetworkfabric:getExternalNetwork", args, &rv, "", opts...)
+			if err != nil {
+				return LookupExternalNetworkResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupExternalNetworkResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupExternalNetworkResultOutput), nil
+			}
+			return output, nil
 		}).(LookupExternalNetworkResultOutput)
 }
 

@@ -47,14 +47,20 @@ type GetSAPSupportedSkuResult struct {
 
 func GetSAPSupportedSkuOutput(ctx *pulumi.Context, args GetSAPSupportedSkuOutputArgs, opts ...pulumi.InvokeOption) GetSAPSupportedSkuResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetSAPSupportedSkuResult, error) {
+		ApplyT(func(v interface{}) (GetSAPSupportedSkuResultOutput, error) {
 			args := v.(GetSAPSupportedSkuArgs)
-			r, err := GetSAPSupportedSku(ctx, &args, opts...)
-			var s GetSAPSupportedSkuResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv GetSAPSupportedSkuResult
+			secret, err := ctx.InvokePackageRaw("azure-native:workloads/v20230401:getSAPSupportedSku", args, &rv, "", opts...)
+			if err != nil {
+				return GetSAPSupportedSkuResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetSAPSupportedSkuResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetSAPSupportedSkuResultOutput), nil
+			}
+			return output, nil
 		}).(GetSAPSupportedSkuResultOutput)
 }
 

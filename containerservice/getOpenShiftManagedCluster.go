@@ -85,14 +85,20 @@ func (val *LookupOpenShiftManagedClusterResult) Defaults() *LookupOpenShiftManag
 
 func LookupOpenShiftManagedClusterOutput(ctx *pulumi.Context, args LookupOpenShiftManagedClusterOutputArgs, opts ...pulumi.InvokeOption) LookupOpenShiftManagedClusterResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupOpenShiftManagedClusterResult, error) {
+		ApplyT(func(v interface{}) (LookupOpenShiftManagedClusterResultOutput, error) {
 			args := v.(LookupOpenShiftManagedClusterArgs)
-			r, err := LookupOpenShiftManagedCluster(ctx, &args, opts...)
-			var s LookupOpenShiftManagedClusterResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupOpenShiftManagedClusterResult
+			secret, err := ctx.InvokePackageRaw("azure-native:containerservice:getOpenShiftManagedCluster", args, &rv, "", opts...)
+			if err != nil {
+				return LookupOpenShiftManagedClusterResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupOpenShiftManagedClusterResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupOpenShiftManagedClusterResultOutput), nil
+			}
+			return output, nil
 		}).(LookupOpenShiftManagedClusterResultOutput)
 }
 

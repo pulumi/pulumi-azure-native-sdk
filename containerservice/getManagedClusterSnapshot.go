@@ -14,7 +14,7 @@ import (
 // A managed cluster snapshot resource.
 // Azure REST API version: 2023-05-02-preview.
 //
-// Other available API versions: 2023-06-02-preview, 2023-07-02-preview, 2023-08-02-preview, 2023-09-02-preview, 2023-10-02-preview, 2023-11-02-preview, 2024-01-02-preview, 2024-02-02-preview, 2024-03-02-preview, 2024-04-02-preview, 2024-05-02-preview, 2024-06-02-preview.
+// Other available API versions: 2023-06-02-preview, 2023-07-02-preview, 2023-08-02-preview, 2023-09-02-preview, 2023-10-02-preview, 2023-11-02-preview, 2024-01-02-preview, 2024-02-02-preview, 2024-03-02-preview, 2024-04-02-preview, 2024-05-02-preview, 2024-06-02-preview, 2024-07-02-preview.
 func LookupManagedClusterSnapshot(ctx *pulumi.Context, args *LookupManagedClusterSnapshotArgs, opts ...pulumi.InvokeOption) (*LookupManagedClusterSnapshotResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupManagedClusterSnapshotResult
@@ -56,14 +56,20 @@ type LookupManagedClusterSnapshotResult struct {
 
 func LookupManagedClusterSnapshotOutput(ctx *pulumi.Context, args LookupManagedClusterSnapshotOutputArgs, opts ...pulumi.InvokeOption) LookupManagedClusterSnapshotResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupManagedClusterSnapshotResult, error) {
+		ApplyT(func(v interface{}) (LookupManagedClusterSnapshotResultOutput, error) {
 			args := v.(LookupManagedClusterSnapshotArgs)
-			r, err := LookupManagedClusterSnapshot(ctx, &args, opts...)
-			var s LookupManagedClusterSnapshotResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupManagedClusterSnapshotResult
+			secret, err := ctx.InvokePackageRaw("azure-native:containerservice:getManagedClusterSnapshot", args, &rv, "", opts...)
+			if err != nil {
+				return LookupManagedClusterSnapshotResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupManagedClusterSnapshotResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupManagedClusterSnapshotResultOutput), nil
+			}
+			return output, nil
 		}).(LookupManagedClusterSnapshotResultOutput)
 }
 

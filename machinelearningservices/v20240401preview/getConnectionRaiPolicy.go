@@ -49,14 +49,20 @@ type LookupConnectionRaiPolicyResult struct {
 
 func LookupConnectionRaiPolicyOutput(ctx *pulumi.Context, args LookupConnectionRaiPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupConnectionRaiPolicyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupConnectionRaiPolicyResult, error) {
+		ApplyT(func(v interface{}) (LookupConnectionRaiPolicyResultOutput, error) {
 			args := v.(LookupConnectionRaiPolicyArgs)
-			r, err := LookupConnectionRaiPolicy(ctx, &args, opts...)
-			var s LookupConnectionRaiPolicyResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupConnectionRaiPolicyResult
+			secret, err := ctx.InvokePackageRaw("azure-native:machinelearningservices/v20240401preview:getConnectionRaiPolicy", args, &rv, "", opts...)
+			if err != nil {
+				return LookupConnectionRaiPolicyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupConnectionRaiPolicyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupConnectionRaiPolicyResultOutput), nil
+			}
+			return output, nil
 		}).(LookupConnectionRaiPolicyResultOutput)
 }
 

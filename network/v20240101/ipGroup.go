@@ -125,6 +125,9 @@ func NewIpGroup(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20231101:IpGroup"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20240301:IpGroup"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

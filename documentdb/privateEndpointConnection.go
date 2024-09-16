@@ -15,7 +15,7 @@ import (
 // A private endpoint connection
 // Azure REST API version: 2023-04-15. Prior API version in Azure Native 1.x: 2021-03-15.
 //
-// Other available API versions: 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-03-01-preview, 2024-05-15, 2024-05-15-preview, 2024-06-01-preview, 2024-07-01.
+// Other available API versions: 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-03-01-preview, 2024-05-15, 2024-05-15-preview, 2024-06-01-preview, 2024-07-01, 2024-08-15, 2024-09-01-preview.
 type PrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 
@@ -136,6 +136,12 @@ func NewPrivateEndpointConnection(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:documentdb/v20240515preview:PrivateEndpointConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20240815:PrivateEndpointConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20240901preview:PrivateEndpointConnection"),
 		},
 	})
 	opts = append(opts, aliases)

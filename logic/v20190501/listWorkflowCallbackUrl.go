@@ -51,14 +51,20 @@ type ListWorkflowCallbackUrlResult struct {
 
 func ListWorkflowCallbackUrlOutput(ctx *pulumi.Context, args ListWorkflowCallbackUrlOutputArgs, opts ...pulumi.InvokeOption) ListWorkflowCallbackUrlResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListWorkflowCallbackUrlResult, error) {
+		ApplyT(func(v interface{}) (ListWorkflowCallbackUrlResultOutput, error) {
 			args := v.(ListWorkflowCallbackUrlArgs)
-			r, err := ListWorkflowCallbackUrl(ctx, &args, opts...)
-			var s ListWorkflowCallbackUrlResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListWorkflowCallbackUrlResult
+			secret, err := ctx.InvokePackageRaw("azure-native:logic/v20190501:listWorkflowCallbackUrl", args, &rv, "", opts...)
+			if err != nil {
+				return ListWorkflowCallbackUrlResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListWorkflowCallbackUrlResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListWorkflowCallbackUrlResultOutput), nil
+			}
+			return output, nil
 		}).(ListWorkflowCallbackUrlResultOutput)
 }
 

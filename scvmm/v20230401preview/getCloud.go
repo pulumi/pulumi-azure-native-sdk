@@ -63,14 +63,20 @@ type LookupCloudResult struct {
 
 func LookupCloudOutput(ctx *pulumi.Context, args LookupCloudOutputArgs, opts ...pulumi.InvokeOption) LookupCloudResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupCloudResult, error) {
+		ApplyT(func(v interface{}) (LookupCloudResultOutput, error) {
 			args := v.(LookupCloudArgs)
-			r, err := LookupCloud(ctx, &args, opts...)
-			var s LookupCloudResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupCloudResult
+			secret, err := ctx.InvokePackageRaw("azure-native:scvmm/v20230401preview:getCloud", args, &rv, "", opts...)
+			if err != nil {
+				return LookupCloudResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupCloudResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupCloudResultOutput), nil
+			}
+			return output, nil
 		}).(LookupCloudResultOutput)
 }
 

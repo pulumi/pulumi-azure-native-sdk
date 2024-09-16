@@ -53,14 +53,20 @@ type LookupPacketCoreDataPlaneResult struct {
 
 func LookupPacketCoreDataPlaneOutput(ctx *pulumi.Context, args LookupPacketCoreDataPlaneOutputArgs, opts ...pulumi.InvokeOption) LookupPacketCoreDataPlaneResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupPacketCoreDataPlaneResult, error) {
+		ApplyT(func(v interface{}) (LookupPacketCoreDataPlaneResultOutput, error) {
 			args := v.(LookupPacketCoreDataPlaneArgs)
-			r, err := LookupPacketCoreDataPlane(ctx, &args, opts...)
-			var s LookupPacketCoreDataPlaneResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupPacketCoreDataPlaneResult
+			secret, err := ctx.InvokePackageRaw("azure-native:mobilenetwork/v20221101:getPacketCoreDataPlane", args, &rv, "", opts...)
+			if err != nil {
+				return LookupPacketCoreDataPlaneResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupPacketCoreDataPlaneResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupPacketCoreDataPlaneResultOutput), nil
+			}
+			return output, nil
 		}).(LookupPacketCoreDataPlaneResultOutput)
 }
 

@@ -41,14 +41,20 @@ type ListTopLevelDomainAgreementsResult struct {
 
 func ListTopLevelDomainAgreementsOutput(ctx *pulumi.Context, args ListTopLevelDomainAgreementsOutputArgs, opts ...pulumi.InvokeOption) ListTopLevelDomainAgreementsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListTopLevelDomainAgreementsResult, error) {
+		ApplyT(func(v interface{}) (ListTopLevelDomainAgreementsResultOutput, error) {
 			args := v.(ListTopLevelDomainAgreementsArgs)
-			r, err := ListTopLevelDomainAgreements(ctx, &args, opts...)
-			var s ListTopLevelDomainAgreementsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListTopLevelDomainAgreementsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:domainregistration/v20220901:listTopLevelDomainAgreements", args, &rv, "", opts...)
+			if err != nil {
+				return ListTopLevelDomainAgreementsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListTopLevelDomainAgreementsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListTopLevelDomainAgreementsResultOutput), nil
+			}
+			return output, nil
 		}).(ListTopLevelDomainAgreementsResultOutput)
 }
 

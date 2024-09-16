@@ -178,14 +178,20 @@ func (val *LookupWebAppSlotResult) Defaults() *LookupWebAppSlotResult {
 
 func LookupWebAppSlotOutput(ctx *pulumi.Context, args LookupWebAppSlotOutputArgs, opts ...pulumi.InvokeOption) LookupWebAppSlotResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupWebAppSlotResult, error) {
+		ApplyT(func(v interface{}) (LookupWebAppSlotResultOutput, error) {
 			args := v.(LookupWebAppSlotArgs)
-			r, err := LookupWebAppSlot(ctx, &args, opts...)
-			var s LookupWebAppSlotResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupWebAppSlotResult
+			secret, err := ctx.InvokePackageRaw("azure-native:web/v20220901:getWebAppSlot", args, &rv, "", opts...)
+			if err != nil {
+				return LookupWebAppSlotResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupWebAppSlotResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupWebAppSlotResultOutput), nil
+			}
+			return output, nil
 		}).(LookupWebAppSlotResultOutput)
 }
 

@@ -67,14 +67,20 @@ type LookupGalleryImageResult struct {
 
 func LookupGalleryImageOutput(ctx *pulumi.Context, args LookupGalleryImageOutputArgs, opts ...pulumi.InvokeOption) LookupGalleryImageResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupGalleryImageResult, error) {
+		ApplyT(func(v interface{}) (LookupGalleryImageResultOutput, error) {
 			args := v.(LookupGalleryImageArgs)
-			r, err := LookupGalleryImage(ctx, &args, opts...)
-			var s LookupGalleryImageResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupGalleryImageResult
+			secret, err := ctx.InvokePackageRaw("azure-native:azurestackhci/v20221215preview:getGalleryImage", args, &rv, "", opts...)
+			if err != nil {
+				return LookupGalleryImageResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupGalleryImageResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupGalleryImageResultOutput), nil
+			}
+			return output, nil
 		}).(LookupGalleryImageResultOutput)
 }
 

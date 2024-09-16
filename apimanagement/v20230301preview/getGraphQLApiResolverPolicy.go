@@ -66,14 +66,20 @@ func (val *LookupGraphQLApiResolverPolicyResult) Defaults() *LookupGraphQLApiRes
 
 func LookupGraphQLApiResolverPolicyOutput(ctx *pulumi.Context, args LookupGraphQLApiResolverPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupGraphQLApiResolverPolicyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupGraphQLApiResolverPolicyResult, error) {
+		ApplyT(func(v interface{}) (LookupGraphQLApiResolverPolicyResultOutput, error) {
 			args := v.(LookupGraphQLApiResolverPolicyArgs)
-			r, err := LookupGraphQLApiResolverPolicy(ctx, &args, opts...)
-			var s LookupGraphQLApiResolverPolicyResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupGraphQLApiResolverPolicyResult
+			secret, err := ctx.InvokePackageRaw("azure-native:apimanagement/v20230301preview:getGraphQLApiResolverPolicy", args, &rv, "", opts...)
+			if err != nil {
+				return LookupGraphQLApiResolverPolicyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupGraphQLApiResolverPolicyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupGraphQLApiResolverPolicyResultOutput), nil
+			}
+			return output, nil
 		}).(LookupGraphQLApiResolverPolicyResultOutput)
 }
 

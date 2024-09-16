@@ -51,14 +51,20 @@ type LookupTableResourceTableResult struct {
 
 func LookupTableResourceTableOutput(ctx *pulumi.Context, args LookupTableResourceTableOutputArgs, opts ...pulumi.InvokeOption) LookupTableResourceTableResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupTableResourceTableResult, error) {
+		ApplyT(func(v interface{}) (LookupTableResourceTableResultOutput, error) {
 			args := v.(LookupTableResourceTableArgs)
-			r, err := LookupTableResourceTable(ctx, &args, opts...)
-			var s LookupTableResourceTableResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupTableResourceTableResult
+			secret, err := ctx.InvokePackageRaw("azure-native:documentdb/v20231115preview:getTableResourceTable", args, &rv, "", opts...)
+			if err != nil {
+				return LookupTableResourceTableResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupTableResourceTableResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupTableResourceTableResultOutput), nil
+			}
+			return output, nil
 		}).(LookupTableResourceTableResultOutput)
 }
 

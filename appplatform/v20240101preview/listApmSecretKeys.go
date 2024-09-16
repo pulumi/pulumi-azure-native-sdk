@@ -39,14 +39,20 @@ type ListApmSecretKeysResult struct {
 
 func ListApmSecretKeysOutput(ctx *pulumi.Context, args ListApmSecretKeysOutputArgs, opts ...pulumi.InvokeOption) ListApmSecretKeysResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListApmSecretKeysResult, error) {
+		ApplyT(func(v interface{}) (ListApmSecretKeysResultOutput, error) {
 			args := v.(ListApmSecretKeysArgs)
-			r, err := ListApmSecretKeys(ctx, &args, opts...)
-			var s ListApmSecretKeysResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListApmSecretKeysResult
+			secret, err := ctx.InvokePackageRaw("azure-native:appplatform/v20240101preview:listApmSecretKeys", args, &rv, "", opts...)
+			if err != nil {
+				return ListApmSecretKeysResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListApmSecretKeysResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListApmSecretKeysResultOutput), nil
+			}
+			return output, nil
 		}).(ListApmSecretKeysResultOutput)
 }
 

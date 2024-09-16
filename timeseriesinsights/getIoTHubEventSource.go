@@ -69,14 +69,20 @@ type LookupIoTHubEventSourceResult struct {
 
 func LookupIoTHubEventSourceOutput(ctx *pulumi.Context, args LookupIoTHubEventSourceOutputArgs, opts ...pulumi.InvokeOption) LookupIoTHubEventSourceResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupIoTHubEventSourceResult, error) {
+		ApplyT(func(v interface{}) (LookupIoTHubEventSourceResultOutput, error) {
 			args := v.(LookupIoTHubEventSourceArgs)
-			r, err := LookupIoTHubEventSource(ctx, &args, opts...)
-			var s LookupIoTHubEventSourceResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupIoTHubEventSourceResult
+			secret, err := ctx.InvokePackageRaw("azure-native:timeseriesinsights:getIoTHubEventSource", args, &rv, "", opts...)
+			if err != nil {
+				return LookupIoTHubEventSourceResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupIoTHubEventSourceResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupIoTHubEventSourceResultOutput), nil
+			}
+			return output, nil
 		}).(LookupIoTHubEventSourceResultOutput)
 }
 

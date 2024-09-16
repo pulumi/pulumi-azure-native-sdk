@@ -39,14 +39,20 @@ type GetGitHubOAuthResult struct {
 
 func GetGitHubOAuthOutput(ctx *pulumi.Context, args GetGitHubOAuthOutputArgs, opts ...pulumi.InvokeOption) GetGitHubOAuthResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetGitHubOAuthResult, error) {
+		ApplyT(func(v interface{}) (GetGitHubOAuthResultOutput, error) {
 			args := v.(GetGitHubOAuthArgs)
-			r, err := GetGitHubOAuth(ctx, &args, opts...)
-			var s GetGitHubOAuthResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv GetGitHubOAuthResult
+			secret, err := ctx.InvokePackageRaw("azure-native:devhub/v20220401preview:getGitHubOAuth", args, &rv, "", opts...)
+			if err != nil {
+				return GetGitHubOAuthResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetGitHubOAuthResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetGitHubOAuthResultOutput), nil
+			}
+			return output, nil
 		}).(GetGitHubOAuthResultOutput)
 }
 

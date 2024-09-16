@@ -54,14 +54,20 @@ type LookupAADDataConnectorResult struct {
 
 func LookupAADDataConnectorOutput(ctx *pulumi.Context, args LookupAADDataConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupAADDataConnectorResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupAADDataConnectorResult, error) {
+		ApplyT(func(v interface{}) (LookupAADDataConnectorResultOutput, error) {
 			args := v.(LookupAADDataConnectorArgs)
-			r, err := LookupAADDataConnector(ctx, &args, opts...)
-			var s LookupAADDataConnectorResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupAADDataConnectorResult
+			secret, err := ctx.InvokePackageRaw("azure-native:securityinsights/v20230601preview:getAADDataConnector", args, &rv, "", opts...)
+			if err != nil {
+				return LookupAADDataConnectorResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupAADDataConnectorResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupAADDataConnectorResultOutput), nil
+			}
+			return output, nil
 		}).(LookupAADDataConnectorResultOutput)
 }
 

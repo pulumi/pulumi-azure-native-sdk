@@ -49,14 +49,20 @@ type LookupWorkspaceSqlAadAdminResult struct {
 
 func LookupWorkspaceSqlAadAdminOutput(ctx *pulumi.Context, args LookupWorkspaceSqlAadAdminOutputArgs, opts ...pulumi.InvokeOption) LookupWorkspaceSqlAadAdminResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupWorkspaceSqlAadAdminResult, error) {
+		ApplyT(func(v interface{}) (LookupWorkspaceSqlAadAdminResultOutput, error) {
 			args := v.(LookupWorkspaceSqlAadAdminArgs)
-			r, err := LookupWorkspaceSqlAadAdmin(ctx, &args, opts...)
-			var s LookupWorkspaceSqlAadAdminResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupWorkspaceSqlAadAdminResult
+			secret, err := ctx.InvokePackageRaw("azure-native:synapse/v20210601preview:getWorkspaceSqlAadAdmin", args, &rv, "", opts...)
+			if err != nil {
+				return LookupWorkspaceSqlAadAdminResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupWorkspaceSqlAadAdminResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupWorkspaceSqlAadAdminResultOutput), nil
+			}
+			return output, nil
 		}).(LookupWorkspaceSqlAadAdminResultOutput)
 }
 

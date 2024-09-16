@@ -39,14 +39,20 @@ type ListDomainRecommendationsResult struct {
 
 func ListDomainRecommendationsOutput(ctx *pulumi.Context, args ListDomainRecommendationsOutputArgs, opts ...pulumi.InvokeOption) ListDomainRecommendationsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListDomainRecommendationsResult, error) {
+		ApplyT(func(v interface{}) (ListDomainRecommendationsResultOutput, error) {
 			args := v.(ListDomainRecommendationsArgs)
-			r, err := ListDomainRecommendations(ctx, &args, opts...)
-			var s ListDomainRecommendationsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListDomainRecommendationsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:domainregistration/v20201001:listDomainRecommendations", args, &rv, "", opts...)
+			if err != nil {
+				return ListDomainRecommendationsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListDomainRecommendationsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListDomainRecommendationsResultOutput), nil
+			}
+			return output, nil
 		}).(ListDomainRecommendationsResultOutput)
 }
 

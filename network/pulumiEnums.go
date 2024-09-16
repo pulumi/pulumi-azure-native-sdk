@@ -8476,6 +8476,172 @@ func (in *dhGroupPtr) ToDhGroupPtrOutputWithContext(ctx context.Context) DhGroup
 	return pulumi.ToOutputWithContext(ctx, in).(DhGroupPtrOutput)
 }
 
+// Determines whether BGP route propagation is enabled. Defaults to true.
+type DisableBgpRoutePropagation string
+
+const (
+	DisableBgpRoutePropagationFalse = DisableBgpRoutePropagation("False")
+	DisableBgpRoutePropagationTrue  = DisableBgpRoutePropagation("True")
+)
+
+func (DisableBgpRoutePropagation) ElementType() reflect.Type {
+	return reflect.TypeOf((*DisableBgpRoutePropagation)(nil)).Elem()
+}
+
+func (e DisableBgpRoutePropagation) ToDisableBgpRoutePropagationOutput() DisableBgpRoutePropagationOutput {
+	return pulumi.ToOutput(e).(DisableBgpRoutePropagationOutput)
+}
+
+func (e DisableBgpRoutePropagation) ToDisableBgpRoutePropagationOutputWithContext(ctx context.Context) DisableBgpRoutePropagationOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(DisableBgpRoutePropagationOutput)
+}
+
+func (e DisableBgpRoutePropagation) ToDisableBgpRoutePropagationPtrOutput() DisableBgpRoutePropagationPtrOutput {
+	return e.ToDisableBgpRoutePropagationPtrOutputWithContext(context.Background())
+}
+
+func (e DisableBgpRoutePropagation) ToDisableBgpRoutePropagationPtrOutputWithContext(ctx context.Context) DisableBgpRoutePropagationPtrOutput {
+	return DisableBgpRoutePropagation(e).ToDisableBgpRoutePropagationOutputWithContext(ctx).ToDisableBgpRoutePropagationPtrOutputWithContext(ctx)
+}
+
+func (e DisableBgpRoutePropagation) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DisableBgpRoutePropagation) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DisableBgpRoutePropagation) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e DisableBgpRoutePropagation) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type DisableBgpRoutePropagationOutput struct{ *pulumi.OutputState }
+
+func (DisableBgpRoutePropagationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DisableBgpRoutePropagation)(nil)).Elem()
+}
+
+func (o DisableBgpRoutePropagationOutput) ToDisableBgpRoutePropagationOutput() DisableBgpRoutePropagationOutput {
+	return o
+}
+
+func (o DisableBgpRoutePropagationOutput) ToDisableBgpRoutePropagationOutputWithContext(ctx context.Context) DisableBgpRoutePropagationOutput {
+	return o
+}
+
+func (o DisableBgpRoutePropagationOutput) ToDisableBgpRoutePropagationPtrOutput() DisableBgpRoutePropagationPtrOutput {
+	return o.ToDisableBgpRoutePropagationPtrOutputWithContext(context.Background())
+}
+
+func (o DisableBgpRoutePropagationOutput) ToDisableBgpRoutePropagationPtrOutputWithContext(ctx context.Context) DisableBgpRoutePropagationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DisableBgpRoutePropagation) *DisableBgpRoutePropagation {
+		return &v
+	}).(DisableBgpRoutePropagationPtrOutput)
+}
+
+func (o DisableBgpRoutePropagationOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o DisableBgpRoutePropagationOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DisableBgpRoutePropagation) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o DisableBgpRoutePropagationOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DisableBgpRoutePropagationOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DisableBgpRoutePropagation) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type DisableBgpRoutePropagationPtrOutput struct{ *pulumi.OutputState }
+
+func (DisableBgpRoutePropagationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DisableBgpRoutePropagation)(nil)).Elem()
+}
+
+func (o DisableBgpRoutePropagationPtrOutput) ToDisableBgpRoutePropagationPtrOutput() DisableBgpRoutePropagationPtrOutput {
+	return o
+}
+
+func (o DisableBgpRoutePropagationPtrOutput) ToDisableBgpRoutePropagationPtrOutputWithContext(ctx context.Context) DisableBgpRoutePropagationPtrOutput {
+	return o
+}
+
+func (o DisableBgpRoutePropagationPtrOutput) Elem() DisableBgpRoutePropagationOutput {
+	return o.ApplyT(func(v *DisableBgpRoutePropagation) DisableBgpRoutePropagation {
+		if v != nil {
+			return *v
+		}
+		var ret DisableBgpRoutePropagation
+		return ret
+	}).(DisableBgpRoutePropagationOutput)
+}
+
+func (o DisableBgpRoutePropagationPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DisableBgpRoutePropagationPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DisableBgpRoutePropagation) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// DisableBgpRoutePropagationInput is an input type that accepts values of the DisableBgpRoutePropagation enum
+// A concrete instance of `DisableBgpRoutePropagationInput` can be one of the following:
+//
+//	DisableBgpRoutePropagationFalse
+//	DisableBgpRoutePropagationTrue
+type DisableBgpRoutePropagationInput interface {
+	pulumi.Input
+
+	ToDisableBgpRoutePropagationOutput() DisableBgpRoutePropagationOutput
+	ToDisableBgpRoutePropagationOutputWithContext(context.Context) DisableBgpRoutePropagationOutput
+}
+
+var disableBgpRoutePropagationPtrType = reflect.TypeOf((**DisableBgpRoutePropagation)(nil)).Elem()
+
+type DisableBgpRoutePropagationPtrInput interface {
+	pulumi.Input
+
+	ToDisableBgpRoutePropagationPtrOutput() DisableBgpRoutePropagationPtrOutput
+	ToDisableBgpRoutePropagationPtrOutputWithContext(context.Context) DisableBgpRoutePropagationPtrOutput
+}
+
+type disableBgpRoutePropagationPtr string
+
+func DisableBgpRoutePropagationPtr(v string) DisableBgpRoutePropagationPtrInput {
+	return (*disableBgpRoutePropagationPtr)(&v)
+}
+
+func (*disableBgpRoutePropagationPtr) ElementType() reflect.Type {
+	return disableBgpRoutePropagationPtrType
+}
+
+func (in *disableBgpRoutePropagationPtr) ToDisableBgpRoutePropagationPtrOutput() DisableBgpRoutePropagationPtrOutput {
+	return pulumi.ToOutput(in).(DisableBgpRoutePropagationPtrOutput)
+}
+
+func (in *disableBgpRoutePropagationPtr) ToDisableBgpRoutePropagationPtrOutputWithContext(ctx context.Context) DisableBgpRoutePropagationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(DisableBgpRoutePropagationPtrOutput)
+}
+
 // Whether to use dynamic compression for cached content
 type DynamicCompressionEnabled string
 
@@ -25717,6 +25883,172 @@ func (in *routeNextHopTypePtr) ToRouteNextHopTypePtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(RouteNextHopTypePtrOutput)
 }
 
+// Destination type.
+type RoutingRuleDestinationType string
+
+const (
+	RoutingRuleDestinationTypeAddressPrefix = RoutingRuleDestinationType("AddressPrefix")
+	RoutingRuleDestinationTypeServiceTag    = RoutingRuleDestinationType("ServiceTag")
+)
+
+func (RoutingRuleDestinationType) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoutingRuleDestinationType)(nil)).Elem()
+}
+
+func (e RoutingRuleDestinationType) ToRoutingRuleDestinationTypeOutput() RoutingRuleDestinationTypeOutput {
+	return pulumi.ToOutput(e).(RoutingRuleDestinationTypeOutput)
+}
+
+func (e RoutingRuleDestinationType) ToRoutingRuleDestinationTypeOutputWithContext(ctx context.Context) RoutingRuleDestinationTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(RoutingRuleDestinationTypeOutput)
+}
+
+func (e RoutingRuleDestinationType) ToRoutingRuleDestinationTypePtrOutput() RoutingRuleDestinationTypePtrOutput {
+	return e.ToRoutingRuleDestinationTypePtrOutputWithContext(context.Background())
+}
+
+func (e RoutingRuleDestinationType) ToRoutingRuleDestinationTypePtrOutputWithContext(ctx context.Context) RoutingRuleDestinationTypePtrOutput {
+	return RoutingRuleDestinationType(e).ToRoutingRuleDestinationTypeOutputWithContext(ctx).ToRoutingRuleDestinationTypePtrOutputWithContext(ctx)
+}
+
+func (e RoutingRuleDestinationType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RoutingRuleDestinationType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RoutingRuleDestinationType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e RoutingRuleDestinationType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type RoutingRuleDestinationTypeOutput struct{ *pulumi.OutputState }
+
+func (RoutingRuleDestinationTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoutingRuleDestinationType)(nil)).Elem()
+}
+
+func (o RoutingRuleDestinationTypeOutput) ToRoutingRuleDestinationTypeOutput() RoutingRuleDestinationTypeOutput {
+	return o
+}
+
+func (o RoutingRuleDestinationTypeOutput) ToRoutingRuleDestinationTypeOutputWithContext(ctx context.Context) RoutingRuleDestinationTypeOutput {
+	return o
+}
+
+func (o RoutingRuleDestinationTypeOutput) ToRoutingRuleDestinationTypePtrOutput() RoutingRuleDestinationTypePtrOutput {
+	return o.ToRoutingRuleDestinationTypePtrOutputWithContext(context.Background())
+}
+
+func (o RoutingRuleDestinationTypeOutput) ToRoutingRuleDestinationTypePtrOutputWithContext(ctx context.Context) RoutingRuleDestinationTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RoutingRuleDestinationType) *RoutingRuleDestinationType {
+		return &v
+	}).(RoutingRuleDestinationTypePtrOutput)
+}
+
+func (o RoutingRuleDestinationTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o RoutingRuleDestinationTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RoutingRuleDestinationType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o RoutingRuleDestinationTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RoutingRuleDestinationTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RoutingRuleDestinationType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type RoutingRuleDestinationTypePtrOutput struct{ *pulumi.OutputState }
+
+func (RoutingRuleDestinationTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RoutingRuleDestinationType)(nil)).Elem()
+}
+
+func (o RoutingRuleDestinationTypePtrOutput) ToRoutingRuleDestinationTypePtrOutput() RoutingRuleDestinationTypePtrOutput {
+	return o
+}
+
+func (o RoutingRuleDestinationTypePtrOutput) ToRoutingRuleDestinationTypePtrOutputWithContext(ctx context.Context) RoutingRuleDestinationTypePtrOutput {
+	return o
+}
+
+func (o RoutingRuleDestinationTypePtrOutput) Elem() RoutingRuleDestinationTypeOutput {
+	return o.ApplyT(func(v *RoutingRuleDestinationType) RoutingRuleDestinationType {
+		if v != nil {
+			return *v
+		}
+		var ret RoutingRuleDestinationType
+		return ret
+	}).(RoutingRuleDestinationTypeOutput)
+}
+
+func (o RoutingRuleDestinationTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RoutingRuleDestinationTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RoutingRuleDestinationType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// RoutingRuleDestinationTypeInput is an input type that accepts values of the RoutingRuleDestinationType enum
+// A concrete instance of `RoutingRuleDestinationTypeInput` can be one of the following:
+//
+//	RoutingRuleDestinationTypeAddressPrefix
+//	RoutingRuleDestinationTypeServiceTag
+type RoutingRuleDestinationTypeInput interface {
+	pulumi.Input
+
+	ToRoutingRuleDestinationTypeOutput() RoutingRuleDestinationTypeOutput
+	ToRoutingRuleDestinationTypeOutputWithContext(context.Context) RoutingRuleDestinationTypeOutput
+}
+
+var routingRuleDestinationTypePtrType = reflect.TypeOf((**RoutingRuleDestinationType)(nil)).Elem()
+
+type RoutingRuleDestinationTypePtrInput interface {
+	pulumi.Input
+
+	ToRoutingRuleDestinationTypePtrOutput() RoutingRuleDestinationTypePtrOutput
+	ToRoutingRuleDestinationTypePtrOutputWithContext(context.Context) RoutingRuleDestinationTypePtrOutput
+}
+
+type routingRuleDestinationTypePtr string
+
+func RoutingRuleDestinationTypePtr(v string) RoutingRuleDestinationTypePtrInput {
+	return (*routingRuleDestinationTypePtr)(&v)
+}
+
+func (*routingRuleDestinationTypePtr) ElementType() reflect.Type {
+	return routingRuleDestinationTypePtrType
+}
+
+func (in *routingRuleDestinationTypePtr) ToRoutingRuleDestinationTypePtrOutput() RoutingRuleDestinationTypePtrOutput {
+	return pulumi.ToOutput(in).(RoutingRuleDestinationTypePtrOutput)
+}
+
+func (in *routingRuleDestinationTypePtr) ToRoutingRuleDestinationTypePtrOutputWithContext(ctx context.Context) RoutingRuleDestinationTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RoutingRuleDestinationTypePtrOutput)
+}
+
 // Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled'
 type RoutingRuleEnabledState string
 
@@ -25881,6 +26213,178 @@ func (in *routingRuleEnabledStatePtr) ToRoutingRuleEnabledStatePtrOutput() Routi
 
 func (in *routingRuleEnabledStatePtr) ToRoutingRuleEnabledStatePtrOutputWithContext(ctx context.Context) RoutingRuleEnabledStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RoutingRuleEnabledStatePtrOutput)
+}
+
+// Next hop type.
+type RoutingRuleNextHopType string
+
+const (
+	RoutingRuleNextHopTypeInternet              = RoutingRuleNextHopType("Internet")
+	RoutingRuleNextHopTypeNoNextHop             = RoutingRuleNextHopType("NoNextHop")
+	RoutingRuleNextHopTypeVirtualAppliance      = RoutingRuleNextHopType("VirtualAppliance")
+	RoutingRuleNextHopTypeVirtualNetworkGateway = RoutingRuleNextHopType("VirtualNetworkGateway")
+	RoutingRuleNextHopTypeVnetLocal             = RoutingRuleNextHopType("VnetLocal")
+)
+
+func (RoutingRuleNextHopType) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoutingRuleNextHopType)(nil)).Elem()
+}
+
+func (e RoutingRuleNextHopType) ToRoutingRuleNextHopTypeOutput() RoutingRuleNextHopTypeOutput {
+	return pulumi.ToOutput(e).(RoutingRuleNextHopTypeOutput)
+}
+
+func (e RoutingRuleNextHopType) ToRoutingRuleNextHopTypeOutputWithContext(ctx context.Context) RoutingRuleNextHopTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(RoutingRuleNextHopTypeOutput)
+}
+
+func (e RoutingRuleNextHopType) ToRoutingRuleNextHopTypePtrOutput() RoutingRuleNextHopTypePtrOutput {
+	return e.ToRoutingRuleNextHopTypePtrOutputWithContext(context.Background())
+}
+
+func (e RoutingRuleNextHopType) ToRoutingRuleNextHopTypePtrOutputWithContext(ctx context.Context) RoutingRuleNextHopTypePtrOutput {
+	return RoutingRuleNextHopType(e).ToRoutingRuleNextHopTypeOutputWithContext(ctx).ToRoutingRuleNextHopTypePtrOutputWithContext(ctx)
+}
+
+func (e RoutingRuleNextHopType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RoutingRuleNextHopType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RoutingRuleNextHopType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e RoutingRuleNextHopType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type RoutingRuleNextHopTypeOutput struct{ *pulumi.OutputState }
+
+func (RoutingRuleNextHopTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoutingRuleNextHopType)(nil)).Elem()
+}
+
+func (o RoutingRuleNextHopTypeOutput) ToRoutingRuleNextHopTypeOutput() RoutingRuleNextHopTypeOutput {
+	return o
+}
+
+func (o RoutingRuleNextHopTypeOutput) ToRoutingRuleNextHopTypeOutputWithContext(ctx context.Context) RoutingRuleNextHopTypeOutput {
+	return o
+}
+
+func (o RoutingRuleNextHopTypeOutput) ToRoutingRuleNextHopTypePtrOutput() RoutingRuleNextHopTypePtrOutput {
+	return o.ToRoutingRuleNextHopTypePtrOutputWithContext(context.Background())
+}
+
+func (o RoutingRuleNextHopTypeOutput) ToRoutingRuleNextHopTypePtrOutputWithContext(ctx context.Context) RoutingRuleNextHopTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RoutingRuleNextHopType) *RoutingRuleNextHopType {
+		return &v
+	}).(RoutingRuleNextHopTypePtrOutput)
+}
+
+func (o RoutingRuleNextHopTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o RoutingRuleNextHopTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RoutingRuleNextHopType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o RoutingRuleNextHopTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RoutingRuleNextHopTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RoutingRuleNextHopType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type RoutingRuleNextHopTypePtrOutput struct{ *pulumi.OutputState }
+
+func (RoutingRuleNextHopTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RoutingRuleNextHopType)(nil)).Elem()
+}
+
+func (o RoutingRuleNextHopTypePtrOutput) ToRoutingRuleNextHopTypePtrOutput() RoutingRuleNextHopTypePtrOutput {
+	return o
+}
+
+func (o RoutingRuleNextHopTypePtrOutput) ToRoutingRuleNextHopTypePtrOutputWithContext(ctx context.Context) RoutingRuleNextHopTypePtrOutput {
+	return o
+}
+
+func (o RoutingRuleNextHopTypePtrOutput) Elem() RoutingRuleNextHopTypeOutput {
+	return o.ApplyT(func(v *RoutingRuleNextHopType) RoutingRuleNextHopType {
+		if v != nil {
+			return *v
+		}
+		var ret RoutingRuleNextHopType
+		return ret
+	}).(RoutingRuleNextHopTypeOutput)
+}
+
+func (o RoutingRuleNextHopTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RoutingRuleNextHopTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RoutingRuleNextHopType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// RoutingRuleNextHopTypeInput is an input type that accepts values of the RoutingRuleNextHopType enum
+// A concrete instance of `RoutingRuleNextHopTypeInput` can be one of the following:
+//
+//	RoutingRuleNextHopTypeInternet
+//	RoutingRuleNextHopTypeNoNextHop
+//	RoutingRuleNextHopTypeVirtualAppliance
+//	RoutingRuleNextHopTypeVirtualNetworkGateway
+//	RoutingRuleNextHopTypeVnetLocal
+type RoutingRuleNextHopTypeInput interface {
+	pulumi.Input
+
+	ToRoutingRuleNextHopTypeOutput() RoutingRuleNextHopTypeOutput
+	ToRoutingRuleNextHopTypeOutputWithContext(context.Context) RoutingRuleNextHopTypeOutput
+}
+
+var routingRuleNextHopTypePtrType = reflect.TypeOf((**RoutingRuleNextHopType)(nil)).Elem()
+
+type RoutingRuleNextHopTypePtrInput interface {
+	pulumi.Input
+
+	ToRoutingRuleNextHopTypePtrOutput() RoutingRuleNextHopTypePtrOutput
+	ToRoutingRuleNextHopTypePtrOutputWithContext(context.Context) RoutingRuleNextHopTypePtrOutput
+}
+
+type routingRuleNextHopTypePtr string
+
+func RoutingRuleNextHopTypePtr(v string) RoutingRuleNextHopTypePtrInput {
+	return (*routingRuleNextHopTypePtr)(&v)
+}
+
+func (*routingRuleNextHopTypePtr) ElementType() reflect.Type {
+	return routingRuleNextHopTypePtrType
+}
+
+func (in *routingRuleNextHopTypePtr) ToRoutingRuleNextHopTypePtrOutput() RoutingRuleNextHopTypePtrOutput {
+	return pulumi.ToOutput(in).(RoutingRuleNextHopTypePtrOutput)
+}
+
+func (in *routingRuleNextHopTypePtr) ToRoutingRuleNextHopTypePtrOutputWithContext(ctx context.Context) RoutingRuleNextHopTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RoutingRuleNextHopTypePtrOutput)
 }
 
 // Describes type of rule.
@@ -35184,6 +35688,8 @@ func init() {
 	pulumi.RegisterOutputType(DestinationPortBehaviorPtrOutput{})
 	pulumi.RegisterOutputType(DhGroupOutput{})
 	pulumi.RegisterOutputType(DhGroupPtrOutput{})
+	pulumi.RegisterOutputType(DisableBgpRoutePropagationOutput{})
+	pulumi.RegisterOutputType(DisableBgpRoutePropagationPtrOutput{})
 	pulumi.RegisterOutputType(DynamicCompressionEnabledOutput{})
 	pulumi.RegisterOutputType(DynamicCompressionEnabledPtrOutput{})
 	pulumi.RegisterOutputType(EndpointMonitorStatusOutput{})
@@ -35388,8 +35894,12 @@ func init() {
 	pulumi.RegisterOutputType(RouteMapMatchConditionPtrOutput{})
 	pulumi.RegisterOutputType(RouteNextHopTypeOutput{})
 	pulumi.RegisterOutputType(RouteNextHopTypePtrOutput{})
+	pulumi.RegisterOutputType(RoutingRuleDestinationTypeOutput{})
+	pulumi.RegisterOutputType(RoutingRuleDestinationTypePtrOutput{})
 	pulumi.RegisterOutputType(RoutingRuleEnabledStateOutput{})
 	pulumi.RegisterOutputType(RoutingRuleEnabledStatePtrOutput{})
+	pulumi.RegisterOutputType(RoutingRuleNextHopTypeOutput{})
+	pulumi.RegisterOutputType(RoutingRuleNextHopTypePtrOutput{})
 	pulumi.RegisterOutputType(RuleTypeOutput{})
 	pulumi.RegisterOutputType(RuleTypePtrOutput{})
 	pulumi.RegisterOutputType(RulesEngineMatchVariableOutput{})

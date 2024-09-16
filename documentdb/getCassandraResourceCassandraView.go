@@ -14,7 +14,7 @@ import (
 // Gets the Cassandra view under an existing Azure Cosmos DB database account.
 // Azure REST API version: 2023-03-15-preview.
 //
-// Other available API versions: 2023-09-15-preview, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15-preview.
+// Other available API versions: 2023-09-15-preview, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15-preview, 2024-09-01-preview.
 func LookupCassandraResourceCassandraView(ctx *pulumi.Context, args *LookupCassandraResourceCassandraViewArgs, opts ...pulumi.InvokeOption) (*LookupCassandraResourceCassandraViewResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCassandraResourceCassandraViewResult
@@ -56,14 +56,20 @@ type LookupCassandraResourceCassandraViewResult struct {
 
 func LookupCassandraResourceCassandraViewOutput(ctx *pulumi.Context, args LookupCassandraResourceCassandraViewOutputArgs, opts ...pulumi.InvokeOption) LookupCassandraResourceCassandraViewResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupCassandraResourceCassandraViewResult, error) {
+		ApplyT(func(v interface{}) (LookupCassandraResourceCassandraViewResultOutput, error) {
 			args := v.(LookupCassandraResourceCassandraViewArgs)
-			r, err := LookupCassandraResourceCassandraView(ctx, &args, opts...)
-			var s LookupCassandraResourceCassandraViewResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupCassandraResourceCassandraViewResult
+			secret, err := ctx.InvokePackageRaw("azure-native:documentdb:getCassandraResourceCassandraView", args, &rv, "", opts...)
+			if err != nil {
+				return LookupCassandraResourceCassandraViewResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupCassandraResourceCassandraViewResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupCassandraResourceCassandraViewResultOutput), nil
+			}
+			return output, nil
 		}).(LookupCassandraResourceCassandraViewResultOutput)
 }
 

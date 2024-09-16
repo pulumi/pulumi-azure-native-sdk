@@ -67,14 +67,20 @@ type LookupCloudEndpointResult struct {
 
 func LookupCloudEndpointOutput(ctx *pulumi.Context, args LookupCloudEndpointOutputArgs, opts ...pulumi.InvokeOption) LookupCloudEndpointResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupCloudEndpointResult, error) {
+		ApplyT(func(v interface{}) (LookupCloudEndpointResultOutput, error) {
 			args := v.(LookupCloudEndpointArgs)
-			r, err := LookupCloudEndpoint(ctx, &args, opts...)
-			var s LookupCloudEndpointResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupCloudEndpointResult
+			secret, err := ctx.InvokePackageRaw("azure-native:storagesync/v20220901:getCloudEndpoint", args, &rv, "", opts...)
+			if err != nil {
+				return LookupCloudEndpointResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupCloudEndpointResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupCloudEndpointResultOutput), nil
+			}
+			return output, nil
 		}).(LookupCloudEndpointResultOutput)
 }
 

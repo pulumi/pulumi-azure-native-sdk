@@ -52,14 +52,20 @@ type LookupPublisherResult struct {
 
 func LookupPublisherOutput(ctx *pulumi.Context, args LookupPublisherOutputArgs, opts ...pulumi.InvokeOption) LookupPublisherResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupPublisherResult, error) {
+		ApplyT(func(v interface{}) (LookupPublisherResultOutput, error) {
 			args := v.(LookupPublisherArgs)
-			r, err := LookupPublisher(ctx, &args, opts...)
-			var s LookupPublisherResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupPublisherResult
+			secret, err := ctx.InvokePackageRaw("azure-native:hybridnetwork:getPublisher", args, &rv, "", opts...)
+			if err != nil {
+				return LookupPublisherResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupPublisherResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupPublisherResultOutput), nil
+			}
+			return output, nil
 		}).(LookupPublisherResultOutput)
 }
 

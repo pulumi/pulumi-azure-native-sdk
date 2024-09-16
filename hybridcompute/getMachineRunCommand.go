@@ -14,7 +14,7 @@ import (
 // The operation to get a run command.
 // Azure REST API version: 2023-10-03-preview.
 //
-// Other available API versions: 2024-03-31-preview, 2024-05-20-preview.
+// Other available API versions: 2024-03-31-preview, 2024-05-20-preview, 2024-07-31-preview.
 func LookupMachineRunCommand(ctx *pulumi.Context, args *LookupMachineRunCommandArgs, opts ...pulumi.InvokeOption) (*LookupMachineRunCommandResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMachineRunCommandResult
@@ -91,14 +91,20 @@ func (val *LookupMachineRunCommandResult) Defaults() *LookupMachineRunCommandRes
 
 func LookupMachineRunCommandOutput(ctx *pulumi.Context, args LookupMachineRunCommandOutputArgs, opts ...pulumi.InvokeOption) LookupMachineRunCommandResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupMachineRunCommandResult, error) {
+		ApplyT(func(v interface{}) (LookupMachineRunCommandResultOutput, error) {
 			args := v.(LookupMachineRunCommandArgs)
-			r, err := LookupMachineRunCommand(ctx, &args, opts...)
-			var s LookupMachineRunCommandResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupMachineRunCommandResult
+			secret, err := ctx.InvokePackageRaw("azure-native:hybridcompute:getMachineRunCommand", args, &rv, "", opts...)
+			if err != nil {
+				return LookupMachineRunCommandResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupMachineRunCommandResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupMachineRunCommandResultOutput), nil
+			}
+			return output, nil
 		}).(LookupMachineRunCommandResultOutput)
 }
 

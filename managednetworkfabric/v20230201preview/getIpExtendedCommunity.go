@@ -55,14 +55,20 @@ type LookupIpExtendedCommunityResult struct {
 
 func LookupIpExtendedCommunityOutput(ctx *pulumi.Context, args LookupIpExtendedCommunityOutputArgs, opts ...pulumi.InvokeOption) LookupIpExtendedCommunityResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupIpExtendedCommunityResult, error) {
+		ApplyT(func(v interface{}) (LookupIpExtendedCommunityResultOutput, error) {
 			args := v.(LookupIpExtendedCommunityArgs)
-			r, err := LookupIpExtendedCommunity(ctx, &args, opts...)
-			var s LookupIpExtendedCommunityResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupIpExtendedCommunityResult
+			secret, err := ctx.InvokePackageRaw("azure-native:managednetworkfabric/v20230201preview:getIpExtendedCommunity", args, &rv, "", opts...)
+			if err != nil {
+				return LookupIpExtendedCommunityResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupIpExtendedCommunityResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupIpExtendedCommunityResultOutput), nil
+			}
+			return output, nil
 		}).(LookupIpExtendedCommunityResultOutput)
 }
 

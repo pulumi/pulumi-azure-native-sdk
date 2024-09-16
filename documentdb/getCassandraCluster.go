@@ -14,7 +14,7 @@ import (
 // Get the properties of a managed Cassandra cluster.
 // Azure REST API version: 2023-04-15.
 //
-// Other available API versions: 2021-07-01-preview, 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview.
+// Other available API versions: 2021-07-01-preview, 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview, 2024-08-15, 2024-09-01-preview.
 func LookupCassandraCluster(ctx *pulumi.Context, args *LookupCassandraClusterArgs, opts ...pulumi.InvokeOption) (*LookupCassandraClusterResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCassandraClusterResult
@@ -52,14 +52,20 @@ type LookupCassandraClusterResult struct {
 
 func LookupCassandraClusterOutput(ctx *pulumi.Context, args LookupCassandraClusterOutputArgs, opts ...pulumi.InvokeOption) LookupCassandraClusterResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupCassandraClusterResult, error) {
+		ApplyT(func(v interface{}) (LookupCassandraClusterResultOutput, error) {
 			args := v.(LookupCassandraClusterArgs)
-			r, err := LookupCassandraCluster(ctx, &args, opts...)
-			var s LookupCassandraClusterResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupCassandraClusterResult
+			secret, err := ctx.InvokePackageRaw("azure-native:documentdb:getCassandraCluster", args, &rv, "", opts...)
+			if err != nil {
+				return LookupCassandraClusterResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupCassandraClusterResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupCassandraClusterResultOutput), nil
+			}
+			return output, nil
 		}).(LookupCassandraClusterResultOutput)
 }
 

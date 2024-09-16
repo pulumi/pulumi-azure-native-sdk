@@ -60,14 +60,20 @@ type LookupWorkloadNetworkSegmentResult struct {
 
 func LookupWorkloadNetworkSegmentOutput(ctx *pulumi.Context, args LookupWorkloadNetworkSegmentOutputArgs, opts ...pulumi.InvokeOption) LookupWorkloadNetworkSegmentResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupWorkloadNetworkSegmentResult, error) {
+		ApplyT(func(v interface{}) (LookupWorkloadNetworkSegmentResultOutput, error) {
 			args := v.(LookupWorkloadNetworkSegmentArgs)
-			r, err := LookupWorkloadNetworkSegment(ctx, &args, opts...)
-			var s LookupWorkloadNetworkSegmentResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupWorkloadNetworkSegmentResult
+			secret, err := ctx.InvokePackageRaw("azure-native:avs:getWorkloadNetworkSegment", args, &rv, "", opts...)
+			if err != nil {
+				return LookupWorkloadNetworkSegmentResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupWorkloadNetworkSegmentResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupWorkloadNetworkSegmentResultOutput), nil
+			}
+			return output, nil
 		}).(LookupWorkloadNetworkSegmentResultOutput)
 }
 

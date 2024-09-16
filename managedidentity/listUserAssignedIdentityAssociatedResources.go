@@ -52,14 +52,20 @@ type ListUserAssignedIdentityAssociatedResourcesResult struct {
 
 func ListUserAssignedIdentityAssociatedResourcesOutput(ctx *pulumi.Context, args ListUserAssignedIdentityAssociatedResourcesOutputArgs, opts ...pulumi.InvokeOption) ListUserAssignedIdentityAssociatedResourcesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListUserAssignedIdentityAssociatedResourcesResult, error) {
+		ApplyT(func(v interface{}) (ListUserAssignedIdentityAssociatedResourcesResultOutput, error) {
 			args := v.(ListUserAssignedIdentityAssociatedResourcesArgs)
-			r, err := ListUserAssignedIdentityAssociatedResources(ctx, &args, opts...)
-			var s ListUserAssignedIdentityAssociatedResourcesResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListUserAssignedIdentityAssociatedResourcesResult
+			secret, err := ctx.InvokePackageRaw("azure-native:managedidentity:listUserAssignedIdentityAssociatedResources", args, &rv, "", opts...)
+			if err != nil {
+				return ListUserAssignedIdentityAssociatedResourcesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListUserAssignedIdentityAssociatedResourcesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListUserAssignedIdentityAssociatedResourcesResultOutput), nil
+			}
+			return output, nil
 		}).(ListUserAssignedIdentityAssociatedResourcesResultOutput)
 }
 

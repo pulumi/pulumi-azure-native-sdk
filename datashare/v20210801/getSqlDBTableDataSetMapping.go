@@ -64,14 +64,20 @@ type LookupSqlDBTableDataSetMappingResult struct {
 
 func LookupSqlDBTableDataSetMappingOutput(ctx *pulumi.Context, args LookupSqlDBTableDataSetMappingOutputArgs, opts ...pulumi.InvokeOption) LookupSqlDBTableDataSetMappingResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSqlDBTableDataSetMappingResult, error) {
+		ApplyT(func(v interface{}) (LookupSqlDBTableDataSetMappingResultOutput, error) {
 			args := v.(LookupSqlDBTableDataSetMappingArgs)
-			r, err := LookupSqlDBTableDataSetMapping(ctx, &args, opts...)
-			var s LookupSqlDBTableDataSetMappingResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupSqlDBTableDataSetMappingResult
+			secret, err := ctx.InvokePackageRaw("azure-native:datashare/v20210801:getSqlDBTableDataSetMapping", args, &rv, "", opts...)
+			if err != nil {
+				return LookupSqlDBTableDataSetMappingResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupSqlDBTableDataSetMappingResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupSqlDBTableDataSetMappingResultOutput), nil
+			}
+			return output, nil
 		}).(LookupSqlDBTableDataSetMappingResultOutput)
 }
 

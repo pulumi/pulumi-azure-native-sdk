@@ -41,14 +41,20 @@ type GetCustomizationTaskErrorDetailsResult struct {
 
 func GetCustomizationTaskErrorDetailsOutput(ctx *pulumi.Context, args GetCustomizationTaskErrorDetailsOutputArgs, opts ...pulumi.InvokeOption) GetCustomizationTaskErrorDetailsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetCustomizationTaskErrorDetailsResult, error) {
+		ApplyT(func(v interface{}) (GetCustomizationTaskErrorDetailsResultOutput, error) {
 			args := v.(GetCustomizationTaskErrorDetailsArgs)
-			r, err := GetCustomizationTaskErrorDetails(ctx, &args, opts...)
-			var s GetCustomizationTaskErrorDetailsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv GetCustomizationTaskErrorDetailsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:devcenter/v20231001preview:getCustomizationTaskErrorDetails", args, &rv, "", opts...)
+			if err != nil {
+				return GetCustomizationTaskErrorDetailsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetCustomizationTaskErrorDetailsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetCustomizationTaskErrorDetailsResultOutput), nil
+			}
+			return output, nil
 		}).(GetCustomizationTaskErrorDetailsResultOutput)
 }
 

@@ -63,14 +63,20 @@ func (val *LookupInstanceResult) Defaults() *LookupInstanceResult {
 
 func LookupInstanceOutput(ctx *pulumi.Context, args LookupInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupInstanceResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupInstanceResult, error) {
+		ApplyT(func(v interface{}) (LookupInstanceResultOutput, error) {
 			args := v.(LookupInstanceArgs)
-			r, err := LookupInstance(ctx, &args, opts...)
-			var s LookupInstanceResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupInstanceResult
+			secret, err := ctx.InvokePackageRaw("azure-native:scom:getInstance", args, &rv, "", opts...)
+			if err != nil {
+				return LookupInstanceResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupInstanceResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupInstanceResultOutput), nil
+			}
+			return output, nil
 		}).(LookupInstanceResultOutput)
 }
 

@@ -49,14 +49,20 @@ type LookupDpsCertificateResult struct {
 
 func LookupDpsCertificateOutput(ctx *pulumi.Context, args LookupDpsCertificateOutputArgs, opts ...pulumi.InvokeOption) LookupDpsCertificateResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupDpsCertificateResult, error) {
+		ApplyT(func(v interface{}) (LookupDpsCertificateResultOutput, error) {
 			args := v.(LookupDpsCertificateArgs)
-			r, err := LookupDpsCertificate(ctx, &args, opts...)
-			var s LookupDpsCertificateResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupDpsCertificateResult
+			secret, err := ctx.InvokePackageRaw("azure-native:devices/v20221212:getDpsCertificate", args, &rv, "", opts...)
+			if err != nil {
+				return LookupDpsCertificateResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupDpsCertificateResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupDpsCertificateResultOutput), nil
+			}
+			return output, nil
 		}).(LookupDpsCertificateResultOutput)
 }
 

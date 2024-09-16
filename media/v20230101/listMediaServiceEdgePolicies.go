@@ -37,14 +37,20 @@ type ListMediaServiceEdgePoliciesResult struct {
 
 func ListMediaServiceEdgePoliciesOutput(ctx *pulumi.Context, args ListMediaServiceEdgePoliciesOutputArgs, opts ...pulumi.InvokeOption) ListMediaServiceEdgePoliciesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListMediaServiceEdgePoliciesResult, error) {
+		ApplyT(func(v interface{}) (ListMediaServiceEdgePoliciesResultOutput, error) {
 			args := v.(ListMediaServiceEdgePoliciesArgs)
-			r, err := ListMediaServiceEdgePolicies(ctx, &args, opts...)
-			var s ListMediaServiceEdgePoliciesResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListMediaServiceEdgePoliciesResult
+			secret, err := ctx.InvokePackageRaw("azure-native:media/v20230101:listMediaServiceEdgePolicies", args, &rv, "", opts...)
+			if err != nil {
+				return ListMediaServiceEdgePoliciesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListMediaServiceEdgePoliciesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListMediaServiceEdgePoliciesResultOutput), nil
+			}
+			return output, nil
 		}).(ListMediaServiceEdgePoliciesResultOutput)
 }
 

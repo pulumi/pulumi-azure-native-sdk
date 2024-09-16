@@ -14,7 +14,7 @@ import (
 // The list credential result response.
 // Azure REST API version: 2023-04-01.
 //
-// Other available API versions: 2021-05-01, 2023-05-02-preview, 2023-06-01, 2023-06-02-preview, 2023-07-01, 2023-07-02-preview, 2023-08-01, 2023-08-02-preview, 2023-09-01, 2023-09-02-preview, 2023-10-01, 2023-10-02-preview, 2023-11-01, 2023-11-02-preview, 2024-01-01, 2024-01-02-preview, 2024-02-01, 2024-02-02-preview, 2024-03-02-preview, 2024-04-02-preview, 2024-05-01, 2024-05-02-preview, 2024-06-02-preview, 2024-07-01.
+// Other available API versions: 2021-05-01, 2023-05-02-preview, 2023-06-01, 2023-06-02-preview, 2023-07-01, 2023-07-02-preview, 2023-08-01, 2023-08-02-preview, 2023-09-01, 2023-09-02-preview, 2023-10-01, 2023-10-02-preview, 2023-11-01, 2023-11-02-preview, 2024-01-01, 2024-01-02-preview, 2024-02-01, 2024-02-02-preview, 2024-03-02-preview, 2024-04-02-preview, 2024-05-01, 2024-05-02-preview, 2024-06-02-preview, 2024-07-01, 2024-07-02-preview.
 func ListManagedClusterMonitoringUserCredentials(ctx *pulumi.Context, args *ListManagedClusterMonitoringUserCredentialsArgs, opts ...pulumi.InvokeOption) (*ListManagedClusterMonitoringUserCredentialsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListManagedClusterMonitoringUserCredentialsResult
@@ -42,14 +42,20 @@ type ListManagedClusterMonitoringUserCredentialsResult struct {
 
 func ListManagedClusterMonitoringUserCredentialsOutput(ctx *pulumi.Context, args ListManagedClusterMonitoringUserCredentialsOutputArgs, opts ...pulumi.InvokeOption) ListManagedClusterMonitoringUserCredentialsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListManagedClusterMonitoringUserCredentialsResult, error) {
+		ApplyT(func(v interface{}) (ListManagedClusterMonitoringUserCredentialsResultOutput, error) {
 			args := v.(ListManagedClusterMonitoringUserCredentialsArgs)
-			r, err := ListManagedClusterMonitoringUserCredentials(ctx, &args, opts...)
-			var s ListManagedClusterMonitoringUserCredentialsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListManagedClusterMonitoringUserCredentialsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:containerservice:listManagedClusterMonitoringUserCredentials", args, &rv, "", opts...)
+			if err != nil {
+				return ListManagedClusterMonitoringUserCredentialsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListManagedClusterMonitoringUserCredentialsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListManagedClusterMonitoringUserCredentialsResultOutput), nil
+			}
+			return output, nil
 		}).(ListManagedClusterMonitoringUserCredentialsResultOutput)
 }
 

@@ -68,14 +68,20 @@ type LookupPrivateStoreCollectionOfferResult struct {
 
 func LookupPrivateStoreCollectionOfferOutput(ctx *pulumi.Context, args LookupPrivateStoreCollectionOfferOutputArgs, opts ...pulumi.InvokeOption) LookupPrivateStoreCollectionOfferResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupPrivateStoreCollectionOfferResult, error) {
+		ApplyT(func(v interface{}) (LookupPrivateStoreCollectionOfferResultOutput, error) {
 			args := v.(LookupPrivateStoreCollectionOfferArgs)
-			r, err := LookupPrivateStoreCollectionOffer(ctx, &args, opts...)
-			var s LookupPrivateStoreCollectionOfferResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupPrivateStoreCollectionOfferResult
+			secret, err := ctx.InvokePackageRaw("azure-native:marketplace:getPrivateStoreCollectionOffer", args, &rv, "", opts...)
+			if err != nil {
+				return LookupPrivateStoreCollectionOfferResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupPrivateStoreCollectionOfferResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupPrivateStoreCollectionOfferResultOutput), nil
+			}
+			return output, nil
 		}).(LookupPrivateStoreCollectionOfferResultOutput)
 }
 

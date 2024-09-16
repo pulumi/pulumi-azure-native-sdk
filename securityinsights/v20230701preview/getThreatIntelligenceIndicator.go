@@ -49,14 +49,20 @@ type LookupThreatIntelligenceIndicatorResult struct {
 
 func LookupThreatIntelligenceIndicatorOutput(ctx *pulumi.Context, args LookupThreatIntelligenceIndicatorOutputArgs, opts ...pulumi.InvokeOption) LookupThreatIntelligenceIndicatorResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupThreatIntelligenceIndicatorResult, error) {
+		ApplyT(func(v interface{}) (LookupThreatIntelligenceIndicatorResultOutput, error) {
 			args := v.(LookupThreatIntelligenceIndicatorArgs)
-			r, err := LookupThreatIntelligenceIndicator(ctx, &args, opts...)
-			var s LookupThreatIntelligenceIndicatorResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupThreatIntelligenceIndicatorResult
+			secret, err := ctx.InvokePackageRaw("azure-native:securityinsights/v20230701preview:getThreatIntelligenceIndicator", args, &rv, "", opts...)
+			if err != nil {
+				return LookupThreatIntelligenceIndicatorResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupThreatIntelligenceIndicatorResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupThreatIntelligenceIndicatorResultOutput), nil
+			}
+			return output, nil
 		}).(LookupThreatIntelligenceIndicatorResultOutput)
 }
 

@@ -69,14 +69,20 @@ type LookupBlobDataSetMappingResult struct {
 
 func LookupBlobDataSetMappingOutput(ctx *pulumi.Context, args LookupBlobDataSetMappingOutputArgs, opts ...pulumi.InvokeOption) LookupBlobDataSetMappingResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupBlobDataSetMappingResult, error) {
+		ApplyT(func(v interface{}) (LookupBlobDataSetMappingResultOutput, error) {
 			args := v.(LookupBlobDataSetMappingArgs)
-			r, err := LookupBlobDataSetMapping(ctx, &args, opts...)
-			var s LookupBlobDataSetMappingResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupBlobDataSetMappingResult
+			secret, err := ctx.InvokePackageRaw("azure-native:datashare:getBlobDataSetMapping", args, &rv, "", opts...)
+			if err != nil {
+				return LookupBlobDataSetMappingResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupBlobDataSetMappingResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupBlobDataSetMappingResultOutput), nil
+			}
+			return output, nil
 		}).(LookupBlobDataSetMappingResultOutput)
 }
 

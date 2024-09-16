@@ -154,14 +154,20 @@ func (val *LookupDatabaseAccountResult) Defaults() *LookupDatabaseAccountResult 
 
 func LookupDatabaseAccountOutput(ctx *pulumi.Context, args LookupDatabaseAccountOutputArgs, opts ...pulumi.InvokeOption) LookupDatabaseAccountResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupDatabaseAccountResult, error) {
+		ApplyT(func(v interface{}) (LookupDatabaseAccountResultOutput, error) {
 			args := v.(LookupDatabaseAccountArgs)
-			r, err := LookupDatabaseAccount(ctx, &args, opts...)
-			var s LookupDatabaseAccountResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupDatabaseAccountResult
+			secret, err := ctx.InvokePackageRaw("azure-native:documentdb/v20231115preview:getDatabaseAccount", args, &rv, "", opts...)
+			if err != nil {
+				return LookupDatabaseAccountResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupDatabaseAccountResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupDatabaseAccountResultOutput), nil
+			}
+			return output, nil
 		}).(LookupDatabaseAccountResultOutput)
 }
 

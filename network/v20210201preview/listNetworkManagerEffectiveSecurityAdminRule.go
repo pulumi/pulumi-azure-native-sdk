@@ -41,14 +41,20 @@ type ListNetworkManagerEffectiveSecurityAdminRuleResult struct {
 
 func ListNetworkManagerEffectiveSecurityAdminRuleOutput(ctx *pulumi.Context, args ListNetworkManagerEffectiveSecurityAdminRuleOutputArgs, opts ...pulumi.InvokeOption) ListNetworkManagerEffectiveSecurityAdminRuleResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListNetworkManagerEffectiveSecurityAdminRuleResult, error) {
+		ApplyT(func(v interface{}) (ListNetworkManagerEffectiveSecurityAdminRuleResultOutput, error) {
 			args := v.(ListNetworkManagerEffectiveSecurityAdminRuleArgs)
-			r, err := ListNetworkManagerEffectiveSecurityAdminRule(ctx, &args, opts...)
-			var s ListNetworkManagerEffectiveSecurityAdminRuleResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListNetworkManagerEffectiveSecurityAdminRuleResult
+			secret, err := ctx.InvokePackageRaw("azure-native:network/v20210201preview:listNetworkManagerEffectiveSecurityAdminRule", args, &rv, "", opts...)
+			if err != nil {
+				return ListNetworkManagerEffectiveSecurityAdminRuleResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListNetworkManagerEffectiveSecurityAdminRuleResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListNetworkManagerEffectiveSecurityAdminRuleResultOutput), nil
+			}
+			return output, nil
 		}).(ListNetworkManagerEffectiveSecurityAdminRuleResultOutput)
 }
 

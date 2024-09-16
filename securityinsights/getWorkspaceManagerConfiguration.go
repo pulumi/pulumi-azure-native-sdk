@@ -52,14 +52,20 @@ type LookupWorkspaceManagerConfigurationResult struct {
 
 func LookupWorkspaceManagerConfigurationOutput(ctx *pulumi.Context, args LookupWorkspaceManagerConfigurationOutputArgs, opts ...pulumi.InvokeOption) LookupWorkspaceManagerConfigurationResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupWorkspaceManagerConfigurationResult, error) {
+		ApplyT(func(v interface{}) (LookupWorkspaceManagerConfigurationResultOutput, error) {
 			args := v.(LookupWorkspaceManagerConfigurationArgs)
-			r, err := LookupWorkspaceManagerConfiguration(ctx, &args, opts...)
-			var s LookupWorkspaceManagerConfigurationResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupWorkspaceManagerConfigurationResult
+			secret, err := ctx.InvokePackageRaw("azure-native:securityinsights:getWorkspaceManagerConfiguration", args, &rv, "", opts...)
+			if err != nil {
+				return LookupWorkspaceManagerConfigurationResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupWorkspaceManagerConfigurationResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupWorkspaceManagerConfigurationResultOutput), nil
+			}
+			return output, nil
 		}).(LookupWorkspaceManagerConfigurationResultOutput)
 }
 

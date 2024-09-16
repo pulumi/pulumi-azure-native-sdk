@@ -14,7 +14,7 @@ import (
 // Gets the primary and secondary connection strings for the namespace.
 // Azure REST API version: 2022-01-01-preview.
 //
-// Other available API versions: 2022-10-01-preview, 2023-01-01-preview.
+// Other available API versions: 2022-10-01-preview, 2023-01-01-preview, 2024-01-01.
 func ListDisasterRecoveryConfigKeys(ctx *pulumi.Context, args *ListDisasterRecoveryConfigKeysArgs, opts ...pulumi.InvokeOption) (*ListDisasterRecoveryConfigKeysResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListDisasterRecoveryConfigKeysResult
@@ -56,14 +56,20 @@ type ListDisasterRecoveryConfigKeysResult struct {
 
 func ListDisasterRecoveryConfigKeysOutput(ctx *pulumi.Context, args ListDisasterRecoveryConfigKeysOutputArgs, opts ...pulumi.InvokeOption) ListDisasterRecoveryConfigKeysResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListDisasterRecoveryConfigKeysResult, error) {
+		ApplyT(func(v interface{}) (ListDisasterRecoveryConfigKeysResultOutput, error) {
 			args := v.(ListDisasterRecoveryConfigKeysArgs)
-			r, err := ListDisasterRecoveryConfigKeys(ctx, &args, opts...)
-			var s ListDisasterRecoveryConfigKeysResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListDisasterRecoveryConfigKeysResult
+			secret, err := ctx.InvokePackageRaw("azure-native:servicebus:listDisasterRecoveryConfigKeys", args, &rv, "", opts...)
+			if err != nil {
+				return ListDisasterRecoveryConfigKeysResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListDisasterRecoveryConfigKeysResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListDisasterRecoveryConfigKeysResultOutput), nil
+			}
+			return output, nil
 		}).(ListDisasterRecoveryConfigKeysResultOutput)
 }
 

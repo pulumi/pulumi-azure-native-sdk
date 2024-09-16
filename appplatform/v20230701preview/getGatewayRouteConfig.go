@@ -60,14 +60,20 @@ func (val *LookupGatewayRouteConfigResult) Defaults() *LookupGatewayRouteConfigR
 
 func LookupGatewayRouteConfigOutput(ctx *pulumi.Context, args LookupGatewayRouteConfigOutputArgs, opts ...pulumi.InvokeOption) LookupGatewayRouteConfigResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupGatewayRouteConfigResult, error) {
+		ApplyT(func(v interface{}) (LookupGatewayRouteConfigResultOutput, error) {
 			args := v.(LookupGatewayRouteConfigArgs)
-			r, err := LookupGatewayRouteConfig(ctx, &args, opts...)
-			var s LookupGatewayRouteConfigResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupGatewayRouteConfigResult
+			secret, err := ctx.InvokePackageRaw("azure-native:appplatform/v20230701preview:getGatewayRouteConfig", args, &rv, "", opts...)
+			if err != nil {
+				return LookupGatewayRouteConfigResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupGatewayRouteConfigResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupGatewayRouteConfigResultOutput), nil
+			}
+			return output, nil
 		}).(LookupGatewayRouteConfigResultOutput)
 }
 

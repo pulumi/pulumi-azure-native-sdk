@@ -53,14 +53,20 @@ type LookupHybridIdentityMetadatumResult struct {
 
 func LookupHybridIdentityMetadatumOutput(ctx *pulumi.Context, args LookupHybridIdentityMetadatumOutputArgs, opts ...pulumi.InvokeOption) LookupHybridIdentityMetadatumResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupHybridIdentityMetadatumResult, error) {
+		ApplyT(func(v interface{}) (LookupHybridIdentityMetadatumResultOutput, error) {
 			args := v.(LookupHybridIdentityMetadatumArgs)
-			r, err := LookupHybridIdentityMetadatum(ctx, &args, opts...)
-			var s LookupHybridIdentityMetadatumResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupHybridIdentityMetadatumResult
+			secret, err := ctx.InvokePackageRaw("azure-native:connectedvmwarevsphere/v20220715preview:getHybridIdentityMetadatum", args, &rv, "", opts...)
+			if err != nil {
+				return LookupHybridIdentityMetadatumResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupHybridIdentityMetadatumResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupHybridIdentityMetadatumResultOutput), nil
+			}
+			return output, nil
 		}).(LookupHybridIdentityMetadatumResultOutput)
 }
 

@@ -15,7 +15,7 @@ import (
 // An Azure Cosmos DB Throughputpool.
 // Azure REST API version: 2023-11-15-preview.
 //
-// Other available API versions: 2024-02-15-preview, 2024-05-15-preview.
+// Other available API versions: 2024-02-15-preview, 2024-05-15-preview, 2024-09-01-preview.
 type ThroughputPool struct {
 	pulumi.CustomResourceState
 
@@ -54,6 +54,9 @@ func NewThroughputPool(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:documentdb/v20240515preview:ThroughputPool"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20240901preview:ThroughputPool"),
 		},
 	})
 	opts = append(opts, aliases)

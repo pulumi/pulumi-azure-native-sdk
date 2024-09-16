@@ -60,14 +60,20 @@ type LookupAmfDeploymentResult struct {
 
 func LookupAmfDeploymentOutput(ctx *pulumi.Context, args LookupAmfDeploymentOutputArgs, opts ...pulumi.InvokeOption) LookupAmfDeploymentResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupAmfDeploymentResult, error) {
+		ApplyT(func(v interface{}) (LookupAmfDeploymentResultOutput, error) {
 			args := v.(LookupAmfDeploymentArgs)
-			r, err := LookupAmfDeployment(ctx, &args, opts...)
-			var s LookupAmfDeploymentResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupAmfDeploymentResult
+			secret, err := ctx.InvokePackageRaw("azure-native:mobilepacketcore:getAmfDeployment", args, &rv, "", opts...)
+			if err != nil {
+				return LookupAmfDeploymentResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupAmfDeploymentResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupAmfDeploymentResultOutput), nil
+			}
+			return output, nil
 		}).(LookupAmfDeploymentResultOutput)
 }
 

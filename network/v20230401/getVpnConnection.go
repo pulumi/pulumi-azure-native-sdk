@@ -81,14 +81,20 @@ type LookupVpnConnectionResult struct {
 
 func LookupVpnConnectionOutput(ctx *pulumi.Context, args LookupVpnConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupVpnConnectionResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupVpnConnectionResult, error) {
+		ApplyT(func(v interface{}) (LookupVpnConnectionResultOutput, error) {
 			args := v.(LookupVpnConnectionArgs)
-			r, err := LookupVpnConnection(ctx, &args, opts...)
-			var s LookupVpnConnectionResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupVpnConnectionResult
+			secret, err := ctx.InvokePackageRaw("azure-native:network/v20230401:getVpnConnection", args, &rv, "", opts...)
+			if err != nil {
+				return LookupVpnConnectionResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupVpnConnectionResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupVpnConnectionResultOutput), nil
+			}
+			return output, nil
 		}).(LookupVpnConnectionResultOutput)
 }
 

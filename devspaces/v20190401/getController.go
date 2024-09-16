@@ -56,14 +56,20 @@ type LookupControllerResult struct {
 
 func LookupControllerOutput(ctx *pulumi.Context, args LookupControllerOutputArgs, opts ...pulumi.InvokeOption) LookupControllerResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupControllerResult, error) {
+		ApplyT(func(v interface{}) (LookupControllerResultOutput, error) {
 			args := v.(LookupControllerArgs)
-			r, err := LookupController(ctx, &args, opts...)
-			var s LookupControllerResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupControllerResult
+			secret, err := ctx.InvokePackageRaw("azure-native:devspaces/v20190401:getController", args, &rv, "", opts...)
+			if err != nil {
+				return LookupControllerResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupControllerResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupControllerResultOutput), nil
+			}
+			return output, nil
 		}).(LookupControllerResultOutput)
 }
 

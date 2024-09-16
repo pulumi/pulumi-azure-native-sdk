@@ -47,14 +47,20 @@ type LookupNotebookWorkspaceResult struct {
 
 func LookupNotebookWorkspaceOutput(ctx *pulumi.Context, args LookupNotebookWorkspaceOutputArgs, opts ...pulumi.InvokeOption) LookupNotebookWorkspaceResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupNotebookWorkspaceResult, error) {
+		ApplyT(func(v interface{}) (LookupNotebookWorkspaceResultOutput, error) {
 			args := v.(LookupNotebookWorkspaceArgs)
-			r, err := LookupNotebookWorkspace(ctx, &args, opts...)
-			var s LookupNotebookWorkspaceResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupNotebookWorkspaceResult
+			secret, err := ctx.InvokePackageRaw("azure-native:documentdb/v20230915:getNotebookWorkspace", args, &rv, "", opts...)
+			if err != nil {
+				return LookupNotebookWorkspaceResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupNotebookWorkspaceResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupNotebookWorkspaceResultOutput), nil
+			}
+			return output, nil
 		}).(LookupNotebookWorkspaceResultOutput)
 }
 

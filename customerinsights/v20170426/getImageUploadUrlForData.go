@@ -47,14 +47,20 @@ type GetImageUploadUrlForDataResult struct {
 
 func GetImageUploadUrlForDataOutput(ctx *pulumi.Context, args GetImageUploadUrlForDataOutputArgs, opts ...pulumi.InvokeOption) GetImageUploadUrlForDataResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetImageUploadUrlForDataResult, error) {
+		ApplyT(func(v interface{}) (GetImageUploadUrlForDataResultOutput, error) {
 			args := v.(GetImageUploadUrlForDataArgs)
-			r, err := GetImageUploadUrlForData(ctx, &args, opts...)
-			var s GetImageUploadUrlForDataResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv GetImageUploadUrlForDataResult
+			secret, err := ctx.InvokePackageRaw("azure-native:customerinsights/v20170426:getImageUploadUrlForData", args, &rv, "", opts...)
+			if err != nil {
+				return GetImageUploadUrlForDataResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetImageUploadUrlForDataResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetImageUploadUrlForDataResultOutput), nil
+			}
+			return output, nil
 		}).(GetImageUploadUrlForDataResultOutput)
 }
 

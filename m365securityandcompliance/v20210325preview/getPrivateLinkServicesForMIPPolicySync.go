@@ -55,14 +55,20 @@ type LookupPrivateLinkServicesForMIPPolicySyncResult struct {
 
 func LookupPrivateLinkServicesForMIPPolicySyncOutput(ctx *pulumi.Context, args LookupPrivateLinkServicesForMIPPolicySyncOutputArgs, opts ...pulumi.InvokeOption) LookupPrivateLinkServicesForMIPPolicySyncResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupPrivateLinkServicesForMIPPolicySyncResult, error) {
+		ApplyT(func(v interface{}) (LookupPrivateLinkServicesForMIPPolicySyncResultOutput, error) {
 			args := v.(LookupPrivateLinkServicesForMIPPolicySyncArgs)
-			r, err := LookupPrivateLinkServicesForMIPPolicySync(ctx, &args, opts...)
-			var s LookupPrivateLinkServicesForMIPPolicySyncResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupPrivateLinkServicesForMIPPolicySyncResult
+			secret, err := ctx.InvokePackageRaw("azure-native:m365securityandcompliance/v20210325preview:getPrivateLinkServicesForMIPPolicySync", args, &rv, "", opts...)
+			if err != nil {
+				return LookupPrivateLinkServicesForMIPPolicySyncResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupPrivateLinkServicesForMIPPolicySyncResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupPrivateLinkServicesForMIPPolicySyncResultOutput), nil
+			}
+			return output, nil
 		}).(LookupPrivateLinkServicesForMIPPolicySyncResultOutput)
 }
 

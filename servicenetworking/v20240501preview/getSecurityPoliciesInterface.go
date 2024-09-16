@@ -55,14 +55,20 @@ type LookupSecurityPoliciesInterfaceResult struct {
 
 func LookupSecurityPoliciesInterfaceOutput(ctx *pulumi.Context, args LookupSecurityPoliciesInterfaceOutputArgs, opts ...pulumi.InvokeOption) LookupSecurityPoliciesInterfaceResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSecurityPoliciesInterfaceResult, error) {
+		ApplyT(func(v interface{}) (LookupSecurityPoliciesInterfaceResultOutput, error) {
 			args := v.(LookupSecurityPoliciesInterfaceArgs)
-			r, err := LookupSecurityPoliciesInterface(ctx, &args, opts...)
-			var s LookupSecurityPoliciesInterfaceResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupSecurityPoliciesInterfaceResult
+			secret, err := ctx.InvokePackageRaw("azure-native:servicenetworking/v20240501preview:getSecurityPoliciesInterface", args, &rv, "", opts...)
+			if err != nil {
+				return LookupSecurityPoliciesInterfaceResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupSecurityPoliciesInterfaceResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupSecurityPoliciesInterfaceResultOutput), nil
+			}
+			return output, nil
 		}).(LookupSecurityPoliciesInterfaceResultOutput)
 }
 

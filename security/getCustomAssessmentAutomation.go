@@ -58,14 +58,20 @@ type LookupCustomAssessmentAutomationResult struct {
 
 func LookupCustomAssessmentAutomationOutput(ctx *pulumi.Context, args LookupCustomAssessmentAutomationOutputArgs, opts ...pulumi.InvokeOption) LookupCustomAssessmentAutomationResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupCustomAssessmentAutomationResult, error) {
+		ApplyT(func(v interface{}) (LookupCustomAssessmentAutomationResultOutput, error) {
 			args := v.(LookupCustomAssessmentAutomationArgs)
-			r, err := LookupCustomAssessmentAutomation(ctx, &args, opts...)
-			var s LookupCustomAssessmentAutomationResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupCustomAssessmentAutomationResult
+			secret, err := ctx.InvokePackageRaw("azure-native:security:getCustomAssessmentAutomation", args, &rv, "", opts...)
+			if err != nil {
+				return LookupCustomAssessmentAutomationResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupCustomAssessmentAutomationResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupCustomAssessmentAutomationResultOutput), nil
+			}
+			return output, nil
 		}).(LookupCustomAssessmentAutomationResultOutput)
 }
 

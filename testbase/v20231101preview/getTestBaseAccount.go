@@ -55,14 +55,20 @@ type LookupTestBaseAccountResult struct {
 
 func LookupTestBaseAccountOutput(ctx *pulumi.Context, args LookupTestBaseAccountOutputArgs, opts ...pulumi.InvokeOption) LookupTestBaseAccountResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupTestBaseAccountResult, error) {
+		ApplyT(func(v interface{}) (LookupTestBaseAccountResultOutput, error) {
 			args := v.(LookupTestBaseAccountArgs)
-			r, err := LookupTestBaseAccount(ctx, &args, opts...)
-			var s LookupTestBaseAccountResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupTestBaseAccountResult
+			secret, err := ctx.InvokePackageRaw("azure-native:testbase/v20231101preview:getTestBaseAccount", args, &rv, "", opts...)
+			if err != nil {
+				return LookupTestBaseAccountResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupTestBaseAccountResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupTestBaseAccountResultOutput), nil
+			}
+			return output, nil
 		}).(LookupTestBaseAccountResultOutput)
 }
 

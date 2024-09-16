@@ -49,14 +49,20 @@ type LookupSapLandscapeMonitorResult struct {
 
 func LookupSapLandscapeMonitorOutput(ctx *pulumi.Context, args LookupSapLandscapeMonitorOutputArgs, opts ...pulumi.InvokeOption) LookupSapLandscapeMonitorResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSapLandscapeMonitorResult, error) {
+		ApplyT(func(v interface{}) (LookupSapLandscapeMonitorResultOutput, error) {
 			args := v.(LookupSapLandscapeMonitorArgs)
-			r, err := LookupSapLandscapeMonitor(ctx, &args, opts...)
-			var s LookupSapLandscapeMonitorResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupSapLandscapeMonitorResult
+			secret, err := ctx.InvokePackageRaw("azure-native:workloads/v20231001preview:getSapLandscapeMonitor", args, &rv, "", opts...)
+			if err != nil {
+				return LookupSapLandscapeMonitorResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupSapLandscapeMonitorResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupSapLandscapeMonitorResultOutput), nil
+			}
+			return output, nil
 		}).(LookupSapLandscapeMonitorResultOutput)
 }
 

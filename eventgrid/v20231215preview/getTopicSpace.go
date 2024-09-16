@@ -55,14 +55,20 @@ type LookupTopicSpaceResult struct {
 
 func LookupTopicSpaceOutput(ctx *pulumi.Context, args LookupTopicSpaceOutputArgs, opts ...pulumi.InvokeOption) LookupTopicSpaceResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupTopicSpaceResult, error) {
+		ApplyT(func(v interface{}) (LookupTopicSpaceResultOutput, error) {
 			args := v.(LookupTopicSpaceArgs)
-			r, err := LookupTopicSpace(ctx, &args, opts...)
-			var s LookupTopicSpaceResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupTopicSpaceResult
+			secret, err := ctx.InvokePackageRaw("azure-native:eventgrid/v20231215preview:getTopicSpace", args, &rv, "", opts...)
+			if err != nil {
+				return LookupTopicSpaceResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupTopicSpaceResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupTopicSpaceResultOutput), nil
+			}
+			return output, nil
 		}).(LookupTopicSpaceResultOutput)
 }
 

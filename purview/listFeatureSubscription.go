@@ -40,14 +40,20 @@ type ListFeatureSubscriptionResult struct {
 
 func ListFeatureSubscriptionOutput(ctx *pulumi.Context, args ListFeatureSubscriptionOutputArgs, opts ...pulumi.InvokeOption) ListFeatureSubscriptionResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListFeatureSubscriptionResult, error) {
+		ApplyT(func(v interface{}) (ListFeatureSubscriptionResultOutput, error) {
 			args := v.(ListFeatureSubscriptionArgs)
-			r, err := ListFeatureSubscription(ctx, &args, opts...)
-			var s ListFeatureSubscriptionResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListFeatureSubscriptionResult
+			secret, err := ctx.InvokePackageRaw("azure-native:purview:listFeatureSubscription", args, &rv, "", opts...)
+			if err != nil {
+				return ListFeatureSubscriptionResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListFeatureSubscriptionResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListFeatureSubscriptionResultOutput), nil
+			}
+			return output, nil
 		}).(ListFeatureSubscriptionResultOutput)
 }
 

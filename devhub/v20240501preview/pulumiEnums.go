@@ -883,6 +883,183 @@ func (in *manifestTypePtr) ToManifestTypePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(ManifestTypePtrOutput)
 }
 
+// Determines the authorization status of requests.
+type QuickStartTemplateType string
+
+const (
+	// The template has not use quick start template
+	QuickStartTemplateTypeNone = QuickStartTemplateType("None")
+	// The template use quick start template of HCI
+	QuickStartTemplateTypeHCI = QuickStartTemplateType("HCI")
+	// The template use quick start template of HCI and AKS
+	QuickStartTemplateTypeHCIAKS = QuickStartTemplateType("HCIAKS")
+	// The template use quick start template of HCI and ArcVM
+	QuickStartTemplateTypeHCIARCVM = QuickStartTemplateType("HCIARCVM")
+	// The template use quick start template of All supported products
+	QuickStartTemplateTypeALL = QuickStartTemplateType("ALL")
+)
+
+func (QuickStartTemplateType) ElementType() reflect.Type {
+	return reflect.TypeOf((*QuickStartTemplateType)(nil)).Elem()
+}
+
+func (e QuickStartTemplateType) ToQuickStartTemplateTypeOutput() QuickStartTemplateTypeOutput {
+	return pulumi.ToOutput(e).(QuickStartTemplateTypeOutput)
+}
+
+func (e QuickStartTemplateType) ToQuickStartTemplateTypeOutputWithContext(ctx context.Context) QuickStartTemplateTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(QuickStartTemplateTypeOutput)
+}
+
+func (e QuickStartTemplateType) ToQuickStartTemplateTypePtrOutput() QuickStartTemplateTypePtrOutput {
+	return e.ToQuickStartTemplateTypePtrOutputWithContext(context.Background())
+}
+
+func (e QuickStartTemplateType) ToQuickStartTemplateTypePtrOutputWithContext(ctx context.Context) QuickStartTemplateTypePtrOutput {
+	return QuickStartTemplateType(e).ToQuickStartTemplateTypeOutputWithContext(ctx).ToQuickStartTemplateTypePtrOutputWithContext(ctx)
+}
+
+func (e QuickStartTemplateType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e QuickStartTemplateType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e QuickStartTemplateType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e QuickStartTemplateType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type QuickStartTemplateTypeOutput struct{ *pulumi.OutputState }
+
+func (QuickStartTemplateTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QuickStartTemplateType)(nil)).Elem()
+}
+
+func (o QuickStartTemplateTypeOutput) ToQuickStartTemplateTypeOutput() QuickStartTemplateTypeOutput {
+	return o
+}
+
+func (o QuickStartTemplateTypeOutput) ToQuickStartTemplateTypeOutputWithContext(ctx context.Context) QuickStartTemplateTypeOutput {
+	return o
+}
+
+func (o QuickStartTemplateTypeOutput) ToQuickStartTemplateTypePtrOutput() QuickStartTemplateTypePtrOutput {
+	return o.ToQuickStartTemplateTypePtrOutputWithContext(context.Background())
+}
+
+func (o QuickStartTemplateTypeOutput) ToQuickStartTemplateTypePtrOutputWithContext(ctx context.Context) QuickStartTemplateTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v QuickStartTemplateType) *QuickStartTemplateType {
+		return &v
+	}).(QuickStartTemplateTypePtrOutput)
+}
+
+func (o QuickStartTemplateTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o QuickStartTemplateTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e QuickStartTemplateType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o QuickStartTemplateTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o QuickStartTemplateTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e QuickStartTemplateType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type QuickStartTemplateTypePtrOutput struct{ *pulumi.OutputState }
+
+func (QuickStartTemplateTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**QuickStartTemplateType)(nil)).Elem()
+}
+
+func (o QuickStartTemplateTypePtrOutput) ToQuickStartTemplateTypePtrOutput() QuickStartTemplateTypePtrOutput {
+	return o
+}
+
+func (o QuickStartTemplateTypePtrOutput) ToQuickStartTemplateTypePtrOutputWithContext(ctx context.Context) QuickStartTemplateTypePtrOutput {
+	return o
+}
+
+func (o QuickStartTemplateTypePtrOutput) Elem() QuickStartTemplateTypeOutput {
+	return o.ApplyT(func(v *QuickStartTemplateType) QuickStartTemplateType {
+		if v != nil {
+			return *v
+		}
+		var ret QuickStartTemplateType
+		return ret
+	}).(QuickStartTemplateTypeOutput)
+}
+
+func (o QuickStartTemplateTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o QuickStartTemplateTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *QuickStartTemplateType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// QuickStartTemplateTypeInput is an input type that accepts values of the QuickStartTemplateType enum
+// A concrete instance of `QuickStartTemplateTypeInput` can be one of the following:
+//
+//	QuickStartTemplateTypeNone
+//	QuickStartTemplateTypeHCI
+//	QuickStartTemplateTypeHCIAKS
+//	QuickStartTemplateTypeHCIARCVM
+//	QuickStartTemplateTypeALL
+type QuickStartTemplateTypeInput interface {
+	pulumi.Input
+
+	ToQuickStartTemplateTypeOutput() QuickStartTemplateTypeOutput
+	ToQuickStartTemplateTypeOutputWithContext(context.Context) QuickStartTemplateTypeOutput
+}
+
+var quickStartTemplateTypePtrType = reflect.TypeOf((**QuickStartTemplateType)(nil)).Elem()
+
+type QuickStartTemplateTypePtrInput interface {
+	pulumi.Input
+
+	ToQuickStartTemplateTypePtrOutput() QuickStartTemplateTypePtrOutput
+	ToQuickStartTemplateTypePtrOutputWithContext(context.Context) QuickStartTemplateTypePtrOutput
+}
+
+type quickStartTemplateTypePtr string
+
+func QuickStartTemplateTypePtr(v string) QuickStartTemplateTypePtrInput {
+	return (*quickStartTemplateTypePtr)(&v)
+}
+
+func (*quickStartTemplateTypePtr) ElementType() reflect.Type {
+	return quickStartTemplateTypePtrType
+}
+
+func (in *quickStartTemplateTypePtr) ToQuickStartTemplateTypePtrOutput() QuickStartTemplateTypePtrOutput {
+	return pulumi.ToOutput(in).(QuickStartTemplateTypePtrOutput)
+}
+
+func (in *quickStartTemplateTypePtr) ToQuickStartTemplateTypePtrOutputWithContext(ctx context.Context) QuickStartTemplateTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(QuickStartTemplateTypePtrOutput)
+}
+
 // Describes the status of the workflow run
 type WorkflowRunStatus string
 
@@ -1065,6 +1242,8 @@ func init() {
 	pulumi.RegisterOutputType(ManifestGenerationModePtrOutput{})
 	pulumi.RegisterOutputType(ManifestTypeOutput{})
 	pulumi.RegisterOutputType(ManifestTypePtrOutput{})
+	pulumi.RegisterOutputType(QuickStartTemplateTypeOutput{})
+	pulumi.RegisterOutputType(QuickStartTemplateTypePtrOutput{})
 	pulumi.RegisterOutputType(WorkflowRunStatusOutput{})
 	pulumi.RegisterOutputType(WorkflowRunStatusPtrOutput{})
 }

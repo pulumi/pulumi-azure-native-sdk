@@ -51,14 +51,20 @@ type LookupApplicationSecurityGroupResult struct {
 
 func LookupApplicationSecurityGroupOutput(ctx *pulumi.Context, args LookupApplicationSecurityGroupOutputArgs, opts ...pulumi.InvokeOption) LookupApplicationSecurityGroupResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupApplicationSecurityGroupResult, error) {
+		ApplyT(func(v interface{}) (LookupApplicationSecurityGroupResultOutput, error) {
 			args := v.(LookupApplicationSecurityGroupArgs)
-			r, err := LookupApplicationSecurityGroup(ctx, &args, opts...)
-			var s LookupApplicationSecurityGroupResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupApplicationSecurityGroupResult
+			secret, err := ctx.InvokePackageRaw("azure-native:network/v20230501:getApplicationSecurityGroup", args, &rv, "", opts...)
+			if err != nil {
+				return LookupApplicationSecurityGroupResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupApplicationSecurityGroupResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupApplicationSecurityGroupResultOutput), nil
+			}
+			return output, nil
 		}).(LookupApplicationSecurityGroupResultOutput)
 }
 

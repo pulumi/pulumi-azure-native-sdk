@@ -40,14 +40,20 @@ type ListDataProductRolesAssignmentsResult struct {
 
 func ListDataProductRolesAssignmentsOutput(ctx *pulumi.Context, args ListDataProductRolesAssignmentsOutputArgs, opts ...pulumi.InvokeOption) ListDataProductRolesAssignmentsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListDataProductRolesAssignmentsResult, error) {
+		ApplyT(func(v interface{}) (ListDataProductRolesAssignmentsResultOutput, error) {
 			args := v.(ListDataProductRolesAssignmentsArgs)
-			r, err := ListDataProductRolesAssignments(ctx, &args, opts...)
-			var s ListDataProductRolesAssignmentsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListDataProductRolesAssignmentsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:networkanalytics:listDataProductRolesAssignments", args, &rv, "", opts...)
+			if err != nil {
+				return ListDataProductRolesAssignmentsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListDataProductRolesAssignmentsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListDataProductRolesAssignmentsResultOutput), nil
+			}
+			return output, nil
 		}).(ListDataProductRolesAssignmentsResultOutput)
 }
 

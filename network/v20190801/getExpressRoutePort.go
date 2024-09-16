@@ -71,14 +71,20 @@ type LookupExpressRoutePortResult struct {
 
 func LookupExpressRoutePortOutput(ctx *pulumi.Context, args LookupExpressRoutePortOutputArgs, opts ...pulumi.InvokeOption) LookupExpressRoutePortResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupExpressRoutePortResult, error) {
+		ApplyT(func(v interface{}) (LookupExpressRoutePortResultOutput, error) {
 			args := v.(LookupExpressRoutePortArgs)
-			r, err := LookupExpressRoutePort(ctx, &args, opts...)
-			var s LookupExpressRoutePortResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupExpressRoutePortResult
+			secret, err := ctx.InvokePackageRaw("azure-native:network/v20190801:getExpressRoutePort", args, &rv, "", opts...)
+			if err != nil {
+				return LookupExpressRoutePortResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupExpressRoutePortResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupExpressRoutePortResultOutput), nil
+			}
+			return output, nil
 		}).(LookupExpressRoutePortResultOutput)
 }
 

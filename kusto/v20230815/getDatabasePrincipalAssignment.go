@@ -61,14 +61,20 @@ type LookupDatabasePrincipalAssignmentResult struct {
 
 func LookupDatabasePrincipalAssignmentOutput(ctx *pulumi.Context, args LookupDatabasePrincipalAssignmentOutputArgs, opts ...pulumi.InvokeOption) LookupDatabasePrincipalAssignmentResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupDatabasePrincipalAssignmentResult, error) {
+		ApplyT(func(v interface{}) (LookupDatabasePrincipalAssignmentResultOutput, error) {
 			args := v.(LookupDatabasePrincipalAssignmentArgs)
-			r, err := LookupDatabasePrincipalAssignment(ctx, &args, opts...)
-			var s LookupDatabasePrincipalAssignmentResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupDatabasePrincipalAssignmentResult
+			secret, err := ctx.InvokePackageRaw("azure-native:kusto/v20230815:getDatabasePrincipalAssignment", args, &rv, "", opts...)
+			if err != nil {
+				return LookupDatabasePrincipalAssignmentResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupDatabasePrincipalAssignmentResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupDatabasePrincipalAssignmentResultOutput), nil
+			}
+			return output, nil
 		}).(LookupDatabasePrincipalAssignmentResultOutput)
 }
 

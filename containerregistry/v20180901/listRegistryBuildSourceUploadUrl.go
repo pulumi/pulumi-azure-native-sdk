@@ -39,14 +39,20 @@ type ListRegistryBuildSourceUploadUrlResult struct {
 
 func ListRegistryBuildSourceUploadUrlOutput(ctx *pulumi.Context, args ListRegistryBuildSourceUploadUrlOutputArgs, opts ...pulumi.InvokeOption) ListRegistryBuildSourceUploadUrlResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListRegistryBuildSourceUploadUrlResult, error) {
+		ApplyT(func(v interface{}) (ListRegistryBuildSourceUploadUrlResultOutput, error) {
 			args := v.(ListRegistryBuildSourceUploadUrlArgs)
-			r, err := ListRegistryBuildSourceUploadUrl(ctx, &args, opts...)
-			var s ListRegistryBuildSourceUploadUrlResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListRegistryBuildSourceUploadUrlResult
+			secret, err := ctx.InvokePackageRaw("azure-native:containerregistry/v20180901:listRegistryBuildSourceUploadUrl", args, &rv, "", opts...)
+			if err != nil {
+				return ListRegistryBuildSourceUploadUrlResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListRegistryBuildSourceUploadUrlResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListRegistryBuildSourceUploadUrlResultOutput), nil
+			}
+			return output, nil
 		}).(ListRegistryBuildSourceUploadUrlResultOutput)
 }
 

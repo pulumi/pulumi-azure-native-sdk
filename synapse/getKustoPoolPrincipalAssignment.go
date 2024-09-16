@@ -64,14 +64,20 @@ type LookupKustoPoolPrincipalAssignmentResult struct {
 
 func LookupKustoPoolPrincipalAssignmentOutput(ctx *pulumi.Context, args LookupKustoPoolPrincipalAssignmentOutputArgs, opts ...pulumi.InvokeOption) LookupKustoPoolPrincipalAssignmentResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupKustoPoolPrincipalAssignmentResult, error) {
+		ApplyT(func(v interface{}) (LookupKustoPoolPrincipalAssignmentResultOutput, error) {
 			args := v.(LookupKustoPoolPrincipalAssignmentArgs)
-			r, err := LookupKustoPoolPrincipalAssignment(ctx, &args, opts...)
-			var s LookupKustoPoolPrincipalAssignmentResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupKustoPoolPrincipalAssignmentResult
+			secret, err := ctx.InvokePackageRaw("azure-native:synapse:getKustoPoolPrincipalAssignment", args, &rv, "", opts...)
+			if err != nil {
+				return LookupKustoPoolPrincipalAssignmentResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupKustoPoolPrincipalAssignmentResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupKustoPoolPrincipalAssignmentResultOutput), nil
+			}
+			return output, nil
 		}).(LookupKustoPoolPrincipalAssignmentResultOutput)
 }
 

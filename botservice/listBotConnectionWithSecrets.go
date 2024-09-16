@@ -71,14 +71,20 @@ func (val *ListBotConnectionWithSecretsResult) Defaults() *ListBotConnectionWith
 
 func ListBotConnectionWithSecretsOutput(ctx *pulumi.Context, args ListBotConnectionWithSecretsOutputArgs, opts ...pulumi.InvokeOption) ListBotConnectionWithSecretsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListBotConnectionWithSecretsResult, error) {
+		ApplyT(func(v interface{}) (ListBotConnectionWithSecretsResultOutput, error) {
 			args := v.(ListBotConnectionWithSecretsArgs)
-			r, err := ListBotConnectionWithSecrets(ctx, &args, opts...)
-			var s ListBotConnectionWithSecretsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListBotConnectionWithSecretsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:botservice:listBotConnectionWithSecrets", args, &rv, "", opts...)
+			if err != nil {
+				return ListBotConnectionWithSecretsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListBotConnectionWithSecretsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListBotConnectionWithSecretsResultOutput), nil
+			}
+			return output, nil
 		}).(ListBotConnectionWithSecretsResultOutput)
 }
 

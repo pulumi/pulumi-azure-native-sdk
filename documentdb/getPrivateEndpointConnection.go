@@ -14,7 +14,7 @@ import (
 // Gets a private endpoint connection.
 // Azure REST API version: 2023-04-15.
 //
-// Other available API versions: 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-03-01-preview, 2024-05-15, 2024-05-15-preview, 2024-06-01-preview, 2024-07-01.
+// Other available API versions: 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-03-01-preview, 2024-05-15, 2024-05-15-preview, 2024-06-01-preview, 2024-07-01, 2024-08-15, 2024-09-01-preview.
 func LookupPrivateEndpointConnection(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivateEndpointConnectionResult
@@ -54,14 +54,20 @@ type LookupPrivateEndpointConnectionResult struct {
 
 func LookupPrivateEndpointConnectionOutput(ctx *pulumi.Context, args LookupPrivateEndpointConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupPrivateEndpointConnectionResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupPrivateEndpointConnectionResult, error) {
+		ApplyT(func(v interface{}) (LookupPrivateEndpointConnectionResultOutput, error) {
 			args := v.(LookupPrivateEndpointConnectionArgs)
-			r, err := LookupPrivateEndpointConnection(ctx, &args, opts...)
-			var s LookupPrivateEndpointConnectionResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupPrivateEndpointConnectionResult
+			secret, err := ctx.InvokePackageRaw("azure-native:documentdb:getPrivateEndpointConnection", args, &rv, "", opts...)
+			if err != nil {
+				return LookupPrivateEndpointConnectionResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupPrivateEndpointConnectionResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupPrivateEndpointConnectionResultOutput), nil
+			}
+			return output, nil
 		}).(LookupPrivateEndpointConnectionResultOutput)
 }
 

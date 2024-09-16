@@ -49,14 +49,20 @@ type GetIntegrationRuntimeConnectionInfoResult struct {
 
 func GetIntegrationRuntimeConnectionInfoOutput(ctx *pulumi.Context, args GetIntegrationRuntimeConnectionInfoOutputArgs, opts ...pulumi.InvokeOption) GetIntegrationRuntimeConnectionInfoResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetIntegrationRuntimeConnectionInfoResult, error) {
+		ApplyT(func(v interface{}) (GetIntegrationRuntimeConnectionInfoResultOutput, error) {
 			args := v.(GetIntegrationRuntimeConnectionInfoArgs)
-			r, err := GetIntegrationRuntimeConnectionInfo(ctx, &args, opts...)
-			var s GetIntegrationRuntimeConnectionInfoResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv GetIntegrationRuntimeConnectionInfoResult
+			secret, err := ctx.InvokePackageRaw("azure-native:synapse/v20210601:getIntegrationRuntimeConnectionInfo", args, &rv, "", opts...)
+			if err != nil {
+				return GetIntegrationRuntimeConnectionInfoResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetIntegrationRuntimeConnectionInfoResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetIntegrationRuntimeConnectionInfoResultOutput), nil
+			}
+			return output, nil
 		}).(GetIntegrationRuntimeConnectionInfoResultOutput)
 }
 

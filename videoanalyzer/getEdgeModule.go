@@ -48,14 +48,20 @@ type LookupEdgeModuleResult struct {
 
 func LookupEdgeModuleOutput(ctx *pulumi.Context, args LookupEdgeModuleOutputArgs, opts ...pulumi.InvokeOption) LookupEdgeModuleResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupEdgeModuleResult, error) {
+		ApplyT(func(v interface{}) (LookupEdgeModuleResultOutput, error) {
 			args := v.(LookupEdgeModuleArgs)
-			r, err := LookupEdgeModule(ctx, &args, opts...)
-			var s LookupEdgeModuleResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupEdgeModuleResult
+			secret, err := ctx.InvokePackageRaw("azure-native:videoanalyzer:getEdgeModule", args, &rv, "", opts...)
+			if err != nil {
+				return LookupEdgeModuleResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupEdgeModuleResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupEdgeModuleResultOutput), nil
+			}
+			return output, nil
 		}).(LookupEdgeModuleResultOutput)
 }
 

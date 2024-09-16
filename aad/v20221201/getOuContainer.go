@@ -67,14 +67,20 @@ type LookupOuContainerResult struct {
 
 func LookupOuContainerOutput(ctx *pulumi.Context, args LookupOuContainerOutputArgs, opts ...pulumi.InvokeOption) LookupOuContainerResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupOuContainerResult, error) {
+		ApplyT(func(v interface{}) (LookupOuContainerResultOutput, error) {
 			args := v.(LookupOuContainerArgs)
-			r, err := LookupOuContainer(ctx, &args, opts...)
-			var s LookupOuContainerResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupOuContainerResult
+			secret, err := ctx.InvokePackageRaw("azure-native:aad/v20221201:getOuContainer", args, &rv, "", opts...)
+			if err != nil {
+				return LookupOuContainerResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupOuContainerResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupOuContainerResultOutput), nil
+			}
+			return output, nil
 		}).(LookupOuContainerResultOutput)
 }
 

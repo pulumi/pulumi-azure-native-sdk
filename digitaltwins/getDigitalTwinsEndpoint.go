@@ -50,14 +50,20 @@ type LookupDigitalTwinsEndpointResult struct {
 
 func LookupDigitalTwinsEndpointOutput(ctx *pulumi.Context, args LookupDigitalTwinsEndpointOutputArgs, opts ...pulumi.InvokeOption) LookupDigitalTwinsEndpointResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupDigitalTwinsEndpointResult, error) {
+		ApplyT(func(v interface{}) (LookupDigitalTwinsEndpointResultOutput, error) {
 			args := v.(LookupDigitalTwinsEndpointArgs)
-			r, err := LookupDigitalTwinsEndpoint(ctx, &args, opts...)
-			var s LookupDigitalTwinsEndpointResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupDigitalTwinsEndpointResult
+			secret, err := ctx.InvokePackageRaw("azure-native:digitaltwins:getDigitalTwinsEndpoint", args, &rv, "", opts...)
+			if err != nil {
+				return LookupDigitalTwinsEndpointResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupDigitalTwinsEndpointResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupDigitalTwinsEndpointResultOutput), nil
+			}
+			return output, nil
 		}).(LookupDigitalTwinsEndpointResultOutput)
 }
 

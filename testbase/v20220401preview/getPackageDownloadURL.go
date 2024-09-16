@@ -41,14 +41,20 @@ type GetPackageDownloadURLResult struct {
 
 func GetPackageDownloadURLOutput(ctx *pulumi.Context, args GetPackageDownloadURLOutputArgs, opts ...pulumi.InvokeOption) GetPackageDownloadURLResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetPackageDownloadURLResult, error) {
+		ApplyT(func(v interface{}) (GetPackageDownloadURLResultOutput, error) {
 			args := v.(GetPackageDownloadURLArgs)
-			r, err := GetPackageDownloadURL(ctx, &args, opts...)
-			var s GetPackageDownloadURLResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv GetPackageDownloadURLResult
+			secret, err := ctx.InvokePackageRaw("azure-native:testbase/v20220401preview:getPackageDownloadURL", args, &rv, "", opts...)
+			if err != nil {
+				return GetPackageDownloadURLResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetPackageDownloadURLResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetPackageDownloadURLResultOutput), nil
+			}
+			return output, nil
 		}).(GetPackageDownloadURLResultOutput)
 }
 

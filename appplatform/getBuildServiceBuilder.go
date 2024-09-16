@@ -52,14 +52,20 @@ type LookupBuildServiceBuilderResult struct {
 
 func LookupBuildServiceBuilderOutput(ctx *pulumi.Context, args LookupBuildServiceBuilderOutputArgs, opts ...pulumi.InvokeOption) LookupBuildServiceBuilderResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupBuildServiceBuilderResult, error) {
+		ApplyT(func(v interface{}) (LookupBuildServiceBuilderResultOutput, error) {
 			args := v.(LookupBuildServiceBuilderArgs)
-			r, err := LookupBuildServiceBuilder(ctx, &args, opts...)
-			var s LookupBuildServiceBuilderResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupBuildServiceBuilderResult
+			secret, err := ctx.InvokePackageRaw("azure-native:appplatform:getBuildServiceBuilder", args, &rv, "", opts...)
+			if err != nil {
+				return LookupBuildServiceBuilderResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupBuildServiceBuilderResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupBuildServiceBuilderResultOutput), nil
+			}
+			return output, nil
 		}).(LookupBuildServiceBuilderResultOutput)
 }
 

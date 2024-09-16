@@ -39,14 +39,20 @@ type GetBillingInfoResult struct {
 
 func GetBillingInfoOutput(ctx *pulumi.Context, args GetBillingInfoOutputArgs, opts ...pulumi.InvokeOption) GetBillingInfoResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetBillingInfoResult, error) {
+		ApplyT(func(v interface{}) (GetBillingInfoResultOutput, error) {
 			args := v.(GetBillingInfoArgs)
-			r, err := GetBillingInfo(ctx, &args, opts...)
-			var s GetBillingInfoResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv GetBillingInfoResult
+			secret, err := ctx.InvokePackageRaw("azure-native:elastic/v20240615preview:getBillingInfo", args, &rv, "", opts...)
+			if err != nil {
+				return GetBillingInfoResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetBillingInfoResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetBillingInfoResultOutput), nil
+			}
+			return output, nil
 		}).(GetBillingInfoResultOutput)
 }
 

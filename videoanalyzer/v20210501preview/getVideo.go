@@ -55,14 +55,20 @@ type LookupVideoResult struct {
 
 func LookupVideoOutput(ctx *pulumi.Context, args LookupVideoOutputArgs, opts ...pulumi.InvokeOption) LookupVideoResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupVideoResult, error) {
+		ApplyT(func(v interface{}) (LookupVideoResultOutput, error) {
 			args := v.(LookupVideoArgs)
-			r, err := LookupVideo(ctx, &args, opts...)
-			var s LookupVideoResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupVideoResult
+			secret, err := ctx.InvokePackageRaw("azure-native:videoanalyzer/v20210501preview:getVideo", args, &rv, "", opts...)
+			if err != nil {
+				return LookupVideoResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupVideoResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupVideoResultOutput), nil
+			}
+			return output, nil
 		}).(LookupVideoResultOutput)
 }
 

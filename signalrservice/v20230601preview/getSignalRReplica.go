@@ -53,14 +53,20 @@ type LookupSignalRReplicaResult struct {
 
 func LookupSignalRReplicaOutput(ctx *pulumi.Context, args LookupSignalRReplicaOutputArgs, opts ...pulumi.InvokeOption) LookupSignalRReplicaResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSignalRReplicaResult, error) {
+		ApplyT(func(v interface{}) (LookupSignalRReplicaResultOutput, error) {
 			args := v.(LookupSignalRReplicaArgs)
-			r, err := LookupSignalRReplica(ctx, &args, opts...)
-			var s LookupSignalRReplicaResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupSignalRReplicaResult
+			secret, err := ctx.InvokePackageRaw("azure-native:signalrservice/v20230601preview:getSignalRReplica", args, &rv, "", opts...)
+			if err != nil {
+				return LookupSignalRReplicaResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupSignalRReplicaResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupSignalRReplicaResultOutput), nil
+			}
+			return output, nil
 		}).(LookupSignalRReplicaResultOutput)
 }
 

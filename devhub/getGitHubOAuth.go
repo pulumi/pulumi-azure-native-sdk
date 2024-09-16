@@ -14,7 +14,7 @@ import (
 // URL used to authorize the Developer Hub GitHub App
 // Azure REST API version: 2022-10-11-preview.
 //
-// Other available API versions: 2022-04-01-preview, 2023-08-01, 2024-05-01-preview.
+// Other available API versions: 2022-04-01-preview, 2023-08-01, 2024-05-01-preview, 2024-08-01-preview.
 func GetGitHubOAuth(ctx *pulumi.Context, args *GetGitHubOAuthArgs, opts ...pulumi.InvokeOption) (*GetGitHubOAuthResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetGitHubOAuthResult
@@ -42,14 +42,20 @@ type GetGitHubOAuthResult struct {
 
 func GetGitHubOAuthOutput(ctx *pulumi.Context, args GetGitHubOAuthOutputArgs, opts ...pulumi.InvokeOption) GetGitHubOAuthResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetGitHubOAuthResult, error) {
+		ApplyT(func(v interface{}) (GetGitHubOAuthResultOutput, error) {
 			args := v.(GetGitHubOAuthArgs)
-			r, err := GetGitHubOAuth(ctx, &args, opts...)
-			var s GetGitHubOAuthResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv GetGitHubOAuthResult
+			secret, err := ctx.InvokePackageRaw("azure-native:devhub:getGitHubOAuth", args, &rv, "", opts...)
+			if err != nil {
+				return GetGitHubOAuthResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetGitHubOAuthResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetGitHubOAuthResultOutput), nil
+			}
+			return output, nil
 		}).(GetGitHubOAuthResultOutput)
 }
 

@@ -47,14 +47,20 @@ type LookupDeploymentAtManagementGroupScopeResult struct {
 
 func LookupDeploymentAtManagementGroupScopeOutput(ctx *pulumi.Context, args LookupDeploymentAtManagementGroupScopeOutputArgs, opts ...pulumi.InvokeOption) LookupDeploymentAtManagementGroupScopeResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupDeploymentAtManagementGroupScopeResult, error) {
+		ApplyT(func(v interface{}) (LookupDeploymentAtManagementGroupScopeResultOutput, error) {
 			args := v.(LookupDeploymentAtManagementGroupScopeArgs)
-			r, err := LookupDeploymentAtManagementGroupScope(ctx, &args, opts...)
-			var s LookupDeploymentAtManagementGroupScopeResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupDeploymentAtManagementGroupScopeResult
+			secret, err := ctx.InvokePackageRaw("azure-native:resources/v20220901:getDeploymentAtManagementGroupScope", args, &rv, "", opts...)
+			if err != nil {
+				return LookupDeploymentAtManagementGroupScopeResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupDeploymentAtManagementGroupScopeResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupDeploymentAtManagementGroupScopeResultOutput), nil
+			}
+			return output, nil
 		}).(LookupDeploymentAtManagementGroupScopeResultOutput)
 }
 

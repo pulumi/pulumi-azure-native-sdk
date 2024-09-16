@@ -47,14 +47,20 @@ type ListTenantAccessSecretsResult struct {
 
 func ListTenantAccessSecretsOutput(ctx *pulumi.Context, args ListTenantAccessSecretsOutputArgs, opts ...pulumi.InvokeOption) ListTenantAccessSecretsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListTenantAccessSecretsResult, error) {
+		ApplyT(func(v interface{}) (ListTenantAccessSecretsResultOutput, error) {
 			args := v.(ListTenantAccessSecretsArgs)
-			r, err := ListTenantAccessSecrets(ctx, &args, opts...)
-			var s ListTenantAccessSecretsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListTenantAccessSecretsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:apimanagement/v20230301preview:listTenantAccessSecrets", args, &rv, "", opts...)
+			if err != nil {
+				return ListTenantAccessSecretsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListTenantAccessSecretsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListTenantAccessSecretsResultOutput), nil
+			}
+			return output, nil
 		}).(ListTenantAccessSecretsResultOutput)
 }
 

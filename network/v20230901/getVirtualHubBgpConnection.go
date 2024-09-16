@@ -55,14 +55,20 @@ type LookupVirtualHubBgpConnectionResult struct {
 
 func LookupVirtualHubBgpConnectionOutput(ctx *pulumi.Context, args LookupVirtualHubBgpConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupVirtualHubBgpConnectionResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupVirtualHubBgpConnectionResult, error) {
+		ApplyT(func(v interface{}) (LookupVirtualHubBgpConnectionResultOutput, error) {
 			args := v.(LookupVirtualHubBgpConnectionArgs)
-			r, err := LookupVirtualHubBgpConnection(ctx, &args, opts...)
-			var s LookupVirtualHubBgpConnectionResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupVirtualHubBgpConnectionResult
+			secret, err := ctx.InvokePackageRaw("azure-native:network/v20230901:getVirtualHubBgpConnection", args, &rv, "", opts...)
+			if err != nil {
+				return LookupVirtualHubBgpConnectionResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupVirtualHubBgpConnectionResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupVirtualHubBgpConnectionResultOutput), nil
+			}
+			return output, nil
 		}).(LookupVirtualHubBgpConnectionResultOutput)
 }
 

@@ -49,14 +49,20 @@ type LookupServerAdministratorResult struct {
 
 func LookupServerAdministratorOutput(ctx *pulumi.Context, args LookupServerAdministratorOutputArgs, opts ...pulumi.InvokeOption) LookupServerAdministratorResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupServerAdministratorResult, error) {
+		ApplyT(func(v interface{}) (LookupServerAdministratorResultOutput, error) {
 			args := v.(LookupServerAdministratorArgs)
-			r, err := LookupServerAdministrator(ctx, &args, opts...)
-			var s LookupServerAdministratorResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupServerAdministratorResult
+			secret, err := ctx.InvokePackageRaw("azure-native:dbformysql/v20180601privatepreview:getServerAdministrator", args, &rv, "", opts...)
+			if err != nil {
+				return LookupServerAdministratorResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupServerAdministratorResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupServerAdministratorResultOutput), nil
+			}
+			return output, nil
 		}).(LookupServerAdministratorResultOutput)
 }
 

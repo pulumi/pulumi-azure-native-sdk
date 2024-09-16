@@ -50,14 +50,20 @@ type LookupEdgeDeviceResult struct {
 
 func LookupEdgeDeviceOutput(ctx *pulumi.Context, args LookupEdgeDeviceOutputArgs, opts ...pulumi.InvokeOption) LookupEdgeDeviceResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupEdgeDeviceResult, error) {
+		ApplyT(func(v interface{}) (LookupEdgeDeviceResultOutput, error) {
 			args := v.(LookupEdgeDeviceArgs)
-			r, err := LookupEdgeDevice(ctx, &args, opts...)
-			var s LookupEdgeDeviceResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupEdgeDeviceResult
+			secret, err := ctx.InvokePackageRaw("azure-native:azurestackhci:getEdgeDevice", args, &rv, "", opts...)
+			if err != nil {
+				return LookupEdgeDeviceResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupEdgeDeviceResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupEdgeDeviceResultOutput), nil
+			}
+			return output, nil
 		}).(LookupEdgeDeviceResultOutput)
 }
 

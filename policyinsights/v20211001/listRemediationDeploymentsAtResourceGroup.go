@@ -41,14 +41,20 @@ type ListRemediationDeploymentsAtResourceGroupResult struct {
 
 func ListRemediationDeploymentsAtResourceGroupOutput(ctx *pulumi.Context, args ListRemediationDeploymentsAtResourceGroupOutputArgs, opts ...pulumi.InvokeOption) ListRemediationDeploymentsAtResourceGroupResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListRemediationDeploymentsAtResourceGroupResult, error) {
+		ApplyT(func(v interface{}) (ListRemediationDeploymentsAtResourceGroupResultOutput, error) {
 			args := v.(ListRemediationDeploymentsAtResourceGroupArgs)
-			r, err := ListRemediationDeploymentsAtResourceGroup(ctx, &args, opts...)
-			var s ListRemediationDeploymentsAtResourceGroupResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListRemediationDeploymentsAtResourceGroupResult
+			secret, err := ctx.InvokePackageRaw("azure-native:policyinsights/v20211001:listRemediationDeploymentsAtResourceGroup", args, &rv, "", opts...)
+			if err != nil {
+				return ListRemediationDeploymentsAtResourceGroupResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListRemediationDeploymentsAtResourceGroupResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListRemediationDeploymentsAtResourceGroupResultOutput), nil
+			}
+			return output, nil
 		}).(ListRemediationDeploymentsAtResourceGroupResultOutput)
 }
 
