@@ -69,6 +69,9 @@ func NewReplicationLink(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:sql/v20230801preview:ReplicationLink"),
 		},
+		{
+			Type: pulumi.String("azure-native:sql/v20240501preview:ReplicationLink"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

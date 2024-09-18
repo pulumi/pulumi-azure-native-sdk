@@ -14,6 +14,8 @@ import (
 
 // Network function definition group resource.
 // Azure REST API version: 2023-09-01.
+//
+// Other available API versions: 2024-04-15.
 type NetworkFunctionDefinitionGroup struct {
 	pulumi.CustomResourceState
 
@@ -47,6 +49,9 @@ func NewNetworkFunctionDefinitionGroup(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:hybridnetwork/v20230901:NetworkFunctionDefinitionGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridnetwork/v20240415:NetworkFunctionDefinitionGroup"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -47,6 +47,9 @@ func NewArtifactStore(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:hybridnetwork:ArtifactStore"),
 		},
+		{
+			Type: pulumi.String("azure-native:hybridnetwork/v20240415:ArtifactStore"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

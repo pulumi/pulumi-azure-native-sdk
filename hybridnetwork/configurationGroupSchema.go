@@ -14,6 +14,8 @@ import (
 
 // Configuration group schema resource.
 // Azure REST API version: 2023-09-01.
+//
+// Other available API versions: 2024-04-15.
 type ConfigurationGroupSchema struct {
 	pulumi.CustomResourceState
 
@@ -47,6 +49,9 @@ func NewConfigurationGroupSchema(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:hybridnetwork/v20230901:ConfigurationGroupSchema"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridnetwork/v20240415:ConfigurationGroupSchema"),
 		},
 	})
 	opts = append(opts, aliases)

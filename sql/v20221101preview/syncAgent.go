@@ -96,6 +96,9 @@ func NewSyncAgent(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:sql/v20230801preview:SyncAgent"),
 		},
+		{
+			Type: pulumi.String("azure-native:sql/v20240501preview:SyncAgent"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

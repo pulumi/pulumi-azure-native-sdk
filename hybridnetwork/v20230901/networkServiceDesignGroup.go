@@ -47,6 +47,9 @@ func NewNetworkServiceDesignGroup(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:hybridnetwork:NetworkServiceDesignGroup"),
 		},
+		{
+			Type: pulumi.String("azure-native:hybridnetwork/v20240415:NetworkServiceDesignGroup"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

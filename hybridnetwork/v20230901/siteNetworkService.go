@@ -48,6 +48,9 @@ func NewSiteNetworkService(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:hybridnetwork:SiteNetworkService"),
 		},
+		{
+			Type: pulumi.String("azure-native:hybridnetwork/v20240415:SiteNetworkService"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

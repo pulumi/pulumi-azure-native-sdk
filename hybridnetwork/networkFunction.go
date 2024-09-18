@@ -15,7 +15,7 @@ import (
 // Network function resource response.
 // Azure REST API version: 2022-01-01-preview. Prior API version in Azure Native 1.x: 2020-01-01-preview.
 //
-// Other available API versions: 2023-09-01.
+// Other available API versions: 2023-09-01, 2024-04-15.
 type NetworkFunction struct {
 	pulumi.CustomResourceState
 
@@ -77,6 +77,9 @@ func NewNetworkFunction(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:hybridnetwork/v20230901:NetworkFunction"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridnetwork/v20240415:NetworkFunction"),
 		},
 	})
 	opts = append(opts, aliases)

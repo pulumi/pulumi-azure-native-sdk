@@ -14,6 +14,8 @@ import (
 
 // network service design version.
 // Azure REST API version: 2023-09-01.
+//
+// Other available API versions: 2024-04-15.
 type NetworkServiceDesignVersion struct {
 	pulumi.CustomResourceState
 
@@ -50,6 +52,9 @@ func NewNetworkServiceDesignVersion(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:hybridnetwork/v20230901:NetworkServiceDesignVersion"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridnetwork/v20240415:NetworkServiceDesignVersion"),
 		},
 	})
 	opts = append(opts, aliases)

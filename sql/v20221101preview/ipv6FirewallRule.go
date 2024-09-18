@@ -70,6 +70,9 @@ func NewIPv6FirewallRule(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:sql/v20230801preview:IPv6FirewallRule"),
 		},
+		{
+			Type: pulumi.String("azure-native:sql/v20240501preview:IPv6FirewallRule"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

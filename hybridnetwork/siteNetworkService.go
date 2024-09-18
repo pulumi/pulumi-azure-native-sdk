@@ -14,6 +14,8 @@ import (
 
 // Site network service resource.
 // Azure REST API version: 2023-09-01.
+//
+// Other available API versions: 2024-04-15.
 type SiteNetworkService struct {
 	pulumi.CustomResourceState
 
@@ -48,6 +50,9 @@ func NewSiteNetworkService(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:hybridnetwork/v20230901:SiteNetworkService"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridnetwork/v20240415:SiteNetworkService"),
 		},
 	})
 	opts = append(opts, aliases)

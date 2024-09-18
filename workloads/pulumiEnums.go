@@ -1713,6 +1713,7 @@ const (
 type SAPDatabaseScaleMethod string
 
 const (
+	// ScaleUp Hana Database deployment type
 	SAPDatabaseScaleMethodScaleUp = SAPDatabaseScaleMethod("ScaleUp")
 )
 
@@ -1873,12 +1874,14 @@ func (in *sapdatabaseScaleMethodPtr) ToSAPDatabaseScaleMethodPtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(SAPDatabaseScaleMethodPtrOutput)
 }
 
-// The database type. Eg: HANA, DB2, etc
+// The database type.
 type SAPDatabaseType string
 
 const (
+	// HANA Database type of SAP system.
 	SAPDatabaseTypeHANA = SAPDatabaseType("HANA")
-	SAPDatabaseTypeDB2  = SAPDatabaseType("DB2")
+	// DB2 database type of the SAP system.
+	SAPDatabaseTypeDB2 = SAPDatabaseType("DB2")
 )
 
 func (SAPDatabaseType) ElementType() reflect.Type {
@@ -2043,8 +2046,10 @@ func (in *sapdatabaseTypePtr) ToSAPDatabaseTypePtrOutputWithContext(ctx context.
 type SAPDeploymentType string
 
 const (
+	// SAP Single server deployment type.
 	SAPDeploymentTypeSingleServer = SAPDeploymentType("SingleServer")
-	SAPDeploymentTypeThreeTier    = SAPDeploymentType("ThreeTier")
+	// SAP Distributed deployment type.
+	SAPDeploymentTypeThreeTier = SAPDeploymentType("ThreeTier")
 )
 
 func (SAPDeploymentType) ElementType() reflect.Type {
@@ -2209,8 +2214,10 @@ func (in *sapdeploymentTypePtr) ToSAPDeploymentTypePtrOutputWithContext(ctx cont
 type SAPEnvironmentType string
 
 const (
+	// Non Production SAP system.
 	SAPEnvironmentTypeNonProd = SAPEnvironmentType("NonProd")
-	SAPEnvironmentTypeProd    = SAPEnvironmentType("Prod")
+	// Production SAP system.
+	SAPEnvironmentTypeProd = SAPEnvironmentType("Prod")
 )
 
 func (SAPEnvironmentType) ElementType() reflect.Type {
@@ -2375,7 +2382,9 @@ func (in *sapenvironmentTypePtr) ToSAPEnvironmentTypePtrOutputWithContext(ctx co
 type SAPHighAvailabilityType string
 
 const (
-	SAPHighAvailabilityTypeAvailabilitySet  = SAPHighAvailabilityType("AvailabilitySet")
+	// HA deployment with availability sets.
+	SAPHighAvailabilityTypeAvailabilitySet = SAPHighAvailabilityType("AvailabilitySet")
+	// HA deployment with availability zones.
 	SAPHighAvailabilityTypeAvailabilityZone = SAPHighAvailabilityType("AvailabilityZone")
 )
 
@@ -2541,9 +2550,12 @@ func (in *saphighAvailabilityTypePtr) ToSAPHighAvailabilityTypePtrOutputWithCont
 type SAPProductType string
 
 const (
-	SAPProductTypeECC    = SAPProductType("ECC")
+	// SAP Product ECC.
+	SAPProductTypeECC = SAPProductType("ECC")
+	// SAP Product S4HANA.
 	SAPProductTypeS4HANA = SAPProductType("S4HANA")
-	SAPProductTypeOther  = SAPProductType("Other")
+	// SAP Products other than the ones listed.
+	SAPProductTypeOther = SAPProductType("Other")
 )
 
 func (SAPProductType) ElementType() reflect.Type {

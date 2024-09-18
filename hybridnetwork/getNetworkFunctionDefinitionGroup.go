@@ -13,6 +13,8 @@ import (
 
 // Gets information about the specified networkFunctionDefinition group.
 // Azure REST API version: 2023-09-01.
+//
+// Other available API versions: 2024-04-15.
 func LookupNetworkFunctionDefinitionGroup(ctx *pulumi.Context, args *LookupNetworkFunctionDefinitionGroupArgs, opts ...pulumi.InvokeOption) (*LookupNetworkFunctionDefinitionGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNetworkFunctionDefinitionGroupResult

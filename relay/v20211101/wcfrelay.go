@@ -65,6 +65,9 @@ func NewWCFRelay(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:relay/v20170401:WCFRelay"),
 		},
+		{
+			Type: pulumi.String("azure-native:relay/v20240101:WCFRelay"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

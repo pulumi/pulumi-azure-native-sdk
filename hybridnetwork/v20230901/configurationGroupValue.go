@@ -44,6 +44,9 @@ func NewConfigurationGroupValue(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:hybridnetwork:ConfigurationGroupValue"),
 		},
+		{
+			Type: pulumi.String("azure-native:hybridnetwork/v20240415:ConfigurationGroupValue"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

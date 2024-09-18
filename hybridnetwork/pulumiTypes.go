@@ -1047,6 +1047,102 @@ func (o ArtifactManifestPropertiesFormatResponseOutput) ProvisioningState() pulu
 	return o.ApplyT(func(v ArtifactManifestPropertiesFormatResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// List of network fabric controller ids.
+type ArtifactStoreNetworkFabricControllerEndPointsResponse struct {
+	// list of network fabric controllers.
+	NetworkFabricControllerIds []ReferencedResourceResponse `pulumi:"networkFabricControllerIds"`
+}
+
+// List of network fabric controller ids.
+type ArtifactStoreNetworkFabricControllerEndPointsResponseOutput struct{ *pulumi.OutputState }
+
+func (ArtifactStoreNetworkFabricControllerEndPointsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ArtifactStoreNetworkFabricControllerEndPointsResponse)(nil)).Elem()
+}
+
+func (o ArtifactStoreNetworkFabricControllerEndPointsResponseOutput) ToArtifactStoreNetworkFabricControllerEndPointsResponseOutput() ArtifactStoreNetworkFabricControllerEndPointsResponseOutput {
+	return o
+}
+
+func (o ArtifactStoreNetworkFabricControllerEndPointsResponseOutput) ToArtifactStoreNetworkFabricControllerEndPointsResponseOutputWithContext(ctx context.Context) ArtifactStoreNetworkFabricControllerEndPointsResponseOutput {
+	return o
+}
+
+// list of network fabric controllers.
+func (o ArtifactStoreNetworkFabricControllerEndPointsResponseOutput) NetworkFabricControllerIds() ReferencedResourceResponseArrayOutput {
+	return o.ApplyT(func(v ArtifactStoreNetworkFabricControllerEndPointsResponse) []ReferencedResourceResponse {
+		return v.NetworkFabricControllerIds
+	}).(ReferencedResourceResponseArrayOutput)
+}
+
+type ArtifactStoreNetworkFabricControllerEndPointsResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ArtifactStoreNetworkFabricControllerEndPointsResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ArtifactStoreNetworkFabricControllerEndPointsResponse)(nil)).Elem()
+}
+
+func (o ArtifactStoreNetworkFabricControllerEndPointsResponseArrayOutput) ToArtifactStoreNetworkFabricControllerEndPointsResponseArrayOutput() ArtifactStoreNetworkFabricControllerEndPointsResponseArrayOutput {
+	return o
+}
+
+func (o ArtifactStoreNetworkFabricControllerEndPointsResponseArrayOutput) ToArtifactStoreNetworkFabricControllerEndPointsResponseArrayOutputWithContext(ctx context.Context) ArtifactStoreNetworkFabricControllerEndPointsResponseArrayOutput {
+	return o
+}
+
+func (o ArtifactStoreNetworkFabricControllerEndPointsResponseArrayOutput) Index(i pulumi.IntInput) ArtifactStoreNetworkFabricControllerEndPointsResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ArtifactStoreNetworkFabricControllerEndPointsResponse {
+		return vs[0].([]ArtifactStoreNetworkFabricControllerEndPointsResponse)[vs[1].(int)]
+	}).(ArtifactStoreNetworkFabricControllerEndPointsResponseOutput)
+}
+
+// List of manual private endpoints.
+type ArtifactStorePrivateEndPointsFormatResponse struct {
+	// list of private endpoints.
+	ManualPrivateEndPointConnections []ReferencedResourceResponse `pulumi:"manualPrivateEndPointConnections"`
+}
+
+// List of manual private endpoints.
+type ArtifactStorePrivateEndPointsFormatResponseOutput struct{ *pulumi.OutputState }
+
+func (ArtifactStorePrivateEndPointsFormatResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ArtifactStorePrivateEndPointsFormatResponse)(nil)).Elem()
+}
+
+func (o ArtifactStorePrivateEndPointsFormatResponseOutput) ToArtifactStorePrivateEndPointsFormatResponseOutput() ArtifactStorePrivateEndPointsFormatResponseOutput {
+	return o
+}
+
+func (o ArtifactStorePrivateEndPointsFormatResponseOutput) ToArtifactStorePrivateEndPointsFormatResponseOutputWithContext(ctx context.Context) ArtifactStorePrivateEndPointsFormatResponseOutput {
+	return o
+}
+
+// list of private endpoints.
+func (o ArtifactStorePrivateEndPointsFormatResponseOutput) ManualPrivateEndPointConnections() ReferencedResourceResponseArrayOutput {
+	return o.ApplyT(func(v ArtifactStorePrivateEndPointsFormatResponse) []ReferencedResourceResponse {
+		return v.ManualPrivateEndPointConnections
+	}).(ReferencedResourceResponseArrayOutput)
+}
+
+type ArtifactStorePrivateEndPointsFormatResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ArtifactStorePrivateEndPointsFormatResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ArtifactStorePrivateEndPointsFormatResponse)(nil)).Elem()
+}
+
+func (o ArtifactStorePrivateEndPointsFormatResponseArrayOutput) ToArtifactStorePrivateEndPointsFormatResponseArrayOutput() ArtifactStorePrivateEndPointsFormatResponseArrayOutput {
+	return o
+}
+
+func (o ArtifactStorePrivateEndPointsFormatResponseArrayOutput) ToArtifactStorePrivateEndPointsFormatResponseArrayOutputWithContext(ctx context.Context) ArtifactStorePrivateEndPointsFormatResponseArrayOutput {
+	return o
+}
+
+func (o ArtifactStorePrivateEndPointsFormatResponseArrayOutput) Index(i pulumi.IntInput) ArtifactStorePrivateEndPointsFormatResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ArtifactStorePrivateEndPointsFormatResponse {
+		return vs[0].([]ArtifactStorePrivateEndPointsFormatResponse)[vs[1].(int)]
+	}).(ArtifactStorePrivateEndPointsFormatResponseOutput)
+}
+
 // Artifact store properties.
 type ArtifactStorePropertiesFormat struct {
 	ManagedResourceGroupConfiguration *ArtifactStorePropertiesFormatManagedResourceGroupConfiguration `pulumi:"managedResourceGroupConfiguration"`
@@ -17262,6 +17358,10 @@ func init() {
 	pulumi.RegisterOutputType(ArtifactManifestPropertiesFormatOutput{})
 	pulumi.RegisterOutputType(ArtifactManifestPropertiesFormatPtrOutput{})
 	pulumi.RegisterOutputType(ArtifactManifestPropertiesFormatResponseOutput{})
+	pulumi.RegisterOutputType(ArtifactStoreNetworkFabricControllerEndPointsResponseOutput{})
+	pulumi.RegisterOutputType(ArtifactStoreNetworkFabricControllerEndPointsResponseArrayOutput{})
+	pulumi.RegisterOutputType(ArtifactStorePrivateEndPointsFormatResponseOutput{})
+	pulumi.RegisterOutputType(ArtifactStorePrivateEndPointsFormatResponseArrayOutput{})
 	pulumi.RegisterOutputType(ArtifactStorePropertiesFormatOutput{})
 	pulumi.RegisterOutputType(ArtifactStorePropertiesFormatPtrOutput{})
 	pulumi.RegisterOutputType(ArtifactStorePropertiesFormatManagedResourceGroupConfigurationOutput{})

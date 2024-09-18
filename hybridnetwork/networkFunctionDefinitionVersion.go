@@ -14,6 +14,8 @@ import (
 
 // Network function definition version.
 // Azure REST API version: 2023-09-01.
+//
+// Other available API versions: 2024-04-15.
 type NetworkFunctionDefinitionVersion struct {
 	pulumi.CustomResourceState
 
@@ -50,6 +52,9 @@ func NewNetworkFunctionDefinitionVersion(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:hybridnetwork/v20230901:NetworkFunctionDefinitionVersion"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridnetwork/v20240415:NetworkFunctionDefinitionVersion"),
 		},
 	})
 	opts = append(opts, aliases)

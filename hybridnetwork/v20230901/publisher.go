@@ -46,6 +46,9 @@ func NewPublisher(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:hybridnetwork:Publisher"),
 		},
+		{
+			Type: pulumi.String("azure-native:hybridnetwork/v20240415:Publisher"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

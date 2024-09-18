@@ -13,6 +13,8 @@ import (
 
 // Gets information about the specified configuration group schema.
 // Azure REST API version: 2023-09-01.
+//
+// Other available API versions: 2024-04-15.
 func LookupConfigurationGroupSchema(ctx *pulumi.Context, args *LookupConfigurationGroupSchemaArgs, opts ...pulumi.InvokeOption) (*LookupConfigurationGroupSchemaResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupConfigurationGroupSchemaResult

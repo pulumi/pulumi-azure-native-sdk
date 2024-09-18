@@ -13,6 +13,8 @@ import (
 
 // Returns the description for the specified hybrid connection.
 // Azure REST API version: 2021-11-01.
+//
+// Other available API versions: 2024-01-01.
 func LookupHybridConnection(ctx *pulumi.Context, args *LookupHybridConnectionArgs, opts ...pulumi.InvokeOption) (*LookupHybridConnectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupHybridConnectionResult

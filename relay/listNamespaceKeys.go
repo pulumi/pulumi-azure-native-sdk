@@ -13,6 +13,8 @@ import (
 
 // Primary and secondary connection strings to the namespace.
 // Azure REST API version: 2021-11-01.
+//
+// Other available API versions: 2024-01-01.
 func ListNamespaceKeys(ctx *pulumi.Context, args *ListNamespaceKeysArgs, opts ...pulumi.InvokeOption) (*ListNamespaceKeysResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListNamespaceKeysResult

@@ -13,6 +13,8 @@ import (
 
 // Gets information about a network service design version.
 // Azure REST API version: 2023-09-01.
+//
+// Other available API versions: 2024-04-15.
 func LookupNetworkServiceDesignVersion(ctx *pulumi.Context, args *LookupNetworkServiceDesignVersionArgs, opts ...pulumi.InvokeOption) (*LookupNetworkServiceDesignVersionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNetworkServiceDesignVersionResult

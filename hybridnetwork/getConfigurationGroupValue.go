@@ -13,6 +13,8 @@ import (
 
 // Gets information about the specified hybrid configuration group values.
 // Azure REST API version: 2023-09-01.
+//
+// Other available API versions: 2024-04-15.
 func LookupConfigurationGroupValue(ctx *pulumi.Context, args *LookupConfigurationGroupValueArgs, opts ...pulumi.InvokeOption) (*LookupConfigurationGroupValueResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupConfigurationGroupValueResult

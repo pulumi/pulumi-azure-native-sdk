@@ -115,6 +115,9 @@ func NewJobStep(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:sql/v20230501preview:JobStep"),
 		},
+		{
+			Type: pulumi.String("azure-native:sql/v20240501preview:JobStep"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

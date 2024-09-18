@@ -14,6 +14,8 @@ import (
 
 // Description of a namespace resource.
 // Azure REST API version: 2021-11-01. Prior API version in Azure Native 1.x: 2017-04-01.
+//
+// Other available API versions: 2024-01-01.
 type Namespace struct {
 	pulumi.CustomResourceState
 
@@ -72,6 +74,9 @@ func NewNamespace(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:relay/v20211101:Namespace"),
+		},
+		{
+			Type: pulumi.String("azure-native:relay/v20240101:Namespace"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -14,6 +14,8 @@ import (
 
 // Artifact manifest properties.
 // Azure REST API version: 2023-09-01.
+//
+// Other available API versions: 2024-04-15.
 type ArtifactManifest struct {
 	pulumi.CustomResourceState
 
@@ -50,6 +52,9 @@ func NewArtifactManifest(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:hybridnetwork/v20230901:ArtifactManifest"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridnetwork/v20240415:ArtifactManifest"),
 		},
 	})
 	opts = append(opts, aliases)

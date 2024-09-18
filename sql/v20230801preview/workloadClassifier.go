@@ -105,6 +105,9 @@ func NewWorkloadClassifier(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:sql/v20230501preview:WorkloadClassifier"),
 		},
+		{
+			Type: pulumi.String("azure-native:sql/v20240501preview:WorkloadClassifier"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -15,7 +15,7 @@ import (
 // A custom domain
 // Azure REST API version: 2023-02-01.
 //
-// Other available API versions: 2023-03-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview.
+// Other available API versions: 2023-03-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-08-01-preview.
 type WebPubSubCustomDomain struct {
 	pulumi.CustomResourceState
 
@@ -76,6 +76,9 @@ func NewWebPubSubCustomDomain(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:webpubsub/v20240401preview:WebPubSubCustomDomain"),
+		},
+		{
+			Type: pulumi.String("azure-native:webpubsub/v20240801preview:WebPubSubCustomDomain"),
 		},
 	})
 	opts = append(opts, aliases)

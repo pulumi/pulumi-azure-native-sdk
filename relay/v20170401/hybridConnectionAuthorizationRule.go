@@ -53,6 +53,9 @@ func NewHybridConnectionAuthorizationRule(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:relay/v20211101:HybridConnectionAuthorizationRule"),
 		},
+		{
+			Type: pulumi.String("azure-native:relay/v20240101:HybridConnectionAuthorizationRule"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

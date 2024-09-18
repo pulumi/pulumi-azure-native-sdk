@@ -167,6 +167,9 @@ func NewManagedInstance(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:sql/v20230801preview:ManagedInstance"),
 		},
+		{
+			Type: pulumi.String("azure-native:sql/v20240501preview:ManagedInstance"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

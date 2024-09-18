@@ -50,6 +50,9 @@ func NewNetworkServiceDesignVersion(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:hybridnetwork:NetworkServiceDesignVersion"),
 		},
+		{
+			Type: pulumi.String("azure-native:hybridnetwork/v20240415:NetworkServiceDesignVersion"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

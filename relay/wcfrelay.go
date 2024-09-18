@@ -15,7 +15,7 @@ import (
 // Description of the WCF relay resource.
 // Azure REST API version: 2021-11-01. Prior API version in Azure Native 1.x: 2017-04-01.
 //
-// Other available API versions: 2016-07-01.
+// Other available API versions: 2016-07-01, 2024-01-01.
 type WCFRelay struct {
 	pulumi.CustomResourceState
 
@@ -67,6 +67,9 @@ func NewWCFRelay(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:relay/v20211101:WCFRelay"),
+		},
+		{
+			Type: pulumi.String("azure-native:relay/v20240101:WCFRelay"),
 		},
 	})
 	opts = append(opts, aliases)

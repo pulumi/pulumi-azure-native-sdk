@@ -187,6 +187,9 @@ func NewServerBlobAuditingPolicy(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:sql/v20230801preview:ServerBlobAuditingPolicy"),
 		},
+		{
+			Type: pulumi.String("azure-native:sql/v20240501preview:ServerBlobAuditingPolicy"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

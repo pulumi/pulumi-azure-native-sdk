@@ -14,7 +14,7 @@ import (
 // Authorization rule for a namespace by name.
 // Azure REST API version: 2021-11-01.
 //
-// Other available API versions: 2017-04-01.
+// Other available API versions: 2017-04-01, 2024-01-01.
 func LookupNamespaceAuthorizationRule(ctx *pulumi.Context, args *LookupNamespaceAuthorizationRuleArgs, opts ...pulumi.InvokeOption) (*LookupNamespaceAuthorizationRuleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNamespaceAuthorizationRuleResult

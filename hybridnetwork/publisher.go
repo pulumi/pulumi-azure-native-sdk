@@ -14,6 +14,8 @@ import (
 
 // publisher resource.
 // Azure REST API version: 2023-09-01.
+//
+// Other available API versions: 2024-04-15.
 type Publisher struct {
 	pulumi.CustomResourceState
 
@@ -46,6 +48,9 @@ func NewPublisher(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:hybridnetwork/v20230901:Publisher"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridnetwork/v20240415:Publisher"),
 		},
 	})
 	opts = append(opts, aliases)

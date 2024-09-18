@@ -64,6 +64,9 @@ func NewSignalRReplica(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:signalrservice/v20240401preview:SignalRReplica"),
 		},
+		{
+			Type: pulumi.String("azure-native:signalrservice/v20240801preview:SignalRReplica"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

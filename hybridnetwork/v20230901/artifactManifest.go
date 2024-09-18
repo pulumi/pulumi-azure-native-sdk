@@ -50,6 +50,9 @@ func NewArtifactManifest(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:hybridnetwork:ArtifactManifest"),
 		},
+		{
+			Type: pulumi.String("azure-native:hybridnetwork/v20240415:ArtifactManifest"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

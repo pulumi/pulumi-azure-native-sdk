@@ -72,6 +72,9 @@ func NewStartStopManagedInstanceSchedule(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:sql/v20230801preview:StartStopManagedInstanceSchedule"),
 		},
+		{
+			Type: pulumi.String("azure-native:sql/v20240501preview:StartStopManagedInstanceSchedule"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

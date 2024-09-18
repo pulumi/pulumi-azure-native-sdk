@@ -47,6 +47,9 @@ func NewConfigurationGroupSchema(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:hybridnetwork:ConfigurationGroupSchema"),
 		},
+		{
+			Type: pulumi.String("azure-native:hybridnetwork/v20240415:ConfigurationGroupSchema"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
