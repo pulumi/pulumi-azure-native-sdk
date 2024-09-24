@@ -55,7 +55,7 @@ type ScheduledQueryRule struct {
 	// This determines if traffic is allowed over public network. By default it is enabled.
 	PublicNetworkAccess pulumi.StringPtrOutput `pulumi:"publicNetworkAccess"`
 	// Defines the configuration for resolving fired alerts. Relevant only for rules of the kind LogAlert.
-	RuleResolveConfiguration RuleResolveConfigurationResponsePtrOutput `pulumi:"ruleResolveConfiguration"`
+	ResolveConfiguration RuleResolveConfigurationResponsePtrOutput `pulumi:"resolveConfiguration"`
 	// The list of resource id's that this scheduled query rule is scoped to.
 	Scopes pulumi.StringArrayOutput `pulumi:"scopes"`
 	// Severity of the alert. Should be an integer between [0-4]. Value of 0 is severest. Relevant and required only for rules of the kind LogAlert.
@@ -121,6 +121,9 @@ func NewScheduledQueryRule(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:insights/v20231201:ScheduledQueryRule"),
 		},
+		{
+			Type: pulumi.String("azure-native:insights/v20240101preview:ScheduledQueryRule"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -184,12 +187,12 @@ type scheduledQueryRuleArgs struct {
 	OverrideQueryTimeRange *string `pulumi:"overrideQueryTimeRange"`
 	// This determines if traffic is allowed over public network. By default it is enabled.
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
+	// Defines the configuration for resolving fired alerts. Relevant only for rules of the kind LogAlert.
+	ResolveConfiguration *RuleResolveConfiguration `pulumi:"resolveConfiguration"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the rule.
 	RuleName *string `pulumi:"ruleName"`
-	// Defines the configuration for resolving fired alerts. Relevant only for rules of the kind LogAlert.
-	RuleResolveConfiguration *RuleResolveConfiguration `pulumi:"ruleResolveConfiguration"`
 	// The list of resource id's that this scheduled query rule is scoped to.
 	Scopes []string `pulumi:"scopes"`
 	// Severity of the alert. Should be an integer between [0-4]. Value of 0 is severest. Relevant and required only for rules of the kind LogAlert.
@@ -234,12 +237,12 @@ type ScheduledQueryRuleArgs struct {
 	OverrideQueryTimeRange pulumi.StringPtrInput
 	// This determines if traffic is allowed over public network. By default it is enabled.
 	PublicNetworkAccess pulumi.StringPtrInput
+	// Defines the configuration for resolving fired alerts. Relevant only for rules of the kind LogAlert.
+	ResolveConfiguration RuleResolveConfigurationPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The name of the rule.
 	RuleName pulumi.StringPtrInput
-	// Defines the configuration for resolving fired alerts. Relevant only for rules of the kind LogAlert.
-	RuleResolveConfiguration RuleResolveConfigurationPtrInput
 	// The list of resource id's that this scheduled query rule is scoped to.
 	Scopes pulumi.StringArrayInput
 	// Severity of the alert. Should be an integer between [0-4]. Value of 0 is severest. Relevant and required only for rules of the kind LogAlert.
@@ -387,10 +390,8 @@ func (o ScheduledQueryRuleOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
 }
 
 // Defines the configuration for resolving fired alerts. Relevant only for rules of the kind LogAlert.
-func (o ScheduledQueryRuleOutput) RuleResolveConfiguration() RuleResolveConfigurationResponsePtrOutput {
-	return o.ApplyT(func(v *ScheduledQueryRule) RuleResolveConfigurationResponsePtrOutput {
-		return v.RuleResolveConfiguration
-	}).(RuleResolveConfigurationResponsePtrOutput)
+func (o ScheduledQueryRuleOutput) ResolveConfiguration() RuleResolveConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *ScheduledQueryRule) RuleResolveConfigurationResponsePtrOutput { return v.ResolveConfiguration }).(RuleResolveConfigurationResponsePtrOutput)
 }
 
 // The list of resource id's that this scheduled query rule is scoped to.

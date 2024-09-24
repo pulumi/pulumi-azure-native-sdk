@@ -116,6 +116,9 @@ func NewServer(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:dbformysql/v20240201preview:Server"),
 		},
+		{
+			Type: pulumi.String("azure-native:dbformysql/v20240601preview:Server"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

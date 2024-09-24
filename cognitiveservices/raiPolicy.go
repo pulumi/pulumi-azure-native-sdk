@@ -15,7 +15,7 @@ import (
 // Cognitive Services RaiPolicy.
 // Azure REST API version: 2023-10-01-preview.
 //
-// Other available API versions: 2024-04-01-preview, 2024-06-01-preview.
+// Other available API versions: 2024-04-01-preview, 2024-06-01-preview, 2024-10-01.
 type RaiPolicy struct {
 	pulumi.CustomResourceState
 
@@ -55,6 +55,9 @@ func NewRaiPolicy(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:cognitiveservices/v20240601preview:RaiPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:cognitiveservices/v20241001:RaiPolicy"),
 		},
 	})
 	opts = append(opts, aliases)

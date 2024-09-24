@@ -70,6 +70,9 @@ func NewPipelineGroup(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:monitor:PipelineGroup"),
 		},
+		{
+			Type: pulumi.String("azure-native:monitor/v20241001preview:PipelineGroup"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -15,7 +15,7 @@ import (
 // The scheduled query rule resource.
 // Azure REST API version: 2023-03-15-preview. Prior API version in Azure Native 1.x: 2018-04-16.
 //
-// Other available API versions: 2018-04-16, 2020-05-01-preview, 2022-08-01-preview, 2023-12-01.
+// Other available API versions: 2018-04-16, 2020-05-01-preview, 2022-08-01-preview, 2023-12-01, 2024-01-01-preview.
 type ScheduledQueryRule struct {
 	pulumi.CustomResourceState
 
@@ -56,7 +56,7 @@ type ScheduledQueryRule struct {
 	// If specified then overrides the query time range (default is WindowSize*NumberOfEvaluationPeriods). Relevant only for rules of the kind LogAlert.
 	OverrideQueryTimeRange pulumi.StringPtrOutput `pulumi:"overrideQueryTimeRange"`
 	// Defines the configuration for resolving fired alerts. Relevant only for rules of the kind LogAlert.
-	RuleResolveConfiguration RuleResolveConfigurationResponsePtrOutput `pulumi:"ruleResolveConfiguration"`
+	ResolveConfiguration RuleResolveConfigurationResponsePtrOutput `pulumi:"resolveConfiguration"`
 	// The list of resource id's that this scheduled query rule is scoped to.
 	Scopes pulumi.StringArrayOutput `pulumi:"scopes"`
 	// Severity of the alert. Should be an integer between [0-4]. Value of 0 is severest. Relevant and required only for rules of the kind LogAlert.
@@ -119,6 +119,9 @@ func NewScheduledQueryRule(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:insights/v20231201:ScheduledQueryRule"),
 		},
+		{
+			Type: pulumi.String("azure-native:insights/v20240101preview:ScheduledQueryRule"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -180,12 +183,12 @@ type scheduledQueryRuleArgs struct {
 	MuteActionsDuration *string `pulumi:"muteActionsDuration"`
 	// If specified then overrides the query time range (default is WindowSize*NumberOfEvaluationPeriods). Relevant only for rules of the kind LogAlert.
 	OverrideQueryTimeRange *string `pulumi:"overrideQueryTimeRange"`
+	// Defines the configuration for resolving fired alerts. Relevant only for rules of the kind LogAlert.
+	ResolveConfiguration *RuleResolveConfiguration `pulumi:"resolveConfiguration"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the rule.
 	RuleName *string `pulumi:"ruleName"`
-	// Defines the configuration for resolving fired alerts. Relevant only for rules of the kind LogAlert.
-	RuleResolveConfiguration *RuleResolveConfiguration `pulumi:"ruleResolveConfiguration"`
 	// The list of resource id's that this scheduled query rule is scoped to.
 	Scopes []string `pulumi:"scopes"`
 	// Severity of the alert. Should be an integer between [0-4]. Value of 0 is severest. Relevant and required only for rules of the kind LogAlert.
@@ -228,12 +231,12 @@ type ScheduledQueryRuleArgs struct {
 	MuteActionsDuration pulumi.StringPtrInput
 	// If specified then overrides the query time range (default is WindowSize*NumberOfEvaluationPeriods). Relevant only for rules of the kind LogAlert.
 	OverrideQueryTimeRange pulumi.StringPtrInput
+	// Defines the configuration for resolving fired alerts. Relevant only for rules of the kind LogAlert.
+	ResolveConfiguration RuleResolveConfigurationPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The name of the rule.
 	RuleName pulumi.StringPtrInput
-	// Defines the configuration for resolving fired alerts. Relevant only for rules of the kind LogAlert.
-	RuleResolveConfiguration RuleResolveConfigurationPtrInput
 	// The list of resource id's that this scheduled query rule is scoped to.
 	Scopes pulumi.StringArrayInput
 	// Severity of the alert. Should be an integer between [0-4]. Value of 0 is severest. Relevant and required only for rules of the kind LogAlert.
@@ -376,10 +379,8 @@ func (o ScheduledQueryRuleOutput) OverrideQueryTimeRange() pulumi.StringPtrOutpu
 }
 
 // Defines the configuration for resolving fired alerts. Relevant only for rules of the kind LogAlert.
-func (o ScheduledQueryRuleOutput) RuleResolveConfiguration() RuleResolveConfigurationResponsePtrOutput {
-	return o.ApplyT(func(v *ScheduledQueryRule) RuleResolveConfigurationResponsePtrOutput {
-		return v.RuleResolveConfiguration
-	}).(RuleResolveConfigurationResponsePtrOutput)
+func (o ScheduledQueryRuleOutput) ResolveConfiguration() RuleResolveConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *ScheduledQueryRule) RuleResolveConfigurationResponsePtrOutput { return v.ResolveConfiguration }).(RuleResolveConfigurationResponsePtrOutput)
 }
 
 // The list of resource id's that this scheduled query rule is scoped to.

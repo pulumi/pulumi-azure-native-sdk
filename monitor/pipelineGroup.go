@@ -14,6 +14,8 @@ import (
 
 // A pipeline group definition.
 // Azure REST API version: 2023-10-01-preview.
+//
+// Other available API versions: 2024-10-01-preview.
 type PipelineGroup struct {
 	pulumi.CustomResourceState
 
@@ -70,6 +72,9 @@ func NewPipelineGroup(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:monitor/v20231001preview:PipelineGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:monitor/v20241001preview:PipelineGroup"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -13,6 +13,8 @@ import (
 
 // Returns the specific pipeline group instance.
 // Azure REST API version: 2023-10-01-preview.
+//
+// Other available API versions: 2024-10-01-preview.
 func LookupPipelineGroup(ctx *pulumi.Context, args *LookupPipelineGroupArgs, opts ...pulumi.InvokeOption) (*LookupPipelineGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPipelineGroupResult
