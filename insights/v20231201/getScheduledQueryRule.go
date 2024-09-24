@@ -70,7 +70,7 @@ type LookupScheduledQueryRuleResult struct {
 	// If specified then overrides the query time range (default is WindowSize*NumberOfEvaluationPeriods). Relevant only for rules of the kind LogAlert.
 	OverrideQueryTimeRange *string `pulumi:"overrideQueryTimeRange"`
 	// Defines the configuration for resolving fired alerts. Relevant only for rules of the kind LogAlert.
-	RuleResolveConfiguration *RuleResolveConfigurationResponse `pulumi:"ruleResolveConfiguration"`
+	ResolveConfiguration *RuleResolveConfigurationResponse `pulumi:"resolveConfiguration"`
 	// The list of resource id's that this scheduled query rule is scoped to.
 	Scopes []string `pulumi:"scopes"`
 	// Severity of the alert. Should be an integer between [0-4]. Value of 0 is severest. Relevant and required only for rules of the kind LogAlert.
@@ -230,9 +230,9 @@ func (o LookupScheduledQueryRuleResultOutput) OverrideQueryTimeRange() pulumi.St
 }
 
 // Defines the configuration for resolving fired alerts. Relevant only for rules of the kind LogAlert.
-func (o LookupScheduledQueryRuleResultOutput) RuleResolveConfiguration() RuleResolveConfigurationResponsePtrOutput {
+func (o LookupScheduledQueryRuleResultOutput) ResolveConfiguration() RuleResolveConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v LookupScheduledQueryRuleResult) *RuleResolveConfigurationResponse {
-		return v.RuleResolveConfiguration
+		return v.ResolveConfiguration
 	}).(RuleResolveConfigurationResponsePtrOutput)
 }
 

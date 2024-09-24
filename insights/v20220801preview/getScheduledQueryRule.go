@@ -72,7 +72,7 @@ type LookupScheduledQueryRuleResult struct {
 	// This determines if traffic is allowed over public network. By default it is enabled.
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// Defines the configuration for resolving fired alerts. Relevant only for rules of the kind LogAlert.
-	RuleResolveConfiguration *RuleResolveConfigurationResponse `pulumi:"ruleResolveConfiguration"`
+	ResolveConfiguration *RuleResolveConfigurationResponse `pulumi:"resolveConfiguration"`
 	// The list of resource id's that this scheduled query rule is scoped to.
 	Scopes []string `pulumi:"scopes"`
 	// Severity of the alert. Should be an integer between [0-4]. Value of 0 is severest. Relevant and required only for rules of the kind LogAlert.
@@ -250,9 +250,9 @@ func (o LookupScheduledQueryRuleResultOutput) PublicNetworkAccess() pulumi.Strin
 }
 
 // Defines the configuration for resolving fired alerts. Relevant only for rules of the kind LogAlert.
-func (o LookupScheduledQueryRuleResultOutput) RuleResolveConfiguration() RuleResolveConfigurationResponsePtrOutput {
+func (o LookupScheduledQueryRuleResultOutput) ResolveConfiguration() RuleResolveConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v LookupScheduledQueryRuleResult) *RuleResolveConfigurationResponse {
-		return v.RuleResolveConfiguration
+		return v.ResolveConfiguration
 	}).(RuleResolveConfigurationResponsePtrOutput)
 }
 

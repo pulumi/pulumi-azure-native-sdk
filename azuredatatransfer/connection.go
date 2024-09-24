@@ -15,7 +15,7 @@ import (
 // The connection resource definition.
 // Azure REST API version: 2023-10-11-preview.
 //
-// Other available API versions: 2024-01-25, 2024-05-07.
+// Other available API versions: 2024-01-25, 2024-05-07, 2024-09-11.
 type Connection struct {
 	pulumi.CustomResourceState
 
@@ -52,6 +52,9 @@ func NewConnection(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azuredatatransfer/v20240507:Connection"),
+		},
+		{
+			Type: pulumi.String("azure-native:azuredatatransfer/v20240911:Connection"),
 		},
 	})
 	opts = append(opts, aliases)

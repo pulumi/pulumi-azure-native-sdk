@@ -5004,6 +5004,8 @@ type ServiceNowV2Source struct {
 	Expression *ExpressionV2 `pulumi:"expression"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// Page size of the result. Type: integer (or Expression with resultType integer).
+	PageSize interface{} `pulumi:"pageSize"`
 	// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
 	QueryTimeout interface{} `pulumi:"queryTimeout"`
 	// Source retry count. Type: integer (or Expression with resultType integer).
@@ -5036,6 +5038,8 @@ type ServiceNowV2SourceArgs struct {
 	Expression ExpressionV2PtrInput `pulumi:"expression"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 	MaxConcurrentConnections pulumi.Input `pulumi:"maxConcurrentConnections"`
+	// Page size of the result. Type: integer (or Expression with resultType integer).
+	PageSize pulumi.Input `pulumi:"pageSize"`
 	// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
 	QueryTimeout pulumi.Input `pulumi:"queryTimeout"`
 	// Source retry count. Type: integer (or Expression with resultType integer).
@@ -5094,6 +5098,11 @@ func (o ServiceNowV2SourceOutput) MaxConcurrentConnections() pulumi.AnyOutput {
 	return o.ApplyT(func(v ServiceNowV2Source) interface{} { return v.MaxConcurrentConnections }).(pulumi.AnyOutput)
 }
 
+// Page size of the result. Type: integer (or Expression with resultType integer).
+func (o ServiceNowV2SourceOutput) PageSize() pulumi.AnyOutput {
+	return o.ApplyT(func(v ServiceNowV2Source) interface{} { return v.PageSize }).(pulumi.AnyOutput)
+}
+
 // Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
 func (o ServiceNowV2SourceOutput) QueryTimeout() pulumi.AnyOutput {
 	return o.ApplyT(func(v ServiceNowV2Source) interface{} { return v.QueryTimeout }).(pulumi.AnyOutput)
@@ -5125,6 +5134,8 @@ type ServiceNowV2SourceResponse struct {
 	Expression *ExpressionV2Response `pulumi:"expression"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// Page size of the result. Type: integer (or Expression with resultType integer).
+	PageSize interface{} `pulumi:"pageSize"`
 	// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
 	QueryTimeout interface{} `pulumi:"queryTimeout"`
 	// Source retry count. Type: integer (or Expression with resultType integer).
@@ -5169,6 +5180,11 @@ func (o ServiceNowV2SourceResponseOutput) Expression() ExpressionV2ResponsePtrOu
 // The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 func (o ServiceNowV2SourceResponseOutput) MaxConcurrentConnections() pulumi.AnyOutput {
 	return o.ApplyT(func(v ServiceNowV2SourceResponse) interface{} { return v.MaxConcurrentConnections }).(pulumi.AnyOutput)
+}
+
+// Page size of the result. Type: integer (or Expression with resultType integer).
+func (o ServiceNowV2SourceResponseOutput) PageSize() pulumi.AnyOutput {
+	return o.ApplyT(func(v ServiceNowV2SourceResponse) interface{} { return v.PageSize }).(pulumi.AnyOutput)
 }
 
 // Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).

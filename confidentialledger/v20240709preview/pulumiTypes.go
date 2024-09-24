@@ -755,6 +755,10 @@ type LedgerProperties struct {
 	RunningState *string `pulumi:"runningState"`
 	// CCF Property for the subject name to include in the node certificate. Default: CN=CCF Node.
 	SubjectName *string `pulumi:"subjectName"`
+	// Number of additional threads processing incoming client requests in the enclave (modify with care!)
+	WorkerThreads *int `pulumi:"workerThreads"`
+	// Prefix for the write load balancer. Example: write
+	WriteLBAddressPrefix *string `pulumi:"writeLBAddressPrefix"`
 }
 
 // LedgerPropertiesInput is an input type that accepts LedgerPropertiesArgs and LedgerPropertiesOutput values.
@@ -788,6 +792,10 @@ type LedgerPropertiesArgs struct {
 	RunningState pulumi.StringPtrInput `pulumi:"runningState"`
 	// CCF Property for the subject name to include in the node certificate. Default: CN=CCF Node.
 	SubjectName pulumi.StringPtrInput `pulumi:"subjectName"`
+	// Number of additional threads processing incoming client requests in the enclave (modify with care!)
+	WorkerThreads pulumi.IntPtrInput `pulumi:"workerThreads"`
+	// Prefix for the write load balancer. Example: write
+	WriteLBAddressPrefix pulumi.StringPtrInput `pulumi:"writeLBAddressPrefix"`
 }
 
 func (LedgerPropertiesArgs) ElementType() reflect.Type {
@@ -913,6 +921,16 @@ func (o LedgerPropertiesOutput) SubjectName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LedgerProperties) *string { return v.SubjectName }).(pulumi.StringPtrOutput)
 }
 
+// Number of additional threads processing incoming client requests in the enclave (modify with care!)
+func (o LedgerPropertiesOutput) WorkerThreads() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LedgerProperties) *int { return v.WorkerThreads }).(pulumi.IntPtrOutput)
+}
+
+// Prefix for the write load balancer. Example: write
+func (o LedgerPropertiesOutput) WriteLBAddressPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LedgerProperties) *string { return v.WriteLBAddressPrefix }).(pulumi.StringPtrOutput)
+}
+
 type LedgerPropertiesPtrOutput struct{ *pulumi.OutputState }
 
 func (LedgerPropertiesPtrOutput) ElementType() reflect.Type {
@@ -1027,6 +1045,26 @@ func (o LedgerPropertiesPtrOutput) SubjectName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Number of additional threads processing incoming client requests in the enclave (modify with care!)
+func (o LedgerPropertiesPtrOutput) WorkerThreads() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LedgerProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.WorkerThreads
+	}).(pulumi.IntPtrOutput)
+}
+
+// Prefix for the write load balancer. Example: write
+func (o LedgerPropertiesPtrOutput) WriteLBAddressPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LedgerProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WriteLBAddressPrefix
+	}).(pulumi.StringPtrOutput)
+}
+
 // Additional Confidential Ledger properties.
 type LedgerPropertiesResponse struct {
 	// Array of all AAD based Security Principals.
@@ -1057,6 +1095,10 @@ type LedgerPropertiesResponse struct {
 	RunningState *string `pulumi:"runningState"`
 	// CCF Property for the subject name to include in the node certificate. Default: CN=CCF Node.
 	SubjectName *string `pulumi:"subjectName"`
+	// Number of additional threads processing incoming client requests in the enclave (modify with care!)
+	WorkerThreads *int `pulumi:"workerThreads"`
+	// Prefix for the write load balancer. Example: write
+	WriteLBAddressPrefix *string `pulumi:"writeLBAddressPrefix"`
 }
 
 // Additional Confidential Ledger properties.
@@ -1146,6 +1188,16 @@ func (o LedgerPropertiesResponseOutput) RunningState() pulumi.StringPtrOutput {
 // CCF Property for the subject name to include in the node certificate. Default: CN=CCF Node.
 func (o LedgerPropertiesResponseOutput) SubjectName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LedgerPropertiesResponse) *string { return v.SubjectName }).(pulumi.StringPtrOutput)
+}
+
+// Number of additional threads processing incoming client requests in the enclave (modify with care!)
+func (o LedgerPropertiesResponseOutput) WorkerThreads() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LedgerPropertiesResponse) *int { return v.WorkerThreads }).(pulumi.IntPtrOutput)
+}
+
+// Prefix for the write load balancer. Example: write
+func (o LedgerPropertiesResponseOutput) WriteLBAddressPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LedgerPropertiesResponse) *string { return v.WriteLBAddressPrefix }).(pulumi.StringPtrOutput)
 }
 
 // Additional Managed CCF properties.

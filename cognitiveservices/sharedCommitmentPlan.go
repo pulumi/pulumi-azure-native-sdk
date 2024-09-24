@@ -15,7 +15,7 @@ import (
 // Cognitive Services account commitment plan.
 // Azure REST API version: 2023-05-01.
 //
-// Other available API versions: 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview.
+// Other available API versions: 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview, 2024-10-01.
 type SharedCommitmentPlan struct {
 	pulumi.CustomResourceState
 
@@ -64,6 +64,9 @@ func NewSharedCommitmentPlan(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:cognitiveservices/v20240601preview:SharedCommitmentPlan"),
+		},
+		{
+			Type: pulumi.String("azure-native:cognitiveservices/v20241001:SharedCommitmentPlan"),
 		},
 	})
 	opts = append(opts, aliases)

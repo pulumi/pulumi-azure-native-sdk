@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:containerservice:AgentPool":
 		r = &AgentPool{}
+	case "azure-native:containerservice:AutoUpgradeProfile":
+		r = &AutoUpgradeProfile{}
 	case "azure-native:containerservice:Fleet":
 		r = &Fleet{}
 	case "azure-native:containerservice:FleetMember":

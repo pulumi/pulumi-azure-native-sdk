@@ -213,6 +213,206 @@ func (o AgentPoolUpgradeSettingsResponsePtrOutput) MaxSurge() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The node image upgrade to be applied to the target clusters in auto upgrade.
+type AutoUpgradeNodeImageSelection struct {
+	// The node image upgrade type.
+	Type string `pulumi:"type"`
+}
+
+// AutoUpgradeNodeImageSelectionInput is an input type that accepts AutoUpgradeNodeImageSelectionArgs and AutoUpgradeNodeImageSelectionOutput values.
+// You can construct a concrete instance of `AutoUpgradeNodeImageSelectionInput` via:
+//
+//	AutoUpgradeNodeImageSelectionArgs{...}
+type AutoUpgradeNodeImageSelectionInput interface {
+	pulumi.Input
+
+	ToAutoUpgradeNodeImageSelectionOutput() AutoUpgradeNodeImageSelectionOutput
+	ToAutoUpgradeNodeImageSelectionOutputWithContext(context.Context) AutoUpgradeNodeImageSelectionOutput
+}
+
+// The node image upgrade to be applied to the target clusters in auto upgrade.
+type AutoUpgradeNodeImageSelectionArgs struct {
+	// The node image upgrade type.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (AutoUpgradeNodeImageSelectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoUpgradeNodeImageSelection)(nil)).Elem()
+}
+
+func (i AutoUpgradeNodeImageSelectionArgs) ToAutoUpgradeNodeImageSelectionOutput() AutoUpgradeNodeImageSelectionOutput {
+	return i.ToAutoUpgradeNodeImageSelectionOutputWithContext(context.Background())
+}
+
+func (i AutoUpgradeNodeImageSelectionArgs) ToAutoUpgradeNodeImageSelectionOutputWithContext(ctx context.Context) AutoUpgradeNodeImageSelectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoUpgradeNodeImageSelectionOutput)
+}
+
+func (i AutoUpgradeNodeImageSelectionArgs) ToAutoUpgradeNodeImageSelectionPtrOutput() AutoUpgradeNodeImageSelectionPtrOutput {
+	return i.ToAutoUpgradeNodeImageSelectionPtrOutputWithContext(context.Background())
+}
+
+func (i AutoUpgradeNodeImageSelectionArgs) ToAutoUpgradeNodeImageSelectionPtrOutputWithContext(ctx context.Context) AutoUpgradeNodeImageSelectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoUpgradeNodeImageSelectionOutput).ToAutoUpgradeNodeImageSelectionPtrOutputWithContext(ctx)
+}
+
+// AutoUpgradeNodeImageSelectionPtrInput is an input type that accepts AutoUpgradeNodeImageSelectionArgs, AutoUpgradeNodeImageSelectionPtr and AutoUpgradeNodeImageSelectionPtrOutput values.
+// You can construct a concrete instance of `AutoUpgradeNodeImageSelectionPtrInput` via:
+//
+//	        AutoUpgradeNodeImageSelectionArgs{...}
+//
+//	or:
+//
+//	        nil
+type AutoUpgradeNodeImageSelectionPtrInput interface {
+	pulumi.Input
+
+	ToAutoUpgradeNodeImageSelectionPtrOutput() AutoUpgradeNodeImageSelectionPtrOutput
+	ToAutoUpgradeNodeImageSelectionPtrOutputWithContext(context.Context) AutoUpgradeNodeImageSelectionPtrOutput
+}
+
+type autoUpgradeNodeImageSelectionPtrType AutoUpgradeNodeImageSelectionArgs
+
+func AutoUpgradeNodeImageSelectionPtr(v *AutoUpgradeNodeImageSelectionArgs) AutoUpgradeNodeImageSelectionPtrInput {
+	return (*autoUpgradeNodeImageSelectionPtrType)(v)
+}
+
+func (*autoUpgradeNodeImageSelectionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutoUpgradeNodeImageSelection)(nil)).Elem()
+}
+
+func (i *autoUpgradeNodeImageSelectionPtrType) ToAutoUpgradeNodeImageSelectionPtrOutput() AutoUpgradeNodeImageSelectionPtrOutput {
+	return i.ToAutoUpgradeNodeImageSelectionPtrOutputWithContext(context.Background())
+}
+
+func (i *autoUpgradeNodeImageSelectionPtrType) ToAutoUpgradeNodeImageSelectionPtrOutputWithContext(ctx context.Context) AutoUpgradeNodeImageSelectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoUpgradeNodeImageSelectionPtrOutput)
+}
+
+// The node image upgrade to be applied to the target clusters in auto upgrade.
+type AutoUpgradeNodeImageSelectionOutput struct{ *pulumi.OutputState }
+
+func (AutoUpgradeNodeImageSelectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoUpgradeNodeImageSelection)(nil)).Elem()
+}
+
+func (o AutoUpgradeNodeImageSelectionOutput) ToAutoUpgradeNodeImageSelectionOutput() AutoUpgradeNodeImageSelectionOutput {
+	return o
+}
+
+func (o AutoUpgradeNodeImageSelectionOutput) ToAutoUpgradeNodeImageSelectionOutputWithContext(ctx context.Context) AutoUpgradeNodeImageSelectionOutput {
+	return o
+}
+
+func (o AutoUpgradeNodeImageSelectionOutput) ToAutoUpgradeNodeImageSelectionPtrOutput() AutoUpgradeNodeImageSelectionPtrOutput {
+	return o.ToAutoUpgradeNodeImageSelectionPtrOutputWithContext(context.Background())
+}
+
+func (o AutoUpgradeNodeImageSelectionOutput) ToAutoUpgradeNodeImageSelectionPtrOutputWithContext(ctx context.Context) AutoUpgradeNodeImageSelectionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutoUpgradeNodeImageSelection) *AutoUpgradeNodeImageSelection {
+		return &v
+	}).(AutoUpgradeNodeImageSelectionPtrOutput)
+}
+
+// The node image upgrade type.
+func (o AutoUpgradeNodeImageSelectionOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v AutoUpgradeNodeImageSelection) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type AutoUpgradeNodeImageSelectionPtrOutput struct{ *pulumi.OutputState }
+
+func (AutoUpgradeNodeImageSelectionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutoUpgradeNodeImageSelection)(nil)).Elem()
+}
+
+func (o AutoUpgradeNodeImageSelectionPtrOutput) ToAutoUpgradeNodeImageSelectionPtrOutput() AutoUpgradeNodeImageSelectionPtrOutput {
+	return o
+}
+
+func (o AutoUpgradeNodeImageSelectionPtrOutput) ToAutoUpgradeNodeImageSelectionPtrOutputWithContext(ctx context.Context) AutoUpgradeNodeImageSelectionPtrOutput {
+	return o
+}
+
+func (o AutoUpgradeNodeImageSelectionPtrOutput) Elem() AutoUpgradeNodeImageSelectionOutput {
+	return o.ApplyT(func(v *AutoUpgradeNodeImageSelection) AutoUpgradeNodeImageSelection {
+		if v != nil {
+			return *v
+		}
+		var ret AutoUpgradeNodeImageSelection
+		return ret
+	}).(AutoUpgradeNodeImageSelectionOutput)
+}
+
+// The node image upgrade type.
+func (o AutoUpgradeNodeImageSelectionPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutoUpgradeNodeImageSelection) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The node image upgrade to be applied to the target clusters in auto upgrade.
+type AutoUpgradeNodeImageSelectionResponse struct {
+	// The node image upgrade type.
+	Type string `pulumi:"type"`
+}
+
+// The node image upgrade to be applied to the target clusters in auto upgrade.
+type AutoUpgradeNodeImageSelectionResponseOutput struct{ *pulumi.OutputState }
+
+func (AutoUpgradeNodeImageSelectionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoUpgradeNodeImageSelectionResponse)(nil)).Elem()
+}
+
+func (o AutoUpgradeNodeImageSelectionResponseOutput) ToAutoUpgradeNodeImageSelectionResponseOutput() AutoUpgradeNodeImageSelectionResponseOutput {
+	return o
+}
+
+func (o AutoUpgradeNodeImageSelectionResponseOutput) ToAutoUpgradeNodeImageSelectionResponseOutputWithContext(ctx context.Context) AutoUpgradeNodeImageSelectionResponseOutput {
+	return o
+}
+
+// The node image upgrade type.
+func (o AutoUpgradeNodeImageSelectionResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v AutoUpgradeNodeImageSelectionResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type AutoUpgradeNodeImageSelectionResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AutoUpgradeNodeImageSelectionResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutoUpgradeNodeImageSelectionResponse)(nil)).Elem()
+}
+
+func (o AutoUpgradeNodeImageSelectionResponsePtrOutput) ToAutoUpgradeNodeImageSelectionResponsePtrOutput() AutoUpgradeNodeImageSelectionResponsePtrOutput {
+	return o
+}
+
+func (o AutoUpgradeNodeImageSelectionResponsePtrOutput) ToAutoUpgradeNodeImageSelectionResponsePtrOutputWithContext(ctx context.Context) AutoUpgradeNodeImageSelectionResponsePtrOutput {
+	return o
+}
+
+func (o AutoUpgradeNodeImageSelectionResponsePtrOutput) Elem() AutoUpgradeNodeImageSelectionResponseOutput {
+	return o.ApplyT(func(v *AutoUpgradeNodeImageSelectionResponse) AutoUpgradeNodeImageSelectionResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AutoUpgradeNodeImageSelectionResponse
+		return ret
+	}).(AutoUpgradeNodeImageSelectionResponseOutput)
+}
+
+// The node image upgrade type.
+func (o AutoUpgradeNodeImageSelectionResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutoUpgradeNodeImageSelectionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 // Azure Key Vault key management service settings for the security profile.
 type AzureKeyVaultKms struct {
 	// Whether to enable Azure Key Vault key management service. The default is false.
@@ -21131,6 +21331,10 @@ func init() {
 	pulumi.RegisterOutputType(AgentPoolUpgradeSettingsPtrOutput{})
 	pulumi.RegisterOutputType(AgentPoolUpgradeSettingsResponseOutput{})
 	pulumi.RegisterOutputType(AgentPoolUpgradeSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(AutoUpgradeNodeImageSelectionOutput{})
+	pulumi.RegisterOutputType(AutoUpgradeNodeImageSelectionPtrOutput{})
+	pulumi.RegisterOutputType(AutoUpgradeNodeImageSelectionResponseOutput{})
+	pulumi.RegisterOutputType(AutoUpgradeNodeImageSelectionResponsePtrOutput{})
 	pulumi.RegisterOutputType(AzureKeyVaultKmsOutput{})
 	pulumi.RegisterOutputType(AzureKeyVaultKmsPtrOutput{})
 	pulumi.RegisterOutputType(AzureKeyVaultKmsResponseOutput{})

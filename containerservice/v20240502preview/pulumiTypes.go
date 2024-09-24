@@ -13,6 +13,278 @@ import (
 
 var _ = utilities.GetEnvOrDefault
 
+// Access profile for the Fleet hub API server.
+type APIServerAccessProfile struct {
+	// Whether to create the Fleet hub as a private cluster or not.
+	EnablePrivateCluster *bool `pulumi:"enablePrivateCluster"`
+	// Whether to enable apiserver vnet integration for the Fleet hub or not.
+	EnableVnetIntegration *bool `pulumi:"enableVnetIntegration"`
+	// The subnet to be used when apiserver vnet integration is enabled. It is required when creating a new Fleet with BYO vnet.
+	SubnetId *string `pulumi:"subnetId"`
+}
+
+// APIServerAccessProfileInput is an input type that accepts APIServerAccessProfileArgs and APIServerAccessProfileOutput values.
+// You can construct a concrete instance of `APIServerAccessProfileInput` via:
+//
+//	APIServerAccessProfileArgs{...}
+type APIServerAccessProfileInput interface {
+	pulumi.Input
+
+	ToAPIServerAccessProfileOutput() APIServerAccessProfileOutput
+	ToAPIServerAccessProfileOutputWithContext(context.Context) APIServerAccessProfileOutput
+}
+
+// Access profile for the Fleet hub API server.
+type APIServerAccessProfileArgs struct {
+	// Whether to create the Fleet hub as a private cluster or not.
+	EnablePrivateCluster pulumi.BoolPtrInput `pulumi:"enablePrivateCluster"`
+	// Whether to enable apiserver vnet integration for the Fleet hub or not.
+	EnableVnetIntegration pulumi.BoolPtrInput `pulumi:"enableVnetIntegration"`
+	// The subnet to be used when apiserver vnet integration is enabled. It is required when creating a new Fleet with BYO vnet.
+	SubnetId pulumi.StringPtrInput `pulumi:"subnetId"`
+}
+
+func (APIServerAccessProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*APIServerAccessProfile)(nil)).Elem()
+}
+
+func (i APIServerAccessProfileArgs) ToAPIServerAccessProfileOutput() APIServerAccessProfileOutput {
+	return i.ToAPIServerAccessProfileOutputWithContext(context.Background())
+}
+
+func (i APIServerAccessProfileArgs) ToAPIServerAccessProfileOutputWithContext(ctx context.Context) APIServerAccessProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(APIServerAccessProfileOutput)
+}
+
+func (i APIServerAccessProfileArgs) ToAPIServerAccessProfilePtrOutput() APIServerAccessProfilePtrOutput {
+	return i.ToAPIServerAccessProfilePtrOutputWithContext(context.Background())
+}
+
+func (i APIServerAccessProfileArgs) ToAPIServerAccessProfilePtrOutputWithContext(ctx context.Context) APIServerAccessProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(APIServerAccessProfileOutput).ToAPIServerAccessProfilePtrOutputWithContext(ctx)
+}
+
+// APIServerAccessProfilePtrInput is an input type that accepts APIServerAccessProfileArgs, APIServerAccessProfilePtr and APIServerAccessProfilePtrOutput values.
+// You can construct a concrete instance of `APIServerAccessProfilePtrInput` via:
+//
+//	        APIServerAccessProfileArgs{...}
+//
+//	or:
+//
+//	        nil
+type APIServerAccessProfilePtrInput interface {
+	pulumi.Input
+
+	ToAPIServerAccessProfilePtrOutput() APIServerAccessProfilePtrOutput
+	ToAPIServerAccessProfilePtrOutputWithContext(context.Context) APIServerAccessProfilePtrOutput
+}
+
+type apiserverAccessProfilePtrType APIServerAccessProfileArgs
+
+func APIServerAccessProfilePtr(v *APIServerAccessProfileArgs) APIServerAccessProfilePtrInput {
+	return (*apiserverAccessProfilePtrType)(v)
+}
+
+func (*apiserverAccessProfilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**APIServerAccessProfile)(nil)).Elem()
+}
+
+func (i *apiserverAccessProfilePtrType) ToAPIServerAccessProfilePtrOutput() APIServerAccessProfilePtrOutput {
+	return i.ToAPIServerAccessProfilePtrOutputWithContext(context.Background())
+}
+
+func (i *apiserverAccessProfilePtrType) ToAPIServerAccessProfilePtrOutputWithContext(ctx context.Context) APIServerAccessProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(APIServerAccessProfilePtrOutput)
+}
+
+// Access profile for the Fleet hub API server.
+type APIServerAccessProfileOutput struct{ *pulumi.OutputState }
+
+func (APIServerAccessProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*APIServerAccessProfile)(nil)).Elem()
+}
+
+func (o APIServerAccessProfileOutput) ToAPIServerAccessProfileOutput() APIServerAccessProfileOutput {
+	return o
+}
+
+func (o APIServerAccessProfileOutput) ToAPIServerAccessProfileOutputWithContext(ctx context.Context) APIServerAccessProfileOutput {
+	return o
+}
+
+func (o APIServerAccessProfileOutput) ToAPIServerAccessProfilePtrOutput() APIServerAccessProfilePtrOutput {
+	return o.ToAPIServerAccessProfilePtrOutputWithContext(context.Background())
+}
+
+func (o APIServerAccessProfileOutput) ToAPIServerAccessProfilePtrOutputWithContext(ctx context.Context) APIServerAccessProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v APIServerAccessProfile) *APIServerAccessProfile {
+		return &v
+	}).(APIServerAccessProfilePtrOutput)
+}
+
+// Whether to create the Fleet hub as a private cluster or not.
+func (o APIServerAccessProfileOutput) EnablePrivateCluster() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v APIServerAccessProfile) *bool { return v.EnablePrivateCluster }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to enable apiserver vnet integration for the Fleet hub or not.
+func (o APIServerAccessProfileOutput) EnableVnetIntegration() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v APIServerAccessProfile) *bool { return v.EnableVnetIntegration }).(pulumi.BoolPtrOutput)
+}
+
+// The subnet to be used when apiserver vnet integration is enabled. It is required when creating a new Fleet with BYO vnet.
+func (o APIServerAccessProfileOutput) SubnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v APIServerAccessProfile) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
+}
+
+type APIServerAccessProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (APIServerAccessProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**APIServerAccessProfile)(nil)).Elem()
+}
+
+func (o APIServerAccessProfilePtrOutput) ToAPIServerAccessProfilePtrOutput() APIServerAccessProfilePtrOutput {
+	return o
+}
+
+func (o APIServerAccessProfilePtrOutput) ToAPIServerAccessProfilePtrOutputWithContext(ctx context.Context) APIServerAccessProfilePtrOutput {
+	return o
+}
+
+func (o APIServerAccessProfilePtrOutput) Elem() APIServerAccessProfileOutput {
+	return o.ApplyT(func(v *APIServerAccessProfile) APIServerAccessProfile {
+		if v != nil {
+			return *v
+		}
+		var ret APIServerAccessProfile
+		return ret
+	}).(APIServerAccessProfileOutput)
+}
+
+// Whether to create the Fleet hub as a private cluster or not.
+func (o APIServerAccessProfilePtrOutput) EnablePrivateCluster() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *APIServerAccessProfile) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnablePrivateCluster
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to enable apiserver vnet integration for the Fleet hub or not.
+func (o APIServerAccessProfilePtrOutput) EnableVnetIntegration() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *APIServerAccessProfile) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableVnetIntegration
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The subnet to be used when apiserver vnet integration is enabled. It is required when creating a new Fleet with BYO vnet.
+func (o APIServerAccessProfilePtrOutput) SubnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *APIServerAccessProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SubnetId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Access profile for the Fleet hub API server.
+type APIServerAccessProfileResponse struct {
+	// Whether to create the Fleet hub as a private cluster or not.
+	EnablePrivateCluster *bool `pulumi:"enablePrivateCluster"`
+	// Whether to enable apiserver vnet integration for the Fleet hub or not.
+	EnableVnetIntegration *bool `pulumi:"enableVnetIntegration"`
+	// The subnet to be used when apiserver vnet integration is enabled. It is required when creating a new Fleet with BYO vnet.
+	SubnetId *string `pulumi:"subnetId"`
+}
+
+// Access profile for the Fleet hub API server.
+type APIServerAccessProfileResponseOutput struct{ *pulumi.OutputState }
+
+func (APIServerAccessProfileResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*APIServerAccessProfileResponse)(nil)).Elem()
+}
+
+func (o APIServerAccessProfileResponseOutput) ToAPIServerAccessProfileResponseOutput() APIServerAccessProfileResponseOutput {
+	return o
+}
+
+func (o APIServerAccessProfileResponseOutput) ToAPIServerAccessProfileResponseOutputWithContext(ctx context.Context) APIServerAccessProfileResponseOutput {
+	return o
+}
+
+// Whether to create the Fleet hub as a private cluster or not.
+func (o APIServerAccessProfileResponseOutput) EnablePrivateCluster() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v APIServerAccessProfileResponse) *bool { return v.EnablePrivateCluster }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to enable apiserver vnet integration for the Fleet hub or not.
+func (o APIServerAccessProfileResponseOutput) EnableVnetIntegration() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v APIServerAccessProfileResponse) *bool { return v.EnableVnetIntegration }).(pulumi.BoolPtrOutput)
+}
+
+// The subnet to be used when apiserver vnet integration is enabled. It is required when creating a new Fleet with BYO vnet.
+func (o APIServerAccessProfileResponseOutput) SubnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v APIServerAccessProfileResponse) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
+}
+
+type APIServerAccessProfileResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (APIServerAccessProfileResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**APIServerAccessProfileResponse)(nil)).Elem()
+}
+
+func (o APIServerAccessProfileResponsePtrOutput) ToAPIServerAccessProfileResponsePtrOutput() APIServerAccessProfileResponsePtrOutput {
+	return o
+}
+
+func (o APIServerAccessProfileResponsePtrOutput) ToAPIServerAccessProfileResponsePtrOutputWithContext(ctx context.Context) APIServerAccessProfileResponsePtrOutput {
+	return o
+}
+
+func (o APIServerAccessProfileResponsePtrOutput) Elem() APIServerAccessProfileResponseOutput {
+	return o.ApplyT(func(v *APIServerAccessProfileResponse) APIServerAccessProfileResponse {
+		if v != nil {
+			return *v
+		}
+		var ret APIServerAccessProfileResponse
+		return ret
+	}).(APIServerAccessProfileResponseOutput)
+}
+
+// Whether to create the Fleet hub as a private cluster or not.
+func (o APIServerAccessProfileResponsePtrOutput) EnablePrivateCluster() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *APIServerAccessProfileResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnablePrivateCluster
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to enable apiserver vnet integration for the Fleet hub or not.
+func (o APIServerAccessProfileResponsePtrOutput) EnableVnetIntegration() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *APIServerAccessProfileResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableVnetIntegration
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The subnet to be used when apiserver vnet integration is enabled. It is required when creating a new Fleet with BYO vnet.
+func (o APIServerAccessProfileResponsePtrOutput) SubnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *APIServerAccessProfileResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SubnetId
+	}).(pulumi.StringPtrOutput)
+}
+
 // For schedules like: 'recur every month on the 15th' or 'recur every 3 months on the 20th'.
 type AbsoluteMonthlySchedule struct {
 	// The date of the month.
@@ -2328,6 +2600,242 @@ func (o AgentPoolWindowsProfileResponsePtrOutput) DisableOutboundNat() pulumi.Bo
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Agent profile for the Fleet hub.
+type AgentProfile struct {
+	// The ID of the subnet which the Fleet hub node will join on startup. If this is not specified, a vnet and subnet will be generated and used.
+	SubnetId *string `pulumi:"subnetId"`
+	// The virtual machine size of the Fleet hub.
+	VmSize *string `pulumi:"vmSize"`
+}
+
+// AgentProfileInput is an input type that accepts AgentProfileArgs and AgentProfileOutput values.
+// You can construct a concrete instance of `AgentProfileInput` via:
+//
+//	AgentProfileArgs{...}
+type AgentProfileInput interface {
+	pulumi.Input
+
+	ToAgentProfileOutput() AgentProfileOutput
+	ToAgentProfileOutputWithContext(context.Context) AgentProfileOutput
+}
+
+// Agent profile for the Fleet hub.
+type AgentProfileArgs struct {
+	// The ID of the subnet which the Fleet hub node will join on startup. If this is not specified, a vnet and subnet will be generated and used.
+	SubnetId pulumi.StringPtrInput `pulumi:"subnetId"`
+	// The virtual machine size of the Fleet hub.
+	VmSize pulumi.StringPtrInput `pulumi:"vmSize"`
+}
+
+func (AgentProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentProfile)(nil)).Elem()
+}
+
+func (i AgentProfileArgs) ToAgentProfileOutput() AgentProfileOutput {
+	return i.ToAgentProfileOutputWithContext(context.Background())
+}
+
+func (i AgentProfileArgs) ToAgentProfileOutputWithContext(ctx context.Context) AgentProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentProfileOutput)
+}
+
+func (i AgentProfileArgs) ToAgentProfilePtrOutput() AgentProfilePtrOutput {
+	return i.ToAgentProfilePtrOutputWithContext(context.Background())
+}
+
+func (i AgentProfileArgs) ToAgentProfilePtrOutputWithContext(ctx context.Context) AgentProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentProfileOutput).ToAgentProfilePtrOutputWithContext(ctx)
+}
+
+// AgentProfilePtrInput is an input type that accepts AgentProfileArgs, AgentProfilePtr and AgentProfilePtrOutput values.
+// You can construct a concrete instance of `AgentProfilePtrInput` via:
+//
+//	        AgentProfileArgs{...}
+//
+//	or:
+//
+//	        nil
+type AgentProfilePtrInput interface {
+	pulumi.Input
+
+	ToAgentProfilePtrOutput() AgentProfilePtrOutput
+	ToAgentProfilePtrOutputWithContext(context.Context) AgentProfilePtrOutput
+}
+
+type agentProfilePtrType AgentProfileArgs
+
+func AgentProfilePtr(v *AgentProfileArgs) AgentProfilePtrInput {
+	return (*agentProfilePtrType)(v)
+}
+
+func (*agentProfilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AgentProfile)(nil)).Elem()
+}
+
+func (i *agentProfilePtrType) ToAgentProfilePtrOutput() AgentProfilePtrOutput {
+	return i.ToAgentProfilePtrOutputWithContext(context.Background())
+}
+
+func (i *agentProfilePtrType) ToAgentProfilePtrOutputWithContext(ctx context.Context) AgentProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentProfilePtrOutput)
+}
+
+// Agent profile for the Fleet hub.
+type AgentProfileOutput struct{ *pulumi.OutputState }
+
+func (AgentProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentProfile)(nil)).Elem()
+}
+
+func (o AgentProfileOutput) ToAgentProfileOutput() AgentProfileOutput {
+	return o
+}
+
+func (o AgentProfileOutput) ToAgentProfileOutputWithContext(ctx context.Context) AgentProfileOutput {
+	return o
+}
+
+func (o AgentProfileOutput) ToAgentProfilePtrOutput() AgentProfilePtrOutput {
+	return o.ToAgentProfilePtrOutputWithContext(context.Background())
+}
+
+func (o AgentProfileOutput) ToAgentProfilePtrOutputWithContext(ctx context.Context) AgentProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AgentProfile) *AgentProfile {
+		return &v
+	}).(AgentProfilePtrOutput)
+}
+
+// The ID of the subnet which the Fleet hub node will join on startup. If this is not specified, a vnet and subnet will be generated and used.
+func (o AgentProfileOutput) SubnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AgentProfile) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
+}
+
+// The virtual machine size of the Fleet hub.
+func (o AgentProfileOutput) VmSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AgentProfile) *string { return v.VmSize }).(pulumi.StringPtrOutput)
+}
+
+type AgentProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (AgentProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AgentProfile)(nil)).Elem()
+}
+
+func (o AgentProfilePtrOutput) ToAgentProfilePtrOutput() AgentProfilePtrOutput {
+	return o
+}
+
+func (o AgentProfilePtrOutput) ToAgentProfilePtrOutputWithContext(ctx context.Context) AgentProfilePtrOutput {
+	return o
+}
+
+func (o AgentProfilePtrOutput) Elem() AgentProfileOutput {
+	return o.ApplyT(func(v *AgentProfile) AgentProfile {
+		if v != nil {
+			return *v
+		}
+		var ret AgentProfile
+		return ret
+	}).(AgentProfileOutput)
+}
+
+// The ID of the subnet which the Fleet hub node will join on startup. If this is not specified, a vnet and subnet will be generated and used.
+func (o AgentProfilePtrOutput) SubnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AgentProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SubnetId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The virtual machine size of the Fleet hub.
+func (o AgentProfilePtrOutput) VmSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AgentProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VmSize
+	}).(pulumi.StringPtrOutput)
+}
+
+// Agent profile for the Fleet hub.
+type AgentProfileResponse struct {
+	// The ID of the subnet which the Fleet hub node will join on startup. If this is not specified, a vnet and subnet will be generated and used.
+	SubnetId *string `pulumi:"subnetId"`
+	// The virtual machine size of the Fleet hub.
+	VmSize *string `pulumi:"vmSize"`
+}
+
+// Agent profile for the Fleet hub.
+type AgentProfileResponseOutput struct{ *pulumi.OutputState }
+
+func (AgentProfileResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentProfileResponse)(nil)).Elem()
+}
+
+func (o AgentProfileResponseOutput) ToAgentProfileResponseOutput() AgentProfileResponseOutput {
+	return o
+}
+
+func (o AgentProfileResponseOutput) ToAgentProfileResponseOutputWithContext(ctx context.Context) AgentProfileResponseOutput {
+	return o
+}
+
+// The ID of the subnet which the Fleet hub node will join on startup. If this is not specified, a vnet and subnet will be generated and used.
+func (o AgentProfileResponseOutput) SubnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AgentProfileResponse) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
+}
+
+// The virtual machine size of the Fleet hub.
+func (o AgentProfileResponseOutput) VmSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AgentProfileResponse) *string { return v.VmSize }).(pulumi.StringPtrOutput)
+}
+
+type AgentProfileResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AgentProfileResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AgentProfileResponse)(nil)).Elem()
+}
+
+func (o AgentProfileResponsePtrOutput) ToAgentProfileResponsePtrOutput() AgentProfileResponsePtrOutput {
+	return o
+}
+
+func (o AgentProfileResponsePtrOutput) ToAgentProfileResponsePtrOutputWithContext(ctx context.Context) AgentProfileResponsePtrOutput {
+	return o
+}
+
+func (o AgentProfileResponsePtrOutput) Elem() AgentProfileResponseOutput {
+	return o.ApplyT(func(v *AgentProfileResponse) AgentProfileResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AgentProfileResponse
+		return ret
+	}).(AgentProfileResponseOutput)
+}
+
+// The ID of the subnet which the Fleet hub node will join on startup. If this is not specified, a vnet and subnet will be generated and used.
+func (o AgentProfileResponsePtrOutput) SubnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AgentProfileResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SubnetId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The virtual machine size of the Fleet hub.
+func (o AgentProfileResponsePtrOutput) VmSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AgentProfileResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VmSize
+	}).(pulumi.StringPtrOutput)
+}
+
 // Specifications on auto-scaling.
 type AutoScaleProfile struct {
 	// The maximum number of nodes of the specified sizes.
@@ -2504,6 +3012,206 @@ func (o AutoScaleProfileResponseArrayOutput) Index(i pulumi.IntInput) AutoScaleP
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AutoScaleProfileResponse {
 		return vs[0].([]AutoScaleProfileResponse)[vs[1].(int)]
 	}).(AutoScaleProfileResponseOutput)
+}
+
+// The node image upgrade to be applied to the target clusters in auto upgrade.
+type AutoUpgradeNodeImageSelection struct {
+	// The node image upgrade type.
+	Type string `pulumi:"type"`
+}
+
+// AutoUpgradeNodeImageSelectionInput is an input type that accepts AutoUpgradeNodeImageSelectionArgs and AutoUpgradeNodeImageSelectionOutput values.
+// You can construct a concrete instance of `AutoUpgradeNodeImageSelectionInput` via:
+//
+//	AutoUpgradeNodeImageSelectionArgs{...}
+type AutoUpgradeNodeImageSelectionInput interface {
+	pulumi.Input
+
+	ToAutoUpgradeNodeImageSelectionOutput() AutoUpgradeNodeImageSelectionOutput
+	ToAutoUpgradeNodeImageSelectionOutputWithContext(context.Context) AutoUpgradeNodeImageSelectionOutput
+}
+
+// The node image upgrade to be applied to the target clusters in auto upgrade.
+type AutoUpgradeNodeImageSelectionArgs struct {
+	// The node image upgrade type.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (AutoUpgradeNodeImageSelectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoUpgradeNodeImageSelection)(nil)).Elem()
+}
+
+func (i AutoUpgradeNodeImageSelectionArgs) ToAutoUpgradeNodeImageSelectionOutput() AutoUpgradeNodeImageSelectionOutput {
+	return i.ToAutoUpgradeNodeImageSelectionOutputWithContext(context.Background())
+}
+
+func (i AutoUpgradeNodeImageSelectionArgs) ToAutoUpgradeNodeImageSelectionOutputWithContext(ctx context.Context) AutoUpgradeNodeImageSelectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoUpgradeNodeImageSelectionOutput)
+}
+
+func (i AutoUpgradeNodeImageSelectionArgs) ToAutoUpgradeNodeImageSelectionPtrOutput() AutoUpgradeNodeImageSelectionPtrOutput {
+	return i.ToAutoUpgradeNodeImageSelectionPtrOutputWithContext(context.Background())
+}
+
+func (i AutoUpgradeNodeImageSelectionArgs) ToAutoUpgradeNodeImageSelectionPtrOutputWithContext(ctx context.Context) AutoUpgradeNodeImageSelectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoUpgradeNodeImageSelectionOutput).ToAutoUpgradeNodeImageSelectionPtrOutputWithContext(ctx)
+}
+
+// AutoUpgradeNodeImageSelectionPtrInput is an input type that accepts AutoUpgradeNodeImageSelectionArgs, AutoUpgradeNodeImageSelectionPtr and AutoUpgradeNodeImageSelectionPtrOutput values.
+// You can construct a concrete instance of `AutoUpgradeNodeImageSelectionPtrInput` via:
+//
+//	        AutoUpgradeNodeImageSelectionArgs{...}
+//
+//	or:
+//
+//	        nil
+type AutoUpgradeNodeImageSelectionPtrInput interface {
+	pulumi.Input
+
+	ToAutoUpgradeNodeImageSelectionPtrOutput() AutoUpgradeNodeImageSelectionPtrOutput
+	ToAutoUpgradeNodeImageSelectionPtrOutputWithContext(context.Context) AutoUpgradeNodeImageSelectionPtrOutput
+}
+
+type autoUpgradeNodeImageSelectionPtrType AutoUpgradeNodeImageSelectionArgs
+
+func AutoUpgradeNodeImageSelectionPtr(v *AutoUpgradeNodeImageSelectionArgs) AutoUpgradeNodeImageSelectionPtrInput {
+	return (*autoUpgradeNodeImageSelectionPtrType)(v)
+}
+
+func (*autoUpgradeNodeImageSelectionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutoUpgradeNodeImageSelection)(nil)).Elem()
+}
+
+func (i *autoUpgradeNodeImageSelectionPtrType) ToAutoUpgradeNodeImageSelectionPtrOutput() AutoUpgradeNodeImageSelectionPtrOutput {
+	return i.ToAutoUpgradeNodeImageSelectionPtrOutputWithContext(context.Background())
+}
+
+func (i *autoUpgradeNodeImageSelectionPtrType) ToAutoUpgradeNodeImageSelectionPtrOutputWithContext(ctx context.Context) AutoUpgradeNodeImageSelectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoUpgradeNodeImageSelectionPtrOutput)
+}
+
+// The node image upgrade to be applied to the target clusters in auto upgrade.
+type AutoUpgradeNodeImageSelectionOutput struct{ *pulumi.OutputState }
+
+func (AutoUpgradeNodeImageSelectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoUpgradeNodeImageSelection)(nil)).Elem()
+}
+
+func (o AutoUpgradeNodeImageSelectionOutput) ToAutoUpgradeNodeImageSelectionOutput() AutoUpgradeNodeImageSelectionOutput {
+	return o
+}
+
+func (o AutoUpgradeNodeImageSelectionOutput) ToAutoUpgradeNodeImageSelectionOutputWithContext(ctx context.Context) AutoUpgradeNodeImageSelectionOutput {
+	return o
+}
+
+func (o AutoUpgradeNodeImageSelectionOutput) ToAutoUpgradeNodeImageSelectionPtrOutput() AutoUpgradeNodeImageSelectionPtrOutput {
+	return o.ToAutoUpgradeNodeImageSelectionPtrOutputWithContext(context.Background())
+}
+
+func (o AutoUpgradeNodeImageSelectionOutput) ToAutoUpgradeNodeImageSelectionPtrOutputWithContext(ctx context.Context) AutoUpgradeNodeImageSelectionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutoUpgradeNodeImageSelection) *AutoUpgradeNodeImageSelection {
+		return &v
+	}).(AutoUpgradeNodeImageSelectionPtrOutput)
+}
+
+// The node image upgrade type.
+func (o AutoUpgradeNodeImageSelectionOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v AutoUpgradeNodeImageSelection) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type AutoUpgradeNodeImageSelectionPtrOutput struct{ *pulumi.OutputState }
+
+func (AutoUpgradeNodeImageSelectionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutoUpgradeNodeImageSelection)(nil)).Elem()
+}
+
+func (o AutoUpgradeNodeImageSelectionPtrOutput) ToAutoUpgradeNodeImageSelectionPtrOutput() AutoUpgradeNodeImageSelectionPtrOutput {
+	return o
+}
+
+func (o AutoUpgradeNodeImageSelectionPtrOutput) ToAutoUpgradeNodeImageSelectionPtrOutputWithContext(ctx context.Context) AutoUpgradeNodeImageSelectionPtrOutput {
+	return o
+}
+
+func (o AutoUpgradeNodeImageSelectionPtrOutput) Elem() AutoUpgradeNodeImageSelectionOutput {
+	return o.ApplyT(func(v *AutoUpgradeNodeImageSelection) AutoUpgradeNodeImageSelection {
+		if v != nil {
+			return *v
+		}
+		var ret AutoUpgradeNodeImageSelection
+		return ret
+	}).(AutoUpgradeNodeImageSelectionOutput)
+}
+
+// The node image upgrade type.
+func (o AutoUpgradeNodeImageSelectionPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutoUpgradeNodeImageSelection) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The node image upgrade to be applied to the target clusters in auto upgrade.
+type AutoUpgradeNodeImageSelectionResponse struct {
+	// The node image upgrade type.
+	Type string `pulumi:"type"`
+}
+
+// The node image upgrade to be applied to the target clusters in auto upgrade.
+type AutoUpgradeNodeImageSelectionResponseOutput struct{ *pulumi.OutputState }
+
+func (AutoUpgradeNodeImageSelectionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoUpgradeNodeImageSelectionResponse)(nil)).Elem()
+}
+
+func (o AutoUpgradeNodeImageSelectionResponseOutput) ToAutoUpgradeNodeImageSelectionResponseOutput() AutoUpgradeNodeImageSelectionResponseOutput {
+	return o
+}
+
+func (o AutoUpgradeNodeImageSelectionResponseOutput) ToAutoUpgradeNodeImageSelectionResponseOutputWithContext(ctx context.Context) AutoUpgradeNodeImageSelectionResponseOutput {
+	return o
+}
+
+// The node image upgrade type.
+func (o AutoUpgradeNodeImageSelectionResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v AutoUpgradeNodeImageSelectionResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type AutoUpgradeNodeImageSelectionResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AutoUpgradeNodeImageSelectionResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutoUpgradeNodeImageSelectionResponse)(nil)).Elem()
+}
+
+func (o AutoUpgradeNodeImageSelectionResponsePtrOutput) ToAutoUpgradeNodeImageSelectionResponsePtrOutput() AutoUpgradeNodeImageSelectionResponsePtrOutput {
+	return o
+}
+
+func (o AutoUpgradeNodeImageSelectionResponsePtrOutput) ToAutoUpgradeNodeImageSelectionResponsePtrOutputWithContext(ctx context.Context) AutoUpgradeNodeImageSelectionResponsePtrOutput {
+	return o
+}
+
+func (o AutoUpgradeNodeImageSelectionResponsePtrOutput) Elem() AutoUpgradeNodeImageSelectionResponseOutput {
+	return o.ApplyT(func(v *AutoUpgradeNodeImageSelectionResponse) AutoUpgradeNodeImageSelectionResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AutoUpgradeNodeImageSelectionResponse
+		return ret
+	}).(AutoUpgradeNodeImageSelectionResponseOutput)
+}
+
+// The node image upgrade type.
+func (o AutoUpgradeNodeImageSelectionResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutoUpgradeNodeImageSelectionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 // Azure Key Vault key management service settings for the security profile.
@@ -5971,6 +6679,133 @@ func (o DelegatedResourceResponseMapOutput) MapIndex(k pulumi.StringInput) Deleg
 	}).(DelegatedResourceResponseOutput)
 }
 
+// The resource management error additional info.
+type ErrorAdditionalInfoResponse struct {
+	// The additional info.
+	Info interface{} `pulumi:"info"`
+	// The additional info type.
+	Type string `pulumi:"type"`
+}
+
+// The resource management error additional info.
+type ErrorAdditionalInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (ErrorAdditionalInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErrorAdditionalInfoResponse)(nil)).Elem()
+}
+
+func (o ErrorAdditionalInfoResponseOutput) ToErrorAdditionalInfoResponseOutput() ErrorAdditionalInfoResponseOutput {
+	return o
+}
+
+func (o ErrorAdditionalInfoResponseOutput) ToErrorAdditionalInfoResponseOutputWithContext(ctx context.Context) ErrorAdditionalInfoResponseOutput {
+	return o
+}
+
+// The additional info.
+func (o ErrorAdditionalInfoResponseOutput) Info() pulumi.AnyOutput {
+	return o.ApplyT(func(v ErrorAdditionalInfoResponse) interface{} { return v.Info }).(pulumi.AnyOutput)
+}
+
+// The additional info type.
+func (o ErrorAdditionalInfoResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ErrorAdditionalInfoResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ErrorAdditionalInfoResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ErrorAdditionalInfoResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ErrorAdditionalInfoResponse)(nil)).Elem()
+}
+
+func (o ErrorAdditionalInfoResponseArrayOutput) ToErrorAdditionalInfoResponseArrayOutput() ErrorAdditionalInfoResponseArrayOutput {
+	return o
+}
+
+func (o ErrorAdditionalInfoResponseArrayOutput) ToErrorAdditionalInfoResponseArrayOutputWithContext(ctx context.Context) ErrorAdditionalInfoResponseArrayOutput {
+	return o
+}
+
+func (o ErrorAdditionalInfoResponseArrayOutput) Index(i pulumi.IntInput) ErrorAdditionalInfoResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ErrorAdditionalInfoResponse {
+		return vs[0].([]ErrorAdditionalInfoResponse)[vs[1].(int)]
+	}).(ErrorAdditionalInfoResponseOutput)
+}
+
+// The error detail.
+type ErrorDetailResponse struct {
+	// The error additional info.
+	AdditionalInfo []ErrorAdditionalInfoResponse `pulumi:"additionalInfo"`
+	// The error code.
+	Code string `pulumi:"code"`
+	// The error details.
+	Details []ErrorDetailResponse `pulumi:"details"`
+	// The error message.
+	Message string `pulumi:"message"`
+	// The error target.
+	Target string `pulumi:"target"`
+}
+
+// The error detail.
+type ErrorDetailResponseOutput struct{ *pulumi.OutputState }
+
+func (ErrorDetailResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErrorDetailResponse)(nil)).Elem()
+}
+
+func (o ErrorDetailResponseOutput) ToErrorDetailResponseOutput() ErrorDetailResponseOutput {
+	return o
+}
+
+func (o ErrorDetailResponseOutput) ToErrorDetailResponseOutputWithContext(ctx context.Context) ErrorDetailResponseOutput {
+	return o
+}
+
+// The error additional info.
+func (o ErrorDetailResponseOutput) AdditionalInfo() ErrorAdditionalInfoResponseArrayOutput {
+	return o.ApplyT(func(v ErrorDetailResponse) []ErrorAdditionalInfoResponse { return v.AdditionalInfo }).(ErrorAdditionalInfoResponseArrayOutput)
+}
+
+// The error code.
+func (o ErrorDetailResponseOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v ErrorDetailResponse) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// The error details.
+func (o ErrorDetailResponseOutput) Details() ErrorDetailResponseArrayOutput {
+	return o.ApplyT(func(v ErrorDetailResponse) []ErrorDetailResponse { return v.Details }).(ErrorDetailResponseArrayOutput)
+}
+
+// The error message.
+func (o ErrorDetailResponseOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v ErrorDetailResponse) string { return v.Message }).(pulumi.StringOutput)
+}
+
+// The error target.
+func (o ErrorDetailResponseOutput) Target() pulumi.StringOutput {
+	return o.ApplyT(func(v ErrorDetailResponse) string { return v.Target }).(pulumi.StringOutput)
+}
+
+type ErrorDetailResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ErrorDetailResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ErrorDetailResponse)(nil)).Elem()
+}
+
+func (o ErrorDetailResponseArrayOutput) ToErrorDetailResponseArrayOutput() ErrorDetailResponseArrayOutput {
+	return o
+}
+
+func (o ErrorDetailResponseArrayOutput) ToErrorDetailResponseArrayOutputWithContext(ctx context.Context) ErrorDetailResponseArrayOutput {
+	return o
+}
+
+func (o ErrorDetailResponseArrayOutput) Index(i pulumi.IntInput) ErrorDetailResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ErrorDetailResponse {
+		return vs[0].([]ErrorDetailResponse)[vs[1].(int)]
+	}).(ErrorDetailResponseOutput)
+}
+
 // The complex type of the extended location.
 type ExtendedLocation struct {
 	// The name of the extended location.
@@ -6204,6 +7039,382 @@ func (o ExtendedLocationResponsePtrOutput) Type() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// One credential result item.
+type FleetCredentialResultResponse struct {
+	// The name of the credential.
+	Name string `pulumi:"name"`
+	// Base64-encoded Kubernetes configuration file.
+	Value string `pulumi:"value"`
+}
+
+// One credential result item.
+type FleetCredentialResultResponseOutput struct{ *pulumi.OutputState }
+
+func (FleetCredentialResultResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetCredentialResultResponse)(nil)).Elem()
+}
+
+func (o FleetCredentialResultResponseOutput) ToFleetCredentialResultResponseOutput() FleetCredentialResultResponseOutput {
+	return o
+}
+
+func (o FleetCredentialResultResponseOutput) ToFleetCredentialResultResponseOutputWithContext(ctx context.Context) FleetCredentialResultResponseOutput {
+	return o
+}
+
+// The name of the credential.
+func (o FleetCredentialResultResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v FleetCredentialResultResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Base64-encoded Kubernetes configuration file.
+func (o FleetCredentialResultResponseOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v FleetCredentialResultResponse) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type FleetCredentialResultResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (FleetCredentialResultResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FleetCredentialResultResponse)(nil)).Elem()
+}
+
+func (o FleetCredentialResultResponseArrayOutput) ToFleetCredentialResultResponseArrayOutput() FleetCredentialResultResponseArrayOutput {
+	return o
+}
+
+func (o FleetCredentialResultResponseArrayOutput) ToFleetCredentialResultResponseArrayOutputWithContext(ctx context.Context) FleetCredentialResultResponseArrayOutput {
+	return o
+}
+
+func (o FleetCredentialResultResponseArrayOutput) Index(i pulumi.IntInput) FleetCredentialResultResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FleetCredentialResultResponse {
+		return vs[0].([]FleetCredentialResultResponse)[vs[1].(int)]
+	}).(FleetCredentialResultResponseOutput)
+}
+
+// The FleetHubProfile configures the fleet hub.
+type FleetHubProfile struct {
+	// The agent profile for the Fleet hub.
+	AgentProfile *AgentProfile `pulumi:"agentProfile"`
+	// The access profile for the Fleet hub API server.
+	ApiServerAccessProfile *APIServerAccessProfile `pulumi:"apiServerAccessProfile"`
+	// DNS prefix used to create the FQDN for the Fleet hub.
+	DnsPrefix *string `pulumi:"dnsPrefix"`
+}
+
+// FleetHubProfileInput is an input type that accepts FleetHubProfileArgs and FleetHubProfileOutput values.
+// You can construct a concrete instance of `FleetHubProfileInput` via:
+//
+//	FleetHubProfileArgs{...}
+type FleetHubProfileInput interface {
+	pulumi.Input
+
+	ToFleetHubProfileOutput() FleetHubProfileOutput
+	ToFleetHubProfileOutputWithContext(context.Context) FleetHubProfileOutput
+}
+
+// The FleetHubProfile configures the fleet hub.
+type FleetHubProfileArgs struct {
+	// The agent profile for the Fleet hub.
+	AgentProfile AgentProfilePtrInput `pulumi:"agentProfile"`
+	// The access profile for the Fleet hub API server.
+	ApiServerAccessProfile APIServerAccessProfilePtrInput `pulumi:"apiServerAccessProfile"`
+	// DNS prefix used to create the FQDN for the Fleet hub.
+	DnsPrefix pulumi.StringPtrInput `pulumi:"dnsPrefix"`
+}
+
+func (FleetHubProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetHubProfile)(nil)).Elem()
+}
+
+func (i FleetHubProfileArgs) ToFleetHubProfileOutput() FleetHubProfileOutput {
+	return i.ToFleetHubProfileOutputWithContext(context.Background())
+}
+
+func (i FleetHubProfileArgs) ToFleetHubProfileOutputWithContext(ctx context.Context) FleetHubProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetHubProfileOutput)
+}
+
+func (i FleetHubProfileArgs) ToFleetHubProfilePtrOutput() FleetHubProfilePtrOutput {
+	return i.ToFleetHubProfilePtrOutputWithContext(context.Background())
+}
+
+func (i FleetHubProfileArgs) ToFleetHubProfilePtrOutputWithContext(ctx context.Context) FleetHubProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetHubProfileOutput).ToFleetHubProfilePtrOutputWithContext(ctx)
+}
+
+// FleetHubProfilePtrInput is an input type that accepts FleetHubProfileArgs, FleetHubProfilePtr and FleetHubProfilePtrOutput values.
+// You can construct a concrete instance of `FleetHubProfilePtrInput` via:
+//
+//	        FleetHubProfileArgs{...}
+//
+//	or:
+//
+//	        nil
+type FleetHubProfilePtrInput interface {
+	pulumi.Input
+
+	ToFleetHubProfilePtrOutput() FleetHubProfilePtrOutput
+	ToFleetHubProfilePtrOutputWithContext(context.Context) FleetHubProfilePtrOutput
+}
+
+type fleetHubProfilePtrType FleetHubProfileArgs
+
+func FleetHubProfilePtr(v *FleetHubProfileArgs) FleetHubProfilePtrInput {
+	return (*fleetHubProfilePtrType)(v)
+}
+
+func (*fleetHubProfilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FleetHubProfile)(nil)).Elem()
+}
+
+func (i *fleetHubProfilePtrType) ToFleetHubProfilePtrOutput() FleetHubProfilePtrOutput {
+	return i.ToFleetHubProfilePtrOutputWithContext(context.Background())
+}
+
+func (i *fleetHubProfilePtrType) ToFleetHubProfilePtrOutputWithContext(ctx context.Context) FleetHubProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetHubProfilePtrOutput)
+}
+
+// The FleetHubProfile configures the fleet hub.
+type FleetHubProfileOutput struct{ *pulumi.OutputState }
+
+func (FleetHubProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetHubProfile)(nil)).Elem()
+}
+
+func (o FleetHubProfileOutput) ToFleetHubProfileOutput() FleetHubProfileOutput {
+	return o
+}
+
+func (o FleetHubProfileOutput) ToFleetHubProfileOutputWithContext(ctx context.Context) FleetHubProfileOutput {
+	return o
+}
+
+func (o FleetHubProfileOutput) ToFleetHubProfilePtrOutput() FleetHubProfilePtrOutput {
+	return o.ToFleetHubProfilePtrOutputWithContext(context.Background())
+}
+
+func (o FleetHubProfileOutput) ToFleetHubProfilePtrOutputWithContext(ctx context.Context) FleetHubProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FleetHubProfile) *FleetHubProfile {
+		return &v
+	}).(FleetHubProfilePtrOutput)
+}
+
+// The agent profile for the Fleet hub.
+func (o FleetHubProfileOutput) AgentProfile() AgentProfilePtrOutput {
+	return o.ApplyT(func(v FleetHubProfile) *AgentProfile { return v.AgentProfile }).(AgentProfilePtrOutput)
+}
+
+// The access profile for the Fleet hub API server.
+func (o FleetHubProfileOutput) ApiServerAccessProfile() APIServerAccessProfilePtrOutput {
+	return o.ApplyT(func(v FleetHubProfile) *APIServerAccessProfile { return v.ApiServerAccessProfile }).(APIServerAccessProfilePtrOutput)
+}
+
+// DNS prefix used to create the FQDN for the Fleet hub.
+func (o FleetHubProfileOutput) DnsPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FleetHubProfile) *string { return v.DnsPrefix }).(pulumi.StringPtrOutput)
+}
+
+type FleetHubProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (FleetHubProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FleetHubProfile)(nil)).Elem()
+}
+
+func (o FleetHubProfilePtrOutput) ToFleetHubProfilePtrOutput() FleetHubProfilePtrOutput {
+	return o
+}
+
+func (o FleetHubProfilePtrOutput) ToFleetHubProfilePtrOutputWithContext(ctx context.Context) FleetHubProfilePtrOutput {
+	return o
+}
+
+func (o FleetHubProfilePtrOutput) Elem() FleetHubProfileOutput {
+	return o.ApplyT(func(v *FleetHubProfile) FleetHubProfile {
+		if v != nil {
+			return *v
+		}
+		var ret FleetHubProfile
+		return ret
+	}).(FleetHubProfileOutput)
+}
+
+// The agent profile for the Fleet hub.
+func (o FleetHubProfilePtrOutput) AgentProfile() AgentProfilePtrOutput {
+	return o.ApplyT(func(v *FleetHubProfile) *AgentProfile {
+		if v == nil {
+			return nil
+		}
+		return v.AgentProfile
+	}).(AgentProfilePtrOutput)
+}
+
+// The access profile for the Fleet hub API server.
+func (o FleetHubProfilePtrOutput) ApiServerAccessProfile() APIServerAccessProfilePtrOutput {
+	return o.ApplyT(func(v *FleetHubProfile) *APIServerAccessProfile {
+		if v == nil {
+			return nil
+		}
+		return v.ApiServerAccessProfile
+	}).(APIServerAccessProfilePtrOutput)
+}
+
+// DNS prefix used to create the FQDN for the Fleet hub.
+func (o FleetHubProfilePtrOutput) DnsPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FleetHubProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DnsPrefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// The FleetHubProfile configures the fleet hub.
+type FleetHubProfileResponse struct {
+	// The agent profile for the Fleet hub.
+	AgentProfile *AgentProfileResponse `pulumi:"agentProfile"`
+	// The access profile for the Fleet hub API server.
+	ApiServerAccessProfile *APIServerAccessProfileResponse `pulumi:"apiServerAccessProfile"`
+	// DNS prefix used to create the FQDN for the Fleet hub.
+	DnsPrefix *string `pulumi:"dnsPrefix"`
+	// The FQDN of the Fleet hub.
+	Fqdn string `pulumi:"fqdn"`
+	// The Kubernetes version of the Fleet hub.
+	KubernetesVersion string `pulumi:"kubernetesVersion"`
+	// The Azure Portal FQDN of the Fleet hub.
+	PortalFqdn string `pulumi:"portalFqdn"`
+}
+
+// The FleetHubProfile configures the fleet hub.
+type FleetHubProfileResponseOutput struct{ *pulumi.OutputState }
+
+func (FleetHubProfileResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetHubProfileResponse)(nil)).Elem()
+}
+
+func (o FleetHubProfileResponseOutput) ToFleetHubProfileResponseOutput() FleetHubProfileResponseOutput {
+	return o
+}
+
+func (o FleetHubProfileResponseOutput) ToFleetHubProfileResponseOutputWithContext(ctx context.Context) FleetHubProfileResponseOutput {
+	return o
+}
+
+// The agent profile for the Fleet hub.
+func (o FleetHubProfileResponseOutput) AgentProfile() AgentProfileResponsePtrOutput {
+	return o.ApplyT(func(v FleetHubProfileResponse) *AgentProfileResponse { return v.AgentProfile }).(AgentProfileResponsePtrOutput)
+}
+
+// The access profile for the Fleet hub API server.
+func (o FleetHubProfileResponseOutput) ApiServerAccessProfile() APIServerAccessProfileResponsePtrOutput {
+	return o.ApplyT(func(v FleetHubProfileResponse) *APIServerAccessProfileResponse { return v.ApiServerAccessProfile }).(APIServerAccessProfileResponsePtrOutput)
+}
+
+// DNS prefix used to create the FQDN for the Fleet hub.
+func (o FleetHubProfileResponseOutput) DnsPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FleetHubProfileResponse) *string { return v.DnsPrefix }).(pulumi.StringPtrOutput)
+}
+
+// The FQDN of the Fleet hub.
+func (o FleetHubProfileResponseOutput) Fqdn() pulumi.StringOutput {
+	return o.ApplyT(func(v FleetHubProfileResponse) string { return v.Fqdn }).(pulumi.StringOutput)
+}
+
+// The Kubernetes version of the Fleet hub.
+func (o FleetHubProfileResponseOutput) KubernetesVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v FleetHubProfileResponse) string { return v.KubernetesVersion }).(pulumi.StringOutput)
+}
+
+// The Azure Portal FQDN of the Fleet hub.
+func (o FleetHubProfileResponseOutput) PortalFqdn() pulumi.StringOutput {
+	return o.ApplyT(func(v FleetHubProfileResponse) string { return v.PortalFqdn }).(pulumi.StringOutput)
+}
+
+type FleetHubProfileResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (FleetHubProfileResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FleetHubProfileResponse)(nil)).Elem()
+}
+
+func (o FleetHubProfileResponsePtrOutput) ToFleetHubProfileResponsePtrOutput() FleetHubProfileResponsePtrOutput {
+	return o
+}
+
+func (o FleetHubProfileResponsePtrOutput) ToFleetHubProfileResponsePtrOutputWithContext(ctx context.Context) FleetHubProfileResponsePtrOutput {
+	return o
+}
+
+func (o FleetHubProfileResponsePtrOutput) Elem() FleetHubProfileResponseOutput {
+	return o.ApplyT(func(v *FleetHubProfileResponse) FleetHubProfileResponse {
+		if v != nil {
+			return *v
+		}
+		var ret FleetHubProfileResponse
+		return ret
+	}).(FleetHubProfileResponseOutput)
+}
+
+// The agent profile for the Fleet hub.
+func (o FleetHubProfileResponsePtrOutput) AgentProfile() AgentProfileResponsePtrOutput {
+	return o.ApplyT(func(v *FleetHubProfileResponse) *AgentProfileResponse {
+		if v == nil {
+			return nil
+		}
+		return v.AgentProfile
+	}).(AgentProfileResponsePtrOutput)
+}
+
+// The access profile for the Fleet hub API server.
+func (o FleetHubProfileResponsePtrOutput) ApiServerAccessProfile() APIServerAccessProfileResponsePtrOutput {
+	return o.ApplyT(func(v *FleetHubProfileResponse) *APIServerAccessProfileResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ApiServerAccessProfile
+	}).(APIServerAccessProfileResponsePtrOutput)
+}
+
+// DNS prefix used to create the FQDN for the Fleet hub.
+func (o FleetHubProfileResponsePtrOutput) DnsPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FleetHubProfileResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DnsPrefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// The FQDN of the Fleet hub.
+func (o FleetHubProfileResponsePtrOutput) Fqdn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FleetHubProfileResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Fqdn
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Kubernetes version of the Fleet hub.
+func (o FleetHubProfileResponsePtrOutput) KubernetesVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FleetHubProfileResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KubernetesVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Azure Portal FQDN of the Fleet hub.
+func (o FleetHubProfileResponsePtrOutput) PortalFqdn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FleetHubProfileResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PortalFqdn
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -23719,6 +24930,200 @@ func (o ManagedClusterStorageProfileSnapshotControllerResponsePtrOutput) Enabled
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The update to be applied to the ManagedClusters.
+type ManagedClusterUpdate struct {
+	// The node image upgrade to be applied to the target nodes in update run.
+	NodeImageSelection *NodeImageSelection `pulumi:"nodeImageSelection"`
+	// The upgrade to apply to the ManagedClusters.
+	Upgrade ManagedClusterUpgradeSpec `pulumi:"upgrade"`
+}
+
+// ManagedClusterUpdateInput is an input type that accepts ManagedClusterUpdateArgs and ManagedClusterUpdateOutput values.
+// You can construct a concrete instance of `ManagedClusterUpdateInput` via:
+//
+//	ManagedClusterUpdateArgs{...}
+type ManagedClusterUpdateInput interface {
+	pulumi.Input
+
+	ToManagedClusterUpdateOutput() ManagedClusterUpdateOutput
+	ToManagedClusterUpdateOutputWithContext(context.Context) ManagedClusterUpdateOutput
+}
+
+// The update to be applied to the ManagedClusters.
+type ManagedClusterUpdateArgs struct {
+	// The node image upgrade to be applied to the target nodes in update run.
+	NodeImageSelection NodeImageSelectionPtrInput `pulumi:"nodeImageSelection"`
+	// The upgrade to apply to the ManagedClusters.
+	Upgrade ManagedClusterUpgradeSpecInput `pulumi:"upgrade"`
+}
+
+func (ManagedClusterUpdateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedClusterUpdate)(nil)).Elem()
+}
+
+func (i ManagedClusterUpdateArgs) ToManagedClusterUpdateOutput() ManagedClusterUpdateOutput {
+	return i.ToManagedClusterUpdateOutputWithContext(context.Background())
+}
+
+func (i ManagedClusterUpdateArgs) ToManagedClusterUpdateOutputWithContext(ctx context.Context) ManagedClusterUpdateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterUpdateOutput)
+}
+
+// The update to be applied to the ManagedClusters.
+type ManagedClusterUpdateOutput struct{ *pulumi.OutputState }
+
+func (ManagedClusterUpdateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedClusterUpdate)(nil)).Elem()
+}
+
+func (o ManagedClusterUpdateOutput) ToManagedClusterUpdateOutput() ManagedClusterUpdateOutput {
+	return o
+}
+
+func (o ManagedClusterUpdateOutput) ToManagedClusterUpdateOutputWithContext(ctx context.Context) ManagedClusterUpdateOutput {
+	return o
+}
+
+// The node image upgrade to be applied to the target nodes in update run.
+func (o ManagedClusterUpdateOutput) NodeImageSelection() NodeImageSelectionPtrOutput {
+	return o.ApplyT(func(v ManagedClusterUpdate) *NodeImageSelection { return v.NodeImageSelection }).(NodeImageSelectionPtrOutput)
+}
+
+// The upgrade to apply to the ManagedClusters.
+func (o ManagedClusterUpdateOutput) Upgrade() ManagedClusterUpgradeSpecOutput {
+	return o.ApplyT(func(v ManagedClusterUpdate) ManagedClusterUpgradeSpec { return v.Upgrade }).(ManagedClusterUpgradeSpecOutput)
+}
+
+// The update to be applied to the ManagedClusters.
+type ManagedClusterUpdateResponse struct {
+	// The node image upgrade to be applied to the target nodes in update run.
+	NodeImageSelection *NodeImageSelectionResponse `pulumi:"nodeImageSelection"`
+	// The upgrade to apply to the ManagedClusters.
+	Upgrade ManagedClusterUpgradeSpecResponse `pulumi:"upgrade"`
+}
+
+// The update to be applied to the ManagedClusters.
+type ManagedClusterUpdateResponseOutput struct{ *pulumi.OutputState }
+
+func (ManagedClusterUpdateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedClusterUpdateResponse)(nil)).Elem()
+}
+
+func (o ManagedClusterUpdateResponseOutput) ToManagedClusterUpdateResponseOutput() ManagedClusterUpdateResponseOutput {
+	return o
+}
+
+func (o ManagedClusterUpdateResponseOutput) ToManagedClusterUpdateResponseOutputWithContext(ctx context.Context) ManagedClusterUpdateResponseOutput {
+	return o
+}
+
+// The node image upgrade to be applied to the target nodes in update run.
+func (o ManagedClusterUpdateResponseOutput) NodeImageSelection() NodeImageSelectionResponsePtrOutput {
+	return o.ApplyT(func(v ManagedClusterUpdateResponse) *NodeImageSelectionResponse { return v.NodeImageSelection }).(NodeImageSelectionResponsePtrOutput)
+}
+
+// The upgrade to apply to the ManagedClusters.
+func (o ManagedClusterUpdateResponseOutput) Upgrade() ManagedClusterUpgradeSpecResponseOutput {
+	return o.ApplyT(func(v ManagedClusterUpdateResponse) ManagedClusterUpgradeSpecResponse { return v.Upgrade }).(ManagedClusterUpgradeSpecResponseOutput)
+}
+
+// The upgrade to apply to a ManagedCluster.
+type ManagedClusterUpgradeSpec struct {
+	// The Kubernetes version to upgrade the member clusters to.
+	KubernetesVersion *string `pulumi:"kubernetesVersion"`
+	// ManagedClusterUpgradeType is the type of upgrade to be applied.
+	Type string `pulumi:"type"`
+}
+
+// ManagedClusterUpgradeSpecInput is an input type that accepts ManagedClusterUpgradeSpecArgs and ManagedClusterUpgradeSpecOutput values.
+// You can construct a concrete instance of `ManagedClusterUpgradeSpecInput` via:
+//
+//	ManagedClusterUpgradeSpecArgs{...}
+type ManagedClusterUpgradeSpecInput interface {
+	pulumi.Input
+
+	ToManagedClusterUpgradeSpecOutput() ManagedClusterUpgradeSpecOutput
+	ToManagedClusterUpgradeSpecOutputWithContext(context.Context) ManagedClusterUpgradeSpecOutput
+}
+
+// The upgrade to apply to a ManagedCluster.
+type ManagedClusterUpgradeSpecArgs struct {
+	// The Kubernetes version to upgrade the member clusters to.
+	KubernetesVersion pulumi.StringPtrInput `pulumi:"kubernetesVersion"`
+	// ManagedClusterUpgradeType is the type of upgrade to be applied.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (ManagedClusterUpgradeSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedClusterUpgradeSpec)(nil)).Elem()
+}
+
+func (i ManagedClusterUpgradeSpecArgs) ToManagedClusterUpgradeSpecOutput() ManagedClusterUpgradeSpecOutput {
+	return i.ToManagedClusterUpgradeSpecOutputWithContext(context.Background())
+}
+
+func (i ManagedClusterUpgradeSpecArgs) ToManagedClusterUpgradeSpecOutputWithContext(ctx context.Context) ManagedClusterUpgradeSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterUpgradeSpecOutput)
+}
+
+// The upgrade to apply to a ManagedCluster.
+type ManagedClusterUpgradeSpecOutput struct{ *pulumi.OutputState }
+
+func (ManagedClusterUpgradeSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedClusterUpgradeSpec)(nil)).Elem()
+}
+
+func (o ManagedClusterUpgradeSpecOutput) ToManagedClusterUpgradeSpecOutput() ManagedClusterUpgradeSpecOutput {
+	return o
+}
+
+func (o ManagedClusterUpgradeSpecOutput) ToManagedClusterUpgradeSpecOutputWithContext(ctx context.Context) ManagedClusterUpgradeSpecOutput {
+	return o
+}
+
+// The Kubernetes version to upgrade the member clusters to.
+func (o ManagedClusterUpgradeSpecOutput) KubernetesVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedClusterUpgradeSpec) *string { return v.KubernetesVersion }).(pulumi.StringPtrOutput)
+}
+
+// ManagedClusterUpgradeType is the type of upgrade to be applied.
+func (o ManagedClusterUpgradeSpecOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedClusterUpgradeSpec) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The upgrade to apply to a ManagedCluster.
+type ManagedClusterUpgradeSpecResponse struct {
+	// The Kubernetes version to upgrade the member clusters to.
+	KubernetesVersion *string `pulumi:"kubernetesVersion"`
+	// ManagedClusterUpgradeType is the type of upgrade to be applied.
+	Type string `pulumi:"type"`
+}
+
+// The upgrade to apply to a ManagedCluster.
+type ManagedClusterUpgradeSpecResponseOutput struct{ *pulumi.OutputState }
+
+func (ManagedClusterUpgradeSpecResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedClusterUpgradeSpecResponse)(nil)).Elem()
+}
+
+func (o ManagedClusterUpgradeSpecResponseOutput) ToManagedClusterUpgradeSpecResponseOutput() ManagedClusterUpgradeSpecResponseOutput {
+	return o
+}
+
+func (o ManagedClusterUpgradeSpecResponseOutput) ToManagedClusterUpgradeSpecResponseOutputWithContext(ctx context.Context) ManagedClusterUpgradeSpecResponseOutput {
+	return o
+}
+
+// The Kubernetes version to upgrade the member clusters to.
+func (o ManagedClusterUpgradeSpecResponseOutput) KubernetesVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedClusterUpgradeSpecResponse) *string { return v.KubernetesVersion }).(pulumi.StringPtrOutput)
+}
+
+// ManagedClusterUpgradeType is the type of upgrade to be applied.
+func (o ManagedClusterUpgradeSpecResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedClusterUpgradeSpecResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
 // Profile for Windows VMs in the managed cluster.
 type ManagedClusterWindowsProfile struct {
 	// Specifies the password of the administrator account. <br><br> **Minimum-length:** 8 characters <br><br> **Max-length:** 123 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!"
@@ -24812,6 +26217,278 @@ func (o ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponsePtrO
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Managed service identity (system assigned and/or user assigned identities)
+type ManagedServiceIdentity struct {
+	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+	Type string `pulumi:"type"`
+	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
+}
+
+// ManagedServiceIdentityInput is an input type that accepts ManagedServiceIdentityArgs and ManagedServiceIdentityOutput values.
+// You can construct a concrete instance of `ManagedServiceIdentityInput` via:
+//
+//	ManagedServiceIdentityArgs{...}
+type ManagedServiceIdentityInput interface {
+	pulumi.Input
+
+	ToManagedServiceIdentityOutput() ManagedServiceIdentityOutput
+	ToManagedServiceIdentityOutputWithContext(context.Context) ManagedServiceIdentityOutput
+}
+
+// Managed service identity (system assigned and/or user assigned identities)
+type ManagedServiceIdentityArgs struct {
+	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+	Type pulumi.StringInput `pulumi:"type"`
+	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
+}
+
+func (ManagedServiceIdentityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedServiceIdentity)(nil)).Elem()
+}
+
+func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityOutput() ManagedServiceIdentityOutput {
+	return i.ToManagedServiceIdentityOutputWithContext(context.Background())
+}
+
+func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityOutputWithContext(ctx context.Context) ManagedServiceIdentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityOutput)
+}
+
+func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
+	return i.ToManagedServiceIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityOutput).ToManagedServiceIdentityPtrOutputWithContext(ctx)
+}
+
+// ManagedServiceIdentityPtrInput is an input type that accepts ManagedServiceIdentityArgs, ManagedServiceIdentityPtr and ManagedServiceIdentityPtrOutput values.
+// You can construct a concrete instance of `ManagedServiceIdentityPtrInput` via:
+//
+//	        ManagedServiceIdentityArgs{...}
+//
+//	or:
+//
+//	        nil
+type ManagedServiceIdentityPtrInput interface {
+	pulumi.Input
+
+	ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput
+	ToManagedServiceIdentityPtrOutputWithContext(context.Context) ManagedServiceIdentityPtrOutput
+}
+
+type managedServiceIdentityPtrType ManagedServiceIdentityArgs
+
+func ManagedServiceIdentityPtr(v *ManagedServiceIdentityArgs) ManagedServiceIdentityPtrInput {
+	return (*managedServiceIdentityPtrType)(v)
+}
+
+func (*managedServiceIdentityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedServiceIdentity)(nil)).Elem()
+}
+
+func (i *managedServiceIdentityPtrType) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
+	return i.ToManagedServiceIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i *managedServiceIdentityPtrType) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityPtrOutput)
+}
+
+// Managed service identity (system assigned and/or user assigned identities)
+type ManagedServiceIdentityOutput struct{ *pulumi.OutputState }
+
+func (ManagedServiceIdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedServiceIdentity)(nil)).Elem()
+}
+
+func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityOutput() ManagedServiceIdentityOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityOutputWithContext(ctx context.Context) ManagedServiceIdentityOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
+	return o.ToManagedServiceIdentityPtrOutputWithContext(context.Background())
+}
+
+func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedServiceIdentity) *ManagedServiceIdentity {
+		return &v
+	}).(ManagedServiceIdentityPtrOutput)
+}
+
+// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+func (o ManagedServiceIdentityOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedServiceIdentity) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+func (o ManagedServiceIdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ManagedServiceIdentity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
+}
+
+type ManagedServiceIdentityPtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedServiceIdentityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedServiceIdentity)(nil)).Elem()
+}
+
+func (o ManagedServiceIdentityPtrOutput) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityPtrOutput) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityPtrOutput) Elem() ManagedServiceIdentityOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentity) ManagedServiceIdentity {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedServiceIdentity
+		return ret
+	}).(ManagedServiceIdentityOutput)
+}
+
+// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+func (o ManagedServiceIdentityPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+func (o ManagedServiceIdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentity) []string {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentities
+	}).(pulumi.StringArrayOutput)
+}
+
+// Managed service identity (system assigned and/or user assigned identities)
+type ManagedServiceIdentityResponse struct {
+	// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+	PrincipalId string `pulumi:"principalId"`
+	// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+	TenantId string `pulumi:"tenantId"`
+	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+	Type string `pulumi:"type"`
+	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+	UserAssignedIdentities map[string]UserAssignedIdentityResponse `pulumi:"userAssignedIdentities"`
+}
+
+// Managed service identity (system assigned and/or user assigned identities)
+type ManagedServiceIdentityResponseOutput struct{ *pulumi.OutputState }
+
+func (ManagedServiceIdentityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedServiceIdentityResponse)(nil)).Elem()
+}
+
+func (o ManagedServiceIdentityResponseOutput) ToManagedServiceIdentityResponseOutput() ManagedServiceIdentityResponseOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityResponseOutput) ToManagedServiceIdentityResponseOutputWithContext(ctx context.Context) ManagedServiceIdentityResponseOutput {
+	return o
+}
+
+// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+func (o ManagedServiceIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedServiceIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+func (o ManagedServiceIdentityResponseOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedServiceIdentityResponse) string { return v.TenantId }).(pulumi.StringOutput)
+}
+
+// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+func (o ManagedServiceIdentityResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedServiceIdentityResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+func (o ManagedServiceIdentityResponseOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
+	return o.ApplyT(func(v ManagedServiceIdentityResponse) map[string]UserAssignedIdentityResponse {
+		return v.UserAssignedIdentities
+	}).(UserAssignedIdentityResponseMapOutput)
+}
+
+type ManagedServiceIdentityResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedServiceIdentityResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedServiceIdentityResponse)(nil)).Elem()
+}
+
+func (o ManagedServiceIdentityResponsePtrOutput) ToManagedServiceIdentityResponsePtrOutput() ManagedServiceIdentityResponsePtrOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityResponsePtrOutput) ToManagedServiceIdentityResponsePtrOutputWithContext(ctx context.Context) ManagedServiceIdentityResponsePtrOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityResponsePtrOutput) Elem() ManagedServiceIdentityResponseOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentityResponse) ManagedServiceIdentityResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedServiceIdentityResponse
+		return ret
+	}).(ManagedServiceIdentityResponseOutput)
+}
+
+// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+func (o ManagedServiceIdentityResponsePtrOutput) PrincipalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrincipalId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+func (o ManagedServiceIdentityResponsePtrOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TenantId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+func (o ManagedServiceIdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+func (o ManagedServiceIdentityResponsePtrOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentityResponse) map[string]UserAssignedIdentityResponse {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentities
+	}).(UserAssignedIdentityResponseMapOutput)
+}
+
 // Specifications on number of machines.
 type ManualScaleProfile struct {
 	// Number of nodes.
@@ -24974,6 +26651,80 @@ func (o ManualScaleProfileResponseArrayOutput) Index(i pulumi.IntInput) ManualSc
 	}).(ManualScaleProfileResponseOutput)
 }
 
+// The status of a member update operation.
+type MemberUpdateStatusResponse struct {
+	// The Azure resource id of the target Kubernetes cluster.
+	ClusterResourceId string `pulumi:"clusterResourceId"`
+	// The status message after processing the member update operation.
+	Message string `pulumi:"message"`
+	// The name of the FleetMember.
+	Name string `pulumi:"name"`
+	// The operation resource id of the latest attempt to perform the operation.
+	OperationId string `pulumi:"operationId"`
+	// The status of the MemberUpdate operation.
+	Status UpdateStatusResponse `pulumi:"status"`
+}
+
+// The status of a member update operation.
+type MemberUpdateStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (MemberUpdateStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MemberUpdateStatusResponse)(nil)).Elem()
+}
+
+func (o MemberUpdateStatusResponseOutput) ToMemberUpdateStatusResponseOutput() MemberUpdateStatusResponseOutput {
+	return o
+}
+
+func (o MemberUpdateStatusResponseOutput) ToMemberUpdateStatusResponseOutputWithContext(ctx context.Context) MemberUpdateStatusResponseOutput {
+	return o
+}
+
+// The Azure resource id of the target Kubernetes cluster.
+func (o MemberUpdateStatusResponseOutput) ClusterResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v MemberUpdateStatusResponse) string { return v.ClusterResourceId }).(pulumi.StringOutput)
+}
+
+// The status message after processing the member update operation.
+func (o MemberUpdateStatusResponseOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v MemberUpdateStatusResponse) string { return v.Message }).(pulumi.StringOutput)
+}
+
+// The name of the FleetMember.
+func (o MemberUpdateStatusResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v MemberUpdateStatusResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The operation resource id of the latest attempt to perform the operation.
+func (o MemberUpdateStatusResponseOutput) OperationId() pulumi.StringOutput {
+	return o.ApplyT(func(v MemberUpdateStatusResponse) string { return v.OperationId }).(pulumi.StringOutput)
+}
+
+// The status of the MemberUpdate operation.
+func (o MemberUpdateStatusResponseOutput) Status() UpdateStatusResponseOutput {
+	return o.ApplyT(func(v MemberUpdateStatusResponse) UpdateStatusResponse { return v.Status }).(UpdateStatusResponseOutput)
+}
+
+type MemberUpdateStatusResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (MemberUpdateStatusResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MemberUpdateStatusResponse)(nil)).Elem()
+}
+
+func (o MemberUpdateStatusResponseArrayOutput) ToMemberUpdateStatusResponseArrayOutput() MemberUpdateStatusResponseArrayOutput {
+	return o
+}
+
+func (o MemberUpdateStatusResponseArrayOutput) ToMemberUpdateStatusResponseArrayOutputWithContext(ctx context.Context) MemberUpdateStatusResponseArrayOutput {
+	return o
+}
+
+func (o MemberUpdateStatusResponseArrayOutput) Index(i pulumi.IntInput) MemberUpdateStatusResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MemberUpdateStatusResponse {
+		return vs[0].([]MemberUpdateStatusResponse)[vs[1].(int)]
+	}).(MemberUpdateStatusResponseOutput)
+}
+
 // network profile for managed cluster snapshot, these properties are read only.
 type NetworkProfileForSnapshotResponse struct {
 	// loadBalancerSku for managed cluster snapshot.
@@ -25026,6 +26777,297 @@ func (o NetworkProfileForSnapshotResponseOutput) NetworkPluginMode() pulumi.Stri
 // networkPolicy for managed cluster snapshot.
 func (o NetworkProfileForSnapshotResponseOutput) NetworkPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkProfileForSnapshotResponse) *string { return v.NetworkPolicy }).(pulumi.StringPtrOutput)
+}
+
+// The node image upgrade to be applied to the target nodes in update run.
+type NodeImageSelection struct {
+	// The node image upgrade type.
+	Type string `pulumi:"type"`
+}
+
+// NodeImageSelectionInput is an input type that accepts NodeImageSelectionArgs and NodeImageSelectionOutput values.
+// You can construct a concrete instance of `NodeImageSelectionInput` via:
+//
+//	NodeImageSelectionArgs{...}
+type NodeImageSelectionInput interface {
+	pulumi.Input
+
+	ToNodeImageSelectionOutput() NodeImageSelectionOutput
+	ToNodeImageSelectionOutputWithContext(context.Context) NodeImageSelectionOutput
+}
+
+// The node image upgrade to be applied to the target nodes in update run.
+type NodeImageSelectionArgs struct {
+	// The node image upgrade type.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (NodeImageSelectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeImageSelection)(nil)).Elem()
+}
+
+func (i NodeImageSelectionArgs) ToNodeImageSelectionOutput() NodeImageSelectionOutput {
+	return i.ToNodeImageSelectionOutputWithContext(context.Background())
+}
+
+func (i NodeImageSelectionArgs) ToNodeImageSelectionOutputWithContext(ctx context.Context) NodeImageSelectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeImageSelectionOutput)
+}
+
+func (i NodeImageSelectionArgs) ToNodeImageSelectionPtrOutput() NodeImageSelectionPtrOutput {
+	return i.ToNodeImageSelectionPtrOutputWithContext(context.Background())
+}
+
+func (i NodeImageSelectionArgs) ToNodeImageSelectionPtrOutputWithContext(ctx context.Context) NodeImageSelectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeImageSelectionOutput).ToNodeImageSelectionPtrOutputWithContext(ctx)
+}
+
+// NodeImageSelectionPtrInput is an input type that accepts NodeImageSelectionArgs, NodeImageSelectionPtr and NodeImageSelectionPtrOutput values.
+// You can construct a concrete instance of `NodeImageSelectionPtrInput` via:
+//
+//	        NodeImageSelectionArgs{...}
+//
+//	or:
+//
+//	        nil
+type NodeImageSelectionPtrInput interface {
+	pulumi.Input
+
+	ToNodeImageSelectionPtrOutput() NodeImageSelectionPtrOutput
+	ToNodeImageSelectionPtrOutputWithContext(context.Context) NodeImageSelectionPtrOutput
+}
+
+type nodeImageSelectionPtrType NodeImageSelectionArgs
+
+func NodeImageSelectionPtr(v *NodeImageSelectionArgs) NodeImageSelectionPtrInput {
+	return (*nodeImageSelectionPtrType)(v)
+}
+
+func (*nodeImageSelectionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodeImageSelection)(nil)).Elem()
+}
+
+func (i *nodeImageSelectionPtrType) ToNodeImageSelectionPtrOutput() NodeImageSelectionPtrOutput {
+	return i.ToNodeImageSelectionPtrOutputWithContext(context.Background())
+}
+
+func (i *nodeImageSelectionPtrType) ToNodeImageSelectionPtrOutputWithContext(ctx context.Context) NodeImageSelectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeImageSelectionPtrOutput)
+}
+
+// The node image upgrade to be applied to the target nodes in update run.
+type NodeImageSelectionOutput struct{ *pulumi.OutputState }
+
+func (NodeImageSelectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeImageSelection)(nil)).Elem()
+}
+
+func (o NodeImageSelectionOutput) ToNodeImageSelectionOutput() NodeImageSelectionOutput {
+	return o
+}
+
+func (o NodeImageSelectionOutput) ToNodeImageSelectionOutputWithContext(ctx context.Context) NodeImageSelectionOutput {
+	return o
+}
+
+func (o NodeImageSelectionOutput) ToNodeImageSelectionPtrOutput() NodeImageSelectionPtrOutput {
+	return o.ToNodeImageSelectionPtrOutputWithContext(context.Background())
+}
+
+func (o NodeImageSelectionOutput) ToNodeImageSelectionPtrOutputWithContext(ctx context.Context) NodeImageSelectionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodeImageSelection) *NodeImageSelection {
+		return &v
+	}).(NodeImageSelectionPtrOutput)
+}
+
+// The node image upgrade type.
+func (o NodeImageSelectionOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v NodeImageSelection) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type NodeImageSelectionPtrOutput struct{ *pulumi.OutputState }
+
+func (NodeImageSelectionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodeImageSelection)(nil)).Elem()
+}
+
+func (o NodeImageSelectionPtrOutput) ToNodeImageSelectionPtrOutput() NodeImageSelectionPtrOutput {
+	return o
+}
+
+func (o NodeImageSelectionPtrOutput) ToNodeImageSelectionPtrOutputWithContext(ctx context.Context) NodeImageSelectionPtrOutput {
+	return o
+}
+
+func (o NodeImageSelectionPtrOutput) Elem() NodeImageSelectionOutput {
+	return o.ApplyT(func(v *NodeImageSelection) NodeImageSelection {
+		if v != nil {
+			return *v
+		}
+		var ret NodeImageSelection
+		return ret
+	}).(NodeImageSelectionOutput)
+}
+
+// The node image upgrade type.
+func (o NodeImageSelectionPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodeImageSelection) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The node image upgrade to be applied to the target nodes in update run.
+type NodeImageSelectionResponse struct {
+	// Custom node image versions to upgrade the nodes to. This field is required if node image selection type is Custom. Otherwise, it must be empty. For each node image family (e.g., 'AKSUbuntu-1804gen2containerd'), this field can contain at most one version (e.g., only one of 'AKSUbuntu-1804gen2containerd-2023.01.12' or 'AKSUbuntu-1804gen2containerd-2023.02.12', not both). If the nodes belong to a family without a matching image version in this field, they are not upgraded.
+	CustomNodeImageVersions []NodeImageVersionResponse `pulumi:"customNodeImageVersions"`
+	// The node image upgrade type.
+	Type string `pulumi:"type"`
+}
+
+// The node image upgrade to be applied to the target nodes in update run.
+type NodeImageSelectionResponseOutput struct{ *pulumi.OutputState }
+
+func (NodeImageSelectionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeImageSelectionResponse)(nil)).Elem()
+}
+
+func (o NodeImageSelectionResponseOutput) ToNodeImageSelectionResponseOutput() NodeImageSelectionResponseOutput {
+	return o
+}
+
+func (o NodeImageSelectionResponseOutput) ToNodeImageSelectionResponseOutputWithContext(ctx context.Context) NodeImageSelectionResponseOutput {
+	return o
+}
+
+// Custom node image versions to upgrade the nodes to. This field is required if node image selection type is Custom. Otherwise, it must be empty. For each node image family (e.g., 'AKSUbuntu-1804gen2containerd'), this field can contain at most one version (e.g., only one of 'AKSUbuntu-1804gen2containerd-2023.01.12' or 'AKSUbuntu-1804gen2containerd-2023.02.12', not both). If the nodes belong to a family without a matching image version in this field, they are not upgraded.
+func (o NodeImageSelectionResponseOutput) CustomNodeImageVersions() NodeImageVersionResponseArrayOutput {
+	return o.ApplyT(func(v NodeImageSelectionResponse) []NodeImageVersionResponse { return v.CustomNodeImageVersions }).(NodeImageVersionResponseArrayOutput)
+}
+
+// The node image upgrade type.
+func (o NodeImageSelectionResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v NodeImageSelectionResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type NodeImageSelectionResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (NodeImageSelectionResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodeImageSelectionResponse)(nil)).Elem()
+}
+
+func (o NodeImageSelectionResponsePtrOutput) ToNodeImageSelectionResponsePtrOutput() NodeImageSelectionResponsePtrOutput {
+	return o
+}
+
+func (o NodeImageSelectionResponsePtrOutput) ToNodeImageSelectionResponsePtrOutputWithContext(ctx context.Context) NodeImageSelectionResponsePtrOutput {
+	return o
+}
+
+func (o NodeImageSelectionResponsePtrOutput) Elem() NodeImageSelectionResponseOutput {
+	return o.ApplyT(func(v *NodeImageSelectionResponse) NodeImageSelectionResponse {
+		if v != nil {
+			return *v
+		}
+		var ret NodeImageSelectionResponse
+		return ret
+	}).(NodeImageSelectionResponseOutput)
+}
+
+// Custom node image versions to upgrade the nodes to. This field is required if node image selection type is Custom. Otherwise, it must be empty. For each node image family (e.g., 'AKSUbuntu-1804gen2containerd'), this field can contain at most one version (e.g., only one of 'AKSUbuntu-1804gen2containerd-2023.01.12' or 'AKSUbuntu-1804gen2containerd-2023.02.12', not both). If the nodes belong to a family without a matching image version in this field, they are not upgraded.
+func (o NodeImageSelectionResponsePtrOutput) CustomNodeImageVersions() NodeImageVersionResponseArrayOutput {
+	return o.ApplyT(func(v *NodeImageSelectionResponse) []NodeImageVersionResponse {
+		if v == nil {
+			return nil
+		}
+		return v.CustomNodeImageVersions
+	}).(NodeImageVersionResponseArrayOutput)
+}
+
+// The node image upgrade type.
+func (o NodeImageSelectionResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodeImageSelectionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The node image upgrade specs for the update run.
+type NodeImageSelectionStatusResponse struct {
+	// The image versions to upgrade the nodes to.
+	SelectedNodeImageVersions []NodeImageVersionResponse `pulumi:"selectedNodeImageVersions"`
+}
+
+// The node image upgrade specs for the update run.
+type NodeImageSelectionStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (NodeImageSelectionStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeImageSelectionStatusResponse)(nil)).Elem()
+}
+
+func (o NodeImageSelectionStatusResponseOutput) ToNodeImageSelectionStatusResponseOutput() NodeImageSelectionStatusResponseOutput {
+	return o
+}
+
+func (o NodeImageSelectionStatusResponseOutput) ToNodeImageSelectionStatusResponseOutputWithContext(ctx context.Context) NodeImageSelectionStatusResponseOutput {
+	return o
+}
+
+// The image versions to upgrade the nodes to.
+func (o NodeImageSelectionStatusResponseOutput) SelectedNodeImageVersions() NodeImageVersionResponseArrayOutput {
+	return o.ApplyT(func(v NodeImageSelectionStatusResponse) []NodeImageVersionResponse {
+		return v.SelectedNodeImageVersions
+	}).(NodeImageVersionResponseArrayOutput)
+}
+
+// The node upgrade image version.
+type NodeImageVersionResponse struct {
+	// The image version to upgrade the nodes to (e.g., 'AKSUbuntu-1804gen2containerd-2022.12.13').
+	Version string `pulumi:"version"`
+}
+
+// The node upgrade image version.
+type NodeImageVersionResponseOutput struct{ *pulumi.OutputState }
+
+func (NodeImageVersionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeImageVersionResponse)(nil)).Elem()
+}
+
+func (o NodeImageVersionResponseOutput) ToNodeImageVersionResponseOutput() NodeImageVersionResponseOutput {
+	return o
+}
+
+func (o NodeImageVersionResponseOutput) ToNodeImageVersionResponseOutputWithContext(ctx context.Context) NodeImageVersionResponseOutput {
+	return o
+}
+
+// The image version to upgrade the nodes to (e.g., 'AKSUbuntu-1804gen2containerd-2022.12.13').
+func (o NodeImageVersionResponseOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v NodeImageVersionResponse) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type NodeImageVersionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (NodeImageVersionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodeImageVersionResponse)(nil)).Elem()
+}
+
+func (o NodeImageVersionResponseArrayOutput) ToNodeImageVersionResponseArrayOutput() NodeImageVersionResponseArrayOutput {
+	return o
+}
+
+func (o NodeImageVersionResponseArrayOutput) ToNodeImageVersionResponseArrayOutputWithContext(ctx context.Context) NodeImageVersionResponseArrayOutput {
+	return o
+}
+
+func (o NodeImageVersionResponseArrayOutput) Index(i pulumi.IntInput) NodeImageVersionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodeImageVersionResponse {
+		return vs[0].([]NodeImageVersionResponse)[vs[1].(int)]
+	}).(NodeImageVersionResponseOutput)
 }
 
 // The port range.
@@ -28964,6 +31006,779 @@ func (o TimeSpanResponseArrayOutput) Index(i pulumi.IntInput) TimeSpanResponseOu
 	}).(TimeSpanResponseOutput)
 }
 
+// A group to be updated.
+type UpdateGroup struct {
+	// Name of the group.
+	// It must match a group name of an existing fleet member.
+	Name string `pulumi:"name"`
+}
+
+// UpdateGroupInput is an input type that accepts UpdateGroupArgs and UpdateGroupOutput values.
+// You can construct a concrete instance of `UpdateGroupInput` via:
+//
+//	UpdateGroupArgs{...}
+type UpdateGroupInput interface {
+	pulumi.Input
+
+	ToUpdateGroupOutput() UpdateGroupOutput
+	ToUpdateGroupOutputWithContext(context.Context) UpdateGroupOutput
+}
+
+// A group to be updated.
+type UpdateGroupArgs struct {
+	// Name of the group.
+	// It must match a group name of an existing fleet member.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (UpdateGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UpdateGroup)(nil)).Elem()
+}
+
+func (i UpdateGroupArgs) ToUpdateGroupOutput() UpdateGroupOutput {
+	return i.ToUpdateGroupOutputWithContext(context.Background())
+}
+
+func (i UpdateGroupArgs) ToUpdateGroupOutputWithContext(ctx context.Context) UpdateGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UpdateGroupOutput)
+}
+
+// UpdateGroupArrayInput is an input type that accepts UpdateGroupArray and UpdateGroupArrayOutput values.
+// You can construct a concrete instance of `UpdateGroupArrayInput` via:
+//
+//	UpdateGroupArray{ UpdateGroupArgs{...} }
+type UpdateGroupArrayInput interface {
+	pulumi.Input
+
+	ToUpdateGroupArrayOutput() UpdateGroupArrayOutput
+	ToUpdateGroupArrayOutputWithContext(context.Context) UpdateGroupArrayOutput
+}
+
+type UpdateGroupArray []UpdateGroupInput
+
+func (UpdateGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UpdateGroup)(nil)).Elem()
+}
+
+func (i UpdateGroupArray) ToUpdateGroupArrayOutput() UpdateGroupArrayOutput {
+	return i.ToUpdateGroupArrayOutputWithContext(context.Background())
+}
+
+func (i UpdateGroupArray) ToUpdateGroupArrayOutputWithContext(ctx context.Context) UpdateGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UpdateGroupArrayOutput)
+}
+
+// A group to be updated.
+type UpdateGroupOutput struct{ *pulumi.OutputState }
+
+func (UpdateGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UpdateGroup)(nil)).Elem()
+}
+
+func (o UpdateGroupOutput) ToUpdateGroupOutput() UpdateGroupOutput {
+	return o
+}
+
+func (o UpdateGroupOutput) ToUpdateGroupOutputWithContext(ctx context.Context) UpdateGroupOutput {
+	return o
+}
+
+// Name of the group.
+// It must match a group name of an existing fleet member.
+func (o UpdateGroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v UpdateGroup) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type UpdateGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (UpdateGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UpdateGroup)(nil)).Elem()
+}
+
+func (o UpdateGroupArrayOutput) ToUpdateGroupArrayOutput() UpdateGroupArrayOutput {
+	return o
+}
+
+func (o UpdateGroupArrayOutput) ToUpdateGroupArrayOutputWithContext(ctx context.Context) UpdateGroupArrayOutput {
+	return o
+}
+
+func (o UpdateGroupArrayOutput) Index(i pulumi.IntInput) UpdateGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UpdateGroup {
+		return vs[0].([]UpdateGroup)[vs[1].(int)]
+	}).(UpdateGroupOutput)
+}
+
+// A group to be updated.
+type UpdateGroupResponse struct {
+	// Name of the group.
+	// It must match a group name of an existing fleet member.
+	Name string `pulumi:"name"`
+}
+
+// A group to be updated.
+type UpdateGroupResponseOutput struct{ *pulumi.OutputState }
+
+func (UpdateGroupResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UpdateGroupResponse)(nil)).Elem()
+}
+
+func (o UpdateGroupResponseOutput) ToUpdateGroupResponseOutput() UpdateGroupResponseOutput {
+	return o
+}
+
+func (o UpdateGroupResponseOutput) ToUpdateGroupResponseOutputWithContext(ctx context.Context) UpdateGroupResponseOutput {
+	return o
+}
+
+// Name of the group.
+// It must match a group name of an existing fleet member.
+func (o UpdateGroupResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v UpdateGroupResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type UpdateGroupResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (UpdateGroupResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UpdateGroupResponse)(nil)).Elem()
+}
+
+func (o UpdateGroupResponseArrayOutput) ToUpdateGroupResponseArrayOutput() UpdateGroupResponseArrayOutput {
+	return o
+}
+
+func (o UpdateGroupResponseArrayOutput) ToUpdateGroupResponseArrayOutputWithContext(ctx context.Context) UpdateGroupResponseArrayOutput {
+	return o
+}
+
+func (o UpdateGroupResponseArrayOutput) Index(i pulumi.IntInput) UpdateGroupResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UpdateGroupResponse {
+		return vs[0].([]UpdateGroupResponse)[vs[1].(int)]
+	}).(UpdateGroupResponseOutput)
+}
+
+// The status of a UpdateGroup.
+type UpdateGroupStatusResponse struct {
+	// The list of member this UpdateGroup updates.
+	Members []MemberUpdateStatusResponse `pulumi:"members"`
+	// The name of the UpdateGroup.
+	Name string `pulumi:"name"`
+	// The status of the UpdateGroup.
+	Status UpdateStatusResponse `pulumi:"status"`
+}
+
+// The status of a UpdateGroup.
+type UpdateGroupStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (UpdateGroupStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UpdateGroupStatusResponse)(nil)).Elem()
+}
+
+func (o UpdateGroupStatusResponseOutput) ToUpdateGroupStatusResponseOutput() UpdateGroupStatusResponseOutput {
+	return o
+}
+
+func (o UpdateGroupStatusResponseOutput) ToUpdateGroupStatusResponseOutputWithContext(ctx context.Context) UpdateGroupStatusResponseOutput {
+	return o
+}
+
+// The list of member this UpdateGroup updates.
+func (o UpdateGroupStatusResponseOutput) Members() MemberUpdateStatusResponseArrayOutput {
+	return o.ApplyT(func(v UpdateGroupStatusResponse) []MemberUpdateStatusResponse { return v.Members }).(MemberUpdateStatusResponseArrayOutput)
+}
+
+// The name of the UpdateGroup.
+func (o UpdateGroupStatusResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v UpdateGroupStatusResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The status of the UpdateGroup.
+func (o UpdateGroupStatusResponseOutput) Status() UpdateStatusResponseOutput {
+	return o.ApplyT(func(v UpdateGroupStatusResponse) UpdateStatusResponse { return v.Status }).(UpdateStatusResponseOutput)
+}
+
+type UpdateGroupStatusResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (UpdateGroupStatusResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UpdateGroupStatusResponse)(nil)).Elem()
+}
+
+func (o UpdateGroupStatusResponseArrayOutput) ToUpdateGroupStatusResponseArrayOutput() UpdateGroupStatusResponseArrayOutput {
+	return o
+}
+
+func (o UpdateGroupStatusResponseArrayOutput) ToUpdateGroupStatusResponseArrayOutputWithContext(ctx context.Context) UpdateGroupStatusResponseArrayOutput {
+	return o
+}
+
+func (o UpdateGroupStatusResponseArrayOutput) Index(i pulumi.IntInput) UpdateGroupStatusResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UpdateGroupStatusResponse {
+		return vs[0].([]UpdateGroupStatusResponse)[vs[1].(int)]
+	}).(UpdateGroupStatusResponseOutput)
+}
+
+// The status of a UpdateRun.
+type UpdateRunStatusResponse struct {
+	// The node image upgrade specs for the update run. It is only set in update run when `NodeImageSelection.type` is `Consistent`.
+	NodeImageSelection NodeImageSelectionStatusResponse `pulumi:"nodeImageSelection"`
+	// The stages composing an update run. Stages are run sequentially withing an UpdateRun.
+	Stages []UpdateStageStatusResponse `pulumi:"stages"`
+	// The status of the UpdateRun.
+	Status UpdateStatusResponse `pulumi:"status"`
+}
+
+// The status of a UpdateRun.
+type UpdateRunStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (UpdateRunStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UpdateRunStatusResponse)(nil)).Elem()
+}
+
+func (o UpdateRunStatusResponseOutput) ToUpdateRunStatusResponseOutput() UpdateRunStatusResponseOutput {
+	return o
+}
+
+func (o UpdateRunStatusResponseOutput) ToUpdateRunStatusResponseOutputWithContext(ctx context.Context) UpdateRunStatusResponseOutput {
+	return o
+}
+
+// The node image upgrade specs for the update run. It is only set in update run when `NodeImageSelection.type` is `Consistent`.
+func (o UpdateRunStatusResponseOutput) NodeImageSelection() NodeImageSelectionStatusResponseOutput {
+	return o.ApplyT(func(v UpdateRunStatusResponse) NodeImageSelectionStatusResponse { return v.NodeImageSelection }).(NodeImageSelectionStatusResponseOutput)
+}
+
+// The stages composing an update run. Stages are run sequentially withing an UpdateRun.
+func (o UpdateRunStatusResponseOutput) Stages() UpdateStageStatusResponseArrayOutput {
+	return o.ApplyT(func(v UpdateRunStatusResponse) []UpdateStageStatusResponse { return v.Stages }).(UpdateStageStatusResponseArrayOutput)
+}
+
+// The status of the UpdateRun.
+func (o UpdateRunStatusResponseOutput) Status() UpdateStatusResponseOutput {
+	return o.ApplyT(func(v UpdateRunStatusResponse) UpdateStatusResponse { return v.Status }).(UpdateStatusResponseOutput)
+}
+
+// Defines the update sequence of the clusters via stages and groups.
+//
+// Stages within a run are executed sequentially one after another.
+// Groups within a stage are executed in parallel.
+// Member clusters within a group are updated sequentially one after another.
+//
+// A valid strategy contains no duplicate groups within or across stages.
+type UpdateRunStrategy struct {
+	// The list of stages that compose this update run. Min size: 1.
+	Stages []UpdateStage `pulumi:"stages"`
+}
+
+// UpdateRunStrategyInput is an input type that accepts UpdateRunStrategyArgs and UpdateRunStrategyOutput values.
+// You can construct a concrete instance of `UpdateRunStrategyInput` via:
+//
+//	UpdateRunStrategyArgs{...}
+type UpdateRunStrategyInput interface {
+	pulumi.Input
+
+	ToUpdateRunStrategyOutput() UpdateRunStrategyOutput
+	ToUpdateRunStrategyOutputWithContext(context.Context) UpdateRunStrategyOutput
+}
+
+// Defines the update sequence of the clusters via stages and groups.
+//
+// Stages within a run are executed sequentially one after another.
+// Groups within a stage are executed in parallel.
+// Member clusters within a group are updated sequentially one after another.
+//
+// A valid strategy contains no duplicate groups within or across stages.
+type UpdateRunStrategyArgs struct {
+	// The list of stages that compose this update run. Min size: 1.
+	Stages UpdateStageArrayInput `pulumi:"stages"`
+}
+
+func (UpdateRunStrategyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UpdateRunStrategy)(nil)).Elem()
+}
+
+func (i UpdateRunStrategyArgs) ToUpdateRunStrategyOutput() UpdateRunStrategyOutput {
+	return i.ToUpdateRunStrategyOutputWithContext(context.Background())
+}
+
+func (i UpdateRunStrategyArgs) ToUpdateRunStrategyOutputWithContext(ctx context.Context) UpdateRunStrategyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UpdateRunStrategyOutput)
+}
+
+func (i UpdateRunStrategyArgs) ToUpdateRunStrategyPtrOutput() UpdateRunStrategyPtrOutput {
+	return i.ToUpdateRunStrategyPtrOutputWithContext(context.Background())
+}
+
+func (i UpdateRunStrategyArgs) ToUpdateRunStrategyPtrOutputWithContext(ctx context.Context) UpdateRunStrategyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UpdateRunStrategyOutput).ToUpdateRunStrategyPtrOutputWithContext(ctx)
+}
+
+// UpdateRunStrategyPtrInput is an input type that accepts UpdateRunStrategyArgs, UpdateRunStrategyPtr and UpdateRunStrategyPtrOutput values.
+// You can construct a concrete instance of `UpdateRunStrategyPtrInput` via:
+//
+//	        UpdateRunStrategyArgs{...}
+//
+//	or:
+//
+//	        nil
+type UpdateRunStrategyPtrInput interface {
+	pulumi.Input
+
+	ToUpdateRunStrategyPtrOutput() UpdateRunStrategyPtrOutput
+	ToUpdateRunStrategyPtrOutputWithContext(context.Context) UpdateRunStrategyPtrOutput
+}
+
+type updateRunStrategyPtrType UpdateRunStrategyArgs
+
+func UpdateRunStrategyPtr(v *UpdateRunStrategyArgs) UpdateRunStrategyPtrInput {
+	return (*updateRunStrategyPtrType)(v)
+}
+
+func (*updateRunStrategyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UpdateRunStrategy)(nil)).Elem()
+}
+
+func (i *updateRunStrategyPtrType) ToUpdateRunStrategyPtrOutput() UpdateRunStrategyPtrOutput {
+	return i.ToUpdateRunStrategyPtrOutputWithContext(context.Background())
+}
+
+func (i *updateRunStrategyPtrType) ToUpdateRunStrategyPtrOutputWithContext(ctx context.Context) UpdateRunStrategyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UpdateRunStrategyPtrOutput)
+}
+
+// Defines the update sequence of the clusters via stages and groups.
+//
+// Stages within a run are executed sequentially one after another.
+// Groups within a stage are executed in parallel.
+// Member clusters within a group are updated sequentially one after another.
+//
+// A valid strategy contains no duplicate groups within or across stages.
+type UpdateRunStrategyOutput struct{ *pulumi.OutputState }
+
+func (UpdateRunStrategyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UpdateRunStrategy)(nil)).Elem()
+}
+
+func (o UpdateRunStrategyOutput) ToUpdateRunStrategyOutput() UpdateRunStrategyOutput {
+	return o
+}
+
+func (o UpdateRunStrategyOutput) ToUpdateRunStrategyOutputWithContext(ctx context.Context) UpdateRunStrategyOutput {
+	return o
+}
+
+func (o UpdateRunStrategyOutput) ToUpdateRunStrategyPtrOutput() UpdateRunStrategyPtrOutput {
+	return o.ToUpdateRunStrategyPtrOutputWithContext(context.Background())
+}
+
+func (o UpdateRunStrategyOutput) ToUpdateRunStrategyPtrOutputWithContext(ctx context.Context) UpdateRunStrategyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UpdateRunStrategy) *UpdateRunStrategy {
+		return &v
+	}).(UpdateRunStrategyPtrOutput)
+}
+
+// The list of stages that compose this update run. Min size: 1.
+func (o UpdateRunStrategyOutput) Stages() UpdateStageArrayOutput {
+	return o.ApplyT(func(v UpdateRunStrategy) []UpdateStage { return v.Stages }).(UpdateStageArrayOutput)
+}
+
+type UpdateRunStrategyPtrOutput struct{ *pulumi.OutputState }
+
+func (UpdateRunStrategyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UpdateRunStrategy)(nil)).Elem()
+}
+
+func (o UpdateRunStrategyPtrOutput) ToUpdateRunStrategyPtrOutput() UpdateRunStrategyPtrOutput {
+	return o
+}
+
+func (o UpdateRunStrategyPtrOutput) ToUpdateRunStrategyPtrOutputWithContext(ctx context.Context) UpdateRunStrategyPtrOutput {
+	return o
+}
+
+func (o UpdateRunStrategyPtrOutput) Elem() UpdateRunStrategyOutput {
+	return o.ApplyT(func(v *UpdateRunStrategy) UpdateRunStrategy {
+		if v != nil {
+			return *v
+		}
+		var ret UpdateRunStrategy
+		return ret
+	}).(UpdateRunStrategyOutput)
+}
+
+// The list of stages that compose this update run. Min size: 1.
+func (o UpdateRunStrategyPtrOutput) Stages() UpdateStageArrayOutput {
+	return o.ApplyT(func(v *UpdateRunStrategy) []UpdateStage {
+		if v == nil {
+			return nil
+		}
+		return v.Stages
+	}).(UpdateStageArrayOutput)
+}
+
+// Defines the update sequence of the clusters via stages and groups.
+//
+// Stages within a run are executed sequentially one after another.
+// Groups within a stage are executed in parallel.
+// Member clusters within a group are updated sequentially one after another.
+//
+// A valid strategy contains no duplicate groups within or across stages.
+type UpdateRunStrategyResponse struct {
+	// The list of stages that compose this update run. Min size: 1.
+	Stages []UpdateStageResponse `pulumi:"stages"`
+}
+
+// Defines the update sequence of the clusters via stages and groups.
+//
+// Stages within a run are executed sequentially one after another.
+// Groups within a stage are executed in parallel.
+// Member clusters within a group are updated sequentially one after another.
+//
+// A valid strategy contains no duplicate groups within or across stages.
+type UpdateRunStrategyResponseOutput struct{ *pulumi.OutputState }
+
+func (UpdateRunStrategyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UpdateRunStrategyResponse)(nil)).Elem()
+}
+
+func (o UpdateRunStrategyResponseOutput) ToUpdateRunStrategyResponseOutput() UpdateRunStrategyResponseOutput {
+	return o
+}
+
+func (o UpdateRunStrategyResponseOutput) ToUpdateRunStrategyResponseOutputWithContext(ctx context.Context) UpdateRunStrategyResponseOutput {
+	return o
+}
+
+// The list of stages that compose this update run. Min size: 1.
+func (o UpdateRunStrategyResponseOutput) Stages() UpdateStageResponseArrayOutput {
+	return o.ApplyT(func(v UpdateRunStrategyResponse) []UpdateStageResponse { return v.Stages }).(UpdateStageResponseArrayOutput)
+}
+
+type UpdateRunStrategyResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (UpdateRunStrategyResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UpdateRunStrategyResponse)(nil)).Elem()
+}
+
+func (o UpdateRunStrategyResponsePtrOutput) ToUpdateRunStrategyResponsePtrOutput() UpdateRunStrategyResponsePtrOutput {
+	return o
+}
+
+func (o UpdateRunStrategyResponsePtrOutput) ToUpdateRunStrategyResponsePtrOutputWithContext(ctx context.Context) UpdateRunStrategyResponsePtrOutput {
+	return o
+}
+
+func (o UpdateRunStrategyResponsePtrOutput) Elem() UpdateRunStrategyResponseOutput {
+	return o.ApplyT(func(v *UpdateRunStrategyResponse) UpdateRunStrategyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret UpdateRunStrategyResponse
+		return ret
+	}).(UpdateRunStrategyResponseOutput)
+}
+
+// The list of stages that compose this update run. Min size: 1.
+func (o UpdateRunStrategyResponsePtrOutput) Stages() UpdateStageResponseArrayOutput {
+	return o.ApplyT(func(v *UpdateRunStrategyResponse) []UpdateStageResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Stages
+	}).(UpdateStageResponseArrayOutput)
+}
+
+// Defines a stage which contains the groups to update and the steps to take (e.g., wait for a time period) before starting the next stage.
+type UpdateStage struct {
+	// The time in seconds to wait at the end of this stage before starting the next one. Defaults to 0 seconds if unspecified.
+	AfterStageWaitInSeconds *int `pulumi:"afterStageWaitInSeconds"`
+	// Defines the groups to be executed in parallel in this stage. Duplicate groups are not allowed. Min size: 1.
+	Groups []UpdateGroup `pulumi:"groups"`
+	// The name of the stage. Must be unique within the UpdateRun.
+	Name string `pulumi:"name"`
+}
+
+// UpdateStageInput is an input type that accepts UpdateStageArgs and UpdateStageOutput values.
+// You can construct a concrete instance of `UpdateStageInput` via:
+//
+//	UpdateStageArgs{...}
+type UpdateStageInput interface {
+	pulumi.Input
+
+	ToUpdateStageOutput() UpdateStageOutput
+	ToUpdateStageOutputWithContext(context.Context) UpdateStageOutput
+}
+
+// Defines a stage which contains the groups to update and the steps to take (e.g., wait for a time period) before starting the next stage.
+type UpdateStageArgs struct {
+	// The time in seconds to wait at the end of this stage before starting the next one. Defaults to 0 seconds if unspecified.
+	AfterStageWaitInSeconds pulumi.IntPtrInput `pulumi:"afterStageWaitInSeconds"`
+	// Defines the groups to be executed in parallel in this stage. Duplicate groups are not allowed. Min size: 1.
+	Groups UpdateGroupArrayInput `pulumi:"groups"`
+	// The name of the stage. Must be unique within the UpdateRun.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (UpdateStageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UpdateStage)(nil)).Elem()
+}
+
+func (i UpdateStageArgs) ToUpdateStageOutput() UpdateStageOutput {
+	return i.ToUpdateStageOutputWithContext(context.Background())
+}
+
+func (i UpdateStageArgs) ToUpdateStageOutputWithContext(ctx context.Context) UpdateStageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UpdateStageOutput)
+}
+
+// UpdateStageArrayInput is an input type that accepts UpdateStageArray and UpdateStageArrayOutput values.
+// You can construct a concrete instance of `UpdateStageArrayInput` via:
+//
+//	UpdateStageArray{ UpdateStageArgs{...} }
+type UpdateStageArrayInput interface {
+	pulumi.Input
+
+	ToUpdateStageArrayOutput() UpdateStageArrayOutput
+	ToUpdateStageArrayOutputWithContext(context.Context) UpdateStageArrayOutput
+}
+
+type UpdateStageArray []UpdateStageInput
+
+func (UpdateStageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UpdateStage)(nil)).Elem()
+}
+
+func (i UpdateStageArray) ToUpdateStageArrayOutput() UpdateStageArrayOutput {
+	return i.ToUpdateStageArrayOutputWithContext(context.Background())
+}
+
+func (i UpdateStageArray) ToUpdateStageArrayOutputWithContext(ctx context.Context) UpdateStageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UpdateStageArrayOutput)
+}
+
+// Defines a stage which contains the groups to update and the steps to take (e.g., wait for a time period) before starting the next stage.
+type UpdateStageOutput struct{ *pulumi.OutputState }
+
+func (UpdateStageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UpdateStage)(nil)).Elem()
+}
+
+func (o UpdateStageOutput) ToUpdateStageOutput() UpdateStageOutput {
+	return o
+}
+
+func (o UpdateStageOutput) ToUpdateStageOutputWithContext(ctx context.Context) UpdateStageOutput {
+	return o
+}
+
+// The time in seconds to wait at the end of this stage before starting the next one. Defaults to 0 seconds if unspecified.
+func (o UpdateStageOutput) AfterStageWaitInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v UpdateStage) *int { return v.AfterStageWaitInSeconds }).(pulumi.IntPtrOutput)
+}
+
+// Defines the groups to be executed in parallel in this stage. Duplicate groups are not allowed. Min size: 1.
+func (o UpdateStageOutput) Groups() UpdateGroupArrayOutput {
+	return o.ApplyT(func(v UpdateStage) []UpdateGroup { return v.Groups }).(UpdateGroupArrayOutput)
+}
+
+// The name of the stage. Must be unique within the UpdateRun.
+func (o UpdateStageOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v UpdateStage) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type UpdateStageArrayOutput struct{ *pulumi.OutputState }
+
+func (UpdateStageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UpdateStage)(nil)).Elem()
+}
+
+func (o UpdateStageArrayOutput) ToUpdateStageArrayOutput() UpdateStageArrayOutput {
+	return o
+}
+
+func (o UpdateStageArrayOutput) ToUpdateStageArrayOutputWithContext(ctx context.Context) UpdateStageArrayOutput {
+	return o
+}
+
+func (o UpdateStageArrayOutput) Index(i pulumi.IntInput) UpdateStageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UpdateStage {
+		return vs[0].([]UpdateStage)[vs[1].(int)]
+	}).(UpdateStageOutput)
+}
+
+// Defines a stage which contains the groups to update and the steps to take (e.g., wait for a time period) before starting the next stage.
+type UpdateStageResponse struct {
+	// The time in seconds to wait at the end of this stage before starting the next one. Defaults to 0 seconds if unspecified.
+	AfterStageWaitInSeconds *int `pulumi:"afterStageWaitInSeconds"`
+	// Defines the groups to be executed in parallel in this stage. Duplicate groups are not allowed. Min size: 1.
+	Groups []UpdateGroupResponse `pulumi:"groups"`
+	// The name of the stage. Must be unique within the UpdateRun.
+	Name string `pulumi:"name"`
+}
+
+// Defines a stage which contains the groups to update and the steps to take (e.g., wait for a time period) before starting the next stage.
+type UpdateStageResponseOutput struct{ *pulumi.OutputState }
+
+func (UpdateStageResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UpdateStageResponse)(nil)).Elem()
+}
+
+func (o UpdateStageResponseOutput) ToUpdateStageResponseOutput() UpdateStageResponseOutput {
+	return o
+}
+
+func (o UpdateStageResponseOutput) ToUpdateStageResponseOutputWithContext(ctx context.Context) UpdateStageResponseOutput {
+	return o
+}
+
+// The time in seconds to wait at the end of this stage before starting the next one. Defaults to 0 seconds if unspecified.
+func (o UpdateStageResponseOutput) AfterStageWaitInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v UpdateStageResponse) *int { return v.AfterStageWaitInSeconds }).(pulumi.IntPtrOutput)
+}
+
+// Defines the groups to be executed in parallel in this stage. Duplicate groups are not allowed. Min size: 1.
+func (o UpdateStageResponseOutput) Groups() UpdateGroupResponseArrayOutput {
+	return o.ApplyT(func(v UpdateStageResponse) []UpdateGroupResponse { return v.Groups }).(UpdateGroupResponseArrayOutput)
+}
+
+// The name of the stage. Must be unique within the UpdateRun.
+func (o UpdateStageResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v UpdateStageResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type UpdateStageResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (UpdateStageResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UpdateStageResponse)(nil)).Elem()
+}
+
+func (o UpdateStageResponseArrayOutput) ToUpdateStageResponseArrayOutput() UpdateStageResponseArrayOutput {
+	return o
+}
+
+func (o UpdateStageResponseArrayOutput) ToUpdateStageResponseArrayOutputWithContext(ctx context.Context) UpdateStageResponseArrayOutput {
+	return o
+}
+
+func (o UpdateStageResponseArrayOutput) Index(i pulumi.IntInput) UpdateStageResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UpdateStageResponse {
+		return vs[0].([]UpdateStageResponse)[vs[1].(int)]
+	}).(UpdateStageResponseOutput)
+}
+
+// The status of a UpdateStage.
+type UpdateStageStatusResponse struct {
+	// The status of the wait period configured on the UpdateStage.
+	AfterStageWaitStatus WaitStatusResponse `pulumi:"afterStageWaitStatus"`
+	// The list of groups to be updated as part of this UpdateStage.
+	Groups []UpdateGroupStatusResponse `pulumi:"groups"`
+	// The name of the UpdateStage.
+	Name string `pulumi:"name"`
+	// The status of the UpdateStage.
+	Status UpdateStatusResponse `pulumi:"status"`
+}
+
+// The status of a UpdateStage.
+type UpdateStageStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (UpdateStageStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UpdateStageStatusResponse)(nil)).Elem()
+}
+
+func (o UpdateStageStatusResponseOutput) ToUpdateStageStatusResponseOutput() UpdateStageStatusResponseOutput {
+	return o
+}
+
+func (o UpdateStageStatusResponseOutput) ToUpdateStageStatusResponseOutputWithContext(ctx context.Context) UpdateStageStatusResponseOutput {
+	return o
+}
+
+// The status of the wait period configured on the UpdateStage.
+func (o UpdateStageStatusResponseOutput) AfterStageWaitStatus() WaitStatusResponseOutput {
+	return o.ApplyT(func(v UpdateStageStatusResponse) WaitStatusResponse { return v.AfterStageWaitStatus }).(WaitStatusResponseOutput)
+}
+
+// The list of groups to be updated as part of this UpdateStage.
+func (o UpdateStageStatusResponseOutput) Groups() UpdateGroupStatusResponseArrayOutput {
+	return o.ApplyT(func(v UpdateStageStatusResponse) []UpdateGroupStatusResponse { return v.Groups }).(UpdateGroupStatusResponseArrayOutput)
+}
+
+// The name of the UpdateStage.
+func (o UpdateStageStatusResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v UpdateStageStatusResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The status of the UpdateStage.
+func (o UpdateStageStatusResponseOutput) Status() UpdateStatusResponseOutput {
+	return o.ApplyT(func(v UpdateStageStatusResponse) UpdateStatusResponse { return v.Status }).(UpdateStatusResponseOutput)
+}
+
+type UpdateStageStatusResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (UpdateStageStatusResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UpdateStageStatusResponse)(nil)).Elem()
+}
+
+func (o UpdateStageStatusResponseArrayOutput) ToUpdateStageStatusResponseArrayOutput() UpdateStageStatusResponseArrayOutput {
+	return o
+}
+
+func (o UpdateStageStatusResponseArrayOutput) ToUpdateStageStatusResponseArrayOutputWithContext(ctx context.Context) UpdateStageStatusResponseArrayOutput {
+	return o
+}
+
+func (o UpdateStageStatusResponseArrayOutput) Index(i pulumi.IntInput) UpdateStageStatusResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UpdateStageStatusResponse {
+		return vs[0].([]UpdateStageStatusResponse)[vs[1].(int)]
+	}).(UpdateStageStatusResponseOutput)
+}
+
+// The status for an operation or group of operations.
+type UpdateStatusResponse struct {
+	// The time the operation or group was completed.
+	CompletedTime string `pulumi:"completedTime"`
+	// The error details when a failure is encountered.
+	Error ErrorDetailResponse `pulumi:"error"`
+	// The time the operation or group was started.
+	StartTime string `pulumi:"startTime"`
+	// The State of the operation or group.
+	State string `pulumi:"state"`
+}
+
+// The status for an operation or group of operations.
+type UpdateStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (UpdateStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UpdateStatusResponse)(nil)).Elem()
+}
+
+func (o UpdateStatusResponseOutput) ToUpdateStatusResponseOutput() UpdateStatusResponseOutput {
+	return o
+}
+
+func (o UpdateStatusResponseOutput) ToUpdateStatusResponseOutputWithContext(ctx context.Context) UpdateStatusResponseOutput {
+	return o
+}
+
+// The time the operation or group was completed.
+func (o UpdateStatusResponseOutput) CompletedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v UpdateStatusResponse) string { return v.CompletedTime }).(pulumi.StringOutput)
+}
+
+// The error details when a failure is encountered.
+func (o UpdateStatusResponseOutput) Error() ErrorDetailResponseOutput {
+	return o.ApplyT(func(v UpdateStatusResponse) ErrorDetailResponse { return v.Error }).(ErrorDetailResponseOutput)
+}
+
+// The time the operation or group was started.
+func (o UpdateStatusResponseOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v UpdateStatusResponse) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+// The State of the operation or group.
+func (o UpdateStatusResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v UpdateStatusResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
 // Settings for overrides when upgrading a cluster.
 type UpgradeOverrideSettings struct {
 	// Whether to force upgrade the cluster. Note that this option instructs upgrade operation to bypass upgrade protections such as checking for deprecated API usage. Enable this option only with caution.
@@ -29324,6 +32139,8 @@ type UserAssignedIdentityResponse struct {
 	ClientId *string `pulumi:"clientId"`
 	// The object ID of the user assigned identity.
 	ObjectId *string `pulumi:"objectId"`
+	// The principal ID of the assigned identity.
+	PrincipalId *string `pulumi:"principalId"`
 	// The resource ID of the user assigned identity.
 	ResourceId *string `pulumi:"resourceId"`
 }
@@ -29351,6 +32168,11 @@ func (o UserAssignedIdentityResponseOutput) ClientId() pulumi.StringPtrOutput {
 // The object ID of the user assigned identity.
 func (o UserAssignedIdentityResponseOutput) ObjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UserAssignedIdentityResponse) *string { return v.ObjectId }).(pulumi.StringPtrOutput)
+}
+
+// The principal ID of the assigned identity.
+func (o UserAssignedIdentityResponseOutput) PrincipalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserAssignedIdentityResponse) *string { return v.PrincipalId }).(pulumi.StringPtrOutput)
 }
 
 // The resource ID of the user assigned identity.
@@ -29399,6 +32221,16 @@ func (o UserAssignedIdentityResponsePtrOutput) ObjectId() pulumi.StringPtrOutput
 			return nil
 		}
 		return v.ObjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The principal ID of the assigned identity.
+func (o UserAssignedIdentityResponsePtrOutput) PrincipalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserAssignedIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrincipalId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -29792,6 +32624,39 @@ func (o VirtualMachinesProfileResponsePtrOutput) Scale() ScaleProfileResponsePtr
 		}
 		return v.Scale
 	}).(ScaleProfileResponsePtrOutput)
+}
+
+// The status of the wait duration.
+type WaitStatusResponse struct {
+	// The status of the wait duration.
+	Status UpdateStatusResponse `pulumi:"status"`
+	// The wait duration configured in seconds.
+	WaitDurationInSeconds int `pulumi:"waitDurationInSeconds"`
+}
+
+// The status of the wait duration.
+type WaitStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (WaitStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WaitStatusResponse)(nil)).Elem()
+}
+
+func (o WaitStatusResponseOutput) ToWaitStatusResponseOutput() WaitStatusResponseOutput {
+	return o
+}
+
+func (o WaitStatusResponseOutput) ToWaitStatusResponseOutputWithContext(ctx context.Context) WaitStatusResponseOutput {
+	return o
+}
+
+// The status of the wait duration.
+func (o WaitStatusResponseOutput) Status() UpdateStatusResponseOutput {
+	return o.ApplyT(func(v WaitStatusResponse) UpdateStatusResponse { return v.Status }).(UpdateStatusResponseOutput)
+}
+
+// The wait duration configured in seconds.
+func (o WaitStatusResponseOutput) WaitDurationInSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v WaitStatusResponse) int { return v.WaitDurationInSeconds }).(pulumi.IntOutput)
 }
 
 // For schedules like: 'recur every Monday' or 'recur every 3 weeks on Wednesday'.
@@ -30303,6 +33168,10 @@ func (o WindowsGmsaProfileResponsePtrOutput) RootDomainName() pulumi.StringPtrOu
 }
 
 func init() {
+	pulumi.RegisterOutputType(APIServerAccessProfileOutput{})
+	pulumi.RegisterOutputType(APIServerAccessProfilePtrOutput{})
+	pulumi.RegisterOutputType(APIServerAccessProfileResponseOutput{})
+	pulumi.RegisterOutputType(APIServerAccessProfileResponsePtrOutput{})
 	pulumi.RegisterOutputType(AbsoluteMonthlyScheduleOutput{})
 	pulumi.RegisterOutputType(AbsoluteMonthlySchedulePtrOutput{})
 	pulumi.RegisterOutputType(AbsoluteMonthlyScheduleResponseOutput{})
@@ -30343,10 +33212,18 @@ func init() {
 	pulumi.RegisterOutputType(AgentPoolWindowsProfilePtrOutput{})
 	pulumi.RegisterOutputType(AgentPoolWindowsProfileResponseOutput{})
 	pulumi.RegisterOutputType(AgentPoolWindowsProfileResponsePtrOutput{})
+	pulumi.RegisterOutputType(AgentProfileOutput{})
+	pulumi.RegisterOutputType(AgentProfilePtrOutput{})
+	pulumi.RegisterOutputType(AgentProfileResponseOutput{})
+	pulumi.RegisterOutputType(AgentProfileResponsePtrOutput{})
 	pulumi.RegisterOutputType(AutoScaleProfileOutput{})
 	pulumi.RegisterOutputType(AutoScaleProfileArrayOutput{})
 	pulumi.RegisterOutputType(AutoScaleProfileResponseOutput{})
 	pulumi.RegisterOutputType(AutoScaleProfileResponseArrayOutput{})
+	pulumi.RegisterOutputType(AutoUpgradeNodeImageSelectionOutput{})
+	pulumi.RegisterOutputType(AutoUpgradeNodeImageSelectionPtrOutput{})
+	pulumi.RegisterOutputType(AutoUpgradeNodeImageSelectionResponseOutput{})
+	pulumi.RegisterOutputType(AutoUpgradeNodeImageSelectionResponsePtrOutput{})
 	pulumi.RegisterOutputType(AzureKeyVaultKmsOutput{})
 	pulumi.RegisterOutputType(AzureKeyVaultKmsPtrOutput{})
 	pulumi.RegisterOutputType(AzureKeyVaultKmsResponseOutput{})
@@ -30397,10 +33274,20 @@ func init() {
 	pulumi.RegisterOutputType(DelegatedResourceMapOutput{})
 	pulumi.RegisterOutputType(DelegatedResourceResponseOutput{})
 	pulumi.RegisterOutputType(DelegatedResourceResponseMapOutput{})
+	pulumi.RegisterOutputType(ErrorAdditionalInfoResponseOutput{})
+	pulumi.RegisterOutputType(ErrorAdditionalInfoResponseArrayOutput{})
+	pulumi.RegisterOutputType(ErrorDetailResponseOutput{})
+	pulumi.RegisterOutputType(ErrorDetailResponseArrayOutput{})
 	pulumi.RegisterOutputType(ExtendedLocationOutput{})
 	pulumi.RegisterOutputType(ExtendedLocationPtrOutput{})
 	pulumi.RegisterOutputType(ExtendedLocationResponseOutput{})
 	pulumi.RegisterOutputType(ExtendedLocationResponsePtrOutput{})
+	pulumi.RegisterOutputType(FleetCredentialResultResponseOutput{})
+	pulumi.RegisterOutputType(FleetCredentialResultResponseArrayOutput{})
+	pulumi.RegisterOutputType(FleetHubProfileOutput{})
+	pulumi.RegisterOutputType(FleetHubProfilePtrOutput{})
+	pulumi.RegisterOutputType(FleetHubProfileResponseOutput{})
+	pulumi.RegisterOutputType(FleetHubProfileResponsePtrOutput{})
 	pulumi.RegisterOutputType(IPTagOutput{})
 	pulumi.RegisterOutputType(IPTagArrayOutput{})
 	pulumi.RegisterOutputType(IPTagResponseOutput{})
@@ -30655,6 +33542,10 @@ func init() {
 	pulumi.RegisterOutputType(ManagedClusterStorageProfileSnapshotControllerPtrOutput{})
 	pulumi.RegisterOutputType(ManagedClusterStorageProfileSnapshotControllerResponseOutput{})
 	pulumi.RegisterOutputType(ManagedClusterStorageProfileSnapshotControllerResponsePtrOutput{})
+	pulumi.RegisterOutputType(ManagedClusterUpdateOutput{})
+	pulumi.RegisterOutputType(ManagedClusterUpdateResponseOutput{})
+	pulumi.RegisterOutputType(ManagedClusterUpgradeSpecOutput{})
+	pulumi.RegisterOutputType(ManagedClusterUpgradeSpecResponseOutput{})
 	pulumi.RegisterOutputType(ManagedClusterWindowsProfileOutput{})
 	pulumi.RegisterOutputType(ManagedClusterWindowsProfilePtrOutput{})
 	pulumi.RegisterOutputType(ManagedClusterWindowsProfileResponseOutput{})
@@ -30671,11 +33562,24 @@ func init() {
 	pulumi.RegisterOutputType(ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerPtrOutput{})
 	pulumi.RegisterOutputType(ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponseOutput{})
 	pulumi.RegisterOutputType(ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponsePtrOutput{})
+	pulumi.RegisterOutputType(ManagedServiceIdentityOutput{})
+	pulumi.RegisterOutputType(ManagedServiceIdentityPtrOutput{})
+	pulumi.RegisterOutputType(ManagedServiceIdentityResponseOutput{})
+	pulumi.RegisterOutputType(ManagedServiceIdentityResponsePtrOutput{})
 	pulumi.RegisterOutputType(ManualScaleProfileOutput{})
 	pulumi.RegisterOutputType(ManualScaleProfileArrayOutput{})
 	pulumi.RegisterOutputType(ManualScaleProfileResponseOutput{})
 	pulumi.RegisterOutputType(ManualScaleProfileResponseArrayOutput{})
+	pulumi.RegisterOutputType(MemberUpdateStatusResponseOutput{})
+	pulumi.RegisterOutputType(MemberUpdateStatusResponseArrayOutput{})
 	pulumi.RegisterOutputType(NetworkProfileForSnapshotResponseOutput{})
+	pulumi.RegisterOutputType(NodeImageSelectionOutput{})
+	pulumi.RegisterOutputType(NodeImageSelectionPtrOutput{})
+	pulumi.RegisterOutputType(NodeImageSelectionResponseOutput{})
+	pulumi.RegisterOutputType(NodeImageSelectionResponsePtrOutput{})
+	pulumi.RegisterOutputType(NodeImageSelectionStatusResponseOutput{})
+	pulumi.RegisterOutputType(NodeImageVersionResponseOutput{})
+	pulumi.RegisterOutputType(NodeImageVersionResponseArrayOutput{})
 	pulumi.RegisterOutputType(PortRangeOutput{})
 	pulumi.RegisterOutputType(PortRangeArrayOutput{})
 	pulumi.RegisterOutputType(PortRangeResponseOutput{})
@@ -30731,6 +33635,24 @@ func init() {
 	pulumi.RegisterOutputType(TimeSpanArrayOutput{})
 	pulumi.RegisterOutputType(TimeSpanResponseOutput{})
 	pulumi.RegisterOutputType(TimeSpanResponseArrayOutput{})
+	pulumi.RegisterOutputType(UpdateGroupOutput{})
+	pulumi.RegisterOutputType(UpdateGroupArrayOutput{})
+	pulumi.RegisterOutputType(UpdateGroupResponseOutput{})
+	pulumi.RegisterOutputType(UpdateGroupResponseArrayOutput{})
+	pulumi.RegisterOutputType(UpdateGroupStatusResponseOutput{})
+	pulumi.RegisterOutputType(UpdateGroupStatusResponseArrayOutput{})
+	pulumi.RegisterOutputType(UpdateRunStatusResponseOutput{})
+	pulumi.RegisterOutputType(UpdateRunStrategyOutput{})
+	pulumi.RegisterOutputType(UpdateRunStrategyPtrOutput{})
+	pulumi.RegisterOutputType(UpdateRunStrategyResponseOutput{})
+	pulumi.RegisterOutputType(UpdateRunStrategyResponsePtrOutput{})
+	pulumi.RegisterOutputType(UpdateStageOutput{})
+	pulumi.RegisterOutputType(UpdateStageArrayOutput{})
+	pulumi.RegisterOutputType(UpdateStageResponseOutput{})
+	pulumi.RegisterOutputType(UpdateStageResponseArrayOutput{})
+	pulumi.RegisterOutputType(UpdateStageStatusResponseOutput{})
+	pulumi.RegisterOutputType(UpdateStageStatusResponseArrayOutput{})
+	pulumi.RegisterOutputType(UpdateStatusResponseOutput{})
 	pulumi.RegisterOutputType(UpgradeOverrideSettingsOutput{})
 	pulumi.RegisterOutputType(UpgradeOverrideSettingsPtrOutput{})
 	pulumi.RegisterOutputType(UpgradeOverrideSettingsResponseOutput{})
@@ -30748,6 +33670,7 @@ func init() {
 	pulumi.RegisterOutputType(VirtualMachinesProfilePtrOutput{})
 	pulumi.RegisterOutputType(VirtualMachinesProfileResponseOutput{})
 	pulumi.RegisterOutputType(VirtualMachinesProfileResponsePtrOutput{})
+	pulumi.RegisterOutputType(WaitStatusResponseOutput{})
 	pulumi.RegisterOutputType(WeeklyScheduleOutput{})
 	pulumi.RegisterOutputType(WeeklySchedulePtrOutput{})
 	pulumi.RegisterOutputType(WeeklyScheduleResponseOutput{})

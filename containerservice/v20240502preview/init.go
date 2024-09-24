@@ -23,6 +23,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:containerservice/v20240502preview:AgentPool":
 		r = &AgentPool{}
+	case "azure-native:containerservice/v20240502preview:AutoUpgradeProfile":
+		r = &AutoUpgradeProfile{}
+	case "azure-native:containerservice/v20240502preview:Fleet":
+		r = &Fleet{}
+	case "azure-native:containerservice/v20240502preview:FleetMember":
+		r = &FleetMember{}
+	case "azure-native:containerservice/v20240502preview:FleetUpdateStrategy":
+		r = &FleetUpdateStrategy{}
 	case "azure-native:containerservice/v20240502preview:LoadBalancer":
 		r = &LoadBalancer{}
 	case "azure-native:containerservice/v20240502preview:MaintenanceConfiguration":
@@ -37,6 +45,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Snapshot{}
 	case "azure-native:containerservice/v20240502preview:TrustedAccessRoleBinding":
 		r = &TrustedAccessRoleBinding{}
+	case "azure-native:containerservice/v20240502preview:UpdateRun":
+		r = &UpdateRun{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
