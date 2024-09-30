@@ -94,6 +94,9 @@ func NewWebAppConnectionStringsSlot(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:web/v20230101:WebAppConnectionStringsSlot"),
 		},
+		{
+			Type: pulumi.String("azure-native:web/v20240401:WebAppConnectionStringsSlot"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

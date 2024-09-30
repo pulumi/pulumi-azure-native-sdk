@@ -71,6 +71,9 @@ func NewLinker(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:servicelinker/v20240401:Linker"),
 		},
+		{
+			Type: pulumi.String("azure-native:servicelinker/v20240701preview:Linker"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

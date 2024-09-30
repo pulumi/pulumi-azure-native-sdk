@@ -159,6 +159,9 @@ func NewAutomationRule(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20240301:AutomationRule"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240401preview:AutomationRule"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -290,6 +290,55 @@ func (o ActivityTimelineItemResponseOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v ActivityTimelineItemResponse) string { return v.Title }).(pulumi.StringOutput)
 }
 
+// Describes the configuration of a system inside the agent.
+type AgentSystemResponse struct {
+	SystemDisplayName  *string `pulumi:"systemDisplayName"`
+	SystemResourceName *string `pulumi:"systemResourceName"`
+}
+
+// Describes the configuration of a system inside the agent.
+type AgentSystemResponseOutput struct{ *pulumi.OutputState }
+
+func (AgentSystemResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentSystemResponse)(nil)).Elem()
+}
+
+func (o AgentSystemResponseOutput) ToAgentSystemResponseOutput() AgentSystemResponseOutput {
+	return o
+}
+
+func (o AgentSystemResponseOutput) ToAgentSystemResponseOutputWithContext(ctx context.Context) AgentSystemResponseOutput {
+	return o
+}
+
+func (o AgentSystemResponseOutput) SystemDisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AgentSystemResponse) *string { return v.SystemDisplayName }).(pulumi.StringPtrOutput)
+}
+
+func (o AgentSystemResponseOutput) SystemResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AgentSystemResponse) *string { return v.SystemResourceName }).(pulumi.StringPtrOutput)
+}
+
+type AgentSystemResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AgentSystemResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AgentSystemResponse)(nil)).Elem()
+}
+
+func (o AgentSystemResponseArrayOutput) ToAgentSystemResponseArrayOutput() AgentSystemResponseArrayOutput {
+	return o
+}
+
+func (o AgentSystemResponseArrayOutput) ToAgentSystemResponseArrayOutputWithContext(ctx context.Context) AgentSystemResponseArrayOutput {
+	return o
+}
+
+func (o AgentSystemResponseArrayOutput) Index(i pulumi.IntInput) AgentSystemResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AgentSystemResponse {
+		return vs[0].([]AgentSystemResponse)[vs[1].(int)]
+	}).(AgentSystemResponseOutput)
+}
+
 // Settings for how to dynamically override alert static details
 type AlertDetailsOverride struct {
 	// the format containing columns name(s) to override the alert description
@@ -10675,6 +10724,274 @@ func (o InstructionStepResponseArrayOutput) Index(i pulumi.IntInput) Instruction
 	}).(InstructionStepResponseOutput)
 }
 
+// Represents lock user action.
+type LockUserActionResponse struct {
+	// The reason of the failure of the action. Empty if the action is successful.
+	FailureReason *string `pulumi:"failureReason"`
+	// The kind of the action
+	// Expected value is 'LockUser'.
+	Kind string `pulumi:"kind"`
+	// The user to lock
+	User *string `pulumi:"user"`
+}
+
+// Represents lock user action.
+type LockUserActionResponseOutput struct{ *pulumi.OutputState }
+
+func (LockUserActionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LockUserActionResponse)(nil)).Elem()
+}
+
+func (o LockUserActionResponseOutput) ToLockUserActionResponseOutput() LockUserActionResponseOutput {
+	return o
+}
+
+func (o LockUserActionResponseOutput) ToLockUserActionResponseOutputWithContext(ctx context.Context) LockUserActionResponseOutput {
+	return o
+}
+
+// The reason of the failure of the action. Empty if the action is successful.
+func (o LockUserActionResponseOutput) FailureReason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LockUserActionResponse) *string { return v.FailureReason }).(pulumi.StringPtrOutput)
+}
+
+// The kind of the action
+// Expected value is 'LockUser'.
+func (o LockUserActionResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v LockUserActionResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The user to lock
+func (o LockUserActionResponseOutput) User() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LockUserActionResponse) *string { return v.User }).(pulumi.StringPtrOutput)
+}
+
+// Describes a log.
+type Log struct {
+	// The bulk size for the log.
+	BulkSize *int `pulumi:"bulkSize"`
+	// The filters for the log.
+	Filters []string `pulumi:"filters"`
+	// Types of ingestion.
+	IngestionType *string `pulumi:"ingestionType"`
+	// The schedule interval in seconds.
+	ScheduleInterval *int `pulumi:"scheduleInterval"`
+	// Types of log status.
+	Status *string `pulumi:"status"`
+	// Types of logs and tables.
+	Type string `pulumi:"type"`
+}
+
+// LogInput is an input type that accepts LogArgs and LogOutput values.
+// You can construct a concrete instance of `LogInput` via:
+//
+//	LogArgs{...}
+type LogInput interface {
+	pulumi.Input
+
+	ToLogOutput() LogOutput
+	ToLogOutputWithContext(context.Context) LogOutput
+}
+
+// Describes a log.
+type LogArgs struct {
+	// The bulk size for the log.
+	BulkSize pulumi.IntPtrInput `pulumi:"bulkSize"`
+	// The filters for the log.
+	Filters pulumi.StringArrayInput `pulumi:"filters"`
+	// Types of ingestion.
+	IngestionType pulumi.StringPtrInput `pulumi:"ingestionType"`
+	// The schedule interval in seconds.
+	ScheduleInterval pulumi.IntPtrInput `pulumi:"scheduleInterval"`
+	// Types of log status.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// Types of logs and tables.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (LogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Log)(nil)).Elem()
+}
+
+func (i LogArgs) ToLogOutput() LogOutput {
+	return i.ToLogOutputWithContext(context.Background())
+}
+
+func (i LogArgs) ToLogOutputWithContext(ctx context.Context) LogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogOutput)
+}
+
+// LogArrayInput is an input type that accepts LogArray and LogArrayOutput values.
+// You can construct a concrete instance of `LogArrayInput` via:
+//
+//	LogArray{ LogArgs{...} }
+type LogArrayInput interface {
+	pulumi.Input
+
+	ToLogArrayOutput() LogArrayOutput
+	ToLogArrayOutputWithContext(context.Context) LogArrayOutput
+}
+
+type LogArray []LogInput
+
+func (LogArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Log)(nil)).Elem()
+}
+
+func (i LogArray) ToLogArrayOutput() LogArrayOutput {
+	return i.ToLogArrayOutputWithContext(context.Background())
+}
+
+func (i LogArray) ToLogArrayOutputWithContext(ctx context.Context) LogArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogArrayOutput)
+}
+
+// Describes a log.
+type LogOutput struct{ *pulumi.OutputState }
+
+func (LogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Log)(nil)).Elem()
+}
+
+func (o LogOutput) ToLogOutput() LogOutput {
+	return o
+}
+
+func (o LogOutput) ToLogOutputWithContext(ctx context.Context) LogOutput {
+	return o
+}
+
+// The bulk size for the log.
+func (o LogOutput) BulkSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Log) *int { return v.BulkSize }).(pulumi.IntPtrOutput)
+}
+
+// The filters for the log.
+func (o LogOutput) Filters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Log) []string { return v.Filters }).(pulumi.StringArrayOutput)
+}
+
+// Types of ingestion.
+func (o LogOutput) IngestionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Log) *string { return v.IngestionType }).(pulumi.StringPtrOutput)
+}
+
+// The schedule interval in seconds.
+func (o LogOutput) ScheduleInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Log) *int { return v.ScheduleInterval }).(pulumi.IntPtrOutput)
+}
+
+// Types of log status.
+func (o LogOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Log) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// Types of logs and tables.
+func (o LogOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v Log) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type LogArrayOutput struct{ *pulumi.OutputState }
+
+func (LogArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Log)(nil)).Elem()
+}
+
+func (o LogArrayOutput) ToLogArrayOutput() LogArrayOutput {
+	return o
+}
+
+func (o LogArrayOutput) ToLogArrayOutputWithContext(ctx context.Context) LogArrayOutput {
+	return o
+}
+
+func (o LogArrayOutput) Index(i pulumi.IntInput) LogOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Log {
+		return vs[0].([]Log)[vs[1].(int)]
+	}).(LogOutput)
+}
+
+// Describes a log.
+type LogResponse struct {
+	// The bulk size for the log.
+	BulkSize *int `pulumi:"bulkSize"`
+	// The filters for the log.
+	Filters []string `pulumi:"filters"`
+	// Types of ingestion.
+	IngestionType *string `pulumi:"ingestionType"`
+	// The schedule interval in seconds.
+	ScheduleInterval *int `pulumi:"scheduleInterval"`
+	// Types of log status.
+	Status *string `pulumi:"status"`
+	// Types of logs and tables.
+	Type string `pulumi:"type"`
+}
+
+// Describes a log.
+type LogResponseOutput struct{ *pulumi.OutputState }
+
+func (LogResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogResponse)(nil)).Elem()
+}
+
+func (o LogResponseOutput) ToLogResponseOutput() LogResponseOutput {
+	return o
+}
+
+func (o LogResponseOutput) ToLogResponseOutputWithContext(ctx context.Context) LogResponseOutput {
+	return o
+}
+
+// The bulk size for the log.
+func (o LogResponseOutput) BulkSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LogResponse) *int { return v.BulkSize }).(pulumi.IntPtrOutput)
+}
+
+// The filters for the log.
+func (o LogResponseOutput) Filters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LogResponse) []string { return v.Filters }).(pulumi.StringArrayOutput)
+}
+
+// Types of ingestion.
+func (o LogResponseOutput) IngestionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogResponse) *string { return v.IngestionType }).(pulumi.StringPtrOutput)
+}
+
+// The schedule interval in seconds.
+func (o LogResponseOutput) ScheduleInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LogResponse) *int { return v.ScheduleInterval }).(pulumi.IntPtrOutput)
+}
+
+// Types of log status.
+func (o LogResponseOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// Types of logs and tables.
+func (o LogResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v LogResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type LogResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (LogResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LogResponse)(nil)).Elem()
+}
+
+func (o LogResponseArrayOutput) ToLogResponseArrayOutput() LogResponseArrayOutput {
+	return o
+}
+
+func (o LogResponseArrayOutput) ToLogResponseArrayOutputWithContext(ctx context.Context) LogResponseArrayOutput {
+	return o
+}
+
+func (o LogResponseArrayOutput) Index(i pulumi.IntInput) LogResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LogResponse {
+		return vs[0].([]LogResponse)[vs[1].(int)]
+	}).(LogResponseOutput)
+}
+
 // The available data types for MCAS (Microsoft Cloud App Security) data connector.
 type MCASDataConnectorDataTypes struct {
 	// Alerts data type connection.
@@ -14456,6 +14773,272 @@ func (o ResourceProviderRequiredPermissionsResponseOutput) Write() pulumi.BoolPt
 	return o.ApplyT(func(v ResourceProviderRequiredPermissionsResponse) *bool { return v.Write }).(pulumi.BoolPtrOutput)
 }
 
+// Describes the Rfc connector.
+type RfcConnector struct {
+	// FQDN, hostname, or IP address of the ABAP server.
+	AbapServerHost *string `pulumi:"abapServerHost"`
+	// The authentication type to SAP.
+	AuthenticationType *string `pulumi:"authenticationType"`
+	// Client number of the ABAP server.
+	// Example - 001
+	Client string `pulumi:"client"`
+	// The SAP code page used for character encoding.
+	// Example - 1100
+	CodePage *string `pulumi:"codePage"`
+	// Logon group of the message server.
+	Group *string `pulumi:"group"`
+	// FQDN, hostname, or IP address of the Message server.
+	MessageServerHost *string `pulumi:"messageServerHost"`
+	// Port number, or service name (from /etc/services) of the message server.
+	MessageServerService *string `pulumi:"messageServerService"`
+	// SNC QOP.
+	// Options are 1, 2, 3, 8, 9.
+	SncQop *string `pulumi:"sncQop"`
+	// System ID of the ABAP server.
+	// Example - A4H
+	SystemId string `pulumi:"systemId"`
+	// System number of the ABAP server.
+	SystemNumber string `pulumi:"systemNumber"`
+	// Represents the types of SAP systems.
+	// Expected value is 'Rfc'.
+	Type string `pulumi:"type"`
+}
+
+// RfcConnectorInput is an input type that accepts RfcConnectorArgs and RfcConnectorOutput values.
+// You can construct a concrete instance of `RfcConnectorInput` via:
+//
+//	RfcConnectorArgs{...}
+type RfcConnectorInput interface {
+	pulumi.Input
+
+	ToRfcConnectorOutput() RfcConnectorOutput
+	ToRfcConnectorOutputWithContext(context.Context) RfcConnectorOutput
+}
+
+// Describes the Rfc connector.
+type RfcConnectorArgs struct {
+	// FQDN, hostname, or IP address of the ABAP server.
+	AbapServerHost pulumi.StringPtrInput `pulumi:"abapServerHost"`
+	// The authentication type to SAP.
+	AuthenticationType pulumi.StringPtrInput `pulumi:"authenticationType"`
+	// Client number of the ABAP server.
+	// Example - 001
+	Client pulumi.StringInput `pulumi:"client"`
+	// The SAP code page used for character encoding.
+	// Example - 1100
+	CodePage pulumi.StringPtrInput `pulumi:"codePage"`
+	// Logon group of the message server.
+	Group pulumi.StringPtrInput `pulumi:"group"`
+	// FQDN, hostname, or IP address of the Message server.
+	MessageServerHost pulumi.StringPtrInput `pulumi:"messageServerHost"`
+	// Port number, or service name (from /etc/services) of the message server.
+	MessageServerService pulumi.StringPtrInput `pulumi:"messageServerService"`
+	// SNC QOP.
+	// Options are 1, 2, 3, 8, 9.
+	SncQop pulumi.StringPtrInput `pulumi:"sncQop"`
+	// System ID of the ABAP server.
+	// Example - A4H
+	SystemId pulumi.StringInput `pulumi:"systemId"`
+	// System number of the ABAP server.
+	SystemNumber pulumi.StringInput `pulumi:"systemNumber"`
+	// Represents the types of SAP systems.
+	// Expected value is 'Rfc'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (RfcConnectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RfcConnector)(nil)).Elem()
+}
+
+func (i RfcConnectorArgs) ToRfcConnectorOutput() RfcConnectorOutput {
+	return i.ToRfcConnectorOutputWithContext(context.Background())
+}
+
+func (i RfcConnectorArgs) ToRfcConnectorOutputWithContext(ctx context.Context) RfcConnectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RfcConnectorOutput)
+}
+
+// Describes the Rfc connector.
+type RfcConnectorOutput struct{ *pulumi.OutputState }
+
+func (RfcConnectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RfcConnector)(nil)).Elem()
+}
+
+func (o RfcConnectorOutput) ToRfcConnectorOutput() RfcConnectorOutput {
+	return o
+}
+
+func (o RfcConnectorOutput) ToRfcConnectorOutputWithContext(ctx context.Context) RfcConnectorOutput {
+	return o
+}
+
+// FQDN, hostname, or IP address of the ABAP server.
+func (o RfcConnectorOutput) AbapServerHost() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RfcConnector) *string { return v.AbapServerHost }).(pulumi.StringPtrOutput)
+}
+
+// The authentication type to SAP.
+func (o RfcConnectorOutput) AuthenticationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RfcConnector) *string { return v.AuthenticationType }).(pulumi.StringPtrOutput)
+}
+
+// Client number of the ABAP server.
+// Example - 001
+func (o RfcConnectorOutput) Client() pulumi.StringOutput {
+	return o.ApplyT(func(v RfcConnector) string { return v.Client }).(pulumi.StringOutput)
+}
+
+// The SAP code page used for character encoding.
+// Example - 1100
+func (o RfcConnectorOutput) CodePage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RfcConnector) *string { return v.CodePage }).(pulumi.StringPtrOutput)
+}
+
+// Logon group of the message server.
+func (o RfcConnectorOutput) Group() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RfcConnector) *string { return v.Group }).(pulumi.StringPtrOutput)
+}
+
+// FQDN, hostname, or IP address of the Message server.
+func (o RfcConnectorOutput) MessageServerHost() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RfcConnector) *string { return v.MessageServerHost }).(pulumi.StringPtrOutput)
+}
+
+// Port number, or service name (from /etc/services) of the message server.
+func (o RfcConnectorOutput) MessageServerService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RfcConnector) *string { return v.MessageServerService }).(pulumi.StringPtrOutput)
+}
+
+// SNC QOP.
+// Options are 1, 2, 3, 8, 9.
+func (o RfcConnectorOutput) SncQop() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RfcConnector) *string { return v.SncQop }).(pulumi.StringPtrOutput)
+}
+
+// System ID of the ABAP server.
+// Example - A4H
+func (o RfcConnectorOutput) SystemId() pulumi.StringOutput {
+	return o.ApplyT(func(v RfcConnector) string { return v.SystemId }).(pulumi.StringOutput)
+}
+
+// System number of the ABAP server.
+func (o RfcConnectorOutput) SystemNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v RfcConnector) string { return v.SystemNumber }).(pulumi.StringOutput)
+}
+
+// Represents the types of SAP systems.
+// Expected value is 'Rfc'.
+func (o RfcConnectorOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v RfcConnector) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Describes the Rfc connector.
+type RfcConnectorResponse struct {
+	// FQDN, hostname, or IP address of the ABAP server.
+	AbapServerHost *string `pulumi:"abapServerHost"`
+	// The authentication type to SAP.
+	AuthenticationType *string `pulumi:"authenticationType"`
+	// Client number of the ABAP server.
+	// Example - 001
+	Client string `pulumi:"client"`
+	// The SAP code page used for character encoding.
+	// Example - 1100
+	CodePage *string `pulumi:"codePage"`
+	// Logon group of the message server.
+	Group *string `pulumi:"group"`
+	// FQDN, hostname, or IP address of the Message server.
+	MessageServerHost *string `pulumi:"messageServerHost"`
+	// Port number, or service name (from /etc/services) of the message server.
+	MessageServerService *string `pulumi:"messageServerService"`
+	// SNC QOP.
+	// Options are 1, 2, 3, 8, 9.
+	SncQop *string `pulumi:"sncQop"`
+	// System ID of the ABAP server.
+	// Example - A4H
+	SystemId string `pulumi:"systemId"`
+	// System number of the ABAP server.
+	SystemNumber string `pulumi:"systemNumber"`
+	// Represents the types of SAP systems.
+	// Expected value is 'Rfc'.
+	Type string `pulumi:"type"`
+}
+
+// Describes the Rfc connector.
+type RfcConnectorResponseOutput struct{ *pulumi.OutputState }
+
+func (RfcConnectorResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RfcConnectorResponse)(nil)).Elem()
+}
+
+func (o RfcConnectorResponseOutput) ToRfcConnectorResponseOutput() RfcConnectorResponseOutput {
+	return o
+}
+
+func (o RfcConnectorResponseOutput) ToRfcConnectorResponseOutputWithContext(ctx context.Context) RfcConnectorResponseOutput {
+	return o
+}
+
+// FQDN, hostname, or IP address of the ABAP server.
+func (o RfcConnectorResponseOutput) AbapServerHost() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RfcConnectorResponse) *string { return v.AbapServerHost }).(pulumi.StringPtrOutput)
+}
+
+// The authentication type to SAP.
+func (o RfcConnectorResponseOutput) AuthenticationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RfcConnectorResponse) *string { return v.AuthenticationType }).(pulumi.StringPtrOutput)
+}
+
+// Client number of the ABAP server.
+// Example - 001
+func (o RfcConnectorResponseOutput) Client() pulumi.StringOutput {
+	return o.ApplyT(func(v RfcConnectorResponse) string { return v.Client }).(pulumi.StringOutput)
+}
+
+// The SAP code page used for character encoding.
+// Example - 1100
+func (o RfcConnectorResponseOutput) CodePage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RfcConnectorResponse) *string { return v.CodePage }).(pulumi.StringPtrOutput)
+}
+
+// Logon group of the message server.
+func (o RfcConnectorResponseOutput) Group() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RfcConnectorResponse) *string { return v.Group }).(pulumi.StringPtrOutput)
+}
+
+// FQDN, hostname, or IP address of the Message server.
+func (o RfcConnectorResponseOutput) MessageServerHost() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RfcConnectorResponse) *string { return v.MessageServerHost }).(pulumi.StringPtrOutput)
+}
+
+// Port number, or service name (from /etc/services) of the message server.
+func (o RfcConnectorResponseOutput) MessageServerService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RfcConnectorResponse) *string { return v.MessageServerService }).(pulumi.StringPtrOutput)
+}
+
+// SNC QOP.
+// Options are 1, 2, 3, 8, 9.
+func (o RfcConnectorResponseOutput) SncQop() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RfcConnectorResponse) *string { return v.SncQop }).(pulumi.StringPtrOutput)
+}
+
+// System ID of the ABAP server.
+// Example - A4H
+func (o RfcConnectorResponseOutput) SystemId() pulumi.StringOutput {
+	return o.ApplyT(func(v RfcConnectorResponse) string { return v.SystemId }).(pulumi.StringOutput)
+}
+
+// System number of the ABAP server.
+func (o RfcConnectorResponseOutput) SystemNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v RfcConnectorResponse) string { return v.SystemNumber }).(pulumi.StringOutput)
+}
+
+// Represents the types of SAP systems.
+// Expected value is 'Rfc'.
+func (o RfcConnectorResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v RfcConnectorResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
 // The sample queries for the connector.
 type SampleQuery struct {
 	// Gets or sets the  sample query description.
@@ -14616,6 +15199,580 @@ func (o SampleQueryResponseArrayOutput) Index(i pulumi.IntInput) SampleQueryResp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SampleQueryResponse {
 		return vs[0].([]SampleQueryResponse)[vs[1].(int)]
 	}).(SampleQueryResponseOutput)
+}
+
+// Describes the configuration of a SAP Docker agent.
+type SapAgentConfiguration struct {
+	// The name of the docker agent.
+	// only letters with numbers, underscores and hyphens are allowed
+	// example: "my-agent"
+	AgentContainerName *string `pulumi:"agentContainerName"`
+	// The key mode of the agent.
+	// ManagedIdentity|ApplicationIdentity are the options
+	KeyVaultAuthenticationMode *string `pulumi:"keyVaultAuthenticationMode"`
+	// The key vault resource id to access the key vault.
+	// example: "/subscriptions/d0cfe6b2-9ac0-4464-9919-dccaee2e48c0/resourceGroups/myRg/providers/Microsoft.KeyVault/vaults/myVault"
+	KeyVaultResourceId *string `pulumi:"keyVaultResourceId"`
+	// The SDK path (a file not a folder) on the agent machine.
+	// example: "/path/to/nwrfc750P_8-70002755.zip"
+	SdkPath *string `pulumi:"sdkPath"`
+	// The secret source of the agent.
+	// AzureKeyVault is the option
+	SecretSource *string `pulumi:"secretSource"`
+	// The SNC path (a folder not a file) on the agent machine.
+	// example: "/path/to/snc"
+	SncPath *string `pulumi:"sncPath"`
+	// Type of the agent
+	// Expected value is 'SAP'.
+	Type string `pulumi:"type"`
+}
+
+// SapAgentConfigurationInput is an input type that accepts SapAgentConfigurationArgs and SapAgentConfigurationOutput values.
+// You can construct a concrete instance of `SapAgentConfigurationInput` via:
+//
+//	SapAgentConfigurationArgs{...}
+type SapAgentConfigurationInput interface {
+	pulumi.Input
+
+	ToSapAgentConfigurationOutput() SapAgentConfigurationOutput
+	ToSapAgentConfigurationOutputWithContext(context.Context) SapAgentConfigurationOutput
+}
+
+// Describes the configuration of a SAP Docker agent.
+type SapAgentConfigurationArgs struct {
+	// The name of the docker agent.
+	// only letters with numbers, underscores and hyphens are allowed
+	// example: "my-agent"
+	AgentContainerName pulumi.StringPtrInput `pulumi:"agentContainerName"`
+	// The key mode of the agent.
+	// ManagedIdentity|ApplicationIdentity are the options
+	KeyVaultAuthenticationMode pulumi.StringPtrInput `pulumi:"keyVaultAuthenticationMode"`
+	// The key vault resource id to access the key vault.
+	// example: "/subscriptions/d0cfe6b2-9ac0-4464-9919-dccaee2e48c0/resourceGroups/myRg/providers/Microsoft.KeyVault/vaults/myVault"
+	KeyVaultResourceId pulumi.StringPtrInput `pulumi:"keyVaultResourceId"`
+	// The SDK path (a file not a folder) on the agent machine.
+	// example: "/path/to/nwrfc750P_8-70002755.zip"
+	SdkPath pulumi.StringPtrInput `pulumi:"sdkPath"`
+	// The secret source of the agent.
+	// AzureKeyVault is the option
+	SecretSource pulumi.StringPtrInput `pulumi:"secretSource"`
+	// The SNC path (a folder not a file) on the agent machine.
+	// example: "/path/to/snc"
+	SncPath pulumi.StringPtrInput `pulumi:"sncPath"`
+	// Type of the agent
+	// Expected value is 'SAP'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (SapAgentConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SapAgentConfiguration)(nil)).Elem()
+}
+
+func (i SapAgentConfigurationArgs) ToSapAgentConfigurationOutput() SapAgentConfigurationOutput {
+	return i.ToSapAgentConfigurationOutputWithContext(context.Background())
+}
+
+func (i SapAgentConfigurationArgs) ToSapAgentConfigurationOutputWithContext(ctx context.Context) SapAgentConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SapAgentConfigurationOutput)
+}
+
+// Describes the configuration of a SAP Docker agent.
+type SapAgentConfigurationOutput struct{ *pulumi.OutputState }
+
+func (SapAgentConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SapAgentConfiguration)(nil)).Elem()
+}
+
+func (o SapAgentConfigurationOutput) ToSapAgentConfigurationOutput() SapAgentConfigurationOutput {
+	return o
+}
+
+func (o SapAgentConfigurationOutput) ToSapAgentConfigurationOutputWithContext(ctx context.Context) SapAgentConfigurationOutput {
+	return o
+}
+
+// The name of the docker agent.
+// only letters with numbers, underscores and hyphens are allowed
+// example: "my-agent"
+func (o SapAgentConfigurationOutput) AgentContainerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapAgentConfiguration) *string { return v.AgentContainerName }).(pulumi.StringPtrOutput)
+}
+
+// The key mode of the agent.
+// ManagedIdentity|ApplicationIdentity are the options
+func (o SapAgentConfigurationOutput) KeyVaultAuthenticationMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapAgentConfiguration) *string { return v.KeyVaultAuthenticationMode }).(pulumi.StringPtrOutput)
+}
+
+// The key vault resource id to access the key vault.
+// example: "/subscriptions/d0cfe6b2-9ac0-4464-9919-dccaee2e48c0/resourceGroups/myRg/providers/Microsoft.KeyVault/vaults/myVault"
+func (o SapAgentConfigurationOutput) KeyVaultResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapAgentConfiguration) *string { return v.KeyVaultResourceId }).(pulumi.StringPtrOutput)
+}
+
+// The SDK path (a file not a folder) on the agent machine.
+// example: "/path/to/nwrfc750P_8-70002755.zip"
+func (o SapAgentConfigurationOutput) SdkPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapAgentConfiguration) *string { return v.SdkPath }).(pulumi.StringPtrOutput)
+}
+
+// The secret source of the agent.
+// AzureKeyVault is the option
+func (o SapAgentConfigurationOutput) SecretSource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapAgentConfiguration) *string { return v.SecretSource }).(pulumi.StringPtrOutput)
+}
+
+// The SNC path (a folder not a file) on the agent machine.
+// example: "/path/to/snc"
+func (o SapAgentConfigurationOutput) SncPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapAgentConfiguration) *string { return v.SncPath }).(pulumi.StringPtrOutput)
+}
+
+// Type of the agent
+// Expected value is 'SAP'.
+func (o SapAgentConfigurationOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SapAgentConfiguration) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Describes the configuration of a SAP Docker agent.
+type SapAgentConfigurationResponse struct {
+	// The name of the docker agent.
+	// only letters with numbers, underscores and hyphens are allowed
+	// example: "my-agent"
+	AgentContainerName *string `pulumi:"agentContainerName"`
+	// The key mode of the agent.
+	// ManagedIdentity|ApplicationIdentity are the options
+	KeyVaultAuthenticationMode *string `pulumi:"keyVaultAuthenticationMode"`
+	// The key vault resource id to access the key vault.
+	// example: "/subscriptions/d0cfe6b2-9ac0-4464-9919-dccaee2e48c0/resourceGroups/myRg/providers/Microsoft.KeyVault/vaults/myVault"
+	KeyVaultResourceId *string `pulumi:"keyVaultResourceId"`
+	// The SDK path (a file not a folder) on the agent machine.
+	// example: "/path/to/nwrfc750P_8-70002755.zip"
+	SdkPath *string `pulumi:"sdkPath"`
+	// The secret source of the agent.
+	// AzureKeyVault is the option
+	SecretSource *string `pulumi:"secretSource"`
+	// The SNC path (a folder not a file) on the agent machine.
+	// example: "/path/to/snc"
+	SncPath *string `pulumi:"sncPath"`
+	// Type of the agent
+	// Expected value is 'SAP'.
+	Type string `pulumi:"type"`
+}
+
+// Describes the configuration of a SAP Docker agent.
+type SapAgentConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (SapAgentConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SapAgentConfigurationResponse)(nil)).Elem()
+}
+
+func (o SapAgentConfigurationResponseOutput) ToSapAgentConfigurationResponseOutput() SapAgentConfigurationResponseOutput {
+	return o
+}
+
+func (o SapAgentConfigurationResponseOutput) ToSapAgentConfigurationResponseOutputWithContext(ctx context.Context) SapAgentConfigurationResponseOutput {
+	return o
+}
+
+// The name of the docker agent.
+// only letters with numbers, underscores and hyphens are allowed
+// example: "my-agent"
+func (o SapAgentConfigurationResponseOutput) AgentContainerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapAgentConfigurationResponse) *string { return v.AgentContainerName }).(pulumi.StringPtrOutput)
+}
+
+// The key mode of the agent.
+// ManagedIdentity|ApplicationIdentity are the options
+func (o SapAgentConfigurationResponseOutput) KeyVaultAuthenticationMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapAgentConfigurationResponse) *string { return v.KeyVaultAuthenticationMode }).(pulumi.StringPtrOutput)
+}
+
+// The key vault resource id to access the key vault.
+// example: "/subscriptions/d0cfe6b2-9ac0-4464-9919-dccaee2e48c0/resourceGroups/myRg/providers/Microsoft.KeyVault/vaults/myVault"
+func (o SapAgentConfigurationResponseOutput) KeyVaultResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapAgentConfigurationResponse) *string { return v.KeyVaultResourceId }).(pulumi.StringPtrOutput)
+}
+
+// The SDK path (a file not a folder) on the agent machine.
+// example: "/path/to/nwrfc750P_8-70002755.zip"
+func (o SapAgentConfigurationResponseOutput) SdkPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapAgentConfigurationResponse) *string { return v.SdkPath }).(pulumi.StringPtrOutput)
+}
+
+// The secret source of the agent.
+// AzureKeyVault is the option
+func (o SapAgentConfigurationResponseOutput) SecretSource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapAgentConfigurationResponse) *string { return v.SecretSource }).(pulumi.StringPtrOutput)
+}
+
+// The SNC path (a folder not a file) on the agent machine.
+// example: "/path/to/snc"
+func (o SapAgentConfigurationResponseOutput) SncPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapAgentConfigurationResponse) *string { return v.SncPath }).(pulumi.StringPtrOutput)
+}
+
+// Type of the agent
+// Expected value is 'SAP'.
+func (o SapAgentConfigurationResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SapAgentConfigurationResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Describes the SapControl connector configuration.
+type SapControlConnector struct {
+	// Represents the types of HTTPS configuration to connect to the SapControl service.
+	HttpsConfiguration *string `pulumi:"httpsConfiguration"`
+	// The instance number. Only 2 digits are allowed.
+	Instance string `pulumi:"instance"`
+	// The port of the SOAP connection to SAP Control.
+	Port *string `pulumi:"port"`
+	// The server name.
+	// FQDN or IP address.
+	Server string `pulumi:"server"`
+	// The timezone.
+	// example: "GMT+0" or "GMT-8"
+	// default: "GMT+0"
+	Timezone *string `pulumi:"timezone"`
+	// Represents the types of SAP systems.
+	// Expected value is 'SapControl'.
+	Type string `pulumi:"type"`
+}
+
+// Defaults sets the appropriate defaults for SapControlConnector
+func (val *SapControlConnector) Defaults() *SapControlConnector {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Timezone == nil {
+		timezone_ := "GMT+0"
+		tmp.Timezone = &timezone_
+	}
+	return &tmp
+}
+
+// SapControlConnectorInput is an input type that accepts SapControlConnectorArgs and SapControlConnectorOutput values.
+// You can construct a concrete instance of `SapControlConnectorInput` via:
+//
+//	SapControlConnectorArgs{...}
+type SapControlConnectorInput interface {
+	pulumi.Input
+
+	ToSapControlConnectorOutput() SapControlConnectorOutput
+	ToSapControlConnectorOutputWithContext(context.Context) SapControlConnectorOutput
+}
+
+// Describes the SapControl connector configuration.
+type SapControlConnectorArgs struct {
+	// Represents the types of HTTPS configuration to connect to the SapControl service.
+	HttpsConfiguration pulumi.StringPtrInput `pulumi:"httpsConfiguration"`
+	// The instance number. Only 2 digits are allowed.
+	Instance pulumi.StringInput `pulumi:"instance"`
+	// The port of the SOAP connection to SAP Control.
+	Port pulumi.StringPtrInput `pulumi:"port"`
+	// The server name.
+	// FQDN or IP address.
+	Server pulumi.StringInput `pulumi:"server"`
+	// The timezone.
+	// example: "GMT+0" or "GMT-8"
+	// default: "GMT+0"
+	Timezone pulumi.StringPtrInput `pulumi:"timezone"`
+	// Represents the types of SAP systems.
+	// Expected value is 'SapControl'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+// Defaults sets the appropriate defaults for SapControlConnectorArgs
+func (val *SapControlConnectorArgs) Defaults() *SapControlConnectorArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Timezone == nil {
+		tmp.Timezone = pulumi.StringPtr("GMT+0")
+	}
+	return &tmp
+}
+func (SapControlConnectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SapControlConnector)(nil)).Elem()
+}
+
+func (i SapControlConnectorArgs) ToSapControlConnectorOutput() SapControlConnectorOutput {
+	return i.ToSapControlConnectorOutputWithContext(context.Background())
+}
+
+func (i SapControlConnectorArgs) ToSapControlConnectorOutputWithContext(ctx context.Context) SapControlConnectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SapControlConnectorOutput)
+}
+
+// Describes the SapControl connector configuration.
+type SapControlConnectorOutput struct{ *pulumi.OutputState }
+
+func (SapControlConnectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SapControlConnector)(nil)).Elem()
+}
+
+func (o SapControlConnectorOutput) ToSapControlConnectorOutput() SapControlConnectorOutput {
+	return o
+}
+
+func (o SapControlConnectorOutput) ToSapControlConnectorOutputWithContext(ctx context.Context) SapControlConnectorOutput {
+	return o
+}
+
+// Represents the types of HTTPS configuration to connect to the SapControl service.
+func (o SapControlConnectorOutput) HttpsConfiguration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapControlConnector) *string { return v.HttpsConfiguration }).(pulumi.StringPtrOutput)
+}
+
+// The instance number. Only 2 digits are allowed.
+func (o SapControlConnectorOutput) Instance() pulumi.StringOutput {
+	return o.ApplyT(func(v SapControlConnector) string { return v.Instance }).(pulumi.StringOutput)
+}
+
+// The port of the SOAP connection to SAP Control.
+func (o SapControlConnectorOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapControlConnector) *string { return v.Port }).(pulumi.StringPtrOutput)
+}
+
+// The server name.
+// FQDN or IP address.
+func (o SapControlConnectorOutput) Server() pulumi.StringOutput {
+	return o.ApplyT(func(v SapControlConnector) string { return v.Server }).(pulumi.StringOutput)
+}
+
+// The timezone.
+// example: "GMT+0" or "GMT-8"
+// default: "GMT+0"
+func (o SapControlConnectorOutput) Timezone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapControlConnector) *string { return v.Timezone }).(pulumi.StringPtrOutput)
+}
+
+// Represents the types of SAP systems.
+// Expected value is 'SapControl'.
+func (o SapControlConnectorOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SapControlConnector) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Describes the SapControl connector configuration.
+type SapControlConnectorResponse struct {
+	// Represents the types of HTTPS configuration to connect to the SapControl service.
+	HttpsConfiguration *string `pulumi:"httpsConfiguration"`
+	// The instance number. Only 2 digits are allowed.
+	Instance string `pulumi:"instance"`
+	// The port of the SOAP connection to SAP Control.
+	Port *string `pulumi:"port"`
+	// The server name.
+	// FQDN or IP address.
+	Server string `pulumi:"server"`
+	// The timezone.
+	// example: "GMT+0" or "GMT-8"
+	// default: "GMT+0"
+	Timezone *string `pulumi:"timezone"`
+	// Represents the types of SAP systems.
+	// Expected value is 'SapControl'.
+	Type string `pulumi:"type"`
+}
+
+// Defaults sets the appropriate defaults for SapControlConnectorResponse
+func (val *SapControlConnectorResponse) Defaults() *SapControlConnectorResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Timezone == nil {
+		timezone_ := "GMT+0"
+		tmp.Timezone = &timezone_
+	}
+	return &tmp
+}
+
+// Describes the SapControl connector configuration.
+type SapControlConnectorResponseOutput struct{ *pulumi.OutputState }
+
+func (SapControlConnectorResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SapControlConnectorResponse)(nil)).Elem()
+}
+
+func (o SapControlConnectorResponseOutput) ToSapControlConnectorResponseOutput() SapControlConnectorResponseOutput {
+	return o
+}
+
+func (o SapControlConnectorResponseOutput) ToSapControlConnectorResponseOutputWithContext(ctx context.Context) SapControlConnectorResponseOutput {
+	return o
+}
+
+// Represents the types of HTTPS configuration to connect to the SapControl service.
+func (o SapControlConnectorResponseOutput) HttpsConfiguration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapControlConnectorResponse) *string { return v.HttpsConfiguration }).(pulumi.StringPtrOutput)
+}
+
+// The instance number. Only 2 digits are allowed.
+func (o SapControlConnectorResponseOutput) Instance() pulumi.StringOutput {
+	return o.ApplyT(func(v SapControlConnectorResponse) string { return v.Instance }).(pulumi.StringOutput)
+}
+
+// The port of the SOAP connection to SAP Control.
+func (o SapControlConnectorResponseOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapControlConnectorResponse) *string { return v.Port }).(pulumi.StringPtrOutput)
+}
+
+// The server name.
+// FQDN or IP address.
+func (o SapControlConnectorResponseOutput) Server() pulumi.StringOutput {
+	return o.ApplyT(func(v SapControlConnectorResponse) string { return v.Server }).(pulumi.StringOutput)
+}
+
+// The timezone.
+// example: "GMT+0" or "GMT-8"
+// default: "GMT+0"
+func (o SapControlConnectorResponseOutput) Timezone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapControlConnectorResponse) *string { return v.Timezone }).(pulumi.StringPtrOutput)
+}
+
+// Represents the types of SAP systems.
+// Expected value is 'SapControl'.
+func (o SapControlConnectorResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SapControlConnectorResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Describes the SAP configuration.
+type SapSystemsConfiguration struct {
+	// azure resource id
+	// example: "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM"
+	AzureResourceId *string `pulumi:"azureResourceId"`
+	// Base Model for SAP System Connector.
+	Connector interface{} `pulumi:"connector"`
+	// The logs configuration.
+	Logs []Log `pulumi:"logs"`
+	// Represents the types of configuration for a system.
+	// Expected value is 'SAP'.
+	Type string `pulumi:"type"`
+}
+
+// SapSystemsConfigurationInput is an input type that accepts SapSystemsConfigurationArgs and SapSystemsConfigurationOutput values.
+// You can construct a concrete instance of `SapSystemsConfigurationInput` via:
+//
+//	SapSystemsConfigurationArgs{...}
+type SapSystemsConfigurationInput interface {
+	pulumi.Input
+
+	ToSapSystemsConfigurationOutput() SapSystemsConfigurationOutput
+	ToSapSystemsConfigurationOutputWithContext(context.Context) SapSystemsConfigurationOutput
+}
+
+// Describes the SAP configuration.
+type SapSystemsConfigurationArgs struct {
+	// azure resource id
+	// example: "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM"
+	AzureResourceId pulumi.StringPtrInput `pulumi:"azureResourceId"`
+	// Base Model for SAP System Connector.
+	Connector pulumi.Input `pulumi:"connector"`
+	// The logs configuration.
+	Logs LogArrayInput `pulumi:"logs"`
+	// Represents the types of configuration for a system.
+	// Expected value is 'SAP'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (SapSystemsConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SapSystemsConfiguration)(nil)).Elem()
+}
+
+func (i SapSystemsConfigurationArgs) ToSapSystemsConfigurationOutput() SapSystemsConfigurationOutput {
+	return i.ToSapSystemsConfigurationOutputWithContext(context.Background())
+}
+
+func (i SapSystemsConfigurationArgs) ToSapSystemsConfigurationOutputWithContext(ctx context.Context) SapSystemsConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SapSystemsConfigurationOutput)
+}
+
+// Describes the SAP configuration.
+type SapSystemsConfigurationOutput struct{ *pulumi.OutputState }
+
+func (SapSystemsConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SapSystemsConfiguration)(nil)).Elem()
+}
+
+func (o SapSystemsConfigurationOutput) ToSapSystemsConfigurationOutput() SapSystemsConfigurationOutput {
+	return o
+}
+
+func (o SapSystemsConfigurationOutput) ToSapSystemsConfigurationOutputWithContext(ctx context.Context) SapSystemsConfigurationOutput {
+	return o
+}
+
+// azure resource id
+// example: "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM"
+func (o SapSystemsConfigurationOutput) AzureResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapSystemsConfiguration) *string { return v.AzureResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Base Model for SAP System Connector.
+func (o SapSystemsConfigurationOutput) Connector() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapSystemsConfiguration) interface{} { return v.Connector }).(pulumi.AnyOutput)
+}
+
+// The logs configuration.
+func (o SapSystemsConfigurationOutput) Logs() LogArrayOutput {
+	return o.ApplyT(func(v SapSystemsConfiguration) []Log { return v.Logs }).(LogArrayOutput)
+}
+
+// Represents the types of configuration for a system.
+// Expected value is 'SAP'.
+func (o SapSystemsConfigurationOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SapSystemsConfiguration) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Describes the SAP configuration.
+type SapSystemsConfigurationResponse struct {
+	// azure resource id
+	// example: "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM"
+	AzureResourceId *string `pulumi:"azureResourceId"`
+	// Base Model for SAP System Connector.
+	Connector interface{} `pulumi:"connector"`
+	// The logs configuration.
+	Logs []LogResponse `pulumi:"logs"`
+	// Represents the types of configuration for a system.
+	// Expected value is 'SAP'.
+	Type string `pulumi:"type"`
+}
+
+// Describes the SAP configuration.
+type SapSystemsConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (SapSystemsConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SapSystemsConfigurationResponse)(nil)).Elem()
+}
+
+func (o SapSystemsConfigurationResponseOutput) ToSapSystemsConfigurationResponseOutput() SapSystemsConfigurationResponseOutput {
+	return o
+}
+
+func (o SapSystemsConfigurationResponseOutput) ToSapSystemsConfigurationResponseOutputWithContext(ctx context.Context) SapSystemsConfigurationResponseOutput {
+	return o
+}
+
+// azure resource id
+// example: "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM"
+func (o SapSystemsConfigurationResponseOutput) AzureResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapSystemsConfigurationResponse) *string { return v.AzureResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Base Model for SAP System Connector.
+func (o SapSystemsConfigurationResponseOutput) Connector() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapSystemsConfigurationResponse) interface{} { return v.Connector }).(pulumi.AnyOutput)
+}
+
+// The logs configuration.
+func (o SapSystemsConfigurationResponseOutput) Logs() LogResponseArrayOutput {
+	return o.ApplyT(func(v SapSystemsConfigurationResponse) []LogResponse { return v.Logs }).(LogResponseArrayOutput)
+}
+
+// Represents the types of configuration for a system.
+// Expected value is 'SAP'.
+func (o SapSystemsConfigurationResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SapSystemsConfigurationResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
 // Represents security alert timeline item.
@@ -16138,6 +17295,48 @@ func (o TimelineResultsMetadataResponsePtrOutput) TotalCount() pulumi.IntPtrOutp
 	}).(pulumi.IntPtrOutput)
 }
 
+// Represents an unlock user action.
+type UnlockUserActionResponse struct {
+	// The reason of the failure of the action. Empty if the action is successful.
+	FailureReason *string `pulumi:"failureReason"`
+	// The kind of the action
+	// Expected value is 'UnlockUser'.
+	Kind string `pulumi:"kind"`
+	// The user to unlock
+	User *string `pulumi:"user"`
+}
+
+// Represents an unlock user action.
+type UnlockUserActionResponseOutput struct{ *pulumi.OutputState }
+
+func (UnlockUserActionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UnlockUserActionResponse)(nil)).Elem()
+}
+
+func (o UnlockUserActionResponseOutput) ToUnlockUserActionResponseOutput() UnlockUserActionResponseOutput {
+	return o
+}
+
+func (o UnlockUserActionResponseOutput) ToUnlockUserActionResponseOutputWithContext(ctx context.Context) UnlockUserActionResponseOutput {
+	return o
+}
+
+// The reason of the failure of the action. Empty if the action is successful.
+func (o UnlockUserActionResponseOutput) FailureReason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UnlockUserActionResponse) *string { return v.FailureReason }).(pulumi.StringPtrOutput)
+}
+
+// The kind of the action
+// Expected value is 'UnlockUser'.
+func (o UnlockUserActionResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v UnlockUserActionResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The user to unlock
+func (o UnlockUserActionResponseOutput) User() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UnlockUserActionResponse) *string { return v.User }).(pulumi.StringPtrOutput)
+}
+
 // User information that made some action
 type UserInfo struct {
 	// The object id of the user.
@@ -16973,6 +18172,8 @@ func init() {
 	pulumi.RegisterOutputType(ActivityEntityQueriesPropertiesResponseQueryDefinitionsOutput{})
 	pulumi.RegisterOutputType(ActivityEntityQueriesPropertiesResponseQueryDefinitionsPtrOutput{})
 	pulumi.RegisterOutputType(ActivityTimelineItemResponseOutput{})
+	pulumi.RegisterOutputType(AgentSystemResponseOutput{})
+	pulumi.RegisterOutputType(AgentSystemResponseArrayOutput{})
 	pulumi.RegisterOutputType(AlertDetailsOverrideOutput{})
 	pulumi.RegisterOutputType(AlertDetailsOverridePtrOutput{})
 	pulumi.RegisterOutputType(AlertDetailsOverrideResponseOutput{})
@@ -17149,6 +18350,11 @@ func init() {
 	pulumi.RegisterOutputType(InstructionStepDetailsResponseArrayOutput{})
 	pulumi.RegisterOutputType(InstructionStepResponseOutput{})
 	pulumi.RegisterOutputType(InstructionStepResponseArrayOutput{})
+	pulumi.RegisterOutputType(LockUserActionResponseOutput{})
+	pulumi.RegisterOutputType(LogOutput{})
+	pulumi.RegisterOutputType(LogArrayOutput{})
+	pulumi.RegisterOutputType(LogResponseOutput{})
+	pulumi.RegisterOutputType(LogResponseArrayOutput{})
 	pulumi.RegisterOutputType(MCASDataConnectorDataTypesOutput{})
 	pulumi.RegisterOutputType(MCASDataConnectorDataTypesPtrOutput{})
 	pulumi.RegisterOutputType(MCASDataConnectorDataTypesResponseOutput{})
@@ -17211,10 +18417,18 @@ func init() {
 	pulumi.RegisterOutputType(RepositoryResponseOutput{})
 	pulumi.RegisterOutputType(ResourceProviderRequiredPermissionsOutput{})
 	pulumi.RegisterOutputType(ResourceProviderRequiredPermissionsResponseOutput{})
+	pulumi.RegisterOutputType(RfcConnectorOutput{})
+	pulumi.RegisterOutputType(RfcConnectorResponseOutput{})
 	pulumi.RegisterOutputType(SampleQueryOutput{})
 	pulumi.RegisterOutputType(SampleQueryArrayOutput{})
 	pulumi.RegisterOutputType(SampleQueryResponseOutput{})
 	pulumi.RegisterOutputType(SampleQueryResponseArrayOutput{})
+	pulumi.RegisterOutputType(SapAgentConfigurationOutput{})
+	pulumi.RegisterOutputType(SapAgentConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(SapControlConnectorOutput{})
+	pulumi.RegisterOutputType(SapControlConnectorResponseOutput{})
+	pulumi.RegisterOutputType(SapSystemsConfigurationOutput{})
+	pulumi.RegisterOutputType(SapSystemsConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(SecurityAlertTimelineItemResponseOutput{})
 	pulumi.RegisterOutputType(SecurityMLAnalyticsSettingsDataSourceOutput{})
 	pulumi.RegisterOutputType(SecurityMLAnalyticsSettingsDataSourceArrayOutput{})
@@ -17245,6 +18459,7 @@ func init() {
 	pulumi.RegisterOutputType(TimelineErrorResponseArrayOutput{})
 	pulumi.RegisterOutputType(TimelineResultsMetadataResponseOutput{})
 	pulumi.RegisterOutputType(TimelineResultsMetadataResponsePtrOutput{})
+	pulumi.RegisterOutputType(UnlockUserActionResponseOutput{})
 	pulumi.RegisterOutputType(UserInfoOutput{})
 	pulumi.RegisterOutputType(UserInfoPtrOutput{})
 	pulumi.RegisterOutputType(UserInfoResponseOutput{})

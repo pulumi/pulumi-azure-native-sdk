@@ -35,7 +35,7 @@ type LookupThreatIntelligenceIndicatorArgs struct {
 type LookupThreatIntelligenceIndicatorResult struct {
 	// Etag of the azure resource
 	Etag *string `pulumi:"etag"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The kind of the entity.
 	Kind string `pulumi:"kind"`
@@ -99,7 +99,7 @@ func (o LookupThreatIntelligenceIndicatorResultOutput) Etag() pulumi.StringPtrOu
 	return o.ApplyT(func(v LookupThreatIntelligenceIndicatorResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupThreatIntelligenceIndicatorResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupThreatIntelligenceIndicatorResult) string { return v.Id }).(pulumi.StringOutput)
 }

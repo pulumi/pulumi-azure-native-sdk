@@ -53,6 +53,9 @@ func NewDnsForwardingRuleset(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20220701:DnsForwardingRuleset"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20230701preview:DnsForwardingRuleset"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

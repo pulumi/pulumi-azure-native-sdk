@@ -51,6 +51,9 @@ func NewWebAppCollectorOperation(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:migrate:WebAppCollectorOperation"),
 		},
+		{
+			Type: pulumi.String("azure-native:migrate/v20230501preview:WebAppCollectorOperation"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

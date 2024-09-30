@@ -65,6 +65,9 @@ func NewGroupsOperation(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:migrate/v20230401preview:GroupsOperation"),
 		},
+		{
+			Type: pulumi.String("azure-native:migrate/v20230501preview:GroupsOperation"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

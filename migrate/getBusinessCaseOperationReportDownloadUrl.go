@@ -13,6 +13,8 @@ import (
 
 // Get the URL for downloading the business case in a report format.
 // Azure REST API version: 2023-04-01-preview.
+//
+// Other available API versions: 2023-05-01-preview.
 func GetBusinessCaseOperationReportDownloadUrl(ctx *pulumi.Context, args *GetBusinessCaseOperationReportDownloadUrlArgs, opts ...pulumi.InvokeOption) (*GetBusinessCaseOperationReportDownloadUrlResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetBusinessCaseOperationReportDownloadUrlResult

@@ -48,7 +48,7 @@ type LookupMicrosoftSecurityIncidentCreationAlertRuleResult struct {
 	Enabled bool `pulumi:"enabled"`
 	// Etag of the azure resource
 	Etag *string `pulumi:"etag"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The kind of the alert rule
 	// Expected value is 'MicrosoftSecurityIncidentCreation'.
@@ -151,7 +151,7 @@ func (o LookupMicrosoftSecurityIncidentCreationAlertRuleResultOutput) Etag() pul
 	return o.ApplyT(func(v LookupMicrosoftSecurityIncidentCreationAlertRuleResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupMicrosoftSecurityIncidentCreationAlertRuleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMicrosoftSecurityIncidentCreationAlertRuleResult) string { return v.Id }).(pulumi.StringOutput)
 }

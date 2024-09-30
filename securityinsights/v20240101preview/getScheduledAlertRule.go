@@ -51,7 +51,7 @@ type LookupScheduledAlertRuleResult struct {
 	Etag *string `pulumi:"etag"`
 	// The event grouping settings.
 	EventGroupingSettings *EventGroupingSettingsResponse `pulumi:"eventGroupingSettings"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The settings of the incidents that created from alerts triggered by this analytics rule
 	IncidentConfiguration *IncidentConfigurationResponse `pulumi:"incidentConfiguration"`
@@ -186,7 +186,7 @@ func (o LookupScheduledAlertRuleResultOutput) EventGroupingSettings() EventGroup
 	return o.ApplyT(func(v LookupScheduledAlertRuleResult) *EventGroupingSettingsResponse { return v.EventGroupingSettings }).(EventGroupingSettingsResponsePtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupScheduledAlertRuleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupScheduledAlertRuleResult) string { return v.Id }).(pulumi.StringOutput)
 }

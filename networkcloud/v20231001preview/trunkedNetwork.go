@@ -83,6 +83,9 @@ func NewTrunkedNetwork(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:networkcloud/v20240601preview:TrunkedNetwork"),
 		},
+		{
+			Type: pulumi.String("azure-native:networkcloud/v20240701:TrunkedNetwork"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

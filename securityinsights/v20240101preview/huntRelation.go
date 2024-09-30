@@ -83,6 +83,9 @@ func NewHuntRelation(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20231201preview:HuntRelation"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240401preview:HuntRelation"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

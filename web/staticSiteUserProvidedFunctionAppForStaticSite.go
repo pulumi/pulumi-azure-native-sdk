@@ -15,7 +15,7 @@ import (
 // Static Site User Provided Function App ARM resource.
 // Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2020-12-01.
 //
-// Other available API versions: 2023-01-01, 2023-12-01.
+// Other available API versions: 2023-01-01, 2023-12-01, 2024-04-01.
 type StaticSiteUserProvidedFunctionAppForStaticSite struct {
 	pulumi.CustomResourceState
 
@@ -73,6 +73,9 @@ func NewStaticSiteUserProvidedFunctionAppForStaticSite(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:web/v20231201:StaticSiteUserProvidedFunctionAppForStaticSite"),
+		},
+		{
+			Type: pulumi.String("azure-native:web/v20240401:StaticSiteUserProvidedFunctionAppForStaticSite"),
 		},
 	})
 	opts = append(opts, aliases)

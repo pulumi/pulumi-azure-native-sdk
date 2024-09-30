@@ -72,6 +72,9 @@ func NewDpsCertificate(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:devices/v20230301preview:DpsCertificate"),
 		},
+		{
+			Type: pulumi.String("azure-native:devices/v20250201preview:DpsCertificate"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -15,7 +15,7 @@ import (
 // The private endpoint connection of a provisioning service
 // Azure REST API version: 2022-12-12. Prior API version in Azure Native 1.x: 2020-03-01.
 //
-// Other available API versions: 2023-03-01-preview.
+// Other available API versions: 2023-03-01-preview, 2025-02-01-preview.
 type IotDpsResourcePrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 
@@ -63,6 +63,9 @@ func NewIotDpsResourcePrivateEndpointConnection(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:devices/v20230301preview:IotDpsResourcePrivateEndpointConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:devices/v20250201preview:IotDpsResourcePrivateEndpointConnection"),
 		},
 	})
 	opts = append(opts, aliases)

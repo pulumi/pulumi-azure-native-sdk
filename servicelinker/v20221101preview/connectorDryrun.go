@@ -55,6 +55,9 @@ func NewConnectorDryrun(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:servicelinker/v20240401:ConnectorDryrun"),
 		},
+		{
+			Type: pulumi.String("azure-native:servicelinker/v20240701preview:ConnectorDryrun"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -92,6 +92,9 @@ func NewBareMetalMachineKeySet(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:networkcloud/v20231001preview:BareMetalMachineKeySet"),
 		},
+		{
+			Type: pulumi.String("azure-native:networkcloud/v20240701:BareMetalMachineKeySet"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

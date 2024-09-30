@@ -138,6 +138,9 @@ func NewBareMetalMachine(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:networkcloud/v20240601preview:BareMetalMachine"),
 		},
+		{
+			Type: pulumi.String("azure-native:networkcloud/v20240701:BareMetalMachine"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

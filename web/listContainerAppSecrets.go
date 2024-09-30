@@ -14,7 +14,7 @@ import (
 // Container App Secrets Collection ARM resource.
 // Azure REST API version: 2023-01-01.
 //
-// Other available API versions: 2023-12-01.
+// Other available API versions: 2023-12-01, 2024-04-01.
 func ListContainerAppSecrets(ctx *pulumi.Context, args *ListContainerAppSecretsArgs, opts ...pulumi.InvokeOption) (*ListContainerAppSecretsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListContainerAppSecretsResult

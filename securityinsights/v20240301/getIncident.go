@@ -49,7 +49,7 @@ type LookupIncidentResult struct {
 	Etag *string `pulumi:"etag"`
 	// The time of the first activity in the incident
 	FirstActivityTimeUtc *string `pulumi:"firstActivityTimeUtc"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// A sequential number
 	IncidentNumber int `pulumi:"incidentNumber"`
@@ -170,7 +170,7 @@ func (o LookupIncidentResultOutput) FirstActivityTimeUtc() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v LookupIncidentResult) *string { return v.FirstActivityTimeUtc }).(pulumi.StringPtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupIncidentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIncidentResult) string { return v.Id }).(pulumi.StringOutput)
 }

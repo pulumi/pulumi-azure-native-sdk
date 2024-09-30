@@ -14,7 +14,7 @@ import (
 // Get a AssessmentProject
 // Azure REST API version: 2023-03-15.
 //
-// Other available API versions: 2023-04-01-preview.
+// Other available API versions: 2023-04-01-preview, 2023-05-01-preview.
 func LookupAssessmentProjectsOperation(ctx *pulumi.Context, args *LookupAssessmentProjectsOperationArgs, opts ...pulumi.InvokeOption) (*LookupAssessmentProjectsOperationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAssessmentProjectsOperationResult

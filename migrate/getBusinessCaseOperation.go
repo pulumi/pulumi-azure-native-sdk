@@ -13,6 +13,8 @@ import (
 
 // Get a BusinessCase
 // Azure REST API version: 2023-04-01-preview.
+//
+// Other available API versions: 2023-05-01-preview.
 func LookupBusinessCaseOperation(ctx *pulumi.Context, args *LookupBusinessCaseOperationArgs, opts ...pulumi.InvokeOption) (*LookupBusinessCaseOperationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBusinessCaseOperationResult

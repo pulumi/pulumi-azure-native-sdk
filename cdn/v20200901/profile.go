@@ -110,6 +110,9 @@ func NewProfile(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:cdn/v20240601preview:Profile"),
 		},
+		{
+			Type: pulumi.String("azure-native:cdn/v20240901:Profile"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

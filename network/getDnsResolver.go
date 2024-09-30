@@ -13,6 +13,8 @@ import (
 
 // Gets properties of a DNS resolver.
 // Azure REST API version: 2022-07-01.
+//
+// Other available API versions: 2023-07-01-preview.
 func LookupDnsResolver(ctx *pulumi.Context, args *LookupDnsResolverArgs, opts ...pulumi.InvokeOption) (*LookupDnsResolverResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDnsResolverResult

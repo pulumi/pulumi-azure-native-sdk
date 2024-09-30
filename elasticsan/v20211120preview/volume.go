@@ -63,6 +63,9 @@ func NewVolume(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:elasticsan/v20240501:Volume"),
 		},
+		{
+			Type: pulumi.String("azure-native:elasticsan/v20240601preview:Volume"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -73,6 +73,9 @@ func NewWebAppScmAllowedSlot(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:web/v20231201:WebAppScmAllowedSlot"),
 		},
+		{
+			Type: pulumi.String("azure-native:web/v20240401:WebAppScmAllowedSlot"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

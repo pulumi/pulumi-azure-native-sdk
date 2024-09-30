@@ -43,7 +43,7 @@ type LookupWatchlistItemResult struct {
 	EntityMapping interface{} `pulumi:"entityMapping"`
 	// Etag of the azure resource
 	Etag *string `pulumi:"etag"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// A flag that indicates if the watchlist item is deleted or not
 	IsDeleted *bool `pulumi:"isDeleted"`
@@ -136,7 +136,7 @@ func (o LookupWatchlistItemResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWatchlistItemResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupWatchlistItemResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWatchlistItemResult) string { return v.Id }).(pulumi.StringOutput)
 }

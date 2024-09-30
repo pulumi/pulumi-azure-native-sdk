@@ -58,6 +58,9 @@ func NewDnsResolver(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20200401preview:DnsResolver"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20230701preview:DnsResolver"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

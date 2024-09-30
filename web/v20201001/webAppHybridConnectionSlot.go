@@ -111,6 +111,9 @@ func NewWebAppHybridConnectionSlot(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:web/v20231201:WebAppHybridConnectionSlot"),
 		},
+		{
+			Type: pulumi.String("azure-native:web/v20240401:WebAppHybridConnectionSlot"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

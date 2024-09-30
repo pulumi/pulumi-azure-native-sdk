@@ -54,6 +54,9 @@ func NewSqlCollectorOperation(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:migrate/v20230401preview:SqlCollectorOperation"),
 		},
+		{
+			Type: pulumi.String("azure-native:migrate/v20230501preview:SqlCollectorOperation"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

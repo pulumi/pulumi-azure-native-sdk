@@ -46,6 +46,8 @@ type WebApp struct {
 	// Enabled hostnames for the app.Hostnames need to be assigned (see HostNames) AND enabled. Otherwise,
 	// the app is not served on those hostnames.
 	EnabledHostNames pulumi.StringArrayOutput `pulumi:"enabledHostNames"`
+	// Whether to use end to end encryption between the FrontEnd and the Worker
+	EndToEndEncryptionEnabled pulumi.BoolPtrOutput `pulumi:"endToEndEncryptionEnabled"`
 	// Extended Location.
 	ExtendedLocation ExtendedLocationResponsePtrOutput `pulumi:"extendedLocation"`
 	// Configuration specific of the Azure Function app.
@@ -222,6 +224,9 @@ func NewWebApp(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:web/v20230101:WebApp"),
 		},
+		{
+			Type: pulumi.String("azure-native:web/v20240401:WebApp"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -282,6 +287,8 @@ type webAppArgs struct {
 	DnsConfiguration *SiteDnsConfig `pulumi:"dnsConfiguration"`
 	// <code>true</code> if the app is enabled; otherwise, <code>false</code>. Setting this value to false disables the app (takes the app offline).
 	Enabled *bool `pulumi:"enabled"`
+	// Whether to use end to end encryption between the FrontEnd and the Worker
+	EndToEndEncryptionEnabled *bool `pulumi:"endToEndEncryptionEnabled"`
 	// Extended Location.
 	ExtendedLocation *ExtendedLocation `pulumi:"extendedLocation"`
 	// Configuration specific of the Azure Function app.
@@ -374,6 +381,8 @@ type WebAppArgs struct {
 	DnsConfiguration SiteDnsConfigPtrInput
 	// <code>true</code> if the app is enabled; otherwise, <code>false</code>. Setting this value to false disables the app (takes the app offline).
 	Enabled pulumi.BoolPtrInput
+	// Whether to use end to end encryption between the FrontEnd and the Worker
+	EndToEndEncryptionEnabled pulumi.BoolPtrInput
 	// Extended Location.
 	ExtendedLocation ExtendedLocationPtrInput
 	// Configuration specific of the Azure Function app.
@@ -543,6 +552,11 @@ func (o WebAppOutput) Enabled() pulumi.BoolPtrOutput {
 // the app is not served on those hostnames.
 func (o WebAppOutput) EnabledHostNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WebApp) pulumi.StringArrayOutput { return v.EnabledHostNames }).(pulumi.StringArrayOutput)
+}
+
+// Whether to use end to end encryption between the FrontEnd and the Worker
+func (o WebAppOutput) EndToEndEncryptionEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WebApp) pulumi.BoolPtrOutput { return v.EndToEndEncryptionEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // Extended Location.

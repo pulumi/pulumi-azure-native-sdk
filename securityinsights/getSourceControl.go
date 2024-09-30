@@ -44,7 +44,7 @@ type LookupSourceControlResult struct {
 	DisplayName string `pulumi:"displayName"`
 	// Etag of the azure resource
 	Etag *string `pulumi:"etag"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Information regarding the latest deployment for the source control.
 	LastDeploymentInfo *DeploymentInfoResponse `pulumi:"lastDeploymentInfo"`
@@ -131,7 +131,7 @@ func (o LookupSourceControlResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSourceControlResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupSourceControlResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSourceControlResult) string { return v.Id }).(pulumi.StringOutput)
 }

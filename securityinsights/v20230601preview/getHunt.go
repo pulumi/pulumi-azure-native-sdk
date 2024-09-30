@@ -45,7 +45,7 @@ type LookupHuntResult struct {
 	Etag *string `pulumi:"etag"`
 	// The hypothesis status of the hunt.
 	HypothesisStatus *string `pulumi:"hypothesisStatus"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// List of labels relevant to this hunt
 	Labels []string `pulumi:"labels"`
@@ -155,7 +155,7 @@ func (o LookupHuntResultOutput) HypothesisStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupHuntResult) *string { return v.HypothesisStatus }).(pulumi.StringPtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupHuntResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHuntResult) string { return v.Id }).(pulumi.StringOutput)
 }

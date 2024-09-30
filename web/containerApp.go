@@ -15,7 +15,7 @@ import (
 // Container App.
 // Azure REST API version: 2023-01-01.
 //
-// Other available API versions: 2023-12-01.
+// Other available API versions: 2023-12-01, 2024-04-01.
 type ContainerApp struct {
 	pulumi.CustomResourceState
 
@@ -71,6 +71,9 @@ func NewContainerApp(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:web/v20231201:ContainerApp"),
+		},
+		{
+			Type: pulumi.String("azure-native:web/v20240401:ContainerApp"),
 		},
 	})
 	opts = append(opts, aliases)

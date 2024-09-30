@@ -37,7 +37,7 @@ type LookupDynamics365DataConnectorResult struct {
 	DataTypes Dynamics365DataConnectorDataTypesResponse `pulumi:"dataTypes"`
 	// Etag of the azure resource
 	Etag *string `pulumi:"etag"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The kind of the data connector
 	// Expected value is 'Dynamics365'.
@@ -111,7 +111,7 @@ func (o LookupDynamics365DataConnectorResultOutput) Etag() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v LookupDynamics365DataConnectorResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupDynamics365DataConnectorResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDynamics365DataConnectorResult) string { return v.Id }).(pulumi.StringOutput)
 }

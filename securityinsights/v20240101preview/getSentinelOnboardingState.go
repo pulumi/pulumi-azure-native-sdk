@@ -37,7 +37,7 @@ type LookupSentinelOnboardingStateResult struct {
 	CustomerManagedKey *bool `pulumi:"customerManagedKey"`
 	// Etag of the azure resource
 	Etag *string `pulumi:"etag"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The name of the resource
 	Name string `pulumi:"name"`
@@ -104,7 +104,7 @@ func (o LookupSentinelOnboardingStateResultOutput) Etag() pulumi.StringPtrOutput
 	return o.ApplyT(func(v LookupSentinelOnboardingStateResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupSentinelOnboardingStateResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSentinelOnboardingStateResult) string { return v.Id }).(pulumi.StringOutput)
 }
