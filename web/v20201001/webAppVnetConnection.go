@@ -106,6 +106,9 @@ func NewWebAppVnetConnection(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:web/v20231201:WebAppVnetConnection"),
 		},
+		{
+			Type: pulumi.String("azure-native:web/v20240401:WebAppVnetConnection"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

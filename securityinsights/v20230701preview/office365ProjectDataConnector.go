@@ -153,6 +153,9 @@ func NewOffice365ProjectDataConnector(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20240301:Office365ProjectDataConnector"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240401preview:Office365ProjectDataConnector"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

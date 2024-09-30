@@ -5952,6 +5952,170 @@ func (in *bastionHostSkuNamePtr) ToBastionHostSkuNamePtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(BastionHostSkuNamePtrOutput)
 }
 
+// The response code for block actions.
+type BlockResponseCode string
+
+const (
+	BlockResponseCodeSERVFAIL = BlockResponseCode("SERVFAIL")
+)
+
+func (BlockResponseCode) ElementType() reflect.Type {
+	return reflect.TypeOf((*BlockResponseCode)(nil)).Elem()
+}
+
+func (e BlockResponseCode) ToBlockResponseCodeOutput() BlockResponseCodeOutput {
+	return pulumi.ToOutput(e).(BlockResponseCodeOutput)
+}
+
+func (e BlockResponseCode) ToBlockResponseCodeOutputWithContext(ctx context.Context) BlockResponseCodeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(BlockResponseCodeOutput)
+}
+
+func (e BlockResponseCode) ToBlockResponseCodePtrOutput() BlockResponseCodePtrOutput {
+	return e.ToBlockResponseCodePtrOutputWithContext(context.Background())
+}
+
+func (e BlockResponseCode) ToBlockResponseCodePtrOutputWithContext(ctx context.Context) BlockResponseCodePtrOutput {
+	return BlockResponseCode(e).ToBlockResponseCodeOutputWithContext(ctx).ToBlockResponseCodePtrOutputWithContext(ctx)
+}
+
+func (e BlockResponseCode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e BlockResponseCode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e BlockResponseCode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e BlockResponseCode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type BlockResponseCodeOutput struct{ *pulumi.OutputState }
+
+func (BlockResponseCodeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BlockResponseCode)(nil)).Elem()
+}
+
+func (o BlockResponseCodeOutput) ToBlockResponseCodeOutput() BlockResponseCodeOutput {
+	return o
+}
+
+func (o BlockResponseCodeOutput) ToBlockResponseCodeOutputWithContext(ctx context.Context) BlockResponseCodeOutput {
+	return o
+}
+
+func (o BlockResponseCodeOutput) ToBlockResponseCodePtrOutput() BlockResponseCodePtrOutput {
+	return o.ToBlockResponseCodePtrOutputWithContext(context.Background())
+}
+
+func (o BlockResponseCodeOutput) ToBlockResponseCodePtrOutputWithContext(ctx context.Context) BlockResponseCodePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BlockResponseCode) *BlockResponseCode {
+		return &v
+	}).(BlockResponseCodePtrOutput)
+}
+
+func (o BlockResponseCodeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o BlockResponseCodeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e BlockResponseCode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o BlockResponseCodeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o BlockResponseCodeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e BlockResponseCode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type BlockResponseCodePtrOutput struct{ *pulumi.OutputState }
+
+func (BlockResponseCodePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BlockResponseCode)(nil)).Elem()
+}
+
+func (o BlockResponseCodePtrOutput) ToBlockResponseCodePtrOutput() BlockResponseCodePtrOutput {
+	return o
+}
+
+func (o BlockResponseCodePtrOutput) ToBlockResponseCodePtrOutputWithContext(ctx context.Context) BlockResponseCodePtrOutput {
+	return o
+}
+
+func (o BlockResponseCodePtrOutput) Elem() BlockResponseCodeOutput {
+	return o.ApplyT(func(v *BlockResponseCode) BlockResponseCode {
+		if v != nil {
+			return *v
+		}
+		var ret BlockResponseCode
+		return ret
+	}).(BlockResponseCodeOutput)
+}
+
+func (o BlockResponseCodePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o BlockResponseCodePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *BlockResponseCode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// BlockResponseCodeInput is an input type that accepts values of the BlockResponseCode enum
+// A concrete instance of `BlockResponseCodeInput` can be one of the following:
+//
+//	BlockResponseCodeSERVFAIL
+type BlockResponseCodeInput interface {
+	pulumi.Input
+
+	ToBlockResponseCodeOutput() BlockResponseCodeOutput
+	ToBlockResponseCodeOutputWithContext(context.Context) BlockResponseCodeOutput
+}
+
+var blockResponseCodePtrType = reflect.TypeOf((**BlockResponseCode)(nil)).Elem()
+
+type BlockResponseCodePtrInput interface {
+	pulumi.Input
+
+	ToBlockResponseCodePtrOutput() BlockResponseCodePtrOutput
+	ToBlockResponseCodePtrOutputWithContext(context.Context) BlockResponseCodePtrOutput
+}
+
+type blockResponseCodePtr string
+
+func BlockResponseCodePtr(v string) BlockResponseCodePtrInput {
+	return (*blockResponseCodePtr)(&v)
+}
+
+func (*blockResponseCodePtr) ElementType() reflect.Type {
+	return blockResponseCodePtrType
+}
+
+func (in *blockResponseCodePtr) ToBlockResponseCodePtrOutput() BlockResponseCodePtrOutput {
+	return pulumi.ToOutput(in).(BlockResponseCodePtrOutput)
+}
+
+func (in *blockResponseCodePtr) ToBlockResponseCodePtrOutputWithContext(ctx context.Context) BlockResponseCodePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(BlockResponseCodePtrOutput)
+}
+
 // The commissioned state of the Custom IP Prefix.
 type CommissionedState string
 
@@ -8640,6 +8804,172 @@ func (in *disableBgpRoutePropagationPtr) ToDisableBgpRoutePropagationPtrOutput()
 
 func (in *disableBgpRoutePropagationPtr) ToDisableBgpRoutePropagationPtrOutputWithContext(ctx context.Context) DisableBgpRoutePropagationPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DisableBgpRoutePropagationPtrOutput)
+}
+
+// The state of DNS security rule.
+type DnsSecurityRuleStateEnum string
+
+const (
+	DnsSecurityRuleStateEnumEnabled  = DnsSecurityRuleStateEnum("Enabled")
+	DnsSecurityRuleStateEnumDisabled = DnsSecurityRuleStateEnum("Disabled")
+)
+
+func (DnsSecurityRuleStateEnum) ElementType() reflect.Type {
+	return reflect.TypeOf((*DnsSecurityRuleStateEnum)(nil)).Elem()
+}
+
+func (e DnsSecurityRuleStateEnum) ToDnsSecurityRuleStateEnumOutput() DnsSecurityRuleStateEnumOutput {
+	return pulumi.ToOutput(e).(DnsSecurityRuleStateEnumOutput)
+}
+
+func (e DnsSecurityRuleStateEnum) ToDnsSecurityRuleStateEnumOutputWithContext(ctx context.Context) DnsSecurityRuleStateEnumOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(DnsSecurityRuleStateEnumOutput)
+}
+
+func (e DnsSecurityRuleStateEnum) ToDnsSecurityRuleStateEnumPtrOutput() DnsSecurityRuleStateEnumPtrOutput {
+	return e.ToDnsSecurityRuleStateEnumPtrOutputWithContext(context.Background())
+}
+
+func (e DnsSecurityRuleStateEnum) ToDnsSecurityRuleStateEnumPtrOutputWithContext(ctx context.Context) DnsSecurityRuleStateEnumPtrOutput {
+	return DnsSecurityRuleStateEnum(e).ToDnsSecurityRuleStateEnumOutputWithContext(ctx).ToDnsSecurityRuleStateEnumPtrOutputWithContext(ctx)
+}
+
+func (e DnsSecurityRuleStateEnum) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DnsSecurityRuleStateEnum) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DnsSecurityRuleStateEnum) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e DnsSecurityRuleStateEnum) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type DnsSecurityRuleStateEnumOutput struct{ *pulumi.OutputState }
+
+func (DnsSecurityRuleStateEnumOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DnsSecurityRuleStateEnum)(nil)).Elem()
+}
+
+func (o DnsSecurityRuleStateEnumOutput) ToDnsSecurityRuleStateEnumOutput() DnsSecurityRuleStateEnumOutput {
+	return o
+}
+
+func (o DnsSecurityRuleStateEnumOutput) ToDnsSecurityRuleStateEnumOutputWithContext(ctx context.Context) DnsSecurityRuleStateEnumOutput {
+	return o
+}
+
+func (o DnsSecurityRuleStateEnumOutput) ToDnsSecurityRuleStateEnumPtrOutput() DnsSecurityRuleStateEnumPtrOutput {
+	return o.ToDnsSecurityRuleStateEnumPtrOutputWithContext(context.Background())
+}
+
+func (o DnsSecurityRuleStateEnumOutput) ToDnsSecurityRuleStateEnumPtrOutputWithContext(ctx context.Context) DnsSecurityRuleStateEnumPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DnsSecurityRuleStateEnum) *DnsSecurityRuleStateEnum {
+		return &v
+	}).(DnsSecurityRuleStateEnumPtrOutput)
+}
+
+func (o DnsSecurityRuleStateEnumOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o DnsSecurityRuleStateEnumOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DnsSecurityRuleStateEnum) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o DnsSecurityRuleStateEnumOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DnsSecurityRuleStateEnumOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DnsSecurityRuleStateEnum) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type DnsSecurityRuleStateEnumPtrOutput struct{ *pulumi.OutputState }
+
+func (DnsSecurityRuleStateEnumPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DnsSecurityRuleStateEnum)(nil)).Elem()
+}
+
+func (o DnsSecurityRuleStateEnumPtrOutput) ToDnsSecurityRuleStateEnumPtrOutput() DnsSecurityRuleStateEnumPtrOutput {
+	return o
+}
+
+func (o DnsSecurityRuleStateEnumPtrOutput) ToDnsSecurityRuleStateEnumPtrOutputWithContext(ctx context.Context) DnsSecurityRuleStateEnumPtrOutput {
+	return o
+}
+
+func (o DnsSecurityRuleStateEnumPtrOutput) Elem() DnsSecurityRuleStateEnumOutput {
+	return o.ApplyT(func(v *DnsSecurityRuleStateEnum) DnsSecurityRuleStateEnum {
+		if v != nil {
+			return *v
+		}
+		var ret DnsSecurityRuleStateEnum
+		return ret
+	}).(DnsSecurityRuleStateEnumOutput)
+}
+
+func (o DnsSecurityRuleStateEnumPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DnsSecurityRuleStateEnumPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DnsSecurityRuleStateEnum) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// DnsSecurityRuleStateEnumInput is an input type that accepts values of the DnsSecurityRuleStateEnum enum
+// A concrete instance of `DnsSecurityRuleStateEnumInput` can be one of the following:
+//
+//	DnsSecurityRuleStateEnumEnabled
+//	DnsSecurityRuleStateEnumDisabled
+type DnsSecurityRuleStateEnumInput interface {
+	pulumi.Input
+
+	ToDnsSecurityRuleStateEnumOutput() DnsSecurityRuleStateEnumOutput
+	ToDnsSecurityRuleStateEnumOutputWithContext(context.Context) DnsSecurityRuleStateEnumOutput
+}
+
+var dnsSecurityRuleStateEnumPtrType = reflect.TypeOf((**DnsSecurityRuleStateEnum)(nil)).Elem()
+
+type DnsSecurityRuleStateEnumPtrInput interface {
+	pulumi.Input
+
+	ToDnsSecurityRuleStateEnumPtrOutput() DnsSecurityRuleStateEnumPtrOutput
+	ToDnsSecurityRuleStateEnumPtrOutputWithContext(context.Context) DnsSecurityRuleStateEnumPtrOutput
+}
+
+type dnsSecurityRuleStateEnumPtr string
+
+func DnsSecurityRuleStateEnumPtr(v string) DnsSecurityRuleStateEnumPtrInput {
+	return (*dnsSecurityRuleStateEnumPtr)(&v)
+}
+
+func (*dnsSecurityRuleStateEnumPtr) ElementType() reflect.Type {
+	return dnsSecurityRuleStateEnumPtrType
+}
+
+func (in *dnsSecurityRuleStateEnumPtr) ToDnsSecurityRuleStateEnumPtrOutput() DnsSecurityRuleStateEnumPtrOutput {
+	return pulumi.ToOutput(in).(DnsSecurityRuleStateEnumPtrOutput)
+}
+
+func (in *dnsSecurityRuleStateEnumPtr) ToDnsSecurityRuleStateEnumPtrOutputWithContext(ctx context.Context) DnsSecurityRuleStateEnumPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(DnsSecurityRuleStateEnumPtrOutput)
 }
 
 // Whether to use dynamic compression for cached content
@@ -35658,6 +35988,8 @@ func init() {
 	pulumi.RegisterOutputType(BackendEnabledStatePtrOutput{})
 	pulumi.RegisterOutputType(BastionHostSkuNameOutput{})
 	pulumi.RegisterOutputType(BastionHostSkuNamePtrOutput{})
+	pulumi.RegisterOutputType(BlockResponseCodeOutput{})
+	pulumi.RegisterOutputType(BlockResponseCodePtrOutput{})
 	pulumi.RegisterOutputType(CommissionedStateOutput{})
 	pulumi.RegisterOutputType(CommissionedStatePtrOutput{})
 	pulumi.RegisterOutputType(ConfigurationTypeOutput{})
@@ -35690,6 +36022,8 @@ func init() {
 	pulumi.RegisterOutputType(DhGroupPtrOutput{})
 	pulumi.RegisterOutputType(DisableBgpRoutePropagationOutput{})
 	pulumi.RegisterOutputType(DisableBgpRoutePropagationPtrOutput{})
+	pulumi.RegisterOutputType(DnsSecurityRuleStateEnumOutput{})
+	pulumi.RegisterOutputType(DnsSecurityRuleStateEnumPtrOutput{})
 	pulumi.RegisterOutputType(DynamicCompressionEnabledOutput{})
 	pulumi.RegisterOutputType(DynamicCompressionEnabledPtrOutput{})
 	pulumi.RegisterOutputType(EndpointMonitorStatusOutput{})

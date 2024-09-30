@@ -50,7 +50,7 @@ type LookupAnomalySecurityMLAnalyticsSettingsResult struct {
 	Etag *string `pulumi:"etag"`
 	// The frequency that this SecurityMLAnalyticsSettings will be run.
 	Frequency string `pulumi:"frequency"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Determines whether this anomaly security ml analytics settings is a default settings
 	IsDefaultSettings bool `pulumi:"isDefaultSettings"`
@@ -164,7 +164,7 @@ func (o LookupAnomalySecurityMLAnalyticsSettingsResultOutput) Frequency() pulumi
 	return o.ApplyT(func(v LookupAnomalySecurityMLAnalyticsSettingsResult) string { return v.Frequency }).(pulumi.StringOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupAnomalySecurityMLAnalyticsSettingsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAnomalySecurityMLAnalyticsSettingsResult) string { return v.Id }).(pulumi.StringOutput)
 }

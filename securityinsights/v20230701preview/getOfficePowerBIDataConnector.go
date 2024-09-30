@@ -37,7 +37,7 @@ type LookupOfficePowerBIDataConnectorResult struct {
 	DataTypes OfficePowerBIConnectorDataTypesResponse `pulumi:"dataTypes"`
 	// Etag of the azure resource
 	Etag *string `pulumi:"etag"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The kind of the data connector
 	// Expected value is 'OfficePowerBI'.
@@ -111,7 +111,7 @@ func (o LookupOfficePowerBIDataConnectorResultOutput) Etag() pulumi.StringPtrOut
 	return o.ApplyT(func(v LookupOfficePowerBIDataConnectorResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupOfficePowerBIDataConnectorResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOfficePowerBIDataConnectorResult) string { return v.Id }).(pulumi.StringOutput)
 }

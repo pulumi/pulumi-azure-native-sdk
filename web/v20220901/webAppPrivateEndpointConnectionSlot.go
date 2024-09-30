@@ -75,6 +75,9 @@ func NewWebAppPrivateEndpointConnectionSlot(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:web/v20231201:WebAppPrivateEndpointConnectionSlot"),
 		},
+		{
+			Type: pulumi.String("azure-native:web/v20240401:WebAppPrivateEndpointConnectionSlot"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

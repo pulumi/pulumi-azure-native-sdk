@@ -57,6 +57,9 @@ func NewVmwareCollectorsOperation(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:migrate/v20230315:VmwareCollectorsOperation"),
 		},
+		{
+			Type: pulumi.String("azure-native:migrate/v20230501preview:VmwareCollectorsOperation"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

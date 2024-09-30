@@ -97,6 +97,9 @@ func NewWebAppSlotConfigurationNames(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:web/v20231201:WebAppSlotConfigurationNames"),
 		},
+		{
+			Type: pulumi.String("azure-native:web/v20240401:WebAppSlotConfigurationNames"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

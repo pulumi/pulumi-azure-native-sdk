@@ -85,6 +85,9 @@ func NewAccount(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:videoindexer/v20240601preview:Account"),
 		},
+		{
+			Type: pulumi.String("azure-native:videoindexer/v20240923preview:Account"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -55,6 +55,9 @@ func NewPrivateResolverVirtualNetworkLink(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20200401preview:PrivateResolverVirtualNetworkLink"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20230701preview:PrivateResolverVirtualNetworkLink"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

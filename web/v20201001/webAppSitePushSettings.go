@@ -102,6 +102,9 @@ func NewWebAppSitePushSettings(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:web/v20231201:WebAppSitePushSettings"),
 		},
+		{
+			Type: pulumi.String("azure-native:web/v20240401:WebAppSitePushSettings"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -26723,6 +26723,103 @@ func (o DnsResourceReferenceResponseArrayOutput) Index(i pulumi.IntInput) DnsRes
 	}).(DnsResourceReferenceResponseOutput)
 }
 
+// The action to take on DNS requests that match the DNS security rule.
+type DnsSecurityRuleAction struct {
+	// The type of action to take.
+	ActionType *string `pulumi:"actionType"`
+	// The response code for block actions.
+	BlockResponseCode *string `pulumi:"blockResponseCode"`
+}
+
+// DnsSecurityRuleActionInput is an input type that accepts DnsSecurityRuleActionArgs and DnsSecurityRuleActionOutput values.
+// You can construct a concrete instance of `DnsSecurityRuleActionInput` via:
+//
+//	DnsSecurityRuleActionArgs{...}
+type DnsSecurityRuleActionInput interface {
+	pulumi.Input
+
+	ToDnsSecurityRuleActionOutput() DnsSecurityRuleActionOutput
+	ToDnsSecurityRuleActionOutputWithContext(context.Context) DnsSecurityRuleActionOutput
+}
+
+// The action to take on DNS requests that match the DNS security rule.
+type DnsSecurityRuleActionArgs struct {
+	// The type of action to take.
+	ActionType pulumi.StringPtrInput `pulumi:"actionType"`
+	// The response code for block actions.
+	BlockResponseCode pulumi.StringPtrInput `pulumi:"blockResponseCode"`
+}
+
+func (DnsSecurityRuleActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DnsSecurityRuleAction)(nil)).Elem()
+}
+
+func (i DnsSecurityRuleActionArgs) ToDnsSecurityRuleActionOutput() DnsSecurityRuleActionOutput {
+	return i.ToDnsSecurityRuleActionOutputWithContext(context.Background())
+}
+
+func (i DnsSecurityRuleActionArgs) ToDnsSecurityRuleActionOutputWithContext(ctx context.Context) DnsSecurityRuleActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DnsSecurityRuleActionOutput)
+}
+
+// The action to take on DNS requests that match the DNS security rule.
+type DnsSecurityRuleActionOutput struct{ *pulumi.OutputState }
+
+func (DnsSecurityRuleActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DnsSecurityRuleAction)(nil)).Elem()
+}
+
+func (o DnsSecurityRuleActionOutput) ToDnsSecurityRuleActionOutput() DnsSecurityRuleActionOutput {
+	return o
+}
+
+func (o DnsSecurityRuleActionOutput) ToDnsSecurityRuleActionOutputWithContext(ctx context.Context) DnsSecurityRuleActionOutput {
+	return o
+}
+
+// The type of action to take.
+func (o DnsSecurityRuleActionOutput) ActionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DnsSecurityRuleAction) *string { return v.ActionType }).(pulumi.StringPtrOutput)
+}
+
+// The response code for block actions.
+func (o DnsSecurityRuleActionOutput) BlockResponseCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DnsSecurityRuleAction) *string { return v.BlockResponseCode }).(pulumi.StringPtrOutput)
+}
+
+// The action to take on DNS requests that match the DNS security rule.
+type DnsSecurityRuleActionResponse struct {
+	// The type of action to take.
+	ActionType *string `pulumi:"actionType"`
+	// The response code for block actions.
+	BlockResponseCode *string `pulumi:"blockResponseCode"`
+}
+
+// The action to take on DNS requests that match the DNS security rule.
+type DnsSecurityRuleActionResponseOutput struct{ *pulumi.OutputState }
+
+func (DnsSecurityRuleActionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DnsSecurityRuleActionResponse)(nil)).Elem()
+}
+
+func (o DnsSecurityRuleActionResponseOutput) ToDnsSecurityRuleActionResponseOutput() DnsSecurityRuleActionResponseOutput {
+	return o
+}
+
+func (o DnsSecurityRuleActionResponseOutput) ToDnsSecurityRuleActionResponseOutputWithContext(ctx context.Context) DnsSecurityRuleActionResponseOutput {
+	return o
+}
+
+// The type of action to take.
+func (o DnsSecurityRuleActionResponseOutput) ActionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DnsSecurityRuleActionResponse) *string { return v.ActionType }).(pulumi.StringPtrOutput)
+}
+
+// The response code for block actions.
+func (o DnsSecurityRuleActionResponseOutput) BlockResponseCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DnsSecurityRuleActionResponse) *string { return v.BlockResponseCode }).(pulumi.StringPtrOutput)
+}
+
 // DNS Proxy Settings in Firewall Policy.
 type DnsSettings struct {
 	// Enable DNS Proxy on Firewalls attached to the Firewall Policy.
@@ -60833,215 +60930,6 @@ func (o PolicySettingsResponseLogScrubbingPtrOutput) State() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// IpamPool association information.
-type PoolAssociationResponse struct {
-	// List of assigned IP address prefixes in the IpamPool of the associated resource.
-	AddressPrefixes []string `pulumi:"addressPrefixes"`
-	// Creation time of the association.
-	CreatedAt   string  `pulumi:"createdAt"`
-	Description *string `pulumi:"description"`
-	// Total number of reserved IP addresses of the association.
-	NumberOfReservedIPAddresses string `pulumi:"numberOfReservedIPAddresses"`
-	// IpamPool id for which the resource is associated to.
-	PoolId *string `pulumi:"poolId"`
-	// Expire time for IP addresses reserved.
-	ReservationExpiresAt string `pulumi:"reservationExpiresAt"`
-	// List of reserved IP address prefixes in the IpamPool of the associated resource.
-	ReservedPrefixes []string `pulumi:"reservedPrefixes"`
-	// Resource id of the associated Azure resource.
-	ResourceId string `pulumi:"resourceId"`
-	// Total number of assigned IP addresses of the association.
-	TotalNumberOfIPAddresses string `pulumi:"totalNumberOfIPAddresses"`
-}
-
-// IpamPool association information.
-type PoolAssociationResponseOutput struct{ *pulumi.OutputState }
-
-func (PoolAssociationResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PoolAssociationResponse)(nil)).Elem()
-}
-
-func (o PoolAssociationResponseOutput) ToPoolAssociationResponseOutput() PoolAssociationResponseOutput {
-	return o
-}
-
-func (o PoolAssociationResponseOutput) ToPoolAssociationResponseOutputWithContext(ctx context.Context) PoolAssociationResponseOutput {
-	return o
-}
-
-// List of assigned IP address prefixes in the IpamPool of the associated resource.
-func (o PoolAssociationResponseOutput) AddressPrefixes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v PoolAssociationResponse) []string { return v.AddressPrefixes }).(pulumi.StringArrayOutput)
-}
-
-// Creation time of the association.
-func (o PoolAssociationResponseOutput) CreatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v PoolAssociationResponse) string { return v.CreatedAt }).(pulumi.StringOutput)
-}
-
-func (o PoolAssociationResponseOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PoolAssociationResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Total number of reserved IP addresses of the association.
-func (o PoolAssociationResponseOutput) NumberOfReservedIPAddresses() pulumi.StringOutput {
-	return o.ApplyT(func(v PoolAssociationResponse) string { return v.NumberOfReservedIPAddresses }).(pulumi.StringOutput)
-}
-
-// IpamPool id for which the resource is associated to.
-func (o PoolAssociationResponseOutput) PoolId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PoolAssociationResponse) *string { return v.PoolId }).(pulumi.StringPtrOutput)
-}
-
-// Expire time for IP addresses reserved.
-func (o PoolAssociationResponseOutput) ReservationExpiresAt() pulumi.StringOutput {
-	return o.ApplyT(func(v PoolAssociationResponse) string { return v.ReservationExpiresAt }).(pulumi.StringOutput)
-}
-
-// List of reserved IP address prefixes in the IpamPool of the associated resource.
-func (o PoolAssociationResponseOutput) ReservedPrefixes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v PoolAssociationResponse) []string { return v.ReservedPrefixes }).(pulumi.StringArrayOutput)
-}
-
-// Resource id of the associated Azure resource.
-func (o PoolAssociationResponseOutput) ResourceId() pulumi.StringOutput {
-	return o.ApplyT(func(v PoolAssociationResponse) string { return v.ResourceId }).(pulumi.StringOutput)
-}
-
-// Total number of assigned IP addresses of the association.
-func (o PoolAssociationResponseOutput) TotalNumberOfIPAddresses() pulumi.StringOutput {
-	return o.ApplyT(func(v PoolAssociationResponse) string { return v.TotalNumberOfIPAddresses }).(pulumi.StringOutput)
-}
-
-type PoolAssociationResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (PoolAssociationResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PoolAssociationResponse)(nil)).Elem()
-}
-
-func (o PoolAssociationResponseArrayOutput) ToPoolAssociationResponseArrayOutput() PoolAssociationResponseArrayOutput {
-	return o
-}
-
-func (o PoolAssociationResponseArrayOutput) ToPoolAssociationResponseArrayOutputWithContext(ctx context.Context) PoolAssociationResponseArrayOutput {
-	return o
-}
-
-func (o PoolAssociationResponseArrayOutput) Index(i pulumi.IntInput) PoolAssociationResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PoolAssociationResponse {
-		return vs[0].([]PoolAssociationResponse)[vs[1].(int)]
-	}).(PoolAssociationResponseOutput)
-}
-
-// PrivateDnsZoneConfig resource.
-type PrivateDnsZoneConfig struct {
-	// Name of the resource that is unique within a resource group. This name can be used to access the resource.
-	Name *string `pulumi:"name"`
-	// The resource id of the private dns zone.
-	PrivateDnsZoneId *string `pulumi:"privateDnsZoneId"`
-}
-
-// PrivateDnsZoneConfigInput is an input type that accepts PrivateDnsZoneConfigArgs and PrivateDnsZoneConfigOutput values.
-// You can construct a concrete instance of `PrivateDnsZoneConfigInput` via:
-//
-//	PrivateDnsZoneConfigArgs{...}
-type PrivateDnsZoneConfigInput interface {
-	pulumi.Input
-
-	ToPrivateDnsZoneConfigOutput() PrivateDnsZoneConfigOutput
-	ToPrivateDnsZoneConfigOutputWithContext(context.Context) PrivateDnsZoneConfigOutput
-}
-
-// PrivateDnsZoneConfig resource.
-type PrivateDnsZoneConfigArgs struct {
-	// Name of the resource that is unique within a resource group. This name can be used to access the resource.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The resource id of the private dns zone.
-	PrivateDnsZoneId pulumi.StringPtrInput `pulumi:"privateDnsZoneId"`
-}
-
-func (PrivateDnsZoneConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateDnsZoneConfig)(nil)).Elem()
-}
-
-func (i PrivateDnsZoneConfigArgs) ToPrivateDnsZoneConfigOutput() PrivateDnsZoneConfigOutput {
-	return i.ToPrivateDnsZoneConfigOutputWithContext(context.Background())
-}
-
-func (i PrivateDnsZoneConfigArgs) ToPrivateDnsZoneConfigOutputWithContext(ctx context.Context) PrivateDnsZoneConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrivateDnsZoneConfigOutput)
-}
-
-// PrivateDnsZoneConfigArrayInput is an input type that accepts PrivateDnsZoneConfigArray and PrivateDnsZoneConfigArrayOutput values.
-// You can construct a concrete instance of `PrivateDnsZoneConfigArrayInput` via:
-//
-//	PrivateDnsZoneConfigArray{ PrivateDnsZoneConfigArgs{...} }
-type PrivateDnsZoneConfigArrayInput interface {
-	pulumi.Input
-
-	ToPrivateDnsZoneConfigArrayOutput() PrivateDnsZoneConfigArrayOutput
-	ToPrivateDnsZoneConfigArrayOutputWithContext(context.Context) PrivateDnsZoneConfigArrayOutput
-}
-
-type PrivateDnsZoneConfigArray []PrivateDnsZoneConfigInput
-
-func (PrivateDnsZoneConfigArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PrivateDnsZoneConfig)(nil)).Elem()
-}
-
-func (i PrivateDnsZoneConfigArray) ToPrivateDnsZoneConfigArrayOutput() PrivateDnsZoneConfigArrayOutput {
-	return i.ToPrivateDnsZoneConfigArrayOutputWithContext(context.Background())
-}
-
-func (i PrivateDnsZoneConfigArray) ToPrivateDnsZoneConfigArrayOutputWithContext(ctx context.Context) PrivateDnsZoneConfigArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrivateDnsZoneConfigArrayOutput)
-}
-
-// PrivateDnsZoneConfig resource.
-type PrivateDnsZoneConfigOutput struct{ *pulumi.OutputState }
-
-func (PrivateDnsZoneConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateDnsZoneConfig)(nil)).Elem()
-}
-
-func (o PrivateDnsZoneConfigOutput) ToPrivateDnsZoneConfigOutput() PrivateDnsZoneConfigOutput {
-	return o
-}
-
-func (o PrivateDnsZoneConfigOutput) ToPrivateDnsZoneConfigOutputWithContext(ctx context.Context) PrivateDnsZoneConfigOutput {
-	return o
-}
-
-// Name of the resource that is unique within a resource group. This name can be used to access the resource.
-func (o PrivateDnsZoneConfigOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateDnsZoneConfig) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// The resource id of the private dns zone.
-func (o PrivateDnsZoneConfigOutput) PrivateDnsZoneId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateDnsZoneConfig) *string { return v.PrivateDnsZoneId }).(pulumi.StringPtrOutput)
-}
-
-type PrivateDnsZoneConfigArrayOutput struct{ *pulumi.OutputState }
-
-func (PrivateDnsZoneConfigArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PrivateDnsZoneConfig)(nil)).Elem()
-}
-
-func (o PrivateDnsZoneConfigArrayOutput) ToPrivateDnsZoneConfigArrayOutput() PrivateDnsZoneConfigArrayOutput {
-	return o
-}
-
-func (o PrivateDnsZoneConfigArrayOutput) ToPrivateDnsZoneConfigArrayOutputWithContext(ctx context.Context) PrivateDnsZoneConfigArrayOutput {
-	return o
-}
-
-func (o PrivateDnsZoneConfigArrayOutput) Index(i pulumi.IntInput) PrivateDnsZoneConfigOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateDnsZoneConfig {
-		return vs[0].([]PrivateDnsZoneConfig)[vs[1].(int)]
-	}).(PrivateDnsZoneConfigOutput)
-}
-
 func init() {
 	pulumi.RegisterOutputType(ARecordOutput{})
 	pulumi.RegisterOutputType(ARecordArrayOutput{})
@@ -61478,6 +61366,8 @@ func init() {
 	pulumi.RegisterOutputType(DnsConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(DnsResourceReferenceResponseOutput{})
 	pulumi.RegisterOutputType(DnsResourceReferenceResponseArrayOutput{})
+	pulumi.RegisterOutputType(DnsSecurityRuleActionOutput{})
+	pulumi.RegisterOutputType(DnsSecurityRuleActionResponseOutput{})
 	pulumi.RegisterOutputType(DnsSettingsOutput{})
 	pulumi.RegisterOutputType(DnsSettingsPtrOutput{})
 	pulumi.RegisterOutputType(DnsSettingsResponseOutput{})
@@ -62016,8 +61906,4 @@ func init() {
 	pulumi.RegisterOutputType(PolicySettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(PolicySettingsResponseLogScrubbingOutput{})
 	pulumi.RegisterOutputType(PolicySettingsResponseLogScrubbingPtrOutput{})
-	pulumi.RegisterOutputType(PoolAssociationResponseOutput{})
-	pulumi.RegisterOutputType(PoolAssociationResponseArrayOutput{})
-	pulumi.RegisterOutputType(PrivateDnsZoneConfigOutput{})
-	pulumi.RegisterOutputType(PrivateDnsZoneConfigArrayOutput{})
 }

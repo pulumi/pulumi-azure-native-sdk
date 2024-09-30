@@ -20,6 +20,13 @@ const (
 	ActionTypeRunPlaybook = ActionType("RunPlaybook")
 )
 
+// Type of the agent
+type AgentType string
+
+const (
+	AgentTypeSAP = AgentType("SAP")
+)
+
 // Alert detail
 type AlertDetail string
 
@@ -1954,6 +1961,13 @@ const (
 	ConditionTypePropertyChanged = ConditionType("PropertyChanged")
 	// Evaluate an object array property changed value
 	ConditionTypePropertyArrayChanged = ConditionType("PropertyArrayChanged")
+)
+
+// Represents the types of configuration for a system.
+type ConfigurationType string
+
+const (
+	ConfigurationTypeSAP = ConfigurationType("SAP")
 )
 
 // Content type.
@@ -4280,6 +4294,174 @@ func (in *flagPtr) ToFlagPtrOutputWithContext(ctx context.Context) FlagPtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(FlagPtrOutput)
 }
 
+// Represents the types of HTTPS configuration to connect to the SapControl service.
+type HttpsConfigurationType string
+
+const (
+	HttpsConfigurationTypeHttpOnly                    = HttpsConfigurationType("HttpOnly")
+	HttpsConfigurationTypeHttpsWithSslVerification    = HttpsConfigurationType("HttpsWithSslVerification")
+	HttpsConfigurationTypeHttpsWithoutSslVerification = HttpsConfigurationType("HttpsWithoutSslVerification")
+)
+
+func (HttpsConfigurationType) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpsConfigurationType)(nil)).Elem()
+}
+
+func (e HttpsConfigurationType) ToHttpsConfigurationTypeOutput() HttpsConfigurationTypeOutput {
+	return pulumi.ToOutput(e).(HttpsConfigurationTypeOutput)
+}
+
+func (e HttpsConfigurationType) ToHttpsConfigurationTypeOutputWithContext(ctx context.Context) HttpsConfigurationTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(HttpsConfigurationTypeOutput)
+}
+
+func (e HttpsConfigurationType) ToHttpsConfigurationTypePtrOutput() HttpsConfigurationTypePtrOutput {
+	return e.ToHttpsConfigurationTypePtrOutputWithContext(context.Background())
+}
+
+func (e HttpsConfigurationType) ToHttpsConfigurationTypePtrOutputWithContext(ctx context.Context) HttpsConfigurationTypePtrOutput {
+	return HttpsConfigurationType(e).ToHttpsConfigurationTypeOutputWithContext(ctx).ToHttpsConfigurationTypePtrOutputWithContext(ctx)
+}
+
+func (e HttpsConfigurationType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e HttpsConfigurationType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e HttpsConfigurationType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e HttpsConfigurationType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type HttpsConfigurationTypeOutput struct{ *pulumi.OutputState }
+
+func (HttpsConfigurationTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpsConfigurationType)(nil)).Elem()
+}
+
+func (o HttpsConfigurationTypeOutput) ToHttpsConfigurationTypeOutput() HttpsConfigurationTypeOutput {
+	return o
+}
+
+func (o HttpsConfigurationTypeOutput) ToHttpsConfigurationTypeOutputWithContext(ctx context.Context) HttpsConfigurationTypeOutput {
+	return o
+}
+
+func (o HttpsConfigurationTypeOutput) ToHttpsConfigurationTypePtrOutput() HttpsConfigurationTypePtrOutput {
+	return o.ToHttpsConfigurationTypePtrOutputWithContext(context.Background())
+}
+
+func (o HttpsConfigurationTypeOutput) ToHttpsConfigurationTypePtrOutputWithContext(ctx context.Context) HttpsConfigurationTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpsConfigurationType) *HttpsConfigurationType {
+		return &v
+	}).(HttpsConfigurationTypePtrOutput)
+}
+
+func (o HttpsConfigurationTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o HttpsConfigurationTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e HttpsConfigurationType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o HttpsConfigurationTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o HttpsConfigurationTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e HttpsConfigurationType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type HttpsConfigurationTypePtrOutput struct{ *pulumi.OutputState }
+
+func (HttpsConfigurationTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpsConfigurationType)(nil)).Elem()
+}
+
+func (o HttpsConfigurationTypePtrOutput) ToHttpsConfigurationTypePtrOutput() HttpsConfigurationTypePtrOutput {
+	return o
+}
+
+func (o HttpsConfigurationTypePtrOutput) ToHttpsConfigurationTypePtrOutputWithContext(ctx context.Context) HttpsConfigurationTypePtrOutput {
+	return o
+}
+
+func (o HttpsConfigurationTypePtrOutput) Elem() HttpsConfigurationTypeOutput {
+	return o.ApplyT(func(v *HttpsConfigurationType) HttpsConfigurationType {
+		if v != nil {
+			return *v
+		}
+		var ret HttpsConfigurationType
+		return ret
+	}).(HttpsConfigurationTypeOutput)
+}
+
+func (o HttpsConfigurationTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o HttpsConfigurationTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *HttpsConfigurationType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// HttpsConfigurationTypeInput is an input type that accepts values of the HttpsConfigurationType enum
+// A concrete instance of `HttpsConfigurationTypeInput` can be one of the following:
+//
+//	HttpsConfigurationTypeHttpOnly
+//	HttpsConfigurationTypeHttpsWithSslVerification
+//	HttpsConfigurationTypeHttpsWithoutSslVerification
+type HttpsConfigurationTypeInput interface {
+	pulumi.Input
+
+	ToHttpsConfigurationTypeOutput() HttpsConfigurationTypeOutput
+	ToHttpsConfigurationTypeOutputWithContext(context.Context) HttpsConfigurationTypeOutput
+}
+
+var httpsConfigurationTypePtrType = reflect.TypeOf((**HttpsConfigurationType)(nil)).Elem()
+
+type HttpsConfigurationTypePtrInput interface {
+	pulumi.Input
+
+	ToHttpsConfigurationTypePtrOutput() HttpsConfigurationTypePtrOutput
+	ToHttpsConfigurationTypePtrOutputWithContext(context.Context) HttpsConfigurationTypePtrOutput
+}
+
+type httpsConfigurationTypePtr string
+
+func HttpsConfigurationTypePtr(v string) HttpsConfigurationTypePtrInput {
+	return (*httpsConfigurationTypePtr)(&v)
+}
+
+func (*httpsConfigurationTypePtr) ElementType() reflect.Type {
+	return httpsConfigurationTypePtrType
+}
+
+func (in *httpsConfigurationTypePtr) ToHttpsConfigurationTypePtrOutput() HttpsConfigurationTypePtrOutput {
+	return pulumi.ToOutput(in).(HttpsConfigurationTypePtrOutput)
+}
+
+func (in *httpsConfigurationTypePtr) ToHttpsConfigurationTypePtrOutputWithContext(ctx context.Context) HttpsConfigurationTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(HttpsConfigurationTypePtrOutput)
+}
+
 // The hypothesis status of the hunt.
 type HypothesisStatus string
 
@@ -5479,6 +5661,339 @@ func (in *ingestionModePtr) ToIngestionModePtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(IngestionModePtrOutput)
 }
 
+// Types of ingestion.
+type IngestionType string
+
+const (
+	IngestionTypeFull        = IngestionType("Full")
+	IngestionTypeIncremental = IngestionType("Incremental")
+)
+
+func (IngestionType) ElementType() reflect.Type {
+	return reflect.TypeOf((*IngestionType)(nil)).Elem()
+}
+
+func (e IngestionType) ToIngestionTypeOutput() IngestionTypeOutput {
+	return pulumi.ToOutput(e).(IngestionTypeOutput)
+}
+
+func (e IngestionType) ToIngestionTypeOutputWithContext(ctx context.Context) IngestionTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(IngestionTypeOutput)
+}
+
+func (e IngestionType) ToIngestionTypePtrOutput() IngestionTypePtrOutput {
+	return e.ToIngestionTypePtrOutputWithContext(context.Background())
+}
+
+func (e IngestionType) ToIngestionTypePtrOutputWithContext(ctx context.Context) IngestionTypePtrOutput {
+	return IngestionType(e).ToIngestionTypeOutputWithContext(ctx).ToIngestionTypePtrOutputWithContext(ctx)
+}
+
+func (e IngestionType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e IngestionType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e IngestionType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e IngestionType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type IngestionTypeOutput struct{ *pulumi.OutputState }
+
+func (IngestionTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IngestionType)(nil)).Elem()
+}
+
+func (o IngestionTypeOutput) ToIngestionTypeOutput() IngestionTypeOutput {
+	return o
+}
+
+func (o IngestionTypeOutput) ToIngestionTypeOutputWithContext(ctx context.Context) IngestionTypeOutput {
+	return o
+}
+
+func (o IngestionTypeOutput) ToIngestionTypePtrOutput() IngestionTypePtrOutput {
+	return o.ToIngestionTypePtrOutputWithContext(context.Background())
+}
+
+func (o IngestionTypeOutput) ToIngestionTypePtrOutputWithContext(ctx context.Context) IngestionTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IngestionType) *IngestionType {
+		return &v
+	}).(IngestionTypePtrOutput)
+}
+
+func (o IngestionTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o IngestionTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e IngestionType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o IngestionTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o IngestionTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e IngestionType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type IngestionTypePtrOutput struct{ *pulumi.OutputState }
+
+func (IngestionTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IngestionType)(nil)).Elem()
+}
+
+func (o IngestionTypePtrOutput) ToIngestionTypePtrOutput() IngestionTypePtrOutput {
+	return o
+}
+
+func (o IngestionTypePtrOutput) ToIngestionTypePtrOutputWithContext(ctx context.Context) IngestionTypePtrOutput {
+	return o
+}
+
+func (o IngestionTypePtrOutput) Elem() IngestionTypeOutput {
+	return o.ApplyT(func(v *IngestionType) IngestionType {
+		if v != nil {
+			return *v
+		}
+		var ret IngestionType
+		return ret
+	}).(IngestionTypeOutput)
+}
+
+func (o IngestionTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o IngestionTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *IngestionType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// IngestionTypeInput is an input type that accepts values of the IngestionType enum
+// A concrete instance of `IngestionTypeInput` can be one of the following:
+//
+//	IngestionTypeFull
+//	IngestionTypeIncremental
+type IngestionTypeInput interface {
+	pulumi.Input
+
+	ToIngestionTypeOutput() IngestionTypeOutput
+	ToIngestionTypeOutputWithContext(context.Context) IngestionTypeOutput
+}
+
+var ingestionTypePtrType = reflect.TypeOf((**IngestionType)(nil)).Elem()
+
+type IngestionTypePtrInput interface {
+	pulumi.Input
+
+	ToIngestionTypePtrOutput() IngestionTypePtrOutput
+	ToIngestionTypePtrOutputWithContext(context.Context) IngestionTypePtrOutput
+}
+
+type ingestionTypePtr string
+
+func IngestionTypePtr(v string) IngestionTypePtrInput {
+	return (*ingestionTypePtr)(&v)
+}
+
+func (*ingestionTypePtr) ElementType() reflect.Type {
+	return ingestionTypePtrType
+}
+
+func (in *ingestionTypePtr) ToIngestionTypePtrOutput() IngestionTypePtrOutput {
+	return pulumi.ToOutput(in).(IngestionTypePtrOutput)
+}
+
+func (in *ingestionTypePtr) ToIngestionTypePtrOutputWithContext(ctx context.Context) IngestionTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(IngestionTypePtrOutput)
+}
+
+// The key mode of the agent.
+// ManagedIdentity|ApplicationIdentity are the options
+type KeyVaultAuthenticationMode string
+
+const (
+	KeyVaultAuthenticationModeManagedIdentity  = KeyVaultAuthenticationMode("ManagedIdentity")
+	KeyVaultAuthenticationModeServicePrincipal = KeyVaultAuthenticationMode("ServicePrincipal")
+)
+
+func (KeyVaultAuthenticationMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyVaultAuthenticationMode)(nil)).Elem()
+}
+
+func (e KeyVaultAuthenticationMode) ToKeyVaultAuthenticationModeOutput() KeyVaultAuthenticationModeOutput {
+	return pulumi.ToOutput(e).(KeyVaultAuthenticationModeOutput)
+}
+
+func (e KeyVaultAuthenticationMode) ToKeyVaultAuthenticationModeOutputWithContext(ctx context.Context) KeyVaultAuthenticationModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(KeyVaultAuthenticationModeOutput)
+}
+
+func (e KeyVaultAuthenticationMode) ToKeyVaultAuthenticationModePtrOutput() KeyVaultAuthenticationModePtrOutput {
+	return e.ToKeyVaultAuthenticationModePtrOutputWithContext(context.Background())
+}
+
+func (e KeyVaultAuthenticationMode) ToKeyVaultAuthenticationModePtrOutputWithContext(ctx context.Context) KeyVaultAuthenticationModePtrOutput {
+	return KeyVaultAuthenticationMode(e).ToKeyVaultAuthenticationModeOutputWithContext(ctx).ToKeyVaultAuthenticationModePtrOutputWithContext(ctx)
+}
+
+func (e KeyVaultAuthenticationMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e KeyVaultAuthenticationMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e KeyVaultAuthenticationMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e KeyVaultAuthenticationMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type KeyVaultAuthenticationModeOutput struct{ *pulumi.OutputState }
+
+func (KeyVaultAuthenticationModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyVaultAuthenticationMode)(nil)).Elem()
+}
+
+func (o KeyVaultAuthenticationModeOutput) ToKeyVaultAuthenticationModeOutput() KeyVaultAuthenticationModeOutput {
+	return o
+}
+
+func (o KeyVaultAuthenticationModeOutput) ToKeyVaultAuthenticationModeOutputWithContext(ctx context.Context) KeyVaultAuthenticationModeOutput {
+	return o
+}
+
+func (o KeyVaultAuthenticationModeOutput) ToKeyVaultAuthenticationModePtrOutput() KeyVaultAuthenticationModePtrOutput {
+	return o.ToKeyVaultAuthenticationModePtrOutputWithContext(context.Background())
+}
+
+func (o KeyVaultAuthenticationModeOutput) ToKeyVaultAuthenticationModePtrOutputWithContext(ctx context.Context) KeyVaultAuthenticationModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KeyVaultAuthenticationMode) *KeyVaultAuthenticationMode {
+		return &v
+	}).(KeyVaultAuthenticationModePtrOutput)
+}
+
+func (o KeyVaultAuthenticationModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o KeyVaultAuthenticationModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e KeyVaultAuthenticationMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o KeyVaultAuthenticationModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o KeyVaultAuthenticationModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e KeyVaultAuthenticationMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type KeyVaultAuthenticationModePtrOutput struct{ *pulumi.OutputState }
+
+func (KeyVaultAuthenticationModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeyVaultAuthenticationMode)(nil)).Elem()
+}
+
+func (o KeyVaultAuthenticationModePtrOutput) ToKeyVaultAuthenticationModePtrOutput() KeyVaultAuthenticationModePtrOutput {
+	return o
+}
+
+func (o KeyVaultAuthenticationModePtrOutput) ToKeyVaultAuthenticationModePtrOutputWithContext(ctx context.Context) KeyVaultAuthenticationModePtrOutput {
+	return o
+}
+
+func (o KeyVaultAuthenticationModePtrOutput) Elem() KeyVaultAuthenticationModeOutput {
+	return o.ApplyT(func(v *KeyVaultAuthenticationMode) KeyVaultAuthenticationMode {
+		if v != nil {
+			return *v
+		}
+		var ret KeyVaultAuthenticationMode
+		return ret
+	}).(KeyVaultAuthenticationModeOutput)
+}
+
+func (o KeyVaultAuthenticationModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o KeyVaultAuthenticationModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *KeyVaultAuthenticationMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// KeyVaultAuthenticationModeInput is an input type that accepts values of the KeyVaultAuthenticationMode enum
+// A concrete instance of `KeyVaultAuthenticationModeInput` can be one of the following:
+//
+//	KeyVaultAuthenticationModeManagedIdentity
+//	KeyVaultAuthenticationModeServicePrincipal
+type KeyVaultAuthenticationModeInput interface {
+	pulumi.Input
+
+	ToKeyVaultAuthenticationModeOutput() KeyVaultAuthenticationModeOutput
+	ToKeyVaultAuthenticationModeOutputWithContext(context.Context) KeyVaultAuthenticationModeOutput
+}
+
+var keyVaultAuthenticationModePtrType = reflect.TypeOf((**KeyVaultAuthenticationMode)(nil)).Elem()
+
+type KeyVaultAuthenticationModePtrInput interface {
+	pulumi.Input
+
+	ToKeyVaultAuthenticationModePtrOutput() KeyVaultAuthenticationModePtrOutput
+	ToKeyVaultAuthenticationModePtrOutputWithContext(context.Context) KeyVaultAuthenticationModePtrOutput
+}
+
+type keyVaultAuthenticationModePtr string
+
+func KeyVaultAuthenticationModePtr(v string) KeyVaultAuthenticationModePtrInput {
+	return (*keyVaultAuthenticationModePtr)(&v)
+}
+
+func (*keyVaultAuthenticationModePtr) ElementType() reflect.Type {
+	return keyVaultAuthenticationModePtrType
+}
+
+func (in *keyVaultAuthenticationModePtr) ToKeyVaultAuthenticationModePtrOutput() KeyVaultAuthenticationModePtrOutput {
+	return pulumi.ToOutput(in).(KeyVaultAuthenticationModePtrOutput)
+}
+
+func (in *keyVaultAuthenticationModePtr) ToKeyVaultAuthenticationModePtrOutputWithContext(ctx context.Context) KeyVaultAuthenticationModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(KeyVaultAuthenticationModePtrOutput)
+}
+
 // Type of the content item we depend on
 type Kind string
 
@@ -5673,6 +6188,398 @@ func (in *kindPtr) ToKindPtrOutput() KindPtrOutput {
 
 func (in *kindPtr) ToKindPtrOutputWithContext(ctx context.Context) KindPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(KindPtrOutput)
+}
+
+// Types of log status.
+type LogStatusType string
+
+const (
+	LogStatusTypeEnabled  = LogStatusType("Enabled")
+	LogStatusTypeDisabled = LogStatusType("Disabled")
+)
+
+func (LogStatusType) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogStatusType)(nil)).Elem()
+}
+
+func (e LogStatusType) ToLogStatusTypeOutput() LogStatusTypeOutput {
+	return pulumi.ToOutput(e).(LogStatusTypeOutput)
+}
+
+func (e LogStatusType) ToLogStatusTypeOutputWithContext(ctx context.Context) LogStatusTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(LogStatusTypeOutput)
+}
+
+func (e LogStatusType) ToLogStatusTypePtrOutput() LogStatusTypePtrOutput {
+	return e.ToLogStatusTypePtrOutputWithContext(context.Background())
+}
+
+func (e LogStatusType) ToLogStatusTypePtrOutputWithContext(ctx context.Context) LogStatusTypePtrOutput {
+	return LogStatusType(e).ToLogStatusTypeOutputWithContext(ctx).ToLogStatusTypePtrOutputWithContext(ctx)
+}
+
+func (e LogStatusType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e LogStatusType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e LogStatusType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e LogStatusType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type LogStatusTypeOutput struct{ *pulumi.OutputState }
+
+func (LogStatusTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogStatusType)(nil)).Elem()
+}
+
+func (o LogStatusTypeOutput) ToLogStatusTypeOutput() LogStatusTypeOutput {
+	return o
+}
+
+func (o LogStatusTypeOutput) ToLogStatusTypeOutputWithContext(ctx context.Context) LogStatusTypeOutput {
+	return o
+}
+
+func (o LogStatusTypeOutput) ToLogStatusTypePtrOutput() LogStatusTypePtrOutput {
+	return o.ToLogStatusTypePtrOutputWithContext(context.Background())
+}
+
+func (o LogStatusTypeOutput) ToLogStatusTypePtrOutputWithContext(ctx context.Context) LogStatusTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogStatusType) *LogStatusType {
+		return &v
+	}).(LogStatusTypePtrOutput)
+}
+
+func (o LogStatusTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o LogStatusTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e LogStatusType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o LogStatusTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o LogStatusTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e LogStatusType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type LogStatusTypePtrOutput struct{ *pulumi.OutputState }
+
+func (LogStatusTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogStatusType)(nil)).Elem()
+}
+
+func (o LogStatusTypePtrOutput) ToLogStatusTypePtrOutput() LogStatusTypePtrOutput {
+	return o
+}
+
+func (o LogStatusTypePtrOutput) ToLogStatusTypePtrOutputWithContext(ctx context.Context) LogStatusTypePtrOutput {
+	return o
+}
+
+func (o LogStatusTypePtrOutput) Elem() LogStatusTypeOutput {
+	return o.ApplyT(func(v *LogStatusType) LogStatusType {
+		if v != nil {
+			return *v
+		}
+		var ret LogStatusType
+		return ret
+	}).(LogStatusTypeOutput)
+}
+
+func (o LogStatusTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o LogStatusTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *LogStatusType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// LogStatusTypeInput is an input type that accepts values of the LogStatusType enum
+// A concrete instance of `LogStatusTypeInput` can be one of the following:
+//
+//	LogStatusTypeEnabled
+//	LogStatusTypeDisabled
+type LogStatusTypeInput interface {
+	pulumi.Input
+
+	ToLogStatusTypeOutput() LogStatusTypeOutput
+	ToLogStatusTypeOutputWithContext(context.Context) LogStatusTypeOutput
+}
+
+var logStatusTypePtrType = reflect.TypeOf((**LogStatusType)(nil)).Elem()
+
+type LogStatusTypePtrInput interface {
+	pulumi.Input
+
+	ToLogStatusTypePtrOutput() LogStatusTypePtrOutput
+	ToLogStatusTypePtrOutputWithContext(context.Context) LogStatusTypePtrOutput
+}
+
+type logStatusTypePtr string
+
+func LogStatusTypePtr(v string) LogStatusTypePtrInput {
+	return (*logStatusTypePtr)(&v)
+}
+
+func (*logStatusTypePtr) ElementType() reflect.Type {
+	return logStatusTypePtrType
+}
+
+func (in *logStatusTypePtr) ToLogStatusTypePtrOutput() LogStatusTypePtrOutput {
+	return pulumi.ToOutput(in).(LogStatusTypePtrOutput)
+}
+
+func (in *logStatusTypePtr) ToLogStatusTypePtrOutputWithContext(ctx context.Context) LogStatusTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(LogStatusTypePtrOutput)
+}
+
+// Types of logs and tables.
+type LogType string
+
+const (
+	LogTypeAbapAuditLog       = LogType("AbapAuditLog")
+	LogTypeAbapJobLog         = LogType("AbapJobLog")
+	LogTypeAbapSpoolLog       = LogType("AbapSpoolLog")
+	LogTypeAbapSpoolOutputLog = LogType("AbapSpoolOutputLog")
+	LogTypeAbapChangeDocsLog  = LogType("AbapChangeDocsLog")
+	LogTypeAbapAppLog         = LogType("AbapAppLog")
+	LogTypeAbapWorkflowLog    = LogType("AbapWorkflowLog")
+	LogTypeAbapCrLog          = LogType("AbapCrLog")
+	LogTypeAbapTableDataLog   = LogType("AbapTableDataLog")
+	LogTypeAbapFilesLogs      = LogType("AbapFilesLogs")
+	LogTypeJavaFilesLogs      = LogType("JavaFilesLogs")
+	LogTypeAGRTCODES          = LogType("AGRTCODES")
+	LogTypeUSR01              = LogType("USR01")
+	LogTypeUSR02              = LogType("USR02")
+	LogTypeAGR1251            = LogType("AGR1251")
+	LogTypeAGRUSERS           = LogType("AGRUSERS")
+	LogTypeAGRPROF            = LogType("AGRPROF")
+	LogTypeUST04              = LogType("UST04")
+	LogTypeUSR21              = LogType("USR21")
+	LogTypeADR6               = LogType("ADR6")
+	LogTypeADCP               = LogType("ADCP")
+	LogTypeUSR05              = LogType("USR05")
+	LogTypeUSGRPUSER          = LogType("USGRPUSER")
+	LogTypeUSERADDR           = LogType("USERADDR")
+	LogTypeDEVACCESS          = LogType("DEVACCESS")
+	LogTypeAGRDEFINE          = LogType("AGRDEFINE")
+	LogTypePAHI               = LogType("PAHI")
+	LogTypeAGRAGRS            = LogType("AGRAGRS")
+	LogTypeUSRSTAMP           = LogType("USRSTAMP")
+	LogTypeAGRFLAGS           = LogType("AGRFLAGS")
+	LogTypeSNCSYSACL          = LogType("SNCSYSACL")
+	LogTypeUSRACL             = LogType("USRACL")
+)
+
+func (LogType) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogType)(nil)).Elem()
+}
+
+func (e LogType) ToLogTypeOutput() LogTypeOutput {
+	return pulumi.ToOutput(e).(LogTypeOutput)
+}
+
+func (e LogType) ToLogTypeOutputWithContext(ctx context.Context) LogTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(LogTypeOutput)
+}
+
+func (e LogType) ToLogTypePtrOutput() LogTypePtrOutput {
+	return e.ToLogTypePtrOutputWithContext(context.Background())
+}
+
+func (e LogType) ToLogTypePtrOutputWithContext(ctx context.Context) LogTypePtrOutput {
+	return LogType(e).ToLogTypeOutputWithContext(ctx).ToLogTypePtrOutputWithContext(ctx)
+}
+
+func (e LogType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e LogType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e LogType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e LogType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type LogTypeOutput struct{ *pulumi.OutputState }
+
+func (LogTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogType)(nil)).Elem()
+}
+
+func (o LogTypeOutput) ToLogTypeOutput() LogTypeOutput {
+	return o
+}
+
+func (o LogTypeOutput) ToLogTypeOutputWithContext(ctx context.Context) LogTypeOutput {
+	return o
+}
+
+func (o LogTypeOutput) ToLogTypePtrOutput() LogTypePtrOutput {
+	return o.ToLogTypePtrOutputWithContext(context.Background())
+}
+
+func (o LogTypeOutput) ToLogTypePtrOutputWithContext(ctx context.Context) LogTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogType) *LogType {
+		return &v
+	}).(LogTypePtrOutput)
+}
+
+func (o LogTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o LogTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e LogType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o LogTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o LogTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e LogType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type LogTypePtrOutput struct{ *pulumi.OutputState }
+
+func (LogTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogType)(nil)).Elem()
+}
+
+func (o LogTypePtrOutput) ToLogTypePtrOutput() LogTypePtrOutput {
+	return o
+}
+
+func (o LogTypePtrOutput) ToLogTypePtrOutputWithContext(ctx context.Context) LogTypePtrOutput {
+	return o
+}
+
+func (o LogTypePtrOutput) Elem() LogTypeOutput {
+	return o.ApplyT(func(v *LogType) LogType {
+		if v != nil {
+			return *v
+		}
+		var ret LogType
+		return ret
+	}).(LogTypeOutput)
+}
+
+func (o LogTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o LogTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *LogType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// LogTypeInput is an input type that accepts values of the LogType enum
+// A concrete instance of `LogTypeInput` can be one of the following:
+//
+//	LogTypeAbapAuditLog
+//	LogTypeAbapJobLog
+//	LogTypeAbapSpoolLog
+//	LogTypeAbapSpoolOutputLog
+//	LogTypeAbapChangeDocsLog
+//	LogTypeAbapAppLog
+//	LogTypeAbapWorkflowLog
+//	LogTypeAbapCrLog
+//	LogTypeAbapTableDataLog
+//	LogTypeAbapFilesLogs
+//	LogTypeJavaFilesLogs
+//	LogTypeAGRTCODES
+//	LogTypeUSR01
+//	LogTypeUSR02
+//	LogTypeAGR1251
+//	LogTypeAGRUSERS
+//	LogTypeAGRPROF
+//	LogTypeUST04
+//	LogTypeUSR21
+//	LogTypeADR6
+//	LogTypeADCP
+//	LogTypeUSR05
+//	LogTypeUSGRPUSER
+//	LogTypeUSERADDR
+//	LogTypeDEVACCESS
+//	LogTypeAGRDEFINE
+//	LogTypePAHI
+//	LogTypeAGRAGRS
+//	LogTypeUSRSTAMP
+//	LogTypeAGRFLAGS
+//	LogTypeSNCSYSACL
+//	LogTypeUSRACL
+type LogTypeInput interface {
+	pulumi.Input
+
+	ToLogTypeOutput() LogTypeOutput
+	ToLogTypeOutputWithContext(context.Context) LogTypeOutput
+}
+
+var logTypePtrType = reflect.TypeOf((**LogType)(nil)).Elem()
+
+type LogTypePtrInput interface {
+	pulumi.Input
+
+	ToLogTypePtrOutput() LogTypePtrOutput
+	ToLogTypePtrOutputWithContext(context.Context) LogTypePtrOutput
+}
+
+type logTypePtr string
+
+func LogTypePtr(v string) LogTypePtrInput {
+	return (*logTypePtr)(&v)
+}
+
+func (*logTypePtr) ElementType() reflect.Type {
+	return logTypePtrType
+}
+
+func (in *logTypePtr) ToLogTypePtrOutput() LogTypePtrOutput {
+	return pulumi.ToOutput(in).(LogTypePtrOutput)
+}
+
+func (in *logTypePtr) ToLogTypePtrOutputWithContext(ctx context.Context) LogTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(LogTypePtrOutput)
 }
 
 // Grouping matching method. When method is Selected at least one of groupByEntities, groupByAlertDetails, groupByCustomDetails must be provided and not empty.
@@ -7023,6 +7930,339 @@ func (in *repoTypePtr) ToRepoTypePtrOutputWithContext(ctx context.Context) RepoT
 	return pulumi.ToOutputWithContext(ctx, in).(RepoTypePtrOutput)
 }
 
+// The authentication type to SAP.
+type SapAuthenticationType string
+
+const (
+	SapAuthenticationTypeUsernamePassword        = SapAuthenticationType("UsernamePassword")
+	SapAuthenticationTypeSnc                     = SapAuthenticationType("Snc")
+	SapAuthenticationTypeSncWithUsernamePassword = SapAuthenticationType("SncWithUsernamePassword")
+)
+
+func (SapAuthenticationType) ElementType() reflect.Type {
+	return reflect.TypeOf((*SapAuthenticationType)(nil)).Elem()
+}
+
+func (e SapAuthenticationType) ToSapAuthenticationTypeOutput() SapAuthenticationTypeOutput {
+	return pulumi.ToOutput(e).(SapAuthenticationTypeOutput)
+}
+
+func (e SapAuthenticationType) ToSapAuthenticationTypeOutputWithContext(ctx context.Context) SapAuthenticationTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SapAuthenticationTypeOutput)
+}
+
+func (e SapAuthenticationType) ToSapAuthenticationTypePtrOutput() SapAuthenticationTypePtrOutput {
+	return e.ToSapAuthenticationTypePtrOutputWithContext(context.Background())
+}
+
+func (e SapAuthenticationType) ToSapAuthenticationTypePtrOutputWithContext(ctx context.Context) SapAuthenticationTypePtrOutput {
+	return SapAuthenticationType(e).ToSapAuthenticationTypeOutputWithContext(ctx).ToSapAuthenticationTypePtrOutputWithContext(ctx)
+}
+
+func (e SapAuthenticationType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SapAuthenticationType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SapAuthenticationType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SapAuthenticationType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SapAuthenticationTypeOutput struct{ *pulumi.OutputState }
+
+func (SapAuthenticationTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SapAuthenticationType)(nil)).Elem()
+}
+
+func (o SapAuthenticationTypeOutput) ToSapAuthenticationTypeOutput() SapAuthenticationTypeOutput {
+	return o
+}
+
+func (o SapAuthenticationTypeOutput) ToSapAuthenticationTypeOutputWithContext(ctx context.Context) SapAuthenticationTypeOutput {
+	return o
+}
+
+func (o SapAuthenticationTypeOutput) ToSapAuthenticationTypePtrOutput() SapAuthenticationTypePtrOutput {
+	return o.ToSapAuthenticationTypePtrOutputWithContext(context.Background())
+}
+
+func (o SapAuthenticationTypeOutput) ToSapAuthenticationTypePtrOutputWithContext(ctx context.Context) SapAuthenticationTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SapAuthenticationType) *SapAuthenticationType {
+		return &v
+	}).(SapAuthenticationTypePtrOutput)
+}
+
+func (o SapAuthenticationTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SapAuthenticationTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SapAuthenticationType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SapAuthenticationTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SapAuthenticationTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SapAuthenticationType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SapAuthenticationTypePtrOutput struct{ *pulumi.OutputState }
+
+func (SapAuthenticationTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SapAuthenticationType)(nil)).Elem()
+}
+
+func (o SapAuthenticationTypePtrOutput) ToSapAuthenticationTypePtrOutput() SapAuthenticationTypePtrOutput {
+	return o
+}
+
+func (o SapAuthenticationTypePtrOutput) ToSapAuthenticationTypePtrOutputWithContext(ctx context.Context) SapAuthenticationTypePtrOutput {
+	return o
+}
+
+func (o SapAuthenticationTypePtrOutput) Elem() SapAuthenticationTypeOutput {
+	return o.ApplyT(func(v *SapAuthenticationType) SapAuthenticationType {
+		if v != nil {
+			return *v
+		}
+		var ret SapAuthenticationType
+		return ret
+	}).(SapAuthenticationTypeOutput)
+}
+
+func (o SapAuthenticationTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SapAuthenticationTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SapAuthenticationType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SapAuthenticationTypeInput is an input type that accepts values of the SapAuthenticationType enum
+// A concrete instance of `SapAuthenticationTypeInput` can be one of the following:
+//
+//	SapAuthenticationTypeUsernamePassword
+//	SapAuthenticationTypeSnc
+//	SapAuthenticationTypeSncWithUsernamePassword
+type SapAuthenticationTypeInput interface {
+	pulumi.Input
+
+	ToSapAuthenticationTypeOutput() SapAuthenticationTypeOutput
+	ToSapAuthenticationTypeOutputWithContext(context.Context) SapAuthenticationTypeOutput
+}
+
+var sapAuthenticationTypePtrType = reflect.TypeOf((**SapAuthenticationType)(nil)).Elem()
+
+type SapAuthenticationTypePtrInput interface {
+	pulumi.Input
+
+	ToSapAuthenticationTypePtrOutput() SapAuthenticationTypePtrOutput
+	ToSapAuthenticationTypePtrOutputWithContext(context.Context) SapAuthenticationTypePtrOutput
+}
+
+type sapAuthenticationTypePtr string
+
+func SapAuthenticationTypePtr(v string) SapAuthenticationTypePtrInput {
+	return (*sapAuthenticationTypePtr)(&v)
+}
+
+func (*sapAuthenticationTypePtr) ElementType() reflect.Type {
+	return sapAuthenticationTypePtrType
+}
+
+func (in *sapAuthenticationTypePtr) ToSapAuthenticationTypePtrOutput() SapAuthenticationTypePtrOutput {
+	return pulumi.ToOutput(in).(SapAuthenticationTypePtrOutput)
+}
+
+func (in *sapAuthenticationTypePtr) ToSapAuthenticationTypePtrOutputWithContext(ctx context.Context) SapAuthenticationTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SapAuthenticationTypePtrOutput)
+}
+
+// The secret source of the agent.
+// AzureKeyVault is the option
+type SecretSource string
+
+const (
+	SecretSourceAzureKeyVault = SecretSource("AzureKeyVault")
+)
+
+func (SecretSource) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretSource)(nil)).Elem()
+}
+
+func (e SecretSource) ToSecretSourceOutput() SecretSourceOutput {
+	return pulumi.ToOutput(e).(SecretSourceOutput)
+}
+
+func (e SecretSource) ToSecretSourceOutputWithContext(ctx context.Context) SecretSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SecretSourceOutput)
+}
+
+func (e SecretSource) ToSecretSourcePtrOutput() SecretSourcePtrOutput {
+	return e.ToSecretSourcePtrOutputWithContext(context.Background())
+}
+
+func (e SecretSource) ToSecretSourcePtrOutputWithContext(ctx context.Context) SecretSourcePtrOutput {
+	return SecretSource(e).ToSecretSourceOutputWithContext(ctx).ToSecretSourcePtrOutputWithContext(ctx)
+}
+
+func (e SecretSource) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SecretSource) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SecretSource) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SecretSource) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SecretSourceOutput struct{ *pulumi.OutputState }
+
+func (SecretSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretSource)(nil)).Elem()
+}
+
+func (o SecretSourceOutput) ToSecretSourceOutput() SecretSourceOutput {
+	return o
+}
+
+func (o SecretSourceOutput) ToSecretSourceOutputWithContext(ctx context.Context) SecretSourceOutput {
+	return o
+}
+
+func (o SecretSourceOutput) ToSecretSourcePtrOutput() SecretSourcePtrOutput {
+	return o.ToSecretSourcePtrOutputWithContext(context.Background())
+}
+
+func (o SecretSourceOutput) ToSecretSourcePtrOutputWithContext(ctx context.Context) SecretSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretSource) *SecretSource {
+		return &v
+	}).(SecretSourcePtrOutput)
+}
+
+func (o SecretSourceOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SecretSourceOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SecretSource) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SecretSourceOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SecretSourceOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SecretSource) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SecretSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (SecretSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretSource)(nil)).Elem()
+}
+
+func (o SecretSourcePtrOutput) ToSecretSourcePtrOutput() SecretSourcePtrOutput {
+	return o
+}
+
+func (o SecretSourcePtrOutput) ToSecretSourcePtrOutputWithContext(ctx context.Context) SecretSourcePtrOutput {
+	return o
+}
+
+func (o SecretSourcePtrOutput) Elem() SecretSourceOutput {
+	return o.ApplyT(func(v *SecretSource) SecretSource {
+		if v != nil {
+			return *v
+		}
+		var ret SecretSource
+		return ret
+	}).(SecretSourceOutput)
+}
+
+func (o SecretSourcePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SecretSourcePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SecretSource) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SecretSourceInput is an input type that accepts values of the SecretSource enum
+// A concrete instance of `SecretSourceInput` can be one of the following:
+//
+//	SecretSourceAzureKeyVault
+type SecretSourceInput interface {
+	pulumi.Input
+
+	ToSecretSourceOutput() SecretSourceOutput
+	ToSecretSourceOutputWithContext(context.Context) SecretSourceOutput
+}
+
+var secretSourcePtrType = reflect.TypeOf((**SecretSource)(nil)).Elem()
+
+type SecretSourcePtrInput interface {
+	pulumi.Input
+
+	ToSecretSourcePtrOutput() SecretSourcePtrOutput
+	ToSecretSourcePtrOutputWithContext(context.Context) SecretSourcePtrOutput
+}
+
+type secretSourcePtr string
+
+func SecretSourcePtr(v string) SecretSourcePtrInput {
+	return (*secretSourcePtr)(&v)
+}
+
+func (*secretSourcePtr) ElementType() reflect.Type {
+	return secretSourcePtrType
+}
+
+func (in *secretSourcePtr) ToSecretSourcePtrOutput() SecretSourcePtrOutput {
+	return pulumi.ToOutput(in).(SecretSourcePtrOutput)
+}
+
+func (in *secretSourcePtr) ToSecretSourcePtrOutputWithContext(ctx context.Context) SecretSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SecretSourcePtrOutput)
+}
+
 // The kind of security ML Analytics Settings
 type SecurityMLAnalyticsSettingsKind string
 
@@ -7878,6 +9118,180 @@ func (in *supportTierPtr) ToSupportTierPtrOutput() SupportTierPtrOutput {
 
 func (in *supportTierPtr) ToSupportTierPtrOutputWithContext(ctx context.Context) SupportTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SupportTierPtrOutput)
+}
+
+// Represents the types of SAP systems.
+type SystemConfigurationConnectorType string
+
+const (
+	SystemConfigurationConnectorTypeRfc        = SystemConfigurationConnectorType("Rfc")
+	SystemConfigurationConnectorTypeSapControl = SystemConfigurationConnectorType("SapControl")
+)
+
+// The status of the system.
+type SystemStatusType string
+
+const (
+	SystemStatusTypeRunning = SystemStatusType("Running")
+	SystemStatusTypeStopped = SystemStatusType("Stopped")
+)
+
+func (SystemStatusType) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemStatusType)(nil)).Elem()
+}
+
+func (e SystemStatusType) ToSystemStatusTypeOutput() SystemStatusTypeOutput {
+	return pulumi.ToOutput(e).(SystemStatusTypeOutput)
+}
+
+func (e SystemStatusType) ToSystemStatusTypeOutputWithContext(ctx context.Context) SystemStatusTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SystemStatusTypeOutput)
+}
+
+func (e SystemStatusType) ToSystemStatusTypePtrOutput() SystemStatusTypePtrOutput {
+	return e.ToSystemStatusTypePtrOutputWithContext(context.Background())
+}
+
+func (e SystemStatusType) ToSystemStatusTypePtrOutputWithContext(ctx context.Context) SystemStatusTypePtrOutput {
+	return SystemStatusType(e).ToSystemStatusTypeOutputWithContext(ctx).ToSystemStatusTypePtrOutputWithContext(ctx)
+}
+
+func (e SystemStatusType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SystemStatusType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SystemStatusType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SystemStatusType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SystemStatusTypeOutput struct{ *pulumi.OutputState }
+
+func (SystemStatusTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemStatusType)(nil)).Elem()
+}
+
+func (o SystemStatusTypeOutput) ToSystemStatusTypeOutput() SystemStatusTypeOutput {
+	return o
+}
+
+func (o SystemStatusTypeOutput) ToSystemStatusTypeOutputWithContext(ctx context.Context) SystemStatusTypeOutput {
+	return o
+}
+
+func (o SystemStatusTypeOutput) ToSystemStatusTypePtrOutput() SystemStatusTypePtrOutput {
+	return o.ToSystemStatusTypePtrOutputWithContext(context.Background())
+}
+
+func (o SystemStatusTypeOutput) ToSystemStatusTypePtrOutputWithContext(ctx context.Context) SystemStatusTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SystemStatusType) *SystemStatusType {
+		return &v
+	}).(SystemStatusTypePtrOutput)
+}
+
+func (o SystemStatusTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SystemStatusTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SystemStatusType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SystemStatusTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SystemStatusTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SystemStatusType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SystemStatusTypePtrOutput struct{ *pulumi.OutputState }
+
+func (SystemStatusTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SystemStatusType)(nil)).Elem()
+}
+
+func (o SystemStatusTypePtrOutput) ToSystemStatusTypePtrOutput() SystemStatusTypePtrOutput {
+	return o
+}
+
+func (o SystemStatusTypePtrOutput) ToSystemStatusTypePtrOutputWithContext(ctx context.Context) SystemStatusTypePtrOutput {
+	return o
+}
+
+func (o SystemStatusTypePtrOutput) Elem() SystemStatusTypeOutput {
+	return o.ApplyT(func(v *SystemStatusType) SystemStatusType {
+		if v != nil {
+			return *v
+		}
+		var ret SystemStatusType
+		return ret
+	}).(SystemStatusTypeOutput)
+}
+
+func (o SystemStatusTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SystemStatusTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SystemStatusType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SystemStatusTypeInput is an input type that accepts values of the SystemStatusType enum
+// A concrete instance of `SystemStatusTypeInput` can be one of the following:
+//
+//	SystemStatusTypeRunning
+//	SystemStatusTypeStopped
+type SystemStatusTypeInput interface {
+	pulumi.Input
+
+	ToSystemStatusTypeOutput() SystemStatusTypeOutput
+	ToSystemStatusTypeOutputWithContext(context.Context) SystemStatusTypeOutput
+}
+
+var systemStatusTypePtrType = reflect.TypeOf((**SystemStatusType)(nil)).Elem()
+
+type SystemStatusTypePtrInput interface {
+	pulumi.Input
+
+	ToSystemStatusTypePtrOutput() SystemStatusTypePtrOutput
+	ToSystemStatusTypePtrOutputWithContext(context.Context) SystemStatusTypePtrOutput
+}
+
+type systemStatusTypePtr string
+
+func SystemStatusTypePtr(v string) SystemStatusTypePtrInput {
+	return (*systemStatusTypePtr)(&v)
+}
+
+func (*systemStatusTypePtr) ElementType() reflect.Type {
+	return systemStatusTypePtrType
+}
+
+func (in *systemStatusTypePtr) ToSystemStatusTypePtrOutput() SystemStatusTypePtrOutput {
+	return pulumi.ToOutput(in).(SystemStatusTypePtrOutput)
+}
+
+func (in *systemStatusTypePtr) ToSystemStatusTypePtrOutputWithContext(ctx context.Context) SystemStatusTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SystemStatusTypePtrOutput)
 }
 
 // The kind of the entity.
@@ -8775,6 +10189,8 @@ func init() {
 	pulumi.RegisterOutputType(FileImportContentTypePtrOutput{})
 	pulumi.RegisterOutputType(FlagOutput{})
 	pulumi.RegisterOutputType(FlagPtrOutput{})
+	pulumi.RegisterOutputType(HttpsConfigurationTypeOutput{})
+	pulumi.RegisterOutputType(HttpsConfigurationTypePtrOutput{})
 	pulumi.RegisterOutputType(HypothesisStatusOutput{})
 	pulumi.RegisterOutputType(HypothesisStatusPtrOutput{})
 	pulumi.RegisterOutputType(IncidentClassificationOutput{})
@@ -8789,8 +10205,16 @@ func init() {
 	pulumi.RegisterOutputType(IncidentTaskStatusPtrOutput{})
 	pulumi.RegisterOutputType(IngestionModeOutput{})
 	pulumi.RegisterOutputType(IngestionModePtrOutput{})
+	pulumi.RegisterOutputType(IngestionTypeOutput{})
+	pulumi.RegisterOutputType(IngestionTypePtrOutput{})
+	pulumi.RegisterOutputType(KeyVaultAuthenticationModeOutput{})
+	pulumi.RegisterOutputType(KeyVaultAuthenticationModePtrOutput{})
 	pulumi.RegisterOutputType(KindOutput{})
 	pulumi.RegisterOutputType(KindPtrOutput{})
+	pulumi.RegisterOutputType(LogStatusTypeOutput{})
+	pulumi.RegisterOutputType(LogStatusTypePtrOutput{})
+	pulumi.RegisterOutputType(LogTypeOutput{})
+	pulumi.RegisterOutputType(LogTypePtrOutput{})
 	pulumi.RegisterOutputType(MatchingMethodOutput{})
 	pulumi.RegisterOutputType(MatchingMethodPtrOutput{})
 	pulumi.RegisterOutputType(MicrosoftSecurityProductNameOutput{})
@@ -8807,6 +10231,10 @@ func init() {
 	pulumi.RegisterOutputType(ProviderPermissionsScopePtrOutput{})
 	pulumi.RegisterOutputType(RepoTypeOutput{})
 	pulumi.RegisterOutputType(RepoTypePtrOutput{})
+	pulumi.RegisterOutputType(SapAuthenticationTypeOutput{})
+	pulumi.RegisterOutputType(SapAuthenticationTypePtrOutput{})
+	pulumi.RegisterOutputType(SecretSourceOutput{})
+	pulumi.RegisterOutputType(SecretSourcePtrOutput{})
 	pulumi.RegisterOutputType(SettingsStatusOutput{})
 	pulumi.RegisterOutputType(SettingsStatusPtrOutput{})
 	pulumi.RegisterOutputType(SourceOutput{})
@@ -8817,6 +10245,8 @@ func init() {
 	pulumi.RegisterOutputType(StatusPtrOutput{})
 	pulumi.RegisterOutputType(SupportTierOutput{})
 	pulumi.RegisterOutputType(SupportTierPtrOutput{})
+	pulumi.RegisterOutputType(SystemStatusTypeOutput{})
+	pulumi.RegisterOutputType(SystemStatusTypePtrOutput{})
 	pulumi.RegisterOutputType(TriggerOperatorOutput{})
 	pulumi.RegisterOutputType(TriggerOperatorPtrOutput{})
 	pulumi.RegisterOutputType(TriggersOnOutput{})

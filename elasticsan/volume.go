@@ -15,7 +15,7 @@ import (
 // Response for Volume request.
 // Azure REST API version: 2021-11-20-preview. Prior API version in Azure Native 1.x: 2021-11-20-preview.
 //
-// Other available API versions: 2022-12-01-preview, 2023-01-01, 2024-05-01.
+// Other available API versions: 2022-12-01-preview, 2023-01-01, 2024-05-01, 2024-06-01-preview.
 type Volume struct {
 	pulumi.CustomResourceState
 
@@ -65,6 +65,9 @@ func NewVolume(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:elasticsan/v20240501:Volume"),
+		},
+		{
+			Type: pulumi.String("azure-native:elasticsan/v20240601preview:Volume"),
 		},
 	})
 	opts = append(opts, aliases)

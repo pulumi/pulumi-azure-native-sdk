@@ -62,7 +62,7 @@ type LookupContentTemplateResult struct {
 	FirstPublishDate *string `pulumi:"firstPublishDate"`
 	// the icon identifier. this id can later be fetched from the content metadata
 	Icon *string `pulumi:"icon"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Flag indicates if this template is deprecated
 	IsDeprecated string `pulumi:"isDeprecated"`
@@ -214,7 +214,7 @@ func (o LookupContentTemplateResultOutput) Icon() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupContentTemplateResult) *string { return v.Icon }).(pulumi.StringPtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupContentTemplateResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupContentTemplateResult) string { return v.Id }).(pulumi.StringOutput)
 }

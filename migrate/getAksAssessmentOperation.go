@@ -13,6 +13,8 @@ import (
 
 // Get a AKSAssessment
 // Azure REST API version: 2023-04-01-preview.
+//
+// Other available API versions: 2023-05-01-preview.
 func LookupAksAssessmentOperation(ctx *pulumi.Context, args *LookupAksAssessmentOperationArgs, opts ...pulumi.InvokeOption) (*LookupAksAssessmentOperationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAksAssessmentOperationResult

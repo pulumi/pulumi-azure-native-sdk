@@ -56,6 +56,9 @@ func NewOutboundEndpoint(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20220701:OutboundEndpoint"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20230701preview:OutboundEndpoint"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

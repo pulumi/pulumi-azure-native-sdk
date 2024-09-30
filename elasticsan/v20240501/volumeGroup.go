@@ -66,6 +66,9 @@ func NewVolumeGroup(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:elasticsan/v20230101:VolumeGroup"),
 		},
+		{
+			Type: pulumi.String("azure-native:elasticsan/v20240601preview:VolumeGroup"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

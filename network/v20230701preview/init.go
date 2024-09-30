@@ -21,8 +21,24 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "azure-native:network/v20230701preview:DnsForwardingRuleset":
+		r = &DnsForwardingRuleset{}
+	case "azure-native:network/v20230701preview:DnsResolver":
+		r = &DnsResolver{}
+	case "azure-native:network/v20230701preview:DnsResolverDomainList":
+		r = &DnsResolverDomainList{}
+	case "azure-native:network/v20230701preview:DnsResolverPolicy":
+		r = &DnsResolverPolicy{}
+	case "azure-native:network/v20230701preview:DnsResolverPolicyVirtualNetworkLink":
+		r = &DnsResolverPolicyVirtualNetworkLink{}
+	case "azure-native:network/v20230701preview:DnsSecurityRule":
+		r = &DnsSecurityRule{}
 	case "azure-native:network/v20230701preview:DnssecConfig":
 		r = &DnssecConfig{}
+	case "azure-native:network/v20230701preview:ForwardingRule":
+		r = &ForwardingRule{}
+	case "azure-native:network/v20230701preview:InboundEndpoint":
+		r = &InboundEndpoint{}
 	case "azure-native:network/v20230701preview:NetworkSecurityPerimeter":
 		r = &NetworkSecurityPerimeter{}
 	case "azure-native:network/v20230701preview:NspAccessRule":
@@ -33,6 +49,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &NspLink{}
 	case "azure-native:network/v20230701preview:NspProfile":
 		r = &NspProfile{}
+	case "azure-native:network/v20230701preview:OutboundEndpoint":
+		r = &OutboundEndpoint{}
+	case "azure-native:network/v20230701preview:PrivateResolverVirtualNetworkLink":
+		r = &PrivateResolverVirtualNetworkLink{}
 	case "azure-native:network/v20230701preview:RecordSet":
 		r = &RecordSet{}
 	case "azure-native:network/v20230701preview:Zone":

@@ -521,14 +521,216 @@ func (o ConfidentialComputePropertiesResponsePtrOutput) CcePolicy() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+// The container config map.
+type ConfigMap struct {
+	// The key value pairs dictionary in the config map.
+	KeyValuePairs map[string]string `pulumi:"keyValuePairs"`
+}
+
+// ConfigMapInput is an input type that accepts ConfigMap and ConfigMapOutput values.
+// You can construct a concrete instance of `ConfigMapInput` via:
+//
+//	ConfigMap{ "key": ConfigArgs{...} }
+type ConfigMapInput interface {
+	pulumi.Input
+
+	ToConfigMapOutput() ConfigMapOutput
+	ToConfigMapOutputWithContext(context.Context) ConfigMapOutput
+}
+
+// The container config map.
+type ConfigMapArgs struct {
+	// The key value pairs dictionary in the config map.
+	KeyValuePairs pulumi.StringMapInput `pulumi:"keyValuePairs"`
+}
+
+func (ConfigMapArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigMap)(nil)).Elem()
+}
+
+func (i ConfigMapArgs) ToConfigMapOutput() ConfigMapOutput {
+	return i.ToConfigMapOutputWithContext(context.Background())
+}
+
+func (i ConfigMapArgs) ToConfigMapOutputWithContext(ctx context.Context) ConfigMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigMapOutput)
+}
+
+func (i ConfigMapArgs) ToConfigMapPtrOutput() ConfigMapPtrOutput {
+	return i.ToConfigMapPtrOutputWithContext(context.Background())
+}
+
+func (i ConfigMapArgs) ToConfigMapPtrOutputWithContext(ctx context.Context) ConfigMapPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigMapOutput).ToConfigMapPtrOutputWithContext(ctx)
+}
+
+// ConfigMapPtrInput is an input type that accepts ConfigMapArgs, ConfigMapPtr and ConfigMapPtrOutput values.
+// You can construct a concrete instance of `ConfigMapPtrInput` via:
+//
+//	        ConfigMapArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConfigMapPtrInput interface {
+	pulumi.Input
+
+	ToConfigMapPtrOutput() ConfigMapPtrOutput
+	ToConfigMapPtrOutputWithContext(context.Context) ConfigMapPtrOutput
+}
+
+type configMapPtrType ConfigMapArgs
+
+func ConfigMapPtr(v *ConfigMapArgs) ConfigMapPtrInput {
+	return (*configMapPtrType)(v)
+}
+
+func (*configMapPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigMap)(nil)).Elem()
+}
+
+func (i *configMapPtrType) ToConfigMapPtrOutput() ConfigMapPtrOutput {
+	return i.ToConfigMapPtrOutputWithContext(context.Background())
+}
+
+func (i *configMapPtrType) ToConfigMapPtrOutputWithContext(ctx context.Context) ConfigMapPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigMapPtrOutput)
+}
+
+// The container config map.
+type ConfigMapOutput struct{ *pulumi.OutputState }
+
+func (ConfigMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigMap)(nil)).Elem()
+}
+
+func (o ConfigMapOutput) ToConfigMapOutput() ConfigMapOutput {
+	return o
+}
+
+func (o ConfigMapOutput) ToConfigMapOutputWithContext(ctx context.Context) ConfigMapOutput {
+	return o
+}
+
+func (o ConfigMapOutput) ToConfigMapPtrOutput() ConfigMapPtrOutput {
+	return o.ToConfigMapPtrOutputWithContext(context.Background())
+}
+
+func (o ConfigMapOutput) ToConfigMapPtrOutputWithContext(ctx context.Context) ConfigMapPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfigMap) *ConfigMap {
+		return &v
+	}).(ConfigMapPtrOutput)
+}
+
+// The key value pairs dictionary in the config map.
+func (o ConfigMapOutput) KeyValuePairs() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ConfigMap) map[string]string { return v.KeyValuePairs }).(pulumi.StringMapOutput)
+}
+
+type ConfigMapPtrOutput struct{ *pulumi.OutputState }
+
+func (ConfigMapPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigMap)(nil)).Elem()
+}
+
+func (o ConfigMapPtrOutput) ToConfigMapPtrOutput() ConfigMapPtrOutput {
+	return o
+}
+
+func (o ConfigMapPtrOutput) ToConfigMapPtrOutputWithContext(ctx context.Context) ConfigMapPtrOutput {
+	return o
+}
+
+func (o ConfigMapPtrOutput) Elem() ConfigMapOutput {
+	return o.ApplyT(func(v *ConfigMap) ConfigMap {
+		if v != nil {
+			return *v
+		}
+		var ret ConfigMap
+		return ret
+	}).(ConfigMapOutput)
+}
+
+// The key value pairs dictionary in the config map.
+func (o ConfigMapPtrOutput) KeyValuePairs() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ConfigMap) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.KeyValuePairs
+	}).(pulumi.StringMapOutput)
+}
+
+// The container config map.
+type ConfigMapResponse struct {
+	// The key value pairs dictionary in the config map.
+	KeyValuePairs map[string]string `pulumi:"keyValuePairs"`
+}
+
+// The container config map.
+type ConfigMapResponseOutput struct{ *pulumi.OutputState }
+
+func (ConfigMapResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigMapResponse)(nil)).Elem()
+}
+
+func (o ConfigMapResponseOutput) ToConfigMapResponseOutput() ConfigMapResponseOutput {
+	return o
+}
+
+func (o ConfigMapResponseOutput) ToConfigMapResponseOutputWithContext(ctx context.Context) ConfigMapResponseOutput {
+	return o
+}
+
+// The key value pairs dictionary in the config map.
+func (o ConfigMapResponseOutput) KeyValuePairs() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ConfigMapResponse) map[string]string { return v.KeyValuePairs }).(pulumi.StringMapOutput)
+}
+
+type ConfigMapResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ConfigMapResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigMapResponse)(nil)).Elem()
+}
+
+func (o ConfigMapResponsePtrOutput) ToConfigMapResponsePtrOutput() ConfigMapResponsePtrOutput {
+	return o
+}
+
+func (o ConfigMapResponsePtrOutput) ToConfigMapResponsePtrOutputWithContext(ctx context.Context) ConfigMapResponsePtrOutput {
+	return o
+}
+
+func (o ConfigMapResponsePtrOutput) Elem() ConfigMapResponseOutput {
+	return o.ApplyT(func(v *ConfigMapResponse) ConfigMapResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ConfigMapResponse
+		return ret
+	}).(ConfigMapResponseOutput)
+}
+
+// The key value pairs dictionary in the config map.
+func (o ConfigMapResponsePtrOutput) KeyValuePairs() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ConfigMapResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.KeyValuePairs
+	}).(pulumi.StringMapOutput)
+}
+
 // A container instance.
 type Container struct {
 	// The commands to execute within the container instance in exec form.
 	Command []string `pulumi:"command"`
+	// The config map.
+	ConfigMap *ConfigMap `pulumi:"configMap"`
 	// The environment variables to set in the container instance.
 	EnvironmentVariables []EnvironmentVariable `pulumi:"environmentVariables"`
 	// The name of the image used to create the container instance.
-	Image string `pulumi:"image"`
+	Image *string `pulumi:"image"`
 	// The liveness probe.
 	LivenessProbe *ContainerProbe `pulumi:"livenessProbe"`
 	// The user-provided name of the container instance.
@@ -538,7 +740,7 @@ type Container struct {
 	// The readiness probe.
 	ReadinessProbe *ContainerProbe `pulumi:"readinessProbe"`
 	// The resource requirements of the container instance.
-	Resources ResourceRequirements `pulumi:"resources"`
+	Resources *ResourceRequirements `pulumi:"resources"`
 	// The container security properties.
 	SecurityContext *SecurityContextDefinition `pulumi:"securityContext"`
 	// The volume mounts available to the container instance.
@@ -560,10 +762,12 @@ type ContainerInput interface {
 type ContainerArgs struct {
 	// The commands to execute within the container instance in exec form.
 	Command pulumi.StringArrayInput `pulumi:"command"`
+	// The config map.
+	ConfigMap ConfigMapPtrInput `pulumi:"configMap"`
 	// The environment variables to set in the container instance.
 	EnvironmentVariables EnvironmentVariableArrayInput `pulumi:"environmentVariables"`
 	// The name of the image used to create the container instance.
-	Image pulumi.StringInput `pulumi:"image"`
+	Image pulumi.StringPtrInput `pulumi:"image"`
 	// The liveness probe.
 	LivenessProbe ContainerProbePtrInput `pulumi:"livenessProbe"`
 	// The user-provided name of the container instance.
@@ -573,7 +777,7 @@ type ContainerArgs struct {
 	// The readiness probe.
 	ReadinessProbe ContainerProbePtrInput `pulumi:"readinessProbe"`
 	// The resource requirements of the container instance.
-	Resources ResourceRequirementsInput `pulumi:"resources"`
+	Resources ResourceRequirementsPtrInput `pulumi:"resources"`
 	// The container security properties.
 	SecurityContext SecurityContextDefinitionPtrInput `pulumi:"securityContext"`
 	// The volume mounts available to the container instance.
@@ -637,14 +841,19 @@ func (o ContainerOutput) Command() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Container) []string { return v.Command }).(pulumi.StringArrayOutput)
 }
 
+// The config map.
+func (o ContainerOutput) ConfigMap() ConfigMapPtrOutput {
+	return o.ApplyT(func(v Container) *ConfigMap { return v.ConfigMap }).(ConfigMapPtrOutput)
+}
+
 // The environment variables to set in the container instance.
 func (o ContainerOutput) EnvironmentVariables() EnvironmentVariableArrayOutput {
 	return o.ApplyT(func(v Container) []EnvironmentVariable { return v.EnvironmentVariables }).(EnvironmentVariableArrayOutput)
 }
 
 // The name of the image used to create the container instance.
-func (o ContainerOutput) Image() pulumi.StringOutput {
-	return o.ApplyT(func(v Container) string { return v.Image }).(pulumi.StringOutput)
+func (o ContainerOutput) Image() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Container) *string { return v.Image }).(pulumi.StringPtrOutput)
 }
 
 // The liveness probe.
@@ -668,8 +877,8 @@ func (o ContainerOutput) ReadinessProbe() ContainerProbePtrOutput {
 }
 
 // The resource requirements of the container instance.
-func (o ContainerOutput) Resources() ResourceRequirementsOutput {
-	return o.ApplyT(func(v Container) ResourceRequirements { return v.Resources }).(ResourceRequirementsOutput)
+func (o ContainerOutput) Resources() ResourceRequirementsPtrOutput {
+	return o.ApplyT(func(v Container) *ResourceRequirements { return v.Resources }).(ResourceRequirementsPtrOutput)
 }
 
 // The container security properties.
@@ -2506,10 +2715,12 @@ func (o ContainerPropertiesResponseInstanceViewOutput) RestartCount() pulumi.Int
 type ContainerResponse struct {
 	// The commands to execute within the container instance in exec form.
 	Command []string `pulumi:"command"`
+	// The config map.
+	ConfigMap *ConfigMapResponse `pulumi:"configMap"`
 	// The environment variables to set in the container instance.
 	EnvironmentVariables []EnvironmentVariableResponse `pulumi:"environmentVariables"`
 	// The name of the image used to create the container instance.
-	Image string `pulumi:"image"`
+	Image *string `pulumi:"image"`
 	// The instance view of the container instance. Only valid in response.
 	InstanceView ContainerPropertiesResponseInstanceView `pulumi:"instanceView"`
 	// The liveness probe.
@@ -2521,7 +2732,7 @@ type ContainerResponse struct {
 	// The readiness probe.
 	ReadinessProbe *ContainerProbeResponse `pulumi:"readinessProbe"`
 	// The resource requirements of the container instance.
-	Resources ResourceRequirementsResponse `pulumi:"resources"`
+	Resources *ResourceRequirementsResponse `pulumi:"resources"`
 	// The container security properties.
 	SecurityContext *SecurityContextDefinitionResponse `pulumi:"securityContext"`
 	// The volume mounts available to the container instance.
@@ -2548,14 +2759,19 @@ func (o ContainerResponseOutput) Command() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ContainerResponse) []string { return v.Command }).(pulumi.StringArrayOutput)
 }
 
+// The config map.
+func (o ContainerResponseOutput) ConfigMap() ConfigMapResponsePtrOutput {
+	return o.ApplyT(func(v ContainerResponse) *ConfigMapResponse { return v.ConfigMap }).(ConfigMapResponsePtrOutput)
+}
+
 // The environment variables to set in the container instance.
 func (o ContainerResponseOutput) EnvironmentVariables() EnvironmentVariableResponseArrayOutput {
 	return o.ApplyT(func(v ContainerResponse) []EnvironmentVariableResponse { return v.EnvironmentVariables }).(EnvironmentVariableResponseArrayOutput)
 }
 
 // The name of the image used to create the container instance.
-func (o ContainerResponseOutput) Image() pulumi.StringOutput {
-	return o.ApplyT(func(v ContainerResponse) string { return v.Image }).(pulumi.StringOutput)
+func (o ContainerResponseOutput) Image() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ContainerResponse) *string { return v.Image }).(pulumi.StringPtrOutput)
 }
 
 // The instance view of the container instance. Only valid in response.
@@ -2584,8 +2800,8 @@ func (o ContainerResponseOutput) ReadinessProbe() ContainerProbeResponsePtrOutpu
 }
 
 // The resource requirements of the container instance.
-func (o ContainerResponseOutput) Resources() ResourceRequirementsResponseOutput {
-	return o.ApplyT(func(v ContainerResponse) ResourceRequirementsResponse { return v.Resources }).(ResourceRequirementsResponseOutput)
+func (o ContainerResponseOutput) Resources() ResourceRequirementsResponsePtrOutput {
+	return o.ApplyT(func(v ContainerResponse) *ResourceRequirementsResponse { return v.Resources }).(ResourceRequirementsResponsePtrOutput)
 }
 
 // The container security properties.
@@ -6106,6 +6322,47 @@ func (i ResourceRequestsArgs) ToResourceRequestsOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceRequestsOutput)
 }
 
+func (i ResourceRequestsArgs) ToResourceRequestsPtrOutput() ResourceRequestsPtrOutput {
+	return i.ToResourceRequestsPtrOutputWithContext(context.Background())
+}
+
+func (i ResourceRequestsArgs) ToResourceRequestsPtrOutputWithContext(ctx context.Context) ResourceRequestsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceRequestsOutput).ToResourceRequestsPtrOutputWithContext(ctx)
+}
+
+// ResourceRequestsPtrInput is an input type that accepts ResourceRequestsArgs, ResourceRequestsPtr and ResourceRequestsPtrOutput values.
+// You can construct a concrete instance of `ResourceRequestsPtrInput` via:
+//
+//	        ResourceRequestsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ResourceRequestsPtrInput interface {
+	pulumi.Input
+
+	ToResourceRequestsPtrOutput() ResourceRequestsPtrOutput
+	ToResourceRequestsPtrOutputWithContext(context.Context) ResourceRequestsPtrOutput
+}
+
+type resourceRequestsPtrType ResourceRequestsArgs
+
+func ResourceRequestsPtr(v *ResourceRequestsArgs) ResourceRequestsPtrInput {
+	return (*resourceRequestsPtrType)(v)
+}
+
+func (*resourceRequestsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceRequests)(nil)).Elem()
+}
+
+func (i *resourceRequestsPtrType) ToResourceRequestsPtrOutput() ResourceRequestsPtrOutput {
+	return i.ToResourceRequestsPtrOutputWithContext(context.Background())
+}
+
+func (i *resourceRequestsPtrType) ToResourceRequestsPtrOutputWithContext(ctx context.Context) ResourceRequestsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceRequestsPtrOutput)
+}
+
 // The resource requests.
 type ResourceRequestsOutput struct{ *pulumi.OutputState }
 
@@ -6121,6 +6378,16 @@ func (o ResourceRequestsOutput) ToResourceRequestsOutputWithContext(ctx context.
 	return o
 }
 
+func (o ResourceRequestsOutput) ToResourceRequestsPtrOutput() ResourceRequestsPtrOutput {
+	return o.ToResourceRequestsPtrOutputWithContext(context.Background())
+}
+
+func (o ResourceRequestsOutput) ToResourceRequestsPtrOutputWithContext(ctx context.Context) ResourceRequestsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceRequests) *ResourceRequests {
+		return &v
+	}).(ResourceRequestsPtrOutput)
+}
+
 // The CPU request of this container instance.
 func (o ResourceRequestsOutput) Cpu() pulumi.Float64Output {
 	return o.ApplyT(func(v ResourceRequests) float64 { return v.Cpu }).(pulumi.Float64Output)
@@ -6134,6 +6401,60 @@ func (o ResourceRequestsOutput) Gpu() GpuResourcePtrOutput {
 // The memory request in GB of this container instance.
 func (o ResourceRequestsOutput) MemoryInGB() pulumi.Float64Output {
 	return o.ApplyT(func(v ResourceRequests) float64 { return v.MemoryInGB }).(pulumi.Float64Output)
+}
+
+type ResourceRequestsPtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceRequestsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceRequests)(nil)).Elem()
+}
+
+func (o ResourceRequestsPtrOutput) ToResourceRequestsPtrOutput() ResourceRequestsPtrOutput {
+	return o
+}
+
+func (o ResourceRequestsPtrOutput) ToResourceRequestsPtrOutputWithContext(ctx context.Context) ResourceRequestsPtrOutput {
+	return o
+}
+
+func (o ResourceRequestsPtrOutput) Elem() ResourceRequestsOutput {
+	return o.ApplyT(func(v *ResourceRequests) ResourceRequests {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceRequests
+		return ret
+	}).(ResourceRequestsOutput)
+}
+
+// The CPU request of this container instance.
+func (o ResourceRequestsPtrOutput) Cpu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ResourceRequests) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.Cpu
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The GPU request of this container instance.
+func (o ResourceRequestsPtrOutput) Gpu() GpuResourcePtrOutput {
+	return o.ApplyT(func(v *ResourceRequests) *GpuResource {
+		if v == nil {
+			return nil
+		}
+		return v.Gpu
+	}).(GpuResourcePtrOutput)
+}
+
+// The memory request in GB of this container instance.
+func (o ResourceRequestsPtrOutput) MemoryInGB() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ResourceRequests) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.MemoryInGB
+	}).(pulumi.Float64PtrOutput)
 }
 
 // The resource requests.
@@ -6176,6 +6497,60 @@ func (o ResourceRequestsResponseOutput) MemoryInGB() pulumi.Float64Output {
 	return o.ApplyT(func(v ResourceRequestsResponse) float64 { return v.MemoryInGB }).(pulumi.Float64Output)
 }
 
+type ResourceRequestsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceRequestsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceRequestsResponse)(nil)).Elem()
+}
+
+func (o ResourceRequestsResponsePtrOutput) ToResourceRequestsResponsePtrOutput() ResourceRequestsResponsePtrOutput {
+	return o
+}
+
+func (o ResourceRequestsResponsePtrOutput) ToResourceRequestsResponsePtrOutputWithContext(ctx context.Context) ResourceRequestsResponsePtrOutput {
+	return o
+}
+
+func (o ResourceRequestsResponsePtrOutput) Elem() ResourceRequestsResponseOutput {
+	return o.ApplyT(func(v *ResourceRequestsResponse) ResourceRequestsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceRequestsResponse
+		return ret
+	}).(ResourceRequestsResponseOutput)
+}
+
+// The CPU request of this container instance.
+func (o ResourceRequestsResponsePtrOutput) Cpu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ResourceRequestsResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.Cpu
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The GPU request of this container instance.
+func (o ResourceRequestsResponsePtrOutput) Gpu() GpuResourceResponsePtrOutput {
+	return o.ApplyT(func(v *ResourceRequestsResponse) *GpuResourceResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Gpu
+	}).(GpuResourceResponsePtrOutput)
+}
+
+// The memory request in GB of this container instance.
+func (o ResourceRequestsResponsePtrOutput) MemoryInGB() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ResourceRequestsResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.MemoryInGB
+	}).(pulumi.Float64PtrOutput)
+}
+
 // The resource requirements.
 type ResourceRequirements struct {
 	// The resource limits of this container instance.
@@ -6215,6 +6590,47 @@ func (i ResourceRequirementsArgs) ToResourceRequirementsOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceRequirementsOutput)
 }
 
+func (i ResourceRequirementsArgs) ToResourceRequirementsPtrOutput() ResourceRequirementsPtrOutput {
+	return i.ToResourceRequirementsPtrOutputWithContext(context.Background())
+}
+
+func (i ResourceRequirementsArgs) ToResourceRequirementsPtrOutputWithContext(ctx context.Context) ResourceRequirementsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceRequirementsOutput).ToResourceRequirementsPtrOutputWithContext(ctx)
+}
+
+// ResourceRequirementsPtrInput is an input type that accepts ResourceRequirementsArgs, ResourceRequirementsPtr and ResourceRequirementsPtrOutput values.
+// You can construct a concrete instance of `ResourceRequirementsPtrInput` via:
+//
+//	        ResourceRequirementsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ResourceRequirementsPtrInput interface {
+	pulumi.Input
+
+	ToResourceRequirementsPtrOutput() ResourceRequirementsPtrOutput
+	ToResourceRequirementsPtrOutputWithContext(context.Context) ResourceRequirementsPtrOutput
+}
+
+type resourceRequirementsPtrType ResourceRequirementsArgs
+
+func ResourceRequirementsPtr(v *ResourceRequirementsArgs) ResourceRequirementsPtrInput {
+	return (*resourceRequirementsPtrType)(v)
+}
+
+func (*resourceRequirementsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceRequirements)(nil)).Elem()
+}
+
+func (i *resourceRequirementsPtrType) ToResourceRequirementsPtrOutput() ResourceRequirementsPtrOutput {
+	return i.ToResourceRequirementsPtrOutputWithContext(context.Background())
+}
+
+func (i *resourceRequirementsPtrType) ToResourceRequirementsPtrOutputWithContext(ctx context.Context) ResourceRequirementsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceRequirementsPtrOutput)
+}
+
 // The resource requirements.
 type ResourceRequirementsOutput struct{ *pulumi.OutputState }
 
@@ -6230,6 +6646,16 @@ func (o ResourceRequirementsOutput) ToResourceRequirementsOutputWithContext(ctx 
 	return o
 }
 
+func (o ResourceRequirementsOutput) ToResourceRequirementsPtrOutput() ResourceRequirementsPtrOutput {
+	return o.ToResourceRequirementsPtrOutputWithContext(context.Background())
+}
+
+func (o ResourceRequirementsOutput) ToResourceRequirementsPtrOutputWithContext(ctx context.Context) ResourceRequirementsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceRequirements) *ResourceRequirements {
+		return &v
+	}).(ResourceRequirementsPtrOutput)
+}
+
 // The resource limits of this container instance.
 func (o ResourceRequirementsOutput) Limits() ResourceLimitsPtrOutput {
 	return o.ApplyT(func(v ResourceRequirements) *ResourceLimits { return v.Limits }).(ResourceLimitsPtrOutput)
@@ -6238,6 +6664,50 @@ func (o ResourceRequirementsOutput) Limits() ResourceLimitsPtrOutput {
 // The resource requests of this container instance.
 func (o ResourceRequirementsOutput) Requests() ResourceRequestsOutput {
 	return o.ApplyT(func(v ResourceRequirements) ResourceRequests { return v.Requests }).(ResourceRequestsOutput)
+}
+
+type ResourceRequirementsPtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceRequirementsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceRequirements)(nil)).Elem()
+}
+
+func (o ResourceRequirementsPtrOutput) ToResourceRequirementsPtrOutput() ResourceRequirementsPtrOutput {
+	return o
+}
+
+func (o ResourceRequirementsPtrOutput) ToResourceRequirementsPtrOutputWithContext(ctx context.Context) ResourceRequirementsPtrOutput {
+	return o
+}
+
+func (o ResourceRequirementsPtrOutput) Elem() ResourceRequirementsOutput {
+	return o.ApplyT(func(v *ResourceRequirements) ResourceRequirements {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceRequirements
+		return ret
+	}).(ResourceRequirementsOutput)
+}
+
+// The resource limits of this container instance.
+func (o ResourceRequirementsPtrOutput) Limits() ResourceLimitsPtrOutput {
+	return o.ApplyT(func(v *ResourceRequirements) *ResourceLimits {
+		if v == nil {
+			return nil
+		}
+		return v.Limits
+	}).(ResourceLimitsPtrOutput)
+}
+
+// The resource requests of this container instance.
+func (o ResourceRequirementsPtrOutput) Requests() ResourceRequestsPtrOutput {
+	return o.ApplyT(func(v *ResourceRequirements) *ResourceRequests {
+		if v == nil {
+			return nil
+		}
+		return &v.Requests
+	}).(ResourceRequestsPtrOutput)
 }
 
 // The resource requirements.
@@ -6271,6 +6741,50 @@ func (o ResourceRequirementsResponseOutput) Limits() ResourceLimitsResponsePtrOu
 // The resource requests of this container instance.
 func (o ResourceRequirementsResponseOutput) Requests() ResourceRequestsResponseOutput {
 	return o.ApplyT(func(v ResourceRequirementsResponse) ResourceRequestsResponse { return v.Requests }).(ResourceRequestsResponseOutput)
+}
+
+type ResourceRequirementsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceRequirementsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceRequirementsResponse)(nil)).Elem()
+}
+
+func (o ResourceRequirementsResponsePtrOutput) ToResourceRequirementsResponsePtrOutput() ResourceRequirementsResponsePtrOutput {
+	return o
+}
+
+func (o ResourceRequirementsResponsePtrOutput) ToResourceRequirementsResponsePtrOutputWithContext(ctx context.Context) ResourceRequirementsResponsePtrOutput {
+	return o
+}
+
+func (o ResourceRequirementsResponsePtrOutput) Elem() ResourceRequirementsResponseOutput {
+	return o.ApplyT(func(v *ResourceRequirementsResponse) ResourceRequirementsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceRequirementsResponse
+		return ret
+	}).(ResourceRequirementsResponseOutput)
+}
+
+// The resource limits of this container instance.
+func (o ResourceRequirementsResponsePtrOutput) Limits() ResourceLimitsResponsePtrOutput {
+	return o.ApplyT(func(v *ResourceRequirementsResponse) *ResourceLimitsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Limits
+	}).(ResourceLimitsResponsePtrOutput)
+}
+
+// The resource requests of this container instance.
+func (o ResourceRequirementsResponsePtrOutput) Requests() ResourceRequestsResponsePtrOutput {
+	return o.ApplyT(func(v *ResourceRequirementsResponse) *ResourceRequestsResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Requests
+	}).(ResourceRequestsResponsePtrOutput)
 }
 
 // The capabilities to add or drop from a container.
@@ -7341,6 +7855,10 @@ func init() {
 	pulumi.RegisterOutputType(ConfidentialComputePropertiesPtrOutput{})
 	pulumi.RegisterOutputType(ConfidentialComputePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(ConfidentialComputePropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(ConfigMapOutput{})
+	pulumi.RegisterOutputType(ConfigMapPtrOutput{})
+	pulumi.RegisterOutputType(ConfigMapResponseOutput{})
+	pulumi.RegisterOutputType(ConfigMapResponsePtrOutput{})
 	pulumi.RegisterOutputType(ContainerOutput{})
 	pulumi.RegisterOutputType(ContainerArrayOutput{})
 	pulumi.RegisterOutputType(ContainerExecOutput{})
@@ -7432,9 +7950,13 @@ func init() {
 	pulumi.RegisterOutputType(ResourceLimitsResponseOutput{})
 	pulumi.RegisterOutputType(ResourceLimitsResponsePtrOutput{})
 	pulumi.RegisterOutputType(ResourceRequestsOutput{})
+	pulumi.RegisterOutputType(ResourceRequestsPtrOutput{})
 	pulumi.RegisterOutputType(ResourceRequestsResponseOutput{})
+	pulumi.RegisterOutputType(ResourceRequestsResponsePtrOutput{})
 	pulumi.RegisterOutputType(ResourceRequirementsOutput{})
+	pulumi.RegisterOutputType(ResourceRequirementsPtrOutput{})
 	pulumi.RegisterOutputType(ResourceRequirementsResponseOutput{})
+	pulumi.RegisterOutputType(ResourceRequirementsResponsePtrOutput{})
 	pulumi.RegisterOutputType(SecurityContextCapabilitiesDefinitionOutput{})
 	pulumi.RegisterOutputType(SecurityContextCapabilitiesDefinitionPtrOutput{})
 	pulumi.RegisterOutputType(SecurityContextCapabilitiesDefinitionResponseOutput{})

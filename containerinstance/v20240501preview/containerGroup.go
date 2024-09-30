@@ -212,7 +212,7 @@ type containerGroupArgs struct {
 	OsType *string `pulumi:"osType"`
 	// The priority of the container group.
 	Priority *string `pulumi:"priority"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Restart policy for all containers within the container group.
 	// - `Always` Always restart
@@ -265,7 +265,7 @@ type ContainerGroupArgs struct {
 	OsType pulumi.StringPtrInput
 	// The priority of the container group.
 	Priority pulumi.StringPtrInput
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Restart policy for all containers within the container group.
 	// - `Always` Always restart

@@ -15,7 +15,7 @@ import (
 // Hybrid Connection contract. This is used to configure a Hybrid Connection.
 // Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2020-12-01.
 //
-// Other available API versions: 2020-10-01, 2023-01-01, 2023-12-01.
+// Other available API versions: 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
 type WebAppHybridConnection struct {
 	pulumi.CustomResourceState
 
@@ -108,6 +108,9 @@ func NewWebAppHybridConnection(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:web/v20231201:WebAppHybridConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:web/v20240401:WebAppHybridConnection"),
 		},
 	})
 	opts = append(opts, aliases)

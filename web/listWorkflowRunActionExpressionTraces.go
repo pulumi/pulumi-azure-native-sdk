@@ -14,7 +14,7 @@ import (
 // Lists a workflow run expression trace.
 // Azure REST API version: 2022-09-01.
 //
-// Other available API versions: 2023-01-01, 2023-12-01.
+// Other available API versions: 2023-01-01, 2023-12-01, 2024-04-01.
 func ListWorkflowRunActionExpressionTraces(ctx *pulumi.Context, args *ListWorkflowRunActionExpressionTracesArgs, opts ...pulumi.InvokeOption) (*ListWorkflowRunActionExpressionTracesResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListWorkflowRunActionExpressionTracesResult

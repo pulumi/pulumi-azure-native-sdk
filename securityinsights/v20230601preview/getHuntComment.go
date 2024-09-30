@@ -37,7 +37,7 @@ type LookupHuntCommentArgs struct {
 type LookupHuntCommentResult struct {
 	// Etag of the azure resource
 	Etag *string `pulumi:"etag"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The message for the comment
 	Message string `pulumi:"message"`
@@ -103,7 +103,7 @@ func (o LookupHuntCommentResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupHuntCommentResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupHuntCommentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHuntCommentResult) string { return v.Id }).(pulumi.StringOutput)
 }

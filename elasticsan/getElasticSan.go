@@ -14,7 +14,7 @@ import (
 // Get a ElasticSan.
 // Azure REST API version: 2021-11-20-preview.
 //
-// Other available API versions: 2022-12-01-preview, 2023-01-01, 2024-05-01.
+// Other available API versions: 2022-12-01-preview, 2023-01-01, 2024-05-01, 2024-06-01-preview.
 func LookupElasticSan(ctx *pulumi.Context, args *LookupElasticSanArgs, opts ...pulumi.InvokeOption) (*LookupElasticSanResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupElasticSanResult

@@ -25,7 +25,7 @@ func LookupContainerGroup(ctx *pulumi.Context, args *LookupContainerGroupArgs, o
 type LookupContainerGroupArgs struct {
 	// The name of the container group.
 	ContainerGroupName string `pulumi:"containerGroupName"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -123,7 +123,7 @@ func LookupContainerGroupOutput(ctx *pulumi.Context, args LookupContainerGroupOu
 type LookupContainerGroupOutputArgs struct {
 	// The name of the container group.
 	ContainerGroupName pulumi.StringInput `pulumi:"containerGroupName"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 

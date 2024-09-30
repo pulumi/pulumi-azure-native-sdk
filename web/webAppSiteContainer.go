@@ -14,6 +14,8 @@ import (
 
 // Container of a site
 // Azure REST API version: 2023-12-01.
+//
+// Other available API versions: 2024-04-01.
 type WebAppSiteContainer struct {
 	pulumi.CustomResourceState
 
@@ -71,6 +73,9 @@ func NewWebAppSiteContainer(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:web/v20231201:WebAppSiteContainer"),
+		},
+		{
+			Type: pulumi.String("azure-native:web/v20240401:WebAppSiteContainer"),
 		},
 	})
 	opts = append(opts, aliases)

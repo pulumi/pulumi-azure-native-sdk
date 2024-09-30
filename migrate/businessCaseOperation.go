@@ -14,6 +14,8 @@ import (
 
 // Business case resource.
 // Azure REST API version: 2023-04-01-preview.
+//
+// Other available API versions: 2023-05-01-preview.
 type BusinessCaseOperation struct {
 	pulumi.CustomResourceState
 
@@ -52,6 +54,9 @@ func NewBusinessCaseOperation(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:migrate/v20230401preview:BusinessCaseOperation"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate/v20230501preview:BusinessCaseOperation"),
 		},
 	})
 	opts = append(opts, aliases)

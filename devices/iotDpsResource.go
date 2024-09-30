@@ -15,7 +15,7 @@ import (
 // The description of the provisioning service.
 // Azure REST API version: 2022-12-12. Prior API version in Azure Native 1.x: 2020-03-01.
 //
-// Other available API versions: 2020-09-01-preview, 2023-03-01-preview.
+// Other available API versions: 2020-09-01-preview, 2023-03-01-preview, 2025-02-01-preview.
 type IotDpsResource struct {
 	pulumi.CustomResourceState
 
@@ -87,6 +87,9 @@ func NewIotDpsResource(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:devices/v20230301preview:IotDpsResource"),
+		},
+		{
+			Type: pulumi.String("azure-native:devices/v20250201preview:IotDpsResource"),
 		},
 	})
 	opts = append(opts, aliases)

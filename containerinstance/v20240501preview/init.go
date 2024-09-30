@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:containerinstance/v20240501preview:ContainerGroup":
 		r = &ContainerGroup{}
+	case "azure-native:containerinstance/v20240501preview:ContainerGroupProfile":
+		r = &ContainerGroupProfile{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

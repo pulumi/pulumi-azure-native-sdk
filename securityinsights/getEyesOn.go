@@ -36,7 +36,7 @@ type LookupEyesOnArgs struct {
 type LookupEyesOnResult struct {
 	// Etag of the azure resource
 	Etag *string `pulumi:"etag"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Determines whether the setting is enable or disabled.
 	IsEnabled bool `pulumi:"isEnabled"`
@@ -103,7 +103,7 @@ func (o LookupEyesOnResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEyesOnResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupEyesOnResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEyesOnResult) string { return v.Id }).(pulumi.StringOutput)
 }

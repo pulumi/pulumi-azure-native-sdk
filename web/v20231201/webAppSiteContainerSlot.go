@@ -74,6 +74,9 @@ func NewWebAppSiteContainerSlot(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:web:WebAppSiteContainerSlot"),
 		},
+		{
+			Type: pulumi.String("azure-native:web/v20240401:WebAppSiteContainerSlot"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -15,7 +15,7 @@ import (
 // The workspace manager assignment
 // Azure REST API version: 2023-06-01-preview.
 //
-// Other available API versions: 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-12-01-preview, 2024-01-01-preview.
+// Other available API versions: 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-12-01-preview, 2024-01-01-preview, 2024-04-01-preview.
 type WorkspaceManagerAssignment struct {
 	pulumi.CustomResourceState
 
@@ -83,6 +83,9 @@ func NewWorkspaceManagerAssignment(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20240101preview:WorkspaceManagerAssignment"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240401preview:WorkspaceManagerAssignment"),
 		},
 	})
 	opts = append(opts, aliases)

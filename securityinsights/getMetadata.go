@@ -14,7 +14,7 @@ import (
 // Get a Metadata.
 // Azure REST API version: 2023-02-01.
 //
-// Other available API versions: 2021-03-01-preview, 2023-02-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-11-01, 2023-12-01-preview, 2024-01-01-preview, 2024-03-01.
+// Other available API versions: 2021-03-01-preview, 2023-02-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-11-01, 2023-12-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview.
 func LookupMetadata(ctx *pulumi.Context, args *LookupMetadataArgs, opts ...pulumi.InvokeOption) (*LookupMetadataResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMetadataResult
@@ -54,7 +54,7 @@ type LookupMetadataResult struct {
 	FirstPublishDate *string `pulumi:"firstPublishDate"`
 	// the icon identifier. this id can later be fetched from the solution template
 	Icon *string `pulumi:"icon"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The kind of content the metadata is for.
 	Kind string `pulumi:"kind"`
@@ -178,7 +178,7 @@ func (o LookupMetadataResultOutput) Icon() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupMetadataResult) *string { return v.Icon }).(pulumi.StringPtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupMetadataResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMetadataResult) string { return v.Id }).(pulumi.StringOutput)
 }

@@ -41,7 +41,7 @@ type LookupTiTaxiiDataConnectorResult struct {
 	Etag *string `pulumi:"etag"`
 	// The friendly name for the TAXII server.
 	FriendlyName *string `pulumi:"friendlyName"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The kind of the data connector
 	// Expected value is 'ThreatIntelligenceTaxii'.
@@ -135,7 +135,7 @@ func (o LookupTiTaxiiDataConnectorResultOutput) FriendlyName() pulumi.StringPtrO
 	return o.ApplyT(func(v LookupTiTaxiiDataConnectorResult) *string { return v.FriendlyName }).(pulumi.StringPtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupTiTaxiiDataConnectorResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTiTaxiiDataConnectorResult) string { return v.Id }).(pulumi.StringOutput)
 }

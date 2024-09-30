@@ -15,7 +15,7 @@ import (
 // Publishing Credentials Policies parameters.
 // Azure REST API version: 2022-09-01.
 //
-// Other available API versions: 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2023-01-01, 2023-12-01.
+// Other available API versions: 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2023-01-01, 2023-12-01, 2024-04-01.
 type WebAppFtpAllowed struct {
 	pulumi.CustomResourceState
 
@@ -84,6 +84,9 @@ func NewWebAppFtpAllowed(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:web/v20231201:WebAppFtpAllowed"),
+		},
+		{
+			Type: pulumi.String("azure-native:web/v20240401:WebAppFtpAllowed"),
 		},
 	})
 	opts = append(opts, aliases)

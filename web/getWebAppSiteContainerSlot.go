@@ -13,6 +13,8 @@ import (
 
 // Container of a site
 // Azure REST API version: 2023-12-01.
+//
+// Other available API versions: 2024-04-01.
 func LookupWebAppSiteContainerSlot(ctx *pulumi.Context, args *LookupWebAppSiteContainerSlotArgs, opts ...pulumi.InvokeOption) (*LookupWebAppSiteContainerSlotResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebAppSiteContainerSlotResult

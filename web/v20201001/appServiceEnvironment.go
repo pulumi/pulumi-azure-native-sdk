@@ -171,6 +171,9 @@ func NewAppServiceEnvironment(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:web/v20231201:AppServiceEnvironment"),
 		},
+		{
+			Type: pulumi.String("azure-native:web/v20240401:AppServiceEnvironment"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

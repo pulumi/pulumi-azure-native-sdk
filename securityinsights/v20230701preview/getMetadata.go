@@ -51,7 +51,7 @@ type LookupMetadataResult struct {
 	FirstPublishDate *string `pulumi:"firstPublishDate"`
 	// the icon identifier. this id can later be fetched from the solution template
 	Icon *string `pulumi:"icon"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The kind of content the metadata is for.
 	Kind string `pulumi:"kind"`
@@ -175,7 +175,7 @@ func (o LookupMetadataResultOutput) Icon() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupMetadataResult) *string { return v.Icon }).(pulumi.StringPtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupMetadataResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMetadataResult) string { return v.Id }).(pulumi.StringOutput)
 }

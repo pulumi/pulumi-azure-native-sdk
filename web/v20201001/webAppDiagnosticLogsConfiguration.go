@@ -102,6 +102,9 @@ func NewWebAppDiagnosticLogsConfiguration(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:web/v20231201:WebAppDiagnosticLogsConfiguration"),
 		},
+		{
+			Type: pulumi.String("azure-native:web/v20240401:WebAppDiagnosticLogsConfiguration"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

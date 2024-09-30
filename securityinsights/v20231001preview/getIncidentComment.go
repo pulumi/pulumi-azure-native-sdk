@@ -41,7 +41,7 @@ type LookupIncidentCommentResult struct {
 	CreatedTimeUtc string `pulumi:"createdTimeUtc"`
 	// Etag of the azure resource
 	Etag *string `pulumi:"etag"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The time the comment was updated
 	LastModifiedTimeUtc string `pulumi:"lastModifiedTimeUtc"`
@@ -119,7 +119,7 @@ func (o LookupIncidentCommentResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupIncidentCommentResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupIncidentCommentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIncidentCommentResult) string { return v.Id }).(pulumi.StringOutput)
 }

@@ -14,7 +14,7 @@ import (
 // Gets a comment for a given incident.
 // Azure REST API version: 2023-02-01.
 //
-// Other available API versions: 2021-03-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-11-01, 2023-12-01-preview, 2024-01-01-preview, 2024-03-01.
+// Other available API versions: 2021-03-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-11-01, 2023-12-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview.
 func LookupIncidentComment(ctx *pulumi.Context, args *LookupIncidentCommentArgs, opts ...pulumi.InvokeOption) (*LookupIncidentCommentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIncidentCommentResult
@@ -44,7 +44,7 @@ type LookupIncidentCommentResult struct {
 	CreatedTimeUtc string `pulumi:"createdTimeUtc"`
 	// Etag of the azure resource
 	Etag *string `pulumi:"etag"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The time the comment was updated
 	LastModifiedTimeUtc string `pulumi:"lastModifiedTimeUtc"`
@@ -122,7 +122,7 @@ func (o LookupIncidentCommentResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupIncidentCommentResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupIncidentCommentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIncidentCommentResult) string { return v.Id }).(pulumi.StringOutput)
 }

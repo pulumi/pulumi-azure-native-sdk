@@ -15,7 +15,7 @@ import (
 // AFDOrigin group comprising of origins is used for load balancing to origins when the content cannot be served from Azure Front Door.
 // Azure REST API version: 2023-05-01. Prior API version in Azure Native 1.x: 2020-09-01.
 //
-// Other available API versions: 2020-09-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview.
+// Other available API versions: 2020-09-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01.
 type AFDOriginGroup struct {
 	pulumi.CustomResourceState
 
@@ -80,6 +80,9 @@ func NewAFDOriginGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:cdn/v20240601preview:AFDOriginGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:cdn/v20240901:AFDOriginGroup"),
 		},
 	})
 	opts = append(opts, aliases)

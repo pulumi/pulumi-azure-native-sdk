@@ -63,6 +63,8 @@ type LookupWebAppSlotResult struct {
 	// Enabled hostnames for the app.Hostnames need to be assigned (see HostNames) AND enabled. Otherwise,
 	// the app is not served on those hostnames.
 	EnabledHostNames []string `pulumi:"enabledHostNames"`
+	// Whether to use end to end encryption between the FrontEnd and the Worker
+	EndToEndEncryptionEnabled *bool `pulumi:"endToEndEncryptionEnabled"`
 	// Extended Location.
 	ExtendedLocation *ExtendedLocationResponse `pulumi:"extendedLocation"`
 	// Configuration specific of the Azure Function app.
@@ -304,6 +306,11 @@ func (o LookupWebAppSlotResultOutput) Enabled() pulumi.BoolPtrOutput {
 // the app is not served on those hostnames.
 func (o LookupWebAppSlotResultOutput) EnabledHostNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupWebAppSlotResult) []string { return v.EnabledHostNames }).(pulumi.StringArrayOutput)
+}
+
+// Whether to use end to end encryption between the FrontEnd and the Worker
+func (o LookupWebAppSlotResultOutput) EndToEndEncryptionEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupWebAppSlotResult) *bool { return v.EndToEndEncryptionEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // Extended Location.

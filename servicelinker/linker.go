@@ -15,7 +15,7 @@ import (
 // Linker of source and target resource
 // Azure REST API version: 2022-11-01-preview. Prior API version in Azure Native 1.x: 2021-11-01-preview.
 //
-// Other available API versions: 2021-11-01-preview, 2023-04-01-preview, 2024-04-01.
+// Other available API versions: 2021-11-01-preview, 2023-04-01-preview, 2024-04-01, 2024-07-01-preview.
 type Linker struct {
 	pulumi.CustomResourceState
 
@@ -73,6 +73,9 @@ func NewLinker(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:servicelinker/v20240401:Linker"),
+		},
+		{
+			Type: pulumi.String("azure-native:servicelinker/v20240701preview:Linker"),
 		},
 	})
 	opts = append(opts, aliases)

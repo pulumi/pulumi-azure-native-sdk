@@ -55,6 +55,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DnsForwardingRuleset{}
 	case "azure-native:network:DnsResolver":
 		r = &DnsResolver{}
+	case "azure-native:network:DnsResolverDomainList":
+		r = &DnsResolverDomainList{}
+	case "azure-native:network:DnsResolverPolicy":
+		r = &DnsResolverPolicy{}
+	case "azure-native:network:DnsResolverPolicyVirtualNetworkLink":
+		r = &DnsResolverPolicyVirtualNetworkLink{}
+	case "azure-native:network:DnsSecurityRule":
+		r = &DnsSecurityRule{}
 	case "azure-native:network:DscpConfiguration":
 		r = &DscpConfiguration{}
 	case "azure-native:network:Endpoint":

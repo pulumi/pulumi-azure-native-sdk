@@ -14,7 +14,7 @@ import (
 // Description for Gets the backup configuration of an app.
 // Azure REST API version: 2022-09-01.
 //
-// Other available API versions: 2016-08-01, 2020-10-01, 2023-01-01, 2023-12-01.
+// Other available API versions: 2016-08-01, 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
 func ListWebAppBackupConfiguration(ctx *pulumi.Context, args *ListWebAppBackupConfigurationArgs, opts ...pulumi.InvokeOption) (*ListWebAppBackupConfigurationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListWebAppBackupConfigurationResult

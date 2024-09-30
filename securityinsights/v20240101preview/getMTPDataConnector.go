@@ -39,7 +39,7 @@ type LookupMTPDataConnectorResult struct {
 	Etag *string `pulumi:"etag"`
 	// The available filtered providers for the connector.
 	FilteredProviders *MtpFilteredProvidersResponse `pulumi:"filteredProviders"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The kind of the data connector
 	// Expected value is 'MicrosoftThreatProtection'.
@@ -116,7 +116,7 @@ func (o LookupMTPDataConnectorResultOutput) FilteredProviders() MtpFilteredProvi
 	return o.ApplyT(func(v LookupMTPDataConnectorResult) *MtpFilteredProvidersResponse { return v.FilteredProviders }).(MtpFilteredProvidersResponsePtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupMTPDataConnectorResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMTPDataConnectorResult) string { return v.Id }).(pulumi.StringOutput)
 }

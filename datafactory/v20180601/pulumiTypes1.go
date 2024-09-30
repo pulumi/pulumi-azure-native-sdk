@@ -42988,6 +42988,8 @@ func (o PostgreSqlTableDatasetResponseOutput) Type() pulumi.StringOutput {
 type PostgreSqlV2LinkedService struct {
 	// List of tags that can be used for describing the linked service.
 	Annotations []interface{} `pulumi:"annotations"`
+	// The authentication type to use. Type: string.
+	AuthenticationType interface{} `pulumi:"authenticationType"`
 	// The time to wait (in seconds) while trying to execute a command before terminating the attempt and generating an error. Set to zero for infinity. Type: integer.
 	CommandTimeout interface{} `pulumi:"commandTimeout"`
 	// The integration runtime reference.
@@ -43054,6 +43056,8 @@ type PostgreSqlV2LinkedServiceInput interface {
 type PostgreSqlV2LinkedServiceArgs struct {
 	// List of tags that can be used for describing the linked service.
 	Annotations pulumi.ArrayInput `pulumi:"annotations"`
+	// The authentication type to use. Type: string.
+	AuthenticationType pulumi.Input `pulumi:"authenticationType"`
 	// The time to wait (in seconds) while trying to execute a command before terminating the attempt and generating an error. Set to zero for infinity. Type: integer.
 	CommandTimeout pulumi.Input `pulumi:"commandTimeout"`
 	// The integration runtime reference.
@@ -43135,6 +43139,11 @@ func (o PostgreSqlV2LinkedServiceOutput) ToPostgreSqlV2LinkedServiceOutputWithCo
 // List of tags that can be used for describing the linked service.
 func (o PostgreSqlV2LinkedServiceOutput) Annotations() pulumi.ArrayOutput {
 	return o.ApplyT(func(v PostgreSqlV2LinkedService) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
+}
+
+// The authentication type to use. Type: string.
+func (o PostgreSqlV2LinkedServiceOutput) AuthenticationType() pulumi.AnyOutput {
+	return o.ApplyT(func(v PostgreSqlV2LinkedService) interface{} { return v.AuthenticationType }).(pulumi.AnyOutput)
 }
 
 // The time to wait (in seconds) while trying to execute a command before terminating the attempt and generating an error. Set to zero for infinity. Type: integer.
@@ -43262,6 +43271,8 @@ func (o PostgreSqlV2LinkedServiceOutput) Version() pulumi.StringPtrOutput {
 type PostgreSqlV2LinkedServiceResponse struct {
 	// List of tags that can be used for describing the linked service.
 	Annotations []interface{} `pulumi:"annotations"`
+	// The authentication type to use. Type: string.
+	AuthenticationType interface{} `pulumi:"authenticationType"`
 	// The time to wait (in seconds) while trying to execute a command before terminating the attempt and generating an error. Set to zero for infinity. Type: integer.
 	CommandTimeout interface{} `pulumi:"commandTimeout"`
 	// The integration runtime reference.
@@ -43331,6 +43342,11 @@ func (o PostgreSqlV2LinkedServiceResponseOutput) ToPostgreSqlV2LinkedServiceResp
 // List of tags that can be used for describing the linked service.
 func (o PostgreSqlV2LinkedServiceResponseOutput) Annotations() pulumi.ArrayOutput {
 	return o.ApplyT(func(v PostgreSqlV2LinkedServiceResponse) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
+}
+
+// The authentication type to use. Type: string.
+func (o PostgreSqlV2LinkedServiceResponseOutput) AuthenticationType() pulumi.AnyOutput {
+	return o.ApplyT(func(v PostgreSqlV2LinkedServiceResponse) interface{} { return v.AuthenticationType }).(pulumi.AnyOutput)
 }
 
 // The time to wait (in seconds) while trying to execute a command before terminating the attempt and generating an error. Set to zero for infinity. Type: integer.

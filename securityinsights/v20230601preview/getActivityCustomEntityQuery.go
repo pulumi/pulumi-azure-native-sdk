@@ -45,7 +45,7 @@ type LookupActivityCustomEntityQueryResult struct {
 	EntitiesFilter map[string][]string `pulumi:"entitiesFilter"`
 	// Etag of the azure resource
 	Etag *string `pulumi:"etag"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The type of the query's source entity
 	InputEntityType *string `pulumi:"inputEntityType"`
@@ -147,7 +147,7 @@ func (o LookupActivityCustomEntityQueryResultOutput) Etag() pulumi.StringPtrOutp
 	return o.ApplyT(func(v LookupActivityCustomEntityQueryResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupActivityCustomEntityQueryResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupActivityCustomEntityQueryResult) string { return v.Id }).(pulumi.StringOutput)
 }

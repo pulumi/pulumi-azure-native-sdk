@@ -13,6 +13,8 @@ import (
 
 // Get geodata for a single IP address
 // Azure REST API version: 2024-01-01-preview.
+//
+// Other available API versions: 2024-04-01-preview.
 func ListGeodataByIp(ctx *pulumi.Context, args *ListGeodataByIpArgs, opts ...pulumi.InvokeOption) (*ListGeodataByIpResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListGeodataByIpResult

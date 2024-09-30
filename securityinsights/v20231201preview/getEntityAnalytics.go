@@ -37,7 +37,7 @@ type LookupEntityAnalyticsResult struct {
 	EntityProviders []string `pulumi:"entityProviders"`
 	// Etag of the azure resource
 	Etag *string `pulumi:"etag"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The kind of the setting
 	// Expected value is 'EntityAnalytics'.
@@ -107,7 +107,7 @@ func (o LookupEntityAnalyticsResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEntityAnalyticsResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupEntityAnalyticsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEntityAnalyticsResult) string { return v.Id }).(pulumi.StringOutput)
 }
