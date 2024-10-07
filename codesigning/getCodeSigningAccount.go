@@ -13,6 +13,8 @@ import (
 
 // Get a trusted Signing Account.
 // Azure REST API version: 2024-02-05-preview.
+//
+// Other available API versions: 2024-09-30-preview.
 func LookupCodeSigningAccount(ctx *pulumi.Context, args *LookupCodeSigningAccountArgs, opts ...pulumi.InvokeOption) (*LookupCodeSigningAccountResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCodeSigningAccountResult

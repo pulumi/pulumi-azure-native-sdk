@@ -35,8 +35,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SqlServerAvailabilityGroup{}
 	case "azure-native:azurearcdata:SqlServerDatabase":
 		r = &SqlServerDatabase{}
+	case "azure-native:azurearcdata:SqlServerEsuLicense":
+		r = &SqlServerEsuLicense{}
 	case "azure-native:azurearcdata:SqlServerInstance":
 		r = &SqlServerInstance{}
+	case "azure-native:azurearcdata:SqlServerLicense":
+		r = &SqlServerLicense{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

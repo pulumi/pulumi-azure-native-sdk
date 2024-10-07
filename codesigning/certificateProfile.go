@@ -14,6 +14,8 @@ import (
 
 // Certificate profile resource.
 // Azure REST API version: 2024-02-05-preview.
+//
+// Other available API versions: 2024-09-30-preview.
 type CertificateProfile struct {
 	pulumi.CustomResourceState
 
@@ -95,6 +97,9 @@ func NewCertificateProfile(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:codesigning/v20240205preview:CertificateProfile"),
+		},
+		{
+			Type: pulumi.String("azure-native:codesigning/v20240930preview:CertificateProfile"),
 		},
 	})
 	opts = append(opts, aliases)

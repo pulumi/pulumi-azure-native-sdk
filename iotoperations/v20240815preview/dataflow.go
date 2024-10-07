@@ -57,6 +57,9 @@ func NewDataflow(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:iotoperations/v20240701preview:Dataflow"),
 		},
+		{
+			Type: pulumi.String("azure-native:iotoperations/v20240915preview:Dataflow"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

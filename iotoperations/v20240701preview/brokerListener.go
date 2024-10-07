@@ -57,6 +57,9 @@ func NewBrokerListener(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:iotoperations/v20240815preview:BrokerListener"),
 		},
+		{
+			Type: pulumi.String("azure-native:iotoperations/v20240915preview:BrokerListener"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

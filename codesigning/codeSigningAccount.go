@@ -14,6 +14,8 @@ import (
 
 // Trusted signing account resource.
 // Azure REST API version: 2024-02-05-preview.
+//
+// Other available API versions: 2024-09-30-preview.
 type CodeSigningAccount struct {
 	pulumi.CustomResourceState
 
@@ -48,6 +50,9 @@ func NewCodeSigningAccount(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:codesigning/v20240205preview:CodeSigningAccount"),
+		},
+		{
+			Type: pulumi.String("azure-native:codesigning/v20240930preview:CodeSigningAccount"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -14,6 +14,8 @@ import (
 
 // Arc Sql Server Availability Group
 // Azure REST API version: 2024-01-01.
+//
+// Other available API versions: 2024-05-01-preview.
 type SqlServerAvailabilityGroup struct {
 	pulumi.CustomResourceState
 
@@ -50,6 +52,9 @@ func NewSqlServerAvailabilityGroup(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:azurearcdata/v20240101:SqlServerAvailabilityGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurearcdata/v20240501preview:SqlServerAvailabilityGroup"),
 		},
 	})
 	opts = append(opts, aliases)

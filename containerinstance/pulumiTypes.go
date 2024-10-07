@@ -13,6 +13,206 @@ import (
 
 var _ = utilities.GetEnvOrDefault
 
+// The API entity reference.
+type ApiEntityReference struct {
+	// The ARM resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
+	Id *string `pulumi:"id"`
+}
+
+// ApiEntityReferenceInput is an input type that accepts ApiEntityReferenceArgs and ApiEntityReferenceOutput values.
+// You can construct a concrete instance of `ApiEntityReferenceInput` via:
+//
+//	ApiEntityReferenceArgs{...}
+type ApiEntityReferenceInput interface {
+	pulumi.Input
+
+	ToApiEntityReferenceOutput() ApiEntityReferenceOutput
+	ToApiEntityReferenceOutputWithContext(context.Context) ApiEntityReferenceOutput
+}
+
+// The API entity reference.
+type ApiEntityReferenceArgs struct {
+	// The ARM resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
+	Id pulumi.StringPtrInput `pulumi:"id"`
+}
+
+func (ApiEntityReferenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiEntityReference)(nil)).Elem()
+}
+
+func (i ApiEntityReferenceArgs) ToApiEntityReferenceOutput() ApiEntityReferenceOutput {
+	return i.ToApiEntityReferenceOutputWithContext(context.Background())
+}
+
+func (i ApiEntityReferenceArgs) ToApiEntityReferenceOutputWithContext(ctx context.Context) ApiEntityReferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiEntityReferenceOutput)
+}
+
+func (i ApiEntityReferenceArgs) ToApiEntityReferencePtrOutput() ApiEntityReferencePtrOutput {
+	return i.ToApiEntityReferencePtrOutputWithContext(context.Background())
+}
+
+func (i ApiEntityReferenceArgs) ToApiEntityReferencePtrOutputWithContext(ctx context.Context) ApiEntityReferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiEntityReferenceOutput).ToApiEntityReferencePtrOutputWithContext(ctx)
+}
+
+// ApiEntityReferencePtrInput is an input type that accepts ApiEntityReferenceArgs, ApiEntityReferencePtr and ApiEntityReferencePtrOutput values.
+// You can construct a concrete instance of `ApiEntityReferencePtrInput` via:
+//
+//	        ApiEntityReferenceArgs{...}
+//
+//	or:
+//
+//	        nil
+type ApiEntityReferencePtrInput interface {
+	pulumi.Input
+
+	ToApiEntityReferencePtrOutput() ApiEntityReferencePtrOutput
+	ToApiEntityReferencePtrOutputWithContext(context.Context) ApiEntityReferencePtrOutput
+}
+
+type apiEntityReferencePtrType ApiEntityReferenceArgs
+
+func ApiEntityReferencePtr(v *ApiEntityReferenceArgs) ApiEntityReferencePtrInput {
+	return (*apiEntityReferencePtrType)(v)
+}
+
+func (*apiEntityReferencePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiEntityReference)(nil)).Elem()
+}
+
+func (i *apiEntityReferencePtrType) ToApiEntityReferencePtrOutput() ApiEntityReferencePtrOutput {
+	return i.ToApiEntityReferencePtrOutputWithContext(context.Background())
+}
+
+func (i *apiEntityReferencePtrType) ToApiEntityReferencePtrOutputWithContext(ctx context.Context) ApiEntityReferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiEntityReferencePtrOutput)
+}
+
+// The API entity reference.
+type ApiEntityReferenceOutput struct{ *pulumi.OutputState }
+
+func (ApiEntityReferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiEntityReference)(nil)).Elem()
+}
+
+func (o ApiEntityReferenceOutput) ToApiEntityReferenceOutput() ApiEntityReferenceOutput {
+	return o
+}
+
+func (o ApiEntityReferenceOutput) ToApiEntityReferenceOutputWithContext(ctx context.Context) ApiEntityReferenceOutput {
+	return o
+}
+
+func (o ApiEntityReferenceOutput) ToApiEntityReferencePtrOutput() ApiEntityReferencePtrOutput {
+	return o.ToApiEntityReferencePtrOutputWithContext(context.Background())
+}
+
+func (o ApiEntityReferenceOutput) ToApiEntityReferencePtrOutputWithContext(ctx context.Context) ApiEntityReferencePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApiEntityReference) *ApiEntityReference {
+		return &v
+	}).(ApiEntityReferencePtrOutput)
+}
+
+// The ARM resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
+func (o ApiEntityReferenceOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiEntityReference) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type ApiEntityReferencePtrOutput struct{ *pulumi.OutputState }
+
+func (ApiEntityReferencePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiEntityReference)(nil)).Elem()
+}
+
+func (o ApiEntityReferencePtrOutput) ToApiEntityReferencePtrOutput() ApiEntityReferencePtrOutput {
+	return o
+}
+
+func (o ApiEntityReferencePtrOutput) ToApiEntityReferencePtrOutputWithContext(ctx context.Context) ApiEntityReferencePtrOutput {
+	return o
+}
+
+func (o ApiEntityReferencePtrOutput) Elem() ApiEntityReferenceOutput {
+	return o.ApplyT(func(v *ApiEntityReference) ApiEntityReference {
+		if v != nil {
+			return *v
+		}
+		var ret ApiEntityReference
+		return ret
+	}).(ApiEntityReferenceOutput)
+}
+
+// The ARM resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
+func (o ApiEntityReferencePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiEntityReference) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// The API entity reference.
+type ApiEntityReferenceResponse struct {
+	// The ARM resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
+	Id *string `pulumi:"id"`
+}
+
+// The API entity reference.
+type ApiEntityReferenceResponseOutput struct{ *pulumi.OutputState }
+
+func (ApiEntityReferenceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiEntityReferenceResponse)(nil)).Elem()
+}
+
+func (o ApiEntityReferenceResponseOutput) ToApiEntityReferenceResponseOutput() ApiEntityReferenceResponseOutput {
+	return o
+}
+
+func (o ApiEntityReferenceResponseOutput) ToApiEntityReferenceResponseOutputWithContext(ctx context.Context) ApiEntityReferenceResponseOutput {
+	return o
+}
+
+// The ARM resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
+func (o ApiEntityReferenceResponseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiEntityReferenceResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type ApiEntityReferenceResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ApiEntityReferenceResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiEntityReferenceResponse)(nil)).Elem()
+}
+
+func (o ApiEntityReferenceResponsePtrOutput) ToApiEntityReferenceResponsePtrOutput() ApiEntityReferenceResponsePtrOutput {
+	return o
+}
+
+func (o ApiEntityReferenceResponsePtrOutput) ToApiEntityReferenceResponsePtrOutputWithContext(ctx context.Context) ApiEntityReferenceResponsePtrOutput {
+	return o
+}
+
+func (o ApiEntityReferenceResponsePtrOutput) Elem() ApiEntityReferenceResponseOutput {
+	return o.ApplyT(func(v *ApiEntityReferenceResponse) ApiEntityReferenceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ApiEntityReferenceResponse
+		return ret
+	}).(ApiEntityReferenceResponseOutput)
+}
+
+// The ARM resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
+func (o ApiEntityReferenceResponsePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiEntityReferenceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
 // The properties of the Azure File volume. Azure File shares are mounted as volumes.
 type AzureFileVolume struct {
 	// The flag indicating whether the Azure File shared mounted as a volume is read-only.
@@ -1581,6 +1781,152 @@ func (o ContainerGroupIdentityResponsePtrOutput) UserAssignedIdentities() UserAs
 		}
 		return v.UserAssignedIdentities
 	}).(UserAssignedIdentitiesResponseMapOutput)
+}
+
+// The object that contains a reference to a Container Group Profile
+type ContainerGroupProfileStub struct {
+	// The API entity reference.
+	Resource *ApiEntityReference `pulumi:"resource"`
+}
+
+// ContainerGroupProfileStubInput is an input type that accepts ContainerGroupProfileStubArgs and ContainerGroupProfileStubOutput values.
+// You can construct a concrete instance of `ContainerGroupProfileStubInput` via:
+//
+//	ContainerGroupProfileStubArgs{...}
+type ContainerGroupProfileStubInput interface {
+	pulumi.Input
+
+	ToContainerGroupProfileStubOutput() ContainerGroupProfileStubOutput
+	ToContainerGroupProfileStubOutputWithContext(context.Context) ContainerGroupProfileStubOutput
+}
+
+// The object that contains a reference to a Container Group Profile
+type ContainerGroupProfileStubArgs struct {
+	// The API entity reference.
+	Resource ApiEntityReferencePtrInput `pulumi:"resource"`
+}
+
+func (ContainerGroupProfileStubArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerGroupProfileStub)(nil)).Elem()
+}
+
+func (i ContainerGroupProfileStubArgs) ToContainerGroupProfileStubOutput() ContainerGroupProfileStubOutput {
+	return i.ToContainerGroupProfileStubOutputWithContext(context.Background())
+}
+
+func (i ContainerGroupProfileStubArgs) ToContainerGroupProfileStubOutputWithContext(ctx context.Context) ContainerGroupProfileStubOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupProfileStubOutput)
+}
+
+// ContainerGroupProfileStubArrayInput is an input type that accepts ContainerGroupProfileStubArray and ContainerGroupProfileStubArrayOutput values.
+// You can construct a concrete instance of `ContainerGroupProfileStubArrayInput` via:
+//
+//	ContainerGroupProfileStubArray{ ContainerGroupProfileStubArgs{...} }
+type ContainerGroupProfileStubArrayInput interface {
+	pulumi.Input
+
+	ToContainerGroupProfileStubArrayOutput() ContainerGroupProfileStubArrayOutput
+	ToContainerGroupProfileStubArrayOutputWithContext(context.Context) ContainerGroupProfileStubArrayOutput
+}
+
+type ContainerGroupProfileStubArray []ContainerGroupProfileStubInput
+
+func (ContainerGroupProfileStubArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ContainerGroupProfileStub)(nil)).Elem()
+}
+
+func (i ContainerGroupProfileStubArray) ToContainerGroupProfileStubArrayOutput() ContainerGroupProfileStubArrayOutput {
+	return i.ToContainerGroupProfileStubArrayOutputWithContext(context.Background())
+}
+
+func (i ContainerGroupProfileStubArray) ToContainerGroupProfileStubArrayOutputWithContext(ctx context.Context) ContainerGroupProfileStubArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupProfileStubArrayOutput)
+}
+
+// The object that contains a reference to a Container Group Profile
+type ContainerGroupProfileStubOutput struct{ *pulumi.OutputState }
+
+func (ContainerGroupProfileStubOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerGroupProfileStub)(nil)).Elem()
+}
+
+func (o ContainerGroupProfileStubOutput) ToContainerGroupProfileStubOutput() ContainerGroupProfileStubOutput {
+	return o
+}
+
+func (o ContainerGroupProfileStubOutput) ToContainerGroupProfileStubOutputWithContext(ctx context.Context) ContainerGroupProfileStubOutput {
+	return o
+}
+
+// The API entity reference.
+func (o ContainerGroupProfileStubOutput) Resource() ApiEntityReferencePtrOutput {
+	return o.ApplyT(func(v ContainerGroupProfileStub) *ApiEntityReference { return v.Resource }).(ApiEntityReferencePtrOutput)
+}
+
+type ContainerGroupProfileStubArrayOutput struct{ *pulumi.OutputState }
+
+func (ContainerGroupProfileStubArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ContainerGroupProfileStub)(nil)).Elem()
+}
+
+func (o ContainerGroupProfileStubArrayOutput) ToContainerGroupProfileStubArrayOutput() ContainerGroupProfileStubArrayOutput {
+	return o
+}
+
+func (o ContainerGroupProfileStubArrayOutput) ToContainerGroupProfileStubArrayOutputWithContext(ctx context.Context) ContainerGroupProfileStubArrayOutput {
+	return o
+}
+
+func (o ContainerGroupProfileStubArrayOutput) Index(i pulumi.IntInput) ContainerGroupProfileStubOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContainerGroupProfileStub {
+		return vs[0].([]ContainerGroupProfileStub)[vs[1].(int)]
+	}).(ContainerGroupProfileStubOutput)
+}
+
+// The object that contains a reference to a Container Group Profile
+type ContainerGroupProfileStubResponse struct {
+	// The API entity reference.
+	Resource *ApiEntityReferenceResponse `pulumi:"resource"`
+}
+
+// The object that contains a reference to a Container Group Profile
+type ContainerGroupProfileStubResponseOutput struct{ *pulumi.OutputState }
+
+func (ContainerGroupProfileStubResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerGroupProfileStubResponse)(nil)).Elem()
+}
+
+func (o ContainerGroupProfileStubResponseOutput) ToContainerGroupProfileStubResponseOutput() ContainerGroupProfileStubResponseOutput {
+	return o
+}
+
+func (o ContainerGroupProfileStubResponseOutput) ToContainerGroupProfileStubResponseOutputWithContext(ctx context.Context) ContainerGroupProfileStubResponseOutput {
+	return o
+}
+
+// The API entity reference.
+func (o ContainerGroupProfileStubResponseOutput) Resource() ApiEntityReferenceResponsePtrOutput {
+	return o.ApplyT(func(v ContainerGroupProfileStubResponse) *ApiEntityReferenceResponse { return v.Resource }).(ApiEntityReferenceResponsePtrOutput)
+}
+
+type ContainerGroupProfileStubResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ContainerGroupProfileStubResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ContainerGroupProfileStubResponse)(nil)).Elem()
+}
+
+func (o ContainerGroupProfileStubResponseArrayOutput) ToContainerGroupProfileStubResponseArrayOutput() ContainerGroupProfileStubResponseArrayOutput {
+	return o
+}
+
+func (o ContainerGroupProfileStubResponseArrayOutput) ToContainerGroupProfileStubResponseArrayOutputWithContext(ctx context.Context) ContainerGroupProfileStubResponseArrayOutput {
+	return o
+}
+
+func (o ContainerGroupProfileStubResponseArrayOutput) Index(i pulumi.IntInput) ContainerGroupProfileStubResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContainerGroupProfileStubResponse {
+		return vs[0].([]ContainerGroupProfileStubResponse)[vs[1].(int)]
+	}).(ContainerGroupProfileStubResponseOutput)
 }
 
 // The instance view of the container group. Only valid in response.
@@ -3368,6 +3714,199 @@ func (o DnsConfigurationResponsePtrOutput) SearchDomains() pulumi.StringPtrOutpu
 		}
 		return v.SearchDomains
 	}).(pulumi.StringPtrOutput)
+}
+
+// Describes the elastic profile of the Container Scale Set
+type ElasticProfile struct {
+	DesiredCount *int `pulumi:"desiredCount"`
+}
+
+// ElasticProfileInput is an input type that accepts ElasticProfileArgs and ElasticProfileOutput values.
+// You can construct a concrete instance of `ElasticProfileInput` via:
+//
+//	ElasticProfileArgs{...}
+type ElasticProfileInput interface {
+	pulumi.Input
+
+	ToElasticProfileOutput() ElasticProfileOutput
+	ToElasticProfileOutputWithContext(context.Context) ElasticProfileOutput
+}
+
+// Describes the elastic profile of the Container Scale Set
+type ElasticProfileArgs struct {
+	DesiredCount pulumi.IntPtrInput `pulumi:"desiredCount"`
+}
+
+func (ElasticProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticProfile)(nil)).Elem()
+}
+
+func (i ElasticProfileArgs) ToElasticProfileOutput() ElasticProfileOutput {
+	return i.ToElasticProfileOutputWithContext(context.Background())
+}
+
+func (i ElasticProfileArgs) ToElasticProfileOutputWithContext(ctx context.Context) ElasticProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticProfileOutput)
+}
+
+func (i ElasticProfileArgs) ToElasticProfilePtrOutput() ElasticProfilePtrOutput {
+	return i.ToElasticProfilePtrOutputWithContext(context.Background())
+}
+
+func (i ElasticProfileArgs) ToElasticProfilePtrOutputWithContext(ctx context.Context) ElasticProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticProfileOutput).ToElasticProfilePtrOutputWithContext(ctx)
+}
+
+// ElasticProfilePtrInput is an input type that accepts ElasticProfileArgs, ElasticProfilePtr and ElasticProfilePtrOutput values.
+// You can construct a concrete instance of `ElasticProfilePtrInput` via:
+//
+//	        ElasticProfileArgs{...}
+//
+//	or:
+//
+//	        nil
+type ElasticProfilePtrInput interface {
+	pulumi.Input
+
+	ToElasticProfilePtrOutput() ElasticProfilePtrOutput
+	ToElasticProfilePtrOutputWithContext(context.Context) ElasticProfilePtrOutput
+}
+
+type elasticProfilePtrType ElasticProfileArgs
+
+func ElasticProfilePtr(v *ElasticProfileArgs) ElasticProfilePtrInput {
+	return (*elasticProfilePtrType)(v)
+}
+
+func (*elasticProfilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticProfile)(nil)).Elem()
+}
+
+func (i *elasticProfilePtrType) ToElasticProfilePtrOutput() ElasticProfilePtrOutput {
+	return i.ToElasticProfilePtrOutputWithContext(context.Background())
+}
+
+func (i *elasticProfilePtrType) ToElasticProfilePtrOutputWithContext(ctx context.Context) ElasticProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElasticProfilePtrOutput)
+}
+
+// Describes the elastic profile of the Container Scale Set
+type ElasticProfileOutput struct{ *pulumi.OutputState }
+
+func (ElasticProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticProfile)(nil)).Elem()
+}
+
+func (o ElasticProfileOutput) ToElasticProfileOutput() ElasticProfileOutput {
+	return o
+}
+
+func (o ElasticProfileOutput) ToElasticProfileOutputWithContext(ctx context.Context) ElasticProfileOutput {
+	return o
+}
+
+func (o ElasticProfileOutput) ToElasticProfilePtrOutput() ElasticProfilePtrOutput {
+	return o.ToElasticProfilePtrOutputWithContext(context.Background())
+}
+
+func (o ElasticProfileOutput) ToElasticProfilePtrOutputWithContext(ctx context.Context) ElasticProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElasticProfile) *ElasticProfile {
+		return &v
+	}).(ElasticProfilePtrOutput)
+}
+
+func (o ElasticProfileOutput) DesiredCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElasticProfile) *int { return v.DesiredCount }).(pulumi.IntPtrOutput)
+}
+
+type ElasticProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (ElasticProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticProfile)(nil)).Elem()
+}
+
+func (o ElasticProfilePtrOutput) ToElasticProfilePtrOutput() ElasticProfilePtrOutput {
+	return o
+}
+
+func (o ElasticProfilePtrOutput) ToElasticProfilePtrOutputWithContext(ctx context.Context) ElasticProfilePtrOutput {
+	return o
+}
+
+func (o ElasticProfilePtrOutput) Elem() ElasticProfileOutput {
+	return o.ApplyT(func(v *ElasticProfile) ElasticProfile {
+		if v != nil {
+			return *v
+		}
+		var ret ElasticProfile
+		return ret
+	}).(ElasticProfileOutput)
+}
+
+func (o ElasticProfilePtrOutput) DesiredCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ElasticProfile) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DesiredCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Describes the elastic profile of the Container Scale Set
+type ElasticProfileResponse struct {
+	DesiredCount *int `pulumi:"desiredCount"`
+}
+
+// Describes the elastic profile of the Container Scale Set
+type ElasticProfileResponseOutput struct{ *pulumi.OutputState }
+
+func (ElasticProfileResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElasticProfileResponse)(nil)).Elem()
+}
+
+func (o ElasticProfileResponseOutput) ToElasticProfileResponseOutput() ElasticProfileResponseOutput {
+	return o
+}
+
+func (o ElasticProfileResponseOutput) ToElasticProfileResponseOutputWithContext(ctx context.Context) ElasticProfileResponseOutput {
+	return o
+}
+
+func (o ElasticProfileResponseOutput) DesiredCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElasticProfileResponse) *int { return v.DesiredCount }).(pulumi.IntPtrOutput)
+}
+
+type ElasticProfileResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ElasticProfileResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElasticProfileResponse)(nil)).Elem()
+}
+
+func (o ElasticProfileResponsePtrOutput) ToElasticProfileResponsePtrOutput() ElasticProfileResponsePtrOutput {
+	return o
+}
+
+func (o ElasticProfileResponsePtrOutput) ToElasticProfileResponsePtrOutputWithContext(ctx context.Context) ElasticProfileResponsePtrOutput {
+	return o
+}
+
+func (o ElasticProfileResponsePtrOutput) Elem() ElasticProfileResponseOutput {
+	return o.ApplyT(func(v *ElasticProfileResponse) ElasticProfileResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ElasticProfileResponse
+		return ret
+	}).(ElasticProfileResponseOutput)
+}
+
+func (o ElasticProfileResponsePtrOutput) DesiredCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ElasticProfileResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DesiredCount
+	}).(pulumi.IntPtrOutput)
 }
 
 // The container group encryption properties.
@@ -5845,6 +6384,278 @@ func (o LogAnalyticsResponsePtrOutput) WorkspaceResourceId() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// Identity for the nGroup.
+type NGroupIdentity struct {
+	// The type of identity used for the container scale set. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the nGroup.
+	Type *ResourceIdentityType `pulumi:"type"`
+	// The list of user identities associated with the container scale set. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
+}
+
+// NGroupIdentityInput is an input type that accepts NGroupIdentityArgs and NGroupIdentityOutput values.
+// You can construct a concrete instance of `NGroupIdentityInput` via:
+//
+//	NGroupIdentityArgs{...}
+type NGroupIdentityInput interface {
+	pulumi.Input
+
+	ToNGroupIdentityOutput() NGroupIdentityOutput
+	ToNGroupIdentityOutputWithContext(context.Context) NGroupIdentityOutput
+}
+
+// Identity for the nGroup.
+type NGroupIdentityArgs struct {
+	// The type of identity used for the container scale set. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the nGroup.
+	Type ResourceIdentityTypePtrInput `pulumi:"type"`
+	// The list of user identities associated with the container scale set. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
+}
+
+func (NGroupIdentityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NGroupIdentity)(nil)).Elem()
+}
+
+func (i NGroupIdentityArgs) ToNGroupIdentityOutput() NGroupIdentityOutput {
+	return i.ToNGroupIdentityOutputWithContext(context.Background())
+}
+
+func (i NGroupIdentityArgs) ToNGroupIdentityOutputWithContext(ctx context.Context) NGroupIdentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NGroupIdentityOutput)
+}
+
+func (i NGroupIdentityArgs) ToNGroupIdentityPtrOutput() NGroupIdentityPtrOutput {
+	return i.ToNGroupIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i NGroupIdentityArgs) ToNGroupIdentityPtrOutputWithContext(ctx context.Context) NGroupIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NGroupIdentityOutput).ToNGroupIdentityPtrOutputWithContext(ctx)
+}
+
+// NGroupIdentityPtrInput is an input type that accepts NGroupIdentityArgs, NGroupIdentityPtr and NGroupIdentityPtrOutput values.
+// You can construct a concrete instance of `NGroupIdentityPtrInput` via:
+//
+//	        NGroupIdentityArgs{...}
+//
+//	or:
+//
+//	        nil
+type NGroupIdentityPtrInput interface {
+	pulumi.Input
+
+	ToNGroupIdentityPtrOutput() NGroupIdentityPtrOutput
+	ToNGroupIdentityPtrOutputWithContext(context.Context) NGroupIdentityPtrOutput
+}
+
+type ngroupIdentityPtrType NGroupIdentityArgs
+
+func NGroupIdentityPtr(v *NGroupIdentityArgs) NGroupIdentityPtrInput {
+	return (*ngroupIdentityPtrType)(v)
+}
+
+func (*ngroupIdentityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NGroupIdentity)(nil)).Elem()
+}
+
+func (i *ngroupIdentityPtrType) ToNGroupIdentityPtrOutput() NGroupIdentityPtrOutput {
+	return i.ToNGroupIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i *ngroupIdentityPtrType) ToNGroupIdentityPtrOutputWithContext(ctx context.Context) NGroupIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NGroupIdentityPtrOutput)
+}
+
+// Identity for the nGroup.
+type NGroupIdentityOutput struct{ *pulumi.OutputState }
+
+func (NGroupIdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NGroupIdentity)(nil)).Elem()
+}
+
+func (o NGroupIdentityOutput) ToNGroupIdentityOutput() NGroupIdentityOutput {
+	return o
+}
+
+func (o NGroupIdentityOutput) ToNGroupIdentityOutputWithContext(ctx context.Context) NGroupIdentityOutput {
+	return o
+}
+
+func (o NGroupIdentityOutput) ToNGroupIdentityPtrOutput() NGroupIdentityPtrOutput {
+	return o.ToNGroupIdentityPtrOutputWithContext(context.Background())
+}
+
+func (o NGroupIdentityOutput) ToNGroupIdentityPtrOutputWithContext(ctx context.Context) NGroupIdentityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NGroupIdentity) *NGroupIdentity {
+		return &v
+	}).(NGroupIdentityPtrOutput)
+}
+
+// The type of identity used for the container scale set. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the nGroup.
+func (o NGroupIdentityOutput) Type() ResourceIdentityTypePtrOutput {
+	return o.ApplyT(func(v NGroupIdentity) *ResourceIdentityType { return v.Type }).(ResourceIdentityTypePtrOutput)
+}
+
+// The list of user identities associated with the container scale set. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+func (o NGroupIdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NGroupIdentity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
+}
+
+type NGroupIdentityPtrOutput struct{ *pulumi.OutputState }
+
+func (NGroupIdentityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NGroupIdentity)(nil)).Elem()
+}
+
+func (o NGroupIdentityPtrOutput) ToNGroupIdentityPtrOutput() NGroupIdentityPtrOutput {
+	return o
+}
+
+func (o NGroupIdentityPtrOutput) ToNGroupIdentityPtrOutputWithContext(ctx context.Context) NGroupIdentityPtrOutput {
+	return o
+}
+
+func (o NGroupIdentityPtrOutput) Elem() NGroupIdentityOutput {
+	return o.ApplyT(func(v *NGroupIdentity) NGroupIdentity {
+		if v != nil {
+			return *v
+		}
+		var ret NGroupIdentity
+		return ret
+	}).(NGroupIdentityOutput)
+}
+
+// The type of identity used for the container scale set. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the nGroup.
+func (o NGroupIdentityPtrOutput) Type() ResourceIdentityTypePtrOutput {
+	return o.ApplyT(func(v *NGroupIdentity) *ResourceIdentityType {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(ResourceIdentityTypePtrOutput)
+}
+
+// The list of user identities associated with the container scale set. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+func (o NGroupIdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NGroupIdentity) []string {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentities
+	}).(pulumi.StringArrayOutput)
+}
+
+// Identity for the nGroup.
+type NGroupIdentityResponse struct {
+	// The principal id of the nGroup identity. This property will only be provided for a system assigned identity.
+	PrincipalId string `pulumi:"principalId"`
+	// The tenant id associated with the nGroup. This property will only be provided for a system assigned identity.
+	TenantId string `pulumi:"tenantId"`
+	// The type of identity used for the container scale set. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the nGroup.
+	Type *string `pulumi:"type"`
+	// The list of user identities associated with the container scale set. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+	UserAssignedIdentities map[string]UserAssignedIdentityResponse `pulumi:"userAssignedIdentities"`
+}
+
+// Identity for the nGroup.
+type NGroupIdentityResponseOutput struct{ *pulumi.OutputState }
+
+func (NGroupIdentityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NGroupIdentityResponse)(nil)).Elem()
+}
+
+func (o NGroupIdentityResponseOutput) ToNGroupIdentityResponseOutput() NGroupIdentityResponseOutput {
+	return o
+}
+
+func (o NGroupIdentityResponseOutput) ToNGroupIdentityResponseOutputWithContext(ctx context.Context) NGroupIdentityResponseOutput {
+	return o
+}
+
+// The principal id of the nGroup identity. This property will only be provided for a system assigned identity.
+func (o NGroupIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v NGroupIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+// The tenant id associated with the nGroup. This property will only be provided for a system assigned identity.
+func (o NGroupIdentityResponseOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v NGroupIdentityResponse) string { return v.TenantId }).(pulumi.StringOutput)
+}
+
+// The type of identity used for the container scale set. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the nGroup.
+func (o NGroupIdentityResponseOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NGroupIdentityResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// The list of user identities associated with the container scale set. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+func (o NGroupIdentityResponseOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
+	return o.ApplyT(func(v NGroupIdentityResponse) map[string]UserAssignedIdentityResponse {
+		return v.UserAssignedIdentities
+	}).(UserAssignedIdentityResponseMapOutput)
+}
+
+type NGroupIdentityResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (NGroupIdentityResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NGroupIdentityResponse)(nil)).Elem()
+}
+
+func (o NGroupIdentityResponsePtrOutput) ToNGroupIdentityResponsePtrOutput() NGroupIdentityResponsePtrOutput {
+	return o
+}
+
+func (o NGroupIdentityResponsePtrOutput) ToNGroupIdentityResponsePtrOutputWithContext(ctx context.Context) NGroupIdentityResponsePtrOutput {
+	return o
+}
+
+func (o NGroupIdentityResponsePtrOutput) Elem() NGroupIdentityResponseOutput {
+	return o.ApplyT(func(v *NGroupIdentityResponse) NGroupIdentityResponse {
+		if v != nil {
+			return *v
+		}
+		var ret NGroupIdentityResponse
+		return ret
+	}).(NGroupIdentityResponseOutput)
+}
+
+// The principal id of the nGroup identity. This property will only be provided for a system assigned identity.
+func (o NGroupIdentityResponsePtrOutput) PrincipalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NGroupIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrincipalId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The tenant id associated with the nGroup. This property will only be provided for a system assigned identity.
+func (o NGroupIdentityResponsePtrOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NGroupIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TenantId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of identity used for the container scale set. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the nGroup.
+func (o NGroupIdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NGroupIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The list of user identities associated with the container scale set. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+func (o NGroupIdentityResponsePtrOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
+	return o.ApplyT(func(v *NGroupIdentityResponse) map[string]UserAssignedIdentityResponse {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentities
+	}).(UserAssignedIdentityResponseMapOutput)
+}
+
 // The port exposed on the container group.
 type Port struct {
 	// The port number.
@@ -7405,6 +8216,67 @@ func (o SecurityContextDefinitionResponsePtrOutput) SeccompProfile() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+// Metadata pertaining to creation and last modification of the resource.
+type SystemDataResponse struct {
+	// The timestamp of resource creation (UTC).
+	CreatedAt *string `pulumi:"createdAt"`
+	// The identity that created the resource.
+	CreatedBy *string `pulumi:"createdBy"`
+	// The type of identity that created the resource.
+	CreatedByType *string `pulumi:"createdByType"`
+	// The timestamp of resource last modification (UTC)
+	LastModifiedAt *string `pulumi:"lastModifiedAt"`
+	// The identity that last modified the resource.
+	LastModifiedBy *string `pulumi:"lastModifiedBy"`
+	// The type of identity that last modified the resource.
+	LastModifiedByType *string `pulumi:"lastModifiedByType"`
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+type SystemDataResponseOutput struct{ *pulumi.OutputState }
+
+func (SystemDataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemDataResponse)(nil)).Elem()
+}
+
+func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataResponseOutput {
+	return o
+}
+
+func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
+	return o
+}
+
+// The timestamp of resource creation (UTC).
+func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+}
+
+// The identity that created the resource.
+func (o SystemDataResponseOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
+}
+
+// The type of identity that created the resource.
+func (o SystemDataResponseOutput) CreatedByType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
+}
+
+// The timestamp of resource last modification (UTC)
+func (o SystemDataResponseOutput) LastModifiedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
+}
+
+// The identity that last modified the resource.
+func (o SystemDataResponseOutput) LastModifiedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
+}
+
+// The type of identity that last modified the resource.
+func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
+}
+
 // The list of user identities associated with the container group. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
 type UserAssignedIdentitiesResponse struct {
 	// The client id of user assigned identity.
@@ -7456,6 +8328,59 @@ func (o UserAssignedIdentitiesResponseMapOutput) MapIndex(k pulumi.StringInput) 
 	return pulumi.All(o, k).ApplyT(func(vs []interface{}) UserAssignedIdentitiesResponse {
 		return vs[0].(map[string]UserAssignedIdentitiesResponse)[vs[1].(string)]
 	}).(UserAssignedIdentitiesResponseOutput)
+}
+
+// User assigned identity properties
+type UserAssignedIdentityResponse struct {
+	// The client ID of the assigned identity.
+	ClientId string `pulumi:"clientId"`
+	// The principal ID of the assigned identity.
+	PrincipalId string `pulumi:"principalId"`
+}
+
+// User assigned identity properties
+type UserAssignedIdentityResponseOutput struct{ *pulumi.OutputState }
+
+func (UserAssignedIdentityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserAssignedIdentityResponse)(nil)).Elem()
+}
+
+func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutput() UserAssignedIdentityResponseOutput {
+	return o
+}
+
+func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutputWithContext(ctx context.Context) UserAssignedIdentityResponseOutput {
+	return o
+}
+
+// The client ID of the assigned identity.
+func (o UserAssignedIdentityResponseOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// The principal ID of the assigned identity.
+func (o UserAssignedIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+type UserAssignedIdentityResponseMapOutput struct{ *pulumi.OutputState }
+
+func (UserAssignedIdentityResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]UserAssignedIdentityResponse)(nil)).Elem()
+}
+
+func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutput() UserAssignedIdentityResponseMapOutput {
+	return o
+}
+
+func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutputWithContext(ctx context.Context) UserAssignedIdentityResponseMapOutput {
+	return o
+}
+
+func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentityResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) UserAssignedIdentityResponse {
+		return vs[0].(map[string]UserAssignedIdentityResponse)[vs[1].(string)]
+	}).(UserAssignedIdentityResponseOutput)
 }
 
 // The properties of the volume.
@@ -7847,6 +8772,10 @@ func (o VolumeResponseArrayOutput) Index(i pulumi.IntInput) VolumeResponseOutput
 }
 
 func init() {
+	pulumi.RegisterOutputType(ApiEntityReferenceOutput{})
+	pulumi.RegisterOutputType(ApiEntityReferencePtrOutput{})
+	pulumi.RegisterOutputType(ApiEntityReferenceResponseOutput{})
+	pulumi.RegisterOutputType(ApiEntityReferenceResponsePtrOutput{})
 	pulumi.RegisterOutputType(AzureFileVolumeOutput{})
 	pulumi.RegisterOutputType(AzureFileVolumePtrOutput{})
 	pulumi.RegisterOutputType(AzureFileVolumeResponseOutput{})
@@ -7873,6 +8802,10 @@ func init() {
 	pulumi.RegisterOutputType(ContainerGroupIdentityPtrOutput{})
 	pulumi.RegisterOutputType(ContainerGroupIdentityResponseOutput{})
 	pulumi.RegisterOutputType(ContainerGroupIdentityResponsePtrOutput{})
+	pulumi.RegisterOutputType(ContainerGroupProfileStubOutput{})
+	pulumi.RegisterOutputType(ContainerGroupProfileStubArrayOutput{})
+	pulumi.RegisterOutputType(ContainerGroupProfileStubResponseOutput{})
+	pulumi.RegisterOutputType(ContainerGroupProfileStubResponseArrayOutput{})
 	pulumi.RegisterOutputType(ContainerGroupPropertiesResponseInstanceViewOutput{})
 	pulumi.RegisterOutputType(ContainerGroupSubnetIdOutput{})
 	pulumi.RegisterOutputType(ContainerGroupSubnetIdArrayOutput{})
@@ -7902,6 +8835,10 @@ func init() {
 	pulumi.RegisterOutputType(DnsConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(DnsConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(DnsConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(ElasticProfileOutput{})
+	pulumi.RegisterOutputType(ElasticProfilePtrOutput{})
+	pulumi.RegisterOutputType(ElasticProfileResponseOutput{})
+	pulumi.RegisterOutputType(ElasticProfileResponsePtrOutput{})
 	pulumi.RegisterOutputType(EncryptionPropertiesOutput{})
 	pulumi.RegisterOutputType(EncryptionPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(EncryptionPropertiesResponseOutput{})
@@ -7941,6 +8878,10 @@ func init() {
 	pulumi.RegisterOutputType(LogAnalyticsPtrOutput{})
 	pulumi.RegisterOutputType(LogAnalyticsResponseOutput{})
 	pulumi.RegisterOutputType(LogAnalyticsResponsePtrOutput{})
+	pulumi.RegisterOutputType(NGroupIdentityOutput{})
+	pulumi.RegisterOutputType(NGroupIdentityPtrOutput{})
+	pulumi.RegisterOutputType(NGroupIdentityResponseOutput{})
+	pulumi.RegisterOutputType(NGroupIdentityResponsePtrOutput{})
 	pulumi.RegisterOutputType(PortOutput{})
 	pulumi.RegisterOutputType(PortArrayOutput{})
 	pulumi.RegisterOutputType(PortResponseOutput{})
@@ -7965,8 +8906,11 @@ func init() {
 	pulumi.RegisterOutputType(SecurityContextDefinitionPtrOutput{})
 	pulumi.RegisterOutputType(SecurityContextDefinitionResponseOutput{})
 	pulumi.RegisterOutputType(SecurityContextDefinitionResponsePtrOutput{})
+	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentitiesResponseOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentitiesResponseMapOutput{})
+	pulumi.RegisterOutputType(UserAssignedIdentityResponseOutput{})
+	pulumi.RegisterOutputType(UserAssignedIdentityResponseMapOutput{})
 	pulumi.RegisterOutputType(VolumeOutput{})
 	pulumi.RegisterOutputType(VolumeArrayOutput{})
 	pulumi.RegisterOutputType(VolumeMountOutput{})

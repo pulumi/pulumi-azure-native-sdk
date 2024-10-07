@@ -13,6 +13,8 @@ import (
 
 // Retrieves detailed properties of the Availability Group.
 // Azure REST API version: 2024-01-01.
+//
+// Other available API versions: 2024-05-01-preview.
 func GetSqlServerAvailabilityGroupDetailView(ctx *pulumi.Context, args *GetSqlServerAvailabilityGroupDetailViewArgs, opts ...pulumi.InvokeOption) (*GetSqlServerAvailabilityGroupDetailViewResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetSqlServerAvailabilityGroupDetailViewResult

@@ -48,6 +48,9 @@ func NewCodeSigningAccount(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:codesigning:CodeSigningAccount"),
 		},
+		{
+			Type: pulumi.String("azure-native:codesigning/v20240930preview:CodeSigningAccount"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

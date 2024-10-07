@@ -57,6 +57,9 @@ func NewBrokerAuthorization(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:iotoperations/v20240701preview:BrokerAuthorization"),
 		},
+		{
+			Type: pulumi.String("azure-native:iotoperations/v20240915preview:BrokerAuthorization"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -14,7 +14,7 @@ import (
 // Get a Fleet
 // Azure REST API version: 2024-05-01-preview.
 //
-// Other available API versions: 2023-11-01-preview.
+// Other available API versions: 2023-11-01-preview, 2024-11-01.
 func LookupFleet(ctx *pulumi.Context, args *LookupFleetArgs, opts ...pulumi.InvokeOption) (*LookupFleetResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFleetResult

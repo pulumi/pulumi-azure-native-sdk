@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ContainerGroup{}
 	case "azure-native:containerinstance:ContainerGroupProfile":
 		r = &ContainerGroupProfile{}
+	case "azure-native:containerinstance:NGroup":
+		r = &NGroup{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
