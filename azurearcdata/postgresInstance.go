@@ -15,7 +15,7 @@ import (
 // A Postgres Instance.
 // Azure REST API version: 2023-01-15-preview. Prior API version in Azure Native 1.x: 2021-06-01-preview.
 //
-// Other available API versions: 2024-01-01.
+// Other available API versions: 2024-01-01, 2024-05-01-preview.
 type PostgresInstance struct {
 	pulumi.CustomResourceState
 
@@ -71,6 +71,9 @@ func NewPostgresInstance(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azurearcdata/v20240101:PostgresInstance"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurearcdata/v20240501preview:PostgresInstance"),
 		},
 	})
 	opts = append(opts, aliases)

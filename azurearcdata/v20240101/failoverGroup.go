@@ -50,6 +50,9 @@ func NewFailoverGroup(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:azurearcdata/v20230115preview:FailoverGroup"),
 		},
+		{
+			Type: pulumi.String("azure-native:azurearcdata/v20240501preview:FailoverGroup"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

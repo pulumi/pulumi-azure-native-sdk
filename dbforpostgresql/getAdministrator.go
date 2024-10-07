@@ -14,7 +14,7 @@ import (
 // Gets information about a server.
 // Azure REST API version: 2022-12-01.
 //
-// Other available API versions: 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview.
+// Other available API versions: 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-08-01.
 func LookupAdministrator(ctx *pulumi.Context, args *LookupAdministratorArgs, opts ...pulumi.InvokeOption) (*LookupAdministratorResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAdministratorResult

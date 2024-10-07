@@ -56,6 +56,9 @@ func NewSqlServerDatabase(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:azurearcdata/v20240101:SqlServerDatabase"),
 		},
+		{
+			Type: pulumi.String("azure-native:azurearcdata/v20240501preview:SqlServerDatabase"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

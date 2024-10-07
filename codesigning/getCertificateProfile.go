@@ -13,6 +13,8 @@ import (
 
 // Get details of a certificate profile.
 // Azure REST API version: 2024-02-05-preview.
+//
+// Other available API versions: 2024-09-30-preview.
 func LookupCertificateProfile(ctx *pulumi.Context, args *LookupCertificateProfileArgs, opts ...pulumi.InvokeOption) (*LookupCertificateProfileResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCertificateProfileResult

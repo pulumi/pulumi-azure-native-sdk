@@ -71,6 +71,9 @@ func NewFleet(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:azurefleet/v20240501preview:Fleet"),
 		},
+		{
+			Type: pulumi.String("azure-native:azurefleet/v20241101:Fleet"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

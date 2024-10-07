@@ -72,6 +72,9 @@ func NewDatabase(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20240301preview:Database"),
 		},
+		{
+			Type: pulumi.String("azure-native:dbforpostgresql/v20240801:Database"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

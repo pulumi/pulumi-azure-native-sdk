@@ -95,6 +95,9 @@ func NewCertificateProfile(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:codesigning:CertificateProfile"),
 		},
+		{
+			Type: pulumi.String("azure-native:codesigning/v20240930preview:CertificateProfile"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

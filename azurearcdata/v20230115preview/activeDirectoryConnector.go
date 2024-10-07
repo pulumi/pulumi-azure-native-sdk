@@ -56,6 +56,9 @@ func NewActiveDirectoryConnector(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:azurearcdata/v20240101:ActiveDirectoryConnector"),
 		},
+		{
+			Type: pulumi.String("azure-native:azurearcdata/v20240501preview:ActiveDirectoryConnector"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

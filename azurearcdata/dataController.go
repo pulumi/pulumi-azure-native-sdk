@@ -15,7 +15,7 @@ import (
 // Data controller resource
 // Azure REST API version: 2023-01-15-preview. Prior API version in Azure Native 1.x: 2021-06-01-preview.
 //
-// Other available API versions: 2024-01-01.
+// Other available API versions: 2024-01-01, 2024-05-01-preview.
 type DataController struct {
 	pulumi.CustomResourceState
 
@@ -73,6 +73,9 @@ func NewDataController(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azurearcdata/v20240101:DataController"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurearcdata/v20240501preview:DataController"),
 		},
 	})
 	opts = append(opts, aliases)

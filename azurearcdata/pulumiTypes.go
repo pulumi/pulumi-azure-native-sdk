@@ -2798,6 +2798,151 @@ func (o AvailabilityGroupStateResponsePtrOutput) SynchronizationHealthDescriptio
 	}).(pulumi.StringPtrOutput)
 }
 
+// The background job details.
+type BackgroundJobResponse struct {
+	// The end time of the background job.
+	EndTime *string `pulumi:"endTime"`
+	// The execution state of the background job.
+	ExecutionState *string `pulumi:"executionState"`
+	// The last execution status of the background job.
+	LastExecutionStatus *string `pulumi:"lastExecutionStatus"`
+	// The last execution time of the background job.
+	LastExecutionTime *string `pulumi:"lastExecutionTime"`
+	// The start time of the background job.
+	StartTime *string `pulumi:"startTime"`
+	// The state of the background job.
+	State *string `pulumi:"state"`
+}
+
+// The background job details.
+type BackgroundJobResponseOutput struct{ *pulumi.OutputState }
+
+func (BackgroundJobResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackgroundJobResponse)(nil)).Elem()
+}
+
+func (o BackgroundJobResponseOutput) ToBackgroundJobResponseOutput() BackgroundJobResponseOutput {
+	return o
+}
+
+func (o BackgroundJobResponseOutput) ToBackgroundJobResponseOutputWithContext(ctx context.Context) BackgroundJobResponseOutput {
+	return o
+}
+
+// The end time of the background job.
+func (o BackgroundJobResponseOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BackgroundJobResponse) *string { return v.EndTime }).(pulumi.StringPtrOutput)
+}
+
+// The execution state of the background job.
+func (o BackgroundJobResponseOutput) ExecutionState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BackgroundJobResponse) *string { return v.ExecutionState }).(pulumi.StringPtrOutput)
+}
+
+// The last execution status of the background job.
+func (o BackgroundJobResponseOutput) LastExecutionStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BackgroundJobResponse) *string { return v.LastExecutionStatus }).(pulumi.StringPtrOutput)
+}
+
+// The last execution time of the background job.
+func (o BackgroundJobResponseOutput) LastExecutionTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BackgroundJobResponse) *string { return v.LastExecutionTime }).(pulumi.StringPtrOutput)
+}
+
+// The start time of the background job.
+func (o BackgroundJobResponseOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BackgroundJobResponse) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+}
+
+// The state of the background job.
+func (o BackgroundJobResponseOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BackgroundJobResponse) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type BackgroundJobResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (BackgroundJobResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackgroundJobResponse)(nil)).Elem()
+}
+
+func (o BackgroundJobResponsePtrOutput) ToBackgroundJobResponsePtrOutput() BackgroundJobResponsePtrOutput {
+	return o
+}
+
+func (o BackgroundJobResponsePtrOutput) ToBackgroundJobResponsePtrOutputWithContext(ctx context.Context) BackgroundJobResponsePtrOutput {
+	return o
+}
+
+func (o BackgroundJobResponsePtrOutput) Elem() BackgroundJobResponseOutput {
+	return o.ApplyT(func(v *BackgroundJobResponse) BackgroundJobResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BackgroundJobResponse
+		return ret
+	}).(BackgroundJobResponseOutput)
+}
+
+// The end time of the background job.
+func (o BackgroundJobResponsePtrOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BackgroundJobResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EndTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// The execution state of the background job.
+func (o BackgroundJobResponsePtrOutput) ExecutionState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BackgroundJobResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExecutionState
+	}).(pulumi.StringPtrOutput)
+}
+
+// The last execution status of the background job.
+func (o BackgroundJobResponsePtrOutput) LastExecutionStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BackgroundJobResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LastExecutionStatus
+	}).(pulumi.StringPtrOutput)
+}
+
+// The last execution time of the background job.
+func (o BackgroundJobResponsePtrOutput) LastExecutionTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BackgroundJobResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LastExecutionTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// The start time of the background job.
+func (o BackgroundJobResponsePtrOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BackgroundJobResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StartTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// The state of the background job.
+func (o BackgroundJobResponsePtrOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BackgroundJobResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.State
+	}).(pulumi.StringPtrOutput)
+}
+
 // Username and password for basic login authentication.
 type BasicLoginInformation struct {
 	// Login password.
@@ -7335,6 +7480,66 @@ func (o PostgresInstanceSkuResponsePtrOutput) Tier() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The sequencer action details.
+type SequencerActionResponse struct {
+	// The unique identifier of the sequencer action.
+	ActionId *string `pulumi:"actionId"`
+	// The result of the sequencer action.
+	Result *string `pulumi:"result"`
+	// The state of the sequencer action.
+	State *string `pulumi:"state"`
+}
+
+// The sequencer action details.
+type SequencerActionResponseOutput struct{ *pulumi.OutputState }
+
+func (SequencerActionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SequencerActionResponse)(nil)).Elem()
+}
+
+func (o SequencerActionResponseOutput) ToSequencerActionResponseOutput() SequencerActionResponseOutput {
+	return o
+}
+
+func (o SequencerActionResponseOutput) ToSequencerActionResponseOutputWithContext(ctx context.Context) SequencerActionResponseOutput {
+	return o
+}
+
+// The unique identifier of the sequencer action.
+func (o SequencerActionResponseOutput) ActionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SequencerActionResponse) *string { return v.ActionId }).(pulumi.StringPtrOutput)
+}
+
+// The result of the sequencer action.
+func (o SequencerActionResponseOutput) Result() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SequencerActionResponse) *string { return v.Result }).(pulumi.StringPtrOutput)
+}
+
+// The state of the sequencer action.
+func (o SequencerActionResponseOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SequencerActionResponse) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type SequencerActionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SequencerActionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SequencerActionResponse)(nil)).Elem()
+}
+
+func (o SequencerActionResponseArrayOutput) ToSequencerActionResponseArrayOutput() SequencerActionResponseArrayOutput {
+	return o
+}
+
+func (o SequencerActionResponseArrayOutput) ToSequencerActionResponseArrayOutputWithContext(ctx context.Context) SequencerActionResponseArrayOutput {
+	return o
+}
+
+func (o SequencerActionResponseArrayOutput) Index(i pulumi.IntInput) SequencerActionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SequencerActionResponse {
+		return vs[0].([]SequencerActionResponse)[vs[1].(int)]
+	}).(SequencerActionResponseOutput)
+}
+
 // The properties of Arc Sql availability group database replica resource
 type SqlAvailabilityGroupDatabaseReplicaResourceProperties struct {
 	// the database name.
@@ -10416,6 +10621,260 @@ func (o SqlServerDatabaseResourcePropertiesResponseDatabaseOptionsPtrOutput) IsT
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Properties of SQL Server ESU license.
+type SqlServerEsuLicenseProperties struct {
+	// The activation state of the license.
+	ActivationState string `pulumi:"activationState"`
+	// SQL Server ESU license type.
+	BillingPlan string `pulumi:"billingPlan"`
+	// The number of total cores of the license covers.
+	PhysicalCores int `pulumi:"physicalCores"`
+	// The Azure scope to which the license will apply.
+	ScopeType string `pulumi:"scopeType"`
+	// The SQL Server version the license covers.
+	Version string `pulumi:"version"`
+}
+
+// SqlServerEsuLicensePropertiesInput is an input type that accepts SqlServerEsuLicensePropertiesArgs and SqlServerEsuLicensePropertiesOutput values.
+// You can construct a concrete instance of `SqlServerEsuLicensePropertiesInput` via:
+//
+//	SqlServerEsuLicensePropertiesArgs{...}
+type SqlServerEsuLicensePropertiesInput interface {
+	pulumi.Input
+
+	ToSqlServerEsuLicensePropertiesOutput() SqlServerEsuLicensePropertiesOutput
+	ToSqlServerEsuLicensePropertiesOutputWithContext(context.Context) SqlServerEsuLicensePropertiesOutput
+}
+
+// Properties of SQL Server ESU license.
+type SqlServerEsuLicensePropertiesArgs struct {
+	// The activation state of the license.
+	ActivationState pulumi.StringInput `pulumi:"activationState"`
+	// SQL Server ESU license type.
+	BillingPlan pulumi.StringInput `pulumi:"billingPlan"`
+	// The number of total cores of the license covers.
+	PhysicalCores pulumi.IntInput `pulumi:"physicalCores"`
+	// The Azure scope to which the license will apply.
+	ScopeType pulumi.StringInput `pulumi:"scopeType"`
+	// The SQL Server version the license covers.
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (SqlServerEsuLicensePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerEsuLicenseProperties)(nil)).Elem()
+}
+
+func (i SqlServerEsuLicensePropertiesArgs) ToSqlServerEsuLicensePropertiesOutput() SqlServerEsuLicensePropertiesOutput {
+	return i.ToSqlServerEsuLicensePropertiesOutputWithContext(context.Background())
+}
+
+func (i SqlServerEsuLicensePropertiesArgs) ToSqlServerEsuLicensePropertiesOutputWithContext(ctx context.Context) SqlServerEsuLicensePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlServerEsuLicensePropertiesOutput)
+}
+
+// Properties of SQL Server ESU license.
+type SqlServerEsuLicensePropertiesOutput struct{ *pulumi.OutputState }
+
+func (SqlServerEsuLicensePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerEsuLicenseProperties)(nil)).Elem()
+}
+
+func (o SqlServerEsuLicensePropertiesOutput) ToSqlServerEsuLicensePropertiesOutput() SqlServerEsuLicensePropertiesOutput {
+	return o
+}
+
+func (o SqlServerEsuLicensePropertiesOutput) ToSqlServerEsuLicensePropertiesOutputWithContext(ctx context.Context) SqlServerEsuLicensePropertiesOutput {
+	return o
+}
+
+// The activation state of the license.
+func (o SqlServerEsuLicensePropertiesOutput) ActivationState() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerEsuLicenseProperties) string { return v.ActivationState }).(pulumi.StringOutput)
+}
+
+// SQL Server ESU license type.
+func (o SqlServerEsuLicensePropertiesOutput) BillingPlan() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerEsuLicenseProperties) string { return v.BillingPlan }).(pulumi.StringOutput)
+}
+
+// The number of total cores of the license covers.
+func (o SqlServerEsuLicensePropertiesOutput) PhysicalCores() pulumi.IntOutput {
+	return o.ApplyT(func(v SqlServerEsuLicenseProperties) int { return v.PhysicalCores }).(pulumi.IntOutput)
+}
+
+// The Azure scope to which the license will apply.
+func (o SqlServerEsuLicensePropertiesOutput) ScopeType() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerEsuLicenseProperties) string { return v.ScopeType }).(pulumi.StringOutput)
+}
+
+// The SQL Server version the license covers.
+func (o SqlServerEsuLicensePropertiesOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerEsuLicenseProperties) string { return v.Version }).(pulumi.StringOutput)
+}
+
+// Properties of SQL Server ESU license.
+type SqlServerEsuLicensePropertiesResponse struct {
+	// The timestamp of the activation of the SqlServerEsuLicense in ISO 8601 date-time format.
+	ActivatedAt string `pulumi:"activatedAt"`
+	// The activation state of the license.
+	ActivationState string `pulumi:"activationState"`
+	// SQL Server ESU license type.
+	BillingPlan string `pulumi:"billingPlan"`
+	// The number of total cores of the license covers.
+	PhysicalCores int `pulumi:"physicalCores"`
+	// The Azure scope to which the license will apply.
+	ScopeType string `pulumi:"scopeType"`
+	// The tenantId the SQL Server ESU license resource subscription resides in.
+	TenantId string `pulumi:"tenantId"`
+	// The timestamp of the termination of the SqlServerEsuLicense in ISO 8601 date-time format.
+	TerminatedAt string `pulumi:"terminatedAt"`
+	// The unique ID of this license. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+	UniqueId string `pulumi:"uniqueId"`
+	// The SQL Server version the license covers.
+	Version string `pulumi:"version"`
+}
+
+// Properties of SQL Server ESU license.
+type SqlServerEsuLicensePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (SqlServerEsuLicensePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerEsuLicensePropertiesResponse)(nil)).Elem()
+}
+
+func (o SqlServerEsuLicensePropertiesResponseOutput) ToSqlServerEsuLicensePropertiesResponseOutput() SqlServerEsuLicensePropertiesResponseOutput {
+	return o
+}
+
+func (o SqlServerEsuLicensePropertiesResponseOutput) ToSqlServerEsuLicensePropertiesResponseOutputWithContext(ctx context.Context) SqlServerEsuLicensePropertiesResponseOutput {
+	return o
+}
+
+// The timestamp of the activation of the SqlServerEsuLicense in ISO 8601 date-time format.
+func (o SqlServerEsuLicensePropertiesResponseOutput) ActivatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerEsuLicensePropertiesResponse) string { return v.ActivatedAt }).(pulumi.StringOutput)
+}
+
+// The activation state of the license.
+func (o SqlServerEsuLicensePropertiesResponseOutput) ActivationState() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerEsuLicensePropertiesResponse) string { return v.ActivationState }).(pulumi.StringOutput)
+}
+
+// SQL Server ESU license type.
+func (o SqlServerEsuLicensePropertiesResponseOutput) BillingPlan() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerEsuLicensePropertiesResponse) string { return v.BillingPlan }).(pulumi.StringOutput)
+}
+
+// The number of total cores of the license covers.
+func (o SqlServerEsuLicensePropertiesResponseOutput) PhysicalCores() pulumi.IntOutput {
+	return o.ApplyT(func(v SqlServerEsuLicensePropertiesResponse) int { return v.PhysicalCores }).(pulumi.IntOutput)
+}
+
+// The Azure scope to which the license will apply.
+func (o SqlServerEsuLicensePropertiesResponseOutput) ScopeType() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerEsuLicensePropertiesResponse) string { return v.ScopeType }).(pulumi.StringOutput)
+}
+
+// The tenantId the SQL Server ESU license resource subscription resides in.
+func (o SqlServerEsuLicensePropertiesResponseOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerEsuLicensePropertiesResponse) string { return v.TenantId }).(pulumi.StringOutput)
+}
+
+// The timestamp of the termination of the SqlServerEsuLicense in ISO 8601 date-time format.
+func (o SqlServerEsuLicensePropertiesResponseOutput) TerminatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerEsuLicensePropertiesResponse) string { return v.TerminatedAt }).(pulumi.StringOutput)
+}
+
+// The unique ID of this license. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+func (o SqlServerEsuLicensePropertiesResponseOutput) UniqueId() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerEsuLicensePropertiesResponse) string { return v.UniqueId }).(pulumi.StringOutput)
+}
+
+// The SQL Server version the license covers.
+func (o SqlServerEsuLicensePropertiesResponseOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerEsuLicensePropertiesResponse) string { return v.Version }).(pulumi.StringOutput)
+}
+
+// The status of the job running on the SQL Server instance.
+type SqlServerInstanceJobStatusResponse struct {
+	// The background job details.
+	BackgroundJob *BackgroundJobResponse `pulumi:"backgroundJob"`
+	// The unique identifier of the job.
+	Id *string `pulumi:"id"`
+	// The name of the SQL Server instance.
+	InstanceName *string `pulumi:"instanceName"`
+	// The exception message if the job failed.
+	JobException *string `pulumi:"jobException"`
+	// The status of the job.
+	JobStatus *string `pulumi:"jobStatus"`
+	// The list of sequencer actions.
+	SequencerActions []SequencerActionResponse `pulumi:"sequencerActions"`
+}
+
+// The status of the job running on the SQL Server instance.
+type SqlServerInstanceJobStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (SqlServerInstanceJobStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerInstanceJobStatusResponse)(nil)).Elem()
+}
+
+func (o SqlServerInstanceJobStatusResponseOutput) ToSqlServerInstanceJobStatusResponseOutput() SqlServerInstanceJobStatusResponseOutput {
+	return o
+}
+
+func (o SqlServerInstanceJobStatusResponseOutput) ToSqlServerInstanceJobStatusResponseOutputWithContext(ctx context.Context) SqlServerInstanceJobStatusResponseOutput {
+	return o
+}
+
+// The background job details.
+func (o SqlServerInstanceJobStatusResponseOutput) BackgroundJob() BackgroundJobResponsePtrOutput {
+	return o.ApplyT(func(v SqlServerInstanceJobStatusResponse) *BackgroundJobResponse { return v.BackgroundJob }).(BackgroundJobResponsePtrOutput)
+}
+
+// The unique identifier of the job.
+func (o SqlServerInstanceJobStatusResponseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlServerInstanceJobStatusResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The name of the SQL Server instance.
+func (o SqlServerInstanceJobStatusResponseOutput) InstanceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlServerInstanceJobStatusResponse) *string { return v.InstanceName }).(pulumi.StringPtrOutput)
+}
+
+// The exception message if the job failed.
+func (o SqlServerInstanceJobStatusResponseOutput) JobException() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlServerInstanceJobStatusResponse) *string { return v.JobException }).(pulumi.StringPtrOutput)
+}
+
+// The status of the job.
+func (o SqlServerInstanceJobStatusResponseOutput) JobStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlServerInstanceJobStatusResponse) *string { return v.JobStatus }).(pulumi.StringPtrOutput)
+}
+
+// The list of sequencer actions.
+func (o SqlServerInstanceJobStatusResponseOutput) SequencerActions() SequencerActionResponseArrayOutput {
+	return o.ApplyT(func(v SqlServerInstanceJobStatusResponse) []SequencerActionResponse { return v.SequencerActions }).(SequencerActionResponseArrayOutput)
+}
+
+type SqlServerInstanceJobStatusResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SqlServerInstanceJobStatusResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SqlServerInstanceJobStatusResponse)(nil)).Elem()
+}
+
+func (o SqlServerInstanceJobStatusResponseArrayOutput) ToSqlServerInstanceJobStatusResponseArrayOutput() SqlServerInstanceJobStatusResponseArrayOutput {
+	return o
+}
+
+func (o SqlServerInstanceJobStatusResponseArrayOutput) ToSqlServerInstanceJobStatusResponseArrayOutputWithContext(ctx context.Context) SqlServerInstanceJobStatusResponseArrayOutput {
+	return o
+}
+
+func (o SqlServerInstanceJobStatusResponseArrayOutput) Index(i pulumi.IntInput) SqlServerInstanceJobStatusResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SqlServerInstanceJobStatusResponse {
+		return vs[0].([]SqlServerInstanceJobStatusResponse)[vs[1].(int)]
+	}).(SqlServerInstanceJobStatusResponseOutput)
+}
+
 // Properties of SqlServerInstance.
 type SqlServerInstanceProperties struct {
 	// Status of Azure Defender.
@@ -11063,6 +11522,172 @@ func (o SqlServerInstanceTelemetryColumnResponseArrayOutput) Index(i pulumi.IntI
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SqlServerInstanceTelemetryColumnResponse {
 		return vs[0].([]SqlServerInstanceTelemetryColumnResponse)[vs[1].(int)]
 	}).(SqlServerInstanceTelemetryColumnResponseOutput)
+}
+
+// Properties of SQL Server License.
+type SqlServerLicenseProperties struct {
+	// The activation state of the license.
+	ActivationState string `pulumi:"activationState"`
+	// SQL Server license type.
+	BillingPlan string `pulumi:"billingPlan"`
+	// This property represents the choice between SQL Server Core and ESU licenses.
+	LicenseCategory string `pulumi:"licenseCategory"`
+	// The number of total cores of the license covers.
+	PhysicalCores int `pulumi:"physicalCores"`
+	// The Azure scope to which the license will apply.
+	ScopeType string `pulumi:"scopeType"`
+}
+
+// SqlServerLicensePropertiesInput is an input type that accepts SqlServerLicensePropertiesArgs and SqlServerLicensePropertiesOutput values.
+// You can construct a concrete instance of `SqlServerLicensePropertiesInput` via:
+//
+//	SqlServerLicensePropertiesArgs{...}
+type SqlServerLicensePropertiesInput interface {
+	pulumi.Input
+
+	ToSqlServerLicensePropertiesOutput() SqlServerLicensePropertiesOutput
+	ToSqlServerLicensePropertiesOutputWithContext(context.Context) SqlServerLicensePropertiesOutput
+}
+
+// Properties of SQL Server License.
+type SqlServerLicensePropertiesArgs struct {
+	// The activation state of the license.
+	ActivationState pulumi.StringInput `pulumi:"activationState"`
+	// SQL Server license type.
+	BillingPlan pulumi.StringInput `pulumi:"billingPlan"`
+	// This property represents the choice between SQL Server Core and ESU licenses.
+	LicenseCategory pulumi.StringInput `pulumi:"licenseCategory"`
+	// The number of total cores of the license covers.
+	PhysicalCores pulumi.IntInput `pulumi:"physicalCores"`
+	// The Azure scope to which the license will apply.
+	ScopeType pulumi.StringInput `pulumi:"scopeType"`
+}
+
+func (SqlServerLicensePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerLicenseProperties)(nil)).Elem()
+}
+
+func (i SqlServerLicensePropertiesArgs) ToSqlServerLicensePropertiesOutput() SqlServerLicensePropertiesOutput {
+	return i.ToSqlServerLicensePropertiesOutputWithContext(context.Background())
+}
+
+func (i SqlServerLicensePropertiesArgs) ToSqlServerLicensePropertiesOutputWithContext(ctx context.Context) SqlServerLicensePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlServerLicensePropertiesOutput)
+}
+
+// Properties of SQL Server License.
+type SqlServerLicensePropertiesOutput struct{ *pulumi.OutputState }
+
+func (SqlServerLicensePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerLicenseProperties)(nil)).Elem()
+}
+
+func (o SqlServerLicensePropertiesOutput) ToSqlServerLicensePropertiesOutput() SqlServerLicensePropertiesOutput {
+	return o
+}
+
+func (o SqlServerLicensePropertiesOutput) ToSqlServerLicensePropertiesOutputWithContext(ctx context.Context) SqlServerLicensePropertiesOutput {
+	return o
+}
+
+// The activation state of the license.
+func (o SqlServerLicensePropertiesOutput) ActivationState() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerLicenseProperties) string { return v.ActivationState }).(pulumi.StringOutput)
+}
+
+// SQL Server license type.
+func (o SqlServerLicensePropertiesOutput) BillingPlan() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerLicenseProperties) string { return v.BillingPlan }).(pulumi.StringOutput)
+}
+
+// This property represents the choice between SQL Server Core and ESU licenses.
+func (o SqlServerLicensePropertiesOutput) LicenseCategory() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerLicenseProperties) string { return v.LicenseCategory }).(pulumi.StringOutput)
+}
+
+// The number of total cores of the license covers.
+func (o SqlServerLicensePropertiesOutput) PhysicalCores() pulumi.IntOutput {
+	return o.ApplyT(func(v SqlServerLicenseProperties) int { return v.PhysicalCores }).(pulumi.IntOutput)
+}
+
+// The Azure scope to which the license will apply.
+func (o SqlServerLicensePropertiesOutput) ScopeType() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerLicenseProperties) string { return v.ScopeType }).(pulumi.StringOutput)
+}
+
+// Properties of SQL Server License.
+type SqlServerLicensePropertiesResponse struct {
+	// The activation state of the license.
+	ActivationState string `pulumi:"activationState"`
+	// SQL Server license type.
+	BillingPlan string `pulumi:"billingPlan"`
+	// The timestamp of the most recent activation of the SqlServerLicense.
+	LastActivatedAt string `pulumi:"lastActivatedAt"`
+	// The timestamp of the most recent deactivation of the SqlServerLicense.
+	LastDeactivatedAt string `pulumi:"lastDeactivatedAt"`
+	// This property represents the choice between SQL Server Core and ESU licenses.
+	LicenseCategory string `pulumi:"licenseCategory"`
+	// The number of total cores of the license covers.
+	PhysicalCores int `pulumi:"physicalCores"`
+	// The Azure scope to which the license will apply.
+	ScopeType string `pulumi:"scopeType"`
+	// The tenantId the SQL Server license resource subscription resides in.
+	TenantId string `pulumi:"tenantId"`
+}
+
+// Properties of SQL Server License.
+type SqlServerLicensePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (SqlServerLicensePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerLicensePropertiesResponse)(nil)).Elem()
+}
+
+func (o SqlServerLicensePropertiesResponseOutput) ToSqlServerLicensePropertiesResponseOutput() SqlServerLicensePropertiesResponseOutput {
+	return o
+}
+
+func (o SqlServerLicensePropertiesResponseOutput) ToSqlServerLicensePropertiesResponseOutputWithContext(ctx context.Context) SqlServerLicensePropertiesResponseOutput {
+	return o
+}
+
+// The activation state of the license.
+func (o SqlServerLicensePropertiesResponseOutput) ActivationState() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerLicensePropertiesResponse) string { return v.ActivationState }).(pulumi.StringOutput)
+}
+
+// SQL Server license type.
+func (o SqlServerLicensePropertiesResponseOutput) BillingPlan() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerLicensePropertiesResponse) string { return v.BillingPlan }).(pulumi.StringOutput)
+}
+
+// The timestamp of the most recent activation of the SqlServerLicense.
+func (o SqlServerLicensePropertiesResponseOutput) LastActivatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerLicensePropertiesResponse) string { return v.LastActivatedAt }).(pulumi.StringOutput)
+}
+
+// The timestamp of the most recent deactivation of the SqlServerLicense.
+func (o SqlServerLicensePropertiesResponseOutput) LastDeactivatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerLicensePropertiesResponse) string { return v.LastDeactivatedAt }).(pulumi.StringOutput)
+}
+
+// This property represents the choice between SQL Server Core and ESU licenses.
+func (o SqlServerLicensePropertiesResponseOutput) LicenseCategory() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerLicensePropertiesResponse) string { return v.LicenseCategory }).(pulumi.StringOutput)
+}
+
+// The number of total cores of the license covers.
+func (o SqlServerLicensePropertiesResponseOutput) PhysicalCores() pulumi.IntOutput {
+	return o.ApplyT(func(v SqlServerLicensePropertiesResponse) int { return v.PhysicalCores }).(pulumi.IntOutput)
+}
+
+// The Azure scope to which the license will apply.
+func (o SqlServerLicensePropertiesResponseOutput) ScopeType() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerLicensePropertiesResponse) string { return v.ScopeType }).(pulumi.StringOutput)
+}
+
+// The tenantId the SQL Server license resource subscription resides in.
+func (o SqlServerLicensePropertiesResponseOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerLicensePropertiesResponse) string { return v.TenantId }).(pulumi.StringOutput)
 }
 
 // Metadata pertaining to creation and last modification of the resource.
@@ -11724,6 +12349,8 @@ func init() {
 	pulumi.RegisterOutputType(AvailabilityGroupInfoResponsePtrOutput{})
 	pulumi.RegisterOutputType(AvailabilityGroupStateResponseOutput{})
 	pulumi.RegisterOutputType(AvailabilityGroupStateResponsePtrOutput{})
+	pulumi.RegisterOutputType(BackgroundJobResponseOutput{})
+	pulumi.RegisterOutputType(BackgroundJobResponsePtrOutput{})
 	pulumi.RegisterOutputType(BasicLoginInformationOutput{})
 	pulumi.RegisterOutputType(BasicLoginInformationPtrOutput{})
 	pulumi.RegisterOutputType(BasicLoginInformationResponseOutput{})
@@ -11790,6 +12417,8 @@ func init() {
 	pulumi.RegisterOutputType(PostgresInstanceSkuPtrOutput{})
 	pulumi.RegisterOutputType(PostgresInstanceSkuResponseOutput{})
 	pulumi.RegisterOutputType(PostgresInstanceSkuResponsePtrOutput{})
+	pulumi.RegisterOutputType(SequencerActionResponseOutput{})
+	pulumi.RegisterOutputType(SequencerActionResponseArrayOutput{})
 	pulumi.RegisterOutputType(SqlAvailabilityGroupDatabaseReplicaResourcePropertiesOutput{})
 	pulumi.RegisterOutputType(SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArrayOutput{})
 	pulumi.RegisterOutputType(SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseOutput{})
@@ -11832,11 +12461,17 @@ func init() {
 	pulumi.RegisterOutputType(SqlServerDatabaseResourcePropertiesResponseBackupInformationPtrOutput{})
 	pulumi.RegisterOutputType(SqlServerDatabaseResourcePropertiesResponseDatabaseOptionsOutput{})
 	pulumi.RegisterOutputType(SqlServerDatabaseResourcePropertiesResponseDatabaseOptionsPtrOutput{})
+	pulumi.RegisterOutputType(SqlServerEsuLicensePropertiesOutput{})
+	pulumi.RegisterOutputType(SqlServerEsuLicensePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(SqlServerInstanceJobStatusResponseOutput{})
+	pulumi.RegisterOutputType(SqlServerInstanceJobStatusResponseArrayOutput{})
 	pulumi.RegisterOutputType(SqlServerInstancePropertiesOutput{})
 	pulumi.RegisterOutputType(SqlServerInstancePropertiesPtrOutput{})
 	pulumi.RegisterOutputType(SqlServerInstancePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(SqlServerInstanceTelemetryColumnResponseOutput{})
 	pulumi.RegisterOutputType(SqlServerInstanceTelemetryColumnResponseArrayOutput{})
+	pulumi.RegisterOutputType(SqlServerLicensePropertiesOutput{})
+	pulumi.RegisterOutputType(SqlServerLicensePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 	pulumi.RegisterOutputType(UploadServicePrincipalOutput{})
 	pulumi.RegisterOutputType(UploadServicePrincipalPtrOutput{})
