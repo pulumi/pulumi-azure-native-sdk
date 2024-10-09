@@ -14,6 +14,8 @@ import (
 
 // The Private Endpoint Connection resource.
 // Azure REST API version: 2024-02-02-preview.
+//
+// Other available API versions: 2024-08-02-preview.
 type ManagedEnvironmentPrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 
@@ -52,6 +54,9 @@ func NewManagedEnvironmentPrivateEndpointConnection(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:app/v20240202preview:ManagedEnvironmentPrivateEndpointConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:app/v20240802preview:ManagedEnvironmentPrivateEndpointConnection"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -52,6 +52,9 @@ func NewDotNetComponent(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:app/v20231102preview:DotNetComponent"),
 		},
+		{
+			Type: pulumi.String("azure-native:app/v20240802preview:DotNetComponent"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

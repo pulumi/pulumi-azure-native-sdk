@@ -64,6 +64,9 @@ func NewContainerAppsSessionPool(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:app:ContainerAppsSessionPool"),
 		},
+		{
+			Type: pulumi.String("azure-native:app/v20240802preview:ContainerAppsSessionPool"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -47,6 +47,9 @@ func NewCurationProfile(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:devcenter:CurationProfile"),
 		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20241001preview:CurationProfile"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

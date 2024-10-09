@@ -15,7 +15,7 @@ import (
 // Configuration to setup App Resiliency
 // Azure REST API version: 2023-08-01-preview.
 //
-// Other available API versions: 2023-11-02-preview, 2024-02-02-preview.
+// Other available API versions: 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview.
 type AppResiliency struct {
 	pulumi.CustomResourceState
 
@@ -61,6 +61,9 @@ func NewAppResiliency(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:app/v20240202preview:AppResiliency"),
+		},
+		{
+			Type: pulumi.String("azure-native:app/v20240802preview:AppResiliency"),
 		},
 	})
 	opts = append(opts, aliases)

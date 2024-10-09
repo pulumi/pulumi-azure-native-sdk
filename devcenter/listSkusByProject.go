@@ -14,7 +14,7 @@ import (
 // Lists SKUs available to the project
 // Azure REST API version: 2024-06-01-preview.
 //
-// Other available API versions: 2024-07-01-preview, 2024-08-01-preview.
+// Other available API versions: 2024-07-01-preview, 2024-08-01-preview, 2024-10-01-preview.
 func ListSkusByProject(ctx *pulumi.Context, args *ListSkusByProjectArgs, opts ...pulumi.InvokeOption) (*ListSkusByProjectResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListSkusByProjectResult

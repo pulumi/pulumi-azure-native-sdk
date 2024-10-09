@@ -20,7 +20,7 @@ func LookupPublicCloudConnector(ctx *pulumi.Context, args *LookupPublicCloudConn
 	if err != nil {
 		return nil, err
 	}
-	return &rv, nil
+	return rv.Defaults(), nil
 }
 
 type LookupPublicCloudConnectorArgs struct {
@@ -46,6 +46,17 @@ type LookupPublicCloudConnectorResult struct {
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
+}
+
+// Defaults sets the appropriate defaults for LookupPublicCloudConnectorResult
+func (val *LookupPublicCloudConnectorResult) Defaults() *LookupPublicCloudConnectorResult {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Properties = *tmp.Properties.Defaults()
+
+	return &tmp
 }
 
 func LookupPublicCloudConnectorOutput(ctx *pulumi.Context, args LookupPublicCloudConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupPublicCloudConnectorResultOutput {

@@ -14,6 +14,8 @@ import (
 
 // Container App session pool.
 // Azure REST API version: 2024-02-02-preview.
+//
+// Other available API versions: 2024-08-02-preview.
 type ContainerAppsSessionPool struct {
 	pulumi.CustomResourceState
 
@@ -64,6 +66,9 @@ func NewContainerAppsSessionPool(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:app/v20240202preview:ContainerAppsSessionPool"),
+		},
+		{
+			Type: pulumi.String("azure-native:app/v20240802preview:ContainerAppsSessionPool"),
 		},
 	})
 	opts = append(opts, aliases)

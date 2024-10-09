@@ -66,6 +66,9 @@ func NewDaprSubscription(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:app/v20231102preview:DaprSubscription"),
 		},
+		{
+			Type: pulumi.String("azure-native:app/v20240802preview:DaprSubscription"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

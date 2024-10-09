@@ -94,6 +94,9 @@ func NewTagRule(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:elastic/v20240615preview:TagRule"),
 		},
+		{
+			Type: pulumi.String("azure-native:elastic/v20241001preview:TagRule"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -87,6 +87,9 @@ func NewCatalog(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:devcenter/v20240801preview:Catalog"),
 		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20241001preview:Catalog"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

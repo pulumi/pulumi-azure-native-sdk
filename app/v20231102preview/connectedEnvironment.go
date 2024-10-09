@@ -83,6 +83,9 @@ func NewConnectedEnvironment(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:app/v20240301:ConnectedEnvironment"),
 		},
+		{
+			Type: pulumi.String("azure-native:app/v20240802preview:ConnectedEnvironment"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

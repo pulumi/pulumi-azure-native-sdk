@@ -1636,7 +1636,7 @@ func (o ProjectNetworkSettingsResponseOutput) MicrosoftHostedNetworkEnableStatus
 type ResourcePolicy struct {
 	// Optional. When specified, this expression is used to filter the resources.
 	Filter *string `pulumi:"filter"`
-	// Resources that are included and shared as a part of a curation profile.
+	// Resources that are included and shared as a part of a project policy.
 	Resources *string `pulumi:"resources"`
 }
 
@@ -1655,7 +1655,7 @@ type ResourcePolicyInput interface {
 type ResourcePolicyArgs struct {
 	// Optional. When specified, this expression is used to filter the resources.
 	Filter pulumi.StringPtrInput `pulumi:"filter"`
-	// Resources that are included and shared as a part of a curation profile.
+	// Resources that are included and shared as a part of a project policy.
 	Resources pulumi.StringPtrInput `pulumi:"resources"`
 }
 
@@ -1716,7 +1716,7 @@ func (o ResourcePolicyOutput) Filter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourcePolicy) *string { return v.Filter }).(pulumi.StringPtrOutput)
 }
 
-// Resources that are included and shared as a part of a curation profile.
+// Resources that are included and shared as a part of a project policy.
 func (o ResourcePolicyOutput) Resources() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourcePolicy) *string { return v.Resources }).(pulumi.StringPtrOutput)
 }
@@ -1745,7 +1745,7 @@ func (o ResourcePolicyArrayOutput) Index(i pulumi.IntInput) ResourcePolicyOutput
 type ResourcePolicyResponse struct {
 	// Optional. When specified, this expression is used to filter the resources.
 	Filter *string `pulumi:"filter"`
-	// Resources that are included and shared as a part of a curation profile.
+	// Resources that are included and shared as a part of a project policy.
 	Resources *string `pulumi:"resources"`
 }
 
@@ -1769,7 +1769,7 @@ func (o ResourcePolicyResponseOutput) Filter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourcePolicyResponse) *string { return v.Filter }).(pulumi.StringPtrOutput)
 }
 
-// Resources that are included and shared as a part of a curation profile.
+// Resources that are included and shared as a part of a project policy.
 func (o ResourcePolicyResponseOutput) Resources() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourcePolicyResponse) *string { return v.Resources }).(pulumi.StringPtrOutput)
 }

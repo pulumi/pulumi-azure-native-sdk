@@ -217,8 +217,25 @@ func (o AwsCloudProfilePtrOutput) IsOrganizationalAccount() pulumi.BoolPtrOutput
 
 // cloud profile for AWS.
 type AwsCloudProfileResponse struct {
+	// Account id for the AWS account.
+	AccountId string `pulumi:"accountId"`
 	// List of AWS accounts which need to be excluded.
 	ExcludedAccounts []string `pulumi:"excludedAccounts"`
+	// Boolean value that indicates whether the account is organizational or not. True represents organization account, whereas false represents a single account.
+	IsOrganizationalAccount *bool `pulumi:"isOrganizationalAccount"`
+}
+
+// Defaults sets the appropriate defaults for AwsCloudProfileResponse
+func (val *AwsCloudProfileResponse) Defaults() *AwsCloudProfileResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.IsOrganizationalAccount == nil {
+		isOrganizationalAccount_ := false
+		tmp.IsOrganizationalAccount = &isOrganizationalAccount_
+	}
+	return &tmp
 }
 
 // cloud profile for AWS.
@@ -236,9 +253,19 @@ func (o AwsCloudProfileResponseOutput) ToAwsCloudProfileResponseOutputWithContex
 	return o
 }
 
+// Account id for the AWS account.
+func (o AwsCloudProfileResponseOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsCloudProfileResponse) string { return v.AccountId }).(pulumi.StringOutput)
+}
+
 // List of AWS accounts which need to be excluded.
 func (o AwsCloudProfileResponseOutput) ExcludedAccounts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AwsCloudProfileResponse) []string { return v.ExcludedAccounts }).(pulumi.StringArrayOutput)
+}
+
+// Boolean value that indicates whether the account is organizational or not. True represents organization account, whereas false represents a single account.
+func (o AwsCloudProfileResponseOutput) IsOrganizationalAccount() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AwsCloudProfileResponse) *bool { return v.IsOrganizationalAccount }).(pulumi.BoolPtrOutput)
 }
 
 // Endpoint details
@@ -625,8 +652,21 @@ type PublicCloudConnectorPropertiesResponse struct {
 	AwsCloudProfile AwsCloudProfileResponse `pulumi:"awsCloudProfile"`
 	// Connector primary identifier.
 	ConnectorPrimaryIdentifier string `pulumi:"connectorPrimaryIdentifier"`
+	// Host cloud the public cloud connector.
+	HostType string `pulumi:"hostType"`
 	// The resource provisioning state.
 	ProvisioningState string `pulumi:"provisioningState"`
+}
+
+// Defaults sets the appropriate defaults for PublicCloudConnectorPropertiesResponse
+func (val *PublicCloudConnectorPropertiesResponse) Defaults() *PublicCloudConnectorPropertiesResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.AwsCloudProfile = *tmp.AwsCloudProfile.Defaults()
+
+	return &tmp
 }
 
 // Properties of public cloud connectors.
@@ -652,6 +692,11 @@ func (o PublicCloudConnectorPropertiesResponseOutput) AwsCloudProfile() AwsCloud
 // Connector primary identifier.
 func (o PublicCloudConnectorPropertiesResponseOutput) ConnectorPrimaryIdentifier() pulumi.StringOutput {
 	return o.ApplyT(func(v PublicCloudConnectorPropertiesResponse) string { return v.ConnectorPrimaryIdentifier }).(pulumi.StringOutput)
+}
+
+// Host cloud the public cloud connector.
+func (o PublicCloudConnectorPropertiesResponseOutput) HostType() pulumi.StringOutput {
+	return o.ApplyT(func(v PublicCloudConnectorPropertiesResponse) string { return v.HostType }).(pulumi.StringOutput)
 }
 
 // The resource provisioning state.

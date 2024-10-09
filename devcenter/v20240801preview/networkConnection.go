@@ -102,6 +102,9 @@ func NewNetworkConnection(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:devcenter/v20240701preview:NetworkConnection"),
 		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20241001preview:NetworkConnection"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
