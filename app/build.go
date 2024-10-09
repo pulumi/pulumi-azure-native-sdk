@@ -15,7 +15,7 @@ import (
 // Information pertaining to an individual build.
 // Azure REST API version: 2023-08-01-preview.
 //
-// Other available API versions: 2023-11-02-preview, 2024-02-02-preview.
+// Other available API versions: 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview.
 type Build struct {
 	pulumi.CustomResourceState
 
@@ -63,6 +63,9 @@ func NewBuild(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:app/v20240202preview:Build"),
+		},
+		{
+			Type: pulumi.String("azure-native:app/v20240802preview:Build"),
 		},
 	})
 	opts = append(opts, aliases)

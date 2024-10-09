@@ -14,6 +14,8 @@ import (
 
 // A logic app extension resource
 // Azure REST API version: 2024-02-02-preview.
+//
+// Other available API versions: 2024-08-02-preview.
 type LogicApp struct {
 	pulumi.CustomResourceState
 
@@ -41,6 +43,9 @@ func NewLogicApp(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:app/v20240202preview:LogicApp"),
+		},
+		{
+			Type: pulumi.String("azure-native:app/v20240802preview:LogicApp"),
 		},
 	})
 	opts = append(opts, aliases)

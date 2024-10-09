@@ -51,6 +51,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ProjectCatalog{}
 	case "azure-native:devcenter:ProjectEnvironmentType":
 		r = &ProjectEnvironmentType{}
+	case "azure-native:devcenter:ProjectPolicy":
+		r = &ProjectPolicy{}
 	case "azure-native:devcenter:Schedule":
 		r = &Schedule{}
 	default:

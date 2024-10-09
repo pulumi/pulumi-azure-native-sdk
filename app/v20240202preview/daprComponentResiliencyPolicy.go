@@ -54,6 +54,9 @@ func NewDaprComponentResiliencyPolicy(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:app/v20231102preview:DaprComponentResiliencyPolicy"),
 		},
+		{
+			Type: pulumi.String("azure-native:app/v20240802preview:DaprComponentResiliencyPolicy"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
