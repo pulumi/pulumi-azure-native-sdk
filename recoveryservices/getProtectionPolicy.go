@@ -15,7 +15,7 @@ import (
 // operation. Status of the operation can be fetched using GetPolicyOperationResult API.
 // Azure REST API version: 2023-04-01.
 //
-// Other available API versions: 2016-06-01, 2023-06-01, 2023-08-01, 2024-01-01, 2024-02-01, 2024-04-01, 2024-04-30-preview.
+// Other available API versions: 2016-06-01, 2023-06-01, 2023-08-01, 2024-01-01, 2024-02-01, 2024-04-01, 2024-04-30-preview, 2024-07-30-preview.
 func LookupProtectionPolicy(ctx *pulumi.Context, args *LookupProtectionPolicyArgs, opts ...pulumi.InvokeOption) (*LookupProtectionPolicyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupProtectionPolicyResult

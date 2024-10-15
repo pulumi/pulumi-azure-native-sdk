@@ -56782,6 +56782,8 @@ type SalesforceV2Source struct {
 	IncludeDeletedObjects interface{} `pulumi:"includeDeletedObjects"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// Page size for each http request, too large pageSize will caused timeout, default 300,000. Type: integer (or Expression with resultType integer).
+	PageSize interface{} `pulumi:"pageSize"`
 	// You can only use Salesforce Object Query Language (SOQL) query with limitations. For SOQL limitations, see this article: https://developer.salesforce.com/docs/atlas.en-us.api_asynch.meta/api_asynch/queries.htm#SOQL%20Considerations. If query is not specified, all the data of the Salesforce object specified in ObjectApiName/reportId in dataset will be retrieved. Type: string (or Expression with resultType string).
 	Query interface{} `pulumi:"query"`
 	// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
@@ -56818,6 +56820,8 @@ type SalesforceV2SourceArgs struct {
 	IncludeDeletedObjects pulumi.Input `pulumi:"includeDeletedObjects"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 	MaxConcurrentConnections pulumi.Input `pulumi:"maxConcurrentConnections"`
+	// Page size for each http request, too large pageSize will caused timeout, default 300,000. Type: integer (or Expression with resultType integer).
+	PageSize pulumi.Input `pulumi:"pageSize"`
 	// You can only use Salesforce Object Query Language (SOQL) query with limitations. For SOQL limitations, see this article: https://developer.salesforce.com/docs/atlas.en-us.api_asynch.meta/api_asynch/queries.htm#SOQL%20Considerations. If query is not specified, all the data of the Salesforce object specified in ObjectApiName/reportId in dataset will be retrieved. Type: string (or Expression with resultType string).
 	Query pulumi.Input `pulumi:"query"`
 	// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
@@ -56880,6 +56884,11 @@ func (o SalesforceV2SourceOutput) MaxConcurrentConnections() pulumi.AnyOutput {
 	return o.ApplyT(func(v SalesforceV2Source) interface{} { return v.MaxConcurrentConnections }).(pulumi.AnyOutput)
 }
 
+// Page size for each http request, too large pageSize will caused timeout, default 300,000. Type: integer (or Expression with resultType integer).
+func (o SalesforceV2SourceOutput) PageSize() pulumi.AnyOutput {
+	return o.ApplyT(func(v SalesforceV2Source) interface{} { return v.PageSize }).(pulumi.AnyOutput)
+}
+
 // You can only use Salesforce Object Query Language (SOQL) query with limitations. For SOQL limitations, see this article: https://developer.salesforce.com/docs/atlas.en-us.api_asynch.meta/api_asynch/queries.htm#SOQL%20Considerations. If query is not specified, all the data of the Salesforce object specified in ObjectApiName/reportId in dataset will be retrieved. Type: string (or Expression with resultType string).
 func (o SalesforceV2SourceOutput) Query() pulumi.AnyOutput {
 	return o.ApplyT(func(v SalesforceV2Source) interface{} { return v.Query }).(pulumi.AnyOutput)
@@ -56921,6 +56930,8 @@ type SalesforceV2SourceResponse struct {
 	IncludeDeletedObjects interface{} `pulumi:"includeDeletedObjects"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// Page size for each http request, too large pageSize will caused timeout, default 300,000. Type: integer (or Expression with resultType integer).
+	PageSize interface{} `pulumi:"pageSize"`
 	// You can only use Salesforce Object Query Language (SOQL) query with limitations. For SOQL limitations, see this article: https://developer.salesforce.com/docs/atlas.en-us.api_asynch.meta/api_asynch/queries.htm#SOQL%20Considerations. If query is not specified, all the data of the Salesforce object specified in ObjectApiName/reportId in dataset will be retrieved. Type: string (or Expression with resultType string).
 	Query interface{} `pulumi:"query"`
 	// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
@@ -56969,6 +56980,11 @@ func (o SalesforceV2SourceResponseOutput) IncludeDeletedObjects() pulumi.AnyOutp
 // The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 func (o SalesforceV2SourceResponseOutput) MaxConcurrentConnections() pulumi.AnyOutput {
 	return o.ApplyT(func(v SalesforceV2SourceResponse) interface{} { return v.MaxConcurrentConnections }).(pulumi.AnyOutput)
+}
+
+// Page size for each http request, too large pageSize will caused timeout, default 300,000. Type: integer (or Expression with resultType integer).
+func (o SalesforceV2SourceResponseOutput) PageSize() pulumi.AnyOutput {
+	return o.ApplyT(func(v SalesforceV2SourceResponse) interface{} { return v.PageSize }).(pulumi.AnyOutput)
 }
 
 // You can only use Salesforce Object Query Language (SOQL) query with limitations. For SOQL limitations, see this article: https://developer.salesforce.com/docs/atlas.en-us.api_asynch.meta/api_asynch/queries.htm#SOQL%20Considerations. If query is not specified, all the data of the Salesforce object specified in ObjectApiName/reportId in dataset will be retrieved. Type: string (or Expression with resultType string).

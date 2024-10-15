@@ -68,6 +68,9 @@ func NewAssetEndpointProfile(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:deviceregistry/v20240901preview:AssetEndpointProfile"),
 		},
+		{
+			Type: pulumi.String("azure-native:deviceregistry/v20241101:AssetEndpointProfile"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

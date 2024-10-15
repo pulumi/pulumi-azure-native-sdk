@@ -66,6 +66,9 @@ func NewAttestationAtResource(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:policyinsights/v20210101:AttestationAtResource"),
 		},
+		{
+			Type: pulumi.String("azure-native:policyinsights/v20241001:AttestationAtResource"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

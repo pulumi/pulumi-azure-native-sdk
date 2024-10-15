@@ -35,6 +35,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &GalleryImage{}
 	case "azure-native:azurestackhci:GuestAgent":
 		r = &GuestAgent{}
+	case "azure-native:azurestackhci:HciEdgeDeviceJob":
+		r = &HciEdgeDeviceJob{}
 	case "azure-native:azurestackhci:HybridIdentityMetadatum":
 		r = &HybridIdentityMetadatum{}
 	case "azure-native:azurestackhci:LogicalNetwork":

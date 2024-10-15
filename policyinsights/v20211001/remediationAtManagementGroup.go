@@ -73,6 +73,9 @@ func NewRemediationAtManagementGroup(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:policyinsights/v20190701:RemediationAtManagementGroup"),
 		},
+		{
+			Type: pulumi.String("azure-native:policyinsights/v20241001:RemediationAtManagementGroup"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

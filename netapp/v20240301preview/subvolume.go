@@ -100,6 +100,15 @@ func NewSubvolume(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:netapp/v20240301:Subvolume"),
 		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20240501:Subvolume"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20240501preview:Subvolume"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20240701:Subvolume"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
