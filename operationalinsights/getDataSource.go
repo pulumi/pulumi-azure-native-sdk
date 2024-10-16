@@ -14,7 +14,7 @@ import (
 // Gets a datasource instance.
 // Azure REST API version: 2020-08-01.
 //
-// Other available API versions: 2015-11-01-preview.
+// Other available API versions: 2015-11-01-preview, 2023-09-01.
 func LookupDataSource(ctx *pulumi.Context, args *LookupDataSourceArgs, opts ...pulumi.InvokeOption) (*LookupDataSourceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDataSourceResult

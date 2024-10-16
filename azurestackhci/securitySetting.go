@@ -15,7 +15,7 @@ import (
 // Security settings proxy resource
 // Azure REST API version: 2023-11-01-preview.
 //
-// Other available API versions: 2024-01-01, 2024-02-15-preview, 2024-04-01.
+// Other available API versions: 2024-01-01, 2024-02-15-preview, 2024-04-01, 2024-09-01-preview.
 type SecuritySetting struct {
 	pulumi.CustomResourceState
 
@@ -61,6 +61,9 @@ func NewSecuritySetting(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20240401:SecuritySetting"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20240901preview:SecuritySetting"),
 		},
 	})
 	opts = append(opts, aliases)

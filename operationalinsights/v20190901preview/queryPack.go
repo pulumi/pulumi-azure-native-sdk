@@ -51,6 +51,9 @@ func NewQueryPack(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:operationalinsights/v20190901:QueryPack"),
 		},
+		{
+			Type: pulumi.String("azure-native:operationalinsights/v20230901:QueryPack"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

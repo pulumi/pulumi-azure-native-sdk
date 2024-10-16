@@ -14,6 +14,8 @@ import (
 
 // A HealthDataAIServicesProviderHub resource
 // Azure REST API version: 2024-02-28-preview.
+//
+// Other available API versions: 2024-09-20.
 type DeidService struct {
 	pulumi.CustomResourceState
 
@@ -46,6 +48,9 @@ func NewDeidService(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:healthdataaiservices/v20240228preview:DeidService"),
+		},
+		{
+			Type: pulumi.String("azure-native:healthdataaiservices/v20240920:DeidService"),
 		},
 	})
 	opts = append(opts, aliases)

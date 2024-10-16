@@ -15,7 +15,7 @@ import (
 // Asset Endpoint Profile definition.
 // Azure REST API version: 2023-11-01-preview.
 //
-// Other available API versions: 2024-09-01-preview.
+// Other available API versions: 2024-09-01-preview, 2024-11-01.
 type AssetEndpointProfile struct {
 	pulumi.CustomResourceState
 
@@ -70,6 +70,9 @@ func NewAssetEndpointProfile(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:deviceregistry/v20240901preview:AssetEndpointProfile"),
+		},
+		{
+			Type: pulumi.String("azure-native:deviceregistry/v20241101:AssetEndpointProfile"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -63,6 +63,9 @@ func NewAttestationAtSubscription(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:policyinsights/v20210101:AttestationAtSubscription"),
 		},
+		{
+			Type: pulumi.String("azure-native:policyinsights/v20241001:AttestationAtSubscription"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

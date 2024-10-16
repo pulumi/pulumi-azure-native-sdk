@@ -101,6 +101,15 @@ func NewVolumeQuotaRule(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:netapp/v20240301:VolumeQuotaRule"),
 		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20240501:VolumeQuotaRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20240501preview:VolumeQuotaRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20240701:VolumeQuotaRule"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

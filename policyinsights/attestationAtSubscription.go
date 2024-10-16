@@ -14,6 +14,8 @@ import (
 
 // An attestation resource.
 // Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2021-01-01.
+//
+// Other available API versions: 2024-10-01.
 type AttestationAtSubscription struct {
 	pulumi.CustomResourceState
 
@@ -63,6 +65,9 @@ func NewAttestationAtSubscription(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:policyinsights/v20220901:AttestationAtSubscription"),
+		},
+		{
+			Type: pulumi.String("azure-native:policyinsights/v20241001:AttestationAtSubscription"),
 		},
 	})
 	opts = append(opts, aliases)

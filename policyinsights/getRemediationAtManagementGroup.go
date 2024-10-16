@@ -14,7 +14,7 @@ import (
 // Gets an existing remediation at management group scope.
 // Azure REST API version: 2021-10-01.
 //
-// Other available API versions: 2018-07-01-preview.
+// Other available API versions: 2018-07-01-preview, 2024-10-01.
 func LookupRemediationAtManagementGroup(ctx *pulumi.Context, args *LookupRemediationAtManagementGroupArgs, opts ...pulumi.InvokeOption) (*LookupRemediationAtManagementGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRemediationAtManagementGroupResult

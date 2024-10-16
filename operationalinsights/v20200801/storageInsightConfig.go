@@ -60,6 +60,9 @@ func NewStorageInsightConfig(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:operationalinsights/v20200301preview:StorageInsightConfig"),
 		},
+		{
+			Type: pulumi.String("azure-native:operationalinsights/v20230901:StorageInsightConfig"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -13,6 +13,8 @@ import (
 
 // Gets an existing attestation at resource scope.
 // Azure REST API version: 2022-09-01.
+//
+// Other available API versions: 2024-10-01.
 func LookupAttestationAtResource(ctx *pulumi.Context, args *LookupAttestationAtResourceArgs, opts ...pulumi.InvokeOption) (*LookupAttestationAtResourceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAttestationAtResourceResult

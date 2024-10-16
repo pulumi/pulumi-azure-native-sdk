@@ -1720,6 +1720,101 @@ func (o DeploymentStatusResponseOutput) Steps() StepResponseArrayOutput {
 	return o.ApplyT(func(v DeploymentStatusResponse) []StepResponse { return v.Steps }).(StepResponseArrayOutput)
 }
 
+// The Step of AzureStackHCI Cluster.
+type DeploymentStepResponse struct {
+	// Description of step.
+	Description string `pulumi:"description"`
+	// End time of step.
+	EndTimeUtc string `pulumi:"endTimeUtc"`
+	// List of exceptions in AzureStackHCI Cluster Deployment.
+	Exception []string `pulumi:"exception"`
+	// FullStepIndex of step.
+	FullStepIndex string `pulumi:"fullStepIndex"`
+	// Name of step.
+	Name string `pulumi:"name"`
+	// Start time of step.
+	StartTimeUtc string `pulumi:"startTimeUtc"`
+	// Status of step. Allowed values are 'Error', 'Success', 'InProgress'
+	Status string `pulumi:"status"`
+	// List of nested steps of AzureStackHCI Cluster Deployment.
+	Steps []DeploymentStepResponse `pulumi:"steps"`
+}
+
+// The Step of AzureStackHCI Cluster.
+type DeploymentStepResponseOutput struct{ *pulumi.OutputState }
+
+func (DeploymentStepResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentStepResponse)(nil)).Elem()
+}
+
+func (o DeploymentStepResponseOutput) ToDeploymentStepResponseOutput() DeploymentStepResponseOutput {
+	return o
+}
+
+func (o DeploymentStepResponseOutput) ToDeploymentStepResponseOutputWithContext(ctx context.Context) DeploymentStepResponseOutput {
+	return o
+}
+
+// Description of step.
+func (o DeploymentStepResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v DeploymentStepResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// End time of step.
+func (o DeploymentStepResponseOutput) EndTimeUtc() pulumi.StringOutput {
+	return o.ApplyT(func(v DeploymentStepResponse) string { return v.EndTimeUtc }).(pulumi.StringOutput)
+}
+
+// List of exceptions in AzureStackHCI Cluster Deployment.
+func (o DeploymentStepResponseOutput) Exception() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DeploymentStepResponse) []string { return v.Exception }).(pulumi.StringArrayOutput)
+}
+
+// FullStepIndex of step.
+func (o DeploymentStepResponseOutput) FullStepIndex() pulumi.StringOutput {
+	return o.ApplyT(func(v DeploymentStepResponse) string { return v.FullStepIndex }).(pulumi.StringOutput)
+}
+
+// Name of step.
+func (o DeploymentStepResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v DeploymentStepResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Start time of step.
+func (o DeploymentStepResponseOutput) StartTimeUtc() pulumi.StringOutput {
+	return o.ApplyT(func(v DeploymentStepResponse) string { return v.StartTimeUtc }).(pulumi.StringOutput)
+}
+
+// Status of step. Allowed values are 'Error', 'Success', 'InProgress'
+func (o DeploymentStepResponseOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v DeploymentStepResponse) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// List of nested steps of AzureStackHCI Cluster Deployment.
+func (o DeploymentStepResponseOutput) Steps() DeploymentStepResponseArrayOutput {
+	return o.ApplyT(func(v DeploymentStepResponse) []DeploymentStepResponse { return v.Steps }).(DeploymentStepResponseArrayOutput)
+}
+
+type DeploymentStepResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (DeploymentStepResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeploymentStepResponse)(nil)).Elem()
+}
+
+func (o DeploymentStepResponseArrayOutput) ToDeploymentStepResponseArrayOutput() DeploymentStepResponseArrayOutput {
+	return o
+}
+
+func (o DeploymentStepResponseArrayOutput) ToDeploymentStepResponseArrayOutputWithContext(ctx context.Context) DeploymentStepResponseArrayOutput {
+	return o
+}
+
+func (o DeploymentStepResponseArrayOutput) Index(i pulumi.IntInput) DeploymentStepResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeploymentStepResponse {
+		return vs[0].([]DeploymentStepResponse)[vs[1].(int)]
+	}).(DeploymentStepResponseOutput)
+}
+
 // The device Configuration of a device.
 type DeviceConfiguration struct {
 	// device metadata details.
@@ -1815,6 +1910,39 @@ func (o DeviceConfigurationResponseOutput) DeviceMetadata() pulumi.StringPtrOutp
 // NIC Details of device
 func (o DeviceConfigurationResponseOutput) NicDetails() NicDetailResponseArrayOutput {
 	return o.ApplyT(func(v DeviceConfigurationResponse) []NicDetailResponse { return v.NicDetails }).(NicDetailResponseArrayOutput)
+}
+
+// The ECE action plan deployment status for AzureStackHCI Cluster.
+type EceActionStatusResponse struct {
+	// Status of ECE action AzureStackHCI Cluster Deployment.
+	Status string `pulumi:"status"`
+	// List of steps of AzureStackHCI Cluster Deployment.
+	Steps []DeploymentStepResponse `pulumi:"steps"`
+}
+
+// The ECE action plan deployment status for AzureStackHCI Cluster.
+type EceActionStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (EceActionStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EceActionStatusResponse)(nil)).Elem()
+}
+
+func (o EceActionStatusResponseOutput) ToEceActionStatusResponseOutput() EceActionStatusResponseOutput {
+	return o
+}
+
+func (o EceActionStatusResponseOutput) ToEceActionStatusResponseOutputWithContext(ctx context.Context) EceActionStatusResponseOutput {
+	return o
+}
+
+// Status of ECE action AzureStackHCI Cluster Deployment.
+func (o EceActionStatusResponseOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v EceActionStatusResponse) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// List of steps of AzureStackHCI Cluster Deployment.
+func (o EceActionStatusResponseOutput) Steps() DeploymentStepResponseArrayOutput {
+	return o.ApplyT(func(v EceActionStatusResponse) []DeploymentStepResponse { return v.Steps }).(DeploymentStepResponseArrayOutput)
 }
 
 // The resource management error additional info.
@@ -3626,6 +3754,385 @@ func (o GuestCredentialResponsePtrOutput) Username() pulumi.StringPtrOutput {
 		}
 		return v.Username
 	}).(pulumi.StringPtrOutput)
+}
+
+// Represents the properties of an HCI Collect Log job.
+type HciCollectLogJobProperties struct {
+	// Deployment mode to trigger job.
+	DeploymentMode *string `pulumi:"deploymentMode"`
+	// From date for log collection.
+	FromDate string `pulumi:"fromDate"`
+	// Job Type supported.
+	// Expected value is 'CollectLog'.
+	JobType string `pulumi:"jobType"`
+	// To date for log collection.
+	ToDate string `pulumi:"toDate"`
+}
+
+// HciCollectLogJobPropertiesInput is an input type that accepts HciCollectLogJobPropertiesArgs and HciCollectLogJobPropertiesOutput values.
+// You can construct a concrete instance of `HciCollectLogJobPropertiesInput` via:
+//
+//	HciCollectLogJobPropertiesArgs{...}
+type HciCollectLogJobPropertiesInput interface {
+	pulumi.Input
+
+	ToHciCollectLogJobPropertiesOutput() HciCollectLogJobPropertiesOutput
+	ToHciCollectLogJobPropertiesOutputWithContext(context.Context) HciCollectLogJobPropertiesOutput
+}
+
+// Represents the properties of an HCI Collect Log job.
+type HciCollectLogJobPropertiesArgs struct {
+	// Deployment mode to trigger job.
+	DeploymentMode pulumi.StringPtrInput `pulumi:"deploymentMode"`
+	// From date for log collection.
+	FromDate pulumi.StringInput `pulumi:"fromDate"`
+	// Job Type supported.
+	// Expected value is 'CollectLog'.
+	JobType pulumi.StringInput `pulumi:"jobType"`
+	// To date for log collection.
+	ToDate pulumi.StringInput `pulumi:"toDate"`
+}
+
+func (HciCollectLogJobPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HciCollectLogJobProperties)(nil)).Elem()
+}
+
+func (i HciCollectLogJobPropertiesArgs) ToHciCollectLogJobPropertiesOutput() HciCollectLogJobPropertiesOutput {
+	return i.ToHciCollectLogJobPropertiesOutputWithContext(context.Background())
+}
+
+func (i HciCollectLogJobPropertiesArgs) ToHciCollectLogJobPropertiesOutputWithContext(ctx context.Context) HciCollectLogJobPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HciCollectLogJobPropertiesOutput)
+}
+
+// Represents the properties of an HCI Collect Log job.
+type HciCollectLogJobPropertiesOutput struct{ *pulumi.OutputState }
+
+func (HciCollectLogJobPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HciCollectLogJobProperties)(nil)).Elem()
+}
+
+func (o HciCollectLogJobPropertiesOutput) ToHciCollectLogJobPropertiesOutput() HciCollectLogJobPropertiesOutput {
+	return o
+}
+
+func (o HciCollectLogJobPropertiesOutput) ToHciCollectLogJobPropertiesOutputWithContext(ctx context.Context) HciCollectLogJobPropertiesOutput {
+	return o
+}
+
+// Deployment mode to trigger job.
+func (o HciCollectLogJobPropertiesOutput) DeploymentMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HciCollectLogJobProperties) *string { return v.DeploymentMode }).(pulumi.StringPtrOutput)
+}
+
+// From date for log collection.
+func (o HciCollectLogJobPropertiesOutput) FromDate() pulumi.StringOutput {
+	return o.ApplyT(func(v HciCollectLogJobProperties) string { return v.FromDate }).(pulumi.StringOutput)
+}
+
+// Job Type supported.
+// Expected value is 'CollectLog'.
+func (o HciCollectLogJobPropertiesOutput) JobType() pulumi.StringOutput {
+	return o.ApplyT(func(v HciCollectLogJobProperties) string { return v.JobType }).(pulumi.StringOutput)
+}
+
+// To date for log collection.
+func (o HciCollectLogJobPropertiesOutput) ToDate() pulumi.StringOutput {
+	return o.ApplyT(func(v HciCollectLogJobProperties) string { return v.ToDate }).(pulumi.StringOutput)
+}
+
+// Represents the properties of an HCI Collect Log job.
+type HciCollectLogJobPropertiesResponse struct {
+	// Deployment mode to trigger job.
+	DeploymentMode *string `pulumi:"deploymentMode"`
+	// The UTC date and time at which the job completed.
+	EndTimeUtc string `pulumi:"endTimeUtc"`
+	// From date for log collection.
+	FromDate string `pulumi:"fromDate"`
+	// Unique, immutable job id.
+	JobId string `pulumi:"jobId"`
+	// Job Type supported.
+	// Expected value is 'CollectLog'.
+	JobType string `pulumi:"jobType"`
+	// To date for log collection.
+	LastLogGenerated string `pulumi:"lastLogGenerated"`
+	// Job provisioning state
+	ProvisioningState string `pulumi:"provisioningState"`
+	// log collection job reported properties.
+	ReportedProperties LogCollectionReportedPropertiesResponse `pulumi:"reportedProperties"`
+	// The UTC date and time at which the job started.
+	StartTimeUtc string `pulumi:"startTimeUtc"`
+	// Status of Edge device job.
+	Status string `pulumi:"status"`
+	// To date for log collection.
+	ToDate string `pulumi:"toDate"`
+}
+
+// Represents the properties of an HCI Collect Log job.
+type HciCollectLogJobPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (HciCollectLogJobPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HciCollectLogJobPropertiesResponse)(nil)).Elem()
+}
+
+func (o HciCollectLogJobPropertiesResponseOutput) ToHciCollectLogJobPropertiesResponseOutput() HciCollectLogJobPropertiesResponseOutput {
+	return o
+}
+
+func (o HciCollectLogJobPropertiesResponseOutput) ToHciCollectLogJobPropertiesResponseOutputWithContext(ctx context.Context) HciCollectLogJobPropertiesResponseOutput {
+	return o
+}
+
+// Deployment mode to trigger job.
+func (o HciCollectLogJobPropertiesResponseOutput) DeploymentMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HciCollectLogJobPropertiesResponse) *string { return v.DeploymentMode }).(pulumi.StringPtrOutput)
+}
+
+// The UTC date and time at which the job completed.
+func (o HciCollectLogJobPropertiesResponseOutput) EndTimeUtc() pulumi.StringOutput {
+	return o.ApplyT(func(v HciCollectLogJobPropertiesResponse) string { return v.EndTimeUtc }).(pulumi.StringOutput)
+}
+
+// From date for log collection.
+func (o HciCollectLogJobPropertiesResponseOutput) FromDate() pulumi.StringOutput {
+	return o.ApplyT(func(v HciCollectLogJobPropertiesResponse) string { return v.FromDate }).(pulumi.StringOutput)
+}
+
+// Unique, immutable job id.
+func (o HciCollectLogJobPropertiesResponseOutput) JobId() pulumi.StringOutput {
+	return o.ApplyT(func(v HciCollectLogJobPropertiesResponse) string { return v.JobId }).(pulumi.StringOutput)
+}
+
+// Job Type supported.
+// Expected value is 'CollectLog'.
+func (o HciCollectLogJobPropertiesResponseOutput) JobType() pulumi.StringOutput {
+	return o.ApplyT(func(v HciCollectLogJobPropertiesResponse) string { return v.JobType }).(pulumi.StringOutput)
+}
+
+// To date for log collection.
+func (o HciCollectLogJobPropertiesResponseOutput) LastLogGenerated() pulumi.StringOutput {
+	return o.ApplyT(func(v HciCollectLogJobPropertiesResponse) string { return v.LastLogGenerated }).(pulumi.StringOutput)
+}
+
+// Job provisioning state
+func (o HciCollectLogJobPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v HciCollectLogJobPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// log collection job reported properties.
+func (o HciCollectLogJobPropertiesResponseOutput) ReportedProperties() LogCollectionReportedPropertiesResponseOutput {
+	return o.ApplyT(func(v HciCollectLogJobPropertiesResponse) LogCollectionReportedPropertiesResponse {
+		return v.ReportedProperties
+	}).(LogCollectionReportedPropertiesResponseOutput)
+}
+
+// The UTC date and time at which the job started.
+func (o HciCollectLogJobPropertiesResponseOutput) StartTimeUtc() pulumi.StringOutput {
+	return o.ApplyT(func(v HciCollectLogJobPropertiesResponse) string { return v.StartTimeUtc }).(pulumi.StringOutput)
+}
+
+// Status of Edge device job.
+func (o HciCollectLogJobPropertiesResponseOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v HciCollectLogJobPropertiesResponse) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// To date for log collection.
+func (o HciCollectLogJobPropertiesResponseOutput) ToDate() pulumi.StringOutput {
+	return o.ApplyT(func(v HciCollectLogJobPropertiesResponse) string { return v.ToDate }).(pulumi.StringOutput)
+}
+
+// Represents the properties of a remote support job for HCI.
+type HciRemoteSupportJobProperties struct {
+	// Remote support access level.
+	AccessLevel string `pulumi:"accessLevel"`
+	// Deployment mode to trigger job.
+	DeploymentMode *string `pulumi:"deploymentMode"`
+	// Remote support expiration timestamp.
+	ExpirationTimestamp string `pulumi:"expirationTimestamp"`
+	// Job Type supported.
+	// Expected value is 'RemoteSupport'.
+	JobType string `pulumi:"jobType"`
+	// Remote support type.
+	Type string `pulumi:"type"`
+}
+
+// HciRemoteSupportJobPropertiesInput is an input type that accepts HciRemoteSupportJobPropertiesArgs and HciRemoteSupportJobPropertiesOutput values.
+// You can construct a concrete instance of `HciRemoteSupportJobPropertiesInput` via:
+//
+//	HciRemoteSupportJobPropertiesArgs{...}
+type HciRemoteSupportJobPropertiesInput interface {
+	pulumi.Input
+
+	ToHciRemoteSupportJobPropertiesOutput() HciRemoteSupportJobPropertiesOutput
+	ToHciRemoteSupportJobPropertiesOutputWithContext(context.Context) HciRemoteSupportJobPropertiesOutput
+}
+
+// Represents the properties of a remote support job for HCI.
+type HciRemoteSupportJobPropertiesArgs struct {
+	// Remote support access level.
+	AccessLevel pulumi.StringInput `pulumi:"accessLevel"`
+	// Deployment mode to trigger job.
+	DeploymentMode pulumi.StringPtrInput `pulumi:"deploymentMode"`
+	// Remote support expiration timestamp.
+	ExpirationTimestamp pulumi.StringInput `pulumi:"expirationTimestamp"`
+	// Job Type supported.
+	// Expected value is 'RemoteSupport'.
+	JobType pulumi.StringInput `pulumi:"jobType"`
+	// Remote support type.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (HciRemoteSupportJobPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HciRemoteSupportJobProperties)(nil)).Elem()
+}
+
+func (i HciRemoteSupportJobPropertiesArgs) ToHciRemoteSupportJobPropertiesOutput() HciRemoteSupportJobPropertiesOutput {
+	return i.ToHciRemoteSupportJobPropertiesOutputWithContext(context.Background())
+}
+
+func (i HciRemoteSupportJobPropertiesArgs) ToHciRemoteSupportJobPropertiesOutputWithContext(ctx context.Context) HciRemoteSupportJobPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HciRemoteSupportJobPropertiesOutput)
+}
+
+// Represents the properties of a remote support job for HCI.
+type HciRemoteSupportJobPropertiesOutput struct{ *pulumi.OutputState }
+
+func (HciRemoteSupportJobPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HciRemoteSupportJobProperties)(nil)).Elem()
+}
+
+func (o HciRemoteSupportJobPropertiesOutput) ToHciRemoteSupportJobPropertiesOutput() HciRemoteSupportJobPropertiesOutput {
+	return o
+}
+
+func (o HciRemoteSupportJobPropertiesOutput) ToHciRemoteSupportJobPropertiesOutputWithContext(ctx context.Context) HciRemoteSupportJobPropertiesOutput {
+	return o
+}
+
+// Remote support access level.
+func (o HciRemoteSupportJobPropertiesOutput) AccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v HciRemoteSupportJobProperties) string { return v.AccessLevel }).(pulumi.StringOutput)
+}
+
+// Deployment mode to trigger job.
+func (o HciRemoteSupportJobPropertiesOutput) DeploymentMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HciRemoteSupportJobProperties) *string { return v.DeploymentMode }).(pulumi.StringPtrOutput)
+}
+
+// Remote support expiration timestamp.
+func (o HciRemoteSupportJobPropertiesOutput) ExpirationTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v HciRemoteSupportJobProperties) string { return v.ExpirationTimestamp }).(pulumi.StringOutput)
+}
+
+// Job Type supported.
+// Expected value is 'RemoteSupport'.
+func (o HciRemoteSupportJobPropertiesOutput) JobType() pulumi.StringOutput {
+	return o.ApplyT(func(v HciRemoteSupportJobProperties) string { return v.JobType }).(pulumi.StringOutput)
+}
+
+// Remote support type.
+func (o HciRemoteSupportJobPropertiesOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v HciRemoteSupportJobProperties) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Represents the properties of a remote support job for HCI.
+type HciRemoteSupportJobPropertiesResponse struct {
+	// Remote support access level.
+	AccessLevel string `pulumi:"accessLevel"`
+	// Deployment mode to trigger job.
+	DeploymentMode *string `pulumi:"deploymentMode"`
+	// The UTC date and time at which the job completed.
+	EndTimeUtc string `pulumi:"endTimeUtc"`
+	// Remote support expiration timestamp.
+	ExpirationTimestamp string `pulumi:"expirationTimestamp"`
+	// Unique, immutable job id.
+	JobId string `pulumi:"jobId"`
+	// Job Type supported.
+	// Expected value is 'RemoteSupport'.
+	JobType string `pulumi:"jobType"`
+	// Job provisioning state
+	ProvisioningState string `pulumi:"provisioningState"`
+	// log collection job reported properties.
+	ReportedProperties RemoteSupportJobReportedPropertiesResponse `pulumi:"reportedProperties"`
+	// The UTC date and time at which the job started.
+	StartTimeUtc string `pulumi:"startTimeUtc"`
+	// Status of Edge device job.
+	Status string `pulumi:"status"`
+	// Remote support type.
+	Type string `pulumi:"type"`
+}
+
+// Represents the properties of a remote support job for HCI.
+type HciRemoteSupportJobPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (HciRemoteSupportJobPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HciRemoteSupportJobPropertiesResponse)(nil)).Elem()
+}
+
+func (o HciRemoteSupportJobPropertiesResponseOutput) ToHciRemoteSupportJobPropertiesResponseOutput() HciRemoteSupportJobPropertiesResponseOutput {
+	return o
+}
+
+func (o HciRemoteSupportJobPropertiesResponseOutput) ToHciRemoteSupportJobPropertiesResponseOutputWithContext(ctx context.Context) HciRemoteSupportJobPropertiesResponseOutput {
+	return o
+}
+
+// Remote support access level.
+func (o HciRemoteSupportJobPropertiesResponseOutput) AccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v HciRemoteSupportJobPropertiesResponse) string { return v.AccessLevel }).(pulumi.StringOutput)
+}
+
+// Deployment mode to trigger job.
+func (o HciRemoteSupportJobPropertiesResponseOutput) DeploymentMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HciRemoteSupportJobPropertiesResponse) *string { return v.DeploymentMode }).(pulumi.StringPtrOutput)
+}
+
+// The UTC date and time at which the job completed.
+func (o HciRemoteSupportJobPropertiesResponseOutput) EndTimeUtc() pulumi.StringOutput {
+	return o.ApplyT(func(v HciRemoteSupportJobPropertiesResponse) string { return v.EndTimeUtc }).(pulumi.StringOutput)
+}
+
+// Remote support expiration timestamp.
+func (o HciRemoteSupportJobPropertiesResponseOutput) ExpirationTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v HciRemoteSupportJobPropertiesResponse) string { return v.ExpirationTimestamp }).(pulumi.StringOutput)
+}
+
+// Unique, immutable job id.
+func (o HciRemoteSupportJobPropertiesResponseOutput) JobId() pulumi.StringOutput {
+	return o.ApplyT(func(v HciRemoteSupportJobPropertiesResponse) string { return v.JobId }).(pulumi.StringOutput)
+}
+
+// Job Type supported.
+// Expected value is 'RemoteSupport'.
+func (o HciRemoteSupportJobPropertiesResponseOutput) JobType() pulumi.StringOutput {
+	return o.ApplyT(func(v HciRemoteSupportJobPropertiesResponse) string { return v.JobType }).(pulumi.StringOutput)
+}
+
+// Job provisioning state
+func (o HciRemoteSupportJobPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v HciRemoteSupportJobPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// log collection job reported properties.
+func (o HciRemoteSupportJobPropertiesResponseOutput) ReportedProperties() RemoteSupportJobReportedPropertiesResponseOutput {
+	return o.ApplyT(func(v HciRemoteSupportJobPropertiesResponse) RemoteSupportJobReportedPropertiesResponse {
+		return v.ReportedProperties
+	}).(RemoteSupportJobReportedPropertiesResponseOutput)
+}
+
+// The UTC date and time at which the job started.
+func (o HciRemoteSupportJobPropertiesResponseOutput) StartTimeUtc() pulumi.StringOutput {
+	return o.ApplyT(func(v HciRemoteSupportJobPropertiesResponse) string { return v.StartTimeUtc }).(pulumi.StringOutput)
+}
+
+// Status of Edge device job.
+func (o HciRemoteSupportJobPropertiesResponseOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v HciRemoteSupportJobPropertiesResponse) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Remote support type.
+func (o HciRemoteSupportJobPropertiesResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v HciRemoteSupportJobPropertiesResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
 // The HostNetwork of a cluster.
@@ -6333,6 +6840,136 @@ func (o IpPoolsResponseArrayOutput) Index(i pulumi.IntInput) IpPoolsResponseOutp
 	}).(IpPoolsResponseOutput)
 }
 
+// Represents a session for collecting logs from an edge device.
+type LogCollectionJobSessionResponse struct {
+	// A unique identifier for correlating this log collection session with other operations or sessions.
+	CorrelationId string `pulumi:"correlationId"`
+	// The timestamp when log collection ended, in ISO 8601 format.
+	EndTime string `pulumi:"endTime"`
+	// The size of the collected logs in bytes.
+	LogSize int `pulumi:"logSize"`
+	// The timestamp when log collection started, in ISO 8601 format.
+	StartTime string `pulumi:"startTime"`
+	// The status of the log collection session.
+	Status string `pulumi:"status"`
+	// The total time logs were collected for, in ISO 8601 duration format.
+	TimeCollected string `pulumi:"timeCollected"`
+}
+
+// Represents a session for collecting logs from an edge device.
+type LogCollectionJobSessionResponseOutput struct{ *pulumi.OutputState }
+
+func (LogCollectionJobSessionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogCollectionJobSessionResponse)(nil)).Elem()
+}
+
+func (o LogCollectionJobSessionResponseOutput) ToLogCollectionJobSessionResponseOutput() LogCollectionJobSessionResponseOutput {
+	return o
+}
+
+func (o LogCollectionJobSessionResponseOutput) ToLogCollectionJobSessionResponseOutputWithContext(ctx context.Context) LogCollectionJobSessionResponseOutput {
+	return o
+}
+
+// A unique identifier for correlating this log collection session with other operations or sessions.
+func (o LogCollectionJobSessionResponseOutput) CorrelationId() pulumi.StringOutput {
+	return o.ApplyT(func(v LogCollectionJobSessionResponse) string { return v.CorrelationId }).(pulumi.StringOutput)
+}
+
+// The timestamp when log collection ended, in ISO 8601 format.
+func (o LogCollectionJobSessionResponseOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LogCollectionJobSessionResponse) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// The size of the collected logs in bytes.
+func (o LogCollectionJobSessionResponseOutput) LogSize() pulumi.IntOutput {
+	return o.ApplyT(func(v LogCollectionJobSessionResponse) int { return v.LogSize }).(pulumi.IntOutput)
+}
+
+// The timestamp when log collection started, in ISO 8601 format.
+func (o LogCollectionJobSessionResponseOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LogCollectionJobSessionResponse) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+// The status of the log collection session.
+func (o LogCollectionJobSessionResponseOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v LogCollectionJobSessionResponse) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The total time logs were collected for, in ISO 8601 duration format.
+func (o LogCollectionJobSessionResponseOutput) TimeCollected() pulumi.StringOutput {
+	return o.ApplyT(func(v LogCollectionJobSessionResponse) string { return v.TimeCollected }).(pulumi.StringOutput)
+}
+
+type LogCollectionJobSessionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (LogCollectionJobSessionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LogCollectionJobSessionResponse)(nil)).Elem()
+}
+
+func (o LogCollectionJobSessionResponseArrayOutput) ToLogCollectionJobSessionResponseArrayOutput() LogCollectionJobSessionResponseArrayOutput {
+	return o
+}
+
+func (o LogCollectionJobSessionResponseArrayOutput) ToLogCollectionJobSessionResponseArrayOutputWithContext(ctx context.Context) LogCollectionJobSessionResponseArrayOutput {
+	return o
+}
+
+func (o LogCollectionJobSessionResponseArrayOutput) Index(i pulumi.IntInput) LogCollectionJobSessionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LogCollectionJobSessionResponse {
+		return vs[0].([]LogCollectionJobSessionResponse)[vs[1].(int)]
+	}).(LogCollectionJobSessionResponseOutput)
+}
+
+// Represents the reported properties of a log collection job.
+type LogCollectionReportedPropertiesResponse struct {
+	// Deployment status of job.
+	DeploymentStatus EceActionStatusResponse `pulumi:"deploymentStatus"`
+	// Details of the log collection session.
+	LogCollectionSessionDetails []LogCollectionJobSessionResponse `pulumi:"logCollectionSessionDetails"`
+	// The percentage of the job that is complete.
+	PercentComplete int `pulumi:"percentComplete"`
+	// Validation status of job.
+	ValidationStatus EceActionStatusResponse `pulumi:"validationStatus"`
+}
+
+// Represents the reported properties of a log collection job.
+type LogCollectionReportedPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (LogCollectionReportedPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogCollectionReportedPropertiesResponse)(nil)).Elem()
+}
+
+func (o LogCollectionReportedPropertiesResponseOutput) ToLogCollectionReportedPropertiesResponseOutput() LogCollectionReportedPropertiesResponseOutput {
+	return o
+}
+
+func (o LogCollectionReportedPropertiesResponseOutput) ToLogCollectionReportedPropertiesResponseOutputWithContext(ctx context.Context) LogCollectionReportedPropertiesResponseOutput {
+	return o
+}
+
+// Deployment status of job.
+func (o LogCollectionReportedPropertiesResponseOutput) DeploymentStatus() EceActionStatusResponseOutput {
+	return o.ApplyT(func(v LogCollectionReportedPropertiesResponse) EceActionStatusResponse { return v.DeploymentStatus }).(EceActionStatusResponseOutput)
+}
+
+// Details of the log collection session.
+func (o LogCollectionReportedPropertiesResponseOutput) LogCollectionSessionDetails() LogCollectionJobSessionResponseArrayOutput {
+	return o.ApplyT(func(v LogCollectionReportedPropertiesResponse) []LogCollectionJobSessionResponse {
+		return v.LogCollectionSessionDetails
+	}).(LogCollectionJobSessionResponseArrayOutput)
+}
+
+// The percentage of the job that is complete.
+func (o LogCollectionReportedPropertiesResponseOutput) PercentComplete() pulumi.IntOutput {
+	return o.ApplyT(func(v LogCollectionReportedPropertiesResponse) int { return v.PercentComplete }).(pulumi.IntOutput)
+}
+
+// Validation status of job.
+func (o LogCollectionReportedPropertiesResponseOutput) ValidationStatus() EceActionStatusResponseOutput {
+	return o.ApplyT(func(v LogCollectionReportedPropertiesResponse) EceActionStatusResponse { return v.ValidationStatus }).(EceActionStatusResponseOutput)
+}
+
 // The ARM ID for a Logical Network.
 type LogicalNetworkArmReferenceResponse struct {
 	// The ARM ID for a Logical Network.
@@ -8658,6 +9295,192 @@ func (o QosPolicyOverridesResponsePtrOutput) PriorityValue8021ActionSMB() pulumi
 		}
 		return v.PriorityValue8021ActionSMB
 	}).(pulumi.StringPtrOutput)
+}
+
+// Represents the settings of a remote support node.
+type RemoteSupportJobNodeSettingsResponse struct {
+	// The error message, if any, from the last connection attempt.
+	ConnectionErrorMessage string `pulumi:"connectionErrorMessage"`
+	// The current connection status of the remote support session.
+	ConnectionStatus string `pulumi:"connectionStatus"`
+	// The timestamp when the node settings were created, in UTC.
+	CreatedAt string `pulumi:"createdAt"`
+	// The state of the remote support node.
+	State string `pulumi:"state"`
+	// The timestamp when the node settings were last updated, in UTC.
+	UpdatedAt string `pulumi:"updatedAt"`
+}
+
+// Represents the settings of a remote support node.
+type RemoteSupportJobNodeSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (RemoteSupportJobNodeSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RemoteSupportJobNodeSettingsResponse)(nil)).Elem()
+}
+
+func (o RemoteSupportJobNodeSettingsResponseOutput) ToRemoteSupportJobNodeSettingsResponseOutput() RemoteSupportJobNodeSettingsResponseOutput {
+	return o
+}
+
+func (o RemoteSupportJobNodeSettingsResponseOutput) ToRemoteSupportJobNodeSettingsResponseOutputWithContext(ctx context.Context) RemoteSupportJobNodeSettingsResponseOutput {
+	return o
+}
+
+// The error message, if any, from the last connection attempt.
+func (o RemoteSupportJobNodeSettingsResponseOutput) ConnectionErrorMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v RemoteSupportJobNodeSettingsResponse) string { return v.ConnectionErrorMessage }).(pulumi.StringOutput)
+}
+
+// The current connection status of the remote support session.
+func (o RemoteSupportJobNodeSettingsResponseOutput) ConnectionStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v RemoteSupportJobNodeSettingsResponse) string { return v.ConnectionStatus }).(pulumi.StringOutput)
+}
+
+// The timestamp when the node settings were created, in UTC.
+func (o RemoteSupportJobNodeSettingsResponseOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v RemoteSupportJobNodeSettingsResponse) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The state of the remote support node.
+func (o RemoteSupportJobNodeSettingsResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v RemoteSupportJobNodeSettingsResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
+// The timestamp when the node settings were last updated, in UTC.
+func (o RemoteSupportJobNodeSettingsResponseOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v RemoteSupportJobNodeSettingsResponse) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// Represents the reported properties of a remote support job.
+type RemoteSupportJobReportedPropertiesResponse struct {
+	// Deployment status of job.
+	DeploymentStatus EceActionStatusResponse `pulumi:"deploymentStatus"`
+	// Optional settings for configuring the node for remote support.
+	NodeSettings RemoteSupportJobNodeSettingsResponse `pulumi:"nodeSettings"`
+	// The percentage of the job that is complete.
+	PercentComplete int `pulumi:"percentComplete"`
+	// Details of the remote support session.
+	SessionDetails []RemoteSupportSessionResponse `pulumi:"sessionDetails"`
+	// Validation status of job.
+	ValidationStatus EceActionStatusResponse `pulumi:"validationStatus"`
+}
+
+// Represents the reported properties of a remote support job.
+type RemoteSupportJobReportedPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (RemoteSupportJobReportedPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RemoteSupportJobReportedPropertiesResponse)(nil)).Elem()
+}
+
+func (o RemoteSupportJobReportedPropertiesResponseOutput) ToRemoteSupportJobReportedPropertiesResponseOutput() RemoteSupportJobReportedPropertiesResponseOutput {
+	return o
+}
+
+func (o RemoteSupportJobReportedPropertiesResponseOutput) ToRemoteSupportJobReportedPropertiesResponseOutputWithContext(ctx context.Context) RemoteSupportJobReportedPropertiesResponseOutput {
+	return o
+}
+
+// Deployment status of job.
+func (o RemoteSupportJobReportedPropertiesResponseOutput) DeploymentStatus() EceActionStatusResponseOutput {
+	return o.ApplyT(func(v RemoteSupportJobReportedPropertiesResponse) EceActionStatusResponse { return v.DeploymentStatus }).(EceActionStatusResponseOutput)
+}
+
+// Optional settings for configuring the node for remote support.
+func (o RemoteSupportJobReportedPropertiesResponseOutput) NodeSettings() RemoteSupportJobNodeSettingsResponseOutput {
+	return o.ApplyT(func(v RemoteSupportJobReportedPropertiesResponse) RemoteSupportJobNodeSettingsResponse {
+		return v.NodeSettings
+	}).(RemoteSupportJobNodeSettingsResponseOutput)
+}
+
+// The percentage of the job that is complete.
+func (o RemoteSupportJobReportedPropertiesResponseOutput) PercentComplete() pulumi.IntOutput {
+	return o.ApplyT(func(v RemoteSupportJobReportedPropertiesResponse) int { return v.PercentComplete }).(pulumi.IntOutput)
+}
+
+// Details of the remote support session.
+func (o RemoteSupportJobReportedPropertiesResponseOutput) SessionDetails() RemoteSupportSessionResponseArrayOutput {
+	return o.ApplyT(func(v RemoteSupportJobReportedPropertiesResponse) []RemoteSupportSessionResponse {
+		return v.SessionDetails
+	}).(RemoteSupportSessionResponseArrayOutput)
+}
+
+// Validation status of job.
+func (o RemoteSupportJobReportedPropertiesResponseOutput) ValidationStatus() EceActionStatusResponseOutput {
+	return o.ApplyT(func(v RemoteSupportJobReportedPropertiesResponse) EceActionStatusResponse { return v.ValidationStatus }).(EceActionStatusResponseOutput)
+}
+
+// Represents a remote support session.
+type RemoteSupportSessionResponse struct {
+	// The level of access granted during the remote support session.
+	AccessLevel string `pulumi:"accessLevel"`
+	// The end time of the remote support session, in UTC.
+	SessionEndTime string `pulumi:"sessionEndTime"`
+	// Unique session Id.
+	SessionId string `pulumi:"sessionId"`
+	// The start time of the remote support session, in UTC.
+	SessionStartTime string `pulumi:"sessionStartTime"`
+	// The location where the session transcript is stored.
+	TranscriptLocation string `pulumi:"transcriptLocation"`
+}
+
+// Represents a remote support session.
+type RemoteSupportSessionResponseOutput struct{ *pulumi.OutputState }
+
+func (RemoteSupportSessionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RemoteSupportSessionResponse)(nil)).Elem()
+}
+
+func (o RemoteSupportSessionResponseOutput) ToRemoteSupportSessionResponseOutput() RemoteSupportSessionResponseOutput {
+	return o
+}
+
+func (o RemoteSupportSessionResponseOutput) ToRemoteSupportSessionResponseOutputWithContext(ctx context.Context) RemoteSupportSessionResponseOutput {
+	return o
+}
+
+// The level of access granted during the remote support session.
+func (o RemoteSupportSessionResponseOutput) AccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v RemoteSupportSessionResponse) string { return v.AccessLevel }).(pulumi.StringOutput)
+}
+
+// The end time of the remote support session, in UTC.
+func (o RemoteSupportSessionResponseOutput) SessionEndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v RemoteSupportSessionResponse) string { return v.SessionEndTime }).(pulumi.StringOutput)
+}
+
+// Unique session Id.
+func (o RemoteSupportSessionResponseOutput) SessionId() pulumi.StringOutput {
+	return o.ApplyT(func(v RemoteSupportSessionResponse) string { return v.SessionId }).(pulumi.StringOutput)
+}
+
+// The start time of the remote support session, in UTC.
+func (o RemoteSupportSessionResponseOutput) SessionStartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v RemoteSupportSessionResponse) string { return v.SessionStartTime }).(pulumi.StringOutput)
+}
+
+// The location where the session transcript is stored.
+func (o RemoteSupportSessionResponseOutput) TranscriptLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v RemoteSupportSessionResponse) string { return v.TranscriptLocation }).(pulumi.StringOutput)
+}
+
+type RemoteSupportSessionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (RemoteSupportSessionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RemoteSupportSessionResponse)(nil)).Elem()
+}
+
+func (o RemoteSupportSessionResponseArrayOutput) ToRemoteSupportSessionResponseArrayOutput() RemoteSupportSessionResponseArrayOutput {
+	return o
+}
+
+func (o RemoteSupportSessionResponseArrayOutput) ToRemoteSupportSessionResponseArrayOutputWithContext(ctx context.Context) RemoteSupportSessionResponseArrayOutput {
+	return o
+}
+
+func (o RemoteSupportSessionResponseArrayOutput) Index(i pulumi.IntInput) RemoteSupportSessionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RemoteSupportSessionResponse {
+		return vs[0].([]RemoteSupportSessionResponse)[vs[1].(int)]
+	}).(RemoteSupportSessionResponseOutput)
 }
 
 // The DeploymentStatus of AzureStackHCI Cluster.
@@ -21577,8 +22400,11 @@ func init() {
 	pulumi.RegisterOutputType(DeploymentDataOutput{})
 	pulumi.RegisterOutputType(DeploymentDataResponseOutput{})
 	pulumi.RegisterOutputType(DeploymentStatusResponseOutput{})
+	pulumi.RegisterOutputType(DeploymentStepResponseOutput{})
+	pulumi.RegisterOutputType(DeploymentStepResponseArrayOutput{})
 	pulumi.RegisterOutputType(DeviceConfigurationOutput{})
 	pulumi.RegisterOutputType(DeviceConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(EceActionStatusResponseOutput{})
 	pulumi.RegisterOutputType(ErrorAdditionalInfoResponseOutput{})
 	pulumi.RegisterOutputType(ErrorAdditionalInfoResponseArrayOutput{})
 	pulumi.RegisterOutputType(ErrorDetailResponseOutput{})
@@ -21615,6 +22441,10 @@ func init() {
 	pulumi.RegisterOutputType(GuestCredentialPtrOutput{})
 	pulumi.RegisterOutputType(GuestCredentialResponseOutput{})
 	pulumi.RegisterOutputType(GuestCredentialResponsePtrOutput{})
+	pulumi.RegisterOutputType(HciCollectLogJobPropertiesOutput{})
+	pulumi.RegisterOutputType(HciCollectLogJobPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(HciRemoteSupportJobPropertiesOutput{})
+	pulumi.RegisterOutputType(HciRemoteSupportJobPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(HostNetworkOutput{})
 	pulumi.RegisterOutputType(HostNetworkPtrOutput{})
 	pulumi.RegisterOutputType(HostNetworkResponseOutput{})
@@ -21663,6 +22493,9 @@ func init() {
 	pulumi.RegisterOutputType(IpPoolsArrayOutput{})
 	pulumi.RegisterOutputType(IpPoolsResponseOutput{})
 	pulumi.RegisterOutputType(IpPoolsResponseArrayOutput{})
+	pulumi.RegisterOutputType(LogCollectionJobSessionResponseOutput{})
+	pulumi.RegisterOutputType(LogCollectionJobSessionResponseArrayOutput{})
+	pulumi.RegisterOutputType(LogCollectionReportedPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(LogicalNetworkArmReferenceResponseOutput{})
 	pulumi.RegisterOutputType(LogicalNetworkArmReferenceResponseArrayOutput{})
 	pulumi.RegisterOutputType(LogicalNetworkPropertiesDhcpOptionsOutput{})
@@ -21710,6 +22543,10 @@ func init() {
 	pulumi.RegisterOutputType(QosPolicyOverridesPtrOutput{})
 	pulumi.RegisterOutputType(QosPolicyOverridesResponseOutput{})
 	pulumi.RegisterOutputType(QosPolicyOverridesResponsePtrOutput{})
+	pulumi.RegisterOutputType(RemoteSupportJobNodeSettingsResponseOutput{})
+	pulumi.RegisterOutputType(RemoteSupportJobReportedPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(RemoteSupportSessionResponseOutput{})
+	pulumi.RegisterOutputType(RemoteSupportSessionResponseArrayOutput{})
 	pulumi.RegisterOutputType(ReportedPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(RouteOutput{})
 	pulumi.RegisterOutputType(RouteArrayOutput{})

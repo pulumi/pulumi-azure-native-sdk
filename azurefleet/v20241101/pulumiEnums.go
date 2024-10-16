@@ -355,8 +355,8 @@ type ArchitectureType string
 const (
 	// ARM64 Architecture
 	ArchitectureTypeARM64 = ArchitectureType("ARM64")
-	// X86 Architecture
-	ArchitectureTypeX86 = ArchitectureType("X86")
+	// X64 Architecture
+	ArchitectureTypeX64 = ArchitectureType("X64")
 )
 
 func (ArchitectureType) ElementType() reflect.Type {
@@ -482,7 +482,7 @@ func (o ArchitectureTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 // A concrete instance of `ArchitectureTypeInput` can be one of the following:
 //
 //	ArchitectureTypeARM64
-//	ArchitectureTypeX86
+//	ArchitectureTypeX64
 type ArchitectureTypeInput interface {
 	pulumi.Input
 

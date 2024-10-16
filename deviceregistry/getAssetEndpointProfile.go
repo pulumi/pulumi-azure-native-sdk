@@ -14,7 +14,7 @@ import (
 // Get a AssetEndpointProfile
 // Azure REST API version: 2023-11-01-preview.
 //
-// Other available API versions: 2024-09-01-preview.
+// Other available API versions: 2024-09-01-preview, 2024-11-01.
 func LookupAssetEndpointProfile(ctx *pulumi.Context, args *LookupAssetEndpointProfileArgs, opts ...pulumi.InvokeOption) (*LookupAssetEndpointProfileResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAssetEndpointProfileResult

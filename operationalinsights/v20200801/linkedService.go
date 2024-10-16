@@ -56,6 +56,9 @@ func NewLinkedService(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:operationalinsights/v20200301preview:LinkedService"),
 		},
+		{
+			Type: pulumi.String("azure-native:operationalinsights/v20230901:LinkedService"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

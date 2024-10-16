@@ -14,7 +14,7 @@ import (
 // The remediation definition.
 // Azure REST API version: 2021-10-01. Prior API version in Azure Native 1.x: 2019-07-01.
 //
-// Other available API versions: 2018-07-01-preview.
+// Other available API versions: 2018-07-01-preview, 2024-10-01.
 type RemediationAtSubscription struct {
 	pulumi.CustomResourceState
 
@@ -68,6 +68,9 @@ func NewRemediationAtSubscription(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:policyinsights/v20211001:RemediationAtSubscription"),
+		},
+		{
+			Type: pulumi.String("azure-native:policyinsights/v20241001:RemediationAtSubscription"),
 		},
 	})
 	opts = append(opts, aliases)
