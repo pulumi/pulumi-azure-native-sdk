@@ -14,6 +14,8 @@ import (
 
 // Linked storage accounts top level resource container.
 // Azure REST API version: 2020-08-01. Prior API version in Azure Native 1.x: 2020-08-01.
+//
+// Other available API versions: 2023-09-01.
 type LinkedStorageAccount struct {
 	pulumi.CustomResourceState
 
@@ -49,6 +51,9 @@ func NewLinkedStorageAccount(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:operationalinsights/v20200801:LinkedStorageAccount"),
+		},
+		{
+			Type: pulumi.String("azure-native:operationalinsights/v20230901:LinkedStorageAccount"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -72,6 +72,9 @@ func NewDeploymentSetting(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20240401:DeploymentSetting"),
 		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20240901preview:DeploymentSetting"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -10459,6 +10459,8 @@ type SnowflakeV2LinkedService struct {
 	Description *string `pulumi:"description"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential *string `pulumi:"encryptedCredential"`
+	// The host name of the Snowflake account.
+	Host interface{} `pulumi:"host"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
 	// The Azure key vault secret reference of password in connection string.
@@ -10526,6 +10528,8 @@ type SnowflakeV2LinkedServiceArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential pulumi.StringPtrInput `pulumi:"encryptedCredential"`
+	// The host name of the Snowflake account.
+	Host pulumi.Input `pulumi:"host"`
 	// Parameters for linked service.
 	Parameters ParameterSpecificationMapInput `pulumi:"parameters"`
 	// The Azure key vault secret reference of password in connection string.
@@ -10632,6 +10636,11 @@ func (o SnowflakeV2LinkedServiceOutput) EncryptedCredential() pulumi.StringPtrOu
 	return o.ApplyT(func(v SnowflakeV2LinkedService) *string { return v.EncryptedCredential }).(pulumi.StringPtrOutput)
 }
 
+// The host name of the Snowflake account.
+func (o SnowflakeV2LinkedServiceOutput) Host() pulumi.AnyOutput {
+	return o.ApplyT(func(v SnowflakeV2LinkedService) interface{} { return v.Host }).(pulumi.AnyOutput)
+}
+
 // Parameters for linked service.
 func (o SnowflakeV2LinkedServiceOutput) Parameters() ParameterSpecificationMapOutput {
 	return o.ApplyT(func(v SnowflakeV2LinkedService) map[string]ParameterSpecification { return v.Parameters }).(ParameterSpecificationMapOutput)
@@ -10703,6 +10712,8 @@ type SnowflakeV2LinkedServiceResponse struct {
 	Description *string `pulumi:"description"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential *string `pulumi:"encryptedCredential"`
+	// The host name of the Snowflake account.
+	Host interface{} `pulumi:"host"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
 	// The Azure key vault secret reference of password in connection string.
@@ -10797,6 +10808,11 @@ func (o SnowflakeV2LinkedServiceResponseOutput) Description() pulumi.StringPtrOu
 // The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 func (o SnowflakeV2LinkedServiceResponseOutput) EncryptedCredential() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SnowflakeV2LinkedServiceResponse) *string { return v.EncryptedCredential }).(pulumi.StringPtrOutput)
+}
+
+// The host name of the Snowflake account.
+func (o SnowflakeV2LinkedServiceResponseOutput) Host() pulumi.AnyOutput {
+	return o.ApplyT(func(v SnowflakeV2LinkedServiceResponse) interface{} { return v.Host }).(pulumi.AnyOutput)
 }
 
 // Parameters for linked service.

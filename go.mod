@@ -2,7 +2,7 @@ module github.com/pulumi/pulumi-azure-native-sdk/v2
 
 go 1.21
 
-toolchain go1.22.7
+toolchain go1.22.8
 
 require (
 	github.com/blang/semver v3.5.1+incompatible

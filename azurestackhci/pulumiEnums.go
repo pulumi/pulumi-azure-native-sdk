@@ -512,13 +512,13 @@ func (in *complianceAssignmentTypePtr) ToComplianceAssignmentTypePtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(ComplianceAssignmentTypePtrOutput)
 }
 
-// The deployment mode for cluster deployment.
+// Deployment mode to trigger job.
 type DeploymentMode string
 
 const (
-	// Validate deployment settings for cluster.
+	// Validate ECE action deployment for a cluster.
 	DeploymentModeValidate = DeploymentMode("Validate")
-	// Deploy cluster using deployment settings.
+	// Deploy ECE action deployment for a cluster.
 	DeploymentModeDeploy = DeploymentMode("Deploy")
 )
 
@@ -1014,6 +1014,14 @@ func (in *diskFileFormatPtr) ToDiskFileFormatPtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(DiskFileFormatPtrOutput)
 }
 
+// Edge Solution type to support polymorphic resource.
+type EdgeDeviceKind string
+
+const (
+	// Arc-enabled edge device with HCI OS.
+	EdgeDeviceKindHCI = EdgeDeviceKind("HCI")
+)
+
 // The type of the extended location.
 type ExtendedLocationTypes string
 
@@ -1177,6 +1185,16 @@ func (in *extendedLocationTypesPtr) ToExtendedLocationTypesPtrOutput() ExtendedL
 func (in *extendedLocationTypesPtr) ToExtendedLocationTypesPtrOutputWithContext(ctx context.Context) ExtendedLocationTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ExtendedLocationTypesPtrOutput)
 }
+
+// Job Type to support polymorphic resource.
+type HciEdgeDeviceJobType string
+
+const (
+	// Job to collect logs from the device.
+	HciEdgeDeviceJobTypeCollectLog = HciEdgeDeviceJobType("CollectLog")
+	// Job to provide remote support to the device.
+	HciEdgeDeviceJobTypeRemoteSupport = HciEdgeDeviceJobType("RemoteSupport")
+)
 
 // The hypervisor generation of the Virtual Machine [V1, V2]
 type HyperVGeneration string
@@ -2690,6 +2708,345 @@ func (in *provisioningActionPtr) ToProvisioningActionPtrOutput() ProvisioningAct
 
 func (in *provisioningActionPtr) ToProvisioningActionPtrOutputWithContext(ctx context.Context) ProvisioningActionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ProvisioningActionPtrOutput)
+}
+
+// Remote support access level.
+type RemoteSupportAccessLevel string
+
+const (
+	// No remote support access is granted.
+	RemoteSupportAccessLevelNone = RemoteSupportAccessLevel("None")
+	// Access is limited to diagnostics information only.
+	RemoteSupportAccessLevelDiagnostics = RemoteSupportAccessLevel("Diagnostics")
+	// Access includes diagnostics information and the ability to perform repairs.
+	RemoteSupportAccessLevelDiagnosticsAndRepair = RemoteSupportAccessLevel("DiagnosticsAndRepair")
+)
+
+func (RemoteSupportAccessLevel) ElementType() reflect.Type {
+	return reflect.TypeOf((*RemoteSupportAccessLevel)(nil)).Elem()
+}
+
+func (e RemoteSupportAccessLevel) ToRemoteSupportAccessLevelOutput() RemoteSupportAccessLevelOutput {
+	return pulumi.ToOutput(e).(RemoteSupportAccessLevelOutput)
+}
+
+func (e RemoteSupportAccessLevel) ToRemoteSupportAccessLevelOutputWithContext(ctx context.Context) RemoteSupportAccessLevelOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(RemoteSupportAccessLevelOutput)
+}
+
+func (e RemoteSupportAccessLevel) ToRemoteSupportAccessLevelPtrOutput() RemoteSupportAccessLevelPtrOutput {
+	return e.ToRemoteSupportAccessLevelPtrOutputWithContext(context.Background())
+}
+
+func (e RemoteSupportAccessLevel) ToRemoteSupportAccessLevelPtrOutputWithContext(ctx context.Context) RemoteSupportAccessLevelPtrOutput {
+	return RemoteSupportAccessLevel(e).ToRemoteSupportAccessLevelOutputWithContext(ctx).ToRemoteSupportAccessLevelPtrOutputWithContext(ctx)
+}
+
+func (e RemoteSupportAccessLevel) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RemoteSupportAccessLevel) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RemoteSupportAccessLevel) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e RemoteSupportAccessLevel) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type RemoteSupportAccessLevelOutput struct{ *pulumi.OutputState }
+
+func (RemoteSupportAccessLevelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RemoteSupportAccessLevel)(nil)).Elem()
+}
+
+func (o RemoteSupportAccessLevelOutput) ToRemoteSupportAccessLevelOutput() RemoteSupportAccessLevelOutput {
+	return o
+}
+
+func (o RemoteSupportAccessLevelOutput) ToRemoteSupportAccessLevelOutputWithContext(ctx context.Context) RemoteSupportAccessLevelOutput {
+	return o
+}
+
+func (o RemoteSupportAccessLevelOutput) ToRemoteSupportAccessLevelPtrOutput() RemoteSupportAccessLevelPtrOutput {
+	return o.ToRemoteSupportAccessLevelPtrOutputWithContext(context.Background())
+}
+
+func (o RemoteSupportAccessLevelOutput) ToRemoteSupportAccessLevelPtrOutputWithContext(ctx context.Context) RemoteSupportAccessLevelPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RemoteSupportAccessLevel) *RemoteSupportAccessLevel {
+		return &v
+	}).(RemoteSupportAccessLevelPtrOutput)
+}
+
+func (o RemoteSupportAccessLevelOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o RemoteSupportAccessLevelOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RemoteSupportAccessLevel) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o RemoteSupportAccessLevelOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RemoteSupportAccessLevelOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RemoteSupportAccessLevel) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type RemoteSupportAccessLevelPtrOutput struct{ *pulumi.OutputState }
+
+func (RemoteSupportAccessLevelPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RemoteSupportAccessLevel)(nil)).Elem()
+}
+
+func (o RemoteSupportAccessLevelPtrOutput) ToRemoteSupportAccessLevelPtrOutput() RemoteSupportAccessLevelPtrOutput {
+	return o
+}
+
+func (o RemoteSupportAccessLevelPtrOutput) ToRemoteSupportAccessLevelPtrOutputWithContext(ctx context.Context) RemoteSupportAccessLevelPtrOutput {
+	return o
+}
+
+func (o RemoteSupportAccessLevelPtrOutput) Elem() RemoteSupportAccessLevelOutput {
+	return o.ApplyT(func(v *RemoteSupportAccessLevel) RemoteSupportAccessLevel {
+		if v != nil {
+			return *v
+		}
+		var ret RemoteSupportAccessLevel
+		return ret
+	}).(RemoteSupportAccessLevelOutput)
+}
+
+func (o RemoteSupportAccessLevelPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RemoteSupportAccessLevelPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RemoteSupportAccessLevel) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// RemoteSupportAccessLevelInput is an input type that accepts values of the RemoteSupportAccessLevel enum
+// A concrete instance of `RemoteSupportAccessLevelInput` can be one of the following:
+//
+//	RemoteSupportAccessLevelNone
+//	RemoteSupportAccessLevelDiagnostics
+//	RemoteSupportAccessLevelDiagnosticsAndRepair
+type RemoteSupportAccessLevelInput interface {
+	pulumi.Input
+
+	ToRemoteSupportAccessLevelOutput() RemoteSupportAccessLevelOutput
+	ToRemoteSupportAccessLevelOutputWithContext(context.Context) RemoteSupportAccessLevelOutput
+}
+
+var remoteSupportAccessLevelPtrType = reflect.TypeOf((**RemoteSupportAccessLevel)(nil)).Elem()
+
+type RemoteSupportAccessLevelPtrInput interface {
+	pulumi.Input
+
+	ToRemoteSupportAccessLevelPtrOutput() RemoteSupportAccessLevelPtrOutput
+	ToRemoteSupportAccessLevelPtrOutputWithContext(context.Context) RemoteSupportAccessLevelPtrOutput
+}
+
+type remoteSupportAccessLevelPtr string
+
+func RemoteSupportAccessLevelPtr(v string) RemoteSupportAccessLevelPtrInput {
+	return (*remoteSupportAccessLevelPtr)(&v)
+}
+
+func (*remoteSupportAccessLevelPtr) ElementType() reflect.Type {
+	return remoteSupportAccessLevelPtrType
+}
+
+func (in *remoteSupportAccessLevelPtr) ToRemoteSupportAccessLevelPtrOutput() RemoteSupportAccessLevelPtrOutput {
+	return pulumi.ToOutput(in).(RemoteSupportAccessLevelPtrOutput)
+}
+
+func (in *remoteSupportAccessLevelPtr) ToRemoteSupportAccessLevelPtrOutputWithContext(ctx context.Context) RemoteSupportAccessLevelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RemoteSupportAccessLevelPtrOutput)
+}
+
+// Remote support type.
+type RemoteSupportType string
+
+const (
+	// Enables remote support for the edge device.
+	RemoteSupportTypeEnable = RemoteSupportType("Enable")
+	// Revokes previously granted remote support access for the edge device.
+	RemoteSupportTypeRevoke = RemoteSupportType("Revoke")
+)
+
+func (RemoteSupportType) ElementType() reflect.Type {
+	return reflect.TypeOf((*RemoteSupportType)(nil)).Elem()
+}
+
+func (e RemoteSupportType) ToRemoteSupportTypeOutput() RemoteSupportTypeOutput {
+	return pulumi.ToOutput(e).(RemoteSupportTypeOutput)
+}
+
+func (e RemoteSupportType) ToRemoteSupportTypeOutputWithContext(ctx context.Context) RemoteSupportTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(RemoteSupportTypeOutput)
+}
+
+func (e RemoteSupportType) ToRemoteSupportTypePtrOutput() RemoteSupportTypePtrOutput {
+	return e.ToRemoteSupportTypePtrOutputWithContext(context.Background())
+}
+
+func (e RemoteSupportType) ToRemoteSupportTypePtrOutputWithContext(ctx context.Context) RemoteSupportTypePtrOutput {
+	return RemoteSupportType(e).ToRemoteSupportTypeOutputWithContext(ctx).ToRemoteSupportTypePtrOutputWithContext(ctx)
+}
+
+func (e RemoteSupportType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RemoteSupportType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RemoteSupportType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e RemoteSupportType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type RemoteSupportTypeOutput struct{ *pulumi.OutputState }
+
+func (RemoteSupportTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RemoteSupportType)(nil)).Elem()
+}
+
+func (o RemoteSupportTypeOutput) ToRemoteSupportTypeOutput() RemoteSupportTypeOutput {
+	return o
+}
+
+func (o RemoteSupportTypeOutput) ToRemoteSupportTypeOutputWithContext(ctx context.Context) RemoteSupportTypeOutput {
+	return o
+}
+
+func (o RemoteSupportTypeOutput) ToRemoteSupportTypePtrOutput() RemoteSupportTypePtrOutput {
+	return o.ToRemoteSupportTypePtrOutputWithContext(context.Background())
+}
+
+func (o RemoteSupportTypeOutput) ToRemoteSupportTypePtrOutputWithContext(ctx context.Context) RemoteSupportTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RemoteSupportType) *RemoteSupportType {
+		return &v
+	}).(RemoteSupportTypePtrOutput)
+}
+
+func (o RemoteSupportTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o RemoteSupportTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RemoteSupportType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o RemoteSupportTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RemoteSupportTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RemoteSupportType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type RemoteSupportTypePtrOutput struct{ *pulumi.OutputState }
+
+func (RemoteSupportTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RemoteSupportType)(nil)).Elem()
+}
+
+func (o RemoteSupportTypePtrOutput) ToRemoteSupportTypePtrOutput() RemoteSupportTypePtrOutput {
+	return o
+}
+
+func (o RemoteSupportTypePtrOutput) ToRemoteSupportTypePtrOutputWithContext(ctx context.Context) RemoteSupportTypePtrOutput {
+	return o
+}
+
+func (o RemoteSupportTypePtrOutput) Elem() RemoteSupportTypeOutput {
+	return o.ApplyT(func(v *RemoteSupportType) RemoteSupportType {
+		if v != nil {
+			return *v
+		}
+		var ret RemoteSupportType
+		return ret
+	}).(RemoteSupportTypeOutput)
+}
+
+func (o RemoteSupportTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RemoteSupportTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RemoteSupportType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// RemoteSupportTypeInput is an input type that accepts values of the RemoteSupportType enum
+// A concrete instance of `RemoteSupportTypeInput` can be one of the following:
+//
+//	RemoteSupportTypeEnable
+//	RemoteSupportTypeRevoke
+type RemoteSupportTypeInput interface {
+	pulumi.Input
+
+	ToRemoteSupportTypeOutput() RemoteSupportTypeOutput
+	ToRemoteSupportTypeOutputWithContext(context.Context) RemoteSupportTypeOutput
+}
+
+var remoteSupportTypePtrType = reflect.TypeOf((**RemoteSupportType)(nil)).Elem()
+
+type RemoteSupportTypePtrInput interface {
+	pulumi.Input
+
+	ToRemoteSupportTypePtrOutput() RemoteSupportTypePtrOutput
+	ToRemoteSupportTypePtrOutputWithContext(context.Context) RemoteSupportTypePtrOutput
+}
+
+type remoteSupportTypePtr string
+
+func RemoteSupportTypePtr(v string) RemoteSupportTypePtrInput {
+	return (*remoteSupportTypePtr)(&v)
+}
+
+func (*remoteSupportTypePtr) ElementType() reflect.Type {
+	return remoteSupportTypePtrType
+}
+
+func (in *remoteSupportTypePtr) ToRemoteSupportTypePtrOutput() RemoteSupportTypePtrOutput {
+	return pulumi.ToOutput(in).(RemoteSupportTypePtrOutput)
+}
+
+func (in *remoteSupportTypePtr) ToRemoteSupportTypePtrOutputWithContext(ctx context.Context) RemoteSupportTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RemoteSupportTypePtrOutput)
 }
 
 // The identity type.
@@ -4816,6 +5173,10 @@ func init() {
 	pulumi.RegisterOutputType(PrivateIPAllocationMethodEnumPtrOutput{})
 	pulumi.RegisterOutputType(ProvisioningActionOutput{})
 	pulumi.RegisterOutputType(ProvisioningActionPtrOutput{})
+	pulumi.RegisterOutputType(RemoteSupportAccessLevelOutput{})
+	pulumi.RegisterOutputType(RemoteSupportAccessLevelPtrOutput{})
+	pulumi.RegisterOutputType(RemoteSupportTypeOutput{})
+	pulumi.RegisterOutputType(RemoteSupportTypePtrOutput{})
 	pulumi.RegisterOutputType(ResourceIdentityTypeOutput{})
 	pulumi.RegisterOutputType(ResourceIdentityTypePtrOutput{})
 	pulumi.RegisterOutputType(SecurityRuleAccessOutput{})

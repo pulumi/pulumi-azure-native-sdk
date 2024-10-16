@@ -15,7 +15,7 @@ import (
 // Value object for saved search results.
 // Azure REST API version: 2020-08-01. Prior API version in Azure Native 1.x: 2020-08-01.
 //
-// Other available API versions: 2015-03-20.
+// Other available API versions: 2015-03-20, 2023-09-01.
 type SavedSearch struct {
 	pulumi.CustomResourceState
 
@@ -72,6 +72,9 @@ func NewSavedSearch(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:operationalinsights/v20200801:SavedSearch"),
+		},
+		{
+			Type: pulumi.String("azure-native:operationalinsights/v20230901:SavedSearch"),
 		},
 	})
 	opts = append(opts, aliases)

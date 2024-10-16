@@ -68,6 +68,9 @@ func NewAlertRuleResource(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:databasewatcher:AlertRuleResource"),
 		},
+		{
+			Type: pulumi.String("azure-native:databasewatcher/v20241001preview:AlertRuleResource"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

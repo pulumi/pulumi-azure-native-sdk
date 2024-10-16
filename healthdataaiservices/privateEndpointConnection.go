@@ -14,6 +14,8 @@ import (
 
 // Holder for private endpoint connections
 // Azure REST API version: 2024-02-28-preview.
+//
+// Other available API versions: 2024-09-20.
 type PrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 
@@ -43,6 +45,9 @@ func NewPrivateEndpointConnection(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:healthdataaiservices/v20240228preview:PrivateEndpointConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:healthdataaiservices/v20240920:PrivateEndpointConnection"),
 		},
 	})
 	opts = append(opts, aliases)

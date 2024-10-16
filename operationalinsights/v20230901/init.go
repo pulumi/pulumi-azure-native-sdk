@@ -21,6 +21,26 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "azure-native:operationalinsights/v20230901:Cluster":
+		r = &Cluster{}
+	case "azure-native:operationalinsights/v20230901:DataExport":
+		r = &DataExport{}
+	case "azure-native:operationalinsights/v20230901:DataSource":
+		r = &DataSource{}
+	case "azure-native:operationalinsights/v20230901:LinkedService":
+		r = &LinkedService{}
+	case "azure-native:operationalinsights/v20230901:LinkedStorageAccount":
+		r = &LinkedStorageAccount{}
+	case "azure-native:operationalinsights/v20230901:Query":
+		r = &Query{}
+	case "azure-native:operationalinsights/v20230901:QueryPack":
+		r = &QueryPack{}
+	case "azure-native:operationalinsights/v20230901:SavedSearch":
+		r = &SavedSearch{}
+	case "azure-native:operationalinsights/v20230901:StorageInsightConfig":
+		r = &StorageInsightConfig{}
+	case "azure-native:operationalinsights/v20230901:Table":
+		r = &Table{}
 	case "azure-native:operationalinsights/v20230901:Workspace":
 		r = &Workspace{}
 	default:

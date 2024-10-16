@@ -15,7 +15,7 @@ import (
 // The marketplace gallery image resource definition.
 // Azure REST API version: 2022-12-15-preview.
 //
-// Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2024-01-01, 2024-02-01-preview, 2024-05-01-preview.
+// Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2024-01-01, 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview.
 type MarketplaceGalleryImage struct {
 	pulumi.CustomResourceState
 
@@ -80,6 +80,12 @@ func NewMarketplaceGalleryImage(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20240501preview:MarketplaceGalleryImage"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20240715preview:MarketplaceGalleryImage"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20240801preview:MarketplaceGalleryImage"),
 		},
 	})
 	opts = append(opts, aliases)

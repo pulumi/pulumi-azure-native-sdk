@@ -46,6 +46,9 @@ func NewDeidService(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:healthdataaiservices:DeidService"),
 		},
+		{
+			Type: pulumi.String("azure-native:healthdataaiservices/v20240920:DeidService"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
