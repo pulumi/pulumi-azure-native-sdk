@@ -2,11 +2,11 @@ module github.com/pulumi/pulumi-azure-native-sdk/voiceservices/v2
 
 go 1.21
 
-toolchain go1.22.7
+toolchain go1.22.8
 
 require (
 	github.com/blang/semver v3.5.1+incompatible
-	github.com/pulumi/pulumi-azure-native-sdk/v2 v2.66.0
+	github.com/pulumi/pulumi-azure-native-sdk/v2 v2.67.0-alpha.1729066794
 	github.com/pulumi/pulumi/sdk/v3 v3.136.1
 )
 

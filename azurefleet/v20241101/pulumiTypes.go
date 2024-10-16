@@ -5285,8 +5285,8 @@ func (o LinuxVMGuestPatchAutomaticByPlatformSettingsResponsePtrOutput) RebootSet
 
 // Represents the profile for a single additional location in the Fleet. The location and the virtualMachineProfileOverride (optional).
 type LocationProfile struct {
-	// The ARM location name of the additional region.
-	Location *string `pulumi:"location"`
+	// The ARM location name of the additional region. If LocationProfile is specified, then location is required.
+	Location string `pulumi:"location"`
 	// An override for computeProfile.baseVirtualMachineProfile specific to this region.
 	// This override is merged with the base virtual machine profile to define the final virtual machine profile for the resources deployed in this location.
 	VirtualMachineProfileOverride *BaseVirtualMachineProfile `pulumi:"virtualMachineProfileOverride"`
@@ -5305,8 +5305,8 @@ type LocationProfileInput interface {
 
 // Represents the profile for a single additional location in the Fleet. The location and the virtualMachineProfileOverride (optional).
 type LocationProfileArgs struct {
-	// The ARM location name of the additional region.
-	Location pulumi.StringPtrInput `pulumi:"location"`
+	// The ARM location name of the additional region. If LocationProfile is specified, then location is required.
+	Location pulumi.StringInput `pulumi:"location"`
 	// An override for computeProfile.baseVirtualMachineProfile specific to this region.
 	// This override is merged with the base virtual machine profile to define the final virtual machine profile for the resources deployed in this location.
 	VirtualMachineProfileOverride BaseVirtualMachineProfilePtrInput `pulumi:"virtualMachineProfileOverride"`
@@ -5364,9 +5364,9 @@ func (o LocationProfileOutput) ToLocationProfileOutputWithContext(ctx context.Co
 	return o
 }
 
-// The ARM location name of the additional region.
-func (o LocationProfileOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LocationProfile) *string { return v.Location }).(pulumi.StringPtrOutput)
+// The ARM location name of the additional region. If LocationProfile is specified, then location is required.
+func (o LocationProfileOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v LocationProfile) string { return v.Location }).(pulumi.StringOutput)
 }
 
 // An override for computeProfile.baseVirtualMachineProfile specific to this region.
@@ -5397,8 +5397,8 @@ func (o LocationProfileArrayOutput) Index(i pulumi.IntInput) LocationProfileOutp
 
 // Represents the profile for a single additional location in the Fleet. The location and the virtualMachineProfileOverride (optional).
 type LocationProfileResponse struct {
-	// The ARM location name of the additional region.
-	Location *string `pulumi:"location"`
+	// The ARM location name of the additional region. If LocationProfile is specified, then location is required.
+	Location string `pulumi:"location"`
 	// An override for computeProfile.baseVirtualMachineProfile specific to this region.
 	// This override is merged with the base virtual machine profile to define the final virtual machine profile for the resources deployed in this location.
 	VirtualMachineProfileOverride *BaseVirtualMachineProfileResponse `pulumi:"virtualMachineProfileOverride"`
@@ -5419,9 +5419,9 @@ func (o LocationProfileResponseOutput) ToLocationProfileResponseOutputWithContex
 	return o
 }
 
-// The ARM location name of the additional region.
-func (o LocationProfileResponseOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LocationProfileResponse) *string { return v.Location }).(pulumi.StringPtrOutput)
+// The ARM location name of the additional region. If LocationProfile is specified, then location is required.
+func (o LocationProfileResponseOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v LocationProfileResponse) string { return v.Location }).(pulumi.StringOutput)
 }
 
 // An override for computeProfile.baseVirtualMachineProfile specific to this region.
@@ -10911,13 +10911,20 @@ func (o VMAttributeMinMaxIntegerResponsePtrOutput) Min() pulumi.IntPtrOutput {
 
 // VMAttributes that will be used to filter VMSizes which will be used to build Fleet.
 type VMAttributes struct {
-	// The range of accelerator count specified from min to max.. Optional parameter. Either Min or Max is required if specified.
+	// The range of accelerator count specified from min to max. Optional parameter. Either Min or Max is required if specified.
+	// acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute.
+	// If acceleratorSupport is "Excluded", this VMAttribute can not be used.
 	AcceleratorCount *VMAttributeMinMaxInteger `pulumi:"acceleratorCount"`
-	// The accelerator manufacturers specified as a list. acceleratorSupport should be set to Included or Required to use this VMAttribute.
+	// The accelerator manufacturers specified as a list.
+	// acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute.
+	// If acceleratorSupport is "Excluded", this VMAttribute can not be used.
 	AcceleratorManufacturers []string `pulumi:"acceleratorManufacturers"`
 	// Specifies whether the VMSize supporting accelerator should be used to build Fleet or not.
+	// acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute.
+	// If acceleratorSupport is "Excluded", this VMAttribute can not be used.
 	AcceleratorSupport *string `pulumi:"acceleratorSupport"`
-	// The accelerator types specified as a list. acceleratorSupport should be set to Included or Required to use this VMAttribute.
+	// The accelerator types specified as a list. acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute.
+	// If acceleratorSupport is "Excluded", this VMAttribute can not be used.
 	AcceleratorTypes []string `pulumi:"acceleratorTypes"`
 	// The VM architecture types specified as a list. Optional parameter.
 	ArchitectureTypes []string `pulumi:"architectureTypes"`
@@ -10932,17 +10939,22 @@ type VMAttributes struct {
 	// The local storage disk types specified as a list. LocalStorageSupport should be set to "Included" or "Required" to use this VMAttribute.
 	// If localStorageSupport is "Excluded", this VMAttribute can not be used.
 	LocalStorageDiskTypes []string `pulumi:"localStorageDiskTypes"`
-	// The range of local storage in GB specified from Min to Max.
+	// LocalStorageSupport should be set to "Included" or "Required" to use this VMAttribute.
+	// If localStorageSupport is "Excluded", this VMAttribute can not be used.
 	LocalStorageInGiB *VMAttributeMinMaxDouble `pulumi:"localStorageInGiB"`
 	// Specifies whether the VMSize supporting local storage should be used to build Fleet or not.
 	LocalStorageSupport *string `pulumi:"localStorageSupport"`
 	// The range of memory specified from Min to Max. Must be specified if VMAttributes are specified, either Min or Max is required if specified.
 	MemoryInGiB VMAttributeMinMaxDouble `pulumi:"memoryInGiB"`
+	// The range of memory in GiB per vCPU specified from min to max. Optional parameter. Either Min or Max is required if specified.
+	MemoryInGiBPerVCpu *VMAttributeMinMaxDouble `pulumi:"memoryInGiBPerVCpu"`
 	// The range of network bandwidth in Mbps specified from Min to Max. Optional parameter. Either Min or Max is required if specified.
 	NetworkBandwidthInMbps *VMAttributeMinMaxDouble `pulumi:"networkBandwidthInMbps"`
 	// The range of network interface count specified from Min to Max. Optional parameter. Either Min or Max is required if specified.
 	NetworkInterfaceCount *VMAttributeMinMaxInteger `pulumi:"networkInterfaceCount"`
 	// The range of RDMA (Remote Direct Memory Access) network interface count specified from Min to Max. Optional parameter. Either Min or Max is required if specified.
+	// rdmaSupport should be set to "Included" or "Required" to use this VMAttribute.
+	// If rdmaSupport is "Excluded", this VMAttribute can not be used.
 	RdmaNetworkInterfaceCount *VMAttributeMinMaxInteger `pulumi:"rdmaNetworkInterfaceCount"`
 	// Specifies whether the VMSize supporting RDMA (Remote Direct Memory Access) should be used to build Fleet or not.
 	RdmaSupport *string `pulumi:"rdmaSupport"`
@@ -10965,13 +10977,20 @@ type VMAttributesInput interface {
 
 // VMAttributes that will be used to filter VMSizes which will be used to build Fleet.
 type VMAttributesArgs struct {
-	// The range of accelerator count specified from min to max.. Optional parameter. Either Min or Max is required if specified.
+	// The range of accelerator count specified from min to max. Optional parameter. Either Min or Max is required if specified.
+	// acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute.
+	// If acceleratorSupport is "Excluded", this VMAttribute can not be used.
 	AcceleratorCount VMAttributeMinMaxIntegerPtrInput `pulumi:"acceleratorCount"`
-	// The accelerator manufacturers specified as a list. acceleratorSupport should be set to Included or Required to use this VMAttribute.
+	// The accelerator manufacturers specified as a list.
+	// acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute.
+	// If acceleratorSupport is "Excluded", this VMAttribute can not be used.
 	AcceleratorManufacturers pulumi.StringArrayInput `pulumi:"acceleratorManufacturers"`
 	// Specifies whether the VMSize supporting accelerator should be used to build Fleet or not.
+	// acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute.
+	// If acceleratorSupport is "Excluded", this VMAttribute can not be used.
 	AcceleratorSupport pulumi.StringPtrInput `pulumi:"acceleratorSupport"`
-	// The accelerator types specified as a list. acceleratorSupport should be set to Included or Required to use this VMAttribute.
+	// The accelerator types specified as a list. acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute.
+	// If acceleratorSupport is "Excluded", this VMAttribute can not be used.
 	AcceleratorTypes pulumi.StringArrayInput `pulumi:"acceleratorTypes"`
 	// The VM architecture types specified as a list. Optional parameter.
 	ArchitectureTypes pulumi.StringArrayInput `pulumi:"architectureTypes"`
@@ -10986,17 +11005,22 @@ type VMAttributesArgs struct {
 	// The local storage disk types specified as a list. LocalStorageSupport should be set to "Included" or "Required" to use this VMAttribute.
 	// If localStorageSupport is "Excluded", this VMAttribute can not be used.
 	LocalStorageDiskTypes pulumi.StringArrayInput `pulumi:"localStorageDiskTypes"`
-	// The range of local storage in GB specified from Min to Max.
+	// LocalStorageSupport should be set to "Included" or "Required" to use this VMAttribute.
+	// If localStorageSupport is "Excluded", this VMAttribute can not be used.
 	LocalStorageInGiB VMAttributeMinMaxDoublePtrInput `pulumi:"localStorageInGiB"`
 	// Specifies whether the VMSize supporting local storage should be used to build Fleet or not.
 	LocalStorageSupport pulumi.StringPtrInput `pulumi:"localStorageSupport"`
 	// The range of memory specified from Min to Max. Must be specified if VMAttributes are specified, either Min or Max is required if specified.
 	MemoryInGiB VMAttributeMinMaxDoubleInput `pulumi:"memoryInGiB"`
+	// The range of memory in GiB per vCPU specified from min to max. Optional parameter. Either Min or Max is required if specified.
+	MemoryInGiBPerVCpu VMAttributeMinMaxDoublePtrInput `pulumi:"memoryInGiBPerVCpu"`
 	// The range of network bandwidth in Mbps specified from Min to Max. Optional parameter. Either Min or Max is required if specified.
 	NetworkBandwidthInMbps VMAttributeMinMaxDoublePtrInput `pulumi:"networkBandwidthInMbps"`
 	// The range of network interface count specified from Min to Max. Optional parameter. Either Min or Max is required if specified.
 	NetworkInterfaceCount VMAttributeMinMaxIntegerPtrInput `pulumi:"networkInterfaceCount"`
 	// The range of RDMA (Remote Direct Memory Access) network interface count specified from Min to Max. Optional parameter. Either Min or Max is required if specified.
+	// rdmaSupport should be set to "Included" or "Required" to use this VMAttribute.
+	// If rdmaSupport is "Excluded", this VMAttribute can not be used.
 	RdmaNetworkInterfaceCount VMAttributeMinMaxIntegerPtrInput `pulumi:"rdmaNetworkInterfaceCount"`
 	// Specifies whether the VMSize supporting RDMA (Remote Direct Memory Access) should be used to build Fleet or not.
 	RdmaSupport pulumi.StringPtrInput `pulumi:"rdmaSupport"`
@@ -11084,22 +11108,29 @@ func (o VMAttributesOutput) ToVMAttributesPtrOutputWithContext(ctx context.Conte
 	}).(VMAttributesPtrOutput)
 }
 
-// The range of accelerator count specified from min to max.. Optional parameter. Either Min or Max is required if specified.
+// The range of accelerator count specified from min to max. Optional parameter. Either Min or Max is required if specified.
+// acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute.
+// If acceleratorSupport is "Excluded", this VMAttribute can not be used.
 func (o VMAttributesOutput) AcceleratorCount() VMAttributeMinMaxIntegerPtrOutput {
 	return o.ApplyT(func(v VMAttributes) *VMAttributeMinMaxInteger { return v.AcceleratorCount }).(VMAttributeMinMaxIntegerPtrOutput)
 }
 
-// The accelerator manufacturers specified as a list. acceleratorSupport should be set to Included or Required to use this VMAttribute.
+// The accelerator manufacturers specified as a list.
+// acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute.
+// If acceleratorSupport is "Excluded", this VMAttribute can not be used.
 func (o VMAttributesOutput) AcceleratorManufacturers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v VMAttributes) []string { return v.AcceleratorManufacturers }).(pulumi.StringArrayOutput)
 }
 
 // Specifies whether the VMSize supporting accelerator should be used to build Fleet or not.
+// acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute.
+// If acceleratorSupport is "Excluded", this VMAttribute can not be used.
 func (o VMAttributesOutput) AcceleratorSupport() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VMAttributes) *string { return v.AcceleratorSupport }).(pulumi.StringPtrOutput)
 }
 
-// The accelerator types specified as a list. acceleratorSupport should be set to Included or Required to use this VMAttribute.
+// The accelerator types specified as a list. acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute.
+// If acceleratorSupport is "Excluded", this VMAttribute can not be used.
 func (o VMAttributesOutput) AcceleratorTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v VMAttributes) []string { return v.AcceleratorTypes }).(pulumi.StringArrayOutput)
 }
@@ -11135,7 +11166,8 @@ func (o VMAttributesOutput) LocalStorageDiskTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v VMAttributes) []string { return v.LocalStorageDiskTypes }).(pulumi.StringArrayOutput)
 }
 
-// The range of local storage in GB specified from Min to Max.
+// LocalStorageSupport should be set to "Included" or "Required" to use this VMAttribute.
+// If localStorageSupport is "Excluded", this VMAttribute can not be used.
 func (o VMAttributesOutput) LocalStorageInGiB() VMAttributeMinMaxDoublePtrOutput {
 	return o.ApplyT(func(v VMAttributes) *VMAttributeMinMaxDouble { return v.LocalStorageInGiB }).(VMAttributeMinMaxDoublePtrOutput)
 }
@@ -11150,6 +11182,11 @@ func (o VMAttributesOutput) MemoryInGiB() VMAttributeMinMaxDoubleOutput {
 	return o.ApplyT(func(v VMAttributes) VMAttributeMinMaxDouble { return v.MemoryInGiB }).(VMAttributeMinMaxDoubleOutput)
 }
 
+// The range of memory in GiB per vCPU specified from min to max. Optional parameter. Either Min or Max is required if specified.
+func (o VMAttributesOutput) MemoryInGiBPerVCpu() VMAttributeMinMaxDoublePtrOutput {
+	return o.ApplyT(func(v VMAttributes) *VMAttributeMinMaxDouble { return v.MemoryInGiBPerVCpu }).(VMAttributeMinMaxDoublePtrOutput)
+}
+
 // The range of network bandwidth in Mbps specified from Min to Max. Optional parameter. Either Min or Max is required if specified.
 func (o VMAttributesOutput) NetworkBandwidthInMbps() VMAttributeMinMaxDoublePtrOutput {
 	return o.ApplyT(func(v VMAttributes) *VMAttributeMinMaxDouble { return v.NetworkBandwidthInMbps }).(VMAttributeMinMaxDoublePtrOutput)
@@ -11161,6 +11198,8 @@ func (o VMAttributesOutput) NetworkInterfaceCount() VMAttributeMinMaxIntegerPtrO
 }
 
 // The range of RDMA (Remote Direct Memory Access) network interface count specified from Min to Max. Optional parameter. Either Min or Max is required if specified.
+// rdmaSupport should be set to "Included" or "Required" to use this VMAttribute.
+// If rdmaSupport is "Excluded", this VMAttribute can not be used.
 func (o VMAttributesOutput) RdmaNetworkInterfaceCount() VMAttributeMinMaxIntegerPtrOutput {
 	return o.ApplyT(func(v VMAttributes) *VMAttributeMinMaxInteger { return v.RdmaNetworkInterfaceCount }).(VMAttributeMinMaxIntegerPtrOutput)
 }
@@ -11204,7 +11243,9 @@ func (o VMAttributesPtrOutput) Elem() VMAttributesOutput {
 	}).(VMAttributesOutput)
 }
 
-// The range of accelerator count specified from min to max.. Optional parameter. Either Min or Max is required if specified.
+// The range of accelerator count specified from min to max. Optional parameter. Either Min or Max is required if specified.
+// acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute.
+// If acceleratorSupport is "Excluded", this VMAttribute can not be used.
 func (o VMAttributesPtrOutput) AcceleratorCount() VMAttributeMinMaxIntegerPtrOutput {
 	return o.ApplyT(func(v *VMAttributes) *VMAttributeMinMaxInteger {
 		if v == nil {
@@ -11214,7 +11255,9 @@ func (o VMAttributesPtrOutput) AcceleratorCount() VMAttributeMinMaxIntegerPtrOut
 	}).(VMAttributeMinMaxIntegerPtrOutput)
 }
 
-// The accelerator manufacturers specified as a list. acceleratorSupport should be set to Included or Required to use this VMAttribute.
+// The accelerator manufacturers specified as a list.
+// acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute.
+// If acceleratorSupport is "Excluded", this VMAttribute can not be used.
 func (o VMAttributesPtrOutput) AcceleratorManufacturers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *VMAttributes) []string {
 		if v == nil {
@@ -11225,6 +11268,8 @@ func (o VMAttributesPtrOutput) AcceleratorManufacturers() pulumi.StringArrayOutp
 }
 
 // Specifies whether the VMSize supporting accelerator should be used to build Fleet or not.
+// acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute.
+// If acceleratorSupport is "Excluded", this VMAttribute can not be used.
 func (o VMAttributesPtrOutput) AcceleratorSupport() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VMAttributes) *string {
 		if v == nil {
@@ -11234,7 +11279,8 @@ func (o VMAttributesPtrOutput) AcceleratorSupport() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The accelerator types specified as a list. acceleratorSupport should be set to Included or Required to use this VMAttribute.
+// The accelerator types specified as a list. acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute.
+// If acceleratorSupport is "Excluded", this VMAttribute can not be used.
 func (o VMAttributesPtrOutput) AcceleratorTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *VMAttributes) []string {
 		if v == nil {
@@ -11305,7 +11351,8 @@ func (o VMAttributesPtrOutput) LocalStorageDiskTypes() pulumi.StringArrayOutput 
 	}).(pulumi.StringArrayOutput)
 }
 
-// The range of local storage in GB specified from Min to Max.
+// LocalStorageSupport should be set to "Included" or "Required" to use this VMAttribute.
+// If localStorageSupport is "Excluded", this VMAttribute can not be used.
 func (o VMAttributesPtrOutput) LocalStorageInGiB() VMAttributeMinMaxDoublePtrOutput {
 	return o.ApplyT(func(v *VMAttributes) *VMAttributeMinMaxDouble {
 		if v == nil {
@@ -11335,6 +11382,16 @@ func (o VMAttributesPtrOutput) MemoryInGiB() VMAttributeMinMaxDoublePtrOutput {
 	}).(VMAttributeMinMaxDoublePtrOutput)
 }
 
+// The range of memory in GiB per vCPU specified from min to max. Optional parameter. Either Min or Max is required if specified.
+func (o VMAttributesPtrOutput) MemoryInGiBPerVCpu() VMAttributeMinMaxDoublePtrOutput {
+	return o.ApplyT(func(v *VMAttributes) *VMAttributeMinMaxDouble {
+		if v == nil {
+			return nil
+		}
+		return v.MemoryInGiBPerVCpu
+	}).(VMAttributeMinMaxDoublePtrOutput)
+}
+
 // The range of network bandwidth in Mbps specified from Min to Max. Optional parameter. Either Min or Max is required if specified.
 func (o VMAttributesPtrOutput) NetworkBandwidthInMbps() VMAttributeMinMaxDoublePtrOutput {
 	return o.ApplyT(func(v *VMAttributes) *VMAttributeMinMaxDouble {
@@ -11356,6 +11413,8 @@ func (o VMAttributesPtrOutput) NetworkInterfaceCount() VMAttributeMinMaxIntegerP
 }
 
 // The range of RDMA (Remote Direct Memory Access) network interface count specified from Min to Max. Optional parameter. Either Min or Max is required if specified.
+// rdmaSupport should be set to "Included" or "Required" to use this VMAttribute.
+// If rdmaSupport is "Excluded", this VMAttribute can not be used.
 func (o VMAttributesPtrOutput) RdmaNetworkInterfaceCount() VMAttributeMinMaxIntegerPtrOutput {
 	return o.ApplyT(func(v *VMAttributes) *VMAttributeMinMaxInteger {
 		if v == nil {
@@ -11397,13 +11456,20 @@ func (o VMAttributesPtrOutput) VmCategories() pulumi.StringArrayOutput {
 
 // VMAttributes that will be used to filter VMSizes which will be used to build Fleet.
 type VMAttributesResponse struct {
-	// The range of accelerator count specified from min to max.. Optional parameter. Either Min or Max is required if specified.
+	// The range of accelerator count specified from min to max. Optional parameter. Either Min or Max is required if specified.
+	// acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute.
+	// If acceleratorSupport is "Excluded", this VMAttribute can not be used.
 	AcceleratorCount *VMAttributeMinMaxIntegerResponse `pulumi:"acceleratorCount"`
-	// The accelerator manufacturers specified as a list. acceleratorSupport should be set to Included or Required to use this VMAttribute.
+	// The accelerator manufacturers specified as a list.
+	// acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute.
+	// If acceleratorSupport is "Excluded", this VMAttribute can not be used.
 	AcceleratorManufacturers []string `pulumi:"acceleratorManufacturers"`
 	// Specifies whether the VMSize supporting accelerator should be used to build Fleet or not.
+	// acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute.
+	// If acceleratorSupport is "Excluded", this VMAttribute can not be used.
 	AcceleratorSupport *string `pulumi:"acceleratorSupport"`
-	// The accelerator types specified as a list. acceleratorSupport should be set to Included or Required to use this VMAttribute.
+	// The accelerator types specified as a list. acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute.
+	// If acceleratorSupport is "Excluded", this VMAttribute can not be used.
 	AcceleratorTypes []string `pulumi:"acceleratorTypes"`
 	// The VM architecture types specified as a list. Optional parameter.
 	ArchitectureTypes []string `pulumi:"architectureTypes"`
@@ -11418,17 +11484,22 @@ type VMAttributesResponse struct {
 	// The local storage disk types specified as a list. LocalStorageSupport should be set to "Included" or "Required" to use this VMAttribute.
 	// If localStorageSupport is "Excluded", this VMAttribute can not be used.
 	LocalStorageDiskTypes []string `pulumi:"localStorageDiskTypes"`
-	// The range of local storage in GB specified from Min to Max.
+	// LocalStorageSupport should be set to "Included" or "Required" to use this VMAttribute.
+	// If localStorageSupport is "Excluded", this VMAttribute can not be used.
 	LocalStorageInGiB *VMAttributeMinMaxDoubleResponse `pulumi:"localStorageInGiB"`
 	// Specifies whether the VMSize supporting local storage should be used to build Fleet or not.
 	LocalStorageSupport *string `pulumi:"localStorageSupport"`
 	// The range of memory specified from Min to Max. Must be specified if VMAttributes are specified, either Min or Max is required if specified.
 	MemoryInGiB VMAttributeMinMaxDoubleResponse `pulumi:"memoryInGiB"`
+	// The range of memory in GiB per vCPU specified from min to max. Optional parameter. Either Min or Max is required if specified.
+	MemoryInGiBPerVCpu *VMAttributeMinMaxDoubleResponse `pulumi:"memoryInGiBPerVCpu"`
 	// The range of network bandwidth in Mbps specified from Min to Max. Optional parameter. Either Min or Max is required if specified.
 	NetworkBandwidthInMbps *VMAttributeMinMaxDoubleResponse `pulumi:"networkBandwidthInMbps"`
 	// The range of network interface count specified from Min to Max. Optional parameter. Either Min or Max is required if specified.
 	NetworkInterfaceCount *VMAttributeMinMaxIntegerResponse `pulumi:"networkInterfaceCount"`
 	// The range of RDMA (Remote Direct Memory Access) network interface count specified from Min to Max. Optional parameter. Either Min or Max is required if specified.
+	// rdmaSupport should be set to "Included" or "Required" to use this VMAttribute.
+	// If rdmaSupport is "Excluded", this VMAttribute can not be used.
 	RdmaNetworkInterfaceCount *VMAttributeMinMaxIntegerResponse `pulumi:"rdmaNetworkInterfaceCount"`
 	// Specifies whether the VMSize supporting RDMA (Remote Direct Memory Access) should be used to build Fleet or not.
 	RdmaSupport *string `pulumi:"rdmaSupport"`
@@ -11453,22 +11524,29 @@ func (o VMAttributesResponseOutput) ToVMAttributesResponseOutputWithContext(ctx 
 	return o
 }
 
-// The range of accelerator count specified from min to max.. Optional parameter. Either Min or Max is required if specified.
+// The range of accelerator count specified from min to max. Optional parameter. Either Min or Max is required if specified.
+// acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute.
+// If acceleratorSupport is "Excluded", this VMAttribute can not be used.
 func (o VMAttributesResponseOutput) AcceleratorCount() VMAttributeMinMaxIntegerResponsePtrOutput {
 	return o.ApplyT(func(v VMAttributesResponse) *VMAttributeMinMaxIntegerResponse { return v.AcceleratorCount }).(VMAttributeMinMaxIntegerResponsePtrOutput)
 }
 
-// The accelerator manufacturers specified as a list. acceleratorSupport should be set to Included or Required to use this VMAttribute.
+// The accelerator manufacturers specified as a list.
+// acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute.
+// If acceleratorSupport is "Excluded", this VMAttribute can not be used.
 func (o VMAttributesResponseOutput) AcceleratorManufacturers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v VMAttributesResponse) []string { return v.AcceleratorManufacturers }).(pulumi.StringArrayOutput)
 }
 
 // Specifies whether the VMSize supporting accelerator should be used to build Fleet or not.
+// acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute.
+// If acceleratorSupport is "Excluded", this VMAttribute can not be used.
 func (o VMAttributesResponseOutput) AcceleratorSupport() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VMAttributesResponse) *string { return v.AcceleratorSupport }).(pulumi.StringPtrOutput)
 }
 
-// The accelerator types specified as a list. acceleratorSupport should be set to Included or Required to use this VMAttribute.
+// The accelerator types specified as a list. acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute.
+// If acceleratorSupport is "Excluded", this VMAttribute can not be used.
 func (o VMAttributesResponseOutput) AcceleratorTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v VMAttributesResponse) []string { return v.AcceleratorTypes }).(pulumi.StringArrayOutput)
 }
@@ -11504,7 +11582,8 @@ func (o VMAttributesResponseOutput) LocalStorageDiskTypes() pulumi.StringArrayOu
 	return o.ApplyT(func(v VMAttributesResponse) []string { return v.LocalStorageDiskTypes }).(pulumi.StringArrayOutput)
 }
 
-// The range of local storage in GB specified from Min to Max.
+// LocalStorageSupport should be set to "Included" or "Required" to use this VMAttribute.
+// If localStorageSupport is "Excluded", this VMAttribute can not be used.
 func (o VMAttributesResponseOutput) LocalStorageInGiB() VMAttributeMinMaxDoubleResponsePtrOutput {
 	return o.ApplyT(func(v VMAttributesResponse) *VMAttributeMinMaxDoubleResponse { return v.LocalStorageInGiB }).(VMAttributeMinMaxDoubleResponsePtrOutput)
 }
@@ -11519,6 +11598,11 @@ func (o VMAttributesResponseOutput) MemoryInGiB() VMAttributeMinMaxDoubleRespons
 	return o.ApplyT(func(v VMAttributesResponse) VMAttributeMinMaxDoubleResponse { return v.MemoryInGiB }).(VMAttributeMinMaxDoubleResponseOutput)
 }
 
+// The range of memory in GiB per vCPU specified from min to max. Optional parameter. Either Min or Max is required if specified.
+func (o VMAttributesResponseOutput) MemoryInGiBPerVCpu() VMAttributeMinMaxDoubleResponsePtrOutput {
+	return o.ApplyT(func(v VMAttributesResponse) *VMAttributeMinMaxDoubleResponse { return v.MemoryInGiBPerVCpu }).(VMAttributeMinMaxDoubleResponsePtrOutput)
+}
+
 // The range of network bandwidth in Mbps specified from Min to Max. Optional parameter. Either Min or Max is required if specified.
 func (o VMAttributesResponseOutput) NetworkBandwidthInMbps() VMAttributeMinMaxDoubleResponsePtrOutput {
 	return o.ApplyT(func(v VMAttributesResponse) *VMAttributeMinMaxDoubleResponse { return v.NetworkBandwidthInMbps }).(VMAttributeMinMaxDoubleResponsePtrOutput)
@@ -11530,6 +11614,8 @@ func (o VMAttributesResponseOutput) NetworkInterfaceCount() VMAttributeMinMaxInt
 }
 
 // The range of RDMA (Remote Direct Memory Access) network interface count specified from Min to Max. Optional parameter. Either Min or Max is required if specified.
+// rdmaSupport should be set to "Included" or "Required" to use this VMAttribute.
+// If rdmaSupport is "Excluded", this VMAttribute can not be used.
 func (o VMAttributesResponseOutput) RdmaNetworkInterfaceCount() VMAttributeMinMaxIntegerResponsePtrOutput {
 	return o.ApplyT(func(v VMAttributesResponse) *VMAttributeMinMaxIntegerResponse { return v.RdmaNetworkInterfaceCount }).(VMAttributeMinMaxIntegerResponsePtrOutput)
 }
@@ -11573,7 +11659,9 @@ func (o VMAttributesResponsePtrOutput) Elem() VMAttributesResponseOutput {
 	}).(VMAttributesResponseOutput)
 }
 
-// The range of accelerator count specified from min to max.. Optional parameter. Either Min or Max is required if specified.
+// The range of accelerator count specified from min to max. Optional parameter. Either Min or Max is required if specified.
+// acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute.
+// If acceleratorSupport is "Excluded", this VMAttribute can not be used.
 func (o VMAttributesResponsePtrOutput) AcceleratorCount() VMAttributeMinMaxIntegerResponsePtrOutput {
 	return o.ApplyT(func(v *VMAttributesResponse) *VMAttributeMinMaxIntegerResponse {
 		if v == nil {
@@ -11583,7 +11671,9 @@ func (o VMAttributesResponsePtrOutput) AcceleratorCount() VMAttributeMinMaxInteg
 	}).(VMAttributeMinMaxIntegerResponsePtrOutput)
 }
 
-// The accelerator manufacturers specified as a list. acceleratorSupport should be set to Included or Required to use this VMAttribute.
+// The accelerator manufacturers specified as a list.
+// acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute.
+// If acceleratorSupport is "Excluded", this VMAttribute can not be used.
 func (o VMAttributesResponsePtrOutput) AcceleratorManufacturers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *VMAttributesResponse) []string {
 		if v == nil {
@@ -11594,6 +11684,8 @@ func (o VMAttributesResponsePtrOutput) AcceleratorManufacturers() pulumi.StringA
 }
 
 // Specifies whether the VMSize supporting accelerator should be used to build Fleet or not.
+// acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute.
+// If acceleratorSupport is "Excluded", this VMAttribute can not be used.
 func (o VMAttributesResponsePtrOutput) AcceleratorSupport() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VMAttributesResponse) *string {
 		if v == nil {
@@ -11603,7 +11695,8 @@ func (o VMAttributesResponsePtrOutput) AcceleratorSupport() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// The accelerator types specified as a list. acceleratorSupport should be set to Included or Required to use this VMAttribute.
+// The accelerator types specified as a list. acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute.
+// If acceleratorSupport is "Excluded", this VMAttribute can not be used.
 func (o VMAttributesResponsePtrOutput) AcceleratorTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *VMAttributesResponse) []string {
 		if v == nil {
@@ -11674,7 +11767,8 @@ func (o VMAttributesResponsePtrOutput) LocalStorageDiskTypes() pulumi.StringArra
 	}).(pulumi.StringArrayOutput)
 }
 
-// The range of local storage in GB specified from Min to Max.
+// LocalStorageSupport should be set to "Included" or "Required" to use this VMAttribute.
+// If localStorageSupport is "Excluded", this VMAttribute can not be used.
 func (o VMAttributesResponsePtrOutput) LocalStorageInGiB() VMAttributeMinMaxDoubleResponsePtrOutput {
 	return o.ApplyT(func(v *VMAttributesResponse) *VMAttributeMinMaxDoubleResponse {
 		if v == nil {
@@ -11704,6 +11798,16 @@ func (o VMAttributesResponsePtrOutput) MemoryInGiB() VMAttributeMinMaxDoubleResp
 	}).(VMAttributeMinMaxDoubleResponsePtrOutput)
 }
 
+// The range of memory in GiB per vCPU specified from min to max. Optional parameter. Either Min or Max is required if specified.
+func (o VMAttributesResponsePtrOutput) MemoryInGiBPerVCpu() VMAttributeMinMaxDoubleResponsePtrOutput {
+	return o.ApplyT(func(v *VMAttributesResponse) *VMAttributeMinMaxDoubleResponse {
+		if v == nil {
+			return nil
+		}
+		return v.MemoryInGiBPerVCpu
+	}).(VMAttributeMinMaxDoubleResponsePtrOutput)
+}
+
 // The range of network bandwidth in Mbps specified from Min to Max. Optional parameter. Either Min or Max is required if specified.
 func (o VMAttributesResponsePtrOutput) NetworkBandwidthInMbps() VMAttributeMinMaxDoubleResponsePtrOutput {
 	return o.ApplyT(func(v *VMAttributesResponse) *VMAttributeMinMaxDoubleResponse {
@@ -11725,6 +11829,8 @@ func (o VMAttributesResponsePtrOutput) NetworkInterfaceCount() VMAttributeMinMax
 }
 
 // The range of RDMA (Remote Direct Memory Access) network interface count specified from Min to Max. Optional parameter. Either Min or Max is required if specified.
+// rdmaSupport should be set to "Included" or "Required" to use this VMAttribute.
+// If rdmaSupport is "Excluded", this VMAttribute can not be used.
 func (o VMAttributesResponsePtrOutput) RdmaNetworkInterfaceCount() VMAttributeMinMaxIntegerResponsePtrOutput {
 	return o.ApplyT(func(v *VMAttributesResponse) *VMAttributeMinMaxIntegerResponse {
 		if v == nil {

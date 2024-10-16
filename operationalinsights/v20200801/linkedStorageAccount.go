@@ -49,6 +49,9 @@ func NewLinkedStorageAccount(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:operationalinsights/v20200301preview:LinkedStorageAccount"),
 		},
+		{
+			Type: pulumi.String("azure-native:operationalinsights/v20230901:LinkedStorageAccount"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

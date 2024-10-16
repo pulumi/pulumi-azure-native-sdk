@@ -33,7 +33,7 @@ type LookupSharedPrivateLinkResourceArgs struct {
 
 // Concrete proxy resource types can be created by aliasing this type using a specific property type.
 type LookupSharedPrivateLinkResourceResult struct {
-	// The DNS zone to be included in the DNS name of the shared private link. Value is service-specific.
+	// The DNS zone to be included in the DNS name of the shared private link. Value is required for Azure Data Explorer clusters and SQL managed instances. The value to use is the second segment of the host FQDN name of the resource that the shared private link resource is for.
 	DnsZone *string `pulumi:"dnsZone"`
 	// The group id from the provider of resource the shared private link resource is for.
 	GroupId string `pulumi:"groupId"`
@@ -102,7 +102,7 @@ func (o LookupSharedPrivateLinkResourceResultOutput) ToLookupSharedPrivateLinkRe
 	return o
 }
 
-// The DNS zone to be included in the DNS name of the shared private link. Value is service-specific.
+// The DNS zone to be included in the DNS name of the shared private link. Value is required for Azure Data Explorer clusters and SQL managed instances. The value to use is the second segment of the host FQDN name of the resource that the shared private link resource is for.
 func (o LookupSharedPrivateLinkResourceResultOutput) DnsZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSharedPrivateLinkResourceResult) *string { return v.DnsZone }).(pulumi.StringPtrOutput)
 }

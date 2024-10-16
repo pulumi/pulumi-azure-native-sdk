@@ -14,7 +14,7 @@ import (
 // Gets connection resource.
 // Azure REST API version: 2023-10-11-preview.
 //
-// Other available API versions: 2024-01-25, 2024-05-07, 2024-09-11.
+// Other available API versions: 2024-01-25, 2024-05-07, 2024-09-11, 2024-09-27.
 func LookupConnection(ctx *pulumi.Context, args *LookupConnectionArgs, opts ...pulumi.InvokeOption) (*LookupConnectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupConnectionResult

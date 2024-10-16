@@ -104,6 +104,9 @@ func NewAsset(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:deviceregistry/v20231101preview:Asset"),
 		},
+		{
+			Type: pulumi.String("azure-native:deviceregistry/v20241101:Asset"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

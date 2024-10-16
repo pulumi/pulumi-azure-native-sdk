@@ -15,7 +15,7 @@ import (
 // Edge device resource
 // Azure REST API version: 2023-08-01-preview.
 //
-// Other available API versions: 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-04-01.
+// Other available API versions: 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-04-01, 2024-09-01-preview.
 type EdgeDevice struct {
 	pulumi.CustomResourceState
 
@@ -59,6 +59,9 @@ func NewEdgeDevice(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20240401:EdgeDevice"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20240901preview:EdgeDevice"),
 		},
 	})
 	opts = append(opts, aliases)

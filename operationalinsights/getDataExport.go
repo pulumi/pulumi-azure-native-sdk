@@ -13,6 +13,8 @@ import (
 
 // Gets a data export instance.
 // Azure REST API version: 2020-08-01.
+//
+// Other available API versions: 2023-09-01.
 func LookupDataExport(ctx *pulumi.Context, args *LookupDataExportArgs, opts ...pulumi.InvokeOption) (*LookupDataExportResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDataExportResult

@@ -68,6 +68,9 @@ func NewQuery(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:operationalinsights/v20190901preview:Query"),
 		},
+		{
+			Type: pulumi.String("azure-native:operationalinsights/v20230901:Query"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

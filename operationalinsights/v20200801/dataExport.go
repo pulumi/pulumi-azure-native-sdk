@@ -65,6 +65,9 @@ func NewDataExport(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:operationalinsights/v20200301preview:DataExport"),
 		},
+		{
+			Type: pulumi.String("azure-native:operationalinsights/v20230901:DataExport"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

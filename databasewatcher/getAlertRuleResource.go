@@ -13,6 +13,8 @@ import (
 
 // Get a AlertRuleResource
 // Azure REST API version: 2024-07-19-preview.
+//
+// Other available API versions: 2024-10-01-preview.
 func LookupAlertRuleResource(ctx *pulumi.Context, args *LookupAlertRuleResourceArgs, opts ...pulumi.InvokeOption) (*LookupAlertRuleResourceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAlertRuleResourceResult

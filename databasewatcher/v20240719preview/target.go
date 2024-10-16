@@ -63,6 +63,9 @@ func NewTarget(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:databasewatcher/v20230901preview:Target"),
 		},
+		{
+			Type: pulumi.String("azure-native:databasewatcher/v20241001preview:Target"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

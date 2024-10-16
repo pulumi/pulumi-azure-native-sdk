@@ -59,6 +59,9 @@ func NewDataSource(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:operationalinsights/v20200301preview:DataSource"),
 		},
+		{
+			Type: pulumi.String("azure-native:operationalinsights/v20230901:DataSource"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

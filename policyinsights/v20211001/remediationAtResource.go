@@ -70,6 +70,9 @@ func NewRemediationAtResource(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:policyinsights/v20190701:RemediationAtResource"),
 		},
+		{
+			Type: pulumi.String("azure-native:policyinsights/v20241001:RemediationAtResource"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
