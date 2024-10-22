@@ -20,7 +20,7 @@ func LookupDaxCluster(ctx *pulumi.Context, args *LookupDaxClusterArgs, opts ...p
 	if err != nil {
 		return nil, err
 	}
-	return rv.Defaults(), nil
+	return &rv, nil
 }
 
 type LookupDaxClusterArgs struct {
@@ -46,17 +46,6 @@ type LookupDaxClusterResult struct {
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
-}
-
-// Defaults sets the appropriate defaults for LookupDaxClusterResult
-func (val *LookupDaxClusterResult) Defaults() *LookupDaxClusterResult {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	tmp.Properties = *tmp.Properties.Defaults()
-
-	return &tmp
 }
 
 func LookupDaxClusterOutput(ctx *pulumi.Context, args LookupDaxClusterOutputArgs, opts ...pulumi.InvokeOption) LookupDaxClusterResultOutput {

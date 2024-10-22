@@ -20,7 +20,7 @@ func LookupAutoScalingAutoScalingGroup(ctx *pulumi.Context, args *LookupAutoScal
 	if err != nil {
 		return nil, err
 	}
-	return rv.Defaults(), nil
+	return &rv, nil
 }
 
 type LookupAutoScalingAutoScalingGroupArgs struct {
@@ -46,17 +46,6 @@ type LookupAutoScalingAutoScalingGroupResult struct {
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
-}
-
-// Defaults sets the appropriate defaults for LookupAutoScalingAutoScalingGroupResult
-func (val *LookupAutoScalingAutoScalingGroupResult) Defaults() *LookupAutoScalingAutoScalingGroupResult {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	tmp.Properties = *tmp.Properties.Defaults()
-
-	return &tmp
 }
 
 func LookupAutoScalingAutoScalingGroupOutput(ctx *pulumi.Context, args LookupAutoScalingAutoScalingGroupOutputArgs, opts ...pulumi.InvokeOption) LookupAutoScalingAutoScalingGroupResultOutput {

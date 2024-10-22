@@ -13,6 +13,795 @@ import (
 
 var _ = utilities.GetEnvOrDefault
 
+// Definition of LoggingConfig
+type LoggingConfig struct {
+	// Set this property to filter the application logs for your function that Lambda sends to CloudWatch. Lambda only sends application logs at the selected level of detail and lower, where ``TRACE`` is the highest level and ``FATAL`` is the lowest.
+	ApplicationLogLevel *string `pulumi:"applicationLogLevel"`
+	// Property failureFeedbackRoleArn
+	FailureFeedbackRoleArn *string `pulumi:"failureFeedbackRoleArn"`
+	// The format in which Lambda sends your function's application and system logs to CloudWatch. Select between plain text and structured JSON.
+	LogFormat *string `pulumi:"logFormat"`
+	// The name of the Amazon CloudWatch log group the function sends logs to. By default, Lambda functions send logs to a default log group named ``/aws/lambda/<function name>``. To use a different log group, enter an existing log group or enter a new log group name.
+	LogGroup *string `pulumi:"logGroup"`
+	// Property protocol
+	Protocol *string `pulumi:"protocol"`
+	// Property successFeedbackRoleArn
+	SuccessFeedbackRoleArn *string `pulumi:"successFeedbackRoleArn"`
+	// Property successFeedbackSampleRate
+	SuccessFeedbackSampleRate *string `pulumi:"successFeedbackSampleRate"`
+	// Set this property to filter the system logs for your function that Lambda sends to CloudWatch. Lambda only sends system logs at the selected level of detail and lower, where ``DEBUG`` is the highest level and ``WARN`` is the lowest.
+	SystemLogLevel *string `pulumi:"systemLogLevel"`
+}
+
+// LoggingConfigInput is an input type that accepts LoggingConfigArgs and LoggingConfigOutput values.
+// You can construct a concrete instance of `LoggingConfigInput` via:
+//
+//	LoggingConfigArgs{...}
+type LoggingConfigInput interface {
+	pulumi.Input
+
+	ToLoggingConfigOutput() LoggingConfigOutput
+	ToLoggingConfigOutputWithContext(context.Context) LoggingConfigOutput
+}
+
+// Definition of LoggingConfig
+type LoggingConfigArgs struct {
+	// Set this property to filter the application logs for your function that Lambda sends to CloudWatch. Lambda only sends application logs at the selected level of detail and lower, where ``TRACE`` is the highest level and ``FATAL`` is the lowest.
+	ApplicationLogLevel pulumi.StringPtrInput `pulumi:"applicationLogLevel"`
+	// Property failureFeedbackRoleArn
+	FailureFeedbackRoleArn pulumi.StringPtrInput `pulumi:"failureFeedbackRoleArn"`
+	// The format in which Lambda sends your function's application and system logs to CloudWatch. Select between plain text and structured JSON.
+	LogFormat pulumi.StringPtrInput `pulumi:"logFormat"`
+	// The name of the Amazon CloudWatch log group the function sends logs to. By default, Lambda functions send logs to a default log group named ``/aws/lambda/<function name>``. To use a different log group, enter an existing log group or enter a new log group name.
+	LogGroup pulumi.StringPtrInput `pulumi:"logGroup"`
+	// Property protocol
+	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
+	// Property successFeedbackRoleArn
+	SuccessFeedbackRoleArn pulumi.StringPtrInput `pulumi:"successFeedbackRoleArn"`
+	// Property successFeedbackSampleRate
+	SuccessFeedbackSampleRate pulumi.StringPtrInput `pulumi:"successFeedbackSampleRate"`
+	// Set this property to filter the system logs for your function that Lambda sends to CloudWatch. Lambda only sends system logs at the selected level of detail and lower, where ``DEBUG`` is the highest level and ``WARN`` is the lowest.
+	SystemLogLevel pulumi.StringPtrInput `pulumi:"systemLogLevel"`
+}
+
+func (LoggingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoggingConfig)(nil)).Elem()
+}
+
+func (i LoggingConfigArgs) ToLoggingConfigOutput() LoggingConfigOutput {
+	return i.ToLoggingConfigOutputWithContext(context.Background())
+}
+
+func (i LoggingConfigArgs) ToLoggingConfigOutputWithContext(ctx context.Context) LoggingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoggingConfigOutput)
+}
+
+func (i LoggingConfigArgs) ToLoggingConfigPtrOutput() LoggingConfigPtrOutput {
+	return i.ToLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i LoggingConfigArgs) ToLoggingConfigPtrOutputWithContext(ctx context.Context) LoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoggingConfigOutput).ToLoggingConfigPtrOutputWithContext(ctx)
+}
+
+// LoggingConfigPtrInput is an input type that accepts LoggingConfigArgs, LoggingConfigPtr and LoggingConfigPtrOutput values.
+// You can construct a concrete instance of `LoggingConfigPtrInput` via:
+//
+//	        LoggingConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type LoggingConfigPtrInput interface {
+	pulumi.Input
+
+	ToLoggingConfigPtrOutput() LoggingConfigPtrOutput
+	ToLoggingConfigPtrOutputWithContext(context.Context) LoggingConfigPtrOutput
+}
+
+type loggingConfigPtrType LoggingConfigArgs
+
+func LoggingConfigPtr(v *LoggingConfigArgs) LoggingConfigPtrInput {
+	return (*loggingConfigPtrType)(v)
+}
+
+func (*loggingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoggingConfig)(nil)).Elem()
+}
+
+func (i *loggingConfigPtrType) ToLoggingConfigPtrOutput() LoggingConfigPtrOutput {
+	return i.ToLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *loggingConfigPtrType) ToLoggingConfigPtrOutputWithContext(ctx context.Context) LoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoggingConfigPtrOutput)
+}
+
+// LoggingConfigArrayInput is an input type that accepts LoggingConfigArray and LoggingConfigArrayOutput values.
+// You can construct a concrete instance of `LoggingConfigArrayInput` via:
+//
+//	LoggingConfigArray{ LoggingConfigArgs{...} }
+type LoggingConfigArrayInput interface {
+	pulumi.Input
+
+	ToLoggingConfigArrayOutput() LoggingConfigArrayOutput
+	ToLoggingConfigArrayOutputWithContext(context.Context) LoggingConfigArrayOutput
+}
+
+type LoggingConfigArray []LoggingConfigInput
+
+func (LoggingConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoggingConfig)(nil)).Elem()
+}
+
+func (i LoggingConfigArray) ToLoggingConfigArrayOutput() LoggingConfigArrayOutput {
+	return i.ToLoggingConfigArrayOutputWithContext(context.Background())
+}
+
+func (i LoggingConfigArray) ToLoggingConfigArrayOutputWithContext(ctx context.Context) LoggingConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoggingConfigArrayOutput)
+}
+
+// Definition of LoggingConfig
+type LoggingConfigOutput struct{ *pulumi.OutputState }
+
+func (LoggingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoggingConfig)(nil)).Elem()
+}
+
+func (o LoggingConfigOutput) ToLoggingConfigOutput() LoggingConfigOutput {
+	return o
+}
+
+func (o LoggingConfigOutput) ToLoggingConfigOutputWithContext(ctx context.Context) LoggingConfigOutput {
+	return o
+}
+
+func (o LoggingConfigOutput) ToLoggingConfigPtrOutput() LoggingConfigPtrOutput {
+	return o.ToLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o LoggingConfigOutput) ToLoggingConfigPtrOutputWithContext(ctx context.Context) LoggingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoggingConfig) *LoggingConfig {
+		return &v
+	}).(LoggingConfigPtrOutput)
+}
+
+// Set this property to filter the application logs for your function that Lambda sends to CloudWatch. Lambda only sends application logs at the selected level of detail and lower, where “TRACE“ is the highest level and “FATAL“ is the lowest.
+func (o LoggingConfigOutput) ApplicationLogLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoggingConfig) *string { return v.ApplicationLogLevel }).(pulumi.StringPtrOutput)
+}
+
+// Property failureFeedbackRoleArn
+func (o LoggingConfigOutput) FailureFeedbackRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoggingConfig) *string { return v.FailureFeedbackRoleArn }).(pulumi.StringPtrOutput)
+}
+
+// The format in which Lambda sends your function's application and system logs to CloudWatch. Select between plain text and structured JSON.
+func (o LoggingConfigOutput) LogFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoggingConfig) *string { return v.LogFormat }).(pulumi.StringPtrOutput)
+}
+
+// The name of the Amazon CloudWatch log group the function sends logs to. By default, Lambda functions send logs to a default log group named “/aws/lambda/<function name>“. To use a different log group, enter an existing log group or enter a new log group name.
+func (o LoggingConfigOutput) LogGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoggingConfig) *string { return v.LogGroup }).(pulumi.StringPtrOutput)
+}
+
+// Property protocol
+func (o LoggingConfigOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoggingConfig) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+}
+
+// Property successFeedbackRoleArn
+func (o LoggingConfigOutput) SuccessFeedbackRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoggingConfig) *string { return v.SuccessFeedbackRoleArn }).(pulumi.StringPtrOutput)
+}
+
+// Property successFeedbackSampleRate
+func (o LoggingConfigOutput) SuccessFeedbackSampleRate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoggingConfig) *string { return v.SuccessFeedbackSampleRate }).(pulumi.StringPtrOutput)
+}
+
+// Set this property to filter the system logs for your function that Lambda sends to CloudWatch. Lambda only sends system logs at the selected level of detail and lower, where “DEBUG“ is the highest level and “WARN“ is the lowest.
+func (o LoggingConfigOutput) SystemLogLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoggingConfig) *string { return v.SystemLogLevel }).(pulumi.StringPtrOutput)
+}
+
+type LoggingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (LoggingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoggingConfig)(nil)).Elem()
+}
+
+func (o LoggingConfigPtrOutput) ToLoggingConfigPtrOutput() LoggingConfigPtrOutput {
+	return o
+}
+
+func (o LoggingConfigPtrOutput) ToLoggingConfigPtrOutputWithContext(ctx context.Context) LoggingConfigPtrOutput {
+	return o
+}
+
+func (o LoggingConfigPtrOutput) Elem() LoggingConfigOutput {
+	return o.ApplyT(func(v *LoggingConfig) LoggingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret LoggingConfig
+		return ret
+	}).(LoggingConfigOutput)
+}
+
+// Set this property to filter the application logs for your function that Lambda sends to CloudWatch. Lambda only sends application logs at the selected level of detail and lower, where “TRACE“ is the highest level and “FATAL“ is the lowest.
+func (o LoggingConfigPtrOutput) ApplicationLogLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoggingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApplicationLogLevel
+	}).(pulumi.StringPtrOutput)
+}
+
+// Property failureFeedbackRoleArn
+func (o LoggingConfigPtrOutput) FailureFeedbackRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoggingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FailureFeedbackRoleArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// The format in which Lambda sends your function's application and system logs to CloudWatch. Select between plain text and structured JSON.
+func (o LoggingConfigPtrOutput) LogFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoggingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the Amazon CloudWatch log group the function sends logs to. By default, Lambda functions send logs to a default log group named “/aws/lambda/<function name>“. To use a different log group, enter an existing log group or enter a new log group name.
+func (o LoggingConfigPtrOutput) LogGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoggingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogGroup
+	}).(pulumi.StringPtrOutput)
+}
+
+// Property protocol
+func (o LoggingConfigPtrOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoggingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Protocol
+	}).(pulumi.StringPtrOutput)
+}
+
+// Property successFeedbackRoleArn
+func (o LoggingConfigPtrOutput) SuccessFeedbackRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoggingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SuccessFeedbackRoleArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Property successFeedbackSampleRate
+func (o LoggingConfigPtrOutput) SuccessFeedbackSampleRate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoggingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SuccessFeedbackSampleRate
+	}).(pulumi.StringPtrOutput)
+}
+
+// Set this property to filter the system logs for your function that Lambda sends to CloudWatch. Lambda only sends system logs at the selected level of detail and lower, where “DEBUG“ is the highest level and “WARN“ is the lowest.
+func (o LoggingConfigPtrOutput) SystemLogLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoggingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SystemLogLevel
+	}).(pulumi.StringPtrOutput)
+}
+
+type LoggingConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (LoggingConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoggingConfig)(nil)).Elem()
+}
+
+func (o LoggingConfigArrayOutput) ToLoggingConfigArrayOutput() LoggingConfigArrayOutput {
+	return o
+}
+
+func (o LoggingConfigArrayOutput) ToLoggingConfigArrayOutputWithContext(ctx context.Context) LoggingConfigArrayOutput {
+	return o
+}
+
+func (o LoggingConfigArrayOutput) Index(i pulumi.IntInput) LoggingConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LoggingConfig {
+		return vs[0].([]LoggingConfig)[vs[1].(int)]
+	}).(LoggingConfigOutput)
+}
+
+// Definition of LoggingConfig
+type LoggingConfigResponse struct {
+	// Set this property to filter the application logs for your function that Lambda sends to CloudWatch. Lambda only sends application logs at the selected level of detail and lower, where ``TRACE`` is the highest level and ``FATAL`` is the lowest.
+	ApplicationLogLevel *string `pulumi:"applicationLogLevel"`
+	// Property failureFeedbackRoleArn
+	FailureFeedbackRoleArn *string `pulumi:"failureFeedbackRoleArn"`
+	// The format in which Lambda sends your function's application and system logs to CloudWatch. Select between plain text and structured JSON.
+	LogFormat *string `pulumi:"logFormat"`
+	// The name of the Amazon CloudWatch log group the function sends logs to. By default, Lambda functions send logs to a default log group named ``/aws/lambda/<function name>``. To use a different log group, enter an existing log group or enter a new log group name.
+	LogGroup *string `pulumi:"logGroup"`
+	// Property protocol
+	Protocol *string `pulumi:"protocol"`
+	// Property successFeedbackRoleArn
+	SuccessFeedbackRoleArn *string `pulumi:"successFeedbackRoleArn"`
+	// Property successFeedbackSampleRate
+	SuccessFeedbackSampleRate *string `pulumi:"successFeedbackSampleRate"`
+	// Set this property to filter the system logs for your function that Lambda sends to CloudWatch. Lambda only sends system logs at the selected level of detail and lower, where ``DEBUG`` is the highest level and ``WARN`` is the lowest.
+	SystemLogLevel *string `pulumi:"systemLogLevel"`
+}
+
+// Definition of LoggingConfig
+type LoggingConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (LoggingConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoggingConfigResponse)(nil)).Elem()
+}
+
+func (o LoggingConfigResponseOutput) ToLoggingConfigResponseOutput() LoggingConfigResponseOutput {
+	return o
+}
+
+func (o LoggingConfigResponseOutput) ToLoggingConfigResponseOutputWithContext(ctx context.Context) LoggingConfigResponseOutput {
+	return o
+}
+
+// Set this property to filter the application logs for your function that Lambda sends to CloudWatch. Lambda only sends application logs at the selected level of detail and lower, where “TRACE“ is the highest level and “FATAL“ is the lowest.
+func (o LoggingConfigResponseOutput) ApplicationLogLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoggingConfigResponse) *string { return v.ApplicationLogLevel }).(pulumi.StringPtrOutput)
+}
+
+// Property failureFeedbackRoleArn
+func (o LoggingConfigResponseOutput) FailureFeedbackRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoggingConfigResponse) *string { return v.FailureFeedbackRoleArn }).(pulumi.StringPtrOutput)
+}
+
+// The format in which Lambda sends your function's application and system logs to CloudWatch. Select between plain text and structured JSON.
+func (o LoggingConfigResponseOutput) LogFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoggingConfigResponse) *string { return v.LogFormat }).(pulumi.StringPtrOutput)
+}
+
+// The name of the Amazon CloudWatch log group the function sends logs to. By default, Lambda functions send logs to a default log group named “/aws/lambda/<function name>“. To use a different log group, enter an existing log group or enter a new log group name.
+func (o LoggingConfigResponseOutput) LogGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoggingConfigResponse) *string { return v.LogGroup }).(pulumi.StringPtrOutput)
+}
+
+// Property protocol
+func (o LoggingConfigResponseOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoggingConfigResponse) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+}
+
+// Property successFeedbackRoleArn
+func (o LoggingConfigResponseOutput) SuccessFeedbackRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoggingConfigResponse) *string { return v.SuccessFeedbackRoleArn }).(pulumi.StringPtrOutput)
+}
+
+// Property successFeedbackSampleRate
+func (o LoggingConfigResponseOutput) SuccessFeedbackSampleRate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoggingConfigResponse) *string { return v.SuccessFeedbackSampleRate }).(pulumi.StringPtrOutput)
+}
+
+// Set this property to filter the system logs for your function that Lambda sends to CloudWatch. Lambda only sends system logs at the selected level of detail and lower, where “DEBUG“ is the highest level and “WARN“ is the lowest.
+func (o LoggingConfigResponseOutput) SystemLogLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoggingConfigResponse) *string { return v.SystemLogLevel }).(pulumi.StringPtrOutput)
+}
+
+type LoggingConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (LoggingConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoggingConfigResponse)(nil)).Elem()
+}
+
+func (o LoggingConfigResponsePtrOutput) ToLoggingConfigResponsePtrOutput() LoggingConfigResponsePtrOutput {
+	return o
+}
+
+func (o LoggingConfigResponsePtrOutput) ToLoggingConfigResponsePtrOutputWithContext(ctx context.Context) LoggingConfigResponsePtrOutput {
+	return o
+}
+
+func (o LoggingConfigResponsePtrOutput) Elem() LoggingConfigResponseOutput {
+	return o.ApplyT(func(v *LoggingConfigResponse) LoggingConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret LoggingConfigResponse
+		return ret
+	}).(LoggingConfigResponseOutput)
+}
+
+// Set this property to filter the application logs for your function that Lambda sends to CloudWatch. Lambda only sends application logs at the selected level of detail and lower, where “TRACE“ is the highest level and “FATAL“ is the lowest.
+func (o LoggingConfigResponsePtrOutput) ApplicationLogLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoggingConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApplicationLogLevel
+	}).(pulumi.StringPtrOutput)
+}
+
+// Property failureFeedbackRoleArn
+func (o LoggingConfigResponsePtrOutput) FailureFeedbackRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoggingConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FailureFeedbackRoleArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// The format in which Lambda sends your function's application and system logs to CloudWatch. Select between plain text and structured JSON.
+func (o LoggingConfigResponsePtrOutput) LogFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoggingConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the Amazon CloudWatch log group the function sends logs to. By default, Lambda functions send logs to a default log group named “/aws/lambda/<function name>“. To use a different log group, enter an existing log group or enter a new log group name.
+func (o LoggingConfigResponsePtrOutput) LogGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoggingConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogGroup
+	}).(pulumi.StringPtrOutput)
+}
+
+// Property protocol
+func (o LoggingConfigResponsePtrOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoggingConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Protocol
+	}).(pulumi.StringPtrOutput)
+}
+
+// Property successFeedbackRoleArn
+func (o LoggingConfigResponsePtrOutput) SuccessFeedbackRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoggingConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SuccessFeedbackRoleArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Property successFeedbackSampleRate
+func (o LoggingConfigResponsePtrOutput) SuccessFeedbackSampleRate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoggingConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SuccessFeedbackSampleRate
+	}).(pulumi.StringPtrOutput)
+}
+
+// Set this property to filter the system logs for your function that Lambda sends to CloudWatch. Lambda only sends system logs at the selected level of detail and lower, where “DEBUG“ is the highest level and “WARN“ is the lowest.
+func (o LoggingConfigResponsePtrOutput) SystemLogLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoggingConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SystemLogLevel
+	}).(pulumi.StringPtrOutput)
+}
+
+type LoggingConfigResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (LoggingConfigResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoggingConfigResponse)(nil)).Elem()
+}
+
+func (o LoggingConfigResponseArrayOutput) ToLoggingConfigResponseArrayOutput() LoggingConfigResponseArrayOutput {
+	return o
+}
+
+func (o LoggingConfigResponseArrayOutput) ToLoggingConfigResponseArrayOutputWithContext(ctx context.Context) LoggingConfigResponseArrayOutput {
+	return o
+}
+
+func (o LoggingConfigResponseArrayOutput) Index(i pulumi.IntInput) LoggingConfigResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LoggingConfigResponse {
+		return vs[0].([]LoggingConfigResponse)[vs[1].(int)]
+	}).(LoggingConfigResponseOutput)
+}
+
+// Definition of LoggingConfiguration
+type LoggingConfiguration struct {
+	// The name of the bucket where Amazon S3 should store server access log files. You can store log files in any bucket that you own. By default, logs are stored in the bucket where the ``LoggingConfiguration`` property is defined.
+	DestinationBucketName *string `pulumi:"destinationBucketName"`
+	// A prefix for all log object keys. If you store log files from multiple Amazon S3 buckets in a single bucket, you can use a prefix to distinguish which log files came from which bucket.
+	LogFilePrefix *string `pulumi:"logFilePrefix"`
+	// Amazon S3 key format for log objects. Only one format, either PartitionedPrefix or SimplePrefix, is allowed. Describes the key format for server access log file in the target bucket. You can choose between SimplePrefix and PartitionedPrefix.
+	TargetObjectKeyFormat *TargetObjectKeyFormat `pulumi:"targetObjectKeyFormat"`
+}
+
+// LoggingConfigurationInput is an input type that accepts LoggingConfigurationArgs and LoggingConfigurationOutput values.
+// You can construct a concrete instance of `LoggingConfigurationInput` via:
+//
+//	LoggingConfigurationArgs{...}
+type LoggingConfigurationInput interface {
+	pulumi.Input
+
+	ToLoggingConfigurationOutput() LoggingConfigurationOutput
+	ToLoggingConfigurationOutputWithContext(context.Context) LoggingConfigurationOutput
+}
+
+// Definition of LoggingConfiguration
+type LoggingConfigurationArgs struct {
+	// The name of the bucket where Amazon S3 should store server access log files. You can store log files in any bucket that you own. By default, logs are stored in the bucket where the ``LoggingConfiguration`` property is defined.
+	DestinationBucketName pulumi.StringPtrInput `pulumi:"destinationBucketName"`
+	// A prefix for all log object keys. If you store log files from multiple Amazon S3 buckets in a single bucket, you can use a prefix to distinguish which log files came from which bucket.
+	LogFilePrefix pulumi.StringPtrInput `pulumi:"logFilePrefix"`
+	// Amazon S3 key format for log objects. Only one format, either PartitionedPrefix or SimplePrefix, is allowed. Describes the key format for server access log file in the target bucket. You can choose between SimplePrefix and PartitionedPrefix.
+	TargetObjectKeyFormat TargetObjectKeyFormatPtrInput `pulumi:"targetObjectKeyFormat"`
+}
+
+func (LoggingConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoggingConfiguration)(nil)).Elem()
+}
+
+func (i LoggingConfigurationArgs) ToLoggingConfigurationOutput() LoggingConfigurationOutput {
+	return i.ToLoggingConfigurationOutputWithContext(context.Background())
+}
+
+func (i LoggingConfigurationArgs) ToLoggingConfigurationOutputWithContext(ctx context.Context) LoggingConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoggingConfigurationOutput)
+}
+
+func (i LoggingConfigurationArgs) ToLoggingConfigurationPtrOutput() LoggingConfigurationPtrOutput {
+	return i.ToLoggingConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i LoggingConfigurationArgs) ToLoggingConfigurationPtrOutputWithContext(ctx context.Context) LoggingConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoggingConfigurationOutput).ToLoggingConfigurationPtrOutputWithContext(ctx)
+}
+
+// LoggingConfigurationPtrInput is an input type that accepts LoggingConfigurationArgs, LoggingConfigurationPtr and LoggingConfigurationPtrOutput values.
+// You can construct a concrete instance of `LoggingConfigurationPtrInput` via:
+//
+//	        LoggingConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type LoggingConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToLoggingConfigurationPtrOutput() LoggingConfigurationPtrOutput
+	ToLoggingConfigurationPtrOutputWithContext(context.Context) LoggingConfigurationPtrOutput
+}
+
+type loggingConfigurationPtrType LoggingConfigurationArgs
+
+func LoggingConfigurationPtr(v *LoggingConfigurationArgs) LoggingConfigurationPtrInput {
+	return (*loggingConfigurationPtrType)(v)
+}
+
+func (*loggingConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoggingConfiguration)(nil)).Elem()
+}
+
+func (i *loggingConfigurationPtrType) ToLoggingConfigurationPtrOutput() LoggingConfigurationPtrOutput {
+	return i.ToLoggingConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *loggingConfigurationPtrType) ToLoggingConfigurationPtrOutputWithContext(ctx context.Context) LoggingConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoggingConfigurationPtrOutput)
+}
+
+// Definition of LoggingConfiguration
+type LoggingConfigurationOutput struct{ *pulumi.OutputState }
+
+func (LoggingConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoggingConfiguration)(nil)).Elem()
+}
+
+func (o LoggingConfigurationOutput) ToLoggingConfigurationOutput() LoggingConfigurationOutput {
+	return o
+}
+
+func (o LoggingConfigurationOutput) ToLoggingConfigurationOutputWithContext(ctx context.Context) LoggingConfigurationOutput {
+	return o
+}
+
+func (o LoggingConfigurationOutput) ToLoggingConfigurationPtrOutput() LoggingConfigurationPtrOutput {
+	return o.ToLoggingConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o LoggingConfigurationOutput) ToLoggingConfigurationPtrOutputWithContext(ctx context.Context) LoggingConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoggingConfiguration) *LoggingConfiguration {
+		return &v
+	}).(LoggingConfigurationPtrOutput)
+}
+
+// The name of the bucket where Amazon S3 should store server access log files. You can store log files in any bucket that you own. By default, logs are stored in the bucket where the “LoggingConfiguration“ property is defined.
+func (o LoggingConfigurationOutput) DestinationBucketName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoggingConfiguration) *string { return v.DestinationBucketName }).(pulumi.StringPtrOutput)
+}
+
+// A prefix for all log object keys. If you store log files from multiple Amazon S3 buckets in a single bucket, you can use a prefix to distinguish which log files came from which bucket.
+func (o LoggingConfigurationOutput) LogFilePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoggingConfiguration) *string { return v.LogFilePrefix }).(pulumi.StringPtrOutput)
+}
+
+// Amazon S3 key format for log objects. Only one format, either PartitionedPrefix or SimplePrefix, is allowed. Describes the key format for server access log file in the target bucket. You can choose between SimplePrefix and PartitionedPrefix.
+func (o LoggingConfigurationOutput) TargetObjectKeyFormat() TargetObjectKeyFormatPtrOutput {
+	return o.ApplyT(func(v LoggingConfiguration) *TargetObjectKeyFormat { return v.TargetObjectKeyFormat }).(TargetObjectKeyFormatPtrOutput)
+}
+
+type LoggingConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (LoggingConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoggingConfiguration)(nil)).Elem()
+}
+
+func (o LoggingConfigurationPtrOutput) ToLoggingConfigurationPtrOutput() LoggingConfigurationPtrOutput {
+	return o
+}
+
+func (o LoggingConfigurationPtrOutput) ToLoggingConfigurationPtrOutputWithContext(ctx context.Context) LoggingConfigurationPtrOutput {
+	return o
+}
+
+func (o LoggingConfigurationPtrOutput) Elem() LoggingConfigurationOutput {
+	return o.ApplyT(func(v *LoggingConfiguration) LoggingConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret LoggingConfiguration
+		return ret
+	}).(LoggingConfigurationOutput)
+}
+
+// The name of the bucket where Amazon S3 should store server access log files. You can store log files in any bucket that you own. By default, logs are stored in the bucket where the “LoggingConfiguration“ property is defined.
+func (o LoggingConfigurationPtrOutput) DestinationBucketName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoggingConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DestinationBucketName
+	}).(pulumi.StringPtrOutput)
+}
+
+// A prefix for all log object keys. If you store log files from multiple Amazon S3 buckets in a single bucket, you can use a prefix to distinguish which log files came from which bucket.
+func (o LoggingConfigurationPtrOutput) LogFilePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoggingConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogFilePrefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// Amazon S3 key format for log objects. Only one format, either PartitionedPrefix or SimplePrefix, is allowed. Describes the key format for server access log file in the target bucket. You can choose between SimplePrefix and PartitionedPrefix.
+func (o LoggingConfigurationPtrOutput) TargetObjectKeyFormat() TargetObjectKeyFormatPtrOutput {
+	return o.ApplyT(func(v *LoggingConfiguration) *TargetObjectKeyFormat {
+		if v == nil {
+			return nil
+		}
+		return v.TargetObjectKeyFormat
+	}).(TargetObjectKeyFormatPtrOutput)
+}
+
+// Definition of LoggingConfiguration
+type LoggingConfigurationResponse struct {
+	// The name of the bucket where Amazon S3 should store server access log files. You can store log files in any bucket that you own. By default, logs are stored in the bucket where the ``LoggingConfiguration`` property is defined.
+	DestinationBucketName *string `pulumi:"destinationBucketName"`
+	// A prefix for all log object keys. If you store log files from multiple Amazon S3 buckets in a single bucket, you can use a prefix to distinguish which log files came from which bucket.
+	LogFilePrefix *string `pulumi:"logFilePrefix"`
+	// Amazon S3 key format for log objects. Only one format, either PartitionedPrefix or SimplePrefix, is allowed. Describes the key format for server access log file in the target bucket. You can choose between SimplePrefix and PartitionedPrefix.
+	TargetObjectKeyFormat *TargetObjectKeyFormatResponse `pulumi:"targetObjectKeyFormat"`
+}
+
+// Definition of LoggingConfiguration
+type LoggingConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (LoggingConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoggingConfigurationResponse)(nil)).Elem()
+}
+
+func (o LoggingConfigurationResponseOutput) ToLoggingConfigurationResponseOutput() LoggingConfigurationResponseOutput {
+	return o
+}
+
+func (o LoggingConfigurationResponseOutput) ToLoggingConfigurationResponseOutputWithContext(ctx context.Context) LoggingConfigurationResponseOutput {
+	return o
+}
+
+// The name of the bucket where Amazon S3 should store server access log files. You can store log files in any bucket that you own. By default, logs are stored in the bucket where the “LoggingConfiguration“ property is defined.
+func (o LoggingConfigurationResponseOutput) DestinationBucketName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoggingConfigurationResponse) *string { return v.DestinationBucketName }).(pulumi.StringPtrOutput)
+}
+
+// A prefix for all log object keys. If you store log files from multiple Amazon S3 buckets in a single bucket, you can use a prefix to distinguish which log files came from which bucket.
+func (o LoggingConfigurationResponseOutput) LogFilePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoggingConfigurationResponse) *string { return v.LogFilePrefix }).(pulumi.StringPtrOutput)
+}
+
+// Amazon S3 key format for log objects. Only one format, either PartitionedPrefix or SimplePrefix, is allowed. Describes the key format for server access log file in the target bucket. You can choose between SimplePrefix and PartitionedPrefix.
+func (o LoggingConfigurationResponseOutput) TargetObjectKeyFormat() TargetObjectKeyFormatResponsePtrOutput {
+	return o.ApplyT(func(v LoggingConfigurationResponse) *TargetObjectKeyFormatResponse { return v.TargetObjectKeyFormat }).(TargetObjectKeyFormatResponsePtrOutput)
+}
+
+type LoggingConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (LoggingConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoggingConfigurationResponse)(nil)).Elem()
+}
+
+func (o LoggingConfigurationResponsePtrOutput) ToLoggingConfigurationResponsePtrOutput() LoggingConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o LoggingConfigurationResponsePtrOutput) ToLoggingConfigurationResponsePtrOutputWithContext(ctx context.Context) LoggingConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o LoggingConfigurationResponsePtrOutput) Elem() LoggingConfigurationResponseOutput {
+	return o.ApplyT(func(v *LoggingConfigurationResponse) LoggingConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret LoggingConfigurationResponse
+		return ret
+	}).(LoggingConfigurationResponseOutput)
+}
+
+// The name of the bucket where Amazon S3 should store server access log files. You can store log files in any bucket that you own. By default, logs are stored in the bucket where the “LoggingConfiguration“ property is defined.
+func (o LoggingConfigurationResponsePtrOutput) DestinationBucketName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoggingConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DestinationBucketName
+	}).(pulumi.StringPtrOutput)
+}
+
+// A prefix for all log object keys. If you store log files from multiple Amazon S3 buckets in a single bucket, you can use a prefix to distinguish which log files came from which bucket.
+func (o LoggingConfigurationResponsePtrOutput) LogFilePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoggingConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogFilePrefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// Amazon S3 key format for log objects. Only one format, either PartitionedPrefix or SimplePrefix, is allowed. Describes the key format for server access log file in the target bucket. You can choose between SimplePrefix and PartitionedPrefix.
+func (o LoggingConfigurationResponsePtrOutput) TargetObjectKeyFormat() TargetObjectKeyFormatResponsePtrOutput {
+	return o.ApplyT(func(v *LoggingConfigurationResponse) *TargetObjectKeyFormatResponse {
+		if v == nil {
+			return nil
+		}
+		return v.TargetObjectKeyFormat
+	}).(TargetObjectKeyFormatResponsePtrOutput)
+}
+
 // Definition of LoggingFilterModelProperties
 type LoggingFilterModelProperties struct {
 	// Default handling for logs that don't match any of the specified filtering conditions.
@@ -12505,18 +13294,10 @@ type NotificationConfiguration struct {
 	EventBridgeConfiguration *EventBridgeConfiguration `pulumi:"eventBridgeConfiguration"`
 	// Describes the LAMlong functions to invoke and the events for which to invoke them.
 	LambdaConfigurations []LambdaConfiguration `pulumi:"lambdaConfigurations"`
-	// A list of event types that send a notification. Event types can include any of the following types.  *Allowed values*:  +   ``autoscaling:EC2_INSTANCE_LAUNCH``   +   ``autoscaling:EC2_INSTANCE_LAUNCH_ERROR``   +   ``autoscaling:EC2_INSTANCE_TERMINATE``   +   ``autoscaling:EC2_INSTANCE_TERMINATE_ERROR``   +   ``autoscaling:TEST_NOTIFICATION``
-	NotificationTypes []string `pulumi:"notificationTypes"`
 	// The Amazon Simple Queue Service queues to publish messages to and the events for which to publish messages.
 	QueueConfigurations []QueueConfiguration `pulumi:"queueConfigurations"`
-	// The Amazon Resource Name (ARN) of the Amazon SNS topic.
-	TopicARN *string `pulumi:"topicARN"`
-	// <p>The Amazon Resource Name (ARN) that identifies the topic. </p>
-	TopicArn *string `pulumi:"topicArn"`
 	// The topic to which notifications are sent and the events for which notifications are generated.
 	TopicConfigurations []TopicConfiguration `pulumi:"topicConfigurations"`
-	// <p>The current state of the topic. A value of “active” means that notifications will be sent to the topic. A value of “inactive” means that notifications will not be sent to the topic.</p>
-	TopicStatus *string `pulumi:"topicStatus"`
 }
 
 // Defaults sets the appropriate defaults for NotificationConfiguration
@@ -12547,18 +13328,10 @@ type NotificationConfigurationArgs struct {
 	EventBridgeConfiguration EventBridgeConfigurationPtrInput `pulumi:"eventBridgeConfiguration"`
 	// Describes the LAMlong functions to invoke and the events for which to invoke them.
 	LambdaConfigurations LambdaConfigurationArrayInput `pulumi:"lambdaConfigurations"`
-	// A list of event types that send a notification. Event types can include any of the following types.  *Allowed values*:  +   ``autoscaling:EC2_INSTANCE_LAUNCH``   +   ``autoscaling:EC2_INSTANCE_LAUNCH_ERROR``   +   ``autoscaling:EC2_INSTANCE_TERMINATE``   +   ``autoscaling:EC2_INSTANCE_TERMINATE_ERROR``   +   ``autoscaling:TEST_NOTIFICATION``
-	NotificationTypes pulumi.StringArrayInput `pulumi:"notificationTypes"`
 	// The Amazon Simple Queue Service queues to publish messages to and the events for which to publish messages.
 	QueueConfigurations QueueConfigurationArrayInput `pulumi:"queueConfigurations"`
-	// The Amazon Resource Name (ARN) of the Amazon SNS topic.
-	TopicARN pulumi.StringPtrInput `pulumi:"topicARN"`
-	// <p>The Amazon Resource Name (ARN) that identifies the topic. </p>
-	TopicArn pulumi.StringPtrInput `pulumi:"topicArn"`
 	// The topic to which notifications are sent and the events for which notifications are generated.
 	TopicConfigurations TopicConfigurationArrayInput `pulumi:"topicConfigurations"`
-	// <p>The current state of the topic. A value of “active” means that notifications will be sent to the topic. A value of “inactive” means that notifications will not be sent to the topic.</p>
-	TopicStatus pulumi.StringPtrInput `pulumi:"topicStatus"`
 }
 
 // Defaults sets the appropriate defaults for NotificationConfigurationArgs
@@ -12623,31 +13396,6 @@ func (i *notificationConfigurationPtrType) ToNotificationConfigurationPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(NotificationConfigurationPtrOutput)
 }
 
-// NotificationConfigurationArrayInput is an input type that accepts NotificationConfigurationArray and NotificationConfigurationArrayOutput values.
-// You can construct a concrete instance of `NotificationConfigurationArrayInput` via:
-//
-//	NotificationConfigurationArray{ NotificationConfigurationArgs{...} }
-type NotificationConfigurationArrayInput interface {
-	pulumi.Input
-
-	ToNotificationConfigurationArrayOutput() NotificationConfigurationArrayOutput
-	ToNotificationConfigurationArrayOutputWithContext(context.Context) NotificationConfigurationArrayOutput
-}
-
-type NotificationConfigurationArray []NotificationConfigurationInput
-
-func (NotificationConfigurationArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]NotificationConfiguration)(nil)).Elem()
-}
-
-func (i NotificationConfigurationArray) ToNotificationConfigurationArrayOutput() NotificationConfigurationArrayOutput {
-	return i.ToNotificationConfigurationArrayOutputWithContext(context.Background())
-}
-
-func (i NotificationConfigurationArray) ToNotificationConfigurationArrayOutputWithContext(ctx context.Context) NotificationConfigurationArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NotificationConfigurationArrayOutput)
-}
-
 // Definition of NotificationConfiguration
 type NotificationConfigurationOutput struct{ *pulumi.OutputState }
 
@@ -12683,34 +13431,14 @@ func (o NotificationConfigurationOutput) LambdaConfigurations() LambdaConfigurat
 	return o.ApplyT(func(v NotificationConfiguration) []LambdaConfiguration { return v.LambdaConfigurations }).(LambdaConfigurationArrayOutput)
 }
 
-// A list of event types that send a notification. Event types can include any of the following types.  *Allowed values*:  +   “autoscaling:EC2_INSTANCE_LAUNCH“   +   “autoscaling:EC2_INSTANCE_LAUNCH_ERROR“   +   “autoscaling:EC2_INSTANCE_TERMINATE“   +   “autoscaling:EC2_INSTANCE_TERMINATE_ERROR“   +   “autoscaling:TEST_NOTIFICATION“
-func (o NotificationConfigurationOutput) NotificationTypes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v NotificationConfiguration) []string { return v.NotificationTypes }).(pulumi.StringArrayOutput)
-}
-
 // The Amazon Simple Queue Service queues to publish messages to and the events for which to publish messages.
 func (o NotificationConfigurationOutput) QueueConfigurations() QueueConfigurationArrayOutput {
 	return o.ApplyT(func(v NotificationConfiguration) []QueueConfiguration { return v.QueueConfigurations }).(QueueConfigurationArrayOutput)
 }
 
-// The Amazon Resource Name (ARN) of the Amazon SNS topic.
-func (o NotificationConfigurationOutput) TopicARN() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NotificationConfiguration) *string { return v.TopicARN }).(pulumi.StringPtrOutput)
-}
-
-// <p>The Amazon Resource Name (ARN) that identifies the topic. </p>
-func (o NotificationConfigurationOutput) TopicArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NotificationConfiguration) *string { return v.TopicArn }).(pulumi.StringPtrOutput)
-}
-
 // The topic to which notifications are sent and the events for which notifications are generated.
 func (o NotificationConfigurationOutput) TopicConfigurations() TopicConfigurationArrayOutput {
 	return o.ApplyT(func(v NotificationConfiguration) []TopicConfiguration { return v.TopicConfigurations }).(TopicConfigurationArrayOutput)
-}
-
-// <p>The current state of the topic. A value of “active” means that notifications will be sent to the topic. A value of “inactive” means that notifications will not be sent to the topic.</p>
-func (o NotificationConfigurationOutput) TopicStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NotificationConfiguration) *string { return v.TopicStatus }).(pulumi.StringPtrOutput)
 }
 
 type NotificationConfigurationPtrOutput struct{ *pulumi.OutputState }
@@ -12757,16 +13485,6 @@ func (o NotificationConfigurationPtrOutput) LambdaConfigurations() LambdaConfigu
 	}).(LambdaConfigurationArrayOutput)
 }
 
-// A list of event types that send a notification. Event types can include any of the following types.  *Allowed values*:  +   “autoscaling:EC2_INSTANCE_LAUNCH“   +   “autoscaling:EC2_INSTANCE_LAUNCH_ERROR“   +   “autoscaling:EC2_INSTANCE_TERMINATE“   +   “autoscaling:EC2_INSTANCE_TERMINATE_ERROR“   +   “autoscaling:TEST_NOTIFICATION“
-func (o NotificationConfigurationPtrOutput) NotificationTypes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *NotificationConfiguration) []string {
-		if v == nil {
-			return nil
-		}
-		return v.NotificationTypes
-	}).(pulumi.StringArrayOutput)
-}
-
 // The Amazon Simple Queue Service queues to publish messages to and the events for which to publish messages.
 func (o NotificationConfigurationPtrOutput) QueueConfigurations() QueueConfigurationArrayOutput {
 	return o.ApplyT(func(v *NotificationConfiguration) []QueueConfiguration {
@@ -12775,26 +13493,6 @@ func (o NotificationConfigurationPtrOutput) QueueConfigurations() QueueConfigura
 		}
 		return v.QueueConfigurations
 	}).(QueueConfigurationArrayOutput)
-}
-
-// The Amazon Resource Name (ARN) of the Amazon SNS topic.
-func (o NotificationConfigurationPtrOutput) TopicARN() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NotificationConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TopicARN
-	}).(pulumi.StringPtrOutput)
-}
-
-// <p>The Amazon Resource Name (ARN) that identifies the topic. </p>
-func (o NotificationConfigurationPtrOutput) TopicArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NotificationConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TopicArn
-	}).(pulumi.StringPtrOutput)
 }
 
 // The topic to which notifications are sent and the events for which notifications are generated.
@@ -12807,54 +13505,16 @@ func (o NotificationConfigurationPtrOutput) TopicConfigurations() TopicConfigura
 	}).(TopicConfigurationArrayOutput)
 }
 
-// <p>The current state of the topic. A value of “active” means that notifications will be sent to the topic. A value of “inactive” means that notifications will not be sent to the topic.</p>
-func (o NotificationConfigurationPtrOutput) TopicStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NotificationConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TopicStatus
-	}).(pulumi.StringPtrOutput)
-}
-
-type NotificationConfigurationArrayOutput struct{ *pulumi.OutputState }
-
-func (NotificationConfigurationArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]NotificationConfiguration)(nil)).Elem()
-}
-
-func (o NotificationConfigurationArrayOutput) ToNotificationConfigurationArrayOutput() NotificationConfigurationArrayOutput {
-	return o
-}
-
-func (o NotificationConfigurationArrayOutput) ToNotificationConfigurationArrayOutputWithContext(ctx context.Context) NotificationConfigurationArrayOutput {
-	return o
-}
-
-func (o NotificationConfigurationArrayOutput) Index(i pulumi.IntInput) NotificationConfigurationOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NotificationConfiguration {
-		return vs[0].([]NotificationConfiguration)[vs[1].(int)]
-	}).(NotificationConfigurationOutput)
-}
-
 // Definition of NotificationConfiguration
 type NotificationConfigurationResponse struct {
 	// Enables delivery of events to Amazon EventBridge. Amazon S3 can send events to Amazon EventBridge whenever certain events happen in your bucket, see [Using EventBridge](https://docs.aws.amazon.com/AmazonS3/latest/userguide/EventBridge.html) in the *Amazon S3 User Guide*. Unlike other destinations, delivery of events to EventBridge can be either enabled or disabled for a bucket. If enabled, all events will be sent to EventBridge and you can use EventBridge rules to route events to additional targets. For more information, see [What Is Amazon EventBridge](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-what-is.html) in the *Amazon EventBridge User Guide*
 	EventBridgeConfiguration *EventBridgeConfigurationResponse `pulumi:"eventBridgeConfiguration"`
 	// Describes the LAMlong functions to invoke and the events for which to invoke them.
 	LambdaConfigurations []LambdaConfigurationResponse `pulumi:"lambdaConfigurations"`
-	// A list of event types that send a notification. Event types can include any of the following types.  *Allowed values*:  +   ``autoscaling:EC2_INSTANCE_LAUNCH``   +   ``autoscaling:EC2_INSTANCE_LAUNCH_ERROR``   +   ``autoscaling:EC2_INSTANCE_TERMINATE``   +   ``autoscaling:EC2_INSTANCE_TERMINATE_ERROR``   +   ``autoscaling:TEST_NOTIFICATION``
-	NotificationTypes []string `pulumi:"notificationTypes"`
 	// The Amazon Simple Queue Service queues to publish messages to and the events for which to publish messages.
 	QueueConfigurations []QueueConfigurationResponse `pulumi:"queueConfigurations"`
-	// The Amazon Resource Name (ARN) of the Amazon SNS topic.
-	TopicARN *string `pulumi:"topicARN"`
-	// <p>The Amazon Resource Name (ARN) that identifies the topic. </p>
-	TopicArn *string `pulumi:"topicArn"`
 	// The topic to which notifications are sent and the events for which notifications are generated.
 	TopicConfigurations []TopicConfigurationResponse `pulumi:"topicConfigurations"`
-	// <p>The current state of the topic. A value of “active” means that notifications will be sent to the topic. A value of “inactive” means that notifications will not be sent to the topic.</p>
-	TopicStatus *string `pulumi:"topicStatus"`
 }
 
 // Defaults sets the appropriate defaults for NotificationConfigurationResponse
@@ -12895,34 +13555,14 @@ func (o NotificationConfigurationResponseOutput) LambdaConfigurations() LambdaCo
 	return o.ApplyT(func(v NotificationConfigurationResponse) []LambdaConfigurationResponse { return v.LambdaConfigurations }).(LambdaConfigurationResponseArrayOutput)
 }
 
-// A list of event types that send a notification. Event types can include any of the following types.  *Allowed values*:  +   “autoscaling:EC2_INSTANCE_LAUNCH“   +   “autoscaling:EC2_INSTANCE_LAUNCH_ERROR“   +   “autoscaling:EC2_INSTANCE_TERMINATE“   +   “autoscaling:EC2_INSTANCE_TERMINATE_ERROR“   +   “autoscaling:TEST_NOTIFICATION“
-func (o NotificationConfigurationResponseOutput) NotificationTypes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v NotificationConfigurationResponse) []string { return v.NotificationTypes }).(pulumi.StringArrayOutput)
-}
-
 // The Amazon Simple Queue Service queues to publish messages to and the events for which to publish messages.
 func (o NotificationConfigurationResponseOutput) QueueConfigurations() QueueConfigurationResponseArrayOutput {
 	return o.ApplyT(func(v NotificationConfigurationResponse) []QueueConfigurationResponse { return v.QueueConfigurations }).(QueueConfigurationResponseArrayOutput)
 }
 
-// The Amazon Resource Name (ARN) of the Amazon SNS topic.
-func (o NotificationConfigurationResponseOutput) TopicARN() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NotificationConfigurationResponse) *string { return v.TopicARN }).(pulumi.StringPtrOutput)
-}
-
-// <p>The Amazon Resource Name (ARN) that identifies the topic. </p>
-func (o NotificationConfigurationResponseOutput) TopicArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NotificationConfigurationResponse) *string { return v.TopicArn }).(pulumi.StringPtrOutput)
-}
-
 // The topic to which notifications are sent and the events for which notifications are generated.
 func (o NotificationConfigurationResponseOutput) TopicConfigurations() TopicConfigurationResponseArrayOutput {
 	return o.ApplyT(func(v NotificationConfigurationResponse) []TopicConfigurationResponse { return v.TopicConfigurations }).(TopicConfigurationResponseArrayOutput)
-}
-
-// <p>The current state of the topic. A value of “active” means that notifications will be sent to the topic. A value of “inactive” means that notifications will not be sent to the topic.</p>
-func (o NotificationConfigurationResponseOutput) TopicStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NotificationConfigurationResponse) *string { return v.TopicStatus }).(pulumi.StringPtrOutput)
 }
 
 type NotificationConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
@@ -12969,16 +13609,6 @@ func (o NotificationConfigurationResponsePtrOutput) LambdaConfigurations() Lambd
 	}).(LambdaConfigurationResponseArrayOutput)
 }
 
-// A list of event types that send a notification. Event types can include any of the following types.  *Allowed values*:  +   “autoscaling:EC2_INSTANCE_LAUNCH“   +   “autoscaling:EC2_INSTANCE_LAUNCH_ERROR“   +   “autoscaling:EC2_INSTANCE_TERMINATE“   +   “autoscaling:EC2_INSTANCE_TERMINATE_ERROR“   +   “autoscaling:TEST_NOTIFICATION“
-func (o NotificationConfigurationResponsePtrOutput) NotificationTypes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *NotificationConfigurationResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.NotificationTypes
-	}).(pulumi.StringArrayOutput)
-}
-
 // The Amazon Simple Queue Service queues to publish messages to and the events for which to publish messages.
 func (o NotificationConfigurationResponsePtrOutput) QueueConfigurations() QueueConfigurationResponseArrayOutput {
 	return o.ApplyT(func(v *NotificationConfigurationResponse) []QueueConfigurationResponse {
@@ -12989,26 +13619,6 @@ func (o NotificationConfigurationResponsePtrOutput) QueueConfigurations() QueueC
 	}).(QueueConfigurationResponseArrayOutput)
 }
 
-// The Amazon Resource Name (ARN) of the Amazon SNS topic.
-func (o NotificationConfigurationResponsePtrOutput) TopicARN() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NotificationConfigurationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TopicARN
-	}).(pulumi.StringPtrOutput)
-}
-
-// <p>The Amazon Resource Name (ARN) that identifies the topic. </p>
-func (o NotificationConfigurationResponsePtrOutput) TopicArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NotificationConfigurationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TopicArn
-	}).(pulumi.StringPtrOutput)
-}
-
 // The topic to which notifications are sent and the events for which notifications are generated.
 func (o NotificationConfigurationResponsePtrOutput) TopicConfigurations() TopicConfigurationResponseArrayOutput {
 	return o.ApplyT(func(v *NotificationConfigurationResponse) []TopicConfigurationResponse {
@@ -13017,36 +13627,6 @@ func (o NotificationConfigurationResponsePtrOutput) TopicConfigurations() TopicC
 		}
 		return v.TopicConfigurations
 	}).(TopicConfigurationResponseArrayOutput)
-}
-
-// <p>The current state of the topic. A value of “active” means that notifications will be sent to the topic. A value of “inactive” means that notifications will not be sent to the topic.</p>
-func (o NotificationConfigurationResponsePtrOutput) TopicStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NotificationConfigurationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TopicStatus
-	}).(pulumi.StringPtrOutput)
-}
-
-type NotificationConfigurationResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (NotificationConfigurationResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]NotificationConfigurationResponse)(nil)).Elem()
-}
-
-func (o NotificationConfigurationResponseArrayOutput) ToNotificationConfigurationResponseArrayOutput() NotificationConfigurationResponseArrayOutput {
-	return o
-}
-
-func (o NotificationConfigurationResponseArrayOutput) ToNotificationConfigurationResponseArrayOutputWithContext(ctx context.Context) NotificationConfigurationResponseArrayOutput {
-	return o
-}
-
-func (o NotificationConfigurationResponseArrayOutput) Index(i pulumi.IntInput) NotificationConfigurationResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NotificationConfigurationResponse {
-		return vs[0].([]NotificationConfigurationResponse)[vs[1].(int)]
-	}).(NotificationConfigurationResponseOutput)
 }
 
 // Definition of NotificationFilter
@@ -63552,568 +64132,17 @@ func (o SsmParameterPropertiesPtrOutput) PublicCloudResourceName() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// Definition of SsmParameter
-type SsmParameterPropertiesResponse struct {
-	// Amazon Resource Name (ARN)
-	Arn *string `pulumi:"arn"`
-	// AWS Account ID
-	AwsAccountId *string `pulumi:"awsAccountId"`
-	// AWS Properties
-	AwsProperties *AwsSsmParameterPropertiesResponse `pulumi:"awsProperties"`
-	// AWS Region
-	AwsRegion *string `pulumi:"awsRegion"`
-	// AWS Source Schema
-	AwsSourceSchema *string `pulumi:"awsSourceSchema"`
-	// AWS Tags
-	AwsTags map[string]string `pulumi:"awsTags"`
-	// The status of the last operation.
-	ProvisioningState string `pulumi:"provisioningState"`
-	// Public Cloud Connectors Resource ID
-	PublicCloudConnectorsResourceId *string `pulumi:"publicCloudConnectorsResourceId"`
-	// Public Cloud Resource Name
-	PublicCloudResourceName *string `pulumi:"publicCloudResourceName"`
-}
-
-// Definition of SsmParameter
-type SsmParameterPropertiesResponseOutput struct{ *pulumi.OutputState }
-
-func (SsmParameterPropertiesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SsmParameterPropertiesResponse)(nil)).Elem()
-}
-
-func (o SsmParameterPropertiesResponseOutput) ToSsmParameterPropertiesResponseOutput() SsmParameterPropertiesResponseOutput {
-	return o
-}
-
-func (o SsmParameterPropertiesResponseOutput) ToSsmParameterPropertiesResponseOutputWithContext(ctx context.Context) SsmParameterPropertiesResponseOutput {
-	return o
-}
-
-// Amazon Resource Name (ARN)
-func (o SsmParameterPropertiesResponseOutput) Arn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SsmParameterPropertiesResponse) *string { return v.Arn }).(pulumi.StringPtrOutput)
-}
-
-// AWS Account ID
-func (o SsmParameterPropertiesResponseOutput) AwsAccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SsmParameterPropertiesResponse) *string { return v.AwsAccountId }).(pulumi.StringPtrOutput)
-}
-
-// AWS Properties
-func (o SsmParameterPropertiesResponseOutput) AwsProperties() AwsSsmParameterPropertiesResponsePtrOutput {
-	return o.ApplyT(func(v SsmParameterPropertiesResponse) *AwsSsmParameterPropertiesResponse { return v.AwsProperties }).(AwsSsmParameterPropertiesResponsePtrOutput)
-}
-
-// AWS Region
-func (o SsmParameterPropertiesResponseOutput) AwsRegion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SsmParameterPropertiesResponse) *string { return v.AwsRegion }).(pulumi.StringPtrOutput)
-}
-
-// AWS Source Schema
-func (o SsmParameterPropertiesResponseOutput) AwsSourceSchema() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SsmParameterPropertiesResponse) *string { return v.AwsSourceSchema }).(pulumi.StringPtrOutput)
-}
-
-// AWS Tags
-func (o SsmParameterPropertiesResponseOutput) AwsTags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v SsmParameterPropertiesResponse) map[string]string { return v.AwsTags }).(pulumi.StringMapOutput)
-}
-
-// The status of the last operation.
-func (o SsmParameterPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v SsmParameterPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// Public Cloud Connectors Resource ID
-func (o SsmParameterPropertiesResponseOutput) PublicCloudConnectorsResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SsmParameterPropertiesResponse) *string { return v.PublicCloudConnectorsResourceId }).(pulumi.StringPtrOutput)
-}
-
-// Public Cloud Resource Name
-func (o SsmParameterPropertiesResponseOutput) PublicCloudResourceName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SsmParameterPropertiesResponse) *string { return v.PublicCloudResourceName }).(pulumi.StringPtrOutput)
-}
-
-// Definition of SsmResourceComplianceSummaryItem
-type SsmResourceComplianceSummaryItemProperties struct {
-	// Amazon Resource Name (ARN)
-	Arn *string `pulumi:"arn"`
-	// AWS Account ID
-	AwsAccountId *string `pulumi:"awsAccountId"`
-	// AWS Properties
-	AwsProperties *AwsSsmResourceComplianceSummaryItemProperties `pulumi:"awsProperties"`
-	// AWS Region
-	AwsRegion *string `pulumi:"awsRegion"`
-	// AWS Source Schema
-	AwsSourceSchema *string `pulumi:"awsSourceSchema"`
-	// AWS Tags
-	AwsTags map[string]string `pulumi:"awsTags"`
-	// Public Cloud Connectors Resource ID
-	PublicCloudConnectorsResourceId *string `pulumi:"publicCloudConnectorsResourceId"`
-	// Public Cloud Resource Name
-	PublicCloudResourceName *string `pulumi:"publicCloudResourceName"`
-}
-
-// SsmResourceComplianceSummaryItemPropertiesInput is an input type that accepts SsmResourceComplianceSummaryItemPropertiesArgs and SsmResourceComplianceSummaryItemPropertiesOutput values.
-// You can construct a concrete instance of `SsmResourceComplianceSummaryItemPropertiesInput` via:
-//
-//	SsmResourceComplianceSummaryItemPropertiesArgs{...}
-type SsmResourceComplianceSummaryItemPropertiesInput interface {
-	pulumi.Input
-
-	ToSsmResourceComplianceSummaryItemPropertiesOutput() SsmResourceComplianceSummaryItemPropertiesOutput
-	ToSsmResourceComplianceSummaryItemPropertiesOutputWithContext(context.Context) SsmResourceComplianceSummaryItemPropertiesOutput
-}
-
-// Definition of SsmResourceComplianceSummaryItem
-type SsmResourceComplianceSummaryItemPropertiesArgs struct {
-	// Amazon Resource Name (ARN)
-	Arn pulumi.StringPtrInput `pulumi:"arn"`
-	// AWS Account ID
-	AwsAccountId pulumi.StringPtrInput `pulumi:"awsAccountId"`
-	// AWS Properties
-	AwsProperties AwsSsmResourceComplianceSummaryItemPropertiesPtrInput `pulumi:"awsProperties"`
-	// AWS Region
-	AwsRegion pulumi.StringPtrInput `pulumi:"awsRegion"`
-	// AWS Source Schema
-	AwsSourceSchema pulumi.StringPtrInput `pulumi:"awsSourceSchema"`
-	// AWS Tags
-	AwsTags pulumi.StringMapInput `pulumi:"awsTags"`
-	// Public Cloud Connectors Resource ID
-	PublicCloudConnectorsResourceId pulumi.StringPtrInput `pulumi:"publicCloudConnectorsResourceId"`
-	// Public Cloud Resource Name
-	PublicCloudResourceName pulumi.StringPtrInput `pulumi:"publicCloudResourceName"`
-}
-
-func (SsmResourceComplianceSummaryItemPropertiesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SsmResourceComplianceSummaryItemProperties)(nil)).Elem()
-}
-
-func (i SsmResourceComplianceSummaryItemPropertiesArgs) ToSsmResourceComplianceSummaryItemPropertiesOutput() SsmResourceComplianceSummaryItemPropertiesOutput {
-	return i.ToSsmResourceComplianceSummaryItemPropertiesOutputWithContext(context.Background())
-}
-
-func (i SsmResourceComplianceSummaryItemPropertiesArgs) ToSsmResourceComplianceSummaryItemPropertiesOutputWithContext(ctx context.Context) SsmResourceComplianceSummaryItemPropertiesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SsmResourceComplianceSummaryItemPropertiesOutput)
-}
-
-func (i SsmResourceComplianceSummaryItemPropertiesArgs) ToSsmResourceComplianceSummaryItemPropertiesPtrOutput() SsmResourceComplianceSummaryItemPropertiesPtrOutput {
-	return i.ToSsmResourceComplianceSummaryItemPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (i SsmResourceComplianceSummaryItemPropertiesArgs) ToSsmResourceComplianceSummaryItemPropertiesPtrOutputWithContext(ctx context.Context) SsmResourceComplianceSummaryItemPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SsmResourceComplianceSummaryItemPropertiesOutput).ToSsmResourceComplianceSummaryItemPropertiesPtrOutputWithContext(ctx)
-}
-
-// SsmResourceComplianceSummaryItemPropertiesPtrInput is an input type that accepts SsmResourceComplianceSummaryItemPropertiesArgs, SsmResourceComplianceSummaryItemPropertiesPtr and SsmResourceComplianceSummaryItemPropertiesPtrOutput values.
-// You can construct a concrete instance of `SsmResourceComplianceSummaryItemPropertiesPtrInput` via:
-//
-//	        SsmResourceComplianceSummaryItemPropertiesArgs{...}
-//
-//	or:
-//
-//	        nil
-type SsmResourceComplianceSummaryItemPropertiesPtrInput interface {
-	pulumi.Input
-
-	ToSsmResourceComplianceSummaryItemPropertiesPtrOutput() SsmResourceComplianceSummaryItemPropertiesPtrOutput
-	ToSsmResourceComplianceSummaryItemPropertiesPtrOutputWithContext(context.Context) SsmResourceComplianceSummaryItemPropertiesPtrOutput
-}
-
-type ssmResourceComplianceSummaryItemPropertiesPtrType SsmResourceComplianceSummaryItemPropertiesArgs
-
-func SsmResourceComplianceSummaryItemPropertiesPtr(v *SsmResourceComplianceSummaryItemPropertiesArgs) SsmResourceComplianceSummaryItemPropertiesPtrInput {
-	return (*ssmResourceComplianceSummaryItemPropertiesPtrType)(v)
-}
-
-func (*ssmResourceComplianceSummaryItemPropertiesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SsmResourceComplianceSummaryItemProperties)(nil)).Elem()
-}
-
-func (i *ssmResourceComplianceSummaryItemPropertiesPtrType) ToSsmResourceComplianceSummaryItemPropertiesPtrOutput() SsmResourceComplianceSummaryItemPropertiesPtrOutput {
-	return i.ToSsmResourceComplianceSummaryItemPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (i *ssmResourceComplianceSummaryItemPropertiesPtrType) ToSsmResourceComplianceSummaryItemPropertiesPtrOutputWithContext(ctx context.Context) SsmResourceComplianceSummaryItemPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SsmResourceComplianceSummaryItemPropertiesPtrOutput)
-}
-
-// Definition of SsmResourceComplianceSummaryItem
-type SsmResourceComplianceSummaryItemPropertiesOutput struct{ *pulumi.OutputState }
-
-func (SsmResourceComplianceSummaryItemPropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SsmResourceComplianceSummaryItemProperties)(nil)).Elem()
-}
-
-func (o SsmResourceComplianceSummaryItemPropertiesOutput) ToSsmResourceComplianceSummaryItemPropertiesOutput() SsmResourceComplianceSummaryItemPropertiesOutput {
-	return o
-}
-
-func (o SsmResourceComplianceSummaryItemPropertiesOutput) ToSsmResourceComplianceSummaryItemPropertiesOutputWithContext(ctx context.Context) SsmResourceComplianceSummaryItemPropertiesOutput {
-	return o
-}
-
-func (o SsmResourceComplianceSummaryItemPropertiesOutput) ToSsmResourceComplianceSummaryItemPropertiesPtrOutput() SsmResourceComplianceSummaryItemPropertiesPtrOutput {
-	return o.ToSsmResourceComplianceSummaryItemPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (o SsmResourceComplianceSummaryItemPropertiesOutput) ToSsmResourceComplianceSummaryItemPropertiesPtrOutputWithContext(ctx context.Context) SsmResourceComplianceSummaryItemPropertiesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SsmResourceComplianceSummaryItemProperties) *SsmResourceComplianceSummaryItemProperties {
-		return &v
-	}).(SsmResourceComplianceSummaryItemPropertiesPtrOutput)
-}
-
-// Amazon Resource Name (ARN)
-func (o SsmResourceComplianceSummaryItemPropertiesOutput) Arn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SsmResourceComplianceSummaryItemProperties) *string { return v.Arn }).(pulumi.StringPtrOutput)
-}
-
-// AWS Account ID
-func (o SsmResourceComplianceSummaryItemPropertiesOutput) AwsAccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SsmResourceComplianceSummaryItemProperties) *string { return v.AwsAccountId }).(pulumi.StringPtrOutput)
-}
-
-// AWS Properties
-func (o SsmResourceComplianceSummaryItemPropertiesOutput) AwsProperties() AwsSsmResourceComplianceSummaryItemPropertiesPtrOutput {
-	return o.ApplyT(func(v SsmResourceComplianceSummaryItemProperties) *AwsSsmResourceComplianceSummaryItemProperties {
-		return v.AwsProperties
-	}).(AwsSsmResourceComplianceSummaryItemPropertiesPtrOutput)
-}
-
-// AWS Region
-func (o SsmResourceComplianceSummaryItemPropertiesOutput) AwsRegion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SsmResourceComplianceSummaryItemProperties) *string { return v.AwsRegion }).(pulumi.StringPtrOutput)
-}
-
-// AWS Source Schema
-func (o SsmResourceComplianceSummaryItemPropertiesOutput) AwsSourceSchema() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SsmResourceComplianceSummaryItemProperties) *string { return v.AwsSourceSchema }).(pulumi.StringPtrOutput)
-}
-
-// AWS Tags
-func (o SsmResourceComplianceSummaryItemPropertiesOutput) AwsTags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v SsmResourceComplianceSummaryItemProperties) map[string]string { return v.AwsTags }).(pulumi.StringMapOutput)
-}
-
-// Public Cloud Connectors Resource ID
-func (o SsmResourceComplianceSummaryItemPropertiesOutput) PublicCloudConnectorsResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SsmResourceComplianceSummaryItemProperties) *string { return v.PublicCloudConnectorsResourceId }).(pulumi.StringPtrOutput)
-}
-
-// Public Cloud Resource Name
-func (o SsmResourceComplianceSummaryItemPropertiesOutput) PublicCloudResourceName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SsmResourceComplianceSummaryItemProperties) *string { return v.PublicCloudResourceName }).(pulumi.StringPtrOutput)
-}
-
-type SsmResourceComplianceSummaryItemPropertiesPtrOutput struct{ *pulumi.OutputState }
-
-func (SsmResourceComplianceSummaryItemPropertiesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SsmResourceComplianceSummaryItemProperties)(nil)).Elem()
-}
-
-func (o SsmResourceComplianceSummaryItemPropertiesPtrOutput) ToSsmResourceComplianceSummaryItemPropertiesPtrOutput() SsmResourceComplianceSummaryItemPropertiesPtrOutput {
-	return o
-}
-
-func (o SsmResourceComplianceSummaryItemPropertiesPtrOutput) ToSsmResourceComplianceSummaryItemPropertiesPtrOutputWithContext(ctx context.Context) SsmResourceComplianceSummaryItemPropertiesPtrOutput {
-	return o
-}
-
-func (o SsmResourceComplianceSummaryItemPropertiesPtrOutput) Elem() SsmResourceComplianceSummaryItemPropertiesOutput {
-	return o.ApplyT(func(v *SsmResourceComplianceSummaryItemProperties) SsmResourceComplianceSummaryItemProperties {
-		if v != nil {
-			return *v
-		}
-		var ret SsmResourceComplianceSummaryItemProperties
-		return ret
-	}).(SsmResourceComplianceSummaryItemPropertiesOutput)
-}
-
-// Amazon Resource Name (ARN)
-func (o SsmResourceComplianceSummaryItemPropertiesPtrOutput) Arn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SsmResourceComplianceSummaryItemProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Arn
-	}).(pulumi.StringPtrOutput)
-}
-
-// AWS Account ID
-func (o SsmResourceComplianceSummaryItemPropertiesPtrOutput) AwsAccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SsmResourceComplianceSummaryItemProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AwsAccountId
-	}).(pulumi.StringPtrOutput)
-}
-
-// AWS Properties
-func (o SsmResourceComplianceSummaryItemPropertiesPtrOutput) AwsProperties() AwsSsmResourceComplianceSummaryItemPropertiesPtrOutput {
-	return o.ApplyT(func(v *SsmResourceComplianceSummaryItemProperties) *AwsSsmResourceComplianceSummaryItemProperties {
-		if v == nil {
-			return nil
-		}
-		return v.AwsProperties
-	}).(AwsSsmResourceComplianceSummaryItemPropertiesPtrOutput)
-}
-
-// AWS Region
-func (o SsmResourceComplianceSummaryItemPropertiesPtrOutput) AwsRegion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SsmResourceComplianceSummaryItemProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AwsRegion
-	}).(pulumi.StringPtrOutput)
-}
-
-// AWS Source Schema
-func (o SsmResourceComplianceSummaryItemPropertiesPtrOutput) AwsSourceSchema() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SsmResourceComplianceSummaryItemProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AwsSourceSchema
-	}).(pulumi.StringPtrOutput)
-}
-
-// AWS Tags
-func (o SsmResourceComplianceSummaryItemPropertiesPtrOutput) AwsTags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *SsmResourceComplianceSummaryItemProperties) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.AwsTags
-	}).(pulumi.StringMapOutput)
-}
-
-// Public Cloud Connectors Resource ID
-func (o SsmResourceComplianceSummaryItemPropertiesPtrOutput) PublicCloudConnectorsResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SsmResourceComplianceSummaryItemProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PublicCloudConnectorsResourceId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Public Cloud Resource Name
-func (o SsmResourceComplianceSummaryItemPropertiesPtrOutput) PublicCloudResourceName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SsmResourceComplianceSummaryItemProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PublicCloudResourceName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Definition of SsmResourceComplianceSummaryItem
-type SsmResourceComplianceSummaryItemPropertiesResponse struct {
-	// Amazon Resource Name (ARN)
-	Arn *string `pulumi:"arn"`
-	// AWS Account ID
-	AwsAccountId *string `pulumi:"awsAccountId"`
-	// AWS Properties
-	AwsProperties *AwsSsmResourceComplianceSummaryItemPropertiesResponse `pulumi:"awsProperties"`
-	// AWS Region
-	AwsRegion *string `pulumi:"awsRegion"`
-	// AWS Source Schema
-	AwsSourceSchema *string `pulumi:"awsSourceSchema"`
-	// AWS Tags
-	AwsTags map[string]string `pulumi:"awsTags"`
-	// The status of the last operation.
-	ProvisioningState string `pulumi:"provisioningState"`
-	// Public Cloud Connectors Resource ID
-	PublicCloudConnectorsResourceId *string `pulumi:"publicCloudConnectorsResourceId"`
-	// Public Cloud Resource Name
-	PublicCloudResourceName *string `pulumi:"publicCloudResourceName"`
-}
-
-// Definition of SsmResourceComplianceSummaryItem
-type SsmResourceComplianceSummaryItemPropertiesResponseOutput struct{ *pulumi.OutputState }
-
-func (SsmResourceComplianceSummaryItemPropertiesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SsmResourceComplianceSummaryItemPropertiesResponse)(nil)).Elem()
-}
-
-func (o SsmResourceComplianceSummaryItemPropertiesResponseOutput) ToSsmResourceComplianceSummaryItemPropertiesResponseOutput() SsmResourceComplianceSummaryItemPropertiesResponseOutput {
-	return o
-}
-
-func (o SsmResourceComplianceSummaryItemPropertiesResponseOutput) ToSsmResourceComplianceSummaryItemPropertiesResponseOutputWithContext(ctx context.Context) SsmResourceComplianceSummaryItemPropertiesResponseOutput {
-	return o
-}
-
-// Amazon Resource Name (ARN)
-func (o SsmResourceComplianceSummaryItemPropertiesResponseOutput) Arn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SsmResourceComplianceSummaryItemPropertiesResponse) *string { return v.Arn }).(pulumi.StringPtrOutput)
-}
-
-// AWS Account ID
-func (o SsmResourceComplianceSummaryItemPropertiesResponseOutput) AwsAccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SsmResourceComplianceSummaryItemPropertiesResponse) *string { return v.AwsAccountId }).(pulumi.StringPtrOutput)
-}
-
-// AWS Properties
-func (o SsmResourceComplianceSummaryItemPropertiesResponseOutput) AwsProperties() AwsSsmResourceComplianceSummaryItemPropertiesResponsePtrOutput {
-	return o.ApplyT(func(v SsmResourceComplianceSummaryItemPropertiesResponse) *AwsSsmResourceComplianceSummaryItemPropertiesResponse {
-		return v.AwsProperties
-	}).(AwsSsmResourceComplianceSummaryItemPropertiesResponsePtrOutput)
-}
-
-// AWS Region
-func (o SsmResourceComplianceSummaryItemPropertiesResponseOutput) AwsRegion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SsmResourceComplianceSummaryItemPropertiesResponse) *string { return v.AwsRegion }).(pulumi.StringPtrOutput)
-}
-
-// AWS Source Schema
-func (o SsmResourceComplianceSummaryItemPropertiesResponseOutput) AwsSourceSchema() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SsmResourceComplianceSummaryItemPropertiesResponse) *string { return v.AwsSourceSchema }).(pulumi.StringPtrOutput)
-}
-
-// AWS Tags
-func (o SsmResourceComplianceSummaryItemPropertiesResponseOutput) AwsTags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v SsmResourceComplianceSummaryItemPropertiesResponse) map[string]string { return v.AwsTags }).(pulumi.StringMapOutput)
-}
-
-// The status of the last operation.
-func (o SsmResourceComplianceSummaryItemPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v SsmResourceComplianceSummaryItemPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// Public Cloud Connectors Resource ID
-func (o SsmResourceComplianceSummaryItemPropertiesResponseOutput) PublicCloudConnectorsResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SsmResourceComplianceSummaryItemPropertiesResponse) *string {
-		return v.PublicCloudConnectorsResourceId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Public Cloud Resource Name
-func (o SsmResourceComplianceSummaryItemPropertiesResponseOutput) PublicCloudResourceName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SsmResourceComplianceSummaryItemPropertiesResponse) *string { return v.PublicCloudResourceName }).(pulumi.StringPtrOutput)
-}
-
-// Definition of StackInstances
-type StackInstances struct {
-	// The AWS OrganizationalUnitIds or Accounts for which to create stack instances in the specified Regions.
-	DeploymentTargets *DeploymentTargets `pulumi:"deploymentTargets"`
-	// A list of stack set parameters whose values you want to override in the selected stack instances.
-	ParameterOverrides []Parameter `pulumi:"parameterOverrides"`
-	// The names of one or more Regions where you want to create stack instances using the specified AWS account(s).
-	Regions []string `pulumi:"regions"`
-}
-
-// StackInstancesInput is an input type that accepts StackInstancesArgs and StackInstancesOutput values.
-// You can construct a concrete instance of `StackInstancesInput` via:
-//
-//	StackInstancesArgs{...}
-type StackInstancesInput interface {
-	pulumi.Input
-
-	ToStackInstancesOutput() StackInstancesOutput
-	ToStackInstancesOutputWithContext(context.Context) StackInstancesOutput
-}
-
-// Definition of StackInstances
-type StackInstancesArgs struct {
-	// The AWS OrganizationalUnitIds or Accounts for which to create stack instances in the specified Regions.
-	DeploymentTargets DeploymentTargetsPtrInput `pulumi:"deploymentTargets"`
-	// A list of stack set parameters whose values you want to override in the selected stack instances.
-	ParameterOverrides ParameterArrayInput `pulumi:"parameterOverrides"`
-	// The names of one or more Regions where you want to create stack instances using the specified AWS account(s).
-	Regions pulumi.StringArrayInput `pulumi:"regions"`
-}
-
-func (StackInstancesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*StackInstances)(nil)).Elem()
-}
-
-func (i StackInstancesArgs) ToStackInstancesOutput() StackInstancesOutput {
-	return i.ToStackInstancesOutputWithContext(context.Background())
-}
-
-func (i StackInstancesArgs) ToStackInstancesOutputWithContext(ctx context.Context) StackInstancesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StackInstancesOutput)
-}
-
-// StackInstancesArrayInput is an input type that accepts StackInstancesArray and StackInstancesArrayOutput values.
-// You can construct a concrete instance of `StackInstancesArrayInput` via:
-//
-//	StackInstancesArray{ StackInstancesArgs{...} }
-type StackInstancesArrayInput interface {
-	pulumi.Input
-
-	ToStackInstancesArrayOutput() StackInstancesArrayOutput
-	ToStackInstancesArrayOutputWithContext(context.Context) StackInstancesArrayOutput
-}
-
-type StackInstancesArray []StackInstancesInput
-
-func (StackInstancesArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]StackInstances)(nil)).Elem()
-}
-
-func (i StackInstancesArray) ToStackInstancesArrayOutput() StackInstancesArrayOutput {
-	return i.ToStackInstancesArrayOutputWithContext(context.Background())
-}
-
-func (i StackInstancesArray) ToStackInstancesArrayOutputWithContext(ctx context.Context) StackInstancesArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StackInstancesArrayOutput)
-}
-
-// Definition of StackInstances
-type StackInstancesOutput struct{ *pulumi.OutputState }
-
-func (StackInstancesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*StackInstances)(nil)).Elem()
-}
-
-func (o StackInstancesOutput) ToStackInstancesOutput() StackInstancesOutput {
-	return o
-}
-
-func (o StackInstancesOutput) ToStackInstancesOutputWithContext(ctx context.Context) StackInstancesOutput {
-	return o
-}
-
-// The AWS OrganizationalUnitIds or Accounts for which to create stack instances in the specified Regions.
-func (o StackInstancesOutput) DeploymentTargets() DeploymentTargetsPtrOutput {
-	return o.ApplyT(func(v StackInstances) *DeploymentTargets { return v.DeploymentTargets }).(DeploymentTargetsPtrOutput)
-}
-
-// A list of stack set parameters whose values you want to override in the selected stack instances.
-func (o StackInstancesOutput) ParameterOverrides() ParameterArrayOutput {
-	return o.ApplyT(func(v StackInstances) []Parameter { return v.ParameterOverrides }).(ParameterArrayOutput)
-}
-
-// The names of one or more Regions where you want to create stack instances using the specified AWS account(s).
-func (o StackInstancesOutput) Regions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v StackInstances) []string { return v.Regions }).(pulumi.StringArrayOutput)
-}
-
-type StackInstancesArrayOutput struct{ *pulumi.OutputState }
-
-func (StackInstancesArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]StackInstances)(nil)).Elem()
-}
-
-func (o StackInstancesArrayOutput) ToStackInstancesArrayOutput() StackInstancesArrayOutput {
-	return o
-}
-
-func (o StackInstancesArrayOutput) ToStackInstancesArrayOutputWithContext(ctx context.Context) StackInstancesArrayOutput {
-	return o
-}
-
-func (o StackInstancesArrayOutput) Index(i pulumi.IntInput) StackInstancesOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StackInstances {
-		return vs[0].([]StackInstances)[vs[1].(int)]
-	}).(StackInstancesOutput)
-}
-
 func init() {
+	pulumi.RegisterOutputType(LoggingConfigOutput{})
+	pulumi.RegisterOutputType(LoggingConfigPtrOutput{})
+	pulumi.RegisterOutputType(LoggingConfigArrayOutput{})
+	pulumi.RegisterOutputType(LoggingConfigResponseOutput{})
+	pulumi.RegisterOutputType(LoggingConfigResponsePtrOutput{})
+	pulumi.RegisterOutputType(LoggingConfigResponseArrayOutput{})
+	pulumi.RegisterOutputType(LoggingConfigurationOutput{})
+	pulumi.RegisterOutputType(LoggingConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(LoggingConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(LoggingConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(LoggingFilterModelPropertiesOutput{})
 	pulumi.RegisterOutputType(LoggingFilterModelPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(LoggingFilterModelPropertiesResponseOutput{})
@@ -64303,10 +64332,8 @@ func init() {
 	pulumi.RegisterOutputType(NotebookInstanceStatusEnumValueResponsePtrOutput{})
 	pulumi.RegisterOutputType(NotificationConfigurationOutput{})
 	pulumi.RegisterOutputType(NotificationConfigurationPtrOutput{})
-	pulumi.RegisterOutputType(NotificationConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(NotificationConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(NotificationConfigurationResponsePtrOutput{})
-	pulumi.RegisterOutputType(NotificationConfigurationResponseArrayOutput{})
 	pulumi.RegisterOutputType(NotificationFilterOutput{})
 	pulumi.RegisterOutputType(NotificationFilterPtrOutput{})
 	pulumi.RegisterOutputType(NotificationFilterResponseOutput{})
@@ -65080,10 +65107,4 @@ func init() {
 	pulumi.RegisterOutputType(SsmInstanceInformationPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(SsmParameterPropertiesOutput{})
 	pulumi.RegisterOutputType(SsmParameterPropertiesPtrOutput{})
-	pulumi.RegisterOutputType(SsmParameterPropertiesResponseOutput{})
-	pulumi.RegisterOutputType(SsmResourceComplianceSummaryItemPropertiesOutput{})
-	pulumi.RegisterOutputType(SsmResourceComplianceSummaryItemPropertiesPtrOutput{})
-	pulumi.RegisterOutputType(SsmResourceComplianceSummaryItemPropertiesResponseOutput{})
-	pulumi.RegisterOutputType(StackInstancesOutput{})
-	pulumi.RegisterOutputType(StackInstancesArrayOutput{})
 }

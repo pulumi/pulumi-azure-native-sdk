@@ -110,6 +110,9 @@ func NewView(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:costmanagement/v20230901:View"),
 		},
+		{
+			Type: pulumi.String("azure-native:costmanagement/v20240801:View"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

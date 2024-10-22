@@ -40,9 +40,6 @@ func NewDaxCluster(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if args.Properties != nil {
-		args.Properties = args.Properties.ToDaxClusterPropertiesPtrOutput().ApplyT(func(v *DaxClusterProperties) *DaxClusterProperties { return v.Defaults() }).(DaxClusterPropertiesPtrOutput)
-	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:awsconnector:DaxCluster"),

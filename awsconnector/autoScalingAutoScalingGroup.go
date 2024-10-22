@@ -41,11 +41,6 @@ func NewAutoScalingAutoScalingGroup(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if args.Properties != nil {
-		args.Properties = args.Properties.ToAutoScalingAutoScalingGroupPropertiesPtrOutput().ApplyT(func(v *AutoScalingAutoScalingGroupProperties) *AutoScalingAutoScalingGroupProperties {
-			return v.Defaults()
-		}).(AutoScalingAutoScalingGroupPropertiesPtrOutput)
-	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:awsconnector/v20241201:AutoScalingAutoScalingGroup"),

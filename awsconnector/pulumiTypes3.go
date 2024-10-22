@@ -13,6 +13,567 @@ import (
 
 var _ = utilities.GetEnvOrDefault
 
+// Definition of SsmParameter
+type SsmParameterPropertiesResponse struct {
+	// Amazon Resource Name (ARN)
+	Arn *string `pulumi:"arn"`
+	// AWS Account ID
+	AwsAccountId *string `pulumi:"awsAccountId"`
+	// AWS Properties
+	AwsProperties *AwsSsmParameterPropertiesResponse `pulumi:"awsProperties"`
+	// AWS Region
+	AwsRegion *string `pulumi:"awsRegion"`
+	// AWS Source Schema
+	AwsSourceSchema *string `pulumi:"awsSourceSchema"`
+	// AWS Tags
+	AwsTags map[string]string `pulumi:"awsTags"`
+	// The status of the last operation.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Public Cloud Connectors Resource ID
+	PublicCloudConnectorsResourceId *string `pulumi:"publicCloudConnectorsResourceId"`
+	// Public Cloud Resource Name
+	PublicCloudResourceName *string `pulumi:"publicCloudResourceName"`
+}
+
+// Definition of SsmParameter
+type SsmParameterPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (SsmParameterPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SsmParameterPropertiesResponse)(nil)).Elem()
+}
+
+func (o SsmParameterPropertiesResponseOutput) ToSsmParameterPropertiesResponseOutput() SsmParameterPropertiesResponseOutput {
+	return o
+}
+
+func (o SsmParameterPropertiesResponseOutput) ToSsmParameterPropertiesResponseOutputWithContext(ctx context.Context) SsmParameterPropertiesResponseOutput {
+	return o
+}
+
+// Amazon Resource Name (ARN)
+func (o SsmParameterPropertiesResponseOutput) Arn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsmParameterPropertiesResponse) *string { return v.Arn }).(pulumi.StringPtrOutput)
+}
+
+// AWS Account ID
+func (o SsmParameterPropertiesResponseOutput) AwsAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsmParameterPropertiesResponse) *string { return v.AwsAccountId }).(pulumi.StringPtrOutput)
+}
+
+// AWS Properties
+func (o SsmParameterPropertiesResponseOutput) AwsProperties() AwsSsmParameterPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v SsmParameterPropertiesResponse) *AwsSsmParameterPropertiesResponse { return v.AwsProperties }).(AwsSsmParameterPropertiesResponsePtrOutput)
+}
+
+// AWS Region
+func (o SsmParameterPropertiesResponseOutput) AwsRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsmParameterPropertiesResponse) *string { return v.AwsRegion }).(pulumi.StringPtrOutput)
+}
+
+// AWS Source Schema
+func (o SsmParameterPropertiesResponseOutput) AwsSourceSchema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsmParameterPropertiesResponse) *string { return v.AwsSourceSchema }).(pulumi.StringPtrOutput)
+}
+
+// AWS Tags
+func (o SsmParameterPropertiesResponseOutput) AwsTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SsmParameterPropertiesResponse) map[string]string { return v.AwsTags }).(pulumi.StringMapOutput)
+}
+
+// The status of the last operation.
+func (o SsmParameterPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v SsmParameterPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Public Cloud Connectors Resource ID
+func (o SsmParameterPropertiesResponseOutput) PublicCloudConnectorsResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsmParameterPropertiesResponse) *string { return v.PublicCloudConnectorsResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Public Cloud Resource Name
+func (o SsmParameterPropertiesResponseOutput) PublicCloudResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsmParameterPropertiesResponse) *string { return v.PublicCloudResourceName }).(pulumi.StringPtrOutput)
+}
+
+// Definition of SsmResourceComplianceSummaryItem
+type SsmResourceComplianceSummaryItemProperties struct {
+	// Amazon Resource Name (ARN)
+	Arn *string `pulumi:"arn"`
+	// AWS Account ID
+	AwsAccountId *string `pulumi:"awsAccountId"`
+	// AWS Properties
+	AwsProperties *AwsSsmResourceComplianceSummaryItemProperties `pulumi:"awsProperties"`
+	// AWS Region
+	AwsRegion *string `pulumi:"awsRegion"`
+	// AWS Source Schema
+	AwsSourceSchema *string `pulumi:"awsSourceSchema"`
+	// AWS Tags
+	AwsTags map[string]string `pulumi:"awsTags"`
+	// Public Cloud Connectors Resource ID
+	PublicCloudConnectorsResourceId *string `pulumi:"publicCloudConnectorsResourceId"`
+	// Public Cloud Resource Name
+	PublicCloudResourceName *string `pulumi:"publicCloudResourceName"`
+}
+
+// SsmResourceComplianceSummaryItemPropertiesInput is an input type that accepts SsmResourceComplianceSummaryItemPropertiesArgs and SsmResourceComplianceSummaryItemPropertiesOutput values.
+// You can construct a concrete instance of `SsmResourceComplianceSummaryItemPropertiesInput` via:
+//
+//	SsmResourceComplianceSummaryItemPropertiesArgs{...}
+type SsmResourceComplianceSummaryItemPropertiesInput interface {
+	pulumi.Input
+
+	ToSsmResourceComplianceSummaryItemPropertiesOutput() SsmResourceComplianceSummaryItemPropertiesOutput
+	ToSsmResourceComplianceSummaryItemPropertiesOutputWithContext(context.Context) SsmResourceComplianceSummaryItemPropertiesOutput
+}
+
+// Definition of SsmResourceComplianceSummaryItem
+type SsmResourceComplianceSummaryItemPropertiesArgs struct {
+	// Amazon Resource Name (ARN)
+	Arn pulumi.StringPtrInput `pulumi:"arn"`
+	// AWS Account ID
+	AwsAccountId pulumi.StringPtrInput `pulumi:"awsAccountId"`
+	// AWS Properties
+	AwsProperties AwsSsmResourceComplianceSummaryItemPropertiesPtrInput `pulumi:"awsProperties"`
+	// AWS Region
+	AwsRegion pulumi.StringPtrInput `pulumi:"awsRegion"`
+	// AWS Source Schema
+	AwsSourceSchema pulumi.StringPtrInput `pulumi:"awsSourceSchema"`
+	// AWS Tags
+	AwsTags pulumi.StringMapInput `pulumi:"awsTags"`
+	// Public Cloud Connectors Resource ID
+	PublicCloudConnectorsResourceId pulumi.StringPtrInput `pulumi:"publicCloudConnectorsResourceId"`
+	// Public Cloud Resource Name
+	PublicCloudResourceName pulumi.StringPtrInput `pulumi:"publicCloudResourceName"`
+}
+
+func (SsmResourceComplianceSummaryItemPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SsmResourceComplianceSummaryItemProperties)(nil)).Elem()
+}
+
+func (i SsmResourceComplianceSummaryItemPropertiesArgs) ToSsmResourceComplianceSummaryItemPropertiesOutput() SsmResourceComplianceSummaryItemPropertiesOutput {
+	return i.ToSsmResourceComplianceSummaryItemPropertiesOutputWithContext(context.Background())
+}
+
+func (i SsmResourceComplianceSummaryItemPropertiesArgs) ToSsmResourceComplianceSummaryItemPropertiesOutputWithContext(ctx context.Context) SsmResourceComplianceSummaryItemPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SsmResourceComplianceSummaryItemPropertiesOutput)
+}
+
+func (i SsmResourceComplianceSummaryItemPropertiesArgs) ToSsmResourceComplianceSummaryItemPropertiesPtrOutput() SsmResourceComplianceSummaryItemPropertiesPtrOutput {
+	return i.ToSsmResourceComplianceSummaryItemPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i SsmResourceComplianceSummaryItemPropertiesArgs) ToSsmResourceComplianceSummaryItemPropertiesPtrOutputWithContext(ctx context.Context) SsmResourceComplianceSummaryItemPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SsmResourceComplianceSummaryItemPropertiesOutput).ToSsmResourceComplianceSummaryItemPropertiesPtrOutputWithContext(ctx)
+}
+
+// SsmResourceComplianceSummaryItemPropertiesPtrInput is an input type that accepts SsmResourceComplianceSummaryItemPropertiesArgs, SsmResourceComplianceSummaryItemPropertiesPtr and SsmResourceComplianceSummaryItemPropertiesPtrOutput values.
+// You can construct a concrete instance of `SsmResourceComplianceSummaryItemPropertiesPtrInput` via:
+//
+//	        SsmResourceComplianceSummaryItemPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type SsmResourceComplianceSummaryItemPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToSsmResourceComplianceSummaryItemPropertiesPtrOutput() SsmResourceComplianceSummaryItemPropertiesPtrOutput
+	ToSsmResourceComplianceSummaryItemPropertiesPtrOutputWithContext(context.Context) SsmResourceComplianceSummaryItemPropertiesPtrOutput
+}
+
+type ssmResourceComplianceSummaryItemPropertiesPtrType SsmResourceComplianceSummaryItemPropertiesArgs
+
+func SsmResourceComplianceSummaryItemPropertiesPtr(v *SsmResourceComplianceSummaryItemPropertiesArgs) SsmResourceComplianceSummaryItemPropertiesPtrInput {
+	return (*ssmResourceComplianceSummaryItemPropertiesPtrType)(v)
+}
+
+func (*ssmResourceComplianceSummaryItemPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SsmResourceComplianceSummaryItemProperties)(nil)).Elem()
+}
+
+func (i *ssmResourceComplianceSummaryItemPropertiesPtrType) ToSsmResourceComplianceSummaryItemPropertiesPtrOutput() SsmResourceComplianceSummaryItemPropertiesPtrOutput {
+	return i.ToSsmResourceComplianceSummaryItemPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *ssmResourceComplianceSummaryItemPropertiesPtrType) ToSsmResourceComplianceSummaryItemPropertiesPtrOutputWithContext(ctx context.Context) SsmResourceComplianceSummaryItemPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SsmResourceComplianceSummaryItemPropertiesPtrOutput)
+}
+
+// Definition of SsmResourceComplianceSummaryItem
+type SsmResourceComplianceSummaryItemPropertiesOutput struct{ *pulumi.OutputState }
+
+func (SsmResourceComplianceSummaryItemPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SsmResourceComplianceSummaryItemProperties)(nil)).Elem()
+}
+
+func (o SsmResourceComplianceSummaryItemPropertiesOutput) ToSsmResourceComplianceSummaryItemPropertiesOutput() SsmResourceComplianceSummaryItemPropertiesOutput {
+	return o
+}
+
+func (o SsmResourceComplianceSummaryItemPropertiesOutput) ToSsmResourceComplianceSummaryItemPropertiesOutputWithContext(ctx context.Context) SsmResourceComplianceSummaryItemPropertiesOutput {
+	return o
+}
+
+func (o SsmResourceComplianceSummaryItemPropertiesOutput) ToSsmResourceComplianceSummaryItemPropertiesPtrOutput() SsmResourceComplianceSummaryItemPropertiesPtrOutput {
+	return o.ToSsmResourceComplianceSummaryItemPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o SsmResourceComplianceSummaryItemPropertiesOutput) ToSsmResourceComplianceSummaryItemPropertiesPtrOutputWithContext(ctx context.Context) SsmResourceComplianceSummaryItemPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SsmResourceComplianceSummaryItemProperties) *SsmResourceComplianceSummaryItemProperties {
+		return &v
+	}).(SsmResourceComplianceSummaryItemPropertiesPtrOutput)
+}
+
+// Amazon Resource Name (ARN)
+func (o SsmResourceComplianceSummaryItemPropertiesOutput) Arn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsmResourceComplianceSummaryItemProperties) *string { return v.Arn }).(pulumi.StringPtrOutput)
+}
+
+// AWS Account ID
+func (o SsmResourceComplianceSummaryItemPropertiesOutput) AwsAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsmResourceComplianceSummaryItemProperties) *string { return v.AwsAccountId }).(pulumi.StringPtrOutput)
+}
+
+// AWS Properties
+func (o SsmResourceComplianceSummaryItemPropertiesOutput) AwsProperties() AwsSsmResourceComplianceSummaryItemPropertiesPtrOutput {
+	return o.ApplyT(func(v SsmResourceComplianceSummaryItemProperties) *AwsSsmResourceComplianceSummaryItemProperties {
+		return v.AwsProperties
+	}).(AwsSsmResourceComplianceSummaryItemPropertiesPtrOutput)
+}
+
+// AWS Region
+func (o SsmResourceComplianceSummaryItemPropertiesOutput) AwsRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsmResourceComplianceSummaryItemProperties) *string { return v.AwsRegion }).(pulumi.StringPtrOutput)
+}
+
+// AWS Source Schema
+func (o SsmResourceComplianceSummaryItemPropertiesOutput) AwsSourceSchema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsmResourceComplianceSummaryItemProperties) *string { return v.AwsSourceSchema }).(pulumi.StringPtrOutput)
+}
+
+// AWS Tags
+func (o SsmResourceComplianceSummaryItemPropertiesOutput) AwsTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SsmResourceComplianceSummaryItemProperties) map[string]string { return v.AwsTags }).(pulumi.StringMapOutput)
+}
+
+// Public Cloud Connectors Resource ID
+func (o SsmResourceComplianceSummaryItemPropertiesOutput) PublicCloudConnectorsResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsmResourceComplianceSummaryItemProperties) *string { return v.PublicCloudConnectorsResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Public Cloud Resource Name
+func (o SsmResourceComplianceSummaryItemPropertiesOutput) PublicCloudResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsmResourceComplianceSummaryItemProperties) *string { return v.PublicCloudResourceName }).(pulumi.StringPtrOutput)
+}
+
+type SsmResourceComplianceSummaryItemPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (SsmResourceComplianceSummaryItemPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SsmResourceComplianceSummaryItemProperties)(nil)).Elem()
+}
+
+func (o SsmResourceComplianceSummaryItemPropertiesPtrOutput) ToSsmResourceComplianceSummaryItemPropertiesPtrOutput() SsmResourceComplianceSummaryItemPropertiesPtrOutput {
+	return o
+}
+
+func (o SsmResourceComplianceSummaryItemPropertiesPtrOutput) ToSsmResourceComplianceSummaryItemPropertiesPtrOutputWithContext(ctx context.Context) SsmResourceComplianceSummaryItemPropertiesPtrOutput {
+	return o
+}
+
+func (o SsmResourceComplianceSummaryItemPropertiesPtrOutput) Elem() SsmResourceComplianceSummaryItemPropertiesOutput {
+	return o.ApplyT(func(v *SsmResourceComplianceSummaryItemProperties) SsmResourceComplianceSummaryItemProperties {
+		if v != nil {
+			return *v
+		}
+		var ret SsmResourceComplianceSummaryItemProperties
+		return ret
+	}).(SsmResourceComplianceSummaryItemPropertiesOutput)
+}
+
+// Amazon Resource Name (ARN)
+func (o SsmResourceComplianceSummaryItemPropertiesPtrOutput) Arn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SsmResourceComplianceSummaryItemProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Arn
+	}).(pulumi.StringPtrOutput)
+}
+
+// AWS Account ID
+func (o SsmResourceComplianceSummaryItemPropertiesPtrOutput) AwsAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SsmResourceComplianceSummaryItemProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AwsAccountId
+	}).(pulumi.StringPtrOutput)
+}
+
+// AWS Properties
+func (o SsmResourceComplianceSummaryItemPropertiesPtrOutput) AwsProperties() AwsSsmResourceComplianceSummaryItemPropertiesPtrOutput {
+	return o.ApplyT(func(v *SsmResourceComplianceSummaryItemProperties) *AwsSsmResourceComplianceSummaryItemProperties {
+		if v == nil {
+			return nil
+		}
+		return v.AwsProperties
+	}).(AwsSsmResourceComplianceSummaryItemPropertiesPtrOutput)
+}
+
+// AWS Region
+func (o SsmResourceComplianceSummaryItemPropertiesPtrOutput) AwsRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SsmResourceComplianceSummaryItemProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AwsRegion
+	}).(pulumi.StringPtrOutput)
+}
+
+// AWS Source Schema
+func (o SsmResourceComplianceSummaryItemPropertiesPtrOutput) AwsSourceSchema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SsmResourceComplianceSummaryItemProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AwsSourceSchema
+	}).(pulumi.StringPtrOutput)
+}
+
+// AWS Tags
+func (o SsmResourceComplianceSummaryItemPropertiesPtrOutput) AwsTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SsmResourceComplianceSummaryItemProperties) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.AwsTags
+	}).(pulumi.StringMapOutput)
+}
+
+// Public Cloud Connectors Resource ID
+func (o SsmResourceComplianceSummaryItemPropertiesPtrOutput) PublicCloudConnectorsResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SsmResourceComplianceSummaryItemProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PublicCloudConnectorsResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Public Cloud Resource Name
+func (o SsmResourceComplianceSummaryItemPropertiesPtrOutput) PublicCloudResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SsmResourceComplianceSummaryItemProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PublicCloudResourceName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Definition of SsmResourceComplianceSummaryItem
+type SsmResourceComplianceSummaryItemPropertiesResponse struct {
+	// Amazon Resource Name (ARN)
+	Arn *string `pulumi:"arn"`
+	// AWS Account ID
+	AwsAccountId *string `pulumi:"awsAccountId"`
+	// AWS Properties
+	AwsProperties *AwsSsmResourceComplianceSummaryItemPropertiesResponse `pulumi:"awsProperties"`
+	// AWS Region
+	AwsRegion *string `pulumi:"awsRegion"`
+	// AWS Source Schema
+	AwsSourceSchema *string `pulumi:"awsSourceSchema"`
+	// AWS Tags
+	AwsTags map[string]string `pulumi:"awsTags"`
+	// The status of the last operation.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Public Cloud Connectors Resource ID
+	PublicCloudConnectorsResourceId *string `pulumi:"publicCloudConnectorsResourceId"`
+	// Public Cloud Resource Name
+	PublicCloudResourceName *string `pulumi:"publicCloudResourceName"`
+}
+
+// Definition of SsmResourceComplianceSummaryItem
+type SsmResourceComplianceSummaryItemPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (SsmResourceComplianceSummaryItemPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SsmResourceComplianceSummaryItemPropertiesResponse)(nil)).Elem()
+}
+
+func (o SsmResourceComplianceSummaryItemPropertiesResponseOutput) ToSsmResourceComplianceSummaryItemPropertiesResponseOutput() SsmResourceComplianceSummaryItemPropertiesResponseOutput {
+	return o
+}
+
+func (o SsmResourceComplianceSummaryItemPropertiesResponseOutput) ToSsmResourceComplianceSummaryItemPropertiesResponseOutputWithContext(ctx context.Context) SsmResourceComplianceSummaryItemPropertiesResponseOutput {
+	return o
+}
+
+// Amazon Resource Name (ARN)
+func (o SsmResourceComplianceSummaryItemPropertiesResponseOutput) Arn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsmResourceComplianceSummaryItemPropertiesResponse) *string { return v.Arn }).(pulumi.StringPtrOutput)
+}
+
+// AWS Account ID
+func (o SsmResourceComplianceSummaryItemPropertiesResponseOutput) AwsAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsmResourceComplianceSummaryItemPropertiesResponse) *string { return v.AwsAccountId }).(pulumi.StringPtrOutput)
+}
+
+// AWS Properties
+func (o SsmResourceComplianceSummaryItemPropertiesResponseOutput) AwsProperties() AwsSsmResourceComplianceSummaryItemPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v SsmResourceComplianceSummaryItemPropertiesResponse) *AwsSsmResourceComplianceSummaryItemPropertiesResponse {
+		return v.AwsProperties
+	}).(AwsSsmResourceComplianceSummaryItemPropertiesResponsePtrOutput)
+}
+
+// AWS Region
+func (o SsmResourceComplianceSummaryItemPropertiesResponseOutput) AwsRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsmResourceComplianceSummaryItemPropertiesResponse) *string { return v.AwsRegion }).(pulumi.StringPtrOutput)
+}
+
+// AWS Source Schema
+func (o SsmResourceComplianceSummaryItemPropertiesResponseOutput) AwsSourceSchema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsmResourceComplianceSummaryItemPropertiesResponse) *string { return v.AwsSourceSchema }).(pulumi.StringPtrOutput)
+}
+
+// AWS Tags
+func (o SsmResourceComplianceSummaryItemPropertiesResponseOutput) AwsTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SsmResourceComplianceSummaryItemPropertiesResponse) map[string]string { return v.AwsTags }).(pulumi.StringMapOutput)
+}
+
+// The status of the last operation.
+func (o SsmResourceComplianceSummaryItemPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v SsmResourceComplianceSummaryItemPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Public Cloud Connectors Resource ID
+func (o SsmResourceComplianceSummaryItemPropertiesResponseOutput) PublicCloudConnectorsResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsmResourceComplianceSummaryItemPropertiesResponse) *string {
+		return v.PublicCloudConnectorsResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Public Cloud Resource Name
+func (o SsmResourceComplianceSummaryItemPropertiesResponseOutput) PublicCloudResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsmResourceComplianceSummaryItemPropertiesResponse) *string { return v.PublicCloudResourceName }).(pulumi.StringPtrOutput)
+}
+
+// Definition of StackInstances
+type StackInstances struct {
+	// The AWS OrganizationalUnitIds or Accounts for which to create stack instances in the specified Regions.
+	DeploymentTargets *DeploymentTargets `pulumi:"deploymentTargets"`
+	// A list of stack set parameters whose values you want to override in the selected stack instances.
+	ParameterOverrides []Parameter `pulumi:"parameterOverrides"`
+	// The names of one or more Regions where you want to create stack instances using the specified AWS account(s).
+	Regions []string `pulumi:"regions"`
+}
+
+// StackInstancesInput is an input type that accepts StackInstancesArgs and StackInstancesOutput values.
+// You can construct a concrete instance of `StackInstancesInput` via:
+//
+//	StackInstancesArgs{...}
+type StackInstancesInput interface {
+	pulumi.Input
+
+	ToStackInstancesOutput() StackInstancesOutput
+	ToStackInstancesOutputWithContext(context.Context) StackInstancesOutput
+}
+
+// Definition of StackInstances
+type StackInstancesArgs struct {
+	// The AWS OrganizationalUnitIds or Accounts for which to create stack instances in the specified Regions.
+	DeploymentTargets DeploymentTargetsPtrInput `pulumi:"deploymentTargets"`
+	// A list of stack set parameters whose values you want to override in the selected stack instances.
+	ParameterOverrides ParameterArrayInput `pulumi:"parameterOverrides"`
+	// The names of one or more Regions where you want to create stack instances using the specified AWS account(s).
+	Regions pulumi.StringArrayInput `pulumi:"regions"`
+}
+
+func (StackInstancesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StackInstances)(nil)).Elem()
+}
+
+func (i StackInstancesArgs) ToStackInstancesOutput() StackInstancesOutput {
+	return i.ToStackInstancesOutputWithContext(context.Background())
+}
+
+func (i StackInstancesArgs) ToStackInstancesOutputWithContext(ctx context.Context) StackInstancesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StackInstancesOutput)
+}
+
+// StackInstancesArrayInput is an input type that accepts StackInstancesArray and StackInstancesArrayOutput values.
+// You can construct a concrete instance of `StackInstancesArrayInput` via:
+//
+//	StackInstancesArray{ StackInstancesArgs{...} }
+type StackInstancesArrayInput interface {
+	pulumi.Input
+
+	ToStackInstancesArrayOutput() StackInstancesArrayOutput
+	ToStackInstancesArrayOutputWithContext(context.Context) StackInstancesArrayOutput
+}
+
+type StackInstancesArray []StackInstancesInput
+
+func (StackInstancesArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StackInstances)(nil)).Elem()
+}
+
+func (i StackInstancesArray) ToStackInstancesArrayOutput() StackInstancesArrayOutput {
+	return i.ToStackInstancesArrayOutputWithContext(context.Background())
+}
+
+func (i StackInstancesArray) ToStackInstancesArrayOutputWithContext(ctx context.Context) StackInstancesArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StackInstancesArrayOutput)
+}
+
+// Definition of StackInstances
+type StackInstancesOutput struct{ *pulumi.OutputState }
+
+func (StackInstancesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StackInstances)(nil)).Elem()
+}
+
+func (o StackInstancesOutput) ToStackInstancesOutput() StackInstancesOutput {
+	return o
+}
+
+func (o StackInstancesOutput) ToStackInstancesOutputWithContext(ctx context.Context) StackInstancesOutput {
+	return o
+}
+
+// The AWS OrganizationalUnitIds or Accounts for which to create stack instances in the specified Regions.
+func (o StackInstancesOutput) DeploymentTargets() DeploymentTargetsPtrOutput {
+	return o.ApplyT(func(v StackInstances) *DeploymentTargets { return v.DeploymentTargets }).(DeploymentTargetsPtrOutput)
+}
+
+// A list of stack set parameters whose values you want to override in the selected stack instances.
+func (o StackInstancesOutput) ParameterOverrides() ParameterArrayOutput {
+	return o.ApplyT(func(v StackInstances) []Parameter { return v.ParameterOverrides }).(ParameterArrayOutput)
+}
+
+// The names of one or more Regions where you want to create stack instances using the specified AWS account(s).
+func (o StackInstancesOutput) Regions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v StackInstances) []string { return v.Regions }).(pulumi.StringArrayOutput)
+}
+
+type StackInstancesArrayOutput struct{ *pulumi.OutputState }
+
+func (StackInstancesArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StackInstances)(nil)).Elem()
+}
+
+func (o StackInstancesArrayOutput) ToStackInstancesArrayOutput() StackInstancesArrayOutput {
+	return o
+}
+
+func (o StackInstancesArrayOutput) ToStackInstancesArrayOutputWithContext(ctx context.Context) StackInstancesArrayOutput {
+	return o
+}
+
+func (o StackInstancesArrayOutput) Index(i pulumi.IntInput) StackInstancesOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StackInstances {
+		return vs[0].([]StackInstances)[vs[1].(int)]
+	}).(StackInstancesOutput)
+}
+
 // Definition of StackInstances
 type StackInstancesResponse struct {
 	// The AWS OrganizationalUnitIds or Accounts for which to create stack instances in the specified Regions.
@@ -17335,6 +17896,12 @@ func (o ZoneAwarenessConfigResponsePtrOutput) AvailabilityZoneCount() pulumi.Int
 }
 
 func init() {
+	pulumi.RegisterOutputType(SsmParameterPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(SsmResourceComplianceSummaryItemPropertiesOutput{})
+	pulumi.RegisterOutputType(SsmResourceComplianceSummaryItemPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(SsmResourceComplianceSummaryItemPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(StackInstancesOutput{})
+	pulumi.RegisterOutputType(StackInstancesArrayOutput{})
 	pulumi.RegisterOutputType(StackInstancesResponseOutput{})
 	pulumi.RegisterOutputType(StackInstancesResponseArrayOutput{})
 	pulumi.RegisterOutputType(StateOutput{})
