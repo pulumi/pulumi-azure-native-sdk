@@ -65,6 +65,9 @@ func NewAccessPolicyAssignment(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:cache/v20240401preview:AccessPolicyAssignment"),
 		},
+		{
+			Type: pulumi.String("azure-native:cache/v20241101:AccessPolicyAssignment"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

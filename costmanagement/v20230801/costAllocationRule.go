@@ -47,6 +47,9 @@ func NewCostAllocationRule(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:costmanagement/v20231101:CostAllocationRule"),
 		},
+		{
+			Type: pulumi.String("azure-native:costmanagement/v20240801:CostAllocationRule"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

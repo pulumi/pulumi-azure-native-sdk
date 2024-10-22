@@ -13,6 +13,285 @@ import (
 
 var _ = utilities.GetEnvOrDefault
 
+// Definition of CustomOriginConfig
+type CustomOriginConfigResponse struct {
+	// The HTTP port that CloudFront uses to connect to the origin. Specify the HTTP port that the origin listens on.
+	HttpPort *int `pulumi:"httpPort"`
+	// The HTTPS port that CloudFront uses to connect to the origin. Specify the HTTPS port that the origin listens on.
+	HttpsPort *int `pulumi:"httpsPort"`
+	// Specifies how long, in seconds, CloudFront persists its connection to the origin. The minimum timeout is 1 second, the maximum is 60 seconds, and the default (if you don't specify otherwise) is 5 seconds. For more information, see [Origin Keep-alive Timeout](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesOriginKeepaliveTimeout) in the *Amazon CloudFront Developer Guide*.
+	OriginKeepaliveTimeout *int `pulumi:"originKeepaliveTimeout"`
+	// Specifies the protocol (HTTP or HTTPS) that CloudFront uses to connect to the origin. Valid values are:  +   ``http-only`` – CloudFront always uses HTTP to connect to the origin.  +   ``match-viewer`` – CloudFront connects to the origin using the same protocol that the viewer used to connect to CloudFront.  +   ``https-only`` – CloudFront always uses HTTPS to connect to the origin.
+	OriginProtocolPolicy *string `pulumi:"originProtocolPolicy"`
+	// Specifies how long, in seconds, CloudFront waits for a response from the origin. This is also known as the *origin response timeout*. The minimum timeout is 1 second, the maximum is 60 seconds, and the default (if you don't specify otherwise) is 30 seconds. For more information, see [Origin Response Timeout](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesOriginResponseTimeout) in the *Amazon CloudFront Developer Guide*.
+	OriginReadTimeout *int `pulumi:"originReadTimeout"`
+	// Specifies the minimum SSL/TLS protocol that CloudFront uses when connecting to your origin over HTTPS. Valid values include ``SSLv3``, ``TLSv1``, ``TLSv1.1``, and ``TLSv1.2``. For more information, see [Minimum Origin SSL Protocol](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesOriginSSLProtocols) in the *Amazon CloudFront Developer Guide*.
+	OriginSSLProtocols []string `pulumi:"originSSLProtocols"`
+}
+
+// Defaults sets the appropriate defaults for CustomOriginConfigResponse
+func (val *CustomOriginConfigResponse) Defaults() *CustomOriginConfigResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.HttpPort == nil {
+		httpPort_ := 80
+		tmp.HttpPort = &httpPort_
+	}
+	if tmp.HttpsPort == nil {
+		httpsPort_ := 443
+		tmp.HttpsPort = &httpsPort_
+	}
+	if tmp.OriginKeepaliveTimeout == nil {
+		originKeepaliveTimeout_ := 5
+		tmp.OriginKeepaliveTimeout = &originKeepaliveTimeout_
+	}
+	if tmp.OriginReadTimeout == nil {
+		originReadTimeout_ := 30
+		tmp.OriginReadTimeout = &originReadTimeout_
+	}
+	return &tmp
+}
+
+// Definition of CustomOriginConfig
+type CustomOriginConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (CustomOriginConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomOriginConfigResponse)(nil)).Elem()
+}
+
+func (o CustomOriginConfigResponseOutput) ToCustomOriginConfigResponseOutput() CustomOriginConfigResponseOutput {
+	return o
+}
+
+func (o CustomOriginConfigResponseOutput) ToCustomOriginConfigResponseOutputWithContext(ctx context.Context) CustomOriginConfigResponseOutput {
+	return o
+}
+
+// The HTTP port that CloudFront uses to connect to the origin. Specify the HTTP port that the origin listens on.
+func (o CustomOriginConfigResponseOutput) HttpPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CustomOriginConfigResponse) *int { return v.HttpPort }).(pulumi.IntPtrOutput)
+}
+
+// The HTTPS port that CloudFront uses to connect to the origin. Specify the HTTPS port that the origin listens on.
+func (o CustomOriginConfigResponseOutput) HttpsPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CustomOriginConfigResponse) *int { return v.HttpsPort }).(pulumi.IntPtrOutput)
+}
+
+// Specifies how long, in seconds, CloudFront persists its connection to the origin. The minimum timeout is 1 second, the maximum is 60 seconds, and the default (if you don't specify otherwise) is 5 seconds. For more information, see [Origin Keep-alive Timeout](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesOriginKeepaliveTimeout) in the *Amazon CloudFront Developer Guide*.
+func (o CustomOriginConfigResponseOutput) OriginKeepaliveTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CustomOriginConfigResponse) *int { return v.OriginKeepaliveTimeout }).(pulumi.IntPtrOutput)
+}
+
+// Specifies the protocol (HTTP or HTTPS) that CloudFront uses to connect to the origin. Valid values are:  +   “http-only“ – CloudFront always uses HTTP to connect to the origin.  +   “match-viewer“ – CloudFront connects to the origin using the same protocol that the viewer used to connect to CloudFront.  +   “https-only“ – CloudFront always uses HTTPS to connect to the origin.
+func (o CustomOriginConfigResponseOutput) OriginProtocolPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomOriginConfigResponse) *string { return v.OriginProtocolPolicy }).(pulumi.StringPtrOutput)
+}
+
+// Specifies how long, in seconds, CloudFront waits for a response from the origin. This is also known as the *origin response timeout*. The minimum timeout is 1 second, the maximum is 60 seconds, and the default (if you don't specify otherwise) is 30 seconds. For more information, see [Origin Response Timeout](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesOriginResponseTimeout) in the *Amazon CloudFront Developer Guide*.
+func (o CustomOriginConfigResponseOutput) OriginReadTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CustomOriginConfigResponse) *int { return v.OriginReadTimeout }).(pulumi.IntPtrOutput)
+}
+
+// Specifies the minimum SSL/TLS protocol that CloudFront uses when connecting to your origin over HTTPS. Valid values include “SSLv3“, “TLSv1“, “TLSv1.1“, and “TLSv1.2“. For more information, see [Minimum Origin SSL Protocol](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesOriginSSLProtocols) in the *Amazon CloudFront Developer Guide*.
+func (o CustomOriginConfigResponseOutput) OriginSSLProtocols() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CustomOriginConfigResponse) []string { return v.OriginSSLProtocols }).(pulumi.StringArrayOutput)
+}
+
+type CustomOriginConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CustomOriginConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomOriginConfigResponse)(nil)).Elem()
+}
+
+func (o CustomOriginConfigResponsePtrOutput) ToCustomOriginConfigResponsePtrOutput() CustomOriginConfigResponsePtrOutput {
+	return o
+}
+
+func (o CustomOriginConfigResponsePtrOutput) ToCustomOriginConfigResponsePtrOutputWithContext(ctx context.Context) CustomOriginConfigResponsePtrOutput {
+	return o
+}
+
+func (o CustomOriginConfigResponsePtrOutput) Elem() CustomOriginConfigResponseOutput {
+	return o.ApplyT(func(v *CustomOriginConfigResponse) CustomOriginConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CustomOriginConfigResponse
+		return ret
+	}).(CustomOriginConfigResponseOutput)
+}
+
+// The HTTP port that CloudFront uses to connect to the origin. Specify the HTTP port that the origin listens on.
+func (o CustomOriginConfigResponsePtrOutput) HttpPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CustomOriginConfigResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.HttpPort
+	}).(pulumi.IntPtrOutput)
+}
+
+// The HTTPS port that CloudFront uses to connect to the origin. Specify the HTTPS port that the origin listens on.
+func (o CustomOriginConfigResponsePtrOutput) HttpsPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CustomOriginConfigResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.HttpsPort
+	}).(pulumi.IntPtrOutput)
+}
+
+// Specifies how long, in seconds, CloudFront persists its connection to the origin. The minimum timeout is 1 second, the maximum is 60 seconds, and the default (if you don't specify otherwise) is 5 seconds. For more information, see [Origin Keep-alive Timeout](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesOriginKeepaliveTimeout) in the *Amazon CloudFront Developer Guide*.
+func (o CustomOriginConfigResponsePtrOutput) OriginKeepaliveTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CustomOriginConfigResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.OriginKeepaliveTimeout
+	}).(pulumi.IntPtrOutput)
+}
+
+// Specifies the protocol (HTTP or HTTPS) that CloudFront uses to connect to the origin. Valid values are:  +   “http-only“ – CloudFront always uses HTTP to connect to the origin.  +   “match-viewer“ – CloudFront connects to the origin using the same protocol that the viewer used to connect to CloudFront.  +   “https-only“ – CloudFront always uses HTTPS to connect to the origin.
+func (o CustomOriginConfigResponsePtrOutput) OriginProtocolPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomOriginConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OriginProtocolPolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies how long, in seconds, CloudFront waits for a response from the origin. This is also known as the *origin response timeout*. The minimum timeout is 1 second, the maximum is 60 seconds, and the default (if you don't specify otherwise) is 30 seconds. For more information, see [Origin Response Timeout](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesOriginResponseTimeout) in the *Amazon CloudFront Developer Guide*.
+func (o CustomOriginConfigResponsePtrOutput) OriginReadTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CustomOriginConfigResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.OriginReadTimeout
+	}).(pulumi.IntPtrOutput)
+}
+
+// Specifies the minimum SSL/TLS protocol that CloudFront uses when connecting to your origin over HTTPS. Valid values include “SSLv3“, “TLSv1“, “TLSv1.1“, and “TLSv1.2“. For more information, see [Minimum Origin SSL Protocol](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesOriginSSLProtocols) in the *Amazon CloudFront Developer Guide*.
+func (o CustomOriginConfigResponsePtrOutput) OriginSSLProtocols() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CustomOriginConfigResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.OriginSSLProtocols
+	}).(pulumi.StringArrayOutput)
+}
+
+// Definition of DBClusterRole
+type DBClusterRole struct {
+	// The name of the feature associated with the AWS Identity and Access Management (IAM) role. For the list of supported feature names, see DBEngineVersion in the Amazon RDS API Reference.
+	FeatureName *string `pulumi:"featureName"`
+	// The Amazon Resource Name (ARN) of the IAM role that is associated with the DB cluster.
+	RoleArn *string `pulumi:"roleArn"`
+}
+
+// DBClusterRoleInput is an input type that accepts DBClusterRoleArgs and DBClusterRoleOutput values.
+// You can construct a concrete instance of `DBClusterRoleInput` via:
+//
+//	DBClusterRoleArgs{...}
+type DBClusterRoleInput interface {
+	pulumi.Input
+
+	ToDBClusterRoleOutput() DBClusterRoleOutput
+	ToDBClusterRoleOutputWithContext(context.Context) DBClusterRoleOutput
+}
+
+// Definition of DBClusterRole
+type DBClusterRoleArgs struct {
+	// The name of the feature associated with the AWS Identity and Access Management (IAM) role. For the list of supported feature names, see DBEngineVersion in the Amazon RDS API Reference.
+	FeatureName pulumi.StringPtrInput `pulumi:"featureName"`
+	// The Amazon Resource Name (ARN) of the IAM role that is associated with the DB cluster.
+	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
+}
+
+func (DBClusterRoleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DBClusterRole)(nil)).Elem()
+}
+
+func (i DBClusterRoleArgs) ToDBClusterRoleOutput() DBClusterRoleOutput {
+	return i.ToDBClusterRoleOutputWithContext(context.Background())
+}
+
+func (i DBClusterRoleArgs) ToDBClusterRoleOutputWithContext(ctx context.Context) DBClusterRoleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DBClusterRoleOutput)
+}
+
+// DBClusterRoleArrayInput is an input type that accepts DBClusterRoleArray and DBClusterRoleArrayOutput values.
+// You can construct a concrete instance of `DBClusterRoleArrayInput` via:
+//
+//	DBClusterRoleArray{ DBClusterRoleArgs{...} }
+type DBClusterRoleArrayInput interface {
+	pulumi.Input
+
+	ToDBClusterRoleArrayOutput() DBClusterRoleArrayOutput
+	ToDBClusterRoleArrayOutputWithContext(context.Context) DBClusterRoleArrayOutput
+}
+
+type DBClusterRoleArray []DBClusterRoleInput
+
+func (DBClusterRoleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DBClusterRole)(nil)).Elem()
+}
+
+func (i DBClusterRoleArray) ToDBClusterRoleArrayOutput() DBClusterRoleArrayOutput {
+	return i.ToDBClusterRoleArrayOutputWithContext(context.Background())
+}
+
+func (i DBClusterRoleArray) ToDBClusterRoleArrayOutputWithContext(ctx context.Context) DBClusterRoleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DBClusterRoleArrayOutput)
+}
+
+// Definition of DBClusterRole
+type DBClusterRoleOutput struct{ *pulumi.OutputState }
+
+func (DBClusterRoleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DBClusterRole)(nil)).Elem()
+}
+
+func (o DBClusterRoleOutput) ToDBClusterRoleOutput() DBClusterRoleOutput {
+	return o
+}
+
+func (o DBClusterRoleOutput) ToDBClusterRoleOutputWithContext(ctx context.Context) DBClusterRoleOutput {
+	return o
+}
+
+// The name of the feature associated with the AWS Identity and Access Management (IAM) role. For the list of supported feature names, see DBEngineVersion in the Amazon RDS API Reference.
+func (o DBClusterRoleOutput) FeatureName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DBClusterRole) *string { return v.FeatureName }).(pulumi.StringPtrOutput)
+}
+
+// The Amazon Resource Name (ARN) of the IAM role that is associated with the DB cluster.
+func (o DBClusterRoleOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DBClusterRole) *string { return v.RoleArn }).(pulumi.StringPtrOutput)
+}
+
+type DBClusterRoleArrayOutput struct{ *pulumi.OutputState }
+
+func (DBClusterRoleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DBClusterRole)(nil)).Elem()
+}
+
+func (o DBClusterRoleArrayOutput) ToDBClusterRoleArrayOutput() DBClusterRoleArrayOutput {
+	return o
+}
+
+func (o DBClusterRoleArrayOutput) ToDBClusterRoleArrayOutputWithContext(ctx context.Context) DBClusterRoleArrayOutput {
+	return o
+}
+
+func (o DBClusterRoleArrayOutput) Index(i pulumi.IntInput) DBClusterRoleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DBClusterRole {
+		return vs[0].([]DBClusterRole)[vs[1].(int)]
+	}).(DBClusterRoleOutput)
+}
+
 // Definition of DBClusterRole
 type DBClusterRoleResponse struct {
 	// The name of the feature associated with the AWS Identity and Access Management (IAM) role. For the list of supported feature names, see DBEngineVersion in the Amazon RDS API Reference.
@@ -1633,6 +1912,242 @@ func (o DaxClusterEndpointResponsePtrOutput) Url() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Definition of NotificationConfiguration
+type DaxClusterNotificationConfiguration struct {
+	// <p>The Amazon Resource Name (ARN) that identifies the topic. </p>
+	TopicArn *string `pulumi:"topicArn"`
+	// <p>The current state of the topic. A value of “active” means that notifications will be sent to the topic. A value of “inactive” means that notifications will not be sent to the topic.</p>
+	TopicStatus *string `pulumi:"topicStatus"`
+}
+
+// DaxClusterNotificationConfigurationInput is an input type that accepts DaxClusterNotificationConfigurationArgs and DaxClusterNotificationConfigurationOutput values.
+// You can construct a concrete instance of `DaxClusterNotificationConfigurationInput` via:
+//
+//	DaxClusterNotificationConfigurationArgs{...}
+type DaxClusterNotificationConfigurationInput interface {
+	pulumi.Input
+
+	ToDaxClusterNotificationConfigurationOutput() DaxClusterNotificationConfigurationOutput
+	ToDaxClusterNotificationConfigurationOutputWithContext(context.Context) DaxClusterNotificationConfigurationOutput
+}
+
+// Definition of NotificationConfiguration
+type DaxClusterNotificationConfigurationArgs struct {
+	// <p>The Amazon Resource Name (ARN) that identifies the topic. </p>
+	TopicArn pulumi.StringPtrInput `pulumi:"topicArn"`
+	// <p>The current state of the topic. A value of “active” means that notifications will be sent to the topic. A value of “inactive” means that notifications will not be sent to the topic.</p>
+	TopicStatus pulumi.StringPtrInput `pulumi:"topicStatus"`
+}
+
+func (DaxClusterNotificationConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DaxClusterNotificationConfiguration)(nil)).Elem()
+}
+
+func (i DaxClusterNotificationConfigurationArgs) ToDaxClusterNotificationConfigurationOutput() DaxClusterNotificationConfigurationOutput {
+	return i.ToDaxClusterNotificationConfigurationOutputWithContext(context.Background())
+}
+
+func (i DaxClusterNotificationConfigurationArgs) ToDaxClusterNotificationConfigurationOutputWithContext(ctx context.Context) DaxClusterNotificationConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DaxClusterNotificationConfigurationOutput)
+}
+
+func (i DaxClusterNotificationConfigurationArgs) ToDaxClusterNotificationConfigurationPtrOutput() DaxClusterNotificationConfigurationPtrOutput {
+	return i.ToDaxClusterNotificationConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i DaxClusterNotificationConfigurationArgs) ToDaxClusterNotificationConfigurationPtrOutputWithContext(ctx context.Context) DaxClusterNotificationConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DaxClusterNotificationConfigurationOutput).ToDaxClusterNotificationConfigurationPtrOutputWithContext(ctx)
+}
+
+// DaxClusterNotificationConfigurationPtrInput is an input type that accepts DaxClusterNotificationConfigurationArgs, DaxClusterNotificationConfigurationPtr and DaxClusterNotificationConfigurationPtrOutput values.
+// You can construct a concrete instance of `DaxClusterNotificationConfigurationPtrInput` via:
+//
+//	        DaxClusterNotificationConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type DaxClusterNotificationConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToDaxClusterNotificationConfigurationPtrOutput() DaxClusterNotificationConfigurationPtrOutput
+	ToDaxClusterNotificationConfigurationPtrOutputWithContext(context.Context) DaxClusterNotificationConfigurationPtrOutput
+}
+
+type daxClusterNotificationConfigurationPtrType DaxClusterNotificationConfigurationArgs
+
+func DaxClusterNotificationConfigurationPtr(v *DaxClusterNotificationConfigurationArgs) DaxClusterNotificationConfigurationPtrInput {
+	return (*daxClusterNotificationConfigurationPtrType)(v)
+}
+
+func (*daxClusterNotificationConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DaxClusterNotificationConfiguration)(nil)).Elem()
+}
+
+func (i *daxClusterNotificationConfigurationPtrType) ToDaxClusterNotificationConfigurationPtrOutput() DaxClusterNotificationConfigurationPtrOutput {
+	return i.ToDaxClusterNotificationConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *daxClusterNotificationConfigurationPtrType) ToDaxClusterNotificationConfigurationPtrOutputWithContext(ctx context.Context) DaxClusterNotificationConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DaxClusterNotificationConfigurationPtrOutput)
+}
+
+// Definition of NotificationConfiguration
+type DaxClusterNotificationConfigurationOutput struct{ *pulumi.OutputState }
+
+func (DaxClusterNotificationConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DaxClusterNotificationConfiguration)(nil)).Elem()
+}
+
+func (o DaxClusterNotificationConfigurationOutput) ToDaxClusterNotificationConfigurationOutput() DaxClusterNotificationConfigurationOutput {
+	return o
+}
+
+func (o DaxClusterNotificationConfigurationOutput) ToDaxClusterNotificationConfigurationOutputWithContext(ctx context.Context) DaxClusterNotificationConfigurationOutput {
+	return o
+}
+
+func (o DaxClusterNotificationConfigurationOutput) ToDaxClusterNotificationConfigurationPtrOutput() DaxClusterNotificationConfigurationPtrOutput {
+	return o.ToDaxClusterNotificationConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o DaxClusterNotificationConfigurationOutput) ToDaxClusterNotificationConfigurationPtrOutputWithContext(ctx context.Context) DaxClusterNotificationConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DaxClusterNotificationConfiguration) *DaxClusterNotificationConfiguration {
+		return &v
+	}).(DaxClusterNotificationConfigurationPtrOutput)
+}
+
+// <p>The Amazon Resource Name (ARN) that identifies the topic. </p>
+func (o DaxClusterNotificationConfigurationOutput) TopicArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DaxClusterNotificationConfiguration) *string { return v.TopicArn }).(pulumi.StringPtrOutput)
+}
+
+// <p>The current state of the topic. A value of “active” means that notifications will be sent to the topic. A value of “inactive” means that notifications will not be sent to the topic.</p>
+func (o DaxClusterNotificationConfigurationOutput) TopicStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DaxClusterNotificationConfiguration) *string { return v.TopicStatus }).(pulumi.StringPtrOutput)
+}
+
+type DaxClusterNotificationConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (DaxClusterNotificationConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DaxClusterNotificationConfiguration)(nil)).Elem()
+}
+
+func (o DaxClusterNotificationConfigurationPtrOutput) ToDaxClusterNotificationConfigurationPtrOutput() DaxClusterNotificationConfigurationPtrOutput {
+	return o
+}
+
+func (o DaxClusterNotificationConfigurationPtrOutput) ToDaxClusterNotificationConfigurationPtrOutputWithContext(ctx context.Context) DaxClusterNotificationConfigurationPtrOutput {
+	return o
+}
+
+func (o DaxClusterNotificationConfigurationPtrOutput) Elem() DaxClusterNotificationConfigurationOutput {
+	return o.ApplyT(func(v *DaxClusterNotificationConfiguration) DaxClusterNotificationConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret DaxClusterNotificationConfiguration
+		return ret
+	}).(DaxClusterNotificationConfigurationOutput)
+}
+
+// <p>The Amazon Resource Name (ARN) that identifies the topic. </p>
+func (o DaxClusterNotificationConfigurationPtrOutput) TopicArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DaxClusterNotificationConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TopicArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// <p>The current state of the topic. A value of “active” means that notifications will be sent to the topic. A value of “inactive” means that notifications will not be sent to the topic.</p>
+func (o DaxClusterNotificationConfigurationPtrOutput) TopicStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DaxClusterNotificationConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TopicStatus
+	}).(pulumi.StringPtrOutput)
+}
+
+// Definition of NotificationConfiguration
+type DaxClusterNotificationConfigurationResponse struct {
+	// <p>The Amazon Resource Name (ARN) that identifies the topic. </p>
+	TopicArn *string `pulumi:"topicArn"`
+	// <p>The current state of the topic. A value of “active” means that notifications will be sent to the topic. A value of “inactive” means that notifications will not be sent to the topic.</p>
+	TopicStatus *string `pulumi:"topicStatus"`
+}
+
+// Definition of NotificationConfiguration
+type DaxClusterNotificationConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (DaxClusterNotificationConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DaxClusterNotificationConfigurationResponse)(nil)).Elem()
+}
+
+func (o DaxClusterNotificationConfigurationResponseOutput) ToDaxClusterNotificationConfigurationResponseOutput() DaxClusterNotificationConfigurationResponseOutput {
+	return o
+}
+
+func (o DaxClusterNotificationConfigurationResponseOutput) ToDaxClusterNotificationConfigurationResponseOutputWithContext(ctx context.Context) DaxClusterNotificationConfigurationResponseOutput {
+	return o
+}
+
+// <p>The Amazon Resource Name (ARN) that identifies the topic. </p>
+func (o DaxClusterNotificationConfigurationResponseOutput) TopicArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DaxClusterNotificationConfigurationResponse) *string { return v.TopicArn }).(pulumi.StringPtrOutput)
+}
+
+// <p>The current state of the topic. A value of “active” means that notifications will be sent to the topic. A value of “inactive” means that notifications will not be sent to the topic.</p>
+func (o DaxClusterNotificationConfigurationResponseOutput) TopicStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DaxClusterNotificationConfigurationResponse) *string { return v.TopicStatus }).(pulumi.StringPtrOutput)
+}
+
+type DaxClusterNotificationConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DaxClusterNotificationConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DaxClusterNotificationConfigurationResponse)(nil)).Elem()
+}
+
+func (o DaxClusterNotificationConfigurationResponsePtrOutput) ToDaxClusterNotificationConfigurationResponsePtrOutput() DaxClusterNotificationConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o DaxClusterNotificationConfigurationResponsePtrOutput) ToDaxClusterNotificationConfigurationResponsePtrOutputWithContext(ctx context.Context) DaxClusterNotificationConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o DaxClusterNotificationConfigurationResponsePtrOutput) Elem() DaxClusterNotificationConfigurationResponseOutput {
+	return o.ApplyT(func(v *DaxClusterNotificationConfigurationResponse) DaxClusterNotificationConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DaxClusterNotificationConfigurationResponse
+		return ret
+	}).(DaxClusterNotificationConfigurationResponseOutput)
+}
+
+// <p>The Amazon Resource Name (ARN) that identifies the topic. </p>
+func (o DaxClusterNotificationConfigurationResponsePtrOutput) TopicArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DaxClusterNotificationConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TopicArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// <p>The current state of the topic. A value of “active” means that notifications will be sent to the topic. A value of “inactive” means that notifications will not be sent to the topic.</p>
+func (o DaxClusterNotificationConfigurationResponsePtrOutput) TopicStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DaxClusterNotificationConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TopicStatus
+	}).(pulumi.StringPtrOutput)
+}
+
 // Definition of DaxCluster
 type DaxClusterProperties struct {
 	// Amazon Resource Name (ARN)
@@ -1651,17 +2166,6 @@ type DaxClusterProperties struct {
 	PublicCloudConnectorsResourceId *string `pulumi:"publicCloudConnectorsResourceId"`
 	// Public Cloud Resource Name
 	PublicCloudResourceName *string `pulumi:"publicCloudResourceName"`
-}
-
-// Defaults sets the appropriate defaults for DaxClusterProperties
-func (val *DaxClusterProperties) Defaults() *DaxClusterProperties {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	tmp.AwsProperties = tmp.AwsProperties.Defaults()
-
-	return &tmp
 }
 
 // DaxClusterPropertiesInput is an input type that accepts DaxClusterPropertiesArgs and DaxClusterPropertiesOutput values.
@@ -1695,15 +2199,6 @@ type DaxClusterPropertiesArgs struct {
 	PublicCloudResourceName pulumi.StringPtrInput `pulumi:"publicCloudResourceName"`
 }
 
-// Defaults sets the appropriate defaults for DaxClusterPropertiesArgs
-func (val *DaxClusterPropertiesArgs) Defaults() *DaxClusterPropertiesArgs {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-
-	return &tmp
-}
 func (DaxClusterPropertiesArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*DaxClusterProperties)(nil)).Elem()
 }
@@ -1946,17 +2441,6 @@ type DaxClusterPropertiesResponse struct {
 	PublicCloudConnectorsResourceId *string `pulumi:"publicCloudConnectorsResourceId"`
 	// Public Cloud Resource Name
 	PublicCloudResourceName *string `pulumi:"publicCloudResourceName"`
-}
-
-// Defaults sets the appropriate defaults for DaxClusterPropertiesResponse
-func (val *DaxClusterPropertiesResponse) Defaults() *DaxClusterPropertiesResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	tmp.AwsProperties = tmp.AwsProperties.Defaults()
-
-	return &tmp
 }
 
 // Definition of DaxCluster
@@ -66868,796 +67352,11 @@ func (o LoggingPtrOutput) Prefix() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Definition of LoggingConfig
-type LoggingConfig struct {
-	// Set this property to filter the application logs for your function that Lambda sends to CloudWatch. Lambda only sends application logs at the selected level of detail and lower, where ``TRACE`` is the highest level and ``FATAL`` is the lowest.
-	ApplicationLogLevel *string `pulumi:"applicationLogLevel"`
-	// Property failureFeedbackRoleArn
-	FailureFeedbackRoleArn *string `pulumi:"failureFeedbackRoleArn"`
-	// The format in which Lambda sends your function's application and system logs to CloudWatch. Select between plain text and structured JSON.
-	LogFormat *string `pulumi:"logFormat"`
-	// The name of the Amazon CloudWatch log group the function sends logs to. By default, Lambda functions send logs to a default log group named ``/aws/lambda/<function name>``. To use a different log group, enter an existing log group or enter a new log group name.
-	LogGroup *string `pulumi:"logGroup"`
-	// Property protocol
-	Protocol *string `pulumi:"protocol"`
-	// Property successFeedbackRoleArn
-	SuccessFeedbackRoleArn *string `pulumi:"successFeedbackRoleArn"`
-	// Property successFeedbackSampleRate
-	SuccessFeedbackSampleRate *string `pulumi:"successFeedbackSampleRate"`
-	// Set this property to filter the system logs for your function that Lambda sends to CloudWatch. Lambda only sends system logs at the selected level of detail and lower, where ``DEBUG`` is the highest level and ``WARN`` is the lowest.
-	SystemLogLevel *string `pulumi:"systemLogLevel"`
-}
-
-// LoggingConfigInput is an input type that accepts LoggingConfigArgs and LoggingConfigOutput values.
-// You can construct a concrete instance of `LoggingConfigInput` via:
-//
-//	LoggingConfigArgs{...}
-type LoggingConfigInput interface {
-	pulumi.Input
-
-	ToLoggingConfigOutput() LoggingConfigOutput
-	ToLoggingConfigOutputWithContext(context.Context) LoggingConfigOutput
-}
-
-// Definition of LoggingConfig
-type LoggingConfigArgs struct {
-	// Set this property to filter the application logs for your function that Lambda sends to CloudWatch. Lambda only sends application logs at the selected level of detail and lower, where ``TRACE`` is the highest level and ``FATAL`` is the lowest.
-	ApplicationLogLevel pulumi.StringPtrInput `pulumi:"applicationLogLevel"`
-	// Property failureFeedbackRoleArn
-	FailureFeedbackRoleArn pulumi.StringPtrInput `pulumi:"failureFeedbackRoleArn"`
-	// The format in which Lambda sends your function's application and system logs to CloudWatch. Select between plain text and structured JSON.
-	LogFormat pulumi.StringPtrInput `pulumi:"logFormat"`
-	// The name of the Amazon CloudWatch log group the function sends logs to. By default, Lambda functions send logs to a default log group named ``/aws/lambda/<function name>``. To use a different log group, enter an existing log group or enter a new log group name.
-	LogGroup pulumi.StringPtrInput `pulumi:"logGroup"`
-	// Property protocol
-	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
-	// Property successFeedbackRoleArn
-	SuccessFeedbackRoleArn pulumi.StringPtrInput `pulumi:"successFeedbackRoleArn"`
-	// Property successFeedbackSampleRate
-	SuccessFeedbackSampleRate pulumi.StringPtrInput `pulumi:"successFeedbackSampleRate"`
-	// Set this property to filter the system logs for your function that Lambda sends to CloudWatch. Lambda only sends system logs at the selected level of detail and lower, where ``DEBUG`` is the highest level and ``WARN`` is the lowest.
-	SystemLogLevel pulumi.StringPtrInput `pulumi:"systemLogLevel"`
-}
-
-func (LoggingConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LoggingConfig)(nil)).Elem()
-}
-
-func (i LoggingConfigArgs) ToLoggingConfigOutput() LoggingConfigOutput {
-	return i.ToLoggingConfigOutputWithContext(context.Background())
-}
-
-func (i LoggingConfigArgs) ToLoggingConfigOutputWithContext(ctx context.Context) LoggingConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoggingConfigOutput)
-}
-
-func (i LoggingConfigArgs) ToLoggingConfigPtrOutput() LoggingConfigPtrOutput {
-	return i.ToLoggingConfigPtrOutputWithContext(context.Background())
-}
-
-func (i LoggingConfigArgs) ToLoggingConfigPtrOutputWithContext(ctx context.Context) LoggingConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoggingConfigOutput).ToLoggingConfigPtrOutputWithContext(ctx)
-}
-
-// LoggingConfigPtrInput is an input type that accepts LoggingConfigArgs, LoggingConfigPtr and LoggingConfigPtrOutput values.
-// You can construct a concrete instance of `LoggingConfigPtrInput` via:
-//
-//	        LoggingConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type LoggingConfigPtrInput interface {
-	pulumi.Input
-
-	ToLoggingConfigPtrOutput() LoggingConfigPtrOutput
-	ToLoggingConfigPtrOutputWithContext(context.Context) LoggingConfigPtrOutput
-}
-
-type loggingConfigPtrType LoggingConfigArgs
-
-func LoggingConfigPtr(v *LoggingConfigArgs) LoggingConfigPtrInput {
-	return (*loggingConfigPtrType)(v)
-}
-
-func (*loggingConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**LoggingConfig)(nil)).Elem()
-}
-
-func (i *loggingConfigPtrType) ToLoggingConfigPtrOutput() LoggingConfigPtrOutput {
-	return i.ToLoggingConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *loggingConfigPtrType) ToLoggingConfigPtrOutputWithContext(ctx context.Context) LoggingConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoggingConfigPtrOutput)
-}
-
-// LoggingConfigArrayInput is an input type that accepts LoggingConfigArray and LoggingConfigArrayOutput values.
-// You can construct a concrete instance of `LoggingConfigArrayInput` via:
-//
-//	LoggingConfigArray{ LoggingConfigArgs{...} }
-type LoggingConfigArrayInput interface {
-	pulumi.Input
-
-	ToLoggingConfigArrayOutput() LoggingConfigArrayOutput
-	ToLoggingConfigArrayOutputWithContext(context.Context) LoggingConfigArrayOutput
-}
-
-type LoggingConfigArray []LoggingConfigInput
-
-func (LoggingConfigArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]LoggingConfig)(nil)).Elem()
-}
-
-func (i LoggingConfigArray) ToLoggingConfigArrayOutput() LoggingConfigArrayOutput {
-	return i.ToLoggingConfigArrayOutputWithContext(context.Background())
-}
-
-func (i LoggingConfigArray) ToLoggingConfigArrayOutputWithContext(ctx context.Context) LoggingConfigArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoggingConfigArrayOutput)
-}
-
-// Definition of LoggingConfig
-type LoggingConfigOutput struct{ *pulumi.OutputState }
-
-func (LoggingConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LoggingConfig)(nil)).Elem()
-}
-
-func (o LoggingConfigOutput) ToLoggingConfigOutput() LoggingConfigOutput {
-	return o
-}
-
-func (o LoggingConfigOutput) ToLoggingConfigOutputWithContext(ctx context.Context) LoggingConfigOutput {
-	return o
-}
-
-func (o LoggingConfigOutput) ToLoggingConfigPtrOutput() LoggingConfigPtrOutput {
-	return o.ToLoggingConfigPtrOutputWithContext(context.Background())
-}
-
-func (o LoggingConfigOutput) ToLoggingConfigPtrOutputWithContext(ctx context.Context) LoggingConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoggingConfig) *LoggingConfig {
-		return &v
-	}).(LoggingConfigPtrOutput)
-}
-
-// Set this property to filter the application logs for your function that Lambda sends to CloudWatch. Lambda only sends application logs at the selected level of detail and lower, where “TRACE“ is the highest level and “FATAL“ is the lowest.
-func (o LoggingConfigOutput) ApplicationLogLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LoggingConfig) *string { return v.ApplicationLogLevel }).(pulumi.StringPtrOutput)
-}
-
-// Property failureFeedbackRoleArn
-func (o LoggingConfigOutput) FailureFeedbackRoleArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LoggingConfig) *string { return v.FailureFeedbackRoleArn }).(pulumi.StringPtrOutput)
-}
-
-// The format in which Lambda sends your function's application and system logs to CloudWatch. Select between plain text and structured JSON.
-func (o LoggingConfigOutput) LogFormat() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LoggingConfig) *string { return v.LogFormat }).(pulumi.StringPtrOutput)
-}
-
-// The name of the Amazon CloudWatch log group the function sends logs to. By default, Lambda functions send logs to a default log group named “/aws/lambda/<function name>“. To use a different log group, enter an existing log group or enter a new log group name.
-func (o LoggingConfigOutput) LogGroup() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LoggingConfig) *string { return v.LogGroup }).(pulumi.StringPtrOutput)
-}
-
-// Property protocol
-func (o LoggingConfigOutput) Protocol() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LoggingConfig) *string { return v.Protocol }).(pulumi.StringPtrOutput)
-}
-
-// Property successFeedbackRoleArn
-func (o LoggingConfigOutput) SuccessFeedbackRoleArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LoggingConfig) *string { return v.SuccessFeedbackRoleArn }).(pulumi.StringPtrOutput)
-}
-
-// Property successFeedbackSampleRate
-func (o LoggingConfigOutput) SuccessFeedbackSampleRate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LoggingConfig) *string { return v.SuccessFeedbackSampleRate }).(pulumi.StringPtrOutput)
-}
-
-// Set this property to filter the system logs for your function that Lambda sends to CloudWatch. Lambda only sends system logs at the selected level of detail and lower, where “DEBUG“ is the highest level and “WARN“ is the lowest.
-func (o LoggingConfigOutput) SystemLogLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LoggingConfig) *string { return v.SystemLogLevel }).(pulumi.StringPtrOutput)
-}
-
-type LoggingConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (LoggingConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**LoggingConfig)(nil)).Elem()
-}
-
-func (o LoggingConfigPtrOutput) ToLoggingConfigPtrOutput() LoggingConfigPtrOutput {
-	return o
-}
-
-func (o LoggingConfigPtrOutput) ToLoggingConfigPtrOutputWithContext(ctx context.Context) LoggingConfigPtrOutput {
-	return o
-}
-
-func (o LoggingConfigPtrOutput) Elem() LoggingConfigOutput {
-	return o.ApplyT(func(v *LoggingConfig) LoggingConfig {
-		if v != nil {
-			return *v
-		}
-		var ret LoggingConfig
-		return ret
-	}).(LoggingConfigOutput)
-}
-
-// Set this property to filter the application logs for your function that Lambda sends to CloudWatch. Lambda only sends application logs at the selected level of detail and lower, where “TRACE“ is the highest level and “FATAL“ is the lowest.
-func (o LoggingConfigPtrOutput) ApplicationLogLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LoggingConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ApplicationLogLevel
-	}).(pulumi.StringPtrOutput)
-}
-
-// Property failureFeedbackRoleArn
-func (o LoggingConfigPtrOutput) FailureFeedbackRoleArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LoggingConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.FailureFeedbackRoleArn
-	}).(pulumi.StringPtrOutput)
-}
-
-// The format in which Lambda sends your function's application and system logs to CloudWatch. Select between plain text and structured JSON.
-func (o LoggingConfigPtrOutput) LogFormat() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LoggingConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LogFormat
-	}).(pulumi.StringPtrOutput)
-}
-
-// The name of the Amazon CloudWatch log group the function sends logs to. By default, Lambda functions send logs to a default log group named “/aws/lambda/<function name>“. To use a different log group, enter an existing log group or enter a new log group name.
-func (o LoggingConfigPtrOutput) LogGroup() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LoggingConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LogGroup
-	}).(pulumi.StringPtrOutput)
-}
-
-// Property protocol
-func (o LoggingConfigPtrOutput) Protocol() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LoggingConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Protocol
-	}).(pulumi.StringPtrOutput)
-}
-
-// Property successFeedbackRoleArn
-func (o LoggingConfigPtrOutput) SuccessFeedbackRoleArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LoggingConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SuccessFeedbackRoleArn
-	}).(pulumi.StringPtrOutput)
-}
-
-// Property successFeedbackSampleRate
-func (o LoggingConfigPtrOutput) SuccessFeedbackSampleRate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LoggingConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SuccessFeedbackSampleRate
-	}).(pulumi.StringPtrOutput)
-}
-
-// Set this property to filter the system logs for your function that Lambda sends to CloudWatch. Lambda only sends system logs at the selected level of detail and lower, where “DEBUG“ is the highest level and “WARN“ is the lowest.
-func (o LoggingConfigPtrOutput) SystemLogLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LoggingConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SystemLogLevel
-	}).(pulumi.StringPtrOutput)
-}
-
-type LoggingConfigArrayOutput struct{ *pulumi.OutputState }
-
-func (LoggingConfigArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]LoggingConfig)(nil)).Elem()
-}
-
-func (o LoggingConfigArrayOutput) ToLoggingConfigArrayOutput() LoggingConfigArrayOutput {
-	return o
-}
-
-func (o LoggingConfigArrayOutput) ToLoggingConfigArrayOutputWithContext(ctx context.Context) LoggingConfigArrayOutput {
-	return o
-}
-
-func (o LoggingConfigArrayOutput) Index(i pulumi.IntInput) LoggingConfigOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LoggingConfig {
-		return vs[0].([]LoggingConfig)[vs[1].(int)]
-	}).(LoggingConfigOutput)
-}
-
-// Definition of LoggingConfig
-type LoggingConfigResponse struct {
-	// Set this property to filter the application logs for your function that Lambda sends to CloudWatch. Lambda only sends application logs at the selected level of detail and lower, where ``TRACE`` is the highest level and ``FATAL`` is the lowest.
-	ApplicationLogLevel *string `pulumi:"applicationLogLevel"`
-	// Property failureFeedbackRoleArn
-	FailureFeedbackRoleArn *string `pulumi:"failureFeedbackRoleArn"`
-	// The format in which Lambda sends your function's application and system logs to CloudWatch. Select between plain text and structured JSON.
-	LogFormat *string `pulumi:"logFormat"`
-	// The name of the Amazon CloudWatch log group the function sends logs to. By default, Lambda functions send logs to a default log group named ``/aws/lambda/<function name>``. To use a different log group, enter an existing log group or enter a new log group name.
-	LogGroup *string `pulumi:"logGroup"`
-	// Property protocol
-	Protocol *string `pulumi:"protocol"`
-	// Property successFeedbackRoleArn
-	SuccessFeedbackRoleArn *string `pulumi:"successFeedbackRoleArn"`
-	// Property successFeedbackSampleRate
-	SuccessFeedbackSampleRate *string `pulumi:"successFeedbackSampleRate"`
-	// Set this property to filter the system logs for your function that Lambda sends to CloudWatch. Lambda only sends system logs at the selected level of detail and lower, where ``DEBUG`` is the highest level and ``WARN`` is the lowest.
-	SystemLogLevel *string `pulumi:"systemLogLevel"`
-}
-
-// Definition of LoggingConfig
-type LoggingConfigResponseOutput struct{ *pulumi.OutputState }
-
-func (LoggingConfigResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LoggingConfigResponse)(nil)).Elem()
-}
-
-func (o LoggingConfigResponseOutput) ToLoggingConfigResponseOutput() LoggingConfigResponseOutput {
-	return o
-}
-
-func (o LoggingConfigResponseOutput) ToLoggingConfigResponseOutputWithContext(ctx context.Context) LoggingConfigResponseOutput {
-	return o
-}
-
-// Set this property to filter the application logs for your function that Lambda sends to CloudWatch. Lambda only sends application logs at the selected level of detail and lower, where “TRACE“ is the highest level and “FATAL“ is the lowest.
-func (o LoggingConfigResponseOutput) ApplicationLogLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LoggingConfigResponse) *string { return v.ApplicationLogLevel }).(pulumi.StringPtrOutput)
-}
-
-// Property failureFeedbackRoleArn
-func (o LoggingConfigResponseOutput) FailureFeedbackRoleArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LoggingConfigResponse) *string { return v.FailureFeedbackRoleArn }).(pulumi.StringPtrOutput)
-}
-
-// The format in which Lambda sends your function's application and system logs to CloudWatch. Select between plain text and structured JSON.
-func (o LoggingConfigResponseOutput) LogFormat() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LoggingConfigResponse) *string { return v.LogFormat }).(pulumi.StringPtrOutput)
-}
-
-// The name of the Amazon CloudWatch log group the function sends logs to. By default, Lambda functions send logs to a default log group named “/aws/lambda/<function name>“. To use a different log group, enter an existing log group or enter a new log group name.
-func (o LoggingConfigResponseOutput) LogGroup() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LoggingConfigResponse) *string { return v.LogGroup }).(pulumi.StringPtrOutput)
-}
-
-// Property protocol
-func (o LoggingConfigResponseOutput) Protocol() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LoggingConfigResponse) *string { return v.Protocol }).(pulumi.StringPtrOutput)
-}
-
-// Property successFeedbackRoleArn
-func (o LoggingConfigResponseOutput) SuccessFeedbackRoleArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LoggingConfigResponse) *string { return v.SuccessFeedbackRoleArn }).(pulumi.StringPtrOutput)
-}
-
-// Property successFeedbackSampleRate
-func (o LoggingConfigResponseOutput) SuccessFeedbackSampleRate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LoggingConfigResponse) *string { return v.SuccessFeedbackSampleRate }).(pulumi.StringPtrOutput)
-}
-
-// Set this property to filter the system logs for your function that Lambda sends to CloudWatch. Lambda only sends system logs at the selected level of detail and lower, where “DEBUG“ is the highest level and “WARN“ is the lowest.
-func (o LoggingConfigResponseOutput) SystemLogLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LoggingConfigResponse) *string { return v.SystemLogLevel }).(pulumi.StringPtrOutput)
-}
-
-type LoggingConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (LoggingConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**LoggingConfigResponse)(nil)).Elem()
-}
-
-func (o LoggingConfigResponsePtrOutput) ToLoggingConfigResponsePtrOutput() LoggingConfigResponsePtrOutput {
-	return o
-}
-
-func (o LoggingConfigResponsePtrOutput) ToLoggingConfigResponsePtrOutputWithContext(ctx context.Context) LoggingConfigResponsePtrOutput {
-	return o
-}
-
-func (o LoggingConfigResponsePtrOutput) Elem() LoggingConfigResponseOutput {
-	return o.ApplyT(func(v *LoggingConfigResponse) LoggingConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret LoggingConfigResponse
-		return ret
-	}).(LoggingConfigResponseOutput)
-}
-
-// Set this property to filter the application logs for your function that Lambda sends to CloudWatch. Lambda only sends application logs at the selected level of detail and lower, where “TRACE“ is the highest level and “FATAL“ is the lowest.
-func (o LoggingConfigResponsePtrOutput) ApplicationLogLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LoggingConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ApplicationLogLevel
-	}).(pulumi.StringPtrOutput)
-}
-
-// Property failureFeedbackRoleArn
-func (o LoggingConfigResponsePtrOutput) FailureFeedbackRoleArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LoggingConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.FailureFeedbackRoleArn
-	}).(pulumi.StringPtrOutput)
-}
-
-// The format in which Lambda sends your function's application and system logs to CloudWatch. Select between plain text and structured JSON.
-func (o LoggingConfigResponsePtrOutput) LogFormat() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LoggingConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LogFormat
-	}).(pulumi.StringPtrOutput)
-}
-
-// The name of the Amazon CloudWatch log group the function sends logs to. By default, Lambda functions send logs to a default log group named “/aws/lambda/<function name>“. To use a different log group, enter an existing log group or enter a new log group name.
-func (o LoggingConfigResponsePtrOutput) LogGroup() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LoggingConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LogGroup
-	}).(pulumi.StringPtrOutput)
-}
-
-// Property protocol
-func (o LoggingConfigResponsePtrOutput) Protocol() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LoggingConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Protocol
-	}).(pulumi.StringPtrOutput)
-}
-
-// Property successFeedbackRoleArn
-func (o LoggingConfigResponsePtrOutput) SuccessFeedbackRoleArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LoggingConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SuccessFeedbackRoleArn
-	}).(pulumi.StringPtrOutput)
-}
-
-// Property successFeedbackSampleRate
-func (o LoggingConfigResponsePtrOutput) SuccessFeedbackSampleRate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LoggingConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SuccessFeedbackSampleRate
-	}).(pulumi.StringPtrOutput)
-}
-
-// Set this property to filter the system logs for your function that Lambda sends to CloudWatch. Lambda only sends system logs at the selected level of detail and lower, where “DEBUG“ is the highest level and “WARN“ is the lowest.
-func (o LoggingConfigResponsePtrOutput) SystemLogLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LoggingConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SystemLogLevel
-	}).(pulumi.StringPtrOutput)
-}
-
-type LoggingConfigResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (LoggingConfigResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]LoggingConfigResponse)(nil)).Elem()
-}
-
-func (o LoggingConfigResponseArrayOutput) ToLoggingConfigResponseArrayOutput() LoggingConfigResponseArrayOutput {
-	return o
-}
-
-func (o LoggingConfigResponseArrayOutput) ToLoggingConfigResponseArrayOutputWithContext(ctx context.Context) LoggingConfigResponseArrayOutput {
-	return o
-}
-
-func (o LoggingConfigResponseArrayOutput) Index(i pulumi.IntInput) LoggingConfigResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LoggingConfigResponse {
-		return vs[0].([]LoggingConfigResponse)[vs[1].(int)]
-	}).(LoggingConfigResponseOutput)
-}
-
-// Definition of LoggingConfiguration
-type LoggingConfiguration struct {
-	// The name of the bucket where Amazon S3 should store server access log files. You can store log files in any bucket that you own. By default, logs are stored in the bucket where the ``LoggingConfiguration`` property is defined.
-	DestinationBucketName *string `pulumi:"destinationBucketName"`
-	// A prefix for all log object keys. If you store log files from multiple Amazon S3 buckets in a single bucket, you can use a prefix to distinguish which log files came from which bucket.
-	LogFilePrefix *string `pulumi:"logFilePrefix"`
-	// Amazon S3 key format for log objects. Only one format, either PartitionedPrefix or SimplePrefix, is allowed. Describes the key format for server access log file in the target bucket. You can choose between SimplePrefix and PartitionedPrefix.
-	TargetObjectKeyFormat *TargetObjectKeyFormat `pulumi:"targetObjectKeyFormat"`
-}
-
-// LoggingConfigurationInput is an input type that accepts LoggingConfigurationArgs and LoggingConfigurationOutput values.
-// You can construct a concrete instance of `LoggingConfigurationInput` via:
-//
-//	LoggingConfigurationArgs{...}
-type LoggingConfigurationInput interface {
-	pulumi.Input
-
-	ToLoggingConfigurationOutput() LoggingConfigurationOutput
-	ToLoggingConfigurationOutputWithContext(context.Context) LoggingConfigurationOutput
-}
-
-// Definition of LoggingConfiguration
-type LoggingConfigurationArgs struct {
-	// The name of the bucket where Amazon S3 should store server access log files. You can store log files in any bucket that you own. By default, logs are stored in the bucket where the ``LoggingConfiguration`` property is defined.
-	DestinationBucketName pulumi.StringPtrInput `pulumi:"destinationBucketName"`
-	// A prefix for all log object keys. If you store log files from multiple Amazon S3 buckets in a single bucket, you can use a prefix to distinguish which log files came from which bucket.
-	LogFilePrefix pulumi.StringPtrInput `pulumi:"logFilePrefix"`
-	// Amazon S3 key format for log objects. Only one format, either PartitionedPrefix or SimplePrefix, is allowed. Describes the key format for server access log file in the target bucket. You can choose between SimplePrefix and PartitionedPrefix.
-	TargetObjectKeyFormat TargetObjectKeyFormatPtrInput `pulumi:"targetObjectKeyFormat"`
-}
-
-func (LoggingConfigurationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LoggingConfiguration)(nil)).Elem()
-}
-
-func (i LoggingConfigurationArgs) ToLoggingConfigurationOutput() LoggingConfigurationOutput {
-	return i.ToLoggingConfigurationOutputWithContext(context.Background())
-}
-
-func (i LoggingConfigurationArgs) ToLoggingConfigurationOutputWithContext(ctx context.Context) LoggingConfigurationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoggingConfigurationOutput)
-}
-
-func (i LoggingConfigurationArgs) ToLoggingConfigurationPtrOutput() LoggingConfigurationPtrOutput {
-	return i.ToLoggingConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i LoggingConfigurationArgs) ToLoggingConfigurationPtrOutputWithContext(ctx context.Context) LoggingConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoggingConfigurationOutput).ToLoggingConfigurationPtrOutputWithContext(ctx)
-}
-
-// LoggingConfigurationPtrInput is an input type that accepts LoggingConfigurationArgs, LoggingConfigurationPtr and LoggingConfigurationPtrOutput values.
-// You can construct a concrete instance of `LoggingConfigurationPtrInput` via:
-//
-//	        LoggingConfigurationArgs{...}
-//
-//	or:
-//
-//	        nil
-type LoggingConfigurationPtrInput interface {
-	pulumi.Input
-
-	ToLoggingConfigurationPtrOutput() LoggingConfigurationPtrOutput
-	ToLoggingConfigurationPtrOutputWithContext(context.Context) LoggingConfigurationPtrOutput
-}
-
-type loggingConfigurationPtrType LoggingConfigurationArgs
-
-func LoggingConfigurationPtr(v *LoggingConfigurationArgs) LoggingConfigurationPtrInput {
-	return (*loggingConfigurationPtrType)(v)
-}
-
-func (*loggingConfigurationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**LoggingConfiguration)(nil)).Elem()
-}
-
-func (i *loggingConfigurationPtrType) ToLoggingConfigurationPtrOutput() LoggingConfigurationPtrOutput {
-	return i.ToLoggingConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i *loggingConfigurationPtrType) ToLoggingConfigurationPtrOutputWithContext(ctx context.Context) LoggingConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoggingConfigurationPtrOutput)
-}
-
-// Definition of LoggingConfiguration
-type LoggingConfigurationOutput struct{ *pulumi.OutputState }
-
-func (LoggingConfigurationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LoggingConfiguration)(nil)).Elem()
-}
-
-func (o LoggingConfigurationOutput) ToLoggingConfigurationOutput() LoggingConfigurationOutput {
-	return o
-}
-
-func (o LoggingConfigurationOutput) ToLoggingConfigurationOutputWithContext(ctx context.Context) LoggingConfigurationOutput {
-	return o
-}
-
-func (o LoggingConfigurationOutput) ToLoggingConfigurationPtrOutput() LoggingConfigurationPtrOutput {
-	return o.ToLoggingConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (o LoggingConfigurationOutput) ToLoggingConfigurationPtrOutputWithContext(ctx context.Context) LoggingConfigurationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoggingConfiguration) *LoggingConfiguration {
-		return &v
-	}).(LoggingConfigurationPtrOutput)
-}
-
-// The name of the bucket where Amazon S3 should store server access log files. You can store log files in any bucket that you own. By default, logs are stored in the bucket where the “LoggingConfiguration“ property is defined.
-func (o LoggingConfigurationOutput) DestinationBucketName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LoggingConfiguration) *string { return v.DestinationBucketName }).(pulumi.StringPtrOutput)
-}
-
-// A prefix for all log object keys. If you store log files from multiple Amazon S3 buckets in a single bucket, you can use a prefix to distinguish which log files came from which bucket.
-func (o LoggingConfigurationOutput) LogFilePrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LoggingConfiguration) *string { return v.LogFilePrefix }).(pulumi.StringPtrOutput)
-}
-
-// Amazon S3 key format for log objects. Only one format, either PartitionedPrefix or SimplePrefix, is allowed. Describes the key format for server access log file in the target bucket. You can choose between SimplePrefix and PartitionedPrefix.
-func (o LoggingConfigurationOutput) TargetObjectKeyFormat() TargetObjectKeyFormatPtrOutput {
-	return o.ApplyT(func(v LoggingConfiguration) *TargetObjectKeyFormat { return v.TargetObjectKeyFormat }).(TargetObjectKeyFormatPtrOutput)
-}
-
-type LoggingConfigurationPtrOutput struct{ *pulumi.OutputState }
-
-func (LoggingConfigurationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**LoggingConfiguration)(nil)).Elem()
-}
-
-func (o LoggingConfigurationPtrOutput) ToLoggingConfigurationPtrOutput() LoggingConfigurationPtrOutput {
-	return o
-}
-
-func (o LoggingConfigurationPtrOutput) ToLoggingConfigurationPtrOutputWithContext(ctx context.Context) LoggingConfigurationPtrOutput {
-	return o
-}
-
-func (o LoggingConfigurationPtrOutput) Elem() LoggingConfigurationOutput {
-	return o.ApplyT(func(v *LoggingConfiguration) LoggingConfiguration {
-		if v != nil {
-			return *v
-		}
-		var ret LoggingConfiguration
-		return ret
-	}).(LoggingConfigurationOutput)
-}
-
-// The name of the bucket where Amazon S3 should store server access log files. You can store log files in any bucket that you own. By default, logs are stored in the bucket where the “LoggingConfiguration“ property is defined.
-func (o LoggingConfigurationPtrOutput) DestinationBucketName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LoggingConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DestinationBucketName
-	}).(pulumi.StringPtrOutput)
-}
-
-// A prefix for all log object keys. If you store log files from multiple Amazon S3 buckets in a single bucket, you can use a prefix to distinguish which log files came from which bucket.
-func (o LoggingConfigurationPtrOutput) LogFilePrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LoggingConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LogFilePrefix
-	}).(pulumi.StringPtrOutput)
-}
-
-// Amazon S3 key format for log objects. Only one format, either PartitionedPrefix or SimplePrefix, is allowed. Describes the key format for server access log file in the target bucket. You can choose between SimplePrefix and PartitionedPrefix.
-func (o LoggingConfigurationPtrOutput) TargetObjectKeyFormat() TargetObjectKeyFormatPtrOutput {
-	return o.ApplyT(func(v *LoggingConfiguration) *TargetObjectKeyFormat {
-		if v == nil {
-			return nil
-		}
-		return v.TargetObjectKeyFormat
-	}).(TargetObjectKeyFormatPtrOutput)
-}
-
-// Definition of LoggingConfiguration
-type LoggingConfigurationResponse struct {
-	// The name of the bucket where Amazon S3 should store server access log files. You can store log files in any bucket that you own. By default, logs are stored in the bucket where the ``LoggingConfiguration`` property is defined.
-	DestinationBucketName *string `pulumi:"destinationBucketName"`
-	// A prefix for all log object keys. If you store log files from multiple Amazon S3 buckets in a single bucket, you can use a prefix to distinguish which log files came from which bucket.
-	LogFilePrefix *string `pulumi:"logFilePrefix"`
-	// Amazon S3 key format for log objects. Only one format, either PartitionedPrefix or SimplePrefix, is allowed. Describes the key format for server access log file in the target bucket. You can choose between SimplePrefix and PartitionedPrefix.
-	TargetObjectKeyFormat *TargetObjectKeyFormatResponse `pulumi:"targetObjectKeyFormat"`
-}
-
-// Definition of LoggingConfiguration
-type LoggingConfigurationResponseOutput struct{ *pulumi.OutputState }
-
-func (LoggingConfigurationResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LoggingConfigurationResponse)(nil)).Elem()
-}
-
-func (o LoggingConfigurationResponseOutput) ToLoggingConfigurationResponseOutput() LoggingConfigurationResponseOutput {
-	return o
-}
-
-func (o LoggingConfigurationResponseOutput) ToLoggingConfigurationResponseOutputWithContext(ctx context.Context) LoggingConfigurationResponseOutput {
-	return o
-}
-
-// The name of the bucket where Amazon S3 should store server access log files. You can store log files in any bucket that you own. By default, logs are stored in the bucket where the “LoggingConfiguration“ property is defined.
-func (o LoggingConfigurationResponseOutput) DestinationBucketName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LoggingConfigurationResponse) *string { return v.DestinationBucketName }).(pulumi.StringPtrOutput)
-}
-
-// A prefix for all log object keys. If you store log files from multiple Amazon S3 buckets in a single bucket, you can use a prefix to distinguish which log files came from which bucket.
-func (o LoggingConfigurationResponseOutput) LogFilePrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LoggingConfigurationResponse) *string { return v.LogFilePrefix }).(pulumi.StringPtrOutput)
-}
-
-// Amazon S3 key format for log objects. Only one format, either PartitionedPrefix or SimplePrefix, is allowed. Describes the key format for server access log file in the target bucket. You can choose between SimplePrefix and PartitionedPrefix.
-func (o LoggingConfigurationResponseOutput) TargetObjectKeyFormat() TargetObjectKeyFormatResponsePtrOutput {
-	return o.ApplyT(func(v LoggingConfigurationResponse) *TargetObjectKeyFormatResponse { return v.TargetObjectKeyFormat }).(TargetObjectKeyFormatResponsePtrOutput)
-}
-
-type LoggingConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (LoggingConfigurationResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**LoggingConfigurationResponse)(nil)).Elem()
-}
-
-func (o LoggingConfigurationResponsePtrOutput) ToLoggingConfigurationResponsePtrOutput() LoggingConfigurationResponsePtrOutput {
-	return o
-}
-
-func (o LoggingConfigurationResponsePtrOutput) ToLoggingConfigurationResponsePtrOutputWithContext(ctx context.Context) LoggingConfigurationResponsePtrOutput {
-	return o
-}
-
-func (o LoggingConfigurationResponsePtrOutput) Elem() LoggingConfigurationResponseOutput {
-	return o.ApplyT(func(v *LoggingConfigurationResponse) LoggingConfigurationResponse {
-		if v != nil {
-			return *v
-		}
-		var ret LoggingConfigurationResponse
-		return ret
-	}).(LoggingConfigurationResponseOutput)
-}
-
-// The name of the bucket where Amazon S3 should store server access log files. You can store log files in any bucket that you own. By default, logs are stored in the bucket where the “LoggingConfiguration“ property is defined.
-func (o LoggingConfigurationResponsePtrOutput) DestinationBucketName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LoggingConfigurationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DestinationBucketName
-	}).(pulumi.StringPtrOutput)
-}
-
-// A prefix for all log object keys. If you store log files from multiple Amazon S3 buckets in a single bucket, you can use a prefix to distinguish which log files came from which bucket.
-func (o LoggingConfigurationResponsePtrOutput) LogFilePrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LoggingConfigurationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LogFilePrefix
-	}).(pulumi.StringPtrOutput)
-}
-
-// Amazon S3 key format for log objects. Only one format, either PartitionedPrefix or SimplePrefix, is allowed. Describes the key format for server access log file in the target bucket. You can choose between SimplePrefix and PartitionedPrefix.
-func (o LoggingConfigurationResponsePtrOutput) TargetObjectKeyFormat() TargetObjectKeyFormatResponsePtrOutput {
-	return o.ApplyT(func(v *LoggingConfigurationResponse) *TargetObjectKeyFormatResponse {
-		if v == nil {
-			return nil
-		}
-		return v.TargetObjectKeyFormat
-	}).(TargetObjectKeyFormatResponsePtrOutput)
-}
-
 func init() {
+	pulumi.RegisterOutputType(CustomOriginConfigResponseOutput{})
+	pulumi.RegisterOutputType(CustomOriginConfigResponsePtrOutput{})
+	pulumi.RegisterOutputType(DBClusterRoleOutput{})
+	pulumi.RegisterOutputType(DBClusterRoleArrayOutput{})
 	pulumi.RegisterOutputType(DBClusterRoleResponseOutput{})
 	pulumi.RegisterOutputType(DBClusterRoleResponseArrayOutput{})
 	pulumi.RegisterOutputType(DBInstanceRoleOutput{})
@@ -67687,6 +67386,10 @@ func init() {
 	pulumi.RegisterOutputType(DaxClusterEndpointPtrOutput{})
 	pulumi.RegisterOutputType(DaxClusterEndpointResponseOutput{})
 	pulumi.RegisterOutputType(DaxClusterEndpointResponsePtrOutput{})
+	pulumi.RegisterOutputType(DaxClusterNotificationConfigurationOutput{})
+	pulumi.RegisterOutputType(DaxClusterNotificationConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(DaxClusterNotificationConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(DaxClusterNotificationConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(DaxClusterPropertiesOutput{})
 	pulumi.RegisterOutputType(DaxClusterPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(DaxClusterPropertiesResponseOutput{})
@@ -68596,14 +68299,4 @@ func init() {
 	pulumi.RegisterOutputType(LogSetupResponseArrayOutput{})
 	pulumi.RegisterOutputType(LoggingOutput{})
 	pulumi.RegisterOutputType(LoggingPtrOutput{})
-	pulumi.RegisterOutputType(LoggingConfigOutput{})
-	pulumi.RegisterOutputType(LoggingConfigPtrOutput{})
-	pulumi.RegisterOutputType(LoggingConfigArrayOutput{})
-	pulumi.RegisterOutputType(LoggingConfigResponseOutput{})
-	pulumi.RegisterOutputType(LoggingConfigResponsePtrOutput{})
-	pulumi.RegisterOutputType(LoggingConfigResponseArrayOutput{})
-	pulumi.RegisterOutputType(LoggingConfigurationOutput{})
-	pulumi.RegisterOutputType(LoggingConfigurationPtrOutput{})
-	pulumi.RegisterOutputType(LoggingConfigurationResponseOutput{})
-	pulumi.RegisterOutputType(LoggingConfigurationResponsePtrOutput{})
 }
