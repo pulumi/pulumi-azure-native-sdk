@@ -10943,6 +10943,7 @@ type VMAttributes struct {
 	// If localStorageSupport is "Excluded", this VMAttribute can not be used.
 	LocalStorageInGiB *VMAttributeMinMaxDouble `pulumi:"localStorageInGiB"`
 	// Specifies whether the VMSize supporting local storage should be used to build Fleet or not.
+	// Included - Default if not specified as most Azure VMs support local storage.
 	LocalStorageSupport *string `pulumi:"localStorageSupport"`
 	// The range of memory specified from Min to Max. Must be specified if VMAttributes are specified, either Min or Max is required if specified.
 	MemoryInGiB VMAttributeMinMaxDouble `pulumi:"memoryInGiB"`
@@ -11009,6 +11010,7 @@ type VMAttributesArgs struct {
 	// If localStorageSupport is "Excluded", this VMAttribute can not be used.
 	LocalStorageInGiB VMAttributeMinMaxDoublePtrInput `pulumi:"localStorageInGiB"`
 	// Specifies whether the VMSize supporting local storage should be used to build Fleet or not.
+	// Included - Default if not specified as most Azure VMs support local storage.
 	LocalStorageSupport pulumi.StringPtrInput `pulumi:"localStorageSupport"`
 	// The range of memory specified from Min to Max. Must be specified if VMAttributes are specified, either Min or Max is required if specified.
 	MemoryInGiB VMAttributeMinMaxDoubleInput `pulumi:"memoryInGiB"`
@@ -11173,6 +11175,7 @@ func (o VMAttributesOutput) LocalStorageInGiB() VMAttributeMinMaxDoublePtrOutput
 }
 
 // Specifies whether the VMSize supporting local storage should be used to build Fleet or not.
+// Included - Default if not specified as most Azure VMs support local storage.
 func (o VMAttributesOutput) LocalStorageSupport() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VMAttributes) *string { return v.LocalStorageSupport }).(pulumi.StringPtrOutput)
 }
@@ -11363,6 +11366,7 @@ func (o VMAttributesPtrOutput) LocalStorageInGiB() VMAttributeMinMaxDoublePtrOut
 }
 
 // Specifies whether the VMSize supporting local storage should be used to build Fleet or not.
+// Included - Default if not specified as most Azure VMs support local storage.
 func (o VMAttributesPtrOutput) LocalStorageSupport() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VMAttributes) *string {
 		if v == nil {
@@ -11488,6 +11492,7 @@ type VMAttributesResponse struct {
 	// If localStorageSupport is "Excluded", this VMAttribute can not be used.
 	LocalStorageInGiB *VMAttributeMinMaxDoubleResponse `pulumi:"localStorageInGiB"`
 	// Specifies whether the VMSize supporting local storage should be used to build Fleet or not.
+	// Included - Default if not specified as most Azure VMs support local storage.
 	LocalStorageSupport *string `pulumi:"localStorageSupport"`
 	// The range of memory specified from Min to Max. Must be specified if VMAttributes are specified, either Min or Max is required if specified.
 	MemoryInGiB VMAttributeMinMaxDoubleResponse `pulumi:"memoryInGiB"`
@@ -11589,6 +11594,7 @@ func (o VMAttributesResponseOutput) LocalStorageInGiB() VMAttributeMinMaxDoubleR
 }
 
 // Specifies whether the VMSize supporting local storage should be used to build Fleet or not.
+// Included - Default if not specified as most Azure VMs support local storage.
 func (o VMAttributesResponseOutput) LocalStorageSupport() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VMAttributesResponse) *string { return v.LocalStorageSupport }).(pulumi.StringPtrOutput)
 }
@@ -11779,6 +11785,7 @@ func (o VMAttributesResponsePtrOutput) LocalStorageInGiB() VMAttributeMinMaxDoub
 }
 
 // Specifies whether the VMSize supporting local storage should be used to build Fleet or not.
+// Included - Default if not specified as most Azure VMs support local storage.
 func (o VMAttributesResponsePtrOutput) LocalStorageSupport() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VMAttributesResponse) *string {
 		if v == nil {

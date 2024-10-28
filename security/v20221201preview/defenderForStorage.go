@@ -38,6 +38,9 @@ func NewDefenderForStorage(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:security:DefenderForStorage"),
 		},
+		{
+			Type: pulumi.String("azure-native:security/v20241001preview:DefenderForStorage"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

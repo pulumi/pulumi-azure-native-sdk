@@ -3823,8 +3823,8 @@ type ReplicationObject struct {
 	RemotePath *RemotePath `pulumi:"remotePath"`
 	// The remote region for the other end of the Volume Replication.
 	RemoteVolumeRegion *string `pulumi:"remoteVolumeRegion"`
-	// The resource ID of the remote volume.
-	RemoteVolumeResourceId string `pulumi:"remoteVolumeResourceId"`
+	// The resource ID of the remote volume. Required for cross region and cross zone replication
+	RemoteVolumeResourceId *string `pulumi:"remoteVolumeResourceId"`
 	// Schedule
 	ReplicationSchedule *string `pulumi:"replicationSchedule"`
 }
@@ -3848,8 +3848,8 @@ type ReplicationObjectArgs struct {
 	RemotePath RemotePathPtrInput `pulumi:"remotePath"`
 	// The remote region for the other end of the Volume Replication.
 	RemoteVolumeRegion pulumi.StringPtrInput `pulumi:"remoteVolumeRegion"`
-	// The resource ID of the remote volume.
-	RemoteVolumeResourceId pulumi.StringInput `pulumi:"remoteVolumeResourceId"`
+	// The resource ID of the remote volume. Required for cross region and cross zone replication
+	RemoteVolumeResourceId pulumi.StringPtrInput `pulumi:"remoteVolumeResourceId"`
 	// Schedule
 	ReplicationSchedule pulumi.StringPtrInput `pulumi:"replicationSchedule"`
 }
@@ -3947,9 +3947,9 @@ func (o ReplicationObjectOutput) RemoteVolumeRegion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ReplicationObject) *string { return v.RemoteVolumeRegion }).(pulumi.StringPtrOutput)
 }
 
-// The resource ID of the remote volume.
-func (o ReplicationObjectOutput) RemoteVolumeResourceId() pulumi.StringOutput {
-	return o.ApplyT(func(v ReplicationObject) string { return v.RemoteVolumeResourceId }).(pulumi.StringOutput)
+// The resource ID of the remote volume. Required for cross region and cross zone replication
+func (o ReplicationObjectOutput) RemoteVolumeResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReplicationObject) *string { return v.RemoteVolumeResourceId }).(pulumi.StringPtrOutput)
 }
 
 // Schedule
@@ -4011,13 +4011,13 @@ func (o ReplicationObjectPtrOutput) RemoteVolumeRegion() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// The resource ID of the remote volume.
+// The resource ID of the remote volume. Required for cross region and cross zone replication
 func (o ReplicationObjectPtrOutput) RemoteVolumeResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ReplicationObject) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.RemoteVolumeResourceId
+		return v.RemoteVolumeResourceId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -4039,8 +4039,8 @@ type ReplicationObjectResponse struct {
 	RemotePath *RemotePathResponse `pulumi:"remotePath"`
 	// The remote region for the other end of the Volume Replication.
 	RemoteVolumeRegion *string `pulumi:"remoteVolumeRegion"`
-	// The resource ID of the remote volume.
-	RemoteVolumeResourceId string `pulumi:"remoteVolumeResourceId"`
+	// The resource ID of the remote volume. Required for cross region and cross zone replication
+	RemoteVolumeResourceId *string `pulumi:"remoteVolumeResourceId"`
 	// Id
 	ReplicationId string `pulumi:"replicationId"`
 	// Schedule
@@ -4077,9 +4077,9 @@ func (o ReplicationObjectResponseOutput) RemoteVolumeRegion() pulumi.StringPtrOu
 	return o.ApplyT(func(v ReplicationObjectResponse) *string { return v.RemoteVolumeRegion }).(pulumi.StringPtrOutput)
 }
 
-// The resource ID of the remote volume.
-func (o ReplicationObjectResponseOutput) RemoteVolumeResourceId() pulumi.StringOutput {
-	return o.ApplyT(func(v ReplicationObjectResponse) string { return v.RemoteVolumeResourceId }).(pulumi.StringOutput)
+// The resource ID of the remote volume. Required for cross region and cross zone replication
+func (o ReplicationObjectResponseOutput) RemoteVolumeResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReplicationObjectResponse) *string { return v.RemoteVolumeResourceId }).(pulumi.StringPtrOutput)
 }
 
 // Id
@@ -4146,13 +4146,13 @@ func (o ReplicationObjectResponsePtrOutput) RemoteVolumeRegion() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// The resource ID of the remote volume.
+// The resource ID of the remote volume. Required for cross region and cross zone replication
 func (o ReplicationObjectResponsePtrOutput) RemoteVolumeResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ReplicationObjectResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.RemoteVolumeResourceId
+		return v.RemoteVolumeResourceId
 	}).(pulumi.StringPtrOutput)
 }
 

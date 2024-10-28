@@ -15,7 +15,7 @@ import (
 // Group resource.
 // Azure REST API version: 2023-03-15.
 //
-// Other available API versions: 2023-04-01-preview, 2023-05-01-preview.
+// Other available API versions: 2023-04-01-preview, 2023-05-01-preview, 2023-09-09-preview.
 type GroupsOperation struct {
 	pulumi.CustomResourceState
 
@@ -70,6 +70,9 @@ func NewGroupsOperation(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:migrate/v20230501preview:GroupsOperation"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate/v20230909preview:GroupsOperation"),
 		},
 	})
 	opts = append(opts, aliases)

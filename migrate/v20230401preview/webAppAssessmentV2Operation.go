@@ -107,6 +107,9 @@ func NewWebAppAssessmentV2Operation(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:migrate/v20230501preview:WebAppAssessmentV2Operation"),
 		},
+		{
+			Type: pulumi.String("azure-native:migrate/v20230909preview:WebAppAssessmentV2Operation"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

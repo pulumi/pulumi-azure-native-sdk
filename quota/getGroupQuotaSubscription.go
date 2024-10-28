@@ -13,6 +13,8 @@ import (
 
 // Returns the subscriptionIds along with its provisioning state for being associated with the GroupQuota. If the subscription is not a member of GroupQuota, it will return 404, else 200.
 // Azure REST API version: 2023-06-01-preview.
+//
+// Other available API versions: 2024-10-15-preview.
 func LookupGroupQuotaSubscription(ctx *pulumi.Context, args *LookupGroupQuotaSubscriptionArgs, opts ...pulumi.InvokeOption) (*LookupGroupQuotaSubscriptionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGroupQuotaSubscriptionResult
