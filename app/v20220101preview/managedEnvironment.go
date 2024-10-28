@@ -16,9 +16,7 @@ import (
 type ManagedEnvironment struct {
 	pulumi.CustomResourceState
 
-	// Cluster configuration which enables the log daemon to export
-	// app logs to a destination. Currently only "log-analytics" is
-	// supported
+	// Cluster configuration which enables the log daemon to export app logs to configured destination.
 	AppLogsConfiguration AppLogsConfigurationResponsePtrOutput `pulumi:"appLogsConfiguration"`
 	// Azure Monitor instrumentation key used by Dapr to export Service to Service communication telemetry
 	DaprAIInstrumentationKey pulumi.StringPtrOutput `pulumi:"daprAIInstrumentationKey"`
@@ -129,9 +127,7 @@ func (ManagedEnvironmentState) ElementType() reflect.Type {
 }
 
 type managedEnvironmentArgs struct {
-	// Cluster configuration which enables the log daemon to export
-	// app logs to a destination. Currently only "log-analytics" is
-	// supported
+	// Cluster configuration which enables the log daemon to export app logs to configured destination.
 	AppLogsConfiguration *AppLogsConfiguration `pulumi:"appLogsConfiguration"`
 	// Azure Monitor instrumentation key used by Dapr to export Service to Service communication telemetry
 	DaprAIInstrumentationKey *string `pulumi:"daprAIInstrumentationKey"`
@@ -149,9 +145,7 @@ type managedEnvironmentArgs struct {
 
 // The set of arguments for constructing a ManagedEnvironment resource.
 type ManagedEnvironmentArgs struct {
-	// Cluster configuration which enables the log daemon to export
-	// app logs to a destination. Currently only "log-analytics" is
-	// supported
+	// Cluster configuration which enables the log daemon to export app logs to configured destination.
 	AppLogsConfiguration AppLogsConfigurationPtrInput
 	// Azure Monitor instrumentation key used by Dapr to export Service to Service communication telemetry
 	DaprAIInstrumentationKey pulumi.StringPtrInput
@@ -204,9 +198,7 @@ func (o ManagedEnvironmentOutput) ToManagedEnvironmentOutputWithContext(ctx cont
 	return o
 }
 
-// Cluster configuration which enables the log daemon to export
-// app logs to a destination. Currently only "log-analytics" is
-// supported
+// Cluster configuration which enables the log daemon to export app logs to configured destination.
 func (o ManagedEnvironmentOutput) AppLogsConfiguration() AppLogsConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v *ManagedEnvironment) AppLogsConfigurationResponsePtrOutput { return v.AppLogsConfiguration }).(AppLogsConfigurationResponsePtrOutput)
 }

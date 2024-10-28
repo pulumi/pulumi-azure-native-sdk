@@ -14,7 +14,7 @@ import (
 // Get a InstanceResource
 // Azure REST API version: 2024-07-01-preview.
 //
-// Other available API versions: 2024-08-15-preview, 2024-09-15-preview.
+// Other available API versions: 2024-08-15-preview, 2024-09-15-preview, 2024-11-01.
 func LookupInstance(ctx *pulumi.Context, args *LookupInstanceArgs, opts ...pulumi.InvokeOption) (*LookupInstanceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupInstanceResult

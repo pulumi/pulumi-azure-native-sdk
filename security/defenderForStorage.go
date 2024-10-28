@@ -14,6 +14,8 @@ import (
 
 // The Defender for Storage resource.
 // Azure REST API version: 2022-12-01-preview.
+//
+// Other available API versions: 2024-10-01-preview.
 type DefenderForStorage struct {
 	pulumi.CustomResourceState
 
@@ -38,6 +40,9 @@ func NewDefenderForStorage(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:security/v20221201preview:DefenderForStorage"),
+		},
+		{
+			Type: pulumi.String("azure-native:security/v20241001preview:DefenderForStorage"),
 		},
 	})
 	opts = append(opts, aliases)

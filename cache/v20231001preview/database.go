@@ -101,6 +101,9 @@ func NewDatabase(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:cache/v20240901preview:Database"),
 		},
+		{
+			Type: pulumi.String("azure-native:cache/v20241001:Database"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

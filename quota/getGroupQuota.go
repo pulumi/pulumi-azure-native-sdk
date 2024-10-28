@@ -13,6 +13,8 @@ import (
 
 // Gets the GroupQuotas for the name passed. It will return the GroupQuotas properties only. The details on group quota can be access from the group quota APIs.
 // Azure REST API version: 2023-06-01-preview.
+//
+// Other available API versions: 2024-10-15-preview.
 func LookupGroupQuota(ctx *pulumi.Context, args *LookupGroupQuotaArgs, opts ...pulumi.InvokeOption) (*LookupGroupQuotaResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGroupQuotaResult

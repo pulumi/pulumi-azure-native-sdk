@@ -55,6 +55,9 @@ func NewBusinessCaseOperation(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:migrate/v20230501preview:BusinessCaseOperation"),
 		},
+		{
+			Type: pulumi.String("azure-native:migrate/v20230909preview:BusinessCaseOperation"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -18,9 +18,7 @@ type ManagedEnvironment struct {
 
 	// Environment level Application Insights configuration
 	AppInsightsConfiguration AppInsightsConfigurationResponsePtrOutput `pulumi:"appInsightsConfiguration"`
-	// Cluster configuration which enables the log daemon to export
-	// app logs to a destination. Currently only "log-analytics" is
-	// supported
+	// Cluster configuration which enables the log daemon to export app logs to configured destination.
 	AppLogsConfiguration AppLogsConfigurationResponsePtrOutput `pulumi:"appLogsConfiguration"`
 	// Custom domain configuration for the environment
 	CustomDomainConfiguration CustomDomainConfigurationResponsePtrOutput `pulumi:"customDomainConfiguration"`
@@ -155,9 +153,7 @@ func (ManagedEnvironmentState) ElementType() reflect.Type {
 type managedEnvironmentArgs struct {
 	// Environment level Application Insights configuration
 	AppInsightsConfiguration *AppInsightsConfiguration `pulumi:"appInsightsConfiguration"`
-	// Cluster configuration which enables the log daemon to export
-	// app logs to a destination. Currently only "log-analytics" is
-	// supported
+	// Cluster configuration which enables the log daemon to export app logs to configured destination.
 	AppLogsConfiguration *AppLogsConfiguration `pulumi:"appLogsConfiguration"`
 	// Custom domain configuration for the environment
 	CustomDomainConfiguration *CustomDomainConfiguration `pulumi:"customDomainConfiguration"`
@@ -193,9 +189,7 @@ type managedEnvironmentArgs struct {
 type ManagedEnvironmentArgs struct {
 	// Environment level Application Insights configuration
 	AppInsightsConfiguration AppInsightsConfigurationPtrInput
-	// Cluster configuration which enables the log daemon to export
-	// app logs to a destination. Currently only "log-analytics" is
-	// supported
+	// Cluster configuration which enables the log daemon to export app logs to configured destination.
 	AppLogsConfiguration AppLogsConfigurationPtrInput
 	// Custom domain configuration for the environment
 	CustomDomainConfiguration CustomDomainConfigurationPtrInput
@@ -271,9 +265,7 @@ func (o ManagedEnvironmentOutput) AppInsightsConfiguration() AppInsightsConfigur
 	}).(AppInsightsConfigurationResponsePtrOutput)
 }
 
-// Cluster configuration which enables the log daemon to export
-// app logs to a destination. Currently only "log-analytics" is
-// supported
+// Cluster configuration which enables the log daemon to export app logs to configured destination.
 func (o ManagedEnvironmentOutput) AppLogsConfiguration() AppLogsConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v *ManagedEnvironment) AppLogsConfigurationResponsePtrOutput { return v.AppLogsConfiguration }).(AppLogsConfigurationResponsePtrOutput)
 }

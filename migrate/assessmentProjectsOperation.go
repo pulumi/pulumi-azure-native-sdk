@@ -15,7 +15,7 @@ import (
 // An Assessment project site resource.
 // Azure REST API version: 2023-03-15.
 //
-// Other available API versions: 2023-04-01-preview, 2023-05-01-preview.
+// Other available API versions: 2023-04-01-preview, 2023-05-01-preview, 2023-09-09-preview.
 type AssessmentProjectsOperation struct {
 	pulumi.CustomResourceState
 
@@ -80,6 +80,9 @@ func NewAssessmentProjectsOperation(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:migrate/v20230501preview:AssessmentProjectsOperation"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate/v20230909preview:AssessmentProjectsOperation"),
 		},
 	})
 	opts = append(opts, aliases)

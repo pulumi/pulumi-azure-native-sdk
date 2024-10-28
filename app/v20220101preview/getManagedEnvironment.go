@@ -31,9 +31,7 @@ type LookupManagedEnvironmentArgs struct {
 
 // An environment for hosting container apps
 type LookupManagedEnvironmentResult struct {
-	// Cluster configuration which enables the log daemon to export
-	// app logs to a destination. Currently only "log-analytics" is
-	// supported
+	// Cluster configuration which enables the log daemon to export app logs to configured destination.
 	AppLogsConfiguration *AppLogsConfigurationResponse `pulumi:"appLogsConfiguration"`
 	// Azure Monitor instrumentation key used by Dapr to export Service to Service communication telemetry
 	DaprAIInstrumentationKey *string `pulumi:"daprAIInstrumentationKey"`
@@ -106,9 +104,7 @@ func (o LookupManagedEnvironmentResultOutput) ToLookupManagedEnvironmentResultOu
 	return o
 }
 
-// Cluster configuration which enables the log daemon to export
-// app logs to a destination. Currently only "log-analytics" is
-// supported
+// Cluster configuration which enables the log daemon to export app logs to configured destination.
 func (o LookupManagedEnvironmentResultOutput) AppLogsConfiguration() AppLogsConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v LookupManagedEnvironmentResult) *AppLogsConfigurationResponse { return v.AppLogsConfiguration }).(AppLogsConfigurationResponsePtrOutput)
 }

@@ -14,7 +14,7 @@ import (
 // Returns report of quotas for the volume
 // Azure REST API version: 2024-03-01-preview.
 //
-// Other available API versions: 2024-05-01-preview.
+// Other available API versions: 2024-05-01-preview, 2024-07-01-preview.
 func ListVolumeQuotaReport(ctx *pulumi.Context, args *ListVolumeQuotaReportArgs, opts ...pulumi.InvokeOption) (*ListVolumeQuotaReportResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListVolumeQuotaReportResult

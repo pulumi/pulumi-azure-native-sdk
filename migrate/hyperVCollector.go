@@ -48,6 +48,9 @@ func NewHyperVCollector(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:migrate/v20230501preview:HyperVCollector"),
 		},
+		{
+			Type: pulumi.String("azure-native:migrate/v20230909preview:HyperVCollector"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

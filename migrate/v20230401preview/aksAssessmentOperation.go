@@ -57,6 +57,9 @@ func NewAksAssessmentOperation(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:migrate/v20230501preview:AksAssessmentOperation"),
 		},
+		{
+			Type: pulumi.String("azure-native:migrate/v20230909preview:AksAssessmentOperation"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

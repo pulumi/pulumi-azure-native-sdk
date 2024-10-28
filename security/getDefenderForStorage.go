@@ -13,6 +13,8 @@ import (
 
 // Gets the Defender for Storage settings for the specified storage account.
 // Azure REST API version: 2022-12-01-preview.
+//
+// Other available API versions: 2024-10-01-preview.
 func LookupDefenderForStorage(ctx *pulumi.Context, args *LookupDefenderForStorageArgs, opts ...pulumi.InvokeOption) (*LookupDefenderForStorageResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDefenderForStorageResult
