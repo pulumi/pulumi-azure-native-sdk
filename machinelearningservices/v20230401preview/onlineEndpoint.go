@@ -104,6 +104,12 @@ func NewOnlineEndpoint(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20240701preview:OnlineEndpoint"),
 		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20241001:OnlineEndpoint"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20241001preview:OnlineEndpoint"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

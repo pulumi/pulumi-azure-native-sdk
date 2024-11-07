@@ -67,6 +67,12 @@ func NewServerlessEndpoint(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20240401preview:ServerlessEndpoint"),
 		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20241001:ServerlessEndpoint"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20241001preview:ServerlessEndpoint"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

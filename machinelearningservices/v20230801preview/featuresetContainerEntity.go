@@ -71,6 +71,12 @@ func NewFeaturesetContainerEntity(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20240701preview:FeaturesetContainerEntity"),
 		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20241001:FeaturesetContainerEntity"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20241001preview:FeaturesetContainerEntity"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

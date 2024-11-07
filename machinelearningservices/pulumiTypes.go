@@ -11317,6 +11317,238 @@ func (o CallRateLimitResponseArrayOutput) Index(i pulumi.IntInput) CallRateLimit
 	}).(CallRateLimitResponseOutput)
 }
 
+type CapabilityHostType struct {
+	// List of AI services connections.
+	AiServicesConnections []string `pulumi:"aiServicesConnections"`
+	// Kind of this capability host.
+	CapabilityHostKind *string `pulumi:"capabilityHostKind"`
+	// Customer subnet info to help set up this capability host.
+	CustomerSubnet *string `pulumi:"customerSubnet"`
+	// The asset description text.
+	Description *string `pulumi:"description"`
+	// The asset property dictionary.
+	Properties map[string]string `pulumi:"properties"`
+	// List of Storage connections.
+	StorageConnections []string `pulumi:"storageConnections"`
+	// Tag dictionary. Tags can be added, removed, and updated.
+	Tags map[string]string `pulumi:"tags"`
+	// List of VectorStore connections.
+	VectorStoreConnections []string `pulumi:"vectorStoreConnections"`
+}
+
+// Defaults sets the appropriate defaults for CapabilityHostType
+func (val *CapabilityHostType) Defaults() *CapabilityHostType {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.CapabilityHostKind == nil {
+		capabilityHostKind_ := "Agents"
+		tmp.CapabilityHostKind = &capabilityHostKind_
+	}
+	return &tmp
+}
+
+// CapabilityHostTypeInput is an input type that accepts CapabilityHostTypeArgs and CapabilityHostTypeOutput values.
+// You can construct a concrete instance of `CapabilityHostTypeInput` via:
+//
+//	CapabilityHostTypeArgs{...}
+type CapabilityHostTypeInput interface {
+	pulumi.Input
+
+	ToCapabilityHostTypeOutput() CapabilityHostTypeOutput
+	ToCapabilityHostTypeOutputWithContext(context.Context) CapabilityHostTypeOutput
+}
+
+type CapabilityHostTypeArgs struct {
+	// List of AI services connections.
+	AiServicesConnections pulumi.StringArrayInput `pulumi:"aiServicesConnections"`
+	// Kind of this capability host.
+	CapabilityHostKind pulumi.StringPtrInput `pulumi:"capabilityHostKind"`
+	// Customer subnet info to help set up this capability host.
+	CustomerSubnet pulumi.StringPtrInput `pulumi:"customerSubnet"`
+	// The asset description text.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The asset property dictionary.
+	Properties pulumi.StringMapInput `pulumi:"properties"`
+	// List of Storage connections.
+	StorageConnections pulumi.StringArrayInput `pulumi:"storageConnections"`
+	// Tag dictionary. Tags can be added, removed, and updated.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// List of VectorStore connections.
+	VectorStoreConnections pulumi.StringArrayInput `pulumi:"vectorStoreConnections"`
+}
+
+// Defaults sets the appropriate defaults for CapabilityHostTypeArgs
+func (val *CapabilityHostTypeArgs) Defaults() *CapabilityHostTypeArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.CapabilityHostKind == nil {
+		tmp.CapabilityHostKind = pulumi.StringPtr("Agents")
+	}
+	return &tmp
+}
+func (CapabilityHostTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CapabilityHostType)(nil)).Elem()
+}
+
+func (i CapabilityHostTypeArgs) ToCapabilityHostTypeOutput() CapabilityHostTypeOutput {
+	return i.ToCapabilityHostTypeOutputWithContext(context.Background())
+}
+
+func (i CapabilityHostTypeArgs) ToCapabilityHostTypeOutputWithContext(ctx context.Context) CapabilityHostTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CapabilityHostTypeOutput)
+}
+
+type CapabilityHostTypeOutput struct{ *pulumi.OutputState }
+
+func (CapabilityHostTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CapabilityHostType)(nil)).Elem()
+}
+
+func (o CapabilityHostTypeOutput) ToCapabilityHostTypeOutput() CapabilityHostTypeOutput {
+	return o
+}
+
+func (o CapabilityHostTypeOutput) ToCapabilityHostTypeOutputWithContext(ctx context.Context) CapabilityHostTypeOutput {
+	return o
+}
+
+// List of AI services connections.
+func (o CapabilityHostTypeOutput) AiServicesConnections() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CapabilityHostType) []string { return v.AiServicesConnections }).(pulumi.StringArrayOutput)
+}
+
+// Kind of this capability host.
+func (o CapabilityHostTypeOutput) CapabilityHostKind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CapabilityHostType) *string { return v.CapabilityHostKind }).(pulumi.StringPtrOutput)
+}
+
+// Customer subnet info to help set up this capability host.
+func (o CapabilityHostTypeOutput) CustomerSubnet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CapabilityHostType) *string { return v.CustomerSubnet }).(pulumi.StringPtrOutput)
+}
+
+// The asset description text.
+func (o CapabilityHostTypeOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CapabilityHostType) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The asset property dictionary.
+func (o CapabilityHostTypeOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v CapabilityHostType) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+// List of Storage connections.
+func (o CapabilityHostTypeOutput) StorageConnections() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CapabilityHostType) []string { return v.StorageConnections }).(pulumi.StringArrayOutput)
+}
+
+// Tag dictionary. Tags can be added, removed, and updated.
+func (o CapabilityHostTypeOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v CapabilityHostType) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// List of VectorStore connections.
+func (o CapabilityHostTypeOutput) VectorStoreConnections() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CapabilityHostType) []string { return v.VectorStoreConnections }).(pulumi.StringArrayOutput)
+}
+
+type CapabilityHostResponse struct {
+	// List of AI services connections.
+	AiServicesConnections []string `pulumi:"aiServicesConnections"`
+	// Kind of this capability host.
+	CapabilityHostKind *string `pulumi:"capabilityHostKind"`
+	// Customer subnet info to help set up this capability host.
+	CustomerSubnet *string `pulumi:"customerSubnet"`
+	// The asset description text.
+	Description *string `pulumi:"description"`
+	// The asset property dictionary.
+	Properties map[string]string `pulumi:"properties"`
+	// Provisioning state for the CapabilityHost.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// List of Storage connections.
+	StorageConnections []string `pulumi:"storageConnections"`
+	// Tag dictionary. Tags can be added, removed, and updated.
+	Tags map[string]string `pulumi:"tags"`
+	// List of VectorStore connections.
+	VectorStoreConnections []string `pulumi:"vectorStoreConnections"`
+}
+
+// Defaults sets the appropriate defaults for CapabilityHostResponse
+func (val *CapabilityHostResponse) Defaults() *CapabilityHostResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.CapabilityHostKind == nil {
+		capabilityHostKind_ := "Agents"
+		tmp.CapabilityHostKind = &capabilityHostKind_
+	}
+	return &tmp
+}
+
+type CapabilityHostResponseOutput struct{ *pulumi.OutputState }
+
+func (CapabilityHostResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CapabilityHostResponse)(nil)).Elem()
+}
+
+func (o CapabilityHostResponseOutput) ToCapabilityHostResponseOutput() CapabilityHostResponseOutput {
+	return o
+}
+
+func (o CapabilityHostResponseOutput) ToCapabilityHostResponseOutputWithContext(ctx context.Context) CapabilityHostResponseOutput {
+	return o
+}
+
+// List of AI services connections.
+func (o CapabilityHostResponseOutput) AiServicesConnections() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CapabilityHostResponse) []string { return v.AiServicesConnections }).(pulumi.StringArrayOutput)
+}
+
+// Kind of this capability host.
+func (o CapabilityHostResponseOutput) CapabilityHostKind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CapabilityHostResponse) *string { return v.CapabilityHostKind }).(pulumi.StringPtrOutput)
+}
+
+// Customer subnet info to help set up this capability host.
+func (o CapabilityHostResponseOutput) CustomerSubnet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CapabilityHostResponse) *string { return v.CustomerSubnet }).(pulumi.StringPtrOutput)
+}
+
+// The asset description text.
+func (o CapabilityHostResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CapabilityHostResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The asset property dictionary.
+func (o CapabilityHostResponseOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v CapabilityHostResponse) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+// Provisioning state for the CapabilityHost.
+func (o CapabilityHostResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v CapabilityHostResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// List of Storage connections.
+func (o CapabilityHostResponseOutput) StorageConnections() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CapabilityHostResponse) []string { return v.StorageConnections }).(pulumi.StringArrayOutput)
+}
+
+// Tag dictionary. Tags can be added, removed, and updated.
+func (o CapabilityHostResponseOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v CapabilityHostResponse) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// List of VectorStore connections.
+func (o CapabilityHostResponseOutput) VectorStoreConnections() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CapabilityHostResponse) []string { return v.VectorStoreConnections }).(pulumi.StringArrayOutput)
+}
+
 // The capacity configuration.
 type CapacityConfigResponse struct {
 	// The array of allowed values for capacity.
@@ -25193,6 +25425,79 @@ func (o DefaultScaleSettingsResponsePtrOutput) ScaleType() pulumi.StringPtrOutpu
 		}
 		return &v.ScaleType
 	}).(pulumi.StringPtrOutput)
+}
+
+// Contract for DeltaModelCurrentState.
+type DeltaModelCurrentStateResponse struct {
+	// Gets or sets Count of instances with model.
+	Count *int `pulumi:"count"`
+	// Gets or sets sample of instances with model.
+	SampleInstanceID *string `pulumi:"sampleInstanceID"`
+	// Gets or sets status.
+	Status *string `pulumi:"status"`
+}
+
+// Defaults sets the appropriate defaults for DeltaModelCurrentStateResponse
+func (val *DeltaModelCurrentStateResponse) Defaults() *DeltaModelCurrentStateResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Count == nil {
+		count_ := 0
+		tmp.Count = &count_
+	}
+	return &tmp
+}
+
+// Contract for DeltaModelCurrentState.
+type DeltaModelCurrentStateResponseOutput struct{ *pulumi.OutputState }
+
+func (DeltaModelCurrentStateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeltaModelCurrentStateResponse)(nil)).Elem()
+}
+
+func (o DeltaModelCurrentStateResponseOutput) ToDeltaModelCurrentStateResponseOutput() DeltaModelCurrentStateResponseOutput {
+	return o
+}
+
+func (o DeltaModelCurrentStateResponseOutput) ToDeltaModelCurrentStateResponseOutputWithContext(ctx context.Context) DeltaModelCurrentStateResponseOutput {
+	return o
+}
+
+// Gets or sets Count of instances with model.
+func (o DeltaModelCurrentStateResponseOutput) Count() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DeltaModelCurrentStateResponse) *int { return v.Count }).(pulumi.IntPtrOutput)
+}
+
+// Gets or sets sample of instances with model.
+func (o DeltaModelCurrentStateResponseOutput) SampleInstanceID() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeltaModelCurrentStateResponse) *string { return v.SampleInstanceID }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets status.
+func (o DeltaModelCurrentStateResponseOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeltaModelCurrentStateResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type DeltaModelCurrentStateResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (DeltaModelCurrentStateResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeltaModelCurrentStateResponse)(nil)).Elem()
+}
+
+func (o DeltaModelCurrentStateResponseArrayOutput) ToDeltaModelCurrentStateResponseArrayOutput() DeltaModelCurrentStateResponseArrayOutput {
+	return o
+}
+
+func (o DeltaModelCurrentStateResponseArrayOutput) ToDeltaModelCurrentStateResponseArrayOutputWithContext(ctx context.Context) DeltaModelCurrentStateResponseArrayOutput {
+	return o
+}
+
+func (o DeltaModelCurrentStateResponseArrayOutput) Index(i pulumi.IntInput) DeltaModelCurrentStateResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeltaModelCurrentStateResponse {
+		return vs[0].([]DeltaModelCurrentStateResponse)[vs[1].(int)]
+	}).(DeltaModelCurrentStateResponseOutput)
 }
 
 // Properties of Cognitive Services account deployment model.
@@ -66302,342 +66607,6 @@ func (o ServicePrincipalDatastoreSecretsOutput) SecretsType() pulumi.StringOutpu
 	return o.ApplyT(func(v ServicePrincipalDatastoreSecrets) string { return v.SecretsType }).(pulumi.StringOutput)
 }
 
-// Service Tag destination for a Service Tag Outbound Rule for the managed network of a machine learning workspace.
-type ServiceTagDestination struct {
-	PortRanges *string `pulumi:"portRanges"`
-	Protocol   *string `pulumi:"protocol"`
-	ServiceTag *string `pulumi:"serviceTag"`
-}
-
-// ServiceTagDestinationInput is an input type that accepts ServiceTagDestinationArgs and ServiceTagDestinationOutput values.
-// You can construct a concrete instance of `ServiceTagDestinationInput` via:
-//
-//	ServiceTagDestinationArgs{...}
-type ServiceTagDestinationInput interface {
-	pulumi.Input
-
-	ToServiceTagDestinationOutput() ServiceTagDestinationOutput
-	ToServiceTagDestinationOutputWithContext(context.Context) ServiceTagDestinationOutput
-}
-
-// Service Tag destination for a Service Tag Outbound Rule for the managed network of a machine learning workspace.
-type ServiceTagDestinationArgs struct {
-	PortRanges pulumi.StringPtrInput `pulumi:"portRanges"`
-	Protocol   pulumi.StringPtrInput `pulumi:"protocol"`
-	ServiceTag pulumi.StringPtrInput `pulumi:"serviceTag"`
-}
-
-func (ServiceTagDestinationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceTagDestination)(nil)).Elem()
-}
-
-func (i ServiceTagDestinationArgs) ToServiceTagDestinationOutput() ServiceTagDestinationOutput {
-	return i.ToServiceTagDestinationOutputWithContext(context.Background())
-}
-
-func (i ServiceTagDestinationArgs) ToServiceTagDestinationOutputWithContext(ctx context.Context) ServiceTagDestinationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceTagDestinationOutput)
-}
-
-func (i ServiceTagDestinationArgs) ToServiceTagDestinationPtrOutput() ServiceTagDestinationPtrOutput {
-	return i.ToServiceTagDestinationPtrOutputWithContext(context.Background())
-}
-
-func (i ServiceTagDestinationArgs) ToServiceTagDestinationPtrOutputWithContext(ctx context.Context) ServiceTagDestinationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceTagDestinationOutput).ToServiceTagDestinationPtrOutputWithContext(ctx)
-}
-
-// ServiceTagDestinationPtrInput is an input type that accepts ServiceTagDestinationArgs, ServiceTagDestinationPtr and ServiceTagDestinationPtrOutput values.
-// You can construct a concrete instance of `ServiceTagDestinationPtrInput` via:
-//
-//	        ServiceTagDestinationArgs{...}
-//
-//	or:
-//
-//	        nil
-type ServiceTagDestinationPtrInput interface {
-	pulumi.Input
-
-	ToServiceTagDestinationPtrOutput() ServiceTagDestinationPtrOutput
-	ToServiceTagDestinationPtrOutputWithContext(context.Context) ServiceTagDestinationPtrOutput
-}
-
-type serviceTagDestinationPtrType ServiceTagDestinationArgs
-
-func ServiceTagDestinationPtr(v *ServiceTagDestinationArgs) ServiceTagDestinationPtrInput {
-	return (*serviceTagDestinationPtrType)(v)
-}
-
-func (*serviceTagDestinationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ServiceTagDestination)(nil)).Elem()
-}
-
-func (i *serviceTagDestinationPtrType) ToServiceTagDestinationPtrOutput() ServiceTagDestinationPtrOutput {
-	return i.ToServiceTagDestinationPtrOutputWithContext(context.Background())
-}
-
-func (i *serviceTagDestinationPtrType) ToServiceTagDestinationPtrOutputWithContext(ctx context.Context) ServiceTagDestinationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceTagDestinationPtrOutput)
-}
-
-// Service Tag destination for a Service Tag Outbound Rule for the managed network of a machine learning workspace.
-type ServiceTagDestinationOutput struct{ *pulumi.OutputState }
-
-func (ServiceTagDestinationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceTagDestination)(nil)).Elem()
-}
-
-func (o ServiceTagDestinationOutput) ToServiceTagDestinationOutput() ServiceTagDestinationOutput {
-	return o
-}
-
-func (o ServiceTagDestinationOutput) ToServiceTagDestinationOutputWithContext(ctx context.Context) ServiceTagDestinationOutput {
-	return o
-}
-
-func (o ServiceTagDestinationOutput) ToServiceTagDestinationPtrOutput() ServiceTagDestinationPtrOutput {
-	return o.ToServiceTagDestinationPtrOutputWithContext(context.Background())
-}
-
-func (o ServiceTagDestinationOutput) ToServiceTagDestinationPtrOutputWithContext(ctx context.Context) ServiceTagDestinationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTagDestination) *ServiceTagDestination {
-		return &v
-	}).(ServiceTagDestinationPtrOutput)
-}
-
-func (o ServiceTagDestinationOutput) PortRanges() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceTagDestination) *string { return v.PortRanges }).(pulumi.StringPtrOutput)
-}
-
-func (o ServiceTagDestinationOutput) Protocol() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceTagDestination) *string { return v.Protocol }).(pulumi.StringPtrOutput)
-}
-
-func (o ServiceTagDestinationOutput) ServiceTag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceTagDestination) *string { return v.ServiceTag }).(pulumi.StringPtrOutput)
-}
-
-type ServiceTagDestinationPtrOutput struct{ *pulumi.OutputState }
-
-func (ServiceTagDestinationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ServiceTagDestination)(nil)).Elem()
-}
-
-func (o ServiceTagDestinationPtrOutput) ToServiceTagDestinationPtrOutput() ServiceTagDestinationPtrOutput {
-	return o
-}
-
-func (o ServiceTagDestinationPtrOutput) ToServiceTagDestinationPtrOutputWithContext(ctx context.Context) ServiceTagDestinationPtrOutput {
-	return o
-}
-
-func (o ServiceTagDestinationPtrOutput) Elem() ServiceTagDestinationOutput {
-	return o.ApplyT(func(v *ServiceTagDestination) ServiceTagDestination {
-		if v != nil {
-			return *v
-		}
-		var ret ServiceTagDestination
-		return ret
-	}).(ServiceTagDestinationOutput)
-}
-
-func (o ServiceTagDestinationPtrOutput) PortRanges() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ServiceTagDestination) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PortRanges
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ServiceTagDestinationPtrOutput) Protocol() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ServiceTagDestination) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Protocol
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ServiceTagDestinationPtrOutput) ServiceTag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ServiceTagDestination) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ServiceTag
-	}).(pulumi.StringPtrOutput)
-}
-
-// Service Tag destination for a Service Tag Outbound Rule for the managed network of a machine learning workspace.
-type ServiceTagDestinationResponse struct {
-	PortRanges *string `pulumi:"portRanges"`
-	Protocol   *string `pulumi:"protocol"`
-	ServiceTag *string `pulumi:"serviceTag"`
-}
-
-// Service Tag destination for a Service Tag Outbound Rule for the managed network of a machine learning workspace.
-type ServiceTagDestinationResponseOutput struct{ *pulumi.OutputState }
-
-func (ServiceTagDestinationResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceTagDestinationResponse)(nil)).Elem()
-}
-
-func (o ServiceTagDestinationResponseOutput) ToServiceTagDestinationResponseOutput() ServiceTagDestinationResponseOutput {
-	return o
-}
-
-func (o ServiceTagDestinationResponseOutput) ToServiceTagDestinationResponseOutputWithContext(ctx context.Context) ServiceTagDestinationResponseOutput {
-	return o
-}
-
-func (o ServiceTagDestinationResponseOutput) PortRanges() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceTagDestinationResponse) *string { return v.PortRanges }).(pulumi.StringPtrOutput)
-}
-
-func (o ServiceTagDestinationResponseOutput) Protocol() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceTagDestinationResponse) *string { return v.Protocol }).(pulumi.StringPtrOutput)
-}
-
-func (o ServiceTagDestinationResponseOutput) ServiceTag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceTagDestinationResponse) *string { return v.ServiceTag }).(pulumi.StringPtrOutput)
-}
-
-type ServiceTagDestinationResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ServiceTagDestinationResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ServiceTagDestinationResponse)(nil)).Elem()
-}
-
-func (o ServiceTagDestinationResponsePtrOutput) ToServiceTagDestinationResponsePtrOutput() ServiceTagDestinationResponsePtrOutput {
-	return o
-}
-
-func (o ServiceTagDestinationResponsePtrOutput) ToServiceTagDestinationResponsePtrOutputWithContext(ctx context.Context) ServiceTagDestinationResponsePtrOutput {
-	return o
-}
-
-func (o ServiceTagDestinationResponsePtrOutput) Elem() ServiceTagDestinationResponseOutput {
-	return o.ApplyT(func(v *ServiceTagDestinationResponse) ServiceTagDestinationResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ServiceTagDestinationResponse
-		return ret
-	}).(ServiceTagDestinationResponseOutput)
-}
-
-func (o ServiceTagDestinationResponsePtrOutput) PortRanges() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ServiceTagDestinationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PortRanges
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ServiceTagDestinationResponsePtrOutput) Protocol() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ServiceTagDestinationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Protocol
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ServiceTagDestinationResponsePtrOutput) ServiceTag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ServiceTagDestinationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ServiceTag
-	}).(pulumi.StringPtrOutput)
-}
-
-// Service Tag Outbound Rule for the managed network of a machine learning workspace.
-type ServiceTagOutboundRule struct {
-	// Category of a managed network Outbound Rule of a machine learning workspace.
-	Category *string `pulumi:"category"`
-	// Service Tag destination for a Service Tag Outbound Rule for the managed network of a machine learning workspace.
-	Destination *ServiceTagDestination `pulumi:"destination"`
-	// Status of a managed network Outbound Rule of a machine learning workspace.
-	Status *string `pulumi:"status"`
-	// Type of a managed network Outbound Rule of a machine learning workspace.
-	// Expected value is 'ServiceTag'.
-	Type string `pulumi:"type"`
-}
-
-// ServiceTagOutboundRuleInput is an input type that accepts ServiceTagOutboundRuleArgs and ServiceTagOutboundRuleOutput values.
-// You can construct a concrete instance of `ServiceTagOutboundRuleInput` via:
-//
-//	ServiceTagOutboundRuleArgs{...}
-type ServiceTagOutboundRuleInput interface {
-	pulumi.Input
-
-	ToServiceTagOutboundRuleOutput() ServiceTagOutboundRuleOutput
-	ToServiceTagOutboundRuleOutputWithContext(context.Context) ServiceTagOutboundRuleOutput
-}
-
-// Service Tag Outbound Rule for the managed network of a machine learning workspace.
-type ServiceTagOutboundRuleArgs struct {
-	// Category of a managed network Outbound Rule of a machine learning workspace.
-	Category pulumi.StringPtrInput `pulumi:"category"`
-	// Service Tag destination for a Service Tag Outbound Rule for the managed network of a machine learning workspace.
-	Destination ServiceTagDestinationPtrInput `pulumi:"destination"`
-	// Status of a managed network Outbound Rule of a machine learning workspace.
-	Status pulumi.StringPtrInput `pulumi:"status"`
-	// Type of a managed network Outbound Rule of a machine learning workspace.
-	// Expected value is 'ServiceTag'.
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (ServiceTagOutboundRuleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceTagOutboundRule)(nil)).Elem()
-}
-
-func (i ServiceTagOutboundRuleArgs) ToServiceTagOutboundRuleOutput() ServiceTagOutboundRuleOutput {
-	return i.ToServiceTagOutboundRuleOutputWithContext(context.Background())
-}
-
-func (i ServiceTagOutboundRuleArgs) ToServiceTagOutboundRuleOutputWithContext(ctx context.Context) ServiceTagOutboundRuleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceTagOutboundRuleOutput)
-}
-
-// Service Tag Outbound Rule for the managed network of a machine learning workspace.
-type ServiceTagOutboundRuleOutput struct{ *pulumi.OutputState }
-
-func (ServiceTagOutboundRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceTagOutboundRule)(nil)).Elem()
-}
-
-func (o ServiceTagOutboundRuleOutput) ToServiceTagOutboundRuleOutput() ServiceTagOutboundRuleOutput {
-	return o
-}
-
-func (o ServiceTagOutboundRuleOutput) ToServiceTagOutboundRuleOutputWithContext(ctx context.Context) ServiceTagOutboundRuleOutput {
-	return o
-}
-
-// Category of a managed network Outbound Rule of a machine learning workspace.
-func (o ServiceTagOutboundRuleOutput) Category() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceTagOutboundRule) *string { return v.Category }).(pulumi.StringPtrOutput)
-}
-
-// Service Tag destination for a Service Tag Outbound Rule for the managed network of a machine learning workspace.
-func (o ServiceTagOutboundRuleOutput) Destination() ServiceTagDestinationPtrOutput {
-	return o.ApplyT(func(v ServiceTagOutboundRule) *ServiceTagDestination { return v.Destination }).(ServiceTagDestinationPtrOutput)
-}
-
-// Status of a managed network Outbound Rule of a machine learning workspace.
-func (o ServiceTagOutboundRuleOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceTagOutboundRule) *string { return v.Status }).(pulumi.StringPtrOutput)
-}
-
-// Type of a managed network Outbound Rule of a machine learning workspace.
-// Expected value is 'ServiceTag'.
-func (o ServiceTagOutboundRuleOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v ServiceTagOutboundRule) string { return v.Type }).(pulumi.StringOutput)
-}
-
 type ColumnTransformerArrayMap map[string]ColumnTransformerArrayInput
 
 func (ColumnTransformerArrayMap) ElementType() reflect.Type {
@@ -66701,6 +66670,26 @@ func (o ColumnTransformerResponseArrayMapOutput) MapIndex(k pulumi.StringInput) 
 	return pulumi.All(o, k).ApplyT(func(vs []interface{}) []ColumnTransformerResponse {
 		return vs[0].(map[string][]ColumnTransformerResponse)[vs[1].(string)]
 	}).(ColumnTransformerResponseArrayOutput)
+}
+
+type DeltaModelCurrentStateResponseArrayMapOutput struct{ *pulumi.OutputState }
+
+func (DeltaModelCurrentStateResponseArrayMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string][]DeltaModelCurrentStateResponse)(nil)).Elem()
+}
+
+func (o DeltaModelCurrentStateResponseArrayMapOutput) ToDeltaModelCurrentStateResponseArrayMapOutput() DeltaModelCurrentStateResponseArrayMapOutput {
+	return o
+}
+
+func (o DeltaModelCurrentStateResponseArrayMapOutput) ToDeltaModelCurrentStateResponseArrayMapOutputWithContext(ctx context.Context) DeltaModelCurrentStateResponseArrayMapOutput {
+	return o
+}
+
+func (o DeltaModelCurrentStateResponseArrayMapOutput) MapIndex(k pulumi.StringInput) DeltaModelCurrentStateResponseArrayOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) []DeltaModelCurrentStateResponse {
+		return vs[0].(map[string][]DeltaModelCurrentStateResponse)[vs[1].(string)]
+	}).(DeltaModelCurrentStateResponseArrayOutput)
 }
 
 func init() {
@@ -66840,6 +66829,8 @@ func init() {
 	pulumi.RegisterOutputType(CallRateLimitResponseOutput{})
 	pulumi.RegisterOutputType(CallRateLimitResponsePtrOutput{})
 	pulumi.RegisterOutputType(CallRateLimitResponseArrayOutput{})
+	pulumi.RegisterOutputType(CapabilityHostTypeOutput{})
+	pulumi.RegisterOutputType(CapabilityHostResponseOutput{})
 	pulumi.RegisterOutputType(CapacityConfigResponseOutput{})
 	pulumi.RegisterOutputType(CapacityConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(CapacityReservationGroupTypeOutput{})
@@ -67018,6 +67009,8 @@ func init() {
 	pulumi.RegisterOutputType(DefaultScaleSettingsPtrOutput{})
 	pulumi.RegisterOutputType(DefaultScaleSettingsResponseOutput{})
 	pulumi.RegisterOutputType(DefaultScaleSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(DeltaModelCurrentStateResponseOutput{})
+	pulumi.RegisterOutputType(DeltaModelCurrentStateResponseArrayOutput{})
 	pulumi.RegisterOutputType(DeploymentModelResponseOutput{})
 	pulumi.RegisterOutputType(DeploymentModelResponsePtrOutput{})
 	pulumi.RegisterOutputType(DeploymentResourceConfigurationOutput{})
@@ -67520,11 +67513,7 @@ func init() {
 	pulumi.RegisterOutputType(ServicePrincipalDatastoreCredentialsOutput{})
 	pulumi.RegisterOutputType(ServicePrincipalDatastoreCredentialsResponseOutput{})
 	pulumi.RegisterOutputType(ServicePrincipalDatastoreSecretsOutput{})
-	pulumi.RegisterOutputType(ServiceTagDestinationOutput{})
-	pulumi.RegisterOutputType(ServiceTagDestinationPtrOutput{})
-	pulumi.RegisterOutputType(ServiceTagDestinationResponseOutput{})
-	pulumi.RegisterOutputType(ServiceTagDestinationResponsePtrOutput{})
-	pulumi.RegisterOutputType(ServiceTagOutboundRuleOutput{})
 	pulumi.RegisterOutputType(ColumnTransformerArrayMapOutput{})
 	pulumi.RegisterOutputType(ColumnTransformerResponseArrayMapOutput{})
+	pulumi.RegisterOutputType(DeltaModelCurrentStateResponseArrayMapOutput{})
 }

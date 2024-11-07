@@ -1366,6 +1366,170 @@ func (in *blockedTransformersPtr) ToBlockedTransformersPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(BlockedTransformersPtrOutput)
 }
 
+// Kind of this capability host.
+type CapabilityHostKind string
+
+const (
+	CapabilityHostKindAgents = CapabilityHostKind("Agents")
+)
+
+func (CapabilityHostKind) ElementType() reflect.Type {
+	return reflect.TypeOf((*CapabilityHostKind)(nil)).Elem()
+}
+
+func (e CapabilityHostKind) ToCapabilityHostKindOutput() CapabilityHostKindOutput {
+	return pulumi.ToOutput(e).(CapabilityHostKindOutput)
+}
+
+func (e CapabilityHostKind) ToCapabilityHostKindOutputWithContext(ctx context.Context) CapabilityHostKindOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(CapabilityHostKindOutput)
+}
+
+func (e CapabilityHostKind) ToCapabilityHostKindPtrOutput() CapabilityHostKindPtrOutput {
+	return e.ToCapabilityHostKindPtrOutputWithContext(context.Background())
+}
+
+func (e CapabilityHostKind) ToCapabilityHostKindPtrOutputWithContext(ctx context.Context) CapabilityHostKindPtrOutput {
+	return CapabilityHostKind(e).ToCapabilityHostKindOutputWithContext(ctx).ToCapabilityHostKindPtrOutputWithContext(ctx)
+}
+
+func (e CapabilityHostKind) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CapabilityHostKind) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CapabilityHostKind) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e CapabilityHostKind) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type CapabilityHostKindOutput struct{ *pulumi.OutputState }
+
+func (CapabilityHostKindOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CapabilityHostKind)(nil)).Elem()
+}
+
+func (o CapabilityHostKindOutput) ToCapabilityHostKindOutput() CapabilityHostKindOutput {
+	return o
+}
+
+func (o CapabilityHostKindOutput) ToCapabilityHostKindOutputWithContext(ctx context.Context) CapabilityHostKindOutput {
+	return o
+}
+
+func (o CapabilityHostKindOutput) ToCapabilityHostKindPtrOutput() CapabilityHostKindPtrOutput {
+	return o.ToCapabilityHostKindPtrOutputWithContext(context.Background())
+}
+
+func (o CapabilityHostKindOutput) ToCapabilityHostKindPtrOutputWithContext(ctx context.Context) CapabilityHostKindPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CapabilityHostKind) *CapabilityHostKind {
+		return &v
+	}).(CapabilityHostKindPtrOutput)
+}
+
+func (o CapabilityHostKindOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o CapabilityHostKindOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CapabilityHostKind) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o CapabilityHostKindOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CapabilityHostKindOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CapabilityHostKind) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type CapabilityHostKindPtrOutput struct{ *pulumi.OutputState }
+
+func (CapabilityHostKindPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CapabilityHostKind)(nil)).Elem()
+}
+
+func (o CapabilityHostKindPtrOutput) ToCapabilityHostKindPtrOutput() CapabilityHostKindPtrOutput {
+	return o
+}
+
+func (o CapabilityHostKindPtrOutput) ToCapabilityHostKindPtrOutputWithContext(ctx context.Context) CapabilityHostKindPtrOutput {
+	return o
+}
+
+func (o CapabilityHostKindPtrOutput) Elem() CapabilityHostKindOutput {
+	return o.ApplyT(func(v *CapabilityHostKind) CapabilityHostKind {
+		if v != nil {
+			return *v
+		}
+		var ret CapabilityHostKind
+		return ret
+	}).(CapabilityHostKindOutput)
+}
+
+func (o CapabilityHostKindPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CapabilityHostKindPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *CapabilityHostKind) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// CapabilityHostKindInput is an input type that accepts values of the CapabilityHostKind enum
+// A concrete instance of `CapabilityHostKindInput` can be one of the following:
+//
+//	CapabilityHostKindAgents
+type CapabilityHostKindInput interface {
+	pulumi.Input
+
+	ToCapabilityHostKindOutput() CapabilityHostKindOutput
+	ToCapabilityHostKindOutputWithContext(context.Context) CapabilityHostKindOutput
+}
+
+var capabilityHostKindPtrType = reflect.TypeOf((**CapabilityHostKind)(nil)).Elem()
+
+type CapabilityHostKindPtrInput interface {
+	pulumi.Input
+
+	ToCapabilityHostKindPtrOutput() CapabilityHostKindPtrOutput
+	ToCapabilityHostKindPtrOutputWithContext(context.Context) CapabilityHostKindPtrOutput
+}
+
+type capabilityHostKindPtr string
+
+func CapabilityHostKindPtr(v string) CapabilityHostKindPtrInput {
+	return (*capabilityHostKindPtr)(&v)
+}
+
+func (*capabilityHostKindPtr) ElementType() reflect.Type {
+	return capabilityHostKindPtrType
+}
+
+func (in *capabilityHostKindPtr) ToCapabilityHostKindPtrOutput() CapabilityHostKindPtrOutput {
+	return pulumi.ToOutput(in).(CapabilityHostKindPtrOutput)
+}
+
+func (in *capabilityHostKindPtr) ToCapabilityHostKindPtrOutputWithContext(ctx context.Context) CapabilityHostKindPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(CapabilityHostKindPtrOutput)
+}
+
 // Enum for all classification models supported by AutoML.
 type ClassificationModels string
 
@@ -15027,6 +15191,8 @@ func init() {
 	pulumi.RegisterOutputType(BatchOutputActionPtrOutput{})
 	pulumi.RegisterOutputType(BlockedTransformersOutput{})
 	pulumi.RegisterOutputType(BlockedTransformersPtrOutput{})
+	pulumi.RegisterOutputType(CapabilityHostKindOutput{})
+	pulumi.RegisterOutputType(CapabilityHostKindPtrOutput{})
 	pulumi.RegisterOutputType(ClassificationModelsOutput{})
 	pulumi.RegisterOutputType(ClassificationModelsPtrOutput{})
 	pulumi.RegisterOutputType(ClassificationMultilabelPrimaryMetricsOutput{})

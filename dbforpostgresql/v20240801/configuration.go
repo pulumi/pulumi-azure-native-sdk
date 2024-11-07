@@ -102,6 +102,9 @@ func NewConfiguration(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20240301preview:Configuration"),
 		},
+		{
+			Type: pulumi.String("azure-native:dbforpostgresql/v20241101preview:Configuration"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

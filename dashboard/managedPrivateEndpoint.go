@@ -15,7 +15,7 @@ import (
 // The managed private endpoint resource type.
 // Azure REST API version: 2022-10-01-preview.
 //
-// Other available API versions: 2023-09-01.
+// Other available API versions: 2023-09-01, 2023-10-01-preview.
 type ManagedPrivateEndpoint struct {
 	pulumi.CustomResourceState
 
@@ -66,6 +66,9 @@ func NewManagedPrivateEndpoint(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:dashboard/v20230901:ManagedPrivateEndpoint"),
+		},
+		{
+			Type: pulumi.String("azure-native:dashboard/v20231001preview:ManagedPrivateEndpoint"),
 		},
 	})
 	opts = append(opts, aliases)

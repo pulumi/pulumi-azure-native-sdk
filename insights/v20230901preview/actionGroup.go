@@ -101,6 +101,9 @@ func NewActionGroup(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:insights/v20230101:ActionGroup"),
 		},
+		{
+			Type: pulumi.String("azure-native:insights/v20241001preview:ActionGroup"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

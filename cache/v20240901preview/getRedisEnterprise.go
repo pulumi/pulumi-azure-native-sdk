@@ -41,6 +41,8 @@ type LookupRedisEnterpriseResult struct {
 	Id string `pulumi:"id"`
 	// The identity of the resource.
 	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
+	// Distinguishes the kind of cluster. Read-only.
+	Kind string `pulumi:"kind"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// The minimum TLS version for the cluster to support, e.g. '1.2'. Newer versions can be added in the future. Note that TLS 1.0 and TLS 1.1 are now completely obsolete -- you cannot use them. They are mentioned only for the sake of consistency with old API versions.
@@ -135,6 +137,11 @@ func (o LookupRedisEnterpriseResultOutput) Id() pulumi.StringOutput {
 // The identity of the resource.
 func (o LookupRedisEnterpriseResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
 	return o.ApplyT(func(v LookupRedisEnterpriseResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
+}
+
+// Distinguishes the kind of cluster. Read-only.
+func (o LookupRedisEnterpriseResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRedisEnterpriseResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
 // The geo-location where the resource lives

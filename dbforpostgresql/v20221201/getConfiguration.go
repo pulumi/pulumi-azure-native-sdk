@@ -53,7 +53,7 @@ type LookupConfigurationResult struct {
 	IsReadOnly bool `pulumi:"isReadOnly"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// Source of the configuration.
+	// Source of the configuration. Required to update the configuration.
 	Source *string `pulumi:"source"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
@@ -61,7 +61,7 @@ type LookupConfigurationResult struct {
 	Type string `pulumi:"type"`
 	// Configuration unit.
 	Unit string `pulumi:"unit"`
-	// Value of the configuration.
+	// Value of the configuration. Required to update the configuration.
 	Value *string `pulumi:"value"`
 }
 
@@ -162,7 +162,7 @@ func (o LookupConfigurationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigurationResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Source of the configuration.
+// Source of the configuration. Required to update the configuration.
 func (o LookupConfigurationResultOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupConfigurationResult) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
@@ -182,7 +182,7 @@ func (o LookupConfigurationResultOutput) Unit() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigurationResult) string { return v.Unit }).(pulumi.StringOutput)
 }
 
-// Value of the configuration.
+// Value of the configuration. Required to update the configuration.
 func (o LookupConfigurationResultOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupConfigurationResult) *string { return v.Value }).(pulumi.StringPtrOutput)
 }

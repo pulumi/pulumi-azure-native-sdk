@@ -15,7 +15,7 @@ import (
 // The grafana resource type.
 // Azure REST API version: 2022-08-01. Prior API version in Azure Native 1.x: 2022-05-01-preview.
 //
-// Other available API versions: 2021-09-01-preview, 2022-10-01-preview, 2023-09-01.
+// Other available API versions: 2021-09-01-preview, 2022-10-01-preview, 2023-09-01, 2023-10-01-preview.
 type Grafana struct {
 	pulumi.CustomResourceState
 
@@ -62,6 +62,9 @@ func NewGrafana(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:dashboard/v20230901:Grafana"),
+		},
+		{
+			Type: pulumi.String("azure-native:dashboard/v20231001preview:Grafana"),
 		},
 	})
 	opts = append(opts, aliases)
