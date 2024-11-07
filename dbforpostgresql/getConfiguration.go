@@ -14,7 +14,7 @@ import (
 // Gets information about a configuration of server.
 // Azure REST API version: 2022-12-01.
 //
-// Other available API versions: 2017-12-01, 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-08-01.
+// Other available API versions: 2017-12-01, 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-08-01, 2024-11-01-preview.
 func LookupConfiguration(ctx *pulumi.Context, args *LookupConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupConfigurationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupConfigurationResult
@@ -56,7 +56,7 @@ type LookupConfigurationResult struct {
 	IsReadOnly bool `pulumi:"isReadOnly"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// Source of the configuration.
+	// Source of the configuration. Required to update the configuration.
 	Source *string `pulumi:"source"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
@@ -64,7 +64,7 @@ type LookupConfigurationResult struct {
 	Type string `pulumi:"type"`
 	// Configuration unit.
 	Unit string `pulumi:"unit"`
-	// Value of the configuration.
+	// Value of the configuration. Required to update the configuration.
 	Value *string `pulumi:"value"`
 }
 
@@ -165,7 +165,7 @@ func (o LookupConfigurationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigurationResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Source of the configuration.
+// Source of the configuration. Required to update the configuration.
 func (o LookupConfigurationResultOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupConfigurationResult) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
@@ -185,7 +185,7 @@ func (o LookupConfigurationResultOutput) Unit() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigurationResult) string { return v.Unit }).(pulumi.StringOutput)
 }
 
-// Value of the configuration.
+// Value of the configuration. Required to update the configuration.
 func (o LookupConfigurationResultOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupConfigurationResult) *string { return v.Value }).(pulumi.StringPtrOutput)
 }

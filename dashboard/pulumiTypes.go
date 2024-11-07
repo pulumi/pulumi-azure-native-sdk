@@ -356,6 +356,226 @@ func (o GrafanaIntegrationsResponsePtrOutput) AzureMonitorWorkspaceIntegrations(
 	}).(AzureMonitorWorkspaceIntegrationResponseArrayOutput)
 }
 
+type IntegrationFabricProperties struct {
+	// The resource Id of the Azure resource which is used to configure Grafana data source. E.g., an Azure Monitor Workspace, an Azure Data Explorer cluster, etc.
+	DataSourceResourceId *string `pulumi:"dataSourceResourceId"`
+	// A list of integration scenarios covered by this integration fabric
+	Scenarios []string `pulumi:"scenarios"`
+	// The resource Id of the Azure resource being integrated with Azure Managed Grafana. E.g., an Azure Kubernetes Service cluster.
+	TargetResourceId *string `pulumi:"targetResourceId"`
+}
+
+// IntegrationFabricPropertiesInput is an input type that accepts IntegrationFabricPropertiesArgs and IntegrationFabricPropertiesOutput values.
+// You can construct a concrete instance of `IntegrationFabricPropertiesInput` via:
+//
+//	IntegrationFabricPropertiesArgs{...}
+type IntegrationFabricPropertiesInput interface {
+	pulumi.Input
+
+	ToIntegrationFabricPropertiesOutput() IntegrationFabricPropertiesOutput
+	ToIntegrationFabricPropertiesOutputWithContext(context.Context) IntegrationFabricPropertiesOutput
+}
+
+type IntegrationFabricPropertiesArgs struct {
+	// The resource Id of the Azure resource which is used to configure Grafana data source. E.g., an Azure Monitor Workspace, an Azure Data Explorer cluster, etc.
+	DataSourceResourceId pulumi.StringPtrInput `pulumi:"dataSourceResourceId"`
+	// A list of integration scenarios covered by this integration fabric
+	Scenarios pulumi.StringArrayInput `pulumi:"scenarios"`
+	// The resource Id of the Azure resource being integrated with Azure Managed Grafana. E.g., an Azure Kubernetes Service cluster.
+	TargetResourceId pulumi.StringPtrInput `pulumi:"targetResourceId"`
+}
+
+func (IntegrationFabricPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntegrationFabricProperties)(nil)).Elem()
+}
+
+func (i IntegrationFabricPropertiesArgs) ToIntegrationFabricPropertiesOutput() IntegrationFabricPropertiesOutput {
+	return i.ToIntegrationFabricPropertiesOutputWithContext(context.Background())
+}
+
+func (i IntegrationFabricPropertiesArgs) ToIntegrationFabricPropertiesOutputWithContext(ctx context.Context) IntegrationFabricPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntegrationFabricPropertiesOutput)
+}
+
+func (i IntegrationFabricPropertiesArgs) ToIntegrationFabricPropertiesPtrOutput() IntegrationFabricPropertiesPtrOutput {
+	return i.ToIntegrationFabricPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i IntegrationFabricPropertiesArgs) ToIntegrationFabricPropertiesPtrOutputWithContext(ctx context.Context) IntegrationFabricPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntegrationFabricPropertiesOutput).ToIntegrationFabricPropertiesPtrOutputWithContext(ctx)
+}
+
+// IntegrationFabricPropertiesPtrInput is an input type that accepts IntegrationFabricPropertiesArgs, IntegrationFabricPropertiesPtr and IntegrationFabricPropertiesPtrOutput values.
+// You can construct a concrete instance of `IntegrationFabricPropertiesPtrInput` via:
+//
+//	        IntegrationFabricPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type IntegrationFabricPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToIntegrationFabricPropertiesPtrOutput() IntegrationFabricPropertiesPtrOutput
+	ToIntegrationFabricPropertiesPtrOutputWithContext(context.Context) IntegrationFabricPropertiesPtrOutput
+}
+
+type integrationFabricPropertiesPtrType IntegrationFabricPropertiesArgs
+
+func IntegrationFabricPropertiesPtr(v *IntegrationFabricPropertiesArgs) IntegrationFabricPropertiesPtrInput {
+	return (*integrationFabricPropertiesPtrType)(v)
+}
+
+func (*integrationFabricPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IntegrationFabricProperties)(nil)).Elem()
+}
+
+func (i *integrationFabricPropertiesPtrType) ToIntegrationFabricPropertiesPtrOutput() IntegrationFabricPropertiesPtrOutput {
+	return i.ToIntegrationFabricPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *integrationFabricPropertiesPtrType) ToIntegrationFabricPropertiesPtrOutputWithContext(ctx context.Context) IntegrationFabricPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntegrationFabricPropertiesPtrOutput)
+}
+
+type IntegrationFabricPropertiesOutput struct{ *pulumi.OutputState }
+
+func (IntegrationFabricPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntegrationFabricProperties)(nil)).Elem()
+}
+
+func (o IntegrationFabricPropertiesOutput) ToIntegrationFabricPropertiesOutput() IntegrationFabricPropertiesOutput {
+	return o
+}
+
+func (o IntegrationFabricPropertiesOutput) ToIntegrationFabricPropertiesOutputWithContext(ctx context.Context) IntegrationFabricPropertiesOutput {
+	return o
+}
+
+func (o IntegrationFabricPropertiesOutput) ToIntegrationFabricPropertiesPtrOutput() IntegrationFabricPropertiesPtrOutput {
+	return o.ToIntegrationFabricPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o IntegrationFabricPropertiesOutput) ToIntegrationFabricPropertiesPtrOutputWithContext(ctx context.Context) IntegrationFabricPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IntegrationFabricProperties) *IntegrationFabricProperties {
+		return &v
+	}).(IntegrationFabricPropertiesPtrOutput)
+}
+
+// The resource Id of the Azure resource which is used to configure Grafana data source. E.g., an Azure Monitor Workspace, an Azure Data Explorer cluster, etc.
+func (o IntegrationFabricPropertiesOutput) DataSourceResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IntegrationFabricProperties) *string { return v.DataSourceResourceId }).(pulumi.StringPtrOutput)
+}
+
+// A list of integration scenarios covered by this integration fabric
+func (o IntegrationFabricPropertiesOutput) Scenarios() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v IntegrationFabricProperties) []string { return v.Scenarios }).(pulumi.StringArrayOutput)
+}
+
+// The resource Id of the Azure resource being integrated with Azure Managed Grafana. E.g., an Azure Kubernetes Service cluster.
+func (o IntegrationFabricPropertiesOutput) TargetResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IntegrationFabricProperties) *string { return v.TargetResourceId }).(pulumi.StringPtrOutput)
+}
+
+type IntegrationFabricPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (IntegrationFabricPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IntegrationFabricProperties)(nil)).Elem()
+}
+
+func (o IntegrationFabricPropertiesPtrOutput) ToIntegrationFabricPropertiesPtrOutput() IntegrationFabricPropertiesPtrOutput {
+	return o
+}
+
+func (o IntegrationFabricPropertiesPtrOutput) ToIntegrationFabricPropertiesPtrOutputWithContext(ctx context.Context) IntegrationFabricPropertiesPtrOutput {
+	return o
+}
+
+func (o IntegrationFabricPropertiesPtrOutput) Elem() IntegrationFabricPropertiesOutput {
+	return o.ApplyT(func(v *IntegrationFabricProperties) IntegrationFabricProperties {
+		if v != nil {
+			return *v
+		}
+		var ret IntegrationFabricProperties
+		return ret
+	}).(IntegrationFabricPropertiesOutput)
+}
+
+// The resource Id of the Azure resource which is used to configure Grafana data source. E.g., an Azure Monitor Workspace, an Azure Data Explorer cluster, etc.
+func (o IntegrationFabricPropertiesPtrOutput) DataSourceResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IntegrationFabricProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DataSourceResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// A list of integration scenarios covered by this integration fabric
+func (o IntegrationFabricPropertiesPtrOutput) Scenarios() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *IntegrationFabricProperties) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Scenarios
+	}).(pulumi.StringArrayOutput)
+}
+
+// The resource Id of the Azure resource being integrated with Azure Managed Grafana. E.g., an Azure Kubernetes Service cluster.
+func (o IntegrationFabricPropertiesPtrOutput) TargetResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IntegrationFabricProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type IntegrationFabricPropertiesResponse struct {
+	// The resource Id of the Azure resource which is used to configure Grafana data source. E.g., an Azure Monitor Workspace, an Azure Data Explorer cluster, etc.
+	DataSourceResourceId *string `pulumi:"dataSourceResourceId"`
+	// Provisioning state of the resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// A list of integration scenarios covered by this integration fabric
+	Scenarios []string `pulumi:"scenarios"`
+	// The resource Id of the Azure resource being integrated with Azure Managed Grafana. E.g., an Azure Kubernetes Service cluster.
+	TargetResourceId *string `pulumi:"targetResourceId"`
+}
+
+type IntegrationFabricPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (IntegrationFabricPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntegrationFabricPropertiesResponse)(nil)).Elem()
+}
+
+func (o IntegrationFabricPropertiesResponseOutput) ToIntegrationFabricPropertiesResponseOutput() IntegrationFabricPropertiesResponseOutput {
+	return o
+}
+
+func (o IntegrationFabricPropertiesResponseOutput) ToIntegrationFabricPropertiesResponseOutputWithContext(ctx context.Context) IntegrationFabricPropertiesResponseOutput {
+	return o
+}
+
+// The resource Id of the Azure resource which is used to configure Grafana data source. E.g., an Azure Monitor Workspace, an Azure Data Explorer cluster, etc.
+func (o IntegrationFabricPropertiesResponseOutput) DataSourceResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IntegrationFabricPropertiesResponse) *string { return v.DataSourceResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Provisioning state of the resource.
+func (o IntegrationFabricPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v IntegrationFabricPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// A list of integration scenarios covered by this integration fabric
+func (o IntegrationFabricPropertiesResponseOutput) Scenarios() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v IntegrationFabricPropertiesResponse) []string { return v.Scenarios }).(pulumi.StringArrayOutput)
+}
+
+// The resource Id of the Azure resource being integrated with Azure Managed Grafana. E.g., an Azure Kubernetes Service cluster.
+func (o IntegrationFabricPropertiesResponseOutput) TargetResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IntegrationFabricPropertiesResponse) *string { return v.TargetResourceId }).(pulumi.StringPtrOutput)
+}
+
 // Properties specific to the grafana resource.
 type ManagedGrafanaProperties struct {
 	// The api key setting of the Grafana instance.
@@ -1575,6 +1795,9 @@ func init() {
 	pulumi.RegisterOutputType(GrafanaIntegrationsPtrOutput{})
 	pulumi.RegisterOutputType(GrafanaIntegrationsResponseOutput{})
 	pulumi.RegisterOutputType(GrafanaIntegrationsResponsePtrOutput{})
+	pulumi.RegisterOutputType(IntegrationFabricPropertiesOutput{})
+	pulumi.RegisterOutputType(IntegrationFabricPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(IntegrationFabricPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(ManagedGrafanaPropertiesOutput{})
 	pulumi.RegisterOutputType(ManagedGrafanaPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(ManagedGrafanaPropertiesResponseOutput{})

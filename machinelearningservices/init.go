@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &BatchDeployment{}
 	case "azure-native:machinelearningservices:BatchEndpoint":
 		r = &BatchEndpoint{}
+	case "azure-native:machinelearningservices:CapabilityHost":
+		r = &CapabilityHost{}
 	case "azure-native:machinelearningservices:CapacityReservationGroup":
 		r = &CapacityReservationGroup{}
 	case "azure-native:machinelearningservices:CodeContainer":

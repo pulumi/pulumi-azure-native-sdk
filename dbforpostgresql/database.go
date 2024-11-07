@@ -15,7 +15,7 @@ import (
 // Represents a Database.
 // Azure REST API version: 2022-12-01. Prior API version in Azure Native 1.x: 2017-12-01.
 //
-// Other available API versions: 2017-12-01, 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-08-01.
+// Other available API versions: 2017-12-01, 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-08-01, 2024-11-01-preview.
 type Database struct {
 	pulumi.CustomResourceState
 
@@ -77,6 +77,9 @@ func NewDatabase(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20240801:Database"),
+		},
+		{
+			Type: pulumi.String("azure-native:dbforpostgresql/v20241101preview:Database"),
 		},
 	})
 	opts = append(opts, aliases)

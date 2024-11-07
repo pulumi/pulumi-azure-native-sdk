@@ -111,6 +111,9 @@ func NewMigration(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20240801:Migration"),
 		},
+		{
+			Type: pulumi.String("azure-native:dbforpostgresql/v20241101preview:Migration"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

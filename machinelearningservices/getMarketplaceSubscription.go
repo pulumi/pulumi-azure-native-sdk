@@ -14,7 +14,7 @@ import (
 // Azure Resource Manager resource envelope.
 // Azure REST API version: 2024-01-01-preview.
 //
-// Other available API versions: 2024-04-01, 2024-04-01-preview, 2024-07-01-preview.
+// Other available API versions: 2024-04-01, 2024-04-01-preview, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview.
 func LookupMarketplaceSubscription(ctx *pulumi.Context, args *LookupMarketplaceSubscriptionArgs, opts ...pulumi.InvokeOption) (*LookupMarketplaceSubscriptionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMarketplaceSubscriptionResult

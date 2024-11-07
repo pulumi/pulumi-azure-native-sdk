@@ -15,7 +15,7 @@ import (
 // Represents a Configuration.
 // Azure REST API version: 2022-12-01. Prior API version in Azure Native 1.x: 2017-12-01.
 //
-// Other available API versions: 2017-12-01, 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-08-01.
+// Other available API versions: 2017-12-01, 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-08-01, 2024-11-01-preview.
 type Configuration struct {
 	pulumi.CustomResourceState
 
@@ -37,7 +37,7 @@ type Configuration struct {
 	IsReadOnly pulumi.BoolOutput `pulumi:"isReadOnly"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Source of the configuration.
+	// Source of the configuration. Required to update the configuration.
 	Source pulumi.StringPtrOutput `pulumi:"source"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
@@ -45,7 +45,7 @@ type Configuration struct {
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Configuration unit.
 	Unit pulumi.StringOutput `pulumi:"unit"`
-	// Value of the configuration.
+	// Value of the configuration. Required to update the configuration.
 	Value pulumi.StringPtrOutput `pulumi:"value"`
 }
 
@@ -105,6 +105,9 @@ func NewConfiguration(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20240801:Configuration"),
 		},
+		{
+			Type: pulumi.String("azure-native:dbforpostgresql/v20241101preview:Configuration"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -146,9 +149,9 @@ type configurationArgs struct {
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the server.
 	ServerName string `pulumi:"serverName"`
-	// Source of the configuration.
+	// Source of the configuration. Required to update the configuration.
 	Source *string `pulumi:"source"`
-	// Value of the configuration.
+	// Value of the configuration. Required to update the configuration.
 	Value *string `pulumi:"value"`
 }
 
@@ -160,9 +163,9 @@ type ConfigurationArgs struct {
 	ResourceGroupName pulumi.StringInput
 	// The name of the server.
 	ServerName pulumi.StringInput
-	// Source of the configuration.
+	// Source of the configuration. Required to update the configuration.
 	Source pulumi.StringPtrInput
-	// Value of the configuration.
+	// Value of the configuration. Required to update the configuration.
 	Value pulumi.StringPtrInput
 }
 
@@ -248,7 +251,7 @@ func (o ConfigurationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Configuration) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Source of the configuration.
+// Source of the configuration. Required to update the configuration.
 func (o ConfigurationOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Configuration) pulumi.StringPtrOutput { return v.Source }).(pulumi.StringPtrOutput)
 }
@@ -268,7 +271,7 @@ func (o ConfigurationOutput) Unit() pulumi.StringOutput {
 	return o.ApplyT(func(v *Configuration) pulumi.StringOutput { return v.Unit }).(pulumi.StringOutput)
 }
 
-// Value of the configuration.
+// Value of the configuration. Required to update the configuration.
 func (o ConfigurationOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Configuration) pulumi.StringPtrOutput { return v.Value }).(pulumi.StringPtrOutput)
 }

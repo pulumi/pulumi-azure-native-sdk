@@ -13,7 +13,7 @@ import (
 
 // Azure REST API version: 2024-01-01-preview.
 //
-// Other available API versions: 2024-04-01-preview, 2024-07-01-preview.
+// Other available API versions: 2024-04-01-preview, 2024-07-01-preview, 2024-10-01-preview.
 func LookupEndpointDeployment(ctx *pulumi.Context, args *LookupEndpointDeploymentArgs, opts ...pulumi.InvokeOption) (*LookupEndpointDeploymentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupEndpointDeploymentResult

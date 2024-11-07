@@ -94,6 +94,12 @@ func NewModelContainer(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20240701preview:ModelContainer"),
 		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20241001:ModelContainer"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20241001preview:ModelContainer"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

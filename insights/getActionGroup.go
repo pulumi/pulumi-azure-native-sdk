@@ -14,7 +14,7 @@ import (
 // Get an action group.
 // Azure REST API version: 2023-01-01.
 //
-// Other available API versions: 2023-09-01-preview.
+// Other available API versions: 2023-09-01-preview, 2024-10-01-preview.
 func LookupActionGroup(ctx *pulumi.Context, args *LookupActionGroupArgs, opts ...pulumi.InvokeOption) (*LookupActionGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupActionGroupResult
