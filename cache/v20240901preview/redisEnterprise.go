@@ -24,6 +24,8 @@ type RedisEnterprise struct {
 	HostName pulumi.StringOutput `pulumi:"hostName"`
 	// The identity of the resource.
 	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	// Distinguishes the kind of cluster. Read-only.
+	Kind pulumi.StringOutput `pulumi:"kind"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The minimum TLS version for the cluster to support, e.g. '1.2'. Newer versions can be added in the future. Note that TLS 1.0 and TLS 1.1 are now completely obsolete -- you cannot use them. They are mentioned only for the sake of consistency with old API versions.
@@ -248,6 +250,11 @@ func (o RedisEnterpriseOutput) HostName() pulumi.StringOutput {
 // The identity of the resource.
 func (o RedisEnterpriseOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
 	return o.ApplyT(func(v *RedisEnterprise) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
+}
+
+// Distinguishes the kind of cluster. Read-only.
+func (o RedisEnterpriseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *RedisEnterprise) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
 }
 
 // The geo-location where the resource lives

@@ -15,7 +15,7 @@ import (
 // Server backup properties
 // Azure REST API version: 2024-03-01-preview.
 //
-// Other available API versions: 2024-08-01.
+// Other available API versions: 2024-08-01, 2024-11-01-preview.
 type Backup struct {
 	pulumi.CustomResourceState
 
@@ -52,6 +52,9 @@ func NewBackup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20240801:Backup"),
+		},
+		{
+			Type: pulumi.String("azure-native:dbforpostgresql/v20241101preview:Backup"),
 		},
 	})
 	opts = append(opts, aliases)

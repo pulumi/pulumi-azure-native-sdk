@@ -13,6 +13,342 @@ import (
 
 var _ = utilities.GetEnvOrDefault
 
+// Service Tag destination for a Service Tag Outbound Rule for the managed network of a machine learning workspace.
+type ServiceTagDestination struct {
+	PortRanges *string `pulumi:"portRanges"`
+	Protocol   *string `pulumi:"protocol"`
+	ServiceTag *string `pulumi:"serviceTag"`
+}
+
+// ServiceTagDestinationInput is an input type that accepts ServiceTagDestinationArgs and ServiceTagDestinationOutput values.
+// You can construct a concrete instance of `ServiceTagDestinationInput` via:
+//
+//	ServiceTagDestinationArgs{...}
+type ServiceTagDestinationInput interface {
+	pulumi.Input
+
+	ToServiceTagDestinationOutput() ServiceTagDestinationOutput
+	ToServiceTagDestinationOutputWithContext(context.Context) ServiceTagDestinationOutput
+}
+
+// Service Tag destination for a Service Tag Outbound Rule for the managed network of a machine learning workspace.
+type ServiceTagDestinationArgs struct {
+	PortRanges pulumi.StringPtrInput `pulumi:"portRanges"`
+	Protocol   pulumi.StringPtrInput `pulumi:"protocol"`
+	ServiceTag pulumi.StringPtrInput `pulumi:"serviceTag"`
+}
+
+func (ServiceTagDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTagDestination)(nil)).Elem()
+}
+
+func (i ServiceTagDestinationArgs) ToServiceTagDestinationOutput() ServiceTagDestinationOutput {
+	return i.ToServiceTagDestinationOutputWithContext(context.Background())
+}
+
+func (i ServiceTagDestinationArgs) ToServiceTagDestinationOutputWithContext(ctx context.Context) ServiceTagDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTagDestinationOutput)
+}
+
+func (i ServiceTagDestinationArgs) ToServiceTagDestinationPtrOutput() ServiceTagDestinationPtrOutput {
+	return i.ToServiceTagDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceTagDestinationArgs) ToServiceTagDestinationPtrOutputWithContext(ctx context.Context) ServiceTagDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTagDestinationOutput).ToServiceTagDestinationPtrOutputWithContext(ctx)
+}
+
+// ServiceTagDestinationPtrInput is an input type that accepts ServiceTagDestinationArgs, ServiceTagDestinationPtr and ServiceTagDestinationPtrOutput values.
+// You can construct a concrete instance of `ServiceTagDestinationPtrInput` via:
+//
+//	        ServiceTagDestinationArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceTagDestinationPtrInput interface {
+	pulumi.Input
+
+	ToServiceTagDestinationPtrOutput() ServiceTagDestinationPtrOutput
+	ToServiceTagDestinationPtrOutputWithContext(context.Context) ServiceTagDestinationPtrOutput
+}
+
+type serviceTagDestinationPtrType ServiceTagDestinationArgs
+
+func ServiceTagDestinationPtr(v *ServiceTagDestinationArgs) ServiceTagDestinationPtrInput {
+	return (*serviceTagDestinationPtrType)(v)
+}
+
+func (*serviceTagDestinationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTagDestination)(nil)).Elem()
+}
+
+func (i *serviceTagDestinationPtrType) ToServiceTagDestinationPtrOutput() ServiceTagDestinationPtrOutput {
+	return i.ToServiceTagDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceTagDestinationPtrType) ToServiceTagDestinationPtrOutputWithContext(ctx context.Context) ServiceTagDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTagDestinationPtrOutput)
+}
+
+// Service Tag destination for a Service Tag Outbound Rule for the managed network of a machine learning workspace.
+type ServiceTagDestinationOutput struct{ *pulumi.OutputState }
+
+func (ServiceTagDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTagDestination)(nil)).Elem()
+}
+
+func (o ServiceTagDestinationOutput) ToServiceTagDestinationOutput() ServiceTagDestinationOutput {
+	return o
+}
+
+func (o ServiceTagDestinationOutput) ToServiceTagDestinationOutputWithContext(ctx context.Context) ServiceTagDestinationOutput {
+	return o
+}
+
+func (o ServiceTagDestinationOutput) ToServiceTagDestinationPtrOutput() ServiceTagDestinationPtrOutput {
+	return o.ToServiceTagDestinationPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceTagDestinationOutput) ToServiceTagDestinationPtrOutputWithContext(ctx context.Context) ServiceTagDestinationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTagDestination) *ServiceTagDestination {
+		return &v
+	}).(ServiceTagDestinationPtrOutput)
+}
+
+func (o ServiceTagDestinationOutput) PortRanges() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTagDestination) *string { return v.PortRanges }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceTagDestinationOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTagDestination) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceTagDestinationOutput) ServiceTag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTagDestination) *string { return v.ServiceTag }).(pulumi.StringPtrOutput)
+}
+
+type ServiceTagDestinationPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceTagDestinationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTagDestination)(nil)).Elem()
+}
+
+func (o ServiceTagDestinationPtrOutput) ToServiceTagDestinationPtrOutput() ServiceTagDestinationPtrOutput {
+	return o
+}
+
+func (o ServiceTagDestinationPtrOutput) ToServiceTagDestinationPtrOutputWithContext(ctx context.Context) ServiceTagDestinationPtrOutput {
+	return o
+}
+
+func (o ServiceTagDestinationPtrOutput) Elem() ServiceTagDestinationOutput {
+	return o.ApplyT(func(v *ServiceTagDestination) ServiceTagDestination {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceTagDestination
+		return ret
+	}).(ServiceTagDestinationOutput)
+}
+
+func (o ServiceTagDestinationPtrOutput) PortRanges() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTagDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PortRanges
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceTagDestinationPtrOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTagDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Protocol
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceTagDestinationPtrOutput) ServiceTag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTagDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceTag
+	}).(pulumi.StringPtrOutput)
+}
+
+// Service Tag destination for a Service Tag Outbound Rule for the managed network of a machine learning workspace.
+type ServiceTagDestinationResponse struct {
+	PortRanges *string `pulumi:"portRanges"`
+	Protocol   *string `pulumi:"protocol"`
+	ServiceTag *string `pulumi:"serviceTag"`
+}
+
+// Service Tag destination for a Service Tag Outbound Rule for the managed network of a machine learning workspace.
+type ServiceTagDestinationResponseOutput struct{ *pulumi.OutputState }
+
+func (ServiceTagDestinationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTagDestinationResponse)(nil)).Elem()
+}
+
+func (o ServiceTagDestinationResponseOutput) ToServiceTagDestinationResponseOutput() ServiceTagDestinationResponseOutput {
+	return o
+}
+
+func (o ServiceTagDestinationResponseOutput) ToServiceTagDestinationResponseOutputWithContext(ctx context.Context) ServiceTagDestinationResponseOutput {
+	return o
+}
+
+func (o ServiceTagDestinationResponseOutput) PortRanges() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTagDestinationResponse) *string { return v.PortRanges }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceTagDestinationResponseOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTagDestinationResponse) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceTagDestinationResponseOutput) ServiceTag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTagDestinationResponse) *string { return v.ServiceTag }).(pulumi.StringPtrOutput)
+}
+
+type ServiceTagDestinationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceTagDestinationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTagDestinationResponse)(nil)).Elem()
+}
+
+func (o ServiceTagDestinationResponsePtrOutput) ToServiceTagDestinationResponsePtrOutput() ServiceTagDestinationResponsePtrOutput {
+	return o
+}
+
+func (o ServiceTagDestinationResponsePtrOutput) ToServiceTagDestinationResponsePtrOutputWithContext(ctx context.Context) ServiceTagDestinationResponsePtrOutput {
+	return o
+}
+
+func (o ServiceTagDestinationResponsePtrOutput) Elem() ServiceTagDestinationResponseOutput {
+	return o.ApplyT(func(v *ServiceTagDestinationResponse) ServiceTagDestinationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceTagDestinationResponse
+		return ret
+	}).(ServiceTagDestinationResponseOutput)
+}
+
+func (o ServiceTagDestinationResponsePtrOutput) PortRanges() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTagDestinationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PortRanges
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceTagDestinationResponsePtrOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTagDestinationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Protocol
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceTagDestinationResponsePtrOutput) ServiceTag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTagDestinationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceTag
+	}).(pulumi.StringPtrOutput)
+}
+
+// Service Tag Outbound Rule for the managed network of a machine learning workspace.
+type ServiceTagOutboundRule struct {
+	// Category of a managed network Outbound Rule of a machine learning workspace.
+	Category *string `pulumi:"category"`
+	// Service Tag destination for a Service Tag Outbound Rule for the managed network of a machine learning workspace.
+	Destination *ServiceTagDestination `pulumi:"destination"`
+	// Status of a managed network Outbound Rule of a machine learning workspace.
+	Status *string `pulumi:"status"`
+	// Type of a managed network Outbound Rule of a machine learning workspace.
+	// Expected value is 'ServiceTag'.
+	Type string `pulumi:"type"`
+}
+
+// ServiceTagOutboundRuleInput is an input type that accepts ServiceTagOutboundRuleArgs and ServiceTagOutboundRuleOutput values.
+// You can construct a concrete instance of `ServiceTagOutboundRuleInput` via:
+//
+//	ServiceTagOutboundRuleArgs{...}
+type ServiceTagOutboundRuleInput interface {
+	pulumi.Input
+
+	ToServiceTagOutboundRuleOutput() ServiceTagOutboundRuleOutput
+	ToServiceTagOutboundRuleOutputWithContext(context.Context) ServiceTagOutboundRuleOutput
+}
+
+// Service Tag Outbound Rule for the managed network of a machine learning workspace.
+type ServiceTagOutboundRuleArgs struct {
+	// Category of a managed network Outbound Rule of a machine learning workspace.
+	Category pulumi.StringPtrInput `pulumi:"category"`
+	// Service Tag destination for a Service Tag Outbound Rule for the managed network of a machine learning workspace.
+	Destination ServiceTagDestinationPtrInput `pulumi:"destination"`
+	// Status of a managed network Outbound Rule of a machine learning workspace.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// Type of a managed network Outbound Rule of a machine learning workspace.
+	// Expected value is 'ServiceTag'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (ServiceTagOutboundRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTagOutboundRule)(nil)).Elem()
+}
+
+func (i ServiceTagOutboundRuleArgs) ToServiceTagOutboundRuleOutput() ServiceTagOutboundRuleOutput {
+	return i.ToServiceTagOutboundRuleOutputWithContext(context.Background())
+}
+
+func (i ServiceTagOutboundRuleArgs) ToServiceTagOutboundRuleOutputWithContext(ctx context.Context) ServiceTagOutboundRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTagOutboundRuleOutput)
+}
+
+// Service Tag Outbound Rule for the managed network of a machine learning workspace.
+type ServiceTagOutboundRuleOutput struct{ *pulumi.OutputState }
+
+func (ServiceTagOutboundRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTagOutboundRule)(nil)).Elem()
+}
+
+func (o ServiceTagOutboundRuleOutput) ToServiceTagOutboundRuleOutput() ServiceTagOutboundRuleOutput {
+	return o
+}
+
+func (o ServiceTagOutboundRuleOutput) ToServiceTagOutboundRuleOutputWithContext(ctx context.Context) ServiceTagOutboundRuleOutput {
+	return o
+}
+
+// Category of a managed network Outbound Rule of a machine learning workspace.
+func (o ServiceTagOutboundRuleOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTagOutboundRule) *string { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+// Service Tag destination for a Service Tag Outbound Rule for the managed network of a machine learning workspace.
+func (o ServiceTagOutboundRuleOutput) Destination() ServiceTagDestinationPtrOutput {
+	return o.ApplyT(func(v ServiceTagOutboundRule) *ServiceTagDestination { return v.Destination }).(ServiceTagDestinationPtrOutput)
+}
+
+// Status of a managed network Outbound Rule of a machine learning workspace.
+func (o ServiceTagOutboundRuleOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTagOutboundRule) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// Type of a managed network Outbound Rule of a machine learning workspace.
+// Expected value is 'ServiceTag'.
+func (o ServiceTagOutboundRuleOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceTagOutboundRule) string { return v.Type }).(pulumi.StringOutput)
+}
+
 // Service Tag Outbound Rule for the managed network of a machine learning workspace.
 type ServiceTagOutboundRuleResponse struct {
 	// Category of a managed network Outbound Rule of a machine learning workspace.
@@ -13175,6 +13511,11 @@ func (o WorkspaceConnectionUsernamePasswordResponsePtrOutput) Username() pulumi.
 }
 
 func init() {
+	pulumi.RegisterOutputType(ServiceTagDestinationOutput{})
+	pulumi.RegisterOutputType(ServiceTagDestinationPtrOutput{})
+	pulumi.RegisterOutputType(ServiceTagDestinationResponseOutput{})
+	pulumi.RegisterOutputType(ServiceTagDestinationResponsePtrOutput{})
+	pulumi.RegisterOutputType(ServiceTagOutboundRuleOutput{})
 	pulumi.RegisterOutputType(ServiceTagOutboundRuleResponseOutput{})
 	pulumi.RegisterOutputType(SetupScriptsOutput{})
 	pulumi.RegisterOutputType(SetupScriptsPtrOutput{})

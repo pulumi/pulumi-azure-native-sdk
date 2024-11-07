@@ -155,6 +155,9 @@ func NewTrustedAccessRoleBinding(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:containerservice/v20240702preview:TrustedAccessRoleBinding"),
 		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20240901:TrustedAccessRoleBinding"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
