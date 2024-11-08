@@ -1211,8 +1211,6 @@ func (o AccountKeyDatastoreSecretsOutput) SecretsType() pulumi.StringOutput {
 type AcrDetails struct {
 	// Details of system created ACR account to be used for the Registry
 	SystemCreatedAcrAccount *SystemCreatedAcrAccount `pulumi:"systemCreatedAcrAccount"`
-	// Details of user created ACR account to be used for the Registry. Not supported in most cases and will throw 400 error if provided.
-	UserCreatedAcrAccount *UserCreatedAcrAccount `pulumi:"userCreatedAcrAccount"`
 }
 
 // AcrDetailsInput is an input type that accepts AcrDetailsArgs and AcrDetailsOutput values.
@@ -1230,8 +1228,6 @@ type AcrDetailsInput interface {
 type AcrDetailsArgs struct {
 	// Details of system created ACR account to be used for the Registry
 	SystemCreatedAcrAccount SystemCreatedAcrAccountPtrInput `pulumi:"systemCreatedAcrAccount"`
-	// Details of user created ACR account to be used for the Registry. Not supported in most cases and will throw 400 error if provided.
-	UserCreatedAcrAccount UserCreatedAcrAccountPtrInput `pulumi:"userCreatedAcrAccount"`
 }
 
 func (AcrDetailsArgs) ElementType() reflect.Type {
@@ -1291,11 +1287,6 @@ func (o AcrDetailsOutput) SystemCreatedAcrAccount() SystemCreatedAcrAccountPtrOu
 	return o.ApplyT(func(v AcrDetails) *SystemCreatedAcrAccount { return v.SystemCreatedAcrAccount }).(SystemCreatedAcrAccountPtrOutput)
 }
 
-// Details of user created ACR account to be used for the Registry. Not supported in most cases and will throw 400 error if provided.
-func (o AcrDetailsOutput) UserCreatedAcrAccount() UserCreatedAcrAccountPtrOutput {
-	return o.ApplyT(func(v AcrDetails) *UserCreatedAcrAccount { return v.UserCreatedAcrAccount }).(UserCreatedAcrAccountPtrOutput)
-}
-
 type AcrDetailsArrayOutput struct{ *pulumi.OutputState }
 
 func (AcrDetailsArrayOutput) ElementType() reflect.Type {
@@ -1320,8 +1311,6 @@ func (o AcrDetailsArrayOutput) Index(i pulumi.IntInput) AcrDetailsOutput {
 type AcrDetailsResponse struct {
 	// Details of system created ACR account to be used for the Registry
 	SystemCreatedAcrAccount *SystemCreatedAcrAccountResponse `pulumi:"systemCreatedAcrAccount"`
-	// Details of user created ACR account to be used for the Registry. Not supported in most cases and will throw 400 error if provided.
-	UserCreatedAcrAccount *UserCreatedAcrAccountResponse `pulumi:"userCreatedAcrAccount"`
 }
 
 // Details of ACR account to be used for the Registry
@@ -1342,11 +1331,6 @@ func (o AcrDetailsResponseOutput) ToAcrDetailsResponseOutputWithContext(ctx cont
 // Details of system created ACR account to be used for the Registry
 func (o AcrDetailsResponseOutput) SystemCreatedAcrAccount() SystemCreatedAcrAccountResponsePtrOutput {
 	return o.ApplyT(func(v AcrDetailsResponse) *SystemCreatedAcrAccountResponse { return v.SystemCreatedAcrAccount }).(SystemCreatedAcrAccountResponsePtrOutput)
-}
-
-// Details of user created ACR account to be used for the Registry. Not supported in most cases and will throw 400 error if provided.
-func (o AcrDetailsResponseOutput) UserCreatedAcrAccount() UserCreatedAcrAccountResponsePtrOutput {
-	return o.ApplyT(func(v AcrDetailsResponse) *UserCreatedAcrAccountResponse { return v.UserCreatedAcrAccount }).(UserCreatedAcrAccountResponsePtrOutput)
 }
 
 type AcrDetailsResponseArrayOutput struct{ *pulumi.OutputState }

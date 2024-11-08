@@ -152,6 +152,9 @@ func NewProtectedItem(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:recoveryservices/v20240730preview:ProtectedItem"),
 		},
+		{
+			Type: pulumi.String("azure-native:recoveryservices/v20241001:ProtectedItem"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

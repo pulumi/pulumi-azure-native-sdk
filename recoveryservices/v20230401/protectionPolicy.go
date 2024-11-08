@@ -140,6 +140,9 @@ func NewProtectionPolicy(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:recoveryservices/v20240730preview:ProtectionPolicy"),
 		},
+		{
+			Type: pulumi.String("azure-native:recoveryservices/v20241001:ProtectionPolicy"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

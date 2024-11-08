@@ -23992,21 +23992,43 @@ func (o AzureMySqlTableDatasetResponseOutput) Type() pulumi.StringOutput {
 type AzurePostgreSqlLinkedService struct {
 	// List of tags that can be used for describing the linked service.
 	Annotations []interface{} `pulumi:"annotations"`
+	// The time to wait (in seconds) while trying to execute a command before terminating the attempt and generating an error. Set to zero for infinity. Type: integer.
+	CommandTimeout interface{} `pulumi:"commandTimeout"`
 	// The integration runtime reference.
 	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
 	// An ODBC connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
 	ConnectionString interface{} `pulumi:"connectionString"`
+	// Database name for connection. Type: string.
+	Database interface{} `pulumi:"database"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
+	// Gets or sets the .NET encoding that will be used to encode/decode PostgreSQL string data. Type: string
+	Encoding interface{} `pulumi:"encoding"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
 	// The Azure key vault secret reference of password in connection string.
 	Password *AzureKeyVaultSecretReference `pulumi:"password"`
+	// The port for the connection. Type: integer.
+	Port interface{} `pulumi:"port"`
+	// Determines the size of the internal buffer uses when reading. Increasing may improve performance if transferring large values from the database. Type: integer.
+	ReadBufferSize interface{} `pulumi:"readBufferSize"`
+	// Server name for connection. Type: string.
+	Server interface{} `pulumi:"server"`
+	// SSL mode for connection. Type: integer. 0: disable, 1:allow, 2: prefer, 3: require, 4: verify-ca, 5: verify-full. Type: integer.
+	SslMode interface{} `pulumi:"sslMode"`
+	// The time to wait (in seconds) while trying to establish a connection before terminating the attempt and generating an error. Type: integer.
+	Timeout interface{} `pulumi:"timeout"`
+	// Gets or sets the session timezone. Type: string.
+	Timezone interface{} `pulumi:"timezone"`
+	// Whether to trust the server certificate without validating it. Type: boolean.
+	TrustServerCertificate interface{} `pulumi:"trustServerCertificate"`
 	// Type of linked service.
 	// Expected value is 'AzurePostgreSql'.
 	Type string `pulumi:"type"`
+	// Username for authentication. Type: string.
+	Username interface{} `pulumi:"username"`
 	// Version of the linked service.
 	Version *string `pulumi:"version"`
 }
@@ -24026,21 +24048,43 @@ type AzurePostgreSqlLinkedServiceInput interface {
 type AzurePostgreSqlLinkedServiceArgs struct {
 	// List of tags that can be used for describing the linked service.
 	Annotations pulumi.ArrayInput `pulumi:"annotations"`
+	// The time to wait (in seconds) while trying to execute a command before terminating the attempt and generating an error. Set to zero for infinity. Type: integer.
+	CommandTimeout pulumi.Input `pulumi:"commandTimeout"`
 	// The integration runtime reference.
 	ConnectVia IntegrationRuntimeReferencePtrInput `pulumi:"connectVia"`
 	// An ODBC connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
 	ConnectionString pulumi.Input `pulumi:"connectionString"`
+	// Database name for connection. Type: string.
+	Database pulumi.Input `pulumi:"database"`
 	// Linked service description.
 	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Gets or sets the .NET encoding that will be used to encode/decode PostgreSQL string data. Type: string
+	Encoding pulumi.Input `pulumi:"encoding"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential pulumi.StringPtrInput `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters ParameterSpecificationMapInput `pulumi:"parameters"`
 	// The Azure key vault secret reference of password in connection string.
 	Password AzureKeyVaultSecretReferencePtrInput `pulumi:"password"`
+	// The port for the connection. Type: integer.
+	Port pulumi.Input `pulumi:"port"`
+	// Determines the size of the internal buffer uses when reading. Increasing may improve performance if transferring large values from the database. Type: integer.
+	ReadBufferSize pulumi.Input `pulumi:"readBufferSize"`
+	// Server name for connection. Type: string.
+	Server pulumi.Input `pulumi:"server"`
+	// SSL mode for connection. Type: integer. 0: disable, 1:allow, 2: prefer, 3: require, 4: verify-ca, 5: verify-full. Type: integer.
+	SslMode pulumi.Input `pulumi:"sslMode"`
+	// The time to wait (in seconds) while trying to establish a connection before terminating the attempt and generating an error. Type: integer.
+	Timeout pulumi.Input `pulumi:"timeout"`
+	// Gets or sets the session timezone. Type: string.
+	Timezone pulumi.Input `pulumi:"timezone"`
+	// Whether to trust the server certificate without validating it. Type: boolean.
+	TrustServerCertificate pulumi.Input `pulumi:"trustServerCertificate"`
 	// Type of linked service.
 	// Expected value is 'AzurePostgreSql'.
 	Type pulumi.StringInput `pulumi:"type"`
+	// Username for authentication. Type: string.
+	Username pulumi.Input `pulumi:"username"`
 	// Version of the linked service.
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
@@ -24077,6 +24121,11 @@ func (o AzurePostgreSqlLinkedServiceOutput) Annotations() pulumi.ArrayOutput {
 	return o.ApplyT(func(v AzurePostgreSqlLinkedService) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
 }
 
+// The time to wait (in seconds) while trying to execute a command before terminating the attempt and generating an error. Set to zero for infinity. Type: integer.
+func (o AzurePostgreSqlLinkedServiceOutput) CommandTimeout() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzurePostgreSqlLinkedService) interface{} { return v.CommandTimeout }).(pulumi.AnyOutput)
+}
+
 // The integration runtime reference.
 func (o AzurePostgreSqlLinkedServiceOutput) ConnectVia() IntegrationRuntimeReferencePtrOutput {
 	return o.ApplyT(func(v AzurePostgreSqlLinkedService) *IntegrationRuntimeReference { return v.ConnectVia }).(IntegrationRuntimeReferencePtrOutput)
@@ -24087,9 +24136,19 @@ func (o AzurePostgreSqlLinkedServiceOutput) ConnectionString() pulumi.AnyOutput 
 	return o.ApplyT(func(v AzurePostgreSqlLinkedService) interface{} { return v.ConnectionString }).(pulumi.AnyOutput)
 }
 
+// Database name for connection. Type: string.
+func (o AzurePostgreSqlLinkedServiceOutput) Database() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzurePostgreSqlLinkedService) interface{} { return v.Database }).(pulumi.AnyOutput)
+}
+
 // Linked service description.
 func (o AzurePostgreSqlLinkedServiceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AzurePostgreSqlLinkedService) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the .NET encoding that will be used to encode/decode PostgreSQL string data. Type: string
+func (o AzurePostgreSqlLinkedServiceOutput) Encoding() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzurePostgreSqlLinkedService) interface{} { return v.Encoding }).(pulumi.AnyOutput)
 }
 
 // The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
@@ -24107,10 +24166,50 @@ func (o AzurePostgreSqlLinkedServiceOutput) Password() AzureKeyVaultSecretRefere
 	return o.ApplyT(func(v AzurePostgreSqlLinkedService) *AzureKeyVaultSecretReference { return v.Password }).(AzureKeyVaultSecretReferencePtrOutput)
 }
 
+// The port for the connection. Type: integer.
+func (o AzurePostgreSqlLinkedServiceOutput) Port() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzurePostgreSqlLinkedService) interface{} { return v.Port }).(pulumi.AnyOutput)
+}
+
+// Determines the size of the internal buffer uses when reading. Increasing may improve performance if transferring large values from the database. Type: integer.
+func (o AzurePostgreSqlLinkedServiceOutput) ReadBufferSize() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzurePostgreSqlLinkedService) interface{} { return v.ReadBufferSize }).(pulumi.AnyOutput)
+}
+
+// Server name for connection. Type: string.
+func (o AzurePostgreSqlLinkedServiceOutput) Server() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzurePostgreSqlLinkedService) interface{} { return v.Server }).(pulumi.AnyOutput)
+}
+
+// SSL mode for connection. Type: integer. 0: disable, 1:allow, 2: prefer, 3: require, 4: verify-ca, 5: verify-full. Type: integer.
+func (o AzurePostgreSqlLinkedServiceOutput) SslMode() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzurePostgreSqlLinkedService) interface{} { return v.SslMode }).(pulumi.AnyOutput)
+}
+
+// The time to wait (in seconds) while trying to establish a connection before terminating the attempt and generating an error. Type: integer.
+func (o AzurePostgreSqlLinkedServiceOutput) Timeout() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzurePostgreSqlLinkedService) interface{} { return v.Timeout }).(pulumi.AnyOutput)
+}
+
+// Gets or sets the session timezone. Type: string.
+func (o AzurePostgreSqlLinkedServiceOutput) Timezone() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzurePostgreSqlLinkedService) interface{} { return v.Timezone }).(pulumi.AnyOutput)
+}
+
+// Whether to trust the server certificate without validating it. Type: boolean.
+func (o AzurePostgreSqlLinkedServiceOutput) TrustServerCertificate() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzurePostgreSqlLinkedService) interface{} { return v.TrustServerCertificate }).(pulumi.AnyOutput)
+}
+
 // Type of linked service.
 // Expected value is 'AzurePostgreSql'.
 func (o AzurePostgreSqlLinkedServiceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v AzurePostgreSqlLinkedService) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Username for authentication. Type: string.
+func (o AzurePostgreSqlLinkedServiceOutput) Username() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzurePostgreSqlLinkedService) interface{} { return v.Username }).(pulumi.AnyOutput)
 }
 
 // Version of the linked service.
@@ -24122,21 +24221,43 @@ func (o AzurePostgreSqlLinkedServiceOutput) Version() pulumi.StringPtrOutput {
 type AzurePostgreSqlLinkedServiceResponse struct {
 	// List of tags that can be used for describing the linked service.
 	Annotations []interface{} `pulumi:"annotations"`
+	// The time to wait (in seconds) while trying to execute a command before terminating the attempt and generating an error. Set to zero for infinity. Type: integer.
+	CommandTimeout interface{} `pulumi:"commandTimeout"`
 	// The integration runtime reference.
 	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
 	// An ODBC connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
 	ConnectionString interface{} `pulumi:"connectionString"`
+	// Database name for connection. Type: string.
+	Database interface{} `pulumi:"database"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
+	// Gets or sets the .NET encoding that will be used to encode/decode PostgreSQL string data. Type: string
+	Encoding interface{} `pulumi:"encoding"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
 	// The Azure key vault secret reference of password in connection string.
 	Password *AzureKeyVaultSecretReferenceResponse `pulumi:"password"`
+	// The port for the connection. Type: integer.
+	Port interface{} `pulumi:"port"`
+	// Determines the size of the internal buffer uses when reading. Increasing may improve performance if transferring large values from the database. Type: integer.
+	ReadBufferSize interface{} `pulumi:"readBufferSize"`
+	// Server name for connection. Type: string.
+	Server interface{} `pulumi:"server"`
+	// SSL mode for connection. Type: integer. 0: disable, 1:allow, 2: prefer, 3: require, 4: verify-ca, 5: verify-full. Type: integer.
+	SslMode interface{} `pulumi:"sslMode"`
+	// The time to wait (in seconds) while trying to establish a connection before terminating the attempt and generating an error. Type: integer.
+	Timeout interface{} `pulumi:"timeout"`
+	// Gets or sets the session timezone. Type: string.
+	Timezone interface{} `pulumi:"timezone"`
+	// Whether to trust the server certificate without validating it. Type: boolean.
+	TrustServerCertificate interface{} `pulumi:"trustServerCertificate"`
 	// Type of linked service.
 	// Expected value is 'AzurePostgreSql'.
 	Type string `pulumi:"type"`
+	// Username for authentication. Type: string.
+	Username interface{} `pulumi:"username"`
 	// Version of the linked service.
 	Version *string `pulumi:"version"`
 }
@@ -24161,6 +24282,11 @@ func (o AzurePostgreSqlLinkedServiceResponseOutput) Annotations() pulumi.ArrayOu
 	return o.ApplyT(func(v AzurePostgreSqlLinkedServiceResponse) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
 }
 
+// The time to wait (in seconds) while trying to execute a command before terminating the attempt and generating an error. Set to zero for infinity. Type: integer.
+func (o AzurePostgreSqlLinkedServiceResponseOutput) CommandTimeout() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzurePostgreSqlLinkedServiceResponse) interface{} { return v.CommandTimeout }).(pulumi.AnyOutput)
+}
+
 // The integration runtime reference.
 func (o AzurePostgreSqlLinkedServiceResponseOutput) ConnectVia() IntegrationRuntimeReferenceResponsePtrOutput {
 	return o.ApplyT(func(v AzurePostgreSqlLinkedServiceResponse) *IntegrationRuntimeReferenceResponse { return v.ConnectVia }).(IntegrationRuntimeReferenceResponsePtrOutput)
@@ -24171,9 +24297,19 @@ func (o AzurePostgreSqlLinkedServiceResponseOutput) ConnectionString() pulumi.An
 	return o.ApplyT(func(v AzurePostgreSqlLinkedServiceResponse) interface{} { return v.ConnectionString }).(pulumi.AnyOutput)
 }
 
+// Database name for connection. Type: string.
+func (o AzurePostgreSqlLinkedServiceResponseOutput) Database() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzurePostgreSqlLinkedServiceResponse) interface{} { return v.Database }).(pulumi.AnyOutput)
+}
+
 // Linked service description.
 func (o AzurePostgreSqlLinkedServiceResponseOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AzurePostgreSqlLinkedServiceResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the .NET encoding that will be used to encode/decode PostgreSQL string data. Type: string
+func (o AzurePostgreSqlLinkedServiceResponseOutput) Encoding() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzurePostgreSqlLinkedServiceResponse) interface{} { return v.Encoding }).(pulumi.AnyOutput)
 }
 
 // The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
@@ -24193,10 +24329,50 @@ func (o AzurePostgreSqlLinkedServiceResponseOutput) Password() AzureKeyVaultSecr
 	return o.ApplyT(func(v AzurePostgreSqlLinkedServiceResponse) *AzureKeyVaultSecretReferenceResponse { return v.Password }).(AzureKeyVaultSecretReferenceResponsePtrOutput)
 }
 
+// The port for the connection. Type: integer.
+func (o AzurePostgreSqlLinkedServiceResponseOutput) Port() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzurePostgreSqlLinkedServiceResponse) interface{} { return v.Port }).(pulumi.AnyOutput)
+}
+
+// Determines the size of the internal buffer uses when reading. Increasing may improve performance if transferring large values from the database. Type: integer.
+func (o AzurePostgreSqlLinkedServiceResponseOutput) ReadBufferSize() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzurePostgreSqlLinkedServiceResponse) interface{} { return v.ReadBufferSize }).(pulumi.AnyOutput)
+}
+
+// Server name for connection. Type: string.
+func (o AzurePostgreSqlLinkedServiceResponseOutput) Server() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzurePostgreSqlLinkedServiceResponse) interface{} { return v.Server }).(pulumi.AnyOutput)
+}
+
+// SSL mode for connection. Type: integer. 0: disable, 1:allow, 2: prefer, 3: require, 4: verify-ca, 5: verify-full. Type: integer.
+func (o AzurePostgreSqlLinkedServiceResponseOutput) SslMode() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzurePostgreSqlLinkedServiceResponse) interface{} { return v.SslMode }).(pulumi.AnyOutput)
+}
+
+// The time to wait (in seconds) while trying to establish a connection before terminating the attempt and generating an error. Type: integer.
+func (o AzurePostgreSqlLinkedServiceResponseOutput) Timeout() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzurePostgreSqlLinkedServiceResponse) interface{} { return v.Timeout }).(pulumi.AnyOutput)
+}
+
+// Gets or sets the session timezone. Type: string.
+func (o AzurePostgreSqlLinkedServiceResponseOutput) Timezone() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzurePostgreSqlLinkedServiceResponse) interface{} { return v.Timezone }).(pulumi.AnyOutput)
+}
+
+// Whether to trust the server certificate without validating it. Type: boolean.
+func (o AzurePostgreSqlLinkedServiceResponseOutput) TrustServerCertificate() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzurePostgreSqlLinkedServiceResponse) interface{} { return v.TrustServerCertificate }).(pulumi.AnyOutput)
+}
+
 // Type of linked service.
 // Expected value is 'AzurePostgreSql'.
 func (o AzurePostgreSqlLinkedServiceResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v AzurePostgreSqlLinkedServiceResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Username for authentication. Type: string.
+func (o AzurePostgreSqlLinkedServiceResponseOutput) Username() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzurePostgreSqlLinkedServiceResponse) interface{} { return v.Username }).(pulumi.AnyOutput)
 }
 
 // Version of the linked service.
