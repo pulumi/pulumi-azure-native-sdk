@@ -29257,12 +29257,18 @@ func (o MultiplePipelineTriggerResponseOutput) Type() pulumi.StringOutput {
 
 // Linked service for MySQL data source.
 type MySqlLinkedService struct {
+	// This allows the special “zero” date value 0000-00-00 to be retrieved from the database. Type: boolean.
+	AllowZeroDateTime interface{} `pulumi:"allowZeroDateTime"`
 	// List of tags that can be used for describing the linked service.
 	Annotations []interface{} `pulumi:"annotations"`
 	// The integration runtime reference.
 	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
 	// The connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
 	ConnectionString interface{} `pulumi:"connectionString"`
+	// The length of time (in seconds) to wait for a connection to the server before terminating the attempt and generating an error. Type: integer.
+	ConnectionTimeout interface{} `pulumi:"connectionTimeout"`
+	// True to return DateTime.MinValue for date or datetime columns that have disallowed values. Type: boolean.
+	ConvertZeroDateTime interface{} `pulumi:"convertZeroDateTime"`
 	// Database name for connection. Type: string.
 	Database interface{} `pulumi:"database"`
 	// Linked service description.
@@ -29271,6 +29277,8 @@ type MySqlLinkedService struct {
 	DriverVersion interface{} `pulumi:"driverVersion"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential *string `pulumi:"encryptedCredential"`
+	// Determines which column type (if any) should be read as a GUID. Type: string. None: No column types are automatically read as a Guid; Char36: All CHAR(36) columns are read/written as a Guid using lowercase hex with hyphens, which matches UUID.
+	GuidFormat interface{} `pulumi:"guidFormat"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
 	// The Azure key vault secret reference of password in connection string.
@@ -29279,8 +29287,14 @@ type MySqlLinkedService struct {
 	Port interface{} `pulumi:"port"`
 	// Server name for connection. Type: string.
 	Server interface{} `pulumi:"server"`
+	// The path to the client’s SSL certificate file in PEM format. SslKey must also be specified. Type: string.
+	SslCert interface{} `pulumi:"sslCert"`
+	// The path to the client’s SSL private key in PEM format. SslCert must also be specified. Type: string.
+	SslKey interface{} `pulumi:"sslKey"`
 	// SSL mode for connection. Type: integer. 0: disable, 1: prefer, 2: require, 3: verify-ca, 4: verify-full.
 	SslMode interface{} `pulumi:"sslMode"`
+	// When set to true, TINYINT(1) values are returned as booleans. Type: bool.
+	TreatTinyAsBoolean interface{} `pulumi:"treatTinyAsBoolean"`
 	// Type of linked service.
 	// Expected value is 'MySql'.
 	Type string `pulumi:"type"`
@@ -29305,12 +29319,18 @@ type MySqlLinkedServiceInput interface {
 
 // Linked service for MySQL data source.
 type MySqlLinkedServiceArgs struct {
+	// This allows the special “zero” date value 0000-00-00 to be retrieved from the database. Type: boolean.
+	AllowZeroDateTime pulumi.Input `pulumi:"allowZeroDateTime"`
 	// List of tags that can be used for describing the linked service.
 	Annotations pulumi.ArrayInput `pulumi:"annotations"`
 	// The integration runtime reference.
 	ConnectVia IntegrationRuntimeReferencePtrInput `pulumi:"connectVia"`
 	// The connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
 	ConnectionString pulumi.Input `pulumi:"connectionString"`
+	// The length of time (in seconds) to wait for a connection to the server before terminating the attempt and generating an error. Type: integer.
+	ConnectionTimeout pulumi.Input `pulumi:"connectionTimeout"`
+	// True to return DateTime.MinValue for date or datetime columns that have disallowed values. Type: boolean.
+	ConvertZeroDateTime pulumi.Input `pulumi:"convertZeroDateTime"`
 	// Database name for connection. Type: string.
 	Database pulumi.Input `pulumi:"database"`
 	// Linked service description.
@@ -29319,6 +29339,8 @@ type MySqlLinkedServiceArgs struct {
 	DriverVersion pulumi.Input `pulumi:"driverVersion"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential pulumi.StringPtrInput `pulumi:"encryptedCredential"`
+	// Determines which column type (if any) should be read as a GUID. Type: string. None: No column types are automatically read as a Guid; Char36: All CHAR(36) columns are read/written as a Guid using lowercase hex with hyphens, which matches UUID.
+	GuidFormat pulumi.Input `pulumi:"guidFormat"`
 	// Parameters for linked service.
 	Parameters ParameterSpecificationMapInput `pulumi:"parameters"`
 	// The Azure key vault secret reference of password in connection string.
@@ -29327,8 +29349,14 @@ type MySqlLinkedServiceArgs struct {
 	Port pulumi.Input `pulumi:"port"`
 	// Server name for connection. Type: string.
 	Server pulumi.Input `pulumi:"server"`
+	// The path to the client’s SSL certificate file in PEM format. SslKey must also be specified. Type: string.
+	SslCert pulumi.Input `pulumi:"sslCert"`
+	// The path to the client’s SSL private key in PEM format. SslCert must also be specified. Type: string.
+	SslKey pulumi.Input `pulumi:"sslKey"`
 	// SSL mode for connection. Type: integer. 0: disable, 1: prefer, 2: require, 3: verify-ca, 4: verify-full.
 	SslMode pulumi.Input `pulumi:"sslMode"`
+	// When set to true, TINYINT(1) values are returned as booleans. Type: bool.
+	TreatTinyAsBoolean pulumi.Input `pulumi:"treatTinyAsBoolean"`
 	// Type of linked service.
 	// Expected value is 'MySql'.
 	Type pulumi.StringInput `pulumi:"type"`
@@ -29367,6 +29395,11 @@ func (o MySqlLinkedServiceOutput) ToMySqlLinkedServiceOutputWithContext(ctx cont
 	return o
 }
 
+// This allows the special “zero” date value 0000-00-00 to be retrieved from the database. Type: boolean.
+func (o MySqlLinkedServiceOutput) AllowZeroDateTime() pulumi.AnyOutput {
+	return o.ApplyT(func(v MySqlLinkedService) interface{} { return v.AllowZeroDateTime }).(pulumi.AnyOutput)
+}
+
 // List of tags that can be used for describing the linked service.
 func (o MySqlLinkedServiceOutput) Annotations() pulumi.ArrayOutput {
 	return o.ApplyT(func(v MySqlLinkedService) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
@@ -29380,6 +29413,16 @@ func (o MySqlLinkedServiceOutput) ConnectVia() IntegrationRuntimeReferencePtrOut
 // The connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
 func (o MySqlLinkedServiceOutput) ConnectionString() pulumi.AnyOutput {
 	return o.ApplyT(func(v MySqlLinkedService) interface{} { return v.ConnectionString }).(pulumi.AnyOutput)
+}
+
+// The length of time (in seconds) to wait for a connection to the server before terminating the attempt and generating an error. Type: integer.
+func (o MySqlLinkedServiceOutput) ConnectionTimeout() pulumi.AnyOutput {
+	return o.ApplyT(func(v MySqlLinkedService) interface{} { return v.ConnectionTimeout }).(pulumi.AnyOutput)
+}
+
+// True to return DateTime.MinValue for date or datetime columns that have disallowed values. Type: boolean.
+func (o MySqlLinkedServiceOutput) ConvertZeroDateTime() pulumi.AnyOutput {
+	return o.ApplyT(func(v MySqlLinkedService) interface{} { return v.ConvertZeroDateTime }).(pulumi.AnyOutput)
 }
 
 // Database name for connection. Type: string.
@@ -29402,6 +29445,11 @@ func (o MySqlLinkedServiceOutput) EncryptedCredential() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlLinkedService) *string { return v.EncryptedCredential }).(pulumi.StringPtrOutput)
 }
 
+// Determines which column type (if any) should be read as a GUID. Type: string. None: No column types are automatically read as a Guid; Char36: All CHAR(36) columns are read/written as a Guid using lowercase hex with hyphens, which matches UUID.
+func (o MySqlLinkedServiceOutput) GuidFormat() pulumi.AnyOutput {
+	return o.ApplyT(func(v MySqlLinkedService) interface{} { return v.GuidFormat }).(pulumi.AnyOutput)
+}
+
 // Parameters for linked service.
 func (o MySqlLinkedServiceOutput) Parameters() ParameterSpecificationMapOutput {
 	return o.ApplyT(func(v MySqlLinkedService) map[string]ParameterSpecification { return v.Parameters }).(ParameterSpecificationMapOutput)
@@ -29422,9 +29470,24 @@ func (o MySqlLinkedServiceOutput) Server() pulumi.AnyOutput {
 	return o.ApplyT(func(v MySqlLinkedService) interface{} { return v.Server }).(pulumi.AnyOutput)
 }
 
+// The path to the client’s SSL certificate file in PEM format. SslKey must also be specified. Type: string.
+func (o MySqlLinkedServiceOutput) SslCert() pulumi.AnyOutput {
+	return o.ApplyT(func(v MySqlLinkedService) interface{} { return v.SslCert }).(pulumi.AnyOutput)
+}
+
+// The path to the client’s SSL private key in PEM format. SslCert must also be specified. Type: string.
+func (o MySqlLinkedServiceOutput) SslKey() pulumi.AnyOutput {
+	return o.ApplyT(func(v MySqlLinkedService) interface{} { return v.SslKey }).(pulumi.AnyOutput)
+}
+
 // SSL mode for connection. Type: integer. 0: disable, 1: prefer, 2: require, 3: verify-ca, 4: verify-full.
 func (o MySqlLinkedServiceOutput) SslMode() pulumi.AnyOutput {
 	return o.ApplyT(func(v MySqlLinkedService) interface{} { return v.SslMode }).(pulumi.AnyOutput)
+}
+
+// When set to true, TINYINT(1) values are returned as booleans. Type: bool.
+func (o MySqlLinkedServiceOutput) TreatTinyAsBoolean() pulumi.AnyOutput {
+	return o.ApplyT(func(v MySqlLinkedService) interface{} { return v.TreatTinyAsBoolean }).(pulumi.AnyOutput)
 }
 
 // Type of linked service.
@@ -29450,12 +29513,18 @@ func (o MySqlLinkedServiceOutput) Version() pulumi.StringPtrOutput {
 
 // Linked service for MySQL data source.
 type MySqlLinkedServiceResponse struct {
+	// This allows the special “zero” date value 0000-00-00 to be retrieved from the database. Type: boolean.
+	AllowZeroDateTime interface{} `pulumi:"allowZeroDateTime"`
 	// List of tags that can be used for describing the linked service.
 	Annotations []interface{} `pulumi:"annotations"`
 	// The integration runtime reference.
 	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
 	// The connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
 	ConnectionString interface{} `pulumi:"connectionString"`
+	// The length of time (in seconds) to wait for a connection to the server before terminating the attempt and generating an error. Type: integer.
+	ConnectionTimeout interface{} `pulumi:"connectionTimeout"`
+	// True to return DateTime.MinValue for date or datetime columns that have disallowed values. Type: boolean.
+	ConvertZeroDateTime interface{} `pulumi:"convertZeroDateTime"`
 	// Database name for connection. Type: string.
 	Database interface{} `pulumi:"database"`
 	// Linked service description.
@@ -29464,6 +29533,8 @@ type MySqlLinkedServiceResponse struct {
 	DriverVersion interface{} `pulumi:"driverVersion"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential *string `pulumi:"encryptedCredential"`
+	// Determines which column type (if any) should be read as a GUID. Type: string. None: No column types are automatically read as a Guid; Char36: All CHAR(36) columns are read/written as a Guid using lowercase hex with hyphens, which matches UUID.
+	GuidFormat interface{} `pulumi:"guidFormat"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
 	// The Azure key vault secret reference of password in connection string.
@@ -29472,8 +29543,14 @@ type MySqlLinkedServiceResponse struct {
 	Port interface{} `pulumi:"port"`
 	// Server name for connection. Type: string.
 	Server interface{} `pulumi:"server"`
+	// The path to the client’s SSL certificate file in PEM format. SslKey must also be specified. Type: string.
+	SslCert interface{} `pulumi:"sslCert"`
+	// The path to the client’s SSL private key in PEM format. SslCert must also be specified. Type: string.
+	SslKey interface{} `pulumi:"sslKey"`
 	// SSL mode for connection. Type: integer. 0: disable, 1: prefer, 2: require, 3: verify-ca, 4: verify-full.
 	SslMode interface{} `pulumi:"sslMode"`
+	// When set to true, TINYINT(1) values are returned as booleans. Type: bool.
+	TreatTinyAsBoolean interface{} `pulumi:"treatTinyAsBoolean"`
 	// Type of linked service.
 	// Expected value is 'MySql'.
 	Type string `pulumi:"type"`
@@ -29500,6 +29577,11 @@ func (o MySqlLinkedServiceResponseOutput) ToMySqlLinkedServiceResponseOutputWith
 	return o
 }
 
+// This allows the special “zero” date value 0000-00-00 to be retrieved from the database. Type: boolean.
+func (o MySqlLinkedServiceResponseOutput) AllowZeroDateTime() pulumi.AnyOutput {
+	return o.ApplyT(func(v MySqlLinkedServiceResponse) interface{} { return v.AllowZeroDateTime }).(pulumi.AnyOutput)
+}
+
 // List of tags that can be used for describing the linked service.
 func (o MySqlLinkedServiceResponseOutput) Annotations() pulumi.ArrayOutput {
 	return o.ApplyT(func(v MySqlLinkedServiceResponse) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
@@ -29513,6 +29595,16 @@ func (o MySqlLinkedServiceResponseOutput) ConnectVia() IntegrationRuntimeReferen
 // The connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
 func (o MySqlLinkedServiceResponseOutput) ConnectionString() pulumi.AnyOutput {
 	return o.ApplyT(func(v MySqlLinkedServiceResponse) interface{} { return v.ConnectionString }).(pulumi.AnyOutput)
+}
+
+// The length of time (in seconds) to wait for a connection to the server before terminating the attempt and generating an error. Type: integer.
+func (o MySqlLinkedServiceResponseOutput) ConnectionTimeout() pulumi.AnyOutput {
+	return o.ApplyT(func(v MySqlLinkedServiceResponse) interface{} { return v.ConnectionTimeout }).(pulumi.AnyOutput)
+}
+
+// True to return DateTime.MinValue for date or datetime columns that have disallowed values. Type: boolean.
+func (o MySqlLinkedServiceResponseOutput) ConvertZeroDateTime() pulumi.AnyOutput {
+	return o.ApplyT(func(v MySqlLinkedServiceResponse) interface{} { return v.ConvertZeroDateTime }).(pulumi.AnyOutput)
 }
 
 // Database name for connection. Type: string.
@@ -29535,6 +29627,11 @@ func (o MySqlLinkedServiceResponseOutput) EncryptedCredential() pulumi.StringPtr
 	return o.ApplyT(func(v MySqlLinkedServiceResponse) *string { return v.EncryptedCredential }).(pulumi.StringPtrOutput)
 }
 
+// Determines which column type (if any) should be read as a GUID. Type: string. None: No column types are automatically read as a Guid; Char36: All CHAR(36) columns are read/written as a Guid using lowercase hex with hyphens, which matches UUID.
+func (o MySqlLinkedServiceResponseOutput) GuidFormat() pulumi.AnyOutput {
+	return o.ApplyT(func(v MySqlLinkedServiceResponse) interface{} { return v.GuidFormat }).(pulumi.AnyOutput)
+}
+
 // Parameters for linked service.
 func (o MySqlLinkedServiceResponseOutput) Parameters() ParameterSpecificationResponseMapOutput {
 	return o.ApplyT(func(v MySqlLinkedServiceResponse) map[string]ParameterSpecificationResponse { return v.Parameters }).(ParameterSpecificationResponseMapOutput)
@@ -29555,9 +29652,24 @@ func (o MySqlLinkedServiceResponseOutput) Server() pulumi.AnyOutput {
 	return o.ApplyT(func(v MySqlLinkedServiceResponse) interface{} { return v.Server }).(pulumi.AnyOutput)
 }
 
+// The path to the client’s SSL certificate file in PEM format. SslKey must also be specified. Type: string.
+func (o MySqlLinkedServiceResponseOutput) SslCert() pulumi.AnyOutput {
+	return o.ApplyT(func(v MySqlLinkedServiceResponse) interface{} { return v.SslCert }).(pulumi.AnyOutput)
+}
+
+// The path to the client’s SSL private key in PEM format. SslCert must also be specified. Type: string.
+func (o MySqlLinkedServiceResponseOutput) SslKey() pulumi.AnyOutput {
+	return o.ApplyT(func(v MySqlLinkedServiceResponse) interface{} { return v.SslKey }).(pulumi.AnyOutput)
+}
+
 // SSL mode for connection. Type: integer. 0: disable, 1: prefer, 2: require, 3: verify-ca, 4: verify-full.
 func (o MySqlLinkedServiceResponseOutput) SslMode() pulumi.AnyOutput {
 	return o.ApplyT(func(v MySqlLinkedServiceResponse) interface{} { return v.SslMode }).(pulumi.AnyOutput)
+}
+
+// When set to true, TINYINT(1) values are returned as booleans. Type: bool.
+func (o MySqlLinkedServiceResponseOutput) TreatTinyAsBoolean() pulumi.AnyOutput {
+	return o.ApplyT(func(v MySqlLinkedServiceResponse) interface{} { return v.TreatTinyAsBoolean }).(pulumi.AnyOutput)
 }
 
 // Type of linked service.

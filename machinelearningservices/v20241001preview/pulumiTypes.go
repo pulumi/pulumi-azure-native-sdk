@@ -9675,7 +9675,7 @@ func (o BatchDeploymentResponseOutput) RetrySettings() BatchRetrySettingsRespons
 
 // Batch endpoint configuration.
 type BatchEndpointType struct {
-	// [Required] Use 'Key' for key based authentication and 'AMLToken' for Azure Machine Learning token-based authentication. 'Key' doesn't expire but 'AMLToken' does.
+	// [Required] The authentication method for invoking the endpoint (data plane operation). Use 'Key' for key-based authentication. Use 'AMLToken' for Azure Machine Learning token-based authentication. Use 'AADToken' for Microsoft Entra token-based authentication.
 	AuthMode string `pulumi:"authMode"`
 	// Default values for Batch Endpoint
 	Defaults *BatchEndpointDefaults `pulumi:"defaults"`
@@ -9701,7 +9701,7 @@ type BatchEndpointTypeInput interface {
 
 // Batch endpoint configuration.
 type BatchEndpointTypeArgs struct {
-	// [Required] Use 'Key' for key based authentication and 'AMLToken' for Azure Machine Learning token-based authentication. 'Key' doesn't expire but 'AMLToken' does.
+	// [Required] The authentication method for invoking the endpoint (data plane operation). Use 'Key' for key-based authentication. Use 'AMLToken' for Azure Machine Learning token-based authentication. Use 'AADToken' for Microsoft Entra token-based authentication.
 	AuthMode pulumi.StringInput `pulumi:"authMode"`
 	// Default values for Batch Endpoint
 	Defaults BatchEndpointDefaultsPtrInput `pulumi:"defaults"`
@@ -9741,7 +9741,7 @@ func (o BatchEndpointTypeOutput) ToBatchEndpointTypeOutputWithContext(ctx contex
 	return o
 }
 
-// [Required] Use 'Key' for key based authentication and 'AMLToken' for Azure Machine Learning token-based authentication. 'Key' doesn't expire but 'AMLToken' does.
+// [Required] The authentication method for invoking the endpoint (data plane operation). Use 'Key' for key-based authentication. Use 'AMLToken' for Azure Machine Learning token-based authentication. Use 'AADToken' for Microsoft Entra token-based authentication.
 func (o BatchEndpointTypeOutput) AuthMode() pulumi.StringOutput {
 	return o.ApplyT(func(v BatchEndpointType) string { return v.AuthMode }).(pulumi.StringOutput)
 }
@@ -9976,7 +9976,7 @@ func (o BatchEndpointDefaultsResponsePtrOutput) DeploymentName() pulumi.StringPt
 
 // Batch endpoint configuration.
 type BatchEndpointResponse struct {
-	// [Required] Use 'Key' for key based authentication and 'AMLToken' for Azure Machine Learning token-based authentication. 'Key' doesn't expire but 'AMLToken' does.
+	// [Required] The authentication method for invoking the endpoint (data plane operation). Use 'Key' for key-based authentication. Use 'AMLToken' for Azure Machine Learning token-based authentication. Use 'AADToken' for Microsoft Entra token-based authentication.
 	AuthMode string `pulumi:"authMode"`
 	// Default values for Batch Endpoint
 	Defaults *BatchEndpointDefaultsResponse `pulumi:"defaults"`
@@ -10007,7 +10007,7 @@ func (o BatchEndpointResponseOutput) ToBatchEndpointResponseOutputWithContext(ct
 	return o
 }
 
-// [Required] Use 'Key' for key based authentication and 'AMLToken' for Azure Machine Learning token-based authentication. 'Key' doesn't expire but 'AMLToken' does.
+// [Required] The authentication method for invoking the endpoint (data plane operation). Use 'Key' for key-based authentication. Use 'AMLToken' for Azure Machine Learning token-based authentication. Use 'AADToken' for Microsoft Entra token-based authentication.
 func (o BatchEndpointResponseOutput) AuthMode() pulumi.StringOutput {
 	return o.ApplyT(func(v BatchEndpointResponse) string { return v.AuthMode }).(pulumi.StringOutput)
 }
@@ -47234,7 +47234,7 @@ type KubernetesOnlineDeployment struct {
 	EnvironmentId *string `pulumi:"environmentId"`
 	// Environment variables configuration for the deployment.
 	EnvironmentVariables map[string]string `pulumi:"environmentVariables"`
-	// Compute instance type.
+	// Compute instance type. Default: Standard_F4s_v2.
 	InstanceType *string `pulumi:"instanceType"`
 	// Liveness probe monitors the health of the container regularly.
 	LivenessProbe *ProbeSettings `pulumi:"livenessProbe"`
@@ -47270,6 +47270,10 @@ func (val *KubernetesOnlineDeployment) Defaults() *KubernetesOnlineDeployment {
 	if tmp.EgressPublicNetworkAccess == nil {
 		egressPublicNetworkAccess_ := "Enabled"
 		tmp.EgressPublicNetworkAccess = &egressPublicNetworkAccess_
+	}
+	if tmp.InstanceType == nil {
+		instanceType_ := "Standard_F4s_v2"
+		tmp.InstanceType = &instanceType_
 	}
 	tmp.LivenessProbe = tmp.LivenessProbe.Defaults()
 
@@ -47312,7 +47316,7 @@ type KubernetesOnlineDeploymentArgs struct {
 	EnvironmentId pulumi.StringPtrInput `pulumi:"environmentId"`
 	// Environment variables configuration for the deployment.
 	EnvironmentVariables pulumi.StringMapInput `pulumi:"environmentVariables"`
-	// Compute instance type.
+	// Compute instance type. Default: Standard_F4s_v2.
 	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
 	// Liveness probe monitors the health of the container regularly.
 	LivenessProbe ProbeSettingsPtrInput `pulumi:"livenessProbe"`
@@ -47345,6 +47349,9 @@ func (val *KubernetesOnlineDeploymentArgs) Defaults() *KubernetesOnlineDeploymen
 
 	if tmp.EgressPublicNetworkAccess == nil {
 		tmp.EgressPublicNetworkAccess = pulumi.StringPtr("Enabled")
+	}
+	if tmp.InstanceType == nil {
+		tmp.InstanceType = pulumi.StringPtr("Standard_F4s_v2")
 	}
 
 	return &tmp
@@ -47424,7 +47431,7 @@ func (o KubernetesOnlineDeploymentOutput) EnvironmentVariables() pulumi.StringMa
 	return o.ApplyT(func(v KubernetesOnlineDeployment) map[string]string { return v.EnvironmentVariables }).(pulumi.StringMapOutput)
 }
 
-// Compute instance type.
+// Compute instance type. Default: Standard_F4s_v2.
 func (o KubernetesOnlineDeploymentOutput) InstanceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesOnlineDeployment) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
 }
@@ -47488,7 +47495,7 @@ type KubernetesOnlineDeploymentResponse struct {
 	EnvironmentId *string `pulumi:"environmentId"`
 	// Environment variables configuration for the deployment.
 	EnvironmentVariables map[string]string `pulumi:"environmentVariables"`
-	// Compute instance type.
+	// Compute instance type. Default: Standard_F4s_v2.
 	InstanceType *string `pulumi:"instanceType"`
 	// Liveness probe monitors the health of the container regularly.
 	LivenessProbe *ProbeSettingsResponse `pulumi:"livenessProbe"`
@@ -47526,6 +47533,10 @@ func (val *KubernetesOnlineDeploymentResponse) Defaults() *KubernetesOnlineDeplo
 	if tmp.EgressPublicNetworkAccess == nil {
 		egressPublicNetworkAccess_ := "Enabled"
 		tmp.EgressPublicNetworkAccess = &egressPublicNetworkAccess_
+	}
+	if tmp.InstanceType == nil {
+		instanceType_ := "Standard_F4s_v2"
+		tmp.InstanceType = &instanceType_
 	}
 	tmp.LivenessProbe = tmp.LivenessProbe.Defaults()
 
@@ -47599,7 +47610,7 @@ func (o KubernetesOnlineDeploymentResponseOutput) EnvironmentVariables() pulumi.
 	return o.ApplyT(func(v KubernetesOnlineDeploymentResponse) map[string]string { return v.EnvironmentVariables }).(pulumi.StringMapOutput)
 }
 
-// Compute instance type.
+// Compute instance type. Default: Standard_F4s_v2.
 func (o KubernetesOnlineDeploymentResponseOutput) InstanceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesOnlineDeploymentResponse) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
 }
@@ -51230,7 +51241,7 @@ type ManagedOnlineDeployment struct {
 	EnvironmentId *string `pulumi:"environmentId"`
 	// Environment variables configuration for the deployment.
 	EnvironmentVariables map[string]string `pulumi:"environmentVariables"`
-	// Compute instance type.
+	// Compute instance type. Default: Standard_F4s_v2.
 	InstanceType *string `pulumi:"instanceType"`
 	// Liveness probe monitors the health of the container regularly.
 	LivenessProbe *ProbeSettings `pulumi:"livenessProbe"`
@@ -51266,6 +51277,10 @@ func (val *ManagedOnlineDeployment) Defaults() *ManagedOnlineDeployment {
 	if tmp.EgressPublicNetworkAccess == nil {
 		egressPublicNetworkAccess_ := "Enabled"
 		tmp.EgressPublicNetworkAccess = &egressPublicNetworkAccess_
+	}
+	if tmp.InstanceType == nil {
+		instanceType_ := "Standard_F4s_v2"
+		tmp.InstanceType = &instanceType_
 	}
 	tmp.LivenessProbe = tmp.LivenessProbe.Defaults()
 
@@ -51306,7 +51321,7 @@ type ManagedOnlineDeploymentArgs struct {
 	EnvironmentId pulumi.StringPtrInput `pulumi:"environmentId"`
 	// Environment variables configuration for the deployment.
 	EnvironmentVariables pulumi.StringMapInput `pulumi:"environmentVariables"`
-	// Compute instance type.
+	// Compute instance type. Default: Standard_F4s_v2.
 	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
 	// Liveness probe monitors the health of the container regularly.
 	LivenessProbe ProbeSettingsPtrInput `pulumi:"livenessProbe"`
@@ -51339,6 +51354,9 @@ func (val *ManagedOnlineDeploymentArgs) Defaults() *ManagedOnlineDeploymentArgs 
 
 	if tmp.EgressPublicNetworkAccess == nil {
 		tmp.EgressPublicNetworkAccess = pulumi.StringPtr("Enabled")
+	}
+	if tmp.InstanceType == nil {
+		tmp.InstanceType = pulumi.StringPtr("Standard_F4s_v2")
 	}
 
 	return &tmp
@@ -51411,7 +51429,7 @@ func (o ManagedOnlineDeploymentOutput) EnvironmentVariables() pulumi.StringMapOu
 	return o.ApplyT(func(v ManagedOnlineDeployment) map[string]string { return v.EnvironmentVariables }).(pulumi.StringMapOutput)
 }
 
-// Compute instance type.
+// Compute instance type. Default: Standard_F4s_v2.
 func (o ManagedOnlineDeploymentOutput) InstanceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedOnlineDeployment) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
 }
@@ -51473,7 +51491,7 @@ type ManagedOnlineDeploymentResponse struct {
 	EnvironmentId *string `pulumi:"environmentId"`
 	// Environment variables configuration for the deployment.
 	EnvironmentVariables map[string]string `pulumi:"environmentVariables"`
-	// Compute instance type.
+	// Compute instance type. Default: Standard_F4s_v2.
 	InstanceType *string `pulumi:"instanceType"`
 	// Liveness probe monitors the health of the container regularly.
 	LivenessProbe *ProbeSettingsResponse `pulumi:"livenessProbe"`
@@ -51511,6 +51529,10 @@ func (val *ManagedOnlineDeploymentResponse) Defaults() *ManagedOnlineDeploymentR
 	if tmp.EgressPublicNetworkAccess == nil {
 		egressPublicNetworkAccess_ := "Enabled"
 		tmp.EgressPublicNetworkAccess = &egressPublicNetworkAccess_
+	}
+	if tmp.InstanceType == nil {
+		instanceType_ := "Standard_F4s_v2"
+		tmp.InstanceType = &instanceType_
 	}
 	tmp.LivenessProbe = tmp.LivenessProbe.Defaults()
 
@@ -51577,7 +51599,7 @@ func (o ManagedOnlineDeploymentResponseOutput) EnvironmentVariables() pulumi.Str
 	return o.ApplyT(func(v ManagedOnlineDeploymentResponse) map[string]string { return v.EnvironmentVariables }).(pulumi.StringMapOutput)
 }
 
-// Compute instance type.
+// Compute instance type. Default: Standard_F4s_v2.
 func (o ManagedOnlineDeploymentResponseOutput) InstanceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedOnlineDeploymentResponse) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
 }
@@ -57696,7 +57718,7 @@ func (o OneLakeDatastoreResponseOutput) Tags() pulumi.StringMapOutput {
 
 // Online endpoint configuration
 type OnlineEndpointType struct {
-	// [Required] Use 'Key' for key based authentication and 'AMLToken' for Azure Machine Learning token-based authentication. 'Key' doesn't expire but 'AMLToken' does.
+	// [Required] The authentication method for invoking the endpoint (data plane operation). Use 'Key' for key-based authentication. Use 'AMLToken' for Azure Machine Learning token-based authentication. Use 'AADToken' for Microsoft Entra token-based authentication.
 	AuthMode string `pulumi:"authMode"`
 	// ARM resource ID of the compute if it exists.
 	// optional
@@ -57742,7 +57764,7 @@ type OnlineEndpointTypeInput interface {
 
 // Online endpoint configuration
 type OnlineEndpointTypeArgs struct {
-	// [Required] Use 'Key' for key based authentication and 'AMLToken' for Azure Machine Learning token-based authentication. 'Key' doesn't expire but 'AMLToken' does.
+	// [Required] The authentication method for invoking the endpoint (data plane operation). Use 'Key' for key-based authentication. Use 'AMLToken' for Azure Machine Learning token-based authentication. Use 'AADToken' for Microsoft Entra token-based authentication.
 	AuthMode pulumi.StringInput `pulumi:"authMode"`
 	// ARM resource ID of the compute if it exists.
 	// optional
@@ -57800,7 +57822,7 @@ func (o OnlineEndpointTypeOutput) ToOnlineEndpointTypeOutputWithContext(ctx cont
 	return o
 }
 
-// [Required] Use 'Key' for key based authentication and 'AMLToken' for Azure Machine Learning token-based authentication. 'Key' doesn't expire but 'AMLToken' does.
+// [Required] The authentication method for invoking the endpoint (data plane operation). Use 'Key' for key-based authentication. Use 'AMLToken' for Azure Machine Learning token-based authentication. Use 'AADToken' for Microsoft Entra token-based authentication.
 func (o OnlineEndpointTypeOutput) AuthMode() pulumi.StringOutput {
 	return o.ApplyT(func(v OnlineEndpointType) string { return v.AuthMode }).(pulumi.StringOutput)
 }
@@ -57844,7 +57866,7 @@ func (o OnlineEndpointTypeOutput) Traffic() pulumi.IntMapOutput {
 
 // Online endpoint configuration
 type OnlineEndpointResponse struct {
-	// [Required] Use 'Key' for key based authentication and 'AMLToken' for Azure Machine Learning token-based authentication. 'Key' doesn't expire but 'AMLToken' does.
+	// [Required] The authentication method for invoking the endpoint (data plane operation). Use 'Key' for key-based authentication. Use 'AMLToken' for Azure Machine Learning token-based authentication. Use 'AADToken' for Microsoft Entra token-based authentication.
 	AuthMode string `pulumi:"authMode"`
 	// ARM resource ID of the compute if it exists.
 	// optional
@@ -57895,7 +57917,7 @@ func (o OnlineEndpointResponseOutput) ToOnlineEndpointResponseOutputWithContext(
 	return o
 }
 
-// [Required] Use 'Key' for key based authentication and 'AMLToken' for Azure Machine Learning token-based authentication. 'Key' doesn't expire but 'AMLToken' does.
+// [Required] The authentication method for invoking the endpoint (data plane operation). Use 'Key' for key-based authentication. Use 'AMLToken' for Azure Machine Learning token-based authentication. Use 'AADToken' for Microsoft Entra token-based authentication.
 func (o OnlineEndpointResponseOutput) AuthMode() pulumi.StringOutput {
 	return o.ApplyT(func(v OnlineEndpointResponse) string { return v.AuthMode }).(pulumi.StringOutput)
 }
