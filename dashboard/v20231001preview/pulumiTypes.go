@@ -397,6 +397,8 @@ func (o EnterpriseConfigurationsResponsePtrOutput) MarketplacePlanId() pulumi.St
 
 // Server configurations of a Grafana instance
 type GrafanaConfigurations struct {
+	// Grafana security settings
+	Security *Security `pulumi:"security"`
 	// Email server settings.
 	// https://grafana.com/docs/grafana/v9.0/setup-grafana/configure-grafana/#smtp
 	Smtp *Smtp `pulumi:"smtp"`
@@ -430,6 +432,8 @@ type GrafanaConfigurationsInput interface {
 
 // Server configurations of a Grafana instance
 type GrafanaConfigurationsArgs struct {
+	// Grafana security settings
+	Security SecurityPtrInput `pulumi:"security"`
 	// Email server settings.
 	// https://grafana.com/docs/grafana/v9.0/setup-grafana/configure-grafana/#smtp
 	Smtp SmtpPtrInput `pulumi:"smtp"`
@@ -526,6 +530,11 @@ func (o GrafanaConfigurationsOutput) ToGrafanaConfigurationsPtrOutputWithContext
 	}).(GrafanaConfigurationsPtrOutput)
 }
 
+// Grafana security settings
+func (o GrafanaConfigurationsOutput) Security() SecurityPtrOutput {
+	return o.ApplyT(func(v GrafanaConfigurations) *Security { return v.Security }).(SecurityPtrOutput)
+}
+
 // Email server settings.
 // https://grafana.com/docs/grafana/v9.0/setup-grafana/configure-grafana/#smtp
 func (o GrafanaConfigurationsOutput) Smtp() SmtpPtrOutput {
@@ -566,6 +575,16 @@ func (o GrafanaConfigurationsPtrOutput) Elem() GrafanaConfigurationsOutput {
 	}).(GrafanaConfigurationsOutput)
 }
 
+// Grafana security settings
+func (o GrafanaConfigurationsPtrOutput) Security() SecurityPtrOutput {
+	return o.ApplyT(func(v *GrafanaConfigurations) *Security {
+		if v == nil {
+			return nil
+		}
+		return v.Security
+	}).(SecurityPtrOutput)
+}
+
 // Email server settings.
 // https://grafana.com/docs/grafana/v9.0/setup-grafana/configure-grafana/#smtp
 func (o GrafanaConfigurationsPtrOutput) Smtp() SmtpPtrOutput {
@@ -599,6 +618,8 @@ func (o GrafanaConfigurationsPtrOutput) Users() UsersPtrOutput {
 
 // Server configurations of a Grafana instance
 type GrafanaConfigurationsResponse struct {
+	// Grafana security settings
+	Security *SecurityResponse `pulumi:"security"`
 	// Email server settings.
 	// https://grafana.com/docs/grafana/v9.0/setup-grafana/configure-grafana/#smtp
 	Smtp *SmtpResponse `pulumi:"smtp"`
@@ -632,6 +653,11 @@ func (o GrafanaConfigurationsResponseOutput) ToGrafanaConfigurationsResponseOutp
 
 func (o GrafanaConfigurationsResponseOutput) ToGrafanaConfigurationsResponseOutputWithContext(ctx context.Context) GrafanaConfigurationsResponseOutput {
 	return o
+}
+
+// Grafana security settings
+func (o GrafanaConfigurationsResponseOutput) Security() SecurityResponsePtrOutput {
+	return o.ApplyT(func(v GrafanaConfigurationsResponse) *SecurityResponse { return v.Security }).(SecurityResponsePtrOutput)
 }
 
 // Email server settings.
@@ -672,6 +698,16 @@ func (o GrafanaConfigurationsResponsePtrOutput) Elem() GrafanaConfigurationsResp
 		var ret GrafanaConfigurationsResponse
 		return ret
 	}).(GrafanaConfigurationsResponseOutput)
+}
+
+// Grafana security settings
+func (o GrafanaConfigurationsResponsePtrOutput) Security() SecurityResponsePtrOutput {
+	return o.ApplyT(func(v *GrafanaConfigurationsResponse) *SecurityResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Security
+	}).(SecurityResponsePtrOutput)
 }
 
 // Email server settings.
@@ -2403,6 +2439,206 @@ func (o ResourceSkuResponsePtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Grafana security settings
+type Security struct {
+	// Set to true to execute the CSRF check even if the login cookie is not in a request (default false).
+	CsrfAlwaysCheck *bool `pulumi:"csrfAlwaysCheck"`
+}
+
+// SecurityInput is an input type that accepts SecurityArgs and SecurityOutput values.
+// You can construct a concrete instance of `SecurityInput` via:
+//
+//	SecurityArgs{...}
+type SecurityInput interface {
+	pulumi.Input
+
+	ToSecurityOutput() SecurityOutput
+	ToSecurityOutputWithContext(context.Context) SecurityOutput
+}
+
+// Grafana security settings
+type SecurityArgs struct {
+	// Set to true to execute the CSRF check even if the login cookie is not in a request (default false).
+	CsrfAlwaysCheck pulumi.BoolPtrInput `pulumi:"csrfAlwaysCheck"`
+}
+
+func (SecurityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Security)(nil)).Elem()
+}
+
+func (i SecurityArgs) ToSecurityOutput() SecurityOutput {
+	return i.ToSecurityOutputWithContext(context.Background())
+}
+
+func (i SecurityArgs) ToSecurityOutputWithContext(ctx context.Context) SecurityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityOutput)
+}
+
+func (i SecurityArgs) ToSecurityPtrOutput() SecurityPtrOutput {
+	return i.ToSecurityPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityArgs) ToSecurityPtrOutputWithContext(ctx context.Context) SecurityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityOutput).ToSecurityPtrOutputWithContext(ctx)
+}
+
+// SecurityPtrInput is an input type that accepts SecurityArgs, SecurityPtr and SecurityPtrOutput values.
+// You can construct a concrete instance of `SecurityPtrInput` via:
+//
+//	        SecurityArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityPtrInput interface {
+	pulumi.Input
+
+	ToSecurityPtrOutput() SecurityPtrOutput
+	ToSecurityPtrOutputWithContext(context.Context) SecurityPtrOutput
+}
+
+type securityPtrType SecurityArgs
+
+func SecurityPtr(v *SecurityArgs) SecurityPtrInput {
+	return (*securityPtrType)(v)
+}
+
+func (*securityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Security)(nil)).Elem()
+}
+
+func (i *securityPtrType) ToSecurityPtrOutput() SecurityPtrOutput {
+	return i.ToSecurityPtrOutputWithContext(context.Background())
+}
+
+func (i *securityPtrType) ToSecurityPtrOutputWithContext(ctx context.Context) SecurityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPtrOutput)
+}
+
+// Grafana security settings
+type SecurityOutput struct{ *pulumi.OutputState }
+
+func (SecurityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Security)(nil)).Elem()
+}
+
+func (o SecurityOutput) ToSecurityOutput() SecurityOutput {
+	return o
+}
+
+func (o SecurityOutput) ToSecurityOutputWithContext(ctx context.Context) SecurityOutput {
+	return o
+}
+
+func (o SecurityOutput) ToSecurityPtrOutput() SecurityPtrOutput {
+	return o.ToSecurityPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityOutput) ToSecurityPtrOutputWithContext(ctx context.Context) SecurityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Security) *Security {
+		return &v
+	}).(SecurityPtrOutput)
+}
+
+// Set to true to execute the CSRF check even if the login cookie is not in a request (default false).
+func (o SecurityOutput) CsrfAlwaysCheck() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v Security) *bool { return v.CsrfAlwaysCheck }).(pulumi.BoolPtrOutput)
+}
+
+type SecurityPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Security)(nil)).Elem()
+}
+
+func (o SecurityPtrOutput) ToSecurityPtrOutput() SecurityPtrOutput {
+	return o
+}
+
+func (o SecurityPtrOutput) ToSecurityPtrOutputWithContext(ctx context.Context) SecurityPtrOutput {
+	return o
+}
+
+func (o SecurityPtrOutput) Elem() SecurityOutput {
+	return o.ApplyT(func(v *Security) Security {
+		if v != nil {
+			return *v
+		}
+		var ret Security
+		return ret
+	}).(SecurityOutput)
+}
+
+// Set to true to execute the CSRF check even if the login cookie is not in a request (default false).
+func (o SecurityPtrOutput) CsrfAlwaysCheck() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Security) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CsrfAlwaysCheck
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Grafana security settings
+type SecurityResponse struct {
+	// Set to true to execute the CSRF check even if the login cookie is not in a request (default false).
+	CsrfAlwaysCheck *bool `pulumi:"csrfAlwaysCheck"`
+}
+
+// Grafana security settings
+type SecurityResponseOutput struct{ *pulumi.OutputState }
+
+func (SecurityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityResponse)(nil)).Elem()
+}
+
+func (o SecurityResponseOutput) ToSecurityResponseOutput() SecurityResponseOutput {
+	return o
+}
+
+func (o SecurityResponseOutput) ToSecurityResponseOutputWithContext(ctx context.Context) SecurityResponseOutput {
+	return o
+}
+
+// Set to true to execute the CSRF check even if the login cookie is not in a request (default false).
+func (o SecurityResponseOutput) CsrfAlwaysCheck() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SecurityResponse) *bool { return v.CsrfAlwaysCheck }).(pulumi.BoolPtrOutput)
+}
+
+type SecurityResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityResponse)(nil)).Elem()
+}
+
+func (o SecurityResponsePtrOutput) ToSecurityResponsePtrOutput() SecurityResponsePtrOutput {
+	return o
+}
+
+func (o SecurityResponsePtrOutput) ToSecurityResponsePtrOutputWithContext(ctx context.Context) SecurityResponsePtrOutput {
+	return o
+}
+
+func (o SecurityResponsePtrOutput) Elem() SecurityResponseOutput {
+	return o.ApplyT(func(v *SecurityResponse) SecurityResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityResponse
+		return ret
+	}).(SecurityResponseOutput)
+}
+
+// Set to true to execute the CSRF check even if the login cookie is not in a request (default false).
+func (o SecurityResponsePtrOutput) CsrfAlwaysCheck() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SecurityResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CsrfAlwaysCheck
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Email server settings.
 // https://grafana.com/docs/grafana/v9.0/setup-grafana/configure-grafana/#smtp
 type Smtp struct {
@@ -3479,6 +3715,10 @@ func init() {
 	pulumi.RegisterOutputType(ResourceSkuPtrOutput{})
 	pulumi.RegisterOutputType(ResourceSkuResponseOutput{})
 	pulumi.RegisterOutputType(ResourceSkuResponsePtrOutput{})
+	pulumi.RegisterOutputType(SecurityOutput{})
+	pulumi.RegisterOutputType(SecurityPtrOutput{})
+	pulumi.RegisterOutputType(SecurityResponseOutput{})
+	pulumi.RegisterOutputType(SecurityResponsePtrOutput{})
 	pulumi.RegisterOutputType(SmtpOutput{})
 	pulumi.RegisterOutputType(SmtpPtrOutput{})
 	pulumi.RegisterOutputType(SmtpResponseOutput{})

@@ -15,7 +15,7 @@ import (
 // API deployment entity.
 // Azure REST API version: 2024-03-01.
 //
-// Other available API versions: 2024-03-15-preview.
+// Other available API versions: 2024-03-15-preview, 2024-06-01-preview.
 type Deployment struct {
 	pulumi.CustomResourceState
 
@@ -66,6 +66,9 @@ func NewDeployment(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apicenter/v20240315preview:Deployment"),
+		},
+		{
+			Type: pulumi.String("azure-native:apicenter/v20240601preview:Deployment"),
 		},
 	})
 	opts = append(opts, aliases)

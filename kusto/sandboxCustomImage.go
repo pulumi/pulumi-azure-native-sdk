@@ -14,6 +14,8 @@ import (
 
 // Class representing a Kusto sandbox custom image.
 // Azure REST API version: 2023-08-15.
+//
+// Other available API versions: 2024-04-13.
 type SandboxCustomImage struct {
 	pulumi.CustomResourceState
 
@@ -53,6 +55,9 @@ func NewSandboxCustomImage(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:kusto/v20230815:SandboxCustomImage"),
+		},
+		{
+			Type: pulumi.String("azure-native:kusto/v20240413:SandboxCustomImage"),
 		},
 	})
 	opts = append(opts, aliases)

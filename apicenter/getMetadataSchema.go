@@ -14,7 +14,7 @@ import (
 // Returns details of the metadata schema.
 // Azure REST API version: 2024-03-01.
 //
-// Other available API versions: 2024-03-15-preview.
+// Other available API versions: 2024-03-15-preview, 2024-06-01-preview.
 func LookupMetadataSchema(ctx *pulumi.Context, args *LookupMetadataSchemaArgs, opts ...pulumi.InvokeOption) (*LookupMetadataSchemaResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMetadataSchemaResult

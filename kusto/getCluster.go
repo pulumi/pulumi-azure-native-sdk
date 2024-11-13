@@ -14,7 +14,7 @@ import (
 // Gets a Kusto cluster.
 // Azure REST API version: 2022-12-29.
 //
-// Other available API versions: 2022-07-07, 2023-05-02, 2023-08-15.
+// Other available API versions: 2022-07-07, 2023-05-02, 2023-08-15, 2024-04-13.
 func LookupCluster(ctx *pulumi.Context, args *LookupClusterArgs, opts ...pulumi.InvokeOption) (*LookupClusterResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupClusterResult

@@ -116,6 +116,9 @@ func NewCassandraDataCenter(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:documentdb/v20240901preview:CassandraDataCenter"),
 		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20241115:CassandraDataCenter"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

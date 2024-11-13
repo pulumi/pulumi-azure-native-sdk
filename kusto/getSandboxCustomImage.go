@@ -13,6 +13,8 @@ import (
 
 // Returns a sandbox custom image
 // Azure REST API version: 2023-08-15.
+//
+// Other available API versions: 2024-04-13.
 func LookupSandboxCustomImage(ctx *pulumi.Context, args *LookupSandboxCustomImageArgs, opts ...pulumi.InvokeOption) (*LookupSandboxCustomImageResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSandboxCustomImageResult

@@ -104,6 +104,9 @@ func NewDatabase(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:kusto/v20230815:Database"),
 		},
+		{
+			Type: pulumi.String("azure-native:kusto/v20240413:Database"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

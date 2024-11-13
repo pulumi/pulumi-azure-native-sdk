@@ -51,6 +51,9 @@ func NewMetadataSchema(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apicenter/v20240315preview:MetadataSchema"),
 		},
+		{
+			Type: pulumi.String("azure-native:apicenter/v20240601preview:MetadataSchema"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

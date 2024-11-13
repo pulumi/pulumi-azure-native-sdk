@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Api{}
 	case "azure-native:apicenter:ApiDefinition":
 		r = &ApiDefinition{}
+	case "azure-native:apicenter:ApiSource":
+		r = &ApiSource{}
 	case "azure-native:apicenter:ApiVersion":
 		r = &ApiVersion{}
 	case "azure-native:apicenter:Deployment":

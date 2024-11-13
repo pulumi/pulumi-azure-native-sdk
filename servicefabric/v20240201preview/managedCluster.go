@@ -202,6 +202,9 @@ func NewManagedCluster(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:servicefabric/v20240601preview:ManagedCluster"),
 		},
+		{
+			Type: pulumi.String("azure-native:servicefabric/v20240901preview:ManagedCluster"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

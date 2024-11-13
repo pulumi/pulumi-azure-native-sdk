@@ -46,6 +46,242 @@ func (o ApiDefinitionPropertiesSpecificationResponseOutput) Version() pulumi.Str
 	return o.ApplyT(func(v ApiDefinitionPropertiesSpecificationResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
+// API source configuration for Azure API Management.
+type AzureApiManagementSource struct {
+	// The resource ID of the managed identity that has access to the API Management instance.
+	MsiResourceId *string `pulumi:"msiResourceId"`
+	// API Management service resource ID.
+	ResourceId string `pulumi:"resourceId"`
+}
+
+// AzureApiManagementSourceInput is an input type that accepts AzureApiManagementSourceArgs and AzureApiManagementSourceOutput values.
+// You can construct a concrete instance of `AzureApiManagementSourceInput` via:
+//
+//	AzureApiManagementSourceArgs{...}
+type AzureApiManagementSourceInput interface {
+	pulumi.Input
+
+	ToAzureApiManagementSourceOutput() AzureApiManagementSourceOutput
+	ToAzureApiManagementSourceOutputWithContext(context.Context) AzureApiManagementSourceOutput
+}
+
+// API source configuration for Azure API Management.
+type AzureApiManagementSourceArgs struct {
+	// The resource ID of the managed identity that has access to the API Management instance.
+	MsiResourceId pulumi.StringPtrInput `pulumi:"msiResourceId"`
+	// API Management service resource ID.
+	ResourceId pulumi.StringInput `pulumi:"resourceId"`
+}
+
+func (AzureApiManagementSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureApiManagementSource)(nil)).Elem()
+}
+
+func (i AzureApiManagementSourceArgs) ToAzureApiManagementSourceOutput() AzureApiManagementSourceOutput {
+	return i.ToAzureApiManagementSourceOutputWithContext(context.Background())
+}
+
+func (i AzureApiManagementSourceArgs) ToAzureApiManagementSourceOutputWithContext(ctx context.Context) AzureApiManagementSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureApiManagementSourceOutput)
+}
+
+func (i AzureApiManagementSourceArgs) ToAzureApiManagementSourcePtrOutput() AzureApiManagementSourcePtrOutput {
+	return i.ToAzureApiManagementSourcePtrOutputWithContext(context.Background())
+}
+
+func (i AzureApiManagementSourceArgs) ToAzureApiManagementSourcePtrOutputWithContext(ctx context.Context) AzureApiManagementSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureApiManagementSourceOutput).ToAzureApiManagementSourcePtrOutputWithContext(ctx)
+}
+
+// AzureApiManagementSourcePtrInput is an input type that accepts AzureApiManagementSourceArgs, AzureApiManagementSourcePtr and AzureApiManagementSourcePtrOutput values.
+// You can construct a concrete instance of `AzureApiManagementSourcePtrInput` via:
+//
+//	        AzureApiManagementSourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type AzureApiManagementSourcePtrInput interface {
+	pulumi.Input
+
+	ToAzureApiManagementSourcePtrOutput() AzureApiManagementSourcePtrOutput
+	ToAzureApiManagementSourcePtrOutputWithContext(context.Context) AzureApiManagementSourcePtrOutput
+}
+
+type azureApiManagementSourcePtrType AzureApiManagementSourceArgs
+
+func AzureApiManagementSourcePtr(v *AzureApiManagementSourceArgs) AzureApiManagementSourcePtrInput {
+	return (*azureApiManagementSourcePtrType)(v)
+}
+
+func (*azureApiManagementSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureApiManagementSource)(nil)).Elem()
+}
+
+func (i *azureApiManagementSourcePtrType) ToAzureApiManagementSourcePtrOutput() AzureApiManagementSourcePtrOutput {
+	return i.ToAzureApiManagementSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *azureApiManagementSourcePtrType) ToAzureApiManagementSourcePtrOutputWithContext(ctx context.Context) AzureApiManagementSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureApiManagementSourcePtrOutput)
+}
+
+// API source configuration for Azure API Management.
+type AzureApiManagementSourceOutput struct{ *pulumi.OutputState }
+
+func (AzureApiManagementSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureApiManagementSource)(nil)).Elem()
+}
+
+func (o AzureApiManagementSourceOutput) ToAzureApiManagementSourceOutput() AzureApiManagementSourceOutput {
+	return o
+}
+
+func (o AzureApiManagementSourceOutput) ToAzureApiManagementSourceOutputWithContext(ctx context.Context) AzureApiManagementSourceOutput {
+	return o
+}
+
+func (o AzureApiManagementSourceOutput) ToAzureApiManagementSourcePtrOutput() AzureApiManagementSourcePtrOutput {
+	return o.ToAzureApiManagementSourcePtrOutputWithContext(context.Background())
+}
+
+func (o AzureApiManagementSourceOutput) ToAzureApiManagementSourcePtrOutputWithContext(ctx context.Context) AzureApiManagementSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureApiManagementSource) *AzureApiManagementSource {
+		return &v
+	}).(AzureApiManagementSourcePtrOutput)
+}
+
+// The resource ID of the managed identity that has access to the API Management instance.
+func (o AzureApiManagementSourceOutput) MsiResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureApiManagementSource) *string { return v.MsiResourceId }).(pulumi.StringPtrOutput)
+}
+
+// API Management service resource ID.
+func (o AzureApiManagementSourceOutput) ResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureApiManagementSource) string { return v.ResourceId }).(pulumi.StringOutput)
+}
+
+type AzureApiManagementSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (AzureApiManagementSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureApiManagementSource)(nil)).Elem()
+}
+
+func (o AzureApiManagementSourcePtrOutput) ToAzureApiManagementSourcePtrOutput() AzureApiManagementSourcePtrOutput {
+	return o
+}
+
+func (o AzureApiManagementSourcePtrOutput) ToAzureApiManagementSourcePtrOutputWithContext(ctx context.Context) AzureApiManagementSourcePtrOutput {
+	return o
+}
+
+func (o AzureApiManagementSourcePtrOutput) Elem() AzureApiManagementSourceOutput {
+	return o.ApplyT(func(v *AzureApiManagementSource) AzureApiManagementSource {
+		if v != nil {
+			return *v
+		}
+		var ret AzureApiManagementSource
+		return ret
+	}).(AzureApiManagementSourceOutput)
+}
+
+// The resource ID of the managed identity that has access to the API Management instance.
+func (o AzureApiManagementSourcePtrOutput) MsiResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureApiManagementSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MsiResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// API Management service resource ID.
+func (o AzureApiManagementSourcePtrOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureApiManagementSource) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// API source configuration for Azure API Management.
+type AzureApiManagementSourceResponse struct {
+	// The resource ID of the managed identity that has access to the API Management instance.
+	MsiResourceId *string `pulumi:"msiResourceId"`
+	// API Management service resource ID.
+	ResourceId string `pulumi:"resourceId"`
+}
+
+// API source configuration for Azure API Management.
+type AzureApiManagementSourceResponseOutput struct{ *pulumi.OutputState }
+
+func (AzureApiManagementSourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureApiManagementSourceResponse)(nil)).Elem()
+}
+
+func (o AzureApiManagementSourceResponseOutput) ToAzureApiManagementSourceResponseOutput() AzureApiManagementSourceResponseOutput {
+	return o
+}
+
+func (o AzureApiManagementSourceResponseOutput) ToAzureApiManagementSourceResponseOutputWithContext(ctx context.Context) AzureApiManagementSourceResponseOutput {
+	return o
+}
+
+// The resource ID of the managed identity that has access to the API Management instance.
+func (o AzureApiManagementSourceResponseOutput) MsiResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureApiManagementSourceResponse) *string { return v.MsiResourceId }).(pulumi.StringPtrOutput)
+}
+
+// API Management service resource ID.
+func (o AzureApiManagementSourceResponseOutput) ResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureApiManagementSourceResponse) string { return v.ResourceId }).(pulumi.StringOutput)
+}
+
+type AzureApiManagementSourceResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AzureApiManagementSourceResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureApiManagementSourceResponse)(nil)).Elem()
+}
+
+func (o AzureApiManagementSourceResponsePtrOutput) ToAzureApiManagementSourceResponsePtrOutput() AzureApiManagementSourceResponsePtrOutput {
+	return o
+}
+
+func (o AzureApiManagementSourceResponsePtrOutput) ToAzureApiManagementSourceResponsePtrOutputWithContext(ctx context.Context) AzureApiManagementSourceResponsePtrOutput {
+	return o
+}
+
+func (o AzureApiManagementSourceResponsePtrOutput) Elem() AzureApiManagementSourceResponseOutput {
+	return o.ApplyT(func(v *AzureApiManagementSourceResponse) AzureApiManagementSourceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AzureApiManagementSourceResponse
+		return ret
+	}).(AzureApiManagementSourceResponseOutput)
+}
+
+// The resource ID of the managed identity that has access to the API Management instance.
+func (o AzureApiManagementSourceResponsePtrOutput) MsiResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureApiManagementSourceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MsiResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// API Management service resource ID.
+func (o AzureApiManagementSourceResponsePtrOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureApiManagementSourceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Contact information
 type Contact struct {
 	// Email address of the contact.
@@ -1124,6 +1360,46 @@ func (o LicenseResponsePtrOutput) Url() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The link state.
+type LinkStateResponse struct {
+	// The timestamp of the last update of the link state.
+	LastUpdatedOn string `pulumi:"lastUpdatedOn"`
+	// The state message.
+	Message *string `pulumi:"message"`
+	// The state of the link.
+	State *string `pulumi:"state"`
+}
+
+// The link state.
+type LinkStateResponseOutput struct{ *pulumi.OutputState }
+
+func (LinkStateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkStateResponse)(nil)).Elem()
+}
+
+func (o LinkStateResponseOutput) ToLinkStateResponseOutput() LinkStateResponseOutput {
+	return o
+}
+
+func (o LinkStateResponseOutput) ToLinkStateResponseOutputWithContext(ctx context.Context) LinkStateResponseOutput {
+	return o
+}
+
+// The timestamp of the last update of the link state.
+func (o LinkStateResponseOutput) LastUpdatedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v LinkStateResponse) string { return v.LastUpdatedOn }).(pulumi.StringOutput)
+}
+
+// The state message.
+func (o LinkStateResponseOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LinkStateResponse) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+// The state of the link.
+func (o LinkStateResponseOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LinkStateResponse) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
 // Managed service identity (system assigned and/or user assigned identities)
 type ManagedServiceIdentity struct {
 	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
@@ -2126,6 +2402,10 @@ func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) Us
 
 func init() {
 	pulumi.RegisterOutputType(ApiDefinitionPropertiesSpecificationResponseOutput{})
+	pulumi.RegisterOutputType(AzureApiManagementSourceOutput{})
+	pulumi.RegisterOutputType(AzureApiManagementSourcePtrOutput{})
+	pulumi.RegisterOutputType(AzureApiManagementSourceResponseOutput{})
+	pulumi.RegisterOutputType(AzureApiManagementSourceResponsePtrOutput{})
 	pulumi.RegisterOutputType(ContactOutput{})
 	pulumi.RegisterOutputType(ContactArrayOutput{})
 	pulumi.RegisterOutputType(ContactResponseOutput{})
@@ -2146,6 +2426,7 @@ func init() {
 	pulumi.RegisterOutputType(LicensePtrOutput{})
 	pulumi.RegisterOutputType(LicenseResponseOutput{})
 	pulumi.RegisterOutputType(LicenseResponsePtrOutput{})
+	pulumi.RegisterOutputType(LinkStateResponseOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityPtrOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityResponseOutput{})

@@ -15,7 +15,7 @@ import (
 // Environment entity.
 // Azure REST API version: 2024-03-01.
 //
-// Other available API versions: 2024-03-15-preview.
+// Other available API versions: 2024-03-15-preview, 2024-06-01-preview.
 type Environment struct {
 	pulumi.CustomResourceState
 
@@ -67,6 +67,9 @@ func NewEnvironment(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apicenter/v20240315preview:Environment"),
+		},
+		{
+			Type: pulumi.String("azure-native:apicenter/v20240601preview:Environment"),
 		},
 	})
 	opts = append(opts, aliases)
