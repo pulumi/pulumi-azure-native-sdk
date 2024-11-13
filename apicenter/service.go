@@ -15,7 +15,7 @@ import (
 // The service entity.
 // Azure REST API version: 2023-07-01-preview.
 //
-// Other available API versions: 2024-03-01, 2024-03-15-preview.
+// Other available API versions: 2024-03-01, 2024-03-15-preview, 2024-06-01-preview.
 type Service struct {
 	pulumi.CustomResourceState
 
@@ -54,6 +54,9 @@ func NewService(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apicenter/v20240315preview:Service"),
+		},
+		{
+			Type: pulumi.String("azure-native:apicenter/v20240601preview:Service"),
 		},
 	})
 	opts = append(opts, aliases)

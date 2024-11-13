@@ -14,7 +14,7 @@ import (
 // Gets the details of a protection container mapping.
 // Azure REST API version: 2023-04-01.
 //
-// Other available API versions: 2023-06-01, 2023-08-01, 2024-01-01, 2024-02-01, 2024-04-01.
+// Other available API versions: 2023-06-01, 2023-08-01, 2024-01-01, 2024-02-01, 2024-04-01, 2024-10-01.
 func LookupReplicationProtectionContainerMapping(ctx *pulumi.Context, args *LookupReplicationProtectionContainerMappingArgs, opts ...pulumi.InvokeOption) (*LookupReplicationProtectionContainerMappingResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupReplicationProtectionContainerMappingResult

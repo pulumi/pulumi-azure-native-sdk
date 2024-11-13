@@ -45503,6 +45503,8 @@ func (o InstanceTypeSchemaResponseResourcesPtrOutput) Requests() pulumi.StringMa
 type JobResourceConfiguration struct {
 	// Extra arguments to pass to the Docker run command. This would override any parameters that have already been set by the system, or in this section. This parameter is only supported for Azure ML compute types.
 	DockerArgs *string `pulumi:"dockerArgs"`
+	// Extra arguments to pass to the Docker run command, as a collection. This would override any parameters that have already been set by the system, or in this section. This parameter is only supported for Azure ML compute types.
+	DockerArgsList []string `pulumi:"dockerArgsList"`
 	// Optional number of instances or nodes used by the compute target.
 	InstanceCount *int `pulumi:"instanceCount"`
 	// Optional type of VM used as supported by the compute target.
@@ -45544,6 +45546,8 @@ type JobResourceConfigurationInput interface {
 type JobResourceConfigurationArgs struct {
 	// Extra arguments to pass to the Docker run command. This would override any parameters that have already been set by the system, or in this section. This parameter is only supported for Azure ML compute types.
 	DockerArgs pulumi.StringPtrInput `pulumi:"dockerArgs"`
+	// Extra arguments to pass to the Docker run command, as a collection. This would override any parameters that have already been set by the system, or in this section. This parameter is only supported for Azure ML compute types.
+	DockerArgsList pulumi.StringArrayInput `pulumi:"dockerArgsList"`
 	// Optional number of instances or nodes used by the compute target.
 	InstanceCount pulumi.IntPtrInput `pulumi:"instanceCount"`
 	// Optional type of VM used as supported by the compute target.
@@ -45650,6 +45654,11 @@ func (o JobResourceConfigurationOutput) DockerArgs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobResourceConfiguration) *string { return v.DockerArgs }).(pulumi.StringPtrOutput)
 }
 
+// Extra arguments to pass to the Docker run command, as a collection. This would override any parameters that have already been set by the system, or in this section. This parameter is only supported for Azure ML compute types.
+func (o JobResourceConfigurationOutput) DockerArgsList() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v JobResourceConfiguration) []string { return v.DockerArgsList }).(pulumi.StringArrayOutput)
+}
+
 // Optional number of instances or nodes used by the compute target.
 func (o JobResourceConfigurationOutput) InstanceCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v JobResourceConfiguration) *int { return v.InstanceCount }).(pulumi.IntPtrOutput)
@@ -45704,6 +45713,16 @@ func (o JobResourceConfigurationPtrOutput) DockerArgs() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Extra arguments to pass to the Docker run command, as a collection. This would override any parameters that have already been set by the system, or in this section. This parameter is only supported for Azure ML compute types.
+func (o JobResourceConfigurationPtrOutput) DockerArgsList() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *JobResourceConfiguration) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DockerArgsList
+	}).(pulumi.StringArrayOutput)
+}
+
 // Optional number of instances or nodes used by the compute target.
 func (o JobResourceConfigurationPtrOutput) InstanceCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *JobResourceConfiguration) *int {
@@ -45747,6 +45766,8 @@ func (o JobResourceConfigurationPtrOutput) ShmSize() pulumi.StringPtrOutput {
 type JobResourceConfigurationResponse struct {
 	// Extra arguments to pass to the Docker run command. This would override any parameters that have already been set by the system, or in this section. This parameter is only supported for Azure ML compute types.
 	DockerArgs *string `pulumi:"dockerArgs"`
+	// Extra arguments to pass to the Docker run command, as a collection. This would override any parameters that have already been set by the system, or in this section. This parameter is only supported for Azure ML compute types.
+	DockerArgsList []string `pulumi:"dockerArgsList"`
 	// Optional number of instances or nodes used by the compute target.
 	InstanceCount *int `pulumi:"instanceCount"`
 	// Optional type of VM used as supported by the compute target.
@@ -45791,6 +45812,11 @@ func (o JobResourceConfigurationResponseOutput) ToJobResourceConfigurationRespon
 // Extra arguments to pass to the Docker run command. This would override any parameters that have already been set by the system, or in this section. This parameter is only supported for Azure ML compute types.
 func (o JobResourceConfigurationResponseOutput) DockerArgs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobResourceConfigurationResponse) *string { return v.DockerArgs }).(pulumi.StringPtrOutput)
+}
+
+// Extra arguments to pass to the Docker run command, as a collection. This would override any parameters that have already been set by the system, or in this section. This parameter is only supported for Azure ML compute types.
+func (o JobResourceConfigurationResponseOutput) DockerArgsList() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v JobResourceConfigurationResponse) []string { return v.DockerArgsList }).(pulumi.StringArrayOutput)
 }
 
 // Optional number of instances or nodes used by the compute target.
@@ -45845,6 +45871,16 @@ func (o JobResourceConfigurationResponsePtrOutput) DockerArgs() pulumi.StringPtr
 		}
 		return v.DockerArgs
 	}).(pulumi.StringPtrOutput)
+}
+
+// Extra arguments to pass to the Docker run command, as a collection. This would override any parameters that have already been set by the system, or in this section. This parameter is only supported for Azure ML compute types.
+func (o JobResourceConfigurationResponsePtrOutput) DockerArgsList() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *JobResourceConfigurationResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DockerArgsList
+	}).(pulumi.StringArrayOutput)
 }
 
 // Optional number of instances or nodes used by the compute target.

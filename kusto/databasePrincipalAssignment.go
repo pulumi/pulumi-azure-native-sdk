@@ -15,7 +15,7 @@ import (
 // Class representing a database principal assignment.
 // Azure REST API version: 2022-12-29. Prior API version in Azure Native 1.x: 2021-01-01.
 //
-// Other available API versions: 2023-05-02, 2023-08-15.
+// Other available API versions: 2023-05-02, 2023-08-15, 2024-04-13.
 type DatabasePrincipalAssignment struct {
 	pulumi.CustomResourceState
 
@@ -102,6 +102,9 @@ func NewDatabasePrincipalAssignment(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:kusto/v20230815:DatabasePrincipalAssignment"),
+		},
+		{
+			Type: pulumi.String("azure-native:kusto/v20240413:DatabasePrincipalAssignment"),
 		},
 	})
 	opts = append(opts, aliases)

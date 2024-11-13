@@ -15,7 +15,7 @@ import (
 // Class representing a database script.
 // Azure REST API version: 2022-12-29. Prior API version in Azure Native 1.x: 2021-01-01.
 //
-// Other available API versions: 2021-08-27, 2023-05-02, 2023-08-15.
+// Other available API versions: 2021-08-27, 2023-05-02, 2023-08-15, 2024-04-13.
 type Script struct {
 	pulumi.CustomResourceState
 
@@ -78,6 +78,9 @@ func NewScript(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:kusto/v20230815:Script"),
+		},
+		{
+			Type: pulumi.String("azure-native:kusto/v20240413:Script"),
 		},
 	})
 	opts = append(opts, aliases)

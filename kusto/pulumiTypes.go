@@ -272,6 +272,73 @@ func (o AzureSkuResponseOutput) Tier() pulumi.StringOutput {
 	return o.ApplyT(func(v AzureSkuResponse) string { return v.Tier }).(pulumi.StringOutput)
 }
 
+// Configuration for external callout policies, including URI patterns, access types, and service types.
+type CalloutPolicyResponse struct {
+	// Unique identifier for the callout configuration.
+	CalloutId string `pulumi:"calloutId"`
+	// Type of the callout service, specifying the kind of external resource or service being accessed.
+	CalloutType *string `pulumi:"calloutType"`
+	// Regular expression or FQDN pattern for the callout URI.
+	CalloutUriRegex *string `pulumi:"calloutUriRegex"`
+	// Indicates whether outbound access is permitted for the specified URI pattern.
+	OutboundAccess *string `pulumi:"outboundAccess"`
+}
+
+// Configuration for external callout policies, including URI patterns, access types, and service types.
+type CalloutPolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (CalloutPolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CalloutPolicyResponse)(nil)).Elem()
+}
+
+func (o CalloutPolicyResponseOutput) ToCalloutPolicyResponseOutput() CalloutPolicyResponseOutput {
+	return o
+}
+
+func (o CalloutPolicyResponseOutput) ToCalloutPolicyResponseOutputWithContext(ctx context.Context) CalloutPolicyResponseOutput {
+	return o
+}
+
+// Unique identifier for the callout configuration.
+func (o CalloutPolicyResponseOutput) CalloutId() pulumi.StringOutput {
+	return o.ApplyT(func(v CalloutPolicyResponse) string { return v.CalloutId }).(pulumi.StringOutput)
+}
+
+// Type of the callout service, specifying the kind of external resource or service being accessed.
+func (o CalloutPolicyResponseOutput) CalloutType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CalloutPolicyResponse) *string { return v.CalloutType }).(pulumi.StringPtrOutput)
+}
+
+// Regular expression or FQDN pattern for the callout URI.
+func (o CalloutPolicyResponseOutput) CalloutUriRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CalloutPolicyResponse) *string { return v.CalloutUriRegex }).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether outbound access is permitted for the specified URI pattern.
+func (o CalloutPolicyResponseOutput) OutboundAccess() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CalloutPolicyResponse) *string { return v.OutboundAccess }).(pulumi.StringPtrOutput)
+}
+
+type CalloutPolicyResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (CalloutPolicyResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CalloutPolicyResponse)(nil)).Elem()
+}
+
+func (o CalloutPolicyResponseArrayOutput) ToCalloutPolicyResponseArrayOutput() CalloutPolicyResponseArrayOutput {
+	return o
+}
+
+func (o CalloutPolicyResponseArrayOutput) ToCalloutPolicyResponseArrayOutputWithContext(ctx context.Context) CalloutPolicyResponseArrayOutput {
+	return o
+}
+
+func (o CalloutPolicyResponseArrayOutput) Index(i pulumi.IntInput) CalloutPolicyResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CalloutPolicyResponse {
+		return vs[0].([]CalloutPolicyResponse)[vs[1].(int)]
+	}).(CalloutPolicyResponseOutput)
+}
+
 // A class representing database principal entity.
 type DatabasePrincipalResponse struct {
 	// Application id - relevant only for application principal type.
@@ -2928,6 +2995,8 @@ func init() {
 	pulumi.RegisterOutputType(AcceptedAudiencesResponseArrayOutput{})
 	pulumi.RegisterOutputType(AzureSkuOutput{})
 	pulumi.RegisterOutputType(AzureSkuResponseOutput{})
+	pulumi.RegisterOutputType(CalloutPolicyResponseOutput{})
+	pulumi.RegisterOutputType(CalloutPolicyResponseArrayOutput{})
 	pulumi.RegisterOutputType(DatabasePrincipalResponseOutput{})
 	pulumi.RegisterOutputType(DatabasePrincipalResponseArrayOutput{})
 	pulumi.RegisterOutputType(DatabaseStatisticsResponseOutput{})

@@ -715,6 +715,177 @@ func (in *environmentServerTypePtr) ToEnvironmentServerTypePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(EnvironmentServerTypePtrOutput)
 }
 
+// Indicates if the specification should be imported along with metadata.
+type ImportSpecificationOptions string
+
+const (
+	// Indicates that the specification should be never be imported.
+	ImportSpecificationOptionsNever = ImportSpecificationOptions("never")
+	// Indicates that the specification should be imported only by request.
+	ImportSpecificationOptionsOnDemand = ImportSpecificationOptions("ondemand")
+	// Indicates that the specification should always be imported along with metadata.
+	ImportSpecificationOptionsAlways = ImportSpecificationOptions("always")
+)
+
+func (ImportSpecificationOptions) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImportSpecificationOptions)(nil)).Elem()
+}
+
+func (e ImportSpecificationOptions) ToImportSpecificationOptionsOutput() ImportSpecificationOptionsOutput {
+	return pulumi.ToOutput(e).(ImportSpecificationOptionsOutput)
+}
+
+func (e ImportSpecificationOptions) ToImportSpecificationOptionsOutputWithContext(ctx context.Context) ImportSpecificationOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ImportSpecificationOptionsOutput)
+}
+
+func (e ImportSpecificationOptions) ToImportSpecificationOptionsPtrOutput() ImportSpecificationOptionsPtrOutput {
+	return e.ToImportSpecificationOptionsPtrOutputWithContext(context.Background())
+}
+
+func (e ImportSpecificationOptions) ToImportSpecificationOptionsPtrOutputWithContext(ctx context.Context) ImportSpecificationOptionsPtrOutput {
+	return ImportSpecificationOptions(e).ToImportSpecificationOptionsOutputWithContext(ctx).ToImportSpecificationOptionsPtrOutputWithContext(ctx)
+}
+
+func (e ImportSpecificationOptions) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ImportSpecificationOptions) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ImportSpecificationOptions) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ImportSpecificationOptions) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ImportSpecificationOptionsOutput struct{ *pulumi.OutputState }
+
+func (ImportSpecificationOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImportSpecificationOptions)(nil)).Elem()
+}
+
+func (o ImportSpecificationOptionsOutput) ToImportSpecificationOptionsOutput() ImportSpecificationOptionsOutput {
+	return o
+}
+
+func (o ImportSpecificationOptionsOutput) ToImportSpecificationOptionsOutputWithContext(ctx context.Context) ImportSpecificationOptionsOutput {
+	return o
+}
+
+func (o ImportSpecificationOptionsOutput) ToImportSpecificationOptionsPtrOutput() ImportSpecificationOptionsPtrOutput {
+	return o.ToImportSpecificationOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o ImportSpecificationOptionsOutput) ToImportSpecificationOptionsPtrOutputWithContext(ctx context.Context) ImportSpecificationOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ImportSpecificationOptions) *ImportSpecificationOptions {
+		return &v
+	}).(ImportSpecificationOptionsPtrOutput)
+}
+
+func (o ImportSpecificationOptionsOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ImportSpecificationOptionsOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ImportSpecificationOptions) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ImportSpecificationOptionsOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ImportSpecificationOptionsOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ImportSpecificationOptions) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ImportSpecificationOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (ImportSpecificationOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ImportSpecificationOptions)(nil)).Elem()
+}
+
+func (o ImportSpecificationOptionsPtrOutput) ToImportSpecificationOptionsPtrOutput() ImportSpecificationOptionsPtrOutput {
+	return o
+}
+
+func (o ImportSpecificationOptionsPtrOutput) ToImportSpecificationOptionsPtrOutputWithContext(ctx context.Context) ImportSpecificationOptionsPtrOutput {
+	return o
+}
+
+func (o ImportSpecificationOptionsPtrOutput) Elem() ImportSpecificationOptionsOutput {
+	return o.ApplyT(func(v *ImportSpecificationOptions) ImportSpecificationOptions {
+		if v != nil {
+			return *v
+		}
+		var ret ImportSpecificationOptions
+		return ret
+	}).(ImportSpecificationOptionsOutput)
+}
+
+func (o ImportSpecificationOptionsPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ImportSpecificationOptionsPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ImportSpecificationOptions) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ImportSpecificationOptionsInput is an input type that accepts values of the ImportSpecificationOptions enum
+// A concrete instance of `ImportSpecificationOptionsInput` can be one of the following:
+//
+//	ImportSpecificationOptionsNever
+//	ImportSpecificationOptionsOnDemand
+//	ImportSpecificationOptionsAlways
+type ImportSpecificationOptionsInput interface {
+	pulumi.Input
+
+	ToImportSpecificationOptionsOutput() ImportSpecificationOptionsOutput
+	ToImportSpecificationOptionsOutputWithContext(context.Context) ImportSpecificationOptionsOutput
+}
+
+var importSpecificationOptionsPtrType = reflect.TypeOf((**ImportSpecificationOptions)(nil)).Elem()
+
+type ImportSpecificationOptionsPtrInput interface {
+	pulumi.Input
+
+	ToImportSpecificationOptionsPtrOutput() ImportSpecificationOptionsPtrOutput
+	ToImportSpecificationOptionsPtrOutputWithContext(context.Context) ImportSpecificationOptionsPtrOutput
+}
+
+type importSpecificationOptionsPtr string
+
+func ImportSpecificationOptionsPtr(v string) ImportSpecificationOptionsPtrInput {
+	return (*importSpecificationOptionsPtr)(&v)
+}
+
+func (*importSpecificationOptionsPtr) ElementType() reflect.Type {
+	return importSpecificationOptionsPtrType
+}
+
+func (in *importSpecificationOptionsPtr) ToImportSpecificationOptionsPtrOutput() ImportSpecificationOptionsPtrOutput {
+	return pulumi.ToOutput(in).(ImportSpecificationOptionsPtrOutput)
+}
+
+func (in *importSpecificationOptionsPtr) ToImportSpecificationOptionsPtrOutputWithContext(ctx context.Context) ImportSpecificationOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ImportSpecificationOptionsPtrOutput)
+}
+
 // Current lifecycle stage of the API.
 type LifecycleStage string
 
@@ -1248,6 +1419,8 @@ func init() {
 	pulumi.RegisterOutputType(EnvironmentKindPtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentServerTypeOutput{})
 	pulumi.RegisterOutputType(EnvironmentServerTypePtrOutput{})
+	pulumi.RegisterOutputType(ImportSpecificationOptionsOutput{})
+	pulumi.RegisterOutputType(ImportSpecificationOptionsPtrOutput{})
 	pulumi.RegisterOutputType(LifecycleStageOutput{})
 	pulumi.RegisterOutputType(LifecycleStagePtrOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityTypeOutput{})

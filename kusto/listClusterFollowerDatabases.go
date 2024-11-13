@@ -14,7 +14,7 @@ import (
 // Returns a list of databases that are owned by this cluster and were followed by another cluster.
 // Azure REST API version: 2022-12-29.
 //
-// Other available API versions: 2022-07-07, 2023-05-02, 2023-08-15.
+// Other available API versions: 2022-07-07, 2023-05-02, 2023-08-15, 2024-04-13.
 func ListClusterFollowerDatabases(ctx *pulumi.Context, args *ListClusterFollowerDatabasesArgs, opts ...pulumi.InvokeOption) (*ListClusterFollowerDatabasesResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListClusterFollowerDatabasesResult

@@ -14,7 +14,7 @@ import (
 // Returns details of the API definition.
 // Azure REST API version: 2024-03-01.
 //
-// Other available API versions: 2024-03-15-preview.
+// Other available API versions: 2024-03-15-preview, 2024-06-01-preview.
 func LookupApiDefinition(ctx *pulumi.Context, args *LookupApiDefinitionArgs, opts ...pulumi.InvokeOption) (*LookupApiDefinitionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupApiDefinitionResult

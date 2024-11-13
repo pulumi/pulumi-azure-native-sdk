@@ -60,6 +60,9 @@ func NewApiVersion(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apicenter/v20240301:ApiVersion"),
 		},
+		{
+			Type: pulumi.String("azure-native:apicenter/v20240601preview:ApiVersion"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

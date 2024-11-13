@@ -53,6 +53,9 @@ func NewSandboxCustomImage(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:kusto:SandboxCustomImage"),
 		},
+		{
+			Type: pulumi.String("azure-native:kusto/v20240413:SandboxCustomImage"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -174,6 +174,9 @@ func NewMongoDBResourceMongoDBCollection(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:documentdb/v20240901preview:MongoDBResourceMongoDBCollection"),
 		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20241115:MongoDBResourceMongoDBCollection"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
