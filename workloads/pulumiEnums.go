@@ -10,6 +10,342 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The value that indicates whether the alert should be automatically resolved or not. The default is Disable.
+type AlertAutoMitigate string
+
+const (
+	// The alert should be automatically resolved.
+	AlertAutoMitigateEnable = AlertAutoMitigate("Enable")
+	// The alert should not be automatically resolved.
+	AlertAutoMitigateDisable = AlertAutoMitigate("Disable")
+)
+
+func (AlertAutoMitigate) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertAutoMitigate)(nil)).Elem()
+}
+
+func (e AlertAutoMitigate) ToAlertAutoMitigateOutput() AlertAutoMitigateOutput {
+	return pulumi.ToOutput(e).(AlertAutoMitigateOutput)
+}
+
+func (e AlertAutoMitigate) ToAlertAutoMitigateOutputWithContext(ctx context.Context) AlertAutoMitigateOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AlertAutoMitigateOutput)
+}
+
+func (e AlertAutoMitigate) ToAlertAutoMitigatePtrOutput() AlertAutoMitigatePtrOutput {
+	return e.ToAlertAutoMitigatePtrOutputWithContext(context.Background())
+}
+
+func (e AlertAutoMitigate) ToAlertAutoMitigatePtrOutputWithContext(ctx context.Context) AlertAutoMitigatePtrOutput {
+	return AlertAutoMitigate(e).ToAlertAutoMitigateOutputWithContext(ctx).ToAlertAutoMitigatePtrOutputWithContext(ctx)
+}
+
+func (e AlertAutoMitigate) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AlertAutoMitigate) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AlertAutoMitigate) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AlertAutoMitigate) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AlertAutoMitigateOutput struct{ *pulumi.OutputState }
+
+func (AlertAutoMitigateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertAutoMitigate)(nil)).Elem()
+}
+
+func (o AlertAutoMitigateOutput) ToAlertAutoMitigateOutput() AlertAutoMitigateOutput {
+	return o
+}
+
+func (o AlertAutoMitigateOutput) ToAlertAutoMitigateOutputWithContext(ctx context.Context) AlertAutoMitigateOutput {
+	return o
+}
+
+func (o AlertAutoMitigateOutput) ToAlertAutoMitigatePtrOutput() AlertAutoMitigatePtrOutput {
+	return o.ToAlertAutoMitigatePtrOutputWithContext(context.Background())
+}
+
+func (o AlertAutoMitigateOutput) ToAlertAutoMitigatePtrOutputWithContext(ctx context.Context) AlertAutoMitigatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertAutoMitigate) *AlertAutoMitigate {
+		return &v
+	}).(AlertAutoMitigatePtrOutput)
+}
+
+func (o AlertAutoMitigateOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AlertAutoMitigateOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AlertAutoMitigate) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AlertAutoMitigateOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AlertAutoMitigateOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AlertAutoMitigate) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AlertAutoMitigatePtrOutput struct{ *pulumi.OutputState }
+
+func (AlertAutoMitigatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertAutoMitigate)(nil)).Elem()
+}
+
+func (o AlertAutoMitigatePtrOutput) ToAlertAutoMitigatePtrOutput() AlertAutoMitigatePtrOutput {
+	return o
+}
+
+func (o AlertAutoMitigatePtrOutput) ToAlertAutoMitigatePtrOutputWithContext(ctx context.Context) AlertAutoMitigatePtrOutput {
+	return o
+}
+
+func (o AlertAutoMitigatePtrOutput) Elem() AlertAutoMitigateOutput {
+	return o.ApplyT(func(v *AlertAutoMitigate) AlertAutoMitigate {
+		if v != nil {
+			return *v
+		}
+		var ret AlertAutoMitigate
+		return ret
+	}).(AlertAutoMitigateOutput)
+}
+
+func (o AlertAutoMitigatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AlertAutoMitigatePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AlertAutoMitigate) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AlertAutoMitigateInput is an input type that accepts values of the AlertAutoMitigate enum
+// A concrete instance of `AlertAutoMitigateInput` can be one of the following:
+//
+//	AlertAutoMitigateEnable
+//	AlertAutoMitigateDisable
+type AlertAutoMitigateInput interface {
+	pulumi.Input
+
+	ToAlertAutoMitigateOutput() AlertAutoMitigateOutput
+	ToAlertAutoMitigateOutputWithContext(context.Context) AlertAutoMitigateOutput
+}
+
+var alertAutoMitigatePtrType = reflect.TypeOf((**AlertAutoMitigate)(nil)).Elem()
+
+type AlertAutoMitigatePtrInput interface {
+	pulumi.Input
+
+	ToAlertAutoMitigatePtrOutput() AlertAutoMitigatePtrOutput
+	ToAlertAutoMitigatePtrOutputWithContext(context.Context) AlertAutoMitigatePtrOutput
+}
+
+type alertAutoMitigatePtr string
+
+func AlertAutoMitigatePtr(v string) AlertAutoMitigatePtrInput {
+	return (*alertAutoMitigatePtr)(&v)
+}
+
+func (*alertAutoMitigatePtr) ElementType() reflect.Type {
+	return alertAutoMitigatePtrType
+}
+
+func (in *alertAutoMitigatePtr) ToAlertAutoMitigatePtrOutput() AlertAutoMitigatePtrOutput {
+	return pulumi.ToOutput(in).(AlertAutoMitigatePtrOutput)
+}
+
+func (in *alertAutoMitigatePtr) ToAlertAutoMitigatePtrOutputWithContext(ctx context.Context) AlertAutoMitigatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AlertAutoMitigatePtrOutput)
+}
+
+// Indicates whether the alert is in an enabled state.
+type AlertRuleStatus string
+
+const (
+	// The scheduled query rule is enabled
+	AlertRuleStatusEnabled = AlertRuleStatus("Enabled")
+	// The scheduled query rule is disabled
+	AlertRuleStatusDisabled = AlertRuleStatus("Disabled")
+)
+
+func (AlertRuleStatus) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRuleStatus)(nil)).Elem()
+}
+
+func (e AlertRuleStatus) ToAlertRuleStatusOutput() AlertRuleStatusOutput {
+	return pulumi.ToOutput(e).(AlertRuleStatusOutput)
+}
+
+func (e AlertRuleStatus) ToAlertRuleStatusOutputWithContext(ctx context.Context) AlertRuleStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AlertRuleStatusOutput)
+}
+
+func (e AlertRuleStatus) ToAlertRuleStatusPtrOutput() AlertRuleStatusPtrOutput {
+	return e.ToAlertRuleStatusPtrOutputWithContext(context.Background())
+}
+
+func (e AlertRuleStatus) ToAlertRuleStatusPtrOutputWithContext(ctx context.Context) AlertRuleStatusPtrOutput {
+	return AlertRuleStatus(e).ToAlertRuleStatusOutputWithContext(ctx).ToAlertRuleStatusPtrOutputWithContext(ctx)
+}
+
+func (e AlertRuleStatus) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AlertRuleStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AlertRuleStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AlertRuleStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AlertRuleStatusOutput struct{ *pulumi.OutputState }
+
+func (AlertRuleStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRuleStatus)(nil)).Elem()
+}
+
+func (o AlertRuleStatusOutput) ToAlertRuleStatusOutput() AlertRuleStatusOutput {
+	return o
+}
+
+func (o AlertRuleStatusOutput) ToAlertRuleStatusOutputWithContext(ctx context.Context) AlertRuleStatusOutput {
+	return o
+}
+
+func (o AlertRuleStatusOutput) ToAlertRuleStatusPtrOutput() AlertRuleStatusPtrOutput {
+	return o.ToAlertRuleStatusPtrOutputWithContext(context.Background())
+}
+
+func (o AlertRuleStatusOutput) ToAlertRuleStatusPtrOutputWithContext(ctx context.Context) AlertRuleStatusPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertRuleStatus) *AlertRuleStatus {
+		return &v
+	}).(AlertRuleStatusPtrOutput)
+}
+
+func (o AlertRuleStatusOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AlertRuleStatusOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AlertRuleStatus) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AlertRuleStatusOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AlertRuleStatusOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AlertRuleStatus) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AlertRuleStatusPtrOutput struct{ *pulumi.OutputState }
+
+func (AlertRuleStatusPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertRuleStatus)(nil)).Elem()
+}
+
+func (o AlertRuleStatusPtrOutput) ToAlertRuleStatusPtrOutput() AlertRuleStatusPtrOutput {
+	return o
+}
+
+func (o AlertRuleStatusPtrOutput) ToAlertRuleStatusPtrOutputWithContext(ctx context.Context) AlertRuleStatusPtrOutput {
+	return o
+}
+
+func (o AlertRuleStatusPtrOutput) Elem() AlertRuleStatusOutput {
+	return o.ApplyT(func(v *AlertRuleStatus) AlertRuleStatus {
+		if v != nil {
+			return *v
+		}
+		var ret AlertRuleStatus
+		return ret
+	}).(AlertRuleStatusOutput)
+}
+
+func (o AlertRuleStatusPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AlertRuleStatusPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AlertRuleStatus) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AlertRuleStatusInput is an input type that accepts values of the AlertRuleStatus enum
+// A concrete instance of `AlertRuleStatusInput` can be one of the following:
+//
+//	AlertRuleStatusEnabled
+//	AlertRuleStatusDisabled
+type AlertRuleStatusInput interface {
+	pulumi.Input
+
+	ToAlertRuleStatusOutput() AlertRuleStatusOutput
+	ToAlertRuleStatusOutputWithContext(context.Context) AlertRuleStatusOutput
+}
+
+var alertRuleStatusPtrType = reflect.TypeOf((**AlertRuleStatus)(nil)).Elem()
+
+type AlertRuleStatusPtrInput interface {
+	pulumi.Input
+
+	ToAlertRuleStatusPtrOutput() AlertRuleStatusPtrOutput
+	ToAlertRuleStatusPtrOutputWithContext(context.Context) AlertRuleStatusPtrOutput
+}
+
+type alertRuleStatusPtr string
+
+func AlertRuleStatusPtr(v string) AlertRuleStatusPtrInput {
+	return (*alertRuleStatusPtr)(&v)
+}
+
+func (*alertRuleStatusPtr) ElementType() reflect.Type {
+	return alertRuleStatusPtrType
+}
+
+func (in *alertRuleStatusPtr) ToAlertRuleStatusPtrOutput() AlertRuleStatusPtrOutput {
+	return pulumi.ToOutput(in).(AlertRuleStatusPtrOutput)
+}
+
+func (in *alertRuleStatusPtr) ToAlertRuleStatusPtrOutputWithContext(ctx context.Context) AlertRuleStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AlertRuleStatusPtrOutput)
+}
+
 // The App Service plan tier.
 type AppServicePlanTier string
 
@@ -28,6 +364,183 @@ const (
 	BackupTypeSQL  = BackupType("SQL")
 	BackupTypeHANA = BackupType("HANA")
 )
+
+// The threshold operator of the alert.
+type ConditionalOperator string
+
+const (
+	// The value is less than the specified value.
+	ConditionalOperatorLessThan = ConditionalOperator("LessThan")
+	// The value is greater than the specified value.
+	ConditionalOperatorGreaterThan = ConditionalOperator("GreaterThan")
+	// The value is equal to the specified value.
+	ConditionalOperatorEqual = ConditionalOperator("Equal")
+	// The value is greater than or equal to the specified value.
+	ConditionalOperatorGreaterThanOrEqual = ConditionalOperator("GreaterThanOrEqual")
+	// The value is less than or equal to the specified value.
+	ConditionalOperatorLessThanOrEqual = ConditionalOperator("LessThanOrEqual")
+)
+
+func (ConditionalOperator) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConditionalOperator)(nil)).Elem()
+}
+
+func (e ConditionalOperator) ToConditionalOperatorOutput() ConditionalOperatorOutput {
+	return pulumi.ToOutput(e).(ConditionalOperatorOutput)
+}
+
+func (e ConditionalOperator) ToConditionalOperatorOutputWithContext(ctx context.Context) ConditionalOperatorOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ConditionalOperatorOutput)
+}
+
+func (e ConditionalOperator) ToConditionalOperatorPtrOutput() ConditionalOperatorPtrOutput {
+	return e.ToConditionalOperatorPtrOutputWithContext(context.Background())
+}
+
+func (e ConditionalOperator) ToConditionalOperatorPtrOutputWithContext(ctx context.Context) ConditionalOperatorPtrOutput {
+	return ConditionalOperator(e).ToConditionalOperatorOutputWithContext(ctx).ToConditionalOperatorPtrOutputWithContext(ctx)
+}
+
+func (e ConditionalOperator) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ConditionalOperator) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ConditionalOperator) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ConditionalOperator) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ConditionalOperatorOutput struct{ *pulumi.OutputState }
+
+func (ConditionalOperatorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConditionalOperator)(nil)).Elem()
+}
+
+func (o ConditionalOperatorOutput) ToConditionalOperatorOutput() ConditionalOperatorOutput {
+	return o
+}
+
+func (o ConditionalOperatorOutput) ToConditionalOperatorOutputWithContext(ctx context.Context) ConditionalOperatorOutput {
+	return o
+}
+
+func (o ConditionalOperatorOutput) ToConditionalOperatorPtrOutput() ConditionalOperatorPtrOutput {
+	return o.ToConditionalOperatorPtrOutputWithContext(context.Background())
+}
+
+func (o ConditionalOperatorOutput) ToConditionalOperatorPtrOutputWithContext(ctx context.Context) ConditionalOperatorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConditionalOperator) *ConditionalOperator {
+		return &v
+	}).(ConditionalOperatorPtrOutput)
+}
+
+func (o ConditionalOperatorOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ConditionalOperatorOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ConditionalOperator) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ConditionalOperatorOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ConditionalOperatorOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ConditionalOperator) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConditionalOperatorPtrOutput struct{ *pulumi.OutputState }
+
+func (ConditionalOperatorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConditionalOperator)(nil)).Elem()
+}
+
+func (o ConditionalOperatorPtrOutput) ToConditionalOperatorPtrOutput() ConditionalOperatorPtrOutput {
+	return o
+}
+
+func (o ConditionalOperatorPtrOutput) ToConditionalOperatorPtrOutputWithContext(ctx context.Context) ConditionalOperatorPtrOutput {
+	return o
+}
+
+func (o ConditionalOperatorPtrOutput) Elem() ConditionalOperatorOutput {
+	return o.ApplyT(func(v *ConditionalOperator) ConditionalOperator {
+		if v != nil {
+			return *v
+		}
+		var ret ConditionalOperator
+		return ret
+	}).(ConditionalOperatorOutput)
+}
+
+func (o ConditionalOperatorPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ConditionalOperatorPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ConditionalOperator) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ConditionalOperatorInput is an input type that accepts values of the ConditionalOperator enum
+// A concrete instance of `ConditionalOperatorInput` can be one of the following:
+//
+//	ConditionalOperatorLessThan
+//	ConditionalOperatorGreaterThan
+//	ConditionalOperatorEqual
+//	ConditionalOperatorGreaterThanOrEqual
+//	ConditionalOperatorLessThanOrEqual
+type ConditionalOperatorInput interface {
+	pulumi.Input
+
+	ToConditionalOperatorOutput() ConditionalOperatorOutput
+	ToConditionalOperatorOutputWithContext(context.Context) ConditionalOperatorOutput
+}
+
+var conditionalOperatorPtrType = reflect.TypeOf((**ConditionalOperator)(nil)).Elem()
+
+type ConditionalOperatorPtrInput interface {
+	pulumi.Input
+
+	ToConditionalOperatorPtrOutput() ConditionalOperatorPtrOutput
+	ToConditionalOperatorPtrOutputWithContext(context.Context) ConditionalOperatorPtrOutput
+}
+
+type conditionalOperatorPtr string
+
+func ConditionalOperatorPtr(v string) ConditionalOperatorPtrInput {
+	return (*conditionalOperatorPtr)(&v)
+}
+
+func (*conditionalOperatorPtr) ElementType() reflect.Type {
+	return conditionalOperatorPtrType
+}
+
+func (in *conditionalOperatorPtr) ToConditionalOperatorPtrOutput() ConditionalOperatorPtrOutput {
+	return pulumi.ToOutput(in).(ConditionalOperatorPtrOutput)
+}
+
+func (in *conditionalOperatorPtr) ToConditionalOperatorPtrOutputWithContext(ctx context.Context) ConditionalOperatorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ConditionalOperatorPtrOutput)
+}
 
 // The type of file share config.
 type ConfigurationType string
@@ -3824,6 +4337,12 @@ func (in *workloadTypePtr) ToWorkloadTypePtrOutputWithContext(ctx context.Contex
 }
 
 func init() {
+	pulumi.RegisterOutputType(AlertAutoMitigateOutput{})
+	pulumi.RegisterOutputType(AlertAutoMitigatePtrOutput{})
+	pulumi.RegisterOutputType(AlertRuleStatusOutput{})
+	pulumi.RegisterOutputType(AlertRuleStatusPtrOutput{})
+	pulumi.RegisterOutputType(ConditionalOperatorOutput{})
+	pulumi.RegisterOutputType(ConditionalOperatorPtrOutput{})
 	pulumi.RegisterOutputType(DayOfWeekOutput{})
 	pulumi.RegisterOutputType(DayOfWeekPtrOutput{})
 	pulumi.RegisterOutputType(DayOfWeekArrayOutput{})

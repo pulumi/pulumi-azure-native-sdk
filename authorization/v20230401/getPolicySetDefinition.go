@@ -23,6 +23,8 @@ func LookupPolicySetDefinition(ctx *pulumi.Context, args *LookupPolicySetDefinit
 }
 
 type LookupPolicySetDefinitionArgs struct {
+	// Comma-separated list of additional properties to be included in the response. Supported values are 'LatestDefinitionVersion, EffectiveDefinitionVersion'.
+	Expand *string `pulumi:"expand"`
 	// The name of the policy set definition to get.
 	PolicySetDefinitionName string `pulumi:"policySetDefinitionName"`
 }
@@ -77,6 +79,8 @@ func LookupPolicySetDefinitionOutput(ctx *pulumi.Context, args LookupPolicySetDe
 }
 
 type LookupPolicySetDefinitionOutputArgs struct {
+	// Comma-separated list of additional properties to be included in the response. Supported values are 'LatestDefinitionVersion, EffectiveDefinitionVersion'.
+	Expand pulumi.StringPtrInput `pulumi:"expand"`
 	// The name of the policy set definition to get.
 	PolicySetDefinitionName pulumi.StringInput `pulumi:"policySetDefinitionName"`
 }

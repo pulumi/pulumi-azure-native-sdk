@@ -221,6 +221,8 @@ type AzureFileVolume struct {
 	ShareName string `pulumi:"shareName"`
 	// The storage account access key used to access the Azure File share.
 	StorageAccountKey *string `pulumi:"storageAccountKey"`
+	// The reference to the storage account access key used to access the Azure File share.
+	StorageAccountKeyReference *string `pulumi:"storageAccountKeyReference"`
 	// The name of the storage account that contains the Azure File share.
 	StorageAccountName string `pulumi:"storageAccountName"`
 }
@@ -244,6 +246,8 @@ type AzureFileVolumeArgs struct {
 	ShareName pulumi.StringInput `pulumi:"shareName"`
 	// The storage account access key used to access the Azure File share.
 	StorageAccountKey pulumi.StringPtrInput `pulumi:"storageAccountKey"`
+	// The reference to the storage account access key used to access the Azure File share.
+	StorageAccountKeyReference pulumi.StringPtrInput `pulumi:"storageAccountKeyReference"`
 	// The name of the storage account that contains the Azure File share.
 	StorageAccountName pulumi.StringInput `pulumi:"storageAccountName"`
 }
@@ -341,6 +345,11 @@ func (o AzureFileVolumeOutput) StorageAccountKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AzureFileVolume) *string { return v.StorageAccountKey }).(pulumi.StringPtrOutput)
 }
 
+// The reference to the storage account access key used to access the Azure File share.
+func (o AzureFileVolumeOutput) StorageAccountKeyReference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureFileVolume) *string { return v.StorageAccountKeyReference }).(pulumi.StringPtrOutput)
+}
+
 // The name of the storage account that contains the Azure File share.
 func (o AzureFileVolumeOutput) StorageAccountName() pulumi.StringOutput {
 	return o.ApplyT(func(v AzureFileVolume) string { return v.StorageAccountName }).(pulumi.StringOutput)
@@ -400,6 +409,16 @@ func (o AzureFileVolumePtrOutput) StorageAccountKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The reference to the storage account access key used to access the Azure File share.
+func (o AzureFileVolumePtrOutput) StorageAccountKeyReference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureFileVolume) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageAccountKeyReference
+	}).(pulumi.StringPtrOutput)
+}
+
 // The name of the storage account that contains the Azure File share.
 func (o AzureFileVolumePtrOutput) StorageAccountName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AzureFileVolume) *string {
@@ -418,6 +437,8 @@ type AzureFileVolumeResponse struct {
 	ShareName string `pulumi:"shareName"`
 	// The storage account access key used to access the Azure File share.
 	StorageAccountKey *string `pulumi:"storageAccountKey"`
+	// The reference to the storage account access key used to access the Azure File share.
+	StorageAccountKeyReference *string `pulumi:"storageAccountKeyReference"`
 	// The name of the storage account that contains the Azure File share.
 	StorageAccountName string `pulumi:"storageAccountName"`
 }
@@ -450,6 +471,11 @@ func (o AzureFileVolumeResponseOutput) ShareName() pulumi.StringOutput {
 // The storage account access key used to access the Azure File share.
 func (o AzureFileVolumeResponseOutput) StorageAccountKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AzureFileVolumeResponse) *string { return v.StorageAccountKey }).(pulumi.StringPtrOutput)
+}
+
+// The reference to the storage account access key used to access the Azure File share.
+func (o AzureFileVolumeResponseOutput) StorageAccountKeyReference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureFileVolumeResponse) *string { return v.StorageAccountKeyReference }).(pulumi.StringPtrOutput)
 }
 
 // The name of the storage account that contains the Azure File share.
@@ -508,6 +534,16 @@ func (o AzureFileVolumeResponsePtrOutput) StorageAccountKey() pulumi.StringPtrOu
 			return nil
 		}
 		return v.StorageAccountKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// The reference to the storage account access key used to access the Azure File share.
+func (o AzureFileVolumeResponsePtrOutput) StorageAccountKeyReference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureFileVolumeResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageAccountKeyReference
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -4223,6 +4259,8 @@ type EnvironmentVariable struct {
 	Name string `pulumi:"name"`
 	// The value of the secure environment variable.
 	SecureValue *string `pulumi:"secureValue"`
+	// The reference of the secure environment variable.
+	SecureValueReference *string `pulumi:"secureValueReference"`
 	// The value of the environment variable.
 	Value *string `pulumi:"value"`
 }
@@ -4244,6 +4282,8 @@ type EnvironmentVariableArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// The value of the secure environment variable.
 	SecureValue pulumi.StringPtrInput `pulumi:"secureValue"`
+	// The reference of the secure environment variable.
+	SecureValueReference pulumi.StringPtrInput `pulumi:"secureValueReference"`
 	// The value of the environment variable.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
@@ -4310,6 +4350,11 @@ func (o EnvironmentVariableOutput) SecureValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentVariable) *string { return v.SecureValue }).(pulumi.StringPtrOutput)
 }
 
+// The reference of the secure environment variable.
+func (o EnvironmentVariableOutput) SecureValueReference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnvironmentVariable) *string { return v.SecureValueReference }).(pulumi.StringPtrOutput)
+}
+
 // The value of the environment variable.
 func (o EnvironmentVariableOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentVariable) *string { return v.Value }).(pulumi.StringPtrOutput)
@@ -4341,6 +4386,8 @@ type EnvironmentVariableResponse struct {
 	Name string `pulumi:"name"`
 	// The value of the secure environment variable.
 	SecureValue *string `pulumi:"secureValue"`
+	// The reference of the secure environment variable.
+	SecureValueReference *string `pulumi:"secureValueReference"`
 	// The value of the environment variable.
 	Value *string `pulumi:"value"`
 }
@@ -4368,6 +4415,11 @@ func (o EnvironmentVariableResponseOutput) Name() pulumi.StringOutput {
 // The value of the secure environment variable.
 func (o EnvironmentVariableResponseOutput) SecureValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentVariableResponse) *string { return v.SecureValue }).(pulumi.StringPtrOutput)
+}
+
+// The reference of the secure environment variable.
+func (o EnvironmentVariableResponseOutput) SecureValueReference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnvironmentVariableResponse) *string { return v.SecureValueReference }).(pulumi.StringPtrOutput)
 }
 
 // The value of the environment variable.
@@ -5154,6 +5206,8 @@ type ImageRegistryCredential struct {
 	IdentityUrl *string `pulumi:"identityUrl"`
 	// The password for the private registry.
 	Password *string `pulumi:"password"`
+	// The reference for the private registry password.
+	PasswordReference *string `pulumi:"passwordReference"`
 	// The Docker image registry server without a protocol such as "http" and "https".
 	Server string `pulumi:"server"`
 	// The username for the private registry.
@@ -5179,6 +5233,8 @@ type ImageRegistryCredentialArgs struct {
 	IdentityUrl pulumi.StringPtrInput `pulumi:"identityUrl"`
 	// The password for the private registry.
 	Password pulumi.StringPtrInput `pulumi:"password"`
+	// The reference for the private registry password.
+	PasswordReference pulumi.StringPtrInput `pulumi:"passwordReference"`
 	// The Docker image registry server without a protocol such as "http" and "https".
 	Server pulumi.StringInput `pulumi:"server"`
 	// The username for the private registry.
@@ -5252,6 +5308,11 @@ func (o ImageRegistryCredentialOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageRegistryCredential) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
+// The reference for the private registry password.
+func (o ImageRegistryCredentialOutput) PasswordReference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImageRegistryCredential) *string { return v.PasswordReference }).(pulumi.StringPtrOutput)
+}
+
 // The Docker image registry server without a protocol such as "http" and "https".
 func (o ImageRegistryCredentialOutput) Server() pulumi.StringOutput {
 	return o.ApplyT(func(v ImageRegistryCredential) string { return v.Server }).(pulumi.StringOutput)
@@ -5290,6 +5351,8 @@ type ImageRegistryCredentialResponse struct {
 	IdentityUrl *string `pulumi:"identityUrl"`
 	// The password for the private registry.
 	Password *string `pulumi:"password"`
+	// The reference for the private registry password.
+	PasswordReference *string `pulumi:"passwordReference"`
 	// The Docker image registry server without a protocol such as "http" and "https".
 	Server string `pulumi:"server"`
 	// The username for the private registry.
@@ -5324,6 +5387,11 @@ func (o ImageRegistryCredentialResponseOutput) IdentityUrl() pulumi.StringPtrOut
 // The password for the private registry.
 func (o ImageRegistryCredentialResponseOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageRegistryCredentialResponse) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// The reference for the private registry password.
+func (o ImageRegistryCredentialResponseOutput) PasswordReference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImageRegistryCredentialResponse) *string { return v.PasswordReference }).(pulumi.StringPtrOutput)
 }
 
 // The Docker image registry server without a protocol such as "http" and "https".
@@ -8395,6 +8463,8 @@ type Volume struct {
 	Name string `pulumi:"name"`
 	// The secret volume.
 	Secret map[string]string `pulumi:"secret"`
+	// The secret reference volume.
+	SecretReference map[string]string `pulumi:"secretReference"`
 }
 
 // VolumeInput is an input type that accepts VolumeArgs and VolumeOutput values.
@@ -8420,6 +8490,8 @@ type VolumeArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// The secret volume.
 	Secret pulumi.StringMapInput `pulumi:"secret"`
+	// The secret reference volume.
+	SecretReference pulumi.StringMapInput `pulumi:"secretReference"`
 }
 
 func (VolumeArgs) ElementType() reflect.Type {
@@ -8497,6 +8569,11 @@ func (o VolumeOutput) Name() pulumi.StringOutput {
 // The secret volume.
 func (o VolumeOutput) Secret() pulumi.StringMapOutput {
 	return o.ApplyT(func(v Volume) map[string]string { return v.Secret }).(pulumi.StringMapOutput)
+}
+
+// The secret reference volume.
+func (o VolumeOutput) SecretReference() pulumi.StringMapOutput {
+	return o.ApplyT(func(v Volume) map[string]string { return v.SecretReference }).(pulumi.StringMapOutput)
 }
 
 type VolumeArrayOutput struct{ *pulumi.OutputState }
@@ -8709,6 +8786,8 @@ type VolumeResponse struct {
 	Name string `pulumi:"name"`
 	// The secret volume.
 	Secret map[string]string `pulumi:"secret"`
+	// The secret reference volume.
+	SecretReference map[string]string `pulumi:"secretReference"`
 }
 
 // The properties of the volume.
@@ -8749,6 +8828,11 @@ func (o VolumeResponseOutput) Name() pulumi.StringOutput {
 // The secret volume.
 func (o VolumeResponseOutput) Secret() pulumi.StringMapOutput {
 	return o.ApplyT(func(v VolumeResponse) map[string]string { return v.Secret }).(pulumi.StringMapOutput)
+}
+
+// The secret reference volume.
+func (o VolumeResponseOutput) SecretReference() pulumi.StringMapOutput {
+	return o.ApplyT(func(v VolumeResponse) map[string]string { return v.SecretReference }).(pulumi.StringMapOutput)
 }
 
 type VolumeResponseArrayOutput struct{ *pulumi.OutputState }

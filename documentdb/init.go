@@ -75,6 +75,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SqlResourceSqlUserDefinedFunction{}
 	case "azure-native:documentdb:TableResourceTable":
 		r = &TableResourceTable{}
+	case "azure-native:documentdb:TableResourceTableRoleAssignment":
+		r = &TableResourceTableRoleAssignment{}
+	case "azure-native:documentdb:TableResourceTableRoleDefinition":
+		r = &TableResourceTableRoleDefinition{}
 	case "azure-native:documentdb:ThroughputPool":
 		r = &ThroughputPool{}
 	case "azure-native:documentdb:ThroughputPoolAccount":

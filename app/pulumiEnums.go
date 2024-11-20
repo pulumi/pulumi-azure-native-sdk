@@ -681,6 +681,7 @@ type BindingType string
 const (
 	BindingTypeDisabled   = BindingType("Disabled")
 	BindingTypeSniEnabled = BindingType("SniEnabled")
+	BindingTypeAuto       = BindingType("Auto")
 )
 
 func (BindingType) ElementType() reflect.Type {
@@ -807,6 +808,7 @@ func (o BindingTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) 
 //
 //	BindingTypeDisabled
 //	BindingTypeSniEnabled
+//	BindingTypeAuto
 type BindingTypeInput interface {
 	pulumi.Input
 
@@ -4689,6 +4691,186 @@ func (in *unauthenticatedClientActionV2Ptr) ToUnauthenticatedClientActionV2PtrOu
 	return pulumi.ToOutputWithContext(ctx, in).(UnauthenticatedClientActionV2PtrOutput)
 }
 
+// Day of the week when a managed environment can be patched.
+type WeekDay string
+
+const (
+	WeekDayMonday    = WeekDay("Monday")
+	WeekDayTuesday   = WeekDay("Tuesday")
+	WeekDayWednesday = WeekDay("Wednesday")
+	WeekDayThursday  = WeekDay("Thursday")
+	WeekDayFriday    = WeekDay("Friday")
+	WeekDaySaturday  = WeekDay("Saturday")
+	WeekDaySunday    = WeekDay("Sunday")
+	WeekDayEveryday  = WeekDay("Everyday")
+	WeekDayWeekend   = WeekDay("Weekend")
+)
+
+func (WeekDay) ElementType() reflect.Type {
+	return reflect.TypeOf((*WeekDay)(nil)).Elem()
+}
+
+func (e WeekDay) ToWeekDayOutput() WeekDayOutput {
+	return pulumi.ToOutput(e).(WeekDayOutput)
+}
+
+func (e WeekDay) ToWeekDayOutputWithContext(ctx context.Context) WeekDayOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(WeekDayOutput)
+}
+
+func (e WeekDay) ToWeekDayPtrOutput() WeekDayPtrOutput {
+	return e.ToWeekDayPtrOutputWithContext(context.Background())
+}
+
+func (e WeekDay) ToWeekDayPtrOutputWithContext(ctx context.Context) WeekDayPtrOutput {
+	return WeekDay(e).ToWeekDayOutputWithContext(ctx).ToWeekDayPtrOutputWithContext(ctx)
+}
+
+func (e WeekDay) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e WeekDay) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e WeekDay) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e WeekDay) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type WeekDayOutput struct{ *pulumi.OutputState }
+
+func (WeekDayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WeekDay)(nil)).Elem()
+}
+
+func (o WeekDayOutput) ToWeekDayOutput() WeekDayOutput {
+	return o
+}
+
+func (o WeekDayOutput) ToWeekDayOutputWithContext(ctx context.Context) WeekDayOutput {
+	return o
+}
+
+func (o WeekDayOutput) ToWeekDayPtrOutput() WeekDayPtrOutput {
+	return o.ToWeekDayPtrOutputWithContext(context.Background())
+}
+
+func (o WeekDayOutput) ToWeekDayPtrOutputWithContext(ctx context.Context) WeekDayPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WeekDay) *WeekDay {
+		return &v
+	}).(WeekDayPtrOutput)
+}
+
+func (o WeekDayOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o WeekDayOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e WeekDay) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o WeekDayOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o WeekDayOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e WeekDay) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type WeekDayPtrOutput struct{ *pulumi.OutputState }
+
+func (WeekDayPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WeekDay)(nil)).Elem()
+}
+
+func (o WeekDayPtrOutput) ToWeekDayPtrOutput() WeekDayPtrOutput {
+	return o
+}
+
+func (o WeekDayPtrOutput) ToWeekDayPtrOutputWithContext(ctx context.Context) WeekDayPtrOutput {
+	return o
+}
+
+func (o WeekDayPtrOutput) Elem() WeekDayOutput {
+	return o.ApplyT(func(v *WeekDay) WeekDay {
+		if v != nil {
+			return *v
+		}
+		var ret WeekDay
+		return ret
+	}).(WeekDayOutput)
+}
+
+func (o WeekDayPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o WeekDayPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *WeekDay) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// WeekDayInput is an input type that accepts values of the WeekDay enum
+// A concrete instance of `WeekDayInput` can be one of the following:
+//
+//	WeekDayMonday
+//	WeekDayTuesday
+//	WeekDayWednesday
+//	WeekDayThursday
+//	WeekDayFriday
+//	WeekDaySaturday
+//	WeekDaySunday
+//	WeekDayEveryday
+//	WeekDayWeekend
+type WeekDayInput interface {
+	pulumi.Input
+
+	ToWeekDayOutput() WeekDayOutput
+	ToWeekDayOutputWithContext(context.Context) WeekDayOutput
+}
+
+var weekDayPtrType = reflect.TypeOf((**WeekDay)(nil)).Elem()
+
+type WeekDayPtrInput interface {
+	pulumi.Input
+
+	ToWeekDayPtrOutput() WeekDayPtrOutput
+	ToWeekDayPtrOutputWithContext(context.Context) WeekDayPtrOutput
+}
+
+type weekDayPtr string
+
+func WeekDayPtr(v string) WeekDayPtrInput {
+	return (*weekDayPtr)(&v)
+}
+
+func (*weekDayPtr) ElementType() reflect.Type {
+	return weekDayPtrType
+}
+
+func (in *weekDayPtr) ToWeekDayPtrOutput() WeekDayPtrOutput {
+	return pulumi.ToOutput(in).(WeekDayPtrOutput)
+}
+
+func (in *weekDayPtr) ToWeekDayPtrOutputWithContext(ctx context.Context) WeekDayPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(WeekDayPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AccessModeOutput{})
 	pulumi.RegisterOutputType(AccessModePtrOutput{})
@@ -4746,4 +4928,6 @@ func init() {
 	pulumi.RegisterOutputType(TypePtrOutput{})
 	pulumi.RegisterOutputType(UnauthenticatedClientActionV2Output{})
 	pulumi.RegisterOutputType(UnauthenticatedClientActionV2PtrOutput{})
+	pulumi.RegisterOutputType(WeekDayOutput{})
+	pulumi.RegisterOutputType(WeekDayPtrOutput{})
 }

@@ -14,6 +14,8 @@ import (
 
 // Describes a nGroup.
 // Azure REST API version: 2024-09-01-preview.
+//
+// Other available API versions: 2024-11-01-preview.
 type NGroup struct {
 	pulumi.CustomResourceState
 
@@ -52,6 +54,9 @@ func NewNGroup(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:containerinstance/v20240901preview:NGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerinstance/v20241101preview:NGroup"),
 		},
 	})
 	opts = append(opts, aliases)

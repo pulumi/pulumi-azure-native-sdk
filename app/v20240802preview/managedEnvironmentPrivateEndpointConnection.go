@@ -55,6 +55,9 @@ func NewManagedEnvironmentPrivateEndpointConnection(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:app/v20240202preview:ManagedEnvironmentPrivateEndpointConnection"),
 		},
+		{
+			Type: pulumi.String("azure-native:app/v20241002preview:ManagedEnvironmentPrivateEndpointConnection"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

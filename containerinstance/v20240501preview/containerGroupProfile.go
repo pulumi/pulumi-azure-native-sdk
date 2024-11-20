@@ -82,6 +82,9 @@ func NewContainerGroupProfile(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:containerinstance:ContainerGroupProfile"),
 		},
+		{
+			Type: pulumi.String("azure-native:containerinstance/v20241101preview:ContainerGroupProfile"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

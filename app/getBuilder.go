@@ -14,7 +14,7 @@ import (
 // Get a BuilderResource
 // Azure REST API version: 2023-08-01-preview.
 //
-// Other available API versions: 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview.
+// Other available API versions: 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview.
 func LookupBuilder(ctx *pulumi.Context, args *LookupBuilderArgs, opts ...pulumi.InvokeOption) (*LookupBuilderResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBuilderResult

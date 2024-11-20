@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:workloads:ACSSBackupConnection":
 		r = &ACSSBackupConnection{}
+	case "azure-native:workloads:Alert":
+		r = &Alert{}
 	case "azure-native:workloads:Connector":
 		r = &Connector{}
 	case "azure-native:workloads:Monitor":

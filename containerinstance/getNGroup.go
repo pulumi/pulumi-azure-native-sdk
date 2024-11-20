@@ -13,6 +13,8 @@ import (
 
 // Get the properties of the specified n group.
 // Azure REST API version: 2024-09-01-preview.
+//
+// Other available API versions: 2024-11-01-preview.
 func LookupNGroup(ctx *pulumi.Context, args *LookupNGroupArgs, opts ...pulumi.InvokeOption) (*LookupNGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNGroupResult

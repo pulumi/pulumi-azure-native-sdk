@@ -135,6 +135,9 @@ func NewSqlResourceSqlRoleAssignment(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:documentdb/v20241115:SqlResourceSqlRoleAssignment"),
 		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20241201preview:SqlResourceSqlRoleAssignment"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -52,6 +52,9 @@ func NewNGroup(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:containerinstance:NGroup"),
 		},
+		{
+			Type: pulumi.String("azure-native:containerinstance/v20241101preview:NGroup"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

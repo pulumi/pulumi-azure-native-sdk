@@ -24,10 +24,14 @@ type PolicyAssignment struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The display name of the policy assignment.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
+	// The effective version of the policy definition in use. This is only present if requested via the $expand query parameter.
+	EffectiveDefinitionVersion pulumi.StringOutput `pulumi:"effectiveDefinitionVersion"`
 	// The policy assignment enforcement mode. Possible values are Default and DoNotEnforce.
 	EnforcementMode pulumi.StringPtrOutput `pulumi:"enforcementMode"`
 	// The managed identity associated with the policy assignment.
 	Identity IdentityResponsePtrOutput `pulumi:"identity"`
+	// The latest version of the policy definition available. This is only present if requested via the $expand query parameter.
+	LatestDefinitionVersion pulumi.StringOutput `pulumi:"latestDefinitionVersion"`
 	// The location of the policy assignment. Only required when utilizing managed identity.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// The policy assignment metadata. Metadata is an open ended object and is typically a collection of key value pairs.
@@ -278,6 +282,11 @@ func (o PolicyAssignmentOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PolicyAssignment) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// The effective version of the policy definition in use. This is only present if requested via the $expand query parameter.
+func (o PolicyAssignmentOutput) EffectiveDefinitionVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PolicyAssignment) pulumi.StringOutput { return v.EffectiveDefinitionVersion }).(pulumi.StringOutput)
+}
+
 // The policy assignment enforcement mode. Possible values are Default and DoNotEnforce.
 func (o PolicyAssignmentOutput) EnforcementMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PolicyAssignment) pulumi.StringPtrOutput { return v.EnforcementMode }).(pulumi.StringPtrOutput)
@@ -286,6 +295,11 @@ func (o PolicyAssignmentOutput) EnforcementMode() pulumi.StringPtrOutput {
 // The managed identity associated with the policy assignment.
 func (o PolicyAssignmentOutput) Identity() IdentityResponsePtrOutput {
 	return o.ApplyT(func(v *PolicyAssignment) IdentityResponsePtrOutput { return v.Identity }).(IdentityResponsePtrOutput)
+}
+
+// The latest version of the policy definition available. This is only present if requested via the $expand query parameter.
+func (o PolicyAssignmentOutput) LatestDefinitionVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PolicyAssignment) pulumi.StringOutput { return v.LatestDefinitionVersion }).(pulumi.StringOutput)
 }
 
 // The location of the policy assignment. Only required when utilizing managed identity.

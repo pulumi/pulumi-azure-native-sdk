@@ -13,6 +13,800 @@ import (
 
 var _ = utilities.GetEnvOrDefault
 
+// Defines the Alert Query Parameter.
+type AlertQueryParameter struct {
+	// The name of the alert query parameter.
+	Name *string `pulumi:"name"`
+	// The value of the alert query parameter.
+	Value *string `pulumi:"value"`
+}
+
+// AlertQueryParameterInput is an input type that accepts AlertQueryParameterArgs and AlertQueryParameterOutput values.
+// You can construct a concrete instance of `AlertQueryParameterInput` via:
+//
+//	AlertQueryParameterArgs{...}
+type AlertQueryParameterInput interface {
+	pulumi.Input
+
+	ToAlertQueryParameterOutput() AlertQueryParameterOutput
+	ToAlertQueryParameterOutputWithContext(context.Context) AlertQueryParameterOutput
+}
+
+// Defines the Alert Query Parameter.
+type AlertQueryParameterArgs struct {
+	// The name of the alert query parameter.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The value of the alert query parameter.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (AlertQueryParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertQueryParameter)(nil)).Elem()
+}
+
+func (i AlertQueryParameterArgs) ToAlertQueryParameterOutput() AlertQueryParameterOutput {
+	return i.ToAlertQueryParameterOutputWithContext(context.Background())
+}
+
+func (i AlertQueryParameterArgs) ToAlertQueryParameterOutputWithContext(ctx context.Context) AlertQueryParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertQueryParameterOutput)
+}
+
+// AlertQueryParameterArrayInput is an input type that accepts AlertQueryParameterArray and AlertQueryParameterArrayOutput values.
+// You can construct a concrete instance of `AlertQueryParameterArrayInput` via:
+//
+//	AlertQueryParameterArray{ AlertQueryParameterArgs{...} }
+type AlertQueryParameterArrayInput interface {
+	pulumi.Input
+
+	ToAlertQueryParameterArrayOutput() AlertQueryParameterArrayOutput
+	ToAlertQueryParameterArrayOutputWithContext(context.Context) AlertQueryParameterArrayOutput
+}
+
+type AlertQueryParameterArray []AlertQueryParameterInput
+
+func (AlertQueryParameterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertQueryParameter)(nil)).Elem()
+}
+
+func (i AlertQueryParameterArray) ToAlertQueryParameterArrayOutput() AlertQueryParameterArrayOutput {
+	return i.ToAlertQueryParameterArrayOutputWithContext(context.Background())
+}
+
+func (i AlertQueryParameterArray) ToAlertQueryParameterArrayOutputWithContext(ctx context.Context) AlertQueryParameterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertQueryParameterArrayOutput)
+}
+
+// Defines the Alert Query Parameter.
+type AlertQueryParameterOutput struct{ *pulumi.OutputState }
+
+func (AlertQueryParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertQueryParameter)(nil)).Elem()
+}
+
+func (o AlertQueryParameterOutput) ToAlertQueryParameterOutput() AlertQueryParameterOutput {
+	return o
+}
+
+func (o AlertQueryParameterOutput) ToAlertQueryParameterOutputWithContext(ctx context.Context) AlertQueryParameterOutput {
+	return o
+}
+
+// The name of the alert query parameter.
+func (o AlertQueryParameterOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertQueryParameter) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The value of the alert query parameter.
+func (o AlertQueryParameterOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertQueryParameter) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type AlertQueryParameterArrayOutput struct{ *pulumi.OutputState }
+
+func (AlertQueryParameterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertQueryParameter)(nil)).Elem()
+}
+
+func (o AlertQueryParameterArrayOutput) ToAlertQueryParameterArrayOutput() AlertQueryParameterArrayOutput {
+	return o
+}
+
+func (o AlertQueryParameterArrayOutput) ToAlertQueryParameterArrayOutputWithContext(ctx context.Context) AlertQueryParameterArrayOutput {
+	return o
+}
+
+func (o AlertQueryParameterArrayOutput) Index(i pulumi.IntInput) AlertQueryParameterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlertQueryParameter {
+		return vs[0].([]AlertQueryParameter)[vs[1].(int)]
+	}).(AlertQueryParameterOutput)
+}
+
+// Defines the Alert Query Parameter.
+type AlertQueryParameterResponse struct {
+	// The name of the alert query parameter.
+	Name *string `pulumi:"name"`
+	// The value of the alert query parameter.
+	Value *string `pulumi:"value"`
+}
+
+// Defines the Alert Query Parameter.
+type AlertQueryParameterResponseOutput struct{ *pulumi.OutputState }
+
+func (AlertQueryParameterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertQueryParameterResponse)(nil)).Elem()
+}
+
+func (o AlertQueryParameterResponseOutput) ToAlertQueryParameterResponseOutput() AlertQueryParameterResponseOutput {
+	return o
+}
+
+func (o AlertQueryParameterResponseOutput) ToAlertQueryParameterResponseOutputWithContext(ctx context.Context) AlertQueryParameterResponseOutput {
+	return o
+}
+
+// The name of the alert query parameter.
+func (o AlertQueryParameterResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertQueryParameterResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The value of the alert query parameter.
+func (o AlertQueryParameterResponseOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertQueryParameterResponse) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type AlertQueryParameterResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AlertQueryParameterResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertQueryParameterResponse)(nil)).Elem()
+}
+
+func (o AlertQueryParameterResponseArrayOutput) ToAlertQueryParameterResponseArrayOutput() AlertQueryParameterResponseArrayOutput {
+	return o
+}
+
+func (o AlertQueryParameterResponseArrayOutput) ToAlertQueryParameterResponseArrayOutputWithContext(ctx context.Context) AlertQueryParameterResponseArrayOutput {
+	return o
+}
+
+func (o AlertQueryParameterResponseArrayOutput) Index(i pulumi.IntInput) AlertQueryParameterResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlertQueryParameterResponse {
+		return vs[0].([]AlertQueryParameterResponse)[vs[1].(int)]
+	}).(AlertQueryParameterResponseOutput)
+}
+
+// Describes the properties of an alert.
+type AlertRuleProperties struct {
+	// Action Group resource Ids to invoke when the alert fires
+	ActionGroups []string `pulumi:"actionGroups"`
+	// The alert query parameters.
+	AlertQueryParameters []AlertQueryParameter `pulumi:"alertQueryParameters"`
+	// The value that indicates whether the alert should be automatically resolved or not. The default is Disable.
+	AutoMitigate *string `pulumi:"autoMitigate"`
+	// Evaluation of metric on a particular column.
+	Dimension *string `pulumi:"dimension"`
+	// How often the scheduled query rule is evaluated.
+	EvaluationFrequency *int `pulumi:"evaluationFrequency"`
+	// The operator for failing periods.
+	FailingPeriodsOperator *string `pulumi:"failingPeriodsOperator"`
+	// The number of failing periods to trigger an alert.
+	FailingPeriodsToAlert *int `pulumi:"failingPeriodsToAlert"`
+	// Mute actions for the chosen period of time after the alert is fired.
+	MuteActionsDuration *int `pulumi:"muteActionsDuration"`
+	// Severity of the alert. Should be an integer between [0-4]. Value of 0 is severest.
+	Severity *int `pulumi:"severity"`
+	// Indicates whether the alert is in an enabled state.
+	Status *string `pulumi:"status"`
+	// The threshold of the alert.
+	Threshold *int `pulumi:"threshold"`
+	// The threshold operator of the alert.
+	ThresholdOperator *string `pulumi:"thresholdOperator"`
+	// The period of time on which the Alert query will be executed.
+	WindowSize *int `pulumi:"windowSize"`
+}
+
+// AlertRulePropertiesInput is an input type that accepts AlertRulePropertiesArgs and AlertRulePropertiesOutput values.
+// You can construct a concrete instance of `AlertRulePropertiesInput` via:
+//
+//	AlertRulePropertiesArgs{...}
+type AlertRulePropertiesInput interface {
+	pulumi.Input
+
+	ToAlertRulePropertiesOutput() AlertRulePropertiesOutput
+	ToAlertRulePropertiesOutputWithContext(context.Context) AlertRulePropertiesOutput
+}
+
+// Describes the properties of an alert.
+type AlertRulePropertiesArgs struct {
+	// Action Group resource Ids to invoke when the alert fires
+	ActionGroups pulumi.StringArrayInput `pulumi:"actionGroups"`
+	// The alert query parameters.
+	AlertQueryParameters AlertQueryParameterArrayInput `pulumi:"alertQueryParameters"`
+	// The value that indicates whether the alert should be automatically resolved or not. The default is Disable.
+	AutoMitigate pulumi.StringPtrInput `pulumi:"autoMitigate"`
+	// Evaluation of metric on a particular column.
+	Dimension pulumi.StringPtrInput `pulumi:"dimension"`
+	// How often the scheduled query rule is evaluated.
+	EvaluationFrequency pulumi.IntPtrInput `pulumi:"evaluationFrequency"`
+	// The operator for failing periods.
+	FailingPeriodsOperator pulumi.StringPtrInput `pulumi:"failingPeriodsOperator"`
+	// The number of failing periods to trigger an alert.
+	FailingPeriodsToAlert pulumi.IntPtrInput `pulumi:"failingPeriodsToAlert"`
+	// Mute actions for the chosen period of time after the alert is fired.
+	MuteActionsDuration pulumi.IntPtrInput `pulumi:"muteActionsDuration"`
+	// Severity of the alert. Should be an integer between [0-4]. Value of 0 is severest.
+	Severity pulumi.IntPtrInput `pulumi:"severity"`
+	// Indicates whether the alert is in an enabled state.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// The threshold of the alert.
+	Threshold pulumi.IntPtrInput `pulumi:"threshold"`
+	// The threshold operator of the alert.
+	ThresholdOperator pulumi.StringPtrInput `pulumi:"thresholdOperator"`
+	// The period of time on which the Alert query will be executed.
+	WindowSize pulumi.IntPtrInput `pulumi:"windowSize"`
+}
+
+func (AlertRulePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRuleProperties)(nil)).Elem()
+}
+
+func (i AlertRulePropertiesArgs) ToAlertRulePropertiesOutput() AlertRulePropertiesOutput {
+	return i.ToAlertRulePropertiesOutputWithContext(context.Background())
+}
+
+func (i AlertRulePropertiesArgs) ToAlertRulePropertiesOutputWithContext(ctx context.Context) AlertRulePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRulePropertiesOutput)
+}
+
+func (i AlertRulePropertiesArgs) ToAlertRulePropertiesPtrOutput() AlertRulePropertiesPtrOutput {
+	return i.ToAlertRulePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i AlertRulePropertiesArgs) ToAlertRulePropertiesPtrOutputWithContext(ctx context.Context) AlertRulePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRulePropertiesOutput).ToAlertRulePropertiesPtrOutputWithContext(ctx)
+}
+
+// AlertRulePropertiesPtrInput is an input type that accepts AlertRulePropertiesArgs, AlertRulePropertiesPtr and AlertRulePropertiesPtrOutput values.
+// You can construct a concrete instance of `AlertRulePropertiesPtrInput` via:
+//
+//	        AlertRulePropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type AlertRulePropertiesPtrInput interface {
+	pulumi.Input
+
+	ToAlertRulePropertiesPtrOutput() AlertRulePropertiesPtrOutput
+	ToAlertRulePropertiesPtrOutputWithContext(context.Context) AlertRulePropertiesPtrOutput
+}
+
+type alertRulePropertiesPtrType AlertRulePropertiesArgs
+
+func AlertRulePropertiesPtr(v *AlertRulePropertiesArgs) AlertRulePropertiesPtrInput {
+	return (*alertRulePropertiesPtrType)(v)
+}
+
+func (*alertRulePropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertRuleProperties)(nil)).Elem()
+}
+
+func (i *alertRulePropertiesPtrType) ToAlertRulePropertiesPtrOutput() AlertRulePropertiesPtrOutput {
+	return i.ToAlertRulePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *alertRulePropertiesPtrType) ToAlertRulePropertiesPtrOutputWithContext(ctx context.Context) AlertRulePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRulePropertiesPtrOutput)
+}
+
+// Describes the properties of an alert.
+type AlertRulePropertiesOutput struct{ *pulumi.OutputState }
+
+func (AlertRulePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRuleProperties)(nil)).Elem()
+}
+
+func (o AlertRulePropertiesOutput) ToAlertRulePropertiesOutput() AlertRulePropertiesOutput {
+	return o
+}
+
+func (o AlertRulePropertiesOutput) ToAlertRulePropertiesOutputWithContext(ctx context.Context) AlertRulePropertiesOutput {
+	return o
+}
+
+func (o AlertRulePropertiesOutput) ToAlertRulePropertiesPtrOutput() AlertRulePropertiesPtrOutput {
+	return o.ToAlertRulePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o AlertRulePropertiesOutput) ToAlertRulePropertiesPtrOutputWithContext(ctx context.Context) AlertRulePropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertRuleProperties) *AlertRuleProperties {
+		return &v
+	}).(AlertRulePropertiesPtrOutput)
+}
+
+// Action Group resource Ids to invoke when the alert fires
+func (o AlertRulePropertiesOutput) ActionGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AlertRuleProperties) []string { return v.ActionGroups }).(pulumi.StringArrayOutput)
+}
+
+// The alert query parameters.
+func (o AlertRulePropertiesOutput) AlertQueryParameters() AlertQueryParameterArrayOutput {
+	return o.ApplyT(func(v AlertRuleProperties) []AlertQueryParameter { return v.AlertQueryParameters }).(AlertQueryParameterArrayOutput)
+}
+
+// The value that indicates whether the alert should be automatically resolved or not. The default is Disable.
+func (o AlertRulePropertiesOutput) AutoMitigate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRuleProperties) *string { return v.AutoMitigate }).(pulumi.StringPtrOutput)
+}
+
+// Evaluation of metric on a particular column.
+func (o AlertRulePropertiesOutput) Dimension() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRuleProperties) *string { return v.Dimension }).(pulumi.StringPtrOutput)
+}
+
+// How often the scheduled query rule is evaluated.
+func (o AlertRulePropertiesOutput) EvaluationFrequency() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AlertRuleProperties) *int { return v.EvaluationFrequency }).(pulumi.IntPtrOutput)
+}
+
+// The operator for failing periods.
+func (o AlertRulePropertiesOutput) FailingPeriodsOperator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRuleProperties) *string { return v.FailingPeriodsOperator }).(pulumi.StringPtrOutput)
+}
+
+// The number of failing periods to trigger an alert.
+func (o AlertRulePropertiesOutput) FailingPeriodsToAlert() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AlertRuleProperties) *int { return v.FailingPeriodsToAlert }).(pulumi.IntPtrOutput)
+}
+
+// Mute actions for the chosen period of time after the alert is fired.
+func (o AlertRulePropertiesOutput) MuteActionsDuration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AlertRuleProperties) *int { return v.MuteActionsDuration }).(pulumi.IntPtrOutput)
+}
+
+// Severity of the alert. Should be an integer between [0-4]. Value of 0 is severest.
+func (o AlertRulePropertiesOutput) Severity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AlertRuleProperties) *int { return v.Severity }).(pulumi.IntPtrOutput)
+}
+
+// Indicates whether the alert is in an enabled state.
+func (o AlertRulePropertiesOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRuleProperties) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// The threshold of the alert.
+func (o AlertRulePropertiesOutput) Threshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AlertRuleProperties) *int { return v.Threshold }).(pulumi.IntPtrOutput)
+}
+
+// The threshold operator of the alert.
+func (o AlertRulePropertiesOutput) ThresholdOperator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRuleProperties) *string { return v.ThresholdOperator }).(pulumi.StringPtrOutput)
+}
+
+// The period of time on which the Alert query will be executed.
+func (o AlertRulePropertiesOutput) WindowSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AlertRuleProperties) *int { return v.WindowSize }).(pulumi.IntPtrOutput)
+}
+
+type AlertRulePropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (AlertRulePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertRuleProperties)(nil)).Elem()
+}
+
+func (o AlertRulePropertiesPtrOutput) ToAlertRulePropertiesPtrOutput() AlertRulePropertiesPtrOutput {
+	return o
+}
+
+func (o AlertRulePropertiesPtrOutput) ToAlertRulePropertiesPtrOutputWithContext(ctx context.Context) AlertRulePropertiesPtrOutput {
+	return o
+}
+
+func (o AlertRulePropertiesPtrOutput) Elem() AlertRulePropertiesOutput {
+	return o.ApplyT(func(v *AlertRuleProperties) AlertRuleProperties {
+		if v != nil {
+			return *v
+		}
+		var ret AlertRuleProperties
+		return ret
+	}).(AlertRulePropertiesOutput)
+}
+
+// Action Group resource Ids to invoke when the alert fires
+func (o AlertRulePropertiesPtrOutput) ActionGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AlertRuleProperties) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ActionGroups
+	}).(pulumi.StringArrayOutput)
+}
+
+// The alert query parameters.
+func (o AlertRulePropertiesPtrOutput) AlertQueryParameters() AlertQueryParameterArrayOutput {
+	return o.ApplyT(func(v *AlertRuleProperties) []AlertQueryParameter {
+		if v == nil {
+			return nil
+		}
+		return v.AlertQueryParameters
+	}).(AlertQueryParameterArrayOutput)
+}
+
+// The value that indicates whether the alert should be automatically resolved or not. The default is Disable.
+func (o AlertRulePropertiesPtrOutput) AutoMitigate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertRuleProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AutoMitigate
+	}).(pulumi.StringPtrOutput)
+}
+
+// Evaluation of metric on a particular column.
+func (o AlertRulePropertiesPtrOutput) Dimension() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertRuleProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Dimension
+	}).(pulumi.StringPtrOutput)
+}
+
+// How often the scheduled query rule is evaluated.
+func (o AlertRulePropertiesPtrOutput) EvaluationFrequency() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AlertRuleProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.EvaluationFrequency
+	}).(pulumi.IntPtrOutput)
+}
+
+// The operator for failing periods.
+func (o AlertRulePropertiesPtrOutput) FailingPeriodsOperator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertRuleProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FailingPeriodsOperator
+	}).(pulumi.StringPtrOutput)
+}
+
+// The number of failing periods to trigger an alert.
+func (o AlertRulePropertiesPtrOutput) FailingPeriodsToAlert() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AlertRuleProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.FailingPeriodsToAlert
+	}).(pulumi.IntPtrOutput)
+}
+
+// Mute actions for the chosen period of time after the alert is fired.
+func (o AlertRulePropertiesPtrOutput) MuteActionsDuration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AlertRuleProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MuteActionsDuration
+	}).(pulumi.IntPtrOutput)
+}
+
+// Severity of the alert. Should be an integer between [0-4]. Value of 0 is severest.
+func (o AlertRulePropertiesPtrOutput) Severity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AlertRuleProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Severity
+	}).(pulumi.IntPtrOutput)
+}
+
+// Indicates whether the alert is in an enabled state.
+func (o AlertRulePropertiesPtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertRuleProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
+// The threshold of the alert.
+func (o AlertRulePropertiesPtrOutput) Threshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AlertRuleProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Threshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// The threshold operator of the alert.
+func (o AlertRulePropertiesPtrOutput) ThresholdOperator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertRuleProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ThresholdOperator
+	}).(pulumi.StringPtrOutput)
+}
+
+// The period of time on which the Alert query will be executed.
+func (o AlertRulePropertiesPtrOutput) WindowSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AlertRuleProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.WindowSize
+	}).(pulumi.IntPtrOutput)
+}
+
+// Describes the properties of an alert.
+type AlertRulePropertiesResponse struct {
+	// Action Group resource Ids to invoke when the alert fires
+	ActionGroups []string `pulumi:"actionGroups"`
+	// The alert query parameters.
+	AlertQueryParameters []AlertQueryParameterResponse `pulumi:"alertQueryParameters"`
+	// The value that indicates whether the alert should be automatically resolved or not. The default is Disable.
+	AutoMitigate *string `pulumi:"autoMitigate"`
+	// Evaluation of metric on a particular column.
+	Dimension *string `pulumi:"dimension"`
+	// How often the scheduled query rule is evaluated.
+	EvaluationFrequency *int `pulumi:"evaluationFrequency"`
+	// The operator for failing periods.
+	FailingPeriodsOperator *string `pulumi:"failingPeriodsOperator"`
+	// The number of failing periods to trigger an alert.
+	FailingPeriodsToAlert *int `pulumi:"failingPeriodsToAlert"`
+	// Mute actions for the chosen period of time after the alert is fired.
+	MuteActionsDuration *int `pulumi:"muteActionsDuration"`
+	// Severity of the alert. Should be an integer between [0-4]. Value of 0 is severest.
+	Severity *int `pulumi:"severity"`
+	// Indicates whether the alert is in an enabled state.
+	Status *string `pulumi:"status"`
+	// The threshold of the alert.
+	Threshold *int `pulumi:"threshold"`
+	// The threshold operator of the alert.
+	ThresholdOperator *string `pulumi:"thresholdOperator"`
+	// The period of time on which the Alert query will be executed.
+	WindowSize *int `pulumi:"windowSize"`
+}
+
+// Describes the properties of an alert.
+type AlertRulePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (AlertRulePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRulePropertiesResponse)(nil)).Elem()
+}
+
+func (o AlertRulePropertiesResponseOutput) ToAlertRulePropertiesResponseOutput() AlertRulePropertiesResponseOutput {
+	return o
+}
+
+func (o AlertRulePropertiesResponseOutput) ToAlertRulePropertiesResponseOutputWithContext(ctx context.Context) AlertRulePropertiesResponseOutput {
+	return o
+}
+
+// Action Group resource Ids to invoke when the alert fires
+func (o AlertRulePropertiesResponseOutput) ActionGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AlertRulePropertiesResponse) []string { return v.ActionGroups }).(pulumi.StringArrayOutput)
+}
+
+// The alert query parameters.
+func (o AlertRulePropertiesResponseOutput) AlertQueryParameters() AlertQueryParameterResponseArrayOutput {
+	return o.ApplyT(func(v AlertRulePropertiesResponse) []AlertQueryParameterResponse { return v.AlertQueryParameters }).(AlertQueryParameterResponseArrayOutput)
+}
+
+// The value that indicates whether the alert should be automatically resolved or not. The default is Disable.
+func (o AlertRulePropertiesResponseOutput) AutoMitigate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRulePropertiesResponse) *string { return v.AutoMitigate }).(pulumi.StringPtrOutput)
+}
+
+// Evaluation of metric on a particular column.
+func (o AlertRulePropertiesResponseOutput) Dimension() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRulePropertiesResponse) *string { return v.Dimension }).(pulumi.StringPtrOutput)
+}
+
+// How often the scheduled query rule is evaluated.
+func (o AlertRulePropertiesResponseOutput) EvaluationFrequency() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AlertRulePropertiesResponse) *int { return v.EvaluationFrequency }).(pulumi.IntPtrOutput)
+}
+
+// The operator for failing periods.
+func (o AlertRulePropertiesResponseOutput) FailingPeriodsOperator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRulePropertiesResponse) *string { return v.FailingPeriodsOperator }).(pulumi.StringPtrOutput)
+}
+
+// The number of failing periods to trigger an alert.
+func (o AlertRulePropertiesResponseOutput) FailingPeriodsToAlert() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AlertRulePropertiesResponse) *int { return v.FailingPeriodsToAlert }).(pulumi.IntPtrOutput)
+}
+
+// Mute actions for the chosen period of time after the alert is fired.
+func (o AlertRulePropertiesResponseOutput) MuteActionsDuration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AlertRulePropertiesResponse) *int { return v.MuteActionsDuration }).(pulumi.IntPtrOutput)
+}
+
+// Severity of the alert. Should be an integer between [0-4]. Value of 0 is severest.
+func (o AlertRulePropertiesResponseOutput) Severity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AlertRulePropertiesResponse) *int { return v.Severity }).(pulumi.IntPtrOutput)
+}
+
+// Indicates whether the alert is in an enabled state.
+func (o AlertRulePropertiesResponseOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRulePropertiesResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// The threshold of the alert.
+func (o AlertRulePropertiesResponseOutput) Threshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AlertRulePropertiesResponse) *int { return v.Threshold }).(pulumi.IntPtrOutput)
+}
+
+// The threshold operator of the alert.
+func (o AlertRulePropertiesResponseOutput) ThresholdOperator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRulePropertiesResponse) *string { return v.ThresholdOperator }).(pulumi.StringPtrOutput)
+}
+
+// The period of time on which the Alert query will be executed.
+func (o AlertRulePropertiesResponseOutput) WindowSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AlertRulePropertiesResponse) *int { return v.WindowSize }).(pulumi.IntPtrOutput)
+}
+
+type AlertRulePropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AlertRulePropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertRulePropertiesResponse)(nil)).Elem()
+}
+
+func (o AlertRulePropertiesResponsePtrOutput) ToAlertRulePropertiesResponsePtrOutput() AlertRulePropertiesResponsePtrOutput {
+	return o
+}
+
+func (o AlertRulePropertiesResponsePtrOutput) ToAlertRulePropertiesResponsePtrOutputWithContext(ctx context.Context) AlertRulePropertiesResponsePtrOutput {
+	return o
+}
+
+func (o AlertRulePropertiesResponsePtrOutput) Elem() AlertRulePropertiesResponseOutput {
+	return o.ApplyT(func(v *AlertRulePropertiesResponse) AlertRulePropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AlertRulePropertiesResponse
+		return ret
+	}).(AlertRulePropertiesResponseOutput)
+}
+
+// Action Group resource Ids to invoke when the alert fires
+func (o AlertRulePropertiesResponsePtrOutput) ActionGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AlertRulePropertiesResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ActionGroups
+	}).(pulumi.StringArrayOutput)
+}
+
+// The alert query parameters.
+func (o AlertRulePropertiesResponsePtrOutput) AlertQueryParameters() AlertQueryParameterResponseArrayOutput {
+	return o.ApplyT(func(v *AlertRulePropertiesResponse) []AlertQueryParameterResponse {
+		if v == nil {
+			return nil
+		}
+		return v.AlertQueryParameters
+	}).(AlertQueryParameterResponseArrayOutput)
+}
+
+// The value that indicates whether the alert should be automatically resolved or not. The default is Disable.
+func (o AlertRulePropertiesResponsePtrOutput) AutoMitigate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertRulePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AutoMitigate
+	}).(pulumi.StringPtrOutput)
+}
+
+// Evaluation of metric on a particular column.
+func (o AlertRulePropertiesResponsePtrOutput) Dimension() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertRulePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Dimension
+	}).(pulumi.StringPtrOutput)
+}
+
+// How often the scheduled query rule is evaluated.
+func (o AlertRulePropertiesResponsePtrOutput) EvaluationFrequency() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AlertRulePropertiesResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.EvaluationFrequency
+	}).(pulumi.IntPtrOutput)
+}
+
+// The operator for failing periods.
+func (o AlertRulePropertiesResponsePtrOutput) FailingPeriodsOperator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertRulePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FailingPeriodsOperator
+	}).(pulumi.StringPtrOutput)
+}
+
+// The number of failing periods to trigger an alert.
+func (o AlertRulePropertiesResponsePtrOutput) FailingPeriodsToAlert() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AlertRulePropertiesResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.FailingPeriodsToAlert
+	}).(pulumi.IntPtrOutput)
+}
+
+// Mute actions for the chosen period of time after the alert is fired.
+func (o AlertRulePropertiesResponsePtrOutput) MuteActionsDuration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AlertRulePropertiesResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MuteActionsDuration
+	}).(pulumi.IntPtrOutput)
+}
+
+// Severity of the alert. Should be an integer between [0-4]. Value of 0 is severest.
+func (o AlertRulePropertiesResponsePtrOutput) Severity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AlertRulePropertiesResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Severity
+	}).(pulumi.IntPtrOutput)
+}
+
+// Indicates whether the alert is in an enabled state.
+func (o AlertRulePropertiesResponsePtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertRulePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
+// The threshold of the alert.
+func (o AlertRulePropertiesResponsePtrOutput) Threshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AlertRulePropertiesResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Threshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// The threshold operator of the alert.
+func (o AlertRulePropertiesResponsePtrOutput) ThresholdOperator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertRulePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ThresholdOperator
+	}).(pulumi.StringPtrOutput)
+}
+
+// The period of time on which the Alert query will be executed.
+func (o AlertRulePropertiesResponsePtrOutput) WindowSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AlertRulePropertiesResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.WindowSize
+	}).(pulumi.IntPtrOutput)
+}
+
 // Gets or sets the application server configuration.
 type ApplicationServerConfiguration struct {
 	// The number of app server instances.
@@ -5972,6 +6766,59 @@ func (o EnqueueServerPropertiesResponsePtrOutput) Port() pulumi.Float64PtrOutput
 	}).(pulumi.Float64PtrOutput)
 }
 
+// The resource management error additional info.
+type ErrorAdditionalInfoResponse struct {
+	// The additional info.
+	Info interface{} `pulumi:"info"`
+	// The additional info type.
+	Type string `pulumi:"type"`
+}
+
+// The resource management error additional info.
+type ErrorAdditionalInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (ErrorAdditionalInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErrorAdditionalInfoResponse)(nil)).Elem()
+}
+
+func (o ErrorAdditionalInfoResponseOutput) ToErrorAdditionalInfoResponseOutput() ErrorAdditionalInfoResponseOutput {
+	return o
+}
+
+func (o ErrorAdditionalInfoResponseOutput) ToErrorAdditionalInfoResponseOutputWithContext(ctx context.Context) ErrorAdditionalInfoResponseOutput {
+	return o
+}
+
+// The additional info.
+func (o ErrorAdditionalInfoResponseOutput) Info() pulumi.AnyOutput {
+	return o.ApplyT(func(v ErrorAdditionalInfoResponse) interface{} { return v.Info }).(pulumi.AnyOutput)
+}
+
+// The additional info type.
+func (o ErrorAdditionalInfoResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ErrorAdditionalInfoResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ErrorAdditionalInfoResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ErrorAdditionalInfoResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ErrorAdditionalInfoResponse)(nil)).Elem()
+}
+
+func (o ErrorAdditionalInfoResponseArrayOutput) ToErrorAdditionalInfoResponseArrayOutput() ErrorAdditionalInfoResponseArrayOutput {
+	return o
+}
+
+func (o ErrorAdditionalInfoResponseArrayOutput) ToErrorAdditionalInfoResponseArrayOutputWithContext(ctx context.Context) ErrorAdditionalInfoResponseArrayOutput {
+	return o
+}
+
+func (o ErrorAdditionalInfoResponseArrayOutput) Index(i pulumi.IntInput) ErrorAdditionalInfoResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ErrorAdditionalInfoResponse {
+		return vs[0].([]ErrorAdditionalInfoResponse)[vs[1].(int)]
+	}).(ErrorAdditionalInfoResponseOutput)
+}
+
 // Error definition.
 type ErrorDefinitionResponse struct {
 	// Service specific error code which serves as the substatus for the HTTP error code.
@@ -6101,6 +6948,80 @@ func (o ErrorDefinitionResponseArrayOutput) Index(i pulumi.IntInput) ErrorDefini
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ErrorDefinitionResponse {
 		return vs[0].([]ErrorDefinitionResponse)[vs[1].(int)]
 	}).(ErrorDefinitionResponseOutput)
+}
+
+// The error detail.
+type ErrorDetailResponse struct {
+	// The error additional info.
+	AdditionalInfo []ErrorAdditionalInfoResponse `pulumi:"additionalInfo"`
+	// The error code.
+	Code string `pulumi:"code"`
+	// The error details.
+	Details []ErrorDetailResponse `pulumi:"details"`
+	// The error message.
+	Message string `pulumi:"message"`
+	// The error target.
+	Target string `pulumi:"target"`
+}
+
+// The error detail.
+type ErrorDetailResponseOutput struct{ *pulumi.OutputState }
+
+func (ErrorDetailResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErrorDetailResponse)(nil)).Elem()
+}
+
+func (o ErrorDetailResponseOutput) ToErrorDetailResponseOutput() ErrorDetailResponseOutput {
+	return o
+}
+
+func (o ErrorDetailResponseOutput) ToErrorDetailResponseOutputWithContext(ctx context.Context) ErrorDetailResponseOutput {
+	return o
+}
+
+// The error additional info.
+func (o ErrorDetailResponseOutput) AdditionalInfo() ErrorAdditionalInfoResponseArrayOutput {
+	return o.ApplyT(func(v ErrorDetailResponse) []ErrorAdditionalInfoResponse { return v.AdditionalInfo }).(ErrorAdditionalInfoResponseArrayOutput)
+}
+
+// The error code.
+func (o ErrorDetailResponseOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v ErrorDetailResponse) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// The error details.
+func (o ErrorDetailResponseOutput) Details() ErrorDetailResponseArrayOutput {
+	return o.ApplyT(func(v ErrorDetailResponse) []ErrorDetailResponse { return v.Details }).(ErrorDetailResponseArrayOutput)
+}
+
+// The error message.
+func (o ErrorDetailResponseOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v ErrorDetailResponse) string { return v.Message }).(pulumi.StringOutput)
+}
+
+// The error target.
+func (o ErrorDetailResponseOutput) Target() pulumi.StringOutput {
+	return o.ApplyT(func(v ErrorDetailResponse) string { return v.Target }).(pulumi.StringOutput)
+}
+
+type ErrorDetailResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ErrorDetailResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ErrorDetailResponse)(nil)).Elem()
+}
+
+func (o ErrorDetailResponseArrayOutput) ToErrorDetailResponseArrayOutput() ErrorDetailResponseArrayOutput {
+	return o
+}
+
+func (o ErrorDetailResponseArrayOutput) ToErrorDetailResponseArrayOutputWithContext(ctx context.Context) ErrorDetailResponseArrayOutput {
+	return o
+}
+
+func (o ErrorDetailResponseArrayOutput) Index(i pulumi.IntInput) ErrorDetailResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ErrorDetailResponse {
+		return vs[0].([]ErrorDetailResponse)[vs[1].(int)]
+	}).(ErrorDetailResponseOutput)
 }
 
 // Standard error object.
@@ -26125,6 +27046,14 @@ func (o YearlyRetentionScheduleResponsePtrOutput) RetentionTimes() pulumi.String
 }
 
 func init() {
+	pulumi.RegisterOutputType(AlertQueryParameterOutput{})
+	pulumi.RegisterOutputType(AlertQueryParameterArrayOutput{})
+	pulumi.RegisterOutputType(AlertQueryParameterResponseOutput{})
+	pulumi.RegisterOutputType(AlertQueryParameterResponseArrayOutput{})
+	pulumi.RegisterOutputType(AlertRulePropertiesOutput{})
+	pulumi.RegisterOutputType(AlertRulePropertiesPtrOutput{})
+	pulumi.RegisterOutputType(AlertRulePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(AlertRulePropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(ApplicationServerConfigurationOutput{})
 	pulumi.RegisterOutputType(ApplicationServerConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(ApplicationServerConfigurationResponseOutput{})
@@ -26219,9 +27148,13 @@ func init() {
 	pulumi.RegisterOutputType(EnqueueReplicationServerPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(EnqueueServerPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(EnqueueServerPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(ErrorAdditionalInfoResponseOutput{})
+	pulumi.RegisterOutputType(ErrorAdditionalInfoResponseArrayOutput{})
 	pulumi.RegisterOutputType(ErrorDefinitionResponseOutput{})
 	pulumi.RegisterOutputType(ErrorDefinitionResponsePtrOutput{})
 	pulumi.RegisterOutputType(ErrorDefinitionResponseArrayOutput{})
+	pulumi.RegisterOutputType(ErrorDetailResponseOutput{})
+	pulumi.RegisterOutputType(ErrorDetailResponseArrayOutput{})
 	pulumi.RegisterOutputType(ErrorResponseOutput{})
 	pulumi.RegisterOutputType(ErrorResponsePtrOutput{})
 	pulumi.RegisterOutputType(ErrorResponseArrayOutput{})

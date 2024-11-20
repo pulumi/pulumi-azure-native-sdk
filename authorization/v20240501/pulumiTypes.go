@@ -1692,8 +1692,12 @@ func (o PolicyDefinitionReferenceArrayOutput) Index(i pulumi.IntInput) PolicyDef
 type PolicyDefinitionReferenceResponse struct {
 	// The version of the policy definition to use.
 	DefinitionVersion *string `pulumi:"definitionVersion"`
+	// The effective version of the policy definition in use. This is only present if requested via the $expand query parameter.
+	EffectiveDefinitionVersion string `pulumi:"effectiveDefinitionVersion"`
 	// The name of the groups that this policy definition reference belongs to.
 	GroupNames []string `pulumi:"groupNames"`
+	// The latest version of the policy definition available. This is only present if requested via the $expand query parameter.
+	LatestDefinitionVersion string `pulumi:"latestDefinitionVersion"`
 	// The parameter values for the referenced policy rule. The keys are the parameter names.
 	Parameters map[string]ParameterValuesValueResponse `pulumi:"parameters"`
 	// The ID of the policy definition or policy set definition.
@@ -1722,9 +1726,19 @@ func (o PolicyDefinitionReferenceResponseOutput) DefinitionVersion() pulumi.Stri
 	return o.ApplyT(func(v PolicyDefinitionReferenceResponse) *string { return v.DefinitionVersion }).(pulumi.StringPtrOutput)
 }
 
+// The effective version of the policy definition in use. This is only present if requested via the $expand query parameter.
+func (o PolicyDefinitionReferenceResponseOutput) EffectiveDefinitionVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v PolicyDefinitionReferenceResponse) string { return v.EffectiveDefinitionVersion }).(pulumi.StringOutput)
+}
+
 // The name of the groups that this policy definition reference belongs to.
 func (o PolicyDefinitionReferenceResponseOutput) GroupNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PolicyDefinitionReferenceResponse) []string { return v.GroupNames }).(pulumi.StringArrayOutput)
+}
+
+// The latest version of the policy definition available. This is only present if requested via the $expand query parameter.
+func (o PolicyDefinitionReferenceResponseOutput) LatestDefinitionVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v PolicyDefinitionReferenceResponse) string { return v.LatestDefinitionVersion }).(pulumi.StringOutput)
 }
 
 // The parameter values for the referenced policy rule. The keys are the parameter names.

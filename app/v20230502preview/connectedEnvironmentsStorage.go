@@ -73,6 +73,9 @@ func NewConnectedEnvironmentsStorage(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:app/v20240802preview:ConnectedEnvironmentsStorage"),
 		},
+		{
+			Type: pulumi.String("azure-native:app/v20241002preview:ConnectedEnvironmentsStorage"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

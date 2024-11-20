@@ -13068,6 +13068,8 @@ func (o PeriodicModePropertiesResponsePtrOutput) BackupStorageRedundancy() pulum
 type Permission struct {
 	// An array of data actions that are allowed.
 	DataActions []string `pulumi:"dataActions"`
+	// The id for the permission.
+	Id *string `pulumi:"id"`
 	// An array of data actions that are denied.
 	NotDataActions []string `pulumi:"notDataActions"`
 }
@@ -13087,6 +13089,8 @@ type PermissionInput interface {
 type PermissionArgs struct {
 	// An array of data actions that are allowed.
 	DataActions pulumi.StringArrayInput `pulumi:"dataActions"`
+	// The id for the permission.
+	Id pulumi.StringPtrInput `pulumi:"id"`
 	// An array of data actions that are denied.
 	NotDataActions pulumi.StringArrayInput `pulumi:"notDataActions"`
 }
@@ -13148,6 +13152,11 @@ func (o PermissionOutput) DataActions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Permission) []string { return v.DataActions }).(pulumi.StringArrayOutput)
 }
 
+// The id for the permission.
+func (o PermissionOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Permission) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
 // An array of data actions that are denied.
 func (o PermissionOutput) NotDataActions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Permission) []string { return v.NotDataActions }).(pulumi.StringArrayOutput)
@@ -13177,6 +13186,8 @@ func (o PermissionArrayOutput) Index(i pulumi.IntInput) PermissionOutput {
 type PermissionResponse struct {
 	// An array of data actions that are allowed.
 	DataActions []string `pulumi:"dataActions"`
+	// The id for the permission.
+	Id *string `pulumi:"id"`
 	// An array of data actions that are denied.
 	NotDataActions []string `pulumi:"notDataActions"`
 }
@@ -13199,6 +13210,11 @@ func (o PermissionResponseOutput) ToPermissionResponseOutputWithContext(ctx cont
 // An array of data actions that are allowed.
 func (o PermissionResponseOutput) DataActions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PermissionResponse) []string { return v.DataActions }).(pulumi.StringArrayOutput)
+}
+
+// The id for the permission.
+func (o PermissionResponseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PermissionResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 // An array of data actions that are denied.

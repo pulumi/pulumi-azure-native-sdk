@@ -53,12 +53,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DaprSubscription{}
 	case "azure-native:app:DotNetComponent":
 		r = &DotNetComponent{}
+	case "azure-native:app:HttpRouteConfig":
+		r = &HttpRouteConfig{}
 	case "azure-native:app:JavaComponent":
 		r = &JavaComponent{}
 	case "azure-native:app:Job":
 		r = &Job{}
 	case "azure-native:app:LogicApp":
 		r = &LogicApp{}
+	case "azure-native:app:MaintenanceConfiguration":
+		r = &MaintenanceConfiguration{}
 	case "azure-native:app:ManagedCertificate":
 		r = &ManagedCertificate{}
 	case "azure-native:app:ManagedEnvironment":

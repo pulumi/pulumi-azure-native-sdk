@@ -15,7 +15,7 @@ import (
 // An environment for hosting container apps
 // Azure REST API version: 2022-10-01. Prior API version in Azure Native 1.x: 2022-03-01.
 //
-// Other available API versions: 2022-01-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview.
+// Other available API versions: 2022-01-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview.
 type ManagedEnvironment struct {
 	pulumi.CustomResourceState
 
@@ -108,6 +108,9 @@ func NewManagedEnvironment(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:app/v20240802preview:ManagedEnvironment"),
+		},
+		{
+			Type: pulumi.String("azure-native:app/v20241002preview:ManagedEnvironment"),
 		},
 	})
 	opts = append(opts, aliases)

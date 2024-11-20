@@ -44,6 +44,9 @@ func NewLogicApp(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:app/v20240802preview:LogicApp"),
 		},
+		{
+			Type: pulumi.String("azure-native:app/v20241002preview:LogicApp"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

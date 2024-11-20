@@ -25,7 +25,7 @@ type SapVirtualInstance struct {
 	// Defines the health of SAP Instances.
 	Health pulumi.StringOutput `pulumi:"health"`
 	// The managed service identities assigned to this resource.
-	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	Identity SAPVirtualInstanceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Managed resource group configuration
@@ -125,7 +125,7 @@ type sapVirtualInstanceArgs struct {
 	// Defines the environment type - Production/Non Production.
 	Environment string `pulumi:"environment"`
 	// The managed service identities assigned to this resource.
-	Identity *ManagedServiceIdentity `pulumi:"identity"`
+	Identity *SAPVirtualInstanceIdentity `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// Managed resource group configuration
@@ -149,7 +149,7 @@ type SapVirtualInstanceArgs struct {
 	// Defines the environment type - Production/Non Production.
 	Environment pulumi.StringInput
 	// The managed service identities assigned to this resource.
-	Identity ManagedServiceIdentityPtrInput
+	Identity SAPVirtualInstanceIdentityPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// Managed resource group configuration
@@ -224,8 +224,8 @@ func (o SapVirtualInstanceOutput) Health() pulumi.StringOutput {
 }
 
 // The managed service identities assigned to this resource.
-func (o SapVirtualInstanceOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *SapVirtualInstance) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
+func (o SapVirtualInstanceOutput) Identity() SAPVirtualInstanceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *SapVirtualInstance) SAPVirtualInstanceIdentityResponsePtrOutput { return v.Identity }).(SAPVirtualInstanceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
