@@ -55,6 +55,9 @@ func NewThroughputPool(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:documentdb/v20240901preview:ThroughputPool"),
 		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20241201preview:ThroughputPool"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

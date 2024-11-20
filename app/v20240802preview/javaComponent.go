@@ -49,6 +49,9 @@ func NewJavaComponent(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:app/v20240202preview:JavaComponent"),
 		},
+		{
+			Type: pulumi.String("azure-native:app/v20241002preview:JavaComponent"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

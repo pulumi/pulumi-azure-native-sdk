@@ -61,6 +61,9 @@ func NewProviderInstance(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:workloads/v20231001preview:ProviderInstance"),
 		},
+		{
+			Type: pulumi.String("azure-native:workloads/v20240201preview:ProviderInstance"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

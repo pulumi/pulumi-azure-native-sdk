@@ -176,6 +176,9 @@ func NewCassandraResourceCassandraKeyspace(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:documentdb/v20241115:CassandraResourceCassandraKeyspace"),
 		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20241201preview:CassandraResourceCassandraKeyspace"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

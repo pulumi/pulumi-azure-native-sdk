@@ -23,6 +23,8 @@ func LookupPolicySetDefinitionAtManagementGroup(ctx *pulumi.Context, args *Looku
 }
 
 type LookupPolicySetDefinitionAtManagementGroupArgs struct {
+	// Comma-separated list of additional properties to be included in the response. Supported values are 'LatestDefinitionVersion, EffectiveDefinitionVersion'.
+	Expand *string `pulumi:"expand"`
 	// The ID of the management group.
 	ManagementGroupId string `pulumi:"managementGroupId"`
 	// The name of the policy set definition to get.
@@ -79,6 +81,8 @@ func LookupPolicySetDefinitionAtManagementGroupOutput(ctx *pulumi.Context, args 
 }
 
 type LookupPolicySetDefinitionAtManagementGroupOutputArgs struct {
+	// Comma-separated list of additional properties to be included in the response. Supported values are 'LatestDefinitionVersion, EffectiveDefinitionVersion'.
+	Expand pulumi.StringPtrInput `pulumi:"expand"`
 	// The ID of the management group.
 	ManagementGroupId pulumi.StringInput `pulumi:"managementGroupId"`
 	// The name of the policy set definition to get.

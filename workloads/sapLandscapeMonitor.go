@@ -15,7 +15,7 @@ import (
 // configuration associated with SAP Landscape Monitor Dashboard.
 // Azure REST API version: 2023-04-01.
 //
-// Other available API versions: 2023-10-01-preview, 2023-12-01-preview.
+// Other available API versions: 2023-10-01-preview, 2023-12-01-preview, 2024-02-01-preview.
 type SapLandscapeMonitor struct {
 	pulumi.CustomResourceState
 
@@ -58,6 +58,9 @@ func NewSapLandscapeMonitor(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:workloads/v20231201preview:SapLandscapeMonitor"),
+		},
+		{
+			Type: pulumi.String("azure-native:workloads/v20240201preview:SapLandscapeMonitor"),
 		},
 	})
 	opts = append(opts, aliases)

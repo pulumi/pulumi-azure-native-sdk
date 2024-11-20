@@ -15,7 +15,7 @@ import (
 // Dapr PubSub Event Subscription.
 // Azure REST API version: 2023-08-01-preview.
 //
-// Other available API versions: 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview.
+// Other available API versions: 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview.
 type DaprSubscription struct {
 	pulumi.CustomResourceState
 
@@ -71,6 +71,9 @@ func NewDaprSubscription(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:app/v20240802preview:DaprSubscription"),
+		},
+		{
+			Type: pulumi.String("azure-native:app/v20241002preview:DaprSubscription"),
 		},
 	})
 	opts = append(opts, aliases)

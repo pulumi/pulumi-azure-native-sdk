@@ -8563,7 +8563,7 @@ func (o CustomContainerTemplateResponsePtrOutput) RegistryCredentials() SessionR
 type CustomDomain struct {
 	// Custom Domain binding type.
 	BindingType *string `pulumi:"bindingType"`
-	// Resource Id of the Certificate to be bound to this hostname.
+	// Resource Id of the Certificate to be bound to this hostname. Must exist in the Managed Environment.
 	CertificateId *string `pulumi:"certificateId"`
 	// Hostname.
 	Name string `pulumi:"name"`
@@ -8584,7 +8584,7 @@ type CustomDomainInput interface {
 type CustomDomainArgs struct {
 	// Custom Domain binding type.
 	BindingType pulumi.StringPtrInput `pulumi:"bindingType"`
-	// Resource Id of the Certificate to be bound to this hostname.
+	// Resource Id of the Certificate to be bound to this hostname. Must exist in the Managed Environment.
 	CertificateId pulumi.StringPtrInput `pulumi:"certificateId"`
 	// Hostname.
 	Name pulumi.StringInput `pulumi:"name"`
@@ -8647,7 +8647,7 @@ func (o CustomDomainOutput) BindingType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CustomDomain) *string { return v.BindingType }).(pulumi.StringPtrOutput)
 }
 
-// Resource Id of the Certificate to be bound to this hostname.
+// Resource Id of the Certificate to be bound to this hostname. Must exist in the Managed Environment.
 func (o CustomDomainOutput) CertificateId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CustomDomain) *string { return v.CertificateId }).(pulumi.StringPtrOutput)
 }
@@ -9021,7 +9021,7 @@ func (o CustomDomainConfigurationResponsePtrOutput) Thumbprint() pulumi.StringPt
 type CustomDomainResponse struct {
 	// Custom Domain binding type.
 	BindingType *string `pulumi:"bindingType"`
-	// Resource Id of the Certificate to be bound to this hostname.
+	// Resource Id of the Certificate to be bound to this hostname. Must exist in the Managed Environment.
 	CertificateId *string `pulumi:"certificateId"`
 	// Hostname.
 	Name string `pulumi:"name"`
@@ -9047,7 +9047,7 @@ func (o CustomDomainResponseOutput) BindingType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CustomDomainResponse) *string { return v.BindingType }).(pulumi.StringPtrOutput)
 }
 
-// Resource Id of the Certificate to be bound to this hostname.
+// Resource Id of the Certificate to be bound to this hostname. Must exist in the Managed Environment.
 func (o CustomDomainResponseOutput) CertificateId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CustomDomainResponse) *string { return v.CertificateId }).(pulumi.StringPtrOutput)
 }
@@ -16782,6 +16782,1316 @@ func (o HttpRetryPolicyResponsePtrOutput) MaxRetries() pulumi.IntPtrOutput {
 		}
 		return v.MaxRetries
 	}).(pulumi.IntPtrOutput)
+}
+
+// Http Routes configuration, including paths to match on and whether or not rewrites are to be done.
+type HttpRoute struct {
+	// Once route is matched, what is the desired action
+	Action *HttpRouteAction `pulumi:"action"`
+	// Conditions route will match on
+	Match *HttpRouteMatch `pulumi:"match"`
+}
+
+// HttpRouteInput is an input type that accepts HttpRouteArgs and HttpRouteOutput values.
+// You can construct a concrete instance of `HttpRouteInput` via:
+//
+//	HttpRouteArgs{...}
+type HttpRouteInput interface {
+	pulumi.Input
+
+	ToHttpRouteOutput() HttpRouteOutput
+	ToHttpRouteOutputWithContext(context.Context) HttpRouteOutput
+}
+
+// Http Routes configuration, including paths to match on and whether or not rewrites are to be done.
+type HttpRouteArgs struct {
+	// Once route is matched, what is the desired action
+	Action HttpRouteActionPtrInput `pulumi:"action"`
+	// Conditions route will match on
+	Match HttpRouteMatchPtrInput `pulumi:"match"`
+}
+
+func (HttpRouteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRoute)(nil)).Elem()
+}
+
+func (i HttpRouteArgs) ToHttpRouteOutput() HttpRouteOutput {
+	return i.ToHttpRouteOutputWithContext(context.Background())
+}
+
+func (i HttpRouteArgs) ToHttpRouteOutputWithContext(ctx context.Context) HttpRouteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteOutput)
+}
+
+// HttpRouteArrayInput is an input type that accepts HttpRouteArray and HttpRouteArrayOutput values.
+// You can construct a concrete instance of `HttpRouteArrayInput` via:
+//
+//	HttpRouteArray{ HttpRouteArgs{...} }
+type HttpRouteArrayInput interface {
+	pulumi.Input
+
+	ToHttpRouteArrayOutput() HttpRouteArrayOutput
+	ToHttpRouteArrayOutputWithContext(context.Context) HttpRouteArrayOutput
+}
+
+type HttpRouteArray []HttpRouteInput
+
+func (HttpRouteArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HttpRoute)(nil)).Elem()
+}
+
+func (i HttpRouteArray) ToHttpRouteArrayOutput() HttpRouteArrayOutput {
+	return i.ToHttpRouteArrayOutputWithContext(context.Background())
+}
+
+func (i HttpRouteArray) ToHttpRouteArrayOutputWithContext(ctx context.Context) HttpRouteArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteArrayOutput)
+}
+
+// Http Routes configuration, including paths to match on and whether or not rewrites are to be done.
+type HttpRouteOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRoute)(nil)).Elem()
+}
+
+func (o HttpRouteOutput) ToHttpRouteOutput() HttpRouteOutput {
+	return o
+}
+
+func (o HttpRouteOutput) ToHttpRouteOutputWithContext(ctx context.Context) HttpRouteOutput {
+	return o
+}
+
+// Once route is matched, what is the desired action
+func (o HttpRouteOutput) Action() HttpRouteActionPtrOutput {
+	return o.ApplyT(func(v HttpRoute) *HttpRouteAction { return v.Action }).(HttpRouteActionPtrOutput)
+}
+
+// Conditions route will match on
+func (o HttpRouteOutput) Match() HttpRouteMatchPtrOutput {
+	return o.ApplyT(func(v HttpRoute) *HttpRouteMatch { return v.Match }).(HttpRouteMatchPtrOutput)
+}
+
+type HttpRouteArrayOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HttpRoute)(nil)).Elem()
+}
+
+func (o HttpRouteArrayOutput) ToHttpRouteArrayOutput() HttpRouteArrayOutput {
+	return o
+}
+
+func (o HttpRouteArrayOutput) ToHttpRouteArrayOutputWithContext(ctx context.Context) HttpRouteArrayOutput {
+	return o
+}
+
+func (o HttpRouteArrayOutput) Index(i pulumi.IntInput) HttpRouteOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HttpRoute {
+		return vs[0].([]HttpRoute)[vs[1].(int)]
+	}).(HttpRouteOutput)
+}
+
+// Action to perform once matching of routes is done
+type HttpRouteAction struct {
+	// Rewrite prefix, default is no rewrites
+	PrefixRewrite *string `pulumi:"prefixRewrite"`
+}
+
+// HttpRouteActionInput is an input type that accepts HttpRouteActionArgs and HttpRouteActionOutput values.
+// You can construct a concrete instance of `HttpRouteActionInput` via:
+//
+//	HttpRouteActionArgs{...}
+type HttpRouteActionInput interface {
+	pulumi.Input
+
+	ToHttpRouteActionOutput() HttpRouteActionOutput
+	ToHttpRouteActionOutputWithContext(context.Context) HttpRouteActionOutput
+}
+
+// Action to perform once matching of routes is done
+type HttpRouteActionArgs struct {
+	// Rewrite prefix, default is no rewrites
+	PrefixRewrite pulumi.StringPtrInput `pulumi:"prefixRewrite"`
+}
+
+func (HttpRouteActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRouteAction)(nil)).Elem()
+}
+
+func (i HttpRouteActionArgs) ToHttpRouteActionOutput() HttpRouteActionOutput {
+	return i.ToHttpRouteActionOutputWithContext(context.Background())
+}
+
+func (i HttpRouteActionArgs) ToHttpRouteActionOutputWithContext(ctx context.Context) HttpRouteActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteActionOutput)
+}
+
+func (i HttpRouteActionArgs) ToHttpRouteActionPtrOutput() HttpRouteActionPtrOutput {
+	return i.ToHttpRouteActionPtrOutputWithContext(context.Background())
+}
+
+func (i HttpRouteActionArgs) ToHttpRouteActionPtrOutputWithContext(ctx context.Context) HttpRouteActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteActionOutput).ToHttpRouteActionPtrOutputWithContext(ctx)
+}
+
+// HttpRouteActionPtrInput is an input type that accepts HttpRouteActionArgs, HttpRouteActionPtr and HttpRouteActionPtrOutput values.
+// You can construct a concrete instance of `HttpRouteActionPtrInput` via:
+//
+//	        HttpRouteActionArgs{...}
+//
+//	or:
+//
+//	        nil
+type HttpRouteActionPtrInput interface {
+	pulumi.Input
+
+	ToHttpRouteActionPtrOutput() HttpRouteActionPtrOutput
+	ToHttpRouteActionPtrOutputWithContext(context.Context) HttpRouteActionPtrOutput
+}
+
+type httpRouteActionPtrType HttpRouteActionArgs
+
+func HttpRouteActionPtr(v *HttpRouteActionArgs) HttpRouteActionPtrInput {
+	return (*httpRouteActionPtrType)(v)
+}
+
+func (*httpRouteActionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpRouteAction)(nil)).Elem()
+}
+
+func (i *httpRouteActionPtrType) ToHttpRouteActionPtrOutput() HttpRouteActionPtrOutput {
+	return i.ToHttpRouteActionPtrOutputWithContext(context.Background())
+}
+
+func (i *httpRouteActionPtrType) ToHttpRouteActionPtrOutputWithContext(ctx context.Context) HttpRouteActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteActionPtrOutput)
+}
+
+// Action to perform once matching of routes is done
+type HttpRouteActionOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRouteAction)(nil)).Elem()
+}
+
+func (o HttpRouteActionOutput) ToHttpRouteActionOutput() HttpRouteActionOutput {
+	return o
+}
+
+func (o HttpRouteActionOutput) ToHttpRouteActionOutputWithContext(ctx context.Context) HttpRouteActionOutput {
+	return o
+}
+
+func (o HttpRouteActionOutput) ToHttpRouteActionPtrOutput() HttpRouteActionPtrOutput {
+	return o.ToHttpRouteActionPtrOutputWithContext(context.Background())
+}
+
+func (o HttpRouteActionOutput) ToHttpRouteActionPtrOutputWithContext(ctx context.Context) HttpRouteActionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpRouteAction) *HttpRouteAction {
+		return &v
+	}).(HttpRouteActionPtrOutput)
+}
+
+// Rewrite prefix, default is no rewrites
+func (o HttpRouteActionOutput) PrefixRewrite() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HttpRouteAction) *string { return v.PrefixRewrite }).(pulumi.StringPtrOutput)
+}
+
+type HttpRouteActionPtrOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteActionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpRouteAction)(nil)).Elem()
+}
+
+func (o HttpRouteActionPtrOutput) ToHttpRouteActionPtrOutput() HttpRouteActionPtrOutput {
+	return o
+}
+
+func (o HttpRouteActionPtrOutput) ToHttpRouteActionPtrOutputWithContext(ctx context.Context) HttpRouteActionPtrOutput {
+	return o
+}
+
+func (o HttpRouteActionPtrOutput) Elem() HttpRouteActionOutput {
+	return o.ApplyT(func(v *HttpRouteAction) HttpRouteAction {
+		if v != nil {
+			return *v
+		}
+		var ret HttpRouteAction
+		return ret
+	}).(HttpRouteActionOutput)
+}
+
+// Rewrite prefix, default is no rewrites
+func (o HttpRouteActionPtrOutput) PrefixRewrite() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HttpRouteAction) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrefixRewrite
+	}).(pulumi.StringPtrOutput)
+}
+
+// Action to perform once matching of routes is done
+type HttpRouteActionResponse struct {
+	// Rewrite prefix, default is no rewrites
+	PrefixRewrite *string `pulumi:"prefixRewrite"`
+}
+
+// Action to perform once matching of routes is done
+type HttpRouteActionResponseOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteActionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRouteActionResponse)(nil)).Elem()
+}
+
+func (o HttpRouteActionResponseOutput) ToHttpRouteActionResponseOutput() HttpRouteActionResponseOutput {
+	return o
+}
+
+func (o HttpRouteActionResponseOutput) ToHttpRouteActionResponseOutputWithContext(ctx context.Context) HttpRouteActionResponseOutput {
+	return o
+}
+
+// Rewrite prefix, default is no rewrites
+func (o HttpRouteActionResponseOutput) PrefixRewrite() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HttpRouteActionResponse) *string { return v.PrefixRewrite }).(pulumi.StringPtrOutput)
+}
+
+type HttpRouteActionResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteActionResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpRouteActionResponse)(nil)).Elem()
+}
+
+func (o HttpRouteActionResponsePtrOutput) ToHttpRouteActionResponsePtrOutput() HttpRouteActionResponsePtrOutput {
+	return o
+}
+
+func (o HttpRouteActionResponsePtrOutput) ToHttpRouteActionResponsePtrOutputWithContext(ctx context.Context) HttpRouteActionResponsePtrOutput {
+	return o
+}
+
+func (o HttpRouteActionResponsePtrOutput) Elem() HttpRouteActionResponseOutput {
+	return o.ApplyT(func(v *HttpRouteActionResponse) HttpRouteActionResponse {
+		if v != nil {
+			return *v
+		}
+		var ret HttpRouteActionResponse
+		return ret
+	}).(HttpRouteActionResponseOutput)
+}
+
+// Rewrite prefix, default is no rewrites
+func (o HttpRouteActionResponsePtrOutput) PrefixRewrite() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HttpRouteActionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrefixRewrite
+	}).(pulumi.StringPtrOutput)
+}
+
+// Http Route Config properties
+type HttpRouteConfigProperties struct {
+	// Custom domain bindings for http Routes' hostnames.
+	CustomDomains []CustomDomain `pulumi:"customDomains"`
+	// Routing Rules for http route resource.
+	Rules []HttpRouteRule `pulumi:"rules"`
+}
+
+// HttpRouteConfigPropertiesInput is an input type that accepts HttpRouteConfigPropertiesArgs and HttpRouteConfigPropertiesOutput values.
+// You can construct a concrete instance of `HttpRouteConfigPropertiesInput` via:
+//
+//	HttpRouteConfigPropertiesArgs{...}
+type HttpRouteConfigPropertiesInput interface {
+	pulumi.Input
+
+	ToHttpRouteConfigPropertiesOutput() HttpRouteConfigPropertiesOutput
+	ToHttpRouteConfigPropertiesOutputWithContext(context.Context) HttpRouteConfigPropertiesOutput
+}
+
+// Http Route Config properties
+type HttpRouteConfigPropertiesArgs struct {
+	// Custom domain bindings for http Routes' hostnames.
+	CustomDomains CustomDomainArrayInput `pulumi:"customDomains"`
+	// Routing Rules for http route resource.
+	Rules HttpRouteRuleArrayInput `pulumi:"rules"`
+}
+
+func (HttpRouteConfigPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRouteConfigProperties)(nil)).Elem()
+}
+
+func (i HttpRouteConfigPropertiesArgs) ToHttpRouteConfigPropertiesOutput() HttpRouteConfigPropertiesOutput {
+	return i.ToHttpRouteConfigPropertiesOutputWithContext(context.Background())
+}
+
+func (i HttpRouteConfigPropertiesArgs) ToHttpRouteConfigPropertiesOutputWithContext(ctx context.Context) HttpRouteConfigPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteConfigPropertiesOutput)
+}
+
+func (i HttpRouteConfigPropertiesArgs) ToHttpRouteConfigPropertiesPtrOutput() HttpRouteConfigPropertiesPtrOutput {
+	return i.ToHttpRouteConfigPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i HttpRouteConfigPropertiesArgs) ToHttpRouteConfigPropertiesPtrOutputWithContext(ctx context.Context) HttpRouteConfigPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteConfigPropertiesOutput).ToHttpRouteConfigPropertiesPtrOutputWithContext(ctx)
+}
+
+// HttpRouteConfigPropertiesPtrInput is an input type that accepts HttpRouteConfigPropertiesArgs, HttpRouteConfigPropertiesPtr and HttpRouteConfigPropertiesPtrOutput values.
+// You can construct a concrete instance of `HttpRouteConfigPropertiesPtrInput` via:
+//
+//	        HttpRouteConfigPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type HttpRouteConfigPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToHttpRouteConfigPropertiesPtrOutput() HttpRouteConfigPropertiesPtrOutput
+	ToHttpRouteConfigPropertiesPtrOutputWithContext(context.Context) HttpRouteConfigPropertiesPtrOutput
+}
+
+type httpRouteConfigPropertiesPtrType HttpRouteConfigPropertiesArgs
+
+func HttpRouteConfigPropertiesPtr(v *HttpRouteConfigPropertiesArgs) HttpRouteConfigPropertiesPtrInput {
+	return (*httpRouteConfigPropertiesPtrType)(v)
+}
+
+func (*httpRouteConfigPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpRouteConfigProperties)(nil)).Elem()
+}
+
+func (i *httpRouteConfigPropertiesPtrType) ToHttpRouteConfigPropertiesPtrOutput() HttpRouteConfigPropertiesPtrOutput {
+	return i.ToHttpRouteConfigPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *httpRouteConfigPropertiesPtrType) ToHttpRouteConfigPropertiesPtrOutputWithContext(ctx context.Context) HttpRouteConfigPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteConfigPropertiesPtrOutput)
+}
+
+// Http Route Config properties
+type HttpRouteConfigPropertiesOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteConfigPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRouteConfigProperties)(nil)).Elem()
+}
+
+func (o HttpRouteConfigPropertiesOutput) ToHttpRouteConfigPropertiesOutput() HttpRouteConfigPropertiesOutput {
+	return o
+}
+
+func (o HttpRouteConfigPropertiesOutput) ToHttpRouteConfigPropertiesOutputWithContext(ctx context.Context) HttpRouteConfigPropertiesOutput {
+	return o
+}
+
+func (o HttpRouteConfigPropertiesOutput) ToHttpRouteConfigPropertiesPtrOutput() HttpRouteConfigPropertiesPtrOutput {
+	return o.ToHttpRouteConfigPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o HttpRouteConfigPropertiesOutput) ToHttpRouteConfigPropertiesPtrOutputWithContext(ctx context.Context) HttpRouteConfigPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpRouteConfigProperties) *HttpRouteConfigProperties {
+		return &v
+	}).(HttpRouteConfigPropertiesPtrOutput)
+}
+
+// Custom domain bindings for http Routes' hostnames.
+func (o HttpRouteConfigPropertiesOutput) CustomDomains() CustomDomainArrayOutput {
+	return o.ApplyT(func(v HttpRouteConfigProperties) []CustomDomain { return v.CustomDomains }).(CustomDomainArrayOutput)
+}
+
+// Routing Rules for http route resource.
+func (o HttpRouteConfigPropertiesOutput) Rules() HttpRouteRuleArrayOutput {
+	return o.ApplyT(func(v HttpRouteConfigProperties) []HttpRouteRule { return v.Rules }).(HttpRouteRuleArrayOutput)
+}
+
+type HttpRouteConfigPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteConfigPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpRouteConfigProperties)(nil)).Elem()
+}
+
+func (o HttpRouteConfigPropertiesPtrOutput) ToHttpRouteConfigPropertiesPtrOutput() HttpRouteConfigPropertiesPtrOutput {
+	return o
+}
+
+func (o HttpRouteConfigPropertiesPtrOutput) ToHttpRouteConfigPropertiesPtrOutputWithContext(ctx context.Context) HttpRouteConfigPropertiesPtrOutput {
+	return o
+}
+
+func (o HttpRouteConfigPropertiesPtrOutput) Elem() HttpRouteConfigPropertiesOutput {
+	return o.ApplyT(func(v *HttpRouteConfigProperties) HttpRouteConfigProperties {
+		if v != nil {
+			return *v
+		}
+		var ret HttpRouteConfigProperties
+		return ret
+	}).(HttpRouteConfigPropertiesOutput)
+}
+
+// Custom domain bindings for http Routes' hostnames.
+func (o HttpRouteConfigPropertiesPtrOutput) CustomDomains() CustomDomainArrayOutput {
+	return o.ApplyT(func(v *HttpRouteConfigProperties) []CustomDomain {
+		if v == nil {
+			return nil
+		}
+		return v.CustomDomains
+	}).(CustomDomainArrayOutput)
+}
+
+// Routing Rules for http route resource.
+func (o HttpRouteConfigPropertiesPtrOutput) Rules() HttpRouteRuleArrayOutput {
+	return o.ApplyT(func(v *HttpRouteConfigProperties) []HttpRouteRule {
+		if v == nil {
+			return nil
+		}
+		return v.Rules
+	}).(HttpRouteRuleArrayOutput)
+}
+
+// Http Route Config properties
+type HttpRouteConfigResponseProperties struct {
+	// Custom domain bindings for http Routes' hostnames.
+	CustomDomains []CustomDomainResponse `pulumi:"customDomains"`
+	// FQDN of the route resource.
+	Fqdn string `pulumi:"fqdn"`
+	// List of errors when trying to reconcile http routes
+	ProvisioningErrors []HttpRouteProvisioningErrorsResponse `pulumi:"provisioningErrors"`
+	// The provisioning state of the Http Route Config in cluster
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Routing Rules for http route resource.
+	Rules []HttpRouteRuleResponse `pulumi:"rules"`
+}
+
+// Http Route Config properties
+type HttpRouteConfigResponsePropertiesOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteConfigResponsePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRouteConfigResponseProperties)(nil)).Elem()
+}
+
+func (o HttpRouteConfigResponsePropertiesOutput) ToHttpRouteConfigResponsePropertiesOutput() HttpRouteConfigResponsePropertiesOutput {
+	return o
+}
+
+func (o HttpRouteConfigResponsePropertiesOutput) ToHttpRouteConfigResponsePropertiesOutputWithContext(ctx context.Context) HttpRouteConfigResponsePropertiesOutput {
+	return o
+}
+
+// Custom domain bindings for http Routes' hostnames.
+func (o HttpRouteConfigResponsePropertiesOutput) CustomDomains() CustomDomainResponseArrayOutput {
+	return o.ApplyT(func(v HttpRouteConfigResponseProperties) []CustomDomainResponse { return v.CustomDomains }).(CustomDomainResponseArrayOutput)
+}
+
+// FQDN of the route resource.
+func (o HttpRouteConfigResponsePropertiesOutput) Fqdn() pulumi.StringOutput {
+	return o.ApplyT(func(v HttpRouteConfigResponseProperties) string { return v.Fqdn }).(pulumi.StringOutput)
+}
+
+// List of errors when trying to reconcile http routes
+func (o HttpRouteConfigResponsePropertiesOutput) ProvisioningErrors() HttpRouteProvisioningErrorsResponseArrayOutput {
+	return o.ApplyT(func(v HttpRouteConfigResponseProperties) []HttpRouteProvisioningErrorsResponse {
+		return v.ProvisioningErrors
+	}).(HttpRouteProvisioningErrorsResponseArrayOutput)
+}
+
+// The provisioning state of the Http Route Config in cluster
+func (o HttpRouteConfigResponsePropertiesOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v HttpRouteConfigResponseProperties) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Routing Rules for http route resource.
+func (o HttpRouteConfigResponsePropertiesOutput) Rules() HttpRouteRuleResponseArrayOutput {
+	return o.ApplyT(func(v HttpRouteConfigResponseProperties) []HttpRouteRuleResponse { return v.Rules }).(HttpRouteRuleResponseArrayOutput)
+}
+
+// Criteria to match on
+type HttpRouteMatch struct {
+	// path case sensitive, default is true
+	CaseSensitive *bool `pulumi:"caseSensitive"`
+	// match on exact path
+	Path *string `pulumi:"path"`
+	// match on all prefix's. Not exact
+	PathSeparatedPrefix *string `pulumi:"pathSeparatedPrefix"`
+	// match on all prefix's. Not exact
+	Prefix *string `pulumi:"prefix"`
+}
+
+// HttpRouteMatchInput is an input type that accepts HttpRouteMatchArgs and HttpRouteMatchOutput values.
+// You can construct a concrete instance of `HttpRouteMatchInput` via:
+//
+//	HttpRouteMatchArgs{...}
+type HttpRouteMatchInput interface {
+	pulumi.Input
+
+	ToHttpRouteMatchOutput() HttpRouteMatchOutput
+	ToHttpRouteMatchOutputWithContext(context.Context) HttpRouteMatchOutput
+}
+
+// Criteria to match on
+type HttpRouteMatchArgs struct {
+	// path case sensitive, default is true
+	CaseSensitive pulumi.BoolPtrInput `pulumi:"caseSensitive"`
+	// match on exact path
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// match on all prefix's. Not exact
+	PathSeparatedPrefix pulumi.StringPtrInput `pulumi:"pathSeparatedPrefix"`
+	// match on all prefix's. Not exact
+	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
+}
+
+func (HttpRouteMatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRouteMatch)(nil)).Elem()
+}
+
+func (i HttpRouteMatchArgs) ToHttpRouteMatchOutput() HttpRouteMatchOutput {
+	return i.ToHttpRouteMatchOutputWithContext(context.Background())
+}
+
+func (i HttpRouteMatchArgs) ToHttpRouteMatchOutputWithContext(ctx context.Context) HttpRouteMatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteMatchOutput)
+}
+
+func (i HttpRouteMatchArgs) ToHttpRouteMatchPtrOutput() HttpRouteMatchPtrOutput {
+	return i.ToHttpRouteMatchPtrOutputWithContext(context.Background())
+}
+
+func (i HttpRouteMatchArgs) ToHttpRouteMatchPtrOutputWithContext(ctx context.Context) HttpRouteMatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteMatchOutput).ToHttpRouteMatchPtrOutputWithContext(ctx)
+}
+
+// HttpRouteMatchPtrInput is an input type that accepts HttpRouteMatchArgs, HttpRouteMatchPtr and HttpRouteMatchPtrOutput values.
+// You can construct a concrete instance of `HttpRouteMatchPtrInput` via:
+//
+//	        HttpRouteMatchArgs{...}
+//
+//	or:
+//
+//	        nil
+type HttpRouteMatchPtrInput interface {
+	pulumi.Input
+
+	ToHttpRouteMatchPtrOutput() HttpRouteMatchPtrOutput
+	ToHttpRouteMatchPtrOutputWithContext(context.Context) HttpRouteMatchPtrOutput
+}
+
+type httpRouteMatchPtrType HttpRouteMatchArgs
+
+func HttpRouteMatchPtr(v *HttpRouteMatchArgs) HttpRouteMatchPtrInput {
+	return (*httpRouteMatchPtrType)(v)
+}
+
+func (*httpRouteMatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpRouteMatch)(nil)).Elem()
+}
+
+func (i *httpRouteMatchPtrType) ToHttpRouteMatchPtrOutput() HttpRouteMatchPtrOutput {
+	return i.ToHttpRouteMatchPtrOutputWithContext(context.Background())
+}
+
+func (i *httpRouteMatchPtrType) ToHttpRouteMatchPtrOutputWithContext(ctx context.Context) HttpRouteMatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteMatchPtrOutput)
+}
+
+// Criteria to match on
+type HttpRouteMatchOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteMatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRouteMatch)(nil)).Elem()
+}
+
+func (o HttpRouteMatchOutput) ToHttpRouteMatchOutput() HttpRouteMatchOutput {
+	return o
+}
+
+func (o HttpRouteMatchOutput) ToHttpRouteMatchOutputWithContext(ctx context.Context) HttpRouteMatchOutput {
+	return o
+}
+
+func (o HttpRouteMatchOutput) ToHttpRouteMatchPtrOutput() HttpRouteMatchPtrOutput {
+	return o.ToHttpRouteMatchPtrOutputWithContext(context.Background())
+}
+
+func (o HttpRouteMatchOutput) ToHttpRouteMatchPtrOutputWithContext(ctx context.Context) HttpRouteMatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpRouteMatch) *HttpRouteMatch {
+		return &v
+	}).(HttpRouteMatchPtrOutput)
+}
+
+// path case sensitive, default is true
+func (o HttpRouteMatchOutput) CaseSensitive() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v HttpRouteMatch) *bool { return v.CaseSensitive }).(pulumi.BoolPtrOutput)
+}
+
+// match on exact path
+func (o HttpRouteMatchOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HttpRouteMatch) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// match on all prefix's. Not exact
+func (o HttpRouteMatchOutput) PathSeparatedPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HttpRouteMatch) *string { return v.PathSeparatedPrefix }).(pulumi.StringPtrOutput)
+}
+
+// match on all prefix's. Not exact
+func (o HttpRouteMatchOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HttpRouteMatch) *string { return v.Prefix }).(pulumi.StringPtrOutput)
+}
+
+type HttpRouteMatchPtrOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteMatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpRouteMatch)(nil)).Elem()
+}
+
+func (o HttpRouteMatchPtrOutput) ToHttpRouteMatchPtrOutput() HttpRouteMatchPtrOutput {
+	return o
+}
+
+func (o HttpRouteMatchPtrOutput) ToHttpRouteMatchPtrOutputWithContext(ctx context.Context) HttpRouteMatchPtrOutput {
+	return o
+}
+
+func (o HttpRouteMatchPtrOutput) Elem() HttpRouteMatchOutput {
+	return o.ApplyT(func(v *HttpRouteMatch) HttpRouteMatch {
+		if v != nil {
+			return *v
+		}
+		var ret HttpRouteMatch
+		return ret
+	}).(HttpRouteMatchOutput)
+}
+
+// path case sensitive, default is true
+func (o HttpRouteMatchPtrOutput) CaseSensitive() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *HttpRouteMatch) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CaseSensitive
+	}).(pulumi.BoolPtrOutput)
+}
+
+// match on exact path
+func (o HttpRouteMatchPtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HttpRouteMatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// match on all prefix's. Not exact
+func (o HttpRouteMatchPtrOutput) PathSeparatedPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HttpRouteMatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PathSeparatedPrefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// match on all prefix's. Not exact
+func (o HttpRouteMatchPtrOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HttpRouteMatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Prefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// Criteria to match on
+type HttpRouteMatchResponse struct {
+	// path case sensitive, default is true
+	CaseSensitive *bool `pulumi:"caseSensitive"`
+	// match on exact path
+	Path *string `pulumi:"path"`
+	// match on all prefix's. Not exact
+	PathSeparatedPrefix *string `pulumi:"pathSeparatedPrefix"`
+	// match on all prefix's. Not exact
+	Prefix *string `pulumi:"prefix"`
+}
+
+// Criteria to match on
+type HttpRouteMatchResponseOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteMatchResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRouteMatchResponse)(nil)).Elem()
+}
+
+func (o HttpRouteMatchResponseOutput) ToHttpRouteMatchResponseOutput() HttpRouteMatchResponseOutput {
+	return o
+}
+
+func (o HttpRouteMatchResponseOutput) ToHttpRouteMatchResponseOutputWithContext(ctx context.Context) HttpRouteMatchResponseOutput {
+	return o
+}
+
+// path case sensitive, default is true
+func (o HttpRouteMatchResponseOutput) CaseSensitive() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v HttpRouteMatchResponse) *bool { return v.CaseSensitive }).(pulumi.BoolPtrOutput)
+}
+
+// match on exact path
+func (o HttpRouteMatchResponseOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HttpRouteMatchResponse) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// match on all prefix's. Not exact
+func (o HttpRouteMatchResponseOutput) PathSeparatedPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HttpRouteMatchResponse) *string { return v.PathSeparatedPrefix }).(pulumi.StringPtrOutput)
+}
+
+// match on all prefix's. Not exact
+func (o HttpRouteMatchResponseOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HttpRouteMatchResponse) *string { return v.Prefix }).(pulumi.StringPtrOutput)
+}
+
+type HttpRouteMatchResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteMatchResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpRouteMatchResponse)(nil)).Elem()
+}
+
+func (o HttpRouteMatchResponsePtrOutput) ToHttpRouteMatchResponsePtrOutput() HttpRouteMatchResponsePtrOutput {
+	return o
+}
+
+func (o HttpRouteMatchResponsePtrOutput) ToHttpRouteMatchResponsePtrOutputWithContext(ctx context.Context) HttpRouteMatchResponsePtrOutput {
+	return o
+}
+
+func (o HttpRouteMatchResponsePtrOutput) Elem() HttpRouteMatchResponseOutput {
+	return o.ApplyT(func(v *HttpRouteMatchResponse) HttpRouteMatchResponse {
+		if v != nil {
+			return *v
+		}
+		var ret HttpRouteMatchResponse
+		return ret
+	}).(HttpRouteMatchResponseOutput)
+}
+
+// path case sensitive, default is true
+func (o HttpRouteMatchResponsePtrOutput) CaseSensitive() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *HttpRouteMatchResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CaseSensitive
+	}).(pulumi.BoolPtrOutput)
+}
+
+// match on exact path
+func (o HttpRouteMatchResponsePtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HttpRouteMatchResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// match on all prefix's. Not exact
+func (o HttpRouteMatchResponsePtrOutput) PathSeparatedPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HttpRouteMatchResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PathSeparatedPrefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// match on all prefix's. Not exact
+func (o HttpRouteMatchResponsePtrOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HttpRouteMatchResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Prefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of provisioning errors for a http route config object
+type HttpRouteProvisioningErrorsResponse struct {
+	// Description or error message
+	Message string `pulumi:"message"`
+	// Timestamp error occured at
+	Timestamp string `pulumi:"timestamp"`
+}
+
+// List of provisioning errors for a http route config object
+type HttpRouteProvisioningErrorsResponseOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteProvisioningErrorsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRouteProvisioningErrorsResponse)(nil)).Elem()
+}
+
+func (o HttpRouteProvisioningErrorsResponseOutput) ToHttpRouteProvisioningErrorsResponseOutput() HttpRouteProvisioningErrorsResponseOutput {
+	return o
+}
+
+func (o HttpRouteProvisioningErrorsResponseOutput) ToHttpRouteProvisioningErrorsResponseOutputWithContext(ctx context.Context) HttpRouteProvisioningErrorsResponseOutput {
+	return o
+}
+
+// Description or error message
+func (o HttpRouteProvisioningErrorsResponseOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v HttpRouteProvisioningErrorsResponse) string { return v.Message }).(pulumi.StringOutput)
+}
+
+// Timestamp error occured at
+func (o HttpRouteProvisioningErrorsResponseOutput) Timestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v HttpRouteProvisioningErrorsResponse) string { return v.Timestamp }).(pulumi.StringOutput)
+}
+
+type HttpRouteProvisioningErrorsResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteProvisioningErrorsResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HttpRouteProvisioningErrorsResponse)(nil)).Elem()
+}
+
+func (o HttpRouteProvisioningErrorsResponseArrayOutput) ToHttpRouteProvisioningErrorsResponseArrayOutput() HttpRouteProvisioningErrorsResponseArrayOutput {
+	return o
+}
+
+func (o HttpRouteProvisioningErrorsResponseArrayOutput) ToHttpRouteProvisioningErrorsResponseArrayOutputWithContext(ctx context.Context) HttpRouteProvisioningErrorsResponseArrayOutput {
+	return o
+}
+
+func (o HttpRouteProvisioningErrorsResponseArrayOutput) Index(i pulumi.IntInput) HttpRouteProvisioningErrorsResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HttpRouteProvisioningErrorsResponse {
+		return vs[0].([]HttpRouteProvisioningErrorsResponse)[vs[1].(int)]
+	}).(HttpRouteProvisioningErrorsResponseOutput)
+}
+
+// Http Routes configuration, including paths to match on and whether or not rewrites are to be done.
+type HttpRouteResponse struct {
+	// Once route is matched, what is the desired action
+	Action *HttpRouteActionResponse `pulumi:"action"`
+	// Conditions route will match on
+	Match *HttpRouteMatchResponse `pulumi:"match"`
+}
+
+// Http Routes configuration, including paths to match on and whether or not rewrites are to be done.
+type HttpRouteResponseOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRouteResponse)(nil)).Elem()
+}
+
+func (o HttpRouteResponseOutput) ToHttpRouteResponseOutput() HttpRouteResponseOutput {
+	return o
+}
+
+func (o HttpRouteResponseOutput) ToHttpRouteResponseOutputWithContext(ctx context.Context) HttpRouteResponseOutput {
+	return o
+}
+
+// Once route is matched, what is the desired action
+func (o HttpRouteResponseOutput) Action() HttpRouteActionResponsePtrOutput {
+	return o.ApplyT(func(v HttpRouteResponse) *HttpRouteActionResponse { return v.Action }).(HttpRouteActionResponsePtrOutput)
+}
+
+// Conditions route will match on
+func (o HttpRouteResponseOutput) Match() HttpRouteMatchResponsePtrOutput {
+	return o.ApplyT(func(v HttpRouteResponse) *HttpRouteMatchResponse { return v.Match }).(HttpRouteMatchResponsePtrOutput)
+}
+
+type HttpRouteResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HttpRouteResponse)(nil)).Elem()
+}
+
+func (o HttpRouteResponseArrayOutput) ToHttpRouteResponseArrayOutput() HttpRouteResponseArrayOutput {
+	return o
+}
+
+func (o HttpRouteResponseArrayOutput) ToHttpRouteResponseArrayOutputWithContext(ctx context.Context) HttpRouteResponseArrayOutput {
+	return o
+}
+
+func (o HttpRouteResponseArrayOutput) Index(i pulumi.IntInput) HttpRouteResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HttpRouteResponse {
+		return vs[0].([]HttpRouteResponse)[vs[1].(int)]
+	}).(HttpRouteResponseOutput)
+}
+
+// Http Route rule.
+type HttpRouteRule struct {
+	// Description of rule. Optional.
+	Description *string `pulumi:"description"`
+	// Routing configuration that will allow matches on specific paths/headers.
+	Routes []HttpRoute `pulumi:"routes"`
+	// Targets- container apps, revisions, labels
+	Targets []HttpRouteTarget `pulumi:"targets"`
+}
+
+// HttpRouteRuleInput is an input type that accepts HttpRouteRuleArgs and HttpRouteRuleOutput values.
+// You can construct a concrete instance of `HttpRouteRuleInput` via:
+//
+//	HttpRouteRuleArgs{...}
+type HttpRouteRuleInput interface {
+	pulumi.Input
+
+	ToHttpRouteRuleOutput() HttpRouteRuleOutput
+	ToHttpRouteRuleOutputWithContext(context.Context) HttpRouteRuleOutput
+}
+
+// Http Route rule.
+type HttpRouteRuleArgs struct {
+	// Description of rule. Optional.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Routing configuration that will allow matches on specific paths/headers.
+	Routes HttpRouteArrayInput `pulumi:"routes"`
+	// Targets- container apps, revisions, labels
+	Targets HttpRouteTargetArrayInput `pulumi:"targets"`
+}
+
+func (HttpRouteRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRouteRule)(nil)).Elem()
+}
+
+func (i HttpRouteRuleArgs) ToHttpRouteRuleOutput() HttpRouteRuleOutput {
+	return i.ToHttpRouteRuleOutputWithContext(context.Background())
+}
+
+func (i HttpRouteRuleArgs) ToHttpRouteRuleOutputWithContext(ctx context.Context) HttpRouteRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleOutput)
+}
+
+// HttpRouteRuleArrayInput is an input type that accepts HttpRouteRuleArray and HttpRouteRuleArrayOutput values.
+// You can construct a concrete instance of `HttpRouteRuleArrayInput` via:
+//
+//	HttpRouteRuleArray{ HttpRouteRuleArgs{...} }
+type HttpRouteRuleArrayInput interface {
+	pulumi.Input
+
+	ToHttpRouteRuleArrayOutput() HttpRouteRuleArrayOutput
+	ToHttpRouteRuleArrayOutputWithContext(context.Context) HttpRouteRuleArrayOutput
+}
+
+type HttpRouteRuleArray []HttpRouteRuleInput
+
+func (HttpRouteRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HttpRouteRule)(nil)).Elem()
+}
+
+func (i HttpRouteRuleArray) ToHttpRouteRuleArrayOutput() HttpRouteRuleArrayOutput {
+	return i.ToHttpRouteRuleArrayOutputWithContext(context.Background())
+}
+
+func (i HttpRouteRuleArray) ToHttpRouteRuleArrayOutputWithContext(ctx context.Context) HttpRouteRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleArrayOutput)
+}
+
+// Http Route rule.
+type HttpRouteRuleOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRouteRule)(nil)).Elem()
+}
+
+func (o HttpRouteRuleOutput) ToHttpRouteRuleOutput() HttpRouteRuleOutput {
+	return o
+}
+
+func (o HttpRouteRuleOutput) ToHttpRouteRuleOutputWithContext(ctx context.Context) HttpRouteRuleOutput {
+	return o
+}
+
+// Description of rule. Optional.
+func (o HttpRouteRuleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HttpRouteRule) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Routing configuration that will allow matches on specific paths/headers.
+func (o HttpRouteRuleOutput) Routes() HttpRouteArrayOutput {
+	return o.ApplyT(func(v HttpRouteRule) []HttpRoute { return v.Routes }).(HttpRouteArrayOutput)
+}
+
+// Targets- container apps, revisions, labels
+func (o HttpRouteRuleOutput) Targets() HttpRouteTargetArrayOutput {
+	return o.ApplyT(func(v HttpRouteRule) []HttpRouteTarget { return v.Targets }).(HttpRouteTargetArrayOutput)
+}
+
+type HttpRouteRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HttpRouteRule)(nil)).Elem()
+}
+
+func (o HttpRouteRuleArrayOutput) ToHttpRouteRuleArrayOutput() HttpRouteRuleArrayOutput {
+	return o
+}
+
+func (o HttpRouteRuleArrayOutput) ToHttpRouteRuleArrayOutputWithContext(ctx context.Context) HttpRouteRuleArrayOutput {
+	return o
+}
+
+func (o HttpRouteRuleArrayOutput) Index(i pulumi.IntInput) HttpRouteRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HttpRouteRule {
+		return vs[0].([]HttpRouteRule)[vs[1].(int)]
+	}).(HttpRouteRuleOutput)
+}
+
+// Http Route rule.
+type HttpRouteRuleResponse struct {
+	// Description of rule. Optional.
+	Description *string `pulumi:"description"`
+	// Routing configuration that will allow matches on specific paths/headers.
+	Routes []HttpRouteResponse `pulumi:"routes"`
+	// Targets- container apps, revisions, labels
+	Targets []HttpRouteTargetResponse `pulumi:"targets"`
+}
+
+// Http Route rule.
+type HttpRouteRuleResponseOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteRuleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRouteRuleResponse)(nil)).Elem()
+}
+
+func (o HttpRouteRuleResponseOutput) ToHttpRouteRuleResponseOutput() HttpRouteRuleResponseOutput {
+	return o
+}
+
+func (o HttpRouteRuleResponseOutput) ToHttpRouteRuleResponseOutputWithContext(ctx context.Context) HttpRouteRuleResponseOutput {
+	return o
+}
+
+// Description of rule. Optional.
+func (o HttpRouteRuleResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HttpRouteRuleResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Routing configuration that will allow matches on specific paths/headers.
+func (o HttpRouteRuleResponseOutput) Routes() HttpRouteResponseArrayOutput {
+	return o.ApplyT(func(v HttpRouteRuleResponse) []HttpRouteResponse { return v.Routes }).(HttpRouteResponseArrayOutput)
+}
+
+// Targets- container apps, revisions, labels
+func (o HttpRouteRuleResponseOutput) Targets() HttpRouteTargetResponseArrayOutput {
+	return o.ApplyT(func(v HttpRouteRuleResponse) []HttpRouteTargetResponse { return v.Targets }).(HttpRouteTargetResponseArrayOutput)
+}
+
+type HttpRouteRuleResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteRuleResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HttpRouteRuleResponse)(nil)).Elem()
+}
+
+func (o HttpRouteRuleResponseArrayOutput) ToHttpRouteRuleResponseArrayOutput() HttpRouteRuleResponseArrayOutput {
+	return o
+}
+
+func (o HttpRouteRuleResponseArrayOutput) ToHttpRouteRuleResponseArrayOutputWithContext(ctx context.Context) HttpRouteRuleResponseArrayOutput {
+	return o
+}
+
+func (o HttpRouteRuleResponseArrayOutput) Index(i pulumi.IntInput) HttpRouteRuleResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HttpRouteRuleResponse {
+		return vs[0].([]HttpRouteRuleResponse)[vs[1].(int)]
+	}).(HttpRouteRuleResponseOutput)
+}
+
+// Targets - Container App Names, Revision Names, Labels.
+type HttpRouteTarget struct {
+	// Container App Name to route requests to
+	ContainerApp string `pulumi:"containerApp"`
+	// Label/Revision to route requests to
+	Label *string `pulumi:"label"`
+	// Revision to route requests to
+	Revision *string `pulumi:"revision"`
+	// Weighted routing
+	Weight *int `pulumi:"weight"`
+}
+
+// HttpRouteTargetInput is an input type that accepts HttpRouteTargetArgs and HttpRouteTargetOutput values.
+// You can construct a concrete instance of `HttpRouteTargetInput` via:
+//
+//	HttpRouteTargetArgs{...}
+type HttpRouteTargetInput interface {
+	pulumi.Input
+
+	ToHttpRouteTargetOutput() HttpRouteTargetOutput
+	ToHttpRouteTargetOutputWithContext(context.Context) HttpRouteTargetOutput
+}
+
+// Targets - Container App Names, Revision Names, Labels.
+type HttpRouteTargetArgs struct {
+	// Container App Name to route requests to
+	ContainerApp pulumi.StringInput `pulumi:"containerApp"`
+	// Label/Revision to route requests to
+	Label pulumi.StringPtrInput `pulumi:"label"`
+	// Revision to route requests to
+	Revision pulumi.StringPtrInput `pulumi:"revision"`
+	// Weighted routing
+	Weight pulumi.IntPtrInput `pulumi:"weight"`
+}
+
+func (HttpRouteTargetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRouteTarget)(nil)).Elem()
+}
+
+func (i HttpRouteTargetArgs) ToHttpRouteTargetOutput() HttpRouteTargetOutput {
+	return i.ToHttpRouteTargetOutputWithContext(context.Background())
+}
+
+func (i HttpRouteTargetArgs) ToHttpRouteTargetOutputWithContext(ctx context.Context) HttpRouteTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteTargetOutput)
+}
+
+// HttpRouteTargetArrayInput is an input type that accepts HttpRouteTargetArray and HttpRouteTargetArrayOutput values.
+// You can construct a concrete instance of `HttpRouteTargetArrayInput` via:
+//
+//	HttpRouteTargetArray{ HttpRouteTargetArgs{...} }
+type HttpRouteTargetArrayInput interface {
+	pulumi.Input
+
+	ToHttpRouteTargetArrayOutput() HttpRouteTargetArrayOutput
+	ToHttpRouteTargetArrayOutputWithContext(context.Context) HttpRouteTargetArrayOutput
+}
+
+type HttpRouteTargetArray []HttpRouteTargetInput
+
+func (HttpRouteTargetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HttpRouteTarget)(nil)).Elem()
+}
+
+func (i HttpRouteTargetArray) ToHttpRouteTargetArrayOutput() HttpRouteTargetArrayOutput {
+	return i.ToHttpRouteTargetArrayOutputWithContext(context.Background())
+}
+
+func (i HttpRouteTargetArray) ToHttpRouteTargetArrayOutputWithContext(ctx context.Context) HttpRouteTargetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteTargetArrayOutput)
+}
+
+// Targets - Container App Names, Revision Names, Labels.
+type HttpRouteTargetOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRouteTarget)(nil)).Elem()
+}
+
+func (o HttpRouteTargetOutput) ToHttpRouteTargetOutput() HttpRouteTargetOutput {
+	return o
+}
+
+func (o HttpRouteTargetOutput) ToHttpRouteTargetOutputWithContext(ctx context.Context) HttpRouteTargetOutput {
+	return o
+}
+
+// Container App Name to route requests to
+func (o HttpRouteTargetOutput) ContainerApp() pulumi.StringOutput {
+	return o.ApplyT(func(v HttpRouteTarget) string { return v.ContainerApp }).(pulumi.StringOutput)
+}
+
+// Label/Revision to route requests to
+func (o HttpRouteTargetOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HttpRouteTarget) *string { return v.Label }).(pulumi.StringPtrOutput)
+}
+
+// Revision to route requests to
+func (o HttpRouteTargetOutput) Revision() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HttpRouteTarget) *string { return v.Revision }).(pulumi.StringPtrOutput)
+}
+
+// Weighted routing
+func (o HttpRouteTargetOutput) Weight() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v HttpRouteTarget) *int { return v.Weight }).(pulumi.IntPtrOutput)
+}
+
+type HttpRouteTargetArrayOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteTargetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HttpRouteTarget)(nil)).Elem()
+}
+
+func (o HttpRouteTargetArrayOutput) ToHttpRouteTargetArrayOutput() HttpRouteTargetArrayOutput {
+	return o
+}
+
+func (o HttpRouteTargetArrayOutput) ToHttpRouteTargetArrayOutputWithContext(ctx context.Context) HttpRouteTargetArrayOutput {
+	return o
+}
+
+func (o HttpRouteTargetArrayOutput) Index(i pulumi.IntInput) HttpRouteTargetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HttpRouteTarget {
+		return vs[0].([]HttpRouteTarget)[vs[1].(int)]
+	}).(HttpRouteTargetOutput)
+}
+
+// Targets - Container App Names, Revision Names, Labels.
+type HttpRouteTargetResponse struct {
+	// Container App Name to route requests to
+	ContainerApp string `pulumi:"containerApp"`
+	// Label/Revision to route requests to
+	Label *string `pulumi:"label"`
+	// Revision to route requests to
+	Revision *string `pulumi:"revision"`
+	// Weighted routing
+	Weight *int `pulumi:"weight"`
+}
+
+// Targets - Container App Names, Revision Names, Labels.
+type HttpRouteTargetResponseOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteTargetResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRouteTargetResponse)(nil)).Elem()
+}
+
+func (o HttpRouteTargetResponseOutput) ToHttpRouteTargetResponseOutput() HttpRouteTargetResponseOutput {
+	return o
+}
+
+func (o HttpRouteTargetResponseOutput) ToHttpRouteTargetResponseOutputWithContext(ctx context.Context) HttpRouteTargetResponseOutput {
+	return o
+}
+
+// Container App Name to route requests to
+func (o HttpRouteTargetResponseOutput) ContainerApp() pulumi.StringOutput {
+	return o.ApplyT(func(v HttpRouteTargetResponse) string { return v.ContainerApp }).(pulumi.StringOutput)
+}
+
+// Label/Revision to route requests to
+func (o HttpRouteTargetResponseOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HttpRouteTargetResponse) *string { return v.Label }).(pulumi.StringPtrOutput)
+}
+
+// Revision to route requests to
+func (o HttpRouteTargetResponseOutput) Revision() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HttpRouteTargetResponse) *string { return v.Revision }).(pulumi.StringPtrOutput)
+}
+
+// Weighted routing
+func (o HttpRouteTargetResponseOutput) Weight() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v HttpRouteTargetResponse) *int { return v.Weight }).(pulumi.IntPtrOutput)
+}
+
+type HttpRouteTargetResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteTargetResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HttpRouteTargetResponse)(nil)).Elem()
+}
+
+func (o HttpRouteTargetResponseArrayOutput) ToHttpRouteTargetResponseArrayOutput() HttpRouteTargetResponseArrayOutput {
+	return o
+}
+
+func (o HttpRouteTargetResponseArrayOutput) ToHttpRouteTargetResponseArrayOutputWithContext(ctx context.Context) HttpRouteTargetResponseArrayOutput {
+	return o
+}
+
+func (o HttpRouteTargetResponseArrayOutput) Index(i pulumi.IntInput) HttpRouteTargetResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HttpRouteTargetResponse {
+		return vs[0].([]HttpRouteTargetResponse)[vs[1].(int)]
+	}).(HttpRouteTargetResponseOutput)
 }
 
 // Container App container Http scaling rule.
@@ -26868,6 +28178,184 @@ func (o ScaleRuleResponseArrayOutput) Index(i pulumi.IntInput) ScaleRuleResponse
 	}).(ScaleRuleResponseOutput)
 }
 
+// Maintenance schedule entry for a managed environment.
+type ScheduledEntry struct {
+	// Length of maintenance window range from 8 to 24 hours.
+	DurationHours int `pulumi:"durationHours"`
+	// Start hour after which managed environment maintenance can start from 0 to 23 hour.
+	StartHourUtc int `pulumi:"startHourUtc"`
+	// Day of the week when a managed environment can be patched.
+	WeekDay WeekDay `pulumi:"weekDay"`
+}
+
+// ScheduledEntryInput is an input type that accepts ScheduledEntryArgs and ScheduledEntryOutput values.
+// You can construct a concrete instance of `ScheduledEntryInput` via:
+//
+//	ScheduledEntryArgs{...}
+type ScheduledEntryInput interface {
+	pulumi.Input
+
+	ToScheduledEntryOutput() ScheduledEntryOutput
+	ToScheduledEntryOutputWithContext(context.Context) ScheduledEntryOutput
+}
+
+// Maintenance schedule entry for a managed environment.
+type ScheduledEntryArgs struct {
+	// Length of maintenance window range from 8 to 24 hours.
+	DurationHours pulumi.IntInput `pulumi:"durationHours"`
+	// Start hour after which managed environment maintenance can start from 0 to 23 hour.
+	StartHourUtc pulumi.IntInput `pulumi:"startHourUtc"`
+	// Day of the week when a managed environment can be patched.
+	WeekDay WeekDayInput `pulumi:"weekDay"`
+}
+
+func (ScheduledEntryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduledEntry)(nil)).Elem()
+}
+
+func (i ScheduledEntryArgs) ToScheduledEntryOutput() ScheduledEntryOutput {
+	return i.ToScheduledEntryOutputWithContext(context.Background())
+}
+
+func (i ScheduledEntryArgs) ToScheduledEntryOutputWithContext(ctx context.Context) ScheduledEntryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduledEntryOutput)
+}
+
+// ScheduledEntryArrayInput is an input type that accepts ScheduledEntryArray and ScheduledEntryArrayOutput values.
+// You can construct a concrete instance of `ScheduledEntryArrayInput` via:
+//
+//	ScheduledEntryArray{ ScheduledEntryArgs{...} }
+type ScheduledEntryArrayInput interface {
+	pulumi.Input
+
+	ToScheduledEntryArrayOutput() ScheduledEntryArrayOutput
+	ToScheduledEntryArrayOutputWithContext(context.Context) ScheduledEntryArrayOutput
+}
+
+type ScheduledEntryArray []ScheduledEntryInput
+
+func (ScheduledEntryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScheduledEntry)(nil)).Elem()
+}
+
+func (i ScheduledEntryArray) ToScheduledEntryArrayOutput() ScheduledEntryArrayOutput {
+	return i.ToScheduledEntryArrayOutputWithContext(context.Background())
+}
+
+func (i ScheduledEntryArray) ToScheduledEntryArrayOutputWithContext(ctx context.Context) ScheduledEntryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduledEntryArrayOutput)
+}
+
+// Maintenance schedule entry for a managed environment.
+type ScheduledEntryOutput struct{ *pulumi.OutputState }
+
+func (ScheduledEntryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduledEntry)(nil)).Elem()
+}
+
+func (o ScheduledEntryOutput) ToScheduledEntryOutput() ScheduledEntryOutput {
+	return o
+}
+
+func (o ScheduledEntryOutput) ToScheduledEntryOutputWithContext(ctx context.Context) ScheduledEntryOutput {
+	return o
+}
+
+// Length of maintenance window range from 8 to 24 hours.
+func (o ScheduledEntryOutput) DurationHours() pulumi.IntOutput {
+	return o.ApplyT(func(v ScheduledEntry) int { return v.DurationHours }).(pulumi.IntOutput)
+}
+
+// Start hour after which managed environment maintenance can start from 0 to 23 hour.
+func (o ScheduledEntryOutput) StartHourUtc() pulumi.IntOutput {
+	return o.ApplyT(func(v ScheduledEntry) int { return v.StartHourUtc }).(pulumi.IntOutput)
+}
+
+// Day of the week when a managed environment can be patched.
+func (o ScheduledEntryOutput) WeekDay() WeekDayOutput {
+	return o.ApplyT(func(v ScheduledEntry) WeekDay { return v.WeekDay }).(WeekDayOutput)
+}
+
+type ScheduledEntryArrayOutput struct{ *pulumi.OutputState }
+
+func (ScheduledEntryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScheduledEntry)(nil)).Elem()
+}
+
+func (o ScheduledEntryArrayOutput) ToScheduledEntryArrayOutput() ScheduledEntryArrayOutput {
+	return o
+}
+
+func (o ScheduledEntryArrayOutput) ToScheduledEntryArrayOutputWithContext(ctx context.Context) ScheduledEntryArrayOutput {
+	return o
+}
+
+func (o ScheduledEntryArrayOutput) Index(i pulumi.IntInput) ScheduledEntryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScheduledEntry {
+		return vs[0].([]ScheduledEntry)[vs[1].(int)]
+	}).(ScheduledEntryOutput)
+}
+
+// Maintenance schedule entry for a managed environment.
+type ScheduledEntryResponse struct {
+	// Length of maintenance window range from 8 to 24 hours.
+	DurationHours int `pulumi:"durationHours"`
+	// Start hour after which managed environment maintenance can start from 0 to 23 hour.
+	StartHourUtc int `pulumi:"startHourUtc"`
+	// Day of the week when a managed environment can be patched.
+	WeekDay string `pulumi:"weekDay"`
+}
+
+// Maintenance schedule entry for a managed environment.
+type ScheduledEntryResponseOutput struct{ *pulumi.OutputState }
+
+func (ScheduledEntryResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduledEntryResponse)(nil)).Elem()
+}
+
+func (o ScheduledEntryResponseOutput) ToScheduledEntryResponseOutput() ScheduledEntryResponseOutput {
+	return o
+}
+
+func (o ScheduledEntryResponseOutput) ToScheduledEntryResponseOutputWithContext(ctx context.Context) ScheduledEntryResponseOutput {
+	return o
+}
+
+// Length of maintenance window range from 8 to 24 hours.
+func (o ScheduledEntryResponseOutput) DurationHours() pulumi.IntOutput {
+	return o.ApplyT(func(v ScheduledEntryResponse) int { return v.DurationHours }).(pulumi.IntOutput)
+}
+
+// Start hour after which managed environment maintenance can start from 0 to 23 hour.
+func (o ScheduledEntryResponseOutput) StartHourUtc() pulumi.IntOutput {
+	return o.ApplyT(func(v ScheduledEntryResponse) int { return v.StartHourUtc }).(pulumi.IntOutput)
+}
+
+// Day of the week when a managed environment can be patched.
+func (o ScheduledEntryResponseOutput) WeekDay() pulumi.StringOutput {
+	return o.ApplyT(func(v ScheduledEntryResponse) string { return v.WeekDay }).(pulumi.StringOutput)
+}
+
+type ScheduledEntryResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ScheduledEntryResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScheduledEntryResponse)(nil)).Elem()
+}
+
+func (o ScheduledEntryResponseArrayOutput) ToScheduledEntryResponseArrayOutput() ScheduledEntryResponseArrayOutput {
+	return o
+}
+
+func (o ScheduledEntryResponseArrayOutput) ToScheduledEntryResponseArrayOutputWithContext(ctx context.Context) ScheduledEntryResponseArrayOutput {
+	return o
+}
+
+func (o ScheduledEntryResponseArrayOutput) Index(i pulumi.IntInput) ScheduledEntryResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScheduledEntryResponse {
+		return vs[0].([]ScheduledEntryResponse)[vs[1].(int)]
+	}).(ScheduledEntryResponseOutput)
+}
+
 // Secret definition.
 type Secret struct {
 	// Resource ID of a managed identity to authenticate with Azure Key Vault, or System to use a system-assigned identity.
@@ -31963,6 +33451,31 @@ func init() {
 	pulumi.RegisterOutputType(HttpRetryPolicyPtrOutput{})
 	pulumi.RegisterOutputType(HttpRetryPolicyResponseOutput{})
 	pulumi.RegisterOutputType(HttpRetryPolicyResponsePtrOutput{})
+	pulumi.RegisterOutputType(HttpRouteOutput{})
+	pulumi.RegisterOutputType(HttpRouteArrayOutput{})
+	pulumi.RegisterOutputType(HttpRouteActionOutput{})
+	pulumi.RegisterOutputType(HttpRouteActionPtrOutput{})
+	pulumi.RegisterOutputType(HttpRouteActionResponseOutput{})
+	pulumi.RegisterOutputType(HttpRouteActionResponsePtrOutput{})
+	pulumi.RegisterOutputType(HttpRouteConfigPropertiesOutput{})
+	pulumi.RegisterOutputType(HttpRouteConfigPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(HttpRouteConfigResponsePropertiesOutput{})
+	pulumi.RegisterOutputType(HttpRouteMatchOutput{})
+	pulumi.RegisterOutputType(HttpRouteMatchPtrOutput{})
+	pulumi.RegisterOutputType(HttpRouteMatchResponseOutput{})
+	pulumi.RegisterOutputType(HttpRouteMatchResponsePtrOutput{})
+	pulumi.RegisterOutputType(HttpRouteProvisioningErrorsResponseOutput{})
+	pulumi.RegisterOutputType(HttpRouteProvisioningErrorsResponseArrayOutput{})
+	pulumi.RegisterOutputType(HttpRouteResponseOutput{})
+	pulumi.RegisterOutputType(HttpRouteResponseArrayOutput{})
+	pulumi.RegisterOutputType(HttpRouteRuleOutput{})
+	pulumi.RegisterOutputType(HttpRouteRuleArrayOutput{})
+	pulumi.RegisterOutputType(HttpRouteRuleResponseOutput{})
+	pulumi.RegisterOutputType(HttpRouteRuleResponseArrayOutput{})
+	pulumi.RegisterOutputType(HttpRouteTargetOutput{})
+	pulumi.RegisterOutputType(HttpRouteTargetArrayOutput{})
+	pulumi.RegisterOutputType(HttpRouteTargetResponseOutput{})
+	pulumi.RegisterOutputType(HttpRouteTargetResponseArrayOutput{})
 	pulumi.RegisterOutputType(HttpScaleRuleOutput{})
 	pulumi.RegisterOutputType(HttpScaleRulePtrOutput{})
 	pulumi.RegisterOutputType(HttpScaleRuleResponseOutput{})
@@ -32117,6 +33630,10 @@ func init() {
 	pulumi.RegisterOutputType(ScaleRuleAuthResponseArrayOutput{})
 	pulumi.RegisterOutputType(ScaleRuleResponseOutput{})
 	pulumi.RegisterOutputType(ScaleRuleResponseArrayOutput{})
+	pulumi.RegisterOutputType(ScheduledEntryOutput{})
+	pulumi.RegisterOutputType(ScheduledEntryArrayOutput{})
+	pulumi.RegisterOutputType(ScheduledEntryResponseOutput{})
+	pulumi.RegisterOutputType(ScheduledEntryResponseArrayOutput{})
 	pulumi.RegisterOutputType(SecretOutput{})
 	pulumi.RegisterOutputType(SecretArrayOutput{})
 	pulumi.RegisterOutputType(SecretResponseOutput{})

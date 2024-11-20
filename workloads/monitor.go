@@ -15,7 +15,7 @@ import (
 // SAP monitor info on Azure (ARM properties and SAP monitor properties)
 // Azure REST API version: 2023-04-01. Prior API version in Azure Native 1.x: 2021-12-01-preview.
 //
-// Other available API versions: 2023-12-01-preview.
+// Other available API versions: 2023-12-01-preview, 2024-02-01-preview.
 type Monitor struct {
 	pulumi.CustomResourceState
 
@@ -96,6 +96,12 @@ func NewMonitor(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:workloads/v20231201preview:monitor"),
+		},
+		{
+			Type: pulumi.String("azure-native:workloads/v20240201preview:Monitor"),
+		},
+		{
+			Type: pulumi.String("azure-native:workloads/v20240201preview:monitor"),
 		},
 	})
 	opts = append(opts, aliases)

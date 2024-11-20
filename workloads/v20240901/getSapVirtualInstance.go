@@ -42,7 +42,7 @@ type LookupSapVirtualInstanceResult struct {
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The managed service identities assigned to this resource.
-	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
+	Identity *SAPVirtualInstanceIdentityResponse `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// Managed resource group configuration
@@ -138,8 +138,8 @@ func (o LookupSapVirtualInstanceResultOutput) Id() pulumi.StringOutput {
 }
 
 // The managed service identities assigned to this resource.
-func (o LookupSapVirtualInstanceResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v LookupSapVirtualInstanceResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
+func (o LookupSapVirtualInstanceResultOutput) Identity() SAPVirtualInstanceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupSapVirtualInstanceResult) *SAPVirtualInstanceIdentityResponse { return v.Identity }).(SAPVirtualInstanceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives

@@ -17807,7 +17807,7 @@ type UrlSigningKeyParameters struct {
 	// Resource reference to the Azure Key Vault secret. Expected to be in format of /subscriptions/{​​​​​​​​​subscriptionId}​​​​​​​​​/resourceGroups/{​​​​​​​​​resourceGroupName}​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​/providers/Microsoft.KeyVault/vaults/{vaultName}​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​/secrets/{secretName}​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
 	SecretSource ResourceReference `pulumi:"secretSource"`
 	// Version of the secret to be used
-	SecretVersion *string `pulumi:"secretVersion"`
+	SecretVersion string `pulumi:"secretVersion"`
 	// The type of the secret resource.
 	// Expected value is 'UrlSigningKey'.
 	Type string `pulumi:"type"`
@@ -17831,7 +17831,7 @@ type UrlSigningKeyParametersArgs struct {
 	// Resource reference to the Azure Key Vault secret. Expected to be in format of /subscriptions/{​​​​​​​​​subscriptionId}​​​​​​​​​/resourceGroups/{​​​​​​​​​resourceGroupName}​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​/providers/Microsoft.KeyVault/vaults/{vaultName}​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​/secrets/{secretName}​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
 	SecretSource ResourceReferenceInput `pulumi:"secretSource"`
 	// Version of the secret to be used
-	SecretVersion pulumi.StringPtrInput `pulumi:"secretVersion"`
+	SecretVersion pulumi.StringInput `pulumi:"secretVersion"`
 	// The type of the secret resource.
 	// Expected value is 'UrlSigningKey'.
 	Type pulumi.StringInput `pulumi:"type"`
@@ -17926,8 +17926,8 @@ func (o UrlSigningKeyParametersOutput) SecretSource() ResourceReferenceOutput {
 }
 
 // Version of the secret to be used
-func (o UrlSigningKeyParametersOutput) SecretVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v UrlSigningKeyParameters) *string { return v.SecretVersion }).(pulumi.StringPtrOutput)
+func (o UrlSigningKeyParametersOutput) SecretVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v UrlSigningKeyParameters) string { return v.SecretVersion }).(pulumi.StringOutput)
 }
 
 // The type of the secret resource.
@@ -17986,7 +17986,7 @@ func (o UrlSigningKeyParametersPtrOutput) SecretVersion() pulumi.StringPtrOutput
 		if v == nil {
 			return nil
 		}
-		return v.SecretVersion
+		return &v.SecretVersion
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -18008,7 +18008,7 @@ type UrlSigningKeyParametersResponse struct {
 	// Resource reference to the Azure Key Vault secret. Expected to be in format of /subscriptions/{​​​​​​​​​subscriptionId}​​​​​​​​​/resourceGroups/{​​​​​​​​​resourceGroupName}​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​/providers/Microsoft.KeyVault/vaults/{vaultName}​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​/secrets/{secretName}​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
 	SecretSource ResourceReferenceResponse `pulumi:"secretSource"`
 	// Version of the secret to be used
-	SecretVersion *string `pulumi:"secretVersion"`
+	SecretVersion string `pulumi:"secretVersion"`
 	// The type of the secret resource.
 	// Expected value is 'UrlSigningKey'.
 	Type string `pulumi:"type"`
@@ -18040,8 +18040,8 @@ func (o UrlSigningKeyParametersResponseOutput) SecretSource() ResourceReferenceR
 }
 
 // Version of the secret to be used
-func (o UrlSigningKeyParametersResponseOutput) SecretVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v UrlSigningKeyParametersResponse) *string { return v.SecretVersion }).(pulumi.StringPtrOutput)
+func (o UrlSigningKeyParametersResponseOutput) SecretVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v UrlSigningKeyParametersResponse) string { return v.SecretVersion }).(pulumi.StringOutput)
 }
 
 // The type of the secret resource.
@@ -18100,7 +18100,7 @@ func (o UrlSigningKeyParametersResponsePtrOutput) SecretVersion() pulumi.StringP
 		if v == nil {
 			return nil
 		}
-		return v.SecretVersion
+		return &v.SecretVersion
 	}).(pulumi.StringPtrOutput)
 }
 

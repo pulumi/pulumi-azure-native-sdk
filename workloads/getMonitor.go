@@ -14,7 +14,7 @@ import (
 // Gets properties of a SAP monitor for the specified subscription, resource group, and resource name.
 // Azure REST API version: 2023-04-01.
 //
-// Other available API versions: 2023-12-01-preview.
+// Other available API versions: 2023-12-01-preview, 2024-02-01-preview.
 func LookupMonitor(ctx *pulumi.Context, args *LookupMonitorArgs, opts ...pulumi.InvokeOption) (*LookupMonitorResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMonitorResult

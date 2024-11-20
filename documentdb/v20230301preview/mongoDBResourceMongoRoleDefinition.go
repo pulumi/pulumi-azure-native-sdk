@@ -110,6 +110,9 @@ func NewMongoDBResourceMongoRoleDefinition(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:documentdb/v20241115:MongoDBResourceMongoRoleDefinition"),
 		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20241201preview:MongoDBResourceMongoRoleDefinition"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -174,6 +174,9 @@ func NewGremlinResourceGremlinDatabase(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:documentdb/v20241115:GremlinResourceGremlinDatabase"),
 		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20241201preview:GremlinResourceGremlinDatabase"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

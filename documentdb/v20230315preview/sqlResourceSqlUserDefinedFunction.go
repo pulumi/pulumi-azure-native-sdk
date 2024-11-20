@@ -166,6 +166,9 @@ func NewSqlResourceSqlUserDefinedFunction(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:documentdb/v20241115:SqlResourceSqlUserDefinedFunction"),
 		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20241201preview:SqlResourceSqlUserDefinedFunction"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
