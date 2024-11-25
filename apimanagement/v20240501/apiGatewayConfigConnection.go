@@ -52,6 +52,9 @@ func NewApiGatewayConfigConnection(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20230901preview:ApiGatewayConfigConnection"),
 		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20240601preview:ApiGatewayConfigConnection"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

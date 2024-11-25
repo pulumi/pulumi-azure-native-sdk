@@ -104,6 +104,9 @@ func NewApiRelease(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20240501:ApiRelease"),
 		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20240601preview:ApiRelease"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

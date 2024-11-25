@@ -6832,6 +6832,152 @@ func (o SynapseSparkResponsePropertiesPtrOutput) WorkspaceName() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// A registry that is syndicated
+type SyndicatedRegistry struct {
+	// The Registry Id of the syndicated Registry
+	RegistryId *string `pulumi:"registryId"`
+}
+
+// SyndicatedRegistryInput is an input type that accepts SyndicatedRegistryArgs and SyndicatedRegistryOutput values.
+// You can construct a concrete instance of `SyndicatedRegistryInput` via:
+//
+//	SyndicatedRegistryArgs{...}
+type SyndicatedRegistryInput interface {
+	pulumi.Input
+
+	ToSyndicatedRegistryOutput() SyndicatedRegistryOutput
+	ToSyndicatedRegistryOutputWithContext(context.Context) SyndicatedRegistryOutput
+}
+
+// A registry that is syndicated
+type SyndicatedRegistryArgs struct {
+	// The Registry Id of the syndicated Registry
+	RegistryId pulumi.StringPtrInput `pulumi:"registryId"`
+}
+
+func (SyndicatedRegistryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SyndicatedRegistry)(nil)).Elem()
+}
+
+func (i SyndicatedRegistryArgs) ToSyndicatedRegistryOutput() SyndicatedRegistryOutput {
+	return i.ToSyndicatedRegistryOutputWithContext(context.Background())
+}
+
+func (i SyndicatedRegistryArgs) ToSyndicatedRegistryOutputWithContext(ctx context.Context) SyndicatedRegistryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SyndicatedRegistryOutput)
+}
+
+// SyndicatedRegistryMapInput is an input type that accepts SyndicatedRegistryMap and SyndicatedRegistryMapOutput values.
+// You can construct a concrete instance of `SyndicatedRegistryMapInput` via:
+//
+//	SyndicatedRegistryMap{ "key": SyndicatedRegistryArgs{...} }
+type SyndicatedRegistryMapInput interface {
+	pulumi.Input
+
+	ToSyndicatedRegistryMapOutput() SyndicatedRegistryMapOutput
+	ToSyndicatedRegistryMapOutputWithContext(context.Context) SyndicatedRegistryMapOutput
+}
+
+type SyndicatedRegistryMap map[string]SyndicatedRegistryInput
+
+func (SyndicatedRegistryMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SyndicatedRegistry)(nil)).Elem()
+}
+
+func (i SyndicatedRegistryMap) ToSyndicatedRegistryMapOutput() SyndicatedRegistryMapOutput {
+	return i.ToSyndicatedRegistryMapOutputWithContext(context.Background())
+}
+
+func (i SyndicatedRegistryMap) ToSyndicatedRegistryMapOutputWithContext(ctx context.Context) SyndicatedRegistryMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SyndicatedRegistryMapOutput)
+}
+
+// A registry that is syndicated
+type SyndicatedRegistryOutput struct{ *pulumi.OutputState }
+
+func (SyndicatedRegistryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SyndicatedRegistry)(nil)).Elem()
+}
+
+func (o SyndicatedRegistryOutput) ToSyndicatedRegistryOutput() SyndicatedRegistryOutput {
+	return o
+}
+
+func (o SyndicatedRegistryOutput) ToSyndicatedRegistryOutputWithContext(ctx context.Context) SyndicatedRegistryOutput {
+	return o
+}
+
+// The Registry Id of the syndicated Registry
+func (o SyndicatedRegistryOutput) RegistryId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SyndicatedRegistry) *string { return v.RegistryId }).(pulumi.StringPtrOutput)
+}
+
+type SyndicatedRegistryMapOutput struct{ *pulumi.OutputState }
+
+func (SyndicatedRegistryMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SyndicatedRegistry)(nil)).Elem()
+}
+
+func (o SyndicatedRegistryMapOutput) ToSyndicatedRegistryMapOutput() SyndicatedRegistryMapOutput {
+	return o
+}
+
+func (o SyndicatedRegistryMapOutput) ToSyndicatedRegistryMapOutputWithContext(ctx context.Context) SyndicatedRegistryMapOutput {
+	return o
+}
+
+func (o SyndicatedRegistryMapOutput) MapIndex(k pulumi.StringInput) SyndicatedRegistryOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SyndicatedRegistry {
+		return vs[0].(map[string]SyndicatedRegistry)[vs[1].(string)]
+	}).(SyndicatedRegistryOutput)
+}
+
+// A registry that is syndicated
+type SyndicatedRegistryResponse struct {
+	// The Registry Id of the syndicated Registry
+	RegistryId *string `pulumi:"registryId"`
+}
+
+// A registry that is syndicated
+type SyndicatedRegistryResponseOutput struct{ *pulumi.OutputState }
+
+func (SyndicatedRegistryResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SyndicatedRegistryResponse)(nil)).Elem()
+}
+
+func (o SyndicatedRegistryResponseOutput) ToSyndicatedRegistryResponseOutput() SyndicatedRegistryResponseOutput {
+	return o
+}
+
+func (o SyndicatedRegistryResponseOutput) ToSyndicatedRegistryResponseOutputWithContext(ctx context.Context) SyndicatedRegistryResponseOutput {
+	return o
+}
+
+// The Registry Id of the syndicated Registry
+func (o SyndicatedRegistryResponseOutput) RegistryId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SyndicatedRegistryResponse) *string { return v.RegistryId }).(pulumi.StringPtrOutput)
+}
+
+type SyndicatedRegistryResponseMapOutput struct{ *pulumi.OutputState }
+
+func (SyndicatedRegistryResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SyndicatedRegistryResponse)(nil)).Elem()
+}
+
+func (o SyndicatedRegistryResponseMapOutput) ToSyndicatedRegistryResponseMapOutput() SyndicatedRegistryResponseMapOutput {
+	return o
+}
+
+func (o SyndicatedRegistryResponseMapOutput) ToSyndicatedRegistryResponseMapOutputWithContext(ctx context.Context) SyndicatedRegistryResponseMapOutput {
+	return o
+}
+
+func (o SyndicatedRegistryResponseMapOutput) MapIndex(k pulumi.StringInput) SyndicatedRegistryResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SyndicatedRegistryResponse {
+		return vs[0].(map[string]SyndicatedRegistryResponse)[vs[1].(string)]
+	}).(SyndicatedRegistryResponseOutput)
+}
+
 type SystemCreatedAcrAccount struct {
 	// Name of the ACR account
 	AcrAccountName *string `pulumi:"acrAccountName"`
@@ -18217,6 +18363,10 @@ func init() {
 	pulumi.RegisterOutputType(SynapseSparkResponseOutput{})
 	pulumi.RegisterOutputType(SynapseSparkResponsePropertiesOutput{})
 	pulumi.RegisterOutputType(SynapseSparkResponsePropertiesPtrOutput{})
+	pulumi.RegisterOutputType(SyndicatedRegistryOutput{})
+	pulumi.RegisterOutputType(SyndicatedRegistryMapOutput{})
+	pulumi.RegisterOutputType(SyndicatedRegistryResponseOutput{})
+	pulumi.RegisterOutputType(SyndicatedRegistryResponseMapOutput{})
 	pulumi.RegisterOutputType(SystemCreatedAcrAccountOutput{})
 	pulumi.RegisterOutputType(SystemCreatedAcrAccountPtrOutput{})
 	pulumi.RegisterOutputType(SystemCreatedAcrAccountResponseOutput{})

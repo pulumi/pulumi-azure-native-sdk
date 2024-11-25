@@ -106,6 +106,9 @@ func NewProductPolicy(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20230901preview:ProductPolicy"),
 		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20240601preview:ProductPolicy"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

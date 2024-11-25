@@ -58,6 +58,9 @@ func NewDocumentation(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20240501:Documentation"),
 		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20240601preview:Documentation"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

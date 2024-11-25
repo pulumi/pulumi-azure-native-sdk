@@ -46,6 +46,9 @@ func NewStaticCidr(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network:StaticCidr"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20240501:StaticCidr"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

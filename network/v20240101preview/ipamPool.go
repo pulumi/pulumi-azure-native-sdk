@@ -47,6 +47,9 @@ func NewIpamPool(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network:IpamPool"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20240501:IpamPool"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

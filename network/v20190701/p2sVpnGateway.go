@@ -161,6 +161,9 @@ func NewP2sVpnGateway(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20240301:P2sVpnGateway"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20240501:P2sVpnGateway"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

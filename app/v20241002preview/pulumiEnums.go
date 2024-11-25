@@ -5721,8 +5721,6 @@ const (
 	WeekDayFriday    = WeekDay("Friday")
 	WeekDaySaturday  = WeekDay("Saturday")
 	WeekDaySunday    = WeekDay("Sunday")
-	WeekDayEveryday  = WeekDay("Everyday")
-	WeekDayWeekend   = WeekDay("Weekend")
 )
 
 func (WeekDay) ElementType() reflect.Type {
@@ -5854,8 +5852,6 @@ func (o WeekDayPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulu
 //	WeekDayFriday
 //	WeekDaySaturday
 //	WeekDaySunday
-//	WeekDayEveryday
-//	WeekDayWeekend
 type WeekDayInput interface {
 	pulumi.Input
 

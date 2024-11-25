@@ -15,7 +15,7 @@ import (
 // Certificate details.
 // Azure REST API version: 2023-09-01-preview.
 //
-// Other available API versions: 2024-05-01.
+// Other available API versions: 2024-05-01, 2024-06-01-preview.
 type WorkspaceCertificate struct {
 	pulumi.CustomResourceState
 
@@ -55,6 +55,9 @@ func NewWorkspaceCertificate(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20240501:WorkspaceCertificate"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20240601preview:WorkspaceCertificate"),
 		},
 	})
 	opts = append(opts, aliases)
