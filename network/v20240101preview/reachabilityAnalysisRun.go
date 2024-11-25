@@ -49,6 +49,9 @@ func NewReachabilityAnalysisRun(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network:ReachabilityAnalysisRun"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20240501:ReachabilityAnalysisRun"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

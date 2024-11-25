@@ -153,6 +153,9 @@ func NewNetworkInterfaceTapConfiguration(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20240301:NetworkInterfaceTapConfiguration"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20240501:NetworkInterfaceTapConfiguration"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

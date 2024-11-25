@@ -140,6 +140,9 @@ func NewProductApi(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20230901preview:ProductApi"),
 		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20240601preview:ProductApi"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

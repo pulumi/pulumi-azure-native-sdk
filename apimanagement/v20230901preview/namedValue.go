@@ -96,6 +96,9 @@ func NewNamedValue(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20240501:NamedValue"),
 		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20240601preview:NamedValue"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

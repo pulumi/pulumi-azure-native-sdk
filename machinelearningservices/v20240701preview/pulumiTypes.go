@@ -61648,6 +61648,8 @@ type RegistryType struct {
 	RegionDetails []RegistryRegionArmDetails `pulumi:"regionDetails"`
 	// Private endpoint connections info used for pending connections in private link portal
 	RegistryPrivateEndpointConnections []RegistryPrivateEndpointConnection `pulumi:"registryPrivateEndpointConnections"`
+	// Dictionary of syndicated registries. Key is Guid and value is a SyndicatedRegistry
+	SyndicatedRegistries map[string]SyndicatedRegistry `pulumi:"syndicatedRegistries"`
 }
 
 // RegistryTypeInput is an input type that accepts RegistryTypeArgs and RegistryTypeOutput values.
@@ -61678,6 +61680,8 @@ type RegistryTypeArgs struct {
 	RegionDetails RegistryRegionArmDetailsArrayInput `pulumi:"regionDetails"`
 	// Private endpoint connections info used for pending connections in private link portal
 	RegistryPrivateEndpointConnections RegistryPrivateEndpointConnectionArrayInput `pulumi:"registryPrivateEndpointConnections"`
+	// Dictionary of syndicated registries. Key is Guid and value is a SyndicatedRegistry
+	SyndicatedRegistries SyndicatedRegistryMapInput `pulumi:"syndicatedRegistries"`
 }
 
 func (RegistryTypeArgs) ElementType() reflect.Type {
@@ -61741,6 +61745,11 @@ func (o RegistryTypeOutput) RegionDetails() RegistryRegionArmDetailsArrayOutput 
 // Private endpoint connections info used for pending connections in private link portal
 func (o RegistryTypeOutput) RegistryPrivateEndpointConnections() RegistryPrivateEndpointConnectionArrayOutput {
 	return o.ApplyT(func(v RegistryType) []RegistryPrivateEndpointConnection { return v.RegistryPrivateEndpointConnections }).(RegistryPrivateEndpointConnectionArrayOutput)
+}
+
+// Dictionary of syndicated registries. Key is Guid and value is a SyndicatedRegistry
+func (o RegistryTypeOutput) SyndicatedRegistries() SyndicatedRegistryMapOutput {
+	return o.ApplyT(func(v RegistryType) map[string]SyndicatedRegistry { return v.SyndicatedRegistries }).(SyndicatedRegistryMapOutput)
 }
 
 type RegistryListCredentialsResultResponse struct {
@@ -62804,6 +62813,8 @@ type RegistryResponse struct {
 	RegionDetails []RegistryRegionArmDetailsResponse `pulumi:"regionDetails"`
 	// Private endpoint connections info used for pending connections in private link portal
 	RegistryPrivateEndpointConnections []RegistryPrivateEndpointConnectionResponse `pulumi:"registryPrivateEndpointConnections"`
+	// Dictionary of syndicated registries. Key is Guid and value is a SyndicatedRegistry
+	SyndicatedRegistries map[string]SyndicatedRegistryResponse `pulumi:"syndicatedRegistries"`
 }
 
 // Details of the Registry
@@ -62862,6 +62873,11 @@ func (o RegistryResponseOutput) RegistryPrivateEndpointConnections() RegistryPri
 	return o.ApplyT(func(v RegistryResponse) []RegistryPrivateEndpointConnectionResponse {
 		return v.RegistryPrivateEndpointConnections
 	}).(RegistryPrivateEndpointConnectionResponseArrayOutput)
+}
+
+// Dictionary of syndicated registries. Key is Guid and value is a SyndicatedRegistry
+func (o RegistryResponseOutput) SyndicatedRegistries() SyndicatedRegistryResponseMapOutput {
+	return o.ApplyT(func(v RegistryResponse) map[string]SyndicatedRegistryResponse { return v.SyndicatedRegistries }).(SyndicatedRegistryResponseMapOutput)
 }
 
 // Regression task in AutoML Table vertical.

@@ -160,6 +160,9 @@ func NewExpressRouteGateway(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20240301:ExpressRouteGateway"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20240501:ExpressRouteGateway"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

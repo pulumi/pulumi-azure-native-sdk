@@ -191,6 +191,9 @@ func NewVpnConnection(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20240301:VpnConnection"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20240501:VpnConnection"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

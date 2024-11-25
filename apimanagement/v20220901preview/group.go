@@ -110,6 +110,9 @@ func NewGroup(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20240501:Group"),
 		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20240601preview:Group"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

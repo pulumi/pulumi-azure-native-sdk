@@ -47,6 +47,9 @@ func NewVerifierWorkspace(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network:VerifierWorkspace"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20240501:VerifierWorkspace"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -150,6 +150,9 @@ func NewFlowLog(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20240301:FlowLog"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20240501:FlowLog"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

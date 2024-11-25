@@ -135,6 +135,9 @@ func NewContentPackage(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20240401preview:ContentPackage"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240901:ContentPackage"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

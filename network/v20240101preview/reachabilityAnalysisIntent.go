@@ -49,6 +49,9 @@ func NewReachabilityAnalysisIntent(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network:ReachabilityAnalysisIntent"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20240501:ReachabilityAnalysisIntent"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

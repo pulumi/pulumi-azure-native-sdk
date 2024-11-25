@@ -59,6 +59,9 @@ func NewProductWiki(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20230901preview:ProductWiki"),
 		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20240601preview:ProductWiki"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

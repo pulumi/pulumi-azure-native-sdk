@@ -63,6 +63,9 @@ func NewGraphQLApiResolver(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20230901preview:GraphQLApiResolver"),
 		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20240601preview:GraphQLApiResolver"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

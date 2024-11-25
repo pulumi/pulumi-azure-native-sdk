@@ -49,6 +49,9 @@ func NewNetworkManagerRoutingConfiguration(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network:NetworkManagerRoutingConfiguration"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20240501:NetworkManagerRoutingConfiguration"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

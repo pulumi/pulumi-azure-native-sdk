@@ -65,6 +65,9 @@ func NewRoutingRule(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network:RoutingRule"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20240501:RoutingRule"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

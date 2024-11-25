@@ -14,7 +14,7 @@ import (
 // Gets the details of the certificate specified by its identifier.
 // Azure REST API version: 2023-09-01-preview.
 //
-// Other available API versions: 2024-05-01.
+// Other available API versions: 2024-05-01, 2024-06-01-preview.
 func LookupWorkspaceCertificate(ctx *pulumi.Context, args *LookupWorkspaceCertificateArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceCertificateResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkspaceCertificateResult

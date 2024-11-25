@@ -105,6 +105,9 @@ func NewEmailTemplate(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20230901preview:EmailTemplate"),
 		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20240601preview:EmailTemplate"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

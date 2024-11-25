@@ -109,6 +109,9 @@ func NewApiOperationPolicy(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20240501:ApiOperationPolicy"),
 		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20240601preview:ApiOperationPolicy"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

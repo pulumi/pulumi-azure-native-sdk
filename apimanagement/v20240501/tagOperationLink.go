@@ -59,6 +59,9 @@ func NewTagOperationLink(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20230901preview:TagOperationLink"),
 		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20240601preview:TagOperationLink"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

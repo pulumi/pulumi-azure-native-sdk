@@ -14,7 +14,7 @@ import (
 // Gets the details of the logger specified by its identifier.
 // Azure REST API version: 2023-09-01-preview.
 //
-// Other available API versions: 2024-05-01.
+// Other available API versions: 2024-05-01, 2024-06-01-preview.
 func LookupWorkspaceLogger(ctx *pulumi.Context, args *LookupWorkspaceLoggerArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceLoggerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkspaceLoggerResult

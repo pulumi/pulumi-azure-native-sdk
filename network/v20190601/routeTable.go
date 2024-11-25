@@ -206,6 +206,9 @@ func NewRouteTable(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20240301:RouteTable"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20240501:RouteTable"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

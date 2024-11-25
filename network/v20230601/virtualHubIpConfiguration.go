@@ -117,6 +117,9 @@ func NewVirtualHubIpConfiguration(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20240301:VirtualHubIpConfiguration"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20240501:VirtualHubIpConfiguration"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

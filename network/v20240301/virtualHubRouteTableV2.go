@@ -123,6 +123,9 @@ func NewVirtualHubRouteTableV2(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20240101:VirtualHubRouteTableV2"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20240501:VirtualHubRouteTableV2"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
