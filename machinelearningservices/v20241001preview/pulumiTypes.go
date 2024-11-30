@@ -1986,12 +1986,16 @@ func (o AcrDetailsResponseArrayOutput) Index(i pulumi.IntInput) AcrDetailsRespon
 }
 
 type ActualCapacityInfoResponse struct {
-	// Gets or sets the total number of instances for the group.
-	Allocated *int `pulumi:"allocated"`
-	// Gets or sets the number of instances which failed to successfully complete assignment.
-	AssignmentFailed *int `pulumi:"assignmentFailed"`
-	// Gets or sets the number of instances which successfully completed assignment.
-	AssignmentSuccess *int `pulumi:"assignmentSuccess"`
+	// Gets or sets the number of instances (scale units) which Failed provisioning state and have target group payload.
+	Failed *int `pulumi:"failed"`
+	// Gets or sets the number of instances (scale units) which have Failed provisioning state but do not have target group payload.
+	OutdatedFailed *int `pulumi:"outdatedFailed"`
+	// Gets or sets the number of instances (scale units) which have Succeeded provisioning state but do not have target group payload.
+	OutdatedSucceeded *int `pulumi:"outdatedSucceeded"`
+	// Gets or sets the number of instances (scale units) which have Succeeded provisioning state and target group payload.
+	Succeeded *int `pulumi:"succeeded"`
+	// Gets or sets the total number of instances (scale units) regardless of provisioning state or whether current group payload version matches the target group payload.
+	Total *int `pulumi:"total"`
 }
 
 // Defaults sets the appropriate defaults for ActualCapacityInfoResponse
@@ -2000,17 +2004,25 @@ func (val *ActualCapacityInfoResponse) Defaults() *ActualCapacityInfoResponse {
 		return nil
 	}
 	tmp := *val
-	if tmp.Allocated == nil {
-		allocated_ := 0
-		tmp.Allocated = &allocated_
+	if tmp.Failed == nil {
+		failed_ := 0
+		tmp.Failed = &failed_
 	}
-	if tmp.AssignmentFailed == nil {
-		assignmentFailed_ := 0
-		tmp.AssignmentFailed = &assignmentFailed_
+	if tmp.OutdatedFailed == nil {
+		outdatedFailed_ := 0
+		tmp.OutdatedFailed = &outdatedFailed_
 	}
-	if tmp.AssignmentSuccess == nil {
-		assignmentSuccess_ := 0
-		tmp.AssignmentSuccess = &assignmentSuccess_
+	if tmp.OutdatedSucceeded == nil {
+		outdatedSucceeded_ := 0
+		tmp.OutdatedSucceeded = &outdatedSucceeded_
+	}
+	if tmp.Succeeded == nil {
+		succeeded_ := 0
+		tmp.Succeeded = &succeeded_
+	}
+	if tmp.Total == nil {
+		total_ := 0
+		tmp.Total = &total_
 	}
 	return &tmp
 }
@@ -2029,19 +2041,29 @@ func (o ActualCapacityInfoResponseOutput) ToActualCapacityInfoResponseOutputWith
 	return o
 }
 
-// Gets or sets the total number of instances for the group.
-func (o ActualCapacityInfoResponseOutput) Allocated() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ActualCapacityInfoResponse) *int { return v.Allocated }).(pulumi.IntPtrOutput)
+// Gets or sets the number of instances (scale units) which Failed provisioning state and have target group payload.
+func (o ActualCapacityInfoResponseOutput) Failed() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ActualCapacityInfoResponse) *int { return v.Failed }).(pulumi.IntPtrOutput)
 }
 
-// Gets or sets the number of instances which failed to successfully complete assignment.
-func (o ActualCapacityInfoResponseOutput) AssignmentFailed() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ActualCapacityInfoResponse) *int { return v.AssignmentFailed }).(pulumi.IntPtrOutput)
+// Gets or sets the number of instances (scale units) which have Failed provisioning state but do not have target group payload.
+func (o ActualCapacityInfoResponseOutput) OutdatedFailed() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ActualCapacityInfoResponse) *int { return v.OutdatedFailed }).(pulumi.IntPtrOutput)
 }
 
-// Gets or sets the number of instances which successfully completed assignment.
-func (o ActualCapacityInfoResponseOutput) AssignmentSuccess() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ActualCapacityInfoResponse) *int { return v.AssignmentSuccess }).(pulumi.IntPtrOutput)
+// Gets or sets the number of instances (scale units) which have Succeeded provisioning state but do not have target group payload.
+func (o ActualCapacityInfoResponseOutput) OutdatedSucceeded() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ActualCapacityInfoResponse) *int { return v.OutdatedSucceeded }).(pulumi.IntPtrOutput)
+}
+
+// Gets or sets the number of instances (scale units) which have Succeeded provisioning state and target group payload.
+func (o ActualCapacityInfoResponseOutput) Succeeded() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ActualCapacityInfoResponse) *int { return v.Succeeded }).(pulumi.IntPtrOutput)
+}
+
+// Gets or sets the total number of instances (scale units) regardless of provisioning state or whether current group payload version matches the target group payload.
+func (o ActualCapacityInfoResponseOutput) Total() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ActualCapacityInfoResponse) *int { return v.Total }).(pulumi.IntPtrOutput)
 }
 
 type ActualCapacityInfoResponsePtrOutput struct{ *pulumi.OutputState }
@@ -2068,33 +2090,53 @@ func (o ActualCapacityInfoResponsePtrOutput) Elem() ActualCapacityInfoResponseOu
 	}).(ActualCapacityInfoResponseOutput)
 }
 
-// Gets or sets the total number of instances for the group.
-func (o ActualCapacityInfoResponsePtrOutput) Allocated() pulumi.IntPtrOutput {
+// Gets or sets the number of instances (scale units) which Failed provisioning state and have target group payload.
+func (o ActualCapacityInfoResponsePtrOutput) Failed() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ActualCapacityInfoResponse) *int {
 		if v == nil {
 			return nil
 		}
-		return v.Allocated
+		return v.Failed
 	}).(pulumi.IntPtrOutput)
 }
 
-// Gets or sets the number of instances which failed to successfully complete assignment.
-func (o ActualCapacityInfoResponsePtrOutput) AssignmentFailed() pulumi.IntPtrOutput {
+// Gets or sets the number of instances (scale units) which have Failed provisioning state but do not have target group payload.
+func (o ActualCapacityInfoResponsePtrOutput) OutdatedFailed() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ActualCapacityInfoResponse) *int {
 		if v == nil {
 			return nil
 		}
-		return v.AssignmentFailed
+		return v.OutdatedFailed
 	}).(pulumi.IntPtrOutput)
 }
 
-// Gets or sets the number of instances which successfully completed assignment.
-func (o ActualCapacityInfoResponsePtrOutput) AssignmentSuccess() pulumi.IntPtrOutput {
+// Gets or sets the number of instances (scale units) which have Succeeded provisioning state but do not have target group payload.
+func (o ActualCapacityInfoResponsePtrOutput) OutdatedSucceeded() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ActualCapacityInfoResponse) *int {
 		if v == nil {
 			return nil
 		}
-		return v.AssignmentSuccess
+		return v.OutdatedSucceeded
+	}).(pulumi.IntPtrOutput)
+}
+
+// Gets or sets the number of instances (scale units) which have Succeeded provisioning state and target group payload.
+func (o ActualCapacityInfoResponsePtrOutput) Succeeded() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ActualCapacityInfoResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Succeeded
+	}).(pulumi.IntPtrOutput)
+}
+
+// Gets or sets the total number of instances (scale units) regardless of provisioning state or whether current group payload version matches the target group payload.
+func (o ActualCapacityInfoResponsePtrOutput) Total() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ActualCapacityInfoResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Total
 	}).(pulumi.IntPtrOutput)
 }
 
