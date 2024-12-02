@@ -15,7 +15,7 @@ import (
 // A private endpoint connection to an azure resource
 // Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2021-04-01-preview.
 //
-// Other available API versions: 2023-03-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-08-01-preview.
+// Other available API versions: 2023-03-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-08-01-preview, 2024-10-01-preview.
 type WebPubSubPrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 
@@ -87,6 +87,9 @@ func NewWebPubSubPrivateEndpointConnection(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:webpubsub/v20240801preview:WebPubSubPrivateEndpointConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:webpubsub/v20241001preview:WebPubSubPrivateEndpointConnection"),
 		},
 	})
 	opts = append(opts, aliases)
