@@ -15,7 +15,7 @@ import (
 // An object that represents an import pipeline for a container registry.
 // Azure REST API version: 2023-01-01-preview. Prior API version in Azure Native 1.x: 2020-11-01-preview.
 //
-// Other available API versions: 2023-06-01-preview, 2023-08-01-preview, 2023-11-01-preview.
+// Other available API versions: 2023-06-01-preview, 2023-08-01-preview, 2023-11-01-preview, 2024-11-01-preview.
 type ImportPipeline struct {
 	pulumi.CustomResourceState
 
@@ -89,6 +89,9 @@ func NewImportPipeline(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:containerregistry/v20231101preview:ImportPipeline"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerregistry/v20241101preview:ImportPipeline"),
 		},
 	})
 	opts = append(opts, aliases)

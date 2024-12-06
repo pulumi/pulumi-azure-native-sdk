@@ -15,7 +15,7 @@ import (
 // The Permission binding resource.
 // Azure REST API version: 2023-06-01-preview.
 //
-// Other available API versions: 2023-12-15-preview, 2024-06-01-preview.
+// Other available API versions: 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview.
 type PermissionBinding struct {
 	pulumi.CustomResourceState
 
@@ -61,6 +61,9 @@ func NewPermissionBinding(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:eventgrid/v20240601preview:PermissionBinding"),
+		},
+		{
+			Type: pulumi.String("azure-native:eventgrid/v20241215preview:PermissionBinding"),
 		},
 	})
 	opts = append(opts, aliases)
