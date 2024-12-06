@@ -15,7 +15,7 @@ import (
 //
 // Azure REST API version: 2021-04-01.
 //
-// Other available API versions: 2017-11-01-preview, 2020-02-01, 2023-04-01.
+// Other available API versions: 2023-04-01.
 func LookupManagementGroup(ctx *pulumi.Context, args *LookupManagementGroupArgs, opts ...pulumi.InvokeOption) (*LookupManagementGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupManagementGroupResult

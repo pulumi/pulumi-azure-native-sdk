@@ -8106,8 +8106,6 @@ func (o StaticInputDataResponseOutput) WindowStart() pulumi.StringOutput {
 type StorageAccountDetails struct {
 	// Details of system created storage account to be used for the registry
 	SystemCreatedStorageAccount *SystemCreatedStorageAccount `pulumi:"systemCreatedStorageAccount"`
-	// Details of user created storage account to be used for the registry
-	UserCreatedStorageAccount *UserCreatedStorageAccount `pulumi:"userCreatedStorageAccount"`
 }
 
 // StorageAccountDetailsInput is an input type that accepts StorageAccountDetailsArgs and StorageAccountDetailsOutput values.
@@ -8125,8 +8123,6 @@ type StorageAccountDetailsInput interface {
 type StorageAccountDetailsArgs struct {
 	// Details of system created storage account to be used for the registry
 	SystemCreatedStorageAccount SystemCreatedStorageAccountPtrInput `pulumi:"systemCreatedStorageAccount"`
-	// Details of user created storage account to be used for the registry
-	UserCreatedStorageAccount UserCreatedStorageAccountPtrInput `pulumi:"userCreatedStorageAccount"`
 }
 
 func (StorageAccountDetailsArgs) ElementType() reflect.Type {
@@ -8186,11 +8182,6 @@ func (o StorageAccountDetailsOutput) SystemCreatedStorageAccount() SystemCreated
 	return o.ApplyT(func(v StorageAccountDetails) *SystemCreatedStorageAccount { return v.SystemCreatedStorageAccount }).(SystemCreatedStorageAccountPtrOutput)
 }
 
-// Details of user created storage account to be used for the registry
-func (o StorageAccountDetailsOutput) UserCreatedStorageAccount() UserCreatedStorageAccountPtrOutput {
-	return o.ApplyT(func(v StorageAccountDetails) *UserCreatedStorageAccount { return v.UserCreatedStorageAccount }).(UserCreatedStorageAccountPtrOutput)
-}
-
 type StorageAccountDetailsArrayOutput struct{ *pulumi.OutputState }
 
 func (StorageAccountDetailsArrayOutput) ElementType() reflect.Type {
@@ -8215,8 +8206,6 @@ func (o StorageAccountDetailsArrayOutput) Index(i pulumi.IntInput) StorageAccoun
 type StorageAccountDetailsResponse struct {
 	// Details of system created storage account to be used for the registry
 	SystemCreatedStorageAccount *SystemCreatedStorageAccountResponse `pulumi:"systemCreatedStorageAccount"`
-	// Details of user created storage account to be used for the registry
-	UserCreatedStorageAccount *UserCreatedStorageAccountResponse `pulumi:"userCreatedStorageAccount"`
 }
 
 // Details of storage account to be used for the Registry
@@ -8239,13 +8228,6 @@ func (o StorageAccountDetailsResponseOutput) SystemCreatedStorageAccount() Syste
 	return o.ApplyT(func(v StorageAccountDetailsResponse) *SystemCreatedStorageAccountResponse {
 		return v.SystemCreatedStorageAccount
 	}).(SystemCreatedStorageAccountResponsePtrOutput)
-}
-
-// Details of user created storage account to be used for the registry
-func (o StorageAccountDetailsResponseOutput) UserCreatedStorageAccount() UserCreatedStorageAccountResponsePtrOutput {
-	return o.ApplyT(func(v StorageAccountDetailsResponse) *UserCreatedStorageAccountResponse {
-		return v.UserCreatedStorageAccount
-	}).(UserCreatedStorageAccountResponsePtrOutput)
 }
 
 type StorageAccountDetailsResponseArrayOutput struct{ *pulumi.OutputState }
@@ -16726,396 +16708,6 @@ func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) Us
 	}).(UserAssignedIdentityResponseOutput)
 }
 
-type UserCreatedAcrAccount struct {
-	// ARM ResourceId of a resource
-	ArmResourceId *ArmResourceId `pulumi:"armResourceId"`
-}
-
-// UserCreatedAcrAccountInput is an input type that accepts UserCreatedAcrAccountArgs and UserCreatedAcrAccountOutput values.
-// You can construct a concrete instance of `UserCreatedAcrAccountInput` via:
-//
-//	UserCreatedAcrAccountArgs{...}
-type UserCreatedAcrAccountInput interface {
-	pulumi.Input
-
-	ToUserCreatedAcrAccountOutput() UserCreatedAcrAccountOutput
-	ToUserCreatedAcrAccountOutputWithContext(context.Context) UserCreatedAcrAccountOutput
-}
-
-type UserCreatedAcrAccountArgs struct {
-	// ARM ResourceId of a resource
-	ArmResourceId ArmResourceIdPtrInput `pulumi:"armResourceId"`
-}
-
-func (UserCreatedAcrAccountArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*UserCreatedAcrAccount)(nil)).Elem()
-}
-
-func (i UserCreatedAcrAccountArgs) ToUserCreatedAcrAccountOutput() UserCreatedAcrAccountOutput {
-	return i.ToUserCreatedAcrAccountOutputWithContext(context.Background())
-}
-
-func (i UserCreatedAcrAccountArgs) ToUserCreatedAcrAccountOutputWithContext(ctx context.Context) UserCreatedAcrAccountOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UserCreatedAcrAccountOutput)
-}
-
-func (i UserCreatedAcrAccountArgs) ToUserCreatedAcrAccountPtrOutput() UserCreatedAcrAccountPtrOutput {
-	return i.ToUserCreatedAcrAccountPtrOutputWithContext(context.Background())
-}
-
-func (i UserCreatedAcrAccountArgs) ToUserCreatedAcrAccountPtrOutputWithContext(ctx context.Context) UserCreatedAcrAccountPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UserCreatedAcrAccountOutput).ToUserCreatedAcrAccountPtrOutputWithContext(ctx)
-}
-
-// UserCreatedAcrAccountPtrInput is an input type that accepts UserCreatedAcrAccountArgs, UserCreatedAcrAccountPtr and UserCreatedAcrAccountPtrOutput values.
-// You can construct a concrete instance of `UserCreatedAcrAccountPtrInput` via:
-//
-//	        UserCreatedAcrAccountArgs{...}
-//
-//	or:
-//
-//	        nil
-type UserCreatedAcrAccountPtrInput interface {
-	pulumi.Input
-
-	ToUserCreatedAcrAccountPtrOutput() UserCreatedAcrAccountPtrOutput
-	ToUserCreatedAcrAccountPtrOutputWithContext(context.Context) UserCreatedAcrAccountPtrOutput
-}
-
-type userCreatedAcrAccountPtrType UserCreatedAcrAccountArgs
-
-func UserCreatedAcrAccountPtr(v *UserCreatedAcrAccountArgs) UserCreatedAcrAccountPtrInput {
-	return (*userCreatedAcrAccountPtrType)(v)
-}
-
-func (*userCreatedAcrAccountPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**UserCreatedAcrAccount)(nil)).Elem()
-}
-
-func (i *userCreatedAcrAccountPtrType) ToUserCreatedAcrAccountPtrOutput() UserCreatedAcrAccountPtrOutput {
-	return i.ToUserCreatedAcrAccountPtrOutputWithContext(context.Background())
-}
-
-func (i *userCreatedAcrAccountPtrType) ToUserCreatedAcrAccountPtrOutputWithContext(ctx context.Context) UserCreatedAcrAccountPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UserCreatedAcrAccountPtrOutput)
-}
-
-type UserCreatedAcrAccountOutput struct{ *pulumi.OutputState }
-
-func (UserCreatedAcrAccountOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*UserCreatedAcrAccount)(nil)).Elem()
-}
-
-func (o UserCreatedAcrAccountOutput) ToUserCreatedAcrAccountOutput() UserCreatedAcrAccountOutput {
-	return o
-}
-
-func (o UserCreatedAcrAccountOutput) ToUserCreatedAcrAccountOutputWithContext(ctx context.Context) UserCreatedAcrAccountOutput {
-	return o
-}
-
-func (o UserCreatedAcrAccountOutput) ToUserCreatedAcrAccountPtrOutput() UserCreatedAcrAccountPtrOutput {
-	return o.ToUserCreatedAcrAccountPtrOutputWithContext(context.Background())
-}
-
-func (o UserCreatedAcrAccountOutput) ToUserCreatedAcrAccountPtrOutputWithContext(ctx context.Context) UserCreatedAcrAccountPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v UserCreatedAcrAccount) *UserCreatedAcrAccount {
-		return &v
-	}).(UserCreatedAcrAccountPtrOutput)
-}
-
-// ARM ResourceId of a resource
-func (o UserCreatedAcrAccountOutput) ArmResourceId() ArmResourceIdPtrOutput {
-	return o.ApplyT(func(v UserCreatedAcrAccount) *ArmResourceId { return v.ArmResourceId }).(ArmResourceIdPtrOutput)
-}
-
-type UserCreatedAcrAccountPtrOutput struct{ *pulumi.OutputState }
-
-func (UserCreatedAcrAccountPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**UserCreatedAcrAccount)(nil)).Elem()
-}
-
-func (o UserCreatedAcrAccountPtrOutput) ToUserCreatedAcrAccountPtrOutput() UserCreatedAcrAccountPtrOutput {
-	return o
-}
-
-func (o UserCreatedAcrAccountPtrOutput) ToUserCreatedAcrAccountPtrOutputWithContext(ctx context.Context) UserCreatedAcrAccountPtrOutput {
-	return o
-}
-
-func (o UserCreatedAcrAccountPtrOutput) Elem() UserCreatedAcrAccountOutput {
-	return o.ApplyT(func(v *UserCreatedAcrAccount) UserCreatedAcrAccount {
-		if v != nil {
-			return *v
-		}
-		var ret UserCreatedAcrAccount
-		return ret
-	}).(UserCreatedAcrAccountOutput)
-}
-
-// ARM ResourceId of a resource
-func (o UserCreatedAcrAccountPtrOutput) ArmResourceId() ArmResourceIdPtrOutput {
-	return o.ApplyT(func(v *UserCreatedAcrAccount) *ArmResourceId {
-		if v == nil {
-			return nil
-		}
-		return v.ArmResourceId
-	}).(ArmResourceIdPtrOutput)
-}
-
-type UserCreatedAcrAccountResponse struct {
-	// ARM ResourceId of a resource
-	ArmResourceId *ArmResourceIdResponse `pulumi:"armResourceId"`
-}
-
-type UserCreatedAcrAccountResponseOutput struct{ *pulumi.OutputState }
-
-func (UserCreatedAcrAccountResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*UserCreatedAcrAccountResponse)(nil)).Elem()
-}
-
-func (o UserCreatedAcrAccountResponseOutput) ToUserCreatedAcrAccountResponseOutput() UserCreatedAcrAccountResponseOutput {
-	return o
-}
-
-func (o UserCreatedAcrAccountResponseOutput) ToUserCreatedAcrAccountResponseOutputWithContext(ctx context.Context) UserCreatedAcrAccountResponseOutput {
-	return o
-}
-
-// ARM ResourceId of a resource
-func (o UserCreatedAcrAccountResponseOutput) ArmResourceId() ArmResourceIdResponsePtrOutput {
-	return o.ApplyT(func(v UserCreatedAcrAccountResponse) *ArmResourceIdResponse { return v.ArmResourceId }).(ArmResourceIdResponsePtrOutput)
-}
-
-type UserCreatedAcrAccountResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (UserCreatedAcrAccountResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**UserCreatedAcrAccountResponse)(nil)).Elem()
-}
-
-func (o UserCreatedAcrAccountResponsePtrOutput) ToUserCreatedAcrAccountResponsePtrOutput() UserCreatedAcrAccountResponsePtrOutput {
-	return o
-}
-
-func (o UserCreatedAcrAccountResponsePtrOutput) ToUserCreatedAcrAccountResponsePtrOutputWithContext(ctx context.Context) UserCreatedAcrAccountResponsePtrOutput {
-	return o
-}
-
-func (o UserCreatedAcrAccountResponsePtrOutput) Elem() UserCreatedAcrAccountResponseOutput {
-	return o.ApplyT(func(v *UserCreatedAcrAccountResponse) UserCreatedAcrAccountResponse {
-		if v != nil {
-			return *v
-		}
-		var ret UserCreatedAcrAccountResponse
-		return ret
-	}).(UserCreatedAcrAccountResponseOutput)
-}
-
-// ARM ResourceId of a resource
-func (o UserCreatedAcrAccountResponsePtrOutput) ArmResourceId() ArmResourceIdResponsePtrOutput {
-	return o.ApplyT(func(v *UserCreatedAcrAccountResponse) *ArmResourceIdResponse {
-		if v == nil {
-			return nil
-		}
-		return v.ArmResourceId
-	}).(ArmResourceIdResponsePtrOutput)
-}
-
-type UserCreatedStorageAccount struct {
-	// ARM ResourceId of a resource
-	ArmResourceId *ArmResourceId `pulumi:"armResourceId"`
-}
-
-// UserCreatedStorageAccountInput is an input type that accepts UserCreatedStorageAccountArgs and UserCreatedStorageAccountOutput values.
-// You can construct a concrete instance of `UserCreatedStorageAccountInput` via:
-//
-//	UserCreatedStorageAccountArgs{...}
-type UserCreatedStorageAccountInput interface {
-	pulumi.Input
-
-	ToUserCreatedStorageAccountOutput() UserCreatedStorageAccountOutput
-	ToUserCreatedStorageAccountOutputWithContext(context.Context) UserCreatedStorageAccountOutput
-}
-
-type UserCreatedStorageAccountArgs struct {
-	// ARM ResourceId of a resource
-	ArmResourceId ArmResourceIdPtrInput `pulumi:"armResourceId"`
-}
-
-func (UserCreatedStorageAccountArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*UserCreatedStorageAccount)(nil)).Elem()
-}
-
-func (i UserCreatedStorageAccountArgs) ToUserCreatedStorageAccountOutput() UserCreatedStorageAccountOutput {
-	return i.ToUserCreatedStorageAccountOutputWithContext(context.Background())
-}
-
-func (i UserCreatedStorageAccountArgs) ToUserCreatedStorageAccountOutputWithContext(ctx context.Context) UserCreatedStorageAccountOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UserCreatedStorageAccountOutput)
-}
-
-func (i UserCreatedStorageAccountArgs) ToUserCreatedStorageAccountPtrOutput() UserCreatedStorageAccountPtrOutput {
-	return i.ToUserCreatedStorageAccountPtrOutputWithContext(context.Background())
-}
-
-func (i UserCreatedStorageAccountArgs) ToUserCreatedStorageAccountPtrOutputWithContext(ctx context.Context) UserCreatedStorageAccountPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UserCreatedStorageAccountOutput).ToUserCreatedStorageAccountPtrOutputWithContext(ctx)
-}
-
-// UserCreatedStorageAccountPtrInput is an input type that accepts UserCreatedStorageAccountArgs, UserCreatedStorageAccountPtr and UserCreatedStorageAccountPtrOutput values.
-// You can construct a concrete instance of `UserCreatedStorageAccountPtrInput` via:
-//
-//	        UserCreatedStorageAccountArgs{...}
-//
-//	or:
-//
-//	        nil
-type UserCreatedStorageAccountPtrInput interface {
-	pulumi.Input
-
-	ToUserCreatedStorageAccountPtrOutput() UserCreatedStorageAccountPtrOutput
-	ToUserCreatedStorageAccountPtrOutputWithContext(context.Context) UserCreatedStorageAccountPtrOutput
-}
-
-type userCreatedStorageAccountPtrType UserCreatedStorageAccountArgs
-
-func UserCreatedStorageAccountPtr(v *UserCreatedStorageAccountArgs) UserCreatedStorageAccountPtrInput {
-	return (*userCreatedStorageAccountPtrType)(v)
-}
-
-func (*userCreatedStorageAccountPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**UserCreatedStorageAccount)(nil)).Elem()
-}
-
-func (i *userCreatedStorageAccountPtrType) ToUserCreatedStorageAccountPtrOutput() UserCreatedStorageAccountPtrOutput {
-	return i.ToUserCreatedStorageAccountPtrOutputWithContext(context.Background())
-}
-
-func (i *userCreatedStorageAccountPtrType) ToUserCreatedStorageAccountPtrOutputWithContext(ctx context.Context) UserCreatedStorageAccountPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UserCreatedStorageAccountPtrOutput)
-}
-
-type UserCreatedStorageAccountOutput struct{ *pulumi.OutputState }
-
-func (UserCreatedStorageAccountOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*UserCreatedStorageAccount)(nil)).Elem()
-}
-
-func (o UserCreatedStorageAccountOutput) ToUserCreatedStorageAccountOutput() UserCreatedStorageAccountOutput {
-	return o
-}
-
-func (o UserCreatedStorageAccountOutput) ToUserCreatedStorageAccountOutputWithContext(ctx context.Context) UserCreatedStorageAccountOutput {
-	return o
-}
-
-func (o UserCreatedStorageAccountOutput) ToUserCreatedStorageAccountPtrOutput() UserCreatedStorageAccountPtrOutput {
-	return o.ToUserCreatedStorageAccountPtrOutputWithContext(context.Background())
-}
-
-func (o UserCreatedStorageAccountOutput) ToUserCreatedStorageAccountPtrOutputWithContext(ctx context.Context) UserCreatedStorageAccountPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v UserCreatedStorageAccount) *UserCreatedStorageAccount {
-		return &v
-	}).(UserCreatedStorageAccountPtrOutput)
-}
-
-// ARM ResourceId of a resource
-func (o UserCreatedStorageAccountOutput) ArmResourceId() ArmResourceIdPtrOutput {
-	return o.ApplyT(func(v UserCreatedStorageAccount) *ArmResourceId { return v.ArmResourceId }).(ArmResourceIdPtrOutput)
-}
-
-type UserCreatedStorageAccountPtrOutput struct{ *pulumi.OutputState }
-
-func (UserCreatedStorageAccountPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**UserCreatedStorageAccount)(nil)).Elem()
-}
-
-func (o UserCreatedStorageAccountPtrOutput) ToUserCreatedStorageAccountPtrOutput() UserCreatedStorageAccountPtrOutput {
-	return o
-}
-
-func (o UserCreatedStorageAccountPtrOutput) ToUserCreatedStorageAccountPtrOutputWithContext(ctx context.Context) UserCreatedStorageAccountPtrOutput {
-	return o
-}
-
-func (o UserCreatedStorageAccountPtrOutput) Elem() UserCreatedStorageAccountOutput {
-	return o.ApplyT(func(v *UserCreatedStorageAccount) UserCreatedStorageAccount {
-		if v != nil {
-			return *v
-		}
-		var ret UserCreatedStorageAccount
-		return ret
-	}).(UserCreatedStorageAccountOutput)
-}
-
-// ARM ResourceId of a resource
-func (o UserCreatedStorageAccountPtrOutput) ArmResourceId() ArmResourceIdPtrOutput {
-	return o.ApplyT(func(v *UserCreatedStorageAccount) *ArmResourceId {
-		if v == nil {
-			return nil
-		}
-		return v.ArmResourceId
-	}).(ArmResourceIdPtrOutput)
-}
-
-type UserCreatedStorageAccountResponse struct {
-	// ARM ResourceId of a resource
-	ArmResourceId *ArmResourceIdResponse `pulumi:"armResourceId"`
-}
-
-type UserCreatedStorageAccountResponseOutput struct{ *pulumi.OutputState }
-
-func (UserCreatedStorageAccountResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*UserCreatedStorageAccountResponse)(nil)).Elem()
-}
-
-func (o UserCreatedStorageAccountResponseOutput) ToUserCreatedStorageAccountResponseOutput() UserCreatedStorageAccountResponseOutput {
-	return o
-}
-
-func (o UserCreatedStorageAccountResponseOutput) ToUserCreatedStorageAccountResponseOutputWithContext(ctx context.Context) UserCreatedStorageAccountResponseOutput {
-	return o
-}
-
-// ARM ResourceId of a resource
-func (o UserCreatedStorageAccountResponseOutput) ArmResourceId() ArmResourceIdResponsePtrOutput {
-	return o.ApplyT(func(v UserCreatedStorageAccountResponse) *ArmResourceIdResponse { return v.ArmResourceId }).(ArmResourceIdResponsePtrOutput)
-}
-
-type UserCreatedStorageAccountResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (UserCreatedStorageAccountResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**UserCreatedStorageAccountResponse)(nil)).Elem()
-}
-
-func (o UserCreatedStorageAccountResponsePtrOutput) ToUserCreatedStorageAccountResponsePtrOutput() UserCreatedStorageAccountResponsePtrOutput {
-	return o
-}
-
-func (o UserCreatedStorageAccountResponsePtrOutput) ToUserCreatedStorageAccountResponsePtrOutputWithContext(ctx context.Context) UserCreatedStorageAccountResponsePtrOutput {
-	return o
-}
-
-func (o UserCreatedStorageAccountResponsePtrOutput) Elem() UserCreatedStorageAccountResponseOutput {
-	return o.ApplyT(func(v *UserCreatedStorageAccountResponse) UserCreatedStorageAccountResponse {
-		if v != nil {
-			return *v
-		}
-		var ret UserCreatedStorageAccountResponse
-		return ret
-	}).(UserCreatedStorageAccountResponseOutput)
-}
-
-// ARM ResourceId of a resource
-func (o UserCreatedStorageAccountResponsePtrOutput) ArmResourceId() ArmResourceIdResponsePtrOutput {
-	return o.ApplyT(func(v *UserCreatedStorageAccountResponse) *ArmResourceIdResponse {
-		if v == nil {
-			return nil
-		}
-		return v.ArmResourceId
-	}).(ArmResourceIdResponsePtrOutput)
-}
-
 // User identity configuration.
 type UserIdentity struct {
 	// Enum to determine identity framework.
@@ -22031,14 +21623,6 @@ func init() {
 	pulumi.RegisterOutputType(UserAccountCredentialsResponsePtrOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentityResponseOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentityResponseMapOutput{})
-	pulumi.RegisterOutputType(UserCreatedAcrAccountOutput{})
-	pulumi.RegisterOutputType(UserCreatedAcrAccountPtrOutput{})
-	pulumi.RegisterOutputType(UserCreatedAcrAccountResponseOutput{})
-	pulumi.RegisterOutputType(UserCreatedAcrAccountResponsePtrOutput{})
-	pulumi.RegisterOutputType(UserCreatedStorageAccountOutput{})
-	pulumi.RegisterOutputType(UserCreatedStorageAccountPtrOutput{})
-	pulumi.RegisterOutputType(UserCreatedStorageAccountResponseOutput{})
-	pulumi.RegisterOutputType(UserCreatedStorageAccountResponsePtrOutput{})
 	pulumi.RegisterOutputType(UserIdentityOutput{})
 	pulumi.RegisterOutputType(UserIdentityPtrOutput{})
 	pulumi.RegisterOutputType(UserIdentityResponseOutput{})

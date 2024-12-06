@@ -88,6 +88,9 @@ func NewTopicEventSubscription(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:eventgrid/v20231215preview:TopicEventSubscription"),
 		},
+		{
+			Type: pulumi.String("azure-native:eventgrid/v20241215preview:TopicEventSubscription"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

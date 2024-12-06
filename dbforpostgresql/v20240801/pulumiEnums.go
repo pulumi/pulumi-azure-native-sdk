@@ -1212,8 +1212,9 @@ func (in *highAvailabilityModePtr) ToHighAvailabilityModePtrOutputWithContext(ct
 type IdentityType string
 
 const (
-	IdentityTypeNone         = IdentityType("None")
-	IdentityTypeUserAssigned = IdentityType("UserAssigned")
+	IdentityTypeNone           = IdentityType("None")
+	IdentityTypeUserAssigned   = IdentityType("UserAssigned")
+	IdentityTypeSystemAssigned = IdentityType("SystemAssigned")
 )
 
 func (IdentityType) ElementType() reflect.Type {
@@ -1340,6 +1341,7 @@ func (o IdentityTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context)
 //
 //	IdentityTypeNone
 //	IdentityTypeUserAssigned
+//	IdentityTypeSystemAssigned
 type IdentityTypeInput interface {
 	pulumi.Input
 

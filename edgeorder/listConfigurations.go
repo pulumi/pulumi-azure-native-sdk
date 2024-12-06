@@ -13,8 +13,6 @@ import (
 
 // This method provides the list of configurations for the given product family, product line and product under subscription.
 // Azure REST API version: 2021-12-01.
-//
-// Other available API versions: 2020-12-01-preview.
 func ListConfigurations(ctx *pulumi.Context, args *ListConfigurationsArgs, opts ...pulumi.InvokeOption) (*ListConfigurationsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListConfigurationsResult

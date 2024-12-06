@@ -13,8 +13,6 @@ import (
 
 // Obtains the details of a suppression.
 // Azure REST API version: 2023-01-01.
-//
-// Other available API versions: 2016-07-12-preview.
 func LookupSuppression(ctx *pulumi.Context, args *LookupSuppressionArgs, opts ...pulumi.InvokeOption) (*LookupSuppressionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSuppressionResult

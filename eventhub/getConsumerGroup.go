@@ -14,7 +14,7 @@ import (
 // Gets a description for the specified consumer group.
 // Azure REST API version: 2022-10-01-preview.
 //
-// Other available API versions: 2015-08-01, 2023-01-01-preview, 2024-01-01, 2024-05-01-preview.
+// Other available API versions: 2023-01-01-preview, 2024-01-01, 2024-05-01-preview.
 func LookupConsumerGroup(ctx *pulumi.Context, args *LookupConsumerGroupArgs, opts ...pulumi.InvokeOption) (*LookupConsumerGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupConsumerGroupResult
