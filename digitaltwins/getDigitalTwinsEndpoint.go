@@ -13,8 +13,6 @@ import (
 
 // Get DigitalTwinsInstances Endpoint.
 // Azure REST API version: 2023-01-31.
-//
-// Other available API versions: 2020-03-01-preview.
 func LookupDigitalTwinsEndpoint(ctx *pulumi.Context, args *LookupDigitalTwinsEndpointArgs, opts ...pulumi.InvokeOption) (*LookupDigitalTwinsEndpointResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDigitalTwinsEndpointResult

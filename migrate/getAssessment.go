@@ -14,7 +14,7 @@ import (
 // Get an existing assessment with the specified name. Returns a json object of type 'assessment' as specified in Models section.
 // Azure REST API version: 2019-10-01.
 //
-// Other available API versions: 2017-11-11-preview, 2018-02-02.
+// Other available API versions: 2018-02-02.
 func LookupAssessment(ctx *pulumi.Context, args *LookupAssessmentArgs, opts ...pulumi.InvokeOption) (*LookupAssessmentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAssessmentResult

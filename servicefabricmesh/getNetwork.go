@@ -13,8 +13,6 @@ import (
 
 // Gets the information about the network resource with the given name. The information include the description and other properties of the network.
 // Azure REST API version: 2018-09-01-preview.
-//
-// Other available API versions: 2018-07-01-preview.
 func LookupNetwork(ctx *pulumi.Context, args *LookupNetworkArgs, opts ...pulumi.InvokeOption) (*LookupNetworkResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNetworkResult

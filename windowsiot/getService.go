@@ -13,8 +13,6 @@ import (
 
 // Get the non-security related metadata of a Windows IoT Device Service.
 // Azure REST API version: 2019-06-01.
-//
-// Other available API versions: 2018-02-16-preview.
 func LookupService(ctx *pulumi.Context, args *LookupServiceArgs, opts ...pulumi.InvokeOption) (*LookupServiceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupServiceResult

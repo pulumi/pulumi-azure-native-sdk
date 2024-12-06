@@ -101,6 +101,9 @@ func NewReplication(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:containerregistry/v20231101preview:Replication"),
 		},
+		{
+			Type: pulumi.String("azure-native:containerregistry/v20241101preview:Replication"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -14,7 +14,7 @@ import (
 // Gets all deployments for a remediation at resource group scope.
 // Azure REST API version: 2021-10-01.
 //
-// Other available API versions: 2018-07-01-preview, 2024-10-01.
+// Other available API versions: 2024-10-01.
 func ListRemediationDeploymentsAtResourceGroup(ctx *pulumi.Context, args *ListRemediationDeploymentsAtResourceGroupArgs, opts ...pulumi.InvokeOption) (*ListRemediationDeploymentsAtResourceGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListRemediationDeploymentsAtResourceGroupResult

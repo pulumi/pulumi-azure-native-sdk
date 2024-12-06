@@ -13,8 +13,6 @@ import (
 
 // Get schedule.
 // Azure REST API version: 2018-09-15.
-//
-// Other available API versions: 2016-05-15.
 func LookupGlobalSchedule(ctx *pulumi.Context, args *LookupGlobalScheduleArgs, opts ...pulumi.InvokeOption) (*LookupGlobalScheduleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGlobalScheduleResult

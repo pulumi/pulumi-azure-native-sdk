@@ -58,6 +58,9 @@ func NewArchife(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:containerregistry/v20230801preview:Archife"),
 		},
+		{
+			Type: pulumi.String("azure-native:containerregistry/v20241101preview:Archife"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
