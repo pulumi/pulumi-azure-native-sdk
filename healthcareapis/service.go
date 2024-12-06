@@ -15,7 +15,7 @@ import (
 // The description of the service.
 // Azure REST API version: 2023-02-28. Prior API version in Azure Native 1.x: 2022-05-15.
 //
-// Other available API versions: 2020-03-15, 2023-09-06, 2023-11-01, 2023-12-01, 2024-03-01, 2024-03-31.
+// Other available API versions: 2023-09-06, 2023-11-01, 2023-12-01, 2024-03-01, 2024-03-31.
 type Service struct {
 	pulumi.CustomResourceState
 

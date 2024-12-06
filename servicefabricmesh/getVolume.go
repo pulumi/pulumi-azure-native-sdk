@@ -13,8 +13,6 @@ import (
 
 // Gets the information about the volume resource with the given name. The information include the description and other properties of the volume.
 // Azure REST API version: 2018-09-01-preview.
-//
-// Other available API versions: 2018-07-01-preview.
 func LookupVolume(ctx *pulumi.Context, args *LookupVolumeArgs, opts ...pulumi.InvokeOption) (*LookupVolumeResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVolumeResult

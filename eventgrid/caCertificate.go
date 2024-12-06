@@ -15,7 +15,7 @@ import (
 // The CA Certificate resource.
 // Azure REST API version: 2023-06-01-preview.
 //
-// Other available API versions: 2023-12-15-preview, 2024-06-01-preview.
+// Other available API versions: 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview.
 type CaCertificate struct {
 	pulumi.CustomResourceState
 
@@ -59,6 +59,9 @@ func NewCaCertificate(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:eventgrid/v20240601preview:CaCertificate"),
+		},
+		{
+			Type: pulumi.String("azure-native:eventgrid/v20241215preview:CaCertificate"),
 		},
 	})
 	opts = append(opts, aliases)

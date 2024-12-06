@@ -13,8 +13,6 @@ import (
 
 // Get user profile.
 // Azure REST API version: 2018-09-15.
-//
-// Other available API versions: 2016-05-15.
 func LookupUser(ctx *pulumi.Context, args *LookupUserArgs, opts ...pulumi.InvokeOption) (*LookupUserResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupUserResult

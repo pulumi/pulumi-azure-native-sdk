@@ -13,8 +13,6 @@ import (
 
 // Get secret.
 // Azure REST API version: 2018-09-15.
-//
-// Other available API versions: 2016-05-15.
 func LookupSecret(ctx *pulumi.Context, args *LookupSecretArgs, opts ...pulumi.InvokeOption) (*LookupSecretResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSecretResult

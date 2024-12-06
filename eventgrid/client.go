@@ -15,7 +15,7 @@ import (
 // The Client resource.
 // Azure REST API version: 2023-06-01-preview.
 //
-// Other available API versions: 2023-12-15-preview, 2024-06-01-preview.
+// Other available API versions: 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview.
 type Client struct {
 	pulumi.CustomResourceState
 
@@ -68,6 +68,9 @@ func NewClient(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:eventgrid/v20240601preview:Client"),
+		},
+		{
+			Type: pulumi.String("azure-native:eventgrid/v20241215preview:Client"),
 		},
 	})
 	opts = append(opts, aliases)

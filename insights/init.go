@@ -25,8 +25,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ActionGroup{}
 	case "azure-native:insights:ActivityLogAlert":
 		r = &ActivityLogAlert{}
-	case "azure-native:insights:AlertRule":
-		r = &AlertRule{}
 	case "azure-native:insights:AnalyticsItem":
 		r = &AnalyticsItem{}
 	case "azure-native:insights:AutoscaleSetting":

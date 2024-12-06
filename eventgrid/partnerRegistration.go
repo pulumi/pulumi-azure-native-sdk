@@ -15,7 +15,7 @@ import (
 // Information about a partner registration.
 // Azure REST API version: 2022-06-15. Prior API version in Azure Native 1.x: 2021-06-01-preview.
 //
-// Other available API versions: 2021-10-15-preview, 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview.
+// Other available API versions: 2021-10-15-preview, 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview.
 type PartnerRegistration struct {
 	pulumi.CustomResourceState
 
@@ -70,6 +70,9 @@ func NewPartnerRegistration(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:eventgrid/v20240601preview:PartnerRegistration"),
+		},
+		{
+			Type: pulumi.String("azure-native:eventgrid/v20241215preview:PartnerRegistration"),
 		},
 	})
 	opts = append(opts, aliases)

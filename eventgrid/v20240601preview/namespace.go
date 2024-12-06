@@ -76,6 +76,9 @@ func NewNamespace(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:eventgrid/v20231215preview:Namespace"),
 		},
+		{
+			Type: pulumi.String("azure-native:eventgrid/v20241215preview:Namespace"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

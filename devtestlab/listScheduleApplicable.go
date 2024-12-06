@@ -13,8 +13,6 @@ import (
 
 // Lists all applicable schedules
 // Azure REST API version: 2018-09-15.
-//
-// Other available API versions: 2016-05-15.
 func ListScheduleApplicable(ctx *pulumi.Context, args *ListScheduleApplicableArgs, opts ...pulumi.InvokeOption) (*ListScheduleApplicableResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListScheduleApplicableResult

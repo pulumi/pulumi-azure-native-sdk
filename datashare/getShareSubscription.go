@@ -13,8 +13,6 @@ import (
 
 // Get a shareSubscription in an account
 // Azure REST API version: 2021-08-01.
-//
-// Other available API versions: 2018-11-01-preview.
 func LookupShareSubscription(ctx *pulumi.Context, args *LookupShareSubscriptionArgs, opts ...pulumi.InvokeOption) (*LookupShareSubscriptionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupShareSubscriptionResult

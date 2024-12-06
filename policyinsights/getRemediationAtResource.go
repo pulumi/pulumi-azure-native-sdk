@@ -14,7 +14,7 @@ import (
 // Gets an existing remediation at resource scope.
 // Azure REST API version: 2021-10-01.
 //
-// Other available API versions: 2018-07-01-preview, 2024-10-01.
+// Other available API versions: 2024-10-01.
 func LookupRemediationAtResource(ctx *pulumi.Context, args *LookupRemediationAtResourceArgs, opts ...pulumi.InvokeOption) (*LookupRemediationAtResourceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRemediationAtResourceResult

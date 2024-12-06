@@ -14,8 +14,6 @@ import (
 
 // Represents an instance of a Dedicated Capacity resource.
 // Azure REST API version: 2021-01-01. Prior API version in Azure Native 1.x: 2021-01-01.
-//
-// Other available API versions: 2017-10-01.
 type CapacityDetails struct {
 	pulumi.CustomResourceState
 

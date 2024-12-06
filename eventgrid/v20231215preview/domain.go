@@ -144,6 +144,9 @@ func NewDomain(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:eventgrid/v20240601preview:Domain"),
 		},
+		{
+			Type: pulumi.String("azure-native:eventgrid/v20241215preview:Domain"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -14,7 +14,7 @@ import (
 // Gets the budget for the scope by budget name.
 // Azure REST API version: 2023-05-01.
 //
-// Other available API versions: 2017-12-30-preview, 2018-10-01, 2019-05-01, 2019-06-01, 2023-11-01, 2024-08-01.
+// Other available API versions: 2023-11-01, 2024-08-01.
 func LookupBudget(ctx *pulumi.Context, args *LookupBudgetArgs, opts ...pulumi.InvokeOption) (*LookupBudgetResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBudgetResult

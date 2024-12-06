@@ -14,7 +14,7 @@ import (
 // Get a given StorageSyncService.
 // Azure REST API version: 2022-06-01.
 //
-// Other available API versions: 2017-06-05-preview, 2019-10-01, 2022-09-01.
+// Other available API versions: 2022-09-01.
 func LookupStorageSyncService(ctx *pulumi.Context, args *LookupStorageSyncServiceArgs, opts ...pulumi.InvokeOption) (*LookupStorageSyncServiceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupStorageSyncServiceResult

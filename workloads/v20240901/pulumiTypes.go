@@ -5012,7 +5012,7 @@ func (o ImageReferenceResponsePtrOutput) Version() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the Linux operating system settings on the virtual machine. <br><br>For a list of supported Linux distributions, see [Linux on Azure-Endorsed Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
+// Specifies the Linux operating system settings on the virtual machine. For a list of supported Linux distributions, see [Linux on Azure-Endorsed Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
 type LinuxConfiguration struct {
 	// Specifies whether password authentication should be disabled.
 	DisablePasswordAuthentication *bool `pulumi:"disablePasswordAuthentication"`
@@ -5036,7 +5036,7 @@ type LinuxConfigurationInput interface {
 	ToLinuxConfigurationOutputWithContext(context.Context) LinuxConfigurationOutput
 }
 
-// Specifies the Linux operating system settings on the virtual machine. <br><br>For a list of supported Linux distributions, see [Linux on Azure-Endorsed Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
+// Specifies the Linux operating system settings on the virtual machine. For a list of supported Linux distributions, see [Linux on Azure-Endorsed Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
 type LinuxConfigurationArgs struct {
 	// Specifies whether password authentication should be disabled.
 	DisablePasswordAuthentication pulumi.BoolPtrInput `pulumi:"disablePasswordAuthentication"`
@@ -5102,7 +5102,7 @@ func (i *linuxConfigurationPtrType) ToLinuxConfigurationPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(LinuxConfigurationPtrOutput)
 }
 
-// Specifies the Linux operating system settings on the virtual machine. <br><br>For a list of supported Linux distributions, see [Linux on Azure-Endorsed Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
+// Specifies the Linux operating system settings on the virtual machine. For a list of supported Linux distributions, see [Linux on Azure-Endorsed Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
 type LinuxConfigurationOutput struct{ *pulumi.OutputState }
 
 func (LinuxConfigurationOutput) ElementType() reflect.Type {
@@ -5213,7 +5213,7 @@ func (o LinuxConfigurationPtrOutput) SshKeyPair() SshKeyPairPtrOutput {
 	}).(SshKeyPairPtrOutput)
 }
 
-// Specifies the Linux operating system settings on the virtual machine. <br><br>For a list of supported Linux distributions, see [Linux on Azure-Endorsed Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
+// Specifies the Linux operating system settings on the virtual machine. For a list of supported Linux distributions, see [Linux on Azure-Endorsed Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
 type LinuxConfigurationResponse struct {
 	// Specifies whether password authentication should be disabled.
 	DisablePasswordAuthentication *bool `pulumi:"disablePasswordAuthentication"`
@@ -5226,7 +5226,7 @@ type LinuxConfigurationResponse struct {
 	SshKeyPair *SshKeyPairResponse `pulumi:"sshKeyPair"`
 }
 
-// Specifies the Linux operating system settings on the virtual machine. <br><br>For a list of supported Linux distributions, see [Linux on Azure-Endorsed Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
+// Specifies the Linux operating system settings on the virtual machine. For a list of supported Linux distributions, see [Linux on Azure-Endorsed Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
 type LinuxConfigurationResponseOutput struct{ *pulumi.OutputState }
 
 func (LinuxConfigurationResponseOutput) ElementType() reflect.Type {
@@ -8698,7 +8698,7 @@ func (o SharedStorageResourceNamesResponsePtrOutput) SharedStorageAccountPrivate
 	}).(pulumi.StringPtrOutput)
 }
 
-// Gets or sets the single server configuration. For prerequisites for creating the infrastructure, please see [here](https://go.microsoft.com/fwlink/?linkid=2212611&clcid=0x409)
+// Gets or sets the single server configuration. For prerequisites for creating the infrastructure, please see [here](https://go.microsoft.com/fwlink/?linkid=2212611&amp;clcid=0x409)
 type SingleServerConfiguration struct {
 	// The application resource group where SAP system resources will be deployed.
 	AppResourceGroup string `pulumi:"appResourceGroup"`
@@ -8741,7 +8741,7 @@ type SingleServerConfigurationInput interface {
 	ToSingleServerConfigurationOutputWithContext(context.Context) SingleServerConfigurationOutput
 }
 
-// Gets or sets the single server configuration. For prerequisites for creating the infrastructure, please see [here](https://go.microsoft.com/fwlink/?linkid=2212611&clcid=0x409)
+// Gets or sets the single server configuration. For prerequisites for creating the infrastructure, please see [here](https://go.microsoft.com/fwlink/?linkid=2212611&amp;clcid=0x409)
 type SingleServerConfigurationArgs struct {
 	// The application resource group where SAP system resources will be deployed.
 	AppResourceGroup pulumi.StringInput `pulumi:"appResourceGroup"`
@@ -8824,7 +8824,7 @@ func (i *singleServerConfigurationPtrType) ToSingleServerConfigurationPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(SingleServerConfigurationPtrOutput)
 }
 
-// Gets or sets the single server configuration. For prerequisites for creating the infrastructure, please see [here](https://go.microsoft.com/fwlink/?linkid=2212611&clcid=0x409)
+// Gets or sets the single server configuration. For prerequisites for creating the infrastructure, please see [here](https://go.microsoft.com/fwlink/?linkid=2212611&amp;clcid=0x409)
 type SingleServerConfigurationOutput struct{ *pulumi.OutputState }
 
 func (SingleServerConfigurationOutput) ElementType() reflect.Type {
@@ -8995,7 +8995,7 @@ func (o SingleServerConfigurationPtrOutput) VirtualMachineConfiguration() Virtua
 	}).(VirtualMachineConfigurationPtrOutput)
 }
 
-// Gets or sets the single server configuration. For prerequisites for creating the infrastructure, please see [here](https://go.microsoft.com/fwlink/?linkid=2212611&clcid=0x409)
+// Gets or sets the single server configuration. For prerequisites for creating the infrastructure, please see [here](https://go.microsoft.com/fwlink/?linkid=2212611&amp;clcid=0x409)
 type SingleServerConfigurationResponse struct {
 	// The application resource group where SAP system resources will be deployed.
 	AppResourceGroup string `pulumi:"appResourceGroup"`
@@ -9027,7 +9027,7 @@ func (val *SingleServerConfigurationResponse) Defaults() *SingleServerConfigurat
 	return &tmp
 }
 
-// Gets or sets the single server configuration. For prerequisites for creating the infrastructure, please see [here](https://go.microsoft.com/fwlink/?linkid=2212611&clcid=0x409)
+// Gets or sets the single server configuration. For prerequisites for creating the infrastructure, please see [here](https://go.microsoft.com/fwlink/?linkid=2212611&amp;clcid=0x409)
 type SingleServerConfigurationResponseOutput struct{ *pulumi.OutputState }
 
 func (SingleServerConfigurationResponseOutput) ElementType() reflect.Type {
@@ -9844,7 +9844,7 @@ func (o SshConfigurationResponsePtrOutput) PublicKeys() SshPublicKeyResponseArra
 	}).(SshPublicKeyResponseArrayOutput)
 }
 
-// The SSH Key-pair used to authenticate with the VM. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
+// The SSH Key-pair used to authenticate with the VM. The key needs to be at least 2048-bit and in ssh-rsa format. For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
 type SshKeyPair struct {
 	// SSH private key.
 	PrivateKey *string `pulumi:"privateKey"`
@@ -9863,7 +9863,7 @@ type SshKeyPairInput interface {
 	ToSshKeyPairOutputWithContext(context.Context) SshKeyPairOutput
 }
 
-// The SSH Key-pair used to authenticate with the VM. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
+// The SSH Key-pair used to authenticate with the VM. The key needs to be at least 2048-bit and in ssh-rsa format. For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
 type SshKeyPairArgs struct {
 	// SSH private key.
 	PrivateKey pulumi.StringPtrInput `pulumi:"privateKey"`
@@ -9924,7 +9924,7 @@ func (i *sshKeyPairPtrType) ToSshKeyPairPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(SshKeyPairPtrOutput)
 }
 
-// The SSH Key-pair used to authenticate with the VM. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
+// The SSH Key-pair used to authenticate with the VM. The key needs to be at least 2048-bit and in ssh-rsa format. For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
 type SshKeyPairOutput struct{ *pulumi.OutputState }
 
 func (SshKeyPairOutput) ElementType() reflect.Type {
@@ -10003,7 +10003,7 @@ func (o SshKeyPairPtrOutput) PublicKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The SSH Key-pair used to authenticate with the VM. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
+// The SSH Key-pair used to authenticate with the VM. The key needs to be at least 2048-bit and in ssh-rsa format. For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
 type SshKeyPairResponse struct {
 	// SSH private key.
 	PrivateKey *string `pulumi:"privateKey"`
@@ -10011,7 +10011,7 @@ type SshKeyPairResponse struct {
 	PublicKey *string `pulumi:"publicKey"`
 }
 
-// The SSH Key-pair used to authenticate with the VM. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
+// The SSH Key-pair used to authenticate with the VM. The key needs to be at least 2048-bit and in ssh-rsa format. For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
 type SshKeyPairResponseOutput struct{ *pulumi.OutputState }
 
 func (SshKeyPairResponseOutput) ElementType() reflect.Type {
@@ -10533,7 +10533,7 @@ func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
 }
 
-// Gets or sets the three tier SAP configuration. For prerequisites for creating the infrastructure, please see [here](https://go.microsoft.com/fwlink/?linkid=2212611&clcid=0x409)
+// Gets or sets the three tier SAP configuration. For prerequisites for creating the infrastructure, please see [here](https://go.microsoft.com/fwlink/?linkid=2212611&amp;clcid=0x409)
 type ThreeTierConfiguration struct {
 	// The application resource group where SAP system resources will be deployed.
 	AppResourceGroup string `pulumi:"appResourceGroup"`
@@ -10578,7 +10578,7 @@ type ThreeTierConfigurationInput interface {
 	ToThreeTierConfigurationOutputWithContext(context.Context) ThreeTierConfigurationOutput
 }
 
-// Gets or sets the three tier SAP configuration. For prerequisites for creating the infrastructure, please see [here](https://go.microsoft.com/fwlink/?linkid=2212611&clcid=0x409)
+// Gets or sets the three tier SAP configuration. For prerequisites for creating the infrastructure, please see [here](https://go.microsoft.com/fwlink/?linkid=2212611&amp;clcid=0x409)
 type ThreeTierConfigurationArgs struct {
 	// The application resource group where SAP system resources will be deployed.
 	AppResourceGroup pulumi.StringInput `pulumi:"appResourceGroup"`
@@ -10663,7 +10663,7 @@ func (i *threeTierConfigurationPtrType) ToThreeTierConfigurationPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ThreeTierConfigurationPtrOutput)
 }
 
-// Gets or sets the three tier SAP configuration. For prerequisites for creating the infrastructure, please see [here](https://go.microsoft.com/fwlink/?linkid=2212611&clcid=0x409)
+// Gets or sets the three tier SAP configuration. For prerequisites for creating the infrastructure, please see [here](https://go.microsoft.com/fwlink/?linkid=2212611&amp;clcid=0x409)
 type ThreeTierConfigurationOutput struct{ *pulumi.OutputState }
 
 func (ThreeTierConfigurationOutput) ElementType() reflect.Type {
@@ -10849,7 +10849,7 @@ func (o ThreeTierConfigurationPtrOutput) StorageConfiguration() StorageConfigura
 	}).(StorageConfigurationPtrOutput)
 }
 
-// Gets or sets the three tier SAP configuration. For prerequisites for creating the infrastructure, please see [here](https://go.microsoft.com/fwlink/?linkid=2212611&clcid=0x409)
+// Gets or sets the three tier SAP configuration. For prerequisites for creating the infrastructure, please see [here](https://go.microsoft.com/fwlink/?linkid=2212611&amp;clcid=0x409)
 type ThreeTierConfigurationResponse struct {
 	// The application resource group where SAP system resources will be deployed.
 	AppResourceGroup string `pulumi:"appResourceGroup"`
@@ -10883,7 +10883,7 @@ func (val *ThreeTierConfigurationResponse) Defaults() *ThreeTierConfigurationRes
 	return &tmp
 }
 
-// Gets or sets the three tier SAP configuration. For prerequisites for creating the infrastructure, please see [here](https://go.microsoft.com/fwlink/?linkid=2212611&clcid=0x409)
+// Gets or sets the three tier SAP configuration. For prerequisites for creating the infrastructure, please see [here](https://go.microsoft.com/fwlink/?linkid=2212611&amp;clcid=0x409)
 type ThreeTierConfigurationResponseOutput struct{ *pulumi.OutputState }
 
 func (ThreeTierConfigurationResponseOutput) ElementType() reflect.Type {
