@@ -14,8 +14,6 @@ import (
 
 // DigitalTwinsInstance endpoint resource.
 // Azure REST API version: 2023-01-31. Prior API version in Azure Native 1.x: 2020-12-01.
-//
-// Other available API versions: 2020-03-01-preview.
 type DigitalTwinsEndpoint struct {
 	pulumi.CustomResourceState
 

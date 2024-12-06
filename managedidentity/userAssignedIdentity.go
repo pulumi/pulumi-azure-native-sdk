@@ -15,7 +15,7 @@ import (
 // Describes an identity resource.
 // Azure REST API version: 2023-01-31. Prior API version in Azure Native 1.x: 2018-11-30.
 //
-// Other available API versions: 2015-08-31-preview, 2023-07-31-preview.
+// Other available API versions: 2023-07-31-preview.
 type UserAssignedIdentity struct {
 	pulumi.CustomResourceState
 

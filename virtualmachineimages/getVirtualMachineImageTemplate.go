@@ -14,7 +14,7 @@ import (
 // Get information about a virtual machine image template
 // Azure REST API version: 2022-07-01.
 //
-// Other available API versions: 2018-02-01-preview, 2019-05-01-preview, 2023-07-01, 2024-02-01.
+// Other available API versions: 2023-07-01, 2024-02-01.
 func LookupVirtualMachineImageTemplate(ctx *pulumi.Context, args *LookupVirtualMachineImageTemplateArgs, opts ...pulumi.InvokeOption) (*LookupVirtualMachineImageTemplateResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVirtualMachineImageTemplateResult

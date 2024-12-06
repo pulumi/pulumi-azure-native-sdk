@@ -13,8 +13,6 @@ import (
 
 // Get a blueprint assignment.
 // Azure REST API version: 2018-11-01-preview.
-//
-// Other available API versions: 2017-11-11-preview.
 func LookupAssignment(ctx *pulumi.Context, args *LookupAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupAssignmentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAssignmentResult

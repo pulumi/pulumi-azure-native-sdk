@@ -13,8 +13,6 @@ import (
 
 // Get schedule.
 // Azure REST API version: 2018-09-15.
-//
-// Other available API versions: 2016-05-15.
 func LookupVirtualMachineSchedule(ctx *pulumi.Context, args *LookupVirtualMachineScheduleArgs, opts ...pulumi.InvokeOption) (*LookupVirtualMachineScheduleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVirtualMachineScheduleResult

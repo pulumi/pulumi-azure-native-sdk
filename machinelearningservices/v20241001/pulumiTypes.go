@@ -1713,8 +1713,6 @@ func (o AccountKeyDatastoreSecretsOutput) SecretsType() pulumi.StringOutput {
 type AcrDetails struct {
 	// Details of system created ACR account to be used for the Registry
 	SystemCreatedAcrAccount *SystemCreatedAcrAccount `pulumi:"systemCreatedAcrAccount"`
-	// Details of user created ACR account to be used for the Registry
-	UserCreatedAcrAccount *UserCreatedAcrAccount `pulumi:"userCreatedAcrAccount"`
 }
 
 // AcrDetailsInput is an input type that accepts AcrDetailsArgs and AcrDetailsOutput values.
@@ -1732,8 +1730,6 @@ type AcrDetailsInput interface {
 type AcrDetailsArgs struct {
 	// Details of system created ACR account to be used for the Registry
 	SystemCreatedAcrAccount SystemCreatedAcrAccountPtrInput `pulumi:"systemCreatedAcrAccount"`
-	// Details of user created ACR account to be used for the Registry
-	UserCreatedAcrAccount UserCreatedAcrAccountPtrInput `pulumi:"userCreatedAcrAccount"`
 }
 
 func (AcrDetailsArgs) ElementType() reflect.Type {
@@ -1793,11 +1789,6 @@ func (o AcrDetailsOutput) SystemCreatedAcrAccount() SystemCreatedAcrAccountPtrOu
 	return o.ApplyT(func(v AcrDetails) *SystemCreatedAcrAccount { return v.SystemCreatedAcrAccount }).(SystemCreatedAcrAccountPtrOutput)
 }
 
-// Details of user created ACR account to be used for the Registry
-func (o AcrDetailsOutput) UserCreatedAcrAccount() UserCreatedAcrAccountPtrOutput {
-	return o.ApplyT(func(v AcrDetails) *UserCreatedAcrAccount { return v.UserCreatedAcrAccount }).(UserCreatedAcrAccountPtrOutput)
-}
-
 type AcrDetailsArrayOutput struct{ *pulumi.OutputState }
 
 func (AcrDetailsArrayOutput) ElementType() reflect.Type {
@@ -1822,8 +1813,6 @@ func (o AcrDetailsArrayOutput) Index(i pulumi.IntInput) AcrDetailsOutput {
 type AcrDetailsResponse struct {
 	// Details of system created ACR account to be used for the Registry
 	SystemCreatedAcrAccount *SystemCreatedAcrAccountResponse `pulumi:"systemCreatedAcrAccount"`
-	// Details of user created ACR account to be used for the Registry
-	UserCreatedAcrAccount *UserCreatedAcrAccountResponse `pulumi:"userCreatedAcrAccount"`
 }
 
 // Details of ACR account to be used for the Registry
@@ -1844,11 +1833,6 @@ func (o AcrDetailsResponseOutput) ToAcrDetailsResponseOutputWithContext(ctx cont
 // Details of system created ACR account to be used for the Registry
 func (o AcrDetailsResponseOutput) SystemCreatedAcrAccount() SystemCreatedAcrAccountResponsePtrOutput {
 	return o.ApplyT(func(v AcrDetailsResponse) *SystemCreatedAcrAccountResponse { return v.SystemCreatedAcrAccount }).(SystemCreatedAcrAccountResponsePtrOutput)
-}
-
-// Details of user created ACR account to be used for the Registry
-func (o AcrDetailsResponseOutput) UserCreatedAcrAccount() UserCreatedAcrAccountResponsePtrOutput {
-	return o.ApplyT(func(v AcrDetailsResponse) *UserCreatedAcrAccountResponse { return v.UserCreatedAcrAccount }).(UserCreatedAcrAccountResponsePtrOutput)
 }
 
 type AcrDetailsResponseArrayOutput struct{ *pulumi.OutputState }
@@ -65470,8 +65454,6 @@ func (o StaticInputDataResponseOutput) WindowStart() pulumi.StringOutput {
 type StorageAccountDetails struct {
 	// Details of system created storage account to be used for the registry
 	SystemCreatedStorageAccount *SystemCreatedStorageAccount `pulumi:"systemCreatedStorageAccount"`
-	// Details of user created storage account to be used for the registry
-	UserCreatedStorageAccount *UserCreatedStorageAccount `pulumi:"userCreatedStorageAccount"`
 }
 
 // StorageAccountDetailsInput is an input type that accepts StorageAccountDetailsArgs and StorageAccountDetailsOutput values.
@@ -65489,8 +65471,6 @@ type StorageAccountDetailsInput interface {
 type StorageAccountDetailsArgs struct {
 	// Details of system created storage account to be used for the registry
 	SystemCreatedStorageAccount SystemCreatedStorageAccountPtrInput `pulumi:"systemCreatedStorageAccount"`
-	// Details of user created storage account to be used for the registry
-	UserCreatedStorageAccount UserCreatedStorageAccountPtrInput `pulumi:"userCreatedStorageAccount"`
 }
 
 func (StorageAccountDetailsArgs) ElementType() reflect.Type {
@@ -65550,11 +65530,6 @@ func (o StorageAccountDetailsOutput) SystemCreatedStorageAccount() SystemCreated
 	return o.ApplyT(func(v StorageAccountDetails) *SystemCreatedStorageAccount { return v.SystemCreatedStorageAccount }).(SystemCreatedStorageAccountPtrOutput)
 }
 
-// Details of user created storage account to be used for the registry
-func (o StorageAccountDetailsOutput) UserCreatedStorageAccount() UserCreatedStorageAccountPtrOutput {
-	return o.ApplyT(func(v StorageAccountDetails) *UserCreatedStorageAccount { return v.UserCreatedStorageAccount }).(UserCreatedStorageAccountPtrOutput)
-}
-
 type StorageAccountDetailsArrayOutput struct{ *pulumi.OutputState }
 
 func (StorageAccountDetailsArrayOutput) ElementType() reflect.Type {
@@ -65579,8 +65554,6 @@ func (o StorageAccountDetailsArrayOutput) Index(i pulumi.IntInput) StorageAccoun
 type StorageAccountDetailsResponse struct {
 	// Details of system created storage account to be used for the registry
 	SystemCreatedStorageAccount *SystemCreatedStorageAccountResponse `pulumi:"systemCreatedStorageAccount"`
-	// Details of user created storage account to be used for the registry
-	UserCreatedStorageAccount *UserCreatedStorageAccountResponse `pulumi:"userCreatedStorageAccount"`
 }
 
 // Details of storage account to be used for the Registry
@@ -65603,13 +65576,6 @@ func (o StorageAccountDetailsResponseOutput) SystemCreatedStorageAccount() Syste
 	return o.ApplyT(func(v StorageAccountDetailsResponse) *SystemCreatedStorageAccountResponse {
 		return v.SystemCreatedStorageAccount
 	}).(SystemCreatedStorageAccountResponsePtrOutput)
-}
-
-// Details of user created storage account to be used for the registry
-func (o StorageAccountDetailsResponseOutput) UserCreatedStorageAccount() UserCreatedStorageAccountResponsePtrOutput {
-	return o.ApplyT(func(v StorageAccountDetailsResponse) *UserCreatedStorageAccountResponse {
-		return v.UserCreatedStorageAccount
-	}).(UserCreatedStorageAccountResponsePtrOutput)
 }
 
 type StorageAccountDetailsResponseArrayOutput struct{ *pulumi.OutputState }

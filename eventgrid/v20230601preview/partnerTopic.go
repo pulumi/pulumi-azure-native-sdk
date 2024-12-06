@@ -74,6 +74,9 @@ func NewPartnerTopic(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:eventgrid/v20240601preview:PartnerTopic"),
 		},
+		{
+			Type: pulumi.String("azure-native:eventgrid/v20241215preview:PartnerTopic"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

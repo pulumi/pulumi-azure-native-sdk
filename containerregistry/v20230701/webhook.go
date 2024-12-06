@@ -101,6 +101,9 @@ func NewWebhook(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:containerregistry/v20231101preview:Webhook"),
 		},
+		{
+			Type: pulumi.String("azure-native:containerregistry/v20241101preview:Webhook"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

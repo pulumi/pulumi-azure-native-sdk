@@ -14,7 +14,7 @@ import (
 // Get a given SyncGroup.
 // Azure REST API version: 2022-06-01.
 //
-// Other available API versions: 2017-06-05-preview, 2018-04-02, 2022-09-01.
+// Other available API versions: 2022-09-01.
 func LookupSyncGroup(ctx *pulumi.Context, args *LookupSyncGroupArgs, opts ...pulumi.InvokeOption) (*LookupSyncGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSyncGroupResult
