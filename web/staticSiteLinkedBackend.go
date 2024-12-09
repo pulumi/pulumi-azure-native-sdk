@@ -45,6 +45,9 @@ func NewStaticSiteLinkedBackend(ctx *pulumi.Context,
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
+	if args.Region == nil {
+		return nil, errors.New("invalid value for required argument 'Region'")
+	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
@@ -108,7 +111,7 @@ type staticSiteLinkedBackendArgs struct {
 	// Name of the static site
 	Name string `pulumi:"name"`
 	// The region of the backend linked to the static site
-	Region *string `pulumi:"region"`
+	Region string `pulumi:"region"`
 	// Name of the resource group to which the resource belongs.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
@@ -124,7 +127,7 @@ type StaticSiteLinkedBackendArgs struct {
 	// Name of the static site
 	Name pulumi.StringInput
 	// The region of the backend linked to the static site
-	Region pulumi.StringPtrInput
+	Region pulumi.StringInput
 	// Name of the resource group to which the resource belongs.
 	ResourceGroupName pulumi.StringInput
 }
