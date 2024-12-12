@@ -65,21 +65,11 @@ type LookupHypervClusterControllerClusterResult struct {
 }
 
 func LookupHypervClusterControllerClusterOutput(ctx *pulumi.Context, args LookupHypervClusterControllerClusterOutputArgs, opts ...pulumi.InvokeOption) LookupHypervClusterControllerClusterResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupHypervClusterControllerClusterResultOutput, error) {
 			args := v.(LookupHypervClusterControllerClusterArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupHypervClusterControllerClusterResult
-			secret, err := ctx.InvokePackageRaw("azure-native:offazure:getHypervClusterControllerCluster", args, &rv, "", opts...)
-			if err != nil {
-				return LookupHypervClusterControllerClusterResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupHypervClusterControllerClusterResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupHypervClusterControllerClusterResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:offazure:getHypervClusterControllerCluster", args, LookupHypervClusterControllerClusterResultOutput{}, options).(LookupHypervClusterControllerClusterResultOutput), nil
 		}).(LookupHypervClusterControllerClusterResultOutput)
 }
 

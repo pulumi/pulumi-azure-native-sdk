@@ -87,23 +87,12 @@ func (val *LookupConfigurationStoreResult) Defaults() *LookupConfigurationStoreR
 	}
 	return &tmp
 }
-
 func LookupConfigurationStoreOutput(ctx *pulumi.Context, args LookupConfigurationStoreOutputArgs, opts ...pulumi.InvokeOption) LookupConfigurationStoreResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupConfigurationStoreResultOutput, error) {
 			args := v.(LookupConfigurationStoreArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupConfigurationStoreResult
-			secret, err := ctx.InvokePackageRaw("azure-native:appconfiguration/v20230301:getConfigurationStore", args, &rv, "", opts...)
-			if err != nil {
-				return LookupConfigurationStoreResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupConfigurationStoreResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupConfigurationStoreResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:appconfiguration/v20230301:getConfigurationStore", args, LookupConfigurationStoreResultOutput{}, options).(LookupConfigurationStoreResultOutput), nil
 		}).(LookupConfigurationStoreResultOutput)
 }
 

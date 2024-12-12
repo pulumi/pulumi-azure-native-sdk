@@ -58,21 +58,11 @@ type LookupCustomRecommendationResult struct {
 }
 
 func LookupCustomRecommendationOutput(ctx *pulumi.Context, args LookupCustomRecommendationOutputArgs, opts ...pulumi.InvokeOption) LookupCustomRecommendationResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupCustomRecommendationResultOutput, error) {
 			args := v.(LookupCustomRecommendationArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupCustomRecommendationResult
-			secret, err := ctx.InvokePackageRaw("azure-native:security/v20240801:getCustomRecommendation", args, &rv, "", opts...)
-			if err != nil {
-				return LookupCustomRecommendationResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupCustomRecommendationResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupCustomRecommendationResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:security/v20240801:getCustomRecommendation", args, LookupCustomRecommendationResultOutput{}, options).(LookupCustomRecommendationResultOutput), nil
 		}).(LookupCustomRecommendationResultOutput)
 }
 

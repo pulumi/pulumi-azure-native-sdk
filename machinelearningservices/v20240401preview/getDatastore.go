@@ -46,21 +46,11 @@ type LookupDatastoreResult struct {
 }
 
 func LookupDatastoreOutput(ctx *pulumi.Context, args LookupDatastoreOutputArgs, opts ...pulumi.InvokeOption) LookupDatastoreResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupDatastoreResultOutput, error) {
 			args := v.(LookupDatastoreArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupDatastoreResult
-			secret, err := ctx.InvokePackageRaw("azure-native:machinelearningservices/v20240401preview:getDatastore", args, &rv, "", opts...)
-			if err != nil {
-				return LookupDatastoreResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupDatastoreResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupDatastoreResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:machinelearningservices/v20240401preview:getDatastore", args, LookupDatastoreResultOutput{}, options).(LookupDatastoreResultOutput), nil
 		}).(LookupDatastoreResultOutput)
 }
 

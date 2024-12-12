@@ -96,21 +96,11 @@ type LookupStreamingJobResult struct {
 }
 
 func LookupStreamingJobOutput(ctx *pulumi.Context, args LookupStreamingJobOutputArgs, opts ...pulumi.InvokeOption) LookupStreamingJobResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupStreamingJobResultOutput, error) {
 			args := v.(LookupStreamingJobArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupStreamingJobResult
-			secret, err := ctx.InvokePackageRaw("azure-native:streamanalytics/v20170401preview:getStreamingJob", args, &rv, "", opts...)
-			if err != nil {
-				return LookupStreamingJobResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupStreamingJobResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupStreamingJobResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:streamanalytics/v20170401preview:getStreamingJob", args, LookupStreamingJobResultOutput{}, options).(LookupStreamingJobResultOutput), nil
 		}).(LookupStreamingJobResultOutput)
 }
 

@@ -56,21 +56,11 @@ type LookupDscNodeConfigurationResult struct {
 }
 
 func LookupDscNodeConfigurationOutput(ctx *pulumi.Context, args LookupDscNodeConfigurationOutputArgs, opts ...pulumi.InvokeOption) LookupDscNodeConfigurationResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupDscNodeConfigurationResultOutput, error) {
 			args := v.(LookupDscNodeConfigurationArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupDscNodeConfigurationResult
-			secret, err := ctx.InvokePackageRaw("azure-native:automation/v20230515preview:getDscNodeConfiguration", args, &rv, "", opts...)
-			if err != nil {
-				return LookupDscNodeConfigurationResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupDscNodeConfigurationResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupDscNodeConfigurationResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:automation/v20230515preview:getDscNodeConfiguration", args, LookupDscNodeConfigurationResultOutput{}, options).(LookupDscNodeConfigurationResultOutput), nil
 		}).(LookupDscNodeConfigurationResultOutput)
 }
 

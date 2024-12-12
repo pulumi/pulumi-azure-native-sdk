@@ -50,21 +50,11 @@ type LookupPrivateEndpointConnectionsCompResult struct {
 }
 
 func LookupPrivateEndpointConnectionsCompOutput(ctx *pulumi.Context, args LookupPrivateEndpointConnectionsCompOutputArgs, opts ...pulumi.InvokeOption) LookupPrivateEndpointConnectionsCompResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupPrivateEndpointConnectionsCompResultOutput, error) {
 			args := v.(LookupPrivateEndpointConnectionsCompArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupPrivateEndpointConnectionsCompResult
-			secret, err := ctx.InvokePackageRaw("azure-native:securityandcompliance/v20210308:getPrivateEndpointConnectionsComp", args, &rv, "", opts...)
-			if err != nil {
-				return LookupPrivateEndpointConnectionsCompResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupPrivateEndpointConnectionsCompResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupPrivateEndpointConnectionsCompResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:securityandcompliance/v20210308:getPrivateEndpointConnectionsComp", args, LookupPrivateEndpointConnectionsCompResultOutput{}, options).(LookupPrivateEndpointConnectionsCompResultOutput), nil
 		}).(LookupPrivateEndpointConnectionsCompResultOutput)
 }
 

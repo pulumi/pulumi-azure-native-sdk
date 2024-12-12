@@ -54,21 +54,11 @@ type LookupVmwareCollectorsOperationResult struct {
 }
 
 func LookupVmwareCollectorsOperationOutput(ctx *pulumi.Context, args LookupVmwareCollectorsOperationOutputArgs, opts ...pulumi.InvokeOption) LookupVmwareCollectorsOperationResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupVmwareCollectorsOperationResultOutput, error) {
 			args := v.(LookupVmwareCollectorsOperationArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupVmwareCollectorsOperationResult
-			secret, err := ctx.InvokePackageRaw("azure-native:migrate/v20230315:getVmwareCollectorsOperation", args, &rv, "", opts...)
-			if err != nil {
-				return LookupVmwareCollectorsOperationResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupVmwareCollectorsOperationResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupVmwareCollectorsOperationResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:migrate/v20230315:getVmwareCollectorsOperation", args, LookupVmwareCollectorsOperationResultOutput{}, options).(LookupVmwareCollectorsOperationResultOutput), nil
 		}).(LookupVmwareCollectorsOperationResultOutput)
 }
 

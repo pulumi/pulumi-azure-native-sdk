@@ -73,23 +73,12 @@ func (val *LookupFirmwareResult) Defaults() *LookupFirmwareResult {
 	}
 	return &tmp
 }
-
 func LookupFirmwareOutput(ctx *pulumi.Context, args LookupFirmwareOutputArgs, opts ...pulumi.InvokeOption) LookupFirmwareResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupFirmwareResultOutput, error) {
 			args := v.(LookupFirmwareArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupFirmwareResult
-			secret, err := ctx.InvokePackageRaw("azure-native:iotfirmwaredefense/v20240110:getFirmware", args, &rv, "", opts...)
-			if err != nil {
-				return LookupFirmwareResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupFirmwareResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupFirmwareResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:iotfirmwaredefense/v20240110:getFirmware", args, LookupFirmwareResultOutput{}, options).(LookupFirmwareResultOutput), nil
 		}).(LookupFirmwareResultOutput)
 }
 

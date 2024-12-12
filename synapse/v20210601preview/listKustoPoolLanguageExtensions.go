@@ -38,21 +38,11 @@ type ListKustoPoolLanguageExtensionsResult struct {
 }
 
 func ListKustoPoolLanguageExtensionsOutput(ctx *pulumi.Context, args ListKustoPoolLanguageExtensionsOutputArgs, opts ...pulumi.InvokeOption) ListKustoPoolLanguageExtensionsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListKustoPoolLanguageExtensionsResultOutput, error) {
 			args := v.(ListKustoPoolLanguageExtensionsArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListKustoPoolLanguageExtensionsResult
-			secret, err := ctx.InvokePackageRaw("azure-native:synapse/v20210601preview:listKustoPoolLanguageExtensions", args, &rv, "", opts...)
-			if err != nil {
-				return ListKustoPoolLanguageExtensionsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListKustoPoolLanguageExtensionsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListKustoPoolLanguageExtensionsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:synapse/v20210601preview:listKustoPoolLanguageExtensions", args, ListKustoPoolLanguageExtensionsResultOutput{}, options).(ListKustoPoolLanguageExtensionsResultOutput), nil
 		}).(ListKustoPoolLanguageExtensionsResultOutput)
 }
 

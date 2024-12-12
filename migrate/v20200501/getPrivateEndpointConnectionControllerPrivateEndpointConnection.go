@@ -48,21 +48,11 @@ type LookupPrivateEndpointConnectionControllerPrivateEndpointConnectionResult st
 }
 
 func LookupPrivateEndpointConnectionControllerPrivateEndpointConnectionOutput(ctx *pulumi.Context, args LookupPrivateEndpointConnectionControllerPrivateEndpointConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupPrivateEndpointConnectionControllerPrivateEndpointConnectionResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupPrivateEndpointConnectionControllerPrivateEndpointConnectionResultOutput, error) {
 			args := v.(LookupPrivateEndpointConnectionControllerPrivateEndpointConnectionArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupPrivateEndpointConnectionControllerPrivateEndpointConnectionResult
-			secret, err := ctx.InvokePackageRaw("azure-native:migrate/v20200501:getPrivateEndpointConnectionControllerPrivateEndpointConnection", args, &rv, "", opts...)
-			if err != nil {
-				return LookupPrivateEndpointConnectionControllerPrivateEndpointConnectionResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupPrivateEndpointConnectionControllerPrivateEndpointConnectionResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupPrivateEndpointConnectionControllerPrivateEndpointConnectionResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:migrate/v20200501:getPrivateEndpointConnectionControllerPrivateEndpointConnection", args, LookupPrivateEndpointConnectionControllerPrivateEndpointConnectionResultOutput{}, options).(LookupPrivateEndpointConnectionControllerPrivateEndpointConnectionResultOutput), nil
 		}).(LookupPrivateEndpointConnectionControllerPrivateEndpointConnectionResultOutput)
 }
 

@@ -37,21 +37,11 @@ type ListDeviceRegistrationKeyResult struct {
 }
 
 func ListDeviceRegistrationKeyOutput(ctx *pulumi.Context, args ListDeviceRegistrationKeyOutputArgs, opts ...pulumi.InvokeOption) ListDeviceRegistrationKeyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListDeviceRegistrationKeyResultOutput, error) {
 			args := v.(ListDeviceRegistrationKeyArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListDeviceRegistrationKeyResult
-			secret, err := ctx.InvokePackageRaw("azure-native:hybridnetwork:listDeviceRegistrationKey", args, &rv, "", opts...)
-			if err != nil {
-				return ListDeviceRegistrationKeyResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListDeviceRegistrationKeyResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListDeviceRegistrationKeyResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:hybridnetwork:listDeviceRegistrationKey", args, ListDeviceRegistrationKeyResultOutput{}, options).(ListDeviceRegistrationKeyResultOutput), nil
 		}).(ListDeviceRegistrationKeyResultOutput)
 }
 

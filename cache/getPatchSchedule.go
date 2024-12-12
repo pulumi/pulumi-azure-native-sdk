@@ -49,21 +49,11 @@ type LookupPatchScheduleResult struct {
 }
 
 func LookupPatchScheduleOutput(ctx *pulumi.Context, args LookupPatchScheduleOutputArgs, opts ...pulumi.InvokeOption) LookupPatchScheduleResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupPatchScheduleResultOutput, error) {
 			args := v.(LookupPatchScheduleArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupPatchScheduleResult
-			secret, err := ctx.InvokePackageRaw("azure-native:cache:getPatchSchedule", args, &rv, "", opts...)
-			if err != nil {
-				return LookupPatchScheduleResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupPatchScheduleResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupPatchScheduleResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:cache:getPatchSchedule", args, LookupPatchScheduleResultOutput{}, options).(LookupPatchScheduleResultOutput), nil
 		}).(LookupPatchScheduleResultOutput)
 }
 

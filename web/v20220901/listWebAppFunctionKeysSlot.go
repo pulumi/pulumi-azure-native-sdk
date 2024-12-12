@@ -48,21 +48,11 @@ type ListWebAppFunctionKeysSlotResult struct {
 }
 
 func ListWebAppFunctionKeysSlotOutput(ctx *pulumi.Context, args ListWebAppFunctionKeysSlotOutputArgs, opts ...pulumi.InvokeOption) ListWebAppFunctionKeysSlotResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListWebAppFunctionKeysSlotResultOutput, error) {
 			args := v.(ListWebAppFunctionKeysSlotArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListWebAppFunctionKeysSlotResult
-			secret, err := ctx.InvokePackageRaw("azure-native:web/v20220901:listWebAppFunctionKeysSlot", args, &rv, "", opts...)
-			if err != nil {
-				return ListWebAppFunctionKeysSlotResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListWebAppFunctionKeysSlotResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListWebAppFunctionKeysSlotResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:web/v20220901:listWebAppFunctionKeysSlot", args, ListWebAppFunctionKeysSlotResultOutput{}, options).(ListWebAppFunctionKeysSlotResultOutput), nil
 		}).(ListWebAppFunctionKeysSlotResultOutput)
 }
 

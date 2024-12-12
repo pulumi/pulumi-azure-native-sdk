@@ -59,21 +59,11 @@ type LookupBrokerAuthenticationResult struct {
 }
 
 func LookupBrokerAuthenticationOutput(ctx *pulumi.Context, args LookupBrokerAuthenticationOutputArgs, opts ...pulumi.InvokeOption) LookupBrokerAuthenticationResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupBrokerAuthenticationResultOutput, error) {
 			args := v.(LookupBrokerAuthenticationArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupBrokerAuthenticationResult
-			secret, err := ctx.InvokePackageRaw("azure-native:iotoperationsmq:getBrokerAuthentication", args, &rv, "", opts...)
-			if err != nil {
-				return LookupBrokerAuthenticationResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupBrokerAuthenticationResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupBrokerAuthenticationResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:iotoperationsmq:getBrokerAuthentication", args, LookupBrokerAuthenticationResultOutput{}, options).(LookupBrokerAuthenticationResultOutput), nil
 		}).(LookupBrokerAuthenticationResultOutput)
 }
 

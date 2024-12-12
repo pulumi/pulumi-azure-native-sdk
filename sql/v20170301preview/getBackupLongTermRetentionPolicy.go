@@ -52,21 +52,11 @@ type LookupBackupLongTermRetentionPolicyResult struct {
 }
 
 func LookupBackupLongTermRetentionPolicyOutput(ctx *pulumi.Context, args LookupBackupLongTermRetentionPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupBackupLongTermRetentionPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupBackupLongTermRetentionPolicyResultOutput, error) {
 			args := v.(LookupBackupLongTermRetentionPolicyArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupBackupLongTermRetentionPolicyResult
-			secret, err := ctx.InvokePackageRaw("azure-native:sql/v20170301preview:getBackupLongTermRetentionPolicy", args, &rv, "", opts...)
-			if err != nil {
-				return LookupBackupLongTermRetentionPolicyResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupBackupLongTermRetentionPolicyResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupBackupLongTermRetentionPolicyResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:sql/v20170301preview:getBackupLongTermRetentionPolicy", args, LookupBackupLongTermRetentionPolicyResultOutput{}, options).(LookupBackupLongTermRetentionPolicyResultOutput), nil
 		}).(LookupBackupLongTermRetentionPolicyResultOutput)
 }
 

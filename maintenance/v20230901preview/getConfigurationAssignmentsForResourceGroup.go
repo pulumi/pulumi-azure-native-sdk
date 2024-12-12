@@ -50,21 +50,11 @@ type LookupConfigurationAssignmentsForResourceGroupResult struct {
 }
 
 func LookupConfigurationAssignmentsForResourceGroupOutput(ctx *pulumi.Context, args LookupConfigurationAssignmentsForResourceGroupOutputArgs, opts ...pulumi.InvokeOption) LookupConfigurationAssignmentsForResourceGroupResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupConfigurationAssignmentsForResourceGroupResultOutput, error) {
 			args := v.(LookupConfigurationAssignmentsForResourceGroupArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupConfigurationAssignmentsForResourceGroupResult
-			secret, err := ctx.InvokePackageRaw("azure-native:maintenance/v20230901preview:getConfigurationAssignmentsForResourceGroup", args, &rv, "", opts...)
-			if err != nil {
-				return LookupConfigurationAssignmentsForResourceGroupResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupConfigurationAssignmentsForResourceGroupResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupConfigurationAssignmentsForResourceGroupResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:maintenance/v20230901preview:getConfigurationAssignmentsForResourceGroup", args, LookupConfigurationAssignmentsForResourceGroupResultOutput{}, options).(LookupConfigurationAssignmentsForResourceGroupResultOutput), nil
 		}).(LookupConfigurationAssignmentsForResourceGroupResultOutput)
 }
 

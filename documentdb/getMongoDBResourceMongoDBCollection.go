@@ -53,21 +53,11 @@ type LookupMongoDBResourceMongoDBCollectionResult struct {
 }
 
 func LookupMongoDBResourceMongoDBCollectionOutput(ctx *pulumi.Context, args LookupMongoDBResourceMongoDBCollectionOutputArgs, opts ...pulumi.InvokeOption) LookupMongoDBResourceMongoDBCollectionResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupMongoDBResourceMongoDBCollectionResultOutput, error) {
 			args := v.(LookupMongoDBResourceMongoDBCollectionArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupMongoDBResourceMongoDBCollectionResult
-			secret, err := ctx.InvokePackageRaw("azure-native:documentdb:getMongoDBResourceMongoDBCollection", args, &rv, "", opts...)
-			if err != nil {
-				return LookupMongoDBResourceMongoDBCollectionResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupMongoDBResourceMongoDBCollectionResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupMongoDBResourceMongoDBCollectionResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:documentdb:getMongoDBResourceMongoDBCollection", args, LookupMongoDBResourceMongoDBCollectionResultOutput{}, options).(LookupMongoDBResourceMongoDBCollectionResultOutput), nil
 		}).(LookupMongoDBResourceMongoDBCollectionResultOutput)
 }
 

@@ -52,21 +52,11 @@ type LookupSignalRPrivateEndpointConnectionResult struct {
 }
 
 func LookupSignalRPrivateEndpointConnectionOutput(ctx *pulumi.Context, args LookupSignalRPrivateEndpointConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupSignalRPrivateEndpointConnectionResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupSignalRPrivateEndpointConnectionResultOutput, error) {
 			args := v.(LookupSignalRPrivateEndpointConnectionArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupSignalRPrivateEndpointConnectionResult
-			secret, err := ctx.InvokePackageRaw("azure-native:signalrservice/v20240301:getSignalRPrivateEndpointConnection", args, &rv, "", opts...)
-			if err != nil {
-				return LookupSignalRPrivateEndpointConnectionResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupSignalRPrivateEndpointConnectionResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupSignalRPrivateEndpointConnectionResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:signalrservice/v20240301:getSignalRPrivateEndpointConnection", args, LookupSignalRPrivateEndpointConnectionResultOutput{}, options).(LookupSignalRPrivateEndpointConnectionResultOutput), nil
 		}).(LookupSignalRPrivateEndpointConnectionResultOutput)
 }
 

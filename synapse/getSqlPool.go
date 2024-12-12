@@ -84,23 +84,12 @@ func (val *LookupSqlPoolResult) Defaults() *LookupSqlPoolResult {
 	}
 	return &tmp
 }
-
 func LookupSqlPoolOutput(ctx *pulumi.Context, args LookupSqlPoolOutputArgs, opts ...pulumi.InvokeOption) LookupSqlPoolResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupSqlPoolResultOutput, error) {
 			args := v.(LookupSqlPoolArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupSqlPoolResult
-			secret, err := ctx.InvokePackageRaw("azure-native:synapse:getSqlPool", args, &rv, "", opts...)
-			if err != nil {
-				return LookupSqlPoolResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupSqlPoolResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupSqlPoolResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:synapse:getSqlPool", args, LookupSqlPoolResultOutput{}, options).(LookupSqlPoolResultOutput), nil
 		}).(LookupSqlPoolResultOutput)
 }
 

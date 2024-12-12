@@ -42,21 +42,11 @@ type ListAccountKeysResult struct {
 }
 
 func ListAccountKeysOutput(ctx *pulumi.Context, args ListAccountKeysOutputArgs, opts ...pulumi.InvokeOption) ListAccountKeysResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListAccountKeysResultOutput, error) {
 			args := v.(ListAccountKeysArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListAccountKeysResult
-			secret, err := ctx.InvokePackageRaw("azure-native:maps/v20230801preview:listAccountKeys", args, &rv, "", opts...)
-			if err != nil {
-				return ListAccountKeysResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListAccountKeysResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListAccountKeysResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:maps/v20230801preview:listAccountKeys", args, ListAccountKeysResultOutput{}, options).(ListAccountKeysResultOutput), nil
 		}).(ListAccountKeysResultOutput)
 }
 

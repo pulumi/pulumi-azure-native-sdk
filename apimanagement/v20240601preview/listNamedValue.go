@@ -38,21 +38,11 @@ type ListNamedValueResult struct {
 }
 
 func ListNamedValueOutput(ctx *pulumi.Context, args ListNamedValueOutputArgs, opts ...pulumi.InvokeOption) ListNamedValueResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListNamedValueResultOutput, error) {
 			args := v.(ListNamedValueArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListNamedValueResult
-			secret, err := ctx.InvokePackageRaw("azure-native:apimanagement/v20240601preview:listNamedValue", args, &rv, "", opts...)
-			if err != nil {
-				return ListNamedValueResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListNamedValueResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListNamedValueResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:apimanagement/v20240601preview:listNamedValue", args, ListNamedValueResultOutput{}, options).(ListNamedValueResultOutput), nil
 		}).(ListNamedValueResultOutput)
 }
 

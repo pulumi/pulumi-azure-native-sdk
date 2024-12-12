@@ -49,21 +49,11 @@ type LookupApiGatewayStageResult struct {
 }
 
 func LookupApiGatewayStageOutput(ctx *pulumi.Context, args LookupApiGatewayStageOutputArgs, opts ...pulumi.InvokeOption) LookupApiGatewayStageResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupApiGatewayStageResultOutput, error) {
 			args := v.(LookupApiGatewayStageArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupApiGatewayStageResult
-			secret, err := ctx.InvokePackageRaw("azure-native:awsconnector:getApiGatewayStage", args, &rv, "", opts...)
-			if err != nil {
-				return LookupApiGatewayStageResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupApiGatewayStageResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupApiGatewayStageResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:awsconnector:getApiGatewayStage", args, LookupApiGatewayStageResultOutput{}, options).(LookupApiGatewayStageResultOutput), nil
 		}).(LookupApiGatewayStageResultOutput)
 }
 

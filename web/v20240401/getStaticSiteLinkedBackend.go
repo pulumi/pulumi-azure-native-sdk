@@ -52,21 +52,11 @@ type LookupStaticSiteLinkedBackendResult struct {
 }
 
 func LookupStaticSiteLinkedBackendOutput(ctx *pulumi.Context, args LookupStaticSiteLinkedBackendOutputArgs, opts ...pulumi.InvokeOption) LookupStaticSiteLinkedBackendResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupStaticSiteLinkedBackendResultOutput, error) {
 			args := v.(LookupStaticSiteLinkedBackendArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupStaticSiteLinkedBackendResult
-			secret, err := ctx.InvokePackageRaw("azure-native:web/v20240401:getStaticSiteLinkedBackend", args, &rv, "", opts...)
-			if err != nil {
-				return LookupStaticSiteLinkedBackendResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupStaticSiteLinkedBackendResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupStaticSiteLinkedBackendResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:web/v20240401:getStaticSiteLinkedBackend", args, LookupStaticSiteLinkedBackendResultOutput{}, options).(LookupStaticSiteLinkedBackendResultOutput), nil
 		}).(LookupStaticSiteLinkedBackendResultOutput)
 }
 

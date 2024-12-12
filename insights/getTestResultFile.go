@@ -49,21 +49,11 @@ type GetTestResultFileResult struct {
 }
 
 func GetTestResultFileOutput(ctx *pulumi.Context, args GetTestResultFileOutputArgs, opts ...pulumi.InvokeOption) GetTestResultFileResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetTestResultFileResultOutput, error) {
 			args := v.(GetTestResultFileArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetTestResultFileResult
-			secret, err := ctx.InvokePackageRaw("azure-native:insights:getTestResultFile", args, &rv, "", opts...)
-			if err != nil {
-				return GetTestResultFileResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetTestResultFileResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetTestResultFileResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:insights:getTestResultFile", args, GetTestResultFileResultOutput{}, options).(GetTestResultFileResultOutput), nil
 		}).(GetTestResultFileResultOutput)
 }
 

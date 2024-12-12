@@ -48,21 +48,11 @@ type LookupEksNodegroupResult struct {
 }
 
 func LookupEksNodegroupOutput(ctx *pulumi.Context, args LookupEksNodegroupOutputArgs, opts ...pulumi.InvokeOption) LookupEksNodegroupResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupEksNodegroupResultOutput, error) {
 			args := v.(LookupEksNodegroupArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupEksNodegroupResult
-			secret, err := ctx.InvokePackageRaw("azure-native:awsconnector/v20241201:getEksNodegroup", args, &rv, "", opts...)
-			if err != nil {
-				return LookupEksNodegroupResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupEksNodegroupResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupEksNodegroupResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:awsconnector/v20241201:getEksNodegroup", args, LookupEksNodegroupResultOutput{}, options).(LookupEksNodegroupResultOutput), nil
 		}).(LookupEksNodegroupResultOutput)
 }
 

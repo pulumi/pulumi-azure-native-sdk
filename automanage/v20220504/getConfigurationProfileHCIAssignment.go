@@ -48,21 +48,11 @@ type LookupConfigurationProfileHCIAssignmentResult struct {
 }
 
 func LookupConfigurationProfileHCIAssignmentOutput(ctx *pulumi.Context, args LookupConfigurationProfileHCIAssignmentOutputArgs, opts ...pulumi.InvokeOption) LookupConfigurationProfileHCIAssignmentResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupConfigurationProfileHCIAssignmentResultOutput, error) {
 			args := v.(LookupConfigurationProfileHCIAssignmentArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupConfigurationProfileHCIAssignmentResult
-			secret, err := ctx.InvokePackageRaw("azure-native:automanage/v20220504:getConfigurationProfileHCIAssignment", args, &rv, "", opts...)
-			if err != nil {
-				return LookupConfigurationProfileHCIAssignmentResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupConfigurationProfileHCIAssignmentResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupConfigurationProfileHCIAssignmentResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:automanage/v20220504:getConfigurationProfileHCIAssignment", args, LookupConfigurationProfileHCIAssignmentResultOutput{}, options).(LookupConfigurationProfileHCIAssignmentResultOutput), nil
 		}).(LookupConfigurationProfileHCIAssignmentResultOutput)
 }
 

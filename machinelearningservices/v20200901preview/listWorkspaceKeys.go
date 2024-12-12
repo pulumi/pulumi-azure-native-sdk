@@ -37,21 +37,11 @@ type ListWorkspaceKeysResult struct {
 }
 
 func ListWorkspaceKeysOutput(ctx *pulumi.Context, args ListWorkspaceKeysOutputArgs, opts ...pulumi.InvokeOption) ListWorkspaceKeysResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListWorkspaceKeysResultOutput, error) {
 			args := v.(ListWorkspaceKeysArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListWorkspaceKeysResult
-			secret, err := ctx.InvokePackageRaw("azure-native:machinelearningservices/v20200901preview:listWorkspaceKeys", args, &rv, "", opts...)
-			if err != nil {
-				return ListWorkspaceKeysResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListWorkspaceKeysResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListWorkspaceKeysResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:machinelearningservices/v20200901preview:listWorkspaceKeys", args, ListWorkspaceKeysResultOutput{}, options).(ListWorkspaceKeysResultOutput), nil
 		}).(ListWorkspaceKeysResultOutput)
 }
 

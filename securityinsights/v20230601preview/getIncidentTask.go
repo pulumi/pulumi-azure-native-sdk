@@ -60,21 +60,11 @@ type LookupIncidentTaskResult struct {
 }
 
 func LookupIncidentTaskOutput(ctx *pulumi.Context, args LookupIncidentTaskOutputArgs, opts ...pulumi.InvokeOption) LookupIncidentTaskResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupIncidentTaskResultOutput, error) {
 			args := v.(LookupIncidentTaskArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupIncidentTaskResult
-			secret, err := ctx.InvokePackageRaw("azure-native:securityinsights/v20230601preview:getIncidentTask", args, &rv, "", opts...)
-			if err != nil {
-				return LookupIncidentTaskResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupIncidentTaskResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupIncidentTaskResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:securityinsights/v20230601preview:getIncidentTask", args, LookupIncidentTaskResultOutput{}, options).(LookupIncidentTaskResultOutput), nil
 		}).(LookupIncidentTaskResultOutput)
 }
 

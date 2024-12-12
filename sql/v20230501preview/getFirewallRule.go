@@ -46,21 +46,11 @@ type LookupFirewallRuleResult struct {
 }
 
 func LookupFirewallRuleOutput(ctx *pulumi.Context, args LookupFirewallRuleOutputArgs, opts ...pulumi.InvokeOption) LookupFirewallRuleResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupFirewallRuleResultOutput, error) {
 			args := v.(LookupFirewallRuleArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupFirewallRuleResult
-			secret, err := ctx.InvokePackageRaw("azure-native:sql/v20230501preview:getFirewallRule", args, &rv, "", opts...)
-			if err != nil {
-				return LookupFirewallRuleResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupFirewallRuleResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupFirewallRuleResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:sql/v20230501preview:getFirewallRule", args, LookupFirewallRuleResultOutput{}, options).(LookupFirewallRuleResultOutput), nil
 		}).(LookupFirewallRuleResultOutput)
 }
 

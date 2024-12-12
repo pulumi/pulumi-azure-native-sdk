@@ -39,21 +39,11 @@ type ListAgentPoolQueueStatusResult struct {
 }
 
 func ListAgentPoolQueueStatusOutput(ctx *pulumi.Context, args ListAgentPoolQueueStatusOutputArgs, opts ...pulumi.InvokeOption) ListAgentPoolQueueStatusResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListAgentPoolQueueStatusResultOutput, error) {
 			args := v.(ListAgentPoolQueueStatusArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListAgentPoolQueueStatusResult
-			secret, err := ctx.InvokePackageRaw("azure-native:containerregistry:listAgentPoolQueueStatus", args, &rv, "", opts...)
-			if err != nil {
-				return ListAgentPoolQueueStatusResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListAgentPoolQueueStatusResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListAgentPoolQueueStatusResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:containerregistry:listAgentPoolQueueStatus", args, ListAgentPoolQueueStatusResultOutput{}, options).(ListAgentPoolQueueStatusResultOutput), nil
 		}).(ListAgentPoolQueueStatusResultOutput)
 }
 

@@ -62,21 +62,11 @@ type LookupWebAppVnetConnectionResult struct {
 }
 
 func LookupWebAppVnetConnectionOutput(ctx *pulumi.Context, args LookupWebAppVnetConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupWebAppVnetConnectionResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupWebAppVnetConnectionResultOutput, error) {
 			args := v.(LookupWebAppVnetConnectionArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupWebAppVnetConnectionResult
-			secret, err := ctx.InvokePackageRaw("azure-native:web:getWebAppVnetConnection", args, &rv, "", opts...)
-			if err != nil {
-				return LookupWebAppVnetConnectionResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupWebAppVnetConnectionResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupWebAppVnetConnectionResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:web:getWebAppVnetConnection", args, LookupWebAppVnetConnectionResultOutput{}, options).(LookupWebAppVnetConnectionResultOutput), nil
 		}).(LookupWebAppVnetConnectionResultOutput)
 }
 

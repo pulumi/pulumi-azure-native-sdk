@@ -41,21 +41,11 @@ type GetPartnerTopicEventSubscriptionDeliveryAttributesResult struct {
 }
 
 func GetPartnerTopicEventSubscriptionDeliveryAttributesOutput(ctx *pulumi.Context, args GetPartnerTopicEventSubscriptionDeliveryAttributesOutputArgs, opts ...pulumi.InvokeOption) GetPartnerTopicEventSubscriptionDeliveryAttributesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetPartnerTopicEventSubscriptionDeliveryAttributesResultOutput, error) {
 			args := v.(GetPartnerTopicEventSubscriptionDeliveryAttributesArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetPartnerTopicEventSubscriptionDeliveryAttributesResult
-			secret, err := ctx.InvokePackageRaw("azure-native:eventgrid:getPartnerTopicEventSubscriptionDeliveryAttributes", args, &rv, "", opts...)
-			if err != nil {
-				return GetPartnerTopicEventSubscriptionDeliveryAttributesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetPartnerTopicEventSubscriptionDeliveryAttributesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetPartnerTopicEventSubscriptionDeliveryAttributesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:eventgrid:getPartnerTopicEventSubscriptionDeliveryAttributes", args, GetPartnerTopicEventSubscriptionDeliveryAttributesResultOutput{}, options).(GetPartnerTopicEventSubscriptionDeliveryAttributesResultOutput), nil
 		}).(GetPartnerTopicEventSubscriptionDeliveryAttributesResultOutput)
 }
 

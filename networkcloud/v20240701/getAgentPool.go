@@ -86,23 +86,12 @@ func (val *LookupAgentPoolResult) Defaults() *LookupAgentPoolResult {
 
 	return &tmp
 }
-
 func LookupAgentPoolOutput(ctx *pulumi.Context, args LookupAgentPoolOutputArgs, opts ...pulumi.InvokeOption) LookupAgentPoolResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAgentPoolResultOutput, error) {
 			args := v.(LookupAgentPoolArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupAgentPoolResult
-			secret, err := ctx.InvokePackageRaw("azure-native:networkcloud/v20240701:getAgentPool", args, &rv, "", opts...)
-			if err != nil {
-				return LookupAgentPoolResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupAgentPoolResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupAgentPoolResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:networkcloud/v20240701:getAgentPool", args, LookupAgentPoolResultOutput{}, options).(LookupAgentPoolResultOutput), nil
 		}).(LookupAgentPoolResultOutput)
 }
 

@@ -72,23 +72,12 @@ func (val *LookupBackendResult) Defaults() *LookupBackendResult {
 
 	return &tmp
 }
-
 func LookupBackendOutput(ctx *pulumi.Context, args LookupBackendOutputArgs, opts ...pulumi.InvokeOption) LookupBackendResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupBackendResultOutput, error) {
 			args := v.(LookupBackendArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupBackendResult
-			secret, err := ctx.InvokePackageRaw("azure-native:apimanagement/v20230901preview:getBackend", args, &rv, "", opts...)
-			if err != nil {
-				return LookupBackendResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupBackendResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupBackendResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:apimanagement/v20230901preview:getBackend", args, LookupBackendResultOutput{}, options).(LookupBackendResultOutput), nil
 		}).(LookupBackendResultOutput)
 }
 

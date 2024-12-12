@@ -48,21 +48,11 @@ type LookupAuthorityResult struct {
 }
 
 func LookupAuthorityOutput(ctx *pulumi.Context, args LookupAuthorityOutputArgs, opts ...pulumi.InvokeOption) LookupAuthorityResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAuthorityResultOutput, error) {
 			args := v.(LookupAuthorityArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupAuthorityResult
-			secret, err := ctx.InvokePackageRaw("azure-native:verifiedid/v20240126preview:getAuthority", args, &rv, "", opts...)
-			if err != nil {
-				return LookupAuthorityResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupAuthorityResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupAuthorityResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:verifiedid/v20240126preview:getAuthority", args, LookupAuthorityResultOutput{}, options).(LookupAuthorityResultOutput), nil
 		}).(LookupAuthorityResultOutput)
 }
 

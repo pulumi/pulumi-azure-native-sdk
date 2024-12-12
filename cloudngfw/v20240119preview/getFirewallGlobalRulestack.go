@@ -36,21 +36,11 @@ type GetFirewallGlobalRulestackResult struct {
 }
 
 func GetFirewallGlobalRulestackOutput(ctx *pulumi.Context, args GetFirewallGlobalRulestackOutputArgs, opts ...pulumi.InvokeOption) GetFirewallGlobalRulestackResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetFirewallGlobalRulestackResultOutput, error) {
 			args := v.(GetFirewallGlobalRulestackArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetFirewallGlobalRulestackResult
-			secret, err := ctx.InvokePackageRaw("azure-native:cloudngfw/v20240119preview:getFirewallGlobalRulestack", args, &rv, "", opts...)
-			if err != nil {
-				return GetFirewallGlobalRulestackResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetFirewallGlobalRulestackResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetFirewallGlobalRulestackResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:cloudngfw/v20240119preview:getFirewallGlobalRulestack", args, GetFirewallGlobalRulestackResultOutput{}, options).(GetFirewallGlobalRulestackResultOutput), nil
 		}).(GetFirewallGlobalRulestackResultOutput)
 }
 

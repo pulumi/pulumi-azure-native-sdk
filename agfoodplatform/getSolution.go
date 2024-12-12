@@ -51,21 +51,11 @@ type LookupSolutionResult struct {
 }
 
 func LookupSolutionOutput(ctx *pulumi.Context, args LookupSolutionOutputArgs, opts ...pulumi.InvokeOption) LookupSolutionResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupSolutionResultOutput, error) {
 			args := v.(LookupSolutionArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupSolutionResult
-			secret, err := ctx.InvokePackageRaw("azure-native:agfoodplatform:getSolution", args, &rv, "", opts...)
-			if err != nil {
-				return LookupSolutionResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupSolutionResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupSolutionResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:agfoodplatform:getSolution", args, LookupSolutionResultOutput{}, options).(LookupSolutionResultOutput), nil
 		}).(LookupSolutionResultOutput)
 }
 

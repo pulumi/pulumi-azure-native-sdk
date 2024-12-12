@@ -68,21 +68,11 @@ type LookupMyWorkbookResult struct {
 }
 
 func LookupMyWorkbookOutput(ctx *pulumi.Context, args LookupMyWorkbookOutputArgs, opts ...pulumi.InvokeOption) LookupMyWorkbookResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupMyWorkbookResultOutput, error) {
 			args := v.(LookupMyWorkbookArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupMyWorkbookResult
-			secret, err := ctx.InvokePackageRaw("azure-native:insights/v20210308:getMyWorkbook", args, &rv, "", opts...)
-			if err != nil {
-				return LookupMyWorkbookResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupMyWorkbookResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupMyWorkbookResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:insights/v20210308:getMyWorkbook", args, LookupMyWorkbookResultOutput{}, options).(LookupMyWorkbookResultOutput), nil
 		}).(LookupMyWorkbookResultOutput)
 }
 

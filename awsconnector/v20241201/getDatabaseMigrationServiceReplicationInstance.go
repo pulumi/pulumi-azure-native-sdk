@@ -48,21 +48,11 @@ type LookupDatabaseMigrationServiceReplicationInstanceResult struct {
 }
 
 func LookupDatabaseMigrationServiceReplicationInstanceOutput(ctx *pulumi.Context, args LookupDatabaseMigrationServiceReplicationInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupDatabaseMigrationServiceReplicationInstanceResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupDatabaseMigrationServiceReplicationInstanceResultOutput, error) {
 			args := v.(LookupDatabaseMigrationServiceReplicationInstanceArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupDatabaseMigrationServiceReplicationInstanceResult
-			secret, err := ctx.InvokePackageRaw("azure-native:awsconnector/v20241201:getDatabaseMigrationServiceReplicationInstance", args, &rv, "", opts...)
-			if err != nil {
-				return LookupDatabaseMigrationServiceReplicationInstanceResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupDatabaseMigrationServiceReplicationInstanceResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupDatabaseMigrationServiceReplicationInstanceResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:awsconnector/v20241201:getDatabaseMigrationServiceReplicationInstance", args, LookupDatabaseMigrationServiceReplicationInstanceResultOutput{}, options).(LookupDatabaseMigrationServiceReplicationInstanceResultOutput), nil
 		}).(LookupDatabaseMigrationServiceReplicationInstanceResultOutput)
 }
 

@@ -51,21 +51,11 @@ type LookupProjectPolicyResult struct {
 }
 
 func LookupProjectPolicyOutput(ctx *pulumi.Context, args LookupProjectPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupProjectPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupProjectPolicyResultOutput, error) {
 			args := v.(LookupProjectPolicyArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupProjectPolicyResult
-			secret, err := ctx.InvokePackageRaw("azure-native:devcenter:getProjectPolicy", args, &rv, "", opts...)
-			if err != nil {
-				return LookupProjectPolicyResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupProjectPolicyResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupProjectPolicyResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:devcenter:getProjectPolicy", args, LookupProjectPolicyResultOutput{}, options).(LookupProjectPolicyResultOutput), nil
 		}).(LookupProjectPolicyResultOutput)
 }
 

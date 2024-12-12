@@ -54,21 +54,11 @@ type LookupContainerAppsSourceControlResult struct {
 }
 
 func LookupContainerAppsSourceControlOutput(ctx *pulumi.Context, args LookupContainerAppsSourceControlOutputArgs, opts ...pulumi.InvokeOption) LookupContainerAppsSourceControlResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupContainerAppsSourceControlResultOutput, error) {
 			args := v.(LookupContainerAppsSourceControlArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupContainerAppsSourceControlResult
-			secret, err := ctx.InvokePackageRaw("azure-native:app/v20230501:getContainerAppsSourceControl", args, &rv, "", opts...)
-			if err != nil {
-				return LookupContainerAppsSourceControlResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupContainerAppsSourceControlResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupContainerAppsSourceControlResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:app/v20230501:getContainerAppsSourceControl", args, LookupContainerAppsSourceControlResultOutput{}, options).(LookupContainerAppsSourceControlResultOutput), nil
 		}).(LookupContainerAppsSourceControlResultOutput)
 }
 

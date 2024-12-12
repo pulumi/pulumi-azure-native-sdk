@@ -50,21 +50,11 @@ type LookupVolumeGroupResult struct {
 }
 
 func LookupVolumeGroupOutput(ctx *pulumi.Context, args LookupVolumeGroupOutputArgs, opts ...pulumi.InvokeOption) LookupVolumeGroupResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupVolumeGroupResultOutput, error) {
 			args := v.(LookupVolumeGroupArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupVolumeGroupResult
-			secret, err := ctx.InvokePackageRaw("azure-native:netapp/v20230701:getVolumeGroup", args, &rv, "", opts...)
-			if err != nil {
-				return LookupVolumeGroupResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupVolumeGroupResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupVolumeGroupResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:netapp/v20230701:getVolumeGroup", args, LookupVolumeGroupResultOutput{}, options).(LookupVolumeGroupResultOutput), nil
 		}).(LookupVolumeGroupResultOutput)
 }
 

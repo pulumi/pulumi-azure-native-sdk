@@ -40,21 +40,11 @@ type ListNamespaceTopicSharedAccessKeysResult struct {
 }
 
 func ListNamespaceTopicSharedAccessKeysOutput(ctx *pulumi.Context, args ListNamespaceTopicSharedAccessKeysOutputArgs, opts ...pulumi.InvokeOption) ListNamespaceTopicSharedAccessKeysResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListNamespaceTopicSharedAccessKeysResultOutput, error) {
 			args := v.(ListNamespaceTopicSharedAccessKeysArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListNamespaceTopicSharedAccessKeysResult
-			secret, err := ctx.InvokePackageRaw("azure-native:eventgrid/v20230601preview:listNamespaceTopicSharedAccessKeys", args, &rv, "", opts...)
-			if err != nil {
-				return ListNamespaceTopicSharedAccessKeysResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListNamespaceTopicSharedAccessKeysResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListNamespaceTopicSharedAccessKeysResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:eventgrid/v20230601preview:listNamespaceTopicSharedAccessKeys", args, ListNamespaceTopicSharedAccessKeysResultOutput{}, options).(ListNamespaceTopicSharedAccessKeysResultOutput), nil
 		}).(ListNamespaceTopicSharedAccessKeysResultOutput)
 }
 

@@ -58,21 +58,11 @@ type LookupAssessmentsMetadataSubscriptionResult struct {
 }
 
 func LookupAssessmentsMetadataSubscriptionOutput(ctx *pulumi.Context, args LookupAssessmentsMetadataSubscriptionOutputArgs, opts ...pulumi.InvokeOption) LookupAssessmentsMetadataSubscriptionResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAssessmentsMetadataSubscriptionResultOutput, error) {
 			args := v.(LookupAssessmentsMetadataSubscriptionArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupAssessmentsMetadataSubscriptionResult
-			secret, err := ctx.InvokePackageRaw("azure-native:security/v20190101preview:getAssessmentsMetadataSubscription", args, &rv, "", opts...)
-			if err != nil {
-				return LookupAssessmentsMetadataSubscriptionResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupAssessmentsMetadataSubscriptionResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupAssessmentsMetadataSubscriptionResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:security/v20190101preview:getAssessmentsMetadataSubscription", args, LookupAssessmentsMetadataSubscriptionResultOutput{}, options).(LookupAssessmentsMetadataSubscriptionResultOutput), nil
 		}).(LookupAssessmentsMetadataSubscriptionResultOutput)
 }
 

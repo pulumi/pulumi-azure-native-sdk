@@ -38,21 +38,11 @@ type ListRemediationDeploymentsAtSubscriptionResult struct {
 }
 
 func ListRemediationDeploymentsAtSubscriptionOutput(ctx *pulumi.Context, args ListRemediationDeploymentsAtSubscriptionOutputArgs, opts ...pulumi.InvokeOption) ListRemediationDeploymentsAtSubscriptionResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListRemediationDeploymentsAtSubscriptionResultOutput, error) {
 			args := v.(ListRemediationDeploymentsAtSubscriptionArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListRemediationDeploymentsAtSubscriptionResult
-			secret, err := ctx.InvokePackageRaw("azure-native:policyinsights/v20241001:listRemediationDeploymentsAtSubscription", args, &rv, "", opts...)
-			if err != nil {
-				return ListRemediationDeploymentsAtSubscriptionResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListRemediationDeploymentsAtSubscriptionResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListRemediationDeploymentsAtSubscriptionResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:policyinsights/v20241001:listRemediationDeploymentsAtSubscription", args, ListRemediationDeploymentsAtSubscriptionResultOutput{}, options).(ListRemediationDeploymentsAtSubscriptionResultOutput), nil
 		}).(ListRemediationDeploymentsAtSubscriptionResultOutput)
 }
 

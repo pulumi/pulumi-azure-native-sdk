@@ -49,21 +49,11 @@ type LookupLightsailBucketResult struct {
 }
 
 func LookupLightsailBucketOutput(ctx *pulumi.Context, args LookupLightsailBucketOutputArgs, opts ...pulumi.InvokeOption) LookupLightsailBucketResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupLightsailBucketResultOutput, error) {
 			args := v.(LookupLightsailBucketArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupLightsailBucketResult
-			secret, err := ctx.InvokePackageRaw("azure-native:awsconnector:getLightsailBucket", args, &rv, "", opts...)
-			if err != nil {
-				return LookupLightsailBucketResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupLightsailBucketResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupLightsailBucketResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:awsconnector:getLightsailBucket", args, LookupLightsailBucketResultOutput{}, options).(LookupLightsailBucketResultOutput), nil
 		}).(LookupLightsailBucketResultOutput)
 }
 

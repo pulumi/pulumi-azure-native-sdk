@@ -60,21 +60,11 @@ type LookupWebAppPremierAddOnSlotResult struct {
 }
 
 func LookupWebAppPremierAddOnSlotOutput(ctx *pulumi.Context, args LookupWebAppPremierAddOnSlotOutputArgs, opts ...pulumi.InvokeOption) LookupWebAppPremierAddOnSlotResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupWebAppPremierAddOnSlotResultOutput, error) {
 			args := v.(LookupWebAppPremierAddOnSlotArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupWebAppPremierAddOnSlotResult
-			secret, err := ctx.InvokePackageRaw("azure-native:web/v20231201:getWebAppPremierAddOnSlot", args, &rv, "", opts...)
-			if err != nil {
-				return LookupWebAppPremierAddOnSlotResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupWebAppPremierAddOnSlotResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupWebAppPremierAddOnSlotResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:web/v20231201:getWebAppPremierAddOnSlot", args, LookupWebAppPremierAddOnSlotResultOutput{}, options).(LookupWebAppPremierAddOnSlotResultOutput), nil
 		}).(LookupWebAppPremierAddOnSlotResultOutput)
 }
 

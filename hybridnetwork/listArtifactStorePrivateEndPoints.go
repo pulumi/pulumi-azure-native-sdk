@@ -41,21 +41,11 @@ type ListArtifactStorePrivateEndPointsResult struct {
 }
 
 func ListArtifactStorePrivateEndPointsOutput(ctx *pulumi.Context, args ListArtifactStorePrivateEndPointsOutputArgs, opts ...pulumi.InvokeOption) ListArtifactStorePrivateEndPointsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListArtifactStorePrivateEndPointsResultOutput, error) {
 			args := v.(ListArtifactStorePrivateEndPointsArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListArtifactStorePrivateEndPointsResult
-			secret, err := ctx.InvokePackageRaw("azure-native:hybridnetwork:listArtifactStorePrivateEndPoints", args, &rv, "", opts...)
-			if err != nil {
-				return ListArtifactStorePrivateEndPointsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListArtifactStorePrivateEndPointsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListArtifactStorePrivateEndPointsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:hybridnetwork:listArtifactStorePrivateEndPoints", args, ListArtifactStorePrivateEndPointsResultOutput{}, options).(ListArtifactStorePrivateEndPointsResultOutput), nil
 		}).(ListArtifactStorePrivateEndPointsResultOutput)
 }
 

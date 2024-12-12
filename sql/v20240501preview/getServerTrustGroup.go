@@ -46,21 +46,11 @@ type LookupServerTrustGroupResult struct {
 }
 
 func LookupServerTrustGroupOutput(ctx *pulumi.Context, args LookupServerTrustGroupOutputArgs, opts ...pulumi.InvokeOption) LookupServerTrustGroupResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupServerTrustGroupResultOutput, error) {
 			args := v.(LookupServerTrustGroupArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupServerTrustGroupResult
-			secret, err := ctx.InvokePackageRaw("azure-native:sql/v20240501preview:getServerTrustGroup", args, &rv, "", opts...)
-			if err != nil {
-				return LookupServerTrustGroupResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupServerTrustGroupResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupServerTrustGroupResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:sql/v20240501preview:getServerTrustGroup", args, LookupServerTrustGroupResultOutput{}, options).(LookupServerTrustGroupResultOutput), nil
 		}).(LookupServerTrustGroupResultOutput)
 }
 

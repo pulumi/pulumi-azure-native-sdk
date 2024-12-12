@@ -58,21 +58,11 @@ type LookupVendorSkusResult struct {
 }
 
 func LookupVendorSkusOutput(ctx *pulumi.Context, args LookupVendorSkusOutputArgs, opts ...pulumi.InvokeOption) LookupVendorSkusResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupVendorSkusResultOutput, error) {
 			args := v.(LookupVendorSkusArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupVendorSkusResult
-			secret, err := ctx.InvokePackageRaw("azure-native:hybridnetwork/v20220101preview:getVendorSkus", args, &rv, "", opts...)
-			if err != nil {
-				return LookupVendorSkusResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupVendorSkusResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupVendorSkusResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:hybridnetwork/v20220101preview:getVendorSkus", args, LookupVendorSkusResultOutput{}, options).(LookupVendorSkusResultOutput), nil
 		}).(LookupVendorSkusResultOutput)
 }
 

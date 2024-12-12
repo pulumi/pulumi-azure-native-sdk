@@ -51,21 +51,11 @@ type LookupAnomaliesResult struct {
 }
 
 func LookupAnomaliesOutput(ctx *pulumi.Context, args LookupAnomaliesOutputArgs, opts ...pulumi.InvokeOption) LookupAnomaliesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAnomaliesResultOutput, error) {
 			args := v.(LookupAnomaliesArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupAnomaliesResult
-			secret, err := ctx.InvokePackageRaw("azure-native:securityinsights/v20230801preview:getAnomalies", args, &rv, "", opts...)
-			if err != nil {
-				return LookupAnomaliesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupAnomaliesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupAnomaliesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:securityinsights/v20230801preview:getAnomalies", args, LookupAnomaliesResultOutput{}, options).(LookupAnomaliesResultOutput), nil
 		}).(LookupAnomaliesResultOutput)
 }
 

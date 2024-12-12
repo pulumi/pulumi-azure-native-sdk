@@ -46,21 +46,11 @@ type LookupJavaComponentResult struct {
 }
 
 func LookupJavaComponentOutput(ctx *pulumi.Context, args LookupJavaComponentOutputArgs, opts ...pulumi.InvokeOption) LookupJavaComponentResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupJavaComponentResultOutput, error) {
 			args := v.(LookupJavaComponentArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupJavaComponentResult
-			secret, err := ctx.InvokePackageRaw("azure-native:app/v20241002preview:getJavaComponent", args, &rv, "", opts...)
-			if err != nil {
-				return LookupJavaComponentResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupJavaComponentResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupJavaComponentResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:app/v20241002preview:getJavaComponent", args, LookupJavaComponentResultOutput{}, options).(LookupJavaComponentResultOutput), nil
 		}).(LookupJavaComponentResultOutput)
 }
 

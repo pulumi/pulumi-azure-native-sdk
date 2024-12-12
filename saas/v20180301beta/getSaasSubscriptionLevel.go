@@ -44,21 +44,11 @@ type LookupSaasSubscriptionLevelResult struct {
 }
 
 func LookupSaasSubscriptionLevelOutput(ctx *pulumi.Context, args LookupSaasSubscriptionLevelOutputArgs, opts ...pulumi.InvokeOption) LookupSaasSubscriptionLevelResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupSaasSubscriptionLevelResultOutput, error) {
 			args := v.(LookupSaasSubscriptionLevelArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupSaasSubscriptionLevelResult
-			secret, err := ctx.InvokePackageRaw("azure-native:saas/v20180301beta:getSaasSubscriptionLevel", args, &rv, "", opts...)
-			if err != nil {
-				return LookupSaasSubscriptionLevelResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupSaasSubscriptionLevelResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupSaasSubscriptionLevelResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:saas/v20180301beta:getSaasSubscriptionLevel", args, LookupSaasSubscriptionLevelResultOutput{}, options).(LookupSaasSubscriptionLevelResultOutput), nil
 		}).(LookupSaasSubscriptionLevelResultOutput)
 }
 

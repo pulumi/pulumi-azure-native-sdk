@@ -38,21 +38,11 @@ type ListEdgeSiteL2ConnectionsResult struct {
 }
 
 func ListEdgeSiteL2ConnectionsOutput(ctx *pulumi.Context, args ListEdgeSiteL2ConnectionsOutputArgs, opts ...pulumi.InvokeOption) ListEdgeSiteL2ConnectionsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListEdgeSiteL2ConnectionsResultOutput, error) {
 			args := v.(ListEdgeSiteL2ConnectionsArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListEdgeSiteL2ConnectionsResult
-			secret, err := ctx.InvokePackageRaw("azure-native:orbital/v20240301:listEdgeSiteL2Connections", args, &rv, "", opts...)
-			if err != nil {
-				return ListEdgeSiteL2ConnectionsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListEdgeSiteL2ConnectionsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListEdgeSiteL2ConnectionsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:orbital/v20240301:listEdgeSiteL2Connections", args, ListEdgeSiteL2ConnectionsResultOutput{}, options).(ListEdgeSiteL2ConnectionsResultOutput), nil
 		}).(ListEdgeSiteL2ConnectionsResultOutput)
 }
 

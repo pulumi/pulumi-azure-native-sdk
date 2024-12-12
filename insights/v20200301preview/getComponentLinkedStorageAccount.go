@@ -44,21 +44,11 @@ type LookupComponentLinkedStorageAccountResult struct {
 }
 
 func LookupComponentLinkedStorageAccountOutput(ctx *pulumi.Context, args LookupComponentLinkedStorageAccountOutputArgs, opts ...pulumi.InvokeOption) LookupComponentLinkedStorageAccountResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupComponentLinkedStorageAccountResultOutput, error) {
 			args := v.(LookupComponentLinkedStorageAccountArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupComponentLinkedStorageAccountResult
-			secret, err := ctx.InvokePackageRaw("azure-native:insights/v20200301preview:getComponentLinkedStorageAccount", args, &rv, "", opts...)
-			if err != nil {
-				return LookupComponentLinkedStorageAccountResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupComponentLinkedStorageAccountResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupComponentLinkedStorageAccountResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:insights/v20200301preview:getComponentLinkedStorageAccount", args, LookupComponentLinkedStorageAccountResultOutput{}, options).(LookupComponentLinkedStorageAccountResultOutput), nil
 		}).(LookupComponentLinkedStorageAccountResultOutput)
 }
 

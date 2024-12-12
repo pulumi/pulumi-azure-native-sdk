@@ -40,21 +40,11 @@ type GetDomainTopicEventSubscriptionFullUrlResult struct {
 }
 
 func GetDomainTopicEventSubscriptionFullUrlOutput(ctx *pulumi.Context, args GetDomainTopicEventSubscriptionFullUrlOutputArgs, opts ...pulumi.InvokeOption) GetDomainTopicEventSubscriptionFullUrlResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetDomainTopicEventSubscriptionFullUrlResultOutput, error) {
 			args := v.(GetDomainTopicEventSubscriptionFullUrlArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetDomainTopicEventSubscriptionFullUrlResult
-			secret, err := ctx.InvokePackageRaw("azure-native:eventgrid/v20241215preview:getDomainTopicEventSubscriptionFullUrl", args, &rv, "", opts...)
-			if err != nil {
-				return GetDomainTopicEventSubscriptionFullUrlResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetDomainTopicEventSubscriptionFullUrlResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetDomainTopicEventSubscriptionFullUrlResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:eventgrid/v20241215preview:getDomainTopicEventSubscriptionFullUrl", args, GetDomainTopicEventSubscriptionFullUrlResultOutput{}, options).(GetDomainTopicEventSubscriptionFullUrlResultOutput), nil
 		}).(GetDomainTopicEventSubscriptionFullUrlResultOutput)
 }
 

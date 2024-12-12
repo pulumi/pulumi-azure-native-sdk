@@ -48,21 +48,11 @@ type LookupEfsFileSystemResult struct {
 }
 
 func LookupEfsFileSystemOutput(ctx *pulumi.Context, args LookupEfsFileSystemOutputArgs, opts ...pulumi.InvokeOption) LookupEfsFileSystemResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupEfsFileSystemResultOutput, error) {
 			args := v.(LookupEfsFileSystemArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupEfsFileSystemResult
-			secret, err := ctx.InvokePackageRaw("azure-native:awsconnector/v20241201:getEfsFileSystem", args, &rv, "", opts...)
-			if err != nil {
-				return LookupEfsFileSystemResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupEfsFileSystemResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupEfsFileSystemResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:awsconnector/v20241201:getEfsFileSystem", args, LookupEfsFileSystemResultOutput{}, options).(LookupEfsFileSystemResultOutput), nil
 		}).(LookupEfsFileSystemResultOutput)
 }
 

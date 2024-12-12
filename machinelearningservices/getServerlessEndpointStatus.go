@@ -39,21 +39,11 @@ type GetServerlessEndpointStatusResult struct {
 }
 
 func GetServerlessEndpointStatusOutput(ctx *pulumi.Context, args GetServerlessEndpointStatusOutputArgs, opts ...pulumi.InvokeOption) GetServerlessEndpointStatusResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetServerlessEndpointStatusResultOutput, error) {
 			args := v.(GetServerlessEndpointStatusArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetServerlessEndpointStatusResult
-			secret, err := ctx.InvokePackageRaw("azure-native:machinelearningservices:getServerlessEndpointStatus", args, &rv, "", opts...)
-			if err != nil {
-				return GetServerlessEndpointStatusResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetServerlessEndpointStatusResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetServerlessEndpointStatusResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:machinelearningservices:getServerlessEndpointStatus", args, GetServerlessEndpointStatusResultOutput{}, options).(GetServerlessEndpointStatusResultOutput), nil
 		}).(GetServerlessEndpointStatusResultOutput)
 }
 

@@ -54,21 +54,11 @@ type LookupAzureLargeStorageInstanceResult struct {
 }
 
 func LookupAzureLargeStorageInstanceOutput(ctx *pulumi.Context, args LookupAzureLargeStorageInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupAzureLargeStorageInstanceResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAzureLargeStorageInstanceResultOutput, error) {
 			args := v.(LookupAzureLargeStorageInstanceArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupAzureLargeStorageInstanceResult
-			secret, err := ctx.InvokePackageRaw("azure-native:azurelargeinstance/v20240801preview:getAzureLargeStorageInstance", args, &rv, "", opts...)
-			if err != nil {
-				return LookupAzureLargeStorageInstanceResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupAzureLargeStorageInstanceResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupAzureLargeStorageInstanceResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:azurelargeinstance/v20240801preview:getAzureLargeStorageInstance", args, LookupAzureLargeStorageInstanceResultOutput{}, options).(LookupAzureLargeStorageInstanceResultOutput), nil
 		}).(LookupAzureLargeStorageInstanceResultOutput)
 }
 

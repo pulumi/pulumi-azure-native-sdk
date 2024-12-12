@@ -55,21 +55,11 @@ type LookupPartnerResult struct {
 }
 
 func LookupPartnerOutput(ctx *pulumi.Context, args LookupPartnerOutputArgs, opts ...pulumi.InvokeOption) LookupPartnerResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupPartnerResultOutput, error) {
 			args := v.(LookupPartnerArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupPartnerResult
-			secret, err := ctx.InvokePackageRaw("azure-native:managementpartner:getPartner", args, &rv, "", opts...)
-			if err != nil {
-				return LookupPartnerResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupPartnerResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupPartnerResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:managementpartner:getPartner", args, LookupPartnerResultOutput{}, options).(LookupPartnerResultOutput), nil
 		}).(LookupPartnerResultOutput)
 }
 

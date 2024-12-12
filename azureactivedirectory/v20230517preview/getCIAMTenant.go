@@ -59,21 +59,11 @@ type LookupCIAMTenantResult struct {
 }
 
 func LookupCIAMTenantOutput(ctx *pulumi.Context, args LookupCIAMTenantOutputArgs, opts ...pulumi.InvokeOption) LookupCIAMTenantResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupCIAMTenantResultOutput, error) {
 			args := v.(LookupCIAMTenantArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupCIAMTenantResult
-			secret, err := ctx.InvokePackageRaw("azure-native:azureactivedirectory/v20230517preview:getCIAMTenant", args, &rv, "", opts...)
-			if err != nil {
-				return LookupCIAMTenantResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupCIAMTenantResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupCIAMTenantResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:azureactivedirectory/v20230517preview:getCIAMTenant", args, LookupCIAMTenantResultOutput{}, options).(LookupCIAMTenantResultOutput), nil
 		}).(LookupCIAMTenantResultOutput)
 }
 

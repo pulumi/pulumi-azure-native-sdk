@@ -58,21 +58,11 @@ type LookupBuildResult struct {
 }
 
 func LookupBuildOutput(ctx *pulumi.Context, args LookupBuildOutputArgs, opts ...pulumi.InvokeOption) LookupBuildResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupBuildResultOutput, error) {
 			args := v.(LookupBuildArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupBuildResult
-			secret, err := ctx.InvokePackageRaw("azure-native:app/v20240802preview:getBuild", args, &rv, "", opts...)
-			if err != nil {
-				return LookupBuildResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupBuildResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupBuildResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:app/v20240802preview:getBuild", args, LookupBuildResultOutput{}, options).(LookupBuildResultOutput), nil
 		}).(LookupBuildResultOutput)
 }
 

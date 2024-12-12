@@ -42,21 +42,11 @@ type GetVolumeGroupIdForLdapUserResult struct {
 }
 
 func GetVolumeGroupIdForLdapUserOutput(ctx *pulumi.Context, args GetVolumeGroupIdForLdapUserOutputArgs, opts ...pulumi.InvokeOption) GetVolumeGroupIdForLdapUserResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetVolumeGroupIdForLdapUserResultOutput, error) {
 			args := v.(GetVolumeGroupIdForLdapUserArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetVolumeGroupIdForLdapUserResult
-			secret, err := ctx.InvokePackageRaw("azure-native:netapp/v20240501:getVolumeGroupIdForLdapUser", args, &rv, "", opts...)
-			if err != nil {
-				return GetVolumeGroupIdForLdapUserResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetVolumeGroupIdForLdapUserResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetVolumeGroupIdForLdapUserResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:netapp/v20240501:getVolumeGroupIdForLdapUser", args, GetVolumeGroupIdForLdapUserResultOutput{}, options).(GetVolumeGroupIdForLdapUserResultOutput), nil
 		}).(GetVolumeGroupIdForLdapUserResultOutput)
 }
 

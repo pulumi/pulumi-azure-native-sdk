@@ -60,21 +60,11 @@ type LookupCustomDomainResult struct {
 }
 
 func LookupCustomDomainOutput(ctx *pulumi.Context, args LookupCustomDomainOutputArgs, opts ...pulumi.InvokeOption) LookupCustomDomainResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupCustomDomainResultOutput, error) {
 			args := v.(LookupCustomDomainArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupCustomDomainResult
-			secret, err := ctx.InvokePackageRaw("azure-native:cdn/v20240201:getCustomDomain", args, &rv, "", opts...)
-			if err != nil {
-				return LookupCustomDomainResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupCustomDomainResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupCustomDomainResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:cdn/v20240201:getCustomDomain", args, LookupCustomDomainResultOutput{}, options).(LookupCustomDomainResultOutput), nil
 		}).(LookupCustomDomainResultOutput)
 }
 

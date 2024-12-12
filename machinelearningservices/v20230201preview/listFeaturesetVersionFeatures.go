@@ -46,21 +46,11 @@ type ListFeaturesetVersionFeaturesResult struct {
 }
 
 func ListFeaturesetVersionFeaturesOutput(ctx *pulumi.Context, args ListFeaturesetVersionFeaturesOutputArgs, opts ...pulumi.InvokeOption) ListFeaturesetVersionFeaturesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListFeaturesetVersionFeaturesResultOutput, error) {
 			args := v.(ListFeaturesetVersionFeaturesArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListFeaturesetVersionFeaturesResult
-			secret, err := ctx.InvokePackageRaw("azure-native:machinelearningservices/v20230201preview:listFeaturesetVersionFeatures", args, &rv, "", opts...)
-			if err != nil {
-				return ListFeaturesetVersionFeaturesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListFeaturesetVersionFeaturesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListFeaturesetVersionFeaturesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:machinelearningservices/v20230201preview:listFeaturesetVersionFeatures", args, ListFeaturesetVersionFeaturesResultOutput{}, options).(ListFeaturesetVersionFeaturesResultOutput), nil
 		}).(ListFeaturesetVersionFeaturesResultOutput)
 }
 

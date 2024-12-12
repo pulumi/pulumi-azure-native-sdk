@@ -68,21 +68,11 @@ type LookupLiveOutputResult struct {
 }
 
 func LookupLiveOutputOutput(ctx *pulumi.Context, args LookupLiveOutputOutputArgs, opts ...pulumi.InvokeOption) LookupLiveOutputResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupLiveOutputResultOutput, error) {
 			args := v.(LookupLiveOutputArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupLiveOutputResult
-			secret, err := ctx.InvokePackageRaw("azure-native:media/v20221101:getLiveOutput", args, &rv, "", opts...)
-			if err != nil {
-				return LookupLiveOutputResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupLiveOutputResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupLiveOutputResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:media/v20221101:getLiveOutput", args, LookupLiveOutputResultOutput{}, options).(LookupLiveOutputResultOutput), nil
 		}).(LookupLiveOutputResultOutput)
 }
 

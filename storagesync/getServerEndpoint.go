@@ -89,21 +89,11 @@ type LookupServerEndpointResult struct {
 }
 
 func LookupServerEndpointOutput(ctx *pulumi.Context, args LookupServerEndpointOutputArgs, opts ...pulumi.InvokeOption) LookupServerEndpointResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupServerEndpointResultOutput, error) {
 			args := v.(LookupServerEndpointArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupServerEndpointResult
-			secret, err := ctx.InvokePackageRaw("azure-native:storagesync:getServerEndpoint", args, &rv, "", opts...)
-			if err != nil {
-				return LookupServerEndpointResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupServerEndpointResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupServerEndpointResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:storagesync:getServerEndpoint", args, LookupServerEndpointResultOutput{}, options).(LookupServerEndpointResultOutput), nil
 		}).(LookupServerEndpointResultOutput)
 }
 

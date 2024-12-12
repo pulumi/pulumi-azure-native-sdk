@@ -54,21 +54,11 @@ type LookupSystemResult struct {
 }
 
 func LookupSystemOutput(ctx *pulumi.Context, args LookupSystemOutputArgs, opts ...pulumi.InvokeOption) LookupSystemResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupSystemResultOutput, error) {
 			args := v.(LookupSystemArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupSystemResult
-			secret, err := ctx.InvokePackageRaw("azure-native:securityinsights/v20240401preview:getSystem", args, &rv, "", opts...)
-			if err != nil {
-				return LookupSystemResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupSystemResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupSystemResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:securityinsights/v20240401preview:getSystem", args, LookupSystemResultOutput{}, options).(LookupSystemResultOutput), nil
 		}).(LookupSystemResultOutput)
 }
 

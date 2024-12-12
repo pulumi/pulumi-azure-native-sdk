@@ -127,21 +127,11 @@ type LookupSqlAssessmentV2OperationResult struct {
 }
 
 func LookupSqlAssessmentV2OperationOutput(ctx *pulumi.Context, args LookupSqlAssessmentV2OperationOutputArgs, opts ...pulumi.InvokeOption) LookupSqlAssessmentV2OperationResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupSqlAssessmentV2OperationResultOutput, error) {
 			args := v.(LookupSqlAssessmentV2OperationArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupSqlAssessmentV2OperationResult
-			secret, err := ctx.InvokePackageRaw("azure-native:migrate/v20230401preview:getSqlAssessmentV2Operation", args, &rv, "", opts...)
-			if err != nil {
-				return LookupSqlAssessmentV2OperationResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupSqlAssessmentV2OperationResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupSqlAssessmentV2OperationResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:migrate/v20230401preview:getSqlAssessmentV2Operation", args, LookupSqlAssessmentV2OperationResultOutput{}, options).(LookupSqlAssessmentV2OperationResultOutput), nil
 		}).(LookupSqlAssessmentV2OperationResultOutput)
 }
 

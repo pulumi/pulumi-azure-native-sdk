@@ -62,21 +62,11 @@ type LookupDatabaseSecurityAlertPolicyResult struct {
 }
 
 func LookupDatabaseSecurityAlertPolicyOutput(ctx *pulumi.Context, args LookupDatabaseSecurityAlertPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupDatabaseSecurityAlertPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupDatabaseSecurityAlertPolicyResultOutput, error) {
 			args := v.(LookupDatabaseSecurityAlertPolicyArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupDatabaseSecurityAlertPolicyResult
-			secret, err := ctx.InvokePackageRaw("azure-native:sql/v20230501preview:getDatabaseSecurityAlertPolicy", args, &rv, "", opts...)
-			if err != nil {
-				return LookupDatabaseSecurityAlertPolicyResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupDatabaseSecurityAlertPolicyResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupDatabaseSecurityAlertPolicyResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:sql/v20230501preview:getDatabaseSecurityAlertPolicy", args, LookupDatabaseSecurityAlertPolicyResultOutput{}, options).(LookupDatabaseSecurityAlertPolicyResultOutput), nil
 		}).(LookupDatabaseSecurityAlertPolicyResultOutput)
 }
 

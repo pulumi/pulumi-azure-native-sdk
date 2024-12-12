@@ -80,21 +80,11 @@ type LookupWebAppSiteExtensionResult struct {
 }
 
 func LookupWebAppSiteExtensionOutput(ctx *pulumi.Context, args LookupWebAppSiteExtensionOutputArgs, opts ...pulumi.InvokeOption) LookupWebAppSiteExtensionResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupWebAppSiteExtensionResultOutput, error) {
 			args := v.(LookupWebAppSiteExtensionArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupWebAppSiteExtensionResult
-			secret, err := ctx.InvokePackageRaw("azure-native:web/v20160801:getWebAppSiteExtension", args, &rv, "", opts...)
-			if err != nil {
-				return LookupWebAppSiteExtensionResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupWebAppSiteExtensionResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupWebAppSiteExtensionResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:web/v20160801:getWebAppSiteExtension", args, LookupWebAppSiteExtensionResultOutput{}, options).(LookupWebAppSiteExtensionResultOutput), nil
 		}).(LookupWebAppSiteExtensionResultOutput)
 }
 

@@ -46,21 +46,11 @@ type LookupConnectedEnvironmentsStorageResult struct {
 }
 
 func LookupConnectedEnvironmentsStorageOutput(ctx *pulumi.Context, args LookupConnectedEnvironmentsStorageOutputArgs, opts ...pulumi.InvokeOption) LookupConnectedEnvironmentsStorageResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupConnectedEnvironmentsStorageResultOutput, error) {
 			args := v.(LookupConnectedEnvironmentsStorageArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupConnectedEnvironmentsStorageResult
-			secret, err := ctx.InvokePackageRaw("azure-native:app/v20240301:getConnectedEnvironmentsStorage", args, &rv, "", opts...)
-			if err != nil {
-				return LookupConnectedEnvironmentsStorageResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupConnectedEnvironmentsStorageResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupConnectedEnvironmentsStorageResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:app/v20240301:getConnectedEnvironmentsStorage", args, LookupConnectedEnvironmentsStorageResultOutput{}, options).(LookupConnectedEnvironmentsStorageResultOutput), nil
 		}).(LookupConnectedEnvironmentsStorageResultOutput)
 }
 

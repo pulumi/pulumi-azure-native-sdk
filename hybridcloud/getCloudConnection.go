@@ -59,21 +59,11 @@ type LookupCloudConnectionResult struct {
 }
 
 func LookupCloudConnectionOutput(ctx *pulumi.Context, args LookupCloudConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupCloudConnectionResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupCloudConnectionResultOutput, error) {
 			args := v.(LookupCloudConnectionArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupCloudConnectionResult
-			secret, err := ctx.InvokePackageRaw("azure-native:hybridcloud:getCloudConnection", args, &rv, "", opts...)
-			if err != nil {
-				return LookupCloudConnectionResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupCloudConnectionResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupCloudConnectionResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:hybridcloud:getCloudConnection", args, LookupCloudConnectionResultOutput{}, options).(LookupCloudConnectionResultOutput), nil
 		}).(LookupCloudConnectionResultOutput)
 }
 

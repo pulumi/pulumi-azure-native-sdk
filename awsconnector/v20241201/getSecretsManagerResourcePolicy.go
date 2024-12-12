@@ -48,21 +48,11 @@ type LookupSecretsManagerResourcePolicyResult struct {
 }
 
 func LookupSecretsManagerResourcePolicyOutput(ctx *pulumi.Context, args LookupSecretsManagerResourcePolicyOutputArgs, opts ...pulumi.InvokeOption) LookupSecretsManagerResourcePolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupSecretsManagerResourcePolicyResultOutput, error) {
 			args := v.(LookupSecretsManagerResourcePolicyArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupSecretsManagerResourcePolicyResult
-			secret, err := ctx.InvokePackageRaw("azure-native:awsconnector/v20241201:getSecretsManagerResourcePolicy", args, &rv, "", opts...)
-			if err != nil {
-				return LookupSecretsManagerResourcePolicyResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupSecretsManagerResourcePolicyResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupSecretsManagerResourcePolicyResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:awsconnector/v20241201:getSecretsManagerResourcePolicy", args, LookupSecretsManagerResourcePolicyResultOutput{}, options).(LookupSecretsManagerResourcePolicyResultOutput), nil
 		}).(LookupSecretsManagerResourcePolicyResultOutput)
 }
 

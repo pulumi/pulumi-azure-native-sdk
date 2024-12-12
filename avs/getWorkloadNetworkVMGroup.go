@@ -55,21 +55,11 @@ type LookupWorkloadNetworkVMGroupResult struct {
 }
 
 func LookupWorkloadNetworkVMGroupOutput(ctx *pulumi.Context, args LookupWorkloadNetworkVMGroupOutputArgs, opts ...pulumi.InvokeOption) LookupWorkloadNetworkVMGroupResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupWorkloadNetworkVMGroupResultOutput, error) {
 			args := v.(LookupWorkloadNetworkVMGroupArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupWorkloadNetworkVMGroupResult
-			secret, err := ctx.InvokePackageRaw("azure-native:avs:getWorkloadNetworkVMGroup", args, &rv, "", opts...)
-			if err != nil {
-				return LookupWorkloadNetworkVMGroupResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupWorkloadNetworkVMGroupResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupWorkloadNetworkVMGroupResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:avs:getWorkloadNetworkVMGroup", args, LookupWorkloadNetworkVMGroupResultOutput{}, options).(LookupWorkloadNetworkVMGroupResultOutput), nil
 		}).(LookupWorkloadNetworkVMGroupResultOutput)
 }
 

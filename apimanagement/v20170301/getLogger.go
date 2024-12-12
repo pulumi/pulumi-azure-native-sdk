@@ -53,21 +53,11 @@ type LookupLoggerResult struct {
 }
 
 func LookupLoggerOutput(ctx *pulumi.Context, args LookupLoggerOutputArgs, opts ...pulumi.InvokeOption) LookupLoggerResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupLoggerResultOutput, error) {
 			args := v.(LookupLoggerArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupLoggerResult
-			secret, err := ctx.InvokePackageRaw("azure-native:apimanagement/v20170301:getLogger", args, &rv, "", opts...)
-			if err != nil {
-				return LookupLoggerResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupLoggerResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupLoggerResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:apimanagement/v20170301:getLogger", args, LookupLoggerResultOutput{}, options).(LookupLoggerResultOutput), nil
 		}).(LookupLoggerResultOutput)
 }
 

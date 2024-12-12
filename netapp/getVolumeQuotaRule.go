@@ -63,21 +63,11 @@ type LookupVolumeQuotaRuleResult struct {
 }
 
 func LookupVolumeQuotaRuleOutput(ctx *pulumi.Context, args LookupVolumeQuotaRuleOutputArgs, opts ...pulumi.InvokeOption) LookupVolumeQuotaRuleResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupVolumeQuotaRuleResultOutput, error) {
 			args := v.(LookupVolumeQuotaRuleArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupVolumeQuotaRuleResult
-			secret, err := ctx.InvokePackageRaw("azure-native:netapp:getVolumeQuotaRule", args, &rv, "", opts...)
-			if err != nil {
-				return LookupVolumeQuotaRuleResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupVolumeQuotaRuleResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupVolumeQuotaRuleResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:netapp:getVolumeQuotaRule", args, LookupVolumeQuotaRuleResultOutput{}, options).(LookupVolumeQuotaRuleResultOutput), nil
 		}).(LookupVolumeQuotaRuleResultOutput)
 }
 

@@ -52,21 +52,11 @@ type LookupBusinessApplicationAgentResult struct {
 }
 
 func LookupBusinessApplicationAgentOutput(ctx *pulumi.Context, args LookupBusinessApplicationAgentOutputArgs, opts ...pulumi.InvokeOption) LookupBusinessApplicationAgentResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupBusinessApplicationAgentResultOutput, error) {
 			args := v.(LookupBusinessApplicationAgentArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupBusinessApplicationAgentResult
-			secret, err := ctx.InvokePackageRaw("azure-native:securityinsights:getBusinessApplicationAgent", args, &rv, "", opts...)
-			if err != nil {
-				return LookupBusinessApplicationAgentResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupBusinessApplicationAgentResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupBusinessApplicationAgentResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:securityinsights:getBusinessApplicationAgent", args, LookupBusinessApplicationAgentResultOutput{}, options).(LookupBusinessApplicationAgentResultOutput), nil
 		}).(LookupBusinessApplicationAgentResultOutput)
 }
 

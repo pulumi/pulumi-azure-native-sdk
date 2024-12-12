@@ -55,21 +55,11 @@ type LookupHubResult struct {
 }
 
 func LookupHubOutput(ctx *pulumi.Context, args LookupHubOutputArgs, opts ...pulumi.InvokeOption) LookupHubResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupHubResultOutput, error) {
 			args := v.(LookupHubArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupHubResult
-			secret, err := ctx.InvokePackageRaw("azure-native:customerinsights:getHub", args, &rv, "", opts...)
-			if err != nil {
-				return LookupHubResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupHubResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupHubResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:customerinsights:getHub", args, LookupHubResultOutput{}, options).(LookupHubResultOutput), nil
 		}).(LookupHubResultOutput)
 }
 

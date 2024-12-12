@@ -65,21 +65,11 @@ type LookupBlobStorageAccountDataSetMappingResult struct {
 }
 
 func LookupBlobStorageAccountDataSetMappingOutput(ctx *pulumi.Context, args LookupBlobStorageAccountDataSetMappingOutputArgs, opts ...pulumi.InvokeOption) LookupBlobStorageAccountDataSetMappingResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupBlobStorageAccountDataSetMappingResultOutput, error) {
 			args := v.(LookupBlobStorageAccountDataSetMappingArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupBlobStorageAccountDataSetMappingResult
-			secret, err := ctx.InvokePackageRaw("azure-native:datashare/v20201001preview:getBlobStorageAccountDataSetMapping", args, &rv, "", opts...)
-			if err != nil {
-				return LookupBlobStorageAccountDataSetMappingResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupBlobStorageAccountDataSetMappingResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupBlobStorageAccountDataSetMappingResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:datashare/v20201001preview:getBlobStorageAccountDataSetMapping", args, LookupBlobStorageAccountDataSetMappingResultOutput{}, options).(LookupBlobStorageAccountDataSetMappingResultOutput), nil
 		}).(LookupBlobStorageAccountDataSetMappingResultOutput)
 }
 

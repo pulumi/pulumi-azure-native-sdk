@@ -55,21 +55,11 @@ type GetNotificationHubPnsCredentialsResult struct {
 }
 
 func GetNotificationHubPnsCredentialsOutput(ctx *pulumi.Context, args GetNotificationHubPnsCredentialsOutputArgs, opts ...pulumi.InvokeOption) GetNotificationHubPnsCredentialsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetNotificationHubPnsCredentialsResultOutput, error) {
 			args := v.(GetNotificationHubPnsCredentialsArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetNotificationHubPnsCredentialsResult
-			secret, err := ctx.InvokePackageRaw("azure-native:notificationhubs:getNotificationHubPnsCredentials", args, &rv, "", opts...)
-			if err != nil {
-				return GetNotificationHubPnsCredentialsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetNotificationHubPnsCredentialsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetNotificationHubPnsCredentialsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:notificationhubs:getNotificationHubPnsCredentials", args, GetNotificationHubPnsCredentialsResultOutput{}, options).(GetNotificationHubPnsCredentialsResultOutput), nil
 		}).(GetNotificationHubPnsCredentialsResultOutput)
 }
 

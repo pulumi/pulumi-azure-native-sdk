@@ -57,21 +57,11 @@ type LookupTrafficControllerInterfaceResult struct {
 }
 
 func LookupTrafficControllerInterfaceOutput(ctx *pulumi.Context, args LookupTrafficControllerInterfaceOutputArgs, opts ...pulumi.InvokeOption) LookupTrafficControllerInterfaceResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupTrafficControllerInterfaceResultOutput, error) {
 			args := v.(LookupTrafficControllerInterfaceArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupTrafficControllerInterfaceResult
-			secret, err := ctx.InvokePackageRaw("azure-native:servicenetworking:getTrafficControllerInterface", args, &rv, "", opts...)
-			if err != nil {
-				return LookupTrafficControllerInterfaceResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupTrafficControllerInterfaceResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupTrafficControllerInterfaceResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:servicenetworking:getTrafficControllerInterface", args, LookupTrafficControllerInterfaceResultOutput{}, options).(LookupTrafficControllerInterfaceResultOutput), nil
 		}).(LookupTrafficControllerInterfaceResultOutput)
 }
 

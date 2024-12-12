@@ -67,21 +67,11 @@ type LookupCosmosDbDataConnectionResult struct {
 }
 
 func LookupCosmosDbDataConnectionOutput(ctx *pulumi.Context, args LookupCosmosDbDataConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupCosmosDbDataConnectionResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupCosmosDbDataConnectionResultOutput, error) {
 			args := v.(LookupCosmosDbDataConnectionArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupCosmosDbDataConnectionResult
-			secret, err := ctx.InvokePackageRaw("azure-native:kusto/v20230815:getCosmosDbDataConnection", args, &rv, "", opts...)
-			if err != nil {
-				return LookupCosmosDbDataConnectionResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupCosmosDbDataConnectionResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupCosmosDbDataConnectionResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:kusto/v20230815:getCosmosDbDataConnection", args, LookupCosmosDbDataConnectionResultOutput{}, options).(LookupCosmosDbDataConnectionResultOutput), nil
 		}).(LookupCosmosDbDataConnectionResultOutput)
 }
 

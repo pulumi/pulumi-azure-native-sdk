@@ -64,23 +64,12 @@ func (val *LookupNamespaceTopicResult) Defaults() *LookupNamespaceTopicResult {
 	}
 	return &tmp
 }
-
 func LookupNamespaceTopicOutput(ctx *pulumi.Context, args LookupNamespaceTopicOutputArgs, opts ...pulumi.InvokeOption) LookupNamespaceTopicResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupNamespaceTopicResultOutput, error) {
 			args := v.(LookupNamespaceTopicArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupNamespaceTopicResult
-			secret, err := ctx.InvokePackageRaw("azure-native:eventgrid/v20230601preview:getNamespaceTopic", args, &rv, "", opts...)
-			if err != nil {
-				return LookupNamespaceTopicResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupNamespaceTopicResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupNamespaceTopicResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:eventgrid/v20230601preview:getNamespaceTopic", args, LookupNamespaceTopicResultOutput{}, options).(LookupNamespaceTopicResultOutput), nil
 		}).(LookupNamespaceTopicResultOutput)
 }
 

@@ -48,21 +48,11 @@ type LookupKmsAliasResult struct {
 }
 
 func LookupKmsAliasOutput(ctx *pulumi.Context, args LookupKmsAliasOutputArgs, opts ...pulumi.InvokeOption) LookupKmsAliasResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupKmsAliasResultOutput, error) {
 			args := v.(LookupKmsAliasArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupKmsAliasResult
-			secret, err := ctx.InvokePackageRaw("azure-native:awsconnector/v20241201:getKmsAlias", args, &rv, "", opts...)
-			if err != nil {
-				return LookupKmsAliasResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupKmsAliasResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupKmsAliasResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:awsconnector/v20241201:getKmsAlias", args, LookupKmsAliasResultOutput{}, options).(LookupKmsAliasResultOutput), nil
 		}).(LookupKmsAliasResultOutput)
 }
 

@@ -40,21 +40,11 @@ type GetBusinessCaseOperationReportDownloadUrlResult struct {
 }
 
 func GetBusinessCaseOperationReportDownloadUrlOutput(ctx *pulumi.Context, args GetBusinessCaseOperationReportDownloadUrlOutputArgs, opts ...pulumi.InvokeOption) GetBusinessCaseOperationReportDownloadUrlResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetBusinessCaseOperationReportDownloadUrlResultOutput, error) {
 			args := v.(GetBusinessCaseOperationReportDownloadUrlArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetBusinessCaseOperationReportDownloadUrlResult
-			secret, err := ctx.InvokePackageRaw("azure-native:migrate/v20230501preview:getBusinessCaseOperationReportDownloadUrl", args, &rv, "", opts...)
-			if err != nil {
-				return GetBusinessCaseOperationReportDownloadUrlResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetBusinessCaseOperationReportDownloadUrlResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetBusinessCaseOperationReportDownloadUrlResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:migrate/v20230501preview:getBusinessCaseOperationReportDownloadUrl", args, GetBusinessCaseOperationReportDownloadUrlResultOutput{}, options).(GetBusinessCaseOperationReportDownloadUrlResultOutput), nil
 		}).(GetBusinessCaseOperationReportDownloadUrlResultOutput)
 }
 

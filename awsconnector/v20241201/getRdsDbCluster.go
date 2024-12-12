@@ -57,23 +57,12 @@ func (val *LookupRdsDbClusterResult) Defaults() *LookupRdsDbClusterResult {
 
 	return &tmp
 }
-
 func LookupRdsDbClusterOutput(ctx *pulumi.Context, args LookupRdsDbClusterOutputArgs, opts ...pulumi.InvokeOption) LookupRdsDbClusterResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupRdsDbClusterResultOutput, error) {
 			args := v.(LookupRdsDbClusterArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupRdsDbClusterResult
-			secret, err := ctx.InvokePackageRaw("azure-native:awsconnector/v20241201:getRdsDbCluster", args, &rv, "", opts...)
-			if err != nil {
-				return LookupRdsDbClusterResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupRdsDbClusterResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupRdsDbClusterResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:awsconnector/v20241201:getRdsDbCluster", args, LookupRdsDbClusterResultOutput{}, options).(LookupRdsDbClusterResultOutput), nil
 		}).(LookupRdsDbClusterResultOutput)
 }
 

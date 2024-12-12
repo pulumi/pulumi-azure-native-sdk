@@ -60,21 +60,11 @@ type GetLocalRulestackSupportInfoResult struct {
 }
 
 func GetLocalRulestackSupportInfoOutput(ctx *pulumi.Context, args GetLocalRulestackSupportInfoOutputArgs, opts ...pulumi.InvokeOption) GetLocalRulestackSupportInfoResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetLocalRulestackSupportInfoResultOutput, error) {
 			args := v.(GetLocalRulestackSupportInfoArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetLocalRulestackSupportInfoResult
-			secret, err := ctx.InvokePackageRaw("azure-native:cloudngfw/v20240207preview:getLocalRulestackSupportInfo", args, &rv, "", opts...)
-			if err != nil {
-				return GetLocalRulestackSupportInfoResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetLocalRulestackSupportInfoResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetLocalRulestackSupportInfoResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:cloudngfw/v20240207preview:getLocalRulestackSupportInfo", args, GetLocalRulestackSupportInfoResultOutput{}, options).(GetLocalRulestackSupportInfoResultOutput), nil
 		}).(GetLocalRulestackSupportInfoResultOutput)
 }
 

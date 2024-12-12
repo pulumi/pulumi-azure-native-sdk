@@ -60,21 +60,11 @@ type LookupNGroupResult struct {
 }
 
 func LookupNGroupOutput(ctx *pulumi.Context, args LookupNGroupOutputArgs, opts ...pulumi.InvokeOption) LookupNGroupResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupNGroupResultOutput, error) {
 			args := v.(LookupNGroupArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupNGroupResult
-			secret, err := ctx.InvokePackageRaw("azure-native:containerinstance/v20241101preview:getNGroup", args, &rv, "", opts...)
-			if err != nil {
-				return LookupNGroupResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupNGroupResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupNGroupResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:containerinstance/v20241101preview:getNGroup", args, LookupNGroupResultOutput{}, options).(LookupNGroupResultOutput), nil
 		}).(LookupNGroupResultOutput)
 }
 

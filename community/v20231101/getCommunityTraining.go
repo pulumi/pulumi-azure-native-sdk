@@ -73,23 +73,12 @@ func (val *LookupCommunityTrainingResult) Defaults() *LookupCommunityTrainingRes
 
 	return &tmp
 }
-
 func LookupCommunityTrainingOutput(ctx *pulumi.Context, args LookupCommunityTrainingOutputArgs, opts ...pulumi.InvokeOption) LookupCommunityTrainingResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupCommunityTrainingResultOutput, error) {
 			args := v.(LookupCommunityTrainingArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupCommunityTrainingResult
-			secret, err := ctx.InvokePackageRaw("azure-native:community/v20231101:getCommunityTraining", args, &rv, "", opts...)
-			if err != nil {
-				return LookupCommunityTrainingResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupCommunityTrainingResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupCommunityTrainingResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:community/v20231101:getCommunityTraining", args, LookupCommunityTrainingResultOutput{}, options).(LookupCommunityTrainingResultOutput), nil
 		}).(LookupCommunityTrainingResultOutput)
 }
 

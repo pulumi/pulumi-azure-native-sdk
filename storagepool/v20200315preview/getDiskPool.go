@@ -60,21 +60,11 @@ type LookupDiskPoolResult struct {
 }
 
 func LookupDiskPoolOutput(ctx *pulumi.Context, args LookupDiskPoolOutputArgs, opts ...pulumi.InvokeOption) LookupDiskPoolResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupDiskPoolResultOutput, error) {
 			args := v.(LookupDiskPoolArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupDiskPoolResult
-			secret, err := ctx.InvokePackageRaw("azure-native:storagepool/v20200315preview:getDiskPool", args, &rv, "", opts...)
-			if err != nil {
-				return LookupDiskPoolResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupDiskPoolResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupDiskPoolResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:storagepool/v20200315preview:getDiskPool", args, LookupDiskPoolResultOutput{}, options).(LookupDiskPoolResultOutput), nil
 		}).(LookupDiskPoolResultOutput)
 }
 

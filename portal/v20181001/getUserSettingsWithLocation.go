@@ -36,21 +36,11 @@ type LookupUserSettingsWithLocationResult struct {
 }
 
 func LookupUserSettingsWithLocationOutput(ctx *pulumi.Context, args LookupUserSettingsWithLocationOutputArgs, opts ...pulumi.InvokeOption) LookupUserSettingsWithLocationResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupUserSettingsWithLocationResultOutput, error) {
 			args := v.(LookupUserSettingsWithLocationArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupUserSettingsWithLocationResult
-			secret, err := ctx.InvokePackageRaw("azure-native:portal/v20181001:getUserSettingsWithLocation", args, &rv, "", opts...)
-			if err != nil {
-				return LookupUserSettingsWithLocationResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupUserSettingsWithLocationResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupUserSettingsWithLocationResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:portal/v20181001:getUserSettingsWithLocation", args, LookupUserSettingsWithLocationResultOutput{}, options).(LookupUserSettingsWithLocationResultOutput), nil
 		}).(LookupUserSettingsWithLocationResultOutput)
 }
 

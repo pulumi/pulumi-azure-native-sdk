@@ -59,21 +59,11 @@ type LookupDataExportResult struct {
 }
 
 func LookupDataExportOutput(ctx *pulumi.Context, args LookupDataExportOutputArgs, opts ...pulumi.InvokeOption) LookupDataExportResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupDataExportResultOutput, error) {
 			args := v.(LookupDataExportArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupDataExportResult
-			secret, err := ctx.InvokePackageRaw("azure-native:operationalinsights:getDataExport", args, &rv, "", opts...)
-			if err != nil {
-				return LookupDataExportResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupDataExportResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupDataExportResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:operationalinsights:getDataExport", args, LookupDataExportResultOutput{}, options).(LookupDataExportResultOutput), nil
 		}).(LookupDataExportResultOutput)
 }
 

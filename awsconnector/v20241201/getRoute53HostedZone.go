@@ -48,21 +48,11 @@ type LookupRoute53HostedZoneResult struct {
 }
 
 func LookupRoute53HostedZoneOutput(ctx *pulumi.Context, args LookupRoute53HostedZoneOutputArgs, opts ...pulumi.InvokeOption) LookupRoute53HostedZoneResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupRoute53HostedZoneResultOutput, error) {
 			args := v.(LookupRoute53HostedZoneArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupRoute53HostedZoneResult
-			secret, err := ctx.InvokePackageRaw("azure-native:awsconnector/v20241201:getRoute53HostedZone", args, &rv, "", opts...)
-			if err != nil {
-				return LookupRoute53HostedZoneResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupRoute53HostedZoneResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupRoute53HostedZoneResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:awsconnector/v20241201:getRoute53HostedZone", args, LookupRoute53HostedZoneResultOutput{}, options).(LookupRoute53HostedZoneResultOutput), nil
 		}).(LookupRoute53HostedZoneResultOutput)
 }
 

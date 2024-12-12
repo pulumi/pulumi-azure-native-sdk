@@ -68,21 +68,11 @@ type LookupModuleResult struct {
 }
 
 func LookupModuleOutput(ctx *pulumi.Context, args LookupModuleOutputArgs, opts ...pulumi.InvokeOption) LookupModuleResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupModuleResultOutput, error) {
 			args := v.(LookupModuleArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupModuleResult
-			secret, err := ctx.InvokePackageRaw("azure-native:automation/v20231101:getModule", args, &rv, "", opts...)
-			if err != nil {
-				return LookupModuleResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupModuleResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupModuleResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:automation/v20231101:getModule", args, LookupModuleResultOutput{}, options).(LookupModuleResultOutput), nil
 		}).(LookupModuleResultOutput)
 }
 

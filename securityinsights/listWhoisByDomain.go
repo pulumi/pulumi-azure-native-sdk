@@ -53,21 +53,11 @@ type ListWhoisByDomainResult struct {
 }
 
 func ListWhoisByDomainOutput(ctx *pulumi.Context, args ListWhoisByDomainOutputArgs, opts ...pulumi.InvokeOption) ListWhoisByDomainResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListWhoisByDomainResultOutput, error) {
 			args := v.(ListWhoisByDomainArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListWhoisByDomainResult
-			secret, err := ctx.InvokePackageRaw("azure-native:securityinsights:listWhoisByDomain", args, &rv, "", opts...)
-			if err != nil {
-				return ListWhoisByDomainResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListWhoisByDomainResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListWhoisByDomainResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:securityinsights:listWhoisByDomain", args, ListWhoisByDomainResultOutput{}, options).(ListWhoisByDomainResultOutput), nil
 		}).(ListWhoisByDomainResultOutput)
 }
 

@@ -44,21 +44,11 @@ type LookupServerDnsAliasResult struct {
 }
 
 func LookupServerDnsAliasOutput(ctx *pulumi.Context, args LookupServerDnsAliasOutputArgs, opts ...pulumi.InvokeOption) LookupServerDnsAliasResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupServerDnsAliasResultOutput, error) {
 			args := v.(LookupServerDnsAliasArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupServerDnsAliasResult
-			secret, err := ctx.InvokePackageRaw("azure-native:sql/v20211101:getServerDnsAlias", args, &rv, "", opts...)
-			if err != nil {
-				return LookupServerDnsAliasResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupServerDnsAliasResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupServerDnsAliasResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:sql/v20211101:getServerDnsAlias", args, LookupServerDnsAliasResultOutput{}, options).(LookupServerDnsAliasResultOutput), nil
 		}).(LookupServerDnsAliasResultOutput)
 }
 

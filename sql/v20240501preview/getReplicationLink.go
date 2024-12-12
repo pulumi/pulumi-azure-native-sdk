@@ -68,21 +68,11 @@ type LookupReplicationLinkResult struct {
 }
 
 func LookupReplicationLinkOutput(ctx *pulumi.Context, args LookupReplicationLinkOutputArgs, opts ...pulumi.InvokeOption) LookupReplicationLinkResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupReplicationLinkResultOutput, error) {
 			args := v.(LookupReplicationLinkArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupReplicationLinkResult
-			secret, err := ctx.InvokePackageRaw("azure-native:sql/v20240501preview:getReplicationLink", args, &rv, "", opts...)
-			if err != nil {
-				return LookupReplicationLinkResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupReplicationLinkResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupReplicationLinkResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:sql/v20240501preview:getReplicationLink", args, LookupReplicationLinkResultOutput{}, options).(LookupReplicationLinkResultOutput), nil
 		}).(LookupReplicationLinkResultOutput)
 }
 

@@ -38,21 +38,11 @@ type ListStreamingLocatorContentKeysResult struct {
 }
 
 func ListStreamingLocatorContentKeysOutput(ctx *pulumi.Context, args ListStreamingLocatorContentKeysOutputArgs, opts ...pulumi.InvokeOption) ListStreamingLocatorContentKeysResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListStreamingLocatorContentKeysResultOutput, error) {
 			args := v.(ListStreamingLocatorContentKeysArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListStreamingLocatorContentKeysResult
-			secret, err := ctx.InvokePackageRaw("azure-native:media/v20230101:listStreamingLocatorContentKeys", args, &rv, "", opts...)
-			if err != nil {
-				return ListStreamingLocatorContentKeysResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListStreamingLocatorContentKeysResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListStreamingLocatorContentKeysResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:media/v20230101:listStreamingLocatorContentKeys", args, ListStreamingLocatorContentKeysResultOutput{}, options).(ListStreamingLocatorContentKeysResultOutput), nil
 		}).(ListStreamingLocatorContentKeysResultOutput)
 }
 

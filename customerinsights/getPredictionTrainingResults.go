@@ -47,21 +47,11 @@ type GetPredictionTrainingResultsResult struct {
 }
 
 func GetPredictionTrainingResultsOutput(ctx *pulumi.Context, args GetPredictionTrainingResultsOutputArgs, opts ...pulumi.InvokeOption) GetPredictionTrainingResultsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetPredictionTrainingResultsResultOutput, error) {
 			args := v.(GetPredictionTrainingResultsArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetPredictionTrainingResultsResult
-			secret, err := ctx.InvokePackageRaw("azure-native:customerinsights:getPredictionTrainingResults", args, &rv, "", opts...)
-			if err != nil {
-				return GetPredictionTrainingResultsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetPredictionTrainingResultsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetPredictionTrainingResultsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:customerinsights:getPredictionTrainingResults", args, GetPredictionTrainingResultsResultOutput{}, options).(GetPredictionTrainingResultsResultOutput), nil
 		}).(GetPredictionTrainingResultsResultOutput)
 }
 

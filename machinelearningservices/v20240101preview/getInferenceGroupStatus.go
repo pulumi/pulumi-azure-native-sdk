@@ -65,23 +65,12 @@ func (val *GetInferenceGroupStatusResult) Defaults() *GetInferenceGroupStatusRes
 	}
 	return &tmp
 }
-
 func GetInferenceGroupStatusOutput(ctx *pulumi.Context, args GetInferenceGroupStatusOutputArgs, opts ...pulumi.InvokeOption) GetInferenceGroupStatusResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetInferenceGroupStatusResultOutput, error) {
 			args := v.(GetInferenceGroupStatusArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetInferenceGroupStatusResult
-			secret, err := ctx.InvokePackageRaw("azure-native:machinelearningservices/v20240101preview:getInferenceGroupStatus", args, &rv, "", opts...)
-			if err != nil {
-				return GetInferenceGroupStatusResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetInferenceGroupStatusResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetInferenceGroupStatusResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:machinelearningservices/v20240101preview:getInferenceGroupStatus", args, GetInferenceGroupStatusResultOutput{}, options).(GetInferenceGroupStatusResultOutput), nil
 		}).(GetInferenceGroupStatusResultOutput)
 }
 

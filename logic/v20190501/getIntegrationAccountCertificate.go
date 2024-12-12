@@ -56,21 +56,11 @@ type LookupIntegrationAccountCertificateResult struct {
 }
 
 func LookupIntegrationAccountCertificateOutput(ctx *pulumi.Context, args LookupIntegrationAccountCertificateOutputArgs, opts ...pulumi.InvokeOption) LookupIntegrationAccountCertificateResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupIntegrationAccountCertificateResultOutput, error) {
 			args := v.(LookupIntegrationAccountCertificateArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupIntegrationAccountCertificateResult
-			secret, err := ctx.InvokePackageRaw("azure-native:logic/v20190501:getIntegrationAccountCertificate", args, &rv, "", opts...)
-			if err != nil {
-				return LookupIntegrationAccountCertificateResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupIntegrationAccountCertificateResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupIntegrationAccountCertificateResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:logic/v20190501:getIntegrationAccountCertificate", args, LookupIntegrationAccountCertificateResultOutput{}, options).(LookupIntegrationAccountCertificateResultOutput), nil
 		}).(LookupIntegrationAccountCertificateResultOutput)
 }
 

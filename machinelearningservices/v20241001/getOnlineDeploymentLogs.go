@@ -55,21 +55,11 @@ type GetOnlineDeploymentLogsResult struct {
 }
 
 func GetOnlineDeploymentLogsOutput(ctx *pulumi.Context, args GetOnlineDeploymentLogsOutputArgs, opts ...pulumi.InvokeOption) GetOnlineDeploymentLogsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetOnlineDeploymentLogsResultOutput, error) {
 			args := v.(GetOnlineDeploymentLogsArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetOnlineDeploymentLogsResult
-			secret, err := ctx.InvokePackageRaw("azure-native:machinelearningservices/v20241001:getOnlineDeploymentLogs", args.Defaults(), &rv, "", opts...)
-			if err != nil {
-				return GetOnlineDeploymentLogsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetOnlineDeploymentLogsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetOnlineDeploymentLogsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:machinelearningservices/v20241001:getOnlineDeploymentLogs", args.Defaults(), GetOnlineDeploymentLogsResultOutput{}, options).(GetOnlineDeploymentLogsResultOutput), nil
 		}).(GetOnlineDeploymentLogsResultOutput)
 }
 

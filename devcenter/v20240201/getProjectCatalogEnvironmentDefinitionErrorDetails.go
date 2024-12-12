@@ -40,21 +40,11 @@ type GetProjectCatalogEnvironmentDefinitionErrorDetailsResult struct {
 }
 
 func GetProjectCatalogEnvironmentDefinitionErrorDetailsOutput(ctx *pulumi.Context, args GetProjectCatalogEnvironmentDefinitionErrorDetailsOutputArgs, opts ...pulumi.InvokeOption) GetProjectCatalogEnvironmentDefinitionErrorDetailsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetProjectCatalogEnvironmentDefinitionErrorDetailsResultOutput, error) {
 			args := v.(GetProjectCatalogEnvironmentDefinitionErrorDetailsArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetProjectCatalogEnvironmentDefinitionErrorDetailsResult
-			secret, err := ctx.InvokePackageRaw("azure-native:devcenter/v20240201:getProjectCatalogEnvironmentDefinitionErrorDetails", args, &rv, "", opts...)
-			if err != nil {
-				return GetProjectCatalogEnvironmentDefinitionErrorDetailsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetProjectCatalogEnvironmentDefinitionErrorDetailsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetProjectCatalogEnvironmentDefinitionErrorDetailsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:devcenter/v20240201:getProjectCatalogEnvironmentDefinitionErrorDetails", args, GetProjectCatalogEnvironmentDefinitionErrorDetailsResultOutput{}, options).(GetProjectCatalogEnvironmentDefinitionErrorDetailsResultOutput), nil
 		}).(GetProjectCatalogEnvironmentDefinitionErrorDetailsResultOutput)
 }
 

@@ -52,21 +52,11 @@ type LookupImportCollectorsOperationResult struct {
 }
 
 func LookupImportCollectorsOperationOutput(ctx *pulumi.Context, args LookupImportCollectorsOperationOutputArgs, opts ...pulumi.InvokeOption) LookupImportCollectorsOperationResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupImportCollectorsOperationResultOutput, error) {
 			args := v.(LookupImportCollectorsOperationArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupImportCollectorsOperationResult
-			secret, err := ctx.InvokePackageRaw("azure-native:migrate/v20230401preview:getImportCollectorsOperation", args, &rv, "", opts...)
-			if err != nil {
-				return LookupImportCollectorsOperationResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupImportCollectorsOperationResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupImportCollectorsOperationResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:migrate/v20230401preview:getImportCollectorsOperation", args, LookupImportCollectorsOperationResultOutput{}, options).(LookupImportCollectorsOperationResultOutput), nil
 		}).(LookupImportCollectorsOperationResultOutput)
 }
 

@@ -50,21 +50,11 @@ type LookupAuthorizationAccessPolicyResult struct {
 }
 
 func LookupAuthorizationAccessPolicyOutput(ctx *pulumi.Context, args LookupAuthorizationAccessPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupAuthorizationAccessPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAuthorizationAccessPolicyResultOutput, error) {
 			args := v.(LookupAuthorizationAccessPolicyArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupAuthorizationAccessPolicyResult
-			secret, err := ctx.InvokePackageRaw("azure-native:apimanagement/v20230301preview:getAuthorizationAccessPolicy", args, &rv, "", opts...)
-			if err != nil {
-				return LookupAuthorizationAccessPolicyResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupAuthorizationAccessPolicyResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupAuthorizationAccessPolicyResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:apimanagement/v20230301preview:getAuthorizationAccessPolicy", args, LookupAuthorizationAccessPolicyResultOutput{}, options).(LookupAuthorizationAccessPolicyResultOutput), nil
 		}).(LookupAuthorizationAccessPolicyResultOutput)
 }
 

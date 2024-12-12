@@ -60,21 +60,11 @@ type LookupCloudHsmClusterResult struct {
 }
 
 func LookupCloudHsmClusterOutput(ctx *pulumi.Context, args LookupCloudHsmClusterOutputArgs, opts ...pulumi.InvokeOption) LookupCloudHsmClusterResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupCloudHsmClusterResultOutput, error) {
 			args := v.(LookupCloudHsmClusterArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupCloudHsmClusterResult
-			secret, err := ctx.InvokePackageRaw("azure-native:hardwaresecuritymodules/v20220831preview:getCloudHsmCluster", args, &rv, "", opts...)
-			if err != nil {
-				return LookupCloudHsmClusterResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupCloudHsmClusterResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupCloudHsmClusterResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:hardwaresecuritymodules/v20220831preview:getCloudHsmCluster", args, LookupCloudHsmClusterResultOutput{}, options).(LookupCloudHsmClusterResultOutput), nil
 		}).(LookupCloudHsmClusterResultOutput)
 }
 

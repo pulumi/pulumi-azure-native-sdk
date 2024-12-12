@@ -68,23 +68,12 @@ func (val *LookupInferenceGroupResult) Defaults() *LookupInferenceGroupResult {
 
 	return &tmp
 }
-
 func LookupInferenceGroupOutput(ctx *pulumi.Context, args LookupInferenceGroupOutputArgs, opts ...pulumi.InvokeOption) LookupInferenceGroupResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupInferenceGroupResultOutput, error) {
 			args := v.(LookupInferenceGroupArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupInferenceGroupResult
-			secret, err := ctx.InvokePackageRaw("azure-native:machinelearningservices:getInferenceGroup", args, &rv, "", opts...)
-			if err != nil {
-				return LookupInferenceGroupResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupInferenceGroupResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupInferenceGroupResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:machinelearningservices:getInferenceGroup", args, LookupInferenceGroupResultOutput{}, options).(LookupInferenceGroupResultOutput), nil
 		}).(LookupInferenceGroupResultOutput)
 }
 

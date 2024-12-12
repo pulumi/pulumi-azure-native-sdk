@@ -63,21 +63,11 @@ type LookupAzureMonitorWorkspaceResult struct {
 }
 
 func LookupAzureMonitorWorkspaceOutput(ctx *pulumi.Context, args LookupAzureMonitorWorkspaceOutputArgs, opts ...pulumi.InvokeOption) LookupAzureMonitorWorkspaceResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAzureMonitorWorkspaceResultOutput, error) {
 			args := v.(LookupAzureMonitorWorkspaceArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupAzureMonitorWorkspaceResult
-			secret, err := ctx.InvokePackageRaw("azure-native:monitor:getAzureMonitorWorkspace", args, &rv, "", opts...)
-			if err != nil {
-				return LookupAzureMonitorWorkspaceResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupAzureMonitorWorkspaceResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupAzureMonitorWorkspaceResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:monitor:getAzureMonitorWorkspace", args, LookupAzureMonitorWorkspaceResultOutput{}, options).(LookupAzureMonitorWorkspaceResultOutput), nil
 		}).(LookupAzureMonitorWorkspaceResultOutput)
 }
 

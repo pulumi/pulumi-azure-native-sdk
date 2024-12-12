@@ -83,21 +83,11 @@ type LookupSqlVirtualMachineResult struct {
 }
 
 func LookupSqlVirtualMachineOutput(ctx *pulumi.Context, args LookupSqlVirtualMachineOutputArgs, opts ...pulumi.InvokeOption) LookupSqlVirtualMachineResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupSqlVirtualMachineResultOutput, error) {
 			args := v.(LookupSqlVirtualMachineArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupSqlVirtualMachineResult
-			secret, err := ctx.InvokePackageRaw("azure-native:sqlvirtualmachine:getSqlVirtualMachine", args, &rv, "", opts...)
-			if err != nil {
-				return LookupSqlVirtualMachineResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupSqlVirtualMachineResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupSqlVirtualMachineResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:sqlvirtualmachine:getSqlVirtualMachine", args, LookupSqlVirtualMachineResultOutput{}, options).(LookupSqlVirtualMachineResultOutput), nil
 		}).(LookupSqlVirtualMachineResultOutput)
 }
 

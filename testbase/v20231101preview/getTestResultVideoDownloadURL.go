@@ -42,21 +42,11 @@ type GetTestResultVideoDownloadURLResult struct {
 }
 
 func GetTestResultVideoDownloadURLOutput(ctx *pulumi.Context, args GetTestResultVideoDownloadURLOutputArgs, opts ...pulumi.InvokeOption) GetTestResultVideoDownloadURLResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetTestResultVideoDownloadURLResultOutput, error) {
 			args := v.(GetTestResultVideoDownloadURLArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetTestResultVideoDownloadURLResult
-			secret, err := ctx.InvokePackageRaw("azure-native:testbase/v20231101preview:getTestResultVideoDownloadURL", args, &rv, "", opts...)
-			if err != nil {
-				return GetTestResultVideoDownloadURLResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetTestResultVideoDownloadURLResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetTestResultVideoDownloadURLResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:testbase/v20231101preview:getTestResultVideoDownloadURL", args, GetTestResultVideoDownloadURLResultOutput{}, options).(GetTestResultVideoDownloadURLResultOutput), nil
 		}).(GetTestResultVideoDownloadURLResultOutput)
 }
 

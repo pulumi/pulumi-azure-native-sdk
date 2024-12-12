@@ -67,23 +67,12 @@ func (val *LookupImportPipelineResult) Defaults() *LookupImportPipelineResult {
 
 	return &tmp
 }
-
 func LookupImportPipelineOutput(ctx *pulumi.Context, args LookupImportPipelineOutputArgs, opts ...pulumi.InvokeOption) LookupImportPipelineResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupImportPipelineResultOutput, error) {
 			args := v.(LookupImportPipelineArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupImportPipelineResult
-			secret, err := ctx.InvokePackageRaw("azure-native:containerregistry/v20230601preview:getImportPipeline", args, &rv, "", opts...)
-			if err != nil {
-				return LookupImportPipelineResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupImportPipelineResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupImportPipelineResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:containerregistry/v20230601preview:getImportPipeline", args, LookupImportPipelineResultOutput{}, options).(LookupImportPipelineResultOutput), nil
 		}).(LookupImportPipelineResultOutput)
 }
 

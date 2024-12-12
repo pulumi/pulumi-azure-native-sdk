@@ -58,21 +58,11 @@ type LookupCredentialSetResult struct {
 }
 
 func LookupCredentialSetOutput(ctx *pulumi.Context, args LookupCredentialSetOutputArgs, opts ...pulumi.InvokeOption) LookupCredentialSetResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupCredentialSetResultOutput, error) {
 			args := v.(LookupCredentialSetArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupCredentialSetResult
-			secret, err := ctx.InvokePackageRaw("azure-native:containerregistry:getCredentialSet", args, &rv, "", opts...)
-			if err != nil {
-				return LookupCredentialSetResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupCredentialSetResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupCredentialSetResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:containerregistry:getCredentialSet", args, LookupCredentialSetResultOutput{}, options).(LookupCredentialSetResultOutput), nil
 		}).(LookupCredentialSetResultOutput)
 }
 

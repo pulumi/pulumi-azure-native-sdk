@@ -49,21 +49,11 @@ type LookupAcmCertificateSummaryResult struct {
 }
 
 func LookupAcmCertificateSummaryOutput(ctx *pulumi.Context, args LookupAcmCertificateSummaryOutputArgs, opts ...pulumi.InvokeOption) LookupAcmCertificateSummaryResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAcmCertificateSummaryResultOutput, error) {
 			args := v.(LookupAcmCertificateSummaryArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupAcmCertificateSummaryResult
-			secret, err := ctx.InvokePackageRaw("azure-native:awsconnector:getAcmCertificateSummary", args, &rv, "", opts...)
-			if err != nil {
-				return LookupAcmCertificateSummaryResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupAcmCertificateSummaryResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupAcmCertificateSummaryResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:awsconnector:getAcmCertificateSummary", args, LookupAcmCertificateSummaryResultOutput{}, options).(LookupAcmCertificateSummaryResultOutput), nil
 		}).(LookupAcmCertificateSummaryResultOutput)
 }
 

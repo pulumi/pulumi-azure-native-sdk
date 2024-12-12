@@ -95,21 +95,11 @@ type ListWebAppBackupStatusSecretsSlotResult struct {
 }
 
 func ListWebAppBackupStatusSecretsSlotOutput(ctx *pulumi.Context, args ListWebAppBackupStatusSecretsSlotOutputArgs, opts ...pulumi.InvokeOption) ListWebAppBackupStatusSecretsSlotResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListWebAppBackupStatusSecretsSlotResultOutput, error) {
 			args := v.(ListWebAppBackupStatusSecretsSlotArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListWebAppBackupStatusSecretsSlotResult
-			secret, err := ctx.InvokePackageRaw("azure-native:web/v20240401:listWebAppBackupStatusSecretsSlot", args.Defaults(), &rv, "", opts...)
-			if err != nil {
-				return ListWebAppBackupStatusSecretsSlotResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListWebAppBackupStatusSecretsSlotResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListWebAppBackupStatusSecretsSlotResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:web/v20240401:listWebAppBackupStatusSecretsSlot", args.Defaults(), ListWebAppBackupStatusSecretsSlotResultOutput{}, options).(ListWebAppBackupStatusSecretsSlotResultOutput), nil
 		}).(ListWebAppBackupStatusSecretsSlotResultOutput)
 }
 

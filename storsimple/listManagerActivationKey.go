@@ -37,21 +37,11 @@ type ListManagerActivationKeyResult struct {
 }
 
 func ListManagerActivationKeyOutput(ctx *pulumi.Context, args ListManagerActivationKeyOutputArgs, opts ...pulumi.InvokeOption) ListManagerActivationKeyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListManagerActivationKeyResultOutput, error) {
 			args := v.(ListManagerActivationKeyArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListManagerActivationKeyResult
-			secret, err := ctx.InvokePackageRaw("azure-native:storsimple:listManagerActivationKey", args, &rv, "", opts...)
-			if err != nil {
-				return ListManagerActivationKeyResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListManagerActivationKeyResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListManagerActivationKeyResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:storsimple:listManagerActivationKey", args, ListManagerActivationKeyResultOutput{}, options).(ListManagerActivationKeyResultOutput), nil
 		}).(ListManagerActivationKeyResultOutput)
 }
 

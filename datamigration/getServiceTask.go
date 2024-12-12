@@ -53,21 +53,11 @@ type LookupServiceTaskResult struct {
 }
 
 func LookupServiceTaskOutput(ctx *pulumi.Context, args LookupServiceTaskOutputArgs, opts ...pulumi.InvokeOption) LookupServiceTaskResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupServiceTaskResultOutput, error) {
 			args := v.(LookupServiceTaskArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupServiceTaskResult
-			secret, err := ctx.InvokePackageRaw("azure-native:datamigration:getServiceTask", args, &rv, "", opts...)
-			if err != nil {
-				return LookupServiceTaskResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupServiceTaskResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupServiceTaskResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:datamigration:getServiceTask", args, LookupServiceTaskResultOutput{}, options).(LookupServiceTaskResultOutput), nil
 		}).(LookupServiceTaskResultOutput)
 }
 

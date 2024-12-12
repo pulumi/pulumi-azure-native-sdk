@@ -63,23 +63,12 @@ func (val *LookupInferencePoolResult) Defaults() *LookupInferencePoolResult {
 
 	return &tmp
 }
-
 func LookupInferencePoolOutput(ctx *pulumi.Context, args LookupInferencePoolOutputArgs, opts ...pulumi.InvokeOption) LookupInferencePoolResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupInferencePoolResultOutput, error) {
 			args := v.(LookupInferencePoolArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupInferencePoolResult
-			secret, err := ctx.InvokePackageRaw("azure-native:machinelearningservices/v20241001preview:getInferencePool", args, &rv, "", opts...)
-			if err != nil {
-				return LookupInferencePoolResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupInferencePoolResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupInferencePoolResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:machinelearningservices/v20241001preview:getInferencePool", args, LookupInferencePoolResultOutput{}, options).(LookupInferencePoolResultOutput), nil
 		}).(LookupInferencePoolResultOutput)
 }
 

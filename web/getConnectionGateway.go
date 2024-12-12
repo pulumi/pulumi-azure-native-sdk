@@ -50,21 +50,11 @@ type LookupConnectionGatewayResult struct {
 }
 
 func LookupConnectionGatewayOutput(ctx *pulumi.Context, args LookupConnectionGatewayOutputArgs, opts ...pulumi.InvokeOption) LookupConnectionGatewayResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupConnectionGatewayResultOutput, error) {
 			args := v.(LookupConnectionGatewayArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupConnectionGatewayResult
-			secret, err := ctx.InvokePackageRaw("azure-native:web:getConnectionGateway", args, &rv, "", opts...)
-			if err != nil {
-				return LookupConnectionGatewayResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupConnectionGatewayResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupConnectionGatewayResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:web:getConnectionGateway", args, LookupConnectionGatewayResultOutput{}, options).(LookupConnectionGatewayResultOutput), nil
 		}).(LookupConnectionGatewayResultOutput)
 }
 

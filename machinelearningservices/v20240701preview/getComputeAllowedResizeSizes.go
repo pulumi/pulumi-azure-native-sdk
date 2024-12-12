@@ -38,21 +38,11 @@ type GetComputeAllowedResizeSizesResult struct {
 }
 
 func GetComputeAllowedResizeSizesOutput(ctx *pulumi.Context, args GetComputeAllowedResizeSizesOutputArgs, opts ...pulumi.InvokeOption) GetComputeAllowedResizeSizesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetComputeAllowedResizeSizesResultOutput, error) {
 			args := v.(GetComputeAllowedResizeSizesArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetComputeAllowedResizeSizesResult
-			secret, err := ctx.InvokePackageRaw("azure-native:machinelearningservices/v20240701preview:getComputeAllowedResizeSizes", args, &rv, "", opts...)
-			if err != nil {
-				return GetComputeAllowedResizeSizesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetComputeAllowedResizeSizesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetComputeAllowedResizeSizesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:machinelearningservices/v20240701preview:getComputeAllowedResizeSizes", args, GetComputeAllowedResizeSizesResultOutput{}, options).(GetComputeAllowedResizeSizesResultOutput), nil
 		}).(GetComputeAllowedResizeSizesResultOutput)
 }
 

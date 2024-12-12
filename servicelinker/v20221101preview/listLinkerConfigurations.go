@@ -36,21 +36,11 @@ type ListLinkerConfigurationsResult struct {
 }
 
 func ListLinkerConfigurationsOutput(ctx *pulumi.Context, args ListLinkerConfigurationsOutputArgs, opts ...pulumi.InvokeOption) ListLinkerConfigurationsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListLinkerConfigurationsResultOutput, error) {
 			args := v.(ListLinkerConfigurationsArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListLinkerConfigurationsResult
-			secret, err := ctx.InvokePackageRaw("azure-native:servicelinker/v20221101preview:listLinkerConfigurations", args, &rv, "", opts...)
-			if err != nil {
-				return ListLinkerConfigurationsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListLinkerConfigurationsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListLinkerConfigurationsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:servicelinker/v20221101preview:listLinkerConfigurations", args, ListLinkerConfigurationsResultOutput{}, options).(ListLinkerConfigurationsResultOutput), nil
 		}).(ListLinkerConfigurationsResultOutput)
 }
 

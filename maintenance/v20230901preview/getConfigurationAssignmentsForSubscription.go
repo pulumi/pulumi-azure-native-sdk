@@ -48,21 +48,11 @@ type LookupConfigurationAssignmentsForSubscriptionResult struct {
 }
 
 func LookupConfigurationAssignmentsForSubscriptionOutput(ctx *pulumi.Context, args LookupConfigurationAssignmentsForSubscriptionOutputArgs, opts ...pulumi.InvokeOption) LookupConfigurationAssignmentsForSubscriptionResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupConfigurationAssignmentsForSubscriptionResultOutput, error) {
 			args := v.(LookupConfigurationAssignmentsForSubscriptionArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupConfigurationAssignmentsForSubscriptionResult
-			secret, err := ctx.InvokePackageRaw("azure-native:maintenance/v20230901preview:getConfigurationAssignmentsForSubscription", args, &rv, "", opts...)
-			if err != nil {
-				return LookupConfigurationAssignmentsForSubscriptionResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupConfigurationAssignmentsForSubscriptionResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupConfigurationAssignmentsForSubscriptionResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:maintenance/v20230901preview:getConfigurationAssignmentsForSubscription", args, LookupConfigurationAssignmentsForSubscriptionResultOutput{}, options).(LookupConfigurationAssignmentsForSubscriptionResultOutput), nil
 		}).(LookupConfigurationAssignmentsForSubscriptionResultOutput)
 }
 

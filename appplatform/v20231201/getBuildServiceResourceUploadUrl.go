@@ -40,21 +40,11 @@ type GetBuildServiceResourceUploadUrlResult struct {
 }
 
 func GetBuildServiceResourceUploadUrlOutput(ctx *pulumi.Context, args GetBuildServiceResourceUploadUrlOutputArgs, opts ...pulumi.InvokeOption) GetBuildServiceResourceUploadUrlResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetBuildServiceResourceUploadUrlResultOutput, error) {
 			args := v.(GetBuildServiceResourceUploadUrlArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetBuildServiceResourceUploadUrlResult
-			secret, err := ctx.InvokePackageRaw("azure-native:appplatform/v20231201:getBuildServiceResourceUploadUrl", args, &rv, "", opts...)
-			if err != nil {
-				return GetBuildServiceResourceUploadUrlResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetBuildServiceResourceUploadUrlResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetBuildServiceResourceUploadUrlResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:appplatform/v20231201:getBuildServiceResourceUploadUrl", args, GetBuildServiceResourceUploadUrlResultOutput{}, options).(GetBuildServiceResourceUploadUrlResultOutput), nil
 		}).(GetBuildServiceResourceUploadUrlResultOutput)
 }
 

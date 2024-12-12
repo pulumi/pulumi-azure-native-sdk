@@ -46,21 +46,11 @@ type LookupTagOperationLinkResult struct {
 }
 
 func LookupTagOperationLinkOutput(ctx *pulumi.Context, args LookupTagOperationLinkOutputArgs, opts ...pulumi.InvokeOption) LookupTagOperationLinkResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupTagOperationLinkResultOutput, error) {
 			args := v.(LookupTagOperationLinkArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupTagOperationLinkResult
-			secret, err := ctx.InvokePackageRaw("azure-native:apimanagement/v20220901preview:getTagOperationLink", args, &rv, "", opts...)
-			if err != nil {
-				return LookupTagOperationLinkResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupTagOperationLinkResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupTagOperationLinkResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:apimanagement/v20220901preview:getTagOperationLink", args, LookupTagOperationLinkResultOutput{}, options).(LookupTagOperationLinkResultOutput), nil
 		}).(LookupTagOperationLinkResultOutput)
 }
 

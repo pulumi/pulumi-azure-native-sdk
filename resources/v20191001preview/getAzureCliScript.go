@@ -96,23 +96,12 @@ func (val *LookupAzureCliScriptResult) Defaults() *LookupAzureCliScriptResult {
 	}
 	return &tmp
 }
-
 func LookupAzureCliScriptOutput(ctx *pulumi.Context, args LookupAzureCliScriptOutputArgs, opts ...pulumi.InvokeOption) LookupAzureCliScriptResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAzureCliScriptResultOutput, error) {
 			args := v.(LookupAzureCliScriptArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupAzureCliScriptResult
-			secret, err := ctx.InvokePackageRaw("azure-native:resources/v20191001preview:getAzureCliScript", args, &rv, "", opts...)
-			if err != nil {
-				return LookupAzureCliScriptResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupAzureCliScriptResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupAzureCliScriptResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:resources/v20191001preview:getAzureCliScript", args, LookupAzureCliScriptResultOutput{}, options).(LookupAzureCliScriptResultOutput), nil
 		}).(LookupAzureCliScriptResultOutput)
 }
 

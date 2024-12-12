@@ -56,23 +56,12 @@ func (val *LookupCapabilityHostResult) Defaults() *LookupCapabilityHostResult {
 
 	return &tmp
 }
-
 func LookupCapabilityHostOutput(ctx *pulumi.Context, args LookupCapabilityHostOutputArgs, opts ...pulumi.InvokeOption) LookupCapabilityHostResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupCapabilityHostResultOutput, error) {
 			args := v.(LookupCapabilityHostArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupCapabilityHostResult
-			secret, err := ctx.InvokePackageRaw("azure-native:machinelearningservices:getCapabilityHost", args, &rv, "", opts...)
-			if err != nil {
-				return LookupCapabilityHostResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupCapabilityHostResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupCapabilityHostResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:machinelearningservices:getCapabilityHost", args, LookupCapabilityHostResultOutput{}, options).(LookupCapabilityHostResultOutput), nil
 		}).(LookupCapabilityHostResultOutput)
 }
 

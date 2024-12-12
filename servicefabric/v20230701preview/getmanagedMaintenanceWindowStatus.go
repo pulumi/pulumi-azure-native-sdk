@@ -48,21 +48,11 @@ type GetmanagedMaintenanceWindowStatusResult struct {
 }
 
 func GetmanagedMaintenanceWindowStatusOutput(ctx *pulumi.Context, args GetmanagedMaintenanceWindowStatusOutputArgs, opts ...pulumi.InvokeOption) GetmanagedMaintenanceWindowStatusResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetmanagedMaintenanceWindowStatusResultOutput, error) {
 			args := v.(GetmanagedMaintenanceWindowStatusArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetmanagedMaintenanceWindowStatusResult
-			secret, err := ctx.InvokePackageRaw("azure-native:servicefabric/v20230701preview:getmanagedMaintenanceWindowStatus", args, &rv, "", opts...)
-			if err != nil {
-				return GetmanagedMaintenanceWindowStatusResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetmanagedMaintenanceWindowStatusResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetmanagedMaintenanceWindowStatusResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:servicefabric/v20230701preview:getmanagedMaintenanceWindowStatus", args, GetmanagedMaintenanceWindowStatusResultOutput{}, options).(GetmanagedMaintenanceWindowStatusResultOutput), nil
 		}).(GetmanagedMaintenanceWindowStatusResultOutput)
 }
 

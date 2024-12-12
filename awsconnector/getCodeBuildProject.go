@@ -49,21 +49,11 @@ type LookupCodeBuildProjectResult struct {
 }
 
 func LookupCodeBuildProjectOutput(ctx *pulumi.Context, args LookupCodeBuildProjectOutputArgs, opts ...pulumi.InvokeOption) LookupCodeBuildProjectResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupCodeBuildProjectResultOutput, error) {
 			args := v.(LookupCodeBuildProjectArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupCodeBuildProjectResult
-			secret, err := ctx.InvokePackageRaw("azure-native:awsconnector:getCodeBuildProject", args, &rv, "", opts...)
-			if err != nil {
-				return LookupCodeBuildProjectResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupCodeBuildProjectResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupCodeBuildProjectResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:awsconnector:getCodeBuildProject", args, LookupCodeBuildProjectResultOutput{}, options).(LookupCodeBuildProjectResultOutput), nil
 		}).(LookupCodeBuildProjectResultOutput)
 }
 

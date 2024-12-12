@@ -59,21 +59,11 @@ type LookupSqlPoolWorkloadGroupResult struct {
 }
 
 func LookupSqlPoolWorkloadGroupOutput(ctx *pulumi.Context, args LookupSqlPoolWorkloadGroupOutputArgs, opts ...pulumi.InvokeOption) LookupSqlPoolWorkloadGroupResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupSqlPoolWorkloadGroupResultOutput, error) {
 			args := v.(LookupSqlPoolWorkloadGroupArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupSqlPoolWorkloadGroupResult
-			secret, err := ctx.InvokePackageRaw("azure-native:synapse:getSqlPoolWorkloadGroup", args, &rv, "", opts...)
-			if err != nil {
-				return LookupSqlPoolWorkloadGroupResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupSqlPoolWorkloadGroupResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupSqlPoolWorkloadGroupResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:synapse:getSqlPoolWorkloadGroup", args, LookupSqlPoolWorkloadGroupResultOutput{}, options).(LookupSqlPoolWorkloadGroupResultOutput), nil
 		}).(LookupSqlPoolWorkloadGroupResultOutput)
 }
 

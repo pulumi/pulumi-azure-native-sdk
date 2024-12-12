@@ -48,21 +48,11 @@ type LookupCodeVersionResult struct {
 }
 
 func LookupCodeVersionOutput(ctx *pulumi.Context, args LookupCodeVersionOutputArgs, opts ...pulumi.InvokeOption) LookupCodeVersionResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupCodeVersionResultOutput, error) {
 			args := v.(LookupCodeVersionArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupCodeVersionResult
-			secret, err := ctx.InvokePackageRaw("azure-native:machinelearningservices/v20210301preview:getCodeVersion", args, &rv, "", opts...)
-			if err != nil {
-				return LookupCodeVersionResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupCodeVersionResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupCodeVersionResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:machinelearningservices/v20210301preview:getCodeVersion", args, LookupCodeVersionResultOutput{}, options).(LookupCodeVersionResultOutput), nil
 		}).(LookupCodeVersionResultOutput)
 }
 

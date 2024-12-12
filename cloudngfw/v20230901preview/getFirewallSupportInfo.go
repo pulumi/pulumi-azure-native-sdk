@@ -60,21 +60,11 @@ type GetFirewallSupportInfoResult struct {
 }
 
 func GetFirewallSupportInfoOutput(ctx *pulumi.Context, args GetFirewallSupportInfoOutputArgs, opts ...pulumi.InvokeOption) GetFirewallSupportInfoResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetFirewallSupportInfoResultOutput, error) {
 			args := v.(GetFirewallSupportInfoArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetFirewallSupportInfoResult
-			secret, err := ctx.InvokePackageRaw("azure-native:cloudngfw/v20230901preview:getFirewallSupportInfo", args, &rv, "", opts...)
-			if err != nil {
-				return GetFirewallSupportInfoResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetFirewallSupportInfoResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetFirewallSupportInfoResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:cloudngfw/v20230901preview:getFirewallSupportInfo", args, GetFirewallSupportInfoResultOutput{}, options).(GetFirewallSupportInfoResultOutput), nil
 		}).(GetFirewallSupportInfoResultOutput)
 }
 

@@ -59,21 +59,11 @@ type ListEndpointIngressGatewayCredentialsResult struct {
 }
 
 func ListEndpointIngressGatewayCredentialsOutput(ctx *pulumi.Context, args ListEndpointIngressGatewayCredentialsOutputArgs, opts ...pulumi.InvokeOption) ListEndpointIngressGatewayCredentialsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListEndpointIngressGatewayCredentialsResultOutput, error) {
 			args := v.(ListEndpointIngressGatewayCredentialsArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListEndpointIngressGatewayCredentialsResult
-			secret, err := ctx.InvokePackageRaw("azure-native:hybridconnectivity:listEndpointIngressGatewayCredentials", args, &rv, "", opts...)
-			if err != nil {
-				return ListEndpointIngressGatewayCredentialsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListEndpointIngressGatewayCredentialsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListEndpointIngressGatewayCredentialsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:hybridconnectivity:listEndpointIngressGatewayCredentials", args, ListEndpointIngressGatewayCredentialsResultOutput{}, options).(ListEndpointIngressGatewayCredentialsResultOutput), nil
 		}).(ListEndpointIngressGatewayCredentialsResultOutput)
 }
 

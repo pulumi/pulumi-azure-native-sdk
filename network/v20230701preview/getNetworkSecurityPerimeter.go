@@ -48,21 +48,11 @@ type LookupNetworkSecurityPerimeterResult struct {
 }
 
 func LookupNetworkSecurityPerimeterOutput(ctx *pulumi.Context, args LookupNetworkSecurityPerimeterOutputArgs, opts ...pulumi.InvokeOption) LookupNetworkSecurityPerimeterResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupNetworkSecurityPerimeterResultOutput, error) {
 			args := v.(LookupNetworkSecurityPerimeterArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupNetworkSecurityPerimeterResult
-			secret, err := ctx.InvokePackageRaw("azure-native:network/v20230701preview:getNetworkSecurityPerimeter", args, &rv, "", opts...)
-			if err != nil {
-				return LookupNetworkSecurityPerimeterResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupNetworkSecurityPerimeterResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupNetworkSecurityPerimeterResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:network/v20230701preview:getNetworkSecurityPerimeter", args, LookupNetworkSecurityPerimeterResultOutput{}, options).(LookupNetworkSecurityPerimeterResultOutput), nil
 		}).(LookupNetworkSecurityPerimeterResultOutput)
 }
 

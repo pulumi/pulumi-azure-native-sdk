@@ -53,21 +53,11 @@ type LookupASCDataConnectorResult struct {
 }
 
 func LookupASCDataConnectorOutput(ctx *pulumi.Context, args LookupASCDataConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupASCDataConnectorResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupASCDataConnectorResultOutput, error) {
 			args := v.(LookupASCDataConnectorArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupASCDataConnectorResult
-			secret, err := ctx.InvokePackageRaw("azure-native:securityinsights/v20230601preview:getASCDataConnector", args, &rv, "", opts...)
-			if err != nil {
-				return LookupASCDataConnectorResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupASCDataConnectorResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupASCDataConnectorResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:securityinsights/v20230601preview:getASCDataConnector", args, LookupASCDataConnectorResultOutput{}, options).(LookupASCDataConnectorResultOutput), nil
 		}).(LookupASCDataConnectorResultOutput)
 }
 

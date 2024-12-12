@@ -34,21 +34,11 @@ type ListWorkspaceStorageAccountKeysResult struct {
 }
 
 func ListWorkspaceStorageAccountKeysOutput(ctx *pulumi.Context, args ListWorkspaceStorageAccountKeysOutputArgs, opts ...pulumi.InvokeOption) ListWorkspaceStorageAccountKeysResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListWorkspaceStorageAccountKeysResultOutput, error) {
 			args := v.(ListWorkspaceStorageAccountKeysArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListWorkspaceStorageAccountKeysResult
-			secret, err := ctx.InvokePackageRaw("azure-native:machinelearningservices/v20230601preview:listWorkspaceStorageAccountKeys", args, &rv, "", opts...)
-			if err != nil {
-				return ListWorkspaceStorageAccountKeysResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListWorkspaceStorageAccountKeysResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListWorkspaceStorageAccountKeysResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:machinelearningservices/v20230601preview:listWorkspaceStorageAccountKeys", args, ListWorkspaceStorageAccountKeysResultOutput{}, options).(ListWorkspaceStorageAccountKeysResultOutput), nil
 		}).(ListWorkspaceStorageAccountKeysResultOutput)
 }
 

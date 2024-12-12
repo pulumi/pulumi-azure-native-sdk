@@ -67,23 +67,12 @@ func (val *LookupAccountResult) Defaults() *LookupAccountResult {
 
 	return &tmp
 }
-
 func LookupAccountOutput(ctx *pulumi.Context, args LookupAccountOutputArgs, opts ...pulumi.InvokeOption) LookupAccountResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAccountResultOutput, error) {
 			args := v.(LookupAccountArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupAccountResult
-			secret, err := ctx.InvokePackageRaw("azure-native:netapp/v20231101:getAccount", args, &rv, "", opts...)
-			if err != nil {
-				return LookupAccountResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupAccountResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupAccountResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:netapp/v20231101:getAccount", args, LookupAccountResultOutput{}, options).(LookupAccountResultOutput), nil
 		}).(LookupAccountResultOutput)
 }
 

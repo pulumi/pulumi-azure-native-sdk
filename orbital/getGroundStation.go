@@ -65,21 +65,11 @@ type LookupGroundStationResult struct {
 }
 
 func LookupGroundStationOutput(ctx *pulumi.Context, args LookupGroundStationOutputArgs, opts ...pulumi.InvokeOption) LookupGroundStationResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupGroundStationResultOutput, error) {
 			args := v.(LookupGroundStationArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupGroundStationResult
-			secret, err := ctx.InvokePackageRaw("azure-native:orbital:getGroundStation", args, &rv, "", opts...)
-			if err != nil {
-				return LookupGroundStationResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupGroundStationResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupGroundStationResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:orbital:getGroundStation", args, LookupGroundStationResultOutput{}, options).(LookupGroundStationResultOutput), nil
 		}).(LookupGroundStationResultOutput)
 }
 

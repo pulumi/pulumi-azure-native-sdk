@@ -41,21 +41,11 @@ type ListSubAccountMonitoredResourcesResult struct {
 }
 
 func ListSubAccountMonitoredResourcesOutput(ctx *pulumi.Context, args ListSubAccountMonitoredResourcesOutputArgs, opts ...pulumi.InvokeOption) ListSubAccountMonitoredResourcesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListSubAccountMonitoredResourcesResultOutput, error) {
 			args := v.(ListSubAccountMonitoredResourcesArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListSubAccountMonitoredResourcesResult
-			secret, err := ctx.InvokePackageRaw("azure-native:logz:listSubAccountMonitoredResources", args, &rv, "", opts...)
-			if err != nil {
-				return ListSubAccountMonitoredResourcesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListSubAccountMonitoredResourcesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListSubAccountMonitoredResourcesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:logz:listSubAccountMonitoredResources", args, ListSubAccountMonitoredResourcesResultOutput{}, options).(ListSubAccountMonitoredResourcesResultOutput), nil
 		}).(ListSubAccountMonitoredResourcesResultOutput)
 }
 

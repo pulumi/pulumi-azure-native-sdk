@@ -73,21 +73,11 @@ type LookupActivityCustomEntityQueryResult struct {
 }
 
 func LookupActivityCustomEntityQueryOutput(ctx *pulumi.Context, args LookupActivityCustomEntityQueryOutputArgs, opts ...pulumi.InvokeOption) LookupActivityCustomEntityQueryResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupActivityCustomEntityQueryResultOutput, error) {
 			args := v.(LookupActivityCustomEntityQueryArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupActivityCustomEntityQueryResult
-			secret, err := ctx.InvokePackageRaw("azure-native:securityinsights/v20210301preview:getActivityCustomEntityQuery", args, &rv, "", opts...)
-			if err != nil {
-				return LookupActivityCustomEntityQueryResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupActivityCustomEntityQueryResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupActivityCustomEntityQueryResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:securityinsights/v20210301preview:getActivityCustomEntityQuery", args, LookupActivityCustomEntityQueryResultOutput{}, options).(LookupActivityCustomEntityQueryResultOutput), nil
 		}).(LookupActivityCustomEntityQueryResultOutput)
 }
 

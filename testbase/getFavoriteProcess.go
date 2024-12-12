@@ -51,21 +51,11 @@ type LookupFavoriteProcessResult struct {
 }
 
 func LookupFavoriteProcessOutput(ctx *pulumi.Context, args LookupFavoriteProcessOutputArgs, opts ...pulumi.InvokeOption) LookupFavoriteProcessResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupFavoriteProcessResultOutput, error) {
 			args := v.(LookupFavoriteProcessArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupFavoriteProcessResult
-			secret, err := ctx.InvokePackageRaw("azure-native:testbase:getFavoriteProcess", args, &rv, "", opts...)
-			if err != nil {
-				return LookupFavoriteProcessResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupFavoriteProcessResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupFavoriteProcessResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:testbase:getFavoriteProcess", args, LookupFavoriteProcessResultOutput{}, options).(LookupFavoriteProcessResultOutput), nil
 		}).(LookupFavoriteProcessResultOutput)
 }
 

@@ -61,21 +61,11 @@ type LookupSavedSearchResult struct {
 }
 
 func LookupSavedSearchOutput(ctx *pulumi.Context, args LookupSavedSearchOutputArgs, opts ...pulumi.InvokeOption) LookupSavedSearchResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupSavedSearchResultOutput, error) {
 			args := v.(LookupSavedSearchArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupSavedSearchResult
-			secret, err := ctx.InvokePackageRaw("azure-native:operationalinsights:getSavedSearch", args, &rv, "", opts...)
-			if err != nil {
-				return LookupSavedSearchResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupSavedSearchResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupSavedSearchResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:operationalinsights:getSavedSearch", args, LookupSavedSearchResultOutput{}, options).(LookupSavedSearchResultOutput), nil
 		}).(LookupSavedSearchResultOutput)
 }
 
