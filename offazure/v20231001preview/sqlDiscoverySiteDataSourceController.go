@@ -51,6 +51,9 @@ func NewSqlDiscoverySiteDataSourceController(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:offazure/v20230606:SqlDiscoverySiteDataSourceController"),
 		},
+		{
+			Type: pulumi.String("azure-native:offazure/v20240501preview:SqlDiscoverySiteDataSourceController"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

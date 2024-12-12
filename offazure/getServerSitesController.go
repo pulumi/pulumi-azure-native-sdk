@@ -14,7 +14,7 @@ import (
 // Get a ServerSiteResource
 // Azure REST API version: 2023-06-06.
 //
-// Other available API versions: 2023-10-01-preview.
+// Other available API versions: 2023-10-01-preview, 2024-05-01-preview.
 func LookupServerSitesController(ctx *pulumi.Context, args *LookupServerSitesControllerArgs, opts ...pulumi.InvokeOption) (*LookupServerSitesControllerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupServerSitesControllerResult

@@ -54,6 +54,9 @@ func NewWebAppSitesController(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:offazure/v20231001preview:WebAppSitesController"),
 		},
+		{
+			Type: pulumi.String("azure-native:offazure/v20240501preview:WebAppSitesController"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

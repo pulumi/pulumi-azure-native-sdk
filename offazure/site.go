@@ -55,6 +55,9 @@ func NewSite(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:offazure/v20231001preview:Site"),
 		},
+		{
+			Type: pulumi.String("azure-native:offazure/v20240501preview:Site"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

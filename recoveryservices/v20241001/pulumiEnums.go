@@ -4351,6 +4351,7 @@ const (
 	OperationTypeInvalid    = OperationType("Invalid")
 	OperationTypeRegister   = OperationType("Register")
 	OperationTypeReregister = OperationType("Reregister")
+	OperationTypeRehydrate  = OperationType("Rehydrate")
 )
 
 func (OperationType) ElementType() reflect.Type {
@@ -4478,6 +4479,7 @@ func (o OperationTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context
 //	OperationTypeInvalid
 //	OperationTypeRegister
 //	OperationTypeReregister
+//	OperationTypeRehydrate
 type OperationTypeInput interface {
 	pulumi.Input
 

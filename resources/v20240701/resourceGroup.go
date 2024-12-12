@@ -103,6 +103,9 @@ func NewResourceGroup(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:resources/v20240301:ResourceGroup"),
 		},
+		{
+			Type: pulumi.String("azure-native:resources/v20241101:ResourceGroup"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

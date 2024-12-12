@@ -57,6 +57,9 @@ func NewHybridRunbookWorkerGroup(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:automation/v20230515preview:HybridRunbookWorkerGroup"),
 		},
+		{
+			Type: pulumi.String("azure-native:automation/v20241023:HybridRunbookWorkerGroup"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

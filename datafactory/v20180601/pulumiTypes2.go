@@ -1811,6 +1811,8 @@ type ScriptActivity struct {
 	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
 	// Activity policy.
 	Policy *ActivityPolicy `pulumi:"policy"`
+	// Enable to retrieve result sets from multiple SQL statements and the number of rows affected by the DML statement. Supported connector: SnowflakeV2. Type: boolean (or Expression with resultType boolean).
+	ReturnMultistatementResult interface{} `pulumi:"returnMultistatementResult"`
 	// ScriptBlock execution timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
 	ScriptBlockExecutionTimeout interface{} `pulumi:"scriptBlockExecutionTimeout"`
 	// Array of script blocks. Type: array.
@@ -1851,6 +1853,8 @@ type ScriptActivityArgs struct {
 	OnInactiveMarkAs pulumi.StringPtrInput `pulumi:"onInactiveMarkAs"`
 	// Activity policy.
 	Policy ActivityPolicyPtrInput `pulumi:"policy"`
+	// Enable to retrieve result sets from multiple SQL statements and the number of rows affected by the DML statement. Supported connector: SnowflakeV2. Type: boolean (or Expression with resultType boolean).
+	ReturnMultistatementResult pulumi.Input `pulumi:"returnMultistatementResult"`
 	// ScriptBlock execution timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
 	ScriptBlockExecutionTimeout pulumi.Input `pulumi:"scriptBlockExecutionTimeout"`
 	// Array of script blocks. Type: array.
@@ -1924,6 +1928,11 @@ func (o ScriptActivityOutput) OnInactiveMarkAs() pulumi.StringPtrOutput {
 // Activity policy.
 func (o ScriptActivityOutput) Policy() ActivityPolicyPtrOutput {
 	return o.ApplyT(func(v ScriptActivity) *ActivityPolicy { return v.Policy }).(ActivityPolicyPtrOutput)
+}
+
+// Enable to retrieve result sets from multiple SQL statements and the number of rows affected by the DML statement. Supported connector: SnowflakeV2. Type: boolean (or Expression with resultType boolean).
+func (o ScriptActivityOutput) ReturnMultistatementResult() pulumi.AnyOutput {
+	return o.ApplyT(func(v ScriptActivity) interface{} { return v.ReturnMultistatementResult }).(pulumi.AnyOutput)
 }
 
 // ScriptBlock execution timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
@@ -2178,6 +2187,8 @@ type ScriptActivityResponse struct {
 	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
 	// Activity policy.
 	Policy *ActivityPolicyResponse `pulumi:"policy"`
+	// Enable to retrieve result sets from multiple SQL statements and the number of rows affected by the DML statement. Supported connector: SnowflakeV2. Type: boolean (or Expression with resultType boolean).
+	ReturnMultistatementResult interface{} `pulumi:"returnMultistatementResult"`
 	// ScriptBlock execution timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
 	ScriptBlockExecutionTimeout interface{} `pulumi:"scriptBlockExecutionTimeout"`
 	// Array of script blocks. Type: array.
@@ -2239,6 +2250,11 @@ func (o ScriptActivityResponseOutput) OnInactiveMarkAs() pulumi.StringPtrOutput 
 // Activity policy.
 func (o ScriptActivityResponseOutput) Policy() ActivityPolicyResponsePtrOutput {
 	return o.ApplyT(func(v ScriptActivityResponse) *ActivityPolicyResponse { return v.Policy }).(ActivityPolicyResponsePtrOutput)
+}
+
+// Enable to retrieve result sets from multiple SQL statements and the number of rows affected by the DML statement. Supported connector: SnowflakeV2. Type: boolean (or Expression with resultType boolean).
+func (o ScriptActivityResponseOutput) ReturnMultistatementResult() pulumi.AnyOutput {
+	return o.ApplyT(func(v ScriptActivityResponse) interface{} { return v.ReturnMultistatementResult }).(pulumi.AnyOutput)
 }
 
 // ScriptBlock execution timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).

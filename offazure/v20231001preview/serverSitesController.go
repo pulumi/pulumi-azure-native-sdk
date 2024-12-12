@@ -61,6 +61,9 @@ func NewServerSitesController(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:offazure/v20230606:ServerSitesController"),
 		},
+		{
+			Type: pulumi.String("azure-native:offazure/v20240501preview:ServerSitesController"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

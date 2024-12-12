@@ -74,6 +74,9 @@ func NewPython3Package(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:automation/v20230515preview:Python3Package"),
 		},
+		{
+			Type: pulumi.String("azure-native:automation/v20241023:Python3Package"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

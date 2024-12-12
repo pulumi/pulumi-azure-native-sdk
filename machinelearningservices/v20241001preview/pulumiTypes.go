@@ -1970,7 +1970,7 @@ func (o AcrDetailsResponseArrayOutput) Index(i pulumi.IntInput) AcrDetailsRespon
 }
 
 type ActualCapacityInfoResponse struct {
-	// Gets or sets the number of instances (scale units) which Failed provisioning state and have target group payload.
+	// Gets or sets the number of instances (scale units) which have Failed provisioning state and have target group payload.
 	Failed *int `pulumi:"failed"`
 	// Gets or sets the number of instances (scale units) which have Failed provisioning state but do not have target group payload.
 	OutdatedFailed *int `pulumi:"outdatedFailed"`
@@ -2025,7 +2025,7 @@ func (o ActualCapacityInfoResponseOutput) ToActualCapacityInfoResponseOutputWith
 	return o
 }
 
-// Gets or sets the number of instances (scale units) which Failed provisioning state and have target group payload.
+// Gets or sets the number of instances (scale units) which have Failed provisioning state and have target group payload.
 func (o ActualCapacityInfoResponseOutput) Failed() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ActualCapacityInfoResponse) *int { return v.Failed }).(pulumi.IntPtrOutput)
 }
@@ -2074,7 +2074,7 @@ func (o ActualCapacityInfoResponsePtrOutput) Elem() ActualCapacityInfoResponseOu
 	}).(ActualCapacityInfoResponseOutput)
 }
 
-// Gets or sets the number of instances (scale units) which Failed provisioning state and have target group payload.
+// Gets or sets the number of instances (scale units) which have Failed provisioning state and have target group payload.
 func (o ActualCapacityInfoResponsePtrOutput) Failed() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ActualCapacityInfoResponse) *int {
 		if v == nil {

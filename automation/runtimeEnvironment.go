@@ -14,6 +14,8 @@ import (
 
 // Definition of the Runtime Environment type.
 // Azure REST API version: 2023-05-15-preview.
+//
+// Other available API versions: 2024-10-23.
 type RuntimeEnvironment struct {
 	pulumi.CustomResourceState
 
@@ -53,6 +55,9 @@ func NewRuntimeEnvironment(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:automation/v20230515preview:RuntimeEnvironment"),
+		},
+		{
+			Type: pulumi.String("azure-native:automation/v20241023:RuntimeEnvironment"),
 		},
 	})
 	opts = append(opts, aliases)

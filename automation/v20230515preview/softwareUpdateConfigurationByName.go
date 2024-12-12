@@ -70,6 +70,9 @@ func NewSoftwareUpdateConfigurationByName(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:automation/v20190601:SoftwareUpdateConfigurationByName"),
 		},
+		{
+			Type: pulumi.String("azure-native:automation/v20241023:SoftwareUpdateConfigurationByName"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

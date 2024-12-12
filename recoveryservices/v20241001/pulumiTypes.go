@@ -15769,6 +15769,8 @@ type AzureStorageContainer struct {
 	FriendlyName *string `pulumi:"friendlyName"`
 	// Status of health of the container.
 	HealthStatus *string `pulumi:"healthStatus"`
+	// Re-Do Operation
+	OperationType *string `pulumi:"operationType"`
 	// Type of the protectable object associated with this container
 	ProtectableObjectType *string `pulumi:"protectableObjectType"`
 	// Number of items backed up in this container.
@@ -15810,6 +15812,8 @@ type AzureStorageContainerArgs struct {
 	FriendlyName pulumi.StringPtrInput `pulumi:"friendlyName"`
 	// Status of health of the container.
 	HealthStatus pulumi.StringPtrInput `pulumi:"healthStatus"`
+	// Re-Do Operation
+	OperationType pulumi.StringPtrInput `pulumi:"operationType"`
 	// Type of the protectable object associated with this container
 	ProtectableObjectType pulumi.StringPtrInput `pulumi:"protectableObjectType"`
 	// Number of items backed up in this container.
@@ -15931,6 +15935,11 @@ func (o AzureStorageContainerOutput) HealthStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AzureStorageContainer) *string { return v.HealthStatus }).(pulumi.StringPtrOutput)
 }
 
+// Re-Do Operation
+func (o AzureStorageContainerOutput) OperationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureStorageContainer) *string { return v.OperationType }).(pulumi.StringPtrOutput)
+}
+
 // Type of the protectable object associated with this container
 func (o AzureStorageContainerOutput) ProtectableObjectType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AzureStorageContainer) *string { return v.ProtectableObjectType }).(pulumi.StringPtrOutput)
@@ -16039,6 +16048,16 @@ func (o AzureStorageContainerPtrOutput) HealthStatus() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Re-Do Operation
+func (o AzureStorageContainerPtrOutput) OperationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureStorageContainer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OperationType
+	}).(pulumi.StringPtrOutput)
+}
+
 // Type of the protectable object associated with this container
 func (o AzureStorageContainerPtrOutput) ProtectableObjectType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AzureStorageContainer) *string {
@@ -16115,6 +16134,8 @@ type AzureStorageContainerResponse struct {
 	FriendlyName *string `pulumi:"friendlyName"`
 	// Status of health of the container.
 	HealthStatus *string `pulumi:"healthStatus"`
+	// Re-Do Operation
+	OperationType *string `pulumi:"operationType"`
 	// Type of the protectable object associated with this container
 	ProtectableObjectType *string `pulumi:"protectableObjectType"`
 	// Number of items backed up in this container.
@@ -16171,6 +16192,11 @@ func (o AzureStorageContainerResponseOutput) FriendlyName() pulumi.StringPtrOutp
 // Status of health of the container.
 func (o AzureStorageContainerResponseOutput) HealthStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AzureStorageContainerResponse) *string { return v.HealthStatus }).(pulumi.StringPtrOutput)
+}
+
+// Re-Do Operation
+func (o AzureStorageContainerResponseOutput) OperationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureStorageContainerResponse) *string { return v.OperationType }).(pulumi.StringPtrOutput)
 }
 
 // Type of the protectable object associated with this container

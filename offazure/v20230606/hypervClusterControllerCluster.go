@@ -62,6 +62,9 @@ func NewHypervClusterControllerCluster(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:offazure/v20231001preview:HypervClusterControllerCluster"),
 		},
+		{
+			Type: pulumi.String("azure-native:offazure/v20240501preview:HypervClusterControllerCluster"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

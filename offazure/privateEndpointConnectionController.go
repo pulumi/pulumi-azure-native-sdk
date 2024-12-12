@@ -15,7 +15,7 @@ import (
 // REST model used to encapsulate Private Link properties for tracked resources.
 // Azure REST API version: 2023-06-06.
 //
-// Other available API versions: 2023-10-01-preview.
+// Other available API versions: 2023-10-01-preview, 2024-05-01-preview.
 type PrivateEndpointConnectionController struct {
 	pulumi.CustomResourceState
 
@@ -57,6 +57,9 @@ func NewPrivateEndpointConnectionController(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:offazure/v20231001preview:PrivateEndpointConnectionController"),
+		},
+		{
+			Type: pulumi.String("azure-native:offazure/v20240501preview:PrivateEndpointConnectionController"),
 		},
 	})
 	opts = append(opts, aliases)
