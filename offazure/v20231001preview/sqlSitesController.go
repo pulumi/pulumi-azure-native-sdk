@@ -54,6 +54,9 @@ func NewSqlSitesController(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:offazure/v20230606:SqlSitesController"),
 		},
+		{
+			Type: pulumi.String("azure-native:offazure/v20240501preview:SqlSitesController"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

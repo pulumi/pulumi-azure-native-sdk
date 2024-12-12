@@ -70,6 +70,9 @@ func NewJobSchedule(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:automation/v20231101:JobSchedule"),
 		},
+		{
+			Type: pulumi.String("azure-native:automation/v20241023:JobSchedule"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

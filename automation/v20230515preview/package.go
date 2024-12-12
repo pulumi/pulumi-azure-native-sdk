@@ -65,6 +65,9 @@ func NewPackage(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:automation:Package"),
 		},
+		{
+			Type: pulumi.String("azure-native:automation/v20241023:Package"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

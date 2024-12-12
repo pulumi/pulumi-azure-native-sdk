@@ -65,6 +65,9 @@ func NewHybridRunbookWorker(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:automation/v20231101:HybridRunbookWorker"),
 		},
+		{
+			Type: pulumi.String("azure-native:automation/v20241023:HybridRunbookWorker"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -74,6 +74,9 @@ func NewSourceControl(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:automation/v20231101:SourceControl"),
 		},
+		{
+			Type: pulumi.String("azure-native:automation/v20241023:SourceControl"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

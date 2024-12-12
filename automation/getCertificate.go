@@ -14,7 +14,7 @@ import (
 // Retrieve the certificate identified by certificate name.
 // Azure REST API version: 2022-08-08.
 //
-// Other available API versions: 2023-05-15-preview, 2023-11-01.
+// Other available API versions: 2023-05-15-preview, 2023-11-01, 2024-10-23.
 func LookupCertificate(ctx *pulumi.Context, args *LookupCertificateArgs, opts ...pulumi.InvokeOption) (*LookupCertificateResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCertificateResult

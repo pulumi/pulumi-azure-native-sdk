@@ -69,6 +69,9 @@ func NewVariable(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:automation/v20231101:Variable"),
 		},
+		{
+			Type: pulumi.String("azure-native:automation/v20241023:Variable"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

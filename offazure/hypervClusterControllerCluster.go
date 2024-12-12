@@ -15,7 +15,7 @@ import (
 // A cluster resource belonging to a site resource.
 // Azure REST API version: 2023-06-06.
 //
-// Other available API versions: 2023-10-01-preview.
+// Other available API versions: 2023-10-01-preview, 2024-05-01-preview.
 type HypervClusterControllerCluster struct {
 	pulumi.CustomResourceState
 
@@ -64,6 +64,9 @@ func NewHypervClusterControllerCluster(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:offazure/v20231001preview:HypervClusterControllerCluster"),
+		},
+		{
+			Type: pulumi.String("azure-native:offazure/v20240501preview:HypervClusterControllerCluster"),
 		},
 	})
 	opts = append(opts, aliases)

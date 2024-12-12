@@ -53,6 +53,9 @@ func NewRuntimeEnvironment(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:automation:RuntimeEnvironment"),
 		},
+		{
+			Type: pulumi.String("azure-native:automation/v20241023:RuntimeEnvironment"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -65,6 +65,9 @@ func NewMasterSitesController(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:offazure/v20230606:MasterSitesController"),
 		},
+		{
+			Type: pulumi.String("azure-native:offazure/v20240501preview:MasterSitesController"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

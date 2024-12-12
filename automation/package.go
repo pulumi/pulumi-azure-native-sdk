@@ -14,6 +14,8 @@ import (
 
 // Definition of the Package type.
 // Azure REST API version: 2023-05-15-preview.
+//
+// Other available API versions: 2024-10-23.
 type Package struct {
 	pulumi.CustomResourceState
 
@@ -65,6 +67,9 @@ func NewPackage(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:automation/v20230515preview:Package"),
+		},
+		{
+			Type: pulumi.String("azure-native:automation/v20241023:Package"),
 		},
 	})
 	opts = append(opts, aliases)

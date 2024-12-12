@@ -15,7 +15,7 @@ import (
 // Web app data source web model.
 // Azure REST API version: 2023-06-06.
 //
-// Other available API versions: 2023-10-01-preview.
+// Other available API versions: 2023-10-01-preview, 2024-05-01-preview.
 type WebAppDiscoverySiteDataSourcesController struct {
 	pulumi.CustomResourceState
 
@@ -53,6 +53,9 @@ func NewWebAppDiscoverySiteDataSourcesController(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:offazure/v20231001preview:WebAppDiscoverySiteDataSourcesController"),
+		},
+		{
+			Type: pulumi.String("azure-native:offazure/v20240501preview:WebAppDiscoverySiteDataSourcesController"),
 		},
 	})
 	opts = append(opts, aliases)

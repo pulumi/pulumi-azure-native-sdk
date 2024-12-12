@@ -15,7 +15,7 @@ import (
 // A SQL discovery site data source resource.
 // Azure REST API version: 2023-06-06.
 //
-// Other available API versions: 2023-10-01-preview.
+// Other available API versions: 2023-10-01-preview, 2024-05-01-preview.
 type SqlDiscoverySiteDataSourceController struct {
 	pulumi.CustomResourceState
 
@@ -53,6 +53,9 @@ func NewSqlDiscoverySiteDataSourceController(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:offazure/v20231001preview:SqlDiscoverySiteDataSourceController"),
+		},
+		{
+			Type: pulumi.String("azure-native:offazure/v20240501preview:SqlDiscoverySiteDataSourceController"),
 		},
 	})
 	opts = append(opts, aliases)
