@@ -48,21 +48,11 @@ type LookupCloudTrailTrailResult struct {
 }
 
 func LookupCloudTrailTrailOutput(ctx *pulumi.Context, args LookupCloudTrailTrailOutputArgs, opts ...pulumi.InvokeOption) LookupCloudTrailTrailResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupCloudTrailTrailResultOutput, error) {
 			args := v.(LookupCloudTrailTrailArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupCloudTrailTrailResult
-			secret, err := ctx.InvokePackageRaw("azure-native:awsconnector/v20241201:getCloudTrailTrail", args, &rv, "", opts...)
-			if err != nil {
-				return LookupCloudTrailTrailResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupCloudTrailTrailResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupCloudTrailTrailResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:awsconnector/v20241201:getCloudTrailTrail", args, LookupCloudTrailTrailResultOutput{}, options).(LookupCloudTrailTrailResultOutput), nil
 		}).(LookupCloudTrailTrailResultOutput)
 }
 

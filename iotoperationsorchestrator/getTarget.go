@@ -61,21 +61,11 @@ type LookupTargetResult struct {
 }
 
 func LookupTargetOutput(ctx *pulumi.Context, args LookupTargetOutputArgs, opts ...pulumi.InvokeOption) LookupTargetResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupTargetResultOutput, error) {
 			args := v.(LookupTargetArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupTargetResult
-			secret, err := ctx.InvokePackageRaw("azure-native:iotoperationsorchestrator:getTarget", args, &rv, "", opts...)
-			if err != nil {
-				return LookupTargetResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupTargetResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupTargetResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:iotoperationsorchestrator:getTarget", args, LookupTargetResultOutput{}, options).(LookupTargetResultOutput), nil
 		}).(LookupTargetResultOutput)
 }
 

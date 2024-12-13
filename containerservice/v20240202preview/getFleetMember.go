@@ -52,21 +52,11 @@ type LookupFleetMemberResult struct {
 }
 
 func LookupFleetMemberOutput(ctx *pulumi.Context, args LookupFleetMemberOutputArgs, opts ...pulumi.InvokeOption) LookupFleetMemberResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupFleetMemberResultOutput, error) {
 			args := v.(LookupFleetMemberArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupFleetMemberResult
-			secret, err := ctx.InvokePackageRaw("azure-native:containerservice/v20240202preview:getFleetMember", args, &rv, "", opts...)
-			if err != nil {
-				return LookupFleetMemberResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupFleetMemberResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupFleetMemberResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:containerservice/v20240202preview:getFleetMember", args, LookupFleetMemberResultOutput{}, options).(LookupFleetMemberResultOutput), nil
 		}).(LookupFleetMemberResultOutput)
 }
 

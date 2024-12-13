@@ -50,21 +50,11 @@ type LookupPlanResult struct {
 }
 
 func LookupPlanOutput(ctx *pulumi.Context, args LookupPlanOutputArgs, opts ...pulumi.InvokeOption) LookupPlanResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupPlanResultOutput, error) {
 			args := v.(LookupPlanArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupPlanResult
-			secret, err := ctx.InvokePackageRaw("azure-native:devcenter/v20240801preview:getPlan", args, &rv, "", opts...)
-			if err != nil {
-				return LookupPlanResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupPlanResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupPlanResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:devcenter/v20240801preview:getPlan", args, LookupPlanResultOutput{}, options).(LookupPlanResultOutput), nil
 		}).(LookupPlanResultOutput)
 }
 

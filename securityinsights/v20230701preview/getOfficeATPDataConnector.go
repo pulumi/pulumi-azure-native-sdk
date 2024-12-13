@@ -53,21 +53,11 @@ type LookupOfficeATPDataConnectorResult struct {
 }
 
 func LookupOfficeATPDataConnectorOutput(ctx *pulumi.Context, args LookupOfficeATPDataConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupOfficeATPDataConnectorResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupOfficeATPDataConnectorResultOutput, error) {
 			args := v.(LookupOfficeATPDataConnectorArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupOfficeATPDataConnectorResult
-			secret, err := ctx.InvokePackageRaw("azure-native:securityinsights/v20230701preview:getOfficeATPDataConnector", args, &rv, "", opts...)
-			if err != nil {
-				return LookupOfficeATPDataConnectorResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupOfficeATPDataConnectorResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupOfficeATPDataConnectorResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:securityinsights/v20230701preview:getOfficeATPDataConnector", args, LookupOfficeATPDataConnectorResultOutput{}, options).(LookupOfficeATPDataConnectorResultOutput), nil
 		}).(LookupOfficeATPDataConnectorResultOutput)
 }
 

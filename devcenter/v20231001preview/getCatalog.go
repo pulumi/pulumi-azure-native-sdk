@@ -62,21 +62,11 @@ type LookupCatalogResult struct {
 }
 
 func LookupCatalogOutput(ctx *pulumi.Context, args LookupCatalogOutputArgs, opts ...pulumi.InvokeOption) LookupCatalogResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupCatalogResultOutput, error) {
 			args := v.(LookupCatalogArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupCatalogResult
-			secret, err := ctx.InvokePackageRaw("azure-native:devcenter/v20231001preview:getCatalog", args, &rv, "", opts...)
-			if err != nil {
-				return LookupCatalogResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupCatalogResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupCatalogResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:devcenter/v20231001preview:getCatalog", args, LookupCatalogResultOutput{}, options).(LookupCatalogResultOutput), nil
 		}).(LookupCatalogResultOutput)
 }
 

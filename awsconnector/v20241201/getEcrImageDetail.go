@@ -48,21 +48,11 @@ type LookupEcrImageDetailResult struct {
 }
 
 func LookupEcrImageDetailOutput(ctx *pulumi.Context, args LookupEcrImageDetailOutputArgs, opts ...pulumi.InvokeOption) LookupEcrImageDetailResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupEcrImageDetailResultOutput, error) {
 			args := v.(LookupEcrImageDetailArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupEcrImageDetailResult
-			secret, err := ctx.InvokePackageRaw("azure-native:awsconnector/v20241201:getEcrImageDetail", args, &rv, "", opts...)
-			if err != nil {
-				return LookupEcrImageDetailResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupEcrImageDetailResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupEcrImageDetailResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:awsconnector/v20241201:getEcrImageDetail", args, LookupEcrImageDetailResultOutput{}, options).(LookupEcrImageDetailResultOutput), nil
 		}).(LookupEcrImageDetailResultOutput)
 }
 

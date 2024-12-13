@@ -70,21 +70,11 @@ type LookupDicomServiceResult struct {
 }
 
 func LookupDicomServiceOutput(ctx *pulumi.Context, args LookupDicomServiceOutputArgs, opts ...pulumi.InvokeOption) LookupDicomServiceResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupDicomServiceResultOutput, error) {
 			args := v.(LookupDicomServiceArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupDicomServiceResult
-			secret, err := ctx.InvokePackageRaw("azure-native:healthcareapis/v20240301:getDicomService", args, &rv, "", opts...)
-			if err != nil {
-				return LookupDicomServiceResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupDicomServiceResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupDicomServiceResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:healthcareapis/v20240301:getDicomService", args, LookupDicomServiceResultOutput{}, options).(LookupDicomServiceResultOutput), nil
 		}).(LookupDicomServiceResultOutput)
 }
 

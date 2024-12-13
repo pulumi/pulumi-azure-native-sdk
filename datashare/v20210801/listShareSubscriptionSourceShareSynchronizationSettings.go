@@ -42,21 +42,11 @@ type ListShareSubscriptionSourceShareSynchronizationSettingsResult struct {
 }
 
 func ListShareSubscriptionSourceShareSynchronizationSettingsOutput(ctx *pulumi.Context, args ListShareSubscriptionSourceShareSynchronizationSettingsOutputArgs, opts ...pulumi.InvokeOption) ListShareSubscriptionSourceShareSynchronizationSettingsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListShareSubscriptionSourceShareSynchronizationSettingsResultOutput, error) {
 			args := v.(ListShareSubscriptionSourceShareSynchronizationSettingsArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListShareSubscriptionSourceShareSynchronizationSettingsResult
-			secret, err := ctx.InvokePackageRaw("azure-native:datashare/v20210801:listShareSubscriptionSourceShareSynchronizationSettings", args, &rv, "", opts...)
-			if err != nil {
-				return ListShareSubscriptionSourceShareSynchronizationSettingsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListShareSubscriptionSourceShareSynchronizationSettingsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListShareSubscriptionSourceShareSynchronizationSettingsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:datashare/v20210801:listShareSubscriptionSourceShareSynchronizationSettings", args, ListShareSubscriptionSourceShareSynchronizationSettingsResultOutput{}, options).(ListShareSubscriptionSourceShareSynchronizationSettingsResultOutput), nil
 		}).(ListShareSubscriptionSourceShareSynchronizationSettingsResultOutput)
 }
 

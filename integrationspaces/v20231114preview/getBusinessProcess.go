@@ -62,21 +62,11 @@ type LookupBusinessProcessResult struct {
 }
 
 func LookupBusinessProcessOutput(ctx *pulumi.Context, args LookupBusinessProcessOutputArgs, opts ...pulumi.InvokeOption) LookupBusinessProcessResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupBusinessProcessResultOutput, error) {
 			args := v.(LookupBusinessProcessArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupBusinessProcessResult
-			secret, err := ctx.InvokePackageRaw("azure-native:integrationspaces/v20231114preview:getBusinessProcess", args, &rv, "", opts...)
-			if err != nil {
-				return LookupBusinessProcessResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupBusinessProcessResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupBusinessProcessResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:integrationspaces/v20231114preview:getBusinessProcess", args, LookupBusinessProcessResultOutput{}, options).(LookupBusinessProcessResultOutput), nil
 		}).(LookupBusinessProcessResultOutput)
 }
 

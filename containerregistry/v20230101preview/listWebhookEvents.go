@@ -40,21 +40,11 @@ type ListWebhookEventsResult struct {
 }
 
 func ListWebhookEventsOutput(ctx *pulumi.Context, args ListWebhookEventsOutputArgs, opts ...pulumi.InvokeOption) ListWebhookEventsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListWebhookEventsResultOutput, error) {
 			args := v.(ListWebhookEventsArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListWebhookEventsResult
-			secret, err := ctx.InvokePackageRaw("azure-native:containerregistry/v20230101preview:listWebhookEvents", args, &rv, "", opts...)
-			if err != nil {
-				return ListWebhookEventsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListWebhookEventsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListWebhookEventsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:containerregistry/v20230101preview:listWebhookEvents", args, ListWebhookEventsResultOutput{}, options).(ListWebhookEventsResultOutput), nil
 		}).(ListWebhookEventsResultOutput)
 }
 

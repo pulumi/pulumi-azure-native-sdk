@@ -43,21 +43,11 @@ type ListLocalUserKeysResult struct {
 }
 
 func ListLocalUserKeysOutput(ctx *pulumi.Context, args ListLocalUserKeysOutputArgs, opts ...pulumi.InvokeOption) ListLocalUserKeysResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListLocalUserKeysResultOutput, error) {
 			args := v.(ListLocalUserKeysArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListLocalUserKeysResult
-			secret, err := ctx.InvokePackageRaw("azure-native:storage:listLocalUserKeys", args, &rv, "", opts...)
-			if err != nil {
-				return ListLocalUserKeysResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListLocalUserKeysResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListLocalUserKeysResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:storage:listLocalUserKeys", args, ListLocalUserKeysResultOutput{}, options).(ListLocalUserKeysResultOutput), nil
 		}).(ListLocalUserKeysResultOutput)
 }
 

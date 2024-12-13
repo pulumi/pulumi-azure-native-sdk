@@ -54,21 +54,11 @@ type LookupAppServiceEnvironmentPrivateEndpointConnectionResult struct {
 }
 
 func LookupAppServiceEnvironmentPrivateEndpointConnectionOutput(ctx *pulumi.Context, args LookupAppServiceEnvironmentPrivateEndpointConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupAppServiceEnvironmentPrivateEndpointConnectionResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAppServiceEnvironmentPrivateEndpointConnectionResultOutput, error) {
 			args := v.(LookupAppServiceEnvironmentPrivateEndpointConnectionArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupAppServiceEnvironmentPrivateEndpointConnectionResult
-			secret, err := ctx.InvokePackageRaw("azure-native:web:getAppServiceEnvironmentPrivateEndpointConnection", args, &rv, "", opts...)
-			if err != nil {
-				return LookupAppServiceEnvironmentPrivateEndpointConnectionResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupAppServiceEnvironmentPrivateEndpointConnectionResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupAppServiceEnvironmentPrivateEndpointConnectionResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:web:getAppServiceEnvironmentPrivateEndpointConnection", args, LookupAppServiceEnvironmentPrivateEndpointConnectionResultOutput{}, options).(LookupAppServiceEnvironmentPrivateEndpointConnectionResultOutput), nil
 		}).(LookupAppServiceEnvironmentPrivateEndpointConnectionResultOutput)
 }
 

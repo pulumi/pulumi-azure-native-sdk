@@ -161,23 +161,12 @@ func (val *LookupNodeTypeResult) Defaults() *LookupNodeTypeResult {
 	}
 	return &tmp
 }
-
 func LookupNodeTypeOutput(ctx *pulumi.Context, args LookupNodeTypeOutputArgs, opts ...pulumi.InvokeOption) LookupNodeTypeResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupNodeTypeResultOutput, error) {
 			args := v.(LookupNodeTypeArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupNodeTypeResult
-			secret, err := ctx.InvokePackageRaw("azure-native:servicefabric/v20231101preview:getNodeType", args, &rv, "", opts...)
-			if err != nil {
-				return LookupNodeTypeResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupNodeTypeResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupNodeTypeResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:servicefabric/v20231101preview:getNodeType", args, LookupNodeTypeResultOutput{}, options).(LookupNodeTypeResultOutput), nil
 		}).(LookupNodeTypeResultOutput)
 }
 

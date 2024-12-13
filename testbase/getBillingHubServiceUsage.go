@@ -44,21 +44,11 @@ type GetBillingHubServiceUsageResult struct {
 }
 
 func GetBillingHubServiceUsageOutput(ctx *pulumi.Context, args GetBillingHubServiceUsageOutputArgs, opts ...pulumi.InvokeOption) GetBillingHubServiceUsageResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetBillingHubServiceUsageResultOutput, error) {
 			args := v.(GetBillingHubServiceUsageArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetBillingHubServiceUsageResult
-			secret, err := ctx.InvokePackageRaw("azure-native:testbase:getBillingHubServiceUsage", args, &rv, "", opts...)
-			if err != nil {
-				return GetBillingHubServiceUsageResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetBillingHubServiceUsageResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetBillingHubServiceUsageResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:testbase:getBillingHubServiceUsage", args, GetBillingHubServiceUsageResultOutput{}, options).(GetBillingHubServiceUsageResultOutput), nil
 		}).(GetBillingHubServiceUsageResultOutput)
 }
 

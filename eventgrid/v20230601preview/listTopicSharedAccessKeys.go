@@ -38,21 +38,11 @@ type ListTopicSharedAccessKeysResult struct {
 }
 
 func ListTopicSharedAccessKeysOutput(ctx *pulumi.Context, args ListTopicSharedAccessKeysOutputArgs, opts ...pulumi.InvokeOption) ListTopicSharedAccessKeysResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListTopicSharedAccessKeysResultOutput, error) {
 			args := v.(ListTopicSharedAccessKeysArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListTopicSharedAccessKeysResult
-			secret, err := ctx.InvokePackageRaw("azure-native:eventgrid/v20230601preview:listTopicSharedAccessKeys", args, &rv, "", opts...)
-			if err != nil {
-				return ListTopicSharedAccessKeysResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListTopicSharedAccessKeysResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListTopicSharedAccessKeysResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:eventgrid/v20230601preview:listTopicSharedAccessKeys", args, ListTopicSharedAccessKeysResultOutput{}, options).(ListTopicSharedAccessKeysResultOutput), nil
 		}).(ListTopicSharedAccessKeysResultOutput)
 }
 

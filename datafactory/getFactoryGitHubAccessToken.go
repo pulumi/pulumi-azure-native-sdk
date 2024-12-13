@@ -45,21 +45,11 @@ type GetFactoryGitHubAccessTokenResult struct {
 }
 
 func GetFactoryGitHubAccessTokenOutput(ctx *pulumi.Context, args GetFactoryGitHubAccessTokenOutputArgs, opts ...pulumi.InvokeOption) GetFactoryGitHubAccessTokenResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetFactoryGitHubAccessTokenResultOutput, error) {
 			args := v.(GetFactoryGitHubAccessTokenArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetFactoryGitHubAccessTokenResult
-			secret, err := ctx.InvokePackageRaw("azure-native:datafactory:getFactoryGitHubAccessToken", args, &rv, "", opts...)
-			if err != nil {
-				return GetFactoryGitHubAccessTokenResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetFactoryGitHubAccessTokenResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetFactoryGitHubAccessTokenResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:datafactory:getFactoryGitHubAccessToken", args, GetFactoryGitHubAccessTokenResultOutput{}, options).(GetFactoryGitHubAccessTokenResultOutput), nil
 		}).(GetFactoryGitHubAccessTokenResultOutput)
 }
 

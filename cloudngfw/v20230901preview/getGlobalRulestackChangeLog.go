@@ -38,21 +38,11 @@ type GetGlobalRulestackChangeLogResult struct {
 }
 
 func GetGlobalRulestackChangeLogOutput(ctx *pulumi.Context, args GetGlobalRulestackChangeLogOutputArgs, opts ...pulumi.InvokeOption) GetGlobalRulestackChangeLogResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetGlobalRulestackChangeLogResultOutput, error) {
 			args := v.(GetGlobalRulestackChangeLogArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetGlobalRulestackChangeLogResult
-			secret, err := ctx.InvokePackageRaw("azure-native:cloudngfw/v20230901preview:getGlobalRulestackChangeLog", args, &rv, "", opts...)
-			if err != nil {
-				return GetGlobalRulestackChangeLogResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetGlobalRulestackChangeLogResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetGlobalRulestackChangeLogResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:cloudngfw/v20230901preview:getGlobalRulestackChangeLog", args, GetGlobalRulestackChangeLogResultOutput{}, options).(GetGlobalRulestackChangeLogResultOutput), nil
 		}).(GetGlobalRulestackChangeLogResultOutput)
 }
 

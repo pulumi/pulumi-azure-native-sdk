@@ -48,21 +48,11 @@ type ListWorkspacePolicyFragmentReferencesResult struct {
 }
 
 func ListWorkspacePolicyFragmentReferencesOutput(ctx *pulumi.Context, args ListWorkspacePolicyFragmentReferencesOutputArgs, opts ...pulumi.InvokeOption) ListWorkspacePolicyFragmentReferencesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListWorkspacePolicyFragmentReferencesResultOutput, error) {
 			args := v.(ListWorkspacePolicyFragmentReferencesArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListWorkspacePolicyFragmentReferencesResult
-			secret, err := ctx.InvokePackageRaw("azure-native:apimanagement/v20220901preview:listWorkspacePolicyFragmentReferences", args, &rv, "", opts...)
-			if err != nil {
-				return ListWorkspacePolicyFragmentReferencesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListWorkspacePolicyFragmentReferencesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListWorkspacePolicyFragmentReferencesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:apimanagement/v20220901preview:listWorkspacePolicyFragmentReferences", args, ListWorkspacePolicyFragmentReferencesResultOutput{}, options).(ListWorkspacePolicyFragmentReferencesResultOutput), nil
 		}).(ListWorkspacePolicyFragmentReferencesResultOutput)
 }
 

@@ -34,21 +34,11 @@ type ListEASubscriptionListMigrationDatePostResult struct {
 }
 
 func ListEASubscriptionListMigrationDatePostOutput(ctx *pulumi.Context, args ListEASubscriptionListMigrationDatePostOutputArgs, opts ...pulumi.InvokeOption) ListEASubscriptionListMigrationDatePostResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListEASubscriptionListMigrationDatePostResultOutput, error) {
 			args := v.(ListEASubscriptionListMigrationDatePostArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListEASubscriptionListMigrationDatePostResult
-			secret, err := ctx.InvokePackageRaw("azure-native:insights/v20171001:listEASubscriptionListMigrationDatePost", args, &rv, "", opts...)
-			if err != nil {
-				return ListEASubscriptionListMigrationDatePostResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListEASubscriptionListMigrationDatePostResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListEASubscriptionListMigrationDatePostResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:insights/v20171001:listEASubscriptionListMigrationDatePost", args, ListEASubscriptionListMigrationDatePostResultOutput{}, options).(ListEASubscriptionListMigrationDatePostResultOutput), nil
 		}).(ListEASubscriptionListMigrationDatePostResultOutput)
 }
 

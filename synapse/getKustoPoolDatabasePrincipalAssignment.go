@@ -65,21 +65,11 @@ type LookupKustoPoolDatabasePrincipalAssignmentResult struct {
 }
 
 func LookupKustoPoolDatabasePrincipalAssignmentOutput(ctx *pulumi.Context, args LookupKustoPoolDatabasePrincipalAssignmentOutputArgs, opts ...pulumi.InvokeOption) LookupKustoPoolDatabasePrincipalAssignmentResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupKustoPoolDatabasePrincipalAssignmentResultOutput, error) {
 			args := v.(LookupKustoPoolDatabasePrincipalAssignmentArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupKustoPoolDatabasePrincipalAssignmentResult
-			secret, err := ctx.InvokePackageRaw("azure-native:synapse:getKustoPoolDatabasePrincipalAssignment", args, &rv, "", opts...)
-			if err != nil {
-				return LookupKustoPoolDatabasePrincipalAssignmentResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupKustoPoolDatabasePrincipalAssignmentResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupKustoPoolDatabasePrincipalAssignmentResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:synapse:getKustoPoolDatabasePrincipalAssignment", args, LookupKustoPoolDatabasePrincipalAssignmentResultOutput{}, options).(LookupKustoPoolDatabasePrincipalAssignmentResultOutput), nil
 		}).(LookupKustoPoolDatabasePrincipalAssignmentResultOutput)
 }
 

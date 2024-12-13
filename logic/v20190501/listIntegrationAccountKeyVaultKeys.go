@@ -42,21 +42,11 @@ type ListIntegrationAccountKeyVaultKeysResult struct {
 }
 
 func ListIntegrationAccountKeyVaultKeysOutput(ctx *pulumi.Context, args ListIntegrationAccountKeyVaultKeysOutputArgs, opts ...pulumi.InvokeOption) ListIntegrationAccountKeyVaultKeysResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListIntegrationAccountKeyVaultKeysResultOutput, error) {
 			args := v.(ListIntegrationAccountKeyVaultKeysArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListIntegrationAccountKeyVaultKeysResult
-			secret, err := ctx.InvokePackageRaw("azure-native:logic/v20190501:listIntegrationAccountKeyVaultKeys", args, &rv, "", opts...)
-			if err != nil {
-				return ListIntegrationAccountKeyVaultKeysResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListIntegrationAccountKeyVaultKeysResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListIntegrationAccountKeyVaultKeysResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:logic/v20190501:listIntegrationAccountKeyVaultKeys", args, ListIntegrationAccountKeyVaultKeysResultOutput{}, options).(ListIntegrationAccountKeyVaultKeysResultOutput), nil
 		}).(ListIntegrationAccountKeyVaultKeysResultOutput)
 }
 

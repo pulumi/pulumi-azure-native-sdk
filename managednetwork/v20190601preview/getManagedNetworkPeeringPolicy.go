@@ -46,21 +46,11 @@ type LookupManagedNetworkPeeringPolicyResult struct {
 }
 
 func LookupManagedNetworkPeeringPolicyOutput(ctx *pulumi.Context, args LookupManagedNetworkPeeringPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupManagedNetworkPeeringPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupManagedNetworkPeeringPolicyResultOutput, error) {
 			args := v.(LookupManagedNetworkPeeringPolicyArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupManagedNetworkPeeringPolicyResult
-			secret, err := ctx.InvokePackageRaw("azure-native:managednetwork/v20190601preview:getManagedNetworkPeeringPolicy", args, &rv, "", opts...)
-			if err != nil {
-				return LookupManagedNetworkPeeringPolicyResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupManagedNetworkPeeringPolicyResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupManagedNetworkPeeringPolicyResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:managednetwork/v20190601preview:getManagedNetworkPeeringPolicy", args, LookupManagedNetworkPeeringPolicyResultOutput{}, options).(LookupManagedNetworkPeeringPolicyResultOutput), nil
 		}).(LookupManagedNetworkPeeringPolicyResultOutput)
 }
 

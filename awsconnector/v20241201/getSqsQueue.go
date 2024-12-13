@@ -48,21 +48,11 @@ type LookupSqsQueueResult struct {
 }
 
 func LookupSqsQueueOutput(ctx *pulumi.Context, args LookupSqsQueueOutputArgs, opts ...pulumi.InvokeOption) LookupSqsQueueResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupSqsQueueResultOutput, error) {
 			args := v.(LookupSqsQueueArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupSqsQueueResult
-			secret, err := ctx.InvokePackageRaw("azure-native:awsconnector/v20241201:getSqsQueue", args, &rv, "", opts...)
-			if err != nil {
-				return LookupSqsQueueResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupSqsQueueResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupSqsQueueResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:awsconnector/v20241201:getSqsQueue", args, LookupSqsQueueResultOutput{}, options).(LookupSqsQueueResultOutput), nil
 		}).(LookupSqsQueueResultOutput)
 }
 

@@ -38,21 +38,11 @@ type GetSystemTopicEventSubscriptionDeliveryAttributesResult struct {
 }
 
 func GetSystemTopicEventSubscriptionDeliveryAttributesOutput(ctx *pulumi.Context, args GetSystemTopicEventSubscriptionDeliveryAttributesOutputArgs, opts ...pulumi.InvokeOption) GetSystemTopicEventSubscriptionDeliveryAttributesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetSystemTopicEventSubscriptionDeliveryAttributesResultOutput, error) {
 			args := v.(GetSystemTopicEventSubscriptionDeliveryAttributesArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetSystemTopicEventSubscriptionDeliveryAttributesResult
-			secret, err := ctx.InvokePackageRaw("azure-native:eventgrid/v20220615:getSystemTopicEventSubscriptionDeliveryAttributes", args, &rv, "", opts...)
-			if err != nil {
-				return GetSystemTopicEventSubscriptionDeliveryAttributesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetSystemTopicEventSubscriptionDeliveryAttributesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetSystemTopicEventSubscriptionDeliveryAttributesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:eventgrid/v20220615:getSystemTopicEventSubscriptionDeliveryAttributes", args, GetSystemTopicEventSubscriptionDeliveryAttributesResultOutput{}, options).(GetSystemTopicEventSubscriptionDeliveryAttributesResultOutput), nil
 		}).(GetSystemTopicEventSubscriptionDeliveryAttributesResultOutput)
 }
 

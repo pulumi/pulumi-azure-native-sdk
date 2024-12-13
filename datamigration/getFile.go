@@ -53,21 +53,11 @@ type LookupFileResult struct {
 }
 
 func LookupFileOutput(ctx *pulumi.Context, args LookupFileOutputArgs, opts ...pulumi.InvokeOption) LookupFileResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupFileResultOutput, error) {
 			args := v.(LookupFileArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupFileResult
-			secret, err := ctx.InvokePackageRaw("azure-native:datamigration:getFile", args, &rv, "", opts...)
-			if err != nil {
-				return LookupFileResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupFileResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupFileResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:datamigration:getFile", args, LookupFileResultOutput{}, options).(LookupFileResultOutput), nil
 		}).(LookupFileResultOutput)
 }
 

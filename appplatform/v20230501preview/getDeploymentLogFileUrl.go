@@ -40,21 +40,11 @@ type GetDeploymentLogFileUrlResult struct {
 }
 
 func GetDeploymentLogFileUrlOutput(ctx *pulumi.Context, args GetDeploymentLogFileUrlOutputArgs, opts ...pulumi.InvokeOption) GetDeploymentLogFileUrlResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetDeploymentLogFileUrlResultOutput, error) {
 			args := v.(GetDeploymentLogFileUrlArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetDeploymentLogFileUrlResult
-			secret, err := ctx.InvokePackageRaw("azure-native:appplatform/v20230501preview:getDeploymentLogFileUrl", args, &rv, "", opts...)
-			if err != nil {
-				return GetDeploymentLogFileUrlResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetDeploymentLogFileUrlResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetDeploymentLogFileUrlResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:appplatform/v20230501preview:getDeploymentLogFileUrl", args, GetDeploymentLogFileUrlResultOutput{}, options).(GetDeploymentLogFileUrlResultOutput), nil
 		}).(GetDeploymentLogFileUrlResultOutput)
 }
 

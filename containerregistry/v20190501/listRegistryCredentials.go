@@ -38,21 +38,11 @@ type ListRegistryCredentialsResult struct {
 }
 
 func ListRegistryCredentialsOutput(ctx *pulumi.Context, args ListRegistryCredentialsOutputArgs, opts ...pulumi.InvokeOption) ListRegistryCredentialsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListRegistryCredentialsResultOutput, error) {
 			args := v.(ListRegistryCredentialsArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListRegistryCredentialsResult
-			secret, err := ctx.InvokePackageRaw("azure-native:containerregistry/v20190501:listRegistryCredentials", args, &rv, "", opts...)
-			if err != nil {
-				return ListRegistryCredentialsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListRegistryCredentialsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListRegistryCredentialsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:containerregistry/v20190501:listRegistryCredentials", args, ListRegistryCredentialsResultOutput{}, options).(ListRegistryCredentialsResultOutput), nil
 		}).(ListRegistryCredentialsResultOutput)
 }
 

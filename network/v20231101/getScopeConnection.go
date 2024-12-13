@@ -52,21 +52,11 @@ type LookupScopeConnectionResult struct {
 }
 
 func LookupScopeConnectionOutput(ctx *pulumi.Context, args LookupScopeConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupScopeConnectionResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupScopeConnectionResultOutput, error) {
 			args := v.(LookupScopeConnectionArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupScopeConnectionResult
-			secret, err := ctx.InvokePackageRaw("azure-native:network/v20231101:getScopeConnection", args, &rv, "", opts...)
-			if err != nil {
-				return LookupScopeConnectionResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupScopeConnectionResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupScopeConnectionResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:network/v20231101:getScopeConnection", args, LookupScopeConnectionResultOutput{}, options).(LookupScopeConnectionResultOutput), nil
 		}).(LookupScopeConnectionResultOutput)
 }
 

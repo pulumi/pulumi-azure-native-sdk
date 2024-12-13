@@ -50,21 +50,11 @@ type LookupWorkspacePrivateEndpointConnectionResult struct {
 }
 
 func LookupWorkspacePrivateEndpointConnectionOutput(ctx *pulumi.Context, args LookupWorkspacePrivateEndpointConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupWorkspacePrivateEndpointConnectionResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupWorkspacePrivateEndpointConnectionResultOutput, error) {
 			args := v.(LookupWorkspacePrivateEndpointConnectionArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupWorkspacePrivateEndpointConnectionResult
-			secret, err := ctx.InvokePackageRaw("azure-native:healthcareapis/v20240331:getWorkspacePrivateEndpointConnection", args, &rv, "", opts...)
-			if err != nil {
-				return LookupWorkspacePrivateEndpointConnectionResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupWorkspacePrivateEndpointConnectionResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupWorkspacePrivateEndpointConnectionResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:healthcareapis/v20240331:getWorkspacePrivateEndpointConnection", args, LookupWorkspacePrivateEndpointConnectionResultOutput{}, options).(LookupWorkspacePrivateEndpointConnectionResultOutput), nil
 		}).(LookupWorkspacePrivateEndpointConnectionResultOutput)
 }
 

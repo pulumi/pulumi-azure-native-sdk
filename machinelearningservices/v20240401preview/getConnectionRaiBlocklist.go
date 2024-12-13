@@ -48,21 +48,11 @@ type LookupConnectionRaiBlocklistResult struct {
 }
 
 func LookupConnectionRaiBlocklistOutput(ctx *pulumi.Context, args LookupConnectionRaiBlocklistOutputArgs, opts ...pulumi.InvokeOption) LookupConnectionRaiBlocklistResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupConnectionRaiBlocklistResultOutput, error) {
 			args := v.(LookupConnectionRaiBlocklistArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupConnectionRaiBlocklistResult
-			secret, err := ctx.InvokePackageRaw("azure-native:machinelearningservices/v20240401preview:getConnectionRaiBlocklist", args, &rv, "", opts...)
-			if err != nil {
-				return LookupConnectionRaiBlocklistResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupConnectionRaiBlocklistResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupConnectionRaiBlocklistResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:machinelearningservices/v20240401preview:getConnectionRaiBlocklist", args, LookupConnectionRaiBlocklistResultOutput{}, options).(LookupConnectionRaiBlocklistResultOutput), nil
 		}).(LookupConnectionRaiBlocklistResultOutput)
 }
 

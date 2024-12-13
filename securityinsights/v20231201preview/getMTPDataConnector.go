@@ -55,21 +55,11 @@ type LookupMTPDataConnectorResult struct {
 }
 
 func LookupMTPDataConnectorOutput(ctx *pulumi.Context, args LookupMTPDataConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupMTPDataConnectorResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupMTPDataConnectorResultOutput, error) {
 			args := v.(LookupMTPDataConnectorArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupMTPDataConnectorResult
-			secret, err := ctx.InvokePackageRaw("azure-native:securityinsights/v20231201preview:getMTPDataConnector", args, &rv, "", opts...)
-			if err != nil {
-				return LookupMTPDataConnectorResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupMTPDataConnectorResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupMTPDataConnectorResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:securityinsights/v20231201preview:getMTPDataConnector", args, LookupMTPDataConnectorResultOutput{}, options).(LookupMTPDataConnectorResultOutput), nil
 		}).(LookupMTPDataConnectorResultOutput)
 }
 

@@ -38,21 +38,11 @@ type ListGitHubOwnerAvailableResult struct {
 }
 
 func ListGitHubOwnerAvailableOutput(ctx *pulumi.Context, args ListGitHubOwnerAvailableOutputArgs, opts ...pulumi.InvokeOption) ListGitHubOwnerAvailableResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListGitHubOwnerAvailableResultOutput, error) {
 			args := v.(ListGitHubOwnerAvailableArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListGitHubOwnerAvailableResult
-			secret, err := ctx.InvokePackageRaw("azure-native:security/v20230901preview:listGitHubOwnerAvailable", args, &rv, "", opts...)
-			if err != nil {
-				return ListGitHubOwnerAvailableResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListGitHubOwnerAvailableResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListGitHubOwnerAvailableResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:security/v20230901preview:listGitHubOwnerAvailable", args, ListGitHubOwnerAvailableResultOutput{}, options).(ListGitHubOwnerAvailableResultOutput), nil
 		}).(ListGitHubOwnerAvailableResultOutput)
 }
 

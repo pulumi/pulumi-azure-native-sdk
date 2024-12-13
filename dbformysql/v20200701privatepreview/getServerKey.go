@@ -50,21 +50,11 @@ type LookupServerKeyResult struct {
 }
 
 func LookupServerKeyOutput(ctx *pulumi.Context, args LookupServerKeyOutputArgs, opts ...pulumi.InvokeOption) LookupServerKeyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupServerKeyResultOutput, error) {
 			args := v.(LookupServerKeyArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupServerKeyResult
-			secret, err := ctx.InvokePackageRaw("azure-native:dbformysql/v20200701privatepreview:getServerKey", args, &rv, "", opts...)
-			if err != nil {
-				return LookupServerKeyResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupServerKeyResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupServerKeyResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:dbformysql/v20200701privatepreview:getServerKey", args, LookupServerKeyResultOutput{}, options).(LookupServerKeyResultOutput), nil
 		}).(LookupServerKeyResultOutput)
 }
 

@@ -36,21 +36,11 @@ type ListGlobalUserEnvironmentsResult struct {
 }
 
 func ListGlobalUserEnvironmentsOutput(ctx *pulumi.Context, args ListGlobalUserEnvironmentsOutputArgs, opts ...pulumi.InvokeOption) ListGlobalUserEnvironmentsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListGlobalUserEnvironmentsResultOutput, error) {
 			args := v.(ListGlobalUserEnvironmentsArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListGlobalUserEnvironmentsResult
-			secret, err := ctx.InvokePackageRaw("azure-native:labservices/v20181015:listGlobalUserEnvironments", args, &rv, "", opts...)
-			if err != nil {
-				return ListGlobalUserEnvironmentsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListGlobalUserEnvironmentsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListGlobalUserEnvironmentsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:labservices/v20181015:listGlobalUserEnvironments", args, ListGlobalUserEnvironmentsResultOutput{}, options).(ListGlobalUserEnvironmentsResultOutput), nil
 		}).(ListGlobalUserEnvironmentsResultOutput)
 }
 

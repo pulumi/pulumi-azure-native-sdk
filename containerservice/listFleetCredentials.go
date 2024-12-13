@@ -39,21 +39,11 @@ type ListFleetCredentialsResult struct {
 }
 
 func ListFleetCredentialsOutput(ctx *pulumi.Context, args ListFleetCredentialsOutputArgs, opts ...pulumi.InvokeOption) ListFleetCredentialsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListFleetCredentialsResultOutput, error) {
 			args := v.(ListFleetCredentialsArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListFleetCredentialsResult
-			secret, err := ctx.InvokePackageRaw("azure-native:containerservice:listFleetCredentials", args, &rv, "", opts...)
-			if err != nil {
-				return ListFleetCredentialsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListFleetCredentialsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListFleetCredentialsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:containerservice:listFleetCredentials", args, ListFleetCredentialsResultOutput{}, options).(ListFleetCredentialsResultOutput), nil
 		}).(ListFleetCredentialsResultOutput)
 }
 

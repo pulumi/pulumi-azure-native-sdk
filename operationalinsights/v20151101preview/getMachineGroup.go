@@ -59,21 +59,11 @@ type LookupMachineGroupResult struct {
 }
 
 func LookupMachineGroupOutput(ctx *pulumi.Context, args LookupMachineGroupOutputArgs, opts ...pulumi.InvokeOption) LookupMachineGroupResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupMachineGroupResultOutput, error) {
 			args := v.(LookupMachineGroupArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupMachineGroupResult
-			secret, err := ctx.InvokePackageRaw("azure-native:operationalinsights/v20151101preview:getMachineGroup", args, &rv, "", opts...)
-			if err != nil {
-				return LookupMachineGroupResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupMachineGroupResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupMachineGroupResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:operationalinsights/v20151101preview:getMachineGroup", args, LookupMachineGroupResultOutput{}, options).(LookupMachineGroupResultOutput), nil
 		}).(LookupMachineGroupResultOutput)
 }
 

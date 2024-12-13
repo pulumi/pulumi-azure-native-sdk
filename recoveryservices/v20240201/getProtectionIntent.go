@@ -53,21 +53,11 @@ type LookupProtectionIntentResult struct {
 }
 
 func LookupProtectionIntentOutput(ctx *pulumi.Context, args LookupProtectionIntentOutputArgs, opts ...pulumi.InvokeOption) LookupProtectionIntentResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupProtectionIntentResultOutput, error) {
 			args := v.(LookupProtectionIntentArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupProtectionIntentResult
-			secret, err := ctx.InvokePackageRaw("azure-native:recoveryservices/v20240201:getProtectionIntent", args, &rv, "", opts...)
-			if err != nil {
-				return LookupProtectionIntentResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupProtectionIntentResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupProtectionIntentResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:recoveryservices/v20240201:getProtectionIntent", args, LookupProtectionIntentResultOutput{}, options).(LookupProtectionIntentResultOutput), nil
 		}).(LookupProtectionIntentResultOutput)
 }
 

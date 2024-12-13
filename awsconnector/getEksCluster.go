@@ -43,21 +43,11 @@ type LookupEksClusterResult struct {
 }
 
 func LookupEksClusterOutput(ctx *pulumi.Context, args LookupEksClusterOutputArgs, opts ...pulumi.InvokeOption) LookupEksClusterResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupEksClusterResultOutput, error) {
 			args := v.(LookupEksClusterArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupEksClusterResult
-			secret, err := ctx.InvokePackageRaw("azure-native:awsconnector:getEksCluster", args, &rv, "", opts...)
-			if err != nil {
-				return LookupEksClusterResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupEksClusterResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupEksClusterResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:awsconnector:getEksCluster", args, LookupEksClusterResultOutput{}, options).(LookupEksClusterResultOutput), nil
 		}).(LookupEksClusterResultOutput)
 }
 

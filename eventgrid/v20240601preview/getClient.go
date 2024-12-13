@@ -69,23 +69,12 @@ func (val *LookupClientResult) Defaults() *LookupClientResult {
 	}
 	return &tmp
 }
-
 func LookupClientOutput(ctx *pulumi.Context, args LookupClientOutputArgs, opts ...pulumi.InvokeOption) LookupClientResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupClientResultOutput, error) {
 			args := v.(LookupClientArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupClientResult
-			secret, err := ctx.InvokePackageRaw("azure-native:eventgrid/v20240601preview:getClient", args, &rv, "", opts...)
-			if err != nil {
-				return LookupClientResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupClientResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupClientResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:eventgrid/v20240601preview:getClient", args, LookupClientResultOutput{}, options).(LookupClientResultOutput), nil
 		}).(LookupClientResultOutput)
 }
 

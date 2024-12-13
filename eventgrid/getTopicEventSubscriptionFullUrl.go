@@ -41,21 +41,11 @@ type GetTopicEventSubscriptionFullUrlResult struct {
 }
 
 func GetTopicEventSubscriptionFullUrlOutput(ctx *pulumi.Context, args GetTopicEventSubscriptionFullUrlOutputArgs, opts ...pulumi.InvokeOption) GetTopicEventSubscriptionFullUrlResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetTopicEventSubscriptionFullUrlResultOutput, error) {
 			args := v.(GetTopicEventSubscriptionFullUrlArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetTopicEventSubscriptionFullUrlResult
-			secret, err := ctx.InvokePackageRaw("azure-native:eventgrid:getTopicEventSubscriptionFullUrl", args, &rv, "", opts...)
-			if err != nil {
-				return GetTopicEventSubscriptionFullUrlResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetTopicEventSubscriptionFullUrlResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetTopicEventSubscriptionFullUrlResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:eventgrid:getTopicEventSubscriptionFullUrl", args, GetTopicEventSubscriptionFullUrlResultOutput{}, options).(GetTopicEventSubscriptionFullUrlResultOutput), nil
 		}).(GetTopicEventSubscriptionFullUrlResultOutput)
 }
 

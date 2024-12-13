@@ -42,21 +42,11 @@ type LookupTenantConfigurationResult struct {
 }
 
 func LookupTenantConfigurationOutput(ctx *pulumi.Context, args LookupTenantConfigurationOutputArgs, opts ...pulumi.InvokeOption) LookupTenantConfigurationResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupTenantConfigurationResultOutput, error) {
 			args := v.(LookupTenantConfigurationArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupTenantConfigurationResult
-			secret, err := ctx.InvokePackageRaw("azure-native:portal/v20221201preview:getTenantConfiguration", args, &rv, "", opts...)
-			if err != nil {
-				return LookupTenantConfigurationResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupTenantConfigurationResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupTenantConfigurationResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:portal/v20221201preview:getTenantConfiguration", args, LookupTenantConfigurationResultOutput{}, options).(LookupTenantConfigurationResultOutput), nil
 		}).(LookupTenantConfigurationResultOutput)
 }
 

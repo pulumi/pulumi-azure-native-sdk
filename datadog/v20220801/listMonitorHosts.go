@@ -38,21 +38,11 @@ type ListMonitorHostsResult struct {
 }
 
 func ListMonitorHostsOutput(ctx *pulumi.Context, args ListMonitorHostsOutputArgs, opts ...pulumi.InvokeOption) ListMonitorHostsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListMonitorHostsResultOutput, error) {
 			args := v.(ListMonitorHostsArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListMonitorHostsResult
-			secret, err := ctx.InvokePackageRaw("azure-native:datadog/v20220801:listMonitorHosts", args, &rv, "", opts...)
-			if err != nil {
-				return ListMonitorHostsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListMonitorHostsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListMonitorHostsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:datadog/v20220801:listMonitorHosts", args, ListMonitorHostsResultOutput{}, options).(ListMonitorHostsResultOutput), nil
 		}).(ListMonitorHostsResultOutput)
 }
 

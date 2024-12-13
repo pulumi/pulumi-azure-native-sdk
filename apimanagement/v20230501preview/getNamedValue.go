@@ -54,21 +54,11 @@ type LookupNamedValueResult struct {
 }
 
 func LookupNamedValueOutput(ctx *pulumi.Context, args LookupNamedValueOutputArgs, opts ...pulumi.InvokeOption) LookupNamedValueResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupNamedValueResultOutput, error) {
 			args := v.(LookupNamedValueArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupNamedValueResult
-			secret, err := ctx.InvokePackageRaw("azure-native:apimanagement/v20230501preview:getNamedValue", args, &rv, "", opts...)
-			if err != nil {
-				return LookupNamedValueResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupNamedValueResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupNamedValueResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:apimanagement/v20230501preview:getNamedValue", args, LookupNamedValueResultOutput{}, options).(LookupNamedValueResultOutput), nil
 		}).(LookupNamedValueResultOutput)
 }
 

@@ -36,21 +36,11 @@ type GetRegistrationActivationKeyResult struct {
 }
 
 func GetRegistrationActivationKeyOutput(ctx *pulumi.Context, args GetRegistrationActivationKeyOutputArgs, opts ...pulumi.InvokeOption) GetRegistrationActivationKeyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetRegistrationActivationKeyResultOutput, error) {
 			args := v.(GetRegistrationActivationKeyArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetRegistrationActivationKeyResult
-			secret, err := ctx.InvokePackageRaw("azure-native:azurestack/v20220601:getRegistrationActivationKey", args, &rv, "", opts...)
-			if err != nil {
-				return GetRegistrationActivationKeyResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetRegistrationActivationKeyResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetRegistrationActivationKeyResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:azurestack/v20220601:getRegistrationActivationKey", args, GetRegistrationActivationKeyResultOutput{}, options).(GetRegistrationActivationKeyResultOutput), nil
 		}).(GetRegistrationActivationKeyResultOutput)
 }
 

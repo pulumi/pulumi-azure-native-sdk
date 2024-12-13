@@ -38,21 +38,11 @@ type ListSaasSubscriptionLevelAccessTokenResult struct {
 }
 
 func ListSaasSubscriptionLevelAccessTokenOutput(ctx *pulumi.Context, args ListSaasSubscriptionLevelAccessTokenOutputArgs, opts ...pulumi.InvokeOption) ListSaasSubscriptionLevelAccessTokenResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListSaasSubscriptionLevelAccessTokenResultOutput, error) {
 			args := v.(ListSaasSubscriptionLevelAccessTokenArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListSaasSubscriptionLevelAccessTokenResult
-			secret, err := ctx.InvokePackageRaw("azure-native:saas/v20180301beta:listSaasSubscriptionLevelAccessToken", args, &rv, "", opts...)
-			if err != nil {
-				return ListSaasSubscriptionLevelAccessTokenResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListSaasSubscriptionLevelAccessTokenResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListSaasSubscriptionLevelAccessTokenResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:saas/v20180301beta:listSaasSubscriptionLevelAccessToken", args, ListSaasSubscriptionLevelAccessTokenResultOutput{}, options).(ListSaasSubscriptionLevelAccessTokenResultOutput), nil
 		}).(ListSaasSubscriptionLevelAccessTokenResultOutput)
 }
 

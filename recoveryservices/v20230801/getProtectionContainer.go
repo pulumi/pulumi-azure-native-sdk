@@ -52,21 +52,11 @@ type LookupProtectionContainerResult struct {
 }
 
 func LookupProtectionContainerOutput(ctx *pulumi.Context, args LookupProtectionContainerOutputArgs, opts ...pulumi.InvokeOption) LookupProtectionContainerResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupProtectionContainerResultOutput, error) {
 			args := v.(LookupProtectionContainerArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupProtectionContainerResult
-			secret, err := ctx.InvokePackageRaw("azure-native:recoveryservices/v20230801:getProtectionContainer", args, &rv, "", opts...)
-			if err != nil {
-				return LookupProtectionContainerResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupProtectionContainerResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupProtectionContainerResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:recoveryservices/v20230801:getProtectionContainer", args, LookupProtectionContainerResultOutput{}, options).(LookupProtectionContainerResultOutput), nil
 		}).(LookupProtectionContainerResultOutput)
 }
 

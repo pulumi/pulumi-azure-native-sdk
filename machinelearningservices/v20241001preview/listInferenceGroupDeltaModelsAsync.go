@@ -61,21 +61,11 @@ type ListInferenceGroupDeltaModelsAsyncResult struct {
 }
 
 func ListInferenceGroupDeltaModelsAsyncOutput(ctx *pulumi.Context, args ListInferenceGroupDeltaModelsAsyncOutputArgs, opts ...pulumi.InvokeOption) ListInferenceGroupDeltaModelsAsyncResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListInferenceGroupDeltaModelsAsyncResultOutput, error) {
 			args := v.(ListInferenceGroupDeltaModelsAsyncArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListInferenceGroupDeltaModelsAsyncResult
-			secret, err := ctx.InvokePackageRaw("azure-native:machinelearningservices/v20241001preview:listInferenceGroupDeltaModelsAsync", args.Defaults(), &rv, "", opts...)
-			if err != nil {
-				return ListInferenceGroupDeltaModelsAsyncResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListInferenceGroupDeltaModelsAsyncResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListInferenceGroupDeltaModelsAsyncResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:machinelearningservices/v20241001preview:listInferenceGroupDeltaModelsAsync", args.Defaults(), ListInferenceGroupDeltaModelsAsyncResultOutput{}, options).(ListInferenceGroupDeltaModelsAsyncResultOutput), nil
 		}).(ListInferenceGroupDeltaModelsAsyncResultOutput)
 }
 

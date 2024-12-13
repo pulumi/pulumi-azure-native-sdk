@@ -51,21 +51,11 @@ type LookupInstanceDetailsResult struct {
 }
 
 func LookupInstanceDetailsOutput(ctx *pulumi.Context, args LookupInstanceDetailsOutputArgs, opts ...pulumi.InvokeOption) LookupInstanceDetailsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupInstanceDetailsResultOutput, error) {
 			args := v.(LookupInstanceDetailsArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupInstanceDetailsResult
-			secret, err := ctx.InvokePackageRaw("azure-native:dynamics365fraudprotection:getInstanceDetails", args, &rv, "", opts...)
-			if err != nil {
-				return LookupInstanceDetailsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupInstanceDetailsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupInstanceDetailsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:dynamics365fraudprotection:getInstanceDetails", args, LookupInstanceDetailsResultOutput{}, options).(LookupInstanceDetailsResultOutput), nil
 		}).(LookupInstanceDetailsResultOutput)
 }
 

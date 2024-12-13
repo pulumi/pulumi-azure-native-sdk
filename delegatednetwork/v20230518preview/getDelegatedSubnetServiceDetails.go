@@ -52,21 +52,11 @@ type LookupDelegatedSubnetServiceDetailsResult struct {
 }
 
 func LookupDelegatedSubnetServiceDetailsOutput(ctx *pulumi.Context, args LookupDelegatedSubnetServiceDetailsOutputArgs, opts ...pulumi.InvokeOption) LookupDelegatedSubnetServiceDetailsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupDelegatedSubnetServiceDetailsResultOutput, error) {
 			args := v.(LookupDelegatedSubnetServiceDetailsArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupDelegatedSubnetServiceDetailsResult
-			secret, err := ctx.InvokePackageRaw("azure-native:delegatednetwork/v20230518preview:getDelegatedSubnetServiceDetails", args, &rv, "", opts...)
-			if err != nil {
-				return LookupDelegatedSubnetServiceDetailsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupDelegatedSubnetServiceDetailsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupDelegatedSubnetServiceDetailsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:delegatednetwork/v20230518preview:getDelegatedSubnetServiceDetails", args, LookupDelegatedSubnetServiceDetailsResultOutput{}, options).(LookupDelegatedSubnetServiceDetailsResultOutput), nil
 		}).(LookupDelegatedSubnetServiceDetailsResultOutput)
 }
 

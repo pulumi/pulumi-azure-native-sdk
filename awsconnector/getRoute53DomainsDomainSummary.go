@@ -49,21 +49,11 @@ type LookupRoute53DomainsDomainSummaryResult struct {
 }
 
 func LookupRoute53DomainsDomainSummaryOutput(ctx *pulumi.Context, args LookupRoute53DomainsDomainSummaryOutputArgs, opts ...pulumi.InvokeOption) LookupRoute53DomainsDomainSummaryResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupRoute53DomainsDomainSummaryResultOutput, error) {
 			args := v.(LookupRoute53DomainsDomainSummaryArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupRoute53DomainsDomainSummaryResult
-			secret, err := ctx.InvokePackageRaw("azure-native:awsconnector:getRoute53DomainsDomainSummary", args, &rv, "", opts...)
-			if err != nil {
-				return LookupRoute53DomainsDomainSummaryResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupRoute53DomainsDomainSummaryResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupRoute53DomainsDomainSummaryResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:awsconnector:getRoute53DomainsDomainSummary", args, LookupRoute53DomainsDomainSummaryResultOutput{}, options).(LookupRoute53DomainsDomainSummaryResultOutput), nil
 		}).(LookupRoute53DomainsDomainSummaryResultOutput)
 }
 

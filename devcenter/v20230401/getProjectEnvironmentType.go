@@ -60,21 +60,11 @@ type LookupProjectEnvironmentTypeResult struct {
 }
 
 func LookupProjectEnvironmentTypeOutput(ctx *pulumi.Context, args LookupProjectEnvironmentTypeOutputArgs, opts ...pulumi.InvokeOption) LookupProjectEnvironmentTypeResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupProjectEnvironmentTypeResultOutput, error) {
 			args := v.(LookupProjectEnvironmentTypeArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupProjectEnvironmentTypeResult
-			secret, err := ctx.InvokePackageRaw("azure-native:devcenter/v20230401:getProjectEnvironmentType", args, &rv, "", opts...)
-			if err != nil {
-				return LookupProjectEnvironmentTypeResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupProjectEnvironmentTypeResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupProjectEnvironmentTypeResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:devcenter/v20230401:getProjectEnvironmentType", args, LookupProjectEnvironmentTypeResultOutput{}, options).(LookupProjectEnvironmentTypeResultOutput), nil
 		}).(LookupProjectEnvironmentTypeResultOutput)
 }
 

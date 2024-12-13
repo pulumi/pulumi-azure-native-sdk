@@ -52,21 +52,11 @@ type LookupPrivateEndpointConnectionControllerResult struct {
 }
 
 func LookupPrivateEndpointConnectionControllerOutput(ctx *pulumi.Context, args LookupPrivateEndpointConnectionControllerOutputArgs, opts ...pulumi.InvokeOption) LookupPrivateEndpointConnectionControllerResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupPrivateEndpointConnectionControllerResultOutput, error) {
 			args := v.(LookupPrivateEndpointConnectionControllerArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupPrivateEndpointConnectionControllerResult
-			secret, err := ctx.InvokePackageRaw("azure-native:offazure/v20240501preview:getPrivateEndpointConnectionController", args, &rv, "", opts...)
-			if err != nil {
-				return LookupPrivateEndpointConnectionControllerResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupPrivateEndpointConnectionControllerResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupPrivateEndpointConnectionControllerResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:offazure/v20240501preview:getPrivateEndpointConnectionController", args, LookupPrivateEndpointConnectionControllerResultOutput{}, options).(LookupPrivateEndpointConnectionControllerResultOutput), nil
 		}).(LookupPrivateEndpointConnectionControllerResultOutput)
 }
 

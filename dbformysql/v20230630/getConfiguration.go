@@ -66,21 +66,11 @@ type LookupConfigurationResult struct {
 }
 
 func LookupConfigurationOutput(ctx *pulumi.Context, args LookupConfigurationOutputArgs, opts ...pulumi.InvokeOption) LookupConfigurationResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupConfigurationResultOutput, error) {
 			args := v.(LookupConfigurationArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupConfigurationResult
-			secret, err := ctx.InvokePackageRaw("azure-native:dbformysql/v20230630:getConfiguration", args, &rv, "", opts...)
-			if err != nil {
-				return LookupConfigurationResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupConfigurationResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupConfigurationResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:dbformysql/v20230630:getConfiguration", args, LookupConfigurationResultOutput{}, options).(LookupConfigurationResultOutput), nil
 		}).(LookupConfigurationResultOutput)
 }
 

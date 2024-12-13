@@ -57,23 +57,12 @@ func (val *LookupGuestConfigurationAssignmentResult) Defaults() *LookupGuestConf
 
 	return &tmp
 }
-
 func LookupGuestConfigurationAssignmentOutput(ctx *pulumi.Context, args LookupGuestConfigurationAssignmentOutputArgs, opts ...pulumi.InvokeOption) LookupGuestConfigurationAssignmentResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupGuestConfigurationAssignmentResultOutput, error) {
 			args := v.(LookupGuestConfigurationAssignmentArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupGuestConfigurationAssignmentResult
-			secret, err := ctx.InvokePackageRaw("azure-native:guestconfiguration/v20220125:getGuestConfigurationAssignment", args, &rv, "", opts...)
-			if err != nil {
-				return LookupGuestConfigurationAssignmentResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupGuestConfigurationAssignmentResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupGuestConfigurationAssignmentResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:guestconfiguration/v20220125:getGuestConfigurationAssignment", args, LookupGuestConfigurationAssignmentResultOutput{}, options).(LookupGuestConfigurationAssignmentResultOutput), nil
 		}).(LookupGuestConfigurationAssignmentResultOutput)
 }
 

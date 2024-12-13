@@ -50,21 +50,11 @@ type LookupReplicationProtectedItemResult struct {
 }
 
 func LookupReplicationProtectedItemOutput(ctx *pulumi.Context, args LookupReplicationProtectedItemOutputArgs, opts ...pulumi.InvokeOption) LookupReplicationProtectedItemResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupReplicationProtectedItemResultOutput, error) {
 			args := v.(LookupReplicationProtectedItemArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupReplicationProtectedItemResult
-			secret, err := ctx.InvokePackageRaw("azure-native:recoveryservices/v20240101:getReplicationProtectedItem", args, &rv, "", opts...)
-			if err != nil {
-				return LookupReplicationProtectedItemResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupReplicationProtectedItemResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupReplicationProtectedItemResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:recoveryservices/v20240101:getReplicationProtectedItem", args, LookupReplicationProtectedItemResultOutput{}, options).(LookupReplicationProtectedItemResultOutput), nil
 		}).(LookupReplicationProtectedItemResultOutput)
 }
 

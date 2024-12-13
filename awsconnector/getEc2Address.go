@@ -49,21 +49,11 @@ type LookupEc2AddressResult struct {
 }
 
 func LookupEc2AddressOutput(ctx *pulumi.Context, args LookupEc2AddressOutputArgs, opts ...pulumi.InvokeOption) LookupEc2AddressResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupEc2AddressResultOutput, error) {
 			args := v.(LookupEc2AddressArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupEc2AddressResult
-			secret, err := ctx.InvokePackageRaw("azure-native:awsconnector:getEc2Address", args, &rv, "", opts...)
-			if err != nil {
-				return LookupEc2AddressResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupEc2AddressResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupEc2AddressResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:awsconnector:getEc2Address", args, LookupEc2AddressResultOutput{}, options).(LookupEc2AddressResultOutput), nil
 		}).(LookupEc2AddressResultOutput)
 }
 

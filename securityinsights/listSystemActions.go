@@ -43,21 +43,11 @@ type ListSystemActionsResult struct {
 }
 
 func ListSystemActionsOutput(ctx *pulumi.Context, args ListSystemActionsOutputArgs, opts ...pulumi.InvokeOption) ListSystemActionsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListSystemActionsResultOutput, error) {
 			args := v.(ListSystemActionsArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListSystemActionsResult
-			secret, err := ctx.InvokePackageRaw("azure-native:securityinsights:listSystemActions", args, &rv, "", opts...)
-			if err != nil {
-				return ListSystemActionsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListSystemActionsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListSystemActionsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:securityinsights:listSystemActions", args, ListSystemActionsResultOutput{}, options).(ListSystemActionsResultOutput), nil
 		}).(ListSystemActionsResultOutput)
 }
 

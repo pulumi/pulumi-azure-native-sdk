@@ -54,21 +54,11 @@ type LookupSqlResourceSqlTriggerResult struct {
 }
 
 func LookupSqlResourceSqlTriggerOutput(ctx *pulumi.Context, args LookupSqlResourceSqlTriggerOutputArgs, opts ...pulumi.InvokeOption) LookupSqlResourceSqlTriggerResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupSqlResourceSqlTriggerResultOutput, error) {
 			args := v.(LookupSqlResourceSqlTriggerArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupSqlResourceSqlTriggerResult
-			secret, err := ctx.InvokePackageRaw("azure-native:documentdb:getSqlResourceSqlTrigger", args, &rv, "", opts...)
-			if err != nil {
-				return LookupSqlResourceSqlTriggerResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupSqlResourceSqlTriggerResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupSqlResourceSqlTriggerResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:documentdb:getSqlResourceSqlTrigger", args, LookupSqlResourceSqlTriggerResultOutput{}, options).(LookupSqlResourceSqlTriggerResultOutput), nil
 		}).(LookupSqlResourceSqlTriggerResultOutput)
 }
 

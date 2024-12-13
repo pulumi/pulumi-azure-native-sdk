@@ -51,21 +51,11 @@ type LookupApiPortalCustomDomainResult struct {
 }
 
 func LookupApiPortalCustomDomainOutput(ctx *pulumi.Context, args LookupApiPortalCustomDomainOutputArgs, opts ...pulumi.InvokeOption) LookupApiPortalCustomDomainResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupApiPortalCustomDomainResultOutput, error) {
 			args := v.(LookupApiPortalCustomDomainArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupApiPortalCustomDomainResult
-			secret, err := ctx.InvokePackageRaw("azure-native:appplatform:getApiPortalCustomDomain", args, &rv, "", opts...)
-			if err != nil {
-				return LookupApiPortalCustomDomainResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupApiPortalCustomDomainResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupApiPortalCustomDomainResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:appplatform:getApiPortalCustomDomain", args, LookupApiPortalCustomDomainResultOutput{}, options).(LookupApiPortalCustomDomainResultOutput), nil
 		}).(LookupApiPortalCustomDomainResultOutput)
 }
 

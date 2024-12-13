@@ -49,21 +49,11 @@ type LookupSqlServerLicenseResult struct {
 }
 
 func LookupSqlServerLicenseOutput(ctx *pulumi.Context, args LookupSqlServerLicenseOutputArgs, opts ...pulumi.InvokeOption) LookupSqlServerLicenseResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupSqlServerLicenseResultOutput, error) {
 			args := v.(LookupSqlServerLicenseArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupSqlServerLicenseResult
-			secret, err := ctx.InvokePackageRaw("azure-native:azurearcdata:getSqlServerLicense", args, &rv, "", opts...)
-			if err != nil {
-				return LookupSqlServerLicenseResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupSqlServerLicenseResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupSqlServerLicenseResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:azurearcdata:getSqlServerLicense", args, LookupSqlServerLicenseResultOutput{}, options).(LookupSqlServerLicenseResultOutput), nil
 		}).(LookupSqlServerLicenseResultOutput)
 }
 

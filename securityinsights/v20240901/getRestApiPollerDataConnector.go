@@ -76,23 +76,12 @@ func (val *LookupRestApiPollerDataConnectorResult) Defaults() *LookupRestApiPoll
 
 	return &tmp
 }
-
 func LookupRestApiPollerDataConnectorOutput(ctx *pulumi.Context, args LookupRestApiPollerDataConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupRestApiPollerDataConnectorResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupRestApiPollerDataConnectorResultOutput, error) {
 			args := v.(LookupRestApiPollerDataConnectorArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupRestApiPollerDataConnectorResult
-			secret, err := ctx.InvokePackageRaw("azure-native:securityinsights/v20240901:getRestApiPollerDataConnector", args, &rv, "", opts...)
-			if err != nil {
-				return LookupRestApiPollerDataConnectorResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupRestApiPollerDataConnectorResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupRestApiPollerDataConnectorResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:securityinsights/v20240901:getRestApiPollerDataConnector", args, LookupRestApiPollerDataConnectorResultOutput{}, options).(LookupRestApiPollerDataConnectorResultOutput), nil
 		}).(LookupRestApiPollerDataConnectorResultOutput)
 }
 

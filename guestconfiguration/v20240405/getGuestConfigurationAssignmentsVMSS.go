@@ -57,23 +57,12 @@ func (val *LookupGuestConfigurationAssignmentsVMSSResult) Defaults() *LookupGues
 
 	return &tmp
 }
-
 func LookupGuestConfigurationAssignmentsVMSSOutput(ctx *pulumi.Context, args LookupGuestConfigurationAssignmentsVMSSOutputArgs, opts ...pulumi.InvokeOption) LookupGuestConfigurationAssignmentsVMSSResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupGuestConfigurationAssignmentsVMSSResultOutput, error) {
 			args := v.(LookupGuestConfigurationAssignmentsVMSSArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupGuestConfigurationAssignmentsVMSSResult
-			secret, err := ctx.InvokePackageRaw("azure-native:guestconfiguration/v20240405:getGuestConfigurationAssignmentsVMSS", args, &rv, "", opts...)
-			if err != nil {
-				return LookupGuestConfigurationAssignmentsVMSSResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupGuestConfigurationAssignmentsVMSSResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupGuestConfigurationAssignmentsVMSSResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:guestconfiguration/v20240405:getGuestConfigurationAssignmentsVMSS", args, LookupGuestConfigurationAssignmentsVMSSResultOutput{}, options).(LookupGuestConfigurationAssignmentsVMSSResultOutput), nil
 		}).(LookupGuestConfigurationAssignmentsVMSSResultOutput)
 }
 

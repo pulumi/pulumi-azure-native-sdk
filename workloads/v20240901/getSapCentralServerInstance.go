@@ -76,21 +76,11 @@ type LookupSapCentralServerInstanceResult struct {
 }
 
 func LookupSapCentralServerInstanceOutput(ctx *pulumi.Context, args LookupSapCentralServerInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupSapCentralServerInstanceResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupSapCentralServerInstanceResultOutput, error) {
 			args := v.(LookupSapCentralServerInstanceArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupSapCentralServerInstanceResult
-			secret, err := ctx.InvokePackageRaw("azure-native:workloads/v20240901:getSapCentralServerInstance", args, &rv, "", opts...)
-			if err != nil {
-				return LookupSapCentralServerInstanceResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupSapCentralServerInstanceResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupSapCentralServerInstanceResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:workloads/v20240901:getSapCentralServerInstance", args, LookupSapCentralServerInstanceResultOutput{}, options).(LookupSapCentralServerInstanceResultOutput), nil
 		}).(LookupSapCentralServerInstanceResultOutput)
 }
 

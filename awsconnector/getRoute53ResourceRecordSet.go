@@ -49,21 +49,11 @@ type LookupRoute53ResourceRecordSetResult struct {
 }
 
 func LookupRoute53ResourceRecordSetOutput(ctx *pulumi.Context, args LookupRoute53ResourceRecordSetOutputArgs, opts ...pulumi.InvokeOption) LookupRoute53ResourceRecordSetResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupRoute53ResourceRecordSetResultOutput, error) {
 			args := v.(LookupRoute53ResourceRecordSetArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupRoute53ResourceRecordSetResult
-			secret, err := ctx.InvokePackageRaw("azure-native:awsconnector:getRoute53ResourceRecordSet", args, &rv, "", opts...)
-			if err != nil {
-				return LookupRoute53ResourceRecordSetResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupRoute53ResourceRecordSetResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupRoute53ResourceRecordSetResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:awsconnector:getRoute53ResourceRecordSet", args, LookupRoute53ResourceRecordSetResultOutput{}, options).(LookupRoute53ResourceRecordSetResultOutput), nil
 		}).(LookupRoute53ResourceRecordSetResultOutput)
 }
 

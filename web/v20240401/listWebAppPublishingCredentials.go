@@ -52,21 +52,11 @@ type ListWebAppPublishingCredentialsResult struct {
 }
 
 func ListWebAppPublishingCredentialsOutput(ctx *pulumi.Context, args ListWebAppPublishingCredentialsOutputArgs, opts ...pulumi.InvokeOption) ListWebAppPublishingCredentialsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListWebAppPublishingCredentialsResultOutput, error) {
 			args := v.(ListWebAppPublishingCredentialsArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListWebAppPublishingCredentialsResult
-			secret, err := ctx.InvokePackageRaw("azure-native:web/v20240401:listWebAppPublishingCredentials", args, &rv, "", opts...)
-			if err != nil {
-				return ListWebAppPublishingCredentialsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListWebAppPublishingCredentialsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListWebAppPublishingCredentialsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:web/v20240401:listWebAppPublishingCredentials", args, ListWebAppPublishingCredentialsResultOutput{}, options).(ListWebAppPublishingCredentialsResultOutput), nil
 		}).(ListWebAppPublishingCredentialsResultOutput)
 }
 

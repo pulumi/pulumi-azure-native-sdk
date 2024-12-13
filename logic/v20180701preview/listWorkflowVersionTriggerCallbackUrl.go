@@ -54,21 +54,11 @@ type ListWorkflowVersionTriggerCallbackUrlResult struct {
 }
 
 func ListWorkflowVersionTriggerCallbackUrlOutput(ctx *pulumi.Context, args ListWorkflowVersionTriggerCallbackUrlOutputArgs, opts ...pulumi.InvokeOption) ListWorkflowVersionTriggerCallbackUrlResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListWorkflowVersionTriggerCallbackUrlResultOutput, error) {
 			args := v.(ListWorkflowVersionTriggerCallbackUrlArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListWorkflowVersionTriggerCallbackUrlResult
-			secret, err := ctx.InvokePackageRaw("azure-native:logic/v20180701preview:listWorkflowVersionTriggerCallbackUrl", args, &rv, "", opts...)
-			if err != nil {
-				return ListWorkflowVersionTriggerCallbackUrlResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListWorkflowVersionTriggerCallbackUrlResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListWorkflowVersionTriggerCallbackUrlResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:logic/v20180701preview:listWorkflowVersionTriggerCallbackUrl", args, ListWorkflowVersionTriggerCallbackUrlResultOutput{}, options).(ListWorkflowVersionTriggerCallbackUrlResultOutput), nil
 		}).(ListWorkflowVersionTriggerCallbackUrlResultOutput)
 }
 

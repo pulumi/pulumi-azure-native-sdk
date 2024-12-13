@@ -53,21 +53,11 @@ type LookupOfficePowerBIDataConnectorResult struct {
 }
 
 func LookupOfficePowerBIDataConnectorOutput(ctx *pulumi.Context, args LookupOfficePowerBIDataConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupOfficePowerBIDataConnectorResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupOfficePowerBIDataConnectorResultOutput, error) {
 			args := v.(LookupOfficePowerBIDataConnectorArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupOfficePowerBIDataConnectorResult
-			secret, err := ctx.InvokePackageRaw("azure-native:securityinsights/v20230901preview:getOfficePowerBIDataConnector", args, &rv, "", opts...)
-			if err != nil {
-				return LookupOfficePowerBIDataConnectorResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupOfficePowerBIDataConnectorResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupOfficePowerBIDataConnectorResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:securityinsights/v20230901preview:getOfficePowerBIDataConnector", args, LookupOfficePowerBIDataConnectorResultOutput{}, options).(LookupOfficePowerBIDataConnectorResultOutput), nil
 		}).(LookupOfficePowerBIDataConnectorResultOutput)
 }
 

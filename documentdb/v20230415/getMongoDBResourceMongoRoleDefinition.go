@@ -50,21 +50,11 @@ type LookupMongoDBResourceMongoRoleDefinitionResult struct {
 }
 
 func LookupMongoDBResourceMongoRoleDefinitionOutput(ctx *pulumi.Context, args LookupMongoDBResourceMongoRoleDefinitionOutputArgs, opts ...pulumi.InvokeOption) LookupMongoDBResourceMongoRoleDefinitionResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupMongoDBResourceMongoRoleDefinitionResultOutput, error) {
 			args := v.(LookupMongoDBResourceMongoRoleDefinitionArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupMongoDBResourceMongoRoleDefinitionResult
-			secret, err := ctx.InvokePackageRaw("azure-native:documentdb/v20230415:getMongoDBResourceMongoRoleDefinition", args, &rv, "", opts...)
-			if err != nil {
-				return LookupMongoDBResourceMongoRoleDefinitionResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupMongoDBResourceMongoRoleDefinitionResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupMongoDBResourceMongoRoleDefinitionResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:documentdb/v20230415:getMongoDBResourceMongoRoleDefinition", args, LookupMongoDBResourceMongoRoleDefinitionResultOutput{}, options).(LookupMongoDBResourceMongoRoleDefinitionResultOutput), nil
 		}).(LookupMongoDBResourceMongoRoleDefinitionResultOutput)
 }
 

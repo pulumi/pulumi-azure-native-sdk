@@ -50,21 +50,11 @@ type LookupAzureBareMetalStorageInstanceResult struct {
 }
 
 func LookupAzureBareMetalStorageInstanceOutput(ctx *pulumi.Context, args LookupAzureBareMetalStorageInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupAzureBareMetalStorageInstanceResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAzureBareMetalStorageInstanceResultOutput, error) {
 			args := v.(LookupAzureBareMetalStorageInstanceArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupAzureBareMetalStorageInstanceResult
-			secret, err := ctx.InvokePackageRaw("azure-native:baremetalinfrastructure/v20230406:getAzureBareMetalStorageInstance", args, &rv, "", opts...)
-			if err != nil {
-				return LookupAzureBareMetalStorageInstanceResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupAzureBareMetalStorageInstanceResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupAzureBareMetalStorageInstanceResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:baremetalinfrastructure/v20230406:getAzureBareMetalStorageInstance", args, LookupAzureBareMetalStorageInstanceResultOutput{}, options).(LookupAzureBareMetalStorageInstanceResultOutput), nil
 		}).(LookupAzureBareMetalStorageInstanceResultOutput)
 }
 

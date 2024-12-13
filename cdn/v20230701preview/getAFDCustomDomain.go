@@ -65,21 +65,11 @@ type LookupAFDCustomDomainResult struct {
 }
 
 func LookupAFDCustomDomainOutput(ctx *pulumi.Context, args LookupAFDCustomDomainOutputArgs, opts ...pulumi.InvokeOption) LookupAFDCustomDomainResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAFDCustomDomainResultOutput, error) {
 			args := v.(LookupAFDCustomDomainArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupAFDCustomDomainResult
-			secret, err := ctx.InvokePackageRaw("azure-native:cdn/v20230701preview:getAFDCustomDomain", args, &rv, "", opts...)
-			if err != nil {
-				return LookupAFDCustomDomainResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupAFDCustomDomainResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupAFDCustomDomainResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:cdn/v20230701preview:getAFDCustomDomain", args, LookupAFDCustomDomainResultOutput{}, options).(LookupAFDCustomDomainResultOutput), nil
 		}).(LookupAFDCustomDomainResultOutput)
 }
 

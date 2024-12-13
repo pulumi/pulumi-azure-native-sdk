@@ -60,23 +60,12 @@ func (val *GetFeaturesetVersionFeatureResult) Defaults() *GetFeaturesetVersionFe
 	}
 	return &tmp
 }
-
 func GetFeaturesetVersionFeatureOutput(ctx *pulumi.Context, args GetFeaturesetVersionFeatureOutputArgs, opts ...pulumi.InvokeOption) GetFeaturesetVersionFeatureResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetFeaturesetVersionFeatureResultOutput, error) {
 			args := v.(GetFeaturesetVersionFeatureArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetFeaturesetVersionFeatureResult
-			secret, err := ctx.InvokePackageRaw("azure-native:machinelearningservices:getFeaturesetVersionFeature", args, &rv, "", opts...)
-			if err != nil {
-				return GetFeaturesetVersionFeatureResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetFeaturesetVersionFeatureResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetFeaturesetVersionFeatureResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:machinelearningservices:getFeaturesetVersionFeature", args, GetFeaturesetVersionFeatureResultOutput{}, options).(GetFeaturesetVersionFeatureResultOutput), nil
 		}).(GetFeaturesetVersionFeatureResultOutput)
 }
 

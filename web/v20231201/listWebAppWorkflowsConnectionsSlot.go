@@ -48,21 +48,11 @@ type ListWebAppWorkflowsConnectionsSlotResult struct {
 }
 
 func ListWebAppWorkflowsConnectionsSlotOutput(ctx *pulumi.Context, args ListWebAppWorkflowsConnectionsSlotOutputArgs, opts ...pulumi.InvokeOption) ListWebAppWorkflowsConnectionsSlotResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListWebAppWorkflowsConnectionsSlotResultOutput, error) {
 			args := v.(ListWebAppWorkflowsConnectionsSlotArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListWebAppWorkflowsConnectionsSlotResult
-			secret, err := ctx.InvokePackageRaw("azure-native:web/v20231201:listWebAppWorkflowsConnectionsSlot", args, &rv, "", opts...)
-			if err != nil {
-				return ListWebAppWorkflowsConnectionsSlotResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListWebAppWorkflowsConnectionsSlotResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListWebAppWorkflowsConnectionsSlotResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:web/v20231201:listWebAppWorkflowsConnectionsSlot", args, ListWebAppWorkflowsConnectionsSlotResultOutput{}, options).(ListWebAppWorkflowsConnectionsSlotResultOutput), nil
 		}).(ListWebAppWorkflowsConnectionsSlotResultOutput)
 }
 

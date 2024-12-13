@@ -71,21 +71,11 @@ type LookupMetricAlertResult struct {
 }
 
 func LookupMetricAlertOutput(ctx *pulumi.Context, args LookupMetricAlertOutputArgs, opts ...pulumi.InvokeOption) LookupMetricAlertResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupMetricAlertResultOutput, error) {
 			args := v.(LookupMetricAlertArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupMetricAlertResult
-			secret, err := ctx.InvokePackageRaw("azure-native:insights:getMetricAlert", args, &rv, "", opts...)
-			if err != nil {
-				return LookupMetricAlertResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupMetricAlertResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupMetricAlertResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:insights:getMetricAlert", args, LookupMetricAlertResultOutput{}, options).(LookupMetricAlertResultOutput), nil
 		}).(LookupMetricAlertResultOutput)
 }
 

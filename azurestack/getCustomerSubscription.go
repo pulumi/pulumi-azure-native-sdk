@@ -49,21 +49,11 @@ type LookupCustomerSubscriptionResult struct {
 }
 
 func LookupCustomerSubscriptionOutput(ctx *pulumi.Context, args LookupCustomerSubscriptionOutputArgs, opts ...pulumi.InvokeOption) LookupCustomerSubscriptionResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupCustomerSubscriptionResultOutput, error) {
 			args := v.(LookupCustomerSubscriptionArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupCustomerSubscriptionResult
-			secret, err := ctx.InvokePackageRaw("azure-native:azurestack:getCustomerSubscription", args, &rv, "", opts...)
-			if err != nil {
-				return LookupCustomerSubscriptionResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupCustomerSubscriptionResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupCustomerSubscriptionResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:azurestack:getCustomerSubscription", args, LookupCustomerSubscriptionResultOutput{}, options).(LookupCustomerSubscriptionResultOutput), nil
 		}).(LookupCustomerSubscriptionResultOutput)
 }
 

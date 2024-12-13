@@ -84,21 +84,11 @@ type LookupExpressRouteCircuitPeeringResult struct {
 }
 
 func LookupExpressRouteCircuitPeeringOutput(ctx *pulumi.Context, args LookupExpressRouteCircuitPeeringOutputArgs, opts ...pulumi.InvokeOption) LookupExpressRouteCircuitPeeringResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupExpressRouteCircuitPeeringResultOutput, error) {
 			args := v.(LookupExpressRouteCircuitPeeringArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupExpressRouteCircuitPeeringResult
-			secret, err := ctx.InvokePackageRaw("azure-native:network/v20230501:getExpressRouteCircuitPeering", args, &rv, "", opts...)
-			if err != nil {
-				return LookupExpressRouteCircuitPeeringResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupExpressRouteCircuitPeeringResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupExpressRouteCircuitPeeringResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:network/v20230501:getExpressRouteCircuitPeering", args, LookupExpressRouteCircuitPeeringResultOutput{}, options).(LookupExpressRouteCircuitPeeringResultOutput), nil
 		}).(LookupExpressRouteCircuitPeeringResultOutput)
 }
 

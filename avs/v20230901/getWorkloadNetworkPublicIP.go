@@ -52,21 +52,11 @@ type LookupWorkloadNetworkPublicIPResult struct {
 }
 
 func LookupWorkloadNetworkPublicIPOutput(ctx *pulumi.Context, args LookupWorkloadNetworkPublicIPOutputArgs, opts ...pulumi.InvokeOption) LookupWorkloadNetworkPublicIPResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupWorkloadNetworkPublicIPResultOutput, error) {
 			args := v.(LookupWorkloadNetworkPublicIPArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupWorkloadNetworkPublicIPResult
-			secret, err := ctx.InvokePackageRaw("azure-native:avs/v20230901:getWorkloadNetworkPublicIP", args, &rv, "", opts...)
-			if err != nil {
-				return LookupWorkloadNetworkPublicIPResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupWorkloadNetworkPublicIPResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupWorkloadNetworkPublicIPResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:avs/v20230901:getWorkloadNetworkPublicIP", args, LookupWorkloadNetworkPublicIPResultOutput{}, options).(LookupWorkloadNetworkPublicIPResultOutput), nil
 		}).(LookupWorkloadNetworkPublicIPResultOutput)
 }
 

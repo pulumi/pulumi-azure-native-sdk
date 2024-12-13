@@ -49,21 +49,11 @@ type LookupIspCustomerResult struct {
 }
 
 func LookupIspCustomerOutput(ctx *pulumi.Context, args LookupIspCustomerOutputArgs, opts ...pulumi.InvokeOption) LookupIspCustomerResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupIspCustomerResultOutput, error) {
 			args := v.(LookupIspCustomerArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupIspCustomerResult
-			secret, err := ctx.InvokePackageRaw("azure-native:connectedcache:getIspCustomer", args, &rv, "", opts...)
-			if err != nil {
-				return LookupIspCustomerResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupIspCustomerResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupIspCustomerResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:connectedcache:getIspCustomer", args, LookupIspCustomerResultOutput{}, options).(LookupIspCustomerResultOutput), nil
 		}).(LookupIspCustomerResultOutput)
 }
 

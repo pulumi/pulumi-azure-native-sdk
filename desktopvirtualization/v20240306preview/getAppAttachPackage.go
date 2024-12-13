@@ -48,21 +48,11 @@ type LookupAppAttachPackageResult struct {
 }
 
 func LookupAppAttachPackageOutput(ctx *pulumi.Context, args LookupAppAttachPackageOutputArgs, opts ...pulumi.InvokeOption) LookupAppAttachPackageResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAppAttachPackageResultOutput, error) {
 			args := v.(LookupAppAttachPackageArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupAppAttachPackageResult
-			secret, err := ctx.InvokePackageRaw("azure-native:desktopvirtualization/v20240306preview:getAppAttachPackage", args, &rv, "", opts...)
-			if err != nil {
-				return LookupAppAttachPackageResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupAppAttachPackageResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupAppAttachPackageResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:desktopvirtualization/v20240306preview:getAppAttachPackage", args, LookupAppAttachPackageResultOutput{}, options).(LookupAppAttachPackageResultOutput), nil
 		}).(LookupAppAttachPackageResultOutput)
 }
 

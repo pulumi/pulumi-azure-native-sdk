@@ -60,21 +60,11 @@ type LookupL2IsolationDomainResult struct {
 }
 
 func LookupL2IsolationDomainOutput(ctx *pulumi.Context, args LookupL2IsolationDomainOutputArgs, opts ...pulumi.InvokeOption) LookupL2IsolationDomainResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupL2IsolationDomainResultOutput, error) {
 			args := v.(LookupL2IsolationDomainArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupL2IsolationDomainResult
-			secret, err := ctx.InvokePackageRaw("azure-native:managednetworkfabric/v20230201preview:getL2IsolationDomain", args, &rv, "", opts...)
-			if err != nil {
-				return LookupL2IsolationDomainResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupL2IsolationDomainResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupL2IsolationDomainResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:managednetworkfabric/v20230201preview:getL2IsolationDomain", args, LookupL2IsolationDomainResultOutput{}, options).(LookupL2IsolationDomainResultOutput), nil
 		}).(LookupL2IsolationDomainResultOutput)
 }
 

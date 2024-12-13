@@ -48,21 +48,11 @@ type ListWCFRelayKeysResult struct {
 }
 
 func ListWCFRelayKeysOutput(ctx *pulumi.Context, args ListWCFRelayKeysOutputArgs, opts ...pulumi.InvokeOption) ListWCFRelayKeysResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListWCFRelayKeysResultOutput, error) {
 			args := v.(ListWCFRelayKeysArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListWCFRelayKeysResult
-			secret, err := ctx.InvokePackageRaw("azure-native:relay/v20240101:listWCFRelayKeys", args, &rv, "", opts...)
-			if err != nil {
-				return ListWCFRelayKeysResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListWCFRelayKeysResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListWCFRelayKeysResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:relay/v20240101:listWCFRelayKeys", args, ListWCFRelayKeysResultOutput{}, options).(ListWCFRelayKeysResultOutput), nil
 		}).(ListWCFRelayKeysResultOutput)
 }
 

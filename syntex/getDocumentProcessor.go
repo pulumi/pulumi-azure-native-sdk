@@ -49,21 +49,11 @@ type LookupDocumentProcessorResult struct {
 }
 
 func LookupDocumentProcessorOutput(ctx *pulumi.Context, args LookupDocumentProcessorOutputArgs, opts ...pulumi.InvokeOption) LookupDocumentProcessorResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupDocumentProcessorResultOutput, error) {
 			args := v.(LookupDocumentProcessorArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupDocumentProcessorResult
-			secret, err := ctx.InvokePackageRaw("azure-native:syntex:getDocumentProcessor", args, &rv, "", opts...)
-			if err != nil {
-				return LookupDocumentProcessorResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupDocumentProcessorResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupDocumentProcessorResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:syntex:getDocumentProcessor", args, LookupDocumentProcessorResultOutput{}, options).(LookupDocumentProcessorResultOutput), nil
 		}).(LookupDocumentProcessorResultOutput)
 }
 

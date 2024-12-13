@@ -99,23 +99,12 @@ func (val *LookupCGProfileResult) Defaults() *LookupCGProfileResult {
 
 	return &tmp
 }
-
 func LookupCGProfileOutput(ctx *pulumi.Context, args LookupCGProfileOutputArgs, opts ...pulumi.InvokeOption) LookupCGProfileResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupCGProfileResultOutput, error) {
 			args := v.(LookupCGProfileArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupCGProfileResult
-			secret, err := ctx.InvokePackageRaw("azure-native:containerinstance:getCGProfile", args, &rv, "", opts...)
-			if err != nil {
-				return LookupCGProfileResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupCGProfileResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupCGProfileResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:containerinstance:getCGProfile", args, LookupCGProfileResultOutput{}, options).(LookupCGProfileResultOutput), nil
 		}).(LookupCGProfileResultOutput)
 }
 

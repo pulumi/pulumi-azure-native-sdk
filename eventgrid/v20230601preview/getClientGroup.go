@@ -51,21 +51,11 @@ type LookupClientGroupResult struct {
 }
 
 func LookupClientGroupOutput(ctx *pulumi.Context, args LookupClientGroupOutputArgs, opts ...pulumi.InvokeOption) LookupClientGroupResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupClientGroupResultOutput, error) {
 			args := v.(LookupClientGroupArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupClientGroupResult
-			secret, err := ctx.InvokePackageRaw("azure-native:eventgrid/v20230601preview:getClientGroup", args, &rv, "", opts...)
-			if err != nil {
-				return LookupClientGroupResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupClientGroupResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupClientGroupResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:eventgrid/v20230601preview:getClientGroup", args, LookupClientGroupResultOutput{}, options).(LookupClientGroupResultOutput), nil
 		}).(LookupClientGroupResultOutput)
 }
 

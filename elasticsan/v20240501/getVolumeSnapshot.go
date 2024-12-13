@@ -54,21 +54,11 @@ type LookupVolumeSnapshotResult struct {
 }
 
 func LookupVolumeSnapshotOutput(ctx *pulumi.Context, args LookupVolumeSnapshotOutputArgs, opts ...pulumi.InvokeOption) LookupVolumeSnapshotResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupVolumeSnapshotResultOutput, error) {
 			args := v.(LookupVolumeSnapshotArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupVolumeSnapshotResult
-			secret, err := ctx.InvokePackageRaw("azure-native:elasticsan/v20240501:getVolumeSnapshot", args, &rv, "", opts...)
-			if err != nil {
-				return LookupVolumeSnapshotResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupVolumeSnapshotResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupVolumeSnapshotResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:elasticsan/v20240501:getVolumeSnapshot", args, LookupVolumeSnapshotResultOutput{}, options).(LookupVolumeSnapshotResultOutput), nil
 		}).(LookupVolumeSnapshotResultOutput)
 }
 

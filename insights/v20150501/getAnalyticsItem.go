@@ -58,21 +58,11 @@ type LookupAnalyticsItemResult struct {
 }
 
 func LookupAnalyticsItemOutput(ctx *pulumi.Context, args LookupAnalyticsItemOutputArgs, opts ...pulumi.InvokeOption) LookupAnalyticsItemResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAnalyticsItemResultOutput, error) {
 			args := v.(LookupAnalyticsItemArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupAnalyticsItemResult
-			secret, err := ctx.InvokePackageRaw("azure-native:insights/v20150501:getAnalyticsItem", args, &rv, "", opts...)
-			if err != nil {
-				return LookupAnalyticsItemResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupAnalyticsItemResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupAnalyticsItemResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:insights/v20150501:getAnalyticsItem", args, LookupAnalyticsItemResultOutput{}, options).(LookupAnalyticsItemResultOutput), nil
 		}).(LookupAnalyticsItemResultOutput)
 }
 

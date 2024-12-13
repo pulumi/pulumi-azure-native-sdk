@@ -92,23 +92,12 @@ func (val *LookupPostRuleResult) Defaults() *LookupPostRuleResult {
 	}
 	return &tmp
 }
-
 func LookupPostRuleOutput(ctx *pulumi.Context, args LookupPostRuleOutputArgs, opts ...pulumi.InvokeOption) LookupPostRuleResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupPostRuleResultOutput, error) {
 			args := v.(LookupPostRuleArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupPostRuleResult
-			secret, err := ctx.InvokePackageRaw("azure-native:cloudngfw/v20231010preview:getPostRule", args, &rv, "", opts...)
-			if err != nil {
-				return LookupPostRuleResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupPostRuleResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupPostRuleResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:cloudngfw/v20231010preview:getPostRule", args, LookupPostRuleResultOutput{}, options).(LookupPostRuleResultOutput), nil
 		}).(LookupPostRuleResultOutput)
 }
 

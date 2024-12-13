@@ -66,21 +66,11 @@ type LookupOperatorApiConnectionResult struct {
 }
 
 func LookupOperatorApiConnectionOutput(ctx *pulumi.Context, args LookupOperatorApiConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupOperatorApiConnectionResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupOperatorApiConnectionResultOutput, error) {
 			args := v.(LookupOperatorApiConnectionArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupOperatorApiConnectionResult
-			secret, err := ctx.InvokePackageRaw("azure-native:programmableconnectivity/v20240115preview:getOperatorApiConnection", args, &rv, "", opts...)
-			if err != nil {
-				return LookupOperatorApiConnectionResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupOperatorApiConnectionResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupOperatorApiConnectionResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:programmableconnectivity/v20240115preview:getOperatorApiConnection", args, LookupOperatorApiConnectionResultOutput{}, options).(LookupOperatorApiConnectionResultOutput), nil
 		}).(LookupOperatorApiConnectionResultOutput)
 }
 

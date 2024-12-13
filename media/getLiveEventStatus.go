@@ -39,21 +39,11 @@ type GetLiveEventStatusResult struct {
 }
 
 func GetLiveEventStatusOutput(ctx *pulumi.Context, args GetLiveEventStatusOutputArgs, opts ...pulumi.InvokeOption) GetLiveEventStatusResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetLiveEventStatusResultOutput, error) {
 			args := v.(GetLiveEventStatusArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetLiveEventStatusResult
-			secret, err := ctx.InvokePackageRaw("azure-native:media:getLiveEventStatus", args, &rv, "", opts...)
-			if err != nil {
-				return GetLiveEventStatusResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetLiveEventStatusResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetLiveEventStatusResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:media:getLiveEventStatus", args, GetLiveEventStatusResultOutput{}, options).(GetLiveEventStatusResultOutput), nil
 		}).(GetLiveEventStatusResultOutput)
 }
 

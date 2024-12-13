@@ -47,21 +47,11 @@ type LookupDevOpsPolicyAssignmentResult struct {
 }
 
 func LookupDevOpsPolicyAssignmentOutput(ctx *pulumi.Context, args LookupDevOpsPolicyAssignmentOutputArgs, opts ...pulumi.InvokeOption) LookupDevOpsPolicyAssignmentResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupDevOpsPolicyAssignmentResultOutput, error) {
 			args := v.(LookupDevOpsPolicyAssignmentArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupDevOpsPolicyAssignmentResult
-			secret, err := ctx.InvokePackageRaw("azure-native:security:getDevOpsPolicyAssignment", args, &rv, "", opts...)
-			if err != nil {
-				return LookupDevOpsPolicyAssignmentResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupDevOpsPolicyAssignmentResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupDevOpsPolicyAssignmentResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:security:getDevOpsPolicyAssignment", args, LookupDevOpsPolicyAssignmentResultOutput{}, options).(LookupDevOpsPolicyAssignmentResultOutput), nil
 		}).(LookupDevOpsPolicyAssignmentResultOutput)
 }
 

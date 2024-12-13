@@ -52,21 +52,11 @@ type LookupSignalRCustomCertificateResult struct {
 }
 
 func LookupSignalRCustomCertificateOutput(ctx *pulumi.Context, args LookupSignalRCustomCertificateOutputArgs, opts ...pulumi.InvokeOption) LookupSignalRCustomCertificateResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupSignalRCustomCertificateResultOutput, error) {
 			args := v.(LookupSignalRCustomCertificateArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupSignalRCustomCertificateResult
-			secret, err := ctx.InvokePackageRaw("azure-native:signalrservice/v20230201:getSignalRCustomCertificate", args, &rv, "", opts...)
-			if err != nil {
-				return LookupSignalRCustomCertificateResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupSignalRCustomCertificateResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupSignalRCustomCertificateResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:signalrservice/v20230201:getSignalRCustomCertificate", args, LookupSignalRCustomCertificateResultOutput{}, options).(LookupSignalRCustomCertificateResultOutput), nil
 		}).(LookupSignalRCustomCertificateResultOutput)
 }
 

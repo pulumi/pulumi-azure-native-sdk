@@ -57,21 +57,11 @@ type LookupControllerDetailsResult struct {
 }
 
 func LookupControllerDetailsOutput(ctx *pulumi.Context, args LookupControllerDetailsOutputArgs, opts ...pulumi.InvokeOption) LookupControllerDetailsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupControllerDetailsResultOutput, error) {
 			args := v.(LookupControllerDetailsArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupControllerDetailsResult
-			secret, err := ctx.InvokePackageRaw("azure-native:delegatednetwork:getControllerDetails", args, &rv, "", opts...)
-			if err != nil {
-				return LookupControllerDetailsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupControllerDetailsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupControllerDetailsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:delegatednetwork:getControllerDetails", args, LookupControllerDetailsResultOutput{}, options).(LookupControllerDetailsResultOutput), nil
 		}).(LookupControllerDetailsResultOutput)
 }
 

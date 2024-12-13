@@ -53,21 +53,11 @@ type LookupCodelessUiDataConnectorResult struct {
 }
 
 func LookupCodelessUiDataConnectorOutput(ctx *pulumi.Context, args LookupCodelessUiDataConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupCodelessUiDataConnectorResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupCodelessUiDataConnectorResultOutput, error) {
 			args := v.(LookupCodelessUiDataConnectorArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupCodelessUiDataConnectorResult
-			secret, err := ctx.InvokePackageRaw("azure-native:securityinsights/v20210301preview:getCodelessUiDataConnector", args, &rv, "", opts...)
-			if err != nil {
-				return LookupCodelessUiDataConnectorResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupCodelessUiDataConnectorResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupCodelessUiDataConnectorResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:securityinsights/v20210301preview:getCodelessUiDataConnector", args, LookupCodelessUiDataConnectorResultOutput{}, options).(LookupCodelessUiDataConnectorResultOutput), nil
 		}).(LookupCodelessUiDataConnectorResultOutput)
 }
 

@@ -57,23 +57,12 @@ func (val *LookupKmsKeyResult) Defaults() *LookupKmsKeyResult {
 
 	return &tmp
 }
-
 func LookupKmsKeyOutput(ctx *pulumi.Context, args LookupKmsKeyOutputArgs, opts ...pulumi.InvokeOption) LookupKmsKeyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupKmsKeyResultOutput, error) {
 			args := v.(LookupKmsKeyArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupKmsKeyResult
-			secret, err := ctx.InvokePackageRaw("azure-native:awsconnector/v20241201:getKmsKey", args, &rv, "", opts...)
-			if err != nil {
-				return LookupKmsKeyResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupKmsKeyResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupKmsKeyResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:awsconnector/v20241201:getKmsKey", args, LookupKmsKeyResultOutput{}, options).(LookupKmsKeyResultOutput), nil
 		}).(LookupKmsKeyResultOutput)
 }
 

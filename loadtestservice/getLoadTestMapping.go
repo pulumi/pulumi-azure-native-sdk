@@ -49,21 +49,11 @@ type LookupLoadTestMappingResult struct {
 }
 
 func LookupLoadTestMappingOutput(ctx *pulumi.Context, args LookupLoadTestMappingOutputArgs, opts ...pulumi.InvokeOption) LookupLoadTestMappingResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupLoadTestMappingResultOutput, error) {
 			args := v.(LookupLoadTestMappingArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupLoadTestMappingResult
-			secret, err := ctx.InvokePackageRaw("azure-native:loadtestservice:getLoadTestMapping", args, &rv, "", opts...)
-			if err != nil {
-				return LookupLoadTestMappingResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupLoadTestMappingResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupLoadTestMappingResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:loadtestservice:getLoadTestMapping", args, LookupLoadTestMappingResultOutput{}, options).(LookupLoadTestMappingResultOutput), nil
 		}).(LookupLoadTestMappingResultOutput)
 }
 

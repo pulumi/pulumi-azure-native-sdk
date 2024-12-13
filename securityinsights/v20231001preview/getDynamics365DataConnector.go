@@ -53,21 +53,11 @@ type LookupDynamics365DataConnectorResult struct {
 }
 
 func LookupDynamics365DataConnectorOutput(ctx *pulumi.Context, args LookupDynamics365DataConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupDynamics365DataConnectorResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupDynamics365DataConnectorResultOutput, error) {
 			args := v.(LookupDynamics365DataConnectorArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupDynamics365DataConnectorResult
-			secret, err := ctx.InvokePackageRaw("azure-native:securityinsights/v20231001preview:getDynamics365DataConnector", args, &rv, "", opts...)
-			if err != nil {
-				return LookupDynamics365DataConnectorResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupDynamics365DataConnectorResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupDynamics365DataConnectorResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:securityinsights/v20231001preview:getDynamics365DataConnector", args, LookupDynamics365DataConnectorResultOutput{}, options).(LookupDynamics365DataConnectorResultOutput), nil
 		}).(LookupDynamics365DataConnectorResultOutput)
 }
 

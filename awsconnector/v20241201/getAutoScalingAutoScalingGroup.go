@@ -48,21 +48,11 @@ type LookupAutoScalingAutoScalingGroupResult struct {
 }
 
 func LookupAutoScalingAutoScalingGroupOutput(ctx *pulumi.Context, args LookupAutoScalingAutoScalingGroupOutputArgs, opts ...pulumi.InvokeOption) LookupAutoScalingAutoScalingGroupResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAutoScalingAutoScalingGroupResultOutput, error) {
 			args := v.(LookupAutoScalingAutoScalingGroupArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupAutoScalingAutoScalingGroupResult
-			secret, err := ctx.InvokePackageRaw("azure-native:awsconnector/v20241201:getAutoScalingAutoScalingGroup", args, &rv, "", opts...)
-			if err != nil {
-				return LookupAutoScalingAutoScalingGroupResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupAutoScalingAutoScalingGroupResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupAutoScalingAutoScalingGroupResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:awsconnector/v20241201:getAutoScalingAutoScalingGroup", args, LookupAutoScalingAutoScalingGroupResultOutput{}, options).(LookupAutoScalingAutoScalingGroupResultOutput), nil
 		}).(LookupAutoScalingAutoScalingGroupResultOutput)
 }
 

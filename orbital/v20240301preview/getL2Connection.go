@@ -54,21 +54,11 @@ type LookupL2ConnectionResult struct {
 }
 
 func LookupL2ConnectionOutput(ctx *pulumi.Context, args LookupL2ConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupL2ConnectionResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupL2ConnectionResultOutput, error) {
 			args := v.(LookupL2ConnectionArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupL2ConnectionResult
-			secret, err := ctx.InvokePackageRaw("azure-native:orbital/v20240301preview:getL2Connection", args, &rv, "", opts...)
-			if err != nil {
-				return LookupL2ConnectionResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupL2ConnectionResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupL2ConnectionResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:orbital/v20240301preview:getL2Connection", args, LookupL2ConnectionResultOutput{}, options).(LookupL2ConnectionResultOutput), nil
 		}).(LookupL2ConnectionResultOutput)
 }
 

@@ -64,21 +64,11 @@ type LookupVmmServerResult struct {
 }
 
 func LookupVmmServerOutput(ctx *pulumi.Context, args LookupVmmServerOutputArgs, opts ...pulumi.InvokeOption) LookupVmmServerResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupVmmServerResultOutput, error) {
 			args := v.(LookupVmmServerArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupVmmServerResult
-			secret, err := ctx.InvokePackageRaw("azure-native:scvmm/v20231007:getVmmServer", args, &rv, "", opts...)
-			if err != nil {
-				return LookupVmmServerResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupVmmServerResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupVmmServerResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:scvmm/v20231007:getVmmServer", args, LookupVmmServerResultOutput{}, options).(LookupVmmServerResultOutput), nil
 		}).(LookupVmmServerResultOutput)
 }
 

@@ -97,23 +97,12 @@ func (val *LookupWebTestResult) Defaults() *LookupWebTestResult {
 	}
 	return &tmp
 }
-
 func LookupWebTestOutput(ctx *pulumi.Context, args LookupWebTestOutputArgs, opts ...pulumi.InvokeOption) LookupWebTestResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupWebTestResultOutput, error) {
 			args := v.(LookupWebTestArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupWebTestResult
-			secret, err := ctx.InvokePackageRaw("azure-native:insights:getWebTest", args, &rv, "", opts...)
-			if err != nil {
-				return LookupWebTestResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupWebTestResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupWebTestResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:insights:getWebTest", args, LookupWebTestResultOutput{}, options).(LookupWebTestResultOutput), nil
 		}).(LookupWebTestResultOutput)
 }
 

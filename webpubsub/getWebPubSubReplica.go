@@ -55,21 +55,11 @@ type LookupWebPubSubReplicaResult struct {
 }
 
 func LookupWebPubSubReplicaOutput(ctx *pulumi.Context, args LookupWebPubSubReplicaOutputArgs, opts ...pulumi.InvokeOption) LookupWebPubSubReplicaResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupWebPubSubReplicaResultOutput, error) {
 			args := v.(LookupWebPubSubReplicaArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupWebPubSubReplicaResult
-			secret, err := ctx.InvokePackageRaw("azure-native:webpubsub:getWebPubSubReplica", args, &rv, "", opts...)
-			if err != nil {
-				return LookupWebPubSubReplicaResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupWebPubSubReplicaResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupWebPubSubReplicaResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:webpubsub:getWebPubSubReplica", args, LookupWebPubSubReplicaResultOutput{}, options).(LookupWebPubSubReplicaResultOutput), nil
 		}).(LookupWebPubSubReplicaResultOutput)
 }
 

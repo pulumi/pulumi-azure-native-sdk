@@ -63,21 +63,11 @@ type LookupVolumeContainerResult struct {
 }
 
 func LookupVolumeContainerOutput(ctx *pulumi.Context, args LookupVolumeContainerOutputArgs, opts ...pulumi.InvokeOption) LookupVolumeContainerResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupVolumeContainerResultOutput, error) {
 			args := v.(LookupVolumeContainerArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupVolumeContainerResult
-			secret, err := ctx.InvokePackageRaw("azure-native:storsimple:getVolumeContainer", args, &rv, "", opts...)
-			if err != nil {
-				return LookupVolumeContainerResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupVolumeContainerResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupVolumeContainerResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:storsimple:getVolumeContainer", args, LookupVolumeContainerResultOutput{}, options).(LookupVolumeContainerResultOutput), nil
 		}).(LookupVolumeContainerResultOutput)
 }
 

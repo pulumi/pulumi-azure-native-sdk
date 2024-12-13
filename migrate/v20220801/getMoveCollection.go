@@ -52,21 +52,11 @@ type LookupMoveCollectionResult struct {
 }
 
 func LookupMoveCollectionOutput(ctx *pulumi.Context, args LookupMoveCollectionOutputArgs, opts ...pulumi.InvokeOption) LookupMoveCollectionResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupMoveCollectionResultOutput, error) {
 			args := v.(LookupMoveCollectionArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupMoveCollectionResult
-			secret, err := ctx.InvokePackageRaw("azure-native:migrate/v20220801:getMoveCollection", args, &rv, "", opts...)
-			if err != nil {
-				return LookupMoveCollectionResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupMoveCollectionResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupMoveCollectionResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:migrate/v20220801:getMoveCollection", args, LookupMoveCollectionResultOutput{}, options).(LookupMoveCollectionResultOutput), nil
 		}).(LookupMoveCollectionResultOutput)
 }
 

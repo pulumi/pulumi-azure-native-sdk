@@ -42,21 +42,11 @@ type ListprovisionedClusterInstanceAdminKubeconfigResult struct {
 }
 
 func ListprovisionedClusterInstanceAdminKubeconfigOutput(ctx *pulumi.Context, args ListprovisionedClusterInstanceAdminKubeconfigOutputArgs, opts ...pulumi.InvokeOption) ListprovisionedClusterInstanceAdminKubeconfigResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListprovisionedClusterInstanceAdminKubeconfigResultOutput, error) {
 			args := v.(ListprovisionedClusterInstanceAdminKubeconfigArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListprovisionedClusterInstanceAdminKubeconfigResult
-			secret, err := ctx.InvokePackageRaw("azure-native:hybridcontainerservice/v20240101:listprovisionedClusterInstanceAdminKubeconfig", args, &rv, "", opts...)
-			if err != nil {
-				return ListprovisionedClusterInstanceAdminKubeconfigResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListprovisionedClusterInstanceAdminKubeconfigResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListprovisionedClusterInstanceAdminKubeconfigResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:hybridcontainerservice/v20240101:listprovisionedClusterInstanceAdminKubeconfig", args, ListprovisionedClusterInstanceAdminKubeconfigResultOutput{}, options).(ListprovisionedClusterInstanceAdminKubeconfigResultOutput), nil
 		}).(ListprovisionedClusterInstanceAdminKubeconfigResultOutput)
 }
 

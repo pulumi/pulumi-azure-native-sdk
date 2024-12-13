@@ -43,21 +43,11 @@ type LookupWorkspaceConnectionResult struct {
 }
 
 func LookupWorkspaceConnectionOutput(ctx *pulumi.Context, args LookupWorkspaceConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupWorkspaceConnectionResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupWorkspaceConnectionResultOutput, error) {
 			args := v.(LookupWorkspaceConnectionArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupWorkspaceConnectionResult
-			secret, err := ctx.InvokePackageRaw("azure-native:machinelearningservices/v20240701preview:getWorkspaceConnection", args, &rv, "", opts...)
-			if err != nil {
-				return LookupWorkspaceConnectionResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupWorkspaceConnectionResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupWorkspaceConnectionResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:machinelearningservices/v20240701preview:getWorkspaceConnection", args, LookupWorkspaceConnectionResultOutput{}, options).(LookupWorkspaceConnectionResultOutput), nil
 		}).(LookupWorkspaceConnectionResultOutput)
 }
 

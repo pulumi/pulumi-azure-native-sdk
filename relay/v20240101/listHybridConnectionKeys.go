@@ -48,21 +48,11 @@ type ListHybridConnectionKeysResult struct {
 }
 
 func ListHybridConnectionKeysOutput(ctx *pulumi.Context, args ListHybridConnectionKeysOutputArgs, opts ...pulumi.InvokeOption) ListHybridConnectionKeysResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListHybridConnectionKeysResultOutput, error) {
 			args := v.(ListHybridConnectionKeysArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListHybridConnectionKeysResult
-			secret, err := ctx.InvokePackageRaw("azure-native:relay/v20240101:listHybridConnectionKeys", args, &rv, "", opts...)
-			if err != nil {
-				return ListHybridConnectionKeysResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListHybridConnectionKeysResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListHybridConnectionKeysResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:relay/v20240101:listHybridConnectionKeys", args, ListHybridConnectionKeysResultOutput{}, options).(ListHybridConnectionKeysResultOutput), nil
 		}).(ListHybridConnectionKeysResultOutput)
 }
 

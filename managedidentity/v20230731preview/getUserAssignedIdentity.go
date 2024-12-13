@@ -52,21 +52,11 @@ type LookupUserAssignedIdentityResult struct {
 }
 
 func LookupUserAssignedIdentityOutput(ctx *pulumi.Context, args LookupUserAssignedIdentityOutputArgs, opts ...pulumi.InvokeOption) LookupUserAssignedIdentityResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupUserAssignedIdentityResultOutput, error) {
 			args := v.(LookupUserAssignedIdentityArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupUserAssignedIdentityResult
-			secret, err := ctx.InvokePackageRaw("azure-native:managedidentity/v20230731preview:getUserAssignedIdentity", args, &rv, "", opts...)
-			if err != nil {
-				return LookupUserAssignedIdentityResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupUserAssignedIdentityResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupUserAssignedIdentityResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:managedidentity/v20230731preview:getUserAssignedIdentity", args, LookupUserAssignedIdentityResultOutput{}, options).(LookupUserAssignedIdentityResultOutput), nil
 		}).(LookupUserAssignedIdentityResultOutput)
 }
 

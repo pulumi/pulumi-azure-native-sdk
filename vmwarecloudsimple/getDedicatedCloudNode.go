@@ -73,21 +73,11 @@ type LookupDedicatedCloudNodeResult struct {
 }
 
 func LookupDedicatedCloudNodeOutput(ctx *pulumi.Context, args LookupDedicatedCloudNodeOutputArgs, opts ...pulumi.InvokeOption) LookupDedicatedCloudNodeResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupDedicatedCloudNodeResultOutput, error) {
 			args := v.(LookupDedicatedCloudNodeArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupDedicatedCloudNodeResult
-			secret, err := ctx.InvokePackageRaw("azure-native:vmwarecloudsimple:getDedicatedCloudNode", args, &rv, "", opts...)
-			if err != nil {
-				return LookupDedicatedCloudNodeResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupDedicatedCloudNodeResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupDedicatedCloudNodeResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:vmwarecloudsimple:getDedicatedCloudNode", args, LookupDedicatedCloudNodeResultOutput{}, options).(LookupDedicatedCloudNodeResultOutput), nil
 		}).(LookupDedicatedCloudNodeResultOutput)
 }
 

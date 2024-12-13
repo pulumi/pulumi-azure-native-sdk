@@ -38,21 +38,11 @@ type GetFlowDestinationEndpointPortsResult struct {
 }
 
 func GetFlowDestinationEndpointPortsOutput(ctx *pulumi.Context, args GetFlowDestinationEndpointPortsOutputArgs, opts ...pulumi.InvokeOption) GetFlowDestinationEndpointPortsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetFlowDestinationEndpointPortsResultOutput, error) {
 			args := v.(GetFlowDestinationEndpointPortsArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetFlowDestinationEndpointPortsResult
-			secret, err := ctx.InvokePackageRaw("azure-native:azuredatatransfer/v20240927:getFlowDestinationEndpointPorts", args, &rv, "", opts...)
-			if err != nil {
-				return GetFlowDestinationEndpointPortsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetFlowDestinationEndpointPortsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetFlowDestinationEndpointPortsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:azuredatatransfer/v20240927:getFlowDestinationEndpointPorts", args, GetFlowDestinationEndpointPortsResultOutput{}, options).(GetFlowDestinationEndpointPortsResultOutput), nil
 		}).(GetFlowDestinationEndpointPortsResultOutput)
 }
 

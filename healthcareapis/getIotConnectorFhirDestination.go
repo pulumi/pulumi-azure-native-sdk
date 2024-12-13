@@ -59,21 +59,11 @@ type LookupIotConnectorFhirDestinationResult struct {
 }
 
 func LookupIotConnectorFhirDestinationOutput(ctx *pulumi.Context, args LookupIotConnectorFhirDestinationOutputArgs, opts ...pulumi.InvokeOption) LookupIotConnectorFhirDestinationResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupIotConnectorFhirDestinationResultOutput, error) {
 			args := v.(LookupIotConnectorFhirDestinationArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupIotConnectorFhirDestinationResult
-			secret, err := ctx.InvokePackageRaw("azure-native:healthcareapis:getIotConnectorFhirDestination", args, &rv, "", opts...)
-			if err != nil {
-				return LookupIotConnectorFhirDestinationResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupIotConnectorFhirDestinationResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupIotConnectorFhirDestinationResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:healthcareapis:getIotConnectorFhirDestination", args, LookupIotConnectorFhirDestinationResultOutput{}, options).(LookupIotConnectorFhirDestinationResultOutput), nil
 		}).(LookupIotConnectorFhirDestinationResultOutput)
 }
 

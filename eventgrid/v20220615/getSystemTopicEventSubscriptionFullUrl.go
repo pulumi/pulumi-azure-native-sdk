@@ -38,21 +38,11 @@ type GetSystemTopicEventSubscriptionFullUrlResult struct {
 }
 
 func GetSystemTopicEventSubscriptionFullUrlOutput(ctx *pulumi.Context, args GetSystemTopicEventSubscriptionFullUrlOutputArgs, opts ...pulumi.InvokeOption) GetSystemTopicEventSubscriptionFullUrlResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetSystemTopicEventSubscriptionFullUrlResultOutput, error) {
 			args := v.(GetSystemTopicEventSubscriptionFullUrlArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetSystemTopicEventSubscriptionFullUrlResult
-			secret, err := ctx.InvokePackageRaw("azure-native:eventgrid/v20220615:getSystemTopicEventSubscriptionFullUrl", args, &rv, "", opts...)
-			if err != nil {
-				return GetSystemTopicEventSubscriptionFullUrlResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetSystemTopicEventSubscriptionFullUrlResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetSystemTopicEventSubscriptionFullUrlResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:eventgrid/v20220615:getSystemTopicEventSubscriptionFullUrl", args, GetSystemTopicEventSubscriptionFullUrlResultOutput{}, options).(GetSystemTopicEventSubscriptionFullUrlResultOutput), nil
 		}).(GetSystemTopicEventSubscriptionFullUrlResultOutput)
 }
 

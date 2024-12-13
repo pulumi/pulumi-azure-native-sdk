@@ -58,21 +58,11 @@ type LookupClusterPrincipalAssignmentResult struct {
 }
 
 func LookupClusterPrincipalAssignmentOutput(ctx *pulumi.Context, args LookupClusterPrincipalAssignmentOutputArgs, opts ...pulumi.InvokeOption) LookupClusterPrincipalAssignmentResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupClusterPrincipalAssignmentResultOutput, error) {
 			args := v.(LookupClusterPrincipalAssignmentArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupClusterPrincipalAssignmentResult
-			secret, err := ctx.InvokePackageRaw("azure-native:kusto/v20230502:getClusterPrincipalAssignment", args, &rv, "", opts...)
-			if err != nil {
-				return LookupClusterPrincipalAssignmentResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupClusterPrincipalAssignmentResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupClusterPrincipalAssignmentResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:kusto/v20230502:getClusterPrincipalAssignment", args, LookupClusterPrincipalAssignmentResultOutput{}, options).(LookupClusterPrincipalAssignmentResultOutput), nil
 		}).(LookupClusterPrincipalAssignmentResultOutput)
 }
 

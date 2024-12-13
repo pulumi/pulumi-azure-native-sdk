@@ -42,21 +42,11 @@ type GetAuthorizationLoginLinkPostResult struct {
 }
 
 func GetAuthorizationLoginLinkPostOutput(ctx *pulumi.Context, args GetAuthorizationLoginLinkPostOutputArgs, opts ...pulumi.InvokeOption) GetAuthorizationLoginLinkPostResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetAuthorizationLoginLinkPostResultOutput, error) {
 			args := v.(GetAuthorizationLoginLinkPostArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetAuthorizationLoginLinkPostResult
-			secret, err := ctx.InvokePackageRaw("azure-native:apimanagement/v20220801:getAuthorizationLoginLinkPost", args, &rv, "", opts...)
-			if err != nil {
-				return GetAuthorizationLoginLinkPostResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetAuthorizationLoginLinkPostResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetAuthorizationLoginLinkPostResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:apimanagement/v20220801:getAuthorizationLoginLinkPost", args, GetAuthorizationLoginLinkPostResultOutput{}, options).(GetAuthorizationLoginLinkPostResultOutput), nil
 		}).(GetAuthorizationLoginLinkPostResultOutput)
 }
 

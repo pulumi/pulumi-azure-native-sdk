@@ -49,21 +49,11 @@ type LookupDocumentationResult struct {
 }
 
 func LookupDocumentationOutput(ctx *pulumi.Context, args LookupDocumentationOutputArgs, opts ...pulumi.InvokeOption) LookupDocumentationResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupDocumentationResultOutput, error) {
 			args := v.(LookupDocumentationArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupDocumentationResult
-			secret, err := ctx.InvokePackageRaw("azure-native:apimanagement:getDocumentation", args, &rv, "", opts...)
-			if err != nil {
-				return LookupDocumentationResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupDocumentationResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupDocumentationResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:apimanagement:getDocumentation", args, LookupDocumentationResultOutput{}, options).(LookupDocumentationResultOutput), nil
 		}).(LookupDocumentationResultOutput)
 }
 

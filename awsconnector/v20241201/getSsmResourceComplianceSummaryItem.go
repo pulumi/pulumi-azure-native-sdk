@@ -48,21 +48,11 @@ type LookupSsmResourceComplianceSummaryItemResult struct {
 }
 
 func LookupSsmResourceComplianceSummaryItemOutput(ctx *pulumi.Context, args LookupSsmResourceComplianceSummaryItemOutputArgs, opts ...pulumi.InvokeOption) LookupSsmResourceComplianceSummaryItemResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupSsmResourceComplianceSummaryItemResultOutput, error) {
 			args := v.(LookupSsmResourceComplianceSummaryItemArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupSsmResourceComplianceSummaryItemResult
-			secret, err := ctx.InvokePackageRaw("azure-native:awsconnector/v20241201:getSsmResourceComplianceSummaryItem", args, &rv, "", opts...)
-			if err != nil {
-				return LookupSsmResourceComplianceSummaryItemResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupSsmResourceComplianceSummaryItemResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupSsmResourceComplianceSummaryItemResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:awsconnector/v20241201:getSsmResourceComplianceSummaryItem", args, LookupSsmResourceComplianceSummaryItemResultOutput{}, options).(LookupSsmResourceComplianceSummaryItemResultOutput), nil
 		}).(LookupSsmResourceComplianceSummaryItemResultOutput)
 }
 

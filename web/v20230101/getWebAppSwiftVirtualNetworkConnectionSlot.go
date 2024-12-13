@@ -48,21 +48,11 @@ type LookupWebAppSwiftVirtualNetworkConnectionSlotResult struct {
 }
 
 func LookupWebAppSwiftVirtualNetworkConnectionSlotOutput(ctx *pulumi.Context, args LookupWebAppSwiftVirtualNetworkConnectionSlotOutputArgs, opts ...pulumi.InvokeOption) LookupWebAppSwiftVirtualNetworkConnectionSlotResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupWebAppSwiftVirtualNetworkConnectionSlotResultOutput, error) {
 			args := v.(LookupWebAppSwiftVirtualNetworkConnectionSlotArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupWebAppSwiftVirtualNetworkConnectionSlotResult
-			secret, err := ctx.InvokePackageRaw("azure-native:web/v20230101:getWebAppSwiftVirtualNetworkConnectionSlot", args, &rv, "", opts...)
-			if err != nil {
-				return LookupWebAppSwiftVirtualNetworkConnectionSlotResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupWebAppSwiftVirtualNetworkConnectionSlotResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupWebAppSwiftVirtualNetworkConnectionSlotResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:web/v20230101:getWebAppSwiftVirtualNetworkConnectionSlot", args, LookupWebAppSwiftVirtualNetworkConnectionSlotResultOutput{}, options).(LookupWebAppSwiftVirtualNetworkConnectionSlotResultOutput), nil
 		}).(LookupWebAppSwiftVirtualNetworkConnectionSlotResultOutput)
 }
 

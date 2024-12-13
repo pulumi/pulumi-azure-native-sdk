@@ -64,21 +64,11 @@ type LookupDomainResult struct {
 }
 
 func LookupDomainOutput(ctx *pulumi.Context, args LookupDomainOutputArgs, opts ...pulumi.InvokeOption) LookupDomainResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupDomainResultOutput, error) {
 			args := v.(LookupDomainArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupDomainResult
-			secret, err := ctx.InvokePackageRaw("azure-native:communication/v20230401preview:getDomain", args, &rv, "", opts...)
-			if err != nil {
-				return LookupDomainResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupDomainResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupDomainResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:communication/v20230401preview:getDomain", args, LookupDomainResultOutput{}, options).(LookupDomainResultOutput), nil
 		}).(LookupDomainResultOutput)
 }
 

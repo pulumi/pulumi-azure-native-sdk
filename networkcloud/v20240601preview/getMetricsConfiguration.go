@@ -61,21 +61,11 @@ type LookupMetricsConfigurationResult struct {
 }
 
 func LookupMetricsConfigurationOutput(ctx *pulumi.Context, args LookupMetricsConfigurationOutputArgs, opts ...pulumi.InvokeOption) LookupMetricsConfigurationResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupMetricsConfigurationResultOutput, error) {
 			args := v.(LookupMetricsConfigurationArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupMetricsConfigurationResult
-			secret, err := ctx.InvokePackageRaw("azure-native:networkcloud/v20240601preview:getMetricsConfiguration", args, &rv, "", opts...)
-			if err != nil {
-				return LookupMetricsConfigurationResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupMetricsConfigurationResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupMetricsConfigurationResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:networkcloud/v20240601preview:getMetricsConfiguration", args, LookupMetricsConfigurationResultOutput{}, options).(LookupMetricsConfigurationResultOutput), nil
 		}).(LookupMetricsConfigurationResultOutput)
 }
 

@@ -60,21 +60,11 @@ type LookupKustoPoolAttachedDatabaseConfigurationResult struct {
 }
 
 func LookupKustoPoolAttachedDatabaseConfigurationOutput(ctx *pulumi.Context, args LookupKustoPoolAttachedDatabaseConfigurationOutputArgs, opts ...pulumi.InvokeOption) LookupKustoPoolAttachedDatabaseConfigurationResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupKustoPoolAttachedDatabaseConfigurationResultOutput, error) {
 			args := v.(LookupKustoPoolAttachedDatabaseConfigurationArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupKustoPoolAttachedDatabaseConfigurationResult
-			secret, err := ctx.InvokePackageRaw("azure-native:synapse/v20210601preview:getKustoPoolAttachedDatabaseConfiguration", args, &rv, "", opts...)
-			if err != nil {
-				return LookupKustoPoolAttachedDatabaseConfigurationResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupKustoPoolAttachedDatabaseConfigurationResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupKustoPoolAttachedDatabaseConfigurationResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:synapse/v20210601preview:getKustoPoolAttachedDatabaseConfiguration", args, LookupKustoPoolAttachedDatabaseConfigurationResultOutput{}, options).(LookupKustoPoolAttachedDatabaseConfigurationResultOutput), nil
 		}).(LookupKustoPoolAttachedDatabaseConfigurationResultOutput)
 }
 

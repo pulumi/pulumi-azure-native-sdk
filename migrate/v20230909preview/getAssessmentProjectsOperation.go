@@ -73,21 +73,11 @@ type LookupAssessmentProjectsOperationResult struct {
 }
 
 func LookupAssessmentProjectsOperationOutput(ctx *pulumi.Context, args LookupAssessmentProjectsOperationOutputArgs, opts ...pulumi.InvokeOption) LookupAssessmentProjectsOperationResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAssessmentProjectsOperationResultOutput, error) {
 			args := v.(LookupAssessmentProjectsOperationArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupAssessmentProjectsOperationResult
-			secret, err := ctx.InvokePackageRaw("azure-native:migrate/v20230909preview:getAssessmentProjectsOperation", args, &rv, "", opts...)
-			if err != nil {
-				return LookupAssessmentProjectsOperationResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupAssessmentProjectsOperationResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupAssessmentProjectsOperationResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:migrate/v20230909preview:getAssessmentProjectsOperation", args, LookupAssessmentProjectsOperationResultOutput{}, options).(LookupAssessmentProjectsOperationResultOutput), nil
 		}).(LookupAssessmentProjectsOperationResultOutput)
 }
 

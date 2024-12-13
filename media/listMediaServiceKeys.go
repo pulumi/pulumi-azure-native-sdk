@@ -45,21 +45,11 @@ type ListMediaServiceKeysResult struct {
 }
 
 func ListMediaServiceKeysOutput(ctx *pulumi.Context, args ListMediaServiceKeysOutputArgs, opts ...pulumi.InvokeOption) ListMediaServiceKeysResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListMediaServiceKeysResultOutput, error) {
 			args := v.(ListMediaServiceKeysArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListMediaServiceKeysResult
-			secret, err := ctx.InvokePackageRaw("azure-native:media:listMediaServiceKeys", args, &rv, "", opts...)
-			if err != nil {
-				return ListMediaServiceKeysResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListMediaServiceKeysResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListMediaServiceKeysResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:media:listMediaServiceKeys", args, ListMediaServiceKeysResultOutput{}, options).(ListMediaServiceKeysResultOutput), nil
 		}).(ListMediaServiceKeysResultOutput)
 }
 

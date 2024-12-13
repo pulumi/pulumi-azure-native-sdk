@@ -48,21 +48,11 @@ type LookupLambdaFunctionCodeLocationResult struct {
 }
 
 func LookupLambdaFunctionCodeLocationOutput(ctx *pulumi.Context, args LookupLambdaFunctionCodeLocationOutputArgs, opts ...pulumi.InvokeOption) LookupLambdaFunctionCodeLocationResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupLambdaFunctionCodeLocationResultOutput, error) {
 			args := v.(LookupLambdaFunctionCodeLocationArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupLambdaFunctionCodeLocationResult
-			secret, err := ctx.InvokePackageRaw("azure-native:awsconnector/v20241201:getLambdaFunctionCodeLocation", args, &rv, "", opts...)
-			if err != nil {
-				return LookupLambdaFunctionCodeLocationResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupLambdaFunctionCodeLocationResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupLambdaFunctionCodeLocationResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:awsconnector/v20241201:getLambdaFunctionCodeLocation", args, LookupLambdaFunctionCodeLocationResultOutput{}, options).(LookupLambdaFunctionCodeLocationResultOutput), nil
 		}).(LookupLambdaFunctionCodeLocationResultOutput)
 }
 

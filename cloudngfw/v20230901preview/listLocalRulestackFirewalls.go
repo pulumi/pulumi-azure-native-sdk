@@ -38,21 +38,11 @@ type ListLocalRulestackFirewallsResult struct {
 }
 
 func ListLocalRulestackFirewallsOutput(ctx *pulumi.Context, args ListLocalRulestackFirewallsOutputArgs, opts ...pulumi.InvokeOption) ListLocalRulestackFirewallsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListLocalRulestackFirewallsResultOutput, error) {
 			args := v.(ListLocalRulestackFirewallsArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListLocalRulestackFirewallsResult
-			secret, err := ctx.InvokePackageRaw("azure-native:cloudngfw/v20230901preview:listLocalRulestackFirewalls", args, &rv, "", opts...)
-			if err != nil {
-				return ListLocalRulestackFirewallsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListLocalRulestackFirewallsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListLocalRulestackFirewallsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:cloudngfw/v20230901preview:listLocalRulestackFirewalls", args, ListLocalRulestackFirewallsResultOutput{}, options).(ListLocalRulestackFirewallsResultOutput), nil
 		}).(ListLocalRulestackFirewallsResultOutput)
 }
 

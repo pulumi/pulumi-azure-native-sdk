@@ -53,21 +53,11 @@ type LookupNetworkFunctionDefinitionGroupResult struct {
 }
 
 func LookupNetworkFunctionDefinitionGroupOutput(ctx *pulumi.Context, args LookupNetworkFunctionDefinitionGroupOutputArgs, opts ...pulumi.InvokeOption) LookupNetworkFunctionDefinitionGroupResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupNetworkFunctionDefinitionGroupResultOutput, error) {
 			args := v.(LookupNetworkFunctionDefinitionGroupArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupNetworkFunctionDefinitionGroupResult
-			secret, err := ctx.InvokePackageRaw("azure-native:hybridnetwork:getNetworkFunctionDefinitionGroup", args, &rv, "", opts...)
-			if err != nil {
-				return LookupNetworkFunctionDefinitionGroupResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupNetworkFunctionDefinitionGroupResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupNetworkFunctionDefinitionGroupResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:hybridnetwork:getNetworkFunctionDefinitionGroup", args, LookupNetworkFunctionDefinitionGroupResultOutput{}, options).(LookupNetworkFunctionDefinitionGroupResultOutput), nil
 		}).(LookupNetworkFunctionDefinitionGroupResultOutput)
 }
 

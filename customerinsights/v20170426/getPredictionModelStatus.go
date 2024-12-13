@@ -58,21 +58,11 @@ type GetPredictionModelStatusResult struct {
 }
 
 func GetPredictionModelStatusOutput(ctx *pulumi.Context, args GetPredictionModelStatusOutputArgs, opts ...pulumi.InvokeOption) GetPredictionModelStatusResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetPredictionModelStatusResultOutput, error) {
 			args := v.(GetPredictionModelStatusArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetPredictionModelStatusResult
-			secret, err := ctx.InvokePackageRaw("azure-native:customerinsights/v20170426:getPredictionModelStatus", args, &rv, "", opts...)
-			if err != nil {
-				return GetPredictionModelStatusResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetPredictionModelStatusResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetPredictionModelStatusResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:customerinsights/v20170426:getPredictionModelStatus", args, GetPredictionModelStatusResultOutput{}, options).(GetPredictionModelStatusResultOutput), nil
 		}).(GetPredictionModelStatusResultOutput)
 }
 

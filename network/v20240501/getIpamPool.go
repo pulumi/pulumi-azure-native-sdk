@@ -50,21 +50,11 @@ type LookupIpamPoolResult struct {
 }
 
 func LookupIpamPoolOutput(ctx *pulumi.Context, args LookupIpamPoolOutputArgs, opts ...pulumi.InvokeOption) LookupIpamPoolResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupIpamPoolResultOutput, error) {
 			args := v.(LookupIpamPoolArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupIpamPoolResult
-			secret, err := ctx.InvokePackageRaw("azure-native:network/v20240501:getIpamPool", args, &rv, "", opts...)
-			if err != nil {
-				return LookupIpamPoolResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupIpamPoolResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupIpamPoolResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:network/v20240501:getIpamPool", args, LookupIpamPoolResultOutput{}, options).(LookupIpamPoolResultOutput), nil
 		}).(LookupIpamPoolResultOutput)
 }
 

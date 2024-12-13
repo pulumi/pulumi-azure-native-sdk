@@ -43,21 +43,11 @@ type GetIntegrationRuntimeStatusResult struct {
 }
 
 func GetIntegrationRuntimeStatusOutput(ctx *pulumi.Context, args GetIntegrationRuntimeStatusOutputArgs, opts ...pulumi.InvokeOption) GetIntegrationRuntimeStatusResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetIntegrationRuntimeStatusResultOutput, error) {
 			args := v.(GetIntegrationRuntimeStatusArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetIntegrationRuntimeStatusResult
-			secret, err := ctx.InvokePackageRaw("azure-native:synapse:getIntegrationRuntimeStatus", args, &rv, "", opts...)
-			if err != nil {
-				return GetIntegrationRuntimeStatusResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetIntegrationRuntimeStatusResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetIntegrationRuntimeStatusResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:synapse:getIntegrationRuntimeStatus", args, GetIntegrationRuntimeStatusResultOutput{}, options).(GetIntegrationRuntimeStatusResultOutput), nil
 		}).(GetIntegrationRuntimeStatusResultOutput)
 }
 

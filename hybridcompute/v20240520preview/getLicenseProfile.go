@@ -80,21 +80,11 @@ type LookupLicenseProfileResult struct {
 }
 
 func LookupLicenseProfileOutput(ctx *pulumi.Context, args LookupLicenseProfileOutputArgs, opts ...pulumi.InvokeOption) LookupLicenseProfileResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupLicenseProfileResultOutput, error) {
 			args := v.(LookupLicenseProfileArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupLicenseProfileResult
-			secret, err := ctx.InvokePackageRaw("azure-native:hybridcompute/v20240520preview:getLicenseProfile", args, &rv, "", opts...)
-			if err != nil {
-				return LookupLicenseProfileResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupLicenseProfileResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupLicenseProfileResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:hybridcompute/v20240520preview:getLicenseProfile", args, LookupLicenseProfileResultOutput{}, options).(LookupLicenseProfileResultOutput), nil
 		}).(LookupLicenseProfileResultOutput)
 }
 

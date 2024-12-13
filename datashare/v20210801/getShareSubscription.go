@@ -74,21 +74,11 @@ type LookupShareSubscriptionResult struct {
 }
 
 func LookupShareSubscriptionOutput(ctx *pulumi.Context, args LookupShareSubscriptionOutputArgs, opts ...pulumi.InvokeOption) LookupShareSubscriptionResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupShareSubscriptionResultOutput, error) {
 			args := v.(LookupShareSubscriptionArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupShareSubscriptionResult
-			secret, err := ctx.InvokePackageRaw("azure-native:datashare/v20210801:getShareSubscription", args, &rv, "", opts...)
-			if err != nil {
-				return LookupShareSubscriptionResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupShareSubscriptionResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupShareSubscriptionResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:datashare/v20210801:getShareSubscription", args, LookupShareSubscriptionResultOutput{}, options).(LookupShareSubscriptionResultOutput), nil
 		}).(LookupShareSubscriptionResultOutput)
 }
 

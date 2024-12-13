@@ -76,23 +76,12 @@ func (val *LookupAttachedDataNetworkResult) Defaults() *LookupAttachedDataNetwor
 
 	return &tmp
 }
-
 func LookupAttachedDataNetworkOutput(ctx *pulumi.Context, args LookupAttachedDataNetworkOutputArgs, opts ...pulumi.InvokeOption) LookupAttachedDataNetworkResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAttachedDataNetworkResultOutput, error) {
 			args := v.(LookupAttachedDataNetworkArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupAttachedDataNetworkResult
-			secret, err := ctx.InvokePackageRaw("azure-native:mobilenetwork/v20230601:getAttachedDataNetwork", args, &rv, "", opts...)
-			if err != nil {
-				return LookupAttachedDataNetworkResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupAttachedDataNetworkResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupAttachedDataNetworkResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:mobilenetwork/v20230601:getAttachedDataNetwork", args, LookupAttachedDataNetworkResultOutput{}, options).(LookupAttachedDataNetworkResultOutput), nil
 		}).(LookupAttachedDataNetworkResultOutput)
 }
 

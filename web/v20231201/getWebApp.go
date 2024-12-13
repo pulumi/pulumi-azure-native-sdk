@@ -189,23 +189,12 @@ func (val *LookupWebAppResult) Defaults() *LookupWebAppResult {
 
 	return &tmp
 }
-
 func LookupWebAppOutput(ctx *pulumi.Context, args LookupWebAppOutputArgs, opts ...pulumi.InvokeOption) LookupWebAppResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupWebAppResultOutput, error) {
 			args := v.(LookupWebAppArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupWebAppResult
-			secret, err := ctx.InvokePackageRaw("azure-native:web/v20231201:getWebApp", args, &rv, "", opts...)
-			if err != nil {
-				return LookupWebAppResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupWebAppResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupWebAppResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:web/v20231201:getWebApp", args, LookupWebAppResultOutput{}, options).(LookupWebAppResultOutput), nil
 		}).(LookupWebAppResultOutput)
 }
 
