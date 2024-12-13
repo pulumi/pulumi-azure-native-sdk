@@ -49,21 +49,11 @@ type LookupIamVirtualMfaDeviceResult struct {
 }
 
 func LookupIamVirtualMfaDeviceOutput(ctx *pulumi.Context, args LookupIamVirtualMfaDeviceOutputArgs, opts ...pulumi.InvokeOption) LookupIamVirtualMfaDeviceResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupIamVirtualMfaDeviceResultOutput, error) {
 			args := v.(LookupIamVirtualMfaDeviceArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupIamVirtualMfaDeviceResult
-			secret, err := ctx.InvokePackageRaw("azure-native:awsconnector:getIamVirtualMfaDevice", args, &rv, "", opts...)
-			if err != nil {
-				return LookupIamVirtualMfaDeviceResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupIamVirtualMfaDeviceResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupIamVirtualMfaDeviceResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:awsconnector:getIamVirtualMfaDevice", args, LookupIamVirtualMfaDeviceResultOutput{}, options).(LookupIamVirtualMfaDeviceResultOutput), nil
 		}).(LookupIamVirtualMfaDeviceResultOutput)
 }
 

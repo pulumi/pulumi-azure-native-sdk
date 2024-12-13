@@ -36,21 +36,11 @@ type ListSiteIdentifiersAssignedToHostNameResult struct {
 }
 
 func ListSiteIdentifiersAssignedToHostNameOutput(ctx *pulumi.Context, args ListSiteIdentifiersAssignedToHostNameOutputArgs, opts ...pulumi.InvokeOption) ListSiteIdentifiersAssignedToHostNameResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListSiteIdentifiersAssignedToHostNameResultOutput, error) {
 			args := v.(ListSiteIdentifiersAssignedToHostNameArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListSiteIdentifiersAssignedToHostNameResult
-			secret, err := ctx.InvokePackageRaw("azure-native:web/v20180201:listSiteIdentifiersAssignedToHostName", args, &rv, "", opts...)
-			if err != nil {
-				return ListSiteIdentifiersAssignedToHostNameResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListSiteIdentifiersAssignedToHostNameResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListSiteIdentifiersAssignedToHostNameResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:web/v20180201:listSiteIdentifiersAssignedToHostName", args, ListSiteIdentifiersAssignedToHostNameResultOutput{}, options).(ListSiteIdentifiersAssignedToHostNameResultOutput), nil
 		}).(ListSiteIdentifiersAssignedToHostNameResultOutput)
 }
 

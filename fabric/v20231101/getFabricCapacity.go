@@ -54,21 +54,11 @@ type LookupFabricCapacityResult struct {
 }
 
 func LookupFabricCapacityOutput(ctx *pulumi.Context, args LookupFabricCapacityOutputArgs, opts ...pulumi.InvokeOption) LookupFabricCapacityResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupFabricCapacityResultOutput, error) {
 			args := v.(LookupFabricCapacityArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupFabricCapacityResult
-			secret, err := ctx.InvokePackageRaw("azure-native:fabric/v20231101:getFabricCapacity", args, &rv, "", opts...)
-			if err != nil {
-				return LookupFabricCapacityResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupFabricCapacityResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupFabricCapacityResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:fabric/v20231101:getFabricCapacity", args, LookupFabricCapacityResultOutput{}, options).(LookupFabricCapacityResultOutput), nil
 		}).(LookupFabricCapacityResultOutput)
 }
 

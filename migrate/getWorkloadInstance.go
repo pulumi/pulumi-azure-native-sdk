@@ -50,21 +50,11 @@ type LookupWorkloadInstanceResult struct {
 }
 
 func LookupWorkloadInstanceOutput(ctx *pulumi.Context, args LookupWorkloadInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupWorkloadInstanceResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupWorkloadInstanceResultOutput, error) {
 			args := v.(LookupWorkloadInstanceArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupWorkloadInstanceResult
-			secret, err := ctx.InvokePackageRaw("azure-native:migrate:getWorkloadInstance", args, &rv, "", opts...)
-			if err != nil {
-				return LookupWorkloadInstanceResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupWorkloadInstanceResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupWorkloadInstanceResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:migrate:getWorkloadInstance", args, LookupWorkloadInstanceResultOutput{}, options).(LookupWorkloadInstanceResultOutput), nil
 		}).(LookupWorkloadInstanceResultOutput)
 }
 

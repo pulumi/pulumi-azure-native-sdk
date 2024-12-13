@@ -50,21 +50,11 @@ type LookupHybridUseBenefitResult struct {
 }
 
 func LookupHybridUseBenefitOutput(ctx *pulumi.Context, args LookupHybridUseBenefitOutputArgs, opts ...pulumi.InvokeOption) LookupHybridUseBenefitResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupHybridUseBenefitResultOutput, error) {
 			args := v.(LookupHybridUseBenefitArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupHybridUseBenefitResult
-			secret, err := ctx.InvokePackageRaw("azure-native:softwareplan/v20191201:getHybridUseBenefit", args, &rv, "", opts...)
-			if err != nil {
-				return LookupHybridUseBenefitResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupHybridUseBenefitResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupHybridUseBenefitResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:softwareplan/v20191201:getHybridUseBenefit", args, LookupHybridUseBenefitResultOutput{}, options).(LookupHybridUseBenefitResultOutput), nil
 		}).(LookupHybridUseBenefitResultOutput)
 }
 

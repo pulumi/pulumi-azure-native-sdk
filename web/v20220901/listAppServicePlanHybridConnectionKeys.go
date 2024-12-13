@@ -50,21 +50,11 @@ type ListAppServicePlanHybridConnectionKeysResult struct {
 }
 
 func ListAppServicePlanHybridConnectionKeysOutput(ctx *pulumi.Context, args ListAppServicePlanHybridConnectionKeysOutputArgs, opts ...pulumi.InvokeOption) ListAppServicePlanHybridConnectionKeysResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListAppServicePlanHybridConnectionKeysResultOutput, error) {
 			args := v.(ListAppServicePlanHybridConnectionKeysArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListAppServicePlanHybridConnectionKeysResult
-			secret, err := ctx.InvokePackageRaw("azure-native:web/v20220901:listAppServicePlanHybridConnectionKeys", args, &rv, "", opts...)
-			if err != nil {
-				return ListAppServicePlanHybridConnectionKeysResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListAppServicePlanHybridConnectionKeysResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListAppServicePlanHybridConnectionKeysResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:web/v20220901:listAppServicePlanHybridConnectionKeys", args, ListAppServicePlanHybridConnectionKeysResultOutput{}, options).(ListAppServicePlanHybridConnectionKeysResultOutput), nil
 		}).(ListAppServicePlanHybridConnectionKeysResultOutput)
 }
 

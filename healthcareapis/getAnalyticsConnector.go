@@ -61,21 +61,11 @@ type LookupAnalyticsConnectorResult struct {
 }
 
 func LookupAnalyticsConnectorOutput(ctx *pulumi.Context, args LookupAnalyticsConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupAnalyticsConnectorResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAnalyticsConnectorResultOutput, error) {
 			args := v.(LookupAnalyticsConnectorArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupAnalyticsConnectorResult
-			secret, err := ctx.InvokePackageRaw("azure-native:healthcareapis:getAnalyticsConnector", args, &rv, "", opts...)
-			if err != nil {
-				return LookupAnalyticsConnectorResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupAnalyticsConnectorResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupAnalyticsConnectorResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:healthcareapis:getAnalyticsConnector", args, LookupAnalyticsConnectorResultOutput{}, options).(LookupAnalyticsConnectorResultOutput), nil
 		}).(LookupAnalyticsConnectorResultOutput)
 }
 

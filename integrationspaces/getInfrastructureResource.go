@@ -51,21 +51,11 @@ type LookupInfrastructureResourceResult struct {
 }
 
 func LookupInfrastructureResourceOutput(ctx *pulumi.Context, args LookupInfrastructureResourceOutputArgs, opts ...pulumi.InvokeOption) LookupInfrastructureResourceResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupInfrastructureResourceResultOutput, error) {
 			args := v.(LookupInfrastructureResourceArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupInfrastructureResourceResult
-			secret, err := ctx.InvokePackageRaw("azure-native:integrationspaces:getInfrastructureResource", args, &rv, "", opts...)
-			if err != nil {
-				return LookupInfrastructureResourceResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupInfrastructureResourceResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupInfrastructureResourceResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:integrationspaces:getInfrastructureResource", args, LookupInfrastructureResourceResultOutput{}, options).(LookupInfrastructureResourceResultOutput), nil
 		}).(LookupInfrastructureResourceResultOutput)
 }
 

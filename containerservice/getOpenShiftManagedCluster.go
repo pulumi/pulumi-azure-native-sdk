@@ -80,23 +80,12 @@ func (val *LookupOpenShiftManagedClusterResult) Defaults() *LookupOpenShiftManag
 
 	return &tmp
 }
-
 func LookupOpenShiftManagedClusterOutput(ctx *pulumi.Context, args LookupOpenShiftManagedClusterOutputArgs, opts ...pulumi.InvokeOption) LookupOpenShiftManagedClusterResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupOpenShiftManagedClusterResultOutput, error) {
 			args := v.(LookupOpenShiftManagedClusterArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupOpenShiftManagedClusterResult
-			secret, err := ctx.InvokePackageRaw("azure-native:containerservice:getOpenShiftManagedCluster", args, &rv, "", opts...)
-			if err != nil {
-				return LookupOpenShiftManagedClusterResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupOpenShiftManagedClusterResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupOpenShiftManagedClusterResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:containerservice:getOpenShiftManagedCluster", args, LookupOpenShiftManagedClusterResultOutput{}, options).(LookupOpenShiftManagedClusterResultOutput), nil
 		}).(LookupOpenShiftManagedClusterResultOutput)
 }
 

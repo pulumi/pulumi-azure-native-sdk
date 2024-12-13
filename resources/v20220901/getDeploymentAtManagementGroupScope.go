@@ -46,21 +46,11 @@ type LookupDeploymentAtManagementGroupScopeResult struct {
 }
 
 func LookupDeploymentAtManagementGroupScopeOutput(ctx *pulumi.Context, args LookupDeploymentAtManagementGroupScopeOutputArgs, opts ...pulumi.InvokeOption) LookupDeploymentAtManagementGroupScopeResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupDeploymentAtManagementGroupScopeResultOutput, error) {
 			args := v.(LookupDeploymentAtManagementGroupScopeArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupDeploymentAtManagementGroupScopeResult
-			secret, err := ctx.InvokePackageRaw("azure-native:resources/v20220901:getDeploymentAtManagementGroupScope", args, &rv, "", opts...)
-			if err != nil {
-				return LookupDeploymentAtManagementGroupScopeResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupDeploymentAtManagementGroupScopeResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupDeploymentAtManagementGroupScopeResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:resources/v20220901:getDeploymentAtManagementGroupScope", args, LookupDeploymentAtManagementGroupScopeResultOutput{}, options).(LookupDeploymentAtManagementGroupScopeResultOutput), nil
 		}).(LookupDeploymentAtManagementGroupScopeResultOutput)
 }
 

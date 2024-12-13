@@ -48,21 +48,11 @@ type LookupGuestUsageResult struct {
 }
 
 func LookupGuestUsageOutput(ctx *pulumi.Context, args LookupGuestUsageOutputArgs, opts ...pulumi.InvokeOption) LookupGuestUsageResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupGuestUsageResultOutput, error) {
 			args := v.(LookupGuestUsageArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupGuestUsageResult
-			secret, err := ctx.InvokePackageRaw("azure-native:azureactivedirectory/v20230517preview:getGuestUsage", args, &rv, "", opts...)
-			if err != nil {
-				return LookupGuestUsageResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupGuestUsageResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupGuestUsageResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:azureactivedirectory/v20230517preview:getGuestUsage", args, LookupGuestUsageResultOutput{}, options).(LookupGuestUsageResultOutput), nil
 		}).(LookupGuestUsageResultOutput)
 }
 

@@ -51,21 +51,11 @@ type LookupUebaResult struct {
 }
 
 func LookupUebaOutput(ctx *pulumi.Context, args LookupUebaOutputArgs, opts ...pulumi.InvokeOption) LookupUebaResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupUebaResultOutput, error) {
 			args := v.(LookupUebaArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupUebaResult
-			secret, err := ctx.InvokePackageRaw("azure-native:securityinsights/v20230901preview:getUeba", args, &rv, "", opts...)
-			if err != nil {
-				return LookupUebaResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupUebaResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupUebaResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:securityinsights/v20230901preview:getUeba", args, LookupUebaResultOutput{}, options).(LookupUebaResultOutput), nil
 		}).(LookupUebaResultOutput)
 }
 

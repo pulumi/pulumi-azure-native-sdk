@@ -58,21 +58,11 @@ type LookupNetworkinterfaceRetrieveResult struct {
 }
 
 func LookupNetworkinterfaceRetrieveOutput(ctx *pulumi.Context, args LookupNetworkinterfaceRetrieveOutputArgs, opts ...pulumi.InvokeOption) LookupNetworkinterfaceRetrieveResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupNetworkinterfaceRetrieveResultOutput, error) {
 			args := v.(LookupNetworkinterfaceRetrieveArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupNetworkinterfaceRetrieveResult
-			secret, err := ctx.InvokePackageRaw("azure-native:azurestackhci/v20210901preview:getNetworkinterfaceRetrieve", args, &rv, "", opts...)
-			if err != nil {
-				return LookupNetworkinterfaceRetrieveResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupNetworkinterfaceRetrieveResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupNetworkinterfaceRetrieveResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:azurestackhci/v20210901preview:getNetworkinterfaceRetrieve", args, LookupNetworkinterfaceRetrieveResultOutput{}, options).(LookupNetworkinterfaceRetrieveResultOutput), nil
 		}).(LookupNetworkinterfaceRetrieveResultOutput)
 }
 

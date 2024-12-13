@@ -75,21 +75,11 @@ type LookupStorageApplianceResult struct {
 }
 
 func LookupStorageApplianceOutput(ctx *pulumi.Context, args LookupStorageApplianceOutputArgs, opts ...pulumi.InvokeOption) LookupStorageApplianceResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupStorageApplianceResultOutput, error) {
 			args := v.(LookupStorageApplianceArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupStorageApplianceResult
-			secret, err := ctx.InvokePackageRaw("azure-native:networkcloud/v20230701:getStorageAppliance", args, &rv, "", opts...)
-			if err != nil {
-				return LookupStorageApplianceResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupStorageApplianceResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupStorageApplianceResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:networkcloud/v20230701:getStorageAppliance", args, LookupStorageApplianceResultOutput{}, options).(LookupStorageApplianceResultOutput), nil
 		}).(LookupStorageApplianceResultOutput)
 }
 

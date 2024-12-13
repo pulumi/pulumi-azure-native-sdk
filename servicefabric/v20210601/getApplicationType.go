@@ -52,21 +52,11 @@ type LookupApplicationTypeResult struct {
 }
 
 func LookupApplicationTypeOutput(ctx *pulumi.Context, args LookupApplicationTypeOutputArgs, opts ...pulumi.InvokeOption) LookupApplicationTypeResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupApplicationTypeResultOutput, error) {
 			args := v.(LookupApplicationTypeArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupApplicationTypeResult
-			secret, err := ctx.InvokePackageRaw("azure-native:servicefabric/v20210601:getApplicationType", args, &rv, "", opts...)
-			if err != nil {
-				return LookupApplicationTypeResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupApplicationTypeResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupApplicationTypeResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:servicefabric/v20210601:getApplicationType", args, LookupApplicationTypeResultOutput{}, options).(LookupApplicationTypeResultOutput), nil
 		}).(LookupApplicationTypeResultOutput)
 }
 

@@ -65,21 +65,11 @@ type LookupWebAppHybridConnectionSlotResult struct {
 }
 
 func LookupWebAppHybridConnectionSlotOutput(ctx *pulumi.Context, args LookupWebAppHybridConnectionSlotOutputArgs, opts ...pulumi.InvokeOption) LookupWebAppHybridConnectionSlotResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupWebAppHybridConnectionSlotResultOutput, error) {
 			args := v.(LookupWebAppHybridConnectionSlotArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupWebAppHybridConnectionSlotResult
-			secret, err := ctx.InvokePackageRaw("azure-native:web/v20240401:getWebAppHybridConnectionSlot", args, &rv, "", opts...)
-			if err != nil {
-				return LookupWebAppHybridConnectionSlotResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupWebAppHybridConnectionSlotResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupWebAppHybridConnectionSlotResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:web/v20240401:getWebAppHybridConnectionSlot", args, LookupWebAppHybridConnectionSlotResultOutput{}, options).(LookupWebAppHybridConnectionSlotResultOutput), nil
 		}).(LookupWebAppHybridConnectionSlotResultOutput)
 }
 

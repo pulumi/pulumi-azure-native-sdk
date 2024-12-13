@@ -58,21 +58,11 @@ type LookupRoleAssignmentArtifactResult struct {
 }
 
 func LookupRoleAssignmentArtifactOutput(ctx *pulumi.Context, args LookupRoleAssignmentArtifactOutputArgs, opts ...pulumi.InvokeOption) LookupRoleAssignmentArtifactResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupRoleAssignmentArtifactResultOutput, error) {
 			args := v.(LookupRoleAssignmentArtifactArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupRoleAssignmentArtifactResult
-			secret, err := ctx.InvokePackageRaw("azure-native:blueprint:getRoleAssignmentArtifact", args, &rv, "", opts...)
-			if err != nil {
-				return LookupRoleAssignmentArtifactResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupRoleAssignmentArtifactResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupRoleAssignmentArtifactResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:blueprint:getRoleAssignmentArtifact", args, LookupRoleAssignmentArtifactResultOutput{}, options).(LookupRoleAssignmentArtifactResultOutput), nil
 		}).(LookupRoleAssignmentArtifactResultOutput)
 }
 

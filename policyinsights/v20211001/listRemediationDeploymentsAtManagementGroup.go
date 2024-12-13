@@ -42,21 +42,11 @@ type ListRemediationDeploymentsAtManagementGroupResult struct {
 }
 
 func ListRemediationDeploymentsAtManagementGroupOutput(ctx *pulumi.Context, args ListRemediationDeploymentsAtManagementGroupOutputArgs, opts ...pulumi.InvokeOption) ListRemediationDeploymentsAtManagementGroupResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListRemediationDeploymentsAtManagementGroupResultOutput, error) {
 			args := v.(ListRemediationDeploymentsAtManagementGroupArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListRemediationDeploymentsAtManagementGroupResult
-			secret, err := ctx.InvokePackageRaw("azure-native:policyinsights/v20211001:listRemediationDeploymentsAtManagementGroup", args, &rv, "", opts...)
-			if err != nil {
-				return ListRemediationDeploymentsAtManagementGroupResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListRemediationDeploymentsAtManagementGroupResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListRemediationDeploymentsAtManagementGroupResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:policyinsights/v20211001:listRemediationDeploymentsAtManagementGroup", args, ListRemediationDeploymentsAtManagementGroupResultOutput{}, options).(ListRemediationDeploymentsAtManagementGroupResultOutput), nil
 		}).(ListRemediationDeploymentsAtManagementGroupResultOutput)
 }
 

@@ -47,21 +47,11 @@ type ListShareSubscriptionSynchronizationsResult struct {
 }
 
 func ListShareSubscriptionSynchronizationsOutput(ctx *pulumi.Context, args ListShareSubscriptionSynchronizationsOutputArgs, opts ...pulumi.InvokeOption) ListShareSubscriptionSynchronizationsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListShareSubscriptionSynchronizationsResultOutput, error) {
 			args := v.(ListShareSubscriptionSynchronizationsArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListShareSubscriptionSynchronizationsResult
-			secret, err := ctx.InvokePackageRaw("azure-native:datashare:listShareSubscriptionSynchronizations", args, &rv, "", opts...)
-			if err != nil {
-				return ListShareSubscriptionSynchronizationsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListShareSubscriptionSynchronizationsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListShareSubscriptionSynchronizationsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:datashare:listShareSubscriptionSynchronizations", args, ListShareSubscriptionSynchronizationsResultOutput{}, options).(ListShareSubscriptionSynchronizationsResultOutput), nil
 		}).(ListShareSubscriptionSynchronizationsResultOutput)
 }
 

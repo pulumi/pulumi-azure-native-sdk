@@ -50,21 +50,11 @@ type LookupUserResult struct {
 }
 
 func LookupUserOutput(ctx *pulumi.Context, args LookupUserOutputArgs, opts ...pulumi.InvokeOption) LookupUserResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupUserResultOutput, error) {
 			args := v.(LookupUserArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupUserResult
-			secret, err := ctx.InvokePackageRaw("azure-native:databoxedge/v20231201:getUser", args, &rv, "", opts...)
-			if err != nil {
-				return LookupUserResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupUserResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupUserResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:databoxedge/v20231201:getUser", args, LookupUserResultOutput{}, options).(LookupUserResultOutput), nil
 		}).(LookupUserResultOutput)
 }
 

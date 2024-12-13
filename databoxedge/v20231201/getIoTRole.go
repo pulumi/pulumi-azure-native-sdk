@@ -63,21 +63,11 @@ type LookupIoTRoleResult struct {
 }
 
 func LookupIoTRoleOutput(ctx *pulumi.Context, args LookupIoTRoleOutputArgs, opts ...pulumi.InvokeOption) LookupIoTRoleResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupIoTRoleResultOutput, error) {
 			args := v.(LookupIoTRoleArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupIoTRoleResult
-			secret, err := ctx.InvokePackageRaw("azure-native:databoxedge/v20231201:getIoTRole", args, &rv, "", opts...)
-			if err != nil {
-				return LookupIoTRoleResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupIoTRoleResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupIoTRoleResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:databoxedge/v20231201:getIoTRole", args, LookupIoTRoleResultOutput{}, options).(LookupIoTRoleResultOutput), nil
 		}).(LookupIoTRoleResultOutput)
 }
 

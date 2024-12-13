@@ -48,21 +48,11 @@ type ListManagedClusterAccessProfileResult struct {
 }
 
 func ListManagedClusterAccessProfileOutput(ctx *pulumi.Context, args ListManagedClusterAccessProfileOutputArgs, opts ...pulumi.InvokeOption) ListManagedClusterAccessProfileResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListManagedClusterAccessProfileResultOutput, error) {
 			args := v.(ListManagedClusterAccessProfileArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListManagedClusterAccessProfileResult
-			secret, err := ctx.InvokePackageRaw("azure-native:containerservice/v20190601:listManagedClusterAccessProfile", args, &rv, "", opts...)
-			if err != nil {
-				return ListManagedClusterAccessProfileResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListManagedClusterAccessProfileResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListManagedClusterAccessProfileResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:containerservice/v20190601:listManagedClusterAccessProfile", args, ListManagedClusterAccessProfileResultOutput{}, options).(ListManagedClusterAccessProfileResultOutput), nil
 		}).(ListManagedClusterAccessProfileResultOutput)
 }
 

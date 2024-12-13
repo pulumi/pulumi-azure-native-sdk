@@ -50,21 +50,11 @@ type LookupConfigurationProfilesVersionResult struct {
 }
 
 func LookupConfigurationProfilesVersionOutput(ctx *pulumi.Context, args LookupConfigurationProfilesVersionOutputArgs, opts ...pulumi.InvokeOption) LookupConfigurationProfilesVersionResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupConfigurationProfilesVersionResultOutput, error) {
 			args := v.(LookupConfigurationProfilesVersionArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupConfigurationProfilesVersionResult
-			secret, err := ctx.InvokePackageRaw("azure-native:automanage/v20220504:getConfigurationProfilesVersion", args, &rv, "", opts...)
-			if err != nil {
-				return LookupConfigurationProfilesVersionResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupConfigurationProfilesVersionResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupConfigurationProfilesVersionResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:automanage/v20220504:getConfigurationProfilesVersion", args, LookupConfigurationProfilesVersionResultOutput{}, options).(LookupConfigurationProfilesVersionResultOutput), nil
 		}).(LookupConfigurationProfilesVersionResultOutput)
 }
 

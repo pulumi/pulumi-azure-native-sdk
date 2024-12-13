@@ -53,21 +53,11 @@ type ListEndpointCredentialsResult struct {
 }
 
 func ListEndpointCredentialsOutput(ctx *pulumi.Context, args ListEndpointCredentialsOutputArgs, opts ...pulumi.InvokeOption) ListEndpointCredentialsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListEndpointCredentialsResultOutput, error) {
 			args := v.(ListEndpointCredentialsArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListEndpointCredentialsResult
-			secret, err := ctx.InvokePackageRaw("azure-native:hybridconnectivity:listEndpointCredentials", args, &rv, "", opts...)
-			if err != nil {
-				return ListEndpointCredentialsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListEndpointCredentialsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListEndpointCredentialsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:hybridconnectivity:listEndpointCredentials", args, ListEndpointCredentialsResultOutput{}, options).(ListEndpointCredentialsResultOutput), nil
 		}).(ListEndpointCredentialsResultOutput)
 }
 

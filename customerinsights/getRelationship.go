@@ -67,21 +67,11 @@ type LookupRelationshipResult struct {
 }
 
 func LookupRelationshipOutput(ctx *pulumi.Context, args LookupRelationshipOutputArgs, opts ...pulumi.InvokeOption) LookupRelationshipResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupRelationshipResultOutput, error) {
 			args := v.(LookupRelationshipArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupRelationshipResult
-			secret, err := ctx.InvokePackageRaw("azure-native:customerinsights:getRelationship", args, &rv, "", opts...)
-			if err != nil {
-				return LookupRelationshipResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupRelationshipResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupRelationshipResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:customerinsights:getRelationship", args, LookupRelationshipResultOutput{}, options).(LookupRelationshipResultOutput), nil
 		}).(LookupRelationshipResultOutput)
 }
 

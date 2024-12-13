@@ -48,21 +48,11 @@ type LookupSchedulerResult struct {
 }
 
 func LookupSchedulerOutput(ctx *pulumi.Context, args LookupSchedulerOutputArgs, opts ...pulumi.InvokeOption) LookupSchedulerResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupSchedulerResultOutput, error) {
 			args := v.(LookupSchedulerArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupSchedulerResult
-			secret, err := ctx.InvokePackageRaw("azure-native:durabletask/v20241001preview:getScheduler", args, &rv, "", opts...)
-			if err != nil {
-				return LookupSchedulerResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupSchedulerResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupSchedulerResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:durabletask/v20241001preview:getScheduler", args, LookupSchedulerResultOutput{}, options).(LookupSchedulerResultOutput), nil
 		}).(LookupSchedulerResultOutput)
 }
 

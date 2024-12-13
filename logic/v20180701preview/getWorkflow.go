@@ -64,21 +64,11 @@ type LookupWorkflowResult struct {
 }
 
 func LookupWorkflowOutput(ctx *pulumi.Context, args LookupWorkflowOutputArgs, opts ...pulumi.InvokeOption) LookupWorkflowResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupWorkflowResultOutput, error) {
 			args := v.(LookupWorkflowArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupWorkflowResult
-			secret, err := ctx.InvokePackageRaw("azure-native:logic/v20180701preview:getWorkflow", args, &rv, "", opts...)
-			if err != nil {
-				return LookupWorkflowResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupWorkflowResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupWorkflowResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:logic/v20180701preview:getWorkflow", args, LookupWorkflowResultOutput{}, options).(LookupWorkflowResultOutput), nil
 		}).(LookupWorkflowResultOutput)
 }
 

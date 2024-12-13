@@ -74,23 +74,12 @@ func (val *LookupJobStepResult) Defaults() *LookupJobStepResult {
 
 	return &tmp
 }
-
 func LookupJobStepOutput(ctx *pulumi.Context, args LookupJobStepOutputArgs, opts ...pulumi.InvokeOption) LookupJobStepResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupJobStepResultOutput, error) {
 			args := v.(LookupJobStepArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupJobStepResult
-			secret, err := ctx.InvokePackageRaw("azure-native:sql:getJobStep", args, &rv, "", opts...)
-			if err != nil {
-				return LookupJobStepResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupJobStepResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupJobStepResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:sql:getJobStep", args, LookupJobStepResultOutput{}, options).(LookupJobStepResultOutput), nil
 		}).(LookupJobStepResultOutput)
 }
 

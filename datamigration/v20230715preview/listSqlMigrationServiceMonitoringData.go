@@ -38,21 +38,11 @@ type ListSqlMigrationServiceMonitoringDataResult struct {
 }
 
 func ListSqlMigrationServiceMonitoringDataOutput(ctx *pulumi.Context, args ListSqlMigrationServiceMonitoringDataOutputArgs, opts ...pulumi.InvokeOption) ListSqlMigrationServiceMonitoringDataResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListSqlMigrationServiceMonitoringDataResultOutput, error) {
 			args := v.(ListSqlMigrationServiceMonitoringDataArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListSqlMigrationServiceMonitoringDataResult
-			secret, err := ctx.InvokePackageRaw("azure-native:datamigration/v20230715preview:listSqlMigrationServiceMonitoringData", args, &rv, "", opts...)
-			if err != nil {
-				return ListSqlMigrationServiceMonitoringDataResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListSqlMigrationServiceMonitoringDataResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListSqlMigrationServiceMonitoringDataResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:datamigration/v20230715preview:listSqlMigrationServiceMonitoringData", args, ListSqlMigrationServiceMonitoringDataResultOutput{}, options).(ListSqlMigrationServiceMonitoringDataResultOutput), nil
 		}).(ListSqlMigrationServiceMonitoringDataResultOutput)
 }
 

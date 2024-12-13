@@ -52,21 +52,11 @@ type LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildResult struct {
 }
 
 func LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildOutput(ctx *pulumi.Context, args LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildOutputArgs, opts ...pulumi.InvokeOption) LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildResultOutput, error) {
 			args := v.(LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildResult
-			secret, err := ctx.InvokePackageRaw("azure-native:web/v20240401:getStaticSiteUserProvidedFunctionAppForStaticSiteBuild", args, &rv, "", opts...)
-			if err != nil {
-				return LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:web/v20240401:getStaticSiteUserProvidedFunctionAppForStaticSiteBuild", args, LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildResultOutput{}, options).(LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildResultOutput), nil
 		}).(LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildResultOutput)
 }
 

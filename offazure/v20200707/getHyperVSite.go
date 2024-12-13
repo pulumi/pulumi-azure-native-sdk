@@ -49,21 +49,11 @@ type LookupHyperVSiteResult struct {
 }
 
 func LookupHyperVSiteOutput(ctx *pulumi.Context, args LookupHyperVSiteOutputArgs, opts ...pulumi.InvokeOption) LookupHyperVSiteResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupHyperVSiteResultOutput, error) {
 			args := v.(LookupHyperVSiteArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupHyperVSiteResult
-			secret, err := ctx.InvokePackageRaw("azure-native:offazure/v20200707:getHyperVSite", args, &rv, "", opts...)
-			if err != nil {
-				return LookupHyperVSiteResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupHyperVSiteResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupHyperVSiteResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:offazure/v20200707:getHyperVSite", args, LookupHyperVSiteResultOutput{}, options).(LookupHyperVSiteResultOutput), nil
 		}).(LookupHyperVSiteResultOutput)
 }
 

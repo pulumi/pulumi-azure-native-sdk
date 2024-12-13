@@ -42,21 +42,11 @@ type GetGetCachedServerNameExecuteResult struct {
 }
 
 func GetGetCachedServerNameExecuteOutput(ctx *pulumi.Context, args GetGetCachedServerNameExecuteOutputArgs, opts ...pulumi.InvokeOption) GetGetCachedServerNameExecuteResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetGetCachedServerNameExecuteResultOutput, error) {
 			args := v.(GetGetCachedServerNameExecuteArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetGetCachedServerNameExecuteResult
-			secret, err := ctx.InvokePackageRaw("azure-native:dbforpostgresql/v20220308privatepreview:getGetCachedServerNameExecute", args, &rv, "", opts...)
-			if err != nil {
-				return GetGetCachedServerNameExecuteResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetGetCachedServerNameExecuteResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetGetCachedServerNameExecuteResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:dbforpostgresql/v20220308privatepreview:getGetCachedServerNameExecute", args, GetGetCachedServerNameExecuteResultOutput{}, options).(GetGetCachedServerNameExecuteResultOutput), nil
 		}).(GetGetCachedServerNameExecuteResultOutput)
 }
 

@@ -50,21 +50,11 @@ type LookupStorageSpaceRetrieveResult struct {
 }
 
 func LookupStorageSpaceRetrieveOutput(ctx *pulumi.Context, args LookupStorageSpaceRetrieveOutputArgs, opts ...pulumi.InvokeOption) LookupStorageSpaceRetrieveResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupStorageSpaceRetrieveResultOutput, error) {
 			args := v.(LookupStorageSpaceRetrieveArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupStorageSpaceRetrieveResult
-			secret, err := ctx.InvokePackageRaw("azure-native:hybridcontainerservice:getStorageSpaceRetrieve", args, &rv, "", opts...)
-			if err != nil {
-				return LookupStorageSpaceRetrieveResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupStorageSpaceRetrieveResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupStorageSpaceRetrieveResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:hybridcontainerservice:getStorageSpaceRetrieve", args, LookupStorageSpaceRetrieveResultOutput{}, options).(LookupStorageSpaceRetrieveResultOutput), nil
 		}).(LookupStorageSpaceRetrieveResultOutput)
 }
 

@@ -58,23 +58,12 @@ func (val *LookupOrganizationsOrganizationResult) Defaults() *LookupOrganization
 
 	return &tmp
 }
-
 func LookupOrganizationsOrganizationOutput(ctx *pulumi.Context, args LookupOrganizationsOrganizationOutputArgs, opts ...pulumi.InvokeOption) LookupOrganizationsOrganizationResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupOrganizationsOrganizationResultOutput, error) {
 			args := v.(LookupOrganizationsOrganizationArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupOrganizationsOrganizationResult
-			secret, err := ctx.InvokePackageRaw("azure-native:awsconnector:getOrganizationsOrganization", args, &rv, "", opts...)
-			if err != nil {
-				return LookupOrganizationsOrganizationResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupOrganizationsOrganizationResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupOrganizationsOrganizationResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:awsconnector:getOrganizationsOrganization", args, LookupOrganizationsOrganizationResultOutput{}, options).(LookupOrganizationsOrganizationResultOutput), nil
 		}).(LookupOrganizationsOrganizationResultOutput)
 }
 

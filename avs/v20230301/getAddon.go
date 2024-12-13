@@ -44,21 +44,11 @@ type LookupAddonResult struct {
 }
 
 func LookupAddonOutput(ctx *pulumi.Context, args LookupAddonOutputArgs, opts ...pulumi.InvokeOption) LookupAddonResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAddonResultOutput, error) {
 			args := v.(LookupAddonArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupAddonResult
-			secret, err := ctx.InvokePackageRaw("azure-native:avs/v20230301:getAddon", args, &rv, "", opts...)
-			if err != nil {
-				return LookupAddonResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupAddonResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupAddonResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:avs/v20230301:getAddon", args, LookupAddonResultOutput{}, options).(LookupAddonResultOutput), nil
 		}).(LookupAddonResultOutput)
 }
 

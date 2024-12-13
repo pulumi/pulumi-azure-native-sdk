@@ -58,21 +58,11 @@ type LookupMqttBridgeTopicMapResult struct {
 }
 
 func LookupMqttBridgeTopicMapOutput(ctx *pulumi.Context, args LookupMqttBridgeTopicMapOutputArgs, opts ...pulumi.InvokeOption) LookupMqttBridgeTopicMapResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupMqttBridgeTopicMapResultOutput, error) {
 			args := v.(LookupMqttBridgeTopicMapArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupMqttBridgeTopicMapResult
-			secret, err := ctx.InvokePackageRaw("azure-native:iotoperationsmq/v20231004preview:getMqttBridgeTopicMap", args, &rv, "", opts...)
-			if err != nil {
-				return LookupMqttBridgeTopicMapResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupMqttBridgeTopicMapResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupMqttBridgeTopicMapResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:iotoperationsmq/v20231004preview:getMqttBridgeTopicMap", args, LookupMqttBridgeTopicMapResultOutput{}, options).(LookupMqttBridgeTopicMapResultOutput), nil
 		}).(LookupMqttBridgeTopicMapResultOutput)
 }
 

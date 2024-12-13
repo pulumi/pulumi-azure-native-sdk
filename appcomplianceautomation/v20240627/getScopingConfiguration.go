@@ -46,21 +46,11 @@ type LookupScopingConfigurationResult struct {
 }
 
 func LookupScopingConfigurationOutput(ctx *pulumi.Context, args LookupScopingConfigurationOutputArgs, opts ...pulumi.InvokeOption) LookupScopingConfigurationResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupScopingConfigurationResultOutput, error) {
 			args := v.(LookupScopingConfigurationArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupScopingConfigurationResult
-			secret, err := ctx.InvokePackageRaw("azure-native:appcomplianceautomation/v20240627:getScopingConfiguration", args, &rv, "", opts...)
-			if err != nil {
-				return LookupScopingConfigurationResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupScopingConfigurationResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupScopingConfigurationResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:appcomplianceautomation/v20240627:getScopingConfiguration", args, LookupScopingConfigurationResultOutput{}, options).(LookupScopingConfigurationResultOutput), nil
 		}).(LookupScopingConfigurationResultOutput)
 }
 

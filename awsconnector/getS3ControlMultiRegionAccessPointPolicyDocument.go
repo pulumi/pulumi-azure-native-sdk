@@ -49,21 +49,11 @@ type LookupS3ControlMultiRegionAccessPointPolicyDocumentResult struct {
 }
 
 func LookupS3ControlMultiRegionAccessPointPolicyDocumentOutput(ctx *pulumi.Context, args LookupS3ControlMultiRegionAccessPointPolicyDocumentOutputArgs, opts ...pulumi.InvokeOption) LookupS3ControlMultiRegionAccessPointPolicyDocumentResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupS3ControlMultiRegionAccessPointPolicyDocumentResultOutput, error) {
 			args := v.(LookupS3ControlMultiRegionAccessPointPolicyDocumentArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupS3ControlMultiRegionAccessPointPolicyDocumentResult
-			secret, err := ctx.InvokePackageRaw("azure-native:awsconnector:getS3ControlMultiRegionAccessPointPolicyDocument", args, &rv, "", opts...)
-			if err != nil {
-				return LookupS3ControlMultiRegionAccessPointPolicyDocumentResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupS3ControlMultiRegionAccessPointPolicyDocumentResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupS3ControlMultiRegionAccessPointPolicyDocumentResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:awsconnector:getS3ControlMultiRegionAccessPointPolicyDocument", args, LookupS3ControlMultiRegionAccessPointPolicyDocumentResultOutput{}, options).(LookupS3ControlMultiRegionAccessPointPolicyDocumentResultOutput), nil
 		}).(LookupS3ControlMultiRegionAccessPointPolicyDocumentResultOutput)
 }
 

@@ -43,21 +43,11 @@ type LookupCopilotSettingResult struct {
 }
 
 func LookupCopilotSettingOutput(ctx *pulumi.Context, args LookupCopilotSettingOutputArgs, opts ...pulumi.InvokeOption) LookupCopilotSettingResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupCopilotSettingResultOutput, error) {
 			args := v.(LookupCopilotSettingArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupCopilotSettingResult
-			secret, err := ctx.InvokePackageRaw("azure-native:portalservices:getCopilotSetting", args, &rv, "", opts...)
-			if err != nil {
-				return LookupCopilotSettingResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupCopilotSettingResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupCopilotSettingResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:portalservices:getCopilotSetting", args, LookupCopilotSettingResultOutput{}, options).(LookupCopilotSettingResultOutput), nil
 		}).(LookupCopilotSettingResultOutput)
 }
 

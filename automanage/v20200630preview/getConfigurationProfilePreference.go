@@ -46,21 +46,11 @@ type LookupConfigurationProfilePreferenceResult struct {
 }
 
 func LookupConfigurationProfilePreferenceOutput(ctx *pulumi.Context, args LookupConfigurationProfilePreferenceOutputArgs, opts ...pulumi.InvokeOption) LookupConfigurationProfilePreferenceResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupConfigurationProfilePreferenceResultOutput, error) {
 			args := v.(LookupConfigurationProfilePreferenceArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupConfigurationProfilePreferenceResult
-			secret, err := ctx.InvokePackageRaw("azure-native:automanage/v20200630preview:getConfigurationProfilePreference", args, &rv, "", opts...)
-			if err != nil {
-				return LookupConfigurationProfilePreferenceResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupConfigurationProfilePreferenceResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupConfigurationProfilePreferenceResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:automanage/v20200630preview:getConfigurationProfilePreference", args, LookupConfigurationProfilePreferenceResultOutput{}, options).(LookupConfigurationProfilePreferenceResultOutput), nil
 		}).(LookupConfigurationProfilePreferenceResultOutput)
 }
 

@@ -36,21 +36,11 @@ type ListClusterLanguageExtensionsResult struct {
 }
 
 func ListClusterLanguageExtensionsOutput(ctx *pulumi.Context, args ListClusterLanguageExtensionsOutputArgs, opts ...pulumi.InvokeOption) ListClusterLanguageExtensionsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListClusterLanguageExtensionsResultOutput, error) {
 			args := v.(ListClusterLanguageExtensionsArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListClusterLanguageExtensionsResult
-			secret, err := ctx.InvokePackageRaw("azure-native:kusto/v20220707:listClusterLanguageExtensions", args, &rv, "", opts...)
-			if err != nil {
-				return ListClusterLanguageExtensionsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListClusterLanguageExtensionsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListClusterLanguageExtensionsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:kusto/v20220707:listClusterLanguageExtensions", args, ListClusterLanguageExtensionsResultOutput{}, options).(ListClusterLanguageExtensionsResultOutput), nil
 		}).(ListClusterLanguageExtensionsResultOutput)
 }
 

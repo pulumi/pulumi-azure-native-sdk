@@ -52,21 +52,11 @@ type LookupHybridIdentityMetadatumResult struct {
 }
 
 func LookupHybridIdentityMetadatumOutput(ctx *pulumi.Context, args LookupHybridIdentityMetadatumOutputArgs, opts ...pulumi.InvokeOption) LookupHybridIdentityMetadatumResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupHybridIdentityMetadatumResultOutput, error) {
 			args := v.(LookupHybridIdentityMetadatumArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupHybridIdentityMetadatumResult
-			secret, err := ctx.InvokePackageRaw("azure-native:hybridcontainerservice/v20220901preview:getHybridIdentityMetadatum", args, &rv, "", opts...)
-			if err != nil {
-				return LookupHybridIdentityMetadatumResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupHybridIdentityMetadatumResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupHybridIdentityMetadatumResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:hybridcontainerservice/v20220901preview:getHybridIdentityMetadatum", args, LookupHybridIdentityMetadatumResultOutput{}, options).(LookupHybridIdentityMetadatumResultOutput), nil
 		}).(LookupHybridIdentityMetadatumResultOutput)
 }
 

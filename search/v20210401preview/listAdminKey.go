@@ -38,21 +38,11 @@ type ListAdminKeyResult struct {
 }
 
 func ListAdminKeyOutput(ctx *pulumi.Context, args ListAdminKeyOutputArgs, opts ...pulumi.InvokeOption) ListAdminKeyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListAdminKeyResultOutput, error) {
 			args := v.(ListAdminKeyArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListAdminKeyResult
-			secret, err := ctx.InvokePackageRaw("azure-native:search/v20210401preview:listAdminKey", args, &rv, "", opts...)
-			if err != nil {
-				return ListAdminKeyResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListAdminKeyResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListAdminKeyResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:search/v20210401preview:listAdminKey", args, ListAdminKeyResultOutput{}, options).(ListAdminKeyResultOutput), nil
 		}).(ListAdminKeyResultOutput)
 }
 

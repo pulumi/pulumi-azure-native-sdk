@@ -64,21 +64,11 @@ type LookupShareResult struct {
 }
 
 func LookupShareOutput(ctx *pulumi.Context, args LookupShareOutputArgs, opts ...pulumi.InvokeOption) LookupShareResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupShareResultOutput, error) {
 			args := v.(LookupShareArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupShareResult
-			secret, err := ctx.InvokePackageRaw("azure-native:databoxedge/v20230701:getShare", args, &rv, "", opts...)
-			if err != nil {
-				return LookupShareResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupShareResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupShareResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:databoxedge/v20230701:getShare", args, LookupShareResultOutput{}, options).(LookupShareResultOutput), nil
 		}).(LookupShareResultOutput)
 }
 

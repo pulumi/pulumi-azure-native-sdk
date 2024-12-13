@@ -52,21 +52,11 @@ type LookupWorkloadNetworkDhcpResult struct {
 }
 
 func LookupWorkloadNetworkDhcpOutput(ctx *pulumi.Context, args LookupWorkloadNetworkDhcpOutputArgs, opts ...pulumi.InvokeOption) LookupWorkloadNetworkDhcpResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupWorkloadNetworkDhcpResultOutput, error) {
 			args := v.(LookupWorkloadNetworkDhcpArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupWorkloadNetworkDhcpResult
-			secret, err := ctx.InvokePackageRaw("azure-native:avs/v20210101preview:getWorkloadNetworkDhcp", args, &rv, "", opts...)
-			if err != nil {
-				return LookupWorkloadNetworkDhcpResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupWorkloadNetworkDhcpResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupWorkloadNetworkDhcpResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:avs/v20210101preview:getWorkloadNetworkDhcp", args, LookupWorkloadNetworkDhcpResultOutput{}, options).(LookupWorkloadNetworkDhcpResultOutput), nil
 		}).(LookupWorkloadNetworkDhcpResultOutput)
 }
 

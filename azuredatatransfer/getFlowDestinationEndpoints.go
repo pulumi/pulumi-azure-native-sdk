@@ -39,21 +39,11 @@ type GetFlowDestinationEndpointsResult struct {
 }
 
 func GetFlowDestinationEndpointsOutput(ctx *pulumi.Context, args GetFlowDestinationEndpointsOutputArgs, opts ...pulumi.InvokeOption) GetFlowDestinationEndpointsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetFlowDestinationEndpointsResultOutput, error) {
 			args := v.(GetFlowDestinationEndpointsArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetFlowDestinationEndpointsResult
-			secret, err := ctx.InvokePackageRaw("azure-native:azuredatatransfer:getFlowDestinationEndpoints", args, &rv, "", opts...)
-			if err != nil {
-				return GetFlowDestinationEndpointsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetFlowDestinationEndpointsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetFlowDestinationEndpointsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:azuredatatransfer:getFlowDestinationEndpoints", args, GetFlowDestinationEndpointsResultOutput{}, options).(GetFlowDestinationEndpointsResultOutput), nil
 		}).(GetFlowDestinationEndpointsResultOutput)
 }
 

@@ -59,21 +59,11 @@ type LookupKustoTableDataSetResult struct {
 }
 
 func LookupKustoTableDataSetOutput(ctx *pulumi.Context, args LookupKustoTableDataSetOutputArgs, opts ...pulumi.InvokeOption) LookupKustoTableDataSetResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupKustoTableDataSetResultOutput, error) {
 			args := v.(LookupKustoTableDataSetArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupKustoTableDataSetResult
-			secret, err := ctx.InvokePackageRaw("azure-native:datashare/v20210801:getKustoTableDataSet", args, &rv, "", opts...)
-			if err != nil {
-				return LookupKustoTableDataSetResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupKustoTableDataSetResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupKustoTableDataSetResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:datashare/v20210801:getKustoTableDataSet", args, LookupKustoTableDataSetResultOutput{}, options).(LookupKustoTableDataSetResultOutput), nil
 		}).(LookupKustoTableDataSetResultOutput)
 }
 

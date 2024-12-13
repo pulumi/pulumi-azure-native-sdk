@@ -55,21 +55,11 @@ type LookupQueryPackResult struct {
 }
 
 func LookupQueryPackOutput(ctx *pulumi.Context, args LookupQueryPackOutputArgs, opts ...pulumi.InvokeOption) LookupQueryPackResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupQueryPackResultOutput, error) {
 			args := v.(LookupQueryPackArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupQueryPackResult
-			secret, err := ctx.InvokePackageRaw("azure-native:operationalinsights:getQueryPack", args, &rv, "", opts...)
-			if err != nil {
-				return LookupQueryPackResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupQueryPackResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupQueryPackResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:operationalinsights:getQueryPack", args, LookupQueryPackResultOutput{}, options).(LookupQueryPackResultOutput), nil
 		}).(LookupQueryPackResultOutput)
 }
 

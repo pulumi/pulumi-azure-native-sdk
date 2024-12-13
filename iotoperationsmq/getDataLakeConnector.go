@@ -78,23 +78,12 @@ func (val *LookupDataLakeConnectorResult) Defaults() *LookupDataLakeConnectorRes
 
 	return &tmp
 }
-
 func LookupDataLakeConnectorOutput(ctx *pulumi.Context, args LookupDataLakeConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupDataLakeConnectorResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupDataLakeConnectorResultOutput, error) {
 			args := v.(LookupDataLakeConnectorArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupDataLakeConnectorResult
-			secret, err := ctx.InvokePackageRaw("azure-native:iotoperationsmq:getDataLakeConnector", args, &rv, "", opts...)
-			if err != nil {
-				return LookupDataLakeConnectorResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupDataLakeConnectorResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupDataLakeConnectorResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:iotoperationsmq:getDataLakeConnector", args, LookupDataLakeConnectorResultOutput{}, options).(LookupDataLakeConnectorResultOutput), nil
 		}).(LookupDataLakeConnectorResultOutput)
 }
 

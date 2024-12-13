@@ -49,21 +49,11 @@ type LookupEnterpriseCustomerOperationResult struct {
 }
 
 func LookupEnterpriseCustomerOperationOutput(ctx *pulumi.Context, args LookupEnterpriseCustomerOperationOutputArgs, opts ...pulumi.InvokeOption) LookupEnterpriseCustomerOperationResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupEnterpriseCustomerOperationResultOutput, error) {
 			args := v.(LookupEnterpriseCustomerOperationArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupEnterpriseCustomerOperationResult
-			secret, err := ctx.InvokePackageRaw("azure-native:connectedcache:getEnterpriseCustomerOperation", args, &rv, "", opts...)
-			if err != nil {
-				return LookupEnterpriseCustomerOperationResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupEnterpriseCustomerOperationResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupEnterpriseCustomerOperationResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:connectedcache:getEnterpriseCustomerOperation", args, LookupEnterpriseCustomerOperationResultOutput{}, options).(LookupEnterpriseCustomerOperationResultOutput), nil
 		}).(LookupEnterpriseCustomerOperationResultOutput)
 }
 

@@ -52,21 +52,11 @@ type LookupThroughputPoolAccountResult struct {
 }
 
 func LookupThroughputPoolAccountOutput(ctx *pulumi.Context, args LookupThroughputPoolAccountOutputArgs, opts ...pulumi.InvokeOption) LookupThroughputPoolAccountResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupThroughputPoolAccountResultOutput, error) {
 			args := v.(LookupThroughputPoolAccountArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupThroughputPoolAccountResult
-			secret, err := ctx.InvokePackageRaw("azure-native:documentdb/v20241201preview:getThroughputPoolAccount", args, &rv, "", opts...)
-			if err != nil {
-				return LookupThroughputPoolAccountResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupThroughputPoolAccountResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupThroughputPoolAccountResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:documentdb/v20241201preview:getThroughputPoolAccount", args, LookupThroughputPoolAccountResultOutput{}, options).(LookupThroughputPoolAccountResultOutput), nil
 		}).(LookupThroughputPoolAccountResultOutput)
 }
 

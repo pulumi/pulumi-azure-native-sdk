@@ -40,21 +40,11 @@ type ListWebAppSiteBackupsSlotResult struct {
 }
 
 func ListWebAppSiteBackupsSlotOutput(ctx *pulumi.Context, args ListWebAppSiteBackupsSlotOutputArgs, opts ...pulumi.InvokeOption) ListWebAppSiteBackupsSlotResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListWebAppSiteBackupsSlotResultOutput, error) {
 			args := v.(ListWebAppSiteBackupsSlotArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListWebAppSiteBackupsSlotResult
-			secret, err := ctx.InvokePackageRaw("azure-native:web/v20220901:listWebAppSiteBackupsSlot", args, &rv, "", opts...)
-			if err != nil {
-				return ListWebAppSiteBackupsSlotResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListWebAppSiteBackupsSlotResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListWebAppSiteBackupsSlotResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:web/v20220901:listWebAppSiteBackupsSlot", args, ListWebAppSiteBackupsSlotResultOutput{}, options).(ListWebAppSiteBackupsSlotResultOutput), nil
 		}).(ListWebAppSiteBackupsSlotResultOutput)
 }
 

@@ -64,21 +64,11 @@ type LookupAttestationAtResourceGroupResult struct {
 }
 
 func LookupAttestationAtResourceGroupOutput(ctx *pulumi.Context, args LookupAttestationAtResourceGroupOutputArgs, opts ...pulumi.InvokeOption) LookupAttestationAtResourceGroupResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAttestationAtResourceGroupResultOutput, error) {
 			args := v.(LookupAttestationAtResourceGroupArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupAttestationAtResourceGroupResult
-			secret, err := ctx.InvokePackageRaw("azure-native:policyinsights/v20220901:getAttestationAtResourceGroup", args, &rv, "", opts...)
-			if err != nil {
-				return LookupAttestationAtResourceGroupResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupAttestationAtResourceGroupResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupAttestationAtResourceGroupResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:policyinsights/v20220901:getAttestationAtResourceGroup", args, LookupAttestationAtResourceGroupResultOutput{}, options).(LookupAttestationAtResourceGroupResultOutput), nil
 		}).(LookupAttestationAtResourceGroupResultOutput)
 }
 

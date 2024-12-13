@@ -50,21 +50,11 @@ type LookupFederatedIdentityCredentialResult struct {
 }
 
 func LookupFederatedIdentityCredentialOutput(ctx *pulumi.Context, args LookupFederatedIdentityCredentialOutputArgs, opts ...pulumi.InvokeOption) LookupFederatedIdentityCredentialResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupFederatedIdentityCredentialResultOutput, error) {
 			args := v.(LookupFederatedIdentityCredentialArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupFederatedIdentityCredentialResult
-			secret, err := ctx.InvokePackageRaw("azure-native:managedidentity/v20230131:getFederatedIdentityCredential", args, &rv, "", opts...)
-			if err != nil {
-				return LookupFederatedIdentityCredentialResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupFederatedIdentityCredentialResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupFederatedIdentityCredentialResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:managedidentity/v20230131:getFederatedIdentityCredential", args, LookupFederatedIdentityCredentialResultOutput{}, options).(LookupFederatedIdentityCredentialResultOutput), nil
 		}).(LookupFederatedIdentityCredentialResultOutput)
 }
 

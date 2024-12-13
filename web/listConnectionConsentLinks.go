@@ -43,21 +43,11 @@ type ListConnectionConsentLinksResult struct {
 }
 
 func ListConnectionConsentLinksOutput(ctx *pulumi.Context, args ListConnectionConsentLinksOutputArgs, opts ...pulumi.InvokeOption) ListConnectionConsentLinksResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListConnectionConsentLinksResultOutput, error) {
 			args := v.(ListConnectionConsentLinksArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListConnectionConsentLinksResult
-			secret, err := ctx.InvokePackageRaw("azure-native:web:listConnectionConsentLinks", args, &rv, "", opts...)
-			if err != nil {
-				return ListConnectionConsentLinksResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListConnectionConsentLinksResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListConnectionConsentLinksResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:web:listConnectionConsentLinks", args, ListConnectionConsentLinksResultOutput{}, options).(ListConnectionConsentLinksResultOutput), nil
 		}).(ListConnectionConsentLinksResultOutput)
 }
 

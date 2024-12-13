@@ -71,21 +71,11 @@ type LookupRemediationAtResourceGroupResult struct {
 }
 
 func LookupRemediationAtResourceGroupOutput(ctx *pulumi.Context, args LookupRemediationAtResourceGroupOutputArgs, opts ...pulumi.InvokeOption) LookupRemediationAtResourceGroupResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupRemediationAtResourceGroupResultOutput, error) {
 			args := v.(LookupRemediationAtResourceGroupArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupRemediationAtResourceGroupResult
-			secret, err := ctx.InvokePackageRaw("azure-native:policyinsights:getRemediationAtResourceGroup", args, &rv, "", opts...)
-			if err != nil {
-				return LookupRemediationAtResourceGroupResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupRemediationAtResourceGroupResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupRemediationAtResourceGroupResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:policyinsights:getRemediationAtResourceGroup", args, LookupRemediationAtResourceGroupResultOutput{}, options).(LookupRemediationAtResourceGroupResultOutput), nil
 		}).(LookupRemediationAtResourceGroupResultOutput)
 }
 

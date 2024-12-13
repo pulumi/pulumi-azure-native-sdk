@@ -58,21 +58,11 @@ type LookupDataManagerForAgricultureResourceResult struct {
 }
 
 func LookupDataManagerForAgricultureResourceOutput(ctx *pulumi.Context, args LookupDataManagerForAgricultureResourceOutputArgs, opts ...pulumi.InvokeOption) LookupDataManagerForAgricultureResourceResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupDataManagerForAgricultureResourceResultOutput, error) {
 			args := v.(LookupDataManagerForAgricultureResourceArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupDataManagerForAgricultureResourceResult
-			secret, err := ctx.InvokePackageRaw("azure-native:agfoodplatform/v20230601preview:getDataManagerForAgricultureResource", args, &rv, "", opts...)
-			if err != nil {
-				return LookupDataManagerForAgricultureResourceResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupDataManagerForAgricultureResourceResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupDataManagerForAgricultureResourceResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:agfoodplatform/v20230601preview:getDataManagerForAgricultureResource", args, LookupDataManagerForAgricultureResourceResultOutput{}, options).(LookupDataManagerForAgricultureResourceResultOutput), nil
 		}).(LookupDataManagerForAgricultureResourceResultOutput)
 }
 

@@ -63,23 +63,12 @@ func (val *LookupApiOperationPolicyResult) Defaults() *LookupApiOperationPolicyR
 	}
 	return &tmp
 }
-
 func LookupApiOperationPolicyOutput(ctx *pulumi.Context, args LookupApiOperationPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupApiOperationPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupApiOperationPolicyResultOutput, error) {
 			args := v.(LookupApiOperationPolicyArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupApiOperationPolicyResult
-			secret, err := ctx.InvokePackageRaw("azure-native:apimanagement/v20220901preview:getApiOperationPolicy", args, &rv, "", opts...)
-			if err != nil {
-				return LookupApiOperationPolicyResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupApiOperationPolicyResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupApiOperationPolicyResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:apimanagement/v20220901preview:getApiOperationPolicy", args, LookupApiOperationPolicyResultOutput{}, options).(LookupApiOperationPolicyResultOutput), nil
 		}).(LookupApiOperationPolicyResultOutput)
 }
 

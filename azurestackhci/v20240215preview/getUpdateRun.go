@@ -72,21 +72,11 @@ type LookupUpdateRunResult struct {
 }
 
 func LookupUpdateRunOutput(ctx *pulumi.Context, args LookupUpdateRunOutputArgs, opts ...pulumi.InvokeOption) LookupUpdateRunResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupUpdateRunResultOutput, error) {
 			args := v.(LookupUpdateRunArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupUpdateRunResult
-			secret, err := ctx.InvokePackageRaw("azure-native:azurestackhci/v20240215preview:getUpdateRun", args, &rv, "", opts...)
-			if err != nil {
-				return LookupUpdateRunResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupUpdateRunResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupUpdateRunResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:azurestackhci/v20240215preview:getUpdateRun", args, LookupUpdateRunResultOutput{}, options).(LookupUpdateRunResultOutput), nil
 		}).(LookupUpdateRunResultOutput)
 }
 

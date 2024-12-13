@@ -60,21 +60,11 @@ type LookupStorageSyncServiceResult struct {
 }
 
 func LookupStorageSyncServiceOutput(ctx *pulumi.Context, args LookupStorageSyncServiceOutputArgs, opts ...pulumi.InvokeOption) LookupStorageSyncServiceResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupStorageSyncServiceResultOutput, error) {
 			args := v.(LookupStorageSyncServiceArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupStorageSyncServiceResult
-			secret, err := ctx.InvokePackageRaw("azure-native:storagesync/v20220601:getStorageSyncService", args, &rv, "", opts...)
-			if err != nil {
-				return LookupStorageSyncServiceResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupStorageSyncServiceResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupStorageSyncServiceResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:storagesync/v20220601:getStorageSyncService", args, LookupStorageSyncServiceResultOutput{}, options).(LookupStorageSyncServiceResultOutput), nil
 		}).(LookupStorageSyncServiceResultOutput)
 }
 

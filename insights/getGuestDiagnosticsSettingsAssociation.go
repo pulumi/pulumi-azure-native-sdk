@@ -47,21 +47,11 @@ type LookupGuestDiagnosticsSettingsAssociationResult struct {
 }
 
 func LookupGuestDiagnosticsSettingsAssociationOutput(ctx *pulumi.Context, args LookupGuestDiagnosticsSettingsAssociationOutputArgs, opts ...pulumi.InvokeOption) LookupGuestDiagnosticsSettingsAssociationResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupGuestDiagnosticsSettingsAssociationResultOutput, error) {
 			args := v.(LookupGuestDiagnosticsSettingsAssociationArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupGuestDiagnosticsSettingsAssociationResult
-			secret, err := ctx.InvokePackageRaw("azure-native:insights:getGuestDiagnosticsSettingsAssociation", args, &rv, "", opts...)
-			if err != nil {
-				return LookupGuestDiagnosticsSettingsAssociationResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupGuestDiagnosticsSettingsAssociationResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupGuestDiagnosticsSettingsAssociationResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:insights:getGuestDiagnosticsSettingsAssociation", args, LookupGuestDiagnosticsSettingsAssociationResultOutput{}, options).(LookupGuestDiagnosticsSettingsAssociationResultOutput), nil
 		}).(LookupGuestDiagnosticsSettingsAssociationResultOutput)
 }
 

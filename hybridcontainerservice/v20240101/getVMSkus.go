@@ -43,21 +43,11 @@ type LookupVMSkusResult struct {
 }
 
 func LookupVMSkusOutput(ctx *pulumi.Context, args LookupVMSkusOutputArgs, opts ...pulumi.InvokeOption) LookupVMSkusResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupVMSkusResultOutput, error) {
 			args := v.(LookupVMSkusArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupVMSkusResult
-			secret, err := ctx.InvokePackageRaw("azure-native:hybridcontainerservice/v20240101:getVMSkus", args, &rv, "", opts...)
-			if err != nil {
-				return LookupVMSkusResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupVMSkusResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupVMSkusResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:hybridcontainerservice/v20240101:getVMSkus", args, LookupVMSkusResultOutput{}, options).(LookupVMSkusResultOutput), nil
 		}).(LookupVMSkusResultOutput)
 }
 

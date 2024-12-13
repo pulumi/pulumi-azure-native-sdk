@@ -72,21 +72,11 @@ type GetSqlServerInstanceTelemetryResult struct {
 }
 
 func GetSqlServerInstanceTelemetryOutput(ctx *pulumi.Context, args GetSqlServerInstanceTelemetryOutputArgs, opts ...pulumi.InvokeOption) GetSqlServerInstanceTelemetryResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetSqlServerInstanceTelemetryResultOutput, error) {
 			args := v.(GetSqlServerInstanceTelemetryArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetSqlServerInstanceTelemetryResult
-			secret, err := ctx.InvokePackageRaw("azure-native:azurearcdata:getSqlServerInstanceTelemetry", args.Defaults(), &rv, "", opts...)
-			if err != nil {
-				return GetSqlServerInstanceTelemetryResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetSqlServerInstanceTelemetryResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetSqlServerInstanceTelemetryResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:azurearcdata:getSqlServerInstanceTelemetry", args.Defaults(), GetSqlServerInstanceTelemetryResultOutput{}, options).(GetSqlServerInstanceTelemetryResultOutput), nil
 		}).(GetSqlServerInstanceTelemetryResultOutput)
 }
 

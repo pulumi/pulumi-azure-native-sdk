@@ -38,21 +38,11 @@ type ListSitesControllerHealthSummaryResult struct {
 }
 
 func ListSitesControllerHealthSummaryOutput(ctx *pulumi.Context, args ListSitesControllerHealthSummaryOutputArgs, opts ...pulumi.InvokeOption) ListSitesControllerHealthSummaryResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListSitesControllerHealthSummaryResultOutput, error) {
 			args := v.(ListSitesControllerHealthSummaryArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListSitesControllerHealthSummaryResult
-			secret, err := ctx.InvokePackageRaw("azure-native:offazure/v20231001preview:listSitesControllerHealthSummary", args, &rv, "", opts...)
-			if err != nil {
-				return ListSitesControllerHealthSummaryResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListSitesControllerHealthSummaryResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListSitesControllerHealthSummaryResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:offazure/v20231001preview:listSitesControllerHealthSummary", args, ListSitesControllerHealthSummaryResultOutput{}, options).(ListSitesControllerHealthSummaryResultOutput), nil
 		}).(ListSitesControllerHealthSummaryResultOutput)
 }
 

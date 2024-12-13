@@ -74,21 +74,11 @@ type LookupConnectorMappingResult struct {
 }
 
 func LookupConnectorMappingOutput(ctx *pulumi.Context, args LookupConnectorMappingOutputArgs, opts ...pulumi.InvokeOption) LookupConnectorMappingResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupConnectorMappingResultOutput, error) {
 			args := v.(LookupConnectorMappingArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupConnectorMappingResult
-			secret, err := ctx.InvokePackageRaw("azure-native:customerinsights/v20170426:getConnectorMapping", args, &rv, "", opts...)
-			if err != nil {
-				return LookupConnectorMappingResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupConnectorMappingResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupConnectorMappingResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:customerinsights/v20170426:getConnectorMapping", args, LookupConnectorMappingResultOutput{}, options).(LookupConnectorMappingResultOutput), nil
 		}).(LookupConnectorMappingResultOutput)
 }
 

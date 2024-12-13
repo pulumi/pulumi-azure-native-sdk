@@ -64,21 +64,11 @@ type LookupOrchestratorInstanceServiceDetailsResult struct {
 }
 
 func LookupOrchestratorInstanceServiceDetailsOutput(ctx *pulumi.Context, args LookupOrchestratorInstanceServiceDetailsOutputArgs, opts ...pulumi.InvokeOption) LookupOrchestratorInstanceServiceDetailsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupOrchestratorInstanceServiceDetailsResultOutput, error) {
 			args := v.(LookupOrchestratorInstanceServiceDetailsArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupOrchestratorInstanceServiceDetailsResult
-			secret, err := ctx.InvokePackageRaw("azure-native:delegatednetwork/v20230627preview:getOrchestratorInstanceServiceDetails", args, &rv, "", opts...)
-			if err != nil {
-				return LookupOrchestratorInstanceServiceDetailsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupOrchestratorInstanceServiceDetailsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupOrchestratorInstanceServiceDetailsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:delegatednetwork/v20230627preview:getOrchestratorInstanceServiceDetails", args, LookupOrchestratorInstanceServiceDetailsResultOutput{}, options).(LookupOrchestratorInstanceServiceDetailsResultOutput), nil
 		}).(LookupOrchestratorInstanceServiceDetailsResultOutput)
 }
 

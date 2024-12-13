@@ -59,23 +59,12 @@ func (val *LookupBrokerAuthorizationResult) Defaults() *LookupBrokerAuthorizatio
 
 	return &tmp
 }
-
 func LookupBrokerAuthorizationOutput(ctx *pulumi.Context, args LookupBrokerAuthorizationOutputArgs, opts ...pulumi.InvokeOption) LookupBrokerAuthorizationResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupBrokerAuthorizationResultOutput, error) {
 			args := v.(LookupBrokerAuthorizationArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupBrokerAuthorizationResult
-			secret, err := ctx.InvokePackageRaw("azure-native:iotoperations/v20240815preview:getBrokerAuthorization", args, &rv, "", opts...)
-			if err != nil {
-				return LookupBrokerAuthorizationResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupBrokerAuthorizationResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupBrokerAuthorizationResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:iotoperations/v20240815preview:getBrokerAuthorization", args, LookupBrokerAuthorizationResultOutput{}, options).(LookupBrokerAuthorizationResultOutput), nil
 		}).(LookupBrokerAuthorizationResultOutput)
 }
 

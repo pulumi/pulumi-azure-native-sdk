@@ -71,21 +71,11 @@ type LookupKubeEnvironmentResult struct {
 }
 
 func LookupKubeEnvironmentOutput(ctx *pulumi.Context, args LookupKubeEnvironmentOutputArgs, opts ...pulumi.InvokeOption) LookupKubeEnvironmentResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupKubeEnvironmentResultOutput, error) {
 			args := v.(LookupKubeEnvironmentArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupKubeEnvironmentResult
-			secret, err := ctx.InvokePackageRaw("azure-native:web/v20231201:getKubeEnvironment", args, &rv, "", opts...)
-			if err != nil {
-				return LookupKubeEnvironmentResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupKubeEnvironmentResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupKubeEnvironmentResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:web/v20231201:getKubeEnvironment", args, LookupKubeEnvironmentResultOutput{}, options).(LookupKubeEnvironmentResultOutput), nil
 		}).(LookupKubeEnvironmentResultOutput)
 }
 

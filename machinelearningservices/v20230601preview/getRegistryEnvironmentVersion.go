@@ -57,23 +57,12 @@ func (val *LookupRegistryEnvironmentVersionResult) Defaults() *LookupRegistryEnv
 
 	return &tmp
 }
-
 func LookupRegistryEnvironmentVersionOutput(ctx *pulumi.Context, args LookupRegistryEnvironmentVersionOutputArgs, opts ...pulumi.InvokeOption) LookupRegistryEnvironmentVersionResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupRegistryEnvironmentVersionResultOutput, error) {
 			args := v.(LookupRegistryEnvironmentVersionArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupRegistryEnvironmentVersionResult
-			secret, err := ctx.InvokePackageRaw("azure-native:machinelearningservices/v20230601preview:getRegistryEnvironmentVersion", args, &rv, "", opts...)
-			if err != nil {
-				return LookupRegistryEnvironmentVersionResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupRegistryEnvironmentVersionResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupRegistryEnvironmentVersionResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:machinelearningservices/v20230601preview:getRegistryEnvironmentVersion", args, LookupRegistryEnvironmentVersionResultOutput{}, options).(LookupRegistryEnvironmentVersionResultOutput), nil
 		}).(LookupRegistryEnvironmentVersionResultOutput)
 }
 

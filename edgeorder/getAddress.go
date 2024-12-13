@@ -55,21 +55,11 @@ type LookupAddressResult struct {
 }
 
 func LookupAddressOutput(ctx *pulumi.Context, args LookupAddressOutputArgs, opts ...pulumi.InvokeOption) LookupAddressResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAddressResultOutput, error) {
 			args := v.(LookupAddressArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupAddressResult
-			secret, err := ctx.InvokePackageRaw("azure-native:edgeorder:getAddress", args, &rv, "", opts...)
-			if err != nil {
-				return LookupAddressResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupAddressResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupAddressResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:edgeorder:getAddress", args, LookupAddressResultOutput{}, options).(LookupAddressResultOutput), nil
 		}).(LookupAddressResultOutput)
 }
 

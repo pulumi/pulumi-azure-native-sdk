@@ -88,21 +88,11 @@ type LookupWebAppSiteExtensionSlotResult struct {
 }
 
 func LookupWebAppSiteExtensionSlotOutput(ctx *pulumi.Context, args LookupWebAppSiteExtensionSlotOutputArgs, opts ...pulumi.InvokeOption) LookupWebAppSiteExtensionSlotResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupWebAppSiteExtensionSlotResultOutput, error) {
 			args := v.(LookupWebAppSiteExtensionSlotArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupWebAppSiteExtensionSlotResult
-			secret, err := ctx.InvokePackageRaw("azure-native:web:getWebAppSiteExtensionSlot", args, &rv, "", opts...)
-			if err != nil {
-				return LookupWebAppSiteExtensionSlotResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupWebAppSiteExtensionSlotResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupWebAppSiteExtensionSlotResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:web:getWebAppSiteExtensionSlot", args, LookupWebAppSiteExtensionSlotResultOutput{}, options).(LookupWebAppSiteExtensionSlotResultOutput), nil
 		}).(LookupWebAppSiteExtensionSlotResultOutput)
 }
 

@@ -48,21 +48,11 @@ type LookupWafWebAclSummaryResult struct {
 }
 
 func LookupWafWebAclSummaryOutput(ctx *pulumi.Context, args LookupWafWebAclSummaryOutputArgs, opts ...pulumi.InvokeOption) LookupWafWebAclSummaryResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupWafWebAclSummaryResultOutput, error) {
 			args := v.(LookupWafWebAclSummaryArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupWafWebAclSummaryResult
-			secret, err := ctx.InvokePackageRaw("azure-native:awsconnector/v20241201:getWafWebAclSummary", args, &rv, "", opts...)
-			if err != nil {
-				return LookupWafWebAclSummaryResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupWafWebAclSummaryResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupWafWebAclSummaryResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:awsconnector/v20241201:getWafWebAclSummary", args, LookupWafWebAclSummaryResultOutput{}, options).(LookupWafWebAclSummaryResultOutput), nil
 		}).(LookupWafWebAclSummaryResultOutput)
 }
 

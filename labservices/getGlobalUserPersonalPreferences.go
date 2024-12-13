@@ -43,21 +43,11 @@ type GetGlobalUserPersonalPreferencesResult struct {
 }
 
 func GetGlobalUserPersonalPreferencesOutput(ctx *pulumi.Context, args GetGlobalUserPersonalPreferencesOutputArgs, opts ...pulumi.InvokeOption) GetGlobalUserPersonalPreferencesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetGlobalUserPersonalPreferencesResultOutput, error) {
 			args := v.(GetGlobalUserPersonalPreferencesArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetGlobalUserPersonalPreferencesResult
-			secret, err := ctx.InvokePackageRaw("azure-native:labservices:getGlobalUserPersonalPreferences", args, &rv, "", opts...)
-			if err != nil {
-				return GetGlobalUserPersonalPreferencesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetGlobalUserPersonalPreferencesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetGlobalUserPersonalPreferencesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:labservices:getGlobalUserPersonalPreferences", args, GetGlobalUserPersonalPreferencesResultOutput{}, options).(GetGlobalUserPersonalPreferencesResultOutput), nil
 		}).(GetGlobalUserPersonalPreferencesResultOutput)
 }
 

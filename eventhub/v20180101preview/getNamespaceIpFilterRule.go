@@ -48,21 +48,11 @@ type LookupNamespaceIpFilterRuleResult struct {
 }
 
 func LookupNamespaceIpFilterRuleOutput(ctx *pulumi.Context, args LookupNamespaceIpFilterRuleOutputArgs, opts ...pulumi.InvokeOption) LookupNamespaceIpFilterRuleResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupNamespaceIpFilterRuleResultOutput, error) {
 			args := v.(LookupNamespaceIpFilterRuleArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupNamespaceIpFilterRuleResult
-			secret, err := ctx.InvokePackageRaw("azure-native:eventhub/v20180101preview:getNamespaceIpFilterRule", args, &rv, "", opts...)
-			if err != nil {
-				return LookupNamespaceIpFilterRuleResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupNamespaceIpFilterRuleResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupNamespaceIpFilterRuleResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:eventhub/v20180101preview:getNamespaceIpFilterRule", args, LookupNamespaceIpFilterRuleResultOutput{}, options).(LookupNamespaceIpFilterRuleResultOutput), nil
 		}).(LookupNamespaceIpFilterRuleResultOutput)
 }
 

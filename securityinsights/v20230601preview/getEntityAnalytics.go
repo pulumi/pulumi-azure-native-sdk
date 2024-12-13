@@ -51,21 +51,11 @@ type LookupEntityAnalyticsResult struct {
 }
 
 func LookupEntityAnalyticsOutput(ctx *pulumi.Context, args LookupEntityAnalyticsOutputArgs, opts ...pulumi.InvokeOption) LookupEntityAnalyticsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupEntityAnalyticsResultOutput, error) {
 			args := v.(LookupEntityAnalyticsArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupEntityAnalyticsResult
-			secret, err := ctx.InvokePackageRaw("azure-native:securityinsights/v20230601preview:getEntityAnalytics", args, &rv, "", opts...)
-			if err != nil {
-				return LookupEntityAnalyticsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupEntityAnalyticsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupEntityAnalyticsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:securityinsights/v20230601preview:getEntityAnalytics", args, LookupEntityAnalyticsResultOutput{}, options).(LookupEntityAnalyticsResultOutput), nil
 		}).(LookupEntityAnalyticsResultOutput)
 }
 

@@ -57,23 +57,12 @@ func (val *LookupDataflowProfileResult) Defaults() *LookupDataflowProfileResult 
 
 	return &tmp
 }
-
 func LookupDataflowProfileOutput(ctx *pulumi.Context, args LookupDataflowProfileOutputArgs, opts ...pulumi.InvokeOption) LookupDataflowProfileResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupDataflowProfileResultOutput, error) {
 			args := v.(LookupDataflowProfileArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupDataflowProfileResult
-			secret, err := ctx.InvokePackageRaw("azure-native:iotoperations/v20240815preview:getDataflowProfile", args, &rv, "", opts...)
-			if err != nil {
-				return LookupDataflowProfileResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupDataflowProfileResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupDataflowProfileResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:iotoperations/v20240815preview:getDataflowProfile", args, LookupDataflowProfileResultOutput{}, options).(LookupDataflowProfileResultOutput), nil
 		}).(LookupDataflowProfileResultOutput)
 }
 

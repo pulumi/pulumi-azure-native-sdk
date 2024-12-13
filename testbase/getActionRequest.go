@@ -49,21 +49,11 @@ type LookupActionRequestResult struct {
 }
 
 func LookupActionRequestOutput(ctx *pulumi.Context, args LookupActionRequestOutputArgs, opts ...pulumi.InvokeOption) LookupActionRequestResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupActionRequestResultOutput, error) {
 			args := v.(LookupActionRequestArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupActionRequestResult
-			secret, err := ctx.InvokePackageRaw("azure-native:testbase:getActionRequest", args, &rv, "", opts...)
-			if err != nil {
-				return LookupActionRequestResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupActionRequestResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupActionRequestResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:testbase:getActionRequest", args, LookupActionRequestResultOutput{}, options).(LookupActionRequestResultOutput), nil
 		}).(LookupActionRequestResultOutput)
 }
 

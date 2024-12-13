@@ -46,21 +46,11 @@ type LookupManagedEnvironmentsStorageResult struct {
 }
 
 func LookupManagedEnvironmentsStorageOutput(ctx *pulumi.Context, args LookupManagedEnvironmentsStorageOutputArgs, opts ...pulumi.InvokeOption) LookupManagedEnvironmentsStorageResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupManagedEnvironmentsStorageResultOutput, error) {
 			args := v.(LookupManagedEnvironmentsStorageArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupManagedEnvironmentsStorageResult
-			secret, err := ctx.InvokePackageRaw("azure-native:app/v20230501:getManagedEnvironmentsStorage", args, &rv, "", opts...)
-			if err != nil {
-				return LookupManagedEnvironmentsStorageResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupManagedEnvironmentsStorageResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupManagedEnvironmentsStorageResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:app/v20230501:getManagedEnvironmentsStorage", args, LookupManagedEnvironmentsStorageResultOutput{}, options).(LookupManagedEnvironmentsStorageResultOutput), nil
 		}).(LookupManagedEnvironmentsStorageResultOutput)
 }
 

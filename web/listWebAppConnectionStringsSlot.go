@@ -49,21 +49,11 @@ type ListWebAppConnectionStringsSlotResult struct {
 }
 
 func ListWebAppConnectionStringsSlotOutput(ctx *pulumi.Context, args ListWebAppConnectionStringsSlotOutputArgs, opts ...pulumi.InvokeOption) ListWebAppConnectionStringsSlotResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListWebAppConnectionStringsSlotResultOutput, error) {
 			args := v.(ListWebAppConnectionStringsSlotArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListWebAppConnectionStringsSlotResult
-			secret, err := ctx.InvokePackageRaw("azure-native:web:listWebAppConnectionStringsSlot", args, &rv, "", opts...)
-			if err != nil {
-				return ListWebAppConnectionStringsSlotResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListWebAppConnectionStringsSlotResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListWebAppConnectionStringsSlotResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:web:listWebAppConnectionStringsSlot", args, ListWebAppConnectionStringsSlotResultOutput{}, options).(ListWebAppConnectionStringsSlotResultOutput), nil
 		}).(ListWebAppConnectionStringsSlotResultOutput)
 }
 

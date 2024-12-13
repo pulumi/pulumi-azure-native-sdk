@@ -58,21 +58,11 @@ type LookupCacheRuleResult struct {
 }
 
 func LookupCacheRuleOutput(ctx *pulumi.Context, args LookupCacheRuleOutputArgs, opts ...pulumi.InvokeOption) LookupCacheRuleResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupCacheRuleResultOutput, error) {
 			args := v.(LookupCacheRuleArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupCacheRuleResult
-			secret, err := ctx.InvokePackageRaw("azure-native:containerregistry:getCacheRule", args, &rv, "", opts...)
-			if err != nil {
-				return LookupCacheRuleResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupCacheRuleResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupCacheRuleResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:containerregistry:getCacheRule", args, LookupCacheRuleResultOutput{}, options).(LookupCacheRuleResultOutput), nil
 		}).(LookupCacheRuleResultOutput)
 }
 

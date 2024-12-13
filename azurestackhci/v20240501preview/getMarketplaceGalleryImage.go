@@ -64,21 +64,11 @@ type LookupMarketplaceGalleryImageResult struct {
 }
 
 func LookupMarketplaceGalleryImageOutput(ctx *pulumi.Context, args LookupMarketplaceGalleryImageOutputArgs, opts ...pulumi.InvokeOption) LookupMarketplaceGalleryImageResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupMarketplaceGalleryImageResultOutput, error) {
 			args := v.(LookupMarketplaceGalleryImageArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupMarketplaceGalleryImageResult
-			secret, err := ctx.InvokePackageRaw("azure-native:azurestackhci/v20240501preview:getMarketplaceGalleryImage", args, &rv, "", opts...)
-			if err != nil {
-				return LookupMarketplaceGalleryImageResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupMarketplaceGalleryImageResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupMarketplaceGalleryImageResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:azurestackhci/v20240501preview:getMarketplaceGalleryImage", args, LookupMarketplaceGalleryImageResultOutput{}, options).(LookupMarketplaceGalleryImageResultOutput), nil
 		}).(LookupMarketplaceGalleryImageResultOutput)
 }
 

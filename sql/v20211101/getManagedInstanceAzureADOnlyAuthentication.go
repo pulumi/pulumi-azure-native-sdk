@@ -44,21 +44,11 @@ type LookupManagedInstanceAzureADOnlyAuthenticationResult struct {
 }
 
 func LookupManagedInstanceAzureADOnlyAuthenticationOutput(ctx *pulumi.Context, args LookupManagedInstanceAzureADOnlyAuthenticationOutputArgs, opts ...pulumi.InvokeOption) LookupManagedInstanceAzureADOnlyAuthenticationResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupManagedInstanceAzureADOnlyAuthenticationResultOutput, error) {
 			args := v.(LookupManagedInstanceAzureADOnlyAuthenticationArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupManagedInstanceAzureADOnlyAuthenticationResult
-			secret, err := ctx.InvokePackageRaw("azure-native:sql/v20211101:getManagedInstanceAzureADOnlyAuthentication", args, &rv, "", opts...)
-			if err != nil {
-				return LookupManagedInstanceAzureADOnlyAuthenticationResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupManagedInstanceAzureADOnlyAuthenticationResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupManagedInstanceAzureADOnlyAuthenticationResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:sql/v20211101:getManagedInstanceAzureADOnlyAuthentication", args, LookupManagedInstanceAzureADOnlyAuthenticationResultOutput{}, options).(LookupManagedInstanceAzureADOnlyAuthenticationResultOutput), nil
 		}).(LookupManagedInstanceAzureADOnlyAuthenticationResultOutput)
 }
 

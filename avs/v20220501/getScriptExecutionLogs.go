@@ -72,21 +72,11 @@ type GetScriptExecutionLogsResult struct {
 }
 
 func GetScriptExecutionLogsOutput(ctx *pulumi.Context, args GetScriptExecutionLogsOutputArgs, opts ...pulumi.InvokeOption) GetScriptExecutionLogsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetScriptExecutionLogsResultOutput, error) {
 			args := v.(GetScriptExecutionLogsArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetScriptExecutionLogsResult
-			secret, err := ctx.InvokePackageRaw("azure-native:avs/v20220501:getScriptExecutionLogs", args, &rv, "", opts...)
-			if err != nil {
-				return GetScriptExecutionLogsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetScriptExecutionLogsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetScriptExecutionLogsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:avs/v20220501:getScriptExecutionLogs", args, GetScriptExecutionLogsResultOutput{}, options).(GetScriptExecutionLogsResultOutput), nil
 		}).(GetScriptExecutionLogsResultOutput)
 }
 

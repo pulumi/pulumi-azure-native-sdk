@@ -57,21 +57,11 @@ type LookupAwsS3DataConnectorResult struct {
 }
 
 func LookupAwsS3DataConnectorOutput(ctx *pulumi.Context, args LookupAwsS3DataConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupAwsS3DataConnectorResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAwsS3DataConnectorResultOutput, error) {
 			args := v.(LookupAwsS3DataConnectorArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupAwsS3DataConnectorResult
-			secret, err := ctx.InvokePackageRaw("azure-native:securityinsights/v20240101preview:getAwsS3DataConnector", args, &rv, "", opts...)
-			if err != nil {
-				return LookupAwsS3DataConnectorResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupAwsS3DataConnectorResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupAwsS3DataConnectorResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:securityinsights/v20240101preview:getAwsS3DataConnector", args, LookupAwsS3DataConnectorResultOutput{}, options).(LookupAwsS3DataConnectorResultOutput), nil
 		}).(LookupAwsS3DataConnectorResultOutput)
 }
 

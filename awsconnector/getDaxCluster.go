@@ -49,21 +49,11 @@ type LookupDaxClusterResult struct {
 }
 
 func LookupDaxClusterOutput(ctx *pulumi.Context, args LookupDaxClusterOutputArgs, opts ...pulumi.InvokeOption) LookupDaxClusterResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupDaxClusterResultOutput, error) {
 			args := v.(LookupDaxClusterArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupDaxClusterResult
-			secret, err := ctx.InvokePackageRaw("azure-native:awsconnector:getDaxCluster", args, &rv, "", opts...)
-			if err != nil {
-				return LookupDaxClusterResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupDaxClusterResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupDaxClusterResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:awsconnector:getDaxCluster", args, LookupDaxClusterResultOutput{}, options).(LookupDaxClusterResultOutput), nil
 		}).(LookupDaxClusterResultOutput)
 }
 

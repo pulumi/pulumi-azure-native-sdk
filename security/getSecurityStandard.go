@@ -55,21 +55,11 @@ type LookupSecurityStandardResult struct {
 }
 
 func LookupSecurityStandardOutput(ctx *pulumi.Context, args LookupSecurityStandardOutputArgs, opts ...pulumi.InvokeOption) LookupSecurityStandardResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupSecurityStandardResultOutput, error) {
 			args := v.(LookupSecurityStandardArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupSecurityStandardResult
-			secret, err := ctx.InvokePackageRaw("azure-native:security:getSecurityStandard", args, &rv, "", opts...)
-			if err != nil {
-				return LookupSecurityStandardResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupSecurityStandardResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupSecurityStandardResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:security:getSecurityStandard", args, LookupSecurityStandardResultOutput{}, options).(LookupSecurityStandardResultOutput), nil
 		}).(LookupSecurityStandardResultOutput)
 }
 

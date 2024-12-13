@@ -55,23 +55,12 @@ func (val *LookupCodeContainerResult) Defaults() *LookupCodeContainerResult {
 
 	return &tmp
 }
-
 func LookupCodeContainerOutput(ctx *pulumi.Context, args LookupCodeContainerOutputArgs, opts ...pulumi.InvokeOption) LookupCodeContainerResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupCodeContainerResultOutput, error) {
 			args := v.(LookupCodeContainerArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupCodeContainerResult
-			secret, err := ctx.InvokePackageRaw("azure-native:machinelearningservices/v20240101preview:getCodeContainer", args, &rv, "", opts...)
-			if err != nil {
-				return LookupCodeContainerResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupCodeContainerResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupCodeContainerResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:machinelearningservices/v20240101preview:getCodeContainer", args, LookupCodeContainerResultOutput{}, options).(LookupCodeContainerResultOutput), nil
 		}).(LookupCodeContainerResultOutput)
 }
 

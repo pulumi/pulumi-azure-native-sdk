@@ -89,23 +89,12 @@ func (val *LookupCacheResult) Defaults() *LookupCacheResult {
 
 	return &tmp
 }
-
 func LookupCacheOutput(ctx *pulumi.Context, args LookupCacheOutputArgs, opts ...pulumi.InvokeOption) LookupCacheResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupCacheResultOutput, error) {
 			args := v.(LookupCacheArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupCacheResult
-			secret, err := ctx.InvokePackageRaw("azure-native:storagecache/v20240301:getCache", args, &rv, "", opts...)
-			if err != nil {
-				return LookupCacheResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupCacheResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupCacheResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:storagecache/v20240301:getCache", args, LookupCacheResultOutput{}, options).(LookupCacheResultOutput), nil
 		}).(LookupCacheResultOutput)
 }
 

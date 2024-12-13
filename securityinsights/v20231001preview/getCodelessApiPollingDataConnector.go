@@ -53,21 +53,11 @@ type LookupCodelessApiPollingDataConnectorResult struct {
 }
 
 func LookupCodelessApiPollingDataConnectorOutput(ctx *pulumi.Context, args LookupCodelessApiPollingDataConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupCodelessApiPollingDataConnectorResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupCodelessApiPollingDataConnectorResultOutput, error) {
 			args := v.(LookupCodelessApiPollingDataConnectorArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupCodelessApiPollingDataConnectorResult
-			secret, err := ctx.InvokePackageRaw("azure-native:securityinsights/v20231001preview:getCodelessApiPollingDataConnector", args, &rv, "", opts...)
-			if err != nil {
-				return LookupCodelessApiPollingDataConnectorResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupCodelessApiPollingDataConnectorResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupCodelessApiPollingDataConnectorResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:securityinsights/v20231001preview:getCodelessApiPollingDataConnector", args, LookupCodelessApiPollingDataConnectorResultOutput{}, options).(LookupCodelessApiPollingDataConnectorResultOutput), nil
 		}).(LookupCodelessApiPollingDataConnectorResultOutput)
 }
 

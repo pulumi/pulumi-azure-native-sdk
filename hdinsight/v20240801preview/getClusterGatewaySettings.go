@@ -40,21 +40,11 @@ type GetClusterGatewaySettingsResult struct {
 }
 
 func GetClusterGatewaySettingsOutput(ctx *pulumi.Context, args GetClusterGatewaySettingsOutputArgs, opts ...pulumi.InvokeOption) GetClusterGatewaySettingsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetClusterGatewaySettingsResultOutput, error) {
 			args := v.(GetClusterGatewaySettingsArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetClusterGatewaySettingsResult
-			secret, err := ctx.InvokePackageRaw("azure-native:hdinsight/v20240801preview:getClusterGatewaySettings", args, &rv, "", opts...)
-			if err != nil {
-				return GetClusterGatewaySettingsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetClusterGatewaySettingsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetClusterGatewaySettingsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:hdinsight/v20240801preview:getClusterGatewaySettings", args, GetClusterGatewaySettingsResultOutput{}, options).(GetClusterGatewaySettingsResultOutput), nil
 		}).(GetClusterGatewaySettingsResultOutput)
 }
 

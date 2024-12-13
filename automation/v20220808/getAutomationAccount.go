@@ -72,21 +72,11 @@ type LookupAutomationAccountResult struct {
 }
 
 func LookupAutomationAccountOutput(ctx *pulumi.Context, args LookupAutomationAccountOutputArgs, opts ...pulumi.InvokeOption) LookupAutomationAccountResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAutomationAccountResultOutput, error) {
 			args := v.(LookupAutomationAccountArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupAutomationAccountResult
-			secret, err := ctx.InvokePackageRaw("azure-native:automation/v20220808:getAutomationAccount", args, &rv, "", opts...)
-			if err != nil {
-				return LookupAutomationAccountResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupAutomationAccountResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupAutomationAccountResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:automation/v20220808:getAutomationAccount", args, LookupAutomationAccountResultOutput{}, options).(LookupAutomationAccountResultOutput), nil
 		}).(LookupAutomationAccountResultOutput)
 }
 

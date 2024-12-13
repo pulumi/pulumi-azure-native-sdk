@@ -58,23 +58,12 @@ func (val *LookupEcsServiceResult) Defaults() *LookupEcsServiceResult {
 
 	return &tmp
 }
-
 func LookupEcsServiceOutput(ctx *pulumi.Context, args LookupEcsServiceOutputArgs, opts ...pulumi.InvokeOption) LookupEcsServiceResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupEcsServiceResultOutput, error) {
 			args := v.(LookupEcsServiceArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupEcsServiceResult
-			secret, err := ctx.InvokePackageRaw("azure-native:awsconnector:getEcsService", args, &rv, "", opts...)
-			if err != nil {
-				return LookupEcsServiceResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupEcsServiceResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupEcsServiceResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:awsconnector:getEcsService", args, LookupEcsServiceResultOutput{}, options).(LookupEcsServiceResultOutput), nil
 		}).(LookupEcsServiceResultOutput)
 }
 

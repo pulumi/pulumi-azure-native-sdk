@@ -77,23 +77,12 @@ func (val *LookupServiceResult) Defaults() *LookupServiceResult {
 
 	return &tmp
 }
-
 func LookupServiceOutput(ctx *pulumi.Context, args LookupServiceOutputArgs, opts ...pulumi.InvokeOption) LookupServiceResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupServiceResultOutput, error) {
 			args := v.(LookupServiceArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupServiceResult
-			secret, err := ctx.InvokePackageRaw("azure-native:mobilenetwork/v20220401preview:getService", args, &rv, "", opts...)
-			if err != nil {
-				return LookupServiceResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupServiceResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupServiceResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:mobilenetwork/v20220401preview:getService", args, LookupServiceResultOutput{}, options).(LookupServiceResultOutput), nil
 		}).(LookupServiceResultOutput)
 }
 

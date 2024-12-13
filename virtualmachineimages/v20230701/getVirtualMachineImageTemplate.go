@@ -91,23 +91,12 @@ func (val *LookupVirtualMachineImageTemplateResult) Defaults() *LookupVirtualMac
 
 	return &tmp
 }
-
 func LookupVirtualMachineImageTemplateOutput(ctx *pulumi.Context, args LookupVirtualMachineImageTemplateOutputArgs, opts ...pulumi.InvokeOption) LookupVirtualMachineImageTemplateResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupVirtualMachineImageTemplateResultOutput, error) {
 			args := v.(LookupVirtualMachineImageTemplateArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupVirtualMachineImageTemplateResult
-			secret, err := ctx.InvokePackageRaw("azure-native:virtualmachineimages/v20230701:getVirtualMachineImageTemplate", args, &rv, "", opts...)
-			if err != nil {
-				return LookupVirtualMachineImageTemplateResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupVirtualMachineImageTemplateResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupVirtualMachineImageTemplateResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:virtualmachineimages/v20230701:getVirtualMachineImageTemplate", args, LookupVirtualMachineImageTemplateResultOutput{}, options).(LookupVirtualMachineImageTemplateResultOutput), nil
 		}).(LookupVirtualMachineImageTemplateResultOutput)
 }
 

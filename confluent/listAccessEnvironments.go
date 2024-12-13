@@ -45,21 +45,11 @@ type ListAccessEnvironmentsResult struct {
 }
 
 func ListAccessEnvironmentsOutput(ctx *pulumi.Context, args ListAccessEnvironmentsOutputArgs, opts ...pulumi.InvokeOption) ListAccessEnvironmentsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListAccessEnvironmentsResultOutput, error) {
 			args := v.(ListAccessEnvironmentsArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListAccessEnvironmentsResult
-			secret, err := ctx.InvokePackageRaw("azure-native:confluent:listAccessEnvironments", args, &rv, "", opts...)
-			if err != nil {
-				return ListAccessEnvironmentsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListAccessEnvironmentsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListAccessEnvironmentsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:confluent:listAccessEnvironments", args, ListAccessEnvironmentsResultOutput{}, options).(ListAccessEnvironmentsResultOutput), nil
 		}).(ListAccessEnvironmentsResultOutput)
 }
 

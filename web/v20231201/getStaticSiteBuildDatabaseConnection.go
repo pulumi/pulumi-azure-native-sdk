@@ -56,21 +56,11 @@ type LookupStaticSiteBuildDatabaseConnectionResult struct {
 }
 
 func LookupStaticSiteBuildDatabaseConnectionOutput(ctx *pulumi.Context, args LookupStaticSiteBuildDatabaseConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupStaticSiteBuildDatabaseConnectionResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupStaticSiteBuildDatabaseConnectionResultOutput, error) {
 			args := v.(LookupStaticSiteBuildDatabaseConnectionArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupStaticSiteBuildDatabaseConnectionResult
-			secret, err := ctx.InvokePackageRaw("azure-native:web/v20231201:getStaticSiteBuildDatabaseConnection", args, &rv, "", opts...)
-			if err != nil {
-				return LookupStaticSiteBuildDatabaseConnectionResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupStaticSiteBuildDatabaseConnectionResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupStaticSiteBuildDatabaseConnectionResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:web/v20231201:getStaticSiteBuildDatabaseConnection", args, LookupStaticSiteBuildDatabaseConnectionResultOutput{}, options).(LookupStaticSiteBuildDatabaseConnectionResultOutput), nil
 		}).(LookupStaticSiteBuildDatabaseConnectionResultOutput)
 }
 

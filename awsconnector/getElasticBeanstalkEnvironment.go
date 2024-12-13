@@ -49,21 +49,11 @@ type LookupElasticBeanstalkEnvironmentResult struct {
 }
 
 func LookupElasticBeanstalkEnvironmentOutput(ctx *pulumi.Context, args LookupElasticBeanstalkEnvironmentOutputArgs, opts ...pulumi.InvokeOption) LookupElasticBeanstalkEnvironmentResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupElasticBeanstalkEnvironmentResultOutput, error) {
 			args := v.(LookupElasticBeanstalkEnvironmentArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupElasticBeanstalkEnvironmentResult
-			secret, err := ctx.InvokePackageRaw("azure-native:awsconnector:getElasticBeanstalkEnvironment", args, &rv, "", opts...)
-			if err != nil {
-				return LookupElasticBeanstalkEnvironmentResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupElasticBeanstalkEnvironmentResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupElasticBeanstalkEnvironmentResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:awsconnector:getElasticBeanstalkEnvironment", args, LookupElasticBeanstalkEnvironmentResultOutput{}, options).(LookupElasticBeanstalkEnvironmentResultOutput), nil
 		}).(LookupElasticBeanstalkEnvironmentResultOutput)
 }
 

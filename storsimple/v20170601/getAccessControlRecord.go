@@ -48,21 +48,11 @@ type LookupAccessControlRecordResult struct {
 }
 
 func LookupAccessControlRecordOutput(ctx *pulumi.Context, args LookupAccessControlRecordOutputArgs, opts ...pulumi.InvokeOption) LookupAccessControlRecordResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAccessControlRecordResultOutput, error) {
 			args := v.(LookupAccessControlRecordArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupAccessControlRecordResult
-			secret, err := ctx.InvokePackageRaw("azure-native:storsimple/v20170601:getAccessControlRecord", args, &rv, "", opts...)
-			if err != nil {
-				return LookupAccessControlRecordResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupAccessControlRecordResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupAccessControlRecordResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:storsimple/v20170601:getAccessControlRecord", args, LookupAccessControlRecordResultOutput{}, options).(LookupAccessControlRecordResultOutput), nil
 		}).(LookupAccessControlRecordResultOutput)
 }
 

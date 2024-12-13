@@ -55,21 +55,11 @@ type LookupContentKeyPolicyResult struct {
 }
 
 func LookupContentKeyPolicyOutput(ctx *pulumi.Context, args LookupContentKeyPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupContentKeyPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupContentKeyPolicyResultOutput, error) {
 			args := v.(LookupContentKeyPolicyArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupContentKeyPolicyResult
-			secret, err := ctx.InvokePackageRaw("azure-native:media:getContentKeyPolicy", args, &rv, "", opts...)
-			if err != nil {
-				return LookupContentKeyPolicyResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupContentKeyPolicyResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupContentKeyPolicyResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:media:getContentKeyPolicy", args, LookupContentKeyPolicyResultOutput{}, options).(LookupContentKeyPolicyResultOutput), nil
 		}).(LookupContentKeyPolicyResultOutput)
 }
 

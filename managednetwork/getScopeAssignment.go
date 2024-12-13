@@ -49,21 +49,11 @@ type LookupScopeAssignmentResult struct {
 }
 
 func LookupScopeAssignmentOutput(ctx *pulumi.Context, args LookupScopeAssignmentOutputArgs, opts ...pulumi.InvokeOption) LookupScopeAssignmentResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupScopeAssignmentResultOutput, error) {
 			args := v.(LookupScopeAssignmentArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupScopeAssignmentResult
-			secret, err := ctx.InvokePackageRaw("azure-native:managednetwork:getScopeAssignment", args, &rv, "", opts...)
-			if err != nil {
-				return LookupScopeAssignmentResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupScopeAssignmentResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupScopeAssignmentResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:managednetwork:getScopeAssignment", args, LookupScopeAssignmentResultOutput{}, options).(LookupScopeAssignmentResultOutput), nil
 		}).(LookupScopeAssignmentResultOutput)
 }
 

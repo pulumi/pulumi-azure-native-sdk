@@ -49,21 +49,11 @@ type LookupPrivateLinkScopedResourceResult struct {
 }
 
 func LookupPrivateLinkScopedResourceOutput(ctx *pulumi.Context, args LookupPrivateLinkScopedResourceOutputArgs, opts ...pulumi.InvokeOption) LookupPrivateLinkScopedResourceResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupPrivateLinkScopedResourceResultOutput, error) {
 			args := v.(LookupPrivateLinkScopedResourceArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupPrivateLinkScopedResourceResult
-			secret, err := ctx.InvokePackageRaw("azure-native:insights:getPrivateLinkScopedResource", args, &rv, "", opts...)
-			if err != nil {
-				return LookupPrivateLinkScopedResourceResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupPrivateLinkScopedResourceResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupPrivateLinkScopedResourceResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:insights:getPrivateLinkScopedResource", args, LookupPrivateLinkScopedResourceResultOutput{}, options).(LookupPrivateLinkScopedResourceResultOutput), nil
 		}).(LookupPrivateLinkScopedResourceResultOutput)
 }
 

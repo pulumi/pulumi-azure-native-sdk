@@ -38,21 +38,11 @@ type ListIdentityProviderSecretsResult struct {
 }
 
 func ListIdentityProviderSecretsOutput(ctx *pulumi.Context, args ListIdentityProviderSecretsOutputArgs, opts ...pulumi.InvokeOption) ListIdentityProviderSecretsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListIdentityProviderSecretsResultOutput, error) {
 			args := v.(ListIdentityProviderSecretsArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListIdentityProviderSecretsResult
-			secret, err := ctx.InvokePackageRaw("azure-native:apimanagement/v20240601preview:listIdentityProviderSecrets", args, &rv, "", opts...)
-			if err != nil {
-				return ListIdentityProviderSecretsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListIdentityProviderSecretsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListIdentityProviderSecretsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:apimanagement/v20240601preview:listIdentityProviderSecrets", args, ListIdentityProviderSecretsResultOutput{}, options).(ListIdentityProviderSecretsResultOutput), nil
 		}).(ListIdentityProviderSecretsResultOutput)
 }
 

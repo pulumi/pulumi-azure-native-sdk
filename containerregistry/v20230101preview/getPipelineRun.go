@@ -63,23 +63,12 @@ func (val *LookupPipelineRunResult) Defaults() *LookupPipelineRunResult {
 
 	return &tmp
 }
-
 func LookupPipelineRunOutput(ctx *pulumi.Context, args LookupPipelineRunOutputArgs, opts ...pulumi.InvokeOption) LookupPipelineRunResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupPipelineRunResultOutput, error) {
 			args := v.(LookupPipelineRunArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupPipelineRunResult
-			secret, err := ctx.InvokePackageRaw("azure-native:containerregistry/v20230101preview:getPipelineRun", args, &rv, "", opts...)
-			if err != nil {
-				return LookupPipelineRunResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupPipelineRunResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupPipelineRunResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:containerregistry/v20230101preview:getPipelineRun", args, LookupPipelineRunResultOutput{}, options).(LookupPipelineRunResultOutput), nil
 		}).(LookupPipelineRunResultOutput)
 }
 

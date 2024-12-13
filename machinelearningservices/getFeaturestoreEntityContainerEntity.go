@@ -58,23 +58,12 @@ func (val *LookupFeaturestoreEntityContainerEntityResult) Defaults() *LookupFeat
 
 	return &tmp
 }
-
 func LookupFeaturestoreEntityContainerEntityOutput(ctx *pulumi.Context, args LookupFeaturestoreEntityContainerEntityOutputArgs, opts ...pulumi.InvokeOption) LookupFeaturestoreEntityContainerEntityResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupFeaturestoreEntityContainerEntityResultOutput, error) {
 			args := v.(LookupFeaturestoreEntityContainerEntityArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupFeaturestoreEntityContainerEntityResult
-			secret, err := ctx.InvokePackageRaw("azure-native:machinelearningservices:getFeaturestoreEntityContainerEntity", args, &rv, "", opts...)
-			if err != nil {
-				return LookupFeaturestoreEntityContainerEntityResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupFeaturestoreEntityContainerEntityResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupFeaturestoreEntityContainerEntityResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:machinelearningservices:getFeaturestoreEntityContainerEntity", args, LookupFeaturestoreEntityContainerEntityResultOutput{}, options).(LookupFeaturestoreEntityContainerEntityResultOutput), nil
 		}).(LookupFeaturestoreEntityContainerEntityResultOutput)
 }
 

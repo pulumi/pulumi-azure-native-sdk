@@ -56,21 +56,11 @@ type LookupEndpointVariantResult struct {
 }
 
 func LookupEndpointVariantOutput(ctx *pulumi.Context, args LookupEndpointVariantOutputArgs, opts ...pulumi.InvokeOption) LookupEndpointVariantResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupEndpointVariantResultOutput, error) {
 			args := v.(LookupEndpointVariantArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupEndpointVariantResult
-			secret, err := ctx.InvokePackageRaw("azure-native:machinelearningservices/v20210401:getEndpointVariant", args, &rv, "", opts...)
-			if err != nil {
-				return LookupEndpointVariantResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupEndpointVariantResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupEndpointVariantResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:machinelearningservices/v20210401:getEndpointVariant", args, LookupEndpointVariantResultOutput{}, options).(LookupEndpointVariantResultOutput), nil
 		}).(LookupEndpointVariantResultOutput)
 }
 

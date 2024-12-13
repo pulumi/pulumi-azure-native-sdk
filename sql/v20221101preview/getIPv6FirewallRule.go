@@ -46,21 +46,11 @@ type LookupIPv6FirewallRuleResult struct {
 }
 
 func LookupIPv6FirewallRuleOutput(ctx *pulumi.Context, args LookupIPv6FirewallRuleOutputArgs, opts ...pulumi.InvokeOption) LookupIPv6FirewallRuleResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupIPv6FirewallRuleResultOutput, error) {
 			args := v.(LookupIPv6FirewallRuleArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupIPv6FirewallRuleResult
-			secret, err := ctx.InvokePackageRaw("azure-native:sql/v20221101preview:getIPv6FirewallRule", args, &rv, "", opts...)
-			if err != nil {
-				return LookupIPv6FirewallRuleResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupIPv6FirewallRuleResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupIPv6FirewallRuleResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:sql/v20221101preview:getIPv6FirewallRule", args, LookupIPv6FirewallRuleResultOutput{}, options).(LookupIPv6FirewallRuleResultOutput), nil
 		}).(LookupIPv6FirewallRuleResultOutput)
 }
 

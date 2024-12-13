@@ -89,23 +89,12 @@ func (val *LookupCertificateProfileResult) Defaults() *LookupCertificateProfileR
 	}
 	return &tmp
 }
-
 func LookupCertificateProfileOutput(ctx *pulumi.Context, args LookupCertificateProfileOutputArgs, opts ...pulumi.InvokeOption) LookupCertificateProfileResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupCertificateProfileResultOutput, error) {
 			args := v.(LookupCertificateProfileArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupCertificateProfileResult
-			secret, err := ctx.InvokePackageRaw("azure-native:codesigning/v20240930preview:getCertificateProfile", args, &rv, "", opts...)
-			if err != nil {
-				return LookupCertificateProfileResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupCertificateProfileResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupCertificateProfileResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:codesigning/v20240930preview:getCertificateProfile", args, LookupCertificateProfileResultOutput{}, options).(LookupCertificateProfileResultOutput), nil
 		}).(LookupCertificateProfileResultOutput)
 }
 

@@ -147,23 +147,12 @@ func (val *LookupStorageAccountResult) Defaults() *LookupStorageAccountResult {
 
 	return &tmp
 }
-
 func LookupStorageAccountOutput(ctx *pulumi.Context, args LookupStorageAccountOutputArgs, opts ...pulumi.InvokeOption) LookupStorageAccountResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupStorageAccountResultOutput, error) {
 			args := v.(LookupStorageAccountArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupStorageAccountResult
-			secret, err := ctx.InvokePackageRaw("azure-native:storage/v20230101:getStorageAccount", args, &rv, "", opts...)
-			if err != nil {
-				return LookupStorageAccountResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupStorageAccountResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupStorageAccountResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:storage/v20230101:getStorageAccount", args, LookupStorageAccountResultOutput{}, options).(LookupStorageAccountResultOutput), nil
 		}).(LookupStorageAccountResultOutput)
 }
 

@@ -54,21 +54,11 @@ type LookupPrivateLinkServicesForEDMUploadResult struct {
 }
 
 func LookupPrivateLinkServicesForEDMUploadOutput(ctx *pulumi.Context, args LookupPrivateLinkServicesForEDMUploadOutputArgs, opts ...pulumi.InvokeOption) LookupPrivateLinkServicesForEDMUploadResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupPrivateLinkServicesForEDMUploadResultOutput, error) {
 			args := v.(LookupPrivateLinkServicesForEDMUploadArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupPrivateLinkServicesForEDMUploadResult
-			secret, err := ctx.InvokePackageRaw("azure-native:m365securityandcompliance/v20210325preview:getPrivateLinkServicesForEDMUpload", args, &rv, "", opts...)
-			if err != nil {
-				return LookupPrivateLinkServicesForEDMUploadResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupPrivateLinkServicesForEDMUploadResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupPrivateLinkServicesForEDMUploadResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:m365securityandcompliance/v20210325preview:getPrivateLinkServicesForEDMUpload", args, LookupPrivateLinkServicesForEDMUploadResultOutput{}, options).(LookupPrivateLinkServicesForEDMUploadResultOutput), nil
 		}).(LookupPrivateLinkServicesForEDMUploadResultOutput)
 }
 

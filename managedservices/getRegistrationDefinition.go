@@ -47,21 +47,11 @@ type LookupRegistrationDefinitionResult struct {
 }
 
 func LookupRegistrationDefinitionOutput(ctx *pulumi.Context, args LookupRegistrationDefinitionOutputArgs, opts ...pulumi.InvokeOption) LookupRegistrationDefinitionResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupRegistrationDefinitionResultOutput, error) {
 			args := v.(LookupRegistrationDefinitionArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupRegistrationDefinitionResult
-			secret, err := ctx.InvokePackageRaw("azure-native:managedservices:getRegistrationDefinition", args, &rv, "", opts...)
-			if err != nil {
-				return LookupRegistrationDefinitionResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupRegistrationDefinitionResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupRegistrationDefinitionResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:managedservices:getRegistrationDefinition", args, LookupRegistrationDefinitionResultOutput{}, options).(LookupRegistrationDefinitionResultOutput), nil
 		}).(LookupRegistrationDefinitionResultOutput)
 }
 

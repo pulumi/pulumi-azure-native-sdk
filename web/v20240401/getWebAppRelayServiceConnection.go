@@ -51,21 +51,11 @@ type LookupWebAppRelayServiceConnectionResult struct {
 }
 
 func LookupWebAppRelayServiceConnectionOutput(ctx *pulumi.Context, args LookupWebAppRelayServiceConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupWebAppRelayServiceConnectionResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupWebAppRelayServiceConnectionResultOutput, error) {
 			args := v.(LookupWebAppRelayServiceConnectionArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupWebAppRelayServiceConnectionResult
-			secret, err := ctx.InvokePackageRaw("azure-native:web/v20240401:getWebAppRelayServiceConnection", args, &rv, "", opts...)
-			if err != nil {
-				return LookupWebAppRelayServiceConnectionResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupWebAppRelayServiceConnectionResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupWebAppRelayServiceConnectionResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:web/v20240401:getWebAppRelayServiceConnection", args, LookupWebAppRelayServiceConnectionResultOutput{}, options).(LookupWebAppRelayServiceConnectionResultOutput), nil
 		}).(LookupWebAppRelayServiceConnectionResultOutput)
 }
 

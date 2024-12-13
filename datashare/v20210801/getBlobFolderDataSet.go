@@ -61,21 +61,11 @@ type LookupBlobFolderDataSetResult struct {
 }
 
 func LookupBlobFolderDataSetOutput(ctx *pulumi.Context, args LookupBlobFolderDataSetOutputArgs, opts ...pulumi.InvokeOption) LookupBlobFolderDataSetResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupBlobFolderDataSetResultOutput, error) {
 			args := v.(LookupBlobFolderDataSetArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupBlobFolderDataSetResult
-			secret, err := ctx.InvokePackageRaw("azure-native:datashare/v20210801:getBlobFolderDataSet", args, &rv, "", opts...)
-			if err != nil {
-				return LookupBlobFolderDataSetResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupBlobFolderDataSetResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupBlobFolderDataSetResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:datashare/v20210801:getBlobFolderDataSet", args, LookupBlobFolderDataSetResultOutput{}, options).(LookupBlobFolderDataSetResultOutput), nil
 		}).(LookupBlobFolderDataSetResultOutput)
 }
 

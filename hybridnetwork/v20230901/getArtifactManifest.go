@@ -52,21 +52,11 @@ type LookupArtifactManifestResult struct {
 }
 
 func LookupArtifactManifestOutput(ctx *pulumi.Context, args LookupArtifactManifestOutputArgs, opts ...pulumi.InvokeOption) LookupArtifactManifestResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupArtifactManifestResultOutput, error) {
 			args := v.(LookupArtifactManifestArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupArtifactManifestResult
-			secret, err := ctx.InvokePackageRaw("azure-native:hybridnetwork/v20230901:getArtifactManifest", args, &rv, "", opts...)
-			if err != nil {
-				return LookupArtifactManifestResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupArtifactManifestResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupArtifactManifestResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:hybridnetwork/v20230901:getArtifactManifest", args, LookupArtifactManifestResultOutput{}, options).(LookupArtifactManifestResultOutput), nil
 		}).(LookupArtifactManifestResultOutput)
 }
 

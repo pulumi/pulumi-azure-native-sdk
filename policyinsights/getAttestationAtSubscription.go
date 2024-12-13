@@ -65,21 +65,11 @@ type LookupAttestationAtSubscriptionResult struct {
 }
 
 func LookupAttestationAtSubscriptionOutput(ctx *pulumi.Context, args LookupAttestationAtSubscriptionOutputArgs, opts ...pulumi.InvokeOption) LookupAttestationAtSubscriptionResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAttestationAtSubscriptionResultOutput, error) {
 			args := v.(LookupAttestationAtSubscriptionArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupAttestationAtSubscriptionResult
-			secret, err := ctx.InvokePackageRaw("azure-native:policyinsights:getAttestationAtSubscription", args, &rv, "", opts...)
-			if err != nil {
-				return LookupAttestationAtSubscriptionResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupAttestationAtSubscriptionResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupAttestationAtSubscriptionResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:policyinsights:getAttestationAtSubscription", args, LookupAttestationAtSubscriptionResultOutput{}, options).(LookupAttestationAtSubscriptionResultOutput), nil
 		}).(LookupAttestationAtSubscriptionResultOutput)
 }
 

@@ -48,21 +48,11 @@ type LookupPartnerConfigurationResult struct {
 }
 
 func LookupPartnerConfigurationOutput(ctx *pulumi.Context, args LookupPartnerConfigurationOutputArgs, opts ...pulumi.InvokeOption) LookupPartnerConfigurationResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupPartnerConfigurationResultOutput, error) {
 			args := v.(LookupPartnerConfigurationArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupPartnerConfigurationResult
-			secret, err := ctx.InvokePackageRaw("azure-native:eventgrid/v20240601preview:getPartnerConfiguration", args, &rv, "", opts...)
-			if err != nil {
-				return LookupPartnerConfigurationResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupPartnerConfigurationResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupPartnerConfigurationResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:eventgrid/v20240601preview:getPartnerConfiguration", args, LookupPartnerConfigurationResultOutput{}, options).(LookupPartnerConfigurationResultOutput), nil
 		}).(LookupPartnerConfigurationResultOutput)
 }
 

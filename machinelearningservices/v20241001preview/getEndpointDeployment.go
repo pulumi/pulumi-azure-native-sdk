@@ -45,21 +45,11 @@ type LookupEndpointDeploymentResult struct {
 }
 
 func LookupEndpointDeploymentOutput(ctx *pulumi.Context, args LookupEndpointDeploymentOutputArgs, opts ...pulumi.InvokeOption) LookupEndpointDeploymentResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupEndpointDeploymentResultOutput, error) {
 			args := v.(LookupEndpointDeploymentArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupEndpointDeploymentResult
-			secret, err := ctx.InvokePackageRaw("azure-native:machinelearningservices/v20241001preview:getEndpointDeployment", args, &rv, "", opts...)
-			if err != nil {
-				return LookupEndpointDeploymentResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupEndpointDeploymentResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupEndpointDeploymentResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:machinelearningservices/v20241001preview:getEndpointDeployment", args, LookupEndpointDeploymentResultOutput{}, options).(LookupEndpointDeploymentResultOutput), nil
 		}).(LookupEndpointDeploymentResultOutput)
 }
 

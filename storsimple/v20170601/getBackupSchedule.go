@@ -60,21 +60,11 @@ type LookupBackupScheduleResult struct {
 }
 
 func LookupBackupScheduleOutput(ctx *pulumi.Context, args LookupBackupScheduleOutputArgs, opts ...pulumi.InvokeOption) LookupBackupScheduleResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupBackupScheduleResultOutput, error) {
 			args := v.(LookupBackupScheduleArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupBackupScheduleResult
-			secret, err := ctx.InvokePackageRaw("azure-native:storsimple/v20170601:getBackupSchedule", args, &rv, "", opts...)
-			if err != nil {
-				return LookupBackupScheduleResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupBackupScheduleResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupBackupScheduleResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:storsimple/v20170601:getBackupSchedule", args, LookupBackupScheduleResultOutput{}, options).(LookupBackupScheduleResultOutput), nil
 		}).(LookupBackupScheduleResultOutput)
 }
 

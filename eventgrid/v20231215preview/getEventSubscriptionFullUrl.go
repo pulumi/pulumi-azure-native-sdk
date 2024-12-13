@@ -36,21 +36,11 @@ type GetEventSubscriptionFullUrlResult struct {
 }
 
 func GetEventSubscriptionFullUrlOutput(ctx *pulumi.Context, args GetEventSubscriptionFullUrlOutputArgs, opts ...pulumi.InvokeOption) GetEventSubscriptionFullUrlResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetEventSubscriptionFullUrlResultOutput, error) {
 			args := v.(GetEventSubscriptionFullUrlArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetEventSubscriptionFullUrlResult
-			secret, err := ctx.InvokePackageRaw("azure-native:eventgrid/v20231215preview:getEventSubscriptionFullUrl", args, &rv, "", opts...)
-			if err != nil {
-				return GetEventSubscriptionFullUrlResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetEventSubscriptionFullUrlResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetEventSubscriptionFullUrlResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:eventgrid/v20231215preview:getEventSubscriptionFullUrl", args, GetEventSubscriptionFullUrlResultOutput{}, options).(GetEventSubscriptionFullUrlResultOutput), nil
 		}).(GetEventSubscriptionFullUrlResultOutput)
 }
 

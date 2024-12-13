@@ -62,21 +62,11 @@ type LookupADLSGen2FolderDataSetResult struct {
 }
 
 func LookupADLSGen2FolderDataSetOutput(ctx *pulumi.Context, args LookupADLSGen2FolderDataSetOutputArgs, opts ...pulumi.InvokeOption) LookupADLSGen2FolderDataSetResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupADLSGen2FolderDataSetResultOutput, error) {
 			args := v.(LookupADLSGen2FolderDataSetArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupADLSGen2FolderDataSetResult
-			secret, err := ctx.InvokePackageRaw("azure-native:datashare:getADLSGen2FolderDataSet", args, &rv, "", opts...)
-			if err != nil {
-				return LookupADLSGen2FolderDataSetResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupADLSGen2FolderDataSetResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupADLSGen2FolderDataSetResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:datashare:getADLSGen2FolderDataSet", args, LookupADLSGen2FolderDataSetResultOutput{}, options).(LookupADLSGen2FolderDataSetResultOutput), nil
 		}).(LookupADLSGen2FolderDataSetResultOutput)
 }
 

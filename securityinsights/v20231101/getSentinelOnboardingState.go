@@ -48,21 +48,11 @@ type LookupSentinelOnboardingStateResult struct {
 }
 
 func LookupSentinelOnboardingStateOutput(ctx *pulumi.Context, args LookupSentinelOnboardingStateOutputArgs, opts ...pulumi.InvokeOption) LookupSentinelOnboardingStateResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupSentinelOnboardingStateResultOutput, error) {
 			args := v.(LookupSentinelOnboardingStateArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupSentinelOnboardingStateResult
-			secret, err := ctx.InvokePackageRaw("azure-native:securityinsights/v20231101:getSentinelOnboardingState", args, &rv, "", opts...)
-			if err != nil {
-				return LookupSentinelOnboardingStateResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupSentinelOnboardingStateResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupSentinelOnboardingStateResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:securityinsights/v20231101:getSentinelOnboardingState", args, LookupSentinelOnboardingStateResultOutput{}, options).(LookupSentinelOnboardingStateResultOutput), nil
 		}).(LookupSentinelOnboardingStateResultOutput)
 }
 

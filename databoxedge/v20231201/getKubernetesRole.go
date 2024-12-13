@@ -66,21 +66,11 @@ type LookupKubernetesRoleResult struct {
 }
 
 func LookupKubernetesRoleOutput(ctx *pulumi.Context, args LookupKubernetesRoleOutputArgs, opts ...pulumi.InvokeOption) LookupKubernetesRoleResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupKubernetesRoleResultOutput, error) {
 			args := v.(LookupKubernetesRoleArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupKubernetesRoleResult
-			secret, err := ctx.InvokePackageRaw("azure-native:databoxedge/v20231201:getKubernetesRole", args, &rv, "", opts...)
-			if err != nil {
-				return LookupKubernetesRoleResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupKubernetesRoleResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupKubernetesRoleResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:databoxedge/v20231201:getKubernetesRole", args, LookupKubernetesRoleResultOutput{}, options).(LookupKubernetesRoleResultOutput), nil
 		}).(LookupKubernetesRoleResultOutput)
 }
 

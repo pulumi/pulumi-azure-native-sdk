@@ -49,21 +49,11 @@ type LookupCloudFormationStackResult struct {
 }
 
 func LookupCloudFormationStackOutput(ctx *pulumi.Context, args LookupCloudFormationStackOutputArgs, opts ...pulumi.InvokeOption) LookupCloudFormationStackResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupCloudFormationStackResultOutput, error) {
 			args := v.(LookupCloudFormationStackArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupCloudFormationStackResult
-			secret, err := ctx.InvokePackageRaw("azure-native:awsconnector:getCloudFormationStack", args, &rv, "", opts...)
-			if err != nil {
-				return LookupCloudFormationStackResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupCloudFormationStackResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupCloudFormationStackResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:awsconnector:getCloudFormationStack", args, LookupCloudFormationStackResultOutput{}, options).(LookupCloudFormationStackResultOutput), nil
 		}).(LookupCloudFormationStackResultOutput)
 }
 

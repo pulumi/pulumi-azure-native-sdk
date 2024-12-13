@@ -48,21 +48,11 @@ type LookupThreatIntelligenceIndicatorResult struct {
 }
 
 func LookupThreatIntelligenceIndicatorOutput(ctx *pulumi.Context, args LookupThreatIntelligenceIndicatorOutputArgs, opts ...pulumi.InvokeOption) LookupThreatIntelligenceIndicatorResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupThreatIntelligenceIndicatorResultOutput, error) {
 			args := v.(LookupThreatIntelligenceIndicatorArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupThreatIntelligenceIndicatorResult
-			secret, err := ctx.InvokePackageRaw("azure-native:securityinsights/v20210901preview:getThreatIntelligenceIndicator", args, &rv, "", opts...)
-			if err != nil {
-				return LookupThreatIntelligenceIndicatorResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupThreatIntelligenceIndicatorResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupThreatIntelligenceIndicatorResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:securityinsights/v20210901preview:getThreatIntelligenceIndicator", args, LookupThreatIntelligenceIndicatorResultOutput{}, options).(LookupThreatIntelligenceIndicatorResultOutput), nil
 		}).(LookupThreatIntelligenceIndicatorResultOutput)
 }
 

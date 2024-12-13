@@ -60,21 +60,11 @@ type LookupRemoteRenderingAccountResult struct {
 }
 
 func LookupRemoteRenderingAccountOutput(ctx *pulumi.Context, args LookupRemoteRenderingAccountOutputArgs, opts ...pulumi.InvokeOption) LookupRemoteRenderingAccountResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupRemoteRenderingAccountResultOutput, error) {
 			args := v.(LookupRemoteRenderingAccountArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupRemoteRenderingAccountResult
-			secret, err := ctx.InvokePackageRaw("azure-native:mixedreality/v20210101:getRemoteRenderingAccount", args, &rv, "", opts...)
-			if err != nil {
-				return LookupRemoteRenderingAccountResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupRemoteRenderingAccountResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupRemoteRenderingAccountResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:mixedreality/v20210101:getRemoteRenderingAccount", args, LookupRemoteRenderingAccountResultOutput{}, options).(LookupRemoteRenderingAccountResultOutput), nil
 		}).(LookupRemoteRenderingAccountResultOutput)
 }
 

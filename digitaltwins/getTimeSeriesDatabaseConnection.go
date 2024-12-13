@@ -56,23 +56,12 @@ func (val *LookupTimeSeriesDatabaseConnectionResult) Defaults() *LookupTimeSerie
 
 	return &tmp
 }
-
 func LookupTimeSeriesDatabaseConnectionOutput(ctx *pulumi.Context, args LookupTimeSeriesDatabaseConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupTimeSeriesDatabaseConnectionResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupTimeSeriesDatabaseConnectionResultOutput, error) {
 			args := v.(LookupTimeSeriesDatabaseConnectionArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupTimeSeriesDatabaseConnectionResult
-			secret, err := ctx.InvokePackageRaw("azure-native:digitaltwins:getTimeSeriesDatabaseConnection", args, &rv, "", opts...)
-			if err != nil {
-				return LookupTimeSeriesDatabaseConnectionResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupTimeSeriesDatabaseConnectionResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupTimeSeriesDatabaseConnectionResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:digitaltwins:getTimeSeriesDatabaseConnection", args, LookupTimeSeriesDatabaseConnectionResultOutput{}, options).(LookupTimeSeriesDatabaseConnectionResultOutput), nil
 		}).(LookupTimeSeriesDatabaseConnectionResultOutput)
 }
 

@@ -75,23 +75,12 @@ func (val *LookupContainerAppResult) Defaults() *LookupContainerAppResult {
 
 	return &tmp
 }
-
 func LookupContainerAppOutput(ctx *pulumi.Context, args LookupContainerAppOutputArgs, opts ...pulumi.InvokeOption) LookupContainerAppResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupContainerAppResultOutput, error) {
 			args := v.(LookupContainerAppArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupContainerAppResult
-			secret, err := ctx.InvokePackageRaw("azure-native:app/v20220101preview:getContainerApp", args, &rv, "", opts...)
-			if err != nil {
-				return LookupContainerAppResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupContainerAppResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupContainerAppResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:app/v20220101preview:getContainerApp", args, LookupContainerAppResultOutput{}, options).(LookupContainerAppResultOutput), nil
 		}).(LookupContainerAppResultOutput)
 }
 

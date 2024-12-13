@@ -54,21 +54,11 @@ type GetUserSharedAccessTokenResult struct {
 }
 
 func GetUserSharedAccessTokenOutput(ctx *pulumi.Context, args GetUserSharedAccessTokenOutputArgs, opts ...pulumi.InvokeOption) GetUserSharedAccessTokenResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetUserSharedAccessTokenResultOutput, error) {
 			args := v.(GetUserSharedAccessTokenArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetUserSharedAccessTokenResult
-			secret, err := ctx.InvokePackageRaw("azure-native:apimanagement/v20230901preview:getUserSharedAccessToken", args.Defaults(), &rv, "", opts...)
-			if err != nil {
-				return GetUserSharedAccessTokenResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetUserSharedAccessTokenResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetUserSharedAccessTokenResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:apimanagement/v20230901preview:getUserSharedAccessToken", args.Defaults(), GetUserSharedAccessTokenResultOutput{}, options).(GetUserSharedAccessTokenResultOutput), nil
 		}).(GetUserSharedAccessTokenResultOutput)
 }
 

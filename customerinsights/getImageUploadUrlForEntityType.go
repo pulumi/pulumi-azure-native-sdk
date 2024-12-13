@@ -47,21 +47,11 @@ type GetImageUploadUrlForEntityTypeResult struct {
 }
 
 func GetImageUploadUrlForEntityTypeOutput(ctx *pulumi.Context, args GetImageUploadUrlForEntityTypeOutputArgs, opts ...pulumi.InvokeOption) GetImageUploadUrlForEntityTypeResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetImageUploadUrlForEntityTypeResultOutput, error) {
 			args := v.(GetImageUploadUrlForEntityTypeArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetImageUploadUrlForEntityTypeResult
-			secret, err := ctx.InvokePackageRaw("azure-native:customerinsights:getImageUploadUrlForEntityType", args, &rv, "", opts...)
-			if err != nil {
-				return GetImageUploadUrlForEntityTypeResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetImageUploadUrlForEntityTypeResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetImageUploadUrlForEntityTypeResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:customerinsights:getImageUploadUrlForEntityType", args, GetImageUploadUrlForEntityTypeResultOutput{}, options).(GetImageUploadUrlForEntityTypeResultOutput), nil
 		}).(GetImageUploadUrlForEntityTypeResultOutput)
 }
 

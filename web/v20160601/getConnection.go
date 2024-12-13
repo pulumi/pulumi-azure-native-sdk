@@ -49,21 +49,11 @@ type LookupConnectionResult struct {
 }
 
 func LookupConnectionOutput(ctx *pulumi.Context, args LookupConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupConnectionResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupConnectionResultOutput, error) {
 			args := v.(LookupConnectionArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupConnectionResult
-			secret, err := ctx.InvokePackageRaw("azure-native:web/v20160601:getConnection", args, &rv, "", opts...)
-			if err != nil {
-				return LookupConnectionResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupConnectionResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupConnectionResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:web/v20160601:getConnection", args, LookupConnectionResultOutput{}, options).(LookupConnectionResultOutput), nil
 		}).(LookupConnectionResultOutput)
 }
 

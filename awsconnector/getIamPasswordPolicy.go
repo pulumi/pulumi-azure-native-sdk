@@ -49,21 +49,11 @@ type LookupIamPasswordPolicyResult struct {
 }
 
 func LookupIamPasswordPolicyOutput(ctx *pulumi.Context, args LookupIamPasswordPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupIamPasswordPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupIamPasswordPolicyResultOutput, error) {
 			args := v.(LookupIamPasswordPolicyArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupIamPasswordPolicyResult
-			secret, err := ctx.InvokePackageRaw("azure-native:awsconnector:getIamPasswordPolicy", args, &rv, "", opts...)
-			if err != nil {
-				return LookupIamPasswordPolicyResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupIamPasswordPolicyResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupIamPasswordPolicyResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:awsconnector:getIamPasswordPolicy", args, LookupIamPasswordPolicyResultOutput{}, options).(LookupIamPasswordPolicyResultOutput), nil
 		}).(LookupIamPasswordPolicyResultOutput)
 }
 

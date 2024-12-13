@@ -99,23 +99,12 @@ func (val *LookupPrivateCloudResult) Defaults() *LookupPrivateCloudResult {
 	}
 	return &tmp
 }
-
 func LookupPrivateCloudOutput(ctx *pulumi.Context, args LookupPrivateCloudOutputArgs, opts ...pulumi.InvokeOption) LookupPrivateCloudResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupPrivateCloudResultOutput, error) {
 			args := v.(LookupPrivateCloudArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupPrivateCloudResult
-			secret, err := ctx.InvokePackageRaw("azure-native:avs/v20230301:getPrivateCloud", args, &rv, "", opts...)
-			if err != nil {
-				return LookupPrivateCloudResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupPrivateCloudResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupPrivateCloudResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:avs/v20230301:getPrivateCloud", args, LookupPrivateCloudResultOutput{}, options).(LookupPrivateCloudResultOutput), nil
 		}).(LookupPrivateCloudResultOutput)
 }
 

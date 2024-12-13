@@ -66,21 +66,11 @@ type LookupIscsiTargetResult struct {
 }
 
 func LookupIscsiTargetOutput(ctx *pulumi.Context, args LookupIscsiTargetOutputArgs, opts ...pulumi.InvokeOption) LookupIscsiTargetResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupIscsiTargetResultOutput, error) {
 			args := v.(LookupIscsiTargetArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupIscsiTargetResult
-			secret, err := ctx.InvokePackageRaw("azure-native:storagepool/v20210801:getIscsiTarget", args, &rv, "", opts...)
-			if err != nil {
-				return LookupIscsiTargetResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupIscsiTargetResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupIscsiTargetResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:storagepool/v20210801:getIscsiTarget", args, LookupIscsiTargetResultOutput{}, options).(LookupIscsiTargetResultOutput), nil
 		}).(LookupIscsiTargetResultOutput)
 }
 

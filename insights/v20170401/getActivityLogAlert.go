@@ -65,23 +65,12 @@ func (val *LookupActivityLogAlertResult) Defaults() *LookupActivityLogAlertResul
 	}
 	return &tmp
 }
-
 func LookupActivityLogAlertOutput(ctx *pulumi.Context, args LookupActivityLogAlertOutputArgs, opts ...pulumi.InvokeOption) LookupActivityLogAlertResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupActivityLogAlertResultOutput, error) {
 			args := v.(LookupActivityLogAlertArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupActivityLogAlertResult
-			secret, err := ctx.InvokePackageRaw("azure-native:insights/v20170401:getActivityLogAlert", args, &rv, "", opts...)
-			if err != nil {
-				return LookupActivityLogAlertResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupActivityLogAlertResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupActivityLogAlertResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:insights/v20170401:getActivityLogAlert", args, LookupActivityLogAlertResultOutput{}, options).(LookupActivityLogAlertResultOutput), nil
 		}).(LookupActivityLogAlertResultOutput)
 }
 

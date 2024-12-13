@@ -40,21 +40,11 @@ type ListWebAppSyncFunctionTriggersSlotResult struct {
 }
 
 func ListWebAppSyncFunctionTriggersSlotOutput(ctx *pulumi.Context, args ListWebAppSyncFunctionTriggersSlotOutputArgs, opts ...pulumi.InvokeOption) ListWebAppSyncFunctionTriggersSlotResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListWebAppSyncFunctionTriggersSlotResultOutput, error) {
 			args := v.(ListWebAppSyncFunctionTriggersSlotArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListWebAppSyncFunctionTriggersSlotResult
-			secret, err := ctx.InvokePackageRaw("azure-native:web/v20201001:listWebAppSyncFunctionTriggersSlot", args, &rv, "", opts...)
-			if err != nil {
-				return ListWebAppSyncFunctionTriggersSlotResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListWebAppSyncFunctionTriggersSlotResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListWebAppSyncFunctionTriggersSlotResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:web/v20201001:listWebAppSyncFunctionTriggersSlot", args, ListWebAppSyncFunctionTriggersSlotResultOutput{}, options).(ListWebAppSyncFunctionTriggersSlotResultOutput), nil
 		}).(ListWebAppSyncFunctionTriggersSlotResultOutput)
 }
 

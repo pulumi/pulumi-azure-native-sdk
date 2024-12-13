@@ -38,21 +38,11 @@ type ListGlobalRulestackPredefinedUrlCategoriesResult struct {
 }
 
 func ListGlobalRulestackPredefinedUrlCategoriesOutput(ctx *pulumi.Context, args ListGlobalRulestackPredefinedUrlCategoriesOutputArgs, opts ...pulumi.InvokeOption) ListGlobalRulestackPredefinedUrlCategoriesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListGlobalRulestackPredefinedUrlCategoriesResultOutput, error) {
 			args := v.(ListGlobalRulestackPredefinedUrlCategoriesArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListGlobalRulestackPredefinedUrlCategoriesResult
-			secret, err := ctx.InvokePackageRaw("azure-native:cloudngfw/v20230901preview:listGlobalRulestackPredefinedUrlCategories", args, &rv, "", opts...)
-			if err != nil {
-				return ListGlobalRulestackPredefinedUrlCategoriesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListGlobalRulestackPredefinedUrlCategoriesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListGlobalRulestackPredefinedUrlCategoriesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:cloudngfw/v20230901preview:listGlobalRulestackPredefinedUrlCategories", args, ListGlobalRulestackPredefinedUrlCategoriesResultOutput{}, options).(ListGlobalRulestackPredefinedUrlCategoriesResultOutput), nil
 		}).(ListGlobalRulestackPredefinedUrlCategoriesResultOutput)
 }
 

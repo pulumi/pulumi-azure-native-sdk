@@ -52,21 +52,11 @@ type ListEventHubKeysResult struct {
 }
 
 func ListEventHubKeysOutput(ctx *pulumi.Context, args ListEventHubKeysOutputArgs, opts ...pulumi.InvokeOption) ListEventHubKeysResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListEventHubKeysResultOutput, error) {
 			args := v.(ListEventHubKeysArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListEventHubKeysResult
-			secret, err := ctx.InvokePackageRaw("azure-native:eventhub/v20240101:listEventHubKeys", args, &rv, "", opts...)
-			if err != nil {
-				return ListEventHubKeysResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListEventHubKeysResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListEventHubKeysResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:eventhub/v20240101:listEventHubKeys", args, ListEventHubKeysResultOutput{}, options).(ListEventHubKeysResultOutput), nil
 		}).(ListEventHubKeysResultOutput)
 }
 

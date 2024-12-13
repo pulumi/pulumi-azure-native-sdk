@@ -44,21 +44,11 @@ type LookupDevOpsConfigurationResult struct {
 }
 
 func LookupDevOpsConfigurationOutput(ctx *pulumi.Context, args LookupDevOpsConfigurationOutputArgs, opts ...pulumi.InvokeOption) LookupDevOpsConfigurationResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupDevOpsConfigurationResultOutput, error) {
 			args := v.(LookupDevOpsConfigurationArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupDevOpsConfigurationResult
-			secret, err := ctx.InvokePackageRaw("azure-native:security/v20240515preview:getDevOpsConfiguration", args, &rv, "", opts...)
-			if err != nil {
-				return LookupDevOpsConfigurationResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupDevOpsConfigurationResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupDevOpsConfigurationResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:security/v20240515preview:getDevOpsConfiguration", args, LookupDevOpsConfigurationResultOutput{}, options).(LookupDevOpsConfigurationResultOutput), nil
 		}).(LookupDevOpsConfigurationResultOutput)
 }
 
