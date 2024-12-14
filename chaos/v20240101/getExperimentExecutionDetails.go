@@ -54,21 +54,11 @@ type GetExperimentExecutionDetailsResult struct {
 }
 
 func GetExperimentExecutionDetailsOutput(ctx *pulumi.Context, args GetExperimentExecutionDetailsOutputArgs, opts ...pulumi.InvokeOption) GetExperimentExecutionDetailsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetExperimentExecutionDetailsResultOutput, error) {
 			args := v.(GetExperimentExecutionDetailsArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetExperimentExecutionDetailsResult
-			secret, err := ctx.InvokePackageRaw("azure-native:chaos/v20240101:getExperimentExecutionDetails", args, &rv, "", opts...)
-			if err != nil {
-				return GetExperimentExecutionDetailsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetExperimentExecutionDetailsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetExperimentExecutionDetailsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:chaos/v20240101:getExperimentExecutionDetails", args, GetExperimentExecutionDetailsResultOutput{}, options).(GetExperimentExecutionDetailsResultOutput), nil
 		}).(GetExperimentExecutionDetailsResultOutput)
 }
 

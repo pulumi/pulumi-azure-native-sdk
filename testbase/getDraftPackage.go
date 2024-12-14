@@ -114,23 +114,12 @@ func (val *LookupDraftPackageResult) Defaults() *LookupDraftPackageResult {
 	}
 	return &tmp
 }
-
 func LookupDraftPackageOutput(ctx *pulumi.Context, args LookupDraftPackageOutputArgs, opts ...pulumi.InvokeOption) LookupDraftPackageResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupDraftPackageResultOutput, error) {
 			args := v.(LookupDraftPackageArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupDraftPackageResult
-			secret, err := ctx.InvokePackageRaw("azure-native:testbase:getDraftPackage", args, &rv, "", opts...)
-			if err != nil {
-				return LookupDraftPackageResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupDraftPackageResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupDraftPackageResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:testbase:getDraftPackage", args, LookupDraftPackageResultOutput{}, options).(LookupDraftPackageResultOutput), nil
 		}).(LookupDraftPackageResultOutput)
 }
 

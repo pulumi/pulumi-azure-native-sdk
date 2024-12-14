@@ -44,21 +44,11 @@ type ListNetworkManagerDeploymentStatusResult struct {
 }
 
 func ListNetworkManagerDeploymentStatusOutput(ctx *pulumi.Context, args ListNetworkManagerDeploymentStatusOutputArgs, opts ...pulumi.InvokeOption) ListNetworkManagerDeploymentStatusResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListNetworkManagerDeploymentStatusResultOutput, error) {
 			args := v.(ListNetworkManagerDeploymentStatusArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListNetworkManagerDeploymentStatusResult
-			secret, err := ctx.InvokePackageRaw("azure-native:network/v20210501preview:listNetworkManagerDeploymentStatus", args, &rv, "", opts...)
-			if err != nil {
-				return ListNetworkManagerDeploymentStatusResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListNetworkManagerDeploymentStatusResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListNetworkManagerDeploymentStatusResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:network/v20210501preview:listNetworkManagerDeploymentStatus", args, ListNetworkManagerDeploymentStatusResultOutput{}, options).(ListNetworkManagerDeploymentStatusResultOutput), nil
 		}).(ListNetworkManagerDeploymentStatusResultOutput)
 }
 

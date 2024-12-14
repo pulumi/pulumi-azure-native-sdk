@@ -52,21 +52,11 @@ type LookupArchiveVersionResult struct {
 }
 
 func LookupArchiveVersionOutput(ctx *pulumi.Context, args LookupArchiveVersionOutputArgs, opts ...pulumi.InvokeOption) LookupArchiveVersionResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupArchiveVersionResultOutput, error) {
 			args := v.(LookupArchiveVersionArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupArchiveVersionResult
-			secret, err := ctx.InvokePackageRaw("azure-native:containerregistry/v20230601preview:getArchiveVersion", args, &rv, "", opts...)
-			if err != nil {
-				return LookupArchiveVersionResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupArchiveVersionResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupArchiveVersionResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:containerregistry/v20230601preview:getArchiveVersion", args, LookupArchiveVersionResultOutput{}, options).(LookupArchiveVersionResultOutput), nil
 		}).(LookupArchiveVersionResultOutput)
 }
 

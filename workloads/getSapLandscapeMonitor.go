@@ -51,21 +51,11 @@ type LookupSapLandscapeMonitorResult struct {
 }
 
 func LookupSapLandscapeMonitorOutput(ctx *pulumi.Context, args LookupSapLandscapeMonitorOutputArgs, opts ...pulumi.InvokeOption) LookupSapLandscapeMonitorResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupSapLandscapeMonitorResultOutput, error) {
 			args := v.(LookupSapLandscapeMonitorArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupSapLandscapeMonitorResult
-			secret, err := ctx.InvokePackageRaw("azure-native:workloads:getSapLandscapeMonitor", args, &rv, "", opts...)
-			if err != nil {
-				return LookupSapLandscapeMonitorResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupSapLandscapeMonitorResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupSapLandscapeMonitorResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:workloads:getSapLandscapeMonitor", args, LookupSapLandscapeMonitorResultOutput{}, options).(LookupSapLandscapeMonitorResultOutput), nil
 		}).(LookupSapLandscapeMonitorResultOutput)
 }
 

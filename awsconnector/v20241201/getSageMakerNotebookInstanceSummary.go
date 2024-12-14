@@ -48,21 +48,11 @@ type LookupSageMakerNotebookInstanceSummaryResult struct {
 }
 
 func LookupSageMakerNotebookInstanceSummaryOutput(ctx *pulumi.Context, args LookupSageMakerNotebookInstanceSummaryOutputArgs, opts ...pulumi.InvokeOption) LookupSageMakerNotebookInstanceSummaryResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupSageMakerNotebookInstanceSummaryResultOutput, error) {
 			args := v.(LookupSageMakerNotebookInstanceSummaryArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupSageMakerNotebookInstanceSummaryResult
-			secret, err := ctx.InvokePackageRaw("azure-native:awsconnector/v20241201:getSageMakerNotebookInstanceSummary", args, &rv, "", opts...)
-			if err != nil {
-				return LookupSageMakerNotebookInstanceSummaryResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupSageMakerNotebookInstanceSummaryResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupSageMakerNotebookInstanceSummaryResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:awsconnector/v20241201:getSageMakerNotebookInstanceSummary", args, LookupSageMakerNotebookInstanceSummaryResultOutput{}, options).(LookupSageMakerNotebookInstanceSummaryResultOutput), nil
 		}).(LookupSageMakerNotebookInstanceSummaryResultOutput)
 }
 

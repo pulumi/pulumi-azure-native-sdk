@@ -87,21 +87,11 @@ type LookupNrtAlertRuleResult struct {
 }
 
 func LookupNrtAlertRuleOutput(ctx *pulumi.Context, args LookupNrtAlertRuleOutputArgs, opts ...pulumi.InvokeOption) LookupNrtAlertRuleResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupNrtAlertRuleResultOutput, error) {
 			args := v.(LookupNrtAlertRuleArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupNrtAlertRuleResult
-			secret, err := ctx.InvokePackageRaw("azure-native:securityinsights/v20240101preview:getNrtAlertRule", args, &rv, "", opts...)
-			if err != nil {
-				return LookupNrtAlertRuleResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupNrtAlertRuleResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupNrtAlertRuleResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:securityinsights/v20240101preview:getNrtAlertRule", args, LookupNrtAlertRuleResultOutput{}, options).(LookupNrtAlertRuleResultOutput), nil
 		}).(LookupNrtAlertRuleResultOutput)
 }
 

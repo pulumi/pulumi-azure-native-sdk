@@ -54,21 +54,11 @@ type LookupLoadTestResult struct {
 }
 
 func LookupLoadTestOutput(ctx *pulumi.Context, args LookupLoadTestOutputArgs, opts ...pulumi.InvokeOption) LookupLoadTestResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupLoadTestResultOutput, error) {
 			args := v.(LookupLoadTestArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupLoadTestResult
-			secret, err := ctx.InvokePackageRaw("azure-native:loadtestservice/v20211201preview:getLoadTest", args, &rv, "", opts...)
-			if err != nil {
-				return LookupLoadTestResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupLoadTestResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupLoadTestResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:loadtestservice/v20211201preview:getLoadTest", args, LookupLoadTestResultOutput{}, options).(LookupLoadTestResultOutput), nil
 		}).(LookupLoadTestResultOutput)
 }
 

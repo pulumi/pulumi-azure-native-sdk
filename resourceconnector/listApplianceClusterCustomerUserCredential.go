@@ -39,21 +39,11 @@ type ListApplianceClusterCustomerUserCredentialResult struct {
 }
 
 func ListApplianceClusterCustomerUserCredentialOutput(ctx *pulumi.Context, args ListApplianceClusterCustomerUserCredentialOutputArgs, opts ...pulumi.InvokeOption) ListApplianceClusterCustomerUserCredentialResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListApplianceClusterCustomerUserCredentialResultOutput, error) {
 			args := v.(ListApplianceClusterCustomerUserCredentialArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListApplianceClusterCustomerUserCredentialResult
-			secret, err := ctx.InvokePackageRaw("azure-native:resourceconnector:listApplianceClusterCustomerUserCredential", args, &rv, "", opts...)
-			if err != nil {
-				return ListApplianceClusterCustomerUserCredentialResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListApplianceClusterCustomerUserCredentialResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListApplianceClusterCustomerUserCredentialResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:resourceconnector:listApplianceClusterCustomerUserCredential", args, ListApplianceClusterCustomerUserCredentialResultOutput{}, options).(ListApplianceClusterCustomerUserCredentialResultOutput), nil
 		}).(ListApplianceClusterCustomerUserCredentialResultOutput)
 }
 

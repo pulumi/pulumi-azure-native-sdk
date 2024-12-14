@@ -46,21 +46,11 @@ type LookupKeyResult struct {
 }
 
 func LookupKeyOutput(ctx *pulumi.Context, args LookupKeyOutputArgs, opts ...pulumi.InvokeOption) LookupKeyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupKeyResultOutput, error) {
 			args := v.(LookupKeyArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupKeyResult
-			secret, err := ctx.InvokePackageRaw("azure-native:synapse/v20210601preview:getKey", args, &rv, "", opts...)
-			if err != nil {
-				return LookupKeyResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupKeyResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupKeyResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:synapse/v20210601preview:getKey", args, LookupKeyResultOutput{}, options).(LookupKeyResultOutput), nil
 		}).(LookupKeyResultOutput)
 }
 

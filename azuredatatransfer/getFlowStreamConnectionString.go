@@ -39,21 +39,11 @@ type GetFlowStreamConnectionStringResult struct {
 }
 
 func GetFlowStreamConnectionStringOutput(ctx *pulumi.Context, args GetFlowStreamConnectionStringOutputArgs, opts ...pulumi.InvokeOption) GetFlowStreamConnectionStringResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetFlowStreamConnectionStringResultOutput, error) {
 			args := v.(GetFlowStreamConnectionStringArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetFlowStreamConnectionStringResult
-			secret, err := ctx.InvokePackageRaw("azure-native:azuredatatransfer:getFlowStreamConnectionString", args, &rv, "", opts...)
-			if err != nil {
-				return GetFlowStreamConnectionStringResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetFlowStreamConnectionStringResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetFlowStreamConnectionStringResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:azuredatatransfer:getFlowStreamConnectionString", args, GetFlowStreamConnectionStringResultOutput{}, options).(GetFlowStreamConnectionStringResultOutput), nil
 		}).(GetFlowStreamConnectionStringResultOutput)
 }
 

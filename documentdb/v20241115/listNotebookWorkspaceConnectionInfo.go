@@ -40,21 +40,11 @@ type ListNotebookWorkspaceConnectionInfoResult struct {
 }
 
 func ListNotebookWorkspaceConnectionInfoOutput(ctx *pulumi.Context, args ListNotebookWorkspaceConnectionInfoOutputArgs, opts ...pulumi.InvokeOption) ListNotebookWorkspaceConnectionInfoResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListNotebookWorkspaceConnectionInfoResultOutput, error) {
 			args := v.(ListNotebookWorkspaceConnectionInfoArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListNotebookWorkspaceConnectionInfoResult
-			secret, err := ctx.InvokePackageRaw("azure-native:documentdb/v20241115:listNotebookWorkspaceConnectionInfo", args, &rv, "", opts...)
-			if err != nil {
-				return ListNotebookWorkspaceConnectionInfoResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListNotebookWorkspaceConnectionInfoResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListNotebookWorkspaceConnectionInfoResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:documentdb/v20241115:listNotebookWorkspaceConnectionInfo", args, ListNotebookWorkspaceConnectionInfoResultOutput{}, options).(ListNotebookWorkspaceConnectionInfoResultOutput), nil
 		}).(ListNotebookWorkspaceConnectionInfoResultOutput)
 }
 

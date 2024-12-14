@@ -58,21 +58,11 @@ type LookupVirtualMachineInstanceResult struct {
 }
 
 func LookupVirtualMachineInstanceOutput(ctx *pulumi.Context, args LookupVirtualMachineInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupVirtualMachineInstanceResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupVirtualMachineInstanceResultOutput, error) {
 			args := v.(LookupVirtualMachineInstanceArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupVirtualMachineInstanceResult
-			secret, err := ctx.InvokePackageRaw("azure-native:scvmm/v20231007:getVirtualMachineInstance", args, &rv, "", opts...)
-			if err != nil {
-				return LookupVirtualMachineInstanceResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupVirtualMachineInstanceResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupVirtualMachineInstanceResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:scvmm/v20231007:getVirtualMachineInstance", args, LookupVirtualMachineInstanceResultOutput{}, options).(LookupVirtualMachineInstanceResultOutput), nil
 		}).(LookupVirtualMachineInstanceResultOutput)
 }
 

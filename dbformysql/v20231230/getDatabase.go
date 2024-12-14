@@ -48,21 +48,11 @@ type LookupDatabaseResult struct {
 }
 
 func LookupDatabaseOutput(ctx *pulumi.Context, args LookupDatabaseOutputArgs, opts ...pulumi.InvokeOption) LookupDatabaseResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupDatabaseResultOutput, error) {
 			args := v.(LookupDatabaseArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupDatabaseResult
-			secret, err := ctx.InvokePackageRaw("azure-native:dbformysql/v20231230:getDatabase", args, &rv, "", opts...)
-			if err != nil {
-				return LookupDatabaseResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupDatabaseResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupDatabaseResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:dbformysql/v20231230:getDatabase", args, LookupDatabaseResultOutput{}, options).(LookupDatabaseResultOutput), nil
 		}).(LookupDatabaseResultOutput)
 }
 

@@ -48,21 +48,11 @@ type LookupAppSyncGraphqlApiResult struct {
 }
 
 func LookupAppSyncGraphqlApiOutput(ctx *pulumi.Context, args LookupAppSyncGraphqlApiOutputArgs, opts ...pulumi.InvokeOption) LookupAppSyncGraphqlApiResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAppSyncGraphqlApiResultOutput, error) {
 			args := v.(LookupAppSyncGraphqlApiArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupAppSyncGraphqlApiResult
-			secret, err := ctx.InvokePackageRaw("azure-native:awsconnector/v20241201:getAppSyncGraphqlApi", args, &rv, "", opts...)
-			if err != nil {
-				return LookupAppSyncGraphqlApiResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupAppSyncGraphqlApiResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupAppSyncGraphqlApiResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:awsconnector/v20241201:getAppSyncGraphqlApi", args, LookupAppSyncGraphqlApiResultOutput{}, options).(LookupAppSyncGraphqlApiResultOutput), nil
 		}).(LookupAppSyncGraphqlApiResultOutput)
 }
 

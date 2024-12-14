@@ -40,21 +40,11 @@ type ListArtifactManifestCredentialResult struct {
 }
 
 func ListArtifactManifestCredentialOutput(ctx *pulumi.Context, args ListArtifactManifestCredentialOutputArgs, opts ...pulumi.InvokeOption) ListArtifactManifestCredentialResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListArtifactManifestCredentialResultOutput, error) {
 			args := v.(ListArtifactManifestCredentialArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListArtifactManifestCredentialResult
-			secret, err := ctx.InvokePackageRaw("azure-native:hybridnetwork/v20240415:listArtifactManifestCredential", args, &rv, "", opts...)
-			if err != nil {
-				return ListArtifactManifestCredentialResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListArtifactManifestCredentialResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListArtifactManifestCredentialResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:hybridnetwork/v20240415:listArtifactManifestCredential", args, ListArtifactManifestCredentialResultOutput{}, options).(ListArtifactManifestCredentialResultOutput), nil
 		}).(ListArtifactManifestCredentialResultOutput)
 }
 

@@ -49,21 +49,11 @@ type LookupApmResult struct {
 }
 
 func LookupApmOutput(ctx *pulumi.Context, args LookupApmOutputArgs, opts ...pulumi.InvokeOption) LookupApmResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupApmResultOutput, error) {
 			args := v.(LookupApmArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupApmResult
-			secret, err := ctx.InvokePackageRaw("azure-native:appplatform:getApm", args, &rv, "", opts...)
-			if err != nil {
-				return LookupApmResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupApmResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupApmResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:appplatform:getApm", args, LookupApmResultOutput{}, options).(LookupApmResultOutput), nil
 		}).(LookupApmResultOutput)
 }
 

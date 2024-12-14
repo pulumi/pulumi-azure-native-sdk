@@ -40,21 +40,11 @@ type ListBatchAccountKeysResult struct {
 }
 
 func ListBatchAccountKeysOutput(ctx *pulumi.Context, args ListBatchAccountKeysOutputArgs, opts ...pulumi.InvokeOption) ListBatchAccountKeysResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListBatchAccountKeysResultOutput, error) {
 			args := v.(ListBatchAccountKeysArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListBatchAccountKeysResult
-			secret, err := ctx.InvokePackageRaw("azure-native:batch/v20231101:listBatchAccountKeys", args, &rv, "", opts...)
-			if err != nil {
-				return ListBatchAccountKeysResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListBatchAccountKeysResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListBatchAccountKeysResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:batch/v20231101:listBatchAccountKeys", args, ListBatchAccountKeysResultOutput{}, options).(ListBatchAccountKeysResultOutput), nil
 		}).(ListBatchAccountKeysResultOutput)
 }
 

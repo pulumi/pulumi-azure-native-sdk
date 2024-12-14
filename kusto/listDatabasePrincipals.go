@@ -41,21 +41,11 @@ type ListDatabasePrincipalsResult struct {
 }
 
 func ListDatabasePrincipalsOutput(ctx *pulumi.Context, args ListDatabasePrincipalsOutputArgs, opts ...pulumi.InvokeOption) ListDatabasePrincipalsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListDatabasePrincipalsResultOutput, error) {
 			args := v.(ListDatabasePrincipalsArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListDatabasePrincipalsResult
-			secret, err := ctx.InvokePackageRaw("azure-native:kusto:listDatabasePrincipals", args, &rv, "", opts...)
-			if err != nil {
-				return ListDatabasePrincipalsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListDatabasePrincipalsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListDatabasePrincipalsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:kusto:listDatabasePrincipals", args, ListDatabasePrincipalsResultOutput{}, options).(ListDatabasePrincipalsResultOutput), nil
 		}).(ListDatabasePrincipalsResultOutput)
 }
 

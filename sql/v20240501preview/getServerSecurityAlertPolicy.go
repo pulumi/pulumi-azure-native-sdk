@@ -60,21 +60,11 @@ type LookupServerSecurityAlertPolicyResult struct {
 }
 
 func LookupServerSecurityAlertPolicyOutput(ctx *pulumi.Context, args LookupServerSecurityAlertPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupServerSecurityAlertPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupServerSecurityAlertPolicyResultOutput, error) {
 			args := v.(LookupServerSecurityAlertPolicyArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupServerSecurityAlertPolicyResult
-			secret, err := ctx.InvokePackageRaw("azure-native:sql/v20240501preview:getServerSecurityAlertPolicy", args, &rv, "", opts...)
-			if err != nil {
-				return LookupServerSecurityAlertPolicyResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupServerSecurityAlertPolicyResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupServerSecurityAlertPolicyResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:sql/v20240501preview:getServerSecurityAlertPolicy", args, LookupServerSecurityAlertPolicyResultOutput{}, options).(LookupServerSecurityAlertPolicyResultOutput), nil
 		}).(LookupServerSecurityAlertPolicyResultOutput)
 }
 

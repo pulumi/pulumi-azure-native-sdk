@@ -60,21 +60,11 @@ type LookupAttachedDatabaseConfigurationResult struct {
 }
 
 func LookupAttachedDatabaseConfigurationOutput(ctx *pulumi.Context, args LookupAttachedDatabaseConfigurationOutputArgs, opts ...pulumi.InvokeOption) LookupAttachedDatabaseConfigurationResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAttachedDatabaseConfigurationResultOutput, error) {
 			args := v.(LookupAttachedDatabaseConfigurationArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupAttachedDatabaseConfigurationResult
-			secret, err := ctx.InvokePackageRaw("azure-native:kusto/v20230502:getAttachedDatabaseConfiguration", args, &rv, "", opts...)
-			if err != nil {
-				return LookupAttachedDatabaseConfigurationResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupAttachedDatabaseConfigurationResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupAttachedDatabaseConfigurationResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:kusto/v20230502:getAttachedDatabaseConfiguration", args, LookupAttachedDatabaseConfigurationResultOutput{}, options).(LookupAttachedDatabaseConfigurationResultOutput), nil
 		}).(LookupAttachedDatabaseConfigurationResultOutput)
 }
 

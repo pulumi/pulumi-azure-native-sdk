@@ -52,21 +52,11 @@ type LookupTransformResult struct {
 }
 
 func LookupTransformOutput(ctx *pulumi.Context, args LookupTransformOutputArgs, opts ...pulumi.InvokeOption) LookupTransformResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupTransformResultOutput, error) {
 			args := v.(LookupTransformArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupTransformResult
-			secret, err := ctx.InvokePackageRaw("azure-native:media/v20220701:getTransform", args, &rv, "", opts...)
-			if err != nil {
-				return LookupTransformResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupTransformResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupTransformResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:media/v20220701:getTransform", args, LookupTransformResultOutput{}, options).(LookupTransformResultOutput), nil
 		}).(LookupTransformResultOutput)
 }
 

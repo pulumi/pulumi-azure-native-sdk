@@ -50,21 +50,11 @@ type LookupWebAppPublicCertificateResult struct {
 }
 
 func LookupWebAppPublicCertificateOutput(ctx *pulumi.Context, args LookupWebAppPublicCertificateOutputArgs, opts ...pulumi.InvokeOption) LookupWebAppPublicCertificateResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupWebAppPublicCertificateResultOutput, error) {
 			args := v.(LookupWebAppPublicCertificateArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupWebAppPublicCertificateResult
-			secret, err := ctx.InvokePackageRaw("azure-native:web/v20231201:getWebAppPublicCertificate", args, &rv, "", opts...)
-			if err != nil {
-				return LookupWebAppPublicCertificateResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupWebAppPublicCertificateResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupWebAppPublicCertificateResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:web/v20231201:getWebAppPublicCertificate", args, LookupWebAppPublicCertificateResultOutput{}, options).(LookupWebAppPublicCertificateResultOutput), nil
 		}).(LookupWebAppPublicCertificateResultOutput)
 }
 

@@ -85,23 +85,12 @@ func (val *LookupMachineRunCommandResult) Defaults() *LookupMachineRunCommandRes
 	}
 	return &tmp
 }
-
 func LookupMachineRunCommandOutput(ctx *pulumi.Context, args LookupMachineRunCommandOutputArgs, opts ...pulumi.InvokeOption) LookupMachineRunCommandResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupMachineRunCommandResultOutput, error) {
 			args := v.(LookupMachineRunCommandArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupMachineRunCommandResult
-			secret, err := ctx.InvokePackageRaw("azure-native:hybridcompute/v20241110preview:getMachineRunCommand", args, &rv, "", opts...)
-			if err != nil {
-				return LookupMachineRunCommandResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupMachineRunCommandResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupMachineRunCommandResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:hybridcompute/v20241110preview:getMachineRunCommand", args, LookupMachineRunCommandResultOutput{}, options).(LookupMachineRunCommandResultOutput), nil
 		}).(LookupMachineRunCommandResultOutput)
 }
 

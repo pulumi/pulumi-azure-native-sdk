@@ -46,21 +46,11 @@ type LookupSyncSetResult struct {
 }
 
 func LookupSyncSetOutput(ctx *pulumi.Context, args LookupSyncSetOutputArgs, opts ...pulumi.InvokeOption) LookupSyncSetResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupSyncSetResultOutput, error) {
 			args := v.(LookupSyncSetArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupSyncSetResult
-			secret, err := ctx.InvokePackageRaw("azure-native:redhatopenshift/v20231122:getSyncSet", args, &rv, "", opts...)
-			if err != nil {
-				return LookupSyncSetResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupSyncSetResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupSyncSetResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:redhatopenshift/v20231122:getSyncSet", args, LookupSyncSetResultOutput{}, options).(LookupSyncSetResultOutput), nil
 		}).(LookupSyncSetResultOutput)
 }
 

@@ -46,21 +46,11 @@ type GetSapVirtualInstanceInvokeDiskConfigurationsResult struct {
 }
 
 func GetSapVirtualInstanceInvokeDiskConfigurationsOutput(ctx *pulumi.Context, args GetSapVirtualInstanceInvokeDiskConfigurationsOutputArgs, opts ...pulumi.InvokeOption) GetSapVirtualInstanceInvokeDiskConfigurationsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetSapVirtualInstanceInvokeDiskConfigurationsResultOutput, error) {
 			args := v.(GetSapVirtualInstanceInvokeDiskConfigurationsArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetSapVirtualInstanceInvokeDiskConfigurationsResult
-			secret, err := ctx.InvokePackageRaw("azure-native:workloads/v20240901:getSapVirtualInstanceInvokeDiskConfigurations", args, &rv, "", opts...)
-			if err != nil {
-				return GetSapVirtualInstanceInvokeDiskConfigurationsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetSapVirtualInstanceInvokeDiskConfigurationsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetSapVirtualInstanceInvokeDiskConfigurationsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:workloads/v20240901:getSapVirtualInstanceInvokeDiskConfigurations", args, GetSapVirtualInstanceInvokeDiskConfigurationsResultOutput{}, options).(GetSapVirtualInstanceInvokeDiskConfigurationsResultOutput), nil
 		}).(GetSapVirtualInstanceInvokeDiskConfigurationsResultOutput)
 }
 

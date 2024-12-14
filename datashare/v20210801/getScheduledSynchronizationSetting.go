@@ -59,21 +59,11 @@ type LookupScheduledSynchronizationSettingResult struct {
 }
 
 func LookupScheduledSynchronizationSettingOutput(ctx *pulumi.Context, args LookupScheduledSynchronizationSettingOutputArgs, opts ...pulumi.InvokeOption) LookupScheduledSynchronizationSettingResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupScheduledSynchronizationSettingResultOutput, error) {
 			args := v.(LookupScheduledSynchronizationSettingArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupScheduledSynchronizationSettingResult
-			secret, err := ctx.InvokePackageRaw("azure-native:datashare/v20210801:getScheduledSynchronizationSetting", args, &rv, "", opts...)
-			if err != nil {
-				return LookupScheduledSynchronizationSettingResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupScheduledSynchronizationSettingResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupScheduledSynchronizationSettingResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:datashare/v20210801:getScheduledSynchronizationSetting", args, LookupScheduledSynchronizationSettingResultOutput{}, options).(LookupScheduledSynchronizationSettingResultOutput), nil
 		}).(LookupScheduledSynchronizationSettingResultOutput)
 }
 

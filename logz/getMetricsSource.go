@@ -48,21 +48,11 @@ type LookupMetricsSourceResult struct {
 }
 
 func LookupMetricsSourceOutput(ctx *pulumi.Context, args LookupMetricsSourceOutputArgs, opts ...pulumi.InvokeOption) LookupMetricsSourceResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupMetricsSourceResultOutput, error) {
 			args := v.(LookupMetricsSourceArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupMetricsSourceResult
-			secret, err := ctx.InvokePackageRaw("azure-native:logz:getMetricsSource", args, &rv, "", opts...)
-			if err != nil {
-				return LookupMetricsSourceResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupMetricsSourceResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupMetricsSourceResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:logz:getMetricsSource", args, LookupMetricsSourceResultOutput{}, options).(LookupMetricsSourceResultOutput), nil
 		}).(LookupMetricsSourceResultOutput)
 }
 

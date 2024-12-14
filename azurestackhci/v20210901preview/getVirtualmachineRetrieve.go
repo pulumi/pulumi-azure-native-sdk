@@ -79,23 +79,12 @@ func (val *LookupVirtualmachineRetrieveResult) Defaults() *LookupVirtualmachineR
 
 	return &tmp
 }
-
 func LookupVirtualmachineRetrieveOutput(ctx *pulumi.Context, args LookupVirtualmachineRetrieveOutputArgs, opts ...pulumi.InvokeOption) LookupVirtualmachineRetrieveResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupVirtualmachineRetrieveResultOutput, error) {
 			args := v.(LookupVirtualmachineRetrieveArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupVirtualmachineRetrieveResult
-			secret, err := ctx.InvokePackageRaw("azure-native:azurestackhci/v20210901preview:getVirtualmachineRetrieve", args, &rv, "", opts...)
-			if err != nil {
-				return LookupVirtualmachineRetrieveResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupVirtualmachineRetrieveResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupVirtualmachineRetrieveResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:azurestackhci/v20210901preview:getVirtualmachineRetrieve", args, LookupVirtualmachineRetrieveResultOutput{}, options).(LookupVirtualmachineRetrieveResultOutput), nil
 		}).(LookupVirtualmachineRetrieveResultOutput)
 }
 

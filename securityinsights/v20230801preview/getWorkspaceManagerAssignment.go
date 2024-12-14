@@ -54,21 +54,11 @@ type LookupWorkspaceManagerAssignmentResult struct {
 }
 
 func LookupWorkspaceManagerAssignmentOutput(ctx *pulumi.Context, args LookupWorkspaceManagerAssignmentOutputArgs, opts ...pulumi.InvokeOption) LookupWorkspaceManagerAssignmentResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupWorkspaceManagerAssignmentResultOutput, error) {
 			args := v.(LookupWorkspaceManagerAssignmentArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupWorkspaceManagerAssignmentResult
-			secret, err := ctx.InvokePackageRaw("azure-native:securityinsights/v20230801preview:getWorkspaceManagerAssignment", args, &rv, "", opts...)
-			if err != nil {
-				return LookupWorkspaceManagerAssignmentResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupWorkspaceManagerAssignmentResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupWorkspaceManagerAssignmentResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:securityinsights/v20230801preview:getWorkspaceManagerAssignment", args, LookupWorkspaceManagerAssignmentResultOutput{}, options).(LookupWorkspaceManagerAssignmentResultOutput), nil
 		}).(LookupWorkspaceManagerAssignmentResultOutput)
 }
 

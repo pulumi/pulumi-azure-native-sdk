@@ -56,21 +56,11 @@ type LookupDataMaskingPolicyResult struct {
 }
 
 func LookupDataMaskingPolicyOutput(ctx *pulumi.Context, args LookupDataMaskingPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupDataMaskingPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupDataMaskingPolicyResultOutput, error) {
 			args := v.(LookupDataMaskingPolicyArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupDataMaskingPolicyResult
-			secret, err := ctx.InvokePackageRaw("azure-native:sql/v20240501preview:getDataMaskingPolicy", args, &rv, "", opts...)
-			if err != nil {
-				return LookupDataMaskingPolicyResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupDataMaskingPolicyResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupDataMaskingPolicyResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:sql/v20240501preview:getDataMaskingPolicy", args, LookupDataMaskingPolicyResultOutput{}, options).(LookupDataMaskingPolicyResultOutput), nil
 		}).(LookupDataMaskingPolicyResultOutput)
 }
 

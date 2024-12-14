@@ -50,21 +50,11 @@ type LookupEventHubAuthorizationRuleResult struct {
 }
 
 func LookupEventHubAuthorizationRuleOutput(ctx *pulumi.Context, args LookupEventHubAuthorizationRuleOutputArgs, opts ...pulumi.InvokeOption) LookupEventHubAuthorizationRuleResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupEventHubAuthorizationRuleResultOutput, error) {
 			args := v.(LookupEventHubAuthorizationRuleArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupEventHubAuthorizationRuleResult
-			secret, err := ctx.InvokePackageRaw("azure-native:eventhub/v20240501preview:getEventHubAuthorizationRule", args, &rv, "", opts...)
-			if err != nil {
-				return LookupEventHubAuthorizationRuleResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupEventHubAuthorizationRuleResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupEventHubAuthorizationRuleResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:eventhub/v20240501preview:getEventHubAuthorizationRule", args, LookupEventHubAuthorizationRuleResultOutput{}, options).(LookupEventHubAuthorizationRuleResultOutput), nil
 		}).(LookupEventHubAuthorizationRuleResultOutput)
 }
 

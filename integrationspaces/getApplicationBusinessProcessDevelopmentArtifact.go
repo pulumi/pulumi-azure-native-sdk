@@ -45,21 +45,11 @@ type GetApplicationBusinessProcessDevelopmentArtifactResult struct {
 }
 
 func GetApplicationBusinessProcessDevelopmentArtifactOutput(ctx *pulumi.Context, args GetApplicationBusinessProcessDevelopmentArtifactOutputArgs, opts ...pulumi.InvokeOption) GetApplicationBusinessProcessDevelopmentArtifactResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetApplicationBusinessProcessDevelopmentArtifactResultOutput, error) {
 			args := v.(GetApplicationBusinessProcessDevelopmentArtifactArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetApplicationBusinessProcessDevelopmentArtifactResult
-			secret, err := ctx.InvokePackageRaw("azure-native:integrationspaces:getApplicationBusinessProcessDevelopmentArtifact", args, &rv, "", opts...)
-			if err != nil {
-				return GetApplicationBusinessProcessDevelopmentArtifactResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetApplicationBusinessProcessDevelopmentArtifactResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetApplicationBusinessProcessDevelopmentArtifactResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:integrationspaces:getApplicationBusinessProcessDevelopmentArtifact", args, GetApplicationBusinessProcessDevelopmentArtifactResultOutput{}, options).(GetApplicationBusinessProcessDevelopmentArtifactResultOutput), nil
 		}).(GetApplicationBusinessProcessDevelopmentArtifactResultOutput)
 }
 

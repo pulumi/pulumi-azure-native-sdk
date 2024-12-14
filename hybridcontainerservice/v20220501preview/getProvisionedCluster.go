@@ -59,23 +59,12 @@ func (val *LookupProvisionedClusterResult) Defaults() *LookupProvisionedClusterR
 
 	return &tmp
 }
-
 func LookupProvisionedClusterOutput(ctx *pulumi.Context, args LookupProvisionedClusterOutputArgs, opts ...pulumi.InvokeOption) LookupProvisionedClusterResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupProvisionedClusterResultOutput, error) {
 			args := v.(LookupProvisionedClusterArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupProvisionedClusterResult
-			secret, err := ctx.InvokePackageRaw("azure-native:hybridcontainerservice/v20220501preview:getProvisionedCluster", args, &rv, "", opts...)
-			if err != nil {
-				return LookupProvisionedClusterResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupProvisionedClusterResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupProvisionedClusterResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:hybridcontainerservice/v20220501preview:getProvisionedCluster", args, LookupProvisionedClusterResultOutput{}, options).(LookupProvisionedClusterResultOutput), nil
 		}).(LookupProvisionedClusterResultOutput)
 }
 

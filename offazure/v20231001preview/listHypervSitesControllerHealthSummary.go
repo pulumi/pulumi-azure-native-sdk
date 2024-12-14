@@ -38,21 +38,11 @@ type ListHypervSitesControllerHealthSummaryResult struct {
 }
 
 func ListHypervSitesControllerHealthSummaryOutput(ctx *pulumi.Context, args ListHypervSitesControllerHealthSummaryOutputArgs, opts ...pulumi.InvokeOption) ListHypervSitesControllerHealthSummaryResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListHypervSitesControllerHealthSummaryResultOutput, error) {
 			args := v.(ListHypervSitesControllerHealthSummaryArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListHypervSitesControllerHealthSummaryResult
-			secret, err := ctx.InvokePackageRaw("azure-native:offazure/v20231001preview:listHypervSitesControllerHealthSummary", args, &rv, "", opts...)
-			if err != nil {
-				return ListHypervSitesControllerHealthSummaryResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListHypervSitesControllerHealthSummaryResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListHypervSitesControllerHealthSummaryResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:offazure/v20231001preview:listHypervSitesControllerHealthSummary", args, ListHypervSitesControllerHealthSummaryResultOutput{}, options).(ListHypervSitesControllerHealthSummaryResultOutput), nil
 		}).(ListHypervSitesControllerHealthSummaryResultOutput)
 }
 

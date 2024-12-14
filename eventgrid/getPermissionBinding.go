@@ -59,21 +59,11 @@ type LookupPermissionBindingResult struct {
 }
 
 func LookupPermissionBindingOutput(ctx *pulumi.Context, args LookupPermissionBindingOutputArgs, opts ...pulumi.InvokeOption) LookupPermissionBindingResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupPermissionBindingResultOutput, error) {
 			args := v.(LookupPermissionBindingArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupPermissionBindingResult
-			secret, err := ctx.InvokePackageRaw("azure-native:eventgrid:getPermissionBinding", args, &rv, "", opts...)
-			if err != nil {
-				return LookupPermissionBindingResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupPermissionBindingResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupPermissionBindingResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:eventgrid:getPermissionBinding", args, LookupPermissionBindingResultOutput{}, options).(LookupPermissionBindingResultOutput), nil
 		}).(LookupPermissionBindingResultOutput)
 }
 

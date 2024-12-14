@@ -52,21 +52,11 @@ type ListIntegrationAccountPartnerContentCallbackUrlResult struct {
 }
 
 func ListIntegrationAccountPartnerContentCallbackUrlOutput(ctx *pulumi.Context, args ListIntegrationAccountPartnerContentCallbackUrlOutputArgs, opts ...pulumi.InvokeOption) ListIntegrationAccountPartnerContentCallbackUrlResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListIntegrationAccountPartnerContentCallbackUrlResultOutput, error) {
 			args := v.(ListIntegrationAccountPartnerContentCallbackUrlArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListIntegrationAccountPartnerContentCallbackUrlResult
-			secret, err := ctx.InvokePackageRaw("azure-native:logic/v20190501:listIntegrationAccountPartnerContentCallbackUrl", args, &rv, "", opts...)
-			if err != nil {
-				return ListIntegrationAccountPartnerContentCallbackUrlResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListIntegrationAccountPartnerContentCallbackUrlResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListIntegrationAccountPartnerContentCallbackUrlResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:logic/v20190501:listIntegrationAccountPartnerContentCallbackUrl", args, ListIntegrationAccountPartnerContentCallbackUrlResultOutput{}, options).(ListIntegrationAccountPartnerContentCallbackUrlResultOutput), nil
 		}).(ListIntegrationAccountPartnerContentCallbackUrlResultOutput)
 }
 

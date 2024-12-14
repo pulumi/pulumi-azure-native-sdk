@@ -84,23 +84,12 @@ func (val *LookupCloudServicesNetworkResult) Defaults() *LookupCloudServicesNetw
 	}
 	return &tmp
 }
-
 func LookupCloudServicesNetworkOutput(ctx *pulumi.Context, args LookupCloudServicesNetworkOutputArgs, opts ...pulumi.InvokeOption) LookupCloudServicesNetworkResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupCloudServicesNetworkResultOutput, error) {
 			args := v.(LookupCloudServicesNetworkArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupCloudServicesNetworkResult
-			secret, err := ctx.InvokePackageRaw("azure-native:networkcloud/v20231001preview:getCloudServicesNetwork", args, &rv, "", opts...)
-			if err != nil {
-				return LookupCloudServicesNetworkResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupCloudServicesNetworkResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupCloudServicesNetworkResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:networkcloud/v20231001preview:getCloudServicesNetwork", args, LookupCloudServicesNetworkResultOutput{}, options).(LookupCloudServicesNetworkResultOutput), nil
 		}).(LookupCloudServicesNetworkResultOutput)
 }
 

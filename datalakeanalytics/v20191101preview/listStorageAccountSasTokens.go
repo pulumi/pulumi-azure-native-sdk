@@ -42,21 +42,11 @@ type ListStorageAccountSasTokensResult struct {
 }
 
 func ListStorageAccountSasTokensOutput(ctx *pulumi.Context, args ListStorageAccountSasTokensOutputArgs, opts ...pulumi.InvokeOption) ListStorageAccountSasTokensResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListStorageAccountSasTokensResultOutput, error) {
 			args := v.(ListStorageAccountSasTokensArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListStorageAccountSasTokensResult
-			secret, err := ctx.InvokePackageRaw("azure-native:datalakeanalytics/v20191101preview:listStorageAccountSasTokens", args, &rv, "", opts...)
-			if err != nil {
-				return ListStorageAccountSasTokensResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListStorageAccountSasTokensResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListStorageAccountSasTokensResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:datalakeanalytics/v20191101preview:listStorageAccountSasTokens", args, ListStorageAccountSasTokensResultOutput{}, options).(ListStorageAccountSasTokensResultOutput), nil
 		}).(ListStorageAccountSasTokensResultOutput)
 }
 

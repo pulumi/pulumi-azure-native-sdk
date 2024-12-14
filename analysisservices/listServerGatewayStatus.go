@@ -39,21 +39,11 @@ type ListServerGatewayStatusResult struct {
 }
 
 func ListServerGatewayStatusOutput(ctx *pulumi.Context, args ListServerGatewayStatusOutputArgs, opts ...pulumi.InvokeOption) ListServerGatewayStatusResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListServerGatewayStatusResultOutput, error) {
 			args := v.(ListServerGatewayStatusArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListServerGatewayStatusResult
-			secret, err := ctx.InvokePackageRaw("azure-native:analysisservices:listServerGatewayStatus", args, &rv, "", opts...)
-			if err != nil {
-				return ListServerGatewayStatusResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListServerGatewayStatusResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListServerGatewayStatusResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:analysisservices:listServerGatewayStatus", args, ListServerGatewayStatusResultOutput{}, options).(ListServerGatewayStatusResultOutput), nil
 		}).(ListServerGatewayStatusResultOutput)
 }
 

@@ -52,21 +52,11 @@ type LookupNetworkVirtualApplianceConnectionResult struct {
 }
 
 func LookupNetworkVirtualApplianceConnectionOutput(ctx *pulumi.Context, args LookupNetworkVirtualApplianceConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupNetworkVirtualApplianceConnectionResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupNetworkVirtualApplianceConnectionResultOutput, error) {
 			args := v.(LookupNetworkVirtualApplianceConnectionArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupNetworkVirtualApplianceConnectionResult
-			secret, err := ctx.InvokePackageRaw("azure-native:network/v20231101:getNetworkVirtualApplianceConnection", args, &rv, "", opts...)
-			if err != nil {
-				return LookupNetworkVirtualApplianceConnectionResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupNetworkVirtualApplianceConnectionResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupNetworkVirtualApplianceConnectionResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:network/v20231101:getNetworkVirtualApplianceConnection", args, LookupNetworkVirtualApplianceConnectionResultOutput{}, options).(LookupNetworkVirtualApplianceConnectionResultOutput), nil
 		}).(LookupNetworkVirtualApplianceConnectionResultOutput)
 }
 

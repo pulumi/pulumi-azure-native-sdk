@@ -50,21 +50,11 @@ type GetManagedEnvironmentAuthTokenResult struct {
 }
 
 func GetManagedEnvironmentAuthTokenOutput(ctx *pulumi.Context, args GetManagedEnvironmentAuthTokenOutputArgs, opts ...pulumi.InvokeOption) GetManagedEnvironmentAuthTokenResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetManagedEnvironmentAuthTokenResultOutput, error) {
 			args := v.(GetManagedEnvironmentAuthTokenArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetManagedEnvironmentAuthTokenResult
-			secret, err := ctx.InvokePackageRaw("azure-native:app/v20241002preview:getManagedEnvironmentAuthToken", args, &rv, "", opts...)
-			if err != nil {
-				return GetManagedEnvironmentAuthTokenResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetManagedEnvironmentAuthTokenResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetManagedEnvironmentAuthTokenResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:app/v20241002preview:getManagedEnvironmentAuthToken", args, GetManagedEnvironmentAuthTokenResultOutput{}, options).(GetManagedEnvironmentAuthTokenResultOutput), nil
 		}).(GetManagedEnvironmentAuthTokenResultOutput)
 }
 

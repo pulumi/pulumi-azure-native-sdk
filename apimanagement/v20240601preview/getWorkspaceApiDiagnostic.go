@@ -68,21 +68,11 @@ type LookupWorkspaceApiDiagnosticResult struct {
 }
 
 func LookupWorkspaceApiDiagnosticOutput(ctx *pulumi.Context, args LookupWorkspaceApiDiagnosticOutputArgs, opts ...pulumi.InvokeOption) LookupWorkspaceApiDiagnosticResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupWorkspaceApiDiagnosticResultOutput, error) {
 			args := v.(LookupWorkspaceApiDiagnosticArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupWorkspaceApiDiagnosticResult
-			secret, err := ctx.InvokePackageRaw("azure-native:apimanagement/v20240601preview:getWorkspaceApiDiagnostic", args, &rv, "", opts...)
-			if err != nil {
-				return LookupWorkspaceApiDiagnosticResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupWorkspaceApiDiagnosticResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupWorkspaceApiDiagnosticResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:apimanagement/v20240601preview:getWorkspaceApiDiagnostic", args, LookupWorkspaceApiDiagnosticResultOutput{}, options).(LookupWorkspaceApiDiagnosticResultOutput), nil
 		}).(LookupWorkspaceApiDiagnosticResultOutput)
 }
 

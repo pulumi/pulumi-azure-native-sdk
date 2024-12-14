@@ -46,21 +46,11 @@ type ListStaticSiteBuildFunctionAppSettingsResult struct {
 }
 
 func ListStaticSiteBuildFunctionAppSettingsOutput(ctx *pulumi.Context, args ListStaticSiteBuildFunctionAppSettingsOutputArgs, opts ...pulumi.InvokeOption) ListStaticSiteBuildFunctionAppSettingsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListStaticSiteBuildFunctionAppSettingsResultOutput, error) {
 			args := v.(ListStaticSiteBuildFunctionAppSettingsArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListStaticSiteBuildFunctionAppSettingsResult
-			secret, err := ctx.InvokePackageRaw("azure-native:web/v20230101:listStaticSiteBuildFunctionAppSettings", args, &rv, "", opts...)
-			if err != nil {
-				return ListStaticSiteBuildFunctionAppSettingsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListStaticSiteBuildFunctionAppSettingsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListStaticSiteBuildFunctionAppSettingsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:web/v20230101:listStaticSiteBuildFunctionAppSettings", args, ListStaticSiteBuildFunctionAppSettingsResultOutput{}, options).(ListStaticSiteBuildFunctionAppSettingsResultOutput), nil
 		}).(ListStaticSiteBuildFunctionAppSettingsResultOutput)
 }
 

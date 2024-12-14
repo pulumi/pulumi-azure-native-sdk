@@ -39,21 +39,11 @@ type ListKustoPoolFollowerDatabasesResult struct {
 }
 
 func ListKustoPoolFollowerDatabasesOutput(ctx *pulumi.Context, args ListKustoPoolFollowerDatabasesOutputArgs, opts ...pulumi.InvokeOption) ListKustoPoolFollowerDatabasesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListKustoPoolFollowerDatabasesResultOutput, error) {
 			args := v.(ListKustoPoolFollowerDatabasesArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListKustoPoolFollowerDatabasesResult
-			secret, err := ctx.InvokePackageRaw("azure-native:synapse:listKustoPoolFollowerDatabases", args, &rv, "", opts...)
-			if err != nil {
-				return ListKustoPoolFollowerDatabasesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListKustoPoolFollowerDatabasesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListKustoPoolFollowerDatabasesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:synapse:listKustoPoolFollowerDatabases", args, ListKustoPoolFollowerDatabasesResultOutput{}, options).(ListKustoPoolFollowerDatabasesResultOutput), nil
 		}).(ListKustoPoolFollowerDatabasesResultOutput)
 }
 

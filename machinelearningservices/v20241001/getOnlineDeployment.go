@@ -56,21 +56,11 @@ type LookupOnlineDeploymentResult struct {
 }
 
 func LookupOnlineDeploymentOutput(ctx *pulumi.Context, args LookupOnlineDeploymentOutputArgs, opts ...pulumi.InvokeOption) LookupOnlineDeploymentResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupOnlineDeploymentResultOutput, error) {
 			args := v.(LookupOnlineDeploymentArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupOnlineDeploymentResult
-			secret, err := ctx.InvokePackageRaw("azure-native:machinelearningservices/v20241001:getOnlineDeployment", args, &rv, "", opts...)
-			if err != nil {
-				return LookupOnlineDeploymentResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupOnlineDeploymentResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupOnlineDeploymentResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:machinelearningservices/v20241001:getOnlineDeployment", args, LookupOnlineDeploymentResultOutput{}, options).(LookupOnlineDeploymentResultOutput), nil
 		}).(LookupOnlineDeploymentResultOutput)
 }
 

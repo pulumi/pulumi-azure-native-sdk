@@ -49,21 +49,11 @@ type LookupPlacementPolicyResult struct {
 }
 
 func LookupPlacementPolicyOutput(ctx *pulumi.Context, args LookupPlacementPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupPlacementPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupPlacementPolicyResultOutput, error) {
 			args := v.(LookupPlacementPolicyArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupPlacementPolicyResult
-			secret, err := ctx.InvokePackageRaw("azure-native:avs:getPlacementPolicy", args, &rv, "", opts...)
-			if err != nil {
-				return LookupPlacementPolicyResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupPlacementPolicyResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupPlacementPolicyResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:avs:getPlacementPolicy", args, LookupPlacementPolicyResultOutput{}, options).(LookupPlacementPolicyResultOutput), nil
 		}).(LookupPlacementPolicyResultOutput)
 }
 

@@ -68,21 +68,11 @@ type LookupClusterManagerResult struct {
 }
 
 func LookupClusterManagerOutput(ctx *pulumi.Context, args LookupClusterManagerOutputArgs, opts ...pulumi.InvokeOption) LookupClusterManagerResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupClusterManagerResultOutput, error) {
 			args := v.(LookupClusterManagerArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupClusterManagerResult
-			secret, err := ctx.InvokePackageRaw("azure-native:networkcloud:getClusterManager", args, &rv, "", opts...)
-			if err != nil {
-				return LookupClusterManagerResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupClusterManagerResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupClusterManagerResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:networkcloud:getClusterManager", args, LookupClusterManagerResultOutput{}, options).(LookupClusterManagerResultOutput), nil
 		}).(LookupClusterManagerResultOutput)
 }
 

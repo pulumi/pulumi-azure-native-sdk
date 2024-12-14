@@ -73,21 +73,11 @@ type LookupHostResult struct {
 }
 
 func LookupHostOutput(ctx *pulumi.Context, args LookupHostOutputArgs, opts ...pulumi.InvokeOption) LookupHostResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupHostResultOutput, error) {
 			args := v.(LookupHostArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupHostResult
-			secret, err := ctx.InvokePackageRaw("azure-native:connectedvmwarevsphere:getHost", args, &rv, "", opts...)
-			if err != nil {
-				return LookupHostResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupHostResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupHostResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:connectedvmwarevsphere:getHost", args, LookupHostResultOutput{}, options).(LookupHostResultOutput), nil
 		}).(LookupHostResultOutput)
 }
 

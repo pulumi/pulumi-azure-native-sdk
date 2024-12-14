@@ -71,21 +71,11 @@ type LookupEventGridDataConnectionResult struct {
 }
 
 func LookupEventGridDataConnectionOutput(ctx *pulumi.Context, args LookupEventGridDataConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupEventGridDataConnectionResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupEventGridDataConnectionResultOutput, error) {
 			args := v.(LookupEventGridDataConnectionArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupEventGridDataConnectionResult
-			secret, err := ctx.InvokePackageRaw("azure-native:synapse/v20210601preview:getEventGridDataConnection", args, &rv, "", opts...)
-			if err != nil {
-				return LookupEventGridDataConnectionResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupEventGridDataConnectionResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupEventGridDataConnectionResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:synapse/v20210601preview:getEventGridDataConnection", args, LookupEventGridDataConnectionResultOutput{}, options).(LookupEventGridDataConnectionResultOutput), nil
 		}).(LookupEventGridDataConnectionResultOutput)
 }
 

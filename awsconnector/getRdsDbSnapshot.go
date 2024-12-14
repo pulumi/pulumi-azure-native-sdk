@@ -49,21 +49,11 @@ type LookupRdsDbSnapshotResult struct {
 }
 
 func LookupRdsDbSnapshotOutput(ctx *pulumi.Context, args LookupRdsDbSnapshotOutputArgs, opts ...pulumi.InvokeOption) LookupRdsDbSnapshotResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupRdsDbSnapshotResultOutput, error) {
 			args := v.(LookupRdsDbSnapshotArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupRdsDbSnapshotResult
-			secret, err := ctx.InvokePackageRaw("azure-native:awsconnector:getRdsDbSnapshot", args, &rv, "", opts...)
-			if err != nil {
-				return LookupRdsDbSnapshotResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupRdsDbSnapshotResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupRdsDbSnapshotResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:awsconnector:getRdsDbSnapshot", args, LookupRdsDbSnapshotResultOutput{}, options).(LookupRdsDbSnapshotResultOutput), nil
 		}).(LookupRdsDbSnapshotResultOutput)
 }
 

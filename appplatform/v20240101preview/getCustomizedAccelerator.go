@@ -59,23 +59,12 @@ func (val *LookupCustomizedAcceleratorResult) Defaults() *LookupCustomizedAccele
 
 	return &tmp
 }
-
 func LookupCustomizedAcceleratorOutput(ctx *pulumi.Context, args LookupCustomizedAcceleratorOutputArgs, opts ...pulumi.InvokeOption) LookupCustomizedAcceleratorResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupCustomizedAcceleratorResultOutput, error) {
 			args := v.(LookupCustomizedAcceleratorArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupCustomizedAcceleratorResult
-			secret, err := ctx.InvokePackageRaw("azure-native:appplatform/v20240101preview:getCustomizedAccelerator", args, &rv, "", opts...)
-			if err != nil {
-				return LookupCustomizedAcceleratorResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupCustomizedAcceleratorResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupCustomizedAcceleratorResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:appplatform/v20240101preview:getCustomizedAccelerator", args, LookupCustomizedAcceleratorResultOutput{}, options).(LookupCustomizedAcceleratorResultOutput), nil
 		}).(LookupCustomizedAcceleratorResultOutput)
 }
 

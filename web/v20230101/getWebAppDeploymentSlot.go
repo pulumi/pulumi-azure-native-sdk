@@ -64,21 +64,11 @@ type LookupWebAppDeploymentSlotResult struct {
 }
 
 func LookupWebAppDeploymentSlotOutput(ctx *pulumi.Context, args LookupWebAppDeploymentSlotOutputArgs, opts ...pulumi.InvokeOption) LookupWebAppDeploymentSlotResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupWebAppDeploymentSlotResultOutput, error) {
 			args := v.(LookupWebAppDeploymentSlotArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupWebAppDeploymentSlotResult
-			secret, err := ctx.InvokePackageRaw("azure-native:web/v20230101:getWebAppDeploymentSlot", args, &rv, "", opts...)
-			if err != nil {
-				return LookupWebAppDeploymentSlotResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupWebAppDeploymentSlotResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupWebAppDeploymentSlotResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:web/v20230101:getWebAppDeploymentSlot", args, LookupWebAppDeploymentSlotResultOutput{}, options).(LookupWebAppDeploymentSlotResultOutput), nil
 		}).(LookupWebAppDeploymentSlotResultOutput)
 }
 

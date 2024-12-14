@@ -54,21 +54,11 @@ type LookupVariableResult struct {
 }
 
 func LookupVariableOutput(ctx *pulumi.Context, args LookupVariableOutputArgs, opts ...pulumi.InvokeOption) LookupVariableResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupVariableResultOutput, error) {
 			args := v.(LookupVariableArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupVariableResult
-			secret, err := ctx.InvokePackageRaw("azure-native:automation/v20241023:getVariable", args, &rv, "", opts...)
-			if err != nil {
-				return LookupVariableResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupVariableResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupVariableResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:automation/v20241023:getVariable", args, LookupVariableResultOutput{}, options).(LookupVariableResultOutput), nil
 		}).(LookupVariableResultOutput)
 }
 

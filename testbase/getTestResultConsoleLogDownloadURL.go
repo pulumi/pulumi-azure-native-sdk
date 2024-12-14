@@ -47,21 +47,11 @@ type GetTestResultConsoleLogDownloadURLResult struct {
 }
 
 func GetTestResultConsoleLogDownloadURLOutput(ctx *pulumi.Context, args GetTestResultConsoleLogDownloadURLOutputArgs, opts ...pulumi.InvokeOption) GetTestResultConsoleLogDownloadURLResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetTestResultConsoleLogDownloadURLResultOutput, error) {
 			args := v.(GetTestResultConsoleLogDownloadURLArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetTestResultConsoleLogDownloadURLResult
-			secret, err := ctx.InvokePackageRaw("azure-native:testbase:getTestResultConsoleLogDownloadURL", args, &rv, "", opts...)
-			if err != nil {
-				return GetTestResultConsoleLogDownloadURLResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetTestResultConsoleLogDownloadURLResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetTestResultConsoleLogDownloadURLResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:testbase:getTestResultConsoleLogDownloadURL", args, GetTestResultConsoleLogDownloadURLResultOutput{}, options).(GetTestResultConsoleLogDownloadURLResultOutput), nil
 		}).(GetTestResultConsoleLogDownloadURLResultOutput)
 }
 

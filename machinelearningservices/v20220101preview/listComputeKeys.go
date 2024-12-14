@@ -38,21 +38,11 @@ type ListComputeKeysResult struct {
 }
 
 func ListComputeKeysOutput(ctx *pulumi.Context, args ListComputeKeysOutputArgs, opts ...pulumi.InvokeOption) ListComputeKeysResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListComputeKeysResultOutput, error) {
 			args := v.(ListComputeKeysArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListComputeKeysResult
-			secret, err := ctx.InvokePackageRaw("azure-native:machinelearningservices/v20220101preview:listComputeKeys", args, &rv, "", opts...)
-			if err != nil {
-				return ListComputeKeysResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListComputeKeysResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListComputeKeysResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:machinelearningservices/v20220101preview:listComputeKeys", args, ListComputeKeysResultOutput{}, options).(ListComputeKeysResultOutput), nil
 		}).(ListComputeKeysResultOutput)
 }
 

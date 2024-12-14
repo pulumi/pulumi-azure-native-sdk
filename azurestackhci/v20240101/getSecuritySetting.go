@@ -61,23 +61,12 @@ func (val *LookupSecuritySettingResult) Defaults() *LookupSecuritySettingResult 
 	}
 	return &tmp
 }
-
 func LookupSecuritySettingOutput(ctx *pulumi.Context, args LookupSecuritySettingOutputArgs, opts ...pulumi.InvokeOption) LookupSecuritySettingResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupSecuritySettingResultOutput, error) {
 			args := v.(LookupSecuritySettingArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupSecuritySettingResult
-			secret, err := ctx.InvokePackageRaw("azure-native:azurestackhci/v20240101:getSecuritySetting", args, &rv, "", opts...)
-			if err != nil {
-				return LookupSecuritySettingResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupSecuritySettingResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupSecuritySettingResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:azurestackhci/v20240101:getSecuritySetting", args, LookupSecuritySettingResultOutput{}, options).(LookupSecuritySettingResultOutput), nil
 		}).(LookupSecuritySettingResultOutput)
 }
 

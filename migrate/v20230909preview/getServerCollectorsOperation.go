@@ -54,21 +54,11 @@ type LookupServerCollectorsOperationResult struct {
 }
 
 func LookupServerCollectorsOperationOutput(ctx *pulumi.Context, args LookupServerCollectorsOperationOutputArgs, opts ...pulumi.InvokeOption) LookupServerCollectorsOperationResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupServerCollectorsOperationResultOutput, error) {
 			args := v.(LookupServerCollectorsOperationArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupServerCollectorsOperationResult
-			secret, err := ctx.InvokePackageRaw("azure-native:migrate/v20230909preview:getServerCollectorsOperation", args, &rv, "", opts...)
-			if err != nil {
-				return LookupServerCollectorsOperationResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupServerCollectorsOperationResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupServerCollectorsOperationResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:migrate/v20230909preview:getServerCollectorsOperation", args, LookupServerCollectorsOperationResultOutput{}, options).(LookupServerCollectorsOperationResultOutput), nil
 		}).(LookupServerCollectorsOperationResultOutput)
 }
 

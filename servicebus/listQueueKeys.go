@@ -55,21 +55,11 @@ type ListQueueKeysResult struct {
 }
 
 func ListQueueKeysOutput(ctx *pulumi.Context, args ListQueueKeysOutputArgs, opts ...pulumi.InvokeOption) ListQueueKeysResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListQueueKeysResultOutput, error) {
 			args := v.(ListQueueKeysArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListQueueKeysResult
-			secret, err := ctx.InvokePackageRaw("azure-native:servicebus:listQueueKeys", args, &rv, "", opts...)
-			if err != nil {
-				return ListQueueKeysResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListQueueKeysResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListQueueKeysResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:servicebus:listQueueKeys", args, ListQueueKeysResultOutput{}, options).(ListQueueKeysResultOutput), nil
 		}).(ListQueueKeysResultOutput)
 }
 

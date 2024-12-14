@@ -73,23 +73,12 @@ func (val *LookupAssetEndpointProfileResult) Defaults() *LookupAssetEndpointProf
 
 	return &tmp
 }
-
 func LookupAssetEndpointProfileOutput(ctx *pulumi.Context, args LookupAssetEndpointProfileOutputArgs, opts ...pulumi.InvokeOption) LookupAssetEndpointProfileResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAssetEndpointProfileResultOutput, error) {
 			args := v.(LookupAssetEndpointProfileArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupAssetEndpointProfileResult
-			secret, err := ctx.InvokePackageRaw("azure-native:deviceregistry/v20240901preview:getAssetEndpointProfile", args, &rv, "", opts...)
-			if err != nil {
-				return LookupAssetEndpointProfileResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupAssetEndpointProfileResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupAssetEndpointProfileResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:deviceregistry/v20240901preview:getAssetEndpointProfile", args, LookupAssetEndpointProfileResultOutput{}, options).(LookupAssetEndpointProfileResultOutput), nil
 		}).(LookupAssetEndpointProfileResultOutput)
 }
 

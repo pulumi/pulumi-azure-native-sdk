@@ -62,21 +62,11 @@ type LookupPipelineGroupResult struct {
 }
 
 func LookupPipelineGroupOutput(ctx *pulumi.Context, args LookupPipelineGroupOutputArgs, opts ...pulumi.InvokeOption) LookupPipelineGroupResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupPipelineGroupResultOutput, error) {
 			args := v.(LookupPipelineGroupArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupPipelineGroupResult
-			secret, err := ctx.InvokePackageRaw("azure-native:monitor/v20231001preview:getPipelineGroup", args, &rv, "", opts...)
-			if err != nil {
-				return LookupPipelineGroupResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupPipelineGroupResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupPipelineGroupResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:monitor/v20231001preview:getPipelineGroup", args, LookupPipelineGroupResultOutput{}, options).(LookupPipelineGroupResultOutput), nil
 		}).(LookupPipelineGroupResultOutput)
 }
 

@@ -53,21 +53,11 @@ type LookupGraphQLApiResolverResult struct {
 }
 
 func LookupGraphQLApiResolverOutput(ctx *pulumi.Context, args LookupGraphQLApiResolverOutputArgs, opts ...pulumi.InvokeOption) LookupGraphQLApiResolverResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupGraphQLApiResolverResultOutput, error) {
 			args := v.(LookupGraphQLApiResolverArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupGraphQLApiResolverResult
-			secret, err := ctx.InvokePackageRaw("azure-native:apimanagement:getGraphQLApiResolver", args, &rv, "", opts...)
-			if err != nil {
-				return LookupGraphQLApiResolverResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupGraphQLApiResolverResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupGraphQLApiResolverResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:apimanagement:getGraphQLApiResolver", args, LookupGraphQLApiResolverResultOutput{}, options).(LookupGraphQLApiResolverResultOutput), nil
 		}).(LookupGraphQLApiResolverResultOutput)
 }
 

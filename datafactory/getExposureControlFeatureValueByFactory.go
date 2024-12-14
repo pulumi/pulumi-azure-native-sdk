@@ -43,21 +43,11 @@ type GetExposureControlFeatureValueByFactoryResult struct {
 }
 
 func GetExposureControlFeatureValueByFactoryOutput(ctx *pulumi.Context, args GetExposureControlFeatureValueByFactoryOutputArgs, opts ...pulumi.InvokeOption) GetExposureControlFeatureValueByFactoryResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetExposureControlFeatureValueByFactoryResultOutput, error) {
 			args := v.(GetExposureControlFeatureValueByFactoryArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetExposureControlFeatureValueByFactoryResult
-			secret, err := ctx.InvokePackageRaw("azure-native:datafactory:getExposureControlFeatureValueByFactory", args, &rv, "", opts...)
-			if err != nil {
-				return GetExposureControlFeatureValueByFactoryResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetExposureControlFeatureValueByFactoryResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetExposureControlFeatureValueByFactoryResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:datafactory:getExposureControlFeatureValueByFactory", args, GetExposureControlFeatureValueByFactoryResultOutput{}, options).(GetExposureControlFeatureValueByFactoryResultOutput), nil
 		}).(GetExposureControlFeatureValueByFactoryResultOutput)
 }
 

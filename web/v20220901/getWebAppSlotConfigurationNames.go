@@ -48,21 +48,11 @@ type LookupWebAppSlotConfigurationNamesResult struct {
 }
 
 func LookupWebAppSlotConfigurationNamesOutput(ctx *pulumi.Context, args LookupWebAppSlotConfigurationNamesOutputArgs, opts ...pulumi.InvokeOption) LookupWebAppSlotConfigurationNamesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupWebAppSlotConfigurationNamesResultOutput, error) {
 			args := v.(LookupWebAppSlotConfigurationNamesArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupWebAppSlotConfigurationNamesResult
-			secret, err := ctx.InvokePackageRaw("azure-native:web/v20220901:getWebAppSlotConfigurationNames", args, &rv, "", opts...)
-			if err != nil {
-				return LookupWebAppSlotConfigurationNamesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupWebAppSlotConfigurationNamesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupWebAppSlotConfigurationNamesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:web/v20220901:getWebAppSlotConfigurationNames", args, LookupWebAppSlotConfigurationNamesResultOutput{}, options).(LookupWebAppSlotConfigurationNamesResultOutput), nil
 		}).(LookupWebAppSlotConfigurationNamesResultOutput)
 }
 

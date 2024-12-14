@@ -56,21 +56,11 @@ type LookupOrderItemByNameResult struct {
 }
 
 func LookupOrderItemByNameOutput(ctx *pulumi.Context, args LookupOrderItemByNameOutputArgs, opts ...pulumi.InvokeOption) LookupOrderItemByNameResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupOrderItemByNameResultOutput, error) {
 			args := v.(LookupOrderItemByNameArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupOrderItemByNameResult
-			secret, err := ctx.InvokePackageRaw("azure-native:edgeorder/v20211201:getOrderItemByName", args, &rv, "", opts...)
-			if err != nil {
-				return LookupOrderItemByNameResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupOrderItemByNameResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupOrderItemByNameResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:edgeorder/v20211201:getOrderItemByName", args, LookupOrderItemByNameResultOutput{}, options).(LookupOrderItemByNameResultOutput), nil
 		}).(LookupOrderItemByNameResultOutput)
 }
 

@@ -48,21 +48,11 @@ type LookupSageMakerAppResult struct {
 }
 
 func LookupSageMakerAppOutput(ctx *pulumi.Context, args LookupSageMakerAppOutputArgs, opts ...pulumi.InvokeOption) LookupSageMakerAppResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupSageMakerAppResultOutput, error) {
 			args := v.(LookupSageMakerAppArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupSageMakerAppResult
-			secret, err := ctx.InvokePackageRaw("azure-native:awsconnector/v20241201:getSageMakerApp", args, &rv, "", opts...)
-			if err != nil {
-				return LookupSageMakerAppResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupSageMakerAppResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupSageMakerAppResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:awsconnector/v20241201:getSageMakerApp", args, LookupSageMakerAppResultOutput{}, options).(LookupSageMakerAppResultOutput), nil
 		}).(LookupSageMakerAppResultOutput)
 }
 

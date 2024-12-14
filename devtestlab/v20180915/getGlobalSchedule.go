@@ -81,23 +81,12 @@ func (val *LookupGlobalScheduleResult) Defaults() *LookupGlobalScheduleResult {
 	}
 	return &tmp
 }
-
 func LookupGlobalScheduleOutput(ctx *pulumi.Context, args LookupGlobalScheduleOutputArgs, opts ...pulumi.InvokeOption) LookupGlobalScheduleResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupGlobalScheduleResultOutput, error) {
 			args := v.(LookupGlobalScheduleArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupGlobalScheduleResult
-			secret, err := ctx.InvokePackageRaw("azure-native:devtestlab/v20180915:getGlobalSchedule", args, &rv, "", opts...)
-			if err != nil {
-				return LookupGlobalScheduleResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupGlobalScheduleResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupGlobalScheduleResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:devtestlab/v20180915:getGlobalSchedule", args, LookupGlobalScheduleResultOutput{}, options).(LookupGlobalScheduleResultOutput), nil
 		}).(LookupGlobalScheduleResultOutput)
 }
 

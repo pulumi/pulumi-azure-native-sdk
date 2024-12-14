@@ -46,21 +46,11 @@ type LookupContainerRegistryResult struct {
 }
 
 func LookupContainerRegistryOutput(ctx *pulumi.Context, args LookupContainerRegistryOutputArgs, opts ...pulumi.InvokeOption) LookupContainerRegistryResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupContainerRegistryResultOutput, error) {
 			args := v.(LookupContainerRegistryArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupContainerRegistryResult
-			secret, err := ctx.InvokePackageRaw("azure-native:appplatform/v20230701preview:getContainerRegistry", args, &rv, "", opts...)
-			if err != nil {
-				return LookupContainerRegistryResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupContainerRegistryResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupContainerRegistryResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:appplatform/v20230701preview:getContainerRegistry", args, LookupContainerRegistryResultOutput{}, options).(LookupContainerRegistryResultOutput), nil
 		}).(LookupContainerRegistryResultOutput)
 }
 

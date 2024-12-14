@@ -49,21 +49,11 @@ type LookupEc2SecurityGroupResult struct {
 }
 
 func LookupEc2SecurityGroupOutput(ctx *pulumi.Context, args LookupEc2SecurityGroupOutputArgs, opts ...pulumi.InvokeOption) LookupEc2SecurityGroupResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupEc2SecurityGroupResultOutput, error) {
 			args := v.(LookupEc2SecurityGroupArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupEc2SecurityGroupResult
-			secret, err := ctx.InvokePackageRaw("azure-native:awsconnector:getEc2SecurityGroup", args, &rv, "", opts...)
-			if err != nil {
-				return LookupEc2SecurityGroupResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupEc2SecurityGroupResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupEc2SecurityGroupResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:awsconnector:getEc2SecurityGroup", args, LookupEc2SecurityGroupResultOutput{}, options).(LookupEc2SecurityGroupResultOutput), nil
 		}).(LookupEc2SecurityGroupResultOutput)
 }
 

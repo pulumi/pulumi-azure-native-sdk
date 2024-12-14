@@ -40,21 +40,11 @@ type ListVolumeReplicationsResult struct {
 }
 
 func ListVolumeReplicationsOutput(ctx *pulumi.Context, args ListVolumeReplicationsOutputArgs, opts ...pulumi.InvokeOption) ListVolumeReplicationsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListVolumeReplicationsResultOutput, error) {
 			args := v.(ListVolumeReplicationsArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListVolumeReplicationsResult
-			secret, err := ctx.InvokePackageRaw("azure-native:netapp/v20230701preview:listVolumeReplications", args, &rv, "", opts...)
-			if err != nil {
-				return ListVolumeReplicationsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListVolumeReplicationsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListVolumeReplicationsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:netapp/v20230701preview:listVolumeReplications", args, ListVolumeReplicationsResultOutput{}, options).(ListVolumeReplicationsResultOutput), nil
 		}).(ListVolumeReplicationsResultOutput)
 }
 

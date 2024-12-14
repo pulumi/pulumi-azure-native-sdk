@@ -50,21 +50,11 @@ type LookupStorageMoverResult struct {
 }
 
 func LookupStorageMoverOutput(ctx *pulumi.Context, args LookupStorageMoverOutputArgs, opts ...pulumi.InvokeOption) LookupStorageMoverResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupStorageMoverResultOutput, error) {
 			args := v.(LookupStorageMoverArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupStorageMoverResult
-			secret, err := ctx.InvokePackageRaw("azure-native:storagemover/v20231001:getStorageMover", args, &rv, "", opts...)
-			if err != nil {
-				return LookupStorageMoverResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupStorageMoverResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupStorageMoverResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:storagemover/v20231001:getStorageMover", args, LookupStorageMoverResultOutput{}, options).(LookupStorageMoverResultOutput), nil
 		}).(LookupStorageMoverResultOutput)
 }
 

@@ -60,21 +60,11 @@ type LookupAvailabilityGroupListenerResult struct {
 }
 
 func LookupAvailabilityGroupListenerOutput(ctx *pulumi.Context, args LookupAvailabilityGroupListenerOutputArgs, opts ...pulumi.InvokeOption) LookupAvailabilityGroupListenerResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAvailabilityGroupListenerResultOutput, error) {
 			args := v.(LookupAvailabilityGroupListenerArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupAvailabilityGroupListenerResult
-			secret, err := ctx.InvokePackageRaw("azure-native:sqlvirtualmachine/v20230101preview:getAvailabilityGroupListener", args, &rv, "", opts...)
-			if err != nil {
-				return LookupAvailabilityGroupListenerResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupAvailabilityGroupListenerResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupAvailabilityGroupListenerResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:sqlvirtualmachine/v20230101preview:getAvailabilityGroupListener", args, LookupAvailabilityGroupListenerResultOutput{}, options).(LookupAvailabilityGroupListenerResultOutput), nil
 		}).(LookupAvailabilityGroupListenerResultOutput)
 }
 

@@ -62,21 +62,11 @@ type LookupSecretSyncResult struct {
 }
 
 func LookupSecretSyncOutput(ctx *pulumi.Context, args LookupSecretSyncOutputArgs, opts ...pulumi.InvokeOption) LookupSecretSyncResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupSecretSyncResultOutput, error) {
 			args := v.(LookupSecretSyncArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupSecretSyncResult
-			secret, err := ctx.InvokePackageRaw("azure-native:secretsynccontroller/v20240821preview:getSecretSync", args, &rv, "", opts...)
-			if err != nil {
-				return LookupSecretSyncResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupSecretSyncResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupSecretSyncResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:secretsynccontroller/v20240821preview:getSecretSync", args, LookupSecretSyncResultOutput{}, options).(LookupSecretSyncResultOutput), nil
 		}).(LookupSecretSyncResultOutput)
 }
 

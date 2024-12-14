@@ -54,21 +54,11 @@ type LookupWorkspaceNamedValueResult struct {
 }
 
 func LookupWorkspaceNamedValueOutput(ctx *pulumi.Context, args LookupWorkspaceNamedValueOutputArgs, opts ...pulumi.InvokeOption) LookupWorkspaceNamedValueResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupWorkspaceNamedValueResultOutput, error) {
 			args := v.(LookupWorkspaceNamedValueArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupWorkspaceNamedValueResult
-			secret, err := ctx.InvokePackageRaw("azure-native:apimanagement/v20230301preview:getWorkspaceNamedValue", args, &rv, "", opts...)
-			if err != nil {
-				return LookupWorkspaceNamedValueResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupWorkspaceNamedValueResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupWorkspaceNamedValueResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:apimanagement/v20230301preview:getWorkspaceNamedValue", args, LookupWorkspaceNamedValueResultOutput{}, options).(LookupWorkspaceNamedValueResultOutput), nil
 		}).(LookupWorkspaceNamedValueResultOutput)
 }
 

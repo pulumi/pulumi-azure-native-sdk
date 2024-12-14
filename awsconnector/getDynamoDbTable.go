@@ -49,21 +49,11 @@ type LookupDynamoDbTableResult struct {
 }
 
 func LookupDynamoDbTableOutput(ctx *pulumi.Context, args LookupDynamoDbTableOutputArgs, opts ...pulumi.InvokeOption) LookupDynamoDbTableResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupDynamoDbTableResultOutput, error) {
 			args := v.(LookupDynamoDbTableArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupDynamoDbTableResult
-			secret, err := ctx.InvokePackageRaw("azure-native:awsconnector:getDynamoDbTable", args, &rv, "", opts...)
-			if err != nil {
-				return LookupDynamoDbTableResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupDynamoDbTableResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupDynamoDbTableResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:awsconnector:getDynamoDbTable", args, LookupDynamoDbTableResultOutput{}, options).(LookupDynamoDbTableResultOutput), nil
 		}).(LookupDynamoDbTableResultOutput)
 }
 

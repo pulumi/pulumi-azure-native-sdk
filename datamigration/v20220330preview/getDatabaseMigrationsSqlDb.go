@@ -46,21 +46,11 @@ type LookupDatabaseMigrationsSqlDbResult struct {
 }
 
 func LookupDatabaseMigrationsSqlDbOutput(ctx *pulumi.Context, args LookupDatabaseMigrationsSqlDbOutputArgs, opts ...pulumi.InvokeOption) LookupDatabaseMigrationsSqlDbResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupDatabaseMigrationsSqlDbResultOutput, error) {
 			args := v.(LookupDatabaseMigrationsSqlDbArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupDatabaseMigrationsSqlDbResult
-			secret, err := ctx.InvokePackageRaw("azure-native:datamigration/v20220330preview:getDatabaseMigrationsSqlDb", args, &rv, "", opts...)
-			if err != nil {
-				return LookupDatabaseMigrationsSqlDbResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupDatabaseMigrationsSqlDbResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupDatabaseMigrationsSqlDbResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:datamigration/v20220330preview:getDatabaseMigrationsSqlDb", args, LookupDatabaseMigrationsSqlDbResultOutput{}, options).(LookupDatabaseMigrationsSqlDbResultOutput), nil
 		}).(LookupDatabaseMigrationsSqlDbResultOutput)
 }
 

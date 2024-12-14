@@ -57,21 +57,11 @@ type ListWebAppPublishingCredentialsSlotResult struct {
 }
 
 func ListWebAppPublishingCredentialsSlotOutput(ctx *pulumi.Context, args ListWebAppPublishingCredentialsSlotOutputArgs, opts ...pulumi.InvokeOption) ListWebAppPublishingCredentialsSlotResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListWebAppPublishingCredentialsSlotResultOutput, error) {
 			args := v.(ListWebAppPublishingCredentialsSlotArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListWebAppPublishingCredentialsSlotResult
-			secret, err := ctx.InvokePackageRaw("azure-native:web:listWebAppPublishingCredentialsSlot", args, &rv, "", opts...)
-			if err != nil {
-				return ListWebAppPublishingCredentialsSlotResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListWebAppPublishingCredentialsSlotResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListWebAppPublishingCredentialsSlotResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:web:listWebAppPublishingCredentialsSlot", args, ListWebAppPublishingCredentialsSlotResultOutput{}, options).(ListWebAppPublishingCredentialsSlotResultOutput), nil
 		}).(ListWebAppPublishingCredentialsSlotResultOutput)
 }
 

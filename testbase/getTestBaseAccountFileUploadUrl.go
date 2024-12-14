@@ -43,21 +43,11 @@ type GetTestBaseAccountFileUploadUrlResult struct {
 }
 
 func GetTestBaseAccountFileUploadUrlOutput(ctx *pulumi.Context, args GetTestBaseAccountFileUploadUrlOutputArgs, opts ...pulumi.InvokeOption) GetTestBaseAccountFileUploadUrlResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetTestBaseAccountFileUploadUrlResultOutput, error) {
 			args := v.(GetTestBaseAccountFileUploadUrlArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetTestBaseAccountFileUploadUrlResult
-			secret, err := ctx.InvokePackageRaw("azure-native:testbase:getTestBaseAccountFileUploadUrl", args, &rv, "", opts...)
-			if err != nil {
-				return GetTestBaseAccountFileUploadUrlResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetTestBaseAccountFileUploadUrlResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetTestBaseAccountFileUploadUrlResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:testbase:getTestBaseAccountFileUploadUrl", args, GetTestBaseAccountFileUploadUrlResultOutput{}, options).(GetTestBaseAccountFileUploadUrlResultOutput), nil
 		}).(GetTestBaseAccountFileUploadUrlResultOutput)
 }
 

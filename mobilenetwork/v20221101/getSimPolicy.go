@@ -73,23 +73,12 @@ func (val *LookupSimPolicyResult) Defaults() *LookupSimPolicyResult {
 	}
 	return &tmp
 }
-
 func LookupSimPolicyOutput(ctx *pulumi.Context, args LookupSimPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupSimPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupSimPolicyResultOutput, error) {
 			args := v.(LookupSimPolicyArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupSimPolicyResult
-			secret, err := ctx.InvokePackageRaw("azure-native:mobilenetwork/v20221101:getSimPolicy", args, &rv, "", opts...)
-			if err != nil {
-				return LookupSimPolicyResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupSimPolicyResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupSimPolicyResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:mobilenetwork/v20221101:getSimPolicy", args, LookupSimPolicyResultOutput{}, options).(LookupSimPolicyResultOutput), nil
 		}).(LookupSimPolicyResultOutput)
 }
 

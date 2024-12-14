@@ -50,21 +50,11 @@ type LookupCreatorResult struct {
 }
 
 func LookupCreatorOutput(ctx *pulumi.Context, args LookupCreatorOutputArgs, opts ...pulumi.InvokeOption) LookupCreatorResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupCreatorResultOutput, error) {
 			args := v.(LookupCreatorArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupCreatorResult
-			secret, err := ctx.InvokePackageRaw("azure-native:maps/v20231201preview:getCreator", args, &rv, "", opts...)
-			if err != nil {
-				return LookupCreatorResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupCreatorResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupCreatorResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:maps/v20231201preview:getCreator", args, LookupCreatorResultOutput{}, options).(LookupCreatorResultOutput), nil
 		}).(LookupCreatorResultOutput)
 }
 

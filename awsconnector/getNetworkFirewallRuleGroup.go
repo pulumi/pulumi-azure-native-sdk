@@ -49,21 +49,11 @@ type LookupNetworkFirewallRuleGroupResult struct {
 }
 
 func LookupNetworkFirewallRuleGroupOutput(ctx *pulumi.Context, args LookupNetworkFirewallRuleGroupOutputArgs, opts ...pulumi.InvokeOption) LookupNetworkFirewallRuleGroupResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupNetworkFirewallRuleGroupResultOutput, error) {
 			args := v.(LookupNetworkFirewallRuleGroupArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupNetworkFirewallRuleGroupResult
-			secret, err := ctx.InvokePackageRaw("azure-native:awsconnector:getNetworkFirewallRuleGroup", args, &rv, "", opts...)
-			if err != nil {
-				return LookupNetworkFirewallRuleGroupResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupNetworkFirewallRuleGroupResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupNetworkFirewallRuleGroupResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:awsconnector:getNetworkFirewallRuleGroup", args, LookupNetworkFirewallRuleGroupResultOutput{}, options).(LookupNetworkFirewallRuleGroupResultOutput), nil
 		}).(LookupNetworkFirewallRuleGroupResultOutput)
 }
 

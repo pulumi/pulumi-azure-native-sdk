@@ -44,21 +44,11 @@ type LookupSharedPrivateLinkResourceResult struct {
 }
 
 func LookupSharedPrivateLinkResourceOutput(ctx *pulumi.Context, args LookupSharedPrivateLinkResourceOutputArgs, opts ...pulumi.InvokeOption) LookupSharedPrivateLinkResourceResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupSharedPrivateLinkResourceResultOutput, error) {
 			args := v.(LookupSharedPrivateLinkResourceArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupSharedPrivateLinkResourceResult
-			secret, err := ctx.InvokePackageRaw("azure-native:search/v20240301preview:getSharedPrivateLinkResource", args, &rv, "", opts...)
-			if err != nil {
-				return LookupSharedPrivateLinkResourceResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupSharedPrivateLinkResourceResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupSharedPrivateLinkResourceResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:search/v20240301preview:getSharedPrivateLinkResource", args, LookupSharedPrivateLinkResourceResultOutput{}, options).(LookupSharedPrivateLinkResourceResultOutput), nil
 		}).(LookupSharedPrivateLinkResourceResultOutput)
 }
 

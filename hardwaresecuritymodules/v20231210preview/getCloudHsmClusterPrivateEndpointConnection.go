@@ -54,21 +54,11 @@ type LookupCloudHsmClusterPrivateEndpointConnectionResult struct {
 }
 
 func LookupCloudHsmClusterPrivateEndpointConnectionOutput(ctx *pulumi.Context, args LookupCloudHsmClusterPrivateEndpointConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupCloudHsmClusterPrivateEndpointConnectionResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupCloudHsmClusterPrivateEndpointConnectionResultOutput, error) {
 			args := v.(LookupCloudHsmClusterPrivateEndpointConnectionArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupCloudHsmClusterPrivateEndpointConnectionResult
-			secret, err := ctx.InvokePackageRaw("azure-native:hardwaresecuritymodules/v20231210preview:getCloudHsmClusterPrivateEndpointConnection", args, &rv, "", opts...)
-			if err != nil {
-				return LookupCloudHsmClusterPrivateEndpointConnectionResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupCloudHsmClusterPrivateEndpointConnectionResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupCloudHsmClusterPrivateEndpointConnectionResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:hardwaresecuritymodules/v20231210preview:getCloudHsmClusterPrivateEndpointConnection", args, LookupCloudHsmClusterPrivateEndpointConnectionResultOutput{}, options).(LookupCloudHsmClusterPrivateEndpointConnectionResultOutput), nil
 		}).(LookupCloudHsmClusterPrivateEndpointConnectionResultOutput)
 }
 

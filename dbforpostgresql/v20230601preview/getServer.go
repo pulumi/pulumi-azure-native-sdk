@@ -105,23 +105,12 @@ func (val *LookupServerResult) Defaults() *LookupServerResult {
 
 	return &tmp
 }
-
 func LookupServerOutput(ctx *pulumi.Context, args LookupServerOutputArgs, opts ...pulumi.InvokeOption) LookupServerResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupServerResultOutput, error) {
 			args := v.(LookupServerArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupServerResult
-			secret, err := ctx.InvokePackageRaw("azure-native:dbforpostgresql/v20230601preview:getServer", args, &rv, "", opts...)
-			if err != nil {
-				return LookupServerResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupServerResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupServerResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:dbforpostgresql/v20230601preview:getServer", args, LookupServerResultOutput{}, options).(LookupServerResultOutput), nil
 		}).(LookupServerResultOutput)
 }
 

@@ -64,21 +64,11 @@ type LookupPipelineTopologyResult struct {
 }
 
 func LookupPipelineTopologyOutput(ctx *pulumi.Context, args LookupPipelineTopologyOutputArgs, opts ...pulumi.InvokeOption) LookupPipelineTopologyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupPipelineTopologyResultOutput, error) {
 			args := v.(LookupPipelineTopologyArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupPipelineTopologyResult
-			secret, err := ctx.InvokePackageRaw("azure-native:videoanalyzer:getPipelineTopology", args, &rv, "", opts...)
-			if err != nil {
-				return LookupPipelineTopologyResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupPipelineTopologyResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupPipelineTopologyResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:videoanalyzer:getPipelineTopology", args, LookupPipelineTopologyResultOutput{}, options).(LookupPipelineTopologyResultOutput), nil
 		}).(LookupPipelineTopologyResultOutput)
 }
 

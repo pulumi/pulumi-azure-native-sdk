@@ -37,21 +37,11 @@ type GetGlobalUserOperationBatchStatusResult struct {
 }
 
 func GetGlobalUserOperationBatchStatusOutput(ctx *pulumi.Context, args GetGlobalUserOperationBatchStatusOutputArgs, opts ...pulumi.InvokeOption) GetGlobalUserOperationBatchStatusResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetGlobalUserOperationBatchStatusResultOutput, error) {
 			args := v.(GetGlobalUserOperationBatchStatusArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetGlobalUserOperationBatchStatusResult
-			secret, err := ctx.InvokePackageRaw("azure-native:labservices:getGlobalUserOperationBatchStatus", args, &rv, "", opts...)
-			if err != nil {
-				return GetGlobalUserOperationBatchStatusResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetGlobalUserOperationBatchStatusResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetGlobalUserOperationBatchStatusResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:labservices:getGlobalUserOperationBatchStatus", args, GetGlobalUserOperationBatchStatusResultOutput{}, options).(GetGlobalUserOperationBatchStatusResultOutput), nil
 		}).(GetGlobalUserOperationBatchStatusResultOutput)
 }
 

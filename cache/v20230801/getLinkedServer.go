@@ -54,21 +54,11 @@ type LookupLinkedServerResult struct {
 }
 
 func LookupLinkedServerOutput(ctx *pulumi.Context, args LookupLinkedServerOutputArgs, opts ...pulumi.InvokeOption) LookupLinkedServerResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupLinkedServerResultOutput, error) {
 			args := v.(LookupLinkedServerArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupLinkedServerResult
-			secret, err := ctx.InvokePackageRaw("azure-native:cache/v20230801:getLinkedServer", args, &rv, "", opts...)
-			if err != nil {
-				return LookupLinkedServerResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupLinkedServerResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupLinkedServerResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:cache/v20230801:getLinkedServer", args, LookupLinkedServerResultOutput{}, options).(LookupLinkedServerResultOutput), nil
 		}).(LookupLinkedServerResultOutput)
 }
 

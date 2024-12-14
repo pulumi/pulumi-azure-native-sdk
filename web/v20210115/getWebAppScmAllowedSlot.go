@@ -45,21 +45,11 @@ type LookupWebAppScmAllowedSlotResult struct {
 }
 
 func LookupWebAppScmAllowedSlotOutput(ctx *pulumi.Context, args LookupWebAppScmAllowedSlotOutputArgs, opts ...pulumi.InvokeOption) LookupWebAppScmAllowedSlotResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupWebAppScmAllowedSlotResultOutput, error) {
 			args := v.(LookupWebAppScmAllowedSlotArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupWebAppScmAllowedSlotResult
-			secret, err := ctx.InvokePackageRaw("azure-native:web/v20210115:getWebAppScmAllowedSlot", args, &rv, "", opts...)
-			if err != nil {
-				return LookupWebAppScmAllowedSlotResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupWebAppScmAllowedSlotResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupWebAppScmAllowedSlotResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:web/v20210115:getWebAppScmAllowedSlot", args, LookupWebAppScmAllowedSlotResultOutput{}, options).(LookupWebAppScmAllowedSlotResultOutput), nil
 		}).(LookupWebAppScmAllowedSlotResultOutput)
 }
 

@@ -49,21 +49,11 @@ type LookupEc2VolumeResult struct {
 }
 
 func LookupEc2VolumeOutput(ctx *pulumi.Context, args LookupEc2VolumeOutputArgs, opts ...pulumi.InvokeOption) LookupEc2VolumeResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupEc2VolumeResultOutput, error) {
 			args := v.(LookupEc2VolumeArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupEc2VolumeResult
-			secret, err := ctx.InvokePackageRaw("azure-native:awsconnector:getEc2Volume", args, &rv, "", opts...)
-			if err != nil {
-				return LookupEc2VolumeResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupEc2VolumeResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupEc2VolumeResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:awsconnector:getEc2Volume", args, LookupEc2VolumeResultOutput{}, options).(LookupEc2VolumeResultOutput), nil
 		}).(LookupEc2VolumeResultOutput)
 }
 

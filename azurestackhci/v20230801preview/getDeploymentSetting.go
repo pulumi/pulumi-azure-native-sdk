@@ -54,21 +54,11 @@ type LookupDeploymentSettingResult struct {
 }
 
 func LookupDeploymentSettingOutput(ctx *pulumi.Context, args LookupDeploymentSettingOutputArgs, opts ...pulumi.InvokeOption) LookupDeploymentSettingResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupDeploymentSettingResultOutput, error) {
 			args := v.(LookupDeploymentSettingArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupDeploymentSettingResult
-			secret, err := ctx.InvokePackageRaw("azure-native:azurestackhci/v20230801preview:getDeploymentSetting", args, &rv, "", opts...)
-			if err != nil {
-				return LookupDeploymentSettingResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupDeploymentSettingResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupDeploymentSettingResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:azurestackhci/v20230801preview:getDeploymentSetting", args, LookupDeploymentSettingResultOutput{}, options).(LookupDeploymentSettingResultOutput), nil
 		}).(LookupDeploymentSettingResultOutput)
 }
 

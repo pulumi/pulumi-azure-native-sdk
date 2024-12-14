@@ -49,21 +49,11 @@ type LookupLogsLogStreamResult struct {
 }
 
 func LookupLogsLogStreamOutput(ctx *pulumi.Context, args LookupLogsLogStreamOutputArgs, opts ...pulumi.InvokeOption) LookupLogsLogStreamResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupLogsLogStreamResultOutput, error) {
 			args := v.(LookupLogsLogStreamArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupLogsLogStreamResult
-			secret, err := ctx.InvokePackageRaw("azure-native:awsconnector:getLogsLogStream", args, &rv, "", opts...)
-			if err != nil {
-				return LookupLogsLogStreamResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupLogsLogStreamResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupLogsLogStreamResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:awsconnector:getLogsLogStream", args, LookupLogsLogStreamResultOutput{}, options).(LookupLogsLogStreamResultOutput), nil
 		}).(LookupLogsLogStreamResultOutput)
 }
 

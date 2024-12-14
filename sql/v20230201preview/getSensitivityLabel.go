@@ -70,21 +70,11 @@ type LookupSensitivityLabelResult struct {
 }
 
 func LookupSensitivityLabelOutput(ctx *pulumi.Context, args LookupSensitivityLabelOutputArgs, opts ...pulumi.InvokeOption) LookupSensitivityLabelResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupSensitivityLabelResultOutput, error) {
 			args := v.(LookupSensitivityLabelArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupSensitivityLabelResult
-			secret, err := ctx.InvokePackageRaw("azure-native:sql/v20230201preview:getSensitivityLabel", args, &rv, "", opts...)
-			if err != nil {
-				return LookupSensitivityLabelResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupSensitivityLabelResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupSensitivityLabelResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:sql/v20230201preview:getSensitivityLabel", args, LookupSensitivityLabelResultOutput{}, options).(LookupSensitivityLabelResultOutput), nil
 		}).(LookupSensitivityLabelResultOutput)
 }
 

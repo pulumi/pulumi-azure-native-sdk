@@ -67,23 +67,12 @@ func (val *LookupRegistryResult) Defaults() *LookupRegistryResult {
 	}
 	return &tmp
 }
-
 func LookupRegistryOutput(ctx *pulumi.Context, args LookupRegistryOutputArgs, opts ...pulumi.InvokeOption) LookupRegistryResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupRegistryResultOutput, error) {
 			args := v.(LookupRegistryArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupRegistryResult
-			secret, err := ctx.InvokePackageRaw("azure-native:containerregistry/v20170301:getRegistry", args, &rv, "", opts...)
-			if err != nil {
-				return LookupRegistryResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupRegistryResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupRegistryResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:containerregistry/v20170301:getRegistry", args, LookupRegistryResultOutput{}, options).(LookupRegistryResultOutput), nil
 		}).(LookupRegistryResultOutput)
 }
 

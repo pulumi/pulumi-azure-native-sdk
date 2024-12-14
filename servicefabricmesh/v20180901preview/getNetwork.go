@@ -46,21 +46,11 @@ type LookupNetworkResult struct {
 }
 
 func LookupNetworkOutput(ctx *pulumi.Context, args LookupNetworkOutputArgs, opts ...pulumi.InvokeOption) LookupNetworkResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupNetworkResultOutput, error) {
 			args := v.(LookupNetworkArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupNetworkResult
-			secret, err := ctx.InvokePackageRaw("azure-native:servicefabricmesh/v20180901preview:getNetwork", args, &rv, "", opts...)
-			if err != nil {
-				return LookupNetworkResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupNetworkResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupNetworkResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:servicefabricmesh/v20180901preview:getNetwork", args, LookupNetworkResultOutput{}, options).(LookupNetworkResultOutput), nil
 		}).(LookupNetworkResultOutput)
 }
 

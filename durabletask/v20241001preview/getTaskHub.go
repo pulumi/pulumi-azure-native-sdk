@@ -46,21 +46,11 @@ type LookupTaskHubResult struct {
 }
 
 func LookupTaskHubOutput(ctx *pulumi.Context, args LookupTaskHubOutputArgs, opts ...pulumi.InvokeOption) LookupTaskHubResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupTaskHubResultOutput, error) {
 			args := v.(LookupTaskHubArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupTaskHubResult
-			secret, err := ctx.InvokePackageRaw("azure-native:durabletask/v20241001preview:getTaskHub", args, &rv, "", opts...)
-			if err != nil {
-				return LookupTaskHubResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupTaskHubResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupTaskHubResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:durabletask/v20241001preview:getTaskHub", args, LookupTaskHubResultOutput{}, options).(LookupTaskHubResultOutput), nil
 		}).(LookupTaskHubResultOutput)
 }
 

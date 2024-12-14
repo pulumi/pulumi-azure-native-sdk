@@ -57,23 +57,12 @@ func (val *LookupS3BucketResult) Defaults() *LookupS3BucketResult {
 
 	return &tmp
 }
-
 func LookupS3BucketOutput(ctx *pulumi.Context, args LookupS3BucketOutputArgs, opts ...pulumi.InvokeOption) LookupS3BucketResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupS3BucketResultOutput, error) {
 			args := v.(LookupS3BucketArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupS3BucketResult
-			secret, err := ctx.InvokePackageRaw("azure-native:awsconnector/v20241201:getS3Bucket", args, &rv, "", opts...)
-			if err != nil {
-				return LookupS3BucketResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupS3BucketResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupS3BucketResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:awsconnector/v20241201:getS3Bucket", args, LookupS3BucketResultOutput{}, options).(LookupS3BucketResultOutput), nil
 		}).(LookupS3BucketResultOutput)
 }
 

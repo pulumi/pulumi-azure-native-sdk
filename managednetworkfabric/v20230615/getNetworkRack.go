@@ -56,21 +56,11 @@ type LookupNetworkRackResult struct {
 }
 
 func LookupNetworkRackOutput(ctx *pulumi.Context, args LookupNetworkRackOutputArgs, opts ...pulumi.InvokeOption) LookupNetworkRackResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupNetworkRackResultOutput, error) {
 			args := v.(LookupNetworkRackArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupNetworkRackResult
-			secret, err := ctx.InvokePackageRaw("azure-native:managednetworkfabric/v20230615:getNetworkRack", args, &rv, "", opts...)
-			if err != nil {
-				return LookupNetworkRackResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupNetworkRackResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupNetworkRackResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:managednetworkfabric/v20230615:getNetworkRack", args, LookupNetworkRackResultOutput{}, options).(LookupNetworkRackResultOutput), nil
 		}).(LookupNetworkRackResultOutput)
 }
 

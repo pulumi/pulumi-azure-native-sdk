@@ -69,21 +69,11 @@ type LookupPowerShell72ModuleResult struct {
 }
 
 func LookupPowerShell72ModuleOutput(ctx *pulumi.Context, args LookupPowerShell72ModuleOutputArgs, opts ...pulumi.InvokeOption) LookupPowerShell72ModuleResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupPowerShell72ModuleResultOutput, error) {
 			args := v.(LookupPowerShell72ModuleArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupPowerShell72ModuleResult
-			secret, err := ctx.InvokePackageRaw("azure-native:automation:getPowerShell72Module", args, &rv, "", opts...)
-			if err != nil {
-				return LookupPowerShell72ModuleResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupPowerShell72ModuleResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupPowerShell72ModuleResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:automation:getPowerShell72Module", args, LookupPowerShell72ModuleResultOutput{}, options).(LookupPowerShell72ModuleResultOutput), nil
 		}).(LookupPowerShell72ModuleResultOutput)
 }
 

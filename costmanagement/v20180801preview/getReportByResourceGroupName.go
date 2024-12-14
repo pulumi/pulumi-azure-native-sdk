@@ -50,21 +50,11 @@ type LookupReportByResourceGroupNameResult struct {
 }
 
 func LookupReportByResourceGroupNameOutput(ctx *pulumi.Context, args LookupReportByResourceGroupNameOutputArgs, opts ...pulumi.InvokeOption) LookupReportByResourceGroupNameResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupReportByResourceGroupNameResultOutput, error) {
 			args := v.(LookupReportByResourceGroupNameArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupReportByResourceGroupNameResult
-			secret, err := ctx.InvokePackageRaw("azure-native:costmanagement/v20180801preview:getReportByResourceGroupName", args, &rv, "", opts...)
-			if err != nil {
-				return LookupReportByResourceGroupNameResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupReportByResourceGroupNameResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupReportByResourceGroupNameResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:costmanagement/v20180801preview:getReportByResourceGroupName", args, LookupReportByResourceGroupNameResultOutput{}, options).(LookupReportByResourceGroupNameResultOutput), nil
 		}).(LookupReportByResourceGroupNameResultOutput)
 }
 

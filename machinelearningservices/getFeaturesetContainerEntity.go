@@ -58,23 +58,12 @@ func (val *LookupFeaturesetContainerEntityResult) Defaults() *LookupFeaturesetCo
 
 	return &tmp
 }
-
 func LookupFeaturesetContainerEntityOutput(ctx *pulumi.Context, args LookupFeaturesetContainerEntityOutputArgs, opts ...pulumi.InvokeOption) LookupFeaturesetContainerEntityResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupFeaturesetContainerEntityResultOutput, error) {
 			args := v.(LookupFeaturesetContainerEntityArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupFeaturesetContainerEntityResult
-			secret, err := ctx.InvokePackageRaw("azure-native:machinelearningservices:getFeaturesetContainerEntity", args, &rv, "", opts...)
-			if err != nil {
-				return LookupFeaturesetContainerEntityResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupFeaturesetContainerEntityResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupFeaturesetContainerEntityResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:machinelearningservices:getFeaturesetContainerEntity", args, LookupFeaturesetContainerEntityResultOutput{}, options).(LookupFeaturesetContainerEntityResultOutput), nil
 		}).(LookupFeaturesetContainerEntityResultOutput)
 }
 

@@ -44,21 +44,11 @@ type LookupProductWikiResult struct {
 }
 
 func LookupProductWikiOutput(ctx *pulumi.Context, args LookupProductWikiOutputArgs, opts ...pulumi.InvokeOption) LookupProductWikiResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupProductWikiResultOutput, error) {
 			args := v.(LookupProductWikiArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupProductWikiResult
-			secret, err := ctx.InvokePackageRaw("azure-native:apimanagement/v20240501:getProductWiki", args, &rv, "", opts...)
-			if err != nil {
-				return LookupProductWikiResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupProductWikiResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupProductWikiResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:apimanagement/v20240501:getProductWiki", args, LookupProductWikiResultOutput{}, options).(LookupProductWikiResultOutput), nil
 		}).(LookupProductWikiResultOutput)
 }
 

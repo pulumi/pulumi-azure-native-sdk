@@ -42,21 +42,11 @@ type ListProductFamiliesResult struct {
 }
 
 func ListProductFamiliesOutput(ctx *pulumi.Context, args ListProductFamiliesOutputArgs, opts ...pulumi.InvokeOption) ListProductFamiliesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListProductFamiliesResultOutput, error) {
 			args := v.(ListProductFamiliesArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListProductFamiliesResult
-			secret, err := ctx.InvokePackageRaw("azure-native:edgeorder/v20211201:listProductFamilies", args, &rv, "", opts...)
-			if err != nil {
-				return ListProductFamiliesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListProductFamiliesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListProductFamiliesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:edgeorder/v20211201:listProductFamilies", args, ListProductFamiliesResultOutput{}, options).(ListProductFamiliesResultOutput), nil
 		}).(ListProductFamiliesResultOutput)
 }
 

@@ -48,21 +48,11 @@ type LookupServiceRunnerResult struct {
 }
 
 func LookupServiceRunnerOutput(ctx *pulumi.Context, args LookupServiceRunnerOutputArgs, opts ...pulumi.InvokeOption) LookupServiceRunnerResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupServiceRunnerResultOutput, error) {
 			args := v.(LookupServiceRunnerArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupServiceRunnerResult
-			secret, err := ctx.InvokePackageRaw("azure-native:devtestlab/v20180915:getServiceRunner", args, &rv, "", opts...)
-			if err != nil {
-				return LookupServiceRunnerResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupServiceRunnerResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupServiceRunnerResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:devtestlab/v20180915:getServiceRunner", args, LookupServiceRunnerResultOutput{}, options).(LookupServiceRunnerResultOutput), nil
 		}).(LookupServiceRunnerResultOutput)
 }
 

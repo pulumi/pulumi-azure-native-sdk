@@ -126,21 +126,11 @@ type LookupBudgetResult struct {
 }
 
 func LookupBudgetOutput(ctx *pulumi.Context, args LookupBudgetOutputArgs, opts ...pulumi.InvokeOption) LookupBudgetResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupBudgetResultOutput, error) {
 			args := v.(LookupBudgetArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupBudgetResult
-			secret, err := ctx.InvokePackageRaw("azure-native:costmanagement/v20230901:getBudget", args, &rv, "", opts...)
-			if err != nil {
-				return LookupBudgetResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupBudgetResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupBudgetResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:costmanagement/v20230901:getBudget", args, LookupBudgetResultOutput{}, options).(LookupBudgetResultOutput), nil
 		}).(LookupBudgetResultOutput)
 }
 

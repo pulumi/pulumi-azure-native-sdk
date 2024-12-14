@@ -54,21 +54,11 @@ type LookupFileEventTriggerResult struct {
 }
 
 func LookupFileEventTriggerOutput(ctx *pulumi.Context, args LookupFileEventTriggerOutputArgs, opts ...pulumi.InvokeOption) LookupFileEventTriggerResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupFileEventTriggerResultOutput, error) {
 			args := v.(LookupFileEventTriggerArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupFileEventTriggerResult
-			secret, err := ctx.InvokePackageRaw("azure-native:databoxedge:getFileEventTrigger", args, &rv, "", opts...)
-			if err != nil {
-				return LookupFileEventTriggerResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupFileEventTriggerResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupFileEventTriggerResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:databoxedge:getFileEventTrigger", args, LookupFileEventTriggerResultOutput{}, options).(LookupFileEventTriggerResultOutput), nil
 		}).(LookupFileEventTriggerResultOutput)
 }
 

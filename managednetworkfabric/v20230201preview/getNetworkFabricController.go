@@ -80,23 +80,12 @@ func (val *LookupNetworkFabricControllerResult) Defaults() *LookupNetworkFabricC
 	}
 	return &tmp
 }
-
 func LookupNetworkFabricControllerOutput(ctx *pulumi.Context, args LookupNetworkFabricControllerOutputArgs, opts ...pulumi.InvokeOption) LookupNetworkFabricControllerResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupNetworkFabricControllerResultOutput, error) {
 			args := v.(LookupNetworkFabricControllerArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupNetworkFabricControllerResult
-			secret, err := ctx.InvokePackageRaw("azure-native:managednetworkfabric/v20230201preview:getNetworkFabricController", args, &rv, "", opts...)
-			if err != nil {
-				return LookupNetworkFabricControllerResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupNetworkFabricControllerResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupNetworkFabricControllerResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:managednetworkfabric/v20230201preview:getNetworkFabricController", args, LookupNetworkFabricControllerResultOutput{}, options).(LookupNetworkFabricControllerResultOutput), nil
 		}).(LookupNetworkFabricControllerResultOutput)
 }
 

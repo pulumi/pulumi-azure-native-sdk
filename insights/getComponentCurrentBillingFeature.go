@@ -39,21 +39,11 @@ type LookupComponentCurrentBillingFeatureResult struct {
 }
 
 func LookupComponentCurrentBillingFeatureOutput(ctx *pulumi.Context, args LookupComponentCurrentBillingFeatureOutputArgs, opts ...pulumi.InvokeOption) LookupComponentCurrentBillingFeatureResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupComponentCurrentBillingFeatureResultOutput, error) {
 			args := v.(LookupComponentCurrentBillingFeatureArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupComponentCurrentBillingFeatureResult
-			secret, err := ctx.InvokePackageRaw("azure-native:insights:getComponentCurrentBillingFeature", args, &rv, "", opts...)
-			if err != nil {
-				return LookupComponentCurrentBillingFeatureResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupComponentCurrentBillingFeatureResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupComponentCurrentBillingFeatureResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:insights:getComponentCurrentBillingFeature", args, LookupComponentCurrentBillingFeatureResultOutput{}, options).(LookupComponentCurrentBillingFeatureResultOutput), nil
 		}).(LookupComponentCurrentBillingFeatureResultOutput)
 }
 

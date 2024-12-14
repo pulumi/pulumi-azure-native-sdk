@@ -48,21 +48,11 @@ type LookupSsmParameterResult struct {
 }
 
 func LookupSsmParameterOutput(ctx *pulumi.Context, args LookupSsmParameterOutputArgs, opts ...pulumi.InvokeOption) LookupSsmParameterResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupSsmParameterResultOutput, error) {
 			args := v.(LookupSsmParameterArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupSsmParameterResult
-			secret, err := ctx.InvokePackageRaw("azure-native:awsconnector/v20241201:getSsmParameter", args, &rv, "", opts...)
-			if err != nil {
-				return LookupSsmParameterResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupSsmParameterResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupSsmParameterResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:awsconnector/v20241201:getSsmParameter", args, LookupSsmParameterResultOutput{}, options).(LookupSsmParameterResultOutput), nil
 		}).(LookupSsmParameterResultOutput)
 }
 

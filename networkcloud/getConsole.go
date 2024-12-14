@@ -68,21 +68,11 @@ type LookupConsoleResult struct {
 }
 
 func LookupConsoleOutput(ctx *pulumi.Context, args LookupConsoleOutputArgs, opts ...pulumi.InvokeOption) LookupConsoleResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupConsoleResultOutput, error) {
 			args := v.(LookupConsoleArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupConsoleResult
-			secret, err := ctx.InvokePackageRaw("azure-native:networkcloud:getConsole", args, &rv, "", opts...)
-			if err != nil {
-				return LookupConsoleResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupConsoleResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupConsoleResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:networkcloud:getConsole", args, LookupConsoleResultOutput{}, options).(LookupConsoleResultOutput), nil
 		}).(LookupConsoleResultOutput)
 }
 

@@ -47,21 +47,11 @@ type GetDraftPackagePathResult struct {
 }
 
 func GetDraftPackagePathOutput(ctx *pulumi.Context, args GetDraftPackagePathOutputArgs, opts ...pulumi.InvokeOption) GetDraftPackagePathResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetDraftPackagePathResultOutput, error) {
 			args := v.(GetDraftPackagePathArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetDraftPackagePathResult
-			secret, err := ctx.InvokePackageRaw("azure-native:testbase:getDraftPackagePath", args, &rv, "", opts...)
-			if err != nil {
-				return GetDraftPackagePathResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetDraftPackagePathResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetDraftPackagePathResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:testbase:getDraftPackagePath", args, GetDraftPackagePathResultOutput{}, options).(GetDraftPackagePathResultOutput), nil
 		}).(GetDraftPackagePathResultOutput)
 }
 

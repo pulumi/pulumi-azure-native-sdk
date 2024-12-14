@@ -62,21 +62,11 @@ type LookupPricingResult struct {
 }
 
 func LookupPricingOutput(ctx *pulumi.Context, args LookupPricingOutputArgs, opts ...pulumi.InvokeOption) LookupPricingResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupPricingResultOutput, error) {
 			args := v.(LookupPricingArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupPricingResult
-			secret, err := ctx.InvokePackageRaw("azure-native:security/v20240101:getPricing", args, &rv, "", opts...)
-			if err != nil {
-				return LookupPricingResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupPricingResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupPricingResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:security/v20240101:getPricing", args, LookupPricingResultOutput{}, options).(LookupPricingResultOutput), nil
 		}).(LookupPricingResultOutput)
 }
 

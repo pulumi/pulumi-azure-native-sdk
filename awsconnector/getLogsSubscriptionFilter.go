@@ -49,21 +49,11 @@ type LookupLogsSubscriptionFilterResult struct {
 }
 
 func LookupLogsSubscriptionFilterOutput(ctx *pulumi.Context, args LookupLogsSubscriptionFilterOutputArgs, opts ...pulumi.InvokeOption) LookupLogsSubscriptionFilterResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupLogsSubscriptionFilterResultOutput, error) {
 			args := v.(LookupLogsSubscriptionFilterArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupLogsSubscriptionFilterResult
-			secret, err := ctx.InvokePackageRaw("azure-native:awsconnector:getLogsSubscriptionFilter", args, &rv, "", opts...)
-			if err != nil {
-				return LookupLogsSubscriptionFilterResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupLogsSubscriptionFilterResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupLogsSubscriptionFilterResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:awsconnector:getLogsSubscriptionFilter", args, LookupLogsSubscriptionFilterResultOutput{}, options).(LookupLogsSubscriptionFilterResultOutput), nil
 		}).(LookupLogsSubscriptionFilterResultOutput)
 }
 

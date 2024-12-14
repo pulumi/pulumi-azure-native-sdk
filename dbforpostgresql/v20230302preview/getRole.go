@@ -61,23 +61,12 @@ func (val *LookupRoleResult) Defaults() *LookupRoleResult {
 	}
 	return &tmp
 }
-
 func LookupRoleOutput(ctx *pulumi.Context, args LookupRoleOutputArgs, opts ...pulumi.InvokeOption) LookupRoleResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupRoleResultOutput, error) {
 			args := v.(LookupRoleArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupRoleResult
-			secret, err := ctx.InvokePackageRaw("azure-native:dbforpostgresql/v20230302preview:getRole", args, &rv, "", opts...)
-			if err != nil {
-				return LookupRoleResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupRoleResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupRoleResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:dbforpostgresql/v20230302preview:getRole", args, LookupRoleResultOutput{}, options).(LookupRoleResultOutput), nil
 		}).(LookupRoleResultOutput)
 }
 

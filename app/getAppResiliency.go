@@ -59,21 +59,11 @@ type LookupAppResiliencyResult struct {
 }
 
 func LookupAppResiliencyOutput(ctx *pulumi.Context, args LookupAppResiliencyOutputArgs, opts ...pulumi.InvokeOption) LookupAppResiliencyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAppResiliencyResultOutput, error) {
 			args := v.(LookupAppResiliencyArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupAppResiliencyResult
-			secret, err := ctx.InvokePackageRaw("azure-native:app:getAppResiliency", args, &rv, "", opts...)
-			if err != nil {
-				return LookupAppResiliencyResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupAppResiliencyResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupAppResiliencyResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:app:getAppResiliency", args, LookupAppResiliencyResultOutput{}, options).(LookupAppResiliencyResultOutput), nil
 		}).(LookupAppResiliencyResultOutput)
 }
 

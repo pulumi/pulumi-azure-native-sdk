@@ -39,21 +39,11 @@ type ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionResult struc
 }
 
 func ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionOutput(ctx *pulumi.Context, args ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionOutputArgs, opts ...pulumi.InvokeOption) ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionResultOutput, error) {
 			args := v.(ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionResult
-			secret, err := ctx.InvokePackageRaw("azure-native:billing:listBillingAccountInvoiceSectionsByCreateSubscriptionPermission", args, &rv, "", opts...)
-			if err != nil {
-				return ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:billing:listBillingAccountInvoiceSectionsByCreateSubscriptionPermission", args, ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionResultOutput{}, options).(ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionResultOutput), nil
 		}).(ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionResultOutput)
 }
 

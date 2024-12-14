@@ -50,21 +50,11 @@ type LookupWebPubSubCustomDomainResult struct {
 }
 
 func LookupWebPubSubCustomDomainOutput(ctx *pulumi.Context, args LookupWebPubSubCustomDomainOutputArgs, opts ...pulumi.InvokeOption) LookupWebPubSubCustomDomainResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupWebPubSubCustomDomainResultOutput, error) {
 			args := v.(LookupWebPubSubCustomDomainArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupWebPubSubCustomDomainResult
-			secret, err := ctx.InvokePackageRaw("azure-native:webpubsub/v20230601preview:getWebPubSubCustomDomain", args, &rv, "", opts...)
-			if err != nil {
-				return LookupWebPubSubCustomDomainResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupWebPubSubCustomDomainResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupWebPubSubCustomDomainResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:webpubsub/v20230601preview:getWebPubSubCustomDomain", args, LookupWebPubSubCustomDomainResultOutput{}, options).(LookupWebPubSubCustomDomainResultOutput), nil
 		}).(LookupWebPubSubCustomDomainResultOutput)
 }
 

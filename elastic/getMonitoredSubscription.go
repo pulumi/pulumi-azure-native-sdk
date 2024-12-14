@@ -47,21 +47,11 @@ type LookupMonitoredSubscriptionResult struct {
 }
 
 func LookupMonitoredSubscriptionOutput(ctx *pulumi.Context, args LookupMonitoredSubscriptionOutputArgs, opts ...pulumi.InvokeOption) LookupMonitoredSubscriptionResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupMonitoredSubscriptionResultOutput, error) {
 			args := v.(LookupMonitoredSubscriptionArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupMonitoredSubscriptionResult
-			secret, err := ctx.InvokePackageRaw("azure-native:elastic:getMonitoredSubscription", args, &rv, "", opts...)
-			if err != nil {
-				return LookupMonitoredSubscriptionResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupMonitoredSubscriptionResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupMonitoredSubscriptionResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:elastic:getMonitoredSubscription", args, LookupMonitoredSubscriptionResultOutput{}, options).(LookupMonitoredSubscriptionResultOutput), nil
 		}).(LookupMonitoredSubscriptionResultOutput)
 }
 

@@ -48,21 +48,11 @@ type LookupGremlinResourceGremlinDatabaseResult struct {
 }
 
 func LookupGremlinResourceGremlinDatabaseOutput(ctx *pulumi.Context, args LookupGremlinResourceGremlinDatabaseOutputArgs, opts ...pulumi.InvokeOption) LookupGremlinResourceGremlinDatabaseResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupGremlinResourceGremlinDatabaseResultOutput, error) {
 			args := v.(LookupGremlinResourceGremlinDatabaseArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupGremlinResourceGremlinDatabaseResult
-			secret, err := ctx.InvokePackageRaw("azure-native:documentdb/v20230415:getGremlinResourceGremlinDatabase", args, &rv, "", opts...)
-			if err != nil {
-				return LookupGremlinResourceGremlinDatabaseResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupGremlinResourceGremlinDatabaseResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupGremlinResourceGremlinDatabaseResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:documentdb/v20230415:getGremlinResourceGremlinDatabase", args, LookupGremlinResourceGremlinDatabaseResultOutput{}, options).(LookupGremlinResourceGremlinDatabaseResultOutput), nil
 		}).(LookupGremlinResourceGremlinDatabaseResultOutput)
 }
 

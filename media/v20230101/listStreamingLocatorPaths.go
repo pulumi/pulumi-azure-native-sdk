@@ -40,21 +40,11 @@ type ListStreamingLocatorPathsResult struct {
 }
 
 func ListStreamingLocatorPathsOutput(ctx *pulumi.Context, args ListStreamingLocatorPathsOutputArgs, opts ...pulumi.InvokeOption) ListStreamingLocatorPathsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListStreamingLocatorPathsResultOutput, error) {
 			args := v.(ListStreamingLocatorPathsArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListStreamingLocatorPathsResult
-			secret, err := ctx.InvokePackageRaw("azure-native:media/v20230101:listStreamingLocatorPaths", args, &rv, "", opts...)
-			if err != nil {
-				return ListStreamingLocatorPathsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListStreamingLocatorPathsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListStreamingLocatorPathsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:media/v20230101:listStreamingLocatorPaths", args, ListStreamingLocatorPathsResultOutput{}, options).(ListStreamingLocatorPathsResultOutput), nil
 		}).(ListStreamingLocatorPathsResultOutput)
 }
 

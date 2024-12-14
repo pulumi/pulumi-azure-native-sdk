@@ -39,21 +39,11 @@ type GetProjectKeysResult struct {
 }
 
 func GetProjectKeysOutput(ctx *pulumi.Context, args GetProjectKeysOutputArgs, opts ...pulumi.InvokeOption) GetProjectKeysResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetProjectKeysResultOutput, error) {
 			args := v.(GetProjectKeysArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetProjectKeysResult
-			secret, err := ctx.InvokePackageRaw("azure-native:migrate:getProjectKeys", args, &rv, "", opts...)
-			if err != nil {
-				return GetProjectKeysResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetProjectKeysResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetProjectKeysResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:migrate:getProjectKeys", args, GetProjectKeysResultOutput{}, options).(GetProjectKeysResultOutput), nil
 		}).(GetProjectKeysResultOutput)
 }
 

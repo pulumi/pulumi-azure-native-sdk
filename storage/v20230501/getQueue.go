@@ -45,21 +45,11 @@ type LookupQueueResult struct {
 }
 
 func LookupQueueOutput(ctx *pulumi.Context, args LookupQueueOutputArgs, opts ...pulumi.InvokeOption) LookupQueueResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupQueueResultOutput, error) {
 			args := v.(LookupQueueArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupQueueResult
-			secret, err := ctx.InvokePackageRaw("azure-native:storage/v20230501:getQueue", args, &rv, "", opts...)
-			if err != nil {
-				return LookupQueueResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupQueueResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupQueueResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:storage/v20230501:getQueue", args, LookupQueueResultOutput{}, options).(LookupQueueResultOutput), nil
 		}).(LookupQueueResultOutput)
 }
 

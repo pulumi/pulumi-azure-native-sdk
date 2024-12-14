@@ -37,21 +37,11 @@ type ListListUpgradableVersionPostResult struct {
 }
 
 func ListListUpgradableVersionPostOutput(ctx *pulumi.Context, args ListListUpgradableVersionPostOutputArgs, opts ...pulumi.InvokeOption) ListListUpgradableVersionPostResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListListUpgradableVersionPostResultOutput, error) {
 			args := v.(ListListUpgradableVersionPostArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListListUpgradableVersionPostResult
-			secret, err := ctx.InvokePackageRaw("azure-native:servicefabric/v20201201preview:listListUpgradableVersionPost", args, &rv, "", opts...)
-			if err != nil {
-				return ListListUpgradableVersionPostResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListListUpgradableVersionPostResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListListUpgradableVersionPostResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:servicefabric/v20201201preview:listListUpgradableVersionPost", args, ListListUpgradableVersionPostResultOutput{}, options).(ListListUpgradableVersionPostResultOutput), nil
 		}).(ListListUpgradableVersionPostResultOutput)
 }
 

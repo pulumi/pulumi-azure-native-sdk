@@ -49,21 +49,11 @@ type LookupEc2NetworkAclResult struct {
 }
 
 func LookupEc2NetworkAclOutput(ctx *pulumi.Context, args LookupEc2NetworkAclOutputArgs, opts ...pulumi.InvokeOption) LookupEc2NetworkAclResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupEc2NetworkAclResultOutput, error) {
 			args := v.(LookupEc2NetworkAclArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupEc2NetworkAclResult
-			secret, err := ctx.InvokePackageRaw("azure-native:awsconnector:getEc2NetworkAcl", args, &rv, "", opts...)
-			if err != nil {
-				return LookupEc2NetworkAclResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupEc2NetworkAclResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupEc2NetworkAclResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:awsconnector:getEc2NetworkAcl", args, LookupEc2NetworkAclResultOutput{}, options).(LookupEc2NetworkAclResultOutput), nil
 		}).(LookupEc2NetworkAclResultOutput)
 }
 

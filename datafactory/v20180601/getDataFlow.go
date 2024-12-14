@@ -46,21 +46,11 @@ type LookupDataFlowResult struct {
 }
 
 func LookupDataFlowOutput(ctx *pulumi.Context, args LookupDataFlowOutputArgs, opts ...pulumi.InvokeOption) LookupDataFlowResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupDataFlowResultOutput, error) {
 			args := v.(LookupDataFlowArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupDataFlowResult
-			secret, err := ctx.InvokePackageRaw("azure-native:datafactory/v20180601:getDataFlow", args, &rv, "", opts...)
-			if err != nil {
-				return LookupDataFlowResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupDataFlowResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupDataFlowResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:datafactory/v20180601:getDataFlow", args, LookupDataFlowResultOutput{}, options).(LookupDataFlowResultOutput), nil
 		}).(LookupDataFlowResultOutput)
 }
 

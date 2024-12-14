@@ -47,21 +47,11 @@ type LookupFabricResult struct {
 }
 
 func LookupFabricOutput(ctx *pulumi.Context, args LookupFabricOutputArgs, opts ...pulumi.InvokeOption) LookupFabricResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupFabricResultOutput, error) {
 			args := v.(LookupFabricArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupFabricResult
-			secret, err := ctx.InvokePackageRaw("azure-native:datareplication/v20210216preview:getFabric", args, &rv, "", opts...)
-			if err != nil {
-				return LookupFabricResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupFabricResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupFabricResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:datareplication/v20210216preview:getFabric", args, LookupFabricResultOutput{}, options).(LookupFabricResultOutput), nil
 		}).(LookupFabricResultOutput)
 }
 

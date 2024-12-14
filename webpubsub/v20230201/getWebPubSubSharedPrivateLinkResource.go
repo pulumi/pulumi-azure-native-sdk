@@ -54,21 +54,11 @@ type LookupWebPubSubSharedPrivateLinkResourceResult struct {
 }
 
 func LookupWebPubSubSharedPrivateLinkResourceOutput(ctx *pulumi.Context, args LookupWebPubSubSharedPrivateLinkResourceOutputArgs, opts ...pulumi.InvokeOption) LookupWebPubSubSharedPrivateLinkResourceResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupWebPubSubSharedPrivateLinkResourceResultOutput, error) {
 			args := v.(LookupWebPubSubSharedPrivateLinkResourceArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupWebPubSubSharedPrivateLinkResourceResult
-			secret, err := ctx.InvokePackageRaw("azure-native:webpubsub/v20230201:getWebPubSubSharedPrivateLinkResource", args, &rv, "", opts...)
-			if err != nil {
-				return LookupWebPubSubSharedPrivateLinkResourceResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupWebPubSubSharedPrivateLinkResourceResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupWebPubSubSharedPrivateLinkResourceResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:webpubsub/v20230201:getWebPubSubSharedPrivateLinkResource", args, LookupWebPubSubSharedPrivateLinkResourceResultOutput{}, options).(LookupWebPubSubSharedPrivateLinkResourceResultOutput), nil
 		}).(LookupWebPubSubSharedPrivateLinkResourceResultOutput)
 }
 

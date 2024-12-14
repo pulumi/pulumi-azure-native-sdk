@@ -48,21 +48,11 @@ type LookupWorkspaceSqlAadAdminResult struct {
 }
 
 func LookupWorkspaceSqlAadAdminOutput(ctx *pulumi.Context, args LookupWorkspaceSqlAadAdminOutputArgs, opts ...pulumi.InvokeOption) LookupWorkspaceSqlAadAdminResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupWorkspaceSqlAadAdminResultOutput, error) {
 			args := v.(LookupWorkspaceSqlAadAdminArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupWorkspaceSqlAadAdminResult
-			secret, err := ctx.InvokePackageRaw("azure-native:synapse/v20210601:getWorkspaceSqlAadAdmin", args, &rv, "", opts...)
-			if err != nil {
-				return LookupWorkspaceSqlAadAdminResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupWorkspaceSqlAadAdminResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupWorkspaceSqlAadAdminResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:synapse/v20210601:getWorkspaceSqlAadAdmin", args, LookupWorkspaceSqlAadAdminResultOutput{}, options).(LookupWorkspaceSqlAadAdminResultOutput), nil
 		}).(LookupWorkspaceSqlAadAdminResultOutput)
 }
 
