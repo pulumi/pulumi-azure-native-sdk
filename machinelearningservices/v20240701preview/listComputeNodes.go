@@ -40,21 +40,11 @@ type ListComputeNodesResult struct {
 }
 
 func ListComputeNodesOutput(ctx *pulumi.Context, args ListComputeNodesOutputArgs, opts ...pulumi.InvokeOption) ListComputeNodesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListComputeNodesResultOutput, error) {
 			args := v.(ListComputeNodesArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListComputeNodesResult
-			secret, err := ctx.InvokePackageRaw("azure-native:machinelearningservices/v20240701preview:listComputeNodes", args, &rv, "", opts...)
-			if err != nil {
-				return ListComputeNodesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListComputeNodesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListComputeNodesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:machinelearningservices/v20240701preview:listComputeNodes", args, ListComputeNodesResultOutput{}, options).(ListComputeNodesResultOutput), nil
 		}).(ListComputeNodesResultOutput)
 }
 

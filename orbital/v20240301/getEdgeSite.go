@@ -48,21 +48,11 @@ type LookupEdgeSiteResult struct {
 }
 
 func LookupEdgeSiteOutput(ctx *pulumi.Context, args LookupEdgeSiteOutputArgs, opts ...pulumi.InvokeOption) LookupEdgeSiteResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupEdgeSiteResultOutput, error) {
 			args := v.(LookupEdgeSiteArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupEdgeSiteResult
-			secret, err := ctx.InvokePackageRaw("azure-native:orbital/v20240301:getEdgeSite", args, &rv, "", opts...)
-			if err != nil {
-				return LookupEdgeSiteResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupEdgeSiteResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupEdgeSiteResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:orbital/v20240301:getEdgeSite", args, LookupEdgeSiteResultOutput{}, options).(LookupEdgeSiteResultOutput), nil
 		}).(LookupEdgeSiteResultOutput)
 }
 

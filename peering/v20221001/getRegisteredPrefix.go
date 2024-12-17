@@ -52,21 +52,11 @@ type LookupRegisteredPrefixResult struct {
 }
 
 func LookupRegisteredPrefixOutput(ctx *pulumi.Context, args LookupRegisteredPrefixOutputArgs, opts ...pulumi.InvokeOption) LookupRegisteredPrefixResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupRegisteredPrefixResultOutput, error) {
 			args := v.(LookupRegisteredPrefixArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupRegisteredPrefixResult
-			secret, err := ctx.InvokePackageRaw("azure-native:peering/v20221001:getRegisteredPrefix", args, &rv, "", opts...)
-			if err != nil {
-				return LookupRegisteredPrefixResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupRegisteredPrefixResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupRegisteredPrefixResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:peering/v20221001:getRegisteredPrefix", args, LookupRegisteredPrefixResultOutput{}, options).(LookupRegisteredPrefixResultOutput), nil
 		}).(LookupRegisteredPrefixResultOutput)
 }
 

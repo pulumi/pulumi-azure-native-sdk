@@ -38,21 +38,11 @@ type ListListPendingConnectionResult struct {
 }
 
 func ListListPendingConnectionOutput(ctx *pulumi.Context, args ListListPendingConnectionOutputArgs, opts ...pulumi.InvokeOption) ListListPendingConnectionResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListListPendingConnectionResultOutput, error) {
 			args := v.(ListListPendingConnectionArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListListPendingConnectionResult
-			secret, err := ctx.InvokePackageRaw("azure-native:azuredatatransfer/v20240911:listListPendingConnection", args, &rv, "", opts...)
-			if err != nil {
-				return ListListPendingConnectionResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListListPendingConnectionResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListListPendingConnectionResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:azuredatatransfer/v20240911:listListPendingConnection", args, ListListPendingConnectionResultOutput{}, options).(ListListPendingConnectionResultOutput), nil
 		}).(ListListPendingConnectionResultOutput)
 }
 

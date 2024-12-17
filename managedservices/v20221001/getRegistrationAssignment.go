@@ -46,21 +46,11 @@ type LookupRegistrationAssignmentResult struct {
 }
 
 func LookupRegistrationAssignmentOutput(ctx *pulumi.Context, args LookupRegistrationAssignmentOutputArgs, opts ...pulumi.InvokeOption) LookupRegistrationAssignmentResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupRegistrationAssignmentResultOutput, error) {
 			args := v.(LookupRegistrationAssignmentArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupRegistrationAssignmentResult
-			secret, err := ctx.InvokePackageRaw("azure-native:managedservices/v20221001:getRegistrationAssignment", args, &rv, "", opts...)
-			if err != nil {
-				return LookupRegistrationAssignmentResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupRegistrationAssignmentResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupRegistrationAssignmentResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:managedservices/v20221001:getRegistrationAssignment", args, LookupRegistrationAssignmentResultOutput{}, options).(LookupRegistrationAssignmentResultOutput), nil
 		}).(LookupRegistrationAssignmentResultOutput)
 }
 

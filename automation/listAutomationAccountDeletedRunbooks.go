@@ -41,21 +41,11 @@ type ListAutomationAccountDeletedRunbooksResult struct {
 }
 
 func ListAutomationAccountDeletedRunbooksOutput(ctx *pulumi.Context, args ListAutomationAccountDeletedRunbooksOutputArgs, opts ...pulumi.InvokeOption) ListAutomationAccountDeletedRunbooksResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListAutomationAccountDeletedRunbooksResultOutput, error) {
 			args := v.(ListAutomationAccountDeletedRunbooksArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListAutomationAccountDeletedRunbooksResult
-			secret, err := ctx.InvokePackageRaw("azure-native:automation:listAutomationAccountDeletedRunbooks", args, &rv, "", opts...)
-			if err != nil {
-				return ListAutomationAccountDeletedRunbooksResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListAutomationAccountDeletedRunbooksResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListAutomationAccountDeletedRunbooksResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:automation:listAutomationAccountDeletedRunbooks", args, ListAutomationAccountDeletedRunbooksResultOutput{}, options).(ListAutomationAccountDeletedRunbooksResultOutput), nil
 		}).(ListAutomationAccountDeletedRunbooksResultOutput)
 }
 

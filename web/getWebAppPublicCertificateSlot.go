@@ -55,21 +55,11 @@ type LookupWebAppPublicCertificateSlotResult struct {
 }
 
 func LookupWebAppPublicCertificateSlotOutput(ctx *pulumi.Context, args LookupWebAppPublicCertificateSlotOutputArgs, opts ...pulumi.InvokeOption) LookupWebAppPublicCertificateSlotResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupWebAppPublicCertificateSlotResultOutput, error) {
 			args := v.(LookupWebAppPublicCertificateSlotArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupWebAppPublicCertificateSlotResult
-			secret, err := ctx.InvokePackageRaw("azure-native:web:getWebAppPublicCertificateSlot", args, &rv, "", opts...)
-			if err != nil {
-				return LookupWebAppPublicCertificateSlotResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupWebAppPublicCertificateSlotResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupWebAppPublicCertificateSlotResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:web:getWebAppPublicCertificateSlot", args, LookupWebAppPublicCertificateSlotResultOutput{}, options).(LookupWebAppPublicCertificateSlotResultOutput), nil
 		}).(LookupWebAppPublicCertificateSlotResultOutput)
 }
 

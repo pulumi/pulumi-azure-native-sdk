@@ -50,21 +50,11 @@ type LookupReplicationProtectionContainerMappingResult struct {
 }
 
 func LookupReplicationProtectionContainerMappingOutput(ctx *pulumi.Context, args LookupReplicationProtectionContainerMappingOutputArgs, opts ...pulumi.InvokeOption) LookupReplicationProtectionContainerMappingResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupReplicationProtectionContainerMappingResultOutput, error) {
 			args := v.(LookupReplicationProtectionContainerMappingArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupReplicationProtectionContainerMappingResult
-			secret, err := ctx.InvokePackageRaw("azure-native:recoveryservices/v20230401:getReplicationProtectionContainerMapping", args, &rv, "", opts...)
-			if err != nil {
-				return LookupReplicationProtectionContainerMappingResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupReplicationProtectionContainerMappingResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupReplicationProtectionContainerMappingResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:recoveryservices/v20230401:getReplicationProtectionContainerMapping", args, LookupReplicationProtectionContainerMappingResultOutput{}, options).(LookupReplicationProtectionContainerMappingResultOutput), nil
 		}).(LookupReplicationProtectionContainerMappingResultOutput)
 }
 

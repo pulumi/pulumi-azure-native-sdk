@@ -50,21 +50,11 @@ type LookupDaprComponentResiliencyPolicyResult struct {
 }
 
 func LookupDaprComponentResiliencyPolicyOutput(ctx *pulumi.Context, args LookupDaprComponentResiliencyPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupDaprComponentResiliencyPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupDaprComponentResiliencyPolicyResultOutput, error) {
 			args := v.(LookupDaprComponentResiliencyPolicyArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupDaprComponentResiliencyPolicyResult
-			secret, err := ctx.InvokePackageRaw("azure-native:app/v20241002preview:getDaprComponentResiliencyPolicy", args, &rv, "", opts...)
-			if err != nil {
-				return LookupDaprComponentResiliencyPolicyResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupDaprComponentResiliencyPolicyResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupDaprComponentResiliencyPolicyResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:app/v20241002preview:getDaprComponentResiliencyPolicy", args, LookupDaprComponentResiliencyPolicyResultOutput{}, options).(LookupDaprComponentResiliencyPolicyResultOutput), nil
 		}).(LookupDaprComponentResiliencyPolicyResultOutput)
 }
 

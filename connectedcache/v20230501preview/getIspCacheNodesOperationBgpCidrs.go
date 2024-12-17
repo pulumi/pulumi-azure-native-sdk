@@ -50,21 +50,11 @@ type GetIspCacheNodesOperationBgpCidrsResult struct {
 }
 
 func GetIspCacheNodesOperationBgpCidrsOutput(ctx *pulumi.Context, args GetIspCacheNodesOperationBgpCidrsOutputArgs, opts ...pulumi.InvokeOption) GetIspCacheNodesOperationBgpCidrsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetIspCacheNodesOperationBgpCidrsResultOutput, error) {
 			args := v.(GetIspCacheNodesOperationBgpCidrsArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetIspCacheNodesOperationBgpCidrsResult
-			secret, err := ctx.InvokePackageRaw("azure-native:connectedcache/v20230501preview:getIspCacheNodesOperationBgpCidrs", args, &rv, "", opts...)
-			if err != nil {
-				return GetIspCacheNodesOperationBgpCidrsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetIspCacheNodesOperationBgpCidrsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetIspCacheNodesOperationBgpCidrsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:connectedcache/v20230501preview:getIspCacheNodesOperationBgpCidrs", args, GetIspCacheNodesOperationBgpCidrsResultOutput{}, options).(GetIspCacheNodesOperationBgpCidrsResultOutput), nil
 		}).(GetIspCacheNodesOperationBgpCidrsResultOutput)
 }
 

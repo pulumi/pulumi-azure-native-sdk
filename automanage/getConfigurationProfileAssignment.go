@@ -49,21 +49,11 @@ type LookupConfigurationProfileAssignmentResult struct {
 }
 
 func LookupConfigurationProfileAssignmentOutput(ctx *pulumi.Context, args LookupConfigurationProfileAssignmentOutputArgs, opts ...pulumi.InvokeOption) LookupConfigurationProfileAssignmentResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupConfigurationProfileAssignmentResultOutput, error) {
 			args := v.(LookupConfigurationProfileAssignmentArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupConfigurationProfileAssignmentResult
-			secret, err := ctx.InvokePackageRaw("azure-native:automanage:getConfigurationProfileAssignment", args, &rv, "", opts...)
-			if err != nil {
-				return LookupConfigurationProfileAssignmentResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupConfigurationProfileAssignmentResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupConfigurationProfileAssignmentResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:automanage:getConfigurationProfileAssignment", args, LookupConfigurationProfileAssignmentResultOutput{}, options).(LookupConfigurationProfileAssignmentResultOutput), nil
 		}).(LookupConfigurationProfileAssignmentResultOutput)
 }
 

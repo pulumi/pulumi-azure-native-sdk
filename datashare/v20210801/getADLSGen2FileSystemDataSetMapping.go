@@ -63,21 +63,11 @@ type LookupADLSGen2FileSystemDataSetMappingResult struct {
 }
 
 func LookupADLSGen2FileSystemDataSetMappingOutput(ctx *pulumi.Context, args LookupADLSGen2FileSystemDataSetMappingOutputArgs, opts ...pulumi.InvokeOption) LookupADLSGen2FileSystemDataSetMappingResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupADLSGen2FileSystemDataSetMappingResultOutput, error) {
 			args := v.(LookupADLSGen2FileSystemDataSetMappingArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupADLSGen2FileSystemDataSetMappingResult
-			secret, err := ctx.InvokePackageRaw("azure-native:datashare/v20210801:getADLSGen2FileSystemDataSetMapping", args, &rv, "", opts...)
-			if err != nil {
-				return LookupADLSGen2FileSystemDataSetMappingResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupADLSGen2FileSystemDataSetMappingResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupADLSGen2FileSystemDataSetMappingResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:datashare/v20210801:getADLSGen2FileSystemDataSetMapping", args, LookupADLSGen2FileSystemDataSetMappingResultOutput{}, options).(LookupADLSGen2FileSystemDataSetMappingResultOutput), nil
 		}).(LookupADLSGen2FileSystemDataSetMappingResultOutput)
 }
 

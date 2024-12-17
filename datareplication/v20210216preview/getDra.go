@@ -45,21 +45,11 @@ type LookupDraResult struct {
 }
 
 func LookupDraOutput(ctx *pulumi.Context, args LookupDraOutputArgs, opts ...pulumi.InvokeOption) LookupDraResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupDraResultOutput, error) {
 			args := v.(LookupDraArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupDraResult
-			secret, err := ctx.InvokePackageRaw("azure-native:datareplication/v20210216preview:getDra", args, &rv, "", opts...)
-			if err != nil {
-				return LookupDraResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupDraResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupDraResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:datareplication/v20210216preview:getDra", args, LookupDraResultOutput{}, options).(LookupDraResultOutput), nil
 		}).(LookupDraResultOutput)
 }
 

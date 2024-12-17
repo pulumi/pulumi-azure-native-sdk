@@ -57,21 +57,11 @@ type LookupBatchEndpointResult struct {
 }
 
 func LookupBatchEndpointOutput(ctx *pulumi.Context, args LookupBatchEndpointOutputArgs, opts ...pulumi.InvokeOption) LookupBatchEndpointResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupBatchEndpointResultOutput, error) {
 			args := v.(LookupBatchEndpointArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupBatchEndpointResult
-			secret, err := ctx.InvokePackageRaw("azure-native:machinelearningservices:getBatchEndpoint", args, &rv, "", opts...)
-			if err != nil {
-				return LookupBatchEndpointResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupBatchEndpointResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupBatchEndpointResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:machinelearningservices:getBatchEndpoint", args, LookupBatchEndpointResultOutput{}, options).(LookupBatchEndpointResultOutput), nil
 		}).(LookupBatchEndpointResultOutput)
 }
 

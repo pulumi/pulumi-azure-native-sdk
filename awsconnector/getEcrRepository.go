@@ -49,21 +49,11 @@ type LookupEcrRepositoryResult struct {
 }
 
 func LookupEcrRepositoryOutput(ctx *pulumi.Context, args LookupEcrRepositoryOutputArgs, opts ...pulumi.InvokeOption) LookupEcrRepositoryResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupEcrRepositoryResultOutput, error) {
 			args := v.(LookupEcrRepositoryArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupEcrRepositoryResult
-			secret, err := ctx.InvokePackageRaw("azure-native:awsconnector:getEcrRepository", args, &rv, "", opts...)
-			if err != nil {
-				return LookupEcrRepositoryResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupEcrRepositoryResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupEcrRepositoryResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:awsconnector:getEcrRepository", args, LookupEcrRepositoryResultOutput{}, options).(LookupEcrRepositoryResultOutput), nil
 		}).(LookupEcrRepositoryResultOutput)
 }
 

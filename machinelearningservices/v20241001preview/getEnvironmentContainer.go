@@ -55,23 +55,12 @@ func (val *LookupEnvironmentContainerResult) Defaults() *LookupEnvironmentContai
 
 	return &tmp
 }
-
 func LookupEnvironmentContainerOutput(ctx *pulumi.Context, args LookupEnvironmentContainerOutputArgs, opts ...pulumi.InvokeOption) LookupEnvironmentContainerResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupEnvironmentContainerResultOutput, error) {
 			args := v.(LookupEnvironmentContainerArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupEnvironmentContainerResult
-			secret, err := ctx.InvokePackageRaw("azure-native:machinelearningservices/v20241001preview:getEnvironmentContainer", args, &rv, "", opts...)
-			if err != nil {
-				return LookupEnvironmentContainerResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupEnvironmentContainerResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupEnvironmentContainerResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:machinelearningservices/v20241001preview:getEnvironmentContainer", args, LookupEnvironmentContainerResultOutput{}, options).(LookupEnvironmentContainerResultOutput), nil
 		}).(LookupEnvironmentContainerResultOutput)
 }
 

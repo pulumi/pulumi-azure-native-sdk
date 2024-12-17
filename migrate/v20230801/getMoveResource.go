@@ -46,21 +46,11 @@ type LookupMoveResourceResult struct {
 }
 
 func LookupMoveResourceOutput(ctx *pulumi.Context, args LookupMoveResourceOutputArgs, opts ...pulumi.InvokeOption) LookupMoveResourceResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupMoveResourceResultOutput, error) {
 			args := v.(LookupMoveResourceArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupMoveResourceResult
-			secret, err := ctx.InvokePackageRaw("azure-native:migrate/v20230801:getMoveResource", args, &rv, "", opts...)
-			if err != nil {
-				return LookupMoveResourceResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupMoveResourceResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupMoveResourceResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:migrate/v20230801:getMoveResource", args, LookupMoveResourceResultOutput{}, options).(LookupMoveResourceResultOutput), nil
 		}).(LookupMoveResourceResultOutput)
 }
 

@@ -78,23 +78,12 @@ func (val *LookupL2NetworkResult) Defaults() *LookupL2NetworkResult {
 	}
 	return &tmp
 }
-
 func LookupL2NetworkOutput(ctx *pulumi.Context, args LookupL2NetworkOutputArgs, opts ...pulumi.InvokeOption) LookupL2NetworkResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupL2NetworkResultOutput, error) {
 			args := v.(LookupL2NetworkArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupL2NetworkResult
-			secret, err := ctx.InvokePackageRaw("azure-native:networkcloud/v20230701:getL2Network", args, &rv, "", opts...)
-			if err != nil {
-				return LookupL2NetworkResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupL2NetworkResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupL2NetworkResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:networkcloud/v20230701:getL2Network", args, LookupL2NetworkResultOutput{}, options).(LookupL2NetworkResultOutput), nil
 		}).(LookupL2NetworkResultOutput)
 }
 

@@ -51,21 +51,11 @@ type LookupServerTrustCertificateResult struct {
 }
 
 func LookupServerTrustCertificateOutput(ctx *pulumi.Context, args LookupServerTrustCertificateOutputArgs, opts ...pulumi.InvokeOption) LookupServerTrustCertificateResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupServerTrustCertificateResultOutput, error) {
 			args := v.(LookupServerTrustCertificateArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupServerTrustCertificateResult
-			secret, err := ctx.InvokePackageRaw("azure-native:sql:getServerTrustCertificate", args, &rv, "", opts...)
-			if err != nil {
-				return LookupServerTrustCertificateResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupServerTrustCertificateResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupServerTrustCertificateResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:sql:getServerTrustCertificate", args, LookupServerTrustCertificateResultOutput{}, options).(LookupServerTrustCertificateResultOutput), nil
 		}).(LookupServerTrustCertificateResultOutput)
 }
 

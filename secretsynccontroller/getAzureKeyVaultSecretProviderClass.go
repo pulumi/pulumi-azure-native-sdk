@@ -59,21 +59,11 @@ type LookupAzureKeyVaultSecretProviderClassResult struct {
 }
 
 func LookupAzureKeyVaultSecretProviderClassOutput(ctx *pulumi.Context, args LookupAzureKeyVaultSecretProviderClassOutputArgs, opts ...pulumi.InvokeOption) LookupAzureKeyVaultSecretProviderClassResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAzureKeyVaultSecretProviderClassResultOutput, error) {
 			args := v.(LookupAzureKeyVaultSecretProviderClassArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupAzureKeyVaultSecretProviderClassResult
-			secret, err := ctx.InvokePackageRaw("azure-native:secretsynccontroller:getAzureKeyVaultSecretProviderClass", args, &rv, "", opts...)
-			if err != nil {
-				return LookupAzureKeyVaultSecretProviderClassResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupAzureKeyVaultSecretProviderClassResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupAzureKeyVaultSecretProviderClassResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:secretsynccontroller:getAzureKeyVaultSecretProviderClass", args, LookupAzureKeyVaultSecretProviderClassResultOutput{}, options).(LookupAzureKeyVaultSecretProviderClassResultOutput), nil
 		}).(LookupAzureKeyVaultSecretProviderClassResultOutput)
 }
 

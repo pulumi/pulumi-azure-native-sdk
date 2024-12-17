@@ -50,21 +50,11 @@ type LookupJitNetworkAccessPolicyResult struct {
 }
 
 func LookupJitNetworkAccessPolicyOutput(ctx *pulumi.Context, args LookupJitNetworkAccessPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupJitNetworkAccessPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupJitNetworkAccessPolicyResultOutput, error) {
 			args := v.(LookupJitNetworkAccessPolicyArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupJitNetworkAccessPolicyResult
-			secret, err := ctx.InvokePackageRaw("azure-native:security/v20200101:getJitNetworkAccessPolicy", args, &rv, "", opts...)
-			if err != nil {
-				return LookupJitNetworkAccessPolicyResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupJitNetworkAccessPolicyResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupJitNetworkAccessPolicyResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:security/v20200101:getJitNetworkAccessPolicy", args, LookupJitNetworkAccessPolicyResultOutput{}, options).(LookupJitNetworkAccessPolicyResultOutput), nil
 		}).(LookupJitNetworkAccessPolicyResultOutput)
 }
 

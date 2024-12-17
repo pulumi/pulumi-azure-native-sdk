@@ -54,21 +54,11 @@ type LookupConfigurationAssignmentResult struct {
 }
 
 func LookupConfigurationAssignmentOutput(ctx *pulumi.Context, args LookupConfigurationAssignmentOutputArgs, opts ...pulumi.InvokeOption) LookupConfigurationAssignmentResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupConfigurationAssignmentResultOutput, error) {
 			args := v.(LookupConfigurationAssignmentArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupConfigurationAssignmentResult
-			secret, err := ctx.InvokePackageRaw("azure-native:maintenance/v20221101preview:getConfigurationAssignment", args, &rv, "", opts...)
-			if err != nil {
-				return LookupConfigurationAssignmentResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupConfigurationAssignmentResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupConfigurationAssignmentResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:maintenance/v20221101preview:getConfigurationAssignment", args, LookupConfigurationAssignmentResultOutput{}, options).(LookupConfigurationAssignmentResultOutput), nil
 		}).(LookupConfigurationAssignmentResultOutput)
 }
 

@@ -70,21 +70,11 @@ type LookupEnvironmentSettingResult struct {
 }
 
 func LookupEnvironmentSettingOutput(ctx *pulumi.Context, args LookupEnvironmentSettingOutputArgs, opts ...pulumi.InvokeOption) LookupEnvironmentSettingResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupEnvironmentSettingResultOutput, error) {
 			args := v.(LookupEnvironmentSettingArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupEnvironmentSettingResult
-			secret, err := ctx.InvokePackageRaw("azure-native:labservices/v20181015:getEnvironmentSetting", args, &rv, "", opts...)
-			if err != nil {
-				return LookupEnvironmentSettingResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupEnvironmentSettingResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupEnvironmentSettingResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:labservices/v20181015:getEnvironmentSetting", args, LookupEnvironmentSettingResultOutput{}, options).(LookupEnvironmentSettingResultOutput), nil
 		}).(LookupEnvironmentSettingResultOutput)
 }
 

@@ -54,21 +54,11 @@ type LookupComputeResult struct {
 }
 
 func LookupComputeOutput(ctx *pulumi.Context, args LookupComputeOutputArgs, opts ...pulumi.InvokeOption) LookupComputeResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupComputeResultOutput, error) {
 			args := v.(LookupComputeArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupComputeResult
-			secret, err := ctx.InvokePackageRaw("azure-native:machinelearningservices/v20240401:getCompute", args, &rv, "", opts...)
-			if err != nil {
-				return LookupComputeResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupComputeResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupComputeResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:machinelearningservices/v20240401:getCompute", args, LookupComputeResultOutput{}, options).(LookupComputeResultOutput), nil
 		}).(LookupComputeResultOutput)
 }
 

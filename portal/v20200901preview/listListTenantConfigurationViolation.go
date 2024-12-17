@@ -34,21 +34,11 @@ type ListListTenantConfigurationViolationResult struct {
 }
 
 func ListListTenantConfigurationViolationOutput(ctx *pulumi.Context, args ListListTenantConfigurationViolationOutputArgs, opts ...pulumi.InvokeOption) ListListTenantConfigurationViolationResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListListTenantConfigurationViolationResultOutput, error) {
 			args := v.(ListListTenantConfigurationViolationArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListListTenantConfigurationViolationResult
-			secret, err := ctx.InvokePackageRaw("azure-native:portal/v20200901preview:listListTenantConfigurationViolation", args, &rv, "", opts...)
-			if err != nil {
-				return ListListTenantConfigurationViolationResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListListTenantConfigurationViolationResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListListTenantConfigurationViolationResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:portal/v20200901preview:listListTenantConfigurationViolation", args, ListListTenantConfigurationViolationResultOutput{}, options).(ListListTenantConfigurationViolationResultOutput), nil
 		}).(ListListTenantConfigurationViolationResultOutput)
 }
 

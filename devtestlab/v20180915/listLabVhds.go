@@ -38,21 +38,11 @@ type ListLabVhdsResult struct {
 }
 
 func ListLabVhdsOutput(ctx *pulumi.Context, args ListLabVhdsOutputArgs, opts ...pulumi.InvokeOption) ListLabVhdsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListLabVhdsResultOutput, error) {
 			args := v.(ListLabVhdsArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListLabVhdsResult
-			secret, err := ctx.InvokePackageRaw("azure-native:devtestlab/v20180915:listLabVhds", args, &rv, "", opts...)
-			if err != nil {
-				return ListLabVhdsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListLabVhdsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListLabVhdsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:devtestlab/v20180915:listLabVhds", args, ListLabVhdsResultOutput{}, options).(ListLabVhdsResultOutput), nil
 		}).(ListLabVhdsResultOutput)
 }
 

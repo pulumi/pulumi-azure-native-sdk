@@ -60,21 +60,11 @@ type ListPaloAltoNetworksCloudngfwSupportInfoResult struct {
 }
 
 func ListPaloAltoNetworksCloudngfwSupportInfoOutput(ctx *pulumi.Context, args ListPaloAltoNetworksCloudngfwSupportInfoOutputArgs, opts ...pulumi.InvokeOption) ListPaloAltoNetworksCloudngfwSupportInfoResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListPaloAltoNetworksCloudngfwSupportInfoResultOutput, error) {
 			args := v.(ListPaloAltoNetworksCloudngfwSupportInfoArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListPaloAltoNetworksCloudngfwSupportInfoResult
-			secret, err := ctx.InvokePackageRaw("azure-native:cloudngfw/v20240207preview:listPaloAltoNetworksCloudngfwSupportInfo", args, &rv, "", opts...)
-			if err != nil {
-				return ListPaloAltoNetworksCloudngfwSupportInfoResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListPaloAltoNetworksCloudngfwSupportInfoResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListPaloAltoNetworksCloudngfwSupportInfoResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:cloudngfw/v20240207preview:listPaloAltoNetworksCloudngfwSupportInfo", args, ListPaloAltoNetworksCloudngfwSupportInfoResultOutput{}, options).(ListPaloAltoNetworksCloudngfwSupportInfoResultOutput), nil
 		}).(ListPaloAltoNetworksCloudngfwSupportInfoResultOutput)
 }
 

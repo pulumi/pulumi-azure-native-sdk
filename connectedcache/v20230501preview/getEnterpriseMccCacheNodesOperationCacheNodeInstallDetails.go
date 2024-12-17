@@ -50,21 +50,11 @@ type GetEnterpriseMccCacheNodesOperationCacheNodeInstallDetailsResult struct {
 }
 
 func GetEnterpriseMccCacheNodesOperationCacheNodeInstallDetailsOutput(ctx *pulumi.Context, args GetEnterpriseMccCacheNodesOperationCacheNodeInstallDetailsOutputArgs, opts ...pulumi.InvokeOption) GetEnterpriseMccCacheNodesOperationCacheNodeInstallDetailsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetEnterpriseMccCacheNodesOperationCacheNodeInstallDetailsResultOutput, error) {
 			args := v.(GetEnterpriseMccCacheNodesOperationCacheNodeInstallDetailsArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetEnterpriseMccCacheNodesOperationCacheNodeInstallDetailsResult
-			secret, err := ctx.InvokePackageRaw("azure-native:connectedcache/v20230501preview:getEnterpriseMccCacheNodesOperationCacheNodeInstallDetails", args, &rv, "", opts...)
-			if err != nil {
-				return GetEnterpriseMccCacheNodesOperationCacheNodeInstallDetailsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetEnterpriseMccCacheNodesOperationCacheNodeInstallDetailsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetEnterpriseMccCacheNodesOperationCacheNodeInstallDetailsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:connectedcache/v20230501preview:getEnterpriseMccCacheNodesOperationCacheNodeInstallDetails", args, GetEnterpriseMccCacheNodesOperationCacheNodeInstallDetailsResultOutput{}, options).(GetEnterpriseMccCacheNodesOperationCacheNodeInstallDetailsResultOutput), nil
 		}).(GetEnterpriseMccCacheNodesOperationCacheNodeInstallDetailsResultOutput)
 }
 

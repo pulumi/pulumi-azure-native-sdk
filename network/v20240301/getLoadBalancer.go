@@ -70,21 +70,11 @@ type LookupLoadBalancerResult struct {
 }
 
 func LookupLoadBalancerOutput(ctx *pulumi.Context, args LookupLoadBalancerOutputArgs, opts ...pulumi.InvokeOption) LookupLoadBalancerResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupLoadBalancerResultOutput, error) {
 			args := v.(LookupLoadBalancerArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupLoadBalancerResult
-			secret, err := ctx.InvokePackageRaw("azure-native:network/v20240301:getLoadBalancer", args, &rv, "", opts...)
-			if err != nil {
-				return LookupLoadBalancerResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupLoadBalancerResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupLoadBalancerResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:network/v20240301:getLoadBalancer", args, LookupLoadBalancerResultOutput{}, options).(LookupLoadBalancerResultOutput), nil
 		}).(LookupLoadBalancerResultOutput)
 }
 

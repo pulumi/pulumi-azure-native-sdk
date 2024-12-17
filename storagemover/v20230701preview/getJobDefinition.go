@@ -74,21 +74,11 @@ type LookupJobDefinitionResult struct {
 }
 
 func LookupJobDefinitionOutput(ctx *pulumi.Context, args LookupJobDefinitionOutputArgs, opts ...pulumi.InvokeOption) LookupJobDefinitionResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupJobDefinitionResultOutput, error) {
 			args := v.(LookupJobDefinitionArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupJobDefinitionResult
-			secret, err := ctx.InvokePackageRaw("azure-native:storagemover/v20230701preview:getJobDefinition", args, &rv, "", opts...)
-			if err != nil {
-				return LookupJobDefinitionResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupJobDefinitionResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupJobDefinitionResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:storagemover/v20230701preview:getJobDefinition", args, LookupJobDefinitionResultOutput{}, options).(LookupJobDefinitionResultOutput), nil
 		}).(LookupJobDefinitionResultOutput)
 }
 

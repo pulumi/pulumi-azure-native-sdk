@@ -46,21 +46,11 @@ type LookupEnergyServiceResult struct {
 }
 
 func LookupEnergyServiceOutput(ctx *pulumi.Context, args LookupEnergyServiceOutputArgs, opts ...pulumi.InvokeOption) LookupEnergyServiceResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupEnergyServiceResultOutput, error) {
 			args := v.(LookupEnergyServiceArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupEnergyServiceResult
-			secret, err := ctx.InvokePackageRaw("azure-native:openenergyplatform/v20220404preview:getEnergyService", args, &rv, "", opts...)
-			if err != nil {
-				return LookupEnergyServiceResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupEnergyServiceResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupEnergyServiceResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:openenergyplatform/v20220404preview:getEnergyService", args, LookupEnergyServiceResultOutput{}, options).(LookupEnergyServiceResultOutput), nil
 		}).(LookupEnergyServiceResultOutput)
 }
 

@@ -79,23 +79,12 @@ func (val *LookupNetworkTapRuleResult) Defaults() *LookupNetworkTapRuleResult {
 	}
 	return &tmp
 }
-
 func LookupNetworkTapRuleOutput(ctx *pulumi.Context, args LookupNetworkTapRuleOutputArgs, opts ...pulumi.InvokeOption) LookupNetworkTapRuleResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupNetworkTapRuleResultOutput, error) {
 			args := v.(LookupNetworkTapRuleArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupNetworkTapRuleResult
-			secret, err := ctx.InvokePackageRaw("azure-native:managednetworkfabric/v20230615:getNetworkTapRule", args, &rv, "", opts...)
-			if err != nil {
-				return LookupNetworkTapRuleResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupNetworkTapRuleResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupNetworkTapRuleResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:managednetworkfabric/v20230615:getNetworkTapRule", args, LookupNetworkTapRuleResultOutput{}, options).(LookupNetworkTapRuleResultOutput), nil
 		}).(LookupNetworkTapRuleResultOutput)
 }
 

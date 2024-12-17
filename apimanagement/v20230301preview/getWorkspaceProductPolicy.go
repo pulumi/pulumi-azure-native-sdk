@@ -63,23 +63,12 @@ func (val *LookupWorkspaceProductPolicyResult) Defaults() *LookupWorkspaceProduc
 	}
 	return &tmp
 }
-
 func LookupWorkspaceProductPolicyOutput(ctx *pulumi.Context, args LookupWorkspaceProductPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupWorkspaceProductPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupWorkspaceProductPolicyResultOutput, error) {
 			args := v.(LookupWorkspaceProductPolicyArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupWorkspaceProductPolicyResult
-			secret, err := ctx.InvokePackageRaw("azure-native:apimanagement/v20230301preview:getWorkspaceProductPolicy", args, &rv, "", opts...)
-			if err != nil {
-				return LookupWorkspaceProductPolicyResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupWorkspaceProductPolicyResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupWorkspaceProductPolicyResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:apimanagement/v20230301preview:getWorkspaceProductPolicy", args, LookupWorkspaceProductPolicyResultOutput{}, options).(LookupWorkspaceProductPolicyResultOutput), nil
 		}).(LookupWorkspaceProductPolicyResultOutput)
 }
 

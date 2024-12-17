@@ -64,21 +64,11 @@ type LookupServiceConfigurationResult struct {
 }
 
 func LookupServiceConfigurationOutput(ctx *pulumi.Context, args LookupServiceConfigurationOutputArgs, opts ...pulumi.InvokeOption) LookupServiceConfigurationResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupServiceConfigurationResultOutput, error) {
 			args := v.(LookupServiceConfigurationArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupServiceConfigurationResult
-			secret, err := ctx.InvokePackageRaw("azure-native:hybridconnectivity/v20241201:getServiceConfiguration", args, &rv, "", opts...)
-			if err != nil {
-				return LookupServiceConfigurationResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupServiceConfigurationResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupServiceConfigurationResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:hybridconnectivity/v20241201:getServiceConfiguration", args, LookupServiceConfigurationResultOutput{}, options).(LookupServiceConfigurationResultOutput), nil
 		}).(LookupServiceConfigurationResultOutput)
 }
 

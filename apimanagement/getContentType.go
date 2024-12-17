@@ -51,21 +51,11 @@ type LookupContentTypeResult struct {
 }
 
 func LookupContentTypeOutput(ctx *pulumi.Context, args LookupContentTypeOutputArgs, opts ...pulumi.InvokeOption) LookupContentTypeResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupContentTypeResultOutput, error) {
 			args := v.(LookupContentTypeArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupContentTypeResult
-			secret, err := ctx.InvokePackageRaw("azure-native:apimanagement:getContentType", args, &rv, "", opts...)
-			if err != nil {
-				return LookupContentTypeResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupContentTypeResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupContentTypeResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:apimanagement:getContentType", args, LookupContentTypeResultOutput{}, options).(LookupContentTypeResultOutput), nil
 		}).(LookupContentTypeResultOutput)
 }
 

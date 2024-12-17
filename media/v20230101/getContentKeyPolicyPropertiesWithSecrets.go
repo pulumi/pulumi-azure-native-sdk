@@ -46,21 +46,11 @@ type GetContentKeyPolicyPropertiesWithSecretsResult struct {
 }
 
 func GetContentKeyPolicyPropertiesWithSecretsOutput(ctx *pulumi.Context, args GetContentKeyPolicyPropertiesWithSecretsOutputArgs, opts ...pulumi.InvokeOption) GetContentKeyPolicyPropertiesWithSecretsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetContentKeyPolicyPropertiesWithSecretsResultOutput, error) {
 			args := v.(GetContentKeyPolicyPropertiesWithSecretsArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetContentKeyPolicyPropertiesWithSecretsResult
-			secret, err := ctx.InvokePackageRaw("azure-native:media/v20230101:getContentKeyPolicyPropertiesWithSecrets", args, &rv, "", opts...)
-			if err != nil {
-				return GetContentKeyPolicyPropertiesWithSecretsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetContentKeyPolicyPropertiesWithSecretsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetContentKeyPolicyPropertiesWithSecretsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:media/v20230101:getContentKeyPolicyPropertiesWithSecrets", args, GetContentKeyPolicyPropertiesWithSecretsResultOutput{}, options).(GetContentKeyPolicyPropertiesWithSecretsResultOutput), nil
 		}).(GetContentKeyPolicyPropertiesWithSecretsResultOutput)
 }
 

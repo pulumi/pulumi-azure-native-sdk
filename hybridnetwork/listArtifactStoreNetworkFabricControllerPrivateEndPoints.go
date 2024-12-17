@@ -41,21 +41,11 @@ type ListArtifactStoreNetworkFabricControllerPrivateEndPointsResult struct {
 }
 
 func ListArtifactStoreNetworkFabricControllerPrivateEndPointsOutput(ctx *pulumi.Context, args ListArtifactStoreNetworkFabricControllerPrivateEndPointsOutputArgs, opts ...pulumi.InvokeOption) ListArtifactStoreNetworkFabricControllerPrivateEndPointsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListArtifactStoreNetworkFabricControllerPrivateEndPointsResultOutput, error) {
 			args := v.(ListArtifactStoreNetworkFabricControllerPrivateEndPointsArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListArtifactStoreNetworkFabricControllerPrivateEndPointsResult
-			secret, err := ctx.InvokePackageRaw("azure-native:hybridnetwork:listArtifactStoreNetworkFabricControllerPrivateEndPoints", args, &rv, "", opts...)
-			if err != nil {
-				return ListArtifactStoreNetworkFabricControllerPrivateEndPointsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListArtifactStoreNetworkFabricControllerPrivateEndPointsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListArtifactStoreNetworkFabricControllerPrivateEndPointsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:hybridnetwork:listArtifactStoreNetworkFabricControllerPrivateEndPoints", args, ListArtifactStoreNetworkFabricControllerPrivateEndPointsResultOutput{}, options).(ListArtifactStoreNetworkFabricControllerPrivateEndPointsResultOutput), nil
 		}).(ListArtifactStoreNetworkFabricControllerPrivateEndPointsResultOutput)
 }
 

@@ -50,21 +50,11 @@ type LookupWebAppDiscoverySiteDataSourcesControllerResult struct {
 }
 
 func LookupWebAppDiscoverySiteDataSourcesControllerOutput(ctx *pulumi.Context, args LookupWebAppDiscoverySiteDataSourcesControllerOutputArgs, opts ...pulumi.InvokeOption) LookupWebAppDiscoverySiteDataSourcesControllerResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupWebAppDiscoverySiteDataSourcesControllerResultOutput, error) {
 			args := v.(LookupWebAppDiscoverySiteDataSourcesControllerArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupWebAppDiscoverySiteDataSourcesControllerResult
-			secret, err := ctx.InvokePackageRaw("azure-native:offazure/v20231001preview:getWebAppDiscoverySiteDataSourcesController", args, &rv, "", opts...)
-			if err != nil {
-				return LookupWebAppDiscoverySiteDataSourcesControllerResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupWebAppDiscoverySiteDataSourcesControllerResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupWebAppDiscoverySiteDataSourcesControllerResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:offazure/v20231001preview:getWebAppDiscoverySiteDataSourcesController", args, LookupWebAppDiscoverySiteDataSourcesControllerResultOutput{}, options).(LookupWebAppDiscoverySiteDataSourcesControllerResultOutput), nil
 		}).(LookupWebAppDiscoverySiteDataSourcesControllerResultOutput)
 }
 

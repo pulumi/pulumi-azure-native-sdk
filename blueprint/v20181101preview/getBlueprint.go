@@ -56,21 +56,11 @@ type LookupBlueprintResult struct {
 }
 
 func LookupBlueprintOutput(ctx *pulumi.Context, args LookupBlueprintOutputArgs, opts ...pulumi.InvokeOption) LookupBlueprintResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupBlueprintResultOutput, error) {
 			args := v.(LookupBlueprintArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupBlueprintResult
-			secret, err := ctx.InvokePackageRaw("azure-native:blueprint/v20181101preview:getBlueprint", args, &rv, "", opts...)
-			if err != nil {
-				return LookupBlueprintResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupBlueprintResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupBlueprintResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:blueprint/v20181101preview:getBlueprint", args, LookupBlueprintResultOutput{}, options).(LookupBlueprintResultOutput), nil
 		}).(LookupBlueprintResultOutput)
 }
 

@@ -48,21 +48,11 @@ type LookupConfigServiceConfigurationRecorderResult struct {
 }
 
 func LookupConfigServiceConfigurationRecorderOutput(ctx *pulumi.Context, args LookupConfigServiceConfigurationRecorderOutputArgs, opts ...pulumi.InvokeOption) LookupConfigServiceConfigurationRecorderResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupConfigServiceConfigurationRecorderResultOutput, error) {
 			args := v.(LookupConfigServiceConfigurationRecorderArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupConfigServiceConfigurationRecorderResult
-			secret, err := ctx.InvokePackageRaw("azure-native:awsconnector/v20241201:getConfigServiceConfigurationRecorder", args, &rv, "", opts...)
-			if err != nil {
-				return LookupConfigServiceConfigurationRecorderResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupConfigServiceConfigurationRecorderResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupConfigServiceConfigurationRecorderResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:awsconnector/v20241201:getConfigServiceConfigurationRecorder", args, LookupConfigServiceConfigurationRecorderResultOutput{}, options).(LookupConfigServiceConfigurationRecorderResultOutput), nil
 		}).(LookupConfigServiceConfigurationRecorderResultOutput)
 }
 

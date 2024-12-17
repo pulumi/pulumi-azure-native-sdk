@@ -41,21 +41,11 @@ type ListSpatialAnchorsAccountKeysResult struct {
 }
 
 func ListSpatialAnchorsAccountKeysOutput(ctx *pulumi.Context, args ListSpatialAnchorsAccountKeysOutputArgs, opts ...pulumi.InvokeOption) ListSpatialAnchorsAccountKeysResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListSpatialAnchorsAccountKeysResultOutput, error) {
 			args := v.(ListSpatialAnchorsAccountKeysArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListSpatialAnchorsAccountKeysResult
-			secret, err := ctx.InvokePackageRaw("azure-native:mixedreality:listSpatialAnchorsAccountKeys", args, &rv, "", opts...)
-			if err != nil {
-				return ListSpatialAnchorsAccountKeysResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListSpatialAnchorsAccountKeysResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListSpatialAnchorsAccountKeysResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:mixedreality:listSpatialAnchorsAccountKeys", args, ListSpatialAnchorsAccountKeysResultOutput{}, options).(ListSpatialAnchorsAccountKeysResultOutput), nil
 		}).(ListSpatialAnchorsAccountKeysResultOutput)
 }
 

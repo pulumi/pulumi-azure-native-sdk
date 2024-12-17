@@ -52,21 +52,11 @@ type LookupFrontendsInterfaceResult struct {
 }
 
 func LookupFrontendsInterfaceOutput(ctx *pulumi.Context, args LookupFrontendsInterfaceOutputArgs, opts ...pulumi.InvokeOption) LookupFrontendsInterfaceResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupFrontendsInterfaceResultOutput, error) {
 			args := v.(LookupFrontendsInterfaceArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupFrontendsInterfaceResult
-			secret, err := ctx.InvokePackageRaw("azure-native:servicenetworking/v20240501preview:getFrontendsInterface", args, &rv, "", opts...)
-			if err != nil {
-				return LookupFrontendsInterfaceResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupFrontendsInterfaceResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupFrontendsInterfaceResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:servicenetworking/v20240501preview:getFrontendsInterface", args, LookupFrontendsInterfaceResultOutput{}, options).(LookupFrontendsInterfaceResultOutput), nil
 		}).(LookupFrontendsInterfaceResultOutput)
 }
 

@@ -37,21 +37,11 @@ type LookupConsoleWithLocationResult struct {
 }
 
 func LookupConsoleWithLocationOutput(ctx *pulumi.Context, args LookupConsoleWithLocationOutputArgs, opts ...pulumi.InvokeOption) LookupConsoleWithLocationResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupConsoleWithLocationResultOutput, error) {
 			args := v.(LookupConsoleWithLocationArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupConsoleWithLocationResult
-			secret, err := ctx.InvokePackageRaw("azure-native:portal:getConsoleWithLocation", args, &rv, "", opts...)
-			if err != nil {
-				return LookupConsoleWithLocationResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupConsoleWithLocationResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupConsoleWithLocationResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:portal:getConsoleWithLocation", args, LookupConsoleWithLocationResultOutput{}, options).(LookupConsoleWithLocationResultOutput), nil
 		}).(LookupConsoleWithLocationResultOutput)
 }
 

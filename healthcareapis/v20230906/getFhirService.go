@@ -76,21 +76,11 @@ type LookupFhirServiceResult struct {
 }
 
 func LookupFhirServiceOutput(ctx *pulumi.Context, args LookupFhirServiceOutputArgs, opts ...pulumi.InvokeOption) LookupFhirServiceResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupFhirServiceResultOutput, error) {
 			args := v.(LookupFhirServiceArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupFhirServiceResult
-			secret, err := ctx.InvokePackageRaw("azure-native:healthcareapis/v20230906:getFhirService", args, &rv, "", opts...)
-			if err != nil {
-				return LookupFhirServiceResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupFhirServiceResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupFhirServiceResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:healthcareapis/v20230906:getFhirService", args, LookupFhirServiceResultOutput{}, options).(LookupFhirServiceResultOutput), nil
 		}).(LookupFhirServiceResultOutput)
 }
 

@@ -79,23 +79,12 @@ func (val *LookupAmlFilesystemResult) Defaults() *LookupAmlFilesystemResult {
 
 	return &tmp
 }
-
 func LookupAmlFilesystemOutput(ctx *pulumi.Context, args LookupAmlFilesystemOutputArgs, opts ...pulumi.InvokeOption) LookupAmlFilesystemResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAmlFilesystemResultOutput, error) {
 			args := v.(LookupAmlFilesystemArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupAmlFilesystemResult
-			secret, err := ctx.InvokePackageRaw("azure-native:storagecache/v20230501:getAmlFilesystem", args, &rv, "", opts...)
-			if err != nil {
-				return LookupAmlFilesystemResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupAmlFilesystemResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupAmlFilesystemResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:storagecache/v20230501:getAmlFilesystem", args, LookupAmlFilesystemResultOutput{}, options).(LookupAmlFilesystemResultOutput), nil
 		}).(LookupAmlFilesystemResultOutput)
 }
 

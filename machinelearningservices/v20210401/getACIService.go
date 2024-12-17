@@ -56,21 +56,11 @@ type LookupACIServiceResult struct {
 }
 
 func LookupACIServiceOutput(ctx *pulumi.Context, args LookupACIServiceOutputArgs, opts ...pulumi.InvokeOption) LookupACIServiceResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupACIServiceResultOutput, error) {
 			args := v.(LookupACIServiceArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupACIServiceResult
-			secret, err := ctx.InvokePackageRaw("azure-native:machinelearningservices/v20210401:getACIService", args, &rv, "", opts...)
-			if err != nil {
-				return LookupACIServiceResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupACIServiceResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupACIServiceResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:machinelearningservices/v20210401:getACIService", args, LookupACIServiceResultOutput{}, options).(LookupACIServiceResultOutput), nil
 		}).(LookupACIServiceResultOutput)
 }
 

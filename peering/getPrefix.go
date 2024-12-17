@@ -59,21 +59,11 @@ type LookupPrefixResult struct {
 }
 
 func LookupPrefixOutput(ctx *pulumi.Context, args LookupPrefixOutputArgs, opts ...pulumi.InvokeOption) LookupPrefixResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupPrefixResultOutput, error) {
 			args := v.(LookupPrefixArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupPrefixResult
-			secret, err := ctx.InvokePackageRaw("azure-native:peering:getPrefix", args, &rv, "", opts...)
-			if err != nil {
-				return LookupPrefixResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupPrefixResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupPrefixResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:peering:getPrefix", args, LookupPrefixResultOutput{}, options).(LookupPrefixResultOutput), nil
 		}).(LookupPrefixResultOutput)
 }
 

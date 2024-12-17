@@ -65,23 +65,12 @@ func (val *LookupNamespaceNetworkRuleSetResult) Defaults() *LookupNamespaceNetwo
 	}
 	return &tmp
 }
-
 func LookupNamespaceNetworkRuleSetOutput(ctx *pulumi.Context, args LookupNamespaceNetworkRuleSetOutputArgs, opts ...pulumi.InvokeOption) LookupNamespaceNetworkRuleSetResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupNamespaceNetworkRuleSetResultOutput, error) {
 			args := v.(LookupNamespaceNetworkRuleSetArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupNamespaceNetworkRuleSetResult
-			secret, err := ctx.InvokePackageRaw("azure-native:eventhub/v20240101:getNamespaceNetworkRuleSet", args, &rv, "", opts...)
-			if err != nil {
-				return LookupNamespaceNetworkRuleSetResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupNamespaceNetworkRuleSetResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupNamespaceNetworkRuleSetResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:eventhub/v20240101:getNamespaceNetworkRuleSet", args, LookupNamespaceNetworkRuleSetResultOutput{}, options).(LookupNamespaceNetworkRuleSetResultOutput), nil
 		}).(LookupNamespaceNetworkRuleSetResultOutput)
 }
 

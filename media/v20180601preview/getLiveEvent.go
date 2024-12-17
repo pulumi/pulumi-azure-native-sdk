@@ -68,21 +68,11 @@ type LookupLiveEventResult struct {
 }
 
 func LookupLiveEventOutput(ctx *pulumi.Context, args LookupLiveEventOutputArgs, opts ...pulumi.InvokeOption) LookupLiveEventResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupLiveEventResultOutput, error) {
 			args := v.(LookupLiveEventArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupLiveEventResult
-			secret, err := ctx.InvokePackageRaw("azure-native:media/v20180601preview:getLiveEvent", args, &rv, "", opts...)
-			if err != nil {
-				return LookupLiveEventResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupLiveEventResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupLiveEventResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:media/v20180601preview:getLiveEvent", args, LookupLiveEventResultOutput{}, options).(LookupLiveEventResultOutput), nil
 		}).(LookupLiveEventResultOutput)
 }
 

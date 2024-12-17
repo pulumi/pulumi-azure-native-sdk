@@ -63,23 +63,12 @@ func (val *LookupIotHubResourceResult) Defaults() *LookupIotHubResourceResult {
 
 	return &tmp
 }
-
 func LookupIotHubResourceOutput(ctx *pulumi.Context, args LookupIotHubResourceOutputArgs, opts ...pulumi.InvokeOption) LookupIotHubResourceResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupIotHubResourceResultOutput, error) {
 			args := v.(LookupIotHubResourceArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupIotHubResourceResult
-			secret, err := ctx.InvokePackageRaw("azure-native:devices/v20230630preview:getIotHubResource", args, &rv, "", opts...)
-			if err != nil {
-				return LookupIotHubResourceResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupIotHubResourceResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupIotHubResourceResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:devices/v20230630preview:getIotHubResource", args, LookupIotHubResourceResultOutput{}, options).(LookupIotHubResourceResultOutput), nil
 		}).(LookupIotHubResourceResultOutput)
 }
 

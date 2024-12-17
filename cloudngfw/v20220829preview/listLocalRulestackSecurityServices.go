@@ -41,21 +41,11 @@ type ListLocalRulestackSecurityServicesResult struct {
 }
 
 func ListLocalRulestackSecurityServicesOutput(ctx *pulumi.Context, args ListLocalRulestackSecurityServicesOutputArgs, opts ...pulumi.InvokeOption) ListLocalRulestackSecurityServicesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListLocalRulestackSecurityServicesResultOutput, error) {
 			args := v.(ListLocalRulestackSecurityServicesArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListLocalRulestackSecurityServicesResult
-			secret, err := ctx.InvokePackageRaw("azure-native:cloudngfw/v20220829preview:listLocalRulestackSecurityServices", args, &rv, "", opts...)
-			if err != nil {
-				return ListLocalRulestackSecurityServicesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListLocalRulestackSecurityServicesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListLocalRulestackSecurityServicesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:cloudngfw/v20220829preview:listLocalRulestackSecurityServices", args, ListLocalRulestackSecurityServicesResultOutput{}, options).(ListLocalRulestackSecurityServicesResultOutput), nil
 		}).(ListLocalRulestackSecurityServicesResultOutput)
 }
 

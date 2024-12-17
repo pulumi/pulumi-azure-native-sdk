@@ -98,23 +98,12 @@ func (val *LookupAppServiceEnvironmentResult) Defaults() *LookupAppServiceEnviro
 	}
 	return &tmp
 }
-
 func LookupAppServiceEnvironmentOutput(ctx *pulumi.Context, args LookupAppServiceEnvironmentOutputArgs, opts ...pulumi.InvokeOption) LookupAppServiceEnvironmentResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAppServiceEnvironmentResultOutput, error) {
 			args := v.(LookupAppServiceEnvironmentArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupAppServiceEnvironmentResult
-			secret, err := ctx.InvokePackageRaw("azure-native:web/v20230101:getAppServiceEnvironment", args, &rv, "", opts...)
-			if err != nil {
-				return LookupAppServiceEnvironmentResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupAppServiceEnvironmentResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupAppServiceEnvironmentResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:web/v20230101:getAppServiceEnvironment", args, LookupAppServiceEnvironmentResultOutput{}, options).(LookupAppServiceEnvironmentResultOutput), nil
 		}).(LookupAppServiceEnvironmentResultOutput)
 }
 

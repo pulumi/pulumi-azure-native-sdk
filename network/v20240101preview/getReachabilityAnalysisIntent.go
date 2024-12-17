@@ -48,21 +48,11 @@ type LookupReachabilityAnalysisIntentResult struct {
 }
 
 func LookupReachabilityAnalysisIntentOutput(ctx *pulumi.Context, args LookupReachabilityAnalysisIntentOutputArgs, opts ...pulumi.InvokeOption) LookupReachabilityAnalysisIntentResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupReachabilityAnalysisIntentResultOutput, error) {
 			args := v.(LookupReachabilityAnalysisIntentArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupReachabilityAnalysisIntentResult
-			secret, err := ctx.InvokePackageRaw("azure-native:network/v20240101preview:getReachabilityAnalysisIntent", args, &rv, "", opts...)
-			if err != nil {
-				return LookupReachabilityAnalysisIntentResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupReachabilityAnalysisIntentResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupReachabilityAnalysisIntentResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:network/v20240101preview:getReachabilityAnalysisIntent", args, LookupReachabilityAnalysisIntentResultOutput{}, options).(LookupReachabilityAnalysisIntentResultOutput), nil
 		}).(LookupReachabilityAnalysisIntentResultOutput)
 }
 

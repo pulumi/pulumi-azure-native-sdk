@@ -46,21 +46,11 @@ type LookupMonitorResult struct {
 }
 
 func LookupMonitorOutput(ctx *pulumi.Context, args LookupMonitorOutputArgs, opts ...pulumi.InvokeOption) LookupMonitorResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupMonitorResultOutput, error) {
 			args := v.(LookupMonitorArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupMonitorResult
-			secret, err := ctx.InvokePackageRaw("azure-native:datadog/v20230101:getMonitor", args, &rv, "", opts...)
-			if err != nil {
-				return LookupMonitorResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupMonitorResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupMonitorResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:datadog/v20230101:getMonitor", args, LookupMonitorResultOutput{}, options).(LookupMonitorResultOutput), nil
 		}).(LookupMonitorResultOutput)
 }
 

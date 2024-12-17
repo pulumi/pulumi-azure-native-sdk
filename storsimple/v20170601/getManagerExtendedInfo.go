@@ -56,21 +56,11 @@ type LookupManagerExtendedInfoResult struct {
 }
 
 func LookupManagerExtendedInfoOutput(ctx *pulumi.Context, args LookupManagerExtendedInfoOutputArgs, opts ...pulumi.InvokeOption) LookupManagerExtendedInfoResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupManagerExtendedInfoResultOutput, error) {
 			args := v.(LookupManagerExtendedInfoArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupManagerExtendedInfoResult
-			secret, err := ctx.InvokePackageRaw("azure-native:storsimple/v20170601:getManagerExtendedInfo", args, &rv, "", opts...)
-			if err != nil {
-				return LookupManagerExtendedInfoResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupManagerExtendedInfoResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupManagerExtendedInfoResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:storsimple/v20170601:getManagerExtendedInfo", args, LookupManagerExtendedInfoResultOutput{}, options).(LookupManagerExtendedInfoResultOutput), nil
 		}).(LookupManagerExtendedInfoResultOutput)
 }
 

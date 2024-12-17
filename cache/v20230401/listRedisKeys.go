@@ -38,21 +38,11 @@ type ListRedisKeysResult struct {
 }
 
 func ListRedisKeysOutput(ctx *pulumi.Context, args ListRedisKeysOutputArgs, opts ...pulumi.InvokeOption) ListRedisKeysResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListRedisKeysResultOutput, error) {
 			args := v.(ListRedisKeysArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListRedisKeysResult
-			secret, err := ctx.InvokePackageRaw("azure-native:cache/v20230401:listRedisKeys", args, &rv, "", opts...)
-			if err != nil {
-				return ListRedisKeysResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListRedisKeysResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListRedisKeysResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:cache/v20230401:listRedisKeys", args, ListRedisKeysResultOutput{}, options).(ListRedisKeysResultOutput), nil
 		}).(ListRedisKeysResultOutput)
 }
 

@@ -49,21 +49,11 @@ type LookupGuestDiagnosticsSettingResult struct {
 }
 
 func LookupGuestDiagnosticsSettingOutput(ctx *pulumi.Context, args LookupGuestDiagnosticsSettingOutputArgs, opts ...pulumi.InvokeOption) LookupGuestDiagnosticsSettingResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupGuestDiagnosticsSettingResultOutput, error) {
 			args := v.(LookupGuestDiagnosticsSettingArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupGuestDiagnosticsSettingResult
-			secret, err := ctx.InvokePackageRaw("azure-native:insights/v20180601preview:getGuestDiagnosticsSetting", args, &rv, "", opts...)
-			if err != nil {
-				return LookupGuestDiagnosticsSettingResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupGuestDiagnosticsSettingResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupGuestDiagnosticsSettingResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:insights/v20180601preview:getGuestDiagnosticsSetting", args, LookupGuestDiagnosticsSettingResultOutput{}, options).(LookupGuestDiagnosticsSettingResultOutput), nil
 		}).(LookupGuestDiagnosticsSettingResultOutput)
 }
 

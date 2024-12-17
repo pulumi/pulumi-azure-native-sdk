@@ -53,21 +53,11 @@ type LookupIoTDataConnectorResult struct {
 }
 
 func LookupIoTDataConnectorOutput(ctx *pulumi.Context, args LookupIoTDataConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupIoTDataConnectorResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupIoTDataConnectorResultOutput, error) {
 			args := v.(LookupIoTDataConnectorArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupIoTDataConnectorResult
-			secret, err := ctx.InvokePackageRaw("azure-native:securityinsights/v20230901preview:getIoTDataConnector", args, &rv, "", opts...)
-			if err != nil {
-				return LookupIoTDataConnectorResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupIoTDataConnectorResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupIoTDataConnectorResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:securityinsights/v20230901preview:getIoTDataConnector", args, LookupIoTDataConnectorResultOutput{}, options).(LookupIoTDataConnectorResultOutput), nil
 		}).(LookupIoTDataConnectorResultOutput)
 }
 

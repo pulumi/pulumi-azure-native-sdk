@@ -62,21 +62,11 @@ type LookupIoTAddonResult struct {
 }
 
 func LookupIoTAddonOutput(ctx *pulumi.Context, args LookupIoTAddonOutputArgs, opts ...pulumi.InvokeOption) LookupIoTAddonResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupIoTAddonResultOutput, error) {
 			args := v.(LookupIoTAddonArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupIoTAddonResult
-			secret, err := ctx.InvokePackageRaw("azure-native:databoxedge:getIoTAddon", args, &rv, "", opts...)
-			if err != nil {
-				return LookupIoTAddonResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupIoTAddonResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupIoTAddonResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:databoxedge:getIoTAddon", args, LookupIoTAddonResultOutput{}, options).(LookupIoTAddonResultOutput), nil
 		}).(LookupIoTAddonResultOutput)
 }
 

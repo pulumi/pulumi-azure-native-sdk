@@ -53,21 +53,11 @@ type LookupOffice365ProjectDataConnectorResult struct {
 }
 
 func LookupOffice365ProjectDataConnectorOutput(ctx *pulumi.Context, args LookupOffice365ProjectDataConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupOffice365ProjectDataConnectorResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupOffice365ProjectDataConnectorResultOutput, error) {
 			args := v.(LookupOffice365ProjectDataConnectorArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupOffice365ProjectDataConnectorResult
-			secret, err := ctx.InvokePackageRaw("azure-native:securityinsights/v20240101preview:getOffice365ProjectDataConnector", args, &rv, "", opts...)
-			if err != nil {
-				return LookupOffice365ProjectDataConnectorResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupOffice365ProjectDataConnectorResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupOffice365ProjectDataConnectorResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:securityinsights/v20240101preview:getOffice365ProjectDataConnector", args, LookupOffice365ProjectDataConnectorResultOutput{}, options).(LookupOffice365ProjectDataConnectorResultOutput), nil
 		}).(LookupOffice365ProjectDataConnectorResultOutput)
 }
 

@@ -48,21 +48,11 @@ type GetEntityInsightsResult struct {
 }
 
 func GetEntityInsightsOutput(ctx *pulumi.Context, args GetEntityInsightsOutputArgs, opts ...pulumi.InvokeOption) GetEntityInsightsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetEntityInsightsResultOutput, error) {
 			args := v.(GetEntityInsightsArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetEntityInsightsResult
-			secret, err := ctx.InvokePackageRaw("azure-native:securityinsights/v20230901preview:getEntityInsights", args, &rv, "", opts...)
-			if err != nil {
-				return GetEntityInsightsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetEntityInsightsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetEntityInsightsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:securityinsights/v20230901preview:getEntityInsights", args, GetEntityInsightsResultOutput{}, options).(GetEntityInsightsResultOutput), nil
 		}).(GetEntityInsightsResultOutput)
 }
 

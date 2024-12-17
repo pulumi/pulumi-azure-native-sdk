@@ -43,21 +43,11 @@ type LookupSitesBySubscriptionResult struct {
 }
 
 func LookupSitesBySubscriptionOutput(ctx *pulumi.Context, args LookupSitesBySubscriptionOutputArgs, opts ...pulumi.InvokeOption) LookupSitesBySubscriptionResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupSitesBySubscriptionResultOutput, error) {
 			args := v.(LookupSitesBySubscriptionArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupSitesBySubscriptionResult
-			secret, err := ctx.InvokePackageRaw("azure-native:edge:getSitesBySubscription", args, &rv, "", opts...)
-			if err != nil {
-				return LookupSitesBySubscriptionResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupSitesBySubscriptionResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupSitesBySubscriptionResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:edge:getSitesBySubscription", args, LookupSitesBySubscriptionResultOutput{}, options).(LookupSitesBySubscriptionResultOutput), nil
 		}).(LookupSitesBySubscriptionResultOutput)
 }
 

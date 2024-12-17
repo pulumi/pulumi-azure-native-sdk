@@ -40,21 +40,11 @@ type GetLocalRulestackChangeLogResult struct {
 }
 
 func GetLocalRulestackChangeLogOutput(ctx *pulumi.Context, args GetLocalRulestackChangeLogOutputArgs, opts ...pulumi.InvokeOption) GetLocalRulestackChangeLogResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetLocalRulestackChangeLogResultOutput, error) {
 			args := v.(GetLocalRulestackChangeLogArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetLocalRulestackChangeLogResult
-			secret, err := ctx.InvokePackageRaw("azure-native:cloudngfw/v20220829:getLocalRulestackChangeLog", args, &rv, "", opts...)
-			if err != nil {
-				return GetLocalRulestackChangeLogResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetLocalRulestackChangeLogResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetLocalRulestackChangeLogResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:cloudngfw/v20220829:getLocalRulestackChangeLog", args, GetLocalRulestackChangeLogResultOutput{}, options).(GetLocalRulestackChangeLogResultOutput), nil
 		}).(GetLocalRulestackChangeLogResultOutput)
 }
 

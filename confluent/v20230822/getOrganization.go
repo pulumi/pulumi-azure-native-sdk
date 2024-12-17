@@ -58,21 +58,11 @@ type LookupOrganizationResult struct {
 }
 
 func LookupOrganizationOutput(ctx *pulumi.Context, args LookupOrganizationOutputArgs, opts ...pulumi.InvokeOption) LookupOrganizationResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupOrganizationResultOutput, error) {
 			args := v.(LookupOrganizationArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupOrganizationResult
-			secret, err := ctx.InvokePackageRaw("azure-native:confluent/v20230822:getOrganization", args, &rv, "", opts...)
-			if err != nil {
-				return LookupOrganizationResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupOrganizationResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupOrganizationResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:confluent/v20230822:getOrganization", args, LookupOrganizationResultOutput{}, options).(LookupOrganizationResultOutput), nil
 		}).(LookupOrganizationResultOutput)
 }
 

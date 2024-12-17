@@ -51,21 +51,11 @@ type LookupTableResourceTableRoleDefinitionResult struct {
 }
 
 func LookupTableResourceTableRoleDefinitionOutput(ctx *pulumi.Context, args LookupTableResourceTableRoleDefinitionOutputArgs, opts ...pulumi.InvokeOption) LookupTableResourceTableRoleDefinitionResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupTableResourceTableRoleDefinitionResultOutput, error) {
 			args := v.(LookupTableResourceTableRoleDefinitionArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupTableResourceTableRoleDefinitionResult
-			secret, err := ctx.InvokePackageRaw("azure-native:documentdb:getTableResourceTableRoleDefinition", args, &rv, "", opts...)
-			if err != nil {
-				return LookupTableResourceTableRoleDefinitionResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupTableResourceTableRoleDefinitionResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupTableResourceTableRoleDefinitionResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:documentdb:getTableResourceTableRoleDefinition", args, LookupTableResourceTableRoleDefinitionResultOutput{}, options).(LookupTableResourceTableRoleDefinitionResultOutput), nil
 		}).(LookupTableResourceTableRoleDefinitionResultOutput)
 }
 

@@ -40,21 +40,11 @@ type ListBuildAuthTokenResult struct {
 }
 
 func ListBuildAuthTokenOutput(ctx *pulumi.Context, args ListBuildAuthTokenOutputArgs, opts ...pulumi.InvokeOption) ListBuildAuthTokenResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListBuildAuthTokenResultOutput, error) {
 			args := v.(ListBuildAuthTokenArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListBuildAuthTokenResult
-			secret, err := ctx.InvokePackageRaw("azure-native:app/v20231102preview:listBuildAuthToken", args, &rv, "", opts...)
-			if err != nil {
-				return ListBuildAuthTokenResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListBuildAuthTokenResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListBuildAuthTokenResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:app/v20231102preview:listBuildAuthToken", args, ListBuildAuthTokenResultOutput{}, options).(ListBuildAuthTokenResultOutput), nil
 		}).(ListBuildAuthTokenResultOutput)
 }
 

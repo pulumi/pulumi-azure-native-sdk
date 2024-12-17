@@ -50,21 +50,11 @@ type LookupMongoClusterFirewallRuleResult struct {
 }
 
 func LookupMongoClusterFirewallRuleOutput(ctx *pulumi.Context, args LookupMongoClusterFirewallRuleOutputArgs, opts ...pulumi.InvokeOption) LookupMongoClusterFirewallRuleResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupMongoClusterFirewallRuleResultOutput, error) {
 			args := v.(LookupMongoClusterFirewallRuleArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupMongoClusterFirewallRuleResult
-			secret, err := ctx.InvokePackageRaw("azure-native:documentdb/v20231115preview:getMongoClusterFirewallRule", args, &rv, "", opts...)
-			if err != nil {
-				return LookupMongoClusterFirewallRuleResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupMongoClusterFirewallRuleResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupMongoClusterFirewallRuleResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:documentdb/v20231115preview:getMongoClusterFirewallRule", args, LookupMongoClusterFirewallRuleResultOutput{}, options).(LookupMongoClusterFirewallRuleResultOutput), nil
 		}).(LookupMongoClusterFirewallRuleResultOutput)
 }
 

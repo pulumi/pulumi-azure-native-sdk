@@ -49,21 +49,11 @@ type LookupRedshiftClusterResult struct {
 }
 
 func LookupRedshiftClusterOutput(ctx *pulumi.Context, args LookupRedshiftClusterOutputArgs, opts ...pulumi.InvokeOption) LookupRedshiftClusterResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupRedshiftClusterResultOutput, error) {
 			args := v.(LookupRedshiftClusterArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupRedshiftClusterResult
-			secret, err := ctx.InvokePackageRaw("azure-native:awsconnector:getRedshiftCluster", args, &rv, "", opts...)
-			if err != nil {
-				return LookupRedshiftClusterResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupRedshiftClusterResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupRedshiftClusterResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:awsconnector:getRedshiftCluster", args, LookupRedshiftClusterResultOutput{}, options).(LookupRedshiftClusterResultOutput), nil
 		}).(LookupRedshiftClusterResultOutput)
 }
 

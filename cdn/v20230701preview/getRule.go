@@ -70,23 +70,12 @@ func (val *LookupRuleResult) Defaults() *LookupRuleResult {
 	}
 	return &tmp
 }
-
 func LookupRuleOutput(ctx *pulumi.Context, args LookupRuleOutputArgs, opts ...pulumi.InvokeOption) LookupRuleResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupRuleResultOutput, error) {
 			args := v.(LookupRuleArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupRuleResult
-			secret, err := ctx.InvokePackageRaw("azure-native:cdn/v20230701preview:getRule", args, &rv, "", opts...)
-			if err != nil {
-				return LookupRuleResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupRuleResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupRuleResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:cdn/v20230701preview:getRule", args, LookupRuleResultOutput{}, options).(LookupRuleResultOutput), nil
 		}).(LookupRuleResultOutput)
 }
 

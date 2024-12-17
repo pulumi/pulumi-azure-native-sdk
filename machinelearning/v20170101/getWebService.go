@@ -57,23 +57,12 @@ func (val *LookupWebServiceResult) Defaults() *LookupWebServiceResult {
 
 	return &tmp
 }
-
 func LookupWebServiceOutput(ctx *pulumi.Context, args LookupWebServiceOutputArgs, opts ...pulumi.InvokeOption) LookupWebServiceResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupWebServiceResultOutput, error) {
 			args := v.(LookupWebServiceArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupWebServiceResult
-			secret, err := ctx.InvokePackageRaw("azure-native:machinelearning/v20170101:getWebService", args, &rv, "", opts...)
-			if err != nil {
-				return LookupWebServiceResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupWebServiceResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupWebServiceResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:machinelearning/v20170101:getWebService", args, LookupWebServiceResultOutput{}, options).(LookupWebServiceResultOutput), nil
 		}).(LookupWebServiceResultOutput)
 }
 

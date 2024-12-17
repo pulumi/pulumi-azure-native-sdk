@@ -72,21 +72,11 @@ type LookupDataCollectionEndpointResult struct {
 }
 
 func LookupDataCollectionEndpointOutput(ctx *pulumi.Context, args LookupDataCollectionEndpointOutputArgs, opts ...pulumi.InvokeOption) LookupDataCollectionEndpointResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupDataCollectionEndpointResultOutput, error) {
 			args := v.(LookupDataCollectionEndpointArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupDataCollectionEndpointResult
-			secret, err := ctx.InvokePackageRaw("azure-native:insights/v20220601:getDataCollectionEndpoint", args, &rv, "", opts...)
-			if err != nil {
-				return LookupDataCollectionEndpointResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupDataCollectionEndpointResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupDataCollectionEndpointResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:insights/v20220601:getDataCollectionEndpoint", args, LookupDataCollectionEndpointResultOutput{}, options).(LookupDataCollectionEndpointResultOutput), nil
 		}).(LookupDataCollectionEndpointResultOutput)
 }
 

@@ -47,21 +47,11 @@ type LookupCustomEntityStoreAssignmentResult struct {
 }
 
 func LookupCustomEntityStoreAssignmentOutput(ctx *pulumi.Context, args LookupCustomEntityStoreAssignmentOutputArgs, opts ...pulumi.InvokeOption) LookupCustomEntityStoreAssignmentResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupCustomEntityStoreAssignmentResultOutput, error) {
 			args := v.(LookupCustomEntityStoreAssignmentArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupCustomEntityStoreAssignmentResult
-			secret, err := ctx.InvokePackageRaw("azure-native:security:getCustomEntityStoreAssignment", args, &rv, "", opts...)
-			if err != nil {
-				return LookupCustomEntityStoreAssignmentResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupCustomEntityStoreAssignmentResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupCustomEntityStoreAssignmentResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:security:getCustomEntityStoreAssignment", args, LookupCustomEntityStoreAssignmentResultOutput{}, options).(LookupCustomEntityStoreAssignmentResultOutput), nil
 		}).(LookupCustomEntityStoreAssignmentResultOutput)
 }
 

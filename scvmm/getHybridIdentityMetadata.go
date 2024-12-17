@@ -55,21 +55,11 @@ type LookupHybridIdentityMetadataResult struct {
 }
 
 func LookupHybridIdentityMetadataOutput(ctx *pulumi.Context, args LookupHybridIdentityMetadataOutputArgs, opts ...pulumi.InvokeOption) LookupHybridIdentityMetadataResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupHybridIdentityMetadataResultOutput, error) {
 			args := v.(LookupHybridIdentityMetadataArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupHybridIdentityMetadataResult
-			secret, err := ctx.InvokePackageRaw("azure-native:scvmm:getHybridIdentityMetadata", args, &rv, "", opts...)
-			if err != nil {
-				return LookupHybridIdentityMetadataResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupHybridIdentityMetadataResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupHybridIdentityMetadataResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:scvmm:getHybridIdentityMetadata", args, LookupHybridIdentityMetadataResultOutput{}, options).(LookupHybridIdentityMetadataResultOutput), nil
 		}).(LookupHybridIdentityMetadataResultOutput)
 }
 

@@ -52,21 +52,11 @@ type LookupBotResult struct {
 }
 
 func LookupBotOutput(ctx *pulumi.Context, args LookupBotOutputArgs, opts ...pulumi.InvokeOption) LookupBotResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupBotResultOutput, error) {
 			args := v.(LookupBotArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupBotResult
-			secret, err := ctx.InvokePackageRaw("azure-native:healthbot/v20230501:getBot", args, &rv, "", opts...)
-			if err != nil {
-				return LookupBotResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupBotResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupBotResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:healthbot/v20230501:getBot", args, LookupBotResultOutput{}, options).(LookupBotResultOutput), nil
 		}).(LookupBotResultOutput)
 }
 

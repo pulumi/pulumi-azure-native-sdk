@@ -42,21 +42,11 @@ type GetDeploymentRemoteDebuggingConfigResult struct {
 }
 
 func GetDeploymentRemoteDebuggingConfigOutput(ctx *pulumi.Context, args GetDeploymentRemoteDebuggingConfigOutputArgs, opts ...pulumi.InvokeOption) GetDeploymentRemoteDebuggingConfigResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetDeploymentRemoteDebuggingConfigResultOutput, error) {
 			args := v.(GetDeploymentRemoteDebuggingConfigArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetDeploymentRemoteDebuggingConfigResult
-			secret, err := ctx.InvokePackageRaw("azure-native:appplatform/v20240501preview:getDeploymentRemoteDebuggingConfig", args, &rv, "", opts...)
-			if err != nil {
-				return GetDeploymentRemoteDebuggingConfigResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetDeploymentRemoteDebuggingConfigResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetDeploymentRemoteDebuggingConfigResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:appplatform/v20240501preview:getDeploymentRemoteDebuggingConfig", args, GetDeploymentRemoteDebuggingConfigResultOutput{}, options).(GetDeploymentRemoteDebuggingConfigResultOutput), nil
 		}).(GetDeploymentRemoteDebuggingConfigResultOutput)
 }
 

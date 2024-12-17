@@ -43,21 +43,11 @@ type ListRunLogSasUrlResult struct {
 }
 
 func ListRunLogSasUrlOutput(ctx *pulumi.Context, args ListRunLogSasUrlOutputArgs, opts ...pulumi.InvokeOption) ListRunLogSasUrlResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListRunLogSasUrlResultOutput, error) {
 			args := v.(ListRunLogSasUrlArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListRunLogSasUrlResult
-			secret, err := ctx.InvokePackageRaw("azure-native:containerregistry:listRunLogSasUrl", args, &rv, "", opts...)
-			if err != nil {
-				return ListRunLogSasUrlResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListRunLogSasUrlResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListRunLogSasUrlResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:containerregistry:listRunLogSasUrl", args, ListRunLogSasUrlResultOutput{}, options).(ListRunLogSasUrlResultOutput), nil
 		}).(ListRunLogSasUrlResultOutput)
 }
 

@@ -48,21 +48,11 @@ type LookupS3AccessPointResult struct {
 }
 
 func LookupS3AccessPointOutput(ctx *pulumi.Context, args LookupS3AccessPointOutputArgs, opts ...pulumi.InvokeOption) LookupS3AccessPointResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupS3AccessPointResultOutput, error) {
 			args := v.(LookupS3AccessPointArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupS3AccessPointResult
-			secret, err := ctx.InvokePackageRaw("azure-native:awsconnector/v20241201:getS3AccessPoint", args, &rv, "", opts...)
-			if err != nil {
-				return LookupS3AccessPointResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupS3AccessPointResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupS3AccessPointResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:awsconnector/v20241201:getS3AccessPoint", args, LookupS3AccessPointResultOutput{}, options).(LookupS3AccessPointResultOutput), nil
 		}).(LookupS3AccessPointResultOutput)
 }
 

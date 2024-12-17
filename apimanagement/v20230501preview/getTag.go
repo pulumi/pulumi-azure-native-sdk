@@ -44,21 +44,11 @@ type LookupTagResult struct {
 }
 
 func LookupTagOutput(ctx *pulumi.Context, args LookupTagOutputArgs, opts ...pulumi.InvokeOption) LookupTagResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupTagResultOutput, error) {
 			args := v.(LookupTagArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupTagResult
-			secret, err := ctx.InvokePackageRaw("azure-native:apimanagement/v20230501preview:getTag", args, &rv, "", opts...)
-			if err != nil {
-				return LookupTagResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupTagResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupTagResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:apimanagement/v20230501preview:getTag", args, LookupTagResultOutput{}, options).(LookupTagResultOutput), nil
 		}).(LookupTagResultOutput)
 }
 

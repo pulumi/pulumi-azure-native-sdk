@@ -65,23 +65,12 @@ func (val *GetInferencePoolStatusResult) Defaults() *GetInferencePoolStatusResul
 	}
 	return &tmp
 }
-
 func GetInferencePoolStatusOutput(ctx *pulumi.Context, args GetInferencePoolStatusOutputArgs, opts ...pulumi.InvokeOption) GetInferencePoolStatusResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetInferencePoolStatusResultOutput, error) {
 			args := v.(GetInferencePoolStatusArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetInferencePoolStatusResult
-			secret, err := ctx.InvokePackageRaw("azure-native:machinelearningservices/v20230801preview:getInferencePoolStatus", args, &rv, "", opts...)
-			if err != nil {
-				return GetInferencePoolStatusResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetInferencePoolStatusResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetInferencePoolStatusResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:machinelearningservices/v20230801preview:getInferencePoolStatus", args, GetInferencePoolStatusResultOutput{}, options).(GetInferencePoolStatusResultOutput), nil
 		}).(GetInferencePoolStatusResultOutput)
 }
 

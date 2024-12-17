@@ -66,21 +66,11 @@ type LookupVcenterControllerResult struct {
 }
 
 func LookupVcenterControllerOutput(ctx *pulumi.Context, args LookupVcenterControllerOutputArgs, opts ...pulumi.InvokeOption) LookupVcenterControllerResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupVcenterControllerResultOutput, error) {
 			args := v.(LookupVcenterControllerArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupVcenterControllerResult
-			secret, err := ctx.InvokePackageRaw("azure-native:offazure/v20240501preview:getVcenterController", args, &rv, "", opts...)
-			if err != nil {
-				return LookupVcenterControllerResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupVcenterControllerResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupVcenterControllerResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:offazure/v20240501preview:getVcenterController", args, LookupVcenterControllerResultOutput{}, options).(LookupVcenterControllerResultOutput), nil
 		}).(LookupVcenterControllerResultOutput)
 }
 

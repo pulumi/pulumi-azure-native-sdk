@@ -50,21 +50,11 @@ type LookupPrivateEndpointConnectionByWorkspaceResult struct {
 }
 
 func LookupPrivateEndpointConnectionByWorkspaceOutput(ctx *pulumi.Context, args LookupPrivateEndpointConnectionByWorkspaceOutputArgs, opts ...pulumi.InvokeOption) LookupPrivateEndpointConnectionByWorkspaceResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupPrivateEndpointConnectionByWorkspaceResultOutput, error) {
 			args := v.(LookupPrivateEndpointConnectionByWorkspaceArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupPrivateEndpointConnectionByWorkspaceResult
-			secret, err := ctx.InvokePackageRaw("azure-native:desktopvirtualization/v20231101preview:getPrivateEndpointConnectionByWorkspace", args, &rv, "", opts...)
-			if err != nil {
-				return LookupPrivateEndpointConnectionByWorkspaceResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupPrivateEndpointConnectionByWorkspaceResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupPrivateEndpointConnectionByWorkspaceResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:desktopvirtualization/v20231101preview:getPrivateEndpointConnectionByWorkspace", args, LookupPrivateEndpointConnectionByWorkspaceResultOutput{}, options).(LookupPrivateEndpointConnectionByWorkspaceResultOutput), nil
 		}).(LookupPrivateEndpointConnectionByWorkspaceResultOutput)
 }
 

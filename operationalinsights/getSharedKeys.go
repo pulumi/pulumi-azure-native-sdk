@@ -41,21 +41,11 @@ type GetSharedKeysResult struct {
 }
 
 func GetSharedKeysOutput(ctx *pulumi.Context, args GetSharedKeysOutputArgs, opts ...pulumi.InvokeOption) GetSharedKeysResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetSharedKeysResultOutput, error) {
 			args := v.(GetSharedKeysArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetSharedKeysResult
-			secret, err := ctx.InvokePackageRaw("azure-native:operationalinsights:getSharedKeys", args, &rv, "", opts...)
-			if err != nil {
-				return GetSharedKeysResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetSharedKeysResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetSharedKeysResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:operationalinsights:getSharedKeys", args, GetSharedKeysResultOutput{}, options).(GetSharedKeysResultOutput), nil
 		}).(GetSharedKeysResultOutput)
 }
 

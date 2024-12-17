@@ -58,23 +58,12 @@ func (val *LookupIamRoleResult) Defaults() *LookupIamRoleResult {
 
 	return &tmp
 }
-
 func LookupIamRoleOutput(ctx *pulumi.Context, args LookupIamRoleOutputArgs, opts ...pulumi.InvokeOption) LookupIamRoleResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupIamRoleResultOutput, error) {
 			args := v.(LookupIamRoleArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupIamRoleResult
-			secret, err := ctx.InvokePackageRaw("azure-native:awsconnector:getIamRole", args, &rv, "", opts...)
-			if err != nil {
-				return LookupIamRoleResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupIamRoleResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupIamRoleResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:awsconnector:getIamRole", args, LookupIamRoleResultOutput{}, options).(LookupIamRoleResultOutput), nil
 		}).(LookupIamRoleResultOutput)
 }
 

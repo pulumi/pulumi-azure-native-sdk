@@ -48,21 +48,11 @@ type LookupVirtualNetworkRuleResult struct {
 }
 
 func LookupVirtualNetworkRuleOutput(ctx *pulumi.Context, args LookupVirtualNetworkRuleOutputArgs, opts ...pulumi.InvokeOption) LookupVirtualNetworkRuleResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupVirtualNetworkRuleResultOutput, error) {
 			args := v.(LookupVirtualNetworkRuleArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupVirtualNetworkRuleResult
-			secret, err := ctx.InvokePackageRaw("azure-native:sql/v20221101preview:getVirtualNetworkRule", args, &rv, "", opts...)
-			if err != nil {
-				return LookupVirtualNetworkRuleResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupVirtualNetworkRuleResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupVirtualNetworkRuleResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:sql/v20221101preview:getVirtualNetworkRule", args, LookupVirtualNetworkRuleResultOutput{}, options).(LookupVirtualNetworkRuleResultOutput), nil
 		}).(LookupVirtualNetworkRuleResultOutput)
 }
 

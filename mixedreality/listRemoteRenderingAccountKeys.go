@@ -41,21 +41,11 @@ type ListRemoteRenderingAccountKeysResult struct {
 }
 
 func ListRemoteRenderingAccountKeysOutput(ctx *pulumi.Context, args ListRemoteRenderingAccountKeysOutputArgs, opts ...pulumi.InvokeOption) ListRemoteRenderingAccountKeysResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListRemoteRenderingAccountKeysResultOutput, error) {
 			args := v.(ListRemoteRenderingAccountKeysArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListRemoteRenderingAccountKeysResult
-			secret, err := ctx.InvokePackageRaw("azure-native:mixedreality:listRemoteRenderingAccountKeys", args, &rv, "", opts...)
-			if err != nil {
-				return ListRemoteRenderingAccountKeysResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListRemoteRenderingAccountKeysResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListRemoteRenderingAccountKeysResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:mixedreality:listRemoteRenderingAccountKeys", args, ListRemoteRenderingAccountKeysResultOutput{}, options).(ListRemoteRenderingAccountKeysResultOutput), nil
 		}).(ListRemoteRenderingAccountKeysResultOutput)
 }
 

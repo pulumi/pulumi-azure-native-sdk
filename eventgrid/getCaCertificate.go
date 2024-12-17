@@ -57,21 +57,11 @@ type LookupCaCertificateResult struct {
 }
 
 func LookupCaCertificateOutput(ctx *pulumi.Context, args LookupCaCertificateOutputArgs, opts ...pulumi.InvokeOption) LookupCaCertificateResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupCaCertificateResultOutput, error) {
 			args := v.(LookupCaCertificateArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupCaCertificateResult
-			secret, err := ctx.InvokePackageRaw("azure-native:eventgrid:getCaCertificate", args, &rv, "", opts...)
-			if err != nil {
-				return LookupCaCertificateResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupCaCertificateResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupCaCertificateResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:eventgrid:getCaCertificate", args, LookupCaCertificateResultOutput{}, options).(LookupCaCertificateResultOutput), nil
 		}).(LookupCaCertificateResultOutput)
 }
 

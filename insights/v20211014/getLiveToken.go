@@ -34,21 +34,11 @@ type GetLiveTokenResult struct {
 }
 
 func GetLiveTokenOutput(ctx *pulumi.Context, args GetLiveTokenOutputArgs, opts ...pulumi.InvokeOption) GetLiveTokenResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetLiveTokenResultOutput, error) {
 			args := v.(GetLiveTokenArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetLiveTokenResult
-			secret, err := ctx.InvokePackageRaw("azure-native:insights/v20211014:getLiveToken", args, &rv, "", opts...)
-			if err != nil {
-				return GetLiveTokenResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetLiveTokenResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetLiveTokenResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:insights/v20211014:getLiveToken", args, GetLiveTokenResultOutput{}, options).(GetLiveTokenResultOutput), nil
 		}).(GetLiveTokenResultOutput)
 }
 

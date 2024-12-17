@@ -54,21 +54,11 @@ type LookupPrivateLinkServicesForM365ComplianceCenterResult struct {
 }
 
 func LookupPrivateLinkServicesForM365ComplianceCenterOutput(ctx *pulumi.Context, args LookupPrivateLinkServicesForM365ComplianceCenterOutputArgs, opts ...pulumi.InvokeOption) LookupPrivateLinkServicesForM365ComplianceCenterResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupPrivateLinkServicesForM365ComplianceCenterResultOutput, error) {
 			args := v.(LookupPrivateLinkServicesForM365ComplianceCenterArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupPrivateLinkServicesForM365ComplianceCenterResult
-			secret, err := ctx.InvokePackageRaw("azure-native:m365securityandcompliance/v20210325preview:getPrivateLinkServicesForM365ComplianceCenter", args, &rv, "", opts...)
-			if err != nil {
-				return LookupPrivateLinkServicesForM365ComplianceCenterResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupPrivateLinkServicesForM365ComplianceCenterResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupPrivateLinkServicesForM365ComplianceCenterResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:m365securityandcompliance/v20210325preview:getPrivateLinkServicesForM365ComplianceCenter", args, LookupPrivateLinkServicesForM365ComplianceCenterResultOutput{}, options).(LookupPrivateLinkServicesForM365ComplianceCenterResultOutput), nil
 		}).(LookupPrivateLinkServicesForM365ComplianceCenterResultOutput)
 }
 

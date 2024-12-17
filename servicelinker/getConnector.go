@@ -67,21 +67,11 @@ type LookupConnectorResult struct {
 }
 
 func LookupConnectorOutput(ctx *pulumi.Context, args LookupConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupConnectorResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupConnectorResultOutput, error) {
 			args := v.(LookupConnectorArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupConnectorResult
-			secret, err := ctx.InvokePackageRaw("azure-native:servicelinker:getConnector", args, &rv, "", opts...)
-			if err != nil {
-				return LookupConnectorResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupConnectorResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupConnectorResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:servicelinker:getConnector", args, LookupConnectorResultOutput{}, options).(LookupConnectorResultOutput), nil
 		}).(LookupConnectorResultOutput)
 }
 

@@ -54,21 +54,11 @@ type LookupTokenResult struct {
 }
 
 func LookupTokenOutput(ctx *pulumi.Context, args LookupTokenOutputArgs, opts ...pulumi.InvokeOption) LookupTokenResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupTokenResultOutput, error) {
 			args := v.(LookupTokenArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupTokenResult
-			secret, err := ctx.InvokePackageRaw("azure-native:containerregistry/v20230701:getToken", args, &rv, "", opts...)
-			if err != nil {
-				return LookupTokenResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupTokenResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupTokenResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:containerregistry/v20230701:getToken", args, LookupTokenResultOutput{}, options).(LookupTokenResultOutput), nil
 		}).(LookupTokenResultOutput)
 }
 

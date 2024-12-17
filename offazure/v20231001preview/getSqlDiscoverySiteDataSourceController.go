@@ -50,21 +50,11 @@ type LookupSqlDiscoverySiteDataSourceControllerResult struct {
 }
 
 func LookupSqlDiscoverySiteDataSourceControllerOutput(ctx *pulumi.Context, args LookupSqlDiscoverySiteDataSourceControllerOutputArgs, opts ...pulumi.InvokeOption) LookupSqlDiscoverySiteDataSourceControllerResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupSqlDiscoverySiteDataSourceControllerResultOutput, error) {
 			args := v.(LookupSqlDiscoverySiteDataSourceControllerArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupSqlDiscoverySiteDataSourceControllerResult
-			secret, err := ctx.InvokePackageRaw("azure-native:offazure/v20231001preview:getSqlDiscoverySiteDataSourceController", args, &rv, "", opts...)
-			if err != nil {
-				return LookupSqlDiscoverySiteDataSourceControllerResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupSqlDiscoverySiteDataSourceControllerResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupSqlDiscoverySiteDataSourceControllerResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:offazure/v20231001preview:getSqlDiscoverySiteDataSourceController", args, LookupSqlDiscoverySiteDataSourceControllerResultOutput{}, options).(LookupSqlDiscoverySiteDataSourceControllerResultOutput), nil
 		}).(LookupSqlDiscoverySiteDataSourceControllerResultOutput)
 }
 

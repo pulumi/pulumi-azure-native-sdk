@@ -46,21 +46,11 @@ type LookupManagedNetworkSettingsRuleResult struct {
 }
 
 func LookupManagedNetworkSettingsRuleOutput(ctx *pulumi.Context, args LookupManagedNetworkSettingsRuleOutputArgs, opts ...pulumi.InvokeOption) LookupManagedNetworkSettingsRuleResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupManagedNetworkSettingsRuleResultOutput, error) {
 			args := v.(LookupManagedNetworkSettingsRuleArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupManagedNetworkSettingsRuleResult
-			secret, err := ctx.InvokePackageRaw("azure-native:machinelearningservices/v20231001:getManagedNetworkSettingsRule", args, &rv, "", opts...)
-			if err != nil {
-				return LookupManagedNetworkSettingsRuleResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupManagedNetworkSettingsRuleResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupManagedNetworkSettingsRuleResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:machinelearningservices/v20231001:getManagedNetworkSettingsRule", args, LookupManagedNetworkSettingsRuleResultOutput{}, options).(LookupManagedNetworkSettingsRuleResultOutput), nil
 		}).(LookupManagedNetworkSettingsRuleResultOutput)
 }
 

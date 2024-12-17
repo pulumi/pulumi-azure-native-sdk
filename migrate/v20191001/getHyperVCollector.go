@@ -40,21 +40,11 @@ type LookupHyperVCollectorResult struct {
 }
 
 func LookupHyperVCollectorOutput(ctx *pulumi.Context, args LookupHyperVCollectorOutputArgs, opts ...pulumi.InvokeOption) LookupHyperVCollectorResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupHyperVCollectorResultOutput, error) {
 			args := v.(LookupHyperVCollectorArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupHyperVCollectorResult
-			secret, err := ctx.InvokePackageRaw("azure-native:migrate/v20191001:getHyperVCollector", args, &rv, "", opts...)
-			if err != nil {
-				return LookupHyperVCollectorResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupHyperVCollectorResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupHyperVCollectorResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:migrate/v20191001:getHyperVCollector", args, LookupHyperVCollectorResultOutput{}, options).(LookupHyperVCollectorResultOutput), nil
 		}).(LookupHyperVCollectorResultOutput)
 }
 

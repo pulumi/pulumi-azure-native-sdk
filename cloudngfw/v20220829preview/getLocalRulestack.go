@@ -66,21 +66,11 @@ type LookupLocalRulestackResult struct {
 }
 
 func LookupLocalRulestackOutput(ctx *pulumi.Context, args LookupLocalRulestackOutputArgs, opts ...pulumi.InvokeOption) LookupLocalRulestackResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupLocalRulestackResultOutput, error) {
 			args := v.(LookupLocalRulestackArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupLocalRulestackResult
-			secret, err := ctx.InvokePackageRaw("azure-native:cloudngfw/v20220829preview:getLocalRulestack", args, &rv, "", opts...)
-			if err != nil {
-				return LookupLocalRulestackResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupLocalRulestackResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupLocalRulestackResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:cloudngfw/v20220829preview:getLocalRulestack", args, LookupLocalRulestackResultOutput{}, options).(LookupLocalRulestackResultOutput), nil
 		}).(LookupLocalRulestackResultOutput)
 }
 

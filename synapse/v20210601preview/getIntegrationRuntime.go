@@ -46,21 +46,11 @@ type LookupIntegrationRuntimeResult struct {
 }
 
 func LookupIntegrationRuntimeOutput(ctx *pulumi.Context, args LookupIntegrationRuntimeOutputArgs, opts ...pulumi.InvokeOption) LookupIntegrationRuntimeResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupIntegrationRuntimeResultOutput, error) {
 			args := v.(LookupIntegrationRuntimeArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupIntegrationRuntimeResult
-			secret, err := ctx.InvokePackageRaw("azure-native:synapse/v20210601preview:getIntegrationRuntime", args, &rv, "", opts...)
-			if err != nil {
-				return LookupIntegrationRuntimeResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupIntegrationRuntimeResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupIntegrationRuntimeResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:synapse/v20210601preview:getIntegrationRuntime", args, LookupIntegrationRuntimeResultOutput{}, options).(LookupIntegrationRuntimeResultOutput), nil
 		}).(LookupIntegrationRuntimeResultOutput)
 }
 

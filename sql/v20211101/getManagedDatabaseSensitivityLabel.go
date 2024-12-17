@@ -69,21 +69,11 @@ type LookupManagedDatabaseSensitivityLabelResult struct {
 }
 
 func LookupManagedDatabaseSensitivityLabelOutput(ctx *pulumi.Context, args LookupManagedDatabaseSensitivityLabelOutputArgs, opts ...pulumi.InvokeOption) LookupManagedDatabaseSensitivityLabelResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupManagedDatabaseSensitivityLabelResultOutput, error) {
 			args := v.(LookupManagedDatabaseSensitivityLabelArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupManagedDatabaseSensitivityLabelResult
-			secret, err := ctx.InvokePackageRaw("azure-native:sql/v20211101:getManagedDatabaseSensitivityLabel", args, &rv, "", opts...)
-			if err != nil {
-				return LookupManagedDatabaseSensitivityLabelResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupManagedDatabaseSensitivityLabelResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupManagedDatabaseSensitivityLabelResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:sql/v20211101:getManagedDatabaseSensitivityLabel", args, LookupManagedDatabaseSensitivityLabelResultOutput{}, options).(LookupManagedDatabaseSensitivityLabelResultOutput), nil
 		}).(LookupManagedDatabaseSensitivityLabelResultOutput)
 }
 

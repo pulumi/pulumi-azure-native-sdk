@@ -48,21 +48,11 @@ type LookupChannelResult struct {
 }
 
 func LookupChannelOutput(ctx *pulumi.Context, args LookupChannelOutputArgs, opts ...pulumi.InvokeOption) LookupChannelResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupChannelResultOutput, error) {
 			args := v.(LookupChannelArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupChannelResult
-			secret, err := ctx.InvokePackageRaw("azure-native:engagementfabric/v20180901preview:getChannel", args, &rv, "", opts...)
-			if err != nil {
-				return LookupChannelResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupChannelResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupChannelResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:engagementfabric/v20180901preview:getChannel", args, LookupChannelResultOutput{}, options).(LookupChannelResultOutput), nil
 		}).(LookupChannelResultOutput)
 }
 

@@ -49,21 +49,11 @@ type LookupMigrateProjectResult struct {
 }
 
 func LookupMigrateProjectOutput(ctx *pulumi.Context, args LookupMigrateProjectOutputArgs, opts ...pulumi.InvokeOption) LookupMigrateProjectResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupMigrateProjectResultOutput, error) {
 			args := v.(LookupMigrateProjectArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupMigrateProjectResult
-			secret, err := ctx.InvokePackageRaw("azure-native:migrate:getMigrateProject", args, &rv, "", opts...)
-			if err != nil {
-				return LookupMigrateProjectResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupMigrateProjectResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupMigrateProjectResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:migrate:getMigrateProject", args, LookupMigrateProjectResultOutput{}, options).(LookupMigrateProjectResultOutput), nil
 		}).(LookupMigrateProjectResultOutput)
 }
 

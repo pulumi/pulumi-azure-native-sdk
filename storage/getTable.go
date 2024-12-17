@@ -49,21 +49,11 @@ type LookupTableResult struct {
 }
 
 func LookupTableOutput(ctx *pulumi.Context, args LookupTableOutputArgs, opts ...pulumi.InvokeOption) LookupTableResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupTableResultOutput, error) {
 			args := v.(LookupTableArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupTableResult
-			secret, err := ctx.InvokePackageRaw("azure-native:storage:getTable", args, &rv, "", opts...)
-			if err != nil {
-				return LookupTableResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupTableResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupTableResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:storage:getTable", args, LookupTableResultOutput{}, options).(LookupTableResultOutput), nil
 		}).(LookupTableResultOutput)
 }
 

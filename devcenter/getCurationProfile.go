@@ -53,21 +53,11 @@ type LookupCurationProfileResult struct {
 }
 
 func LookupCurationProfileOutput(ctx *pulumi.Context, args LookupCurationProfileOutputArgs, opts ...pulumi.InvokeOption) LookupCurationProfileResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupCurationProfileResultOutput, error) {
 			args := v.(LookupCurationProfileArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupCurationProfileResult
-			secret, err := ctx.InvokePackageRaw("azure-native:devcenter:getCurationProfile", args, &rv, "", opts...)
-			if err != nil {
-				return LookupCurationProfileResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupCurationProfileResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupCurationProfileResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:devcenter:getCurationProfile", args, LookupCurationProfileResultOutput{}, options).(LookupCurationProfileResultOutput), nil
 		}).(LookupCurationProfileResultOutput)
 }
 

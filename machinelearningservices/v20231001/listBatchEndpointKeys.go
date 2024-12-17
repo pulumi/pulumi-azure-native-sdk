@@ -40,21 +40,11 @@ type ListBatchEndpointKeysResult struct {
 }
 
 func ListBatchEndpointKeysOutput(ctx *pulumi.Context, args ListBatchEndpointKeysOutputArgs, opts ...pulumi.InvokeOption) ListBatchEndpointKeysResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListBatchEndpointKeysResultOutput, error) {
 			args := v.(ListBatchEndpointKeysArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListBatchEndpointKeysResult
-			secret, err := ctx.InvokePackageRaw("azure-native:machinelearningservices/v20231001:listBatchEndpointKeys", args, &rv, "", opts...)
-			if err != nil {
-				return ListBatchEndpointKeysResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListBatchEndpointKeysResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListBatchEndpointKeysResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:machinelearningservices/v20231001:listBatchEndpointKeys", args, ListBatchEndpointKeysResultOutput{}, options).(ListBatchEndpointKeysResultOutput), nil
 		}).(ListBatchEndpointKeysResultOutput)
 }
 

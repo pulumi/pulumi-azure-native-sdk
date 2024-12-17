@@ -49,21 +49,11 @@ type LookupEc2SubnetResult struct {
 }
 
 func LookupEc2SubnetOutput(ctx *pulumi.Context, args LookupEc2SubnetOutputArgs, opts ...pulumi.InvokeOption) LookupEc2SubnetResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupEc2SubnetResultOutput, error) {
 			args := v.(LookupEc2SubnetArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupEc2SubnetResult
-			secret, err := ctx.InvokePackageRaw("azure-native:awsconnector:getEc2Subnet", args, &rv, "", opts...)
-			if err != nil {
-				return LookupEc2SubnetResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupEc2SubnetResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupEc2SubnetResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:awsconnector:getEc2Subnet", args, LookupEc2SubnetResultOutput{}, options).(LookupEc2SubnetResultOutput), nil
 		}).(LookupEc2SubnetResultOutput)
 }
 

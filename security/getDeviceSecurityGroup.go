@@ -49,21 +49,11 @@ type LookupDeviceSecurityGroupResult struct {
 }
 
 func LookupDeviceSecurityGroupOutput(ctx *pulumi.Context, args LookupDeviceSecurityGroupOutputArgs, opts ...pulumi.InvokeOption) LookupDeviceSecurityGroupResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupDeviceSecurityGroupResultOutput, error) {
 			args := v.(LookupDeviceSecurityGroupArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupDeviceSecurityGroupResult
-			secret, err := ctx.InvokePackageRaw("azure-native:security:getDeviceSecurityGroup", args, &rv, "", opts...)
-			if err != nil {
-				return LookupDeviceSecurityGroupResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupDeviceSecurityGroupResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupDeviceSecurityGroupResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:security:getDeviceSecurityGroup", args, LookupDeviceSecurityGroupResultOutput{}, options).(LookupDeviceSecurityGroupResultOutput), nil
 		}).(LookupDeviceSecurityGroupResultOutput)
 }
 

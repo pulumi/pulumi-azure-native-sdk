@@ -48,21 +48,11 @@ type LookupSqlResourceSqlRoleAssignmentResult struct {
 }
 
 func LookupSqlResourceSqlRoleAssignmentOutput(ctx *pulumi.Context, args LookupSqlResourceSqlRoleAssignmentOutputArgs, opts ...pulumi.InvokeOption) LookupSqlResourceSqlRoleAssignmentResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupSqlResourceSqlRoleAssignmentResultOutput, error) {
 			args := v.(LookupSqlResourceSqlRoleAssignmentArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupSqlResourceSqlRoleAssignmentResult
-			secret, err := ctx.InvokePackageRaw("azure-native:documentdb/v20240215preview:getSqlResourceSqlRoleAssignment", args, &rv, "", opts...)
-			if err != nil {
-				return LookupSqlResourceSqlRoleAssignmentResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupSqlResourceSqlRoleAssignmentResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupSqlResourceSqlRoleAssignmentResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:documentdb/v20240215preview:getSqlResourceSqlRoleAssignment", args, LookupSqlResourceSqlRoleAssignmentResultOutput{}, options).(LookupSqlResourceSqlRoleAssignmentResultOutput), nil
 		}).(LookupSqlResourceSqlRoleAssignmentResultOutput)
 }
 

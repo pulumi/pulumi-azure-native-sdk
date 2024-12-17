@@ -59,21 +59,11 @@ type LookupObjectAnchorsAccountResult struct {
 }
 
 func LookupObjectAnchorsAccountOutput(ctx *pulumi.Context, args LookupObjectAnchorsAccountOutputArgs, opts ...pulumi.InvokeOption) LookupObjectAnchorsAccountResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupObjectAnchorsAccountResultOutput, error) {
 			args := v.(LookupObjectAnchorsAccountArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupObjectAnchorsAccountResult
-			secret, err := ctx.InvokePackageRaw("azure-native:mixedreality/v20210301preview:getObjectAnchorsAccount", args, &rv, "", opts...)
-			if err != nil {
-				return LookupObjectAnchorsAccountResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupObjectAnchorsAccountResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupObjectAnchorsAccountResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:mixedreality/v20210301preview:getObjectAnchorsAccount", args, LookupObjectAnchorsAccountResultOutput{}, options).(LookupObjectAnchorsAccountResultOutput), nil
 		}).(LookupObjectAnchorsAccountResultOutput)
 }
 

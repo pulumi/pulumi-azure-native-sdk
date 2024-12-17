@@ -93,23 +93,12 @@ func (val *LookupKubernetesClusterResult) Defaults() *LookupKubernetesClusterRes
 
 	return &tmp
 }
-
 func LookupKubernetesClusterOutput(ctx *pulumi.Context, args LookupKubernetesClusterOutputArgs, opts ...pulumi.InvokeOption) LookupKubernetesClusterResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupKubernetesClusterResultOutput, error) {
 			args := v.(LookupKubernetesClusterArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupKubernetesClusterResult
-			secret, err := ctx.InvokePackageRaw("azure-native:networkcloud:getKubernetesCluster", args, &rv, "", opts...)
-			if err != nil {
-				return LookupKubernetesClusterResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupKubernetesClusterResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupKubernetesClusterResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:networkcloud:getKubernetesCluster", args, LookupKubernetesClusterResultOutput{}, options).(LookupKubernetesClusterResultOutput), nil
 		}).(LookupKubernetesClusterResultOutput)
 }
 

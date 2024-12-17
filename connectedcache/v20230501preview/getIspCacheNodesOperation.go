@@ -50,21 +50,11 @@ type LookupIspCacheNodesOperationResult struct {
 }
 
 func LookupIspCacheNodesOperationOutput(ctx *pulumi.Context, args LookupIspCacheNodesOperationOutputArgs, opts ...pulumi.InvokeOption) LookupIspCacheNodesOperationResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupIspCacheNodesOperationResultOutput, error) {
 			args := v.(LookupIspCacheNodesOperationArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupIspCacheNodesOperationResult
-			secret, err := ctx.InvokePackageRaw("azure-native:connectedcache/v20230501preview:getIspCacheNodesOperation", args, &rv, "", opts...)
-			if err != nil {
-				return LookupIspCacheNodesOperationResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupIspCacheNodesOperationResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupIspCacheNodesOperationResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:connectedcache/v20230501preview:getIspCacheNodesOperation", args, LookupIspCacheNodesOperationResultOutput{}, options).(LookupIspCacheNodesOperationResultOutput), nil
 		}).(LookupIspCacheNodesOperationResultOutput)
 }
 

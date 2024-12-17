@@ -71,23 +71,12 @@ func (val *LookupApplianceResult) Defaults() *LookupApplianceResult {
 	}
 	return &tmp
 }
-
 func LookupApplianceOutput(ctx *pulumi.Context, args LookupApplianceOutputArgs, opts ...pulumi.InvokeOption) LookupApplianceResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupApplianceResultOutput, error) {
 			args := v.(LookupApplianceArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupApplianceResult
-			secret, err := ctx.InvokePackageRaw("azure-native:resourceconnector/v20221027:getAppliance", args, &rv, "", opts...)
-			if err != nil {
-				return LookupApplianceResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupApplianceResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupApplianceResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:resourceconnector/v20221027:getAppliance", args, LookupApplianceResultOutput{}, options).(LookupApplianceResultOutput), nil
 		}).(LookupApplianceResultOutput)
 }
 

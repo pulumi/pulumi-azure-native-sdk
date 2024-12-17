@@ -38,21 +38,11 @@ type GetSolutionsControllerConfigResult struct {
 }
 
 func GetSolutionsControllerConfigOutput(ctx *pulumi.Context, args GetSolutionsControllerConfigOutputArgs, opts ...pulumi.InvokeOption) GetSolutionsControllerConfigResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetSolutionsControllerConfigResultOutput, error) {
 			args := v.(GetSolutionsControllerConfigArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetSolutionsControllerConfigResult
-			secret, err := ctx.InvokePackageRaw("azure-native:migrate/v20230101:getSolutionsControllerConfig", args, &rv, "", opts...)
-			if err != nil {
-				return GetSolutionsControllerConfigResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetSolutionsControllerConfigResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetSolutionsControllerConfigResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:migrate/v20230101:getSolutionsControllerConfig", args, GetSolutionsControllerConfigResultOutput{}, options).(GetSolutionsControllerConfigResultOutput), nil
 		}).(GetSolutionsControllerConfigResultOutput)
 }
 

@@ -64,21 +64,11 @@ type LookupArcSettingResult struct {
 }
 
 func LookupArcSettingOutput(ctx *pulumi.Context, args LookupArcSettingOutputArgs, opts ...pulumi.InvokeOption) LookupArcSettingResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupArcSettingResultOutput, error) {
 			args := v.(LookupArcSettingArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupArcSettingResult
-			secret, err := ctx.InvokePackageRaw("azure-native:azurestackhci/v20240101:getArcSetting", args, &rv, "", opts...)
-			if err != nil {
-				return LookupArcSettingResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupArcSettingResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupArcSettingResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:azurestackhci/v20240101:getArcSetting", args, LookupArcSettingResultOutput{}, options).(LookupArcSettingResultOutput), nil
 		}).(LookupArcSettingResultOutput)
 }
 

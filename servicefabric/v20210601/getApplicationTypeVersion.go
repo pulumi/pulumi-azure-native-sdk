@@ -58,21 +58,11 @@ type LookupApplicationTypeVersionResult struct {
 }
 
 func LookupApplicationTypeVersionOutput(ctx *pulumi.Context, args LookupApplicationTypeVersionOutputArgs, opts ...pulumi.InvokeOption) LookupApplicationTypeVersionResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupApplicationTypeVersionResultOutput, error) {
 			args := v.(LookupApplicationTypeVersionArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupApplicationTypeVersionResult
-			secret, err := ctx.InvokePackageRaw("azure-native:servicefabric/v20210601:getApplicationTypeVersion", args, &rv, "", opts...)
-			if err != nil {
-				return LookupApplicationTypeVersionResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupApplicationTypeVersionResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupApplicationTypeVersionResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:servicefabric/v20210601:getApplicationTypeVersion", args, LookupApplicationTypeVersionResultOutput{}, options).(LookupApplicationTypeVersionResultOutput), nil
 		}).(LookupApplicationTypeVersionResultOutput)
 }
 

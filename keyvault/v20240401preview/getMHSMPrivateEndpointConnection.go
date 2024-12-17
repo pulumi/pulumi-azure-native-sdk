@@ -60,21 +60,11 @@ type LookupMHSMPrivateEndpointConnectionResult struct {
 }
 
 func LookupMHSMPrivateEndpointConnectionOutput(ctx *pulumi.Context, args LookupMHSMPrivateEndpointConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupMHSMPrivateEndpointConnectionResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupMHSMPrivateEndpointConnectionResultOutput, error) {
 			args := v.(LookupMHSMPrivateEndpointConnectionArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupMHSMPrivateEndpointConnectionResult
-			secret, err := ctx.InvokePackageRaw("azure-native:keyvault/v20240401preview:getMHSMPrivateEndpointConnection", args, &rv, "", opts...)
-			if err != nil {
-				return LookupMHSMPrivateEndpointConnectionResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupMHSMPrivateEndpointConnectionResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupMHSMPrivateEndpointConnectionResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:keyvault/v20240401preview:getMHSMPrivateEndpointConnection", args, LookupMHSMPrivateEndpointConnectionResultOutput{}, options).(LookupMHSMPrivateEndpointConnectionResultOutput), nil
 		}).(LookupMHSMPrivateEndpointConnectionResultOutput)
 }
 

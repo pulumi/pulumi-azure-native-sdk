@@ -40,21 +40,11 @@ type ListVideoStreamingTokenResult struct {
 }
 
 func ListVideoStreamingTokenOutput(ctx *pulumi.Context, args ListVideoStreamingTokenOutputArgs, opts ...pulumi.InvokeOption) ListVideoStreamingTokenResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListVideoStreamingTokenResultOutput, error) {
 			args := v.(ListVideoStreamingTokenArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListVideoStreamingTokenResult
-			secret, err := ctx.InvokePackageRaw("azure-native:videoanalyzer/v20210501preview:listVideoStreamingToken", args, &rv, "", opts...)
-			if err != nil {
-				return ListVideoStreamingTokenResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListVideoStreamingTokenResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListVideoStreamingTokenResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:videoanalyzer/v20210501preview:listVideoStreamingToken", args, ListVideoStreamingTokenResultOutput{}, options).(ListVideoStreamingTokenResultOutput), nil
 		}).(ListVideoStreamingTokenResultOutput)
 }
 

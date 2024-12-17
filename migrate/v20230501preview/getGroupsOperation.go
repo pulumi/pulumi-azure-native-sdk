@@ -62,21 +62,11 @@ type LookupGroupsOperationResult struct {
 }
 
 func LookupGroupsOperationOutput(ctx *pulumi.Context, args LookupGroupsOperationOutputArgs, opts ...pulumi.InvokeOption) LookupGroupsOperationResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupGroupsOperationResultOutput, error) {
 			args := v.(LookupGroupsOperationArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupGroupsOperationResult
-			secret, err := ctx.InvokePackageRaw("azure-native:migrate/v20230501preview:getGroupsOperation", args, &rv, "", opts...)
-			if err != nil {
-				return LookupGroupsOperationResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupGroupsOperationResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupGroupsOperationResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:migrate/v20230501preview:getGroupsOperation", args, LookupGroupsOperationResultOutput{}, options).(LookupGroupsOperationResultOutput), nil
 		}).(LookupGroupsOperationResultOutput)
 }
 

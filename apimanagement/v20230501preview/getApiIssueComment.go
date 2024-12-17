@@ -52,21 +52,11 @@ type LookupApiIssueCommentResult struct {
 }
 
 func LookupApiIssueCommentOutput(ctx *pulumi.Context, args LookupApiIssueCommentOutputArgs, opts ...pulumi.InvokeOption) LookupApiIssueCommentResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupApiIssueCommentResultOutput, error) {
 			args := v.(LookupApiIssueCommentArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupApiIssueCommentResult
-			secret, err := ctx.InvokePackageRaw("azure-native:apimanagement/v20230501preview:getApiIssueComment", args, &rv, "", opts...)
-			if err != nil {
-				return LookupApiIssueCommentResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupApiIssueCommentResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupApiIssueCommentResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:apimanagement/v20230501preview:getApiIssueComment", args, LookupApiIssueCommentResultOutput{}, options).(LookupApiIssueCommentResultOutput), nil
 		}).(LookupApiIssueCommentResultOutput)
 }
 

@@ -87,23 +87,12 @@ func (val *LookupKustoPoolResult) Defaults() *LookupKustoPoolResult {
 	}
 	return &tmp
 }
-
 func LookupKustoPoolOutput(ctx *pulumi.Context, args LookupKustoPoolOutputArgs, opts ...pulumi.InvokeOption) LookupKustoPoolResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupKustoPoolResultOutput, error) {
 			args := v.(LookupKustoPoolArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupKustoPoolResult
-			secret, err := ctx.InvokePackageRaw("azure-native:synapse/v20210601preview:getKustoPool", args, &rv, "", opts...)
-			if err != nil {
-				return LookupKustoPoolResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupKustoPoolResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupKustoPoolResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:synapse/v20210601preview:getKustoPool", args, LookupKustoPoolResultOutput{}, options).(LookupKustoPoolResultOutput), nil
 		}).(LookupKustoPoolResultOutput)
 }
 

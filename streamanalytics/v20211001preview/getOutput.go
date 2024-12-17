@@ -58,21 +58,11 @@ type LookupOutputResult struct {
 }
 
 func LookupOutputOutput(ctx *pulumi.Context, args LookupOutputOutputArgs, opts ...pulumi.InvokeOption) LookupOutputResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupOutputResultOutput, error) {
 			args := v.(LookupOutputArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupOutputResult
-			secret, err := ctx.InvokePackageRaw("azure-native:streamanalytics/v20211001preview:getOutput", args, &rv, "", opts...)
-			if err != nil {
-				return LookupOutputResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupOutputResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupOutputResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:streamanalytics/v20211001preview:getOutput", args, LookupOutputResultOutput{}, options).(LookupOutputResultOutput), nil
 		}).(LookupOutputResultOutput)
 }
 

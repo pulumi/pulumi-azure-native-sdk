@@ -125,23 +125,12 @@ func (val *LookupAppServicePlanResult) Defaults() *LookupAppServicePlanResult {
 	}
 	return &tmp
 }
-
 func LookupAppServicePlanOutput(ctx *pulumi.Context, args LookupAppServicePlanOutputArgs, opts ...pulumi.InvokeOption) LookupAppServicePlanResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAppServicePlanResultOutput, error) {
 			args := v.(LookupAppServicePlanArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupAppServicePlanResult
-			secret, err := ctx.InvokePackageRaw("azure-native:web/v20240401:getAppServicePlan", args, &rv, "", opts...)
-			if err != nil {
-				return LookupAppServicePlanResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupAppServicePlanResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupAppServicePlanResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:web/v20240401:getAppServicePlan", args, LookupAppServicePlanResultOutput{}, options).(LookupAppServicePlanResultOutput), nil
 		}).(LookupAppServicePlanResultOutput)
 }
 

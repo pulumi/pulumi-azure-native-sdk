@@ -44,21 +44,11 @@ type ListStaticSiteSecretsResult struct {
 }
 
 func ListStaticSiteSecretsOutput(ctx *pulumi.Context, args ListStaticSiteSecretsOutputArgs, opts ...pulumi.InvokeOption) ListStaticSiteSecretsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListStaticSiteSecretsResultOutput, error) {
 			args := v.(ListStaticSiteSecretsArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListStaticSiteSecretsResult
-			secret, err := ctx.InvokePackageRaw("azure-native:web/v20240401:listStaticSiteSecrets", args, &rv, "", opts...)
-			if err != nil {
-				return ListStaticSiteSecretsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListStaticSiteSecretsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListStaticSiteSecretsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:web/v20240401:listStaticSiteSecrets", args, ListStaticSiteSecretsResultOutput{}, options).(ListStaticSiteSecretsResultOutput), nil
 		}).(ListStaticSiteSecretsResultOutput)
 }
 

@@ -50,21 +50,11 @@ type LookupIntegrationServiceEnvironmentResult struct {
 }
 
 func LookupIntegrationServiceEnvironmentOutput(ctx *pulumi.Context, args LookupIntegrationServiceEnvironmentOutputArgs, opts ...pulumi.InvokeOption) LookupIntegrationServiceEnvironmentResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupIntegrationServiceEnvironmentResultOutput, error) {
 			args := v.(LookupIntegrationServiceEnvironmentArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupIntegrationServiceEnvironmentResult
-			secret, err := ctx.InvokePackageRaw("azure-native:logic/v20190501:getIntegrationServiceEnvironment", args, &rv, "", opts...)
-			if err != nil {
-				return LookupIntegrationServiceEnvironmentResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupIntegrationServiceEnvironmentResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupIntegrationServiceEnvironmentResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:logic/v20190501:getIntegrationServiceEnvironment", args, LookupIntegrationServiceEnvironmentResultOutput{}, options).(LookupIntegrationServiceEnvironmentResultOutput), nil
 		}).(LookupIntegrationServiceEnvironmentResultOutput)
 }
 

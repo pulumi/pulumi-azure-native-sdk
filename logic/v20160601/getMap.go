@@ -62,21 +62,11 @@ type LookupMapResult struct {
 }
 
 func LookupMapOutput(ctx *pulumi.Context, args LookupMapOutputArgs, opts ...pulumi.InvokeOption) LookupMapResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupMapResultOutput, error) {
 			args := v.(LookupMapArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupMapResult
-			secret, err := ctx.InvokePackageRaw("azure-native:logic/v20160601:getMap", args, &rv, "", opts...)
-			if err != nil {
-				return LookupMapResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupMapResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupMapResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:logic/v20160601:getMap", args, LookupMapResultOutput{}, options).(LookupMapResultOutput), nil
 		}).(LookupMapResultOutput)
 }
 

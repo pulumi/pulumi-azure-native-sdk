@@ -38,21 +38,11 @@ type ListClusterStreamingJobsResult struct {
 }
 
 func ListClusterStreamingJobsOutput(ctx *pulumi.Context, args ListClusterStreamingJobsOutputArgs, opts ...pulumi.InvokeOption) ListClusterStreamingJobsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListClusterStreamingJobsResultOutput, error) {
 			args := v.(ListClusterStreamingJobsArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListClusterStreamingJobsResult
-			secret, err := ctx.InvokePackageRaw("azure-native:streamanalytics/v20200301:listClusterStreamingJobs", args, &rv, "", opts...)
-			if err != nil {
-				return ListClusterStreamingJobsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListClusterStreamingJobsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListClusterStreamingJobsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:streamanalytics/v20200301:listClusterStreamingJobs", args, ListClusterStreamingJobsResultOutput{}, options).(ListClusterStreamingJobsResultOutput), nil
 		}).(ListClusterStreamingJobsResultOutput)
 }
 

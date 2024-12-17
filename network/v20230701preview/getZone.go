@@ -75,23 +75,12 @@ func (val *LookupZoneResult) Defaults() *LookupZoneResult {
 	}
 	return &tmp
 }
-
 func LookupZoneOutput(ctx *pulumi.Context, args LookupZoneOutputArgs, opts ...pulumi.InvokeOption) LookupZoneResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupZoneResultOutput, error) {
 			args := v.(LookupZoneArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupZoneResult
-			secret, err := ctx.InvokePackageRaw("azure-native:network/v20230701preview:getZone", args, &rv, "", opts...)
-			if err != nil {
-				return LookupZoneResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupZoneResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupZoneResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:network/v20230701preview:getZone", args, LookupZoneResultOutput{}, options).(LookupZoneResultOutput), nil
 		}).(LookupZoneResultOutput)
 }
 

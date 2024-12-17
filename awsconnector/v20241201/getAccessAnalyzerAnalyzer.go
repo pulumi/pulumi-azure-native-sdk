@@ -48,21 +48,11 @@ type LookupAccessAnalyzerAnalyzerResult struct {
 }
 
 func LookupAccessAnalyzerAnalyzerOutput(ctx *pulumi.Context, args LookupAccessAnalyzerAnalyzerOutputArgs, opts ...pulumi.InvokeOption) LookupAccessAnalyzerAnalyzerResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAccessAnalyzerAnalyzerResultOutput, error) {
 			args := v.(LookupAccessAnalyzerAnalyzerArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupAccessAnalyzerAnalyzerResult
-			secret, err := ctx.InvokePackageRaw("azure-native:awsconnector/v20241201:getAccessAnalyzerAnalyzer", args, &rv, "", opts...)
-			if err != nil {
-				return LookupAccessAnalyzerAnalyzerResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupAccessAnalyzerAnalyzerResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupAccessAnalyzerAnalyzerResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:awsconnector/v20241201:getAccessAnalyzerAnalyzer", args, LookupAccessAnalyzerAnalyzerResultOutput{}, options).(LookupAccessAnalyzerAnalyzerResultOutput), nil
 		}).(LookupAccessAnalyzerAnalyzerResultOutput)
 }
 

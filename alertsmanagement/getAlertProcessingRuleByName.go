@@ -13,8 +13,6 @@ import (
 
 // Get an alert processing rule by name.
 // Azure REST API version: 2021-08-08.
-//
-// Other available API versions: 2023-05-01-preview, 2024-03-01-preview.
 func LookupAlertProcessingRuleByName(ctx *pulumi.Context, args *LookupAlertProcessingRuleByNameArgs, opts ...pulumi.InvokeOption) (*LookupAlertProcessingRuleByNameResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAlertProcessingRuleByNameResult
@@ -60,23 +58,12 @@ func (val *LookupAlertProcessingRuleByNameResult) Defaults() *LookupAlertProcess
 
 	return &tmp
 }
-
 func LookupAlertProcessingRuleByNameOutput(ctx *pulumi.Context, args LookupAlertProcessingRuleByNameOutputArgs, opts ...pulumi.InvokeOption) LookupAlertProcessingRuleByNameResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAlertProcessingRuleByNameResultOutput, error) {
 			args := v.(LookupAlertProcessingRuleByNameArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupAlertProcessingRuleByNameResult
-			secret, err := ctx.InvokePackageRaw("azure-native:alertsmanagement:getAlertProcessingRuleByName", args, &rv, "", opts...)
-			if err != nil {
-				return LookupAlertProcessingRuleByNameResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupAlertProcessingRuleByNameResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupAlertProcessingRuleByNameResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:alertsmanagement:getAlertProcessingRuleByName", args, LookupAlertProcessingRuleByNameResultOutput{}, options).(LookupAlertProcessingRuleByNameResultOutput), nil
 		}).(LookupAlertProcessingRuleByNameResultOutput)
 }
 

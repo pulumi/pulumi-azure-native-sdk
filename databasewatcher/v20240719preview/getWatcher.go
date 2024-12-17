@@ -56,21 +56,11 @@ type LookupWatcherResult struct {
 }
 
 func LookupWatcherOutput(ctx *pulumi.Context, args LookupWatcherOutputArgs, opts ...pulumi.InvokeOption) LookupWatcherResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupWatcherResultOutput, error) {
 			args := v.(LookupWatcherArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupWatcherResult
-			secret, err := ctx.InvokePackageRaw("azure-native:databasewatcher/v20240719preview:getWatcher", args, &rv, "", opts...)
-			if err != nil {
-				return LookupWatcherResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupWatcherResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupWatcherResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:databasewatcher/v20240719preview:getWatcher", args, LookupWatcherResultOutput{}, options).(LookupWatcherResultOutput), nil
 		}).(LookupWatcherResultOutput)
 }
 

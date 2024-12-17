@@ -51,21 +51,11 @@ type LookupCustomApiResult struct {
 }
 
 func LookupCustomApiOutput(ctx *pulumi.Context, args LookupCustomApiOutputArgs, opts ...pulumi.InvokeOption) LookupCustomApiResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupCustomApiResultOutput, error) {
 			args := v.(LookupCustomApiArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupCustomApiResult
-			secret, err := ctx.InvokePackageRaw("azure-native:web:getCustomApi", args, &rv, "", opts...)
-			if err != nil {
-				return LookupCustomApiResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupCustomApiResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupCustomApiResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:web:getCustomApi", args, LookupCustomApiResultOutput{}, options).(LookupCustomApiResultOutput), nil
 		}).(LookupCustomApiResultOutput)
 }
 

@@ -40,21 +40,11 @@ type ListIntegrationRuntimeAuthKeyResult struct {
 }
 
 func ListIntegrationRuntimeAuthKeyOutput(ctx *pulumi.Context, args ListIntegrationRuntimeAuthKeyOutputArgs, opts ...pulumi.InvokeOption) ListIntegrationRuntimeAuthKeyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListIntegrationRuntimeAuthKeyResultOutput, error) {
 			args := v.(ListIntegrationRuntimeAuthKeyArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListIntegrationRuntimeAuthKeyResult
-			secret, err := ctx.InvokePackageRaw("azure-native:synapse/v20210601:listIntegrationRuntimeAuthKey", args, &rv, "", opts...)
-			if err != nil {
-				return ListIntegrationRuntimeAuthKeyResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListIntegrationRuntimeAuthKeyResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListIntegrationRuntimeAuthKeyResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:synapse/v20210601:listIntegrationRuntimeAuthKey", args, ListIntegrationRuntimeAuthKeyResultOutput{}, options).(ListIntegrationRuntimeAuthKeyResultOutput), nil
 		}).(ListIntegrationRuntimeAuthKeyResultOutput)
 }
 

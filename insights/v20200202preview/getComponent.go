@@ -118,23 +118,12 @@ func (val *LookupComponentResult) Defaults() *LookupComponentResult {
 	}
 	return &tmp
 }
-
 func LookupComponentOutput(ctx *pulumi.Context, args LookupComponentOutputArgs, opts ...pulumi.InvokeOption) LookupComponentResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupComponentResultOutput, error) {
 			args := v.(LookupComponentArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupComponentResult
-			secret, err := ctx.InvokePackageRaw("azure-native:insights/v20200202preview:getComponent", args, &rv, "", opts...)
-			if err != nil {
-				return LookupComponentResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupComponentResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupComponentResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:insights/v20200202preview:getComponent", args, LookupComponentResultOutput{}, options).(LookupComponentResultOutput), nil
 		}).(LookupComponentResultOutput)
 }
 

@@ -49,21 +49,11 @@ type LookupDynamoDbContinuousBackupsDescriptionResult struct {
 }
 
 func LookupDynamoDbContinuousBackupsDescriptionOutput(ctx *pulumi.Context, args LookupDynamoDbContinuousBackupsDescriptionOutputArgs, opts ...pulumi.InvokeOption) LookupDynamoDbContinuousBackupsDescriptionResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupDynamoDbContinuousBackupsDescriptionResultOutput, error) {
 			args := v.(LookupDynamoDbContinuousBackupsDescriptionArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupDynamoDbContinuousBackupsDescriptionResult
-			secret, err := ctx.InvokePackageRaw("azure-native:awsconnector:getDynamoDbContinuousBackupsDescription", args, &rv, "", opts...)
-			if err != nil {
-				return LookupDynamoDbContinuousBackupsDescriptionResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupDynamoDbContinuousBackupsDescriptionResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupDynamoDbContinuousBackupsDescriptionResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:awsconnector:getDynamoDbContinuousBackupsDescription", args, LookupDynamoDbContinuousBackupsDescriptionResultOutput{}, options).(LookupDynamoDbContinuousBackupsDescriptionResultOutput), nil
 		}).(LookupDynamoDbContinuousBackupsDescriptionResultOutput)
 }
 

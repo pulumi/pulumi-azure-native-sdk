@@ -53,21 +53,11 @@ type LookupIntegrationAccountSessionResult struct {
 }
 
 func LookupIntegrationAccountSessionOutput(ctx *pulumi.Context, args LookupIntegrationAccountSessionOutputArgs, opts ...pulumi.InvokeOption) LookupIntegrationAccountSessionResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupIntegrationAccountSessionResultOutput, error) {
 			args := v.(LookupIntegrationAccountSessionArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupIntegrationAccountSessionResult
-			secret, err := ctx.InvokePackageRaw("azure-native:logic:getIntegrationAccountSession", args, &rv, "", opts...)
-			if err != nil {
-				return LookupIntegrationAccountSessionResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupIntegrationAccountSessionResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupIntegrationAccountSessionResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:logic:getIntegrationAccountSession", args, LookupIntegrationAccountSessionResultOutput{}, options).(LookupIntegrationAccountSessionResultOutput), nil
 		}).(LookupIntegrationAccountSessionResultOutput)
 }
 

@@ -53,21 +53,11 @@ type LookupDiagnosticSettingResult struct {
 }
 
 func LookupDiagnosticSettingOutput(ctx *pulumi.Context, args LookupDiagnosticSettingOutputArgs, opts ...pulumi.InvokeOption) LookupDiagnosticSettingResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupDiagnosticSettingResultOutput, error) {
 			args := v.(LookupDiagnosticSettingArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupDiagnosticSettingResult
-			secret, err := ctx.InvokePackageRaw("azure-native:aadiam:getDiagnosticSetting", args, &rv, "", opts...)
-			if err != nil {
-				return LookupDiagnosticSettingResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupDiagnosticSettingResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupDiagnosticSettingResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:aadiam:getDiagnosticSetting", args, LookupDiagnosticSettingResultOutput{}, options).(LookupDiagnosticSettingResultOutput), nil
 		}).(LookupDiagnosticSettingResultOutput)
 }
 

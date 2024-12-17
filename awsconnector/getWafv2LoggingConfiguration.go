@@ -49,21 +49,11 @@ type LookupWafv2LoggingConfigurationResult struct {
 }
 
 func LookupWafv2LoggingConfigurationOutput(ctx *pulumi.Context, args LookupWafv2LoggingConfigurationOutputArgs, opts ...pulumi.InvokeOption) LookupWafv2LoggingConfigurationResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupWafv2LoggingConfigurationResultOutput, error) {
 			args := v.(LookupWafv2LoggingConfigurationArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupWafv2LoggingConfigurationResult
-			secret, err := ctx.InvokePackageRaw("azure-native:awsconnector:getWafv2LoggingConfiguration", args, &rv, "", opts...)
-			if err != nil {
-				return LookupWafv2LoggingConfigurationResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupWafv2LoggingConfigurationResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupWafv2LoggingConfigurationResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:awsconnector:getWafv2LoggingConfiguration", args, LookupWafv2LoggingConfigurationResultOutput{}, options).(LookupWafv2LoggingConfigurationResultOutput), nil
 		}).(LookupWafv2LoggingConfigurationResultOutput)
 }
 

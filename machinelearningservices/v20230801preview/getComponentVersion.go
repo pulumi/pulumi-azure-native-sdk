@@ -57,23 +57,12 @@ func (val *LookupComponentVersionResult) Defaults() *LookupComponentVersionResul
 
 	return &tmp
 }
-
 func LookupComponentVersionOutput(ctx *pulumi.Context, args LookupComponentVersionOutputArgs, opts ...pulumi.InvokeOption) LookupComponentVersionResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupComponentVersionResultOutput, error) {
 			args := v.(LookupComponentVersionArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupComponentVersionResult
-			secret, err := ctx.InvokePackageRaw("azure-native:machinelearningservices/v20230801preview:getComponentVersion", args, &rv, "", opts...)
-			if err != nil {
-				return LookupComponentVersionResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupComponentVersionResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupComponentVersionResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:machinelearningservices/v20230801preview:getComponentVersion", args, LookupComponentVersionResultOutput{}, options).(LookupComponentVersionResultOutput), nil
 		}).(LookupComponentVersionResultOutput)
 }
 

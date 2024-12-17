@@ -41,21 +41,11 @@ type ListLocalRulestackAppIdsResult struct {
 }
 
 func ListLocalRulestackAppIdsOutput(ctx *pulumi.Context, args ListLocalRulestackAppIdsOutputArgs, opts ...pulumi.InvokeOption) ListLocalRulestackAppIdsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListLocalRulestackAppIdsResultOutput, error) {
 			args := v.(ListLocalRulestackAppIdsArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListLocalRulestackAppIdsResult
-			secret, err := ctx.InvokePackageRaw("azure-native:cloudngfw/v20231010preview:listLocalRulestackAppIds", args, &rv, "", opts...)
-			if err != nil {
-				return ListLocalRulestackAppIdsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListLocalRulestackAppIdsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListLocalRulestackAppIdsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:cloudngfw/v20231010preview:listLocalRulestackAppIds", args, ListLocalRulestackAppIdsResultOutput{}, options).(ListLocalRulestackAppIdsResultOutput), nil
 		}).(ListLocalRulestackAppIdsResultOutput)
 }
 

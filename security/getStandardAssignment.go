@@ -59,21 +59,11 @@ type LookupStandardAssignmentResult struct {
 }
 
 func LookupStandardAssignmentOutput(ctx *pulumi.Context, args LookupStandardAssignmentOutputArgs, opts ...pulumi.InvokeOption) LookupStandardAssignmentResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupStandardAssignmentResultOutput, error) {
 			args := v.(LookupStandardAssignmentArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupStandardAssignmentResult
-			secret, err := ctx.InvokePackageRaw("azure-native:security:getStandardAssignment", args, &rv, "", opts...)
-			if err != nil {
-				return LookupStandardAssignmentResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupStandardAssignmentResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupStandardAssignmentResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:security:getStandardAssignment", args, LookupStandardAssignmentResultOutput{}, options).(LookupStandardAssignmentResultOutput), nil
 		}).(LookupStandardAssignmentResultOutput)
 }
 

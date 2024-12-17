@@ -54,21 +54,11 @@ type LookupAksAssessmentOperationResult struct {
 }
 
 func LookupAksAssessmentOperationOutput(ctx *pulumi.Context, args LookupAksAssessmentOperationOutputArgs, opts ...pulumi.InvokeOption) LookupAksAssessmentOperationResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAksAssessmentOperationResultOutput, error) {
 			args := v.(LookupAksAssessmentOperationArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupAksAssessmentOperationResult
-			secret, err := ctx.InvokePackageRaw("azure-native:migrate/v20230909preview:getAksAssessmentOperation", args, &rv, "", opts...)
-			if err != nil {
-				return LookupAksAssessmentOperationResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupAksAssessmentOperationResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupAksAssessmentOperationResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:migrate/v20230909preview:getAksAssessmentOperation", args, LookupAksAssessmentOperationResultOutput{}, options).(LookupAksAssessmentOperationResultOutput), nil
 		}).(LookupAksAssessmentOperationResultOutput)
 }
 

@@ -57,21 +57,11 @@ type LookupWebAppCollectorOperationResult struct {
 }
 
 func LookupWebAppCollectorOperationOutput(ctx *pulumi.Context, args LookupWebAppCollectorOperationOutputArgs, opts ...pulumi.InvokeOption) LookupWebAppCollectorOperationResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupWebAppCollectorOperationResultOutput, error) {
 			args := v.(LookupWebAppCollectorOperationArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupWebAppCollectorOperationResult
-			secret, err := ctx.InvokePackageRaw("azure-native:migrate:getWebAppCollectorOperation", args, &rv, "", opts...)
-			if err != nil {
-				return LookupWebAppCollectorOperationResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupWebAppCollectorOperationResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupWebAppCollectorOperationResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:migrate:getWebAppCollectorOperation", args, LookupWebAppCollectorOperationResultOutput{}, options).(LookupWebAppCollectorOperationResultOutput), nil
 		}).(LookupWebAppCollectorOperationResultOutput)
 }
 

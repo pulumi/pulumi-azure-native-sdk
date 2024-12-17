@@ -36,21 +36,11 @@ type ListMongoClusterConnectionStringsResult struct {
 }
 
 func ListMongoClusterConnectionStringsOutput(ctx *pulumi.Context, args ListMongoClusterConnectionStringsOutputArgs, opts ...pulumi.InvokeOption) ListMongoClusterConnectionStringsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListMongoClusterConnectionStringsResultOutput, error) {
 			args := v.(ListMongoClusterConnectionStringsArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListMongoClusterConnectionStringsResult
-			secret, err := ctx.InvokePackageRaw("azure-native:documentdb/v20230915preview:listMongoClusterConnectionStrings", args, &rv, "", opts...)
-			if err != nil {
-				return ListMongoClusterConnectionStringsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListMongoClusterConnectionStringsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListMongoClusterConnectionStringsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:documentdb/v20230915preview:listMongoClusterConnectionStrings", args, ListMongoClusterConnectionStringsResultOutput{}, options).(ListMongoClusterConnectionStringsResultOutput), nil
 		}).(ListMongoClusterConnectionStringsResultOutput)
 }
 

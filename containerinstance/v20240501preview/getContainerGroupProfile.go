@@ -86,23 +86,12 @@ func (val *LookupContainerGroupProfileResult) Defaults() *LookupContainerGroupPr
 
 	return &tmp
 }
-
 func LookupContainerGroupProfileOutput(ctx *pulumi.Context, args LookupContainerGroupProfileOutputArgs, opts ...pulumi.InvokeOption) LookupContainerGroupProfileResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupContainerGroupProfileResultOutput, error) {
 			args := v.(LookupContainerGroupProfileArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupContainerGroupProfileResult
-			secret, err := ctx.InvokePackageRaw("azure-native:containerinstance/v20240501preview:getContainerGroupProfile", args, &rv, "", opts...)
-			if err != nil {
-				return LookupContainerGroupProfileResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupContainerGroupProfileResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupContainerGroupProfileResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:containerinstance/v20240501preview:getContainerGroupProfile", args, LookupContainerGroupProfileResultOutput{}, options).(LookupContainerGroupProfileResultOutput), nil
 		}).(LookupContainerGroupProfileResultOutput)
 }
 

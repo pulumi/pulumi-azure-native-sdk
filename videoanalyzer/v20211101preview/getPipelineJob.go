@@ -56,21 +56,11 @@ type LookupPipelineJobResult struct {
 }
 
 func LookupPipelineJobOutput(ctx *pulumi.Context, args LookupPipelineJobOutputArgs, opts ...pulumi.InvokeOption) LookupPipelineJobResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupPipelineJobResultOutput, error) {
 			args := v.(LookupPipelineJobArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupPipelineJobResult
-			secret, err := ctx.InvokePackageRaw("azure-native:videoanalyzer/v20211101preview:getPipelineJob", args, &rv, "", opts...)
-			if err != nil {
-				return LookupPipelineJobResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupPipelineJobResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupPipelineJobResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:videoanalyzer/v20211101preview:getPipelineJob", args, LookupPipelineJobResultOutput{}, options).(LookupPipelineJobResultOutput), nil
 		}).(LookupPipelineJobResultOutput)
 }
 

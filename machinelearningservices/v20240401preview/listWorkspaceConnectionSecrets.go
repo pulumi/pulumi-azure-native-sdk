@@ -43,21 +43,11 @@ type ListWorkspaceConnectionSecretsResult struct {
 }
 
 func ListWorkspaceConnectionSecretsOutput(ctx *pulumi.Context, args ListWorkspaceConnectionSecretsOutputArgs, opts ...pulumi.InvokeOption) ListWorkspaceConnectionSecretsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListWorkspaceConnectionSecretsResultOutput, error) {
 			args := v.(ListWorkspaceConnectionSecretsArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListWorkspaceConnectionSecretsResult
-			secret, err := ctx.InvokePackageRaw("azure-native:machinelearningservices/v20240401preview:listWorkspaceConnectionSecrets", args, &rv, "", opts...)
-			if err != nil {
-				return ListWorkspaceConnectionSecretsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListWorkspaceConnectionSecretsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListWorkspaceConnectionSecretsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:machinelearningservices/v20240401preview:listWorkspaceConnectionSecrets", args, ListWorkspaceConnectionSecretsResultOutput{}, options).(ListWorkspaceConnectionSecretsResultOutput), nil
 		}).(ListWorkspaceConnectionSecretsResultOutput)
 }
 

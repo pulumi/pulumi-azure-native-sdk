@@ -38,21 +38,11 @@ type ListWorkspaceConnectionModelsResult struct {
 }
 
 func ListWorkspaceConnectionModelsOutput(ctx *pulumi.Context, args ListWorkspaceConnectionModelsOutputArgs, opts ...pulumi.InvokeOption) ListWorkspaceConnectionModelsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListWorkspaceConnectionModelsResultOutput, error) {
 			args := v.(ListWorkspaceConnectionModelsArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListWorkspaceConnectionModelsResult
-			secret, err := ctx.InvokePackageRaw("azure-native:machinelearningservices:listWorkspaceConnectionModels", args, &rv, "", opts...)
-			if err != nil {
-				return ListWorkspaceConnectionModelsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListWorkspaceConnectionModelsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListWorkspaceConnectionModelsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:machinelearningservices:listWorkspaceConnectionModels", args, ListWorkspaceConnectionModelsResultOutput{}, options).(ListWorkspaceConnectionModelsResultOutput), nil
 		}).(ListWorkspaceConnectionModelsResultOutput)
 }
 

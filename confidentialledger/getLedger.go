@@ -51,21 +51,11 @@ type LookupLedgerResult struct {
 }
 
 func LookupLedgerOutput(ctx *pulumi.Context, args LookupLedgerOutputArgs, opts ...pulumi.InvokeOption) LookupLedgerResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupLedgerResultOutput, error) {
 			args := v.(LookupLedgerArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupLedgerResult
-			secret, err := ctx.InvokePackageRaw("azure-native:confidentialledger:getLedger", args, &rv, "", opts...)
-			if err != nil {
-				return LookupLedgerResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupLedgerResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupLedgerResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:confidentialledger:getLedger", args, LookupLedgerResultOutput{}, options).(LookupLedgerResultOutput), nil
 		}).(LookupLedgerResultOutput)
 }
 

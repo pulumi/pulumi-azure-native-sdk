@@ -42,21 +42,11 @@ type ListAccessRoleBindingNameResult struct {
 }
 
 func ListAccessRoleBindingNameOutput(ctx *pulumi.Context, args ListAccessRoleBindingNameOutputArgs, opts ...pulumi.InvokeOption) ListAccessRoleBindingNameResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListAccessRoleBindingNameResultOutput, error) {
 			args := v.(ListAccessRoleBindingNameArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListAccessRoleBindingNameResult
-			secret, err := ctx.InvokePackageRaw("azure-native:confluent/v20240213:listAccessRoleBindingName", args, &rv, "", opts...)
-			if err != nil {
-				return ListAccessRoleBindingNameResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListAccessRoleBindingNameResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListAccessRoleBindingNameResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:confluent/v20240213:listAccessRoleBindingName", args, ListAccessRoleBindingNameResultOutput{}, options).(ListAccessRoleBindingNameResultOutput), nil
 		}).(ListAccessRoleBindingNameResultOutput)
 }
 

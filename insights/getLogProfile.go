@@ -53,21 +53,11 @@ type LookupLogProfileResult struct {
 }
 
 func LookupLogProfileOutput(ctx *pulumi.Context, args LookupLogProfileOutputArgs, opts ...pulumi.InvokeOption) LookupLogProfileResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupLogProfileResultOutput, error) {
 			args := v.(LookupLogProfileArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupLogProfileResult
-			secret, err := ctx.InvokePackageRaw("azure-native:insights:getLogProfile", args, &rv, "", opts...)
-			if err != nil {
-				return LookupLogProfileResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupLogProfileResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupLogProfileResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:insights:getLogProfile", args, LookupLogProfileResultOutput{}, options).(LookupLogProfileResultOutput), nil
 		}).(LookupLogProfileResultOutput)
 }
 

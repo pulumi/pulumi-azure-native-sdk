@@ -66,21 +66,11 @@ type LookupSapDatabaseInstanceResult struct {
 }
 
 func LookupSapDatabaseInstanceOutput(ctx *pulumi.Context, args LookupSapDatabaseInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupSapDatabaseInstanceResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupSapDatabaseInstanceResultOutput, error) {
 			args := v.(LookupSapDatabaseInstanceArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupSapDatabaseInstanceResult
-			secret, err := ctx.InvokePackageRaw("azure-native:workloads/v20240901:getSapDatabaseInstance", args, &rv, "", opts...)
-			if err != nil {
-				return LookupSapDatabaseInstanceResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupSapDatabaseInstanceResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupSapDatabaseInstanceResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:workloads/v20240901:getSapDatabaseInstance", args, LookupSapDatabaseInstanceResultOutput{}, options).(LookupSapDatabaseInstanceResultOutput), nil
 		}).(LookupSapDatabaseInstanceResultOutput)
 }
 
