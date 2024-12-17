@@ -48,21 +48,11 @@ type LookupRedshiftClusterParameterGroupResult struct {
 }
 
 func LookupRedshiftClusterParameterGroupOutput(ctx *pulumi.Context, args LookupRedshiftClusterParameterGroupOutputArgs, opts ...pulumi.InvokeOption) LookupRedshiftClusterParameterGroupResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupRedshiftClusterParameterGroupResultOutput, error) {
 			args := v.(LookupRedshiftClusterParameterGroupArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupRedshiftClusterParameterGroupResult
-			secret, err := ctx.InvokePackageRaw("azure-native:awsconnector/v20241201:getRedshiftClusterParameterGroup", args, &rv, "", opts...)
-			if err != nil {
-				return LookupRedshiftClusterParameterGroupResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupRedshiftClusterParameterGroupResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupRedshiftClusterParameterGroupResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:awsconnector/v20241201:getRedshiftClusterParameterGroup", args, LookupRedshiftClusterParameterGroupResultOutput{}, options).(LookupRedshiftClusterParameterGroupResultOutput), nil
 		}).(LookupRedshiftClusterParameterGroupResultOutput)
 }
 

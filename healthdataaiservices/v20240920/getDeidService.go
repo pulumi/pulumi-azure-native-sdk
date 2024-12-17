@@ -50,21 +50,11 @@ type LookupDeidServiceResult struct {
 }
 
 func LookupDeidServiceOutput(ctx *pulumi.Context, args LookupDeidServiceOutputArgs, opts ...pulumi.InvokeOption) LookupDeidServiceResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupDeidServiceResultOutput, error) {
 			args := v.(LookupDeidServiceArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupDeidServiceResult
-			secret, err := ctx.InvokePackageRaw("azure-native:healthdataaiservices/v20240920:getDeidService", args, &rv, "", opts...)
-			if err != nil {
-				return LookupDeidServiceResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupDeidServiceResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupDeidServiceResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:healthdataaiservices/v20240920:getDeidService", args, LookupDeidServiceResultOutput{}, options).(LookupDeidServiceResultOutput), nil
 		}).(LookupDeidServiceResultOutput)
 }
 

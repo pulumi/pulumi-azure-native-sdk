@@ -50,21 +50,11 @@ type ListWorkflowTriggerCallbackUrlResult struct {
 }
 
 func ListWorkflowTriggerCallbackUrlOutput(ctx *pulumi.Context, args ListWorkflowTriggerCallbackUrlOutputArgs, opts ...pulumi.InvokeOption) ListWorkflowTriggerCallbackUrlResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListWorkflowTriggerCallbackUrlResultOutput, error) {
 			args := v.(ListWorkflowTriggerCallbackUrlArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListWorkflowTriggerCallbackUrlResult
-			secret, err := ctx.InvokePackageRaw("azure-native:web/v20230101:listWorkflowTriggerCallbackUrl", args, &rv, "", opts...)
-			if err != nil {
-				return ListWorkflowTriggerCallbackUrlResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListWorkflowTriggerCallbackUrlResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListWorkflowTriggerCallbackUrlResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:web/v20230101:listWorkflowTriggerCallbackUrl", args, ListWorkflowTriggerCallbackUrlResultOutput{}, options).(ListWorkflowTriggerCallbackUrlResultOutput), nil
 		}).(ListWorkflowTriggerCallbackUrlResultOutput)
 }
 

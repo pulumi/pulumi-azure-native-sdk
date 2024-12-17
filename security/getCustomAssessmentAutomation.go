@@ -57,21 +57,11 @@ type LookupCustomAssessmentAutomationResult struct {
 }
 
 func LookupCustomAssessmentAutomationOutput(ctx *pulumi.Context, args LookupCustomAssessmentAutomationOutputArgs, opts ...pulumi.InvokeOption) LookupCustomAssessmentAutomationResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupCustomAssessmentAutomationResultOutput, error) {
 			args := v.(LookupCustomAssessmentAutomationArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupCustomAssessmentAutomationResult
-			secret, err := ctx.InvokePackageRaw("azure-native:security:getCustomAssessmentAutomation", args, &rv, "", opts...)
-			if err != nil {
-				return LookupCustomAssessmentAutomationResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupCustomAssessmentAutomationResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupCustomAssessmentAutomationResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:security:getCustomAssessmentAutomation", args, LookupCustomAssessmentAutomationResultOutput{}, options).(LookupCustomAssessmentAutomationResultOutput), nil
 		}).(LookupCustomAssessmentAutomationResultOutput)
 }
 

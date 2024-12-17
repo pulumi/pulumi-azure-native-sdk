@@ -61,21 +61,11 @@ type LookupAppResult struct {
 }
 
 func LookupAppOutput(ctx *pulumi.Context, args LookupAppOutputArgs, opts ...pulumi.InvokeOption) LookupAppResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAppResultOutput, error) {
 			args := v.(LookupAppArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupAppResult
-			secret, err := ctx.InvokePackageRaw("azure-native:iotcentral:getApp", args, &rv, "", opts...)
-			if err != nil {
-				return LookupAppResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupAppResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupAppResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:iotcentral:getApp", args, LookupAppResultOutput{}, options).(LookupAppResultOutput), nil
 		}).(LookupAppResultOutput)
 }
 

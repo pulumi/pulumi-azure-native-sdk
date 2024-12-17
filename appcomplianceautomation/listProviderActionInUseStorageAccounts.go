@@ -35,21 +35,11 @@ type ListProviderActionInUseStorageAccountsResult struct {
 }
 
 func ListProviderActionInUseStorageAccountsOutput(ctx *pulumi.Context, args ListProviderActionInUseStorageAccountsOutputArgs, opts ...pulumi.InvokeOption) ListProviderActionInUseStorageAccountsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListProviderActionInUseStorageAccountsResultOutput, error) {
 			args := v.(ListProviderActionInUseStorageAccountsArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListProviderActionInUseStorageAccountsResult
-			secret, err := ctx.InvokePackageRaw("azure-native:appcomplianceautomation:listProviderActionInUseStorageAccounts", args, &rv, "", opts...)
-			if err != nil {
-				return ListProviderActionInUseStorageAccountsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListProviderActionInUseStorageAccountsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListProviderActionInUseStorageAccountsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:appcomplianceautomation:listProviderActionInUseStorageAccounts", args, ListProviderActionInUseStorageAccountsResultOutput{}, options).(ListProviderActionInUseStorageAccountsResultOutput), nil
 		}).(ListProviderActionInUseStorageAccountsResultOutput)
 }
 

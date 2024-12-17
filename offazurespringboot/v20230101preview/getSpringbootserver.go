@@ -48,21 +48,11 @@ type LookupSpringbootserverResult struct {
 }
 
 func LookupSpringbootserverOutput(ctx *pulumi.Context, args LookupSpringbootserverOutputArgs, opts ...pulumi.InvokeOption) LookupSpringbootserverResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupSpringbootserverResultOutput, error) {
 			args := v.(LookupSpringbootserverArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupSpringbootserverResult
-			secret, err := ctx.InvokePackageRaw("azure-native:offazurespringboot/v20230101preview:getSpringbootserver", args, &rv, "", opts...)
-			if err != nil {
-				return LookupSpringbootserverResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupSpringbootserverResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupSpringbootserverResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:offazurespringboot/v20230101preview:getSpringbootserver", args, LookupSpringbootserverResultOutput{}, options).(LookupSpringbootserverResultOutput), nil
 		}).(LookupSpringbootserverResultOutput)
 }
 

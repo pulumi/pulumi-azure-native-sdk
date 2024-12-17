@@ -63,21 +63,11 @@ type LookupDedicatedHsmResult struct {
 }
 
 func LookupDedicatedHsmOutput(ctx *pulumi.Context, args LookupDedicatedHsmOutputArgs, opts ...pulumi.InvokeOption) LookupDedicatedHsmResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupDedicatedHsmResultOutput, error) {
 			args := v.(LookupDedicatedHsmArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupDedicatedHsmResult
-			secret, err := ctx.InvokePackageRaw("azure-native:hardwaresecuritymodules:getDedicatedHsm", args, &rv, "", opts...)
-			if err != nil {
-				return LookupDedicatedHsmResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupDedicatedHsmResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupDedicatedHsmResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:hardwaresecuritymodules:getDedicatedHsm", args, LookupDedicatedHsmResultOutput{}, options).(LookupDedicatedHsmResultOutput), nil
 		}).(LookupDedicatedHsmResultOutput)
 }
 

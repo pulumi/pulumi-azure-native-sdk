@@ -48,21 +48,11 @@ type LookupIamInstanceProfileResult struct {
 }
 
 func LookupIamInstanceProfileOutput(ctx *pulumi.Context, args LookupIamInstanceProfileOutputArgs, opts ...pulumi.InvokeOption) LookupIamInstanceProfileResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupIamInstanceProfileResultOutput, error) {
 			args := v.(LookupIamInstanceProfileArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupIamInstanceProfileResult
-			secret, err := ctx.InvokePackageRaw("azure-native:awsconnector/v20241201:getIamInstanceProfile", args, &rv, "", opts...)
-			if err != nil {
-				return LookupIamInstanceProfileResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupIamInstanceProfileResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupIamInstanceProfileResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:awsconnector/v20241201:getIamInstanceProfile", args, LookupIamInstanceProfileResultOutput{}, options).(LookupIamInstanceProfileResultOutput), nil
 		}).(LookupIamInstanceProfileResultOutput)
 }
 

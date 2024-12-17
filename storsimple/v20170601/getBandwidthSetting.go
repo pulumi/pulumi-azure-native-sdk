@@ -48,21 +48,11 @@ type LookupBandwidthSettingResult struct {
 }
 
 func LookupBandwidthSettingOutput(ctx *pulumi.Context, args LookupBandwidthSettingOutputArgs, opts ...pulumi.InvokeOption) LookupBandwidthSettingResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupBandwidthSettingResultOutput, error) {
 			args := v.(LookupBandwidthSettingArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupBandwidthSettingResult
-			secret, err := ctx.InvokePackageRaw("azure-native:storsimple/v20170601:getBandwidthSetting", args, &rv, "", opts...)
-			if err != nil {
-				return LookupBandwidthSettingResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupBandwidthSettingResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupBandwidthSettingResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:storsimple/v20170601:getBandwidthSetting", args, LookupBandwidthSettingResultOutput{}, options).(LookupBandwidthSettingResultOutput), nil
 		}).(LookupBandwidthSettingResultOutput)
 }
 

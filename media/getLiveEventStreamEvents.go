@@ -39,21 +39,11 @@ type GetLiveEventStreamEventsResult struct {
 }
 
 func GetLiveEventStreamEventsOutput(ctx *pulumi.Context, args GetLiveEventStreamEventsOutputArgs, opts ...pulumi.InvokeOption) GetLiveEventStreamEventsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetLiveEventStreamEventsResultOutput, error) {
 			args := v.(GetLiveEventStreamEventsArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetLiveEventStreamEventsResult
-			secret, err := ctx.InvokePackageRaw("azure-native:media:getLiveEventStreamEvents", args, &rv, "", opts...)
-			if err != nil {
-				return GetLiveEventStreamEventsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetLiveEventStreamEventsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetLiveEventStreamEventsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:media:getLiveEventStreamEvents", args, GetLiveEventStreamEventsResultOutput{}, options).(GetLiveEventStreamEventsResultOutput), nil
 		}).(GetLiveEventStreamEventsResultOutput)
 }
 

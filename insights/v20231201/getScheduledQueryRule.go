@@ -90,21 +90,11 @@ type LookupScheduledQueryRuleResult struct {
 }
 
 func LookupScheduledQueryRuleOutput(ctx *pulumi.Context, args LookupScheduledQueryRuleOutputArgs, opts ...pulumi.InvokeOption) LookupScheduledQueryRuleResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupScheduledQueryRuleResultOutput, error) {
 			args := v.(LookupScheduledQueryRuleArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupScheduledQueryRuleResult
-			secret, err := ctx.InvokePackageRaw("azure-native:insights/v20231201:getScheduledQueryRule", args, &rv, "", opts...)
-			if err != nil {
-				return LookupScheduledQueryRuleResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupScheduledQueryRuleResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupScheduledQueryRuleResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:insights/v20231201:getScheduledQueryRule", args, LookupScheduledQueryRuleResultOutput{}, options).(LookupScheduledQueryRuleResultOutput), nil
 		}).(LookupScheduledQueryRuleResultOutput)
 }
 

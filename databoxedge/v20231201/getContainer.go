@@ -54,21 +54,11 @@ type LookupContainerResult struct {
 }
 
 func LookupContainerOutput(ctx *pulumi.Context, args LookupContainerOutputArgs, opts ...pulumi.InvokeOption) LookupContainerResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupContainerResultOutput, error) {
 			args := v.(LookupContainerArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupContainerResult
-			secret, err := ctx.InvokePackageRaw("azure-native:databoxedge/v20231201:getContainer", args, &rv, "", opts...)
-			if err != nil {
-				return LookupContainerResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupContainerResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupContainerResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:databoxedge/v20231201:getContainer", args, LookupContainerResultOutput{}, options).(LookupContainerResultOutput), nil
 		}).(LookupContainerResultOutput)
 }
 

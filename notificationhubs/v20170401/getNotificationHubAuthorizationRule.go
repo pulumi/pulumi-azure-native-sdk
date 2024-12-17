@@ -68,21 +68,11 @@ type LookupNotificationHubAuthorizationRuleResult struct {
 }
 
 func LookupNotificationHubAuthorizationRuleOutput(ctx *pulumi.Context, args LookupNotificationHubAuthorizationRuleOutputArgs, opts ...pulumi.InvokeOption) LookupNotificationHubAuthorizationRuleResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupNotificationHubAuthorizationRuleResultOutput, error) {
 			args := v.(LookupNotificationHubAuthorizationRuleArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupNotificationHubAuthorizationRuleResult
-			secret, err := ctx.InvokePackageRaw("azure-native:notificationhubs/v20170401:getNotificationHubAuthorizationRule", args, &rv, "", opts...)
-			if err != nil {
-				return LookupNotificationHubAuthorizationRuleResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupNotificationHubAuthorizationRuleResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupNotificationHubAuthorizationRuleResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:notificationhubs/v20170401:getNotificationHubAuthorizationRule", args, LookupNotificationHubAuthorizationRuleResultOutput{}, options).(LookupNotificationHubAuthorizationRuleResultOutput), nil
 		}).(LookupNotificationHubAuthorizationRuleResultOutput)
 }
 

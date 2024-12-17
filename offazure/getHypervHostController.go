@@ -61,21 +61,11 @@ type LookupHypervHostControllerResult struct {
 }
 
 func LookupHypervHostControllerOutput(ctx *pulumi.Context, args LookupHypervHostControllerOutputArgs, opts ...pulumi.InvokeOption) LookupHypervHostControllerResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupHypervHostControllerResultOutput, error) {
 			args := v.(LookupHypervHostControllerArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupHypervHostControllerResult
-			secret, err := ctx.InvokePackageRaw("azure-native:offazure:getHypervHostController", args, &rv, "", opts...)
-			if err != nil {
-				return LookupHypervHostControllerResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupHypervHostControllerResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupHypervHostControllerResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:offazure:getHypervHostController", args, LookupHypervHostControllerResultOutput{}, options).(LookupHypervHostControllerResultOutput), nil
 		}).(LookupHypervHostControllerResultOutput)
 }
 

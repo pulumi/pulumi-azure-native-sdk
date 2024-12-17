@@ -120,23 +120,12 @@ func (val *LookupAndroidMAMPolicyByNameResult) Defaults() *LookupAndroidMAMPolic
 	}
 	return &tmp
 }
-
 func LookupAndroidMAMPolicyByNameOutput(ctx *pulumi.Context, args LookupAndroidMAMPolicyByNameOutputArgs, opts ...pulumi.InvokeOption) LookupAndroidMAMPolicyByNameResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAndroidMAMPolicyByNameResultOutput, error) {
 			args := v.(LookupAndroidMAMPolicyByNameArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupAndroidMAMPolicyByNameResult
-			secret, err := ctx.InvokePackageRaw("azure-native:intune/v20150114privatepreview:getAndroidMAMPolicyByName", args, &rv, "", opts...)
-			if err != nil {
-				return LookupAndroidMAMPolicyByNameResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupAndroidMAMPolicyByNameResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupAndroidMAMPolicyByNameResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:intune/v20150114privatepreview:getAndroidMAMPolicyByName", args, LookupAndroidMAMPolicyByNameResultOutput{}, options).(LookupAndroidMAMPolicyByNameResultOutput), nil
 		}).(LookupAndroidMAMPolicyByNameResultOutput)
 }
 

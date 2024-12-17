@@ -65,21 +65,11 @@ type LookupServerSitesControllerResult struct {
 }
 
 func LookupServerSitesControllerOutput(ctx *pulumi.Context, args LookupServerSitesControllerOutputArgs, opts ...pulumi.InvokeOption) LookupServerSitesControllerResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupServerSitesControllerResultOutput, error) {
 			args := v.(LookupServerSitesControllerArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupServerSitesControllerResult
-			secret, err := ctx.InvokePackageRaw("azure-native:offazure:getServerSitesController", args, &rv, "", opts...)
-			if err != nil {
-				return LookupServerSitesControllerResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupServerSitesControllerResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupServerSitesControllerResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:offazure:getServerSitesController", args, LookupServerSitesControllerResultOutput{}, options).(LookupServerSitesControllerResultOutput), nil
 		}).(LookupServerSitesControllerResultOutput)
 }
 

@@ -74,23 +74,12 @@ func (val *LookupSmartDetectorAlertRuleResult) Defaults() *LookupSmartDetectorAl
 	}
 	return &tmp
 }
-
 func LookupSmartDetectorAlertRuleOutput(ctx *pulumi.Context, args LookupSmartDetectorAlertRuleOutputArgs, opts ...pulumi.InvokeOption) LookupSmartDetectorAlertRuleResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupSmartDetectorAlertRuleResultOutput, error) {
 			args := v.(LookupSmartDetectorAlertRuleArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupSmartDetectorAlertRuleResult
-			secret, err := ctx.InvokePackageRaw("azure-native:alertsmanagement:getSmartDetectorAlertRule", args, &rv, "", opts...)
-			if err != nil {
-				return LookupSmartDetectorAlertRuleResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupSmartDetectorAlertRuleResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupSmartDetectorAlertRuleResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:alertsmanagement:getSmartDetectorAlertRule", args, LookupSmartDetectorAlertRuleResultOutput{}, options).(LookupSmartDetectorAlertRuleResultOutput), nil
 		}).(LookupSmartDetectorAlertRuleResultOutput)
 }
 

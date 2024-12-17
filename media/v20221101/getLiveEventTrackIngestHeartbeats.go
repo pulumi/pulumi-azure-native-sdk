@@ -38,21 +38,11 @@ type GetLiveEventTrackIngestHeartbeatsResult struct {
 }
 
 func GetLiveEventTrackIngestHeartbeatsOutput(ctx *pulumi.Context, args GetLiveEventTrackIngestHeartbeatsOutputArgs, opts ...pulumi.InvokeOption) GetLiveEventTrackIngestHeartbeatsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetLiveEventTrackIngestHeartbeatsResultOutput, error) {
 			args := v.(GetLiveEventTrackIngestHeartbeatsArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetLiveEventTrackIngestHeartbeatsResult
-			secret, err := ctx.InvokePackageRaw("azure-native:media/v20221101:getLiveEventTrackIngestHeartbeats", args, &rv, "", opts...)
-			if err != nil {
-				return GetLiveEventTrackIngestHeartbeatsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetLiveEventTrackIngestHeartbeatsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetLiveEventTrackIngestHeartbeatsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:media/v20221101:getLiveEventTrackIngestHeartbeats", args, GetLiveEventTrackIngestHeartbeatsResultOutput{}, options).(GetLiveEventTrackIngestHeartbeatsResultOutput), nil
 		}).(GetLiveEventTrackIngestHeartbeatsResultOutput)
 }
 

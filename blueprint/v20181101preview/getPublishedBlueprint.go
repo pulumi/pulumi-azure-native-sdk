@@ -58,21 +58,11 @@ type LookupPublishedBlueprintResult struct {
 }
 
 func LookupPublishedBlueprintOutput(ctx *pulumi.Context, args LookupPublishedBlueprintOutputArgs, opts ...pulumi.InvokeOption) LookupPublishedBlueprintResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupPublishedBlueprintResultOutput, error) {
 			args := v.(LookupPublishedBlueprintArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupPublishedBlueprintResult
-			secret, err := ctx.InvokePackageRaw("azure-native:blueprint/v20181101preview:getPublishedBlueprint", args, &rv, "", opts...)
-			if err != nil {
-				return LookupPublishedBlueprintResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupPublishedBlueprintResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupPublishedBlueprintResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:blueprint/v20181101preview:getPublishedBlueprint", args, LookupPublishedBlueprintResultOutput{}, options).(LookupPublishedBlueprintResultOutput), nil
 		}).(LookupPublishedBlueprintResultOutput)
 }
 

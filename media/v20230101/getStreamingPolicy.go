@@ -56,21 +56,11 @@ type LookupStreamingPolicyResult struct {
 }
 
 func LookupStreamingPolicyOutput(ctx *pulumi.Context, args LookupStreamingPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupStreamingPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupStreamingPolicyResultOutput, error) {
 			args := v.(LookupStreamingPolicyArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupStreamingPolicyResult
-			secret, err := ctx.InvokePackageRaw("azure-native:media/v20230101:getStreamingPolicy", args, &rv, "", opts...)
-			if err != nil {
-				return LookupStreamingPolicyResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupStreamingPolicyResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupStreamingPolicyResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:media/v20230101:getStreamingPolicy", args, LookupStreamingPolicyResultOutput{}, options).(LookupStreamingPolicyResultOutput), nil
 		}).(LookupStreamingPolicyResultOutput)
 }
 

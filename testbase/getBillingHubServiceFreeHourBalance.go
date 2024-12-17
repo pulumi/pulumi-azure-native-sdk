@@ -37,21 +37,11 @@ type GetBillingHubServiceFreeHourBalanceResult struct {
 }
 
 func GetBillingHubServiceFreeHourBalanceOutput(ctx *pulumi.Context, args GetBillingHubServiceFreeHourBalanceOutputArgs, opts ...pulumi.InvokeOption) GetBillingHubServiceFreeHourBalanceResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetBillingHubServiceFreeHourBalanceResultOutput, error) {
 			args := v.(GetBillingHubServiceFreeHourBalanceArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetBillingHubServiceFreeHourBalanceResult
-			secret, err := ctx.InvokePackageRaw("azure-native:testbase:getBillingHubServiceFreeHourBalance", args, &rv, "", opts...)
-			if err != nil {
-				return GetBillingHubServiceFreeHourBalanceResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetBillingHubServiceFreeHourBalanceResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetBillingHubServiceFreeHourBalanceResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:testbase:getBillingHubServiceFreeHourBalance", args, GetBillingHubServiceFreeHourBalanceResultOutput{}, options).(GetBillingHubServiceFreeHourBalanceResultOutput), nil
 		}).(GetBillingHubServiceFreeHourBalanceResultOutput)
 }
 

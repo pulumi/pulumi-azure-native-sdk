@@ -50,21 +50,11 @@ type GetWorkloadDeploymentSecretConfigurationsResult struct {
 }
 
 func GetWorkloadDeploymentSecretConfigurationsOutput(ctx *pulumi.Context, args GetWorkloadDeploymentSecretConfigurationsOutputArgs, opts ...pulumi.InvokeOption) GetWorkloadDeploymentSecretConfigurationsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetWorkloadDeploymentSecretConfigurationsResultOutput, error) {
 			args := v.(GetWorkloadDeploymentSecretConfigurationsArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetWorkloadDeploymentSecretConfigurationsResult
-			secret, err := ctx.InvokePackageRaw("azure-native:migrate:getWorkloadDeploymentSecretConfigurations", args, &rv, "", opts...)
-			if err != nil {
-				return GetWorkloadDeploymentSecretConfigurationsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetWorkloadDeploymentSecretConfigurationsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetWorkloadDeploymentSecretConfigurationsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:migrate:getWorkloadDeploymentSecretConfigurations", args, GetWorkloadDeploymentSecretConfigurationsResultOutput{}, options).(GetWorkloadDeploymentSecretConfigurationsResultOutput), nil
 		}).(GetWorkloadDeploymentSecretConfigurationsResultOutput)
 }
 

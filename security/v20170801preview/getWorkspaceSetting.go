@@ -42,21 +42,11 @@ type LookupWorkspaceSettingResult struct {
 }
 
 func LookupWorkspaceSettingOutput(ctx *pulumi.Context, args LookupWorkspaceSettingOutputArgs, opts ...pulumi.InvokeOption) LookupWorkspaceSettingResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupWorkspaceSettingResultOutput, error) {
 			args := v.(LookupWorkspaceSettingArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupWorkspaceSettingResult
-			secret, err := ctx.InvokePackageRaw("azure-native:security/v20170801preview:getWorkspaceSetting", args, &rv, "", opts...)
-			if err != nil {
-				return LookupWorkspaceSettingResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupWorkspaceSettingResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupWorkspaceSettingResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:security/v20170801preview:getWorkspaceSetting", args, LookupWorkspaceSettingResultOutput{}, options).(LookupWorkspaceSettingResultOutput), nil
 		}).(LookupWorkspaceSettingResultOutput)
 }
 

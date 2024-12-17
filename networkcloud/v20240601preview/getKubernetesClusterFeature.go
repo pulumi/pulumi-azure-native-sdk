@@ -61,21 +61,11 @@ type LookupKubernetesClusterFeatureResult struct {
 }
 
 func LookupKubernetesClusterFeatureOutput(ctx *pulumi.Context, args LookupKubernetesClusterFeatureOutputArgs, opts ...pulumi.InvokeOption) LookupKubernetesClusterFeatureResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupKubernetesClusterFeatureResultOutput, error) {
 			args := v.(LookupKubernetesClusterFeatureArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupKubernetesClusterFeatureResult
-			secret, err := ctx.InvokePackageRaw("azure-native:networkcloud/v20240601preview:getKubernetesClusterFeature", args, &rv, "", opts...)
-			if err != nil {
-				return LookupKubernetesClusterFeatureResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupKubernetesClusterFeatureResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupKubernetesClusterFeatureResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:networkcloud/v20240601preview:getKubernetesClusterFeature", args, LookupKubernetesClusterFeatureResultOutput{}, options).(LookupKubernetesClusterFeatureResultOutput), nil
 		}).(LookupKubernetesClusterFeatureResultOutput)
 }
 

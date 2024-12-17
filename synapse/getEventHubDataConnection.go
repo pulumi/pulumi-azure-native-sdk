@@ -72,21 +72,11 @@ type LookupEventHubDataConnectionResult struct {
 }
 
 func LookupEventHubDataConnectionOutput(ctx *pulumi.Context, args LookupEventHubDataConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupEventHubDataConnectionResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupEventHubDataConnectionResultOutput, error) {
 			args := v.(LookupEventHubDataConnectionArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupEventHubDataConnectionResult
-			secret, err := ctx.InvokePackageRaw("azure-native:synapse:getEventHubDataConnection", args, &rv, "", opts...)
-			if err != nil {
-				return LookupEventHubDataConnectionResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupEventHubDataConnectionResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupEventHubDataConnectionResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:synapse:getEventHubDataConnection", args, LookupEventHubDataConnectionResultOutput{}, options).(LookupEventHubDataConnectionResultOutput), nil
 		}).(LookupEventHubDataConnectionResultOutput)
 }
 

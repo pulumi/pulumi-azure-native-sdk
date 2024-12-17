@@ -56,21 +56,11 @@ type LookupResourceSyncRuleResult struct {
 }
 
 func LookupResourceSyncRuleOutput(ctx *pulumi.Context, args LookupResourceSyncRuleOutputArgs, opts ...pulumi.InvokeOption) LookupResourceSyncRuleResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupResourceSyncRuleResultOutput, error) {
 			args := v.(LookupResourceSyncRuleArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupResourceSyncRuleResult
-			secret, err := ctx.InvokePackageRaw("azure-native:extendedlocation/v20210831preview:getResourceSyncRule", args, &rv, "", opts...)
-			if err != nil {
-				return LookupResourceSyncRuleResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupResourceSyncRuleResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupResourceSyncRuleResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:extendedlocation/v20210831preview:getResourceSyncRule", args, LookupResourceSyncRuleResultOutput{}, options).(LookupResourceSyncRuleResultOutput), nil
 		}).(LookupResourceSyncRuleResultOutput)
 }
 

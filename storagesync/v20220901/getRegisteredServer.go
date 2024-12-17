@@ -98,21 +98,11 @@ type LookupRegisteredServerResult struct {
 }
 
 func LookupRegisteredServerOutput(ctx *pulumi.Context, args LookupRegisteredServerOutputArgs, opts ...pulumi.InvokeOption) LookupRegisteredServerResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupRegisteredServerResultOutput, error) {
 			args := v.(LookupRegisteredServerArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupRegisteredServerResult
-			secret, err := ctx.InvokePackageRaw("azure-native:storagesync/v20220901:getRegisteredServer", args, &rv, "", opts...)
-			if err != nil {
-				return LookupRegisteredServerResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupRegisteredServerResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupRegisteredServerResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:storagesync/v20220901:getRegisteredServer", args, LookupRegisteredServerResultOutput{}, options).(LookupRegisteredServerResultOutput), nil
 		}).(LookupRegisteredServerResultOutput)
 }
 

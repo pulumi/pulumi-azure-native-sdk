@@ -36,21 +36,11 @@ type ListBotSecretsResult struct {
 }
 
 func ListBotSecretsOutput(ctx *pulumi.Context, args ListBotSecretsOutputArgs, opts ...pulumi.InvokeOption) ListBotSecretsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListBotSecretsResultOutput, error) {
 			args := v.(ListBotSecretsArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListBotSecretsResult
-			secret, err := ctx.InvokePackageRaw("azure-native:healthbot/v20240201:listBotSecrets", args, &rv, "", opts...)
-			if err != nil {
-				return ListBotSecretsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListBotSecretsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListBotSecretsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:healthbot/v20240201:listBotSecrets", args, ListBotSecretsResultOutput{}, options).(ListBotSecretsResultOutput), nil
 		}).(ListBotSecretsResultOutput)
 }
 

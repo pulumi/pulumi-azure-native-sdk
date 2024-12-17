@@ -54,21 +54,11 @@ type LookupSignalRSharedPrivateLinkResourceResult struct {
 }
 
 func LookupSignalRSharedPrivateLinkResourceOutput(ctx *pulumi.Context, args LookupSignalRSharedPrivateLinkResourceOutputArgs, opts ...pulumi.InvokeOption) LookupSignalRSharedPrivateLinkResourceResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupSignalRSharedPrivateLinkResourceResultOutput, error) {
 			args := v.(LookupSignalRSharedPrivateLinkResourceArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupSignalRSharedPrivateLinkResourceResult
-			secret, err := ctx.InvokePackageRaw("azure-native:signalrservice/v20230301preview:getSignalRSharedPrivateLinkResource", args, &rv, "", opts...)
-			if err != nil {
-				return LookupSignalRSharedPrivateLinkResourceResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupSignalRSharedPrivateLinkResourceResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupSignalRSharedPrivateLinkResourceResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:signalrservice/v20230301preview:getSignalRSharedPrivateLinkResource", args, LookupSignalRSharedPrivateLinkResourceResultOutput{}, options).(LookupSignalRSharedPrivateLinkResourceResultOutput), nil
 		}).(LookupSignalRSharedPrivateLinkResourceResultOutput)
 }
 

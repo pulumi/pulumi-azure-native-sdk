@@ -80,23 +80,12 @@ func (val *LookupKafkaConnectorResult) Defaults() *LookupKafkaConnectorResult {
 	}
 	return &tmp
 }
-
 func LookupKafkaConnectorOutput(ctx *pulumi.Context, args LookupKafkaConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupKafkaConnectorResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupKafkaConnectorResultOutput, error) {
 			args := v.(LookupKafkaConnectorArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupKafkaConnectorResult
-			secret, err := ctx.InvokePackageRaw("azure-native:iotoperationsmq:getKafkaConnector", args, &rv, "", opts...)
-			if err != nil {
-				return LookupKafkaConnectorResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupKafkaConnectorResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupKafkaConnectorResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:iotoperationsmq:getKafkaConnector", args, LookupKafkaConnectorResultOutput{}, options).(LookupKafkaConnectorResultOutput), nil
 		}).(LookupKafkaConnectorResultOutput)
 }
 

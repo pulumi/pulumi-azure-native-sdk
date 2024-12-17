@@ -51,21 +51,11 @@ type LookupGatewayCustomDomainResult struct {
 }
 
 func LookupGatewayCustomDomainOutput(ctx *pulumi.Context, args LookupGatewayCustomDomainOutputArgs, opts ...pulumi.InvokeOption) LookupGatewayCustomDomainResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupGatewayCustomDomainResultOutput, error) {
 			args := v.(LookupGatewayCustomDomainArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupGatewayCustomDomainResult
-			secret, err := ctx.InvokePackageRaw("azure-native:appplatform:getGatewayCustomDomain", args, &rv, "", opts...)
-			if err != nil {
-				return LookupGatewayCustomDomainResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupGatewayCustomDomainResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupGatewayCustomDomainResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:appplatform:getGatewayCustomDomain", args, LookupGatewayCustomDomainResultOutput{}, options).(LookupGatewayCustomDomainResultOutput), nil
 		}).(LookupGatewayCustomDomainResultOutput)
 }
 

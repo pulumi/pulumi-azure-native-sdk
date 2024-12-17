@@ -61,23 +61,12 @@ func (val *LookupApiPolicyResult) Defaults() *LookupApiPolicyResult {
 	}
 	return &tmp
 }
-
 func LookupApiPolicyOutput(ctx *pulumi.Context, args LookupApiPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupApiPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupApiPolicyResultOutput, error) {
 			args := v.(LookupApiPolicyArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupApiPolicyResult
-			secret, err := ctx.InvokePackageRaw("azure-native:apimanagement/v20220901preview:getApiPolicy", args, &rv, "", opts...)
-			if err != nil {
-				return LookupApiPolicyResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupApiPolicyResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupApiPolicyResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:apimanagement/v20220901preview:getApiPolicy", args, LookupApiPolicyResultOutput{}, options).(LookupApiPolicyResultOutput), nil
 		}).(LookupApiPolicyResultOutput)
 }
 

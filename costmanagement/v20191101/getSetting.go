@@ -46,21 +46,11 @@ type LookupSettingResult struct {
 }
 
 func LookupSettingOutput(ctx *pulumi.Context, args LookupSettingOutputArgs, opts ...pulumi.InvokeOption) LookupSettingResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupSettingResultOutput, error) {
 			args := v.(LookupSettingArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupSettingResult
-			secret, err := ctx.InvokePackageRaw("azure-native:costmanagement/v20191101:getSetting", args, &rv, "", opts...)
-			if err != nil {
-				return LookupSettingResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupSettingResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupSettingResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:costmanagement/v20191101:getSetting", args, LookupSettingResultOutput{}, options).(LookupSettingResultOutput), nil
 		}).(LookupSettingResultOutput)
 }
 

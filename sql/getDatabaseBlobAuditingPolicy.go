@@ -138,21 +138,11 @@ type LookupDatabaseBlobAuditingPolicyResult struct {
 }
 
 func LookupDatabaseBlobAuditingPolicyOutput(ctx *pulumi.Context, args LookupDatabaseBlobAuditingPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupDatabaseBlobAuditingPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupDatabaseBlobAuditingPolicyResultOutput, error) {
 			args := v.(LookupDatabaseBlobAuditingPolicyArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupDatabaseBlobAuditingPolicyResult
-			secret, err := ctx.InvokePackageRaw("azure-native:sql:getDatabaseBlobAuditingPolicy", args, &rv, "", opts...)
-			if err != nil {
-				return LookupDatabaseBlobAuditingPolicyResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupDatabaseBlobAuditingPolicyResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupDatabaseBlobAuditingPolicyResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:sql:getDatabaseBlobAuditingPolicy", args, LookupDatabaseBlobAuditingPolicyResultOutput{}, options).(LookupDatabaseBlobAuditingPolicyResultOutput), nil
 		}).(LookupDatabaseBlobAuditingPolicyResultOutput)
 }
 

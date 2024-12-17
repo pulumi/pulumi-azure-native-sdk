@@ -43,21 +43,11 @@ type GetSAPAvailabilityZoneDetailsResult struct {
 }
 
 func GetSAPAvailabilityZoneDetailsOutput(ctx *pulumi.Context, args GetSAPAvailabilityZoneDetailsOutputArgs, opts ...pulumi.InvokeOption) GetSAPAvailabilityZoneDetailsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetSAPAvailabilityZoneDetailsResultOutput, error) {
 			args := v.(GetSAPAvailabilityZoneDetailsArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetSAPAvailabilityZoneDetailsResult
-			secret, err := ctx.InvokePackageRaw("azure-native:workloads:getSAPAvailabilityZoneDetails", args, &rv, "", opts...)
-			if err != nil {
-				return GetSAPAvailabilityZoneDetailsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetSAPAvailabilityZoneDetailsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetSAPAvailabilityZoneDetailsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:workloads:getSAPAvailabilityZoneDetails", args, GetSAPAvailabilityZoneDetailsResultOutput{}, options).(GetSAPAvailabilityZoneDetailsResultOutput), nil
 		}).(GetSAPAvailabilityZoneDetailsResultOutput)
 }
 

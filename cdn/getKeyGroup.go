@@ -52,21 +52,11 @@ type LookupKeyGroupResult struct {
 }
 
 func LookupKeyGroupOutput(ctx *pulumi.Context, args LookupKeyGroupOutputArgs, opts ...pulumi.InvokeOption) LookupKeyGroupResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupKeyGroupResultOutput, error) {
 			args := v.(LookupKeyGroupArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupKeyGroupResult
-			secret, err := ctx.InvokePackageRaw("azure-native:cdn:getKeyGroup", args, &rv, "", opts...)
-			if err != nil {
-				return LookupKeyGroupResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupKeyGroupResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupKeyGroupResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:cdn:getKeyGroup", args, LookupKeyGroupResultOutput{}, options).(LookupKeyGroupResultOutput), nil
 		}).(LookupKeyGroupResultOutput)
 }
 

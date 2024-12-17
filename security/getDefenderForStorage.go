@@ -45,21 +45,11 @@ type LookupDefenderForStorageResult struct {
 }
 
 func LookupDefenderForStorageOutput(ctx *pulumi.Context, args LookupDefenderForStorageOutputArgs, opts ...pulumi.InvokeOption) LookupDefenderForStorageResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupDefenderForStorageResultOutput, error) {
 			args := v.(LookupDefenderForStorageArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupDefenderForStorageResult
-			secret, err := ctx.InvokePackageRaw("azure-native:security:getDefenderForStorage", args, &rv, "", opts...)
-			if err != nil {
-				return LookupDefenderForStorageResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupDefenderForStorageResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupDefenderForStorageResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:security:getDefenderForStorage", args, LookupDefenderForStorageResultOutput{}, options).(LookupDefenderForStorageResultOutput), nil
 		}).(LookupDefenderForStorageResultOutput)
 }
 

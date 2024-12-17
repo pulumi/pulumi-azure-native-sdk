@@ -54,21 +54,11 @@ type LookupArchifeResult struct {
 }
 
 func LookupArchifeOutput(ctx *pulumi.Context, args LookupArchifeOutputArgs, opts ...pulumi.InvokeOption) LookupArchifeResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupArchifeResultOutput, error) {
 			args := v.(LookupArchifeArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupArchifeResult
-			secret, err := ctx.InvokePackageRaw("azure-native:containerregistry/v20230801preview:getArchife", args, &rv, "", opts...)
-			if err != nil {
-				return LookupArchifeResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupArchifeResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupArchifeResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:containerregistry/v20230801preview:getArchife", args, LookupArchifeResultOutput{}, options).(LookupArchifeResultOutput), nil
 		}).(LookupArchifeResultOutput)
 }
 

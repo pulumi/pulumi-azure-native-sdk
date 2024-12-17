@@ -50,21 +50,11 @@ type LookupFileServicePropertiesResult struct {
 }
 
 func LookupFileServicePropertiesOutput(ctx *pulumi.Context, args LookupFileServicePropertiesOutputArgs, opts ...pulumi.InvokeOption) LookupFileServicePropertiesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupFileServicePropertiesResultOutput, error) {
 			args := v.(LookupFileServicePropertiesArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupFileServicePropertiesResult
-			secret, err := ctx.InvokePackageRaw("azure-native:storage/v20230101:getFileServiceProperties", args, &rv, "", opts...)
-			if err != nil {
-				return LookupFileServicePropertiesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupFileServicePropertiesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupFileServicePropertiesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:storage/v20230101:getFileServiceProperties", args, LookupFileServicePropertiesResultOutput{}, options).(LookupFileServicePropertiesResultOutput), nil
 		}).(LookupFileServicePropertiesResultOutput)
 }
 

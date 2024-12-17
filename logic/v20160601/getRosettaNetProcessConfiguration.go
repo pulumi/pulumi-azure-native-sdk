@@ -66,21 +66,11 @@ type LookupRosettaNetProcessConfigurationResult struct {
 }
 
 func LookupRosettaNetProcessConfigurationOutput(ctx *pulumi.Context, args LookupRosettaNetProcessConfigurationOutputArgs, opts ...pulumi.InvokeOption) LookupRosettaNetProcessConfigurationResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupRosettaNetProcessConfigurationResultOutput, error) {
 			args := v.(LookupRosettaNetProcessConfigurationArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupRosettaNetProcessConfigurationResult
-			secret, err := ctx.InvokePackageRaw("azure-native:logic/v20160601:getRosettaNetProcessConfiguration", args, &rv, "", opts...)
-			if err != nil {
-				return LookupRosettaNetProcessConfigurationResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupRosettaNetProcessConfigurationResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupRosettaNetProcessConfigurationResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:logic/v20160601:getRosettaNetProcessConfiguration", args, LookupRosettaNetProcessConfigurationResultOutput{}, options).(LookupRosettaNetProcessConfigurationResultOutput), nil
 		}).(LookupRosettaNetProcessConfigurationResultOutput)
 }
 

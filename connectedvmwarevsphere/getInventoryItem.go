@@ -59,21 +59,11 @@ type LookupInventoryItemResult struct {
 }
 
 func LookupInventoryItemOutput(ctx *pulumi.Context, args LookupInventoryItemOutputArgs, opts ...pulumi.InvokeOption) LookupInventoryItemResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupInventoryItemResultOutput, error) {
 			args := v.(LookupInventoryItemArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupInventoryItemResult
-			secret, err := ctx.InvokePackageRaw("azure-native:connectedvmwarevsphere:getInventoryItem", args, &rv, "", opts...)
-			if err != nil {
-				return LookupInventoryItemResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupInventoryItemResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupInventoryItemResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:connectedvmwarevsphere:getInventoryItem", args, LookupInventoryItemResultOutput{}, options).(LookupInventoryItemResultOutput), nil
 		}).(LookupInventoryItemResultOutput)
 }
 

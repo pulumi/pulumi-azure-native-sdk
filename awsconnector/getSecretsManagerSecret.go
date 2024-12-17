@@ -49,21 +49,11 @@ type LookupSecretsManagerSecretResult struct {
 }
 
 func LookupSecretsManagerSecretOutput(ctx *pulumi.Context, args LookupSecretsManagerSecretOutputArgs, opts ...pulumi.InvokeOption) LookupSecretsManagerSecretResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupSecretsManagerSecretResultOutput, error) {
 			args := v.(LookupSecretsManagerSecretArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupSecretsManagerSecretResult
-			secret, err := ctx.InvokePackageRaw("azure-native:awsconnector:getSecretsManagerSecret", args, &rv, "", opts...)
-			if err != nil {
-				return LookupSecretsManagerSecretResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupSecretsManagerSecretResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupSecretsManagerSecretResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:awsconnector:getSecretsManagerSecret", args, LookupSecretsManagerSecretResultOutput{}, options).(LookupSecretsManagerSecretResultOutput), nil
 		}).(LookupSecretsManagerSecretResultOutput)
 }
 

@@ -68,21 +68,11 @@ type LookupStudentResult struct {
 }
 
 func LookupStudentOutput(ctx *pulumi.Context, args LookupStudentOutputArgs, opts ...pulumi.InvokeOption) LookupStudentResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupStudentResultOutput, error) {
 			args := v.(LookupStudentArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupStudentResult
-			secret, err := ctx.InvokePackageRaw("azure-native:education/v20211201preview:getStudent", args, &rv, "", opts...)
-			if err != nil {
-				return LookupStudentResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupStudentResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupStudentResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:education/v20211201preview:getStudent", args, LookupStudentResultOutput{}, options).(LookupStudentResultOutput), nil
 		}).(LookupStudentResultOutput)
 }
 

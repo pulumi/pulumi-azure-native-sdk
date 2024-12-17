@@ -51,21 +51,11 @@ type LookupSqlResourceSqlDatabaseResult struct {
 }
 
 func LookupSqlResourceSqlDatabaseOutput(ctx *pulumi.Context, args LookupSqlResourceSqlDatabaseOutputArgs, opts ...pulumi.InvokeOption) LookupSqlResourceSqlDatabaseResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupSqlResourceSqlDatabaseResultOutput, error) {
 			args := v.(LookupSqlResourceSqlDatabaseArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupSqlResourceSqlDatabaseResult
-			secret, err := ctx.InvokePackageRaw("azure-native:documentdb:getSqlResourceSqlDatabase", args, &rv, "", opts...)
-			if err != nil {
-				return LookupSqlResourceSqlDatabaseResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupSqlResourceSqlDatabaseResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupSqlResourceSqlDatabaseResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:documentdb:getSqlResourceSqlDatabase", args, LookupSqlResourceSqlDatabaseResultOutput{}, options).(LookupSqlResourceSqlDatabaseResultOutput), nil
 		}).(LookupSqlResourceSqlDatabaseResultOutput)
 }
 

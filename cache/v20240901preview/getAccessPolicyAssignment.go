@@ -50,21 +50,11 @@ type LookupAccessPolicyAssignmentResult struct {
 }
 
 func LookupAccessPolicyAssignmentOutput(ctx *pulumi.Context, args LookupAccessPolicyAssignmentOutputArgs, opts ...pulumi.InvokeOption) LookupAccessPolicyAssignmentResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAccessPolicyAssignmentResultOutput, error) {
 			args := v.(LookupAccessPolicyAssignmentArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupAccessPolicyAssignmentResult
-			secret, err := ctx.InvokePackageRaw("azure-native:cache/v20240901preview:getAccessPolicyAssignment", args, &rv, "", opts...)
-			if err != nil {
-				return LookupAccessPolicyAssignmentResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupAccessPolicyAssignmentResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupAccessPolicyAssignmentResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:cache/v20240901preview:getAccessPolicyAssignment", args, LookupAccessPolicyAssignmentResultOutput{}, options).(LookupAccessPolicyAssignmentResultOutput), nil
 		}).(LookupAccessPolicyAssignmentResultOutput)
 }
 

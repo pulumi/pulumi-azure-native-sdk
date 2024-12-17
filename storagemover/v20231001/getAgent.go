@@ -67,21 +67,11 @@ type LookupAgentResult struct {
 }
 
 func LookupAgentOutput(ctx *pulumi.Context, args LookupAgentOutputArgs, opts ...pulumi.InvokeOption) LookupAgentResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAgentResultOutput, error) {
 			args := v.(LookupAgentArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupAgentResult
-			secret, err := ctx.InvokePackageRaw("azure-native:storagemover/v20231001:getAgent", args, &rv, "", opts...)
-			if err != nil {
-				return LookupAgentResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupAgentResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupAgentResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:storagemover/v20231001:getAgent", args, LookupAgentResultOutput{}, options).(LookupAgentResultOutput), nil
 		}).(LookupAgentResultOutput)
 }
 

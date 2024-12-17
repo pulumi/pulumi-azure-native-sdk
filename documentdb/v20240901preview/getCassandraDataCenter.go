@@ -44,21 +44,11 @@ type LookupCassandraDataCenterResult struct {
 }
 
 func LookupCassandraDataCenterOutput(ctx *pulumi.Context, args LookupCassandraDataCenterOutputArgs, opts ...pulumi.InvokeOption) LookupCassandraDataCenterResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupCassandraDataCenterResultOutput, error) {
 			args := v.(LookupCassandraDataCenterArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupCassandraDataCenterResult
-			secret, err := ctx.InvokePackageRaw("azure-native:documentdb/v20240901preview:getCassandraDataCenter", args, &rv, "", opts...)
-			if err != nil {
-				return LookupCassandraDataCenterResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupCassandraDataCenterResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupCassandraDataCenterResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:documentdb/v20240901preview:getCassandraDataCenter", args, LookupCassandraDataCenterResultOutput{}, options).(LookupCassandraDataCenterResultOutput), nil
 		}).(LookupCassandraDataCenterResultOutput)
 }
 

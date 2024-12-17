@@ -78,21 +78,11 @@ type LookupAuthorizationServerResult struct {
 }
 
 func LookupAuthorizationServerOutput(ctx *pulumi.Context, args LookupAuthorizationServerOutputArgs, opts ...pulumi.InvokeOption) LookupAuthorizationServerResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAuthorizationServerResultOutput, error) {
 			args := v.(LookupAuthorizationServerArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupAuthorizationServerResult
-			secret, err := ctx.InvokePackageRaw("azure-native:apimanagement/v20230901preview:getAuthorizationServer", args, &rv, "", opts...)
-			if err != nil {
-				return LookupAuthorizationServerResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupAuthorizationServerResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupAuthorizationServerResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:apimanagement/v20230901preview:getAuthorizationServer", args, LookupAuthorizationServerResultOutput{}, options).(LookupAuthorizationServerResultOutput), nil
 		}).(LookupAuthorizationServerResultOutput)
 }
 

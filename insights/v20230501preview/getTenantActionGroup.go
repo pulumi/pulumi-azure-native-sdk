@@ -68,23 +68,12 @@ func (val *LookupTenantActionGroupResult) Defaults() *LookupTenantActionGroupRes
 	}
 	return &tmp
 }
-
 func LookupTenantActionGroupOutput(ctx *pulumi.Context, args LookupTenantActionGroupOutputArgs, opts ...pulumi.InvokeOption) LookupTenantActionGroupResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupTenantActionGroupResultOutput, error) {
 			args := v.(LookupTenantActionGroupArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupTenantActionGroupResult
-			secret, err := ctx.InvokePackageRaw("azure-native:insights/v20230501preview:getTenantActionGroup", args, &rv, "", opts...)
-			if err != nil {
-				return LookupTenantActionGroupResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupTenantActionGroupResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupTenantActionGroupResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:insights/v20230501preview:getTenantActionGroup", args, LookupTenantActionGroupResultOutput{}, options).(LookupTenantActionGroupResultOutput), nil
 		}).(LookupTenantActionGroupResultOutput)
 }
 

@@ -58,21 +58,11 @@ type LookupApplicationPackageResult struct {
 }
 
 func LookupApplicationPackageOutput(ctx *pulumi.Context, args LookupApplicationPackageOutputArgs, opts ...pulumi.InvokeOption) LookupApplicationPackageResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupApplicationPackageResultOutput, error) {
 			args := v.(LookupApplicationPackageArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupApplicationPackageResult
-			secret, err := ctx.InvokePackageRaw("azure-native:batch/v20240701:getApplicationPackage", args, &rv, "", opts...)
-			if err != nil {
-				return LookupApplicationPackageResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupApplicationPackageResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupApplicationPackageResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:batch/v20240701:getApplicationPackage", args, LookupApplicationPackageResultOutput{}, options).(LookupApplicationPackageResultOutput), nil
 		}).(LookupApplicationPackageResultOutput)
 }
 

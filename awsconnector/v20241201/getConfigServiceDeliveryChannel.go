@@ -48,21 +48,11 @@ type LookupConfigServiceDeliveryChannelResult struct {
 }
 
 func LookupConfigServiceDeliveryChannelOutput(ctx *pulumi.Context, args LookupConfigServiceDeliveryChannelOutputArgs, opts ...pulumi.InvokeOption) LookupConfigServiceDeliveryChannelResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupConfigServiceDeliveryChannelResultOutput, error) {
 			args := v.(LookupConfigServiceDeliveryChannelArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupConfigServiceDeliveryChannelResult
-			secret, err := ctx.InvokePackageRaw("azure-native:awsconnector/v20241201:getConfigServiceDeliveryChannel", args, &rv, "", opts...)
-			if err != nil {
-				return LookupConfigServiceDeliveryChannelResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupConfigServiceDeliveryChannelResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupConfigServiceDeliveryChannelResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:awsconnector/v20241201:getConfigServiceDeliveryChannel", args, LookupConfigServiceDeliveryChannelResultOutput{}, options).(LookupConfigServiceDeliveryChannelResultOutput), nil
 		}).(LookupConfigServiceDeliveryChannelResultOutput)
 }
 

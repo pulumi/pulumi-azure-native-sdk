@@ -49,21 +49,11 @@ type LookupIntegrationFabricResult struct {
 }
 
 func LookupIntegrationFabricOutput(ctx *pulumi.Context, args LookupIntegrationFabricOutputArgs, opts ...pulumi.InvokeOption) LookupIntegrationFabricResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupIntegrationFabricResultOutput, error) {
 			args := v.(LookupIntegrationFabricArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupIntegrationFabricResult
-			secret, err := ctx.InvokePackageRaw("azure-native:dashboard/v20231001preview:getIntegrationFabric", args, &rv, "", opts...)
-			if err != nil {
-				return LookupIntegrationFabricResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupIntegrationFabricResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupIntegrationFabricResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:dashboard/v20231001preview:getIntegrationFabric", args, LookupIntegrationFabricResultOutput{}, options).(LookupIntegrationFabricResultOutput), nil
 		}).(LookupIntegrationFabricResultOutput)
 }
 

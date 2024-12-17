@@ -67,21 +67,11 @@ type LookupOpenShiftClusterResult struct {
 }
 
 func LookupOpenShiftClusterOutput(ctx *pulumi.Context, args LookupOpenShiftClusterOutputArgs, opts ...pulumi.InvokeOption) LookupOpenShiftClusterResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupOpenShiftClusterResultOutput, error) {
 			args := v.(LookupOpenShiftClusterArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupOpenShiftClusterResult
-			secret, err := ctx.InvokePackageRaw("azure-native:redhatopenshift:getOpenShiftCluster", args, &rv, "", opts...)
-			if err != nil {
-				return LookupOpenShiftClusterResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupOpenShiftClusterResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupOpenShiftClusterResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:redhatopenshift:getOpenShiftCluster", args, LookupOpenShiftClusterResultOutput{}, options).(LookupOpenShiftClusterResultOutput), nil
 		}).(LookupOpenShiftClusterResultOutput)
 }
 

@@ -63,21 +63,11 @@ type LookupWebAppVnetConnectionSlotResult struct {
 }
 
 func LookupWebAppVnetConnectionSlotOutput(ctx *pulumi.Context, args LookupWebAppVnetConnectionSlotOutputArgs, opts ...pulumi.InvokeOption) LookupWebAppVnetConnectionSlotResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupWebAppVnetConnectionSlotResultOutput, error) {
 			args := v.(LookupWebAppVnetConnectionSlotArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupWebAppVnetConnectionSlotResult
-			secret, err := ctx.InvokePackageRaw("azure-native:web/v20201001:getWebAppVnetConnectionSlot", args, &rv, "", opts...)
-			if err != nil {
-				return LookupWebAppVnetConnectionSlotResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupWebAppVnetConnectionSlotResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupWebAppVnetConnectionSlotResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:web/v20201001:getWebAppVnetConnectionSlot", args, LookupWebAppVnetConnectionSlotResultOutput{}, options).(LookupWebAppVnetConnectionSlotResultOutput), nil
 		}).(LookupWebAppVnetConnectionSlotResultOutput)
 }
 

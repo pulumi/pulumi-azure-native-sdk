@@ -44,21 +44,11 @@ type LookupApiWikiResult struct {
 }
 
 func LookupApiWikiOutput(ctx *pulumi.Context, args LookupApiWikiOutputArgs, opts ...pulumi.InvokeOption) LookupApiWikiResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupApiWikiResultOutput, error) {
 			args := v.(LookupApiWikiArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupApiWikiResult
-			secret, err := ctx.InvokePackageRaw("azure-native:apimanagement/v20230501preview:getApiWiki", args, &rv, "", opts...)
-			if err != nil {
-				return LookupApiWikiResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupApiWikiResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupApiWikiResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:apimanagement/v20230501preview:getApiWiki", args, LookupApiWikiResultOutput{}, options).(LookupApiWikiResultOutput), nil
 		}).(LookupApiWikiResultOutput)
 }
 

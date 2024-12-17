@@ -40,21 +40,11 @@ type ListWebAppHostKeysResult struct {
 }
 
 func ListWebAppHostKeysOutput(ctx *pulumi.Context, args ListWebAppHostKeysOutputArgs, opts ...pulumi.InvokeOption) ListWebAppHostKeysResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListWebAppHostKeysResultOutput, error) {
 			args := v.(ListWebAppHostKeysArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListWebAppHostKeysResult
-			secret, err := ctx.InvokePackageRaw("azure-native:web/v20231201:listWebAppHostKeys", args, &rv, "", opts...)
-			if err != nil {
-				return ListWebAppHostKeysResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListWebAppHostKeysResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListWebAppHostKeysResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:web/v20231201:listWebAppHostKeys", args, ListWebAppHostKeysResultOutput{}, options).(ListWebAppHostKeysResultOutput), nil
 		}).(ListWebAppHostKeysResultOutput)
 }
 

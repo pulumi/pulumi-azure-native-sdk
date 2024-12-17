@@ -51,21 +51,11 @@ type LookupAccountFilterResult struct {
 }
 
 func LookupAccountFilterOutput(ctx *pulumi.Context, args LookupAccountFilterOutputArgs, opts ...pulumi.InvokeOption) LookupAccountFilterResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAccountFilterResultOutput, error) {
 			args := v.(LookupAccountFilterArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupAccountFilterResult
-			secret, err := ctx.InvokePackageRaw("azure-native:media:getAccountFilter", args, &rv, "", opts...)
-			if err != nil {
-				return LookupAccountFilterResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupAccountFilterResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupAccountFilterResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:media:getAccountFilter", args, LookupAccountFilterResultOutput{}, options).(LookupAccountFilterResultOutput), nil
 		}).(LookupAccountFilterResultOutput)
 }
 

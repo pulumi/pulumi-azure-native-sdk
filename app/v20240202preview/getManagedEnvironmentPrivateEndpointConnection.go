@@ -52,21 +52,11 @@ type LookupManagedEnvironmentPrivateEndpointConnectionResult struct {
 }
 
 func LookupManagedEnvironmentPrivateEndpointConnectionOutput(ctx *pulumi.Context, args LookupManagedEnvironmentPrivateEndpointConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupManagedEnvironmentPrivateEndpointConnectionResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupManagedEnvironmentPrivateEndpointConnectionResultOutput, error) {
 			args := v.(LookupManagedEnvironmentPrivateEndpointConnectionArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupManagedEnvironmentPrivateEndpointConnectionResult
-			secret, err := ctx.InvokePackageRaw("azure-native:app/v20240202preview:getManagedEnvironmentPrivateEndpointConnection", args, &rv, "", opts...)
-			if err != nil {
-				return LookupManagedEnvironmentPrivateEndpointConnectionResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupManagedEnvironmentPrivateEndpointConnectionResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupManagedEnvironmentPrivateEndpointConnectionResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:app/v20240202preview:getManagedEnvironmentPrivateEndpointConnection", args, LookupManagedEnvironmentPrivateEndpointConnectionResultOutput{}, options).(LookupManagedEnvironmentPrivateEndpointConnectionResultOutput), nil
 		}).(LookupManagedEnvironmentPrivateEndpointConnectionResultOutput)
 }
 

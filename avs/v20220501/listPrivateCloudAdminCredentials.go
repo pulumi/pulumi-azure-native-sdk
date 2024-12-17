@@ -42,21 +42,11 @@ type ListPrivateCloudAdminCredentialsResult struct {
 }
 
 func ListPrivateCloudAdminCredentialsOutput(ctx *pulumi.Context, args ListPrivateCloudAdminCredentialsOutputArgs, opts ...pulumi.InvokeOption) ListPrivateCloudAdminCredentialsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListPrivateCloudAdminCredentialsResultOutput, error) {
 			args := v.(ListPrivateCloudAdminCredentialsArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListPrivateCloudAdminCredentialsResult
-			secret, err := ctx.InvokePackageRaw("azure-native:avs/v20220501:listPrivateCloudAdminCredentials", args, &rv, "", opts...)
-			if err != nil {
-				return ListPrivateCloudAdminCredentialsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListPrivateCloudAdminCredentialsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListPrivateCloudAdminCredentialsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:avs/v20220501:listPrivateCloudAdminCredentials", args, ListPrivateCloudAdminCredentialsResultOutput{}, options).(ListPrivateCloudAdminCredentialsResultOutput), nil
 		}).(ListPrivateCloudAdminCredentialsResultOutput)
 }
 

@@ -50,21 +50,11 @@ type LookupThroughputPoolResult struct {
 }
 
 func LookupThroughputPoolOutput(ctx *pulumi.Context, args LookupThroughputPoolOutputArgs, opts ...pulumi.InvokeOption) LookupThroughputPoolResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupThroughputPoolResultOutput, error) {
 			args := v.(LookupThroughputPoolArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupThroughputPoolResult
-			secret, err := ctx.InvokePackageRaw("azure-native:documentdb/v20240515preview:getThroughputPool", args, &rv, "", opts...)
-			if err != nil {
-				return LookupThroughputPoolResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupThroughputPoolResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupThroughputPoolResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:documentdb/v20240515preview:getThroughputPool", args, LookupThroughputPoolResultOutput{}, options).(LookupThroughputPoolResultOutput), nil
 		}).(LookupThroughputPoolResultOutput)
 }
 

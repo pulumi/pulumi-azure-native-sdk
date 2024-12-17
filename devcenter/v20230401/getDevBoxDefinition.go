@@ -64,21 +64,11 @@ type LookupDevBoxDefinitionResult struct {
 }
 
 func LookupDevBoxDefinitionOutput(ctx *pulumi.Context, args LookupDevBoxDefinitionOutputArgs, opts ...pulumi.InvokeOption) LookupDevBoxDefinitionResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupDevBoxDefinitionResultOutput, error) {
 			args := v.(LookupDevBoxDefinitionArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupDevBoxDefinitionResult
-			secret, err := ctx.InvokePackageRaw("azure-native:devcenter/v20230401:getDevBoxDefinition", args, &rv, "", opts...)
-			if err != nil {
-				return LookupDevBoxDefinitionResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupDevBoxDefinitionResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupDevBoxDefinitionResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:devcenter/v20230401:getDevBoxDefinition", args, LookupDevBoxDefinitionResultOutput{}, options).(LookupDevBoxDefinitionResultOutput), nil
 		}).(LookupDevBoxDefinitionResultOutput)
 }
 

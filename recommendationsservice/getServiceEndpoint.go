@@ -53,21 +53,11 @@ type LookupServiceEndpointResult struct {
 }
 
 func LookupServiceEndpointOutput(ctx *pulumi.Context, args LookupServiceEndpointOutputArgs, opts ...pulumi.InvokeOption) LookupServiceEndpointResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupServiceEndpointResultOutput, error) {
 			args := v.(LookupServiceEndpointArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupServiceEndpointResult
-			secret, err := ctx.InvokePackageRaw("azure-native:recommendationsservice:getServiceEndpoint", args, &rv, "", opts...)
-			if err != nil {
-				return LookupServiceEndpointResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupServiceEndpointResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupServiceEndpointResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:recommendationsservice:getServiceEndpoint", args, LookupServiceEndpointResultOutput{}, options).(LookupServiceEndpointResultOutput), nil
 		}).(LookupServiceEndpointResultOutput)
 }
 

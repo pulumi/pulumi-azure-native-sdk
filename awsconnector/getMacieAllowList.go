@@ -49,21 +49,11 @@ type LookupMacieAllowListResult struct {
 }
 
 func LookupMacieAllowListOutput(ctx *pulumi.Context, args LookupMacieAllowListOutputArgs, opts ...pulumi.InvokeOption) LookupMacieAllowListResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupMacieAllowListResultOutput, error) {
 			args := v.(LookupMacieAllowListArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupMacieAllowListResult
-			secret, err := ctx.InvokePackageRaw("azure-native:awsconnector:getMacieAllowList", args, &rv, "", opts...)
-			if err != nil {
-				return LookupMacieAllowListResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupMacieAllowListResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupMacieAllowListResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:awsconnector:getMacieAllowList", args, LookupMacieAllowListResultOutput{}, options).(LookupMacieAllowListResultOutput), nil
 		}).(LookupMacieAllowListResultOutput)
 }
 

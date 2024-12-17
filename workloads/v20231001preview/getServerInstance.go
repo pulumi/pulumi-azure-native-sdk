@@ -66,21 +66,11 @@ type LookupServerInstanceResult struct {
 }
 
 func LookupServerInstanceOutput(ctx *pulumi.Context, args LookupServerInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupServerInstanceResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupServerInstanceResultOutput, error) {
 			args := v.(LookupServerInstanceArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupServerInstanceResult
-			secret, err := ctx.InvokePackageRaw("azure-native:workloads/v20231001preview:getServerInstance", args, &rv, "", opts...)
-			if err != nil {
-				return LookupServerInstanceResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupServerInstanceResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupServerInstanceResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:workloads/v20231001preview:getServerInstance", args, LookupServerInstanceResultOutput{}, options).(LookupServerInstanceResultOutput), nil
 		}).(LookupServerInstanceResultOutput)
 }
 

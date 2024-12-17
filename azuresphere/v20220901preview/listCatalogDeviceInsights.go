@@ -46,21 +46,11 @@ type ListCatalogDeviceInsightsResult struct {
 }
 
 func ListCatalogDeviceInsightsOutput(ctx *pulumi.Context, args ListCatalogDeviceInsightsOutputArgs, opts ...pulumi.InvokeOption) ListCatalogDeviceInsightsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListCatalogDeviceInsightsResultOutput, error) {
 			args := v.(ListCatalogDeviceInsightsArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListCatalogDeviceInsightsResult
-			secret, err := ctx.InvokePackageRaw("azure-native:azuresphere/v20220901preview:listCatalogDeviceInsights", args, &rv, "", opts...)
-			if err != nil {
-				return ListCatalogDeviceInsightsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListCatalogDeviceInsightsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListCatalogDeviceInsightsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:azuresphere/v20220901preview:listCatalogDeviceInsights", args, ListCatalogDeviceInsightsResultOutput{}, options).(ListCatalogDeviceInsightsResultOutput), nil
 		}).(ListCatalogDeviceInsightsResultOutput)
 }
 

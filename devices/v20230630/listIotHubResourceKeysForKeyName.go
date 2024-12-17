@@ -44,21 +44,11 @@ type ListIotHubResourceKeysForKeyNameResult struct {
 }
 
 func ListIotHubResourceKeysForKeyNameOutput(ctx *pulumi.Context, args ListIotHubResourceKeysForKeyNameOutputArgs, opts ...pulumi.InvokeOption) ListIotHubResourceKeysForKeyNameResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListIotHubResourceKeysForKeyNameResultOutput, error) {
 			args := v.(ListIotHubResourceKeysForKeyNameArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListIotHubResourceKeysForKeyNameResult
-			secret, err := ctx.InvokePackageRaw("azure-native:devices/v20230630:listIotHubResourceKeysForKeyName", args, &rv, "", opts...)
-			if err != nil {
-				return ListIotHubResourceKeysForKeyNameResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListIotHubResourceKeysForKeyNameResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListIotHubResourceKeysForKeyNameResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:devices/v20230630:listIotHubResourceKeysForKeyName", args, ListIotHubResourceKeysForKeyNameResultOutput{}, options).(ListIotHubResourceKeysForKeyNameResultOutput), nil
 		}).(ListIotHubResourceKeysForKeyNameResultOutput)
 }
 

@@ -85,23 +85,12 @@ func (val *LookupKafkaConnectorTopicMapResult) Defaults() *LookupKafkaConnectorT
 	}
 	return &tmp
 }
-
 func LookupKafkaConnectorTopicMapOutput(ctx *pulumi.Context, args LookupKafkaConnectorTopicMapOutputArgs, opts ...pulumi.InvokeOption) LookupKafkaConnectorTopicMapResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupKafkaConnectorTopicMapResultOutput, error) {
 			args := v.(LookupKafkaConnectorTopicMapArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupKafkaConnectorTopicMapResult
-			secret, err := ctx.InvokePackageRaw("azure-native:iotoperationsmq/v20231004preview:getKafkaConnectorTopicMap", args, &rv, "", opts...)
-			if err != nil {
-				return LookupKafkaConnectorTopicMapResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupKafkaConnectorTopicMapResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupKafkaConnectorTopicMapResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:iotoperationsmq/v20231004preview:getKafkaConnectorTopicMap", args, LookupKafkaConnectorTopicMapResultOutput{}, options).(LookupKafkaConnectorTopicMapResultOutput), nil
 		}).(LookupKafkaConnectorTopicMapResultOutput)
 }
 

@@ -49,21 +49,11 @@ type LookupEmrClusterResult struct {
 }
 
 func LookupEmrClusterOutput(ctx *pulumi.Context, args LookupEmrClusterOutputArgs, opts ...pulumi.InvokeOption) LookupEmrClusterResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupEmrClusterResultOutput, error) {
 			args := v.(LookupEmrClusterArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupEmrClusterResult
-			secret, err := ctx.InvokePackageRaw("azure-native:awsconnector:getEmrCluster", args, &rv, "", opts...)
-			if err != nil {
-				return LookupEmrClusterResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupEmrClusterResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupEmrClusterResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:awsconnector:getEmrCluster", args, LookupEmrClusterResultOutput{}, options).(LookupEmrClusterResultOutput), nil
 		}).(LookupEmrClusterResultOutput)
 }
 

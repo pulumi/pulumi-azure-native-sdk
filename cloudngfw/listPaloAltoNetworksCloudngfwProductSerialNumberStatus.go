@@ -35,21 +35,11 @@ type ListPaloAltoNetworksCloudngfwProductSerialNumberStatusResult struct {
 }
 
 func ListPaloAltoNetworksCloudngfwProductSerialNumberStatusOutput(ctx *pulumi.Context, args ListPaloAltoNetworksCloudngfwProductSerialNumberStatusOutputArgs, opts ...pulumi.InvokeOption) ListPaloAltoNetworksCloudngfwProductSerialNumberStatusResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListPaloAltoNetworksCloudngfwProductSerialNumberStatusResultOutput, error) {
 			args := v.(ListPaloAltoNetworksCloudngfwProductSerialNumberStatusArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListPaloAltoNetworksCloudngfwProductSerialNumberStatusResult
-			secret, err := ctx.InvokePackageRaw("azure-native:cloudngfw:listPaloAltoNetworksCloudngfwProductSerialNumberStatus", args, &rv, "", opts...)
-			if err != nil {
-				return ListPaloAltoNetworksCloudngfwProductSerialNumberStatusResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListPaloAltoNetworksCloudngfwProductSerialNumberStatusResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListPaloAltoNetworksCloudngfwProductSerialNumberStatusResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:cloudngfw:listPaloAltoNetworksCloudngfwProductSerialNumberStatus", args, ListPaloAltoNetworksCloudngfwProductSerialNumberStatusResultOutput{}, options).(ListPaloAltoNetworksCloudngfwProductSerialNumberStatusResultOutput), nil
 		}).(ListPaloAltoNetworksCloudngfwProductSerialNumberStatusResultOutput)
 }
 

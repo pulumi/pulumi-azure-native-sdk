@@ -48,21 +48,11 @@ type LookupDnssecConfigResult struct {
 }
 
 func LookupDnssecConfigOutput(ctx *pulumi.Context, args LookupDnssecConfigOutputArgs, opts ...pulumi.InvokeOption) LookupDnssecConfigResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupDnssecConfigResultOutput, error) {
 			args := v.(LookupDnssecConfigArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupDnssecConfigResult
-			secret, err := ctx.InvokePackageRaw("azure-native:network/v20230701preview:getDnssecConfig", args, &rv, "", opts...)
-			if err != nil {
-				return LookupDnssecConfigResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupDnssecConfigResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupDnssecConfigResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:network/v20230701preview:getDnssecConfig", args, LookupDnssecConfigResultOutput{}, options).(LookupDnssecConfigResultOutput), nil
 		}).(LookupDnssecConfigResultOutput)
 }
 

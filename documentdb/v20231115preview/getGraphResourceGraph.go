@@ -50,21 +50,11 @@ type LookupGraphResourceGraphResult struct {
 }
 
 func LookupGraphResourceGraphOutput(ctx *pulumi.Context, args LookupGraphResourceGraphOutputArgs, opts ...pulumi.InvokeOption) LookupGraphResourceGraphResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupGraphResourceGraphResultOutput, error) {
 			args := v.(LookupGraphResourceGraphArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupGraphResourceGraphResult
-			secret, err := ctx.InvokePackageRaw("azure-native:documentdb/v20231115preview:getGraphResourceGraph", args, &rv, "", opts...)
-			if err != nil {
-				return LookupGraphResourceGraphResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupGraphResourceGraphResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupGraphResourceGraphResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:documentdb/v20231115preview:getGraphResourceGraph", args, LookupGraphResourceGraphResultOutput{}, options).(LookupGraphResourceGraphResultOutput), nil
 		}).(LookupGraphResourceGraphResultOutput)
 }
 

@@ -43,21 +43,11 @@ type GetNamespaceTopicEventSubscriptionFullUrlResult struct {
 }
 
 func GetNamespaceTopicEventSubscriptionFullUrlOutput(ctx *pulumi.Context, args GetNamespaceTopicEventSubscriptionFullUrlOutputArgs, opts ...pulumi.InvokeOption) GetNamespaceTopicEventSubscriptionFullUrlResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetNamespaceTopicEventSubscriptionFullUrlResultOutput, error) {
 			args := v.(GetNamespaceTopicEventSubscriptionFullUrlArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetNamespaceTopicEventSubscriptionFullUrlResult
-			secret, err := ctx.InvokePackageRaw("azure-native:eventgrid:getNamespaceTopicEventSubscriptionFullUrl", args, &rv, "", opts...)
-			if err != nil {
-				return GetNamespaceTopicEventSubscriptionFullUrlResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetNamespaceTopicEventSubscriptionFullUrlResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetNamespaceTopicEventSubscriptionFullUrlResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:eventgrid:getNamespaceTopicEventSubscriptionFullUrl", args, GetNamespaceTopicEventSubscriptionFullUrlResultOutput{}, options).(GetNamespaceTopicEventSubscriptionFullUrlResultOutput), nil
 		}).(GetNamespaceTopicEventSubscriptionFullUrlResultOutput)
 }
 

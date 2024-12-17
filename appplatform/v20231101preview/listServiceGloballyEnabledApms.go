@@ -36,21 +36,11 @@ type ListServiceGloballyEnabledApmsResult struct {
 }
 
 func ListServiceGloballyEnabledApmsOutput(ctx *pulumi.Context, args ListServiceGloballyEnabledApmsOutputArgs, opts ...pulumi.InvokeOption) ListServiceGloballyEnabledApmsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListServiceGloballyEnabledApmsResultOutput, error) {
 			args := v.(ListServiceGloballyEnabledApmsArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListServiceGloballyEnabledApmsResult
-			secret, err := ctx.InvokePackageRaw("azure-native:appplatform/v20231101preview:listServiceGloballyEnabledApms", args, &rv, "", opts...)
-			if err != nil {
-				return ListServiceGloballyEnabledApmsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListServiceGloballyEnabledApmsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListServiceGloballyEnabledApmsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:appplatform/v20231101preview:listServiceGloballyEnabledApms", args, ListServiceGloballyEnabledApmsResultOutput{}, options).(ListServiceGloballyEnabledApmsResultOutput), nil
 		}).(ListServiceGloballyEnabledApmsResultOutput)
 }
 

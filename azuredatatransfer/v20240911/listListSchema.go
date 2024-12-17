@@ -52,21 +52,11 @@ type ListListSchemaResult struct {
 }
 
 func ListListSchemaOutput(ctx *pulumi.Context, args ListListSchemaOutputArgs, opts ...pulumi.InvokeOption) ListListSchemaResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListListSchemaResultOutput, error) {
 			args := v.(ListListSchemaArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListListSchemaResult
-			secret, err := ctx.InvokePackageRaw("azure-native:azuredatatransfer/v20240911:listListSchema", args, &rv, "", opts...)
-			if err != nil {
-				return ListListSchemaResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListListSchemaResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListListSchemaResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:azuredatatransfer/v20240911:listListSchema", args, ListListSchemaResultOutput{}, options).(ListListSchemaResultOutput), nil
 		}).(ListListSchemaResultOutput)
 }
 

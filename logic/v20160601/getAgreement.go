@@ -64,21 +64,11 @@ type LookupAgreementResult struct {
 }
 
 func LookupAgreementOutput(ctx *pulumi.Context, args LookupAgreementOutputArgs, opts ...pulumi.InvokeOption) LookupAgreementResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAgreementResultOutput, error) {
 			args := v.(LookupAgreementArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupAgreementResult
-			secret, err := ctx.InvokePackageRaw("azure-native:logic/v20160601:getAgreement", args, &rv, "", opts...)
-			if err != nil {
-				return LookupAgreementResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupAgreementResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupAgreementResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:logic/v20160601:getAgreement", args, LookupAgreementResultOutput{}, options).(LookupAgreementResultOutput), nil
 		}).(LookupAgreementResultOutput)
 }
 

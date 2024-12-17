@@ -34,21 +34,11 @@ type ListDiagnosticSettingsCategoryResult struct {
 }
 
 func ListDiagnosticSettingsCategoryOutput(ctx *pulumi.Context, args ListDiagnosticSettingsCategoryOutputArgs, opts ...pulumi.InvokeOption) ListDiagnosticSettingsCategoryResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListDiagnosticSettingsCategoryResultOutput, error) {
 			args := v.(ListDiagnosticSettingsCategoryArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListDiagnosticSettingsCategoryResult
-			secret, err := ctx.InvokePackageRaw("azure-native:insights/v20210501preview:listDiagnosticSettingsCategory", args, &rv, "", opts...)
-			if err != nil {
-				return ListDiagnosticSettingsCategoryResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListDiagnosticSettingsCategoryResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListDiagnosticSettingsCategoryResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:insights/v20210501preview:listDiagnosticSettingsCategory", args, ListDiagnosticSettingsCategoryResultOutput{}, options).(ListDiagnosticSettingsCategoryResultOutput), nil
 		}).(ListDiagnosticSettingsCategoryResultOutput)
 }
 

@@ -50,21 +50,11 @@ type ListNamespaceKeysResult struct {
 }
 
 func ListNamespaceKeysOutput(ctx *pulumi.Context, args ListNamespaceKeysOutputArgs, opts ...pulumi.InvokeOption) ListNamespaceKeysResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListNamespaceKeysResultOutput, error) {
 			args := v.(ListNamespaceKeysArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListNamespaceKeysResult
-			secret, err := ctx.InvokePackageRaw("azure-native:eventhub/v20240501preview:listNamespaceKeys", args, &rv, "", opts...)
-			if err != nil {
-				return ListNamespaceKeysResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListNamespaceKeysResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListNamespaceKeysResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:eventhub/v20240501preview:listNamespaceKeys", args, ListNamespaceKeysResultOutput{}, options).(ListNamespaceKeysResultOutput), nil
 		}).(ListNamespaceKeysResultOutput)
 }
 

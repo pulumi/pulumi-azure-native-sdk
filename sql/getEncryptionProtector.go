@@ -61,21 +61,11 @@ type LookupEncryptionProtectorResult struct {
 }
 
 func LookupEncryptionProtectorOutput(ctx *pulumi.Context, args LookupEncryptionProtectorOutputArgs, opts ...pulumi.InvokeOption) LookupEncryptionProtectorResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupEncryptionProtectorResultOutput, error) {
 			args := v.(LookupEncryptionProtectorArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupEncryptionProtectorResult
-			secret, err := ctx.InvokePackageRaw("azure-native:sql:getEncryptionProtector", args, &rv, "", opts...)
-			if err != nil {
-				return LookupEncryptionProtectorResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupEncryptionProtectorResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupEncryptionProtectorResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:sql:getEncryptionProtector", args, LookupEncryptionProtectorResultOutput{}, options).(LookupEncryptionProtectorResultOutput), nil
 		}).(LookupEncryptionProtectorResultOutput)
 }
 

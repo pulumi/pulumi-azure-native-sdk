@@ -46,21 +46,11 @@ type LookupProductGroupLinkResult struct {
 }
 
 func LookupProductGroupLinkOutput(ctx *pulumi.Context, args LookupProductGroupLinkOutputArgs, opts ...pulumi.InvokeOption) LookupProductGroupLinkResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupProductGroupLinkResultOutput, error) {
 			args := v.(LookupProductGroupLinkArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupProductGroupLinkResult
-			secret, err := ctx.InvokePackageRaw("azure-native:apimanagement/v20230901preview:getProductGroupLink", args, &rv, "", opts...)
-			if err != nil {
-				return LookupProductGroupLinkResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupProductGroupLinkResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupProductGroupLinkResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:apimanagement/v20230901preview:getProductGroupLink", args, LookupProductGroupLinkResultOutput{}, options).(LookupProductGroupLinkResultOutput), nil
 		}).(LookupProductGroupLinkResultOutput)
 }
 

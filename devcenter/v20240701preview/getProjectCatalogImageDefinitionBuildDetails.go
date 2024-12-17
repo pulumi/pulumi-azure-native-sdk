@@ -60,21 +60,11 @@ type GetProjectCatalogImageDefinitionBuildDetailsResult struct {
 }
 
 func GetProjectCatalogImageDefinitionBuildDetailsOutput(ctx *pulumi.Context, args GetProjectCatalogImageDefinitionBuildDetailsOutputArgs, opts ...pulumi.InvokeOption) GetProjectCatalogImageDefinitionBuildDetailsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetProjectCatalogImageDefinitionBuildDetailsResultOutput, error) {
 			args := v.(GetProjectCatalogImageDefinitionBuildDetailsArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetProjectCatalogImageDefinitionBuildDetailsResult
-			secret, err := ctx.InvokePackageRaw("azure-native:devcenter/v20240701preview:getProjectCatalogImageDefinitionBuildDetails", args, &rv, "", opts...)
-			if err != nil {
-				return GetProjectCatalogImageDefinitionBuildDetailsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetProjectCatalogImageDefinitionBuildDetailsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetProjectCatalogImageDefinitionBuildDetailsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:devcenter/v20240701preview:getProjectCatalogImageDefinitionBuildDetails", args, GetProjectCatalogImageDefinitionBuildDetailsResultOutput{}, options).(GetProjectCatalogImageDefinitionBuildDetailsResultOutput), nil
 		}).(GetProjectCatalogImageDefinitionBuildDetailsResultOutput)
 }
 

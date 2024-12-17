@@ -49,21 +49,11 @@ type LookupConfigurationProfileHCRPAssignmentResult struct {
 }
 
 func LookupConfigurationProfileHCRPAssignmentOutput(ctx *pulumi.Context, args LookupConfigurationProfileHCRPAssignmentOutputArgs, opts ...pulumi.InvokeOption) LookupConfigurationProfileHCRPAssignmentResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupConfigurationProfileHCRPAssignmentResultOutput, error) {
 			args := v.(LookupConfigurationProfileHCRPAssignmentArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupConfigurationProfileHCRPAssignmentResult
-			secret, err := ctx.InvokePackageRaw("azure-native:automanage:getConfigurationProfileHCRPAssignment", args, &rv, "", opts...)
-			if err != nil {
-				return LookupConfigurationProfileHCRPAssignmentResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupConfigurationProfileHCRPAssignmentResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupConfigurationProfileHCRPAssignmentResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:automanage:getConfigurationProfileHCRPAssignment", args, LookupConfigurationProfileHCRPAssignmentResultOutput{}, options).(LookupConfigurationProfileHCRPAssignmentResultOutput), nil
 		}).(LookupConfigurationProfileHCRPAssignmentResultOutput)
 }
 

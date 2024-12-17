@@ -53,21 +53,11 @@ type LookupModelingResult struct {
 }
 
 func LookupModelingOutput(ctx *pulumi.Context, args LookupModelingOutputArgs, opts ...pulumi.InvokeOption) LookupModelingResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupModelingResultOutput, error) {
 			args := v.(LookupModelingArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupModelingResult
-			secret, err := ctx.InvokePackageRaw("azure-native:recommendationsservice:getModeling", args, &rv, "", opts...)
-			if err != nil {
-				return LookupModelingResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupModelingResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupModelingResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:recommendationsservice:getModeling", args, LookupModelingResultOutput{}, options).(LookupModelingResultOutput), nil
 		}).(LookupModelingResultOutput)
 }
 

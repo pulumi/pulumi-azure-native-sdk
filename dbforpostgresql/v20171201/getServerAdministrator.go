@@ -48,21 +48,11 @@ type LookupServerAdministratorResult struct {
 }
 
 func LookupServerAdministratorOutput(ctx *pulumi.Context, args LookupServerAdministratorOutputArgs, opts ...pulumi.InvokeOption) LookupServerAdministratorResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupServerAdministratorResultOutput, error) {
 			args := v.(LookupServerAdministratorArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupServerAdministratorResult
-			secret, err := ctx.InvokePackageRaw("azure-native:dbforpostgresql/v20171201:getServerAdministrator", args, &rv, "", opts...)
-			if err != nil {
-				return LookupServerAdministratorResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupServerAdministratorResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupServerAdministratorResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:dbforpostgresql/v20171201:getServerAdministrator", args, LookupServerAdministratorResultOutput{}, options).(LookupServerAdministratorResultOutput), nil
 		}).(LookupServerAdministratorResultOutput)
 }
 

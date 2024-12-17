@@ -60,21 +60,11 @@ type LookupConfigurationAssignmentParentResult struct {
 }
 
 func LookupConfigurationAssignmentParentOutput(ctx *pulumi.Context, args LookupConfigurationAssignmentParentOutputArgs, opts ...pulumi.InvokeOption) LookupConfigurationAssignmentParentResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupConfigurationAssignmentParentResultOutput, error) {
 			args := v.(LookupConfigurationAssignmentParentArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupConfigurationAssignmentParentResult
-			secret, err := ctx.InvokePackageRaw("azure-native:maintenance/v20230401:getConfigurationAssignmentParent", args, &rv, "", opts...)
-			if err != nil {
-				return LookupConfigurationAssignmentParentResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupConfigurationAssignmentParentResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupConfigurationAssignmentParentResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:maintenance/v20230401:getConfigurationAssignmentParent", args, LookupConfigurationAssignmentParentResultOutput{}, options).(LookupConfigurationAssignmentParentResultOutput), nil
 		}).(LookupConfigurationAssignmentParentResultOutput)
 }
 

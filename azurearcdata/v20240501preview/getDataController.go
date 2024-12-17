@@ -59,23 +59,12 @@ func (val *LookupDataControllerResult) Defaults() *LookupDataControllerResult {
 
 	return &tmp
 }
-
 func LookupDataControllerOutput(ctx *pulumi.Context, args LookupDataControllerOutputArgs, opts ...pulumi.InvokeOption) LookupDataControllerResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupDataControllerResultOutput, error) {
 			args := v.(LookupDataControllerArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupDataControllerResult
-			secret, err := ctx.InvokePackageRaw("azure-native:azurearcdata/v20240501preview:getDataController", args, &rv, "", opts...)
-			if err != nil {
-				return LookupDataControllerResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupDataControllerResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupDataControllerResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:azurearcdata/v20240501preview:getDataController", args, LookupDataControllerResultOutput{}, options).(LookupDataControllerResultOutput), nil
 		}).(LookupDataControllerResultOutput)
 }
 

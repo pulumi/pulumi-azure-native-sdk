@@ -50,21 +50,11 @@ type LookupExtensionResult struct {
 }
 
 func LookupExtensionOutput(ctx *pulumi.Context, args LookupExtensionOutputArgs, opts ...pulumi.InvokeOption) LookupExtensionResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupExtensionResultOutput, error) {
 			args := v.(LookupExtensionArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupExtensionResult
-			secret, err := ctx.InvokePackageRaw("azure-native:visualstudio/v20171101preview:getExtension", args, &rv, "", opts...)
-			if err != nil {
-				return LookupExtensionResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupExtensionResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupExtensionResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:visualstudio/v20171101preview:getExtension", args, LookupExtensionResultOutput{}, options).(LookupExtensionResultOutput), nil
 		}).(LookupExtensionResultOutput)
 }
 

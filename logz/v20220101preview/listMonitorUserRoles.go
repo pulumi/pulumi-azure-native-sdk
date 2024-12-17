@@ -40,21 +40,11 @@ type ListMonitorUserRolesResult struct {
 }
 
 func ListMonitorUserRolesOutput(ctx *pulumi.Context, args ListMonitorUserRolesOutputArgs, opts ...pulumi.InvokeOption) ListMonitorUserRolesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListMonitorUserRolesResultOutput, error) {
 			args := v.(ListMonitorUserRolesArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListMonitorUserRolesResult
-			secret, err := ctx.InvokePackageRaw("azure-native:logz/v20220101preview:listMonitorUserRoles", args, &rv, "", opts...)
-			if err != nil {
-				return ListMonitorUserRolesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListMonitorUserRolesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListMonitorUserRolesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:logz/v20220101preview:listMonitorUserRoles", args, ListMonitorUserRolesResultOutput{}, options).(ListMonitorUserRolesResultOutput), nil
 		}).(ListMonitorUserRolesResultOutput)
 }
 

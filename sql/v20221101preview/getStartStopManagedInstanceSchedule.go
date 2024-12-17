@@ -69,23 +69,12 @@ func (val *LookupStartStopManagedInstanceScheduleResult) Defaults() *LookupStart
 	}
 	return &tmp
 }
-
 func LookupStartStopManagedInstanceScheduleOutput(ctx *pulumi.Context, args LookupStartStopManagedInstanceScheduleOutputArgs, opts ...pulumi.InvokeOption) LookupStartStopManagedInstanceScheduleResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupStartStopManagedInstanceScheduleResultOutput, error) {
 			args := v.(LookupStartStopManagedInstanceScheduleArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupStartStopManagedInstanceScheduleResult
-			secret, err := ctx.InvokePackageRaw("azure-native:sql/v20221101preview:getStartStopManagedInstanceSchedule", args, &rv, "", opts...)
-			if err != nil {
-				return LookupStartStopManagedInstanceScheduleResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupStartStopManagedInstanceScheduleResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupStartStopManagedInstanceScheduleResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:sql/v20221101preview:getStartStopManagedInstanceSchedule", args, LookupStartStopManagedInstanceScheduleResultOutput{}, options).(LookupStartStopManagedInstanceScheduleResultOutput), nil
 		}).(LookupStartStopManagedInstanceScheduleResultOutput)
 }
 

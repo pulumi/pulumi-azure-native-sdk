@@ -77,23 +77,12 @@ func (val *LookupAccessControlListResult) Defaults() *LookupAccessControlListRes
 	}
 	return &tmp
 }
-
 func LookupAccessControlListOutput(ctx *pulumi.Context, args LookupAccessControlListOutputArgs, opts ...pulumi.InvokeOption) LookupAccessControlListResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAccessControlListResultOutput, error) {
 			args := v.(LookupAccessControlListArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupAccessControlListResult
-			secret, err := ctx.InvokePackageRaw("azure-native:managednetworkfabric/v20230615:getAccessControlList", args, &rv, "", opts...)
-			if err != nil {
-				return LookupAccessControlListResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupAccessControlListResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupAccessControlListResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:managednetworkfabric/v20230615:getAccessControlList", args, LookupAccessControlListResultOutput{}, options).(LookupAccessControlListResultOutput), nil
 		}).(LookupAccessControlListResultOutput)
 }
 

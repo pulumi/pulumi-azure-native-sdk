@@ -54,21 +54,11 @@ type LookupAttachedNetworkByDevCenterResult struct {
 }
 
 func LookupAttachedNetworkByDevCenterOutput(ctx *pulumi.Context, args LookupAttachedNetworkByDevCenterOutputArgs, opts ...pulumi.InvokeOption) LookupAttachedNetworkByDevCenterResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAttachedNetworkByDevCenterResultOutput, error) {
 			args := v.(LookupAttachedNetworkByDevCenterArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupAttachedNetworkByDevCenterResult
-			secret, err := ctx.InvokePackageRaw("azure-native:devcenter/v20240801preview:getAttachedNetworkByDevCenter", args, &rv, "", opts...)
-			if err != nil {
-				return LookupAttachedNetworkByDevCenterResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupAttachedNetworkByDevCenterResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupAttachedNetworkByDevCenterResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:devcenter/v20240801preview:getAttachedNetworkByDevCenter", args, LookupAttachedNetworkByDevCenterResultOutput{}, options).(LookupAttachedNetworkByDevCenterResultOutput), nil
 		}).(LookupAttachedNetworkByDevCenterResultOutput)
 }
 

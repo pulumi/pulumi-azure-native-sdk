@@ -46,21 +46,11 @@ type LookupConfigurationProfileResult struct {
 }
 
 func LookupConfigurationProfileOutput(ctx *pulumi.Context, args LookupConfigurationProfileOutputArgs, opts ...pulumi.InvokeOption) LookupConfigurationProfileResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupConfigurationProfileResultOutput, error) {
 			args := v.(LookupConfigurationProfileArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupConfigurationProfileResult
-			secret, err := ctx.InvokePackageRaw("azure-native:changeanalysis/v20200401preview:getConfigurationProfile", args, &rv, "", opts...)
-			if err != nil {
-				return LookupConfigurationProfileResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupConfigurationProfileResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupConfigurationProfileResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:changeanalysis/v20200401preview:getConfigurationProfile", args, LookupConfigurationProfileResultOutput{}, options).(LookupConfigurationProfileResultOutput), nil
 		}).(LookupConfigurationProfileResultOutput)
 }
 

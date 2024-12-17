@@ -71,23 +71,12 @@ func (val *LookupConnectedEnvironmentsDaprComponentResult) Defaults() *LookupCon
 	}
 	return &tmp
 }
-
 func LookupConnectedEnvironmentsDaprComponentOutput(ctx *pulumi.Context, args LookupConnectedEnvironmentsDaprComponentOutputArgs, opts ...pulumi.InvokeOption) LookupConnectedEnvironmentsDaprComponentResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupConnectedEnvironmentsDaprComponentResultOutput, error) {
 			args := v.(LookupConnectedEnvironmentsDaprComponentArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupConnectedEnvironmentsDaprComponentResult
-			secret, err := ctx.InvokePackageRaw("azure-native:app/v20240301:getConnectedEnvironmentsDaprComponent", args, &rv, "", opts...)
-			if err != nil {
-				return LookupConnectedEnvironmentsDaprComponentResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupConnectedEnvironmentsDaprComponentResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupConnectedEnvironmentsDaprComponentResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:app/v20240301:getConnectedEnvironmentsDaprComponent", args, LookupConnectedEnvironmentsDaprComponentResultOutput{}, options).(LookupConnectedEnvironmentsDaprComponentResultOutput), nil
 		}).(LookupConnectedEnvironmentsDaprComponentResultOutput)
 }
 

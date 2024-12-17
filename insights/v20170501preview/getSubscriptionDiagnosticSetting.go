@@ -52,21 +52,11 @@ type LookupSubscriptionDiagnosticSettingResult struct {
 }
 
 func LookupSubscriptionDiagnosticSettingOutput(ctx *pulumi.Context, args LookupSubscriptionDiagnosticSettingOutputArgs, opts ...pulumi.InvokeOption) LookupSubscriptionDiagnosticSettingResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupSubscriptionDiagnosticSettingResultOutput, error) {
 			args := v.(LookupSubscriptionDiagnosticSettingArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupSubscriptionDiagnosticSettingResult
-			secret, err := ctx.InvokePackageRaw("azure-native:insights/v20170501preview:getSubscriptionDiagnosticSetting", args, &rv, "", opts...)
-			if err != nil {
-				return LookupSubscriptionDiagnosticSettingResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupSubscriptionDiagnosticSettingResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupSubscriptionDiagnosticSettingResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:insights/v20170501preview:getSubscriptionDiagnosticSetting", args, LookupSubscriptionDiagnosticSettingResultOutput{}, options).(LookupSubscriptionDiagnosticSettingResultOutput), nil
 		}).(LookupSubscriptionDiagnosticSettingResultOutput)
 }
 

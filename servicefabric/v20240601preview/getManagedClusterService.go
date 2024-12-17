@@ -52,21 +52,11 @@ type LookupManagedClusterServiceResult struct {
 }
 
 func LookupManagedClusterServiceOutput(ctx *pulumi.Context, args LookupManagedClusterServiceOutputArgs, opts ...pulumi.InvokeOption) LookupManagedClusterServiceResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupManagedClusterServiceResultOutput, error) {
 			args := v.(LookupManagedClusterServiceArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupManagedClusterServiceResult
-			secret, err := ctx.InvokePackageRaw("azure-native:servicefabric/v20240601preview:getManagedClusterService", args, &rv, "", opts...)
-			if err != nil {
-				return LookupManagedClusterServiceResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupManagedClusterServiceResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupManagedClusterServiceResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:servicefabric/v20240601preview:getManagedClusterService", args, LookupManagedClusterServiceResultOutput{}, options).(LookupManagedClusterServiceResultOutput), nil
 		}).(LookupManagedClusterServiceResultOutput)
 }
 

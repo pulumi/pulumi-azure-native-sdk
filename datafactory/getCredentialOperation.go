@@ -47,21 +47,11 @@ type LookupCredentialOperationResult struct {
 }
 
 func LookupCredentialOperationOutput(ctx *pulumi.Context, args LookupCredentialOperationOutputArgs, opts ...pulumi.InvokeOption) LookupCredentialOperationResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupCredentialOperationResultOutput, error) {
 			args := v.(LookupCredentialOperationArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupCredentialOperationResult
-			secret, err := ctx.InvokePackageRaw("azure-native:datafactory:getCredentialOperation", args, &rv, "", opts...)
-			if err != nil {
-				return LookupCredentialOperationResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupCredentialOperationResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupCredentialOperationResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:datafactory:getCredentialOperation", args, LookupCredentialOperationResultOutput{}, options).(LookupCredentialOperationResultOutput), nil
 		}).(LookupCredentialOperationResultOutput)
 }
 

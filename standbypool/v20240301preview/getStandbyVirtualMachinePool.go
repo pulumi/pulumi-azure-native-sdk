@@ -54,21 +54,11 @@ type LookupStandbyVirtualMachinePoolResult struct {
 }
 
 func LookupStandbyVirtualMachinePoolOutput(ctx *pulumi.Context, args LookupStandbyVirtualMachinePoolOutputArgs, opts ...pulumi.InvokeOption) LookupStandbyVirtualMachinePoolResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupStandbyVirtualMachinePoolResultOutput, error) {
 			args := v.(LookupStandbyVirtualMachinePoolArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupStandbyVirtualMachinePoolResult
-			secret, err := ctx.InvokePackageRaw("azure-native:standbypool/v20240301preview:getStandbyVirtualMachinePool", args, &rv, "", opts...)
-			if err != nil {
-				return LookupStandbyVirtualMachinePoolResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupStandbyVirtualMachinePoolResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupStandbyVirtualMachinePoolResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:standbypool/v20240301preview:getStandbyVirtualMachinePool", args, LookupStandbyVirtualMachinePoolResultOutput{}, options).(LookupStandbyVirtualMachinePoolResultOutput), nil
 		}).(LookupStandbyVirtualMachinePoolResultOutput)
 }
 

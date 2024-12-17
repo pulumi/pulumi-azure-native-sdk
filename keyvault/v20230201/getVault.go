@@ -57,23 +57,12 @@ func (val *LookupVaultResult) Defaults() *LookupVaultResult {
 
 	return &tmp
 }
-
 func LookupVaultOutput(ctx *pulumi.Context, args LookupVaultOutputArgs, opts ...pulumi.InvokeOption) LookupVaultResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupVaultResultOutput, error) {
 			args := v.(LookupVaultArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupVaultResult
-			secret, err := ctx.InvokePackageRaw("azure-native:keyvault/v20230201:getVault", args, &rv, "", opts...)
-			if err != nil {
-				return LookupVaultResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupVaultResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupVaultResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:keyvault/v20230201:getVault", args, LookupVaultResultOutput{}, options).(LookupVaultResultOutput), nil
 		}).(LookupVaultResultOutput)
 }
 

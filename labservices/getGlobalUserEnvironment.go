@@ -39,21 +39,11 @@ type GetGlobalUserEnvironmentResult struct {
 }
 
 func GetGlobalUserEnvironmentOutput(ctx *pulumi.Context, args GetGlobalUserEnvironmentOutputArgs, opts ...pulumi.InvokeOption) GetGlobalUserEnvironmentResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetGlobalUserEnvironmentResultOutput, error) {
 			args := v.(GetGlobalUserEnvironmentArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetGlobalUserEnvironmentResult
-			secret, err := ctx.InvokePackageRaw("azure-native:labservices:getGlobalUserEnvironment", args, &rv, "", opts...)
-			if err != nil {
-				return GetGlobalUserEnvironmentResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetGlobalUserEnvironmentResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetGlobalUserEnvironmentResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:labservices:getGlobalUserEnvironment", args, GetGlobalUserEnvironmentResultOutput{}, options).(GetGlobalUserEnvironmentResultOutput), nil
 		}).(GetGlobalUserEnvironmentResultOutput)
 }
 

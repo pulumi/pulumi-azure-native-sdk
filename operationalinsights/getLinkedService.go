@@ -53,21 +53,11 @@ type LookupLinkedServiceResult struct {
 }
 
 func LookupLinkedServiceOutput(ctx *pulumi.Context, args LookupLinkedServiceOutputArgs, opts ...pulumi.InvokeOption) LookupLinkedServiceResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupLinkedServiceResultOutput, error) {
 			args := v.(LookupLinkedServiceArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupLinkedServiceResult
-			secret, err := ctx.InvokePackageRaw("azure-native:operationalinsights:getLinkedService", args, &rv, "", opts...)
-			if err != nil {
-				return LookupLinkedServiceResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupLinkedServiceResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupLinkedServiceResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:operationalinsights:getLinkedService", args, LookupLinkedServiceResultOutput{}, options).(LookupLinkedServiceResultOutput), nil
 		}).(LookupLinkedServiceResultOutput)
 }
 

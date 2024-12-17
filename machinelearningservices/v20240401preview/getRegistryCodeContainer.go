@@ -55,23 +55,12 @@ func (val *LookupRegistryCodeContainerResult) Defaults() *LookupRegistryCodeCont
 
 	return &tmp
 }
-
 func LookupRegistryCodeContainerOutput(ctx *pulumi.Context, args LookupRegistryCodeContainerOutputArgs, opts ...pulumi.InvokeOption) LookupRegistryCodeContainerResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupRegistryCodeContainerResultOutput, error) {
 			args := v.(LookupRegistryCodeContainerArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupRegistryCodeContainerResult
-			secret, err := ctx.InvokePackageRaw("azure-native:machinelearningservices/v20240401preview:getRegistryCodeContainer", args, &rv, "", opts...)
-			if err != nil {
-				return LookupRegistryCodeContainerResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupRegistryCodeContainerResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupRegistryCodeContainerResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:machinelearningservices/v20240401preview:getRegistryCodeContainer", args, LookupRegistryCodeContainerResultOutput{}, options).(LookupRegistryCodeContainerResultOutput), nil
 		}).(LookupRegistryCodeContainerResultOutput)
 }
 

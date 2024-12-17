@@ -43,21 +43,11 @@ type GetCatalogDevBoxDefinitionErrorDetailsResult struct {
 }
 
 func GetCatalogDevBoxDefinitionErrorDetailsOutput(ctx *pulumi.Context, args GetCatalogDevBoxDefinitionErrorDetailsOutputArgs, opts ...pulumi.InvokeOption) GetCatalogDevBoxDefinitionErrorDetailsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetCatalogDevBoxDefinitionErrorDetailsResultOutput, error) {
 			args := v.(GetCatalogDevBoxDefinitionErrorDetailsArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetCatalogDevBoxDefinitionErrorDetailsResult
-			secret, err := ctx.InvokePackageRaw("azure-native:devcenter:getCatalogDevBoxDefinitionErrorDetails", args, &rv, "", opts...)
-			if err != nil {
-				return GetCatalogDevBoxDefinitionErrorDetailsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetCatalogDevBoxDefinitionErrorDetailsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetCatalogDevBoxDefinitionErrorDetailsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:devcenter:getCatalogDevBoxDefinitionErrorDetails", args, GetCatalogDevBoxDefinitionErrorDetailsResultOutput{}, options).(GetCatalogDevBoxDefinitionErrorDetailsResultOutput), nil
 		}).(GetCatalogDevBoxDefinitionErrorDetailsResultOutput)
 }
 

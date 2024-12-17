@@ -59,23 +59,12 @@ func (val *GetOnlineEndpointTokenResult) Defaults() *GetOnlineEndpointTokenResul
 	}
 	return &tmp
 }
-
 func GetOnlineEndpointTokenOutput(ctx *pulumi.Context, args GetOnlineEndpointTokenOutputArgs, opts ...pulumi.InvokeOption) GetOnlineEndpointTokenResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetOnlineEndpointTokenResultOutput, error) {
 			args := v.(GetOnlineEndpointTokenArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetOnlineEndpointTokenResult
-			secret, err := ctx.InvokePackageRaw("azure-native:machinelearningservices/v20240401preview:getOnlineEndpointToken", args, &rv, "", opts...)
-			if err != nil {
-				return GetOnlineEndpointTokenResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetOnlineEndpointTokenResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetOnlineEndpointTokenResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:machinelearningservices/v20240401preview:getOnlineEndpointToken", args, GetOnlineEndpointTokenResultOutput{}, options).(GetOnlineEndpointTokenResultOutput), nil
 		}).(GetOnlineEndpointTokenResultOutput)
 }
 

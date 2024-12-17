@@ -46,21 +46,11 @@ type LookupBillingRoleAssignmentByBillingAccountResult struct {
 }
 
 func LookupBillingRoleAssignmentByBillingAccountOutput(ctx *pulumi.Context, args LookupBillingRoleAssignmentByBillingAccountOutputArgs, opts ...pulumi.InvokeOption) LookupBillingRoleAssignmentByBillingAccountResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupBillingRoleAssignmentByBillingAccountResultOutput, error) {
 			args := v.(LookupBillingRoleAssignmentByBillingAccountArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupBillingRoleAssignmentByBillingAccountResult
-			secret, err := ctx.InvokePackageRaw("azure-native:billing/v20240401:getBillingRoleAssignmentByBillingAccount", args, &rv, "", opts...)
-			if err != nil {
-				return LookupBillingRoleAssignmentByBillingAccountResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupBillingRoleAssignmentByBillingAccountResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupBillingRoleAssignmentByBillingAccountResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:billing/v20240401:getBillingRoleAssignmentByBillingAccount", args, LookupBillingRoleAssignmentByBillingAccountResultOutput{}, options).(LookupBillingRoleAssignmentByBillingAccountResultOutput), nil
 		}).(LookupBillingRoleAssignmentByBillingAccountResultOutput)
 }
 

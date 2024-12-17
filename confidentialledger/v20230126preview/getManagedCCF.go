@@ -48,21 +48,11 @@ type LookupManagedCCFResult struct {
 }
 
 func LookupManagedCCFOutput(ctx *pulumi.Context, args LookupManagedCCFOutputArgs, opts ...pulumi.InvokeOption) LookupManagedCCFResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupManagedCCFResultOutput, error) {
 			args := v.(LookupManagedCCFArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupManagedCCFResult
-			secret, err := ctx.InvokePackageRaw("azure-native:confidentialledger/v20230126preview:getManagedCCF", args, &rv, "", opts...)
-			if err != nil {
-				return LookupManagedCCFResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupManagedCCFResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupManagedCCFResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:confidentialledger/v20230126preview:getManagedCCF", args, LookupManagedCCFResultOutput{}, options).(LookupManagedCCFResultOutput), nil
 		}).(LookupManagedCCFResultOutput)
 }
 

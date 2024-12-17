@@ -60,21 +60,11 @@ type LookupScheduledActionResult struct {
 }
 
 func LookupScheduledActionOutput(ctx *pulumi.Context, args LookupScheduledActionOutputArgs, opts ...pulumi.InvokeOption) LookupScheduledActionResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupScheduledActionResultOutput, error) {
 			args := v.(LookupScheduledActionArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupScheduledActionResult
-			secret, err := ctx.InvokePackageRaw("azure-native:costmanagement/v20230801:getScheduledAction", args, &rv, "", opts...)
-			if err != nil {
-				return LookupScheduledActionResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupScheduledActionResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupScheduledActionResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:costmanagement/v20230801:getScheduledAction", args, LookupScheduledActionResultOutput{}, options).(LookupScheduledActionResultOutput), nil
 		}).(LookupScheduledActionResultOutput)
 }
 

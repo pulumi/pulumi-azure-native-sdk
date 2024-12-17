@@ -56,21 +56,11 @@ type LookupDisasterRecoveryConfigResult struct {
 }
 
 func LookupDisasterRecoveryConfigOutput(ctx *pulumi.Context, args LookupDisasterRecoveryConfigOutputArgs, opts ...pulumi.InvokeOption) LookupDisasterRecoveryConfigResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupDisasterRecoveryConfigResultOutput, error) {
 			args := v.(LookupDisasterRecoveryConfigArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupDisasterRecoveryConfigResult
-			secret, err := ctx.InvokePackageRaw("azure-native:eventhub/v20230101preview:getDisasterRecoveryConfig", args, &rv, "", opts...)
-			if err != nil {
-				return LookupDisasterRecoveryConfigResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupDisasterRecoveryConfigResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupDisasterRecoveryConfigResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:eventhub/v20230101preview:getDisasterRecoveryConfig", args, LookupDisasterRecoveryConfigResultOutput{}, options).(LookupDisasterRecoveryConfigResultOutput), nil
 		}).(LookupDisasterRecoveryConfigResultOutput)
 }
 

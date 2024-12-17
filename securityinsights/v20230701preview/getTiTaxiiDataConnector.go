@@ -69,21 +69,11 @@ type LookupTiTaxiiDataConnectorResult struct {
 }
 
 func LookupTiTaxiiDataConnectorOutput(ctx *pulumi.Context, args LookupTiTaxiiDataConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupTiTaxiiDataConnectorResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupTiTaxiiDataConnectorResultOutput, error) {
 			args := v.(LookupTiTaxiiDataConnectorArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupTiTaxiiDataConnectorResult
-			secret, err := ctx.InvokePackageRaw("azure-native:securityinsights/v20230701preview:getTiTaxiiDataConnector", args, &rv, "", opts...)
-			if err != nil {
-				return LookupTiTaxiiDataConnectorResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupTiTaxiiDataConnectorResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupTiTaxiiDataConnectorResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:securityinsights/v20230701preview:getTiTaxiiDataConnector", args, LookupTiTaxiiDataConnectorResultOutput{}, options).(LookupTiTaxiiDataConnectorResultOutput), nil
 		}).(LookupTiTaxiiDataConnectorResultOutput)
 }
 

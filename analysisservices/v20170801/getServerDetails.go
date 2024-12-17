@@ -87,23 +87,12 @@ func (val *LookupServerDetailsResult) Defaults() *LookupServerDetailsResult {
 
 	return &tmp
 }
-
 func LookupServerDetailsOutput(ctx *pulumi.Context, args LookupServerDetailsOutputArgs, opts ...pulumi.InvokeOption) LookupServerDetailsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupServerDetailsResultOutput, error) {
 			args := v.(LookupServerDetailsArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupServerDetailsResult
-			secret, err := ctx.InvokePackageRaw("azure-native:analysisservices/v20170801:getServerDetails", args, &rv, "", opts...)
-			if err != nil {
-				return LookupServerDetailsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupServerDetailsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupServerDetailsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:analysisservices/v20170801:getServerDetails", args, LookupServerDetailsResultOutput{}, options).(LookupServerDetailsResultOutput), nil
 		}).(LookupServerDetailsResultOutput)
 }
 

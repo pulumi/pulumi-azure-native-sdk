@@ -46,21 +46,11 @@ type LookupConnectionRaiBlocklistItemResult struct {
 }
 
 func LookupConnectionRaiBlocklistItemOutput(ctx *pulumi.Context, args LookupConnectionRaiBlocklistItemOutputArgs, opts ...pulumi.InvokeOption) LookupConnectionRaiBlocklistItemResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupConnectionRaiBlocklistItemResultOutput, error) {
 			args := v.(LookupConnectionRaiBlocklistItemArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupConnectionRaiBlocklistItemResult
-			secret, err := ctx.InvokePackageRaw("azure-native:machinelearningservices/v20240401preview:getConnectionRaiBlocklistItem", args, &rv, "", opts...)
-			if err != nil {
-				return LookupConnectionRaiBlocklistItemResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupConnectionRaiBlocklistItemResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupConnectionRaiBlocklistItemResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:machinelearningservices/v20240401preview:getConnectionRaiBlocklistItem", args, LookupConnectionRaiBlocklistItemResultOutput{}, options).(LookupConnectionRaiBlocklistItemResultOutput), nil
 		}).(LookupConnectionRaiBlocklistItemResultOutput)
 }
 

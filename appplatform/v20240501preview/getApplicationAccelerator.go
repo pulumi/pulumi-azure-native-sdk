@@ -57,23 +57,12 @@ func (val *LookupApplicationAcceleratorResult) Defaults() *LookupApplicationAcce
 
 	return &tmp
 }
-
 func LookupApplicationAcceleratorOutput(ctx *pulumi.Context, args LookupApplicationAcceleratorOutputArgs, opts ...pulumi.InvokeOption) LookupApplicationAcceleratorResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupApplicationAcceleratorResultOutput, error) {
 			args := v.(LookupApplicationAcceleratorArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupApplicationAcceleratorResult
-			secret, err := ctx.InvokePackageRaw("azure-native:appplatform/v20240501preview:getApplicationAccelerator", args, &rv, "", opts...)
-			if err != nil {
-				return LookupApplicationAcceleratorResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupApplicationAcceleratorResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupApplicationAcceleratorResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:appplatform/v20240501preview:getApplicationAccelerator", args, LookupApplicationAcceleratorResultOutput{}, options).(LookupApplicationAcceleratorResultOutput), nil
 		}).(LookupApplicationAcceleratorResultOutput)
 }
 

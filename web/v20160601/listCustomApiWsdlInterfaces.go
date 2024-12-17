@@ -44,21 +44,11 @@ type ListCustomApiWsdlInterfacesResult struct {
 }
 
 func ListCustomApiWsdlInterfacesOutput(ctx *pulumi.Context, args ListCustomApiWsdlInterfacesOutputArgs, opts ...pulumi.InvokeOption) ListCustomApiWsdlInterfacesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListCustomApiWsdlInterfacesResultOutput, error) {
 			args := v.(ListCustomApiWsdlInterfacesArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListCustomApiWsdlInterfacesResult
-			secret, err := ctx.InvokePackageRaw("azure-native:web/v20160601:listCustomApiWsdlInterfaces", args, &rv, "", opts...)
-			if err != nil {
-				return ListCustomApiWsdlInterfacesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListCustomApiWsdlInterfacesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListCustomApiWsdlInterfacesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:web/v20160601:listCustomApiWsdlInterfaces", args, ListCustomApiWsdlInterfacesResultOutput{}, options).(ListCustomApiWsdlInterfacesResultOutput), nil
 		}).(ListCustomApiWsdlInterfacesResultOutput)
 }
 

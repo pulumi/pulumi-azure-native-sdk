@@ -91,23 +91,12 @@ func (val *LookupNetworkFabricResult) Defaults() *LookupNetworkFabricResult {
 
 	return &tmp
 }
-
 func LookupNetworkFabricOutput(ctx *pulumi.Context, args LookupNetworkFabricOutputArgs, opts ...pulumi.InvokeOption) LookupNetworkFabricResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupNetworkFabricResultOutput, error) {
 			args := v.(LookupNetworkFabricArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupNetworkFabricResult
-			secret, err := ctx.InvokePackageRaw("azure-native:managednetworkfabric/v20230615:getNetworkFabric", args, &rv, "", opts...)
-			if err != nil {
-				return LookupNetworkFabricResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupNetworkFabricResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupNetworkFabricResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:managednetworkfabric/v20230615:getNetworkFabric", args, LookupNetworkFabricResultOutput{}, options).(LookupNetworkFabricResultOutput), nil
 		}).(LookupNetworkFabricResultOutput)
 }
 

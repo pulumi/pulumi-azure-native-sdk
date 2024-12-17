@@ -67,21 +67,11 @@ type LookupProjectCatalogResult struct {
 }
 
 func LookupProjectCatalogOutput(ctx *pulumi.Context, args LookupProjectCatalogOutputArgs, opts ...pulumi.InvokeOption) LookupProjectCatalogResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupProjectCatalogResultOutput, error) {
 			args := v.(LookupProjectCatalogArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupProjectCatalogResult
-			secret, err := ctx.InvokePackageRaw("azure-native:devcenter:getProjectCatalog", args, &rv, "", opts...)
-			if err != nil {
-				return LookupProjectCatalogResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupProjectCatalogResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupProjectCatalogResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:devcenter:getProjectCatalog", args, LookupProjectCatalogResultOutput{}, options).(LookupProjectCatalogResultOutput), nil
 		}).(LookupProjectCatalogResultOutput)
 }
 

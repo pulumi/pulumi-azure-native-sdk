@@ -41,21 +41,11 @@ type ListStorageAccountKeysResult struct {
 }
 
 func ListStorageAccountKeysOutput(ctx *pulumi.Context, args ListStorageAccountKeysOutputArgs, opts ...pulumi.InvokeOption) ListStorageAccountKeysResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (ListStorageAccountKeysResultOutput, error) {
 			args := v.(ListStorageAccountKeysArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv ListStorageAccountKeysResult
-			secret, err := ctx.InvokePackageRaw("azure-native:storage:listStorageAccountKeys", args, &rv, "", opts...)
-			if err != nil {
-				return ListStorageAccountKeysResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(ListStorageAccountKeysResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(ListStorageAccountKeysResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:storage:listStorageAccountKeys", args, ListStorageAccountKeysResultOutput{}, options).(ListStorageAccountKeysResultOutput), nil
 		}).(ListStorageAccountKeysResultOutput)
 }
 

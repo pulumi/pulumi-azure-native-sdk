@@ -42,21 +42,11 @@ type GetCatalogSyncErrorDetailsResult struct {
 }
 
 func GetCatalogSyncErrorDetailsOutput(ctx *pulumi.Context, args GetCatalogSyncErrorDetailsOutputArgs, opts ...pulumi.InvokeOption) GetCatalogSyncErrorDetailsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetCatalogSyncErrorDetailsResultOutput, error) {
 			args := v.(GetCatalogSyncErrorDetailsArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetCatalogSyncErrorDetailsResult
-			secret, err := ctx.InvokePackageRaw("azure-native:devcenter/v20240601preview:getCatalogSyncErrorDetails", args, &rv, "", opts...)
-			if err != nil {
-				return GetCatalogSyncErrorDetailsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetCatalogSyncErrorDetailsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetCatalogSyncErrorDetailsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:devcenter/v20240601preview:getCatalogSyncErrorDetails", args, GetCatalogSyncErrorDetailsResultOutput{}, options).(GetCatalogSyncErrorDetailsResultOutput), nil
 		}).(GetCatalogSyncErrorDetailsResultOutput)
 }
 

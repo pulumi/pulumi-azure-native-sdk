@@ -66,21 +66,11 @@ type GetSubvolumeMetadataResult struct {
 }
 
 func GetSubvolumeMetadataOutput(ctx *pulumi.Context, args GetSubvolumeMetadataOutputArgs, opts ...pulumi.InvokeOption) GetSubvolumeMetadataResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetSubvolumeMetadataResultOutput, error) {
 			args := v.(GetSubvolumeMetadataArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetSubvolumeMetadataResult
-			secret, err := ctx.InvokePackageRaw("azure-native:netapp/v20230501preview:getSubvolumeMetadata", args, &rv, "", opts...)
-			if err != nil {
-				return GetSubvolumeMetadataResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetSubvolumeMetadataResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetSubvolumeMetadataResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:netapp/v20230501preview:getSubvolumeMetadata", args, GetSubvolumeMetadataResultOutput{}, options).(GetSubvolumeMetadataResultOutput), nil
 		}).(GetSubvolumeMetadataResultOutput)
 }
 

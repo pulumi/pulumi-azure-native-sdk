@@ -50,21 +50,11 @@ type LookupManagedCertificateResult struct {
 }
 
 func LookupManagedCertificateOutput(ctx *pulumi.Context, args LookupManagedCertificateOutputArgs, opts ...pulumi.InvokeOption) LookupManagedCertificateResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupManagedCertificateResultOutput, error) {
 			args := v.(LookupManagedCertificateArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupManagedCertificateResult
-			secret, err := ctx.InvokePackageRaw("azure-native:app/v20230502preview:getManagedCertificate", args, &rv, "", opts...)
-			if err != nil {
-				return LookupManagedCertificateResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupManagedCertificateResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupManagedCertificateResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:app/v20230502preview:getManagedCertificate", args, LookupManagedCertificateResultOutput{}, options).(LookupManagedCertificateResultOutput), nil
 		}).(LookupManagedCertificateResultOutput)
 }
 

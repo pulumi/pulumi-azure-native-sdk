@@ -58,21 +58,11 @@ type LookupContactResult struct {
 }
 
 func LookupContactOutput(ctx *pulumi.Context, args LookupContactOutputArgs, opts ...pulumi.InvokeOption) LookupContactResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupContactResultOutput, error) {
 			args := v.(LookupContactArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupContactResult
-			secret, err := ctx.InvokePackageRaw("azure-native:voiceservices/v20221201preview:getContact", args, &rv, "", opts...)
-			if err != nil {
-				return LookupContactResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupContactResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupContactResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:voiceservices/v20221201preview:getContact", args, LookupContactResultOutput{}, options).(LookupContactResultOutput), nil
 		}).(LookupContactResultOutput)
 }
 

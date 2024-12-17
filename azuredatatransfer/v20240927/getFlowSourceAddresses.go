@@ -38,21 +38,11 @@ type GetFlowSourceAddressesResult struct {
 }
 
 func GetFlowSourceAddressesOutput(ctx *pulumi.Context, args GetFlowSourceAddressesOutputArgs, opts ...pulumi.InvokeOption) GetFlowSourceAddressesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetFlowSourceAddressesResultOutput, error) {
 			args := v.(GetFlowSourceAddressesArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv GetFlowSourceAddressesResult
-			secret, err := ctx.InvokePackageRaw("azure-native:azuredatatransfer/v20240927:getFlowSourceAddresses", args, &rv, "", opts...)
-			if err != nil {
-				return GetFlowSourceAddressesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetFlowSourceAddressesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetFlowSourceAddressesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:azuredatatransfer/v20240927:getFlowSourceAddresses", args, GetFlowSourceAddressesResultOutput{}, options).(GetFlowSourceAddressesResultOutput), nil
 		}).(GetFlowSourceAddressesResultOutput)
 }
 

@@ -48,21 +48,11 @@ type LookupPrivateAtlaseResult struct {
 }
 
 func LookupPrivateAtlaseOutput(ctx *pulumi.Context, args LookupPrivateAtlaseOutputArgs, opts ...pulumi.InvokeOption) LookupPrivateAtlaseResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupPrivateAtlaseResultOutput, error) {
 			args := v.(LookupPrivateAtlaseArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupPrivateAtlaseResult
-			secret, err := ctx.InvokePackageRaw("azure-native:maps/v20200201preview:getPrivateAtlase", args, &rv, "", opts...)
-			if err != nil {
-				return LookupPrivateAtlaseResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupPrivateAtlaseResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupPrivateAtlaseResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:maps/v20200201preview:getPrivateAtlase", args, LookupPrivateAtlaseResultOutput{}, options).(LookupPrivateAtlaseResultOutput), nil
 		}).(LookupPrivateAtlaseResultOutput)
 }
 

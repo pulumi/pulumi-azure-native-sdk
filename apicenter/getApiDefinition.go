@@ -59,21 +59,11 @@ type LookupApiDefinitionResult struct {
 }
 
 func LookupApiDefinitionOutput(ctx *pulumi.Context, args LookupApiDefinitionOutputArgs, opts ...pulumi.InvokeOption) LookupApiDefinitionResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupApiDefinitionResultOutput, error) {
 			args := v.(LookupApiDefinitionArgs)
-			opts = utilities.PkgInvokeDefaultOpts(opts)
-			var rv LookupApiDefinitionResult
-			secret, err := ctx.InvokePackageRaw("azure-native:apicenter:getApiDefinition", args, &rv, "", opts...)
-			if err != nil {
-				return LookupApiDefinitionResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupApiDefinitionResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupApiDefinitionResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: utilities.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azure-native:apicenter:getApiDefinition", args, LookupApiDefinitionResultOutput{}, options).(LookupApiDefinitionResultOutput), nil
 		}).(LookupApiDefinitionResultOutput)
 }
 
