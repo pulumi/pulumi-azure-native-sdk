@@ -13,7 +13,7 @@ import (
 
 // Azure REST API version: 2022-06-01.
 //
-// Other available API versions: 2022-08-01, 2023-01-01.
+// Other available API versions: 2022-08-01, 2023-01-01, 2023-07-07, 2023-10-20.
 func GetMonitorDefaultKey(ctx *pulumi.Context, args *GetMonitorDefaultKeyArgs, opts ...pulumi.InvokeOption) (*GetMonitorDefaultKeyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetMonitorDefaultKeyResult

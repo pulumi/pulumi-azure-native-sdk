@@ -1488,6 +1488,134 @@ func (o LogRulesResponsePtrOutput) SendSubscriptionLogs() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Marketplace SAAS Info of the resource.
+type MarketplaceSaaSInfoResponse struct {
+	// The Azure Subscription ID to which the Marketplace Subscription belongs and gets billed into.
+	BilledAzureSubscriptionId *string `pulumi:"billedAzureSubscriptionId"`
+	// Marketplace Subscription Details: SAAS Name
+	MarketplaceName *string `pulumi:"marketplaceName"`
+	// Marketplace Subscription Details: SaaS Subscription Status
+	MarketplaceStatus *string `pulumi:"marketplaceStatus"`
+	// Marketplace Subscription Id. This is a GUID-formatted string.
+	MarketplaceSubscriptionId *string `pulumi:"marketplaceSubscriptionId"`
+	// Flag specifying if the Marketplace status is subscribed or not.
+	Subscribed *bool `pulumi:"subscribed"`
+}
+
+// Marketplace SAAS Info of the resource.
+type MarketplaceSaaSInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (MarketplaceSaaSInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MarketplaceSaaSInfoResponse)(nil)).Elem()
+}
+
+func (o MarketplaceSaaSInfoResponseOutput) ToMarketplaceSaaSInfoResponseOutput() MarketplaceSaaSInfoResponseOutput {
+	return o
+}
+
+func (o MarketplaceSaaSInfoResponseOutput) ToMarketplaceSaaSInfoResponseOutputWithContext(ctx context.Context) MarketplaceSaaSInfoResponseOutput {
+	return o
+}
+
+// The Azure Subscription ID to which the Marketplace Subscription belongs and gets billed into.
+func (o MarketplaceSaaSInfoResponseOutput) BilledAzureSubscriptionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MarketplaceSaaSInfoResponse) *string { return v.BilledAzureSubscriptionId }).(pulumi.StringPtrOutput)
+}
+
+// Marketplace Subscription Details: SAAS Name
+func (o MarketplaceSaaSInfoResponseOutput) MarketplaceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MarketplaceSaaSInfoResponse) *string { return v.MarketplaceName }).(pulumi.StringPtrOutput)
+}
+
+// Marketplace Subscription Details: SaaS Subscription Status
+func (o MarketplaceSaaSInfoResponseOutput) MarketplaceStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MarketplaceSaaSInfoResponse) *string { return v.MarketplaceStatus }).(pulumi.StringPtrOutput)
+}
+
+// Marketplace Subscription Id. This is a GUID-formatted string.
+func (o MarketplaceSaaSInfoResponseOutput) MarketplaceSubscriptionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MarketplaceSaaSInfoResponse) *string { return v.MarketplaceSubscriptionId }).(pulumi.StringPtrOutput)
+}
+
+// Flag specifying if the Marketplace status is subscribed or not.
+func (o MarketplaceSaaSInfoResponseOutput) Subscribed() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MarketplaceSaaSInfoResponse) *bool { return v.Subscribed }).(pulumi.BoolPtrOutput)
+}
+
+type MarketplaceSaaSInfoResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (MarketplaceSaaSInfoResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MarketplaceSaaSInfoResponse)(nil)).Elem()
+}
+
+func (o MarketplaceSaaSInfoResponsePtrOutput) ToMarketplaceSaaSInfoResponsePtrOutput() MarketplaceSaaSInfoResponsePtrOutput {
+	return o
+}
+
+func (o MarketplaceSaaSInfoResponsePtrOutput) ToMarketplaceSaaSInfoResponsePtrOutputWithContext(ctx context.Context) MarketplaceSaaSInfoResponsePtrOutput {
+	return o
+}
+
+func (o MarketplaceSaaSInfoResponsePtrOutput) Elem() MarketplaceSaaSInfoResponseOutput {
+	return o.ApplyT(func(v *MarketplaceSaaSInfoResponse) MarketplaceSaaSInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MarketplaceSaaSInfoResponse
+		return ret
+	}).(MarketplaceSaaSInfoResponseOutput)
+}
+
+// The Azure Subscription ID to which the Marketplace Subscription belongs and gets billed into.
+func (o MarketplaceSaaSInfoResponsePtrOutput) BilledAzureSubscriptionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MarketplaceSaaSInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BilledAzureSubscriptionId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Marketplace Subscription Details: SAAS Name
+func (o MarketplaceSaaSInfoResponsePtrOutput) MarketplaceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MarketplaceSaaSInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MarketplaceName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Marketplace Subscription Details: SaaS Subscription Status
+func (o MarketplaceSaaSInfoResponsePtrOutput) MarketplaceStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MarketplaceSaaSInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MarketplaceStatus
+	}).(pulumi.StringPtrOutput)
+}
+
+// Marketplace Subscription Id. This is a GUID-formatted string.
+func (o MarketplaceSaaSInfoResponsePtrOutput) MarketplaceSubscriptionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MarketplaceSaaSInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MarketplaceSubscriptionId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Flag specifying if the Marketplace status is subscribed or not.
+func (o MarketplaceSaaSInfoResponsePtrOutput) Subscribed() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MarketplaceSaaSInfoResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Subscribed
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Set of rules for sending metrics for the Monitor resource.
 type MetricRules struct {
 	// List of filtering tags to be used for capturing metrics. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags.
@@ -2486,6 +2614,100 @@ func (o MonitoringTagRulesPropertiesResponsePtrOutput) ProvisioningState() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
+// Partner Billing details associated with the resource.
+type PartnerBillingEntityResponse struct {
+	// The Datadog Organization Id.
+	Id *string `pulumi:"id"`
+	// The Datadog Organization Name.
+	Name *string `pulumi:"name"`
+	// Link to the datadog organization page
+	PartnerEntityUri *string `pulumi:"partnerEntityUri"`
+}
+
+// Partner Billing details associated with the resource.
+type PartnerBillingEntityResponseOutput struct{ *pulumi.OutputState }
+
+func (PartnerBillingEntityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PartnerBillingEntityResponse)(nil)).Elem()
+}
+
+func (o PartnerBillingEntityResponseOutput) ToPartnerBillingEntityResponseOutput() PartnerBillingEntityResponseOutput {
+	return o
+}
+
+func (o PartnerBillingEntityResponseOutput) ToPartnerBillingEntityResponseOutputWithContext(ctx context.Context) PartnerBillingEntityResponseOutput {
+	return o
+}
+
+// The Datadog Organization Id.
+func (o PartnerBillingEntityResponseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PartnerBillingEntityResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The Datadog Organization Name.
+func (o PartnerBillingEntityResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PartnerBillingEntityResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Link to the datadog organization page
+func (o PartnerBillingEntityResponseOutput) PartnerEntityUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PartnerBillingEntityResponse) *string { return v.PartnerEntityUri }).(pulumi.StringPtrOutput)
+}
+
+type PartnerBillingEntityResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PartnerBillingEntityResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PartnerBillingEntityResponse)(nil)).Elem()
+}
+
+func (o PartnerBillingEntityResponsePtrOutput) ToPartnerBillingEntityResponsePtrOutput() PartnerBillingEntityResponsePtrOutput {
+	return o
+}
+
+func (o PartnerBillingEntityResponsePtrOutput) ToPartnerBillingEntityResponsePtrOutputWithContext(ctx context.Context) PartnerBillingEntityResponsePtrOutput {
+	return o
+}
+
+func (o PartnerBillingEntityResponsePtrOutput) Elem() PartnerBillingEntityResponseOutput {
+	return o.ApplyT(func(v *PartnerBillingEntityResponse) PartnerBillingEntityResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PartnerBillingEntityResponse
+		return ret
+	}).(PartnerBillingEntityResponseOutput)
+}
+
+// The Datadog Organization Id.
+func (o PartnerBillingEntityResponsePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PartnerBillingEntityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Datadog Organization Name.
+func (o PartnerBillingEntityResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PartnerBillingEntityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Link to the datadog organization page
+func (o PartnerBillingEntityResponsePtrOutput) PartnerEntityUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PartnerBillingEntityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PartnerEntityUri
+	}).(pulumi.StringPtrOutput)
+}
+
 type ResourceSku struct {
 	// Name of the SKU.
 	Name string `pulumi:"name"`
@@ -3228,6 +3450,8 @@ func init() {
 	pulumi.RegisterOutputType(LogRulesPtrOutput{})
 	pulumi.RegisterOutputType(LogRulesResponseOutput{})
 	pulumi.RegisterOutputType(LogRulesResponsePtrOutput{})
+	pulumi.RegisterOutputType(MarketplaceSaaSInfoResponseOutput{})
+	pulumi.RegisterOutputType(MarketplaceSaaSInfoResponsePtrOutput{})
 	pulumi.RegisterOutputType(MetricRulesOutput{})
 	pulumi.RegisterOutputType(MetricRulesPtrOutput{})
 	pulumi.RegisterOutputType(MetricRulesResponseOutput{})
@@ -3245,6 +3469,8 @@ func init() {
 	pulumi.RegisterOutputType(MonitoringTagRulesPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(MonitoringTagRulesPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(MonitoringTagRulesPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(PartnerBillingEntityResponseOutput{})
+	pulumi.RegisterOutputType(PartnerBillingEntityResponsePtrOutput{})
 	pulumi.RegisterOutputType(ResourceSkuOutput{})
 	pulumi.RegisterOutputType(ResourceSkuPtrOutput{})
 	pulumi.RegisterOutputType(ResourceSkuResponseOutput{})

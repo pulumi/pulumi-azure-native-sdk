@@ -15,7 +15,7 @@ import (
 // Properties and filters for ShareQuota. The request parameter is optional, if there are no filters specified.
 // Azure REST API version: 2023-06-01-preview.
 //
-// Other available API versions: 2024-10-15-preview.
+// Other available API versions: 2024-10-15-preview, 2024-12-18-preview.
 type GroupQuota struct {
 	pulumi.CustomResourceState
 
@@ -45,6 +45,9 @@ func NewGroupQuota(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:quota/v20241015preview:GroupQuota"),
+		},
+		{
+			Type: pulumi.String("azure-native:quota/v20241218preview:GroupQuota"),
 		},
 	})
 	opts = append(opts, aliases)

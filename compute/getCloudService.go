@@ -13,6 +13,8 @@ import (
 
 // Display information about a cloud service.
 // Azure REST API version: 2022-09-04.
+//
+// Other available API versions: 2024-11-04.
 func LookupCloudService(ctx *pulumi.Context, args *LookupCloudServiceArgs, opts ...pulumi.InvokeOption) (*LookupCloudServiceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCloudServiceResult

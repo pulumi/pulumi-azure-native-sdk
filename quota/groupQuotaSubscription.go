@@ -15,7 +15,7 @@ import (
 // This represents a Azure subscriptionId that is associated with a GroupQuotasEntity.
 // Azure REST API version: 2023-06-01-preview.
 //
-// Other available API versions: 2024-10-15-preview.
+// Other available API versions: 2024-10-15-preview, 2024-12-18-preview.
 type GroupQuotaSubscription struct {
 	pulumi.CustomResourceState
 
@@ -47,6 +47,9 @@ func NewGroupQuotaSubscription(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:quota/v20241015preview:GroupQuotaSubscription"),
+		},
+		{
+			Type: pulumi.String("azure-native:quota/v20241218preview:GroupQuotaSubscription"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -13,6 +13,8 @@ import (
 
 // Get a SecurityPolicy
 // Azure REST API version: 2024-05-01-preview.
+//
+// Other available API versions: 2025-01-01.
 func LookupSecurityPoliciesInterface(ctx *pulumi.Context, args *LookupSecurityPoliciesInterfaceArgs, opts ...pulumi.InvokeOption) (*LookupSecurityPoliciesInterfaceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSecurityPoliciesInterfaceResult

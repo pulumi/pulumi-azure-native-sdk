@@ -14,6 +14,8 @@ import (
 
 // The request to update subscriptions needed to be monitored by the Datadog monitor resource.
 // Azure REST API version: 2023-01-01.
+//
+// Other available API versions: 2023-07-07, 2023-10-20.
 type MonitoredSubscription struct {
 	pulumi.CustomResourceState
 
@@ -41,6 +43,12 @@ func NewMonitoredSubscription(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:datadog/v20230101:MonitoredSubscription"),
+		},
+		{
+			Type: pulumi.String("azure-native:datadog/v20230707:MonitoredSubscription"),
+		},
+		{
+			Type: pulumi.String("azure-native:datadog/v20231020:MonitoredSubscription"),
 		},
 	})
 	opts = append(opts, aliases)

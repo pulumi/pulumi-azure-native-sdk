@@ -51,6 +51,9 @@ func NewSecurityPoliciesInterface(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:servicenetworking:SecurityPoliciesInterface"),
 		},
+		{
+			Type: pulumi.String("azure-native:servicenetworking/v20250101:SecurityPoliciesInterface"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

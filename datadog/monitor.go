@@ -14,7 +14,7 @@ import (
 
 // Azure REST API version: 2022-06-01. Prior API version in Azure Native 1.x: 2021-03-01.
 //
-// Other available API versions: 2022-08-01, 2023-01-01.
+// Other available API versions: 2022-08-01, 2023-01-01, 2023-07-07, 2023-10-20.
 type Monitor struct {
 	pulumi.CustomResourceState
 
@@ -57,6 +57,12 @@ func NewMonitor(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:datadog/v20230101:Monitor"),
+		},
+		{
+			Type: pulumi.String("azure-native:datadog/v20230707:Monitor"),
+		},
+		{
+			Type: pulumi.String("azure-native:datadog/v20231020:Monitor"),
 		},
 	})
 	opts = append(opts, aliases)
