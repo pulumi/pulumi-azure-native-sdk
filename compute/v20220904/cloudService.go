@@ -55,6 +55,9 @@ func NewCloudService(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:compute/v20220404:CloudService"),
 		},
+		{
+			Type: pulumi.String("azure-native:compute/v20241104:CloudService"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

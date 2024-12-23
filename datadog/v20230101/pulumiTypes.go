@@ -2523,7 +2523,7 @@ func (o MonitoringTagRulesPropertiesResponsePtrOutput) ProvisioningState() pulum
 }
 
 type ResourceSku struct {
-	// Name of the SKU in {PlanId} format. For Terraform, the only allowed value is 'linking'.
+	// Name of the SKU in {PlanId} format. For Terraform, the only allowed value is 'Linked'.
 	Name string `pulumi:"name"`
 }
 
@@ -2539,7 +2539,7 @@ type ResourceSkuInput interface {
 }
 
 type ResourceSkuArgs struct {
-	// Name of the SKU in {PlanId} format. For Terraform, the only allowed value is 'linking'.
+	// Name of the SKU in {PlanId} format. For Terraform, the only allowed value is 'Linked'.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -2620,7 +2620,7 @@ func (o ResourceSkuOutput) ToResourceSkuPtrOutputWithContext(ctx context.Context
 	}).(ResourceSkuPtrOutput)
 }
 
-// Name of the SKU in {PlanId} format. For Terraform, the only allowed value is 'linking'.
+// Name of the SKU in {PlanId} format. For Terraform, the only allowed value is 'Linked'.
 func (o ResourceSkuOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceSku) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -2649,7 +2649,7 @@ func (o ResourceSkuPtrOutput) Elem() ResourceSkuOutput {
 	}).(ResourceSkuOutput)
 }
 
-// Name of the SKU in {PlanId} format. For Terraform, the only allowed value is 'linking'.
+// Name of the SKU in {PlanId} format. For Terraform, the only allowed value is 'Linked'.
 func (o ResourceSkuPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceSku) *string {
 		if v == nil {
@@ -2660,7 +2660,7 @@ func (o ResourceSkuPtrOutput) Name() pulumi.StringPtrOutput {
 }
 
 type ResourceSkuResponse struct {
-	// Name of the SKU in {PlanId} format. For Terraform, the only allowed value is 'linking'.
+	// Name of the SKU in {PlanId} format. For Terraform, the only allowed value is 'Linked'.
 	Name string `pulumi:"name"`
 }
 
@@ -2678,7 +2678,7 @@ func (o ResourceSkuResponseOutput) ToResourceSkuResponseOutputWithContext(ctx co
 	return o
 }
 
-// Name of the SKU in {PlanId} format. For Terraform, the only allowed value is 'linking'.
+// Name of the SKU in {PlanId} format. For Terraform, the only allowed value is 'Linked'.
 func (o ResourceSkuResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceSkuResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -2707,7 +2707,7 @@ func (o ResourceSkuResponsePtrOutput) Elem() ResourceSkuResponseOutput {
 	}).(ResourceSkuResponseOutput)
 }
 
-// Name of the SKU in {PlanId} format. For Terraform, the only allowed value is 'linking'.
+// Name of the SKU in {PlanId} format. For Terraform, the only allowed value is 'Linked'.
 func (o ResourceSkuResponsePtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceSkuResponse) *string {
 		if v == nil {

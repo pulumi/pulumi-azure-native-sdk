@@ -14,6 +14,8 @@ import (
 
 // SecurityPolicy Subresource of Traffic Controller.
 // Azure REST API version: 2024-05-01-preview.
+//
+// Other available API versions: 2025-01-01.
 type SecurityPoliciesInterface struct {
 	pulumi.CustomResourceState
 
@@ -51,6 +53,9 @@ func NewSecurityPoliciesInterface(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:servicenetworking/v20240501preview:SecurityPoliciesInterface"),
+		},
+		{
+			Type: pulumi.String("azure-native:servicenetworking/v20250101:SecurityPoliciesInterface"),
 		},
 	})
 	opts = append(opts, aliases)

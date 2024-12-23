@@ -659,9 +659,9 @@ type BaseVirtualMachineProfile struct {
 	// Server operating system are: <br><br> RHEL_BYOS (for RHEL) <br><br> SLES_BYOS
 	// (for SUSE) <br><br> For more information, see [Azure Hybrid Use Benefit for
 	// Windows
-	// Server](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing)
+	// Server](https://learn.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing)
 	// <br><br> [Azure Hybrid Use Benefit for Linux
-	// Server](https://docs.microsoft.com/azure/virtual-machines/linux/azure-hybrid-benefit-linux)
+	// Server](https://learn.microsoft.com/azure/virtual-machines/linux/azure-hybrid-benefit-linux)
 	// <br><br> Minimum api-version: 2015-06-15
 	LicenseType *string `pulumi:"licenseType"`
 	// Specifies properties of the network interfaces of the virtual machines in the
@@ -722,9 +722,9 @@ type BaseVirtualMachineProfileArgs struct {
 	// Server operating system are: <br><br> RHEL_BYOS (for RHEL) <br><br> SLES_BYOS
 	// (for SUSE) <br><br> For more information, see [Azure Hybrid Use Benefit for
 	// Windows
-	// Server](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing)
+	// Server](https://learn.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing)
 	// <br><br> [Azure Hybrid Use Benefit for Linux
-	// Server](https://docs.microsoft.com/azure/virtual-machines/linux/azure-hybrid-benefit-linux)
+	// Server](https://learn.microsoft.com/azure/virtual-machines/linux/azure-hybrid-benefit-linux)
 	// <br><br> Minimum api-version: 2015-06-15
 	LicenseType pulumi.StringPtrInput `pulumi:"licenseType"`
 	// Specifies properties of the network interfaces of the virtual machines in the
@@ -814,9 +814,9 @@ func (o BaseVirtualMachineProfileOutput) HardwareProfile() VirtualMachineScaleSe
 // Server operating system are: <br><br> RHEL_BYOS (for RHEL) <br><br> SLES_BYOS
 // (for SUSE) <br><br> For more information, see [Azure Hybrid Use Benefit for
 // Windows
-// Server](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing)
+// Server](https://learn.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing)
 // <br><br> [Azure Hybrid Use Benefit for Linux
-// Server](https://docs.microsoft.com/azure/virtual-machines/linux/azure-hybrid-benefit-linux)
+// Server](https://learn.microsoft.com/azure/virtual-machines/linux/azure-hybrid-benefit-linux)
 // <br><br> Minimum api-version: 2015-06-15
 func (o BaseVirtualMachineProfileOutput) LicenseType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BaseVirtualMachineProfile) *string { return v.LicenseType }).(pulumi.StringPtrOutput)
@@ -891,9 +891,9 @@ type BaseVirtualMachineProfileResponse struct {
 	// Server operating system are: <br><br> RHEL_BYOS (for RHEL) <br><br> SLES_BYOS
 	// (for SUSE) <br><br> For more information, see [Azure Hybrid Use Benefit for
 	// Windows
-	// Server](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing)
+	// Server](https://learn.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing)
 	// <br><br> [Azure Hybrid Use Benefit for Linux
-	// Server](https://docs.microsoft.com/azure/virtual-machines/linux/azure-hybrid-benefit-linux)
+	// Server](https://learn.microsoft.com/azure/virtual-machines/linux/azure-hybrid-benefit-linux)
 	// <br><br> Minimum api-version: 2015-06-15
 	LicenseType *string `pulumi:"licenseType"`
 	// Specifies properties of the network interfaces of the virtual machines in the
@@ -982,9 +982,9 @@ func (o BaseVirtualMachineProfileResponseOutput) HardwareProfile() VirtualMachin
 // Server operating system are: <br><br> RHEL_BYOS (for RHEL) <br><br> SLES_BYOS
 // (for SUSE) <br><br> For more information, see [Azure Hybrid Use Benefit for
 // Windows
-// Server](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing)
+// Server](https://learn.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing)
 // <br><br> [Azure Hybrid Use Benefit for Linux
-// Server](https://docs.microsoft.com/azure/virtual-machines/linux/azure-hybrid-benefit-linux)
+// Server](https://learn.microsoft.com/azure/virtual-machines/linux/azure-hybrid-benefit-linux)
 // <br><br> Minimum api-version: 2015-06-15
 func (o BaseVirtualMachineProfileResponseOutput) LicenseType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BaseVirtualMachineProfileResponse) *string { return v.LicenseType }).(pulumi.StringPtrOutput)
@@ -1918,8 +1918,8 @@ type DiffDiskSettings struct {
 	// values are: **CacheDisk,** **ResourceDisk.** The defaulting behavior is:
 	// **CacheDisk** if one is configured for the VM size otherwise **ResourceDisk**
 	// is used. Refer to the VM size documentation for Windows VM at
-	// https://docs.microsoft.com/azure/virtual-machines/windows/sizes and Linux VM at
-	// https://docs.microsoft.com/azure/virtual-machines/linux/sizes to check which VM
+	// https://learn.microsoft.com/azure/virtual-machines/windows/sizes and Linux VM at
+	// https://learn.microsoft.com/azure/virtual-machines/linux/sizes to check which VM
 	// sizes exposes a cache disk.
 	Placement *string `pulumi:"placement"`
 }
@@ -1945,8 +1945,8 @@ type DiffDiskSettingsArgs struct {
 	// values are: **CacheDisk,** **ResourceDisk.** The defaulting behavior is:
 	// **CacheDisk** if one is configured for the VM size otherwise **ResourceDisk**
 	// is used. Refer to the VM size documentation for Windows VM at
-	// https://docs.microsoft.com/azure/virtual-machines/windows/sizes and Linux VM at
-	// https://docs.microsoft.com/azure/virtual-machines/linux/sizes to check which VM
+	// https://learn.microsoft.com/azure/virtual-machines/windows/sizes and Linux VM at
+	// https://learn.microsoft.com/azure/virtual-machines/linux/sizes to check which VM
 	// sizes exposes a cache disk.
 	Placement pulumi.StringPtrInput `pulumi:"placement"`
 }
@@ -2040,8 +2040,8 @@ func (o DiffDiskSettingsOutput) Option() pulumi.StringPtrOutput {
 // values are: **CacheDisk,** **ResourceDisk.** The defaulting behavior is:
 // **CacheDisk** if one is configured for the VM size otherwise **ResourceDisk**
 // is used. Refer to the VM size documentation for Windows VM at
-// https://docs.microsoft.com/azure/virtual-machines/windows/sizes and Linux VM at
-// https://docs.microsoft.com/azure/virtual-machines/linux/sizes to check which VM
+// https://learn.microsoft.com/azure/virtual-machines/windows/sizes and Linux VM at
+// https://learn.microsoft.com/azure/virtual-machines/linux/sizes to check which VM
 // sizes exposes a cache disk.
 func (o DiffDiskSettingsOutput) Placement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DiffDiskSettings) *string { return v.Placement }).(pulumi.StringPtrOutput)
@@ -2085,8 +2085,8 @@ func (o DiffDiskSettingsPtrOutput) Option() pulumi.StringPtrOutput {
 // values are: **CacheDisk,** **ResourceDisk.** The defaulting behavior is:
 // **CacheDisk** if one is configured for the VM size otherwise **ResourceDisk**
 // is used. Refer to the VM size documentation for Windows VM at
-// https://docs.microsoft.com/azure/virtual-machines/windows/sizes and Linux VM at
-// https://docs.microsoft.com/azure/virtual-machines/linux/sizes to check which VM
+// https://learn.microsoft.com/azure/virtual-machines/windows/sizes and Linux VM at
+// https://learn.microsoft.com/azure/virtual-machines/linux/sizes to check which VM
 // sizes exposes a cache disk.
 func (o DiffDiskSettingsPtrOutput) Placement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DiffDiskSettings) *string {
@@ -2107,8 +2107,8 @@ type DiffDiskSettingsResponse struct {
 	// values are: **CacheDisk,** **ResourceDisk.** The defaulting behavior is:
 	// **CacheDisk** if one is configured for the VM size otherwise **ResourceDisk**
 	// is used. Refer to the VM size documentation for Windows VM at
-	// https://docs.microsoft.com/azure/virtual-machines/windows/sizes and Linux VM at
-	// https://docs.microsoft.com/azure/virtual-machines/linux/sizes to check which VM
+	// https://learn.microsoft.com/azure/virtual-machines/windows/sizes and Linux VM at
+	// https://learn.microsoft.com/azure/virtual-machines/linux/sizes to check which VM
 	// sizes exposes a cache disk.
 	Placement *string `pulumi:"placement"`
 }
@@ -2139,8 +2139,8 @@ func (o DiffDiskSettingsResponseOutput) Option() pulumi.StringPtrOutput {
 // values are: **CacheDisk,** **ResourceDisk.** The defaulting behavior is:
 // **CacheDisk** if one is configured for the VM size otherwise **ResourceDisk**
 // is used. Refer to the VM size documentation for Windows VM at
-// https://docs.microsoft.com/azure/virtual-machines/windows/sizes and Linux VM at
-// https://docs.microsoft.com/azure/virtual-machines/linux/sizes to check which VM
+// https://learn.microsoft.com/azure/virtual-machines/windows/sizes and Linux VM at
+// https://learn.microsoft.com/azure/virtual-machines/linux/sizes to check which VM
 // sizes exposes a cache disk.
 func (o DiffDiskSettingsResponseOutput) Placement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DiffDiskSettingsResponse) *string { return v.Placement }).(pulumi.StringPtrOutput)
@@ -2184,8 +2184,8 @@ func (o DiffDiskSettingsResponsePtrOutput) Option() pulumi.StringPtrOutput {
 // values are: **CacheDisk,** **ResourceDisk.** The defaulting behavior is:
 // **CacheDisk** if one is configured for the VM size otherwise **ResourceDisk**
 // is used. Refer to the VM size documentation for Windows VM at
-// https://docs.microsoft.com/azure/virtual-machines/windows/sizes and Linux VM at
-// https://docs.microsoft.com/azure/virtual-machines/linux/sizes to check which VM
+// https://learn.microsoft.com/azure/virtual-machines/windows/sizes and Linux VM at
+// https://learn.microsoft.com/azure/virtual-machines/linux/sizes to check which VM
 // sizes exposes a cache disk.
 func (o DiffDiskSettingsResponsePtrOutput) Placement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DiffDiskSettingsResponse) *string {
@@ -3397,7 +3397,7 @@ func (o KeyVaultSecretReferenceResponsePtrOutput) SourceVault() SubResourceRespo
 
 // Specifies the Linux operating system settings on the virtual machine. For a
 // list of supported Linux distributions, see [Linux on Azure-Endorsed
-// Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
+// Distributions](https://learn.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
 type LinuxConfiguration struct {
 	// Specifies whether password authentication should be disabled.
 	DisablePasswordAuthentication *bool `pulumi:"disablePasswordAuthentication"`
@@ -3428,7 +3428,7 @@ type LinuxConfigurationInput interface {
 
 // Specifies the Linux operating system settings on the virtual machine. For a
 // list of supported Linux distributions, see [Linux on Azure-Endorsed
-// Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
+// Distributions](https://learn.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
 type LinuxConfigurationArgs struct {
 	// Specifies whether password authentication should be disabled.
 	DisablePasswordAuthentication pulumi.BoolPtrInput `pulumi:"disablePasswordAuthentication"`
@@ -3501,7 +3501,7 @@ func (i *linuxConfigurationPtrType) ToLinuxConfigurationPtrOutputWithContext(ctx
 
 // Specifies the Linux operating system settings on the virtual machine. For a
 // list of supported Linux distributions, see [Linux on Azure-Endorsed
-// Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
+// Distributions](https://learn.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
 type LinuxConfigurationOutput struct{ *pulumi.OutputState }
 
 func (LinuxConfigurationOutput) ElementType() reflect.Type {
@@ -3635,7 +3635,7 @@ func (o LinuxConfigurationPtrOutput) Ssh() SshConfigurationPtrOutput {
 
 // Specifies the Linux operating system settings on the virtual machine. For a
 // list of supported Linux distributions, see [Linux on Azure-Endorsed
-// Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
+// Distributions](https://learn.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
 type LinuxConfigurationResponse struct {
 	// Specifies whether password authentication should be disabled.
 	DisablePasswordAuthentication *bool `pulumi:"disablePasswordAuthentication"`
@@ -3655,7 +3655,7 @@ type LinuxConfigurationResponse struct {
 
 // Specifies the Linux operating system settings on the virtual machine. For a
 // list of supported Linux distributions, see [Linux on Azure-Endorsed
-// Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
+// Distributions](https://learn.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
 type LinuxConfigurationResponseOutput struct{ *pulumi.OutputState }
 
 func (LinuxConfigurationResponseOutput) ElementType() reflect.Type {
@@ -8271,7 +8271,7 @@ type SshPublicKey struct {
 	// SSH public key certificate used to authenticate with the VM through ssh. The
 	// key needs to be at least 2048-bit and in ssh-rsa format. For creating ssh keys,
 	// see [Create SSH keys on Linux and Mac for Linux VMs in
-	// Azure]https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
+	// Azure]https://learn.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
 	KeyData *string `pulumi:"keyData"`
 	// Specifies the full path on the created VM where ssh public key is stored. If
 	// the file already exists, the specified key is appended to the file. Example:
@@ -8296,7 +8296,7 @@ type SshPublicKeyArgs struct {
 	// SSH public key certificate used to authenticate with the VM through ssh. The
 	// key needs to be at least 2048-bit and in ssh-rsa format. For creating ssh keys,
 	// see [Create SSH keys on Linux and Mac for Linux VMs in
-	// Azure]https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
+	// Azure]https://learn.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
 	KeyData pulumi.StringPtrInput `pulumi:"keyData"`
 	// Specifies the full path on the created VM where ssh public key is stored. If
 	// the file already exists, the specified key is appended to the file. Example:
@@ -8360,7 +8360,7 @@ func (o SshPublicKeyOutput) ToSshPublicKeyOutputWithContext(ctx context.Context)
 // SSH public key certificate used to authenticate with the VM through ssh. The
 // key needs to be at least 2048-bit and in ssh-rsa format. For creating ssh keys,
 // see [Create SSH keys on Linux and Mac for Linux VMs in
-// Azure]https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
+// Azure]https://learn.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
 func (o SshPublicKeyOutput) KeyData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SshPublicKey) *string { return v.KeyData }).(pulumi.StringPtrOutput)
 }
@@ -8398,7 +8398,7 @@ type SshPublicKeyResponse struct {
 	// SSH public key certificate used to authenticate with the VM through ssh. The
 	// key needs to be at least 2048-bit and in ssh-rsa format. For creating ssh keys,
 	// see [Create SSH keys on Linux and Mac for Linux VMs in
-	// Azure]https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
+	// Azure]https://learn.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
 	KeyData *string `pulumi:"keyData"`
 	// Specifies the full path on the created VM where ssh public key is stored. If
 	// the file already exists, the specified key is appended to the file. Example:
@@ -8425,7 +8425,7 @@ func (o SshPublicKeyResponseOutput) ToSshPublicKeyResponseOutputWithContext(ctx 
 // SSH public key certificate used to authenticate with the VM through ssh. The
 // key needs to be at least 2048-bit and in ssh-rsa format. For creating ssh keys,
 // see [Create SSH keys on Linux and Mac for Linux VMs in
-// Azure]https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
+// Azure]https://learn.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
 func (o SshPublicKeyResponseOutput) KeyData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SshPublicKeyResponse) *string { return v.KeyData }).(pulumi.StringPtrOutput)
 }
@@ -9900,13 +9900,13 @@ type VMSizeProperties struct {
 	// specified in the request body the default behavior is to set it to the value of
 	// vCPUs available for that VM size exposed in api response of [List all available
 	// virtual machine sizes in a
-	// region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list).
+	// region](https://learn.microsoft.com/en-us/rest/api/compute/resource-skus/list).
 	VCPUsAvailable *int `pulumi:"vCPUsAvailable"`
 	// Specifies the vCPU to physical core ratio. When this property is not specified
 	// in the request body the default behavior is set to the value of vCPUsPerCore
 	// for the VM Size exposed in api response of [List all available virtual machine
 	// sizes in a
-	// region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list).
+	// region](https://learn.microsoft.com/en-us/rest/api/compute/resource-skus/list).
 	// **Setting this property to 1 also means that hyper-threading is disabled.**
 	VCPUsPerCore *int `pulumi:"vCPUsPerCore"`
 }
@@ -9928,13 +9928,13 @@ type VMSizePropertiesArgs struct {
 	// specified in the request body the default behavior is to set it to the value of
 	// vCPUs available for that VM size exposed in api response of [List all available
 	// virtual machine sizes in a
-	// region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list).
+	// region](https://learn.microsoft.com/en-us/rest/api/compute/resource-skus/list).
 	VCPUsAvailable pulumi.IntPtrInput `pulumi:"vCPUsAvailable"`
 	// Specifies the vCPU to physical core ratio. When this property is not specified
 	// in the request body the default behavior is set to the value of vCPUsPerCore
 	// for the VM Size exposed in api response of [List all available virtual machine
 	// sizes in a
-	// region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list).
+	// region](https://learn.microsoft.com/en-us/rest/api/compute/resource-skus/list).
 	// **Setting this property to 1 also means that hyper-threading is disabled.**
 	VCPUsPerCore pulumi.IntPtrInput `pulumi:"vCPUsPerCore"`
 }
@@ -10021,7 +10021,7 @@ func (o VMSizePropertiesOutput) ToVMSizePropertiesPtrOutputWithContext(ctx conte
 // specified in the request body the default behavior is to set it to the value of
 // vCPUs available for that VM size exposed in api response of [List all available
 // virtual machine sizes in a
-// region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list).
+// region](https://learn.microsoft.com/en-us/rest/api/compute/resource-skus/list).
 func (o VMSizePropertiesOutput) VCPUsAvailable() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VMSizeProperties) *int { return v.VCPUsAvailable }).(pulumi.IntPtrOutput)
 }
@@ -10030,7 +10030,7 @@ func (o VMSizePropertiesOutput) VCPUsAvailable() pulumi.IntPtrOutput {
 // in the request body the default behavior is set to the value of vCPUsPerCore
 // for the VM Size exposed in api response of [List all available virtual machine
 // sizes in a
-// region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list).
+// region](https://learn.microsoft.com/en-us/rest/api/compute/resource-skus/list).
 // **Setting this property to 1 also means that hyper-threading is disabled.**
 func (o VMSizePropertiesOutput) VCPUsPerCore() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VMSizeProperties) *int { return v.VCPUsPerCore }).(pulumi.IntPtrOutput)
@@ -10064,7 +10064,7 @@ func (o VMSizePropertiesPtrOutput) Elem() VMSizePropertiesOutput {
 // specified in the request body the default behavior is to set it to the value of
 // vCPUs available for that VM size exposed in api response of [List all available
 // virtual machine sizes in a
-// region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list).
+// region](https://learn.microsoft.com/en-us/rest/api/compute/resource-skus/list).
 func (o VMSizePropertiesPtrOutput) VCPUsAvailable() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VMSizeProperties) *int {
 		if v == nil {
@@ -10078,7 +10078,7 @@ func (o VMSizePropertiesPtrOutput) VCPUsAvailable() pulumi.IntPtrOutput {
 // in the request body the default behavior is set to the value of vCPUsPerCore
 // for the VM Size exposed in api response of [List all available virtual machine
 // sizes in a
-// region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list).
+// region](https://learn.microsoft.com/en-us/rest/api/compute/resource-skus/list).
 // **Setting this property to 1 also means that hyper-threading is disabled.**
 func (o VMSizePropertiesPtrOutput) VCPUsPerCore() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VMSizeProperties) *int {
@@ -10095,13 +10095,13 @@ type VMSizePropertiesResponse struct {
 	// specified in the request body the default behavior is to set it to the value of
 	// vCPUs available for that VM size exposed in api response of [List all available
 	// virtual machine sizes in a
-	// region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list).
+	// region](https://learn.microsoft.com/en-us/rest/api/compute/resource-skus/list).
 	VCPUsAvailable *int `pulumi:"vCPUsAvailable"`
 	// Specifies the vCPU to physical core ratio. When this property is not specified
 	// in the request body the default behavior is set to the value of vCPUsPerCore
 	// for the VM Size exposed in api response of [List all available virtual machine
 	// sizes in a
-	// region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list).
+	// region](https://learn.microsoft.com/en-us/rest/api/compute/resource-skus/list).
 	// **Setting this property to 1 also means that hyper-threading is disabled.**
 	VCPUsPerCore *int `pulumi:"vCPUsPerCore"`
 }
@@ -10125,7 +10125,7 @@ func (o VMSizePropertiesResponseOutput) ToVMSizePropertiesResponseOutputWithCont
 // specified in the request body the default behavior is to set it to the value of
 // vCPUs available for that VM size exposed in api response of [List all available
 // virtual machine sizes in a
-// region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list).
+// region](https://learn.microsoft.com/en-us/rest/api/compute/resource-skus/list).
 func (o VMSizePropertiesResponseOutput) VCPUsAvailable() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VMSizePropertiesResponse) *int { return v.VCPUsAvailable }).(pulumi.IntPtrOutput)
 }
@@ -10134,7 +10134,7 @@ func (o VMSizePropertiesResponseOutput) VCPUsAvailable() pulumi.IntPtrOutput {
 // in the request body the default behavior is set to the value of vCPUsPerCore
 // for the VM Size exposed in api response of [List all available virtual machine
 // sizes in a
-// region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list).
+// region](https://learn.microsoft.com/en-us/rest/api/compute/resource-skus/list).
 // **Setting this property to 1 also means that hyper-threading is disabled.**
 func (o VMSizePropertiesResponseOutput) VCPUsPerCore() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VMSizePropertiesResponse) *int { return v.VCPUsPerCore }).(pulumi.IntPtrOutput)
@@ -10168,7 +10168,7 @@ func (o VMSizePropertiesResponsePtrOutput) Elem() VMSizePropertiesResponseOutput
 // specified in the request body the default behavior is to set it to the value of
 // vCPUs available for that VM size exposed in api response of [List all available
 // virtual machine sizes in a
-// region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list).
+// region](https://learn.microsoft.com/en-us/rest/api/compute/resource-skus/list).
 func (o VMSizePropertiesResponsePtrOutput) VCPUsAvailable() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VMSizePropertiesResponse) *int {
 		if v == nil {
@@ -10182,7 +10182,7 @@ func (o VMSizePropertiesResponsePtrOutput) VCPUsAvailable() pulumi.IntPtrOutput 
 // in the request body the default behavior is set to the value of vCPUsPerCore
 // for the VM Size exposed in api response of [List all available virtual machine
 // sizes in a
-// region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list).
+// region](https://learn.microsoft.com/en-us/rest/api/compute/resource-skus/list).
 // **Setting this property to 1 also means that hyper-threading is disabled.**
 func (o VMSizePropertiesResponsePtrOutput) VCPUsPerCore() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VMSizePropertiesResponse) *int {
@@ -10207,16 +10207,16 @@ type VaultCertificate struct {
 	// This is the URL of a certificate that has been uploaded to Key Vault as a
 	// secret. For adding a secret to the Key Vault, see [Add a key or secret to the
 	// key
-	// vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started/#add).
+	// vault](https://learn.microsoft.com/azure/key-vault/key-vault-get-started/#add).
 	// In this case, your certificate needs to be It is the Base64 encoding of the
 	// following JSON Object which is encoded in UTF-8: <br><br> {<br>
 	// "data":"<Base64-encoded-certificate>",<br>  "dataType":"pfx",<br>
 	// "password":"<pfx-file-password>"<br>} <br> To install certificates on a virtual
 	// machine it is recommended to use the [Azure Key Vault virtual machine extension
 	// for
-	// Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
+	// Linux](https://learn.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
 	// or the [Azure Key Vault virtual machine extension for
-	// Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
+	// Windows](https://learn.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
 	CertificateUrl *string `pulumi:"certificateUrl"`
 }
 
@@ -10245,16 +10245,16 @@ type VaultCertificateArgs struct {
 	// This is the URL of a certificate that has been uploaded to Key Vault as a
 	// secret. For adding a secret to the Key Vault, see [Add a key or secret to the
 	// key
-	// vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started/#add).
+	// vault](https://learn.microsoft.com/azure/key-vault/key-vault-get-started/#add).
 	// In this case, your certificate needs to be It is the Base64 encoding of the
 	// following JSON Object which is encoded in UTF-8: <br><br> {<br>
 	// "data":"<Base64-encoded-certificate>",<br>  "dataType":"pfx",<br>
 	// "password":"<pfx-file-password>"<br>} <br> To install certificates on a virtual
 	// machine it is recommended to use the [Azure Key Vault virtual machine extension
 	// for
-	// Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
+	// Linux](https://learn.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
 	// or the [Azure Key Vault virtual machine extension for
-	// Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
+	// Windows](https://learn.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
 	CertificateUrl pulumi.StringPtrInput `pulumi:"certificateUrl"`
 }
 
@@ -10325,16 +10325,16 @@ func (o VaultCertificateOutput) CertificateStore() pulumi.StringPtrOutput {
 // This is the URL of a certificate that has been uploaded to Key Vault as a
 // secret. For adding a secret to the Key Vault, see [Add a key or secret to the
 // key
-// vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started/#add).
+// vault](https://learn.microsoft.com/azure/key-vault/key-vault-get-started/#add).
 // In this case, your certificate needs to be It is the Base64 encoding of the
 // following JSON Object which is encoded in UTF-8: <br><br> {<br>
 // "data":"<Base64-encoded-certificate>",<br>  "dataType":"pfx",<br>
 // "password":"<pfx-file-password>"<br>} <br> To install certificates on a virtual
 // machine it is recommended to use the [Azure Key Vault virtual machine extension
 // for
-// Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
+// Linux](https://learn.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
 // or the [Azure Key Vault virtual machine extension for
-// Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
+// Windows](https://learn.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
 func (o VaultCertificateOutput) CertificateUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VaultCertificate) *string { return v.CertificateUrl }).(pulumi.StringPtrOutput)
 }
@@ -10373,16 +10373,16 @@ type VaultCertificateResponse struct {
 	// This is the URL of a certificate that has been uploaded to Key Vault as a
 	// secret. For adding a secret to the Key Vault, see [Add a key or secret to the
 	// key
-	// vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started/#add).
+	// vault](https://learn.microsoft.com/azure/key-vault/key-vault-get-started/#add).
 	// In this case, your certificate needs to be It is the Base64 encoding of the
 	// following JSON Object which is encoded in UTF-8: <br><br> {<br>
 	// "data":"<Base64-encoded-certificate>",<br>  "dataType":"pfx",<br>
 	// "password":"<pfx-file-password>"<br>} <br> To install certificates on a virtual
 	// machine it is recommended to use the [Azure Key Vault virtual machine extension
 	// for
-	// Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
+	// Linux](https://learn.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
 	// or the [Azure Key Vault virtual machine extension for
-	// Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
+	// Windows](https://learn.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
 	CertificateUrl *string `pulumi:"certificateUrl"`
 }
 
@@ -10416,16 +10416,16 @@ func (o VaultCertificateResponseOutput) CertificateStore() pulumi.StringPtrOutpu
 // This is the URL of a certificate that has been uploaded to Key Vault as a
 // secret. For adding a secret to the Key Vault, see [Add a key or secret to the
 // key
-// vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started/#add).
+// vault](https://learn.microsoft.com/azure/key-vault/key-vault-get-started/#add).
 // In this case, your certificate needs to be It is the Base64 encoding of the
 // following JSON Object which is encoded in UTF-8: <br><br> {<br>
 // "data":"<Base64-encoded-certificate>",<br>  "dataType":"pfx",<br>
 // "password":"<pfx-file-password>"<br>} <br> To install certificates on a virtual
 // machine it is recommended to use the [Azure Key Vault virtual machine extension
 // for
-// Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
+// Linux](https://learn.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
 // or the [Azure Key Vault virtual machine extension for
-// Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
+// Windows](https://learn.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
 func (o VaultCertificateResponseOutput) CertificateUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VaultCertificateResponse) *string { return v.CertificateUrl }).(pulumi.StringPtrOutput)
 }
@@ -15640,10 +15640,10 @@ type VirtualMachineScaleSetOSProfile struct {
 	// "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1",
 	// "Password22", "iloveyou!" <br><br> For resetting the password, see [How to
 	// reset the Remote Desktop service or its login password in a Windows
-	// VM](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/reset-rdp)
+	// VM](https://learn.microsoft.com/troubleshoot/azure/virtual-machines/reset-rdp)
 	// <br><br> For resetting root password, see [Manage users, SSH, and check or
 	// repair disks on Azure Linux VMs using the VMAccess
-	// Extension](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection)
+	// Extension](https://learn.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection)
 	AdminPassword *string `pulumi:"adminPassword"`
 	// Specifies the name of the administrator account. <br><br> **Windows-only
 	// restriction:** Cannot end in "." <br><br> **Disallowed values:**
@@ -15665,20 +15665,20 @@ type VirtualMachineScaleSetOSProfile struct {
 	// is decoded to a binary array that is saved as a file on the Virtual Machine.
 	// The maximum length of the binary array is 65535 bytes. For using cloud-init for
 	// your VM, see [Using cloud-init to customize a Linux VM during
-	// creation](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init)
+	// creation](https://learn.microsoft.com/azure/virtual-machines/linux/using-cloud-init)
 	CustomData *string `pulumi:"customData"`
 	// Specifies the Linux operating system settings on the virtual machine. For a
 	// list of supported Linux distributions, see [Linux on Azure-Endorsed
-	// Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
+	// Distributions](https://learn.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
 	LinuxConfiguration *LinuxConfiguration `pulumi:"linuxConfiguration"`
 	// Optional property which must either be set to True or omitted.
 	RequireGuestProvisionSignal *bool `pulumi:"requireGuestProvisionSignal"`
 	// Specifies set of certificates that should be installed onto the virtual
 	// machines in the scale set. To install certificates on a virtual machine it is
 	// recommended to use the [Azure Key Vault virtual machine extension for
-	// Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
+	// Linux](https://learn.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
 	// or the [Azure Key Vault virtual machine extension for
-	// Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
+	// Windows](https://learn.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
 	Secrets []VaultSecretGroup `pulumi:"secrets"`
 	// Specifies Windows operating system settings on the virtual machine.
 	WindowsConfiguration *WindowsConfiguration `pulumi:"windowsConfiguration"`
@@ -15707,10 +15707,10 @@ type VirtualMachineScaleSetOSProfileArgs struct {
 	// "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1",
 	// "Password22", "iloveyou!" <br><br> For resetting the password, see [How to
 	// reset the Remote Desktop service or its login password in a Windows
-	// VM](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/reset-rdp)
+	// VM](https://learn.microsoft.com/troubleshoot/azure/virtual-machines/reset-rdp)
 	// <br><br> For resetting root password, see [Manage users, SSH, and check or
 	// repair disks on Azure Linux VMs using the VMAccess
-	// Extension](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection)
+	// Extension](https://learn.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection)
 	AdminPassword pulumi.StringPtrInput `pulumi:"adminPassword"`
 	// Specifies the name of the administrator account. <br><br> **Windows-only
 	// restriction:** Cannot end in "." <br><br> **Disallowed values:**
@@ -15732,20 +15732,20 @@ type VirtualMachineScaleSetOSProfileArgs struct {
 	// is decoded to a binary array that is saved as a file on the Virtual Machine.
 	// The maximum length of the binary array is 65535 bytes. For using cloud-init for
 	// your VM, see [Using cloud-init to customize a Linux VM during
-	// creation](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init)
+	// creation](https://learn.microsoft.com/azure/virtual-machines/linux/using-cloud-init)
 	CustomData pulumi.StringPtrInput `pulumi:"customData"`
 	// Specifies the Linux operating system settings on the virtual machine. For a
 	// list of supported Linux distributions, see [Linux on Azure-Endorsed
-	// Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
+	// Distributions](https://learn.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
 	LinuxConfiguration LinuxConfigurationPtrInput `pulumi:"linuxConfiguration"`
 	// Optional property which must either be set to True or omitted.
 	RequireGuestProvisionSignal pulumi.BoolPtrInput `pulumi:"requireGuestProvisionSignal"`
 	// Specifies set of certificates that should be installed onto the virtual
 	// machines in the scale set. To install certificates on a virtual machine it is
 	// recommended to use the [Azure Key Vault virtual machine extension for
-	// Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
+	// Linux](https://learn.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
 	// or the [Azure Key Vault virtual machine extension for
-	// Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
+	// Windows](https://learn.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
 	Secrets VaultSecretGroupArrayInput `pulumi:"secrets"`
 	// Specifies Windows operating system settings on the virtual machine.
 	WindowsConfiguration WindowsConfigurationPtrInput `pulumi:"windowsConfiguration"`
@@ -15839,10 +15839,10 @@ func (o VirtualMachineScaleSetOSProfileOutput) ToVirtualMachineScaleSetOSProfile
 // "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1",
 // "Password22", "iloveyou!" <br><br> For resetting the password, see [How to
 // reset the Remote Desktop service or its login password in a Windows
-// VM](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/reset-rdp)
+// VM](https://learn.microsoft.com/troubleshoot/azure/virtual-machines/reset-rdp)
 // <br><br> For resetting root password, see [Manage users, SSH, and check or
 // repair disks on Azure Linux VMs using the VMAccess
-// Extension](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection)
+// Extension](https://learn.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection)
 func (o VirtualMachineScaleSetOSProfileOutput) AdminPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetOSProfile) *string { return v.AdminPassword }).(pulumi.StringPtrOutput)
 }
@@ -15876,14 +15876,14 @@ func (o VirtualMachineScaleSetOSProfileOutput) ComputerNamePrefix() pulumi.Strin
 // is decoded to a binary array that is saved as a file on the Virtual Machine.
 // The maximum length of the binary array is 65535 bytes. For using cloud-init for
 // your VM, see [Using cloud-init to customize a Linux VM during
-// creation](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init)
+// creation](https://learn.microsoft.com/azure/virtual-machines/linux/using-cloud-init)
 func (o VirtualMachineScaleSetOSProfileOutput) CustomData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetOSProfile) *string { return v.CustomData }).(pulumi.StringPtrOutput)
 }
 
 // Specifies the Linux operating system settings on the virtual machine. For a
 // list of supported Linux distributions, see [Linux on Azure-Endorsed
-// Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
+// Distributions](https://learn.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
 func (o VirtualMachineScaleSetOSProfileOutput) LinuxConfiguration() LinuxConfigurationPtrOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetOSProfile) *LinuxConfiguration { return v.LinuxConfiguration }).(LinuxConfigurationPtrOutput)
 }
@@ -15896,9 +15896,9 @@ func (o VirtualMachineScaleSetOSProfileOutput) RequireGuestProvisionSignal() pul
 // Specifies set of certificates that should be installed onto the virtual
 // machines in the scale set. To install certificates on a virtual machine it is
 // recommended to use the [Azure Key Vault virtual machine extension for
-// Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
+// Linux](https://learn.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
 // or the [Azure Key Vault virtual machine extension for
-// Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
+// Windows](https://learn.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
 func (o VirtualMachineScaleSetOSProfileOutput) Secrets() VaultSecretGroupArrayOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetOSProfile) []VaultSecretGroup { return v.Secrets }).(VaultSecretGroupArrayOutput)
 }
@@ -15942,10 +15942,10 @@ func (o VirtualMachineScaleSetOSProfilePtrOutput) Elem() VirtualMachineScaleSetO
 // "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1",
 // "Password22", "iloveyou!" <br><br> For resetting the password, see [How to
 // reset the Remote Desktop service or its login password in a Windows
-// VM](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/reset-rdp)
+// VM](https://learn.microsoft.com/troubleshoot/azure/virtual-machines/reset-rdp)
 // <br><br> For resetting root password, see [Manage users, SSH, and check or
 // repair disks on Azure Linux VMs using the VMAccess
-// Extension](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection)
+// Extension](https://learn.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection)
 func (o VirtualMachineScaleSetOSProfilePtrOutput) AdminPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetOSProfile) *string {
 		if v == nil {
@@ -15999,7 +15999,7 @@ func (o VirtualMachineScaleSetOSProfilePtrOutput) ComputerNamePrefix() pulumi.St
 // is decoded to a binary array that is saved as a file on the Virtual Machine.
 // The maximum length of the binary array is 65535 bytes. For using cloud-init for
 // your VM, see [Using cloud-init to customize a Linux VM during
-// creation](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init)
+// creation](https://learn.microsoft.com/azure/virtual-machines/linux/using-cloud-init)
 func (o VirtualMachineScaleSetOSProfilePtrOutput) CustomData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetOSProfile) *string {
 		if v == nil {
@@ -16011,7 +16011,7 @@ func (o VirtualMachineScaleSetOSProfilePtrOutput) CustomData() pulumi.StringPtrO
 
 // Specifies the Linux operating system settings on the virtual machine. For a
 // list of supported Linux distributions, see [Linux on Azure-Endorsed
-// Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
+// Distributions](https://learn.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
 func (o VirtualMachineScaleSetOSProfilePtrOutput) LinuxConfiguration() LinuxConfigurationPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetOSProfile) *LinuxConfiguration {
 		if v == nil {
@@ -16034,9 +16034,9 @@ func (o VirtualMachineScaleSetOSProfilePtrOutput) RequireGuestProvisionSignal() 
 // Specifies set of certificates that should be installed onto the virtual
 // machines in the scale set. To install certificates on a virtual machine it is
 // recommended to use the [Azure Key Vault virtual machine extension for
-// Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
+// Linux](https://learn.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
 // or the [Azure Key Vault virtual machine extension for
-// Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
+// Windows](https://learn.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
 func (o VirtualMachineScaleSetOSProfilePtrOutput) Secrets() VaultSecretGroupArrayOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetOSProfile) []VaultSecretGroup {
 		if v == nil {
@@ -16076,16 +16076,16 @@ type VirtualMachineScaleSetOSProfileResponse struct {
 	ComputerNamePrefix *string `pulumi:"computerNamePrefix"`
 	// Specifies the Linux operating system settings on the virtual machine. For a
 	// list of supported Linux distributions, see [Linux on Azure-Endorsed
-	// Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
+	// Distributions](https://learn.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
 	LinuxConfiguration *LinuxConfigurationResponse `pulumi:"linuxConfiguration"`
 	// Optional property which must either be set to True or omitted.
 	RequireGuestProvisionSignal *bool `pulumi:"requireGuestProvisionSignal"`
 	// Specifies set of certificates that should be installed onto the virtual
 	// machines in the scale set. To install certificates on a virtual machine it is
 	// recommended to use the [Azure Key Vault virtual machine extension for
-	// Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
+	// Linux](https://learn.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
 	// or the [Azure Key Vault virtual machine extension for
-	// Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
+	// Windows](https://learn.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
 	Secrets []VaultSecretGroupResponse `pulumi:"secrets"`
 	// Specifies Windows operating system settings on the virtual machine.
 	WindowsConfiguration *WindowsConfigurationResponse `pulumi:"windowsConfiguration"`
@@ -16133,7 +16133,7 @@ func (o VirtualMachineScaleSetOSProfileResponseOutput) ComputerNamePrefix() pulu
 
 // Specifies the Linux operating system settings on the virtual machine. For a
 // list of supported Linux distributions, see [Linux on Azure-Endorsed
-// Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
+// Distributions](https://learn.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
 func (o VirtualMachineScaleSetOSProfileResponseOutput) LinuxConfiguration() LinuxConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetOSProfileResponse) *LinuxConfigurationResponse {
 		return v.LinuxConfiguration
@@ -16148,9 +16148,9 @@ func (o VirtualMachineScaleSetOSProfileResponseOutput) RequireGuestProvisionSign
 // Specifies set of certificates that should be installed onto the virtual
 // machines in the scale set. To install certificates on a virtual machine it is
 // recommended to use the [Azure Key Vault virtual machine extension for
-// Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
+// Linux](https://learn.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
 // or the [Azure Key Vault virtual machine extension for
-// Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
+// Windows](https://learn.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
 func (o VirtualMachineScaleSetOSProfileResponseOutput) Secrets() VaultSecretGroupResponseArrayOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetOSProfileResponse) []VaultSecretGroupResponse { return v.Secrets }).(VaultSecretGroupResponseArrayOutput)
 }
@@ -16228,7 +16228,7 @@ func (o VirtualMachineScaleSetOSProfileResponsePtrOutput) ComputerNamePrefix() p
 
 // Specifies the Linux operating system settings on the virtual machine. For a
 // list of supported Linux distributions, see [Linux on Azure-Endorsed
-// Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
+// Distributions](https://learn.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
 func (o VirtualMachineScaleSetOSProfileResponsePtrOutput) LinuxConfiguration() LinuxConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetOSProfileResponse) *LinuxConfigurationResponse {
 		if v == nil {
@@ -16251,9 +16251,9 @@ func (o VirtualMachineScaleSetOSProfileResponsePtrOutput) RequireGuestProvisionS
 // Specifies set of certificates that should be installed onto the virtual
 // machines in the scale set. To install certificates on a virtual machine it is
 // recommended to use the [Azure Key Vault virtual machine extension for
-// Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
+// Linux](https://learn.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
 // or the [Azure Key Vault virtual machine extension for
-// Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
+// Windows](https://learn.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
 func (o VirtualMachineScaleSetOSProfileResponsePtrOutput) Secrets() VaultSecretGroupResponseArrayOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetOSProfileResponse) []VaultSecretGroupResponse {
 		if v == nil {
@@ -17273,7 +17273,7 @@ type VirtualMachineScaleSetStorageProfile struct {
 	// Specifies the parameters that are used to add data disks to the virtual
 	// machines in the scale set. For more information about disks, see [About disks
 	// and VHDs for Azure virtual
-	// machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
+	// machines](https://learn.microsoft.com/azure/virtual-machines/managed-disks-overview).
 	DataDisks []VirtualMachineScaleSetDataDisk `pulumi:"dataDisks"`
 	// Specifies the disk controller type configured for the virtual machines in the scale set. Minimum api-version: 2022-08-01
 	DiskControllerType *string `pulumi:"diskControllerType"`
@@ -17285,7 +17285,7 @@ type VirtualMachineScaleSetStorageProfile struct {
 	// Specifies information about the operating system disk used by the virtual
 	// machines in the scale set. For more information about disks, see [About disks
 	// and VHDs for Azure virtual
-	// machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
+	// machines](https://learn.microsoft.com/azure/virtual-machines/managed-disks-overview).
 	OsDisk *VirtualMachineScaleSetOSDisk `pulumi:"osDisk"`
 }
 
@@ -17305,7 +17305,7 @@ type VirtualMachineScaleSetStorageProfileArgs struct {
 	// Specifies the parameters that are used to add data disks to the virtual
 	// machines in the scale set. For more information about disks, see [About disks
 	// and VHDs for Azure virtual
-	// machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
+	// machines](https://learn.microsoft.com/azure/virtual-machines/managed-disks-overview).
 	DataDisks VirtualMachineScaleSetDataDiskArrayInput `pulumi:"dataDisks"`
 	// Specifies the disk controller type configured for the virtual machines in the scale set. Minimum api-version: 2022-08-01
 	DiskControllerType pulumi.StringPtrInput `pulumi:"diskControllerType"`
@@ -17317,7 +17317,7 @@ type VirtualMachineScaleSetStorageProfileArgs struct {
 	// Specifies information about the operating system disk used by the virtual
 	// machines in the scale set. For more information about disks, see [About disks
 	// and VHDs for Azure virtual
-	// machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
+	// machines](https://learn.microsoft.com/azure/virtual-machines/managed-disks-overview).
 	OsDisk VirtualMachineScaleSetOSDiskPtrInput `pulumi:"osDisk"`
 }
 
@@ -17402,7 +17402,7 @@ func (o VirtualMachineScaleSetStorageProfileOutput) ToVirtualMachineScaleSetStor
 // Specifies the parameters that are used to add data disks to the virtual
 // machines in the scale set. For more information about disks, see [About disks
 // and VHDs for Azure virtual
-// machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
+// machines](https://learn.microsoft.com/azure/virtual-machines/managed-disks-overview).
 func (o VirtualMachineScaleSetStorageProfileOutput) DataDisks() VirtualMachineScaleSetDataDiskArrayOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetStorageProfile) []VirtualMachineScaleSetDataDisk { return v.DataDisks }).(VirtualMachineScaleSetDataDiskArrayOutput)
 }
@@ -17423,7 +17423,7 @@ func (o VirtualMachineScaleSetStorageProfileOutput) ImageReference() ImageRefere
 // Specifies information about the operating system disk used by the virtual
 // machines in the scale set. For more information about disks, see [About disks
 // and VHDs for Azure virtual
-// machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
+// machines](https://learn.microsoft.com/azure/virtual-machines/managed-disks-overview).
 func (o VirtualMachineScaleSetStorageProfileOutput) OsDisk() VirtualMachineScaleSetOSDiskPtrOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetStorageProfile) *VirtualMachineScaleSetOSDisk { return v.OsDisk }).(VirtualMachineScaleSetOSDiskPtrOutput)
 }
@@ -17455,7 +17455,7 @@ func (o VirtualMachineScaleSetStorageProfilePtrOutput) Elem() VirtualMachineScal
 // Specifies the parameters that are used to add data disks to the virtual
 // machines in the scale set. For more information about disks, see [About disks
 // and VHDs for Azure virtual
-// machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
+// machines](https://learn.microsoft.com/azure/virtual-machines/managed-disks-overview).
 func (o VirtualMachineScaleSetStorageProfilePtrOutput) DataDisks() VirtualMachineScaleSetDataDiskArrayOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetStorageProfile) []VirtualMachineScaleSetDataDisk {
 		if v == nil {
@@ -17491,7 +17491,7 @@ func (o VirtualMachineScaleSetStorageProfilePtrOutput) ImageReference() ImageRef
 // Specifies information about the operating system disk used by the virtual
 // machines in the scale set. For more information about disks, see [About disks
 // and VHDs for Azure virtual
-// machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
+// machines](https://learn.microsoft.com/azure/virtual-machines/managed-disks-overview).
 func (o VirtualMachineScaleSetStorageProfilePtrOutput) OsDisk() VirtualMachineScaleSetOSDiskPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetStorageProfile) *VirtualMachineScaleSetOSDisk {
 		if v == nil {
@@ -17506,7 +17506,7 @@ type VirtualMachineScaleSetStorageProfileResponse struct {
 	// Specifies the parameters that are used to add data disks to the virtual
 	// machines in the scale set. For more information about disks, see [About disks
 	// and VHDs for Azure virtual
-	// machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
+	// machines](https://learn.microsoft.com/azure/virtual-machines/managed-disks-overview).
 	DataDisks []VirtualMachineScaleSetDataDiskResponse `pulumi:"dataDisks"`
 	// Specifies the disk controller type configured for the virtual machines in the scale set. Minimum api-version: 2022-08-01
 	DiskControllerType *string `pulumi:"diskControllerType"`
@@ -17518,7 +17518,7 @@ type VirtualMachineScaleSetStorageProfileResponse struct {
 	// Specifies information about the operating system disk used by the virtual
 	// machines in the scale set. For more information about disks, see [About disks
 	// and VHDs for Azure virtual
-	// machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
+	// machines](https://learn.microsoft.com/azure/virtual-machines/managed-disks-overview).
 	OsDisk *VirtualMachineScaleSetOSDiskResponse `pulumi:"osDisk"`
 }
 
@@ -17540,7 +17540,7 @@ func (o VirtualMachineScaleSetStorageProfileResponseOutput) ToVirtualMachineScal
 // Specifies the parameters that are used to add data disks to the virtual
 // machines in the scale set. For more information about disks, see [About disks
 // and VHDs for Azure virtual
-// machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
+// machines](https://learn.microsoft.com/azure/virtual-machines/managed-disks-overview).
 func (o VirtualMachineScaleSetStorageProfileResponseOutput) DataDisks() VirtualMachineScaleSetDataDiskResponseArrayOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetStorageProfileResponse) []VirtualMachineScaleSetDataDiskResponse {
 		return v.DataDisks
@@ -17563,7 +17563,7 @@ func (o VirtualMachineScaleSetStorageProfileResponseOutput) ImageReference() Ima
 // Specifies information about the operating system disk used by the virtual
 // machines in the scale set. For more information about disks, see [About disks
 // and VHDs for Azure virtual
-// machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
+// machines](https://learn.microsoft.com/azure/virtual-machines/managed-disks-overview).
 func (o VirtualMachineScaleSetStorageProfileResponseOutput) OsDisk() VirtualMachineScaleSetOSDiskResponsePtrOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetStorageProfileResponse) *VirtualMachineScaleSetOSDiskResponse {
 		return v.OsDisk
@@ -17597,7 +17597,7 @@ func (o VirtualMachineScaleSetStorageProfileResponsePtrOutput) Elem() VirtualMac
 // Specifies the parameters that are used to add data disks to the virtual
 // machines in the scale set. For more information about disks, see [About disks
 // and VHDs for Azure virtual
-// machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
+// machines](https://learn.microsoft.com/azure/virtual-machines/managed-disks-overview).
 func (o VirtualMachineScaleSetStorageProfileResponsePtrOutput) DataDisks() VirtualMachineScaleSetDataDiskResponseArrayOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetStorageProfileResponse) []VirtualMachineScaleSetDataDiskResponse {
 		if v == nil {
@@ -17633,7 +17633,7 @@ func (o VirtualMachineScaleSetStorageProfileResponsePtrOutput) ImageReference() 
 // Specifies information about the operating system disk used by the virtual
 // machines in the scale set. For more information about disks, see [About disks
 // and VHDs for Azure virtual
-// machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
+// machines](https://learn.microsoft.com/azure/virtual-machines/managed-disks-overview).
 func (o VirtualMachineScaleSetStorageProfileResponsePtrOutput) OsDisk() VirtualMachineScaleSetOSDiskResponsePtrOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetStorageProfileResponse) *VirtualMachineScaleSetOSDiskResponse {
 		if v == nil {
@@ -18015,16 +18015,16 @@ type WinRMListener struct {
 	// This is the URL of a certificate that has been uploaded to Key Vault as a
 	// secret. For adding a secret to the Key Vault, see [Add a key or secret to the
 	// key
-	// vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started/#add).
+	// vault](https://learn.microsoft.com/azure/key-vault/key-vault-get-started/#add).
 	// In this case, your certificate needs to be the Base64 encoding of the following
 	// JSON Object which is encoded in UTF-8: <br><br> {<br>
 	// "data":"<Base64-encoded-certificate>",<br>  "dataType":"pfx",<br>
 	// "password":"<pfx-file-password>"<br>} <br> To install certificates on a virtual
 	// machine it is recommended to use the [Azure Key Vault virtual machine extension
 	// for
-	// Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
+	// Linux](https://learn.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
 	// or the [Azure Key Vault virtual machine extension for
-	// Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
+	// Windows](https://learn.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
 	CertificateUrl *string `pulumi:"certificateUrl"`
 	// Specifies the protocol of WinRM listener. Possible values are: **http,**
 	// **https.**
@@ -18047,16 +18047,16 @@ type WinRMListenerArgs struct {
 	// This is the URL of a certificate that has been uploaded to Key Vault as a
 	// secret. For adding a secret to the Key Vault, see [Add a key or secret to the
 	// key
-	// vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started/#add).
+	// vault](https://learn.microsoft.com/azure/key-vault/key-vault-get-started/#add).
 	// In this case, your certificate needs to be the Base64 encoding of the following
 	// JSON Object which is encoded in UTF-8: <br><br> {<br>
 	// "data":"<Base64-encoded-certificate>",<br>  "dataType":"pfx",<br>
 	// "password":"<pfx-file-password>"<br>} <br> To install certificates on a virtual
 	// machine it is recommended to use the [Azure Key Vault virtual machine extension
 	// for
-	// Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
+	// Linux](https://learn.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
 	// or the [Azure Key Vault virtual machine extension for
-	// Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
+	// Windows](https://learn.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
 	CertificateUrl pulumi.StringPtrInput `pulumi:"certificateUrl"`
 	// Specifies the protocol of WinRM listener. Possible values are: **http,**
 	// **https.**
@@ -18118,16 +18118,16 @@ func (o WinRMListenerOutput) ToWinRMListenerOutputWithContext(ctx context.Contex
 // This is the URL of a certificate that has been uploaded to Key Vault as a
 // secret. For adding a secret to the Key Vault, see [Add a key or secret to the
 // key
-// vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started/#add).
+// vault](https://learn.microsoft.com/azure/key-vault/key-vault-get-started/#add).
 // In this case, your certificate needs to be the Base64 encoding of the following
 // JSON Object which is encoded in UTF-8: <br><br> {<br>
 // "data":"<Base64-encoded-certificate>",<br>  "dataType":"pfx",<br>
 // "password":"<pfx-file-password>"<br>} <br> To install certificates on a virtual
 // machine it is recommended to use the [Azure Key Vault virtual machine extension
 // for
-// Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
+// Linux](https://learn.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
 // or the [Azure Key Vault virtual machine extension for
-// Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
+// Windows](https://learn.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
 func (o WinRMListenerOutput) CertificateUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WinRMListener) *string { return v.CertificateUrl }).(pulumi.StringPtrOutput)
 }
@@ -18163,16 +18163,16 @@ type WinRMListenerResponse struct {
 	// This is the URL of a certificate that has been uploaded to Key Vault as a
 	// secret. For adding a secret to the Key Vault, see [Add a key or secret to the
 	// key
-	// vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started/#add).
+	// vault](https://learn.microsoft.com/azure/key-vault/key-vault-get-started/#add).
 	// In this case, your certificate needs to be the Base64 encoding of the following
 	// JSON Object which is encoded in UTF-8: <br><br> {<br>
 	// "data":"<Base64-encoded-certificate>",<br>  "dataType":"pfx",<br>
 	// "password":"<pfx-file-password>"<br>} <br> To install certificates on a virtual
 	// machine it is recommended to use the [Azure Key Vault virtual machine extension
 	// for
-	// Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
+	// Linux](https://learn.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
 	// or the [Azure Key Vault virtual machine extension for
-	// Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
+	// Windows](https://learn.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
 	CertificateUrl *string `pulumi:"certificateUrl"`
 	// Specifies the protocol of WinRM listener. Possible values are: **http,**
 	// **https.**
@@ -18197,16 +18197,16 @@ func (o WinRMListenerResponseOutput) ToWinRMListenerResponseOutputWithContext(ct
 // This is the URL of a certificate that has been uploaded to Key Vault as a
 // secret. For adding a secret to the Key Vault, see [Add a key or secret to the
 // key
-// vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started/#add).
+// vault](https://learn.microsoft.com/azure/key-vault/key-vault-get-started/#add).
 // In this case, your certificate needs to be the Base64 encoding of the following
 // JSON Object which is encoded in UTF-8: <br><br> {<br>
 // "data":"<Base64-encoded-certificate>",<br>  "dataType":"pfx",<br>
 // "password":"<pfx-file-password>"<br>} <br> To install certificates on a virtual
 // machine it is recommended to use the [Azure Key Vault virtual machine extension
 // for
-// Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
+// Linux](https://learn.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
 // or the [Azure Key Vault virtual machine extension for
-// Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
+// Windows](https://learn.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
 func (o WinRMListenerResponseOutput) CertificateUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WinRMListenerResponse) *string { return v.CertificateUrl }).(pulumi.StringPtrOutput)
 }
@@ -18258,9 +18258,9 @@ type WindowsConfiguration struct {
 	ProvisionVMAgent *bool `pulumi:"provisionVMAgent"`
 	// Specifies the time zone of the virtual machine. e.g. "Pacific Standard Time".
 	// Possible values can be
-	// [TimeZoneInfo.Id](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.id?#System_TimeZoneInfo_Id)
+	// [TimeZoneInfo.Id](https://learn.microsoft.com/dotnet/api/system.timezoneinfo.id?#System_TimeZoneInfo_Id)
 	// value from time zones returned by
-	// [TimeZoneInfo.GetSystemTimeZones](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.getsystemtimezones).
+	// [TimeZoneInfo.GetSystemTimeZones](https://learn.microsoft.com/dotnet/api/system.timezoneinfo.getsystemtimezones).
 	TimeZone *string `pulumi:"timeZone"`
 	// Specifies the Windows Remote Management listeners. This enables remote Windows
 	// PowerShell.
@@ -18299,9 +18299,9 @@ type WindowsConfigurationArgs struct {
 	ProvisionVMAgent pulumi.BoolPtrInput `pulumi:"provisionVMAgent"`
 	// Specifies the time zone of the virtual machine. e.g. "Pacific Standard Time".
 	// Possible values can be
-	// [TimeZoneInfo.Id](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.id?#System_TimeZoneInfo_Id)
+	// [TimeZoneInfo.Id](https://learn.microsoft.com/dotnet/api/system.timezoneinfo.id?#System_TimeZoneInfo_Id)
 	// value from time zones returned by
-	// [TimeZoneInfo.GetSystemTimeZones](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.getsystemtimezones).
+	// [TimeZoneInfo.GetSystemTimeZones](https://learn.microsoft.com/dotnet/api/system.timezoneinfo.getsystemtimezones).
 	TimeZone pulumi.StringPtrInput `pulumi:"timeZone"`
 	// Specifies the Windows Remote Management listeners. This enables remote Windows
 	// PowerShell.
@@ -18420,9 +18420,9 @@ func (o WindowsConfigurationOutput) ProvisionVMAgent() pulumi.BoolPtrOutput {
 
 // Specifies the time zone of the virtual machine. e.g. "Pacific Standard Time".
 // Possible values can be
-// [TimeZoneInfo.Id](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.id?#System_TimeZoneInfo_Id)
+// [TimeZoneInfo.Id](https://learn.microsoft.com/dotnet/api/system.timezoneinfo.id?#System_TimeZoneInfo_Id)
 // value from time zones returned by
-// [TimeZoneInfo.GetSystemTimeZones](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.getsystemtimezones).
+// [TimeZoneInfo.GetSystemTimeZones](https://learn.microsoft.com/dotnet/api/system.timezoneinfo.getsystemtimezones).
 func (o WindowsConfigurationOutput) TimeZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WindowsConfiguration) *string { return v.TimeZone }).(pulumi.StringPtrOutput)
 }
@@ -18516,9 +18516,9 @@ func (o WindowsConfigurationPtrOutput) ProvisionVMAgent() pulumi.BoolPtrOutput {
 
 // Specifies the time zone of the virtual machine. e.g. "Pacific Standard Time".
 // Possible values can be
-// [TimeZoneInfo.Id](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.id?#System_TimeZoneInfo_Id)
+// [TimeZoneInfo.Id](https://learn.microsoft.com/dotnet/api/system.timezoneinfo.id?#System_TimeZoneInfo_Id)
 // value from time zones returned by
-// [TimeZoneInfo.GetSystemTimeZones](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.getsystemtimezones).
+// [TimeZoneInfo.GetSystemTimeZones](https://learn.microsoft.com/dotnet/api/system.timezoneinfo.getsystemtimezones).
 func (o WindowsConfigurationPtrOutput) TimeZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WindowsConfiguration) *string {
 		if v == nil {
@@ -18560,9 +18560,9 @@ type WindowsConfigurationResponse struct {
 	ProvisionVMAgent *bool `pulumi:"provisionVMAgent"`
 	// Specifies the time zone of the virtual machine. e.g. "Pacific Standard Time".
 	// Possible values can be
-	// [TimeZoneInfo.Id](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.id?#System_TimeZoneInfo_Id)
+	// [TimeZoneInfo.Id](https://learn.microsoft.com/dotnet/api/system.timezoneinfo.id?#System_TimeZoneInfo_Id)
 	// value from time zones returned by
-	// [TimeZoneInfo.GetSystemTimeZones](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.getsystemtimezones).
+	// [TimeZoneInfo.GetSystemTimeZones](https://learn.microsoft.com/dotnet/api/system.timezoneinfo.getsystemtimezones).
 	TimeZone *string `pulumi:"timeZone"`
 	// Specifies the Windows Remote Management listeners. This enables remote Windows
 	// PowerShell.
@@ -18620,9 +18620,9 @@ func (o WindowsConfigurationResponseOutput) ProvisionVMAgent() pulumi.BoolPtrOut
 
 // Specifies the time zone of the virtual machine. e.g. "Pacific Standard Time".
 // Possible values can be
-// [TimeZoneInfo.Id](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.id?#System_TimeZoneInfo_Id)
+// [TimeZoneInfo.Id](https://learn.microsoft.com/dotnet/api/system.timezoneinfo.id?#System_TimeZoneInfo_Id)
 // value from time zones returned by
-// [TimeZoneInfo.GetSystemTimeZones](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.getsystemtimezones).
+// [TimeZoneInfo.GetSystemTimeZones](https://learn.microsoft.com/dotnet/api/system.timezoneinfo.getsystemtimezones).
 func (o WindowsConfigurationResponseOutput) TimeZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WindowsConfigurationResponse) *string { return v.TimeZone }).(pulumi.StringPtrOutput)
 }
@@ -18716,9 +18716,9 @@ func (o WindowsConfigurationResponsePtrOutput) ProvisionVMAgent() pulumi.BoolPtr
 
 // Specifies the time zone of the virtual machine. e.g. "Pacific Standard Time".
 // Possible values can be
-// [TimeZoneInfo.Id](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.id?#System_TimeZoneInfo_Id)
+// [TimeZoneInfo.Id](https://learn.microsoft.com/dotnet/api/system.timezoneinfo.id?#System_TimeZoneInfo_Id)
 // value from time zones returned by
-// [TimeZoneInfo.GetSystemTimeZones](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.getsystemtimezones).
+// [TimeZoneInfo.GetSystemTimeZones](https://learn.microsoft.com/dotnet/api/system.timezoneinfo.getsystemtimezones).
 func (o WindowsConfigurationResponsePtrOutput) TimeZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WindowsConfigurationResponse) *string {
 		if v == nil {

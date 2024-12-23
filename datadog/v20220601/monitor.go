@@ -55,6 +55,12 @@ func NewMonitor(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:datadog/v20230101:Monitor"),
 		},
+		{
+			Type: pulumi.String("azure-native:datadog/v20230707:Monitor"),
+		},
+		{
+			Type: pulumi.String("azure-native:datadog/v20231020:Monitor"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

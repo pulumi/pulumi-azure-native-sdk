@@ -14,7 +14,7 @@ import (
 // Get a Frontend
 // Azure REST API version: 2023-05-01-preview.
 //
-// Other available API versions: 2022-10-01-preview, 2023-11-01, 2024-05-01-preview.
+// Other available API versions: 2022-10-01-preview, 2023-11-01, 2024-05-01-preview, 2025-01-01.
 func LookupFrontendsInterface(ctx *pulumi.Context, args *LookupFrontendsInterfaceArgs, opts ...pulumi.InvokeOption) (*LookupFrontendsInterfaceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFrontendsInterfaceResult

@@ -41,6 +41,12 @@ func NewMonitoredSubscription(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:datadog:MonitoredSubscription"),
 		},
+		{
+			Type: pulumi.String("azure-native:datadog/v20230707:MonitoredSubscription"),
+		},
+		{
+			Type: pulumi.String("azure-native:datadog/v20231020:MonitoredSubscription"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

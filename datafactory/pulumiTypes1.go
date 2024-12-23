@@ -60276,7 +60276,7 @@ type SapOdpLinkedService struct {
 	Server interface{} `pulumi:"server"`
 	// External security product's library to access the SAP server where the table is located. Type: string (or Expression with resultType string).
 	SncLibraryPath interface{} `pulumi:"sncLibraryPath"`
-	// SNC activation indicator to access the SAP server where the table is located. Must be either 0 (off) or 1 (on). Type: string (or Expression with resultType string).
+	// SNC activation flag (Boolean) to access the SAP server where the table is located. Type: boolean (or Expression with resultType boolean).
 	SncMode interface{} `pulumi:"sncMode"`
 	// Initiator's SNC name to access the SAP server where the table is located. Type: string (or Expression with resultType string).
 	SncMyName interface{} `pulumi:"sncMyName"`
@@ -60340,7 +60340,7 @@ type SapOdpLinkedServiceArgs struct {
 	Server pulumi.Input `pulumi:"server"`
 	// External security product's library to access the SAP server where the table is located. Type: string (or Expression with resultType string).
 	SncLibraryPath pulumi.Input `pulumi:"sncLibraryPath"`
-	// SNC activation indicator to access the SAP server where the table is located. Must be either 0 (off) or 1 (on). Type: string (or Expression with resultType string).
+	// SNC activation flag (Boolean) to access the SAP server where the table is located. Type: boolean (or Expression with resultType boolean).
 	SncMode pulumi.Input `pulumi:"sncMode"`
 	// Initiator's SNC name to access the SAP server where the table is located. Type: string (or Expression with resultType string).
 	SncMyName pulumi.Input `pulumi:"sncMyName"`
@@ -60457,7 +60457,7 @@ func (o SapOdpLinkedServiceOutput) SncLibraryPath() pulumi.AnyOutput {
 	return o.ApplyT(func(v SapOdpLinkedService) interface{} { return v.SncLibraryPath }).(pulumi.AnyOutput)
 }
 
-// SNC activation indicator to access the SAP server where the table is located. Must be either 0 (off) or 1 (on). Type: string (or Expression with resultType string).
+// SNC activation flag (Boolean) to access the SAP server where the table is located. Type: boolean (or Expression with resultType boolean).
 func (o SapOdpLinkedServiceOutput) SncMode() pulumi.AnyOutput {
 	return o.ApplyT(func(v SapOdpLinkedService) interface{} { return v.SncMode }).(pulumi.AnyOutput)
 }
@@ -60541,7 +60541,7 @@ type SapOdpLinkedServiceResponse struct {
 	Server interface{} `pulumi:"server"`
 	// External security product's library to access the SAP server where the table is located. Type: string (or Expression with resultType string).
 	SncLibraryPath interface{} `pulumi:"sncLibraryPath"`
-	// SNC activation indicator to access the SAP server where the table is located. Must be either 0 (off) or 1 (on). Type: string (or Expression with resultType string).
+	// SNC activation flag (Boolean) to access the SAP server where the table is located. Type: boolean (or Expression with resultType boolean).
 	SncMode interface{} `pulumi:"sncMode"`
 	// Initiator's SNC name to access the SAP server where the table is located. Type: string (or Expression with resultType string).
 	SncMyName interface{} `pulumi:"sncMyName"`
@@ -60646,7 +60646,7 @@ func (o SapOdpLinkedServiceResponseOutput) SncLibraryPath() pulumi.AnyOutput {
 	return o.ApplyT(func(v SapOdpLinkedServiceResponse) interface{} { return v.SncLibraryPath }).(pulumi.AnyOutput)
 }
 
-// SNC activation indicator to access the SAP server where the table is located. Must be either 0 (off) or 1 (on). Type: string (or Expression with resultType string).
+// SNC activation flag (Boolean) to access the SAP server where the table is located. Type: boolean (or Expression with resultType boolean).
 func (o SapOdpLinkedServiceResponseOutput) SncMode() pulumi.AnyOutput {
 	return o.ApplyT(func(v SapOdpLinkedServiceResponse) interface{} { return v.SncMode }).(pulumi.AnyOutput)
 }
