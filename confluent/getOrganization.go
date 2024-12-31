@@ -14,7 +14,7 @@ import (
 // Organization resource.
 // Azure REST API version: 2021-12-01.
 //
-// Other available API versions: 2020-03-01-preview, 2023-08-22, 2024-02-13.
+// Other available API versions: 2020-03-01-preview, 2023-08-22, 2024-02-13, 2024-07-01.
 func LookupOrganization(ctx *pulumi.Context, args *LookupOrganizationArgs, opts ...pulumi.InvokeOption) (*LookupOrganizationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupOrganizationResult
