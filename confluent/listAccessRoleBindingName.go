@@ -13,6 +13,8 @@ import (
 
 // Details of the role binding names returned on successful response
 // Azure REST API version: 2024-02-13.
+//
+// Other available API versions: 2024-07-01.
 func ListAccessRoleBindingName(ctx *pulumi.Context, args *ListAccessRoleBindingNameArgs, opts ...pulumi.InvokeOption) (*ListAccessRoleBindingNameResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListAccessRoleBindingNameResult

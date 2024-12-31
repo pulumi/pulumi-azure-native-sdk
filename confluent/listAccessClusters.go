@@ -14,7 +14,7 @@ import (
 // List cluster success response
 // Azure REST API version: 2023-08-22.
 //
-// Other available API versions: 2024-02-13.
+// Other available API versions: 2024-02-13, 2024-07-01.
 func ListAccessClusters(ctx *pulumi.Context, args *ListAccessClustersArgs, opts ...pulumi.InvokeOption) (*ListAccessClustersResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListAccessClustersResult
