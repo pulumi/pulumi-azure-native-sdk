@@ -14,7 +14,7 @@ import (
 // Get properties of the provided the Kubernetes cluster feature.
 // Azure REST API version: 2024-06-01-preview.
 //
-// Other available API versions: 2024-07-01.
+// Other available API versions: 2024-07-01, 2024-10-01-preview.
 func LookupKubernetesClusterFeature(ctx *pulumi.Context, args *LookupKubernetesClusterFeatureArgs, opts ...pulumi.InvokeOption) (*LookupKubernetesClusterFeatureResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupKubernetesClusterFeatureResult

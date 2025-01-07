@@ -102,6 +102,9 @@ func NewL3Network(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:networkcloud/v20240601preview:L3Network"),
 		},
+		{
+			Type: pulumi.String("azure-native:networkcloud/v20241001preview:L3Network"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

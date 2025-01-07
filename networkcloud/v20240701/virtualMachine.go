@@ -134,6 +134,9 @@ func NewVirtualMachine(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:networkcloud/v20240601preview:VirtualMachine"),
 		},
+		{
+			Type: pulumi.String("azure-native:networkcloud/v20241001preview:VirtualMachine"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

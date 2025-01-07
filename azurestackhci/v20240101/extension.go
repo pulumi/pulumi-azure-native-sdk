@@ -123,6 +123,9 @@ func NewExtension(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20240901preview:Extension"),
 		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20241201preview:Extension"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

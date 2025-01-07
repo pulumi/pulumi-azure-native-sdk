@@ -64020,6 +64020,8 @@ type RegistryType struct {
 	RegionDetails []RegistryRegionArmDetails `pulumi:"regionDetails"`
 	// Private endpoint connections info used for pending connections in private link portal
 	RegistryPrivateEndpointConnections []RegistryPrivateEndpointConnection `pulumi:"registryPrivateEndpointConnections"`
+	// List of tuples containing Guid and SyndicatedRegistry
+	SyndicatedRegistries []RegistrySyndicatedRegistries `pulumi:"syndicatedRegistries"`
 }
 
 // RegistryTypeInput is an input type that accepts RegistryTypeArgs and RegistryTypeOutput values.
@@ -64050,6 +64052,8 @@ type RegistryTypeArgs struct {
 	RegionDetails RegistryRegionArmDetailsArrayInput `pulumi:"regionDetails"`
 	// Private endpoint connections info used for pending connections in private link portal
 	RegistryPrivateEndpointConnections RegistryPrivateEndpointConnectionArrayInput `pulumi:"registryPrivateEndpointConnections"`
+	// List of tuples containing Guid and SyndicatedRegistry
+	SyndicatedRegistries RegistrySyndicatedRegistriesArrayInput `pulumi:"syndicatedRegistries"`
 }
 
 func (RegistryTypeArgs) ElementType() reflect.Type {
@@ -64113,6 +64117,11 @@ func (o RegistryTypeOutput) RegionDetails() RegistryRegionArmDetailsArrayOutput 
 // Private endpoint connections info used for pending connections in private link portal
 func (o RegistryTypeOutput) RegistryPrivateEndpointConnections() RegistryPrivateEndpointConnectionArrayOutput {
 	return o.ApplyT(func(v RegistryType) []RegistryPrivateEndpointConnection { return v.RegistryPrivateEndpointConnections }).(RegistryPrivateEndpointConnectionArrayOutput)
+}
+
+// List of tuples containing Guid and SyndicatedRegistry
+func (o RegistryTypeOutput) SyndicatedRegistries() RegistrySyndicatedRegistriesArrayOutput {
+	return o.ApplyT(func(v RegistryType) []RegistrySyndicatedRegistries { return v.SyndicatedRegistries }).(RegistrySyndicatedRegistriesArrayOutput)
 }
 
 type RegistryListCredentialsResultResponse struct {
@@ -65176,6 +65185,8 @@ type RegistryResponse struct {
 	RegionDetails []RegistryRegionArmDetailsResponse `pulumi:"regionDetails"`
 	// Private endpoint connections info used for pending connections in private link portal
 	RegistryPrivateEndpointConnections []RegistryPrivateEndpointConnectionResponse `pulumi:"registryPrivateEndpointConnections"`
+	// List of tuples containing Guid and SyndicatedRegistry
+	SyndicatedRegistries []RegistryResponseSyndicatedRegistries `pulumi:"syndicatedRegistries"`
 }
 
 // Details of the Registry
@@ -65236,418 +65247,166 @@ func (o RegistryResponseOutput) RegistryPrivateEndpointConnections() RegistryPri
 	}).(RegistryPrivateEndpointConnectionResponseArrayOutput)
 }
 
-// Regression task in AutoML Table vertical.
-type Regression struct {
-	// Columns to use for CVSplit data.
-	CvSplitColumnNames []string `pulumi:"cvSplitColumnNames"`
-	// Featurization inputs needed for AutoML job.
-	FeaturizationSettings *TableVerticalFeaturizationSettings `pulumi:"featurizationSettings"`
-	// Execution constraints for AutoMLJob.
-	LimitSettings *TableVerticalLimitSettings `pulumi:"limitSettings"`
-	// Log verbosity for the job.
-	LogVerbosity *string `pulumi:"logVerbosity"`
-	// Number of cross validation folds to be applied on training dataset
-	// when validation dataset is not provided.
-	NCrossValidations interface{} `pulumi:"nCrossValidations"`
-	// Primary metric for regression task.
-	PrimaryMetric *string `pulumi:"primaryMetric"`
-	// Target column name: This is prediction values column.
-	// Also known as label column name in context of classification tasks.
-	TargetColumnName *string `pulumi:"targetColumnName"`
-	// AutoMLJob Task type.
-	// Expected value is 'Regression'.
-	TaskType string `pulumi:"taskType"`
-	// Test data input.
-	TestData *MLTableJobInput `pulumi:"testData"`
-	// The fraction of test dataset that needs to be set aside for validation purpose.
-	// Values between (0.0 , 1.0)
-	// Applied when validation dataset is not provided.
-	TestDataSize *float64 `pulumi:"testDataSize"`
-	// [Required] Training data input.
-	TrainingData MLTableJobInput `pulumi:"trainingData"`
-	// Inputs for training phase for an AutoML Job.
-	TrainingSettings *RegressionTrainingSettings `pulumi:"trainingSettings"`
-	// Validation data inputs.
-	ValidationData *MLTableJobInput `pulumi:"validationData"`
-	// The fraction of training dataset that needs to be set aside for validation purpose.
-	// Values between (0.0 , 1.0)
-	// Applied when validation dataset is not provided.
-	ValidationDataSize *float64 `pulumi:"validationDataSize"`
-	// The name of the sample weight column. Automated ML supports a weighted column as an input, causing rows in the data to be weighted up or down.
-	WeightColumnName *string `pulumi:"weightColumnName"`
+// List of tuples containing Guid and SyndicatedRegistry
+func (o RegistryResponseOutput) SyndicatedRegistries() RegistryResponseSyndicatedRegistriesArrayOutput {
+	return o.ApplyT(func(v RegistryResponse) []RegistryResponseSyndicatedRegistries { return v.SyndicatedRegistries }).(RegistryResponseSyndicatedRegistriesArrayOutput)
 }
 
-// Defaults sets the appropriate defaults for Regression
-func (val *Regression) Defaults() *Regression {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	tmp.FeaturizationSettings = tmp.FeaturizationSettings.Defaults()
-
-	tmp.LimitSettings = tmp.LimitSettings.Defaults()
-
-	if tmp.LogVerbosity == nil {
-		logVerbosity_ := "Info"
-		tmp.LogVerbosity = &logVerbosity_
-	}
-	if tmp.PrimaryMetric == nil {
-		primaryMetric_ := "NormalizedRootMeanSquaredError"
-		tmp.PrimaryMetric = &primaryMetric_
-	}
-	tmp.TestData = tmp.TestData.Defaults()
-
-	tmp.TrainingData = *tmp.TrainingData.Defaults()
-
-	tmp.TrainingSettings = tmp.TrainingSettings.Defaults()
-
-	tmp.ValidationData = tmp.ValidationData.Defaults()
-
-	return &tmp
+type RegistryResponseSyndicatedRegistries struct {
+	// A registry that is syndicated
+	SyndicatedRegistry *SyndicatedRegistryResponse `pulumi:"syndicatedRegistry"`
+	// The Guid of the syndicated registry
+	SyndicatedRegistryGuid *string `pulumi:"syndicatedRegistryGuid"`
 }
 
-// RegressionInput is an input type that accepts RegressionArgs and RegressionOutput values.
-// You can construct a concrete instance of `RegressionInput` via:
+type RegistryResponseSyndicatedRegistriesOutput struct{ *pulumi.OutputState }
+
+func (RegistryResponseSyndicatedRegistriesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegistryResponseSyndicatedRegistries)(nil)).Elem()
+}
+
+func (o RegistryResponseSyndicatedRegistriesOutput) ToRegistryResponseSyndicatedRegistriesOutput() RegistryResponseSyndicatedRegistriesOutput {
+	return o
+}
+
+func (o RegistryResponseSyndicatedRegistriesOutput) ToRegistryResponseSyndicatedRegistriesOutputWithContext(ctx context.Context) RegistryResponseSyndicatedRegistriesOutput {
+	return o
+}
+
+// A registry that is syndicated
+func (o RegistryResponseSyndicatedRegistriesOutput) SyndicatedRegistry() SyndicatedRegistryResponsePtrOutput {
+	return o.ApplyT(func(v RegistryResponseSyndicatedRegistries) *SyndicatedRegistryResponse { return v.SyndicatedRegistry }).(SyndicatedRegistryResponsePtrOutput)
+}
+
+// The Guid of the syndicated registry
+func (o RegistryResponseSyndicatedRegistriesOutput) SyndicatedRegistryGuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegistryResponseSyndicatedRegistries) *string { return v.SyndicatedRegistryGuid }).(pulumi.StringPtrOutput)
+}
+
+type RegistryResponseSyndicatedRegistriesArrayOutput struct{ *pulumi.OutputState }
+
+func (RegistryResponseSyndicatedRegistriesArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegistryResponseSyndicatedRegistries)(nil)).Elem()
+}
+
+func (o RegistryResponseSyndicatedRegistriesArrayOutput) ToRegistryResponseSyndicatedRegistriesArrayOutput() RegistryResponseSyndicatedRegistriesArrayOutput {
+	return o
+}
+
+func (o RegistryResponseSyndicatedRegistriesArrayOutput) ToRegistryResponseSyndicatedRegistriesArrayOutputWithContext(ctx context.Context) RegistryResponseSyndicatedRegistriesArrayOutput {
+	return o
+}
+
+func (o RegistryResponseSyndicatedRegistriesArrayOutput) Index(i pulumi.IntInput) RegistryResponseSyndicatedRegistriesOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegistryResponseSyndicatedRegistries {
+		return vs[0].([]RegistryResponseSyndicatedRegistries)[vs[1].(int)]
+	}).(RegistryResponseSyndicatedRegistriesOutput)
+}
+
+type RegistrySyndicatedRegistries struct {
+	// A registry that is syndicated
+	SyndicatedRegistry *SyndicatedRegistry `pulumi:"syndicatedRegistry"`
+	// The Guid of the syndicated registry
+	SyndicatedRegistryGuid *string `pulumi:"syndicatedRegistryGuid"`
+}
+
+// RegistrySyndicatedRegistriesInput is an input type that accepts RegistrySyndicatedRegistriesArgs and RegistrySyndicatedRegistriesOutput values.
+// You can construct a concrete instance of `RegistrySyndicatedRegistriesInput` via:
 //
-//	RegressionArgs{...}
-type RegressionInput interface {
+//	RegistrySyndicatedRegistriesArgs{...}
+type RegistrySyndicatedRegistriesInput interface {
 	pulumi.Input
 
-	ToRegressionOutput() RegressionOutput
-	ToRegressionOutputWithContext(context.Context) RegressionOutput
+	ToRegistrySyndicatedRegistriesOutput() RegistrySyndicatedRegistriesOutput
+	ToRegistrySyndicatedRegistriesOutputWithContext(context.Context) RegistrySyndicatedRegistriesOutput
 }
 
-// Regression task in AutoML Table vertical.
-type RegressionArgs struct {
-	// Columns to use for CVSplit data.
-	CvSplitColumnNames pulumi.StringArrayInput `pulumi:"cvSplitColumnNames"`
-	// Featurization inputs needed for AutoML job.
-	FeaturizationSettings TableVerticalFeaturizationSettingsPtrInput `pulumi:"featurizationSettings"`
-	// Execution constraints for AutoMLJob.
-	LimitSettings TableVerticalLimitSettingsPtrInput `pulumi:"limitSettings"`
-	// Log verbosity for the job.
-	LogVerbosity pulumi.StringPtrInput `pulumi:"logVerbosity"`
-	// Number of cross validation folds to be applied on training dataset
-	// when validation dataset is not provided.
-	NCrossValidations pulumi.Input `pulumi:"nCrossValidations"`
-	// Primary metric for regression task.
-	PrimaryMetric pulumi.StringPtrInput `pulumi:"primaryMetric"`
-	// Target column name: This is prediction values column.
-	// Also known as label column name in context of classification tasks.
-	TargetColumnName pulumi.StringPtrInput `pulumi:"targetColumnName"`
-	// AutoMLJob Task type.
-	// Expected value is 'Regression'.
-	TaskType pulumi.StringInput `pulumi:"taskType"`
-	// Test data input.
-	TestData MLTableJobInputPtrInput `pulumi:"testData"`
-	// The fraction of test dataset that needs to be set aside for validation purpose.
-	// Values between (0.0 , 1.0)
-	// Applied when validation dataset is not provided.
-	TestDataSize pulumi.Float64PtrInput `pulumi:"testDataSize"`
-	// [Required] Training data input.
-	TrainingData MLTableJobInputInput `pulumi:"trainingData"`
-	// Inputs for training phase for an AutoML Job.
-	TrainingSettings RegressionTrainingSettingsPtrInput `pulumi:"trainingSettings"`
-	// Validation data inputs.
-	ValidationData MLTableJobInputPtrInput `pulumi:"validationData"`
-	// The fraction of training dataset that needs to be set aside for validation purpose.
-	// Values between (0.0 , 1.0)
-	// Applied when validation dataset is not provided.
-	ValidationDataSize pulumi.Float64PtrInput `pulumi:"validationDataSize"`
-	// The name of the sample weight column. Automated ML supports a weighted column as an input, causing rows in the data to be weighted up or down.
-	WeightColumnName pulumi.StringPtrInput `pulumi:"weightColumnName"`
+type RegistrySyndicatedRegistriesArgs struct {
+	// A registry that is syndicated
+	SyndicatedRegistry SyndicatedRegistryPtrInput `pulumi:"syndicatedRegistry"`
+	// The Guid of the syndicated registry
+	SyndicatedRegistryGuid pulumi.StringPtrInput `pulumi:"syndicatedRegistryGuid"`
 }
 
-// Defaults sets the appropriate defaults for RegressionArgs
-func (val *RegressionArgs) Defaults() *RegressionArgs {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-
-	if tmp.LogVerbosity == nil {
-		tmp.LogVerbosity = pulumi.StringPtr("Info")
-	}
-	if tmp.PrimaryMetric == nil {
-		tmp.PrimaryMetric = pulumi.StringPtr("NormalizedRootMeanSquaredError")
-	}
-
-	return &tmp
-}
-func (RegressionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Regression)(nil)).Elem()
+func (RegistrySyndicatedRegistriesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegistrySyndicatedRegistries)(nil)).Elem()
 }
 
-func (i RegressionArgs) ToRegressionOutput() RegressionOutput {
-	return i.ToRegressionOutputWithContext(context.Background())
+func (i RegistrySyndicatedRegistriesArgs) ToRegistrySyndicatedRegistriesOutput() RegistrySyndicatedRegistriesOutput {
+	return i.ToRegistrySyndicatedRegistriesOutputWithContext(context.Background())
 }
 
-func (i RegressionArgs) ToRegressionOutputWithContext(ctx context.Context) RegressionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegressionOutput)
+func (i RegistrySyndicatedRegistriesArgs) ToRegistrySyndicatedRegistriesOutputWithContext(ctx context.Context) RegistrySyndicatedRegistriesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegistrySyndicatedRegistriesOutput)
 }
 
-// Regression task in AutoML Table vertical.
-type RegressionOutput struct{ *pulumi.OutputState }
+// RegistrySyndicatedRegistriesArrayInput is an input type that accepts RegistrySyndicatedRegistriesArray and RegistrySyndicatedRegistriesArrayOutput values.
+// You can construct a concrete instance of `RegistrySyndicatedRegistriesArrayInput` via:
+//
+//	RegistrySyndicatedRegistriesArray{ RegistrySyndicatedRegistriesArgs{...} }
+type RegistrySyndicatedRegistriesArrayInput interface {
+	pulumi.Input
 
-func (RegressionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Regression)(nil)).Elem()
+	ToRegistrySyndicatedRegistriesArrayOutput() RegistrySyndicatedRegistriesArrayOutput
+	ToRegistrySyndicatedRegistriesArrayOutputWithContext(context.Context) RegistrySyndicatedRegistriesArrayOutput
 }
 
-func (o RegressionOutput) ToRegressionOutput() RegressionOutput {
+type RegistrySyndicatedRegistriesArray []RegistrySyndicatedRegistriesInput
+
+func (RegistrySyndicatedRegistriesArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegistrySyndicatedRegistries)(nil)).Elem()
+}
+
+func (i RegistrySyndicatedRegistriesArray) ToRegistrySyndicatedRegistriesArrayOutput() RegistrySyndicatedRegistriesArrayOutput {
+	return i.ToRegistrySyndicatedRegistriesArrayOutputWithContext(context.Background())
+}
+
+func (i RegistrySyndicatedRegistriesArray) ToRegistrySyndicatedRegistriesArrayOutputWithContext(ctx context.Context) RegistrySyndicatedRegistriesArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegistrySyndicatedRegistriesArrayOutput)
+}
+
+type RegistrySyndicatedRegistriesOutput struct{ *pulumi.OutputState }
+
+func (RegistrySyndicatedRegistriesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegistrySyndicatedRegistries)(nil)).Elem()
+}
+
+func (o RegistrySyndicatedRegistriesOutput) ToRegistrySyndicatedRegistriesOutput() RegistrySyndicatedRegistriesOutput {
 	return o
 }
 
-func (o RegressionOutput) ToRegressionOutputWithContext(ctx context.Context) RegressionOutput {
+func (o RegistrySyndicatedRegistriesOutput) ToRegistrySyndicatedRegistriesOutputWithContext(ctx context.Context) RegistrySyndicatedRegistriesOutput {
 	return o
 }
 
-// Columns to use for CVSplit data.
-func (o RegressionOutput) CvSplitColumnNames() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v Regression) []string { return v.CvSplitColumnNames }).(pulumi.StringArrayOutput)
+// A registry that is syndicated
+func (o RegistrySyndicatedRegistriesOutput) SyndicatedRegistry() SyndicatedRegistryPtrOutput {
+	return o.ApplyT(func(v RegistrySyndicatedRegistries) *SyndicatedRegistry { return v.SyndicatedRegistry }).(SyndicatedRegistryPtrOutput)
 }
 
-// Featurization inputs needed for AutoML job.
-func (o RegressionOutput) FeaturizationSettings() TableVerticalFeaturizationSettingsPtrOutput {
-	return o.ApplyT(func(v Regression) *TableVerticalFeaturizationSettings { return v.FeaturizationSettings }).(TableVerticalFeaturizationSettingsPtrOutput)
+// The Guid of the syndicated registry
+func (o RegistrySyndicatedRegistriesOutput) SyndicatedRegistryGuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegistrySyndicatedRegistries) *string { return v.SyndicatedRegistryGuid }).(pulumi.StringPtrOutput)
 }
 
-// Execution constraints for AutoMLJob.
-func (o RegressionOutput) LimitSettings() TableVerticalLimitSettingsPtrOutput {
-	return o.ApplyT(func(v Regression) *TableVerticalLimitSettings { return v.LimitSettings }).(TableVerticalLimitSettingsPtrOutput)
+type RegistrySyndicatedRegistriesArrayOutput struct{ *pulumi.OutputState }
+
+func (RegistrySyndicatedRegistriesArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegistrySyndicatedRegistries)(nil)).Elem()
 }
 
-// Log verbosity for the job.
-func (o RegressionOutput) LogVerbosity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Regression) *string { return v.LogVerbosity }).(pulumi.StringPtrOutput)
-}
-
-// Number of cross validation folds to be applied on training dataset
-// when validation dataset is not provided.
-func (o RegressionOutput) NCrossValidations() pulumi.AnyOutput {
-	return o.ApplyT(func(v Regression) interface{} { return v.NCrossValidations }).(pulumi.AnyOutput)
-}
-
-// Primary metric for regression task.
-func (o RegressionOutput) PrimaryMetric() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Regression) *string { return v.PrimaryMetric }).(pulumi.StringPtrOutput)
-}
-
-// Target column name: This is prediction values column.
-// Also known as label column name in context of classification tasks.
-func (o RegressionOutput) TargetColumnName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Regression) *string { return v.TargetColumnName }).(pulumi.StringPtrOutput)
-}
-
-// AutoMLJob Task type.
-// Expected value is 'Regression'.
-func (o RegressionOutput) TaskType() pulumi.StringOutput {
-	return o.ApplyT(func(v Regression) string { return v.TaskType }).(pulumi.StringOutput)
-}
-
-// Test data input.
-func (o RegressionOutput) TestData() MLTableJobInputPtrOutput {
-	return o.ApplyT(func(v Regression) *MLTableJobInput { return v.TestData }).(MLTableJobInputPtrOutput)
-}
-
-// The fraction of test dataset that needs to be set aside for validation purpose.
-// Values between (0.0 , 1.0)
-// Applied when validation dataset is not provided.
-func (o RegressionOutput) TestDataSize() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v Regression) *float64 { return v.TestDataSize }).(pulumi.Float64PtrOutput)
-}
-
-// [Required] Training data input.
-func (o RegressionOutput) TrainingData() MLTableJobInputOutput {
-	return o.ApplyT(func(v Regression) MLTableJobInput { return v.TrainingData }).(MLTableJobInputOutput)
-}
-
-// Inputs for training phase for an AutoML Job.
-func (o RegressionOutput) TrainingSettings() RegressionTrainingSettingsPtrOutput {
-	return o.ApplyT(func(v Regression) *RegressionTrainingSettings { return v.TrainingSettings }).(RegressionTrainingSettingsPtrOutput)
-}
-
-// Validation data inputs.
-func (o RegressionOutput) ValidationData() MLTableJobInputPtrOutput {
-	return o.ApplyT(func(v Regression) *MLTableJobInput { return v.ValidationData }).(MLTableJobInputPtrOutput)
-}
-
-// The fraction of training dataset that needs to be set aside for validation purpose.
-// Values between (0.0 , 1.0)
-// Applied when validation dataset is not provided.
-func (o RegressionOutput) ValidationDataSize() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v Regression) *float64 { return v.ValidationDataSize }).(pulumi.Float64PtrOutput)
-}
-
-// The name of the sample weight column. Automated ML supports a weighted column as an input, causing rows in the data to be weighted up or down.
-func (o RegressionOutput) WeightColumnName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Regression) *string { return v.WeightColumnName }).(pulumi.StringPtrOutput)
-}
-
-// Regression task in AutoML Table vertical.
-type RegressionResponse struct {
-	// Columns to use for CVSplit data.
-	CvSplitColumnNames []string `pulumi:"cvSplitColumnNames"`
-	// Featurization inputs needed for AutoML job.
-	FeaturizationSettings *TableVerticalFeaturizationSettingsResponse `pulumi:"featurizationSettings"`
-	// Execution constraints for AutoMLJob.
-	LimitSettings *TableVerticalLimitSettingsResponse `pulumi:"limitSettings"`
-	// Log verbosity for the job.
-	LogVerbosity *string `pulumi:"logVerbosity"`
-	// Number of cross validation folds to be applied on training dataset
-	// when validation dataset is not provided.
-	NCrossValidations interface{} `pulumi:"nCrossValidations"`
-	// Primary metric for regression task.
-	PrimaryMetric *string `pulumi:"primaryMetric"`
-	// Target column name: This is prediction values column.
-	// Also known as label column name in context of classification tasks.
-	TargetColumnName *string `pulumi:"targetColumnName"`
-	// AutoMLJob Task type.
-	// Expected value is 'Regression'.
-	TaskType string `pulumi:"taskType"`
-	// Test data input.
-	TestData *MLTableJobInputResponse `pulumi:"testData"`
-	// The fraction of test dataset that needs to be set aside for validation purpose.
-	// Values between (0.0 , 1.0)
-	// Applied when validation dataset is not provided.
-	TestDataSize *float64 `pulumi:"testDataSize"`
-	// [Required] Training data input.
-	TrainingData MLTableJobInputResponse `pulumi:"trainingData"`
-	// Inputs for training phase for an AutoML Job.
-	TrainingSettings *RegressionTrainingSettingsResponse `pulumi:"trainingSettings"`
-	// Validation data inputs.
-	ValidationData *MLTableJobInputResponse `pulumi:"validationData"`
-	// The fraction of training dataset that needs to be set aside for validation purpose.
-	// Values between (0.0 , 1.0)
-	// Applied when validation dataset is not provided.
-	ValidationDataSize *float64 `pulumi:"validationDataSize"`
-	// The name of the sample weight column. Automated ML supports a weighted column as an input, causing rows in the data to be weighted up or down.
-	WeightColumnName *string `pulumi:"weightColumnName"`
-}
-
-// Defaults sets the appropriate defaults for RegressionResponse
-func (val *RegressionResponse) Defaults() *RegressionResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	tmp.FeaturizationSettings = tmp.FeaturizationSettings.Defaults()
-
-	tmp.LimitSettings = tmp.LimitSettings.Defaults()
-
-	if tmp.LogVerbosity == nil {
-		logVerbosity_ := "Info"
-		tmp.LogVerbosity = &logVerbosity_
-	}
-	if tmp.PrimaryMetric == nil {
-		primaryMetric_ := "NormalizedRootMeanSquaredError"
-		tmp.PrimaryMetric = &primaryMetric_
-	}
-	tmp.TestData = tmp.TestData.Defaults()
-
-	tmp.TrainingData = *tmp.TrainingData.Defaults()
-
-	tmp.TrainingSettings = tmp.TrainingSettings.Defaults()
-
-	tmp.ValidationData = tmp.ValidationData.Defaults()
-
-	return &tmp
-}
-
-// Regression task in AutoML Table vertical.
-type RegressionResponseOutput struct{ *pulumi.OutputState }
-
-func (RegressionResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegressionResponse)(nil)).Elem()
-}
-
-func (o RegressionResponseOutput) ToRegressionResponseOutput() RegressionResponseOutput {
+func (o RegistrySyndicatedRegistriesArrayOutput) ToRegistrySyndicatedRegistriesArrayOutput() RegistrySyndicatedRegistriesArrayOutput {
 	return o
 }
 
-func (o RegressionResponseOutput) ToRegressionResponseOutputWithContext(ctx context.Context) RegressionResponseOutput {
+func (o RegistrySyndicatedRegistriesArrayOutput) ToRegistrySyndicatedRegistriesArrayOutputWithContext(ctx context.Context) RegistrySyndicatedRegistriesArrayOutput {
 	return o
 }
 
-// Columns to use for CVSplit data.
-func (o RegressionResponseOutput) CvSplitColumnNames() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v RegressionResponse) []string { return v.CvSplitColumnNames }).(pulumi.StringArrayOutput)
-}
-
-// Featurization inputs needed for AutoML job.
-func (o RegressionResponseOutput) FeaturizationSettings() TableVerticalFeaturizationSettingsResponsePtrOutput {
-	return o.ApplyT(func(v RegressionResponse) *TableVerticalFeaturizationSettingsResponse { return v.FeaturizationSettings }).(TableVerticalFeaturizationSettingsResponsePtrOutput)
-}
-
-// Execution constraints for AutoMLJob.
-func (o RegressionResponseOutput) LimitSettings() TableVerticalLimitSettingsResponsePtrOutput {
-	return o.ApplyT(func(v RegressionResponse) *TableVerticalLimitSettingsResponse { return v.LimitSettings }).(TableVerticalLimitSettingsResponsePtrOutput)
-}
-
-// Log verbosity for the job.
-func (o RegressionResponseOutput) LogVerbosity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RegressionResponse) *string { return v.LogVerbosity }).(pulumi.StringPtrOutput)
-}
-
-// Number of cross validation folds to be applied on training dataset
-// when validation dataset is not provided.
-func (o RegressionResponseOutput) NCrossValidations() pulumi.AnyOutput {
-	return o.ApplyT(func(v RegressionResponse) interface{} { return v.NCrossValidations }).(pulumi.AnyOutput)
-}
-
-// Primary metric for regression task.
-func (o RegressionResponseOutput) PrimaryMetric() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RegressionResponse) *string { return v.PrimaryMetric }).(pulumi.StringPtrOutput)
-}
-
-// Target column name: This is prediction values column.
-// Also known as label column name in context of classification tasks.
-func (o RegressionResponseOutput) TargetColumnName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RegressionResponse) *string { return v.TargetColumnName }).(pulumi.StringPtrOutput)
-}
-
-// AutoMLJob Task type.
-// Expected value is 'Regression'.
-func (o RegressionResponseOutput) TaskType() pulumi.StringOutput {
-	return o.ApplyT(func(v RegressionResponse) string { return v.TaskType }).(pulumi.StringOutput)
-}
-
-// Test data input.
-func (o RegressionResponseOutput) TestData() MLTableJobInputResponsePtrOutput {
-	return o.ApplyT(func(v RegressionResponse) *MLTableJobInputResponse { return v.TestData }).(MLTableJobInputResponsePtrOutput)
-}
-
-// The fraction of test dataset that needs to be set aside for validation purpose.
-// Values between (0.0 , 1.0)
-// Applied when validation dataset is not provided.
-func (o RegressionResponseOutput) TestDataSize() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v RegressionResponse) *float64 { return v.TestDataSize }).(pulumi.Float64PtrOutput)
-}
-
-// [Required] Training data input.
-func (o RegressionResponseOutput) TrainingData() MLTableJobInputResponseOutput {
-	return o.ApplyT(func(v RegressionResponse) MLTableJobInputResponse { return v.TrainingData }).(MLTableJobInputResponseOutput)
-}
-
-// Inputs for training phase for an AutoML Job.
-func (o RegressionResponseOutput) TrainingSettings() RegressionTrainingSettingsResponsePtrOutput {
-	return o.ApplyT(func(v RegressionResponse) *RegressionTrainingSettingsResponse { return v.TrainingSettings }).(RegressionTrainingSettingsResponsePtrOutput)
-}
-
-// Validation data inputs.
-func (o RegressionResponseOutput) ValidationData() MLTableJobInputResponsePtrOutput {
-	return o.ApplyT(func(v RegressionResponse) *MLTableJobInputResponse { return v.ValidationData }).(MLTableJobInputResponsePtrOutput)
-}
-
-// The fraction of training dataset that needs to be set aside for validation purpose.
-// Values between (0.0 , 1.0)
-// Applied when validation dataset is not provided.
-func (o RegressionResponseOutput) ValidationDataSize() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v RegressionResponse) *float64 { return v.ValidationDataSize }).(pulumi.Float64PtrOutput)
-}
-
-// The name of the sample weight column. Automated ML supports a weighted column as an input, causing rows in the data to be weighted up or down.
-func (o RegressionResponseOutput) WeightColumnName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RegressionResponse) *string { return v.WeightColumnName }).(pulumi.StringPtrOutput)
+func (o RegistrySyndicatedRegistriesArrayOutput) Index(i pulumi.IntInput) RegistrySyndicatedRegistriesOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegistrySyndicatedRegistries {
+		return vs[0].([]RegistrySyndicatedRegistries)[vs[1].(int)]
+	}).(RegistrySyndicatedRegistriesOutput)
 }
 
 type ColumnTransformerArrayMap map[string]ColumnTransformerArrayInput
@@ -66535,8 +66294,10 @@ func init() {
 	pulumi.RegisterOutputType(RegistryRegionArmDetailsResponseOutput{})
 	pulumi.RegisterOutputType(RegistryRegionArmDetailsResponseArrayOutput{})
 	pulumi.RegisterOutputType(RegistryResponseOutput{})
-	pulumi.RegisterOutputType(RegressionOutput{})
-	pulumi.RegisterOutputType(RegressionResponseOutput{})
+	pulumi.RegisterOutputType(RegistryResponseSyndicatedRegistriesOutput{})
+	pulumi.RegisterOutputType(RegistryResponseSyndicatedRegistriesArrayOutput{})
+	pulumi.RegisterOutputType(RegistrySyndicatedRegistriesOutput{})
+	pulumi.RegisterOutputType(RegistrySyndicatedRegistriesArrayOutput{})
 	pulumi.RegisterOutputType(ColumnTransformerArrayMapOutput{})
 	pulumi.RegisterOutputType(ColumnTransformerResponseArrayMapOutput{})
 	pulumi.RegisterOutputType(DeltaModelCurrentStateResponseArrayMapOutput{})

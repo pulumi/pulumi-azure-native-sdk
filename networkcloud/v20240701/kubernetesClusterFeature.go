@@ -61,6 +61,9 @@ func NewKubernetesClusterFeature(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:networkcloud/v20240601preview:KubernetesClusterFeature"),
 		},
+		{
+			Type: pulumi.String("azure-native:networkcloud/v20241001preview:KubernetesClusterFeature"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
