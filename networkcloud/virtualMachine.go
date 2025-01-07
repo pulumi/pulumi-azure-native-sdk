@@ -14,7 +14,7 @@ import (
 
 // Azure REST API version: 2023-10-01-preview. Prior API version in Azure Native 1.x: 2022-12-12-preview.
 //
-// Other available API versions: 2023-07-01, 2024-06-01-preview, 2024-07-01.
+// Other available API versions: 2023-07-01, 2024-06-01-preview, 2024-07-01, 2024-10-01-preview.
 type VirtualMachine struct {
 	pulumi.CustomResourceState
 
@@ -136,6 +136,9 @@ func NewVirtualMachine(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:networkcloud/v20240701:VirtualMachine"),
+		},
+		{
+			Type: pulumi.String("azure-native:networkcloud/v20241001preview:VirtualMachine"),
 		},
 	})
 	opts = append(opts, aliases)

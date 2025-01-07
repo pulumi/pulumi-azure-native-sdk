@@ -60,6 +60,9 @@ func NewEdgeDevice(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20240901preview:EdgeDevice"),
 		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20241201preview:EdgeDevice"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -73,6 +73,9 @@ func NewMetricsConfiguration(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:networkcloud/v20240701:MetricsConfiguration"),
 		},
+		{
+			Type: pulumi.String("azure-native:networkcloud/v20241001preview:MetricsConfiguration"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
