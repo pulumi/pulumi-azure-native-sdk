@@ -59,6 +59,12 @@ func NewTopic(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:confluent:Topic"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource Topic
 	err := ctx.RegisterResource("azure-native:confluent/v20240701:Topic", name, args, &resource, opts...)

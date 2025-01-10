@@ -58,6 +58,9 @@ func NewSystem(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights:System"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20241001preview:System"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

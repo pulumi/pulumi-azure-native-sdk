@@ -35,7 +35,7 @@ type LookupAccountResult struct {
 	DashboardUri string `pulumi:"dashboardUri"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
-	// When enabled, this feature allows the workspace to use local auth(through access key) for authentication of test runs.
+	// When enabled, this feature allows the workspace to use local auth (through service access token) for executing operations.
 	LocalAuth *string `pulumi:"localAuth"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
@@ -126,7 +126,7 @@ func (o LookupAccountResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// When enabled, this feature allows the workspace to use local auth(through access key) for authentication of test runs.
+// When enabled, this feature allows the workspace to use local auth (through service access token) for executing operations.
 func (o LookupAccountResultOutput) LocalAuth() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAccountResult) *string { return v.LocalAuth }).(pulumi.StringPtrOutput)
 }

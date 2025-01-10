@@ -195,6 +195,9 @@ func NewWatchlist(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20240401preview:Watchlist"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20241001preview:Watchlist"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

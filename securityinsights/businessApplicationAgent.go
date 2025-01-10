@@ -14,6 +14,8 @@ import (
 
 // Describes the configuration of a Business Application Agent.
 // Azure REST API version: 2024-04-01-preview.
+//
+// Other available API versions: 2024-10-01-preview.
 type BusinessApplicationAgent struct {
 	pulumi.CustomResourceState
 
@@ -54,6 +56,9 @@ func NewBusinessApplicationAgent(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20240401preview:BusinessApplicationAgent"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20241001preview:BusinessApplicationAgent"),
 		},
 	})
 	opts = append(opts, aliases)

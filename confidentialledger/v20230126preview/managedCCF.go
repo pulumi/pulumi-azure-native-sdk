@@ -53,6 +53,9 @@ func NewManagedCCF(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:confidentialledger/v20240709preview:ManagedCCF"),
 		},
+		{
+			Type: pulumi.String("azure-native:confidentialledger/v20240919preview:ManagedCCF"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

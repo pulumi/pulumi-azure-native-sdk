@@ -127,6 +127,9 @@ func NewFileImport(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20240101preview:FileImport"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20241001preview:FileImport"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

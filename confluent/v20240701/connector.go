@@ -49,6 +49,12 @@ func NewConnector(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:confluent:Connector"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource Connector
 	err := ctx.RegisterResource("azure-native:confluent/v20240701:Connector", name, args, &resource, opts...)

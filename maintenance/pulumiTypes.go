@@ -361,7 +361,7 @@ func (o ConfigurationAssignmentFilterPropertiesResponsePtrOutput) TagSettings() 
 
 // Input properties for patching a Linux machine.
 type InputLinuxParameters struct {
-	// Classification category of patches to be patched
+	// Classification category of patches to be patched. Allowed values are 'Critical', 'Security', and 'Other'.
 	ClassificationsToInclude []string `pulumi:"classificationsToInclude"`
 	// Package names to be excluded for patching.
 	PackageNameMasksToExclude []string `pulumi:"packageNameMasksToExclude"`
@@ -382,7 +382,7 @@ type InputLinuxParametersInput interface {
 
 // Input properties for patching a Linux machine.
 type InputLinuxParametersArgs struct {
-	// Classification category of patches to be patched
+	// Classification category of patches to be patched. Allowed values are 'Critical', 'Security', and 'Other'.
 	ClassificationsToInclude pulumi.StringArrayInput `pulumi:"classificationsToInclude"`
 	// Package names to be excluded for patching.
 	PackageNameMasksToExclude pulumi.StringArrayInput `pulumi:"packageNameMasksToExclude"`
@@ -468,7 +468,7 @@ func (o InputLinuxParametersOutput) ToInputLinuxParametersPtrOutputWithContext(c
 	}).(InputLinuxParametersPtrOutput)
 }
 
-// Classification category of patches to be patched
+// Classification category of patches to be patched. Allowed values are 'Critical', 'Security', and 'Other'.
 func (o InputLinuxParametersOutput) ClassificationsToInclude() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v InputLinuxParameters) []string { return v.ClassificationsToInclude }).(pulumi.StringArrayOutput)
 }
@@ -507,7 +507,7 @@ func (o InputLinuxParametersPtrOutput) Elem() InputLinuxParametersOutput {
 	}).(InputLinuxParametersOutput)
 }
 
-// Classification category of patches to be patched
+// Classification category of patches to be patched. Allowed values are 'Critical', 'Security', and 'Other'.
 func (o InputLinuxParametersPtrOutput) ClassificationsToInclude() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *InputLinuxParameters) []string {
 		if v == nil {
@@ -539,7 +539,7 @@ func (o InputLinuxParametersPtrOutput) PackageNameMasksToInclude() pulumi.String
 
 // Input properties for patching a Linux machine.
 type InputLinuxParametersResponse struct {
-	// Classification category of patches to be patched
+	// Classification category of patches to be patched. Allowed values are 'Critical', 'Security', and 'Other'.
 	ClassificationsToInclude []string `pulumi:"classificationsToInclude"`
 	// Package names to be excluded for patching.
 	PackageNameMasksToExclude []string `pulumi:"packageNameMasksToExclude"`
@@ -562,7 +562,7 @@ func (o InputLinuxParametersResponseOutput) ToInputLinuxParametersResponseOutput
 	return o
 }
 
-// Classification category of patches to be patched
+// Classification category of patches to be patched. Allowed values are 'Critical', 'Security', and 'Other'.
 func (o InputLinuxParametersResponseOutput) ClassificationsToInclude() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v InputLinuxParametersResponse) []string { return v.ClassificationsToInclude }).(pulumi.StringArrayOutput)
 }
@@ -601,7 +601,7 @@ func (o InputLinuxParametersResponsePtrOutput) Elem() InputLinuxParametersRespon
 	}).(InputLinuxParametersResponseOutput)
 }
 
-// Classification category of patches to be patched
+// Classification category of patches to be patched. Allowed values are 'Critical', 'Security', and 'Other'.
 func (o InputLinuxParametersResponsePtrOutput) ClassificationsToInclude() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *InputLinuxParametersResponse) []string {
 		if v == nil {
@@ -1014,7 +1014,7 @@ func (o InputPatchConfigurationResponsePtrOutput) WindowsParameters() InputWindo
 
 // Input properties for patching a Windows machine.
 type InputWindowsParameters struct {
-	// Classification category of patches to be patched
+	// Classification category of patches to be patched. Allowed values are 'Critical', 'Security', 'UpdateRollup', 'FeaturePack', 'ServicePack', 'Definition', 'Tools', and 'Updates'.
 	ClassificationsToInclude []string `pulumi:"classificationsToInclude"`
 	// Exclude patches which need reboot
 	ExcludeKbsRequiringReboot *bool `pulumi:"excludeKbsRequiringReboot"`
@@ -1037,7 +1037,7 @@ type InputWindowsParametersInput interface {
 
 // Input properties for patching a Windows machine.
 type InputWindowsParametersArgs struct {
-	// Classification category of patches to be patched
+	// Classification category of patches to be patched. Allowed values are 'Critical', 'Security', 'UpdateRollup', 'FeaturePack', 'ServicePack', 'Definition', 'Tools', and 'Updates'.
 	ClassificationsToInclude pulumi.StringArrayInput `pulumi:"classificationsToInclude"`
 	// Exclude patches which need reboot
 	ExcludeKbsRequiringReboot pulumi.BoolPtrInput `pulumi:"excludeKbsRequiringReboot"`
@@ -1125,7 +1125,7 @@ func (o InputWindowsParametersOutput) ToInputWindowsParametersPtrOutputWithConte
 	}).(InputWindowsParametersPtrOutput)
 }
 
-// Classification category of patches to be patched
+// Classification category of patches to be patched. Allowed values are 'Critical', 'Security', 'UpdateRollup', 'FeaturePack', 'ServicePack', 'Definition', 'Tools', and 'Updates'.
 func (o InputWindowsParametersOutput) ClassificationsToInclude() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v InputWindowsParameters) []string { return v.ClassificationsToInclude }).(pulumi.StringArrayOutput)
 }
@@ -1169,7 +1169,7 @@ func (o InputWindowsParametersPtrOutput) Elem() InputWindowsParametersOutput {
 	}).(InputWindowsParametersOutput)
 }
 
-// Classification category of patches to be patched
+// Classification category of patches to be patched. Allowed values are 'Critical', 'Security', 'UpdateRollup', 'FeaturePack', 'ServicePack', 'Definition', 'Tools', and 'Updates'.
 func (o InputWindowsParametersPtrOutput) ClassificationsToInclude() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *InputWindowsParameters) []string {
 		if v == nil {
@@ -1211,7 +1211,7 @@ func (o InputWindowsParametersPtrOutput) KbNumbersToInclude() pulumi.StringArray
 
 // Input properties for patching a Windows machine.
 type InputWindowsParametersResponse struct {
-	// Classification category of patches to be patched
+	// Classification category of patches to be patched. Allowed values are 'Critical', 'Security', 'UpdateRollup', 'FeaturePack', 'ServicePack', 'Definition', 'Tools', and 'Updates'.
 	ClassificationsToInclude []string `pulumi:"classificationsToInclude"`
 	// Exclude patches which need reboot
 	ExcludeKbsRequiringReboot *bool `pulumi:"excludeKbsRequiringReboot"`
@@ -1236,7 +1236,7 @@ func (o InputWindowsParametersResponseOutput) ToInputWindowsParametersResponseOu
 	return o
 }
 
-// Classification category of patches to be patched
+// Classification category of patches to be patched. Allowed values are 'Critical', 'Security', 'UpdateRollup', 'FeaturePack', 'ServicePack', 'Definition', 'Tools', and 'Updates'.
 func (o InputWindowsParametersResponseOutput) ClassificationsToInclude() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v InputWindowsParametersResponse) []string { return v.ClassificationsToInclude }).(pulumi.StringArrayOutput)
 }
@@ -1280,7 +1280,7 @@ func (o InputWindowsParametersResponsePtrOutput) Elem() InputWindowsParametersRe
 	}).(InputWindowsParametersResponseOutput)
 }
 
-// Classification category of patches to be patched
+// Classification category of patches to be patched. Allowed values are 'Critical', 'Security', 'UpdateRollup', 'FeaturePack', 'ServicePack', 'Definition', 'Tools', and 'Updates'.
 func (o InputWindowsParametersResponsePtrOutput) ClassificationsToInclude() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *InputWindowsParametersResponse) []string {
 		if v == nil {
