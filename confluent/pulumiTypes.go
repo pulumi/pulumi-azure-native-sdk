@@ -13,6 +13,1797 @@ import (
 
 var _ = utilities.GetEnvOrDefault
 
+// The authentication info when auth_type is azureBlobStorageSinkConnector
+type AzureBlobStorageSinkConnectorServiceInfo struct {
+	// The connector service type.
+	// Expected value is 'AzureBlobStorageSinkConnector'.
+	ConnectorServiceType string `pulumi:"connectorServiceType"`
+	// Azure Blob Storage Account Key
+	StorageAccountKey *string `pulumi:"storageAccountKey"`
+	// Azure Blob Storage Account Name
+	StorageAccountName *string `pulumi:"storageAccountName"`
+	// Azure Blob Storage Account Container Name
+	StorageContainerName *string `pulumi:"storageContainerName"`
+}
+
+// AzureBlobStorageSinkConnectorServiceInfoInput is an input type that accepts AzureBlobStorageSinkConnectorServiceInfoArgs and AzureBlobStorageSinkConnectorServiceInfoOutput values.
+// You can construct a concrete instance of `AzureBlobStorageSinkConnectorServiceInfoInput` via:
+//
+//	AzureBlobStorageSinkConnectorServiceInfoArgs{...}
+type AzureBlobStorageSinkConnectorServiceInfoInput interface {
+	pulumi.Input
+
+	ToAzureBlobStorageSinkConnectorServiceInfoOutput() AzureBlobStorageSinkConnectorServiceInfoOutput
+	ToAzureBlobStorageSinkConnectorServiceInfoOutputWithContext(context.Context) AzureBlobStorageSinkConnectorServiceInfoOutput
+}
+
+// The authentication info when auth_type is azureBlobStorageSinkConnector
+type AzureBlobStorageSinkConnectorServiceInfoArgs struct {
+	// The connector service type.
+	// Expected value is 'AzureBlobStorageSinkConnector'.
+	ConnectorServiceType pulumi.StringInput `pulumi:"connectorServiceType"`
+	// Azure Blob Storage Account Key
+	StorageAccountKey pulumi.StringPtrInput `pulumi:"storageAccountKey"`
+	// Azure Blob Storage Account Name
+	StorageAccountName pulumi.StringPtrInput `pulumi:"storageAccountName"`
+	// Azure Blob Storage Account Container Name
+	StorageContainerName pulumi.StringPtrInput `pulumi:"storageContainerName"`
+}
+
+func (AzureBlobStorageSinkConnectorServiceInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureBlobStorageSinkConnectorServiceInfo)(nil)).Elem()
+}
+
+func (i AzureBlobStorageSinkConnectorServiceInfoArgs) ToAzureBlobStorageSinkConnectorServiceInfoOutput() AzureBlobStorageSinkConnectorServiceInfoOutput {
+	return i.ToAzureBlobStorageSinkConnectorServiceInfoOutputWithContext(context.Background())
+}
+
+func (i AzureBlobStorageSinkConnectorServiceInfoArgs) ToAzureBlobStorageSinkConnectorServiceInfoOutputWithContext(ctx context.Context) AzureBlobStorageSinkConnectorServiceInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureBlobStorageSinkConnectorServiceInfoOutput)
+}
+
+func (i AzureBlobStorageSinkConnectorServiceInfoArgs) ToAzureBlobStorageSinkConnectorServiceInfoPtrOutput() AzureBlobStorageSinkConnectorServiceInfoPtrOutput {
+	return i.ToAzureBlobStorageSinkConnectorServiceInfoPtrOutputWithContext(context.Background())
+}
+
+func (i AzureBlobStorageSinkConnectorServiceInfoArgs) ToAzureBlobStorageSinkConnectorServiceInfoPtrOutputWithContext(ctx context.Context) AzureBlobStorageSinkConnectorServiceInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureBlobStorageSinkConnectorServiceInfoOutput).ToAzureBlobStorageSinkConnectorServiceInfoPtrOutputWithContext(ctx)
+}
+
+// AzureBlobStorageSinkConnectorServiceInfoPtrInput is an input type that accepts AzureBlobStorageSinkConnectorServiceInfoArgs, AzureBlobStorageSinkConnectorServiceInfoPtr and AzureBlobStorageSinkConnectorServiceInfoPtrOutput values.
+// You can construct a concrete instance of `AzureBlobStorageSinkConnectorServiceInfoPtrInput` via:
+//
+//	        AzureBlobStorageSinkConnectorServiceInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type AzureBlobStorageSinkConnectorServiceInfoPtrInput interface {
+	pulumi.Input
+
+	ToAzureBlobStorageSinkConnectorServiceInfoPtrOutput() AzureBlobStorageSinkConnectorServiceInfoPtrOutput
+	ToAzureBlobStorageSinkConnectorServiceInfoPtrOutputWithContext(context.Context) AzureBlobStorageSinkConnectorServiceInfoPtrOutput
+}
+
+type azureBlobStorageSinkConnectorServiceInfoPtrType AzureBlobStorageSinkConnectorServiceInfoArgs
+
+func AzureBlobStorageSinkConnectorServiceInfoPtr(v *AzureBlobStorageSinkConnectorServiceInfoArgs) AzureBlobStorageSinkConnectorServiceInfoPtrInput {
+	return (*azureBlobStorageSinkConnectorServiceInfoPtrType)(v)
+}
+
+func (*azureBlobStorageSinkConnectorServiceInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureBlobStorageSinkConnectorServiceInfo)(nil)).Elem()
+}
+
+func (i *azureBlobStorageSinkConnectorServiceInfoPtrType) ToAzureBlobStorageSinkConnectorServiceInfoPtrOutput() AzureBlobStorageSinkConnectorServiceInfoPtrOutput {
+	return i.ToAzureBlobStorageSinkConnectorServiceInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *azureBlobStorageSinkConnectorServiceInfoPtrType) ToAzureBlobStorageSinkConnectorServiceInfoPtrOutputWithContext(ctx context.Context) AzureBlobStorageSinkConnectorServiceInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureBlobStorageSinkConnectorServiceInfoPtrOutput)
+}
+
+// The authentication info when auth_type is azureBlobStorageSinkConnector
+type AzureBlobStorageSinkConnectorServiceInfoOutput struct{ *pulumi.OutputState }
+
+func (AzureBlobStorageSinkConnectorServiceInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureBlobStorageSinkConnectorServiceInfo)(nil)).Elem()
+}
+
+func (o AzureBlobStorageSinkConnectorServiceInfoOutput) ToAzureBlobStorageSinkConnectorServiceInfoOutput() AzureBlobStorageSinkConnectorServiceInfoOutput {
+	return o
+}
+
+func (o AzureBlobStorageSinkConnectorServiceInfoOutput) ToAzureBlobStorageSinkConnectorServiceInfoOutputWithContext(ctx context.Context) AzureBlobStorageSinkConnectorServiceInfoOutput {
+	return o
+}
+
+func (o AzureBlobStorageSinkConnectorServiceInfoOutput) ToAzureBlobStorageSinkConnectorServiceInfoPtrOutput() AzureBlobStorageSinkConnectorServiceInfoPtrOutput {
+	return o.ToAzureBlobStorageSinkConnectorServiceInfoPtrOutputWithContext(context.Background())
+}
+
+func (o AzureBlobStorageSinkConnectorServiceInfoOutput) ToAzureBlobStorageSinkConnectorServiceInfoPtrOutputWithContext(ctx context.Context) AzureBlobStorageSinkConnectorServiceInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureBlobStorageSinkConnectorServiceInfo) *AzureBlobStorageSinkConnectorServiceInfo {
+		return &v
+	}).(AzureBlobStorageSinkConnectorServiceInfoPtrOutput)
+}
+
+// The connector service type.
+// Expected value is 'AzureBlobStorageSinkConnector'.
+func (o AzureBlobStorageSinkConnectorServiceInfoOutput) ConnectorServiceType() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureBlobStorageSinkConnectorServiceInfo) string { return v.ConnectorServiceType }).(pulumi.StringOutput)
+}
+
+// Azure Blob Storage Account Key
+func (o AzureBlobStorageSinkConnectorServiceInfoOutput) StorageAccountKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureBlobStorageSinkConnectorServiceInfo) *string { return v.StorageAccountKey }).(pulumi.StringPtrOutput)
+}
+
+// Azure Blob Storage Account Name
+func (o AzureBlobStorageSinkConnectorServiceInfoOutput) StorageAccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureBlobStorageSinkConnectorServiceInfo) *string { return v.StorageAccountName }).(pulumi.StringPtrOutput)
+}
+
+// Azure Blob Storage Account Container Name
+func (o AzureBlobStorageSinkConnectorServiceInfoOutput) StorageContainerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureBlobStorageSinkConnectorServiceInfo) *string { return v.StorageContainerName }).(pulumi.StringPtrOutput)
+}
+
+type AzureBlobStorageSinkConnectorServiceInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (AzureBlobStorageSinkConnectorServiceInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureBlobStorageSinkConnectorServiceInfo)(nil)).Elem()
+}
+
+func (o AzureBlobStorageSinkConnectorServiceInfoPtrOutput) ToAzureBlobStorageSinkConnectorServiceInfoPtrOutput() AzureBlobStorageSinkConnectorServiceInfoPtrOutput {
+	return o
+}
+
+func (o AzureBlobStorageSinkConnectorServiceInfoPtrOutput) ToAzureBlobStorageSinkConnectorServiceInfoPtrOutputWithContext(ctx context.Context) AzureBlobStorageSinkConnectorServiceInfoPtrOutput {
+	return o
+}
+
+func (o AzureBlobStorageSinkConnectorServiceInfoPtrOutput) Elem() AzureBlobStorageSinkConnectorServiceInfoOutput {
+	return o.ApplyT(func(v *AzureBlobStorageSinkConnectorServiceInfo) AzureBlobStorageSinkConnectorServiceInfo {
+		if v != nil {
+			return *v
+		}
+		var ret AzureBlobStorageSinkConnectorServiceInfo
+		return ret
+	}).(AzureBlobStorageSinkConnectorServiceInfoOutput)
+}
+
+// The connector service type.
+// Expected value is 'AzureBlobStorageSinkConnector'.
+func (o AzureBlobStorageSinkConnectorServiceInfoPtrOutput) ConnectorServiceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureBlobStorageSinkConnectorServiceInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ConnectorServiceType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure Blob Storage Account Key
+func (o AzureBlobStorageSinkConnectorServiceInfoPtrOutput) StorageAccountKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureBlobStorageSinkConnectorServiceInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageAccountKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure Blob Storage Account Name
+func (o AzureBlobStorageSinkConnectorServiceInfoPtrOutput) StorageAccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureBlobStorageSinkConnectorServiceInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageAccountName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure Blob Storage Account Container Name
+func (o AzureBlobStorageSinkConnectorServiceInfoPtrOutput) StorageContainerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureBlobStorageSinkConnectorServiceInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageContainerName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The authentication info when auth_type is azureBlobStorageSinkConnector
+type AzureBlobStorageSinkConnectorServiceInfoResponse struct {
+	// The connector service type.
+	// Expected value is 'AzureBlobStorageSinkConnector'.
+	ConnectorServiceType string `pulumi:"connectorServiceType"`
+	// Azure Blob Storage Account Key
+	StorageAccountKey *string `pulumi:"storageAccountKey"`
+	// Azure Blob Storage Account Name
+	StorageAccountName *string `pulumi:"storageAccountName"`
+	// Azure Blob Storage Account Container Name
+	StorageContainerName *string `pulumi:"storageContainerName"`
+}
+
+// The authentication info when auth_type is azureBlobStorageSinkConnector
+type AzureBlobStorageSinkConnectorServiceInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (AzureBlobStorageSinkConnectorServiceInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureBlobStorageSinkConnectorServiceInfoResponse)(nil)).Elem()
+}
+
+func (o AzureBlobStorageSinkConnectorServiceInfoResponseOutput) ToAzureBlobStorageSinkConnectorServiceInfoResponseOutput() AzureBlobStorageSinkConnectorServiceInfoResponseOutput {
+	return o
+}
+
+func (o AzureBlobStorageSinkConnectorServiceInfoResponseOutput) ToAzureBlobStorageSinkConnectorServiceInfoResponseOutputWithContext(ctx context.Context) AzureBlobStorageSinkConnectorServiceInfoResponseOutput {
+	return o
+}
+
+// The connector service type.
+// Expected value is 'AzureBlobStorageSinkConnector'.
+func (o AzureBlobStorageSinkConnectorServiceInfoResponseOutput) ConnectorServiceType() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureBlobStorageSinkConnectorServiceInfoResponse) string { return v.ConnectorServiceType }).(pulumi.StringOutput)
+}
+
+// Azure Blob Storage Account Key
+func (o AzureBlobStorageSinkConnectorServiceInfoResponseOutput) StorageAccountKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureBlobStorageSinkConnectorServiceInfoResponse) *string { return v.StorageAccountKey }).(pulumi.StringPtrOutput)
+}
+
+// Azure Blob Storage Account Name
+func (o AzureBlobStorageSinkConnectorServiceInfoResponseOutput) StorageAccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureBlobStorageSinkConnectorServiceInfoResponse) *string { return v.StorageAccountName }).(pulumi.StringPtrOutput)
+}
+
+// Azure Blob Storage Account Container Name
+func (o AzureBlobStorageSinkConnectorServiceInfoResponseOutput) StorageContainerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureBlobStorageSinkConnectorServiceInfoResponse) *string { return v.StorageContainerName }).(pulumi.StringPtrOutput)
+}
+
+type AzureBlobStorageSinkConnectorServiceInfoResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AzureBlobStorageSinkConnectorServiceInfoResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureBlobStorageSinkConnectorServiceInfoResponse)(nil)).Elem()
+}
+
+func (o AzureBlobStorageSinkConnectorServiceInfoResponsePtrOutput) ToAzureBlobStorageSinkConnectorServiceInfoResponsePtrOutput() AzureBlobStorageSinkConnectorServiceInfoResponsePtrOutput {
+	return o
+}
+
+func (o AzureBlobStorageSinkConnectorServiceInfoResponsePtrOutput) ToAzureBlobStorageSinkConnectorServiceInfoResponsePtrOutputWithContext(ctx context.Context) AzureBlobStorageSinkConnectorServiceInfoResponsePtrOutput {
+	return o
+}
+
+func (o AzureBlobStorageSinkConnectorServiceInfoResponsePtrOutput) Elem() AzureBlobStorageSinkConnectorServiceInfoResponseOutput {
+	return o.ApplyT(func(v *AzureBlobStorageSinkConnectorServiceInfoResponse) AzureBlobStorageSinkConnectorServiceInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AzureBlobStorageSinkConnectorServiceInfoResponse
+		return ret
+	}).(AzureBlobStorageSinkConnectorServiceInfoResponseOutput)
+}
+
+// The connector service type.
+// Expected value is 'AzureBlobStorageSinkConnector'.
+func (o AzureBlobStorageSinkConnectorServiceInfoResponsePtrOutput) ConnectorServiceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureBlobStorageSinkConnectorServiceInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ConnectorServiceType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure Blob Storage Account Key
+func (o AzureBlobStorageSinkConnectorServiceInfoResponsePtrOutput) StorageAccountKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureBlobStorageSinkConnectorServiceInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageAccountKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure Blob Storage Account Name
+func (o AzureBlobStorageSinkConnectorServiceInfoResponsePtrOutput) StorageAccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureBlobStorageSinkConnectorServiceInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageAccountName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure Blob Storage Account Container Name
+func (o AzureBlobStorageSinkConnectorServiceInfoResponsePtrOutput) StorageContainerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureBlobStorageSinkConnectorServiceInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageContainerName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The connector service type is AzureBlobStorageSourceConnector
+type AzureBlobStorageSourceConnectorServiceInfo struct {
+	// The connector service type.
+	// Expected value is 'AzureBlobStorageSourceConnector'.
+	ConnectorServiceType string `pulumi:"connectorServiceType"`
+	// Azure Blob Storage Account Key
+	StorageAccountKey *string `pulumi:"storageAccountKey"`
+	// Azure Blob Storage Account Name
+	StorageAccountName *string `pulumi:"storageAccountName"`
+	// Azure Blob Storage Account Container Name
+	StorageContainerName *string `pulumi:"storageContainerName"`
+}
+
+// AzureBlobStorageSourceConnectorServiceInfoInput is an input type that accepts AzureBlobStorageSourceConnectorServiceInfoArgs and AzureBlobStorageSourceConnectorServiceInfoOutput values.
+// You can construct a concrete instance of `AzureBlobStorageSourceConnectorServiceInfoInput` via:
+//
+//	AzureBlobStorageSourceConnectorServiceInfoArgs{...}
+type AzureBlobStorageSourceConnectorServiceInfoInput interface {
+	pulumi.Input
+
+	ToAzureBlobStorageSourceConnectorServiceInfoOutput() AzureBlobStorageSourceConnectorServiceInfoOutput
+	ToAzureBlobStorageSourceConnectorServiceInfoOutputWithContext(context.Context) AzureBlobStorageSourceConnectorServiceInfoOutput
+}
+
+// The connector service type is AzureBlobStorageSourceConnector
+type AzureBlobStorageSourceConnectorServiceInfoArgs struct {
+	// The connector service type.
+	// Expected value is 'AzureBlobStorageSourceConnector'.
+	ConnectorServiceType pulumi.StringInput `pulumi:"connectorServiceType"`
+	// Azure Blob Storage Account Key
+	StorageAccountKey pulumi.StringPtrInput `pulumi:"storageAccountKey"`
+	// Azure Blob Storage Account Name
+	StorageAccountName pulumi.StringPtrInput `pulumi:"storageAccountName"`
+	// Azure Blob Storage Account Container Name
+	StorageContainerName pulumi.StringPtrInput `pulumi:"storageContainerName"`
+}
+
+func (AzureBlobStorageSourceConnectorServiceInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureBlobStorageSourceConnectorServiceInfo)(nil)).Elem()
+}
+
+func (i AzureBlobStorageSourceConnectorServiceInfoArgs) ToAzureBlobStorageSourceConnectorServiceInfoOutput() AzureBlobStorageSourceConnectorServiceInfoOutput {
+	return i.ToAzureBlobStorageSourceConnectorServiceInfoOutputWithContext(context.Background())
+}
+
+func (i AzureBlobStorageSourceConnectorServiceInfoArgs) ToAzureBlobStorageSourceConnectorServiceInfoOutputWithContext(ctx context.Context) AzureBlobStorageSourceConnectorServiceInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureBlobStorageSourceConnectorServiceInfoOutput)
+}
+
+func (i AzureBlobStorageSourceConnectorServiceInfoArgs) ToAzureBlobStorageSourceConnectorServiceInfoPtrOutput() AzureBlobStorageSourceConnectorServiceInfoPtrOutput {
+	return i.ToAzureBlobStorageSourceConnectorServiceInfoPtrOutputWithContext(context.Background())
+}
+
+func (i AzureBlobStorageSourceConnectorServiceInfoArgs) ToAzureBlobStorageSourceConnectorServiceInfoPtrOutputWithContext(ctx context.Context) AzureBlobStorageSourceConnectorServiceInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureBlobStorageSourceConnectorServiceInfoOutput).ToAzureBlobStorageSourceConnectorServiceInfoPtrOutputWithContext(ctx)
+}
+
+// AzureBlobStorageSourceConnectorServiceInfoPtrInput is an input type that accepts AzureBlobStorageSourceConnectorServiceInfoArgs, AzureBlobStorageSourceConnectorServiceInfoPtr and AzureBlobStorageSourceConnectorServiceInfoPtrOutput values.
+// You can construct a concrete instance of `AzureBlobStorageSourceConnectorServiceInfoPtrInput` via:
+//
+//	        AzureBlobStorageSourceConnectorServiceInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type AzureBlobStorageSourceConnectorServiceInfoPtrInput interface {
+	pulumi.Input
+
+	ToAzureBlobStorageSourceConnectorServiceInfoPtrOutput() AzureBlobStorageSourceConnectorServiceInfoPtrOutput
+	ToAzureBlobStorageSourceConnectorServiceInfoPtrOutputWithContext(context.Context) AzureBlobStorageSourceConnectorServiceInfoPtrOutput
+}
+
+type azureBlobStorageSourceConnectorServiceInfoPtrType AzureBlobStorageSourceConnectorServiceInfoArgs
+
+func AzureBlobStorageSourceConnectorServiceInfoPtr(v *AzureBlobStorageSourceConnectorServiceInfoArgs) AzureBlobStorageSourceConnectorServiceInfoPtrInput {
+	return (*azureBlobStorageSourceConnectorServiceInfoPtrType)(v)
+}
+
+func (*azureBlobStorageSourceConnectorServiceInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureBlobStorageSourceConnectorServiceInfo)(nil)).Elem()
+}
+
+func (i *azureBlobStorageSourceConnectorServiceInfoPtrType) ToAzureBlobStorageSourceConnectorServiceInfoPtrOutput() AzureBlobStorageSourceConnectorServiceInfoPtrOutput {
+	return i.ToAzureBlobStorageSourceConnectorServiceInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *azureBlobStorageSourceConnectorServiceInfoPtrType) ToAzureBlobStorageSourceConnectorServiceInfoPtrOutputWithContext(ctx context.Context) AzureBlobStorageSourceConnectorServiceInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureBlobStorageSourceConnectorServiceInfoPtrOutput)
+}
+
+// The connector service type is AzureBlobStorageSourceConnector
+type AzureBlobStorageSourceConnectorServiceInfoOutput struct{ *pulumi.OutputState }
+
+func (AzureBlobStorageSourceConnectorServiceInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureBlobStorageSourceConnectorServiceInfo)(nil)).Elem()
+}
+
+func (o AzureBlobStorageSourceConnectorServiceInfoOutput) ToAzureBlobStorageSourceConnectorServiceInfoOutput() AzureBlobStorageSourceConnectorServiceInfoOutput {
+	return o
+}
+
+func (o AzureBlobStorageSourceConnectorServiceInfoOutput) ToAzureBlobStorageSourceConnectorServiceInfoOutputWithContext(ctx context.Context) AzureBlobStorageSourceConnectorServiceInfoOutput {
+	return o
+}
+
+func (o AzureBlobStorageSourceConnectorServiceInfoOutput) ToAzureBlobStorageSourceConnectorServiceInfoPtrOutput() AzureBlobStorageSourceConnectorServiceInfoPtrOutput {
+	return o.ToAzureBlobStorageSourceConnectorServiceInfoPtrOutputWithContext(context.Background())
+}
+
+func (o AzureBlobStorageSourceConnectorServiceInfoOutput) ToAzureBlobStorageSourceConnectorServiceInfoPtrOutputWithContext(ctx context.Context) AzureBlobStorageSourceConnectorServiceInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureBlobStorageSourceConnectorServiceInfo) *AzureBlobStorageSourceConnectorServiceInfo {
+		return &v
+	}).(AzureBlobStorageSourceConnectorServiceInfoPtrOutput)
+}
+
+// The connector service type.
+// Expected value is 'AzureBlobStorageSourceConnector'.
+func (o AzureBlobStorageSourceConnectorServiceInfoOutput) ConnectorServiceType() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureBlobStorageSourceConnectorServiceInfo) string { return v.ConnectorServiceType }).(pulumi.StringOutput)
+}
+
+// Azure Blob Storage Account Key
+func (o AzureBlobStorageSourceConnectorServiceInfoOutput) StorageAccountKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureBlobStorageSourceConnectorServiceInfo) *string { return v.StorageAccountKey }).(pulumi.StringPtrOutput)
+}
+
+// Azure Blob Storage Account Name
+func (o AzureBlobStorageSourceConnectorServiceInfoOutput) StorageAccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureBlobStorageSourceConnectorServiceInfo) *string { return v.StorageAccountName }).(pulumi.StringPtrOutput)
+}
+
+// Azure Blob Storage Account Container Name
+func (o AzureBlobStorageSourceConnectorServiceInfoOutput) StorageContainerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureBlobStorageSourceConnectorServiceInfo) *string { return v.StorageContainerName }).(pulumi.StringPtrOutput)
+}
+
+type AzureBlobStorageSourceConnectorServiceInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (AzureBlobStorageSourceConnectorServiceInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureBlobStorageSourceConnectorServiceInfo)(nil)).Elem()
+}
+
+func (o AzureBlobStorageSourceConnectorServiceInfoPtrOutput) ToAzureBlobStorageSourceConnectorServiceInfoPtrOutput() AzureBlobStorageSourceConnectorServiceInfoPtrOutput {
+	return o
+}
+
+func (o AzureBlobStorageSourceConnectorServiceInfoPtrOutput) ToAzureBlobStorageSourceConnectorServiceInfoPtrOutputWithContext(ctx context.Context) AzureBlobStorageSourceConnectorServiceInfoPtrOutput {
+	return o
+}
+
+func (o AzureBlobStorageSourceConnectorServiceInfoPtrOutput) Elem() AzureBlobStorageSourceConnectorServiceInfoOutput {
+	return o.ApplyT(func(v *AzureBlobStorageSourceConnectorServiceInfo) AzureBlobStorageSourceConnectorServiceInfo {
+		if v != nil {
+			return *v
+		}
+		var ret AzureBlobStorageSourceConnectorServiceInfo
+		return ret
+	}).(AzureBlobStorageSourceConnectorServiceInfoOutput)
+}
+
+// The connector service type.
+// Expected value is 'AzureBlobStorageSourceConnector'.
+func (o AzureBlobStorageSourceConnectorServiceInfoPtrOutput) ConnectorServiceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureBlobStorageSourceConnectorServiceInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ConnectorServiceType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure Blob Storage Account Key
+func (o AzureBlobStorageSourceConnectorServiceInfoPtrOutput) StorageAccountKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureBlobStorageSourceConnectorServiceInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageAccountKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure Blob Storage Account Name
+func (o AzureBlobStorageSourceConnectorServiceInfoPtrOutput) StorageAccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureBlobStorageSourceConnectorServiceInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageAccountName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure Blob Storage Account Container Name
+func (o AzureBlobStorageSourceConnectorServiceInfoPtrOutput) StorageContainerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureBlobStorageSourceConnectorServiceInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageContainerName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The connector service type is AzureBlobStorageSourceConnector
+type AzureBlobStorageSourceConnectorServiceInfoResponse struct {
+	// The connector service type.
+	// Expected value is 'AzureBlobStorageSourceConnector'.
+	ConnectorServiceType string `pulumi:"connectorServiceType"`
+	// Azure Blob Storage Account Key
+	StorageAccountKey *string `pulumi:"storageAccountKey"`
+	// Azure Blob Storage Account Name
+	StorageAccountName *string `pulumi:"storageAccountName"`
+	// Azure Blob Storage Account Container Name
+	StorageContainerName *string `pulumi:"storageContainerName"`
+}
+
+// The connector service type is AzureBlobStorageSourceConnector
+type AzureBlobStorageSourceConnectorServiceInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (AzureBlobStorageSourceConnectorServiceInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureBlobStorageSourceConnectorServiceInfoResponse)(nil)).Elem()
+}
+
+func (o AzureBlobStorageSourceConnectorServiceInfoResponseOutput) ToAzureBlobStorageSourceConnectorServiceInfoResponseOutput() AzureBlobStorageSourceConnectorServiceInfoResponseOutput {
+	return o
+}
+
+func (o AzureBlobStorageSourceConnectorServiceInfoResponseOutput) ToAzureBlobStorageSourceConnectorServiceInfoResponseOutputWithContext(ctx context.Context) AzureBlobStorageSourceConnectorServiceInfoResponseOutput {
+	return o
+}
+
+// The connector service type.
+// Expected value is 'AzureBlobStorageSourceConnector'.
+func (o AzureBlobStorageSourceConnectorServiceInfoResponseOutput) ConnectorServiceType() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureBlobStorageSourceConnectorServiceInfoResponse) string { return v.ConnectorServiceType }).(pulumi.StringOutput)
+}
+
+// Azure Blob Storage Account Key
+func (o AzureBlobStorageSourceConnectorServiceInfoResponseOutput) StorageAccountKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureBlobStorageSourceConnectorServiceInfoResponse) *string { return v.StorageAccountKey }).(pulumi.StringPtrOutput)
+}
+
+// Azure Blob Storage Account Name
+func (o AzureBlobStorageSourceConnectorServiceInfoResponseOutput) StorageAccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureBlobStorageSourceConnectorServiceInfoResponse) *string { return v.StorageAccountName }).(pulumi.StringPtrOutput)
+}
+
+// Azure Blob Storage Account Container Name
+func (o AzureBlobStorageSourceConnectorServiceInfoResponseOutput) StorageContainerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureBlobStorageSourceConnectorServiceInfoResponse) *string { return v.StorageContainerName }).(pulumi.StringPtrOutput)
+}
+
+type AzureBlobStorageSourceConnectorServiceInfoResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AzureBlobStorageSourceConnectorServiceInfoResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureBlobStorageSourceConnectorServiceInfoResponse)(nil)).Elem()
+}
+
+func (o AzureBlobStorageSourceConnectorServiceInfoResponsePtrOutput) ToAzureBlobStorageSourceConnectorServiceInfoResponsePtrOutput() AzureBlobStorageSourceConnectorServiceInfoResponsePtrOutput {
+	return o
+}
+
+func (o AzureBlobStorageSourceConnectorServiceInfoResponsePtrOutput) ToAzureBlobStorageSourceConnectorServiceInfoResponsePtrOutputWithContext(ctx context.Context) AzureBlobStorageSourceConnectorServiceInfoResponsePtrOutput {
+	return o
+}
+
+func (o AzureBlobStorageSourceConnectorServiceInfoResponsePtrOutput) Elem() AzureBlobStorageSourceConnectorServiceInfoResponseOutput {
+	return o.ApplyT(func(v *AzureBlobStorageSourceConnectorServiceInfoResponse) AzureBlobStorageSourceConnectorServiceInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AzureBlobStorageSourceConnectorServiceInfoResponse
+		return ret
+	}).(AzureBlobStorageSourceConnectorServiceInfoResponseOutput)
+}
+
+// The connector service type.
+// Expected value is 'AzureBlobStorageSourceConnector'.
+func (o AzureBlobStorageSourceConnectorServiceInfoResponsePtrOutput) ConnectorServiceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureBlobStorageSourceConnectorServiceInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ConnectorServiceType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure Blob Storage Account Key
+func (o AzureBlobStorageSourceConnectorServiceInfoResponsePtrOutput) StorageAccountKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureBlobStorageSourceConnectorServiceInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageAccountKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure Blob Storage Account Name
+func (o AzureBlobStorageSourceConnectorServiceInfoResponsePtrOutput) StorageAccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureBlobStorageSourceConnectorServiceInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageAccountName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure Blob Storage Account Container Name
+func (o AzureBlobStorageSourceConnectorServiceInfoResponsePtrOutput) StorageContainerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureBlobStorageSourceConnectorServiceInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageContainerName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The authentication info when auth_type is AzureCosmosDBSinkConnector
+type AzureCosmosDBSinkConnectorServiceInfo struct {
+	// The connector service type.
+	// Expected value is 'AzureCosmosDBSinkConnector'.
+	ConnectorServiceType string `pulumi:"connectorServiceType"`
+	// Azure Cosmos Database Connection Endpoint
+	CosmosConnectionEndpoint *string `pulumi:"cosmosConnectionEndpoint"`
+	// Azure Cosmos Database Containers Topic Mapping
+	CosmosContainersTopicMapping *string `pulumi:"cosmosContainersTopicMapping"`
+	// Azure Cosmos Database Name
+	CosmosDatabaseName *string `pulumi:"cosmosDatabaseName"`
+	// Azure Cosmos Database Id Strategy
+	CosmosIdStrategy *string `pulumi:"cosmosIdStrategy"`
+	// Azure Cosmos Database Master Key
+	CosmosMasterKey *string `pulumi:"cosmosMasterKey"`
+}
+
+// AzureCosmosDBSinkConnectorServiceInfoInput is an input type that accepts AzureCosmosDBSinkConnectorServiceInfoArgs and AzureCosmosDBSinkConnectorServiceInfoOutput values.
+// You can construct a concrete instance of `AzureCosmosDBSinkConnectorServiceInfoInput` via:
+//
+//	AzureCosmosDBSinkConnectorServiceInfoArgs{...}
+type AzureCosmosDBSinkConnectorServiceInfoInput interface {
+	pulumi.Input
+
+	ToAzureCosmosDBSinkConnectorServiceInfoOutput() AzureCosmosDBSinkConnectorServiceInfoOutput
+	ToAzureCosmosDBSinkConnectorServiceInfoOutputWithContext(context.Context) AzureCosmosDBSinkConnectorServiceInfoOutput
+}
+
+// The authentication info when auth_type is AzureCosmosDBSinkConnector
+type AzureCosmosDBSinkConnectorServiceInfoArgs struct {
+	// The connector service type.
+	// Expected value is 'AzureCosmosDBSinkConnector'.
+	ConnectorServiceType pulumi.StringInput `pulumi:"connectorServiceType"`
+	// Azure Cosmos Database Connection Endpoint
+	CosmosConnectionEndpoint pulumi.StringPtrInput `pulumi:"cosmosConnectionEndpoint"`
+	// Azure Cosmos Database Containers Topic Mapping
+	CosmosContainersTopicMapping pulumi.StringPtrInput `pulumi:"cosmosContainersTopicMapping"`
+	// Azure Cosmos Database Name
+	CosmosDatabaseName pulumi.StringPtrInput `pulumi:"cosmosDatabaseName"`
+	// Azure Cosmos Database Id Strategy
+	CosmosIdStrategy pulumi.StringPtrInput `pulumi:"cosmosIdStrategy"`
+	// Azure Cosmos Database Master Key
+	CosmosMasterKey pulumi.StringPtrInput `pulumi:"cosmosMasterKey"`
+}
+
+func (AzureCosmosDBSinkConnectorServiceInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureCosmosDBSinkConnectorServiceInfo)(nil)).Elem()
+}
+
+func (i AzureCosmosDBSinkConnectorServiceInfoArgs) ToAzureCosmosDBSinkConnectorServiceInfoOutput() AzureCosmosDBSinkConnectorServiceInfoOutput {
+	return i.ToAzureCosmosDBSinkConnectorServiceInfoOutputWithContext(context.Background())
+}
+
+func (i AzureCosmosDBSinkConnectorServiceInfoArgs) ToAzureCosmosDBSinkConnectorServiceInfoOutputWithContext(ctx context.Context) AzureCosmosDBSinkConnectorServiceInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureCosmosDBSinkConnectorServiceInfoOutput)
+}
+
+func (i AzureCosmosDBSinkConnectorServiceInfoArgs) ToAzureCosmosDBSinkConnectorServiceInfoPtrOutput() AzureCosmosDBSinkConnectorServiceInfoPtrOutput {
+	return i.ToAzureCosmosDBSinkConnectorServiceInfoPtrOutputWithContext(context.Background())
+}
+
+func (i AzureCosmosDBSinkConnectorServiceInfoArgs) ToAzureCosmosDBSinkConnectorServiceInfoPtrOutputWithContext(ctx context.Context) AzureCosmosDBSinkConnectorServiceInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureCosmosDBSinkConnectorServiceInfoOutput).ToAzureCosmosDBSinkConnectorServiceInfoPtrOutputWithContext(ctx)
+}
+
+// AzureCosmosDBSinkConnectorServiceInfoPtrInput is an input type that accepts AzureCosmosDBSinkConnectorServiceInfoArgs, AzureCosmosDBSinkConnectorServiceInfoPtr and AzureCosmosDBSinkConnectorServiceInfoPtrOutput values.
+// You can construct a concrete instance of `AzureCosmosDBSinkConnectorServiceInfoPtrInput` via:
+//
+//	        AzureCosmosDBSinkConnectorServiceInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type AzureCosmosDBSinkConnectorServiceInfoPtrInput interface {
+	pulumi.Input
+
+	ToAzureCosmosDBSinkConnectorServiceInfoPtrOutput() AzureCosmosDBSinkConnectorServiceInfoPtrOutput
+	ToAzureCosmosDBSinkConnectorServiceInfoPtrOutputWithContext(context.Context) AzureCosmosDBSinkConnectorServiceInfoPtrOutput
+}
+
+type azureCosmosDBSinkConnectorServiceInfoPtrType AzureCosmosDBSinkConnectorServiceInfoArgs
+
+func AzureCosmosDBSinkConnectorServiceInfoPtr(v *AzureCosmosDBSinkConnectorServiceInfoArgs) AzureCosmosDBSinkConnectorServiceInfoPtrInput {
+	return (*azureCosmosDBSinkConnectorServiceInfoPtrType)(v)
+}
+
+func (*azureCosmosDBSinkConnectorServiceInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureCosmosDBSinkConnectorServiceInfo)(nil)).Elem()
+}
+
+func (i *azureCosmosDBSinkConnectorServiceInfoPtrType) ToAzureCosmosDBSinkConnectorServiceInfoPtrOutput() AzureCosmosDBSinkConnectorServiceInfoPtrOutput {
+	return i.ToAzureCosmosDBSinkConnectorServiceInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *azureCosmosDBSinkConnectorServiceInfoPtrType) ToAzureCosmosDBSinkConnectorServiceInfoPtrOutputWithContext(ctx context.Context) AzureCosmosDBSinkConnectorServiceInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureCosmosDBSinkConnectorServiceInfoPtrOutput)
+}
+
+// The authentication info when auth_type is AzureCosmosDBSinkConnector
+type AzureCosmosDBSinkConnectorServiceInfoOutput struct{ *pulumi.OutputState }
+
+func (AzureCosmosDBSinkConnectorServiceInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureCosmosDBSinkConnectorServiceInfo)(nil)).Elem()
+}
+
+func (o AzureCosmosDBSinkConnectorServiceInfoOutput) ToAzureCosmosDBSinkConnectorServiceInfoOutput() AzureCosmosDBSinkConnectorServiceInfoOutput {
+	return o
+}
+
+func (o AzureCosmosDBSinkConnectorServiceInfoOutput) ToAzureCosmosDBSinkConnectorServiceInfoOutputWithContext(ctx context.Context) AzureCosmosDBSinkConnectorServiceInfoOutput {
+	return o
+}
+
+func (o AzureCosmosDBSinkConnectorServiceInfoOutput) ToAzureCosmosDBSinkConnectorServiceInfoPtrOutput() AzureCosmosDBSinkConnectorServiceInfoPtrOutput {
+	return o.ToAzureCosmosDBSinkConnectorServiceInfoPtrOutputWithContext(context.Background())
+}
+
+func (o AzureCosmosDBSinkConnectorServiceInfoOutput) ToAzureCosmosDBSinkConnectorServiceInfoPtrOutputWithContext(ctx context.Context) AzureCosmosDBSinkConnectorServiceInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureCosmosDBSinkConnectorServiceInfo) *AzureCosmosDBSinkConnectorServiceInfo {
+		return &v
+	}).(AzureCosmosDBSinkConnectorServiceInfoPtrOutput)
+}
+
+// The connector service type.
+// Expected value is 'AzureCosmosDBSinkConnector'.
+func (o AzureCosmosDBSinkConnectorServiceInfoOutput) ConnectorServiceType() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureCosmosDBSinkConnectorServiceInfo) string { return v.ConnectorServiceType }).(pulumi.StringOutput)
+}
+
+// Azure Cosmos Database Connection Endpoint
+func (o AzureCosmosDBSinkConnectorServiceInfoOutput) CosmosConnectionEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureCosmosDBSinkConnectorServiceInfo) *string { return v.CosmosConnectionEndpoint }).(pulumi.StringPtrOutput)
+}
+
+// Azure Cosmos Database Containers Topic Mapping
+func (o AzureCosmosDBSinkConnectorServiceInfoOutput) CosmosContainersTopicMapping() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureCosmosDBSinkConnectorServiceInfo) *string { return v.CosmosContainersTopicMapping }).(pulumi.StringPtrOutput)
+}
+
+// Azure Cosmos Database Name
+func (o AzureCosmosDBSinkConnectorServiceInfoOutput) CosmosDatabaseName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureCosmosDBSinkConnectorServiceInfo) *string { return v.CosmosDatabaseName }).(pulumi.StringPtrOutput)
+}
+
+// Azure Cosmos Database Id Strategy
+func (o AzureCosmosDBSinkConnectorServiceInfoOutput) CosmosIdStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureCosmosDBSinkConnectorServiceInfo) *string { return v.CosmosIdStrategy }).(pulumi.StringPtrOutput)
+}
+
+// Azure Cosmos Database Master Key
+func (o AzureCosmosDBSinkConnectorServiceInfoOutput) CosmosMasterKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureCosmosDBSinkConnectorServiceInfo) *string { return v.CosmosMasterKey }).(pulumi.StringPtrOutput)
+}
+
+type AzureCosmosDBSinkConnectorServiceInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (AzureCosmosDBSinkConnectorServiceInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureCosmosDBSinkConnectorServiceInfo)(nil)).Elem()
+}
+
+func (o AzureCosmosDBSinkConnectorServiceInfoPtrOutput) ToAzureCosmosDBSinkConnectorServiceInfoPtrOutput() AzureCosmosDBSinkConnectorServiceInfoPtrOutput {
+	return o
+}
+
+func (o AzureCosmosDBSinkConnectorServiceInfoPtrOutput) ToAzureCosmosDBSinkConnectorServiceInfoPtrOutputWithContext(ctx context.Context) AzureCosmosDBSinkConnectorServiceInfoPtrOutput {
+	return o
+}
+
+func (o AzureCosmosDBSinkConnectorServiceInfoPtrOutput) Elem() AzureCosmosDBSinkConnectorServiceInfoOutput {
+	return o.ApplyT(func(v *AzureCosmosDBSinkConnectorServiceInfo) AzureCosmosDBSinkConnectorServiceInfo {
+		if v != nil {
+			return *v
+		}
+		var ret AzureCosmosDBSinkConnectorServiceInfo
+		return ret
+	}).(AzureCosmosDBSinkConnectorServiceInfoOutput)
+}
+
+// The connector service type.
+// Expected value is 'AzureCosmosDBSinkConnector'.
+func (o AzureCosmosDBSinkConnectorServiceInfoPtrOutput) ConnectorServiceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureCosmosDBSinkConnectorServiceInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ConnectorServiceType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure Cosmos Database Connection Endpoint
+func (o AzureCosmosDBSinkConnectorServiceInfoPtrOutput) CosmosConnectionEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureCosmosDBSinkConnectorServiceInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CosmosConnectionEndpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure Cosmos Database Containers Topic Mapping
+func (o AzureCosmosDBSinkConnectorServiceInfoPtrOutput) CosmosContainersTopicMapping() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureCosmosDBSinkConnectorServiceInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CosmosContainersTopicMapping
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure Cosmos Database Name
+func (o AzureCosmosDBSinkConnectorServiceInfoPtrOutput) CosmosDatabaseName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureCosmosDBSinkConnectorServiceInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CosmosDatabaseName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure Cosmos Database Id Strategy
+func (o AzureCosmosDBSinkConnectorServiceInfoPtrOutput) CosmosIdStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureCosmosDBSinkConnectorServiceInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CosmosIdStrategy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure Cosmos Database Master Key
+func (o AzureCosmosDBSinkConnectorServiceInfoPtrOutput) CosmosMasterKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureCosmosDBSinkConnectorServiceInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CosmosMasterKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// The authentication info when auth_type is AzureCosmosDBSinkConnector
+type AzureCosmosDBSinkConnectorServiceInfoResponse struct {
+	// The connector service type.
+	// Expected value is 'AzureCosmosDBSinkConnector'.
+	ConnectorServiceType string `pulumi:"connectorServiceType"`
+	// Azure Cosmos Database Connection Endpoint
+	CosmosConnectionEndpoint *string `pulumi:"cosmosConnectionEndpoint"`
+	// Azure Cosmos Database Containers Topic Mapping
+	CosmosContainersTopicMapping *string `pulumi:"cosmosContainersTopicMapping"`
+	// Azure Cosmos Database Name
+	CosmosDatabaseName *string `pulumi:"cosmosDatabaseName"`
+	// Azure Cosmos Database Id Strategy
+	CosmosIdStrategy *string `pulumi:"cosmosIdStrategy"`
+	// Azure Cosmos Database Master Key
+	CosmosMasterKey *string `pulumi:"cosmosMasterKey"`
+}
+
+// The authentication info when auth_type is AzureCosmosDBSinkConnector
+type AzureCosmosDBSinkConnectorServiceInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (AzureCosmosDBSinkConnectorServiceInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureCosmosDBSinkConnectorServiceInfoResponse)(nil)).Elem()
+}
+
+func (o AzureCosmosDBSinkConnectorServiceInfoResponseOutput) ToAzureCosmosDBSinkConnectorServiceInfoResponseOutput() AzureCosmosDBSinkConnectorServiceInfoResponseOutput {
+	return o
+}
+
+func (o AzureCosmosDBSinkConnectorServiceInfoResponseOutput) ToAzureCosmosDBSinkConnectorServiceInfoResponseOutputWithContext(ctx context.Context) AzureCosmosDBSinkConnectorServiceInfoResponseOutput {
+	return o
+}
+
+// The connector service type.
+// Expected value is 'AzureCosmosDBSinkConnector'.
+func (o AzureCosmosDBSinkConnectorServiceInfoResponseOutput) ConnectorServiceType() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureCosmosDBSinkConnectorServiceInfoResponse) string { return v.ConnectorServiceType }).(pulumi.StringOutput)
+}
+
+// Azure Cosmos Database Connection Endpoint
+func (o AzureCosmosDBSinkConnectorServiceInfoResponseOutput) CosmosConnectionEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureCosmosDBSinkConnectorServiceInfoResponse) *string { return v.CosmosConnectionEndpoint }).(pulumi.StringPtrOutput)
+}
+
+// Azure Cosmos Database Containers Topic Mapping
+func (o AzureCosmosDBSinkConnectorServiceInfoResponseOutput) CosmosContainersTopicMapping() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureCosmosDBSinkConnectorServiceInfoResponse) *string { return v.CosmosContainersTopicMapping }).(pulumi.StringPtrOutput)
+}
+
+// Azure Cosmos Database Name
+func (o AzureCosmosDBSinkConnectorServiceInfoResponseOutput) CosmosDatabaseName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureCosmosDBSinkConnectorServiceInfoResponse) *string { return v.CosmosDatabaseName }).(pulumi.StringPtrOutput)
+}
+
+// Azure Cosmos Database Id Strategy
+func (o AzureCosmosDBSinkConnectorServiceInfoResponseOutput) CosmosIdStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureCosmosDBSinkConnectorServiceInfoResponse) *string { return v.CosmosIdStrategy }).(pulumi.StringPtrOutput)
+}
+
+// Azure Cosmos Database Master Key
+func (o AzureCosmosDBSinkConnectorServiceInfoResponseOutput) CosmosMasterKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureCosmosDBSinkConnectorServiceInfoResponse) *string { return v.CosmosMasterKey }).(pulumi.StringPtrOutput)
+}
+
+type AzureCosmosDBSinkConnectorServiceInfoResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AzureCosmosDBSinkConnectorServiceInfoResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureCosmosDBSinkConnectorServiceInfoResponse)(nil)).Elem()
+}
+
+func (o AzureCosmosDBSinkConnectorServiceInfoResponsePtrOutput) ToAzureCosmosDBSinkConnectorServiceInfoResponsePtrOutput() AzureCosmosDBSinkConnectorServiceInfoResponsePtrOutput {
+	return o
+}
+
+func (o AzureCosmosDBSinkConnectorServiceInfoResponsePtrOutput) ToAzureCosmosDBSinkConnectorServiceInfoResponsePtrOutputWithContext(ctx context.Context) AzureCosmosDBSinkConnectorServiceInfoResponsePtrOutput {
+	return o
+}
+
+func (o AzureCosmosDBSinkConnectorServiceInfoResponsePtrOutput) Elem() AzureCosmosDBSinkConnectorServiceInfoResponseOutput {
+	return o.ApplyT(func(v *AzureCosmosDBSinkConnectorServiceInfoResponse) AzureCosmosDBSinkConnectorServiceInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AzureCosmosDBSinkConnectorServiceInfoResponse
+		return ret
+	}).(AzureCosmosDBSinkConnectorServiceInfoResponseOutput)
+}
+
+// The connector service type.
+// Expected value is 'AzureCosmosDBSinkConnector'.
+func (o AzureCosmosDBSinkConnectorServiceInfoResponsePtrOutput) ConnectorServiceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureCosmosDBSinkConnectorServiceInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ConnectorServiceType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure Cosmos Database Connection Endpoint
+func (o AzureCosmosDBSinkConnectorServiceInfoResponsePtrOutput) CosmosConnectionEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureCosmosDBSinkConnectorServiceInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CosmosConnectionEndpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure Cosmos Database Containers Topic Mapping
+func (o AzureCosmosDBSinkConnectorServiceInfoResponsePtrOutput) CosmosContainersTopicMapping() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureCosmosDBSinkConnectorServiceInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CosmosContainersTopicMapping
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure Cosmos Database Name
+func (o AzureCosmosDBSinkConnectorServiceInfoResponsePtrOutput) CosmosDatabaseName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureCosmosDBSinkConnectorServiceInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CosmosDatabaseName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure Cosmos Database Id Strategy
+func (o AzureCosmosDBSinkConnectorServiceInfoResponsePtrOutput) CosmosIdStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureCosmosDBSinkConnectorServiceInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CosmosIdStrategy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure Cosmos Database Master Key
+func (o AzureCosmosDBSinkConnectorServiceInfoResponsePtrOutput) CosmosMasterKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureCosmosDBSinkConnectorServiceInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CosmosMasterKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// The authentication info when auth_type is AzureCosmosDBSourceConnector
+type AzureCosmosDBSourceConnectorServiceInfo struct {
+	// The connector service type.
+	// Expected value is 'AzureCosmosDBSourceConnector'.
+	ConnectorServiceType string `pulumi:"connectorServiceType"`
+	// Azure Cosmos Database Connection Endpoint
+	CosmosConnectionEndpoint *string `pulumi:"cosmosConnectionEndpoint"`
+	// Azure Cosmos Database Containers Topic Mapping
+	CosmosContainersTopicMapping *string `pulumi:"cosmosContainersTopicMapping"`
+	// Azure Cosmos Database Name
+	CosmosDatabaseName *string `pulumi:"cosmosDatabaseName"`
+	// Azure Cosmos Database Master Key
+	CosmosMasterKey *string `pulumi:"cosmosMasterKey"`
+	// Azure Cosmos Database Message Key Enabled
+	CosmosMessageKeyEnabled *bool `pulumi:"cosmosMessageKeyEnabled"`
+	// Azure Cosmos Database Message Key Field
+	CosmosMessageKeyField *string `pulumi:"cosmosMessageKeyField"`
+}
+
+// AzureCosmosDBSourceConnectorServiceInfoInput is an input type that accepts AzureCosmosDBSourceConnectorServiceInfoArgs and AzureCosmosDBSourceConnectorServiceInfoOutput values.
+// You can construct a concrete instance of `AzureCosmosDBSourceConnectorServiceInfoInput` via:
+//
+//	AzureCosmosDBSourceConnectorServiceInfoArgs{...}
+type AzureCosmosDBSourceConnectorServiceInfoInput interface {
+	pulumi.Input
+
+	ToAzureCosmosDBSourceConnectorServiceInfoOutput() AzureCosmosDBSourceConnectorServiceInfoOutput
+	ToAzureCosmosDBSourceConnectorServiceInfoOutputWithContext(context.Context) AzureCosmosDBSourceConnectorServiceInfoOutput
+}
+
+// The authentication info when auth_type is AzureCosmosDBSourceConnector
+type AzureCosmosDBSourceConnectorServiceInfoArgs struct {
+	// The connector service type.
+	// Expected value is 'AzureCosmosDBSourceConnector'.
+	ConnectorServiceType pulumi.StringInput `pulumi:"connectorServiceType"`
+	// Azure Cosmos Database Connection Endpoint
+	CosmosConnectionEndpoint pulumi.StringPtrInput `pulumi:"cosmosConnectionEndpoint"`
+	// Azure Cosmos Database Containers Topic Mapping
+	CosmosContainersTopicMapping pulumi.StringPtrInput `pulumi:"cosmosContainersTopicMapping"`
+	// Azure Cosmos Database Name
+	CosmosDatabaseName pulumi.StringPtrInput `pulumi:"cosmosDatabaseName"`
+	// Azure Cosmos Database Master Key
+	CosmosMasterKey pulumi.StringPtrInput `pulumi:"cosmosMasterKey"`
+	// Azure Cosmos Database Message Key Enabled
+	CosmosMessageKeyEnabled pulumi.BoolPtrInput `pulumi:"cosmosMessageKeyEnabled"`
+	// Azure Cosmos Database Message Key Field
+	CosmosMessageKeyField pulumi.StringPtrInput `pulumi:"cosmosMessageKeyField"`
+}
+
+func (AzureCosmosDBSourceConnectorServiceInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureCosmosDBSourceConnectorServiceInfo)(nil)).Elem()
+}
+
+func (i AzureCosmosDBSourceConnectorServiceInfoArgs) ToAzureCosmosDBSourceConnectorServiceInfoOutput() AzureCosmosDBSourceConnectorServiceInfoOutput {
+	return i.ToAzureCosmosDBSourceConnectorServiceInfoOutputWithContext(context.Background())
+}
+
+func (i AzureCosmosDBSourceConnectorServiceInfoArgs) ToAzureCosmosDBSourceConnectorServiceInfoOutputWithContext(ctx context.Context) AzureCosmosDBSourceConnectorServiceInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureCosmosDBSourceConnectorServiceInfoOutput)
+}
+
+func (i AzureCosmosDBSourceConnectorServiceInfoArgs) ToAzureCosmosDBSourceConnectorServiceInfoPtrOutput() AzureCosmosDBSourceConnectorServiceInfoPtrOutput {
+	return i.ToAzureCosmosDBSourceConnectorServiceInfoPtrOutputWithContext(context.Background())
+}
+
+func (i AzureCosmosDBSourceConnectorServiceInfoArgs) ToAzureCosmosDBSourceConnectorServiceInfoPtrOutputWithContext(ctx context.Context) AzureCosmosDBSourceConnectorServiceInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureCosmosDBSourceConnectorServiceInfoOutput).ToAzureCosmosDBSourceConnectorServiceInfoPtrOutputWithContext(ctx)
+}
+
+// AzureCosmosDBSourceConnectorServiceInfoPtrInput is an input type that accepts AzureCosmosDBSourceConnectorServiceInfoArgs, AzureCosmosDBSourceConnectorServiceInfoPtr and AzureCosmosDBSourceConnectorServiceInfoPtrOutput values.
+// You can construct a concrete instance of `AzureCosmosDBSourceConnectorServiceInfoPtrInput` via:
+//
+//	        AzureCosmosDBSourceConnectorServiceInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type AzureCosmosDBSourceConnectorServiceInfoPtrInput interface {
+	pulumi.Input
+
+	ToAzureCosmosDBSourceConnectorServiceInfoPtrOutput() AzureCosmosDBSourceConnectorServiceInfoPtrOutput
+	ToAzureCosmosDBSourceConnectorServiceInfoPtrOutputWithContext(context.Context) AzureCosmosDBSourceConnectorServiceInfoPtrOutput
+}
+
+type azureCosmosDBSourceConnectorServiceInfoPtrType AzureCosmosDBSourceConnectorServiceInfoArgs
+
+func AzureCosmosDBSourceConnectorServiceInfoPtr(v *AzureCosmosDBSourceConnectorServiceInfoArgs) AzureCosmosDBSourceConnectorServiceInfoPtrInput {
+	return (*azureCosmosDBSourceConnectorServiceInfoPtrType)(v)
+}
+
+func (*azureCosmosDBSourceConnectorServiceInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureCosmosDBSourceConnectorServiceInfo)(nil)).Elem()
+}
+
+func (i *azureCosmosDBSourceConnectorServiceInfoPtrType) ToAzureCosmosDBSourceConnectorServiceInfoPtrOutput() AzureCosmosDBSourceConnectorServiceInfoPtrOutput {
+	return i.ToAzureCosmosDBSourceConnectorServiceInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *azureCosmosDBSourceConnectorServiceInfoPtrType) ToAzureCosmosDBSourceConnectorServiceInfoPtrOutputWithContext(ctx context.Context) AzureCosmosDBSourceConnectorServiceInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureCosmosDBSourceConnectorServiceInfoPtrOutput)
+}
+
+// The authentication info when auth_type is AzureCosmosDBSourceConnector
+type AzureCosmosDBSourceConnectorServiceInfoOutput struct{ *pulumi.OutputState }
+
+func (AzureCosmosDBSourceConnectorServiceInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureCosmosDBSourceConnectorServiceInfo)(nil)).Elem()
+}
+
+func (o AzureCosmosDBSourceConnectorServiceInfoOutput) ToAzureCosmosDBSourceConnectorServiceInfoOutput() AzureCosmosDBSourceConnectorServiceInfoOutput {
+	return o
+}
+
+func (o AzureCosmosDBSourceConnectorServiceInfoOutput) ToAzureCosmosDBSourceConnectorServiceInfoOutputWithContext(ctx context.Context) AzureCosmosDBSourceConnectorServiceInfoOutput {
+	return o
+}
+
+func (o AzureCosmosDBSourceConnectorServiceInfoOutput) ToAzureCosmosDBSourceConnectorServiceInfoPtrOutput() AzureCosmosDBSourceConnectorServiceInfoPtrOutput {
+	return o.ToAzureCosmosDBSourceConnectorServiceInfoPtrOutputWithContext(context.Background())
+}
+
+func (o AzureCosmosDBSourceConnectorServiceInfoOutput) ToAzureCosmosDBSourceConnectorServiceInfoPtrOutputWithContext(ctx context.Context) AzureCosmosDBSourceConnectorServiceInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureCosmosDBSourceConnectorServiceInfo) *AzureCosmosDBSourceConnectorServiceInfo {
+		return &v
+	}).(AzureCosmosDBSourceConnectorServiceInfoPtrOutput)
+}
+
+// The connector service type.
+// Expected value is 'AzureCosmosDBSourceConnector'.
+func (o AzureCosmosDBSourceConnectorServiceInfoOutput) ConnectorServiceType() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureCosmosDBSourceConnectorServiceInfo) string { return v.ConnectorServiceType }).(pulumi.StringOutput)
+}
+
+// Azure Cosmos Database Connection Endpoint
+func (o AzureCosmosDBSourceConnectorServiceInfoOutput) CosmosConnectionEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureCosmosDBSourceConnectorServiceInfo) *string { return v.CosmosConnectionEndpoint }).(pulumi.StringPtrOutput)
+}
+
+// Azure Cosmos Database Containers Topic Mapping
+func (o AzureCosmosDBSourceConnectorServiceInfoOutput) CosmosContainersTopicMapping() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureCosmosDBSourceConnectorServiceInfo) *string { return v.CosmosContainersTopicMapping }).(pulumi.StringPtrOutput)
+}
+
+// Azure Cosmos Database Name
+func (o AzureCosmosDBSourceConnectorServiceInfoOutput) CosmosDatabaseName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureCosmosDBSourceConnectorServiceInfo) *string { return v.CosmosDatabaseName }).(pulumi.StringPtrOutput)
+}
+
+// Azure Cosmos Database Master Key
+func (o AzureCosmosDBSourceConnectorServiceInfoOutput) CosmosMasterKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureCosmosDBSourceConnectorServiceInfo) *string { return v.CosmosMasterKey }).(pulumi.StringPtrOutput)
+}
+
+// Azure Cosmos Database Message Key Enabled
+func (o AzureCosmosDBSourceConnectorServiceInfoOutput) CosmosMessageKeyEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AzureCosmosDBSourceConnectorServiceInfo) *bool { return v.CosmosMessageKeyEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Azure Cosmos Database Message Key Field
+func (o AzureCosmosDBSourceConnectorServiceInfoOutput) CosmosMessageKeyField() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureCosmosDBSourceConnectorServiceInfo) *string { return v.CosmosMessageKeyField }).(pulumi.StringPtrOutput)
+}
+
+type AzureCosmosDBSourceConnectorServiceInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (AzureCosmosDBSourceConnectorServiceInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureCosmosDBSourceConnectorServiceInfo)(nil)).Elem()
+}
+
+func (o AzureCosmosDBSourceConnectorServiceInfoPtrOutput) ToAzureCosmosDBSourceConnectorServiceInfoPtrOutput() AzureCosmosDBSourceConnectorServiceInfoPtrOutput {
+	return o
+}
+
+func (o AzureCosmosDBSourceConnectorServiceInfoPtrOutput) ToAzureCosmosDBSourceConnectorServiceInfoPtrOutputWithContext(ctx context.Context) AzureCosmosDBSourceConnectorServiceInfoPtrOutput {
+	return o
+}
+
+func (o AzureCosmosDBSourceConnectorServiceInfoPtrOutput) Elem() AzureCosmosDBSourceConnectorServiceInfoOutput {
+	return o.ApplyT(func(v *AzureCosmosDBSourceConnectorServiceInfo) AzureCosmosDBSourceConnectorServiceInfo {
+		if v != nil {
+			return *v
+		}
+		var ret AzureCosmosDBSourceConnectorServiceInfo
+		return ret
+	}).(AzureCosmosDBSourceConnectorServiceInfoOutput)
+}
+
+// The connector service type.
+// Expected value is 'AzureCosmosDBSourceConnector'.
+func (o AzureCosmosDBSourceConnectorServiceInfoPtrOutput) ConnectorServiceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureCosmosDBSourceConnectorServiceInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ConnectorServiceType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure Cosmos Database Connection Endpoint
+func (o AzureCosmosDBSourceConnectorServiceInfoPtrOutput) CosmosConnectionEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureCosmosDBSourceConnectorServiceInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CosmosConnectionEndpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure Cosmos Database Containers Topic Mapping
+func (o AzureCosmosDBSourceConnectorServiceInfoPtrOutput) CosmosContainersTopicMapping() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureCosmosDBSourceConnectorServiceInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CosmosContainersTopicMapping
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure Cosmos Database Name
+func (o AzureCosmosDBSourceConnectorServiceInfoPtrOutput) CosmosDatabaseName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureCosmosDBSourceConnectorServiceInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CosmosDatabaseName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure Cosmos Database Master Key
+func (o AzureCosmosDBSourceConnectorServiceInfoPtrOutput) CosmosMasterKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureCosmosDBSourceConnectorServiceInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CosmosMasterKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure Cosmos Database Message Key Enabled
+func (o AzureCosmosDBSourceConnectorServiceInfoPtrOutput) CosmosMessageKeyEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AzureCosmosDBSourceConnectorServiceInfo) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CosmosMessageKeyEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Azure Cosmos Database Message Key Field
+func (o AzureCosmosDBSourceConnectorServiceInfoPtrOutput) CosmosMessageKeyField() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureCosmosDBSourceConnectorServiceInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CosmosMessageKeyField
+	}).(pulumi.StringPtrOutput)
+}
+
+// The authentication info when auth_type is AzureCosmosDBSourceConnector
+type AzureCosmosDBSourceConnectorServiceInfoResponse struct {
+	// The connector service type.
+	// Expected value is 'AzureCosmosDBSourceConnector'.
+	ConnectorServiceType string `pulumi:"connectorServiceType"`
+	// Azure Cosmos Database Connection Endpoint
+	CosmosConnectionEndpoint *string `pulumi:"cosmosConnectionEndpoint"`
+	// Azure Cosmos Database Containers Topic Mapping
+	CosmosContainersTopicMapping *string `pulumi:"cosmosContainersTopicMapping"`
+	// Azure Cosmos Database Name
+	CosmosDatabaseName *string `pulumi:"cosmosDatabaseName"`
+	// Azure Cosmos Database Master Key
+	CosmosMasterKey *string `pulumi:"cosmosMasterKey"`
+	// Azure Cosmos Database Message Key Enabled
+	CosmosMessageKeyEnabled *bool `pulumi:"cosmosMessageKeyEnabled"`
+	// Azure Cosmos Database Message Key Field
+	CosmosMessageKeyField *string `pulumi:"cosmosMessageKeyField"`
+}
+
+// The authentication info when auth_type is AzureCosmosDBSourceConnector
+type AzureCosmosDBSourceConnectorServiceInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (AzureCosmosDBSourceConnectorServiceInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureCosmosDBSourceConnectorServiceInfoResponse)(nil)).Elem()
+}
+
+func (o AzureCosmosDBSourceConnectorServiceInfoResponseOutput) ToAzureCosmosDBSourceConnectorServiceInfoResponseOutput() AzureCosmosDBSourceConnectorServiceInfoResponseOutput {
+	return o
+}
+
+func (o AzureCosmosDBSourceConnectorServiceInfoResponseOutput) ToAzureCosmosDBSourceConnectorServiceInfoResponseOutputWithContext(ctx context.Context) AzureCosmosDBSourceConnectorServiceInfoResponseOutput {
+	return o
+}
+
+// The connector service type.
+// Expected value is 'AzureCosmosDBSourceConnector'.
+func (o AzureCosmosDBSourceConnectorServiceInfoResponseOutput) ConnectorServiceType() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureCosmosDBSourceConnectorServiceInfoResponse) string { return v.ConnectorServiceType }).(pulumi.StringOutput)
+}
+
+// Azure Cosmos Database Connection Endpoint
+func (o AzureCosmosDBSourceConnectorServiceInfoResponseOutput) CosmosConnectionEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureCosmosDBSourceConnectorServiceInfoResponse) *string { return v.CosmosConnectionEndpoint }).(pulumi.StringPtrOutput)
+}
+
+// Azure Cosmos Database Containers Topic Mapping
+func (o AzureCosmosDBSourceConnectorServiceInfoResponseOutput) CosmosContainersTopicMapping() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureCosmosDBSourceConnectorServiceInfoResponse) *string { return v.CosmosContainersTopicMapping }).(pulumi.StringPtrOutput)
+}
+
+// Azure Cosmos Database Name
+func (o AzureCosmosDBSourceConnectorServiceInfoResponseOutput) CosmosDatabaseName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureCosmosDBSourceConnectorServiceInfoResponse) *string { return v.CosmosDatabaseName }).(pulumi.StringPtrOutput)
+}
+
+// Azure Cosmos Database Master Key
+func (o AzureCosmosDBSourceConnectorServiceInfoResponseOutput) CosmosMasterKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureCosmosDBSourceConnectorServiceInfoResponse) *string { return v.CosmosMasterKey }).(pulumi.StringPtrOutput)
+}
+
+// Azure Cosmos Database Message Key Enabled
+func (o AzureCosmosDBSourceConnectorServiceInfoResponseOutput) CosmosMessageKeyEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AzureCosmosDBSourceConnectorServiceInfoResponse) *bool { return v.CosmosMessageKeyEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Azure Cosmos Database Message Key Field
+func (o AzureCosmosDBSourceConnectorServiceInfoResponseOutput) CosmosMessageKeyField() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureCosmosDBSourceConnectorServiceInfoResponse) *string { return v.CosmosMessageKeyField }).(pulumi.StringPtrOutput)
+}
+
+type AzureCosmosDBSourceConnectorServiceInfoResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AzureCosmosDBSourceConnectorServiceInfoResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureCosmosDBSourceConnectorServiceInfoResponse)(nil)).Elem()
+}
+
+func (o AzureCosmosDBSourceConnectorServiceInfoResponsePtrOutput) ToAzureCosmosDBSourceConnectorServiceInfoResponsePtrOutput() AzureCosmosDBSourceConnectorServiceInfoResponsePtrOutput {
+	return o
+}
+
+func (o AzureCosmosDBSourceConnectorServiceInfoResponsePtrOutput) ToAzureCosmosDBSourceConnectorServiceInfoResponsePtrOutputWithContext(ctx context.Context) AzureCosmosDBSourceConnectorServiceInfoResponsePtrOutput {
+	return o
+}
+
+func (o AzureCosmosDBSourceConnectorServiceInfoResponsePtrOutput) Elem() AzureCosmosDBSourceConnectorServiceInfoResponseOutput {
+	return o.ApplyT(func(v *AzureCosmosDBSourceConnectorServiceInfoResponse) AzureCosmosDBSourceConnectorServiceInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AzureCosmosDBSourceConnectorServiceInfoResponse
+		return ret
+	}).(AzureCosmosDBSourceConnectorServiceInfoResponseOutput)
+}
+
+// The connector service type.
+// Expected value is 'AzureCosmosDBSourceConnector'.
+func (o AzureCosmosDBSourceConnectorServiceInfoResponsePtrOutput) ConnectorServiceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureCosmosDBSourceConnectorServiceInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ConnectorServiceType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure Cosmos Database Connection Endpoint
+func (o AzureCosmosDBSourceConnectorServiceInfoResponsePtrOutput) CosmosConnectionEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureCosmosDBSourceConnectorServiceInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CosmosConnectionEndpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure Cosmos Database Containers Topic Mapping
+func (o AzureCosmosDBSourceConnectorServiceInfoResponsePtrOutput) CosmosContainersTopicMapping() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureCosmosDBSourceConnectorServiceInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CosmosContainersTopicMapping
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure Cosmos Database Name
+func (o AzureCosmosDBSourceConnectorServiceInfoResponsePtrOutput) CosmosDatabaseName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureCosmosDBSourceConnectorServiceInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CosmosDatabaseName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure Cosmos Database Master Key
+func (o AzureCosmosDBSourceConnectorServiceInfoResponsePtrOutput) CosmosMasterKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureCosmosDBSourceConnectorServiceInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CosmosMasterKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure Cosmos Database Message Key Enabled
+func (o AzureCosmosDBSourceConnectorServiceInfoResponsePtrOutput) CosmosMessageKeyEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AzureCosmosDBSourceConnectorServiceInfoResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CosmosMessageKeyEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Azure Cosmos Database Message Key Field
+func (o AzureCosmosDBSourceConnectorServiceInfoResponsePtrOutput) CosmosMessageKeyField() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureCosmosDBSourceConnectorServiceInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CosmosMessageKeyField
+	}).(pulumi.StringPtrOutput)
+}
+
+// The authentication info when auth_type is AzureSynapseAnalyticsSinkConnector
+type AzureSynapseAnalyticsSinkConnectorServiceInfo struct {
+	// The connector service type.
+	// Expected value is 'AzureSynapseAnalyticsSinkConnector'.
+	ConnectorServiceType string `pulumi:"connectorServiceType"`
+	// Azure Synapse Dedicated SQL Pool Database Name
+	SynapseSqlDatabaseName *string `pulumi:"synapseSqlDatabaseName"`
+	// Azure Synapse SQL login details
+	SynapseSqlPassword *string `pulumi:"synapseSqlPassword"`
+	// Azure Synapse Analytics SQL Server Name
+	SynapseSqlServerName *string `pulumi:"synapseSqlServerName"`
+	// Azure Synapse SQL login details
+	SynapseSqlUser *string `pulumi:"synapseSqlUser"`
+}
+
+// AzureSynapseAnalyticsSinkConnectorServiceInfoInput is an input type that accepts AzureSynapseAnalyticsSinkConnectorServiceInfoArgs and AzureSynapseAnalyticsSinkConnectorServiceInfoOutput values.
+// You can construct a concrete instance of `AzureSynapseAnalyticsSinkConnectorServiceInfoInput` via:
+//
+//	AzureSynapseAnalyticsSinkConnectorServiceInfoArgs{...}
+type AzureSynapseAnalyticsSinkConnectorServiceInfoInput interface {
+	pulumi.Input
+
+	ToAzureSynapseAnalyticsSinkConnectorServiceInfoOutput() AzureSynapseAnalyticsSinkConnectorServiceInfoOutput
+	ToAzureSynapseAnalyticsSinkConnectorServiceInfoOutputWithContext(context.Context) AzureSynapseAnalyticsSinkConnectorServiceInfoOutput
+}
+
+// The authentication info when auth_type is AzureSynapseAnalyticsSinkConnector
+type AzureSynapseAnalyticsSinkConnectorServiceInfoArgs struct {
+	// The connector service type.
+	// Expected value is 'AzureSynapseAnalyticsSinkConnector'.
+	ConnectorServiceType pulumi.StringInput `pulumi:"connectorServiceType"`
+	// Azure Synapse Dedicated SQL Pool Database Name
+	SynapseSqlDatabaseName pulumi.StringPtrInput `pulumi:"synapseSqlDatabaseName"`
+	// Azure Synapse SQL login details
+	SynapseSqlPassword pulumi.StringPtrInput `pulumi:"synapseSqlPassword"`
+	// Azure Synapse Analytics SQL Server Name
+	SynapseSqlServerName pulumi.StringPtrInput `pulumi:"synapseSqlServerName"`
+	// Azure Synapse SQL login details
+	SynapseSqlUser pulumi.StringPtrInput `pulumi:"synapseSqlUser"`
+}
+
+func (AzureSynapseAnalyticsSinkConnectorServiceInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureSynapseAnalyticsSinkConnectorServiceInfo)(nil)).Elem()
+}
+
+func (i AzureSynapseAnalyticsSinkConnectorServiceInfoArgs) ToAzureSynapseAnalyticsSinkConnectorServiceInfoOutput() AzureSynapseAnalyticsSinkConnectorServiceInfoOutput {
+	return i.ToAzureSynapseAnalyticsSinkConnectorServiceInfoOutputWithContext(context.Background())
+}
+
+func (i AzureSynapseAnalyticsSinkConnectorServiceInfoArgs) ToAzureSynapseAnalyticsSinkConnectorServiceInfoOutputWithContext(ctx context.Context) AzureSynapseAnalyticsSinkConnectorServiceInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureSynapseAnalyticsSinkConnectorServiceInfoOutput)
+}
+
+func (i AzureSynapseAnalyticsSinkConnectorServiceInfoArgs) ToAzureSynapseAnalyticsSinkConnectorServiceInfoPtrOutput() AzureSynapseAnalyticsSinkConnectorServiceInfoPtrOutput {
+	return i.ToAzureSynapseAnalyticsSinkConnectorServiceInfoPtrOutputWithContext(context.Background())
+}
+
+func (i AzureSynapseAnalyticsSinkConnectorServiceInfoArgs) ToAzureSynapseAnalyticsSinkConnectorServiceInfoPtrOutputWithContext(ctx context.Context) AzureSynapseAnalyticsSinkConnectorServiceInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureSynapseAnalyticsSinkConnectorServiceInfoOutput).ToAzureSynapseAnalyticsSinkConnectorServiceInfoPtrOutputWithContext(ctx)
+}
+
+// AzureSynapseAnalyticsSinkConnectorServiceInfoPtrInput is an input type that accepts AzureSynapseAnalyticsSinkConnectorServiceInfoArgs, AzureSynapseAnalyticsSinkConnectorServiceInfoPtr and AzureSynapseAnalyticsSinkConnectorServiceInfoPtrOutput values.
+// You can construct a concrete instance of `AzureSynapseAnalyticsSinkConnectorServiceInfoPtrInput` via:
+//
+//	        AzureSynapseAnalyticsSinkConnectorServiceInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type AzureSynapseAnalyticsSinkConnectorServiceInfoPtrInput interface {
+	pulumi.Input
+
+	ToAzureSynapseAnalyticsSinkConnectorServiceInfoPtrOutput() AzureSynapseAnalyticsSinkConnectorServiceInfoPtrOutput
+	ToAzureSynapseAnalyticsSinkConnectorServiceInfoPtrOutputWithContext(context.Context) AzureSynapseAnalyticsSinkConnectorServiceInfoPtrOutput
+}
+
+type azureSynapseAnalyticsSinkConnectorServiceInfoPtrType AzureSynapseAnalyticsSinkConnectorServiceInfoArgs
+
+func AzureSynapseAnalyticsSinkConnectorServiceInfoPtr(v *AzureSynapseAnalyticsSinkConnectorServiceInfoArgs) AzureSynapseAnalyticsSinkConnectorServiceInfoPtrInput {
+	return (*azureSynapseAnalyticsSinkConnectorServiceInfoPtrType)(v)
+}
+
+func (*azureSynapseAnalyticsSinkConnectorServiceInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureSynapseAnalyticsSinkConnectorServiceInfo)(nil)).Elem()
+}
+
+func (i *azureSynapseAnalyticsSinkConnectorServiceInfoPtrType) ToAzureSynapseAnalyticsSinkConnectorServiceInfoPtrOutput() AzureSynapseAnalyticsSinkConnectorServiceInfoPtrOutput {
+	return i.ToAzureSynapseAnalyticsSinkConnectorServiceInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *azureSynapseAnalyticsSinkConnectorServiceInfoPtrType) ToAzureSynapseAnalyticsSinkConnectorServiceInfoPtrOutputWithContext(ctx context.Context) AzureSynapseAnalyticsSinkConnectorServiceInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureSynapseAnalyticsSinkConnectorServiceInfoPtrOutput)
+}
+
+// The authentication info when auth_type is AzureSynapseAnalyticsSinkConnector
+type AzureSynapseAnalyticsSinkConnectorServiceInfoOutput struct{ *pulumi.OutputState }
+
+func (AzureSynapseAnalyticsSinkConnectorServiceInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureSynapseAnalyticsSinkConnectorServiceInfo)(nil)).Elem()
+}
+
+func (o AzureSynapseAnalyticsSinkConnectorServiceInfoOutput) ToAzureSynapseAnalyticsSinkConnectorServiceInfoOutput() AzureSynapseAnalyticsSinkConnectorServiceInfoOutput {
+	return o
+}
+
+func (o AzureSynapseAnalyticsSinkConnectorServiceInfoOutput) ToAzureSynapseAnalyticsSinkConnectorServiceInfoOutputWithContext(ctx context.Context) AzureSynapseAnalyticsSinkConnectorServiceInfoOutput {
+	return o
+}
+
+func (o AzureSynapseAnalyticsSinkConnectorServiceInfoOutput) ToAzureSynapseAnalyticsSinkConnectorServiceInfoPtrOutput() AzureSynapseAnalyticsSinkConnectorServiceInfoPtrOutput {
+	return o.ToAzureSynapseAnalyticsSinkConnectorServiceInfoPtrOutputWithContext(context.Background())
+}
+
+func (o AzureSynapseAnalyticsSinkConnectorServiceInfoOutput) ToAzureSynapseAnalyticsSinkConnectorServiceInfoPtrOutputWithContext(ctx context.Context) AzureSynapseAnalyticsSinkConnectorServiceInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureSynapseAnalyticsSinkConnectorServiceInfo) *AzureSynapseAnalyticsSinkConnectorServiceInfo {
+		return &v
+	}).(AzureSynapseAnalyticsSinkConnectorServiceInfoPtrOutput)
+}
+
+// The connector service type.
+// Expected value is 'AzureSynapseAnalyticsSinkConnector'.
+func (o AzureSynapseAnalyticsSinkConnectorServiceInfoOutput) ConnectorServiceType() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureSynapseAnalyticsSinkConnectorServiceInfo) string { return v.ConnectorServiceType }).(pulumi.StringOutput)
+}
+
+// Azure Synapse Dedicated SQL Pool Database Name
+func (o AzureSynapseAnalyticsSinkConnectorServiceInfoOutput) SynapseSqlDatabaseName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureSynapseAnalyticsSinkConnectorServiceInfo) *string { return v.SynapseSqlDatabaseName }).(pulumi.StringPtrOutput)
+}
+
+// Azure Synapse SQL login details
+func (o AzureSynapseAnalyticsSinkConnectorServiceInfoOutput) SynapseSqlPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureSynapseAnalyticsSinkConnectorServiceInfo) *string { return v.SynapseSqlPassword }).(pulumi.StringPtrOutput)
+}
+
+// Azure Synapse Analytics SQL Server Name
+func (o AzureSynapseAnalyticsSinkConnectorServiceInfoOutput) SynapseSqlServerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureSynapseAnalyticsSinkConnectorServiceInfo) *string { return v.SynapseSqlServerName }).(pulumi.StringPtrOutput)
+}
+
+// Azure Synapse SQL login details
+func (o AzureSynapseAnalyticsSinkConnectorServiceInfoOutput) SynapseSqlUser() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureSynapseAnalyticsSinkConnectorServiceInfo) *string { return v.SynapseSqlUser }).(pulumi.StringPtrOutput)
+}
+
+type AzureSynapseAnalyticsSinkConnectorServiceInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (AzureSynapseAnalyticsSinkConnectorServiceInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureSynapseAnalyticsSinkConnectorServiceInfo)(nil)).Elem()
+}
+
+func (o AzureSynapseAnalyticsSinkConnectorServiceInfoPtrOutput) ToAzureSynapseAnalyticsSinkConnectorServiceInfoPtrOutput() AzureSynapseAnalyticsSinkConnectorServiceInfoPtrOutput {
+	return o
+}
+
+func (o AzureSynapseAnalyticsSinkConnectorServiceInfoPtrOutput) ToAzureSynapseAnalyticsSinkConnectorServiceInfoPtrOutputWithContext(ctx context.Context) AzureSynapseAnalyticsSinkConnectorServiceInfoPtrOutput {
+	return o
+}
+
+func (o AzureSynapseAnalyticsSinkConnectorServiceInfoPtrOutput) Elem() AzureSynapseAnalyticsSinkConnectorServiceInfoOutput {
+	return o.ApplyT(func(v *AzureSynapseAnalyticsSinkConnectorServiceInfo) AzureSynapseAnalyticsSinkConnectorServiceInfo {
+		if v != nil {
+			return *v
+		}
+		var ret AzureSynapseAnalyticsSinkConnectorServiceInfo
+		return ret
+	}).(AzureSynapseAnalyticsSinkConnectorServiceInfoOutput)
+}
+
+// The connector service type.
+// Expected value is 'AzureSynapseAnalyticsSinkConnector'.
+func (o AzureSynapseAnalyticsSinkConnectorServiceInfoPtrOutput) ConnectorServiceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureSynapseAnalyticsSinkConnectorServiceInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ConnectorServiceType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure Synapse Dedicated SQL Pool Database Name
+func (o AzureSynapseAnalyticsSinkConnectorServiceInfoPtrOutput) SynapseSqlDatabaseName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureSynapseAnalyticsSinkConnectorServiceInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SynapseSqlDatabaseName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure Synapse SQL login details
+func (o AzureSynapseAnalyticsSinkConnectorServiceInfoPtrOutput) SynapseSqlPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureSynapseAnalyticsSinkConnectorServiceInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SynapseSqlPassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure Synapse Analytics SQL Server Name
+func (o AzureSynapseAnalyticsSinkConnectorServiceInfoPtrOutput) SynapseSqlServerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureSynapseAnalyticsSinkConnectorServiceInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SynapseSqlServerName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure Synapse SQL login details
+func (o AzureSynapseAnalyticsSinkConnectorServiceInfoPtrOutput) SynapseSqlUser() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureSynapseAnalyticsSinkConnectorServiceInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SynapseSqlUser
+	}).(pulumi.StringPtrOutput)
+}
+
+// The authentication info when auth_type is AzureSynapseAnalyticsSinkConnector
+type AzureSynapseAnalyticsSinkConnectorServiceInfoResponse struct {
+	// The connector service type.
+	// Expected value is 'AzureSynapseAnalyticsSinkConnector'.
+	ConnectorServiceType string `pulumi:"connectorServiceType"`
+	// Azure Synapse Dedicated SQL Pool Database Name
+	SynapseSqlDatabaseName *string `pulumi:"synapseSqlDatabaseName"`
+	// Azure Synapse SQL login details
+	SynapseSqlPassword *string `pulumi:"synapseSqlPassword"`
+	// Azure Synapse Analytics SQL Server Name
+	SynapseSqlServerName *string `pulumi:"synapseSqlServerName"`
+	// Azure Synapse SQL login details
+	SynapseSqlUser *string `pulumi:"synapseSqlUser"`
+}
+
+// The authentication info when auth_type is AzureSynapseAnalyticsSinkConnector
+type AzureSynapseAnalyticsSinkConnectorServiceInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (AzureSynapseAnalyticsSinkConnectorServiceInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureSynapseAnalyticsSinkConnectorServiceInfoResponse)(nil)).Elem()
+}
+
+func (o AzureSynapseAnalyticsSinkConnectorServiceInfoResponseOutput) ToAzureSynapseAnalyticsSinkConnectorServiceInfoResponseOutput() AzureSynapseAnalyticsSinkConnectorServiceInfoResponseOutput {
+	return o
+}
+
+func (o AzureSynapseAnalyticsSinkConnectorServiceInfoResponseOutput) ToAzureSynapseAnalyticsSinkConnectorServiceInfoResponseOutputWithContext(ctx context.Context) AzureSynapseAnalyticsSinkConnectorServiceInfoResponseOutput {
+	return o
+}
+
+// The connector service type.
+// Expected value is 'AzureSynapseAnalyticsSinkConnector'.
+func (o AzureSynapseAnalyticsSinkConnectorServiceInfoResponseOutput) ConnectorServiceType() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureSynapseAnalyticsSinkConnectorServiceInfoResponse) string { return v.ConnectorServiceType }).(pulumi.StringOutput)
+}
+
+// Azure Synapse Dedicated SQL Pool Database Name
+func (o AzureSynapseAnalyticsSinkConnectorServiceInfoResponseOutput) SynapseSqlDatabaseName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureSynapseAnalyticsSinkConnectorServiceInfoResponse) *string { return v.SynapseSqlDatabaseName }).(pulumi.StringPtrOutput)
+}
+
+// Azure Synapse SQL login details
+func (o AzureSynapseAnalyticsSinkConnectorServiceInfoResponseOutput) SynapseSqlPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureSynapseAnalyticsSinkConnectorServiceInfoResponse) *string { return v.SynapseSqlPassword }).(pulumi.StringPtrOutput)
+}
+
+// Azure Synapse Analytics SQL Server Name
+func (o AzureSynapseAnalyticsSinkConnectorServiceInfoResponseOutput) SynapseSqlServerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureSynapseAnalyticsSinkConnectorServiceInfoResponse) *string { return v.SynapseSqlServerName }).(pulumi.StringPtrOutput)
+}
+
+// Azure Synapse SQL login details
+func (o AzureSynapseAnalyticsSinkConnectorServiceInfoResponseOutput) SynapseSqlUser() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureSynapseAnalyticsSinkConnectorServiceInfoResponse) *string { return v.SynapseSqlUser }).(pulumi.StringPtrOutput)
+}
+
+type AzureSynapseAnalyticsSinkConnectorServiceInfoResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AzureSynapseAnalyticsSinkConnectorServiceInfoResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureSynapseAnalyticsSinkConnectorServiceInfoResponse)(nil)).Elem()
+}
+
+func (o AzureSynapseAnalyticsSinkConnectorServiceInfoResponsePtrOutput) ToAzureSynapseAnalyticsSinkConnectorServiceInfoResponsePtrOutput() AzureSynapseAnalyticsSinkConnectorServiceInfoResponsePtrOutput {
+	return o
+}
+
+func (o AzureSynapseAnalyticsSinkConnectorServiceInfoResponsePtrOutput) ToAzureSynapseAnalyticsSinkConnectorServiceInfoResponsePtrOutputWithContext(ctx context.Context) AzureSynapseAnalyticsSinkConnectorServiceInfoResponsePtrOutput {
+	return o
+}
+
+func (o AzureSynapseAnalyticsSinkConnectorServiceInfoResponsePtrOutput) Elem() AzureSynapseAnalyticsSinkConnectorServiceInfoResponseOutput {
+	return o.ApplyT(func(v *AzureSynapseAnalyticsSinkConnectorServiceInfoResponse) AzureSynapseAnalyticsSinkConnectorServiceInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AzureSynapseAnalyticsSinkConnectorServiceInfoResponse
+		return ret
+	}).(AzureSynapseAnalyticsSinkConnectorServiceInfoResponseOutput)
+}
+
+// The connector service type.
+// Expected value is 'AzureSynapseAnalyticsSinkConnector'.
+func (o AzureSynapseAnalyticsSinkConnectorServiceInfoResponsePtrOutput) ConnectorServiceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureSynapseAnalyticsSinkConnectorServiceInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ConnectorServiceType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure Synapse Dedicated SQL Pool Database Name
+func (o AzureSynapseAnalyticsSinkConnectorServiceInfoResponsePtrOutput) SynapseSqlDatabaseName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureSynapseAnalyticsSinkConnectorServiceInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SynapseSqlDatabaseName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure Synapse SQL login details
+func (o AzureSynapseAnalyticsSinkConnectorServiceInfoResponsePtrOutput) SynapseSqlPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureSynapseAnalyticsSinkConnectorServiceInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SynapseSqlPassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure Synapse Analytics SQL Server Name
+func (o AzureSynapseAnalyticsSinkConnectorServiceInfoResponsePtrOutput) SynapseSqlServerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureSynapseAnalyticsSinkConnectorServiceInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SynapseSqlServerName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure Synapse SQL login details
+func (o AzureSynapseAnalyticsSinkConnectorServiceInfoResponsePtrOutput) SynapseSqlUser() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureSynapseAnalyticsSinkConnectorServiceInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SynapseSqlUser
+	}).(pulumi.StringPtrOutput)
+}
+
 // The network associated with this object
 type ClusterByokEntityResponse struct {
 	// ID of the referred resource
@@ -104,6 +1895,146 @@ func (o ClusterByokEntityResponsePtrOutput) ResourceName() pulumi.StringPtrOutpu
 			return nil
 		}
 		return v.ResourceName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The configuration of the Kafka cluster
+type ClusterConfigEntity struct {
+	// The lifecycle phase of the cluster
+	Kind *string `pulumi:"kind"`
+}
+
+// ClusterConfigEntityInput is an input type that accepts ClusterConfigEntityArgs and ClusterConfigEntityOutput values.
+// You can construct a concrete instance of `ClusterConfigEntityInput` via:
+//
+//	ClusterConfigEntityArgs{...}
+type ClusterConfigEntityInput interface {
+	pulumi.Input
+
+	ToClusterConfigEntityOutput() ClusterConfigEntityOutput
+	ToClusterConfigEntityOutputWithContext(context.Context) ClusterConfigEntityOutput
+}
+
+// The configuration of the Kafka cluster
+type ClusterConfigEntityArgs struct {
+	// The lifecycle phase of the cluster
+	Kind pulumi.StringPtrInput `pulumi:"kind"`
+}
+
+func (ClusterConfigEntityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterConfigEntity)(nil)).Elem()
+}
+
+func (i ClusterConfigEntityArgs) ToClusterConfigEntityOutput() ClusterConfigEntityOutput {
+	return i.ToClusterConfigEntityOutputWithContext(context.Background())
+}
+
+func (i ClusterConfigEntityArgs) ToClusterConfigEntityOutputWithContext(ctx context.Context) ClusterConfigEntityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterConfigEntityOutput)
+}
+
+func (i ClusterConfigEntityArgs) ToClusterConfigEntityPtrOutput() ClusterConfigEntityPtrOutput {
+	return i.ToClusterConfigEntityPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterConfigEntityArgs) ToClusterConfigEntityPtrOutputWithContext(ctx context.Context) ClusterConfigEntityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterConfigEntityOutput).ToClusterConfigEntityPtrOutputWithContext(ctx)
+}
+
+// ClusterConfigEntityPtrInput is an input type that accepts ClusterConfigEntityArgs, ClusterConfigEntityPtr and ClusterConfigEntityPtrOutput values.
+// You can construct a concrete instance of `ClusterConfigEntityPtrInput` via:
+//
+//	        ClusterConfigEntityArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterConfigEntityPtrInput interface {
+	pulumi.Input
+
+	ToClusterConfigEntityPtrOutput() ClusterConfigEntityPtrOutput
+	ToClusterConfigEntityPtrOutputWithContext(context.Context) ClusterConfigEntityPtrOutput
+}
+
+type clusterConfigEntityPtrType ClusterConfigEntityArgs
+
+func ClusterConfigEntityPtr(v *ClusterConfigEntityArgs) ClusterConfigEntityPtrInput {
+	return (*clusterConfigEntityPtrType)(v)
+}
+
+func (*clusterConfigEntityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterConfigEntity)(nil)).Elem()
+}
+
+func (i *clusterConfigEntityPtrType) ToClusterConfigEntityPtrOutput() ClusterConfigEntityPtrOutput {
+	return i.ToClusterConfigEntityPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterConfigEntityPtrType) ToClusterConfigEntityPtrOutputWithContext(ctx context.Context) ClusterConfigEntityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterConfigEntityPtrOutput)
+}
+
+// The configuration of the Kafka cluster
+type ClusterConfigEntityOutput struct{ *pulumi.OutputState }
+
+func (ClusterConfigEntityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterConfigEntity)(nil)).Elem()
+}
+
+func (o ClusterConfigEntityOutput) ToClusterConfigEntityOutput() ClusterConfigEntityOutput {
+	return o
+}
+
+func (o ClusterConfigEntityOutput) ToClusterConfigEntityOutputWithContext(ctx context.Context) ClusterConfigEntityOutput {
+	return o
+}
+
+func (o ClusterConfigEntityOutput) ToClusterConfigEntityPtrOutput() ClusterConfigEntityPtrOutput {
+	return o.ToClusterConfigEntityPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterConfigEntityOutput) ToClusterConfigEntityPtrOutputWithContext(ctx context.Context) ClusterConfigEntityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterConfigEntity) *ClusterConfigEntity {
+		return &v
+	}).(ClusterConfigEntityPtrOutput)
+}
+
+// The lifecycle phase of the cluster
+func (o ClusterConfigEntityOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterConfigEntity) *string { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
+type ClusterConfigEntityPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterConfigEntityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterConfigEntity)(nil)).Elem()
+}
+
+func (o ClusterConfigEntityPtrOutput) ToClusterConfigEntityPtrOutput() ClusterConfigEntityPtrOutput {
+	return o
+}
+
+func (o ClusterConfigEntityPtrOutput) ToClusterConfigEntityPtrOutputWithContext(ctx context.Context) ClusterConfigEntityPtrOutput {
+	return o
+}
+
+func (o ClusterConfigEntityPtrOutput) Elem() ClusterConfigEntityOutput {
+	return o.ApplyT(func(v *ClusterConfigEntity) ClusterConfigEntity {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterConfigEntity
+		return ret
+	}).(ClusterConfigEntityOutput)
+}
+
+// The lifecycle phase of the cluster
+func (o ClusterConfigEntityPtrOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterConfigEntity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Kind
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -718,6 +2649,165 @@ func (o ClusterSpecEntityResponsePtrOutput) Zone() pulumi.StringPtrOutput {
 }
 
 // Status of the cluster record
+type ClusterStatusEntity struct {
+	// The number of Confluent Kafka Units
+	Cku *int `pulumi:"cku"`
+	// The lifecycle phase of the cluster
+	Phase *string `pulumi:"phase"`
+}
+
+// ClusterStatusEntityInput is an input type that accepts ClusterStatusEntityArgs and ClusterStatusEntityOutput values.
+// You can construct a concrete instance of `ClusterStatusEntityInput` via:
+//
+//	ClusterStatusEntityArgs{...}
+type ClusterStatusEntityInput interface {
+	pulumi.Input
+
+	ToClusterStatusEntityOutput() ClusterStatusEntityOutput
+	ToClusterStatusEntityOutputWithContext(context.Context) ClusterStatusEntityOutput
+}
+
+// Status of the cluster record
+type ClusterStatusEntityArgs struct {
+	// The number of Confluent Kafka Units
+	Cku pulumi.IntPtrInput `pulumi:"cku"`
+	// The lifecycle phase of the cluster
+	Phase pulumi.StringPtrInput `pulumi:"phase"`
+}
+
+func (ClusterStatusEntityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterStatusEntity)(nil)).Elem()
+}
+
+func (i ClusterStatusEntityArgs) ToClusterStatusEntityOutput() ClusterStatusEntityOutput {
+	return i.ToClusterStatusEntityOutputWithContext(context.Background())
+}
+
+func (i ClusterStatusEntityArgs) ToClusterStatusEntityOutputWithContext(ctx context.Context) ClusterStatusEntityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterStatusEntityOutput)
+}
+
+func (i ClusterStatusEntityArgs) ToClusterStatusEntityPtrOutput() ClusterStatusEntityPtrOutput {
+	return i.ToClusterStatusEntityPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterStatusEntityArgs) ToClusterStatusEntityPtrOutputWithContext(ctx context.Context) ClusterStatusEntityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterStatusEntityOutput).ToClusterStatusEntityPtrOutputWithContext(ctx)
+}
+
+// ClusterStatusEntityPtrInput is an input type that accepts ClusterStatusEntityArgs, ClusterStatusEntityPtr and ClusterStatusEntityPtrOutput values.
+// You can construct a concrete instance of `ClusterStatusEntityPtrInput` via:
+//
+//	        ClusterStatusEntityArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterStatusEntityPtrInput interface {
+	pulumi.Input
+
+	ToClusterStatusEntityPtrOutput() ClusterStatusEntityPtrOutput
+	ToClusterStatusEntityPtrOutputWithContext(context.Context) ClusterStatusEntityPtrOutput
+}
+
+type clusterStatusEntityPtrType ClusterStatusEntityArgs
+
+func ClusterStatusEntityPtr(v *ClusterStatusEntityArgs) ClusterStatusEntityPtrInput {
+	return (*clusterStatusEntityPtrType)(v)
+}
+
+func (*clusterStatusEntityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterStatusEntity)(nil)).Elem()
+}
+
+func (i *clusterStatusEntityPtrType) ToClusterStatusEntityPtrOutput() ClusterStatusEntityPtrOutput {
+	return i.ToClusterStatusEntityPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterStatusEntityPtrType) ToClusterStatusEntityPtrOutputWithContext(ctx context.Context) ClusterStatusEntityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterStatusEntityPtrOutput)
+}
+
+// Status of the cluster record
+type ClusterStatusEntityOutput struct{ *pulumi.OutputState }
+
+func (ClusterStatusEntityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterStatusEntity)(nil)).Elem()
+}
+
+func (o ClusterStatusEntityOutput) ToClusterStatusEntityOutput() ClusterStatusEntityOutput {
+	return o
+}
+
+func (o ClusterStatusEntityOutput) ToClusterStatusEntityOutputWithContext(ctx context.Context) ClusterStatusEntityOutput {
+	return o
+}
+
+func (o ClusterStatusEntityOutput) ToClusterStatusEntityPtrOutput() ClusterStatusEntityPtrOutput {
+	return o.ToClusterStatusEntityPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterStatusEntityOutput) ToClusterStatusEntityPtrOutputWithContext(ctx context.Context) ClusterStatusEntityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterStatusEntity) *ClusterStatusEntity {
+		return &v
+	}).(ClusterStatusEntityPtrOutput)
+}
+
+// The number of Confluent Kafka Units
+func (o ClusterStatusEntityOutput) Cku() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterStatusEntity) *int { return v.Cku }).(pulumi.IntPtrOutput)
+}
+
+// The lifecycle phase of the cluster
+func (o ClusterStatusEntityOutput) Phase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterStatusEntity) *string { return v.Phase }).(pulumi.StringPtrOutput)
+}
+
+type ClusterStatusEntityPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterStatusEntityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterStatusEntity)(nil)).Elem()
+}
+
+func (o ClusterStatusEntityPtrOutput) ToClusterStatusEntityPtrOutput() ClusterStatusEntityPtrOutput {
+	return o
+}
+
+func (o ClusterStatusEntityPtrOutput) ToClusterStatusEntityPtrOutputWithContext(ctx context.Context) ClusterStatusEntityPtrOutput {
+	return o
+}
+
+func (o ClusterStatusEntityPtrOutput) Elem() ClusterStatusEntityOutput {
+	return o.ApplyT(func(v *ClusterStatusEntity) ClusterStatusEntity {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterStatusEntity
+		return ret
+	}).(ClusterStatusEntityOutput)
+}
+
+// The number of Confluent Kafka Units
+func (o ClusterStatusEntityPtrOutput) Cku() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterStatusEntity) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Cku
+	}).(pulumi.IntPtrOutput)
+}
+
+// The lifecycle phase of the cluster
+func (o ClusterStatusEntityPtrOutput) Phase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterStatusEntity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Phase
+	}).(pulumi.StringPtrOutput)
+}
+
+// Status of the cluster record
 type ClusterStatusEntityResponse struct {
 	// The number of Confluent Kafka Units
 	Cku *int `pulumi:"cku"`
@@ -922,6 +3012,350 @@ func (o ConfluentListMetadataResponsePtrOutput) TotalSize() pulumi.IntPtrOutput 
 	}).(pulumi.IntPtrOutput)
 }
 
+// Connector Info Base properties
+type ConnectorInfoBase struct {
+	// Connector Class
+	ConnectorClass *string `pulumi:"connectorClass"`
+	// Connector Id
+	ConnectorId *string `pulumi:"connectorId"`
+	// Connector Name
+	ConnectorName *string `pulumi:"connectorName"`
+	// Connector Status
+	ConnectorState *string `pulumi:"connectorState"`
+	// Connector Type
+	ConnectorType *string `pulumi:"connectorType"`
+}
+
+// ConnectorInfoBaseInput is an input type that accepts ConnectorInfoBaseArgs and ConnectorInfoBaseOutput values.
+// You can construct a concrete instance of `ConnectorInfoBaseInput` via:
+//
+//	ConnectorInfoBaseArgs{...}
+type ConnectorInfoBaseInput interface {
+	pulumi.Input
+
+	ToConnectorInfoBaseOutput() ConnectorInfoBaseOutput
+	ToConnectorInfoBaseOutputWithContext(context.Context) ConnectorInfoBaseOutput
+}
+
+// Connector Info Base properties
+type ConnectorInfoBaseArgs struct {
+	// Connector Class
+	ConnectorClass pulumi.StringPtrInput `pulumi:"connectorClass"`
+	// Connector Id
+	ConnectorId pulumi.StringPtrInput `pulumi:"connectorId"`
+	// Connector Name
+	ConnectorName pulumi.StringPtrInput `pulumi:"connectorName"`
+	// Connector Status
+	ConnectorState pulumi.StringPtrInput `pulumi:"connectorState"`
+	// Connector Type
+	ConnectorType pulumi.StringPtrInput `pulumi:"connectorType"`
+}
+
+func (ConnectorInfoBaseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorInfoBase)(nil)).Elem()
+}
+
+func (i ConnectorInfoBaseArgs) ToConnectorInfoBaseOutput() ConnectorInfoBaseOutput {
+	return i.ToConnectorInfoBaseOutputWithContext(context.Background())
+}
+
+func (i ConnectorInfoBaseArgs) ToConnectorInfoBaseOutputWithContext(ctx context.Context) ConnectorInfoBaseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorInfoBaseOutput)
+}
+
+func (i ConnectorInfoBaseArgs) ToConnectorInfoBasePtrOutput() ConnectorInfoBasePtrOutput {
+	return i.ToConnectorInfoBasePtrOutputWithContext(context.Background())
+}
+
+func (i ConnectorInfoBaseArgs) ToConnectorInfoBasePtrOutputWithContext(ctx context.Context) ConnectorInfoBasePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorInfoBaseOutput).ToConnectorInfoBasePtrOutputWithContext(ctx)
+}
+
+// ConnectorInfoBasePtrInput is an input type that accepts ConnectorInfoBaseArgs, ConnectorInfoBasePtr and ConnectorInfoBasePtrOutput values.
+// You can construct a concrete instance of `ConnectorInfoBasePtrInput` via:
+//
+//	        ConnectorInfoBaseArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectorInfoBasePtrInput interface {
+	pulumi.Input
+
+	ToConnectorInfoBasePtrOutput() ConnectorInfoBasePtrOutput
+	ToConnectorInfoBasePtrOutputWithContext(context.Context) ConnectorInfoBasePtrOutput
+}
+
+type connectorInfoBasePtrType ConnectorInfoBaseArgs
+
+func ConnectorInfoBasePtr(v *ConnectorInfoBaseArgs) ConnectorInfoBasePtrInput {
+	return (*connectorInfoBasePtrType)(v)
+}
+
+func (*connectorInfoBasePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectorInfoBase)(nil)).Elem()
+}
+
+func (i *connectorInfoBasePtrType) ToConnectorInfoBasePtrOutput() ConnectorInfoBasePtrOutput {
+	return i.ToConnectorInfoBasePtrOutputWithContext(context.Background())
+}
+
+func (i *connectorInfoBasePtrType) ToConnectorInfoBasePtrOutputWithContext(ctx context.Context) ConnectorInfoBasePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorInfoBasePtrOutput)
+}
+
+// Connector Info Base properties
+type ConnectorInfoBaseOutput struct{ *pulumi.OutputState }
+
+func (ConnectorInfoBaseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorInfoBase)(nil)).Elem()
+}
+
+func (o ConnectorInfoBaseOutput) ToConnectorInfoBaseOutput() ConnectorInfoBaseOutput {
+	return o
+}
+
+func (o ConnectorInfoBaseOutput) ToConnectorInfoBaseOutputWithContext(ctx context.Context) ConnectorInfoBaseOutput {
+	return o
+}
+
+func (o ConnectorInfoBaseOutput) ToConnectorInfoBasePtrOutput() ConnectorInfoBasePtrOutput {
+	return o.ToConnectorInfoBasePtrOutputWithContext(context.Background())
+}
+
+func (o ConnectorInfoBaseOutput) ToConnectorInfoBasePtrOutputWithContext(ctx context.Context) ConnectorInfoBasePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectorInfoBase) *ConnectorInfoBase {
+		return &v
+	}).(ConnectorInfoBasePtrOutput)
+}
+
+// Connector Class
+func (o ConnectorInfoBaseOutput) ConnectorClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorInfoBase) *string { return v.ConnectorClass }).(pulumi.StringPtrOutput)
+}
+
+// Connector Id
+func (o ConnectorInfoBaseOutput) ConnectorId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorInfoBase) *string { return v.ConnectorId }).(pulumi.StringPtrOutput)
+}
+
+// Connector Name
+func (o ConnectorInfoBaseOutput) ConnectorName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorInfoBase) *string { return v.ConnectorName }).(pulumi.StringPtrOutput)
+}
+
+// Connector Status
+func (o ConnectorInfoBaseOutput) ConnectorState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorInfoBase) *string { return v.ConnectorState }).(pulumi.StringPtrOutput)
+}
+
+// Connector Type
+func (o ConnectorInfoBaseOutput) ConnectorType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorInfoBase) *string { return v.ConnectorType }).(pulumi.StringPtrOutput)
+}
+
+type ConnectorInfoBasePtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectorInfoBasePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectorInfoBase)(nil)).Elem()
+}
+
+func (o ConnectorInfoBasePtrOutput) ToConnectorInfoBasePtrOutput() ConnectorInfoBasePtrOutput {
+	return o
+}
+
+func (o ConnectorInfoBasePtrOutput) ToConnectorInfoBasePtrOutputWithContext(ctx context.Context) ConnectorInfoBasePtrOutput {
+	return o
+}
+
+func (o ConnectorInfoBasePtrOutput) Elem() ConnectorInfoBaseOutput {
+	return o.ApplyT(func(v *ConnectorInfoBase) ConnectorInfoBase {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectorInfoBase
+		return ret
+	}).(ConnectorInfoBaseOutput)
+}
+
+// Connector Class
+func (o ConnectorInfoBasePtrOutput) ConnectorClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorInfoBase) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectorClass
+	}).(pulumi.StringPtrOutput)
+}
+
+// Connector Id
+func (o ConnectorInfoBasePtrOutput) ConnectorId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorInfoBase) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectorId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Connector Name
+func (o ConnectorInfoBasePtrOutput) ConnectorName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorInfoBase) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectorName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Connector Status
+func (o ConnectorInfoBasePtrOutput) ConnectorState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorInfoBase) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectorState
+	}).(pulumi.StringPtrOutput)
+}
+
+// Connector Type
+func (o ConnectorInfoBasePtrOutput) ConnectorType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorInfoBase) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectorType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Connector Info Base properties
+type ConnectorInfoBaseResponse struct {
+	// Connector Class
+	ConnectorClass *string `pulumi:"connectorClass"`
+	// Connector Id
+	ConnectorId *string `pulumi:"connectorId"`
+	// Connector Name
+	ConnectorName *string `pulumi:"connectorName"`
+	// Connector Status
+	ConnectorState *string `pulumi:"connectorState"`
+	// Connector Type
+	ConnectorType *string `pulumi:"connectorType"`
+}
+
+// Connector Info Base properties
+type ConnectorInfoBaseResponseOutput struct{ *pulumi.OutputState }
+
+func (ConnectorInfoBaseResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorInfoBaseResponse)(nil)).Elem()
+}
+
+func (o ConnectorInfoBaseResponseOutput) ToConnectorInfoBaseResponseOutput() ConnectorInfoBaseResponseOutput {
+	return o
+}
+
+func (o ConnectorInfoBaseResponseOutput) ToConnectorInfoBaseResponseOutputWithContext(ctx context.Context) ConnectorInfoBaseResponseOutput {
+	return o
+}
+
+// Connector Class
+func (o ConnectorInfoBaseResponseOutput) ConnectorClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorInfoBaseResponse) *string { return v.ConnectorClass }).(pulumi.StringPtrOutput)
+}
+
+// Connector Id
+func (o ConnectorInfoBaseResponseOutput) ConnectorId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorInfoBaseResponse) *string { return v.ConnectorId }).(pulumi.StringPtrOutput)
+}
+
+// Connector Name
+func (o ConnectorInfoBaseResponseOutput) ConnectorName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorInfoBaseResponse) *string { return v.ConnectorName }).(pulumi.StringPtrOutput)
+}
+
+// Connector Status
+func (o ConnectorInfoBaseResponseOutput) ConnectorState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorInfoBaseResponse) *string { return v.ConnectorState }).(pulumi.StringPtrOutput)
+}
+
+// Connector Type
+func (o ConnectorInfoBaseResponseOutput) ConnectorType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorInfoBaseResponse) *string { return v.ConnectorType }).(pulumi.StringPtrOutput)
+}
+
+type ConnectorInfoBaseResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectorInfoBaseResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectorInfoBaseResponse)(nil)).Elem()
+}
+
+func (o ConnectorInfoBaseResponsePtrOutput) ToConnectorInfoBaseResponsePtrOutput() ConnectorInfoBaseResponsePtrOutput {
+	return o
+}
+
+func (o ConnectorInfoBaseResponsePtrOutput) ToConnectorInfoBaseResponsePtrOutputWithContext(ctx context.Context) ConnectorInfoBaseResponsePtrOutput {
+	return o
+}
+
+func (o ConnectorInfoBaseResponsePtrOutput) Elem() ConnectorInfoBaseResponseOutput {
+	return o.ApplyT(func(v *ConnectorInfoBaseResponse) ConnectorInfoBaseResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectorInfoBaseResponse
+		return ret
+	}).(ConnectorInfoBaseResponseOutput)
+}
+
+// Connector Class
+func (o ConnectorInfoBaseResponsePtrOutput) ConnectorClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorInfoBaseResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectorClass
+	}).(pulumi.StringPtrOutput)
+}
+
+// Connector Id
+func (o ConnectorInfoBaseResponsePtrOutput) ConnectorId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorInfoBaseResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectorId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Connector Name
+func (o ConnectorInfoBaseResponsePtrOutput) ConnectorName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorInfoBaseResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectorName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Connector Status
+func (o ConnectorInfoBaseResponsePtrOutput) ConnectorState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorInfoBaseResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectorState
+	}).(pulumi.StringPtrOutput)
+}
+
+// Connector Type
+func (o ConnectorInfoBaseResponsePtrOutput) ConnectorType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorInfoBaseResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectorType
+	}).(pulumi.StringPtrOutput)
+}
+
 // Record of the environment
 type EnvironmentRecordResponse struct {
 	// Display name of the user
@@ -1082,6 +3516,2877 @@ func (o InvitationRecordResponseArrayOutput) Index(i pulumi.IntInput) Invitation
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InvitationRecordResponse {
 		return vs[0].([]InvitationRecordResponse)[vs[1].(int)]
 	}).(InvitationRecordResponseOutput)
+}
+
+// The partner connector type is KafkaAzureBlobStorageSink
+type KafkaAzureBlobStorageSinkConnectorInfo struct {
+	// Kafka API Key
+	ApiKey *string `pulumi:"apiKey"`
+	// Kafka API Key Secret
+	ApiSecret *string `pulumi:"apiSecret"`
+	// Kafka Auth Type
+	AuthType *string `pulumi:"authType"`
+	// Flush size
+	FlushSize *string `pulumi:"flushSize"`
+	// Kafka Input Data Format Type
+	InputFormat *string `pulumi:"inputFormat"`
+	// Maximum Tasks
+	MaxTasks *string `pulumi:"maxTasks"`
+	// Kafka Output Data Format Type
+	OutputFormat *string `pulumi:"outputFormat"`
+	// Partner Connector type.
+	// Expected value is 'KafkaAzureBlobStorageSink'.
+	PartnerConnectorType string `pulumi:"partnerConnectorType"`
+	// Kafka Service Account Id
+	ServiceAccountId *string `pulumi:"serviceAccountId"`
+	// Time Interval
+	TimeInterval *string `pulumi:"timeInterval"`
+	// Kafka topics list
+	Topics []string `pulumi:"topics"`
+	// Kafka topics directory
+	TopicsDir *string `pulumi:"topicsDir"`
+}
+
+// KafkaAzureBlobStorageSinkConnectorInfoInput is an input type that accepts KafkaAzureBlobStorageSinkConnectorInfoArgs and KafkaAzureBlobStorageSinkConnectorInfoOutput values.
+// You can construct a concrete instance of `KafkaAzureBlobStorageSinkConnectorInfoInput` via:
+//
+//	KafkaAzureBlobStorageSinkConnectorInfoArgs{...}
+type KafkaAzureBlobStorageSinkConnectorInfoInput interface {
+	pulumi.Input
+
+	ToKafkaAzureBlobStorageSinkConnectorInfoOutput() KafkaAzureBlobStorageSinkConnectorInfoOutput
+	ToKafkaAzureBlobStorageSinkConnectorInfoOutputWithContext(context.Context) KafkaAzureBlobStorageSinkConnectorInfoOutput
+}
+
+// The partner connector type is KafkaAzureBlobStorageSink
+type KafkaAzureBlobStorageSinkConnectorInfoArgs struct {
+	// Kafka API Key
+	ApiKey pulumi.StringPtrInput `pulumi:"apiKey"`
+	// Kafka API Key Secret
+	ApiSecret pulumi.StringPtrInput `pulumi:"apiSecret"`
+	// Kafka Auth Type
+	AuthType pulumi.StringPtrInput `pulumi:"authType"`
+	// Flush size
+	FlushSize pulumi.StringPtrInput `pulumi:"flushSize"`
+	// Kafka Input Data Format Type
+	InputFormat pulumi.StringPtrInput `pulumi:"inputFormat"`
+	// Maximum Tasks
+	MaxTasks pulumi.StringPtrInput `pulumi:"maxTasks"`
+	// Kafka Output Data Format Type
+	OutputFormat pulumi.StringPtrInput `pulumi:"outputFormat"`
+	// Partner Connector type.
+	// Expected value is 'KafkaAzureBlobStorageSink'.
+	PartnerConnectorType pulumi.StringInput `pulumi:"partnerConnectorType"`
+	// Kafka Service Account Id
+	ServiceAccountId pulumi.StringPtrInput `pulumi:"serviceAccountId"`
+	// Time Interval
+	TimeInterval pulumi.StringPtrInput `pulumi:"timeInterval"`
+	// Kafka topics list
+	Topics pulumi.StringArrayInput `pulumi:"topics"`
+	// Kafka topics directory
+	TopicsDir pulumi.StringPtrInput `pulumi:"topicsDir"`
+}
+
+func (KafkaAzureBlobStorageSinkConnectorInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KafkaAzureBlobStorageSinkConnectorInfo)(nil)).Elem()
+}
+
+func (i KafkaAzureBlobStorageSinkConnectorInfoArgs) ToKafkaAzureBlobStorageSinkConnectorInfoOutput() KafkaAzureBlobStorageSinkConnectorInfoOutput {
+	return i.ToKafkaAzureBlobStorageSinkConnectorInfoOutputWithContext(context.Background())
+}
+
+func (i KafkaAzureBlobStorageSinkConnectorInfoArgs) ToKafkaAzureBlobStorageSinkConnectorInfoOutputWithContext(ctx context.Context) KafkaAzureBlobStorageSinkConnectorInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaAzureBlobStorageSinkConnectorInfoOutput)
+}
+
+func (i KafkaAzureBlobStorageSinkConnectorInfoArgs) ToKafkaAzureBlobStorageSinkConnectorInfoPtrOutput() KafkaAzureBlobStorageSinkConnectorInfoPtrOutput {
+	return i.ToKafkaAzureBlobStorageSinkConnectorInfoPtrOutputWithContext(context.Background())
+}
+
+func (i KafkaAzureBlobStorageSinkConnectorInfoArgs) ToKafkaAzureBlobStorageSinkConnectorInfoPtrOutputWithContext(ctx context.Context) KafkaAzureBlobStorageSinkConnectorInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaAzureBlobStorageSinkConnectorInfoOutput).ToKafkaAzureBlobStorageSinkConnectorInfoPtrOutputWithContext(ctx)
+}
+
+// KafkaAzureBlobStorageSinkConnectorInfoPtrInput is an input type that accepts KafkaAzureBlobStorageSinkConnectorInfoArgs, KafkaAzureBlobStorageSinkConnectorInfoPtr and KafkaAzureBlobStorageSinkConnectorInfoPtrOutput values.
+// You can construct a concrete instance of `KafkaAzureBlobStorageSinkConnectorInfoPtrInput` via:
+//
+//	        KafkaAzureBlobStorageSinkConnectorInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type KafkaAzureBlobStorageSinkConnectorInfoPtrInput interface {
+	pulumi.Input
+
+	ToKafkaAzureBlobStorageSinkConnectorInfoPtrOutput() KafkaAzureBlobStorageSinkConnectorInfoPtrOutput
+	ToKafkaAzureBlobStorageSinkConnectorInfoPtrOutputWithContext(context.Context) KafkaAzureBlobStorageSinkConnectorInfoPtrOutput
+}
+
+type kafkaAzureBlobStorageSinkConnectorInfoPtrType KafkaAzureBlobStorageSinkConnectorInfoArgs
+
+func KafkaAzureBlobStorageSinkConnectorInfoPtr(v *KafkaAzureBlobStorageSinkConnectorInfoArgs) KafkaAzureBlobStorageSinkConnectorInfoPtrInput {
+	return (*kafkaAzureBlobStorageSinkConnectorInfoPtrType)(v)
+}
+
+func (*kafkaAzureBlobStorageSinkConnectorInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KafkaAzureBlobStorageSinkConnectorInfo)(nil)).Elem()
+}
+
+func (i *kafkaAzureBlobStorageSinkConnectorInfoPtrType) ToKafkaAzureBlobStorageSinkConnectorInfoPtrOutput() KafkaAzureBlobStorageSinkConnectorInfoPtrOutput {
+	return i.ToKafkaAzureBlobStorageSinkConnectorInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *kafkaAzureBlobStorageSinkConnectorInfoPtrType) ToKafkaAzureBlobStorageSinkConnectorInfoPtrOutputWithContext(ctx context.Context) KafkaAzureBlobStorageSinkConnectorInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaAzureBlobStorageSinkConnectorInfoPtrOutput)
+}
+
+// The partner connector type is KafkaAzureBlobStorageSink
+type KafkaAzureBlobStorageSinkConnectorInfoOutput struct{ *pulumi.OutputState }
+
+func (KafkaAzureBlobStorageSinkConnectorInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KafkaAzureBlobStorageSinkConnectorInfo)(nil)).Elem()
+}
+
+func (o KafkaAzureBlobStorageSinkConnectorInfoOutput) ToKafkaAzureBlobStorageSinkConnectorInfoOutput() KafkaAzureBlobStorageSinkConnectorInfoOutput {
+	return o
+}
+
+func (o KafkaAzureBlobStorageSinkConnectorInfoOutput) ToKafkaAzureBlobStorageSinkConnectorInfoOutputWithContext(ctx context.Context) KafkaAzureBlobStorageSinkConnectorInfoOutput {
+	return o
+}
+
+func (o KafkaAzureBlobStorageSinkConnectorInfoOutput) ToKafkaAzureBlobStorageSinkConnectorInfoPtrOutput() KafkaAzureBlobStorageSinkConnectorInfoPtrOutput {
+	return o.ToKafkaAzureBlobStorageSinkConnectorInfoPtrOutputWithContext(context.Background())
+}
+
+func (o KafkaAzureBlobStorageSinkConnectorInfoOutput) ToKafkaAzureBlobStorageSinkConnectorInfoPtrOutputWithContext(ctx context.Context) KafkaAzureBlobStorageSinkConnectorInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KafkaAzureBlobStorageSinkConnectorInfo) *KafkaAzureBlobStorageSinkConnectorInfo {
+		return &v
+	}).(KafkaAzureBlobStorageSinkConnectorInfoPtrOutput)
+}
+
+// Kafka API Key
+func (o KafkaAzureBlobStorageSinkConnectorInfoOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureBlobStorageSinkConnectorInfo) *string { return v.ApiKey }).(pulumi.StringPtrOutput)
+}
+
+// Kafka API Key Secret
+func (o KafkaAzureBlobStorageSinkConnectorInfoOutput) ApiSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureBlobStorageSinkConnectorInfo) *string { return v.ApiSecret }).(pulumi.StringPtrOutput)
+}
+
+// Kafka Auth Type
+func (o KafkaAzureBlobStorageSinkConnectorInfoOutput) AuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureBlobStorageSinkConnectorInfo) *string { return v.AuthType }).(pulumi.StringPtrOutput)
+}
+
+// Flush size
+func (o KafkaAzureBlobStorageSinkConnectorInfoOutput) FlushSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureBlobStorageSinkConnectorInfo) *string { return v.FlushSize }).(pulumi.StringPtrOutput)
+}
+
+// Kafka Input Data Format Type
+func (o KafkaAzureBlobStorageSinkConnectorInfoOutput) InputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureBlobStorageSinkConnectorInfo) *string { return v.InputFormat }).(pulumi.StringPtrOutput)
+}
+
+// Maximum Tasks
+func (o KafkaAzureBlobStorageSinkConnectorInfoOutput) MaxTasks() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureBlobStorageSinkConnectorInfo) *string { return v.MaxTasks }).(pulumi.StringPtrOutput)
+}
+
+// Kafka Output Data Format Type
+func (o KafkaAzureBlobStorageSinkConnectorInfoOutput) OutputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureBlobStorageSinkConnectorInfo) *string { return v.OutputFormat }).(pulumi.StringPtrOutput)
+}
+
+// Partner Connector type.
+// Expected value is 'KafkaAzureBlobStorageSink'.
+func (o KafkaAzureBlobStorageSinkConnectorInfoOutput) PartnerConnectorType() pulumi.StringOutput {
+	return o.ApplyT(func(v KafkaAzureBlobStorageSinkConnectorInfo) string { return v.PartnerConnectorType }).(pulumi.StringOutput)
+}
+
+// Kafka Service Account Id
+func (o KafkaAzureBlobStorageSinkConnectorInfoOutput) ServiceAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureBlobStorageSinkConnectorInfo) *string { return v.ServiceAccountId }).(pulumi.StringPtrOutput)
+}
+
+// Time Interval
+func (o KafkaAzureBlobStorageSinkConnectorInfoOutput) TimeInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureBlobStorageSinkConnectorInfo) *string { return v.TimeInterval }).(pulumi.StringPtrOutput)
+}
+
+// Kafka topics list
+func (o KafkaAzureBlobStorageSinkConnectorInfoOutput) Topics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v KafkaAzureBlobStorageSinkConnectorInfo) []string { return v.Topics }).(pulumi.StringArrayOutput)
+}
+
+// Kafka topics directory
+func (o KafkaAzureBlobStorageSinkConnectorInfoOutput) TopicsDir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureBlobStorageSinkConnectorInfo) *string { return v.TopicsDir }).(pulumi.StringPtrOutput)
+}
+
+type KafkaAzureBlobStorageSinkConnectorInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (KafkaAzureBlobStorageSinkConnectorInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KafkaAzureBlobStorageSinkConnectorInfo)(nil)).Elem()
+}
+
+func (o KafkaAzureBlobStorageSinkConnectorInfoPtrOutput) ToKafkaAzureBlobStorageSinkConnectorInfoPtrOutput() KafkaAzureBlobStorageSinkConnectorInfoPtrOutput {
+	return o
+}
+
+func (o KafkaAzureBlobStorageSinkConnectorInfoPtrOutput) ToKafkaAzureBlobStorageSinkConnectorInfoPtrOutputWithContext(ctx context.Context) KafkaAzureBlobStorageSinkConnectorInfoPtrOutput {
+	return o
+}
+
+func (o KafkaAzureBlobStorageSinkConnectorInfoPtrOutput) Elem() KafkaAzureBlobStorageSinkConnectorInfoOutput {
+	return o.ApplyT(func(v *KafkaAzureBlobStorageSinkConnectorInfo) KafkaAzureBlobStorageSinkConnectorInfo {
+		if v != nil {
+			return *v
+		}
+		var ret KafkaAzureBlobStorageSinkConnectorInfo
+		return ret
+	}).(KafkaAzureBlobStorageSinkConnectorInfoOutput)
+}
+
+// Kafka API Key
+func (o KafkaAzureBlobStorageSinkConnectorInfoPtrOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureBlobStorageSinkConnectorInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApiKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kafka API Key Secret
+func (o KafkaAzureBlobStorageSinkConnectorInfoPtrOutput) ApiSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureBlobStorageSinkConnectorInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApiSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kafka Auth Type
+func (o KafkaAzureBlobStorageSinkConnectorInfoPtrOutput) AuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureBlobStorageSinkConnectorInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Flush size
+func (o KafkaAzureBlobStorageSinkConnectorInfoPtrOutput) FlushSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureBlobStorageSinkConnectorInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FlushSize
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kafka Input Data Format Type
+func (o KafkaAzureBlobStorageSinkConnectorInfoPtrOutput) InputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureBlobStorageSinkConnectorInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InputFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// Maximum Tasks
+func (o KafkaAzureBlobStorageSinkConnectorInfoPtrOutput) MaxTasks() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureBlobStorageSinkConnectorInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxTasks
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kafka Output Data Format Type
+func (o KafkaAzureBlobStorageSinkConnectorInfoPtrOutput) OutputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureBlobStorageSinkConnectorInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OutputFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// Partner Connector type.
+// Expected value is 'KafkaAzureBlobStorageSink'.
+func (o KafkaAzureBlobStorageSinkConnectorInfoPtrOutput) PartnerConnectorType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureBlobStorageSinkConnectorInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PartnerConnectorType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kafka Service Account Id
+func (o KafkaAzureBlobStorageSinkConnectorInfoPtrOutput) ServiceAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureBlobStorageSinkConnectorInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccountId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Time Interval
+func (o KafkaAzureBlobStorageSinkConnectorInfoPtrOutput) TimeInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureBlobStorageSinkConnectorInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeInterval
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kafka topics list
+func (o KafkaAzureBlobStorageSinkConnectorInfoPtrOutput) Topics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *KafkaAzureBlobStorageSinkConnectorInfo) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Topics
+	}).(pulumi.StringArrayOutput)
+}
+
+// Kafka topics directory
+func (o KafkaAzureBlobStorageSinkConnectorInfoPtrOutput) TopicsDir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureBlobStorageSinkConnectorInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TopicsDir
+	}).(pulumi.StringPtrOutput)
+}
+
+// The partner connector type is KafkaAzureBlobStorageSink
+type KafkaAzureBlobStorageSinkConnectorInfoResponse struct {
+	// Kafka API Key
+	ApiKey *string `pulumi:"apiKey"`
+	// Kafka API Key Secret
+	ApiSecret *string `pulumi:"apiSecret"`
+	// Kafka Auth Type
+	AuthType *string `pulumi:"authType"`
+	// Flush size
+	FlushSize *string `pulumi:"flushSize"`
+	// Kafka Input Data Format Type
+	InputFormat *string `pulumi:"inputFormat"`
+	// Maximum Tasks
+	MaxTasks *string `pulumi:"maxTasks"`
+	// Kafka Output Data Format Type
+	OutputFormat *string `pulumi:"outputFormat"`
+	// Partner Connector type.
+	// Expected value is 'KafkaAzureBlobStorageSink'.
+	PartnerConnectorType string `pulumi:"partnerConnectorType"`
+	// Kafka Service Account Id
+	ServiceAccountId *string `pulumi:"serviceAccountId"`
+	// Time Interval
+	TimeInterval *string `pulumi:"timeInterval"`
+	// Kafka topics list
+	Topics []string `pulumi:"topics"`
+	// Kafka topics directory
+	TopicsDir *string `pulumi:"topicsDir"`
+}
+
+// The partner connector type is KafkaAzureBlobStorageSink
+type KafkaAzureBlobStorageSinkConnectorInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (KafkaAzureBlobStorageSinkConnectorInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KafkaAzureBlobStorageSinkConnectorInfoResponse)(nil)).Elem()
+}
+
+func (o KafkaAzureBlobStorageSinkConnectorInfoResponseOutput) ToKafkaAzureBlobStorageSinkConnectorInfoResponseOutput() KafkaAzureBlobStorageSinkConnectorInfoResponseOutput {
+	return o
+}
+
+func (o KafkaAzureBlobStorageSinkConnectorInfoResponseOutput) ToKafkaAzureBlobStorageSinkConnectorInfoResponseOutputWithContext(ctx context.Context) KafkaAzureBlobStorageSinkConnectorInfoResponseOutput {
+	return o
+}
+
+// Kafka API Key
+func (o KafkaAzureBlobStorageSinkConnectorInfoResponseOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureBlobStorageSinkConnectorInfoResponse) *string { return v.ApiKey }).(pulumi.StringPtrOutput)
+}
+
+// Kafka API Key Secret
+func (o KafkaAzureBlobStorageSinkConnectorInfoResponseOutput) ApiSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureBlobStorageSinkConnectorInfoResponse) *string { return v.ApiSecret }).(pulumi.StringPtrOutput)
+}
+
+// Kafka Auth Type
+func (o KafkaAzureBlobStorageSinkConnectorInfoResponseOutput) AuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureBlobStorageSinkConnectorInfoResponse) *string { return v.AuthType }).(pulumi.StringPtrOutput)
+}
+
+// Flush size
+func (o KafkaAzureBlobStorageSinkConnectorInfoResponseOutput) FlushSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureBlobStorageSinkConnectorInfoResponse) *string { return v.FlushSize }).(pulumi.StringPtrOutput)
+}
+
+// Kafka Input Data Format Type
+func (o KafkaAzureBlobStorageSinkConnectorInfoResponseOutput) InputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureBlobStorageSinkConnectorInfoResponse) *string { return v.InputFormat }).(pulumi.StringPtrOutput)
+}
+
+// Maximum Tasks
+func (o KafkaAzureBlobStorageSinkConnectorInfoResponseOutput) MaxTasks() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureBlobStorageSinkConnectorInfoResponse) *string { return v.MaxTasks }).(pulumi.StringPtrOutput)
+}
+
+// Kafka Output Data Format Type
+func (o KafkaAzureBlobStorageSinkConnectorInfoResponseOutput) OutputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureBlobStorageSinkConnectorInfoResponse) *string { return v.OutputFormat }).(pulumi.StringPtrOutput)
+}
+
+// Partner Connector type.
+// Expected value is 'KafkaAzureBlobStorageSink'.
+func (o KafkaAzureBlobStorageSinkConnectorInfoResponseOutput) PartnerConnectorType() pulumi.StringOutput {
+	return o.ApplyT(func(v KafkaAzureBlobStorageSinkConnectorInfoResponse) string { return v.PartnerConnectorType }).(pulumi.StringOutput)
+}
+
+// Kafka Service Account Id
+func (o KafkaAzureBlobStorageSinkConnectorInfoResponseOutput) ServiceAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureBlobStorageSinkConnectorInfoResponse) *string { return v.ServiceAccountId }).(pulumi.StringPtrOutput)
+}
+
+// Time Interval
+func (o KafkaAzureBlobStorageSinkConnectorInfoResponseOutput) TimeInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureBlobStorageSinkConnectorInfoResponse) *string { return v.TimeInterval }).(pulumi.StringPtrOutput)
+}
+
+// Kafka topics list
+func (o KafkaAzureBlobStorageSinkConnectorInfoResponseOutput) Topics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v KafkaAzureBlobStorageSinkConnectorInfoResponse) []string { return v.Topics }).(pulumi.StringArrayOutput)
+}
+
+// Kafka topics directory
+func (o KafkaAzureBlobStorageSinkConnectorInfoResponseOutput) TopicsDir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureBlobStorageSinkConnectorInfoResponse) *string { return v.TopicsDir }).(pulumi.StringPtrOutput)
+}
+
+type KafkaAzureBlobStorageSinkConnectorInfoResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (KafkaAzureBlobStorageSinkConnectorInfoResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KafkaAzureBlobStorageSinkConnectorInfoResponse)(nil)).Elem()
+}
+
+func (o KafkaAzureBlobStorageSinkConnectorInfoResponsePtrOutput) ToKafkaAzureBlobStorageSinkConnectorInfoResponsePtrOutput() KafkaAzureBlobStorageSinkConnectorInfoResponsePtrOutput {
+	return o
+}
+
+func (o KafkaAzureBlobStorageSinkConnectorInfoResponsePtrOutput) ToKafkaAzureBlobStorageSinkConnectorInfoResponsePtrOutputWithContext(ctx context.Context) KafkaAzureBlobStorageSinkConnectorInfoResponsePtrOutput {
+	return o
+}
+
+func (o KafkaAzureBlobStorageSinkConnectorInfoResponsePtrOutput) Elem() KafkaAzureBlobStorageSinkConnectorInfoResponseOutput {
+	return o.ApplyT(func(v *KafkaAzureBlobStorageSinkConnectorInfoResponse) KafkaAzureBlobStorageSinkConnectorInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret KafkaAzureBlobStorageSinkConnectorInfoResponse
+		return ret
+	}).(KafkaAzureBlobStorageSinkConnectorInfoResponseOutput)
+}
+
+// Kafka API Key
+func (o KafkaAzureBlobStorageSinkConnectorInfoResponsePtrOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureBlobStorageSinkConnectorInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApiKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kafka API Key Secret
+func (o KafkaAzureBlobStorageSinkConnectorInfoResponsePtrOutput) ApiSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureBlobStorageSinkConnectorInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApiSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kafka Auth Type
+func (o KafkaAzureBlobStorageSinkConnectorInfoResponsePtrOutput) AuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureBlobStorageSinkConnectorInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Flush size
+func (o KafkaAzureBlobStorageSinkConnectorInfoResponsePtrOutput) FlushSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureBlobStorageSinkConnectorInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FlushSize
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kafka Input Data Format Type
+func (o KafkaAzureBlobStorageSinkConnectorInfoResponsePtrOutput) InputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureBlobStorageSinkConnectorInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InputFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// Maximum Tasks
+func (o KafkaAzureBlobStorageSinkConnectorInfoResponsePtrOutput) MaxTasks() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureBlobStorageSinkConnectorInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxTasks
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kafka Output Data Format Type
+func (o KafkaAzureBlobStorageSinkConnectorInfoResponsePtrOutput) OutputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureBlobStorageSinkConnectorInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OutputFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// Partner Connector type.
+// Expected value is 'KafkaAzureBlobStorageSink'.
+func (o KafkaAzureBlobStorageSinkConnectorInfoResponsePtrOutput) PartnerConnectorType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureBlobStorageSinkConnectorInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PartnerConnectorType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kafka Service Account Id
+func (o KafkaAzureBlobStorageSinkConnectorInfoResponsePtrOutput) ServiceAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureBlobStorageSinkConnectorInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccountId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Time Interval
+func (o KafkaAzureBlobStorageSinkConnectorInfoResponsePtrOutput) TimeInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureBlobStorageSinkConnectorInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeInterval
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kafka topics list
+func (o KafkaAzureBlobStorageSinkConnectorInfoResponsePtrOutput) Topics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *KafkaAzureBlobStorageSinkConnectorInfoResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Topics
+	}).(pulumi.StringArrayOutput)
+}
+
+// Kafka topics directory
+func (o KafkaAzureBlobStorageSinkConnectorInfoResponsePtrOutput) TopicsDir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureBlobStorageSinkConnectorInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TopicsDir
+	}).(pulumi.StringPtrOutput)
+}
+
+// The partner connector type is KafkaAzureBlobStorageSource
+type KafkaAzureBlobStorageSourceConnectorInfo struct {
+	// Kafka API Key
+	ApiKey *string `pulumi:"apiKey"`
+	// Kafka API Secret
+	ApiSecret *string `pulumi:"apiSecret"`
+	// Kafka Auth Type
+	AuthType *string `pulumi:"authType"`
+	// Kafka Input Data Format Type
+	InputFormat *string `pulumi:"inputFormat"`
+	// Maximum Tasks
+	MaxTasks *string `pulumi:"maxTasks"`
+	// Kafka Output Data Format Type
+	OutputFormat *string `pulumi:"outputFormat"`
+	// Partner Connector type.
+	// Expected value is 'KafkaAzureBlobStorageSource'.
+	PartnerConnectorType string `pulumi:"partnerConnectorType"`
+	// Kafka Service Account Id
+	ServiceAccountId *string `pulumi:"serviceAccountId"`
+	// Kafka topics Regex pattern
+	TopicRegex *string `pulumi:"topicRegex"`
+	// Kafka topics directory
+	TopicsDir *string `pulumi:"topicsDir"`
+}
+
+// KafkaAzureBlobStorageSourceConnectorInfoInput is an input type that accepts KafkaAzureBlobStorageSourceConnectorInfoArgs and KafkaAzureBlobStorageSourceConnectorInfoOutput values.
+// You can construct a concrete instance of `KafkaAzureBlobStorageSourceConnectorInfoInput` via:
+//
+//	KafkaAzureBlobStorageSourceConnectorInfoArgs{...}
+type KafkaAzureBlobStorageSourceConnectorInfoInput interface {
+	pulumi.Input
+
+	ToKafkaAzureBlobStorageSourceConnectorInfoOutput() KafkaAzureBlobStorageSourceConnectorInfoOutput
+	ToKafkaAzureBlobStorageSourceConnectorInfoOutputWithContext(context.Context) KafkaAzureBlobStorageSourceConnectorInfoOutput
+}
+
+// The partner connector type is KafkaAzureBlobStorageSource
+type KafkaAzureBlobStorageSourceConnectorInfoArgs struct {
+	// Kafka API Key
+	ApiKey pulumi.StringPtrInput `pulumi:"apiKey"`
+	// Kafka API Secret
+	ApiSecret pulumi.StringPtrInput `pulumi:"apiSecret"`
+	// Kafka Auth Type
+	AuthType pulumi.StringPtrInput `pulumi:"authType"`
+	// Kafka Input Data Format Type
+	InputFormat pulumi.StringPtrInput `pulumi:"inputFormat"`
+	// Maximum Tasks
+	MaxTasks pulumi.StringPtrInput `pulumi:"maxTasks"`
+	// Kafka Output Data Format Type
+	OutputFormat pulumi.StringPtrInput `pulumi:"outputFormat"`
+	// Partner Connector type.
+	// Expected value is 'KafkaAzureBlobStorageSource'.
+	PartnerConnectorType pulumi.StringInput `pulumi:"partnerConnectorType"`
+	// Kafka Service Account Id
+	ServiceAccountId pulumi.StringPtrInput `pulumi:"serviceAccountId"`
+	// Kafka topics Regex pattern
+	TopicRegex pulumi.StringPtrInput `pulumi:"topicRegex"`
+	// Kafka topics directory
+	TopicsDir pulumi.StringPtrInput `pulumi:"topicsDir"`
+}
+
+func (KafkaAzureBlobStorageSourceConnectorInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KafkaAzureBlobStorageSourceConnectorInfo)(nil)).Elem()
+}
+
+func (i KafkaAzureBlobStorageSourceConnectorInfoArgs) ToKafkaAzureBlobStorageSourceConnectorInfoOutput() KafkaAzureBlobStorageSourceConnectorInfoOutput {
+	return i.ToKafkaAzureBlobStorageSourceConnectorInfoOutputWithContext(context.Background())
+}
+
+func (i KafkaAzureBlobStorageSourceConnectorInfoArgs) ToKafkaAzureBlobStorageSourceConnectorInfoOutputWithContext(ctx context.Context) KafkaAzureBlobStorageSourceConnectorInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaAzureBlobStorageSourceConnectorInfoOutput)
+}
+
+func (i KafkaAzureBlobStorageSourceConnectorInfoArgs) ToKafkaAzureBlobStorageSourceConnectorInfoPtrOutput() KafkaAzureBlobStorageSourceConnectorInfoPtrOutput {
+	return i.ToKafkaAzureBlobStorageSourceConnectorInfoPtrOutputWithContext(context.Background())
+}
+
+func (i KafkaAzureBlobStorageSourceConnectorInfoArgs) ToKafkaAzureBlobStorageSourceConnectorInfoPtrOutputWithContext(ctx context.Context) KafkaAzureBlobStorageSourceConnectorInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaAzureBlobStorageSourceConnectorInfoOutput).ToKafkaAzureBlobStorageSourceConnectorInfoPtrOutputWithContext(ctx)
+}
+
+// KafkaAzureBlobStorageSourceConnectorInfoPtrInput is an input type that accepts KafkaAzureBlobStorageSourceConnectorInfoArgs, KafkaAzureBlobStorageSourceConnectorInfoPtr and KafkaAzureBlobStorageSourceConnectorInfoPtrOutput values.
+// You can construct a concrete instance of `KafkaAzureBlobStorageSourceConnectorInfoPtrInput` via:
+//
+//	        KafkaAzureBlobStorageSourceConnectorInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type KafkaAzureBlobStorageSourceConnectorInfoPtrInput interface {
+	pulumi.Input
+
+	ToKafkaAzureBlobStorageSourceConnectorInfoPtrOutput() KafkaAzureBlobStorageSourceConnectorInfoPtrOutput
+	ToKafkaAzureBlobStorageSourceConnectorInfoPtrOutputWithContext(context.Context) KafkaAzureBlobStorageSourceConnectorInfoPtrOutput
+}
+
+type kafkaAzureBlobStorageSourceConnectorInfoPtrType KafkaAzureBlobStorageSourceConnectorInfoArgs
+
+func KafkaAzureBlobStorageSourceConnectorInfoPtr(v *KafkaAzureBlobStorageSourceConnectorInfoArgs) KafkaAzureBlobStorageSourceConnectorInfoPtrInput {
+	return (*kafkaAzureBlobStorageSourceConnectorInfoPtrType)(v)
+}
+
+func (*kafkaAzureBlobStorageSourceConnectorInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KafkaAzureBlobStorageSourceConnectorInfo)(nil)).Elem()
+}
+
+func (i *kafkaAzureBlobStorageSourceConnectorInfoPtrType) ToKafkaAzureBlobStorageSourceConnectorInfoPtrOutput() KafkaAzureBlobStorageSourceConnectorInfoPtrOutput {
+	return i.ToKafkaAzureBlobStorageSourceConnectorInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *kafkaAzureBlobStorageSourceConnectorInfoPtrType) ToKafkaAzureBlobStorageSourceConnectorInfoPtrOutputWithContext(ctx context.Context) KafkaAzureBlobStorageSourceConnectorInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaAzureBlobStorageSourceConnectorInfoPtrOutput)
+}
+
+// The partner connector type is KafkaAzureBlobStorageSource
+type KafkaAzureBlobStorageSourceConnectorInfoOutput struct{ *pulumi.OutputState }
+
+func (KafkaAzureBlobStorageSourceConnectorInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KafkaAzureBlobStorageSourceConnectorInfo)(nil)).Elem()
+}
+
+func (o KafkaAzureBlobStorageSourceConnectorInfoOutput) ToKafkaAzureBlobStorageSourceConnectorInfoOutput() KafkaAzureBlobStorageSourceConnectorInfoOutput {
+	return o
+}
+
+func (o KafkaAzureBlobStorageSourceConnectorInfoOutput) ToKafkaAzureBlobStorageSourceConnectorInfoOutputWithContext(ctx context.Context) KafkaAzureBlobStorageSourceConnectorInfoOutput {
+	return o
+}
+
+func (o KafkaAzureBlobStorageSourceConnectorInfoOutput) ToKafkaAzureBlobStorageSourceConnectorInfoPtrOutput() KafkaAzureBlobStorageSourceConnectorInfoPtrOutput {
+	return o.ToKafkaAzureBlobStorageSourceConnectorInfoPtrOutputWithContext(context.Background())
+}
+
+func (o KafkaAzureBlobStorageSourceConnectorInfoOutput) ToKafkaAzureBlobStorageSourceConnectorInfoPtrOutputWithContext(ctx context.Context) KafkaAzureBlobStorageSourceConnectorInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KafkaAzureBlobStorageSourceConnectorInfo) *KafkaAzureBlobStorageSourceConnectorInfo {
+		return &v
+	}).(KafkaAzureBlobStorageSourceConnectorInfoPtrOutput)
+}
+
+// Kafka API Key
+func (o KafkaAzureBlobStorageSourceConnectorInfoOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureBlobStorageSourceConnectorInfo) *string { return v.ApiKey }).(pulumi.StringPtrOutput)
+}
+
+// Kafka API Secret
+func (o KafkaAzureBlobStorageSourceConnectorInfoOutput) ApiSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureBlobStorageSourceConnectorInfo) *string { return v.ApiSecret }).(pulumi.StringPtrOutput)
+}
+
+// Kafka Auth Type
+func (o KafkaAzureBlobStorageSourceConnectorInfoOutput) AuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureBlobStorageSourceConnectorInfo) *string { return v.AuthType }).(pulumi.StringPtrOutput)
+}
+
+// Kafka Input Data Format Type
+func (o KafkaAzureBlobStorageSourceConnectorInfoOutput) InputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureBlobStorageSourceConnectorInfo) *string { return v.InputFormat }).(pulumi.StringPtrOutput)
+}
+
+// Maximum Tasks
+func (o KafkaAzureBlobStorageSourceConnectorInfoOutput) MaxTasks() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureBlobStorageSourceConnectorInfo) *string { return v.MaxTasks }).(pulumi.StringPtrOutput)
+}
+
+// Kafka Output Data Format Type
+func (o KafkaAzureBlobStorageSourceConnectorInfoOutput) OutputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureBlobStorageSourceConnectorInfo) *string { return v.OutputFormat }).(pulumi.StringPtrOutput)
+}
+
+// Partner Connector type.
+// Expected value is 'KafkaAzureBlobStorageSource'.
+func (o KafkaAzureBlobStorageSourceConnectorInfoOutput) PartnerConnectorType() pulumi.StringOutput {
+	return o.ApplyT(func(v KafkaAzureBlobStorageSourceConnectorInfo) string { return v.PartnerConnectorType }).(pulumi.StringOutput)
+}
+
+// Kafka Service Account Id
+func (o KafkaAzureBlobStorageSourceConnectorInfoOutput) ServiceAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureBlobStorageSourceConnectorInfo) *string { return v.ServiceAccountId }).(pulumi.StringPtrOutput)
+}
+
+// Kafka topics Regex pattern
+func (o KafkaAzureBlobStorageSourceConnectorInfoOutput) TopicRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureBlobStorageSourceConnectorInfo) *string { return v.TopicRegex }).(pulumi.StringPtrOutput)
+}
+
+// Kafka topics directory
+func (o KafkaAzureBlobStorageSourceConnectorInfoOutput) TopicsDir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureBlobStorageSourceConnectorInfo) *string { return v.TopicsDir }).(pulumi.StringPtrOutput)
+}
+
+type KafkaAzureBlobStorageSourceConnectorInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (KafkaAzureBlobStorageSourceConnectorInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KafkaAzureBlobStorageSourceConnectorInfo)(nil)).Elem()
+}
+
+func (o KafkaAzureBlobStorageSourceConnectorInfoPtrOutput) ToKafkaAzureBlobStorageSourceConnectorInfoPtrOutput() KafkaAzureBlobStorageSourceConnectorInfoPtrOutput {
+	return o
+}
+
+func (o KafkaAzureBlobStorageSourceConnectorInfoPtrOutput) ToKafkaAzureBlobStorageSourceConnectorInfoPtrOutputWithContext(ctx context.Context) KafkaAzureBlobStorageSourceConnectorInfoPtrOutput {
+	return o
+}
+
+func (o KafkaAzureBlobStorageSourceConnectorInfoPtrOutput) Elem() KafkaAzureBlobStorageSourceConnectorInfoOutput {
+	return o.ApplyT(func(v *KafkaAzureBlobStorageSourceConnectorInfo) KafkaAzureBlobStorageSourceConnectorInfo {
+		if v != nil {
+			return *v
+		}
+		var ret KafkaAzureBlobStorageSourceConnectorInfo
+		return ret
+	}).(KafkaAzureBlobStorageSourceConnectorInfoOutput)
+}
+
+// Kafka API Key
+func (o KafkaAzureBlobStorageSourceConnectorInfoPtrOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureBlobStorageSourceConnectorInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApiKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kafka API Secret
+func (o KafkaAzureBlobStorageSourceConnectorInfoPtrOutput) ApiSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureBlobStorageSourceConnectorInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApiSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kafka Auth Type
+func (o KafkaAzureBlobStorageSourceConnectorInfoPtrOutput) AuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureBlobStorageSourceConnectorInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kafka Input Data Format Type
+func (o KafkaAzureBlobStorageSourceConnectorInfoPtrOutput) InputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureBlobStorageSourceConnectorInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InputFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// Maximum Tasks
+func (o KafkaAzureBlobStorageSourceConnectorInfoPtrOutput) MaxTasks() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureBlobStorageSourceConnectorInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxTasks
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kafka Output Data Format Type
+func (o KafkaAzureBlobStorageSourceConnectorInfoPtrOutput) OutputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureBlobStorageSourceConnectorInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OutputFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// Partner Connector type.
+// Expected value is 'KafkaAzureBlobStorageSource'.
+func (o KafkaAzureBlobStorageSourceConnectorInfoPtrOutput) PartnerConnectorType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureBlobStorageSourceConnectorInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PartnerConnectorType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kafka Service Account Id
+func (o KafkaAzureBlobStorageSourceConnectorInfoPtrOutput) ServiceAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureBlobStorageSourceConnectorInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccountId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kafka topics Regex pattern
+func (o KafkaAzureBlobStorageSourceConnectorInfoPtrOutput) TopicRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureBlobStorageSourceConnectorInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TopicRegex
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kafka topics directory
+func (o KafkaAzureBlobStorageSourceConnectorInfoPtrOutput) TopicsDir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureBlobStorageSourceConnectorInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TopicsDir
+	}).(pulumi.StringPtrOutput)
+}
+
+// The partner connector type is KafkaAzureBlobStorageSource
+type KafkaAzureBlobStorageSourceConnectorInfoResponse struct {
+	// Kafka API Key
+	ApiKey *string `pulumi:"apiKey"`
+	// Kafka API Secret
+	ApiSecret *string `pulumi:"apiSecret"`
+	// Kafka Auth Type
+	AuthType *string `pulumi:"authType"`
+	// Kafka Input Data Format Type
+	InputFormat *string `pulumi:"inputFormat"`
+	// Maximum Tasks
+	MaxTasks *string `pulumi:"maxTasks"`
+	// Kafka Output Data Format Type
+	OutputFormat *string `pulumi:"outputFormat"`
+	// Partner Connector type.
+	// Expected value is 'KafkaAzureBlobStorageSource'.
+	PartnerConnectorType string `pulumi:"partnerConnectorType"`
+	// Kafka Service Account Id
+	ServiceAccountId *string `pulumi:"serviceAccountId"`
+	// Kafka topics Regex pattern
+	TopicRegex *string `pulumi:"topicRegex"`
+	// Kafka topics directory
+	TopicsDir *string `pulumi:"topicsDir"`
+}
+
+// The partner connector type is KafkaAzureBlobStorageSource
+type KafkaAzureBlobStorageSourceConnectorInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (KafkaAzureBlobStorageSourceConnectorInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KafkaAzureBlobStorageSourceConnectorInfoResponse)(nil)).Elem()
+}
+
+func (o KafkaAzureBlobStorageSourceConnectorInfoResponseOutput) ToKafkaAzureBlobStorageSourceConnectorInfoResponseOutput() KafkaAzureBlobStorageSourceConnectorInfoResponseOutput {
+	return o
+}
+
+func (o KafkaAzureBlobStorageSourceConnectorInfoResponseOutput) ToKafkaAzureBlobStorageSourceConnectorInfoResponseOutputWithContext(ctx context.Context) KafkaAzureBlobStorageSourceConnectorInfoResponseOutput {
+	return o
+}
+
+// Kafka API Key
+func (o KafkaAzureBlobStorageSourceConnectorInfoResponseOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureBlobStorageSourceConnectorInfoResponse) *string { return v.ApiKey }).(pulumi.StringPtrOutput)
+}
+
+// Kafka API Secret
+func (o KafkaAzureBlobStorageSourceConnectorInfoResponseOutput) ApiSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureBlobStorageSourceConnectorInfoResponse) *string { return v.ApiSecret }).(pulumi.StringPtrOutput)
+}
+
+// Kafka Auth Type
+func (o KafkaAzureBlobStorageSourceConnectorInfoResponseOutput) AuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureBlobStorageSourceConnectorInfoResponse) *string { return v.AuthType }).(pulumi.StringPtrOutput)
+}
+
+// Kafka Input Data Format Type
+func (o KafkaAzureBlobStorageSourceConnectorInfoResponseOutput) InputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureBlobStorageSourceConnectorInfoResponse) *string { return v.InputFormat }).(pulumi.StringPtrOutput)
+}
+
+// Maximum Tasks
+func (o KafkaAzureBlobStorageSourceConnectorInfoResponseOutput) MaxTasks() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureBlobStorageSourceConnectorInfoResponse) *string { return v.MaxTasks }).(pulumi.StringPtrOutput)
+}
+
+// Kafka Output Data Format Type
+func (o KafkaAzureBlobStorageSourceConnectorInfoResponseOutput) OutputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureBlobStorageSourceConnectorInfoResponse) *string { return v.OutputFormat }).(pulumi.StringPtrOutput)
+}
+
+// Partner Connector type.
+// Expected value is 'KafkaAzureBlobStorageSource'.
+func (o KafkaAzureBlobStorageSourceConnectorInfoResponseOutput) PartnerConnectorType() pulumi.StringOutput {
+	return o.ApplyT(func(v KafkaAzureBlobStorageSourceConnectorInfoResponse) string { return v.PartnerConnectorType }).(pulumi.StringOutput)
+}
+
+// Kafka Service Account Id
+func (o KafkaAzureBlobStorageSourceConnectorInfoResponseOutput) ServiceAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureBlobStorageSourceConnectorInfoResponse) *string { return v.ServiceAccountId }).(pulumi.StringPtrOutput)
+}
+
+// Kafka topics Regex pattern
+func (o KafkaAzureBlobStorageSourceConnectorInfoResponseOutput) TopicRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureBlobStorageSourceConnectorInfoResponse) *string { return v.TopicRegex }).(pulumi.StringPtrOutput)
+}
+
+// Kafka topics directory
+func (o KafkaAzureBlobStorageSourceConnectorInfoResponseOutput) TopicsDir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureBlobStorageSourceConnectorInfoResponse) *string { return v.TopicsDir }).(pulumi.StringPtrOutput)
+}
+
+type KafkaAzureBlobStorageSourceConnectorInfoResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (KafkaAzureBlobStorageSourceConnectorInfoResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KafkaAzureBlobStorageSourceConnectorInfoResponse)(nil)).Elem()
+}
+
+func (o KafkaAzureBlobStorageSourceConnectorInfoResponsePtrOutput) ToKafkaAzureBlobStorageSourceConnectorInfoResponsePtrOutput() KafkaAzureBlobStorageSourceConnectorInfoResponsePtrOutput {
+	return o
+}
+
+func (o KafkaAzureBlobStorageSourceConnectorInfoResponsePtrOutput) ToKafkaAzureBlobStorageSourceConnectorInfoResponsePtrOutputWithContext(ctx context.Context) KafkaAzureBlobStorageSourceConnectorInfoResponsePtrOutput {
+	return o
+}
+
+func (o KafkaAzureBlobStorageSourceConnectorInfoResponsePtrOutput) Elem() KafkaAzureBlobStorageSourceConnectorInfoResponseOutput {
+	return o.ApplyT(func(v *KafkaAzureBlobStorageSourceConnectorInfoResponse) KafkaAzureBlobStorageSourceConnectorInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret KafkaAzureBlobStorageSourceConnectorInfoResponse
+		return ret
+	}).(KafkaAzureBlobStorageSourceConnectorInfoResponseOutput)
+}
+
+// Kafka API Key
+func (o KafkaAzureBlobStorageSourceConnectorInfoResponsePtrOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureBlobStorageSourceConnectorInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApiKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kafka API Secret
+func (o KafkaAzureBlobStorageSourceConnectorInfoResponsePtrOutput) ApiSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureBlobStorageSourceConnectorInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApiSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kafka Auth Type
+func (o KafkaAzureBlobStorageSourceConnectorInfoResponsePtrOutput) AuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureBlobStorageSourceConnectorInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kafka Input Data Format Type
+func (o KafkaAzureBlobStorageSourceConnectorInfoResponsePtrOutput) InputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureBlobStorageSourceConnectorInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InputFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// Maximum Tasks
+func (o KafkaAzureBlobStorageSourceConnectorInfoResponsePtrOutput) MaxTasks() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureBlobStorageSourceConnectorInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxTasks
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kafka Output Data Format Type
+func (o KafkaAzureBlobStorageSourceConnectorInfoResponsePtrOutput) OutputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureBlobStorageSourceConnectorInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OutputFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// Partner Connector type.
+// Expected value is 'KafkaAzureBlobStorageSource'.
+func (o KafkaAzureBlobStorageSourceConnectorInfoResponsePtrOutput) PartnerConnectorType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureBlobStorageSourceConnectorInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PartnerConnectorType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kafka Service Account Id
+func (o KafkaAzureBlobStorageSourceConnectorInfoResponsePtrOutput) ServiceAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureBlobStorageSourceConnectorInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccountId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kafka topics Regex pattern
+func (o KafkaAzureBlobStorageSourceConnectorInfoResponsePtrOutput) TopicRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureBlobStorageSourceConnectorInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TopicRegex
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kafka topics directory
+func (o KafkaAzureBlobStorageSourceConnectorInfoResponsePtrOutput) TopicsDir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureBlobStorageSourceConnectorInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TopicsDir
+	}).(pulumi.StringPtrOutput)
+}
+
+// The partner connector type is KafkaAzureCosmosDBSink
+type KafkaAzureCosmosDBSinkConnectorInfo struct {
+	// Kafka API Key
+	ApiKey *string `pulumi:"apiKey"`
+	// Kafka API Key Secret
+	ApiSecret *string `pulumi:"apiSecret"`
+	// Kafka Auth Type
+	AuthType *string `pulumi:"authType"`
+	// Flush size
+	FlushSize *string `pulumi:"flushSize"`
+	// Kafka Input Data Format Type
+	InputFormat *string `pulumi:"inputFormat"`
+	// Maximum Tasks
+	MaxTasks *string `pulumi:"maxTasks"`
+	// Kafka Output Data Format Type
+	OutputFormat *string `pulumi:"outputFormat"`
+	// Partner Connector type.
+	// Expected value is 'KafkaAzureCosmosDBSink'.
+	PartnerConnectorType string `pulumi:"partnerConnectorType"`
+	// Kafka Service Account Id
+	ServiceAccountId *string `pulumi:"serviceAccountId"`
+	// Time Interval
+	TimeInterval *string `pulumi:"timeInterval"`
+	// Kafka topics list
+	Topics []string `pulumi:"topics"`
+	// Kafka topics directory
+	TopicsDir *string `pulumi:"topicsDir"`
+}
+
+// KafkaAzureCosmosDBSinkConnectorInfoInput is an input type that accepts KafkaAzureCosmosDBSinkConnectorInfoArgs and KafkaAzureCosmosDBSinkConnectorInfoOutput values.
+// You can construct a concrete instance of `KafkaAzureCosmosDBSinkConnectorInfoInput` via:
+//
+//	KafkaAzureCosmosDBSinkConnectorInfoArgs{...}
+type KafkaAzureCosmosDBSinkConnectorInfoInput interface {
+	pulumi.Input
+
+	ToKafkaAzureCosmosDBSinkConnectorInfoOutput() KafkaAzureCosmosDBSinkConnectorInfoOutput
+	ToKafkaAzureCosmosDBSinkConnectorInfoOutputWithContext(context.Context) KafkaAzureCosmosDBSinkConnectorInfoOutput
+}
+
+// The partner connector type is KafkaAzureCosmosDBSink
+type KafkaAzureCosmosDBSinkConnectorInfoArgs struct {
+	// Kafka API Key
+	ApiKey pulumi.StringPtrInput `pulumi:"apiKey"`
+	// Kafka API Key Secret
+	ApiSecret pulumi.StringPtrInput `pulumi:"apiSecret"`
+	// Kafka Auth Type
+	AuthType pulumi.StringPtrInput `pulumi:"authType"`
+	// Flush size
+	FlushSize pulumi.StringPtrInput `pulumi:"flushSize"`
+	// Kafka Input Data Format Type
+	InputFormat pulumi.StringPtrInput `pulumi:"inputFormat"`
+	// Maximum Tasks
+	MaxTasks pulumi.StringPtrInput `pulumi:"maxTasks"`
+	// Kafka Output Data Format Type
+	OutputFormat pulumi.StringPtrInput `pulumi:"outputFormat"`
+	// Partner Connector type.
+	// Expected value is 'KafkaAzureCosmosDBSink'.
+	PartnerConnectorType pulumi.StringInput `pulumi:"partnerConnectorType"`
+	// Kafka Service Account Id
+	ServiceAccountId pulumi.StringPtrInput `pulumi:"serviceAccountId"`
+	// Time Interval
+	TimeInterval pulumi.StringPtrInput `pulumi:"timeInterval"`
+	// Kafka topics list
+	Topics pulumi.StringArrayInput `pulumi:"topics"`
+	// Kafka topics directory
+	TopicsDir pulumi.StringPtrInput `pulumi:"topicsDir"`
+}
+
+func (KafkaAzureCosmosDBSinkConnectorInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KafkaAzureCosmosDBSinkConnectorInfo)(nil)).Elem()
+}
+
+func (i KafkaAzureCosmosDBSinkConnectorInfoArgs) ToKafkaAzureCosmosDBSinkConnectorInfoOutput() KafkaAzureCosmosDBSinkConnectorInfoOutput {
+	return i.ToKafkaAzureCosmosDBSinkConnectorInfoOutputWithContext(context.Background())
+}
+
+func (i KafkaAzureCosmosDBSinkConnectorInfoArgs) ToKafkaAzureCosmosDBSinkConnectorInfoOutputWithContext(ctx context.Context) KafkaAzureCosmosDBSinkConnectorInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaAzureCosmosDBSinkConnectorInfoOutput)
+}
+
+func (i KafkaAzureCosmosDBSinkConnectorInfoArgs) ToKafkaAzureCosmosDBSinkConnectorInfoPtrOutput() KafkaAzureCosmosDBSinkConnectorInfoPtrOutput {
+	return i.ToKafkaAzureCosmosDBSinkConnectorInfoPtrOutputWithContext(context.Background())
+}
+
+func (i KafkaAzureCosmosDBSinkConnectorInfoArgs) ToKafkaAzureCosmosDBSinkConnectorInfoPtrOutputWithContext(ctx context.Context) KafkaAzureCosmosDBSinkConnectorInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaAzureCosmosDBSinkConnectorInfoOutput).ToKafkaAzureCosmosDBSinkConnectorInfoPtrOutputWithContext(ctx)
+}
+
+// KafkaAzureCosmosDBSinkConnectorInfoPtrInput is an input type that accepts KafkaAzureCosmosDBSinkConnectorInfoArgs, KafkaAzureCosmosDBSinkConnectorInfoPtr and KafkaAzureCosmosDBSinkConnectorInfoPtrOutput values.
+// You can construct a concrete instance of `KafkaAzureCosmosDBSinkConnectorInfoPtrInput` via:
+//
+//	        KafkaAzureCosmosDBSinkConnectorInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type KafkaAzureCosmosDBSinkConnectorInfoPtrInput interface {
+	pulumi.Input
+
+	ToKafkaAzureCosmosDBSinkConnectorInfoPtrOutput() KafkaAzureCosmosDBSinkConnectorInfoPtrOutput
+	ToKafkaAzureCosmosDBSinkConnectorInfoPtrOutputWithContext(context.Context) KafkaAzureCosmosDBSinkConnectorInfoPtrOutput
+}
+
+type kafkaAzureCosmosDBSinkConnectorInfoPtrType KafkaAzureCosmosDBSinkConnectorInfoArgs
+
+func KafkaAzureCosmosDBSinkConnectorInfoPtr(v *KafkaAzureCosmosDBSinkConnectorInfoArgs) KafkaAzureCosmosDBSinkConnectorInfoPtrInput {
+	return (*kafkaAzureCosmosDBSinkConnectorInfoPtrType)(v)
+}
+
+func (*kafkaAzureCosmosDBSinkConnectorInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KafkaAzureCosmosDBSinkConnectorInfo)(nil)).Elem()
+}
+
+func (i *kafkaAzureCosmosDBSinkConnectorInfoPtrType) ToKafkaAzureCosmosDBSinkConnectorInfoPtrOutput() KafkaAzureCosmosDBSinkConnectorInfoPtrOutput {
+	return i.ToKafkaAzureCosmosDBSinkConnectorInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *kafkaAzureCosmosDBSinkConnectorInfoPtrType) ToKafkaAzureCosmosDBSinkConnectorInfoPtrOutputWithContext(ctx context.Context) KafkaAzureCosmosDBSinkConnectorInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaAzureCosmosDBSinkConnectorInfoPtrOutput)
+}
+
+// The partner connector type is KafkaAzureCosmosDBSink
+type KafkaAzureCosmosDBSinkConnectorInfoOutput struct{ *pulumi.OutputState }
+
+func (KafkaAzureCosmosDBSinkConnectorInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KafkaAzureCosmosDBSinkConnectorInfo)(nil)).Elem()
+}
+
+func (o KafkaAzureCosmosDBSinkConnectorInfoOutput) ToKafkaAzureCosmosDBSinkConnectorInfoOutput() KafkaAzureCosmosDBSinkConnectorInfoOutput {
+	return o
+}
+
+func (o KafkaAzureCosmosDBSinkConnectorInfoOutput) ToKafkaAzureCosmosDBSinkConnectorInfoOutputWithContext(ctx context.Context) KafkaAzureCosmosDBSinkConnectorInfoOutput {
+	return o
+}
+
+func (o KafkaAzureCosmosDBSinkConnectorInfoOutput) ToKafkaAzureCosmosDBSinkConnectorInfoPtrOutput() KafkaAzureCosmosDBSinkConnectorInfoPtrOutput {
+	return o.ToKafkaAzureCosmosDBSinkConnectorInfoPtrOutputWithContext(context.Background())
+}
+
+func (o KafkaAzureCosmosDBSinkConnectorInfoOutput) ToKafkaAzureCosmosDBSinkConnectorInfoPtrOutputWithContext(ctx context.Context) KafkaAzureCosmosDBSinkConnectorInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KafkaAzureCosmosDBSinkConnectorInfo) *KafkaAzureCosmosDBSinkConnectorInfo {
+		return &v
+	}).(KafkaAzureCosmosDBSinkConnectorInfoPtrOutput)
+}
+
+// Kafka API Key
+func (o KafkaAzureCosmosDBSinkConnectorInfoOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureCosmosDBSinkConnectorInfo) *string { return v.ApiKey }).(pulumi.StringPtrOutput)
+}
+
+// Kafka API Key Secret
+func (o KafkaAzureCosmosDBSinkConnectorInfoOutput) ApiSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureCosmosDBSinkConnectorInfo) *string { return v.ApiSecret }).(pulumi.StringPtrOutput)
+}
+
+// Kafka Auth Type
+func (o KafkaAzureCosmosDBSinkConnectorInfoOutput) AuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureCosmosDBSinkConnectorInfo) *string { return v.AuthType }).(pulumi.StringPtrOutput)
+}
+
+// Flush size
+func (o KafkaAzureCosmosDBSinkConnectorInfoOutput) FlushSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureCosmosDBSinkConnectorInfo) *string { return v.FlushSize }).(pulumi.StringPtrOutput)
+}
+
+// Kafka Input Data Format Type
+func (o KafkaAzureCosmosDBSinkConnectorInfoOutput) InputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureCosmosDBSinkConnectorInfo) *string { return v.InputFormat }).(pulumi.StringPtrOutput)
+}
+
+// Maximum Tasks
+func (o KafkaAzureCosmosDBSinkConnectorInfoOutput) MaxTasks() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureCosmosDBSinkConnectorInfo) *string { return v.MaxTasks }).(pulumi.StringPtrOutput)
+}
+
+// Kafka Output Data Format Type
+func (o KafkaAzureCosmosDBSinkConnectorInfoOutput) OutputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureCosmosDBSinkConnectorInfo) *string { return v.OutputFormat }).(pulumi.StringPtrOutput)
+}
+
+// Partner Connector type.
+// Expected value is 'KafkaAzureCosmosDBSink'.
+func (o KafkaAzureCosmosDBSinkConnectorInfoOutput) PartnerConnectorType() pulumi.StringOutput {
+	return o.ApplyT(func(v KafkaAzureCosmosDBSinkConnectorInfo) string { return v.PartnerConnectorType }).(pulumi.StringOutput)
+}
+
+// Kafka Service Account Id
+func (o KafkaAzureCosmosDBSinkConnectorInfoOutput) ServiceAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureCosmosDBSinkConnectorInfo) *string { return v.ServiceAccountId }).(pulumi.StringPtrOutput)
+}
+
+// Time Interval
+func (o KafkaAzureCosmosDBSinkConnectorInfoOutput) TimeInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureCosmosDBSinkConnectorInfo) *string { return v.TimeInterval }).(pulumi.StringPtrOutput)
+}
+
+// Kafka topics list
+func (o KafkaAzureCosmosDBSinkConnectorInfoOutput) Topics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v KafkaAzureCosmosDBSinkConnectorInfo) []string { return v.Topics }).(pulumi.StringArrayOutput)
+}
+
+// Kafka topics directory
+func (o KafkaAzureCosmosDBSinkConnectorInfoOutput) TopicsDir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureCosmosDBSinkConnectorInfo) *string { return v.TopicsDir }).(pulumi.StringPtrOutput)
+}
+
+type KafkaAzureCosmosDBSinkConnectorInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (KafkaAzureCosmosDBSinkConnectorInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KafkaAzureCosmosDBSinkConnectorInfo)(nil)).Elem()
+}
+
+func (o KafkaAzureCosmosDBSinkConnectorInfoPtrOutput) ToKafkaAzureCosmosDBSinkConnectorInfoPtrOutput() KafkaAzureCosmosDBSinkConnectorInfoPtrOutput {
+	return o
+}
+
+func (o KafkaAzureCosmosDBSinkConnectorInfoPtrOutput) ToKafkaAzureCosmosDBSinkConnectorInfoPtrOutputWithContext(ctx context.Context) KafkaAzureCosmosDBSinkConnectorInfoPtrOutput {
+	return o
+}
+
+func (o KafkaAzureCosmosDBSinkConnectorInfoPtrOutput) Elem() KafkaAzureCosmosDBSinkConnectorInfoOutput {
+	return o.ApplyT(func(v *KafkaAzureCosmosDBSinkConnectorInfo) KafkaAzureCosmosDBSinkConnectorInfo {
+		if v != nil {
+			return *v
+		}
+		var ret KafkaAzureCosmosDBSinkConnectorInfo
+		return ret
+	}).(KafkaAzureCosmosDBSinkConnectorInfoOutput)
+}
+
+// Kafka API Key
+func (o KafkaAzureCosmosDBSinkConnectorInfoPtrOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureCosmosDBSinkConnectorInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApiKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kafka API Key Secret
+func (o KafkaAzureCosmosDBSinkConnectorInfoPtrOutput) ApiSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureCosmosDBSinkConnectorInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApiSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kafka Auth Type
+func (o KafkaAzureCosmosDBSinkConnectorInfoPtrOutput) AuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureCosmosDBSinkConnectorInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Flush size
+func (o KafkaAzureCosmosDBSinkConnectorInfoPtrOutput) FlushSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureCosmosDBSinkConnectorInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FlushSize
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kafka Input Data Format Type
+func (o KafkaAzureCosmosDBSinkConnectorInfoPtrOutput) InputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureCosmosDBSinkConnectorInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InputFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// Maximum Tasks
+func (o KafkaAzureCosmosDBSinkConnectorInfoPtrOutput) MaxTasks() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureCosmosDBSinkConnectorInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxTasks
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kafka Output Data Format Type
+func (o KafkaAzureCosmosDBSinkConnectorInfoPtrOutput) OutputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureCosmosDBSinkConnectorInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OutputFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// Partner Connector type.
+// Expected value is 'KafkaAzureCosmosDBSink'.
+func (o KafkaAzureCosmosDBSinkConnectorInfoPtrOutput) PartnerConnectorType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureCosmosDBSinkConnectorInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PartnerConnectorType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kafka Service Account Id
+func (o KafkaAzureCosmosDBSinkConnectorInfoPtrOutput) ServiceAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureCosmosDBSinkConnectorInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccountId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Time Interval
+func (o KafkaAzureCosmosDBSinkConnectorInfoPtrOutput) TimeInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureCosmosDBSinkConnectorInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeInterval
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kafka topics list
+func (o KafkaAzureCosmosDBSinkConnectorInfoPtrOutput) Topics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *KafkaAzureCosmosDBSinkConnectorInfo) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Topics
+	}).(pulumi.StringArrayOutput)
+}
+
+// Kafka topics directory
+func (o KafkaAzureCosmosDBSinkConnectorInfoPtrOutput) TopicsDir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureCosmosDBSinkConnectorInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TopicsDir
+	}).(pulumi.StringPtrOutput)
+}
+
+// The partner connector type is KafkaAzureCosmosDBSink
+type KafkaAzureCosmosDBSinkConnectorInfoResponse struct {
+	// Kafka API Key
+	ApiKey *string `pulumi:"apiKey"`
+	// Kafka API Key Secret
+	ApiSecret *string `pulumi:"apiSecret"`
+	// Kafka Auth Type
+	AuthType *string `pulumi:"authType"`
+	// Flush size
+	FlushSize *string `pulumi:"flushSize"`
+	// Kafka Input Data Format Type
+	InputFormat *string `pulumi:"inputFormat"`
+	// Maximum Tasks
+	MaxTasks *string `pulumi:"maxTasks"`
+	// Kafka Output Data Format Type
+	OutputFormat *string `pulumi:"outputFormat"`
+	// Partner Connector type.
+	// Expected value is 'KafkaAzureCosmosDBSink'.
+	PartnerConnectorType string `pulumi:"partnerConnectorType"`
+	// Kafka Service Account Id
+	ServiceAccountId *string `pulumi:"serviceAccountId"`
+	// Time Interval
+	TimeInterval *string `pulumi:"timeInterval"`
+	// Kafka topics list
+	Topics []string `pulumi:"topics"`
+	// Kafka topics directory
+	TopicsDir *string `pulumi:"topicsDir"`
+}
+
+// The partner connector type is KafkaAzureCosmosDBSink
+type KafkaAzureCosmosDBSinkConnectorInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (KafkaAzureCosmosDBSinkConnectorInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KafkaAzureCosmosDBSinkConnectorInfoResponse)(nil)).Elem()
+}
+
+func (o KafkaAzureCosmosDBSinkConnectorInfoResponseOutput) ToKafkaAzureCosmosDBSinkConnectorInfoResponseOutput() KafkaAzureCosmosDBSinkConnectorInfoResponseOutput {
+	return o
+}
+
+func (o KafkaAzureCosmosDBSinkConnectorInfoResponseOutput) ToKafkaAzureCosmosDBSinkConnectorInfoResponseOutputWithContext(ctx context.Context) KafkaAzureCosmosDBSinkConnectorInfoResponseOutput {
+	return o
+}
+
+// Kafka API Key
+func (o KafkaAzureCosmosDBSinkConnectorInfoResponseOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureCosmosDBSinkConnectorInfoResponse) *string { return v.ApiKey }).(pulumi.StringPtrOutput)
+}
+
+// Kafka API Key Secret
+func (o KafkaAzureCosmosDBSinkConnectorInfoResponseOutput) ApiSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureCosmosDBSinkConnectorInfoResponse) *string { return v.ApiSecret }).(pulumi.StringPtrOutput)
+}
+
+// Kafka Auth Type
+func (o KafkaAzureCosmosDBSinkConnectorInfoResponseOutput) AuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureCosmosDBSinkConnectorInfoResponse) *string { return v.AuthType }).(pulumi.StringPtrOutput)
+}
+
+// Flush size
+func (o KafkaAzureCosmosDBSinkConnectorInfoResponseOutput) FlushSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureCosmosDBSinkConnectorInfoResponse) *string { return v.FlushSize }).(pulumi.StringPtrOutput)
+}
+
+// Kafka Input Data Format Type
+func (o KafkaAzureCosmosDBSinkConnectorInfoResponseOutput) InputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureCosmosDBSinkConnectorInfoResponse) *string { return v.InputFormat }).(pulumi.StringPtrOutput)
+}
+
+// Maximum Tasks
+func (o KafkaAzureCosmosDBSinkConnectorInfoResponseOutput) MaxTasks() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureCosmosDBSinkConnectorInfoResponse) *string { return v.MaxTasks }).(pulumi.StringPtrOutput)
+}
+
+// Kafka Output Data Format Type
+func (o KafkaAzureCosmosDBSinkConnectorInfoResponseOutput) OutputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureCosmosDBSinkConnectorInfoResponse) *string { return v.OutputFormat }).(pulumi.StringPtrOutput)
+}
+
+// Partner Connector type.
+// Expected value is 'KafkaAzureCosmosDBSink'.
+func (o KafkaAzureCosmosDBSinkConnectorInfoResponseOutput) PartnerConnectorType() pulumi.StringOutput {
+	return o.ApplyT(func(v KafkaAzureCosmosDBSinkConnectorInfoResponse) string { return v.PartnerConnectorType }).(pulumi.StringOutput)
+}
+
+// Kafka Service Account Id
+func (o KafkaAzureCosmosDBSinkConnectorInfoResponseOutput) ServiceAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureCosmosDBSinkConnectorInfoResponse) *string { return v.ServiceAccountId }).(pulumi.StringPtrOutput)
+}
+
+// Time Interval
+func (o KafkaAzureCosmosDBSinkConnectorInfoResponseOutput) TimeInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureCosmosDBSinkConnectorInfoResponse) *string { return v.TimeInterval }).(pulumi.StringPtrOutput)
+}
+
+// Kafka topics list
+func (o KafkaAzureCosmosDBSinkConnectorInfoResponseOutput) Topics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v KafkaAzureCosmosDBSinkConnectorInfoResponse) []string { return v.Topics }).(pulumi.StringArrayOutput)
+}
+
+// Kafka topics directory
+func (o KafkaAzureCosmosDBSinkConnectorInfoResponseOutput) TopicsDir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureCosmosDBSinkConnectorInfoResponse) *string { return v.TopicsDir }).(pulumi.StringPtrOutput)
+}
+
+type KafkaAzureCosmosDBSinkConnectorInfoResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (KafkaAzureCosmosDBSinkConnectorInfoResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KafkaAzureCosmosDBSinkConnectorInfoResponse)(nil)).Elem()
+}
+
+func (o KafkaAzureCosmosDBSinkConnectorInfoResponsePtrOutput) ToKafkaAzureCosmosDBSinkConnectorInfoResponsePtrOutput() KafkaAzureCosmosDBSinkConnectorInfoResponsePtrOutput {
+	return o
+}
+
+func (o KafkaAzureCosmosDBSinkConnectorInfoResponsePtrOutput) ToKafkaAzureCosmosDBSinkConnectorInfoResponsePtrOutputWithContext(ctx context.Context) KafkaAzureCosmosDBSinkConnectorInfoResponsePtrOutput {
+	return o
+}
+
+func (o KafkaAzureCosmosDBSinkConnectorInfoResponsePtrOutput) Elem() KafkaAzureCosmosDBSinkConnectorInfoResponseOutput {
+	return o.ApplyT(func(v *KafkaAzureCosmosDBSinkConnectorInfoResponse) KafkaAzureCosmosDBSinkConnectorInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret KafkaAzureCosmosDBSinkConnectorInfoResponse
+		return ret
+	}).(KafkaAzureCosmosDBSinkConnectorInfoResponseOutput)
+}
+
+// Kafka API Key
+func (o KafkaAzureCosmosDBSinkConnectorInfoResponsePtrOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureCosmosDBSinkConnectorInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApiKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kafka API Key Secret
+func (o KafkaAzureCosmosDBSinkConnectorInfoResponsePtrOutput) ApiSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureCosmosDBSinkConnectorInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApiSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kafka Auth Type
+func (o KafkaAzureCosmosDBSinkConnectorInfoResponsePtrOutput) AuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureCosmosDBSinkConnectorInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Flush size
+func (o KafkaAzureCosmosDBSinkConnectorInfoResponsePtrOutput) FlushSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureCosmosDBSinkConnectorInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FlushSize
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kafka Input Data Format Type
+func (o KafkaAzureCosmosDBSinkConnectorInfoResponsePtrOutput) InputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureCosmosDBSinkConnectorInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InputFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// Maximum Tasks
+func (o KafkaAzureCosmosDBSinkConnectorInfoResponsePtrOutput) MaxTasks() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureCosmosDBSinkConnectorInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxTasks
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kafka Output Data Format Type
+func (o KafkaAzureCosmosDBSinkConnectorInfoResponsePtrOutput) OutputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureCosmosDBSinkConnectorInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OutputFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// Partner Connector type.
+// Expected value is 'KafkaAzureCosmosDBSink'.
+func (o KafkaAzureCosmosDBSinkConnectorInfoResponsePtrOutput) PartnerConnectorType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureCosmosDBSinkConnectorInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PartnerConnectorType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kafka Service Account Id
+func (o KafkaAzureCosmosDBSinkConnectorInfoResponsePtrOutput) ServiceAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureCosmosDBSinkConnectorInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccountId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Time Interval
+func (o KafkaAzureCosmosDBSinkConnectorInfoResponsePtrOutput) TimeInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureCosmosDBSinkConnectorInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeInterval
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kafka topics list
+func (o KafkaAzureCosmosDBSinkConnectorInfoResponsePtrOutput) Topics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *KafkaAzureCosmosDBSinkConnectorInfoResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Topics
+	}).(pulumi.StringArrayOutput)
+}
+
+// Kafka topics directory
+func (o KafkaAzureCosmosDBSinkConnectorInfoResponsePtrOutput) TopicsDir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureCosmosDBSinkConnectorInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TopicsDir
+	}).(pulumi.StringPtrOutput)
+}
+
+// The partner connector type is KafkaAzureCosmosDBSource
+type KafkaAzureCosmosDBSourceConnectorInfo struct {
+	// Kafka API Key
+	ApiKey *string `pulumi:"apiKey"`
+	// Kafka API Secret
+	ApiSecret *string `pulumi:"apiSecret"`
+	// Kafka Auth Type
+	AuthType *string `pulumi:"authType"`
+	// Kafka Input Data Format Type
+	InputFormat *string `pulumi:"inputFormat"`
+	// Maximum Tasks
+	MaxTasks *string `pulumi:"maxTasks"`
+	// Kafka Output Data Format Type
+	OutputFormat *string `pulumi:"outputFormat"`
+	// Partner Connector type.
+	// Expected value is 'KafkaAzureCosmosDBSource'.
+	PartnerConnectorType string `pulumi:"partnerConnectorType"`
+	// Kafka Service Account Id
+	ServiceAccountId *string `pulumi:"serviceAccountId"`
+	// Kafka topics Regex pattern
+	TopicRegex *string `pulumi:"topicRegex"`
+	// Kafka topics directory
+	TopicsDir *string `pulumi:"topicsDir"`
+}
+
+// KafkaAzureCosmosDBSourceConnectorInfoInput is an input type that accepts KafkaAzureCosmosDBSourceConnectorInfoArgs and KafkaAzureCosmosDBSourceConnectorInfoOutput values.
+// You can construct a concrete instance of `KafkaAzureCosmosDBSourceConnectorInfoInput` via:
+//
+//	KafkaAzureCosmosDBSourceConnectorInfoArgs{...}
+type KafkaAzureCosmosDBSourceConnectorInfoInput interface {
+	pulumi.Input
+
+	ToKafkaAzureCosmosDBSourceConnectorInfoOutput() KafkaAzureCosmosDBSourceConnectorInfoOutput
+	ToKafkaAzureCosmosDBSourceConnectorInfoOutputWithContext(context.Context) KafkaAzureCosmosDBSourceConnectorInfoOutput
+}
+
+// The partner connector type is KafkaAzureCosmosDBSource
+type KafkaAzureCosmosDBSourceConnectorInfoArgs struct {
+	// Kafka API Key
+	ApiKey pulumi.StringPtrInput `pulumi:"apiKey"`
+	// Kafka API Secret
+	ApiSecret pulumi.StringPtrInput `pulumi:"apiSecret"`
+	// Kafka Auth Type
+	AuthType pulumi.StringPtrInput `pulumi:"authType"`
+	// Kafka Input Data Format Type
+	InputFormat pulumi.StringPtrInput `pulumi:"inputFormat"`
+	// Maximum Tasks
+	MaxTasks pulumi.StringPtrInput `pulumi:"maxTasks"`
+	// Kafka Output Data Format Type
+	OutputFormat pulumi.StringPtrInput `pulumi:"outputFormat"`
+	// Partner Connector type.
+	// Expected value is 'KafkaAzureCosmosDBSource'.
+	PartnerConnectorType pulumi.StringInput `pulumi:"partnerConnectorType"`
+	// Kafka Service Account Id
+	ServiceAccountId pulumi.StringPtrInput `pulumi:"serviceAccountId"`
+	// Kafka topics Regex pattern
+	TopicRegex pulumi.StringPtrInput `pulumi:"topicRegex"`
+	// Kafka topics directory
+	TopicsDir pulumi.StringPtrInput `pulumi:"topicsDir"`
+}
+
+func (KafkaAzureCosmosDBSourceConnectorInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KafkaAzureCosmosDBSourceConnectorInfo)(nil)).Elem()
+}
+
+func (i KafkaAzureCosmosDBSourceConnectorInfoArgs) ToKafkaAzureCosmosDBSourceConnectorInfoOutput() KafkaAzureCosmosDBSourceConnectorInfoOutput {
+	return i.ToKafkaAzureCosmosDBSourceConnectorInfoOutputWithContext(context.Background())
+}
+
+func (i KafkaAzureCosmosDBSourceConnectorInfoArgs) ToKafkaAzureCosmosDBSourceConnectorInfoOutputWithContext(ctx context.Context) KafkaAzureCosmosDBSourceConnectorInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaAzureCosmosDBSourceConnectorInfoOutput)
+}
+
+func (i KafkaAzureCosmosDBSourceConnectorInfoArgs) ToKafkaAzureCosmosDBSourceConnectorInfoPtrOutput() KafkaAzureCosmosDBSourceConnectorInfoPtrOutput {
+	return i.ToKafkaAzureCosmosDBSourceConnectorInfoPtrOutputWithContext(context.Background())
+}
+
+func (i KafkaAzureCosmosDBSourceConnectorInfoArgs) ToKafkaAzureCosmosDBSourceConnectorInfoPtrOutputWithContext(ctx context.Context) KafkaAzureCosmosDBSourceConnectorInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaAzureCosmosDBSourceConnectorInfoOutput).ToKafkaAzureCosmosDBSourceConnectorInfoPtrOutputWithContext(ctx)
+}
+
+// KafkaAzureCosmosDBSourceConnectorInfoPtrInput is an input type that accepts KafkaAzureCosmosDBSourceConnectorInfoArgs, KafkaAzureCosmosDBSourceConnectorInfoPtr and KafkaAzureCosmosDBSourceConnectorInfoPtrOutput values.
+// You can construct a concrete instance of `KafkaAzureCosmosDBSourceConnectorInfoPtrInput` via:
+//
+//	        KafkaAzureCosmosDBSourceConnectorInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type KafkaAzureCosmosDBSourceConnectorInfoPtrInput interface {
+	pulumi.Input
+
+	ToKafkaAzureCosmosDBSourceConnectorInfoPtrOutput() KafkaAzureCosmosDBSourceConnectorInfoPtrOutput
+	ToKafkaAzureCosmosDBSourceConnectorInfoPtrOutputWithContext(context.Context) KafkaAzureCosmosDBSourceConnectorInfoPtrOutput
+}
+
+type kafkaAzureCosmosDBSourceConnectorInfoPtrType KafkaAzureCosmosDBSourceConnectorInfoArgs
+
+func KafkaAzureCosmosDBSourceConnectorInfoPtr(v *KafkaAzureCosmosDBSourceConnectorInfoArgs) KafkaAzureCosmosDBSourceConnectorInfoPtrInput {
+	return (*kafkaAzureCosmosDBSourceConnectorInfoPtrType)(v)
+}
+
+func (*kafkaAzureCosmosDBSourceConnectorInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KafkaAzureCosmosDBSourceConnectorInfo)(nil)).Elem()
+}
+
+func (i *kafkaAzureCosmosDBSourceConnectorInfoPtrType) ToKafkaAzureCosmosDBSourceConnectorInfoPtrOutput() KafkaAzureCosmosDBSourceConnectorInfoPtrOutput {
+	return i.ToKafkaAzureCosmosDBSourceConnectorInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *kafkaAzureCosmosDBSourceConnectorInfoPtrType) ToKafkaAzureCosmosDBSourceConnectorInfoPtrOutputWithContext(ctx context.Context) KafkaAzureCosmosDBSourceConnectorInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaAzureCosmosDBSourceConnectorInfoPtrOutput)
+}
+
+// The partner connector type is KafkaAzureCosmosDBSource
+type KafkaAzureCosmosDBSourceConnectorInfoOutput struct{ *pulumi.OutputState }
+
+func (KafkaAzureCosmosDBSourceConnectorInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KafkaAzureCosmosDBSourceConnectorInfo)(nil)).Elem()
+}
+
+func (o KafkaAzureCosmosDBSourceConnectorInfoOutput) ToKafkaAzureCosmosDBSourceConnectorInfoOutput() KafkaAzureCosmosDBSourceConnectorInfoOutput {
+	return o
+}
+
+func (o KafkaAzureCosmosDBSourceConnectorInfoOutput) ToKafkaAzureCosmosDBSourceConnectorInfoOutputWithContext(ctx context.Context) KafkaAzureCosmosDBSourceConnectorInfoOutput {
+	return o
+}
+
+func (o KafkaAzureCosmosDBSourceConnectorInfoOutput) ToKafkaAzureCosmosDBSourceConnectorInfoPtrOutput() KafkaAzureCosmosDBSourceConnectorInfoPtrOutput {
+	return o.ToKafkaAzureCosmosDBSourceConnectorInfoPtrOutputWithContext(context.Background())
+}
+
+func (o KafkaAzureCosmosDBSourceConnectorInfoOutput) ToKafkaAzureCosmosDBSourceConnectorInfoPtrOutputWithContext(ctx context.Context) KafkaAzureCosmosDBSourceConnectorInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KafkaAzureCosmosDBSourceConnectorInfo) *KafkaAzureCosmosDBSourceConnectorInfo {
+		return &v
+	}).(KafkaAzureCosmosDBSourceConnectorInfoPtrOutput)
+}
+
+// Kafka API Key
+func (o KafkaAzureCosmosDBSourceConnectorInfoOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureCosmosDBSourceConnectorInfo) *string { return v.ApiKey }).(pulumi.StringPtrOutput)
+}
+
+// Kafka API Secret
+func (o KafkaAzureCosmosDBSourceConnectorInfoOutput) ApiSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureCosmosDBSourceConnectorInfo) *string { return v.ApiSecret }).(pulumi.StringPtrOutput)
+}
+
+// Kafka Auth Type
+func (o KafkaAzureCosmosDBSourceConnectorInfoOutput) AuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureCosmosDBSourceConnectorInfo) *string { return v.AuthType }).(pulumi.StringPtrOutput)
+}
+
+// Kafka Input Data Format Type
+func (o KafkaAzureCosmosDBSourceConnectorInfoOutput) InputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureCosmosDBSourceConnectorInfo) *string { return v.InputFormat }).(pulumi.StringPtrOutput)
+}
+
+// Maximum Tasks
+func (o KafkaAzureCosmosDBSourceConnectorInfoOutput) MaxTasks() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureCosmosDBSourceConnectorInfo) *string { return v.MaxTasks }).(pulumi.StringPtrOutput)
+}
+
+// Kafka Output Data Format Type
+func (o KafkaAzureCosmosDBSourceConnectorInfoOutput) OutputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureCosmosDBSourceConnectorInfo) *string { return v.OutputFormat }).(pulumi.StringPtrOutput)
+}
+
+// Partner Connector type.
+// Expected value is 'KafkaAzureCosmosDBSource'.
+func (o KafkaAzureCosmosDBSourceConnectorInfoOutput) PartnerConnectorType() pulumi.StringOutput {
+	return o.ApplyT(func(v KafkaAzureCosmosDBSourceConnectorInfo) string { return v.PartnerConnectorType }).(pulumi.StringOutput)
+}
+
+// Kafka Service Account Id
+func (o KafkaAzureCosmosDBSourceConnectorInfoOutput) ServiceAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureCosmosDBSourceConnectorInfo) *string { return v.ServiceAccountId }).(pulumi.StringPtrOutput)
+}
+
+// Kafka topics Regex pattern
+func (o KafkaAzureCosmosDBSourceConnectorInfoOutput) TopicRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureCosmosDBSourceConnectorInfo) *string { return v.TopicRegex }).(pulumi.StringPtrOutput)
+}
+
+// Kafka topics directory
+func (o KafkaAzureCosmosDBSourceConnectorInfoOutput) TopicsDir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureCosmosDBSourceConnectorInfo) *string { return v.TopicsDir }).(pulumi.StringPtrOutput)
+}
+
+type KafkaAzureCosmosDBSourceConnectorInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (KafkaAzureCosmosDBSourceConnectorInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KafkaAzureCosmosDBSourceConnectorInfo)(nil)).Elem()
+}
+
+func (o KafkaAzureCosmosDBSourceConnectorInfoPtrOutput) ToKafkaAzureCosmosDBSourceConnectorInfoPtrOutput() KafkaAzureCosmosDBSourceConnectorInfoPtrOutput {
+	return o
+}
+
+func (o KafkaAzureCosmosDBSourceConnectorInfoPtrOutput) ToKafkaAzureCosmosDBSourceConnectorInfoPtrOutputWithContext(ctx context.Context) KafkaAzureCosmosDBSourceConnectorInfoPtrOutput {
+	return o
+}
+
+func (o KafkaAzureCosmosDBSourceConnectorInfoPtrOutput) Elem() KafkaAzureCosmosDBSourceConnectorInfoOutput {
+	return o.ApplyT(func(v *KafkaAzureCosmosDBSourceConnectorInfo) KafkaAzureCosmosDBSourceConnectorInfo {
+		if v != nil {
+			return *v
+		}
+		var ret KafkaAzureCosmosDBSourceConnectorInfo
+		return ret
+	}).(KafkaAzureCosmosDBSourceConnectorInfoOutput)
+}
+
+// Kafka API Key
+func (o KafkaAzureCosmosDBSourceConnectorInfoPtrOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureCosmosDBSourceConnectorInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApiKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kafka API Secret
+func (o KafkaAzureCosmosDBSourceConnectorInfoPtrOutput) ApiSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureCosmosDBSourceConnectorInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApiSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kafka Auth Type
+func (o KafkaAzureCosmosDBSourceConnectorInfoPtrOutput) AuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureCosmosDBSourceConnectorInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kafka Input Data Format Type
+func (o KafkaAzureCosmosDBSourceConnectorInfoPtrOutput) InputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureCosmosDBSourceConnectorInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InputFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// Maximum Tasks
+func (o KafkaAzureCosmosDBSourceConnectorInfoPtrOutput) MaxTasks() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureCosmosDBSourceConnectorInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxTasks
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kafka Output Data Format Type
+func (o KafkaAzureCosmosDBSourceConnectorInfoPtrOutput) OutputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureCosmosDBSourceConnectorInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OutputFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// Partner Connector type.
+// Expected value is 'KafkaAzureCosmosDBSource'.
+func (o KafkaAzureCosmosDBSourceConnectorInfoPtrOutput) PartnerConnectorType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureCosmosDBSourceConnectorInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PartnerConnectorType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kafka Service Account Id
+func (o KafkaAzureCosmosDBSourceConnectorInfoPtrOutput) ServiceAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureCosmosDBSourceConnectorInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccountId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kafka topics Regex pattern
+func (o KafkaAzureCosmosDBSourceConnectorInfoPtrOutput) TopicRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureCosmosDBSourceConnectorInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TopicRegex
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kafka topics directory
+func (o KafkaAzureCosmosDBSourceConnectorInfoPtrOutput) TopicsDir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureCosmosDBSourceConnectorInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TopicsDir
+	}).(pulumi.StringPtrOutput)
+}
+
+// The partner connector type is KafkaAzureCosmosDBSource
+type KafkaAzureCosmosDBSourceConnectorInfoResponse struct {
+	// Kafka API Key
+	ApiKey *string `pulumi:"apiKey"`
+	// Kafka API Secret
+	ApiSecret *string `pulumi:"apiSecret"`
+	// Kafka Auth Type
+	AuthType *string `pulumi:"authType"`
+	// Kafka Input Data Format Type
+	InputFormat *string `pulumi:"inputFormat"`
+	// Maximum Tasks
+	MaxTasks *string `pulumi:"maxTasks"`
+	// Kafka Output Data Format Type
+	OutputFormat *string `pulumi:"outputFormat"`
+	// Partner Connector type.
+	// Expected value is 'KafkaAzureCosmosDBSource'.
+	PartnerConnectorType string `pulumi:"partnerConnectorType"`
+	// Kafka Service Account Id
+	ServiceAccountId *string `pulumi:"serviceAccountId"`
+	// Kafka topics Regex pattern
+	TopicRegex *string `pulumi:"topicRegex"`
+	// Kafka topics directory
+	TopicsDir *string `pulumi:"topicsDir"`
+}
+
+// The partner connector type is KafkaAzureCosmosDBSource
+type KafkaAzureCosmosDBSourceConnectorInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (KafkaAzureCosmosDBSourceConnectorInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KafkaAzureCosmosDBSourceConnectorInfoResponse)(nil)).Elem()
+}
+
+func (o KafkaAzureCosmosDBSourceConnectorInfoResponseOutput) ToKafkaAzureCosmosDBSourceConnectorInfoResponseOutput() KafkaAzureCosmosDBSourceConnectorInfoResponseOutput {
+	return o
+}
+
+func (o KafkaAzureCosmosDBSourceConnectorInfoResponseOutput) ToKafkaAzureCosmosDBSourceConnectorInfoResponseOutputWithContext(ctx context.Context) KafkaAzureCosmosDBSourceConnectorInfoResponseOutput {
+	return o
+}
+
+// Kafka API Key
+func (o KafkaAzureCosmosDBSourceConnectorInfoResponseOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureCosmosDBSourceConnectorInfoResponse) *string { return v.ApiKey }).(pulumi.StringPtrOutput)
+}
+
+// Kafka API Secret
+func (o KafkaAzureCosmosDBSourceConnectorInfoResponseOutput) ApiSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureCosmosDBSourceConnectorInfoResponse) *string { return v.ApiSecret }).(pulumi.StringPtrOutput)
+}
+
+// Kafka Auth Type
+func (o KafkaAzureCosmosDBSourceConnectorInfoResponseOutput) AuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureCosmosDBSourceConnectorInfoResponse) *string { return v.AuthType }).(pulumi.StringPtrOutput)
+}
+
+// Kafka Input Data Format Type
+func (o KafkaAzureCosmosDBSourceConnectorInfoResponseOutput) InputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureCosmosDBSourceConnectorInfoResponse) *string { return v.InputFormat }).(pulumi.StringPtrOutput)
+}
+
+// Maximum Tasks
+func (o KafkaAzureCosmosDBSourceConnectorInfoResponseOutput) MaxTasks() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureCosmosDBSourceConnectorInfoResponse) *string { return v.MaxTasks }).(pulumi.StringPtrOutput)
+}
+
+// Kafka Output Data Format Type
+func (o KafkaAzureCosmosDBSourceConnectorInfoResponseOutput) OutputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureCosmosDBSourceConnectorInfoResponse) *string { return v.OutputFormat }).(pulumi.StringPtrOutput)
+}
+
+// Partner Connector type.
+// Expected value is 'KafkaAzureCosmosDBSource'.
+func (o KafkaAzureCosmosDBSourceConnectorInfoResponseOutput) PartnerConnectorType() pulumi.StringOutput {
+	return o.ApplyT(func(v KafkaAzureCosmosDBSourceConnectorInfoResponse) string { return v.PartnerConnectorType }).(pulumi.StringOutput)
+}
+
+// Kafka Service Account Id
+func (o KafkaAzureCosmosDBSourceConnectorInfoResponseOutput) ServiceAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureCosmosDBSourceConnectorInfoResponse) *string { return v.ServiceAccountId }).(pulumi.StringPtrOutput)
+}
+
+// Kafka topics Regex pattern
+func (o KafkaAzureCosmosDBSourceConnectorInfoResponseOutput) TopicRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureCosmosDBSourceConnectorInfoResponse) *string { return v.TopicRegex }).(pulumi.StringPtrOutput)
+}
+
+// Kafka topics directory
+func (o KafkaAzureCosmosDBSourceConnectorInfoResponseOutput) TopicsDir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureCosmosDBSourceConnectorInfoResponse) *string { return v.TopicsDir }).(pulumi.StringPtrOutput)
+}
+
+type KafkaAzureCosmosDBSourceConnectorInfoResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (KafkaAzureCosmosDBSourceConnectorInfoResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KafkaAzureCosmosDBSourceConnectorInfoResponse)(nil)).Elem()
+}
+
+func (o KafkaAzureCosmosDBSourceConnectorInfoResponsePtrOutput) ToKafkaAzureCosmosDBSourceConnectorInfoResponsePtrOutput() KafkaAzureCosmosDBSourceConnectorInfoResponsePtrOutput {
+	return o
+}
+
+func (o KafkaAzureCosmosDBSourceConnectorInfoResponsePtrOutput) ToKafkaAzureCosmosDBSourceConnectorInfoResponsePtrOutputWithContext(ctx context.Context) KafkaAzureCosmosDBSourceConnectorInfoResponsePtrOutput {
+	return o
+}
+
+func (o KafkaAzureCosmosDBSourceConnectorInfoResponsePtrOutput) Elem() KafkaAzureCosmosDBSourceConnectorInfoResponseOutput {
+	return o.ApplyT(func(v *KafkaAzureCosmosDBSourceConnectorInfoResponse) KafkaAzureCosmosDBSourceConnectorInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret KafkaAzureCosmosDBSourceConnectorInfoResponse
+		return ret
+	}).(KafkaAzureCosmosDBSourceConnectorInfoResponseOutput)
+}
+
+// Kafka API Key
+func (o KafkaAzureCosmosDBSourceConnectorInfoResponsePtrOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureCosmosDBSourceConnectorInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApiKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kafka API Secret
+func (o KafkaAzureCosmosDBSourceConnectorInfoResponsePtrOutput) ApiSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureCosmosDBSourceConnectorInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApiSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kafka Auth Type
+func (o KafkaAzureCosmosDBSourceConnectorInfoResponsePtrOutput) AuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureCosmosDBSourceConnectorInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kafka Input Data Format Type
+func (o KafkaAzureCosmosDBSourceConnectorInfoResponsePtrOutput) InputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureCosmosDBSourceConnectorInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InputFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// Maximum Tasks
+func (o KafkaAzureCosmosDBSourceConnectorInfoResponsePtrOutput) MaxTasks() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureCosmosDBSourceConnectorInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxTasks
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kafka Output Data Format Type
+func (o KafkaAzureCosmosDBSourceConnectorInfoResponsePtrOutput) OutputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureCosmosDBSourceConnectorInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OutputFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// Partner Connector type.
+// Expected value is 'KafkaAzureCosmosDBSource'.
+func (o KafkaAzureCosmosDBSourceConnectorInfoResponsePtrOutput) PartnerConnectorType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureCosmosDBSourceConnectorInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PartnerConnectorType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kafka Service Account Id
+func (o KafkaAzureCosmosDBSourceConnectorInfoResponsePtrOutput) ServiceAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureCosmosDBSourceConnectorInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccountId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kafka topics Regex pattern
+func (o KafkaAzureCosmosDBSourceConnectorInfoResponsePtrOutput) TopicRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureCosmosDBSourceConnectorInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TopicRegex
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kafka topics directory
+func (o KafkaAzureCosmosDBSourceConnectorInfoResponsePtrOutput) TopicsDir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureCosmosDBSourceConnectorInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TopicsDir
+	}).(pulumi.StringPtrOutput)
+}
+
+// The partner connector type is KafkaAzureSynapseAnalyticsSink
+type KafkaAzureSynapseAnalyticsSinkConnectorInfo struct {
+	// Kafka API Key
+	ApiKey *string `pulumi:"apiKey"`
+	// Kafka API Key Secret
+	ApiSecret *string `pulumi:"apiSecret"`
+	// Kafka Auth Type
+	AuthType *string `pulumi:"authType"`
+	// Flush size
+	FlushSize *string `pulumi:"flushSize"`
+	// Kafka Input Data Format Type
+	InputFormat *string `pulumi:"inputFormat"`
+	// Maximum Tasks
+	MaxTasks *string `pulumi:"maxTasks"`
+	// Kafka Output Data Format Type
+	OutputFormat *string `pulumi:"outputFormat"`
+	// Partner Connector type.
+	// Expected value is 'KafkaAzureSynapseAnalyticsSink'.
+	PartnerConnectorType string `pulumi:"partnerConnectorType"`
+	// Kafka Service Account Id
+	ServiceAccountId *string `pulumi:"serviceAccountId"`
+	// Time Interval
+	TimeInterval *string `pulumi:"timeInterval"`
+	// Kafka topics list
+	Topics []string `pulumi:"topics"`
+	// Kafka topics directory
+	TopicsDir *string `pulumi:"topicsDir"`
+}
+
+// KafkaAzureSynapseAnalyticsSinkConnectorInfoInput is an input type that accepts KafkaAzureSynapseAnalyticsSinkConnectorInfoArgs and KafkaAzureSynapseAnalyticsSinkConnectorInfoOutput values.
+// You can construct a concrete instance of `KafkaAzureSynapseAnalyticsSinkConnectorInfoInput` via:
+//
+//	KafkaAzureSynapseAnalyticsSinkConnectorInfoArgs{...}
+type KafkaAzureSynapseAnalyticsSinkConnectorInfoInput interface {
+	pulumi.Input
+
+	ToKafkaAzureSynapseAnalyticsSinkConnectorInfoOutput() KafkaAzureSynapseAnalyticsSinkConnectorInfoOutput
+	ToKafkaAzureSynapseAnalyticsSinkConnectorInfoOutputWithContext(context.Context) KafkaAzureSynapseAnalyticsSinkConnectorInfoOutput
+}
+
+// The partner connector type is KafkaAzureSynapseAnalyticsSink
+type KafkaAzureSynapseAnalyticsSinkConnectorInfoArgs struct {
+	// Kafka API Key
+	ApiKey pulumi.StringPtrInput `pulumi:"apiKey"`
+	// Kafka API Key Secret
+	ApiSecret pulumi.StringPtrInput `pulumi:"apiSecret"`
+	// Kafka Auth Type
+	AuthType pulumi.StringPtrInput `pulumi:"authType"`
+	// Flush size
+	FlushSize pulumi.StringPtrInput `pulumi:"flushSize"`
+	// Kafka Input Data Format Type
+	InputFormat pulumi.StringPtrInput `pulumi:"inputFormat"`
+	// Maximum Tasks
+	MaxTasks pulumi.StringPtrInput `pulumi:"maxTasks"`
+	// Kafka Output Data Format Type
+	OutputFormat pulumi.StringPtrInput `pulumi:"outputFormat"`
+	// Partner Connector type.
+	// Expected value is 'KafkaAzureSynapseAnalyticsSink'.
+	PartnerConnectorType pulumi.StringInput `pulumi:"partnerConnectorType"`
+	// Kafka Service Account Id
+	ServiceAccountId pulumi.StringPtrInput `pulumi:"serviceAccountId"`
+	// Time Interval
+	TimeInterval pulumi.StringPtrInput `pulumi:"timeInterval"`
+	// Kafka topics list
+	Topics pulumi.StringArrayInput `pulumi:"topics"`
+	// Kafka topics directory
+	TopicsDir pulumi.StringPtrInput `pulumi:"topicsDir"`
+}
+
+func (KafkaAzureSynapseAnalyticsSinkConnectorInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KafkaAzureSynapseAnalyticsSinkConnectorInfo)(nil)).Elem()
+}
+
+func (i KafkaAzureSynapseAnalyticsSinkConnectorInfoArgs) ToKafkaAzureSynapseAnalyticsSinkConnectorInfoOutput() KafkaAzureSynapseAnalyticsSinkConnectorInfoOutput {
+	return i.ToKafkaAzureSynapseAnalyticsSinkConnectorInfoOutputWithContext(context.Background())
+}
+
+func (i KafkaAzureSynapseAnalyticsSinkConnectorInfoArgs) ToKafkaAzureSynapseAnalyticsSinkConnectorInfoOutputWithContext(ctx context.Context) KafkaAzureSynapseAnalyticsSinkConnectorInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaAzureSynapseAnalyticsSinkConnectorInfoOutput)
+}
+
+func (i KafkaAzureSynapseAnalyticsSinkConnectorInfoArgs) ToKafkaAzureSynapseAnalyticsSinkConnectorInfoPtrOutput() KafkaAzureSynapseAnalyticsSinkConnectorInfoPtrOutput {
+	return i.ToKafkaAzureSynapseAnalyticsSinkConnectorInfoPtrOutputWithContext(context.Background())
+}
+
+func (i KafkaAzureSynapseAnalyticsSinkConnectorInfoArgs) ToKafkaAzureSynapseAnalyticsSinkConnectorInfoPtrOutputWithContext(ctx context.Context) KafkaAzureSynapseAnalyticsSinkConnectorInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaAzureSynapseAnalyticsSinkConnectorInfoOutput).ToKafkaAzureSynapseAnalyticsSinkConnectorInfoPtrOutputWithContext(ctx)
+}
+
+// KafkaAzureSynapseAnalyticsSinkConnectorInfoPtrInput is an input type that accepts KafkaAzureSynapseAnalyticsSinkConnectorInfoArgs, KafkaAzureSynapseAnalyticsSinkConnectorInfoPtr and KafkaAzureSynapseAnalyticsSinkConnectorInfoPtrOutput values.
+// You can construct a concrete instance of `KafkaAzureSynapseAnalyticsSinkConnectorInfoPtrInput` via:
+//
+//	        KafkaAzureSynapseAnalyticsSinkConnectorInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type KafkaAzureSynapseAnalyticsSinkConnectorInfoPtrInput interface {
+	pulumi.Input
+
+	ToKafkaAzureSynapseAnalyticsSinkConnectorInfoPtrOutput() KafkaAzureSynapseAnalyticsSinkConnectorInfoPtrOutput
+	ToKafkaAzureSynapseAnalyticsSinkConnectorInfoPtrOutputWithContext(context.Context) KafkaAzureSynapseAnalyticsSinkConnectorInfoPtrOutput
+}
+
+type kafkaAzureSynapseAnalyticsSinkConnectorInfoPtrType KafkaAzureSynapseAnalyticsSinkConnectorInfoArgs
+
+func KafkaAzureSynapseAnalyticsSinkConnectorInfoPtr(v *KafkaAzureSynapseAnalyticsSinkConnectorInfoArgs) KafkaAzureSynapseAnalyticsSinkConnectorInfoPtrInput {
+	return (*kafkaAzureSynapseAnalyticsSinkConnectorInfoPtrType)(v)
+}
+
+func (*kafkaAzureSynapseAnalyticsSinkConnectorInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KafkaAzureSynapseAnalyticsSinkConnectorInfo)(nil)).Elem()
+}
+
+func (i *kafkaAzureSynapseAnalyticsSinkConnectorInfoPtrType) ToKafkaAzureSynapseAnalyticsSinkConnectorInfoPtrOutput() KafkaAzureSynapseAnalyticsSinkConnectorInfoPtrOutput {
+	return i.ToKafkaAzureSynapseAnalyticsSinkConnectorInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *kafkaAzureSynapseAnalyticsSinkConnectorInfoPtrType) ToKafkaAzureSynapseAnalyticsSinkConnectorInfoPtrOutputWithContext(ctx context.Context) KafkaAzureSynapseAnalyticsSinkConnectorInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaAzureSynapseAnalyticsSinkConnectorInfoPtrOutput)
+}
+
+// The partner connector type is KafkaAzureSynapseAnalyticsSink
+type KafkaAzureSynapseAnalyticsSinkConnectorInfoOutput struct{ *pulumi.OutputState }
+
+func (KafkaAzureSynapseAnalyticsSinkConnectorInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KafkaAzureSynapseAnalyticsSinkConnectorInfo)(nil)).Elem()
+}
+
+func (o KafkaAzureSynapseAnalyticsSinkConnectorInfoOutput) ToKafkaAzureSynapseAnalyticsSinkConnectorInfoOutput() KafkaAzureSynapseAnalyticsSinkConnectorInfoOutput {
+	return o
+}
+
+func (o KafkaAzureSynapseAnalyticsSinkConnectorInfoOutput) ToKafkaAzureSynapseAnalyticsSinkConnectorInfoOutputWithContext(ctx context.Context) KafkaAzureSynapseAnalyticsSinkConnectorInfoOutput {
+	return o
+}
+
+func (o KafkaAzureSynapseAnalyticsSinkConnectorInfoOutput) ToKafkaAzureSynapseAnalyticsSinkConnectorInfoPtrOutput() KafkaAzureSynapseAnalyticsSinkConnectorInfoPtrOutput {
+	return o.ToKafkaAzureSynapseAnalyticsSinkConnectorInfoPtrOutputWithContext(context.Background())
+}
+
+func (o KafkaAzureSynapseAnalyticsSinkConnectorInfoOutput) ToKafkaAzureSynapseAnalyticsSinkConnectorInfoPtrOutputWithContext(ctx context.Context) KafkaAzureSynapseAnalyticsSinkConnectorInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KafkaAzureSynapseAnalyticsSinkConnectorInfo) *KafkaAzureSynapseAnalyticsSinkConnectorInfo {
+		return &v
+	}).(KafkaAzureSynapseAnalyticsSinkConnectorInfoPtrOutput)
+}
+
+// Kafka API Key
+func (o KafkaAzureSynapseAnalyticsSinkConnectorInfoOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureSynapseAnalyticsSinkConnectorInfo) *string { return v.ApiKey }).(pulumi.StringPtrOutput)
+}
+
+// Kafka API Key Secret
+func (o KafkaAzureSynapseAnalyticsSinkConnectorInfoOutput) ApiSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureSynapseAnalyticsSinkConnectorInfo) *string { return v.ApiSecret }).(pulumi.StringPtrOutput)
+}
+
+// Kafka Auth Type
+func (o KafkaAzureSynapseAnalyticsSinkConnectorInfoOutput) AuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureSynapseAnalyticsSinkConnectorInfo) *string { return v.AuthType }).(pulumi.StringPtrOutput)
+}
+
+// Flush size
+func (o KafkaAzureSynapseAnalyticsSinkConnectorInfoOutput) FlushSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureSynapseAnalyticsSinkConnectorInfo) *string { return v.FlushSize }).(pulumi.StringPtrOutput)
+}
+
+// Kafka Input Data Format Type
+func (o KafkaAzureSynapseAnalyticsSinkConnectorInfoOutput) InputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureSynapseAnalyticsSinkConnectorInfo) *string { return v.InputFormat }).(pulumi.StringPtrOutput)
+}
+
+// Maximum Tasks
+func (o KafkaAzureSynapseAnalyticsSinkConnectorInfoOutput) MaxTasks() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureSynapseAnalyticsSinkConnectorInfo) *string { return v.MaxTasks }).(pulumi.StringPtrOutput)
+}
+
+// Kafka Output Data Format Type
+func (o KafkaAzureSynapseAnalyticsSinkConnectorInfoOutput) OutputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureSynapseAnalyticsSinkConnectorInfo) *string { return v.OutputFormat }).(pulumi.StringPtrOutput)
+}
+
+// Partner Connector type.
+// Expected value is 'KafkaAzureSynapseAnalyticsSink'.
+func (o KafkaAzureSynapseAnalyticsSinkConnectorInfoOutput) PartnerConnectorType() pulumi.StringOutput {
+	return o.ApplyT(func(v KafkaAzureSynapseAnalyticsSinkConnectorInfo) string { return v.PartnerConnectorType }).(pulumi.StringOutput)
+}
+
+// Kafka Service Account Id
+func (o KafkaAzureSynapseAnalyticsSinkConnectorInfoOutput) ServiceAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureSynapseAnalyticsSinkConnectorInfo) *string { return v.ServiceAccountId }).(pulumi.StringPtrOutput)
+}
+
+// Time Interval
+func (o KafkaAzureSynapseAnalyticsSinkConnectorInfoOutput) TimeInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureSynapseAnalyticsSinkConnectorInfo) *string { return v.TimeInterval }).(pulumi.StringPtrOutput)
+}
+
+// Kafka topics list
+func (o KafkaAzureSynapseAnalyticsSinkConnectorInfoOutput) Topics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v KafkaAzureSynapseAnalyticsSinkConnectorInfo) []string { return v.Topics }).(pulumi.StringArrayOutput)
+}
+
+// Kafka topics directory
+func (o KafkaAzureSynapseAnalyticsSinkConnectorInfoOutput) TopicsDir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureSynapseAnalyticsSinkConnectorInfo) *string { return v.TopicsDir }).(pulumi.StringPtrOutput)
+}
+
+type KafkaAzureSynapseAnalyticsSinkConnectorInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (KafkaAzureSynapseAnalyticsSinkConnectorInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KafkaAzureSynapseAnalyticsSinkConnectorInfo)(nil)).Elem()
+}
+
+func (o KafkaAzureSynapseAnalyticsSinkConnectorInfoPtrOutput) ToKafkaAzureSynapseAnalyticsSinkConnectorInfoPtrOutput() KafkaAzureSynapseAnalyticsSinkConnectorInfoPtrOutput {
+	return o
+}
+
+func (o KafkaAzureSynapseAnalyticsSinkConnectorInfoPtrOutput) ToKafkaAzureSynapseAnalyticsSinkConnectorInfoPtrOutputWithContext(ctx context.Context) KafkaAzureSynapseAnalyticsSinkConnectorInfoPtrOutput {
+	return o
+}
+
+func (o KafkaAzureSynapseAnalyticsSinkConnectorInfoPtrOutput) Elem() KafkaAzureSynapseAnalyticsSinkConnectorInfoOutput {
+	return o.ApplyT(func(v *KafkaAzureSynapseAnalyticsSinkConnectorInfo) KafkaAzureSynapseAnalyticsSinkConnectorInfo {
+		if v != nil {
+			return *v
+		}
+		var ret KafkaAzureSynapseAnalyticsSinkConnectorInfo
+		return ret
+	}).(KafkaAzureSynapseAnalyticsSinkConnectorInfoOutput)
+}
+
+// Kafka API Key
+func (o KafkaAzureSynapseAnalyticsSinkConnectorInfoPtrOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureSynapseAnalyticsSinkConnectorInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApiKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kafka API Key Secret
+func (o KafkaAzureSynapseAnalyticsSinkConnectorInfoPtrOutput) ApiSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureSynapseAnalyticsSinkConnectorInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApiSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kafka Auth Type
+func (o KafkaAzureSynapseAnalyticsSinkConnectorInfoPtrOutput) AuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureSynapseAnalyticsSinkConnectorInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Flush size
+func (o KafkaAzureSynapseAnalyticsSinkConnectorInfoPtrOutput) FlushSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureSynapseAnalyticsSinkConnectorInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FlushSize
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kafka Input Data Format Type
+func (o KafkaAzureSynapseAnalyticsSinkConnectorInfoPtrOutput) InputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureSynapseAnalyticsSinkConnectorInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InputFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// Maximum Tasks
+func (o KafkaAzureSynapseAnalyticsSinkConnectorInfoPtrOutput) MaxTasks() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureSynapseAnalyticsSinkConnectorInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxTasks
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kafka Output Data Format Type
+func (o KafkaAzureSynapseAnalyticsSinkConnectorInfoPtrOutput) OutputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureSynapseAnalyticsSinkConnectorInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OutputFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// Partner Connector type.
+// Expected value is 'KafkaAzureSynapseAnalyticsSink'.
+func (o KafkaAzureSynapseAnalyticsSinkConnectorInfoPtrOutput) PartnerConnectorType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureSynapseAnalyticsSinkConnectorInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PartnerConnectorType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kafka Service Account Id
+func (o KafkaAzureSynapseAnalyticsSinkConnectorInfoPtrOutput) ServiceAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureSynapseAnalyticsSinkConnectorInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccountId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Time Interval
+func (o KafkaAzureSynapseAnalyticsSinkConnectorInfoPtrOutput) TimeInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureSynapseAnalyticsSinkConnectorInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeInterval
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kafka topics list
+func (o KafkaAzureSynapseAnalyticsSinkConnectorInfoPtrOutput) Topics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *KafkaAzureSynapseAnalyticsSinkConnectorInfo) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Topics
+	}).(pulumi.StringArrayOutput)
+}
+
+// Kafka topics directory
+func (o KafkaAzureSynapseAnalyticsSinkConnectorInfoPtrOutput) TopicsDir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureSynapseAnalyticsSinkConnectorInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TopicsDir
+	}).(pulumi.StringPtrOutput)
+}
+
+// The partner connector type is KafkaAzureSynapseAnalyticsSink
+type KafkaAzureSynapseAnalyticsSinkConnectorInfoResponse struct {
+	// Kafka API Key
+	ApiKey *string `pulumi:"apiKey"`
+	// Kafka API Key Secret
+	ApiSecret *string `pulumi:"apiSecret"`
+	// Kafka Auth Type
+	AuthType *string `pulumi:"authType"`
+	// Flush size
+	FlushSize *string `pulumi:"flushSize"`
+	// Kafka Input Data Format Type
+	InputFormat *string `pulumi:"inputFormat"`
+	// Maximum Tasks
+	MaxTasks *string `pulumi:"maxTasks"`
+	// Kafka Output Data Format Type
+	OutputFormat *string `pulumi:"outputFormat"`
+	// Partner Connector type.
+	// Expected value is 'KafkaAzureSynapseAnalyticsSink'.
+	PartnerConnectorType string `pulumi:"partnerConnectorType"`
+	// Kafka Service Account Id
+	ServiceAccountId *string `pulumi:"serviceAccountId"`
+	// Time Interval
+	TimeInterval *string `pulumi:"timeInterval"`
+	// Kafka topics list
+	Topics []string `pulumi:"topics"`
+	// Kafka topics directory
+	TopicsDir *string `pulumi:"topicsDir"`
+}
+
+// The partner connector type is KafkaAzureSynapseAnalyticsSink
+type KafkaAzureSynapseAnalyticsSinkConnectorInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (KafkaAzureSynapseAnalyticsSinkConnectorInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KafkaAzureSynapseAnalyticsSinkConnectorInfoResponse)(nil)).Elem()
+}
+
+func (o KafkaAzureSynapseAnalyticsSinkConnectorInfoResponseOutput) ToKafkaAzureSynapseAnalyticsSinkConnectorInfoResponseOutput() KafkaAzureSynapseAnalyticsSinkConnectorInfoResponseOutput {
+	return o
+}
+
+func (o KafkaAzureSynapseAnalyticsSinkConnectorInfoResponseOutput) ToKafkaAzureSynapseAnalyticsSinkConnectorInfoResponseOutputWithContext(ctx context.Context) KafkaAzureSynapseAnalyticsSinkConnectorInfoResponseOutput {
+	return o
+}
+
+// Kafka API Key
+func (o KafkaAzureSynapseAnalyticsSinkConnectorInfoResponseOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureSynapseAnalyticsSinkConnectorInfoResponse) *string { return v.ApiKey }).(pulumi.StringPtrOutput)
+}
+
+// Kafka API Key Secret
+func (o KafkaAzureSynapseAnalyticsSinkConnectorInfoResponseOutput) ApiSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureSynapseAnalyticsSinkConnectorInfoResponse) *string { return v.ApiSecret }).(pulumi.StringPtrOutput)
+}
+
+// Kafka Auth Type
+func (o KafkaAzureSynapseAnalyticsSinkConnectorInfoResponseOutput) AuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureSynapseAnalyticsSinkConnectorInfoResponse) *string { return v.AuthType }).(pulumi.StringPtrOutput)
+}
+
+// Flush size
+func (o KafkaAzureSynapseAnalyticsSinkConnectorInfoResponseOutput) FlushSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureSynapseAnalyticsSinkConnectorInfoResponse) *string { return v.FlushSize }).(pulumi.StringPtrOutput)
+}
+
+// Kafka Input Data Format Type
+func (o KafkaAzureSynapseAnalyticsSinkConnectorInfoResponseOutput) InputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureSynapseAnalyticsSinkConnectorInfoResponse) *string { return v.InputFormat }).(pulumi.StringPtrOutput)
+}
+
+// Maximum Tasks
+func (o KafkaAzureSynapseAnalyticsSinkConnectorInfoResponseOutput) MaxTasks() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureSynapseAnalyticsSinkConnectorInfoResponse) *string { return v.MaxTasks }).(pulumi.StringPtrOutput)
+}
+
+// Kafka Output Data Format Type
+func (o KafkaAzureSynapseAnalyticsSinkConnectorInfoResponseOutput) OutputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureSynapseAnalyticsSinkConnectorInfoResponse) *string { return v.OutputFormat }).(pulumi.StringPtrOutput)
+}
+
+// Partner Connector type.
+// Expected value is 'KafkaAzureSynapseAnalyticsSink'.
+func (o KafkaAzureSynapseAnalyticsSinkConnectorInfoResponseOutput) PartnerConnectorType() pulumi.StringOutput {
+	return o.ApplyT(func(v KafkaAzureSynapseAnalyticsSinkConnectorInfoResponse) string { return v.PartnerConnectorType }).(pulumi.StringOutput)
+}
+
+// Kafka Service Account Id
+func (o KafkaAzureSynapseAnalyticsSinkConnectorInfoResponseOutput) ServiceAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureSynapseAnalyticsSinkConnectorInfoResponse) *string { return v.ServiceAccountId }).(pulumi.StringPtrOutput)
+}
+
+// Time Interval
+func (o KafkaAzureSynapseAnalyticsSinkConnectorInfoResponseOutput) TimeInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureSynapseAnalyticsSinkConnectorInfoResponse) *string { return v.TimeInterval }).(pulumi.StringPtrOutput)
+}
+
+// Kafka topics list
+func (o KafkaAzureSynapseAnalyticsSinkConnectorInfoResponseOutput) Topics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v KafkaAzureSynapseAnalyticsSinkConnectorInfoResponse) []string { return v.Topics }).(pulumi.StringArrayOutput)
+}
+
+// Kafka topics directory
+func (o KafkaAzureSynapseAnalyticsSinkConnectorInfoResponseOutput) TopicsDir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaAzureSynapseAnalyticsSinkConnectorInfoResponse) *string { return v.TopicsDir }).(pulumi.StringPtrOutput)
+}
+
+type KafkaAzureSynapseAnalyticsSinkConnectorInfoResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (KafkaAzureSynapseAnalyticsSinkConnectorInfoResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KafkaAzureSynapseAnalyticsSinkConnectorInfoResponse)(nil)).Elem()
+}
+
+func (o KafkaAzureSynapseAnalyticsSinkConnectorInfoResponsePtrOutput) ToKafkaAzureSynapseAnalyticsSinkConnectorInfoResponsePtrOutput() KafkaAzureSynapseAnalyticsSinkConnectorInfoResponsePtrOutput {
+	return o
+}
+
+func (o KafkaAzureSynapseAnalyticsSinkConnectorInfoResponsePtrOutput) ToKafkaAzureSynapseAnalyticsSinkConnectorInfoResponsePtrOutputWithContext(ctx context.Context) KafkaAzureSynapseAnalyticsSinkConnectorInfoResponsePtrOutput {
+	return o
+}
+
+func (o KafkaAzureSynapseAnalyticsSinkConnectorInfoResponsePtrOutput) Elem() KafkaAzureSynapseAnalyticsSinkConnectorInfoResponseOutput {
+	return o.ApplyT(func(v *KafkaAzureSynapseAnalyticsSinkConnectorInfoResponse) KafkaAzureSynapseAnalyticsSinkConnectorInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret KafkaAzureSynapseAnalyticsSinkConnectorInfoResponse
+		return ret
+	}).(KafkaAzureSynapseAnalyticsSinkConnectorInfoResponseOutput)
+}
+
+// Kafka API Key
+func (o KafkaAzureSynapseAnalyticsSinkConnectorInfoResponsePtrOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureSynapseAnalyticsSinkConnectorInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApiKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kafka API Key Secret
+func (o KafkaAzureSynapseAnalyticsSinkConnectorInfoResponsePtrOutput) ApiSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureSynapseAnalyticsSinkConnectorInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApiSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kafka Auth Type
+func (o KafkaAzureSynapseAnalyticsSinkConnectorInfoResponsePtrOutput) AuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureSynapseAnalyticsSinkConnectorInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Flush size
+func (o KafkaAzureSynapseAnalyticsSinkConnectorInfoResponsePtrOutput) FlushSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureSynapseAnalyticsSinkConnectorInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FlushSize
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kafka Input Data Format Type
+func (o KafkaAzureSynapseAnalyticsSinkConnectorInfoResponsePtrOutput) InputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureSynapseAnalyticsSinkConnectorInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InputFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// Maximum Tasks
+func (o KafkaAzureSynapseAnalyticsSinkConnectorInfoResponsePtrOutput) MaxTasks() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureSynapseAnalyticsSinkConnectorInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxTasks
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kafka Output Data Format Type
+func (o KafkaAzureSynapseAnalyticsSinkConnectorInfoResponsePtrOutput) OutputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureSynapseAnalyticsSinkConnectorInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OutputFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// Partner Connector type.
+// Expected value is 'KafkaAzureSynapseAnalyticsSink'.
+func (o KafkaAzureSynapseAnalyticsSinkConnectorInfoResponsePtrOutput) PartnerConnectorType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureSynapseAnalyticsSinkConnectorInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PartnerConnectorType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kafka Service Account Id
+func (o KafkaAzureSynapseAnalyticsSinkConnectorInfoResponsePtrOutput) ServiceAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureSynapseAnalyticsSinkConnectorInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccountId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Time Interval
+func (o KafkaAzureSynapseAnalyticsSinkConnectorInfoResponsePtrOutput) TimeInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureSynapseAnalyticsSinkConnectorInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeInterval
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kafka topics list
+func (o KafkaAzureSynapseAnalyticsSinkConnectorInfoResponsePtrOutput) Topics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *KafkaAzureSynapseAnalyticsSinkConnectorInfoResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Topics
+	}).(pulumi.StringArrayOutput)
+}
+
+// Kafka topics directory
+func (o KafkaAzureSynapseAnalyticsSinkConnectorInfoResponsePtrOutput) TopicsDir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaAzureSynapseAnalyticsSinkConnectorInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TopicsDir
+	}).(pulumi.StringPtrOutput)
 }
 
 // Metadata of the data record
@@ -1620,6 +6925,1434 @@ func (o RoleBindingRecordResponseArrayOutput) Index(i pulumi.IntInput) RoleBindi
 	}).(RoleBindingRecordResponseOutput)
 }
 
+// The network associated with this object
+type SCClusterByokEntity struct {
+	// ID of the referred resource
+	Id *string `pulumi:"id"`
+	// API URL for accessing or modifying the referred object
+	Related *string `pulumi:"related"`
+	// CRN reference to the referred resource
+	ResourceName *string `pulumi:"resourceName"`
+}
+
+// SCClusterByokEntityInput is an input type that accepts SCClusterByokEntityArgs and SCClusterByokEntityOutput values.
+// You can construct a concrete instance of `SCClusterByokEntityInput` via:
+//
+//	SCClusterByokEntityArgs{...}
+type SCClusterByokEntityInput interface {
+	pulumi.Input
+
+	ToSCClusterByokEntityOutput() SCClusterByokEntityOutput
+	ToSCClusterByokEntityOutputWithContext(context.Context) SCClusterByokEntityOutput
+}
+
+// The network associated with this object
+type SCClusterByokEntityArgs struct {
+	// ID of the referred resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// API URL for accessing or modifying the referred object
+	Related pulumi.StringPtrInput `pulumi:"related"`
+	// CRN reference to the referred resource
+	ResourceName pulumi.StringPtrInput `pulumi:"resourceName"`
+}
+
+func (SCClusterByokEntityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SCClusterByokEntity)(nil)).Elem()
+}
+
+func (i SCClusterByokEntityArgs) ToSCClusterByokEntityOutput() SCClusterByokEntityOutput {
+	return i.ToSCClusterByokEntityOutputWithContext(context.Background())
+}
+
+func (i SCClusterByokEntityArgs) ToSCClusterByokEntityOutputWithContext(ctx context.Context) SCClusterByokEntityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SCClusterByokEntityOutput)
+}
+
+func (i SCClusterByokEntityArgs) ToSCClusterByokEntityPtrOutput() SCClusterByokEntityPtrOutput {
+	return i.ToSCClusterByokEntityPtrOutputWithContext(context.Background())
+}
+
+func (i SCClusterByokEntityArgs) ToSCClusterByokEntityPtrOutputWithContext(ctx context.Context) SCClusterByokEntityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SCClusterByokEntityOutput).ToSCClusterByokEntityPtrOutputWithContext(ctx)
+}
+
+// SCClusterByokEntityPtrInput is an input type that accepts SCClusterByokEntityArgs, SCClusterByokEntityPtr and SCClusterByokEntityPtrOutput values.
+// You can construct a concrete instance of `SCClusterByokEntityPtrInput` via:
+//
+//	        SCClusterByokEntityArgs{...}
+//
+//	or:
+//
+//	        nil
+type SCClusterByokEntityPtrInput interface {
+	pulumi.Input
+
+	ToSCClusterByokEntityPtrOutput() SCClusterByokEntityPtrOutput
+	ToSCClusterByokEntityPtrOutputWithContext(context.Context) SCClusterByokEntityPtrOutput
+}
+
+type scclusterByokEntityPtrType SCClusterByokEntityArgs
+
+func SCClusterByokEntityPtr(v *SCClusterByokEntityArgs) SCClusterByokEntityPtrInput {
+	return (*scclusterByokEntityPtrType)(v)
+}
+
+func (*scclusterByokEntityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SCClusterByokEntity)(nil)).Elem()
+}
+
+func (i *scclusterByokEntityPtrType) ToSCClusterByokEntityPtrOutput() SCClusterByokEntityPtrOutput {
+	return i.ToSCClusterByokEntityPtrOutputWithContext(context.Background())
+}
+
+func (i *scclusterByokEntityPtrType) ToSCClusterByokEntityPtrOutputWithContext(ctx context.Context) SCClusterByokEntityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SCClusterByokEntityPtrOutput)
+}
+
+// The network associated with this object
+type SCClusterByokEntityOutput struct{ *pulumi.OutputState }
+
+func (SCClusterByokEntityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SCClusterByokEntity)(nil)).Elem()
+}
+
+func (o SCClusterByokEntityOutput) ToSCClusterByokEntityOutput() SCClusterByokEntityOutput {
+	return o
+}
+
+func (o SCClusterByokEntityOutput) ToSCClusterByokEntityOutputWithContext(ctx context.Context) SCClusterByokEntityOutput {
+	return o
+}
+
+func (o SCClusterByokEntityOutput) ToSCClusterByokEntityPtrOutput() SCClusterByokEntityPtrOutput {
+	return o.ToSCClusterByokEntityPtrOutputWithContext(context.Background())
+}
+
+func (o SCClusterByokEntityOutput) ToSCClusterByokEntityPtrOutputWithContext(ctx context.Context) SCClusterByokEntityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SCClusterByokEntity) *SCClusterByokEntity {
+		return &v
+	}).(SCClusterByokEntityPtrOutput)
+}
+
+// ID of the referred resource
+func (o SCClusterByokEntityOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SCClusterByokEntity) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// API URL for accessing or modifying the referred object
+func (o SCClusterByokEntityOutput) Related() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SCClusterByokEntity) *string { return v.Related }).(pulumi.StringPtrOutput)
+}
+
+// CRN reference to the referred resource
+func (o SCClusterByokEntityOutput) ResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SCClusterByokEntity) *string { return v.ResourceName }).(pulumi.StringPtrOutput)
+}
+
+type SCClusterByokEntityPtrOutput struct{ *pulumi.OutputState }
+
+func (SCClusterByokEntityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SCClusterByokEntity)(nil)).Elem()
+}
+
+func (o SCClusterByokEntityPtrOutput) ToSCClusterByokEntityPtrOutput() SCClusterByokEntityPtrOutput {
+	return o
+}
+
+func (o SCClusterByokEntityPtrOutput) ToSCClusterByokEntityPtrOutputWithContext(ctx context.Context) SCClusterByokEntityPtrOutput {
+	return o
+}
+
+func (o SCClusterByokEntityPtrOutput) Elem() SCClusterByokEntityOutput {
+	return o.ApplyT(func(v *SCClusterByokEntity) SCClusterByokEntity {
+		if v != nil {
+			return *v
+		}
+		var ret SCClusterByokEntity
+		return ret
+	}).(SCClusterByokEntityOutput)
+}
+
+// ID of the referred resource
+func (o SCClusterByokEntityPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SCClusterByokEntity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// API URL for accessing or modifying the referred object
+func (o SCClusterByokEntityPtrOutput) Related() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SCClusterByokEntity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Related
+	}).(pulumi.StringPtrOutput)
+}
+
+// CRN reference to the referred resource
+func (o SCClusterByokEntityPtrOutput) ResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SCClusterByokEntity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The network associated with this object
+type SCClusterByokEntityResponse struct {
+	// ID of the referred resource
+	Id *string `pulumi:"id"`
+	// API URL for accessing or modifying the referred object
+	Related *string `pulumi:"related"`
+	// CRN reference to the referred resource
+	ResourceName *string `pulumi:"resourceName"`
+}
+
+// The network associated with this object
+type SCClusterByokEntityResponseOutput struct{ *pulumi.OutputState }
+
+func (SCClusterByokEntityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SCClusterByokEntityResponse)(nil)).Elem()
+}
+
+func (o SCClusterByokEntityResponseOutput) ToSCClusterByokEntityResponseOutput() SCClusterByokEntityResponseOutput {
+	return o
+}
+
+func (o SCClusterByokEntityResponseOutput) ToSCClusterByokEntityResponseOutputWithContext(ctx context.Context) SCClusterByokEntityResponseOutput {
+	return o
+}
+
+// ID of the referred resource
+func (o SCClusterByokEntityResponseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SCClusterByokEntityResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// API URL for accessing or modifying the referred object
+func (o SCClusterByokEntityResponseOutput) Related() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SCClusterByokEntityResponse) *string { return v.Related }).(pulumi.StringPtrOutput)
+}
+
+// CRN reference to the referred resource
+func (o SCClusterByokEntityResponseOutput) ResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SCClusterByokEntityResponse) *string { return v.ResourceName }).(pulumi.StringPtrOutput)
+}
+
+type SCClusterByokEntityResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SCClusterByokEntityResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SCClusterByokEntityResponse)(nil)).Elem()
+}
+
+func (o SCClusterByokEntityResponsePtrOutput) ToSCClusterByokEntityResponsePtrOutput() SCClusterByokEntityResponsePtrOutput {
+	return o
+}
+
+func (o SCClusterByokEntityResponsePtrOutput) ToSCClusterByokEntityResponsePtrOutputWithContext(ctx context.Context) SCClusterByokEntityResponsePtrOutput {
+	return o
+}
+
+func (o SCClusterByokEntityResponsePtrOutput) Elem() SCClusterByokEntityResponseOutput {
+	return o.ApplyT(func(v *SCClusterByokEntityResponse) SCClusterByokEntityResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SCClusterByokEntityResponse
+		return ret
+	}).(SCClusterByokEntityResponseOutput)
+}
+
+// ID of the referred resource
+func (o SCClusterByokEntityResponsePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SCClusterByokEntityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// API URL for accessing or modifying the referred object
+func (o SCClusterByokEntityResponsePtrOutput) Related() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SCClusterByokEntityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Related
+	}).(pulumi.StringPtrOutput)
+}
+
+// CRN reference to the referred resource
+func (o SCClusterByokEntityResponsePtrOutput) ResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SCClusterByokEntityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The environment or the network to which cluster belongs
+type SCClusterNetworkEnvironmentEntity struct {
+	// Environment of the referred resource
+	Environment *string `pulumi:"environment"`
+	// ID of the referred resource
+	Id *string `pulumi:"id"`
+	// API URL for accessing or modifying the referred object
+	Related *string `pulumi:"related"`
+	// CRN reference to the referred resource
+	ResourceName *string `pulumi:"resourceName"`
+}
+
+// SCClusterNetworkEnvironmentEntityInput is an input type that accepts SCClusterNetworkEnvironmentEntityArgs and SCClusterNetworkEnvironmentEntityOutput values.
+// You can construct a concrete instance of `SCClusterNetworkEnvironmentEntityInput` via:
+//
+//	SCClusterNetworkEnvironmentEntityArgs{...}
+type SCClusterNetworkEnvironmentEntityInput interface {
+	pulumi.Input
+
+	ToSCClusterNetworkEnvironmentEntityOutput() SCClusterNetworkEnvironmentEntityOutput
+	ToSCClusterNetworkEnvironmentEntityOutputWithContext(context.Context) SCClusterNetworkEnvironmentEntityOutput
+}
+
+// The environment or the network to which cluster belongs
+type SCClusterNetworkEnvironmentEntityArgs struct {
+	// Environment of the referred resource
+	Environment pulumi.StringPtrInput `pulumi:"environment"`
+	// ID of the referred resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// API URL for accessing or modifying the referred object
+	Related pulumi.StringPtrInput `pulumi:"related"`
+	// CRN reference to the referred resource
+	ResourceName pulumi.StringPtrInput `pulumi:"resourceName"`
+}
+
+func (SCClusterNetworkEnvironmentEntityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SCClusterNetworkEnvironmentEntity)(nil)).Elem()
+}
+
+func (i SCClusterNetworkEnvironmentEntityArgs) ToSCClusterNetworkEnvironmentEntityOutput() SCClusterNetworkEnvironmentEntityOutput {
+	return i.ToSCClusterNetworkEnvironmentEntityOutputWithContext(context.Background())
+}
+
+func (i SCClusterNetworkEnvironmentEntityArgs) ToSCClusterNetworkEnvironmentEntityOutputWithContext(ctx context.Context) SCClusterNetworkEnvironmentEntityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SCClusterNetworkEnvironmentEntityOutput)
+}
+
+func (i SCClusterNetworkEnvironmentEntityArgs) ToSCClusterNetworkEnvironmentEntityPtrOutput() SCClusterNetworkEnvironmentEntityPtrOutput {
+	return i.ToSCClusterNetworkEnvironmentEntityPtrOutputWithContext(context.Background())
+}
+
+func (i SCClusterNetworkEnvironmentEntityArgs) ToSCClusterNetworkEnvironmentEntityPtrOutputWithContext(ctx context.Context) SCClusterNetworkEnvironmentEntityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SCClusterNetworkEnvironmentEntityOutput).ToSCClusterNetworkEnvironmentEntityPtrOutputWithContext(ctx)
+}
+
+// SCClusterNetworkEnvironmentEntityPtrInput is an input type that accepts SCClusterNetworkEnvironmentEntityArgs, SCClusterNetworkEnvironmentEntityPtr and SCClusterNetworkEnvironmentEntityPtrOutput values.
+// You can construct a concrete instance of `SCClusterNetworkEnvironmentEntityPtrInput` via:
+//
+//	        SCClusterNetworkEnvironmentEntityArgs{...}
+//
+//	or:
+//
+//	        nil
+type SCClusterNetworkEnvironmentEntityPtrInput interface {
+	pulumi.Input
+
+	ToSCClusterNetworkEnvironmentEntityPtrOutput() SCClusterNetworkEnvironmentEntityPtrOutput
+	ToSCClusterNetworkEnvironmentEntityPtrOutputWithContext(context.Context) SCClusterNetworkEnvironmentEntityPtrOutput
+}
+
+type scclusterNetworkEnvironmentEntityPtrType SCClusterNetworkEnvironmentEntityArgs
+
+func SCClusterNetworkEnvironmentEntityPtr(v *SCClusterNetworkEnvironmentEntityArgs) SCClusterNetworkEnvironmentEntityPtrInput {
+	return (*scclusterNetworkEnvironmentEntityPtrType)(v)
+}
+
+func (*scclusterNetworkEnvironmentEntityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SCClusterNetworkEnvironmentEntity)(nil)).Elem()
+}
+
+func (i *scclusterNetworkEnvironmentEntityPtrType) ToSCClusterNetworkEnvironmentEntityPtrOutput() SCClusterNetworkEnvironmentEntityPtrOutput {
+	return i.ToSCClusterNetworkEnvironmentEntityPtrOutputWithContext(context.Background())
+}
+
+func (i *scclusterNetworkEnvironmentEntityPtrType) ToSCClusterNetworkEnvironmentEntityPtrOutputWithContext(ctx context.Context) SCClusterNetworkEnvironmentEntityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SCClusterNetworkEnvironmentEntityPtrOutput)
+}
+
+// The environment or the network to which cluster belongs
+type SCClusterNetworkEnvironmentEntityOutput struct{ *pulumi.OutputState }
+
+func (SCClusterNetworkEnvironmentEntityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SCClusterNetworkEnvironmentEntity)(nil)).Elem()
+}
+
+func (o SCClusterNetworkEnvironmentEntityOutput) ToSCClusterNetworkEnvironmentEntityOutput() SCClusterNetworkEnvironmentEntityOutput {
+	return o
+}
+
+func (o SCClusterNetworkEnvironmentEntityOutput) ToSCClusterNetworkEnvironmentEntityOutputWithContext(ctx context.Context) SCClusterNetworkEnvironmentEntityOutput {
+	return o
+}
+
+func (o SCClusterNetworkEnvironmentEntityOutput) ToSCClusterNetworkEnvironmentEntityPtrOutput() SCClusterNetworkEnvironmentEntityPtrOutput {
+	return o.ToSCClusterNetworkEnvironmentEntityPtrOutputWithContext(context.Background())
+}
+
+func (o SCClusterNetworkEnvironmentEntityOutput) ToSCClusterNetworkEnvironmentEntityPtrOutputWithContext(ctx context.Context) SCClusterNetworkEnvironmentEntityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SCClusterNetworkEnvironmentEntity) *SCClusterNetworkEnvironmentEntity {
+		return &v
+	}).(SCClusterNetworkEnvironmentEntityPtrOutput)
+}
+
+// Environment of the referred resource
+func (o SCClusterNetworkEnvironmentEntityOutput) Environment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SCClusterNetworkEnvironmentEntity) *string { return v.Environment }).(pulumi.StringPtrOutput)
+}
+
+// ID of the referred resource
+func (o SCClusterNetworkEnvironmentEntityOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SCClusterNetworkEnvironmentEntity) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// API URL for accessing or modifying the referred object
+func (o SCClusterNetworkEnvironmentEntityOutput) Related() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SCClusterNetworkEnvironmentEntity) *string { return v.Related }).(pulumi.StringPtrOutput)
+}
+
+// CRN reference to the referred resource
+func (o SCClusterNetworkEnvironmentEntityOutput) ResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SCClusterNetworkEnvironmentEntity) *string { return v.ResourceName }).(pulumi.StringPtrOutput)
+}
+
+type SCClusterNetworkEnvironmentEntityPtrOutput struct{ *pulumi.OutputState }
+
+func (SCClusterNetworkEnvironmentEntityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SCClusterNetworkEnvironmentEntity)(nil)).Elem()
+}
+
+func (o SCClusterNetworkEnvironmentEntityPtrOutput) ToSCClusterNetworkEnvironmentEntityPtrOutput() SCClusterNetworkEnvironmentEntityPtrOutput {
+	return o
+}
+
+func (o SCClusterNetworkEnvironmentEntityPtrOutput) ToSCClusterNetworkEnvironmentEntityPtrOutputWithContext(ctx context.Context) SCClusterNetworkEnvironmentEntityPtrOutput {
+	return o
+}
+
+func (o SCClusterNetworkEnvironmentEntityPtrOutput) Elem() SCClusterNetworkEnvironmentEntityOutput {
+	return o.ApplyT(func(v *SCClusterNetworkEnvironmentEntity) SCClusterNetworkEnvironmentEntity {
+		if v != nil {
+			return *v
+		}
+		var ret SCClusterNetworkEnvironmentEntity
+		return ret
+	}).(SCClusterNetworkEnvironmentEntityOutput)
+}
+
+// Environment of the referred resource
+func (o SCClusterNetworkEnvironmentEntityPtrOutput) Environment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SCClusterNetworkEnvironmentEntity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Environment
+	}).(pulumi.StringPtrOutput)
+}
+
+// ID of the referred resource
+func (o SCClusterNetworkEnvironmentEntityPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SCClusterNetworkEnvironmentEntity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// API URL for accessing or modifying the referred object
+func (o SCClusterNetworkEnvironmentEntityPtrOutput) Related() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SCClusterNetworkEnvironmentEntity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Related
+	}).(pulumi.StringPtrOutput)
+}
+
+// CRN reference to the referred resource
+func (o SCClusterNetworkEnvironmentEntityPtrOutput) ResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SCClusterNetworkEnvironmentEntity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The environment or the network to which cluster belongs
+type SCClusterNetworkEnvironmentEntityResponse struct {
+	// Environment of the referred resource
+	Environment *string `pulumi:"environment"`
+	// ID of the referred resource
+	Id *string `pulumi:"id"`
+	// API URL for accessing or modifying the referred object
+	Related *string `pulumi:"related"`
+	// CRN reference to the referred resource
+	ResourceName *string `pulumi:"resourceName"`
+}
+
+// The environment or the network to which cluster belongs
+type SCClusterNetworkEnvironmentEntityResponseOutput struct{ *pulumi.OutputState }
+
+func (SCClusterNetworkEnvironmentEntityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SCClusterNetworkEnvironmentEntityResponse)(nil)).Elem()
+}
+
+func (o SCClusterNetworkEnvironmentEntityResponseOutput) ToSCClusterNetworkEnvironmentEntityResponseOutput() SCClusterNetworkEnvironmentEntityResponseOutput {
+	return o
+}
+
+func (o SCClusterNetworkEnvironmentEntityResponseOutput) ToSCClusterNetworkEnvironmentEntityResponseOutputWithContext(ctx context.Context) SCClusterNetworkEnvironmentEntityResponseOutput {
+	return o
+}
+
+// Environment of the referred resource
+func (o SCClusterNetworkEnvironmentEntityResponseOutput) Environment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SCClusterNetworkEnvironmentEntityResponse) *string { return v.Environment }).(pulumi.StringPtrOutput)
+}
+
+// ID of the referred resource
+func (o SCClusterNetworkEnvironmentEntityResponseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SCClusterNetworkEnvironmentEntityResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// API URL for accessing or modifying the referred object
+func (o SCClusterNetworkEnvironmentEntityResponseOutput) Related() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SCClusterNetworkEnvironmentEntityResponse) *string { return v.Related }).(pulumi.StringPtrOutput)
+}
+
+// CRN reference to the referred resource
+func (o SCClusterNetworkEnvironmentEntityResponseOutput) ResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SCClusterNetworkEnvironmentEntityResponse) *string { return v.ResourceName }).(pulumi.StringPtrOutput)
+}
+
+type SCClusterNetworkEnvironmentEntityResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SCClusterNetworkEnvironmentEntityResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SCClusterNetworkEnvironmentEntityResponse)(nil)).Elem()
+}
+
+func (o SCClusterNetworkEnvironmentEntityResponsePtrOutput) ToSCClusterNetworkEnvironmentEntityResponsePtrOutput() SCClusterNetworkEnvironmentEntityResponsePtrOutput {
+	return o
+}
+
+func (o SCClusterNetworkEnvironmentEntityResponsePtrOutput) ToSCClusterNetworkEnvironmentEntityResponsePtrOutputWithContext(ctx context.Context) SCClusterNetworkEnvironmentEntityResponsePtrOutput {
+	return o
+}
+
+func (o SCClusterNetworkEnvironmentEntityResponsePtrOutput) Elem() SCClusterNetworkEnvironmentEntityResponseOutput {
+	return o.ApplyT(func(v *SCClusterNetworkEnvironmentEntityResponse) SCClusterNetworkEnvironmentEntityResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SCClusterNetworkEnvironmentEntityResponse
+		return ret
+	}).(SCClusterNetworkEnvironmentEntityResponseOutput)
+}
+
+// Environment of the referred resource
+func (o SCClusterNetworkEnvironmentEntityResponsePtrOutput) Environment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SCClusterNetworkEnvironmentEntityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Environment
+	}).(pulumi.StringPtrOutput)
+}
+
+// ID of the referred resource
+func (o SCClusterNetworkEnvironmentEntityResponsePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SCClusterNetworkEnvironmentEntityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// API URL for accessing or modifying the referred object
+func (o SCClusterNetworkEnvironmentEntityResponsePtrOutput) Related() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SCClusterNetworkEnvironmentEntityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Related
+	}).(pulumi.StringPtrOutput)
+}
+
+// CRN reference to the referred resource
+func (o SCClusterNetworkEnvironmentEntityResponsePtrOutput) ResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SCClusterNetworkEnvironmentEntityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Spec of the cluster record
+type SCClusterSpecEntity struct {
+	// The Kafka API cluster endpoint
+	ApiEndpoint *string `pulumi:"apiEndpoint"`
+	// The availability zone configuration of the cluster
+	Availability *string `pulumi:"availability"`
+	// Specification of the cluster byok
+	Byok *SCClusterByokEntity `pulumi:"byok"`
+	// The cloud service provider
+	Cloud *string `pulumi:"cloud"`
+	// Specification of the cluster configuration
+	Config *ClusterConfigEntity `pulumi:"config"`
+	// Specification of the cluster environment
+	Environment *SCClusterNetworkEnvironmentEntity `pulumi:"environment"`
+	// The cluster HTTP request URL.
+	HttpEndpoint *string `pulumi:"httpEndpoint"`
+	// The bootstrap endpoint used by Kafka clients to connect to the cluster
+	KafkaBootstrapEndpoint *string `pulumi:"kafkaBootstrapEndpoint"`
+	// The name of the cluster
+	Name *string `pulumi:"name"`
+	// Specification of the cluster network
+	Network *SCClusterNetworkEnvironmentEntity `pulumi:"network"`
+	// Stream governance configuration
+	Package *string `pulumi:"package"`
+	// The cloud service provider region
+	Region *string `pulumi:"region"`
+	// type of zone availability
+	Zone *string `pulumi:"zone"`
+}
+
+// SCClusterSpecEntityInput is an input type that accepts SCClusterSpecEntityArgs and SCClusterSpecEntityOutput values.
+// You can construct a concrete instance of `SCClusterSpecEntityInput` via:
+//
+//	SCClusterSpecEntityArgs{...}
+type SCClusterSpecEntityInput interface {
+	pulumi.Input
+
+	ToSCClusterSpecEntityOutput() SCClusterSpecEntityOutput
+	ToSCClusterSpecEntityOutputWithContext(context.Context) SCClusterSpecEntityOutput
+}
+
+// Spec of the cluster record
+type SCClusterSpecEntityArgs struct {
+	// The Kafka API cluster endpoint
+	ApiEndpoint pulumi.StringPtrInput `pulumi:"apiEndpoint"`
+	// The availability zone configuration of the cluster
+	Availability pulumi.StringPtrInput `pulumi:"availability"`
+	// Specification of the cluster byok
+	Byok SCClusterByokEntityPtrInput `pulumi:"byok"`
+	// The cloud service provider
+	Cloud pulumi.StringPtrInput `pulumi:"cloud"`
+	// Specification of the cluster configuration
+	Config ClusterConfigEntityPtrInput `pulumi:"config"`
+	// Specification of the cluster environment
+	Environment SCClusterNetworkEnvironmentEntityPtrInput `pulumi:"environment"`
+	// The cluster HTTP request URL.
+	HttpEndpoint pulumi.StringPtrInput `pulumi:"httpEndpoint"`
+	// The bootstrap endpoint used by Kafka clients to connect to the cluster
+	KafkaBootstrapEndpoint pulumi.StringPtrInput `pulumi:"kafkaBootstrapEndpoint"`
+	// The name of the cluster
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Specification of the cluster network
+	Network SCClusterNetworkEnvironmentEntityPtrInput `pulumi:"network"`
+	// Stream governance configuration
+	Package pulumi.StringPtrInput `pulumi:"package"`
+	// The cloud service provider region
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// type of zone availability
+	Zone pulumi.StringPtrInput `pulumi:"zone"`
+}
+
+func (SCClusterSpecEntityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SCClusterSpecEntity)(nil)).Elem()
+}
+
+func (i SCClusterSpecEntityArgs) ToSCClusterSpecEntityOutput() SCClusterSpecEntityOutput {
+	return i.ToSCClusterSpecEntityOutputWithContext(context.Background())
+}
+
+func (i SCClusterSpecEntityArgs) ToSCClusterSpecEntityOutputWithContext(ctx context.Context) SCClusterSpecEntityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SCClusterSpecEntityOutput)
+}
+
+func (i SCClusterSpecEntityArgs) ToSCClusterSpecEntityPtrOutput() SCClusterSpecEntityPtrOutput {
+	return i.ToSCClusterSpecEntityPtrOutputWithContext(context.Background())
+}
+
+func (i SCClusterSpecEntityArgs) ToSCClusterSpecEntityPtrOutputWithContext(ctx context.Context) SCClusterSpecEntityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SCClusterSpecEntityOutput).ToSCClusterSpecEntityPtrOutputWithContext(ctx)
+}
+
+// SCClusterSpecEntityPtrInput is an input type that accepts SCClusterSpecEntityArgs, SCClusterSpecEntityPtr and SCClusterSpecEntityPtrOutput values.
+// You can construct a concrete instance of `SCClusterSpecEntityPtrInput` via:
+//
+//	        SCClusterSpecEntityArgs{...}
+//
+//	or:
+//
+//	        nil
+type SCClusterSpecEntityPtrInput interface {
+	pulumi.Input
+
+	ToSCClusterSpecEntityPtrOutput() SCClusterSpecEntityPtrOutput
+	ToSCClusterSpecEntityPtrOutputWithContext(context.Context) SCClusterSpecEntityPtrOutput
+}
+
+type scclusterSpecEntityPtrType SCClusterSpecEntityArgs
+
+func SCClusterSpecEntityPtr(v *SCClusterSpecEntityArgs) SCClusterSpecEntityPtrInput {
+	return (*scclusterSpecEntityPtrType)(v)
+}
+
+func (*scclusterSpecEntityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SCClusterSpecEntity)(nil)).Elem()
+}
+
+func (i *scclusterSpecEntityPtrType) ToSCClusterSpecEntityPtrOutput() SCClusterSpecEntityPtrOutput {
+	return i.ToSCClusterSpecEntityPtrOutputWithContext(context.Background())
+}
+
+func (i *scclusterSpecEntityPtrType) ToSCClusterSpecEntityPtrOutputWithContext(ctx context.Context) SCClusterSpecEntityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SCClusterSpecEntityPtrOutput)
+}
+
+// Spec of the cluster record
+type SCClusterSpecEntityOutput struct{ *pulumi.OutputState }
+
+func (SCClusterSpecEntityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SCClusterSpecEntity)(nil)).Elem()
+}
+
+func (o SCClusterSpecEntityOutput) ToSCClusterSpecEntityOutput() SCClusterSpecEntityOutput {
+	return o
+}
+
+func (o SCClusterSpecEntityOutput) ToSCClusterSpecEntityOutputWithContext(ctx context.Context) SCClusterSpecEntityOutput {
+	return o
+}
+
+func (o SCClusterSpecEntityOutput) ToSCClusterSpecEntityPtrOutput() SCClusterSpecEntityPtrOutput {
+	return o.ToSCClusterSpecEntityPtrOutputWithContext(context.Background())
+}
+
+func (o SCClusterSpecEntityOutput) ToSCClusterSpecEntityPtrOutputWithContext(ctx context.Context) SCClusterSpecEntityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SCClusterSpecEntity) *SCClusterSpecEntity {
+		return &v
+	}).(SCClusterSpecEntityPtrOutput)
+}
+
+// The Kafka API cluster endpoint
+func (o SCClusterSpecEntityOutput) ApiEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SCClusterSpecEntity) *string { return v.ApiEndpoint }).(pulumi.StringPtrOutput)
+}
+
+// The availability zone configuration of the cluster
+func (o SCClusterSpecEntityOutput) Availability() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SCClusterSpecEntity) *string { return v.Availability }).(pulumi.StringPtrOutput)
+}
+
+// Specification of the cluster byok
+func (o SCClusterSpecEntityOutput) Byok() SCClusterByokEntityPtrOutput {
+	return o.ApplyT(func(v SCClusterSpecEntity) *SCClusterByokEntity { return v.Byok }).(SCClusterByokEntityPtrOutput)
+}
+
+// The cloud service provider
+func (o SCClusterSpecEntityOutput) Cloud() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SCClusterSpecEntity) *string { return v.Cloud }).(pulumi.StringPtrOutput)
+}
+
+// Specification of the cluster configuration
+func (o SCClusterSpecEntityOutput) Config() ClusterConfigEntityPtrOutput {
+	return o.ApplyT(func(v SCClusterSpecEntity) *ClusterConfigEntity { return v.Config }).(ClusterConfigEntityPtrOutput)
+}
+
+// Specification of the cluster environment
+func (o SCClusterSpecEntityOutput) Environment() SCClusterNetworkEnvironmentEntityPtrOutput {
+	return o.ApplyT(func(v SCClusterSpecEntity) *SCClusterNetworkEnvironmentEntity { return v.Environment }).(SCClusterNetworkEnvironmentEntityPtrOutput)
+}
+
+// The cluster HTTP request URL.
+func (o SCClusterSpecEntityOutput) HttpEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SCClusterSpecEntity) *string { return v.HttpEndpoint }).(pulumi.StringPtrOutput)
+}
+
+// The bootstrap endpoint used by Kafka clients to connect to the cluster
+func (o SCClusterSpecEntityOutput) KafkaBootstrapEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SCClusterSpecEntity) *string { return v.KafkaBootstrapEndpoint }).(pulumi.StringPtrOutput)
+}
+
+// The name of the cluster
+func (o SCClusterSpecEntityOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SCClusterSpecEntity) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Specification of the cluster network
+func (o SCClusterSpecEntityOutput) Network() SCClusterNetworkEnvironmentEntityPtrOutput {
+	return o.ApplyT(func(v SCClusterSpecEntity) *SCClusterNetworkEnvironmentEntity { return v.Network }).(SCClusterNetworkEnvironmentEntityPtrOutput)
+}
+
+// Stream governance configuration
+func (o SCClusterSpecEntityOutput) Package() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SCClusterSpecEntity) *string { return v.Package }).(pulumi.StringPtrOutput)
+}
+
+// The cloud service provider region
+func (o SCClusterSpecEntityOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SCClusterSpecEntity) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// type of zone availability
+func (o SCClusterSpecEntityOutput) Zone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SCClusterSpecEntity) *string { return v.Zone }).(pulumi.StringPtrOutput)
+}
+
+type SCClusterSpecEntityPtrOutput struct{ *pulumi.OutputState }
+
+func (SCClusterSpecEntityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SCClusterSpecEntity)(nil)).Elem()
+}
+
+func (o SCClusterSpecEntityPtrOutput) ToSCClusterSpecEntityPtrOutput() SCClusterSpecEntityPtrOutput {
+	return o
+}
+
+func (o SCClusterSpecEntityPtrOutput) ToSCClusterSpecEntityPtrOutputWithContext(ctx context.Context) SCClusterSpecEntityPtrOutput {
+	return o
+}
+
+func (o SCClusterSpecEntityPtrOutput) Elem() SCClusterSpecEntityOutput {
+	return o.ApplyT(func(v *SCClusterSpecEntity) SCClusterSpecEntity {
+		if v != nil {
+			return *v
+		}
+		var ret SCClusterSpecEntity
+		return ret
+	}).(SCClusterSpecEntityOutput)
+}
+
+// The Kafka API cluster endpoint
+func (o SCClusterSpecEntityPtrOutput) ApiEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SCClusterSpecEntity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApiEndpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// The availability zone configuration of the cluster
+func (o SCClusterSpecEntityPtrOutput) Availability() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SCClusterSpecEntity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Availability
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specification of the cluster byok
+func (o SCClusterSpecEntityPtrOutput) Byok() SCClusterByokEntityPtrOutput {
+	return o.ApplyT(func(v *SCClusterSpecEntity) *SCClusterByokEntity {
+		if v == nil {
+			return nil
+		}
+		return v.Byok
+	}).(SCClusterByokEntityPtrOutput)
+}
+
+// The cloud service provider
+func (o SCClusterSpecEntityPtrOutput) Cloud() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SCClusterSpecEntity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Cloud
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specification of the cluster configuration
+func (o SCClusterSpecEntityPtrOutput) Config() ClusterConfigEntityPtrOutput {
+	return o.ApplyT(func(v *SCClusterSpecEntity) *ClusterConfigEntity {
+		if v == nil {
+			return nil
+		}
+		return v.Config
+	}).(ClusterConfigEntityPtrOutput)
+}
+
+// Specification of the cluster environment
+func (o SCClusterSpecEntityPtrOutput) Environment() SCClusterNetworkEnvironmentEntityPtrOutput {
+	return o.ApplyT(func(v *SCClusterSpecEntity) *SCClusterNetworkEnvironmentEntity {
+		if v == nil {
+			return nil
+		}
+		return v.Environment
+	}).(SCClusterNetworkEnvironmentEntityPtrOutput)
+}
+
+// The cluster HTTP request URL.
+func (o SCClusterSpecEntityPtrOutput) HttpEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SCClusterSpecEntity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HttpEndpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// The bootstrap endpoint used by Kafka clients to connect to the cluster
+func (o SCClusterSpecEntityPtrOutput) KafkaBootstrapEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SCClusterSpecEntity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KafkaBootstrapEndpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the cluster
+func (o SCClusterSpecEntityPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SCClusterSpecEntity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specification of the cluster network
+func (o SCClusterSpecEntityPtrOutput) Network() SCClusterNetworkEnvironmentEntityPtrOutput {
+	return o.ApplyT(func(v *SCClusterSpecEntity) *SCClusterNetworkEnvironmentEntity {
+		if v == nil {
+			return nil
+		}
+		return v.Network
+	}).(SCClusterNetworkEnvironmentEntityPtrOutput)
+}
+
+// Stream governance configuration
+func (o SCClusterSpecEntityPtrOutput) Package() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SCClusterSpecEntity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Package
+	}).(pulumi.StringPtrOutput)
+}
+
+// The cloud service provider region
+func (o SCClusterSpecEntityPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SCClusterSpecEntity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+// type of zone availability
+func (o SCClusterSpecEntityPtrOutput) Zone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SCClusterSpecEntity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Zone
+	}).(pulumi.StringPtrOutput)
+}
+
+// Spec of the cluster record
+type SCClusterSpecEntityResponse struct {
+	// The Kafka API cluster endpoint
+	ApiEndpoint *string `pulumi:"apiEndpoint"`
+	// The availability zone configuration of the cluster
+	Availability *string `pulumi:"availability"`
+	// Specification of the cluster byok
+	Byok *SCClusterByokEntityResponse `pulumi:"byok"`
+	// The cloud service provider
+	Cloud *string `pulumi:"cloud"`
+	// Specification of the cluster configuration
+	Config *ClusterConfigEntityResponse `pulumi:"config"`
+	// Specification of the cluster environment
+	Environment *SCClusterNetworkEnvironmentEntityResponse `pulumi:"environment"`
+	// The cluster HTTP request URL.
+	HttpEndpoint *string `pulumi:"httpEndpoint"`
+	// The bootstrap endpoint used by Kafka clients to connect to the cluster
+	KafkaBootstrapEndpoint *string `pulumi:"kafkaBootstrapEndpoint"`
+	// The name of the cluster
+	Name *string `pulumi:"name"`
+	// Specification of the cluster network
+	Network *SCClusterNetworkEnvironmentEntityResponse `pulumi:"network"`
+	// Stream governance configuration
+	Package *string `pulumi:"package"`
+	// The cloud service provider region
+	Region *string `pulumi:"region"`
+	// type of zone availability
+	Zone *string `pulumi:"zone"`
+}
+
+// Spec of the cluster record
+type SCClusterSpecEntityResponseOutput struct{ *pulumi.OutputState }
+
+func (SCClusterSpecEntityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SCClusterSpecEntityResponse)(nil)).Elem()
+}
+
+func (o SCClusterSpecEntityResponseOutput) ToSCClusterSpecEntityResponseOutput() SCClusterSpecEntityResponseOutput {
+	return o
+}
+
+func (o SCClusterSpecEntityResponseOutput) ToSCClusterSpecEntityResponseOutputWithContext(ctx context.Context) SCClusterSpecEntityResponseOutput {
+	return o
+}
+
+// The Kafka API cluster endpoint
+func (o SCClusterSpecEntityResponseOutput) ApiEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SCClusterSpecEntityResponse) *string { return v.ApiEndpoint }).(pulumi.StringPtrOutput)
+}
+
+// The availability zone configuration of the cluster
+func (o SCClusterSpecEntityResponseOutput) Availability() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SCClusterSpecEntityResponse) *string { return v.Availability }).(pulumi.StringPtrOutput)
+}
+
+// Specification of the cluster byok
+func (o SCClusterSpecEntityResponseOutput) Byok() SCClusterByokEntityResponsePtrOutput {
+	return o.ApplyT(func(v SCClusterSpecEntityResponse) *SCClusterByokEntityResponse { return v.Byok }).(SCClusterByokEntityResponsePtrOutput)
+}
+
+// The cloud service provider
+func (o SCClusterSpecEntityResponseOutput) Cloud() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SCClusterSpecEntityResponse) *string { return v.Cloud }).(pulumi.StringPtrOutput)
+}
+
+// Specification of the cluster configuration
+func (o SCClusterSpecEntityResponseOutput) Config() ClusterConfigEntityResponsePtrOutput {
+	return o.ApplyT(func(v SCClusterSpecEntityResponse) *ClusterConfigEntityResponse { return v.Config }).(ClusterConfigEntityResponsePtrOutput)
+}
+
+// Specification of the cluster environment
+func (o SCClusterSpecEntityResponseOutput) Environment() SCClusterNetworkEnvironmentEntityResponsePtrOutput {
+	return o.ApplyT(func(v SCClusterSpecEntityResponse) *SCClusterNetworkEnvironmentEntityResponse { return v.Environment }).(SCClusterNetworkEnvironmentEntityResponsePtrOutput)
+}
+
+// The cluster HTTP request URL.
+func (o SCClusterSpecEntityResponseOutput) HttpEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SCClusterSpecEntityResponse) *string { return v.HttpEndpoint }).(pulumi.StringPtrOutput)
+}
+
+// The bootstrap endpoint used by Kafka clients to connect to the cluster
+func (o SCClusterSpecEntityResponseOutput) KafkaBootstrapEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SCClusterSpecEntityResponse) *string { return v.KafkaBootstrapEndpoint }).(pulumi.StringPtrOutput)
+}
+
+// The name of the cluster
+func (o SCClusterSpecEntityResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SCClusterSpecEntityResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Specification of the cluster network
+func (o SCClusterSpecEntityResponseOutput) Network() SCClusterNetworkEnvironmentEntityResponsePtrOutput {
+	return o.ApplyT(func(v SCClusterSpecEntityResponse) *SCClusterNetworkEnvironmentEntityResponse { return v.Network }).(SCClusterNetworkEnvironmentEntityResponsePtrOutput)
+}
+
+// Stream governance configuration
+func (o SCClusterSpecEntityResponseOutput) Package() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SCClusterSpecEntityResponse) *string { return v.Package }).(pulumi.StringPtrOutput)
+}
+
+// The cloud service provider region
+func (o SCClusterSpecEntityResponseOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SCClusterSpecEntityResponse) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// type of zone availability
+func (o SCClusterSpecEntityResponseOutput) Zone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SCClusterSpecEntityResponse) *string { return v.Zone }).(pulumi.StringPtrOutput)
+}
+
+type SCClusterSpecEntityResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SCClusterSpecEntityResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SCClusterSpecEntityResponse)(nil)).Elem()
+}
+
+func (o SCClusterSpecEntityResponsePtrOutput) ToSCClusterSpecEntityResponsePtrOutput() SCClusterSpecEntityResponsePtrOutput {
+	return o
+}
+
+func (o SCClusterSpecEntityResponsePtrOutput) ToSCClusterSpecEntityResponsePtrOutputWithContext(ctx context.Context) SCClusterSpecEntityResponsePtrOutput {
+	return o
+}
+
+func (o SCClusterSpecEntityResponsePtrOutput) Elem() SCClusterSpecEntityResponseOutput {
+	return o.ApplyT(func(v *SCClusterSpecEntityResponse) SCClusterSpecEntityResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SCClusterSpecEntityResponse
+		return ret
+	}).(SCClusterSpecEntityResponseOutput)
+}
+
+// The Kafka API cluster endpoint
+func (o SCClusterSpecEntityResponsePtrOutput) ApiEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SCClusterSpecEntityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApiEndpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// The availability zone configuration of the cluster
+func (o SCClusterSpecEntityResponsePtrOutput) Availability() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SCClusterSpecEntityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Availability
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specification of the cluster byok
+func (o SCClusterSpecEntityResponsePtrOutput) Byok() SCClusterByokEntityResponsePtrOutput {
+	return o.ApplyT(func(v *SCClusterSpecEntityResponse) *SCClusterByokEntityResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Byok
+	}).(SCClusterByokEntityResponsePtrOutput)
+}
+
+// The cloud service provider
+func (o SCClusterSpecEntityResponsePtrOutput) Cloud() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SCClusterSpecEntityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Cloud
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specification of the cluster configuration
+func (o SCClusterSpecEntityResponsePtrOutput) Config() ClusterConfigEntityResponsePtrOutput {
+	return o.ApplyT(func(v *SCClusterSpecEntityResponse) *ClusterConfigEntityResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Config
+	}).(ClusterConfigEntityResponsePtrOutput)
+}
+
+// Specification of the cluster environment
+func (o SCClusterSpecEntityResponsePtrOutput) Environment() SCClusterNetworkEnvironmentEntityResponsePtrOutput {
+	return o.ApplyT(func(v *SCClusterSpecEntityResponse) *SCClusterNetworkEnvironmentEntityResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Environment
+	}).(SCClusterNetworkEnvironmentEntityResponsePtrOutput)
+}
+
+// The cluster HTTP request URL.
+func (o SCClusterSpecEntityResponsePtrOutput) HttpEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SCClusterSpecEntityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HttpEndpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// The bootstrap endpoint used by Kafka clients to connect to the cluster
+func (o SCClusterSpecEntityResponsePtrOutput) KafkaBootstrapEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SCClusterSpecEntityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KafkaBootstrapEndpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the cluster
+func (o SCClusterSpecEntityResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SCClusterSpecEntityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specification of the cluster network
+func (o SCClusterSpecEntityResponsePtrOutput) Network() SCClusterNetworkEnvironmentEntityResponsePtrOutput {
+	return o.ApplyT(func(v *SCClusterSpecEntityResponse) *SCClusterNetworkEnvironmentEntityResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Network
+	}).(SCClusterNetworkEnvironmentEntityResponsePtrOutput)
+}
+
+// Stream governance configuration
+func (o SCClusterSpecEntityResponsePtrOutput) Package() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SCClusterSpecEntityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Package
+	}).(pulumi.StringPtrOutput)
+}
+
+// The cloud service provider region
+func (o SCClusterSpecEntityResponsePtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SCClusterSpecEntityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+// type of zone availability
+func (o SCClusterSpecEntityResponsePtrOutput) Zone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SCClusterSpecEntityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Zone
+	}).(pulumi.StringPtrOutput)
+}
+
+// Metadata of the data record
+type SCMetadataEntity struct {
+	// Created Date Time
+	CreatedTimestamp *string `pulumi:"createdTimestamp"`
+	// Deleted Date time
+	DeletedTimestamp *string `pulumi:"deletedTimestamp"`
+	// Resource name of the record
+	ResourceName *string `pulumi:"resourceName"`
+	// Self lookup url
+	Self *string `pulumi:"self"`
+	// Updated Date time
+	UpdatedTimestamp *string `pulumi:"updatedTimestamp"`
+}
+
+// SCMetadataEntityInput is an input type that accepts SCMetadataEntityArgs and SCMetadataEntityOutput values.
+// You can construct a concrete instance of `SCMetadataEntityInput` via:
+//
+//	SCMetadataEntityArgs{...}
+type SCMetadataEntityInput interface {
+	pulumi.Input
+
+	ToSCMetadataEntityOutput() SCMetadataEntityOutput
+	ToSCMetadataEntityOutputWithContext(context.Context) SCMetadataEntityOutput
+}
+
+// Metadata of the data record
+type SCMetadataEntityArgs struct {
+	// Created Date Time
+	CreatedTimestamp pulumi.StringPtrInput `pulumi:"createdTimestamp"`
+	// Deleted Date time
+	DeletedTimestamp pulumi.StringPtrInput `pulumi:"deletedTimestamp"`
+	// Resource name of the record
+	ResourceName pulumi.StringPtrInput `pulumi:"resourceName"`
+	// Self lookup url
+	Self pulumi.StringPtrInput `pulumi:"self"`
+	// Updated Date time
+	UpdatedTimestamp pulumi.StringPtrInput `pulumi:"updatedTimestamp"`
+}
+
+func (SCMetadataEntityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SCMetadataEntity)(nil)).Elem()
+}
+
+func (i SCMetadataEntityArgs) ToSCMetadataEntityOutput() SCMetadataEntityOutput {
+	return i.ToSCMetadataEntityOutputWithContext(context.Background())
+}
+
+func (i SCMetadataEntityArgs) ToSCMetadataEntityOutputWithContext(ctx context.Context) SCMetadataEntityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SCMetadataEntityOutput)
+}
+
+func (i SCMetadataEntityArgs) ToSCMetadataEntityPtrOutput() SCMetadataEntityPtrOutput {
+	return i.ToSCMetadataEntityPtrOutputWithContext(context.Background())
+}
+
+func (i SCMetadataEntityArgs) ToSCMetadataEntityPtrOutputWithContext(ctx context.Context) SCMetadataEntityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SCMetadataEntityOutput).ToSCMetadataEntityPtrOutputWithContext(ctx)
+}
+
+// SCMetadataEntityPtrInput is an input type that accepts SCMetadataEntityArgs, SCMetadataEntityPtr and SCMetadataEntityPtrOutput values.
+// You can construct a concrete instance of `SCMetadataEntityPtrInput` via:
+//
+//	        SCMetadataEntityArgs{...}
+//
+//	or:
+//
+//	        nil
+type SCMetadataEntityPtrInput interface {
+	pulumi.Input
+
+	ToSCMetadataEntityPtrOutput() SCMetadataEntityPtrOutput
+	ToSCMetadataEntityPtrOutputWithContext(context.Context) SCMetadataEntityPtrOutput
+}
+
+type scmetadataEntityPtrType SCMetadataEntityArgs
+
+func SCMetadataEntityPtr(v *SCMetadataEntityArgs) SCMetadataEntityPtrInput {
+	return (*scmetadataEntityPtrType)(v)
+}
+
+func (*scmetadataEntityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SCMetadataEntity)(nil)).Elem()
+}
+
+func (i *scmetadataEntityPtrType) ToSCMetadataEntityPtrOutput() SCMetadataEntityPtrOutput {
+	return i.ToSCMetadataEntityPtrOutputWithContext(context.Background())
+}
+
+func (i *scmetadataEntityPtrType) ToSCMetadataEntityPtrOutputWithContext(ctx context.Context) SCMetadataEntityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SCMetadataEntityPtrOutput)
+}
+
+// Metadata of the data record
+type SCMetadataEntityOutput struct{ *pulumi.OutputState }
+
+func (SCMetadataEntityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SCMetadataEntity)(nil)).Elem()
+}
+
+func (o SCMetadataEntityOutput) ToSCMetadataEntityOutput() SCMetadataEntityOutput {
+	return o
+}
+
+func (o SCMetadataEntityOutput) ToSCMetadataEntityOutputWithContext(ctx context.Context) SCMetadataEntityOutput {
+	return o
+}
+
+func (o SCMetadataEntityOutput) ToSCMetadataEntityPtrOutput() SCMetadataEntityPtrOutput {
+	return o.ToSCMetadataEntityPtrOutputWithContext(context.Background())
+}
+
+func (o SCMetadataEntityOutput) ToSCMetadataEntityPtrOutputWithContext(ctx context.Context) SCMetadataEntityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SCMetadataEntity) *SCMetadataEntity {
+		return &v
+	}).(SCMetadataEntityPtrOutput)
+}
+
+// Created Date Time
+func (o SCMetadataEntityOutput) CreatedTimestamp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SCMetadataEntity) *string { return v.CreatedTimestamp }).(pulumi.StringPtrOutput)
+}
+
+// Deleted Date time
+func (o SCMetadataEntityOutput) DeletedTimestamp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SCMetadataEntity) *string { return v.DeletedTimestamp }).(pulumi.StringPtrOutput)
+}
+
+// Resource name of the record
+func (o SCMetadataEntityOutput) ResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SCMetadataEntity) *string { return v.ResourceName }).(pulumi.StringPtrOutput)
+}
+
+// Self lookup url
+func (o SCMetadataEntityOutput) Self() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SCMetadataEntity) *string { return v.Self }).(pulumi.StringPtrOutput)
+}
+
+// Updated Date time
+func (o SCMetadataEntityOutput) UpdatedTimestamp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SCMetadataEntity) *string { return v.UpdatedTimestamp }).(pulumi.StringPtrOutput)
+}
+
+type SCMetadataEntityPtrOutput struct{ *pulumi.OutputState }
+
+func (SCMetadataEntityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SCMetadataEntity)(nil)).Elem()
+}
+
+func (o SCMetadataEntityPtrOutput) ToSCMetadataEntityPtrOutput() SCMetadataEntityPtrOutput {
+	return o
+}
+
+func (o SCMetadataEntityPtrOutput) ToSCMetadataEntityPtrOutputWithContext(ctx context.Context) SCMetadataEntityPtrOutput {
+	return o
+}
+
+func (o SCMetadataEntityPtrOutput) Elem() SCMetadataEntityOutput {
+	return o.ApplyT(func(v *SCMetadataEntity) SCMetadataEntity {
+		if v != nil {
+			return *v
+		}
+		var ret SCMetadataEntity
+		return ret
+	}).(SCMetadataEntityOutput)
+}
+
+// Created Date Time
+func (o SCMetadataEntityPtrOutput) CreatedTimestamp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SCMetadataEntity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedTimestamp
+	}).(pulumi.StringPtrOutput)
+}
+
+// Deleted Date time
+func (o SCMetadataEntityPtrOutput) DeletedTimestamp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SCMetadataEntity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeletedTimestamp
+	}).(pulumi.StringPtrOutput)
+}
+
+// Resource name of the record
+func (o SCMetadataEntityPtrOutput) ResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SCMetadataEntity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Self lookup url
+func (o SCMetadataEntityPtrOutput) Self() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SCMetadataEntity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Self
+	}).(pulumi.StringPtrOutput)
+}
+
+// Updated Date time
+func (o SCMetadataEntityPtrOutput) UpdatedTimestamp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SCMetadataEntity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdatedTimestamp
+	}).(pulumi.StringPtrOutput)
+}
+
 // Metadata of the data record
 type SCMetadataEntityResponse struct {
 	// Created Date Time
@@ -1822,6 +8555,206 @@ func (o ServiceAccountRecordResponseArrayOutput) Index(i pulumi.IntInput) Servic
 	}).(ServiceAccountRecordResponseOutput)
 }
 
+// Stream governance configuration
+type StreamGovernanceConfig struct {
+	// Stream governance configuration
+	Package *string `pulumi:"package"`
+}
+
+// StreamGovernanceConfigInput is an input type that accepts StreamGovernanceConfigArgs and StreamGovernanceConfigOutput values.
+// You can construct a concrete instance of `StreamGovernanceConfigInput` via:
+//
+//	StreamGovernanceConfigArgs{...}
+type StreamGovernanceConfigInput interface {
+	pulumi.Input
+
+	ToStreamGovernanceConfigOutput() StreamGovernanceConfigOutput
+	ToStreamGovernanceConfigOutputWithContext(context.Context) StreamGovernanceConfigOutput
+}
+
+// Stream governance configuration
+type StreamGovernanceConfigArgs struct {
+	// Stream governance configuration
+	Package pulumi.StringPtrInput `pulumi:"package"`
+}
+
+func (StreamGovernanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamGovernanceConfig)(nil)).Elem()
+}
+
+func (i StreamGovernanceConfigArgs) ToStreamGovernanceConfigOutput() StreamGovernanceConfigOutput {
+	return i.ToStreamGovernanceConfigOutputWithContext(context.Background())
+}
+
+func (i StreamGovernanceConfigArgs) ToStreamGovernanceConfigOutputWithContext(ctx context.Context) StreamGovernanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamGovernanceConfigOutput)
+}
+
+func (i StreamGovernanceConfigArgs) ToStreamGovernanceConfigPtrOutput() StreamGovernanceConfigPtrOutput {
+	return i.ToStreamGovernanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i StreamGovernanceConfigArgs) ToStreamGovernanceConfigPtrOutputWithContext(ctx context.Context) StreamGovernanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamGovernanceConfigOutput).ToStreamGovernanceConfigPtrOutputWithContext(ctx)
+}
+
+// StreamGovernanceConfigPtrInput is an input type that accepts StreamGovernanceConfigArgs, StreamGovernanceConfigPtr and StreamGovernanceConfigPtrOutput values.
+// You can construct a concrete instance of `StreamGovernanceConfigPtrInput` via:
+//
+//	        StreamGovernanceConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamGovernanceConfigPtrInput interface {
+	pulumi.Input
+
+	ToStreamGovernanceConfigPtrOutput() StreamGovernanceConfigPtrOutput
+	ToStreamGovernanceConfigPtrOutputWithContext(context.Context) StreamGovernanceConfigPtrOutput
+}
+
+type streamGovernanceConfigPtrType StreamGovernanceConfigArgs
+
+func StreamGovernanceConfigPtr(v *StreamGovernanceConfigArgs) StreamGovernanceConfigPtrInput {
+	return (*streamGovernanceConfigPtrType)(v)
+}
+
+func (*streamGovernanceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamGovernanceConfig)(nil)).Elem()
+}
+
+func (i *streamGovernanceConfigPtrType) ToStreamGovernanceConfigPtrOutput() StreamGovernanceConfigPtrOutput {
+	return i.ToStreamGovernanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *streamGovernanceConfigPtrType) ToStreamGovernanceConfigPtrOutputWithContext(ctx context.Context) StreamGovernanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamGovernanceConfigPtrOutput)
+}
+
+// Stream governance configuration
+type StreamGovernanceConfigOutput struct{ *pulumi.OutputState }
+
+func (StreamGovernanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamGovernanceConfig)(nil)).Elem()
+}
+
+func (o StreamGovernanceConfigOutput) ToStreamGovernanceConfigOutput() StreamGovernanceConfigOutput {
+	return o
+}
+
+func (o StreamGovernanceConfigOutput) ToStreamGovernanceConfigOutputWithContext(ctx context.Context) StreamGovernanceConfigOutput {
+	return o
+}
+
+func (o StreamGovernanceConfigOutput) ToStreamGovernanceConfigPtrOutput() StreamGovernanceConfigPtrOutput {
+	return o.ToStreamGovernanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o StreamGovernanceConfigOutput) ToStreamGovernanceConfigPtrOutputWithContext(ctx context.Context) StreamGovernanceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamGovernanceConfig) *StreamGovernanceConfig {
+		return &v
+	}).(StreamGovernanceConfigPtrOutput)
+}
+
+// Stream governance configuration
+func (o StreamGovernanceConfigOutput) Package() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamGovernanceConfig) *string { return v.Package }).(pulumi.StringPtrOutput)
+}
+
+type StreamGovernanceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamGovernanceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamGovernanceConfig)(nil)).Elem()
+}
+
+func (o StreamGovernanceConfigPtrOutput) ToStreamGovernanceConfigPtrOutput() StreamGovernanceConfigPtrOutput {
+	return o
+}
+
+func (o StreamGovernanceConfigPtrOutput) ToStreamGovernanceConfigPtrOutputWithContext(ctx context.Context) StreamGovernanceConfigPtrOutput {
+	return o
+}
+
+func (o StreamGovernanceConfigPtrOutput) Elem() StreamGovernanceConfigOutput {
+	return o.ApplyT(func(v *StreamGovernanceConfig) StreamGovernanceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret StreamGovernanceConfig
+		return ret
+	}).(StreamGovernanceConfigOutput)
+}
+
+// Stream governance configuration
+func (o StreamGovernanceConfigPtrOutput) Package() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamGovernanceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Package
+	}).(pulumi.StringPtrOutput)
+}
+
+// Stream governance configuration
+type StreamGovernanceConfigResponse struct {
+	// Stream governance configuration
+	Package *string `pulumi:"package"`
+}
+
+// Stream governance configuration
+type StreamGovernanceConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (StreamGovernanceConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamGovernanceConfigResponse)(nil)).Elem()
+}
+
+func (o StreamGovernanceConfigResponseOutput) ToStreamGovernanceConfigResponseOutput() StreamGovernanceConfigResponseOutput {
+	return o
+}
+
+func (o StreamGovernanceConfigResponseOutput) ToStreamGovernanceConfigResponseOutputWithContext(ctx context.Context) StreamGovernanceConfigResponseOutput {
+	return o
+}
+
+// Stream governance configuration
+func (o StreamGovernanceConfigResponseOutput) Package() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamGovernanceConfigResponse) *string { return v.Package }).(pulumi.StringPtrOutput)
+}
+
+type StreamGovernanceConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (StreamGovernanceConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamGovernanceConfigResponse)(nil)).Elem()
+}
+
+func (o StreamGovernanceConfigResponsePtrOutput) ToStreamGovernanceConfigResponsePtrOutput() StreamGovernanceConfigResponsePtrOutput {
+	return o
+}
+
+func (o StreamGovernanceConfigResponsePtrOutput) ToStreamGovernanceConfigResponsePtrOutputWithContext(ctx context.Context) StreamGovernanceConfigResponsePtrOutput {
+	return o
+}
+
+func (o StreamGovernanceConfigResponsePtrOutput) Elem() StreamGovernanceConfigResponseOutput {
+	return o.ApplyT(func(v *StreamGovernanceConfigResponse) StreamGovernanceConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret StreamGovernanceConfigResponse
+		return ret
+	}).(StreamGovernanceConfigResponseOutput)
+}
+
+// Stream governance configuration
+func (o StreamGovernanceConfigResponsePtrOutput) Package() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamGovernanceConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Package
+	}).(pulumi.StringPtrOutput)
+}
+
 // Metadata pertaining to creation and last modification of the resource.
 type SystemDataResponse struct {
 	// The timestamp of resource creation (UTC).
@@ -1881,6 +8814,604 @@ func (o SystemDataResponseOutput) LastModifiedBy() pulumi.StringPtrOutput {
 // The type of identity that last modified the resource.
 func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
+}
+
+// Metadata of the data record
+type TopicMetadataEntity struct {
+	// Resource name of the record
+	ResourceName *string `pulumi:"resourceName"`
+	// Self lookup url
+	Self *string `pulumi:"self"`
+}
+
+// TopicMetadataEntityInput is an input type that accepts TopicMetadataEntityArgs and TopicMetadataEntityOutput values.
+// You can construct a concrete instance of `TopicMetadataEntityInput` via:
+//
+//	TopicMetadataEntityArgs{...}
+type TopicMetadataEntityInput interface {
+	pulumi.Input
+
+	ToTopicMetadataEntityOutput() TopicMetadataEntityOutput
+	ToTopicMetadataEntityOutputWithContext(context.Context) TopicMetadataEntityOutput
+}
+
+// Metadata of the data record
+type TopicMetadataEntityArgs struct {
+	// Resource name of the record
+	ResourceName pulumi.StringPtrInput `pulumi:"resourceName"`
+	// Self lookup url
+	Self pulumi.StringPtrInput `pulumi:"self"`
+}
+
+func (TopicMetadataEntityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TopicMetadataEntity)(nil)).Elem()
+}
+
+func (i TopicMetadataEntityArgs) ToTopicMetadataEntityOutput() TopicMetadataEntityOutput {
+	return i.ToTopicMetadataEntityOutputWithContext(context.Background())
+}
+
+func (i TopicMetadataEntityArgs) ToTopicMetadataEntityOutputWithContext(ctx context.Context) TopicMetadataEntityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicMetadataEntityOutput)
+}
+
+func (i TopicMetadataEntityArgs) ToTopicMetadataEntityPtrOutput() TopicMetadataEntityPtrOutput {
+	return i.ToTopicMetadataEntityPtrOutputWithContext(context.Background())
+}
+
+func (i TopicMetadataEntityArgs) ToTopicMetadataEntityPtrOutputWithContext(ctx context.Context) TopicMetadataEntityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicMetadataEntityOutput).ToTopicMetadataEntityPtrOutputWithContext(ctx)
+}
+
+// TopicMetadataEntityPtrInput is an input type that accepts TopicMetadataEntityArgs, TopicMetadataEntityPtr and TopicMetadataEntityPtrOutput values.
+// You can construct a concrete instance of `TopicMetadataEntityPtrInput` via:
+//
+//	        TopicMetadataEntityArgs{...}
+//
+//	or:
+//
+//	        nil
+type TopicMetadataEntityPtrInput interface {
+	pulumi.Input
+
+	ToTopicMetadataEntityPtrOutput() TopicMetadataEntityPtrOutput
+	ToTopicMetadataEntityPtrOutputWithContext(context.Context) TopicMetadataEntityPtrOutput
+}
+
+type topicMetadataEntityPtrType TopicMetadataEntityArgs
+
+func TopicMetadataEntityPtr(v *TopicMetadataEntityArgs) TopicMetadataEntityPtrInput {
+	return (*topicMetadataEntityPtrType)(v)
+}
+
+func (*topicMetadataEntityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TopicMetadataEntity)(nil)).Elem()
+}
+
+func (i *topicMetadataEntityPtrType) ToTopicMetadataEntityPtrOutput() TopicMetadataEntityPtrOutput {
+	return i.ToTopicMetadataEntityPtrOutputWithContext(context.Background())
+}
+
+func (i *topicMetadataEntityPtrType) ToTopicMetadataEntityPtrOutputWithContext(ctx context.Context) TopicMetadataEntityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicMetadataEntityPtrOutput)
+}
+
+// Metadata of the data record
+type TopicMetadataEntityOutput struct{ *pulumi.OutputState }
+
+func (TopicMetadataEntityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TopicMetadataEntity)(nil)).Elem()
+}
+
+func (o TopicMetadataEntityOutput) ToTopicMetadataEntityOutput() TopicMetadataEntityOutput {
+	return o
+}
+
+func (o TopicMetadataEntityOutput) ToTopicMetadataEntityOutputWithContext(ctx context.Context) TopicMetadataEntityOutput {
+	return o
+}
+
+func (o TopicMetadataEntityOutput) ToTopicMetadataEntityPtrOutput() TopicMetadataEntityPtrOutput {
+	return o.ToTopicMetadataEntityPtrOutputWithContext(context.Background())
+}
+
+func (o TopicMetadataEntityOutput) ToTopicMetadataEntityPtrOutputWithContext(ctx context.Context) TopicMetadataEntityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TopicMetadataEntity) *TopicMetadataEntity {
+		return &v
+	}).(TopicMetadataEntityPtrOutput)
+}
+
+// Resource name of the record
+func (o TopicMetadataEntityOutput) ResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TopicMetadataEntity) *string { return v.ResourceName }).(pulumi.StringPtrOutput)
+}
+
+// Self lookup url
+func (o TopicMetadataEntityOutput) Self() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TopicMetadataEntity) *string { return v.Self }).(pulumi.StringPtrOutput)
+}
+
+type TopicMetadataEntityPtrOutput struct{ *pulumi.OutputState }
+
+func (TopicMetadataEntityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TopicMetadataEntity)(nil)).Elem()
+}
+
+func (o TopicMetadataEntityPtrOutput) ToTopicMetadataEntityPtrOutput() TopicMetadataEntityPtrOutput {
+	return o
+}
+
+func (o TopicMetadataEntityPtrOutput) ToTopicMetadataEntityPtrOutputWithContext(ctx context.Context) TopicMetadataEntityPtrOutput {
+	return o
+}
+
+func (o TopicMetadataEntityPtrOutput) Elem() TopicMetadataEntityOutput {
+	return o.ApplyT(func(v *TopicMetadataEntity) TopicMetadataEntity {
+		if v != nil {
+			return *v
+		}
+		var ret TopicMetadataEntity
+		return ret
+	}).(TopicMetadataEntityOutput)
+}
+
+// Resource name of the record
+func (o TopicMetadataEntityPtrOutput) ResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TopicMetadataEntity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Self lookup url
+func (o TopicMetadataEntityPtrOutput) Self() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TopicMetadataEntity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Self
+	}).(pulumi.StringPtrOutput)
+}
+
+// Metadata of the data record
+type TopicMetadataEntityResponse struct {
+	// Resource name of the record
+	ResourceName *string `pulumi:"resourceName"`
+	// Self lookup url
+	Self *string `pulumi:"self"`
+}
+
+// Metadata of the data record
+type TopicMetadataEntityResponseOutput struct{ *pulumi.OutputState }
+
+func (TopicMetadataEntityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TopicMetadataEntityResponse)(nil)).Elem()
+}
+
+func (o TopicMetadataEntityResponseOutput) ToTopicMetadataEntityResponseOutput() TopicMetadataEntityResponseOutput {
+	return o
+}
+
+func (o TopicMetadataEntityResponseOutput) ToTopicMetadataEntityResponseOutputWithContext(ctx context.Context) TopicMetadataEntityResponseOutput {
+	return o
+}
+
+// Resource name of the record
+func (o TopicMetadataEntityResponseOutput) ResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TopicMetadataEntityResponse) *string { return v.ResourceName }).(pulumi.StringPtrOutput)
+}
+
+// Self lookup url
+func (o TopicMetadataEntityResponseOutput) Self() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TopicMetadataEntityResponse) *string { return v.Self }).(pulumi.StringPtrOutput)
+}
+
+type TopicMetadataEntityResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (TopicMetadataEntityResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TopicMetadataEntityResponse)(nil)).Elem()
+}
+
+func (o TopicMetadataEntityResponsePtrOutput) ToTopicMetadataEntityResponsePtrOutput() TopicMetadataEntityResponsePtrOutput {
+	return o
+}
+
+func (o TopicMetadataEntityResponsePtrOutput) ToTopicMetadataEntityResponsePtrOutputWithContext(ctx context.Context) TopicMetadataEntityResponsePtrOutput {
+	return o
+}
+
+func (o TopicMetadataEntityResponsePtrOutput) Elem() TopicMetadataEntityResponseOutput {
+	return o.ApplyT(func(v *TopicMetadataEntityResponse) TopicMetadataEntityResponse {
+		if v != nil {
+			return *v
+		}
+		var ret TopicMetadataEntityResponse
+		return ret
+	}).(TopicMetadataEntityResponseOutput)
+}
+
+// Resource name of the record
+func (o TopicMetadataEntityResponsePtrOutput) ResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TopicMetadataEntityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Self lookup url
+func (o TopicMetadataEntityResponsePtrOutput) Self() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TopicMetadataEntityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Self
+	}).(pulumi.StringPtrOutput)
+}
+
+// Topics input config
+type TopicsInputConfig struct {
+	// Name of the topic input config
+	Name *string `pulumi:"name"`
+	// Value of the topic input config
+	Value *string `pulumi:"value"`
+}
+
+// TopicsInputConfigInput is an input type that accepts TopicsInputConfigArgs and TopicsInputConfigOutput values.
+// You can construct a concrete instance of `TopicsInputConfigInput` via:
+//
+//	TopicsInputConfigArgs{...}
+type TopicsInputConfigInput interface {
+	pulumi.Input
+
+	ToTopicsInputConfigOutput() TopicsInputConfigOutput
+	ToTopicsInputConfigOutputWithContext(context.Context) TopicsInputConfigOutput
+}
+
+// Topics input config
+type TopicsInputConfigArgs struct {
+	// Name of the topic input config
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Value of the topic input config
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (TopicsInputConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TopicsInputConfig)(nil)).Elem()
+}
+
+func (i TopicsInputConfigArgs) ToTopicsInputConfigOutput() TopicsInputConfigOutput {
+	return i.ToTopicsInputConfigOutputWithContext(context.Background())
+}
+
+func (i TopicsInputConfigArgs) ToTopicsInputConfigOutputWithContext(ctx context.Context) TopicsInputConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicsInputConfigOutput)
+}
+
+// TopicsInputConfigArrayInput is an input type that accepts TopicsInputConfigArray and TopicsInputConfigArrayOutput values.
+// You can construct a concrete instance of `TopicsInputConfigArrayInput` via:
+//
+//	TopicsInputConfigArray{ TopicsInputConfigArgs{...} }
+type TopicsInputConfigArrayInput interface {
+	pulumi.Input
+
+	ToTopicsInputConfigArrayOutput() TopicsInputConfigArrayOutput
+	ToTopicsInputConfigArrayOutputWithContext(context.Context) TopicsInputConfigArrayOutput
+}
+
+type TopicsInputConfigArray []TopicsInputConfigInput
+
+func (TopicsInputConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TopicsInputConfig)(nil)).Elem()
+}
+
+func (i TopicsInputConfigArray) ToTopicsInputConfigArrayOutput() TopicsInputConfigArrayOutput {
+	return i.ToTopicsInputConfigArrayOutputWithContext(context.Background())
+}
+
+func (i TopicsInputConfigArray) ToTopicsInputConfigArrayOutputWithContext(ctx context.Context) TopicsInputConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicsInputConfigArrayOutput)
+}
+
+// Topics input config
+type TopicsInputConfigOutput struct{ *pulumi.OutputState }
+
+func (TopicsInputConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TopicsInputConfig)(nil)).Elem()
+}
+
+func (o TopicsInputConfigOutput) ToTopicsInputConfigOutput() TopicsInputConfigOutput {
+	return o
+}
+
+func (o TopicsInputConfigOutput) ToTopicsInputConfigOutputWithContext(ctx context.Context) TopicsInputConfigOutput {
+	return o
+}
+
+// Name of the topic input config
+func (o TopicsInputConfigOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TopicsInputConfig) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Value of the topic input config
+func (o TopicsInputConfigOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TopicsInputConfig) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type TopicsInputConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (TopicsInputConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TopicsInputConfig)(nil)).Elem()
+}
+
+func (o TopicsInputConfigArrayOutput) ToTopicsInputConfigArrayOutput() TopicsInputConfigArrayOutput {
+	return o
+}
+
+func (o TopicsInputConfigArrayOutput) ToTopicsInputConfigArrayOutputWithContext(ctx context.Context) TopicsInputConfigArrayOutput {
+	return o
+}
+
+func (o TopicsInputConfigArrayOutput) Index(i pulumi.IntInput) TopicsInputConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TopicsInputConfig {
+		return vs[0].([]TopicsInputConfig)[vs[1].(int)]
+	}).(TopicsInputConfigOutput)
+}
+
+// Topics input config
+type TopicsInputConfigResponse struct {
+	// Name of the topic input config
+	Name *string `pulumi:"name"`
+	// Value of the topic input config
+	Value *string `pulumi:"value"`
+}
+
+// Topics input config
+type TopicsInputConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (TopicsInputConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TopicsInputConfigResponse)(nil)).Elem()
+}
+
+func (o TopicsInputConfigResponseOutput) ToTopicsInputConfigResponseOutput() TopicsInputConfigResponseOutput {
+	return o
+}
+
+func (o TopicsInputConfigResponseOutput) ToTopicsInputConfigResponseOutputWithContext(ctx context.Context) TopicsInputConfigResponseOutput {
+	return o
+}
+
+// Name of the topic input config
+func (o TopicsInputConfigResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TopicsInputConfigResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Value of the topic input config
+func (o TopicsInputConfigResponseOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TopicsInputConfigResponse) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type TopicsInputConfigResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (TopicsInputConfigResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TopicsInputConfigResponse)(nil)).Elem()
+}
+
+func (o TopicsInputConfigResponseArrayOutput) ToTopicsInputConfigResponseArrayOutput() TopicsInputConfigResponseArrayOutput {
+	return o
+}
+
+func (o TopicsInputConfigResponseArrayOutput) ToTopicsInputConfigResponseArrayOutputWithContext(ctx context.Context) TopicsInputConfigResponseArrayOutput {
+	return o
+}
+
+func (o TopicsInputConfigResponseArrayOutput) Index(i pulumi.IntInput) TopicsInputConfigResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TopicsInputConfigResponse {
+		return vs[0].([]TopicsInputConfigResponse)[vs[1].(int)]
+	}).(TopicsInputConfigResponseOutput)
+}
+
+// Partition Config spec of the topic record
+type TopicsRelatedLink struct {
+	// Relationship of the topic
+	Related *string `pulumi:"related"`
+}
+
+// TopicsRelatedLinkInput is an input type that accepts TopicsRelatedLinkArgs and TopicsRelatedLinkOutput values.
+// You can construct a concrete instance of `TopicsRelatedLinkInput` via:
+//
+//	TopicsRelatedLinkArgs{...}
+type TopicsRelatedLinkInput interface {
+	pulumi.Input
+
+	ToTopicsRelatedLinkOutput() TopicsRelatedLinkOutput
+	ToTopicsRelatedLinkOutputWithContext(context.Context) TopicsRelatedLinkOutput
+}
+
+// Partition Config spec of the topic record
+type TopicsRelatedLinkArgs struct {
+	// Relationship of the topic
+	Related pulumi.StringPtrInput `pulumi:"related"`
+}
+
+func (TopicsRelatedLinkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TopicsRelatedLink)(nil)).Elem()
+}
+
+func (i TopicsRelatedLinkArgs) ToTopicsRelatedLinkOutput() TopicsRelatedLinkOutput {
+	return i.ToTopicsRelatedLinkOutputWithContext(context.Background())
+}
+
+func (i TopicsRelatedLinkArgs) ToTopicsRelatedLinkOutputWithContext(ctx context.Context) TopicsRelatedLinkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicsRelatedLinkOutput)
+}
+
+func (i TopicsRelatedLinkArgs) ToTopicsRelatedLinkPtrOutput() TopicsRelatedLinkPtrOutput {
+	return i.ToTopicsRelatedLinkPtrOutputWithContext(context.Background())
+}
+
+func (i TopicsRelatedLinkArgs) ToTopicsRelatedLinkPtrOutputWithContext(ctx context.Context) TopicsRelatedLinkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicsRelatedLinkOutput).ToTopicsRelatedLinkPtrOutputWithContext(ctx)
+}
+
+// TopicsRelatedLinkPtrInput is an input type that accepts TopicsRelatedLinkArgs, TopicsRelatedLinkPtr and TopicsRelatedLinkPtrOutput values.
+// You can construct a concrete instance of `TopicsRelatedLinkPtrInput` via:
+//
+//	        TopicsRelatedLinkArgs{...}
+//
+//	or:
+//
+//	        nil
+type TopicsRelatedLinkPtrInput interface {
+	pulumi.Input
+
+	ToTopicsRelatedLinkPtrOutput() TopicsRelatedLinkPtrOutput
+	ToTopicsRelatedLinkPtrOutputWithContext(context.Context) TopicsRelatedLinkPtrOutput
+}
+
+type topicsRelatedLinkPtrType TopicsRelatedLinkArgs
+
+func TopicsRelatedLinkPtr(v *TopicsRelatedLinkArgs) TopicsRelatedLinkPtrInput {
+	return (*topicsRelatedLinkPtrType)(v)
+}
+
+func (*topicsRelatedLinkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TopicsRelatedLink)(nil)).Elem()
+}
+
+func (i *topicsRelatedLinkPtrType) ToTopicsRelatedLinkPtrOutput() TopicsRelatedLinkPtrOutput {
+	return i.ToTopicsRelatedLinkPtrOutputWithContext(context.Background())
+}
+
+func (i *topicsRelatedLinkPtrType) ToTopicsRelatedLinkPtrOutputWithContext(ctx context.Context) TopicsRelatedLinkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicsRelatedLinkPtrOutput)
+}
+
+// Partition Config spec of the topic record
+type TopicsRelatedLinkOutput struct{ *pulumi.OutputState }
+
+func (TopicsRelatedLinkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TopicsRelatedLink)(nil)).Elem()
+}
+
+func (o TopicsRelatedLinkOutput) ToTopicsRelatedLinkOutput() TopicsRelatedLinkOutput {
+	return o
+}
+
+func (o TopicsRelatedLinkOutput) ToTopicsRelatedLinkOutputWithContext(ctx context.Context) TopicsRelatedLinkOutput {
+	return o
+}
+
+func (o TopicsRelatedLinkOutput) ToTopicsRelatedLinkPtrOutput() TopicsRelatedLinkPtrOutput {
+	return o.ToTopicsRelatedLinkPtrOutputWithContext(context.Background())
+}
+
+func (o TopicsRelatedLinkOutput) ToTopicsRelatedLinkPtrOutputWithContext(ctx context.Context) TopicsRelatedLinkPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TopicsRelatedLink) *TopicsRelatedLink {
+		return &v
+	}).(TopicsRelatedLinkPtrOutput)
+}
+
+// Relationship of the topic
+func (o TopicsRelatedLinkOutput) Related() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TopicsRelatedLink) *string { return v.Related }).(pulumi.StringPtrOutput)
+}
+
+type TopicsRelatedLinkPtrOutput struct{ *pulumi.OutputState }
+
+func (TopicsRelatedLinkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TopicsRelatedLink)(nil)).Elem()
+}
+
+func (o TopicsRelatedLinkPtrOutput) ToTopicsRelatedLinkPtrOutput() TopicsRelatedLinkPtrOutput {
+	return o
+}
+
+func (o TopicsRelatedLinkPtrOutput) ToTopicsRelatedLinkPtrOutputWithContext(ctx context.Context) TopicsRelatedLinkPtrOutput {
+	return o
+}
+
+func (o TopicsRelatedLinkPtrOutput) Elem() TopicsRelatedLinkOutput {
+	return o.ApplyT(func(v *TopicsRelatedLink) TopicsRelatedLink {
+		if v != nil {
+			return *v
+		}
+		var ret TopicsRelatedLink
+		return ret
+	}).(TopicsRelatedLinkOutput)
+}
+
+// Relationship of the topic
+func (o TopicsRelatedLinkPtrOutput) Related() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TopicsRelatedLink) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Related
+	}).(pulumi.StringPtrOutput)
+}
+
+// Partition Config spec of the topic record
+type TopicsRelatedLinkResponse struct {
+	// Relationship of the topic
+	Related *string `pulumi:"related"`
+}
+
+// Partition Config spec of the topic record
+type TopicsRelatedLinkResponseOutput struct{ *pulumi.OutputState }
+
+func (TopicsRelatedLinkResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TopicsRelatedLinkResponse)(nil)).Elem()
+}
+
+func (o TopicsRelatedLinkResponseOutput) ToTopicsRelatedLinkResponseOutput() TopicsRelatedLinkResponseOutput {
+	return o
+}
+
+func (o TopicsRelatedLinkResponseOutput) ToTopicsRelatedLinkResponseOutputWithContext(ctx context.Context) TopicsRelatedLinkResponseOutput {
+	return o
+}
+
+// Relationship of the topic
+func (o TopicsRelatedLinkResponseOutput) Related() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TopicsRelatedLinkResponse) *string { return v.Related }).(pulumi.StringPtrOutput)
+}
+
+type TopicsRelatedLinkResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (TopicsRelatedLinkResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TopicsRelatedLinkResponse)(nil)).Elem()
+}
+
+func (o TopicsRelatedLinkResponsePtrOutput) ToTopicsRelatedLinkResponsePtrOutput() TopicsRelatedLinkResponsePtrOutput {
+	return o
+}
+
+func (o TopicsRelatedLinkResponsePtrOutput) ToTopicsRelatedLinkResponsePtrOutputWithContext(ctx context.Context) TopicsRelatedLinkResponsePtrOutput {
+	return o
+}
+
+func (o TopicsRelatedLinkResponsePtrOutput) Elem() TopicsRelatedLinkResponseOutput {
+	return o.ApplyT(func(v *TopicsRelatedLinkResponse) TopicsRelatedLinkResponse {
+		if v != nil {
+			return *v
+		}
+		var ret TopicsRelatedLinkResponse
+		return ret
+	}).(TopicsRelatedLinkResponseOutput)
+}
+
+// Relationship of the topic
+func (o TopicsRelatedLinkResponsePtrOutput) Related() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TopicsRelatedLinkResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Related
+	}).(pulumi.StringPtrOutput)
 }
 
 // Subscriber detail
@@ -2078,8 +9609,30 @@ func (o UserRecordResponseArrayOutput) Index(i pulumi.IntInput) UserRecordRespon
 }
 
 func init() {
+	pulumi.RegisterOutputType(AzureBlobStorageSinkConnectorServiceInfoOutput{})
+	pulumi.RegisterOutputType(AzureBlobStorageSinkConnectorServiceInfoPtrOutput{})
+	pulumi.RegisterOutputType(AzureBlobStorageSinkConnectorServiceInfoResponseOutput{})
+	pulumi.RegisterOutputType(AzureBlobStorageSinkConnectorServiceInfoResponsePtrOutput{})
+	pulumi.RegisterOutputType(AzureBlobStorageSourceConnectorServiceInfoOutput{})
+	pulumi.RegisterOutputType(AzureBlobStorageSourceConnectorServiceInfoPtrOutput{})
+	pulumi.RegisterOutputType(AzureBlobStorageSourceConnectorServiceInfoResponseOutput{})
+	pulumi.RegisterOutputType(AzureBlobStorageSourceConnectorServiceInfoResponsePtrOutput{})
+	pulumi.RegisterOutputType(AzureCosmosDBSinkConnectorServiceInfoOutput{})
+	pulumi.RegisterOutputType(AzureCosmosDBSinkConnectorServiceInfoPtrOutput{})
+	pulumi.RegisterOutputType(AzureCosmosDBSinkConnectorServiceInfoResponseOutput{})
+	pulumi.RegisterOutputType(AzureCosmosDBSinkConnectorServiceInfoResponsePtrOutput{})
+	pulumi.RegisterOutputType(AzureCosmosDBSourceConnectorServiceInfoOutput{})
+	pulumi.RegisterOutputType(AzureCosmosDBSourceConnectorServiceInfoPtrOutput{})
+	pulumi.RegisterOutputType(AzureCosmosDBSourceConnectorServiceInfoResponseOutput{})
+	pulumi.RegisterOutputType(AzureCosmosDBSourceConnectorServiceInfoResponsePtrOutput{})
+	pulumi.RegisterOutputType(AzureSynapseAnalyticsSinkConnectorServiceInfoOutput{})
+	pulumi.RegisterOutputType(AzureSynapseAnalyticsSinkConnectorServiceInfoPtrOutput{})
+	pulumi.RegisterOutputType(AzureSynapseAnalyticsSinkConnectorServiceInfoResponseOutput{})
+	pulumi.RegisterOutputType(AzureSynapseAnalyticsSinkConnectorServiceInfoResponsePtrOutput{})
 	pulumi.RegisterOutputType(ClusterByokEntityResponseOutput{})
 	pulumi.RegisterOutputType(ClusterByokEntityResponsePtrOutput{})
+	pulumi.RegisterOutputType(ClusterConfigEntityOutput{})
+	pulumi.RegisterOutputType(ClusterConfigEntityPtrOutput{})
 	pulumi.RegisterOutputType(ClusterConfigEntityResponseOutput{})
 	pulumi.RegisterOutputType(ClusterConfigEntityResponsePtrOutput{})
 	pulumi.RegisterOutputType(ClusterEnvironmentEntityResponseOutput{})
@@ -2090,14 +9643,40 @@ func init() {
 	pulumi.RegisterOutputType(ClusterRecordResponseArrayOutput{})
 	pulumi.RegisterOutputType(ClusterSpecEntityResponseOutput{})
 	pulumi.RegisterOutputType(ClusterSpecEntityResponsePtrOutput{})
+	pulumi.RegisterOutputType(ClusterStatusEntityOutput{})
+	pulumi.RegisterOutputType(ClusterStatusEntityPtrOutput{})
 	pulumi.RegisterOutputType(ClusterStatusEntityResponseOutput{})
 	pulumi.RegisterOutputType(ClusterStatusEntityResponsePtrOutput{})
 	pulumi.RegisterOutputType(ConfluentListMetadataResponseOutput{})
 	pulumi.RegisterOutputType(ConfluentListMetadataResponsePtrOutput{})
+	pulumi.RegisterOutputType(ConnectorInfoBaseOutput{})
+	pulumi.RegisterOutputType(ConnectorInfoBasePtrOutput{})
+	pulumi.RegisterOutputType(ConnectorInfoBaseResponseOutput{})
+	pulumi.RegisterOutputType(ConnectorInfoBaseResponsePtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentRecordResponseOutput{})
 	pulumi.RegisterOutputType(EnvironmentRecordResponseArrayOutput{})
 	pulumi.RegisterOutputType(InvitationRecordResponseOutput{})
 	pulumi.RegisterOutputType(InvitationRecordResponseArrayOutput{})
+	pulumi.RegisterOutputType(KafkaAzureBlobStorageSinkConnectorInfoOutput{})
+	pulumi.RegisterOutputType(KafkaAzureBlobStorageSinkConnectorInfoPtrOutput{})
+	pulumi.RegisterOutputType(KafkaAzureBlobStorageSinkConnectorInfoResponseOutput{})
+	pulumi.RegisterOutputType(KafkaAzureBlobStorageSinkConnectorInfoResponsePtrOutput{})
+	pulumi.RegisterOutputType(KafkaAzureBlobStorageSourceConnectorInfoOutput{})
+	pulumi.RegisterOutputType(KafkaAzureBlobStorageSourceConnectorInfoPtrOutput{})
+	pulumi.RegisterOutputType(KafkaAzureBlobStorageSourceConnectorInfoResponseOutput{})
+	pulumi.RegisterOutputType(KafkaAzureBlobStorageSourceConnectorInfoResponsePtrOutput{})
+	pulumi.RegisterOutputType(KafkaAzureCosmosDBSinkConnectorInfoOutput{})
+	pulumi.RegisterOutputType(KafkaAzureCosmosDBSinkConnectorInfoPtrOutput{})
+	pulumi.RegisterOutputType(KafkaAzureCosmosDBSinkConnectorInfoResponseOutput{})
+	pulumi.RegisterOutputType(KafkaAzureCosmosDBSinkConnectorInfoResponsePtrOutput{})
+	pulumi.RegisterOutputType(KafkaAzureCosmosDBSourceConnectorInfoOutput{})
+	pulumi.RegisterOutputType(KafkaAzureCosmosDBSourceConnectorInfoPtrOutput{})
+	pulumi.RegisterOutputType(KafkaAzureCosmosDBSourceConnectorInfoResponseOutput{})
+	pulumi.RegisterOutputType(KafkaAzureCosmosDBSourceConnectorInfoResponsePtrOutput{})
+	pulumi.RegisterOutputType(KafkaAzureSynapseAnalyticsSinkConnectorInfoOutput{})
+	pulumi.RegisterOutputType(KafkaAzureSynapseAnalyticsSinkConnectorInfoPtrOutput{})
+	pulumi.RegisterOutputType(KafkaAzureSynapseAnalyticsSinkConnectorInfoResponseOutput{})
+	pulumi.RegisterOutputType(KafkaAzureSynapseAnalyticsSinkConnectorInfoResponsePtrOutput{})
 	pulumi.RegisterOutputType(MetadataEntityResponseOutput{})
 	pulumi.RegisterOutputType(MetadataEntityResponsePtrOutput{})
 	pulumi.RegisterOutputType(OfferDetailOutput{})
@@ -2108,11 +9687,41 @@ func init() {
 	pulumi.RegisterOutputType(RegionSpecEntityResponsePtrOutput{})
 	pulumi.RegisterOutputType(RoleBindingRecordResponseOutput{})
 	pulumi.RegisterOutputType(RoleBindingRecordResponseArrayOutput{})
+	pulumi.RegisterOutputType(SCClusterByokEntityOutput{})
+	pulumi.RegisterOutputType(SCClusterByokEntityPtrOutput{})
+	pulumi.RegisterOutputType(SCClusterByokEntityResponseOutput{})
+	pulumi.RegisterOutputType(SCClusterByokEntityResponsePtrOutput{})
+	pulumi.RegisterOutputType(SCClusterNetworkEnvironmentEntityOutput{})
+	pulumi.RegisterOutputType(SCClusterNetworkEnvironmentEntityPtrOutput{})
+	pulumi.RegisterOutputType(SCClusterNetworkEnvironmentEntityResponseOutput{})
+	pulumi.RegisterOutputType(SCClusterNetworkEnvironmentEntityResponsePtrOutput{})
+	pulumi.RegisterOutputType(SCClusterSpecEntityOutput{})
+	pulumi.RegisterOutputType(SCClusterSpecEntityPtrOutput{})
+	pulumi.RegisterOutputType(SCClusterSpecEntityResponseOutput{})
+	pulumi.RegisterOutputType(SCClusterSpecEntityResponsePtrOutput{})
+	pulumi.RegisterOutputType(SCMetadataEntityOutput{})
+	pulumi.RegisterOutputType(SCMetadataEntityPtrOutput{})
 	pulumi.RegisterOutputType(SCMetadataEntityResponseOutput{})
 	pulumi.RegisterOutputType(SCMetadataEntityResponsePtrOutput{})
 	pulumi.RegisterOutputType(ServiceAccountRecordResponseOutput{})
 	pulumi.RegisterOutputType(ServiceAccountRecordResponseArrayOutput{})
+	pulumi.RegisterOutputType(StreamGovernanceConfigOutput{})
+	pulumi.RegisterOutputType(StreamGovernanceConfigPtrOutput{})
+	pulumi.RegisterOutputType(StreamGovernanceConfigResponseOutput{})
+	pulumi.RegisterOutputType(StreamGovernanceConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
+	pulumi.RegisterOutputType(TopicMetadataEntityOutput{})
+	pulumi.RegisterOutputType(TopicMetadataEntityPtrOutput{})
+	pulumi.RegisterOutputType(TopicMetadataEntityResponseOutput{})
+	pulumi.RegisterOutputType(TopicMetadataEntityResponsePtrOutput{})
+	pulumi.RegisterOutputType(TopicsInputConfigOutput{})
+	pulumi.RegisterOutputType(TopicsInputConfigArrayOutput{})
+	pulumi.RegisterOutputType(TopicsInputConfigResponseOutput{})
+	pulumi.RegisterOutputType(TopicsInputConfigResponseArrayOutput{})
+	pulumi.RegisterOutputType(TopicsRelatedLinkOutput{})
+	pulumi.RegisterOutputType(TopicsRelatedLinkPtrOutput{})
+	pulumi.RegisterOutputType(TopicsRelatedLinkResponseOutput{})
+	pulumi.RegisterOutputType(TopicsRelatedLinkResponsePtrOutput{})
 	pulumi.RegisterOutputType(UserDetailOutput{})
 	pulumi.RegisterOutputType(UserDetailResponseOutput{})
 	pulumi.RegisterOutputType(UserRecordResponseOutput{})

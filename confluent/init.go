@@ -21,8 +21,16 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "azure-native:confluent:Connector":
+		r = &Connector{}
 	case "azure-native:confluent:Organization":
 		r = &Organization{}
+	case "azure-native:confluent:OrganizationClusterById":
+		r = &OrganizationClusterById{}
+	case "azure-native:confluent:OrganizationEnvironmentById":
+		r = &OrganizationEnvironmentById{}
+	case "azure-native:confluent:Topic":
+		r = &Topic{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

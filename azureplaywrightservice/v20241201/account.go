@@ -18,7 +18,7 @@ type Account struct {
 
 	// The Playwright testing dashboard URI for the account resource.
 	DashboardUri pulumi.StringOutput `pulumi:"dashboardUri"`
-	// When enabled, this feature allows the workspace to use local auth(through access key) for authentication of test runs.
+	// When enabled, this feature allows the workspace to use local auth (through service access token) for executing operations.
 	LocalAuth pulumi.StringPtrOutput `pulumi:"localAuth"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -112,7 +112,7 @@ func (AccountState) ElementType() reflect.Type {
 type accountArgs struct {
 	// Name of account.
 	AccountName *string `pulumi:"accountName"`
-	// When enabled, this feature allows the workspace to use local auth(through access key) for authentication of test runs.
+	// When enabled, this feature allows the workspace to use local auth (through service access token) for executing operations.
 	LocalAuth *string `pulumi:"localAuth"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
@@ -132,7 +132,7 @@ type accountArgs struct {
 type AccountArgs struct {
 	// Name of account.
 	AccountName pulumi.StringPtrInput
-	// When enabled, this feature allows the workspace to use local auth(through access key) for authentication of test runs.
+	// When enabled, this feature allows the workspace to use local auth (through service access token) for executing operations.
 	LocalAuth pulumi.StringPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
@@ -190,7 +190,7 @@ func (o AccountOutput) DashboardUri() pulumi.StringOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.DashboardUri }).(pulumi.StringOutput)
 }
 
-// When enabled, this feature allows the workspace to use local auth(through access key) for authentication of test runs.
+// When enabled, this feature allows the workspace to use local auth (through service access token) for executing operations.
 func (o AccountOutput) LocalAuth() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringPtrOutput { return v.LocalAuth }).(pulumi.StringPtrOutput)
 }

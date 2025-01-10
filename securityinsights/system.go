@@ -14,6 +14,8 @@ import (
 
 // Describes the system within the agent.
 // Azure REST API version: 2024-04-01-preview.
+//
+// Other available API versions: 2024-10-01-preview.
 type System struct {
 	pulumi.CustomResourceState
 
@@ -58,6 +60,9 @@ func NewSystem(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20240401preview:System"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20241001preview:System"),
 		},
 	})
 	opts = append(opts, aliases)

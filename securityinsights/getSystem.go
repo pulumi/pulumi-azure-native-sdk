@@ -13,6 +13,8 @@ import (
 
 // Gets the system.
 // Azure REST API version: 2024-04-01-preview.
+//
+// Other available API versions: 2024-10-01-preview.
 func LookupSystem(ctx *pulumi.Context, args *LookupSystemArgs, opts ...pulumi.InvokeOption) (*LookupSystemResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSystemResult

@@ -81,6 +81,9 @@ func NewTarget(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:chaos/v20240322preview:Target"),
 		},
+		{
+			Type: pulumi.String("azure-native:chaos/v20241101preview:Target"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

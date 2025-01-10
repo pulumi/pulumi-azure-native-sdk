@@ -886,6 +886,242 @@ func (o ComponentSetupResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ComponentSetupResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// CopyComputeScale properties for managed integration runtime.
+type CopyComputeScaleProperties struct {
+	// DIU number setting reserved for copy activity execution. Supported values are multiples of 4 in range 4-256.
+	DataIntegrationUnit *int `pulumi:"dataIntegrationUnit"`
+	// Time to live (in minutes) setting of integration runtime which will execute copy activity.
+	TimeToLive *int `pulumi:"timeToLive"`
+}
+
+// CopyComputeScalePropertiesInput is an input type that accepts CopyComputeScalePropertiesArgs and CopyComputeScalePropertiesOutput values.
+// You can construct a concrete instance of `CopyComputeScalePropertiesInput` via:
+//
+//	CopyComputeScalePropertiesArgs{...}
+type CopyComputeScalePropertiesInput interface {
+	pulumi.Input
+
+	ToCopyComputeScalePropertiesOutput() CopyComputeScalePropertiesOutput
+	ToCopyComputeScalePropertiesOutputWithContext(context.Context) CopyComputeScalePropertiesOutput
+}
+
+// CopyComputeScale properties for managed integration runtime.
+type CopyComputeScalePropertiesArgs struct {
+	// DIU number setting reserved for copy activity execution. Supported values are multiples of 4 in range 4-256.
+	DataIntegrationUnit pulumi.IntPtrInput `pulumi:"dataIntegrationUnit"`
+	// Time to live (in minutes) setting of integration runtime which will execute copy activity.
+	TimeToLive pulumi.IntPtrInput `pulumi:"timeToLive"`
+}
+
+func (CopyComputeScalePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CopyComputeScaleProperties)(nil)).Elem()
+}
+
+func (i CopyComputeScalePropertiesArgs) ToCopyComputeScalePropertiesOutput() CopyComputeScalePropertiesOutput {
+	return i.ToCopyComputeScalePropertiesOutputWithContext(context.Background())
+}
+
+func (i CopyComputeScalePropertiesArgs) ToCopyComputeScalePropertiesOutputWithContext(ctx context.Context) CopyComputeScalePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CopyComputeScalePropertiesOutput)
+}
+
+func (i CopyComputeScalePropertiesArgs) ToCopyComputeScalePropertiesPtrOutput() CopyComputeScalePropertiesPtrOutput {
+	return i.ToCopyComputeScalePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i CopyComputeScalePropertiesArgs) ToCopyComputeScalePropertiesPtrOutputWithContext(ctx context.Context) CopyComputeScalePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CopyComputeScalePropertiesOutput).ToCopyComputeScalePropertiesPtrOutputWithContext(ctx)
+}
+
+// CopyComputeScalePropertiesPtrInput is an input type that accepts CopyComputeScalePropertiesArgs, CopyComputeScalePropertiesPtr and CopyComputeScalePropertiesPtrOutput values.
+// You can construct a concrete instance of `CopyComputeScalePropertiesPtrInput` via:
+//
+//	        CopyComputeScalePropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type CopyComputeScalePropertiesPtrInput interface {
+	pulumi.Input
+
+	ToCopyComputeScalePropertiesPtrOutput() CopyComputeScalePropertiesPtrOutput
+	ToCopyComputeScalePropertiesPtrOutputWithContext(context.Context) CopyComputeScalePropertiesPtrOutput
+}
+
+type copyComputeScalePropertiesPtrType CopyComputeScalePropertiesArgs
+
+func CopyComputeScalePropertiesPtr(v *CopyComputeScalePropertiesArgs) CopyComputeScalePropertiesPtrInput {
+	return (*copyComputeScalePropertiesPtrType)(v)
+}
+
+func (*copyComputeScalePropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CopyComputeScaleProperties)(nil)).Elem()
+}
+
+func (i *copyComputeScalePropertiesPtrType) ToCopyComputeScalePropertiesPtrOutput() CopyComputeScalePropertiesPtrOutput {
+	return i.ToCopyComputeScalePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *copyComputeScalePropertiesPtrType) ToCopyComputeScalePropertiesPtrOutputWithContext(ctx context.Context) CopyComputeScalePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CopyComputeScalePropertiesPtrOutput)
+}
+
+// CopyComputeScale properties for managed integration runtime.
+type CopyComputeScalePropertiesOutput struct{ *pulumi.OutputState }
+
+func (CopyComputeScalePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CopyComputeScaleProperties)(nil)).Elem()
+}
+
+func (o CopyComputeScalePropertiesOutput) ToCopyComputeScalePropertiesOutput() CopyComputeScalePropertiesOutput {
+	return o
+}
+
+func (o CopyComputeScalePropertiesOutput) ToCopyComputeScalePropertiesOutputWithContext(ctx context.Context) CopyComputeScalePropertiesOutput {
+	return o
+}
+
+func (o CopyComputeScalePropertiesOutput) ToCopyComputeScalePropertiesPtrOutput() CopyComputeScalePropertiesPtrOutput {
+	return o.ToCopyComputeScalePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o CopyComputeScalePropertiesOutput) ToCopyComputeScalePropertiesPtrOutputWithContext(ctx context.Context) CopyComputeScalePropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CopyComputeScaleProperties) *CopyComputeScaleProperties {
+		return &v
+	}).(CopyComputeScalePropertiesPtrOutput)
+}
+
+// DIU number setting reserved for copy activity execution. Supported values are multiples of 4 in range 4-256.
+func (o CopyComputeScalePropertiesOutput) DataIntegrationUnit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CopyComputeScaleProperties) *int { return v.DataIntegrationUnit }).(pulumi.IntPtrOutput)
+}
+
+// Time to live (in minutes) setting of integration runtime which will execute copy activity.
+func (o CopyComputeScalePropertiesOutput) TimeToLive() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CopyComputeScaleProperties) *int { return v.TimeToLive }).(pulumi.IntPtrOutput)
+}
+
+type CopyComputeScalePropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (CopyComputeScalePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CopyComputeScaleProperties)(nil)).Elem()
+}
+
+func (o CopyComputeScalePropertiesPtrOutput) ToCopyComputeScalePropertiesPtrOutput() CopyComputeScalePropertiesPtrOutput {
+	return o
+}
+
+func (o CopyComputeScalePropertiesPtrOutput) ToCopyComputeScalePropertiesPtrOutputWithContext(ctx context.Context) CopyComputeScalePropertiesPtrOutput {
+	return o
+}
+
+func (o CopyComputeScalePropertiesPtrOutput) Elem() CopyComputeScalePropertiesOutput {
+	return o.ApplyT(func(v *CopyComputeScaleProperties) CopyComputeScaleProperties {
+		if v != nil {
+			return *v
+		}
+		var ret CopyComputeScaleProperties
+		return ret
+	}).(CopyComputeScalePropertiesOutput)
+}
+
+// DIU number setting reserved for copy activity execution. Supported values are multiples of 4 in range 4-256.
+func (o CopyComputeScalePropertiesPtrOutput) DataIntegrationUnit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CopyComputeScaleProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DataIntegrationUnit
+	}).(pulumi.IntPtrOutput)
+}
+
+// Time to live (in minutes) setting of integration runtime which will execute copy activity.
+func (o CopyComputeScalePropertiesPtrOutput) TimeToLive() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CopyComputeScaleProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeToLive
+	}).(pulumi.IntPtrOutput)
+}
+
+// CopyComputeScale properties for managed integration runtime.
+type CopyComputeScalePropertiesResponse struct {
+	// DIU number setting reserved for copy activity execution. Supported values are multiples of 4 in range 4-256.
+	DataIntegrationUnit *int `pulumi:"dataIntegrationUnit"`
+	// Time to live (in minutes) setting of integration runtime which will execute copy activity.
+	TimeToLive *int `pulumi:"timeToLive"`
+}
+
+// CopyComputeScale properties for managed integration runtime.
+type CopyComputeScalePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (CopyComputeScalePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CopyComputeScalePropertiesResponse)(nil)).Elem()
+}
+
+func (o CopyComputeScalePropertiesResponseOutput) ToCopyComputeScalePropertiesResponseOutput() CopyComputeScalePropertiesResponseOutput {
+	return o
+}
+
+func (o CopyComputeScalePropertiesResponseOutput) ToCopyComputeScalePropertiesResponseOutputWithContext(ctx context.Context) CopyComputeScalePropertiesResponseOutput {
+	return o
+}
+
+// DIU number setting reserved for copy activity execution. Supported values are multiples of 4 in range 4-256.
+func (o CopyComputeScalePropertiesResponseOutput) DataIntegrationUnit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CopyComputeScalePropertiesResponse) *int { return v.DataIntegrationUnit }).(pulumi.IntPtrOutput)
+}
+
+// Time to live (in minutes) setting of integration runtime which will execute copy activity.
+func (o CopyComputeScalePropertiesResponseOutput) TimeToLive() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CopyComputeScalePropertiesResponse) *int { return v.TimeToLive }).(pulumi.IntPtrOutput)
+}
+
+type CopyComputeScalePropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CopyComputeScalePropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CopyComputeScalePropertiesResponse)(nil)).Elem()
+}
+
+func (o CopyComputeScalePropertiesResponsePtrOutput) ToCopyComputeScalePropertiesResponsePtrOutput() CopyComputeScalePropertiesResponsePtrOutput {
+	return o
+}
+
+func (o CopyComputeScalePropertiesResponsePtrOutput) ToCopyComputeScalePropertiesResponsePtrOutputWithContext(ctx context.Context) CopyComputeScalePropertiesResponsePtrOutput {
+	return o
+}
+
+func (o CopyComputeScalePropertiesResponsePtrOutput) Elem() CopyComputeScalePropertiesResponseOutput {
+	return o.ApplyT(func(v *CopyComputeScalePropertiesResponse) CopyComputeScalePropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CopyComputeScalePropertiesResponse
+		return ret
+	}).(CopyComputeScalePropertiesResponseOutput)
+}
+
+// DIU number setting reserved for copy activity execution. Supported values are multiples of 4 in range 4-256.
+func (o CopyComputeScalePropertiesResponsePtrOutput) DataIntegrationUnit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CopyComputeScalePropertiesResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DataIntegrationUnit
+	}).(pulumi.IntPtrOutput)
+}
+
+// Time to live (in minutes) setting of integration runtime which will execute copy activity.
+func (o CopyComputeScalePropertiesResponsePtrOutput) TimeToLive() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CopyComputeScalePropertiesResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeToLive
+	}).(pulumi.IntPtrOutput)
+}
+
 // Initial workspace AAD admin properties for a CSP subscription
 type CspWorkspaceAdminProperties struct {
 	// AAD object ID of initial workspace admin
@@ -2578,6 +2814,8 @@ func (o FollowerDatabaseDefinitionResponseArrayOutput) Index(i pulumi.IntInput) 
 
 // The compute resource properties for managed integration runtime.
 type IntegrationRuntimeComputeProperties struct {
+	// CopyComputeScale properties for managed integration runtime.
+	CopyComputeScaleProperties *CopyComputeScaleProperties `pulumi:"copyComputeScaleProperties"`
 	// Data flow properties for managed integration runtime.
 	DataFlowProperties *IntegrationRuntimeDataFlowProperties `pulumi:"dataFlowProperties"`
 	// The location for managed integration runtime. The supported regions could be found on https://docs.microsoft.com/en-us/azure/data-factory/data-factory-data-movement-activities
@@ -2588,6 +2826,8 @@ type IntegrationRuntimeComputeProperties struct {
 	NodeSize *string `pulumi:"nodeSize"`
 	// The required number of nodes for managed integration runtime.
 	NumberOfNodes *int `pulumi:"numberOfNodes"`
+	// PipelineExternalComputeScale properties for managed integration runtime.
+	PipelineExternalComputeScaleProperties *PipelineExternalComputeScaleProperties `pulumi:"pipelineExternalComputeScaleProperties"`
 	// VNet properties for managed integration runtime.
 	VNetProperties *IntegrationRuntimeVNetProperties `pulumi:"vNetProperties"`
 }
@@ -2605,6 +2845,8 @@ type IntegrationRuntimeComputePropertiesInput interface {
 
 // The compute resource properties for managed integration runtime.
 type IntegrationRuntimeComputePropertiesArgs struct {
+	// CopyComputeScale properties for managed integration runtime.
+	CopyComputeScaleProperties CopyComputeScalePropertiesPtrInput `pulumi:"copyComputeScaleProperties"`
 	// Data flow properties for managed integration runtime.
 	DataFlowProperties IntegrationRuntimeDataFlowPropertiesPtrInput `pulumi:"dataFlowProperties"`
 	// The location for managed integration runtime. The supported regions could be found on https://docs.microsoft.com/en-us/azure/data-factory/data-factory-data-movement-activities
@@ -2615,6 +2857,8 @@ type IntegrationRuntimeComputePropertiesArgs struct {
 	NodeSize pulumi.StringPtrInput `pulumi:"nodeSize"`
 	// The required number of nodes for managed integration runtime.
 	NumberOfNodes pulumi.IntPtrInput `pulumi:"numberOfNodes"`
+	// PipelineExternalComputeScale properties for managed integration runtime.
+	PipelineExternalComputeScaleProperties PipelineExternalComputeScalePropertiesPtrInput `pulumi:"pipelineExternalComputeScaleProperties"`
 	// VNet properties for managed integration runtime.
 	VNetProperties IntegrationRuntimeVNetPropertiesPtrInput `pulumi:"vNetProperties"`
 }
@@ -2697,6 +2941,13 @@ func (o IntegrationRuntimeComputePropertiesOutput) ToIntegrationRuntimeComputePr
 	}).(IntegrationRuntimeComputePropertiesPtrOutput)
 }
 
+// CopyComputeScale properties for managed integration runtime.
+func (o IntegrationRuntimeComputePropertiesOutput) CopyComputeScaleProperties() CopyComputeScalePropertiesPtrOutput {
+	return o.ApplyT(func(v IntegrationRuntimeComputeProperties) *CopyComputeScaleProperties {
+		return v.CopyComputeScaleProperties
+	}).(CopyComputeScalePropertiesPtrOutput)
+}
+
 // Data flow properties for managed integration runtime.
 func (o IntegrationRuntimeComputePropertiesOutput) DataFlowProperties() IntegrationRuntimeDataFlowPropertiesPtrOutput {
 	return o.ApplyT(func(v IntegrationRuntimeComputeProperties) *IntegrationRuntimeDataFlowProperties {
@@ -2722,6 +2973,13 @@ func (o IntegrationRuntimeComputePropertiesOutput) NodeSize() pulumi.StringPtrOu
 // The required number of nodes for managed integration runtime.
 func (o IntegrationRuntimeComputePropertiesOutput) NumberOfNodes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v IntegrationRuntimeComputeProperties) *int { return v.NumberOfNodes }).(pulumi.IntPtrOutput)
+}
+
+// PipelineExternalComputeScale properties for managed integration runtime.
+func (o IntegrationRuntimeComputePropertiesOutput) PipelineExternalComputeScaleProperties() PipelineExternalComputeScalePropertiesPtrOutput {
+	return o.ApplyT(func(v IntegrationRuntimeComputeProperties) *PipelineExternalComputeScaleProperties {
+		return v.PipelineExternalComputeScaleProperties
+	}).(PipelineExternalComputeScalePropertiesPtrOutput)
 }
 
 // VNet properties for managed integration runtime.
@@ -2751,6 +3009,16 @@ func (o IntegrationRuntimeComputePropertiesPtrOutput) Elem() IntegrationRuntimeC
 		var ret IntegrationRuntimeComputeProperties
 		return ret
 	}).(IntegrationRuntimeComputePropertiesOutput)
+}
+
+// CopyComputeScale properties for managed integration runtime.
+func (o IntegrationRuntimeComputePropertiesPtrOutput) CopyComputeScaleProperties() CopyComputeScalePropertiesPtrOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeComputeProperties) *CopyComputeScaleProperties {
+		if v == nil {
+			return nil
+		}
+		return v.CopyComputeScaleProperties
+	}).(CopyComputeScalePropertiesPtrOutput)
 }
 
 // Data flow properties for managed integration runtime.
@@ -2803,6 +3071,16 @@ func (o IntegrationRuntimeComputePropertiesPtrOutput) NumberOfNodes() pulumi.Int
 	}).(pulumi.IntPtrOutput)
 }
 
+// PipelineExternalComputeScale properties for managed integration runtime.
+func (o IntegrationRuntimeComputePropertiesPtrOutput) PipelineExternalComputeScaleProperties() PipelineExternalComputeScalePropertiesPtrOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeComputeProperties) *PipelineExternalComputeScaleProperties {
+		if v == nil {
+			return nil
+		}
+		return v.PipelineExternalComputeScaleProperties
+	}).(PipelineExternalComputeScalePropertiesPtrOutput)
+}
+
 // VNet properties for managed integration runtime.
 func (o IntegrationRuntimeComputePropertiesPtrOutput) VNetProperties() IntegrationRuntimeVNetPropertiesPtrOutput {
 	return o.ApplyT(func(v *IntegrationRuntimeComputeProperties) *IntegrationRuntimeVNetProperties {
@@ -2815,6 +3093,8 @@ func (o IntegrationRuntimeComputePropertiesPtrOutput) VNetProperties() Integrati
 
 // The compute resource properties for managed integration runtime.
 type IntegrationRuntimeComputePropertiesResponse struct {
+	// CopyComputeScale properties for managed integration runtime.
+	CopyComputeScaleProperties *CopyComputeScalePropertiesResponse `pulumi:"copyComputeScaleProperties"`
 	// Data flow properties for managed integration runtime.
 	DataFlowProperties *IntegrationRuntimeDataFlowPropertiesResponse `pulumi:"dataFlowProperties"`
 	// The location for managed integration runtime. The supported regions could be found on https://docs.microsoft.com/en-us/azure/data-factory/data-factory-data-movement-activities
@@ -2825,6 +3105,8 @@ type IntegrationRuntimeComputePropertiesResponse struct {
 	NodeSize *string `pulumi:"nodeSize"`
 	// The required number of nodes for managed integration runtime.
 	NumberOfNodes *int `pulumi:"numberOfNodes"`
+	// PipelineExternalComputeScale properties for managed integration runtime.
+	PipelineExternalComputeScaleProperties *PipelineExternalComputeScalePropertiesResponse `pulumi:"pipelineExternalComputeScaleProperties"`
 	// VNet properties for managed integration runtime.
 	VNetProperties *IntegrationRuntimeVNetPropertiesResponse `pulumi:"vNetProperties"`
 }
@@ -2842,6 +3124,13 @@ func (o IntegrationRuntimeComputePropertiesResponseOutput) ToIntegrationRuntimeC
 
 func (o IntegrationRuntimeComputePropertiesResponseOutput) ToIntegrationRuntimeComputePropertiesResponseOutputWithContext(ctx context.Context) IntegrationRuntimeComputePropertiesResponseOutput {
 	return o
+}
+
+// CopyComputeScale properties for managed integration runtime.
+func (o IntegrationRuntimeComputePropertiesResponseOutput) CopyComputeScaleProperties() CopyComputeScalePropertiesResponsePtrOutput {
+	return o.ApplyT(func(v IntegrationRuntimeComputePropertiesResponse) *CopyComputeScalePropertiesResponse {
+		return v.CopyComputeScaleProperties
+	}).(CopyComputeScalePropertiesResponsePtrOutput)
 }
 
 // Data flow properties for managed integration runtime.
@@ -2869,6 +3158,13 @@ func (o IntegrationRuntimeComputePropertiesResponseOutput) NodeSize() pulumi.Str
 // The required number of nodes for managed integration runtime.
 func (o IntegrationRuntimeComputePropertiesResponseOutput) NumberOfNodes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v IntegrationRuntimeComputePropertiesResponse) *int { return v.NumberOfNodes }).(pulumi.IntPtrOutput)
+}
+
+// PipelineExternalComputeScale properties for managed integration runtime.
+func (o IntegrationRuntimeComputePropertiesResponseOutput) PipelineExternalComputeScaleProperties() PipelineExternalComputeScalePropertiesResponsePtrOutput {
+	return o.ApplyT(func(v IntegrationRuntimeComputePropertiesResponse) *PipelineExternalComputeScalePropertiesResponse {
+		return v.PipelineExternalComputeScaleProperties
+	}).(PipelineExternalComputeScalePropertiesResponsePtrOutput)
 }
 
 // VNet properties for managed integration runtime.
@@ -2900,6 +3196,16 @@ func (o IntegrationRuntimeComputePropertiesResponsePtrOutput) Elem() Integration
 		var ret IntegrationRuntimeComputePropertiesResponse
 		return ret
 	}).(IntegrationRuntimeComputePropertiesResponseOutput)
+}
+
+// CopyComputeScale properties for managed integration runtime.
+func (o IntegrationRuntimeComputePropertiesResponsePtrOutput) CopyComputeScaleProperties() CopyComputeScalePropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeComputePropertiesResponse) *CopyComputeScalePropertiesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.CopyComputeScaleProperties
+	}).(CopyComputeScalePropertiesResponsePtrOutput)
 }
 
 // Data flow properties for managed integration runtime.
@@ -2950,6 +3256,16 @@ func (o IntegrationRuntimeComputePropertiesResponsePtrOutput) NumberOfNodes() pu
 		}
 		return v.NumberOfNodes
 	}).(pulumi.IntPtrOutput)
+}
+
+// PipelineExternalComputeScale properties for managed integration runtime.
+func (o IntegrationRuntimeComputePropertiesResponsePtrOutput) PipelineExternalComputeScaleProperties() PipelineExternalComputeScalePropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeComputePropertiesResponse) *PipelineExternalComputeScalePropertiesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.PipelineExternalComputeScaleProperties
+	}).(PipelineExternalComputeScalePropertiesResponsePtrOutput)
 }
 
 // VNet properties for managed integration runtime.
@@ -7417,6 +7733,278 @@ func (o OptimizedAutoscaleResponsePtrOutput) Version() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// PipelineExternalComputeScale properties for managed integration runtime.
+type PipelineExternalComputeScaleProperties struct {
+	// Number of the the external nodes, which should be greater than 0 and less than 11.
+	NumberOfExternalNodes *int `pulumi:"numberOfExternalNodes"`
+	// Number of the pipeline nodes, which should be greater than 0 and less than 11.
+	NumberOfPipelineNodes *int `pulumi:"numberOfPipelineNodes"`
+	// Time to live (in minutes) setting of integration runtime which will execute pipeline and external activity.
+	TimeToLive *int `pulumi:"timeToLive"`
+}
+
+// PipelineExternalComputeScalePropertiesInput is an input type that accepts PipelineExternalComputeScalePropertiesArgs and PipelineExternalComputeScalePropertiesOutput values.
+// You can construct a concrete instance of `PipelineExternalComputeScalePropertiesInput` via:
+//
+//	PipelineExternalComputeScalePropertiesArgs{...}
+type PipelineExternalComputeScalePropertiesInput interface {
+	pulumi.Input
+
+	ToPipelineExternalComputeScalePropertiesOutput() PipelineExternalComputeScalePropertiesOutput
+	ToPipelineExternalComputeScalePropertiesOutputWithContext(context.Context) PipelineExternalComputeScalePropertiesOutput
+}
+
+// PipelineExternalComputeScale properties for managed integration runtime.
+type PipelineExternalComputeScalePropertiesArgs struct {
+	// Number of the the external nodes, which should be greater than 0 and less than 11.
+	NumberOfExternalNodes pulumi.IntPtrInput `pulumi:"numberOfExternalNodes"`
+	// Number of the pipeline nodes, which should be greater than 0 and less than 11.
+	NumberOfPipelineNodes pulumi.IntPtrInput `pulumi:"numberOfPipelineNodes"`
+	// Time to live (in minutes) setting of integration runtime which will execute pipeline and external activity.
+	TimeToLive pulumi.IntPtrInput `pulumi:"timeToLive"`
+}
+
+func (PipelineExternalComputeScalePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineExternalComputeScaleProperties)(nil)).Elem()
+}
+
+func (i PipelineExternalComputeScalePropertiesArgs) ToPipelineExternalComputeScalePropertiesOutput() PipelineExternalComputeScalePropertiesOutput {
+	return i.ToPipelineExternalComputeScalePropertiesOutputWithContext(context.Background())
+}
+
+func (i PipelineExternalComputeScalePropertiesArgs) ToPipelineExternalComputeScalePropertiesOutputWithContext(ctx context.Context) PipelineExternalComputeScalePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineExternalComputeScalePropertiesOutput)
+}
+
+func (i PipelineExternalComputeScalePropertiesArgs) ToPipelineExternalComputeScalePropertiesPtrOutput() PipelineExternalComputeScalePropertiesPtrOutput {
+	return i.ToPipelineExternalComputeScalePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i PipelineExternalComputeScalePropertiesArgs) ToPipelineExternalComputeScalePropertiesPtrOutputWithContext(ctx context.Context) PipelineExternalComputeScalePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineExternalComputeScalePropertiesOutput).ToPipelineExternalComputeScalePropertiesPtrOutputWithContext(ctx)
+}
+
+// PipelineExternalComputeScalePropertiesPtrInput is an input type that accepts PipelineExternalComputeScalePropertiesArgs, PipelineExternalComputeScalePropertiesPtr and PipelineExternalComputeScalePropertiesPtrOutput values.
+// You can construct a concrete instance of `PipelineExternalComputeScalePropertiesPtrInput` via:
+//
+//	        PipelineExternalComputeScalePropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type PipelineExternalComputeScalePropertiesPtrInput interface {
+	pulumi.Input
+
+	ToPipelineExternalComputeScalePropertiesPtrOutput() PipelineExternalComputeScalePropertiesPtrOutput
+	ToPipelineExternalComputeScalePropertiesPtrOutputWithContext(context.Context) PipelineExternalComputeScalePropertiesPtrOutput
+}
+
+type pipelineExternalComputeScalePropertiesPtrType PipelineExternalComputeScalePropertiesArgs
+
+func PipelineExternalComputeScalePropertiesPtr(v *PipelineExternalComputeScalePropertiesArgs) PipelineExternalComputeScalePropertiesPtrInput {
+	return (*pipelineExternalComputeScalePropertiesPtrType)(v)
+}
+
+func (*pipelineExternalComputeScalePropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineExternalComputeScaleProperties)(nil)).Elem()
+}
+
+func (i *pipelineExternalComputeScalePropertiesPtrType) ToPipelineExternalComputeScalePropertiesPtrOutput() PipelineExternalComputeScalePropertiesPtrOutput {
+	return i.ToPipelineExternalComputeScalePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *pipelineExternalComputeScalePropertiesPtrType) ToPipelineExternalComputeScalePropertiesPtrOutputWithContext(ctx context.Context) PipelineExternalComputeScalePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineExternalComputeScalePropertiesPtrOutput)
+}
+
+// PipelineExternalComputeScale properties for managed integration runtime.
+type PipelineExternalComputeScalePropertiesOutput struct{ *pulumi.OutputState }
+
+func (PipelineExternalComputeScalePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineExternalComputeScaleProperties)(nil)).Elem()
+}
+
+func (o PipelineExternalComputeScalePropertiesOutput) ToPipelineExternalComputeScalePropertiesOutput() PipelineExternalComputeScalePropertiesOutput {
+	return o
+}
+
+func (o PipelineExternalComputeScalePropertiesOutput) ToPipelineExternalComputeScalePropertiesOutputWithContext(ctx context.Context) PipelineExternalComputeScalePropertiesOutput {
+	return o
+}
+
+func (o PipelineExternalComputeScalePropertiesOutput) ToPipelineExternalComputeScalePropertiesPtrOutput() PipelineExternalComputeScalePropertiesPtrOutput {
+	return o.ToPipelineExternalComputeScalePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o PipelineExternalComputeScalePropertiesOutput) ToPipelineExternalComputeScalePropertiesPtrOutputWithContext(ctx context.Context) PipelineExternalComputeScalePropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PipelineExternalComputeScaleProperties) *PipelineExternalComputeScaleProperties {
+		return &v
+	}).(PipelineExternalComputeScalePropertiesPtrOutput)
+}
+
+// Number of the the external nodes, which should be greater than 0 and less than 11.
+func (o PipelineExternalComputeScalePropertiesOutput) NumberOfExternalNodes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PipelineExternalComputeScaleProperties) *int { return v.NumberOfExternalNodes }).(pulumi.IntPtrOutput)
+}
+
+// Number of the pipeline nodes, which should be greater than 0 and less than 11.
+func (o PipelineExternalComputeScalePropertiesOutput) NumberOfPipelineNodes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PipelineExternalComputeScaleProperties) *int { return v.NumberOfPipelineNodes }).(pulumi.IntPtrOutput)
+}
+
+// Time to live (in minutes) setting of integration runtime which will execute pipeline and external activity.
+func (o PipelineExternalComputeScalePropertiesOutput) TimeToLive() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PipelineExternalComputeScaleProperties) *int { return v.TimeToLive }).(pulumi.IntPtrOutput)
+}
+
+type PipelineExternalComputeScalePropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (PipelineExternalComputeScalePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineExternalComputeScaleProperties)(nil)).Elem()
+}
+
+func (o PipelineExternalComputeScalePropertiesPtrOutput) ToPipelineExternalComputeScalePropertiesPtrOutput() PipelineExternalComputeScalePropertiesPtrOutput {
+	return o
+}
+
+func (o PipelineExternalComputeScalePropertiesPtrOutput) ToPipelineExternalComputeScalePropertiesPtrOutputWithContext(ctx context.Context) PipelineExternalComputeScalePropertiesPtrOutput {
+	return o
+}
+
+func (o PipelineExternalComputeScalePropertiesPtrOutput) Elem() PipelineExternalComputeScalePropertiesOutput {
+	return o.ApplyT(func(v *PipelineExternalComputeScaleProperties) PipelineExternalComputeScaleProperties {
+		if v != nil {
+			return *v
+		}
+		var ret PipelineExternalComputeScaleProperties
+		return ret
+	}).(PipelineExternalComputeScalePropertiesOutput)
+}
+
+// Number of the the external nodes, which should be greater than 0 and less than 11.
+func (o PipelineExternalComputeScalePropertiesPtrOutput) NumberOfExternalNodes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PipelineExternalComputeScaleProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NumberOfExternalNodes
+	}).(pulumi.IntPtrOutput)
+}
+
+// Number of the pipeline nodes, which should be greater than 0 and less than 11.
+func (o PipelineExternalComputeScalePropertiesPtrOutput) NumberOfPipelineNodes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PipelineExternalComputeScaleProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NumberOfPipelineNodes
+	}).(pulumi.IntPtrOutput)
+}
+
+// Time to live (in minutes) setting of integration runtime which will execute pipeline and external activity.
+func (o PipelineExternalComputeScalePropertiesPtrOutput) TimeToLive() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PipelineExternalComputeScaleProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeToLive
+	}).(pulumi.IntPtrOutput)
+}
+
+// PipelineExternalComputeScale properties for managed integration runtime.
+type PipelineExternalComputeScalePropertiesResponse struct {
+	// Number of the the external nodes, which should be greater than 0 and less than 11.
+	NumberOfExternalNodes *int `pulumi:"numberOfExternalNodes"`
+	// Number of the pipeline nodes, which should be greater than 0 and less than 11.
+	NumberOfPipelineNodes *int `pulumi:"numberOfPipelineNodes"`
+	// Time to live (in minutes) setting of integration runtime which will execute pipeline and external activity.
+	TimeToLive *int `pulumi:"timeToLive"`
+}
+
+// PipelineExternalComputeScale properties for managed integration runtime.
+type PipelineExternalComputeScalePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (PipelineExternalComputeScalePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineExternalComputeScalePropertiesResponse)(nil)).Elem()
+}
+
+func (o PipelineExternalComputeScalePropertiesResponseOutput) ToPipelineExternalComputeScalePropertiesResponseOutput() PipelineExternalComputeScalePropertiesResponseOutput {
+	return o
+}
+
+func (o PipelineExternalComputeScalePropertiesResponseOutput) ToPipelineExternalComputeScalePropertiesResponseOutputWithContext(ctx context.Context) PipelineExternalComputeScalePropertiesResponseOutput {
+	return o
+}
+
+// Number of the the external nodes, which should be greater than 0 and less than 11.
+func (o PipelineExternalComputeScalePropertiesResponseOutput) NumberOfExternalNodes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PipelineExternalComputeScalePropertiesResponse) *int { return v.NumberOfExternalNodes }).(pulumi.IntPtrOutput)
+}
+
+// Number of the pipeline nodes, which should be greater than 0 and less than 11.
+func (o PipelineExternalComputeScalePropertiesResponseOutput) NumberOfPipelineNodes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PipelineExternalComputeScalePropertiesResponse) *int { return v.NumberOfPipelineNodes }).(pulumi.IntPtrOutput)
+}
+
+// Time to live (in minutes) setting of integration runtime which will execute pipeline and external activity.
+func (o PipelineExternalComputeScalePropertiesResponseOutput) TimeToLive() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PipelineExternalComputeScalePropertiesResponse) *int { return v.TimeToLive }).(pulumi.IntPtrOutput)
+}
+
+type PipelineExternalComputeScalePropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PipelineExternalComputeScalePropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineExternalComputeScalePropertiesResponse)(nil)).Elem()
+}
+
+func (o PipelineExternalComputeScalePropertiesResponsePtrOutput) ToPipelineExternalComputeScalePropertiesResponsePtrOutput() PipelineExternalComputeScalePropertiesResponsePtrOutput {
+	return o
+}
+
+func (o PipelineExternalComputeScalePropertiesResponsePtrOutput) ToPipelineExternalComputeScalePropertiesResponsePtrOutputWithContext(ctx context.Context) PipelineExternalComputeScalePropertiesResponsePtrOutput {
+	return o
+}
+
+func (o PipelineExternalComputeScalePropertiesResponsePtrOutput) Elem() PipelineExternalComputeScalePropertiesResponseOutput {
+	return o.ApplyT(func(v *PipelineExternalComputeScalePropertiesResponse) PipelineExternalComputeScalePropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PipelineExternalComputeScalePropertiesResponse
+		return ret
+	}).(PipelineExternalComputeScalePropertiesResponseOutput)
+}
+
+// Number of the the external nodes, which should be greater than 0 and less than 11.
+func (o PipelineExternalComputeScalePropertiesResponsePtrOutput) NumberOfExternalNodes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PipelineExternalComputeScalePropertiesResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NumberOfExternalNodes
+	}).(pulumi.IntPtrOutput)
+}
+
+// Number of the pipeline nodes, which should be greater than 0 and less than 11.
+func (o PipelineExternalComputeScalePropertiesResponsePtrOutput) NumberOfPipelineNodes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PipelineExternalComputeScalePropertiesResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NumberOfPipelineNodes
+	}).(pulumi.IntPtrOutput)
+}
+
+// Time to live (in minutes) setting of integration runtime which will execute pipeline and external activity.
+func (o PipelineExternalComputeScalePropertiesResponsePtrOutput) TimeToLive() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PipelineExternalComputeScalePropertiesResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeToLive
+	}).(pulumi.IntPtrOutput)
+}
+
 // A private endpoint connection
 type PrivateEndpointConnectionType struct {
 	// Connection state of the private endpoint connection.
@@ -8435,6 +9023,8 @@ type SelfHostedIntegrationRuntime struct {
 	Description *string `pulumi:"description"`
 	// Linked integration runtime type from data factory
 	LinkedInfo interface{} `pulumi:"linkedInfo"`
+	// An alternative option to ensure interactive authoring function when your self-hosted integration runtime is unable to establish a connection with Azure Relay.
+	SelfContainedInteractiveAuthoringEnabled *bool `pulumi:"selfContainedInteractiveAuthoringEnabled"`
 	// The type of integration runtime.
 	// Expected value is 'SelfHosted'.
 	Type string `pulumi:"type"`
@@ -8457,6 +9047,8 @@ type SelfHostedIntegrationRuntimeArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Linked integration runtime type from data factory
 	LinkedInfo pulumi.Input `pulumi:"linkedInfo"`
+	// An alternative option to ensure interactive authoring function when your self-hosted integration runtime is unable to establish a connection with Azure Relay.
+	SelfContainedInteractiveAuthoringEnabled pulumi.BoolPtrInput `pulumi:"selfContainedInteractiveAuthoringEnabled"`
 	// The type of integration runtime.
 	// Expected value is 'SelfHosted'.
 	Type pulumi.StringInput `pulumi:"type"`
@@ -8497,6 +9089,11 @@ func (o SelfHostedIntegrationRuntimeOutput) Description() pulumi.StringPtrOutput
 // Linked integration runtime type from data factory
 func (o SelfHostedIntegrationRuntimeOutput) LinkedInfo() pulumi.AnyOutput {
 	return o.ApplyT(func(v SelfHostedIntegrationRuntime) interface{} { return v.LinkedInfo }).(pulumi.AnyOutput)
+}
+
+// An alternative option to ensure interactive authoring function when your self-hosted integration runtime is unable to establish a connection with Azure Relay.
+func (o SelfHostedIntegrationRuntimeOutput) SelfContainedInteractiveAuthoringEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SelfHostedIntegrationRuntime) *bool { return v.SelfContainedInteractiveAuthoringEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // The type of integration runtime.
@@ -8676,6 +9273,8 @@ type SelfHostedIntegrationRuntimeResponse struct {
 	Description *string `pulumi:"description"`
 	// Linked integration runtime type from data factory
 	LinkedInfo interface{} `pulumi:"linkedInfo"`
+	// An alternative option to ensure interactive authoring function when your self-hosted integration runtime is unable to establish a connection with Azure Relay.
+	SelfContainedInteractiveAuthoringEnabled *bool `pulumi:"selfContainedInteractiveAuthoringEnabled"`
 	// The type of integration runtime.
 	// Expected value is 'SelfHosted'.
 	Type string `pulumi:"type"`
@@ -8704,6 +9303,11 @@ func (o SelfHostedIntegrationRuntimeResponseOutput) Description() pulumi.StringP
 // Linked integration runtime type from data factory
 func (o SelfHostedIntegrationRuntimeResponseOutput) LinkedInfo() pulumi.AnyOutput {
 	return o.ApplyT(func(v SelfHostedIntegrationRuntimeResponse) interface{} { return v.LinkedInfo }).(pulumi.AnyOutput)
+}
+
+// An alternative option to ensure interactive authoring function when your self-hosted integration runtime is unable to establish a connection with Azure Relay.
+func (o SelfHostedIntegrationRuntimeResponseOutput) SelfContainedInteractiveAuthoringEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SelfHostedIntegrationRuntimeResponse) *bool { return v.SelfContainedInteractiveAuthoringEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // The type of integration runtime.
@@ -8743,6 +9347,8 @@ type SelfHostedIntegrationRuntimeStatusResponse struct {
 	PushedVersion string `pulumi:"pushedVersion"`
 	// The date at which the integration runtime will be scheduled to update, in ISO8601 format.
 	ScheduledUpdateDate string `pulumi:"scheduledUpdateDate"`
+	// An alternative option to ensure interactive authoring function when your self-hosted integration runtime is unable to establish a connection with Azure Relay.
+	SelfContainedInteractiveAuthoringEnabled bool `pulumi:"selfContainedInteractiveAuthoringEnabled"`
 	// The service region of the integration runtime
 	ServiceRegion *string `pulumi:"serviceRegion"`
 	// The URLs for the services used in integration runtime backend service.
@@ -8854,6 +9460,13 @@ func (o SelfHostedIntegrationRuntimeStatusResponseOutput) PushedVersion() pulumi
 // The date at which the integration runtime will be scheduled to update, in ISO8601 format.
 func (o SelfHostedIntegrationRuntimeStatusResponseOutput) ScheduledUpdateDate() pulumi.StringOutput {
 	return o.ApplyT(func(v SelfHostedIntegrationRuntimeStatusResponse) string { return v.ScheduledUpdateDate }).(pulumi.StringOutput)
+}
+
+// An alternative option to ensure interactive authoring function when your self-hosted integration runtime is unable to establish a connection with Azure Relay.
+func (o SelfHostedIntegrationRuntimeStatusResponseOutput) SelfContainedInteractiveAuthoringEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v SelfHostedIntegrationRuntimeStatusResponse) bool {
+		return v.SelfContainedInteractiveAuthoringEnabled
+	}).(pulumi.BoolOutput)
 }
 
 // The service region of the integration runtime
@@ -11896,6 +12509,10 @@ func init() {
 	pulumi.RegisterOutputType(CmdkeySetupResponseOutput{})
 	pulumi.RegisterOutputType(ComponentSetupOutput{})
 	pulumi.RegisterOutputType(ComponentSetupResponseOutput{})
+	pulumi.RegisterOutputType(CopyComputeScalePropertiesOutput{})
+	pulumi.RegisterOutputType(CopyComputeScalePropertiesPtrOutput{})
+	pulumi.RegisterOutputType(CopyComputeScalePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(CopyComputeScalePropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(CspWorkspaceAdminPropertiesOutput{})
 	pulumi.RegisterOutputType(CspWorkspaceAdminPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(CspWorkspaceAdminPropertiesResponseOutput{})
@@ -11998,6 +12615,10 @@ func init() {
 	pulumi.RegisterOutputType(OptimizedAutoscalePtrOutput{})
 	pulumi.RegisterOutputType(OptimizedAutoscaleResponseOutput{})
 	pulumi.RegisterOutputType(OptimizedAutoscaleResponsePtrOutput{})
+	pulumi.RegisterOutputType(PipelineExternalComputeScalePropertiesOutput{})
+	pulumi.RegisterOutputType(PipelineExternalComputeScalePropertiesPtrOutput{})
+	pulumi.RegisterOutputType(PipelineExternalComputeScalePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(PipelineExternalComputeScalePropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionTypeOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionTypeArrayOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionForPrivateLinkHubBasicResponseOutput{})

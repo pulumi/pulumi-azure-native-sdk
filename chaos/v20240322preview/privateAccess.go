@@ -51,6 +51,9 @@ func NewPrivateAccess(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:chaos/v20231027preview:PrivateAccess"),
 		},
+		{
+			Type: pulumi.String("azure-native:chaos/v20241101preview:PrivateAccess"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

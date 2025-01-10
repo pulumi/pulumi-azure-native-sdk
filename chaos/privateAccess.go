@@ -15,7 +15,7 @@ import (
 // PrivateAccesses tracked resource.
 // Azure REST API version: 2023-10-27-preview.
 //
-// Other available API versions: 2024-03-22-preview.
+// Other available API versions: 2024-03-22-preview, 2024-11-01-preview.
 type PrivateAccess struct {
 	pulumi.CustomResourceState
 
@@ -49,6 +49,9 @@ func NewPrivateAccess(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:chaos/v20240322preview:PrivateAccess"),
+		},
+		{
+			Type: pulumi.String("azure-native:chaos/v20241101preview:PrivateAccess"),
 		},
 	})
 	opts = append(opts, aliases)

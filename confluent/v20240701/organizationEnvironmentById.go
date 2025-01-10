@@ -41,6 +41,12 @@ func NewOrganizationEnvironmentById(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:confluent:OrganizationEnvironmentById"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource OrganizationEnvironmentById
 	err := ctx.RegisterResource("azure-native:confluent/v20240701:OrganizationEnvironmentById", name, args, &resource, opts...)

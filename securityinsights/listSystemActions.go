@@ -13,6 +13,8 @@ import (
 
 // List of actions for a business application system.
 // Azure REST API version: 2024-04-01-preview.
+//
+// Other available API versions: 2024-10-01-preview.
 func ListSystemActions(ctx *pulumi.Context, args *ListSystemActionsArgs, opts ...pulumi.InvokeOption) (*ListSystemActionsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListSystemActionsResult

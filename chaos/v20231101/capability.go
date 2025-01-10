@@ -79,6 +79,9 @@ func NewCapability(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:chaos/v20240322preview:Capability"),
 		},
+		{
+			Type: pulumi.String("azure-native:chaos/v20241101preview:Capability"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
