@@ -45,6 +45,9 @@ func NewGroupQuota(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:quota/v20241015preview:GroupQuota"),
 		},
+		{
+			Type: pulumi.String("azure-native:quota/v20250301:GroupQuota"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

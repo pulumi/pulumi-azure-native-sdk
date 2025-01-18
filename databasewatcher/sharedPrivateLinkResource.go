@@ -15,7 +15,7 @@ import (
 // Concrete proxy resource types can be created by aliasing this type using a specific property type.
 // Azure REST API version: 2023-09-01-preview.
 //
-// Other available API versions: 2024-07-19-preview, 2024-10-01-preview.
+// Other available API versions: 2024-07-19-preview, 2024-10-01-preview, 2025-01-02.
 type SharedPrivateLinkResource struct {
 	pulumi.CustomResourceState
 
@@ -25,7 +25,7 @@ type SharedPrivateLinkResource struct {
 	GroupId pulumi.StringOutput `pulumi:"groupId"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The resource id of the resource the shared private link resource is for.
+	// The resource ID of the resource the shared private link resource is for.
 	PrivateLinkResourceId pulumi.StringOutput `pulumi:"privateLinkResourceId"`
 	// The provisioning state of the resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
@@ -71,6 +71,9 @@ func NewSharedPrivateLinkResource(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:databasewatcher/v20241001preview:SharedPrivateLinkResource"),
 		},
+		{
+			Type: pulumi.String("azure-native:databasewatcher/v20250102:SharedPrivateLinkResource"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -110,7 +113,7 @@ type sharedPrivateLinkResourceArgs struct {
 	DnsZone *string `pulumi:"dnsZone"`
 	// The group id from the provider of resource the shared private link resource is for.
 	GroupId string `pulumi:"groupId"`
-	// The resource id of the resource the shared private link resource is for.
+	// The resource ID of the resource the shared private link resource is for.
 	PrivateLinkResourceId string `pulumi:"privateLinkResourceId"`
 	// The request message for requesting approval of the shared private link resource.
 	RequestMessage string `pulumi:"requestMessage"`
@@ -128,7 +131,7 @@ type SharedPrivateLinkResourceArgs struct {
 	DnsZone pulumi.StringPtrInput
 	// The group id from the provider of resource the shared private link resource is for.
 	GroupId pulumi.StringInput
-	// The resource id of the resource the shared private link resource is for.
+	// The resource ID of the resource the shared private link resource is for.
 	PrivateLinkResourceId pulumi.StringInput
 	// The request message for requesting approval of the shared private link resource.
 	RequestMessage pulumi.StringInput
@@ -192,7 +195,7 @@ func (o SharedPrivateLinkResourceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SharedPrivateLinkResource) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The resource id of the resource the shared private link resource is for.
+// The resource ID of the resource the shared private link resource is for.
 func (o SharedPrivateLinkResourceOutput) PrivateLinkResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SharedPrivateLinkResource) pulumi.StringOutput { return v.PrivateLinkResourceId }).(pulumi.StringOutput)
 }

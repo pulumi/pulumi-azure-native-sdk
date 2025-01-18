@@ -15,7 +15,7 @@ import (
 // Security Rule resource.
 // Azure REST API version: 2024-02-01-preview.
 //
-// Other available API versions: 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview.
+// Other available API versions: 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview.
 type SecurityRule struct {
 	pulumi.CustomResourceState
 
@@ -86,6 +86,9 @@ func NewSecurityRule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20240801preview:SecurityRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20241001preview:SecurityRule"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -465,47 +465,6 @@ func (i IpamPoolPropertiesArgs) ToIpamPoolPropertiesOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(IpamPoolPropertiesOutput)
 }
 
-func (i IpamPoolPropertiesArgs) ToIpamPoolPropertiesPtrOutput() IpamPoolPropertiesPtrOutput {
-	return i.ToIpamPoolPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (i IpamPoolPropertiesArgs) ToIpamPoolPropertiesPtrOutputWithContext(ctx context.Context) IpamPoolPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IpamPoolPropertiesOutput).ToIpamPoolPropertiesPtrOutputWithContext(ctx)
-}
-
-// IpamPoolPropertiesPtrInput is an input type that accepts IpamPoolPropertiesArgs, IpamPoolPropertiesPtr and IpamPoolPropertiesPtrOutput values.
-// You can construct a concrete instance of `IpamPoolPropertiesPtrInput` via:
-//
-//	        IpamPoolPropertiesArgs{...}
-//
-//	or:
-//
-//	        nil
-type IpamPoolPropertiesPtrInput interface {
-	pulumi.Input
-
-	ToIpamPoolPropertiesPtrOutput() IpamPoolPropertiesPtrOutput
-	ToIpamPoolPropertiesPtrOutputWithContext(context.Context) IpamPoolPropertiesPtrOutput
-}
-
-type ipamPoolPropertiesPtrType IpamPoolPropertiesArgs
-
-func IpamPoolPropertiesPtr(v *IpamPoolPropertiesArgs) IpamPoolPropertiesPtrInput {
-	return (*ipamPoolPropertiesPtrType)(v)
-}
-
-func (*ipamPoolPropertiesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**IpamPoolProperties)(nil)).Elem()
-}
-
-func (i *ipamPoolPropertiesPtrType) ToIpamPoolPropertiesPtrOutput() IpamPoolPropertiesPtrOutput {
-	return i.ToIpamPoolPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (i *ipamPoolPropertiesPtrType) ToIpamPoolPropertiesPtrOutputWithContext(ctx context.Context) IpamPoolPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IpamPoolPropertiesPtrOutput)
-}
-
 // Properties of IpamPool resource properties which are specific to the Pool resource.
 type IpamPoolPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -519,16 +478,6 @@ func (o IpamPoolPropertiesOutput) ToIpamPoolPropertiesOutput() IpamPoolPropertie
 
 func (o IpamPoolPropertiesOutput) ToIpamPoolPropertiesOutputWithContext(ctx context.Context) IpamPoolPropertiesOutput {
 	return o
-}
-
-func (o IpamPoolPropertiesOutput) ToIpamPoolPropertiesPtrOutput() IpamPoolPropertiesPtrOutput {
-	return o.ToIpamPoolPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (o IpamPoolPropertiesOutput) ToIpamPoolPropertiesPtrOutputWithContext(ctx context.Context) IpamPoolPropertiesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v IpamPoolProperties) *IpamPoolProperties {
-		return &v
-	}).(IpamPoolPropertiesPtrOutput)
 }
 
 // List of IP address prefixes of the resource.
@@ -548,69 +497,6 @@ func (o IpamPoolPropertiesOutput) DisplayName() pulumi.StringPtrOutput {
 // String representing parent IpamPool resource name. If empty the IpamPool will be a root pool.
 func (o IpamPoolPropertiesOutput) ParentPoolName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IpamPoolProperties) *string { return v.ParentPoolName }).(pulumi.StringPtrOutput)
-}
-
-type IpamPoolPropertiesPtrOutput struct{ *pulumi.OutputState }
-
-func (IpamPoolPropertiesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**IpamPoolProperties)(nil)).Elem()
-}
-
-func (o IpamPoolPropertiesPtrOutput) ToIpamPoolPropertiesPtrOutput() IpamPoolPropertiesPtrOutput {
-	return o
-}
-
-func (o IpamPoolPropertiesPtrOutput) ToIpamPoolPropertiesPtrOutputWithContext(ctx context.Context) IpamPoolPropertiesPtrOutput {
-	return o
-}
-
-func (o IpamPoolPropertiesPtrOutput) Elem() IpamPoolPropertiesOutput {
-	return o.ApplyT(func(v *IpamPoolProperties) IpamPoolProperties {
-		if v != nil {
-			return *v
-		}
-		var ret IpamPoolProperties
-		return ret
-	}).(IpamPoolPropertiesOutput)
-}
-
-// List of IP address prefixes of the resource.
-func (o IpamPoolPropertiesPtrOutput) AddressPrefixes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *IpamPoolProperties) []string {
-		if v == nil {
-			return nil
-		}
-		return v.AddressPrefixes
-	}).(pulumi.StringArrayOutput)
-}
-
-func (o IpamPoolPropertiesPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IpamPoolProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Description
-	}).(pulumi.StringPtrOutput)
-}
-
-// String representing a friendly name for the resource.
-func (o IpamPoolPropertiesPtrOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IpamPoolProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DisplayName
-	}).(pulumi.StringPtrOutput)
-}
-
-// String representing parent IpamPool resource name. If empty the IpamPool will be a root pool.
-func (o IpamPoolPropertiesPtrOutput) ParentPoolName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IpamPoolProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ParentPoolName
-	}).(pulumi.StringPtrOutput)
 }
 
 // Properties of IpamPool resource properties which are specific to the Pool resource.
@@ -1870,7 +1756,6 @@ func init() {
 	pulumi.RegisterOutputType(IPTrafficResponseOutput{})
 	pulumi.RegisterOutputType(IntentContentResponseOutput{})
 	pulumi.RegisterOutputType(IpamPoolPropertiesOutput{})
-	pulumi.RegisterOutputType(IpamPoolPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(IpamPoolPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(NetworkManagerDeploymentStatusResponseOutput{})
 	pulumi.RegisterOutputType(NetworkManagerDeploymentStatusResponseArrayOutput{})
