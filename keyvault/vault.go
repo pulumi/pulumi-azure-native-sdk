@@ -15,7 +15,7 @@ import (
 // Resource information with extended details.
 // Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2019-09-01.
 //
-// Other available API versions: 2023-07-01, 2024-04-01-preview.
+// Other available API versions: 2023-07-01, 2024-04-01-preview, 2024-11-01, 2024-12-01-preview.
 type Vault struct {
 	pulumi.CustomResourceState
 
@@ -95,6 +95,12 @@ func NewVault(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:keyvault/v20240401preview:Vault"),
+		},
+		{
+			Type: pulumi.String("azure-native:keyvault/v20241101:Vault"),
+		},
+		{
+			Type: pulumi.String("azure-native:keyvault/v20241201preview:Vault"),
 		},
 	})
 	opts = append(opts, aliases)

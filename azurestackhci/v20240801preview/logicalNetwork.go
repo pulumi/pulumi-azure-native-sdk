@@ -69,6 +69,9 @@ func NewLogicalNetwork(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20240715preview:LogicalNetwork"),
 		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20241001preview:LogicalNetwork"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

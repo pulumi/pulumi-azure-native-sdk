@@ -41,7 +41,7 @@ type LookupSharedPrivateLinkResourceResult struct {
 	Id string `pulumi:"id"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// The resource id of the resource the shared private link resource is for.
+	// The resource ID of the resource the shared private link resource is for.
 	PrivateLinkResourceId string `pulumi:"privateLinkResourceId"`
 	// The provisioning state of the resource.
 	ProvisioningState string `pulumi:"provisioningState"`
@@ -112,7 +112,7 @@ func (o LookupSharedPrivateLinkResourceResultOutput) Name() pulumi.StringOutput 
 	return o.ApplyT(func(v LookupSharedPrivateLinkResourceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The resource id of the resource the shared private link resource is for.
+// The resource ID of the resource the shared private link resource is for.
 func (o LookupSharedPrivateLinkResourceResultOutput) PrivateLinkResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSharedPrivateLinkResourceResult) string { return v.PrivateLinkResourceId }).(pulumi.StringOutput)
 }

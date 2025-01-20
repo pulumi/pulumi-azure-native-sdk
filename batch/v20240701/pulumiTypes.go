@@ -1031,7 +1031,7 @@ func (o AutoUserSpecificationResponsePtrOutput) Scope() pulumi.StringPtrOutput {
 type AutomaticOSUpgradePolicy struct {
 	// Whether OS image rollback feature should be disabled.
 	DisableAutomaticRollback *bool `pulumi:"disableAutomaticRollback"`
-	// Indicates whether OS upgrades should automatically be applied to scale set instances in a rolling fashion when a newer version of the OS image becomes available. <br /><br /> If this is set to true for Windows based pools, [WindowsConfiguration.enableAutomaticUpdates](https://learn.microsoft.com/en-us/rest/api/batchmanagement/pool/create?tabs=HTTP#windowsconfiguration) cannot be set to true.
+	// Indicates whether OS upgrades should automatically be applied to scale set instances in a rolling fashion when a newer version of the OS image becomes available. <br /><br /> If this is set to true for Windows based pools, [WindowsConfiguration.enableAutomaticUpdates](https://learn.microsoft.com/rest/api/batchmanagement/pool/create?tabs=HTTP#windowsconfiguration) cannot be set to true.
 	EnableAutomaticOSUpgrade *bool `pulumi:"enableAutomaticOSUpgrade"`
 	// Defer OS upgrades on the TVMs if they are running tasks.
 	OsRollingUpgradeDeferral *bool `pulumi:"osRollingUpgradeDeferral"`
@@ -1054,7 +1054,7 @@ type AutomaticOSUpgradePolicyInput interface {
 type AutomaticOSUpgradePolicyArgs struct {
 	// Whether OS image rollback feature should be disabled.
 	DisableAutomaticRollback pulumi.BoolPtrInput `pulumi:"disableAutomaticRollback"`
-	// Indicates whether OS upgrades should automatically be applied to scale set instances in a rolling fashion when a newer version of the OS image becomes available. <br /><br /> If this is set to true for Windows based pools, [WindowsConfiguration.enableAutomaticUpdates](https://learn.microsoft.com/en-us/rest/api/batchmanagement/pool/create?tabs=HTTP#windowsconfiguration) cannot be set to true.
+	// Indicates whether OS upgrades should automatically be applied to scale set instances in a rolling fashion when a newer version of the OS image becomes available. <br /><br /> If this is set to true for Windows based pools, [WindowsConfiguration.enableAutomaticUpdates](https://learn.microsoft.com/rest/api/batchmanagement/pool/create?tabs=HTTP#windowsconfiguration) cannot be set to true.
 	EnableAutomaticOSUpgrade pulumi.BoolPtrInput `pulumi:"enableAutomaticOSUpgrade"`
 	// Defer OS upgrades on the TVMs if they are running tasks.
 	OsRollingUpgradeDeferral pulumi.BoolPtrInput `pulumi:"osRollingUpgradeDeferral"`
@@ -1145,7 +1145,7 @@ func (o AutomaticOSUpgradePolicyOutput) DisableAutomaticRollback() pulumi.BoolPt
 	return o.ApplyT(func(v AutomaticOSUpgradePolicy) *bool { return v.DisableAutomaticRollback }).(pulumi.BoolPtrOutput)
 }
 
-// Indicates whether OS upgrades should automatically be applied to scale set instances in a rolling fashion when a newer version of the OS image becomes available. <br /><br /> If this is set to true for Windows based pools, [WindowsConfiguration.enableAutomaticUpdates](https://learn.microsoft.com/en-us/rest/api/batchmanagement/pool/create?tabs=HTTP#windowsconfiguration) cannot be set to true.
+// Indicates whether OS upgrades should automatically be applied to scale set instances in a rolling fashion when a newer version of the OS image becomes available. <br /><br /> If this is set to true for Windows based pools, [WindowsConfiguration.enableAutomaticUpdates](https://learn.microsoft.com/rest/api/batchmanagement/pool/create?tabs=HTTP#windowsconfiguration) cannot be set to true.
 func (o AutomaticOSUpgradePolicyOutput) EnableAutomaticOSUpgrade() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AutomaticOSUpgradePolicy) *bool { return v.EnableAutomaticOSUpgrade }).(pulumi.BoolPtrOutput)
 }
@@ -1194,7 +1194,7 @@ func (o AutomaticOSUpgradePolicyPtrOutput) DisableAutomaticRollback() pulumi.Boo
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Indicates whether OS upgrades should automatically be applied to scale set instances in a rolling fashion when a newer version of the OS image becomes available. <br /><br /> If this is set to true for Windows based pools, [WindowsConfiguration.enableAutomaticUpdates](https://learn.microsoft.com/en-us/rest/api/batchmanagement/pool/create?tabs=HTTP#windowsconfiguration) cannot be set to true.
+// Indicates whether OS upgrades should automatically be applied to scale set instances in a rolling fashion when a newer version of the OS image becomes available. <br /><br /> If this is set to true for Windows based pools, [WindowsConfiguration.enableAutomaticUpdates](https://learn.microsoft.com/rest/api/batchmanagement/pool/create?tabs=HTTP#windowsconfiguration) cannot be set to true.
 func (o AutomaticOSUpgradePolicyPtrOutput) EnableAutomaticOSUpgrade() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AutomaticOSUpgradePolicy) *bool {
 		if v == nil {
@@ -1228,7 +1228,7 @@ func (o AutomaticOSUpgradePolicyPtrOutput) UseRollingUpgradePolicy() pulumi.Bool
 type AutomaticOSUpgradePolicyResponse struct {
 	// Whether OS image rollback feature should be disabled.
 	DisableAutomaticRollback *bool `pulumi:"disableAutomaticRollback"`
-	// Indicates whether OS upgrades should automatically be applied to scale set instances in a rolling fashion when a newer version of the OS image becomes available. <br /><br /> If this is set to true for Windows based pools, [WindowsConfiguration.enableAutomaticUpdates](https://learn.microsoft.com/en-us/rest/api/batchmanagement/pool/create?tabs=HTTP#windowsconfiguration) cannot be set to true.
+	// Indicates whether OS upgrades should automatically be applied to scale set instances in a rolling fashion when a newer version of the OS image becomes available. <br /><br /> If this is set to true for Windows based pools, [WindowsConfiguration.enableAutomaticUpdates](https://learn.microsoft.com/rest/api/batchmanagement/pool/create?tabs=HTTP#windowsconfiguration) cannot be set to true.
 	EnableAutomaticOSUpgrade *bool `pulumi:"enableAutomaticOSUpgrade"`
 	// Defer OS upgrades on the TVMs if they are running tasks.
 	OsRollingUpgradeDeferral *bool `pulumi:"osRollingUpgradeDeferral"`
@@ -1256,7 +1256,7 @@ func (o AutomaticOSUpgradePolicyResponseOutput) DisableAutomaticRollback() pulum
 	return o.ApplyT(func(v AutomaticOSUpgradePolicyResponse) *bool { return v.DisableAutomaticRollback }).(pulumi.BoolPtrOutput)
 }
 
-// Indicates whether OS upgrades should automatically be applied to scale set instances in a rolling fashion when a newer version of the OS image becomes available. <br /><br /> If this is set to true for Windows based pools, [WindowsConfiguration.enableAutomaticUpdates](https://learn.microsoft.com/en-us/rest/api/batchmanagement/pool/create?tabs=HTTP#windowsconfiguration) cannot be set to true.
+// Indicates whether OS upgrades should automatically be applied to scale set instances in a rolling fashion when a newer version of the OS image becomes available. <br /><br /> If this is set to true for Windows based pools, [WindowsConfiguration.enableAutomaticUpdates](https://learn.microsoft.com/rest/api/batchmanagement/pool/create?tabs=HTTP#windowsconfiguration) cannot be set to true.
 func (o AutomaticOSUpgradePolicyResponseOutput) EnableAutomaticOSUpgrade() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AutomaticOSUpgradePolicyResponse) *bool { return v.EnableAutomaticOSUpgrade }).(pulumi.BoolPtrOutput)
 }
@@ -1305,7 +1305,7 @@ func (o AutomaticOSUpgradePolicyResponsePtrOutput) DisableAutomaticRollback() pu
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Indicates whether OS upgrades should automatically be applied to scale set instances in a rolling fashion when a newer version of the OS image becomes available. <br /><br /> If this is set to true for Windows based pools, [WindowsConfiguration.enableAutomaticUpdates](https://learn.microsoft.com/en-us/rest/api/batchmanagement/pool/create?tabs=HTTP#windowsconfiguration) cannot be set to true.
+// Indicates whether OS upgrades should automatically be applied to scale set instances in a rolling fashion when a newer version of the OS image becomes available. <br /><br /> If this is set to true for Windows based pools, [WindowsConfiguration.enableAutomaticUpdates](https://learn.microsoft.com/rest/api/batchmanagement/pool/create?tabs=HTTP#windowsconfiguration) cannot be set to true.
 func (o AutomaticOSUpgradePolicyResponsePtrOutput) EnableAutomaticOSUpgrade() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AutomaticOSUpgradePolicyResponse) *bool {
 		if v == nil {
@@ -4462,7 +4462,7 @@ func (o DeploymentConfigurationResponsePtrOutput) VirtualMachineConfiguration() 
 }
 
 type DiffDiskSettings struct {
-	// This property can be used by user in the request to choose which location the operating system should be in. e.g., cache disk space for Ephemeral OS disk provisioning. For more information on Ephemeral OS disk size requirements, please refer to Ephemeral OS disk size requirements for Windows VMs at https://docs.microsoft.com/en-us/azure/virtual-machines/windows/ephemeral-os-disks#size-requirements and Linux VMs at https://docs.microsoft.com/en-us/azure/virtual-machines/linux/ephemeral-os-disks#size-requirements.
+	// This property can be used by user in the request to choose which location the operating system should be in. e.g., cache disk space for Ephemeral OS disk provisioning. For more information on Ephemeral OS disk size requirements, please refer to Ephemeral OS disk size requirements for Windows VMs at https://learn.microsoft.com/azure/virtual-machines/windows/ephemeral-os-disks#size-requirements and Linux VMs at https://learn.microsoft.com/azure/virtual-machines/linux/ephemeral-os-disks#size-requirements.
 	Placement *DiffDiskPlacement `pulumi:"placement"`
 }
 
@@ -4478,7 +4478,7 @@ type DiffDiskSettingsInput interface {
 }
 
 type DiffDiskSettingsArgs struct {
-	// This property can be used by user in the request to choose which location the operating system should be in. e.g., cache disk space for Ephemeral OS disk provisioning. For more information on Ephemeral OS disk size requirements, please refer to Ephemeral OS disk size requirements for Windows VMs at https://docs.microsoft.com/en-us/azure/virtual-machines/windows/ephemeral-os-disks#size-requirements and Linux VMs at https://docs.microsoft.com/en-us/azure/virtual-machines/linux/ephemeral-os-disks#size-requirements.
+	// This property can be used by user in the request to choose which location the operating system should be in. e.g., cache disk space for Ephemeral OS disk provisioning. For more information on Ephemeral OS disk size requirements, please refer to Ephemeral OS disk size requirements for Windows VMs at https://learn.microsoft.com/azure/virtual-machines/windows/ephemeral-os-disks#size-requirements and Linux VMs at https://learn.microsoft.com/azure/virtual-machines/linux/ephemeral-os-disks#size-requirements.
 	Placement DiffDiskPlacementPtrInput `pulumi:"placement"`
 }
 
@@ -4559,7 +4559,7 @@ func (o DiffDiskSettingsOutput) ToDiffDiskSettingsPtrOutputWithContext(ctx conte
 	}).(DiffDiskSettingsPtrOutput)
 }
 
-// This property can be used by user in the request to choose which location the operating system should be in. e.g., cache disk space for Ephemeral OS disk provisioning. For more information on Ephemeral OS disk size requirements, please refer to Ephemeral OS disk size requirements for Windows VMs at https://docs.microsoft.com/en-us/azure/virtual-machines/windows/ephemeral-os-disks#size-requirements and Linux VMs at https://docs.microsoft.com/en-us/azure/virtual-machines/linux/ephemeral-os-disks#size-requirements.
+// This property can be used by user in the request to choose which location the operating system should be in. e.g., cache disk space for Ephemeral OS disk provisioning. For more information on Ephemeral OS disk size requirements, please refer to Ephemeral OS disk size requirements for Windows VMs at https://learn.microsoft.com/azure/virtual-machines/windows/ephemeral-os-disks#size-requirements and Linux VMs at https://learn.microsoft.com/azure/virtual-machines/linux/ephemeral-os-disks#size-requirements.
 func (o DiffDiskSettingsOutput) Placement() DiffDiskPlacementPtrOutput {
 	return o.ApplyT(func(v DiffDiskSettings) *DiffDiskPlacement { return v.Placement }).(DiffDiskPlacementPtrOutput)
 }
@@ -4588,7 +4588,7 @@ func (o DiffDiskSettingsPtrOutput) Elem() DiffDiskSettingsOutput {
 	}).(DiffDiskSettingsOutput)
 }
 
-// This property can be used by user in the request to choose which location the operating system should be in. e.g., cache disk space for Ephemeral OS disk provisioning. For more information on Ephemeral OS disk size requirements, please refer to Ephemeral OS disk size requirements for Windows VMs at https://docs.microsoft.com/en-us/azure/virtual-machines/windows/ephemeral-os-disks#size-requirements and Linux VMs at https://docs.microsoft.com/en-us/azure/virtual-machines/linux/ephemeral-os-disks#size-requirements.
+// This property can be used by user in the request to choose which location the operating system should be in. e.g., cache disk space for Ephemeral OS disk provisioning. For more information on Ephemeral OS disk size requirements, please refer to Ephemeral OS disk size requirements for Windows VMs at https://learn.microsoft.com/azure/virtual-machines/windows/ephemeral-os-disks#size-requirements and Linux VMs at https://learn.microsoft.com/azure/virtual-machines/linux/ephemeral-os-disks#size-requirements.
 func (o DiffDiskSettingsPtrOutput) Placement() DiffDiskPlacementPtrOutput {
 	return o.ApplyT(func(v *DiffDiskSettings) *DiffDiskPlacement {
 		if v == nil {
@@ -4599,7 +4599,7 @@ func (o DiffDiskSettingsPtrOutput) Placement() DiffDiskPlacementPtrOutput {
 }
 
 type DiffDiskSettingsResponse struct {
-	// This property can be used by user in the request to choose which location the operating system should be in. e.g., cache disk space for Ephemeral OS disk provisioning. For more information on Ephemeral OS disk size requirements, please refer to Ephemeral OS disk size requirements for Windows VMs at https://docs.microsoft.com/en-us/azure/virtual-machines/windows/ephemeral-os-disks#size-requirements and Linux VMs at https://docs.microsoft.com/en-us/azure/virtual-machines/linux/ephemeral-os-disks#size-requirements.
+	// This property can be used by user in the request to choose which location the operating system should be in. e.g., cache disk space for Ephemeral OS disk provisioning. For more information on Ephemeral OS disk size requirements, please refer to Ephemeral OS disk size requirements for Windows VMs at https://learn.microsoft.com/azure/virtual-machines/windows/ephemeral-os-disks#size-requirements and Linux VMs at https://learn.microsoft.com/azure/virtual-machines/linux/ephemeral-os-disks#size-requirements.
 	Placement *string `pulumi:"placement"`
 }
 
@@ -4617,7 +4617,7 @@ func (o DiffDiskSettingsResponseOutput) ToDiffDiskSettingsResponseOutputWithCont
 	return o
 }
 
-// This property can be used by user in the request to choose which location the operating system should be in. e.g., cache disk space for Ephemeral OS disk provisioning. For more information on Ephemeral OS disk size requirements, please refer to Ephemeral OS disk size requirements for Windows VMs at https://docs.microsoft.com/en-us/azure/virtual-machines/windows/ephemeral-os-disks#size-requirements and Linux VMs at https://docs.microsoft.com/en-us/azure/virtual-machines/linux/ephemeral-os-disks#size-requirements.
+// This property can be used by user in the request to choose which location the operating system should be in. e.g., cache disk space for Ephemeral OS disk provisioning. For more information on Ephemeral OS disk size requirements, please refer to Ephemeral OS disk size requirements for Windows VMs at https://learn.microsoft.com/azure/virtual-machines/windows/ephemeral-os-disks#size-requirements and Linux VMs at https://learn.microsoft.com/azure/virtual-machines/linux/ephemeral-os-disks#size-requirements.
 func (o DiffDiskSettingsResponseOutput) Placement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DiffDiskSettingsResponse) *string { return v.Placement }).(pulumi.StringPtrOutput)
 }
@@ -4646,7 +4646,7 @@ func (o DiffDiskSettingsResponsePtrOutput) Elem() DiffDiskSettingsResponseOutput
 	}).(DiffDiskSettingsResponseOutput)
 }
 
-// This property can be used by user in the request to choose which location the operating system should be in. e.g., cache disk space for Ephemeral OS disk provisioning. For more information on Ephemeral OS disk size requirements, please refer to Ephemeral OS disk size requirements for Windows VMs at https://docs.microsoft.com/en-us/azure/virtual-machines/windows/ephemeral-os-disks#size-requirements and Linux VMs at https://docs.microsoft.com/en-us/azure/virtual-machines/linux/ephemeral-os-disks#size-requirements.
+// This property can be used by user in the request to choose which location the operating system should be in. e.g., cache disk space for Ephemeral OS disk provisioning. For more information on Ephemeral OS disk size requirements, please refer to Ephemeral OS disk size requirements for Windows VMs at https://learn.microsoft.com/azure/virtual-machines/windows/ephemeral-os-disks#size-requirements and Linux VMs at https://learn.microsoft.com/azure/virtual-machines/linux/ephemeral-os-disks#size-requirements.
 func (o DiffDiskSettingsResponsePtrOutput) Placement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DiffDiskSettingsResponse) *string {
 		if v == nil {
@@ -5919,7 +5919,7 @@ func (o IPRuleResponseArrayOutput) Index(i pulumi.IntInput) IPRuleResponseOutput
 type ImageReference struct {
 	// This property is mutually exclusive with other properties and can be fetched from community gallery image GET call.
 	CommunityGalleryImageId *string `pulumi:"communityGalleryImageId"`
-	// This property is mutually exclusive with other properties. The Azure Compute Gallery Image must have replicas in the same region as the Azure Batch account. For information about the firewall settings for the Batch node agent to communicate with the Batch service see https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
+	// This property is mutually exclusive with other properties. The Azure Compute Gallery Image must have replicas in the same region as the Azure Batch account. For information about the firewall settings for the Batch node agent to communicate with the Batch service see https://learn.microsoft.com/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
 	Id *string `pulumi:"id"`
 	// For example, UbuntuServer or WindowsServer.
 	Offer *string `pulumi:"offer"`
@@ -5947,7 +5947,7 @@ type ImageReferenceInput interface {
 type ImageReferenceArgs struct {
 	// This property is mutually exclusive with other properties and can be fetched from community gallery image GET call.
 	CommunityGalleryImageId pulumi.StringPtrInput `pulumi:"communityGalleryImageId"`
-	// This property is mutually exclusive with other properties. The Azure Compute Gallery Image must have replicas in the same region as the Azure Batch account. For information about the firewall settings for the Batch node agent to communicate with the Batch service see https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
+	// This property is mutually exclusive with other properties. The Azure Compute Gallery Image must have replicas in the same region as the Azure Batch account. For information about the firewall settings for the Batch node agent to communicate with the Batch service see https://learn.microsoft.com/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// For example, UbuntuServer or WindowsServer.
 	Offer pulumi.StringPtrInput `pulumi:"offer"`
@@ -6043,7 +6043,7 @@ func (o ImageReferenceOutput) CommunityGalleryImageId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageReference) *string { return v.CommunityGalleryImageId }).(pulumi.StringPtrOutput)
 }
 
-// This property is mutually exclusive with other properties. The Azure Compute Gallery Image must have replicas in the same region as the Azure Batch account. For information about the firewall settings for the Batch node agent to communicate with the Batch service see https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
+// This property is mutually exclusive with other properties. The Azure Compute Gallery Image must have replicas in the same region as the Azure Batch account. For information about the firewall settings for the Batch node agent to communicate with the Batch service see https://learn.microsoft.com/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
 func (o ImageReferenceOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageReference) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -6107,7 +6107,7 @@ func (o ImageReferencePtrOutput) CommunityGalleryImageId() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// This property is mutually exclusive with other properties. The Azure Compute Gallery Image must have replicas in the same region as the Azure Batch account. For information about the firewall settings for the Batch node agent to communicate with the Batch service see https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
+// This property is mutually exclusive with other properties. The Azure Compute Gallery Image must have replicas in the same region as the Azure Batch account. For information about the firewall settings for the Batch node agent to communicate with the Batch service see https://learn.microsoft.com/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
 func (o ImageReferencePtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ImageReference) *string {
 		if v == nil {
@@ -6170,7 +6170,7 @@ func (o ImageReferencePtrOutput) Version() pulumi.StringPtrOutput {
 type ImageReferenceResponse struct {
 	// This property is mutually exclusive with other properties and can be fetched from community gallery image GET call.
 	CommunityGalleryImageId *string `pulumi:"communityGalleryImageId"`
-	// This property is mutually exclusive with other properties. The Azure Compute Gallery Image must have replicas in the same region as the Azure Batch account. For information about the firewall settings for the Batch node agent to communicate with the Batch service see https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
+	// This property is mutually exclusive with other properties. The Azure Compute Gallery Image must have replicas in the same region as the Azure Batch account. For information about the firewall settings for the Batch node agent to communicate with the Batch service see https://learn.microsoft.com/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
 	Id *string `pulumi:"id"`
 	// For example, UbuntuServer or WindowsServer.
 	Offer *string `pulumi:"offer"`
@@ -6203,7 +6203,7 @@ func (o ImageReferenceResponseOutput) CommunityGalleryImageId() pulumi.StringPtr
 	return o.ApplyT(func(v ImageReferenceResponse) *string { return v.CommunityGalleryImageId }).(pulumi.StringPtrOutput)
 }
 
-// This property is mutually exclusive with other properties. The Azure Compute Gallery Image must have replicas in the same region as the Azure Batch account. For information about the firewall settings for the Batch node agent to communicate with the Batch service see https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
+// This property is mutually exclusive with other properties. The Azure Compute Gallery Image must have replicas in the same region as the Azure Batch account. For information about the firewall settings for the Batch node agent to communicate with the Batch service see https://learn.microsoft.com/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
 func (o ImageReferenceResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageReferenceResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -6267,7 +6267,7 @@ func (o ImageReferenceResponsePtrOutput) CommunityGalleryImageId() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// This property is mutually exclusive with other properties. The Azure Compute Gallery Image must have replicas in the same region as the Azure Batch account. For information about the firewall settings for the Batch node agent to communicate with the Batch service see https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
+// This property is mutually exclusive with other properties. The Azure Compute Gallery Image must have replicas in the same region as the Azure Batch account. For information about the firewall settings for the Batch node agent to communicate with the Batch service see https://learn.microsoft.com/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
 func (o ImageReferenceResponsePtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ImageReferenceResponse) *string {
 		if v == nil {
@@ -8069,7 +8069,7 @@ type NetworkConfiguration struct {
 	EndpointConfiguration       *PoolEndpointConfiguration `pulumi:"endpointConfiguration"`
 	// The public IP Address configuration of the networking configuration of a Pool.
 	PublicIPAddressConfiguration *PublicIPAddressConfiguration `pulumi:"publicIPAddressConfiguration"`
-	// The virtual network must be in the same region and subscription as the Azure Batch account. The specified subnet should have enough free IP addresses to accommodate the number of nodes in the pool. If the subnet doesn't have enough free IP addresses, the pool will partially allocate compute nodes and a resize error will occur. The 'MicrosoftAzureBatch' service principal must have the 'Classic Virtual Machine Contributor' Role-Based Access Control (RBAC) role for the specified VNet. The specified subnet must allow communication from the Azure Batch service to be able to schedule tasks on the compute nodes. This can be verified by checking if the specified VNet has any associated Network Security Groups (NSG). If communication to the compute nodes in the specified subnet is denied by an NSG, then the Batch service will set the state of the compute nodes to unusable. If the specified VNet has any associated Network Security Groups (NSG), then a few reserved system ports must be enabled for inbound communication，including ports 29876 and 29877. Also enable outbound connections to Azure Storage on port 443. For more details see: https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
+	// The virtual network must be in the same region and subscription as the Azure Batch account. The specified subnet should have enough free IP addresses to accommodate the number of nodes in the pool. If the subnet doesn't have enough free IP addresses, the pool will partially allocate compute nodes and a resize error will occur. The 'MicrosoftAzureBatch' service principal must have the 'Classic Virtual Machine Contributor' Role-Based Access Control (RBAC) role for the specified VNet. The specified subnet must allow communication from the Azure Batch service to be able to schedule tasks on the compute nodes. This can be verified by checking if the specified VNet has any associated Network Security Groups (NSG). If communication to the compute nodes in the specified subnet is denied by an NSG, then the Batch service will set the state of the compute nodes to unusable. If the specified VNet has any associated Network Security Groups (NSG), then a few reserved system ports must be enabled for inbound communication，including ports 29876 and 29877. Also enable outbound connections to Azure Storage on port 443. For more details see: https://learn.microsoft.com/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
 	SubnetId *string `pulumi:"subnetId"`
 }
 
@@ -8105,7 +8105,7 @@ type NetworkConfigurationArgs struct {
 	EndpointConfiguration       PoolEndpointConfigurationPtrInput `pulumi:"endpointConfiguration"`
 	// The public IP Address configuration of the networking configuration of a Pool.
 	PublicIPAddressConfiguration PublicIPAddressConfigurationPtrInput `pulumi:"publicIPAddressConfiguration"`
-	// The virtual network must be in the same region and subscription as the Azure Batch account. The specified subnet should have enough free IP addresses to accommodate the number of nodes in the pool. If the subnet doesn't have enough free IP addresses, the pool will partially allocate compute nodes and a resize error will occur. The 'MicrosoftAzureBatch' service principal must have the 'Classic Virtual Machine Contributor' Role-Based Access Control (RBAC) role for the specified VNet. The specified subnet must allow communication from the Azure Batch service to be able to schedule tasks on the compute nodes. This can be verified by checking if the specified VNet has any associated Network Security Groups (NSG). If communication to the compute nodes in the specified subnet is denied by an NSG, then the Batch service will set the state of the compute nodes to unusable. If the specified VNet has any associated Network Security Groups (NSG), then a few reserved system ports must be enabled for inbound communication，including ports 29876 and 29877. Also enable outbound connections to Azure Storage on port 443. For more details see: https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
+	// The virtual network must be in the same region and subscription as the Azure Batch account. The specified subnet should have enough free IP addresses to accommodate the number of nodes in the pool. If the subnet doesn't have enough free IP addresses, the pool will partially allocate compute nodes and a resize error will occur. The 'MicrosoftAzureBatch' service principal must have the 'Classic Virtual Machine Contributor' Role-Based Access Control (RBAC) role for the specified VNet. The specified subnet must allow communication from the Azure Batch service to be able to schedule tasks on the compute nodes. This can be verified by checking if the specified VNet has any associated Network Security Groups (NSG). If communication to the compute nodes in the specified subnet is denied by an NSG, then the Batch service will set the state of the compute nodes to unusable. If the specified VNet has any associated Network Security Groups (NSG), then a few reserved system ports must be enabled for inbound communication，including ports 29876 and 29877. Also enable outbound connections to Azure Storage on port 443. For more details see: https://learn.microsoft.com/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
 	SubnetId pulumi.StringPtrInput `pulumi:"subnetId"`
 }
 
@@ -8216,7 +8216,7 @@ func (o NetworkConfigurationOutput) PublicIPAddressConfiguration() PublicIPAddre
 	return o.ApplyT(func(v NetworkConfiguration) *PublicIPAddressConfiguration { return v.PublicIPAddressConfiguration }).(PublicIPAddressConfigurationPtrOutput)
 }
 
-// The virtual network must be in the same region and subscription as the Azure Batch account. The specified subnet should have enough free IP addresses to accommodate the number of nodes in the pool. If the subnet doesn't have enough free IP addresses, the pool will partially allocate compute nodes and a resize error will occur. The 'MicrosoftAzureBatch' service principal must have the 'Classic Virtual Machine Contributor' Role-Based Access Control (RBAC) role for the specified VNet. The specified subnet must allow communication from the Azure Batch service to be able to schedule tasks on the compute nodes. This can be verified by checking if the specified VNet has any associated Network Security Groups (NSG). If communication to the compute nodes in the specified subnet is denied by an NSG, then the Batch service will set the state of the compute nodes to unusable. If the specified VNet has any associated Network Security Groups (NSG), then a few reserved system ports must be enabled for inbound communication，including ports 29876 and 29877. Also enable outbound connections to Azure Storage on port 443. For more details see: https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
+// The virtual network must be in the same region and subscription as the Azure Batch account. The specified subnet should have enough free IP addresses to accommodate the number of nodes in the pool. If the subnet doesn't have enough free IP addresses, the pool will partially allocate compute nodes and a resize error will occur. The 'MicrosoftAzureBatch' service principal must have the 'Classic Virtual Machine Contributor' Role-Based Access Control (RBAC) role for the specified VNet. The specified subnet must allow communication from the Azure Batch service to be able to schedule tasks on the compute nodes. This can be verified by checking if the specified VNet has any associated Network Security Groups (NSG). If communication to the compute nodes in the specified subnet is denied by an NSG, then the Batch service will set the state of the compute nodes to unusable. If the specified VNet has any associated Network Security Groups (NSG), then a few reserved system ports must be enabled for inbound communication，including ports 29876 and 29877. Also enable outbound connections to Azure Storage on port 443. For more details see: https://learn.microsoft.com/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
 func (o NetworkConfigurationOutput) SubnetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkConfiguration) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
 }
@@ -8283,7 +8283,7 @@ func (o NetworkConfigurationPtrOutput) PublicIPAddressConfiguration() PublicIPAd
 	}).(PublicIPAddressConfigurationPtrOutput)
 }
 
-// The virtual network must be in the same region and subscription as the Azure Batch account. The specified subnet should have enough free IP addresses to accommodate the number of nodes in the pool. If the subnet doesn't have enough free IP addresses, the pool will partially allocate compute nodes and a resize error will occur. The 'MicrosoftAzureBatch' service principal must have the 'Classic Virtual Machine Contributor' Role-Based Access Control (RBAC) role for the specified VNet. The specified subnet must allow communication from the Azure Batch service to be able to schedule tasks on the compute nodes. This can be verified by checking if the specified VNet has any associated Network Security Groups (NSG). If communication to the compute nodes in the specified subnet is denied by an NSG, then the Batch service will set the state of the compute nodes to unusable. If the specified VNet has any associated Network Security Groups (NSG), then a few reserved system ports must be enabled for inbound communication，including ports 29876 and 29877. Also enable outbound connections to Azure Storage on port 443. For more details see: https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
+// The virtual network must be in the same region and subscription as the Azure Batch account. The specified subnet should have enough free IP addresses to accommodate the number of nodes in the pool. If the subnet doesn't have enough free IP addresses, the pool will partially allocate compute nodes and a resize error will occur. The 'MicrosoftAzureBatch' service principal must have the 'Classic Virtual Machine Contributor' Role-Based Access Control (RBAC) role for the specified VNet. The specified subnet must allow communication from the Azure Batch service to be able to schedule tasks on the compute nodes. This can be verified by checking if the specified VNet has any associated Network Security Groups (NSG). If communication to the compute nodes in the specified subnet is denied by an NSG, then the Batch service will set the state of the compute nodes to unusable. If the specified VNet has any associated Network Security Groups (NSG), then a few reserved system ports must be enabled for inbound communication，including ports 29876 and 29877. Also enable outbound connections to Azure Storage on port 443. For more details see: https://learn.microsoft.com/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
 func (o NetworkConfigurationPtrOutput) SubnetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkConfiguration) *string {
 		if v == nil {
@@ -8301,7 +8301,7 @@ type NetworkConfigurationResponse struct {
 	EndpointConfiguration       *PoolEndpointConfigurationResponse `pulumi:"endpointConfiguration"`
 	// The public IP Address configuration of the networking configuration of a Pool.
 	PublicIPAddressConfiguration *PublicIPAddressConfigurationResponse `pulumi:"publicIPAddressConfiguration"`
-	// The virtual network must be in the same region and subscription as the Azure Batch account. The specified subnet should have enough free IP addresses to accommodate the number of nodes in the pool. If the subnet doesn't have enough free IP addresses, the pool will partially allocate compute nodes and a resize error will occur. The 'MicrosoftAzureBatch' service principal must have the 'Classic Virtual Machine Contributor' Role-Based Access Control (RBAC) role for the specified VNet. The specified subnet must allow communication from the Azure Batch service to be able to schedule tasks on the compute nodes. This can be verified by checking if the specified VNet has any associated Network Security Groups (NSG). If communication to the compute nodes in the specified subnet is denied by an NSG, then the Batch service will set the state of the compute nodes to unusable. If the specified VNet has any associated Network Security Groups (NSG), then a few reserved system ports must be enabled for inbound communication，including ports 29876 and 29877. Also enable outbound connections to Azure Storage on port 443. For more details see: https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
+	// The virtual network must be in the same region and subscription as the Azure Batch account. The specified subnet should have enough free IP addresses to accommodate the number of nodes in the pool. If the subnet doesn't have enough free IP addresses, the pool will partially allocate compute nodes and a resize error will occur. The 'MicrosoftAzureBatch' service principal must have the 'Classic Virtual Machine Contributor' Role-Based Access Control (RBAC) role for the specified VNet. The specified subnet must allow communication from the Azure Batch service to be able to schedule tasks on the compute nodes. This can be verified by checking if the specified VNet has any associated Network Security Groups (NSG). If communication to the compute nodes in the specified subnet is denied by an NSG, then the Batch service will set the state of the compute nodes to unusable. If the specified VNet has any associated Network Security Groups (NSG), then a few reserved system ports must be enabled for inbound communication，including ports 29876 and 29877. Also enable outbound connections to Azure Storage on port 443. For more details see: https://learn.microsoft.com/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
 	SubnetId *string `pulumi:"subnetId"`
 }
 
@@ -8355,7 +8355,7 @@ func (o NetworkConfigurationResponseOutput) PublicIPAddressConfiguration() Publi
 	}).(PublicIPAddressConfigurationResponsePtrOutput)
 }
 
-// The virtual network must be in the same region and subscription as the Azure Batch account. The specified subnet should have enough free IP addresses to accommodate the number of nodes in the pool. If the subnet doesn't have enough free IP addresses, the pool will partially allocate compute nodes and a resize error will occur. The 'MicrosoftAzureBatch' service principal must have the 'Classic Virtual Machine Contributor' Role-Based Access Control (RBAC) role for the specified VNet. The specified subnet must allow communication from the Azure Batch service to be able to schedule tasks on the compute nodes. This can be verified by checking if the specified VNet has any associated Network Security Groups (NSG). If communication to the compute nodes in the specified subnet is denied by an NSG, then the Batch service will set the state of the compute nodes to unusable. If the specified VNet has any associated Network Security Groups (NSG), then a few reserved system ports must be enabled for inbound communication，including ports 29876 and 29877. Also enable outbound connections to Azure Storage on port 443. For more details see: https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
+// The virtual network must be in the same region and subscription as the Azure Batch account. The specified subnet should have enough free IP addresses to accommodate the number of nodes in the pool. If the subnet doesn't have enough free IP addresses, the pool will partially allocate compute nodes and a resize error will occur. The 'MicrosoftAzureBatch' service principal must have the 'Classic Virtual Machine Contributor' Role-Based Access Control (RBAC) role for the specified VNet. The specified subnet must allow communication from the Azure Batch service to be able to schedule tasks on the compute nodes. This can be verified by checking if the specified VNet has any associated Network Security Groups (NSG). If communication to the compute nodes in the specified subnet is denied by an NSG, then the Batch service will set the state of the compute nodes to unusable. If the specified VNet has any associated Network Security Groups (NSG), then a few reserved system ports must be enabled for inbound communication，including ports 29876 and 29877. Also enable outbound connections to Azure Storage on port 443. For more details see: https://learn.microsoft.com/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
 func (o NetworkConfigurationResponseOutput) SubnetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkConfigurationResponse) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
 }
@@ -8422,7 +8422,7 @@ func (o NetworkConfigurationResponsePtrOutput) PublicIPAddressConfiguration() Pu
 	}).(PublicIPAddressConfigurationResponsePtrOutput)
 }
 
-// The virtual network must be in the same region and subscription as the Azure Batch account. The specified subnet should have enough free IP addresses to accommodate the number of nodes in the pool. If the subnet doesn't have enough free IP addresses, the pool will partially allocate compute nodes and a resize error will occur. The 'MicrosoftAzureBatch' service principal must have the 'Classic Virtual Machine Contributor' Role-Based Access Control (RBAC) role for the specified VNet. The specified subnet must allow communication from the Azure Batch service to be able to schedule tasks on the compute nodes. This can be verified by checking if the specified VNet has any associated Network Security Groups (NSG). If communication to the compute nodes in the specified subnet is denied by an NSG, then the Batch service will set the state of the compute nodes to unusable. If the specified VNet has any associated Network Security Groups (NSG), then a few reserved system ports must be enabled for inbound communication，including ports 29876 and 29877. Also enable outbound connections to Azure Storage on port 443. For more details see: https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
+// The virtual network must be in the same region and subscription as the Azure Batch account. The specified subnet should have enough free IP addresses to accommodate the number of nodes in the pool. If the subnet doesn't have enough free IP addresses, the pool will partially allocate compute nodes and a resize error will occur. The 'MicrosoftAzureBatch' service principal must have the 'Classic Virtual Machine Contributor' Role-Based Access Control (RBAC) role for the specified VNet. The specified subnet must allow communication from the Azure Batch service to be able to schedule tasks on the compute nodes. This can be verified by checking if the specified VNet has any associated Network Security Groups (NSG). If communication to the compute nodes in the specified subnet is denied by an NSG, then the Batch service will set the state of the compute nodes to unusable. If the specified VNet has any associated Network Security Groups (NSG), then a few reserved system ports must be enabled for inbound communication，including ports 29876 and 29877. Also enable outbound connections to Azure Storage on port 443. For more details see: https://learn.microsoft.com/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
 func (o NetworkConfigurationResponsePtrOutput) SubnetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkConfigurationResponse) *string {
 		if v == nil {
