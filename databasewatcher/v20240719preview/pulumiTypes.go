@@ -15,7 +15,7 @@ var _ = utilities.GetEnvOrDefault
 
 // The properties of a data store.
 type Datastore struct {
-	// The Azure ResourceId of an Azure Data Explorer cluster.
+	// The Azure resource ID of an Azure Data Explorer cluster.
 	AdxClusterResourceId *string `pulumi:"adxClusterResourceId"`
 	// The Kusto cluster display name.
 	KustoClusterDisplayName *string `pulumi:"kustoClusterDisplayName"`
@@ -44,7 +44,7 @@ type DatastoreInput interface {
 
 // The properties of a data store.
 type DatastoreArgs struct {
-	// The Azure ResourceId of an Azure Data Explorer cluster.
+	// The Azure resource ID of an Azure Data Explorer cluster.
 	AdxClusterResourceId pulumi.StringPtrInput `pulumi:"adxClusterResourceId"`
 	// The Kusto cluster display name.
 	KustoClusterDisplayName pulumi.StringPtrInput `pulumi:"kustoClusterDisplayName"`
@@ -138,7 +138,7 @@ func (o DatastoreOutput) ToDatastorePtrOutputWithContext(ctx context.Context) Da
 	}).(DatastorePtrOutput)
 }
 
-// The Azure ResourceId of an Azure Data Explorer cluster.
+// The Azure resource ID of an Azure Data Explorer cluster.
 func (o DatastoreOutput) AdxClusterResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Datastore) *string { return v.AdxClusterResourceId }).(pulumi.StringPtrOutput)
 }
@@ -197,7 +197,7 @@ func (o DatastorePtrOutput) Elem() DatastoreOutput {
 	}).(DatastoreOutput)
 }
 
-// The Azure ResourceId of an Azure Data Explorer cluster.
+// The Azure resource ID of an Azure Data Explorer cluster.
 func (o DatastorePtrOutput) AdxClusterResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Datastore) *string {
 		if v == nil {
@@ -269,7 +269,7 @@ func (o DatastorePtrOutput) KustoOfferingType() pulumi.StringPtrOutput {
 
 // The properties of a data store.
 type DatastoreResponse struct {
-	// The Azure ResourceId of an Azure Data Explorer cluster.
+	// The Azure resource ID of an Azure Data Explorer cluster.
 	AdxClusterResourceId *string `pulumi:"adxClusterResourceId"`
 	// The Kusto cluster display name.
 	KustoClusterDisplayName *string `pulumi:"kustoClusterDisplayName"`
@@ -300,7 +300,7 @@ func (o DatastoreResponseOutput) ToDatastoreResponseOutputWithContext(ctx contex
 	return o
 }
 
-// The Azure ResourceId of an Azure Data Explorer cluster.
+// The Azure resource ID of an Azure Data Explorer cluster.
 func (o DatastoreResponseOutput) AdxClusterResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatastoreResponse) *string { return v.AdxClusterResourceId }).(pulumi.StringPtrOutput)
 }
@@ -359,7 +359,7 @@ func (o DatastoreResponsePtrOutput) Elem() DatastoreResponseOutput {
 	}).(DatastoreResponseOutput)
 }
 
-// The Azure ResourceId of an Azure Data Explorer cluster.
+// The Azure resource ID of an Azure Data Explorer cluster.
 func (o DatastoreResponsePtrOutput) AdxClusterResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatastoreResponse) *string {
 		if v == nil {
@@ -817,7 +817,7 @@ func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) Us
 
 // The vault specific details required if using SQL authentication to connect to a target.
 type VaultSecret struct {
-	// The Azure ResourceId of the Key Vault instance storing database authentication secrets.
+	// The Azure resource ID of the Key Vault instance storing database authentication secrets.
 	AkvResourceId *string `pulumi:"akvResourceId"`
 	// The path to the Key Vault secret storing the password for authentication to a target.
 	AkvTargetPassword *string `pulumi:"akvTargetPassword"`
@@ -838,7 +838,7 @@ type VaultSecretInput interface {
 
 // The vault specific details required if using SQL authentication to connect to a target.
 type VaultSecretArgs struct {
-	// The Azure ResourceId of the Key Vault instance storing database authentication secrets.
+	// The Azure resource ID of the Key Vault instance storing database authentication secrets.
 	AkvResourceId pulumi.StringPtrInput `pulumi:"akvResourceId"`
 	// The path to the Key Vault secret storing the password for authentication to a target.
 	AkvTargetPassword pulumi.StringPtrInput `pulumi:"akvTargetPassword"`
@@ -924,7 +924,7 @@ func (o VaultSecretOutput) ToVaultSecretPtrOutputWithContext(ctx context.Context
 	}).(VaultSecretPtrOutput)
 }
 
-// The Azure ResourceId of the Key Vault instance storing database authentication secrets.
+// The Azure resource ID of the Key Vault instance storing database authentication secrets.
 func (o VaultSecretOutput) AkvResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VaultSecret) *string { return v.AkvResourceId }).(pulumi.StringPtrOutput)
 }
@@ -963,7 +963,7 @@ func (o VaultSecretPtrOutput) Elem() VaultSecretOutput {
 	}).(VaultSecretOutput)
 }
 
-// The Azure ResourceId of the Key Vault instance storing database authentication secrets.
+// The Azure resource ID of the Key Vault instance storing database authentication secrets.
 func (o VaultSecretPtrOutput) AkvResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VaultSecret) *string {
 		if v == nil {
@@ -995,7 +995,7 @@ func (o VaultSecretPtrOutput) AkvTargetUser() pulumi.StringPtrOutput {
 
 // The vault specific details required if using SQL authentication to connect to a target.
 type VaultSecretResponse struct {
-	// The Azure ResourceId of the Key Vault instance storing database authentication secrets.
+	// The Azure resource ID of the Key Vault instance storing database authentication secrets.
 	AkvResourceId *string `pulumi:"akvResourceId"`
 	// The path to the Key Vault secret storing the password for authentication to a target.
 	AkvTargetPassword *string `pulumi:"akvTargetPassword"`
@@ -1018,7 +1018,7 @@ func (o VaultSecretResponseOutput) ToVaultSecretResponseOutputWithContext(ctx co
 	return o
 }
 
-// The Azure ResourceId of the Key Vault instance storing database authentication secrets.
+// The Azure resource ID of the Key Vault instance storing database authentication secrets.
 func (o VaultSecretResponseOutput) AkvResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VaultSecretResponse) *string { return v.AkvResourceId }).(pulumi.StringPtrOutput)
 }
@@ -1057,7 +1057,7 @@ func (o VaultSecretResponsePtrOutput) Elem() VaultSecretResponseOutput {
 	}).(VaultSecretResponseOutput)
 }
 
-// The Azure ResourceId of the Key Vault instance storing database authentication secrets.
+// The Azure resource ID of the Key Vault instance storing database authentication secrets.
 func (o VaultSecretResponsePtrOutput) AkvResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VaultSecretResponse) *string {
 		if v == nil {

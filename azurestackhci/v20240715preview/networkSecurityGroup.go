@@ -61,6 +61,9 @@ func NewNetworkSecurityGroup(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20240801preview:NetworkSecurityGroup"),
 		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20241001preview:NetworkSecurityGroup"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -93,6 +93,12 @@ func NewVault(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:keyvault/v20230701:Vault"),
 		},
+		{
+			Type: pulumi.String("azure-native:keyvault/v20241101:Vault"),
+		},
+		{
+			Type: pulumi.String("azure-native:keyvault/v20241201preview:Vault"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -15,7 +15,7 @@ import (
 // Private endpoint connection resource.
 // Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2021-06-01-preview.
 //
-// Other available API versions: 2023-07-01, 2024-04-01-preview.
+// Other available API versions: 2023-07-01, 2024-04-01-preview, 2024-11-01, 2024-12-01-preview.
 type MHSMPrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 
@@ -84,6 +84,12 @@ func NewMHSMPrivateEndpointConnection(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:keyvault/v20240401preview:MHSMPrivateEndpointConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:keyvault/v20241101:MHSMPrivateEndpointConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:keyvault/v20241201preview:MHSMPrivateEndpointConnection"),
 		},
 	})
 	opts = append(opts, aliases)

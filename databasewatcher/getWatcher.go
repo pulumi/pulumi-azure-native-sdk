@@ -14,7 +14,7 @@ import (
 // Get a Watcher
 // Azure REST API version: 2023-09-01-preview.
 //
-// Other available API versions: 2024-07-19-preview, 2024-10-01-preview.
+// Other available API versions: 2024-07-19-preview, 2024-10-01-preview, 2025-01-02.
 func LookupWatcher(ctx *pulumi.Context, args *LookupWatcherArgs, opts ...pulumi.InvokeOption) (*LookupWatcherResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWatcherResult

@@ -91,6 +91,9 @@ func NewVirtualHardDisk(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20240801preview:VirtualHardDisk"),
 		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20241001preview:VirtualHardDisk"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

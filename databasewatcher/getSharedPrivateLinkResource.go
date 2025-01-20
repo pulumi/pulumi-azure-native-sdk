@@ -14,7 +14,7 @@ import (
 // Get a SharedPrivateLinkResource
 // Azure REST API version: 2023-09-01-preview.
 //
-// Other available API versions: 2024-07-19-preview, 2024-10-01-preview.
+// Other available API versions: 2024-07-19-preview, 2024-10-01-preview, 2025-01-02.
 func LookupSharedPrivateLinkResource(ctx *pulumi.Context, args *LookupSharedPrivateLinkResourceArgs, opts ...pulumi.InvokeOption) (*LookupSharedPrivateLinkResourceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSharedPrivateLinkResourceResult
@@ -44,7 +44,7 @@ type LookupSharedPrivateLinkResourceResult struct {
 	Id string `pulumi:"id"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// The resource id of the resource the shared private link resource is for.
+	// The resource ID of the resource the shared private link resource is for.
 	PrivateLinkResourceId string `pulumi:"privateLinkResourceId"`
 	// The provisioning state of the resource.
 	ProvisioningState string `pulumi:"provisioningState"`
@@ -115,7 +115,7 @@ func (o LookupSharedPrivateLinkResourceResultOutput) Name() pulumi.StringOutput 
 	return o.ApplyT(func(v LookupSharedPrivateLinkResourceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The resource id of the resource the shared private link resource is for.
+// The resource ID of the resource the shared private link resource is for.
 func (o LookupSharedPrivateLinkResourceResultOutput) PrivateLinkResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSharedPrivateLinkResourceResult) string { return v.PrivateLinkResourceId }).(pulumi.StringOutput)
 }

@@ -15,7 +15,7 @@ import (
 // Concrete proxy resource types can be created by aliasing this type using a specific property type.
 // Azure REST API version: 2023-09-01-preview.
 //
-// Other available API versions: 2024-07-19-preview, 2024-10-01-preview.
+// Other available API versions: 2024-07-19-preview, 2024-10-01-preview, 2025-01-02.
 type Target struct {
 	pulumi.CustomResourceState
 
@@ -68,6 +68,9 @@ func NewTarget(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:databasewatcher/v20241001preview:Target"),
+		},
+		{
+			Type: pulumi.String("azure-native:databasewatcher/v20250102:Target"),
 		},
 	})
 	opts = append(opts, aliases)
