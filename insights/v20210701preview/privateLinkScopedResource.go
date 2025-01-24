@@ -48,6 +48,12 @@ func NewPrivateLinkScopedResource(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:insights/v20191017preview:PrivateLinkScopedResource"),
 		},
+		{
+			Type: pulumi.String("azure-native:insights/v20210901:PrivateLinkScopedResource"),
+		},
+		{
+			Type: pulumi.String("azure-native:insights/v20230601preview:PrivateLinkScopedResource"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

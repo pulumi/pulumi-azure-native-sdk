@@ -46,6 +46,9 @@ func NewIntegrationFabric(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:dashboard:IntegrationFabric"),
 		},
+		{
+			Type: pulumi.String("azure-native:dashboard/v20241001:IntegrationFabric"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

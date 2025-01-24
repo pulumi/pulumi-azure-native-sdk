@@ -66,6 +66,9 @@ func NewGrafana(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:dashboard/v20230901:Grafana"),
 		},
+		{
+			Type: pulumi.String("azure-native:dashboard/v20241001:Grafana"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

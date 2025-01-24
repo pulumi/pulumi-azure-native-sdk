@@ -5278,6 +5278,170 @@ func (in *googleBigQueryV2AuthenticationTypePtr) ToGoogleBigQueryV2Authenticatio
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleBigQueryV2AuthenticationTypePtrOutput)
 }
 
+// The authentication type to use. Type: string. Only used for V2.
+type GreenplumAuthenticationType string
+
+const (
+	GreenplumAuthenticationTypeBasic = GreenplumAuthenticationType("Basic")
+)
+
+func (GreenplumAuthenticationType) ElementType() reflect.Type {
+	return reflect.TypeOf((*GreenplumAuthenticationType)(nil)).Elem()
+}
+
+func (e GreenplumAuthenticationType) ToGreenplumAuthenticationTypeOutput() GreenplumAuthenticationTypeOutput {
+	return pulumi.ToOutput(e).(GreenplumAuthenticationTypeOutput)
+}
+
+func (e GreenplumAuthenticationType) ToGreenplumAuthenticationTypeOutputWithContext(ctx context.Context) GreenplumAuthenticationTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GreenplumAuthenticationTypeOutput)
+}
+
+func (e GreenplumAuthenticationType) ToGreenplumAuthenticationTypePtrOutput() GreenplumAuthenticationTypePtrOutput {
+	return e.ToGreenplumAuthenticationTypePtrOutputWithContext(context.Background())
+}
+
+func (e GreenplumAuthenticationType) ToGreenplumAuthenticationTypePtrOutputWithContext(ctx context.Context) GreenplumAuthenticationTypePtrOutput {
+	return GreenplumAuthenticationType(e).ToGreenplumAuthenticationTypeOutputWithContext(ctx).ToGreenplumAuthenticationTypePtrOutputWithContext(ctx)
+}
+
+func (e GreenplumAuthenticationType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GreenplumAuthenticationType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GreenplumAuthenticationType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GreenplumAuthenticationType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GreenplumAuthenticationTypeOutput struct{ *pulumi.OutputState }
+
+func (GreenplumAuthenticationTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GreenplumAuthenticationType)(nil)).Elem()
+}
+
+func (o GreenplumAuthenticationTypeOutput) ToGreenplumAuthenticationTypeOutput() GreenplumAuthenticationTypeOutput {
+	return o
+}
+
+func (o GreenplumAuthenticationTypeOutput) ToGreenplumAuthenticationTypeOutputWithContext(ctx context.Context) GreenplumAuthenticationTypeOutput {
+	return o
+}
+
+func (o GreenplumAuthenticationTypeOutput) ToGreenplumAuthenticationTypePtrOutput() GreenplumAuthenticationTypePtrOutput {
+	return o.ToGreenplumAuthenticationTypePtrOutputWithContext(context.Background())
+}
+
+func (o GreenplumAuthenticationTypeOutput) ToGreenplumAuthenticationTypePtrOutputWithContext(ctx context.Context) GreenplumAuthenticationTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GreenplumAuthenticationType) *GreenplumAuthenticationType {
+		return &v
+	}).(GreenplumAuthenticationTypePtrOutput)
+}
+
+func (o GreenplumAuthenticationTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GreenplumAuthenticationTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GreenplumAuthenticationType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GreenplumAuthenticationTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GreenplumAuthenticationTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GreenplumAuthenticationType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GreenplumAuthenticationTypePtrOutput struct{ *pulumi.OutputState }
+
+func (GreenplumAuthenticationTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GreenplumAuthenticationType)(nil)).Elem()
+}
+
+func (o GreenplumAuthenticationTypePtrOutput) ToGreenplumAuthenticationTypePtrOutput() GreenplumAuthenticationTypePtrOutput {
+	return o
+}
+
+func (o GreenplumAuthenticationTypePtrOutput) ToGreenplumAuthenticationTypePtrOutputWithContext(ctx context.Context) GreenplumAuthenticationTypePtrOutput {
+	return o
+}
+
+func (o GreenplumAuthenticationTypePtrOutput) Elem() GreenplumAuthenticationTypeOutput {
+	return o.ApplyT(func(v *GreenplumAuthenticationType) GreenplumAuthenticationType {
+		if v != nil {
+			return *v
+		}
+		var ret GreenplumAuthenticationType
+		return ret
+	}).(GreenplumAuthenticationTypeOutput)
+}
+
+func (o GreenplumAuthenticationTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GreenplumAuthenticationTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GreenplumAuthenticationType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GreenplumAuthenticationTypeInput is an input type that accepts values of the GreenplumAuthenticationType enum
+// A concrete instance of `GreenplumAuthenticationTypeInput` can be one of the following:
+//
+//	GreenplumAuthenticationTypeBasic
+type GreenplumAuthenticationTypeInput interface {
+	pulumi.Input
+
+	ToGreenplumAuthenticationTypeOutput() GreenplumAuthenticationTypeOutput
+	ToGreenplumAuthenticationTypeOutputWithContext(context.Context) GreenplumAuthenticationTypeOutput
+}
+
+var greenplumAuthenticationTypePtrType = reflect.TypeOf((**GreenplumAuthenticationType)(nil)).Elem()
+
+type GreenplumAuthenticationTypePtrInput interface {
+	pulumi.Input
+
+	ToGreenplumAuthenticationTypePtrOutput() GreenplumAuthenticationTypePtrOutput
+	ToGreenplumAuthenticationTypePtrOutputWithContext(context.Context) GreenplumAuthenticationTypePtrOutput
+}
+
+type greenplumAuthenticationTypePtr string
+
+func GreenplumAuthenticationTypePtr(v string) GreenplumAuthenticationTypePtrInput {
+	return (*greenplumAuthenticationTypePtr)(&v)
+}
+
+func (*greenplumAuthenticationTypePtr) ElementType() reflect.Type {
+	return greenplumAuthenticationTypePtrType
+}
+
+func (in *greenplumAuthenticationTypePtr) ToGreenplumAuthenticationTypePtrOutput() GreenplumAuthenticationTypePtrOutput {
+	return pulumi.ToOutput(in).(GreenplumAuthenticationTypePtrOutput)
+}
+
+func (in *greenplumAuthenticationTypePtr) ToGreenplumAuthenticationTypePtrOutputWithContext(ctx context.Context) GreenplumAuthenticationTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GreenplumAuthenticationTypePtrOutput)
+}
+
 // The authentication mechanism to use to connect to the HBase server.
 type HBaseAuthenticationType string
 
@@ -14585,6 +14749,8 @@ func init() {
 	pulumi.RegisterOutputType(GoogleBigQueryAuthenticationTypePtrOutput{})
 	pulumi.RegisterOutputType(GoogleBigQueryV2AuthenticationTypeOutput{})
 	pulumi.RegisterOutputType(GoogleBigQueryV2AuthenticationTypePtrOutput{})
+	pulumi.RegisterOutputType(GreenplumAuthenticationTypeOutput{})
+	pulumi.RegisterOutputType(GreenplumAuthenticationTypePtrOutput{})
 	pulumi.RegisterOutputType(HBaseAuthenticationTypeOutput{})
 	pulumi.RegisterOutputType(HBaseAuthenticationTypePtrOutput{})
 	pulumi.RegisterOutputType(HDInsightActivityDebugInfoOptionOutput{})

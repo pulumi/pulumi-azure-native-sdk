@@ -14,6 +14,8 @@ import (
 
 // The integration fabric resource type.
 // Azure REST API version: 2023-10-01-preview.
+//
+// Other available API versions: 2024-10-01.
 type IntegrationFabric struct {
 	pulumi.CustomResourceState
 
@@ -46,6 +48,9 @@ func NewIntegrationFabric(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:dashboard/v20231001preview:IntegrationFabric"),
+		},
+		{
+			Type: pulumi.String("azure-native:dashboard/v20241001:IntegrationFabric"),
 		},
 	})
 	opts = append(opts, aliases)
