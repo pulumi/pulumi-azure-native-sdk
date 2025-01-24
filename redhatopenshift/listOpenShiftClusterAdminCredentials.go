@@ -14,7 +14,7 @@ import (
 // The operation returns the admin kubeconfig.
 // Azure REST API version: 2022-09-04.
 //
-// Other available API versions: 2023-04-01, 2023-07-01-preview, 2023-09-04, 2023-11-22.
+// Other available API versions: 2023-04-01, 2023-07-01-preview, 2023-09-04, 2023-11-22, 2024-08-12-preview.
 func ListOpenShiftClusterAdminCredentials(ctx *pulumi.Context, args *ListOpenShiftClusterAdminCredentialsArgs, opts ...pulumi.InvokeOption) (*ListOpenShiftClusterAdminCredentialsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListOpenShiftClusterAdminCredentialsResult

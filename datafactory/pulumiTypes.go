@@ -65674,21 +65674,39 @@ func (o GoogleSheetsLinkedServiceResponseOutput) Version() pulumi.StringPtrOutpu
 type GreenplumLinkedService struct {
 	// List of tags that can be used for describing the linked service.
 	Annotations []interface{} `pulumi:"annotations"`
+	// The authentication type to use. Type: string. Only used for V2.
+	AuthenticationType *string `pulumi:"authenticationType"`
+	// The time to wait (in seconds) while trying to execute a command before terminating the attempt and generating an error. Set to zero for infinity. Type: integer. Only used for V2.
+	CommandTimeout interface{} `pulumi:"commandTimeout"`
 	// The integration runtime reference.
 	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
 	// An ODBC connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
 	ConnectionString interface{} `pulumi:"connectionString"`
+	// The time to wait (in seconds) while trying to establish a connection before terminating the attempt and generating an error. Type: integer. Only used for V2.
+	ConnectionTimeout interface{} `pulumi:"connectionTimeout"`
+	// Database name for connection. Type: string. Only used for V2.
+	Database interface{} `pulumi:"database"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential *string `pulumi:"encryptedCredential"`
+	// Host name for connection. Type: string. Only used for V2.
+	Host interface{} `pulumi:"host"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
+	// The Azure key vault secret reference of password in connection string. Type: string. Only used for V2.
+	Password interface{} `pulumi:"password"`
+	// The port for the connection. Type: integer. Only used for V2.
+	Port interface{} `pulumi:"port"`
 	// The Azure key vault secret reference of password in connection string.
 	Pwd *AzureKeyVaultSecretReference `pulumi:"pwd"`
+	// SSL mode for connection. Type: integer. 0: disable, 1:allow, 2: prefer, 3: require, 4: verify-ca, 5: verify-full. Type: integer. Only used for V2.
+	SslMode interface{} `pulumi:"sslMode"`
 	// Type of linked service.
 	// Expected value is 'Greenplum'.
 	Type string `pulumi:"type"`
+	// Username for authentication. Type: string. Only used for V2.
+	Username interface{} `pulumi:"username"`
 	// Version of the linked service.
 	Version *string `pulumi:"version"`
 }
@@ -65708,21 +65726,39 @@ type GreenplumLinkedServiceInput interface {
 type GreenplumLinkedServiceArgs struct {
 	// List of tags that can be used for describing the linked service.
 	Annotations pulumi.ArrayInput `pulumi:"annotations"`
+	// The authentication type to use. Type: string. Only used for V2.
+	AuthenticationType pulumi.StringPtrInput `pulumi:"authenticationType"`
+	// The time to wait (in seconds) while trying to execute a command before terminating the attempt and generating an error. Set to zero for infinity. Type: integer. Only used for V2.
+	CommandTimeout pulumi.Input `pulumi:"commandTimeout"`
 	// The integration runtime reference.
 	ConnectVia IntegrationRuntimeReferencePtrInput `pulumi:"connectVia"`
 	// An ODBC connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
 	ConnectionString pulumi.Input `pulumi:"connectionString"`
+	// The time to wait (in seconds) while trying to establish a connection before terminating the attempt and generating an error. Type: integer. Only used for V2.
+	ConnectionTimeout pulumi.Input `pulumi:"connectionTimeout"`
+	// Database name for connection. Type: string. Only used for V2.
+	Database pulumi.Input `pulumi:"database"`
 	// Linked service description.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential pulumi.StringPtrInput `pulumi:"encryptedCredential"`
+	// Host name for connection. Type: string. Only used for V2.
+	Host pulumi.Input `pulumi:"host"`
 	// Parameters for linked service.
 	Parameters ParameterSpecificationMapInput `pulumi:"parameters"`
+	// The Azure key vault secret reference of password in connection string. Type: string. Only used for V2.
+	Password pulumi.Input `pulumi:"password"`
+	// The port for the connection. Type: integer. Only used for V2.
+	Port pulumi.Input `pulumi:"port"`
 	// The Azure key vault secret reference of password in connection string.
 	Pwd AzureKeyVaultSecretReferencePtrInput `pulumi:"pwd"`
+	// SSL mode for connection. Type: integer. 0: disable, 1:allow, 2: prefer, 3: require, 4: verify-ca, 5: verify-full. Type: integer. Only used for V2.
+	SslMode pulumi.Input `pulumi:"sslMode"`
 	// Type of linked service.
 	// Expected value is 'Greenplum'.
 	Type pulumi.StringInput `pulumi:"type"`
+	// Username for authentication. Type: string. Only used for V2.
+	Username pulumi.Input `pulumi:"username"`
 	// Version of the linked service.
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
@@ -65759,6 +65795,16 @@ func (o GreenplumLinkedServiceOutput) Annotations() pulumi.ArrayOutput {
 	return o.ApplyT(func(v GreenplumLinkedService) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
 }
 
+// The authentication type to use. Type: string. Only used for V2.
+func (o GreenplumLinkedServiceOutput) AuthenticationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GreenplumLinkedService) *string { return v.AuthenticationType }).(pulumi.StringPtrOutput)
+}
+
+// The time to wait (in seconds) while trying to execute a command before terminating the attempt and generating an error. Set to zero for infinity. Type: integer. Only used for V2.
+func (o GreenplumLinkedServiceOutput) CommandTimeout() pulumi.AnyOutput {
+	return o.ApplyT(func(v GreenplumLinkedService) interface{} { return v.CommandTimeout }).(pulumi.AnyOutput)
+}
+
 // The integration runtime reference.
 func (o GreenplumLinkedServiceOutput) ConnectVia() IntegrationRuntimeReferencePtrOutput {
 	return o.ApplyT(func(v GreenplumLinkedService) *IntegrationRuntimeReference { return v.ConnectVia }).(IntegrationRuntimeReferencePtrOutput)
@@ -65767,6 +65813,16 @@ func (o GreenplumLinkedServiceOutput) ConnectVia() IntegrationRuntimeReferencePt
 // An ODBC connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
 func (o GreenplumLinkedServiceOutput) ConnectionString() pulumi.AnyOutput {
 	return o.ApplyT(func(v GreenplumLinkedService) interface{} { return v.ConnectionString }).(pulumi.AnyOutput)
+}
+
+// The time to wait (in seconds) while trying to establish a connection before terminating the attempt and generating an error. Type: integer. Only used for V2.
+func (o GreenplumLinkedServiceOutput) ConnectionTimeout() pulumi.AnyOutput {
+	return o.ApplyT(func(v GreenplumLinkedService) interface{} { return v.ConnectionTimeout }).(pulumi.AnyOutput)
+}
+
+// Database name for connection. Type: string. Only used for V2.
+func (o GreenplumLinkedServiceOutput) Database() pulumi.AnyOutput {
+	return o.ApplyT(func(v GreenplumLinkedService) interface{} { return v.Database }).(pulumi.AnyOutput)
 }
 
 // Linked service description.
@@ -65779,9 +65835,24 @@ func (o GreenplumLinkedServiceOutput) EncryptedCredential() pulumi.StringPtrOutp
 	return o.ApplyT(func(v GreenplumLinkedService) *string { return v.EncryptedCredential }).(pulumi.StringPtrOutput)
 }
 
+// Host name for connection. Type: string. Only used for V2.
+func (o GreenplumLinkedServiceOutput) Host() pulumi.AnyOutput {
+	return o.ApplyT(func(v GreenplumLinkedService) interface{} { return v.Host }).(pulumi.AnyOutput)
+}
+
 // Parameters for linked service.
 func (o GreenplumLinkedServiceOutput) Parameters() ParameterSpecificationMapOutput {
 	return o.ApplyT(func(v GreenplumLinkedService) map[string]ParameterSpecification { return v.Parameters }).(ParameterSpecificationMapOutput)
+}
+
+// The Azure key vault secret reference of password in connection string. Type: string. Only used for V2.
+func (o GreenplumLinkedServiceOutput) Password() pulumi.AnyOutput {
+	return o.ApplyT(func(v GreenplumLinkedService) interface{} { return v.Password }).(pulumi.AnyOutput)
+}
+
+// The port for the connection. Type: integer. Only used for V2.
+func (o GreenplumLinkedServiceOutput) Port() pulumi.AnyOutput {
+	return o.ApplyT(func(v GreenplumLinkedService) interface{} { return v.Port }).(pulumi.AnyOutput)
 }
 
 // The Azure key vault secret reference of password in connection string.
@@ -65789,10 +65860,20 @@ func (o GreenplumLinkedServiceOutput) Pwd() AzureKeyVaultSecretReferencePtrOutpu
 	return o.ApplyT(func(v GreenplumLinkedService) *AzureKeyVaultSecretReference { return v.Pwd }).(AzureKeyVaultSecretReferencePtrOutput)
 }
 
+// SSL mode for connection. Type: integer. 0: disable, 1:allow, 2: prefer, 3: require, 4: verify-ca, 5: verify-full. Type: integer. Only used for V2.
+func (o GreenplumLinkedServiceOutput) SslMode() pulumi.AnyOutput {
+	return o.ApplyT(func(v GreenplumLinkedService) interface{} { return v.SslMode }).(pulumi.AnyOutput)
+}
+
 // Type of linked service.
 // Expected value is 'Greenplum'.
 func (o GreenplumLinkedServiceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GreenplumLinkedService) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Username for authentication. Type: string. Only used for V2.
+func (o GreenplumLinkedServiceOutput) Username() pulumi.AnyOutput {
+	return o.ApplyT(func(v GreenplumLinkedService) interface{} { return v.Username }).(pulumi.AnyOutput)
 }
 
 // Version of the linked service.
@@ -65804,21 +65885,39 @@ func (o GreenplumLinkedServiceOutput) Version() pulumi.StringPtrOutput {
 type GreenplumLinkedServiceResponse struct {
 	// List of tags that can be used for describing the linked service.
 	Annotations []interface{} `pulumi:"annotations"`
+	// The authentication type to use. Type: string. Only used for V2.
+	AuthenticationType *string `pulumi:"authenticationType"`
+	// The time to wait (in seconds) while trying to execute a command before terminating the attempt and generating an error. Set to zero for infinity. Type: integer. Only used for V2.
+	CommandTimeout interface{} `pulumi:"commandTimeout"`
 	// The integration runtime reference.
 	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
 	// An ODBC connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
 	ConnectionString interface{} `pulumi:"connectionString"`
+	// The time to wait (in seconds) while trying to establish a connection before terminating the attempt and generating an error. Type: integer. Only used for V2.
+	ConnectionTimeout interface{} `pulumi:"connectionTimeout"`
+	// Database name for connection. Type: string. Only used for V2.
+	Database interface{} `pulumi:"database"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential *string `pulumi:"encryptedCredential"`
+	// Host name for connection. Type: string. Only used for V2.
+	Host interface{} `pulumi:"host"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
+	// The Azure key vault secret reference of password in connection string. Type: string. Only used for V2.
+	Password interface{} `pulumi:"password"`
+	// The port for the connection. Type: integer. Only used for V2.
+	Port interface{} `pulumi:"port"`
 	// The Azure key vault secret reference of password in connection string.
 	Pwd *AzureKeyVaultSecretReferenceResponse `pulumi:"pwd"`
+	// SSL mode for connection. Type: integer. 0: disable, 1:allow, 2: prefer, 3: require, 4: verify-ca, 5: verify-full. Type: integer. Only used for V2.
+	SslMode interface{} `pulumi:"sslMode"`
 	// Type of linked service.
 	// Expected value is 'Greenplum'.
 	Type string `pulumi:"type"`
+	// Username for authentication. Type: string. Only used for V2.
+	Username interface{} `pulumi:"username"`
 	// Version of the linked service.
 	Version *string `pulumi:"version"`
 }
@@ -65843,6 +65942,16 @@ func (o GreenplumLinkedServiceResponseOutput) Annotations() pulumi.ArrayOutput {
 	return o.ApplyT(func(v GreenplumLinkedServiceResponse) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
 }
 
+// The authentication type to use. Type: string. Only used for V2.
+func (o GreenplumLinkedServiceResponseOutput) AuthenticationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GreenplumLinkedServiceResponse) *string { return v.AuthenticationType }).(pulumi.StringPtrOutput)
+}
+
+// The time to wait (in seconds) while trying to execute a command before terminating the attempt and generating an error. Set to zero for infinity. Type: integer. Only used for V2.
+func (o GreenplumLinkedServiceResponseOutput) CommandTimeout() pulumi.AnyOutput {
+	return o.ApplyT(func(v GreenplumLinkedServiceResponse) interface{} { return v.CommandTimeout }).(pulumi.AnyOutput)
+}
+
 // The integration runtime reference.
 func (o GreenplumLinkedServiceResponseOutput) ConnectVia() IntegrationRuntimeReferenceResponsePtrOutput {
 	return o.ApplyT(func(v GreenplumLinkedServiceResponse) *IntegrationRuntimeReferenceResponse { return v.ConnectVia }).(IntegrationRuntimeReferenceResponsePtrOutput)
@@ -65851,6 +65960,16 @@ func (o GreenplumLinkedServiceResponseOutput) ConnectVia() IntegrationRuntimeRef
 // An ODBC connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
 func (o GreenplumLinkedServiceResponseOutput) ConnectionString() pulumi.AnyOutput {
 	return o.ApplyT(func(v GreenplumLinkedServiceResponse) interface{} { return v.ConnectionString }).(pulumi.AnyOutput)
+}
+
+// The time to wait (in seconds) while trying to establish a connection before terminating the attempt and generating an error. Type: integer. Only used for V2.
+func (o GreenplumLinkedServiceResponseOutput) ConnectionTimeout() pulumi.AnyOutput {
+	return o.ApplyT(func(v GreenplumLinkedServiceResponse) interface{} { return v.ConnectionTimeout }).(pulumi.AnyOutput)
+}
+
+// Database name for connection. Type: string. Only used for V2.
+func (o GreenplumLinkedServiceResponseOutput) Database() pulumi.AnyOutput {
+	return o.ApplyT(func(v GreenplumLinkedServiceResponse) interface{} { return v.Database }).(pulumi.AnyOutput)
 }
 
 // Linked service description.
@@ -65863,9 +65982,24 @@ func (o GreenplumLinkedServiceResponseOutput) EncryptedCredential() pulumi.Strin
 	return o.ApplyT(func(v GreenplumLinkedServiceResponse) *string { return v.EncryptedCredential }).(pulumi.StringPtrOutput)
 }
 
+// Host name for connection. Type: string. Only used for V2.
+func (o GreenplumLinkedServiceResponseOutput) Host() pulumi.AnyOutput {
+	return o.ApplyT(func(v GreenplumLinkedServiceResponse) interface{} { return v.Host }).(pulumi.AnyOutput)
+}
+
 // Parameters for linked service.
 func (o GreenplumLinkedServiceResponseOutput) Parameters() ParameterSpecificationResponseMapOutput {
 	return o.ApplyT(func(v GreenplumLinkedServiceResponse) map[string]ParameterSpecificationResponse { return v.Parameters }).(ParameterSpecificationResponseMapOutput)
+}
+
+// The Azure key vault secret reference of password in connection string. Type: string. Only used for V2.
+func (o GreenplumLinkedServiceResponseOutput) Password() pulumi.AnyOutput {
+	return o.ApplyT(func(v GreenplumLinkedServiceResponse) interface{} { return v.Password }).(pulumi.AnyOutput)
+}
+
+// The port for the connection. Type: integer. Only used for V2.
+func (o GreenplumLinkedServiceResponseOutput) Port() pulumi.AnyOutput {
+	return o.ApplyT(func(v GreenplumLinkedServiceResponse) interface{} { return v.Port }).(pulumi.AnyOutput)
 }
 
 // The Azure key vault secret reference of password in connection string.
@@ -65873,10 +66007,20 @@ func (o GreenplumLinkedServiceResponseOutput) Pwd() AzureKeyVaultSecretReference
 	return o.ApplyT(func(v GreenplumLinkedServiceResponse) *AzureKeyVaultSecretReferenceResponse { return v.Pwd }).(AzureKeyVaultSecretReferenceResponsePtrOutput)
 }
 
+// SSL mode for connection. Type: integer. 0: disable, 1:allow, 2: prefer, 3: require, 4: verify-ca, 5: verify-full. Type: integer. Only used for V2.
+func (o GreenplumLinkedServiceResponseOutput) SslMode() pulumi.AnyOutput {
+	return o.ApplyT(func(v GreenplumLinkedServiceResponse) interface{} { return v.SslMode }).(pulumi.AnyOutput)
+}
+
 // Type of linked service.
 // Expected value is 'Greenplum'.
 func (o GreenplumLinkedServiceResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GreenplumLinkedServiceResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Username for authentication. Type: string. Only used for V2.
+func (o GreenplumLinkedServiceResponseOutput) Username() pulumi.AnyOutput {
+	return o.ApplyT(func(v GreenplumLinkedServiceResponse) interface{} { return v.Username }).(pulumi.AnyOutput)
 }
 
 // Version of the linked service.

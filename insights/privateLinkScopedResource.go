@@ -14,6 +14,8 @@ import (
 
 // A private link scoped resource
 // Azure REST API version: 2021-07-01-preview. Prior API version in Azure Native 1.x: 2019-10-17-preview.
+//
+// Other available API versions: 2021-09-01, 2023-06-01-preview.
 type PrivateLinkScopedResource struct {
 	pulumi.CustomResourceState
 
@@ -48,6 +50,12 @@ func NewPrivateLinkScopedResource(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:insights/v20210701preview:PrivateLinkScopedResource"),
+		},
+		{
+			Type: pulumi.String("azure-native:insights/v20210901:PrivateLinkScopedResource"),
+		},
+		{
+			Type: pulumi.String("azure-native:insights/v20230601preview:PrivateLinkScopedResource"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -67,6 +67,9 @@ func NewManagedPrivateEndpoint(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:dashboard/v20230901:ManagedPrivateEndpoint"),
 		},
+		{
+			Type: pulumi.String("azure-native:dashboard/v20241001:ManagedPrivateEndpoint"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

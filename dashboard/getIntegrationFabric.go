@@ -13,6 +13,8 @@ import (
 
 // The integration fabric resource type.
 // Azure REST API version: 2023-10-01-preview.
+//
+// Other available API versions: 2024-10-01.
 func LookupIntegrationFabric(ctx *pulumi.Context, args *LookupIntegrationFabricArgs, opts ...pulumi.InvokeOption) (*LookupIntegrationFabricResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIntegrationFabricResult
