@@ -25945,6 +25945,66 @@ func (o DelegationResponseArrayOutput) Index(i pulumi.IntInput) DelegationRespon
 	}).(DelegationResponseOutput)
 }
 
+// The delegation signer information.
+type DelegationSignerInfoResponse struct {
+	// The digest algorithm type represents the standard digest algorithm number used to construct the digest. See: https://www.iana.org/assignments/ds-rr-types/ds-rr-types.xhtml
+	DigestAlgorithmType int `pulumi:"digestAlgorithmType"`
+	// The digest value is a cryptographic hash value of the referenced DNSKEY Resource Record.
+	DigestValue string `pulumi:"digestValue"`
+	// The record represents a delegation signer (DS) record.
+	Record string `pulumi:"record"`
+}
+
+// The delegation signer information.
+type DelegationSignerInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (DelegationSignerInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DelegationSignerInfoResponse)(nil)).Elem()
+}
+
+func (o DelegationSignerInfoResponseOutput) ToDelegationSignerInfoResponseOutput() DelegationSignerInfoResponseOutput {
+	return o
+}
+
+func (o DelegationSignerInfoResponseOutput) ToDelegationSignerInfoResponseOutputWithContext(ctx context.Context) DelegationSignerInfoResponseOutput {
+	return o
+}
+
+// The digest algorithm type represents the standard digest algorithm number used to construct the digest. See: https://www.iana.org/assignments/ds-rr-types/ds-rr-types.xhtml
+func (o DelegationSignerInfoResponseOutput) DigestAlgorithmType() pulumi.IntOutput {
+	return o.ApplyT(func(v DelegationSignerInfoResponse) int { return v.DigestAlgorithmType }).(pulumi.IntOutput)
+}
+
+// The digest value is a cryptographic hash value of the referenced DNSKEY Resource Record.
+func (o DelegationSignerInfoResponseOutput) DigestValue() pulumi.StringOutput {
+	return o.ApplyT(func(v DelegationSignerInfoResponse) string { return v.DigestValue }).(pulumi.StringOutput)
+}
+
+// The record represents a delegation signer (DS) record.
+func (o DelegationSignerInfoResponseOutput) Record() pulumi.StringOutput {
+	return o.ApplyT(func(v DelegationSignerInfoResponse) string { return v.Record }).(pulumi.StringOutput)
+}
+
+type DelegationSignerInfoResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (DelegationSignerInfoResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DelegationSignerInfoResponse)(nil)).Elem()
+}
+
+func (o DelegationSignerInfoResponseArrayOutput) ToDelegationSignerInfoResponseArrayOutput() DelegationSignerInfoResponseArrayOutput {
+	return o
+}
+
+func (o DelegationSignerInfoResponseArrayOutput) ToDelegationSignerInfoResponseArrayOutputWithContext(ctx context.Context) DelegationSignerInfoResponseArrayOutput {
+	return o
+}
+
+func (o DelegationSignerInfoResponseArrayOutput) Index(i pulumi.IntInput) DelegationSignerInfoResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DelegationSignerInfoResponse {
+		return vs[0].([]DelegationSignerInfoResponse)[vs[1].(int)]
+	}).(DelegationSignerInfoResponseOutput)
+}
+
 // List of properties of the device.
 type DeviceProperties struct {
 	// Model of the device.
@@ -60737,85 +60797,6 @@ func (o PolicySettingsResponsePtrOutput) State() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// To scrub sensitive log fields
-type PolicySettingsResponseLogScrubbing struct {
-	// The rules that are applied to the logs for scrubbing.
-	ScrubbingRules []WebApplicationFirewallScrubbingRulesResponse `pulumi:"scrubbingRules"`
-	// State of the log scrubbing config. Default value is Enabled.
-	State *string `pulumi:"state"`
-}
-
-// To scrub sensitive log fields
-type PolicySettingsResponseLogScrubbingOutput struct{ *pulumi.OutputState }
-
-func (PolicySettingsResponseLogScrubbingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicySettingsResponseLogScrubbing)(nil)).Elem()
-}
-
-func (o PolicySettingsResponseLogScrubbingOutput) ToPolicySettingsResponseLogScrubbingOutput() PolicySettingsResponseLogScrubbingOutput {
-	return o
-}
-
-func (o PolicySettingsResponseLogScrubbingOutput) ToPolicySettingsResponseLogScrubbingOutputWithContext(ctx context.Context) PolicySettingsResponseLogScrubbingOutput {
-	return o
-}
-
-// The rules that are applied to the logs for scrubbing.
-func (o PolicySettingsResponseLogScrubbingOutput) ScrubbingRules() WebApplicationFirewallScrubbingRulesResponseArrayOutput {
-	return o.ApplyT(func(v PolicySettingsResponseLogScrubbing) []WebApplicationFirewallScrubbingRulesResponse {
-		return v.ScrubbingRules
-	}).(WebApplicationFirewallScrubbingRulesResponseArrayOutput)
-}
-
-// State of the log scrubbing config. Default value is Enabled.
-func (o PolicySettingsResponseLogScrubbingOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PolicySettingsResponseLogScrubbing) *string { return v.State }).(pulumi.StringPtrOutput)
-}
-
-type PolicySettingsResponseLogScrubbingPtrOutput struct{ *pulumi.OutputState }
-
-func (PolicySettingsResponseLogScrubbingPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PolicySettingsResponseLogScrubbing)(nil)).Elem()
-}
-
-func (o PolicySettingsResponseLogScrubbingPtrOutput) ToPolicySettingsResponseLogScrubbingPtrOutput() PolicySettingsResponseLogScrubbingPtrOutput {
-	return o
-}
-
-func (o PolicySettingsResponseLogScrubbingPtrOutput) ToPolicySettingsResponseLogScrubbingPtrOutputWithContext(ctx context.Context) PolicySettingsResponseLogScrubbingPtrOutput {
-	return o
-}
-
-func (o PolicySettingsResponseLogScrubbingPtrOutput) Elem() PolicySettingsResponseLogScrubbingOutput {
-	return o.ApplyT(func(v *PolicySettingsResponseLogScrubbing) PolicySettingsResponseLogScrubbing {
-		if v != nil {
-			return *v
-		}
-		var ret PolicySettingsResponseLogScrubbing
-		return ret
-	}).(PolicySettingsResponseLogScrubbingOutput)
-}
-
-// The rules that are applied to the logs for scrubbing.
-func (o PolicySettingsResponseLogScrubbingPtrOutput) ScrubbingRules() WebApplicationFirewallScrubbingRulesResponseArrayOutput {
-	return o.ApplyT(func(v *PolicySettingsResponseLogScrubbing) []WebApplicationFirewallScrubbingRulesResponse {
-		if v == nil {
-			return nil
-		}
-		return v.ScrubbingRules
-	}).(WebApplicationFirewallScrubbingRulesResponseArrayOutput)
-}
-
-// State of the log scrubbing config. Default value is Enabled.
-func (o PolicySettingsResponseLogScrubbingPtrOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PolicySettingsResponseLogScrubbing) *string {
-		if v == nil {
-			return nil
-		}
-		return v.State
-	}).(pulumi.StringPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterOutputType(ARecordOutput{})
 	pulumi.RegisterOutputType(ARecordArrayOutput{})
@@ -61238,6 +61219,8 @@ func init() {
 	pulumi.RegisterOutputType(DelegationPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(DelegationResponseOutput{})
 	pulumi.RegisterOutputType(DelegationResponseArrayOutput{})
+	pulumi.RegisterOutputType(DelegationSignerInfoResponseOutput{})
+	pulumi.RegisterOutputType(DelegationSignerInfoResponseArrayOutput{})
 	pulumi.RegisterOutputType(DevicePropertiesOutput{})
 	pulumi.RegisterOutputType(DevicePropertiesPtrOutput{})
 	pulumi.RegisterOutputType(DevicePropertiesResponseOutput{})
@@ -61789,6 +61772,4 @@ func init() {
 	pulumi.RegisterOutputType(PolicySettingsLogScrubbingPtrOutput{})
 	pulumi.RegisterOutputType(PolicySettingsResponseOutput{})
 	pulumi.RegisterOutputType(PolicySettingsResponsePtrOutput{})
-	pulumi.RegisterOutputType(PolicySettingsResponseLogScrubbingOutput{})
-	pulumi.RegisterOutputType(PolicySettingsResponseLogScrubbingPtrOutput{})
 }

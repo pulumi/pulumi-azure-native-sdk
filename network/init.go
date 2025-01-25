@@ -63,6 +63,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DnsResolverPolicyVirtualNetworkLink{}
 	case "azure-native:network:DnsSecurityRule":
 		r = &DnsSecurityRule{}
+	case "azure-native:network:DnssecConfig":
+		r = &DnssecConfig{}
 	case "azure-native:network:DscpConfiguration":
 		r = &DscpConfiguration{}
 	case "azure-native:network:Endpoint":
@@ -151,6 +153,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &NetworkSecurityPerimeter{}
 	case "azure-native:network:NetworkVirtualAppliance":
 		r = &NetworkVirtualAppliance{}
+	case "azure-native:network:NetworkVirtualApplianceConnection":
+		r = &NetworkVirtualApplianceConnection{}
 	case "azure-native:network:NetworkWatcher":
 		r = &NetworkWatcher{}
 	case "azure-native:network:NspAccessRule":
