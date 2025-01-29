@@ -47,6 +47,9 @@ func NewNetworkVirtualApplianceConnection(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:network:NetworkVirtualApplianceConnection"),
+		},
+		{
 			Type: pulumi.String("azure-native:network/v20230601:NetworkVirtualApplianceConnection"),
 		},
 		{
