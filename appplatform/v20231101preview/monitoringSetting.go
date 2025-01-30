@@ -41,9 +41,6 @@ func NewMonitoringSetting(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:appplatform:MonitoringSetting"),
-		},
-		{
 			Type: pulumi.String("azure-native:appplatform/v20200701:MonitoringSetting"),
 		},
 		{
@@ -99,6 +96,9 @@ func NewMonitoringSetting(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:appplatform/v20240501preview:MonitoringSetting"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform:MonitoringSetting"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -84,9 +84,6 @@ func NewVirtualMachineTemplate(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:connectedvmwarevsphere:VirtualMachineTemplate"),
-		},
-		{
 			Type: pulumi.String("azure-native:connectedvmwarevsphere/v20201001preview:VirtualMachineTemplate"),
 		},
 		{
@@ -100,6 +97,9 @@ func NewVirtualMachineTemplate(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:connectedvmwarevsphere/v20231201:VirtualMachineTemplate"),
+		},
+		{
+			Type: pulumi.String("azure-native:connectedvmwarevsphere:VirtualMachineTemplate"),
 		},
 	})
 	opts = append(opts, aliases)

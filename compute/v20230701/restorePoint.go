@@ -51,9 +51,6 @@ func NewRestorePoint(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:compute:RestorePoint"),
-		},
-		{
 			Type: pulumi.String("azure-native:compute/v20210301:RestorePoint"),
 		},
 		{
@@ -85,6 +82,9 @@ func NewRestorePoint(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:compute/v20240701:RestorePoint"),
+		},
+		{
+			Type: pulumi.String("azure-native:compute:RestorePoint"),
 		},
 	})
 	opts = append(opts, aliases)

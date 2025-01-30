@@ -68,9 +68,6 @@ func NewAwsS3DataConnector(ctx *pulumi.Context,
 	args.Kind = pulumi.String("AmazonWebServicesS3")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:securityinsights:AwsS3DataConnector"),
-		},
-		{
 			Type: pulumi.String("azure-native:securityinsights/v20190101preview:AwsS3DataConnector"),
 		},
 		{
@@ -171,6 +168,9 @@ func NewAwsS3DataConnector(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20240901:AwsS3DataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights:AwsS3DataConnector"),
 		},
 	})
 	opts = append(opts, aliases)

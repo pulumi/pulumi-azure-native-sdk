@@ -65,9 +65,6 @@ func NewElasticPool(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:sql:ElasticPool"),
-		},
-		{
 			Type: pulumi.String("azure-native:sql/v20140401:ElasticPool"),
 		},
 		{
@@ -117,6 +114,9 @@ func NewElasticPool(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20240501preview:ElasticPool"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql:ElasticPool"),
 		},
 	})
 	opts = append(opts, aliases)

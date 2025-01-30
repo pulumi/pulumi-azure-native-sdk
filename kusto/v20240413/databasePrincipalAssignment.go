@@ -65,9 +65,6 @@ func NewDatabasePrincipalAssignment(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:kusto:DatabasePrincipalAssignment"),
-		},
-		{
 			Type: pulumi.String("azure-native:kusto/v20191109:DatabasePrincipalAssignment"),
 		},
 		{
@@ -102,6 +99,9 @@ func NewDatabasePrincipalAssignment(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:kusto/v20230815:DatabasePrincipalAssignment"),
+		},
+		{
+			Type: pulumi.String("azure-native:kusto:DatabasePrincipalAssignment"),
 		},
 	})
 	opts = append(opts, aliases)

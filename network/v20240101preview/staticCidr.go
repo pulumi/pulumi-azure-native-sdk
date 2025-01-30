@@ -44,10 +44,10 @@ func NewStaticCidr(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:network:StaticCidr"),
+			Type: pulumi.String("azure-native:network/v20240501:StaticCidr"),
 		},
 		{
-			Type: pulumi.String("azure-native:network/v20240501:StaticCidr"),
+			Type: pulumi.String("azure-native:network:StaticCidr"),
 		},
 	})
 	opts = append(opts, aliases)

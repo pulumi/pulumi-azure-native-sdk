@@ -51,10 +51,10 @@ func NewRuntimeEnvironment(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:automation:RuntimeEnvironment"),
+			Type: pulumi.String("azure-native:automation/v20241023:RuntimeEnvironment"),
 		},
 		{
-			Type: pulumi.String("azure-native:automation/v20241023:RuntimeEnvironment"),
+			Type: pulumi.String("azure-native:automation:RuntimeEnvironment"),
 		},
 	})
 	opts = append(opts, aliases)

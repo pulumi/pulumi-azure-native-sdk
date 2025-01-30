@@ -57,9 +57,6 @@ func NewPolicy(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:network:Policy"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20190301:Policy"),
 		},
 		{
@@ -76,6 +73,9 @@ func NewPolicy(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20240201:Policy"),
+		},
+		{
+			Type: pulumi.String("azure-native:network:Policy"),
 		},
 	})
 	opts = append(opts, aliases)

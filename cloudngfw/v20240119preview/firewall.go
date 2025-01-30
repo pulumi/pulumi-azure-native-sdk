@@ -78,9 +78,6 @@ func NewFirewall(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:cloudngfw:Firewall"),
-		},
-		{
 			Type: pulumi.String("azure-native:cloudngfw/v20220829:Firewall"),
 		},
 		{
@@ -97,6 +94,9 @@ func NewFirewall(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:cloudngfw/v20240207preview:Firewall"),
+		},
+		{
+			Type: pulumi.String("azure-native:cloudngfw:Firewall"),
 		},
 	})
 	opts = append(opts, aliases)

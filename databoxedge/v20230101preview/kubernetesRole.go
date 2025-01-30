@@ -77,9 +77,6 @@ func NewKubernetesRole(ctx *pulumi.Context,
 	args.Kind = pulumi.String("Kubernetes")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:databoxedge:KubernetesRole"),
-		},
-		{
 			Type: pulumi.String("azure-native:databoxedge/v20190301:KubernetesRole"),
 		},
 		{
@@ -126,6 +123,9 @@ func NewKubernetesRole(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:databoxedge/v20231201:KubernetesRole"),
+		},
+		{
+			Type: pulumi.String("azure-native:databoxedge:KubernetesRole"),
 		},
 	})
 	opts = append(opts, aliases)

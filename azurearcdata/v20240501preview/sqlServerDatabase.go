@@ -48,9 +48,6 @@ func NewSqlServerDatabase(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:azurearcdata:SqlServerDatabase"),
-		},
-		{
 			Type: pulumi.String("azure-native:azurearcdata/v20220615preview:SqlServerDatabase"),
 		},
 		{
@@ -58,6 +55,9 @@ func NewSqlServerDatabase(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azurearcdata/v20240101:SqlServerDatabase"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurearcdata:SqlServerDatabase"),
 		},
 	})
 	opts = append(opts, aliases)

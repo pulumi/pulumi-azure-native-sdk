@@ -43,9 +43,6 @@ func NewManagedNetworkSettingsRule(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:machinelearningservices:ManagedNetworkSettingsRule"),
-		},
-		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20230401preview:ManagedNetworkSettingsRule"),
 		},
 		{
@@ -71,6 +68,9 @@ func NewManagedNetworkSettingsRule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001:ManagedNetworkSettingsRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices:ManagedNetworkSettingsRule"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -149,9 +149,6 @@ func NewApiManagementService(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:apimanagement:ApiManagementService"),
-		},
-		{
 			Type: pulumi.String("azure-native:apimanagement/v20160707:ApiManagementService"),
 		},
 		{
@@ -213,6 +210,9 @@ func NewApiManagementService(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20240501:ApiManagementService"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement:ApiManagementService"),
 		},
 	})
 	opts = append(opts, aliases)

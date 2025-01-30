@@ -41,13 +41,13 @@ func NewTagRule(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:logz:TagRule"),
-		},
-		{
 			Type: pulumi.String("azure-native:logz/v20201001:TagRule"),
 		},
 		{
 			Type: pulumi.String("azure-native:logz/v20201001preview:TagRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:logz:TagRule"),
 		},
 	})
 	opts = append(opts, aliases)

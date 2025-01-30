@@ -70,13 +70,13 @@ func NewWorkspaceBackend(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:apimanagement:WorkspaceBackend"),
-		},
-		{
 			Type: pulumi.String("azure-native:apimanagement/v20240501:WorkspaceBackend"),
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20240601preview:WorkspaceBackend"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement:WorkspaceBackend"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -72,9 +72,6 @@ func NewDefaultUserRule(ctx *pulumi.Context,
 	args.Kind = pulumi.String("Default")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:network:DefaultUserRule"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20210201preview:DefaultUserRule"),
 		},
 		{
@@ -88,6 +85,9 @@ func NewDefaultUserRule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20240501:DefaultUserRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:network:DefaultUserRule"),
 		},
 	})
 	opts = append(opts, aliases)

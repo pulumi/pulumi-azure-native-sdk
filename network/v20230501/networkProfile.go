@@ -48,9 +48,6 @@ func NewNetworkProfile(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:network:NetworkProfile"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20180801:NetworkProfile"),
 		},
 		{
@@ -157,6 +154,9 @@ func NewNetworkProfile(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20240501:NetworkProfile"),
+		},
+		{
+			Type: pulumi.String("azure-native:network:NetworkProfile"),
 		},
 	})
 	opts = append(opts, aliases)

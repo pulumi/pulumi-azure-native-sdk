@@ -64,9 +64,6 @@ func NewRule(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:servicebus:Rule"),
-		},
-		{
 			Type: pulumi.String("azure-native:servicebus/v20170401:Rule"),
 		},
 		{
@@ -89,6 +86,9 @@ func NewRule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:servicebus/v20240101:Rule"),
+		},
+		{
+			Type: pulumi.String("azure-native:servicebus:Rule"),
 		},
 	})
 	opts = append(opts, aliases)

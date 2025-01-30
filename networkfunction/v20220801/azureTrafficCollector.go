@@ -48,9 +48,6 @@ func NewAzureTrafficCollector(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:networkfunction:AzureTrafficCollector"),
-		},
-		{
 			Type: pulumi.String("azure-native:networkfunction/v20210901preview:AzureTrafficCollector"),
 		},
 		{
@@ -58,6 +55,9 @@ func NewAzureTrafficCollector(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:networkfunction/v20221101:AzureTrafficCollector"),
+		},
+		{
+			Type: pulumi.String("azure-native:networkfunction:AzureTrafficCollector"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -46,13 +46,13 @@ func NewIntegrationAccountBatchConfiguration(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:logic:IntegrationAccountBatchConfiguration"),
-		},
-		{
 			Type: pulumi.String("azure-native:logic/v20160601:IntegrationAccountBatchConfiguration"),
 		},
 		{
 			Type: pulumi.String("azure-native:logic/v20180701preview:IntegrationAccountBatchConfiguration"),
+		},
+		{
+			Type: pulumi.String("azure-native:logic:IntegrationAccountBatchConfiguration"),
 		},
 	})
 	opts = append(opts, aliases)

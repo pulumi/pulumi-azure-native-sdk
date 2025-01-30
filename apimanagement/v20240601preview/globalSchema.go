@@ -48,9 +48,6 @@ func NewGlobalSchema(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:apimanagement:GlobalSchema"),
-		},
-		{
 			Type: pulumi.String("azure-native:apimanagement/v20210401preview:GlobalSchema"),
 		},
 		{
@@ -79,6 +76,9 @@ func NewGlobalSchema(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20240501:GlobalSchema"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement:GlobalSchema"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -42,9 +42,6 @@ func NewPipeline(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:azuredatatransfer:Pipeline"),
-		},
-		{
 			Type: pulumi.String("azure-native:azuredatatransfer/v20240125:Pipeline"),
 		},
 		{
@@ -55,6 +52,9 @@ func NewPipeline(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azuredatatransfer/v20240927:Pipeline"),
+		},
+		{
+			Type: pulumi.String("azure-native:azuredatatransfer:Pipeline"),
 		},
 	})
 	opts = append(opts, aliases)

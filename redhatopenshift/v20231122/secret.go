@@ -41,9 +41,6 @@ func NewSecret(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:redhatopenshift:Secret"),
-		},
-		{
 			Type: pulumi.String("azure-native:redhatopenshift/v20220904:Secret"),
 		},
 		{
@@ -54,6 +51,9 @@ func NewSecret(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:redhatopenshift/v20230904:Secret"),
+		},
+		{
+			Type: pulumi.String("azure-native:redhatopenshift:Secret"),
 		},
 	})
 	opts = append(opts, aliases)

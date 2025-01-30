@@ -67,10 +67,10 @@ func NewRelationship(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:customerinsights:Relationship"),
+			Type: pulumi.String("azure-native:customerinsights/v20170101:Relationship"),
 		},
 		{
-			Type: pulumi.String("azure-native:customerinsights/v20170101:Relationship"),
+			Type: pulumi.String("azure-native:customerinsights:Relationship"),
 		},
 	})
 	opts = append(opts, aliases)

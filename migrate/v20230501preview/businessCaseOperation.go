@@ -50,13 +50,16 @@ func NewBusinessCaseOperation(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:migrate:BusinessCaseOperation"),
-		},
-		{
 			Type: pulumi.String("azure-native:migrate/v20230401preview:BusinessCaseOperation"),
 		},
 		{
 			Type: pulumi.String("azure-native:migrate/v20230909preview:BusinessCaseOperation"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate/v20240101preview:BusinessCaseOperation"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate:BusinessCaseOperation"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -48,13 +48,13 @@ func NewIscsiTarget(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:storagepool:IscsiTarget"),
-		},
-		{
 			Type: pulumi.String("azure-native:storagepool/v20210401preview:IscsiTarget"),
 		},
 		{
 			Type: pulumi.String("azure-native:storagepool/v20210801:IscsiTarget"),
+		},
+		{
+			Type: pulumi.String("azure-native:storagepool:IscsiTarget"),
 		},
 	})
 	opts = append(opts, aliases)

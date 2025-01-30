@@ -44,9 +44,6 @@ func NewAccessPolicy(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:cache:AccessPolicy"),
-		},
-		{
 			Type: pulumi.String("azure-native:cache/v20230501preview:AccessPolicy"),
 		},
 		{
@@ -57,6 +54,9 @@ func NewAccessPolicy(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:cache/v20240401preview:AccessPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:cache:AccessPolicy"),
 		},
 	})
 	opts = append(opts, aliases)

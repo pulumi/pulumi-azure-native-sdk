@@ -59,9 +59,6 @@ func NewCommunicationService(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:communication:CommunicationService"),
-		},
-		{
 			Type: pulumi.String("azure-native:communication/v20200820:CommunicationService"),
 		},
 		{
@@ -84,6 +81,9 @@ func NewCommunicationService(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:communication/v20230601preview:CommunicationService"),
+		},
+		{
+			Type: pulumi.String("azure-native:communication:CommunicationService"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -64,9 +64,6 @@ func NewVmmServer(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:scvmm:VmmServer"),
-		},
-		{
 			Type: pulumi.String("azure-native:scvmm/v20200605preview:VmmServer"),
 		},
 		{
@@ -77,6 +74,9 @@ func NewVmmServer(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:scvmm/v20231007:VmmServer"),
+		},
+		{
+			Type: pulumi.String("azure-native:scvmm:VmmServer"),
 		},
 	})
 	opts = append(opts, aliases)

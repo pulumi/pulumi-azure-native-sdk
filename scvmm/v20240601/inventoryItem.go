@@ -54,9 +54,6 @@ func NewInventoryItem(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:scvmm:InventoryItem"),
-		},
-		{
 			Type: pulumi.String("azure-native:scvmm/v20200605preview:InventoryItem"),
 		},
 		{
@@ -67,6 +64,9 @@ func NewInventoryItem(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:scvmm/v20231007:InventoryItem"),
+		},
+		{
+			Type: pulumi.String("azure-native:scvmm:InventoryItem"),
 		},
 	})
 	opts = append(opts, aliases)

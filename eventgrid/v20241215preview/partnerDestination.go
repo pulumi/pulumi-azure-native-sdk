@@ -55,9 +55,6 @@ func NewPartnerDestination(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:eventgrid:PartnerDestination"),
-		},
-		{
 			Type: pulumi.String("azure-native:eventgrid/v20211015preview:PartnerDestination"),
 		},
 		{
@@ -68,6 +65,9 @@ func NewPartnerDestination(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:eventgrid/v20240601preview:PartnerDestination"),
+		},
+		{
+			Type: pulumi.String("azure-native:eventgrid:PartnerDestination"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -72,9 +72,6 @@ func NewConnectedRegistry(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:containerregistry:ConnectedRegistry"),
-		},
-		{
 			Type: pulumi.String("azure-native:containerregistry/v20201101preview:ConnectedRegistry"),
 		},
 		{
@@ -100,6 +97,9 @@ func NewConnectedRegistry(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:containerregistry/v20241101preview:ConnectedRegistry"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerregistry:ConnectedRegistry"),
 		},
 	})
 	opts = append(opts, aliases)

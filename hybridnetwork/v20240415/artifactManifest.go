@@ -48,10 +48,10 @@ func NewArtifactManifest(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:hybridnetwork:ArtifactManifest"),
+			Type: pulumi.String("azure-native:hybridnetwork/v20230901:ArtifactManifest"),
 		},
 		{
-			Type: pulumi.String("azure-native:hybridnetwork/v20230901:ArtifactManifest"),
+			Type: pulumi.String("azure-native:hybridnetwork:ArtifactManifest"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -55,9 +55,6 @@ func NewDatastore(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:avs:Datastore"),
-		},
-		{
 			Type: pulumi.String("azure-native:avs/v20210101preview:Datastore"),
 		},
 		{
@@ -71,6 +68,9 @@ func NewDatastore(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:avs/v20230301:Datastore"),
+		},
+		{
+			Type: pulumi.String("azure-native:avs:Datastore"),
 		},
 	})
 	opts = append(opts, aliases)

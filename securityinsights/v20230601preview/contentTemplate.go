@@ -105,9 +105,6 @@ func NewContentTemplate(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:securityinsights:ContentTemplate"),
-		},
-		{
 			Type: pulumi.String("azure-native:securityinsights/v20230401preview:ContentTemplate"),
 		},
 		{
@@ -145,6 +142,9 @@ func NewContentTemplate(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20241001preview:ContentTemplate"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights:ContentTemplate"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -71,9 +71,6 @@ func NewSecurityUserRule(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:network:SecurityUserRule"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20210201preview:SecurityUserRule"),
 		},
 		{
@@ -87,6 +84,9 @@ func NewSecurityUserRule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20240501:SecurityUserRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:network:SecurityUserRule"),
 		},
 	})
 	opts = append(opts, aliases)

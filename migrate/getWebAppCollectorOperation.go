@@ -14,7 +14,7 @@ import (
 // Get a WebAppCollector
 // Azure REST API version: 2023-04-01-preview.
 //
-// Other available API versions: 2023-05-01-preview, 2023-09-09-preview.
+// Other available API versions: 2023-05-01-preview, 2023-09-09-preview, 2024-01-01-preview.
 func LookupWebAppCollectorOperation(ctx *pulumi.Context, args *LookupWebAppCollectorOperationArgs, opts ...pulumi.InvokeOption) (*LookupWebAppCollectorOperationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebAppCollectorOperationResult

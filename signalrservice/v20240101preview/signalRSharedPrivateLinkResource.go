@@ -55,9 +55,6 @@ func NewSignalRSharedPrivateLinkResource(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:signalrservice:SignalRSharedPrivateLinkResource"),
-		},
-		{
 			Type: pulumi.String("azure-native:signalrservice/v20210401preview:SignalRSharedPrivateLinkResource"),
 		},
 		{
@@ -98,6 +95,9 @@ func NewSignalRSharedPrivateLinkResource(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:signalrservice/v20241001preview:SignalRSharedPrivateLinkResource"),
+		},
+		{
+			Type: pulumi.String("azure-native:signalrservice:SignalRSharedPrivateLinkResource"),
 		},
 	})
 	opts = append(opts, aliases)

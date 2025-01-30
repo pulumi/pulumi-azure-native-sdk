@@ -60,9 +60,6 @@ func NewConnectedEnvironmentsDaprComponent(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:app:ConnectedEnvironmentsDaprComponent"),
-		},
-		{
 			Type: pulumi.String("azure-native:app/v20220601preview:ConnectedEnvironmentsDaprComponent"),
 		},
 		{
@@ -94,6 +91,9 @@ func NewConnectedEnvironmentsDaprComponent(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:app/v20241002preview:ConnectedEnvironmentsDaprComponent"),
+		},
+		{
+			Type: pulumi.String("azure-native:app:ConnectedEnvironmentsDaprComponent"),
 		},
 	})
 	opts = append(opts, aliases)

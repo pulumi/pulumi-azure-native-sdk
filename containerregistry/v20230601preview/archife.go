@@ -50,9 +50,6 @@ func NewArchife(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:containerregistry:Archife"),
-		},
-		{
 			Type: pulumi.String("azure-native:containerregistry/v20230801preview:Archife"),
 		},
 		{
@@ -60,6 +57,9 @@ func NewArchife(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:containerregistry/v20241101preview:Archife"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerregistry:Archife"),
 		},
 	})
 	opts = append(opts, aliases)

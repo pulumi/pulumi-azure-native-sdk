@@ -50,9 +50,6 @@ func NewAddress(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:edgeorder:Address"),
-		},
-		{
 			Type: pulumi.String("azure-native:edgeorder/v20201201preview:Address"),
 		},
 		{
@@ -60,6 +57,9 @@ func NewAddress(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:edgeorder/v20220501preview:Address"),
+		},
+		{
+			Type: pulumi.String("azure-native:edgeorder:Address"),
 		},
 	})
 	opts = append(opts, aliases)

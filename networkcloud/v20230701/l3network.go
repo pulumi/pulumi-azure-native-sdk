@@ -91,9 +91,6 @@ func NewL3Network(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:networkcloud:L3Network"),
-		},
-		{
 			Type: pulumi.String("azure-native:networkcloud/v20231001preview:L3Network"),
 		},
 		{
@@ -104,6 +101,9 @@ func NewL3Network(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:networkcloud/v20241001preview:L3Network"),
+		},
+		{
+			Type: pulumi.String("azure-native:networkcloud:L3Network"),
 		},
 	})
 	opts = append(opts, aliases)

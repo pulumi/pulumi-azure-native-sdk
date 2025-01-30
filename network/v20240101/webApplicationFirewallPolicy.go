@@ -62,9 +62,6 @@ func NewWebApplicationFirewallPolicy(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:network:WebApplicationFirewallPolicy"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20181201:WebApplicationFirewallPolicy"),
 		},
 		{
@@ -162,6 +159,9 @@ func NewWebApplicationFirewallPolicy(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20240501:WebApplicationFirewallPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:network:WebApplicationFirewallPolicy"),
 		},
 	})
 	opts = append(opts, aliases)

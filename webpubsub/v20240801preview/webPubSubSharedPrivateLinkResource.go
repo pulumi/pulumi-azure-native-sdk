@@ -57,9 +57,6 @@ func NewWebPubSubSharedPrivateLinkResource(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:webpubsub:WebPubSubSharedPrivateLinkResource"),
-		},
-		{
 			Type: pulumi.String("azure-native:webpubsub/v20210401preview:WebPubSubSharedPrivateLinkResource"),
 		},
 		{
@@ -97,6 +94,9 @@ func NewWebPubSubSharedPrivateLinkResource(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:webpubsub/v20241001preview:WebPubSubSharedPrivateLinkResource"),
+		},
+		{
+			Type: pulumi.String("azure-native:webpubsub:WebPubSubSharedPrivateLinkResource"),
 		},
 	})
 	opts = append(opts, aliases)

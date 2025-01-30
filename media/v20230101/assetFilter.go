@@ -48,9 +48,6 @@ func NewAssetFilter(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:media:AssetFilter"),
-		},
-		{
 			Type: pulumi.String("azure-native:media/v20180701:AssetFilter"),
 		},
 		{
@@ -64,6 +61,9 @@ func NewAssetFilter(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:media/v20220801:AssetFilter"),
+		},
+		{
+			Type: pulumi.String("azure-native:media:AssetFilter"),
 		},
 	})
 	opts = append(opts, aliases)

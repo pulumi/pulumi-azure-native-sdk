@@ -42,10 +42,10 @@ func NewSite(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:hybridnetwork:Site"),
+			Type: pulumi.String("azure-native:hybridnetwork/v20240415:Site"),
 		},
 		{
-			Type: pulumi.String("azure-native:hybridnetwork/v20240415:Site"),
+			Type: pulumi.String("azure-native:hybridnetwork:Site"),
 		},
 	})
 	opts = append(opts, aliases)

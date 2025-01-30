@@ -41,10 +41,10 @@ func NewPrivateEndpointConnection(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:healthdataaiservices:PrivateEndpointConnection"),
+			Type: pulumi.String("azure-native:healthdataaiservices/v20240920:PrivateEndpointConnection"),
 		},
 		{
-			Type: pulumi.String("azure-native:healthdataaiservices/v20240920:PrivateEndpointConnection"),
+			Type: pulumi.String("azure-native:healthdataaiservices:PrivateEndpointConnection"),
 		},
 	})
 	opts = append(opts, aliases)

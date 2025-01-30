@@ -45,9 +45,6 @@ func NewJobTargetGroup(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:sql:JobTargetGroup"),
-		},
-		{
 			Type: pulumi.String("azure-native:sql/v20170301preview:JobTargetGroup"),
 		},
 		{
@@ -94,6 +91,9 @@ func NewJobTargetGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20240501preview:JobTargetGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql:JobTargetGroup"),
 		},
 	})
 	opts = append(opts, aliases)

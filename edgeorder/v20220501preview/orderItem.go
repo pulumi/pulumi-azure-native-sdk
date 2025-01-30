@@ -57,9 +57,6 @@ func NewOrderItem(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:edgeorder:OrderItem"),
-		},
-		{
 			Type: pulumi.String("azure-native:edgeorder/v20201201preview:OrderItem"),
 		},
 		{
@@ -67,6 +64,9 @@ func NewOrderItem(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:edgeorder/v20240201:OrderItem"),
+		},
+		{
+			Type: pulumi.String("azure-native:edgeorder:OrderItem"),
 		},
 	})
 	opts = append(opts, aliases)

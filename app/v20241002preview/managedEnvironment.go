@@ -90,9 +90,6 @@ func NewManagedEnvironment(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:app:ManagedEnvironment"),
-		},
-		{
 			Type: pulumi.String("azure-native:app/v20220101preview:ManagedEnvironment"),
 		},
 		{
@@ -130,6 +127,9 @@ func NewManagedEnvironment(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:app/v20240802preview:ManagedEnvironment"),
+		},
+		{
+			Type: pulumi.String("azure-native:app:ManagedEnvironment"),
 		},
 	})
 	opts = append(opts, aliases)

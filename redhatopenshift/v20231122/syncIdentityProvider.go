@@ -40,9 +40,6 @@ func NewSyncIdentityProvider(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:redhatopenshift:SyncIdentityProvider"),
-		},
-		{
 			Type: pulumi.String("azure-native:redhatopenshift/v20220904:SyncIdentityProvider"),
 		},
 		{
@@ -53,6 +50,9 @@ func NewSyncIdentityProvider(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:redhatopenshift/v20230904:SyncIdentityProvider"),
+		},
+		{
+			Type: pulumi.String("azure-native:redhatopenshift:SyncIdentityProvider"),
 		},
 	})
 	opts = append(opts, aliases)

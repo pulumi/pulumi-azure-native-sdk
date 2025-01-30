@@ -77,9 +77,6 @@ func NewFileImport(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:securityinsights:FileImport"),
-		},
-		{
 			Type: pulumi.String("azure-native:securityinsights/v20220801preview:FileImport"),
 		},
 		{
@@ -129,6 +126,9 @@ func NewFileImport(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20241001preview:FileImport"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights:FileImport"),
 		},
 	})
 	opts = append(opts, aliases)

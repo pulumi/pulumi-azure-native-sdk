@@ -43,9 +43,6 @@ func NewOperationByProviderRegistration(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:providerhub:OperationByProviderRegistration"),
-		},
-		{
 			Type: pulumi.String("azure-native:providerhub/v20201120:OperationByProviderRegistration"),
 		},
 		{
@@ -53,6 +50,9 @@ func NewOperationByProviderRegistration(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:providerhub/v20210901preview:OperationByProviderRegistration"),
+		},
+		{
+			Type: pulumi.String("azure-native:providerhub:OperationByProviderRegistration"),
 		},
 	})
 	opts = append(opts, aliases)

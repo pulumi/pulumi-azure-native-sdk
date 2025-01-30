@@ -51,9 +51,6 @@ func NewAvailabilitySet(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:scvmm:AvailabilitySet"),
-		},
-		{
 			Type: pulumi.String("azure-native:scvmm/v20200605preview:AvailabilitySet"),
 		},
 		{
@@ -64,6 +61,9 @@ func NewAvailabilitySet(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:scvmm/v20240601:AvailabilitySet"),
+		},
+		{
+			Type: pulumi.String("azure-native:scvmm:AvailabilitySet"),
 		},
 	})
 	opts = append(opts, aliases)

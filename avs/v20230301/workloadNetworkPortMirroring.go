@@ -51,9 +51,6 @@ func NewWorkloadNetworkPortMirroring(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:avs:WorkloadNetworkPortMirroring"),
-		},
-		{
 			Type: pulumi.String("azure-native:avs/v20200717preview:WorkloadNetworkPortMirroring"),
 		},
 		{
@@ -70,6 +67,9 @@ func NewWorkloadNetworkPortMirroring(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:avs/v20230901:WorkloadNetworkPortMirroring"),
+		},
+		{
+			Type: pulumi.String("azure-native:avs:WorkloadNetworkPortMirroring"),
 		},
 	})
 	opts = append(opts, aliases)

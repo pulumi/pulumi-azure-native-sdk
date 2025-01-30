@@ -57,13 +57,13 @@ func NewAppliance(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:resourceconnector:Appliance"),
-		},
-		{
 			Type: pulumi.String("azure-native:resourceconnector/v20220415preview:Appliance"),
 		},
 		{
 			Type: pulumi.String("azure-native:resourceconnector/v20221027:Appliance"),
+		},
+		{
+			Type: pulumi.String("azure-native:resourceconnector:Appliance"),
 		},
 	})
 	opts = append(opts, aliases)

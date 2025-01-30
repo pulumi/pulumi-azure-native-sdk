@@ -59,10 +59,10 @@ func NewDevice(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:azuresphere:Device"),
+			Type: pulumi.String("azure-native:azuresphere/v20240401:Device"),
 		},
 		{
-			Type: pulumi.String("azure-native:azuresphere/v20240401:Device"),
+			Type: pulumi.String("azure-native:azuresphere:Device"),
 		},
 	})
 	opts = append(opts, aliases)

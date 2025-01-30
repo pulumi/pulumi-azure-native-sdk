@@ -55,9 +55,6 @@ func NewAdminRuleCollection(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:network:AdminRuleCollection"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20210201preview:AdminRuleCollection"),
 		},
 		{
@@ -110,6 +107,9 @@ func NewAdminRuleCollection(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20240301:AdminRuleCollection"),
+		},
+		{
+			Type: pulumi.String("azure-native:network:AdminRuleCollection"),
 		},
 	})
 	opts = append(opts, aliases)

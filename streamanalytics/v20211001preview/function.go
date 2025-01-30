@@ -39,9 +39,6 @@ func NewFunction(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:streamanalytics:Function"),
-		},
-		{
 			Type: pulumi.String("azure-native:streamanalytics/v20160301:Function"),
 		},
 		{
@@ -49,6 +46,9 @@ func NewFunction(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:streamanalytics/v20200301:Function"),
+		},
+		{
+			Type: pulumi.String("azure-native:streamanalytics:Function"),
 		},
 	})
 	opts = append(opts, aliases)

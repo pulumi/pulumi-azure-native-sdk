@@ -52,9 +52,6 @@ func NewProximityPlacementGroup(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:compute:ProximityPlacementGroup"),
-		},
-		{
 			Type: pulumi.String("azure-native:compute/v20180401:ProximityPlacementGroup"),
 		},
 		{
@@ -110,6 +107,9 @@ func NewProximityPlacementGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:compute/v20240701:ProximityPlacementGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:compute:ProximityPlacementGroup"),
 		},
 	})
 	opts = append(opts, aliases)

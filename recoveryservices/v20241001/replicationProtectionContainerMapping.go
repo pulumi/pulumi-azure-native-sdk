@@ -47,9 +47,6 @@ func NewReplicationProtectionContainerMapping(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:recoveryservices:ReplicationProtectionContainerMapping"),
-		},
-		{
 			Type: pulumi.String("azure-native:recoveryservices/v20160810:ReplicationProtectionContainerMapping"),
 		},
 		{
@@ -132,6 +129,9 @@ func NewReplicationProtectionContainerMapping(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:recoveryservices/v20240401:ReplicationProtectionContainerMapping"),
+		},
+		{
+			Type: pulumi.String("azure-native:recoveryservices:ReplicationProtectionContainerMapping"),
 		},
 	})
 	opts = append(opts, aliases)

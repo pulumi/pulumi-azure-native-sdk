@@ -53,9 +53,6 @@ func NewUeba(ctx *pulumi.Context,
 	args.Kind = pulumi.String("Ueba")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:securityinsights:Ueba"),
-		},
-		{
 			Type: pulumi.String("azure-native:securityinsights/v20190101preview:Ueba"),
 		},
 		{
@@ -132,6 +129,9 @@ func NewUeba(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20241001preview:Ueba"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights:Ueba"),
 		},
 	})
 	opts = append(opts, aliases)

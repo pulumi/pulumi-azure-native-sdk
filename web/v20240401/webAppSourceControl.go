@@ -53,9 +53,6 @@ func NewWebAppSourceControl(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:web:WebAppSourceControl"),
-		},
-		{
 			Type: pulumi.String("azure-native:web/v20150801:WebAppSourceControl"),
 		},
 		{
@@ -105,6 +102,9 @@ func NewWebAppSourceControl(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:web/v20231201:WebAppSourceControl"),
+		},
+		{
+			Type: pulumi.String("azure-native:web:WebAppSourceControl"),
 		},
 	})
 	opts = append(opts, aliases)

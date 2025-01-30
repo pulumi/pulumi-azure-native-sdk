@@ -46,9 +46,6 @@ func NewSchema(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:apimanagement:Schema"),
-		},
-		{
 			Type: pulumi.String("azure-native:apimanagement/v20210801:Schema"),
 		},
 		{
@@ -77,6 +74,9 @@ func NewSchema(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20240601preview:Schema"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement:Schema"),
 		},
 	})
 	opts = append(opts, aliases)

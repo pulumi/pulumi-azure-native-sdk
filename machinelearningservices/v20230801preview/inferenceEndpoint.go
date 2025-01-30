@@ -56,9 +56,6 @@ func NewInferenceEndpoint(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:machinelearningservices:InferenceEndpoint"),
-		},
-		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20240101preview:InferenceEndpoint"),
 		},
 		{
@@ -66,6 +63,9 @@ func NewInferenceEndpoint(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001preview:InferenceEndpoint"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices:InferenceEndpoint"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -46,9 +46,6 @@ func NewDelegatedSubnetServiceDetails(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:delegatednetwork:DelegatedSubnetServiceDetails"),
-		},
-		{
 			Type: pulumi.String("azure-native:delegatednetwork/v20200808preview:DelegatedSubnetServiceDetails"),
 		},
 		{
@@ -56,6 +53,9 @@ func NewDelegatedSubnetServiceDetails(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:delegatednetwork/v20230627preview:DelegatedSubnetServiceDetails"),
+		},
+		{
+			Type: pulumi.String("azure-native:delegatednetwork:DelegatedSubnetServiceDetails"),
 		},
 	})
 	opts = append(opts, aliases)

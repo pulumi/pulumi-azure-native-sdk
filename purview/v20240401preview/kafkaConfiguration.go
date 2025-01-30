@@ -58,13 +58,13 @@ func NewKafkaConfiguration(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:purview:KafkaConfiguration"),
-		},
-		{
 			Type: pulumi.String("azure-native:purview/v20211201:KafkaConfiguration"),
 		},
 		{
 			Type: pulumi.String("azure-native:purview/v20230501preview:KafkaConfiguration"),
+		},
+		{
+			Type: pulumi.String("azure-native:purview:KafkaConfiguration"),
 		},
 	})
 	opts = append(opts, aliases)

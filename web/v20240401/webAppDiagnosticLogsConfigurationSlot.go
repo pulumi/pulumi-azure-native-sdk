@@ -53,9 +53,6 @@ func NewWebAppDiagnosticLogsConfigurationSlot(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:web:WebAppDiagnosticLogsConfigurationSlot"),
-		},
-		{
 			Type: pulumi.String("azure-native:web/v20150801:WebAppDiagnosticLogsConfigurationSlot"),
 		},
 		{
@@ -105,6 +102,9 @@ func NewWebAppDiagnosticLogsConfigurationSlot(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:web/v20231201:WebAppDiagnosticLogsConfigurationSlot"),
+		},
+		{
+			Type: pulumi.String("azure-native:web:WebAppDiagnosticLogsConfigurationSlot"),
 		},
 	})
 	opts = append(opts, aliases)

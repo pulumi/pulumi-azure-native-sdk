@@ -47,9 +47,6 @@ func NewImportCollectorsOperation(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:migrate:ImportCollectorsOperation"),
-		},
-		{
 			Type: pulumi.String("azure-native:migrate/v20191001:ImportCollectorsOperation"),
 		},
 		{
@@ -60,6 +57,12 @@ func NewImportCollectorsOperation(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:migrate/v20230501preview:ImportCollectorsOperation"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate/v20240101preview:ImportCollectorsOperation"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate:ImportCollectorsOperation"),
 		},
 	})
 	opts = append(opts, aliases)

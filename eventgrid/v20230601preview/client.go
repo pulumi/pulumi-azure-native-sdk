@@ -58,9 +58,6 @@ func NewClient(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:eventgrid:Client"),
-		},
-		{
 			Type: pulumi.String("azure-native:eventgrid/v20231215preview:Client"),
 		},
 		{
@@ -68,6 +65,9 @@ func NewClient(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:eventgrid/v20241215preview:Client"),
+		},
+		{
+			Type: pulumi.String("azure-native:eventgrid:Client"),
 		},
 	})
 	opts = append(opts, aliases)

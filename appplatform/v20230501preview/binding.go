@@ -44,9 +44,6 @@ func NewBinding(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:appplatform:Binding"),
-		},
-		{
 			Type: pulumi.String("azure-native:appplatform/v20200701:Binding"),
 		},
 		{
@@ -102,6 +99,9 @@ func NewBinding(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:appplatform/v20240501preview:Binding"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform:Binding"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -47,10 +47,10 @@ func NewProvisionedCluster(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:hybridcontainerservice:ProvisionedCluster"),
+			Type: pulumi.String("azure-native:hybridcontainerservice/v20220901preview:ProvisionedCluster"),
 		},
 		{
-			Type: pulumi.String("azure-native:hybridcontainerservice/v20220901preview:ProvisionedCluster"),
+			Type: pulumi.String("azure-native:hybridcontainerservice:ProvisionedCluster"),
 		},
 	})
 	opts = append(opts, aliases)

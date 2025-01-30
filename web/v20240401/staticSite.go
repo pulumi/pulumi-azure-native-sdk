@@ -80,9 +80,6 @@ func NewStaticSite(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:web:StaticSite"),
-		},
-		{
 			Type: pulumi.String("azure-native:web/v20190801:StaticSite"),
 		},
 		{
@@ -120,6 +117,9 @@ func NewStaticSite(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:web/v20231201:StaticSite"),
+		},
+		{
+			Type: pulumi.String("azure-native:web:StaticSite"),
 		},
 	})
 	opts = append(opts, aliases)

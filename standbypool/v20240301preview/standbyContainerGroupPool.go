@@ -52,13 +52,13 @@ func NewStandbyContainerGroupPool(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:standbypool:StandbyContainerGroupPool"),
-		},
-		{
 			Type: pulumi.String("azure-native:standbypool/v20231201preview:StandbyContainerGroupPool"),
 		},
 		{
 			Type: pulumi.String("azure-native:standbypool/v20240301:StandbyContainerGroupPool"),
+		},
+		{
+			Type: pulumi.String("azure-native:standbypool:StandbyContainerGroupPool"),
 		},
 	})
 	opts = append(opts, aliases)

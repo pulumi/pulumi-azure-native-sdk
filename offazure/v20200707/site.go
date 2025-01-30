@@ -43,9 +43,6 @@ func NewSite(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:offazure:Site"),
-		},
-		{
 			Type: pulumi.String("azure-native:offazure/v20200101:Site"),
 		},
 		{
@@ -56,6 +53,9 @@ func NewSite(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:offazure/v20240501preview:Site"),
+		},
+		{
+			Type: pulumi.String("azure-native:offazure:Site"),
 		},
 	})
 	opts = append(opts, aliases)

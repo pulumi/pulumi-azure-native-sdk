@@ -49,9 +49,6 @@ func NewContainerAppsSourceControl(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:app:ContainerAppsSourceControl"),
-		},
-		{
 			Type: pulumi.String("azure-native:app/v20220301:ContainerAppsSourceControl"),
 		},
 		{
@@ -89,6 +86,9 @@ func NewContainerAppsSourceControl(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:app/v20241002preview:ContainerAppsSourceControl"),
+		},
+		{
+			Type: pulumi.String("azure-native:app:ContainerAppsSourceControl"),
 		},
 	})
 	opts = append(opts, aliases)

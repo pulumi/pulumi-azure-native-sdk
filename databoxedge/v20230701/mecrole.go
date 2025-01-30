@@ -57,9 +57,6 @@ func NewMECRole(ctx *pulumi.Context,
 	args.Kind = pulumi.String("MEC")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:databoxedge:MECRole"),
-		},
-		{
 			Type: pulumi.String("azure-native:databoxedge/v20190301:MECRole"),
 		},
 		{
@@ -106,6 +103,9 @@ func NewMECRole(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:databoxedge/v20231201:MECRole"),
+		},
+		{
+			Type: pulumi.String("azure-native:databoxedge:MECRole"),
 		},
 	})
 	opts = append(opts, aliases)

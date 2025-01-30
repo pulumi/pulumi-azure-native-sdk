@@ -60,9 +60,6 @@ func NewTIDataConnector(ctx *pulumi.Context,
 	args.Kind = pulumi.String("ThreatIntelligence")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:securityinsights:TIDataConnector"),
-		},
-		{
 			Type: pulumi.String("azure-native:securityinsights/v20190101preview:TIDataConnector"),
 		},
 		{
@@ -163,6 +160,9 @@ func NewTIDataConnector(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20241001preview:TIDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights:TIDataConnector"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -47,9 +47,6 @@ func NewMonitoringConfig(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:databoxedge:MonitoringConfig"),
-		},
-		{
 			Type: pulumi.String("azure-native:databoxedge/v20200901:MonitoringConfig"),
 		},
 		{
@@ -84,6 +81,9 @@ func NewMonitoringConfig(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:databoxedge/v20230701:MonitoringConfig"),
+		},
+		{
+			Type: pulumi.String("azure-native:databoxedge:MonitoringConfig"),
 		},
 	})
 	opts = append(opts, aliases)

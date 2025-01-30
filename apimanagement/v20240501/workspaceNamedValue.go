@@ -55,9 +55,6 @@ func NewWorkspaceNamedValue(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:apimanagement:WorkspaceNamedValue"),
-		},
-		{
 			Type: pulumi.String("azure-native:apimanagement/v20220901preview:WorkspaceNamedValue"),
 		},
 		{
@@ -71,6 +68,9 @@ func NewWorkspaceNamedValue(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20240601preview:WorkspaceNamedValue"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement:WorkspaceNamedValue"),
 		},
 	})
 	opts = append(opts, aliases)

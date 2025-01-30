@@ -53,9 +53,6 @@ func NewSubvolume(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:netapp:Subvolume"),
-		},
-		{
 			Type: pulumi.String("azure-native:netapp/v20211001:Subvolume"),
 		},
 		{
@@ -111,6 +108,12 @@ func NewSubvolume(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:netapp/v20240701:Subvolume"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20240901:Subvolume"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp:Subvolume"),
 		},
 	})
 	opts = append(opts, aliases)

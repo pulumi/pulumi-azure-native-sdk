@@ -40,13 +40,13 @@ func NewMonitor(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:logz:Monitor"),
-		},
-		{
 			Type: pulumi.String("azure-native:logz/v20201001:Monitor"),
 		},
 		{
 			Type: pulumi.String("azure-native:logz/v20201001preview:Monitor"),
+		},
+		{
+			Type: pulumi.String("azure-native:logz:Monitor"),
 		},
 	})
 	opts = append(opts, aliases)

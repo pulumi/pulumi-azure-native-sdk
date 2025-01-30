@@ -44,10 +44,10 @@ func NewLinkedService(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:datafactory:LinkedService"),
+			Type: pulumi.String("azure-native:datafactory/v20170901preview:LinkedService"),
 		},
 		{
-			Type: pulumi.String("azure-native:datafactory/v20170901preview:LinkedService"),
+			Type: pulumi.String("azure-native:datafactory:LinkedService"),
 		},
 	})
 	opts = append(opts, aliases)

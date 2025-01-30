@@ -45,9 +45,6 @@ func NewProductGroupLink(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:apimanagement:ProductGroupLink"),
-		},
-		{
 			Type: pulumi.String("azure-native:apimanagement/v20230301preview:ProductGroupLink"),
 		},
 		{
@@ -61,6 +58,9 @@ func NewProductGroupLink(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20240601preview:ProductGroupLink"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement:ProductGroupLink"),
 		},
 	})
 	opts = append(opts, aliases)

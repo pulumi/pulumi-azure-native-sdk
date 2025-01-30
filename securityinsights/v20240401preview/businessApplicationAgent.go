@@ -52,10 +52,10 @@ func NewBusinessApplicationAgent(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:securityinsights:BusinessApplicationAgent"),
+			Type: pulumi.String("azure-native:securityinsights/v20241001preview:BusinessApplicationAgent"),
 		},
 		{
-			Type: pulumi.String("azure-native:securityinsights/v20241001preview:BusinessApplicationAgent"),
+			Type: pulumi.String("azure-native:securityinsights:BusinessApplicationAgent"),
 		},
 	})
 	opts = append(opts, aliases)

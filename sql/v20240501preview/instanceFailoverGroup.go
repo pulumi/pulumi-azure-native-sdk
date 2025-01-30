@@ -60,9 +60,6 @@ func NewInstanceFailoverGroup(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:sql:InstanceFailoverGroup"),
-		},
-		{
 			Type: pulumi.String("azure-native:sql/v20171001preview:InstanceFailoverGroup"),
 		},
 		{
@@ -109,6 +106,9 @@ func NewInstanceFailoverGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20230801preview:InstanceFailoverGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql:InstanceFailoverGroup"),
 		},
 	})
 	opts = append(opts, aliases)

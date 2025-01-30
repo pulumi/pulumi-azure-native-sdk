@@ -53,9 +53,6 @@ func NewContainer(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:databoxedge:Container"),
-		},
-		{
 			Type: pulumi.String("azure-native:databoxedge/v20190801:Container"),
 		},
 		{
@@ -96,6 +93,9 @@ func NewContainer(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:databoxedge/v20231201:Container"),
+		},
+		{
+			Type: pulumi.String("azure-native:databoxedge:Container"),
 		},
 	})
 	opts = append(opts, aliases)

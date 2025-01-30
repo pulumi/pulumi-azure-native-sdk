@@ -54,10 +54,10 @@ func NewView(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:customerinsights:View"),
+			Type: pulumi.String("azure-native:customerinsights/v20170101:View"),
 		},
 		{
-			Type: pulumi.String("azure-native:customerinsights/v20170101:View"),
+			Type: pulumi.String("azure-native:customerinsights:View"),
 		},
 	})
 	opts = append(opts, aliases)

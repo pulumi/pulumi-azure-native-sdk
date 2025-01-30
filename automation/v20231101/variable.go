@@ -50,9 +50,6 @@ func NewVariable(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:automation:Variable"),
-		},
-		{
 			Type: pulumi.String("azure-native:automation/v20151031:Variable"),
 		},
 		{
@@ -69,6 +66,9 @@ func NewVariable(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:automation/v20241023:Variable"),
+		},
+		{
+			Type: pulumi.String("azure-native:automation:Variable"),
 		},
 	})
 	opts = append(opts, aliases)

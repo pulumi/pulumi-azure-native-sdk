@@ -53,13 +53,13 @@ func NewVolumeSnapshot(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:elasticsan:VolumeSnapshot"),
-		},
-		{
 			Type: pulumi.String("azure-native:elasticsan/v20230101:VolumeSnapshot"),
 		},
 		{
 			Type: pulumi.String("azure-native:elasticsan/v20240501:VolumeSnapshot"),
+		},
+		{
+			Type: pulumi.String("azure-native:elasticsan:VolumeSnapshot"),
 		},
 	})
 	opts = append(opts, aliases)

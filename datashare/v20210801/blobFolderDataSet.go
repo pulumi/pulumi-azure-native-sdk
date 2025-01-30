@@ -76,9 +76,6 @@ func NewBlobFolderDataSet(ctx *pulumi.Context,
 	args.Kind = pulumi.String("BlobFolder")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:datashare:BlobFolderDataSet"),
-		},
-		{
 			Type: pulumi.String("azure-native:datashare/v20181101preview:BlobFolderDataSet"),
 		},
 		{
@@ -89,6 +86,9 @@ func NewBlobFolderDataSet(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:datashare/v20201001preview:BlobFolderDataSet"),
+		},
+		{
+			Type: pulumi.String("azure-native:datashare:BlobFolderDataSet"),
 		},
 	})
 	opts = append(opts, aliases)

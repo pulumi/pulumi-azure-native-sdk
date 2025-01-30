@@ -48,9 +48,6 @@ func NewPrivateEndpointConnectionByHostPool(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:desktopvirtualization:PrivateEndpointConnectionByHostPool"),
-		},
-		{
 			Type: pulumi.String("azure-native:desktopvirtualization/v20210401preview:PrivateEndpointConnectionByHostPool"),
 		},
 		{
@@ -88,6 +85,9 @@ func NewPrivateEndpointConnectionByHostPool(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:desktopvirtualization/v20240808preview:PrivateEndpointConnectionByHostPool"),
+		},
+		{
+			Type: pulumi.String("azure-native:desktopvirtualization:PrivateEndpointConnectionByHostPool"),
 		},
 	})
 	opts = append(opts, aliases)

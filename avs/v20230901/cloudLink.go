@@ -45,9 +45,6 @@ func NewCloudLink(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:avs:CloudLink"),
-		},
-		{
 			Type: pulumi.String("azure-native:avs/v20210601:CloudLink"),
 		},
 		{
@@ -58,6 +55,9 @@ func NewCloudLink(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:avs/v20230301:CloudLink"),
+		},
+		{
+			Type: pulumi.String("azure-native:avs:CloudLink"),
 		},
 	})
 	opts = append(opts, aliases)

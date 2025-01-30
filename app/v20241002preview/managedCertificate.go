@@ -45,9 +45,6 @@ func NewManagedCertificate(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:app:ManagedCertificate"),
-		},
-		{
 			Type: pulumi.String("azure-native:app/v20221101preview:ManagedCertificate"),
 		},
 		{
@@ -73,6 +70,9 @@ func NewManagedCertificate(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:app/v20240802preview:ManagedCertificate"),
+		},
+		{
+			Type: pulumi.String("azure-native:app:ManagedCertificate"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -48,10 +48,10 @@ func NewNetworkServiceDesignVersion(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:hybridnetwork:NetworkServiceDesignVersion"),
+			Type: pulumi.String("azure-native:hybridnetwork/v20230901:NetworkServiceDesignVersion"),
 		},
 		{
-			Type: pulumi.String("azure-native:hybridnetwork/v20230901:NetworkServiceDesignVersion"),
+			Type: pulumi.String("azure-native:hybridnetwork:NetworkServiceDesignVersion"),
 		},
 	})
 	opts = append(opts, aliases)

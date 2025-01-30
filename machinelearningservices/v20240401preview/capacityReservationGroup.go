@@ -50,13 +50,13 @@ func NewCapacityReservationGroup(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:machinelearningservices:CapacityReservationGroup"),
-		},
-		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20230801preview:CapacityReservationGroup"),
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20240101preview:CapacityReservationGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices:CapacityReservationGroup"),
 		},
 	})
 	opts = append(opts, aliases)

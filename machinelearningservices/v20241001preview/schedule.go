@@ -45,9 +45,6 @@ func NewSchedule(ctx *pulumi.Context,
 	args.ScheduleProperties = args.ScheduleProperties.ToScheduleTypeOutput().ApplyT(func(v ScheduleType) ScheduleType { return *v.Defaults() }).(ScheduleTypeOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:machinelearningservices:Schedule"),
-		},
-		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20220601preview:Schedule"),
 		},
 		{
@@ -91,6 +88,9 @@ func NewSchedule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001:Schedule"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices:Schedule"),
 		},
 	})
 	opts = append(opts, aliases)

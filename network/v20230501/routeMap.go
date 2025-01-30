@@ -47,9 +47,6 @@ func NewRouteMap(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:network:RouteMap"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20220501:RouteMap"),
 		},
 		{
@@ -84,6 +81,9 @@ func NewRouteMap(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20240501:RouteMap"),
+		},
+		{
+			Type: pulumi.String("azure-native:network:RouteMap"),
 		},
 	})
 	opts = append(opts, aliases)

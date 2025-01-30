@@ -54,9 +54,6 @@ func NewGlobalRulestack(ctx *pulumi.Context,
 
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:cloudngfw:GlobalRulestack"),
-		},
-		{
 			Type: pulumi.String("azure-native:cloudngfw/v20220829preview:GlobalRulestack"),
 		},
 		{
@@ -73,6 +70,9 @@ func NewGlobalRulestack(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:cloudngfw/v20240207preview:GlobalRulestack"),
+		},
+		{
+			Type: pulumi.String("azure-native:cloudngfw:GlobalRulestack"),
 		},
 	})
 	opts = append(opts, aliases)

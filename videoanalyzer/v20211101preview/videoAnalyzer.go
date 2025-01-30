@@ -61,10 +61,10 @@ func NewVideoAnalyzer(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:videoanalyzer:VideoAnalyzer"),
+			Type: pulumi.String("azure-native:videoanalyzer/v20210501preview:VideoAnalyzer"),
 		},
 		{
-			Type: pulumi.String("azure-native:videoanalyzer/v20210501preview:VideoAnalyzer"),
+			Type: pulumi.String("azure-native:videoanalyzer:VideoAnalyzer"),
 		},
 	})
 	opts = append(opts, aliases)

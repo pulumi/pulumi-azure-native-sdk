@@ -68,9 +68,6 @@ func NewSensitivityLabel(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:sql:SensitivityLabel"),
-		},
-		{
 			Type: pulumi.String("azure-native:sql/v20170301preview:SensitivityLabel"),
 		},
 		{
@@ -117,6 +114,9 @@ func NewSensitivityLabel(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20240501preview:SensitivityLabel"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql:SensitivityLabel"),
 		},
 	})
 	opts = append(opts, aliases)

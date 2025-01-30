@@ -71,9 +71,6 @@ func NewFlowLog(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:network:FlowLog"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20191101:FlowLog"),
 		},
 		{
@@ -150,6 +147,9 @@ func NewFlowLog(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20240501:FlowLog"),
+		},
+		{
+			Type: pulumi.String("azure-native:network:FlowLog"),
 		},
 	})
 	opts = append(opts, aliases)

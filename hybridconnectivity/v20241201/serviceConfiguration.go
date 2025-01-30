@@ -62,10 +62,10 @@ func NewServiceConfiguration(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:hybridconnectivity:ServiceConfiguration"),
+			Type: pulumi.String("azure-native:hybridconnectivity/v20230315:ServiceConfiguration"),
 		},
 		{
-			Type: pulumi.String("azure-native:hybridconnectivity/v20230315:ServiceConfiguration"),
+			Type: pulumi.String("azure-native:hybridconnectivity:ServiceConfiguration"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -50,9 +50,6 @@ func NewApplicationGroup(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:eventhub:ApplicationGroup"),
-		},
-		{
 			Type: pulumi.String("azure-native:eventhub/v20220101preview:ApplicationGroup"),
 		},
 		{
@@ -63,6 +60,9 @@ func NewApplicationGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:eventhub/v20240101:ApplicationGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:eventhub:ApplicationGroup"),
 		},
 	})
 	opts = append(opts, aliases)

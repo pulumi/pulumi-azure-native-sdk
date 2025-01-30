@@ -44,9 +44,6 @@ func NewDigitalTwinsEndpoint(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:digitaltwins:DigitalTwinsEndpoint"),
-		},
-		{
 			Type: pulumi.String("azure-native:digitaltwins/v20200301preview:DigitalTwinsEndpoint"),
 		},
 		{
@@ -63,6 +60,9 @@ func NewDigitalTwinsEndpoint(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:digitaltwins/v20221031:DigitalTwinsEndpoint"),
+		},
+		{
+			Type: pulumi.String("azure-native:digitaltwins:DigitalTwinsEndpoint"),
 		},
 	})
 	opts = append(opts, aliases)

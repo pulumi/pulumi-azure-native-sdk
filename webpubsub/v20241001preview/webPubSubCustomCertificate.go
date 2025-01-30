@@ -53,9 +53,6 @@ func NewWebPubSubCustomCertificate(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:webpubsub:WebPubSubCustomCertificate"),
-		},
-		{
 			Type: pulumi.String("azure-native:webpubsub/v20220801preview:WebPubSubCustomCertificate"),
 		},
 		{
@@ -81,6 +78,9 @@ func NewWebPubSubCustomCertificate(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:webpubsub/v20240801preview:WebPubSubCustomCertificate"),
+		},
+		{
+			Type: pulumi.String("azure-native:webpubsub:WebPubSubCustomCertificate"),
 		},
 	})
 	opts = append(opts, aliases)

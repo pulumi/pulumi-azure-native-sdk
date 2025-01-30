@@ -62,9 +62,6 @@ func NewOrder(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:databoxedge:Order"),
-		},
-		{
 			Type: pulumi.String("azure-native:databoxedge/v20190301:Order"),
 		},
 		{
@@ -111,6 +108,9 @@ func NewOrder(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:databoxedge/v20230701:Order"),
+		},
+		{
+			Type: pulumi.String("azure-native:databoxedge:Order"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -51,9 +51,6 @@ func NewMongoClusterFirewallRule(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:documentdb:MongoClusterFirewallRule"),
-		},
-		{
 			Type: pulumi.String("azure-native:documentdb/v20230301preview:MongoClusterFirewallRule"),
 		},
 		{
@@ -76,6 +73,9 @@ func NewMongoClusterFirewallRule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:documentdb/v20241001preview:MongoClusterFirewallRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb:MongoClusterFirewallRule"),
 		},
 	})
 	opts = append(opts, aliases)

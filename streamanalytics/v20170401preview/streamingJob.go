@@ -88,9 +88,6 @@ func NewStreamingJob(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:streamanalytics:StreamingJob"),
-		},
-		{
 			Type: pulumi.String("azure-native:streamanalytics/v20160301:StreamingJob"),
 		},
 		{
@@ -98,6 +95,9 @@ func NewStreamingJob(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:streamanalytics/v20211001preview:StreamingJob"),
+		},
+		{
+			Type: pulumi.String("azure-native:streamanalytics:StreamingJob"),
 		},
 	})
 	opts = append(opts, aliases)

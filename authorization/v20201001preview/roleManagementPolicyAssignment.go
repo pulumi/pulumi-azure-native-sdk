@@ -42,9 +42,6 @@ func NewRoleManagementPolicyAssignment(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:authorization:RoleManagementPolicyAssignment"),
-		},
-		{
 			Type: pulumi.String("azure-native:authorization/v20201001:RoleManagementPolicyAssignment"),
 		},
 		{
@@ -52,6 +49,9 @@ func NewRoleManagementPolicyAssignment(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:authorization/v20240901preview:RoleManagementPolicyAssignment"),
+		},
+		{
+			Type: pulumi.String("azure-native:authorization:RoleManagementPolicyAssignment"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -65,9 +65,6 @@ func NewSyncMember(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:sql:SyncMember"),
-		},
-		{
 			Type: pulumi.String("azure-native:sql/v20150501preview:SyncMember"),
 		},
 		{
@@ -117,6 +114,9 @@ func NewSyncMember(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20230801preview:SyncMember"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql:SyncMember"),
 		},
 	})
 	opts = append(opts, aliases)

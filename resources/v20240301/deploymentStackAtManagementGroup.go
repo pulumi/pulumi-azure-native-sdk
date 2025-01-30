@@ -80,10 +80,10 @@ func NewDeploymentStackAtManagementGroup(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:resources:DeploymentStackAtManagementGroup"),
+			Type: pulumi.String("azure-native:resources/v20220801preview:DeploymentStackAtManagementGroup"),
 		},
 		{
-			Type: pulumi.String("azure-native:resources/v20220801preview:DeploymentStackAtManagementGroup"),
+			Type: pulumi.String("azure-native:resources:DeploymentStackAtManagementGroup"),
 		},
 	})
 	opts = append(opts, aliases)

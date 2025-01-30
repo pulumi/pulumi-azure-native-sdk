@@ -82,9 +82,6 @@ func NewWorkspace(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:databricks:Workspace"),
-		},
-		{
 			Type: pulumi.String("azure-native:databricks/v20180401:Workspace"),
 		},
 		{
@@ -101,6 +98,9 @@ func NewWorkspace(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:databricks/v20240901preview:Workspace"),
+		},
+		{
+			Type: pulumi.String("azure-native:databricks:Workspace"),
 		},
 	})
 	opts = append(opts, aliases)

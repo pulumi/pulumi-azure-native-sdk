@@ -65,9 +65,6 @@ func NewScheduledSynchronizationSetting(ctx *pulumi.Context,
 	args.Kind = pulumi.String("ScheduleBased")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:datashare:ScheduledSynchronizationSetting"),
-		},
-		{
 			Type: pulumi.String("azure-native:datashare/v20181101preview:ScheduledSynchronizationSetting"),
 		},
 		{
@@ -78,6 +75,9 @@ func NewScheduledSynchronizationSetting(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:datashare/v20201001preview:ScheduledSynchronizationSetting"),
+		},
+		{
+			Type: pulumi.String("azure-native:datashare:ScheduledSynchronizationSetting"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -53,9 +53,6 @@ func NewSenderUsername(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:communication:SenderUsername"),
-		},
-		{
 			Type: pulumi.String("azure-native:communication/v20230301preview:SenderUsername"),
 		},
 		{
@@ -66,6 +63,9 @@ func NewSenderUsername(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:communication/v20230601preview:SenderUsername"),
+		},
+		{
+			Type: pulumi.String("azure-native:communication:SenderUsername"),
 		},
 	})
 	opts = append(opts, aliases)

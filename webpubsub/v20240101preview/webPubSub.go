@@ -115,9 +115,6 @@ func NewWebPubSub(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:webpubsub:WebPubSub"),
-		},
-		{
 			Type: pulumi.String("azure-native:webpubsub/v20210401preview:WebPubSub"),
 		},
 		{
@@ -155,6 +152,9 @@ func NewWebPubSub(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:webpubsub/v20241001preview:WebPubSub"),
+		},
+		{
+			Type: pulumi.String("azure-native:webpubsub:WebPubSub"),
 		},
 	})
 	opts = append(opts, aliases)

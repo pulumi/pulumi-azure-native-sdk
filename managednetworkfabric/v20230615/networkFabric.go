@@ -100,10 +100,10 @@ func NewNetworkFabric(ctx *pulumi.Context,
 	}).(ManagementNetworkConfigurationPropertiesOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:managednetworkfabric:NetworkFabric"),
+			Type: pulumi.String("azure-native:managednetworkfabric/v20230201preview:NetworkFabric"),
 		},
 		{
-			Type: pulumi.String("azure-native:managednetworkfabric/v20230201preview:NetworkFabric"),
+			Type: pulumi.String("azure-native:managednetworkfabric:NetworkFabric"),
 		},
 	})
 	opts = append(opts, aliases)

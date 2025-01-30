@@ -42,9 +42,6 @@ func NewConnection(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:azuredatatransfer:Connection"),
-		},
-		{
 			Type: pulumi.String("azure-native:azuredatatransfer/v20231011preview:Connection"),
 		},
 		{
@@ -55,6 +52,9 @@ func NewConnection(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azuredatatransfer/v20240927:Connection"),
+		},
+		{
+			Type: pulumi.String("azure-native:azuredatatransfer:Connection"),
 		},
 	})
 	opts = append(opts, aliases)

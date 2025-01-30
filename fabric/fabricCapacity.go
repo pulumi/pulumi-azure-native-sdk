@@ -14,6 +14,8 @@ import (
 
 // Fabric Capacity resource
 // Azure REST API version: 2023-11-01.
+//
+// Other available API versions: 2025-01-15-preview.
 type FabricCapacity struct {
 	pulumi.CustomResourceState
 
@@ -56,6 +58,9 @@ func NewFabricCapacity(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:fabric/v20231101:FabricCapacity"),
+		},
+		{
+			Type: pulumi.String("azure-native:fabric/v20250115preview:FabricCapacity"),
 		},
 	})
 	opts = append(opts, aliases)

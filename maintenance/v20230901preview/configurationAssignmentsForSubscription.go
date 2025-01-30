@@ -40,13 +40,13 @@ func NewConfigurationAssignmentsForSubscription(ctx *pulumi.Context,
 
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:maintenance:ConfigurationAssignmentsForSubscription"),
-		},
-		{
 			Type: pulumi.String("azure-native:maintenance/v20230401:ConfigurationAssignmentsForSubscription"),
 		},
 		{
 			Type: pulumi.String("azure-native:maintenance/v20231001preview:ConfigurationAssignmentsForSubscription"),
+		},
+		{
+			Type: pulumi.String("azure-native:maintenance:ConfigurationAssignmentsForSubscription"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -44,10 +44,10 @@ func NewWorkspace(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:easm:Workspace"),
+			Type: pulumi.String("azure-native:easm/v20220401preview:Workspace"),
 		},
 		{
-			Type: pulumi.String("azure-native:easm/v20220401preview:Workspace"),
+			Type: pulumi.String("azure-native:easm:Workspace"),
 		},
 	})
 	opts = append(opts, aliases)

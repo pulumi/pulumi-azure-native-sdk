@@ -41,10 +41,10 @@ func NewAPICollection(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:security:APICollection"),
+			Type: pulumi.String("azure-native:security/v20231115:APICollection"),
 		},
 		{
-			Type: pulumi.String("azure-native:security/v20231115:APICollection"),
+			Type: pulumi.String("azure-native:security:APICollection"),
 		},
 	})
 	opts = append(opts, aliases)

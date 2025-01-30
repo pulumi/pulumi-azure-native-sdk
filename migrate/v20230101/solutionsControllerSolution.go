@@ -41,10 +41,10 @@ func NewSolutionsControllerSolution(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:migrate:SolutionsControllerSolution"),
+			Type: pulumi.String("azure-native:migrate/v20180901preview:SolutionsControllerSolution"),
 		},
 		{
-			Type: pulumi.String("azure-native:migrate/v20180901preview:SolutionsControllerSolution"),
+			Type: pulumi.String("azure-native:migrate:SolutionsControllerSolution"),
 		},
 	})
 	opts = append(opts, aliases)

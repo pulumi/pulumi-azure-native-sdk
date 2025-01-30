@@ -60,13 +60,13 @@ func NewEnvironment(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:apicenter:Environment"),
-		},
-		{
 			Type: pulumi.String("azure-native:apicenter/v20240301:Environment"),
 		},
 		{
 			Type: pulumi.String("azure-native:apicenter/v20240315preview:Environment"),
+		},
+		{
+			Type: pulumi.String("azure-native:apicenter:Environment"),
 		},
 	})
 	opts = append(opts, aliases)

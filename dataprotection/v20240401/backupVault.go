@@ -49,9 +49,6 @@ func NewBackupVault(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:dataprotection:BackupVault"),
-		},
-		{
 			Type: pulumi.String("azure-native:dataprotection/v20210101:BackupVault"),
 		},
 		{
@@ -125,6 +122,9 @@ func NewBackupVault(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:dataprotection/v20240301:BackupVault"),
+		},
+		{
+			Type: pulumi.String("azure-native:dataprotection:BackupVault"),
 		},
 	})
 	opts = append(opts, aliases)

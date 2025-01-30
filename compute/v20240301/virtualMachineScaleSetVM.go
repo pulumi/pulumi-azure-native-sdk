@@ -91,9 +91,6 @@ func NewVirtualMachineScaleSetVM(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:compute:VirtualMachineScaleSetVM"),
-		},
-		{
 			Type: pulumi.String("azure-native:compute/v20171201:VirtualMachineScaleSetVM"),
 		},
 		{
@@ -152,6 +149,9 @@ func NewVirtualMachineScaleSetVM(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:compute/v20240701:VirtualMachineScaleSetVM"),
+		},
+		{
+			Type: pulumi.String("azure-native:compute:VirtualMachineScaleSetVM"),
 		},
 	})
 	opts = append(opts, aliases)

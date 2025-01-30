@@ -48,9 +48,6 @@ func NewSecurityPartnerProvider(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:network:SecurityPartnerProvider"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20200301:SecurityPartnerProvider"),
 		},
 		{
@@ -121,6 +118,9 @@ func NewSecurityPartnerProvider(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20240501:SecurityPartnerProvider"),
+		},
+		{
+			Type: pulumi.String("azure-native:network:SecurityPartnerProvider"),
 		},
 	})
 	opts = append(opts, aliases)

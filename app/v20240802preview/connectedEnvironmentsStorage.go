@@ -41,9 +41,6 @@ func NewConnectedEnvironmentsStorage(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:app:ConnectedEnvironmentsStorage"),
-		},
-		{
 			Type: pulumi.String("azure-native:app/v20220601preview:ConnectedEnvironmentsStorage"),
 		},
 		{
@@ -75,6 +72,9 @@ func NewConnectedEnvironmentsStorage(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:app/v20241002preview:ConnectedEnvironmentsStorage"),
+		},
+		{
+			Type: pulumi.String("azure-native:app:ConnectedEnvironmentsStorage"),
 		},
 	})
 	opts = append(opts, aliases)

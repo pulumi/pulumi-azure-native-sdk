@@ -58,9 +58,6 @@ func NewDaprComponent(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:app:DaprComponent"),
-		},
-		{
 			Type: pulumi.String("azure-native:app/v20220101preview:DaprComponent"),
 		},
 		{
@@ -98,6 +95,9 @@ func NewDaprComponent(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:app/v20241002preview:DaprComponent"),
+		},
+		{
+			Type: pulumi.String("azure-native:app:DaprComponent"),
 		},
 	})
 	opts = append(opts, aliases)

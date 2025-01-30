@@ -79,9 +79,6 @@ func NewJobDefinition(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:storagemover:JobDefinition"),
-		},
-		{
 			Type: pulumi.String("azure-native:storagemover/v20220701preview:JobDefinition"),
 		},
 		{
@@ -92,6 +89,9 @@ func NewJobDefinition(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:storagemover/v20240701:JobDefinition"),
+		},
+		{
+			Type: pulumi.String("azure-native:storagemover:JobDefinition"),
 		},
 	})
 	opts = append(opts, aliases)

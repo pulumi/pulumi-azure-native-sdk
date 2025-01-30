@@ -45,10 +45,10 @@ func NewConfigurationGroupSchema(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:hybridnetwork:ConfigurationGroupSchema"),
+			Type: pulumi.String("azure-native:hybridnetwork/v20240415:ConfigurationGroupSchema"),
 		},
 		{
-			Type: pulumi.String("azure-native:hybridnetwork/v20240415:ConfigurationGroupSchema"),
+			Type: pulumi.String("azure-native:hybridnetwork:ConfigurationGroupSchema"),
 		},
 	})
 	opts = append(opts, aliases)

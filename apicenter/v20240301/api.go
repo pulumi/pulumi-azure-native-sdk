@@ -68,13 +68,13 @@ func NewApi(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:apicenter:Api"),
-		},
-		{
 			Type: pulumi.String("azure-native:apicenter/v20240315preview:Api"),
 		},
 		{
 			Type: pulumi.String("azure-native:apicenter/v20240601preview:Api"),
+		},
+		{
+			Type: pulumi.String("azure-native:apicenter:Api"),
 		},
 	})
 	opts = append(opts, aliases)

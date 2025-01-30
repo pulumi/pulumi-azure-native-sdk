@@ -49,9 +49,6 @@ func NewCompute(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:machinelearningservices:Compute"),
-		},
-		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20180301preview:Compute"),
 		},
 		{
@@ -158,6 +155,9 @@ func NewCompute(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001:Compute"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices:Compute"),
 		},
 	})
 	opts = append(opts, aliases)

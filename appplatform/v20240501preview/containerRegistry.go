@@ -41,9 +41,6 @@ func NewContainerRegistry(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:appplatform:ContainerRegistry"),
-		},
-		{
 			Type: pulumi.String("azure-native:appplatform/v20230501preview:ContainerRegistry"),
 		},
 		{
@@ -60,6 +57,9 @@ func NewContainerRegistry(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:appplatform/v20240101preview:ContainerRegistry"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform:ContainerRegistry"),
 		},
 	})
 	opts = append(opts, aliases)

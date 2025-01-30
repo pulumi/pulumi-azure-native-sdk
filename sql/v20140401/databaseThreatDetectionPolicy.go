@@ -61,9 +61,6 @@ func NewDatabaseThreatDetectionPolicy(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:sql:DatabaseThreatDetectionPolicy"),
-		},
-		{
 			Type: pulumi.String("azure-native:sql/v20180601preview:DatabaseThreatDetectionPolicy"),
 		},
 		{
@@ -113,6 +110,9 @@ func NewDatabaseThreatDetectionPolicy(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20240501preview:DatabaseThreatDetectionPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql:DatabaseThreatDetectionPolicy"),
 		},
 	})
 	opts = append(opts, aliases)

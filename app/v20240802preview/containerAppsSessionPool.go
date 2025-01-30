@@ -62,13 +62,13 @@ func NewContainerAppsSessionPool(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:app:ContainerAppsSessionPool"),
-		},
-		{
 			Type: pulumi.String("azure-native:app/v20240202preview:ContainerAppsSessionPool"),
 		},
 		{
 			Type: pulumi.String("azure-native:app/v20241002preview:ContainerAppsSessionPool"),
+		},
+		{
+			Type: pulumi.String("azure-native:app:ContainerAppsSessionPool"),
 		},
 	})
 	opts = append(opts, aliases)

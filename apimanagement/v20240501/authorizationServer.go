@@ -88,9 +88,6 @@ func NewAuthorizationServer(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:apimanagement:AuthorizationServer"),
-		},
-		{
 			Type: pulumi.String("azure-native:apimanagement/v20160707:AuthorizationServer"),
 		},
 		{
@@ -152,6 +149,9 @@ func NewAuthorizationServer(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20240601preview:AuthorizationServer"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement:AuthorizationServer"),
 		},
 	})
 	opts = append(opts, aliases)

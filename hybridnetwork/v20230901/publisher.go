@@ -44,10 +44,10 @@ func NewPublisher(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:hybridnetwork:Publisher"),
+			Type: pulumi.String("azure-native:hybridnetwork/v20240415:Publisher"),
 		},
 		{
-			Type: pulumi.String("azure-native:hybridnetwork/v20240415:Publisher"),
+			Type: pulumi.String("azure-native:hybridnetwork:Publisher"),
 		},
 	})
 	opts = append(opts, aliases)

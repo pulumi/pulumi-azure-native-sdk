@@ -41,9 +41,6 @@ func NewMonitor(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:datadog:Monitor"),
-		},
-		{
 			Type: pulumi.String("azure-native:datadog/v20200201preview:Monitor"),
 		},
 		{
@@ -60,6 +57,9 @@ func NewMonitor(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:datadog/v20231020:Monitor"),
+		},
+		{
+			Type: pulumi.String("azure-native:datadog:Monitor"),
 		},
 	})
 	opts = append(opts, aliases)

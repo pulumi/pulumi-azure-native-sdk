@@ -57,9 +57,6 @@ func NewBatchDeployment(ctx *pulumi.Context,
 	args.BatchDeploymentProperties = args.BatchDeploymentProperties.ToBatchDeploymentTypeOutput().ApplyT(func(v BatchDeploymentType) BatchDeploymentType { return *v.Defaults() }).(BatchDeploymentTypeOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:machinelearningservices:BatchDeployment"),
-		},
-		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20210301preview:BatchDeployment"),
 		},
 		{
@@ -112,6 +109,9 @@ func NewBatchDeployment(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001:BatchDeployment"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices:BatchDeployment"),
 		},
 	})
 	opts = append(opts, aliases)

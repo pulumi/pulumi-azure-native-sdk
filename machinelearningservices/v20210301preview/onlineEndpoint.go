@@ -51,9 +51,6 @@ func NewOnlineEndpoint(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:machinelearningservices:OnlineEndpoint"),
-		},
-		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20220201preview:OnlineEndpoint"),
 		},
 		{
@@ -106,6 +103,9 @@ func NewOnlineEndpoint(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001preview:OnlineEndpoint"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices:OnlineEndpoint"),
 		},
 	})
 	opts = append(opts, aliases)

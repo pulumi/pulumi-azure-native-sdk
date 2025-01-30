@@ -56,9 +56,6 @@ func NewCredential(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:automation:Credential"),
-		},
-		{
 			Type: pulumi.String("azure-native:automation/v20151031:Credential"),
 		},
 		{
@@ -75,6 +72,9 @@ func NewCredential(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:automation/v20241023:Credential"),
+		},
+		{
+			Type: pulumi.String("azure-native:automation:Credential"),
 		},
 	})
 	opts = append(opts, aliases)

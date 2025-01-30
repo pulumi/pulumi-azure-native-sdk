@@ -48,13 +48,13 @@ func NewWorkspaceCertificate(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:apimanagement:WorkspaceCertificate"),
-		},
-		{
 			Type: pulumi.String("azure-native:apimanagement/v20230901preview:WorkspaceCertificate"),
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20240601preview:WorkspaceCertificate"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement:WorkspaceCertificate"),
 		},
 	})
 	opts = append(opts, aliases)

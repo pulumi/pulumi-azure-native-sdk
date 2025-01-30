@@ -49,13 +49,13 @@ func NewSqlSitesController(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:offazure:SqlSitesController"),
-		},
-		{
 			Type: pulumi.String("azure-native:offazure/v20230606:SqlSitesController"),
 		},
 		{
 			Type: pulumi.String("azure-native:offazure/v20240501preview:SqlSitesController"),
+		},
+		{
+			Type: pulumi.String("azure-native:offazure:SqlSitesController"),
 		},
 	})
 	opts = append(opts, aliases)

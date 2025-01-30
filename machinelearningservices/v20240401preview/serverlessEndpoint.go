@@ -53,9 +53,6 @@ func NewServerlessEndpoint(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:machinelearningservices:ServerlessEndpoint"),
-		},
-		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20230801preview:ServerlessEndpoint"),
 		},
 		{
@@ -72,6 +69,9 @@ func NewServerlessEndpoint(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001preview:ServerlessEndpoint"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices:ServerlessEndpoint"),
 		},
 	})
 	opts = append(opts, aliases)

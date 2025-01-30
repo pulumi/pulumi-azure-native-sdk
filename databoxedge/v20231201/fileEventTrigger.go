@@ -58,9 +58,6 @@ func NewFileEventTrigger(ctx *pulumi.Context,
 	args.Kind = pulumi.String("FileEvent")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:databoxedge:FileEventTrigger"),
-		},
-		{
 			Type: pulumi.String("azure-native:databoxedge/v20190301:FileEventTrigger"),
 		},
 		{
@@ -107,6 +104,9 @@ func NewFileEventTrigger(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:databoxedge/v20230701:FileEventTrigger"),
+		},
+		{
+			Type: pulumi.String("azure-native:databoxedge:FileEventTrigger"),
 		},
 	})
 	opts = append(opts, aliases)

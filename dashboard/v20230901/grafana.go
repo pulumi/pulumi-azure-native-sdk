@@ -49,9 +49,6 @@ func NewGrafana(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:dashboard:Grafana"),
-		},
-		{
 			Type: pulumi.String("azure-native:dashboard/v20210901preview:Grafana"),
 		},
 		{
@@ -68,6 +65,9 @@ func NewGrafana(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:dashboard/v20241001:Grafana"),
+		},
+		{
+			Type: pulumi.String("azure-native:dashboard:Grafana"),
 		},
 	})
 	opts = append(opts, aliases)

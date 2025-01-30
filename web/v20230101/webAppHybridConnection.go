@@ -59,9 +59,6 @@ func NewWebAppHybridConnection(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:web:WebAppHybridConnection"),
-		},
-		{
 			Type: pulumi.String("azure-native:web/v20160801:WebAppHybridConnection"),
 		},
 		{
@@ -108,6 +105,9 @@ func NewWebAppHybridConnection(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:web/v20240401:WebAppHybridConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:web:WebAppHybridConnection"),
 		},
 	})
 	opts = append(opts, aliases)

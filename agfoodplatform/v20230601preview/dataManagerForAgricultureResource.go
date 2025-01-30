@@ -52,13 +52,13 @@ func NewDataManagerForAgricultureResource(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:agfoodplatform:DataManagerForAgricultureResource"),
-		},
-		{
 			Type: pulumi.String("azure-native:agfoodplatform/v20200512preview:DataManagerForAgricultureResource"),
 		},
 		{
 			Type: pulumi.String("azure-native:agfoodplatform/v20210901preview:DataManagerForAgricultureResource"),
+		},
+		{
+			Type: pulumi.String("azure-native:agfoodplatform:DataManagerForAgricultureResource"),
 		},
 	})
 	opts = append(opts, aliases)

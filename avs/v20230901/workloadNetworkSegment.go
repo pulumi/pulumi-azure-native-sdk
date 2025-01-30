@@ -53,9 +53,6 @@ func NewWorkloadNetworkSegment(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:avs:WorkloadNetworkSegment"),
-		},
-		{
 			Type: pulumi.String("azure-native:avs/v20200717preview:WorkloadNetworkSegment"),
 		},
 		{
@@ -72,6 +69,9 @@ func NewWorkloadNetworkSegment(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:avs/v20230301:WorkloadNetworkSegment"),
+		},
+		{
+			Type: pulumi.String("azure-native:avs:WorkloadNetworkSegment"),
 		},
 	})
 	opts = append(opts, aliases)

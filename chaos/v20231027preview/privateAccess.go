@@ -42,13 +42,13 @@ func NewPrivateAccess(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:chaos:PrivateAccess"),
-		},
-		{
 			Type: pulumi.String("azure-native:chaos/v20240322preview:PrivateAccess"),
 		},
 		{
 			Type: pulumi.String("azure-native:chaos/v20241101preview:PrivateAccess"),
+		},
+		{
+			Type: pulumi.String("azure-native:chaos:PrivateAccess"),
 		},
 	})
 	opts = append(opts, aliases)

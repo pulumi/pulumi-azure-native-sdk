@@ -39,9 +39,6 @@ func NewService(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:documentdb:Service"),
-		},
-		{
 			Type: pulumi.String("azure-native:documentdb/v20210401preview:Service"),
 		},
 		{
@@ -115,6 +112,9 @@ func NewService(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:documentdb/v20241115:Service"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb:Service"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -78,13 +78,13 @@ func NewImportJob(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:storagecache:importJob"),
-		},
-		{
 			Type: pulumi.String("azure-native:storagecache/v20240301:ImportJob"),
 		},
 		{
 			Type: pulumi.String("azure-native:storagecache/v20240301:importJob"),
+		},
+		{
+			Type: pulumi.String("azure-native:storagecache:importJob"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -56,9 +56,6 @@ func NewNatGateway(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:network:NatGateway"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20190201:NatGateway"),
 		},
 		{
@@ -153,6 +150,9 @@ func NewNatGateway(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20240301:NatGateway"),
+		},
+		{
+			Type: pulumi.String("azure-native:network:NatGateway"),
 		},
 	})
 	opts = append(opts, aliases)

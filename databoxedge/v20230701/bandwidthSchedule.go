@@ -59,9 +59,6 @@ func NewBandwidthSchedule(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:databoxedge:BandwidthSchedule"),
-		},
-		{
 			Type: pulumi.String("azure-native:databoxedge/v20190301:BandwidthSchedule"),
 		},
 		{
@@ -108,6 +105,9 @@ func NewBandwidthSchedule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:databoxedge/v20231201:BandwidthSchedule"),
+		},
+		{
+			Type: pulumi.String("azure-native:databoxedge:BandwidthSchedule"),
 		},
 	})
 	opts = append(opts, aliases)

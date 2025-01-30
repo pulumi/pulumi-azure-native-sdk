@@ -40,9 +40,6 @@ func NewMachinePool(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:redhatopenshift:MachinePool"),
-		},
-		{
 			Type: pulumi.String("azure-native:redhatopenshift/v20220904:MachinePool"),
 		},
 		{
@@ -53,6 +50,9 @@ func NewMachinePool(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:redhatopenshift/v20231122:MachinePool"),
+		},
+		{
+			Type: pulumi.String("azure-native:redhatopenshift:MachinePool"),
 		},
 	})
 	opts = append(opts, aliases)

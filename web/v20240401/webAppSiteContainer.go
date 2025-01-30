@@ -69,10 +69,10 @@ func NewWebAppSiteContainer(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:web:WebAppSiteContainer"),
+			Type: pulumi.String("azure-native:web/v20231201:WebAppSiteContainer"),
 		},
 		{
-			Type: pulumi.String("azure-native:web/v20231201:WebAppSiteContainer"),
+			Type: pulumi.String("azure-native:web:WebAppSiteContainer"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -66,10 +66,10 @@ func NewIacProfile(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:devhub:IacProfile"),
+			Type: pulumi.String("azure-native:devhub/v20240801preview:IacProfile"),
 		},
 		{
-			Type: pulumi.String("azure-native:devhub/v20240801preview:IacProfile"),
+			Type: pulumi.String("azure-native:devhub:IacProfile"),
 		},
 	})
 	opts = append(opts, aliases)

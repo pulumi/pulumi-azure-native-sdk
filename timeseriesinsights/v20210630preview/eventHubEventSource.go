@@ -86,9 +86,6 @@ func NewEventHubEventSource(ctx *pulumi.Context,
 	args.Kind = pulumi.String("Microsoft.EventHub")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:timeseriesinsights:EventHubEventSource"),
-		},
-		{
 			Type: pulumi.String("azure-native:timeseriesinsights/v20170228preview:EventHubEventSource"),
 		},
 		{
@@ -102,6 +99,9 @@ func NewEventHubEventSource(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:timeseriesinsights/v20210331preview:EventHubEventSource"),
+		},
+		{
+			Type: pulumi.String("azure-native:timeseriesinsights:EventHubEventSource"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -46,9 +46,6 @@ func NewMachine(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:hybridcompute:Machine"),
-		},
-		{
 			Type: pulumi.String("azure-native:hybridcompute/v20190318preview:Machine"),
 		},
 		{
@@ -128,6 +125,9 @@ func NewMachine(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:hybridcompute/v20241110preview:Machine"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridcompute:Machine"),
 		},
 	})
 	opts = append(opts, aliases)

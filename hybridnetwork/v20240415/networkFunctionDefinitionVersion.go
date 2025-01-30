@@ -48,10 +48,10 @@ func NewNetworkFunctionDefinitionVersion(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:hybridnetwork:NetworkFunctionDefinitionVersion"),
+			Type: pulumi.String("azure-native:hybridnetwork/v20230901:NetworkFunctionDefinitionVersion"),
 		},
 		{
-			Type: pulumi.String("azure-native:hybridnetwork/v20230901:NetworkFunctionDefinitionVersion"),
+			Type: pulumi.String("azure-native:hybridnetwork:NetworkFunctionDefinitionVersion"),
 		},
 	})
 	opts = append(opts, aliases)

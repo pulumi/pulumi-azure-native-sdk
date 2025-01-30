@@ -51,6 +51,12 @@ func NewPrivateLinkServicesForSCCPowershell(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:securityandcompliance/v20210111:PrivateLinkServicesForSCCPowershell"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityandcompliance/v20210111:privateLinkServicesForSCCPowershell"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityandcompliance/v20210308:privateLinkServicesForSCCPowershell"),
 		},
 		{
@@ -58,12 +64,6 @@ func NewPrivateLinkServicesForSCCPowershell(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityandcompliance:privateLinkServicesForSCCPowershell"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityandcompliance/v20210111:PrivateLinkServicesForSCCPowershell"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityandcompliance/v20210111:privateLinkServicesForSCCPowershell"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -63,9 +63,6 @@ func NewDeploymentSetting(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:azurestackhci:DeploymentSetting"),
-		},
-		{
 			Type: pulumi.String("azure-native:azurestackhci/v20230801preview:DeploymentSetting"),
 		},
 		{
@@ -82,6 +79,9 @@ func NewDeploymentSetting(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20241201preview:DeploymentSetting"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci:DeploymentSetting"),
 		},
 	})
 	opts = append(opts, aliases)

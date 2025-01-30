@@ -52,9 +52,6 @@ func NewAATPDataConnector(ctx *pulumi.Context,
 	args.Kind = pulumi.String("AzureAdvancedThreatProtection")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:securityinsights:AATPDataConnector"),
-		},
-		{
 			Type: pulumi.String("azure-native:securityinsights/v20190101preview:AATPDataConnector"),
 		},
 		{
@@ -155,6 +152,9 @@ func NewAATPDataConnector(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20241001preview:AATPDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights:AATPDataConnector"),
 		},
 	})
 	opts = append(opts, aliases)

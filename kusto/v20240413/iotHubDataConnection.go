@@ -81,9 +81,6 @@ func NewIotHubDataConnection(ctx *pulumi.Context,
 	args.Kind = pulumi.String("IotHub")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:kusto:IotHubDataConnection"),
-		},
-		{
 			Type: pulumi.String("azure-native:kusto/v20190121:IotHubDataConnection"),
 		},
 		{
@@ -127,6 +124,9 @@ func NewIotHubDataConnection(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:kusto/v20230815:IotHubDataConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:kusto:IotHubDataConnection"),
 		},
 	})
 	opts = append(opts, aliases)

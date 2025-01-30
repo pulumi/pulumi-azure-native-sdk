@@ -141,9 +141,6 @@ func NewAgentPool(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:containerservice:AgentPool"),
-		},
-		{
 			Type: pulumi.String("azure-native:containerservice/v20190201:AgentPool"),
 		},
 		{
@@ -376,6 +373,9 @@ func NewAgentPool(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:containerservice/v20240902preview:AgentPool"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerservice:AgentPool"),
 		},
 	})
 	opts = append(opts, aliases)

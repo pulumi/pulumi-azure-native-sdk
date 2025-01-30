@@ -69,9 +69,6 @@ func NewScheduledTrigger(ctx *pulumi.Context,
 	args.Kind = pulumi.String("ScheduleBased")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:datashare:ScheduledTrigger"),
-		},
-		{
 			Type: pulumi.String("azure-native:datashare/v20181101preview:ScheduledTrigger"),
 		},
 		{
@@ -82,6 +79,9 @@ func NewScheduledTrigger(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:datashare/v20201001preview:ScheduledTrigger"),
+		},
+		{
+			Type: pulumi.String("azure-native:datashare:ScheduledTrigger"),
 		},
 	})
 	opts = append(opts, aliases)

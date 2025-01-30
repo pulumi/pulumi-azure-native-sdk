@@ -49,9 +49,6 @@ func NewEncryptionScope(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:storage:EncryptionScope"),
-		},
-		{
 			Type: pulumi.String("azure-native:storage/v20190601:EncryptionScope"),
 		},
 		{
@@ -86,6 +83,9 @@ func NewEncryptionScope(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:storage/v20230401:EncryptionScope"),
+		},
+		{
+			Type: pulumi.String("azure-native:storage:EncryptionScope"),
 		},
 	})
 	opts = append(opts, aliases)

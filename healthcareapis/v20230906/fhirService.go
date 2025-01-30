@@ -71,9 +71,6 @@ func NewFhirService(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:healthcareapis:FhirService"),
-		},
-		{
 			Type: pulumi.String("azure-native:healthcareapis/v20210601preview:FhirService"),
 		},
 		{
@@ -108,6 +105,9 @@ func NewFhirService(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:healthcareapis/v20240331:FhirService"),
+		},
+		{
+			Type: pulumi.String("azure-native:healthcareapis:FhirService"),
 		},
 	})
 	opts = append(opts, aliases)

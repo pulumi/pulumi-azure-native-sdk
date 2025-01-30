@@ -63,13 +63,13 @@ func NewWorkspaceDiagnostic(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:apimanagement:WorkspaceDiagnostic"),
-		},
-		{
 			Type: pulumi.String("azure-native:apimanagement/v20240501:WorkspaceDiagnostic"),
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20240601preview:WorkspaceDiagnostic"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement:WorkspaceDiagnostic"),
 		},
 	})
 	opts = append(opts, aliases)

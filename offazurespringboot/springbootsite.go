@@ -45,9 +45,6 @@ func NewSpringbootsite(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:offazurespringboot:springbootsite"),
-		},
-		{
 			Type: pulumi.String("azure-native:offazurespringboot/v20230101preview:Springbootsite"),
 		},
 		{
@@ -58,6 +55,9 @@ func NewSpringbootsite(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:offazurespringboot/v20240401preview:springbootsite"),
+		},
+		{
+			Type: pulumi.String("azure-native:offazurespringboot:springbootsite"),
 		},
 	})
 	opts = append(opts, aliases)

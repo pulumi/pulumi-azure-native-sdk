@@ -54,13 +54,13 @@ func NewCloudHsmCluster(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:hardwaresecuritymodules:CloudHsmCluster"),
-		},
-		{
 			Type: pulumi.String("azure-native:hardwaresecuritymodules/v20231210preview:CloudHsmCluster"),
 		},
 		{
 			Type: pulumi.String("azure-native:hardwaresecuritymodules/v20240630preview:CloudHsmCluster"),
+		},
+		{
+			Type: pulumi.String("azure-native:hardwaresecuritymodules:CloudHsmCluster"),
 		},
 	})
 	opts = append(opts, aliases)

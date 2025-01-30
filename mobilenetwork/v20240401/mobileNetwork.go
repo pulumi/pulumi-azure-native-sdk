@@ -53,9 +53,6 @@ func NewMobileNetwork(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:mobilenetwork:MobileNetwork"),
-		},
-		{
 			Type: pulumi.String("azure-native:mobilenetwork/v20220301preview:MobileNetwork"),
 		},
 		{
@@ -72,6 +69,9 @@ func NewMobileNetwork(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:mobilenetwork/v20240201:MobileNetwork"),
+		},
+		{
+			Type: pulumi.String("azure-native:mobilenetwork:MobileNetwork"),
 		},
 	})
 	opts = append(opts, aliases)

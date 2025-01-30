@@ -57,9 +57,6 @@ func NewReplication(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:containerregistry:Replication"),
-		},
-		{
 			Type: pulumi.String("azure-native:containerregistry/v20171001:Replication"),
 		},
 		{
@@ -103,6 +100,9 @@ func NewReplication(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:containerregistry/v20241101preview:Replication"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerregistry:Replication"),
 		},
 	})
 	opts = append(opts, aliases)

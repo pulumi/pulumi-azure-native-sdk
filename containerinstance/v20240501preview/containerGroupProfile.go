@@ -80,10 +80,10 @@ func NewContainerGroupProfile(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:containerinstance:ContainerGroupProfile"),
+			Type: pulumi.String("azure-native:containerinstance/v20241101preview:ContainerGroupProfile"),
 		},
 		{
-			Type: pulumi.String("azure-native:containerinstance/v20241101preview:ContainerGroupProfile"),
+			Type: pulumi.String("azure-native:containerinstance:ContainerGroupProfile"),
 		},
 	})
 	opts = append(opts, aliases)

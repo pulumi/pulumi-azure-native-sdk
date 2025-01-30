@@ -53,9 +53,6 @@ func NewWorkloadNetworkDnsService(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:avs:WorkloadNetworkDnsService"),
-		},
-		{
 			Type: pulumi.String("azure-native:avs/v20200717preview:WorkloadNetworkDnsService"),
 		},
 		{
@@ -72,6 +69,9 @@ func NewWorkloadNetworkDnsService(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:avs/v20230901:WorkloadNetworkDnsService"),
+		},
+		{
+			Type: pulumi.String("azure-native:avs:WorkloadNetworkDnsService"),
 		},
 	})
 	opts = append(opts, aliases)

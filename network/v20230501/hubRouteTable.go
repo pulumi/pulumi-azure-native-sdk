@@ -49,9 +49,6 @@ func NewHubRouteTable(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:network:HubRouteTable"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20200401:HubRouteTable"),
 		},
 		{
@@ -119,6 +116,9 @@ func NewHubRouteTable(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20240501:HubRouteTable"),
+		},
+		{
+			Type: pulumi.String("azure-native:network:HubRouteTable"),
 		},
 	})
 	opts = append(opts, aliases)

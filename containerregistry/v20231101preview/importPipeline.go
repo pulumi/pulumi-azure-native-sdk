@@ -58,9 +58,6 @@ func NewImportPipeline(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:containerregistry:ImportPipeline"),
-		},
-		{
 			Type: pulumi.String("azure-native:containerregistry/v20191201preview:ImportPipeline"),
 		},
 		{
@@ -89,6 +86,9 @@ func NewImportPipeline(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:containerregistry/v20241101preview:ImportPipeline"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerregistry:ImportPipeline"),
 		},
 	})
 	opts = append(opts, aliases)

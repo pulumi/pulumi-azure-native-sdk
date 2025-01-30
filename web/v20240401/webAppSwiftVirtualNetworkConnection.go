@@ -43,9 +43,6 @@ func NewWebAppSwiftVirtualNetworkConnection(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:web:WebAppSwiftVirtualNetworkConnection"),
-		},
-		{
 			Type: pulumi.String("azure-native:web/v20180201:WebAppSwiftVirtualNetworkConnection"),
 		},
 		{
@@ -89,6 +86,9 @@ func NewWebAppSwiftVirtualNetworkConnection(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:web/v20231201:WebAppSwiftVirtualNetworkConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:web:WebAppSwiftVirtualNetworkConnection"),
 		},
 	})
 	opts = append(opts, aliases)

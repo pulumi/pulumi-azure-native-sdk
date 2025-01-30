@@ -45,9 +45,6 @@ func NewDeployment(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:cognitiveservices:Deployment"),
-		},
-		{
 			Type: pulumi.String("azure-native:cognitiveservices/v20211001:Deployment"),
 		},
 		{
@@ -70,6 +67,9 @@ func NewDeployment(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:cognitiveservices/v20241001:Deployment"),
+		},
+		{
+			Type: pulumi.String("azure-native:cognitiveservices:Deployment"),
 		},
 	})
 	opts = append(opts, aliases)

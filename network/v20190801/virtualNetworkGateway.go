@@ -70,9 +70,6 @@ func NewVirtualNetworkGateway(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:network:VirtualNetworkGateway"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20150615:VirtualNetworkGateway"),
 		},
 		{
@@ -227,6 +224,9 @@ func NewVirtualNetworkGateway(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20240501:VirtualNetworkGateway"),
+		},
+		{
+			Type: pulumi.String("azure-native:network:VirtualNetworkGateway"),
 		},
 	})
 	opts = append(opts, aliases)

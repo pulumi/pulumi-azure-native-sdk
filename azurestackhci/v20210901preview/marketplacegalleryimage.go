@@ -63,12 +63,6 @@ func NewMarketplacegalleryimage(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:azurestackhci/v20210901preview:marketplacegalleryimage"),
 		},
 		{
-			Type: pulumi.String("azure-native:azurestackhci:Marketplacegalleryimage"),
-		},
-		{
-			Type: pulumi.String("azure-native:azurestackhci:marketplacegalleryimage"),
-		},
-		{
 			Type: pulumi.String("azure-native:azurestackhci/v20221215preview:Marketplacegalleryimage"),
 		},
 		{
@@ -121,6 +115,12 @@ func NewMarketplacegalleryimage(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20241001preview:marketplacegalleryimage"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci:Marketplacegalleryimage"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci:marketplacegalleryimage"),
 		},
 	})
 	opts = append(opts, aliases)

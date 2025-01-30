@@ -89,9 +89,6 @@ func NewIncident(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:securityinsights:Incident"),
-		},
-		{
 			Type: pulumi.String("azure-native:securityinsights/v20190101preview:Incident"),
 		},
 		{
@@ -195,6 +192,9 @@ func NewIncident(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20241001preview:Incident"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights:Incident"),
 		},
 	})
 	opts = append(opts, aliases)

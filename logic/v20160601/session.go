@@ -47,13 +47,13 @@ func NewSession(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:logic:Session"),
-		},
-		{
 			Type: pulumi.String("azure-native:logic/v20180701preview:Session"),
 		},
 		{
 			Type: pulumi.String("azure-native:logic/v20190501:Session"),
+		},
+		{
+			Type: pulumi.String("azure-native:logic:Session"),
 		},
 	})
 	opts = append(opts, aliases)

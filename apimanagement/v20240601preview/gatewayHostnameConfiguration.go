@@ -52,9 +52,6 @@ func NewGatewayHostnameConfiguration(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:apimanagement:GatewayHostnameConfiguration"),
-		},
-		{
 			Type: pulumi.String("azure-native:apimanagement/v20191201:GatewayHostnameConfiguration"),
 		},
 		{
@@ -98,6 +95,9 @@ func NewGatewayHostnameConfiguration(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20240501:GatewayHostnameConfiguration"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement:GatewayHostnameConfiguration"),
 		},
 	})
 	opts = append(opts, aliases)

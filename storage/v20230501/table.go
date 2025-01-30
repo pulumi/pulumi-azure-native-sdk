@@ -41,9 +41,6 @@ func NewTable(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:storage:Table"),
-		},
-		{
 			Type: pulumi.String("azure-native:storage/v20190601:Table"),
 		},
 		{
@@ -78,6 +75,9 @@ func NewTable(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:storage/v20230401:Table"),
+		},
+		{
+			Type: pulumi.String("azure-native:storage:Table"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -47,9 +47,6 @@ func NewDotNetComponent(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:app:DotNetComponent"),
-		},
-		{
 			Type: pulumi.String("azure-native:app/v20231102preview:DotNetComponent"),
 		},
 		{
@@ -57,6 +54,9 @@ func NewDotNetComponent(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:app/v20240802preview:DotNetComponent"),
+		},
+		{
+			Type: pulumi.String("azure-native:app:DotNetComponent"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -42,13 +42,13 @@ func NewSpringbootapp(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:offazurespringboot:springbootapp"),
-		},
-		{
 			Type: pulumi.String("azure-native:offazurespringboot/v20240401preview:Springbootapp"),
 		},
 		{
 			Type: pulumi.String("azure-native:offazurespringboot/v20240401preview:springbootapp"),
+		},
+		{
+			Type: pulumi.String("azure-native:offazurespringboot:springbootapp"),
 		},
 	})
 	opts = append(opts, aliases)

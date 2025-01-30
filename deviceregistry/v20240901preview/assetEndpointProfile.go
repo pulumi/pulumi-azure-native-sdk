@@ -70,13 +70,13 @@ func NewAssetEndpointProfile(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:deviceregistry:AssetEndpointProfile"),
-		},
-		{
 			Type: pulumi.String("azure-native:deviceregistry/v20231101preview:AssetEndpointProfile"),
 		},
 		{
 			Type: pulumi.String("azure-native:deviceregistry/v20241101:AssetEndpointProfile"),
+		},
+		{
+			Type: pulumi.String("azure-native:deviceregistry:AssetEndpointProfile"),
 		},
 	})
 	opts = append(opts, aliases)

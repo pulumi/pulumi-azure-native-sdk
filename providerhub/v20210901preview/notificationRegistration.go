@@ -37,9 +37,6 @@ func NewNotificationRegistration(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:providerhub:NotificationRegistration"),
-		},
-		{
 			Type: pulumi.String("azure-native:providerhub/v20201120:NotificationRegistration"),
 		},
 		{
@@ -47,6 +44,9 @@ func NewNotificationRegistration(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:providerhub/v20210601preview:NotificationRegistration"),
+		},
+		{
+			Type: pulumi.String("azure-native:providerhub:NotificationRegistration"),
 		},
 	})
 	opts = append(opts, aliases)

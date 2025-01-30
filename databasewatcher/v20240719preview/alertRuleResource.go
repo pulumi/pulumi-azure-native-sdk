@@ -66,13 +66,13 @@ func NewAlertRuleResource(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:databasewatcher:AlertRuleResource"),
-		},
-		{
 			Type: pulumi.String("azure-native:databasewatcher/v20241001preview:AlertRuleResource"),
 		},
 		{
 			Type: pulumi.String("azure-native:databasewatcher/v20250102:AlertRuleResource"),
+		},
+		{
+			Type: pulumi.String("azure-native:databasewatcher:AlertRuleResource"),
 		},
 	})
 	opts = append(opts, aliases)

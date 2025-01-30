@@ -50,10 +50,10 @@ func NewPrivateEndpointConnection(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:agfoodplatform:PrivateEndpointConnection"),
+			Type: pulumi.String("azure-native:agfoodplatform/v20230601preview:PrivateEndpointConnection"),
 		},
 		{
-			Type: pulumi.String("azure-native:agfoodplatform/v20230601preview:PrivateEndpointConnection"),
+			Type: pulumi.String("azure-native:agfoodplatform:PrivateEndpointConnection"),
 		},
 	})
 	opts = append(opts, aliases)

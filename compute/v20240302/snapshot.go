@@ -93,9 +93,6 @@ func NewSnapshot(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:compute:Snapshot"),
-		},
-		{
 			Type: pulumi.String("azure-native:compute/v20160430preview:Snapshot"),
 		},
 		{
@@ -154,6 +151,9 @@ func NewSnapshot(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:compute/v20231002:Snapshot"),
+		},
+		{
+			Type: pulumi.String("azure-native:compute:Snapshot"),
 		},
 	})
 	opts = append(opts, aliases)

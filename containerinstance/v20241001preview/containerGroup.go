@@ -90,9 +90,6 @@ func NewContainerGroup(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:containerinstance:ContainerGroup"),
-		},
-		{
 			Type: pulumi.String("azure-native:containerinstance/v20170801preview:ContainerGroup"),
 		},
 		{
@@ -154,6 +151,9 @@ func NewContainerGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:containerinstance/v20241101preview:ContainerGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerinstance:ContainerGroup"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -45,9 +45,6 @@ func NewFeaturestoreEntityContainerEntity(ctx *pulumi.Context,
 	args.FeaturestoreEntityContainerProperties = args.FeaturestoreEntityContainerProperties.ToFeaturestoreEntityContainerOutput().ApplyT(func(v FeaturestoreEntityContainer) FeaturestoreEntityContainer { return *v.Defaults() }).(FeaturestoreEntityContainerOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:machinelearningservices:FeaturestoreEntityContainerEntity"),
-		},
-		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20230201preview:FeaturestoreEntityContainerEntity"),
 		},
 		{
@@ -76,6 +73,9 @@ func NewFeaturestoreEntityContainerEntity(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001:FeaturestoreEntityContainerEntity"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices:FeaturestoreEntityContainerEntity"),
 		},
 	})
 	opts = append(opts, aliases)

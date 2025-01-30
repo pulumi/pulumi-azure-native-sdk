@@ -71,9 +71,6 @@ func NewScheduledActionByScope(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:costmanagement:ScheduledActionByScope"),
-		},
-		{
 			Type: pulumi.String("azure-native:costmanagement/v20220401preview:ScheduledActionByScope"),
 		},
 		{
@@ -99,6 +96,9 @@ func NewScheduledActionByScope(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:costmanagement/v20231101:ScheduledActionByScope"),
+		},
+		{
+			Type: pulumi.String("azure-native:costmanagement:ScheduledActionByScope"),
 		},
 	})
 	opts = append(opts, aliases)

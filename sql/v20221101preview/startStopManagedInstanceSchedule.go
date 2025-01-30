@@ -58,9 +58,6 @@ func NewStartStopManagedInstanceSchedule(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:sql:StartStopManagedInstanceSchedule"),
-		},
-		{
 			Type: pulumi.String("azure-native:sql/v20220801preview:StartStopManagedInstanceSchedule"),
 		},
 		{
@@ -74,6 +71,9 @@ func NewStartStopManagedInstanceSchedule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20240501preview:StartStopManagedInstanceSchedule"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql:StartStopManagedInstanceSchedule"),
 		},
 	})
 	opts = append(opts, aliases)

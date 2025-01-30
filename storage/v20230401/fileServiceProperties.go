@@ -45,9 +45,6 @@ func NewFileServiceProperties(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:storage:FileServiceProperties"),
-		},
-		{
 			Type: pulumi.String("azure-native:storage/v20190401:FileServiceProperties"),
 		},
 		{
@@ -85,6 +82,9 @@ func NewFileServiceProperties(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:storage/v20230501:FileServiceProperties"),
+		},
+		{
+			Type: pulumi.String("azure-native:storage:FileServiceProperties"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -42,9 +42,6 @@ func NewNotificationRecipientUser(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:apimanagement:NotificationRecipientUser"),
-		},
-		{
 			Type: pulumi.String("azure-native:apimanagement/v20170301:NotificationRecipientUser"),
 		},
 		{
@@ -100,6 +97,9 @@ func NewNotificationRecipientUser(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20240601preview:NotificationRecipientUser"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement:NotificationRecipientUser"),
 		},
 	})
 	opts = append(opts, aliases)

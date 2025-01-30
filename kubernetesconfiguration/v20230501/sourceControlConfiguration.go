@@ -74,9 +74,6 @@ func NewSourceControlConfiguration(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:kubernetesconfiguration:SourceControlConfiguration"),
-		},
-		{
 			Type: pulumi.String("azure-native:kubernetesconfiguration/v20191101preview:SourceControlConfiguration"),
 		},
 		{
@@ -105,6 +102,9 @@ func NewSourceControlConfiguration(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:kubernetesconfiguration/v20221101:SourceControlConfiguration"),
+		},
+		{
+			Type: pulumi.String("azure-native:kubernetesconfiguration:SourceControlConfiguration"),
 		},
 	})
 	opts = append(opts, aliases)

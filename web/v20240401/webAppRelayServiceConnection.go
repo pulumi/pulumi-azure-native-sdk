@@ -46,9 +46,6 @@ func NewWebAppRelayServiceConnection(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:web:WebAppRelayServiceConnection"),
-		},
-		{
 			Type: pulumi.String("azure-native:web/v20150801:WebAppRelayServiceConnection"),
 		},
 		{
@@ -98,6 +95,9 @@ func NewWebAppRelayServiceConnection(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:web/v20231201:WebAppRelayServiceConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:web:WebAppRelayServiceConnection"),
 		},
 	})
 	opts = append(opts, aliases)

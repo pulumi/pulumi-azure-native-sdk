@@ -99,13 +99,13 @@ func NewAsset(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:deviceregistry:Asset"),
-		},
-		{
 			Type: pulumi.String("azure-native:deviceregistry/v20231101preview:Asset"),
 		},
 		{
 			Type: pulumi.String("azure-native:deviceregistry/v20241101:Asset"),
+		},
+		{
+			Type: pulumi.String("azure-native:deviceregistry:Asset"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -44,9 +44,6 @@ func NewEnvironmentContainer(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:machinelearningservices:EnvironmentContainer"),
-		},
-		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20220201preview:EnvironmentContainer"),
 		},
 		{
@@ -99,6 +96,9 @@ func NewEnvironmentContainer(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001preview:EnvironmentContainer"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices:EnvironmentContainer"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -57,9 +57,6 @@ func NewHuntRelation(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:securityinsights:HuntRelation"),
-		},
-		{
 			Type: pulumi.String("azure-native:securityinsights/v20230401preview:HuntRelation"),
 		},
 		{
@@ -88,6 +85,9 @@ func NewHuntRelation(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20240401preview:HuntRelation"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights:HuntRelation"),
 		},
 	})
 	opts = append(opts, aliases)

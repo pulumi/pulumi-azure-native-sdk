@@ -42,9 +42,6 @@ func NewLinkedService(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:operationalinsights:LinkedService"),
-		},
-		{
 			Type: pulumi.String("azure-native:operationalinsights/v20190801preview:LinkedService"),
 		},
 		{
@@ -55,6 +52,9 @@ func NewLinkedService(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:operationalinsights/v20230901:LinkedService"),
+		},
+		{
+			Type: pulumi.String("azure-native:operationalinsights:LinkedService"),
 		},
 	})
 	opts = append(opts, aliases)

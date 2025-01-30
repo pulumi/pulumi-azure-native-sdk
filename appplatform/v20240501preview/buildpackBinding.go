@@ -47,9 +47,6 @@ func NewBuildpackBinding(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:appplatform:BuildpackBinding"),
-		},
-		{
 			Type: pulumi.String("azure-native:appplatform/v20220101preview:BuildpackBinding"),
 		},
 		{
@@ -93,6 +90,9 @@ func NewBuildpackBinding(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:appplatform/v20240101preview:BuildpackBinding"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform:BuildpackBinding"),
 		},
 	})
 	opts = append(opts, aliases)

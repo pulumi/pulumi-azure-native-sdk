@@ -44,9 +44,6 @@ func NewPlan(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:devcenter:Plan"),
-		},
-		{
 			Type: pulumi.String("azure-native:devcenter/v20240501preview:Plan"),
 		},
 		{
@@ -57,6 +54,9 @@ func NewPlan(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:devcenter/v20240801preview:Plan"),
+		},
+		{
+			Type: pulumi.String("azure-native:devcenter:Plan"),
 		},
 	})
 	opts = append(opts, aliases)

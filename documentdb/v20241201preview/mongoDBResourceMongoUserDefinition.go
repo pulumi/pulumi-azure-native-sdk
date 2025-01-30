@@ -49,9 +49,6 @@ func NewMongoDBResourceMongoUserDefinition(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:documentdb:MongoDBResourceMongoUserDefinition"),
-		},
-		{
 			Type: pulumi.String("azure-native:documentdb/v20211015preview:MongoDBResourceMongoUserDefinition"),
 		},
 		{
@@ -116,6 +113,9 @@ func NewMongoDBResourceMongoUserDefinition(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:documentdb/v20241115:MongoDBResourceMongoUserDefinition"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb:MongoDBResourceMongoUserDefinition"),
 		},
 	})
 	opts = append(opts, aliases)

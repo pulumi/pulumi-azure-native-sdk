@@ -90,13 +90,13 @@ func NewCluster(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:dbforpostgresql:Cluster"),
-		},
-		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20201005privatepreview:Cluster"),
 		},
 		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20230302preview:Cluster"),
+		},
+		{
+			Type: pulumi.String("azure-native:dbforpostgresql:Cluster"),
 		},
 	})
 	opts = append(opts, aliases)

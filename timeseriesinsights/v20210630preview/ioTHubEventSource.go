@@ -81,9 +81,6 @@ func NewIoTHubEventSource(ctx *pulumi.Context,
 	args.Kind = pulumi.String("Microsoft.IoTHub")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:timeseriesinsights:IoTHubEventSource"),
-		},
-		{
 			Type: pulumi.String("azure-native:timeseriesinsights/v20170228preview:IoTHubEventSource"),
 		},
 		{
@@ -97,6 +94,9 @@ func NewIoTHubEventSource(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:timeseriesinsights/v20210331preview:IoTHubEventSource"),
+		},
+		{
+			Type: pulumi.String("azure-native:timeseriesinsights:IoTHubEventSource"),
 		},
 	})
 	opts = append(opts, aliases)

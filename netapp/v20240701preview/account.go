@@ -59,9 +59,6 @@ func NewAccount(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:netapp:Account"),
-		},
-		{
 			Type: pulumi.String("azure-native:netapp/v20170815:Account"),
 		},
 		{
@@ -180,6 +177,12 @@ func NewAccount(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:netapp/v20240701:Account"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20240901:Account"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp:Account"),
 		},
 	})
 	opts = append(opts, aliases)

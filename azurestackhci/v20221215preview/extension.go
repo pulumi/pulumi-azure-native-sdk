@@ -76,9 +76,6 @@ func NewExtension(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:azurestackhci:Extension"),
-		},
-		{
 			Type: pulumi.String("azure-native:azurestackhci/v20210101preview:Extension"),
 		},
 		{
@@ -137,6 +134,9 @@ func NewExtension(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20241201preview:Extension"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci:Extension"),
 		},
 	})
 	opts = append(opts, aliases)

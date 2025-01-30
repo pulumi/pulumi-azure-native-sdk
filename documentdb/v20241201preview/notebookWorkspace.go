@@ -41,9 +41,6 @@ func NewNotebookWorkspace(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:documentdb:NotebookWorkspace"),
-		},
-		{
 			Type: pulumi.String("azure-native:documentdb/v20190801:NotebookWorkspace"),
 		},
 		{
@@ -156,6 +153,9 @@ func NewNotebookWorkspace(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:documentdb/v20241115:NotebookWorkspace"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb:NotebookWorkspace"),
 		},
 	})
 	opts = append(opts, aliases)

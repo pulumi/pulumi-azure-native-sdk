@@ -67,10 +67,10 @@ func NewNetworkDevice(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:managednetworkfabric:NetworkDevice"),
+			Type: pulumi.String("azure-native:managednetworkfabric/v20230201preview:NetworkDevice"),
 		},
 		{
-			Type: pulumi.String("azure-native:managednetworkfabric/v20230201preview:NetworkDevice"),
+			Type: pulumi.String("azure-native:managednetworkfabric:NetworkDevice"),
 		},
 	})
 	opts = append(opts, aliases)

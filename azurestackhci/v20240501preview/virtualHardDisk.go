@@ -64,9 +64,6 @@ func NewVirtualHardDisk(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:azurestackhci:VirtualHardDisk"),
-		},
-		{
 			Type: pulumi.String("azure-native:azurestackhci/v20210701preview:VirtualHardDisk"),
 		},
 		{
@@ -95,6 +92,9 @@ func NewVirtualHardDisk(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20241001preview:VirtualHardDisk"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci:VirtualHardDisk"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -57,9 +57,6 @@ func NewWebAppVnetConnectionSlot(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:web:WebAppVnetConnectionSlot"),
-		},
-		{
 			Type: pulumi.String("azure-native:web/v20150801:WebAppVnetConnectionSlot"),
 		},
 		{
@@ -109,6 +106,9 @@ func NewWebAppVnetConnectionSlot(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:web/v20240401:WebAppVnetConnectionSlot"),
+		},
+		{
+			Type: pulumi.String("azure-native:web:WebAppVnetConnectionSlot"),
 		},
 	})
 	opts = append(opts, aliases)

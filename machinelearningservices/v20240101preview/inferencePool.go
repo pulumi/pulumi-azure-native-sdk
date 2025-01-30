@@ -54,9 +54,6 @@ func NewInferencePool(ctx *pulumi.Context,
 	args.InferencePoolProperties = args.InferencePoolProperties.ToInferencePoolTypeOutput().ApplyT(func(v InferencePoolType) InferencePoolType { return *v.Defaults() }).(InferencePoolTypeOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:machinelearningservices:InferencePool"),
-		},
-		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20230801preview:InferencePool"),
 		},
 		{
@@ -64,6 +61,9 @@ func NewInferencePool(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001preview:InferencePool"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices:InferencePool"),
 		},
 	})
 	opts = append(opts, aliases)

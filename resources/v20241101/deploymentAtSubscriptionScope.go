@@ -40,9 +40,6 @@ func NewDeploymentAtSubscriptionScope(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:resources:DeploymentAtSubscriptionScope"),
-		},
-		{
 			Type: pulumi.String("azure-native:resources/v20180501:DeploymentAtSubscriptionScope"),
 		},
 		{
@@ -89,6 +86,9 @@ func NewDeploymentAtSubscriptionScope(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:resources/v20240701:DeploymentAtSubscriptionScope"),
+		},
+		{
+			Type: pulumi.String("azure-native:resources:DeploymentAtSubscriptionScope"),
 		},
 	})
 	opts = append(opts, aliases)

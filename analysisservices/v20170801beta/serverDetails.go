@@ -73,9 +73,6 @@ func NewServerDetails(ctx *pulumi.Context,
 	args.Sku = args.Sku.ToResourceSkuOutput().ApplyT(func(v ResourceSku) ResourceSku { return *v.Defaults() }).(ResourceSkuOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:analysisservices:ServerDetails"),
-		},
-		{
 			Type: pulumi.String("azure-native:analysisservices/v20160516:ServerDetails"),
 		},
 		{
@@ -83,6 +80,9 @@ func NewServerDetails(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:analysisservices/v20170801:ServerDetails"),
+		},
+		{
+			Type: pulumi.String("azure-native:analysisservices:ServerDetails"),
 		},
 	})
 	opts = append(opts, aliases)

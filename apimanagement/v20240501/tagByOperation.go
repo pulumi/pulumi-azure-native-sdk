@@ -45,9 +45,6 @@ func NewTagByOperation(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:apimanagement:TagByOperation"),
-		},
-		{
 			Type: pulumi.String("azure-native:apimanagement/v20170301:TagByOperation"),
 		},
 		{
@@ -103,6 +100,9 @@ func NewTagByOperation(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20240601preview:TagByOperation"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement:TagByOperation"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -50,9 +50,6 @@ func NewCredentialSet(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:containerregistry:CredentialSet"),
-		},
-		{
 			Type: pulumi.String("azure-native:containerregistry/v20230101preview:CredentialSet"),
 		},
 		{
@@ -66,6 +63,9 @@ func NewCredentialSet(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:containerregistry/v20231101preview:CredentialSet"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerregistry:CredentialSet"),
 		},
 	})
 	opts = append(opts, aliases)

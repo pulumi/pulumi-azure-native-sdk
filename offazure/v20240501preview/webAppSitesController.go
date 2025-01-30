@@ -49,13 +49,13 @@ func NewWebAppSitesController(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:offazure:WebAppSitesController"),
-		},
-		{
 			Type: pulumi.String("azure-native:offazure/v20230606:WebAppSitesController"),
 		},
 		{
 			Type: pulumi.String("azure-native:offazure/v20231001preview:WebAppSitesController"),
+		},
+		{
+			Type: pulumi.String("azure-native:offazure:WebAppSitesController"),
 		},
 	})
 	opts = append(opts, aliases)

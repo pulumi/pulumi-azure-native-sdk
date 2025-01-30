@@ -47,9 +47,6 @@ func NewServerTrustGroup(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:sql:ServerTrustGroup"),
-		},
-		{
 			Type: pulumi.String("azure-native:sql/v20200202preview:ServerTrustGroup"),
 		},
 		{
@@ -93,6 +90,9 @@ func NewServerTrustGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20230801preview:ServerTrustGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql:ServerTrustGroup"),
 		},
 	})
 	opts = append(opts, aliases)

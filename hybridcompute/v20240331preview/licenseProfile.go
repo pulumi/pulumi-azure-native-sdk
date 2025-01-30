@@ -71,9 +71,6 @@ func NewLicenseProfile(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:hybridcompute:LicenseProfile"),
-		},
-		{
 			Type: pulumi.String("azure-native:hybridcompute/v20230620preview:LicenseProfile"),
 		},
 		{
@@ -93,6 +90,9 @@ func NewLicenseProfile(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:hybridcompute/v20241110preview:LicenseProfile"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridcompute:LicenseProfile"),
 		},
 	})
 	opts = append(opts, aliases)

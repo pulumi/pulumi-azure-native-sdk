@@ -59,6 +59,9 @@ func NewProject(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:migrate/v20230909preview:Project"),
 		},
+		{
+			Type: pulumi.String("azure-native:migrate/v20240101preview:Project"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

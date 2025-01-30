@@ -49,10 +49,10 @@ func NewIpPrefix(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:managednetworkfabric:IpPrefix"),
+			Type: pulumi.String("azure-native:managednetworkfabric/v20230615:IpPrefix"),
 		},
 		{
-			Type: pulumi.String("azure-native:managednetworkfabric/v20230615:IpPrefix"),
+			Type: pulumi.String("azure-native:managednetworkfabric:IpPrefix"),
 		},
 	})
 	opts = append(opts, aliases)

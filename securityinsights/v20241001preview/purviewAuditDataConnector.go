@@ -64,9 +64,6 @@ func NewPurviewAuditDataConnector(ctx *pulumi.Context,
 	args.Kind = pulumi.String("PurviewAudit")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:securityinsights:PurviewAuditDataConnector"),
-		},
-		{
 			Type: pulumi.String("azure-native:securityinsights/v20190101preview:PurviewAuditDataConnector"),
 		},
 		{
@@ -167,6 +164,9 @@ func NewPurviewAuditDataConnector(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20240901:PurviewAuditDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights:PurviewAuditDataConnector"),
 		},
 	})
 	opts = append(opts, aliases)

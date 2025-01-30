@@ -52,13 +52,13 @@ func NewVendorSkus(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:hybridnetwork:VendorSkus"),
-		},
-		{
 			Type: pulumi.String("azure-native:hybridnetwork/v20200101preview:VendorSkus"),
 		},
 		{
 			Type: pulumi.String("azure-native:hybridnetwork/v20210501:VendorSkus"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridnetwork:VendorSkus"),
 		},
 	})
 	opts = append(opts, aliases)

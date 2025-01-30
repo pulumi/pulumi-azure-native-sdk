@@ -71,9 +71,6 @@ func NewSapCentralServerInstance(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:workloads:SapCentralServerInstance"),
-		},
-		{
 			Type: pulumi.String("azure-native:workloads/v20211201preview:SapCentralServerInstance"),
 		},
 		{
@@ -84,6 +81,9 @@ func NewSapCentralServerInstance(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:workloads/v20231001preview:SapCentralServerInstance"),
+		},
+		{
+			Type: pulumi.String("azure-native:workloads:SapCentralServerInstance"),
 		},
 	})
 	opts = append(opts, aliases)

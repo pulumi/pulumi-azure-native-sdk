@@ -63,13 +63,13 @@ func NewTable(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:operationalinsights:Table"),
-		},
-		{
 			Type: pulumi.String("azure-native:operationalinsights/v20211201preview:Table"),
 		},
 		{
 			Type: pulumi.String("azure-native:operationalinsights/v20230901:Table"),
+		},
+		{
+			Type: pulumi.String("azure-native:operationalinsights:Table"),
 		},
 	})
 	opts = append(opts, aliases)

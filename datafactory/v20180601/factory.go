@@ -58,10 +58,10 @@ func NewFactory(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:datafactory:Factory"),
+			Type: pulumi.String("azure-native:datafactory/v20170901preview:Factory"),
 		},
 		{
-			Type: pulumi.String("azure-native:datafactory/v20170901preview:Factory"),
+			Type: pulumi.String("azure-native:datafactory:Factory"),
 		},
 	})
 	opts = append(opts, aliases)

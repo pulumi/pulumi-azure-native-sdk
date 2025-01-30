@@ -44,9 +44,6 @@ func NewCodeContainer(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:machinelearningservices:CodeContainer"),
-		},
-		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20220201preview:CodeContainer"),
 		},
 		{
@@ -99,6 +96,9 @@ func NewCodeContainer(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001preview:CodeContainer"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices:CodeContainer"),
 		},
 	})
 	opts = append(opts, aliases)

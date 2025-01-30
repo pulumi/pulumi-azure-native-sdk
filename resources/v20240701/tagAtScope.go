@@ -39,9 +39,6 @@ func NewTagAtScope(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:resources:TagAtScope"),
-		},
-		{
 			Type: pulumi.String("azure-native:resources/v20191001:TagAtScope"),
 		},
 		{
@@ -70,6 +67,9 @@ func NewTagAtScope(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:resources/v20241101:TagAtScope"),
+		},
+		{
+			Type: pulumi.String("azure-native:resources:TagAtScope"),
 		},
 	})
 	opts = append(opts, aliases)

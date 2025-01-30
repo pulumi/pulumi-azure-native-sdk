@@ -60,10 +60,10 @@ func NewL2Connection(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:orbital:L2Connection"),
+			Type: pulumi.String("azure-native:orbital/v20240301preview:L2Connection"),
 		},
 		{
-			Type: pulumi.String("azure-native:orbital/v20240301preview:L2Connection"),
+			Type: pulumi.String("azure-native:orbital:L2Connection"),
 		},
 	})
 	opts = append(opts, aliases)

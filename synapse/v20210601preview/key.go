@@ -41,9 +41,6 @@ func NewKey(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:synapse:Key"),
-		},
-		{
 			Type: pulumi.String("azure-native:synapse/v20190601preview:Key"),
 		},
 		{
@@ -60,6 +57,9 @@ func NewKey(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:synapse/v20210601:Key"),
+		},
+		{
+			Type: pulumi.String("azure-native:synapse:Key"),
 		},
 	})
 	opts = append(opts, aliases)

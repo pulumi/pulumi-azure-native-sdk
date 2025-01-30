@@ -58,9 +58,6 @@ func NewOfficeATPDataConnector(ctx *pulumi.Context,
 	args.Kind = pulumi.String("OfficeATP")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:securityinsights:OfficeATPDataConnector"),
-		},
-		{
 			Type: pulumi.String("azure-native:securityinsights/v20190101preview:OfficeATPDataConnector"),
 		},
 		{
@@ -161,6 +158,9 @@ func NewOfficeATPDataConnector(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20241001preview:OfficeATPDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights:OfficeATPDataConnector"),
 		},
 	})
 	opts = append(opts, aliases)

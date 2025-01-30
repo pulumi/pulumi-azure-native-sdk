@@ -54,10 +54,10 @@ func NewRole(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:dbforpostgresql:Role"),
+			Type: pulumi.String("azure-native:dbforpostgresql/v20221108:Role"),
 		},
 		{
-			Type: pulumi.String("azure-native:dbforpostgresql/v20221108:Role"),
+			Type: pulumi.String("azure-native:dbforpostgresql:Role"),
 		},
 	})
 	opts = append(opts, aliases)

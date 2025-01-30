@@ -54,9 +54,6 @@ func NewVirtualNetwork(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:azurestackhci:VirtualNetwork"),
-		},
-		{
 			Type: pulumi.String("azure-native:azurestackhci/v20210701preview:VirtualNetwork"),
 		},
 		{
@@ -64,6 +61,9 @@ func NewVirtualNetwork(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20230701preview:VirtualNetwork"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci:VirtualNetwork"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -44,9 +44,6 @@ func NewApplicationSecurityGroup(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:network:ApplicationSecurityGroup"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20170901:ApplicationSecurityGroup"),
 		},
 		{
@@ -177,6 +174,9 @@ func NewApplicationSecurityGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20240501:ApplicationSecurityGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:network:ApplicationSecurityGroup"),
 		},
 	})
 	opts = append(opts, aliases)

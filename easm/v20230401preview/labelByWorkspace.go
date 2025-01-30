@@ -45,10 +45,10 @@ func NewLabelByWorkspace(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:easm:LabelByWorkspace"),
+			Type: pulumi.String("azure-native:easm/v20220401preview:LabelByWorkspace"),
 		},
 		{
-			Type: pulumi.String("azure-native:easm/v20220401preview:LabelByWorkspace"),
+			Type: pulumi.String("azure-native:easm:LabelByWorkspace"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -48,9 +48,6 @@ func NewFluidRelayServer(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:fluidrelay:FluidRelayServer"),
-		},
-		{
 			Type: pulumi.String("azure-native:fluidrelay/v20210312preview:FluidRelayServer"),
 		},
 		{
@@ -73,6 +70,9 @@ func NewFluidRelayServer(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:fluidrelay/v20220601:FluidRelayServer"),
+		},
+		{
+			Type: pulumi.String("azure-native:fluidrelay:FluidRelayServer"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -61,9 +61,6 @@ func NewSqlPool(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:synapse:SqlPool"),
-		},
-		{
 			Type: pulumi.String("azure-native:synapse/v20190601preview:SqlPool"),
 		},
 		{
@@ -83,6 +80,9 @@ func NewSqlPool(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:synapse/v20210601:SqlPool"),
+		},
+		{
+			Type: pulumi.String("azure-native:synapse:SqlPool"),
 		},
 	})
 	opts = append(opts, aliases)

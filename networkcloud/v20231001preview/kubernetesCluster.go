@@ -91,9 +91,6 @@ func NewKubernetesCluster(ctx *pulumi.Context,
 	args.NetworkConfiguration = args.NetworkConfiguration.ToNetworkConfigurationOutput().ApplyT(func(v NetworkConfiguration) NetworkConfiguration { return *v.Defaults() }).(NetworkConfigurationOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:networkcloud:KubernetesCluster"),
-		},
-		{
 			Type: pulumi.String("azure-native:networkcloud/v20230701:KubernetesCluster"),
 		},
 		{
@@ -104,6 +101,9 @@ func NewKubernetesCluster(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:networkcloud/v20241001preview:KubernetesCluster"),
+		},
+		{
+			Type: pulumi.String("azure-native:networkcloud:KubernetesCluster"),
 		},
 	})
 	opts = append(opts, aliases)

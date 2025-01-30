@@ -39,9 +39,6 @@ func NewCassandraDataCenter(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:documentdb:CassandraDataCenter"),
-		},
-		{
 			Type: pulumi.String("azure-native:documentdb/v20210301preview:CassandraDataCenter"),
 		},
 		{
@@ -121,6 +118,9 @@ func NewCassandraDataCenter(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:documentdb/v20241201preview:CassandraDataCenter"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb:CassandraDataCenter"),
 		},
 	})
 	opts = append(opts, aliases)

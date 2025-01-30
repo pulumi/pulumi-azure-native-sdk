@@ -46,9 +46,6 @@ func NewGremlinResourceGremlinDatabase(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:documentdb:GremlinResourceGremlinDatabase"),
-		},
-		{
 			Type: pulumi.String("azure-native:documentdb/v20150401:GremlinResourceGremlinDatabase"),
 		},
 		{
@@ -176,6 +173,9 @@ func NewGremlinResourceGremlinDatabase(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:documentdb/v20241201preview:GremlinResourceGremlinDatabase"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb:GremlinResourceGremlinDatabase"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -85,9 +85,6 @@ func NewRegisteredServer(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:storagesync:RegisteredServer"),
-		},
-		{
 			Type: pulumi.String("azure-native:storagesync/v20170605preview:RegisteredServer"),
 		},
 		{
@@ -119,6 +116,9 @@ func NewRegisteredServer(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:storagesync/v20220901:RegisteredServer"),
+		},
+		{
+			Type: pulumi.String("azure-native:storagesync:RegisteredServer"),
 		},
 	})
 	opts = append(opts, aliases)

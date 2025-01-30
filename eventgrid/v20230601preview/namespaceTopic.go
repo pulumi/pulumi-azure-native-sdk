@@ -51,9 +51,6 @@ func NewNamespaceTopic(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:eventgrid:NamespaceTopic"),
-		},
-		{
 			Type: pulumi.String("azure-native:eventgrid/v20231215preview:NamespaceTopic"),
 		},
 		{
@@ -61,6 +58,9 @@ func NewNamespaceTopic(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:eventgrid/v20241215preview:NamespaceTopic"),
+		},
+		{
+			Type: pulumi.String("azure-native:eventgrid:NamespaceTopic"),
 		},
 	})
 	opts = append(opts, aliases)

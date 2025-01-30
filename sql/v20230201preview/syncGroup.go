@@ -64,9 +64,6 @@ func NewSyncGroup(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:sql:SyncGroup"),
-		},
-		{
 			Type: pulumi.String("azure-native:sql/v20150501preview:SyncGroup"),
 		},
 		{
@@ -116,6 +113,9 @@ func NewSyncGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20240501preview:SyncGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql:SyncGroup"),
 		},
 	})
 	opts = append(opts, aliases)

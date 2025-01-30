@@ -61,9 +61,6 @@ func NewMarketplaceGalleryImage(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:azurestackhci:MarketplaceGalleryImage"),
-		},
-		{
 			Type: pulumi.String("azure-native:azurestackhci/v20210901preview:MarketplaceGalleryImage"),
 		},
 		{
@@ -89,6 +86,9 @@ func NewMarketplaceGalleryImage(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20241001preview:MarketplaceGalleryImage"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci:MarketplaceGalleryImage"),
 		},
 	})
 	opts = append(opts, aliases)

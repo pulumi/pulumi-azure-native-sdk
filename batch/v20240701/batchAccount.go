@@ -75,9 +75,6 @@ func NewBatchAccount(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:batch:BatchAccount"),
-		},
-		{
 			Type: pulumi.String("azure-native:batch/v20151201:BatchAccount"),
 		},
 		{
@@ -130,6 +127,9 @@ func NewBatchAccount(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:batch/v20240201:BatchAccount"),
+		},
+		{
+			Type: pulumi.String("azure-native:batch:BatchAccount"),
 		},
 	})
 	opts = append(opts, aliases)

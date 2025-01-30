@@ -62,9 +62,6 @@ func NewKey(ctx *pulumi.Context,
 	args.Properties = args.Properties.ToKeyPropertiesOutput().ApplyT(func(v KeyProperties) KeyProperties { return *v.Defaults() }).(KeyPropertiesOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:keyvault:Key"),
-		},
-		{
 			Type: pulumi.String("azure-native:keyvault/v20190901:Key"),
 		},
 		{
@@ -102,6 +99,9 @@ func NewKey(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:keyvault/v20241101:Key"),
+		},
+		{
+			Type: pulumi.String("azure-native:keyvault:Key"),
 		},
 	})
 	opts = append(opts, aliases)

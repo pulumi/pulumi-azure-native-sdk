@@ -54,9 +54,6 @@ func NewOnlineDeployment(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:machinelearningservices:OnlineDeployment"),
-		},
-		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20220201preview:OnlineDeployment"),
 		},
 		{
@@ -109,6 +106,9 @@ func NewOnlineDeployment(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001preview:OnlineDeployment"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices:OnlineDeployment"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -53,10 +53,10 @@ func NewVolume(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:servicefabricmesh:Volume"),
+			Type: pulumi.String("azure-native:servicefabricmesh/v20180701preview:Volume"),
 		},
 		{
-			Type: pulumi.String("azure-native:servicefabricmesh/v20180701preview:Volume"),
+			Type: pulumi.String("azure-native:servicefabricmesh:Volume"),
 		},
 	})
 	opts = append(opts, aliases)

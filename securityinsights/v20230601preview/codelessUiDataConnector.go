@@ -50,9 +50,6 @@ func NewCodelessUiDataConnector(ctx *pulumi.Context,
 	args.Kind = pulumi.String("GenericUI")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:securityinsights:CodelessUiDataConnector"),
-		},
-		{
 			Type: pulumi.String("azure-native:securityinsights/v20190101preview:CodelessUiDataConnector"),
 		},
 		{
@@ -153,6 +150,9 @@ func NewCodelessUiDataConnector(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20241001preview:CodelessUiDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights:CodelessUiDataConnector"),
 		},
 	})
 	opts = append(opts, aliases)

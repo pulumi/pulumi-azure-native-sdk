@@ -42,10 +42,10 @@ func NewWorkspace(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:iotfirmwaredefense:Workspace"),
+			Type: pulumi.String("azure-native:iotfirmwaredefense/v20240110:Workspace"),
 		},
 		{
-			Type: pulumi.String("azure-native:iotfirmwaredefense/v20240110:Workspace"),
+			Type: pulumi.String("azure-native:iotfirmwaredefense:Workspace"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -58,9 +58,6 @@ func NewApiIssueAttachment(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:apimanagement:ApiIssueAttachment"),
-		},
-		{
 			Type: pulumi.String("azure-native:apimanagement/v20170301:ApiIssueAttachment"),
 		},
 		{
@@ -116,6 +113,9 @@ func NewApiIssueAttachment(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20240601preview:ApiIssueAttachment"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement:ApiIssueAttachment"),
 		},
 	})
 	opts = append(opts, aliases)
