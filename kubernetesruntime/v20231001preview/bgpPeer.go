@@ -53,10 +53,10 @@ func NewBgpPeer(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:kubernetesruntime:BgpPeer"),
+			Type: pulumi.String("azure-native:kubernetesruntime/v20240301:BgpPeer"),
 		},
 		{
-			Type: pulumi.String("azure-native:kubernetesruntime/v20240301:BgpPeer"),
+			Type: pulumi.String("azure-native:kubernetesruntime:BgpPeer"),
 		},
 	})
 	opts = append(opts, aliases)

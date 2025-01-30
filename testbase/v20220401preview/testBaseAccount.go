@@ -51,13 +51,13 @@ func NewTestBaseAccount(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:testbase:TestBaseAccount"),
-		},
-		{
 			Type: pulumi.String("azure-native:testbase/v20201216preview:TestBaseAccount"),
 		},
 		{
 			Type: pulumi.String("azure-native:testbase/v20231101preview:TestBaseAccount"),
+		},
+		{
+			Type: pulumi.String("azure-native:testbase:TestBaseAccount"),
 		},
 	})
 	opts = append(opts, aliases)

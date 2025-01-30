@@ -82,9 +82,6 @@ func NewFluxConfiguration(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:kubernetesconfiguration:FluxConfiguration"),
-		},
-		{
 			Type: pulumi.String("azure-native:kubernetesconfiguration/v20220101preview:FluxConfiguration"),
 		},
 		{
@@ -101,6 +98,9 @@ func NewFluxConfiguration(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:kubernetesconfiguration/v20240401preview:FluxConfiguration"),
+		},
+		{
+			Type: pulumi.String("azure-native:kubernetesconfiguration:FluxConfiguration"),
 		},
 	})
 	opts = append(opts, aliases)

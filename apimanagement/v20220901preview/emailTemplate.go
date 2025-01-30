@@ -49,9 +49,6 @@ func NewEmailTemplate(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:apimanagement:EmailTemplate"),
-		},
-		{
 			Type: pulumi.String("azure-native:apimanagement/v20170301:EmailTemplate"),
 		},
 		{
@@ -107,6 +104,9 @@ func NewEmailTemplate(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20240601preview:EmailTemplate"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement:EmailTemplate"),
 		},
 	})
 	opts = append(opts, aliases)

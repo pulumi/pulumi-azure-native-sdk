@@ -107,9 +107,6 @@ func NewPrivateCloud(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:avs:PrivateCloud"),
-		},
-		{
 			Type: pulumi.String("azure-native:avs/v20200320:PrivateCloud"),
 		},
 		{
@@ -129,6 +126,9 @@ func NewPrivateCloud(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:avs/v20230301:PrivateCloud"),
+		},
+		{
+			Type: pulumi.String("azure-native:avs:PrivateCloud"),
 		},
 	})
 	opts = append(opts, aliases)

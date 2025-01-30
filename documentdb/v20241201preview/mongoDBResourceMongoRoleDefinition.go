@@ -45,9 +45,6 @@ func NewMongoDBResourceMongoRoleDefinition(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:documentdb:MongoDBResourceMongoRoleDefinition"),
-		},
-		{
 			Type: pulumi.String("azure-native:documentdb/v20211015preview:MongoDBResourceMongoRoleDefinition"),
 		},
 		{
@@ -112,6 +109,9 @@ func NewMongoDBResourceMongoRoleDefinition(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:documentdb/v20241115:MongoDBResourceMongoRoleDefinition"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb:MongoDBResourceMongoRoleDefinition"),
 		},
 	})
 	opts = append(opts, aliases)

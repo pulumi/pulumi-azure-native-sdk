@@ -219,9 +219,6 @@ func NewVolume(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:netapp:Volume"),
-		},
-		{
 			Type: pulumi.String("azure-native:netapp/v20170815:Volume"),
 		},
 		{
@@ -340,6 +337,12 @@ func NewVolume(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:netapp/v20240701:Volume"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20240901:Volume"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp:Volume"),
 		},
 	})
 	opts = append(opts, aliases)

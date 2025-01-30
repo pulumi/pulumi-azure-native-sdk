@@ -44,9 +44,6 @@ func NewPrivateLinkScope(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:hybridcompute:PrivateLinkScope"),
-		},
-		{
 			Type: pulumi.String("azure-native:hybridcompute/v20210128preview:PrivateLinkScope"),
 		},
 		{
@@ -111,6 +108,9 @@ func NewPrivateLinkScope(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:hybridcompute/v20241110preview:PrivateLinkScope"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridcompute:PrivateLinkScope"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -108,9 +108,6 @@ func NewRegistry(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:containerregistry:Registry"),
-		},
-		{
 			Type: pulumi.String("azure-native:containerregistry/v20170301:Registry"),
 		},
 		{
@@ -157,6 +154,9 @@ func NewRegistry(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:containerregistry/v20231101preview:Registry"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerregistry:Registry"),
 		},
 	})
 	opts = append(opts, aliases)

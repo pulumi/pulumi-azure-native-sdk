@@ -49,9 +49,6 @@ func NewSqlCollectorOperation(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:migrate:SqlCollectorOperation"),
-		},
-		{
 			Type: pulumi.String("azure-native:migrate/v20230315:SqlCollectorOperation"),
 		},
 		{
@@ -59,6 +56,12 @@ func NewSqlCollectorOperation(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:migrate/v20230909preview:SqlCollectorOperation"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate/v20240101preview:SqlCollectorOperation"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate:SqlCollectorOperation"),
 		},
 	})
 	opts = append(opts, aliases)

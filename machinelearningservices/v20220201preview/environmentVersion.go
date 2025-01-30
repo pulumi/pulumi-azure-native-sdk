@@ -48,9 +48,6 @@ func NewEnvironmentVersion(ctx *pulumi.Context,
 	args.EnvironmentVersionDetails = args.EnvironmentVersionDetails.ToEnvironmentVersionTypeOutput().ApplyT(func(v EnvironmentVersionType) EnvironmentVersionType { return *v.Defaults() }).(EnvironmentVersionTypeOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:machinelearningservices:EnvironmentVersion"),
-		},
-		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20210301preview:EnvironmentVersion"),
 		},
 		{
@@ -103,6 +100,9 @@ func NewEnvironmentVersion(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001preview:EnvironmentVersion"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices:EnvironmentVersion"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -53,13 +53,13 @@ func NewDnsResolver(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:network:DnsResolver"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20200401preview:DnsResolver"),
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20230701preview:DnsResolver"),
+		},
+		{
+			Type: pulumi.String("azure-native:network:DnsResolver"),
 		},
 	})
 	opts = append(opts, aliases)

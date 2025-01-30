@@ -48,9 +48,6 @@ func NewTrafficControllerInterface(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:servicenetworking:TrafficControllerInterface"),
-		},
-		{
 			Type: pulumi.String("azure-native:servicenetworking/v20221001preview:TrafficControllerInterface"),
 		},
 		{
@@ -61,6 +58,9 @@ func NewTrafficControllerInterface(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:servicenetworking/v20250101:TrafficControllerInterface"),
+		},
+		{
+			Type: pulumi.String("azure-native:servicenetworking:TrafficControllerInterface"),
 		},
 	})
 	opts = append(opts, aliases)

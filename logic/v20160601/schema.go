@@ -64,9 +64,6 @@ func NewSchema(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:logic:Schema"),
-		},
-		{
 			Type: pulumi.String("azure-native:logic/v20150801preview:Schema"),
 		},
 		{
@@ -74,6 +71,9 @@ func NewSchema(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:logic/v20190501:Schema"),
+		},
+		{
+			Type: pulumi.String("azure-native:logic:Schema"),
 		},
 	})
 	opts = append(opts, aliases)

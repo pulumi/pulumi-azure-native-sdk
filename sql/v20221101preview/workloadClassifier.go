@@ -58,9 +58,6 @@ func NewWorkloadClassifier(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:sql:WorkloadClassifier"),
-		},
-		{
 			Type: pulumi.String("azure-native:sql/v20190601preview:WorkloadClassifier"),
 		},
 		{
@@ -107,6 +104,9 @@ func NewWorkloadClassifier(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20240501preview:WorkloadClassifier"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql:WorkloadClassifier"),
 		},
 	})
 	opts = append(opts, aliases)

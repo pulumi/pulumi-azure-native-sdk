@@ -55,9 +55,6 @@ func NewContainerApp(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:web:ContainerApp"),
-		},
-		{
 			Type: pulumi.String("azure-native:web/v20210301:ContainerApp"),
 		},
 		{
@@ -71,6 +68,9 @@ func NewContainerApp(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:web/v20231201:ContainerApp"),
+		},
+		{
+			Type: pulumi.String("azure-native:web:ContainerApp"),
 		},
 	})
 	opts = append(opts, aliases)

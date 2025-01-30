@@ -55,9 +55,6 @@ func NewWebAppPremierAddOn(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:web:WebAppPremierAddOn"),
-		},
-		{
 			Type: pulumi.String("azure-native:web/v20150801:WebAppPremierAddOn"),
 		},
 		{
@@ -107,6 +104,9 @@ func NewWebAppPremierAddOn(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:web/v20240401:WebAppPremierAddOn"),
+		},
+		{
+			Type: pulumi.String("azure-native:web:WebAppPremierAddOn"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -43,10 +43,10 @@ func NewSolution(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:agfoodplatform:Solution"),
+			Type: pulumi.String("azure-native:agfoodplatform/v20210901preview:Solution"),
 		},
 		{
-			Type: pulumi.String("azure-native:agfoodplatform/v20210901preview:Solution"),
+			Type: pulumi.String("azure-native:agfoodplatform:Solution"),
 		},
 	})
 	opts = append(opts, aliases)

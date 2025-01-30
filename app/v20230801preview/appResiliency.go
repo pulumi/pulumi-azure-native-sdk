@@ -51,9 +51,6 @@ func NewAppResiliency(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:app:AppResiliency"),
-		},
-		{
 			Type: pulumi.String("azure-native:app/v20231102preview:AppResiliency"),
 		},
 		{
@@ -64,6 +61,9 @@ func NewAppResiliency(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:app/v20241002preview:AppResiliency"),
+		},
+		{
+			Type: pulumi.String("azure-native:app:AppResiliency"),
 		},
 	})
 	opts = append(opts, aliases)

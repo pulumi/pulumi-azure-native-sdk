@@ -50,9 +50,6 @@ func NewNetworkSecurityGroup(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:azurestackhci:NetworkSecurityGroup"),
-		},
-		{
 			Type: pulumi.String("azure-native:azurestackhci/v20240501preview:NetworkSecurityGroup"),
 		},
 		{
@@ -63,6 +60,9 @@ func NewNetworkSecurityGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20241001preview:NetworkSecurityGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci:NetworkSecurityGroup"),
 		},
 	})
 	opts = append(opts, aliases)

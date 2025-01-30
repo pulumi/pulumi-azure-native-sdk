@@ -60,9 +60,6 @@ func NewLoadBalancer(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:network:LoadBalancer"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20150501preview:LoadBalancer"),
 		},
 		{
@@ -220,6 +217,9 @@ func NewLoadBalancer(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20240501:LoadBalancer"),
+		},
+		{
+			Type: pulumi.String("azure-native:network:LoadBalancer"),
 		},
 	})
 	opts = append(opts, aliases)

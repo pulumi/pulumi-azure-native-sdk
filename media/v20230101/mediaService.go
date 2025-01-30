@@ -62,9 +62,6 @@ func NewMediaService(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:media:MediaService"),
-		},
-		{
 			Type: pulumi.String("azure-native:media/v20151001:MediaService"),
 		},
 		{
@@ -87,6 +84,9 @@ func NewMediaService(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:media/v20211101:MediaService"),
+		},
+		{
+			Type: pulumi.String("azure-native:media:MediaService"),
 		},
 	})
 	opts = append(opts, aliases)

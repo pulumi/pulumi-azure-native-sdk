@@ -52,9 +52,6 @@ func NewLocalNetworkGateway(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:network:LocalNetworkGateway"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20150615:LocalNetworkGateway"),
 		},
 		{
@@ -209,6 +206,9 @@ func NewLocalNetworkGateway(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20240501:LocalNetworkGateway"),
+		},
+		{
+			Type: pulumi.String("azure-native:network:LocalNetworkGateway"),
 		},
 	})
 	opts = append(opts, aliases)

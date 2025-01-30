@@ -53,9 +53,6 @@ func NewSignalRCustomCertificate(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:signalrservice:SignalRCustomCertificate"),
-		},
-		{
 			Type: pulumi.String("azure-native:signalrservice/v20220201:SignalRCustomCertificate"),
 		},
 		{
@@ -84,6 +81,9 @@ func NewSignalRCustomCertificate(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:signalrservice/v20241001preview:SignalRCustomCertificate"),
+		},
+		{
+			Type: pulumi.String("azure-native:signalrservice:SignalRCustomCertificate"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -47,9 +47,6 @@ func NewRegistryDataVersion(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:machinelearningservices:RegistryDataVersion"),
-		},
-		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20230201preview:RegistryDataVersion"),
 		},
 		{
@@ -81,6 +78,9 @@ func NewRegistryDataVersion(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001preview:RegistryDataVersion"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices:RegistryDataVersion"),
 		},
 	})
 	opts = append(opts, aliases)

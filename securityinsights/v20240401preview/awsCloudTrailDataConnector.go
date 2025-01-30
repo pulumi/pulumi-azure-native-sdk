@@ -55,9 +55,6 @@ func NewAwsCloudTrailDataConnector(ctx *pulumi.Context,
 	args.Kind = pulumi.String("AmazonWebServicesCloudTrail")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:securityinsights:AwsCloudTrailDataConnector"),
-		},
-		{
 			Type: pulumi.String("azure-native:securityinsights/v20190101preview:AwsCloudTrailDataConnector"),
 		},
 		{
@@ -158,6 +155,9 @@ func NewAwsCloudTrailDataConnector(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20241001preview:AwsCloudTrailDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights:AwsCloudTrailDataConnector"),
 		},
 	})
 	opts = append(opts, aliases)

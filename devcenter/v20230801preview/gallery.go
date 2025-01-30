@@ -46,9 +46,6 @@ func NewGallery(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:devcenter:Gallery"),
-		},
-		{
 			Type: pulumi.String("azure-native:devcenter/v20220801preview:Gallery"),
 		},
 		{
@@ -86,6 +83,9 @@ func NewGallery(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:devcenter/v20241001preview:Gallery"),
+		},
+		{
+			Type: pulumi.String("azure-native:devcenter:Gallery"),
 		},
 	})
 	opts = append(opts, aliases)

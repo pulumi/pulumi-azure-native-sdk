@@ -82,9 +82,6 @@ func NewCosmosDbDataConnection(ctx *pulumi.Context,
 	args.Kind = pulumi.String("CosmosDb")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:kusto:CosmosDbDataConnection"),
-		},
-		{
 			Type: pulumi.String("azure-native:kusto/v20190121:CosmosDbDataConnection"),
 		},
 		{
@@ -128,6 +125,9 @@ func NewCosmosDbDataConnection(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:kusto/v20230815:CosmosDbDataConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:kusto:CosmosDbDataConnection"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -68,10 +68,10 @@ func NewRoutePolicy(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:managednetworkfabric:RoutePolicy"),
+			Type: pulumi.String("azure-native:managednetworkfabric/v20230201preview:RoutePolicy"),
 		},
 		{
-			Type: pulumi.String("azure-native:managednetworkfabric/v20230201preview:RoutePolicy"),
+			Type: pulumi.String("azure-native:managednetworkfabric:RoutePolicy"),
 		},
 	})
 	opts = append(opts, aliases)

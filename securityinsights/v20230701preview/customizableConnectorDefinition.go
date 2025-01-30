@@ -59,9 +59,6 @@ func NewCustomizableConnectorDefinition(ctx *pulumi.Context,
 	args.Kind = pulumi.String("Customizable")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:securityinsights:CustomizableConnectorDefinition"),
-		},
-		{
 			Type: pulumi.String("azure-native:securityinsights/v20230801preview:CustomizableConnectorDefinition"),
 		},
 		{
@@ -84,6 +81,9 @@ func NewCustomizableConnectorDefinition(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20241001preview:CustomizableConnectorDefinition"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights:CustomizableConnectorDefinition"),
 		},
 	})
 	opts = append(opts, aliases)

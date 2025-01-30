@@ -48,9 +48,6 @@ func NewImage(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:compute:Image"),
-		},
-		{
 			Type: pulumi.String("azure-native:compute/v20160430preview:Image"),
 		},
 		{
@@ -115,6 +112,9 @@ func NewImage(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:compute/v20240301:Image"),
+		},
+		{
+			Type: pulumi.String("azure-native:compute:Image"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -138,9 +138,6 @@ func NewBareMetalMachine(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:networkcloud:BareMetalMachine"),
-		},
-		{
 			Type: pulumi.String("azure-native:networkcloud/v20230701:BareMetalMachine"),
 		},
 		{
@@ -151,6 +148,9 @@ func NewBareMetalMachine(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:networkcloud/v20241001preview:BareMetalMachine"),
+		},
+		{
+			Type: pulumi.String("azure-native:networkcloud:BareMetalMachine"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -60,15 +60,6 @@ func NewVNetPeering(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:databricks/v20230201:vNetPeering"),
-		},
-		{
-			Type: pulumi.String("azure-native:databricks:VNetPeering"),
-		},
-		{
-			Type: pulumi.String("azure-native:databricks:vNetPeering"),
-		},
-		{
 			Type: pulumi.String("azure-native:databricks/v20180401:VNetPeering"),
 		},
 		{
@@ -87,6 +78,9 @@ func NewVNetPeering(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:databricks/v20220401preview:vNetPeering"),
 		},
 		{
+			Type: pulumi.String("azure-native:databricks/v20230201:vNetPeering"),
+		},
+		{
 			Type: pulumi.String("azure-native:databricks/v20230915preview:VNetPeering"),
 		},
 		{
@@ -103,6 +97,12 @@ func NewVNetPeering(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:databricks/v20240901preview:vNetPeering"),
+		},
+		{
+			Type: pulumi.String("azure-native:databricks:VNetPeering"),
+		},
+		{
+			Type: pulumi.String("azure-native:databricks:vNetPeering"),
 		},
 	})
 	opts = append(opts, aliases)

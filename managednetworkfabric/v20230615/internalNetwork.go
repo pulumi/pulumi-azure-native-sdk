@@ -97,10 +97,10 @@ func NewInternalNetwork(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:managednetworkfabric:InternalNetwork"),
+			Type: pulumi.String("azure-native:managednetworkfabric/v20230201preview:InternalNetwork"),
 		},
 		{
-			Type: pulumi.String("azure-native:managednetworkfabric/v20230201preview:InternalNetwork"),
+			Type: pulumi.String("azure-native:managednetworkfabric:InternalNetwork"),
 		},
 	})
 	opts = append(opts, aliases)

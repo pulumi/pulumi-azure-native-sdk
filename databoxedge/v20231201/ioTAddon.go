@@ -67,9 +67,6 @@ func NewIoTAddon(ctx *pulumi.Context,
 	args.Kind = pulumi.String("IotEdge")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:databoxedge:IoTAddon"),
-		},
-		{
 			Type: pulumi.String("azure-native:databoxedge/v20200901:IoTAddon"),
 		},
 		{
@@ -104,6 +101,9 @@ func NewIoTAddon(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:databoxedge/v20230701:IoTAddon"),
+		},
+		{
+			Type: pulumi.String("azure-native:databoxedge:IoTAddon"),
 		},
 	})
 	opts = append(opts, aliases)

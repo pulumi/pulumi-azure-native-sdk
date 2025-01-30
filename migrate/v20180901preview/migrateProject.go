@@ -42,13 +42,13 @@ func NewMigrateProject(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:migrate:MigrateProject"),
-		},
-		{
 			Type: pulumi.String("azure-native:migrate/v20200501:MigrateProject"),
 		},
 		{
 			Type: pulumi.String("azure-native:migrate/v20230101:MigrateProject"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate:MigrateProject"),
 		},
 	})
 	opts = append(opts, aliases)

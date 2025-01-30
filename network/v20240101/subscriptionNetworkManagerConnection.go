@@ -38,9 +38,6 @@ func NewSubscriptionNetworkManagerConnection(ctx *pulumi.Context,
 
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:network:SubscriptionNetworkManagerConnection"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20210501preview:SubscriptionNetworkManagerConnection"),
 		},
 		{
@@ -87,6 +84,9 @@ func NewSubscriptionNetworkManagerConnection(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20240501:SubscriptionNetworkManagerConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:network:SubscriptionNetworkManagerConnection"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -55,9 +55,6 @@ func NewOfficeIRMDataConnector(ctx *pulumi.Context,
 	args.Kind = pulumi.String("OfficeIRM")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:securityinsights:OfficeIRMDataConnector"),
-		},
-		{
 			Type: pulumi.String("azure-native:securityinsights/v20190101preview:OfficeIRMDataConnector"),
 		},
 		{
@@ -158,6 +155,9 @@ func NewOfficeIRMDataConnector(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20241001preview:OfficeIRMDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights:OfficeIRMDataConnector"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -68,9 +68,6 @@ func NewEndpoint(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:network:Endpoint"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20151101:Endpoint"),
 		},
 		{
@@ -93,6 +90,9 @@ func NewEndpoint(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20220401:Endpoint"),
+		},
+		{
+			Type: pulumi.String("azure-native:network:Endpoint"),
 		},
 	})
 	opts = append(opts, aliases)

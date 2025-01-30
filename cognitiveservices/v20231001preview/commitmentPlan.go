@@ -51,9 +51,6 @@ func NewCommitmentPlan(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:cognitiveservices:CommitmentPlan"),
-		},
-		{
 			Type: pulumi.String("azure-native:cognitiveservices/v20211001:CommitmentPlan"),
 		},
 		{
@@ -76,6 +73,9 @@ func NewCommitmentPlan(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:cognitiveservices/v20241001:CommitmentPlan"),
+		},
+		{
+			Type: pulumi.String("azure-native:cognitiveservices:CommitmentPlan"),
 		},
 	})
 	opts = append(opts, aliases)

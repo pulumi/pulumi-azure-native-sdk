@@ -45,9 +45,6 @@ func NewActiveDirectoryConnector(ctx *pulumi.Context,
 	args.Properties = args.Properties.ToActiveDirectoryConnectorPropertiesOutput().ApplyT(func(v ActiveDirectoryConnectorProperties) ActiveDirectoryConnectorProperties { return *v.Defaults() }).(ActiveDirectoryConnectorPropertiesOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:azurearcdata:ActiveDirectoryConnector"),
-		},
-		{
 			Type: pulumi.String("azure-native:azurearcdata/v20220301preview:ActiveDirectoryConnector"),
 		},
 		{
@@ -58,6 +55,9 @@ func NewActiveDirectoryConnector(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azurearcdata/v20240501preview:ActiveDirectoryConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurearcdata:ActiveDirectoryConnector"),
 		},
 	})
 	opts = append(opts, aliases)

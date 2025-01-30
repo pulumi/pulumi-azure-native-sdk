@@ -46,13 +46,13 @@ func NewWebAppDiscoverySiteDataSourcesController(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:offazure:WebAppDiscoverySiteDataSourcesController"),
-		},
-		{
 			Type: pulumi.String("azure-native:offazure/v20230606:WebAppDiscoverySiteDataSourcesController"),
 		},
 		{
 			Type: pulumi.String("azure-native:offazure/v20231001preview:WebAppDiscoverySiteDataSourcesController"),
+		},
+		{
+			Type: pulumi.String("azure-native:offazure:WebAppDiscoverySiteDataSourcesController"),
 		},
 	})
 	opts = append(opts, aliases)

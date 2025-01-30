@@ -57,9 +57,6 @@ func NewVolumeQuotaRule(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:netapp:VolumeQuotaRule"),
-		},
-		{
 			Type: pulumi.String("azure-native:netapp/v20220101:VolumeQuotaRule"),
 		},
 		{
@@ -112,6 +109,12 @@ func NewVolumeQuotaRule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:netapp/v20240701preview:VolumeQuotaRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20240901:VolumeQuotaRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp:VolumeQuotaRule"),
 		},
 	})
 	opts = append(opts, aliases)

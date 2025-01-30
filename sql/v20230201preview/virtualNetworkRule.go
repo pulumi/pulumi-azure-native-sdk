@@ -46,9 +46,6 @@ func NewVirtualNetworkRule(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:sql:VirtualNetworkRule"),
-		},
-		{
 			Type: pulumi.String("azure-native:sql/v20150501preview:VirtualNetworkRule"),
 		},
 		{
@@ -95,6 +92,9 @@ func NewVirtualNetworkRule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20240501preview:VirtualNetworkRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql:VirtualNetworkRule"),
 		},
 	})
 	opts = append(opts, aliases)

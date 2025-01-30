@@ -53,9 +53,6 @@ func NewNatRule(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:network:NatRule"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20200801:NatRule"),
 		},
 		{
@@ -111,6 +108,9 @@ func NewNatRule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20240501:NatRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:network:NatRule"),
 		},
 	})
 	opts = append(opts, aliases)

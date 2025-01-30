@@ -54,13 +54,13 @@ func NewWorkspaceLogger(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:apimanagement:WorkspaceLogger"),
-		},
-		{
 			Type: pulumi.String("azure-native:apimanagement/v20240501:WorkspaceLogger"),
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20240601preview:WorkspaceLogger"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement:WorkspaceLogger"),
 		},
 	})
 	opts = append(opts, aliases)

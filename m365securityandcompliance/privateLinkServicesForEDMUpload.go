@@ -52,13 +52,13 @@ func NewPrivateLinkServicesForEDMUpload(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:m365securityandcompliance:privateLinkServicesForEDMUpload"),
-		},
-		{
 			Type: pulumi.String("azure-native:m365securityandcompliance/v20210325preview:PrivateLinkServicesForEDMUpload"),
 		},
 		{
 			Type: pulumi.String("azure-native:m365securityandcompliance/v20210325preview:privateLinkServicesForEDMUpload"),
+		},
+		{
+			Type: pulumi.String("azure-native:m365securityandcompliance:privateLinkServicesForEDMUpload"),
 		},
 	})
 	opts = append(opts, aliases)

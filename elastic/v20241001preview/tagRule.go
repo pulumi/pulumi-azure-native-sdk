@@ -41,9 +41,6 @@ func NewTagRule(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:elastic:TagRule"),
-		},
-		{
 			Type: pulumi.String("azure-native:elastic/v20200701:TagRule"),
 		},
 		{
@@ -96,6 +93,9 @@ func NewTagRule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:elastic/v20240615preview:TagRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:elastic:TagRule"),
 		},
 	})
 	opts = append(opts, aliases)

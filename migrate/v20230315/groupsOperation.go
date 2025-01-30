@@ -57,9 +57,6 @@ func NewGroupsOperation(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:migrate:GroupsOperation"),
-		},
-		{
 			Type: pulumi.String("azure-native:migrate/v20191001:GroupsOperation"),
 		},
 		{
@@ -70,6 +67,12 @@ func NewGroupsOperation(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:migrate/v20230909preview:GroupsOperation"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate/v20240101preview:GroupsOperation"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate:GroupsOperation"),
 		},
 	})
 	opts = append(opts, aliases)

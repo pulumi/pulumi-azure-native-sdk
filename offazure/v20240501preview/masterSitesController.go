@@ -57,9 +57,6 @@ func NewMasterSitesController(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:offazure:MasterSitesController"),
-		},
-		{
 			Type: pulumi.String("azure-native:offazure/v20200707:MasterSitesController"),
 		},
 		{
@@ -67,6 +64,9 @@ func NewMasterSitesController(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:offazure/v20231001preview:MasterSitesController"),
+		},
+		{
+			Type: pulumi.String("azure-native:offazure:MasterSitesController"),
 		},
 	})
 	opts = append(opts, aliases)

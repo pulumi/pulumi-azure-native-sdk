@@ -41,9 +41,6 @@ func NewDppResourceGuardProxy(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:dataprotection:DppResourceGuardProxy"),
-		},
-		{
 			Type: pulumi.String("azure-native:dataprotection/v20220901preview:DppResourceGuardProxy"),
 		},
 		{
@@ -78,6 +75,9 @@ func NewDppResourceGuardProxy(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:dataprotection/v20240301:DppResourceGuardProxy"),
+		},
+		{
+			Type: pulumi.String("azure-native:dataprotection:DppResourceGuardProxy"),
 		},
 	})
 	opts = append(opts, aliases)

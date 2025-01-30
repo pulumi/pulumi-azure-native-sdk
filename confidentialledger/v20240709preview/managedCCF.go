@@ -42,9 +42,6 @@ func NewManagedCCF(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:confidentialledger:ManagedCCF"),
-		},
-		{
 			Type: pulumi.String("azure-native:confidentialledger/v20220908preview:ManagedCCF"),
 		},
 		{
@@ -55,6 +52,9 @@ func NewManagedCCF(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:confidentialledger/v20240919preview:ManagedCCF"),
+		},
+		{
+			Type: pulumi.String("azure-native:confidentialledger:ManagedCCF"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -45,9 +45,6 @@ func NewWebAppPublicCertificate(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:web:WebAppPublicCertificate"),
-		},
-		{
 			Type: pulumi.String("azure-native:web/v20160801:WebAppPublicCertificate"),
 		},
 		{
@@ -94,6 +91,9 @@ func NewWebAppPublicCertificate(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:web/v20240401:WebAppPublicCertificate"),
+		},
+		{
+			Type: pulumi.String("azure-native:web:WebAppPublicCertificate"),
 		},
 	})
 	opts = append(opts, aliases)

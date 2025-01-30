@@ -54,13 +54,13 @@ func NewAssessment(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:security:Assessment"),
-		},
-		{
 			Type: pulumi.String("azure-native:security/v20190101preview:Assessment"),
 		},
 		{
 			Type: pulumi.String("azure-native:security/v20200101:Assessment"),
+		},
+		{
+			Type: pulumi.String("azure-native:security:Assessment"),
 		},
 	})
 	opts = append(opts, aliases)

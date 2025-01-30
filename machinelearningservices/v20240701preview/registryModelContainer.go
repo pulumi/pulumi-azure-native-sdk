@@ -45,9 +45,6 @@ func NewRegistryModelContainer(ctx *pulumi.Context,
 	args.ModelContainerProperties = args.ModelContainerProperties.ToModelContainerTypeOutput().ApplyT(func(v ModelContainerType) ModelContainerType { return *v.Defaults() }).(ModelContainerTypeOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:machinelearningservices:RegistryModelContainer"),
-		},
-		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20221001preview:RegistryModelContainer"),
 		},
 		{
@@ -85,6 +82,9 @@ func NewRegistryModelContainer(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001preview:RegistryModelContainer"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices:RegistryModelContainer"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -56,9 +56,6 @@ func NewIotDpsResource(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:devices:IotDpsResource"),
-		},
-		{
 			Type: pulumi.String("azure-native:devices/v20170821preview:IotDpsResource"),
 		},
 		{
@@ -87,6 +84,9 @@ func NewIotDpsResource(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:devices/v20250201preview:IotDpsResource"),
+		},
+		{
+			Type: pulumi.String("azure-native:devices:IotDpsResource"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -45,13 +45,13 @@ func NewBackup(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:dbforpostgresql:Backup"),
-		},
-		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20240301preview:Backup"),
 		},
 		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20240801:Backup"),
+		},
+		{
+			Type: pulumi.String("azure-native:dbforpostgresql:Backup"),
 		},
 	})
 	opts = append(opts, aliases)

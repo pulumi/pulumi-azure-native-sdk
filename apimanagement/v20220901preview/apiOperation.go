@@ -65,9 +65,6 @@ func NewApiOperation(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:apimanagement:ApiOperation"),
-		},
-		{
 			Type: pulumi.String("azure-native:apimanagement/v20160707:ApiOperation"),
 		},
 		{
@@ -129,6 +126,9 @@ func NewApiOperation(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20240601preview:ApiOperation"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement:ApiOperation"),
 		},
 	})
 	opts = append(opts, aliases)

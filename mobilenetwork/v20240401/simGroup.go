@@ -48,9 +48,6 @@ func NewSimGroup(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:mobilenetwork:SimGroup"),
-		},
-		{
 			Type: pulumi.String("azure-native:mobilenetwork/v20220401preview:SimGroup"),
 		},
 		{
@@ -64,6 +61,9 @@ func NewSimGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:mobilenetwork/v20240201:SimGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:mobilenetwork:SimGroup"),
 		},
 	})
 	opts = append(opts, aliases)

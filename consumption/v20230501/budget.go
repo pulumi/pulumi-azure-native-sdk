@@ -64,9 +64,6 @@ func NewBudget(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:consumption:Budget"),
-		},
-		{
 			Type: pulumi.String("azure-native:consumption/v20190101:Budget"),
 		},
 		{
@@ -104,6 +101,9 @@ func NewBudget(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:consumption/v20240801:Budget"),
+		},
+		{
+			Type: pulumi.String("azure-native:consumption:Budget"),
 		},
 	})
 	opts = append(opts, aliases)

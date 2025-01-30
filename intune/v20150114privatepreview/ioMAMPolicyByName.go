@@ -94,10 +94,10 @@ func NewIoMAMPolicyByName(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:intune:IoMAMPolicyByName"),
+			Type: pulumi.String("azure-native:intune/v20150114preview:IoMAMPolicyByName"),
 		},
 		{
-			Type: pulumi.String("azure-native:intune/v20150114preview:IoMAMPolicyByName"),
+			Type: pulumi.String("azure-native:intune:IoMAMPolicyByName"),
 		},
 	})
 	opts = append(opts, aliases)

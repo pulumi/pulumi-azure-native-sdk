@@ -62,15 +62,6 @@ func NewMonitor(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:workloads/v20231001preview:monitor"),
-		},
-		{
-			Type: pulumi.String("azure-native:workloads:Monitor"),
-		},
-		{
-			Type: pulumi.String("azure-native:workloads:monitor"),
-		},
-		{
 			Type: pulumi.String("azure-native:workloads/v20211201preview:Monitor"),
 		},
 		{
@@ -89,6 +80,9 @@ func NewMonitor(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:workloads/v20230401:monitor"),
 		},
 		{
+			Type: pulumi.String("azure-native:workloads/v20231001preview:monitor"),
+		},
+		{
 			Type: pulumi.String("azure-native:workloads/v20231201preview:Monitor"),
 		},
 		{
@@ -99,6 +93,12 @@ func NewMonitor(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:workloads/v20240201preview:monitor"),
+		},
+		{
+			Type: pulumi.String("azure-native:workloads:Monitor"),
+		},
+		{
+			Type: pulumi.String("azure-native:workloads:monitor"),
 		},
 	})
 	opts = append(opts, aliases)

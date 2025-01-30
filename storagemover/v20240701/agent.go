@@ -72,9 +72,6 @@ func NewAgent(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:storagemover:Agent"),
-		},
-		{
 			Type: pulumi.String("azure-native:storagemover/v20220701preview:Agent"),
 		},
 		{
@@ -85,6 +82,9 @@ func NewAgent(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:storagemover/v20231001:Agent"),
+		},
+		{
+			Type: pulumi.String("azure-native:storagemover:Agent"),
 		},
 	})
 	opts = append(opts, aliases)

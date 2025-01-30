@@ -43,9 +43,6 @@ func NewSqlResourceSqlRoleDefinition(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:documentdb:SqlResourceSqlRoleDefinition"),
-		},
-		{
 			Type: pulumi.String("azure-native:documentdb/v20200601preview:SqlResourceSqlRoleDefinition"),
 		},
 		{
@@ -137,6 +134,9 @@ func NewSqlResourceSqlRoleDefinition(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:documentdb/v20241115:SqlResourceSqlRoleDefinition"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb:SqlResourceSqlRoleDefinition"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -90,10 +90,10 @@ func NewKpi(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:customerinsights:Kpi"),
+			Type: pulumi.String("azure-native:customerinsights/v20170101:Kpi"),
 		},
 		{
-			Type: pulumi.String("azure-native:customerinsights/v20170101:Kpi"),
+			Type: pulumi.String("azure-native:customerinsights:Kpi"),
 		},
 	})
 	opts = append(opts, aliases)

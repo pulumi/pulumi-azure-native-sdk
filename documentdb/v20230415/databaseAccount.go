@@ -130,9 +130,6 @@ func NewDatabaseAccount(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:documentdb:DatabaseAccount"),
-		},
-		{
 			Type: pulumi.String("azure-native:documentdb/v20150401:DatabaseAccount"),
 		},
 		{
@@ -260,6 +257,9 @@ func NewDatabaseAccount(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:documentdb/v20241201preview:DatabaseAccount"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb:DatabaseAccount"),
 		},
 	})
 	opts = append(opts, aliases)

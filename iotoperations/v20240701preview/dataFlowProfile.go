@@ -49,9 +49,6 @@ func NewDataFlowProfile(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:iotoperations:DataFlowProfile"),
-		},
-		{
 			Type: pulumi.String("azure-native:iotoperations/v20240815preview:DataFlowProfile"),
 		},
 		{
@@ -59,6 +56,9 @@ func NewDataFlowProfile(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:iotoperations/v20241101:DataFlowProfile"),
+		},
+		{
+			Type: pulumi.String("azure-native:iotoperations:DataFlowProfile"),
 		},
 	})
 	opts = append(opts, aliases)

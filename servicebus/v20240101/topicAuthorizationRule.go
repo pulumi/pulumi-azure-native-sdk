@@ -49,9 +49,6 @@ func NewTopicAuthorizationRule(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:servicebus:TopicAuthorizationRule"),
-		},
-		{
 			Type: pulumi.String("azure-native:servicebus/v20140901:TopicAuthorizationRule"),
 		},
 		{
@@ -80,6 +77,9 @@ func NewTopicAuthorizationRule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:servicebus/v20230101preview:TopicAuthorizationRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:servicebus:TopicAuthorizationRule"),
 		},
 	})
 	opts = append(opts, aliases)

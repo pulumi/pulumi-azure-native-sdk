@@ -54,10 +54,10 @@ func NewAccessControlList(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:managednetworkfabric:AccessControlList"),
+			Type: pulumi.String("azure-native:managednetworkfabric/v20230615:AccessControlList"),
 		},
 		{
-			Type: pulumi.String("azure-native:managednetworkfabric/v20230615:AccessControlList"),
+			Type: pulumi.String("azure-native:managednetworkfabric:AccessControlList"),
 		},
 	})
 	opts = append(opts, aliases)

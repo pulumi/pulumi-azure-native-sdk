@@ -51,13 +51,13 @@ func NewNspAssociation(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:network:NspAssociation"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20210201preview:NspAssociation"),
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20230801preview:NspAssociation"),
+		},
+		{
+			Type: pulumi.String("azure-native:network:NspAssociation"),
 		},
 	})
 	opts = append(opts, aliases)

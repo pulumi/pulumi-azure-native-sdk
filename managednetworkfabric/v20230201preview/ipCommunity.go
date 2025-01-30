@@ -56,10 +56,10 @@ func NewIpCommunity(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:managednetworkfabric:IpCommunity"),
+			Type: pulumi.String("azure-native:managednetworkfabric/v20230615:IpCommunity"),
 		},
 		{
-			Type: pulumi.String("azure-native:managednetworkfabric/v20230615:IpCommunity"),
+			Type: pulumi.String("azure-native:managednetworkfabric:IpCommunity"),
 		},
 	})
 	opts = append(opts, aliases)

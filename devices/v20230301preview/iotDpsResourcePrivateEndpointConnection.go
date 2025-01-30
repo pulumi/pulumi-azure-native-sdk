@@ -44,9 +44,6 @@ func NewIotDpsResourcePrivateEndpointConnection(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:devices:IotDpsResourcePrivateEndpointConnection"),
-		},
-		{
 			Type: pulumi.String("azure-native:devices/v20200301:IotDpsResourcePrivateEndpointConnection"),
 		},
 		{
@@ -63,6 +60,9 @@ func NewIotDpsResourcePrivateEndpointConnection(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:devices/v20250201preview:IotDpsResourcePrivateEndpointConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:devices:IotDpsResourcePrivateEndpointConnection"),
 		},
 	})
 	opts = append(opts, aliases)

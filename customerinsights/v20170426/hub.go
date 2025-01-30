@@ -48,10 +48,10 @@ func NewHub(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:customerinsights:Hub"),
+			Type: pulumi.String("azure-native:customerinsights/v20170101:Hub"),
 		},
 		{
-			Type: pulumi.String("azure-native:customerinsights/v20170101:Hub"),
+			Type: pulumi.String("azure-native:customerinsights:Hub"),
 		},
 	})
 	opts = append(opts, aliases)

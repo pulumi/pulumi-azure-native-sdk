@@ -47,9 +47,6 @@ func NewExpressRouteCircuitAuthorization(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:network:ExpressRouteCircuitAuthorization"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20150501preview:ExpressRouteCircuitAuthorization"),
 		},
 		{
@@ -207,6 +204,9 @@ func NewExpressRouteCircuitAuthorization(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20240501:ExpressRouteCircuitAuthorization"),
+		},
+		{
+			Type: pulumi.String("azure-native:network:ExpressRouteCircuitAuthorization"),
 		},
 	})
 	opts = append(opts, aliases)

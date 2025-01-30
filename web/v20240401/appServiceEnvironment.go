@@ -87,9 +87,6 @@ func NewAppServiceEnvironment(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:web:AppServiceEnvironment"),
-		},
-		{
 			Type: pulumi.String("azure-native:web/v20150801:AppServiceEnvironment"),
 		},
 		{
@@ -136,6 +133,9 @@ func NewAppServiceEnvironment(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:web/v20231201:AppServiceEnvironment"),
+		},
+		{
+			Type: pulumi.String("azure-native:web:AppServiceEnvironment"),
 		},
 	})
 	opts = append(opts, aliases)

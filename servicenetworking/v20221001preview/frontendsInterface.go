@@ -51,9 +51,6 @@ func NewFrontendsInterface(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:servicenetworking:FrontendsInterface"),
-		},
-		{
 			Type: pulumi.String("azure-native:servicenetworking/v20230501preview:FrontendsInterface"),
 		},
 		{
@@ -64,6 +61,9 @@ func NewFrontendsInterface(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:servicenetworking/v20250101:FrontendsInterface"),
+		},
+		{
+			Type: pulumi.String("azure-native:servicenetworking:FrontendsInterface"),
 		},
 	})
 	opts = append(opts, aliases)

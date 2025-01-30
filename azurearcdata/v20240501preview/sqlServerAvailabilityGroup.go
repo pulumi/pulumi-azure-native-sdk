@@ -48,10 +48,10 @@ func NewSqlServerAvailabilityGroup(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:azurearcdata:SqlServerAvailabilityGroup"),
+			Type: pulumi.String("azure-native:azurearcdata/v20240101:SqlServerAvailabilityGroup"),
 		},
 		{
-			Type: pulumi.String("azure-native:azurearcdata/v20240101:SqlServerAvailabilityGroup"),
+			Type: pulumi.String("azure-native:azurearcdata:SqlServerAvailabilityGroup"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -45,9 +45,6 @@ func NewRegistryDataContainer(ctx *pulumi.Context,
 	args.DataContainerProperties = args.DataContainerProperties.ToDataContainerTypeOutput().ApplyT(func(v DataContainerType) DataContainerType { return *v.Defaults() }).(DataContainerTypeOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:machinelearningservices:RegistryDataContainer"),
-		},
-		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20230201preview:RegistryDataContainer"),
 		},
 		{
@@ -79,6 +76,9 @@ func NewRegistryDataContainer(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001:RegistryDataContainer"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices:RegistryDataContainer"),
 		},
 	})
 	opts = append(opts, aliases)

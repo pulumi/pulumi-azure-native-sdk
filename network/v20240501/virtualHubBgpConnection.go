@@ -49,9 +49,6 @@ func NewVirtualHubBgpConnection(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:network:VirtualHubBgpConnection"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20200501:VirtualHubBgpConnection"),
 		},
 		{
@@ -116,6 +113,9 @@ func NewVirtualHubBgpConnection(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20240301:VirtualHubBgpConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:network:VirtualHubBgpConnection"),
 		},
 	})
 	opts = append(opts, aliases)

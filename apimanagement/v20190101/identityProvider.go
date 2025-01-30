@@ -61,9 +61,6 @@ func NewIdentityProvider(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:apimanagement:IdentityProvider"),
-		},
-		{
 			Type: pulumi.String("azure-native:apimanagement/v20160707:IdentityProvider"),
 		},
 		{
@@ -125,6 +122,9 @@ func NewIdentityProvider(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20240601preview:IdentityProvider"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement:IdentityProvider"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -47,9 +47,6 @@ func NewEmailService(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:communication:EmailService"),
-		},
-		{
 			Type: pulumi.String("azure-native:communication/v20211001preview:EmailService"),
 		},
 		{
@@ -66,6 +63,9 @@ func NewEmailService(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:communication/v20230601preview:EmailService"),
+		},
+		{
+			Type: pulumi.String("azure-native:communication:EmailService"),
 		},
 	})
 	opts = append(opts, aliases)

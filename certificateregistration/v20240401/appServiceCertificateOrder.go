@@ -92,9 +92,6 @@ func NewAppServiceCertificateOrder(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:certificateregistration:AppServiceCertificateOrder"),
-		},
-		{
 			Type: pulumi.String("azure-native:certificateregistration/v20150801:AppServiceCertificateOrder"),
 		},
 		{
@@ -138,6 +135,9 @@ func NewAppServiceCertificateOrder(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:certificateregistration/v20231201:AppServiceCertificateOrder"),
+		},
+		{
+			Type: pulumi.String("azure-native:certificateregistration:AppServiceCertificateOrder"),
 		},
 	})
 	opts = append(opts, aliases)

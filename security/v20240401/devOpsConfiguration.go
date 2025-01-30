@@ -41,13 +41,13 @@ func NewDevOpsConfiguration(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:security:DevOpsConfiguration"),
-		},
-		{
 			Type: pulumi.String("azure-native:security/v20230901preview:DevOpsConfiguration"),
 		},
 		{
 			Type: pulumi.String("azure-native:security/v20240515preview:DevOpsConfiguration"),
+		},
+		{
+			Type: pulumi.String("azure-native:security:DevOpsConfiguration"),
 		},
 	})
 	opts = append(opts, aliases)

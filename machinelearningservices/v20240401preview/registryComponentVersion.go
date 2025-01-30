@@ -48,9 +48,6 @@ func NewRegistryComponentVersion(ctx *pulumi.Context,
 	args.ComponentVersionProperties = args.ComponentVersionProperties.ToComponentVersionTypeOutput().ApplyT(func(v ComponentVersionType) ComponentVersionType { return *v.Defaults() }).(ComponentVersionTypeOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:machinelearningservices:RegistryComponentVersion"),
-		},
-		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20221001preview:RegistryComponentVersion"),
 		},
 		{
@@ -88,6 +85,9 @@ func NewRegistryComponentVersion(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001preview:RegistryComponentVersion"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices:RegistryComponentVersion"),
 		},
 	})
 	opts = append(opts, aliases)

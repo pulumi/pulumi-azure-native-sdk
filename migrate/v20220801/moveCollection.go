@@ -46,9 +46,6 @@ func NewMoveCollection(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:migrate:MoveCollection"),
-		},
-		{
 			Type: pulumi.String("azure-native:migrate/v20191001preview:MoveCollection"),
 		},
 		{
@@ -59,6 +56,9 @@ func NewMoveCollection(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:migrate/v20230801:MoveCollection"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate:MoveCollection"),
 		},
 	})
 	opts = append(opts, aliases)

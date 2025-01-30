@@ -55,10 +55,10 @@ func NewNetworkInterface(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:managednetworkfabric:NetworkInterface"),
+			Type: pulumi.String("azure-native:managednetworkfabric/v20230615:NetworkInterface"),
 		},
 		{
-			Type: pulumi.String("azure-native:managednetworkfabric/v20230615:NetworkInterface"),
+			Type: pulumi.String("azure-native:managednetworkfabric:NetworkInterface"),
 		},
 	})
 	opts = append(opts, aliases)

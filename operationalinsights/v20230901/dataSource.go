@@ -51,9 +51,6 @@ func NewDataSource(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:operationalinsights:DataSource"),
-		},
-		{
 			Type: pulumi.String("azure-native:operationalinsights/v20151101preview:DataSource"),
 		},
 		{
@@ -61,6 +58,9 @@ func NewDataSource(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:operationalinsights/v20200801:DataSource"),
+		},
+		{
+			Type: pulumi.String("azure-native:operationalinsights:DataSource"),
 		},
 	})
 	opts = append(opts, aliases)

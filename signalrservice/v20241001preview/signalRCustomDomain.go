@@ -51,9 +51,6 @@ func NewSignalRCustomDomain(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:signalrservice:SignalRCustomDomain"),
-		},
-		{
 			Type: pulumi.String("azure-native:signalrservice/v20220201:SignalRCustomDomain"),
 		},
 		{
@@ -82,6 +79,9 @@ func NewSignalRCustomDomain(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:signalrservice/v20240801preview:SignalRCustomDomain"),
+		},
+		{
+			Type: pulumi.String("azure-native:signalrservice:SignalRCustomDomain"),
 		},
 	})
 	opts = append(opts, aliases)

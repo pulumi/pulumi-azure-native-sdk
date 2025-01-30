@@ -48,9 +48,6 @@ func NewRouteFilter(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:network:RouteFilter"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20161201:RouteFilter"),
 		},
 		{
@@ -193,6 +190,9 @@ func NewRouteFilter(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20240301:RouteFilter"),
+		},
+		{
+			Type: pulumi.String("azure-native:network:RouteFilter"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -49,9 +49,6 @@ func NewBot(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:healthbot:Bot"),
-		},
-		{
 			Type: pulumi.String("azure-native:healthbot/v20201020:Bot"),
 		},
 		{
@@ -74,6 +71,9 @@ func NewBot(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:healthbot/v20240201:Bot"),
+		},
+		{
+			Type: pulumi.String("azure-native:healthbot:Bot"),
 		},
 	})
 	opts = append(opts, aliases)

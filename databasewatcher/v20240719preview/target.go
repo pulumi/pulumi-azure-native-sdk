@@ -58,9 +58,6 @@ func NewTarget(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:databasewatcher:Target"),
-		},
-		{
 			Type: pulumi.String("azure-native:databasewatcher/v20230901preview:Target"),
 		},
 		{
@@ -68,6 +65,9 @@ func NewTarget(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:databasewatcher/v20250102:Target"),
+		},
+		{
+			Type: pulumi.String("azure-native:databasewatcher:Target"),
 		},
 	})
 	opts = append(opts, aliases)

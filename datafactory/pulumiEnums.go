@@ -8468,6 +8468,170 @@ func (in *odataAuthenticationTypePtr) ToODataAuthenticationTypePtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(ODataAuthenticationTypePtrOutput)
 }
 
+// Authentication type for connecting to the Oracle database. Only used for Version 2.0.
+type OracleAuthenticationType string
+
+const (
+	OracleAuthenticationTypeBasic = OracleAuthenticationType("Basic")
+)
+
+func (OracleAuthenticationType) ElementType() reflect.Type {
+	return reflect.TypeOf((*OracleAuthenticationType)(nil)).Elem()
+}
+
+func (e OracleAuthenticationType) ToOracleAuthenticationTypeOutput() OracleAuthenticationTypeOutput {
+	return pulumi.ToOutput(e).(OracleAuthenticationTypeOutput)
+}
+
+func (e OracleAuthenticationType) ToOracleAuthenticationTypeOutputWithContext(ctx context.Context) OracleAuthenticationTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(OracleAuthenticationTypeOutput)
+}
+
+func (e OracleAuthenticationType) ToOracleAuthenticationTypePtrOutput() OracleAuthenticationTypePtrOutput {
+	return e.ToOracleAuthenticationTypePtrOutputWithContext(context.Background())
+}
+
+func (e OracleAuthenticationType) ToOracleAuthenticationTypePtrOutputWithContext(ctx context.Context) OracleAuthenticationTypePtrOutput {
+	return OracleAuthenticationType(e).ToOracleAuthenticationTypeOutputWithContext(ctx).ToOracleAuthenticationTypePtrOutputWithContext(ctx)
+}
+
+func (e OracleAuthenticationType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e OracleAuthenticationType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e OracleAuthenticationType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e OracleAuthenticationType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type OracleAuthenticationTypeOutput struct{ *pulumi.OutputState }
+
+func (OracleAuthenticationTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OracleAuthenticationType)(nil)).Elem()
+}
+
+func (o OracleAuthenticationTypeOutput) ToOracleAuthenticationTypeOutput() OracleAuthenticationTypeOutput {
+	return o
+}
+
+func (o OracleAuthenticationTypeOutput) ToOracleAuthenticationTypeOutputWithContext(ctx context.Context) OracleAuthenticationTypeOutput {
+	return o
+}
+
+func (o OracleAuthenticationTypeOutput) ToOracleAuthenticationTypePtrOutput() OracleAuthenticationTypePtrOutput {
+	return o.ToOracleAuthenticationTypePtrOutputWithContext(context.Background())
+}
+
+func (o OracleAuthenticationTypeOutput) ToOracleAuthenticationTypePtrOutputWithContext(ctx context.Context) OracleAuthenticationTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OracleAuthenticationType) *OracleAuthenticationType {
+		return &v
+	}).(OracleAuthenticationTypePtrOutput)
+}
+
+func (o OracleAuthenticationTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o OracleAuthenticationTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e OracleAuthenticationType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o OracleAuthenticationTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o OracleAuthenticationTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e OracleAuthenticationType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type OracleAuthenticationTypePtrOutput struct{ *pulumi.OutputState }
+
+func (OracleAuthenticationTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OracleAuthenticationType)(nil)).Elem()
+}
+
+func (o OracleAuthenticationTypePtrOutput) ToOracleAuthenticationTypePtrOutput() OracleAuthenticationTypePtrOutput {
+	return o
+}
+
+func (o OracleAuthenticationTypePtrOutput) ToOracleAuthenticationTypePtrOutputWithContext(ctx context.Context) OracleAuthenticationTypePtrOutput {
+	return o
+}
+
+func (o OracleAuthenticationTypePtrOutput) Elem() OracleAuthenticationTypeOutput {
+	return o.ApplyT(func(v *OracleAuthenticationType) OracleAuthenticationType {
+		if v != nil {
+			return *v
+		}
+		var ret OracleAuthenticationType
+		return ret
+	}).(OracleAuthenticationTypeOutput)
+}
+
+func (o OracleAuthenticationTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o OracleAuthenticationTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *OracleAuthenticationType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// OracleAuthenticationTypeInput is an input type that accepts values of the OracleAuthenticationType enum
+// A concrete instance of `OracleAuthenticationTypeInput` can be one of the following:
+//
+//	OracleAuthenticationTypeBasic
+type OracleAuthenticationTypeInput interface {
+	pulumi.Input
+
+	ToOracleAuthenticationTypeOutput() OracleAuthenticationTypeOutput
+	ToOracleAuthenticationTypeOutputWithContext(context.Context) OracleAuthenticationTypeOutput
+}
+
+var oracleAuthenticationTypePtrType = reflect.TypeOf((**OracleAuthenticationType)(nil)).Elem()
+
+type OracleAuthenticationTypePtrInput interface {
+	pulumi.Input
+
+	ToOracleAuthenticationTypePtrOutput() OracleAuthenticationTypePtrOutput
+	ToOracleAuthenticationTypePtrOutputWithContext(context.Context) OracleAuthenticationTypePtrOutput
+}
+
+type oracleAuthenticationTypePtr string
+
+func OracleAuthenticationTypePtr(v string) OracleAuthenticationTypePtrInput {
+	return (*oracleAuthenticationTypePtr)(&v)
+}
+
+func (*oracleAuthenticationTypePtr) ElementType() reflect.Type {
+	return oracleAuthenticationTypePtrType
+}
+
+func (in *oracleAuthenticationTypePtr) ToOracleAuthenticationTypePtrOutput() OracleAuthenticationTypePtrOutput {
+	return pulumi.ToOutput(in).(OracleAuthenticationTypePtrOutput)
+}
+
+func (in *oracleAuthenticationTypePtr) ToOracleAuthenticationTypePtrOutputWithContext(ctx context.Context) OracleAuthenticationTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(OracleAuthenticationTypePtrOutput)
+}
+
 // Parameter type.
 type ParameterType string
 
@@ -14787,6 +14951,8 @@ func init() {
 	pulumi.RegisterOutputType(ODataAadServicePrincipalCredentialTypePtrOutput{})
 	pulumi.RegisterOutputType(ODataAuthenticationTypeOutput{})
 	pulumi.RegisterOutputType(ODataAuthenticationTypePtrOutput{})
+	pulumi.RegisterOutputType(OracleAuthenticationTypeOutput{})
+	pulumi.RegisterOutputType(OracleAuthenticationTypePtrOutput{})
 	pulumi.RegisterOutputType(ParameterTypeOutput{})
 	pulumi.RegisterOutputType(ParameterTypePtrOutput{})
 	pulumi.RegisterOutputType(PhoenixAuthenticationTypeOutput{})

@@ -44,9 +44,6 @@ func NewDataContainer(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:machinelearningservices:DataContainer"),
-		},
-		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20220201preview:DataContainer"),
 		},
 		{
@@ -99,6 +96,9 @@ func NewDataContainer(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001preview:DataContainer"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices:DataContainer"),
 		},
 	})
 	opts = append(opts, aliases)

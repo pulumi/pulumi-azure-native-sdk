@@ -44,9 +44,6 @@ func NewWebAppScmAllowed(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:web:WebAppScmAllowed"),
-		},
-		{
 			Type: pulumi.String("azure-native:web/v20190801:WebAppScmAllowed"),
 		},
 		{
@@ -84,6 +81,9 @@ func NewWebAppScmAllowed(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:web/v20240401:WebAppScmAllowed"),
+		},
+		{
+			Type: pulumi.String("azure-native:web:WebAppScmAllowed"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -53,9 +53,6 @@ func NewJobSchedule(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:automation:JobSchedule"),
-		},
-		{
 			Type: pulumi.String("azure-native:automation/v20151031:JobSchedule"),
 		},
 		{
@@ -72,6 +69,9 @@ func NewJobSchedule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:automation/v20231101:JobSchedule"),
+		},
+		{
+			Type: pulumi.String("azure-native:automation:JobSchedule"),
 		},
 	})
 	opts = append(opts, aliases)

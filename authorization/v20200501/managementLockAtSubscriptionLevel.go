@@ -42,9 +42,6 @@ func NewManagementLockAtSubscriptionLevel(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:authorization:ManagementLockAtSubscriptionLevel"),
-		},
-		{
 			Type: pulumi.String("azure-native:authorization/v20150101:ManagementLockAtSubscriptionLevel"),
 		},
 		{
@@ -52,6 +49,9 @@ func NewManagementLockAtSubscriptionLevel(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:authorization/v20170401:ManagementLockAtSubscriptionLevel"),
+		},
+		{
+			Type: pulumi.String("azure-native:authorization:ManagementLockAtSubscriptionLevel"),
 		},
 	})
 	opts = append(opts, aliases)

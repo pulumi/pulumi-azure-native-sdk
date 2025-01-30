@@ -75,9 +75,6 @@ func NewTrunkedNetwork(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:networkcloud:TrunkedNetwork"),
-		},
-		{
 			Type: pulumi.String("azure-native:networkcloud/v20231001preview:TrunkedNetwork"),
 		},
 		{
@@ -88,6 +85,9 @@ func NewTrunkedNetwork(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:networkcloud/v20241001preview:TrunkedNetwork"),
+		},
+		{
+			Type: pulumi.String("azure-native:networkcloud:TrunkedNetwork"),
 		},
 	})
 	opts = append(opts, aliases)

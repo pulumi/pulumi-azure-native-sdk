@@ -44,10 +44,10 @@ func NewPipelineGroup(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:monitor:PipelineGroup"),
+			Type: pulumi.String("azure-native:monitor/v20231001preview:PipelineGroup"),
 		},
 		{
-			Type: pulumi.String("azure-native:monitor/v20231001preview:PipelineGroup"),
+			Type: pulumi.String("azure-native:monitor:PipelineGroup"),
 		},
 	})
 	opts = append(opts, aliases)

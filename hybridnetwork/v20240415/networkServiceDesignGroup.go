@@ -45,10 +45,10 @@ func NewNetworkServiceDesignGroup(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:hybridnetwork:NetworkServiceDesignGroup"),
+			Type: pulumi.String("azure-native:hybridnetwork/v20230901:NetworkServiceDesignGroup"),
 		},
 		{
-			Type: pulumi.String("azure-native:hybridnetwork/v20230901:NetworkServiceDesignGroup"),
+			Type: pulumi.String("azure-native:hybridnetwork:NetworkServiceDesignGroup"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -52,9 +52,6 @@ func NewVirtualHubIpConfiguration(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:network:VirtualHubIpConfiguration"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20200501:VirtualHubIpConfiguration"),
 		},
 		{
@@ -119,6 +116,9 @@ func NewVirtualHubIpConfiguration(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20240301:VirtualHubIpConfiguration"),
+		},
+		{
+			Type: pulumi.String("azure-native:network:VirtualHubIpConfiguration"),
 		},
 	})
 	opts = append(opts, aliases)

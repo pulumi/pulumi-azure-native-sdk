@@ -50,9 +50,6 @@ func NewJobAgent(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:sql:JobAgent"),
-		},
-		{
 			Type: pulumi.String("azure-native:sql/v20170301preview:JobAgent"),
 		},
 		{
@@ -99,6 +96,9 @@ func NewJobAgent(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20240501preview:JobAgent"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql:JobAgent"),
 		},
 	})
 	opts = append(opts, aliases)

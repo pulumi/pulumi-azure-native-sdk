@@ -73,9 +73,6 @@ func NewCloudServicesNetwork(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:networkcloud:CloudServicesNetwork"),
-		},
-		{
 			Type: pulumi.String("azure-native:networkcloud/v20230701:CloudServicesNetwork"),
 		},
 		{
@@ -86,6 +83,9 @@ func NewCloudServicesNetwork(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:networkcloud/v20241001preview:CloudServicesNetwork"),
+		},
+		{
+			Type: pulumi.String("azure-native:networkcloud:CloudServicesNetwork"),
 		},
 	})
 	opts = append(opts, aliases)

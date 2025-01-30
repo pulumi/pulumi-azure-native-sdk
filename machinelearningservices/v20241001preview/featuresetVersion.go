@@ -48,9 +48,6 @@ func NewFeaturesetVersion(ctx *pulumi.Context,
 	args.FeaturesetVersionProperties = args.FeaturesetVersionProperties.ToFeaturesetVersionTypeOutput().ApplyT(func(v FeaturesetVersionType) FeaturesetVersionType { return *v.Defaults() }).(FeaturesetVersionTypeOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:machinelearningservices:FeaturesetVersion"),
-		},
-		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20230201preview:FeaturesetVersion"),
 		},
 		{
@@ -79,6 +76,9 @@ func NewFeaturesetVersion(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001:FeaturesetVersion"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices:FeaturesetVersion"),
 		},
 	})
 	opts = append(opts, aliases)

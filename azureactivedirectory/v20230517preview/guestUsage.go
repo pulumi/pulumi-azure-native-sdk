@@ -42,9 +42,6 @@ func NewGuestUsage(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:azureactivedirectory:GuestUsage"),
-		},
-		{
 			Type: pulumi.String("azure-native:azureactivedirectory/v20200501preview:GuestUsage"),
 		},
 		{
@@ -52,6 +49,9 @@ func NewGuestUsage(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azureactivedirectory/v20230118preview:GuestUsage"),
+		},
+		{
+			Type: pulumi.String("azure-native:azureactivedirectory:GuestUsage"),
 		},
 	})
 	opts = append(opts, aliases)

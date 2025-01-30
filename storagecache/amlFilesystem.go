@@ -77,9 +77,6 @@ func NewAmlFilesystem(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:storagecache:amlFilesystem"),
-		},
-		{
 			Type: pulumi.String("azure-native:storagecache/v20230301preview:AmlFilesystem"),
 		},
 		{
@@ -102,6 +99,9 @@ func NewAmlFilesystem(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:storagecache/v20240301:amlFilesystem"),
+		},
+		{
+			Type: pulumi.String("azure-native:storagecache:amlFilesystem"),
 		},
 	})
 	opts = append(opts, aliases)

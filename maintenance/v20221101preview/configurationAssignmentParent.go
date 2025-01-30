@@ -57,9 +57,6 @@ func NewConfigurationAssignmentParent(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:maintenance:ConfigurationAssignmentParent"),
-		},
-		{
 			Type: pulumi.String("azure-native:maintenance/v20210401preview:ConfigurationAssignmentParent"),
 		},
 		{
@@ -76,6 +73,9 @@ func NewConfigurationAssignmentParent(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:maintenance/v20231001preview:ConfigurationAssignmentParent"),
+		},
+		{
+			Type: pulumi.String("azure-native:maintenance:ConfigurationAssignmentParent"),
 		},
 	})
 	opts = append(opts, aliases)

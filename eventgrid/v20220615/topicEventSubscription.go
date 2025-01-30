@@ -74,9 +74,6 @@ func NewTopicEventSubscription(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:eventgrid:TopicEventSubscription"),
-		},
-		{
 			Type: pulumi.String("azure-native:eventgrid/v20211015preview:TopicEventSubscription"),
 		},
 		{
@@ -90,6 +87,9 @@ func NewTopicEventSubscription(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:eventgrid/v20241215preview:TopicEventSubscription"),
+		},
+		{
+			Type: pulumi.String("azure-native:eventgrid:TopicEventSubscription"),
 		},
 	})
 	opts = append(opts, aliases)

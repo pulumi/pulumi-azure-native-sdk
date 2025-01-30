@@ -48,9 +48,6 @@ func NewStaticSiteUserProvidedFunctionAppForStaticSiteBuild(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:web:StaticSiteUserProvidedFunctionAppForStaticSiteBuild"),
-		},
-		{
 			Type: pulumi.String("azure-native:web/v20201201:StaticSiteUserProvidedFunctionAppForStaticSiteBuild"),
 		},
 		{
@@ -76,6 +73,9 @@ func NewStaticSiteUserProvidedFunctionAppForStaticSiteBuild(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:web/v20240401:StaticSiteUserProvidedFunctionAppForStaticSiteBuild"),
+		},
+		{
+			Type: pulumi.String("azure-native:web:StaticSiteUserProvidedFunctionAppForStaticSiteBuild"),
 		},
 	})
 	opts = append(opts, aliases)

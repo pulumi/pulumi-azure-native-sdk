@@ -94,10 +94,10 @@ func NewNetworkFabric(ctx *pulumi.Context,
 	args.ManagementNetworkConfiguration = args.ManagementNetworkConfiguration.ToManagementNetworkConfigurationOutput().ApplyT(func(v ManagementNetworkConfiguration) ManagementNetworkConfiguration { return *v.Defaults() }).(ManagementNetworkConfigurationOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:managednetworkfabric:NetworkFabric"),
+			Type: pulumi.String("azure-native:managednetworkfabric/v20230615:NetworkFabric"),
 		},
 		{
-			Type: pulumi.String("azure-native:managednetworkfabric/v20230615:NetworkFabric"),
+			Type: pulumi.String("azure-native:managednetworkfabric:NetworkFabric"),
 		},
 	})
 	opts = append(opts, aliases)

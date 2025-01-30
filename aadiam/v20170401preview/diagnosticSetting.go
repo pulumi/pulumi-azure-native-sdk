@@ -42,10 +42,10 @@ func NewDiagnosticSetting(ctx *pulumi.Context,
 
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:aadiam:DiagnosticSetting"),
+			Type: pulumi.String("azure-native:aadiam/v20170401:DiagnosticSetting"),
 		},
 		{
-			Type: pulumi.String("azure-native:aadiam/v20170401:DiagnosticSetting"),
+			Type: pulumi.String("azure-native:aadiam:DiagnosticSetting"),
 		},
 	})
 	opts = append(opts, aliases)

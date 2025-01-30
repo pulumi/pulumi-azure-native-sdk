@@ -45,9 +45,6 @@ func NewComponentContainer(ctx *pulumi.Context,
 	args.ComponentContainerDetails = args.ComponentContainerDetails.ToComponentContainerTypeOutput().ApplyT(func(v ComponentContainerType) ComponentContainerType { return *v.Defaults() }).(ComponentContainerTypeOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:machinelearningservices:ComponentContainer"),
-		},
-		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20220501:ComponentContainer"),
 		},
 		{
@@ -97,6 +94,9 @@ func NewComponentContainer(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001preview:ComponentContainer"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices:ComponentContainer"),
 		},
 	})
 	opts = append(opts, aliases)

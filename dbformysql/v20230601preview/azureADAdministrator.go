@@ -49,9 +49,6 @@ func NewAzureADAdministrator(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:dbformysql:AzureADAdministrator"),
-		},
-		{
 			Type: pulumi.String("azure-native:dbformysql/v20211201preview:AzureADAdministrator"),
 		},
 		{
@@ -62,6 +59,9 @@ func NewAzureADAdministrator(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:dbformysql/v20231230:AzureADAdministrator"),
+		},
+		{
+			Type: pulumi.String("azure-native:dbformysql:AzureADAdministrator"),
 		},
 	})
 	opts = append(opts, aliases)

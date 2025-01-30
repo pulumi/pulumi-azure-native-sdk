@@ -94,9 +94,6 @@ func NewApplicationGateway(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:network:ApplicationGateway"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20150501preview:ApplicationGateway"),
 		},
 		{
@@ -254,6 +251,9 @@ func NewApplicationGateway(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20240501:ApplicationGateway"),
+		},
+		{
+			Type: pulumi.String("azure-native:network:ApplicationGateway"),
 		},
 	})
 	opts = append(opts, aliases)

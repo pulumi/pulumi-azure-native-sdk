@@ -80,9 +80,6 @@ func NewConfigurationStore(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:appconfiguration:ConfigurationStore"),
-		},
-		{
 			Type: pulumi.String("azure-native:appconfiguration/v20190201preview:ConfigurationStore"),
 		},
 		{
@@ -117,6 +114,9 @@ func NewConfigurationStore(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:appconfiguration/v20240501:ConfigurationStore"),
+		},
+		{
+			Type: pulumi.String("azure-native:appconfiguration:ConfigurationStore"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -48,9 +48,6 @@ func NewCassandraResourceCassandraKeyspace(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:documentdb:CassandraResourceCassandraKeyspace"),
-		},
-		{
 			Type: pulumi.String("azure-native:documentdb/v20150401:CassandraResourceCassandraKeyspace"),
 		},
 		{
@@ -178,6 +175,9 @@ func NewCassandraResourceCassandraKeyspace(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:documentdb/v20241115:CassandraResourceCassandraKeyspace"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb:CassandraResourceCassandraKeyspace"),
 		},
 	})
 	opts = append(opts, aliases)

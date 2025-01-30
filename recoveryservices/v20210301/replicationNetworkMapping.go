@@ -47,9 +47,6 @@ func NewReplicationNetworkMapping(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:recoveryservices:ReplicationNetworkMapping"),
-		},
-		{
 			Type: pulumi.String("azure-native:recoveryservices/v20160810:ReplicationNetworkMapping"),
 		},
 		{
@@ -132,6 +129,9 @@ func NewReplicationNetworkMapping(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:recoveryservices/v20241001:ReplicationNetworkMapping"),
+		},
+		{
+			Type: pulumi.String("azure-native:recoveryservices:ReplicationNetworkMapping"),
 		},
 	})
 	opts = append(opts, aliases)

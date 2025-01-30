@@ -62,10 +62,10 @@ func NewGroundStation(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:orbital:GroundStation"),
+			Type: pulumi.String("azure-native:orbital/v20240301:GroundStation"),
 		},
 		{
-			Type: pulumi.String("azure-native:orbital/v20240301:GroundStation"),
+			Type: pulumi.String("azure-native:orbital:GroundStation"),
 		},
 	})
 	opts = append(opts, aliases)

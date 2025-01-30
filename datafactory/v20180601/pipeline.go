@@ -57,10 +57,10 @@ func NewPipeline(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:datafactory:Pipeline"),
+			Type: pulumi.String("azure-native:datafactory/v20170901preview:Pipeline"),
 		},
 		{
-			Type: pulumi.String("azure-native:datafactory/v20170901preview:Pipeline"),
+			Type: pulumi.String("azure-native:datafactory:Pipeline"),
 		},
 	})
 	opts = append(opts, aliases)

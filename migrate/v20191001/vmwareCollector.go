@@ -36,9 +36,6 @@ func NewVMwareCollector(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:migrate:VMwareCollector"),
-		},
-		{
 			Type: pulumi.String("azure-native:migrate/v20230315:VMwareCollector"),
 		},
 		{
@@ -49,6 +46,12 @@ func NewVMwareCollector(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:migrate/v20230909preview:VMwareCollector"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate/v20240101preview:VMwareCollector"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate:VMwareCollector"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -49,9 +49,6 @@ func NewGlobalReachConnection(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:avs:GlobalReachConnection"),
-		},
-		{
 			Type: pulumi.String("azure-native:avs/v20200717preview:GlobalReachConnection"),
 		},
 		{
@@ -68,6 +65,9 @@ func NewGlobalReachConnection(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:avs/v20230901:GlobalReachConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:avs:GlobalReachConnection"),
 		},
 	})
 	opts = append(opts, aliases)

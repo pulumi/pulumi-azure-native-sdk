@@ -62,9 +62,6 @@ func NewSoftwareUpdateConfigurationByName(ctx *pulumi.Context,
 	args.ScheduleInfo = args.ScheduleInfo.ToSUCSchedulePropertiesOutput().ApplyT(func(v SUCScheduleProperties) SUCScheduleProperties { return *v.Defaults() }).(SUCSchedulePropertiesOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:automation:SoftwareUpdateConfigurationByName"),
-		},
-		{
 			Type: pulumi.String("azure-native:automation/v20170515preview:SoftwareUpdateConfigurationByName"),
 		},
 		{
@@ -72,6 +69,9 @@ func NewSoftwareUpdateConfigurationByName(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:automation/v20230515preview:SoftwareUpdateConfigurationByName"),
+		},
+		{
+			Type: pulumi.String("azure-native:automation:SoftwareUpdateConfigurationByName"),
 		},
 	})
 	opts = append(opts, aliases)

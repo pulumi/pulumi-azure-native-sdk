@@ -51,9 +51,6 @@ func NewCertificateObjectGlobalRulestack(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:cloudngfw:CertificateObjectGlobalRulestack"),
-		},
-		{
 			Type: pulumi.String("azure-native:cloudngfw/v20220829:CertificateObjectGlobalRulestack"),
 		},
 		{
@@ -70,6 +67,9 @@ func NewCertificateObjectGlobalRulestack(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:cloudngfw/v20240119preview:CertificateObjectGlobalRulestack"),
+		},
+		{
+			Type: pulumi.String("azure-native:cloudngfw:CertificateObjectGlobalRulestack"),
 		},
 	})
 	opts = append(opts, aliases)

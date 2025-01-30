@@ -39,9 +39,6 @@ func NewInput(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:streamanalytics:Input"),
-		},
-		{
 			Type: pulumi.String("azure-native:streamanalytics/v20160301:Input"),
 		},
 		{
@@ -49,6 +46,9 @@ func NewInput(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:streamanalytics/v20211001preview:Input"),
+		},
+		{
+			Type: pulumi.String("azure-native:streamanalytics:Input"),
 		},
 	})
 	opts = append(opts, aliases)

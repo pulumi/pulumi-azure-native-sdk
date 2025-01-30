@@ -52,9 +52,6 @@ func NewNetworkGroup(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:network:NetworkGroup"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20210201preview:NetworkGroup"),
 		},
 		{
@@ -104,6 +101,9 @@ func NewNetworkGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20240501:NetworkGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:network:NetworkGroup"),
 		},
 	})
 	opts = append(opts, aliases)

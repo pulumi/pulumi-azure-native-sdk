@@ -61,9 +61,6 @@ func NewLoadBalancerBackendAddressPool(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:network:LoadBalancerBackendAddressPool"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20200401:LoadBalancerBackendAddressPool"),
 		},
 		{
@@ -131,6 +128,9 @@ func NewLoadBalancerBackendAddressPool(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20240501:LoadBalancerBackendAddressPool"),
+		},
+		{
+			Type: pulumi.String("azure-native:network:LoadBalancerBackendAddressPool"),
 		},
 	})
 	opts = append(opts, aliases)

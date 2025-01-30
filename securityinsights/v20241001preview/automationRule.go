@@ -68,9 +68,6 @@ func NewAutomationRule(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:securityinsights:AutomationRule"),
-		},
-		{
 			Type: pulumi.String("azure-native:securityinsights/v20190101preview:AutomationRule"),
 		},
 		{
@@ -165,6 +162,9 @@ func NewAutomationRule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20240901:AutomationRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights:AutomationRule"),
 		},
 	})
 	opts = append(opts, aliases)

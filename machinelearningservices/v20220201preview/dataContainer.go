@@ -45,9 +45,6 @@ func NewDataContainer(ctx *pulumi.Context,
 	args.DataContainerDetails = args.DataContainerDetails.ToDataContainerTypeOutput().ApplyT(func(v DataContainerType) DataContainerType { return *v.Defaults() }).(DataContainerTypeOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:machinelearningservices:DataContainer"),
-		},
-		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20210301preview:DataContainer"),
 		},
 		{
@@ -100,6 +97,9 @@ func NewDataContainer(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001preview:DataContainer"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices:DataContainer"),
 		},
 	})
 	opts = append(opts, aliases)

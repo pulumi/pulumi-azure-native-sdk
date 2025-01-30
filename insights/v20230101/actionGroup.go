@@ -70,9 +70,6 @@ func NewActionGroup(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:insights:ActionGroup"),
-		},
-		{
 			Type: pulumi.String("azure-native:insights/v20170401:ActionGroup"),
 		},
 		{
@@ -101,6 +98,9 @@ func NewActionGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:insights/v20241001preview:ActionGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:insights:ActionGroup"),
 		},
 	})
 	opts = append(opts, aliases)

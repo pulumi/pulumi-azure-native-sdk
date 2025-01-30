@@ -81,9 +81,6 @@ func NewPreRule(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:cloudngfw:PreRule"),
-		},
-		{
 			Type: pulumi.String("azure-native:cloudngfw/v20220829:PreRule"),
 		},
 		{
@@ -100,6 +97,9 @@ func NewPreRule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:cloudngfw/v20240119preview:PreRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:cloudngfw:PreRule"),
 		},
 	})
 	opts = append(opts, aliases)

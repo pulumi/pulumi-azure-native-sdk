@@ -48,9 +48,6 @@ func NewRegistryCodeVersion(ctx *pulumi.Context,
 	args.CodeVersionProperties = args.CodeVersionProperties.ToCodeVersionTypeOutput().ApplyT(func(v CodeVersionType) CodeVersionType { return *v.Defaults() }).(CodeVersionTypeOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:machinelearningservices:RegistryCodeVersion"),
-		},
-		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20221001preview:RegistryCodeVersion"),
 		},
 		{
@@ -88,6 +85,9 @@ func NewRegistryCodeVersion(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001:RegistryCodeVersion"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices:RegistryCodeVersion"),
 		},
 	})
 	opts = append(opts, aliases)

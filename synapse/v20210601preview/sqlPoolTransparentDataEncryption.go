@@ -44,9 +44,6 @@ func NewSqlPoolTransparentDataEncryption(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:synapse:SqlPoolTransparentDataEncryption"),
-		},
-		{
 			Type: pulumi.String("azure-native:synapse/v20190601preview:SqlPoolTransparentDataEncryption"),
 		},
 		{
@@ -63,6 +60,9 @@ func NewSqlPoolTransparentDataEncryption(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:synapse/v20210601:SqlPoolTransparentDataEncryption"),
+		},
+		{
+			Type: pulumi.String("azure-native:synapse:SqlPoolTransparentDataEncryption"),
 		},
 	})
 	opts = append(opts, aliases)

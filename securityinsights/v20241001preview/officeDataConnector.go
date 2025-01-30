@@ -58,9 +58,6 @@ func NewOfficeDataConnector(ctx *pulumi.Context,
 	args.Kind = pulumi.String("Office365")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:securityinsights:OfficeDataConnector"),
-		},
-		{
 			Type: pulumi.String("azure-native:securityinsights/v20190101preview:OfficeDataConnector"),
 		},
 		{
@@ -161,6 +158,9 @@ func NewOfficeDataConnector(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20240901:OfficeDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights:OfficeDataConnector"),
 		},
 	})
 	opts = append(opts, aliases)

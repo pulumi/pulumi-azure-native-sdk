@@ -81,9 +81,6 @@ func NewMigration(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:dbforpostgresql:Migration"),
-		},
-		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20210615privatepreview:Migration"),
 		},
 		{
@@ -103,6 +100,9 @@ func NewMigration(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20241101preview:Migration"),
+		},
+		{
+			Type: pulumi.String("azure-native:dbforpostgresql:Migration"),
 		},
 	})
 	opts = append(opts, aliases)

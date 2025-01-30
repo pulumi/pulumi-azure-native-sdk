@@ -47,9 +47,6 @@ func NewScopeConnection(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:network:ScopeConnection"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20210501preview:ScopeConnection"),
 		},
 		{
@@ -96,6 +93,9 @@ func NewScopeConnection(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20240501:ScopeConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:network:ScopeConnection"),
 		},
 	})
 	opts = append(opts, aliases)

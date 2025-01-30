@@ -45,9 +45,6 @@ func NewWebPubSubHub(ctx *pulumi.Context,
 	args.Properties = args.Properties.ToWebPubSubHubPropertiesOutput().ApplyT(func(v WebPubSubHubProperties) WebPubSubHubProperties { return *v.Defaults() }).(WebPubSubHubPropertiesOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:webpubsub:WebPubSubHub"),
-		},
-		{
 			Type: pulumi.String("azure-native:webpubsub/v20211001:WebPubSubHub"),
 		},
 		{
@@ -76,6 +73,9 @@ func NewWebPubSubHub(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:webpubsub/v20240801preview:WebPubSubHub"),
+		},
+		{
+			Type: pulumi.String("azure-native:webpubsub:WebPubSubHub"),
 		},
 	})
 	opts = append(opts, aliases)

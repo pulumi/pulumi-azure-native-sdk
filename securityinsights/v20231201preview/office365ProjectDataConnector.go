@@ -58,9 +58,6 @@ func NewOffice365ProjectDataConnector(ctx *pulumi.Context,
 	args.Kind = pulumi.String("Office365Project")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:securityinsights:Office365ProjectDataConnector"),
-		},
-		{
 			Type: pulumi.String("azure-native:securityinsights/v20190101preview:Office365ProjectDataConnector"),
 		},
 		{
@@ -161,6 +158,9 @@ func NewOffice365ProjectDataConnector(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20241001preview:Office365ProjectDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights:Office365ProjectDataConnector"),
 		},
 	})
 	opts = append(opts, aliases)

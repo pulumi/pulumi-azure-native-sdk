@@ -45,10 +45,10 @@ func NewDataManager(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:hybriddata:DataManager"),
+			Type: pulumi.String("azure-native:hybriddata/v20160601:DataManager"),
 		},
 		{
-			Type: pulumi.String("azure-native:hybriddata/v20160601:DataManager"),
+			Type: pulumi.String("azure-native:hybriddata:DataManager"),
 		},
 	})
 	opts = append(opts, aliases)

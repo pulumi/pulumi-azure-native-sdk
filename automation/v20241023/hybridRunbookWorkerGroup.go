@@ -47,9 +47,6 @@ func NewHybridRunbookWorkerGroup(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:automation:HybridRunbookWorkerGroup"),
-		},
-		{
 			Type: pulumi.String("azure-native:automation/v20210622:HybridRunbookWorkerGroup"),
 		},
 		{
@@ -63,6 +60,9 @@ func NewHybridRunbookWorkerGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:automation/v20231101:HybridRunbookWorkerGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:automation:HybridRunbookWorkerGroup"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -48,13 +48,13 @@ func NewQueryPack(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:operationalinsights:QueryPack"),
-		},
-		{
 			Type: pulumi.String("azure-native:operationalinsights/v20190901:QueryPack"),
 		},
 		{
 			Type: pulumi.String("azure-native:operationalinsights/v20190901preview:QueryPack"),
+		},
+		{
+			Type: pulumi.String("azure-native:operationalinsights:QueryPack"),
 		},
 	})
 	opts = append(opts, aliases)

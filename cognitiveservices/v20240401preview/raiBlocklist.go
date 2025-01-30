@@ -45,9 +45,6 @@ func NewRaiBlocklist(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:cognitiveservices:RaiBlocklist"),
-		},
-		{
 			Type: pulumi.String("azure-native:cognitiveservices/v20231001preview:RaiBlocklist"),
 		},
 		{
@@ -55,6 +52,9 @@ func NewRaiBlocklist(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:cognitiveservices/v20241001:RaiBlocklist"),
+		},
+		{
+			Type: pulumi.String("azure-native:cognitiveservices:RaiBlocklist"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -48,6 +48,12 @@ func NewPrivateLinkForAzureAd(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:aadiam/v20200301:PrivateLinkForAzureAd"),
+		},
+		{
+			Type: pulumi.String("azure-native:aadiam/v20200301:privateLinkForAzureAd"),
+		},
+		{
 			Type: pulumi.String("azure-native:aadiam/v20200301preview:privateLinkForAzureAd"),
 		},
 		{
@@ -55,12 +61,6 @@ func NewPrivateLinkForAzureAd(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:aadiam:privateLinkForAzureAd"),
-		},
-		{
-			Type: pulumi.String("azure-native:aadiam/v20200301:PrivateLinkForAzureAd"),
-		},
-		{
-			Type: pulumi.String("azure-native:aadiam/v20200301:privateLinkForAzureAd"),
 		},
 	})
 	opts = append(opts, aliases)

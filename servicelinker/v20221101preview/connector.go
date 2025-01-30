@@ -57,9 +57,6 @@ func NewConnector(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:servicelinker:Connector"),
-		},
-		{
 			Type: pulumi.String("azure-native:servicelinker/v20230401preview:Connector"),
 		},
 		{
@@ -67,6 +64,9 @@ func NewConnector(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:servicelinker/v20240701preview:Connector"),
+		},
+		{
+			Type: pulumi.String("azure-native:servicelinker:Connector"),
 		},
 	})
 	opts = append(opts, aliases)

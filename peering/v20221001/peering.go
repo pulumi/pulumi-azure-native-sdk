@@ -56,9 +56,6 @@ func NewPeering(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:peering:Peering"),
-		},
-		{
 			Type: pulumi.String("azure-native:peering/v20190801preview:Peering"),
 		},
 		{
@@ -84,6 +81,9 @@ func NewPeering(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:peering/v20220601:Peering"),
+		},
+		{
+			Type: pulumi.String("azure-native:peering:Peering"),
 		},
 	})
 	opts = append(opts, aliases)

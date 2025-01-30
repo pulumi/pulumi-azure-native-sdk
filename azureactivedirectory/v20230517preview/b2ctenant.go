@@ -50,9 +50,6 @@ func NewB2CTenant(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:azureactivedirectory:B2CTenant"),
-		},
-		{
 			Type: pulumi.String("azure-native:azureactivedirectory/v20190101preview:B2CTenant"),
 		},
 		{
@@ -60,6 +57,9 @@ func NewB2CTenant(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azureactivedirectory/v20230118preview:B2CTenant"),
+		},
+		{
+			Type: pulumi.String("azure-native:azureactivedirectory:B2CTenant"),
 		},
 	})
 	opts = append(opts, aliases)

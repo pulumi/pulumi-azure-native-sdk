@@ -69,9 +69,6 @@ func NewSubscription(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:apimanagement:Subscription"),
-		},
-		{
 			Type: pulumi.String("azure-native:apimanagement/v20160707:Subscription"),
 		},
 		{
@@ -133,6 +130,9 @@ func NewSubscription(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20240601preview:Subscription"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement:Subscription"),
 		},
 	})
 	opts = append(opts, aliases)

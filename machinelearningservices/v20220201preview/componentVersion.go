@@ -48,9 +48,6 @@ func NewComponentVersion(ctx *pulumi.Context,
 	args.ComponentVersionDetails = args.ComponentVersionDetails.ToComponentVersionTypeOutput().ApplyT(func(v ComponentVersionType) ComponentVersionType { return *v.Defaults() }).(ComponentVersionTypeOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:machinelearningservices:ComponentVersion"),
-		},
-		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20220501:ComponentVersion"),
 		},
 		{
@@ -100,6 +97,9 @@ func NewComponentVersion(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001preview:ComponentVersion"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices:ComponentVersion"),
 		},
 	})
 	opts = append(opts, aliases)

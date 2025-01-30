@@ -45,10 +45,10 @@ func NewEdgeSite(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:orbital:EdgeSite"),
+			Type: pulumi.String("azure-native:orbital/v20240301:EdgeSite"),
 		},
 		{
-			Type: pulumi.String("azure-native:orbital/v20240301:EdgeSite"),
+			Type: pulumi.String("azure-native:orbital:EdgeSite"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -53,9 +53,6 @@ func NewRegistration(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:azurestack:Registration"),
-		},
-		{
 			Type: pulumi.String("azure-native:azurestack/v20160101:Registration"),
 		},
 		{
@@ -63,6 +60,9 @@ func NewRegistration(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azurestack/v20220601:Registration"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestack:Registration"),
 		},
 	})
 	opts = append(opts, aliases)

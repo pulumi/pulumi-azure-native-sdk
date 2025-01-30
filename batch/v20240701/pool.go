@@ -108,9 +108,6 @@ func NewPool(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:batch:Pool"),
-		},
-		{
 			Type: pulumi.String("azure-native:batch/v20170901:Pool"),
 		},
 		{
@@ -154,6 +151,9 @@ func NewPool(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:batch/v20240201:Pool"),
+		},
+		{
+			Type: pulumi.String("azure-native:batch:Pool"),
 		},
 	})
 	opts = append(opts, aliases)

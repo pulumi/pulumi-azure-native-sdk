@@ -44,9 +44,6 @@ func NewStorageMover(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:storagemover:StorageMover"),
-		},
-		{
 			Type: pulumi.String("azure-native:storagemover/v20220701preview:StorageMover"),
 		},
 		{
@@ -57,6 +54,9 @@ func NewStorageMover(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:storagemover/v20240701:StorageMover"),
+		},
+		{
+			Type: pulumi.String("azure-native:storagemover:StorageMover"),
 		},
 	})
 	opts = append(opts, aliases)

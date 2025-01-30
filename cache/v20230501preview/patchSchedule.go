@@ -44,9 +44,6 @@ func NewPatchSchedule(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:cache:PatchSchedule"),
-		},
-		{
 			Type: pulumi.String("azure-native:cache/v20171001:PatchSchedule"),
 		},
 		{
@@ -84,6 +81,9 @@ func NewPatchSchedule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:cache/v20241101:PatchSchedule"),
+		},
+		{
+			Type: pulumi.String("azure-native:cache:PatchSchedule"),
 		},
 	})
 	opts = append(opts, aliases)

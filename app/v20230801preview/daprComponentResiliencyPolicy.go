@@ -46,9 +46,6 @@ func NewDaprComponentResiliencyPolicy(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:app:DaprComponentResiliencyPolicy"),
-		},
-		{
 			Type: pulumi.String("azure-native:app/v20231102preview:DaprComponentResiliencyPolicy"),
 		},
 		{
@@ -59,6 +56,9 @@ func NewDaprComponentResiliencyPolicy(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:app/v20241002preview:DaprComponentResiliencyPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:app:DaprComponentResiliencyPolicy"),
 		},
 	})
 	opts = append(opts, aliases)

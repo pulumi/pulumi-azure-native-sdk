@@ -52,13 +52,13 @@ func NewWorkspace(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:quantum:Workspace"),
-		},
-		{
 			Type: pulumi.String("azure-native:quantum/v20191104preview:Workspace"),
 		},
 		{
 			Type: pulumi.String("azure-native:quantum/v20231113preview:Workspace"),
+		},
+		{
+			Type: pulumi.String("azure-native:quantum:Workspace"),
 		},
 	})
 	opts = append(opts, aliases)

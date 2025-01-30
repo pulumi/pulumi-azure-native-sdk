@@ -54,9 +54,6 @@ func NewOnlineEndpoint(ctx *pulumi.Context,
 	args.OnlineEndpointProperties = args.OnlineEndpointProperties.ToOnlineEndpointTypeOutput().ApplyT(func(v OnlineEndpointType) OnlineEndpointType { return *v.Defaults() }).(OnlineEndpointTypeOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:machinelearningservices:OnlineEndpoint"),
-		},
-		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20210301preview:OnlineEndpoint"),
 		},
 		{
@@ -109,6 +106,9 @@ func NewOnlineEndpoint(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001preview:OnlineEndpoint"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices:OnlineEndpoint"),
 		},
 	})
 	opts = append(opts, aliases)

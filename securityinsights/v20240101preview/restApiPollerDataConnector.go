@@ -78,9 +78,6 @@ func NewRestApiPollerDataConnector(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:securityinsights:RestApiPollerDataConnector"),
-		},
-		{
 			Type: pulumi.String("azure-native:securityinsights/v20190101preview:RestApiPollerDataConnector"),
 		},
 		{
@@ -181,6 +178,9 @@ func NewRestApiPollerDataConnector(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20241001preview:RestApiPollerDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights:RestApiPollerDataConnector"),
 		},
 	})
 	opts = append(opts, aliases)

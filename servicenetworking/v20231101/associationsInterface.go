@@ -52,9 +52,6 @@ func NewAssociationsInterface(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:servicenetworking:AssociationsInterface"),
-		},
-		{
 			Type: pulumi.String("azure-native:servicenetworking/v20221001preview:AssociationsInterface"),
 		},
 		{
@@ -65,6 +62,9 @@ func NewAssociationsInterface(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:servicenetworking/v20250101:AssociationsInterface"),
+		},
+		{
+			Type: pulumi.String("azure-native:servicenetworking:AssociationsInterface"),
 		},
 	})
 	opts = append(opts, aliases)

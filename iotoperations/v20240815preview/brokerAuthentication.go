@@ -49,9 +49,6 @@ func NewBrokerAuthentication(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:iotoperations:BrokerAuthentication"),
-		},
-		{
 			Type: pulumi.String("azure-native:iotoperations/v20240701preview:BrokerAuthentication"),
 		},
 		{
@@ -59,6 +56,9 @@ func NewBrokerAuthentication(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:iotoperations/v20241101:BrokerAuthentication"),
+		},
+		{
+			Type: pulumi.String("azure-native:iotoperations:BrokerAuthentication"),
 		},
 	})
 	opts = append(opts, aliases)

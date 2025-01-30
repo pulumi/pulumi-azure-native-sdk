@@ -68,10 +68,10 @@ func NewDatabasePrincipalAssignment(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:synapse:DatabasePrincipalAssignment"),
+			Type: pulumi.String("azure-native:synapse/v20210601preview:DatabasePrincipalAssignment"),
 		},
 		{
-			Type: pulumi.String("azure-native:synapse/v20210601preview:DatabasePrincipalAssignment"),
+			Type: pulumi.String("azure-native:synapse:DatabasePrincipalAssignment"),
 		},
 	})
 	opts = append(opts, aliases)

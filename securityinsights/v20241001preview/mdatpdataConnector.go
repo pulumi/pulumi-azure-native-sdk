@@ -55,9 +55,6 @@ func NewMDATPDataConnector(ctx *pulumi.Context,
 	args.Kind = pulumi.String("MicrosoftDefenderAdvancedThreatProtection")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:securityinsights:MDATPDataConnector"),
-		},
-		{
 			Type: pulumi.String("azure-native:securityinsights/v20190101preview:MDATPDataConnector"),
 		},
 		{
@@ -158,6 +155,9 @@ func NewMDATPDataConnector(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20240901:MDATPDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights:MDATPDataConnector"),
 		},
 	})
 	opts = append(opts, aliases)

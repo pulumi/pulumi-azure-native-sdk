@@ -59,9 +59,6 @@ func NewEventHub(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:eventhub:EventHub"),
-		},
-		{
 			Type: pulumi.String("azure-native:eventhub/v20140901:EventHub"),
 		},
 		{
@@ -93,6 +90,9 @@ func NewEventHub(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:eventhub/v20240501preview:EventHub"),
+		},
+		{
+			Type: pulumi.String("azure-native:eventhub:EventHub"),
 		},
 	})
 	opts = append(opts, aliases)

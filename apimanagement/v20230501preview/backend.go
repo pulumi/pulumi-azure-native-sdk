@@ -67,9 +67,6 @@ func NewBackend(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:apimanagement:Backend"),
-		},
-		{
 			Type: pulumi.String("azure-native:apimanagement/v20160707:Backend"),
 		},
 		{
@@ -131,6 +128,9 @@ func NewBackend(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20240601preview:Backend"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement:Backend"),
 		},
 	})
 	opts = append(opts, aliases)

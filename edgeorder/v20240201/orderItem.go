@@ -62,9 +62,6 @@ func NewOrderItem(ctx *pulumi.Context,
 	args.OrderItemDetails = args.OrderItemDetails.ToOrderItemDetailsOutput().ApplyT(func(v OrderItemDetails) OrderItemDetails { return *v.Defaults() }).(OrderItemDetailsOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:edgeorder:OrderItem"),
-		},
-		{
 			Type: pulumi.String("azure-native:edgeorder/v20201201preview:OrderItem"),
 		},
 		{
@@ -72,6 +69,9 @@ func NewOrderItem(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:edgeorder/v20220501preview:OrderItem"),
+		},
+		{
+			Type: pulumi.String("azure-native:edgeorder:OrderItem"),
 		},
 	})
 	opts = append(opts, aliases)

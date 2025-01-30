@@ -60,9 +60,6 @@ func NewLocalRulestack(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:cloudngfw:LocalRulestack"),
-		},
-		{
 			Type: pulumi.String("azure-native:cloudngfw/v20220829:LocalRulestack"),
 		},
 		{
@@ -79,6 +76,9 @@ func NewLocalRulestack(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:cloudngfw/v20240207preview:LocalRulestack"),
+		},
+		{
+			Type: pulumi.String("azure-native:cloudngfw:LocalRulestack"),
 		},
 	})
 	opts = append(opts, aliases)

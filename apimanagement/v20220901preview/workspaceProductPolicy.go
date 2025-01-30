@@ -53,9 +53,6 @@ func NewWorkspaceProductPolicy(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:apimanagement:WorkspaceProductPolicy"),
-		},
-		{
 			Type: pulumi.String("azure-native:apimanagement/v20230301preview:WorkspaceProductPolicy"),
 		},
 		{
@@ -69,6 +66,9 @@ func NewWorkspaceProductPolicy(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20240601preview:WorkspaceProductPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement:WorkspaceProductPolicy"),
 		},
 	})
 	opts = append(opts, aliases)

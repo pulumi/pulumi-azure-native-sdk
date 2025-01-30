@@ -58,9 +58,6 @@ func NewPrivateLinkService(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:network:PrivateLinkService"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20190401:PrivateLinkService"),
 		},
 		{
@@ -152,6 +149,9 @@ func NewPrivateLinkService(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20240501:PrivateLinkService"),
+		},
+		{
+			Type: pulumi.String("azure-native:network:PrivateLinkService"),
 		},
 	})
 	opts = append(opts, aliases)

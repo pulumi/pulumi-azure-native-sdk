@@ -43,9 +43,6 @@ func NewGuestConfigurationHCRPAssignment(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:guestconfiguration:GuestConfigurationHCRPAssignment"),
-		},
-		{
 			Type: pulumi.String("azure-native:guestconfiguration/v20181120:GuestConfigurationHCRPAssignment"),
 		},
 		{
@@ -56,6 +53,9 @@ func NewGuestConfigurationHCRPAssignment(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:guestconfiguration/v20220125:GuestConfigurationHCRPAssignment"),
+		},
+		{
+			Type: pulumi.String("azure-native:guestconfiguration:GuestConfigurationHCRPAssignment"),
 		},
 	})
 	opts = append(opts, aliases)

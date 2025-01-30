@@ -49,9 +49,6 @@ func NewArchiveVersion(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:containerregistry:ArchiveVersion"),
-		},
-		{
 			Type: pulumi.String("azure-native:containerregistry/v20230601preview:ArchiveVersion"),
 		},
 		{
@@ -59,6 +56,9 @@ func NewArchiveVersion(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:containerregistry/v20241101preview:ArchiveVersion"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerregistry:ArchiveVersion"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -57,10 +57,10 @@ func NewImage(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:azuresphere:Image"),
+			Type: pulumi.String("azure-native:azuresphere/v20240401:Image"),
 		},
 		{
-			Type: pulumi.String("azure-native:azuresphere/v20240401:Image"),
+			Type: pulumi.String("azure-native:azuresphere:Image"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -43,9 +43,6 @@ func NewEdgeDevice(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:azurestackhci:EdgeDevice"),
-		},
-		{
 			Type: pulumi.String("azure-native:azurestackhci/v20231101preview:EdgeDevice"),
 		},
 		{
@@ -62,6 +59,9 @@ func NewEdgeDevice(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20241201preview:EdgeDevice"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci:EdgeDevice"),
 		},
 	})
 	opts = append(opts, aliases)

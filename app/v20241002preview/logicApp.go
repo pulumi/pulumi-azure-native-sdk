@@ -39,13 +39,13 @@ func NewLogicApp(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:app:LogicApp"),
-		},
-		{
 			Type: pulumi.String("azure-native:app/v20240202preview:LogicApp"),
 		},
 		{
 			Type: pulumi.String("azure-native:app/v20240802preview:LogicApp"),
+		},
+		{
+			Type: pulumi.String("azure-native:app:LogicApp"),
 		},
 	})
 	opts = append(opts, aliases)

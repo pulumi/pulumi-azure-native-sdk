@@ -51,9 +51,6 @@ func NewDisasterRecoveryConfig(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:eventhub:DisasterRecoveryConfig"),
-		},
-		{
 			Type: pulumi.String("azure-native:eventhub/v20170401:DisasterRecoveryConfig"),
 		},
 		{
@@ -79,6 +76,9 @@ func NewDisasterRecoveryConfig(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:eventhub/v20240501preview:DisasterRecoveryConfig"),
+		},
+		{
+			Type: pulumi.String("azure-native:eventhub:DisasterRecoveryConfig"),
 		},
 	})
 	opts = append(opts, aliases)

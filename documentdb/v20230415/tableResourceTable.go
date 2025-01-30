@@ -46,9 +46,6 @@ func NewTableResourceTable(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:documentdb:TableResourceTable"),
-		},
-		{
 			Type: pulumi.String("azure-native:documentdb/v20150401:TableResourceTable"),
 		},
 		{
@@ -176,6 +173,9 @@ func NewTableResourceTable(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:documentdb/v20241201preview:TableResourceTable"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb:TableResourceTable"),
 		},
 	})
 	opts = append(opts, aliases)

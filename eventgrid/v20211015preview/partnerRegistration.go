@@ -76,9 +76,6 @@ func NewPartnerRegistration(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:eventgrid:PartnerRegistration"),
-		},
-		{
 			Type: pulumi.String("azure-native:eventgrid/v20200401preview:PartnerRegistration"),
 		},
 		{
@@ -101,6 +98,9 @@ func NewPartnerRegistration(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:eventgrid/v20241215preview:PartnerRegistration"),
+		},
+		{
+			Type: pulumi.String("azure-native:eventgrid:PartnerRegistration"),
 		},
 	})
 	opts = append(opts, aliases)

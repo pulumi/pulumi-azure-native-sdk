@@ -53,9 +53,6 @@ func NewVolumeGroup(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:elasticsan:VolumeGroup"),
-		},
-		{
 			Type: pulumi.String("azure-native:elasticsan/v20211120preview:VolumeGroup"),
 		},
 		{
@@ -66,6 +63,9 @@ func NewVolumeGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:elasticsan/v20240601preview:VolumeGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:elasticsan:VolumeGroup"),
 		},
 	})
 	opts = append(opts, aliases)

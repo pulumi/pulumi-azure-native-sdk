@@ -64,9 +64,6 @@ func NewAttachedDatabaseConfiguration(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:kusto:AttachedDatabaseConfiguration"),
-		},
-		{
 			Type: pulumi.String("azure-native:kusto/v20190907:AttachedDatabaseConfiguration"),
 		},
 		{
@@ -104,6 +101,9 @@ func NewAttachedDatabaseConfiguration(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:kusto/v20230815:AttachedDatabaseConfiguration"),
+		},
+		{
+			Type: pulumi.String("azure-native:kusto:AttachedDatabaseConfiguration"),
 		},
 	})
 	opts = append(opts, aliases)

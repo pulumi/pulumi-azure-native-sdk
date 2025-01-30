@@ -75,9 +75,6 @@ func NewWebAppSiteExtension(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:web:WebAppSiteExtension"),
-		},
-		{
 			Type: pulumi.String("azure-native:web/v20180201:WebAppSiteExtension"),
 		},
 		{
@@ -124,6 +121,9 @@ func NewWebAppSiteExtension(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:web/v20240401:WebAppSiteExtension"),
+		},
+		{
+			Type: pulumi.String("azure-native:web:WebAppSiteExtension"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -87,9 +87,6 @@ func NewDomainService(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:aad:DomainService"),
-		},
-		{
 			Type: pulumi.String("azure-native:aad/v20170101:DomainService"),
 		},
 		{
@@ -106,6 +103,9 @@ func NewDomainService(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:aad/v20220901:DomainService"),
+		},
+		{
+			Type: pulumi.String("azure-native:aad:DomainService"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -45,9 +45,6 @@ func NewWorkspaceSqlAadAdmin(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:synapse:WorkspaceSqlAadAdmin"),
-		},
-		{
 			Type: pulumi.String("azure-native:synapse/v20190601preview:WorkspaceSqlAadAdmin"),
 		},
 		{
@@ -64,6 +61,9 @@ func NewWorkspaceSqlAadAdmin(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:synapse/v20210601preview:WorkspaceSqlAadAdmin"),
+		},
+		{
+			Type: pulumi.String("azure-native:synapse:WorkspaceSqlAadAdmin"),
 		},
 	})
 	opts = append(opts, aliases)

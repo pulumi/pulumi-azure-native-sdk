@@ -52,9 +52,6 @@ func NewCodelessApiPollingDataConnector(ctx *pulumi.Context,
 	args.Kind = pulumi.String("APIPolling")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:securityinsights:CodelessApiPollingDataConnector"),
-		},
-		{
 			Type: pulumi.String("azure-native:securityinsights/v20190101preview:CodelessApiPollingDataConnector"),
 		},
 		{
@@ -155,6 +152,9 @@ func NewCodelessApiPollingDataConnector(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20241001preview:CodelessApiPollingDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights:CodelessApiPollingDataConnector"),
 		},
 	})
 	opts = append(opts, aliases)

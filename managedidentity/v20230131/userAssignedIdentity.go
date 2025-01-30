@@ -46,9 +46,6 @@ func NewUserAssignedIdentity(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:managedidentity:UserAssignedIdentity"),
-		},
-		{
 			Type: pulumi.String("azure-native:managedidentity/v20150831preview:UserAssignedIdentity"),
 		},
 		{
@@ -62,6 +59,12 @@ func NewUserAssignedIdentity(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:managedidentity/v20230731preview:UserAssignedIdentity"),
+		},
+		{
+			Type: pulumi.String("azure-native:managedidentity/v20241130:UserAssignedIdentity"),
+		},
+		{
+			Type: pulumi.String("azure-native:managedidentity:UserAssignedIdentity"),
 		},
 	})
 	opts = append(opts, aliases)

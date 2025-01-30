@@ -43,9 +43,6 @@ func NewSentinelOnboardingState(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:securityinsights:SentinelOnboardingState"),
-		},
-		{
 			Type: pulumi.String("azure-native:securityinsights/v20210301preview:SentinelOnboardingState"),
 		},
 		{
@@ -140,6 +137,9 @@ func NewSentinelOnboardingState(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20241001preview:SentinelOnboardingState"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights:SentinelOnboardingState"),
 		},
 	})
 	opts = append(opts, aliases)

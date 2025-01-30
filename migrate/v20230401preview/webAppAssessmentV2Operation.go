@@ -102,13 +102,16 @@ func NewWebAppAssessmentV2Operation(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:migrate:WebAppAssessmentV2Operation"),
-		},
-		{
 			Type: pulumi.String("azure-native:migrate/v20230501preview:WebAppAssessmentV2Operation"),
 		},
 		{
 			Type: pulumi.String("azure-native:migrate/v20230909preview:WebAppAssessmentV2Operation"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate/v20240101preview:WebAppAssessmentV2Operation"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate:WebAppAssessmentV2Operation"),
 		},
 	})
 	opts = append(opts, aliases)

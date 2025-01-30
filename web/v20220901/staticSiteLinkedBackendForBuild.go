@@ -50,9 +50,6 @@ func NewStaticSiteLinkedBackendForBuild(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:web:StaticSiteLinkedBackendForBuild"),
-		},
-		{
 			Type: pulumi.String("azure-native:web/v20220301:StaticSiteLinkedBackendForBuild"),
 		},
 		{
@@ -63,6 +60,9 @@ func NewStaticSiteLinkedBackendForBuild(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:web/v20240401:StaticSiteLinkedBackendForBuild"),
+		},
+		{
+			Type: pulumi.String("azure-native:web:StaticSiteLinkedBackendForBuild"),
 		},
 	})
 	opts = append(opts, aliases)

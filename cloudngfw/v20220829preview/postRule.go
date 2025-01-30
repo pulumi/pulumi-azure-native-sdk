@@ -81,9 +81,6 @@ func NewPostRule(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:cloudngfw:PostRule"),
-		},
-		{
 			Type: pulumi.String("azure-native:cloudngfw/v20220829:PostRule"),
 		},
 		{
@@ -100,6 +97,9 @@ func NewPostRule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:cloudngfw/v20240207preview:PostRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:cloudngfw:PostRule"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -52,9 +52,6 @@ func NewSecurityConnector(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:security:SecurityConnector"),
-		},
-		{
 			Type: pulumi.String("azure-native:security/v20211201preview:SecurityConnector"),
 		},
 		{
@@ -77,6 +74,9 @@ func NewSecurityConnector(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:security/v20240801preview:SecurityConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:security:SecurityConnector"),
 		},
 	})
 	opts = append(opts, aliases)

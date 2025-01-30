@@ -56,10 +56,10 @@ func NewNetworkRack(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:managednetworkfabric:NetworkRack"),
+			Type: pulumi.String("azure-native:managednetworkfabric/v20230615:NetworkRack"),
 		},
 		{
-			Type: pulumi.String("azure-native:managednetworkfabric/v20230615:NetworkRack"),
+			Type: pulumi.String("azure-native:managednetworkfabric:NetworkRack"),
 		},
 	})
 	opts = append(opts, aliases)

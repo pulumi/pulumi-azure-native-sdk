@@ -52,9 +52,6 @@ func NewBrokerListener(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:iotoperations:BrokerListener"),
-		},
-		{
 			Type: pulumi.String("azure-native:iotoperations/v20240701preview:BrokerListener"),
 		},
 		{
@@ -62,6 +59,9 @@ func NewBrokerListener(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:iotoperations/v20241101:BrokerListener"),
+		},
+		{
+			Type: pulumi.String("azure-native:iotoperations:BrokerListener"),
 		},
 	})
 	opts = append(opts, aliases)

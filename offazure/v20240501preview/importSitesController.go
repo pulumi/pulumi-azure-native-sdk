@@ -48,13 +48,13 @@ func NewImportSitesController(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:offazure:ImportSitesController"),
-		},
-		{
 			Type: pulumi.String("azure-native:offazure/v20230606:ImportSitesController"),
 		},
 		{
 			Type: pulumi.String("azure-native:offazure/v20231001preview:ImportSitesController"),
+		},
+		{
+			Type: pulumi.String("azure-native:offazure:ImportSitesController"),
 		},
 	})
 	opts = append(opts, aliases)

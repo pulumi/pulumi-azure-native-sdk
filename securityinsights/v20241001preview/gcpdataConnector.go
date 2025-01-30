@@ -65,9 +65,6 @@ func NewGCPDataConnector(ctx *pulumi.Context,
 	args.Kind = pulumi.String("GCP")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:securityinsights:GCPDataConnector"),
-		},
-		{
 			Type: pulumi.String("azure-native:securityinsights/v20190101preview:GCPDataConnector"),
 		},
 		{
@@ -168,6 +165,9 @@ func NewGCPDataConnector(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20240901:GCPDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights:GCPDataConnector"),
 		},
 	})
 	opts = append(opts, aliases)

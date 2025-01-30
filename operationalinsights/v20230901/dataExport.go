@@ -57,9 +57,6 @@ func NewDataExport(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:operationalinsights:DataExport"),
-		},
-		{
 			Type: pulumi.String("azure-native:operationalinsights/v20190801preview:DataExport"),
 		},
 		{
@@ -67,6 +64,9 @@ func NewDataExport(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:operationalinsights/v20200801:DataExport"),
+		},
+		{
+			Type: pulumi.String("azure-native:operationalinsights:DataExport"),
 		},
 	})
 	opts = append(opts, aliases)

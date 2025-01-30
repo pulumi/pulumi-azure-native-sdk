@@ -60,10 +60,10 @@ func NewL2IsolationDomain(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:managednetworkfabric:L2IsolationDomain"),
+			Type: pulumi.String("azure-native:managednetworkfabric/v20230615:L2IsolationDomain"),
 		},
 		{
-			Type: pulumi.String("azure-native:managednetworkfabric/v20230615:L2IsolationDomain"),
+			Type: pulumi.String("azure-native:managednetworkfabric:L2IsolationDomain"),
 		},
 	})
 	opts = append(opts, aliases)

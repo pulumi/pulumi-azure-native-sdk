@@ -50,9 +50,6 @@ func NewCacheRule(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:containerregistry:CacheRule"),
-		},
-		{
 			Type: pulumi.String("azure-native:containerregistry/v20230101preview:CacheRule"),
 		},
 		{
@@ -66,6 +63,9 @@ func NewCacheRule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:containerregistry/v20231101preview:CacheRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerregistry:CacheRule"),
 		},
 	})
 	opts = append(opts, aliases)

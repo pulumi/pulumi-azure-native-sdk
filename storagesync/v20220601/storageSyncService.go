@@ -54,9 +54,6 @@ func NewStorageSyncService(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:storagesync:StorageSyncService"),
-		},
-		{
 			Type: pulumi.String("azure-native:storagesync/v20170605preview:StorageSyncService"),
 		},
 		{
@@ -88,6 +85,9 @@ func NewStorageSyncService(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:storagesync/v20220901:StorageSyncService"),
+		},
+		{
+			Type: pulumi.String("azure-native:storagesync:StorageSyncService"),
 		},
 	})
 	opts = append(opts, aliases)

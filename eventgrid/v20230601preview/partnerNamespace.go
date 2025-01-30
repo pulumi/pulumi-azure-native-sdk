@@ -69,9 +69,6 @@ func NewPartnerNamespace(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:eventgrid:PartnerNamespace"),
-		},
-		{
 			Type: pulumi.String("azure-native:eventgrid/v20200401preview:PartnerNamespace"),
 		},
 		{
@@ -94,6 +91,9 @@ func NewPartnerNamespace(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:eventgrid/v20241215preview:PartnerNamespace"),
+		},
+		{
+			Type: pulumi.String("azure-native:eventgrid:PartnerNamespace"),
 		},
 	})
 	opts = append(opts, aliases)

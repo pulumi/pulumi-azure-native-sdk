@@ -47,9 +47,6 @@ func NewJavaComponent(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:app:JavaComponent"),
-		},
-		{
 			Type: pulumi.String("azure-native:app/v20240202preview:JavaComponent"),
 		},
 		{
@@ -57,6 +54,9 @@ func NewJavaComponent(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:app/v20241002preview:JavaComponent"),
+		},
+		{
+			Type: pulumi.String("azure-native:app:JavaComponent"),
 		},
 	})
 	opts = append(opts, aliases)

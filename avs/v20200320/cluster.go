@@ -53,9 +53,6 @@ func NewCluster(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:avs:Cluster"),
-		},
-		{
 			Type: pulumi.String("azure-native:avs/v20200717preview:Cluster"),
 		},
 		{
@@ -75,6 +72,9 @@ func NewCluster(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:avs/v20230901:Cluster"),
+		},
+		{
+			Type: pulumi.String("azure-native:avs:Cluster"),
 		},
 	})
 	opts = append(opts, aliases)

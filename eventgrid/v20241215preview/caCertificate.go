@@ -49,9 +49,6 @@ func NewCaCertificate(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:eventgrid:CaCertificate"),
-		},
-		{
 			Type: pulumi.String("azure-native:eventgrid/v20230601preview:CaCertificate"),
 		},
 		{
@@ -59,6 +56,9 @@ func NewCaCertificate(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:eventgrid/v20240601preview:CaCertificate"),
+		},
+		{
+			Type: pulumi.String("azure-native:eventgrid:CaCertificate"),
 		},
 	})
 	opts = append(opts, aliases)

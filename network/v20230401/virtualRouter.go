@@ -52,9 +52,6 @@ func NewVirtualRouter(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:network:VirtualRouter"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20190701:VirtualRouter"),
 		},
 		{
@@ -140,6 +137,9 @@ func NewVirtualRouter(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20240501:VirtualRouter"),
+		},
+		{
+			Type: pulumi.String("azure-native:network:VirtualRouter"),
 		},
 	})
 	opts = append(opts, aliases)

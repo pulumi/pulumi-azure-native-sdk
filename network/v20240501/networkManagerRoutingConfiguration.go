@@ -47,10 +47,10 @@ func NewNetworkManagerRoutingConfiguration(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:network:NetworkManagerRoutingConfiguration"),
+			Type: pulumi.String("azure-native:network/v20240301:NetworkManagerRoutingConfiguration"),
 		},
 		{
-			Type: pulumi.String("azure-native:network/v20240301:NetworkManagerRoutingConfiguration"),
+			Type: pulumi.String("azure-native:network:NetworkManagerRoutingConfiguration"),
 		},
 	})
 	opts = append(opts, aliases)

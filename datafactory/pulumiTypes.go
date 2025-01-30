@@ -23992,12 +23992,16 @@ func (o AzureMySqlTableDatasetResponseOutput) Type() pulumi.StringOutput {
 type AzurePostgreSqlLinkedService struct {
 	// List of tags that can be used for describing the linked service.
 	Annotations []interface{} `pulumi:"annotations"`
+	// Indicates the azure cloud type of the service principle auth. Allowed values are AzurePublic, AzureChina, AzureUsGovernment, AzureGermany. Default value is the data factory regions’ cloud type. Type: string (or Expression with resultType string).
+	AzureCloudType interface{} `pulumi:"azureCloudType"`
 	// The time to wait (in seconds) while trying to execute a command before terminating the attempt and generating an error. Set to zero for infinity. Type: integer.
 	CommandTimeout interface{} `pulumi:"commandTimeout"`
 	// The integration runtime reference.
 	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
 	// An ODBC connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
 	ConnectionString interface{} `pulumi:"connectionString"`
+	// The credential reference containing authentication information.
+	Credential *CredentialReference `pulumi:"credential"`
 	// Database name for connection. Type: string.
 	Database interface{} `pulumi:"database"`
 	// Linked service description.
@@ -24016,8 +24020,20 @@ type AzurePostgreSqlLinkedService struct {
 	ReadBufferSize interface{} `pulumi:"readBufferSize"`
 	// Server name for connection. Type: string.
 	Server interface{} `pulumi:"server"`
+	// The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string).
+	ServicePrincipalCredentialType interface{} `pulumi:"servicePrincipalCredentialType"`
+	// Specify the base64 encoded certificate of your application registered in Azure Active Directory. Type: string (or Expression with resultType string).
+	ServicePrincipalEmbeddedCert interface{} `pulumi:"servicePrincipalEmbeddedCert"`
+	// Specify the password of your certificate if your certificate has a password and you are using AadServicePrincipal authentication. Type: string (or Expression with resultType string).
+	ServicePrincipalEmbeddedCertPassword interface{} `pulumi:"servicePrincipalEmbeddedCertPassword"`
+	// The ID of the service principal used to authenticate against Azure Database for PostgreSQL Flexible server. Type: string (or Expression with resultType string).
+	ServicePrincipalId interface{} `pulumi:"servicePrincipalId"`
+	// The key of the service principal used to authenticate against Azure Database for PostgreSQL Flexible server.
+	ServicePrincipalKey interface{} `pulumi:"servicePrincipalKey"`
 	// SSL mode for connection. Type: integer. 0: disable, 1:allow, 2: prefer, 3: require, 4: verify-ca, 5: verify-full. Type: integer.
 	SslMode interface{} `pulumi:"sslMode"`
+	// The name or ID of the tenant to which the service principal belongs. Type: string (or Expression with resultType string).
+	Tenant interface{} `pulumi:"tenant"`
 	// The time to wait (in seconds) while trying to establish a connection before terminating the attempt and generating an error. Type: integer.
 	Timeout interface{} `pulumi:"timeout"`
 	// Gets or sets the session timezone. Type: string.
@@ -24048,12 +24064,16 @@ type AzurePostgreSqlLinkedServiceInput interface {
 type AzurePostgreSqlLinkedServiceArgs struct {
 	// List of tags that can be used for describing the linked service.
 	Annotations pulumi.ArrayInput `pulumi:"annotations"`
+	// Indicates the azure cloud type of the service principle auth. Allowed values are AzurePublic, AzureChina, AzureUsGovernment, AzureGermany. Default value is the data factory regions’ cloud type. Type: string (or Expression with resultType string).
+	AzureCloudType pulumi.Input `pulumi:"azureCloudType"`
 	// The time to wait (in seconds) while trying to execute a command before terminating the attempt and generating an error. Set to zero for infinity. Type: integer.
 	CommandTimeout pulumi.Input `pulumi:"commandTimeout"`
 	// The integration runtime reference.
 	ConnectVia IntegrationRuntimeReferencePtrInput `pulumi:"connectVia"`
 	// An ODBC connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
 	ConnectionString pulumi.Input `pulumi:"connectionString"`
+	// The credential reference containing authentication information.
+	Credential CredentialReferencePtrInput `pulumi:"credential"`
 	// Database name for connection. Type: string.
 	Database pulumi.Input `pulumi:"database"`
 	// Linked service description.
@@ -24072,8 +24092,20 @@ type AzurePostgreSqlLinkedServiceArgs struct {
 	ReadBufferSize pulumi.Input `pulumi:"readBufferSize"`
 	// Server name for connection. Type: string.
 	Server pulumi.Input `pulumi:"server"`
+	// The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string).
+	ServicePrincipalCredentialType pulumi.Input `pulumi:"servicePrincipalCredentialType"`
+	// Specify the base64 encoded certificate of your application registered in Azure Active Directory. Type: string (or Expression with resultType string).
+	ServicePrincipalEmbeddedCert pulumi.Input `pulumi:"servicePrincipalEmbeddedCert"`
+	// Specify the password of your certificate if your certificate has a password and you are using AadServicePrincipal authentication. Type: string (or Expression with resultType string).
+	ServicePrincipalEmbeddedCertPassword pulumi.Input `pulumi:"servicePrincipalEmbeddedCertPassword"`
+	// The ID of the service principal used to authenticate against Azure Database for PostgreSQL Flexible server. Type: string (or Expression with resultType string).
+	ServicePrincipalId pulumi.Input `pulumi:"servicePrincipalId"`
+	// The key of the service principal used to authenticate against Azure Database for PostgreSQL Flexible server.
+	ServicePrincipalKey pulumi.Input `pulumi:"servicePrincipalKey"`
 	// SSL mode for connection. Type: integer. 0: disable, 1:allow, 2: prefer, 3: require, 4: verify-ca, 5: verify-full. Type: integer.
 	SslMode pulumi.Input `pulumi:"sslMode"`
+	// The name or ID of the tenant to which the service principal belongs. Type: string (or Expression with resultType string).
+	Tenant pulumi.Input `pulumi:"tenant"`
 	// The time to wait (in seconds) while trying to establish a connection before terminating the attempt and generating an error. Type: integer.
 	Timeout pulumi.Input `pulumi:"timeout"`
 	// Gets or sets the session timezone. Type: string.
@@ -24121,6 +24153,11 @@ func (o AzurePostgreSqlLinkedServiceOutput) Annotations() pulumi.ArrayOutput {
 	return o.ApplyT(func(v AzurePostgreSqlLinkedService) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
 }
 
+// Indicates the azure cloud type of the service principle auth. Allowed values are AzurePublic, AzureChina, AzureUsGovernment, AzureGermany. Default value is the data factory regions’ cloud type. Type: string (or Expression with resultType string).
+func (o AzurePostgreSqlLinkedServiceOutput) AzureCloudType() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzurePostgreSqlLinkedService) interface{} { return v.AzureCloudType }).(pulumi.AnyOutput)
+}
+
 // The time to wait (in seconds) while trying to execute a command before terminating the attempt and generating an error. Set to zero for infinity. Type: integer.
 func (o AzurePostgreSqlLinkedServiceOutput) CommandTimeout() pulumi.AnyOutput {
 	return o.ApplyT(func(v AzurePostgreSqlLinkedService) interface{} { return v.CommandTimeout }).(pulumi.AnyOutput)
@@ -24134,6 +24171,11 @@ func (o AzurePostgreSqlLinkedServiceOutput) ConnectVia() IntegrationRuntimeRefer
 // An ODBC connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
 func (o AzurePostgreSqlLinkedServiceOutput) ConnectionString() pulumi.AnyOutput {
 	return o.ApplyT(func(v AzurePostgreSqlLinkedService) interface{} { return v.ConnectionString }).(pulumi.AnyOutput)
+}
+
+// The credential reference containing authentication information.
+func (o AzurePostgreSqlLinkedServiceOutput) Credential() CredentialReferencePtrOutput {
+	return o.ApplyT(func(v AzurePostgreSqlLinkedService) *CredentialReference { return v.Credential }).(CredentialReferencePtrOutput)
 }
 
 // Database name for connection. Type: string.
@@ -24181,9 +24223,39 @@ func (o AzurePostgreSqlLinkedServiceOutput) Server() pulumi.AnyOutput {
 	return o.ApplyT(func(v AzurePostgreSqlLinkedService) interface{} { return v.Server }).(pulumi.AnyOutput)
 }
 
+// The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string).
+func (o AzurePostgreSqlLinkedServiceOutput) ServicePrincipalCredentialType() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzurePostgreSqlLinkedService) interface{} { return v.ServicePrincipalCredentialType }).(pulumi.AnyOutput)
+}
+
+// Specify the base64 encoded certificate of your application registered in Azure Active Directory. Type: string (or Expression with resultType string).
+func (o AzurePostgreSqlLinkedServiceOutput) ServicePrincipalEmbeddedCert() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzurePostgreSqlLinkedService) interface{} { return v.ServicePrincipalEmbeddedCert }).(pulumi.AnyOutput)
+}
+
+// Specify the password of your certificate if your certificate has a password and you are using AadServicePrincipal authentication. Type: string (or Expression with resultType string).
+func (o AzurePostgreSqlLinkedServiceOutput) ServicePrincipalEmbeddedCertPassword() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzurePostgreSqlLinkedService) interface{} { return v.ServicePrincipalEmbeddedCertPassword }).(pulumi.AnyOutput)
+}
+
+// The ID of the service principal used to authenticate against Azure Database for PostgreSQL Flexible server. Type: string (or Expression with resultType string).
+func (o AzurePostgreSqlLinkedServiceOutput) ServicePrincipalId() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzurePostgreSqlLinkedService) interface{} { return v.ServicePrincipalId }).(pulumi.AnyOutput)
+}
+
+// The key of the service principal used to authenticate against Azure Database for PostgreSQL Flexible server.
+func (o AzurePostgreSqlLinkedServiceOutput) ServicePrincipalKey() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzurePostgreSqlLinkedService) interface{} { return v.ServicePrincipalKey }).(pulumi.AnyOutput)
+}
+
 // SSL mode for connection. Type: integer. 0: disable, 1:allow, 2: prefer, 3: require, 4: verify-ca, 5: verify-full. Type: integer.
 func (o AzurePostgreSqlLinkedServiceOutput) SslMode() pulumi.AnyOutput {
 	return o.ApplyT(func(v AzurePostgreSqlLinkedService) interface{} { return v.SslMode }).(pulumi.AnyOutput)
+}
+
+// The name or ID of the tenant to which the service principal belongs. Type: string (or Expression with resultType string).
+func (o AzurePostgreSqlLinkedServiceOutput) Tenant() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzurePostgreSqlLinkedService) interface{} { return v.Tenant }).(pulumi.AnyOutput)
 }
 
 // The time to wait (in seconds) while trying to establish a connection before terminating the attempt and generating an error. Type: integer.
@@ -24221,12 +24293,16 @@ func (o AzurePostgreSqlLinkedServiceOutput) Version() pulumi.StringPtrOutput {
 type AzurePostgreSqlLinkedServiceResponse struct {
 	// List of tags that can be used for describing the linked service.
 	Annotations []interface{} `pulumi:"annotations"`
+	// Indicates the azure cloud type of the service principle auth. Allowed values are AzurePublic, AzureChina, AzureUsGovernment, AzureGermany. Default value is the data factory regions’ cloud type. Type: string (or Expression with resultType string).
+	AzureCloudType interface{} `pulumi:"azureCloudType"`
 	// The time to wait (in seconds) while trying to execute a command before terminating the attempt and generating an error. Set to zero for infinity. Type: integer.
 	CommandTimeout interface{} `pulumi:"commandTimeout"`
 	// The integration runtime reference.
 	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
 	// An ODBC connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
 	ConnectionString interface{} `pulumi:"connectionString"`
+	// The credential reference containing authentication information.
+	Credential *CredentialReferenceResponse `pulumi:"credential"`
 	// Database name for connection. Type: string.
 	Database interface{} `pulumi:"database"`
 	// Linked service description.
@@ -24245,8 +24321,20 @@ type AzurePostgreSqlLinkedServiceResponse struct {
 	ReadBufferSize interface{} `pulumi:"readBufferSize"`
 	// Server name for connection. Type: string.
 	Server interface{} `pulumi:"server"`
+	// The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string).
+	ServicePrincipalCredentialType interface{} `pulumi:"servicePrincipalCredentialType"`
+	// Specify the base64 encoded certificate of your application registered in Azure Active Directory. Type: string (or Expression with resultType string).
+	ServicePrincipalEmbeddedCert interface{} `pulumi:"servicePrincipalEmbeddedCert"`
+	// Specify the password of your certificate if your certificate has a password and you are using AadServicePrincipal authentication. Type: string (or Expression with resultType string).
+	ServicePrincipalEmbeddedCertPassword interface{} `pulumi:"servicePrincipalEmbeddedCertPassword"`
+	// The ID of the service principal used to authenticate against Azure Database for PostgreSQL Flexible server. Type: string (or Expression with resultType string).
+	ServicePrincipalId interface{} `pulumi:"servicePrincipalId"`
+	// The key of the service principal used to authenticate against Azure Database for PostgreSQL Flexible server.
+	ServicePrincipalKey interface{} `pulumi:"servicePrincipalKey"`
 	// SSL mode for connection. Type: integer. 0: disable, 1:allow, 2: prefer, 3: require, 4: verify-ca, 5: verify-full. Type: integer.
 	SslMode interface{} `pulumi:"sslMode"`
+	// The name or ID of the tenant to which the service principal belongs. Type: string (or Expression with resultType string).
+	Tenant interface{} `pulumi:"tenant"`
 	// The time to wait (in seconds) while trying to establish a connection before terminating the attempt and generating an error. Type: integer.
 	Timeout interface{} `pulumi:"timeout"`
 	// Gets or sets the session timezone. Type: string.
@@ -24282,6 +24370,11 @@ func (o AzurePostgreSqlLinkedServiceResponseOutput) Annotations() pulumi.ArrayOu
 	return o.ApplyT(func(v AzurePostgreSqlLinkedServiceResponse) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
 }
 
+// Indicates the azure cloud type of the service principle auth. Allowed values are AzurePublic, AzureChina, AzureUsGovernment, AzureGermany. Default value is the data factory regions’ cloud type. Type: string (or Expression with resultType string).
+func (o AzurePostgreSqlLinkedServiceResponseOutput) AzureCloudType() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzurePostgreSqlLinkedServiceResponse) interface{} { return v.AzureCloudType }).(pulumi.AnyOutput)
+}
+
 // The time to wait (in seconds) while trying to execute a command before terminating the attempt and generating an error. Set to zero for infinity. Type: integer.
 func (o AzurePostgreSqlLinkedServiceResponseOutput) CommandTimeout() pulumi.AnyOutput {
 	return o.ApplyT(func(v AzurePostgreSqlLinkedServiceResponse) interface{} { return v.CommandTimeout }).(pulumi.AnyOutput)
@@ -24295,6 +24388,11 @@ func (o AzurePostgreSqlLinkedServiceResponseOutput) ConnectVia() IntegrationRunt
 // An ODBC connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
 func (o AzurePostgreSqlLinkedServiceResponseOutput) ConnectionString() pulumi.AnyOutput {
 	return o.ApplyT(func(v AzurePostgreSqlLinkedServiceResponse) interface{} { return v.ConnectionString }).(pulumi.AnyOutput)
+}
+
+// The credential reference containing authentication information.
+func (o AzurePostgreSqlLinkedServiceResponseOutput) Credential() CredentialReferenceResponsePtrOutput {
+	return o.ApplyT(func(v AzurePostgreSqlLinkedServiceResponse) *CredentialReferenceResponse { return v.Credential }).(CredentialReferenceResponsePtrOutput)
 }
 
 // Database name for connection. Type: string.
@@ -24344,9 +24442,41 @@ func (o AzurePostgreSqlLinkedServiceResponseOutput) Server() pulumi.AnyOutput {
 	return o.ApplyT(func(v AzurePostgreSqlLinkedServiceResponse) interface{} { return v.Server }).(pulumi.AnyOutput)
 }
 
+// The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string).
+func (o AzurePostgreSqlLinkedServiceResponseOutput) ServicePrincipalCredentialType() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzurePostgreSqlLinkedServiceResponse) interface{} { return v.ServicePrincipalCredentialType }).(pulumi.AnyOutput)
+}
+
+// Specify the base64 encoded certificate of your application registered in Azure Active Directory. Type: string (or Expression with resultType string).
+func (o AzurePostgreSqlLinkedServiceResponseOutput) ServicePrincipalEmbeddedCert() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzurePostgreSqlLinkedServiceResponse) interface{} { return v.ServicePrincipalEmbeddedCert }).(pulumi.AnyOutput)
+}
+
+// Specify the password of your certificate if your certificate has a password and you are using AadServicePrincipal authentication. Type: string (or Expression with resultType string).
+func (o AzurePostgreSqlLinkedServiceResponseOutput) ServicePrincipalEmbeddedCertPassword() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzurePostgreSqlLinkedServiceResponse) interface{} {
+		return v.ServicePrincipalEmbeddedCertPassword
+	}).(pulumi.AnyOutput)
+}
+
+// The ID of the service principal used to authenticate against Azure Database for PostgreSQL Flexible server. Type: string (or Expression with resultType string).
+func (o AzurePostgreSqlLinkedServiceResponseOutput) ServicePrincipalId() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzurePostgreSqlLinkedServiceResponse) interface{} { return v.ServicePrincipalId }).(pulumi.AnyOutput)
+}
+
+// The key of the service principal used to authenticate against Azure Database for PostgreSQL Flexible server.
+func (o AzurePostgreSqlLinkedServiceResponseOutput) ServicePrincipalKey() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzurePostgreSqlLinkedServiceResponse) interface{} { return v.ServicePrincipalKey }).(pulumi.AnyOutput)
+}
+
 // SSL mode for connection. Type: integer. 0: disable, 1:allow, 2: prefer, 3: require, 4: verify-ca, 5: verify-full. Type: integer.
 func (o AzurePostgreSqlLinkedServiceResponseOutput) SslMode() pulumi.AnyOutput {
 	return o.ApplyT(func(v AzurePostgreSqlLinkedServiceResponse) interface{} { return v.SslMode }).(pulumi.AnyOutput)
+}
+
+// The name or ID of the tenant to which the service principal belongs. Type: string (or Expression with resultType string).
+func (o AzurePostgreSqlLinkedServiceResponseOutput) Tenant() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzurePostgreSqlLinkedServiceResponse) interface{} { return v.Tenant }).(pulumi.AnyOutput)
 }
 
 // The time to wait (in seconds) while trying to establish a connection before terminating the attempt and generating an error. Type: integer.

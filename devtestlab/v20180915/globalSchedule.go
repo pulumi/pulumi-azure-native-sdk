@@ -66,10 +66,10 @@ func NewGlobalSchedule(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:devtestlab:GlobalSchedule"),
+			Type: pulumi.String("azure-native:devtestlab/v20160515:GlobalSchedule"),
 		},
 		{
-			Type: pulumi.String("azure-native:devtestlab/v20160515:GlobalSchedule"),
+			Type: pulumi.String("azure-native:devtestlab:GlobalSchedule"),
 		},
 	})
 	opts = append(opts, aliases)

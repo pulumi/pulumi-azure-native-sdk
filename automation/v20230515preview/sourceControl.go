@@ -57,9 +57,6 @@ func NewSourceControl(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:automation:SourceControl"),
-		},
-		{
 			Type: pulumi.String("azure-native:automation/v20170515preview:SourceControl"),
 		},
 		{
@@ -76,6 +73,9 @@ func NewSourceControl(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:automation/v20241023:SourceControl"),
+		},
+		{
+			Type: pulumi.String("azure-native:automation:SourceControl"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -46,13 +46,13 @@ func NewFarmBeatsModel(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:agfoodplatform:FarmBeatsModel"),
-		},
-		{
 			Type: pulumi.String("azure-native:agfoodplatform/v20210901preview:FarmBeatsModel"),
 		},
 		{
 			Type: pulumi.String("azure-native:agfoodplatform/v20230601preview:FarmBeatsModel"),
+		},
+		{
+			Type: pulumi.String("azure-native:agfoodplatform:FarmBeatsModel"),
 		},
 	})
 	opts = append(opts, aliases)

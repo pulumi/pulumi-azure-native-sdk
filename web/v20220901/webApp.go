@@ -157,9 +157,6 @@ func NewWebApp(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:web:WebApp"),
-		},
-		{
 			Type: pulumi.String("azure-native:web/v20150801:WebApp"),
 		},
 		{
@@ -209,6 +206,9 @@ func NewWebApp(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:web/v20240401:WebApp"),
+		},
+		{
+			Type: pulumi.String("azure-native:web:WebApp"),
 		},
 	})
 	opts = append(opts, aliases)

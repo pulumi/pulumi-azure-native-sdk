@@ -53,9 +53,6 @@ func NewLocalUser(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:storage:LocalUser"),
-		},
-		{
 			Type: pulumi.String("azure-native:storage/v20210801:LocalUser"),
 		},
 		{
@@ -72,6 +69,9 @@ func NewLocalUser(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:storage/v20230501:LocalUser"),
+		},
+		{
+			Type: pulumi.String("azure-native:storage:LocalUser"),
 		},
 	})
 	opts = append(opts, aliases)

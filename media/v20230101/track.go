@@ -44,13 +44,13 @@ func NewTrack(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:media:Track"),
-		},
-		{
 			Type: pulumi.String("azure-native:media/v20211101:Track"),
 		},
 		{
 			Type: pulumi.String("azure-native:media/v20220801:Track"),
+		},
+		{
+			Type: pulumi.String("azure-native:media:Track"),
 		},
 	})
 	opts = append(opts, aliases)

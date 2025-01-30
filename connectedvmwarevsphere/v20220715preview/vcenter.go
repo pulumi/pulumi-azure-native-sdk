@@ -67,9 +67,6 @@ func NewVCenter(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:connectedvmwarevsphere:VCenter"),
-		},
-		{
 			Type: pulumi.String("azure-native:connectedvmwarevsphere/v20201001preview:VCenter"),
 		},
 		{
@@ -83,6 +80,9 @@ func NewVCenter(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:connectedvmwarevsphere/v20231201:VCenter"),
+		},
+		{
+			Type: pulumi.String("azure-native:connectedvmwarevsphere:VCenter"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -45,9 +45,6 @@ func NewVirtualApplianceSite(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:network:VirtualApplianceSite"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20200501:VirtualApplianceSite"),
 		},
 		{
@@ -112,6 +109,9 @@ func NewVirtualApplianceSite(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20240301:VirtualApplianceSite"),
+		},
+		{
+			Type: pulumi.String("azure-native:network:VirtualApplianceSite"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -62,9 +62,6 @@ func NewMetricsConfiguration(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:networkcloud:MetricsConfiguration"),
-		},
-		{
 			Type: pulumi.String("azure-native:networkcloud/v20230701:MetricsConfiguration"),
 		},
 		{
@@ -75,6 +72,9 @@ func NewMetricsConfiguration(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:networkcloud/v20241001preview:MetricsConfiguration"),
+		},
+		{
+			Type: pulumi.String("azure-native:networkcloud:MetricsConfiguration"),
 		},
 	})
 	opts = append(opts, aliases)

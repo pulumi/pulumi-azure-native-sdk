@@ -72,9 +72,6 @@ func NewMachineRunCommand(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:hybridcompute:MachineRunCommand"),
-		},
-		{
 			Type: pulumi.String("azure-native:hybridcompute/v20240331preview:MachineRunCommand"),
 		},
 		{
@@ -88,6 +85,9 @@ func NewMachineRunCommand(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:hybridcompute/v20241110preview:MachineRunCommand"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridcompute:MachineRunCommand"),
 		},
 	})
 	opts = append(opts, aliases)

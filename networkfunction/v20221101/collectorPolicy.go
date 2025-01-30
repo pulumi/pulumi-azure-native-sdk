@@ -51,9 +51,6 @@ func NewCollectorPolicy(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:networkfunction:CollectorPolicy"),
-		},
-		{
 			Type: pulumi.String("azure-native:networkfunction/v20210901preview:CollectorPolicy"),
 		},
 		{
@@ -61,6 +58,9 @@ func NewCollectorPolicy(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:networkfunction/v20220801:CollectorPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:networkfunction:CollectorPolicy"),
 		},
 	})
 	opts = append(opts, aliases)

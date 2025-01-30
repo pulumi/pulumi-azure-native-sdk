@@ -47,9 +47,6 @@ func NewApplicationGatewayPrivateEndpointConnection(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:network:ApplicationGatewayPrivateEndpointConnection"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20200501:ApplicationGatewayPrivateEndpointConnection"),
 		},
 		{
@@ -114,6 +111,9 @@ func NewApplicationGatewayPrivateEndpointConnection(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20240301:ApplicationGatewayPrivateEndpointConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:network:ApplicationGatewayPrivateEndpointConnection"),
 		},
 	})
 	opts = append(opts, aliases)

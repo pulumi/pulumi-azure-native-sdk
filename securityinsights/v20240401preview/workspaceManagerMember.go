@@ -51,9 +51,6 @@ func NewWorkspaceManagerMember(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:securityinsights:WorkspaceManagerMember"),
-		},
-		{
 			Type: pulumi.String("azure-native:securityinsights/v20230401preview:WorkspaceManagerMember"),
 		},
 		{
@@ -82,6 +79,9 @@ func NewWorkspaceManagerMember(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20241001preview:WorkspaceManagerMember"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights:WorkspaceManagerMember"),
 		},
 	})
 	opts = append(opts, aliases)

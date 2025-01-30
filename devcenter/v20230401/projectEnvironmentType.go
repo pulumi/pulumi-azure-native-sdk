@@ -55,9 +55,6 @@ func NewProjectEnvironmentType(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:devcenter:ProjectEnvironmentType"),
-		},
-		{
 			Type: pulumi.String("azure-native:devcenter/v20220801preview:ProjectEnvironmentType"),
 		},
 		{
@@ -95,6 +92,9 @@ func NewProjectEnvironmentType(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:devcenter/v20241001preview:ProjectEnvironmentType"),
+		},
+		{
+			Type: pulumi.String("azure-native:devcenter:ProjectEnvironmentType"),
 		},
 	})
 	opts = append(opts, aliases)

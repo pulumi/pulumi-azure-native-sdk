@@ -36,10 +36,10 @@ func NewDefenderForStorage(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:security:DefenderForStorage"),
+			Type: pulumi.String("azure-native:security/v20241001preview:DefenderForStorage"),
 		},
 		{
-			Type: pulumi.String("azure-native:security/v20241001preview:DefenderForStorage"),
+			Type: pulumi.String("azure-native:security:DefenderForStorage"),
 		},
 	})
 	opts = append(opts, aliases)

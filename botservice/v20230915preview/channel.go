@@ -51,9 +51,6 @@ func NewChannel(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:botservice:Channel"),
-		},
-		{
 			Type: pulumi.String("azure-native:botservice/v20171201:Channel"),
 		},
 		{
@@ -73,6 +70,9 @@ func NewChannel(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:botservice/v20220915:Channel"),
+		},
+		{
+			Type: pulumi.String("azure-native:botservice:Channel"),
 		},
 	})
 	opts = append(opts, aliases)

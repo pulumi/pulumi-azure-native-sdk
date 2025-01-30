@@ -55,13 +55,13 @@ func NewPolicyDefinitionVersion(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:authorization:PolicyDefinitionVersion"),
-		},
-		{
 			Type: pulumi.String("azure-native:authorization/v20230401:PolicyDefinitionVersion"),
 		},
 		{
 			Type: pulumi.String("azure-native:authorization/v20240501:PolicyDefinitionVersion"),
+		},
+		{
+			Type: pulumi.String("azure-native:authorization:PolicyDefinitionVersion"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -52,9 +52,6 @@ func NewNamedValue(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:apimanagement:NamedValue"),
-		},
-		{
 			Type: pulumi.String("azure-native:apimanagement/v20191201:NamedValue"),
 		},
 		{
@@ -98,6 +95,9 @@ func NewNamedValue(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20240601preview:NamedValue"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement:NamedValue"),
 		},
 	})
 	opts = append(opts, aliases)

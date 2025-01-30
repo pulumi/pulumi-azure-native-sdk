@@ -44,9 +44,6 @@ func NewLinkerDryrun(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:servicelinker:LinkerDryrun"),
-		},
-		{
 			Type: pulumi.String("azure-native:servicelinker/v20221101preview:LinkerDryrun"),
 		},
 		{
@@ -54,6 +51,9 @@ func NewLinkerDryrun(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:servicelinker/v20240401:LinkerDryrun"),
+		},
+		{
+			Type: pulumi.String("azure-native:servicelinker:LinkerDryrun"),
 		},
 	})
 	opts = append(opts, aliases)

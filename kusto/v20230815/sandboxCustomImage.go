@@ -51,10 +51,10 @@ func NewSandboxCustomImage(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:kusto:SandboxCustomImage"),
+			Type: pulumi.String("azure-native:kusto/v20240413:SandboxCustomImage"),
 		},
 		{
-			Type: pulumi.String("azure-native:kusto/v20240413:SandboxCustomImage"),
+			Type: pulumi.String("azure-native:kusto:SandboxCustomImage"),
 		},
 	})
 	opts = append(opts, aliases)

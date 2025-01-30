@@ -57,13 +57,13 @@ func NewApiDefinition(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:apicenter:ApiDefinition"),
-		},
-		{
 			Type: pulumi.String("azure-native:apicenter/v20240301:ApiDefinition"),
 		},
 		{
 			Type: pulumi.String("azure-native:apicenter/v20240315preview:ApiDefinition"),
+		},
+		{
+			Type: pulumi.String("azure-native:apicenter:ApiDefinition"),
 		},
 	})
 	opts = append(opts, aliases)

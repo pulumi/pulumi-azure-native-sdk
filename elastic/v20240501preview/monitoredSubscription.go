@@ -39,13 +39,13 @@ func NewMonitoredSubscription(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:elastic:MonitoredSubscription"),
-		},
-		{
 			Type: pulumi.String("azure-native:elastic/v20240615preview:MonitoredSubscription"),
 		},
 		{
 			Type: pulumi.String("azure-native:elastic/v20241001preview:MonitoredSubscription"),
+		},
+		{
+			Type: pulumi.String("azure-native:elastic:MonitoredSubscription"),
 		},
 	})
 	opts = append(opts, aliases)

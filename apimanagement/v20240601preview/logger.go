@@ -51,9 +51,6 @@ func NewLogger(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:apimanagement:Logger"),
-		},
-		{
 			Type: pulumi.String("azure-native:apimanagement/v20160707:Logger"),
 		},
 		{
@@ -115,6 +112,9 @@ func NewLogger(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20240501:Logger"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement:Logger"),
 		},
 	})
 	opts = append(opts, aliases)

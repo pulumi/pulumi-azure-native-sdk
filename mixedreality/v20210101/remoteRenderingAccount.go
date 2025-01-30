@@ -54,9 +54,6 @@ func NewRemoteRenderingAccount(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:mixedreality:RemoteRenderingAccount"),
-		},
-		{
 			Type: pulumi.String("azure-native:mixedreality/v20191202preview:RemoteRenderingAccount"),
 		},
 		{
@@ -64,6 +61,9 @@ func NewRemoteRenderingAccount(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:mixedreality/v20210301preview:RemoteRenderingAccount"),
+		},
+		{
+			Type: pulumi.String("azure-native:mixedreality:RemoteRenderingAccount"),
 		},
 	})
 	opts = append(opts, aliases)

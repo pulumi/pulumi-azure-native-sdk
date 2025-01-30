@@ -60,19 +60,13 @@ func NewVirtualharddiskRetrieve(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:azurestackhci/v20210901preview:virtualharddiskRetrieve"),
-		},
-		{
-			Type: pulumi.String("azure-native:azurestackhci:VirtualharddiskRetrieve"),
-		},
-		{
-			Type: pulumi.String("azure-native:azurestackhci:virtualharddiskRetrieve"),
-		},
-		{
 			Type: pulumi.String("azure-native:azurestackhci/v20210701preview:VirtualharddiskRetrieve"),
 		},
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20210701preview:virtualharddiskRetrieve"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20210901preview:virtualharddiskRetrieve"),
 		},
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20221215preview:VirtualharddiskRetrieve"),
@@ -127,6 +121,12 @@ func NewVirtualharddiskRetrieve(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20241001preview:virtualharddiskRetrieve"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci:VirtualharddiskRetrieve"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci:virtualharddiskRetrieve"),
 		},
 	})
 	opts = append(opts, aliases)

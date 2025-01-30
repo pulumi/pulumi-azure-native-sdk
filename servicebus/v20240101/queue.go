@@ -85,9 +85,6 @@ func NewQueue(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:servicebus:Queue"),
-		},
-		{
 			Type: pulumi.String("azure-native:servicebus/v20140901:Queue"),
 		},
 		{
@@ -116,6 +113,9 @@ func NewQueue(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:servicebus/v20230101preview:Queue"),
+		},
+		{
+			Type: pulumi.String("azure-native:servicebus:Queue"),
 		},
 	})
 	opts = append(opts, aliases)

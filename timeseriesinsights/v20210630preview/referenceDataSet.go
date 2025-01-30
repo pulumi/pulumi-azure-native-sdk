@@ -52,9 +52,6 @@ func NewReferenceDataSet(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:timeseriesinsights:ReferenceDataSet"),
-		},
-		{
 			Type: pulumi.String("azure-native:timeseriesinsights/v20170228preview:ReferenceDataSet"),
 		},
 		{
@@ -68,6 +65,9 @@ func NewReferenceDataSet(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:timeseriesinsights/v20210331preview:ReferenceDataSet"),
+		},
+		{
+			Type: pulumi.String("azure-native:timeseriesinsights:ReferenceDataSet"),
 		},
 	})
 	opts = append(opts, aliases)

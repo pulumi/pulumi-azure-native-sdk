@@ -48,9 +48,6 @@ func NewWorkspaceTagProductLink(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:apimanagement:WorkspaceTagProductLink"),
-		},
-		{
 			Type: pulumi.String("azure-native:apimanagement/v20220901preview:WorkspaceTagProductLink"),
 		},
 		{
@@ -64,6 +61,9 @@ func NewWorkspaceTagProductLink(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20240501:WorkspaceTagProductLink"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement:WorkspaceTagProductLink"),
 		},
 	})
 	opts = append(opts, aliases)

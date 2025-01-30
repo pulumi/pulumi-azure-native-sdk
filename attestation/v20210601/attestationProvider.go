@@ -55,9 +55,6 @@ func NewAttestationProvider(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:attestation:AttestationProvider"),
-		},
-		{
 			Type: pulumi.String("azure-native:attestation/v20180901preview:AttestationProvider"),
 		},
 		{
@@ -65,6 +62,9 @@ func NewAttestationProvider(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:attestation/v20210601preview:AttestationProvider"),
+		},
+		{
+			Type: pulumi.String("azure-native:attestation:AttestationProvider"),
 		},
 	})
 	opts = append(opts, aliases)

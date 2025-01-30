@@ -57,9 +57,6 @@ func NewOriginGroup(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:cdn:OriginGroup"),
-		},
-		{
 			Type: pulumi.String("azure-native:cdn/v20191231:OriginGroup"),
 		},
 		{
@@ -94,6 +91,9 @@ func NewOriginGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:cdn/v20240601preview:OriginGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:cdn:OriginGroup"),
 		},
 	})
 	opts = append(opts, aliases)

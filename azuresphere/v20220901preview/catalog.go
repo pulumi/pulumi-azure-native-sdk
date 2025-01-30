@@ -42,10 +42,10 @@ func NewCatalog(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:azuresphere:Catalog"),
+			Type: pulumi.String("azure-native:azuresphere/v20240401:Catalog"),
 		},
 		{
-			Type: pulumi.String("azure-native:azuresphere/v20240401:Catalog"),
+			Type: pulumi.String("azure-native:azuresphere:Catalog"),
 		},
 	})
 	opts = append(opts, aliases)

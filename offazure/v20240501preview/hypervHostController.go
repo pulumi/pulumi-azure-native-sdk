@@ -53,13 +53,13 @@ func NewHypervHostController(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:offazure:HypervHostController"),
-		},
-		{
 			Type: pulumi.String("azure-native:offazure/v20230606:HypervHostController"),
 		},
 		{
 			Type: pulumi.String("azure-native:offazure/v20231001preview:HypervHostController"),
+		},
+		{
+			Type: pulumi.String("azure-native:offazure:HypervHostController"),
 		},
 	})
 	opts = append(opts, aliases)

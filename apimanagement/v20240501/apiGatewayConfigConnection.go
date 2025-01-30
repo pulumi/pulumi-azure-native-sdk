@@ -47,13 +47,13 @@ func NewApiGatewayConfigConnection(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:apimanagement:ApiGatewayConfigConnection"),
-		},
-		{
 			Type: pulumi.String("azure-native:apimanagement/v20230901preview:ApiGatewayConfigConnection"),
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20240601preview:ApiGatewayConfigConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement:ApiGatewayConfigConnection"),
 		},
 	})
 	opts = append(opts, aliases)

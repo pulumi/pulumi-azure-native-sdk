@@ -39,9 +39,6 @@ func NewOpenAI(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:elastic:OpenAI"),
-		},
-		{
 			Type: pulumi.String("azure-native:elastic/v20240101preview:OpenAI"),
 		},
 		{
@@ -52,6 +49,9 @@ func NewOpenAI(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:elastic/v20241001preview:OpenAI"),
+		},
+		{
+			Type: pulumi.String("azure-native:elastic:OpenAI"),
 		},
 	})
 	opts = append(opts, aliases)

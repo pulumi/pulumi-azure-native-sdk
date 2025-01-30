@@ -93,10 +93,10 @@ func NewCertificateProfile(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:codesigning:CertificateProfile"),
+			Type: pulumi.String("azure-native:codesigning/v20240930preview:CertificateProfile"),
 		},
 		{
-			Type: pulumi.String("azure-native:codesigning/v20240930preview:CertificateProfile"),
+			Type: pulumi.String("azure-native:codesigning:CertificateProfile"),
 		},
 	})
 	opts = append(opts, aliases)

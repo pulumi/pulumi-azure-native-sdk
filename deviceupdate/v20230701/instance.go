@@ -53,9 +53,6 @@ func NewInstance(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:deviceupdate:Instance"),
-		},
-		{
 			Type: pulumi.String("azure-native:deviceupdate/v20200301preview:Instance"),
 		},
 		{
@@ -66,6 +63,9 @@ func NewInstance(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:deviceupdate/v20221201preview:Instance"),
+		},
+		{
+			Type: pulumi.String("azure-native:deviceupdate:Instance"),
 		},
 	})
 	opts = append(opts, aliases)

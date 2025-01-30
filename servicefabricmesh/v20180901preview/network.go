@@ -43,10 +43,10 @@ func NewNetwork(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:servicefabricmesh:Network"),
+			Type: pulumi.String("azure-native:servicefabricmesh/v20180701preview:Network"),
 		},
 		{
-			Type: pulumi.String("azure-native:servicefabricmesh/v20180701preview:Network"),
+			Type: pulumi.String("azure-native:servicefabricmesh:Network"),
 		},
 	})
 	opts = append(opts, aliases)

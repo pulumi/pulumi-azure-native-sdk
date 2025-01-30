@@ -50,10 +50,10 @@ func NewLoadBalancer(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:kubernetesruntime:LoadBalancer"),
+			Type: pulumi.String("azure-native:kubernetesruntime/v20240301:LoadBalancer"),
 		},
 		{
-			Type: pulumi.String("azure-native:kubernetesruntime/v20240301:LoadBalancer"),
+			Type: pulumi.String("azure-native:kubernetesruntime:LoadBalancer"),
 		},
 	})
 	opts = append(opts, aliases)

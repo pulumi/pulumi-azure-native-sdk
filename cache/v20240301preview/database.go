@@ -59,9 +59,6 @@ func NewDatabase(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:cache:Database"),
-		},
-		{
 			Type: pulumi.String("azure-native:cache/v20201001preview:Database"),
 		},
 		{
@@ -105,6 +102,9 @@ func NewDatabase(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:cache/v20241001:Database"),
+		},
+		{
+			Type: pulumi.String("azure-native:cache:Database"),
 		},
 	})
 	opts = append(opts, aliases)

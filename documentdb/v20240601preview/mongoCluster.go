@@ -42,9 +42,6 @@ func NewMongoCluster(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:documentdb:MongoCluster"),
-		},
-		{
 			Type: pulumi.String("azure-native:documentdb/v20230301preview:MongoCluster"),
 		},
 		{
@@ -67,6 +64,9 @@ func NewMongoCluster(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:documentdb/v20241001preview:MongoCluster"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb:MongoCluster"),
 		},
 	})
 	opts = append(opts, aliases)

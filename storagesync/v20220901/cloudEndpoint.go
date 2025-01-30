@@ -62,9 +62,6 @@ func NewCloudEndpoint(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:storagesync:CloudEndpoint"),
-		},
-		{
 			Type: pulumi.String("azure-native:storagesync/v20170605preview:CloudEndpoint"),
 		},
 		{
@@ -96,6 +93,9 @@ func NewCloudEndpoint(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:storagesync/v20220601:CloudEndpoint"),
+		},
+		{
+			Type: pulumi.String("azure-native:storagesync:CloudEndpoint"),
 		},
 	})
 	opts = append(opts, aliases)

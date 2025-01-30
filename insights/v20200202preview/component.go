@@ -105,9 +105,6 @@ func NewComponent(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:insights:Component"),
-		},
-		{
 			Type: pulumi.String("azure-native:insights/v20150501:Component"),
 		},
 		{
@@ -115,6 +112,9 @@ func NewComponent(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:insights/v20200202:Component"),
+		},
+		{
+			Type: pulumi.String("azure-native:insights:Component"),
 		},
 	})
 	opts = append(opts, aliases)

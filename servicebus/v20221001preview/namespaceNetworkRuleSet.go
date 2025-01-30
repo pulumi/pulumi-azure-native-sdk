@@ -54,9 +54,6 @@ func NewNamespaceNetworkRuleSet(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:servicebus:NamespaceNetworkRuleSet"),
-		},
-		{
 			Type: pulumi.String("azure-native:servicebus/v20170401:NamespaceNetworkRuleSet"),
 		},
 		{
@@ -79,6 +76,9 @@ func NewNamespaceNetworkRuleSet(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:servicebus/v20240101:NamespaceNetworkRuleSet"),
+		},
+		{
+			Type: pulumi.String("azure-native:servicebus:NamespaceNetworkRuleSet"),
 		},
 	})
 	opts = append(opts, aliases)

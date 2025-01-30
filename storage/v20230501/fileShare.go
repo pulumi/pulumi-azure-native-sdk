@@ -75,9 +75,6 @@ func NewFileShare(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:storage:FileShare"),
-		},
-		{
 			Type: pulumi.String("azure-native:storage/v20190401:FileShare"),
 		},
 		{
@@ -115,6 +112,9 @@ func NewFileShare(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:storage/v20230401:FileShare"),
+		},
+		{
+			Type: pulumi.String("azure-native:storage:FileShare"),
 		},
 	})
 	opts = append(opts, aliases)

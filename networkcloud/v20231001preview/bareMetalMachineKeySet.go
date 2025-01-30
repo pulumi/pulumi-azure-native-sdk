@@ -84,9 +84,6 @@ func NewBareMetalMachineKeySet(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:networkcloud:BareMetalMachineKeySet"),
-		},
-		{
 			Type: pulumi.String("azure-native:networkcloud/v20230701:BareMetalMachineKeySet"),
 		},
 		{
@@ -97,6 +94,9 @@ func NewBareMetalMachineKeySet(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:networkcloud/v20241001preview:BareMetalMachineKeySet"),
+		},
+		{
+			Type: pulumi.String("azure-native:networkcloud:BareMetalMachineKeySet"),
 		},
 	})
 	opts = append(opts, aliases)

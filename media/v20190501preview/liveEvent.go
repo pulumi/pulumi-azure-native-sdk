@@ -68,9 +68,6 @@ func NewLiveEvent(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:media:LiveEvent"),
-		},
-		{
 			Type: pulumi.String("azure-native:media/v20180330preview:LiveEvent"),
 		},
 		{
@@ -93,6 +90,9 @@ func NewLiveEvent(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:media/v20221101:LiveEvent"),
+		},
+		{
+			Type: pulumi.String("azure-native:media:LiveEvent"),
 		},
 	})
 	opts = append(opts, aliases)

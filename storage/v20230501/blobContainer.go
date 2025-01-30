@@ -77,9 +77,6 @@ func NewBlobContainer(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:storage:BlobContainer"),
-		},
-		{
 			Type: pulumi.String("azure-native:storage/v20180201:BlobContainer"),
 		},
 		{
@@ -129,6 +126,9 @@ func NewBlobContainer(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:storage/v20230401:BlobContainer"),
+		},
+		{
+			Type: pulumi.String("azure-native:storage:BlobContainer"),
 		},
 	})
 	opts = append(opts, aliases)

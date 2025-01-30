@@ -57,9 +57,6 @@ func NewSnapshotPolicy(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:netapp:SnapshotPolicy"),
-		},
-		{
 			Type: pulumi.String("azure-native:netapp/v20200501:SnapshotPolicy"),
 		},
 		{
@@ -151,6 +148,12 @@ func NewSnapshotPolicy(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:netapp/v20240701:SnapshotPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20240901:SnapshotPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp:SnapshotPolicy"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -57,9 +57,6 @@ func NewInferenceEndpoint(ctx *pulumi.Context,
 	args.InferenceEndpointProperties = args.InferenceEndpointProperties.ToInferenceEndpointTypeOutput().ApplyT(func(v InferenceEndpointType) InferenceEndpointType { return *v.Defaults() }).(InferenceEndpointTypeOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:machinelearningservices:InferenceEndpoint"),
-		},
-		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20230801preview:InferenceEndpoint"),
 		},
 		{
@@ -67,6 +64,9 @@ func NewInferenceEndpoint(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20240401preview:InferenceEndpoint"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices:InferenceEndpoint"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -52,13 +52,13 @@ func NewCloudHsmClusterPrivateEndpointConnection(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:hardwaresecuritymodules:CloudHsmClusterPrivateEndpointConnection"),
-		},
-		{
 			Type: pulumi.String("azure-native:hardwaresecuritymodules/v20231210preview:CloudHsmClusterPrivateEndpointConnection"),
 		},
 		{
 			Type: pulumi.String("azure-native:hardwaresecuritymodules/v20240630preview:CloudHsmClusterPrivateEndpointConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:hardwaresecuritymodules:CloudHsmClusterPrivateEndpointConnection"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -42,9 +42,6 @@ func NewNetworkWatcher(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:network:NetworkWatcher"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20160901:NetworkWatcher"),
 		},
 		{
@@ -190,6 +187,9 @@ func NewNetworkWatcher(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20240301:NetworkWatcher"),
+		},
+		{
+			Type: pulumi.String("azure-native:network:NetworkWatcher"),
 		},
 	})
 	opts = append(opts, aliases)

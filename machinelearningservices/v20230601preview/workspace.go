@@ -109,9 +109,6 @@ func NewWorkspace(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:machinelearningservices:Workspace"),
-		},
-		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20180301preview:Workspace"),
 		},
 		{
@@ -218,6 +215,9 @@ func NewWorkspace(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001preview:Workspace"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices:Workspace"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -39,9 +39,6 @@ func NewSqlMigrationService(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:datamigration:SqlMigrationService"),
-		},
-		{
 			Type: pulumi.String("azure-native:datamigration/v20211030preview:SqlMigrationService"),
 		},
 		{
@@ -49,6 +46,9 @@ func NewSqlMigrationService(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:datamigration/v20220330preview:SqlMigrationService"),
+		},
+		{
+			Type: pulumi.String("azure-native:datamigration:SqlMigrationService"),
 		},
 	})
 	opts = append(opts, aliases)

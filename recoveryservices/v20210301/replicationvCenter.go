@@ -44,9 +44,6 @@ func NewReplicationvCenter(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:recoveryservices:ReplicationvCenter"),
-		},
-		{
 			Type: pulumi.String("azure-native:recoveryservices/v20160810:ReplicationvCenter"),
 		},
 		{
@@ -129,6 +126,9 @@ func NewReplicationvCenter(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:recoveryservices/v20241001:ReplicationvCenter"),
+		},
+		{
+			Type: pulumi.String("azure-native:recoveryservices:ReplicationvCenter"),
 		},
 	})
 	opts = append(opts, aliases)

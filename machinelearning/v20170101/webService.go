@@ -44,10 +44,10 @@ func NewWebService(ctx *pulumi.Context,
 	args.Properties = args.Properties.ToWebServicePropertiesForGraphOutput().ApplyT(func(v WebServicePropertiesForGraph) WebServicePropertiesForGraph { return *v.Defaults() }).(WebServicePropertiesForGraphOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:machinelearning:WebService"),
+			Type: pulumi.String("azure-native:machinelearning/v20160501preview:WebService"),
 		},
 		{
-			Type: pulumi.String("azure-native:machinelearning/v20160501preview:WebService"),
+			Type: pulumi.String("azure-native:machinelearning:WebService"),
 		},
 	})
 	opts = append(opts, aliases)

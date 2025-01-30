@@ -54,13 +54,13 @@ func NewVMInstanceGuestAgent(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:connectedvmwarevsphere:VMInstanceGuestAgent"),
-		},
-		{
 			Type: pulumi.String("azure-native:connectedvmwarevsphere/v20231001:VMInstanceGuestAgent"),
 		},
 		{
 			Type: pulumi.String("azure-native:connectedvmwarevsphere/v20231201:VMInstanceGuestAgent"),
+		},
+		{
+			Type: pulumi.String("azure-native:connectedvmwarevsphere:VMInstanceGuestAgent"),
 		},
 	})
 	opts = append(opts, aliases)

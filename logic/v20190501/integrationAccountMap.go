@@ -60,9 +60,6 @@ func NewIntegrationAccountMap(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:logic:IntegrationAccountMap"),
-		},
-		{
 			Type: pulumi.String("azure-native:logic/v20150801preview:IntegrationAccountMap"),
 		},
 		{
@@ -70,6 +67,9 @@ func NewIntegrationAccountMap(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:logic/v20180701preview:IntegrationAccountMap"),
+		},
+		{
+			Type: pulumi.String("azure-native:logic:IntegrationAccountMap"),
 		},
 	})
 	opts = append(opts, aliases)

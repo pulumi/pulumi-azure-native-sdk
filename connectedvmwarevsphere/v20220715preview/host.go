@@ -64,9 +64,6 @@ func NewHost(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:connectedvmwarevsphere:Host"),
-		},
-		{
 			Type: pulumi.String("azure-native:connectedvmwarevsphere/v20201001preview:Host"),
 		},
 		{
@@ -80,6 +77,9 @@ func NewHost(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:connectedvmwarevsphere/v20231201:Host"),
+		},
+		{
+			Type: pulumi.String("azure-native:connectedvmwarevsphere:Host"),
 		},
 	})
 	opts = append(opts, aliases)

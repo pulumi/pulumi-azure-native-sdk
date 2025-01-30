@@ -80,9 +80,6 @@ func NewRecordSet(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:network:RecordSet"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20150504preview:RecordSet"),
 		},
 		{
@@ -99,6 +96,9 @@ func NewRecordSet(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20180501:RecordSet"),
+		},
+		{
+			Type: pulumi.String("azure-native:network:RecordSet"),
 		},
 	})
 	opts = append(opts, aliases)

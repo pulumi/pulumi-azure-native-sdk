@@ -50,9 +50,6 @@ func NewPipelineRun(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:containerregistry:PipelineRun"),
-		},
-		{
 			Type: pulumi.String("azure-native:containerregistry/v20191201preview:PipelineRun"),
 		},
 		{
@@ -81,6 +78,9 @@ func NewPipelineRun(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:containerregistry/v20231101preview:PipelineRun"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerregistry:PipelineRun"),
 		},
 	})
 	opts = append(opts, aliases)

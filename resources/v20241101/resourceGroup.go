@@ -38,9 +38,6 @@ func NewResourceGroup(ctx *pulumi.Context,
 
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:resources:ResourceGroup"),
-		},
-		{
 			Type: pulumi.String("azure-native:resources/v20151101:ResourceGroup"),
 		},
 		{
@@ -105,6 +102,9 @@ func NewResourceGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:resources/v20240701:ResourceGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:resources:ResourceGroup"),
 		},
 	})
 	opts = append(opts, aliases)

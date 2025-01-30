@@ -48,9 +48,6 @@ func NewManagedInstanceKey(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:sql:ManagedInstanceKey"),
-		},
-		{
 			Type: pulumi.String("azure-native:sql/v20171001preview:ManagedInstanceKey"),
 		},
 		{
@@ -97,6 +94,9 @@ func NewManagedInstanceKey(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20240501preview:ManagedInstanceKey"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql:ManagedInstanceKey"),
 		},
 	})
 	opts = append(opts, aliases)

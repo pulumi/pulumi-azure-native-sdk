@@ -46,10 +46,10 @@ func NewCodeSigningAccount(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:codesigning:CodeSigningAccount"),
+			Type: pulumi.String("azure-native:codesigning/v20240205preview:CodeSigningAccount"),
 		},
 		{
-			Type: pulumi.String("azure-native:codesigning/v20240205preview:CodeSigningAccount"),
+			Type: pulumi.String("azure-native:codesigning:CodeSigningAccount"),
 		},
 	})
 	opts = append(opts, aliases)

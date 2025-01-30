@@ -61,9 +61,6 @@ func NewPrivateStoreCollectionOffer(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:marketplace:PrivateStoreCollectionOffer"),
-		},
-		{
 			Type: pulumi.String("azure-native:marketplace/v20210601:PrivateStoreCollectionOffer"),
 		},
 		{
@@ -74,6 +71,9 @@ func NewPrivateStoreCollectionOffer(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:marketplace/v20220901:PrivateStoreCollectionOffer"),
+		},
+		{
+			Type: pulumi.String("azure-native:marketplace:PrivateStoreCollectionOffer"),
 		},
 	})
 	opts = append(opts, aliases)

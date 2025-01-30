@@ -60,9 +60,6 @@ func NewPublicIPPrefix(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:network:PublicIPPrefix"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20180701:PublicIPPrefix"),
 		},
 		{
@@ -172,6 +169,9 @@ func NewPublicIPPrefix(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20240501:PublicIPPrefix"),
+		},
+		{
+			Type: pulumi.String("azure-native:network:PublicIPPrefix"),
 		},
 	})
 	opts = append(opts, aliases)

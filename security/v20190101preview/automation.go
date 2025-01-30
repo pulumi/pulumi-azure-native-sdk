@@ -52,10 +52,10 @@ func NewAutomation(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:security:Automation"),
+			Type: pulumi.String("azure-native:security/v20231201preview:Automation"),
 		},
 		{
-			Type: pulumi.String("azure-native:security/v20231201preview:Automation"),
+			Type: pulumi.String("azure-native:security:Automation"),
 		},
 	})
 	opts = append(opts, aliases)

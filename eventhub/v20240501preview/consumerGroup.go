@@ -50,9 +50,6 @@ func NewConsumerGroup(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:eventhub:ConsumerGroup"),
-		},
-		{
 			Type: pulumi.String("azure-native:eventhub/v20140901:ConsumerGroup"),
 		},
 		{
@@ -84,6 +81,9 @@ func NewConsumerGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:eventhub/v20240101:ConsumerGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:eventhub:ConsumerGroup"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -60,9 +60,6 @@ func NewWebAppHostNameBindingSlot(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:web:WebAppHostNameBindingSlot"),
-		},
-		{
 			Type: pulumi.String("azure-native:web/v20150801:WebAppHostNameBindingSlot"),
 		},
 		{
@@ -112,6 +109,9 @@ func NewWebAppHostNameBindingSlot(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:web/v20231201:WebAppHostNameBindingSlot"),
+		},
+		{
+			Type: pulumi.String("azure-native:web:WebAppHostNameBindingSlot"),
 		},
 	})
 	opts = append(opts, aliases)

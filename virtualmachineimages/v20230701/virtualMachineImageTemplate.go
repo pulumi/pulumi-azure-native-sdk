@@ -91,9 +91,6 @@ func NewVirtualMachineImageTemplate(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:virtualmachineimages:VirtualMachineImageTemplate"),
-		},
-		{
 			Type: pulumi.String("azure-native:virtualmachineimages/v20180201preview:VirtualMachineImageTemplate"),
 		},
 		{
@@ -116,6 +113,9 @@ func NewVirtualMachineImageTemplate(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:virtualmachineimages/v20240201:VirtualMachineImageTemplate"),
+		},
+		{
+			Type: pulumi.String("azure-native:virtualmachineimages:VirtualMachineImageTemplate"),
 		},
 	})
 	opts = append(opts, aliases)

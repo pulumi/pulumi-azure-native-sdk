@@ -134,9 +134,6 @@ func NewExtendedDatabaseBlobAuditingPolicy(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:sql:ExtendedDatabaseBlobAuditingPolicy"),
-		},
-		{
 			Type: pulumi.String("azure-native:sql/v20170301preview:ExtendedDatabaseBlobAuditingPolicy"),
 		},
 		{
@@ -183,6 +180,9 @@ func NewExtendedDatabaseBlobAuditingPolicy(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20230801preview:ExtendedDatabaseBlobAuditingPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql:ExtendedDatabaseBlobAuditingPolicy"),
 		},
 	})
 	opts = append(opts, aliases)

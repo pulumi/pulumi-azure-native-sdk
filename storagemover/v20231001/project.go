@@ -43,9 +43,6 @@ func NewProject(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:storagemover:Project"),
-		},
-		{
 			Type: pulumi.String("azure-native:storagemover/v20220701preview:Project"),
 		},
 		{
@@ -56,6 +53,9 @@ func NewProject(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:storagemover/v20240701:Project"),
+		},
+		{
+			Type: pulumi.String("azure-native:storagemover:Project"),
 		},
 	})
 	opts = append(opts, aliases)

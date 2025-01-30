@@ -48,9 +48,6 @@ func NewLoadTest(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:loadtestservice:LoadTest"),
-		},
-		{
 			Type: pulumi.String("azure-native:loadtestservice/v20220415preview:LoadTest"),
 		},
 		{
@@ -58,6 +55,9 @@ func NewLoadTest(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:loadtestservice/v20231201preview:LoadTest"),
+		},
+		{
+			Type: pulumi.String("azure-native:loadtestservice:LoadTest"),
 		},
 	})
 	opts = append(opts, aliases)

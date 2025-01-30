@@ -43,9 +43,6 @@ func NewAccessPolicy(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:timeseriesinsights:AccessPolicy"),
-		},
-		{
 			Type: pulumi.String("azure-native:timeseriesinsights/v20170228preview:AccessPolicy"),
 		},
 		{
@@ -59,6 +56,9 @@ func NewAccessPolicy(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:timeseriesinsights/v20210630preview:AccessPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:timeseriesinsights:AccessPolicy"),
 		},
 	})
 	opts = append(opts, aliases)

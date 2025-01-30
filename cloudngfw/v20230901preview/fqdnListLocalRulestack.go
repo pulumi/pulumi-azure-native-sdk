@@ -52,9 +52,6 @@ func NewFqdnListLocalRulestack(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:cloudngfw:FqdnListLocalRulestack"),
-		},
-		{
 			Type: pulumi.String("azure-native:cloudngfw/v20220829:FqdnListLocalRulestack"),
 		},
 		{
@@ -71,6 +68,9 @@ func NewFqdnListLocalRulestack(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:cloudngfw/v20240207preview:FqdnListLocalRulestack"),
+		},
+		{
+			Type: pulumi.String("azure-native:cloudngfw:FqdnListLocalRulestack"),
 		},
 	})
 	opts = append(opts, aliases)

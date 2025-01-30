@@ -53,9 +53,6 @@ func NewBatchEndpoint(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:machinelearningservices:BatchEndpoint"),
-		},
-		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20210301preview:BatchEndpoint"),
 		},
 		{
@@ -108,6 +105,9 @@ func NewBatchEndpoint(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001preview:BatchEndpoint"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices:BatchEndpoint"),
 		},
 	})
 	opts = append(opts, aliases)

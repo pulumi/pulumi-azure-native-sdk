@@ -51,9 +51,6 @@ func NewProtectedItem(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:recoveryservices:ProtectedItem"),
-		},
-		{
 			Type: pulumi.String("azure-native:recoveryservices/v20160601:ProtectedItem"),
 		},
 		{
@@ -154,6 +151,9 @@ func NewProtectedItem(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:recoveryservices/v20241001:ProtectedItem"),
+		},
+		{
+			Type: pulumi.String("azure-native:recoveryservices:ProtectedItem"),
 		},
 	})
 	opts = append(opts, aliases)

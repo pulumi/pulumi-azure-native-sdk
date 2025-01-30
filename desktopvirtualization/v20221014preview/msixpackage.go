@@ -61,9 +61,6 @@ func NewMSIXPackage(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:desktopvirtualization:MSIXPackage"),
-		},
-		{
 			Type: pulumi.String("azure-native:desktopvirtualization/v20200921preview:MSIXPackage"),
 		},
 		{
@@ -128,6 +125,9 @@ func NewMSIXPackage(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:desktopvirtualization/v20240808preview:MSIXPackage"),
+		},
+		{
+			Type: pulumi.String("azure-native:desktopvirtualization:MSIXPackage"),
 		},
 	})
 	opts = append(opts, aliases)

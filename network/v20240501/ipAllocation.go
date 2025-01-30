@@ -57,9 +57,6 @@ func NewIpAllocation(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:network:IpAllocation"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20200301:IpAllocation"),
 		},
 		{
@@ -130,6 +127,9 @@ func NewIpAllocation(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20240301:IpAllocation"),
+		},
+		{
+			Type: pulumi.String("azure-native:network:IpAllocation"),
 		},
 	})
 	opts = append(opts, aliases)

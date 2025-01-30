@@ -52,9 +52,6 @@ func NewGremlinResourceGremlinGraph(ctx *pulumi.Context,
 	args.Resource = args.Resource.ToGremlinGraphResourceOutput().ApplyT(func(v GremlinGraphResource) GremlinGraphResource { return *v.Defaults() }).(GremlinGraphResourceOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:documentdb:GremlinResourceGremlinGraph"),
-		},
-		{
 			Type: pulumi.String("azure-native:documentdb/v20150401:GremlinResourceGremlinGraph"),
 		},
 		{
@@ -182,6 +179,9 @@ func NewGremlinResourceGremlinGraph(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:documentdb/v20241201preview:GremlinResourceGremlinGraph"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb:GremlinResourceGremlinGraph"),
 		},
 	})
 	opts = append(opts, aliases)

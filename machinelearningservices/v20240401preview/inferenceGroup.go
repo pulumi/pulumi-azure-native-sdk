@@ -57,9 +57,6 @@ func NewInferenceGroup(ctx *pulumi.Context,
 	args.InferenceGroupProperties = args.InferenceGroupProperties.ToInferenceGroupTypeOutput().ApplyT(func(v InferenceGroupType) InferenceGroupType { return *v.Defaults() }).(InferenceGroupTypeOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:machinelearningservices:InferenceGroup"),
-		},
-		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20230801preview:InferenceGroup"),
 		},
 		{
@@ -67,6 +64,9 @@ func NewInferenceGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001preview:InferenceGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices:InferenceGroup"),
 		},
 	})
 	opts = append(opts, aliases)

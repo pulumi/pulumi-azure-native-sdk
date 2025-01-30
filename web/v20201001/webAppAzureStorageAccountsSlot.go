@@ -46,9 +46,6 @@ func NewWebAppAzureStorageAccountsSlot(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:web:WebAppAzureStorageAccountsSlot"),
-		},
-		{
 			Type: pulumi.String("azure-native:web/v20180201:WebAppAzureStorageAccountsSlot"),
 		},
 		{
@@ -92,6 +89,9 @@ func NewWebAppAzureStorageAccountsSlot(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:web/v20240401:WebAppAzureStorageAccountsSlot"),
+		},
+		{
+			Type: pulumi.String("azure-native:web:WebAppAzureStorageAccountsSlot"),
 		},
 	})
 	opts = append(opts, aliases)

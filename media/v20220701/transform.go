@@ -50,9 +50,6 @@ func NewTransform(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:media:Transform"),
-		},
-		{
 			Type: pulumi.String("azure-native:media/v20180330preview:Transform"),
 		},
 		{
@@ -72,6 +69,9 @@ func NewTransform(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:media/v20220501preview:Transform"),
+		},
+		{
+			Type: pulumi.String("azure-native:media:Transform"),
 		},
 	})
 	opts = append(opts, aliases)

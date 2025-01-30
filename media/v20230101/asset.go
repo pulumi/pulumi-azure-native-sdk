@@ -57,9 +57,6 @@ func NewAsset(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:media:Asset"),
-		},
-		{
 			Type: pulumi.String("azure-native:media/v20180330preview:Asset"),
 		},
 		{
@@ -79,6 +76,9 @@ func NewAsset(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:media/v20220801:Asset"),
+		},
+		{
+			Type: pulumi.String("azure-native:media:Asset"),
 		},
 	})
 	opts = append(opts, aliases)

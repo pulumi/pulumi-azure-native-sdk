@@ -50,9 +50,6 @@ func NewGateway(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:hybridcompute:Gateway"),
-		},
-		{
 			Type: pulumi.String("azure-native:hybridcompute/v20240520preview:Gateway"),
 		},
 		{
@@ -63,6 +60,9 @@ func NewGateway(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:hybridcompute/v20241110preview:Gateway"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridcompute:Gateway"),
 		},
 	})
 	opts = append(opts, aliases)

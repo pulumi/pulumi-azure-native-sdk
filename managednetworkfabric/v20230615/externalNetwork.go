@@ -71,10 +71,10 @@ func NewExternalNetwork(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:managednetworkfabric:ExternalNetwork"),
+			Type: pulumi.String("azure-native:managednetworkfabric/v20230201preview:ExternalNetwork"),
 		},
 		{
-			Type: pulumi.String("azure-native:managednetworkfabric/v20230201preview:ExternalNetwork"),
+			Type: pulumi.String("azure-native:managednetworkfabric:ExternalNetwork"),
 		},
 	})
 	opts = append(opts, aliases)

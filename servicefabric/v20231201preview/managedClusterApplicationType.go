@@ -45,9 +45,6 @@ func NewManagedClusterApplicationType(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:servicefabric:ManagedClusterApplicationType"),
-		},
-		{
 			Type: pulumi.String("azure-native:servicefabric/v20210101preview:ManagedClusterApplicationType"),
 		},
 		{
@@ -103,6 +100,9 @@ func NewManagedClusterApplicationType(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:servicefabric/v20240901preview:ManagedClusterApplicationType"),
+		},
+		{
+			Type: pulumi.String("azure-native:servicefabric:ManagedClusterApplicationType"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -46,9 +46,6 @@ func NewWebAppDomainOwnershipIdentifierSlot(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:web:WebAppDomainOwnershipIdentifierSlot"),
-		},
-		{
 			Type: pulumi.String("azure-native:web/v20160801:WebAppDomainOwnershipIdentifierSlot"),
 		},
 		{
@@ -95,6 +92,9 @@ func NewWebAppDomainOwnershipIdentifierSlot(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:web/v20240401:WebAppDomainOwnershipIdentifierSlot"),
+		},
+		{
+			Type: pulumi.String("azure-native:web:WebAppDomainOwnershipIdentifierSlot"),
 		},
 	})
 	opts = append(opts, aliases)

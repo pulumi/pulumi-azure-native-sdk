@@ -45,10 +45,10 @@ func NewArtifactStore(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:hybridnetwork:ArtifactStore"),
+			Type: pulumi.String("azure-native:hybridnetwork/v20230901:ArtifactStore"),
 		},
 		{
-			Type: pulumi.String("azure-native:hybridnetwork/v20230901:ArtifactStore"),
+			Type: pulumi.String("azure-native:hybridnetwork:ArtifactStore"),
 		},
 	})
 	opts = append(opts, aliases)

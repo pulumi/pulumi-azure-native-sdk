@@ -44,13 +44,13 @@ func NewKeyGroup(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:cdn:KeyGroup"),
-		},
-		{
 			Type: pulumi.String("azure-native:cdn/v20240501preview:KeyGroup"),
 		},
 		{
 			Type: pulumi.String("azure-native:cdn/v20240601preview:KeyGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:cdn:KeyGroup"),
 		},
 	})
 	opts = append(opts, aliases)

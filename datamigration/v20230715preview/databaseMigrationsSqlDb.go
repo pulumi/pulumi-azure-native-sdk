@@ -39,10 +39,10 @@ func NewDatabaseMigrationsSqlDb(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:datamigration:DatabaseMigrationsSqlDb"),
+			Type: pulumi.String("azure-native:datamigration/v20220330preview:DatabaseMigrationsSqlDb"),
 		},
 		{
-			Type: pulumi.String("azure-native:datamigration/v20220330preview:DatabaseMigrationsSqlDb"),
+			Type: pulumi.String("azure-native:datamigration:DatabaseMigrationsSqlDb"),
 		},
 	})
 	opts = append(opts, aliases)
