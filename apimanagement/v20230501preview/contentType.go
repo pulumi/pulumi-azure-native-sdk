@@ -43,9 +43,6 @@ func NewContentType(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:apimanagement:ContentType"),
-		},
-		{
 			Type: pulumi.String("azure-native:apimanagement/v20191201:ContentType"),
 		},
 		{
@@ -86,6 +83,9 @@ func NewContentType(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20240601preview:ContentType"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement:ContentType"),
 		},
 	})
 	opts = append(opts, aliases)

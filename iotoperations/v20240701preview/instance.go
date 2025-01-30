@@ -47,9 +47,6 @@ func NewInstance(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:iotoperations:Instance"),
-		},
-		{
 			Type: pulumi.String("azure-native:iotoperations/v20240815preview:Instance"),
 		},
 		{
@@ -57,6 +54,9 @@ func NewInstance(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:iotoperations/v20241101:Instance"),
+		},
+		{
+			Type: pulumi.String("azure-native:iotoperations:Instance"),
 		},
 	})
 	opts = append(opts, aliases)

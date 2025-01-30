@@ -102,9 +102,6 @@ func NewConnectedCluster(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:kubernetes:ConnectedCluster"),
-		},
-		{
 			Type: pulumi.String("azure-native:kubernetes/v20200101preview:ConnectedCluster"),
 		},
 		{
@@ -139,6 +136,9 @@ func NewConnectedCluster(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:kubernetes/v20241201preview:ConnectedCluster"),
+		},
+		{
+			Type: pulumi.String("azure-native:kubernetes:ConnectedCluster"),
 		},
 	})
 	opts = append(opts, aliases)

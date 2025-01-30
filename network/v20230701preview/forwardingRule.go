@@ -57,13 +57,13 @@ func NewForwardingRule(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:network:ForwardingRule"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20200401preview:ForwardingRule"),
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20220701:ForwardingRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:network:ForwardingRule"),
 		},
 	})
 	opts = append(opts, aliases)

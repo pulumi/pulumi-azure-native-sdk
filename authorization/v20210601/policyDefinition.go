@@ -49,9 +49,6 @@ func NewPolicyDefinition(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:authorization:PolicyDefinition"),
-		},
-		{
 			Type: pulumi.String("azure-native:authorization/v20151001preview:PolicyDefinition"),
 		},
 		{
@@ -89,6 +86,9 @@ func NewPolicyDefinition(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:authorization/v20250101:PolicyDefinition"),
+		},
+		{
+			Type: pulumi.String("azure-native:authorization:PolicyDefinition"),
 		},
 	})
 	opts = append(opts, aliases)

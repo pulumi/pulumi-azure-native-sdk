@@ -54,9 +54,6 @@ func NewConnectedEnvironment(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:app:ConnectedEnvironment"),
-		},
-		{
 			Type: pulumi.String("azure-native:app/v20220601preview:ConnectedEnvironment"),
 		},
 		{
@@ -88,6 +85,9 @@ func NewConnectedEnvironment(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:app/v20240802preview:ConnectedEnvironment"),
+		},
+		{
+			Type: pulumi.String("azure-native:app:ConnectedEnvironment"),
 		},
 	})
 	opts = append(opts, aliases)

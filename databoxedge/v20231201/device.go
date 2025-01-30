@@ -84,9 +84,6 @@ func NewDevice(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:databoxedge:Device"),
-		},
-		{
 			Type: pulumi.String("azure-native:databoxedge/v20190301:Device"),
 		},
 		{
@@ -133,6 +130,9 @@ func NewDevice(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:databoxedge/v20230701:Device"),
+		},
+		{
+			Type: pulumi.String("azure-native:databoxedge:Device"),
 		},
 	})
 	opts = append(opts, aliases)

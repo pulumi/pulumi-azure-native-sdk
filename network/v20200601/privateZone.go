@@ -56,9 +56,6 @@ func NewPrivateZone(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:network:PrivateZone"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20180901:PrivateZone"),
 		},
 		{
@@ -66,6 +63,9 @@ func NewPrivateZone(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20240601:PrivateZone"),
+		},
+		{
+			Type: pulumi.String("azure-native:network:PrivateZone"),
 		},
 	})
 	opts = append(opts, aliases)

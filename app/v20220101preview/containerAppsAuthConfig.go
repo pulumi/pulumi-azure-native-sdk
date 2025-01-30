@@ -49,9 +49,6 @@ func NewContainerAppsAuthConfig(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:app:ContainerAppsAuthConfig"),
-		},
-		{
 			Type: pulumi.String("azure-native:app/v20220301:ContainerAppsAuthConfig"),
 		},
 		{
@@ -89,6 +86,9 @@ func NewContainerAppsAuthConfig(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:app/v20241002preview:ContainerAppsAuthConfig"),
+		},
+		{
+			Type: pulumi.String("azure-native:app:ContainerAppsAuthConfig"),
 		},
 	})
 	opts = append(opts, aliases)

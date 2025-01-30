@@ -45,9 +45,6 @@ func NewEndpointDeployment(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:machinelearningservices:EndpointDeployment"),
-		},
-		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20240101preview:EndpointDeployment"),
 		},
 		{
@@ -55,6 +52,9 @@ func NewEndpointDeployment(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001preview:EndpointDeployment"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices:EndpointDeployment"),
 		},
 	})
 	opts = append(opts, aliases)

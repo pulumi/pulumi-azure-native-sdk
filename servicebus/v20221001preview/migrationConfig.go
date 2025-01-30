@@ -57,9 +57,6 @@ func NewMigrationConfig(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:servicebus:MigrationConfig"),
-		},
-		{
 			Type: pulumi.String("azure-native:servicebus/v20170401:MigrationConfig"),
 		},
 		{
@@ -82,6 +79,9 @@ func NewMigrationConfig(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:servicebus/v20240101:MigrationConfig"),
+		},
+		{
+			Type: pulumi.String("azure-native:servicebus:MigrationConfig"),
 		},
 	})
 	opts = append(opts, aliases)

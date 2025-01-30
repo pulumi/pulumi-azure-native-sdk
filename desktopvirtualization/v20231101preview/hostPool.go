@@ -108,9 +108,6 @@ func NewHostPool(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:desktopvirtualization:HostPool"),
-		},
-		{
 			Type: pulumi.String("azure-native:desktopvirtualization/v20190123preview:HostPool"),
 		},
 		{
@@ -184,6 +181,9 @@ func NewHostPool(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:desktopvirtualization/v20240808preview:HostPool"),
+		},
+		{
+			Type: pulumi.String("azure-native:desktopvirtualization:HostPool"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -60,10 +60,10 @@ func NewFirmware(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:iotfirmwaredefense:Firmware"),
+			Type: pulumi.String("azure-native:iotfirmwaredefense/v20230208preview:Firmware"),
 		},
 		{
-			Type: pulumi.String("azure-native:iotfirmwaredefense/v20230208preview:Firmware"),
+			Type: pulumi.String("azure-native:iotfirmwaredefense:Firmware"),
 		},
 	})
 	opts = append(opts, aliases)

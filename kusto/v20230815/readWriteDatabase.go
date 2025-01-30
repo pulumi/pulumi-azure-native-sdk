@@ -60,9 +60,6 @@ func NewReadWriteDatabase(ctx *pulumi.Context,
 	args.Kind = pulumi.String("ReadWrite")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:kusto:ReadWriteDatabase"),
-		},
-		{
 			Type: pulumi.String("azure-native:kusto/v20170907privatepreview:ReadWriteDatabase"),
 		},
 		{
@@ -112,6 +109,9 @@ func NewReadWriteDatabase(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:kusto/v20240413:ReadWriteDatabase"),
+		},
+		{
+			Type: pulumi.String("azure-native:kusto:ReadWriteDatabase"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -61,9 +61,6 @@ func NewVcenterController(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:offazure:VcenterController"),
-		},
-		{
 			Type: pulumi.String("azure-native:offazure/v20200101:VcenterController"),
 		},
 		{
@@ -74,6 +71,9 @@ func NewVcenterController(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:offazure/v20231001preview:VcenterController"),
+		},
+		{
+			Type: pulumi.String("azure-native:offazure:VcenterController"),
 		},
 	})
 	opts = append(opts, aliases)

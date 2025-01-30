@@ -75,9 +75,6 @@ func NewMicrosoftSecurityIncidentCreationAlertRule(ctx *pulumi.Context,
 	args.Kind = pulumi.String("MicrosoftSecurityIncidentCreation")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:securityinsights:MicrosoftSecurityIncidentCreationAlertRule"),
-		},
-		{
 			Type: pulumi.String("azure-native:securityinsights/v20190101preview:MicrosoftSecurityIncidentCreationAlertRule"),
 		},
 		{
@@ -178,6 +175,9 @@ func NewMicrosoftSecurityIncidentCreationAlertRule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20240901:MicrosoftSecurityIncidentCreationAlertRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights:MicrosoftSecurityIncidentCreationAlertRule"),
 		},
 	})
 	opts = append(opts, aliases)

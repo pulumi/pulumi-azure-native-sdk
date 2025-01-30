@@ -58,9 +58,6 @@ func NewAADDataConnector(ctx *pulumi.Context,
 	args.Kind = pulumi.String("AzureActiveDirectory")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:securityinsights:AADDataConnector"),
-		},
-		{
 			Type: pulumi.String("azure-native:securityinsights/v20190101preview:AADDataConnector"),
 		},
 		{
@@ -161,6 +158,9 @@ func NewAADDataConnector(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20241001preview:AADDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights:AADDataConnector"),
 		},
 	})
 	opts = append(opts, aliases)

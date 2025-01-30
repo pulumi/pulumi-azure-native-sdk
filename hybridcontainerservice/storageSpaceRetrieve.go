@@ -44,9 +44,6 @@ func NewStorageSpaceRetrieve(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:hybridcontainerservice:storageSpaceRetrieve"),
-		},
-		{
 			Type: pulumi.String("azure-native:hybridcontainerservice/v20220501preview:StorageSpaceRetrieve"),
 		},
 		{
@@ -57,6 +54,9 @@ func NewStorageSpaceRetrieve(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:hybridcontainerservice/v20220901preview:storageSpaceRetrieve"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridcontainerservice:storageSpaceRetrieve"),
 		},
 	})
 	opts = append(opts, aliases)

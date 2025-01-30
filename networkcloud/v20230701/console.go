@@ -69,9 +69,6 @@ func NewConsole(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:networkcloud:Console"),
-		},
-		{
 			Type: pulumi.String("azure-native:networkcloud/v20231001preview:Console"),
 		},
 		{
@@ -82,6 +79,9 @@ func NewConsole(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:networkcloud/v20241001preview:Console"),
+		},
+		{
+			Type: pulumi.String("azure-native:networkcloud:Console"),
 		},
 	})
 	opts = append(opts, aliases)

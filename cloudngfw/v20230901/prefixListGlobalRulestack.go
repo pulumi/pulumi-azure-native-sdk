@@ -49,9 +49,6 @@ func NewPrefixListGlobalRulestack(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:cloudngfw:PrefixListGlobalRulestack"),
-		},
-		{
 			Type: pulumi.String("azure-native:cloudngfw/v20220829:PrefixListGlobalRulestack"),
 		},
 		{
@@ -68,6 +65,9 @@ func NewPrefixListGlobalRulestack(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:cloudngfw/v20240207preview:PrefixListGlobalRulestack"),
+		},
+		{
+			Type: pulumi.String("azure-native:cloudngfw:PrefixListGlobalRulestack"),
 		},
 	})
 	opts = append(opts, aliases)

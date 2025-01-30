@@ -140,9 +140,6 @@ func NewServerBlobAuditingPolicy(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:sql:ServerBlobAuditingPolicy"),
-		},
-		{
 			Type: pulumi.String("azure-native:sql/v20170301preview:ServerBlobAuditingPolicy"),
 		},
 		{
@@ -189,6 +186,9 @@ func NewServerBlobAuditingPolicy(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20240501preview:ServerBlobAuditingPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql:ServerBlobAuditingPolicy"),
 		},
 	})
 	opts = append(opts, aliases)

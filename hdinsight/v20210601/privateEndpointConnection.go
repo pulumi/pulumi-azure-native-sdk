@@ -50,9 +50,6 @@ func NewPrivateEndpointConnection(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:hdinsight:PrivateEndpointConnection"),
-		},
-		{
 			Type: pulumi.String("azure-native:hdinsight/v20230415preview:PrivateEndpointConnection"),
 		},
 		{
@@ -60,6 +57,9 @@ func NewPrivateEndpointConnection(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:hdinsight/v20240801preview:PrivateEndpointConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:hdinsight:PrivateEndpointConnection"),
 		},
 	})
 	opts = append(opts, aliases)

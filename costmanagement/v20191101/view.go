@@ -69,9 +69,6 @@ func NewView(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:costmanagement:View"),
-		},
-		{
 			Type: pulumi.String("azure-native:costmanagement/v20190401preview:View"),
 		},
 		{
@@ -112,6 +109,9 @@ func NewView(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:costmanagement/v20240801:View"),
+		},
+		{
+			Type: pulumi.String("azure-native:costmanagement:View"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -98,9 +98,6 @@ func NewAccessReviewScheduleDefinitionById(ctx *pulumi.Context,
 
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:authorization:AccessReviewScheduleDefinitionById"),
-		},
-		{
 			Type: pulumi.String("azure-native:authorization/v20180501preview:AccessReviewScheduleDefinitionById"),
 		},
 		{
@@ -111,6 +108,9 @@ func NewAccessReviewScheduleDefinitionById(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:authorization/v20211116preview:AccessReviewScheduleDefinitionById"),
+		},
+		{
+			Type: pulumi.String("azure-native:authorization:AccessReviewScheduleDefinitionById"),
 		},
 	})
 	opts = append(opts, aliases)

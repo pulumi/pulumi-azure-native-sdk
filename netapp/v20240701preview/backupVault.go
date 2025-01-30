@@ -45,9 +45,6 @@ func NewBackupVault(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:netapp:BackupVault"),
-		},
-		{
 			Type: pulumi.String("azure-native:netapp/v20221101preview:BackupVault"),
 		},
 		{
@@ -79,6 +76,12 @@ func NewBackupVault(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:netapp/v20240701:BackupVault"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20240901:BackupVault"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp:BackupVault"),
 		},
 	})
 	opts = append(opts, aliases)

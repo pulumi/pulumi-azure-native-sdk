@@ -49,9 +49,6 @@ func NewHuntComment(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:securityinsights:HuntComment"),
-		},
-		{
 			Type: pulumi.String("azure-native:securityinsights/v20230401preview:HuntComment"),
 		},
 		{
@@ -80,6 +77,9 @@ func NewHuntComment(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20240401preview:HuntComment"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights:HuntComment"),
 		},
 	})
 	opts = append(opts, aliases)

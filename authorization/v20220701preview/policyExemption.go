@@ -63,10 +63,10 @@ func NewPolicyExemption(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:authorization:PolicyExemption"),
+			Type: pulumi.String("azure-native:authorization/v20200701preview:PolicyExemption"),
 		},
 		{
-			Type: pulumi.String("azure-native:authorization/v20200701preview:PolicyExemption"),
+			Type: pulumi.String("azure-native:authorization:PolicyExemption"),
 		},
 	})
 	opts = append(opts, aliases)

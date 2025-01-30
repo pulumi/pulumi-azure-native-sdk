@@ -84,9 +84,6 @@ func NewLocalRule(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:cloudngfw:LocalRule"),
-		},
-		{
 			Type: pulumi.String("azure-native:cloudngfw/v20220829preview:LocalRule"),
 		},
 		{
@@ -103,6 +100,9 @@ func NewLocalRule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:cloudngfw/v20240207preview:LocalRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:cloudngfw:LocalRule"),
 		},
 	})
 	opts = append(opts, aliases)

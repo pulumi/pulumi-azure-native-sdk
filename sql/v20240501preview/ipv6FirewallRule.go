@@ -41,9 +41,6 @@ func NewIPv6FirewallRule(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:sql:IPv6FirewallRule"),
-		},
-		{
 			Type: pulumi.String("azure-native:sql/v20210801preview:IPv6FirewallRule"),
 		},
 		{
@@ -72,6 +69,9 @@ func NewIPv6FirewallRule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20230801preview:IPv6FirewallRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql:IPv6FirewallRule"),
 		},
 	})
 	opts = append(opts, aliases)

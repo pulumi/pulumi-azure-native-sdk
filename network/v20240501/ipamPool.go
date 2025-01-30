@@ -48,10 +48,10 @@ func NewIpamPool(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:network:IpamPool"),
+			Type: pulumi.String("azure-native:network/v20240101preview:IpamPool"),
 		},
 		{
-			Type: pulumi.String("azure-native:network/v20240101preview:IpamPool"),
+			Type: pulumi.String("azure-native:network:IpamPool"),
 		},
 	})
 	opts = append(opts, aliases)

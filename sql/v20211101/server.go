@@ -68,9 +68,6 @@ func NewServer(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:sql:Server"),
-		},
-		{
 			Type: pulumi.String("azure-native:sql/v20140401:Server"),
 		},
 		{
@@ -123,6 +120,9 @@ func NewServer(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20240501preview:Server"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql:Server"),
 		},
 	})
 	opts = append(opts, aliases)

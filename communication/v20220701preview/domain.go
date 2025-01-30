@@ -64,9 +64,6 @@ func NewDomain(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:communication:Domain"),
-		},
-		{
 			Type: pulumi.String("azure-native:communication/v20211001preview:Domain"),
 		},
 		{
@@ -83,6 +80,9 @@ func NewDomain(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:communication/v20230601preview:Domain"),
+		},
+		{
+			Type: pulumi.String("azure-native:communication:Domain"),
 		},
 	})
 	opts = append(opts, aliases)

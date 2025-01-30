@@ -47,9 +47,6 @@ func NewSecurityUserConfiguration(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:network:SecurityUserConfiguration"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20210201preview:SecurityUserConfiguration"),
 		},
 		{
@@ -63,6 +60,9 @@ func NewSecurityUserConfiguration(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20240301:SecurityUserConfiguration"),
+		},
+		{
+			Type: pulumi.String("azure-native:network:SecurityUserConfiguration"),
 		},
 	})
 	opts = append(opts, aliases)

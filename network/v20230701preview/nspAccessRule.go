@@ -60,13 +60,13 @@ func NewNspAccessRule(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:network:NspAccessRule"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20210201preview:NspAccessRule"),
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20230801preview:NspAccessRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:network:NspAccessRule"),
 		},
 	})
 	opts = append(opts, aliases)

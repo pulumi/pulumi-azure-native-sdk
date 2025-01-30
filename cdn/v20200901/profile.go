@@ -51,9 +51,6 @@ func NewProfile(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:cdn:Profile"),
-		},
-		{
 			Type: pulumi.String("azure-native:cdn/v20150601:Profile"),
 		},
 		{
@@ -112,6 +109,9 @@ func NewProfile(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:cdn/v20240901:Profile"),
+		},
+		{
+			Type: pulumi.String("azure-native:cdn:Profile"),
 		},
 	})
 	opts = append(opts, aliases)

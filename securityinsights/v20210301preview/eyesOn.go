@@ -53,9 +53,6 @@ func NewEyesOn(ctx *pulumi.Context,
 	args.Kind = pulumi.String("EyesOn")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:securityinsights:EyesOn"),
-		},
-		{
 			Type: pulumi.String("azure-native:securityinsights/v20190101preview:EyesOn"),
 		},
 		{
@@ -132,6 +129,9 @@ func NewEyesOn(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20241001preview:EyesOn"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights:EyesOn"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -57,9 +57,6 @@ func NewRedisEnterprise(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:cache:RedisEnterprise"),
-		},
-		{
 			Type: pulumi.String("azure-native:cache/v20210201preview:RedisEnterprise"),
 		},
 		{
@@ -103,6 +100,9 @@ func NewRedisEnterprise(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:cache/v20241001:RedisEnterprise"),
+		},
+		{
+			Type: pulumi.String("azure-native:cache:RedisEnterprise"),
 		},
 	})
 	opts = append(opts, aliases)

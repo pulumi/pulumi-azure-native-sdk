@@ -54,13 +54,13 @@ func NewAzureMonitorWorkspace(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:monitor:AzureMonitorWorkspace"),
-		},
-		{
 			Type: pulumi.String("azure-native:monitor/v20210603preview:AzureMonitorWorkspace"),
 		},
 		{
 			Type: pulumi.String("azure-native:monitor/v20230403:AzureMonitorWorkspace"),
+		},
+		{
+			Type: pulumi.String("azure-native:monitor:AzureMonitorWorkspace"),
 		},
 	})
 	opts = append(opts, aliases)

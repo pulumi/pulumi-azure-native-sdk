@@ -40,10 +40,10 @@ func NewEnergyService(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:openenergyplatform:EnergyService"),
+			Type: pulumi.String("azure-native:openenergyplatform/v20210601preview:EnergyService"),
 		},
 		{
-			Type: pulumi.String("azure-native:openenergyplatform/v20210601preview:EnergyService"),
+			Type: pulumi.String("azure-native:openenergyplatform:EnergyService"),
 		},
 	})
 	opts = append(opts, aliases)

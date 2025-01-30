@@ -41,9 +41,6 @@ func NewServiceRegistry(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:appplatform:ServiceRegistry"),
-		},
-		{
 			Type: pulumi.String("azure-native:appplatform/v20220101preview:ServiceRegistry"),
 		},
 		{
@@ -87,6 +84,9 @@ func NewServiceRegistry(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:appplatform/v20240101preview:ServiceRegistry"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform:ServiceRegistry"),
 		},
 	})
 	opts = append(opts, aliases)

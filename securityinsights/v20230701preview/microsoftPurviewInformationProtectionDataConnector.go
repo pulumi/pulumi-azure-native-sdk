@@ -58,9 +58,6 @@ func NewMicrosoftPurviewInformationProtectionDataConnector(ctx *pulumi.Context,
 	args.Kind = pulumi.String("MicrosoftPurviewInformationProtection")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:securityinsights:MicrosoftPurviewInformationProtectionDataConnector"),
-		},
-		{
 			Type: pulumi.String("azure-native:securityinsights/v20190101preview:MicrosoftPurviewInformationProtectionDataConnector"),
 		},
 		{
@@ -161,6 +158,9 @@ func NewMicrosoftPurviewInformationProtectionDataConnector(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20241001preview:MicrosoftPurviewInformationProtectionDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights:MicrosoftPurviewInformationProtectionDataConnector"),
 		},
 	})
 	opts = append(opts, aliases)

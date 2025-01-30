@@ -61,9 +61,6 @@ func NewResource(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:resources:Resource"),
-		},
-		{
 			Type: pulumi.String("azure-native:resources/v20151101:Resource"),
 		},
 		{
@@ -128,6 +125,9 @@ func NewResource(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:resources/v20240701:Resource"),
+		},
+		{
+			Type: pulumi.String("azure-native:resources:Resource"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -49,9 +49,6 @@ func NewEventHubAuthorizationRule(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:eventhub:EventHubAuthorizationRule"),
-		},
-		{
 			Type: pulumi.String("azure-native:eventhub/v20140901:EventHubAuthorizationRule"),
 		},
 		{
@@ -83,6 +80,9 @@ func NewEventHubAuthorizationRule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:eventhub/v20240101:EventHubAuthorizationRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:eventhub:EventHubAuthorizationRule"),
 		},
 	})
 	opts = append(opts, aliases)

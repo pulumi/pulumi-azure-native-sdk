@@ -45,9 +45,6 @@ func NewDiagnosticsPackage(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:mobilenetwork:DiagnosticsPackage"),
-		},
-		{
 			Type: pulumi.String("azure-native:mobilenetwork/v20230601:DiagnosticsPackage"),
 		},
 		{
@@ -55,6 +52,9 @@ func NewDiagnosticsPackage(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:mobilenetwork/v20240201:DiagnosticsPackage"),
+		},
+		{
+			Type: pulumi.String("azure-native:mobilenetwork:DiagnosticsPackage"),
 		},
 	})
 	opts = append(opts, aliases)

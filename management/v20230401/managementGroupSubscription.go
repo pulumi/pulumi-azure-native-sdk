@@ -42,9 +42,6 @@ func NewManagementGroupSubscription(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:management:ManagementGroupSubscription"),
-		},
-		{
 			Type: pulumi.String("azure-native:management/v20200501:ManagementGroupSubscription"),
 		},
 		{
@@ -52,6 +49,9 @@ func NewManagementGroupSubscription(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:management/v20210401:ManagementGroupSubscription"),
+		},
+		{
+			Type: pulumi.String("azure-native:management:ManagementGroupSubscription"),
 		},
 	})
 	opts = append(opts, aliases)

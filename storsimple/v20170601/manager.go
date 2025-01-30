@@ -46,10 +46,10 @@ func NewManager(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:storsimple:Manager"),
+			Type: pulumi.String("azure-native:storsimple/v20161001:Manager"),
 		},
 		{
-			Type: pulumi.String("azure-native:storsimple/v20161001:Manager"),
+			Type: pulumi.String("azure-native:storsimple:Manager"),
 		},
 	})
 	opts = append(opts, aliases)

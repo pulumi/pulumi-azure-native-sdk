@@ -60,9 +60,6 @@ func NewSharedPrivateLinkResource(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:databasewatcher:SharedPrivateLinkResource"),
-		},
-		{
 			Type: pulumi.String("azure-native:databasewatcher/v20230901preview:SharedPrivateLinkResource"),
 		},
 		{
@@ -70,6 +67,9 @@ func NewSharedPrivateLinkResource(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:databasewatcher/v20250102:SharedPrivateLinkResource"),
+		},
+		{
+			Type: pulumi.String("azure-native:databasewatcher:SharedPrivateLinkResource"),
 		},
 	})
 	opts = append(opts, aliases)

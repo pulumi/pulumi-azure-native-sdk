@@ -70,9 +70,6 @@ func NewModule(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:automation:Module"),
-		},
-		{
 			Type: pulumi.String("azure-native:automation/v20151031:Module"),
 		},
 		{
@@ -89,6 +86,9 @@ func NewModule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:automation/v20241023:Module"),
+		},
+		{
+			Type: pulumi.String("azure-native:automation:Module"),
 		},
 	})
 	opts = append(opts, aliases)

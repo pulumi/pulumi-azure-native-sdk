@@ -46,9 +46,6 @@ func NewFirewallPolicyRuleCollectionGroupDraft(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:network:FirewallPolicyRuleCollectionGroupDraft"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20231101:FirewallPolicyRuleCollectionGroupDraft"),
 		},
 		{
@@ -56,6 +53,9 @@ func NewFirewallPolicyRuleCollectionGroupDraft(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20240301:FirewallPolicyRuleCollectionGroupDraft"),
+		},
+		{
+			Type: pulumi.String("azure-native:network:FirewallPolicyRuleCollectionGroupDraft"),
 		},
 	})
 	opts = append(opts, aliases)

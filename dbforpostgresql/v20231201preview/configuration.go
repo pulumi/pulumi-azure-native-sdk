@@ -61,9 +61,6 @@ func NewConfiguration(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:dbforpostgresql:Configuration"),
-		},
-		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20210601:Configuration"),
 		},
 		{
@@ -95,6 +92,9 @@ func NewConfiguration(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20241101preview:Configuration"),
+		},
+		{
+			Type: pulumi.String("azure-native:dbforpostgresql:Configuration"),
 		},
 	})
 	opts = append(opts, aliases)

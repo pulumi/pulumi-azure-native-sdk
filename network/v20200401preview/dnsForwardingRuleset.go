@@ -48,13 +48,13 @@ func NewDnsForwardingRuleset(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:network:DnsForwardingRuleset"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20220701:DnsForwardingRuleset"),
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20230701preview:DnsForwardingRuleset"),
+		},
+		{
+			Type: pulumi.String("azure-native:network:DnsForwardingRuleset"),
 		},
 	})
 	opts = append(opts, aliases)

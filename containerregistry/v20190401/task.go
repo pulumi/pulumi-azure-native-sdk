@@ -74,13 +74,13 @@ func NewTask(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:containerregistry:Task"),
-		},
-		{
 			Type: pulumi.String("azure-native:containerregistry/v20180901:Task"),
 		},
 		{
 			Type: pulumi.String("azure-native:containerregistry/v20190601preview:Task"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerregistry:Task"),
 		},
 	})
 	opts = append(opts, aliases)

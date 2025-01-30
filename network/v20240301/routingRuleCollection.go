@@ -57,10 +57,10 @@ func NewRoutingRuleCollection(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:network:RoutingRuleCollection"),
+			Type: pulumi.String("azure-native:network/v20240501:RoutingRuleCollection"),
 		},
 		{
-			Type: pulumi.String("azure-native:network/v20240501:RoutingRuleCollection"),
+			Type: pulumi.String("azure-native:network:RoutingRuleCollection"),
 		},
 	})
 	opts = append(opts, aliases)

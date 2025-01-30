@@ -70,10 +70,10 @@ func NewKustoPoolDatabasePrincipalAssignment(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:synapse:KustoPoolDatabasePrincipalAssignment"),
+			Type: pulumi.String("azure-native:synapse/v20210401preview:KustoPoolDatabasePrincipalAssignment"),
 		},
 		{
-			Type: pulumi.String("azure-native:synapse/v20210401preview:KustoPoolDatabasePrincipalAssignment"),
+			Type: pulumi.String("azure-native:synapse:KustoPoolDatabasePrincipalAssignment"),
 		},
 	})
 	opts = append(opts, aliases)

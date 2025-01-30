@@ -50,9 +50,6 @@ func NewRegistry(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:machinelearningservices:Registry"),
-		},
-		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20221001preview:Registry"),
 		},
 		{
@@ -90,6 +87,9 @@ func NewRegistry(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001preview:Registry"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices:Registry"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -43,13 +43,13 @@ func NewCustomerSubscription(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:azurestack:CustomerSubscription"),
-		},
-		{
 			Type: pulumi.String("azure-native:azurestack/v20170601:CustomerSubscription"),
 		},
 		{
 			Type: pulumi.String("azure-native:azurestack/v20220601:CustomerSubscription"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestack:CustomerSubscription"),
 		},
 	})
 	opts = append(opts, aliases)

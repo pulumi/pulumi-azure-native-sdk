@@ -72,9 +72,6 @@ func NewRack(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:networkcloud:Rack"),
-		},
-		{
 			Type: pulumi.String("azure-native:networkcloud/v20230701:Rack"),
 		},
 		{
@@ -85,6 +82,9 @@ func NewRack(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:networkcloud/v20241001preview:Rack"),
+		},
+		{
+			Type: pulumi.String("azure-native:networkcloud:Rack"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -83,9 +83,6 @@ func NewApplication(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:solutions:Application"),
-		},
-		{
 			Type: pulumi.String("azure-native:solutions/v20160901preview:Application"),
 		},
 		{
@@ -117,6 +114,9 @@ func NewApplication(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:solutions/v20210701:Application"),
+		},
+		{
+			Type: pulumi.String("azure-native:solutions:Application"),
 		},
 	})
 	opts = append(opts, aliases)

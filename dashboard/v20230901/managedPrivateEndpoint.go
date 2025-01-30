@@ -59,9 +59,6 @@ func NewManagedPrivateEndpoint(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:dashboard:ManagedPrivateEndpoint"),
-		},
-		{
 			Type: pulumi.String("azure-native:dashboard/v20221001preview:ManagedPrivateEndpoint"),
 		},
 		{
@@ -69,6 +66,9 @@ func NewManagedPrivateEndpoint(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:dashboard/v20241001:ManagedPrivateEndpoint"),
+		},
+		{
+			Type: pulumi.String("azure-native:dashboard:ManagedPrivateEndpoint"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -58,9 +58,6 @@ func NewWebAppSitePushSettingsSlot(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:web:WebAppSitePushSettingsSlot"),
-		},
-		{
 			Type: pulumi.String("azure-native:web/v20160801:WebAppSitePushSettingsSlot"),
 		},
 		{
@@ -107,6 +104,9 @@ func NewWebAppSitePushSettingsSlot(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:web/v20240401:WebAppSitePushSettingsSlot"),
+		},
+		{
+			Type: pulumi.String("azure-native:web:WebAppSitePushSettingsSlot"),
 		},
 	})
 	opts = append(opts, aliases)

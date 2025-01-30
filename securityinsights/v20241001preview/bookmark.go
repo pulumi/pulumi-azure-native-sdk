@@ -79,9 +79,6 @@ func NewBookmark(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:securityinsights:Bookmark"),
-		},
-		{
 			Type: pulumi.String("azure-native:securityinsights/v20190101preview:Bookmark"),
 		},
 		{
@@ -179,6 +176,9 @@ func NewBookmark(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20240901:Bookmark"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights:Bookmark"),
 		},
 	})
 	opts = append(opts, aliases)

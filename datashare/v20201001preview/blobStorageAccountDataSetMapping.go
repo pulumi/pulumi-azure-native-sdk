@@ -77,9 +77,6 @@ func NewBlobStorageAccountDataSetMapping(ctx *pulumi.Context,
 	args.Kind = pulumi.String("BlobStorageAccount")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:datashare:BlobStorageAccountDataSetMapping"),
-		},
-		{
 			Type: pulumi.String("azure-native:datashare/v20181101preview:BlobStorageAccountDataSetMapping"),
 		},
 		{
@@ -90,6 +87,9 @@ func NewBlobStorageAccountDataSetMapping(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:datashare/v20210801:BlobStorageAccountDataSetMapping"),
+		},
+		{
+			Type: pulumi.String("azure-native:datashare:BlobStorageAccountDataSetMapping"),
 		},
 	})
 	opts = append(opts, aliases)

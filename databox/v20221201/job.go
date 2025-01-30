@@ -86,9 +86,6 @@ func NewJob(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:databox:Job"),
-		},
-		{
 			Type: pulumi.String("azure-native:databox/v20180101:Job"),
 		},
 		{
@@ -132,6 +129,9 @@ func NewJob(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:databox/v20240301preview:Job"),
+		},
+		{
+			Type: pulumi.String("azure-native:databox:Job"),
 		},
 	})
 	opts = append(opts, aliases)

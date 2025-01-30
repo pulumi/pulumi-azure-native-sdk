@@ -47,10 +47,10 @@ func NewReachabilityAnalysisRun(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:network:ReachabilityAnalysisRun"),
+			Type: pulumi.String("azure-native:network/v20240501:ReachabilityAnalysisRun"),
 		},
 		{
-			Type: pulumi.String("azure-native:network/v20240501:ReachabilityAnalysisRun"),
+			Type: pulumi.String("azure-native:network:ReachabilityAnalysisRun"),
 		},
 	})
 	opts = append(opts, aliases)

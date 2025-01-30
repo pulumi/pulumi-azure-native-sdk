@@ -47,9 +47,6 @@ func NewAuthorizationAccessPolicy(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:apimanagement:AuthorizationAccessPolicy"),
-		},
-		{
 			Type: pulumi.String("azure-native:apimanagement/v20220401preview:AuthorizationAccessPolicy"),
 		},
 		{
@@ -69,6 +66,9 @@ func NewAuthorizationAccessPolicy(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20240601preview:AuthorizationAccessPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement:AuthorizationAccessPolicy"),
 		},
 	})
 	opts = append(opts, aliases)

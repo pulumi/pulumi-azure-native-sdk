@@ -44,9 +44,6 @@ func NewMarketplaceSubscription(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:machinelearningservices:MarketplaceSubscription"),
-		},
-		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20240101preview:MarketplaceSubscription"),
 		},
 		{
@@ -60,6 +57,9 @@ func NewMarketplaceSubscription(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001preview:MarketplaceSubscription"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices:MarketplaceSubscription"),
 		},
 	})
 	opts = append(opts, aliases)

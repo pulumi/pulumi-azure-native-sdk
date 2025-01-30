@@ -57,9 +57,6 @@ func NewP2sVpnServerConfiguration(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:network:P2sVpnServerConfiguration"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20180801:P2sVpnServerConfiguration"),
 		},
 		{
@@ -79,6 +76,9 @@ func NewP2sVpnServerConfiguration(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20190601:P2sVpnServerConfiguration"),
+		},
+		{
+			Type: pulumi.String("azure-native:network:P2sVpnServerConfiguration"),
 		},
 	})
 	opts = append(opts, aliases)

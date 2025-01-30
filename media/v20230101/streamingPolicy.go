@@ -51,9 +51,6 @@ func NewStreamingPolicy(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:media:StreamingPolicy"),
-		},
-		{
 			Type: pulumi.String("azure-native:media/v20180330preview:StreamingPolicy"),
 		},
 		{
@@ -73,6 +70,9 @@ func NewStreamingPolicy(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:media/v20220801:StreamingPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:media:StreamingPolicy"),
 		},
 	})
 	opts = append(opts, aliases)

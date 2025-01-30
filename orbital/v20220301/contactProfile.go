@@ -60,10 +60,10 @@ func NewContactProfile(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:orbital:ContactProfile"),
+			Type: pulumi.String("azure-native:orbital/v20221101:ContactProfile"),
 		},
 		{
-			Type: pulumi.String("azure-native:orbital/v20221101:ContactProfile"),
+			Type: pulumi.String("azure-native:orbital:ContactProfile"),
 		},
 	})
 	opts = append(opts, aliases)

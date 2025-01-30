@@ -45,9 +45,6 @@ func NewAppAttachPackage(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:desktopvirtualization:AppAttachPackage"),
-		},
-		{
 			Type: pulumi.String("azure-native:desktopvirtualization/v20231004preview:AppAttachPackage"),
 		},
 		{
@@ -64,6 +61,9 @@ func NewAppAttachPackage(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:desktopvirtualization/v20240408preview:AppAttachPackage"),
+		},
+		{
+			Type: pulumi.String("azure-native:desktopvirtualization:AppAttachPackage"),
 		},
 	})
 	opts = append(opts, aliases)

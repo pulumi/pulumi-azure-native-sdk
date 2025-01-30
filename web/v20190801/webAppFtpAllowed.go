@@ -44,9 +44,6 @@ func NewWebAppFtpAllowed(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:web:WebAppFtpAllowed"),
-		},
-		{
 			Type: pulumi.String("azure-native:web/v20200601:WebAppFtpAllowed"),
 		},
 		{
@@ -84,6 +81,9 @@ func NewWebAppFtpAllowed(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:web/v20240401:WebAppFtpAllowed"),
+		},
+		{
+			Type: pulumi.String("azure-native:web:WebAppFtpAllowed"),
 		},
 	})
 	opts = append(opts, aliases)

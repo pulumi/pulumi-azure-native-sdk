@@ -55,9 +55,6 @@ func NewManagedDatabase(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:sql:ManagedDatabase"),
-		},
-		{
 			Type: pulumi.String("azure-native:sql/v20170301preview:ManagedDatabase"),
 		},
 		{
@@ -110,6 +107,9 @@ func NewManagedDatabase(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20240501preview:ManagedDatabase"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql:ManagedDatabase"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -94,9 +94,6 @@ func NewCommunicationsGateway(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:voiceservices:CommunicationsGateway"),
-		},
-		{
 			Type: pulumi.String("azure-native:voiceservices/v20221201preview:CommunicationsGateway"),
 		},
 		{
@@ -104,6 +101,9 @@ func NewCommunicationsGateway(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:voiceservices/v20230901:CommunicationsGateway"),
+		},
+		{
+			Type: pulumi.String("azure-native:voiceservices:CommunicationsGateway"),
 		},
 	})
 	opts = append(opts, aliases)

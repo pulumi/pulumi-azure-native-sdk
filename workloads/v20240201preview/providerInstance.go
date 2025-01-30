@@ -47,9 +47,6 @@ func NewProviderInstance(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:workloads:ProviderInstance"),
-		},
-		{
 			Type: pulumi.String("azure-native:workloads/v20211201preview:ProviderInstance"),
 		},
 		{
@@ -63,6 +60,9 @@ func NewProviderInstance(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:workloads/v20231201preview:ProviderInstance"),
+		},
+		{
+			Type: pulumi.String("azure-native:workloads:ProviderInstance"),
 		},
 	})
 	opts = append(opts, aliases)

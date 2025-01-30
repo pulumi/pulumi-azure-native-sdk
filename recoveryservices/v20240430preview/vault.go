@@ -48,9 +48,6 @@ func NewVault(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:recoveryservices:Vault"),
-		},
-		{
 			Type: pulumi.String("azure-native:recoveryservices/v20160601:Vault"),
 		},
 		{
@@ -145,6 +142,9 @@ func NewVault(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:recoveryservices/v20241001:Vault"),
+		},
+		{
+			Type: pulumi.String("azure-native:recoveryservices:Vault"),
 		},
 	})
 	opts = append(opts, aliases)

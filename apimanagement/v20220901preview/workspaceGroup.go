@@ -51,9 +51,6 @@ func NewWorkspaceGroup(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:apimanagement:WorkspaceGroup"),
-		},
-		{
 			Type: pulumi.String("azure-native:apimanagement/v20230301preview:WorkspaceGroup"),
 		},
 		{
@@ -67,6 +64,9 @@ func NewWorkspaceGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20240601preview:WorkspaceGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement:WorkspaceGroup"),
 		},
 	})
 	opts = append(opts, aliases)

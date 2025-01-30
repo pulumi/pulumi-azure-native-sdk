@@ -41,9 +41,6 @@ func NewDomainOwnershipIdentifier(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:domainregistration:DomainOwnershipIdentifier"),
-		},
-		{
 			Type: pulumi.String("azure-native:domainregistration/v20150401:DomainOwnershipIdentifier"),
 		},
 		{
@@ -87,6 +84,9 @@ func NewDomainOwnershipIdentifier(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:domainregistration/v20231201:DomainOwnershipIdentifier"),
+		},
+		{
+			Type: pulumi.String("azure-native:domainregistration:DomainOwnershipIdentifier"),
 		},
 	})
 	opts = append(opts, aliases)

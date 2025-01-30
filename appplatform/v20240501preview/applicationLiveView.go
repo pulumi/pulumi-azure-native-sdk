@@ -41,9 +41,6 @@ func NewApplicationLiveView(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:appplatform:ApplicationLiveView"),
-		},
-		{
 			Type: pulumi.String("azure-native:appplatform/v20221101preview:ApplicationLiveView"),
 		},
 		{
@@ -69,6 +66,9 @@ func NewApplicationLiveView(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:appplatform/v20240101preview:ApplicationLiveView"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform:ApplicationLiveView"),
 		},
 	})
 	opts = append(opts, aliases)

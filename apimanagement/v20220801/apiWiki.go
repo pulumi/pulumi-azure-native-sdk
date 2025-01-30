@@ -42,9 +42,6 @@ func NewApiWiki(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:apimanagement:ApiWiki"),
-		},
-		{
 			Type: pulumi.String("azure-native:apimanagement/v20220901preview:ApiWiki"),
 		},
 		{
@@ -61,6 +58,9 @@ func NewApiWiki(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20240601preview:ApiWiki"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement:ApiWiki"),
 		},
 	})
 	opts = append(opts, aliases)

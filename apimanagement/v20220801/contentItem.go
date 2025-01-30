@@ -42,9 +42,6 @@ func NewContentItem(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:apimanagement:ContentItem"),
-		},
-		{
 			Type: pulumi.String("azure-native:apimanagement/v20191201:ContentItem"),
 		},
 		{
@@ -85,6 +82,9 @@ func NewContentItem(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20240601preview:ContentItem"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement:ContentItem"),
 		},
 	})
 	opts = append(opts, aliases)

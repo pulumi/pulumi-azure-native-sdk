@@ -58,13 +58,13 @@ func NewAttestationAtSubscription(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:policyinsights:AttestationAtSubscription"),
-		},
-		{
 			Type: pulumi.String("azure-native:policyinsights/v20210101:AttestationAtSubscription"),
 		},
 		{
 			Type: pulumi.String("azure-native:policyinsights/v20220901:AttestationAtSubscription"),
+		},
+		{
+			Type: pulumi.String("azure-native:policyinsights:AttestationAtSubscription"),
 		},
 	})
 	opts = append(opts, aliases)

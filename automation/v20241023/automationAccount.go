@@ -66,9 +66,6 @@ func NewAutomationAccount(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:automation:AutomationAccount"),
-		},
-		{
 			Type: pulumi.String("azure-native:automation/v20151031:AutomationAccount"),
 		},
 		{
@@ -88,6 +85,9 @@ func NewAutomationAccount(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:automation/v20231101:AutomationAccount"),
+		},
+		{
+			Type: pulumi.String("azure-native:automation:AutomationAccount"),
 		},
 	})
 	opts = append(opts, aliases)

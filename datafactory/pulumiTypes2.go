@@ -21536,29 +21536,284 @@ func (o TeamDeskLinkedServiceResponseOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TeamDeskLinkedServiceResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
+// Teradata import command settings.
+type TeradataImportCommand struct {
+	// Additional format options for Teradata Copy Command. The format options only applies to direct copy from CSV source. Type: key value pairs (value should be string type) (or Expression with resultType object). Example: "additionalFormatOptions": { "timeFormat": "HHhMImSSs" }
+	AdditionalFormatOptions interface{} `pulumi:"additionalFormatOptions"`
+	// The import setting type.
+	// Expected value is 'TeradataImportCommand'.
+	Type string `pulumi:"type"`
+}
+
+// TeradataImportCommandInput is an input type that accepts TeradataImportCommandArgs and TeradataImportCommandOutput values.
+// You can construct a concrete instance of `TeradataImportCommandInput` via:
+//
+//	TeradataImportCommandArgs{...}
+type TeradataImportCommandInput interface {
+	pulumi.Input
+
+	ToTeradataImportCommandOutput() TeradataImportCommandOutput
+	ToTeradataImportCommandOutputWithContext(context.Context) TeradataImportCommandOutput
+}
+
+// Teradata import command settings.
+type TeradataImportCommandArgs struct {
+	// Additional format options for Teradata Copy Command. The format options only applies to direct copy from CSV source. Type: key value pairs (value should be string type) (or Expression with resultType object). Example: "additionalFormatOptions": { "timeFormat": "HHhMImSSs" }
+	AdditionalFormatOptions pulumi.Input `pulumi:"additionalFormatOptions"`
+	// The import setting type.
+	// Expected value is 'TeradataImportCommand'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (TeradataImportCommandArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeradataImportCommand)(nil)).Elem()
+}
+
+func (i TeradataImportCommandArgs) ToTeradataImportCommandOutput() TeradataImportCommandOutput {
+	return i.ToTeradataImportCommandOutputWithContext(context.Background())
+}
+
+func (i TeradataImportCommandArgs) ToTeradataImportCommandOutputWithContext(ctx context.Context) TeradataImportCommandOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeradataImportCommandOutput)
+}
+
+func (i TeradataImportCommandArgs) ToTeradataImportCommandPtrOutput() TeradataImportCommandPtrOutput {
+	return i.ToTeradataImportCommandPtrOutputWithContext(context.Background())
+}
+
+func (i TeradataImportCommandArgs) ToTeradataImportCommandPtrOutputWithContext(ctx context.Context) TeradataImportCommandPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeradataImportCommandOutput).ToTeradataImportCommandPtrOutputWithContext(ctx)
+}
+
+// TeradataImportCommandPtrInput is an input type that accepts TeradataImportCommandArgs, TeradataImportCommandPtr and TeradataImportCommandPtrOutput values.
+// You can construct a concrete instance of `TeradataImportCommandPtrInput` via:
+//
+//	        TeradataImportCommandArgs{...}
+//
+//	or:
+//
+//	        nil
+type TeradataImportCommandPtrInput interface {
+	pulumi.Input
+
+	ToTeradataImportCommandPtrOutput() TeradataImportCommandPtrOutput
+	ToTeradataImportCommandPtrOutputWithContext(context.Context) TeradataImportCommandPtrOutput
+}
+
+type teradataImportCommandPtrType TeradataImportCommandArgs
+
+func TeradataImportCommandPtr(v *TeradataImportCommandArgs) TeradataImportCommandPtrInput {
+	return (*teradataImportCommandPtrType)(v)
+}
+
+func (*teradataImportCommandPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeradataImportCommand)(nil)).Elem()
+}
+
+func (i *teradataImportCommandPtrType) ToTeradataImportCommandPtrOutput() TeradataImportCommandPtrOutput {
+	return i.ToTeradataImportCommandPtrOutputWithContext(context.Background())
+}
+
+func (i *teradataImportCommandPtrType) ToTeradataImportCommandPtrOutputWithContext(ctx context.Context) TeradataImportCommandPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeradataImportCommandPtrOutput)
+}
+
+// Teradata import command settings.
+type TeradataImportCommandOutput struct{ *pulumi.OutputState }
+
+func (TeradataImportCommandOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeradataImportCommand)(nil)).Elem()
+}
+
+func (o TeradataImportCommandOutput) ToTeradataImportCommandOutput() TeradataImportCommandOutput {
+	return o
+}
+
+func (o TeradataImportCommandOutput) ToTeradataImportCommandOutputWithContext(ctx context.Context) TeradataImportCommandOutput {
+	return o
+}
+
+func (o TeradataImportCommandOutput) ToTeradataImportCommandPtrOutput() TeradataImportCommandPtrOutput {
+	return o.ToTeradataImportCommandPtrOutputWithContext(context.Background())
+}
+
+func (o TeradataImportCommandOutput) ToTeradataImportCommandPtrOutputWithContext(ctx context.Context) TeradataImportCommandPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TeradataImportCommand) *TeradataImportCommand {
+		return &v
+	}).(TeradataImportCommandPtrOutput)
+}
+
+// Additional format options for Teradata Copy Command. The format options only applies to direct copy from CSV source. Type: key value pairs (value should be string type) (or Expression with resultType object). Example: "additionalFormatOptions": { "timeFormat": "HHhMImSSs" }
+func (o TeradataImportCommandOutput) AdditionalFormatOptions() pulumi.AnyOutput {
+	return o.ApplyT(func(v TeradataImportCommand) interface{} { return v.AdditionalFormatOptions }).(pulumi.AnyOutput)
+}
+
+// The import setting type.
+// Expected value is 'TeradataImportCommand'.
+func (o TeradataImportCommandOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v TeradataImportCommand) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type TeradataImportCommandPtrOutput struct{ *pulumi.OutputState }
+
+func (TeradataImportCommandPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeradataImportCommand)(nil)).Elem()
+}
+
+func (o TeradataImportCommandPtrOutput) ToTeradataImportCommandPtrOutput() TeradataImportCommandPtrOutput {
+	return o
+}
+
+func (o TeradataImportCommandPtrOutput) ToTeradataImportCommandPtrOutputWithContext(ctx context.Context) TeradataImportCommandPtrOutput {
+	return o
+}
+
+func (o TeradataImportCommandPtrOutput) Elem() TeradataImportCommandOutput {
+	return o.ApplyT(func(v *TeradataImportCommand) TeradataImportCommand {
+		if v != nil {
+			return *v
+		}
+		var ret TeradataImportCommand
+		return ret
+	}).(TeradataImportCommandOutput)
+}
+
+// Additional format options for Teradata Copy Command. The format options only applies to direct copy from CSV source. Type: key value pairs (value should be string type) (or Expression with resultType object). Example: "additionalFormatOptions": { "timeFormat": "HHhMImSSs" }
+func (o TeradataImportCommandPtrOutput) AdditionalFormatOptions() pulumi.AnyOutput {
+	return o.ApplyT(func(v *TeradataImportCommand) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalFormatOptions
+	}).(pulumi.AnyOutput)
+}
+
+// The import setting type.
+// Expected value is 'TeradataImportCommand'.
+func (o TeradataImportCommandPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TeradataImportCommand) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Teradata import command settings.
+type TeradataImportCommandResponse struct {
+	// Additional format options for Teradata Copy Command. The format options only applies to direct copy from CSV source. Type: key value pairs (value should be string type) (or Expression with resultType object). Example: "additionalFormatOptions": { "timeFormat": "HHhMImSSs" }
+	AdditionalFormatOptions interface{} `pulumi:"additionalFormatOptions"`
+	// The import setting type.
+	// Expected value is 'TeradataImportCommand'.
+	Type string `pulumi:"type"`
+}
+
+// Teradata import command settings.
+type TeradataImportCommandResponseOutput struct{ *pulumi.OutputState }
+
+func (TeradataImportCommandResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeradataImportCommandResponse)(nil)).Elem()
+}
+
+func (o TeradataImportCommandResponseOutput) ToTeradataImportCommandResponseOutput() TeradataImportCommandResponseOutput {
+	return o
+}
+
+func (o TeradataImportCommandResponseOutput) ToTeradataImportCommandResponseOutputWithContext(ctx context.Context) TeradataImportCommandResponseOutput {
+	return o
+}
+
+// Additional format options for Teradata Copy Command. The format options only applies to direct copy from CSV source. Type: key value pairs (value should be string type) (or Expression with resultType object). Example: "additionalFormatOptions": { "timeFormat": "HHhMImSSs" }
+func (o TeradataImportCommandResponseOutput) AdditionalFormatOptions() pulumi.AnyOutput {
+	return o.ApplyT(func(v TeradataImportCommandResponse) interface{} { return v.AdditionalFormatOptions }).(pulumi.AnyOutput)
+}
+
+// The import setting type.
+// Expected value is 'TeradataImportCommand'.
+func (o TeradataImportCommandResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v TeradataImportCommandResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type TeradataImportCommandResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (TeradataImportCommandResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeradataImportCommandResponse)(nil)).Elem()
+}
+
+func (o TeradataImportCommandResponsePtrOutput) ToTeradataImportCommandResponsePtrOutput() TeradataImportCommandResponsePtrOutput {
+	return o
+}
+
+func (o TeradataImportCommandResponsePtrOutput) ToTeradataImportCommandResponsePtrOutputWithContext(ctx context.Context) TeradataImportCommandResponsePtrOutput {
+	return o
+}
+
+func (o TeradataImportCommandResponsePtrOutput) Elem() TeradataImportCommandResponseOutput {
+	return o.ApplyT(func(v *TeradataImportCommandResponse) TeradataImportCommandResponse {
+		if v != nil {
+			return *v
+		}
+		var ret TeradataImportCommandResponse
+		return ret
+	}).(TeradataImportCommandResponseOutput)
+}
+
+// Additional format options for Teradata Copy Command. The format options only applies to direct copy from CSV source. Type: key value pairs (value should be string type) (or Expression with resultType object). Example: "additionalFormatOptions": { "timeFormat": "HHhMImSSs" }
+func (o TeradataImportCommandResponsePtrOutput) AdditionalFormatOptions() pulumi.AnyOutput {
+	return o.ApplyT(func(v *TeradataImportCommandResponse) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalFormatOptions
+	}).(pulumi.AnyOutput)
+}
+
+// The import setting type.
+// Expected value is 'TeradataImportCommand'.
+func (o TeradataImportCommandResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TeradataImportCommandResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 // Linked service for Teradata data source.
 type TeradataLinkedService struct {
 	// List of tags that can be used for describing the linked service.
 	Annotations []interface{} `pulumi:"annotations"`
 	// AuthenticationType to be used for connection.
 	AuthenticationType *string `pulumi:"authenticationType"`
+	// The character set to use for the connection. Type: string (or Expression with resultType string). Only applied for version 2.0.
+	CharacterSet interface{} `pulumi:"characterSet"`
 	// The integration runtime reference.
 	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
-	// Teradata ODBC connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
+	// Teradata ODBC connection string. Type: string, SecureString or AzureKeyVaultSecretReference. Only applied for version 1.0.
 	ConnectionString interface{} `pulumi:"connectionString"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential *string `pulumi:"encryptedCredential"`
+	// The port numbers when connecting to server through HTTPS/TLS connections. Type: integer (or Expression with resultType integer). Only applied for version 2.0.
+	HttpsPortNumber interface{} `pulumi:"httpsPortNumber"`
+	// The maximum size of the response buffer for SQL requests, in bytes. Type: integer. Only applied for version 2.0.
+	MaxRespSize interface{} `pulumi:"maxRespSize"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
 	// Password for authentication.
 	Password interface{} `pulumi:"password"`
+	// The port numbers when connecting to server through non HTTPS/TLS connections. Type: integer (or Expression with resultType integer). Only used for V2. Only applied for version 2.0.
+	PortNumber interface{} `pulumi:"portNumber"`
 	// Server name for connection. Type: string (or Expression with resultType string).
 	Server interface{} `pulumi:"server"`
+	// SSL mode for connection. Valid values including: “Disable”, “Allow”, “Prefer”, “Require”, “Verify-CA”, “Verify-Full”. Default value is “Verify-Full”. Type: string (or Expression with resultType string). Only applied for version 2.0.
+	SslMode interface{} `pulumi:"sslMode"`
 	// Type of linked service.
 	// Expected value is 'Teradata'.
 	Type string `pulumi:"type"`
+	// Specifies whether to encrypt all communication with the Teradata database. Allowed values are 0 or 1. This setting will be ignored for HTTPS/TLS connections. Type: integer (or Expression with resultType integer). Only applied for version 2.0.
+	UseDataEncryption interface{} `pulumi:"useDataEncryption"`
 	// Username for authentication. Type: string (or Expression with resultType string).
 	Username interface{} `pulumi:"username"`
 	// Version of the linked service.
@@ -21582,23 +21837,35 @@ type TeradataLinkedServiceArgs struct {
 	Annotations pulumi.ArrayInput `pulumi:"annotations"`
 	// AuthenticationType to be used for connection.
 	AuthenticationType pulumi.StringPtrInput `pulumi:"authenticationType"`
+	// The character set to use for the connection. Type: string (or Expression with resultType string). Only applied for version 2.0.
+	CharacterSet pulumi.Input `pulumi:"characterSet"`
 	// The integration runtime reference.
 	ConnectVia IntegrationRuntimeReferencePtrInput `pulumi:"connectVia"`
-	// Teradata ODBC connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
+	// Teradata ODBC connection string. Type: string, SecureString or AzureKeyVaultSecretReference. Only applied for version 1.0.
 	ConnectionString pulumi.Input `pulumi:"connectionString"`
 	// Linked service description.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential pulumi.StringPtrInput `pulumi:"encryptedCredential"`
+	// The port numbers when connecting to server through HTTPS/TLS connections. Type: integer (or Expression with resultType integer). Only applied for version 2.0.
+	HttpsPortNumber pulumi.Input `pulumi:"httpsPortNumber"`
+	// The maximum size of the response buffer for SQL requests, in bytes. Type: integer. Only applied for version 2.0.
+	MaxRespSize pulumi.Input `pulumi:"maxRespSize"`
 	// Parameters for linked service.
 	Parameters ParameterSpecificationMapInput `pulumi:"parameters"`
 	// Password for authentication.
 	Password pulumi.Input `pulumi:"password"`
+	// The port numbers when connecting to server through non HTTPS/TLS connections. Type: integer (or Expression with resultType integer). Only used for V2. Only applied for version 2.0.
+	PortNumber pulumi.Input `pulumi:"portNumber"`
 	// Server name for connection. Type: string (or Expression with resultType string).
 	Server pulumi.Input `pulumi:"server"`
+	// SSL mode for connection. Valid values including: “Disable”, “Allow”, “Prefer”, “Require”, “Verify-CA”, “Verify-Full”. Default value is “Verify-Full”. Type: string (or Expression with resultType string). Only applied for version 2.0.
+	SslMode pulumi.Input `pulumi:"sslMode"`
 	// Type of linked service.
 	// Expected value is 'Teradata'.
 	Type pulumi.StringInput `pulumi:"type"`
+	// Specifies whether to encrypt all communication with the Teradata database. Allowed values are 0 or 1. This setting will be ignored for HTTPS/TLS connections. Type: integer (or Expression with resultType integer). Only applied for version 2.0.
+	UseDataEncryption pulumi.Input `pulumi:"useDataEncryption"`
 	// Username for authentication. Type: string (or Expression with resultType string).
 	Username pulumi.Input `pulumi:"username"`
 	// Version of the linked service.
@@ -21642,12 +21909,17 @@ func (o TeradataLinkedServiceOutput) AuthenticationType() pulumi.StringPtrOutput
 	return o.ApplyT(func(v TeradataLinkedService) *string { return v.AuthenticationType }).(pulumi.StringPtrOutput)
 }
 
+// The character set to use for the connection. Type: string (or Expression with resultType string). Only applied for version 2.0.
+func (o TeradataLinkedServiceOutput) CharacterSet() pulumi.AnyOutput {
+	return o.ApplyT(func(v TeradataLinkedService) interface{} { return v.CharacterSet }).(pulumi.AnyOutput)
+}
+
 // The integration runtime reference.
 func (o TeradataLinkedServiceOutput) ConnectVia() IntegrationRuntimeReferencePtrOutput {
 	return o.ApplyT(func(v TeradataLinkedService) *IntegrationRuntimeReference { return v.ConnectVia }).(IntegrationRuntimeReferencePtrOutput)
 }
 
-// Teradata ODBC connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
+// Teradata ODBC connection string. Type: string, SecureString or AzureKeyVaultSecretReference. Only applied for version 1.0.
 func (o TeradataLinkedServiceOutput) ConnectionString() pulumi.AnyOutput {
 	return o.ApplyT(func(v TeradataLinkedService) interface{} { return v.ConnectionString }).(pulumi.AnyOutput)
 }
@@ -21662,6 +21934,16 @@ func (o TeradataLinkedServiceOutput) EncryptedCredential() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v TeradataLinkedService) *string { return v.EncryptedCredential }).(pulumi.StringPtrOutput)
 }
 
+// The port numbers when connecting to server through HTTPS/TLS connections. Type: integer (or Expression with resultType integer). Only applied for version 2.0.
+func (o TeradataLinkedServiceOutput) HttpsPortNumber() pulumi.AnyOutput {
+	return o.ApplyT(func(v TeradataLinkedService) interface{} { return v.HttpsPortNumber }).(pulumi.AnyOutput)
+}
+
+// The maximum size of the response buffer for SQL requests, in bytes. Type: integer. Only applied for version 2.0.
+func (o TeradataLinkedServiceOutput) MaxRespSize() pulumi.AnyOutput {
+	return o.ApplyT(func(v TeradataLinkedService) interface{} { return v.MaxRespSize }).(pulumi.AnyOutput)
+}
+
 // Parameters for linked service.
 func (o TeradataLinkedServiceOutput) Parameters() ParameterSpecificationMapOutput {
 	return o.ApplyT(func(v TeradataLinkedService) map[string]ParameterSpecification { return v.Parameters }).(ParameterSpecificationMapOutput)
@@ -21672,15 +21954,30 @@ func (o TeradataLinkedServiceOutput) Password() pulumi.AnyOutput {
 	return o.ApplyT(func(v TeradataLinkedService) interface{} { return v.Password }).(pulumi.AnyOutput)
 }
 
+// The port numbers when connecting to server through non HTTPS/TLS connections. Type: integer (or Expression with resultType integer). Only used for V2. Only applied for version 2.0.
+func (o TeradataLinkedServiceOutput) PortNumber() pulumi.AnyOutput {
+	return o.ApplyT(func(v TeradataLinkedService) interface{} { return v.PortNumber }).(pulumi.AnyOutput)
+}
+
 // Server name for connection. Type: string (or Expression with resultType string).
 func (o TeradataLinkedServiceOutput) Server() pulumi.AnyOutput {
 	return o.ApplyT(func(v TeradataLinkedService) interface{} { return v.Server }).(pulumi.AnyOutput)
+}
+
+// SSL mode for connection. Valid values including: “Disable”, “Allow”, “Prefer”, “Require”, “Verify-CA”, “Verify-Full”. Default value is “Verify-Full”. Type: string (or Expression with resultType string). Only applied for version 2.0.
+func (o TeradataLinkedServiceOutput) SslMode() pulumi.AnyOutput {
+	return o.ApplyT(func(v TeradataLinkedService) interface{} { return v.SslMode }).(pulumi.AnyOutput)
 }
 
 // Type of linked service.
 // Expected value is 'Teradata'.
 func (o TeradataLinkedServiceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v TeradataLinkedService) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Specifies whether to encrypt all communication with the Teradata database. Allowed values are 0 or 1. This setting will be ignored for HTTPS/TLS connections. Type: integer (or Expression with resultType integer). Only applied for version 2.0.
+func (o TeradataLinkedServiceOutput) UseDataEncryption() pulumi.AnyOutput {
+	return o.ApplyT(func(v TeradataLinkedService) interface{} { return v.UseDataEncryption }).(pulumi.AnyOutput)
 }
 
 // Username for authentication. Type: string (or Expression with resultType string).
@@ -21699,23 +21996,35 @@ type TeradataLinkedServiceResponse struct {
 	Annotations []interface{} `pulumi:"annotations"`
 	// AuthenticationType to be used for connection.
 	AuthenticationType *string `pulumi:"authenticationType"`
+	// The character set to use for the connection. Type: string (or Expression with resultType string). Only applied for version 2.0.
+	CharacterSet interface{} `pulumi:"characterSet"`
 	// The integration runtime reference.
 	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
-	// Teradata ODBC connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
+	// Teradata ODBC connection string. Type: string, SecureString or AzureKeyVaultSecretReference. Only applied for version 1.0.
 	ConnectionString interface{} `pulumi:"connectionString"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential *string `pulumi:"encryptedCredential"`
+	// The port numbers when connecting to server through HTTPS/TLS connections. Type: integer (or Expression with resultType integer). Only applied for version 2.0.
+	HttpsPortNumber interface{} `pulumi:"httpsPortNumber"`
+	// The maximum size of the response buffer for SQL requests, in bytes. Type: integer. Only applied for version 2.0.
+	MaxRespSize interface{} `pulumi:"maxRespSize"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
 	// Password for authentication.
 	Password interface{} `pulumi:"password"`
+	// The port numbers when connecting to server through non HTTPS/TLS connections. Type: integer (or Expression with resultType integer). Only used for V2. Only applied for version 2.0.
+	PortNumber interface{} `pulumi:"portNumber"`
 	// Server name for connection. Type: string (or Expression with resultType string).
 	Server interface{} `pulumi:"server"`
+	// SSL mode for connection. Valid values including: “Disable”, “Allow”, “Prefer”, “Require”, “Verify-CA”, “Verify-Full”. Default value is “Verify-Full”. Type: string (or Expression with resultType string). Only applied for version 2.0.
+	SslMode interface{} `pulumi:"sslMode"`
 	// Type of linked service.
 	// Expected value is 'Teradata'.
 	Type string `pulumi:"type"`
+	// Specifies whether to encrypt all communication with the Teradata database. Allowed values are 0 or 1. This setting will be ignored for HTTPS/TLS connections. Type: integer (or Expression with resultType integer). Only applied for version 2.0.
+	UseDataEncryption interface{} `pulumi:"useDataEncryption"`
 	// Username for authentication. Type: string (or Expression with resultType string).
 	Username interface{} `pulumi:"username"`
 	// Version of the linked service.
@@ -21747,12 +22056,17 @@ func (o TeradataLinkedServiceResponseOutput) AuthenticationType() pulumi.StringP
 	return o.ApplyT(func(v TeradataLinkedServiceResponse) *string { return v.AuthenticationType }).(pulumi.StringPtrOutput)
 }
 
+// The character set to use for the connection. Type: string (or Expression with resultType string). Only applied for version 2.0.
+func (o TeradataLinkedServiceResponseOutput) CharacterSet() pulumi.AnyOutput {
+	return o.ApplyT(func(v TeradataLinkedServiceResponse) interface{} { return v.CharacterSet }).(pulumi.AnyOutput)
+}
+
 // The integration runtime reference.
 func (o TeradataLinkedServiceResponseOutput) ConnectVia() IntegrationRuntimeReferenceResponsePtrOutput {
 	return o.ApplyT(func(v TeradataLinkedServiceResponse) *IntegrationRuntimeReferenceResponse { return v.ConnectVia }).(IntegrationRuntimeReferenceResponsePtrOutput)
 }
 
-// Teradata ODBC connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
+// Teradata ODBC connection string. Type: string, SecureString or AzureKeyVaultSecretReference. Only applied for version 1.0.
 func (o TeradataLinkedServiceResponseOutput) ConnectionString() pulumi.AnyOutput {
 	return o.ApplyT(func(v TeradataLinkedServiceResponse) interface{} { return v.ConnectionString }).(pulumi.AnyOutput)
 }
@@ -21767,6 +22081,16 @@ func (o TeradataLinkedServiceResponseOutput) EncryptedCredential() pulumi.String
 	return o.ApplyT(func(v TeradataLinkedServiceResponse) *string { return v.EncryptedCredential }).(pulumi.StringPtrOutput)
 }
 
+// The port numbers when connecting to server through HTTPS/TLS connections. Type: integer (or Expression with resultType integer). Only applied for version 2.0.
+func (o TeradataLinkedServiceResponseOutput) HttpsPortNumber() pulumi.AnyOutput {
+	return o.ApplyT(func(v TeradataLinkedServiceResponse) interface{} { return v.HttpsPortNumber }).(pulumi.AnyOutput)
+}
+
+// The maximum size of the response buffer for SQL requests, in bytes. Type: integer. Only applied for version 2.0.
+func (o TeradataLinkedServiceResponseOutput) MaxRespSize() pulumi.AnyOutput {
+	return o.ApplyT(func(v TeradataLinkedServiceResponse) interface{} { return v.MaxRespSize }).(pulumi.AnyOutput)
+}
+
 // Parameters for linked service.
 func (o TeradataLinkedServiceResponseOutput) Parameters() ParameterSpecificationResponseMapOutput {
 	return o.ApplyT(func(v TeradataLinkedServiceResponse) map[string]ParameterSpecificationResponse { return v.Parameters }).(ParameterSpecificationResponseMapOutput)
@@ -21777,15 +22101,30 @@ func (o TeradataLinkedServiceResponseOutput) Password() pulumi.AnyOutput {
 	return o.ApplyT(func(v TeradataLinkedServiceResponse) interface{} { return v.Password }).(pulumi.AnyOutput)
 }
 
+// The port numbers when connecting to server through non HTTPS/TLS connections. Type: integer (or Expression with resultType integer). Only used for V2. Only applied for version 2.0.
+func (o TeradataLinkedServiceResponseOutput) PortNumber() pulumi.AnyOutput {
+	return o.ApplyT(func(v TeradataLinkedServiceResponse) interface{} { return v.PortNumber }).(pulumi.AnyOutput)
+}
+
 // Server name for connection. Type: string (or Expression with resultType string).
 func (o TeradataLinkedServiceResponseOutput) Server() pulumi.AnyOutput {
 	return o.ApplyT(func(v TeradataLinkedServiceResponse) interface{} { return v.Server }).(pulumi.AnyOutput)
+}
+
+// SSL mode for connection. Valid values including: “Disable”, “Allow”, “Prefer”, “Require”, “Verify-CA”, “Verify-Full”. Default value is “Verify-Full”. Type: string (or Expression with resultType string). Only applied for version 2.0.
+func (o TeradataLinkedServiceResponseOutput) SslMode() pulumi.AnyOutput {
+	return o.ApplyT(func(v TeradataLinkedServiceResponse) interface{} { return v.SslMode }).(pulumi.AnyOutput)
 }
 
 // Type of linked service.
 // Expected value is 'Teradata'.
 func (o TeradataLinkedServiceResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v TeradataLinkedServiceResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Specifies whether to encrypt all communication with the Teradata database. Allowed values are 0 or 1. This setting will be ignored for HTTPS/TLS connections. Type: integer (or Expression with resultType integer). Only applied for version 2.0.
+func (o TeradataLinkedServiceResponseOutput) UseDataEncryption() pulumi.AnyOutput {
+	return o.ApplyT(func(v TeradataLinkedServiceResponse) interface{} { return v.UseDataEncryption }).(pulumi.AnyOutput)
 }
 
 // Username for authentication. Type: string (or Expression with resultType string).
@@ -22068,6 +22407,204 @@ func (o TeradataPartitionSettingsResponsePtrOutput) PartitionUpperBound() pulumi
 		}
 		return v.PartitionUpperBound
 	}).(pulumi.AnyOutput)
+}
+
+// A copy activity Teradata sink.
+type TeradataSink struct {
+	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
+	// Teradata import settings.
+	ImportSettings *TeradataImportCommand `pulumi:"importSettings"`
+	// The maximum concurrent connection count for the sink data store. Type: integer (or Expression with resultType integer).
+	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// Sink retry count. Type: integer (or Expression with resultType integer).
+	SinkRetryCount interface{} `pulumi:"sinkRetryCount"`
+	// Sink retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	SinkRetryWait interface{} `pulumi:"sinkRetryWait"`
+	// Copy sink type.
+	// Expected value is 'TeradataSink'.
+	Type string `pulumi:"type"`
+	// Write batch size. Type: integer (or Expression with resultType integer), minimum: 0.
+	WriteBatchSize interface{} `pulumi:"writeBatchSize"`
+	// Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	WriteBatchTimeout interface{} `pulumi:"writeBatchTimeout"`
+}
+
+// TeradataSinkInput is an input type that accepts TeradataSinkArgs and TeradataSinkOutput values.
+// You can construct a concrete instance of `TeradataSinkInput` via:
+//
+//	TeradataSinkArgs{...}
+type TeradataSinkInput interface {
+	pulumi.Input
+
+	ToTeradataSinkOutput() TeradataSinkOutput
+	ToTeradataSinkOutputWithContext(context.Context) TeradataSinkOutput
+}
+
+// A copy activity Teradata sink.
+type TeradataSinkArgs struct {
+	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+	DisableMetricsCollection pulumi.Input `pulumi:"disableMetricsCollection"`
+	// Teradata import settings.
+	ImportSettings TeradataImportCommandPtrInput `pulumi:"importSettings"`
+	// The maximum concurrent connection count for the sink data store. Type: integer (or Expression with resultType integer).
+	MaxConcurrentConnections pulumi.Input `pulumi:"maxConcurrentConnections"`
+	// Sink retry count. Type: integer (or Expression with resultType integer).
+	SinkRetryCount pulumi.Input `pulumi:"sinkRetryCount"`
+	// Sink retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	SinkRetryWait pulumi.Input `pulumi:"sinkRetryWait"`
+	// Copy sink type.
+	// Expected value is 'TeradataSink'.
+	Type pulumi.StringInput `pulumi:"type"`
+	// Write batch size. Type: integer (or Expression with resultType integer), minimum: 0.
+	WriteBatchSize pulumi.Input `pulumi:"writeBatchSize"`
+	// Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	WriteBatchTimeout pulumi.Input `pulumi:"writeBatchTimeout"`
+}
+
+func (TeradataSinkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeradataSink)(nil)).Elem()
+}
+
+func (i TeradataSinkArgs) ToTeradataSinkOutput() TeradataSinkOutput {
+	return i.ToTeradataSinkOutputWithContext(context.Background())
+}
+
+func (i TeradataSinkArgs) ToTeradataSinkOutputWithContext(ctx context.Context) TeradataSinkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeradataSinkOutput)
+}
+
+// A copy activity Teradata sink.
+type TeradataSinkOutput struct{ *pulumi.OutputState }
+
+func (TeradataSinkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeradataSink)(nil)).Elem()
+}
+
+func (o TeradataSinkOutput) ToTeradataSinkOutput() TeradataSinkOutput {
+	return o
+}
+
+func (o TeradataSinkOutput) ToTeradataSinkOutputWithContext(ctx context.Context) TeradataSinkOutput {
+	return o
+}
+
+// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+func (o TeradataSinkOutput) DisableMetricsCollection() pulumi.AnyOutput {
+	return o.ApplyT(func(v TeradataSink) interface{} { return v.DisableMetricsCollection }).(pulumi.AnyOutput)
+}
+
+// Teradata import settings.
+func (o TeradataSinkOutput) ImportSettings() TeradataImportCommandPtrOutput {
+	return o.ApplyT(func(v TeradataSink) *TeradataImportCommand { return v.ImportSettings }).(TeradataImportCommandPtrOutput)
+}
+
+// The maximum concurrent connection count for the sink data store. Type: integer (or Expression with resultType integer).
+func (o TeradataSinkOutput) MaxConcurrentConnections() pulumi.AnyOutput {
+	return o.ApplyT(func(v TeradataSink) interface{} { return v.MaxConcurrentConnections }).(pulumi.AnyOutput)
+}
+
+// Sink retry count. Type: integer (or Expression with resultType integer).
+func (o TeradataSinkOutput) SinkRetryCount() pulumi.AnyOutput {
+	return o.ApplyT(func(v TeradataSink) interface{} { return v.SinkRetryCount }).(pulumi.AnyOutput)
+}
+
+// Sink retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+func (o TeradataSinkOutput) SinkRetryWait() pulumi.AnyOutput {
+	return o.ApplyT(func(v TeradataSink) interface{} { return v.SinkRetryWait }).(pulumi.AnyOutput)
+}
+
+// Copy sink type.
+// Expected value is 'TeradataSink'.
+func (o TeradataSinkOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v TeradataSink) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Write batch size. Type: integer (or Expression with resultType integer), minimum: 0.
+func (o TeradataSinkOutput) WriteBatchSize() pulumi.AnyOutput {
+	return o.ApplyT(func(v TeradataSink) interface{} { return v.WriteBatchSize }).(pulumi.AnyOutput)
+}
+
+// Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+func (o TeradataSinkOutput) WriteBatchTimeout() pulumi.AnyOutput {
+	return o.ApplyT(func(v TeradataSink) interface{} { return v.WriteBatchTimeout }).(pulumi.AnyOutput)
+}
+
+// A copy activity Teradata sink.
+type TeradataSinkResponse struct {
+	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
+	// Teradata import settings.
+	ImportSettings *TeradataImportCommandResponse `pulumi:"importSettings"`
+	// The maximum concurrent connection count for the sink data store. Type: integer (or Expression with resultType integer).
+	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// Sink retry count. Type: integer (or Expression with resultType integer).
+	SinkRetryCount interface{} `pulumi:"sinkRetryCount"`
+	// Sink retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	SinkRetryWait interface{} `pulumi:"sinkRetryWait"`
+	// Copy sink type.
+	// Expected value is 'TeradataSink'.
+	Type string `pulumi:"type"`
+	// Write batch size. Type: integer (or Expression with resultType integer), minimum: 0.
+	WriteBatchSize interface{} `pulumi:"writeBatchSize"`
+	// Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	WriteBatchTimeout interface{} `pulumi:"writeBatchTimeout"`
+}
+
+// A copy activity Teradata sink.
+type TeradataSinkResponseOutput struct{ *pulumi.OutputState }
+
+func (TeradataSinkResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeradataSinkResponse)(nil)).Elem()
+}
+
+func (o TeradataSinkResponseOutput) ToTeradataSinkResponseOutput() TeradataSinkResponseOutput {
+	return o
+}
+
+func (o TeradataSinkResponseOutput) ToTeradataSinkResponseOutputWithContext(ctx context.Context) TeradataSinkResponseOutput {
+	return o
+}
+
+// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+func (o TeradataSinkResponseOutput) DisableMetricsCollection() pulumi.AnyOutput {
+	return o.ApplyT(func(v TeradataSinkResponse) interface{} { return v.DisableMetricsCollection }).(pulumi.AnyOutput)
+}
+
+// Teradata import settings.
+func (o TeradataSinkResponseOutput) ImportSettings() TeradataImportCommandResponsePtrOutput {
+	return o.ApplyT(func(v TeradataSinkResponse) *TeradataImportCommandResponse { return v.ImportSettings }).(TeradataImportCommandResponsePtrOutput)
+}
+
+// The maximum concurrent connection count for the sink data store. Type: integer (or Expression with resultType integer).
+func (o TeradataSinkResponseOutput) MaxConcurrentConnections() pulumi.AnyOutput {
+	return o.ApplyT(func(v TeradataSinkResponse) interface{} { return v.MaxConcurrentConnections }).(pulumi.AnyOutput)
+}
+
+// Sink retry count. Type: integer (or Expression with resultType integer).
+func (o TeradataSinkResponseOutput) SinkRetryCount() pulumi.AnyOutput {
+	return o.ApplyT(func(v TeradataSinkResponse) interface{} { return v.SinkRetryCount }).(pulumi.AnyOutput)
+}
+
+// Sink retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+func (o TeradataSinkResponseOutput) SinkRetryWait() pulumi.AnyOutput {
+	return o.ApplyT(func(v TeradataSinkResponse) interface{} { return v.SinkRetryWait }).(pulumi.AnyOutput)
+}
+
+// Copy sink type.
+// Expected value is 'TeradataSink'.
+func (o TeradataSinkResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v TeradataSinkResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Write batch size. Type: integer (or Expression with resultType integer), minimum: 0.
+func (o TeradataSinkResponseOutput) WriteBatchSize() pulumi.AnyOutput {
+	return o.ApplyT(func(v TeradataSinkResponse) interface{} { return v.WriteBatchSize }).(pulumi.AnyOutput)
+}
+
+// Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+func (o TeradataSinkResponseOutput) WriteBatchTimeout() pulumi.AnyOutput {
+	return o.ApplyT(func(v TeradataSinkResponse) interface{} { return v.WriteBatchTimeout }).(pulumi.AnyOutput)
 }
 
 // A copy activity Teradata source.
@@ -32434,12 +32971,18 @@ func init() {
 	pulumi.RegisterOutputType(TarReadSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(TeamDeskLinkedServiceOutput{})
 	pulumi.RegisterOutputType(TeamDeskLinkedServiceResponseOutput{})
+	pulumi.RegisterOutputType(TeradataImportCommandOutput{})
+	pulumi.RegisterOutputType(TeradataImportCommandPtrOutput{})
+	pulumi.RegisterOutputType(TeradataImportCommandResponseOutput{})
+	pulumi.RegisterOutputType(TeradataImportCommandResponsePtrOutput{})
 	pulumi.RegisterOutputType(TeradataLinkedServiceOutput{})
 	pulumi.RegisterOutputType(TeradataLinkedServiceResponseOutput{})
 	pulumi.RegisterOutputType(TeradataPartitionSettingsOutput{})
 	pulumi.RegisterOutputType(TeradataPartitionSettingsPtrOutput{})
 	pulumi.RegisterOutputType(TeradataPartitionSettingsResponseOutput{})
 	pulumi.RegisterOutputType(TeradataPartitionSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(TeradataSinkOutput{})
+	pulumi.RegisterOutputType(TeradataSinkResponseOutput{})
 	pulumi.RegisterOutputType(TeradataSourceOutput{})
 	pulumi.RegisterOutputType(TeradataSourceResponseOutput{})
 	pulumi.RegisterOutputType(TeradataTableDatasetOutput{})

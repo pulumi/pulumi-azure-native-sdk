@@ -53,9 +53,6 @@ func NewObjectReplicationPolicy(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:storage:ObjectReplicationPolicy"),
-		},
-		{
 			Type: pulumi.String("azure-native:storage/v20190601:ObjectReplicationPolicy"),
 		},
 		{
@@ -90,6 +87,9 @@ func NewObjectReplicationPolicy(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:storage/v20230501:ObjectReplicationPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:storage:ObjectReplicationPolicy"),
 		},
 	})
 	opts = append(opts, aliases)

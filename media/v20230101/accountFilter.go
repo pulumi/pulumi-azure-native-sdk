@@ -45,9 +45,6 @@ func NewAccountFilter(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:media:AccountFilter"),
-		},
-		{
 			Type: pulumi.String("azure-native:media/v20180701:AccountFilter"),
 		},
 		{
@@ -61,6 +58,9 @@ func NewAccountFilter(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:media/v20220801:AccountFilter"),
+		},
+		{
+			Type: pulumi.String("azure-native:media:AccountFilter"),
 		},
 	})
 	opts = append(opts, aliases)

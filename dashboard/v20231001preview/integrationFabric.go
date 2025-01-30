@@ -44,10 +44,10 @@ func NewIntegrationFabric(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:dashboard:IntegrationFabric"),
+			Type: pulumi.String("azure-native:dashboard/v20241001:IntegrationFabric"),
 		},
 		{
-			Type: pulumi.String("azure-native:dashboard/v20241001:IntegrationFabric"),
+			Type: pulumi.String("azure-native:dashboard:IntegrationFabric"),
 		},
 	})
 	opts = append(opts, aliases)

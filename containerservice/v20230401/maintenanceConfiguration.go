@@ -43,9 +43,6 @@ func NewMaintenanceConfiguration(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:containerservice:MaintenanceConfiguration"),
-		},
-		{
 			Type: pulumi.String("azure-native:containerservice/v20201201:MaintenanceConfiguration"),
 		},
 		{
@@ -236,6 +233,9 @@ func NewMaintenanceConfiguration(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:containerservice/v20240902preview:MaintenanceConfiguration"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerservice:MaintenanceConfiguration"),
 		},
 	})
 	opts = append(opts, aliases)

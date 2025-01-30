@@ -46,9 +46,6 @@ func NewGraphQLApiResolver(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:apimanagement:GraphQLApiResolver"),
-		},
-		{
 			Type: pulumi.String("azure-native:apimanagement/v20220901preview:GraphQLApiResolver"),
 		},
 		{
@@ -65,6 +62,9 @@ func NewGraphQLApiResolver(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20240601preview:GraphQLApiResolver"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement:GraphQLApiResolver"),
 		},
 	})
 	opts = append(opts, aliases)

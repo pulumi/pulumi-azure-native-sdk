@@ -47,10 +47,10 @@ func NewHybridIdentityMetadatum(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:azurestackhci:HybridIdentityMetadatum"),
+			Type: pulumi.String("azure-native:azurestackhci/v20210901preview:HybridIdentityMetadatum"),
 		},
 		{
-			Type: pulumi.String("azure-native:azurestackhci/v20210901preview:HybridIdentityMetadatum"),
+			Type: pulumi.String("azure-native:azurestackhci:HybridIdentityMetadatum"),
 		},
 	})
 	opts = append(opts, aliases)

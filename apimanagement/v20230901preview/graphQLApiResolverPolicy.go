@@ -53,9 +53,6 @@ func NewGraphQLApiResolverPolicy(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:apimanagement:GraphQLApiResolverPolicy"),
-		},
-		{
 			Type: pulumi.String("azure-native:apimanagement/v20220801:GraphQLApiResolverPolicy"),
 		},
 		{
@@ -72,6 +69,9 @@ func NewGraphQLApiResolverPolicy(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20240601preview:GraphQLApiResolverPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement:GraphQLApiResolverPolicy"),
 		},
 	})
 	opts = append(opts, aliases)

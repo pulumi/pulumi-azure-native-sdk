@@ -62,9 +62,6 @@ func NewPacketCoreDataPlane(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:mobilenetwork:PacketCoreDataPlane"),
-		},
-		{
 			Type: pulumi.String("azure-native:mobilenetwork/v20220301preview:PacketCoreDataPlane"),
 		},
 		{
@@ -81,6 +78,9 @@ func NewPacketCoreDataPlane(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:mobilenetwork/v20240401:PacketCoreDataPlane"),
+		},
+		{
+			Type: pulumi.String("azure-native:mobilenetwork:PacketCoreDataPlane"),
 		},
 	})
 	opts = append(opts, aliases)

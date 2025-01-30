@@ -39,9 +39,6 @@ func NewQueueServiceProperties(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:storage:QueueServiceProperties"),
-		},
-		{
 			Type: pulumi.String("azure-native:storage/v20190601:QueueServiceProperties"),
 		},
 		{
@@ -76,6 +73,9 @@ func NewQueueServiceProperties(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:storage/v20230501:QueueServiceProperties"),
+		},
+		{
+			Type: pulumi.String("azure-native:storage:QueueServiceProperties"),
 		},
 	})
 	opts = append(opts, aliases)

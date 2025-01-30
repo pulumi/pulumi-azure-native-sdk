@@ -77,9 +77,6 @@ func NewApplicationDefinition(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:solutions:ApplicationDefinition"),
-		},
-		{
 			Type: pulumi.String("azure-native:solutions/v20160901preview:ApplicationDefinition"),
 		},
 		{
@@ -111,6 +108,9 @@ func NewApplicationDefinition(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:solutions/v20210701:ApplicationDefinition"),
+		},
+		{
+			Type: pulumi.String("azure-native:solutions:ApplicationDefinition"),
 		},
 	})
 	opts = append(opts, aliases)

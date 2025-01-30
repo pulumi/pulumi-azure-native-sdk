@@ -80,10 +80,10 @@ func NewNetworkToNetworkInterconnect(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:managednetworkfabric:NetworkToNetworkInterconnect"),
+			Type: pulumi.String("azure-native:managednetworkfabric/v20230201preview:NetworkToNetworkInterconnect"),
 		},
 		{
-			Type: pulumi.String("azure-native:managednetworkfabric/v20230201preview:NetworkToNetworkInterconnect"),
+			Type: pulumi.String("azure-native:managednetworkfabric:NetworkToNetworkInterconnect"),
 		},
 	})
 	opts = append(opts, aliases)

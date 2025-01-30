@@ -49,9 +49,6 @@ func NewHypervCollectorsOperation(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:migrate:HypervCollectorsOperation"),
-		},
-		{
 			Type: pulumi.String("azure-native:migrate/v20191001:HypervCollectorsOperation"),
 		},
 		{
@@ -62,6 +59,12 @@ func NewHypervCollectorsOperation(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:migrate/v20230501preview:HypervCollectorsOperation"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate/v20240101preview:HypervCollectorsOperation"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate:HypervCollectorsOperation"),
 		},
 	})
 	opts = append(opts, aliases)

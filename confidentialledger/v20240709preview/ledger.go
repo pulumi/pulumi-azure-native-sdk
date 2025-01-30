@@ -42,9 +42,6 @@ func NewLedger(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:confidentialledger:Ledger"),
-		},
-		{
 			Type: pulumi.String("azure-native:confidentialledger/v20201201preview:Ledger"),
 		},
 		{
@@ -64,6 +61,9 @@ func NewLedger(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:confidentialledger/v20240919preview:Ledger"),
+		},
+		{
+			Type: pulumi.String("azure-native:confidentialledger:Ledger"),
 		},
 	})
 	opts = append(opts, aliases)

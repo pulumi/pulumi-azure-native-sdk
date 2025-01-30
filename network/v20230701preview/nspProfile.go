@@ -45,13 +45,13 @@ func NewNspProfile(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:network:NspProfile"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20210201preview:NspProfile"),
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20230801preview:NspProfile"),
+		},
+		{
+			Type: pulumi.String("azure-native:network:NspProfile"),
 		},
 	})
 	opts = append(opts, aliases)

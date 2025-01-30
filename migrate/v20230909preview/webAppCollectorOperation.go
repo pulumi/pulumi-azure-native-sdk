@@ -49,13 +49,16 @@ func NewWebAppCollectorOperation(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:migrate:WebAppCollectorOperation"),
-		},
-		{
 			Type: pulumi.String("azure-native:migrate/v20230401preview:WebAppCollectorOperation"),
 		},
 		{
 			Type: pulumi.String("azure-native:migrate/v20230501preview:WebAppCollectorOperation"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate/v20240101preview:WebAppCollectorOperation"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate:WebAppCollectorOperation"),
 		},
 	})
 	opts = append(opts, aliases)

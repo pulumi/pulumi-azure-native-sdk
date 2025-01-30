@@ -42,9 +42,6 @@ func NewCassandraCluster(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:documentdb:CassandraCluster"),
-		},
-		{
 			Type: pulumi.String("azure-native:documentdb/v20210301preview:CassandraCluster"),
 		},
 		{
@@ -124,6 +121,9 @@ func NewCassandraCluster(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:documentdb/v20241115:CassandraCluster"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb:CassandraCluster"),
 		},
 	})
 	opts = append(opts, aliases)

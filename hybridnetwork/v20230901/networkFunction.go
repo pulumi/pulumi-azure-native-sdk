@@ -46,9 +46,6 @@ func NewNetworkFunction(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:hybridnetwork:NetworkFunction"),
-		},
-		{
 			Type: pulumi.String("azure-native:hybridnetwork/v20200101preview:NetworkFunction"),
 		},
 		{
@@ -59,6 +56,9 @@ func NewNetworkFunction(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:hybridnetwork/v20240415:NetworkFunction"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridnetwork:NetworkFunction"),
 		},
 	})
 	opts = append(opts, aliases)

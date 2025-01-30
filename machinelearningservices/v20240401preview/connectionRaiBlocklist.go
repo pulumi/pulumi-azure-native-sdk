@@ -49,13 +49,13 @@ func NewConnectionRaiBlocklist(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:machinelearningservices:ConnectionRaiBlocklist"),
-		},
-		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20240701preview:ConnectionRaiBlocklist"),
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001preview:ConnectionRaiBlocklist"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices:ConnectionRaiBlocklist"),
 		},
 	})
 	opts = append(opts, aliases)

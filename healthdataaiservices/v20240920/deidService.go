@@ -44,10 +44,10 @@ func NewDeidService(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:healthdataaiservices:DeidService"),
+			Type: pulumi.String("azure-native:healthdataaiservices/v20240228preview:DeidService"),
 		},
 		{
-			Type: pulumi.String("azure-native:healthdataaiservices/v20240228preview:DeidService"),
+			Type: pulumi.String("azure-native:healthdataaiservices:DeidService"),
 		},
 	})
 	opts = append(opts, aliases)

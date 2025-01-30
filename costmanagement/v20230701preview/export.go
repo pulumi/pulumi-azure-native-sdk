@@ -68,9 +68,6 @@ func NewExport(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:costmanagement:Export"),
-		},
-		{
 			Type: pulumi.String("azure-native:costmanagement/v20190101:Export"),
 		},
 		{
@@ -114,6 +111,9 @@ func NewExport(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:costmanagement/v20240801:Export"),
+		},
+		{
+			Type: pulumi.String("azure-native:costmanagement:Export"),
 		},
 	})
 	opts = append(opts, aliases)

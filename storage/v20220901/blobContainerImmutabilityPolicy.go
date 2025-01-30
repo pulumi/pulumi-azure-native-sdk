@@ -50,9 +50,6 @@ func NewBlobContainerImmutabilityPolicy(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:storage:BlobContainerImmutabilityPolicy"),
-		},
-		{
 			Type: pulumi.String("azure-native:storage/v20180201:BlobContainerImmutabilityPolicy"),
 		},
 		{
@@ -102,6 +99,9 @@ func NewBlobContainerImmutabilityPolicy(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:storage/v20230501:BlobContainerImmutabilityPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:storage:BlobContainerImmutabilityPolicy"),
 		},
 	})
 	opts = append(opts, aliases)

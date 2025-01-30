@@ -76,10 +76,10 @@ func NewKustoPool(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:synapse:KustoPool"),
+			Type: pulumi.String("azure-native:synapse/v20210401preview:KustoPool"),
 		},
 		{
-			Type: pulumi.String("azure-native:synapse/v20210401preview:KustoPool"),
+			Type: pulumi.String("azure-native:synapse:KustoPool"),
 		},
 	})
 	opts = append(opts, aliases)

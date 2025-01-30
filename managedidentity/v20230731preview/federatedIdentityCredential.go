@@ -54,13 +54,16 @@ func NewFederatedIdentityCredential(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:managedidentity:FederatedIdentityCredential"),
-		},
-		{
 			Type: pulumi.String("azure-native:managedidentity/v20220131preview:FederatedIdentityCredential"),
 		},
 		{
 			Type: pulumi.String("azure-native:managedidentity/v20230131:FederatedIdentityCredential"),
+		},
+		{
+			Type: pulumi.String("azure-native:managedidentity/v20241130:FederatedIdentityCredential"),
+		},
+		{
+			Type: pulumi.String("azure-native:managedidentity:FederatedIdentityCredential"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -42,9 +42,6 @@ func NewTag(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:apimanagement:Tag"),
-		},
-		{
 			Type: pulumi.String("azure-native:apimanagement/v20170301:Tag"),
 		},
 		{
@@ -100,6 +97,9 @@ func NewTag(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20240601preview:Tag"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement:Tag"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -60,9 +60,6 @@ func NewOpenIdConnectProvider(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:apimanagement:OpenIdConnectProvider"),
-		},
-		{
 			Type: pulumi.String("azure-native:apimanagement/v20160707:OpenIdConnectProvider"),
 		},
 		{
@@ -124,6 +121,9 @@ func NewOpenIdConnectProvider(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20240601preview:OpenIdConnectProvider"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement:OpenIdConnectProvider"),
 		},
 	})
 	opts = append(opts, aliases)

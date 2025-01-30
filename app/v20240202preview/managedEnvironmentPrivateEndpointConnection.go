@@ -50,13 +50,13 @@ func NewManagedEnvironmentPrivateEndpointConnection(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:app:ManagedEnvironmentPrivateEndpointConnection"),
-		},
-		{
 			Type: pulumi.String("azure-native:app/v20240802preview:ManagedEnvironmentPrivateEndpointConnection"),
 		},
 		{
 			Type: pulumi.String("azure-native:app/v20241002preview:ManagedEnvironmentPrivateEndpointConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:app:ManagedEnvironmentPrivateEndpointConnection"),
 		},
 	})
 	opts = append(opts, aliases)

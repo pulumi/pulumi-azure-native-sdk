@@ -56,10 +56,10 @@ func NewSystem(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:securityinsights:System"),
+			Type: pulumi.String("azure-native:securityinsights/v20241001preview:System"),
 		},
 		{
-			Type: pulumi.String("azure-native:securityinsights/v20241001preview:System"),
+			Type: pulumi.String("azure-native:securityinsights:System"),
 		},
 	})
 	opts = append(opts, aliases)

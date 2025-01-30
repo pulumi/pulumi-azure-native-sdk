@@ -78,9 +78,6 @@ func NewBlobContainerDataSetMapping(ctx *pulumi.Context,
 	args.Kind = pulumi.String("Container")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:datashare:BlobContainerDataSetMapping"),
-		},
-		{
 			Type: pulumi.String("azure-native:datashare/v20181101preview:BlobContainerDataSetMapping"),
 		},
 		{
@@ -91,6 +88,9 @@ func NewBlobContainerDataSetMapping(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:datashare/v20201001preview:BlobContainerDataSetMapping"),
+		},
+		{
+			Type: pulumi.String("azure-native:datashare:BlobContainerDataSetMapping"),
 		},
 	})
 	opts = append(opts, aliases)

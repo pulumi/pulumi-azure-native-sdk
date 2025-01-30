@@ -41,9 +41,6 @@ func NewConfigServer(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:appplatform:ConfigServer"),
-		},
-		{
 			Type: pulumi.String("azure-native:appplatform/v20200701:ConfigServer"),
 		},
 		{
@@ -99,6 +96,9 @@ func NewConfigServer(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:appplatform/v20240101preview:ConfigServer"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform:ConfigServer"),
 		},
 	})
 	opts = append(opts, aliases)

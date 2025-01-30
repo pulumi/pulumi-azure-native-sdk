@@ -65,9 +65,6 @@ func NewKubeEnvironment(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:web:KubeEnvironment"),
-		},
-		{
 			Type: pulumi.String("azure-native:web/v20210101:KubeEnvironment"),
 		},
 		{
@@ -90,6 +87,9 @@ func NewKubeEnvironment(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:web/v20231201:KubeEnvironment"),
+		},
+		{
+			Type: pulumi.String("azure-native:web:KubeEnvironment"),
 		},
 	})
 	opts = append(opts, aliases)

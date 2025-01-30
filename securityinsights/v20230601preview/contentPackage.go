@@ -95,9 +95,6 @@ func NewContentPackage(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:securityinsights:ContentPackage"),
-		},
-		{
 			Type: pulumi.String("azure-native:securityinsights/v20230401preview:ContentPackage"),
 		},
 		{
@@ -135,6 +132,9 @@ func NewContentPackage(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20241001preview:ContentPackage"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights:ContentPackage"),
 		},
 	})
 	opts = append(opts, aliases)

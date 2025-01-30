@@ -55,9 +55,6 @@ func NewTestLine(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:voiceservices:TestLine"),
-		},
-		{
 			Type: pulumi.String("azure-native:voiceservices/v20230131:TestLine"),
 		},
 		{
@@ -65,6 +62,9 @@ func NewTestLine(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:voiceservices/v20230901:TestLine"),
+		},
+		{
+			Type: pulumi.String("azure-native:voiceservices:TestLine"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -55,13 +55,13 @@ func NewApiVersion(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:apicenter:ApiVersion"),
-		},
-		{
 			Type: pulumi.String("azure-native:apicenter/v20240315preview:ApiVersion"),
 		},
 		{
 			Type: pulumi.String("azure-native:apicenter/v20240601preview:ApiVersion"),
+		},
+		{
+			Type: pulumi.String("azure-native:apicenter:ApiVersion"),
 		},
 	})
 	opts = append(opts, aliases)

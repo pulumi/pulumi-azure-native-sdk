@@ -47,9 +47,6 @@ func NewWebAppScmAllowedSlot(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:web:WebAppScmAllowedSlot"),
-		},
-		{
 			Type: pulumi.String("azure-native:web/v20201201:WebAppScmAllowedSlot"),
 		},
 		{
@@ -75,6 +72,9 @@ func NewWebAppScmAllowedSlot(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:web/v20231201:WebAppScmAllowedSlot"),
+		},
+		{
+			Type: pulumi.String("azure-native:web:WebAppScmAllowedSlot"),
 		},
 	})
 	opts = append(opts, aliases)

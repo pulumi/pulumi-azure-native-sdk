@@ -53,9 +53,6 @@ func NewGraphQuery(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:resourcegraph:GraphQuery"),
-		},
-		{
 			Type: pulumi.String("azure-native:resourcegraph/v20180901preview:GraphQuery"),
 		},
 		{
@@ -69,6 +66,9 @@ func NewGraphQuery(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:resourcegraph/v20240401:GraphQuery"),
+		},
+		{
+			Type: pulumi.String("azure-native:resourcegraph:GraphQuery"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -78,9 +78,6 @@ func NewUserRule(ctx *pulumi.Context,
 	args.Kind = pulumi.String("Custom")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:network:UserRule"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20210201preview:UserRule"),
 		},
 		{
@@ -94,6 +91,9 @@ func NewUserRule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20240501:UserRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:network:UserRule"),
 		},
 	})
 	opts = append(opts, aliases)

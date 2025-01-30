@@ -63,10 +63,10 @@ func NewStorageClass(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:kubernetesruntime:StorageClass"),
+			Type: pulumi.String("azure-native:kubernetesruntime/v20240301:StorageClass"),
 		},
 		{
-			Type: pulumi.String("azure-native:kubernetesruntime/v20240301:StorageClass"),
+			Type: pulumi.String("azure-native:kubernetesruntime:StorageClass"),
 		},
 	})
 	opts = append(opts, aliases)

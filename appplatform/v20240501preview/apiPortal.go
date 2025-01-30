@@ -49,9 +49,6 @@ func NewApiPortal(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:appplatform:ApiPortal"),
-		},
-		{
 			Type: pulumi.String("azure-native:appplatform/v20220101preview:ApiPortal"),
 		},
 		{
@@ -92,6 +89,9 @@ func NewApiPortal(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:appplatform/v20240101preview:ApiPortal"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform:ApiPortal"),
 		},
 	})
 	opts = append(opts, aliases)

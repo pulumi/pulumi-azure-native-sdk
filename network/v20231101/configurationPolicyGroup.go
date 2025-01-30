@@ -49,9 +49,6 @@ func NewConfigurationPolicyGroup(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:network:ConfigurationPolicyGroup"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20210801:ConfigurationPolicyGroup"),
 		},
 		{
@@ -92,6 +89,9 @@ func NewConfigurationPolicyGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20240501:ConfigurationPolicyGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:network:ConfigurationPolicyGroup"),
 		},
 	})
 	opts = append(opts, aliases)

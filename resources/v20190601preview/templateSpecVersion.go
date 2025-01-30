@@ -49,9 +49,6 @@ func NewTemplateSpecVersion(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:resources:TemplateSpecVersion"),
-		},
-		{
 			Type: pulumi.String("azure-native:resources/v20210301preview:TemplateSpecVersion"),
 		},
 		{
@@ -59,6 +56,9 @@ func NewTemplateSpecVersion(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:resources/v20220201:TemplateSpecVersion"),
+		},
+		{
+			Type: pulumi.String("azure-native:resources:TemplateSpecVersion"),
 		},
 	})
 	opts = append(opts, aliases)

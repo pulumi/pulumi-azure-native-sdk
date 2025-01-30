@@ -49,9 +49,6 @@ func NewTopicSpace(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:eventgrid:TopicSpace"),
-		},
-		{
 			Type: pulumi.String("azure-native:eventgrid/v20231215preview:TopicSpace"),
 		},
 		{
@@ -59,6 +56,9 @@ func NewTopicSpace(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:eventgrid/v20241215preview:TopicSpace"),
+		},
+		{
+			Type: pulumi.String("azure-native:eventgrid:TopicSpace"),
 		},
 	})
 	opts = append(opts, aliases)

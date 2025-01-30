@@ -45,9 +45,6 @@ func NewProductApiLink(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:apimanagement:ProductApiLink"),
-		},
-		{
 			Type: pulumi.String("azure-native:apimanagement/v20220901preview:ProductApiLink"),
 		},
 		{
@@ -61,6 +58,9 @@ func NewProductApiLink(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20240501:ProductApiLink"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement:ProductApiLink"),
 		},
 	})
 	opts = append(opts, aliases)

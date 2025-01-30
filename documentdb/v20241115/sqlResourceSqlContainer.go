@@ -50,9 +50,6 @@ func NewSqlResourceSqlContainer(ctx *pulumi.Context,
 	args.Resource = args.Resource.ToSqlContainerResourceOutput().ApplyT(func(v SqlContainerResource) SqlContainerResource { return *v.Defaults() }).(SqlContainerResourceOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:documentdb:SqlResourceSqlContainer"),
-		},
-		{
 			Type: pulumi.String("azure-native:documentdb/v20150401:SqlResourceSqlContainer"),
 		},
 		{
@@ -180,6 +177,9 @@ func NewSqlResourceSqlContainer(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:documentdb/v20241201preview:SqlResourceSqlContainer"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb:SqlResourceSqlContainer"),
 		},
 	})
 	opts = append(opts, aliases)

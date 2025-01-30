@@ -36,9 +36,6 @@ func NewResourceTypeRegistration(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:providerhub:ResourceTypeRegistration"),
-		},
-		{
 			Type: pulumi.String("azure-native:providerhub/v20201120:ResourceTypeRegistration"),
 		},
 		{
@@ -46,6 +43,9 @@ func NewResourceTypeRegistration(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:providerhub/v20210601preview:ResourceTypeRegistration"),
+		},
+		{
+			Type: pulumi.String("azure-native:providerhub:ResourceTypeRegistration"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -43,13 +43,13 @@ func NewGuestConfigurationConnectedVMwarevSphereAssignment(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:guestconfiguration:GuestConfigurationConnectedVMwarevSphereAssignment"),
-		},
-		{
 			Type: pulumi.String("azure-native:guestconfiguration/v20200625:GuestConfigurationConnectedVMwarevSphereAssignment"),
 		},
 		{
 			Type: pulumi.String("azure-native:guestconfiguration/v20240405:GuestConfigurationConnectedVMwarevSphereAssignment"),
+		},
+		{
+			Type: pulumi.String("azure-native:guestconfiguration:GuestConfigurationConnectedVMwarevSphereAssignment"),
 		},
 	})
 	opts = append(opts, aliases)

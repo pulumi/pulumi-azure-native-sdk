@@ -53,9 +53,6 @@ func NewVirtualNetworkPeering(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:network:VirtualNetworkPeering"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20160601:VirtualNetworkPeering"),
 		},
 		{
@@ -204,6 +201,9 @@ func NewVirtualNetworkPeering(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20240501:VirtualNetworkPeering"),
+		},
+		{
+			Type: pulumi.String("azure-native:network:VirtualNetworkPeering"),
 		},
 	})
 	opts = append(opts, aliases)

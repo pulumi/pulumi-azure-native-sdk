@@ -62,19 +62,13 @@ func NewGalleryimageRetrieve(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:azurestackhci/v20210901preview:galleryimageRetrieve"),
-		},
-		{
-			Type: pulumi.String("azure-native:azurestackhci:GalleryimageRetrieve"),
-		},
-		{
-			Type: pulumi.String("azure-native:azurestackhci:galleryimageRetrieve"),
-		},
-		{
 			Type: pulumi.String("azure-native:azurestackhci/v20210701preview:GalleryimageRetrieve"),
 		},
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20210701preview:galleryimageRetrieve"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20210901preview:galleryimageRetrieve"),
 		},
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20221215preview:GalleryimageRetrieve"),
@@ -129,6 +123,12 @@ func NewGalleryimageRetrieve(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20241001preview:galleryimageRetrieve"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci:GalleryimageRetrieve"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci:galleryimageRetrieve"),
 		},
 	})
 	opts = append(opts, aliases)

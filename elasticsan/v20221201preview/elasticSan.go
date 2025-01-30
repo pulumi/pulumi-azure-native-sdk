@@ -71,9 +71,6 @@ func NewElasticSan(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:elasticsan:ElasticSan"),
-		},
-		{
 			Type: pulumi.String("azure-native:elasticsan/v20211120preview:ElasticSan"),
 		},
 		{
@@ -84,6 +81,9 @@ func NewElasticSan(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:elasticsan/v20240601preview:ElasticSan"),
+		},
+		{
+			Type: pulumi.String("azure-native:elasticsan:ElasticSan"),
 		},
 	})
 	opts = append(opts, aliases)

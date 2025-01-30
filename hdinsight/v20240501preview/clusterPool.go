@@ -68,13 +68,13 @@ func NewClusterPool(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:hdinsight:ClusterPool"),
-		},
-		{
 			Type: pulumi.String("azure-native:hdinsight/v20230601preview:ClusterPool"),
 		},
 		{
 			Type: pulumi.String("azure-native:hdinsight/v20231101preview:ClusterPool"),
+		},
+		{
+			Type: pulumi.String("azure-native:hdinsight:ClusterPool"),
 		},
 	})
 	opts = append(opts, aliases)

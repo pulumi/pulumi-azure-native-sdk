@@ -45,9 +45,6 @@ func NewFeaturesetContainerEntity(ctx *pulumi.Context,
 	args.FeaturesetContainerProperties = args.FeaturesetContainerProperties.ToFeaturesetContainerOutput().ApplyT(func(v FeaturesetContainer) FeaturesetContainer { return *v.Defaults() }).(FeaturesetContainerOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:machinelearningservices:FeaturesetContainerEntity"),
-		},
-		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20230201preview:FeaturesetContainerEntity"),
 		},
 		{
@@ -76,6 +73,9 @@ func NewFeaturesetContainerEntity(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001preview:FeaturesetContainerEntity"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices:FeaturesetContainerEntity"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -44,9 +44,6 @@ func NewAzureBareMetalStorageInstance(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:baremetalinfrastructure:AzureBareMetalStorageInstance"),
-		},
-		{
 			Type: pulumi.String("azure-native:baremetalinfrastructure/v20230804preview:AzureBareMetalStorageInstance"),
 		},
 		{
@@ -54,6 +51,9 @@ func NewAzureBareMetalStorageInstance(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:baremetalinfrastructure/v20240801preview:AzureBareMetalStorageInstance"),
+		},
+		{
+			Type: pulumi.String("azure-native:baremetalinfrastructure:AzureBareMetalStorageInstance"),
 		},
 	})
 	opts = append(opts, aliases)

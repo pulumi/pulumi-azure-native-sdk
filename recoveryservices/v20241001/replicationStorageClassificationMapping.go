@@ -47,9 +47,6 @@ func NewReplicationStorageClassificationMapping(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:recoveryservices:ReplicationStorageClassificationMapping"),
-		},
-		{
 			Type: pulumi.String("azure-native:recoveryservices/v20160810:ReplicationStorageClassificationMapping"),
 		},
 		{
@@ -132,6 +129,9 @@ func NewReplicationStorageClassificationMapping(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:recoveryservices/v20240401:ReplicationStorageClassificationMapping"),
+		},
+		{
+			Type: pulumi.String("azure-native:recoveryservices:ReplicationStorageClassificationMapping"),
 		},
 	})
 	opts = append(opts, aliases)

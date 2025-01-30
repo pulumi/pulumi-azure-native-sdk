@@ -48,9 +48,6 @@ func NewDataController(ctx *pulumi.Context,
 	args.Properties = args.Properties.ToDataControllerPropertiesOutput().ApplyT(func(v DataControllerProperties) DataControllerProperties { return *v.Defaults() }).(DataControllerPropertiesOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:azurearcdata:DataController"),
-		},
-		{
 			Type: pulumi.String("azure-native:azurearcdata/v20210601preview:DataController"),
 		},
 		{
@@ -73,6 +70,9 @@ func NewDataController(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azurearcdata/v20240501preview:DataController"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurearcdata:DataController"),
 		},
 	})
 	opts = append(opts, aliases)

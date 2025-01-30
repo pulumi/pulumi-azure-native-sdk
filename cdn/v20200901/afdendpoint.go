@@ -52,9 +52,6 @@ func NewAFDEndpoint(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:cdn:AFDEndpoint"),
-		},
-		{
 			Type: pulumi.String("azure-native:cdn/v20210601:AFDEndpoint"),
 		},
 		{
@@ -80,6 +77,9 @@ func NewAFDEndpoint(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:cdn/v20240901:AFDEndpoint"),
+		},
+		{
+			Type: pulumi.String("azure-native:cdn:AFDEndpoint"),
 		},
 	})
 	opts = append(opts, aliases)

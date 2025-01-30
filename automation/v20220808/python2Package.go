@@ -68,9 +68,6 @@ func NewPython2Package(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:automation:Python2Package"),
-		},
-		{
 			Type: pulumi.String("azure-native:automation/v20180630:Python2Package"),
 		},
 		{
@@ -87,6 +84,9 @@ func NewPython2Package(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:automation/v20241023:Python2Package"),
+		},
+		{
+			Type: pulumi.String("azure-native:automation:Python2Package"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -49,9 +49,6 @@ func NewFlow(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:azuredatatransfer:Flow"),
-		},
-		{
 			Type: pulumi.String("azure-native:azuredatatransfer/v20240125:Flow"),
 		},
 		{
@@ -62,6 +59,9 @@ func NewFlow(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azuredatatransfer/v20240927:Flow"),
+		},
+		{
+			Type: pulumi.String("azure-native:azuredatatransfer:Flow"),
 		},
 	})
 	opts = append(opts, aliases)

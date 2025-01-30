@@ -46,13 +46,13 @@ func NewConnectionDeployment(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:machinelearningservices:ConnectionDeployment"),
-		},
-		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20240701preview:ConnectionDeployment"),
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001preview:ConnectionDeployment"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices:ConnectionDeployment"),
 		},
 	})
 	opts = append(opts, aliases)

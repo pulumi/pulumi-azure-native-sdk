@@ -45,10 +45,10 @@ func NewServiceEndpoint(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:recommendationsservice:ServiceEndpoint"),
+			Type: pulumi.String("azure-native:recommendationsservice/v20220201:ServiceEndpoint"),
 		},
 		{
-			Type: pulumi.String("azure-native:recommendationsservice/v20220201:ServiceEndpoint"),
+			Type: pulumi.String("azure-native:recommendationsservice:ServiceEndpoint"),
 		},
 	})
 	opts = append(opts, aliases)

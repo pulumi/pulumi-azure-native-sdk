@@ -34,13 +34,13 @@ func NewTenantConfiguration(ctx *pulumi.Context,
 
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:portal:TenantConfiguration"),
-		},
-		{
 			Type: pulumi.String("azure-native:portal/v20190101preview:TenantConfiguration"),
 		},
 		{
 			Type: pulumi.String("azure-native:portal/v20200901preview:TenantConfiguration"),
+		},
+		{
+			Type: pulumi.String("azure-native:portal:TenantConfiguration"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -38,10 +38,10 @@ func NewReport(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:appcomplianceautomation:Report"),
+			Type: pulumi.String("azure-native:appcomplianceautomation/v20240627:Report"),
 		},
 		{
-			Type: pulumi.String("azure-native:appcomplianceautomation/v20240627:Report"),
+			Type: pulumi.String("azure-native:appcomplianceautomation:Report"),
 		},
 	})
 	opts = append(opts, aliases)

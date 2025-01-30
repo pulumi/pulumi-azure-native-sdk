@@ -48,9 +48,6 @@ func NewWebAppPublicCertificateSlot(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:web:WebAppPublicCertificateSlot"),
-		},
-		{
 			Type: pulumi.String("azure-native:web/v20160801:WebAppPublicCertificateSlot"),
 		},
 		{
@@ -97,6 +94,9 @@ func NewWebAppPublicCertificateSlot(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:web/v20240401:WebAppPublicCertificateSlot"),
+		},
+		{
+			Type: pulumi.String("azure-native:web:WebAppPublicCertificateSlot"),
 		},
 	})
 	opts = append(opts, aliases)

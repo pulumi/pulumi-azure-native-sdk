@@ -61,9 +61,6 @@ func NewWatcher(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:automation:Watcher"),
-		},
-		{
 			Type: pulumi.String("azure-native:automation/v20151031:Watcher"),
 		},
 		{
@@ -74,6 +71,9 @@ func NewWatcher(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:automation/v20241023:Watcher"),
+		},
+		{
+			Type: pulumi.String("azure-native:automation:Watcher"),
 		},
 	})
 	opts = append(opts, aliases)

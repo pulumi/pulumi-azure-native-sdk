@@ -58,9 +58,6 @@ func NewIntegrationAccountAgreement(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:logic:IntegrationAccountAgreement"),
-		},
-		{
 			Type: pulumi.String("azure-native:logic/v20160601:IntegrationAccountAgreement"),
 		},
 		{
@@ -68,6 +65,9 @@ func NewIntegrationAccountAgreement(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:logic/v20190501:IntegrationAccountAgreement"),
+		},
+		{
+			Type: pulumi.String("azure-native:logic:IntegrationAccountAgreement"),
 		},
 	})
 	opts = append(opts, aliases)

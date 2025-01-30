@@ -49,9 +49,6 @@ func NewDataflowEndpoint(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:iotoperations:DataflowEndpoint"),
-		},
-		{
 			Type: pulumi.String("azure-native:iotoperations/v20240701preview:DataflowEndpoint"),
 		},
 		{
@@ -59,6 +56,9 @@ func NewDataflowEndpoint(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:iotoperations/v20241101:DataflowEndpoint"),
+		},
+		{
+			Type: pulumi.String("azure-native:iotoperations:DataflowEndpoint"),
 		},
 	})
 	opts = append(opts, aliases)

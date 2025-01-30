@@ -51,9 +51,6 @@ func NewPolicyFragment(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:apimanagement:PolicyFragment"),
-		},
-		{
 			Type: pulumi.String("azure-native:apimanagement/v20211201preview:PolicyFragment"),
 		},
 		{
@@ -76,6 +73,9 @@ func NewPolicyFragment(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20240501:PolicyFragment"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement:PolicyFragment"),
 		},
 	})
 	opts = append(opts, aliases)

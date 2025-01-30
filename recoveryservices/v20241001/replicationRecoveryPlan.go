@@ -44,9 +44,6 @@ func NewReplicationRecoveryPlan(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:recoveryservices:ReplicationRecoveryPlan"),
-		},
-		{
 			Type: pulumi.String("azure-native:recoveryservices/v20160810:ReplicationRecoveryPlan"),
 		},
 		{
@@ -129,6 +126,9 @@ func NewReplicationRecoveryPlan(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:recoveryservices/v20240401:ReplicationRecoveryPlan"),
+		},
+		{
+			Type: pulumi.String("azure-native:recoveryservices:ReplicationRecoveryPlan"),
 		},
 	})
 	opts = append(opts, aliases)

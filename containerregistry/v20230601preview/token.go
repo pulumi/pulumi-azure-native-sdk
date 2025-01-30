@@ -49,9 +49,6 @@ func NewToken(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:containerregistry:Token"),
-		},
-		{
 			Type: pulumi.String("azure-native:containerregistry/v20190501preview:Token"),
 		},
 		{
@@ -86,6 +83,9 @@ func NewToken(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:containerregistry/v20241101preview:Token"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerregistry:Token"),
 		},
 	})
 	opts = append(opts, aliases)

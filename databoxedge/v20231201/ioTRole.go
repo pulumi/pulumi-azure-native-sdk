@@ -74,9 +74,6 @@ func NewIoTRole(ctx *pulumi.Context,
 	args.Kind = pulumi.String("IOT")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:databoxedge:IoTRole"),
-		},
-		{
 			Type: pulumi.String("azure-native:databoxedge/v20190301:IoTRole"),
 		},
 		{
@@ -123,6 +120,9 @@ func NewIoTRole(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:databoxedge/v20230701:IoTRole"),
+		},
+		{
+			Type: pulumi.String("azure-native:databoxedge:IoTRole"),
 		},
 	})
 	opts = append(opts, aliases)

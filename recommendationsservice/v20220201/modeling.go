@@ -45,10 +45,10 @@ func NewModeling(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:recommendationsservice:Modeling"),
+			Type: pulumi.String("azure-native:recommendationsservice/v20220301preview:Modeling"),
 		},
 		{
-			Type: pulumi.String("azure-native:recommendationsservice/v20220301preview:Modeling"),
+			Type: pulumi.String("azure-native:recommendationsservice:Modeling"),
 		},
 	})
 	opts = append(opts, aliases)

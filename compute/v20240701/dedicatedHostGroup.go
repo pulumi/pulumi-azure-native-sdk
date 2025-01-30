@@ -53,9 +53,6 @@ func NewDedicatedHostGroup(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:compute:DedicatedHostGroup"),
-		},
-		{
 			Type: pulumi.String("azure-native:compute/v20190301:DedicatedHostGroup"),
 		},
 		{
@@ -102,6 +99,9 @@ func NewDedicatedHostGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:compute/v20240301:DedicatedHostGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:compute:DedicatedHostGroup"),
 		},
 	})
 	opts = append(opts, aliases)

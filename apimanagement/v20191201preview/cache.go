@@ -46,9 +46,6 @@ func NewCache(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:apimanagement:Cache"),
-		},
-		{
 			Type: pulumi.String("azure-native:apimanagement/v20180601preview:Cache"),
 		},
 		{
@@ -98,6 +95,9 @@ func NewCache(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20240601preview:Cache"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement:Cache"),
 		},
 	})
 	opts = append(opts, aliases)

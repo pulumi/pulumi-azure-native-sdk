@@ -56,9 +56,6 @@ func NewEncryptionProtector(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:sql:EncryptionProtector"),
-		},
-		{
 			Type: pulumi.String("azure-native:sql/v20150501preview:EncryptionProtector"),
 		},
 		{
@@ -105,6 +102,9 @@ func NewEncryptionProtector(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20240501preview:EncryptionProtector"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql:EncryptionProtector"),
 		},
 	})
 	opts = append(opts, aliases)

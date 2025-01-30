@@ -40,10 +40,10 @@ func NewService(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:kubernetesruntime:Service"),
+			Type: pulumi.String("azure-native:kubernetesruntime/v20240301:Service"),
 		},
 		{
-			Type: pulumi.String("azure-native:kubernetesruntime/v20240301:Service"),
+			Type: pulumi.String("azure-native:kubernetesruntime:Service"),
 		},
 	})
 	opts = append(opts, aliases)

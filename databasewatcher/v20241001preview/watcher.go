@@ -50,9 +50,6 @@ func NewWatcher(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:databasewatcher:Watcher"),
-		},
-		{
 			Type: pulumi.String("azure-native:databasewatcher/v20230901preview:Watcher"),
 		},
 		{
@@ -60,6 +57,9 @@ func NewWatcher(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:databasewatcher/v20250102:Watcher"),
+		},
+		{
+			Type: pulumi.String("azure-native:databasewatcher:Watcher"),
 		},
 	})
 	opts = append(opts, aliases)

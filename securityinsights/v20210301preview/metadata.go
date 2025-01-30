@@ -74,9 +74,6 @@ func NewMetadata(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:securityinsights:Metadata"),
-		},
-		{
 			Type: pulumi.String("azure-native:securityinsights/v20210901preview:Metadata"),
 		},
 		{
@@ -162,6 +159,9 @@ func NewMetadata(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20241001preview:Metadata"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights:Metadata"),
 		},
 	})
 	opts = append(opts, aliases)

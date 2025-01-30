@@ -94,13 +94,13 @@ func NewAzureCliScript(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:resources:AzureCliScript"),
-		},
-		{
 			Type: pulumi.String("azure-native:resources/v20201001:AzureCliScript"),
 		},
 		{
 			Type: pulumi.String("azure-native:resources/v20230801:AzureCliScript"),
+		},
+		{
+			Type: pulumi.String("azure-native:resources:AzureCliScript"),
 		},
 	})
 	opts = append(opts, aliases)

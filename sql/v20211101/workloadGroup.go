@@ -61,9 +61,6 @@ func NewWorkloadGroup(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:sql:WorkloadGroup"),
-		},
-		{
 			Type: pulumi.String("azure-native:sql/v20190601preview:WorkloadGroup"),
 		},
 		{
@@ -110,6 +107,9 @@ func NewWorkloadGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20240501preview:WorkloadGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql:WorkloadGroup"),
 		},
 	})
 	opts = append(opts, aliases)

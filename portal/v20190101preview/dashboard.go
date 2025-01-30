@@ -42,9 +42,6 @@ func NewDashboard(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:portal:Dashboard"),
-		},
-		{
 			Type: pulumi.String("azure-native:portal/v20150801preview:Dashboard"),
 		},
 		{
@@ -55,6 +52,9 @@ func NewDashboard(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:portal/v20221201preview:Dashboard"),
+		},
+		{
+			Type: pulumi.String("azure-native:portal:Dashboard"),
 		},
 	})
 	opts = append(opts, aliases)

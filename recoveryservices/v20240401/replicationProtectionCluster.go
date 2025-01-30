@@ -45,13 +45,13 @@ func NewReplicationProtectionCluster(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:recoveryservices:ReplicationProtectionCluster"),
-		},
-		{
 			Type: pulumi.String("azure-native:recoveryservices/v20240201:ReplicationProtectionCluster"),
 		},
 		{
 			Type: pulumi.String("azure-native:recoveryservices/v20241001:ReplicationProtectionCluster"),
+		},
+		{
+			Type: pulumi.String("azure-native:recoveryservices:ReplicationProtectionCluster"),
 		},
 	})
 	opts = append(opts, aliases)

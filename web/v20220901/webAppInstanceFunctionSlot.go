@@ -68,9 +68,6 @@ func NewWebAppInstanceFunctionSlot(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:web:WebAppInstanceFunctionSlot"),
-		},
-		{
 			Type: pulumi.String("azure-native:web/v20160801:WebAppInstanceFunctionSlot"),
 		},
 		{
@@ -117,6 +114,9 @@ func NewWebAppInstanceFunctionSlot(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:web/v20240401:WebAppInstanceFunctionSlot"),
+		},
+		{
+			Type: pulumi.String("azure-native:web:WebAppInstanceFunctionSlot"),
 		},
 	})
 	opts = append(opts, aliases)

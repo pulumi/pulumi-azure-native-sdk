@@ -46,9 +46,6 @@ func NewBlobInventoryPolicy(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:storage:BlobInventoryPolicy"),
-		},
-		{
 			Type: pulumi.String("azure-native:storage/v20190601:BlobInventoryPolicy"),
 		},
 		{
@@ -83,6 +80,9 @@ func NewBlobInventoryPolicy(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:storage/v20230401:BlobInventoryPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:storage:BlobInventoryPolicy"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -46,9 +46,6 @@ func NewNetworkInterfaceTapConfiguration(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:network:NetworkInterfaceTapConfiguration"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20180801:NetworkInterfaceTapConfiguration"),
 		},
 		{
@@ -155,6 +152,9 @@ func NewNetworkInterfaceTapConfiguration(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20240301:NetworkInterfaceTapConfiguration"),
+		},
+		{
+			Type: pulumi.String("azure-native:network:NetworkInterfaceTapConfiguration"),
 		},
 	})
 	opts = append(opts, aliases)

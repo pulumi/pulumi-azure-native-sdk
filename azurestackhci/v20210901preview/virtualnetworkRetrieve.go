@@ -51,19 +51,13 @@ func NewVirtualnetworkRetrieve(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:azurestackhci/v20210901preview:virtualnetworkRetrieve"),
-		},
-		{
-			Type: pulumi.String("azure-native:azurestackhci:VirtualnetworkRetrieve"),
-		},
-		{
-			Type: pulumi.String("azure-native:azurestackhci:virtualnetworkRetrieve"),
-		},
-		{
 			Type: pulumi.String("azure-native:azurestackhci/v20210701preview:VirtualnetworkRetrieve"),
 		},
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20210701preview:virtualnetworkRetrieve"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20210901preview:virtualnetworkRetrieve"),
 		},
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20221215preview:VirtualnetworkRetrieve"),
@@ -76,6 +70,12 @@ func NewVirtualnetworkRetrieve(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20230701preview:virtualnetworkRetrieve"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci:VirtualnetworkRetrieve"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci:virtualnetworkRetrieve"),
 		},
 	})
 	opts = append(opts, aliases)

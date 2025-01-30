@@ -58,10 +58,10 @@ func NewTenantActionGroup(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:insights:TenantActionGroup"),
+			Type: pulumi.String("azure-native:insights/v20230301preview:TenantActionGroup"),
 		},
 		{
-			Type: pulumi.String("azure-native:insights/v20230301preview:TenantActionGroup"),
+			Type: pulumi.String("azure-native:insights:TenantActionGroup"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -125,13 +125,13 @@ func NewAccount(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:datalakeanalytics:Account"),
-		},
-		{
 			Type: pulumi.String("azure-native:datalakeanalytics/v20151001preview:Account"),
 		},
 		{
 			Type: pulumi.String("azure-native:datalakeanalytics/v20161101:Account"),
+		},
+		{
+			Type: pulumi.String("azure-native:datalakeanalytics:Account"),
 		},
 	})
 	opts = append(opts, aliases)

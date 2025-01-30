@@ -45,10 +45,10 @@ func NewConfigurationProfilesVersion(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:automanage:ConfigurationProfilesVersion"),
+			Type: pulumi.String("azure-native:automanage/v20210430preview:ConfigurationProfilesVersion"),
 		},
 		{
-			Type: pulumi.String("azure-native:automanage/v20210430preview:ConfigurationProfilesVersion"),
+			Type: pulumi.String("azure-native:automanage:ConfigurationProfilesVersion"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -45,9 +45,6 @@ func NewApiDiagnostic(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:apimanagement:ApiDiagnostic"),
-		},
-		{
 			Type: pulumi.String("azure-native:apimanagement/v20170301:ApiDiagnostic"),
 		},
 		{
@@ -103,6 +100,9 @@ func NewApiDiagnostic(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20240601preview:ApiDiagnostic"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement:ApiDiagnostic"),
 		},
 	})
 	opts = append(opts, aliases)

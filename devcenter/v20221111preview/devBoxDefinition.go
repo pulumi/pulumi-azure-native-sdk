@@ -68,9 +68,6 @@ func NewDevBoxDefinition(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:devcenter:DevBoxDefinition"),
-		},
-		{
 			Type: pulumi.String("azure-native:devcenter/v20220801preview:DevBoxDefinition"),
 		},
 		{
@@ -108,6 +105,9 @@ func NewDevBoxDefinition(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:devcenter/v20241001preview:DevBoxDefinition"),
+		},
+		{
+			Type: pulumi.String("azure-native:devcenter:DevBoxDefinition"),
 		},
 	})
 	opts = append(opts, aliases)

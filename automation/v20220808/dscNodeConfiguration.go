@@ -55,9 +55,6 @@ func NewDscNodeConfiguration(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:automation:DscNodeConfiguration"),
-		},
-		{
 			Type: pulumi.String("azure-native:automation/v20151031:DscNodeConfiguration"),
 		},
 		{
@@ -77,6 +74,9 @@ func NewDscNodeConfiguration(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:automation/v20241023:DscNodeConfiguration"),
+		},
+		{
+			Type: pulumi.String("azure-native:automation:DscNodeConfiguration"),
 		},
 	})
 	opts = append(opts, aliases)

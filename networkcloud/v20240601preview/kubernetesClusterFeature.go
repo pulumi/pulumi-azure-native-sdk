@@ -56,13 +56,13 @@ func NewKubernetesClusterFeature(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:networkcloud:KubernetesClusterFeature"),
-		},
-		{
 			Type: pulumi.String("azure-native:networkcloud/v20240701:KubernetesClusterFeature"),
 		},
 		{
 			Type: pulumi.String("azure-native:networkcloud/v20241001preview:KubernetesClusterFeature"),
+		},
+		{
+			Type: pulumi.String("azure-native:networkcloud:KubernetesClusterFeature"),
 		},
 	})
 	opts = append(opts, aliases)

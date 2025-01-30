@@ -63,10 +63,10 @@ func NewRoutingRule(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:network:RoutingRule"),
+			Type: pulumi.String("azure-native:network/v20240501:RoutingRule"),
 		},
 		{
-			Type: pulumi.String("azure-native:network/v20240501:RoutingRule"),
+			Type: pulumi.String("azure-native:network:RoutingRule"),
 		},
 	})
 	opts = append(opts, aliases)

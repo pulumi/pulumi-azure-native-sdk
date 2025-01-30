@@ -65,9 +65,6 @@ func NewStreamingLocator(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:media:StreamingLocator"),
-		},
-		{
 			Type: pulumi.String("azure-native:media/v20180330preview:StreamingLocator"),
 		},
 		{
@@ -87,6 +84,9 @@ func NewStreamingLocator(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:media/v20220801:StreamingLocator"),
+		},
+		{
+			Type: pulumi.String("azure-native:media:StreamingLocator"),
 		},
 	})
 	opts = append(opts, aliases)

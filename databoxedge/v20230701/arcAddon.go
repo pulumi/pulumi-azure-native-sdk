@@ -74,9 +74,6 @@ func NewArcAddon(ctx *pulumi.Context,
 	args.Kind = pulumi.String("ArcForKubernetes")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:databoxedge:ArcAddon"),
-		},
-		{
 			Type: pulumi.String("azure-native:databoxedge/v20200901:ArcAddon"),
 		},
 		{
@@ -111,6 +108,9 @@ func NewArcAddon(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:databoxedge/v20231201:ArcAddon"),
+		},
+		{
+			Type: pulumi.String("azure-native:databoxedge:ArcAddon"),
 		},
 	})
 	opts = append(opts, aliases)

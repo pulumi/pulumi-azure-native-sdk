@@ -107,9 +107,6 @@ func NewAppServicePlan(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:web:AppServicePlan"),
-		},
-		{
 			Type: pulumi.String("azure-native:web/v20150801:AppServicePlan"),
 		},
 		{
@@ -156,6 +153,9 @@ func NewAppServicePlan(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:web/v20231201:AppServicePlan"),
+		},
+		{
+			Type: pulumi.String("azure-native:web:AppServicePlan"),
 		},
 	})
 	opts = append(opts, aliases)

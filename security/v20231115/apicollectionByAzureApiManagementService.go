@@ -57,10 +57,10 @@ func NewAPICollectionByAzureApiManagementService(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:security:APICollectionByAzureApiManagementService"),
+			Type: pulumi.String("azure-native:security/v20221120preview:APICollectionByAzureApiManagementService"),
 		},
 		{
-			Type: pulumi.String("azure-native:security/v20221120preview:APICollectionByAzureApiManagementService"),
+			Type: pulumi.String("azure-native:security:APICollectionByAzureApiManagementService"),
 		},
 	})
 	opts = append(opts, aliases)

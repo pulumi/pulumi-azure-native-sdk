@@ -32,9 +32,6 @@ func NewProviderRegistration(ctx *pulumi.Context,
 
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:providerhub:ProviderRegistration"),
-		},
-		{
 			Type: pulumi.String("azure-native:providerhub/v20201120:ProviderRegistration"),
 		},
 		{
@@ -42,6 +39,9 @@ func NewProviderRegistration(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:providerhub/v20210601preview:ProviderRegistration"),
+		},
+		{
+			Type: pulumi.String("azure-native:providerhub:ProviderRegistration"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -48,9 +48,6 @@ func NewRegistryEnvironmentVersion(ctx *pulumi.Context,
 	args.EnvironmentVersionProperties = args.EnvironmentVersionProperties.ToEnvironmentVersionTypeOutput().ApplyT(func(v EnvironmentVersionType) EnvironmentVersionType { return *v.Defaults() }).(EnvironmentVersionTypeOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:machinelearningservices:RegistryEnvironmentVersion"),
-		},
-		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20221001preview:RegistryEnvironmentVersion"),
 		},
 		{
@@ -88,6 +85,9 @@ func NewRegistryEnvironmentVersion(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001:RegistryEnvironmentVersion"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices:RegistryEnvironmentVersion"),
 		},
 	})
 	opts = append(opts, aliases)

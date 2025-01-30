@@ -49,10 +49,10 @@ func NewSecurityPoliciesInterface(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:servicenetworking:SecurityPoliciesInterface"),
+			Type: pulumi.String("azure-native:servicenetworking/v20240501preview:SecurityPoliciesInterface"),
 		},
 		{
-			Type: pulumi.String("azure-native:servicenetworking/v20240501preview:SecurityPoliciesInterface"),
+			Type: pulumi.String("azure-native:servicenetworking:SecurityPoliciesInterface"),
 		},
 	})
 	opts = append(opts, aliases)

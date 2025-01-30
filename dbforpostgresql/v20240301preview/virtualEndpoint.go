@@ -45,9 +45,6 @@ func NewVirtualEndpoint(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:dbforpostgresql:VirtualEndpoint"),
-		},
-		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20230601preview:VirtualEndpoint"),
 		},
 		{
@@ -58,6 +55,9 @@ func NewVirtualEndpoint(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20241101preview:VirtualEndpoint"),
+		},
+		{
+			Type: pulumi.String("azure-native:dbforpostgresql:VirtualEndpoint"),
 		},
 	})
 	opts = append(opts, aliases)

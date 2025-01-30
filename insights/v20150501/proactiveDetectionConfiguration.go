@@ -45,10 +45,10 @@ func NewProactiveDetectionConfiguration(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:insights:ProactiveDetectionConfiguration"),
+			Type: pulumi.String("azure-native:insights/v20180501preview:ProactiveDetectionConfiguration"),
 		},
 		{
-			Type: pulumi.String("azure-native:insights/v20180501preview:ProactiveDetectionConfiguration"),
+			Type: pulumi.String("azure-native:insights:ProactiveDetectionConfiguration"),
 		},
 	})
 	opts = append(opts, aliases)

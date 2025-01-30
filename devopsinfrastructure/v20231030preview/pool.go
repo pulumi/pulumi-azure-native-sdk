@@ -70,9 +70,6 @@ func NewPool(ctx *pulumi.Context,
 	args.FabricProfile = args.FabricProfile.ToVmssFabricProfileOutput().ApplyT(func(v VmssFabricProfile) VmssFabricProfile { return *v.Defaults() }).(VmssFabricProfileOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:devopsinfrastructure:Pool"),
-		},
-		{
 			Type: pulumi.String("azure-native:devopsinfrastructure/v20231213preview:Pool"),
 		},
 		{
@@ -83,6 +80,12 @@ func NewPool(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:devopsinfrastructure/v20241019:Pool"),
+		},
+		{
+			Type: pulumi.String("azure-native:devopsinfrastructure/v20250121:Pool"),
+		},
+		{
+			Type: pulumi.String("azure-native:devopsinfrastructure:Pool"),
 		},
 	})
 	opts = append(opts, aliases)

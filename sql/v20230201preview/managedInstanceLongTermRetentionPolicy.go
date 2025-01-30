@@ -48,9 +48,6 @@ func NewManagedInstanceLongTermRetentionPolicy(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:sql:ManagedInstanceLongTermRetentionPolicy"),
-		},
-		{
 			Type: pulumi.String("azure-native:sql/v20220501preview:ManagedInstanceLongTermRetentionPolicy"),
 		},
 		{
@@ -67,6 +64,9 @@ func NewManagedInstanceLongTermRetentionPolicy(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20240501preview:ManagedInstanceLongTermRetentionPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql:ManagedInstanceLongTermRetentionPolicy"),
 		},
 	})
 	opts = append(opts, aliases)

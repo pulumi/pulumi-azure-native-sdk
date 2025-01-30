@@ -73,25 +73,25 @@ func NewVirtualmachineRetrieve(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:azurestackhci/v20210901preview:virtualmachineRetrieve"),
-		},
-		{
-			Type: pulumi.String("azure-native:azurestackhci:VirtualmachineRetrieve"),
-		},
-		{
-			Type: pulumi.String("azure-native:azurestackhci:virtualmachineRetrieve"),
-		},
-		{
 			Type: pulumi.String("azure-native:azurestackhci/v20210701preview:VirtualmachineRetrieve"),
 		},
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20210701preview:virtualmachineRetrieve"),
 		},
 		{
+			Type: pulumi.String("azure-native:azurestackhci/v20210901preview:virtualmachineRetrieve"),
+		},
+		{
 			Type: pulumi.String("azure-native:azurestackhci/v20221215preview:VirtualmachineRetrieve"),
 		},
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20221215preview:virtualmachineRetrieve"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci:VirtualmachineRetrieve"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci:virtualmachineRetrieve"),
 		},
 	})
 	opts = append(opts, aliases)

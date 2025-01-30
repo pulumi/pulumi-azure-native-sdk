@@ -42,10 +42,10 @@ func NewAccount(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:recommendationsservice:Account"),
+			Type: pulumi.String("azure-native:recommendationsservice/v20220301preview:Account"),
 		},
 		{
-			Type: pulumi.String("azure-native:recommendationsservice/v20220301preview:Account"),
+			Type: pulumi.String("azure-native:recommendationsservice:Account"),
 		},
 	})
 	opts = append(opts, aliases)

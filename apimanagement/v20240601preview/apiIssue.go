@@ -61,9 +61,6 @@ func NewApiIssue(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:apimanagement:ApiIssue"),
-		},
-		{
 			Type: pulumi.String("azure-native:apimanagement/v20170301:ApiIssue"),
 		},
 		{
@@ -119,6 +116,9 @@ func NewApiIssue(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20240501:ApiIssue"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement:ApiIssue"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -47,9 +47,6 @@ func NewIotHubResourceEventHubConsumerGroup(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:devices:IotHubResourceEventHubConsumerGroup"),
-		},
-		{
 			Type: pulumi.String("azure-native:devices/v20160203:IotHubResourceEventHubConsumerGroup"),
 		},
 		{
@@ -129,6 +126,9 @@ func NewIotHubResourceEventHubConsumerGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:devices/v20230630preview:IotHubResourceEventHubConsumerGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:devices:IotHubResourceEventHubConsumerGroup"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -44,9 +44,6 @@ func NewDevToolPortal(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:appplatform:DevToolPortal"),
-		},
-		{
 			Type: pulumi.String("azure-native:appplatform/v20221101preview:DevToolPortal"),
 		},
 		{
@@ -72,6 +69,9 @@ func NewDevToolPortal(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:appplatform/v20240501preview:DevToolPortal"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform:DevToolPortal"),
 		},
 	})
 	opts = append(opts, aliases)

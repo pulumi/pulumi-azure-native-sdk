@@ -52,13 +52,16 @@ func NewAksAssessmentOperation(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:migrate:AksAssessmentOperation"),
-		},
-		{
 			Type: pulumi.String("azure-native:migrate/v20230401preview:AksAssessmentOperation"),
 		},
 		{
 			Type: pulumi.String("azure-native:migrate/v20230501preview:AksAssessmentOperation"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate/v20240101preview:AksAssessmentOperation"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate:AksAssessmentOperation"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -46,13 +46,13 @@ func NewSqlDiscoverySiteDataSourceController(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:offazure:SqlDiscoverySiteDataSourceController"),
-		},
-		{
 			Type: pulumi.String("azure-native:offazure/v20231001preview:SqlDiscoverySiteDataSourceController"),
 		},
 		{
 			Type: pulumi.String("azure-native:offazure/v20240501preview:SqlDiscoverySiteDataSourceController"),
+		},
+		{
+			Type: pulumi.String("azure-native:offazure:SqlDiscoverySiteDataSourceController"),
 		},
 	})
 	opts = append(opts, aliases)

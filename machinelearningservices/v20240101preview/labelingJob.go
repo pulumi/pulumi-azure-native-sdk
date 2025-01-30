@@ -45,9 +45,6 @@ func NewLabelingJob(ctx *pulumi.Context,
 	args.LabelingJobProperties = args.LabelingJobProperties.ToLabelingJobTypeOutput().ApplyT(func(v LabelingJobType) LabelingJobType { return *v.Defaults() }).(LabelingJobTypeOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:machinelearningservices:LabelingJob"),
-		},
-		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20200901preview:LabelingJob"),
 		},
 		{
@@ -76,6 +73,9 @@ func NewLabelingJob(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20240401preview:LabelingJob"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices:LabelingJob"),
 		},
 	})
 	opts = append(opts, aliases)

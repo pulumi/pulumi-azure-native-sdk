@@ -53,9 +53,6 @@ func NewScript(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:kusto:Script"),
-		},
-		{
 			Type: pulumi.String("azure-native:kusto/v20210101:Script"),
 		},
 		{
@@ -78,6 +75,9 @@ func NewScript(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:kusto/v20240413:Script"),
+		},
+		{
+			Type: pulumi.String("azure-native:kusto:Script"),
 		},
 	})
 	opts = append(opts, aliases)

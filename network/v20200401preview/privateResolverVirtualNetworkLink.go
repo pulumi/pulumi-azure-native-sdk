@@ -47,13 +47,13 @@ func NewPrivateResolverVirtualNetworkLink(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:network:PrivateResolverVirtualNetworkLink"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20220701:PrivateResolverVirtualNetworkLink"),
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20230701preview:PrivateResolverVirtualNetworkLink"),
+		},
+		{
+			Type: pulumi.String("azure-native:network:PrivateResolverVirtualNetworkLink"),
 		},
 	})
 	opts = append(opts, aliases)

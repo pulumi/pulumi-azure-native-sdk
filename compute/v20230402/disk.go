@@ -115,9 +115,6 @@ func NewDisk(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:compute:Disk"),
-		},
-		{
 			Type: pulumi.String("azure-native:compute/v20160430preview:Disk"),
 		},
 		{
@@ -176,6 +173,9 @@ func NewDisk(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:compute/v20240302:Disk"),
+		},
+		{
+			Type: pulumi.String("azure-native:compute:Disk"),
 		},
 	})
 	opts = append(opts, aliases)

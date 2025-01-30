@@ -56,9 +56,6 @@ func NewProject(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:devcenter:Project"),
-		},
-		{
 			Type: pulumi.String("azure-native:devcenter/v20220801preview:Project"),
 		},
 		{
@@ -96,6 +93,9 @@ func NewProject(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:devcenter/v20241001preview:Project"),
+		},
+		{
+			Type: pulumi.String("azure-native:devcenter:Project"),
 		},
 	})
 	opts = append(opts, aliases)

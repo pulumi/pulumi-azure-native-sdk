@@ -46,13 +46,13 @@ func NewMetadataSchema(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:apicenter:MetadataSchema"),
-		},
-		{
 			Type: pulumi.String("azure-native:apicenter/v20240301:MetadataSchema"),
 		},
 		{
 			Type: pulumi.String("azure-native:apicenter/v20240601preview:MetadataSchema"),
+		},
+		{
+			Type: pulumi.String("azure-native:apicenter:MetadataSchema"),
 		},
 	})
 	opts = append(opts, aliases)

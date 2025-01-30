@@ -43,13 +43,13 @@ func NewSubAccount(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:logz:SubAccount"),
-		},
-		{
 			Type: pulumi.String("azure-native:logz/v20201001:SubAccount"),
 		},
 		{
 			Type: pulumi.String("azure-native:logz/v20201001preview:SubAccount"),
+		},
+		{
+			Type: pulumi.String("azure-native:logz:SubAccount"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -65,10 +65,10 @@ func NewReadOnlyFollowingDatabase(ctx *pulumi.Context,
 	args.Kind = pulumi.String("ReadOnlyFollowing")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:synapse:ReadOnlyFollowingDatabase"),
+			Type: pulumi.String("azure-native:synapse/v20210401preview:ReadOnlyFollowingDatabase"),
 		},
 		{
-			Type: pulumi.String("azure-native:synapse/v20210401preview:ReadOnlyFollowingDatabase"),
+			Type: pulumi.String("azure-native:synapse:ReadOnlyFollowingDatabase"),
 		},
 	})
 	opts = append(opts, aliases)

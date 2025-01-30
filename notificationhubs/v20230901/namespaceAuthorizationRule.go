@@ -45,9 +45,6 @@ func NewNamespaceAuthorizationRule(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:notificationhubs:NamespaceAuthorizationRule"),
-		},
-		{
 			Type: pulumi.String("azure-native:notificationhubs/v20160301:NamespaceAuthorizationRule"),
 		},
 		{
@@ -58,6 +55,9 @@ func NewNamespaceAuthorizationRule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:notificationhubs/v20231001preview:NamespaceAuthorizationRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:notificationhubs:NamespaceAuthorizationRule"),
 		},
 	})
 	opts = append(opts, aliases)

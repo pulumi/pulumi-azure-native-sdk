@@ -90,9 +90,6 @@ func NewSqlVirtualMachine(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:sqlvirtualmachine:SqlVirtualMachine"),
-		},
-		{
 			Type: pulumi.String("azure-native:sqlvirtualmachine/v20170301preview:SqlVirtualMachine"),
 		},
 		{
@@ -112,6 +109,9 @@ func NewSqlVirtualMachine(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sqlvirtualmachine/v20231001:SqlVirtualMachine"),
+		},
+		{
+			Type: pulumi.String("azure-native:sqlvirtualmachine:SqlVirtualMachine"),
 		},
 	})
 	opts = append(opts, aliases)

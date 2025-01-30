@@ -49,9 +49,6 @@ func NewVmwareCollectorsOperation(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:migrate:VmwareCollectorsOperation"),
-		},
-		{
 			Type: pulumi.String("azure-native:migrate/v20191001:VmwareCollectorsOperation"),
 		},
 		{
@@ -62,6 +59,12 @@ func NewVmwareCollectorsOperation(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:migrate/v20230501preview:VmwareCollectorsOperation"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate/v20240101preview:VmwareCollectorsOperation"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate:VmwareCollectorsOperation"),
 		},
 	})
 	opts = append(opts, aliases)

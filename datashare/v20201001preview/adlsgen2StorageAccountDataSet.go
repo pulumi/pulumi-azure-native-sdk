@@ -63,9 +63,6 @@ func NewADLSGen2StorageAccountDataSet(ctx *pulumi.Context,
 	args.Kind = pulumi.String("AdlsGen2StorageAccount")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:datashare:ADLSGen2StorageAccountDataSet"),
-		},
-		{
 			Type: pulumi.String("azure-native:datashare/v20181101preview:ADLSGen2StorageAccountDataSet"),
 		},
 		{
@@ -76,6 +73,9 @@ func NewADLSGen2StorageAccountDataSet(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:datashare/v20210801:ADLSGen2StorageAccountDataSet"),
+		},
+		{
+			Type: pulumi.String("azure-native:datashare:ADLSGen2StorageAccountDataSet"),
 		},
 	})
 	opts = append(opts, aliases)

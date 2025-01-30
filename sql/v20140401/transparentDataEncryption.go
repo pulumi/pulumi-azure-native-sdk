@@ -44,9 +44,6 @@ func NewTransparentDataEncryption(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:sql:TransparentDataEncryption"),
-		},
-		{
 			Type: pulumi.String("azure-native:sql/v20200202preview:TransparentDataEncryption"),
 		},
 		{
@@ -93,6 +90,9 @@ func NewTransparentDataEncryption(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20240501preview:TransparentDataEncryption"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql:TransparentDataEncryption"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -56,9 +56,6 @@ func NewWebAppSourceControlSlot(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:web:WebAppSourceControlSlot"),
-		},
-		{
 			Type: pulumi.String("azure-native:web/v20150801:WebAppSourceControlSlot"),
 		},
 		{
@@ -108,6 +105,9 @@ func NewWebAppSourceControlSlot(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:web/v20231201:WebAppSourceControlSlot"),
+		},
+		{
+			Type: pulumi.String("azure-native:web:WebAppSourceControlSlot"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -58,9 +58,6 @@ func NewOrganization(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:confluent:Organization"),
-		},
-		{
 			Type: pulumi.String("azure-native:confluent/v20200301:Organization"),
 		},
 		{
@@ -80,6 +77,9 @@ func NewOrganization(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:confluent/v20240701:Organization"),
+		},
+		{
+			Type: pulumi.String("azure-native:confluent:Organization"),
 		},
 	})
 	opts = append(opts, aliases)

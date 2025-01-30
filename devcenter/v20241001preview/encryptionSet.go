@@ -51,9 +51,6 @@ func NewEncryptionSet(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:devcenter:EncryptionSet"),
-		},
-		{
 			Type: pulumi.String("azure-native:devcenter/v20240501preview:EncryptionSet"),
 		},
 		{
@@ -64,6 +61,9 @@ func NewEncryptionSet(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:devcenter/v20240801preview:EncryptionSet"),
+		},
+		{
+			Type: pulumi.String("azure-native:devcenter:EncryptionSet"),
 		},
 	})
 	opts = append(opts, aliases)

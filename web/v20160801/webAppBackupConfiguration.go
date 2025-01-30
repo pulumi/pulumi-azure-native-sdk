@@ -58,9 +58,6 @@ func NewWebAppBackupConfiguration(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:web:WebAppBackupConfiguration"),
-		},
-		{
 			Type: pulumi.String("azure-native:web/v20150801:WebAppBackupConfiguration"),
 		},
 		{
@@ -110,6 +107,9 @@ func NewWebAppBackupConfiguration(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:web/v20240401:WebAppBackupConfiguration"),
+		},
+		{
+			Type: pulumi.String("azure-native:web:WebAppBackupConfiguration"),
 		},
 	})
 	opts = append(opts, aliases)

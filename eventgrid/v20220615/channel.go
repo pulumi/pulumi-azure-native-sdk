@@ -52,9 +52,6 @@ func NewChannel(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:eventgrid:Channel"),
-		},
-		{
 			Type: pulumi.String("azure-native:eventgrid/v20211015preview:Channel"),
 		},
 		{
@@ -68,6 +65,9 @@ func NewChannel(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:eventgrid/v20241215preview:Channel"),
+		},
+		{
+			Type: pulumi.String("azure-native:eventgrid:Channel"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -57,9 +57,6 @@ func NewCloudEdgeManagementRole(ctx *pulumi.Context,
 	args.Kind = pulumi.String("CloudEdgeManagement")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:databoxedge:CloudEdgeManagementRole"),
-		},
-		{
 			Type: pulumi.String("azure-native:databoxedge/v20190301:CloudEdgeManagementRole"),
 		},
 		{
@@ -106,6 +103,9 @@ func NewCloudEdgeManagementRole(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:databoxedge/v20230701:CloudEdgeManagementRole"),
+		},
+		{
+			Type: pulumi.String("azure-native:databoxedge:CloudEdgeManagementRole"),
 		},
 	})
 	opts = append(opts, aliases)

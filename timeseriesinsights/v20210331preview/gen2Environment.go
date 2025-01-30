@@ -79,9 +79,6 @@ func NewGen2Environment(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:timeseriesinsights:Gen2Environment"),
-		},
-		{
 			Type: pulumi.String("azure-native:timeseriesinsights/v20170228preview:Gen2Environment"),
 		},
 		{
@@ -95,6 +92,9 @@ func NewGen2Environment(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:timeseriesinsights/v20210630preview:Gen2Environment"),
+		},
+		{
+			Type: pulumi.String("azure-native:timeseriesinsights:Gen2Environment"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -43,10 +43,10 @@ func NewConfigurationProfileHCIAssignment(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:automanage:ConfigurationProfileHCIAssignment"),
+			Type: pulumi.String("azure-native:automanage/v20210430preview:ConfigurationProfileHCIAssignment"),
 		},
 		{
-			Type: pulumi.String("azure-native:automanage/v20210430preview:ConfigurationProfileHCIAssignment"),
+			Type: pulumi.String("azure-native:automanage:ConfigurationProfileHCIAssignment"),
 		},
 	})
 	opts = append(opts, aliases)

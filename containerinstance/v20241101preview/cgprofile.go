@@ -86,10 +86,10 @@ func NewCGProfile(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:containerinstance:CGProfile"),
+			Type: pulumi.String("azure-native:containerinstance/v20240501preview:CGProfile"),
 		},
 		{
-			Type: pulumi.String("azure-native:containerinstance/v20240501preview:CGProfile"),
+			Type: pulumi.String("azure-native:containerinstance:CGProfile"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -44,10 +44,10 @@ func NewSubscriptionDiagnosticSetting(ctx *pulumi.Context,
 
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:insights:SubscriptionDiagnosticSetting"),
+			Type: pulumi.String("azure-native:insights/v20210501preview:SubscriptionDiagnosticSetting"),
 		},
 		{
-			Type: pulumi.String("azure-native:insights/v20210501preview:SubscriptionDiagnosticSetting"),
+			Type: pulumi.String("azure-native:insights:SubscriptionDiagnosticSetting"),
 		},
 	})
 	opts = append(opts, aliases)

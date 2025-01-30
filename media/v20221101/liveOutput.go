@@ -70,9 +70,6 @@ func NewLiveOutput(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:media:LiveOutput"),
-		},
-		{
 			Type: pulumi.String("azure-native:media/v20180330preview:LiveOutput"),
 		},
 		{
@@ -95,6 +92,9 @@ func NewLiveOutput(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:media/v20220801:LiveOutput"),
+		},
+		{
+			Type: pulumi.String("azure-native:media:LiveOutput"),
 		},
 	})
 	opts = append(opts, aliases)

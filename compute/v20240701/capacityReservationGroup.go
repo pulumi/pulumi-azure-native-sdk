@@ -48,9 +48,6 @@ func NewCapacityReservationGroup(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:compute:CapacityReservationGroup"),
-		},
-		{
 			Type: pulumi.String("azure-native:compute/v20210401:CapacityReservationGroup"),
 		},
 		{
@@ -79,6 +76,9 @@ func NewCapacityReservationGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:compute/v20240301:CapacityReservationGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:compute:CapacityReservationGroup"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -52,9 +52,6 @@ func NewNetworkManager(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:network:NetworkManager"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20210501preview:NetworkManager"),
 		},
 		{
@@ -107,6 +104,9 @@ func NewNetworkManager(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20240501:NetworkManager"),
+		},
+		{
+			Type: pulumi.String("azure-native:network:NetworkManager"),
 		},
 	})
 	opts = append(opts, aliases)

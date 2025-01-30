@@ -50,9 +50,6 @@ func NewReplicationMigrationItem(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:recoveryservices:ReplicationMigrationItem"),
-		},
-		{
 			Type: pulumi.String("azure-native:recoveryservices/v20180110:ReplicationMigrationItem"),
 		},
 		{
@@ -132,6 +129,9 @@ func NewReplicationMigrationItem(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:recoveryservices/v20240401:ReplicationMigrationItem"),
+		},
+		{
+			Type: pulumi.String("azure-native:recoveryservices:ReplicationMigrationItem"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -70,9 +70,6 @@ func NewApplication(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:desktopvirtualization:Application"),
-		},
-		{
 			Type: pulumi.String("azure-native:desktopvirtualization/v20190123preview:Application"),
 		},
 		{
@@ -146,6 +143,9 @@ func NewApplication(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:desktopvirtualization/v20240808preview:Application"),
+		},
+		{
+			Type: pulumi.String("azure-native:desktopvirtualization:Application"),
 		},
 	})
 	opts = append(opts, aliases)

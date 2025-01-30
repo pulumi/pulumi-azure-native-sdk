@@ -42,9 +42,6 @@ func NewServerAzureADOnlyAuthentication(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:sql:ServerAzureADOnlyAuthentication"),
-		},
-		{
 			Type: pulumi.String("azure-native:sql/v20200202preview:ServerAzureADOnlyAuthentication"),
 		},
 		{
@@ -88,6 +85,9 @@ func NewServerAzureADOnlyAuthentication(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20230801preview:ServerAzureADOnlyAuthentication"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql:ServerAzureADOnlyAuthentication"),
 		},
 	})
 	opts = append(opts, aliases)

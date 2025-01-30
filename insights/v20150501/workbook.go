@@ -74,9 +74,6 @@ func NewWorkbook(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:insights:Workbook"),
-		},
-		{
 			Type: pulumi.String("azure-native:insights/v20180617preview:Workbook"),
 		},
 		{
@@ -93,6 +90,9 @@ func NewWorkbook(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:insights/v20230601:Workbook"),
+		},
+		{
+			Type: pulumi.String("azure-native:insights:Workbook"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -44,9 +44,6 @@ func NewThroughputPool(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:documentdb:ThroughputPool"),
-		},
-		{
 			Type: pulumi.String("azure-native:documentdb/v20231115preview:ThroughputPool"),
 		},
 		{
@@ -57,6 +54,9 @@ func NewThroughputPool(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:documentdb/v20240901preview:ThroughputPool"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb:ThroughputPool"),
 		},
 	})
 	opts = append(opts, aliases)

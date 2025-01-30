@@ -52,9 +52,6 @@ func NewIoTDataConnector(ctx *pulumi.Context,
 	args.Kind = pulumi.String("IOT")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:securityinsights:IoTDataConnector"),
-		},
-		{
 			Type: pulumi.String("azure-native:securityinsights/v20190101preview:IoTDataConnector"),
 		},
 		{
@@ -155,6 +152,9 @@ func NewIoTDataConnector(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20240901:IoTDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights:IoTDataConnector"),
 		},
 	})
 	opts = append(opts, aliases)

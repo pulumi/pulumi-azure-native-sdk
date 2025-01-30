@@ -58,9 +58,6 @@ func NewServerSecurityAlertPolicy(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:sql:ServerSecurityAlertPolicy"),
-		},
-		{
 			Type: pulumi.String("azure-native:sql/v20170301preview:ServerSecurityAlertPolicy"),
 		},
 		{
@@ -107,6 +104,9 @@ func NewServerSecurityAlertPolicy(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20240501preview:ServerSecurityAlertPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql:ServerSecurityAlertPolicy"),
 		},
 	})
 	opts = append(opts, aliases)

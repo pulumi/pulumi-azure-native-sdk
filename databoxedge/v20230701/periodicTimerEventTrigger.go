@@ -58,9 +58,6 @@ func NewPeriodicTimerEventTrigger(ctx *pulumi.Context,
 	args.Kind = pulumi.String("PeriodicTimerEvent")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:databoxedge:PeriodicTimerEventTrigger"),
-		},
-		{
 			Type: pulumi.String("azure-native:databoxedge/v20190301:PeriodicTimerEventTrigger"),
 		},
 		{
@@ -107,6 +104,9 @@ func NewPeriodicTimerEventTrigger(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:databoxedge/v20231201:PeriodicTimerEventTrigger"),
+		},
+		{
+			Type: pulumi.String("azure-native:databoxedge:PeriodicTimerEventTrigger"),
 		},
 	})
 	opts = append(opts, aliases)

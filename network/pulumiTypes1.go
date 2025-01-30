@@ -13,6 +13,85 @@ import (
 
 var _ = utilities.GetEnvOrDefault
 
+// To scrub sensitive log fields
+type PolicySettingsResponseLogScrubbing struct {
+	// The rules that are applied to the logs for scrubbing.
+	ScrubbingRules []WebApplicationFirewallScrubbingRulesResponse `pulumi:"scrubbingRules"`
+	// State of the log scrubbing config. Default value is Enabled.
+	State *string `pulumi:"state"`
+}
+
+// To scrub sensitive log fields
+type PolicySettingsResponseLogScrubbingOutput struct{ *pulumi.OutputState }
+
+func (PolicySettingsResponseLogScrubbingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicySettingsResponseLogScrubbing)(nil)).Elem()
+}
+
+func (o PolicySettingsResponseLogScrubbingOutput) ToPolicySettingsResponseLogScrubbingOutput() PolicySettingsResponseLogScrubbingOutput {
+	return o
+}
+
+func (o PolicySettingsResponseLogScrubbingOutput) ToPolicySettingsResponseLogScrubbingOutputWithContext(ctx context.Context) PolicySettingsResponseLogScrubbingOutput {
+	return o
+}
+
+// The rules that are applied to the logs for scrubbing.
+func (o PolicySettingsResponseLogScrubbingOutput) ScrubbingRules() WebApplicationFirewallScrubbingRulesResponseArrayOutput {
+	return o.ApplyT(func(v PolicySettingsResponseLogScrubbing) []WebApplicationFirewallScrubbingRulesResponse {
+		return v.ScrubbingRules
+	}).(WebApplicationFirewallScrubbingRulesResponseArrayOutput)
+}
+
+// State of the log scrubbing config. Default value is Enabled.
+func (o PolicySettingsResponseLogScrubbingOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicySettingsResponseLogScrubbing) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type PolicySettingsResponseLogScrubbingPtrOutput struct{ *pulumi.OutputState }
+
+func (PolicySettingsResponseLogScrubbingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PolicySettingsResponseLogScrubbing)(nil)).Elem()
+}
+
+func (o PolicySettingsResponseLogScrubbingPtrOutput) ToPolicySettingsResponseLogScrubbingPtrOutput() PolicySettingsResponseLogScrubbingPtrOutput {
+	return o
+}
+
+func (o PolicySettingsResponseLogScrubbingPtrOutput) ToPolicySettingsResponseLogScrubbingPtrOutputWithContext(ctx context.Context) PolicySettingsResponseLogScrubbingPtrOutput {
+	return o
+}
+
+func (o PolicySettingsResponseLogScrubbingPtrOutput) Elem() PolicySettingsResponseLogScrubbingOutput {
+	return o.ApplyT(func(v *PolicySettingsResponseLogScrubbing) PolicySettingsResponseLogScrubbing {
+		if v != nil {
+			return *v
+		}
+		var ret PolicySettingsResponseLogScrubbing
+		return ret
+	}).(PolicySettingsResponseLogScrubbingOutput)
+}
+
+// The rules that are applied to the logs for scrubbing.
+func (o PolicySettingsResponseLogScrubbingPtrOutput) ScrubbingRules() WebApplicationFirewallScrubbingRulesResponseArrayOutput {
+	return o.ApplyT(func(v *PolicySettingsResponseLogScrubbing) []WebApplicationFirewallScrubbingRulesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ScrubbingRules
+	}).(WebApplicationFirewallScrubbingRulesResponseArrayOutput)
+}
+
+// State of the log scrubbing config. Default value is Enabled.
+func (o PolicySettingsResponseLogScrubbingPtrOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PolicySettingsResponseLogScrubbing) *string {
+		if v == nil {
+			return nil
+		}
+		return v.State
+	}).(pulumi.StringPtrOutput)
+}
+
 // IpamPool association information.
 type PoolAssociationResponse struct {
 	// List of assigned IP address prefixes in the IpamPool of the associated resource.
@@ -11816,6 +11895,87 @@ func (o SharedKeyPropertiesResponseOutput) SharedKey() pulumi.StringPtrOutput {
 // The length of the shared key for the vpn link connection.
 func (o SharedKeyPropertiesResponseOutput) SharedKeyLength() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SharedKeyPropertiesResponse) *int { return v.SharedKeyLength }).(pulumi.IntPtrOutput)
+}
+
+// Represents the signing key.
+type SigningKeyResponse struct {
+	// The delegation signer information.
+	DelegationSignerInfo []DelegationSignerInfoResponse `pulumi:"delegationSignerInfo"`
+	// The flags specifies how the key is used.
+	Flags int `pulumi:"flags"`
+	// The key tag value of the DNSKEY Resource Record.
+	KeyTag int `pulumi:"keyTag"`
+	// The protocol value. The value is always 3.
+	Protocol int `pulumi:"protocol"`
+	// The public key, represented as a Base64 encoding.
+	PublicKey string `pulumi:"publicKey"`
+	// The security algorithm type represents the standard security algorithm number of the DNSKEY Resource Record. See: https://www.iana.org/assignments/dns-sec-alg-numbers/dns-sec-alg-numbers.xhtml
+	SecurityAlgorithmType int `pulumi:"securityAlgorithmType"`
+}
+
+// Represents the signing key.
+type SigningKeyResponseOutput struct{ *pulumi.OutputState }
+
+func (SigningKeyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SigningKeyResponse)(nil)).Elem()
+}
+
+func (o SigningKeyResponseOutput) ToSigningKeyResponseOutput() SigningKeyResponseOutput {
+	return o
+}
+
+func (o SigningKeyResponseOutput) ToSigningKeyResponseOutputWithContext(ctx context.Context) SigningKeyResponseOutput {
+	return o
+}
+
+// The delegation signer information.
+func (o SigningKeyResponseOutput) DelegationSignerInfo() DelegationSignerInfoResponseArrayOutput {
+	return o.ApplyT(func(v SigningKeyResponse) []DelegationSignerInfoResponse { return v.DelegationSignerInfo }).(DelegationSignerInfoResponseArrayOutput)
+}
+
+// The flags specifies how the key is used.
+func (o SigningKeyResponseOutput) Flags() pulumi.IntOutput {
+	return o.ApplyT(func(v SigningKeyResponse) int { return v.Flags }).(pulumi.IntOutput)
+}
+
+// The key tag value of the DNSKEY Resource Record.
+func (o SigningKeyResponseOutput) KeyTag() pulumi.IntOutput {
+	return o.ApplyT(func(v SigningKeyResponse) int { return v.KeyTag }).(pulumi.IntOutput)
+}
+
+// The protocol value. The value is always 3.
+func (o SigningKeyResponseOutput) Protocol() pulumi.IntOutput {
+	return o.ApplyT(func(v SigningKeyResponse) int { return v.Protocol }).(pulumi.IntOutput)
+}
+
+// The public key, represented as a Base64 encoding.
+func (o SigningKeyResponseOutput) PublicKey() pulumi.StringOutput {
+	return o.ApplyT(func(v SigningKeyResponse) string { return v.PublicKey }).(pulumi.StringOutput)
+}
+
+// The security algorithm type represents the standard security algorithm number of the DNSKEY Resource Record. See: https://www.iana.org/assignments/dns-sec-alg-numbers/dns-sec-alg-numbers.xhtml
+func (o SigningKeyResponseOutput) SecurityAlgorithmType() pulumi.IntOutput {
+	return o.ApplyT(func(v SigningKeyResponse) int { return v.SecurityAlgorithmType }).(pulumi.IntOutput)
+}
+
+type SigningKeyResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SigningKeyResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SigningKeyResponse)(nil)).Elem()
+}
+
+func (o SigningKeyResponseArrayOutput) ToSigningKeyResponseArrayOutput() SigningKeyResponseArrayOutput {
+	return o
+}
+
+func (o SigningKeyResponseArrayOutput) ToSigningKeyResponseArrayOutputWithContext(ctx context.Context) SigningKeyResponseArrayOutput {
+	return o
+}
+
+func (o SigningKeyResponseArrayOutput) Index(i pulumi.IntInput) SigningKeyResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SigningKeyResponse {
+		return vs[0].([]SigningKeyResponse)[vs[1].(int)]
+	}).(SigningKeyResponseOutput)
 }
 
 type SingleQueryResultResponse struct {
@@ -26955,6 +27115,8 @@ func (o WebApplicationFirewallScrubbingRulesResponseArrayOutput) Index(i pulumi.
 }
 
 func init() {
+	pulumi.RegisterOutputType(PolicySettingsResponseLogScrubbingOutput{})
+	pulumi.RegisterOutputType(PolicySettingsResponseLogScrubbingPtrOutput{})
 	pulumi.RegisterOutputType(PoolAssociationResponseOutput{})
 	pulumi.RegisterOutputType(PoolAssociationResponseArrayOutput{})
 	pulumi.RegisterOutputType(PrivateDnsZoneConfigOutput{})
@@ -27136,6 +27298,8 @@ func init() {
 	pulumi.RegisterOutputType(ServiceEndpointPropertiesFormatResponseOutput{})
 	pulumi.RegisterOutputType(ServiceEndpointPropertiesFormatResponseArrayOutput{})
 	pulumi.RegisterOutputType(SharedKeyPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(SigningKeyResponseOutput{})
+	pulumi.RegisterOutputType(SigningKeyResponseArrayOutput{})
 	pulumi.RegisterOutputType(SingleQueryResultResponseOutput{})
 	pulumi.RegisterOutputType(SingleQueryResultResponseArrayOutput{})
 	pulumi.RegisterOutputType(SkuOutput{})

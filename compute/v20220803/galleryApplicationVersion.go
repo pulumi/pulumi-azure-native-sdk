@@ -55,9 +55,6 @@ func NewGalleryApplicationVersion(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:compute:GalleryApplicationVersion"),
-		},
-		{
 			Type: pulumi.String("azure-native:compute/v20190301:GalleryApplicationVersion"),
 		},
 		{
@@ -86,6 +83,9 @@ func NewGalleryApplicationVersion(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:compute/v20240303:GalleryApplicationVersion"),
+		},
+		{
+			Type: pulumi.String("azure-native:compute:GalleryApplicationVersion"),
 		},
 	})
 	opts = append(opts, aliases)

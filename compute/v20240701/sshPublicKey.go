@@ -40,9 +40,6 @@ func NewSshPublicKey(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:compute:SshPublicKey"),
-		},
-		{
 			Type: pulumi.String("azure-native:compute/v20191201:SshPublicKey"),
 		},
 		{
@@ -83,6 +80,9 @@ func NewSshPublicKey(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:compute/v20240301:SshPublicKey"),
+		},
+		{
+			Type: pulumi.String("azure-native:compute:SshPublicKey"),
 		},
 	})
 	opts = append(opts, aliases)

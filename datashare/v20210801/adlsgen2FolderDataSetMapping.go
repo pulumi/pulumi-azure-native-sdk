@@ -83,9 +83,6 @@ func NewADLSGen2FolderDataSetMapping(ctx *pulumi.Context,
 	args.Kind = pulumi.String("AdlsGen2Folder")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:datashare:ADLSGen2FolderDataSetMapping"),
-		},
-		{
 			Type: pulumi.String("azure-native:datashare/v20181101preview:ADLSGen2FolderDataSetMapping"),
 		},
 		{
@@ -96,6 +93,9 @@ func NewADLSGen2FolderDataSetMapping(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:datashare/v20201001preview:ADLSGen2FolderDataSetMapping"),
+		},
+		{
+			Type: pulumi.String("azure-native:datashare:ADLSGen2FolderDataSetMapping"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -48,13 +48,13 @@ func NewTrigger(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:virtualmachineimages:Trigger"),
-		},
-		{
 			Type: pulumi.String("azure-native:virtualmachineimages/v20220701:Trigger"),
 		},
 		{
 			Type: pulumi.String("azure-native:virtualmachineimages/v20240201:Trigger"),
+		},
+		{
+			Type: pulumi.String("azure-native:virtualmachineimages:Trigger"),
 		},
 	})
 	opts = append(opts, aliases)

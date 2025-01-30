@@ -55,9 +55,6 @@ func NewDatabaseAdvisor(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:sql:DatabaseAdvisor"),
-		},
-		{
 			Type: pulumi.String("azure-native:sql/v20150501preview:DatabaseAdvisor"),
 		},
 		{
@@ -107,6 +104,9 @@ func NewDatabaseAdvisor(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20240501preview:DatabaseAdvisor"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql:DatabaseAdvisor"),
 		},
 	})
 	opts = append(opts, aliases)

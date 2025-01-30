@@ -64,9 +64,6 @@ func NewOpenShiftCluster(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:redhatopenshift:OpenShiftCluster"),
-		},
-		{
 			Type: pulumi.String("azure-native:redhatopenshift/v20200430:OpenShiftCluster"),
 		},
 		{
@@ -89,6 +86,9 @@ func NewOpenShiftCluster(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:redhatopenshift/v20231122:OpenShiftCluster"),
+		},
+		{
+			Type: pulumi.String("azure-native:redhatopenshift:OpenShiftCluster"),
 		},
 	})
 	opts = append(opts, aliases)

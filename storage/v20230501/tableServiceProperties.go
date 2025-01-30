@@ -39,9 +39,6 @@ func NewTableServiceProperties(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:storage:TableServiceProperties"),
-		},
-		{
 			Type: pulumi.String("azure-native:storage/v20190601:TableServiceProperties"),
 		},
 		{
@@ -76,6 +73,9 @@ func NewTableServiceProperties(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:storage/v20230401:TableServiceProperties"),
+		},
+		{
+			Type: pulumi.String("azure-native:storage:TableServiceProperties"),
 		},
 	})
 	opts = append(opts, aliases)

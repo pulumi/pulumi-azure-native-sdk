@@ -41,9 +41,6 @@ func NewDocumentation(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:apimanagement:Documentation"),
-		},
-		{
 			Type: pulumi.String("azure-native:apimanagement/v20220901preview:Documentation"),
 		},
 		{
@@ -60,6 +57,9 @@ func NewDocumentation(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20240601preview:Documentation"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement:Documentation"),
 		},
 	})
 	opts = append(opts, aliases)

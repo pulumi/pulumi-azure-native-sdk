@@ -42,9 +42,6 @@ func NewSqlServerInstance(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:azurearcdata:SqlServerInstance"),
-		},
-		{
 			Type: pulumi.String("azure-native:azurearcdata/v20210601preview:SqlServerInstance"),
 		},
 		{
@@ -67,6 +64,9 @@ func NewSqlServerInstance(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azurearcdata/v20240501preview:SqlServerInstance"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurearcdata:SqlServerInstance"),
 		},
 	})
 	opts = append(opts, aliases)

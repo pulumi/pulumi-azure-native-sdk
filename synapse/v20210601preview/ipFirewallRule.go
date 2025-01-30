@@ -43,9 +43,6 @@ func NewIpFirewallRule(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:synapse:IpFirewallRule"),
-		},
-		{
 			Type: pulumi.String("azure-native:synapse/v20190601preview:IpFirewallRule"),
 		},
 		{
@@ -62,6 +59,9 @@ func NewIpFirewallRule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:synapse/v20210601:IpFirewallRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:synapse:IpFirewallRule"),
 		},
 	})
 	opts = append(opts, aliases)

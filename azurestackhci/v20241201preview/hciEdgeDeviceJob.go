@@ -51,10 +51,10 @@ func NewHciEdgeDeviceJob(ctx *pulumi.Context,
 	args.Kind = pulumi.String("HCI")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:azurestackhci:HciEdgeDeviceJob"),
+			Type: pulumi.String("azure-native:azurestackhci/v20240901preview:HciEdgeDeviceJob"),
 		},
 		{
-			Type: pulumi.String("azure-native:azurestackhci/v20240901preview:HciEdgeDeviceJob"),
+			Type: pulumi.String("azure-native:azurestackhci:HciEdgeDeviceJob"),
 		},
 	})
 	opts = append(opts, aliases)

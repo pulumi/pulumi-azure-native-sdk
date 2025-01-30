@@ -44,9 +44,6 @@ func NewGatewayCustomDomain(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:appplatform:GatewayCustomDomain"),
-		},
-		{
 			Type: pulumi.String("azure-native:appplatform/v20220101preview:GatewayCustomDomain"),
 		},
 		{
@@ -87,6 +84,9 @@ func NewGatewayCustomDomain(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:appplatform/v20240101preview:GatewayCustomDomain"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform:GatewayCustomDomain"),
 		},
 	})
 	opts = append(opts, aliases)

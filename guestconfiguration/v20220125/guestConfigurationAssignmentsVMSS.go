@@ -43,10 +43,10 @@ func NewGuestConfigurationAssignmentsVMSS(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:guestconfiguration:GuestConfigurationAssignmentsVMSS"),
+			Type: pulumi.String("azure-native:guestconfiguration/v20240405:GuestConfigurationAssignmentsVMSS"),
 		},
 		{
-			Type: pulumi.String("azure-native:guestconfiguration/v20240405:GuestConfigurationAssignmentsVMSS"),
+			Type: pulumi.String("azure-native:guestconfiguration:GuestConfigurationAssignmentsVMSS"),
 		},
 	})
 	opts = append(opts, aliases)

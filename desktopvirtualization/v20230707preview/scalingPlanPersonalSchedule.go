@@ -103,9 +103,6 @@ func NewScalingPlanPersonalSchedule(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:desktopvirtualization:ScalingPlanPersonalSchedule"),
-		},
-		{
 			Type: pulumi.String("azure-native:desktopvirtualization/v20230905:ScalingPlanPersonalSchedule"),
 		},
 		{
@@ -128,6 +125,9 @@ func NewScalingPlanPersonalSchedule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:desktopvirtualization/v20240808preview:ScalingPlanPersonalSchedule"),
+		},
+		{
+			Type: pulumi.String("azure-native:desktopvirtualization:ScalingPlanPersonalSchedule"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -53,10 +53,10 @@ func NewGuestAgent(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:scvmm:GuestAgent"),
+			Type: pulumi.String("azure-native:scvmm/v20220521preview:GuestAgent"),
 		},
 		{
-			Type: pulumi.String("azure-native:scvmm/v20220521preview:GuestAgent"),
+			Type: pulumi.String("azure-native:scvmm:GuestAgent"),
 		},
 	})
 	opts = append(opts, aliases)

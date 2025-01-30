@@ -82,9 +82,6 @@ func NewEventHubDataConnection(ctx *pulumi.Context,
 	args.Kind = pulumi.String("EventHub")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:kusto:EventHubDataConnection"),
-		},
-		{
 			Type: pulumi.String("azure-native:kusto/v20190121:EventHubDataConnection"),
 		},
 		{
@@ -128,6 +125,9 @@ func NewEventHubDataConnection(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:kusto/v20230815:EventHubDataConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:kusto:EventHubDataConnection"),
 		},
 	})
 	opts = append(opts, aliases)

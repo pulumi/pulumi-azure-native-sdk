@@ -48,9 +48,6 @@ func NewFeaturestoreEntityVersion(ctx *pulumi.Context,
 	args.FeaturestoreEntityVersionProperties = args.FeaturestoreEntityVersionProperties.ToFeaturestoreEntityVersionTypeOutput().ApplyT(func(v FeaturestoreEntityVersionType) FeaturestoreEntityVersionType { return *v.Defaults() }).(FeaturestoreEntityVersionTypeOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:machinelearningservices:FeaturestoreEntityVersion"),
-		},
-		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20230201preview:FeaturestoreEntityVersion"),
 		},
 		{
@@ -79,6 +76,9 @@ func NewFeaturestoreEntityVersion(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001:FeaturestoreEntityVersion"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices:FeaturestoreEntityVersion"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -55,9 +55,6 @@ func NewStaticSiteDatabaseConnection(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:web:StaticSiteDatabaseConnection"),
-		},
-		{
 			Type: pulumi.String("azure-native:web/v20230101:StaticSiteDatabaseConnection"),
 		},
 		{
@@ -65,6 +62,9 @@ func NewStaticSiteDatabaseConnection(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:web/v20240401:StaticSiteDatabaseConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:web:StaticSiteDatabaseConnection"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -48,9 +48,6 @@ func NewCodeVersion(ctx *pulumi.Context,
 	args.CodeVersionProperties = args.CodeVersionProperties.ToCodeVersionTypeOutput().ApplyT(func(v CodeVersionType) CodeVersionType { return *v.Defaults() }).(CodeVersionTypeOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:machinelearningservices:CodeVersion"),
-		},
-		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20210301preview:CodeVersion"),
 		},
 		{
@@ -103,6 +100,9 @@ func NewCodeVersion(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001preview:CodeVersion"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices:CodeVersion"),
 		},
 	})
 	opts = append(opts, aliases)

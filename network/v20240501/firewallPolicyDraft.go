@@ -59,9 +59,6 @@ func NewFirewallPolicyDraft(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:network:FirewallPolicyDraft"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20231101:FirewallPolicyDraft"),
 		},
 		{
@@ -69,6 +66,9 @@ func NewFirewallPolicyDraft(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20240301:FirewallPolicyDraft"),
+		},
+		{
+			Type: pulumi.String("azure-native:network:FirewallPolicyDraft"),
 		},
 	})
 	opts = append(opts, aliases)

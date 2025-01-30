@@ -71,9 +71,6 @@ func NewSapVirtualInstance(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:workloads:SapVirtualInstance"),
-		},
-		{
 			Type: pulumi.String("azure-native:workloads/v20211201preview:SapVirtualInstance"),
 		},
 		{
@@ -84,6 +81,9 @@ func NewSapVirtualInstance(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:workloads/v20231001preview:SapVirtualInstance"),
+		},
+		{
+			Type: pulumi.String("azure-native:workloads:SapVirtualInstance"),
 		},
 	})
 	opts = append(opts, aliases)

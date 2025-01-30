@@ -45,9 +45,6 @@ func NewConnectedEnvironmentsCertificate(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:app:ConnectedEnvironmentsCertificate"),
-		},
-		{
 			Type: pulumi.String("azure-native:app/v20220601preview:ConnectedEnvironmentsCertificate"),
 		},
 		{
@@ -79,6 +76,9 @@ func NewConnectedEnvironmentsCertificate(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:app/v20241002preview:ConnectedEnvironmentsCertificate"),
+		},
+		{
+			Type: pulumi.String("azure-native:app:ConnectedEnvironmentsCertificate"),
 		},
 	})
 	opts = append(opts, aliases)

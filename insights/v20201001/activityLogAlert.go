@@ -63,13 +63,13 @@ func NewActivityLogAlert(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:insights:ActivityLogAlert"),
-		},
-		{
 			Type: pulumi.String("azure-native:insights/v20170401:ActivityLogAlert"),
 		},
 		{
 			Type: pulumi.String("azure-native:insights/v20230101preview:ActivityLogAlert"),
+		},
+		{
+			Type: pulumi.String("azure-native:insights:ActivityLogAlert"),
 		},
 	})
 	opts = append(opts, aliases)

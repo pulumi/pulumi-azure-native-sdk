@@ -67,9 +67,6 @@ func NewRoleAssignment(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:authorization:RoleAssignment"),
-		},
-		{
 			Type: pulumi.String("azure-native:authorization/v20150701:RoleAssignment"),
 		},
 		{
@@ -92,6 +89,9 @@ func NewRoleAssignment(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:authorization/v20220401:RoleAssignment"),
+		},
+		{
+			Type: pulumi.String("azure-native:authorization:RoleAssignment"),
 		},
 	})
 	opts = append(opts, aliases)

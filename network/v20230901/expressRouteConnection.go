@@ -57,9 +57,6 @@ func NewExpressRouteConnection(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:network:ExpressRouteConnection"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20180801:ExpressRouteConnection"),
 		},
 		{
@@ -166,6 +163,9 @@ func NewExpressRouteConnection(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20240501:ExpressRouteConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:network:ExpressRouteConnection"),
 		},
 	})
 	opts = append(opts, aliases)

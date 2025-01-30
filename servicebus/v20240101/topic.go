@@ -75,9 +75,6 @@ func NewTopic(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:servicebus:Topic"),
-		},
-		{
 			Type: pulumi.String("azure-native:servicebus/v20140901:Topic"),
 		},
 		{
@@ -106,6 +103,9 @@ func NewTopic(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:servicebus/v20230101preview:Topic"),
+		},
+		{
+			Type: pulumi.String("azure-native:servicebus:Topic"),
 		},
 	})
 	opts = append(opts, aliases)

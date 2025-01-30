@@ -55,9 +55,6 @@ func NewMSTIDataConnector(ctx *pulumi.Context,
 	args.Kind = pulumi.String("MicrosoftThreatIntelligence")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:securityinsights:MSTIDataConnector"),
-		},
-		{
 			Type: pulumi.String("azure-native:securityinsights/v20190101preview:MSTIDataConnector"),
 		},
 		{
@@ -158,6 +155,9 @@ func NewMSTIDataConnector(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20241001preview:MSTIDataConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights:MSTIDataConnector"),
 		},
 	})
 	opts = append(opts, aliases)

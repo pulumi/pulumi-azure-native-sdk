@@ -34632,25 +34632,53 @@ func (o OracleCloudStorageReadSettingsResponsePtrOutput) WildcardFolderPath() pu
 	}).(pulumi.AnyOutput)
 }
 
-// Oracle database.
+// Oracle database. This linked service has supported version property. The Version 1.0 is scheduled for deprecation while your pipeline will continue to run after EOL but without any bug fix or new features.
 type OracleLinkedService struct {
 	// List of tags that can be used for describing the linked service.
 	Annotations []interface{} `pulumi:"annotations"`
+	// Authentication type for connecting to the Oracle database. Only used for Version 2.0.
+	AuthenticationType *string `pulumi:"authenticationType"`
 	// The integration runtime reference.
 	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
-	// The connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
+	// The connection string. Type: string, SecureString or AzureKeyVaultSecretReference. Only used for Version 1.0.
 	ConnectionString interface{} `pulumi:"connectionString"`
+	// Specifies the desired data integrity behavior when this client connects to a server. Supported values are accepted, rejected, requested or required, default value is required. Type: string. Only used for Version 2.0.
+	CryptoChecksumClient interface{} `pulumi:"cryptoChecksumClient"`
+	// Specifies the crypto-checksum algorithms that client can use. Supported values are SHA1, SHA256, SHA384, SHA512, default value is (SHA512). Type: string. Only used for Version 2.0.
+	CryptoChecksumTypesClient interface{} `pulumi:"cryptoChecksumTypesClient"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
+	// Specifies whether to use bulk copy or batch insert when loading data into the database, default value is true. Type: boolean. Only used for Version 2.0.
+	EnableBulkLoad interface{} `pulumi:"enableBulkLoad"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential *string `pulumi:"encryptedCredential"`
+	// Specifies the encryption client behavior. Supported values are accepted, rejected, requested or required, default value is required. Type: string. Only used for Version 2.0.
+	EncryptionClient interface{} `pulumi:"encryptionClient"`
+	// Specifies the encryption algorithms that client can use. Supported values are AES128, AES192, AES256, 3DES112, 3DES168, default value is (AES256). Type: string. Only used for Version 2.0.
+	EncryptionTypesClient interface{} `pulumi:"encryptionTypesClient"`
+	// Specifies the number of bytes that the driver allocates to fetch the data in one database round-trip, default value is 10485760. Type: integer. Only used for Version 2.0.
+	FetchSize interface{} `pulumi:"fetchSize"`
+	// Specifies whether the driver returns column value with the TIMESTAMP WITH TIME ZONE data type as DateTime or string. This setting is ignored if supportV1DataTypes is not true, default value is true. Type: boolean. Only used for Version 2.0.
+	FetchTswtzAsTimestamp interface{} `pulumi:"fetchTswtzAsTimestamp"`
+	// Specifies the amount that the source initially fetches for LOB columns, default value is 0. Type: integer. Only used for Version 2.0.
+	InitialLobFetchSize interface{} `pulumi:"initialLobFetchSize"`
+	// Specifies a command that is issued immediately after connecting to the database to manage session settings. Type: string. Only used for Version 2.0.
+	InitializationString interface{} `pulumi:"initializationString"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
 	// The Azure key vault secret reference of password in connection string.
 	Password *AzureKeyVaultSecretReference `pulumi:"password"`
+	// The location of Oracle database you want to connect to, the supported forms include connector descriptor, Easy Connect (Plus) Naming and Oracle Net Services Name (Only self-hosted IR). Type: string. Only used for Version 2.0.
+	Server interface{} `pulumi:"server"`
+	// Specifies the number of cursors or statements to be cached for each database connection, default value is 0. Type: integer. Only used for Version 2.0.
+	StatementCacheSize interface{} `pulumi:"statementCacheSize"`
+	// Specifies whether to use the Version 1.0 data type mappings. Do not set this to true unless you want to keep backward compatibility with Version 1.0's data type mappings, default value is false. Type: boolean. Only used for Version 2.0.
+	SupportV1DataTypes interface{} `pulumi:"supportV1DataTypes"`
 	// Type of linked service.
 	// Expected value is 'Oracle'.
 	Type string `pulumi:"type"`
+	// The Oracle database username. Type: string. Only used for Version 2.0.
+	Username interface{} `pulumi:"username"`
 	// Version of the linked service.
 	Version *string `pulumi:"version"`
 }
@@ -34666,25 +34694,53 @@ type OracleLinkedServiceInput interface {
 	ToOracleLinkedServiceOutputWithContext(context.Context) OracleLinkedServiceOutput
 }
 
-// Oracle database.
+// Oracle database. This linked service has supported version property. The Version 1.0 is scheduled for deprecation while your pipeline will continue to run after EOL but without any bug fix or new features.
 type OracleLinkedServiceArgs struct {
 	// List of tags that can be used for describing the linked service.
 	Annotations pulumi.ArrayInput `pulumi:"annotations"`
+	// Authentication type for connecting to the Oracle database. Only used for Version 2.0.
+	AuthenticationType pulumi.StringPtrInput `pulumi:"authenticationType"`
 	// The integration runtime reference.
 	ConnectVia IntegrationRuntimeReferencePtrInput `pulumi:"connectVia"`
-	// The connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
+	// The connection string. Type: string, SecureString or AzureKeyVaultSecretReference. Only used for Version 1.0.
 	ConnectionString pulumi.Input `pulumi:"connectionString"`
+	// Specifies the desired data integrity behavior when this client connects to a server. Supported values are accepted, rejected, requested or required, default value is required. Type: string. Only used for Version 2.0.
+	CryptoChecksumClient pulumi.Input `pulumi:"cryptoChecksumClient"`
+	// Specifies the crypto-checksum algorithms that client can use. Supported values are SHA1, SHA256, SHA384, SHA512, default value is (SHA512). Type: string. Only used for Version 2.0.
+	CryptoChecksumTypesClient pulumi.Input `pulumi:"cryptoChecksumTypesClient"`
 	// Linked service description.
 	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Specifies whether to use bulk copy or batch insert when loading data into the database, default value is true. Type: boolean. Only used for Version 2.0.
+	EnableBulkLoad pulumi.Input `pulumi:"enableBulkLoad"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential pulumi.StringPtrInput `pulumi:"encryptedCredential"`
+	// Specifies the encryption client behavior. Supported values are accepted, rejected, requested or required, default value is required. Type: string. Only used for Version 2.0.
+	EncryptionClient pulumi.Input `pulumi:"encryptionClient"`
+	// Specifies the encryption algorithms that client can use. Supported values are AES128, AES192, AES256, 3DES112, 3DES168, default value is (AES256). Type: string. Only used for Version 2.0.
+	EncryptionTypesClient pulumi.Input `pulumi:"encryptionTypesClient"`
+	// Specifies the number of bytes that the driver allocates to fetch the data in one database round-trip, default value is 10485760. Type: integer. Only used for Version 2.0.
+	FetchSize pulumi.Input `pulumi:"fetchSize"`
+	// Specifies whether the driver returns column value with the TIMESTAMP WITH TIME ZONE data type as DateTime or string. This setting is ignored if supportV1DataTypes is not true, default value is true. Type: boolean. Only used for Version 2.0.
+	FetchTswtzAsTimestamp pulumi.Input `pulumi:"fetchTswtzAsTimestamp"`
+	// Specifies the amount that the source initially fetches for LOB columns, default value is 0. Type: integer. Only used for Version 2.0.
+	InitialLobFetchSize pulumi.Input `pulumi:"initialLobFetchSize"`
+	// Specifies a command that is issued immediately after connecting to the database to manage session settings. Type: string. Only used for Version 2.0.
+	InitializationString pulumi.Input `pulumi:"initializationString"`
 	// Parameters for linked service.
 	Parameters ParameterSpecificationMapInput `pulumi:"parameters"`
 	// The Azure key vault secret reference of password in connection string.
 	Password AzureKeyVaultSecretReferencePtrInput `pulumi:"password"`
+	// The location of Oracle database you want to connect to, the supported forms include connector descriptor, Easy Connect (Plus) Naming and Oracle Net Services Name (Only self-hosted IR). Type: string. Only used for Version 2.0.
+	Server pulumi.Input `pulumi:"server"`
+	// Specifies the number of cursors or statements to be cached for each database connection, default value is 0. Type: integer. Only used for Version 2.0.
+	StatementCacheSize pulumi.Input `pulumi:"statementCacheSize"`
+	// Specifies whether to use the Version 1.0 data type mappings. Do not set this to true unless you want to keep backward compatibility with Version 1.0's data type mappings, default value is false. Type: boolean. Only used for Version 2.0.
+	SupportV1DataTypes pulumi.Input `pulumi:"supportV1DataTypes"`
 	// Type of linked service.
 	// Expected value is 'Oracle'.
 	Type pulumi.StringInput `pulumi:"type"`
+	// The Oracle database username. Type: string. Only used for Version 2.0.
+	Username pulumi.Input `pulumi:"username"`
 	// Version of the linked service.
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
@@ -34701,7 +34757,7 @@ func (i OracleLinkedServiceArgs) ToOracleLinkedServiceOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(OracleLinkedServiceOutput)
 }
 
-// Oracle database.
+// Oracle database. This linked service has supported version property. The Version 1.0 is scheduled for deprecation while your pipeline will continue to run after EOL but without any bug fix or new features.
 type OracleLinkedServiceOutput struct{ *pulumi.OutputState }
 
 func (OracleLinkedServiceOutput) ElementType() reflect.Type {
@@ -34721,14 +34777,29 @@ func (o OracleLinkedServiceOutput) Annotations() pulumi.ArrayOutput {
 	return o.ApplyT(func(v OracleLinkedService) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
 }
 
+// Authentication type for connecting to the Oracle database. Only used for Version 2.0.
+func (o OracleLinkedServiceOutput) AuthenticationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OracleLinkedService) *string { return v.AuthenticationType }).(pulumi.StringPtrOutput)
+}
+
 // The integration runtime reference.
 func (o OracleLinkedServiceOutput) ConnectVia() IntegrationRuntimeReferencePtrOutput {
 	return o.ApplyT(func(v OracleLinkedService) *IntegrationRuntimeReference { return v.ConnectVia }).(IntegrationRuntimeReferencePtrOutput)
 }
 
-// The connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
+// The connection string. Type: string, SecureString or AzureKeyVaultSecretReference. Only used for Version 1.0.
 func (o OracleLinkedServiceOutput) ConnectionString() pulumi.AnyOutput {
 	return o.ApplyT(func(v OracleLinkedService) interface{} { return v.ConnectionString }).(pulumi.AnyOutput)
+}
+
+// Specifies the desired data integrity behavior when this client connects to a server. Supported values are accepted, rejected, requested or required, default value is required. Type: string. Only used for Version 2.0.
+func (o OracleLinkedServiceOutput) CryptoChecksumClient() pulumi.AnyOutput {
+	return o.ApplyT(func(v OracleLinkedService) interface{} { return v.CryptoChecksumClient }).(pulumi.AnyOutput)
+}
+
+// Specifies the crypto-checksum algorithms that client can use. Supported values are SHA1, SHA256, SHA384, SHA512, default value is (SHA512). Type: string. Only used for Version 2.0.
+func (o OracleLinkedServiceOutput) CryptoChecksumTypesClient() pulumi.AnyOutput {
+	return o.ApplyT(func(v OracleLinkedService) interface{} { return v.CryptoChecksumTypesClient }).(pulumi.AnyOutput)
 }
 
 // Linked service description.
@@ -34736,9 +34807,44 @@ func (o OracleLinkedServiceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OracleLinkedService) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Specifies whether to use bulk copy or batch insert when loading data into the database, default value is true. Type: boolean. Only used for Version 2.0.
+func (o OracleLinkedServiceOutput) EnableBulkLoad() pulumi.AnyOutput {
+	return o.ApplyT(func(v OracleLinkedService) interface{} { return v.EnableBulkLoad }).(pulumi.AnyOutput)
+}
+
 // The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 func (o OracleLinkedServiceOutput) EncryptedCredential() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OracleLinkedService) *string { return v.EncryptedCredential }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the encryption client behavior. Supported values are accepted, rejected, requested or required, default value is required. Type: string. Only used for Version 2.0.
+func (o OracleLinkedServiceOutput) EncryptionClient() pulumi.AnyOutput {
+	return o.ApplyT(func(v OracleLinkedService) interface{} { return v.EncryptionClient }).(pulumi.AnyOutput)
+}
+
+// Specifies the encryption algorithms that client can use. Supported values are AES128, AES192, AES256, 3DES112, 3DES168, default value is (AES256). Type: string. Only used for Version 2.0.
+func (o OracleLinkedServiceOutput) EncryptionTypesClient() pulumi.AnyOutput {
+	return o.ApplyT(func(v OracleLinkedService) interface{} { return v.EncryptionTypesClient }).(pulumi.AnyOutput)
+}
+
+// Specifies the number of bytes that the driver allocates to fetch the data in one database round-trip, default value is 10485760. Type: integer. Only used for Version 2.0.
+func (o OracleLinkedServiceOutput) FetchSize() pulumi.AnyOutput {
+	return o.ApplyT(func(v OracleLinkedService) interface{} { return v.FetchSize }).(pulumi.AnyOutput)
+}
+
+// Specifies whether the driver returns column value with the TIMESTAMP WITH TIME ZONE data type as DateTime or string. This setting is ignored if supportV1DataTypes is not true, default value is true. Type: boolean. Only used for Version 2.0.
+func (o OracleLinkedServiceOutput) FetchTswtzAsTimestamp() pulumi.AnyOutput {
+	return o.ApplyT(func(v OracleLinkedService) interface{} { return v.FetchTswtzAsTimestamp }).(pulumi.AnyOutput)
+}
+
+// Specifies the amount that the source initially fetches for LOB columns, default value is 0. Type: integer. Only used for Version 2.0.
+func (o OracleLinkedServiceOutput) InitialLobFetchSize() pulumi.AnyOutput {
+	return o.ApplyT(func(v OracleLinkedService) interface{} { return v.InitialLobFetchSize }).(pulumi.AnyOutput)
+}
+
+// Specifies a command that is issued immediately after connecting to the database to manage session settings. Type: string. Only used for Version 2.0.
+func (o OracleLinkedServiceOutput) InitializationString() pulumi.AnyOutput {
+	return o.ApplyT(func(v OracleLinkedService) interface{} { return v.InitializationString }).(pulumi.AnyOutput)
 }
 
 // Parameters for linked service.
@@ -34751,10 +34857,30 @@ func (o OracleLinkedServiceOutput) Password() AzureKeyVaultSecretReferencePtrOut
 	return o.ApplyT(func(v OracleLinkedService) *AzureKeyVaultSecretReference { return v.Password }).(AzureKeyVaultSecretReferencePtrOutput)
 }
 
+// The location of Oracle database you want to connect to, the supported forms include connector descriptor, Easy Connect (Plus) Naming and Oracle Net Services Name (Only self-hosted IR). Type: string. Only used for Version 2.0.
+func (o OracleLinkedServiceOutput) Server() pulumi.AnyOutput {
+	return o.ApplyT(func(v OracleLinkedService) interface{} { return v.Server }).(pulumi.AnyOutput)
+}
+
+// Specifies the number of cursors or statements to be cached for each database connection, default value is 0. Type: integer. Only used for Version 2.0.
+func (o OracleLinkedServiceOutput) StatementCacheSize() pulumi.AnyOutput {
+	return o.ApplyT(func(v OracleLinkedService) interface{} { return v.StatementCacheSize }).(pulumi.AnyOutput)
+}
+
+// Specifies whether to use the Version 1.0 data type mappings. Do not set this to true unless you want to keep backward compatibility with Version 1.0's data type mappings, default value is false. Type: boolean. Only used for Version 2.0.
+func (o OracleLinkedServiceOutput) SupportV1DataTypes() pulumi.AnyOutput {
+	return o.ApplyT(func(v OracleLinkedService) interface{} { return v.SupportV1DataTypes }).(pulumi.AnyOutput)
+}
+
 // Type of linked service.
 // Expected value is 'Oracle'.
 func (o OracleLinkedServiceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v OracleLinkedService) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The Oracle database username. Type: string. Only used for Version 2.0.
+func (o OracleLinkedServiceOutput) Username() pulumi.AnyOutput {
+	return o.ApplyT(func(v OracleLinkedService) interface{} { return v.Username }).(pulumi.AnyOutput)
 }
 
 // Version of the linked service.
@@ -34762,30 +34888,58 @@ func (o OracleLinkedServiceOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OracleLinkedService) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
-// Oracle database.
+// Oracle database. This linked service has supported version property. The Version 1.0 is scheduled for deprecation while your pipeline will continue to run after EOL but without any bug fix or new features.
 type OracleLinkedServiceResponse struct {
 	// List of tags that can be used for describing the linked service.
 	Annotations []interface{} `pulumi:"annotations"`
+	// Authentication type for connecting to the Oracle database. Only used for Version 2.0.
+	AuthenticationType *string `pulumi:"authenticationType"`
 	// The integration runtime reference.
 	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
-	// The connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
+	// The connection string. Type: string, SecureString or AzureKeyVaultSecretReference. Only used for Version 1.0.
 	ConnectionString interface{} `pulumi:"connectionString"`
+	// Specifies the desired data integrity behavior when this client connects to a server. Supported values are accepted, rejected, requested or required, default value is required. Type: string. Only used for Version 2.0.
+	CryptoChecksumClient interface{} `pulumi:"cryptoChecksumClient"`
+	// Specifies the crypto-checksum algorithms that client can use. Supported values are SHA1, SHA256, SHA384, SHA512, default value is (SHA512). Type: string. Only used for Version 2.0.
+	CryptoChecksumTypesClient interface{} `pulumi:"cryptoChecksumTypesClient"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
+	// Specifies whether to use bulk copy or batch insert when loading data into the database, default value is true. Type: boolean. Only used for Version 2.0.
+	EnableBulkLoad interface{} `pulumi:"enableBulkLoad"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential *string `pulumi:"encryptedCredential"`
+	// Specifies the encryption client behavior. Supported values are accepted, rejected, requested or required, default value is required. Type: string. Only used for Version 2.0.
+	EncryptionClient interface{} `pulumi:"encryptionClient"`
+	// Specifies the encryption algorithms that client can use. Supported values are AES128, AES192, AES256, 3DES112, 3DES168, default value is (AES256). Type: string. Only used for Version 2.0.
+	EncryptionTypesClient interface{} `pulumi:"encryptionTypesClient"`
+	// Specifies the number of bytes that the driver allocates to fetch the data in one database round-trip, default value is 10485760. Type: integer. Only used for Version 2.0.
+	FetchSize interface{} `pulumi:"fetchSize"`
+	// Specifies whether the driver returns column value with the TIMESTAMP WITH TIME ZONE data type as DateTime or string. This setting is ignored if supportV1DataTypes is not true, default value is true. Type: boolean. Only used for Version 2.0.
+	FetchTswtzAsTimestamp interface{} `pulumi:"fetchTswtzAsTimestamp"`
+	// Specifies the amount that the source initially fetches for LOB columns, default value is 0. Type: integer. Only used for Version 2.0.
+	InitialLobFetchSize interface{} `pulumi:"initialLobFetchSize"`
+	// Specifies a command that is issued immediately after connecting to the database to manage session settings. Type: string. Only used for Version 2.0.
+	InitializationString interface{} `pulumi:"initializationString"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
 	// The Azure key vault secret reference of password in connection string.
 	Password *AzureKeyVaultSecretReferenceResponse `pulumi:"password"`
+	// The location of Oracle database you want to connect to, the supported forms include connector descriptor, Easy Connect (Plus) Naming and Oracle Net Services Name (Only self-hosted IR). Type: string. Only used for Version 2.0.
+	Server interface{} `pulumi:"server"`
+	// Specifies the number of cursors or statements to be cached for each database connection, default value is 0. Type: integer. Only used for Version 2.0.
+	StatementCacheSize interface{} `pulumi:"statementCacheSize"`
+	// Specifies whether to use the Version 1.0 data type mappings. Do not set this to true unless you want to keep backward compatibility with Version 1.0's data type mappings, default value is false. Type: boolean. Only used for Version 2.0.
+	SupportV1DataTypes interface{} `pulumi:"supportV1DataTypes"`
 	// Type of linked service.
 	// Expected value is 'Oracle'.
 	Type string `pulumi:"type"`
+	// The Oracle database username. Type: string. Only used for Version 2.0.
+	Username interface{} `pulumi:"username"`
 	// Version of the linked service.
 	Version *string `pulumi:"version"`
 }
 
-// Oracle database.
+// Oracle database. This linked service has supported version property. The Version 1.0 is scheduled for deprecation while your pipeline will continue to run after EOL but without any bug fix or new features.
 type OracleLinkedServiceResponseOutput struct{ *pulumi.OutputState }
 
 func (OracleLinkedServiceResponseOutput) ElementType() reflect.Type {
@@ -34805,14 +34959,29 @@ func (o OracleLinkedServiceResponseOutput) Annotations() pulumi.ArrayOutput {
 	return o.ApplyT(func(v OracleLinkedServiceResponse) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
 }
 
+// Authentication type for connecting to the Oracle database. Only used for Version 2.0.
+func (o OracleLinkedServiceResponseOutput) AuthenticationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OracleLinkedServiceResponse) *string { return v.AuthenticationType }).(pulumi.StringPtrOutput)
+}
+
 // The integration runtime reference.
 func (o OracleLinkedServiceResponseOutput) ConnectVia() IntegrationRuntimeReferenceResponsePtrOutput {
 	return o.ApplyT(func(v OracleLinkedServiceResponse) *IntegrationRuntimeReferenceResponse { return v.ConnectVia }).(IntegrationRuntimeReferenceResponsePtrOutput)
 }
 
-// The connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
+// The connection string. Type: string, SecureString or AzureKeyVaultSecretReference. Only used for Version 1.0.
 func (o OracleLinkedServiceResponseOutput) ConnectionString() pulumi.AnyOutput {
 	return o.ApplyT(func(v OracleLinkedServiceResponse) interface{} { return v.ConnectionString }).(pulumi.AnyOutput)
+}
+
+// Specifies the desired data integrity behavior when this client connects to a server. Supported values are accepted, rejected, requested or required, default value is required. Type: string. Only used for Version 2.0.
+func (o OracleLinkedServiceResponseOutput) CryptoChecksumClient() pulumi.AnyOutput {
+	return o.ApplyT(func(v OracleLinkedServiceResponse) interface{} { return v.CryptoChecksumClient }).(pulumi.AnyOutput)
+}
+
+// Specifies the crypto-checksum algorithms that client can use. Supported values are SHA1, SHA256, SHA384, SHA512, default value is (SHA512). Type: string. Only used for Version 2.0.
+func (o OracleLinkedServiceResponseOutput) CryptoChecksumTypesClient() pulumi.AnyOutput {
+	return o.ApplyT(func(v OracleLinkedServiceResponse) interface{} { return v.CryptoChecksumTypesClient }).(pulumi.AnyOutput)
 }
 
 // Linked service description.
@@ -34820,9 +34989,44 @@ func (o OracleLinkedServiceResponseOutput) Description() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v OracleLinkedServiceResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Specifies whether to use bulk copy or batch insert when loading data into the database, default value is true. Type: boolean. Only used for Version 2.0.
+func (o OracleLinkedServiceResponseOutput) EnableBulkLoad() pulumi.AnyOutput {
+	return o.ApplyT(func(v OracleLinkedServiceResponse) interface{} { return v.EnableBulkLoad }).(pulumi.AnyOutput)
+}
+
 // The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 func (o OracleLinkedServiceResponseOutput) EncryptedCredential() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OracleLinkedServiceResponse) *string { return v.EncryptedCredential }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the encryption client behavior. Supported values are accepted, rejected, requested or required, default value is required. Type: string. Only used for Version 2.0.
+func (o OracleLinkedServiceResponseOutput) EncryptionClient() pulumi.AnyOutput {
+	return o.ApplyT(func(v OracleLinkedServiceResponse) interface{} { return v.EncryptionClient }).(pulumi.AnyOutput)
+}
+
+// Specifies the encryption algorithms that client can use. Supported values are AES128, AES192, AES256, 3DES112, 3DES168, default value is (AES256). Type: string. Only used for Version 2.0.
+func (o OracleLinkedServiceResponseOutput) EncryptionTypesClient() pulumi.AnyOutput {
+	return o.ApplyT(func(v OracleLinkedServiceResponse) interface{} { return v.EncryptionTypesClient }).(pulumi.AnyOutput)
+}
+
+// Specifies the number of bytes that the driver allocates to fetch the data in one database round-trip, default value is 10485760. Type: integer. Only used for Version 2.0.
+func (o OracleLinkedServiceResponseOutput) FetchSize() pulumi.AnyOutput {
+	return o.ApplyT(func(v OracleLinkedServiceResponse) interface{} { return v.FetchSize }).(pulumi.AnyOutput)
+}
+
+// Specifies whether the driver returns column value with the TIMESTAMP WITH TIME ZONE data type as DateTime or string. This setting is ignored if supportV1DataTypes is not true, default value is true. Type: boolean. Only used for Version 2.0.
+func (o OracleLinkedServiceResponseOutput) FetchTswtzAsTimestamp() pulumi.AnyOutput {
+	return o.ApplyT(func(v OracleLinkedServiceResponse) interface{} { return v.FetchTswtzAsTimestamp }).(pulumi.AnyOutput)
+}
+
+// Specifies the amount that the source initially fetches for LOB columns, default value is 0. Type: integer. Only used for Version 2.0.
+func (o OracleLinkedServiceResponseOutput) InitialLobFetchSize() pulumi.AnyOutput {
+	return o.ApplyT(func(v OracleLinkedServiceResponse) interface{} { return v.InitialLobFetchSize }).(pulumi.AnyOutput)
+}
+
+// Specifies a command that is issued immediately after connecting to the database to manage session settings. Type: string. Only used for Version 2.0.
+func (o OracleLinkedServiceResponseOutput) InitializationString() pulumi.AnyOutput {
+	return o.ApplyT(func(v OracleLinkedServiceResponse) interface{} { return v.InitializationString }).(pulumi.AnyOutput)
 }
 
 // Parameters for linked service.
@@ -34835,10 +35039,30 @@ func (o OracleLinkedServiceResponseOutput) Password() AzureKeyVaultSecretReferen
 	return o.ApplyT(func(v OracleLinkedServiceResponse) *AzureKeyVaultSecretReferenceResponse { return v.Password }).(AzureKeyVaultSecretReferenceResponsePtrOutput)
 }
 
+// The location of Oracle database you want to connect to, the supported forms include connector descriptor, Easy Connect (Plus) Naming and Oracle Net Services Name (Only self-hosted IR). Type: string. Only used for Version 2.0.
+func (o OracleLinkedServiceResponseOutput) Server() pulumi.AnyOutput {
+	return o.ApplyT(func(v OracleLinkedServiceResponse) interface{} { return v.Server }).(pulumi.AnyOutput)
+}
+
+// Specifies the number of cursors or statements to be cached for each database connection, default value is 0. Type: integer. Only used for Version 2.0.
+func (o OracleLinkedServiceResponseOutput) StatementCacheSize() pulumi.AnyOutput {
+	return o.ApplyT(func(v OracleLinkedServiceResponse) interface{} { return v.StatementCacheSize }).(pulumi.AnyOutput)
+}
+
+// Specifies whether to use the Version 1.0 data type mappings. Do not set this to true unless you want to keep backward compatibility with Version 1.0's data type mappings, default value is false. Type: boolean. Only used for Version 2.0.
+func (o OracleLinkedServiceResponseOutput) SupportV1DataTypes() pulumi.AnyOutput {
+	return o.ApplyT(func(v OracleLinkedServiceResponse) interface{} { return v.SupportV1DataTypes }).(pulumi.AnyOutput)
+}
+
 // Type of linked service.
 // Expected value is 'Oracle'.
 func (o OracleLinkedServiceResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v OracleLinkedServiceResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The Oracle database username. Type: string. Only used for Version 2.0.
+func (o OracleLinkedServiceResponseOutput) Username() pulumi.AnyOutput {
+	return o.ApplyT(func(v OracleLinkedServiceResponse) interface{} { return v.Username }).(pulumi.AnyOutput)
 }
 
 // Version of the linked service.

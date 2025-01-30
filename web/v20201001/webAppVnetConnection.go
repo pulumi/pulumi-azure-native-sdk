@@ -56,9 +56,6 @@ func NewWebAppVnetConnection(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:web:WebAppVnetConnection"),
-		},
-		{
 			Type: pulumi.String("azure-native:web/v20150801:WebAppVnetConnection"),
 		},
 		{
@@ -108,6 +105,9 @@ func NewWebAppVnetConnection(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:web/v20240401:WebAppVnetConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:web:WebAppVnetConnection"),
 		},
 	})
 	opts = append(opts, aliases)

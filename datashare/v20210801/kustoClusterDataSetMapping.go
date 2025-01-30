@@ -65,9 +65,6 @@ func NewKustoClusterDataSetMapping(ctx *pulumi.Context,
 	args.Kind = pulumi.String("KustoCluster")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:datashare:KustoClusterDataSetMapping"),
-		},
-		{
 			Type: pulumi.String("azure-native:datashare/v20181101preview:KustoClusterDataSetMapping"),
 		},
 		{
@@ -78,6 +75,9 @@ func NewKustoClusterDataSetMapping(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:datashare/v20201001preview:KustoClusterDataSetMapping"),
+		},
+		{
+			Type: pulumi.String("azure-native:datashare:KustoClusterDataSetMapping"),
 		},
 	})
 	opts = append(opts, aliases)

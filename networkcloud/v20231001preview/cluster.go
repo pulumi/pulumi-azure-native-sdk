@@ -118,9 +118,6 @@ func NewCluster(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:networkcloud:Cluster"),
-		},
-		{
 			Type: pulumi.String("azure-native:networkcloud/v20230701:Cluster"),
 		},
 		{
@@ -131,6 +128,9 @@ func NewCluster(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:networkcloud/v20241001preview:Cluster"),
+		},
+		{
+			Type: pulumi.String("azure-native:networkcloud:Cluster"),
 		},
 	})
 	opts = append(opts, aliases)

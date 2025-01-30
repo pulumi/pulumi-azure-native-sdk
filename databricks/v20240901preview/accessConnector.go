@@ -44,9 +44,6 @@ func NewAccessConnector(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:databricks:AccessConnector"),
-		},
-		{
 			Type: pulumi.String("azure-native:databricks/v20220401preview:AccessConnector"),
 		},
 		{
@@ -57,6 +54,9 @@ func NewAccessConnector(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:databricks/v20240501:AccessConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:databricks:AccessConnector"),
 		},
 	})
 	opts = append(opts, aliases)

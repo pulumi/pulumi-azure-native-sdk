@@ -47,9 +47,6 @@ func NewModelVersion(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:machinelearningservices:ModelVersion"),
-		},
-		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20220201preview:ModelVersion"),
 		},
 		{
@@ -102,6 +99,9 @@ func NewModelVersion(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001preview:ModelVersion"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices:ModelVersion"),
 		},
 	})
 	opts = append(opts, aliases)

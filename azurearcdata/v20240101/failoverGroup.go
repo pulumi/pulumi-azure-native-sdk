@@ -45,13 +45,13 @@ func NewFailoverGroup(ctx *pulumi.Context,
 	args.Properties = args.Properties.ToFailoverGroupPropertiesOutput().ApplyT(func(v FailoverGroupProperties) FailoverGroupProperties { return *v.Defaults() }).(FailoverGroupPropertiesOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:azurearcdata:FailoverGroup"),
-		},
-		{
 			Type: pulumi.String("azure-native:azurearcdata/v20230115preview:FailoverGroup"),
 		},
 		{
 			Type: pulumi.String("azure-native:azurearcdata/v20240501preview:FailoverGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurearcdata:FailoverGroup"),
 		},
 	})
 	opts = append(opts, aliases)

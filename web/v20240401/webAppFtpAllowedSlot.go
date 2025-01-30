@@ -47,9 +47,6 @@ func NewWebAppFtpAllowedSlot(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:web:WebAppFtpAllowedSlot"),
-		},
-		{
 			Type: pulumi.String("azure-native:web/v20201201:WebAppFtpAllowedSlot"),
 		},
 		{
@@ -75,6 +72,9 @@ func NewWebAppFtpAllowedSlot(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:web/v20231201:WebAppFtpAllowedSlot"),
+		},
+		{
+			Type: pulumi.String("azure-native:web:WebAppFtpAllowedSlot"),
 		},
 	})
 	opts = append(opts, aliases)

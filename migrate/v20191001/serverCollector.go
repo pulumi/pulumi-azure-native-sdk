@@ -36,9 +36,6 @@ func NewServerCollector(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:migrate:ServerCollector"),
-		},
-		{
 			Type: pulumi.String("azure-native:migrate/v20230315:ServerCollector"),
 		},
 		{
@@ -49,6 +46,12 @@ func NewServerCollector(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:migrate/v20230909preview:ServerCollector"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate/v20240101preview:ServerCollector"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate:ServerCollector"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -41,9 +41,6 @@ func NewHcxEnterpriseSite(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:avs:HcxEnterpriseSite"),
-		},
-		{
 			Type: pulumi.String("azure-native:avs/v20200320:HcxEnterpriseSite"),
 		},
 		{
@@ -63,6 +60,9 @@ func NewHcxEnterpriseSite(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:avs/v20230901:HcxEnterpriseSite"),
+		},
+		{
+			Type: pulumi.String("azure-native:avs:HcxEnterpriseSite"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -41,9 +41,6 @@ func NewWebAppConnectionStrings(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:web:WebAppConnectionStrings"),
-		},
-		{
 			Type: pulumi.String("azure-native:web/v20150801:WebAppConnectionStrings"),
 		},
 		{
@@ -93,6 +90,9 @@ func NewWebAppConnectionStrings(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:web/v20240401:WebAppConnectionStrings"),
+		},
+		{
+			Type: pulumi.String("azure-native:web:WebAppConnectionStrings"),
 		},
 	})
 	opts = append(opts, aliases)

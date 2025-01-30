@@ -44,13 +44,13 @@ func NewConfigurationAssignmentsForResourceGroup(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:maintenance:ConfigurationAssignmentsForResourceGroup"),
-		},
-		{
 			Type: pulumi.String("azure-native:maintenance/v20230401:ConfigurationAssignmentsForResourceGroup"),
 		},
 		{
 			Type: pulumi.String("azure-native:maintenance/v20231001preview:ConfigurationAssignmentsForResourceGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:maintenance:ConfigurationAssignmentsForResourceGroup"),
 		},
 	})
 	opts = append(opts, aliases)

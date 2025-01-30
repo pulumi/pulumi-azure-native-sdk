@@ -59,9 +59,6 @@ func NewCustomDomain(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:cdn:CustomDomain"),
-		},
-		{
 			Type: pulumi.String("azure-native:cdn/v20150601:CustomDomain"),
 		},
 		{
@@ -120,6 +117,9 @@ func NewCustomDomain(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:cdn/v20240901:CustomDomain"),
+		},
+		{
+			Type: pulumi.String("azure-native:cdn:CustomDomain"),
 		},
 	})
 	opts = append(opts, aliases)

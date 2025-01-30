@@ -100,9 +100,6 @@ func NewServer(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:dbforpostgresql:Server"),
-		},
-		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20200214preview:Server"),
 		},
 		{
@@ -143,6 +140,9 @@ func NewServer(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20240801:Server"),
+		},
+		{
+			Type: pulumi.String("azure-native:dbforpostgresql:Server"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -52,9 +52,6 @@ func NewAttachedNetworkByDevCenter(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:devcenter:AttachedNetworkByDevCenter"),
-		},
-		{
 			Type: pulumi.String("azure-native:devcenter/v20220801preview:AttachedNetworkByDevCenter"),
 		},
 		{
@@ -92,6 +89,9 @@ func NewAttachedNetworkByDevCenter(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:devcenter/v20240801preview:AttachedNetworkByDevCenter"),
+		},
+		{
+			Type: pulumi.String("azure-native:devcenter:AttachedNetworkByDevCenter"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -84,9 +84,6 @@ func NewGatewayApiEntityTag(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:apimanagement:GatewayApiEntityTag"),
-		},
-		{
 			Type: pulumi.String("azure-native:apimanagement/v20191201:GatewayApiEntityTag"),
 		},
 		{
@@ -130,6 +127,9 @@ func NewGatewayApiEntityTag(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20240501:GatewayApiEntityTag"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement:GatewayApiEntityTag"),
 		},
 	})
 	opts = append(opts, aliases)

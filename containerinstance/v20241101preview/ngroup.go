@@ -54,10 +54,10 @@ func NewNGroup(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:containerinstance:NGroup"),
+			Type: pulumi.String("azure-native:containerinstance/v20240901preview:NGroup"),
 		},
 		{
-			Type: pulumi.String("azure-native:containerinstance/v20240901preview:NGroup"),
+			Type: pulumi.String("azure-native:containerinstance:NGroup"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -53,19 +53,13 @@ func NewNetworkinterfaceRetrieve(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:azurestackhci/v20210901preview:networkinterfaceRetrieve"),
-		},
-		{
-			Type: pulumi.String("azure-native:azurestackhci:NetworkinterfaceRetrieve"),
-		},
-		{
-			Type: pulumi.String("azure-native:azurestackhci:networkinterfaceRetrieve"),
-		},
-		{
 			Type: pulumi.String("azure-native:azurestackhci/v20210701preview:NetworkinterfaceRetrieve"),
 		},
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20210701preview:networkinterfaceRetrieve"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20210901preview:networkinterfaceRetrieve"),
 		},
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20221215preview:NetworkinterfaceRetrieve"),
@@ -120,6 +114,12 @@ func NewNetworkinterfaceRetrieve(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20241001preview:networkinterfaceRetrieve"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci:NetworkinterfaceRetrieve"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci:networkinterfaceRetrieve"),
 		},
 	})
 	opts = append(opts, aliases)

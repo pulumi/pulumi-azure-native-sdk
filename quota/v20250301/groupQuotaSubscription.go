@@ -40,9 +40,6 @@ func NewGroupQuotaSubscription(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:quota:GroupQuotaSubscription"),
-		},
-		{
 			Type: pulumi.String("azure-native:quota/v20230601preview:GroupQuotaSubscription"),
 		},
 		{
@@ -50,6 +47,9 @@ func NewGroupQuotaSubscription(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:quota/v20241218preview:GroupQuotaSubscription"),
+		},
+		{
+			Type: pulumi.String("azure-native:quota:GroupQuotaSubscription"),
 		},
 	})
 	opts = append(opts, aliases)

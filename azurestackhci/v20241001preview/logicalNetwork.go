@@ -52,9 +52,6 @@ func NewLogicalNetwork(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:azurestackhci:LogicalNetwork"),
-		},
-		{
 			Type: pulumi.String("azure-native:azurestackhci/v20230901preview:LogicalNetwork"),
 		},
 		{
@@ -71,6 +68,9 @@ func NewLogicalNetwork(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20240801preview:LogicalNetwork"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci:LogicalNetwork"),
 		},
 	})
 	opts = append(opts, aliases)

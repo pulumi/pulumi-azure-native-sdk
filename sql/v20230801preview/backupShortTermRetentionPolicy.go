@@ -44,9 +44,6 @@ func NewBackupShortTermRetentionPolicy(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:sql:BackupShortTermRetentionPolicy"),
-		},
-		{
 			Type: pulumi.String("azure-native:sql/v20171001preview:BackupShortTermRetentionPolicy"),
 		},
 		{
@@ -93,6 +90,9 @@ func NewBackupShortTermRetentionPolicy(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20240501preview:BackupShortTermRetentionPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql:BackupShortTermRetentionPolicy"),
 		},
 	})
 	opts = append(opts, aliases)

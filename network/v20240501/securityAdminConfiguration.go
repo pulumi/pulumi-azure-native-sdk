@@ -51,9 +51,6 @@ func NewSecurityAdminConfiguration(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:network:SecurityAdminConfiguration"),
-		},
-		{
 			Type: pulumi.String("azure-native:network/v20210201preview:SecurityAdminConfiguration"),
 		},
 		{
@@ -106,6 +103,9 @@ func NewSecurityAdminConfiguration(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20240301:SecurityAdminConfiguration"),
+		},
+		{
+			Type: pulumi.String("azure-native:network:SecurityAdminConfiguration"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -53,9 +53,6 @@ func NewConnection(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:automation:Connection"),
-		},
-		{
 			Type: pulumi.String("azure-native:automation/v20151031:Connection"),
 		},
 		{
@@ -72,6 +69,9 @@ func NewConnection(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:automation/v20241023:Connection"),
+		},
+		{
+			Type: pulumi.String("azure-native:automation:Connection"),
 		},
 	})
 	opts = append(opts, aliases)

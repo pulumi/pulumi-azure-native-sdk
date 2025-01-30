@@ -54,9 +54,6 @@ func NewManagedInstanceAdministrator(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:sql:ManagedInstanceAdministrator"),
-		},
-		{
 			Type: pulumi.String("azure-native:sql/v20170301preview:ManagedInstanceAdministrator"),
 		},
 		{
@@ -103,6 +100,9 @@ func NewManagedInstanceAdministrator(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20240501preview:ManagedInstanceAdministrator"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql:ManagedInstanceAdministrator"),
 		},
 	})
 	opts = append(opts, aliases)

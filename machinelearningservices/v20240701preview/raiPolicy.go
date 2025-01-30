@@ -47,13 +47,13 @@ func NewRaiPolicy(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:machinelearningservices:RaiPolicy"),
-		},
-		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20240401preview:RaiPolicy"),
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001preview:RaiPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices:RaiPolicy"),
 		},
 	})
 	opts = append(opts, aliases)

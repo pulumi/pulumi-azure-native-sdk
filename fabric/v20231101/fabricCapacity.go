@@ -54,6 +54,9 @@ func NewFabricCapacity(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:fabric/v20250115preview:FabricCapacity"),
+		},
+		{
 			Type: pulumi.String("azure-native:fabric:FabricCapacity"),
 		},
 	})

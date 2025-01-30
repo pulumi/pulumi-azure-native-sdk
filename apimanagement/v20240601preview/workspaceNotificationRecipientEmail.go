@@ -45,9 +45,6 @@ func NewWorkspaceNotificationRecipientEmail(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:apimanagement:WorkspaceNotificationRecipientEmail"),
-		},
-		{
 			Type: pulumi.String("azure-native:apimanagement/v20220901preview:WorkspaceNotificationRecipientEmail"),
 		},
 		{
@@ -61,6 +58,9 @@ func NewWorkspaceNotificationRecipientEmail(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20240501:WorkspaceNotificationRecipientEmail"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement:WorkspaceNotificationRecipientEmail"),
 		},
 	})
 	opts = append(opts, aliases)

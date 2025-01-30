@@ -64,9 +64,6 @@ func NewWebAppHybridConnectionSlot(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:web:WebAppHybridConnectionSlot"),
-		},
-		{
 			Type: pulumi.String("azure-native:web/v20160801:WebAppHybridConnectionSlot"),
 		},
 		{
@@ -113,6 +110,9 @@ func NewWebAppHybridConnectionSlot(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:web/v20240401:WebAppHybridConnectionSlot"),
+		},
+		{
+			Type: pulumi.String("azure-native:web:WebAppHybridConnectionSlot"),
 		},
 	})
 	opts = append(opts, aliases)

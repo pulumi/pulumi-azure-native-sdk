@@ -43,10 +43,10 @@ func NewBillingRoleAssignmentByDepartment(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:billing:BillingRoleAssignmentByDepartment"),
+			Type: pulumi.String("azure-native:billing/v20191001preview:BillingRoleAssignmentByDepartment"),
 		},
 		{
-			Type: pulumi.String("azure-native:billing/v20191001preview:BillingRoleAssignmentByDepartment"),
+			Type: pulumi.String("azure-native:billing:BillingRoleAssignmentByDepartment"),
 		},
 	})
 	opts = append(opts, aliases)

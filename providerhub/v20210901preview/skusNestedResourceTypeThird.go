@@ -48,9 +48,6 @@ func NewSkusNestedResourceTypeThird(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:providerhub:SkusNestedResourceTypeThird"),
-		},
-		{
 			Type: pulumi.String("azure-native:providerhub/v20201120:SkusNestedResourceTypeThird"),
 		},
 		{
@@ -58,6 +55,9 @@ func NewSkusNestedResourceTypeThird(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:providerhub/v20210601preview:SkusNestedResourceTypeThird"),
+		},
+		{
+			Type: pulumi.String("azure-native:providerhub:SkusNestedResourceTypeThird"),
 		},
 	})
 	opts = append(opts, aliases)

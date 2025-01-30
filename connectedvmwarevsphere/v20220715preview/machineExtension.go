@@ -61,9 +61,6 @@ func NewMachineExtension(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:connectedvmwarevsphere:MachineExtension"),
-		},
-		{
 			Type: pulumi.String("azure-native:connectedvmwarevsphere/v20201001preview:MachineExtension"),
 		},
 		{
@@ -71,6 +68,9 @@ func NewMachineExtension(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:connectedvmwarevsphere/v20230301preview:MachineExtension"),
+		},
+		{
+			Type: pulumi.String("azure-native:connectedvmwarevsphere:MachineExtension"),
 		},
 	})
 	opts = append(opts, aliases)

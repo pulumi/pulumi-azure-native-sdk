@@ -43,9 +43,6 @@ func NewDpsCertificate(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:devices:DpsCertificate"),
-		},
-		{
 			Type: pulumi.String("azure-native:devices/v20170821preview:DpsCertificate"),
 		},
 		{
@@ -74,6 +71,9 @@ func NewDpsCertificate(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:devices/v20250201preview:DpsCertificate"),
+		},
+		{
+			Type: pulumi.String("azure-native:devices:DpsCertificate"),
 		},
 	})
 	opts = append(opts, aliases)

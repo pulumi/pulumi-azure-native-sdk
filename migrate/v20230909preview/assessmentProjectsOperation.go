@@ -67,9 +67,6 @@ func NewAssessmentProjectsOperation(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:migrate:AssessmentProjectsOperation"),
-		},
-		{
 			Type: pulumi.String("azure-native:migrate/v20191001:AssessmentProjectsOperation"),
 		},
 		{
@@ -80,6 +77,12 @@ func NewAssessmentProjectsOperation(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:migrate/v20230501preview:AssessmentProjectsOperation"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate/v20240101preview:AssessmentProjectsOperation"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate:AssessmentProjectsOperation"),
 		},
 	})
 	opts = append(opts, aliases)

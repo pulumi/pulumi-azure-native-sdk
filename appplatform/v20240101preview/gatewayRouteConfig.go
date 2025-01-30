@@ -47,9 +47,6 @@ func NewGatewayRouteConfig(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:appplatform:GatewayRouteConfig"),
-		},
-		{
 			Type: pulumi.String("azure-native:appplatform/v20220101preview:GatewayRouteConfig"),
 		},
 		{
@@ -90,6 +87,9 @@ func NewGatewayRouteConfig(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:appplatform/v20240501preview:GatewayRouteConfig"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform:GatewayRouteConfig"),
 		},
 	})
 	opts = append(opts, aliases)

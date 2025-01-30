@@ -64,9 +64,6 @@ func NewPacketCapture(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:mobilenetwork:PacketCapture"),
-		},
-		{
 			Type: pulumi.String("azure-native:mobilenetwork/v20230901:PacketCapture"),
 		},
 		{
@@ -74,6 +71,9 @@ func NewPacketCapture(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:mobilenetwork/v20240401:PacketCapture"),
+		},
+		{
+			Type: pulumi.String("azure-native:mobilenetwork:PacketCapture"),
 		},
 	})
 	opts = append(opts, aliases)
