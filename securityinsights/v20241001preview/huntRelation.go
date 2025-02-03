@@ -87,6 +87,9 @@ func NewHuntRelation(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:securityinsights/v20240401preview:HuntRelation"),
 		},
 		{
+			Type: pulumi.String("azure-native:securityinsights/v20250101preview:HuntRelation"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityinsights:HuntRelation"),
 		},
 	})

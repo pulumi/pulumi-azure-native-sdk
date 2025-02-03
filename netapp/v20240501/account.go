@@ -178,6 +178,9 @@ func NewAccount(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:netapp/v20240901:Account"),
 		},
 		{
+			Type: pulumi.String("azure-native:netapp/v20240901preview:Account"),
+		},
+		{
 			Type: pulumi.String("azure-native:netapp:Account"),
 		},
 	})

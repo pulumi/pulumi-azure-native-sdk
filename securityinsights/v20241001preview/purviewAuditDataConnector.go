@@ -166,6 +166,9 @@ func NewPurviewAuditDataConnector(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:securityinsights/v20240901:PurviewAuditDataConnector"),
 		},
 		{
+			Type: pulumi.String("azure-native:securityinsights/v20250101preview:PurviewAuditDataConnector"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityinsights:PurviewAuditDataConnector"),
 		},
 	})

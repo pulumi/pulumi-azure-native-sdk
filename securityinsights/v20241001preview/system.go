@@ -59,6 +59,9 @@ func NewSystem(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:securityinsights/v20240401preview:System"),
 		},
 		{
+			Type: pulumi.String("azure-native:securityinsights/v20250101preview:System"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityinsights:System"),
 		},
 	})

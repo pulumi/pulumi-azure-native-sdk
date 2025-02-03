@@ -145,6 +145,9 @@ func NewThreatIntelligenceIndicator(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:securityinsights/v20241001preview:ThreatIntelligenceIndicator"),
 		},
 		{
+			Type: pulumi.String("azure-native:securityinsights/v20250101preview:ThreatIntelligenceIndicator"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityinsights:ThreatIntelligenceIndicator"),
 		},
 	})

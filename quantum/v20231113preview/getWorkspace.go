@@ -29,34 +29,24 @@ type LookupWorkspaceArgs struct {
 	WorkspaceName string `pulumi:"workspaceName"`
 }
 
-// The resource proxy definition object for quantum workspace.
+// The resource proxy definition object for Quantum Workspace.
 type LookupWorkspaceResult struct {
-	// Indicator of enablement of the Quantum workspace Api keys.
-	ApiKeyEnabled *bool `pulumi:"apiKeyEnabled"`
-	// The URI of the workspace endpoint.
-	EndpointUri string `pulumi:"endpointUri"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
-	// Managed Identity information.
-	Identity *QuantumWorkspaceResponseIdentity `pulumi:"identity"`
+	// The managed service identities assigned to this resource.
+	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// List of Providers selected for this Workspace
-	Providers []ProviderResponse `pulumi:"providers"`
-	// Provisioning status field
-	ProvisioningState string `pulumi:"provisioningState"`
-	// ARM Resource Id of the storage account associated with this workspace.
-	StorageAccount *string `pulumi:"storageAccount"`
+	// Gets or sets the properties. Define quantum workspace's specific properties.
+	Properties WorkspaceResourcePropertiesResponse `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
-	// Whether the current workspace is ready to accept Jobs.
-	Usable string `pulumi:"usable"`
 }
 
 func LookupWorkspaceOutput(ctx *pulumi.Context, args LookupWorkspaceOutputArgs, opts ...pulumi.InvokeOption) LookupWorkspaceResultOutput {
@@ -79,7 +69,7 @@ func (LookupWorkspaceOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupWorkspaceArgs)(nil)).Elem()
 }
 
-// The resource proxy definition object for quantum workspace.
+// The resource proxy definition object for Quantum Workspace.
 type LookupWorkspaceResultOutput struct{ *pulumi.OutputState }
 
 func (LookupWorkspaceResultOutput) ElementType() reflect.Type {
@@ -94,24 +84,14 @@ func (o LookupWorkspaceResultOutput) ToLookupWorkspaceResultOutputWithContext(ct
 	return o
 }
 
-// Indicator of enablement of the Quantum workspace Api keys.
-func (o LookupWorkspaceResultOutput) ApiKeyEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v LookupWorkspaceResult) *bool { return v.ApiKeyEnabled }).(pulumi.BoolPtrOutput)
-}
-
-// The URI of the workspace endpoint.
-func (o LookupWorkspaceResultOutput) EndpointUri() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupWorkspaceResult) string { return v.EndpointUri }).(pulumi.StringOutput)
-}
-
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupWorkspaceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Managed Identity information.
-func (o LookupWorkspaceResultOutput) Identity() QuantumWorkspaceResponseIdentityPtrOutput {
-	return o.ApplyT(func(v LookupWorkspaceResult) *QuantumWorkspaceResponseIdentity { return v.Identity }).(QuantumWorkspaceResponseIdentityPtrOutput)
+// The managed service identities assigned to this resource.
+func (o LookupWorkspaceResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupWorkspaceResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -124,19 +104,9 @@ func (o LookupWorkspaceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// List of Providers selected for this Workspace
-func (o LookupWorkspaceResultOutput) Providers() ProviderResponseArrayOutput {
-	return o.ApplyT(func(v LookupWorkspaceResult) []ProviderResponse { return v.Providers }).(ProviderResponseArrayOutput)
-}
-
-// Provisioning status field
-func (o LookupWorkspaceResultOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupWorkspaceResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// ARM Resource Id of the storage account associated with this workspace.
-func (o LookupWorkspaceResultOutput) StorageAccount() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupWorkspaceResult) *string { return v.StorageAccount }).(pulumi.StringPtrOutput)
+// Gets or sets the properties. Define quantum workspace's specific properties.
+func (o LookupWorkspaceResultOutput) Properties() WorkspaceResourcePropertiesResponseOutput {
+	return o.ApplyT(func(v LookupWorkspaceResult) WorkspaceResourcePropertiesResponse { return v.Properties }).(WorkspaceResourcePropertiesResponseOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -152,11 +122,6 @@ func (o LookupWorkspaceResultOutput) Tags() pulumi.StringMapOutput {
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupWorkspaceResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Whether the current workspace is ready to accept Jobs.
-func (o LookupWorkspaceResultOutput) Usable() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupWorkspaceResult) string { return v.Usable }).(pulumi.StringOutput)
 }
 
 func init() {

@@ -128,6 +128,9 @@ func NewUeba(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:securityinsights/v20241001preview:Ueba"),
 		},
 		{
+			Type: pulumi.String("azure-native:securityinsights/v20250101preview:Ueba"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityinsights:Ueba"),
 		},
 	})

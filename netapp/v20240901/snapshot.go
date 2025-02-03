@@ -176,6 +176,9 @@ func NewSnapshot(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:netapp/v20240701preview:Snapshot"),
 		},
 		{
+			Type: pulumi.String("azure-native:netapp/v20240901preview:Snapshot"),
+		},
+		{
 			Type: pulumi.String("azure-native:netapp:Snapshot"),
 		},
 	})

@@ -83,6 +83,9 @@ func NewWorkspaceManagerGroup(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:securityinsights/v20241001preview:WorkspaceManagerGroup"),
 		},
 		{
+			Type: pulumi.String("azure-native:securityinsights/v20250101preview:WorkspaceManagerGroup"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityinsights:WorkspaceManagerGroup"),
 		},
 	})

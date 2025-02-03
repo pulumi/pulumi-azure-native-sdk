@@ -159,6 +159,9 @@ func NewAction(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:securityinsights/v20241001preview:Action"),
 		},
 		{
+			Type: pulumi.String("azure-native:securityinsights/v20250101preview:Action"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityinsights:Action"),
 		},
 	})

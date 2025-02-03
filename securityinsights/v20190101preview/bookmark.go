@@ -173,6 +173,9 @@ func NewBookmark(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:securityinsights/v20241001preview:Bookmark"),
 		},
 		{
+			Type: pulumi.String("azure-native:securityinsights/v20250101preview:Bookmark"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityinsights:Bookmark"),
 		},
 	})

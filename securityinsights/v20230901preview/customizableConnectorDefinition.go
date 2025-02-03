@@ -83,6 +83,9 @@ func NewCustomizableConnectorDefinition(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:securityinsights/v20241001preview:CustomizableConnectorDefinition"),
 		},
 		{
+			Type: pulumi.String("azure-native:securityinsights/v20250101preview:CustomizableConnectorDefinition"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityinsights:CustomizableConnectorDefinition"),
 		},
 	})

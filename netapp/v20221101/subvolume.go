@@ -111,6 +111,9 @@ func NewSubvolume(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:netapp/v20240901:Subvolume"),
 		},
 		{
+			Type: pulumi.String("azure-native:netapp/v20240901preview:Subvolume"),
+		},
+		{
 			Type: pulumi.String("azure-native:netapp:Subvolume"),
 		},
 	})

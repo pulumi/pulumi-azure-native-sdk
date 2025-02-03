@@ -55,6 +55,9 @@ func NewBusinessApplicationAgent(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:securityinsights/v20240401preview:BusinessApplicationAgent"),
 		},
 		{
+			Type: pulumi.String("azure-native:securityinsights/v20250101preview:BusinessApplicationAgent"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityinsights:BusinessApplicationAgent"),
 		},
 	})

@@ -85,6 +85,9 @@ func NewWorkspaceManagerAssignment(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:securityinsights/v20241001preview:WorkspaceManagerAssignment"),
 		},
 		{
+			Type: pulumi.String("azure-native:securityinsights/v20250101preview:WorkspaceManagerAssignment"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityinsights:WorkspaceManagerAssignment"),
 		},
 	})

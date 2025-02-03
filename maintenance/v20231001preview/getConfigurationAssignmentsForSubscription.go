@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Get configuration assignment for resource..
+// Get configuration assignment for resource.
 func LookupConfigurationAssignmentsForSubscription(ctx *pulumi.Context, args *LookupConfigurationAssignmentsForSubscriptionArgs, opts ...pulumi.InvokeOption) (*LookupConfigurationAssignmentsForSubscriptionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupConfigurationAssignmentsForSubscriptionResult
