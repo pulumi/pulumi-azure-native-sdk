@@ -194,6 +194,9 @@ func NewNrtAlertRule(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:securityinsights/v20241001preview:NrtAlertRule"),
 		},
 		{
+			Type: pulumi.String("azure-native:securityinsights/v20250101preview:NrtAlertRule"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityinsights:NrtAlertRule"),
 		},
 	})

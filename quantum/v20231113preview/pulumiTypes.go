@@ -90,6 +90,278 @@ func (o ApiKeyResponsePtrOutput) Key() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Managed service identity (system assigned and/or user assigned identities)
+type ManagedServiceIdentity struct {
+	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+	Type string `pulumi:"type"`
+	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
+}
+
+// ManagedServiceIdentityInput is an input type that accepts ManagedServiceIdentityArgs and ManagedServiceIdentityOutput values.
+// You can construct a concrete instance of `ManagedServiceIdentityInput` via:
+//
+//	ManagedServiceIdentityArgs{...}
+type ManagedServiceIdentityInput interface {
+	pulumi.Input
+
+	ToManagedServiceIdentityOutput() ManagedServiceIdentityOutput
+	ToManagedServiceIdentityOutputWithContext(context.Context) ManagedServiceIdentityOutput
+}
+
+// Managed service identity (system assigned and/or user assigned identities)
+type ManagedServiceIdentityArgs struct {
+	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+	Type pulumi.StringInput `pulumi:"type"`
+	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
+}
+
+func (ManagedServiceIdentityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedServiceIdentity)(nil)).Elem()
+}
+
+func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityOutput() ManagedServiceIdentityOutput {
+	return i.ToManagedServiceIdentityOutputWithContext(context.Background())
+}
+
+func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityOutputWithContext(ctx context.Context) ManagedServiceIdentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityOutput)
+}
+
+func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
+	return i.ToManagedServiceIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityOutput).ToManagedServiceIdentityPtrOutputWithContext(ctx)
+}
+
+// ManagedServiceIdentityPtrInput is an input type that accepts ManagedServiceIdentityArgs, ManagedServiceIdentityPtr and ManagedServiceIdentityPtrOutput values.
+// You can construct a concrete instance of `ManagedServiceIdentityPtrInput` via:
+//
+//	        ManagedServiceIdentityArgs{...}
+//
+//	or:
+//
+//	        nil
+type ManagedServiceIdentityPtrInput interface {
+	pulumi.Input
+
+	ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput
+	ToManagedServiceIdentityPtrOutputWithContext(context.Context) ManagedServiceIdentityPtrOutput
+}
+
+type managedServiceIdentityPtrType ManagedServiceIdentityArgs
+
+func ManagedServiceIdentityPtr(v *ManagedServiceIdentityArgs) ManagedServiceIdentityPtrInput {
+	return (*managedServiceIdentityPtrType)(v)
+}
+
+func (*managedServiceIdentityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedServiceIdentity)(nil)).Elem()
+}
+
+func (i *managedServiceIdentityPtrType) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
+	return i.ToManagedServiceIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i *managedServiceIdentityPtrType) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityPtrOutput)
+}
+
+// Managed service identity (system assigned and/or user assigned identities)
+type ManagedServiceIdentityOutput struct{ *pulumi.OutputState }
+
+func (ManagedServiceIdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedServiceIdentity)(nil)).Elem()
+}
+
+func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityOutput() ManagedServiceIdentityOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityOutputWithContext(ctx context.Context) ManagedServiceIdentityOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
+	return o.ToManagedServiceIdentityPtrOutputWithContext(context.Background())
+}
+
+func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedServiceIdentity) *ManagedServiceIdentity {
+		return &v
+	}).(ManagedServiceIdentityPtrOutput)
+}
+
+// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+func (o ManagedServiceIdentityOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedServiceIdentity) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+func (o ManagedServiceIdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ManagedServiceIdentity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
+}
+
+type ManagedServiceIdentityPtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedServiceIdentityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedServiceIdentity)(nil)).Elem()
+}
+
+func (o ManagedServiceIdentityPtrOutput) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityPtrOutput) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityPtrOutput) Elem() ManagedServiceIdentityOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentity) ManagedServiceIdentity {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedServiceIdentity
+		return ret
+	}).(ManagedServiceIdentityOutput)
+}
+
+// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+func (o ManagedServiceIdentityPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+func (o ManagedServiceIdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentity) []string {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentities
+	}).(pulumi.StringArrayOutput)
+}
+
+// Managed service identity (system assigned and/or user assigned identities)
+type ManagedServiceIdentityResponse struct {
+	// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+	PrincipalId string `pulumi:"principalId"`
+	// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+	TenantId string `pulumi:"tenantId"`
+	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+	Type string `pulumi:"type"`
+	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+	UserAssignedIdentities map[string]UserAssignedIdentityResponse `pulumi:"userAssignedIdentities"`
+}
+
+// Managed service identity (system assigned and/or user assigned identities)
+type ManagedServiceIdentityResponseOutput struct{ *pulumi.OutputState }
+
+func (ManagedServiceIdentityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedServiceIdentityResponse)(nil)).Elem()
+}
+
+func (o ManagedServiceIdentityResponseOutput) ToManagedServiceIdentityResponseOutput() ManagedServiceIdentityResponseOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityResponseOutput) ToManagedServiceIdentityResponseOutputWithContext(ctx context.Context) ManagedServiceIdentityResponseOutput {
+	return o
+}
+
+// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+func (o ManagedServiceIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedServiceIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+func (o ManagedServiceIdentityResponseOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedServiceIdentityResponse) string { return v.TenantId }).(pulumi.StringOutput)
+}
+
+// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+func (o ManagedServiceIdentityResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedServiceIdentityResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+func (o ManagedServiceIdentityResponseOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
+	return o.ApplyT(func(v ManagedServiceIdentityResponse) map[string]UserAssignedIdentityResponse {
+		return v.UserAssignedIdentities
+	}).(UserAssignedIdentityResponseMapOutput)
+}
+
+type ManagedServiceIdentityResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedServiceIdentityResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedServiceIdentityResponse)(nil)).Elem()
+}
+
+func (o ManagedServiceIdentityResponsePtrOutput) ToManagedServiceIdentityResponsePtrOutput() ManagedServiceIdentityResponsePtrOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityResponsePtrOutput) ToManagedServiceIdentityResponsePtrOutputWithContext(ctx context.Context) ManagedServiceIdentityResponsePtrOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityResponsePtrOutput) Elem() ManagedServiceIdentityResponseOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentityResponse) ManagedServiceIdentityResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedServiceIdentityResponse
+		return ret
+	}).(ManagedServiceIdentityResponseOutput)
+}
+
+// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+func (o ManagedServiceIdentityResponsePtrOutput) PrincipalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrincipalId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+func (o ManagedServiceIdentityResponsePtrOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TenantId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+func (o ManagedServiceIdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+func (o ManagedServiceIdentityResponsePtrOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentityResponse) map[string]UserAssignedIdentityResponse {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentities
+	}).(UserAssignedIdentityResponseMapOutput)
+}
+
 // Information about a Provider. A Provider is an entity that offers Targets to run Azure Quantum Jobs.
 type Provider struct {
 	// The provider's marketplace application display name.
@@ -100,8 +372,6 @@ type Provider struct {
 	ProviderId *string `pulumi:"providerId"`
 	// The sku associated with pricing information for this provider.
 	ProviderSku *string `pulumi:"providerSku"`
-	// Provisioning status field
-	ProvisioningState *string `pulumi:"provisioningState"`
 	// Id to track resource usage for the provider.
 	ResourceUsageId *string `pulumi:"resourceUsageId"`
 }
@@ -127,8 +397,6 @@ type ProviderArgs struct {
 	ProviderId pulumi.StringPtrInput `pulumi:"providerId"`
 	// The sku associated with pricing information for this provider.
 	ProviderSku pulumi.StringPtrInput `pulumi:"providerSku"`
-	// Provisioning status field
-	ProvisioningState pulumi.StringPtrInput `pulumi:"provisioningState"`
 	// Id to track resource usage for the provider.
 	ResourceUsageId pulumi.StringPtrInput `pulumi:"resourceUsageId"`
 }
@@ -205,11 +473,6 @@ func (o ProviderOutput) ProviderSku() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Provider) *string { return v.ProviderSku }).(pulumi.StringPtrOutput)
 }
 
-// Provisioning status field
-func (o ProviderOutput) ProvisioningState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Provider) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
-}
-
 // Id to track resource usage for the provider.
 func (o ProviderOutput) ResourceUsageId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Provider) *string { return v.ResourceUsageId }).(pulumi.StringPtrOutput)
@@ -246,7 +509,7 @@ type ProviderResponse struct {
 	// The sku associated with pricing information for this provider.
 	ProviderSku *string `pulumi:"providerSku"`
 	// Provisioning status field
-	ProvisioningState *string `pulumi:"provisioningState"`
+	ProvisioningState string `pulumi:"provisioningState"`
 	// Id to track resource usage for the provider.
 	ResourceUsageId *string `pulumi:"resourceUsageId"`
 }
@@ -287,8 +550,8 @@ func (o ProviderResponseOutput) ProviderSku() pulumi.StringPtrOutput {
 }
 
 // Provisioning status field
-func (o ProviderResponseOutput) ProvisioningState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ProviderResponse) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
+func (o ProviderResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v ProviderResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
 // Id to track resource usage for the provider.
@@ -314,240 +577,6 @@ func (o ProviderResponseArrayOutput) Index(i pulumi.IntInput) ProviderResponseOu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProviderResponse {
 		return vs[0].([]ProviderResponse)[vs[1].(int)]
 	}).(ProviderResponseOutput)
-}
-
-// Managed Identity information.
-type QuantumWorkspaceIdentity struct {
-	// The identity type.
-	Type *string `pulumi:"type"`
-}
-
-// QuantumWorkspaceIdentityInput is an input type that accepts QuantumWorkspaceIdentityArgs and QuantumWorkspaceIdentityOutput values.
-// You can construct a concrete instance of `QuantumWorkspaceIdentityInput` via:
-//
-//	QuantumWorkspaceIdentityArgs{...}
-type QuantumWorkspaceIdentityInput interface {
-	pulumi.Input
-
-	ToQuantumWorkspaceIdentityOutput() QuantumWorkspaceIdentityOutput
-	ToQuantumWorkspaceIdentityOutputWithContext(context.Context) QuantumWorkspaceIdentityOutput
-}
-
-// Managed Identity information.
-type QuantumWorkspaceIdentityArgs struct {
-	// The identity type.
-	Type pulumi.StringPtrInput `pulumi:"type"`
-}
-
-func (QuantumWorkspaceIdentityArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*QuantumWorkspaceIdentity)(nil)).Elem()
-}
-
-func (i QuantumWorkspaceIdentityArgs) ToQuantumWorkspaceIdentityOutput() QuantumWorkspaceIdentityOutput {
-	return i.ToQuantumWorkspaceIdentityOutputWithContext(context.Background())
-}
-
-func (i QuantumWorkspaceIdentityArgs) ToQuantumWorkspaceIdentityOutputWithContext(ctx context.Context) QuantumWorkspaceIdentityOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(QuantumWorkspaceIdentityOutput)
-}
-
-func (i QuantumWorkspaceIdentityArgs) ToQuantumWorkspaceIdentityPtrOutput() QuantumWorkspaceIdentityPtrOutput {
-	return i.ToQuantumWorkspaceIdentityPtrOutputWithContext(context.Background())
-}
-
-func (i QuantumWorkspaceIdentityArgs) ToQuantumWorkspaceIdentityPtrOutputWithContext(ctx context.Context) QuantumWorkspaceIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(QuantumWorkspaceIdentityOutput).ToQuantumWorkspaceIdentityPtrOutputWithContext(ctx)
-}
-
-// QuantumWorkspaceIdentityPtrInput is an input type that accepts QuantumWorkspaceIdentityArgs, QuantumWorkspaceIdentityPtr and QuantumWorkspaceIdentityPtrOutput values.
-// You can construct a concrete instance of `QuantumWorkspaceIdentityPtrInput` via:
-//
-//	        QuantumWorkspaceIdentityArgs{...}
-//
-//	or:
-//
-//	        nil
-type QuantumWorkspaceIdentityPtrInput interface {
-	pulumi.Input
-
-	ToQuantumWorkspaceIdentityPtrOutput() QuantumWorkspaceIdentityPtrOutput
-	ToQuantumWorkspaceIdentityPtrOutputWithContext(context.Context) QuantumWorkspaceIdentityPtrOutput
-}
-
-type quantumWorkspaceIdentityPtrType QuantumWorkspaceIdentityArgs
-
-func QuantumWorkspaceIdentityPtr(v *QuantumWorkspaceIdentityArgs) QuantumWorkspaceIdentityPtrInput {
-	return (*quantumWorkspaceIdentityPtrType)(v)
-}
-
-func (*quantumWorkspaceIdentityPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**QuantumWorkspaceIdentity)(nil)).Elem()
-}
-
-func (i *quantumWorkspaceIdentityPtrType) ToQuantumWorkspaceIdentityPtrOutput() QuantumWorkspaceIdentityPtrOutput {
-	return i.ToQuantumWorkspaceIdentityPtrOutputWithContext(context.Background())
-}
-
-func (i *quantumWorkspaceIdentityPtrType) ToQuantumWorkspaceIdentityPtrOutputWithContext(ctx context.Context) QuantumWorkspaceIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(QuantumWorkspaceIdentityPtrOutput)
-}
-
-// Managed Identity information.
-type QuantumWorkspaceIdentityOutput struct{ *pulumi.OutputState }
-
-func (QuantumWorkspaceIdentityOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*QuantumWorkspaceIdentity)(nil)).Elem()
-}
-
-func (o QuantumWorkspaceIdentityOutput) ToQuantumWorkspaceIdentityOutput() QuantumWorkspaceIdentityOutput {
-	return o
-}
-
-func (o QuantumWorkspaceIdentityOutput) ToQuantumWorkspaceIdentityOutputWithContext(ctx context.Context) QuantumWorkspaceIdentityOutput {
-	return o
-}
-
-func (o QuantumWorkspaceIdentityOutput) ToQuantumWorkspaceIdentityPtrOutput() QuantumWorkspaceIdentityPtrOutput {
-	return o.ToQuantumWorkspaceIdentityPtrOutputWithContext(context.Background())
-}
-
-func (o QuantumWorkspaceIdentityOutput) ToQuantumWorkspaceIdentityPtrOutputWithContext(ctx context.Context) QuantumWorkspaceIdentityPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v QuantumWorkspaceIdentity) *QuantumWorkspaceIdentity {
-		return &v
-	}).(QuantumWorkspaceIdentityPtrOutput)
-}
-
-// The identity type.
-func (o QuantumWorkspaceIdentityOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v QuantumWorkspaceIdentity) *string { return v.Type }).(pulumi.StringPtrOutput)
-}
-
-type QuantumWorkspaceIdentityPtrOutput struct{ *pulumi.OutputState }
-
-func (QuantumWorkspaceIdentityPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**QuantumWorkspaceIdentity)(nil)).Elem()
-}
-
-func (o QuantumWorkspaceIdentityPtrOutput) ToQuantumWorkspaceIdentityPtrOutput() QuantumWorkspaceIdentityPtrOutput {
-	return o
-}
-
-func (o QuantumWorkspaceIdentityPtrOutput) ToQuantumWorkspaceIdentityPtrOutputWithContext(ctx context.Context) QuantumWorkspaceIdentityPtrOutput {
-	return o
-}
-
-func (o QuantumWorkspaceIdentityPtrOutput) Elem() QuantumWorkspaceIdentityOutput {
-	return o.ApplyT(func(v *QuantumWorkspaceIdentity) QuantumWorkspaceIdentity {
-		if v != nil {
-			return *v
-		}
-		var ret QuantumWorkspaceIdentity
-		return ret
-	}).(QuantumWorkspaceIdentityOutput)
-}
-
-// The identity type.
-func (o QuantumWorkspaceIdentityPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *QuantumWorkspaceIdentity) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
-// Managed Identity information.
-type QuantumWorkspaceResponseIdentity struct {
-	// The principal ID of resource identity.
-	PrincipalId string `pulumi:"principalId"`
-	// The tenant ID of resource.
-	TenantId string `pulumi:"tenantId"`
-	// The identity type.
-	Type *string `pulumi:"type"`
-}
-
-// Managed Identity information.
-type QuantumWorkspaceResponseIdentityOutput struct{ *pulumi.OutputState }
-
-func (QuantumWorkspaceResponseIdentityOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*QuantumWorkspaceResponseIdentity)(nil)).Elem()
-}
-
-func (o QuantumWorkspaceResponseIdentityOutput) ToQuantumWorkspaceResponseIdentityOutput() QuantumWorkspaceResponseIdentityOutput {
-	return o
-}
-
-func (o QuantumWorkspaceResponseIdentityOutput) ToQuantumWorkspaceResponseIdentityOutputWithContext(ctx context.Context) QuantumWorkspaceResponseIdentityOutput {
-	return o
-}
-
-// The principal ID of resource identity.
-func (o QuantumWorkspaceResponseIdentityOutput) PrincipalId() pulumi.StringOutput {
-	return o.ApplyT(func(v QuantumWorkspaceResponseIdentity) string { return v.PrincipalId }).(pulumi.StringOutput)
-}
-
-// The tenant ID of resource.
-func (o QuantumWorkspaceResponseIdentityOutput) TenantId() pulumi.StringOutput {
-	return o.ApplyT(func(v QuantumWorkspaceResponseIdentity) string { return v.TenantId }).(pulumi.StringOutput)
-}
-
-// The identity type.
-func (o QuantumWorkspaceResponseIdentityOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v QuantumWorkspaceResponseIdentity) *string { return v.Type }).(pulumi.StringPtrOutput)
-}
-
-type QuantumWorkspaceResponseIdentityPtrOutput struct{ *pulumi.OutputState }
-
-func (QuantumWorkspaceResponseIdentityPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**QuantumWorkspaceResponseIdentity)(nil)).Elem()
-}
-
-func (o QuantumWorkspaceResponseIdentityPtrOutput) ToQuantumWorkspaceResponseIdentityPtrOutput() QuantumWorkspaceResponseIdentityPtrOutput {
-	return o
-}
-
-func (o QuantumWorkspaceResponseIdentityPtrOutput) ToQuantumWorkspaceResponseIdentityPtrOutputWithContext(ctx context.Context) QuantumWorkspaceResponseIdentityPtrOutput {
-	return o
-}
-
-func (o QuantumWorkspaceResponseIdentityPtrOutput) Elem() QuantumWorkspaceResponseIdentityOutput {
-	return o.ApplyT(func(v *QuantumWorkspaceResponseIdentity) QuantumWorkspaceResponseIdentity {
-		if v != nil {
-			return *v
-		}
-		var ret QuantumWorkspaceResponseIdentity
-		return ret
-	}).(QuantumWorkspaceResponseIdentityOutput)
-}
-
-// The principal ID of resource identity.
-func (o QuantumWorkspaceResponseIdentityPtrOutput) PrincipalId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *QuantumWorkspaceResponseIdentity) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PrincipalId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The tenant ID of resource.
-func (o QuantumWorkspaceResponseIdentityPtrOutput) TenantId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *QuantumWorkspaceResponseIdentity) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.TenantId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The identity type.
-func (o QuantumWorkspaceResponseIdentityPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *QuantumWorkspaceResponseIdentity) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Type
-	}).(pulumi.StringPtrOutput)
 }
 
 // Metadata pertaining to creation and last modification of the resource.
@@ -611,16 +640,313 @@ func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
 }
 
+// User assigned identity properties
+type UserAssignedIdentityResponse struct {
+	// The client ID of the assigned identity.
+	ClientId string `pulumi:"clientId"`
+	// The principal ID of the assigned identity.
+	PrincipalId string `pulumi:"principalId"`
+}
+
+// User assigned identity properties
+type UserAssignedIdentityResponseOutput struct{ *pulumi.OutputState }
+
+func (UserAssignedIdentityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserAssignedIdentityResponse)(nil)).Elem()
+}
+
+func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutput() UserAssignedIdentityResponseOutput {
+	return o
+}
+
+func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutputWithContext(ctx context.Context) UserAssignedIdentityResponseOutput {
+	return o
+}
+
+// The client ID of the assigned identity.
+func (o UserAssignedIdentityResponseOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// The principal ID of the assigned identity.
+func (o UserAssignedIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+type UserAssignedIdentityResponseMapOutput struct{ *pulumi.OutputState }
+
+func (UserAssignedIdentityResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]UserAssignedIdentityResponse)(nil)).Elem()
+}
+
+func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutput() UserAssignedIdentityResponseMapOutput {
+	return o
+}
+
+func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutputWithContext(ctx context.Context) UserAssignedIdentityResponseMapOutput {
+	return o
+}
+
+func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentityResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) UserAssignedIdentityResponse {
+		return vs[0].(map[string]UserAssignedIdentityResponse)[vs[1].(string)]
+	}).(UserAssignedIdentityResponseOutput)
+}
+
+// Properties of a Workspace
+type WorkspaceResourceProperties struct {
+	// Indicator of enablement of the Quantum workspace Api keys.
+	ApiKeyEnabled *bool `pulumi:"apiKeyEnabled"`
+	// List of Providers selected for this Workspace
+	Providers []Provider `pulumi:"providers"`
+	// ARM Resource Id of the storage account associated with this workspace.
+	StorageAccount *string `pulumi:"storageAccount"`
+}
+
+// WorkspaceResourcePropertiesInput is an input type that accepts WorkspaceResourcePropertiesArgs and WorkspaceResourcePropertiesOutput values.
+// You can construct a concrete instance of `WorkspaceResourcePropertiesInput` via:
+//
+//	WorkspaceResourcePropertiesArgs{...}
+type WorkspaceResourcePropertiesInput interface {
+	pulumi.Input
+
+	ToWorkspaceResourcePropertiesOutput() WorkspaceResourcePropertiesOutput
+	ToWorkspaceResourcePropertiesOutputWithContext(context.Context) WorkspaceResourcePropertiesOutput
+}
+
+// Properties of a Workspace
+type WorkspaceResourcePropertiesArgs struct {
+	// Indicator of enablement of the Quantum workspace Api keys.
+	ApiKeyEnabled pulumi.BoolPtrInput `pulumi:"apiKeyEnabled"`
+	// List of Providers selected for this Workspace
+	Providers ProviderArrayInput `pulumi:"providers"`
+	// ARM Resource Id of the storage account associated with this workspace.
+	StorageAccount pulumi.StringPtrInput `pulumi:"storageAccount"`
+}
+
+func (WorkspaceResourcePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkspaceResourceProperties)(nil)).Elem()
+}
+
+func (i WorkspaceResourcePropertiesArgs) ToWorkspaceResourcePropertiesOutput() WorkspaceResourcePropertiesOutput {
+	return i.ToWorkspaceResourcePropertiesOutputWithContext(context.Background())
+}
+
+func (i WorkspaceResourcePropertiesArgs) ToWorkspaceResourcePropertiesOutputWithContext(ctx context.Context) WorkspaceResourcePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceResourcePropertiesOutput)
+}
+
+func (i WorkspaceResourcePropertiesArgs) ToWorkspaceResourcePropertiesPtrOutput() WorkspaceResourcePropertiesPtrOutput {
+	return i.ToWorkspaceResourcePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i WorkspaceResourcePropertiesArgs) ToWorkspaceResourcePropertiesPtrOutputWithContext(ctx context.Context) WorkspaceResourcePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceResourcePropertiesOutput).ToWorkspaceResourcePropertiesPtrOutputWithContext(ctx)
+}
+
+// WorkspaceResourcePropertiesPtrInput is an input type that accepts WorkspaceResourcePropertiesArgs, WorkspaceResourcePropertiesPtr and WorkspaceResourcePropertiesPtrOutput values.
+// You can construct a concrete instance of `WorkspaceResourcePropertiesPtrInput` via:
+//
+//	        WorkspaceResourcePropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkspaceResourcePropertiesPtrInput interface {
+	pulumi.Input
+
+	ToWorkspaceResourcePropertiesPtrOutput() WorkspaceResourcePropertiesPtrOutput
+	ToWorkspaceResourcePropertiesPtrOutputWithContext(context.Context) WorkspaceResourcePropertiesPtrOutput
+}
+
+type workspaceResourcePropertiesPtrType WorkspaceResourcePropertiesArgs
+
+func WorkspaceResourcePropertiesPtr(v *WorkspaceResourcePropertiesArgs) WorkspaceResourcePropertiesPtrInput {
+	return (*workspaceResourcePropertiesPtrType)(v)
+}
+
+func (*workspaceResourcePropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkspaceResourceProperties)(nil)).Elem()
+}
+
+func (i *workspaceResourcePropertiesPtrType) ToWorkspaceResourcePropertiesPtrOutput() WorkspaceResourcePropertiesPtrOutput {
+	return i.ToWorkspaceResourcePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *workspaceResourcePropertiesPtrType) ToWorkspaceResourcePropertiesPtrOutputWithContext(ctx context.Context) WorkspaceResourcePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceResourcePropertiesPtrOutput)
+}
+
+// Properties of a Workspace
+type WorkspaceResourcePropertiesOutput struct{ *pulumi.OutputState }
+
+func (WorkspaceResourcePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkspaceResourceProperties)(nil)).Elem()
+}
+
+func (o WorkspaceResourcePropertiesOutput) ToWorkspaceResourcePropertiesOutput() WorkspaceResourcePropertiesOutput {
+	return o
+}
+
+func (o WorkspaceResourcePropertiesOutput) ToWorkspaceResourcePropertiesOutputWithContext(ctx context.Context) WorkspaceResourcePropertiesOutput {
+	return o
+}
+
+func (o WorkspaceResourcePropertiesOutput) ToWorkspaceResourcePropertiesPtrOutput() WorkspaceResourcePropertiesPtrOutput {
+	return o.ToWorkspaceResourcePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o WorkspaceResourcePropertiesOutput) ToWorkspaceResourcePropertiesPtrOutputWithContext(ctx context.Context) WorkspaceResourcePropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkspaceResourceProperties) *WorkspaceResourceProperties {
+		return &v
+	}).(WorkspaceResourcePropertiesPtrOutput)
+}
+
+// Indicator of enablement of the Quantum workspace Api keys.
+func (o WorkspaceResourcePropertiesOutput) ApiKeyEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WorkspaceResourceProperties) *bool { return v.ApiKeyEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// List of Providers selected for this Workspace
+func (o WorkspaceResourcePropertiesOutput) Providers() ProviderArrayOutput {
+	return o.ApplyT(func(v WorkspaceResourceProperties) []Provider { return v.Providers }).(ProviderArrayOutput)
+}
+
+// ARM Resource Id of the storage account associated with this workspace.
+func (o WorkspaceResourcePropertiesOutput) StorageAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkspaceResourceProperties) *string { return v.StorageAccount }).(pulumi.StringPtrOutput)
+}
+
+type WorkspaceResourcePropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkspaceResourcePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkspaceResourceProperties)(nil)).Elem()
+}
+
+func (o WorkspaceResourcePropertiesPtrOutput) ToWorkspaceResourcePropertiesPtrOutput() WorkspaceResourcePropertiesPtrOutput {
+	return o
+}
+
+func (o WorkspaceResourcePropertiesPtrOutput) ToWorkspaceResourcePropertiesPtrOutputWithContext(ctx context.Context) WorkspaceResourcePropertiesPtrOutput {
+	return o
+}
+
+func (o WorkspaceResourcePropertiesPtrOutput) Elem() WorkspaceResourcePropertiesOutput {
+	return o.ApplyT(func(v *WorkspaceResourceProperties) WorkspaceResourceProperties {
+		if v != nil {
+			return *v
+		}
+		var ret WorkspaceResourceProperties
+		return ret
+	}).(WorkspaceResourcePropertiesOutput)
+}
+
+// Indicator of enablement of the Quantum workspace Api keys.
+func (o WorkspaceResourcePropertiesPtrOutput) ApiKeyEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WorkspaceResourceProperties) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ApiKeyEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// List of Providers selected for this Workspace
+func (o WorkspaceResourcePropertiesPtrOutput) Providers() ProviderArrayOutput {
+	return o.ApplyT(func(v *WorkspaceResourceProperties) []Provider {
+		if v == nil {
+			return nil
+		}
+		return v.Providers
+	}).(ProviderArrayOutput)
+}
+
+// ARM Resource Id of the storage account associated with this workspace.
+func (o WorkspaceResourcePropertiesPtrOutput) StorageAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkspaceResourceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageAccount
+	}).(pulumi.StringPtrOutput)
+}
+
+// Properties of a Workspace
+type WorkspaceResourcePropertiesResponse struct {
+	// Indicator of enablement of the Quantum workspace Api keys.
+	ApiKeyEnabled *bool `pulumi:"apiKeyEnabled"`
+	// The URI of the workspace endpoint.
+	EndpointUri string `pulumi:"endpointUri"`
+	// List of Providers selected for this Workspace
+	Providers []ProviderResponse `pulumi:"providers"`
+	// Provisioning status field
+	ProvisioningState string `pulumi:"provisioningState"`
+	// ARM Resource Id of the storage account associated with this workspace.
+	StorageAccount *string `pulumi:"storageAccount"`
+	// Whether the current workspace is ready to accept Jobs.
+	Usable string `pulumi:"usable"`
+}
+
+// Properties of a Workspace
+type WorkspaceResourcePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (WorkspaceResourcePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkspaceResourcePropertiesResponse)(nil)).Elem()
+}
+
+func (o WorkspaceResourcePropertiesResponseOutput) ToWorkspaceResourcePropertiesResponseOutput() WorkspaceResourcePropertiesResponseOutput {
+	return o
+}
+
+func (o WorkspaceResourcePropertiesResponseOutput) ToWorkspaceResourcePropertiesResponseOutputWithContext(ctx context.Context) WorkspaceResourcePropertiesResponseOutput {
+	return o
+}
+
+// Indicator of enablement of the Quantum workspace Api keys.
+func (o WorkspaceResourcePropertiesResponseOutput) ApiKeyEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WorkspaceResourcePropertiesResponse) *bool { return v.ApiKeyEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The URI of the workspace endpoint.
+func (o WorkspaceResourcePropertiesResponseOutput) EndpointUri() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkspaceResourcePropertiesResponse) string { return v.EndpointUri }).(pulumi.StringOutput)
+}
+
+// List of Providers selected for this Workspace
+func (o WorkspaceResourcePropertiesResponseOutput) Providers() ProviderResponseArrayOutput {
+	return o.ApplyT(func(v WorkspaceResourcePropertiesResponse) []ProviderResponse { return v.Providers }).(ProviderResponseArrayOutput)
+}
+
+// Provisioning status field
+func (o WorkspaceResourcePropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkspaceResourcePropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// ARM Resource Id of the storage account associated with this workspace.
+func (o WorkspaceResourcePropertiesResponseOutput) StorageAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkspaceResourcePropertiesResponse) *string { return v.StorageAccount }).(pulumi.StringPtrOutput)
+}
+
+// Whether the current workspace is ready to accept Jobs.
+func (o WorkspaceResourcePropertiesResponseOutput) Usable() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkspaceResourcePropertiesResponse) string { return v.Usable }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ApiKeyResponseOutput{})
 	pulumi.RegisterOutputType(ApiKeyResponsePtrOutput{})
+	pulumi.RegisterOutputType(ManagedServiceIdentityOutput{})
+	pulumi.RegisterOutputType(ManagedServiceIdentityPtrOutput{})
+	pulumi.RegisterOutputType(ManagedServiceIdentityResponseOutput{})
+	pulumi.RegisterOutputType(ManagedServiceIdentityResponsePtrOutput{})
 	pulumi.RegisterOutputType(ProviderOutput{})
 	pulumi.RegisterOutputType(ProviderArrayOutput{})
 	pulumi.RegisterOutputType(ProviderResponseOutput{})
 	pulumi.RegisterOutputType(ProviderResponseArrayOutput{})
-	pulumi.RegisterOutputType(QuantumWorkspaceIdentityOutput{})
-	pulumi.RegisterOutputType(QuantumWorkspaceIdentityPtrOutput{})
-	pulumi.RegisterOutputType(QuantumWorkspaceResponseIdentityOutput{})
-	pulumi.RegisterOutputType(QuantumWorkspaceResponseIdentityPtrOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
+	pulumi.RegisterOutputType(UserAssignedIdentityResponseOutput{})
+	pulumi.RegisterOutputType(UserAssignedIdentityResponseMapOutput{})
+	pulumi.RegisterOutputType(WorkspaceResourcePropertiesOutput{})
+	pulumi.RegisterOutputType(WorkspaceResourcePropertiesPtrOutput{})
+	pulumi.RegisterOutputType(WorkspaceResourcePropertiesResponseOutput{})
 }

@@ -15,7 +15,7 @@ import (
 // Represents a Hunt in Azure Security Insights.
 // Azure REST API version: 2023-06-01-preview.
 //
-// Other available API versions: 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-12-01-preview, 2024-01-01-preview, 2024-04-01-preview, 2024-10-01-preview.
+// Other available API versions: 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-12-01-preview, 2024-01-01-preview, 2024-04-01-preview, 2024-10-01-preview, 2025-01-01-preview.
 type Hunt struct {
 	pulumi.CustomResourceState
 
@@ -103,6 +103,9 @@ func NewHunt(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20241001preview:Hunt"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20250101preview:Hunt"),
 		},
 	})
 	opts = append(opts, aliases)

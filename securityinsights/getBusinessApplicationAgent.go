@@ -14,7 +14,7 @@ import (
 // Gets Business Application Agent.
 // Azure REST API version: 2024-04-01-preview.
 //
-// Other available API versions: 2024-10-01-preview.
+// Other available API versions: 2024-10-01-preview, 2025-01-01-preview.
 func LookupBusinessApplicationAgent(ctx *pulumi.Context, args *LookupBusinessApplicationAgentArgs, opts ...pulumi.InvokeOption) (*LookupBusinessApplicationAgentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBusinessApplicationAgentResult

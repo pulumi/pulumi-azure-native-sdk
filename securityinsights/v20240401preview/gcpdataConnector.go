@@ -167,6 +167,9 @@ func NewGCPDataConnector(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:securityinsights/v20241001preview:GCPDataConnector"),
 		},
 		{
+			Type: pulumi.String("azure-native:securityinsights/v20250101preview:GCPDataConnector"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityinsights:GCPDataConnector"),
 		},
 	})

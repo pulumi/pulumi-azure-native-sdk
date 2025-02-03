@@ -131,6 +131,9 @@ func NewBookmarkRelation(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:securityinsights/v20241001preview:BookmarkRelation"),
 		},
 		{
+			Type: pulumi.String("azure-native:securityinsights/v20250101preview:BookmarkRelation"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityinsights:BookmarkRelation"),
 		},
 	})

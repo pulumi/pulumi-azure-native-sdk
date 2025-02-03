@@ -202,6 +202,9 @@ func NewPool(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:netapp/v20240901:Pool"),
 		},
 		{
+			Type: pulumi.String("azure-native:netapp/v20240901preview:Pool"),
+		},
+		{
 			Type: pulumi.String("azure-native:netapp:Pool"),
 		},
 	})

@@ -1974,8 +1974,8 @@ const (
 type ContentType string
 
 const (
-	ContentTypeAnalyticRule = ContentType("AnalyticRule")
-	ContentTypeWorkbook     = ContentType("Workbook")
+	ContentTypeAnalyticsRule = ContentType("AnalyticsRule")
+	ContentTypeWorkbook      = ContentType("Workbook")
 )
 
 func (ContentType) ElementType() reflect.Type {
@@ -2100,7 +2100,7 @@ func (o ContentTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) 
 // ContentTypeInput is an input type that accepts values of the ContentType enum
 // A concrete instance of `ContentTypeInput` can be one of the following:
 //
-//	ContentTypeAnalyticRule
+//	ContentTypeAnalyticsRule
 //	ContentTypeWorkbook
 type ContentTypeInput interface {
 	pulumi.Input

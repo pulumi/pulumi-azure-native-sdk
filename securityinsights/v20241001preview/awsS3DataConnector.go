@@ -170,6 +170,9 @@ func NewAwsS3DataConnector(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:securityinsights/v20240901:AwsS3DataConnector"),
 		},
 		{
+			Type: pulumi.String("azure-native:securityinsights/v20250101preview:AwsS3DataConnector"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityinsights:AwsS3DataConnector"),
 		},
 	})

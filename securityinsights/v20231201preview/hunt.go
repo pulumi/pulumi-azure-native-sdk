@@ -99,6 +99,9 @@ func NewHunt(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:securityinsights/v20241001preview:Hunt"),
 		},
 		{
+			Type: pulumi.String("azure-native:securityinsights/v20250101preview:Hunt"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityinsights:Hunt"),
 		},
 	})

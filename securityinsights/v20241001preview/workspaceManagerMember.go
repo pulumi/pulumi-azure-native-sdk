@@ -81,6 +81,9 @@ func NewWorkspaceManagerMember(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:securityinsights/v20240401preview:WorkspaceManagerMember"),
 		},
 		{
+			Type: pulumi.String("azure-native:securityinsights/v20250101preview:WorkspaceManagerMember"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityinsights:WorkspaceManagerMember"),
 		},
 	})
