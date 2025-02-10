@@ -124,6 +124,9 @@ func NewBackupVault(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:dataprotection/v20240401:BackupVault"),
 		},
 		{
+			Type: pulumi.String("azure-native:dataprotection/v20250101:BackupVault"),
+		},
+		{
 			Type: pulumi.String("azure-native:dataprotection:BackupVault"),
 		},
 	})

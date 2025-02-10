@@ -71,6 +71,9 @@ func NewLocalUser(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:storage/v20230501:LocalUser"),
 		},
 		{
+			Type: pulumi.String("azure-native:storage/v20240101:LocalUser"),
+		},
+		{
 			Type: pulumi.String("azure-native:storage:LocalUser"),
 		},
 	})

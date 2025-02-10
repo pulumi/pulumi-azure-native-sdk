@@ -99,6 +99,9 @@ func NewPostRule(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:cloudngfw/v20240119preview:PostRule"),
 		},
 		{
+			Type: pulumi.String("azure-native:cloudngfw/v20250206preview:PostRule"),
+		},
+		{
 			Type: pulumi.String("azure-native:cloudngfw:PostRule"),
 		},
 	})

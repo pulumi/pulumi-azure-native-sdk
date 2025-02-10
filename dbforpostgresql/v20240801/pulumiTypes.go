@@ -3979,6 +3979,8 @@ func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 
 // Information describing the identities associated with this application.
 type UserAssignedIdentity struct {
+	// the identity principal Id of the server.
+	PrincipalId *string `pulumi:"principalId"`
 	// the types of identities associated with this resource; currently restricted to 'None and UserAssigned'
 	Type string `pulumi:"type"`
 	// represents user assigned identities map.
@@ -3998,6 +4000,8 @@ type UserAssignedIdentityInput interface {
 
 // Information describing the identities associated with this application.
 type UserAssignedIdentityArgs struct {
+	// the identity principal Id of the server.
+	PrincipalId pulumi.StringPtrInput `pulumi:"principalId"`
 	// the types of identities associated with this resource; currently restricted to 'None and UserAssigned'
 	Type pulumi.StringInput `pulumi:"type"`
 	// represents user assigned identities map.
@@ -4082,6 +4086,11 @@ func (o UserAssignedIdentityOutput) ToUserAssignedIdentityPtrOutputWithContext(c
 	}).(UserAssignedIdentityPtrOutput)
 }
 
+// the identity principal Id of the server.
+func (o UserAssignedIdentityOutput) PrincipalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserAssignedIdentity) *string { return v.PrincipalId }).(pulumi.StringPtrOutput)
+}
+
 // the types of identities associated with this resource; currently restricted to 'None and UserAssigned'
 func (o UserAssignedIdentityOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v UserAssignedIdentity) string { return v.Type }).(pulumi.StringOutput)
@@ -4116,6 +4125,16 @@ func (o UserAssignedIdentityPtrOutput) Elem() UserAssignedIdentityOutput {
 	}).(UserAssignedIdentityOutput)
 }
 
+// the identity principal Id of the server.
+func (o UserAssignedIdentityPtrOutput) PrincipalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserAssignedIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrincipalId
+	}).(pulumi.StringPtrOutput)
+}
+
 // the types of identities associated with this resource; currently restricted to 'None and UserAssigned'
 func (o UserAssignedIdentityPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UserAssignedIdentity) *string {
@@ -4138,6 +4157,8 @@ func (o UserAssignedIdentityPtrOutput) UserAssignedIdentities() UserIdentityMapO
 
 // Information describing the identities associated with this application.
 type UserAssignedIdentityResponse struct {
+	// the identity principal Id of the server.
+	PrincipalId *string `pulumi:"principalId"`
 	// Tenant id of the server.
 	TenantId string `pulumi:"tenantId"`
 	// the types of identities associated with this resource; currently restricted to 'None and UserAssigned'
@@ -4159,6 +4180,11 @@ func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutput
 
 func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutputWithContext(ctx context.Context) UserAssignedIdentityResponseOutput {
 	return o
+}
+
+// the identity principal Id of the server.
+func (o UserAssignedIdentityResponseOutput) PrincipalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserAssignedIdentityResponse) *string { return v.PrincipalId }).(pulumi.StringPtrOutput)
 }
 
 // Tenant id of the server.
@@ -4198,6 +4224,16 @@ func (o UserAssignedIdentityResponsePtrOutput) Elem() UserAssignedIdentityRespon
 		var ret UserAssignedIdentityResponse
 		return ret
 	}).(UserAssignedIdentityResponseOutput)
+}
+
+// the identity principal Id of the server.
+func (o UserAssignedIdentityResponsePtrOutput) PrincipalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserAssignedIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrincipalId
+	}).(pulumi.StringPtrOutput)
 }
 
 // Tenant id of the server.

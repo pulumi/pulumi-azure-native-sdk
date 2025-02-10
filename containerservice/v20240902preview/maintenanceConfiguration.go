@@ -240,6 +240,9 @@ func NewMaintenanceConfiguration(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:containerservice/v20240901:MaintenanceConfiguration"),
 		},
 		{
+			Type: pulumi.String("azure-native:containerservice/v20241001:MaintenanceConfiguration"),
+		},
+		{
 			Type: pulumi.String("azure-native:containerservice:MaintenanceConfiguration"),
 		},
 	})

@@ -105,6 +105,9 @@ func NewManagedClusterService(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:servicefabric/v20240601preview:ManagedClusterService"),
 		},
 		{
+			Type: pulumi.String("azure-native:servicefabric/v20241101preview:ManagedClusterService"),
+		},
+		{
 			Type: pulumi.String("azure-native:servicefabric:ManagedClusterService"),
 		},
 	})

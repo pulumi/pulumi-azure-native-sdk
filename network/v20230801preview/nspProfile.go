@@ -51,6 +51,9 @@ func NewNspProfile(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:network/v20230701preview:NspProfile"),
 		},
 		{
+			Type: pulumi.String("azure-native:network/v20240601preview:NspProfile"),
+		},
+		{
 			Type: pulumi.String("azure-native:network:NspProfile"),
 		},
 	})
