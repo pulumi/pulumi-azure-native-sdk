@@ -250,6 +250,9 @@ func NewPrivateEndpointConnection(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:containerservice/v20240902preview:PrivateEndpointConnection"),
 		},
 		{
+			Type: pulumi.String("azure-native:containerservice/v20241001:PrivateEndpointConnection"),
+		},
+		{
 			Type: pulumi.String("azure-native:containerservice:PrivateEndpointConnection"),
 		},
 	})

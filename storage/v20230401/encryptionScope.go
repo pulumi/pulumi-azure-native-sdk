@@ -85,6 +85,9 @@ func NewEncryptionScope(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:storage/v20230501:EncryptionScope"),
 		},
 		{
+			Type: pulumi.String("azure-native:storage/v20240101:EncryptionScope"),
+		},
+		{
 			Type: pulumi.String("azure-native:storage:EncryptionScope"),
 		},
 	})

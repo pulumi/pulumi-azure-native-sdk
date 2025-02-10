@@ -79,6 +79,9 @@ func NewTarget(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:chaos/v20240322preview:Target"),
 		},
 		{
+			Type: pulumi.String("azure-native:chaos/v20250101:Target"),
+		},
+		{
 			Type: pulumi.String("azure-native:chaos:Target"),
 		},
 	})

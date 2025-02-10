@@ -70,6 +70,9 @@ func NewPrefixListLocalRulestack(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:cloudngfw/v20240207preview:PrefixListLocalRulestack"),
 		},
 		{
+			Type: pulumi.String("azure-native:cloudngfw/v20250206preview:PrefixListLocalRulestack"),
+		},
+		{
 			Type: pulumi.String("azure-native:cloudngfw:PrefixListLocalRulestack"),
 		},
 	})

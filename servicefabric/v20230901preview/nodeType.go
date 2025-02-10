@@ -212,6 +212,9 @@ func NewNodeType(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:servicefabric/v20240901preview:NodeType"),
 		},
 		{
+			Type: pulumi.String("azure-native:servicefabric/v20241101preview:NodeType"),
+		},
+		{
 			Type: pulumi.String("azure-native:servicefabric:NodeType"),
 		},
 	})

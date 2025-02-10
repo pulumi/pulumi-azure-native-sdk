@@ -68,6 +68,9 @@ func NewNspAccessRule(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:network/v20230701preview:NspAccessRule"),
 		},
 		{
+			Type: pulumi.String("azure-native:network/v20240601preview:NspAccessRule"),
+		},
+		{
 			Type: pulumi.String("azure-native:network:NspAccessRule"),
 		},
 	})

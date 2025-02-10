@@ -14,7 +14,7 @@ import (
 // PaloAltoNetworks GlobalRulestack
 // Azure REST API version: 2023-09-01.
 //
-// Other available API versions: 2022-08-29, 2022-08-29-preview, 2023-09-01-preview, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview.
+// Other available API versions: 2022-08-29, 2022-08-29-preview, 2023-09-01-preview, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview.
 type GlobalRulestack struct {
 	pulumi.CustomResourceState
 
@@ -76,6 +76,9 @@ func NewGlobalRulestack(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:cloudngfw/v20240207preview:GlobalRulestack"),
+		},
+		{
+			Type: pulumi.String("azure-native:cloudngfw/v20250206preview:GlobalRulestack"),
 		},
 	})
 	opts = append(opts, aliases)

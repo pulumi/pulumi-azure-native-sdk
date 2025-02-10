@@ -57,6 +57,9 @@ func NewNspAssociation(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:network/v20230801preview:NspAssociation"),
 		},
 		{
+			Type: pulumi.String("azure-native:network/v20240601preview:NspAssociation"),
+		},
+		{
 			Type: pulumi.String("azure-native:network:NspAssociation"),
 		},
 	})

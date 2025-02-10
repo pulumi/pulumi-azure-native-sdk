@@ -180,7 +180,189 @@ func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedServiceIdentityTypePtrOutput)
 }
 
+// Provisioning status field
+type ProviderStatus string
+
+const (
+	// The provider is successfully provisioned.
+	ProviderStatusSucceeded = ProviderStatus("Succeeded")
+	// The provider is starting provisioning.
+	ProviderStatusLaunching = ProviderStatus("Launching")
+	// The provider is updating.
+	ProviderStatusUpdating = ProviderStatus("Updating")
+	// The provider is deleting.
+	ProviderStatusDeleting = ProviderStatus("Deleting")
+	// The provider is deleted.
+	ProviderStatusDeleted = ProviderStatus("Deleted")
+	// The provider is failed.
+	ProviderStatusFailed = ProviderStatus("Failed")
+)
+
+func (ProviderStatus) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProviderStatus)(nil)).Elem()
+}
+
+func (e ProviderStatus) ToProviderStatusOutput() ProviderStatusOutput {
+	return pulumi.ToOutput(e).(ProviderStatusOutput)
+}
+
+func (e ProviderStatus) ToProviderStatusOutputWithContext(ctx context.Context) ProviderStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ProviderStatusOutput)
+}
+
+func (e ProviderStatus) ToProviderStatusPtrOutput() ProviderStatusPtrOutput {
+	return e.ToProviderStatusPtrOutputWithContext(context.Background())
+}
+
+func (e ProviderStatus) ToProviderStatusPtrOutputWithContext(ctx context.Context) ProviderStatusPtrOutput {
+	return ProviderStatus(e).ToProviderStatusOutputWithContext(ctx).ToProviderStatusPtrOutputWithContext(ctx)
+}
+
+func (e ProviderStatus) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ProviderStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ProviderStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ProviderStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ProviderStatusOutput struct{ *pulumi.OutputState }
+
+func (ProviderStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProviderStatus)(nil)).Elem()
+}
+
+func (o ProviderStatusOutput) ToProviderStatusOutput() ProviderStatusOutput {
+	return o
+}
+
+func (o ProviderStatusOutput) ToProviderStatusOutputWithContext(ctx context.Context) ProviderStatusOutput {
+	return o
+}
+
+func (o ProviderStatusOutput) ToProviderStatusPtrOutput() ProviderStatusPtrOutput {
+	return o.ToProviderStatusPtrOutputWithContext(context.Background())
+}
+
+func (o ProviderStatusOutput) ToProviderStatusPtrOutputWithContext(ctx context.Context) ProviderStatusPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProviderStatus) *ProviderStatus {
+		return &v
+	}).(ProviderStatusPtrOutput)
+}
+
+func (o ProviderStatusOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ProviderStatusOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ProviderStatus) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ProviderStatusOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ProviderStatusOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ProviderStatus) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ProviderStatusPtrOutput struct{ *pulumi.OutputState }
+
+func (ProviderStatusPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProviderStatus)(nil)).Elem()
+}
+
+func (o ProviderStatusPtrOutput) ToProviderStatusPtrOutput() ProviderStatusPtrOutput {
+	return o
+}
+
+func (o ProviderStatusPtrOutput) ToProviderStatusPtrOutputWithContext(ctx context.Context) ProviderStatusPtrOutput {
+	return o
+}
+
+func (o ProviderStatusPtrOutput) Elem() ProviderStatusOutput {
+	return o.ApplyT(func(v *ProviderStatus) ProviderStatus {
+		if v != nil {
+			return *v
+		}
+		var ret ProviderStatus
+		return ret
+	}).(ProviderStatusOutput)
+}
+
+func (o ProviderStatusPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ProviderStatusPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ProviderStatus) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ProviderStatusInput is an input type that accepts values of the ProviderStatus enum
+// A concrete instance of `ProviderStatusInput` can be one of the following:
+//
+//	ProviderStatusSucceeded
+//	ProviderStatusLaunching
+//	ProviderStatusUpdating
+//	ProviderStatusDeleting
+//	ProviderStatusDeleted
+//	ProviderStatusFailed
+type ProviderStatusInput interface {
+	pulumi.Input
+
+	ToProviderStatusOutput() ProviderStatusOutput
+	ToProviderStatusOutputWithContext(context.Context) ProviderStatusOutput
+}
+
+var providerStatusPtrType = reflect.TypeOf((**ProviderStatus)(nil)).Elem()
+
+type ProviderStatusPtrInput interface {
+	pulumi.Input
+
+	ToProviderStatusPtrOutput() ProviderStatusPtrOutput
+	ToProviderStatusPtrOutputWithContext(context.Context) ProviderStatusPtrOutput
+}
+
+type providerStatusPtr string
+
+func ProviderStatusPtr(v string) ProviderStatusPtrInput {
+	return (*providerStatusPtr)(&v)
+}
+
+func (*providerStatusPtr) ElementType() reflect.Type {
+	return providerStatusPtrType
+}
+
+func (in *providerStatusPtr) ToProviderStatusPtrOutput() ProviderStatusPtrOutput {
+	return pulumi.ToOutput(in).(ProviderStatusPtrOutput)
+}
+
+func (in *providerStatusPtr) ToProviderStatusPtrOutputWithContext(ctx context.Context) ProviderStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ProviderStatusPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ManagedServiceIdentityTypeOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityTypePtrOutput{})
+	pulumi.RegisterOutputType(ProviderStatusOutput{})
+	pulumi.RegisterOutputType(ProviderStatusPtrOutput{})
 }

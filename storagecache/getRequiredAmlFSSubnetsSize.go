@@ -14,7 +14,7 @@ import (
 // Get the number of available IP addresses needed for the AML file system information provided.
 // Azure REST API version: 2023-05-01.
 //
-// Other available API versions: 2023-03-01-preview, 2023-11-01-preview, 2024-03-01.
+// Other available API versions: 2023-03-01-preview, 2023-11-01-preview, 2024-03-01, 2024-07-01.
 func GetRequiredAmlFSSubnetsSize(ctx *pulumi.Context, args *GetRequiredAmlFSSubnetsSizeArgs, opts ...pulumi.InvokeOption) (*GetRequiredAmlFSSubnetsSizeResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetRequiredAmlFSSubnetsSizeResult
