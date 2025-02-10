@@ -372,6 +372,8 @@ type Provider struct {
 	ProviderId *string `pulumi:"providerId"`
 	// The sku associated with pricing information for this provider.
 	ProviderSku *string `pulumi:"providerSku"`
+	// Provisioning status field
+	ProvisioningState *string `pulumi:"provisioningState"`
 	// Id to track resource usage for the provider.
 	ResourceUsageId *string `pulumi:"resourceUsageId"`
 }
@@ -397,6 +399,8 @@ type ProviderArgs struct {
 	ProviderId pulumi.StringPtrInput `pulumi:"providerId"`
 	// The sku associated with pricing information for this provider.
 	ProviderSku pulumi.StringPtrInput `pulumi:"providerSku"`
+	// Provisioning status field
+	ProvisioningState pulumi.StringPtrInput `pulumi:"provisioningState"`
 	// Id to track resource usage for the provider.
 	ResourceUsageId pulumi.StringPtrInput `pulumi:"resourceUsageId"`
 }
@@ -473,6 +477,11 @@ func (o ProviderOutput) ProviderSku() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Provider) *string { return v.ProviderSku }).(pulumi.StringPtrOutput)
 }
 
+// Provisioning status field
+func (o ProviderOutput) ProvisioningState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Provider) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
+}
+
 // Id to track resource usage for the provider.
 func (o ProviderOutput) ResourceUsageId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Provider) *string { return v.ResourceUsageId }).(pulumi.StringPtrOutput)
@@ -509,7 +518,7 @@ type ProviderResponse struct {
 	// The sku associated with pricing information for this provider.
 	ProviderSku *string `pulumi:"providerSku"`
 	// Provisioning status field
-	ProvisioningState string `pulumi:"provisioningState"`
+	ProvisioningState *string `pulumi:"provisioningState"`
 	// Id to track resource usage for the provider.
 	ResourceUsageId *string `pulumi:"resourceUsageId"`
 }
@@ -550,8 +559,8 @@ func (o ProviderResponseOutput) ProviderSku() pulumi.StringPtrOutput {
 }
 
 // Provisioning status field
-func (o ProviderResponseOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v ProviderResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+func (o ProviderResponseOutput) ProvisioningState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderResponse) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
 }
 
 // Id to track resource usage for the provider.

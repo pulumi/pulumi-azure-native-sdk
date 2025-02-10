@@ -72,6 +72,9 @@ func NewGlobalRulestack(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:cloudngfw/v20240119preview:GlobalRulestack"),
 		},
 		{
+			Type: pulumi.String("azure-native:cloudngfw/v20250206preview:GlobalRulestack"),
+		},
+		{
 			Type: pulumi.String("azure-native:cloudngfw:GlobalRulestack"),
 		},
 	})

@@ -102,6 +102,9 @@ func NewBlobServiceProperties(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:storage/v20230401:BlobServiceProperties"),
 		},
 		{
+			Type: pulumi.String("azure-native:storage/v20240101:BlobServiceProperties"),
+		},
+		{
 			Type: pulumi.String("azure-native:storage:BlobServiceProperties"),
 		},
 	})

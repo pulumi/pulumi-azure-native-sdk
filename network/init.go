@@ -151,6 +151,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &NetworkSecurityGroup{}
 	case "azure-native:network:NetworkSecurityPerimeter":
 		r = &NetworkSecurityPerimeter{}
+	case "azure-native:network:NetworkSecurityPerimeterAccessRule":
+		r = &NetworkSecurityPerimeterAccessRule{}
+	case "azure-native:network:NetworkSecurityPerimeterAssociation":
+		r = &NetworkSecurityPerimeterAssociation{}
+	case "azure-native:network:NetworkSecurityPerimeterLink":
+		r = &NetworkSecurityPerimeterLink{}
+	case "azure-native:network:NetworkSecurityPerimeterLoggingConfiguration":
+		r = &NetworkSecurityPerimeterLoggingConfiguration{}
+	case "azure-native:network:NetworkSecurityPerimeterProfile":
+		r = &NetworkSecurityPerimeterProfile{}
 	case "azure-native:network:NetworkVirtualAppliance":
 		r = &NetworkVirtualAppliance{}
 	case "azure-native:network:NetworkVirtualApplianceConnection":

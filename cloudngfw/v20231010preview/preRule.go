@@ -99,6 +99,9 @@ func NewPreRule(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:cloudngfw/v20240207preview:PreRule"),
 		},
 		{
+			Type: pulumi.String("azure-native:cloudngfw/v20250206preview:PreRule"),
+		},
+		{
 			Type: pulumi.String("azure-native:cloudngfw:PreRule"),
 		},
 	})

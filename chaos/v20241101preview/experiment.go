@@ -86,6 +86,9 @@ func NewExperiment(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:chaos/v20240322preview:Experiment"),
 		},
 		{
+			Type: pulumi.String("azure-native:chaos/v20250101:Experiment"),
+		},
+		{
 			Type: pulumi.String("azure-native:chaos:Experiment"),
 		},
 	})

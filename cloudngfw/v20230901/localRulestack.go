@@ -78,6 +78,9 @@ func NewLocalRulestack(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:cloudngfw/v20240207preview:LocalRulestack"),
 		},
 		{
+			Type: pulumi.String("azure-native:cloudngfw/v20250206preview:LocalRulestack"),
+		},
+		{
 			Type: pulumi.String("azure-native:cloudngfw:LocalRulestack"),
 		},
 	})

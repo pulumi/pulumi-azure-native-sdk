@@ -109,6 +109,9 @@ func NewResourceGuard(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:dataprotection/v20240301:ResourceGuard"),
 		},
 		{
+			Type: pulumi.String("azure-native:dataprotection/v20250101:ResourceGuard"),
+		},
+		{
 			Type: pulumi.String("azure-native:dataprotection:ResourceGuard"),
 		},
 	})

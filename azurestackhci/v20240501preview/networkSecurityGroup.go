@@ -62,6 +62,9 @@ func NewNetworkSecurityGroup(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:azurestackhci/v20241001preview:NetworkSecurityGroup"),
 		},
 		{
+			Type: pulumi.String("azure-native:azurestackhci/v20250201preview:NetworkSecurityGroup"),
+		},
+		{
 			Type: pulumi.String("azure-native:azurestackhci:NetworkSecurityGroup"),
 		},
 	})

@@ -97,6 +97,9 @@ func NewGalleryImage(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:azurestackhci/v20241001preview:GalleryImage"),
 		},
 		{
+			Type: pulumi.String("azure-native:azurestackhci/v20250201preview:GalleryImage"),
+		},
+		{
 			Type: pulumi.String("azure-native:azurestackhci:GalleryImage"),
 		},
 	})

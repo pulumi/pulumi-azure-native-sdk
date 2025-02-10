@@ -96,6 +96,9 @@ func NewFirewall(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:cloudngfw/v20240207preview:Firewall"),
 		},
 		{
+			Type: pulumi.String("azure-native:cloudngfw/v20250206preview:Firewall"),
+		},
+		{
 			Type: pulumi.String("azure-native:cloudngfw:Firewall"),
 		},
 	})

@@ -67,6 +67,9 @@ func NewFqdnListGlobalRulestack(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:cloudngfw/v20240207preview:FqdnListGlobalRulestack"),
 		},
 		{
+			Type: pulumi.String("azure-native:cloudngfw/v20250206preview:FqdnListGlobalRulestack"),
+		},
+		{
 			Type: pulumi.String("azure-native:cloudngfw:FqdnListGlobalRulestack"),
 		},
 	})

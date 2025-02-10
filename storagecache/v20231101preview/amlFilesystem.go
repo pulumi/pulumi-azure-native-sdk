@@ -99,6 +99,12 @@ func NewAmlFilesystem(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:storagecache/v20240301:amlFilesystem"),
 		},
 		{
+			Type: pulumi.String("azure-native:storagecache/v20240701:AmlFilesystem"),
+		},
+		{
+			Type: pulumi.String("azure-native:storagecache/v20240701:amlFilesystem"),
+		},
+		{
 			Type: pulumi.String("azure-native:storagecache:AmlFilesystem"),
 		},
 		{

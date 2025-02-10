@@ -84,6 +84,12 @@ func NewImportJob(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:storagecache/v20240301:importJob"),
 		},
 		{
+			Type: pulumi.String("azure-native:storagecache/v20240701:ImportJob"),
+		},
+		{
+			Type: pulumi.String("azure-native:storagecache/v20240701:importJob"),
+		},
+		{
 			Type: pulumi.String("azure-native:storagecache:importJob"),
 		},
 	})

@@ -84,6 +84,9 @@ func NewNetworkInterface(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:azurestackhci/v20240801preview:NetworkInterface"),
 		},
 		{
+			Type: pulumi.String("azure-native:azurestackhci/v20250201preview:NetworkInterface"),
+		},
+		{
 			Type: pulumi.String("azure-native:azurestackhci:NetworkInterface"),
 		},
 	})
