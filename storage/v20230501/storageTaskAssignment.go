@@ -42,6 +42,9 @@ func NewStorageTaskAssignment(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:storage/v20240101:StorageTaskAssignment"),
+		},
+		{
 			Type: pulumi.String("azure-native:storage:StorageTaskAssignment"),
 		},
 	})

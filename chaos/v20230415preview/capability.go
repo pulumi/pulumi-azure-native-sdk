@@ -80,6 +80,9 @@ func NewCapability(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:chaos/v20241101preview:Capability"),
 		},
 		{
+			Type: pulumi.String("azure-native:chaos/v20250101:Capability"),
+		},
+		{
 			Type: pulumi.String("azure-native:chaos:Capability"),
 		},
 	})

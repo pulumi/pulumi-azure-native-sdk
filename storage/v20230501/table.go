@@ -77,6 +77,9 @@ func NewTable(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:storage/v20230401:Table"),
 		},
 		{
+			Type: pulumi.String("azure-native:storage/v20240101:Table"),
+		},
+		{
 			Type: pulumi.String("azure-native:storage:Table"),
 		},
 	})

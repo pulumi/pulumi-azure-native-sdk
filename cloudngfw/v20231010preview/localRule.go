@@ -102,6 +102,9 @@ func NewLocalRule(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:cloudngfw/v20240207preview:LocalRule"),
 		},
 		{
+			Type: pulumi.String("azure-native:cloudngfw/v20250206preview:LocalRule"),
+		},
+		{
 			Type: pulumi.String("azure-native:cloudngfw:LocalRule"),
 		},
 	})

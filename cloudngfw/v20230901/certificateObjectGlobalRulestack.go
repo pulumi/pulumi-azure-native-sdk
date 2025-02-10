@@ -69,6 +69,9 @@ func NewCertificateObjectGlobalRulestack(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:cloudngfw/v20240207preview:CertificateObjectGlobalRulestack"),
 		},
 		{
+			Type: pulumi.String("azure-native:cloudngfw/v20250206preview:CertificateObjectGlobalRulestack"),
+		},
+		{
 			Type: pulumi.String("azure-native:cloudngfw:CertificateObjectGlobalRulestack"),
 		},
 	})

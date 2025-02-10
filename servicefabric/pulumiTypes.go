@@ -2279,6 +2279,253 @@ func (o EndpointRangeDescriptionResponsePtrOutput) StartPort() pulumi.IntPtrOutp
 	}).(pulumi.IntPtrOutput)
 }
 
+// Constraints for Fault Simulation action.
+type FaultSimulationConstraintsResponse struct {
+	// The absolute expiration timestamp (UTC) after which this fault simulation should be stopped if it's still active.
+	ExpirationTime *string `pulumi:"expirationTime"`
+}
+
+// Constraints for Fault Simulation action.
+type FaultSimulationConstraintsResponseOutput struct{ *pulumi.OutputState }
+
+func (FaultSimulationConstraintsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FaultSimulationConstraintsResponse)(nil)).Elem()
+}
+
+func (o FaultSimulationConstraintsResponseOutput) ToFaultSimulationConstraintsResponseOutput() FaultSimulationConstraintsResponseOutput {
+	return o
+}
+
+func (o FaultSimulationConstraintsResponseOutput) ToFaultSimulationConstraintsResponseOutputWithContext(ctx context.Context) FaultSimulationConstraintsResponseOutput {
+	return o
+}
+
+// The absolute expiration timestamp (UTC) after which this fault simulation should be stopped if it's still active.
+func (o FaultSimulationConstraintsResponseOutput) ExpirationTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FaultSimulationConstraintsResponse) *string { return v.ExpirationTime }).(pulumi.StringPtrOutput)
+}
+
+type FaultSimulationConstraintsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (FaultSimulationConstraintsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FaultSimulationConstraintsResponse)(nil)).Elem()
+}
+
+func (o FaultSimulationConstraintsResponsePtrOutput) ToFaultSimulationConstraintsResponsePtrOutput() FaultSimulationConstraintsResponsePtrOutput {
+	return o
+}
+
+func (o FaultSimulationConstraintsResponsePtrOutput) ToFaultSimulationConstraintsResponsePtrOutputWithContext(ctx context.Context) FaultSimulationConstraintsResponsePtrOutput {
+	return o
+}
+
+func (o FaultSimulationConstraintsResponsePtrOutput) Elem() FaultSimulationConstraintsResponseOutput {
+	return o.ApplyT(func(v *FaultSimulationConstraintsResponse) FaultSimulationConstraintsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret FaultSimulationConstraintsResponse
+		return ret
+	}).(FaultSimulationConstraintsResponseOutput)
+}
+
+// The absolute expiration timestamp (UTC) after which this fault simulation should be stopped if it's still active.
+func (o FaultSimulationConstraintsResponsePtrOutput) ExpirationTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FaultSimulationConstraintsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExpirationTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Details for Fault Simulation.
+type FaultSimulationDetailsResponse struct {
+	// unique identifier for the cluster resource.
+	ClusterId *string `pulumi:"clusterId"`
+	// List of node type simulations associated with the cluster fault simulation.
+	NodeTypeFaultSimulation []NodeTypeFaultSimulationResponse `pulumi:"nodeTypeFaultSimulation"`
+	// unique identifier for the operation associated with the fault simulation.
+	OperationId *string `pulumi:"operationId"`
+	// Fault simulation parameters.
+	Parameters *ZoneFaultSimulationParametersResponse `pulumi:"parameters"`
+}
+
+// Details for Fault Simulation.
+type FaultSimulationDetailsResponseOutput struct{ *pulumi.OutputState }
+
+func (FaultSimulationDetailsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FaultSimulationDetailsResponse)(nil)).Elem()
+}
+
+func (o FaultSimulationDetailsResponseOutput) ToFaultSimulationDetailsResponseOutput() FaultSimulationDetailsResponseOutput {
+	return o
+}
+
+func (o FaultSimulationDetailsResponseOutput) ToFaultSimulationDetailsResponseOutputWithContext(ctx context.Context) FaultSimulationDetailsResponseOutput {
+	return o
+}
+
+// unique identifier for the cluster resource.
+func (o FaultSimulationDetailsResponseOutput) ClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FaultSimulationDetailsResponse) *string { return v.ClusterId }).(pulumi.StringPtrOutput)
+}
+
+// List of node type simulations associated with the cluster fault simulation.
+func (o FaultSimulationDetailsResponseOutput) NodeTypeFaultSimulation() NodeTypeFaultSimulationResponseArrayOutput {
+	return o.ApplyT(func(v FaultSimulationDetailsResponse) []NodeTypeFaultSimulationResponse {
+		return v.NodeTypeFaultSimulation
+	}).(NodeTypeFaultSimulationResponseArrayOutput)
+}
+
+// unique identifier for the operation associated with the fault simulation.
+func (o FaultSimulationDetailsResponseOutput) OperationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FaultSimulationDetailsResponse) *string { return v.OperationId }).(pulumi.StringPtrOutput)
+}
+
+// Fault simulation parameters.
+func (o FaultSimulationDetailsResponseOutput) Parameters() ZoneFaultSimulationParametersResponsePtrOutput {
+	return o.ApplyT(func(v FaultSimulationDetailsResponse) *ZoneFaultSimulationParametersResponse { return v.Parameters }).(ZoneFaultSimulationParametersResponsePtrOutput)
+}
+
+type FaultSimulationDetailsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (FaultSimulationDetailsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FaultSimulationDetailsResponse)(nil)).Elem()
+}
+
+func (o FaultSimulationDetailsResponsePtrOutput) ToFaultSimulationDetailsResponsePtrOutput() FaultSimulationDetailsResponsePtrOutput {
+	return o
+}
+
+func (o FaultSimulationDetailsResponsePtrOutput) ToFaultSimulationDetailsResponsePtrOutputWithContext(ctx context.Context) FaultSimulationDetailsResponsePtrOutput {
+	return o
+}
+
+func (o FaultSimulationDetailsResponsePtrOutput) Elem() FaultSimulationDetailsResponseOutput {
+	return o.ApplyT(func(v *FaultSimulationDetailsResponse) FaultSimulationDetailsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret FaultSimulationDetailsResponse
+		return ret
+	}).(FaultSimulationDetailsResponseOutput)
+}
+
+// unique identifier for the cluster resource.
+func (o FaultSimulationDetailsResponsePtrOutput) ClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FaultSimulationDetailsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of node type simulations associated with the cluster fault simulation.
+func (o FaultSimulationDetailsResponsePtrOutput) NodeTypeFaultSimulation() NodeTypeFaultSimulationResponseArrayOutput {
+	return o.ApplyT(func(v *FaultSimulationDetailsResponse) []NodeTypeFaultSimulationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.NodeTypeFaultSimulation
+	}).(NodeTypeFaultSimulationResponseArrayOutput)
+}
+
+// unique identifier for the operation associated with the fault simulation.
+func (o FaultSimulationDetailsResponsePtrOutput) OperationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FaultSimulationDetailsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OperationId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Fault simulation parameters.
+func (o FaultSimulationDetailsResponsePtrOutput) Parameters() ZoneFaultSimulationParametersResponsePtrOutput {
+	return o.ApplyT(func(v *FaultSimulationDetailsResponse) *ZoneFaultSimulationParametersResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Parameters
+	}).(ZoneFaultSimulationParametersResponsePtrOutput)
+}
+
+// Fault simulation object with status.
+type FaultSimulationResponse struct {
+	// Fault simulation details
+	Details *FaultSimulationDetailsResponse `pulumi:"details"`
+	// The end time of the fault simulation.
+	EndTime *string `pulumi:"endTime"`
+	// unique identifier for the fault simulation.
+	SimulationId *string `pulumi:"simulationId"`
+	// The start time of the fault simulation.
+	StartTime *string `pulumi:"startTime"`
+	// Fault simulation status
+	Status *string `pulumi:"status"`
+}
+
+// Fault simulation object with status.
+type FaultSimulationResponseOutput struct{ *pulumi.OutputState }
+
+func (FaultSimulationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FaultSimulationResponse)(nil)).Elem()
+}
+
+func (o FaultSimulationResponseOutput) ToFaultSimulationResponseOutput() FaultSimulationResponseOutput {
+	return o
+}
+
+func (o FaultSimulationResponseOutput) ToFaultSimulationResponseOutputWithContext(ctx context.Context) FaultSimulationResponseOutput {
+	return o
+}
+
+// Fault simulation details
+func (o FaultSimulationResponseOutput) Details() FaultSimulationDetailsResponsePtrOutput {
+	return o.ApplyT(func(v FaultSimulationResponse) *FaultSimulationDetailsResponse { return v.Details }).(FaultSimulationDetailsResponsePtrOutput)
+}
+
+// The end time of the fault simulation.
+func (o FaultSimulationResponseOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FaultSimulationResponse) *string { return v.EndTime }).(pulumi.StringPtrOutput)
+}
+
+// unique identifier for the fault simulation.
+func (o FaultSimulationResponseOutput) SimulationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FaultSimulationResponse) *string { return v.SimulationId }).(pulumi.StringPtrOutput)
+}
+
+// The start time of the fault simulation.
+func (o FaultSimulationResponseOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FaultSimulationResponse) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+}
+
+// Fault simulation status
+func (o FaultSimulationResponseOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FaultSimulationResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type FaultSimulationResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (FaultSimulationResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FaultSimulationResponse)(nil)).Elem()
+}
+
+func (o FaultSimulationResponseArrayOutput) ToFaultSimulationResponseArrayOutput() FaultSimulationResponseArrayOutput {
+	return o
+}
+
+func (o FaultSimulationResponseArrayOutput) ToFaultSimulationResponseArrayOutputWithContext(ctx context.Context) FaultSimulationResponseArrayOutput {
+	return o
+}
+
+func (o FaultSimulationResponseArrayOutput) Index(i pulumi.IntInput) FaultSimulationResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FaultSimulationResponse {
+		return vs[0].([]FaultSimulationResponse)[vs[1].(int)]
+	}).(FaultSimulationResponseOutput)
+}
+
 // Describes the frontend configurations for the node type.
 type FrontendConfiguration struct {
 	// The resource Id of application gateway backend address pool. The format of the resource Id is '/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Network/applicationGateways/<applicationGatewayName>/backendAddressPools/<backendAddressPoolName>'.
@@ -3706,6 +3953,73 @@ func (o NetworkSecurityRuleResponseArrayOutput) Index(i pulumi.IntInput) Network
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworkSecurityRuleResponse {
 		return vs[0].([]NetworkSecurityRuleResponse)[vs[1].(int)]
 	}).(NetworkSecurityRuleResponseOutput)
+}
+
+// Node type fault simulation object with status.
+type NodeTypeFaultSimulationResponse struct {
+	// Node type name.
+	NodeTypeName *string `pulumi:"nodeTypeName"`
+	// Current or latest asynchronous operation identifier on the node type.
+	OperationId *string `pulumi:"operationId"`
+	// Current or latest asynchronous operation status on the node type
+	OperationStatus *string `pulumi:"operationStatus"`
+	// Fault simulation status
+	Status *string `pulumi:"status"`
+}
+
+// Node type fault simulation object with status.
+type NodeTypeFaultSimulationResponseOutput struct{ *pulumi.OutputState }
+
+func (NodeTypeFaultSimulationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeTypeFaultSimulationResponse)(nil)).Elem()
+}
+
+func (o NodeTypeFaultSimulationResponseOutput) ToNodeTypeFaultSimulationResponseOutput() NodeTypeFaultSimulationResponseOutput {
+	return o
+}
+
+func (o NodeTypeFaultSimulationResponseOutput) ToNodeTypeFaultSimulationResponseOutputWithContext(ctx context.Context) NodeTypeFaultSimulationResponseOutput {
+	return o
+}
+
+// Node type name.
+func (o NodeTypeFaultSimulationResponseOutput) NodeTypeName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeTypeFaultSimulationResponse) *string { return v.NodeTypeName }).(pulumi.StringPtrOutput)
+}
+
+// Current or latest asynchronous operation identifier on the node type.
+func (o NodeTypeFaultSimulationResponseOutput) OperationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeTypeFaultSimulationResponse) *string { return v.OperationId }).(pulumi.StringPtrOutput)
+}
+
+// Current or latest asynchronous operation status on the node type
+func (o NodeTypeFaultSimulationResponseOutput) OperationStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeTypeFaultSimulationResponse) *string { return v.OperationStatus }).(pulumi.StringPtrOutput)
+}
+
+// Fault simulation status
+func (o NodeTypeFaultSimulationResponseOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeTypeFaultSimulationResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type NodeTypeFaultSimulationResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (NodeTypeFaultSimulationResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodeTypeFaultSimulationResponse)(nil)).Elem()
+}
+
+func (o NodeTypeFaultSimulationResponseArrayOutput) ToNodeTypeFaultSimulationResponseArrayOutput() NodeTypeFaultSimulationResponseArrayOutput {
+	return o
+}
+
+func (o NodeTypeFaultSimulationResponseArrayOutput) ToNodeTypeFaultSimulationResponseArrayOutputWithContext(ctx context.Context) NodeTypeFaultSimulationResponseArrayOutput {
+	return o
+}
+
+func (o NodeTypeFaultSimulationResponseArrayOutput) Index(i pulumi.IntInput) NodeTypeFaultSimulationResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodeTypeFaultSimulationResponse {
+		return vs[0].([]NodeTypeFaultSimulationResponse)[vs[1].(int)]
+	}).(NodeTypeFaultSimulationResponseOutput)
 }
 
 // Describes a node type sku.
@@ -9997,6 +10311,122 @@ func (o VmssDataDiskResponseArrayOutput) Index(i pulumi.IntInput) VmssDataDiskRe
 	}).(VmssDataDiskResponseOutput)
 }
 
+// Parameters for Zone Fault Simulation action.
+type ZoneFaultSimulationParametersResponse struct {
+	// Constraints for Fault Simulation action.
+	Constraints *FaultSimulationConstraintsResponse `pulumi:"constraints"`
+	// The kind of fault simulation.
+	// Expected value is 'Zone'.
+	FaultKind string `pulumi:"faultKind"`
+	// Force the action to go through without any check on the cluster.
+	Force *bool `pulumi:"force"`
+	// Indicates the zones of the fault simulation.
+	Zones []string `pulumi:"zones"`
+}
+
+// Parameters for Zone Fault Simulation action.
+type ZoneFaultSimulationParametersResponseOutput struct{ *pulumi.OutputState }
+
+func (ZoneFaultSimulationParametersResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneFaultSimulationParametersResponse)(nil)).Elem()
+}
+
+func (o ZoneFaultSimulationParametersResponseOutput) ToZoneFaultSimulationParametersResponseOutput() ZoneFaultSimulationParametersResponseOutput {
+	return o
+}
+
+func (o ZoneFaultSimulationParametersResponseOutput) ToZoneFaultSimulationParametersResponseOutputWithContext(ctx context.Context) ZoneFaultSimulationParametersResponseOutput {
+	return o
+}
+
+// Constraints for Fault Simulation action.
+func (o ZoneFaultSimulationParametersResponseOutput) Constraints() FaultSimulationConstraintsResponsePtrOutput {
+	return o.ApplyT(func(v ZoneFaultSimulationParametersResponse) *FaultSimulationConstraintsResponse {
+		return v.Constraints
+	}).(FaultSimulationConstraintsResponsePtrOutput)
+}
+
+// The kind of fault simulation.
+// Expected value is 'Zone'.
+func (o ZoneFaultSimulationParametersResponseOutput) FaultKind() pulumi.StringOutput {
+	return o.ApplyT(func(v ZoneFaultSimulationParametersResponse) string { return v.FaultKind }).(pulumi.StringOutput)
+}
+
+// Force the action to go through without any check on the cluster.
+func (o ZoneFaultSimulationParametersResponseOutput) Force() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ZoneFaultSimulationParametersResponse) *bool { return v.Force }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates the zones of the fault simulation.
+func (o ZoneFaultSimulationParametersResponseOutput) Zones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ZoneFaultSimulationParametersResponse) []string { return v.Zones }).(pulumi.StringArrayOutput)
+}
+
+type ZoneFaultSimulationParametersResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ZoneFaultSimulationParametersResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZoneFaultSimulationParametersResponse)(nil)).Elem()
+}
+
+func (o ZoneFaultSimulationParametersResponsePtrOutput) ToZoneFaultSimulationParametersResponsePtrOutput() ZoneFaultSimulationParametersResponsePtrOutput {
+	return o
+}
+
+func (o ZoneFaultSimulationParametersResponsePtrOutput) ToZoneFaultSimulationParametersResponsePtrOutputWithContext(ctx context.Context) ZoneFaultSimulationParametersResponsePtrOutput {
+	return o
+}
+
+func (o ZoneFaultSimulationParametersResponsePtrOutput) Elem() ZoneFaultSimulationParametersResponseOutput {
+	return o.ApplyT(func(v *ZoneFaultSimulationParametersResponse) ZoneFaultSimulationParametersResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ZoneFaultSimulationParametersResponse
+		return ret
+	}).(ZoneFaultSimulationParametersResponseOutput)
+}
+
+// Constraints for Fault Simulation action.
+func (o ZoneFaultSimulationParametersResponsePtrOutput) Constraints() FaultSimulationConstraintsResponsePtrOutput {
+	return o.ApplyT(func(v *ZoneFaultSimulationParametersResponse) *FaultSimulationConstraintsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Constraints
+	}).(FaultSimulationConstraintsResponsePtrOutput)
+}
+
+// The kind of fault simulation.
+// Expected value is 'Zone'.
+func (o ZoneFaultSimulationParametersResponsePtrOutput) FaultKind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZoneFaultSimulationParametersResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.FaultKind
+	}).(pulumi.StringPtrOutput)
+}
+
+// Force the action to go through without any check on the cluster.
+func (o ZoneFaultSimulationParametersResponsePtrOutput) Force() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZoneFaultSimulationParametersResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Force
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Indicates the zones of the fault simulation.
+func (o ZoneFaultSimulationParametersResponsePtrOutput) Zones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ZoneFaultSimulationParametersResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Zones
+	}).(pulumi.StringArrayOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AddRemoveIncrementalNamedPartitionScalingMechanismOutput{})
 	pulumi.RegisterOutputType(AddRemoveIncrementalNamedPartitionScalingMechanismResponseOutput{})
@@ -10032,6 +10462,12 @@ func init() {
 	pulumi.RegisterOutputType(EndpointRangeDescriptionPtrOutput{})
 	pulumi.RegisterOutputType(EndpointRangeDescriptionResponseOutput{})
 	pulumi.RegisterOutputType(EndpointRangeDescriptionResponsePtrOutput{})
+	pulumi.RegisterOutputType(FaultSimulationConstraintsResponseOutput{})
+	pulumi.RegisterOutputType(FaultSimulationConstraintsResponsePtrOutput{})
+	pulumi.RegisterOutputType(FaultSimulationDetailsResponseOutput{})
+	pulumi.RegisterOutputType(FaultSimulationDetailsResponsePtrOutput{})
+	pulumi.RegisterOutputType(FaultSimulationResponseOutput{})
+	pulumi.RegisterOutputType(FaultSimulationResponseArrayOutput{})
 	pulumi.RegisterOutputType(FrontendConfigurationOutput{})
 	pulumi.RegisterOutputType(FrontendConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(FrontendConfigurationResponseOutput{})
@@ -10055,6 +10491,8 @@ func init() {
 	pulumi.RegisterOutputType(NetworkSecurityRuleArrayOutput{})
 	pulumi.RegisterOutputType(NetworkSecurityRuleResponseOutput{})
 	pulumi.RegisterOutputType(NetworkSecurityRuleResponseArrayOutput{})
+	pulumi.RegisterOutputType(NodeTypeFaultSimulationResponseOutput{})
+	pulumi.RegisterOutputType(NodeTypeFaultSimulationResponseArrayOutput{})
 	pulumi.RegisterOutputType(NodeTypeSkuOutput{})
 	pulumi.RegisterOutputType(NodeTypeSkuPtrOutput{})
 	pulumi.RegisterOutputType(NodeTypeSkuResponseOutput{})
@@ -10154,4 +10592,6 @@ func init() {
 	pulumi.RegisterOutputType(VmssDataDiskArrayOutput{})
 	pulumi.RegisterOutputType(VmssDataDiskResponseOutput{})
 	pulumi.RegisterOutputType(VmssDataDiskResponseArrayOutput{})
+	pulumi.RegisterOutputType(ZoneFaultSimulationParametersResponseOutput{})
+	pulumi.RegisterOutputType(ZoneFaultSimulationParametersResponsePtrOutput{})
 }

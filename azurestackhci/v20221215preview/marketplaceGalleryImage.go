@@ -85,6 +85,9 @@ func NewMarketplaceGalleryImage(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:azurestackhci/v20241001preview:MarketplaceGalleryImage"),
 		},
 		{
+			Type: pulumi.String("azure-native:azurestackhci/v20250201preview:MarketplaceGalleryImage"),
+		},
+		{
 			Type: pulumi.String("azure-native:azurestackhci:MarketplaceGalleryImage"),
 		},
 	})

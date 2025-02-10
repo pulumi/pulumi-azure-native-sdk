@@ -15,7 +15,7 @@ import (
 // Type of the Storage Target.
 // Azure REST API version: 2023-05-01. Prior API version in Azure Native 1.x: 2021-03-01.
 //
-// Other available API versions: 2021-03-01, 2023-11-01-preview, 2024-03-01.
+// Other available API versions: 2021-03-01, 2023-11-01-preview, 2024-03-01, 2024-07-01.
 type StorageTarget struct {
 	pulumi.CustomResourceState
 
@@ -105,6 +105,9 @@ func NewStorageTarget(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:storagecache/v20240301:StorageTarget"),
+		},
+		{
+			Type: pulumi.String("azure-native:storagecache/v20240701:StorageTarget"),
 		},
 	})
 	opts = append(opts, aliases)
