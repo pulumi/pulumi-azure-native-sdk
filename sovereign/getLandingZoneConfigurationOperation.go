@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Gets the landing zone configuration.
+// Get a landing zone configuration.
 // Azure REST API version: 2025-02-27-preview.
 func LookupLandingZoneConfigurationOperation(ctx *pulumi.Context, args *LookupLandingZoneConfigurationOperationArgs, opts ...pulumi.InvokeOption) (*LookupLandingZoneConfigurationOperationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
@@ -24,7 +24,7 @@ func LookupLandingZoneConfigurationOperation(ctx *pulumi.Context, args *LookupLa
 }
 
 type LookupLandingZoneConfigurationOperationArgs struct {
-	// The parent landing zone account
+	// The landing zone account.
 	LandingZoneAccountName string `pulumi:"landingZoneAccountName"`
 	// The landing zone configuration name
 	LandingZoneConfigurationName string `pulumi:"landingZoneConfigurationName"`
@@ -56,7 +56,7 @@ func LookupLandingZoneConfigurationOperationOutput(ctx *pulumi.Context, args Loo
 }
 
 type LookupLandingZoneConfigurationOperationOutputArgs struct {
-	// The parent landing zone account
+	// The landing zone account.
 	LandingZoneAccountName pulumi.StringInput `pulumi:"landingZoneAccountName"`
 	// The landing zone configuration name
 	LandingZoneConfigurationName pulumi.StringInput `pulumi:"landingZoneConfigurationName"`

@@ -15,7 +15,7 @@ import (
 // EventGrid Domain.
 // Azure REST API version: 2022-06-15. Prior API version in Azure Native 1.x: 2020-06-01.
 //
-// Other available API versions: 2020-04-01-preview, 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview.
+// Other available API versions: 2020-04-01-preview, 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-02-15.
 type Domain struct {
 	pulumi.CustomResourceState
 
@@ -140,6 +140,9 @@ func NewDomain(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:eventgrid/v20241215preview:Domain"),
+		},
+		{
+			Type: pulumi.String("azure-native:eventgrid/v20250215:Domain"),
 		},
 	})
 	opts = append(opts, aliases)

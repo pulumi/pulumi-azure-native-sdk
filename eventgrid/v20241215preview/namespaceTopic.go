@@ -60,6 +60,9 @@ func NewNamespaceTopic(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:eventgrid/v20240601preview:NamespaceTopic"),
 		},
 		{
+			Type: pulumi.String("azure-native:eventgrid/v20250215:NamespaceTopic"),
+		},
+		{
 			Type: pulumi.String("azure-native:eventgrid:NamespaceTopic"),
 		},
 	})

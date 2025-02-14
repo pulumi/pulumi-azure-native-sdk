@@ -14,6 +14,8 @@ import (
 
 // A class representing a SuppressionList resource.
 // Azure REST API version: 2023-06-01-preview.
+//
+// Other available API versions: 2024-09-01-preview.
 type SuppressionList struct {
 	pulumi.CustomResourceState
 
@@ -52,6 +54,9 @@ func NewSuppressionList(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:communication/v20230601preview:SuppressionList"),
+		},
+		{
+			Type: pulumi.String("azure-native:communication/v20240901preview:SuppressionList"),
 		},
 	})
 	opts = append(opts, aliases)

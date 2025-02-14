@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Gets the landing zone registration.
+// Get a landing zone registration.
 // Azure REST API version: 2025-02-27-preview.
 func LookupLandingZoneRegistrationOperation(ctx *pulumi.Context, args *LookupLandingZoneRegistrationOperationArgs, opts ...pulumi.InvokeOption) (*LookupLandingZoneRegistrationOperationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
@@ -24,15 +24,15 @@ func LookupLandingZoneRegistrationOperation(ctx *pulumi.Context, args *LookupLan
 }
 
 type LookupLandingZoneRegistrationOperationArgs struct {
-	// The parent landing zone account
+	// The landing zone account.
 	LandingZoneAccountName string `pulumi:"landingZoneAccountName"`
-	// The name of the Landing Zone Registration resource.
+	// The name of the landing zone registration resource.
 	LandingZoneRegistrationName string `pulumi:"landingZoneRegistrationName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
-// The Landing Zone registration resource type
+// The Landing zone registration resource type.
 type LookupLandingZoneRegistrationOperationResult struct {
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
@@ -56,9 +56,9 @@ func LookupLandingZoneRegistrationOperationOutput(ctx *pulumi.Context, args Look
 }
 
 type LookupLandingZoneRegistrationOperationOutputArgs struct {
-	// The parent landing zone account
+	// The landing zone account.
 	LandingZoneAccountName pulumi.StringInput `pulumi:"landingZoneAccountName"`
-	// The name of the Landing Zone Registration resource.
+	// The name of the landing zone registration resource.
 	LandingZoneRegistrationName pulumi.StringInput `pulumi:"landingZoneRegistrationName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
@@ -68,7 +68,7 @@ func (LookupLandingZoneRegistrationOperationOutputArgs) ElementType() reflect.Ty
 	return reflect.TypeOf((*LookupLandingZoneRegistrationOperationArgs)(nil)).Elem()
 }
 
-// The Landing Zone registration resource type
+// The Landing zone registration resource type.
 type LookupLandingZoneRegistrationOperationResultOutput struct{ *pulumi.OutputState }
 
 func (LookupLandingZoneRegistrationOperationResultOutput) ElementType() reflect.Type {

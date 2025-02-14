@@ -13,9 +13,9 @@ import (
 
 var _ = utilities.GetEnvOrDefault
 
-// The details for the custom resource override.
+// The details for the custom naming convention override for a specific resource type.
 type CustomNamingConvention struct {
-	// The custom formula for the resource type.
+	// The custom naming formula for the resource type.
 	Formula string `pulumi:"formula"`
 	// The type of the resource.
 	ResourceType string `pulumi:"resourceType"`
@@ -32,9 +32,9 @@ type CustomNamingConventionInput interface {
 	ToCustomNamingConventionOutputWithContext(context.Context) CustomNamingConventionOutput
 }
 
-// The details for the custom resource override.
+// The details for the custom naming convention override for a specific resource type.
 type CustomNamingConventionArgs struct {
-	// The custom formula for the resource type.
+	// The custom naming formula for the resource type.
 	Formula pulumi.StringInput `pulumi:"formula"`
 	// The type of the resource.
 	ResourceType pulumi.StringInput `pulumi:"resourceType"`
@@ -77,7 +77,7 @@ func (i CustomNamingConventionArray) ToCustomNamingConventionArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(CustomNamingConventionArrayOutput)
 }
 
-// The details for the custom resource override.
+// The details for the custom naming convention override for a specific resource type.
 type CustomNamingConventionOutput struct{ *pulumi.OutputState }
 
 func (CustomNamingConventionOutput) ElementType() reflect.Type {
@@ -92,7 +92,7 @@ func (o CustomNamingConventionOutput) ToCustomNamingConventionOutputWithContext(
 	return o
 }
 
-// The custom formula for the resource type.
+// The custom naming formula for the resource type.
 func (o CustomNamingConventionOutput) Formula() pulumi.StringOutput {
 	return o.ApplyT(func(v CustomNamingConvention) string { return v.Formula }).(pulumi.StringOutput)
 }
@@ -122,15 +122,15 @@ func (o CustomNamingConventionArrayOutput) Index(i pulumi.IntInput) CustomNaming
 	}).(CustomNamingConventionOutput)
 }
 
-// The details for the custom resource override.
+// The details for the custom naming convention override for a specific resource type.
 type CustomNamingConventionResponse struct {
-	// The custom formula for the resource type.
+	// The custom naming formula for the resource type.
 	Formula string `pulumi:"formula"`
 	// The type of the resource.
 	ResourceType string `pulumi:"resourceType"`
 }
 
-// The details for the custom resource override.
+// The details for the custom naming convention override for a specific resource type.
 type CustomNamingConventionResponseOutput struct{ *pulumi.OutputState }
 
 func (CustomNamingConventionResponseOutput) ElementType() reflect.Type {
@@ -145,7 +145,7 @@ func (o CustomNamingConventionResponseOutput) ToCustomNamingConventionResponseOu
 	return o
 }
 
-// The custom formula for the resource type.
+// The custom naming formula for the resource type.
 func (o CustomNamingConventionResponseOutput) Formula() pulumi.StringOutput {
 	return o.ApplyT(func(v CustomNamingConventionResponse) string { return v.Formula }).(pulumi.StringOutput)
 }
@@ -175,11 +175,11 @@ func (o CustomNamingConventionResponseArrayOutput) Index(i pulumi.IntInput) Cust
 	}).(CustomNamingConventionResponseOutput)
 }
 
-// Decommissioned management group properties.
+// The 'Decommissioned' management group properties.
 type DecommissionedManagementGroupProperties struct {
-	// When set to false, this management group will not be created. The default value is false.
+	// This parameter determines whether the 'Decommissioned' management group will be created. If set to true, the group will be created; if set to false, it will not be created. The default value is false.
 	Create bool `pulumi:"create"`
-	// Array of initiative assignments to be applied to the management group.
+	// Array of policy initiatives applied to the management group.
 	PolicyInitiativesAssignmentProperties []PolicyInitiativeAssignmentProperties `pulumi:"policyInitiativesAssignmentProperties"`
 }
 
@@ -194,11 +194,11 @@ type DecommissionedManagementGroupPropertiesInput interface {
 	ToDecommissionedManagementGroupPropertiesOutputWithContext(context.Context) DecommissionedManagementGroupPropertiesOutput
 }
 
-// Decommissioned management group properties.
+// The 'Decommissioned' management group properties.
 type DecommissionedManagementGroupPropertiesArgs struct {
-	// When set to false, this management group will not be created. The default value is false.
+	// This parameter determines whether the 'Decommissioned' management group will be created. If set to true, the group will be created; if set to false, it will not be created. The default value is false.
 	Create pulumi.BoolInput `pulumi:"create"`
-	// Array of initiative assignments to be applied to the management group.
+	// Array of policy initiatives applied to the management group.
 	PolicyInitiativesAssignmentProperties PolicyInitiativeAssignmentPropertiesArrayInput `pulumi:"policyInitiativesAssignmentProperties"`
 }
 
@@ -255,7 +255,7 @@ func (i *decommissionedManagementGroupPropertiesPtrType) ToDecommissionedManagem
 	return pulumi.ToOutputWithContext(ctx, i).(DecommissionedManagementGroupPropertiesPtrOutput)
 }
 
-// Decommissioned management group properties.
+// The 'Decommissioned' management group properties.
 type DecommissionedManagementGroupPropertiesOutput struct{ *pulumi.OutputState }
 
 func (DecommissionedManagementGroupPropertiesOutput) ElementType() reflect.Type {
@@ -280,12 +280,12 @@ func (o DecommissionedManagementGroupPropertiesOutput) ToDecommissionedManagemen
 	}).(DecommissionedManagementGroupPropertiesPtrOutput)
 }
 
-// When set to false, this management group will not be created. The default value is false.
+// This parameter determines whether the 'Decommissioned' management group will be created. If set to true, the group will be created; if set to false, it will not be created. The default value is false.
 func (o DecommissionedManagementGroupPropertiesOutput) Create() pulumi.BoolOutput {
 	return o.ApplyT(func(v DecommissionedManagementGroupProperties) bool { return v.Create }).(pulumi.BoolOutput)
 }
 
-// Array of initiative assignments to be applied to the management group.
+// Array of policy initiatives applied to the management group.
 func (o DecommissionedManagementGroupPropertiesOutput) PolicyInitiativesAssignmentProperties() PolicyInitiativeAssignmentPropertiesArrayOutput {
 	return o.ApplyT(func(v DecommissionedManagementGroupProperties) []PolicyInitiativeAssignmentProperties {
 		return v.PolicyInitiativesAssignmentProperties
@@ -316,7 +316,7 @@ func (o DecommissionedManagementGroupPropertiesPtrOutput) Elem() DecommissionedM
 	}).(DecommissionedManagementGroupPropertiesOutput)
 }
 
-// When set to false, this management group will not be created. The default value is false.
+// This parameter determines whether the 'Decommissioned' management group will be created. If set to true, the group will be created; if set to false, it will not be created. The default value is false.
 func (o DecommissionedManagementGroupPropertiesPtrOutput) Create() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DecommissionedManagementGroupProperties) *bool {
 		if v == nil {
@@ -326,7 +326,7 @@ func (o DecommissionedManagementGroupPropertiesPtrOutput) Create() pulumi.BoolPt
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Array of initiative assignments to be applied to the management group.
+// Array of policy initiatives applied to the management group.
 func (o DecommissionedManagementGroupPropertiesPtrOutput) PolicyInitiativesAssignmentProperties() PolicyInitiativeAssignmentPropertiesArrayOutput {
 	return o.ApplyT(func(v *DecommissionedManagementGroupProperties) []PolicyInitiativeAssignmentProperties {
 		if v == nil {
@@ -336,15 +336,15 @@ func (o DecommissionedManagementGroupPropertiesPtrOutput) PolicyInitiativesAssig
 	}).(PolicyInitiativeAssignmentPropertiesArrayOutput)
 }
 
-// Decommissioned management group properties.
+// The 'Decommissioned' management group properties.
 type DecommissionedManagementGroupPropertiesResponse struct {
-	// When set to false, this management group will not be created. The default value is false.
+	// This parameter determines whether the 'Decommissioned' management group will be created. If set to true, the group will be created; if set to false, it will not be created. The default value is false.
 	Create bool `pulumi:"create"`
-	// Array of initiative assignments to be applied to the management group.
+	// Array of policy initiatives applied to the management group.
 	PolicyInitiativesAssignmentProperties []PolicyInitiativeAssignmentPropertiesResponse `pulumi:"policyInitiativesAssignmentProperties"`
 }
 
-// Decommissioned management group properties.
+// The 'Decommissioned' management group properties.
 type DecommissionedManagementGroupPropertiesResponseOutput struct{ *pulumi.OutputState }
 
 func (DecommissionedManagementGroupPropertiesResponseOutput) ElementType() reflect.Type {
@@ -359,12 +359,12 @@ func (o DecommissionedManagementGroupPropertiesResponseOutput) ToDecommissionedM
 	return o
 }
 
-// When set to false, this management group will not be created. The default value is false.
+// This parameter determines whether the 'Decommissioned' management group will be created. If set to true, the group will be created; if set to false, it will not be created. The default value is false.
 func (o DecommissionedManagementGroupPropertiesResponseOutput) Create() pulumi.BoolOutput {
 	return o.ApplyT(func(v DecommissionedManagementGroupPropertiesResponse) bool { return v.Create }).(pulumi.BoolOutput)
 }
 
-// Array of initiative assignments to be applied to the management group.
+// Array of policy initiatives applied to the management group.
 func (o DecommissionedManagementGroupPropertiesResponseOutput) PolicyInitiativesAssignmentProperties() PolicyInitiativeAssignmentPropertiesResponseArrayOutput {
 	return o.ApplyT(func(v DecommissionedManagementGroupPropertiesResponse) []PolicyInitiativeAssignmentPropertiesResponse {
 		return v.PolicyInitiativesAssignmentProperties
@@ -395,7 +395,7 @@ func (o DecommissionedManagementGroupPropertiesResponsePtrOutput) Elem() Decommi
 	}).(DecommissionedManagementGroupPropertiesResponseOutput)
 }
 
-// When set to false, this management group will not be created. The default value is false.
+// This parameter determines whether the 'Decommissioned' management group will be created. If set to true, the group will be created; if set to false, it will not be created. The default value is false.
 func (o DecommissionedManagementGroupPropertiesResponsePtrOutput) Create() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DecommissionedManagementGroupPropertiesResponse) *bool {
 		if v == nil {
@@ -405,7 +405,7 @@ func (o DecommissionedManagementGroupPropertiesResponsePtrOutput) Create() pulum
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Array of initiative assignments to be applied to the management group.
+// Array of policy initiatives applied to the management group.
 func (o DecommissionedManagementGroupPropertiesResponsePtrOutput) PolicyInitiativesAssignmentProperties() PolicyInitiativeAssignmentPropertiesResponseArrayOutput {
 	return o.ApplyT(func(v *DecommissionedManagementGroupPropertiesResponse) []PolicyInitiativeAssignmentPropertiesResponse {
 		if v == nil {
@@ -417,7 +417,7 @@ func (o DecommissionedManagementGroupPropertiesResponsePtrOutput) PolicyInitiati
 
 // The properties of landing zone account resource type.
 type LandingZoneAccountResourceProperties struct {
-	// The storage account that will host the generated slz code.
+	// The storage account that will host the generated infrastructure as code (IaC) for a landing zone deployment.
 	StorageAccount string `pulumi:"storageAccount"`
 }
 
@@ -434,7 +434,7 @@ type LandingZoneAccountResourcePropertiesInput interface {
 
 // The properties of landing zone account resource type.
 type LandingZoneAccountResourcePropertiesArgs struct {
-	// The storage account that will host the generated slz code.
+	// The storage account that will host the generated infrastructure as code (IaC) for a landing zone deployment.
 	StorageAccount pulumi.StringInput `pulumi:"storageAccount"`
 }
 
@@ -516,7 +516,7 @@ func (o LandingZoneAccountResourcePropertiesOutput) ToLandingZoneAccountResource
 	}).(LandingZoneAccountResourcePropertiesPtrOutput)
 }
 
-// The storage account that will host the generated slz code.
+// The storage account that will host the generated infrastructure as code (IaC) for a landing zone deployment.
 func (o LandingZoneAccountResourcePropertiesOutput) StorageAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v LandingZoneAccountResourceProperties) string { return v.StorageAccount }).(pulumi.StringOutput)
 }
@@ -545,7 +545,7 @@ func (o LandingZoneAccountResourcePropertiesPtrOutput) Elem() LandingZoneAccount
 	}).(LandingZoneAccountResourcePropertiesOutput)
 }
 
-// The storage account that will host the generated slz code.
+// The storage account that will host the generated infrastructure as code (IaC) for a landing zone deployment.
 func (o LandingZoneAccountResourcePropertiesPtrOutput) StorageAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LandingZoneAccountResourceProperties) *string {
 		if v == nil {
@@ -557,9 +557,9 @@ func (o LandingZoneAccountResourcePropertiesPtrOutput) StorageAccount() pulumi.S
 
 // The properties of landing zone account resource type.
 type LandingZoneAccountResourcePropertiesResponse struct {
-	// The status of a user-initiated, control-plane operation on the landing zone account.
+	// The state that reflects the current stage in the creation, updating, or deletion process of the landing zone account.
 	ProvisioningState string `pulumi:"provisioningState"`
-	// The storage account that will host the generated slz code.
+	// The storage account that will host the generated infrastructure as code (IaC) for a landing zone deployment.
 	StorageAccount string `pulumi:"storageAccount"`
 }
 
@@ -578,69 +578,69 @@ func (o LandingZoneAccountResourcePropertiesResponseOutput) ToLandingZoneAccount
 	return o
 }
 
-// The status of a user-initiated, control-plane operation on the landing zone account.
+// The state that reflects the current stage in the creation, updating, or deletion process of the landing zone account.
 func (o LandingZoneAccountResourcePropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LandingZoneAccountResourcePropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// The storage account that will host the generated slz code.
+// The storage account that will host the generated infrastructure as code (IaC) for a landing zone deployment.
 func (o LandingZoneAccountResourcePropertiesResponseOutput) StorageAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v LandingZoneAccountResourcePropertiesResponse) string { return v.StorageAccount }).(pulumi.StringOutput)
 }
 
 // The properties of landing zone configuration resource type.
 type LandingZoneConfigurationResourceProperties struct {
-	// To deploy the bastion service, choose Yes, otherwise No. Choose UseExisting for existing bastion service.
+	// Parameter used to deploy a Bastion: Select 'Yes' to enable deployment, 'No' to skip it, or 'Existing' to reuse an existing Bastion.
 	AzureBastionCreationOption string `pulumi:"azureBastionCreationOption"`
-	// Azure bastion subnet. IP v4 CIDR block.
+	// The Bastion subnet address. Specify the address using IPv4 CIDR notation.
 	AzureBastionSubnetCidrBlock *string `pulumi:"azureBastionSubnetCidrBlock"`
-	// The customized naming convention for one or more resource types in this landing zone configuration
+	// The custom naming convention applied to specific resource types for this landing zone configuration, which overrides the default naming convention for those resource types. Example - 'customNamingConvention': [{'resourceType': 'azureFirewalls', 'formula': '{DeploymentPrefix}-afwl-{DeploymentSuffix}'}]
 	CustomNamingConvention []CustomNamingConvention `pulumi:"customNamingConvention"`
-	// To deploy ddos, choose Yes, otherwise No. Select Existing to provide an existing ddos protection plan.
+	// Parameter used to deploy a DDoS protection plan: Select 'Yes' to enable deployment, 'No' to skip it, or 'Existing' to reuse an existing DDoS protection plan.
 	DdosProtectionCreationOption string `pulumi:"ddosProtectionCreationOption"`
-	// This will be applied to the decommissioned management group.
+	// The assigned policies of the 'Decommissioned' management group and indicator to create it or not.
 	DecommissionedMgMetadata *DecommissionedManagementGroupProperties `pulumi:"decommissionedMgMetadata"`
-	// The resource id of azure bastion.
+	// The resource ID of the Bastion when reusing an existing one.
 	ExistingAzureBastionId *string `pulumi:"existingAzureBastionId"`
-	// The resource id of the ddos protection plan.
+	// The resource ID of the DDoS protection plan when reusing an existing one.
 	ExistingDdosProtectionId *string `pulumi:"existingDdosProtectionId"`
-	// The resource id of the log analytics workspace that was created to centralize log ingestion.
+	// The resource ID of the log analytics workspace when reusing an existing one.
 	ExistingLogAnalyticsWorkspaceId *string `pulumi:"existingLogAnalyticsWorkspaceId"`
-	// To deploy firewall, choose the Standard/Premium based on the desired SKU. Choose None for no firewall and UseExisting for a pre existing one.
+	// Parameter used for deploying a Firewall: Select 'No' to skip deployment, 'Standard' to deploy the Standard SKU, or 'Premium' to deploy the Premium SKU.
 	FirewallCreationOption string `pulumi:"firewallCreationOption"`
-	// Azure firewall subnet. IPv4 CIDR block.
+	// The Firewall subnet address used for deploying a firewall. Specify the Firewall subnet using IPv4 CIDR notation.
 	FirewallSubnetCidrBlock *string `pulumi:"firewallSubnetCidrBlock"`
-	// Gateway subnet. IPv4 CIDR block.
+	// The gateway subnet address used for deploying a virtual network. Specify the subnet using IPv4 CIDR notation.
 	GatewaySubnetCidrBlock string `pulumi:"gatewaySubnetCidrBlock"`
-	// The address space for the VNET. IPv4 CIDR block.
+	// The Virtual Network address. Specify the address using IPv4 CIDR notation.
 	HubNetworkCidrBlock string `pulumi:"hubNetworkCidrBlock"`
-	// Landing zone children management group properties
+	// The child management groups of 'Landing Zones' management group and their assigned policies.
 	LandingZonesMgChildren []LandingZoneManagementGroupProperties `pulumi:"landingZonesMgChildren"`
-	// This will be applied to the landing zone management groups.
+	// The assigned policies of the 'Landing Zones' management group.
 	LandingZonesMgMetadata *ManagementGroupProperties `pulumi:"landingZonesMgMetadata"`
-	// To deploy log analytics workspace, choose Yes, otherwise No. Select UseExisting to provide an existing log analytics workspace.
+	// Parameter used to deploy a log analytics workspace: Select 'Yes' to enable deployment, 'No' to skip it, or 'Existing' to reuse an existing log analytics workspace.
 	LogAnalyticsWorkspaceCreationOption string `pulumi:"logAnalyticsWorkspaceCreationOption"`
-	// Set how long logs are retained for, in days. Minimum length is 30 and maximum is 730
+	// Parameter to define the retention period for logs, in days. The minimum duration is 30 days and the maximum is 730 days.
 	LogRetentionInDays float64 `pulumi:"logRetentionInDays"`
-	// The managed identity to be tied to this landing zone configuration
+	// The managed identity to be assigned to this landing zone configuration.
 	ManagedIdentity ManagedIdentityProperties `pulumi:"managedIdentity"`
-	// The naming convention that's used by default for all resource types for this landing zone configuration
+	// The default naming convention applied to all resources for this landing zone configuration. Example - {DeploymentPrefix}-Contoso-{ResourceTypeAbbreviation}{DeploymentSuffix}-{Environment}-testing
 	NamingConventionFormula *string `pulumi:"namingConventionFormula"`
-	// This will be applied to the connectivity management group under platform.
+	// The assigned policies of the 'Connectivity' management group under 'Platform' management group.
 	PlatformConnectivityMgMetadata *ManagementGroupProperties `pulumi:"platformConnectivityMgMetadata"`
-	// This will be applied to the identity management group under platform.
+	// The assigned policies of the 'Identity' management group under 'Platform' management group.
 	PlatformIdentityMgMetadata *ManagementGroupProperties `pulumi:"platformIdentityMgMetadata"`
-	// This will be applied to the management management group under platform.
+	// The assigned policies of the 'Management' management group under 'Platform' management group.
 	PlatformManagementMgMetadata *ManagementGroupProperties `pulumi:"platformManagementMgMetadata"`
-	// Platform children management group properties.
+	// The names of the 'Platform' child management groups and their assigned policies, excluding the default ones: 'Connectivity', 'Identity', and 'Management'
 	PlatformMgChildren []PlatformManagementGroupProperties `pulumi:"platformMgChildren"`
-	// This will be applied to the platform management group.
+	// The assigned policies of the 'Platform' management group.
 	PlatformMgMetadata *ManagementGroupProperties `pulumi:"platformMgMetadata"`
-	// This will be applied to the sandbox management group.
+	// The assigned policies of the 'Sandbox' management group and indicator to create it or not.
 	SandboxMgMetadata *SandboxManagementGroupProperties `pulumi:"sandboxMgMetadata"`
-	// Array of tag objects in format of {'name':'a tag name', 'value':'a tag value'}.
+	// Tags are key-value pairs that can be assigned to a resource to organize and manage it more effectively. Example: {'name': 'a tag name', 'value': 'a tag value'}
 	Tags []Tags `pulumi:"tags"`
-	// This will be applied to the root of the landing zone deployment.
+	// The assigned policies of the parent management group.
 	TopLevelMgMetadata *ManagementGroupProperties `pulumi:"topLevelMgMetadata"`
 }
 
@@ -657,57 +657,57 @@ type LandingZoneConfigurationResourcePropertiesInput interface {
 
 // The properties of landing zone configuration resource type.
 type LandingZoneConfigurationResourcePropertiesArgs struct {
-	// To deploy the bastion service, choose Yes, otherwise No. Choose UseExisting for existing bastion service.
+	// Parameter used to deploy a Bastion: Select 'Yes' to enable deployment, 'No' to skip it, or 'Existing' to reuse an existing Bastion.
 	AzureBastionCreationOption pulumi.StringInput `pulumi:"azureBastionCreationOption"`
-	// Azure bastion subnet. IP v4 CIDR block.
+	// The Bastion subnet address. Specify the address using IPv4 CIDR notation.
 	AzureBastionSubnetCidrBlock pulumi.StringPtrInput `pulumi:"azureBastionSubnetCidrBlock"`
-	// The customized naming convention for one or more resource types in this landing zone configuration
+	// The custom naming convention applied to specific resource types for this landing zone configuration, which overrides the default naming convention for those resource types. Example - 'customNamingConvention': [{'resourceType': 'azureFirewalls', 'formula': '{DeploymentPrefix}-afwl-{DeploymentSuffix}'}]
 	CustomNamingConvention CustomNamingConventionArrayInput `pulumi:"customNamingConvention"`
-	// To deploy ddos, choose Yes, otherwise No. Select Existing to provide an existing ddos protection plan.
+	// Parameter used to deploy a DDoS protection plan: Select 'Yes' to enable deployment, 'No' to skip it, or 'Existing' to reuse an existing DDoS protection plan.
 	DdosProtectionCreationOption pulumi.StringInput `pulumi:"ddosProtectionCreationOption"`
-	// This will be applied to the decommissioned management group.
+	// The assigned policies of the 'Decommissioned' management group and indicator to create it or not.
 	DecommissionedMgMetadata DecommissionedManagementGroupPropertiesPtrInput `pulumi:"decommissionedMgMetadata"`
-	// The resource id of azure bastion.
+	// The resource ID of the Bastion when reusing an existing one.
 	ExistingAzureBastionId pulumi.StringPtrInput `pulumi:"existingAzureBastionId"`
-	// The resource id of the ddos protection plan.
+	// The resource ID of the DDoS protection plan when reusing an existing one.
 	ExistingDdosProtectionId pulumi.StringPtrInput `pulumi:"existingDdosProtectionId"`
-	// The resource id of the log analytics workspace that was created to centralize log ingestion.
+	// The resource ID of the log analytics workspace when reusing an existing one.
 	ExistingLogAnalyticsWorkspaceId pulumi.StringPtrInput `pulumi:"existingLogAnalyticsWorkspaceId"`
-	// To deploy firewall, choose the Standard/Premium based on the desired SKU. Choose None for no firewall and UseExisting for a pre existing one.
+	// Parameter used for deploying a Firewall: Select 'No' to skip deployment, 'Standard' to deploy the Standard SKU, or 'Premium' to deploy the Premium SKU.
 	FirewallCreationOption pulumi.StringInput `pulumi:"firewallCreationOption"`
-	// Azure firewall subnet. IPv4 CIDR block.
+	// The Firewall subnet address used for deploying a firewall. Specify the Firewall subnet using IPv4 CIDR notation.
 	FirewallSubnetCidrBlock pulumi.StringPtrInput `pulumi:"firewallSubnetCidrBlock"`
-	// Gateway subnet. IPv4 CIDR block.
+	// The gateway subnet address used for deploying a virtual network. Specify the subnet using IPv4 CIDR notation.
 	GatewaySubnetCidrBlock pulumi.StringInput `pulumi:"gatewaySubnetCidrBlock"`
-	// The address space for the VNET. IPv4 CIDR block.
+	// The Virtual Network address. Specify the address using IPv4 CIDR notation.
 	HubNetworkCidrBlock pulumi.StringInput `pulumi:"hubNetworkCidrBlock"`
-	// Landing zone children management group properties
+	// The child management groups of 'Landing Zones' management group and their assigned policies.
 	LandingZonesMgChildren LandingZoneManagementGroupPropertiesArrayInput `pulumi:"landingZonesMgChildren"`
-	// This will be applied to the landing zone management groups.
+	// The assigned policies of the 'Landing Zones' management group.
 	LandingZonesMgMetadata ManagementGroupPropertiesPtrInput `pulumi:"landingZonesMgMetadata"`
-	// To deploy log analytics workspace, choose Yes, otherwise No. Select UseExisting to provide an existing log analytics workspace.
+	// Parameter used to deploy a log analytics workspace: Select 'Yes' to enable deployment, 'No' to skip it, or 'Existing' to reuse an existing log analytics workspace.
 	LogAnalyticsWorkspaceCreationOption pulumi.StringInput `pulumi:"logAnalyticsWorkspaceCreationOption"`
-	// Set how long logs are retained for, in days. Minimum length is 30 and maximum is 730
+	// Parameter to define the retention period for logs, in days. The minimum duration is 30 days and the maximum is 730 days.
 	LogRetentionInDays pulumi.Float64Input `pulumi:"logRetentionInDays"`
-	// The managed identity to be tied to this landing zone configuration
+	// The managed identity to be assigned to this landing zone configuration.
 	ManagedIdentity ManagedIdentityPropertiesInput `pulumi:"managedIdentity"`
-	// The naming convention that's used by default for all resource types for this landing zone configuration
+	// The default naming convention applied to all resources for this landing zone configuration. Example - {DeploymentPrefix}-Contoso-{ResourceTypeAbbreviation}{DeploymentSuffix}-{Environment}-testing
 	NamingConventionFormula pulumi.StringPtrInput `pulumi:"namingConventionFormula"`
-	// This will be applied to the connectivity management group under platform.
+	// The assigned policies of the 'Connectivity' management group under 'Platform' management group.
 	PlatformConnectivityMgMetadata ManagementGroupPropertiesPtrInput `pulumi:"platformConnectivityMgMetadata"`
-	// This will be applied to the identity management group under platform.
+	// The assigned policies of the 'Identity' management group under 'Platform' management group.
 	PlatformIdentityMgMetadata ManagementGroupPropertiesPtrInput `pulumi:"platformIdentityMgMetadata"`
-	// This will be applied to the management management group under platform.
+	// The assigned policies of the 'Management' management group under 'Platform' management group.
 	PlatformManagementMgMetadata ManagementGroupPropertiesPtrInput `pulumi:"platformManagementMgMetadata"`
-	// Platform children management group properties.
+	// The names of the 'Platform' child management groups and their assigned policies, excluding the default ones: 'Connectivity', 'Identity', and 'Management'
 	PlatformMgChildren PlatformManagementGroupPropertiesArrayInput `pulumi:"platformMgChildren"`
-	// This will be applied to the platform management group.
+	// The assigned policies of the 'Platform' management group.
 	PlatformMgMetadata ManagementGroupPropertiesPtrInput `pulumi:"platformMgMetadata"`
-	// This will be applied to the sandbox management group.
+	// The assigned policies of the 'Sandbox' management group and indicator to create it or not.
 	SandboxMgMetadata SandboxManagementGroupPropertiesPtrInput `pulumi:"sandboxMgMetadata"`
-	// Array of tag objects in format of {'name':'a tag name', 'value':'a tag value'}.
+	// Tags are key-value pairs that can be assigned to a resource to organize and manage it more effectively. Example: {'name': 'a tag name', 'value': 'a tag value'}
 	Tags TagsArrayInput `pulumi:"tags"`
-	// This will be applied to the root of the landing zone deployment.
+	// The assigned policies of the parent management group.
 	TopLevelMgMetadata ManagementGroupPropertiesPtrInput `pulumi:"topLevelMgMetadata"`
 }
 
@@ -789,154 +789,154 @@ func (o LandingZoneConfigurationResourcePropertiesOutput) ToLandingZoneConfigura
 	}).(LandingZoneConfigurationResourcePropertiesPtrOutput)
 }
 
-// To deploy the bastion service, choose Yes, otherwise No. Choose UseExisting for existing bastion service.
+// Parameter used to deploy a Bastion: Select 'Yes' to enable deployment, 'No' to skip it, or 'Existing' to reuse an existing Bastion.
 func (o LandingZoneConfigurationResourcePropertiesOutput) AzureBastionCreationOption() pulumi.StringOutput {
 	return o.ApplyT(func(v LandingZoneConfigurationResourceProperties) string { return v.AzureBastionCreationOption }).(pulumi.StringOutput)
 }
 
-// Azure bastion subnet. IP v4 CIDR block.
+// The Bastion subnet address. Specify the address using IPv4 CIDR notation.
 func (o LandingZoneConfigurationResourcePropertiesOutput) AzureBastionSubnetCidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LandingZoneConfigurationResourceProperties) *string { return v.AzureBastionSubnetCidrBlock }).(pulumi.StringPtrOutput)
 }
 
-// The customized naming convention for one or more resource types in this landing zone configuration
+// The custom naming convention applied to specific resource types for this landing zone configuration, which overrides the default naming convention for those resource types. Example - 'customNamingConvention': [{'resourceType': 'azureFirewalls', 'formula': '{DeploymentPrefix}-afwl-{DeploymentSuffix}'}]
 func (o LandingZoneConfigurationResourcePropertiesOutput) CustomNamingConvention() CustomNamingConventionArrayOutput {
 	return o.ApplyT(func(v LandingZoneConfigurationResourceProperties) []CustomNamingConvention {
 		return v.CustomNamingConvention
 	}).(CustomNamingConventionArrayOutput)
 }
 
-// To deploy ddos, choose Yes, otherwise No. Select Existing to provide an existing ddos protection plan.
+// Parameter used to deploy a DDoS protection plan: Select 'Yes' to enable deployment, 'No' to skip it, or 'Existing' to reuse an existing DDoS protection plan.
 func (o LandingZoneConfigurationResourcePropertiesOutput) DdosProtectionCreationOption() pulumi.StringOutput {
 	return o.ApplyT(func(v LandingZoneConfigurationResourceProperties) string { return v.DdosProtectionCreationOption }).(pulumi.StringOutput)
 }
 
-// This will be applied to the decommissioned management group.
+// The assigned policies of the 'Decommissioned' management group and indicator to create it or not.
 func (o LandingZoneConfigurationResourcePropertiesOutput) DecommissionedMgMetadata() DecommissionedManagementGroupPropertiesPtrOutput {
 	return o.ApplyT(func(v LandingZoneConfigurationResourceProperties) *DecommissionedManagementGroupProperties {
 		return v.DecommissionedMgMetadata
 	}).(DecommissionedManagementGroupPropertiesPtrOutput)
 }
 
-// The resource id of azure bastion.
+// The resource ID of the Bastion when reusing an existing one.
 func (o LandingZoneConfigurationResourcePropertiesOutput) ExistingAzureBastionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LandingZoneConfigurationResourceProperties) *string { return v.ExistingAzureBastionId }).(pulumi.StringPtrOutput)
 }
 
-// The resource id of the ddos protection plan.
+// The resource ID of the DDoS protection plan when reusing an existing one.
 func (o LandingZoneConfigurationResourcePropertiesOutput) ExistingDdosProtectionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LandingZoneConfigurationResourceProperties) *string { return v.ExistingDdosProtectionId }).(pulumi.StringPtrOutput)
 }
 
-// The resource id of the log analytics workspace that was created to centralize log ingestion.
+// The resource ID of the log analytics workspace when reusing an existing one.
 func (o LandingZoneConfigurationResourcePropertiesOutput) ExistingLogAnalyticsWorkspaceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LandingZoneConfigurationResourceProperties) *string { return v.ExistingLogAnalyticsWorkspaceId }).(pulumi.StringPtrOutput)
 }
 
-// To deploy firewall, choose the Standard/Premium based on the desired SKU. Choose None for no firewall and UseExisting for a pre existing one.
+// Parameter used for deploying a Firewall: Select 'No' to skip deployment, 'Standard' to deploy the Standard SKU, or 'Premium' to deploy the Premium SKU.
 func (o LandingZoneConfigurationResourcePropertiesOutput) FirewallCreationOption() pulumi.StringOutput {
 	return o.ApplyT(func(v LandingZoneConfigurationResourceProperties) string { return v.FirewallCreationOption }).(pulumi.StringOutput)
 }
 
-// Azure firewall subnet. IPv4 CIDR block.
+// The Firewall subnet address used for deploying a firewall. Specify the Firewall subnet using IPv4 CIDR notation.
 func (o LandingZoneConfigurationResourcePropertiesOutput) FirewallSubnetCidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LandingZoneConfigurationResourceProperties) *string { return v.FirewallSubnetCidrBlock }).(pulumi.StringPtrOutput)
 }
 
-// Gateway subnet. IPv4 CIDR block.
+// The gateway subnet address used for deploying a virtual network. Specify the subnet using IPv4 CIDR notation.
 func (o LandingZoneConfigurationResourcePropertiesOutput) GatewaySubnetCidrBlock() pulumi.StringOutput {
 	return o.ApplyT(func(v LandingZoneConfigurationResourceProperties) string { return v.GatewaySubnetCidrBlock }).(pulumi.StringOutput)
 }
 
-// The address space for the VNET. IPv4 CIDR block.
+// The Virtual Network address. Specify the address using IPv4 CIDR notation.
 func (o LandingZoneConfigurationResourcePropertiesOutput) HubNetworkCidrBlock() pulumi.StringOutput {
 	return o.ApplyT(func(v LandingZoneConfigurationResourceProperties) string { return v.HubNetworkCidrBlock }).(pulumi.StringOutput)
 }
 
-// Landing zone children management group properties
+// The child management groups of 'Landing Zones' management group and their assigned policies.
 func (o LandingZoneConfigurationResourcePropertiesOutput) LandingZonesMgChildren() LandingZoneManagementGroupPropertiesArrayOutput {
 	return o.ApplyT(func(v LandingZoneConfigurationResourceProperties) []LandingZoneManagementGroupProperties {
 		return v.LandingZonesMgChildren
 	}).(LandingZoneManagementGroupPropertiesArrayOutput)
 }
 
-// This will be applied to the landing zone management groups.
+// The assigned policies of the 'Landing Zones' management group.
 func (o LandingZoneConfigurationResourcePropertiesOutput) LandingZonesMgMetadata() ManagementGroupPropertiesPtrOutput {
 	return o.ApplyT(func(v LandingZoneConfigurationResourceProperties) *ManagementGroupProperties {
 		return v.LandingZonesMgMetadata
 	}).(ManagementGroupPropertiesPtrOutput)
 }
 
-// To deploy log analytics workspace, choose Yes, otherwise No. Select UseExisting to provide an existing log analytics workspace.
+// Parameter used to deploy a log analytics workspace: Select 'Yes' to enable deployment, 'No' to skip it, or 'Existing' to reuse an existing log analytics workspace.
 func (o LandingZoneConfigurationResourcePropertiesOutput) LogAnalyticsWorkspaceCreationOption() pulumi.StringOutput {
 	return o.ApplyT(func(v LandingZoneConfigurationResourceProperties) string {
 		return v.LogAnalyticsWorkspaceCreationOption
 	}).(pulumi.StringOutput)
 }
 
-// Set how long logs are retained for, in days. Minimum length is 30 and maximum is 730
+// Parameter to define the retention period for logs, in days. The minimum duration is 30 days and the maximum is 730 days.
 func (o LandingZoneConfigurationResourcePropertiesOutput) LogRetentionInDays() pulumi.Float64Output {
 	return o.ApplyT(func(v LandingZoneConfigurationResourceProperties) float64 { return v.LogRetentionInDays }).(pulumi.Float64Output)
 }
 
-// The managed identity to be tied to this landing zone configuration
+// The managed identity to be assigned to this landing zone configuration.
 func (o LandingZoneConfigurationResourcePropertiesOutput) ManagedIdentity() ManagedIdentityPropertiesOutput {
 	return o.ApplyT(func(v LandingZoneConfigurationResourceProperties) ManagedIdentityProperties { return v.ManagedIdentity }).(ManagedIdentityPropertiesOutput)
 }
 
-// The naming convention that's used by default for all resource types for this landing zone configuration
+// The default naming convention applied to all resources for this landing zone configuration. Example - {DeploymentPrefix}-Contoso-{ResourceTypeAbbreviation}{DeploymentSuffix}-{Environment}-testing
 func (o LandingZoneConfigurationResourcePropertiesOutput) NamingConventionFormula() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LandingZoneConfigurationResourceProperties) *string { return v.NamingConventionFormula }).(pulumi.StringPtrOutput)
 }
 
-// This will be applied to the connectivity management group under platform.
+// The assigned policies of the 'Connectivity' management group under 'Platform' management group.
 func (o LandingZoneConfigurationResourcePropertiesOutput) PlatformConnectivityMgMetadata() ManagementGroupPropertiesPtrOutput {
 	return o.ApplyT(func(v LandingZoneConfigurationResourceProperties) *ManagementGroupProperties {
 		return v.PlatformConnectivityMgMetadata
 	}).(ManagementGroupPropertiesPtrOutput)
 }
 
-// This will be applied to the identity management group under platform.
+// The assigned policies of the 'Identity' management group under 'Platform' management group.
 func (o LandingZoneConfigurationResourcePropertiesOutput) PlatformIdentityMgMetadata() ManagementGroupPropertiesPtrOutput {
 	return o.ApplyT(func(v LandingZoneConfigurationResourceProperties) *ManagementGroupProperties {
 		return v.PlatformIdentityMgMetadata
 	}).(ManagementGroupPropertiesPtrOutput)
 }
 
-// This will be applied to the management management group under platform.
+// The assigned policies of the 'Management' management group under 'Platform' management group.
 func (o LandingZoneConfigurationResourcePropertiesOutput) PlatformManagementMgMetadata() ManagementGroupPropertiesPtrOutput {
 	return o.ApplyT(func(v LandingZoneConfigurationResourceProperties) *ManagementGroupProperties {
 		return v.PlatformManagementMgMetadata
 	}).(ManagementGroupPropertiesPtrOutput)
 }
 
-// Platform children management group properties.
+// The names of the 'Platform' child management groups and their assigned policies, excluding the default ones: 'Connectivity', 'Identity', and 'Management'
 func (o LandingZoneConfigurationResourcePropertiesOutput) PlatformMgChildren() PlatformManagementGroupPropertiesArrayOutput {
 	return o.ApplyT(func(v LandingZoneConfigurationResourceProperties) []PlatformManagementGroupProperties {
 		return v.PlatformMgChildren
 	}).(PlatformManagementGroupPropertiesArrayOutput)
 }
 
-// This will be applied to the platform management group.
+// The assigned policies of the 'Platform' management group.
 func (o LandingZoneConfigurationResourcePropertiesOutput) PlatformMgMetadata() ManagementGroupPropertiesPtrOutput {
 	return o.ApplyT(func(v LandingZoneConfigurationResourceProperties) *ManagementGroupProperties {
 		return v.PlatformMgMetadata
 	}).(ManagementGroupPropertiesPtrOutput)
 }
 
-// This will be applied to the sandbox management group.
+// The assigned policies of the 'Sandbox' management group and indicator to create it or not.
 func (o LandingZoneConfigurationResourcePropertiesOutput) SandboxMgMetadata() SandboxManagementGroupPropertiesPtrOutput {
 	return o.ApplyT(func(v LandingZoneConfigurationResourceProperties) *SandboxManagementGroupProperties {
 		return v.SandboxMgMetadata
 	}).(SandboxManagementGroupPropertiesPtrOutput)
 }
 
-// Array of tag objects in format of {'name':'a tag name', 'value':'a tag value'}.
+// Tags are key-value pairs that can be assigned to a resource to organize and manage it more effectively. Example: {'name': 'a tag name', 'value': 'a tag value'}
 func (o LandingZoneConfigurationResourcePropertiesOutput) Tags() TagsArrayOutput {
 	return o.ApplyT(func(v LandingZoneConfigurationResourceProperties) []Tags { return v.Tags }).(TagsArrayOutput)
 }
 
-// This will be applied to the root of the landing zone deployment.
+// The assigned policies of the parent management group.
 func (o LandingZoneConfigurationResourcePropertiesOutput) TopLevelMgMetadata() ManagementGroupPropertiesPtrOutput {
 	return o.ApplyT(func(v LandingZoneConfigurationResourceProperties) *ManagementGroupProperties {
 		return v.TopLevelMgMetadata
@@ -967,7 +967,7 @@ func (o LandingZoneConfigurationResourcePropertiesPtrOutput) Elem() LandingZoneC
 	}).(LandingZoneConfigurationResourcePropertiesOutput)
 }
 
-// To deploy the bastion service, choose Yes, otherwise No. Choose UseExisting for existing bastion service.
+// Parameter used to deploy a Bastion: Select 'Yes' to enable deployment, 'No' to skip it, or 'Existing' to reuse an existing Bastion.
 func (o LandingZoneConfigurationResourcePropertiesPtrOutput) AzureBastionCreationOption() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LandingZoneConfigurationResourceProperties) *string {
 		if v == nil {
@@ -977,7 +977,7 @@ func (o LandingZoneConfigurationResourcePropertiesPtrOutput) AzureBastionCreatio
 	}).(pulumi.StringPtrOutput)
 }
 
-// Azure bastion subnet. IP v4 CIDR block.
+// The Bastion subnet address. Specify the address using IPv4 CIDR notation.
 func (o LandingZoneConfigurationResourcePropertiesPtrOutput) AzureBastionSubnetCidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LandingZoneConfigurationResourceProperties) *string {
 		if v == nil {
@@ -987,7 +987,7 @@ func (o LandingZoneConfigurationResourcePropertiesPtrOutput) AzureBastionSubnetC
 	}).(pulumi.StringPtrOutput)
 }
 
-// The customized naming convention for one or more resource types in this landing zone configuration
+// The custom naming convention applied to specific resource types for this landing zone configuration, which overrides the default naming convention for those resource types. Example - 'customNamingConvention': [{'resourceType': 'azureFirewalls', 'formula': '{DeploymentPrefix}-afwl-{DeploymentSuffix}'}]
 func (o LandingZoneConfigurationResourcePropertiesPtrOutput) CustomNamingConvention() CustomNamingConventionArrayOutput {
 	return o.ApplyT(func(v *LandingZoneConfigurationResourceProperties) []CustomNamingConvention {
 		if v == nil {
@@ -997,7 +997,7 @@ func (o LandingZoneConfigurationResourcePropertiesPtrOutput) CustomNamingConvent
 	}).(CustomNamingConventionArrayOutput)
 }
 
-// To deploy ddos, choose Yes, otherwise No. Select Existing to provide an existing ddos protection plan.
+// Parameter used to deploy a DDoS protection plan: Select 'Yes' to enable deployment, 'No' to skip it, or 'Existing' to reuse an existing DDoS protection plan.
 func (o LandingZoneConfigurationResourcePropertiesPtrOutput) DdosProtectionCreationOption() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LandingZoneConfigurationResourceProperties) *string {
 		if v == nil {
@@ -1007,7 +1007,7 @@ func (o LandingZoneConfigurationResourcePropertiesPtrOutput) DdosProtectionCreat
 	}).(pulumi.StringPtrOutput)
 }
 
-// This will be applied to the decommissioned management group.
+// The assigned policies of the 'Decommissioned' management group and indicator to create it or not.
 func (o LandingZoneConfigurationResourcePropertiesPtrOutput) DecommissionedMgMetadata() DecommissionedManagementGroupPropertiesPtrOutput {
 	return o.ApplyT(func(v *LandingZoneConfigurationResourceProperties) *DecommissionedManagementGroupProperties {
 		if v == nil {
@@ -1017,7 +1017,7 @@ func (o LandingZoneConfigurationResourcePropertiesPtrOutput) DecommissionedMgMet
 	}).(DecommissionedManagementGroupPropertiesPtrOutput)
 }
 
-// The resource id of azure bastion.
+// The resource ID of the Bastion when reusing an existing one.
 func (o LandingZoneConfigurationResourcePropertiesPtrOutput) ExistingAzureBastionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LandingZoneConfigurationResourceProperties) *string {
 		if v == nil {
@@ -1027,7 +1027,7 @@ func (o LandingZoneConfigurationResourcePropertiesPtrOutput) ExistingAzureBastio
 	}).(pulumi.StringPtrOutput)
 }
 
-// The resource id of the ddos protection plan.
+// The resource ID of the DDoS protection plan when reusing an existing one.
 func (o LandingZoneConfigurationResourcePropertiesPtrOutput) ExistingDdosProtectionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LandingZoneConfigurationResourceProperties) *string {
 		if v == nil {
@@ -1037,7 +1037,7 @@ func (o LandingZoneConfigurationResourcePropertiesPtrOutput) ExistingDdosProtect
 	}).(pulumi.StringPtrOutput)
 }
 
-// The resource id of the log analytics workspace that was created to centralize log ingestion.
+// The resource ID of the log analytics workspace when reusing an existing one.
 func (o LandingZoneConfigurationResourcePropertiesPtrOutput) ExistingLogAnalyticsWorkspaceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LandingZoneConfigurationResourceProperties) *string {
 		if v == nil {
@@ -1047,7 +1047,7 @@ func (o LandingZoneConfigurationResourcePropertiesPtrOutput) ExistingLogAnalytic
 	}).(pulumi.StringPtrOutput)
 }
 
-// To deploy firewall, choose the Standard/Premium based on the desired SKU. Choose None for no firewall and UseExisting for a pre existing one.
+// Parameter used for deploying a Firewall: Select 'No' to skip deployment, 'Standard' to deploy the Standard SKU, or 'Premium' to deploy the Premium SKU.
 func (o LandingZoneConfigurationResourcePropertiesPtrOutput) FirewallCreationOption() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LandingZoneConfigurationResourceProperties) *string {
 		if v == nil {
@@ -1057,7 +1057,7 @@ func (o LandingZoneConfigurationResourcePropertiesPtrOutput) FirewallCreationOpt
 	}).(pulumi.StringPtrOutput)
 }
 
-// Azure firewall subnet. IPv4 CIDR block.
+// The Firewall subnet address used for deploying a firewall. Specify the Firewall subnet using IPv4 CIDR notation.
 func (o LandingZoneConfigurationResourcePropertiesPtrOutput) FirewallSubnetCidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LandingZoneConfigurationResourceProperties) *string {
 		if v == nil {
@@ -1067,7 +1067,7 @@ func (o LandingZoneConfigurationResourcePropertiesPtrOutput) FirewallSubnetCidrB
 	}).(pulumi.StringPtrOutput)
 }
 
-// Gateway subnet. IPv4 CIDR block.
+// The gateway subnet address used for deploying a virtual network. Specify the subnet using IPv4 CIDR notation.
 func (o LandingZoneConfigurationResourcePropertiesPtrOutput) GatewaySubnetCidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LandingZoneConfigurationResourceProperties) *string {
 		if v == nil {
@@ -1077,7 +1077,7 @@ func (o LandingZoneConfigurationResourcePropertiesPtrOutput) GatewaySubnetCidrBl
 	}).(pulumi.StringPtrOutput)
 }
 
-// The address space for the VNET. IPv4 CIDR block.
+// The Virtual Network address. Specify the address using IPv4 CIDR notation.
 func (o LandingZoneConfigurationResourcePropertiesPtrOutput) HubNetworkCidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LandingZoneConfigurationResourceProperties) *string {
 		if v == nil {
@@ -1087,7 +1087,7 @@ func (o LandingZoneConfigurationResourcePropertiesPtrOutput) HubNetworkCidrBlock
 	}).(pulumi.StringPtrOutput)
 }
 
-// Landing zone children management group properties
+// The child management groups of 'Landing Zones' management group and their assigned policies.
 func (o LandingZoneConfigurationResourcePropertiesPtrOutput) LandingZonesMgChildren() LandingZoneManagementGroupPropertiesArrayOutput {
 	return o.ApplyT(func(v *LandingZoneConfigurationResourceProperties) []LandingZoneManagementGroupProperties {
 		if v == nil {
@@ -1097,7 +1097,7 @@ func (o LandingZoneConfigurationResourcePropertiesPtrOutput) LandingZonesMgChild
 	}).(LandingZoneManagementGroupPropertiesArrayOutput)
 }
 
-// This will be applied to the landing zone management groups.
+// The assigned policies of the 'Landing Zones' management group.
 func (o LandingZoneConfigurationResourcePropertiesPtrOutput) LandingZonesMgMetadata() ManagementGroupPropertiesPtrOutput {
 	return o.ApplyT(func(v *LandingZoneConfigurationResourceProperties) *ManagementGroupProperties {
 		if v == nil {
@@ -1107,7 +1107,7 @@ func (o LandingZoneConfigurationResourcePropertiesPtrOutput) LandingZonesMgMetad
 	}).(ManagementGroupPropertiesPtrOutput)
 }
 
-// To deploy log analytics workspace, choose Yes, otherwise No. Select UseExisting to provide an existing log analytics workspace.
+// Parameter used to deploy a log analytics workspace: Select 'Yes' to enable deployment, 'No' to skip it, or 'Existing' to reuse an existing log analytics workspace.
 func (o LandingZoneConfigurationResourcePropertiesPtrOutput) LogAnalyticsWorkspaceCreationOption() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LandingZoneConfigurationResourceProperties) *string {
 		if v == nil {
@@ -1117,7 +1117,7 @@ func (o LandingZoneConfigurationResourcePropertiesPtrOutput) LogAnalyticsWorkspa
 	}).(pulumi.StringPtrOutput)
 }
 
-// Set how long logs are retained for, in days. Minimum length is 30 and maximum is 730
+// Parameter to define the retention period for logs, in days. The minimum duration is 30 days and the maximum is 730 days.
 func (o LandingZoneConfigurationResourcePropertiesPtrOutput) LogRetentionInDays() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *LandingZoneConfigurationResourceProperties) *float64 {
 		if v == nil {
@@ -1127,7 +1127,7 @@ func (o LandingZoneConfigurationResourcePropertiesPtrOutput) LogRetentionInDays(
 	}).(pulumi.Float64PtrOutput)
 }
 
-// The managed identity to be tied to this landing zone configuration
+// The managed identity to be assigned to this landing zone configuration.
 func (o LandingZoneConfigurationResourcePropertiesPtrOutput) ManagedIdentity() ManagedIdentityPropertiesPtrOutput {
 	return o.ApplyT(func(v *LandingZoneConfigurationResourceProperties) *ManagedIdentityProperties {
 		if v == nil {
@@ -1137,7 +1137,7 @@ func (o LandingZoneConfigurationResourcePropertiesPtrOutput) ManagedIdentity() M
 	}).(ManagedIdentityPropertiesPtrOutput)
 }
 
-// The naming convention that's used by default for all resource types for this landing zone configuration
+// The default naming convention applied to all resources for this landing zone configuration. Example - {DeploymentPrefix}-Contoso-{ResourceTypeAbbreviation}{DeploymentSuffix}-{Environment}-testing
 func (o LandingZoneConfigurationResourcePropertiesPtrOutput) NamingConventionFormula() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LandingZoneConfigurationResourceProperties) *string {
 		if v == nil {
@@ -1147,7 +1147,7 @@ func (o LandingZoneConfigurationResourcePropertiesPtrOutput) NamingConventionFor
 	}).(pulumi.StringPtrOutput)
 }
 
-// This will be applied to the connectivity management group under platform.
+// The assigned policies of the 'Connectivity' management group under 'Platform' management group.
 func (o LandingZoneConfigurationResourcePropertiesPtrOutput) PlatformConnectivityMgMetadata() ManagementGroupPropertiesPtrOutput {
 	return o.ApplyT(func(v *LandingZoneConfigurationResourceProperties) *ManagementGroupProperties {
 		if v == nil {
@@ -1157,7 +1157,7 @@ func (o LandingZoneConfigurationResourcePropertiesPtrOutput) PlatformConnectivit
 	}).(ManagementGroupPropertiesPtrOutput)
 }
 
-// This will be applied to the identity management group under platform.
+// The assigned policies of the 'Identity' management group under 'Platform' management group.
 func (o LandingZoneConfigurationResourcePropertiesPtrOutput) PlatformIdentityMgMetadata() ManagementGroupPropertiesPtrOutput {
 	return o.ApplyT(func(v *LandingZoneConfigurationResourceProperties) *ManagementGroupProperties {
 		if v == nil {
@@ -1167,7 +1167,7 @@ func (o LandingZoneConfigurationResourcePropertiesPtrOutput) PlatformIdentityMgM
 	}).(ManagementGroupPropertiesPtrOutput)
 }
 
-// This will be applied to the management management group under platform.
+// The assigned policies of the 'Management' management group under 'Platform' management group.
 func (o LandingZoneConfigurationResourcePropertiesPtrOutput) PlatformManagementMgMetadata() ManagementGroupPropertiesPtrOutput {
 	return o.ApplyT(func(v *LandingZoneConfigurationResourceProperties) *ManagementGroupProperties {
 		if v == nil {
@@ -1177,7 +1177,7 @@ func (o LandingZoneConfigurationResourcePropertiesPtrOutput) PlatformManagementM
 	}).(ManagementGroupPropertiesPtrOutput)
 }
 
-// Platform children management group properties.
+// The names of the 'Platform' child management groups and their assigned policies, excluding the default ones: 'Connectivity', 'Identity', and 'Management'
 func (o LandingZoneConfigurationResourcePropertiesPtrOutput) PlatformMgChildren() PlatformManagementGroupPropertiesArrayOutput {
 	return o.ApplyT(func(v *LandingZoneConfigurationResourceProperties) []PlatformManagementGroupProperties {
 		if v == nil {
@@ -1187,7 +1187,7 @@ func (o LandingZoneConfigurationResourcePropertiesPtrOutput) PlatformMgChildren(
 	}).(PlatformManagementGroupPropertiesArrayOutput)
 }
 
-// This will be applied to the platform management group.
+// The assigned policies of the 'Platform' management group.
 func (o LandingZoneConfigurationResourcePropertiesPtrOutput) PlatformMgMetadata() ManagementGroupPropertiesPtrOutput {
 	return o.ApplyT(func(v *LandingZoneConfigurationResourceProperties) *ManagementGroupProperties {
 		if v == nil {
@@ -1197,7 +1197,7 @@ func (o LandingZoneConfigurationResourcePropertiesPtrOutput) PlatformMgMetadata(
 	}).(ManagementGroupPropertiesPtrOutput)
 }
 
-// This will be applied to the sandbox management group.
+// The assigned policies of the 'Sandbox' management group and indicator to create it or not.
 func (o LandingZoneConfigurationResourcePropertiesPtrOutput) SandboxMgMetadata() SandboxManagementGroupPropertiesPtrOutput {
 	return o.ApplyT(func(v *LandingZoneConfigurationResourceProperties) *SandboxManagementGroupProperties {
 		if v == nil {
@@ -1207,7 +1207,7 @@ func (o LandingZoneConfigurationResourcePropertiesPtrOutput) SandboxMgMetadata()
 	}).(SandboxManagementGroupPropertiesPtrOutput)
 }
 
-// Array of tag objects in format of {'name':'a tag name', 'value':'a tag value'}.
+// Tags are key-value pairs that can be assigned to a resource to organize and manage it more effectively. Example: {'name': 'a tag name', 'value': 'a tag value'}
 func (o LandingZoneConfigurationResourcePropertiesPtrOutput) Tags() TagsArrayOutput {
 	return o.ApplyT(func(v *LandingZoneConfigurationResourceProperties) []Tags {
 		if v == nil {
@@ -1217,7 +1217,7 @@ func (o LandingZoneConfigurationResourcePropertiesPtrOutput) Tags() TagsArrayOut
 	}).(TagsArrayOutput)
 }
 
-// This will be applied to the root of the landing zone deployment.
+// The assigned policies of the parent management group.
 func (o LandingZoneConfigurationResourcePropertiesPtrOutput) TopLevelMgMetadata() ManagementGroupPropertiesPtrOutput {
 	return o.ApplyT(func(v *LandingZoneConfigurationResourceProperties) *ManagementGroupProperties {
 		if v == nil {
@@ -1229,61 +1229,61 @@ func (o LandingZoneConfigurationResourcePropertiesPtrOutput) TopLevelMgMetadata(
 
 // The properties of landing zone configuration resource type.
 type LandingZoneConfigurationResourcePropertiesResponse struct {
-	// The status for the landing zone configurations workflow.
+	// The status that indicates the current phase of the configuration process for a deployment.
 	AuthoringStatus string `pulumi:"authoringStatus"`
-	// To deploy the bastion service, choose Yes, otherwise No. Choose UseExisting for existing bastion service.
+	// Parameter used to deploy a Bastion: Select 'Yes' to enable deployment, 'No' to skip it, or 'Existing' to reuse an existing Bastion.
 	AzureBastionCreationOption string `pulumi:"azureBastionCreationOption"`
-	// Azure bastion subnet. IP v4 CIDR block.
+	// The Bastion subnet address. Specify the address using IPv4 CIDR notation.
 	AzureBastionSubnetCidrBlock *string `pulumi:"azureBastionSubnetCidrBlock"`
-	// The customized naming convention for one or more resource types in this landing zone configuration
+	// The custom naming convention applied to specific resource types for this landing zone configuration, which overrides the default naming convention for those resource types. Example - 'customNamingConvention': [{'resourceType': 'azureFirewalls', 'formula': '{DeploymentPrefix}-afwl-{DeploymentSuffix}'}]
 	CustomNamingConvention []CustomNamingConventionResponse `pulumi:"customNamingConvention"`
-	// To deploy ddos, choose Yes, otherwise No. Select Existing to provide an existing ddos protection plan.
+	// Parameter used to deploy a DDoS protection plan: Select 'Yes' to enable deployment, 'No' to skip it, or 'Existing' to reuse an existing DDoS protection plan.
 	DdosProtectionCreationOption string `pulumi:"ddosProtectionCreationOption"`
-	// This will be applied to the decommissioned management group.
+	// The assigned policies of the 'Decommissioned' management group and indicator to create it or not.
 	DecommissionedMgMetadata *DecommissionedManagementGroupPropertiesResponse `pulumi:"decommissionedMgMetadata"`
-	// The resource id of azure bastion.
+	// The resource ID of the Bastion when reusing an existing one.
 	ExistingAzureBastionId *string `pulumi:"existingAzureBastionId"`
-	// The resource id of the ddos protection plan.
+	// The resource ID of the DDoS protection plan when reusing an existing one.
 	ExistingDdosProtectionId *string `pulumi:"existingDdosProtectionId"`
-	// The resource id of the log analytics workspace that was created to centralize log ingestion.
+	// The resource ID of the log analytics workspace when reusing an existing one.
 	ExistingLogAnalyticsWorkspaceId *string `pulumi:"existingLogAnalyticsWorkspaceId"`
-	// To deploy firewall, choose the Standard/Premium based on the desired SKU. Choose None for no firewall and UseExisting for a pre existing one.
+	// Parameter used for deploying a Firewall: Select 'No' to skip deployment, 'Standard' to deploy the Standard SKU, or 'Premium' to deploy the Premium SKU.
 	FirewallCreationOption string `pulumi:"firewallCreationOption"`
-	// Azure firewall subnet. IPv4 CIDR block.
+	// The Firewall subnet address used for deploying a firewall. Specify the Firewall subnet using IPv4 CIDR notation.
 	FirewallSubnetCidrBlock *string `pulumi:"firewallSubnetCidrBlock"`
-	// Gateway subnet. IPv4 CIDR block.
+	// The gateway subnet address used for deploying a virtual network. Specify the subnet using IPv4 CIDR notation.
 	GatewaySubnetCidrBlock string `pulumi:"gatewaySubnetCidrBlock"`
-	// The address space for the VNET. IPv4 CIDR block.
+	// The Virtual Network address. Specify the address using IPv4 CIDR notation.
 	HubNetworkCidrBlock string `pulumi:"hubNetworkCidrBlock"`
-	// Landing zone children management group properties
+	// The child management groups of 'Landing Zones' management group and their assigned policies.
 	LandingZonesMgChildren []LandingZoneManagementGroupPropertiesResponse `pulumi:"landingZonesMgChildren"`
-	// This will be applied to the landing zone management groups.
+	// The assigned policies of the 'Landing Zones' management group.
 	LandingZonesMgMetadata *ManagementGroupPropertiesResponse `pulumi:"landingZonesMgMetadata"`
-	// To deploy log analytics workspace, choose Yes, otherwise No. Select UseExisting to provide an existing log analytics workspace.
+	// Parameter used to deploy a log analytics workspace: Select 'Yes' to enable deployment, 'No' to skip it, or 'Existing' to reuse an existing log analytics workspace.
 	LogAnalyticsWorkspaceCreationOption string `pulumi:"logAnalyticsWorkspaceCreationOption"`
-	// Set how long logs are retained for, in days. Minimum length is 30 and maximum is 730
+	// Parameter to define the retention period for logs, in days. The minimum duration is 30 days and the maximum is 730 days.
 	LogRetentionInDays float64 `pulumi:"logRetentionInDays"`
-	// The managed identity to be tied to this landing zone configuration
+	// The managed identity to be assigned to this landing zone configuration.
 	ManagedIdentity ManagedIdentityPropertiesResponse `pulumi:"managedIdentity"`
-	// The naming convention that's used by default for all resource types for this landing zone configuration
+	// The default naming convention applied to all resources for this landing zone configuration. Example - {DeploymentPrefix}-Contoso-{ResourceTypeAbbreviation}{DeploymentSuffix}-{Environment}-testing
 	NamingConventionFormula *string `pulumi:"namingConventionFormula"`
-	// This will be applied to the connectivity management group under platform.
+	// The assigned policies of the 'Connectivity' management group under 'Platform' management group.
 	PlatformConnectivityMgMetadata *ManagementGroupPropertiesResponse `pulumi:"platformConnectivityMgMetadata"`
-	// This will be applied to the identity management group under platform.
+	// The assigned policies of the 'Identity' management group under 'Platform' management group.
 	PlatformIdentityMgMetadata *ManagementGroupPropertiesResponse `pulumi:"platformIdentityMgMetadata"`
-	// This will be applied to the management management group under platform.
+	// The assigned policies of the 'Management' management group under 'Platform' management group.
 	PlatformManagementMgMetadata *ManagementGroupPropertiesResponse `pulumi:"platformManagementMgMetadata"`
-	// Platform children management group properties.
+	// The names of the 'Platform' child management groups and their assigned policies, excluding the default ones: 'Connectivity', 'Identity', and 'Management'
 	PlatformMgChildren []PlatformManagementGroupPropertiesResponse `pulumi:"platformMgChildren"`
-	// This will be applied to the platform management group.
+	// The assigned policies of the 'Platform' management group.
 	PlatformMgMetadata *ManagementGroupPropertiesResponse `pulumi:"platformMgMetadata"`
-	// The status of a user-initiated, control-plane operation on the landing zone configuration.
+	// The state that reflects the current stage in the creation, updating, or deletion process of the landing zone configuration.
 	ProvisioningState string `pulumi:"provisioningState"`
-	// This will be applied to the sandbox management group.
+	// The assigned policies of the 'Sandbox' management group and indicator to create it or not.
 	SandboxMgMetadata *SandboxManagementGroupPropertiesResponse `pulumi:"sandboxMgMetadata"`
-	// Array of tag objects in format of {'name':'a tag name', 'value':'a tag value'}.
+	// Tags are key-value pairs that can be assigned to a resource to organize and manage it more effectively. Example: {'name': 'a tag name', 'value': 'a tag value'}
 	Tags []TagsResponse `pulumi:"tags"`
-	// This will be applied to the root of the landing zone deployment.
+	// The assigned policies of the parent management group.
 	TopLevelMgMetadata *ManagementGroupPropertiesResponse `pulumi:"topLevelMgMetadata"`
 }
 
@@ -1302,183 +1302,183 @@ func (o LandingZoneConfigurationResourcePropertiesResponseOutput) ToLandingZoneC
 	return o
 }
 
-// The status for the landing zone configurations workflow.
+// The status that indicates the current phase of the configuration process for a deployment.
 func (o LandingZoneConfigurationResourcePropertiesResponseOutput) AuthoringStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v LandingZoneConfigurationResourcePropertiesResponse) string { return v.AuthoringStatus }).(pulumi.StringOutput)
 }
 
-// To deploy the bastion service, choose Yes, otherwise No. Choose UseExisting for existing bastion service.
+// Parameter used to deploy a Bastion: Select 'Yes' to enable deployment, 'No' to skip it, or 'Existing' to reuse an existing Bastion.
 func (o LandingZoneConfigurationResourcePropertiesResponseOutput) AzureBastionCreationOption() pulumi.StringOutput {
 	return o.ApplyT(func(v LandingZoneConfigurationResourcePropertiesResponse) string { return v.AzureBastionCreationOption }).(pulumi.StringOutput)
 }
 
-// Azure bastion subnet. IP v4 CIDR block.
+// The Bastion subnet address. Specify the address using IPv4 CIDR notation.
 func (o LandingZoneConfigurationResourcePropertiesResponseOutput) AzureBastionSubnetCidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LandingZoneConfigurationResourcePropertiesResponse) *string {
 		return v.AzureBastionSubnetCidrBlock
 	}).(pulumi.StringPtrOutput)
 }
 
-// The customized naming convention for one or more resource types in this landing zone configuration
+// The custom naming convention applied to specific resource types for this landing zone configuration, which overrides the default naming convention for those resource types. Example - 'customNamingConvention': [{'resourceType': 'azureFirewalls', 'formula': '{DeploymentPrefix}-afwl-{DeploymentSuffix}'}]
 func (o LandingZoneConfigurationResourcePropertiesResponseOutput) CustomNamingConvention() CustomNamingConventionResponseArrayOutput {
 	return o.ApplyT(func(v LandingZoneConfigurationResourcePropertiesResponse) []CustomNamingConventionResponse {
 		return v.CustomNamingConvention
 	}).(CustomNamingConventionResponseArrayOutput)
 }
 
-// To deploy ddos, choose Yes, otherwise No. Select Existing to provide an existing ddos protection plan.
+// Parameter used to deploy a DDoS protection plan: Select 'Yes' to enable deployment, 'No' to skip it, or 'Existing' to reuse an existing DDoS protection plan.
 func (o LandingZoneConfigurationResourcePropertiesResponseOutput) DdosProtectionCreationOption() pulumi.StringOutput {
 	return o.ApplyT(func(v LandingZoneConfigurationResourcePropertiesResponse) string {
 		return v.DdosProtectionCreationOption
 	}).(pulumi.StringOutput)
 }
 
-// This will be applied to the decommissioned management group.
+// The assigned policies of the 'Decommissioned' management group and indicator to create it or not.
 func (o LandingZoneConfigurationResourcePropertiesResponseOutput) DecommissionedMgMetadata() DecommissionedManagementGroupPropertiesResponsePtrOutput {
 	return o.ApplyT(func(v LandingZoneConfigurationResourcePropertiesResponse) *DecommissionedManagementGroupPropertiesResponse {
 		return v.DecommissionedMgMetadata
 	}).(DecommissionedManagementGroupPropertiesResponsePtrOutput)
 }
 
-// The resource id of azure bastion.
+// The resource ID of the Bastion when reusing an existing one.
 func (o LandingZoneConfigurationResourcePropertiesResponseOutput) ExistingAzureBastionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LandingZoneConfigurationResourcePropertiesResponse) *string { return v.ExistingAzureBastionId }).(pulumi.StringPtrOutput)
 }
 
-// The resource id of the ddos protection plan.
+// The resource ID of the DDoS protection plan when reusing an existing one.
 func (o LandingZoneConfigurationResourcePropertiesResponseOutput) ExistingDdosProtectionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LandingZoneConfigurationResourcePropertiesResponse) *string { return v.ExistingDdosProtectionId }).(pulumi.StringPtrOutput)
 }
 
-// The resource id of the log analytics workspace that was created to centralize log ingestion.
+// The resource ID of the log analytics workspace when reusing an existing one.
 func (o LandingZoneConfigurationResourcePropertiesResponseOutput) ExistingLogAnalyticsWorkspaceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LandingZoneConfigurationResourcePropertiesResponse) *string {
 		return v.ExistingLogAnalyticsWorkspaceId
 	}).(pulumi.StringPtrOutput)
 }
 
-// To deploy firewall, choose the Standard/Premium based on the desired SKU. Choose None for no firewall and UseExisting for a pre existing one.
+// Parameter used for deploying a Firewall: Select 'No' to skip deployment, 'Standard' to deploy the Standard SKU, or 'Premium' to deploy the Premium SKU.
 func (o LandingZoneConfigurationResourcePropertiesResponseOutput) FirewallCreationOption() pulumi.StringOutput {
 	return o.ApplyT(func(v LandingZoneConfigurationResourcePropertiesResponse) string { return v.FirewallCreationOption }).(pulumi.StringOutput)
 }
 
-// Azure firewall subnet. IPv4 CIDR block.
+// The Firewall subnet address used for deploying a firewall. Specify the Firewall subnet using IPv4 CIDR notation.
 func (o LandingZoneConfigurationResourcePropertiesResponseOutput) FirewallSubnetCidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LandingZoneConfigurationResourcePropertiesResponse) *string { return v.FirewallSubnetCidrBlock }).(pulumi.StringPtrOutput)
 }
 
-// Gateway subnet. IPv4 CIDR block.
+// The gateway subnet address used for deploying a virtual network. Specify the subnet using IPv4 CIDR notation.
 func (o LandingZoneConfigurationResourcePropertiesResponseOutput) GatewaySubnetCidrBlock() pulumi.StringOutput {
 	return o.ApplyT(func(v LandingZoneConfigurationResourcePropertiesResponse) string { return v.GatewaySubnetCidrBlock }).(pulumi.StringOutput)
 }
 
-// The address space for the VNET. IPv4 CIDR block.
+// The Virtual Network address. Specify the address using IPv4 CIDR notation.
 func (o LandingZoneConfigurationResourcePropertiesResponseOutput) HubNetworkCidrBlock() pulumi.StringOutput {
 	return o.ApplyT(func(v LandingZoneConfigurationResourcePropertiesResponse) string { return v.HubNetworkCidrBlock }).(pulumi.StringOutput)
 }
 
-// Landing zone children management group properties
+// The child management groups of 'Landing Zones' management group and their assigned policies.
 func (o LandingZoneConfigurationResourcePropertiesResponseOutput) LandingZonesMgChildren() LandingZoneManagementGroupPropertiesResponseArrayOutput {
 	return o.ApplyT(func(v LandingZoneConfigurationResourcePropertiesResponse) []LandingZoneManagementGroupPropertiesResponse {
 		return v.LandingZonesMgChildren
 	}).(LandingZoneManagementGroupPropertiesResponseArrayOutput)
 }
 
-// This will be applied to the landing zone management groups.
+// The assigned policies of the 'Landing Zones' management group.
 func (o LandingZoneConfigurationResourcePropertiesResponseOutput) LandingZonesMgMetadata() ManagementGroupPropertiesResponsePtrOutput {
 	return o.ApplyT(func(v LandingZoneConfigurationResourcePropertiesResponse) *ManagementGroupPropertiesResponse {
 		return v.LandingZonesMgMetadata
 	}).(ManagementGroupPropertiesResponsePtrOutput)
 }
 
-// To deploy log analytics workspace, choose Yes, otherwise No. Select UseExisting to provide an existing log analytics workspace.
+// Parameter used to deploy a log analytics workspace: Select 'Yes' to enable deployment, 'No' to skip it, or 'Existing' to reuse an existing log analytics workspace.
 func (o LandingZoneConfigurationResourcePropertiesResponseOutput) LogAnalyticsWorkspaceCreationOption() pulumi.StringOutput {
 	return o.ApplyT(func(v LandingZoneConfigurationResourcePropertiesResponse) string {
 		return v.LogAnalyticsWorkspaceCreationOption
 	}).(pulumi.StringOutput)
 }
 
-// Set how long logs are retained for, in days. Minimum length is 30 and maximum is 730
+// Parameter to define the retention period for logs, in days. The minimum duration is 30 days and the maximum is 730 days.
 func (o LandingZoneConfigurationResourcePropertiesResponseOutput) LogRetentionInDays() pulumi.Float64Output {
 	return o.ApplyT(func(v LandingZoneConfigurationResourcePropertiesResponse) float64 { return v.LogRetentionInDays }).(pulumi.Float64Output)
 }
 
-// The managed identity to be tied to this landing zone configuration
+// The managed identity to be assigned to this landing zone configuration.
 func (o LandingZoneConfigurationResourcePropertiesResponseOutput) ManagedIdentity() ManagedIdentityPropertiesResponseOutput {
 	return o.ApplyT(func(v LandingZoneConfigurationResourcePropertiesResponse) ManagedIdentityPropertiesResponse {
 		return v.ManagedIdentity
 	}).(ManagedIdentityPropertiesResponseOutput)
 }
 
-// The naming convention that's used by default for all resource types for this landing zone configuration
+// The default naming convention applied to all resources for this landing zone configuration. Example - {DeploymentPrefix}-Contoso-{ResourceTypeAbbreviation}{DeploymentSuffix}-{Environment}-testing
 func (o LandingZoneConfigurationResourcePropertiesResponseOutput) NamingConventionFormula() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LandingZoneConfigurationResourcePropertiesResponse) *string { return v.NamingConventionFormula }).(pulumi.StringPtrOutput)
 }
 
-// This will be applied to the connectivity management group under platform.
+// The assigned policies of the 'Connectivity' management group under 'Platform' management group.
 func (o LandingZoneConfigurationResourcePropertiesResponseOutput) PlatformConnectivityMgMetadata() ManagementGroupPropertiesResponsePtrOutput {
 	return o.ApplyT(func(v LandingZoneConfigurationResourcePropertiesResponse) *ManagementGroupPropertiesResponse {
 		return v.PlatformConnectivityMgMetadata
 	}).(ManagementGroupPropertiesResponsePtrOutput)
 }
 
-// This will be applied to the identity management group under platform.
+// The assigned policies of the 'Identity' management group under 'Platform' management group.
 func (o LandingZoneConfigurationResourcePropertiesResponseOutput) PlatformIdentityMgMetadata() ManagementGroupPropertiesResponsePtrOutput {
 	return o.ApplyT(func(v LandingZoneConfigurationResourcePropertiesResponse) *ManagementGroupPropertiesResponse {
 		return v.PlatformIdentityMgMetadata
 	}).(ManagementGroupPropertiesResponsePtrOutput)
 }
 
-// This will be applied to the management management group under platform.
+// The assigned policies of the 'Management' management group under 'Platform' management group.
 func (o LandingZoneConfigurationResourcePropertiesResponseOutput) PlatformManagementMgMetadata() ManagementGroupPropertiesResponsePtrOutput {
 	return o.ApplyT(func(v LandingZoneConfigurationResourcePropertiesResponse) *ManagementGroupPropertiesResponse {
 		return v.PlatformManagementMgMetadata
 	}).(ManagementGroupPropertiesResponsePtrOutput)
 }
 
-// Platform children management group properties.
+// The names of the 'Platform' child management groups and their assigned policies, excluding the default ones: 'Connectivity', 'Identity', and 'Management'
 func (o LandingZoneConfigurationResourcePropertiesResponseOutput) PlatformMgChildren() PlatformManagementGroupPropertiesResponseArrayOutput {
 	return o.ApplyT(func(v LandingZoneConfigurationResourcePropertiesResponse) []PlatformManagementGroupPropertiesResponse {
 		return v.PlatformMgChildren
 	}).(PlatformManagementGroupPropertiesResponseArrayOutput)
 }
 
-// This will be applied to the platform management group.
+// The assigned policies of the 'Platform' management group.
 func (o LandingZoneConfigurationResourcePropertiesResponseOutput) PlatformMgMetadata() ManagementGroupPropertiesResponsePtrOutput {
 	return o.ApplyT(func(v LandingZoneConfigurationResourcePropertiesResponse) *ManagementGroupPropertiesResponse {
 		return v.PlatformMgMetadata
 	}).(ManagementGroupPropertiesResponsePtrOutput)
 }
 
-// The status of a user-initiated, control-plane operation on the landing zone configuration.
+// The state that reflects the current stage in the creation, updating, or deletion process of the landing zone configuration.
 func (o LandingZoneConfigurationResourcePropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LandingZoneConfigurationResourcePropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// This will be applied to the sandbox management group.
+// The assigned policies of the 'Sandbox' management group and indicator to create it or not.
 func (o LandingZoneConfigurationResourcePropertiesResponseOutput) SandboxMgMetadata() SandboxManagementGroupPropertiesResponsePtrOutput {
 	return o.ApplyT(func(v LandingZoneConfigurationResourcePropertiesResponse) *SandboxManagementGroupPropertiesResponse {
 		return v.SandboxMgMetadata
 	}).(SandboxManagementGroupPropertiesResponsePtrOutput)
 }
 
-// Array of tag objects in format of {'name':'a tag name', 'value':'a tag value'}.
+// Tags are key-value pairs that can be assigned to a resource to organize and manage it more effectively. Example: {'name': 'a tag name', 'value': 'a tag value'}
 func (o LandingZoneConfigurationResourcePropertiesResponseOutput) Tags() TagsResponseArrayOutput {
 	return o.ApplyT(func(v LandingZoneConfigurationResourcePropertiesResponse) []TagsResponse { return v.Tags }).(TagsResponseArrayOutput)
 }
 
-// This will be applied to the root of the landing zone deployment.
+// The assigned policies of the parent management group.
 func (o LandingZoneConfigurationResourcePropertiesResponseOutput) TopLevelMgMetadata() ManagementGroupPropertiesResponsePtrOutput {
 	return o.ApplyT(func(v LandingZoneConfigurationResourcePropertiesResponse) *ManagementGroupPropertiesResponse {
 		return v.TopLevelMgMetadata
 	}).(ManagementGroupPropertiesResponsePtrOutput)
 }
 
-// Landing zone management group properties.
+// The 'Landing Zones' management group properties..
 type LandingZoneManagementGroupProperties struct {
 	// Management group name.
 	Name string `pulumi:"name"`
-	// Array of initiative assignments to be applied to the management group.
+	// Array of policy initiatives applied to the management group.
 	PolicyInitiativesAssignmentProperties []PolicyInitiativeAssignmentProperties `pulumi:"policyInitiativesAssignmentProperties"`
 }
 
@@ -1493,11 +1493,11 @@ type LandingZoneManagementGroupPropertiesInput interface {
 	ToLandingZoneManagementGroupPropertiesOutputWithContext(context.Context) LandingZoneManagementGroupPropertiesOutput
 }
 
-// Landing zone management group properties.
+// The 'Landing Zones' management group properties..
 type LandingZoneManagementGroupPropertiesArgs struct {
 	// Management group name.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Array of initiative assignments to be applied to the management group.
+	// Array of policy initiatives applied to the management group.
 	PolicyInitiativesAssignmentProperties PolicyInitiativeAssignmentPropertiesArrayInput `pulumi:"policyInitiativesAssignmentProperties"`
 }
 
@@ -1538,7 +1538,7 @@ func (i LandingZoneManagementGroupPropertiesArray) ToLandingZoneManagementGroupP
 	return pulumi.ToOutputWithContext(ctx, i).(LandingZoneManagementGroupPropertiesArrayOutput)
 }
 
-// Landing zone management group properties.
+// The 'Landing Zones' management group properties..
 type LandingZoneManagementGroupPropertiesOutput struct{ *pulumi.OutputState }
 
 func (LandingZoneManagementGroupPropertiesOutput) ElementType() reflect.Type {
@@ -1558,7 +1558,7 @@ func (o LandingZoneManagementGroupPropertiesOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LandingZoneManagementGroupProperties) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Array of initiative assignments to be applied to the management group.
+// Array of policy initiatives applied to the management group.
 func (o LandingZoneManagementGroupPropertiesOutput) PolicyInitiativesAssignmentProperties() PolicyInitiativeAssignmentPropertiesArrayOutput {
 	return o.ApplyT(func(v LandingZoneManagementGroupProperties) []PolicyInitiativeAssignmentProperties {
 		return v.PolicyInitiativesAssignmentProperties
@@ -1585,15 +1585,15 @@ func (o LandingZoneManagementGroupPropertiesArrayOutput) Index(i pulumi.IntInput
 	}).(LandingZoneManagementGroupPropertiesOutput)
 }
 
-// Landing zone management group properties.
+// The 'Landing Zones' management group properties..
 type LandingZoneManagementGroupPropertiesResponse struct {
 	// Management group name.
 	Name string `pulumi:"name"`
-	// Array of initiative assignments to be applied to the management group.
+	// Array of policy initiatives applied to the management group.
 	PolicyInitiativesAssignmentProperties []PolicyInitiativeAssignmentPropertiesResponse `pulumi:"policyInitiativesAssignmentProperties"`
 }
 
-// Landing zone management group properties.
+// The 'Landing Zones' management group properties..
 type LandingZoneManagementGroupPropertiesResponseOutput struct{ *pulumi.OutputState }
 
 func (LandingZoneManagementGroupPropertiesResponseOutput) ElementType() reflect.Type {
@@ -1613,7 +1613,7 @@ func (o LandingZoneManagementGroupPropertiesResponseOutput) Name() pulumi.String
 	return o.ApplyT(func(v LandingZoneManagementGroupPropertiesResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Array of initiative assignments to be applied to the management group.
+// Array of policy initiatives applied to the management group.
 func (o LandingZoneManagementGroupPropertiesResponseOutput) PolicyInitiativesAssignmentProperties() PolicyInitiativeAssignmentPropertiesResponseArrayOutput {
 	return o.ApplyT(func(v LandingZoneManagementGroupPropertiesResponse) []PolicyInitiativeAssignmentPropertiesResponse {
 		return v.PolicyInitiativesAssignmentProperties
@@ -1646,7 +1646,7 @@ type LandingZoneRegistrationResourceProperties struct {
 	ExistingLandingZoneConfigurationId string `pulumi:"existingLandingZoneConfigurationId"`
 	// The resource id of the top level management group
 	ExistingTopLevelMgId string `pulumi:"existingTopLevelMgId"`
-	// The managed identity to be tied to this landing zone registration
+	// The managed identity to be assigned to this landing zone registration.
 	ManagedIdentity ManagedIdentityProperties `pulumi:"managedIdentity"`
 }
 
@@ -1667,7 +1667,7 @@ type LandingZoneRegistrationResourcePropertiesArgs struct {
 	ExistingLandingZoneConfigurationId pulumi.StringInput `pulumi:"existingLandingZoneConfigurationId"`
 	// The resource id of the top level management group
 	ExistingTopLevelMgId pulumi.StringInput `pulumi:"existingTopLevelMgId"`
-	// The managed identity to be tied to this landing zone registration
+	// The managed identity to be assigned to this landing zone registration.
 	ManagedIdentity ManagedIdentityPropertiesInput `pulumi:"managedIdentity"`
 }
 
@@ -1759,7 +1759,7 @@ func (o LandingZoneRegistrationResourcePropertiesOutput) ExistingTopLevelMgId() 
 	return o.ApplyT(func(v LandingZoneRegistrationResourceProperties) string { return v.ExistingTopLevelMgId }).(pulumi.StringOutput)
 }
 
-// The managed identity to be tied to this landing zone registration
+// The managed identity to be assigned to this landing zone registration.
 func (o LandingZoneRegistrationResourcePropertiesOutput) ManagedIdentity() ManagedIdentityPropertiesOutput {
 	return o.ApplyT(func(v LandingZoneRegistrationResourceProperties) ManagedIdentityProperties { return v.ManagedIdentity }).(ManagedIdentityPropertiesOutput)
 }
@@ -1808,7 +1808,7 @@ func (o LandingZoneRegistrationResourcePropertiesPtrOutput) ExistingTopLevelMgId
 	}).(pulumi.StringPtrOutput)
 }
 
-// The managed identity to be tied to this landing zone registration
+// The managed identity to be assigned to this landing zone registration.
 func (o LandingZoneRegistrationResourcePropertiesPtrOutput) ManagedIdentity() ManagedIdentityPropertiesPtrOutput {
 	return o.ApplyT(func(v *LandingZoneRegistrationResourceProperties) *ManagedIdentityProperties {
 		if v == nil {
@@ -1824,9 +1824,9 @@ type LandingZoneRegistrationResourcePropertiesResponse struct {
 	ExistingLandingZoneConfigurationId string `pulumi:"existingLandingZoneConfigurationId"`
 	// The resource id of the top level management group
 	ExistingTopLevelMgId string `pulumi:"existingTopLevelMgId"`
-	// The managed identity to be tied to this landing zone registration
+	// The managed identity to be assigned to this landing zone registration.
 	ManagedIdentity ManagedIdentityPropertiesResponse `pulumi:"managedIdentity"`
-	// The status of a user-initiated, control-plane operation on the landing Zone registration resource type.
+	// The state that reflects the current stage in the creation, updating, or deletion process of the landing zone registration resource type.
 	ProvisioningState string `pulumi:"provisioningState"`
 }
 
@@ -1857,19 +1857,19 @@ func (o LandingZoneRegistrationResourcePropertiesResponseOutput) ExistingTopLeve
 	return o.ApplyT(func(v LandingZoneRegistrationResourcePropertiesResponse) string { return v.ExistingTopLevelMgId }).(pulumi.StringOutput)
 }
 
-// The managed identity to be tied to this landing zone registration
+// The managed identity to be assigned to this landing zone registration.
 func (o LandingZoneRegistrationResourcePropertiesResponseOutput) ManagedIdentity() ManagedIdentityPropertiesResponseOutput {
 	return o.ApplyT(func(v LandingZoneRegistrationResourcePropertiesResponse) ManagedIdentityPropertiesResponse {
 		return v.ManagedIdentity
 	}).(ManagedIdentityPropertiesResponseOutput)
 }
 
-// The status of a user-initiated, control-plane operation on the landing Zone registration resource type.
+// The state that reflects the current stage in the creation, updating, or deletion process of the landing zone registration resource type.
 func (o LandingZoneRegistrationResourcePropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LandingZoneRegistrationResourcePropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// The properties of managed identity.
+// The properties of managed identity, specifically including type and resource ID.
 type ManagedIdentityProperties struct {
 	// The type of managed identity.
 	Type string `pulumi:"type"`
@@ -1888,7 +1888,7 @@ type ManagedIdentityPropertiesInput interface {
 	ToManagedIdentityPropertiesOutputWithContext(context.Context) ManagedIdentityPropertiesOutput
 }
 
-// The properties of managed identity.
+// The properties of managed identity, specifically including type and resource ID.
 type ManagedIdentityPropertiesArgs struct {
 	// The type of managed identity.
 	Type pulumi.StringInput `pulumi:"type"`
@@ -1949,7 +1949,7 @@ func (i *managedIdentityPropertiesPtrType) ToManagedIdentityPropertiesPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedIdentityPropertiesPtrOutput)
 }
 
-// The properties of managed identity.
+// The properties of managed identity, specifically including type and resource ID.
 type ManagedIdentityPropertiesOutput struct{ *pulumi.OutputState }
 
 func (ManagedIdentityPropertiesOutput) ElementType() reflect.Type {
@@ -2028,7 +2028,7 @@ func (o ManagedIdentityPropertiesPtrOutput) UserAssignedIdentityResourceId() pul
 	}).(pulumi.StringPtrOutput)
 }
 
-// The properties of managed identity.
+// The properties of managed identity, specifically including type and resource ID.
 type ManagedIdentityPropertiesResponse struct {
 	// The type of managed identity.
 	Type string `pulumi:"type"`
@@ -2036,7 +2036,7 @@ type ManagedIdentityPropertiesResponse struct {
 	UserAssignedIdentityResourceId *string `pulumi:"userAssignedIdentityResourceId"`
 }
 
-// The properties of managed identity.
+// The properties of managed identity, specifically including type and resource ID.
 type ManagedIdentityPropertiesResponseOutput struct{ *pulumi.OutputState }
 
 func (ManagedIdentityPropertiesResponseOutput) ElementType() reflect.Type {
@@ -2333,9 +2333,9 @@ func (o ManagedServiceIdentityResponsePtrOutput) UserAssignedIdentities() UserAs
 	}).(UserAssignedIdentityResponseMapOutput)
 }
 
-// Details of the policy and initiatives associated with the management group.
+// The properties of policy initiatives applied to the management group.
 type ManagementGroupProperties struct {
-	// Array of initiative assignments to be applied to the management group.
+	// Array of policy initiatives applied to the management group.
 	PolicyInitiativesAssignmentProperties []PolicyInitiativeAssignmentProperties `pulumi:"policyInitiativesAssignmentProperties"`
 }
 
@@ -2350,9 +2350,9 @@ type ManagementGroupPropertiesInput interface {
 	ToManagementGroupPropertiesOutputWithContext(context.Context) ManagementGroupPropertiesOutput
 }
 
-// Details of the policy and initiatives associated with the management group.
+// The properties of policy initiatives applied to the management group.
 type ManagementGroupPropertiesArgs struct {
-	// Array of initiative assignments to be applied to the management group.
+	// Array of policy initiatives applied to the management group.
 	PolicyInitiativesAssignmentProperties PolicyInitiativeAssignmentPropertiesArrayInput `pulumi:"policyInitiativesAssignmentProperties"`
 }
 
@@ -2409,7 +2409,7 @@ func (i *managementGroupPropertiesPtrType) ToManagementGroupPropertiesPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(ManagementGroupPropertiesPtrOutput)
 }
 
-// Details of the policy and initiatives associated with the management group.
+// The properties of policy initiatives applied to the management group.
 type ManagementGroupPropertiesOutput struct{ *pulumi.OutputState }
 
 func (ManagementGroupPropertiesOutput) ElementType() reflect.Type {
@@ -2434,7 +2434,7 @@ func (o ManagementGroupPropertiesOutput) ToManagementGroupPropertiesPtrOutputWit
 	}).(ManagementGroupPropertiesPtrOutput)
 }
 
-// Array of initiative assignments to be applied to the management group.
+// Array of policy initiatives applied to the management group.
 func (o ManagementGroupPropertiesOutput) PolicyInitiativesAssignmentProperties() PolicyInitiativeAssignmentPropertiesArrayOutput {
 	return o.ApplyT(func(v ManagementGroupProperties) []PolicyInitiativeAssignmentProperties {
 		return v.PolicyInitiativesAssignmentProperties
@@ -2465,7 +2465,7 @@ func (o ManagementGroupPropertiesPtrOutput) Elem() ManagementGroupPropertiesOutp
 	}).(ManagementGroupPropertiesOutput)
 }
 
-// Array of initiative assignments to be applied to the management group.
+// Array of policy initiatives applied to the management group.
 func (o ManagementGroupPropertiesPtrOutput) PolicyInitiativesAssignmentProperties() PolicyInitiativeAssignmentPropertiesArrayOutput {
 	return o.ApplyT(func(v *ManagementGroupProperties) []PolicyInitiativeAssignmentProperties {
 		if v == nil {
@@ -2475,13 +2475,13 @@ func (o ManagementGroupPropertiesPtrOutput) PolicyInitiativesAssignmentPropertie
 	}).(PolicyInitiativeAssignmentPropertiesArrayOutput)
 }
 
-// Details of the policy and initiatives associated with the management group.
+// The properties of policy initiatives applied to the management group.
 type ManagementGroupPropertiesResponse struct {
-	// Array of initiative assignments to be applied to the management group.
+	// Array of policy initiatives applied to the management group.
 	PolicyInitiativesAssignmentProperties []PolicyInitiativeAssignmentPropertiesResponse `pulumi:"policyInitiativesAssignmentProperties"`
 }
 
-// Details of the policy and initiatives associated with the management group.
+// The properties of policy initiatives applied to the management group.
 type ManagementGroupPropertiesResponseOutput struct{ *pulumi.OutputState }
 
 func (ManagementGroupPropertiesResponseOutput) ElementType() reflect.Type {
@@ -2496,7 +2496,7 @@ func (o ManagementGroupPropertiesResponseOutput) ToManagementGroupPropertiesResp
 	return o
 }
 
-// Array of initiative assignments to be applied to the management group.
+// Array of policy initiatives applied to the management group.
 func (o ManagementGroupPropertiesResponseOutput) PolicyInitiativesAssignmentProperties() PolicyInitiativeAssignmentPropertiesResponseArrayOutput {
 	return o.ApplyT(func(v ManagementGroupPropertiesResponse) []PolicyInitiativeAssignmentPropertiesResponse {
 		return v.PolicyInitiativesAssignmentProperties
@@ -2527,7 +2527,7 @@ func (o ManagementGroupPropertiesResponsePtrOutput) Elem() ManagementGroupProper
 	}).(ManagementGroupPropertiesResponseOutput)
 }
 
-// Array of initiative assignments to be applied to the management group.
+// Array of policy initiatives applied to the management group.
 func (o ManagementGroupPropertiesResponsePtrOutput) PolicyInitiativesAssignmentProperties() PolicyInitiativeAssignmentPropertiesResponseArrayOutput {
 	return o.ApplyT(func(v *ManagementGroupPropertiesResponse) []PolicyInitiativeAssignmentPropertiesResponse {
 		if v == nil {
@@ -2537,11 +2537,11 @@ func (o ManagementGroupPropertiesResponsePtrOutput) PolicyInitiativesAssignmentP
 	}).(PolicyInitiativeAssignmentPropertiesResponseArrayOutput)
 }
 
-// Platform management group properties.
+// The 'Platform' management group properties.
 type PlatformManagementGroupProperties struct {
 	// Management group name.
 	Name string `pulumi:"name"`
-	// Array of initiative assignments to be applied to the management group.
+	// Array of policy initiatives applied to the management group.
 	PolicyInitiativesAssignmentProperties []PolicyInitiativeAssignmentProperties `pulumi:"policyInitiativesAssignmentProperties"`
 }
 
@@ -2556,11 +2556,11 @@ type PlatformManagementGroupPropertiesInput interface {
 	ToPlatformManagementGroupPropertiesOutputWithContext(context.Context) PlatformManagementGroupPropertiesOutput
 }
 
-// Platform management group properties.
+// The 'Platform' management group properties.
 type PlatformManagementGroupPropertiesArgs struct {
 	// Management group name.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Array of initiative assignments to be applied to the management group.
+	// Array of policy initiatives applied to the management group.
 	PolicyInitiativesAssignmentProperties PolicyInitiativeAssignmentPropertiesArrayInput `pulumi:"policyInitiativesAssignmentProperties"`
 }
 
@@ -2601,7 +2601,7 @@ func (i PlatformManagementGroupPropertiesArray) ToPlatformManagementGroupPropert
 	return pulumi.ToOutputWithContext(ctx, i).(PlatformManagementGroupPropertiesArrayOutput)
 }
 
-// Platform management group properties.
+// The 'Platform' management group properties.
 type PlatformManagementGroupPropertiesOutput struct{ *pulumi.OutputState }
 
 func (PlatformManagementGroupPropertiesOutput) ElementType() reflect.Type {
@@ -2621,7 +2621,7 @@ func (o PlatformManagementGroupPropertiesOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v PlatformManagementGroupProperties) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Array of initiative assignments to be applied to the management group.
+// Array of policy initiatives applied to the management group.
 func (o PlatformManagementGroupPropertiesOutput) PolicyInitiativesAssignmentProperties() PolicyInitiativeAssignmentPropertiesArrayOutput {
 	return o.ApplyT(func(v PlatformManagementGroupProperties) []PolicyInitiativeAssignmentProperties {
 		return v.PolicyInitiativesAssignmentProperties
@@ -2648,15 +2648,15 @@ func (o PlatformManagementGroupPropertiesArrayOutput) Index(i pulumi.IntInput) P
 	}).(PlatformManagementGroupPropertiesOutput)
 }
 
-// Platform management group properties.
+// The 'Platform' management group properties.
 type PlatformManagementGroupPropertiesResponse struct {
 	// Management group name.
 	Name string `pulumi:"name"`
-	// Array of initiative assignments to be applied to the management group.
+	// Array of policy initiatives applied to the management group.
 	PolicyInitiativesAssignmentProperties []PolicyInitiativeAssignmentPropertiesResponse `pulumi:"policyInitiativesAssignmentProperties"`
 }
 
-// Platform management group properties.
+// The 'Platform' management group properties.
 type PlatformManagementGroupPropertiesResponseOutput struct{ *pulumi.OutputState }
 
 func (PlatformManagementGroupPropertiesResponseOutput) ElementType() reflect.Type {
@@ -2676,7 +2676,7 @@ func (o PlatformManagementGroupPropertiesResponseOutput) Name() pulumi.StringOut
 	return o.ApplyT(func(v PlatformManagementGroupPropertiesResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Array of initiative assignments to be applied to the management group.
+// Array of policy initiatives applied to the management group.
 func (o PlatformManagementGroupPropertiesResponseOutput) PolicyInitiativesAssignmentProperties() PolicyInitiativeAssignmentPropertiesResponseArrayOutput {
 	return o.ApplyT(func(v PlatformManagementGroupPropertiesResponse) []PolicyInitiativeAssignmentPropertiesResponse {
 		return v.PolicyInitiativesAssignmentProperties
@@ -2703,9 +2703,9 @@ func (o PlatformManagementGroupPropertiesResponseArrayOutput) Index(i pulumi.Int
 	}).(PlatformManagementGroupPropertiesResponseOutput)
 }
 
-// Details of policy assignments
+// The properties of assigned policy initiatives.
 type PolicyInitiativeAssignmentProperties struct {
-	// The parameters for the assignment of policy initiatives.
+	// The parameters of the assigned policy initiative.
 	AssignmentParameters interface{} `pulumi:"assignmentParameters"`
 	// The fully qualified id of the policy initiative.
 	PolicyInitiativeId string `pulumi:"policyInitiativeId"`
@@ -2722,9 +2722,9 @@ type PolicyInitiativeAssignmentPropertiesInput interface {
 	ToPolicyInitiativeAssignmentPropertiesOutputWithContext(context.Context) PolicyInitiativeAssignmentPropertiesOutput
 }
 
-// Details of policy assignments
+// The properties of assigned policy initiatives.
 type PolicyInitiativeAssignmentPropertiesArgs struct {
-	// The parameters for the assignment of policy initiatives.
+	// The parameters of the assigned policy initiative.
 	AssignmentParameters pulumi.Input `pulumi:"assignmentParameters"`
 	// The fully qualified id of the policy initiative.
 	PolicyInitiativeId pulumi.StringInput `pulumi:"policyInitiativeId"`
@@ -2767,7 +2767,7 @@ func (i PolicyInitiativeAssignmentPropertiesArray) ToPolicyInitiativeAssignmentP
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyInitiativeAssignmentPropertiesArrayOutput)
 }
 
-// Details of policy assignments
+// The properties of assigned policy initiatives.
 type PolicyInitiativeAssignmentPropertiesOutput struct{ *pulumi.OutputState }
 
 func (PolicyInitiativeAssignmentPropertiesOutput) ElementType() reflect.Type {
@@ -2782,7 +2782,7 @@ func (o PolicyInitiativeAssignmentPropertiesOutput) ToPolicyInitiativeAssignment
 	return o
 }
 
-// The parameters for the assignment of policy initiatives.
+// The parameters of the assigned policy initiative.
 func (o PolicyInitiativeAssignmentPropertiesOutput) AssignmentParameters() pulumi.AnyOutput {
 	return o.ApplyT(func(v PolicyInitiativeAssignmentProperties) interface{} { return v.AssignmentParameters }).(pulumi.AnyOutput)
 }
@@ -2812,15 +2812,15 @@ func (o PolicyInitiativeAssignmentPropertiesArrayOutput) Index(i pulumi.IntInput
 	}).(PolicyInitiativeAssignmentPropertiesOutput)
 }
 
-// Details of policy assignments
+// The properties of assigned policy initiatives.
 type PolicyInitiativeAssignmentPropertiesResponse struct {
-	// The parameters for the assignment of policy initiatives.
+	// The parameters of the assigned policy initiative.
 	AssignmentParameters interface{} `pulumi:"assignmentParameters"`
 	// The fully qualified id of the policy initiative.
 	PolicyInitiativeId string `pulumi:"policyInitiativeId"`
 }
 
-// Details of policy assignments
+// The properties of assigned policy initiatives.
 type PolicyInitiativeAssignmentPropertiesResponseOutput struct{ *pulumi.OutputState }
 
 func (PolicyInitiativeAssignmentPropertiesResponseOutput) ElementType() reflect.Type {
@@ -2835,7 +2835,7 @@ func (o PolicyInitiativeAssignmentPropertiesResponseOutput) ToPolicyInitiativeAs
 	return o
 }
 
-// The parameters for the assignment of policy initiatives.
+// The parameters of the assigned policy initiative.
 func (o PolicyInitiativeAssignmentPropertiesResponseOutput) AssignmentParameters() pulumi.AnyOutput {
 	return o.ApplyT(func(v PolicyInitiativeAssignmentPropertiesResponse) interface{} { return v.AssignmentParameters }).(pulumi.AnyOutput)
 }
@@ -2865,11 +2865,11 @@ func (o PolicyInitiativeAssignmentPropertiesResponseArrayOutput) Index(i pulumi.
 	}).(PolicyInitiativeAssignmentPropertiesResponseOutput)
 }
 
-// Sandbox management group properties.
+// The 'Sandbox' management group properties.
 type SandboxManagementGroupProperties struct {
-	// When set to false this management group will not be created. The default value is false.
+	// This parameter determines whether the 'Sandbox' management group will be created. If set to true, the group will be created; if set to false, it will not be created. The default value is false.
 	Create bool `pulumi:"create"`
-	// Array of initiative assignments to be applied to the management group.
+	// Array of policy initiatives applied to the management group.
 	PolicyInitiativesAssignmentProperties []PolicyInitiativeAssignmentProperties `pulumi:"policyInitiativesAssignmentProperties"`
 }
 
@@ -2884,11 +2884,11 @@ type SandboxManagementGroupPropertiesInput interface {
 	ToSandboxManagementGroupPropertiesOutputWithContext(context.Context) SandboxManagementGroupPropertiesOutput
 }
 
-// Sandbox management group properties.
+// The 'Sandbox' management group properties.
 type SandboxManagementGroupPropertiesArgs struct {
-	// When set to false this management group will not be created. The default value is false.
+	// This parameter determines whether the 'Sandbox' management group will be created. If set to true, the group will be created; if set to false, it will not be created. The default value is false.
 	Create pulumi.BoolInput `pulumi:"create"`
-	// Array of initiative assignments to be applied to the management group.
+	// Array of policy initiatives applied to the management group.
 	PolicyInitiativesAssignmentProperties PolicyInitiativeAssignmentPropertiesArrayInput `pulumi:"policyInitiativesAssignmentProperties"`
 }
 
@@ -2945,7 +2945,7 @@ func (i *sandboxManagementGroupPropertiesPtrType) ToSandboxManagementGroupProper
 	return pulumi.ToOutputWithContext(ctx, i).(SandboxManagementGroupPropertiesPtrOutput)
 }
 
-// Sandbox management group properties.
+// The 'Sandbox' management group properties.
 type SandboxManagementGroupPropertiesOutput struct{ *pulumi.OutputState }
 
 func (SandboxManagementGroupPropertiesOutput) ElementType() reflect.Type {
@@ -2970,12 +2970,12 @@ func (o SandboxManagementGroupPropertiesOutput) ToSandboxManagementGroupProperti
 	}).(SandboxManagementGroupPropertiesPtrOutput)
 }
 
-// When set to false this management group will not be created. The default value is false.
+// This parameter determines whether the 'Sandbox' management group will be created. If set to true, the group will be created; if set to false, it will not be created. The default value is false.
 func (o SandboxManagementGroupPropertiesOutput) Create() pulumi.BoolOutput {
 	return o.ApplyT(func(v SandboxManagementGroupProperties) bool { return v.Create }).(pulumi.BoolOutput)
 }
 
-// Array of initiative assignments to be applied to the management group.
+// Array of policy initiatives applied to the management group.
 func (o SandboxManagementGroupPropertiesOutput) PolicyInitiativesAssignmentProperties() PolicyInitiativeAssignmentPropertiesArrayOutput {
 	return o.ApplyT(func(v SandboxManagementGroupProperties) []PolicyInitiativeAssignmentProperties {
 		return v.PolicyInitiativesAssignmentProperties
@@ -3006,7 +3006,7 @@ func (o SandboxManagementGroupPropertiesPtrOutput) Elem() SandboxManagementGroup
 	}).(SandboxManagementGroupPropertiesOutput)
 }
 
-// When set to false this management group will not be created. The default value is false.
+// This parameter determines whether the 'Sandbox' management group will be created. If set to true, the group will be created; if set to false, it will not be created. The default value is false.
 func (o SandboxManagementGroupPropertiesPtrOutput) Create() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SandboxManagementGroupProperties) *bool {
 		if v == nil {
@@ -3016,7 +3016,7 @@ func (o SandboxManagementGroupPropertiesPtrOutput) Create() pulumi.BoolPtrOutput
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Array of initiative assignments to be applied to the management group.
+// Array of policy initiatives applied to the management group.
 func (o SandboxManagementGroupPropertiesPtrOutput) PolicyInitiativesAssignmentProperties() PolicyInitiativeAssignmentPropertiesArrayOutput {
 	return o.ApplyT(func(v *SandboxManagementGroupProperties) []PolicyInitiativeAssignmentProperties {
 		if v == nil {
@@ -3026,15 +3026,15 @@ func (o SandboxManagementGroupPropertiesPtrOutput) PolicyInitiativesAssignmentPr
 	}).(PolicyInitiativeAssignmentPropertiesArrayOutput)
 }
 
-// Sandbox management group properties.
+// The 'Sandbox' management group properties.
 type SandboxManagementGroupPropertiesResponse struct {
-	// When set to false this management group will not be created. The default value is false.
+	// This parameter determines whether the 'Sandbox' management group will be created. If set to true, the group will be created; if set to false, it will not be created. The default value is false.
 	Create bool `pulumi:"create"`
-	// Array of initiative assignments to be applied to the management group.
+	// Array of policy initiatives applied to the management group.
 	PolicyInitiativesAssignmentProperties []PolicyInitiativeAssignmentPropertiesResponse `pulumi:"policyInitiativesAssignmentProperties"`
 }
 
-// Sandbox management group properties.
+// The 'Sandbox' management group properties.
 type SandboxManagementGroupPropertiesResponseOutput struct{ *pulumi.OutputState }
 
 func (SandboxManagementGroupPropertiesResponseOutput) ElementType() reflect.Type {
@@ -3049,12 +3049,12 @@ func (o SandboxManagementGroupPropertiesResponseOutput) ToSandboxManagementGroup
 	return o
 }
 
-// When set to false this management group will not be created. The default value is false.
+// This parameter determines whether the 'Sandbox' management group will be created. If set to true, the group will be created; if set to false, it will not be created. The default value is false.
 func (o SandboxManagementGroupPropertiesResponseOutput) Create() pulumi.BoolOutput {
 	return o.ApplyT(func(v SandboxManagementGroupPropertiesResponse) bool { return v.Create }).(pulumi.BoolOutput)
 }
 
-// Array of initiative assignments to be applied to the management group.
+// Array of policy initiatives applied to the management group.
 func (o SandboxManagementGroupPropertiesResponseOutput) PolicyInitiativesAssignmentProperties() PolicyInitiativeAssignmentPropertiesResponseArrayOutput {
 	return o.ApplyT(func(v SandboxManagementGroupPropertiesResponse) []PolicyInitiativeAssignmentPropertiesResponse {
 		return v.PolicyInitiativesAssignmentProperties
@@ -3085,7 +3085,7 @@ func (o SandboxManagementGroupPropertiesResponsePtrOutput) Elem() SandboxManagem
 	}).(SandboxManagementGroupPropertiesResponseOutput)
 }
 
-// When set to false this management group will not be created. The default value is false.
+// This parameter determines whether the 'Sandbox' management group will be created. If set to true, the group will be created; if set to false, it will not be created. The default value is false.
 func (o SandboxManagementGroupPropertiesResponsePtrOutput) Create() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SandboxManagementGroupPropertiesResponse) *bool {
 		if v == nil {
@@ -3095,7 +3095,7 @@ func (o SandboxManagementGroupPropertiesResponsePtrOutput) Create() pulumi.BoolP
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Array of initiative assignments to be applied to the management group.
+// Array of policy initiatives applied to the management group.
 func (o SandboxManagementGroupPropertiesResponsePtrOutput) PolicyInitiativesAssignmentProperties() PolicyInitiativeAssignmentPropertiesResponseArrayOutput {
 	return o.ApplyT(func(v *SandboxManagementGroupPropertiesResponse) []PolicyInitiativeAssignmentPropertiesResponse {
 		if v == nil {
@@ -3166,7 +3166,7 @@ func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
 }
 
-// The details associated with tags.
+// Key-value pairs that can be assigned to this resource.
 type Tags struct {
 	// A tag name.
 	Name string `pulumi:"name"`
@@ -3185,7 +3185,7 @@ type TagsInput interface {
 	ToTagsOutputWithContext(context.Context) TagsOutput
 }
 
-// The details associated with tags.
+// Key-value pairs that can be assigned to this resource.
 type TagsArgs struct {
 	// A tag name.
 	Name pulumi.StringInput `pulumi:"name"`
@@ -3230,7 +3230,7 @@ func (i TagsArray) ToTagsArrayOutputWithContext(ctx context.Context) TagsArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(TagsArrayOutput)
 }
 
-// The details associated with tags.
+// Key-value pairs that can be assigned to this resource.
 type TagsOutput struct{ *pulumi.OutputState }
 
 func (TagsOutput) ElementType() reflect.Type {
@@ -3275,7 +3275,7 @@ func (o TagsArrayOutput) Index(i pulumi.IntInput) TagsOutput {
 	}).(TagsOutput)
 }
 
-// The details associated with tags.
+// Key-value pairs that can be assigned to this resource.
 type TagsResponse struct {
 	// A tag name.
 	Name string `pulumi:"name"`
@@ -3283,7 +3283,7 @@ type TagsResponse struct {
 	Value *string `pulumi:"value"`
 }
 
-// The details associated with tags.
+// Key-value pairs that can be assigned to this resource.
 type TagsResponseOutput struct{ *pulumi.OutputState }
 
 func (TagsResponseOutput) ElementType() reflect.Type {

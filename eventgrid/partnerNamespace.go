@@ -15,7 +15,7 @@ import (
 // EventGrid Partner Namespace.
 // Azure REST API version: 2022-06-15. Prior API version in Azure Native 1.x: 2021-06-01-preview.
 //
-// Other available API versions: 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview.
+// Other available API versions: 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-02-15.
 type PartnerNamespace struct {
 	pulumi.CustomResourceState
 
@@ -95,6 +95,9 @@ func NewPartnerNamespace(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:eventgrid/v20241215preview:PartnerNamespace"),
+		},
+		{
+			Type: pulumi.String("azure-native:eventgrid/v20250215:PartnerNamespace"),
 		},
 	})
 	opts = append(opts, aliases)

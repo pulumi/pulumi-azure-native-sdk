@@ -89,6 +89,9 @@ func NewDomainEventSubscription(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:eventgrid/v20240601preview:DomainEventSubscription"),
 		},
 		{
+			Type: pulumi.String("azure-native:eventgrid/v20250215:DomainEventSubscription"),
+		},
+		{
 			Type: pulumi.String("azure-native:eventgrid:DomainEventSubscription"),
 		},
 	})

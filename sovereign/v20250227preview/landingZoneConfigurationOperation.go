@@ -78,7 +78,7 @@ func (LandingZoneConfigurationOperationState) ElementType() reflect.Type {
 }
 
 type landingZoneConfigurationOperationArgs struct {
-	// The parent landing zone account
+	// The landing zone account.
 	LandingZoneAccountName string `pulumi:"landingZoneAccountName"`
 	// The landing zone configuration name
 	LandingZoneConfigurationName *string `pulumi:"landingZoneConfigurationName"`
@@ -90,7 +90,7 @@ type landingZoneConfigurationOperationArgs struct {
 
 // The set of arguments for constructing a LandingZoneConfigurationOperation resource.
 type LandingZoneConfigurationOperationArgs struct {
-	// The parent landing zone account
+	// The landing zone account.
 	LandingZoneAccountName pulumi.StringInput
 	// The landing zone configuration name
 	LandingZoneConfigurationName pulumi.StringPtrInput

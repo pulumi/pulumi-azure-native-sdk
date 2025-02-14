@@ -65,6 +65,9 @@ func NewClient(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:eventgrid/v20241215preview:Client"),
 		},
 		{
+			Type: pulumi.String("azure-native:eventgrid/v20250215:Client"),
+		},
+		{
 			Type: pulumi.String("azure-native:eventgrid:Client"),
 		},
 	})

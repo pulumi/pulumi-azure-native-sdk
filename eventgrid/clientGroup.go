@@ -15,7 +15,7 @@ import (
 // The Client group resource.
 // Azure REST API version: 2023-06-01-preview.
 //
-// Other available API versions: 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview.
+// Other available API versions: 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-02-15.
 type ClientGroup struct {
 	pulumi.CustomResourceState
 
@@ -59,6 +59,9 @@ func NewClientGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:eventgrid/v20241215preview:ClientGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:eventgrid/v20250215:ClientGroup"),
 		},
 	})
 	opts = append(opts, aliases)

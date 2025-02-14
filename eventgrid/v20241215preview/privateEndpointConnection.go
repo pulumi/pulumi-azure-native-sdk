@@ -77,6 +77,9 @@ func NewPrivateEndpointConnection(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:eventgrid/v20240601preview:PrivateEndpointConnection"),
 		},
 		{
+			Type: pulumi.String("azure-native:eventgrid/v20250215:PrivateEndpointConnection"),
+		},
+		{
 			Type: pulumi.String("azure-native:eventgrid:PrivateEndpointConnection"),
 		},
 	})

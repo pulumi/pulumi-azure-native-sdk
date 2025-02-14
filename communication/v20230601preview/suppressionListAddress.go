@@ -60,6 +60,9 @@ func NewSuppressionListAddress(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:communication/v20240901preview:SuppressionListAddress"),
+		},
+		{
 			Type: pulumi.String("azure-native:communication:SuppressionListAddress"),
 		},
 	})

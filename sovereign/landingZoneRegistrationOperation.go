@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Landing Zone registration resource type
+// The Landing zone registration resource type.
 // Azure REST API version: 2025-02-27-preview.
 type LandingZoneRegistrationOperation struct {
 	pulumi.CustomResourceState
@@ -79,9 +79,9 @@ func (LandingZoneRegistrationOperationState) ElementType() reflect.Type {
 }
 
 type landingZoneRegistrationOperationArgs struct {
-	// The parent landing zone account
+	// The landing zone account.
 	LandingZoneAccountName string `pulumi:"landingZoneAccountName"`
-	// The name of the Landing Zone Registration resource.
+	// The name of the landing zone registration resource.
 	LandingZoneRegistrationName *string `pulumi:"landingZoneRegistrationName"`
 	// The resource-specific properties for this resource.
 	Properties *LandingZoneRegistrationResourceProperties `pulumi:"properties"`
@@ -91,9 +91,9 @@ type landingZoneRegistrationOperationArgs struct {
 
 // The set of arguments for constructing a LandingZoneRegistrationOperation resource.
 type LandingZoneRegistrationOperationArgs struct {
-	// The parent landing zone account
+	// The landing zone account.
 	LandingZoneAccountName pulumi.StringInput
-	// The name of the Landing Zone Registration resource.
+	// The name of the landing zone registration resource.
 	LandingZoneRegistrationName pulumi.StringPtrInput
 	// The resource-specific properties for this resource.
 	Properties LandingZoneRegistrationResourcePropertiesPtrInput

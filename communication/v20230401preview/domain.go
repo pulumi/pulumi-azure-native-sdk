@@ -80,6 +80,9 @@ func NewDomain(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:communication/v20230601preview:Domain"),
 		},
 		{
+			Type: pulumi.String("azure-native:communication/v20240901preview:Domain"),
+		},
+		{
 			Type: pulumi.String("azure-native:communication:Domain"),
 		},
 	})

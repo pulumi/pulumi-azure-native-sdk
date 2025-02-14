@@ -50,6 +50,9 @@ func NewSuppressionList(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:communication/v20240901preview:SuppressionList"),
+		},
+		{
 			Type: pulumi.String("azure-native:communication:SuppressionList"),
 		},
 	})

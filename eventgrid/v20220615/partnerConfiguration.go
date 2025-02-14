@@ -59,6 +59,9 @@ func NewPartnerConfiguration(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:eventgrid/v20241215preview:PartnerConfiguration"),
 		},
 		{
+			Type: pulumi.String("azure-native:eventgrid/v20250215:PartnerConfiguration"),
+		},
+		{
 			Type: pulumi.String("azure-native:eventgrid:PartnerConfiguration"),
 		},
 	})

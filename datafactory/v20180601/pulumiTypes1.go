@@ -15526,11 +15526,11 @@ func (o JsonWriteSettingsResponsePtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Microsoft Fabric LakeHouse linked service.
+// Microsoft Fabric Lakehouse linked service.
 type LakeHouseLinkedService struct {
 	// List of tags that can be used for describing the linked service.
 	Annotations []interface{} `pulumi:"annotations"`
-	// The ID of Microsoft Fabric LakeHouse artifact. Type: string (or Expression with resultType string).
+	// The ID of Microsoft Fabric Lakehouse artifact. Type: string (or Expression with resultType string).
 	ArtifactId interface{} `pulumi:"artifactId"`
 	// The integration runtime reference.
 	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
@@ -15544,14 +15544,14 @@ type LakeHouseLinkedService struct {
 	ServicePrincipalCredential interface{} `pulumi:"servicePrincipalCredential"`
 	// The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string).
 	ServicePrincipalCredentialType interface{} `pulumi:"servicePrincipalCredentialType"`
-	// The ID of the application used to authenticate against Microsoft Fabric LakeHouse. Type: string (or Expression with resultType string).
+	// The ID of the application used to authenticate against Microsoft Fabric Lakehouse. Type: string (or Expression with resultType string).
 	ServicePrincipalId interface{} `pulumi:"servicePrincipalId"`
-	// The Key of the application used to authenticate against Microsoft Fabric LakeHouse.
+	// The Key of the application used to authenticate against Microsoft Fabric Lakehouse.
 	ServicePrincipalKey interface{} `pulumi:"servicePrincipalKey"`
 	// The name or ID of the tenant to which the service principal belongs. Type: string (or Expression with resultType string).
 	Tenant interface{} `pulumi:"tenant"`
 	// Type of linked service.
-	// Expected value is 'LakeHouse'.
+	// Expected value is 'Lakehouse'.
 	Type string `pulumi:"type"`
 	// Version of the linked service.
 	Version *string `pulumi:"version"`
@@ -15570,11 +15570,11 @@ type LakeHouseLinkedServiceInput interface {
 	ToLakeHouseLinkedServiceOutputWithContext(context.Context) LakeHouseLinkedServiceOutput
 }
 
-// Microsoft Fabric LakeHouse linked service.
+// Microsoft Fabric Lakehouse linked service.
 type LakeHouseLinkedServiceArgs struct {
 	// List of tags that can be used for describing the linked service.
 	Annotations pulumi.ArrayInput `pulumi:"annotations"`
-	// The ID of Microsoft Fabric LakeHouse artifact. Type: string (or Expression with resultType string).
+	// The ID of Microsoft Fabric Lakehouse artifact. Type: string (or Expression with resultType string).
 	ArtifactId pulumi.Input `pulumi:"artifactId"`
 	// The integration runtime reference.
 	ConnectVia IntegrationRuntimeReferencePtrInput `pulumi:"connectVia"`
@@ -15588,14 +15588,14 @@ type LakeHouseLinkedServiceArgs struct {
 	ServicePrincipalCredential pulumi.Input `pulumi:"servicePrincipalCredential"`
 	// The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string).
 	ServicePrincipalCredentialType pulumi.Input `pulumi:"servicePrincipalCredentialType"`
-	// The ID of the application used to authenticate against Microsoft Fabric LakeHouse. Type: string (or Expression with resultType string).
+	// The ID of the application used to authenticate against Microsoft Fabric Lakehouse. Type: string (or Expression with resultType string).
 	ServicePrincipalId pulumi.Input `pulumi:"servicePrincipalId"`
-	// The Key of the application used to authenticate against Microsoft Fabric LakeHouse.
+	// The Key of the application used to authenticate against Microsoft Fabric Lakehouse.
 	ServicePrincipalKey pulumi.Input `pulumi:"servicePrincipalKey"`
 	// The name or ID of the tenant to which the service principal belongs. Type: string (or Expression with resultType string).
 	Tenant pulumi.Input `pulumi:"tenant"`
 	// Type of linked service.
-	// Expected value is 'LakeHouse'.
+	// Expected value is 'Lakehouse'.
 	Type pulumi.StringInput `pulumi:"type"`
 	// Version of the linked service.
 	Version pulumi.StringPtrInput `pulumi:"version"`
@@ -15615,7 +15615,7 @@ func (i LakeHouseLinkedServiceArgs) ToLakeHouseLinkedServiceOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(LakeHouseLinkedServiceOutput)
 }
 
-// Microsoft Fabric LakeHouse linked service.
+// Microsoft Fabric Lakehouse linked service.
 type LakeHouseLinkedServiceOutput struct{ *pulumi.OutputState }
 
 func (LakeHouseLinkedServiceOutput) ElementType() reflect.Type {
@@ -15635,7 +15635,7 @@ func (o LakeHouseLinkedServiceOutput) Annotations() pulumi.ArrayOutput {
 	return o.ApplyT(func(v LakeHouseLinkedService) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
 }
 
-// The ID of Microsoft Fabric LakeHouse artifact. Type: string (or Expression with resultType string).
+// The ID of Microsoft Fabric Lakehouse artifact. Type: string (or Expression with resultType string).
 func (o LakeHouseLinkedServiceOutput) ArtifactId() pulumi.AnyOutput {
 	return o.ApplyT(func(v LakeHouseLinkedService) interface{} { return v.ArtifactId }).(pulumi.AnyOutput)
 }
@@ -15670,12 +15670,12 @@ func (o LakeHouseLinkedServiceOutput) ServicePrincipalCredentialType() pulumi.An
 	return o.ApplyT(func(v LakeHouseLinkedService) interface{} { return v.ServicePrincipalCredentialType }).(pulumi.AnyOutput)
 }
 
-// The ID of the application used to authenticate against Microsoft Fabric LakeHouse. Type: string (or Expression with resultType string).
+// The ID of the application used to authenticate against Microsoft Fabric Lakehouse. Type: string (or Expression with resultType string).
 func (o LakeHouseLinkedServiceOutput) ServicePrincipalId() pulumi.AnyOutput {
 	return o.ApplyT(func(v LakeHouseLinkedService) interface{} { return v.ServicePrincipalId }).(pulumi.AnyOutput)
 }
 
-// The Key of the application used to authenticate against Microsoft Fabric LakeHouse.
+// The Key of the application used to authenticate against Microsoft Fabric Lakehouse.
 func (o LakeHouseLinkedServiceOutput) ServicePrincipalKey() pulumi.AnyOutput {
 	return o.ApplyT(func(v LakeHouseLinkedService) interface{} { return v.ServicePrincipalKey }).(pulumi.AnyOutput)
 }
@@ -15686,7 +15686,7 @@ func (o LakeHouseLinkedServiceOutput) Tenant() pulumi.AnyOutput {
 }
 
 // Type of linked service.
-// Expected value is 'LakeHouse'.
+// Expected value is 'Lakehouse'.
 func (o LakeHouseLinkedServiceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LakeHouseLinkedService) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -15701,11 +15701,11 @@ func (o LakeHouseLinkedServiceOutput) WorkspaceId() pulumi.AnyOutput {
 	return o.ApplyT(func(v LakeHouseLinkedService) interface{} { return v.WorkspaceId }).(pulumi.AnyOutput)
 }
 
-// Microsoft Fabric LakeHouse linked service.
+// Microsoft Fabric Lakehouse linked service.
 type LakeHouseLinkedServiceResponse struct {
 	// List of tags that can be used for describing the linked service.
 	Annotations []interface{} `pulumi:"annotations"`
-	// The ID of Microsoft Fabric LakeHouse artifact. Type: string (or Expression with resultType string).
+	// The ID of Microsoft Fabric Lakehouse artifact. Type: string (or Expression with resultType string).
 	ArtifactId interface{} `pulumi:"artifactId"`
 	// The integration runtime reference.
 	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
@@ -15719,14 +15719,14 @@ type LakeHouseLinkedServiceResponse struct {
 	ServicePrincipalCredential interface{} `pulumi:"servicePrincipalCredential"`
 	// The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string).
 	ServicePrincipalCredentialType interface{} `pulumi:"servicePrincipalCredentialType"`
-	// The ID of the application used to authenticate against Microsoft Fabric LakeHouse. Type: string (or Expression with resultType string).
+	// The ID of the application used to authenticate against Microsoft Fabric Lakehouse. Type: string (or Expression with resultType string).
 	ServicePrincipalId interface{} `pulumi:"servicePrincipalId"`
-	// The Key of the application used to authenticate against Microsoft Fabric LakeHouse.
+	// The Key of the application used to authenticate against Microsoft Fabric Lakehouse.
 	ServicePrincipalKey interface{} `pulumi:"servicePrincipalKey"`
 	// The name or ID of the tenant to which the service principal belongs. Type: string (or Expression with resultType string).
 	Tenant interface{} `pulumi:"tenant"`
 	// Type of linked service.
-	// Expected value is 'LakeHouse'.
+	// Expected value is 'Lakehouse'.
 	Type string `pulumi:"type"`
 	// Version of the linked service.
 	Version *string `pulumi:"version"`
@@ -15734,7 +15734,7 @@ type LakeHouseLinkedServiceResponse struct {
 	WorkspaceId interface{} `pulumi:"workspaceId"`
 }
 
-// Microsoft Fabric LakeHouse linked service.
+// Microsoft Fabric Lakehouse linked service.
 type LakeHouseLinkedServiceResponseOutput struct{ *pulumi.OutputState }
 
 func (LakeHouseLinkedServiceResponseOutput) ElementType() reflect.Type {
@@ -15754,7 +15754,7 @@ func (o LakeHouseLinkedServiceResponseOutput) Annotations() pulumi.ArrayOutput {
 	return o.ApplyT(func(v LakeHouseLinkedServiceResponse) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
 }
 
-// The ID of Microsoft Fabric LakeHouse artifact. Type: string (or Expression with resultType string).
+// The ID of Microsoft Fabric Lakehouse artifact. Type: string (or Expression with resultType string).
 func (o LakeHouseLinkedServiceResponseOutput) ArtifactId() pulumi.AnyOutput {
 	return o.ApplyT(func(v LakeHouseLinkedServiceResponse) interface{} { return v.ArtifactId }).(pulumi.AnyOutput)
 }
@@ -15789,12 +15789,12 @@ func (o LakeHouseLinkedServiceResponseOutput) ServicePrincipalCredentialType() p
 	return o.ApplyT(func(v LakeHouseLinkedServiceResponse) interface{} { return v.ServicePrincipalCredentialType }).(pulumi.AnyOutput)
 }
 
-// The ID of the application used to authenticate against Microsoft Fabric LakeHouse. Type: string (or Expression with resultType string).
+// The ID of the application used to authenticate against Microsoft Fabric Lakehouse. Type: string (or Expression with resultType string).
 func (o LakeHouseLinkedServiceResponseOutput) ServicePrincipalId() pulumi.AnyOutput {
 	return o.ApplyT(func(v LakeHouseLinkedServiceResponse) interface{} { return v.ServicePrincipalId }).(pulumi.AnyOutput)
 }
 
-// The Key of the application used to authenticate against Microsoft Fabric LakeHouse.
+// The Key of the application used to authenticate against Microsoft Fabric Lakehouse.
 func (o LakeHouseLinkedServiceResponseOutput) ServicePrincipalKey() pulumi.AnyOutput {
 	return o.ApplyT(func(v LakeHouseLinkedServiceResponse) interface{} { return v.ServicePrincipalKey }).(pulumi.AnyOutput)
 }
@@ -15805,7 +15805,7 @@ func (o LakeHouseLinkedServiceResponseOutput) Tenant() pulumi.AnyOutput {
 }
 
 // Type of linked service.
-// Expected value is 'LakeHouse'.
+// Expected value is 'Lakehouse'.
 func (o LakeHouseLinkedServiceResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LakeHouseLinkedServiceResponse) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -15820,7 +15820,7 @@ func (o LakeHouseLinkedServiceResponseOutput) WorkspaceId() pulumi.AnyOutput {
 	return o.ApplyT(func(v LakeHouseLinkedServiceResponse) interface{} { return v.WorkspaceId }).(pulumi.AnyOutput)
 }
 
-// The location of Microsoft Fabric LakeHouse Files dataset.
+// The location of Microsoft Fabric Lakehouse Files dataset.
 type LakeHouseLocation struct {
 	// Specify the file name of dataset. Type: string (or Expression with resultType string).
 	FileName interface{} `pulumi:"fileName"`
@@ -15842,7 +15842,7 @@ type LakeHouseLocationInput interface {
 	ToLakeHouseLocationOutputWithContext(context.Context) LakeHouseLocationOutput
 }
 
-// The location of Microsoft Fabric LakeHouse Files dataset.
+// The location of Microsoft Fabric Lakehouse Files dataset.
 type LakeHouseLocationArgs struct {
 	// Specify the file name of dataset. Type: string (or Expression with resultType string).
 	FileName pulumi.Input `pulumi:"fileName"`
@@ -15865,7 +15865,7 @@ func (i LakeHouseLocationArgs) ToLakeHouseLocationOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(LakeHouseLocationOutput)
 }
 
-// The location of Microsoft Fabric LakeHouse Files dataset.
+// The location of Microsoft Fabric Lakehouse Files dataset.
 type LakeHouseLocationOutput struct{ *pulumi.OutputState }
 
 func (LakeHouseLocationOutput) ElementType() reflect.Type {
@@ -15896,7 +15896,7 @@ func (o LakeHouseLocationOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LakeHouseLocation) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// The location of Microsoft Fabric LakeHouse Files dataset.
+// The location of Microsoft Fabric Lakehouse Files dataset.
 type LakeHouseLocationResponse struct {
 	// Specify the file name of dataset. Type: string (or Expression with resultType string).
 	FileName interface{} `pulumi:"fileName"`
@@ -15907,7 +15907,7 @@ type LakeHouseLocationResponse struct {
 	Type string `pulumi:"type"`
 }
 
-// The location of Microsoft Fabric LakeHouse Files dataset.
+// The location of Microsoft Fabric Lakehouse Files dataset.
 type LakeHouseLocationResponseOutput struct{ *pulumi.OutputState }
 
 func (LakeHouseLocationResponseOutput) ElementType() reflect.Type {
@@ -15938,7 +15938,7 @@ func (o LakeHouseLocationResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LakeHouseLocationResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Microsoft Fabric LakeHouse Files read settings.
+// Microsoft Fabric Lakehouse Files read settings.
 type LakeHouseReadSettings struct {
 	// Indicates whether the source files need to be deleted after copy completion. Default is false. Type: boolean (or Expression with resultType boolean).
 	DeleteFilesAfterCompletion interface{} `pulumi:"deleteFilesAfterCompletion"`
@@ -15961,9 +15961,9 @@ type LakeHouseReadSettings struct {
 	// The read setting type.
 	// Expected value is 'LakeHouseReadSettings'.
 	Type string `pulumi:"type"`
-	// Microsoft Fabric LakeHouse Files wildcardFileName. Type: string (or Expression with resultType string).
+	// Microsoft Fabric Lakehouse Files wildcardFileName. Type: string (or Expression with resultType string).
 	WildcardFileName interface{} `pulumi:"wildcardFileName"`
-	// Microsoft Fabric LakeHouse Files wildcardFolderPath. Type: string (or Expression with resultType string).
+	// Microsoft Fabric Lakehouse Files wildcardFolderPath. Type: string (or Expression with resultType string).
 	WildcardFolderPath interface{} `pulumi:"wildcardFolderPath"`
 }
 
@@ -15978,7 +15978,7 @@ type LakeHouseReadSettingsInput interface {
 	ToLakeHouseReadSettingsOutputWithContext(context.Context) LakeHouseReadSettingsOutput
 }
 
-// Microsoft Fabric LakeHouse Files read settings.
+// Microsoft Fabric Lakehouse Files read settings.
 type LakeHouseReadSettingsArgs struct {
 	// Indicates whether the source files need to be deleted after copy completion. Default is false. Type: boolean (or Expression with resultType boolean).
 	DeleteFilesAfterCompletion pulumi.Input `pulumi:"deleteFilesAfterCompletion"`
@@ -16001,9 +16001,9 @@ type LakeHouseReadSettingsArgs struct {
 	// The read setting type.
 	// Expected value is 'LakeHouseReadSettings'.
 	Type pulumi.StringInput `pulumi:"type"`
-	// Microsoft Fabric LakeHouse Files wildcardFileName. Type: string (or Expression with resultType string).
+	// Microsoft Fabric Lakehouse Files wildcardFileName. Type: string (or Expression with resultType string).
 	WildcardFileName pulumi.Input `pulumi:"wildcardFileName"`
-	// Microsoft Fabric LakeHouse Files wildcardFolderPath. Type: string (or Expression with resultType string).
+	// Microsoft Fabric Lakehouse Files wildcardFolderPath. Type: string (or Expression with resultType string).
 	WildcardFolderPath pulumi.Input `pulumi:"wildcardFolderPath"`
 }
 
@@ -16060,7 +16060,7 @@ func (i *lakeHouseReadSettingsPtrType) ToLakeHouseReadSettingsPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(LakeHouseReadSettingsPtrOutput)
 }
 
-// Microsoft Fabric LakeHouse Files read settings.
+// Microsoft Fabric Lakehouse Files read settings.
 type LakeHouseReadSettingsOutput struct{ *pulumi.OutputState }
 
 func (LakeHouseReadSettingsOutput) ElementType() reflect.Type {
@@ -16136,12 +16136,12 @@ func (o LakeHouseReadSettingsOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LakeHouseReadSettings) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Microsoft Fabric LakeHouse Files wildcardFileName. Type: string (or Expression with resultType string).
+// Microsoft Fabric Lakehouse Files wildcardFileName. Type: string (or Expression with resultType string).
 func (o LakeHouseReadSettingsOutput) WildcardFileName() pulumi.AnyOutput {
 	return o.ApplyT(func(v LakeHouseReadSettings) interface{} { return v.WildcardFileName }).(pulumi.AnyOutput)
 }
 
-// Microsoft Fabric LakeHouse Files wildcardFolderPath. Type: string (or Expression with resultType string).
+// Microsoft Fabric Lakehouse Files wildcardFolderPath. Type: string (or Expression with resultType string).
 func (o LakeHouseReadSettingsOutput) WildcardFolderPath() pulumi.AnyOutput {
 	return o.ApplyT(func(v LakeHouseReadSettings) interface{} { return v.WildcardFolderPath }).(pulumi.AnyOutput)
 }
@@ -16271,7 +16271,7 @@ func (o LakeHouseReadSettingsPtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Microsoft Fabric LakeHouse Files wildcardFileName. Type: string (or Expression with resultType string).
+// Microsoft Fabric Lakehouse Files wildcardFileName. Type: string (or Expression with resultType string).
 func (o LakeHouseReadSettingsPtrOutput) WildcardFileName() pulumi.AnyOutput {
 	return o.ApplyT(func(v *LakeHouseReadSettings) interface{} {
 		if v == nil {
@@ -16281,7 +16281,7 @@ func (o LakeHouseReadSettingsPtrOutput) WildcardFileName() pulumi.AnyOutput {
 	}).(pulumi.AnyOutput)
 }
 
-// Microsoft Fabric LakeHouse Files wildcardFolderPath. Type: string (or Expression with resultType string).
+// Microsoft Fabric Lakehouse Files wildcardFolderPath. Type: string (or Expression with resultType string).
 func (o LakeHouseReadSettingsPtrOutput) WildcardFolderPath() pulumi.AnyOutput {
 	return o.ApplyT(func(v *LakeHouseReadSettings) interface{} {
 		if v == nil {
@@ -16291,7 +16291,7 @@ func (o LakeHouseReadSettingsPtrOutput) WildcardFolderPath() pulumi.AnyOutput {
 	}).(pulumi.AnyOutput)
 }
 
-// Microsoft Fabric LakeHouse Files read settings.
+// Microsoft Fabric Lakehouse Files read settings.
 type LakeHouseReadSettingsResponse struct {
 	// Indicates whether the source files need to be deleted after copy completion. Default is false. Type: boolean (or Expression with resultType boolean).
 	DeleteFilesAfterCompletion interface{} `pulumi:"deleteFilesAfterCompletion"`
@@ -16314,13 +16314,13 @@ type LakeHouseReadSettingsResponse struct {
 	// The read setting type.
 	// Expected value is 'LakeHouseReadSettings'.
 	Type string `pulumi:"type"`
-	// Microsoft Fabric LakeHouse Files wildcardFileName. Type: string (or Expression with resultType string).
+	// Microsoft Fabric Lakehouse Files wildcardFileName. Type: string (or Expression with resultType string).
 	WildcardFileName interface{} `pulumi:"wildcardFileName"`
-	// Microsoft Fabric LakeHouse Files wildcardFolderPath. Type: string (or Expression with resultType string).
+	// Microsoft Fabric Lakehouse Files wildcardFolderPath. Type: string (or Expression with resultType string).
 	WildcardFolderPath interface{} `pulumi:"wildcardFolderPath"`
 }
 
-// Microsoft Fabric LakeHouse Files read settings.
+// Microsoft Fabric Lakehouse Files read settings.
 type LakeHouseReadSettingsResponseOutput struct{ *pulumi.OutputState }
 
 func (LakeHouseReadSettingsResponseOutput) ElementType() reflect.Type {
@@ -16386,12 +16386,12 @@ func (o LakeHouseReadSettingsResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LakeHouseReadSettingsResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Microsoft Fabric LakeHouse Files wildcardFileName. Type: string (or Expression with resultType string).
+// Microsoft Fabric Lakehouse Files wildcardFileName. Type: string (or Expression with resultType string).
 func (o LakeHouseReadSettingsResponseOutput) WildcardFileName() pulumi.AnyOutput {
 	return o.ApplyT(func(v LakeHouseReadSettingsResponse) interface{} { return v.WildcardFileName }).(pulumi.AnyOutput)
 }
 
-// Microsoft Fabric LakeHouse Files wildcardFolderPath. Type: string (or Expression with resultType string).
+// Microsoft Fabric Lakehouse Files wildcardFolderPath. Type: string (or Expression with resultType string).
 func (o LakeHouseReadSettingsResponseOutput) WildcardFolderPath() pulumi.AnyOutput {
 	return o.ApplyT(func(v LakeHouseReadSettingsResponse) interface{} { return v.WildcardFolderPath }).(pulumi.AnyOutput)
 }
@@ -16521,7 +16521,7 @@ func (o LakeHouseReadSettingsResponsePtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Microsoft Fabric LakeHouse Files wildcardFileName. Type: string (or Expression with resultType string).
+// Microsoft Fabric Lakehouse Files wildcardFileName. Type: string (or Expression with resultType string).
 func (o LakeHouseReadSettingsResponsePtrOutput) WildcardFileName() pulumi.AnyOutput {
 	return o.ApplyT(func(v *LakeHouseReadSettingsResponse) interface{} {
 		if v == nil {
@@ -16531,7 +16531,7 @@ func (o LakeHouseReadSettingsResponsePtrOutput) WildcardFileName() pulumi.AnyOut
 	}).(pulumi.AnyOutput)
 }
 
-// Microsoft Fabric LakeHouse Files wildcardFolderPath. Type: string (or Expression with resultType string).
+// Microsoft Fabric Lakehouse Files wildcardFolderPath. Type: string (or Expression with resultType string).
 func (o LakeHouseReadSettingsResponsePtrOutput) WildcardFolderPath() pulumi.AnyOutput {
 	return o.ApplyT(func(v *LakeHouseReadSettingsResponse) interface{} {
 		if v == nil {
@@ -16541,7 +16541,7 @@ func (o LakeHouseReadSettingsResponsePtrOutput) WildcardFolderPath() pulumi.AnyO
 	}).(pulumi.AnyOutput)
 }
 
-// Microsoft Fabric LakeHouse Table.
+// Microsoft Fabric Lakehouse Table.
 type LakeHouseTableDataset struct {
 	// List of tags that can be used for describing the Dataset.
 	Annotations []interface{} `pulumi:"annotations"`
@@ -16557,10 +16557,10 @@ type LakeHouseTableDataset struct {
 	Schema interface{} `pulumi:"schema"`
 	// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
 	Structure interface{} `pulumi:"structure"`
-	// The name of Microsoft Fabric LakeHouse Table. Type: string (or Expression with resultType string).
+	// The name of Microsoft Fabric Lakehouse Table. Type: string (or Expression with resultType string).
 	Table interface{} `pulumi:"table"`
 	// Type of dataset.
-	// Expected value is 'LakeHouseTable'.
+	// Expected value is 'LakehouseTable'.
 	Type string `pulumi:"type"`
 }
 
@@ -16575,7 +16575,7 @@ type LakeHouseTableDatasetInput interface {
 	ToLakeHouseTableDatasetOutputWithContext(context.Context) LakeHouseTableDatasetOutput
 }
 
-// Microsoft Fabric LakeHouse Table.
+// Microsoft Fabric Lakehouse Table.
 type LakeHouseTableDatasetArgs struct {
 	// List of tags that can be used for describing the Dataset.
 	Annotations pulumi.ArrayInput `pulumi:"annotations"`
@@ -16591,10 +16591,10 @@ type LakeHouseTableDatasetArgs struct {
 	Schema pulumi.Input `pulumi:"schema"`
 	// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
 	Structure pulumi.Input `pulumi:"structure"`
-	// The name of Microsoft Fabric LakeHouse Table. Type: string (or Expression with resultType string).
+	// The name of Microsoft Fabric Lakehouse Table. Type: string (or Expression with resultType string).
 	Table pulumi.Input `pulumi:"table"`
 	// Type of dataset.
-	// Expected value is 'LakeHouseTable'.
+	// Expected value is 'LakehouseTable'.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -16610,7 +16610,7 @@ func (i LakeHouseTableDatasetArgs) ToLakeHouseTableDatasetOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(LakeHouseTableDatasetOutput)
 }
 
-// Microsoft Fabric LakeHouse Table.
+// Microsoft Fabric Lakehouse Table.
 type LakeHouseTableDatasetOutput struct{ *pulumi.OutputState }
 
 func (LakeHouseTableDatasetOutput) ElementType() reflect.Type {
@@ -16660,18 +16660,18 @@ func (o LakeHouseTableDatasetOutput) Structure() pulumi.AnyOutput {
 	return o.ApplyT(func(v LakeHouseTableDataset) interface{} { return v.Structure }).(pulumi.AnyOutput)
 }
 
-// The name of Microsoft Fabric LakeHouse Table. Type: string (or Expression with resultType string).
+// The name of Microsoft Fabric Lakehouse Table. Type: string (or Expression with resultType string).
 func (o LakeHouseTableDatasetOutput) Table() pulumi.AnyOutput {
 	return o.ApplyT(func(v LakeHouseTableDataset) interface{} { return v.Table }).(pulumi.AnyOutput)
 }
 
 // Type of dataset.
-// Expected value is 'LakeHouseTable'.
+// Expected value is 'LakehouseTable'.
 func (o LakeHouseTableDatasetOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LakeHouseTableDataset) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Microsoft Fabric LakeHouse Table.
+// Microsoft Fabric Lakehouse Table.
 type LakeHouseTableDatasetResponse struct {
 	// List of tags that can be used for describing the Dataset.
 	Annotations []interface{} `pulumi:"annotations"`
@@ -16687,14 +16687,14 @@ type LakeHouseTableDatasetResponse struct {
 	Schema interface{} `pulumi:"schema"`
 	// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
 	Structure interface{} `pulumi:"structure"`
-	// The name of Microsoft Fabric LakeHouse Table. Type: string (or Expression with resultType string).
+	// The name of Microsoft Fabric Lakehouse Table. Type: string (or Expression with resultType string).
 	Table interface{} `pulumi:"table"`
 	// Type of dataset.
-	// Expected value is 'LakeHouseTable'.
+	// Expected value is 'LakehouseTable'.
 	Type string `pulumi:"type"`
 }
 
-// Microsoft Fabric LakeHouse Table.
+// Microsoft Fabric Lakehouse Table.
 type LakeHouseTableDatasetResponseOutput struct{ *pulumi.OutputState }
 
 func (LakeHouseTableDatasetResponseOutput) ElementType() reflect.Type {
@@ -16744,18 +16744,18 @@ func (o LakeHouseTableDatasetResponseOutput) Structure() pulumi.AnyOutput {
 	return o.ApplyT(func(v LakeHouseTableDatasetResponse) interface{} { return v.Structure }).(pulumi.AnyOutput)
 }
 
-// The name of Microsoft Fabric LakeHouse Table. Type: string (or Expression with resultType string).
+// The name of Microsoft Fabric Lakehouse Table. Type: string (or Expression with resultType string).
 func (o LakeHouseTableDatasetResponseOutput) Table() pulumi.AnyOutput {
 	return o.ApplyT(func(v LakeHouseTableDatasetResponse) interface{} { return v.Table }).(pulumi.AnyOutput)
 }
 
 // Type of dataset.
-// Expected value is 'LakeHouseTable'.
+// Expected value is 'LakehouseTable'.
 func (o LakeHouseTableDatasetResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LakeHouseTableDatasetResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// A copy activity for Microsoft Fabric LakeHouse Table sink.
+// A copy activity for Microsoft Fabric Lakehouse Table sink.
 type LakeHouseTableSink struct {
 	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
 	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
@@ -16769,7 +16769,7 @@ type LakeHouseTableSink struct {
 	SinkRetryCount interface{} `pulumi:"sinkRetryCount"`
 	// Sink retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
 	SinkRetryWait interface{} `pulumi:"sinkRetryWait"`
-	// The type of table action for LakeHouse Table sink. Possible values include: "None", "Append", "Overwrite".
+	// The type of table action for Lakehouse Table sink. Possible values include: "None", "Append", "Overwrite".
 	TableActionOption interface{} `pulumi:"tableActionOption"`
 	// Copy sink type.
 	// Expected value is 'LakeHouseTableSink'.
@@ -16791,7 +16791,7 @@ type LakeHouseTableSinkInput interface {
 	ToLakeHouseTableSinkOutputWithContext(context.Context) LakeHouseTableSinkOutput
 }
 
-// A copy activity for Microsoft Fabric LakeHouse Table sink.
+// A copy activity for Microsoft Fabric Lakehouse Table sink.
 type LakeHouseTableSinkArgs struct {
 	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
 	DisableMetricsCollection pulumi.Input `pulumi:"disableMetricsCollection"`
@@ -16805,7 +16805,7 @@ type LakeHouseTableSinkArgs struct {
 	SinkRetryCount pulumi.Input `pulumi:"sinkRetryCount"`
 	// Sink retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
 	SinkRetryWait pulumi.Input `pulumi:"sinkRetryWait"`
-	// The type of table action for LakeHouse Table sink. Possible values include: "None", "Append", "Overwrite".
+	// The type of table action for Lakehouse Table sink. Possible values include: "None", "Append", "Overwrite".
 	TableActionOption pulumi.Input `pulumi:"tableActionOption"`
 	// Copy sink type.
 	// Expected value is 'LakeHouseTableSink'.
@@ -16828,7 +16828,7 @@ func (i LakeHouseTableSinkArgs) ToLakeHouseTableSinkOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(LakeHouseTableSinkOutput)
 }
 
-// A copy activity for Microsoft Fabric LakeHouse Table sink.
+// A copy activity for Microsoft Fabric Lakehouse Table sink.
 type LakeHouseTableSinkOutput struct{ *pulumi.OutputState }
 
 func (LakeHouseTableSinkOutput) ElementType() reflect.Type {
@@ -16873,7 +16873,7 @@ func (o LakeHouseTableSinkOutput) SinkRetryWait() pulumi.AnyOutput {
 	return o.ApplyT(func(v LakeHouseTableSink) interface{} { return v.SinkRetryWait }).(pulumi.AnyOutput)
 }
 
-// The type of table action for LakeHouse Table sink. Possible values include: "None", "Append", "Overwrite".
+// The type of table action for Lakehouse Table sink. Possible values include: "None", "Append", "Overwrite".
 func (o LakeHouseTableSinkOutput) TableActionOption() pulumi.AnyOutput {
 	return o.ApplyT(func(v LakeHouseTableSink) interface{} { return v.TableActionOption }).(pulumi.AnyOutput)
 }
@@ -16894,7 +16894,7 @@ func (o LakeHouseTableSinkOutput) WriteBatchTimeout() pulumi.AnyOutput {
 	return o.ApplyT(func(v LakeHouseTableSink) interface{} { return v.WriteBatchTimeout }).(pulumi.AnyOutput)
 }
 
-// A copy activity for Microsoft Fabric LakeHouse Table sink.
+// A copy activity for Microsoft Fabric Lakehouse Table sink.
 type LakeHouseTableSinkResponse struct {
 	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
 	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
@@ -16908,7 +16908,7 @@ type LakeHouseTableSinkResponse struct {
 	SinkRetryCount interface{} `pulumi:"sinkRetryCount"`
 	// Sink retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
 	SinkRetryWait interface{} `pulumi:"sinkRetryWait"`
-	// The type of table action for LakeHouse Table sink. Possible values include: "None", "Append", "Overwrite".
+	// The type of table action for Lakehouse Table sink. Possible values include: "None", "Append", "Overwrite".
 	TableActionOption interface{} `pulumi:"tableActionOption"`
 	// Copy sink type.
 	// Expected value is 'LakeHouseTableSink'.
@@ -16919,7 +16919,7 @@ type LakeHouseTableSinkResponse struct {
 	WriteBatchTimeout interface{} `pulumi:"writeBatchTimeout"`
 }
 
-// A copy activity for Microsoft Fabric LakeHouse Table sink.
+// A copy activity for Microsoft Fabric Lakehouse Table sink.
 type LakeHouseTableSinkResponseOutput struct{ *pulumi.OutputState }
 
 func (LakeHouseTableSinkResponseOutput) ElementType() reflect.Type {
@@ -16964,7 +16964,7 @@ func (o LakeHouseTableSinkResponseOutput) SinkRetryWait() pulumi.AnyOutput {
 	return o.ApplyT(func(v LakeHouseTableSinkResponse) interface{} { return v.SinkRetryWait }).(pulumi.AnyOutput)
 }
 
-// The type of table action for LakeHouse Table sink. Possible values include: "None", "Append", "Overwrite".
+// The type of table action for Lakehouse Table sink. Possible values include: "None", "Append", "Overwrite".
 func (o LakeHouseTableSinkResponseOutput) TableActionOption() pulumi.AnyOutput {
 	return o.ApplyT(func(v LakeHouseTableSinkResponse) interface{} { return v.TableActionOption }).(pulumi.AnyOutput)
 }
@@ -16985,7 +16985,7 @@ func (o LakeHouseTableSinkResponseOutput) WriteBatchTimeout() pulumi.AnyOutput {
 	return o.ApplyT(func(v LakeHouseTableSinkResponse) interface{} { return v.WriteBatchTimeout }).(pulumi.AnyOutput)
 }
 
-// A copy activity source for Microsoft Fabric LakeHouse Table.
+// A copy activity source for Microsoft Fabric Lakehouse Table.
 type LakeHouseTableSource struct {
 	// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
 	AdditionalColumns interface{} `pulumi:"additionalColumns"`
@@ -17017,7 +17017,7 @@ type LakeHouseTableSourceInput interface {
 	ToLakeHouseTableSourceOutputWithContext(context.Context) LakeHouseTableSourceOutput
 }
 
-// A copy activity source for Microsoft Fabric LakeHouse Table.
+// A copy activity source for Microsoft Fabric Lakehouse Table.
 type LakeHouseTableSourceArgs struct {
 	// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
 	AdditionalColumns pulumi.Input `pulumi:"additionalColumns"`
@@ -17050,7 +17050,7 @@ func (i LakeHouseTableSourceArgs) ToLakeHouseTableSourceOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(LakeHouseTableSourceOutput)
 }
 
-// A copy activity source for Microsoft Fabric LakeHouse Table.
+// A copy activity source for Microsoft Fabric Lakehouse Table.
 type LakeHouseTableSourceOutput struct{ *pulumi.OutputState }
 
 func (LakeHouseTableSourceOutput) ElementType() reflect.Type {
@@ -17106,7 +17106,7 @@ func (o LakeHouseTableSourceOutput) VersionAsOf() pulumi.AnyOutput {
 	return o.ApplyT(func(v LakeHouseTableSource) interface{} { return v.VersionAsOf }).(pulumi.AnyOutput)
 }
 
-// A copy activity source for Microsoft Fabric LakeHouse Table.
+// A copy activity source for Microsoft Fabric Lakehouse Table.
 type LakeHouseTableSourceResponse struct {
 	// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
 	AdditionalColumns interface{} `pulumi:"additionalColumns"`
@@ -17127,7 +17127,7 @@ type LakeHouseTableSourceResponse struct {
 	VersionAsOf interface{} `pulumi:"versionAsOf"`
 }
 
-// A copy activity source for Microsoft Fabric LakeHouse Table.
+// A copy activity source for Microsoft Fabric Lakehouse Table.
 type LakeHouseTableSourceResponseOutput struct{ *pulumi.OutputState }
 
 func (LakeHouseTableSourceResponseOutput) ElementType() reflect.Type {
@@ -17183,7 +17183,7 @@ func (o LakeHouseTableSourceResponseOutput) VersionAsOf() pulumi.AnyOutput {
 	return o.ApplyT(func(v LakeHouseTableSourceResponse) interface{} { return v.VersionAsOf }).(pulumi.AnyOutput)
 }
 
-// Microsoft Fabric LakeHouse Files write settings.
+// Microsoft Fabric Lakehouse Files write settings.
 type LakeHouseWriteSettings struct {
 	// The type of copy behavior for copy sink.
 	CopyBehavior interface{} `pulumi:"copyBehavior"`
@@ -17209,7 +17209,7 @@ type LakeHouseWriteSettingsInput interface {
 	ToLakeHouseWriteSettingsOutputWithContext(context.Context) LakeHouseWriteSettingsOutput
 }
 
-// Microsoft Fabric LakeHouse Files write settings.
+// Microsoft Fabric Lakehouse Files write settings.
 type LakeHouseWriteSettingsArgs struct {
 	// The type of copy behavior for copy sink.
 	CopyBehavior pulumi.Input `pulumi:"copyBehavior"`
@@ -17277,7 +17277,7 @@ func (i *lakeHouseWriteSettingsPtrType) ToLakeHouseWriteSettingsPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(LakeHouseWriteSettingsPtrOutput)
 }
 
-// Microsoft Fabric LakeHouse Files write settings.
+// Microsoft Fabric Lakehouse Files write settings.
 type LakeHouseWriteSettingsOutput struct{ *pulumi.OutputState }
 
 func (LakeHouseWriteSettingsOutput) ElementType() reflect.Type {
@@ -17403,7 +17403,7 @@ func (o LakeHouseWriteSettingsPtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Microsoft Fabric LakeHouse Files write settings.
+// Microsoft Fabric Lakehouse Files write settings.
 type LakeHouseWriteSettingsResponse struct {
 	// The type of copy behavior for copy sink.
 	CopyBehavior interface{} `pulumi:"copyBehavior"`
@@ -17418,7 +17418,7 @@ type LakeHouseWriteSettingsResponse struct {
 	Type string `pulumi:"type"`
 }
 
-// Microsoft Fabric LakeHouse Files write settings.
+// Microsoft Fabric Lakehouse Files write settings.
 type LakeHouseWriteSettingsResponseOutput struct{ *pulumi.OutputState }
 
 func (LakeHouseWriteSettingsResponseOutput) ElementType() reflect.Type {
