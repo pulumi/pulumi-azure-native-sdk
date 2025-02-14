@@ -58,6 +58,9 @@ func NewCaCertificate(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:eventgrid/v20241215preview:CaCertificate"),
 		},
 		{
+			Type: pulumi.String("azure-native:eventgrid/v20250215:CaCertificate"),
+		},
+		{
 			Type: pulumi.String("azure-native:eventgrid:CaCertificate"),
 		},
 	})

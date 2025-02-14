@@ -33,8 +33,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AppServicePlanRouteForVnet{}
 	case "azure-native:web/v20240401:Certificate":
 		r = &Certificate{}
-	case "azure-native:web/v20240401:ContainerApp":
-		r = &ContainerApp{}
 	case "azure-native:web/v20240401:KubeEnvironment":
 		r = &KubeEnvironment{}
 	case "azure-native:web/v20240401:StaticSite":

@@ -58,6 +58,9 @@ func NewTopicSpace(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:eventgrid/v20240601preview:TopicSpace"),
 		},
 		{
+			Type: pulumi.String("azure-native:eventgrid/v20250215:TopicSpace"),
+		},
+		{
 			Type: pulumi.String("azure-native:eventgrid:TopicSpace"),
 		},
 	})

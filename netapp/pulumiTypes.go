@@ -2120,6 +2120,59 @@ func (o HourlyScheduleResponsePtrOutput) UsedBytes() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
+// Pairs of virtual network ID and private endpoint ID. Every virtual network that has volumes encrypted with customer-managed keys needs its own key vault private endpoint.
+type KeyVaultPrivateEndpointResponse struct {
+	// Identifier of the private endpoint to reach the Azure Key Vault
+	PrivateEndpointId *string `pulumi:"privateEndpointId"`
+	// Identifier for the virtual network id
+	VirtualNetworkId *string `pulumi:"virtualNetworkId"`
+}
+
+// Pairs of virtual network ID and private endpoint ID. Every virtual network that has volumes encrypted with customer-managed keys needs its own key vault private endpoint.
+type KeyVaultPrivateEndpointResponseOutput struct{ *pulumi.OutputState }
+
+func (KeyVaultPrivateEndpointResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyVaultPrivateEndpointResponse)(nil)).Elem()
+}
+
+func (o KeyVaultPrivateEndpointResponseOutput) ToKeyVaultPrivateEndpointResponseOutput() KeyVaultPrivateEndpointResponseOutput {
+	return o
+}
+
+func (o KeyVaultPrivateEndpointResponseOutput) ToKeyVaultPrivateEndpointResponseOutputWithContext(ctx context.Context) KeyVaultPrivateEndpointResponseOutput {
+	return o
+}
+
+// Identifier of the private endpoint to reach the Azure Key Vault
+func (o KeyVaultPrivateEndpointResponseOutput) PrivateEndpointId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeyVaultPrivateEndpointResponse) *string { return v.PrivateEndpointId }).(pulumi.StringPtrOutput)
+}
+
+// Identifier for the virtual network id
+func (o KeyVaultPrivateEndpointResponseOutput) VirtualNetworkId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeyVaultPrivateEndpointResponse) *string { return v.VirtualNetworkId }).(pulumi.StringPtrOutput)
+}
+
+type KeyVaultPrivateEndpointResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (KeyVaultPrivateEndpointResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KeyVaultPrivateEndpointResponse)(nil)).Elem()
+}
+
+func (o KeyVaultPrivateEndpointResponseArrayOutput) ToKeyVaultPrivateEndpointResponseArrayOutput() KeyVaultPrivateEndpointResponseArrayOutput {
+	return o
+}
+
+func (o KeyVaultPrivateEndpointResponseArrayOutput) ToKeyVaultPrivateEndpointResponseArrayOutputWithContext(ctx context.Context) KeyVaultPrivateEndpointResponseArrayOutput {
+	return o
+}
+
+func (o KeyVaultPrivateEndpointResponseArrayOutput) Index(i pulumi.IntInput) KeyVaultPrivateEndpointResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KeyVaultPrivateEndpointResponse {
+		return vs[0].([]KeyVaultPrivateEndpointResponse)[vs[1].(int)]
+	}).(KeyVaultPrivateEndpointResponseOutput)
+}
+
 // Properties of key vault.
 type KeyVaultProperties struct {
 	// The name of KeyVault key.
@@ -7231,6 +7284,8 @@ func init() {
 	pulumi.RegisterOutputType(HourlySchedulePtrOutput{})
 	pulumi.RegisterOutputType(HourlyScheduleResponseOutput{})
 	pulumi.RegisterOutputType(HourlyScheduleResponsePtrOutput{})
+	pulumi.RegisterOutputType(KeyVaultPrivateEndpointResponseOutput{})
+	pulumi.RegisterOutputType(KeyVaultPrivateEndpointResponseArrayOutput{})
 	pulumi.RegisterOutputType(KeyVaultPropertiesOutput{})
 	pulumi.RegisterOutputType(KeyVaultPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(KeyVaultPropertiesResponseOutput{})

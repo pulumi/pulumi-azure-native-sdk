@@ -10,15 +10,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// To deploy firewall, choose the Standard/Premium based on the desired SKU. Choose None for no firewall and UseExisting for a pre existing one.
+// Parameter used for deploying a Firewall: Select 'No' to skip deployment, 'Standard' to deploy the Standard SKU, or 'Premium' to deploy the Premium SKU.
 type FirewallCreationOptions string
 
 const (
-	// Value when a firewall resource is not created.
+	// Select 'None' value to skip Firewall deployment.
 	FirewallCreationOptionsNone = FirewallCreationOptions("None")
-	// Value when the firewall creation is based on the standard SKU.
+	// Select 'Standard' value to deploy the Firewall Standard SKU.
 	FirewallCreationOptionsStandard = FirewallCreationOptions("Standard")
-	// Value when the firewall creation is based on the premium SKU.
+	// Select 'Premium' value to deploy the Firewall Premium SKU.
 	FirewallCreationOptionsPremium = FirewallCreationOptions("Premium")
 )
 
@@ -519,7 +519,7 @@ func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedServiceIdentityTypePtrOutput)
 }
 
-// To deploy log analytics workspace, choose Yes, otherwise No. Select UseExisting to provide an existing log analytics workspace.
+// Parameter used to deploy a log analytics workspace: Select 'Yes' to enable deployment, 'No' to skip it, or 'Existing' to reuse an existing log analytics workspace.
 type ResourceCreationOptions string
 
 const (
@@ -694,25 +694,25 @@ func (in *resourceCreationOptionsPtr) ToResourceCreationOptionsPtrOutputWithCont
 type ResourceType string
 
 const (
-	// Value when customer wants to provide custom naming convention for Azure Firewall.
+	// Value when customer wants to provide a custom naming convention for Azure Firewall.
 	ResourceTypeAzureFirewalls = ResourceType("azureFirewalls")
-	// Value when customer wants to provide custom naming convention for Log Analytics workspace.
+	// Value when customer wants to provide a custom naming convention for Log Analytics workspace.
 	ResourceTypeWorkspaces = ResourceType("workspaces")
-	// Value when customer wants to provide custom naming convention for automation account.
+	// Value when customer wants to provide a custom naming convention for automation account.
 	ResourceTypeAutomationAccounts = ResourceType("automationAccounts")
-	// Value when customer wants to provide custom naming convention for dashboard.
+	// Value when customer wants to provide a custom naming convention for dashboard.
 	ResourceTypeDashboards = ResourceType("dashboards")
-	// Value when customer wants to provide custom naming convention for managed identity.
+	// Value when customer wants to provide a custom naming convention for managed identity.
 	ResourceTypeUserAssignedIdentities = ResourceType("userAssignedIdentities")
-	// Value when customer wants to provide custom naming convention for Bastion.
+	// Value when customer wants to provide a custom naming convention for Bastion.
 	ResourceTypeBastionHosts = ResourceType("bastionHosts")
-	// Value when customer wants to provide custom naming convention for DDoS protection plan.
+	// Value when customer wants to provide a custom naming convention for DDoS protection plan.
 	ResourceTypeDdosProtectionPlans = ResourceType("ddosProtectionPlans")
-	// Value when customer wants to provide custom naming convention for Bastion NSG.
+	// Value when customer wants to provide a custom naming convention for Bastion NSG.
 	ResourceTypeNetworkSecurityGroups = ResourceType("networkSecurityGroups")
-	// Value when customer wants to provide custom naming convention for virtual network.
+	// Value when customer wants to provide a custom naming convention for virtual network.
 	ResourceTypeVirtualNetworks = ResourceType("virtualNetworks")
-	// Value when customer wants to provide custom naming convention for route table.
+	// Value when customer wants to provide a custom naming convention for route table.
 	ResourceTypeRouteTables = ResourceType("routeTables")
 )
 

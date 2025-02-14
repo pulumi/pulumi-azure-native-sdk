@@ -75,6 +75,9 @@ func NewPartnerTopic(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:eventgrid/v20240601preview:PartnerTopic"),
 		},
 		{
+			Type: pulumi.String("azure-native:eventgrid/v20250215:PartnerTopic"),
+		},
+		{
 			Type: pulumi.String("azure-native:eventgrid:PartnerTopic"),
 		},
 	})

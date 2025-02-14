@@ -14,7 +14,7 @@ import (
 // List the two keys used to publish to a namespace.
 // Azure REST API version: 2023-06-01-preview.
 //
-// Other available API versions: 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview.
+// Other available API versions: 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-02-15.
 func ListNamespaceSharedAccessKeys(ctx *pulumi.Context, args *ListNamespaceSharedAccessKeysArgs, opts ...pulumi.InvokeOption) (*ListNamespaceSharedAccessKeysResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListNamespaceSharedAccessKeysResult

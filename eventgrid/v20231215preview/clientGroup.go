@@ -55,6 +55,9 @@ func NewClientGroup(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:eventgrid/v20241215preview:ClientGroup"),
 		},
 		{
+			Type: pulumi.String("azure-native:eventgrid/v20250215:ClientGroup"),
+		},
+		{
 			Type: pulumi.String("azure-native:eventgrid:ClientGroup"),
 		},
 	})

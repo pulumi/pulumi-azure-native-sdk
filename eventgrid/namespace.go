@@ -15,7 +15,7 @@ import (
 // Namespace resource.
 // Azure REST API version: 2023-06-01-preview.
 //
-// Other available API versions: 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview.
+// Other available API versions: 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-02-15.
 type Namespace struct {
 	pulumi.CustomResourceState
 
@@ -77,6 +77,9 @@ func NewNamespace(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:eventgrid/v20241215preview:Namespace"),
+		},
+		{
+			Type: pulumi.String("azure-native:eventgrid/v20250215:Namespace"),
 		},
 	})
 	opts = append(opts, aliases)

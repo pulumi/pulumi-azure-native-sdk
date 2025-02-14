@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Gets the landing zone account.
+// Get a landing zone account.
 func LookupLandingZoneAccountOperation(ctx *pulumi.Context, args *LookupLandingZoneAccountOperationArgs, opts ...pulumi.InvokeOption) (*LookupLandingZoneAccountOperationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupLandingZoneAccountOperationResult
@@ -23,13 +23,13 @@ func LookupLandingZoneAccountOperation(ctx *pulumi.Context, args *LookupLandingZ
 }
 
 type LookupLandingZoneAccountOperationArgs struct {
-	// The parent landing zone account
+	// The landing zone account.
 	LandingZoneAccountName string `pulumi:"landingZoneAccountName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
-// The Landing zone account parent resource type.
+// The Landing zone account resource type. A Landing zone account is the container for configuring, deploying and managing multiple landing zones.
 type LookupLandingZoneAccountOperationResult struct {
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
@@ -59,7 +59,7 @@ func LookupLandingZoneAccountOperationOutput(ctx *pulumi.Context, args LookupLan
 }
 
 type LookupLandingZoneAccountOperationOutputArgs struct {
-	// The parent landing zone account
+	// The landing zone account.
 	LandingZoneAccountName pulumi.StringInput `pulumi:"landingZoneAccountName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
@@ -69,7 +69,7 @@ func (LookupLandingZoneAccountOperationOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupLandingZoneAccountOperationArgs)(nil)).Elem()
 }
 
-// The Landing zone account parent resource type.
+// The Landing zone account resource type. A Landing zone account is the container for configuring, deploying and managing multiple landing zones.
 type LookupLandingZoneAccountOperationResultOutput struct{ *pulumi.OutputState }
 
 func (LookupLandingZoneAccountOperationResultOutput) ElementType() reflect.Type {

@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Landing zone account parent resource type.
+// The Landing zone account resource type. A Landing zone account is the container for configuring, deploying and managing multiple landing zones.
 type LandingZoneAccountOperation struct {
 	pulumi.CustomResourceState
 
@@ -83,7 +83,7 @@ func (LandingZoneAccountOperationState) ElementType() reflect.Type {
 type landingZoneAccountOperationArgs struct {
 	// The managed service identities assigned to this resource.
 	Identity *ManagedServiceIdentity `pulumi:"identity"`
-	// The parent landing zone account
+	// The landing zone account.
 	LandingZoneAccountName *string `pulumi:"landingZoneAccountName"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
@@ -99,7 +99,7 @@ type landingZoneAccountOperationArgs struct {
 type LandingZoneAccountOperationArgs struct {
 	// The managed service identities assigned to this resource.
 	Identity ManagedServiceIdentityPtrInput
-	// The parent landing zone account
+	// The landing zone account.
 	LandingZoneAccountName pulumi.StringPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput

@@ -64020,8 +64020,7 @@ type RegistryType struct {
 	RegionDetails []RegistryRegionArmDetails `pulumi:"regionDetails"`
 	// Private endpoint connections info used for pending connections in private link portal
 	RegistryPrivateEndpointConnections []RegistryPrivateEndpointConnection `pulumi:"registryPrivateEndpointConnections"`
-	// List of tuples containing Guid and SyndicatedRegistry
-	SyndicatedRegistries []RegistrySyndicatedRegistries `pulumi:"syndicatedRegistries"`
+	SyndicatedRegistries               []RegistrySyndicatedRegistries      `pulumi:"syndicatedRegistries"`
 }
 
 // RegistryTypeInput is an input type that accepts RegistryTypeArgs and RegistryTypeOutput values.
@@ -64052,8 +64051,7 @@ type RegistryTypeArgs struct {
 	RegionDetails RegistryRegionArmDetailsArrayInput `pulumi:"regionDetails"`
 	// Private endpoint connections info used for pending connections in private link portal
 	RegistryPrivateEndpointConnections RegistryPrivateEndpointConnectionArrayInput `pulumi:"registryPrivateEndpointConnections"`
-	// List of tuples containing Guid and SyndicatedRegistry
-	SyndicatedRegistries RegistrySyndicatedRegistriesArrayInput `pulumi:"syndicatedRegistries"`
+	SyndicatedRegistries               RegistrySyndicatedRegistriesArrayInput      `pulumi:"syndicatedRegistries"`
 }
 
 func (RegistryTypeArgs) ElementType() reflect.Type {
@@ -64119,7 +64117,6 @@ func (o RegistryTypeOutput) RegistryPrivateEndpointConnections() RegistryPrivate
 	return o.ApplyT(func(v RegistryType) []RegistryPrivateEndpointConnection { return v.RegistryPrivateEndpointConnections }).(RegistryPrivateEndpointConnectionArrayOutput)
 }
 
-// List of tuples containing Guid and SyndicatedRegistry
 func (o RegistryTypeOutput) SyndicatedRegistries() RegistrySyndicatedRegistriesArrayOutput {
 	return o.ApplyT(func(v RegistryType) []RegistrySyndicatedRegistries { return v.SyndicatedRegistries }).(RegistrySyndicatedRegistriesArrayOutput)
 }
@@ -65185,8 +65182,7 @@ type RegistryResponse struct {
 	RegionDetails []RegistryRegionArmDetailsResponse `pulumi:"regionDetails"`
 	// Private endpoint connections info used for pending connections in private link portal
 	RegistryPrivateEndpointConnections []RegistryPrivateEndpointConnectionResponse `pulumi:"registryPrivateEndpointConnections"`
-	// List of tuples containing Guid and SyndicatedRegistry
-	SyndicatedRegistries []RegistryResponseSyndicatedRegistries `pulumi:"syndicatedRegistries"`
+	SyndicatedRegistries               []RegistryResponseSyndicatedRegistries      `pulumi:"syndicatedRegistries"`
 }
 
 // Details of the Registry
@@ -65247,16 +65243,13 @@ func (o RegistryResponseOutput) RegistryPrivateEndpointConnections() RegistryPri
 	}).(RegistryPrivateEndpointConnectionResponseArrayOutput)
 }
 
-// List of tuples containing Guid and SyndicatedRegistry
 func (o RegistryResponseOutput) SyndicatedRegistries() RegistryResponseSyndicatedRegistriesArrayOutput {
 	return o.ApplyT(func(v RegistryResponse) []RegistryResponseSyndicatedRegistries { return v.SyndicatedRegistries }).(RegistryResponseSyndicatedRegistriesArrayOutput)
 }
 
 type RegistryResponseSyndicatedRegistries struct {
-	// A registry that is syndicated
-	SyndicatedRegistry *SyndicatedRegistryResponse `pulumi:"syndicatedRegistry"`
-	// The Guid of the syndicated registry
-	SyndicatedRegistryGuid *string `pulumi:"syndicatedRegistryGuid"`
+	// Registry id guid of a destination registry that this registry can syndicate to
+	RegistryId *string `pulumi:"registryId"`
 }
 
 type RegistryResponseSyndicatedRegistriesOutput struct{ *pulumi.OutputState }
@@ -65273,14 +65266,9 @@ func (o RegistryResponseSyndicatedRegistriesOutput) ToRegistryResponseSyndicated
 	return o
 }
 
-// A registry that is syndicated
-func (o RegistryResponseSyndicatedRegistriesOutput) SyndicatedRegistry() SyndicatedRegistryResponsePtrOutput {
-	return o.ApplyT(func(v RegistryResponseSyndicatedRegistries) *SyndicatedRegistryResponse { return v.SyndicatedRegistry }).(SyndicatedRegistryResponsePtrOutput)
-}
-
-// The Guid of the syndicated registry
-func (o RegistryResponseSyndicatedRegistriesOutput) SyndicatedRegistryGuid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RegistryResponseSyndicatedRegistries) *string { return v.SyndicatedRegistryGuid }).(pulumi.StringPtrOutput)
+// Registry id guid of a destination registry that this registry can syndicate to
+func (o RegistryResponseSyndicatedRegistriesOutput) RegistryId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegistryResponseSyndicatedRegistries) *string { return v.RegistryId }).(pulumi.StringPtrOutput)
 }
 
 type RegistryResponseSyndicatedRegistriesArrayOutput struct{ *pulumi.OutputState }
@@ -65304,10 +65292,8 @@ func (o RegistryResponseSyndicatedRegistriesArrayOutput) Index(i pulumi.IntInput
 }
 
 type RegistrySyndicatedRegistries struct {
-	// A registry that is syndicated
-	SyndicatedRegistry *SyndicatedRegistry `pulumi:"syndicatedRegistry"`
-	// The Guid of the syndicated registry
-	SyndicatedRegistryGuid *string `pulumi:"syndicatedRegistryGuid"`
+	// Registry id guid of a destination registry that this registry can syndicate to
+	RegistryId *string `pulumi:"registryId"`
 }
 
 // RegistrySyndicatedRegistriesInput is an input type that accepts RegistrySyndicatedRegistriesArgs and RegistrySyndicatedRegistriesOutput values.
@@ -65322,10 +65308,8 @@ type RegistrySyndicatedRegistriesInput interface {
 }
 
 type RegistrySyndicatedRegistriesArgs struct {
-	// A registry that is syndicated
-	SyndicatedRegistry SyndicatedRegistryPtrInput `pulumi:"syndicatedRegistry"`
-	// The Guid of the syndicated registry
-	SyndicatedRegistryGuid pulumi.StringPtrInput `pulumi:"syndicatedRegistryGuid"`
+	// Registry id guid of a destination registry that this registry can syndicate to
+	RegistryId pulumi.StringPtrInput `pulumi:"registryId"`
 }
 
 func (RegistrySyndicatedRegistriesArgs) ElementType() reflect.Type {
@@ -65379,14 +65363,9 @@ func (o RegistrySyndicatedRegistriesOutput) ToRegistrySyndicatedRegistriesOutput
 	return o
 }
 
-// A registry that is syndicated
-func (o RegistrySyndicatedRegistriesOutput) SyndicatedRegistry() SyndicatedRegistryPtrOutput {
-	return o.ApplyT(func(v RegistrySyndicatedRegistries) *SyndicatedRegistry { return v.SyndicatedRegistry }).(SyndicatedRegistryPtrOutput)
-}
-
-// The Guid of the syndicated registry
-func (o RegistrySyndicatedRegistriesOutput) SyndicatedRegistryGuid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RegistrySyndicatedRegistries) *string { return v.SyndicatedRegistryGuid }).(pulumi.StringPtrOutput)
+// Registry id guid of a destination registry that this registry can syndicate to
+func (o RegistrySyndicatedRegistriesOutput) RegistryId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegistrySyndicatedRegistries) *string { return v.RegistryId }).(pulumi.StringPtrOutput)
 }
 
 type RegistrySyndicatedRegistriesArrayOutput struct{ *pulumi.OutputState }

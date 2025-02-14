@@ -67,6 +67,9 @@ func NewChannel(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:eventgrid/v20241215preview:Channel"),
 		},
 		{
+			Type: pulumi.String("azure-native:eventgrid/v20250215:Channel"),
+		},
+		{
 			Type: pulumi.String("azure-native:eventgrid:Channel"),
 		},
 	})

@@ -13,6 +13,8 @@ import (
 
 // Get a SuppressionListAddress.
 // Azure REST API version: 2023-06-01-preview.
+//
+// Other available API versions: 2024-09-01-preview.
 func LookupSuppressionListAddress(ctx *pulumi.Context, args *LookupSuppressionListAddressArgs, opts ...pulumi.InvokeOption) (*LookupSuppressionListAddressResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSuppressionListAddressResult

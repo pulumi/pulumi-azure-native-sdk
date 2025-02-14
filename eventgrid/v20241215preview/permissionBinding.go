@@ -60,6 +60,9 @@ func NewPermissionBinding(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:eventgrid/v20240601preview:PermissionBinding"),
 		},
 		{
+			Type: pulumi.String("azure-native:eventgrid/v20250215:PermissionBinding"),
+		},
+		{
 			Type: pulumi.String("azure-native:eventgrid:PermissionBinding"),
 		},
 	})
