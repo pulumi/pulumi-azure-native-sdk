@@ -55,6 +55,9 @@ func NewConnectionRaiBlocklistItem(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:machinelearningservices/v20240701preview:ConnectionRaiBlocklistItem"),
 		},
 		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250101preview:ConnectionRaiBlocklistItem"),
+		},
+		{
 			Type: pulumi.String("azure-native:machinelearningservices:ConnectionRaiBlocklistItem"),
 		},
 	})

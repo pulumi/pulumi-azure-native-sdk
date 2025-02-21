@@ -82,6 +82,9 @@ func NewEnvironmentType(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:devcenter/v20241001preview:EnvironmentType"),
 		},
 		{
+			Type: pulumi.String("azure-native:devcenter/v20250201:EnvironmentType"),
+		},
+		{
 			Type: pulumi.String("azure-native:devcenter:EnvironmentType"),
 		},
 	})

@@ -66,6 +66,9 @@ func NewInferenceGroup(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001preview:InferenceGroup"),
 		},
 		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250101preview:InferenceGroup"),
+		},
+		{
 			Type: pulumi.String("azure-native:machinelearningservices:InferenceGroup"),
 		},
 	})

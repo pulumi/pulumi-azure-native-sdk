@@ -90,6 +90,9 @@ func NewPrivateEndpointConnection(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:healthcareapis/v20240301:PrivateEndpointConnection"),
 		},
 		{
+			Type: pulumi.String("azure-native:healthcareapis/v20250301preview:PrivateEndpointConnection"),
+		},
+		{
 			Type: pulumi.String("azure-native:healthcareapis:PrivateEndpointConnection"),
 		},
 	})

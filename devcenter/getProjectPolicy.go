@@ -13,6 +13,8 @@ import (
 
 // Gets a specific project policy.
 // Azure REST API version: 2024-10-01-preview.
+//
+// Other available API versions: 2025-02-01.
 func LookupProjectPolicy(ctx *pulumi.Context, args *LookupProjectPolicyArgs, opts ...pulumi.InvokeOption) (*LookupProjectPolicyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupProjectPolicyResult

@@ -27,7 +27,7 @@ type ListEndpointCredentialsArgs struct {
 	EndpointName string `pulumi:"endpointName"`
 	// The is how long the endpoint access token is valid (in seconds).
 	Expiresin *int `pulumi:"expiresin"`
-	// The fully qualified Azure Resource manager identifier of the resource to be connected.
+	// The fully qualified Azure Resource manager identifier of the resource.
 	ResourceUri string `pulumi:"resourceUri"`
 	// The name of the service. If not provided, the request will by pass the generation of service configuration token
 	ServiceName *string `pulumi:"serviceName"`
@@ -63,7 +63,7 @@ type ListEndpointCredentialsOutputArgs struct {
 	EndpointName pulumi.StringInput `pulumi:"endpointName"`
 	// The is how long the endpoint access token is valid (in seconds).
 	Expiresin pulumi.IntPtrInput `pulumi:"expiresin"`
-	// The fully qualified Azure Resource manager identifier of the resource to be connected.
+	// The fully qualified Azure Resource manager identifier of the resource.
 	ResourceUri pulumi.StringInput `pulumi:"resourceUri"`
 	// The name of the service. If not provided, the request will by pass the generation of service configuration token
 	ServiceName pulumi.StringPtrInput `pulumi:"serviceName"`
