@@ -107,6 +107,9 @@ func NewFhirService(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:healthcareapis/v20240331:FhirService"),
 		},
 		{
+			Type: pulumi.String("azure-native:healthcareapis/v20250301preview:FhirService"),
+		},
+		{
 			Type: pulumi.String("azure-native:healthcareapis:FhirService"),
 		},
 	})

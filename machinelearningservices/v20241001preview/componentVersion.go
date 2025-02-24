@@ -99,6 +99,9 @@ func NewComponentVersion(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001:ComponentVersion"),
 		},
 		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250101preview:ComponentVersion"),
+		},
+		{
 			Type: pulumi.String("azure-native:machinelearningservices:ComponentVersion"),
 		},
 	})

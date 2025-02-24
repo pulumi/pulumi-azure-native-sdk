@@ -1647,7 +1647,7 @@ type LandingZoneRegistrationResourceProperties struct {
 	// The resource id of the top level management group
 	ExistingTopLevelMgId string `pulumi:"existingTopLevelMgId"`
 	// The managed identity to be assigned to this landing zone registration.
-	ManagedIdentity ManagedIdentityProperties `pulumi:"managedIdentity"`
+	ManagedIdentity *ManagedIdentityProperties `pulumi:"managedIdentity"`
 }
 
 // LandingZoneRegistrationResourcePropertiesInput is an input type that accepts LandingZoneRegistrationResourcePropertiesArgs and LandingZoneRegistrationResourcePropertiesOutput values.
@@ -1668,7 +1668,7 @@ type LandingZoneRegistrationResourcePropertiesArgs struct {
 	// The resource id of the top level management group
 	ExistingTopLevelMgId pulumi.StringInput `pulumi:"existingTopLevelMgId"`
 	// The managed identity to be assigned to this landing zone registration.
-	ManagedIdentity ManagedIdentityPropertiesInput `pulumi:"managedIdentity"`
+	ManagedIdentity ManagedIdentityPropertiesPtrInput `pulumi:"managedIdentity"`
 }
 
 func (LandingZoneRegistrationResourcePropertiesArgs) ElementType() reflect.Type {
@@ -1760,8 +1760,8 @@ func (o LandingZoneRegistrationResourcePropertiesOutput) ExistingTopLevelMgId() 
 }
 
 // The managed identity to be assigned to this landing zone registration.
-func (o LandingZoneRegistrationResourcePropertiesOutput) ManagedIdentity() ManagedIdentityPropertiesOutput {
-	return o.ApplyT(func(v LandingZoneRegistrationResourceProperties) ManagedIdentityProperties { return v.ManagedIdentity }).(ManagedIdentityPropertiesOutput)
+func (o LandingZoneRegistrationResourcePropertiesOutput) ManagedIdentity() ManagedIdentityPropertiesPtrOutput {
+	return o.ApplyT(func(v LandingZoneRegistrationResourceProperties) *ManagedIdentityProperties { return v.ManagedIdentity }).(ManagedIdentityPropertiesPtrOutput)
 }
 
 type LandingZoneRegistrationResourcePropertiesPtrOutput struct{ *pulumi.OutputState }
@@ -1814,7 +1814,7 @@ func (o LandingZoneRegistrationResourcePropertiesPtrOutput) ManagedIdentity() Ma
 		if v == nil {
 			return nil
 		}
-		return &v.ManagedIdentity
+		return v.ManagedIdentity
 	}).(ManagedIdentityPropertiesPtrOutput)
 }
 
@@ -1825,7 +1825,7 @@ type LandingZoneRegistrationResourcePropertiesResponse struct {
 	// The resource id of the top level management group
 	ExistingTopLevelMgId string `pulumi:"existingTopLevelMgId"`
 	// The managed identity to be assigned to this landing zone registration.
-	ManagedIdentity ManagedIdentityPropertiesResponse `pulumi:"managedIdentity"`
+	ManagedIdentity *ManagedIdentityPropertiesResponse `pulumi:"managedIdentity"`
 	// The state that reflects the current stage in the creation, updating, or deletion process of the landing zone registration resource type.
 	ProvisioningState string `pulumi:"provisioningState"`
 }
@@ -1858,10 +1858,10 @@ func (o LandingZoneRegistrationResourcePropertiesResponseOutput) ExistingTopLeve
 }
 
 // The managed identity to be assigned to this landing zone registration.
-func (o LandingZoneRegistrationResourcePropertiesResponseOutput) ManagedIdentity() ManagedIdentityPropertiesResponseOutput {
-	return o.ApplyT(func(v LandingZoneRegistrationResourcePropertiesResponse) ManagedIdentityPropertiesResponse {
+func (o LandingZoneRegistrationResourcePropertiesResponseOutput) ManagedIdentity() ManagedIdentityPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v LandingZoneRegistrationResourcePropertiesResponse) *ManagedIdentityPropertiesResponse {
 		return v.ManagedIdentity
-	}).(ManagedIdentityPropertiesResponseOutput)
+	}).(ManagedIdentityPropertiesResponsePtrOutput)
 }
 
 // The state that reflects the current stage in the creation, updating, or deletion process of the landing zone registration resource type.
@@ -2059,6 +2059,50 @@ func (o ManagedIdentityPropertiesResponseOutput) Type() pulumi.StringOutput {
 // The resource id of the managed identity.
 func (o ManagedIdentityPropertiesResponseOutput) UserAssignedIdentityResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedIdentityPropertiesResponse) *string { return v.UserAssignedIdentityResourceId }).(pulumi.StringPtrOutput)
+}
+
+type ManagedIdentityPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedIdentityPropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedIdentityPropertiesResponse)(nil)).Elem()
+}
+
+func (o ManagedIdentityPropertiesResponsePtrOutput) ToManagedIdentityPropertiesResponsePtrOutput() ManagedIdentityPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o ManagedIdentityPropertiesResponsePtrOutput) ToManagedIdentityPropertiesResponsePtrOutputWithContext(ctx context.Context) ManagedIdentityPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o ManagedIdentityPropertiesResponsePtrOutput) Elem() ManagedIdentityPropertiesResponseOutput {
+	return o.ApplyT(func(v *ManagedIdentityPropertiesResponse) ManagedIdentityPropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedIdentityPropertiesResponse
+		return ret
+	}).(ManagedIdentityPropertiesResponseOutput)
+}
+
+// The type of managed identity.
+func (o ManagedIdentityPropertiesResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedIdentityPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource id of the managed identity.
+func (o ManagedIdentityPropertiesResponsePtrOutput) UserAssignedIdentityResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedIdentityPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentityResourceId
+	}).(pulumi.StringPtrOutput)
 }
 
 // Managed service identity (system assigned and/or user assigned identities)
@@ -3406,6 +3450,7 @@ func init() {
 	pulumi.RegisterOutputType(ManagedIdentityPropertiesOutput{})
 	pulumi.RegisterOutputType(ManagedIdentityPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(ManagedIdentityPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(ManagedIdentityPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityPtrOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityResponseOutput{})

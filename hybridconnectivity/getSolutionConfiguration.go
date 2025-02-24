@@ -34,10 +34,20 @@ type LookupSolutionConfigurationArgs struct {
 type LookupSolutionConfigurationResult struct {
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
+	// The last time resources were inventoried
+	LastSyncTime string `pulumi:"lastSyncTime"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// The resource-specific properties for this resource.
-	Properties SolutionConfigurationPropertiesResponse `pulumi:"properties"`
+	// The resource provisioning state.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Solution settings
+	SolutionSettings map[string]string `pulumi:"solutionSettings"`
+	// The type of the solution
+	SolutionType string `pulumi:"solutionType"`
+	// The status of solution configurations
+	Status string `pulumi:"status"`
+	// The detailed message of status details
+	StatusDetails string `pulumi:"statusDetails"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -84,14 +94,39 @@ func (o LookupSolutionConfigurationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSolutionConfigurationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The last time resources were inventoried
+func (o LookupSolutionConfigurationResultOutput) LastSyncTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSolutionConfigurationResult) string { return v.LastSyncTime }).(pulumi.StringOutput)
+}
+
 // The name of the resource
 func (o LookupSolutionConfigurationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSolutionConfigurationResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The resource-specific properties for this resource.
-func (o LookupSolutionConfigurationResultOutput) Properties() SolutionConfigurationPropertiesResponseOutput {
-	return o.ApplyT(func(v LookupSolutionConfigurationResult) SolutionConfigurationPropertiesResponse { return v.Properties }).(SolutionConfigurationPropertiesResponseOutput)
+// The resource provisioning state.
+func (o LookupSolutionConfigurationResultOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSolutionConfigurationResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Solution settings
+func (o LookupSolutionConfigurationResultOutput) SolutionSettings() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupSolutionConfigurationResult) map[string]string { return v.SolutionSettings }).(pulumi.StringMapOutput)
+}
+
+// The type of the solution
+func (o LookupSolutionConfigurationResultOutput) SolutionType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSolutionConfigurationResult) string { return v.SolutionType }).(pulumi.StringOutput)
+}
+
+// The status of solution configurations
+func (o LookupSolutionConfigurationResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSolutionConfigurationResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The detailed message of status details
+func (o LookupSolutionConfigurationResultOutput) StatusDetails() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSolutionConfigurationResult) string { return v.StatusDetails }).(pulumi.StringOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
