@@ -32,14 +32,20 @@ type LookupPublicCloudConnectorArgs struct {
 
 // Public Cloud Connector
 type LookupPublicCloudConnectorResult struct {
+	// Cloud profile for AWS.
+	AwsCloudProfile AwsCloudProfileResponse `pulumi:"awsCloudProfile"`
+	// Connector primary identifier.
+	ConnectorPrimaryIdentifier string `pulumi:"connectorPrimaryIdentifier"`
+	// Host cloud the public cloud connector.
+	HostType string `pulumi:"hostType"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// The resource-specific properties for this resource.
-	Properties PublicCloudConnectorPropertiesResponse `pulumi:"properties"`
+	// The resource provisioning state.
+	ProvisioningState string `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
@@ -54,7 +60,7 @@ func (val *LookupPublicCloudConnectorResult) Defaults() *LookupPublicCloudConnec
 		return nil
 	}
 	tmp := *val
-	tmp.Properties = *tmp.Properties.Defaults()
+	tmp.AwsCloudProfile = *tmp.AwsCloudProfile.Defaults()
 
 	return &tmp
 }
@@ -93,6 +99,21 @@ func (o LookupPublicCloudConnectorResultOutput) ToLookupPublicCloudConnectorResu
 	return o
 }
 
+// Cloud profile for AWS.
+func (o LookupPublicCloudConnectorResultOutput) AwsCloudProfile() AwsCloudProfileResponseOutput {
+	return o.ApplyT(func(v LookupPublicCloudConnectorResult) AwsCloudProfileResponse { return v.AwsCloudProfile }).(AwsCloudProfileResponseOutput)
+}
+
+// Connector primary identifier.
+func (o LookupPublicCloudConnectorResultOutput) ConnectorPrimaryIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPublicCloudConnectorResult) string { return v.ConnectorPrimaryIdentifier }).(pulumi.StringOutput)
+}
+
+// Host cloud the public cloud connector.
+func (o LookupPublicCloudConnectorResultOutput) HostType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPublicCloudConnectorResult) string { return v.HostType }).(pulumi.StringOutput)
+}
+
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupPublicCloudConnectorResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPublicCloudConnectorResult) string { return v.Id }).(pulumi.StringOutput)
@@ -108,9 +129,9 @@ func (o LookupPublicCloudConnectorResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPublicCloudConnectorResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The resource-specific properties for this resource.
-func (o LookupPublicCloudConnectorResultOutput) Properties() PublicCloudConnectorPropertiesResponseOutput {
-	return o.ApplyT(func(v LookupPublicCloudConnectorResult) PublicCloudConnectorPropertiesResponse { return v.Properties }).(PublicCloudConnectorPropertiesResponseOutput)
+// The resource provisioning state.
+func (o LookupPublicCloudConnectorResultOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPublicCloudConnectorResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

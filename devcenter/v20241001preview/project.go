@@ -95,6 +95,9 @@ func NewProject(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:devcenter/v20240801preview:Project"),
 		},
 		{
+			Type: pulumi.String("azure-native:devcenter/v20250201:Project"),
+		},
+		{
 			Type: pulumi.String("azure-native:devcenter:Project"),
 		},
 	})

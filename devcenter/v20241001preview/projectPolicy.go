@@ -45,6 +45,9 @@ func NewProjectPolicy(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:devcenter/v20250201:ProjectPolicy"),
+		},
+		{
 			Type: pulumi.String("azure-native:devcenter:ProjectPolicy"),
 		},
 	})

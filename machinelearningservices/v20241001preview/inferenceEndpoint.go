@@ -66,6 +66,9 @@ func NewInferenceEndpoint(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:machinelearningservices/v20240401preview:InferenceEndpoint"),
 		},
 		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250101preview:InferenceEndpoint"),
+		},
+		{
 			Type: pulumi.String("azure-native:machinelearningservices:InferenceEndpoint"),
 		},
 	})

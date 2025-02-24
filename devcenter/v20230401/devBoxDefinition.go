@@ -104,6 +104,9 @@ func NewDevBoxDefinition(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:devcenter/v20241001preview:DevBoxDefinition"),
 		},
 		{
+			Type: pulumi.String("azure-native:devcenter/v20250201:DevBoxDefinition"),
+		},
+		{
 			Type: pulumi.String("azure-native:devcenter:DevBoxDefinition"),
 		},
 	})
