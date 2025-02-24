@@ -48,6 +48,9 @@ func NewPrivateEndpointConnection(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:kubernetesconfiguration/v20241101preview:PrivateEndpointConnection"),
+		},
+		{
 			Type: pulumi.String("azure-native:kubernetesconfiguration:PrivateEndpointConnection"),
 		},
 	})

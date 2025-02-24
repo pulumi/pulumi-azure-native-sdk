@@ -103,6 +103,9 @@ func NewDicomService(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:healthcareapis/v20240301:DicomService"),
 		},
 		{
+			Type: pulumi.String("azure-native:healthcareapis/v20250301preview:DicomService"),
+		},
+		{
 			Type: pulumi.String("azure-native:healthcareapis:DicomService"),
 		},
 	})

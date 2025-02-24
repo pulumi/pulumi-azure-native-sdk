@@ -101,6 +101,9 @@ func NewDataVersion(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001:DataVersion"),
 		},
 		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250101preview:DataVersion"),
+		},
+		{
 			Type: pulumi.String("azure-native:machinelearningservices:DataVersion"),
 		},
 	})

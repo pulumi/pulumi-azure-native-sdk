@@ -53,6 +53,9 @@ func NewConnectionRaiPolicy(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001preview:ConnectionRaiPolicy"),
 		},
 		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250101preview:ConnectionRaiPolicy"),
+		},
+		{
 			Type: pulumi.String("azure-native:machinelearningservices:ConnectionRaiPolicy"),
 		},
 	})

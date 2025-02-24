@@ -96,6 +96,9 @@ func NewComponentContainer(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001preview:ComponentContainer"),
 		},
 		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250101preview:ComponentContainer"),
+		},
+		{
 			Type: pulumi.String("azure-native:machinelearningservices:ComponentContainer"),
 		},
 	})
