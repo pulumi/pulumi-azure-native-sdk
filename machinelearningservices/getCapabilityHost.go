@@ -13,6 +13,8 @@ import (
 
 // Azure Resource Manager resource envelope.
 // Azure REST API version: 2024-10-01-preview.
+//
+// Other available API versions: 2025-01-01-preview.
 func LookupCapabilityHost(ctx *pulumi.Context, args *LookupCapabilityHostArgs, opts ...pulumi.InvokeOption) (*LookupCapabilityHostResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCapabilityHostResult

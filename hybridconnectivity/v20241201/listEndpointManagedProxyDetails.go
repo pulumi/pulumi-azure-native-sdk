@@ -27,7 +27,7 @@ type ListEndpointManagedProxyDetailsArgs struct {
 	EndpointName string `pulumi:"endpointName"`
 	// The target host name.
 	Hostname *string `pulumi:"hostname"`
-	// The fully qualified Azure Resource manager identifier of the resource to be connected.
+	// The fully qualified Azure Resource manager identifier of the resource.
 	ResourceUri string `pulumi:"resourceUri"`
 	// The name of the service.
 	Service string `pulumi:"service"`
@@ -57,7 +57,7 @@ type ListEndpointManagedProxyDetailsOutputArgs struct {
 	EndpointName pulumi.StringInput `pulumi:"endpointName"`
 	// The target host name.
 	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
-	// The fully qualified Azure Resource manager identifier of the resource to be connected.
+	// The fully qualified Azure Resource manager identifier of the resource.
 	ResourceUri pulumi.StringInput `pulumi:"resourceUri"`
 	// The name of the service.
 	Service pulumi.StringInput `pulumi:"service"`

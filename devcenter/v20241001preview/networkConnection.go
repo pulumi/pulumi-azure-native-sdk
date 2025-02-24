@@ -103,6 +103,9 @@ func NewNetworkConnection(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:devcenter/v20240801preview:NetworkConnection"),
 		},
 		{
+			Type: pulumi.String("azure-native:devcenter/v20250201:NetworkConnection"),
+		},
+		{
 			Type: pulumi.String("azure-native:devcenter:NetworkConnection"),
 		},
 	})

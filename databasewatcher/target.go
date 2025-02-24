@@ -19,7 +19,7 @@ import (
 type Target struct {
 	pulumi.CustomResourceState
 
-	// The server name to use in the connection string when connecting to a target. Port number and instance name must be specified separately.
+	// The FQDN host name of the server to use in the connection string when connecting to a target. For example, for an Azure SQL logical server in the Azure commercial cloud, the value might be 'sql-logical-server-22092780.database.windows.net'; for an Azure SQL managed instance in the Azure commercial cloud, the value might be 'sql-mi-39441134.767d5869f605.database.windows.net'. Port number and instance name must be specified separately.
 	ConnectionServerName pulumi.StringOutput `pulumi:"connectionServerName"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -107,7 +107,7 @@ func (TargetState) ElementType() reflect.Type {
 }
 
 type targetArgs struct {
-	// The server name to use in the connection string when connecting to a target. Port number and instance name must be specified separately.
+	// The FQDN host name of the server to use in the connection string when connecting to a target. For example, for an Azure SQL logical server in the Azure commercial cloud, the value might be 'sql-logical-server-22092780.database.windows.net'; for an Azure SQL managed instance in the Azure commercial cloud, the value might be 'sql-mi-39441134.767d5869f605.database.windows.net'. Port number and instance name must be specified separately.
 	ConnectionServerName string `pulumi:"connectionServerName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -125,7 +125,7 @@ type targetArgs struct {
 
 // The set of arguments for constructing a Target resource.
 type TargetArgs struct {
-	// The server name to use in the connection string when connecting to a target. Port number and instance name must be specified separately.
+	// The FQDN host name of the server to use in the connection string when connecting to a target. For example, for an Azure SQL logical server in the Azure commercial cloud, the value might be 'sql-logical-server-22092780.database.windows.net'; for an Azure SQL managed instance in the Azure commercial cloud, the value might be 'sql-mi-39441134.767d5869f605.database.windows.net'. Port number and instance name must be specified separately.
 	ConnectionServerName pulumi.StringInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
@@ -178,7 +178,7 @@ func (o TargetOutput) ToTargetOutputWithContext(ctx context.Context) TargetOutpu
 	return o
 }
 
-// The server name to use in the connection string when connecting to a target. Port number and instance name must be specified separately.
+// The FQDN host name of the server to use in the connection string when connecting to a target. For example, for an Azure SQL logical server in the Azure commercial cloud, the value might be 'sql-logical-server-22092780.database.windows.net'; for an Azure SQL managed instance in the Azure commercial cloud, the value might be 'sql-mi-39441134.767d5869f605.database.windows.net'. Port number and instance name must be specified separately.
 func (o TargetOutput) ConnectionServerName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Target) pulumi.StringOutput { return v.ConnectionServerName }).(pulumi.StringOutput)
 }

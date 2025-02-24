@@ -71,6 +71,9 @@ func NewServerlessEndpoint(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001preview:ServerlessEndpoint"),
 		},
 		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250101preview:ServerlessEndpoint"),
+		},
+		{
 			Type: pulumi.String("azure-native:machinelearningservices:ServerlessEndpoint"),
 		},
 	})

@@ -54,6 +54,9 @@ func NewEndpointDeployment(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:machinelearningservices/v20240701preview:EndpointDeployment"),
 		},
 		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250101preview:EndpointDeployment"),
+		},
+		{
 			Type: pulumi.String("azure-native:machinelearningservices:EndpointDeployment"),
 		},
 	})
