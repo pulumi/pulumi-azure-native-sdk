@@ -78,6 +78,9 @@ func NewFeaturesetVersion(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001:FeaturesetVersion"),
 		},
 		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250101preview:FeaturesetVersion"),
+		},
+		{
 			Type: pulumi.String("azure-native:machinelearningservices:FeaturesetVersion"),
 		},
 	})

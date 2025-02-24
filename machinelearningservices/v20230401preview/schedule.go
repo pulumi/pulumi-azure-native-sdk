@@ -90,6 +90,9 @@ func NewSchedule(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001preview:Schedule"),
 		},
 		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250101preview:Schedule"),
+		},
+		{
 			Type: pulumi.String("azure-native:machinelearningservices:Schedule"),
 		},
 	})

@@ -5576,8 +5576,6 @@ type VaultProperties struct {
 	EnabledForTemplateDeployment *bool `pulumi:"enabledForTemplateDeployment"`
 	// Rules governing the accessibility of the key vault from specific network locations.
 	NetworkAcls *NetworkRuleSet `pulumi:"networkAcls"`
-	// Provisioning state of the vault.
-	ProvisioningState *string `pulumi:"provisioningState"`
 	// Property to specify whether the vault will accept traffic from public internet. If set to 'disabled' all traffic except private endpoint traffic and that that originates from trusted services will be blocked. This will override the set firewall rules, meaning that even if the firewall rules are present we will not honor the rules.
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// SKU details
@@ -5586,8 +5584,6 @@ type VaultProperties struct {
 	SoftDeleteRetentionInDays *int `pulumi:"softDeleteRetentionInDays"`
 	// The Azure Active Directory tenant ID that should be used for authenticating requests to the key vault.
 	TenantId string `pulumi:"tenantId"`
-	// The URI of the vault for performing operations on keys and secrets.
-	VaultUri *string `pulumi:"vaultUri"`
 }
 
 // Defaults sets the appropriate defaults for VaultProperties
@@ -5647,8 +5643,6 @@ type VaultPropertiesArgs struct {
 	EnabledForTemplateDeployment pulumi.BoolPtrInput `pulumi:"enabledForTemplateDeployment"`
 	// Rules governing the accessibility of the key vault from specific network locations.
 	NetworkAcls NetworkRuleSetPtrInput `pulumi:"networkAcls"`
-	// Provisioning state of the vault.
-	ProvisioningState pulumi.StringPtrInput `pulumi:"provisioningState"`
 	// Property to specify whether the vault will accept traffic from public internet. If set to 'disabled' all traffic except private endpoint traffic and that that originates from trusted services will be blocked. This will override the set firewall rules, meaning that even if the firewall rules are present we will not honor the rules.
 	PublicNetworkAccess pulumi.StringPtrInput `pulumi:"publicNetworkAccess"`
 	// SKU details
@@ -5657,8 +5651,6 @@ type VaultPropertiesArgs struct {
 	SoftDeleteRetentionInDays pulumi.IntPtrInput `pulumi:"softDeleteRetentionInDays"`
 	// The Azure Active Directory tenant ID that should be used for authenticating requests to the key vault.
 	TenantId pulumi.StringInput `pulumi:"tenantId"`
-	// The URI of the vault for performing operations on keys and secrets.
-	VaultUri pulumi.StringPtrInput `pulumi:"vaultUri"`
 }
 
 // Defaults sets the appropriate defaults for VaultPropertiesArgs
@@ -5754,11 +5746,6 @@ func (o VaultPropertiesOutput) NetworkAcls() NetworkRuleSetPtrOutput {
 	return o.ApplyT(func(v VaultProperties) *NetworkRuleSet { return v.NetworkAcls }).(NetworkRuleSetPtrOutput)
 }
 
-// Provisioning state of the vault.
-func (o VaultPropertiesOutput) ProvisioningState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VaultProperties) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
-}
-
 // Property to specify whether the vault will accept traffic from public internet. If set to 'disabled' all traffic except private endpoint traffic and that that originates from trusted services will be blocked. This will override the set firewall rules, meaning that even if the firewall rules are present we will not honor the rules.
 func (o VaultPropertiesOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VaultProperties) *string { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
@@ -5777,11 +5764,6 @@ func (o VaultPropertiesOutput) SoftDeleteRetentionInDays() pulumi.IntPtrOutput {
 // The Azure Active Directory tenant ID that should be used for authenticating requests to the key vault.
 func (o VaultPropertiesOutput) TenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v VaultProperties) string { return v.TenantId }).(pulumi.StringOutput)
-}
-
-// The URI of the vault for performing operations on keys and secrets.
-func (o VaultPropertiesOutput) VaultUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VaultProperties) *string { return v.VaultUri }).(pulumi.StringPtrOutput)
 }
 
 // Properties of the vault
@@ -5808,7 +5790,7 @@ type VaultPropertiesResponse struct {
 	// List of private endpoint connections associated with the key vault.
 	PrivateEndpointConnections []PrivateEndpointConnectionItemResponse `pulumi:"privateEndpointConnections"`
 	// Provisioning state of the vault.
-	ProvisioningState *string `pulumi:"provisioningState"`
+	ProvisioningState string `pulumi:"provisioningState"`
 	// Property to specify whether the vault will accept traffic from public internet. If set to 'disabled' all traffic except private endpoint traffic and that that originates from trusted services will be blocked. This will override the set firewall rules, meaning that even if the firewall rules are present we will not honor the rules.
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// SKU details
@@ -5818,7 +5800,7 @@ type VaultPropertiesResponse struct {
 	// The Azure Active Directory tenant ID that should be used for authenticating requests to the key vault.
 	TenantId string `pulumi:"tenantId"`
 	// The URI of the vault for performing operations on keys and secrets.
-	VaultUri *string `pulumi:"vaultUri"`
+	VaultUri string `pulumi:"vaultUri"`
 }
 
 // Defaults sets the appropriate defaults for VaultPropertiesResponse
@@ -5915,8 +5897,8 @@ func (o VaultPropertiesResponseOutput) PrivateEndpointConnections() PrivateEndpo
 }
 
 // Provisioning state of the vault.
-func (o VaultPropertiesResponseOutput) ProvisioningState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VaultPropertiesResponse) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
+func (o VaultPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v VaultPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
 // Property to specify whether the vault will accept traffic from public internet. If set to 'disabled' all traffic except private endpoint traffic and that that originates from trusted services will be blocked. This will override the set firewall rules, meaning that even if the firewall rules are present we will not honor the rules.
@@ -5940,8 +5922,8 @@ func (o VaultPropertiesResponseOutput) TenantId() pulumi.StringOutput {
 }
 
 // The URI of the vault for performing operations on keys and secrets.
-func (o VaultPropertiesResponseOutput) VaultUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VaultPropertiesResponse) *string { return v.VaultUri }).(pulumi.StringPtrOutput)
+func (o VaultPropertiesResponseOutput) VaultUri() pulumi.StringOutput {
+	return o.ApplyT(func(v VaultPropertiesResponse) string { return v.VaultUri }).(pulumi.StringOutput)
 }
 
 // A rule governing the accessibility of a vault from a specific virtual network.

@@ -116,6 +116,9 @@ func NewMachineLearningDatastore(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001preview:MachineLearningDatastore"),
 		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250101preview:MachineLearningDatastore"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
