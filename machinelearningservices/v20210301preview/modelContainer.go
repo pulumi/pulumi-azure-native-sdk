@@ -98,6 +98,9 @@ func NewModelContainer(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001preview:ModelContainer"),
 		},
 		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250101preview:ModelContainer"),
+		},
+		{
 			Type: pulumi.String("azure-native:machinelearningservices:ModelContainer"),
 		},
 	})

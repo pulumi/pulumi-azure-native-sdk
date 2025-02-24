@@ -85,6 +85,9 @@ func NewGallery(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:devcenter/v20241001preview:Gallery"),
 		},
 		{
+			Type: pulumi.String("azure-native:devcenter/v20250201:Gallery"),
+		},
+		{
 			Type: pulumi.String("azure-native:devcenter:Gallery"),
 		},
 	})

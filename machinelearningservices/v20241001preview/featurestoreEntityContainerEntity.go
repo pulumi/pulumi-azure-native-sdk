@@ -75,6 +75,9 @@ func NewFeaturestoreEntityContainerEntity(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001:FeaturestoreEntityContainerEntity"),
 		},
 		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250101preview:FeaturestoreEntityContainerEntity"),
+		},
+		{
 			Type: pulumi.String("azure-native:machinelearningservices:FeaturestoreEntityContainerEntity"),
 		},
 	})
