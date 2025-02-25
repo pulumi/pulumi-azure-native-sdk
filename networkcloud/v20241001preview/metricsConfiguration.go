@@ -74,6 +74,9 @@ func NewMetricsConfiguration(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:networkcloud/v20240701:MetricsConfiguration"),
 		},
 		{
+			Type: pulumi.String("azure-native:networkcloud/v20250201:MetricsConfiguration"),
+		},
+		{
 			Type: pulumi.String("azure-native:networkcloud:MetricsConfiguration"),
 		},
 	})

@@ -82,6 +82,9 @@ func NewL2Network(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:networkcloud/v20240701:L2Network"),
 		},
 		{
+			Type: pulumi.String("azure-native:networkcloud/v20250201:L2Network"),
+		},
+		{
 			Type: pulumi.String("azure-native:networkcloud:L2Network"),
 		},
 	})

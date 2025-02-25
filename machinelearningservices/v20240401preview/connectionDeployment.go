@@ -52,6 +52,9 @@ func NewConnectionDeployment(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001preview:ConnectionDeployment"),
 		},
 		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250101preview:ConnectionDeployment"),
+		},
+		{
 			Type: pulumi.String("azure-native:machinelearningservices:ConnectionDeployment"),
 		},
 	})

@@ -45,6 +45,9 @@ func NewCapabilityHost(ctx *pulumi.Context,
 	args.CapabilityHostProperties = args.CapabilityHostProperties.ToCapabilityHostTypeOutput().ApplyT(func(v CapabilityHostType) CapabilityHostType { return *v.Defaults() }).(CapabilityHostTypeOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250101preview:CapabilityHost"),
+		},
+		{
 			Type: pulumi.String("azure-native:machinelearningservices:CapabilityHost"),
 		},
 	})

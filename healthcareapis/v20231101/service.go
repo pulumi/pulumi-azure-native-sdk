@@ -102,6 +102,9 @@ func NewService(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:healthcareapis/v20240331:Service"),
 		},
 		{
+			Type: pulumi.String("azure-native:healthcareapis/v20250301preview:Service"),
+		},
+		{
 			Type: pulumi.String("azure-native:healthcareapis:Service"),
 		},
 	})

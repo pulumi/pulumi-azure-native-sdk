@@ -107,6 +107,9 @@ func NewSchedule(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:devcenter/v20240801preview:Schedule"),
 		},
 		{
+			Type: pulumi.String("azure-native:devcenter/v20250201:Schedule"),
+		},
+		{
 			Type: pulumi.String("azure-native:devcenter:Schedule"),
 		},
 	})
