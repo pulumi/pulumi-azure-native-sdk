@@ -14,7 +14,7 @@ import (
 
 // Azure REST API version: 2024-06-01-preview.
 //
-// Other available API versions: 2024-07-01, 2024-10-01-preview.
+// Other available API versions: 2024-07-01, 2024-10-01-preview, 2025-02-01.
 type KubernetesClusterFeature struct {
 	pulumi.CustomResourceState
 
@@ -66,6 +66,9 @@ func NewKubernetesClusterFeature(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:networkcloud/v20241001preview:KubernetesClusterFeature"),
+		},
+		{
+			Type: pulumi.String("azure-native:networkcloud/v20250201:KubernetesClusterFeature"),
 		},
 	})
 	opts = append(opts, aliases)

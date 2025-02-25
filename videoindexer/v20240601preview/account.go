@@ -93,6 +93,9 @@ func NewAccount(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:videoindexer/v20250101:Account"),
 		},
 		{
+			Type: pulumi.String("azure-native:videoindexer/v20250301:Account"),
+		},
+		{
 			Type: pulumi.String("azure-native:videoindexer:Account"),
 		},
 	})

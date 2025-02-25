@@ -43,6 +43,9 @@ func NewPolicy(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:datareplication/v20240901:Policy"),
+		},
+		{
 			Type: pulumi.String("azure-native:datareplication:Policy"),
 		},
 	})

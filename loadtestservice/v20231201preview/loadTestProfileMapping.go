@@ -42,6 +42,9 @@ func NewLoadTestProfileMapping(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:loadtestservice/v20241201preview:LoadTestProfileMapping"),
+		},
+		{
 			Type: pulumi.String("azure-native:loadtestservice:LoadTestProfileMapping"),
 		},
 	})

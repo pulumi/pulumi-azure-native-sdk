@@ -110,6 +110,9 @@ func NewOnlineDeployment(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001preview:OnlineDeployment"),
 		},
 		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250101preview:OnlineDeployment"),
+		},
+		{
 			Type: pulumi.String("azure-native:machinelearningservices:OnlineDeployment"),
 		},
 	})

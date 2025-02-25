@@ -99,6 +99,9 @@ func NewDevCenter(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:devcenter/v20240801preview:DevCenter"),
 		},
 		{
+			Type: pulumi.String("azure-native:devcenter/v20250201:DevCenter"),
+		},
+		{
 			Type: pulumi.String("azure-native:devcenter:DevCenter"),
 		},
 	})

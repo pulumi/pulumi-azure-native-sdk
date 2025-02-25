@@ -98,6 +98,9 @@ func NewProjectEnvironmentType(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:devcenter/v20240801preview:ProjectEnvironmentType"),
 		},
 		{
+			Type: pulumi.String("azure-native:devcenter/v20250201:ProjectEnvironmentType"),
+		},
+		{
 			Type: pulumi.String("azure-native:devcenter:ProjectEnvironmentType"),
 		},
 	})

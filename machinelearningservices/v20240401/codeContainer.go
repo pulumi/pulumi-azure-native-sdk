@@ -99,6 +99,9 @@ func NewCodeContainer(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001preview:CodeContainer"),
 		},
 		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250101preview:CodeContainer"),
+		},
+		{
 			Type: pulumi.String("azure-native:machinelearningservices:CodeContainer"),
 		},
 	})

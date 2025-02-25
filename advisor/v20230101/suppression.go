@@ -63,6 +63,9 @@ func NewSuppression(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:advisor/v20221001:Suppression"),
 		},
 		{
+			Type: pulumi.String("azure-native:advisor/v20230901preview:Suppression"),
+		},
+		{
 			Type: pulumi.String("azure-native:advisor:Suppression"),
 		},
 	})

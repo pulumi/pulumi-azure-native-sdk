@@ -107,6 +107,9 @@ func NewStorageAppliance(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:networkcloud/v20240701:StorageAppliance"),
 		},
 		{
+			Type: pulumi.String("azure-native:networkcloud/v20250201:StorageAppliance"),
+		},
+		{
 			Type: pulumi.String("azure-native:networkcloud:StorageAppliance"),
 		},
 	})

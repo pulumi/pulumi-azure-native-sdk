@@ -74,6 +74,9 @@ func NewProjectCatalog(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:devcenter/v20240801preview:ProjectCatalog"),
 		},
 		{
+			Type: pulumi.String("azure-native:devcenter/v20250201:ProjectCatalog"),
+		},
+		{
 			Type: pulumi.String("azure-native:devcenter:ProjectCatalog"),
 		},
 	})

@@ -103,6 +103,9 @@ func NewKubernetesCluster(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:networkcloud/v20241001preview:KubernetesCluster"),
 		},
 		{
+			Type: pulumi.String("azure-native:networkcloud/v20250201:KubernetesCluster"),
+		},
+		{
 			Type: pulumi.String("azure-native:networkcloud:KubernetesCluster"),
 		},
 	})
