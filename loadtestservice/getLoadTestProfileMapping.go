@@ -13,6 +13,8 @@ import (
 
 // Get a LoadTestProfileMappingResource
 // Azure REST API version: 2023-12-01-preview.
+//
+// Other available API versions: 2024-12-01-preview.
 func LookupLoadTestProfileMapping(ctx *pulumi.Context, args *LookupLoadTestProfileMappingArgs, opts ...pulumi.InvokeOption) (*LookupLoadTestProfileMappingResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupLoadTestProfileMappingResult

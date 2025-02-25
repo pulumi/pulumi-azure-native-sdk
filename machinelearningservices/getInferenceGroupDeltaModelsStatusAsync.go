@@ -13,6 +13,8 @@ import (
 
 // Contract returning to user the delta models.
 // Azure REST API version: 2024-10-01-preview.
+//
+// Other available API versions: 2025-01-01-preview.
 func GetInferenceGroupDeltaModelsStatusAsync(ctx *pulumi.Context, args *GetInferenceGroupDeltaModelsStatusAsyncArgs, opts ...pulumi.InvokeOption) (*GetInferenceGroupDeltaModelsStatusAsyncResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetInferenceGroupDeltaModelsStatusAsyncResult

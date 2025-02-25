@@ -43,6 +43,9 @@ func NewReplicationExtension(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:datareplication/v20240901:ReplicationExtension"),
+		},
+		{
 			Type: pulumi.String("azure-native:datareplication:ReplicationExtension"),
 		},
 	})

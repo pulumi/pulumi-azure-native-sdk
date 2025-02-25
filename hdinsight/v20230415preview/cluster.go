@@ -66,6 +66,9 @@ func NewCluster(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:hdinsight/v20240801preview:Cluster"),
 		},
 		{
+			Type: pulumi.String("azure-native:hdinsight/v20250115preview:Cluster"),
+		},
+		{
 			Type: pulumi.String("azure-native:hdinsight:Cluster"),
 		},
 	})

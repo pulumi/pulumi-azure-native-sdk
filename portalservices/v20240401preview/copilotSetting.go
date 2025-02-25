@@ -40,6 +40,9 @@ func NewCopilotSetting(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:portalservices/v20240401:CopilotSetting"),
+		},
+		{
 			Type: pulumi.String("azure-native:portalservices:CopilotSetting"),
 		},
 	})

@@ -19,7 +19,7 @@ import (
 type SharedPrivateLinkResource struct {
 	pulumi.CustomResourceState
 
-	// The DNS zone to be included in the DNS name of the shared private link. Value is required for Azure Data Explorer clusters and SQL managed instances. The value to use is the second segment of the host FQDN name of the resource that the shared private link resource is for.
+	// The DNS zone segment to be included in the DNS name of the shared private link. Value is required for Azure Data Explorer clusters and SQL managed instances, and must be omitted for SQL logical servers and key vaults. The value is the second segment of the host FQDN name of the resource that the shared private link resource is for. For example: if the host name is 'adx-cluster-21187695.eastus.kusto.windows.net', then the value is 'eastus'; if the host name is 'sql-mi-23961134.767d5869f605.database.windows.net', then the value is '767d5869f605'.
 	DnsZone pulumi.StringPtrOutput `pulumi:"dnsZone"`
 	// The group id from the provider of resource the shared private link resource is for.
 	GroupId pulumi.StringOutput `pulumi:"groupId"`
@@ -109,7 +109,7 @@ func (SharedPrivateLinkResourceState) ElementType() reflect.Type {
 }
 
 type sharedPrivateLinkResourceArgs struct {
-	// The DNS zone to be included in the DNS name of the shared private link. Value is required for Azure Data Explorer clusters and SQL managed instances. The value to use is the second segment of the host FQDN name of the resource that the shared private link resource is for.
+	// The DNS zone segment to be included in the DNS name of the shared private link. Value is required for Azure Data Explorer clusters and SQL managed instances, and must be omitted for SQL logical servers and key vaults. The value is the second segment of the host FQDN name of the resource that the shared private link resource is for. For example: if the host name is 'adx-cluster-21187695.eastus.kusto.windows.net', then the value is 'eastus'; if the host name is 'sql-mi-23961134.767d5869f605.database.windows.net', then the value is '767d5869f605'.
 	DnsZone *string `pulumi:"dnsZone"`
 	// The group id from the provider of resource the shared private link resource is for.
 	GroupId string `pulumi:"groupId"`
@@ -127,7 +127,7 @@ type sharedPrivateLinkResourceArgs struct {
 
 // The set of arguments for constructing a SharedPrivateLinkResource resource.
 type SharedPrivateLinkResourceArgs struct {
-	// The DNS zone to be included in the DNS name of the shared private link. Value is required for Azure Data Explorer clusters and SQL managed instances. The value to use is the second segment of the host FQDN name of the resource that the shared private link resource is for.
+	// The DNS zone segment to be included in the DNS name of the shared private link. Value is required for Azure Data Explorer clusters and SQL managed instances, and must be omitted for SQL logical servers and key vaults. The value is the second segment of the host FQDN name of the resource that the shared private link resource is for. For example: if the host name is 'adx-cluster-21187695.eastus.kusto.windows.net', then the value is 'eastus'; if the host name is 'sql-mi-23961134.767d5869f605.database.windows.net', then the value is '767d5869f605'.
 	DnsZone pulumi.StringPtrInput
 	// The group id from the provider of resource the shared private link resource is for.
 	GroupId pulumi.StringInput
@@ -180,7 +180,7 @@ func (o SharedPrivateLinkResourceOutput) ToSharedPrivateLinkResourceOutputWithCo
 	return o
 }
 
-// The DNS zone to be included in the DNS name of the shared private link. Value is required for Azure Data Explorer clusters and SQL managed instances. The value to use is the second segment of the host FQDN name of the resource that the shared private link resource is for.
+// The DNS zone segment to be included in the DNS name of the shared private link. Value is required for Azure Data Explorer clusters and SQL managed instances, and must be omitted for SQL logical servers and key vaults. The value is the second segment of the host FQDN name of the resource that the shared private link resource is for. For example: if the host name is 'adx-cluster-21187695.eastus.kusto.windows.net', then the value is 'eastus'; if the host name is 'sql-mi-23961134.767d5869f605.database.windows.net', then the value is '767d5869f605'.
 func (o SharedPrivateLinkResourceOutput) DnsZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SharedPrivateLinkResource) pulumi.StringPtrOutput { return v.DnsZone }).(pulumi.StringPtrOutput)
 }

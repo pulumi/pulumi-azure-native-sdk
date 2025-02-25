@@ -59,6 +59,9 @@ func NewPrivateEndpointConnection(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:hdinsight/v20230815preview:PrivateEndpointConnection"),
 		},
 		{
+			Type: pulumi.String("azure-native:hdinsight/v20250115preview:PrivateEndpointConnection"),
+		},
+		{
 			Type: pulumi.String("azure-native:hdinsight:PrivateEndpointConnection"),
 		},
 	})

@@ -15,7 +15,7 @@ import (
 // The HDInsight cluster application
 // Azure REST API version: 2021-06-01. Prior API version in Azure Native 1.x: 2018-06-01-preview.
 //
-// Other available API versions: 2023-04-15-preview, 2023-08-15-preview, 2024-08-01-preview.
+// Other available API versions: 2023-04-15-preview, 2023-08-15-preview, 2024-08-01-preview, 2025-01-15-preview.
 type Application struct {
 	pulumi.CustomResourceState
 
@@ -64,6 +64,9 @@ func NewApplication(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:hdinsight/v20240801preview:Application"),
+		},
+		{
+			Type: pulumi.String("azure-native:hdinsight/v20250115preview:Application"),
 		},
 	})
 	opts = append(opts, aliases)

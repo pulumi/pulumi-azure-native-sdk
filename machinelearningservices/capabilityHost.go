@@ -14,6 +14,8 @@ import (
 
 // Azure Resource Manager resource envelope.
 // Azure REST API version: 2024-10-01-preview.
+//
+// Other available API versions: 2025-01-01-preview.
 type CapabilityHost struct {
 	pulumi.CustomResourceState
 
@@ -47,6 +49,9 @@ func NewCapabilityHost(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001preview:CapabilityHost"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250101preview:CapabilityHost"),
 		},
 	})
 	opts = append(opts, aliases)

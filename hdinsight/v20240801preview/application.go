@@ -60,6 +60,9 @@ func NewApplication(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:hdinsight/v20230815preview:Application"),
 		},
 		{
+			Type: pulumi.String("azure-native:hdinsight/v20250115preview:Application"),
+		},
+		{
 			Type: pulumi.String("azure-native:hdinsight:Application"),
 		},
 	})

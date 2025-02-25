@@ -43,6 +43,9 @@ func NewDra(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:datareplication/v20240901:Dra"),
+		},
+		{
 			Type: pulumi.String("azure-native:datareplication:Dra"),
 		},
 	})

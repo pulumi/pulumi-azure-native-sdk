@@ -103,6 +103,9 @@ func NewL3Network(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:networkcloud/v20241001preview:L3Network"),
 		},
 		{
+			Type: pulumi.String("azure-native:networkcloud/v20250201:L3Network"),
+		},
+		{
 			Type: pulumi.String("azure-native:networkcloud:L3Network"),
 		},
 	})
