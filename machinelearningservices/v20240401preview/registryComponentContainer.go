@@ -84,6 +84,9 @@ func NewRegistryComponentContainer(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001preview:RegistryComponentContainer"),
 		},
 		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250101preview:RegistryComponentContainer"),
+		},
+		{
 			Type: pulumi.String("azure-native:machinelearningservices:RegistryComponentContainer"),
 		},
 	})

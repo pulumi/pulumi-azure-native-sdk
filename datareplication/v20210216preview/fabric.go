@@ -44,6 +44,9 @@ func NewFabric(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:datareplication/v20240901:Fabric"),
+		},
+		{
 			Type: pulumi.String("azure-native:datareplication:Fabric"),
 		},
 	})

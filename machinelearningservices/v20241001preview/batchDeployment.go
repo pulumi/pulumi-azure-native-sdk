@@ -111,6 +111,9 @@ func NewBatchDeployment(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001:BatchDeployment"),
 		},
 		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250101preview:BatchDeployment"),
+		},
+		{
 			Type: pulumi.String("azure-native:machinelearningservices:BatchDeployment"),
 		},
 	})

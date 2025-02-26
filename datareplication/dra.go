@@ -46,6 +46,9 @@ func NewDra(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:datareplication/v20210216preview:Dra"),
 		},
+		{
+			Type: pulumi.String("azure-native:datareplication/v20240901:Dra"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

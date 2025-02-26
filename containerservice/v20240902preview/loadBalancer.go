@@ -72,6 +72,9 @@ func NewLoadBalancer(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:containerservice/v20240702preview:LoadBalancer"),
 		},
 		{
+			Type: pulumi.String("azure-native:containerservice/v20241002preview:LoadBalancer"),
+		},
+		{
 			Type: pulumi.String("azure-native:containerservice:LoadBalancer"),
 		},
 	})

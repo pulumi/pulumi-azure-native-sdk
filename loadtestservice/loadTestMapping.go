@@ -14,6 +14,8 @@ import (
 
 // LoadTest mapping resource details
 // Azure REST API version: 2023-12-01-preview.
+//
+// Other available API versions: 2024-12-01-preview.
 type LoadTestMapping struct {
 	pulumi.CustomResourceState
 
@@ -44,6 +46,9 @@ func NewLoadTestMapping(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:loadtestservice/v20231201preview:LoadTestMapping"),
+		},
+		{
+			Type: pulumi.String("azure-native:loadtestservice/v20241201preview:LoadTestMapping"),
 		},
 	})
 	opts = append(opts, aliases)

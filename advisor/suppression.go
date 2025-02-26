@@ -14,6 +14,8 @@ import (
 
 // The details of the snoozed or dismissed rule; for example, the duration, name, and GUID associated with the rule.
 // Azure REST API version: 2023-01-01. Prior API version in Azure Native 1.x: 2020-01-01.
+//
+// Other available API versions: 2023-09-01-preview.
 type Suppression struct {
 	pulumi.CustomResourceState
 
@@ -65,6 +67,9 @@ func NewSuppression(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:advisor/v20230101:Suppression"),
+		},
+		{
+			Type: pulumi.String("azure-native:advisor/v20230901preview:Suppression"),
 		},
 	})
 	opts = append(opts, aliases)
