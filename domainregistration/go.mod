@@ -6,7 +6,7 @@ toolchain go1.23.6
 
 require (
 	github.com/blang/semver v3.5.1+incompatible
-	github.com/pulumi/pulumi-azure-native-sdk/v2 v2.89.1
+	github.com/pulumi/pulumi-azure-native-sdk/v2 v2.90.0-alpha.1741270651
 	github.com/pulumi/pulumi/sdk/v3 v3.153.1
 )
 
