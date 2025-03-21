@@ -12,9 +12,7 @@ import (
 )
 
 // Gets the move collection.
-// Azure REST API version: 2022-08-01.
-//
-// Other available API versions: 2023-08-01.
+// Azure REST API version: 2023-08-01.
 func LookupMoveCollection(ctx *pulumi.Context, args *LookupMoveCollectionArgs, opts ...pulumi.InvokeOption) (*LookupMoveCollectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMoveCollectionResult
@@ -34,6 +32,8 @@ type LookupMoveCollectionArgs struct {
 
 // Define the move collection.
 type LookupMoveCollectionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The etag of the resource.
 	Etag string `pulumi:"etag"`
 	// Fully qualified resource Id for the resource.
@@ -87,6 +87,11 @@ func (o LookupMoveCollectionResultOutput) ToLookupMoveCollectionResultOutput() L
 
 func (o LookupMoveCollectionResultOutput) ToLookupMoveCollectionResultOutputWithContext(ctx context.Context) LookupMoveCollectionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupMoveCollectionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMoveCollectionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The etag of the resource.

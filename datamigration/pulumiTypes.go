@@ -16,11 +16,13 @@ var _ = utilities.GetEnvOrDefault
 // Azure Active Directory Application
 type AzureActiveDirectoryApp struct {
 	// Key used to authenticate to the Azure Active Directory Application
-	AppKey string `pulumi:"appKey"`
+	AppKey *string `pulumi:"appKey"`
 	// Application ID of the Azure Active Directory Application
-	ApplicationId string `pulumi:"applicationId"`
+	ApplicationId *string `pulumi:"applicationId"`
+	// Ignore checking azure permissions on the AAD app
+	IgnoreAzurePermissions *bool `pulumi:"ignoreAzurePermissions"`
 	// Tenant id of the customer
-	TenantId string `pulumi:"tenantId"`
+	TenantId *string `pulumi:"tenantId"`
 }
 
 // AzureActiveDirectoryAppInput is an input type that accepts AzureActiveDirectoryAppArgs and AzureActiveDirectoryAppOutput values.
@@ -37,11 +39,13 @@ type AzureActiveDirectoryAppInput interface {
 // Azure Active Directory Application
 type AzureActiveDirectoryAppArgs struct {
 	// Key used to authenticate to the Azure Active Directory Application
-	AppKey pulumi.StringInput `pulumi:"appKey"`
+	AppKey pulumi.StringPtrInput `pulumi:"appKey"`
 	// Application ID of the Azure Active Directory Application
-	ApplicationId pulumi.StringInput `pulumi:"applicationId"`
+	ApplicationId pulumi.StringPtrInput `pulumi:"applicationId"`
+	// Ignore checking azure permissions on the AAD app
+	IgnoreAzurePermissions pulumi.BoolPtrInput `pulumi:"ignoreAzurePermissions"`
 	// Tenant id of the customer
-	TenantId pulumi.StringInput `pulumi:"tenantId"`
+	TenantId pulumi.StringPtrInput `pulumi:"tenantId"`
 }
 
 func (AzureActiveDirectoryAppArgs) ElementType() reflect.Type {
@@ -123,18 +127,23 @@ func (o AzureActiveDirectoryAppOutput) ToAzureActiveDirectoryAppPtrOutputWithCon
 }
 
 // Key used to authenticate to the Azure Active Directory Application
-func (o AzureActiveDirectoryAppOutput) AppKey() pulumi.StringOutput {
-	return o.ApplyT(func(v AzureActiveDirectoryApp) string { return v.AppKey }).(pulumi.StringOutput)
+func (o AzureActiveDirectoryAppOutput) AppKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureActiveDirectoryApp) *string { return v.AppKey }).(pulumi.StringPtrOutput)
 }
 
 // Application ID of the Azure Active Directory Application
-func (o AzureActiveDirectoryAppOutput) ApplicationId() pulumi.StringOutput {
-	return o.ApplyT(func(v AzureActiveDirectoryApp) string { return v.ApplicationId }).(pulumi.StringOutput)
+func (o AzureActiveDirectoryAppOutput) ApplicationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureActiveDirectoryApp) *string { return v.ApplicationId }).(pulumi.StringPtrOutput)
+}
+
+// Ignore checking azure permissions on the AAD app
+func (o AzureActiveDirectoryAppOutput) IgnoreAzurePermissions() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AzureActiveDirectoryApp) *bool { return v.IgnoreAzurePermissions }).(pulumi.BoolPtrOutput)
 }
 
 // Tenant id of the customer
-func (o AzureActiveDirectoryAppOutput) TenantId() pulumi.StringOutput {
-	return o.ApplyT(func(v AzureActiveDirectoryApp) string { return v.TenantId }).(pulumi.StringOutput)
+func (o AzureActiveDirectoryAppOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureActiveDirectoryApp) *string { return v.TenantId }).(pulumi.StringPtrOutput)
 }
 
 type AzureActiveDirectoryAppPtrOutput struct{ *pulumi.OutputState }
@@ -167,7 +176,7 @@ func (o AzureActiveDirectoryAppPtrOutput) AppKey() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.AppKey
+		return v.AppKey
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -177,8 +186,18 @@ func (o AzureActiveDirectoryAppPtrOutput) ApplicationId() pulumi.StringPtrOutput
 		if v == nil {
 			return nil
 		}
-		return &v.ApplicationId
+		return v.ApplicationId
 	}).(pulumi.StringPtrOutput)
+}
+
+// Ignore checking azure permissions on the AAD app
+func (o AzureActiveDirectoryAppPtrOutput) IgnoreAzurePermissions() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AzureActiveDirectoryApp) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IgnoreAzurePermissions
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Tenant id of the customer
@@ -187,18 +206,20 @@ func (o AzureActiveDirectoryAppPtrOutput) TenantId() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.TenantId
+		return v.TenantId
 	}).(pulumi.StringPtrOutput)
 }
 
 // Azure Active Directory Application
 type AzureActiveDirectoryAppResponse struct {
 	// Key used to authenticate to the Azure Active Directory Application
-	AppKey string `pulumi:"appKey"`
+	AppKey *string `pulumi:"appKey"`
 	// Application ID of the Azure Active Directory Application
-	ApplicationId string `pulumi:"applicationId"`
+	ApplicationId *string `pulumi:"applicationId"`
+	// Ignore checking azure permissions on the AAD app
+	IgnoreAzurePermissions *bool `pulumi:"ignoreAzurePermissions"`
 	// Tenant id of the customer
-	TenantId string `pulumi:"tenantId"`
+	TenantId *string `pulumi:"tenantId"`
 }
 
 // Azure Active Directory Application
@@ -217,18 +238,23 @@ func (o AzureActiveDirectoryAppResponseOutput) ToAzureActiveDirectoryAppResponse
 }
 
 // Key used to authenticate to the Azure Active Directory Application
-func (o AzureActiveDirectoryAppResponseOutput) AppKey() pulumi.StringOutput {
-	return o.ApplyT(func(v AzureActiveDirectoryAppResponse) string { return v.AppKey }).(pulumi.StringOutput)
+func (o AzureActiveDirectoryAppResponseOutput) AppKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureActiveDirectoryAppResponse) *string { return v.AppKey }).(pulumi.StringPtrOutput)
 }
 
 // Application ID of the Azure Active Directory Application
-func (o AzureActiveDirectoryAppResponseOutput) ApplicationId() pulumi.StringOutput {
-	return o.ApplyT(func(v AzureActiveDirectoryAppResponse) string { return v.ApplicationId }).(pulumi.StringOutput)
+func (o AzureActiveDirectoryAppResponseOutput) ApplicationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureActiveDirectoryAppResponse) *string { return v.ApplicationId }).(pulumi.StringPtrOutput)
+}
+
+// Ignore checking azure permissions on the AAD app
+func (o AzureActiveDirectoryAppResponseOutput) IgnoreAzurePermissions() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AzureActiveDirectoryAppResponse) *bool { return v.IgnoreAzurePermissions }).(pulumi.BoolPtrOutput)
 }
 
 // Tenant id of the customer
-func (o AzureActiveDirectoryAppResponseOutput) TenantId() pulumi.StringOutput {
-	return o.ApplyT(func(v AzureActiveDirectoryAppResponse) string { return v.TenantId }).(pulumi.StringOutput)
+func (o AzureActiveDirectoryAppResponseOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureActiveDirectoryAppResponse) *string { return v.TenantId }).(pulumi.StringPtrOutput)
 }
 
 type AzureActiveDirectoryAppResponsePtrOutput struct{ *pulumi.OutputState }
@@ -261,7 +287,7 @@ func (o AzureActiveDirectoryAppResponsePtrOutput) AppKey() pulumi.StringPtrOutpu
 		if v == nil {
 			return nil
 		}
-		return &v.AppKey
+		return v.AppKey
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -271,8 +297,18 @@ func (o AzureActiveDirectoryAppResponsePtrOutput) ApplicationId() pulumi.StringP
 		if v == nil {
 			return nil
 		}
-		return &v.ApplicationId
+		return v.ApplicationId
 	}).(pulumi.StringPtrOutput)
+}
+
+// Ignore checking azure permissions on the AAD app
+func (o AzureActiveDirectoryAppResponsePtrOutput) IgnoreAzurePermissions() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AzureActiveDirectoryAppResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IgnoreAzurePermissions
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Tenant id of the customer
@@ -281,7 +317,7 @@ func (o AzureActiveDirectoryAppResponsePtrOutput) TenantId() pulumi.StringPtrOut
 		if v == nil {
 			return nil
 		}
-		return &v.TenantId
+		return v.TenantId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -457,7 +493,7 @@ func (o BackupSetInfoResponseArrayOutput) Index(i pulumi.IntInput) BackupSetInfo
 // Blob container storage information.
 type BlobShare struct {
 	// SAS URI of Azure Storage Account Container.
-	SasUri string `pulumi:"sasUri"`
+	SasUri *string `pulumi:"sasUri"`
 }
 
 // BlobShareInput is an input type that accepts BlobShareArgs and BlobShareOutput values.
@@ -474,7 +510,7 @@ type BlobShareInput interface {
 // Blob container storage information.
 type BlobShareArgs struct {
 	// SAS URI of Azure Storage Account Container.
-	SasUri pulumi.StringInput `pulumi:"sasUri"`
+	SasUri pulumi.StringPtrInput `pulumi:"sasUri"`
 }
 
 func (BlobShareArgs) ElementType() reflect.Type {
@@ -556,8 +592,8 @@ func (o BlobShareOutput) ToBlobSharePtrOutputWithContext(ctx context.Context) Bl
 }
 
 // SAS URI of Azure Storage Account Container.
-func (o BlobShareOutput) SasUri() pulumi.StringOutput {
-	return o.ApplyT(func(v BlobShare) string { return v.SasUri }).(pulumi.StringOutput)
+func (o BlobShareOutput) SasUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BlobShare) *string { return v.SasUri }).(pulumi.StringPtrOutput)
 }
 
 type BlobSharePtrOutput struct{ *pulumi.OutputState }
@@ -590,14 +626,14 @@ func (o BlobSharePtrOutput) SasUri() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.SasUri
+		return v.SasUri
 	}).(pulumi.StringPtrOutput)
 }
 
 // Blob container storage information.
 type BlobShareResponse struct {
 	// SAS URI of Azure Storage Account Container.
-	SasUri string `pulumi:"sasUri"`
+	SasUri *string `pulumi:"sasUri"`
 }
 
 // Blob container storage information.
@@ -616,8 +652,8 @@ func (o BlobShareResponseOutput) ToBlobShareResponseOutputWithContext(ctx contex
 }
 
 // SAS URI of Azure Storage Account Container.
-func (o BlobShareResponseOutput) SasUri() pulumi.StringOutput {
-	return o.ApplyT(func(v BlobShareResponse) string { return v.SasUri }).(pulumi.StringOutput)
+func (o BlobShareResponseOutput) SasUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BlobShareResponse) *string { return v.SasUri }).(pulumi.StringPtrOutput)
 }
 
 type BlobShareResponsePtrOutput struct{ *pulumi.OutputState }
@@ -650,7 +686,7 @@ func (o BlobShareResponsePtrOutput) SasUri() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.SasUri
+		return v.SasUri
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -663,6 +699,17 @@ type ConnectToMongoDbTaskProperties struct {
 	// Task type.
 	// Expected value is 'Connect.MongoDb'.
 	TaskType string `pulumi:"taskType"`
+}
+
+// Defaults sets the appropriate defaults for ConnectToMongoDbTaskProperties
+func (val *ConnectToMongoDbTaskProperties) Defaults() *ConnectToMongoDbTaskProperties {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Input = tmp.Input.Defaults()
+
+	return &tmp
 }
 
 // ConnectToMongoDbTaskPropertiesInput is an input type that accepts ConnectToMongoDbTaskPropertiesArgs and ConnectToMongoDbTaskPropertiesOutput values.
@@ -687,6 +734,15 @@ type ConnectToMongoDbTaskPropertiesArgs struct {
 	TaskType pulumi.StringInput `pulumi:"taskType"`
 }
 
+// Defaults sets the appropriate defaults for ConnectToMongoDbTaskPropertiesArgs
+func (val *ConnectToMongoDbTaskPropertiesArgs) Defaults() *ConnectToMongoDbTaskPropertiesArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+
+	return &tmp
+}
 func (ConnectToMongoDbTaskPropertiesArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*ConnectToMongoDbTaskProperties)(nil)).Elem()
 }
@@ -853,6 +909,17 @@ type ConnectToMongoDbTaskPropertiesResponse struct {
 	// Task type.
 	// Expected value is 'Connect.MongoDb'.
 	TaskType string `pulumi:"taskType"`
+}
+
+// Defaults sets the appropriate defaults for ConnectToMongoDbTaskPropertiesResponse
+func (val *ConnectToMongoDbTaskPropertiesResponse) Defaults() *ConnectToMongoDbTaskPropertiesResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Input = tmp.Input.Defaults()
+
+	return &tmp
 }
 
 // Properties for the task that validates the connection to and provides information about a MongoDB server
@@ -3043,6 +3110,8 @@ type ConnectToSourceSqlServerTaskInput struct {
 	CollectLogins *bool `pulumi:"collectLogins"`
 	// Flag for whether to collect TDE Certificate names from source server.
 	CollectTdeCertificateInfo *bool `pulumi:"collectTdeCertificateInfo"`
+	// encrypted key for secure fields
+	EncryptedKeyForSecureFields *string `pulumi:"encryptedKeyForSecureFields"`
 	// Connection information for Source SQL Server
 	SourceConnectionInfo SqlConnectionInfo `pulumi:"sourceConnectionInfo"`
 	// Flag for whether to validate SSIS catalog is reachable on the source server.
@@ -3103,6 +3172,8 @@ type ConnectToSourceSqlServerTaskInputArgs struct {
 	CollectLogins pulumi.BoolPtrInput `pulumi:"collectLogins"`
 	// Flag for whether to collect TDE Certificate names from source server.
 	CollectTdeCertificateInfo pulumi.BoolPtrInput `pulumi:"collectTdeCertificateInfo"`
+	// encrypted key for secure fields
+	EncryptedKeyForSecureFields pulumi.StringPtrInput `pulumi:"encryptedKeyForSecureFields"`
 	// Connection information for Source SQL Server
 	SourceConnectionInfo SqlConnectionInfoInput `pulumi:"sourceConnectionInfo"`
 	// Flag for whether to validate SSIS catalog is reachable on the source server.
@@ -3236,6 +3307,11 @@ func (o ConnectToSourceSqlServerTaskInputOutput) CollectTdeCertificateInfo() pul
 	return o.ApplyT(func(v ConnectToSourceSqlServerTaskInput) *bool { return v.CollectTdeCertificateInfo }).(pulumi.BoolPtrOutput)
 }
 
+// encrypted key for secure fields
+func (o ConnectToSourceSqlServerTaskInputOutput) EncryptedKeyForSecureFields() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectToSourceSqlServerTaskInput) *string { return v.EncryptedKeyForSecureFields }).(pulumi.StringPtrOutput)
+}
+
 // Connection information for Source SQL Server
 func (o ConnectToSourceSqlServerTaskInputOutput) SourceConnectionInfo() SqlConnectionInfoOutput {
 	return o.ApplyT(func(v ConnectToSourceSqlServerTaskInput) SqlConnectionInfo { return v.SourceConnectionInfo }).(SqlConnectionInfoOutput)
@@ -3320,6 +3396,16 @@ func (o ConnectToSourceSqlServerTaskInputPtrOutput) CollectTdeCertificateInfo() 
 	}).(pulumi.BoolPtrOutput)
 }
 
+// encrypted key for secure fields
+func (o ConnectToSourceSqlServerTaskInputPtrOutput) EncryptedKeyForSecureFields() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectToSourceSqlServerTaskInput) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EncryptedKeyForSecureFields
+	}).(pulumi.StringPtrOutput)
+}
+
 // Connection information for Source SQL Server
 func (o ConnectToSourceSqlServerTaskInputPtrOutput) SourceConnectionInfo() SqlConnectionInfoPtrOutput {
 	return o.ApplyT(func(v *ConnectToSourceSqlServerTaskInput) *SqlConnectionInfo {
@@ -3352,6 +3438,8 @@ type ConnectToSourceSqlServerTaskInputResponse struct {
 	CollectLogins *bool `pulumi:"collectLogins"`
 	// Flag for whether to collect TDE Certificate names from source server.
 	CollectTdeCertificateInfo *bool `pulumi:"collectTdeCertificateInfo"`
+	// encrypted key for secure fields
+	EncryptedKeyForSecureFields *string `pulumi:"encryptedKeyForSecureFields"`
 	// Connection information for Source SQL Server
 	SourceConnectionInfo SqlConnectionInfoResponse `pulumi:"sourceConnectionInfo"`
 	// Flag for whether to validate SSIS catalog is reachable on the source server.
@@ -3427,6 +3515,11 @@ func (o ConnectToSourceSqlServerTaskInputResponseOutput) CollectLogins() pulumi.
 // Flag for whether to collect TDE Certificate names from source server.
 func (o ConnectToSourceSqlServerTaskInputResponseOutput) CollectTdeCertificateInfo() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectToSourceSqlServerTaskInputResponse) *bool { return v.CollectTdeCertificateInfo }).(pulumi.BoolPtrOutput)
+}
+
+// encrypted key for secure fields
+func (o ConnectToSourceSqlServerTaskInputResponseOutput) EncryptedKeyForSecureFields() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectToSourceSqlServerTaskInputResponse) *string { return v.EncryptedKeyForSecureFields }).(pulumi.StringPtrOutput)
 }
 
 // Connection information for Source SQL Server
@@ -3513,6 +3606,16 @@ func (o ConnectToSourceSqlServerTaskInputResponsePtrOutput) CollectTdeCertificat
 		}
 		return v.CollectTdeCertificateInfo
 	}).(pulumi.BoolPtrOutput)
+}
+
+// encrypted key for secure fields
+func (o ConnectToSourceSqlServerTaskInputResponsePtrOutput) EncryptedKeyForSecureFields() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectToSourceSqlServerTaskInputResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EncryptedKeyForSecureFields
+	}).(pulumi.StringPtrOutput)
 }
 
 // Connection information for Source SQL Server
@@ -3861,6 +3964,8 @@ type ConnectToSourceSqlServerTaskProperties struct {
 	ClientData map[string]string `pulumi:"clientData"`
 	// Task input
 	Input *ConnectToSourceSqlServerTaskInput `pulumi:"input"`
+	// Task id
+	TaskId *string `pulumi:"taskId"`
 	// Task type.
 	// Expected value is 'ConnectToSource.SqlServer'.
 	TaskType string `pulumi:"taskType"`
@@ -3894,6 +3999,8 @@ type ConnectToSourceSqlServerTaskPropertiesArgs struct {
 	ClientData pulumi.StringMapInput `pulumi:"clientData"`
 	// Task input
 	Input ConnectToSourceSqlServerTaskInputPtrInput `pulumi:"input"`
+	// Task id
+	TaskId pulumi.StringPtrInput `pulumi:"taskId"`
 	// Task type.
 	// Expected value is 'ConnectToSource.SqlServer'.
 	TaskType pulumi.StringInput `pulumi:"taskType"`
@@ -3996,6 +4103,11 @@ func (o ConnectToSourceSqlServerTaskPropertiesOutput) Input() ConnectToSourceSql
 	return o.ApplyT(func(v ConnectToSourceSqlServerTaskProperties) *ConnectToSourceSqlServerTaskInput { return v.Input }).(ConnectToSourceSqlServerTaskInputPtrOutput)
 }
 
+// Task id
+func (o ConnectToSourceSqlServerTaskPropertiesOutput) TaskId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectToSourceSqlServerTaskProperties) *string { return v.TaskId }).(pulumi.StringPtrOutput)
+}
+
 // Task type.
 // Expected value is 'ConnectToSource.SqlServer'.
 func (o ConnectToSourceSqlServerTaskPropertiesOutput) TaskType() pulumi.StringOutput {
@@ -4046,6 +4158,16 @@ func (o ConnectToSourceSqlServerTaskPropertiesPtrOutput) Input() ConnectToSource
 	}).(ConnectToSourceSqlServerTaskInputPtrOutput)
 }
 
+// Task id
+func (o ConnectToSourceSqlServerTaskPropertiesPtrOutput) TaskId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectToSourceSqlServerTaskProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TaskId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Task type.
 // Expected value is 'ConnectToSource.SqlServer'.
 func (o ConnectToSourceSqlServerTaskPropertiesPtrOutput) TaskType() pulumi.StringPtrOutput {
@@ -4071,6 +4193,8 @@ type ConnectToSourceSqlServerTaskPropertiesResponse struct {
 	Output []interface{} `pulumi:"output"`
 	// The state of the task. This is ignored if submitted.
 	State string `pulumi:"state"`
+	// Task id
+	TaskId *string `pulumi:"taskId"`
 	// Task type.
 	// Expected value is 'ConnectToSource.SqlServer'.
 	TaskType string `pulumi:"taskType"`
@@ -4132,6 +4256,11 @@ func (o ConnectToSourceSqlServerTaskPropertiesResponseOutput) Output() pulumi.Ar
 // The state of the task. This is ignored if submitted.
 func (o ConnectToSourceSqlServerTaskPropertiesResponseOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectToSourceSqlServerTaskPropertiesResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Task id
+func (o ConnectToSourceSqlServerTaskPropertiesResponseOutput) TaskId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectToSourceSqlServerTaskPropertiesResponse) *string { return v.TaskId }).(pulumi.StringPtrOutput)
 }
 
 // Task type.
@@ -6144,6 +6273,8 @@ func (o ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskPropertiesResponseOutpu
 
 // Input for the task that validates connection to SQL DB and target server requirements
 type ConnectToTargetSqlDbTaskInput struct {
+	// Boolean flag indicating whether to query object counts for each database on the target server
+	QueryObjectCounts *bool `pulumi:"queryObjectCounts"`
 	// Connection information for target SQL DB
 	TargetConnectionInfo SqlConnectionInfo `pulumi:"targetConnectionInfo"`
 }
@@ -6172,6 +6303,8 @@ type ConnectToTargetSqlDbTaskInputInput interface {
 
 // Input for the task that validates connection to SQL DB and target server requirements
 type ConnectToTargetSqlDbTaskInputArgs struct {
+	// Boolean flag indicating whether to query object counts for each database on the target server
+	QueryObjectCounts pulumi.BoolPtrInput `pulumi:"queryObjectCounts"`
 	// Connection information for target SQL DB
 	TargetConnectionInfo SqlConnectionInfoInput `pulumi:"targetConnectionInfo"`
 }
@@ -6263,6 +6396,11 @@ func (o ConnectToTargetSqlDbTaskInputOutput) ToConnectToTargetSqlDbTaskInputPtrO
 	}).(ConnectToTargetSqlDbTaskInputPtrOutput)
 }
 
+// Boolean flag indicating whether to query object counts for each database on the target server
+func (o ConnectToTargetSqlDbTaskInputOutput) QueryObjectCounts() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConnectToTargetSqlDbTaskInput) *bool { return v.QueryObjectCounts }).(pulumi.BoolPtrOutput)
+}
+
 // Connection information for target SQL DB
 func (o ConnectToTargetSqlDbTaskInputOutput) TargetConnectionInfo() SqlConnectionInfoOutput {
 	return o.ApplyT(func(v ConnectToTargetSqlDbTaskInput) SqlConnectionInfo { return v.TargetConnectionInfo }).(SqlConnectionInfoOutput)
@@ -6292,6 +6430,16 @@ func (o ConnectToTargetSqlDbTaskInputPtrOutput) Elem() ConnectToTargetSqlDbTaskI
 	}).(ConnectToTargetSqlDbTaskInputOutput)
 }
 
+// Boolean flag indicating whether to query object counts for each database on the target server
+func (o ConnectToTargetSqlDbTaskInputPtrOutput) QueryObjectCounts() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConnectToTargetSqlDbTaskInput) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.QueryObjectCounts
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Connection information for target SQL DB
 func (o ConnectToTargetSqlDbTaskInputPtrOutput) TargetConnectionInfo() SqlConnectionInfoPtrOutput {
 	return o.ApplyT(func(v *ConnectToTargetSqlDbTaskInput) *SqlConnectionInfo {
@@ -6304,6 +6452,8 @@ func (o ConnectToTargetSqlDbTaskInputPtrOutput) TargetConnectionInfo() SqlConnec
 
 // Input for the task that validates connection to SQL DB and target server requirements
 type ConnectToTargetSqlDbTaskInputResponse struct {
+	// Boolean flag indicating whether to query object counts for each database on the target server
+	QueryObjectCounts *bool `pulumi:"queryObjectCounts"`
 	// Connection information for target SQL DB
 	TargetConnectionInfo SqlConnectionInfoResponse `pulumi:"targetConnectionInfo"`
 }
@@ -6334,6 +6484,11 @@ func (o ConnectToTargetSqlDbTaskInputResponseOutput) ToConnectToTargetSqlDbTaskI
 	return o
 }
 
+// Boolean flag indicating whether to query object counts for each database on the target server
+func (o ConnectToTargetSqlDbTaskInputResponseOutput) QueryObjectCounts() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConnectToTargetSqlDbTaskInputResponse) *bool { return v.QueryObjectCounts }).(pulumi.BoolPtrOutput)
+}
+
 // Connection information for target SQL DB
 func (o ConnectToTargetSqlDbTaskInputResponseOutput) TargetConnectionInfo() SqlConnectionInfoResponseOutput {
 	return o.ApplyT(func(v ConnectToTargetSqlDbTaskInputResponse) SqlConnectionInfoResponse { return v.TargetConnectionInfo }).(SqlConnectionInfoResponseOutput)
@@ -6361,6 +6516,16 @@ func (o ConnectToTargetSqlDbTaskInputResponsePtrOutput) Elem() ConnectToTargetSq
 		var ret ConnectToTargetSqlDbTaskInputResponse
 		return ret
 	}).(ConnectToTargetSqlDbTaskInputResponseOutput)
+}
+
+// Boolean flag indicating whether to query object counts for each database on the target server
+func (o ConnectToTargetSqlDbTaskInputResponsePtrOutput) QueryObjectCounts() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConnectToTargetSqlDbTaskInputResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.QueryObjectCounts
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Connection information for target SQL DB
@@ -6444,6 +6609,8 @@ func (o ConnectToTargetSqlDbTaskOutputResponseArrayOutput) Index(i pulumi.IntInp
 type ConnectToTargetSqlDbTaskProperties struct {
 	// Key value pairs of client data to attach meta data information to task
 	ClientData map[string]string `pulumi:"clientData"`
+	// DateTime in UTC when the task was created
+	CreatedOn *string `pulumi:"createdOn"`
 	// Task input
 	Input *ConnectToTargetSqlDbTaskInput `pulumi:"input"`
 	// Task type.
@@ -6477,6 +6644,8 @@ type ConnectToTargetSqlDbTaskPropertiesInput interface {
 type ConnectToTargetSqlDbTaskPropertiesArgs struct {
 	// Key value pairs of client data to attach meta data information to task
 	ClientData pulumi.StringMapInput `pulumi:"clientData"`
+	// DateTime in UTC when the task was created
+	CreatedOn pulumi.StringPtrInput `pulumi:"createdOn"`
 	// Task input
 	Input ConnectToTargetSqlDbTaskInputPtrInput `pulumi:"input"`
 	// Task type.
@@ -6576,6 +6745,11 @@ func (o ConnectToTargetSqlDbTaskPropertiesOutput) ClientData() pulumi.StringMapO
 	return o.ApplyT(func(v ConnectToTargetSqlDbTaskProperties) map[string]string { return v.ClientData }).(pulumi.StringMapOutput)
 }
 
+// DateTime in UTC when the task was created
+func (o ConnectToTargetSqlDbTaskPropertiesOutput) CreatedOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectToTargetSqlDbTaskProperties) *string { return v.CreatedOn }).(pulumi.StringPtrOutput)
+}
+
 // Task input
 func (o ConnectToTargetSqlDbTaskPropertiesOutput) Input() ConnectToTargetSqlDbTaskInputPtrOutput {
 	return o.ApplyT(func(v ConnectToTargetSqlDbTaskProperties) *ConnectToTargetSqlDbTaskInput { return v.Input }).(ConnectToTargetSqlDbTaskInputPtrOutput)
@@ -6621,6 +6795,16 @@ func (o ConnectToTargetSqlDbTaskPropertiesPtrOutput) ClientData() pulumi.StringM
 	}).(pulumi.StringMapOutput)
 }
 
+// DateTime in UTC when the task was created
+func (o ConnectToTargetSqlDbTaskPropertiesPtrOutput) CreatedOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectToTargetSqlDbTaskProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedOn
+	}).(pulumi.StringPtrOutput)
+}
+
 // Task input
 func (o ConnectToTargetSqlDbTaskPropertiesPtrOutput) Input() ConnectToTargetSqlDbTaskInputPtrOutput {
 	return o.ApplyT(func(v *ConnectToTargetSqlDbTaskProperties) *ConnectToTargetSqlDbTaskInput {
@@ -6648,6 +6832,8 @@ type ConnectToTargetSqlDbTaskPropertiesResponse struct {
 	ClientData map[string]string `pulumi:"clientData"`
 	// Array of command properties.
 	Commands []interface{} `pulumi:"commands"`
+	// DateTime in UTC when the task was created
+	CreatedOn *string `pulumi:"createdOn"`
 	// Array of errors. This is ignored if submitted.
 	Errors []ODataErrorResponse `pulumi:"errors"`
 	// Task input
@@ -6697,6 +6883,11 @@ func (o ConnectToTargetSqlDbTaskPropertiesResponseOutput) Commands() pulumi.Arra
 	return o.ApplyT(func(v ConnectToTargetSqlDbTaskPropertiesResponse) []interface{} { return v.Commands }).(pulumi.ArrayOutput)
 }
 
+// DateTime in UTC when the task was created
+func (o ConnectToTargetSqlDbTaskPropertiesResponseOutput) CreatedOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectToTargetSqlDbTaskPropertiesResponse) *string { return v.CreatedOn }).(pulumi.StringPtrOutput)
+}
+
 // Array of errors. This is ignored if submitted.
 func (o ConnectToTargetSqlDbTaskPropertiesResponseOutput) Errors() ODataErrorResponseArrayOutput {
 	return o.ApplyT(func(v ConnectToTargetSqlDbTaskPropertiesResponse) []ODataErrorResponse { return v.Errors }).(ODataErrorResponseArrayOutput)
@@ -6729,7 +6920,7 @@ func (o ConnectToTargetSqlDbTaskPropertiesResponseOutput) TaskType() pulumi.Stri
 
 // Input for the task that validates connection to Azure SQL Database Managed Instance online scenario.
 type ConnectToTargetSqlMISyncTaskInput struct {
-	// Azure Active Directory Application the DMS instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
+	// Azure Active Directory Application the DMS (classic) instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
 	AzureApp AzureActiveDirectoryApp `pulumi:"azureApp"`
 	// Connection information for Azure SQL Database Managed Instance
 	TargetConnectionInfo MiSqlConnectionInfo `pulumi:"targetConnectionInfo"`
@@ -6748,7 +6939,7 @@ type ConnectToTargetSqlMISyncTaskInputInput interface {
 
 // Input for the task that validates connection to Azure SQL Database Managed Instance online scenario.
 type ConnectToTargetSqlMISyncTaskInputArgs struct {
-	// Azure Active Directory Application the DMS instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
+	// Azure Active Directory Application the DMS (classic) instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
 	AzureApp AzureActiveDirectoryAppInput `pulumi:"azureApp"`
 	// Connection information for Azure SQL Database Managed Instance
 	TargetConnectionInfo MiSqlConnectionInfoInput `pulumi:"targetConnectionInfo"`
@@ -6832,7 +7023,7 @@ func (o ConnectToTargetSqlMISyncTaskInputOutput) ToConnectToTargetSqlMISyncTaskI
 	}).(ConnectToTargetSqlMISyncTaskInputPtrOutput)
 }
 
-// Azure Active Directory Application the DMS instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
+// Azure Active Directory Application the DMS (classic) instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
 func (o ConnectToTargetSqlMISyncTaskInputOutput) AzureApp() AzureActiveDirectoryAppOutput {
 	return o.ApplyT(func(v ConnectToTargetSqlMISyncTaskInput) AzureActiveDirectoryApp { return v.AzureApp }).(AzureActiveDirectoryAppOutput)
 }
@@ -6866,7 +7057,7 @@ func (o ConnectToTargetSqlMISyncTaskInputPtrOutput) Elem() ConnectToTargetSqlMIS
 	}).(ConnectToTargetSqlMISyncTaskInputOutput)
 }
 
-// Azure Active Directory Application the DMS instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
+// Azure Active Directory Application the DMS (classic) instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
 func (o ConnectToTargetSqlMISyncTaskInputPtrOutput) AzureApp() AzureActiveDirectoryAppPtrOutput {
 	return o.ApplyT(func(v *ConnectToTargetSqlMISyncTaskInput) *AzureActiveDirectoryApp {
 		if v == nil {
@@ -6888,7 +7079,7 @@ func (o ConnectToTargetSqlMISyncTaskInputPtrOutput) TargetConnectionInfo() MiSql
 
 // Input for the task that validates connection to Azure SQL Database Managed Instance online scenario.
 type ConnectToTargetSqlMISyncTaskInputResponse struct {
-	// Azure Active Directory Application the DMS instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
+	// Azure Active Directory Application the DMS (classic) instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
 	AzureApp AzureActiveDirectoryAppResponse `pulumi:"azureApp"`
 	// Connection information for Azure SQL Database Managed Instance
 	TargetConnectionInfo MiSqlConnectionInfoResponse `pulumi:"targetConnectionInfo"`
@@ -6909,7 +7100,7 @@ func (o ConnectToTargetSqlMISyncTaskInputResponseOutput) ToConnectToTargetSqlMIS
 	return o
 }
 
-// Azure Active Directory Application the DMS instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
+// Azure Active Directory Application the DMS (classic) instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
 func (o ConnectToTargetSqlMISyncTaskInputResponseOutput) AzureApp() AzureActiveDirectoryAppResponseOutput {
 	return o.ApplyT(func(v ConnectToTargetSqlMISyncTaskInputResponse) AzureActiveDirectoryAppResponse { return v.AzureApp }).(AzureActiveDirectoryAppResponseOutput)
 }
@@ -6945,7 +7136,7 @@ func (o ConnectToTargetSqlMISyncTaskInputResponsePtrOutput) Elem() ConnectToTarg
 	}).(ConnectToTargetSqlMISyncTaskInputResponseOutput)
 }
 
-// Azure Active Directory Application the DMS instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
+// Azure Active Directory Application the DMS (classic) instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
 func (o ConnectToTargetSqlMISyncTaskInputResponsePtrOutput) AzureApp() AzureActiveDirectoryAppResponsePtrOutput {
 	return o.ApplyT(func(v *ConnectToTargetSqlMISyncTaskInputResponse) *AzureActiveDirectoryAppResponse {
 		if v == nil {
@@ -9257,13 +9448,13 @@ func (o DatabaseInfoResponseArrayOutput) Index(i pulumi.IntInput) DatabaseInfoRe
 type DatabaseMigrationPropertiesSqlDb struct {
 	// Expected value is 'SqlDb'.
 	Kind string `pulumi:"kind"`
-	// ID tracking current migration operation.
+	// ID for current migration operation.
 	MigrationOperationId *string `pulumi:"migrationOperationId"`
 	// Resource Id of the Migration Service.
 	MigrationService *string `pulumi:"migrationService"`
 	// Error message for migration provisioning failure, if any.
 	ProvisioningError *string `pulumi:"provisioningError"`
-	// Resource Id of the target resource (SQL VM or SQL Managed Instance).
+	// Resource Id of the target resource.
 	Scope *string `pulumi:"scope"`
 	// Name of the source database.
 	SourceDatabaseName *string `pulumi:"sourceDatabaseName"`
@@ -9292,13 +9483,13 @@ type DatabaseMigrationPropertiesSqlDbInput interface {
 type DatabaseMigrationPropertiesSqlDbArgs struct {
 	// Expected value is 'SqlDb'.
 	Kind pulumi.StringInput `pulumi:"kind"`
-	// ID tracking current migration operation.
+	// ID for current migration operation.
 	MigrationOperationId pulumi.StringPtrInput `pulumi:"migrationOperationId"`
 	// Resource Id of the Migration Service.
 	MigrationService pulumi.StringPtrInput `pulumi:"migrationService"`
 	// Error message for migration provisioning failure, if any.
 	ProvisioningError pulumi.StringPtrInput `pulumi:"provisioningError"`
-	// Resource Id of the target resource (SQL VM or SQL Managed Instance).
+	// Resource Id of the target resource.
 	Scope pulumi.StringPtrInput `pulumi:"scope"`
 	// Name of the source database.
 	SourceDatabaseName pulumi.StringPtrInput `pulumi:"sourceDatabaseName"`
@@ -9395,7 +9586,7 @@ func (o DatabaseMigrationPropertiesSqlDbOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseMigrationPropertiesSqlDb) string { return v.Kind }).(pulumi.StringOutput)
 }
 
-// ID tracking current migration operation.
+// ID for current migration operation.
 func (o DatabaseMigrationPropertiesSqlDbOutput) MigrationOperationId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseMigrationPropertiesSqlDb) *string { return v.MigrationOperationId }).(pulumi.StringPtrOutput)
 }
@@ -9410,7 +9601,7 @@ func (o DatabaseMigrationPropertiesSqlDbOutput) ProvisioningError() pulumi.Strin
 	return o.ApplyT(func(v DatabaseMigrationPropertiesSqlDb) *string { return v.ProvisioningError }).(pulumi.StringPtrOutput)
 }
 
-// Resource Id of the target resource (SQL VM or SQL Managed Instance).
+// Resource Id of the target resource.
 func (o DatabaseMigrationPropertiesSqlDbOutput) Scope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseMigrationPropertiesSqlDb) *string { return v.Scope }).(pulumi.StringPtrOutput)
 }
@@ -9474,7 +9665,7 @@ func (o DatabaseMigrationPropertiesSqlDbPtrOutput) Kind() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// ID tracking current migration operation.
+// ID for current migration operation.
 func (o DatabaseMigrationPropertiesSqlDbPtrOutput) MigrationOperationId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseMigrationPropertiesSqlDb) *string {
 		if v == nil {
@@ -9504,7 +9695,7 @@ func (o DatabaseMigrationPropertiesSqlDbPtrOutput) ProvisioningError() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
-// Resource Id of the target resource (SQL VM or SQL Managed Instance).
+// Resource Id of the target resource.
 func (o DatabaseMigrationPropertiesSqlDbPtrOutput) Scope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseMigrationPropertiesSqlDb) *string {
 		if v == nil {
@@ -9572,7 +9763,7 @@ type DatabaseMigrationPropertiesSqlDbResponse struct {
 	Kind string `pulumi:"kind"`
 	// Error details in case of migration failure.
 	MigrationFailureError ErrorInfoResponse `pulumi:"migrationFailureError"`
-	// ID tracking current migration operation.
+	// ID for current migration operation.
 	MigrationOperationId *string `pulumi:"migrationOperationId"`
 	// Resource Id of the Migration Service.
 	MigrationService *string `pulumi:"migrationService"`
@@ -9586,7 +9777,7 @@ type DatabaseMigrationPropertiesSqlDbResponse struct {
 	ProvisioningError *string `pulumi:"provisioningError"`
 	// Provisioning State of migration. ProvisioningState as Succeeded implies that validations have been performed and migration has started.
 	ProvisioningState string `pulumi:"provisioningState"`
-	// Resource Id of the target resource (SQL VM or SQL Managed Instance).
+	// Resource Id of the target resource.
 	Scope *string `pulumi:"scope"`
 	// Name of the source database.
 	SourceDatabaseName *string `pulumi:"sourceDatabaseName"`
@@ -9634,7 +9825,7 @@ func (o DatabaseMigrationPropertiesSqlDbResponseOutput) MigrationFailureError() 
 	return o.ApplyT(func(v DatabaseMigrationPropertiesSqlDbResponse) ErrorInfoResponse { return v.MigrationFailureError }).(ErrorInfoResponseOutput)
 }
 
-// ID tracking current migration operation.
+// ID for current migration operation.
 func (o DatabaseMigrationPropertiesSqlDbResponseOutput) MigrationOperationId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseMigrationPropertiesSqlDbResponse) *string { return v.MigrationOperationId }).(pulumi.StringPtrOutput)
 }
@@ -9673,7 +9864,7 @@ func (o DatabaseMigrationPropertiesSqlDbResponseOutput) ProvisioningState() pulu
 	return o.ApplyT(func(v DatabaseMigrationPropertiesSqlDbResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Resource Id of the target resource (SQL VM or SQL Managed Instance).
+// Resource Id of the target resource.
 func (o DatabaseMigrationPropertiesSqlDbResponseOutput) Scope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseMigrationPropertiesSqlDbResponse) *string { return v.Scope }).(pulumi.StringPtrOutput)
 }
@@ -13469,6 +13660,8 @@ func (o GetUserTablesSqlSyncTaskPropertiesResponseOutput) TaskType() pulumi.Stri
 type GetUserTablesSqlTaskInput struct {
 	// Connection information for SQL Server
 	ConnectionInfo SqlConnectionInfo `pulumi:"connectionInfo"`
+	// encrypted key for secure fields
+	EncryptedKeyForSecureFields *string `pulumi:"encryptedKeyForSecureFields"`
 	// List of database names to collect tables for
 	SelectedDatabases []string `pulumi:"selectedDatabases"`
 }
@@ -13499,6 +13692,8 @@ type GetUserTablesSqlTaskInputInput interface {
 type GetUserTablesSqlTaskInputArgs struct {
 	// Connection information for SQL Server
 	ConnectionInfo SqlConnectionInfoInput `pulumi:"connectionInfo"`
+	// encrypted key for secure fields
+	EncryptedKeyForSecureFields pulumi.StringPtrInput `pulumi:"encryptedKeyForSecureFields"`
 	// List of database names to collect tables for
 	SelectedDatabases pulumi.StringArrayInput `pulumi:"selectedDatabases"`
 }
@@ -13595,6 +13790,11 @@ func (o GetUserTablesSqlTaskInputOutput) ConnectionInfo() SqlConnectionInfoOutpu
 	return o.ApplyT(func(v GetUserTablesSqlTaskInput) SqlConnectionInfo { return v.ConnectionInfo }).(SqlConnectionInfoOutput)
 }
 
+// encrypted key for secure fields
+func (o GetUserTablesSqlTaskInputOutput) EncryptedKeyForSecureFields() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetUserTablesSqlTaskInput) *string { return v.EncryptedKeyForSecureFields }).(pulumi.StringPtrOutput)
+}
+
 // List of database names to collect tables for
 func (o GetUserTablesSqlTaskInputOutput) SelectedDatabases() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetUserTablesSqlTaskInput) []string { return v.SelectedDatabases }).(pulumi.StringArrayOutput)
@@ -13634,6 +13834,16 @@ func (o GetUserTablesSqlTaskInputPtrOutput) ConnectionInfo() SqlConnectionInfoPt
 	}).(SqlConnectionInfoPtrOutput)
 }
 
+// encrypted key for secure fields
+func (o GetUserTablesSqlTaskInputPtrOutput) EncryptedKeyForSecureFields() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetUserTablesSqlTaskInput) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EncryptedKeyForSecureFields
+	}).(pulumi.StringPtrOutput)
+}
+
 // List of database names to collect tables for
 func (o GetUserTablesSqlTaskInputPtrOutput) SelectedDatabases() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GetUserTablesSqlTaskInput) []string {
@@ -13648,6 +13858,8 @@ func (o GetUserTablesSqlTaskInputPtrOutput) SelectedDatabases() pulumi.StringArr
 type GetUserTablesSqlTaskInputResponse struct {
 	// Connection information for SQL Server
 	ConnectionInfo SqlConnectionInfoResponse `pulumi:"connectionInfo"`
+	// encrypted key for secure fields
+	EncryptedKeyForSecureFields *string `pulumi:"encryptedKeyForSecureFields"`
 	// List of database names to collect tables for
 	SelectedDatabases []string `pulumi:"selectedDatabases"`
 }
@@ -13681,6 +13893,11 @@ func (o GetUserTablesSqlTaskInputResponseOutput) ToGetUserTablesSqlTaskInputResp
 // Connection information for SQL Server
 func (o GetUserTablesSqlTaskInputResponseOutput) ConnectionInfo() SqlConnectionInfoResponseOutput {
 	return o.ApplyT(func(v GetUserTablesSqlTaskInputResponse) SqlConnectionInfoResponse { return v.ConnectionInfo }).(SqlConnectionInfoResponseOutput)
+}
+
+// encrypted key for secure fields
+func (o GetUserTablesSqlTaskInputResponseOutput) EncryptedKeyForSecureFields() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetUserTablesSqlTaskInputResponse) *string { return v.EncryptedKeyForSecureFields }).(pulumi.StringPtrOutput)
 }
 
 // List of database names to collect tables for
@@ -13720,6 +13937,16 @@ func (o GetUserTablesSqlTaskInputResponsePtrOutput) ConnectionInfo() SqlConnecti
 		}
 		return &v.ConnectionInfo
 	}).(SqlConnectionInfoResponsePtrOutput)
+}
+
+// encrypted key for secure fields
+func (o GetUserTablesSqlTaskInputResponsePtrOutput) EncryptedKeyForSecureFields() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetUserTablesSqlTaskInputResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EncryptedKeyForSecureFields
+	}).(pulumi.StringPtrOutput)
 }
 
 // List of database names to collect tables for
@@ -13800,6 +14027,8 @@ type GetUserTablesSqlTaskProperties struct {
 	ClientData map[string]string `pulumi:"clientData"`
 	// Task input
 	Input *GetUserTablesSqlTaskInput `pulumi:"input"`
+	// Task id
+	TaskId *string `pulumi:"taskId"`
 	// Task type.
 	// Expected value is 'GetUserTables.Sql'.
 	TaskType string `pulumi:"taskType"`
@@ -13833,6 +14062,8 @@ type GetUserTablesSqlTaskPropertiesArgs struct {
 	ClientData pulumi.StringMapInput `pulumi:"clientData"`
 	// Task input
 	Input GetUserTablesSqlTaskInputPtrInput `pulumi:"input"`
+	// Task id
+	TaskId pulumi.StringPtrInput `pulumi:"taskId"`
 	// Task type.
 	// Expected value is 'GetUserTables.Sql'.
 	TaskType pulumi.StringInput `pulumi:"taskType"`
@@ -13935,6 +14166,11 @@ func (o GetUserTablesSqlTaskPropertiesOutput) Input() GetUserTablesSqlTaskInputP
 	return o.ApplyT(func(v GetUserTablesSqlTaskProperties) *GetUserTablesSqlTaskInput { return v.Input }).(GetUserTablesSqlTaskInputPtrOutput)
 }
 
+// Task id
+func (o GetUserTablesSqlTaskPropertiesOutput) TaskId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetUserTablesSqlTaskProperties) *string { return v.TaskId }).(pulumi.StringPtrOutput)
+}
+
 // Task type.
 // Expected value is 'GetUserTables.Sql'.
 func (o GetUserTablesSqlTaskPropertiesOutput) TaskType() pulumi.StringOutput {
@@ -13985,6 +14221,16 @@ func (o GetUserTablesSqlTaskPropertiesPtrOutput) Input() GetUserTablesSqlTaskInp
 	}).(GetUserTablesSqlTaskInputPtrOutput)
 }
 
+// Task id
+func (o GetUserTablesSqlTaskPropertiesPtrOutput) TaskId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetUserTablesSqlTaskProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TaskId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Task type.
 // Expected value is 'GetUserTables.Sql'.
 func (o GetUserTablesSqlTaskPropertiesPtrOutput) TaskType() pulumi.StringPtrOutput {
@@ -14010,6 +14256,8 @@ type GetUserTablesSqlTaskPropertiesResponse struct {
 	Output []GetUserTablesSqlTaskOutputResponse `pulumi:"output"`
 	// The state of the task. This is ignored if submitted.
 	State string `pulumi:"state"`
+	// Task id
+	TaskId *string `pulumi:"taskId"`
 	// Task type.
 	// Expected value is 'GetUserTables.Sql'.
 	TaskType string `pulumi:"taskType"`
@@ -14069,6 +14317,11 @@ func (o GetUserTablesSqlTaskPropertiesResponseOutput) Output() GetUserTablesSqlT
 // The state of the task. This is ignored if submitted.
 func (o GetUserTablesSqlTaskPropertiesResponseOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUserTablesSqlTaskPropertiesResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Task id
+func (o GetUserTablesSqlTaskPropertiesResponseOutput) TaskId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetUserTablesSqlTaskPropertiesResponse) *string { return v.TaskId }).(pulumi.StringPtrOutput)
 }
 
 // Task type.
@@ -14549,6 +14802,17 @@ type MigrateMongoDbTaskProperties struct {
 	TaskType string `pulumi:"taskType"`
 }
 
+// Defaults sets the appropriate defaults for MigrateMongoDbTaskProperties
+func (val *MigrateMongoDbTaskProperties) Defaults() *MigrateMongoDbTaskProperties {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Input = tmp.Input.Defaults()
+
+	return &tmp
+}
+
 // MigrateMongoDbTaskPropertiesInput is an input type that accepts MigrateMongoDbTaskPropertiesArgs and MigrateMongoDbTaskPropertiesOutput values.
 // You can construct a concrete instance of `MigrateMongoDbTaskPropertiesInput` via:
 //
@@ -14571,6 +14835,15 @@ type MigrateMongoDbTaskPropertiesArgs struct {
 	TaskType pulumi.StringInput `pulumi:"taskType"`
 }
 
+// Defaults sets the appropriate defaults for MigrateMongoDbTaskPropertiesArgs
+func (val *MigrateMongoDbTaskPropertiesArgs) Defaults() *MigrateMongoDbTaskPropertiesArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+
+	return &tmp
+}
 func (MigrateMongoDbTaskPropertiesArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*MigrateMongoDbTaskProperties)(nil)).Elem()
 }
@@ -14736,6 +15009,17 @@ type MigrateMongoDbTaskPropertiesResponse struct {
 	// Task type.
 	// Expected value is 'Migrate.MongoDb'.
 	TaskType string `pulumi:"taskType"`
+}
+
+// Defaults sets the appropriate defaults for MigrateMongoDbTaskPropertiesResponse
+func (val *MigrateMongoDbTaskPropertiesResponse) Defaults() *MigrateMongoDbTaskPropertiesResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Input = tmp.Input.Defaults()
+
+	return &tmp
 }
 
 // Properties for the task that migrates data between MongoDB data sources
@@ -14968,6 +15252,8 @@ func (o MigrateMySqlAzureDbForMySqlOfflineDatabaseInputResponseArrayOutput) Inde
 
 // Input for the task that migrates MySQL databases to Azure Database for MySQL for offline migrations
 type MigrateMySqlAzureDbForMySqlOfflineTaskInput struct {
+	// encrypted key for secure fields
+	EncryptedKeyForSecureFields *string `pulumi:"encryptedKeyForSecureFields"`
 	// Setting to set the source server read only
 	MakeSourceServerReadOnly *bool `pulumi:"makeSourceServerReadOnly"`
 	// Optional parameters for fine tuning the data transfer rate during migration
@@ -15012,6 +15298,8 @@ type MigrateMySqlAzureDbForMySqlOfflineTaskInputInput interface {
 
 // Input for the task that migrates MySQL databases to Azure Database for MySQL for offline migrations
 type MigrateMySqlAzureDbForMySqlOfflineTaskInputArgs struct {
+	// encrypted key for secure fields
+	EncryptedKeyForSecureFields pulumi.StringPtrInput `pulumi:"encryptedKeyForSecureFields"`
 	// Setting to set the source server read only
 	MakeSourceServerReadOnly pulumi.BoolPtrInput `pulumi:"makeSourceServerReadOnly"`
 	// Optional parameters for fine tuning the data transfer rate during migration
@@ -15116,6 +15404,11 @@ func (o MigrateMySqlAzureDbForMySqlOfflineTaskInputOutput) ToMigrateMySqlAzureDb
 	}).(MigrateMySqlAzureDbForMySqlOfflineTaskInputPtrOutput)
 }
 
+// encrypted key for secure fields
+func (o MigrateMySqlAzureDbForMySqlOfflineTaskInputOutput) EncryptedKeyForSecureFields() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrateMySqlAzureDbForMySqlOfflineTaskInput) *string { return v.EncryptedKeyForSecureFields }).(pulumi.StringPtrOutput)
+}
+
 // Setting to set the source server read only
 func (o MigrateMySqlAzureDbForMySqlOfflineTaskInputOutput) MakeSourceServerReadOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v MigrateMySqlAzureDbForMySqlOfflineTaskInput) *bool { return v.MakeSourceServerReadOnly }).(pulumi.BoolPtrOutput)
@@ -15170,6 +15463,16 @@ func (o MigrateMySqlAzureDbForMySqlOfflineTaskInputPtrOutput) Elem() MigrateMySq
 		var ret MigrateMySqlAzureDbForMySqlOfflineTaskInput
 		return ret
 	}).(MigrateMySqlAzureDbForMySqlOfflineTaskInputOutput)
+}
+
+// encrypted key for secure fields
+func (o MigrateMySqlAzureDbForMySqlOfflineTaskInputPtrOutput) EncryptedKeyForSecureFields() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigrateMySqlAzureDbForMySqlOfflineTaskInput) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EncryptedKeyForSecureFields
+	}).(pulumi.StringPtrOutput)
 }
 
 // Setting to set the source server read only
@@ -15234,6 +15537,8 @@ func (o MigrateMySqlAzureDbForMySqlOfflineTaskInputPtrOutput) TargetConnectionIn
 
 // Input for the task that migrates MySQL databases to Azure Database for MySQL for offline migrations
 type MigrateMySqlAzureDbForMySqlOfflineTaskInputResponse struct {
+	// encrypted key for secure fields
+	EncryptedKeyForSecureFields *string `pulumi:"encryptedKeyForSecureFields"`
 	// Setting to set the source server read only
 	MakeSourceServerReadOnly *bool `pulumi:"makeSourceServerReadOnly"`
 	// Optional parameters for fine tuning the data transfer rate during migration
@@ -15278,6 +15583,13 @@ func (o MigrateMySqlAzureDbForMySqlOfflineTaskInputResponseOutput) ToMigrateMySq
 
 func (o MigrateMySqlAzureDbForMySqlOfflineTaskInputResponseOutput) ToMigrateMySqlAzureDbForMySqlOfflineTaskInputResponseOutputWithContext(ctx context.Context) MigrateMySqlAzureDbForMySqlOfflineTaskInputResponseOutput {
 	return o
+}
+
+// encrypted key for secure fields
+func (o MigrateMySqlAzureDbForMySqlOfflineTaskInputResponseOutput) EncryptedKeyForSecureFields() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrateMySqlAzureDbForMySqlOfflineTaskInputResponse) *string {
+		return v.EncryptedKeyForSecureFields
+	}).(pulumi.StringPtrOutput)
 }
 
 // Setting to set the source server read only
@@ -15340,6 +15652,16 @@ func (o MigrateMySqlAzureDbForMySqlOfflineTaskInputResponsePtrOutput) Elem() Mig
 		var ret MigrateMySqlAzureDbForMySqlOfflineTaskInputResponse
 		return ret
 	}).(MigrateMySqlAzureDbForMySqlOfflineTaskInputResponseOutput)
+}
+
+// encrypted key for secure fields
+func (o MigrateMySqlAzureDbForMySqlOfflineTaskInputResponsePtrOutput) EncryptedKeyForSecureFields() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigrateMySqlAzureDbForMySqlOfflineTaskInputResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EncryptedKeyForSecureFields
+	}).(pulumi.StringPtrOutput)
 }
 
 // Setting to set the source server read only
@@ -15871,6 +16193,10 @@ type MigrateMySqlAzureDbForMySqlOfflineTaskProperties struct {
 	ClientData map[string]string `pulumi:"clientData"`
 	// Task input
 	Input *MigrateMySqlAzureDbForMySqlOfflineTaskInput `pulumi:"input"`
+	// whether the task can be cloned or not
+	IsCloneable *bool `pulumi:"isCloneable"`
+	// Task id
+	TaskId *string `pulumi:"taskId"`
 	// Task type.
 	// Expected value is 'Migrate.MySql.AzureDbForMySql'.
 	TaskType string `pulumi:"taskType"`
@@ -15904,6 +16230,10 @@ type MigrateMySqlAzureDbForMySqlOfflineTaskPropertiesArgs struct {
 	ClientData pulumi.StringMapInput `pulumi:"clientData"`
 	// Task input
 	Input MigrateMySqlAzureDbForMySqlOfflineTaskInputPtrInput `pulumi:"input"`
+	// whether the task can be cloned or not
+	IsCloneable pulumi.BoolPtrInput `pulumi:"isCloneable"`
+	// Task id
+	TaskId pulumi.StringPtrInput `pulumi:"taskId"`
 	// Task type.
 	// Expected value is 'Migrate.MySql.AzureDbForMySql'.
 	TaskType pulumi.StringInput `pulumi:"taskType"`
@@ -16008,6 +16338,16 @@ func (o MigrateMySqlAzureDbForMySqlOfflineTaskPropertiesOutput) Input() MigrateM
 	}).(MigrateMySqlAzureDbForMySqlOfflineTaskInputPtrOutput)
 }
 
+// whether the task can be cloned or not
+func (o MigrateMySqlAzureDbForMySqlOfflineTaskPropertiesOutput) IsCloneable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MigrateMySqlAzureDbForMySqlOfflineTaskProperties) *bool { return v.IsCloneable }).(pulumi.BoolPtrOutput)
+}
+
+// Task id
+func (o MigrateMySqlAzureDbForMySqlOfflineTaskPropertiesOutput) TaskId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrateMySqlAzureDbForMySqlOfflineTaskProperties) *string { return v.TaskId }).(pulumi.StringPtrOutput)
+}
+
 // Task type.
 // Expected value is 'Migrate.MySql.AzureDbForMySql'.
 func (o MigrateMySqlAzureDbForMySqlOfflineTaskPropertiesOutput) TaskType() pulumi.StringOutput {
@@ -16058,6 +16398,26 @@ func (o MigrateMySqlAzureDbForMySqlOfflineTaskPropertiesPtrOutput) Input() Migra
 	}).(MigrateMySqlAzureDbForMySqlOfflineTaskInputPtrOutput)
 }
 
+// whether the task can be cloned or not
+func (o MigrateMySqlAzureDbForMySqlOfflineTaskPropertiesPtrOutput) IsCloneable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MigrateMySqlAzureDbForMySqlOfflineTaskProperties) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsCloneable
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Task id
+func (o MigrateMySqlAzureDbForMySqlOfflineTaskPropertiesPtrOutput) TaskId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigrateMySqlAzureDbForMySqlOfflineTaskProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TaskId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Task type.
 // Expected value is 'Migrate.MySql.AzureDbForMySql'.
 func (o MigrateMySqlAzureDbForMySqlOfflineTaskPropertiesPtrOutput) TaskType() pulumi.StringPtrOutput {
@@ -16079,10 +16439,14 @@ type MigrateMySqlAzureDbForMySqlOfflineTaskPropertiesResponse struct {
 	Errors []ODataErrorResponse `pulumi:"errors"`
 	// Task input
 	Input *MigrateMySqlAzureDbForMySqlOfflineTaskInputResponse `pulumi:"input"`
+	// whether the task can be cloned or not
+	IsCloneable *bool `pulumi:"isCloneable"`
 	// Task output. This is ignored if submitted.
 	Output []interface{} `pulumi:"output"`
 	// The state of the task. This is ignored if submitted.
 	State string `pulumi:"state"`
+	// Task id
+	TaskId *string `pulumi:"taskId"`
 	// Task type.
 	// Expected value is 'Migrate.MySql.AzureDbForMySql'.
 	TaskType string `pulumi:"taskType"`
@@ -16138,6 +16502,11 @@ func (o MigrateMySqlAzureDbForMySqlOfflineTaskPropertiesResponseOutput) Input() 
 	}).(MigrateMySqlAzureDbForMySqlOfflineTaskInputResponsePtrOutput)
 }
 
+// whether the task can be cloned or not
+func (o MigrateMySqlAzureDbForMySqlOfflineTaskPropertiesResponseOutput) IsCloneable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MigrateMySqlAzureDbForMySqlOfflineTaskPropertiesResponse) *bool { return v.IsCloneable }).(pulumi.BoolPtrOutput)
+}
+
 // Task output. This is ignored if submitted.
 func (o MigrateMySqlAzureDbForMySqlOfflineTaskPropertiesResponseOutput) Output() pulumi.ArrayOutput {
 	return o.ApplyT(func(v MigrateMySqlAzureDbForMySqlOfflineTaskPropertiesResponse) []interface{} { return v.Output }).(pulumi.ArrayOutput)
@@ -16146,6 +16515,11 @@ func (o MigrateMySqlAzureDbForMySqlOfflineTaskPropertiesResponseOutput) Output()
 // The state of the task. This is ignored if submitted.
 func (o MigrateMySqlAzureDbForMySqlOfflineTaskPropertiesResponseOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v MigrateMySqlAzureDbForMySqlOfflineTaskPropertiesResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Task id
+func (o MigrateMySqlAzureDbForMySqlOfflineTaskPropertiesResponseOutput) TaskId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrateMySqlAzureDbForMySqlOfflineTaskPropertiesResponse) *string { return v.TaskId }).(pulumi.StringPtrOutput)
 }
 
 // Task type.
@@ -18799,7 +19173,7 @@ func (o MigrateOracleAzureDbPostgreSqlSyncTaskOutputTableLevelResponseOutput) To
 // Database specific information for PostgreSQL to Azure Database for PostgreSQL migration task inputs
 type MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInput struct {
 	// Migration settings which tune the migration behavior
-	MigrationSetting map[string]string `pulumi:"migrationSetting"`
+	MigrationSetting interface{} `pulumi:"migrationSetting"`
 	// Name of the database
 	Name *string `pulumi:"name"`
 	// Tables selected for migration
@@ -18826,7 +19200,7 @@ type MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInputInput interface {
 // Database specific information for PostgreSQL to Azure Database for PostgreSQL migration task inputs
 type MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInputArgs struct {
 	// Migration settings which tune the migration behavior
-	MigrationSetting pulumi.StringMapInput `pulumi:"migrationSetting"`
+	MigrationSetting pulumi.Input `pulumi:"migrationSetting"`
 	// Name of the database
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Tables selected for migration
@@ -18892,10 +19266,8 @@ func (o MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInputOutput) ToMigrateP
 }
 
 // Migration settings which tune the migration behavior
-func (o MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInputOutput) MigrationSetting() pulumi.StringMapOutput {
-	return o.ApplyT(func(v MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInput) map[string]string {
-		return v.MigrationSetting
-	}).(pulumi.StringMapOutput)
+func (o MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInputOutput) MigrationSetting() pulumi.AnyOutput {
+	return o.ApplyT(func(v MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInput) interface{} { return v.MigrationSetting }).(pulumi.AnyOutput)
 }
 
 // Name of the database
@@ -18951,8 +19323,10 @@ func (o MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInputArrayOutput) Index
 
 // Database specific information for PostgreSQL to Azure Database for PostgreSQL migration task inputs
 type MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInputResponse struct {
+	// Result identifier
+	Id string `pulumi:"id"`
 	// Migration settings which tune the migration behavior
-	MigrationSetting map[string]string `pulumi:"migrationSetting"`
+	MigrationSetting interface{} `pulumi:"migrationSetting"`
 	// Name of the database
 	Name *string `pulumi:"name"`
 	// Tables selected for migration
@@ -18980,11 +19354,16 @@ func (o MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInputResponseOutput) To
 	return o
 }
 
+// Result identifier
+func (o MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInputResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInputResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
 // Migration settings which tune the migration behavior
-func (o MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInputResponseOutput) MigrationSetting() pulumi.StringMapOutput {
-	return o.ApplyT(func(v MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInputResponse) map[string]string {
+func (o MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInputResponseOutput) MigrationSetting() pulumi.AnyOutput {
+	return o.ApplyT(func(v MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInputResponse) interface{} {
 		return v.MigrationSetting
-	}).(pulumi.StringMapOutput)
+	}).(pulumi.AnyOutput)
 }
 
 // Name of the database
@@ -19188,6 +19567,8 @@ func (o MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseTableInputResponseArray
 
 // Input for the task that migrates PostgreSQL databases to Azure Database for PostgreSQL for online migrations
 type MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInput struct {
+	// encrypted key for secure fields
+	EncryptedKeyForSecureFields *string `pulumi:"encryptedKeyForSecureFields"`
 	// Databases to migrate
 	SelectedDatabases []MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInput `pulumi:"selectedDatabases"`
 	// Connection information for source PostgreSQL
@@ -19222,6 +19603,8 @@ type MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInputInput interface {
 
 // Input for the task that migrates PostgreSQL databases to Azure Database for PostgreSQL for online migrations
 type MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInputArgs struct {
+	// encrypted key for secure fields
+	EncryptedKeyForSecureFields pulumi.StringPtrInput `pulumi:"encryptedKeyForSecureFields"`
 	// Databases to migrate
 	SelectedDatabases MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInputArrayInput `pulumi:"selectedDatabases"`
 	// Connection information for source PostgreSQL
@@ -19317,6 +19700,13 @@ func (o MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInputOutput) ToMigratePostg
 	}).(MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInputPtrOutput)
 }
 
+// encrypted key for secure fields
+func (o MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInputOutput) EncryptedKeyForSecureFields() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInput) *string {
+		return v.EncryptedKeyForSecureFields
+	}).(pulumi.StringPtrOutput)
+}
+
 // Databases to migrate
 func (o MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInputOutput) SelectedDatabases() MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInputArrayOutput {
 	return o.ApplyT(func(v MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInput) []MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInput {
@@ -19362,6 +19752,16 @@ func (o MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInputPtrOutput) Elem() Migr
 	}).(MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInputOutput)
 }
 
+// encrypted key for secure fields
+func (o MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInputPtrOutput) EncryptedKeyForSecureFields() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInput) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EncryptedKeyForSecureFields
+	}).(pulumi.StringPtrOutput)
+}
+
 // Databases to migrate
 func (o MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInputPtrOutput) SelectedDatabases() MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInputArrayOutput {
 	return o.ApplyT(func(v *MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInput) []MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInput {
@@ -19394,10 +19794,14 @@ func (o MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInputPtrOutput) TargetConne
 
 // Input for the task that migrates PostgreSQL databases to Azure Database for PostgreSQL for online migrations
 type MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInputResponse struct {
+	// encrypted key for secure fields
+	EncryptedKeyForSecureFields *string `pulumi:"encryptedKeyForSecureFields"`
 	// Databases to migrate
 	SelectedDatabases []MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInputResponse `pulumi:"selectedDatabases"`
 	// Connection information for source PostgreSQL
 	SourceConnectionInfo PostgreSqlConnectionInfoResponse `pulumi:"sourceConnectionInfo"`
+	// Migration start time
+	StartedOn string `pulumi:"startedOn"`
 	// Connection information for target Azure Database for PostgreSQL
 	TargetConnectionInfo PostgreSqlConnectionInfoResponse `pulumi:"targetConnectionInfo"`
 }
@@ -19430,6 +19834,13 @@ func (o MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInputResponseOutput) ToMigr
 	return o
 }
 
+// encrypted key for secure fields
+func (o MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInputResponseOutput) EncryptedKeyForSecureFields() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInputResponse) *string {
+		return v.EncryptedKeyForSecureFields
+	}).(pulumi.StringPtrOutput)
+}
+
 // Databases to migrate
 func (o MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInputResponseOutput) SelectedDatabases() MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInputResponseArrayOutput {
 	return o.ApplyT(func(v MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInputResponse) []MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInputResponse {
@@ -19442,6 +19853,11 @@ func (o MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInputResponseOutput) Source
 	return o.ApplyT(func(v MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInputResponse) PostgreSqlConnectionInfoResponse {
 		return v.SourceConnectionInfo
 	}).(PostgreSqlConnectionInfoResponseOutput)
+}
+
+// Migration start time
+func (o MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInputResponseOutput) StartedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInputResponse) string { return v.StartedOn }).(pulumi.StringOutput)
 }
 
 // Connection information for target Azure Database for PostgreSQL
@@ -19475,6 +19891,16 @@ func (o MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInputResponsePtrOutput) Ele
 	}).(MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInputResponseOutput)
 }
 
+// encrypted key for secure fields
+func (o MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInputResponsePtrOutput) EncryptedKeyForSecureFields() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInputResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EncryptedKeyForSecureFields
+	}).(pulumi.StringPtrOutput)
+}
+
 // Databases to migrate
 func (o MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInputResponsePtrOutput) SelectedDatabases() MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInputResponseArrayOutput {
 	return o.ApplyT(func(v *MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInputResponse) []MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInputResponse {
@@ -19493,6 +19919,16 @@ func (o MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInputResponsePtrOutput) Sou
 		}
 		return &v.SourceConnectionInfo
 	}).(PostgreSqlConnectionInfoResponsePtrOutput)
+}
+
+// Migration start time
+func (o MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInputResponsePtrOutput) StartedOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInputResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.StartedOn
+	}).(pulumi.StringPtrOutput)
 }
 
 // Connection information for target Azure Database for PostgreSQL
@@ -19731,6 +20167,8 @@ func (o MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputDatabaseLevelResponse
 type MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputErrorResponse struct {
 	// Migration error
 	Error ReportableExceptionResponse `pulumi:"error"`
+	// List of error events
+	Events []SyncMigrationDatabaseErrorEventResponse `pulumi:"events"`
 	// Result identifier
 	Id string `pulumi:"id"`
 	// Result type
@@ -19759,6 +20197,13 @@ func (o MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputErrorResponseOutput) 
 	}).(ReportableExceptionResponseOutput)
 }
 
+// List of error events
+func (o MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputErrorResponseOutput) Events() SyncMigrationDatabaseErrorEventResponseArrayOutput {
+	return o.ApplyT(func(v MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputErrorResponse) []SyncMigrationDatabaseErrorEventResponse {
+		return v.Events
+	}).(SyncMigrationDatabaseErrorEventResponseArrayOutput)
+}
+
 // Result identifier
 func (o MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputErrorResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputErrorResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -19771,6 +20216,8 @@ func (o MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputErrorResponseOutput) 
 }
 
 type MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputMigrationLevelResponse struct {
+	// Number of databases to include
+	DatabaseCount *float64 `pulumi:"databaseCount"`
 	// Migration end time
 	EndedOn string `pulumi:"endedOn"`
 	// Result identifier
@@ -19808,6 +20255,13 @@ func (o MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputMigrationLevelRespons
 
 func (o MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputMigrationLevelResponseOutput) ToMigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputMigrationLevelResponseOutputWithContext(ctx context.Context) MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputMigrationLevelResponseOutput {
 	return o
+}
+
+// Number of databases to include
+func (o MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputMigrationLevelResponseOutput) DatabaseCount() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputMigrationLevelResponse) *float64 {
+		return v.DatabaseCount
+	}).(pulumi.Float64PtrOutput)
 }
 
 // Migration end time
@@ -20040,8 +20494,14 @@ func (o MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputTableLevelResponseOut
 type MigratePostgreSqlAzureDbForPostgreSqlSyncTaskProperties struct {
 	// Key value pairs of client data to attach meta data information to task
 	ClientData map[string]string `pulumi:"clientData"`
+	// DateTime in UTC when the task was created
+	CreatedOn *string `pulumi:"createdOn"`
 	// Task input
 	Input *MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInput `pulumi:"input"`
+	// whether the task can be cloned or not
+	IsCloneable *bool `pulumi:"isCloneable"`
+	// task id
+	TaskId *string `pulumi:"taskId"`
 	// Task type.
 	// Expected value is 'Migrate.PostgreSql.AzureDbForPostgreSql.SyncV2'.
 	TaskType string `pulumi:"taskType"`
@@ -20073,8 +20533,14 @@ type MigratePostgreSqlAzureDbForPostgreSqlSyncTaskPropertiesInput interface {
 type MigratePostgreSqlAzureDbForPostgreSqlSyncTaskPropertiesArgs struct {
 	// Key value pairs of client data to attach meta data information to task
 	ClientData pulumi.StringMapInput `pulumi:"clientData"`
+	// DateTime in UTC when the task was created
+	CreatedOn pulumi.StringPtrInput `pulumi:"createdOn"`
 	// Task input
 	Input MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInputPtrInput `pulumi:"input"`
+	// whether the task can be cloned or not
+	IsCloneable pulumi.BoolPtrInput `pulumi:"isCloneable"`
+	// task id
+	TaskId pulumi.StringPtrInput `pulumi:"taskId"`
 	// Task type.
 	// Expected value is 'Migrate.PostgreSql.AzureDbForPostgreSql.SyncV2'.
 	TaskType pulumi.StringInput `pulumi:"taskType"`
@@ -20172,11 +20638,26 @@ func (o MigratePostgreSqlAzureDbForPostgreSqlSyncTaskPropertiesOutput) ClientDat
 	return o.ApplyT(func(v MigratePostgreSqlAzureDbForPostgreSqlSyncTaskProperties) map[string]string { return v.ClientData }).(pulumi.StringMapOutput)
 }
 
+// DateTime in UTC when the task was created
+func (o MigratePostgreSqlAzureDbForPostgreSqlSyncTaskPropertiesOutput) CreatedOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigratePostgreSqlAzureDbForPostgreSqlSyncTaskProperties) *string { return v.CreatedOn }).(pulumi.StringPtrOutput)
+}
+
 // Task input
 func (o MigratePostgreSqlAzureDbForPostgreSqlSyncTaskPropertiesOutput) Input() MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInputPtrOutput {
 	return o.ApplyT(func(v MigratePostgreSqlAzureDbForPostgreSqlSyncTaskProperties) *MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInput {
 		return v.Input
 	}).(MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInputPtrOutput)
+}
+
+// whether the task can be cloned or not
+func (o MigratePostgreSqlAzureDbForPostgreSqlSyncTaskPropertiesOutput) IsCloneable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MigratePostgreSqlAzureDbForPostgreSqlSyncTaskProperties) *bool { return v.IsCloneable }).(pulumi.BoolPtrOutput)
+}
+
+// task id
+func (o MigratePostgreSqlAzureDbForPostgreSqlSyncTaskPropertiesOutput) TaskId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigratePostgreSqlAzureDbForPostgreSqlSyncTaskProperties) *string { return v.TaskId }).(pulumi.StringPtrOutput)
 }
 
 // Task type.
@@ -20219,6 +20700,16 @@ func (o MigratePostgreSqlAzureDbForPostgreSqlSyncTaskPropertiesPtrOutput) Client
 	}).(pulumi.StringMapOutput)
 }
 
+// DateTime in UTC when the task was created
+func (o MigratePostgreSqlAzureDbForPostgreSqlSyncTaskPropertiesPtrOutput) CreatedOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigratePostgreSqlAzureDbForPostgreSqlSyncTaskProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedOn
+	}).(pulumi.StringPtrOutput)
+}
+
 // Task input
 func (o MigratePostgreSqlAzureDbForPostgreSqlSyncTaskPropertiesPtrOutput) Input() MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInputPtrOutput {
 	return o.ApplyT(func(v *MigratePostgreSqlAzureDbForPostgreSqlSyncTaskProperties) *MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInput {
@@ -20227,6 +20718,26 @@ func (o MigratePostgreSqlAzureDbForPostgreSqlSyncTaskPropertiesPtrOutput) Input(
 		}
 		return v.Input
 	}).(MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInputPtrOutput)
+}
+
+// whether the task can be cloned or not
+func (o MigratePostgreSqlAzureDbForPostgreSqlSyncTaskPropertiesPtrOutput) IsCloneable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MigratePostgreSqlAzureDbForPostgreSqlSyncTaskProperties) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsCloneable
+	}).(pulumi.BoolPtrOutput)
+}
+
+// task id
+func (o MigratePostgreSqlAzureDbForPostgreSqlSyncTaskPropertiesPtrOutput) TaskId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigratePostgreSqlAzureDbForPostgreSqlSyncTaskProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TaskId
+	}).(pulumi.StringPtrOutput)
 }
 
 // Task type.
@@ -20246,14 +20757,20 @@ type MigratePostgreSqlAzureDbForPostgreSqlSyncTaskPropertiesResponse struct {
 	ClientData map[string]string `pulumi:"clientData"`
 	// Array of command properties.
 	Commands []interface{} `pulumi:"commands"`
+	// DateTime in UTC when the task was created
+	CreatedOn *string `pulumi:"createdOn"`
 	// Array of errors. This is ignored if submitted.
 	Errors []ODataErrorResponse `pulumi:"errors"`
 	// Task input
 	Input *MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInputResponse `pulumi:"input"`
+	// whether the task can be cloned or not
+	IsCloneable *bool `pulumi:"isCloneable"`
 	// Task output. This is ignored if submitted.
 	Output []interface{} `pulumi:"output"`
 	// The state of the task. This is ignored if submitted.
 	State string `pulumi:"state"`
+	// task id
+	TaskId *string `pulumi:"taskId"`
 	// Task type.
 	// Expected value is 'Migrate.PostgreSql.AzureDbForPostgreSql.SyncV2'.
 	TaskType string `pulumi:"taskType"`
@@ -20299,6 +20816,11 @@ func (o MigratePostgreSqlAzureDbForPostgreSqlSyncTaskPropertiesResponseOutput) C
 	}).(pulumi.ArrayOutput)
 }
 
+// DateTime in UTC when the task was created
+func (o MigratePostgreSqlAzureDbForPostgreSqlSyncTaskPropertiesResponseOutput) CreatedOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigratePostgreSqlAzureDbForPostgreSqlSyncTaskPropertiesResponse) *string { return v.CreatedOn }).(pulumi.StringPtrOutput)
+}
+
 // Array of errors. This is ignored if submitted.
 func (o MigratePostgreSqlAzureDbForPostgreSqlSyncTaskPropertiesResponseOutput) Errors() ODataErrorResponseArrayOutput {
 	return o.ApplyT(func(v MigratePostgreSqlAzureDbForPostgreSqlSyncTaskPropertiesResponse) []ODataErrorResponse {
@@ -20313,6 +20835,11 @@ func (o MigratePostgreSqlAzureDbForPostgreSqlSyncTaskPropertiesResponseOutput) I
 	}).(MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInputResponsePtrOutput)
 }
 
+// whether the task can be cloned or not
+func (o MigratePostgreSqlAzureDbForPostgreSqlSyncTaskPropertiesResponseOutput) IsCloneable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MigratePostgreSqlAzureDbForPostgreSqlSyncTaskPropertiesResponse) *bool { return v.IsCloneable }).(pulumi.BoolPtrOutput)
+}
+
 // Task output. This is ignored if submitted.
 func (o MigratePostgreSqlAzureDbForPostgreSqlSyncTaskPropertiesResponseOutput) Output() pulumi.ArrayOutput {
 	return o.ApplyT(func(v MigratePostgreSqlAzureDbForPostgreSqlSyncTaskPropertiesResponse) []interface{} { return v.Output }).(pulumi.ArrayOutput)
@@ -20323,6 +20850,11 @@ func (o MigratePostgreSqlAzureDbForPostgreSqlSyncTaskPropertiesResponseOutput) S
 	return o.ApplyT(func(v MigratePostgreSqlAzureDbForPostgreSqlSyncTaskPropertiesResponse) string { return v.State }).(pulumi.StringOutput)
 }
 
+// task id
+func (o MigratePostgreSqlAzureDbForPostgreSqlSyncTaskPropertiesResponseOutput) TaskId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigratePostgreSqlAzureDbForPostgreSqlSyncTaskPropertiesResponse) *string { return v.TaskId }).(pulumi.StringPtrOutput)
+}
+
 // Task type.
 // Expected value is 'Migrate.PostgreSql.AzureDbForPostgreSql.SyncV2'.
 func (o MigratePostgreSqlAzureDbForPostgreSqlSyncTaskPropertiesResponseOutput) TaskType() pulumi.StringOutput {
@@ -20331,10 +20863,14 @@ func (o MigratePostgreSqlAzureDbForPostgreSqlSyncTaskPropertiesResponseOutput) T
 
 // Database specific information for SQL to Azure SQL DB migration task inputs
 type MigrateSqlServerSqlDbDatabaseInput struct {
+	// id of the database
+	Id *string `pulumi:"id"`
 	// Whether to set database read only before migration
 	MakeSourceDbReadOnly *bool `pulumi:"makeSourceDbReadOnly"`
 	// Name of the database
 	Name *string `pulumi:"name"`
+	// Settings selected for DB schema migration.
+	SchemaSetting interface{} `pulumi:"schemaSetting"`
 	// Mapping of source to target tables
 	TableMap map[string]string `pulumi:"tableMap"`
 	// Name of target database. Note: Target database will be truncated before starting migration.
@@ -20354,10 +20890,14 @@ type MigrateSqlServerSqlDbDatabaseInputInput interface {
 
 // Database specific information for SQL to Azure SQL DB migration task inputs
 type MigrateSqlServerSqlDbDatabaseInputArgs struct {
+	// id of the database
+	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Whether to set database read only before migration
 	MakeSourceDbReadOnly pulumi.BoolPtrInput `pulumi:"makeSourceDbReadOnly"`
 	// Name of the database
 	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Settings selected for DB schema migration.
+	SchemaSetting pulumi.Input `pulumi:"schemaSetting"`
 	// Mapping of source to target tables
 	TableMap pulumi.StringMapInput `pulumi:"tableMap"`
 	// Name of target database. Note: Target database will be truncated before starting migration.
@@ -20416,6 +20956,11 @@ func (o MigrateSqlServerSqlDbDatabaseInputOutput) ToMigrateSqlServerSqlDbDatabas
 	return o
 }
 
+// id of the database
+func (o MigrateSqlServerSqlDbDatabaseInputOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrateSqlServerSqlDbDatabaseInput) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
 // Whether to set database read only before migration
 func (o MigrateSqlServerSqlDbDatabaseInputOutput) MakeSourceDbReadOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v MigrateSqlServerSqlDbDatabaseInput) *bool { return v.MakeSourceDbReadOnly }).(pulumi.BoolPtrOutput)
@@ -20424,6 +20969,11 @@ func (o MigrateSqlServerSqlDbDatabaseInputOutput) MakeSourceDbReadOnly() pulumi.
 // Name of the database
 func (o MigrateSqlServerSqlDbDatabaseInputOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MigrateSqlServerSqlDbDatabaseInput) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Settings selected for DB schema migration.
+func (o MigrateSqlServerSqlDbDatabaseInputOutput) SchemaSetting() pulumi.AnyOutput {
+	return o.ApplyT(func(v MigrateSqlServerSqlDbDatabaseInput) interface{} { return v.SchemaSetting }).(pulumi.AnyOutput)
 }
 
 // Mapping of source to target tables
@@ -20458,10 +21008,14 @@ func (o MigrateSqlServerSqlDbDatabaseInputArrayOutput) Index(i pulumi.IntInput) 
 
 // Database specific information for SQL to Azure SQL DB migration task inputs
 type MigrateSqlServerSqlDbDatabaseInputResponse struct {
+	// id of the database
+	Id *string `pulumi:"id"`
 	// Whether to set database read only before migration
 	MakeSourceDbReadOnly *bool `pulumi:"makeSourceDbReadOnly"`
 	// Name of the database
 	Name *string `pulumi:"name"`
+	// Settings selected for DB schema migration.
+	SchemaSetting interface{} `pulumi:"schemaSetting"`
 	// Mapping of source to target tables
 	TableMap map[string]string `pulumi:"tableMap"`
 	// Name of target database. Note: Target database will be truncated before starting migration.
@@ -20483,6 +21037,11 @@ func (o MigrateSqlServerSqlDbDatabaseInputResponseOutput) ToMigrateSqlServerSqlD
 	return o
 }
 
+// id of the database
+func (o MigrateSqlServerSqlDbDatabaseInputResponseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrateSqlServerSqlDbDatabaseInputResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
 // Whether to set database read only before migration
 func (o MigrateSqlServerSqlDbDatabaseInputResponseOutput) MakeSourceDbReadOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v MigrateSqlServerSqlDbDatabaseInputResponse) *bool { return v.MakeSourceDbReadOnly }).(pulumi.BoolPtrOutput)
@@ -20491,6 +21050,11 @@ func (o MigrateSqlServerSqlDbDatabaseInputResponseOutput) MakeSourceDbReadOnly()
 // Name of the database
 func (o MigrateSqlServerSqlDbDatabaseInputResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MigrateSqlServerSqlDbDatabaseInputResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Settings selected for DB schema migration.
+func (o MigrateSqlServerSqlDbDatabaseInputResponseOutput) SchemaSetting() pulumi.AnyOutput {
+	return o.ApplyT(func(v MigrateSqlServerSqlDbDatabaseInputResponse) interface{} { return v.SchemaSetting }).(pulumi.AnyOutput)
 }
 
 // Mapping of source to target tables
@@ -21864,10 +22428,14 @@ func (o MigrateSqlServerSqlDbSyncTaskPropertiesResponseOutput) TaskType() pulumi
 
 // Input for the task that migrates on-prem SQL Server databases to Azure SQL Database
 type MigrateSqlServerSqlDbTaskInput struct {
+	// encrypted key for secure fields
+	EncryptedKeyForSecureFields *string `pulumi:"encryptedKeyForSecureFields"`
 	// Databases to migrate
 	SelectedDatabases []MigrateSqlServerSqlDbDatabaseInput `pulumi:"selectedDatabases"`
 	// Information for connecting to source
 	SourceConnectionInfo SqlConnectionInfo `pulumi:"sourceConnectionInfo"`
+	// Date and time relative to UTC when the migration was started on
+	StartedOn *string `pulumi:"startedOn"`
 	// Information for connecting to target
 	TargetConnectionInfo SqlConnectionInfo `pulumi:"targetConnectionInfo"`
 	// Options for enabling various post migration validations. Available options,
@@ -21902,10 +22470,14 @@ type MigrateSqlServerSqlDbTaskInputInput interface {
 
 // Input for the task that migrates on-prem SQL Server databases to Azure SQL Database
 type MigrateSqlServerSqlDbTaskInputArgs struct {
+	// encrypted key for secure fields
+	EncryptedKeyForSecureFields pulumi.StringPtrInput `pulumi:"encryptedKeyForSecureFields"`
 	// Databases to migrate
 	SelectedDatabases MigrateSqlServerSqlDbDatabaseInputArrayInput `pulumi:"selectedDatabases"`
 	// Information for connecting to source
 	SourceConnectionInfo SqlConnectionInfoInput `pulumi:"sourceConnectionInfo"`
+	// Date and time relative to UTC when the migration was started on
+	StartedOn pulumi.StringPtrInput `pulumi:"startedOn"`
 	// Information for connecting to target
 	TargetConnectionInfo SqlConnectionInfoInput `pulumi:"targetConnectionInfo"`
 	// Options for enabling various post migration validations. Available options,
@@ -22001,6 +22573,11 @@ func (o MigrateSqlServerSqlDbTaskInputOutput) ToMigrateSqlServerSqlDbTaskInputPt
 	}).(MigrateSqlServerSqlDbTaskInputPtrOutput)
 }
 
+// encrypted key for secure fields
+func (o MigrateSqlServerSqlDbTaskInputOutput) EncryptedKeyForSecureFields() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrateSqlServerSqlDbTaskInput) *string { return v.EncryptedKeyForSecureFields }).(pulumi.StringPtrOutput)
+}
+
 // Databases to migrate
 func (o MigrateSqlServerSqlDbTaskInputOutput) SelectedDatabases() MigrateSqlServerSqlDbDatabaseInputArrayOutput {
 	return o.ApplyT(func(v MigrateSqlServerSqlDbTaskInput) []MigrateSqlServerSqlDbDatabaseInput {
@@ -22011,6 +22588,11 @@ func (o MigrateSqlServerSqlDbTaskInputOutput) SelectedDatabases() MigrateSqlServ
 // Information for connecting to source
 func (o MigrateSqlServerSqlDbTaskInputOutput) SourceConnectionInfo() SqlConnectionInfoOutput {
 	return o.ApplyT(func(v MigrateSqlServerSqlDbTaskInput) SqlConnectionInfo { return v.SourceConnectionInfo }).(SqlConnectionInfoOutput)
+}
+
+// Date and time relative to UTC when the migration was started on
+func (o MigrateSqlServerSqlDbTaskInputOutput) StartedOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrateSqlServerSqlDbTaskInput) *string { return v.StartedOn }).(pulumi.StringPtrOutput)
 }
 
 // Information for connecting to target
@@ -22050,6 +22632,16 @@ func (o MigrateSqlServerSqlDbTaskInputPtrOutput) Elem() MigrateSqlServerSqlDbTas
 	}).(MigrateSqlServerSqlDbTaskInputOutput)
 }
 
+// encrypted key for secure fields
+func (o MigrateSqlServerSqlDbTaskInputPtrOutput) EncryptedKeyForSecureFields() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigrateSqlServerSqlDbTaskInput) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EncryptedKeyForSecureFields
+	}).(pulumi.StringPtrOutput)
+}
+
 // Databases to migrate
 func (o MigrateSqlServerSqlDbTaskInputPtrOutput) SelectedDatabases() MigrateSqlServerSqlDbDatabaseInputArrayOutput {
 	return o.ApplyT(func(v *MigrateSqlServerSqlDbTaskInput) []MigrateSqlServerSqlDbDatabaseInput {
@@ -22068,6 +22660,16 @@ func (o MigrateSqlServerSqlDbTaskInputPtrOutput) SourceConnectionInfo() SqlConne
 		}
 		return &v.SourceConnectionInfo
 	}).(SqlConnectionInfoPtrOutput)
+}
+
+// Date and time relative to UTC when the migration was started on
+func (o MigrateSqlServerSqlDbTaskInputPtrOutput) StartedOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigrateSqlServerSqlDbTaskInput) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StartedOn
+	}).(pulumi.StringPtrOutput)
 }
 
 // Information for connecting to target
@@ -22095,10 +22697,14 @@ func (o MigrateSqlServerSqlDbTaskInputPtrOutput) ValidationOptions() MigrationVa
 
 // Input for the task that migrates on-prem SQL Server databases to Azure SQL Database
 type MigrateSqlServerSqlDbTaskInputResponse struct {
+	// encrypted key for secure fields
+	EncryptedKeyForSecureFields *string `pulumi:"encryptedKeyForSecureFields"`
 	// Databases to migrate
 	SelectedDatabases []MigrateSqlServerSqlDbDatabaseInputResponse `pulumi:"selectedDatabases"`
 	// Information for connecting to source
 	SourceConnectionInfo SqlConnectionInfoResponse `pulumi:"sourceConnectionInfo"`
+	// Date and time relative to UTC when the migration was started on
+	StartedOn *string `pulumi:"startedOn"`
 	// Information for connecting to target
 	TargetConnectionInfo SqlConnectionInfoResponse `pulumi:"targetConnectionInfo"`
 	// Options for enabling various post migration validations. Available options,
@@ -22135,6 +22741,11 @@ func (o MigrateSqlServerSqlDbTaskInputResponseOutput) ToMigrateSqlServerSqlDbTas
 	return o
 }
 
+// encrypted key for secure fields
+func (o MigrateSqlServerSqlDbTaskInputResponseOutput) EncryptedKeyForSecureFields() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrateSqlServerSqlDbTaskInputResponse) *string { return v.EncryptedKeyForSecureFields }).(pulumi.StringPtrOutput)
+}
+
 // Databases to migrate
 func (o MigrateSqlServerSqlDbTaskInputResponseOutput) SelectedDatabases() MigrateSqlServerSqlDbDatabaseInputResponseArrayOutput {
 	return o.ApplyT(func(v MigrateSqlServerSqlDbTaskInputResponse) []MigrateSqlServerSqlDbDatabaseInputResponse {
@@ -22147,6 +22758,11 @@ func (o MigrateSqlServerSqlDbTaskInputResponseOutput) SourceConnectionInfo() Sql
 	return o.ApplyT(func(v MigrateSqlServerSqlDbTaskInputResponse) SqlConnectionInfoResponse {
 		return v.SourceConnectionInfo
 	}).(SqlConnectionInfoResponseOutput)
+}
+
+// Date and time relative to UTC when the migration was started on
+func (o MigrateSqlServerSqlDbTaskInputResponseOutput) StartedOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrateSqlServerSqlDbTaskInputResponse) *string { return v.StartedOn }).(pulumi.StringPtrOutput)
 }
 
 // Information for connecting to target
@@ -22190,6 +22806,16 @@ func (o MigrateSqlServerSqlDbTaskInputResponsePtrOutput) Elem() MigrateSqlServer
 	}).(MigrateSqlServerSqlDbTaskInputResponseOutput)
 }
 
+// encrypted key for secure fields
+func (o MigrateSqlServerSqlDbTaskInputResponsePtrOutput) EncryptedKeyForSecureFields() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigrateSqlServerSqlDbTaskInputResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EncryptedKeyForSecureFields
+	}).(pulumi.StringPtrOutput)
+}
+
 // Databases to migrate
 func (o MigrateSqlServerSqlDbTaskInputResponsePtrOutput) SelectedDatabases() MigrateSqlServerSqlDbDatabaseInputResponseArrayOutput {
 	return o.ApplyT(func(v *MigrateSqlServerSqlDbTaskInputResponse) []MigrateSqlServerSqlDbDatabaseInputResponse {
@@ -22208,6 +22834,16 @@ func (o MigrateSqlServerSqlDbTaskInputResponsePtrOutput) SourceConnectionInfo() 
 		}
 		return &v.SourceConnectionInfo
 	}).(SqlConnectionInfoResponsePtrOutput)
+}
+
+// Date and time relative to UTC when the migration was started on
+func (o MigrateSqlServerSqlDbTaskInputResponsePtrOutput) StartedOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigrateSqlServerSqlDbTaskInputResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StartedOn
+	}).(pulumi.StringPtrOutput)
 }
 
 // Information for connecting to target
@@ -22828,8 +23464,14 @@ func (o MigrateSqlServerSqlDbTaskOutputValidationResultResponseOutput) SummaryRe
 type MigrateSqlServerSqlDbTaskProperties struct {
 	// Key value pairs of client data to attach meta data information to task
 	ClientData map[string]string `pulumi:"clientData"`
+	// DateTime in UTC when the task was created
+	CreatedOn *string `pulumi:"createdOn"`
 	// Task input
 	Input *MigrateSqlServerSqlDbTaskInput `pulumi:"input"`
+	// whether the task can be cloned or not
+	IsCloneable *bool `pulumi:"isCloneable"`
+	// task id
+	TaskId *string `pulumi:"taskId"`
 	// Task type.
 	// Expected value is 'Migrate.SqlServer.SqlDb'.
 	TaskType string `pulumi:"taskType"`
@@ -22861,8 +23503,14 @@ type MigrateSqlServerSqlDbTaskPropertiesInput interface {
 type MigrateSqlServerSqlDbTaskPropertiesArgs struct {
 	// Key value pairs of client data to attach meta data information to task
 	ClientData pulumi.StringMapInput `pulumi:"clientData"`
+	// DateTime in UTC when the task was created
+	CreatedOn pulumi.StringPtrInput `pulumi:"createdOn"`
 	// Task input
 	Input MigrateSqlServerSqlDbTaskInputPtrInput `pulumi:"input"`
+	// whether the task can be cloned or not
+	IsCloneable pulumi.BoolPtrInput `pulumi:"isCloneable"`
+	// task id
+	TaskId pulumi.StringPtrInput `pulumi:"taskId"`
 	// Task type.
 	// Expected value is 'Migrate.SqlServer.SqlDb'.
 	TaskType pulumi.StringInput `pulumi:"taskType"`
@@ -22960,9 +23608,24 @@ func (o MigrateSqlServerSqlDbTaskPropertiesOutput) ClientData() pulumi.StringMap
 	return o.ApplyT(func(v MigrateSqlServerSqlDbTaskProperties) map[string]string { return v.ClientData }).(pulumi.StringMapOutput)
 }
 
+// DateTime in UTC when the task was created
+func (o MigrateSqlServerSqlDbTaskPropertiesOutput) CreatedOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrateSqlServerSqlDbTaskProperties) *string { return v.CreatedOn }).(pulumi.StringPtrOutput)
+}
+
 // Task input
 func (o MigrateSqlServerSqlDbTaskPropertiesOutput) Input() MigrateSqlServerSqlDbTaskInputPtrOutput {
 	return o.ApplyT(func(v MigrateSqlServerSqlDbTaskProperties) *MigrateSqlServerSqlDbTaskInput { return v.Input }).(MigrateSqlServerSqlDbTaskInputPtrOutput)
+}
+
+// whether the task can be cloned or not
+func (o MigrateSqlServerSqlDbTaskPropertiesOutput) IsCloneable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MigrateSqlServerSqlDbTaskProperties) *bool { return v.IsCloneable }).(pulumi.BoolPtrOutput)
+}
+
+// task id
+func (o MigrateSqlServerSqlDbTaskPropertiesOutput) TaskId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrateSqlServerSqlDbTaskProperties) *string { return v.TaskId }).(pulumi.StringPtrOutput)
 }
 
 // Task type.
@@ -23005,6 +23668,16 @@ func (o MigrateSqlServerSqlDbTaskPropertiesPtrOutput) ClientData() pulumi.String
 	}).(pulumi.StringMapOutput)
 }
 
+// DateTime in UTC when the task was created
+func (o MigrateSqlServerSqlDbTaskPropertiesPtrOutput) CreatedOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigrateSqlServerSqlDbTaskProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedOn
+	}).(pulumi.StringPtrOutput)
+}
+
 // Task input
 func (o MigrateSqlServerSqlDbTaskPropertiesPtrOutput) Input() MigrateSqlServerSqlDbTaskInputPtrOutput {
 	return o.ApplyT(func(v *MigrateSqlServerSqlDbTaskProperties) *MigrateSqlServerSqlDbTaskInput {
@@ -23013,6 +23686,26 @@ func (o MigrateSqlServerSqlDbTaskPropertiesPtrOutput) Input() MigrateSqlServerSq
 		}
 		return v.Input
 	}).(MigrateSqlServerSqlDbTaskInputPtrOutput)
+}
+
+// whether the task can be cloned or not
+func (o MigrateSqlServerSqlDbTaskPropertiesPtrOutput) IsCloneable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MigrateSqlServerSqlDbTaskProperties) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsCloneable
+	}).(pulumi.BoolPtrOutput)
+}
+
+// task id
+func (o MigrateSqlServerSqlDbTaskPropertiesPtrOutput) TaskId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigrateSqlServerSqlDbTaskProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TaskId
+	}).(pulumi.StringPtrOutput)
 }
 
 // Task type.
@@ -23032,14 +23725,20 @@ type MigrateSqlServerSqlDbTaskPropertiesResponse struct {
 	ClientData map[string]string `pulumi:"clientData"`
 	// Array of command properties.
 	Commands []interface{} `pulumi:"commands"`
+	// DateTime in UTC when the task was created
+	CreatedOn *string `pulumi:"createdOn"`
 	// Array of errors. This is ignored if submitted.
 	Errors []ODataErrorResponse `pulumi:"errors"`
 	// Task input
 	Input *MigrateSqlServerSqlDbTaskInputResponse `pulumi:"input"`
+	// whether the task can be cloned or not
+	IsCloneable *bool `pulumi:"isCloneable"`
 	// Task output. This is ignored if submitted.
 	Output []interface{} `pulumi:"output"`
 	// The state of the task. This is ignored if submitted.
 	State string `pulumi:"state"`
+	// task id
+	TaskId *string `pulumi:"taskId"`
 	// Task type.
 	// Expected value is 'Migrate.SqlServer.SqlDb'.
 	TaskType string `pulumi:"taskType"`
@@ -23081,6 +23780,11 @@ func (o MigrateSqlServerSqlDbTaskPropertiesResponseOutput) Commands() pulumi.Arr
 	return o.ApplyT(func(v MigrateSqlServerSqlDbTaskPropertiesResponse) []interface{} { return v.Commands }).(pulumi.ArrayOutput)
 }
 
+// DateTime in UTC when the task was created
+func (o MigrateSqlServerSqlDbTaskPropertiesResponseOutput) CreatedOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrateSqlServerSqlDbTaskPropertiesResponse) *string { return v.CreatedOn }).(pulumi.StringPtrOutput)
+}
+
 // Array of errors. This is ignored if submitted.
 func (o MigrateSqlServerSqlDbTaskPropertiesResponseOutput) Errors() ODataErrorResponseArrayOutput {
 	return o.ApplyT(func(v MigrateSqlServerSqlDbTaskPropertiesResponse) []ODataErrorResponse { return v.Errors }).(ODataErrorResponseArrayOutput)
@@ -23093,6 +23797,11 @@ func (o MigrateSqlServerSqlDbTaskPropertiesResponseOutput) Input() MigrateSqlSer
 	}).(MigrateSqlServerSqlDbTaskInputResponsePtrOutput)
 }
 
+// whether the task can be cloned or not
+func (o MigrateSqlServerSqlDbTaskPropertiesResponseOutput) IsCloneable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MigrateSqlServerSqlDbTaskPropertiesResponse) *bool { return v.IsCloneable }).(pulumi.BoolPtrOutput)
+}
+
 // Task output. This is ignored if submitted.
 func (o MigrateSqlServerSqlDbTaskPropertiesResponseOutput) Output() pulumi.ArrayOutput {
 	return o.ApplyT(func(v MigrateSqlServerSqlDbTaskPropertiesResponse) []interface{} { return v.Output }).(pulumi.ArrayOutput)
@@ -23101,6 +23810,11 @@ func (o MigrateSqlServerSqlDbTaskPropertiesResponseOutput) Output() pulumi.Array
 // The state of the task. This is ignored if submitted.
 func (o MigrateSqlServerSqlDbTaskPropertiesResponseOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v MigrateSqlServerSqlDbTaskPropertiesResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
+// task id
+func (o MigrateSqlServerSqlDbTaskPropertiesResponseOutput) TaskId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrateSqlServerSqlDbTaskPropertiesResponse) *string { return v.TaskId }).(pulumi.StringPtrOutput)
 }
 
 // Task type.
@@ -23115,6 +23829,8 @@ type MigrateSqlServerSqlMIDatabaseInput struct {
 	BackupFilePaths []string `pulumi:"backupFilePaths"`
 	// Backup file share information for backing up this database.
 	BackupFileShare *FileShare `pulumi:"backupFileShare"`
+	// id of the database
+	Id *string `pulumi:"id"`
 	// Name of the database
 	Name string `pulumi:"name"`
 	// Name of the database at destination
@@ -23138,6 +23854,8 @@ type MigrateSqlServerSqlMIDatabaseInputArgs struct {
 	BackupFilePaths pulumi.StringArrayInput `pulumi:"backupFilePaths"`
 	// Backup file share information for backing up this database.
 	BackupFileShare FileSharePtrInput `pulumi:"backupFileShare"`
+	// id of the database
+	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Name of the database
 	Name pulumi.StringInput `pulumi:"name"`
 	// Name of the database at destination
@@ -23206,6 +23924,11 @@ func (o MigrateSqlServerSqlMIDatabaseInputOutput) BackupFileShare() FileSharePtr
 	return o.ApplyT(func(v MigrateSqlServerSqlMIDatabaseInput) *FileShare { return v.BackupFileShare }).(FileSharePtrOutput)
 }
 
+// id of the database
+func (o MigrateSqlServerSqlMIDatabaseInputOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrateSqlServerSqlMIDatabaseInput) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
 // Name of the database
 func (o MigrateSqlServerSqlMIDatabaseInputOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v MigrateSqlServerSqlMIDatabaseInput) string { return v.Name }).(pulumi.StringOutput)
@@ -23242,6 +23965,8 @@ type MigrateSqlServerSqlMIDatabaseInputResponse struct {
 	BackupFilePaths []string `pulumi:"backupFilePaths"`
 	// Backup file share information for backing up this database.
 	BackupFileShare *FileShareResponse `pulumi:"backupFileShare"`
+	// id of the database
+	Id *string `pulumi:"id"`
 	// Name of the database
 	Name string `pulumi:"name"`
 	// Name of the database at destination
@@ -23271,6 +23996,11 @@ func (o MigrateSqlServerSqlMIDatabaseInputResponseOutput) BackupFilePaths() pulu
 // Backup file share information for backing up this database.
 func (o MigrateSqlServerSqlMIDatabaseInputResponseOutput) BackupFileShare() FileShareResponsePtrOutput {
 	return o.ApplyT(func(v MigrateSqlServerSqlMIDatabaseInputResponse) *FileShareResponse { return v.BackupFileShare }).(FileShareResponsePtrOutput)
+}
+
+// id of the database
+func (o MigrateSqlServerSqlMIDatabaseInputResponseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrateSqlServerSqlMIDatabaseInputResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 // Name of the database
@@ -23305,10 +24035,12 @@ func (o MigrateSqlServerSqlMIDatabaseInputResponseArrayOutput) Index(i pulumi.In
 
 // Input for task that migrates SQL Server databases to Azure SQL Database Managed Instance online scenario.
 type MigrateSqlServerSqlMISyncTaskInput struct {
-	// Azure Active Directory Application the DMS instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
+	// Azure Active Directory Application the DMS (classic) instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
 	AzureApp AzureActiveDirectoryApp `pulumi:"azureApp"`
 	// Backup file share information for all selected databases.
 	BackupFileShare *FileShare `pulumi:"backupFileShare"`
+	// Number of database migrations to start in parallel
+	NumberOfParallelDatabaseMigrations *float64 `pulumi:"numberOfParallelDatabaseMigrations"`
 	// Databases to migrate
 	SelectedDatabases []MigrateSqlServerSqlMIDatabaseInput `pulumi:"selectedDatabases"`
 	// Connection information for source SQL Server
@@ -23343,10 +24075,12 @@ type MigrateSqlServerSqlMISyncTaskInputInput interface {
 
 // Input for task that migrates SQL Server databases to Azure SQL Database Managed Instance online scenario.
 type MigrateSqlServerSqlMISyncTaskInputArgs struct {
-	// Azure Active Directory Application the DMS instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
+	// Azure Active Directory Application the DMS (classic) instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
 	AzureApp AzureActiveDirectoryAppInput `pulumi:"azureApp"`
 	// Backup file share information for all selected databases.
 	BackupFileShare FileSharePtrInput `pulumi:"backupFileShare"`
+	// Number of database migrations to start in parallel
+	NumberOfParallelDatabaseMigrations pulumi.Float64PtrInput `pulumi:"numberOfParallelDatabaseMigrations"`
 	// Databases to migrate
 	SelectedDatabases MigrateSqlServerSqlMIDatabaseInputArrayInput `pulumi:"selectedDatabases"`
 	// Connection information for source SQL Server
@@ -23444,7 +24178,7 @@ func (o MigrateSqlServerSqlMISyncTaskInputOutput) ToMigrateSqlServerSqlMISyncTas
 	}).(MigrateSqlServerSqlMISyncTaskInputPtrOutput)
 }
 
-// Azure Active Directory Application the DMS instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
+// Azure Active Directory Application the DMS (classic) instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
 func (o MigrateSqlServerSqlMISyncTaskInputOutput) AzureApp() AzureActiveDirectoryAppOutput {
 	return o.ApplyT(func(v MigrateSqlServerSqlMISyncTaskInput) AzureActiveDirectoryApp { return v.AzureApp }).(AzureActiveDirectoryAppOutput)
 }
@@ -23452,6 +24186,11 @@ func (o MigrateSqlServerSqlMISyncTaskInputOutput) AzureApp() AzureActiveDirector
 // Backup file share information for all selected databases.
 func (o MigrateSqlServerSqlMISyncTaskInputOutput) BackupFileShare() FileSharePtrOutput {
 	return o.ApplyT(func(v MigrateSqlServerSqlMISyncTaskInput) *FileShare { return v.BackupFileShare }).(FileSharePtrOutput)
+}
+
+// Number of database migrations to start in parallel
+func (o MigrateSqlServerSqlMISyncTaskInputOutput) NumberOfParallelDatabaseMigrations() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v MigrateSqlServerSqlMISyncTaskInput) *float64 { return v.NumberOfParallelDatabaseMigrations }).(pulumi.Float64PtrOutput)
 }
 
 // Databases to migrate
@@ -23500,7 +24239,7 @@ func (o MigrateSqlServerSqlMISyncTaskInputPtrOutput) Elem() MigrateSqlServerSqlM
 	}).(MigrateSqlServerSqlMISyncTaskInputOutput)
 }
 
-// Azure Active Directory Application the DMS instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
+// Azure Active Directory Application the DMS (classic) instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
 func (o MigrateSqlServerSqlMISyncTaskInputPtrOutput) AzureApp() AzureActiveDirectoryAppPtrOutput {
 	return o.ApplyT(func(v *MigrateSqlServerSqlMISyncTaskInput) *AzureActiveDirectoryApp {
 		if v == nil {
@@ -23518,6 +24257,16 @@ func (o MigrateSqlServerSqlMISyncTaskInputPtrOutput) BackupFileShare() FileShare
 		}
 		return v.BackupFileShare
 	}).(FileSharePtrOutput)
+}
+
+// Number of database migrations to start in parallel
+func (o MigrateSqlServerSqlMISyncTaskInputPtrOutput) NumberOfParallelDatabaseMigrations() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *MigrateSqlServerSqlMISyncTaskInput) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.NumberOfParallelDatabaseMigrations
+	}).(pulumi.Float64PtrOutput)
 }
 
 // Databases to migrate
@@ -23562,10 +24311,12 @@ func (o MigrateSqlServerSqlMISyncTaskInputPtrOutput) TargetConnectionInfo() MiSq
 
 // Input for task that migrates SQL Server databases to Azure SQL Database Managed Instance online scenario.
 type MigrateSqlServerSqlMISyncTaskInputResponse struct {
-	// Azure Active Directory Application the DMS instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
+	// Azure Active Directory Application the DMS (classic) instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
 	AzureApp AzureActiveDirectoryAppResponse `pulumi:"azureApp"`
 	// Backup file share information for all selected databases.
 	BackupFileShare *FileShareResponse `pulumi:"backupFileShare"`
+	// Number of database migrations to start in parallel
+	NumberOfParallelDatabaseMigrations *float64 `pulumi:"numberOfParallelDatabaseMigrations"`
 	// Databases to migrate
 	SelectedDatabases []MigrateSqlServerSqlMIDatabaseInputResponse `pulumi:"selectedDatabases"`
 	// Connection information for source SQL Server
@@ -23602,7 +24353,7 @@ func (o MigrateSqlServerSqlMISyncTaskInputResponseOutput) ToMigrateSqlServerSqlM
 	return o
 }
 
-// Azure Active Directory Application the DMS instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
+// Azure Active Directory Application the DMS (classic) instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
 func (o MigrateSqlServerSqlMISyncTaskInputResponseOutput) AzureApp() AzureActiveDirectoryAppResponseOutput {
 	return o.ApplyT(func(v MigrateSqlServerSqlMISyncTaskInputResponse) AzureActiveDirectoryAppResponse { return v.AzureApp }).(AzureActiveDirectoryAppResponseOutput)
 }
@@ -23610,6 +24361,13 @@ func (o MigrateSqlServerSqlMISyncTaskInputResponseOutput) AzureApp() AzureActive
 // Backup file share information for all selected databases.
 func (o MigrateSqlServerSqlMISyncTaskInputResponseOutput) BackupFileShare() FileShareResponsePtrOutput {
 	return o.ApplyT(func(v MigrateSqlServerSqlMISyncTaskInputResponse) *FileShareResponse { return v.BackupFileShare }).(FileShareResponsePtrOutput)
+}
+
+// Number of database migrations to start in parallel
+func (o MigrateSqlServerSqlMISyncTaskInputResponseOutput) NumberOfParallelDatabaseMigrations() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v MigrateSqlServerSqlMISyncTaskInputResponse) *float64 {
+		return v.NumberOfParallelDatabaseMigrations
+	}).(pulumi.Float64PtrOutput)
 }
 
 // Databases to migrate
@@ -23662,7 +24420,7 @@ func (o MigrateSqlServerSqlMISyncTaskInputResponsePtrOutput) Elem() MigrateSqlSe
 	}).(MigrateSqlServerSqlMISyncTaskInputResponseOutput)
 }
 
-// Azure Active Directory Application the DMS instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
+// Azure Active Directory Application the DMS (classic) instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
 func (o MigrateSqlServerSqlMISyncTaskInputResponsePtrOutput) AzureApp() AzureActiveDirectoryAppResponsePtrOutput {
 	return o.ApplyT(func(v *MigrateSqlServerSqlMISyncTaskInputResponse) *AzureActiveDirectoryAppResponse {
 		if v == nil {
@@ -23680,6 +24438,16 @@ func (o MigrateSqlServerSqlMISyncTaskInputResponsePtrOutput) BackupFileShare() F
 		}
 		return v.BackupFileShare
 	}).(FileShareResponsePtrOutput)
+}
+
+// Number of database migrations to start in parallel
+func (o MigrateSqlServerSqlMISyncTaskInputResponsePtrOutput) NumberOfParallelDatabaseMigrations() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *MigrateSqlServerSqlMISyncTaskInputResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.NumberOfParallelDatabaseMigrations
+	}).(pulumi.Float64PtrOutput)
 }
 
 // Databases to migrate
@@ -23998,6 +24766,8 @@ func (o MigrateSqlServerSqlMISyncTaskOutputMigrationLevelResponseOutput) TargetS
 type MigrateSqlServerSqlMISyncTaskProperties struct {
 	// Key value pairs of client data to attach meta data information to task
 	ClientData map[string]string `pulumi:"clientData"`
+	// DateTime in UTC when the task was created
+	CreatedOn *string `pulumi:"createdOn"`
 	// Task input
 	Input *MigrateSqlServerSqlMISyncTaskInput `pulumi:"input"`
 	// Task type.
@@ -24031,6 +24801,8 @@ type MigrateSqlServerSqlMISyncTaskPropertiesInput interface {
 type MigrateSqlServerSqlMISyncTaskPropertiesArgs struct {
 	// Key value pairs of client data to attach meta data information to task
 	ClientData pulumi.StringMapInput `pulumi:"clientData"`
+	// DateTime in UTC when the task was created
+	CreatedOn pulumi.StringPtrInput `pulumi:"createdOn"`
 	// Task input
 	Input MigrateSqlServerSqlMISyncTaskInputPtrInput `pulumi:"input"`
 	// Task type.
@@ -24130,6 +24902,11 @@ func (o MigrateSqlServerSqlMISyncTaskPropertiesOutput) ClientData() pulumi.Strin
 	return o.ApplyT(func(v MigrateSqlServerSqlMISyncTaskProperties) map[string]string { return v.ClientData }).(pulumi.StringMapOutput)
 }
 
+// DateTime in UTC when the task was created
+func (o MigrateSqlServerSqlMISyncTaskPropertiesOutput) CreatedOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrateSqlServerSqlMISyncTaskProperties) *string { return v.CreatedOn }).(pulumi.StringPtrOutput)
+}
+
 // Task input
 func (o MigrateSqlServerSqlMISyncTaskPropertiesOutput) Input() MigrateSqlServerSqlMISyncTaskInputPtrOutput {
 	return o.ApplyT(func(v MigrateSqlServerSqlMISyncTaskProperties) *MigrateSqlServerSqlMISyncTaskInput { return v.Input }).(MigrateSqlServerSqlMISyncTaskInputPtrOutput)
@@ -24175,6 +24952,16 @@ func (o MigrateSqlServerSqlMISyncTaskPropertiesPtrOutput) ClientData() pulumi.St
 	}).(pulumi.StringMapOutput)
 }
 
+// DateTime in UTC when the task was created
+func (o MigrateSqlServerSqlMISyncTaskPropertiesPtrOutput) CreatedOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigrateSqlServerSqlMISyncTaskProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedOn
+	}).(pulumi.StringPtrOutput)
+}
+
 // Task input
 func (o MigrateSqlServerSqlMISyncTaskPropertiesPtrOutput) Input() MigrateSqlServerSqlMISyncTaskInputPtrOutput {
 	return o.ApplyT(func(v *MigrateSqlServerSqlMISyncTaskProperties) *MigrateSqlServerSqlMISyncTaskInput {
@@ -24202,6 +24989,8 @@ type MigrateSqlServerSqlMISyncTaskPropertiesResponse struct {
 	ClientData map[string]string `pulumi:"clientData"`
 	// Array of command properties.
 	Commands []interface{} `pulumi:"commands"`
+	// DateTime in UTC when the task was created
+	CreatedOn *string `pulumi:"createdOn"`
 	// Array of errors. This is ignored if submitted.
 	Errors []ODataErrorResponse `pulumi:"errors"`
 	// Task input
@@ -24251,6 +25040,11 @@ func (o MigrateSqlServerSqlMISyncTaskPropertiesResponseOutput) Commands() pulumi
 	return o.ApplyT(func(v MigrateSqlServerSqlMISyncTaskPropertiesResponse) []interface{} { return v.Commands }).(pulumi.ArrayOutput)
 }
 
+// DateTime in UTC when the task was created
+func (o MigrateSqlServerSqlMISyncTaskPropertiesResponseOutput) CreatedOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrateSqlServerSqlMISyncTaskPropertiesResponse) *string { return v.CreatedOn }).(pulumi.StringPtrOutput)
+}
+
 // Array of errors. This is ignored if submitted.
 func (o MigrateSqlServerSqlMISyncTaskPropertiesResponseOutput) Errors() ODataErrorResponseArrayOutput {
 	return o.ApplyT(func(v MigrateSqlServerSqlMISyncTaskPropertiesResponse) []ODataErrorResponse { return v.Errors }).(ODataErrorResponseArrayOutput)
@@ -24289,6 +25083,8 @@ type MigrateSqlServerSqlMITaskInput struct {
 	BackupFileShare *FileShare `pulumi:"backupFileShare"`
 	// Backup Mode to specify whether to use existing backup or create new backup. If using existing backups, backup file paths are required to be provided in selectedDatabases.
 	BackupMode *string `pulumi:"backupMode"`
+	// encrypted key for secure fields
+	EncryptedKeyForSecureFields *string `pulumi:"encryptedKeyForSecureFields"`
 	// Agent Jobs to migrate.
 	SelectedAgentJobs []string `pulumi:"selectedAgentJobs"`
 	// Databases to migrate
@@ -24297,6 +25093,8 @@ type MigrateSqlServerSqlMITaskInput struct {
 	SelectedLogins []string `pulumi:"selectedLogins"`
 	// Information for connecting to source
 	SourceConnectionInfo SqlConnectionInfo `pulumi:"sourceConnectionInfo"`
+	// Date and time relative to UTC when the migration was started on
+	StartedOn *string `pulumi:"startedOn"`
 	// Information for connecting to target
 	TargetConnectionInfo SqlConnectionInfo `pulumi:"targetConnectionInfo"`
 }
@@ -24335,6 +25133,8 @@ type MigrateSqlServerSqlMITaskInputArgs struct {
 	BackupFileShare FileSharePtrInput `pulumi:"backupFileShare"`
 	// Backup Mode to specify whether to use existing backup or create new backup. If using existing backups, backup file paths are required to be provided in selectedDatabases.
 	BackupMode pulumi.StringPtrInput `pulumi:"backupMode"`
+	// encrypted key for secure fields
+	EncryptedKeyForSecureFields pulumi.StringPtrInput `pulumi:"encryptedKeyForSecureFields"`
 	// Agent Jobs to migrate.
 	SelectedAgentJobs pulumi.StringArrayInput `pulumi:"selectedAgentJobs"`
 	// Databases to migrate
@@ -24343,6 +25143,8 @@ type MigrateSqlServerSqlMITaskInputArgs struct {
 	SelectedLogins pulumi.StringArrayInput `pulumi:"selectedLogins"`
 	// Information for connecting to source
 	SourceConnectionInfo SqlConnectionInfoInput `pulumi:"sourceConnectionInfo"`
+	// Date and time relative to UTC when the migration was started on
+	StartedOn pulumi.StringPtrInput `pulumi:"startedOn"`
 	// Information for connecting to target
 	TargetConnectionInfo SqlConnectionInfoInput `pulumi:"targetConnectionInfo"`
 }
@@ -24454,6 +25256,11 @@ func (o MigrateSqlServerSqlMITaskInputOutput) BackupMode() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v MigrateSqlServerSqlMITaskInput) *string { return v.BackupMode }).(pulumi.StringPtrOutput)
 }
 
+// encrypted key for secure fields
+func (o MigrateSqlServerSqlMITaskInputOutput) EncryptedKeyForSecureFields() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrateSqlServerSqlMITaskInput) *string { return v.EncryptedKeyForSecureFields }).(pulumi.StringPtrOutput)
+}
+
 // Agent Jobs to migrate.
 func (o MigrateSqlServerSqlMITaskInputOutput) SelectedAgentJobs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v MigrateSqlServerSqlMITaskInput) []string { return v.SelectedAgentJobs }).(pulumi.StringArrayOutput)
@@ -24474,6 +25281,11 @@ func (o MigrateSqlServerSqlMITaskInputOutput) SelectedLogins() pulumi.StringArra
 // Information for connecting to source
 func (o MigrateSqlServerSqlMITaskInputOutput) SourceConnectionInfo() SqlConnectionInfoOutput {
 	return o.ApplyT(func(v MigrateSqlServerSqlMITaskInput) SqlConnectionInfo { return v.SourceConnectionInfo }).(SqlConnectionInfoOutput)
+}
+
+// Date and time relative to UTC when the migration was started on
+func (o MigrateSqlServerSqlMITaskInputOutput) StartedOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrateSqlServerSqlMITaskInput) *string { return v.StartedOn }).(pulumi.StringPtrOutput)
 }
 
 // Information for connecting to target
@@ -24545,6 +25357,16 @@ func (o MigrateSqlServerSqlMITaskInputPtrOutput) BackupMode() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// encrypted key for secure fields
+func (o MigrateSqlServerSqlMITaskInputPtrOutput) EncryptedKeyForSecureFields() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigrateSqlServerSqlMITaskInput) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EncryptedKeyForSecureFields
+	}).(pulumi.StringPtrOutput)
+}
+
 // Agent Jobs to migrate.
 func (o MigrateSqlServerSqlMITaskInputPtrOutput) SelectedAgentJobs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *MigrateSqlServerSqlMITaskInput) []string {
@@ -24585,6 +25407,16 @@ func (o MigrateSqlServerSqlMITaskInputPtrOutput) SourceConnectionInfo() SqlConne
 	}).(SqlConnectionInfoPtrOutput)
 }
 
+// Date and time relative to UTC when the migration was started on
+func (o MigrateSqlServerSqlMITaskInputPtrOutput) StartedOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigrateSqlServerSqlMITaskInput) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StartedOn
+	}).(pulumi.StringPtrOutput)
+}
+
 // Information for connecting to target
 func (o MigrateSqlServerSqlMITaskInputPtrOutput) TargetConnectionInfo() SqlConnectionInfoPtrOutput {
 	return o.ApplyT(func(v *MigrateSqlServerSqlMITaskInput) *SqlConnectionInfo {
@@ -24605,6 +25437,8 @@ type MigrateSqlServerSqlMITaskInputResponse struct {
 	BackupFileShare *FileShareResponse `pulumi:"backupFileShare"`
 	// Backup Mode to specify whether to use existing backup or create new backup. If using existing backups, backup file paths are required to be provided in selectedDatabases.
 	BackupMode *string `pulumi:"backupMode"`
+	// encrypted key for secure fields
+	EncryptedKeyForSecureFields *string `pulumi:"encryptedKeyForSecureFields"`
 	// Agent Jobs to migrate.
 	SelectedAgentJobs []string `pulumi:"selectedAgentJobs"`
 	// Databases to migrate
@@ -24613,6 +25447,8 @@ type MigrateSqlServerSqlMITaskInputResponse struct {
 	SelectedLogins []string `pulumi:"selectedLogins"`
 	// Information for connecting to source
 	SourceConnectionInfo SqlConnectionInfoResponse `pulumi:"sourceConnectionInfo"`
+	// Date and time relative to UTC when the migration was started on
+	StartedOn *string `pulumi:"startedOn"`
 	// Information for connecting to target
 	TargetConnectionInfo SqlConnectionInfoResponse `pulumi:"targetConnectionInfo"`
 }
@@ -24665,6 +25501,11 @@ func (o MigrateSqlServerSqlMITaskInputResponseOutput) BackupMode() pulumi.String
 	return o.ApplyT(func(v MigrateSqlServerSqlMITaskInputResponse) *string { return v.BackupMode }).(pulumi.StringPtrOutput)
 }
 
+// encrypted key for secure fields
+func (o MigrateSqlServerSqlMITaskInputResponseOutput) EncryptedKeyForSecureFields() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrateSqlServerSqlMITaskInputResponse) *string { return v.EncryptedKeyForSecureFields }).(pulumi.StringPtrOutput)
+}
+
 // Agent Jobs to migrate.
 func (o MigrateSqlServerSqlMITaskInputResponseOutput) SelectedAgentJobs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v MigrateSqlServerSqlMITaskInputResponse) []string { return v.SelectedAgentJobs }).(pulumi.StringArrayOutput)
@@ -24687,6 +25528,11 @@ func (o MigrateSqlServerSqlMITaskInputResponseOutput) SourceConnectionInfo() Sql
 	return o.ApplyT(func(v MigrateSqlServerSqlMITaskInputResponse) SqlConnectionInfoResponse {
 		return v.SourceConnectionInfo
 	}).(SqlConnectionInfoResponseOutput)
+}
+
+// Date and time relative to UTC when the migration was started on
+func (o MigrateSqlServerSqlMITaskInputResponseOutput) StartedOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrateSqlServerSqlMITaskInputResponse) *string { return v.StartedOn }).(pulumi.StringPtrOutput)
 }
 
 // Information for connecting to target
@@ -24760,6 +25606,16 @@ func (o MigrateSqlServerSqlMITaskInputResponsePtrOutput) BackupMode() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
+// encrypted key for secure fields
+func (o MigrateSqlServerSqlMITaskInputResponsePtrOutput) EncryptedKeyForSecureFields() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigrateSqlServerSqlMITaskInputResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EncryptedKeyForSecureFields
+	}).(pulumi.StringPtrOutput)
+}
+
 // Agent Jobs to migrate.
 func (o MigrateSqlServerSqlMITaskInputResponsePtrOutput) SelectedAgentJobs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *MigrateSqlServerSqlMITaskInputResponse) []string {
@@ -24798,6 +25654,16 @@ func (o MigrateSqlServerSqlMITaskInputResponsePtrOutput) SourceConnectionInfo() 
 		}
 		return &v.SourceConnectionInfo
 	}).(SqlConnectionInfoResponsePtrOutput)
+}
+
+// Date and time relative to UTC when the migration was started on
+func (o MigrateSqlServerSqlMITaskInputResponsePtrOutput) StartedOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigrateSqlServerSqlMITaskInputResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StartedOn
+	}).(pulumi.StringPtrOutput)
 }
 
 // Information for connecting to target
@@ -25261,8 +26127,16 @@ func (o MigrateSqlServerSqlMITaskOutputMigrationLevelResponseOutput) TargetServe
 type MigrateSqlServerSqlMITaskProperties struct {
 	// Key value pairs of client data to attach meta data information to task
 	ClientData map[string]string `pulumi:"clientData"`
+	// DateTime in UTC when the task was created
+	CreatedOn *string `pulumi:"createdOn"`
 	// Task input
 	Input *MigrateSqlServerSqlMITaskInput `pulumi:"input"`
+	// whether the task can be cloned or not
+	IsCloneable *bool `pulumi:"isCloneable"`
+	// parent task id
+	ParentTaskId *string `pulumi:"parentTaskId"`
+	// task id
+	TaskId *string `pulumi:"taskId"`
 	// Task type.
 	// Expected value is 'Migrate.SqlServer.AzureSqlDbMI'.
 	TaskType string `pulumi:"taskType"`
@@ -25294,8 +26168,16 @@ type MigrateSqlServerSqlMITaskPropertiesInput interface {
 type MigrateSqlServerSqlMITaskPropertiesArgs struct {
 	// Key value pairs of client data to attach meta data information to task
 	ClientData pulumi.StringMapInput `pulumi:"clientData"`
+	// DateTime in UTC when the task was created
+	CreatedOn pulumi.StringPtrInput `pulumi:"createdOn"`
 	// Task input
 	Input MigrateSqlServerSqlMITaskInputPtrInput `pulumi:"input"`
+	// whether the task can be cloned or not
+	IsCloneable pulumi.BoolPtrInput `pulumi:"isCloneable"`
+	// parent task id
+	ParentTaskId pulumi.StringPtrInput `pulumi:"parentTaskId"`
+	// task id
+	TaskId pulumi.StringPtrInput `pulumi:"taskId"`
 	// Task type.
 	// Expected value is 'Migrate.SqlServer.AzureSqlDbMI'.
 	TaskType pulumi.StringInput `pulumi:"taskType"`
@@ -25393,9 +26275,29 @@ func (o MigrateSqlServerSqlMITaskPropertiesOutput) ClientData() pulumi.StringMap
 	return o.ApplyT(func(v MigrateSqlServerSqlMITaskProperties) map[string]string { return v.ClientData }).(pulumi.StringMapOutput)
 }
 
+// DateTime in UTC when the task was created
+func (o MigrateSqlServerSqlMITaskPropertiesOutput) CreatedOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrateSqlServerSqlMITaskProperties) *string { return v.CreatedOn }).(pulumi.StringPtrOutput)
+}
+
 // Task input
 func (o MigrateSqlServerSqlMITaskPropertiesOutput) Input() MigrateSqlServerSqlMITaskInputPtrOutput {
 	return o.ApplyT(func(v MigrateSqlServerSqlMITaskProperties) *MigrateSqlServerSqlMITaskInput { return v.Input }).(MigrateSqlServerSqlMITaskInputPtrOutput)
+}
+
+// whether the task can be cloned or not
+func (o MigrateSqlServerSqlMITaskPropertiesOutput) IsCloneable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MigrateSqlServerSqlMITaskProperties) *bool { return v.IsCloneable }).(pulumi.BoolPtrOutput)
+}
+
+// parent task id
+func (o MigrateSqlServerSqlMITaskPropertiesOutput) ParentTaskId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrateSqlServerSqlMITaskProperties) *string { return v.ParentTaskId }).(pulumi.StringPtrOutput)
+}
+
+// task id
+func (o MigrateSqlServerSqlMITaskPropertiesOutput) TaskId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrateSqlServerSqlMITaskProperties) *string { return v.TaskId }).(pulumi.StringPtrOutput)
 }
 
 // Task type.
@@ -25438,6 +26340,16 @@ func (o MigrateSqlServerSqlMITaskPropertiesPtrOutput) ClientData() pulumi.String
 	}).(pulumi.StringMapOutput)
 }
 
+// DateTime in UTC when the task was created
+func (o MigrateSqlServerSqlMITaskPropertiesPtrOutput) CreatedOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigrateSqlServerSqlMITaskProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedOn
+	}).(pulumi.StringPtrOutput)
+}
+
 // Task input
 func (o MigrateSqlServerSqlMITaskPropertiesPtrOutput) Input() MigrateSqlServerSqlMITaskInputPtrOutput {
 	return o.ApplyT(func(v *MigrateSqlServerSqlMITaskProperties) *MigrateSqlServerSqlMITaskInput {
@@ -25446,6 +26358,36 @@ func (o MigrateSqlServerSqlMITaskPropertiesPtrOutput) Input() MigrateSqlServerSq
 		}
 		return v.Input
 	}).(MigrateSqlServerSqlMITaskInputPtrOutput)
+}
+
+// whether the task can be cloned or not
+func (o MigrateSqlServerSqlMITaskPropertiesPtrOutput) IsCloneable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MigrateSqlServerSqlMITaskProperties) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsCloneable
+	}).(pulumi.BoolPtrOutput)
+}
+
+// parent task id
+func (o MigrateSqlServerSqlMITaskPropertiesPtrOutput) ParentTaskId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigrateSqlServerSqlMITaskProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ParentTaskId
+	}).(pulumi.StringPtrOutput)
+}
+
+// task id
+func (o MigrateSqlServerSqlMITaskPropertiesPtrOutput) TaskId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigrateSqlServerSqlMITaskProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TaskId
+	}).(pulumi.StringPtrOutput)
 }
 
 // Task type.
@@ -25465,14 +26407,22 @@ type MigrateSqlServerSqlMITaskPropertiesResponse struct {
 	ClientData map[string]string `pulumi:"clientData"`
 	// Array of command properties.
 	Commands []interface{} `pulumi:"commands"`
+	// DateTime in UTC when the task was created
+	CreatedOn *string `pulumi:"createdOn"`
 	// Array of errors. This is ignored if submitted.
 	Errors []ODataErrorResponse `pulumi:"errors"`
 	// Task input
 	Input *MigrateSqlServerSqlMITaskInputResponse `pulumi:"input"`
+	// whether the task can be cloned or not
+	IsCloneable *bool `pulumi:"isCloneable"`
 	// Task output. This is ignored if submitted.
 	Output []interface{} `pulumi:"output"`
+	// parent task id
+	ParentTaskId *string `pulumi:"parentTaskId"`
 	// The state of the task. This is ignored if submitted.
 	State string `pulumi:"state"`
+	// task id
+	TaskId *string `pulumi:"taskId"`
 	// Task type.
 	// Expected value is 'Migrate.SqlServer.AzureSqlDbMI'.
 	TaskType string `pulumi:"taskType"`
@@ -25514,6 +26464,11 @@ func (o MigrateSqlServerSqlMITaskPropertiesResponseOutput) Commands() pulumi.Arr
 	return o.ApplyT(func(v MigrateSqlServerSqlMITaskPropertiesResponse) []interface{} { return v.Commands }).(pulumi.ArrayOutput)
 }
 
+// DateTime in UTC when the task was created
+func (o MigrateSqlServerSqlMITaskPropertiesResponseOutput) CreatedOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrateSqlServerSqlMITaskPropertiesResponse) *string { return v.CreatedOn }).(pulumi.StringPtrOutput)
+}
+
 // Array of errors. This is ignored if submitted.
 func (o MigrateSqlServerSqlMITaskPropertiesResponseOutput) Errors() ODataErrorResponseArrayOutput {
 	return o.ApplyT(func(v MigrateSqlServerSqlMITaskPropertiesResponse) []ODataErrorResponse { return v.Errors }).(ODataErrorResponseArrayOutput)
@@ -25526,14 +26481,29 @@ func (o MigrateSqlServerSqlMITaskPropertiesResponseOutput) Input() MigrateSqlSer
 	}).(MigrateSqlServerSqlMITaskInputResponsePtrOutput)
 }
 
+// whether the task can be cloned or not
+func (o MigrateSqlServerSqlMITaskPropertiesResponseOutput) IsCloneable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MigrateSqlServerSqlMITaskPropertiesResponse) *bool { return v.IsCloneable }).(pulumi.BoolPtrOutput)
+}
+
 // Task output. This is ignored if submitted.
 func (o MigrateSqlServerSqlMITaskPropertiesResponseOutput) Output() pulumi.ArrayOutput {
 	return o.ApplyT(func(v MigrateSqlServerSqlMITaskPropertiesResponse) []interface{} { return v.Output }).(pulumi.ArrayOutput)
 }
 
+// parent task id
+func (o MigrateSqlServerSqlMITaskPropertiesResponseOutput) ParentTaskId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrateSqlServerSqlMITaskPropertiesResponse) *string { return v.ParentTaskId }).(pulumi.StringPtrOutput)
+}
+
 // The state of the task. This is ignored if submitted.
 func (o MigrateSqlServerSqlMITaskPropertiesResponseOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v MigrateSqlServerSqlMITaskPropertiesResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
+// task id
+func (o MigrateSqlServerSqlMITaskPropertiesResponseOutput) TaskId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrateSqlServerSqlMITaskPropertiesResponse) *string { return v.TaskId }).(pulumi.StringPtrOutput)
 }
 
 // Task type.
@@ -26440,6 +27410,8 @@ func (o MigrateSyncCompleteCommandOutputResponseOutput) Id() pulumi.StringOutput
 
 // Properties for the command that completes sync migration for a database.
 type MigrateSyncCompleteCommandPropertiesResponse struct {
+	// Command id
+	CommandId *string `pulumi:"commandId"`
 	// Command type.
 	// Expected value is 'Migrate.Sync.Complete.Database'.
 	CommandType string `pulumi:"commandType"`
@@ -26466,6 +27438,11 @@ func (o MigrateSyncCompleteCommandPropertiesResponseOutput) ToMigrateSyncComplet
 
 func (o MigrateSyncCompleteCommandPropertiesResponseOutput) ToMigrateSyncCompleteCommandPropertiesResponseOutputWithContext(ctx context.Context) MigrateSyncCompleteCommandPropertiesResponseOutput {
 	return o
+}
+
+// Command id
+func (o MigrateSyncCompleteCommandPropertiesResponseOutput) CommandId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrateSyncCompleteCommandPropertiesResponse) *string { return v.CommandId }).(pulumi.StringPtrOutput)
 }
 
 // Command type.
@@ -27900,15 +28877,47 @@ func (o MongoDbCollectionSettingsResponseMapOutput) MapIndex(k pulumi.StringInpu
 
 // Describes a connection to a MongoDB data source
 type MongoDbConnectionInfo struct {
+	// Additional connection settings
+	AdditionalSettings *string `pulumi:"additionalSettings"`
+	// Authentication type to use for connection
+	Authentication *string `pulumi:"authentication"`
 	// A MongoDB connection string or blob container URL. The user name and password can be specified here or in the userName and password properties
 	ConnectionString string `pulumi:"connectionString"`
+	// Data source
+	DataSource *string `pulumi:"dataSource"`
+	// Whether to encrypt the connection
+	EncryptConnection *bool `pulumi:"encryptConnection"`
+	EnforceSSL        *bool `pulumi:"enforceSSL"`
 	// Password credential.
 	Password *string `pulumi:"password"`
+	// port for server
+	Port *int `pulumi:"port"`
+	// server brand version
+	ServerBrandVersion *string `pulumi:"serverBrandVersion"`
+	// name of the server
+	ServerName *string `pulumi:"serverName"`
+	// server version
+	ServerVersion *string `pulumi:"serverVersion"`
+	// Whether to trust the server certificate
+	TrustServerCertificate *bool `pulumi:"trustServerCertificate"`
 	// Type of connection info
 	// Expected value is 'MongoDbConnectionInfo'.
 	Type string `pulumi:"type"`
 	// User name
 	UserName *string `pulumi:"userName"`
+}
+
+// Defaults sets the appropriate defaults for MongoDbConnectionInfo
+func (val *MongoDbConnectionInfo) Defaults() *MongoDbConnectionInfo {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.TrustServerCertificate == nil {
+		trustServerCertificate_ := false
+		tmp.TrustServerCertificate = &trustServerCertificate_
+	}
+	return &tmp
 }
 
 // MongoDbConnectionInfoInput is an input type that accepts MongoDbConnectionInfoArgs and MongoDbConnectionInfoOutput values.
@@ -27924,10 +28933,29 @@ type MongoDbConnectionInfoInput interface {
 
 // Describes a connection to a MongoDB data source
 type MongoDbConnectionInfoArgs struct {
+	// Additional connection settings
+	AdditionalSettings pulumi.StringPtrInput `pulumi:"additionalSettings"`
+	// Authentication type to use for connection
+	Authentication pulumi.StringPtrInput `pulumi:"authentication"`
 	// A MongoDB connection string or blob container URL. The user name and password can be specified here or in the userName and password properties
 	ConnectionString pulumi.StringInput `pulumi:"connectionString"`
+	// Data source
+	DataSource pulumi.StringPtrInput `pulumi:"dataSource"`
+	// Whether to encrypt the connection
+	EncryptConnection pulumi.BoolPtrInput `pulumi:"encryptConnection"`
+	EnforceSSL        pulumi.BoolPtrInput `pulumi:"enforceSSL"`
 	// Password credential.
 	Password pulumi.StringPtrInput `pulumi:"password"`
+	// port for server
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// server brand version
+	ServerBrandVersion pulumi.StringPtrInput `pulumi:"serverBrandVersion"`
+	// name of the server
+	ServerName pulumi.StringPtrInput `pulumi:"serverName"`
+	// server version
+	ServerVersion pulumi.StringPtrInput `pulumi:"serverVersion"`
+	// Whether to trust the server certificate
+	TrustServerCertificate pulumi.BoolPtrInput `pulumi:"trustServerCertificate"`
 	// Type of connection info
 	// Expected value is 'MongoDbConnectionInfo'.
 	Type pulumi.StringInput `pulumi:"type"`
@@ -27935,6 +28963,17 @@ type MongoDbConnectionInfoArgs struct {
 	UserName pulumi.StringPtrInput `pulumi:"userName"`
 }
 
+// Defaults sets the appropriate defaults for MongoDbConnectionInfoArgs
+func (val *MongoDbConnectionInfoArgs) Defaults() *MongoDbConnectionInfoArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.TrustServerCertificate == nil {
+		tmp.TrustServerCertificate = pulumi.BoolPtr(false)
+	}
+	return &tmp
+}
 func (MongoDbConnectionInfoArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*MongoDbConnectionInfo)(nil)).Elem()
 }
@@ -28013,14 +29052,63 @@ func (o MongoDbConnectionInfoOutput) ToMongoDbConnectionInfoPtrOutputWithContext
 	}).(MongoDbConnectionInfoPtrOutput)
 }
 
+// Additional connection settings
+func (o MongoDbConnectionInfoOutput) AdditionalSettings() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MongoDbConnectionInfo) *string { return v.AdditionalSettings }).(pulumi.StringPtrOutput)
+}
+
+// Authentication type to use for connection
+func (o MongoDbConnectionInfoOutput) Authentication() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MongoDbConnectionInfo) *string { return v.Authentication }).(pulumi.StringPtrOutput)
+}
+
 // A MongoDB connection string or blob container URL. The user name and password can be specified here or in the userName and password properties
 func (o MongoDbConnectionInfoOutput) ConnectionString() pulumi.StringOutput {
 	return o.ApplyT(func(v MongoDbConnectionInfo) string { return v.ConnectionString }).(pulumi.StringOutput)
 }
 
+// Data source
+func (o MongoDbConnectionInfoOutput) DataSource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MongoDbConnectionInfo) *string { return v.DataSource }).(pulumi.StringPtrOutput)
+}
+
+// Whether to encrypt the connection
+func (o MongoDbConnectionInfoOutput) EncryptConnection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MongoDbConnectionInfo) *bool { return v.EncryptConnection }).(pulumi.BoolPtrOutput)
+}
+
+func (o MongoDbConnectionInfoOutput) EnforceSSL() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MongoDbConnectionInfo) *bool { return v.EnforceSSL }).(pulumi.BoolPtrOutput)
+}
+
 // Password credential.
 func (o MongoDbConnectionInfoOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MongoDbConnectionInfo) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// port for server
+func (o MongoDbConnectionInfoOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MongoDbConnectionInfo) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// server brand version
+func (o MongoDbConnectionInfoOutput) ServerBrandVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MongoDbConnectionInfo) *string { return v.ServerBrandVersion }).(pulumi.StringPtrOutput)
+}
+
+// name of the server
+func (o MongoDbConnectionInfoOutput) ServerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MongoDbConnectionInfo) *string { return v.ServerName }).(pulumi.StringPtrOutput)
+}
+
+// server version
+func (o MongoDbConnectionInfoOutput) ServerVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MongoDbConnectionInfo) *string { return v.ServerVersion }).(pulumi.StringPtrOutput)
+}
+
+// Whether to trust the server certificate
+func (o MongoDbConnectionInfoOutput) TrustServerCertificate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MongoDbConnectionInfo) *bool { return v.TrustServerCertificate }).(pulumi.BoolPtrOutput)
 }
 
 // Type of connection info
@@ -28058,6 +29146,26 @@ func (o MongoDbConnectionInfoPtrOutput) Elem() MongoDbConnectionInfoOutput {
 	}).(MongoDbConnectionInfoOutput)
 }
 
+// Additional connection settings
+func (o MongoDbConnectionInfoPtrOutput) AdditionalSettings() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MongoDbConnectionInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalSettings
+	}).(pulumi.StringPtrOutput)
+}
+
+// Authentication type to use for connection
+func (o MongoDbConnectionInfoPtrOutput) Authentication() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MongoDbConnectionInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Authentication
+	}).(pulumi.StringPtrOutput)
+}
+
 // A MongoDB connection string or blob container URL. The user name and password can be specified here or in the userName and password properties
 func (o MongoDbConnectionInfoPtrOutput) ConnectionString() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MongoDbConnectionInfo) *string {
@@ -28068,6 +29176,35 @@ func (o MongoDbConnectionInfoPtrOutput) ConnectionString() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Data source
+func (o MongoDbConnectionInfoPtrOutput) DataSource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MongoDbConnectionInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DataSource
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to encrypt the connection
+func (o MongoDbConnectionInfoPtrOutput) EncryptConnection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MongoDbConnectionInfo) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EncryptConnection
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o MongoDbConnectionInfoPtrOutput) EnforceSSL() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MongoDbConnectionInfo) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnforceSSL
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Password credential.
 func (o MongoDbConnectionInfoPtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MongoDbConnectionInfo) *string {
@@ -28076,6 +29213,56 @@ func (o MongoDbConnectionInfoPtrOutput) Password() pulumi.StringPtrOutput {
 		}
 		return v.Password
 	}).(pulumi.StringPtrOutput)
+}
+
+// port for server
+func (o MongoDbConnectionInfoPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MongoDbConnectionInfo) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// server brand version
+func (o MongoDbConnectionInfoPtrOutput) ServerBrandVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MongoDbConnectionInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServerBrandVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// name of the server
+func (o MongoDbConnectionInfoPtrOutput) ServerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MongoDbConnectionInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServerName
+	}).(pulumi.StringPtrOutput)
+}
+
+// server version
+func (o MongoDbConnectionInfoPtrOutput) ServerVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MongoDbConnectionInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServerVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to trust the server certificate
+func (o MongoDbConnectionInfoPtrOutput) TrustServerCertificate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MongoDbConnectionInfo) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.TrustServerCertificate
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Type of connection info
@@ -28101,15 +29288,47 @@ func (o MongoDbConnectionInfoPtrOutput) UserName() pulumi.StringPtrOutput {
 
 // Describes a connection to a MongoDB data source
 type MongoDbConnectionInfoResponse struct {
+	// Additional connection settings
+	AdditionalSettings *string `pulumi:"additionalSettings"`
+	// Authentication type to use for connection
+	Authentication *string `pulumi:"authentication"`
 	// A MongoDB connection string or blob container URL. The user name and password can be specified here or in the userName and password properties
 	ConnectionString string `pulumi:"connectionString"`
+	// Data source
+	DataSource *string `pulumi:"dataSource"`
+	// Whether to encrypt the connection
+	EncryptConnection *bool `pulumi:"encryptConnection"`
+	EnforceSSL        *bool `pulumi:"enforceSSL"`
 	// Password credential.
 	Password *string `pulumi:"password"`
+	// port for server
+	Port *int `pulumi:"port"`
+	// server brand version
+	ServerBrandVersion *string `pulumi:"serverBrandVersion"`
+	// name of the server
+	ServerName *string `pulumi:"serverName"`
+	// server version
+	ServerVersion *string `pulumi:"serverVersion"`
+	// Whether to trust the server certificate
+	TrustServerCertificate *bool `pulumi:"trustServerCertificate"`
 	// Type of connection info
 	// Expected value is 'MongoDbConnectionInfo'.
 	Type string `pulumi:"type"`
 	// User name
 	UserName *string `pulumi:"userName"`
+}
+
+// Defaults sets the appropriate defaults for MongoDbConnectionInfoResponse
+func (val *MongoDbConnectionInfoResponse) Defaults() *MongoDbConnectionInfoResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.TrustServerCertificate == nil {
+		trustServerCertificate_ := false
+		tmp.TrustServerCertificate = &trustServerCertificate_
+	}
+	return &tmp
 }
 
 // Describes a connection to a MongoDB data source
@@ -28127,14 +29346,63 @@ func (o MongoDbConnectionInfoResponseOutput) ToMongoDbConnectionInfoResponseOutp
 	return o
 }
 
+// Additional connection settings
+func (o MongoDbConnectionInfoResponseOutput) AdditionalSettings() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MongoDbConnectionInfoResponse) *string { return v.AdditionalSettings }).(pulumi.StringPtrOutput)
+}
+
+// Authentication type to use for connection
+func (o MongoDbConnectionInfoResponseOutput) Authentication() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MongoDbConnectionInfoResponse) *string { return v.Authentication }).(pulumi.StringPtrOutput)
+}
+
 // A MongoDB connection string or blob container URL. The user name and password can be specified here or in the userName and password properties
 func (o MongoDbConnectionInfoResponseOutput) ConnectionString() pulumi.StringOutput {
 	return o.ApplyT(func(v MongoDbConnectionInfoResponse) string { return v.ConnectionString }).(pulumi.StringOutput)
 }
 
+// Data source
+func (o MongoDbConnectionInfoResponseOutput) DataSource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MongoDbConnectionInfoResponse) *string { return v.DataSource }).(pulumi.StringPtrOutput)
+}
+
+// Whether to encrypt the connection
+func (o MongoDbConnectionInfoResponseOutput) EncryptConnection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MongoDbConnectionInfoResponse) *bool { return v.EncryptConnection }).(pulumi.BoolPtrOutput)
+}
+
+func (o MongoDbConnectionInfoResponseOutput) EnforceSSL() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MongoDbConnectionInfoResponse) *bool { return v.EnforceSSL }).(pulumi.BoolPtrOutput)
+}
+
 // Password credential.
 func (o MongoDbConnectionInfoResponseOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MongoDbConnectionInfoResponse) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// port for server
+func (o MongoDbConnectionInfoResponseOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MongoDbConnectionInfoResponse) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// server brand version
+func (o MongoDbConnectionInfoResponseOutput) ServerBrandVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MongoDbConnectionInfoResponse) *string { return v.ServerBrandVersion }).(pulumi.StringPtrOutput)
+}
+
+// name of the server
+func (o MongoDbConnectionInfoResponseOutput) ServerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MongoDbConnectionInfoResponse) *string { return v.ServerName }).(pulumi.StringPtrOutput)
+}
+
+// server version
+func (o MongoDbConnectionInfoResponseOutput) ServerVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MongoDbConnectionInfoResponse) *string { return v.ServerVersion }).(pulumi.StringPtrOutput)
+}
+
+// Whether to trust the server certificate
+func (o MongoDbConnectionInfoResponseOutput) TrustServerCertificate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MongoDbConnectionInfoResponse) *bool { return v.TrustServerCertificate }).(pulumi.BoolPtrOutput)
 }
 
 // Type of connection info
@@ -28172,6 +29440,26 @@ func (o MongoDbConnectionInfoResponsePtrOutput) Elem() MongoDbConnectionInfoResp
 	}).(MongoDbConnectionInfoResponseOutput)
 }
 
+// Additional connection settings
+func (o MongoDbConnectionInfoResponsePtrOutput) AdditionalSettings() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MongoDbConnectionInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalSettings
+	}).(pulumi.StringPtrOutput)
+}
+
+// Authentication type to use for connection
+func (o MongoDbConnectionInfoResponsePtrOutput) Authentication() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MongoDbConnectionInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Authentication
+	}).(pulumi.StringPtrOutput)
+}
+
 // A MongoDB connection string or blob container URL. The user name and password can be specified here or in the userName and password properties
 func (o MongoDbConnectionInfoResponsePtrOutput) ConnectionString() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MongoDbConnectionInfoResponse) *string {
@@ -28182,6 +29470,35 @@ func (o MongoDbConnectionInfoResponsePtrOutput) ConnectionString() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+// Data source
+func (o MongoDbConnectionInfoResponsePtrOutput) DataSource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MongoDbConnectionInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DataSource
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to encrypt the connection
+func (o MongoDbConnectionInfoResponsePtrOutput) EncryptConnection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MongoDbConnectionInfoResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EncryptConnection
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o MongoDbConnectionInfoResponsePtrOutput) EnforceSSL() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MongoDbConnectionInfoResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnforceSSL
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Password credential.
 func (o MongoDbConnectionInfoResponsePtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MongoDbConnectionInfoResponse) *string {
@@ -28190,6 +29507,56 @@ func (o MongoDbConnectionInfoResponsePtrOutput) Password() pulumi.StringPtrOutpu
 		}
 		return v.Password
 	}).(pulumi.StringPtrOutput)
+}
+
+// port for server
+func (o MongoDbConnectionInfoResponsePtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MongoDbConnectionInfoResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// server brand version
+func (o MongoDbConnectionInfoResponsePtrOutput) ServerBrandVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MongoDbConnectionInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServerBrandVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// name of the server
+func (o MongoDbConnectionInfoResponsePtrOutput) ServerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MongoDbConnectionInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServerName
+	}).(pulumi.StringPtrOutput)
+}
+
+// server version
+func (o MongoDbConnectionInfoResponsePtrOutput) ServerVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MongoDbConnectionInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServerVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to trust the server certificate
+func (o MongoDbConnectionInfoResponsePtrOutput) TrustServerCertificate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MongoDbConnectionInfoResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.TrustServerCertificate
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Type of connection info
@@ -28840,6 +30207,19 @@ type MongoDbMigrationSettings struct {
 	Throttling *MongoDbThrottlingSettings `pulumi:"throttling"`
 }
 
+// Defaults sets the appropriate defaults for MongoDbMigrationSettings
+func (val *MongoDbMigrationSettings) Defaults() *MongoDbMigrationSettings {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Source = *tmp.Source.Defaults()
+
+	tmp.Target = *tmp.Target.Defaults()
+
+	return &tmp
+}
+
 // MongoDbMigrationSettingsInput is an input type that accepts MongoDbMigrationSettingsArgs and MongoDbMigrationSettingsOutput values.
 // You can construct a concrete instance of `MongoDbMigrationSettingsInput` via:
 //
@@ -28867,6 +30247,15 @@ type MongoDbMigrationSettingsArgs struct {
 	Throttling MongoDbThrottlingSettingsPtrInput `pulumi:"throttling"`
 }
 
+// Defaults sets the appropriate defaults for MongoDbMigrationSettingsArgs
+func (val *MongoDbMigrationSettingsArgs) Defaults() *MongoDbMigrationSettingsArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+
+	return &tmp
+}
 func (MongoDbMigrationSettingsArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*MongoDbMigrationSettings)(nil)).Elem()
 }
@@ -29073,6 +30462,19 @@ type MongoDbMigrationSettingsResponse struct {
 	Target MongoDbConnectionInfoResponse `pulumi:"target"`
 	// Settings used to limit the resource usage of the migration
 	Throttling *MongoDbThrottlingSettingsResponse `pulumi:"throttling"`
+}
+
+// Defaults sets the appropriate defaults for MongoDbMigrationSettingsResponse
+func (val *MongoDbMigrationSettingsResponse) Defaults() *MongoDbMigrationSettingsResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Source = *tmp.Source.Defaults()
+
+	tmp.Target = *tmp.Target.Defaults()
+
+	return &tmp
 }
 
 // Describes how a MongoDB data migration should be performed
@@ -29450,7 +30852,7 @@ type MongoDbShardKeySetting struct {
 	// The fields within the shard key
 	Fields []MongoDbShardKeyField `pulumi:"fields"`
 	// Whether the shard key is unique
-	IsUnique bool `pulumi:"isUnique"`
+	IsUnique *bool `pulumi:"isUnique"`
 }
 
 // MongoDbShardKeySettingInput is an input type that accepts MongoDbShardKeySettingArgs and MongoDbShardKeySettingOutput values.
@@ -29469,7 +30871,7 @@ type MongoDbShardKeySettingArgs struct {
 	// The fields within the shard key
 	Fields MongoDbShardKeyFieldArrayInput `pulumi:"fields"`
 	// Whether the shard key is unique
-	IsUnique pulumi.BoolInput `pulumi:"isUnique"`
+	IsUnique pulumi.BoolPtrInput `pulumi:"isUnique"`
 }
 
 func (MongoDbShardKeySettingArgs) ElementType() reflect.Type {
@@ -29556,8 +30958,8 @@ func (o MongoDbShardKeySettingOutput) Fields() MongoDbShardKeyFieldArrayOutput {
 }
 
 // Whether the shard key is unique
-func (o MongoDbShardKeySettingOutput) IsUnique() pulumi.BoolOutput {
-	return o.ApplyT(func(v MongoDbShardKeySetting) bool { return v.IsUnique }).(pulumi.BoolOutput)
+func (o MongoDbShardKeySettingOutput) IsUnique() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MongoDbShardKeySetting) *bool { return v.IsUnique }).(pulumi.BoolPtrOutput)
 }
 
 type MongoDbShardKeySettingPtrOutput struct{ *pulumi.OutputState }
@@ -29600,7 +31002,7 @@ func (o MongoDbShardKeySettingPtrOutput) IsUnique() pulumi.BoolPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.IsUnique
+		return v.IsUnique
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -29609,7 +31011,7 @@ type MongoDbShardKeySettingResponse struct {
 	// The fields within the shard key
 	Fields []MongoDbShardKeyFieldResponse `pulumi:"fields"`
 	// Whether the shard key is unique
-	IsUnique bool `pulumi:"isUnique"`
+	IsUnique *bool `pulumi:"isUnique"`
 }
 
 // Describes a MongoDB shard key
@@ -29633,8 +31035,8 @@ func (o MongoDbShardKeySettingResponseOutput) Fields() MongoDbShardKeyFieldRespo
 }
 
 // Whether the shard key is unique
-func (o MongoDbShardKeySettingResponseOutput) IsUnique() pulumi.BoolOutput {
-	return o.ApplyT(func(v MongoDbShardKeySettingResponse) bool { return v.IsUnique }).(pulumi.BoolOutput)
+func (o MongoDbShardKeySettingResponseOutput) IsUnique() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MongoDbShardKeySettingResponse) *bool { return v.IsUnique }).(pulumi.BoolPtrOutput)
 }
 
 type MongoDbShardKeySettingResponsePtrOutput struct{ *pulumi.OutputState }
@@ -29677,7 +31079,7 @@ func (o MongoDbShardKeySettingResponsePtrOutput) IsUnique() pulumi.BoolPtrOutput
 		if v == nil {
 			return nil
 		}
-		return &v.IsUnique
+		return v.IsUnique
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -30212,6 +31614,12 @@ func (o MongoMigrationProgressDetailsResponseOutput) SourceDocumentCount() pulum
 
 // Information for connecting to MySQL server
 type MySqlConnectionInfo struct {
+	// Additional connection settings
+	AdditionalSettings *string `pulumi:"additionalSettings"`
+	// Authentication type to use for connection
+	Authentication *string `pulumi:"authentication"`
+	// Data source
+	DataSource *string `pulumi:"dataSource"`
 	// Whether to encrypt the connection
 	EncryptConnection *bool `pulumi:"encryptConnection"`
 	// Password credential.
@@ -30253,6 +31661,12 @@ type MySqlConnectionInfoInput interface {
 
 // Information for connecting to MySQL server
 type MySqlConnectionInfoArgs struct {
+	// Additional connection settings
+	AdditionalSettings pulumi.StringPtrInput `pulumi:"additionalSettings"`
+	// Authentication type to use for connection
+	Authentication pulumi.StringPtrInput `pulumi:"authentication"`
+	// Data source
+	DataSource pulumi.StringPtrInput `pulumi:"dataSource"`
 	// Whether to encrypt the connection
 	EncryptConnection pulumi.BoolPtrInput `pulumi:"encryptConnection"`
 	// Password credential.
@@ -30357,6 +31771,21 @@ func (o MySqlConnectionInfoOutput) ToMySqlConnectionInfoPtrOutputWithContext(ctx
 	}).(MySqlConnectionInfoPtrOutput)
 }
 
+// Additional connection settings
+func (o MySqlConnectionInfoOutput) AdditionalSettings() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MySqlConnectionInfo) *string { return v.AdditionalSettings }).(pulumi.StringPtrOutput)
+}
+
+// Authentication type to use for connection
+func (o MySqlConnectionInfoOutput) Authentication() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MySqlConnectionInfo) *string { return v.Authentication }).(pulumi.StringPtrOutput)
+}
+
+// Data source
+func (o MySqlConnectionInfoOutput) DataSource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MySqlConnectionInfo) *string { return v.DataSource }).(pulumi.StringPtrOutput)
+}
+
 // Whether to encrypt the connection
 func (o MySqlConnectionInfoOutput) EncryptConnection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v MySqlConnectionInfo) *bool { return v.EncryptConnection }).(pulumi.BoolPtrOutput)
@@ -30410,6 +31839,36 @@ func (o MySqlConnectionInfoPtrOutput) Elem() MySqlConnectionInfoOutput {
 		var ret MySqlConnectionInfo
 		return ret
 	}).(MySqlConnectionInfoOutput)
+}
+
+// Additional connection settings
+func (o MySqlConnectionInfoPtrOutput) AdditionalSettings() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MySqlConnectionInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalSettings
+	}).(pulumi.StringPtrOutput)
+}
+
+// Authentication type to use for connection
+func (o MySqlConnectionInfoPtrOutput) Authentication() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MySqlConnectionInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Authentication
+	}).(pulumi.StringPtrOutput)
+}
+
+// Data source
+func (o MySqlConnectionInfoPtrOutput) DataSource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MySqlConnectionInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DataSource
+	}).(pulumi.StringPtrOutput)
 }
 
 // Whether to encrypt the connection
@@ -30475,6 +31934,12 @@ func (o MySqlConnectionInfoPtrOutput) UserName() pulumi.StringPtrOutput {
 
 // Information for connecting to MySQL server
 type MySqlConnectionInfoResponse struct {
+	// Additional connection settings
+	AdditionalSettings *string `pulumi:"additionalSettings"`
+	// Authentication type to use for connection
+	Authentication *string `pulumi:"authentication"`
+	// Data source
+	DataSource *string `pulumi:"dataSource"`
 	// Whether to encrypt the connection
 	EncryptConnection *bool `pulumi:"encryptConnection"`
 	// Password credential.
@@ -30516,6 +31981,21 @@ func (o MySqlConnectionInfoResponseOutput) ToMySqlConnectionInfoResponseOutput()
 
 func (o MySqlConnectionInfoResponseOutput) ToMySqlConnectionInfoResponseOutputWithContext(ctx context.Context) MySqlConnectionInfoResponseOutput {
 	return o
+}
+
+// Additional connection settings
+func (o MySqlConnectionInfoResponseOutput) AdditionalSettings() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MySqlConnectionInfoResponse) *string { return v.AdditionalSettings }).(pulumi.StringPtrOutput)
+}
+
+// Authentication type to use for connection
+func (o MySqlConnectionInfoResponseOutput) Authentication() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MySqlConnectionInfoResponse) *string { return v.Authentication }).(pulumi.StringPtrOutput)
+}
+
+// Data source
+func (o MySqlConnectionInfoResponseOutput) DataSource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MySqlConnectionInfoResponse) *string { return v.DataSource }).(pulumi.StringPtrOutput)
 }
 
 // Whether to encrypt the connection
@@ -30571,6 +32051,36 @@ func (o MySqlConnectionInfoResponsePtrOutput) Elem() MySqlConnectionInfoResponse
 		var ret MySqlConnectionInfoResponse
 		return ret
 	}).(MySqlConnectionInfoResponseOutput)
+}
+
+// Additional connection settings
+func (o MySqlConnectionInfoResponsePtrOutput) AdditionalSettings() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MySqlConnectionInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalSettings
+	}).(pulumi.StringPtrOutput)
+}
+
+// Authentication type to use for connection
+func (o MySqlConnectionInfoResponsePtrOutput) Authentication() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MySqlConnectionInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Authentication
+	}).(pulumi.StringPtrOutput)
+}
+
+// Data source
+func (o MySqlConnectionInfoResponsePtrOutput) DataSource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MySqlConnectionInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DataSource
+	}).(pulumi.StringPtrOutput)
 }
 
 // Whether to encrypt the connection
@@ -30796,10 +32306,18 @@ func (o ODataErrorResponseArrayOutput) Index(i pulumi.IntInput) ODataErrorRespon
 
 // Information for connecting to Oracle server
 type OracleConnectionInfo struct {
+	// Authentication type to use for connection
+	Authentication *string `pulumi:"authentication"`
 	// EZConnect or TNSName connection string.
 	DataSource string `pulumi:"dataSource"`
 	// Password credential.
 	Password *string `pulumi:"password"`
+	// port for server
+	Port *int `pulumi:"port"`
+	// name of the server
+	ServerName *string `pulumi:"serverName"`
+	// server version
+	ServerVersion *string `pulumi:"serverVersion"`
 	// Type of connection info
 	// Expected value is 'OracleConnectionInfo'.
 	Type string `pulumi:"type"`
@@ -30820,10 +32338,18 @@ type OracleConnectionInfoInput interface {
 
 // Information for connecting to Oracle server
 type OracleConnectionInfoArgs struct {
+	// Authentication type to use for connection
+	Authentication pulumi.StringPtrInput `pulumi:"authentication"`
 	// EZConnect or TNSName connection string.
 	DataSource pulumi.StringInput `pulumi:"dataSource"`
 	// Password credential.
 	Password pulumi.StringPtrInput `pulumi:"password"`
+	// port for server
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// name of the server
+	ServerName pulumi.StringPtrInput `pulumi:"serverName"`
+	// server version
+	ServerVersion pulumi.StringPtrInput `pulumi:"serverVersion"`
 	// Type of connection info
 	// Expected value is 'OracleConnectionInfo'.
 	Type pulumi.StringInput `pulumi:"type"`
@@ -30909,6 +32435,11 @@ func (o OracleConnectionInfoOutput) ToOracleConnectionInfoPtrOutputWithContext(c
 	}).(OracleConnectionInfoPtrOutput)
 }
 
+// Authentication type to use for connection
+func (o OracleConnectionInfoOutput) Authentication() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OracleConnectionInfo) *string { return v.Authentication }).(pulumi.StringPtrOutput)
+}
+
 // EZConnect or TNSName connection string.
 func (o OracleConnectionInfoOutput) DataSource() pulumi.StringOutput {
 	return o.ApplyT(func(v OracleConnectionInfo) string { return v.DataSource }).(pulumi.StringOutput)
@@ -30917,6 +32448,21 @@ func (o OracleConnectionInfoOutput) DataSource() pulumi.StringOutput {
 // Password credential.
 func (o OracleConnectionInfoOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OracleConnectionInfo) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// port for server
+func (o OracleConnectionInfoOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OracleConnectionInfo) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// name of the server
+func (o OracleConnectionInfoOutput) ServerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OracleConnectionInfo) *string { return v.ServerName }).(pulumi.StringPtrOutput)
+}
+
+// server version
+func (o OracleConnectionInfoOutput) ServerVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OracleConnectionInfo) *string { return v.ServerVersion }).(pulumi.StringPtrOutput)
 }
 
 // Type of connection info
@@ -30954,6 +32500,16 @@ func (o OracleConnectionInfoPtrOutput) Elem() OracleConnectionInfoOutput {
 	}).(OracleConnectionInfoOutput)
 }
 
+// Authentication type to use for connection
+func (o OracleConnectionInfoPtrOutput) Authentication() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OracleConnectionInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Authentication
+	}).(pulumi.StringPtrOutput)
+}
+
 // EZConnect or TNSName connection string.
 func (o OracleConnectionInfoPtrOutput) DataSource() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OracleConnectionInfo) *string {
@@ -30971,6 +32527,36 @@ func (o OracleConnectionInfoPtrOutput) Password() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// port for server
+func (o OracleConnectionInfoPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OracleConnectionInfo) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// name of the server
+func (o OracleConnectionInfoPtrOutput) ServerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OracleConnectionInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServerName
+	}).(pulumi.StringPtrOutput)
+}
+
+// server version
+func (o OracleConnectionInfoPtrOutput) ServerVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OracleConnectionInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServerVersion
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -30997,10 +32583,18 @@ func (o OracleConnectionInfoPtrOutput) UserName() pulumi.StringPtrOutput {
 
 // Information for connecting to Oracle server
 type OracleConnectionInfoResponse struct {
+	// Authentication type to use for connection
+	Authentication *string `pulumi:"authentication"`
 	// EZConnect or TNSName connection string.
 	DataSource string `pulumi:"dataSource"`
 	// Password credential.
 	Password *string `pulumi:"password"`
+	// port for server
+	Port *int `pulumi:"port"`
+	// name of the server
+	ServerName *string `pulumi:"serverName"`
+	// server version
+	ServerVersion *string `pulumi:"serverVersion"`
 	// Type of connection info
 	// Expected value is 'OracleConnectionInfo'.
 	Type string `pulumi:"type"`
@@ -31023,6 +32617,11 @@ func (o OracleConnectionInfoResponseOutput) ToOracleConnectionInfoResponseOutput
 	return o
 }
 
+// Authentication type to use for connection
+func (o OracleConnectionInfoResponseOutput) Authentication() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OracleConnectionInfoResponse) *string { return v.Authentication }).(pulumi.StringPtrOutput)
+}
+
 // EZConnect or TNSName connection string.
 func (o OracleConnectionInfoResponseOutput) DataSource() pulumi.StringOutput {
 	return o.ApplyT(func(v OracleConnectionInfoResponse) string { return v.DataSource }).(pulumi.StringOutput)
@@ -31031,6 +32630,21 @@ func (o OracleConnectionInfoResponseOutput) DataSource() pulumi.StringOutput {
 // Password credential.
 func (o OracleConnectionInfoResponseOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OracleConnectionInfoResponse) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// port for server
+func (o OracleConnectionInfoResponseOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OracleConnectionInfoResponse) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// name of the server
+func (o OracleConnectionInfoResponseOutput) ServerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OracleConnectionInfoResponse) *string { return v.ServerName }).(pulumi.StringPtrOutput)
+}
+
+// server version
+func (o OracleConnectionInfoResponseOutput) ServerVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OracleConnectionInfoResponse) *string { return v.ServerVersion }).(pulumi.StringPtrOutput)
 }
 
 // Type of connection info
@@ -31068,6 +32682,16 @@ func (o OracleConnectionInfoResponsePtrOutput) Elem() OracleConnectionInfoRespon
 	}).(OracleConnectionInfoResponseOutput)
 }
 
+// Authentication type to use for connection
+func (o OracleConnectionInfoResponsePtrOutput) Authentication() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OracleConnectionInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Authentication
+	}).(pulumi.StringPtrOutput)
+}
+
 // EZConnect or TNSName connection string.
 func (o OracleConnectionInfoResponsePtrOutput) DataSource() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OracleConnectionInfoResponse) *string {
@@ -31085,6 +32709,36 @@ func (o OracleConnectionInfoResponsePtrOutput) Password() pulumi.StringPtrOutput
 			return nil
 		}
 		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// port for server
+func (o OracleConnectionInfoResponsePtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OracleConnectionInfoResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// name of the server
+func (o OracleConnectionInfoResponsePtrOutput) ServerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OracleConnectionInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServerName
+	}).(pulumi.StringPtrOutput)
+}
+
+// server version
+func (o OracleConnectionInfoResponsePtrOutput) ServerVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OracleConnectionInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServerVersion
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -31164,6 +32818,12 @@ func (o OrphanedUserInfoResponseArrayOutput) Index(i pulumi.IntInput) OrphanedUs
 
 // Information for connecting to PostgreSQL server
 type PostgreSqlConnectionInfo struct {
+	// Additional connection settings
+	AdditionalSettings *string `pulumi:"additionalSettings"`
+	// Authentication type to use for connection
+	Authentication *string `pulumi:"authentication"`
+	// Data source
+	DataSource *string `pulumi:"dataSource"`
 	// Name of the database
 	DatabaseName *string `pulumi:"databaseName"`
 	// Whether to encrypt the connection
@@ -31172,8 +32832,12 @@ type PostgreSqlConnectionInfo struct {
 	Password *string `pulumi:"password"`
 	// Port for Server
 	Port int `pulumi:"port"`
+	// server brand version
+	ServerBrandVersion *string `pulumi:"serverBrandVersion"`
 	// Name of the server
 	ServerName string `pulumi:"serverName"`
+	// server version
+	ServerVersion *string `pulumi:"serverVersion"`
 	// Whether to trust the server certificate
 	TrustServerCertificate *bool `pulumi:"trustServerCertificate"`
 	// Type of connection info
@@ -31213,6 +32877,12 @@ type PostgreSqlConnectionInfoInput interface {
 
 // Information for connecting to PostgreSQL server
 type PostgreSqlConnectionInfoArgs struct {
+	// Additional connection settings
+	AdditionalSettings pulumi.StringPtrInput `pulumi:"additionalSettings"`
+	// Authentication type to use for connection
+	Authentication pulumi.StringPtrInput `pulumi:"authentication"`
+	// Data source
+	DataSource pulumi.StringPtrInput `pulumi:"dataSource"`
 	// Name of the database
 	DatabaseName pulumi.StringPtrInput `pulumi:"databaseName"`
 	// Whether to encrypt the connection
@@ -31221,8 +32891,12 @@ type PostgreSqlConnectionInfoArgs struct {
 	Password pulumi.StringPtrInput `pulumi:"password"`
 	// Port for Server
 	Port pulumi.IntInput `pulumi:"port"`
+	// server brand version
+	ServerBrandVersion pulumi.StringPtrInput `pulumi:"serverBrandVersion"`
 	// Name of the server
 	ServerName pulumi.StringInput `pulumi:"serverName"`
+	// server version
+	ServerVersion pulumi.StringPtrInput `pulumi:"serverVersion"`
 	// Whether to trust the server certificate
 	TrustServerCertificate pulumi.BoolPtrInput `pulumi:"trustServerCertificate"`
 	// Type of connection info
@@ -31324,6 +32998,21 @@ func (o PostgreSqlConnectionInfoOutput) ToPostgreSqlConnectionInfoPtrOutputWithC
 	}).(PostgreSqlConnectionInfoPtrOutput)
 }
 
+// Additional connection settings
+func (o PostgreSqlConnectionInfoOutput) AdditionalSettings() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PostgreSqlConnectionInfo) *string { return v.AdditionalSettings }).(pulumi.StringPtrOutput)
+}
+
+// Authentication type to use for connection
+func (o PostgreSqlConnectionInfoOutput) Authentication() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PostgreSqlConnectionInfo) *string { return v.Authentication }).(pulumi.StringPtrOutput)
+}
+
+// Data source
+func (o PostgreSqlConnectionInfoOutput) DataSource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PostgreSqlConnectionInfo) *string { return v.DataSource }).(pulumi.StringPtrOutput)
+}
+
 // Name of the database
 func (o PostgreSqlConnectionInfoOutput) DatabaseName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PostgreSqlConnectionInfo) *string { return v.DatabaseName }).(pulumi.StringPtrOutput)
@@ -31344,9 +33033,19 @@ func (o PostgreSqlConnectionInfoOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v PostgreSqlConnectionInfo) int { return v.Port }).(pulumi.IntOutput)
 }
 
+// server brand version
+func (o PostgreSqlConnectionInfoOutput) ServerBrandVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PostgreSqlConnectionInfo) *string { return v.ServerBrandVersion }).(pulumi.StringPtrOutput)
+}
+
 // Name of the server
 func (o PostgreSqlConnectionInfoOutput) ServerName() pulumi.StringOutput {
 	return o.ApplyT(func(v PostgreSqlConnectionInfo) string { return v.ServerName }).(pulumi.StringOutput)
+}
+
+// server version
+func (o PostgreSqlConnectionInfoOutput) ServerVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PostgreSqlConnectionInfo) *string { return v.ServerVersion }).(pulumi.StringPtrOutput)
 }
 
 // Whether to trust the server certificate
@@ -31389,6 +33088,36 @@ func (o PostgreSqlConnectionInfoPtrOutput) Elem() PostgreSqlConnectionInfoOutput
 	}).(PostgreSqlConnectionInfoOutput)
 }
 
+// Additional connection settings
+func (o PostgreSqlConnectionInfoPtrOutput) AdditionalSettings() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PostgreSqlConnectionInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalSettings
+	}).(pulumi.StringPtrOutput)
+}
+
+// Authentication type to use for connection
+func (o PostgreSqlConnectionInfoPtrOutput) Authentication() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PostgreSqlConnectionInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Authentication
+	}).(pulumi.StringPtrOutput)
+}
+
+// Data source
+func (o PostgreSqlConnectionInfoPtrOutput) DataSource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PostgreSqlConnectionInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DataSource
+	}).(pulumi.StringPtrOutput)
+}
+
 // Name of the database
 func (o PostgreSqlConnectionInfoPtrOutput) DatabaseName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PostgreSqlConnectionInfo) *string {
@@ -31429,6 +33158,16 @@ func (o PostgreSqlConnectionInfoPtrOutput) Port() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// server brand version
+func (o PostgreSqlConnectionInfoPtrOutput) ServerBrandVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PostgreSqlConnectionInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServerBrandVersion
+	}).(pulumi.StringPtrOutput)
+}
+
 // Name of the server
 func (o PostgreSqlConnectionInfoPtrOutput) ServerName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PostgreSqlConnectionInfo) *string {
@@ -31436,6 +33175,16 @@ func (o PostgreSqlConnectionInfoPtrOutput) ServerName() pulumi.StringPtrOutput {
 			return nil
 		}
 		return &v.ServerName
+	}).(pulumi.StringPtrOutput)
+}
+
+// server version
+func (o PostgreSqlConnectionInfoPtrOutput) ServerVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PostgreSqlConnectionInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServerVersion
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -31472,6 +33221,12 @@ func (o PostgreSqlConnectionInfoPtrOutput) UserName() pulumi.StringPtrOutput {
 
 // Information for connecting to PostgreSQL server
 type PostgreSqlConnectionInfoResponse struct {
+	// Additional connection settings
+	AdditionalSettings *string `pulumi:"additionalSettings"`
+	// Authentication type to use for connection
+	Authentication *string `pulumi:"authentication"`
+	// Data source
+	DataSource *string `pulumi:"dataSource"`
 	// Name of the database
 	DatabaseName *string `pulumi:"databaseName"`
 	// Whether to encrypt the connection
@@ -31480,8 +33235,12 @@ type PostgreSqlConnectionInfoResponse struct {
 	Password *string `pulumi:"password"`
 	// Port for Server
 	Port int `pulumi:"port"`
+	// server brand version
+	ServerBrandVersion *string `pulumi:"serverBrandVersion"`
 	// Name of the server
 	ServerName string `pulumi:"serverName"`
+	// server version
+	ServerVersion *string `pulumi:"serverVersion"`
 	// Whether to trust the server certificate
 	TrustServerCertificate *bool `pulumi:"trustServerCertificate"`
 	// Type of connection info
@@ -31523,6 +33282,21 @@ func (o PostgreSqlConnectionInfoResponseOutput) ToPostgreSqlConnectionInfoRespon
 	return o
 }
 
+// Additional connection settings
+func (o PostgreSqlConnectionInfoResponseOutput) AdditionalSettings() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PostgreSqlConnectionInfoResponse) *string { return v.AdditionalSettings }).(pulumi.StringPtrOutput)
+}
+
+// Authentication type to use for connection
+func (o PostgreSqlConnectionInfoResponseOutput) Authentication() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PostgreSqlConnectionInfoResponse) *string { return v.Authentication }).(pulumi.StringPtrOutput)
+}
+
+// Data source
+func (o PostgreSqlConnectionInfoResponseOutput) DataSource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PostgreSqlConnectionInfoResponse) *string { return v.DataSource }).(pulumi.StringPtrOutput)
+}
+
 // Name of the database
 func (o PostgreSqlConnectionInfoResponseOutput) DatabaseName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PostgreSqlConnectionInfoResponse) *string { return v.DatabaseName }).(pulumi.StringPtrOutput)
@@ -31543,9 +33317,19 @@ func (o PostgreSqlConnectionInfoResponseOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v PostgreSqlConnectionInfoResponse) int { return v.Port }).(pulumi.IntOutput)
 }
 
+// server brand version
+func (o PostgreSqlConnectionInfoResponseOutput) ServerBrandVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PostgreSqlConnectionInfoResponse) *string { return v.ServerBrandVersion }).(pulumi.StringPtrOutput)
+}
+
 // Name of the server
 func (o PostgreSqlConnectionInfoResponseOutput) ServerName() pulumi.StringOutput {
 	return o.ApplyT(func(v PostgreSqlConnectionInfoResponse) string { return v.ServerName }).(pulumi.StringOutput)
+}
+
+// server version
+func (o PostgreSqlConnectionInfoResponseOutput) ServerVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PostgreSqlConnectionInfoResponse) *string { return v.ServerVersion }).(pulumi.StringPtrOutput)
 }
 
 // Whether to trust the server certificate
@@ -31588,6 +33372,36 @@ func (o PostgreSqlConnectionInfoResponsePtrOutput) Elem() PostgreSqlConnectionIn
 	}).(PostgreSqlConnectionInfoResponseOutput)
 }
 
+// Additional connection settings
+func (o PostgreSqlConnectionInfoResponsePtrOutput) AdditionalSettings() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PostgreSqlConnectionInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalSettings
+	}).(pulumi.StringPtrOutput)
+}
+
+// Authentication type to use for connection
+func (o PostgreSqlConnectionInfoResponsePtrOutput) Authentication() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PostgreSqlConnectionInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Authentication
+	}).(pulumi.StringPtrOutput)
+}
+
+// Data source
+func (o PostgreSqlConnectionInfoResponsePtrOutput) DataSource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PostgreSqlConnectionInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DataSource
+	}).(pulumi.StringPtrOutput)
+}
+
 // Name of the database
 func (o PostgreSqlConnectionInfoResponsePtrOutput) DatabaseName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PostgreSqlConnectionInfoResponse) *string {
@@ -31628,6 +33442,16 @@ func (o PostgreSqlConnectionInfoResponsePtrOutput) Port() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// server brand version
+func (o PostgreSqlConnectionInfoResponsePtrOutput) ServerBrandVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PostgreSqlConnectionInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServerBrandVersion
+	}).(pulumi.StringPtrOutput)
+}
+
 // Name of the server
 func (o PostgreSqlConnectionInfoResponsePtrOutput) ServerName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PostgreSqlConnectionInfoResponse) *string {
@@ -31635,6 +33459,16 @@ func (o PostgreSqlConnectionInfoResponsePtrOutput) ServerName() pulumi.StringPtr
 			return nil
 		}
 		return &v.ServerName
+	}).(pulumi.StringPtrOutput)
+}
+
+// server version
+func (o PostgreSqlConnectionInfoResponsePtrOutput) ServerVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PostgreSqlConnectionInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServerVersion
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -32854,6 +34688,16 @@ type SqlConnectionInfo struct {
 	Password *string `pulumi:"password"`
 	// Server platform type for connection
 	Platform *string `pulumi:"platform"`
+	// Port for Server
+	Port *int `pulumi:"port"`
+	// Represents the ID of an HTTP resource represented by an Azure resource provider.
+	ResourceId *string `pulumi:"resourceId"`
+	// server brand version
+	ServerBrandVersion *string `pulumi:"serverBrandVersion"`
+	// name of the server
+	ServerName *string `pulumi:"serverName"`
+	// server version
+	ServerVersion *string `pulumi:"serverVersion"`
 	// Whether to trust the server certificate
 	TrustServerCertificate *bool `pulumi:"trustServerCertificate"`
 	// Type of connection info
@@ -32905,6 +34749,16 @@ type SqlConnectionInfoArgs struct {
 	Password pulumi.StringPtrInput `pulumi:"password"`
 	// Server platform type for connection
 	Platform pulumi.StringPtrInput `pulumi:"platform"`
+	// Port for Server
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// Represents the ID of an HTTP resource represented by an Azure resource provider.
+	ResourceId pulumi.StringPtrInput `pulumi:"resourceId"`
+	// server brand version
+	ServerBrandVersion pulumi.StringPtrInput `pulumi:"serverBrandVersion"`
+	// name of the server
+	ServerName pulumi.StringPtrInput `pulumi:"serverName"`
+	// server version
+	ServerVersion pulumi.StringPtrInput `pulumi:"serverVersion"`
 	// Whether to trust the server certificate
 	TrustServerCertificate pulumi.BoolPtrInput `pulumi:"trustServerCertificate"`
 	// Type of connection info
@@ -33036,6 +34890,31 @@ func (o SqlConnectionInfoOutput) Platform() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SqlConnectionInfo) *string { return v.Platform }).(pulumi.StringPtrOutput)
 }
 
+// Port for Server
+func (o SqlConnectionInfoOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SqlConnectionInfo) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// Represents the ID of an HTTP resource represented by an Azure resource provider.
+func (o SqlConnectionInfoOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlConnectionInfo) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
+}
+
+// server brand version
+func (o SqlConnectionInfoOutput) ServerBrandVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlConnectionInfo) *string { return v.ServerBrandVersion }).(pulumi.StringPtrOutput)
+}
+
+// name of the server
+func (o SqlConnectionInfoOutput) ServerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlConnectionInfo) *string { return v.ServerName }).(pulumi.StringPtrOutput)
+}
+
+// server version
+func (o SqlConnectionInfoOutput) ServerVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlConnectionInfo) *string { return v.ServerVersion }).(pulumi.StringPtrOutput)
+}
+
 // Whether to trust the server certificate
 func (o SqlConnectionInfoOutput) TrustServerCertificate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SqlConnectionInfo) *bool { return v.TrustServerCertificate }).(pulumi.BoolPtrOutput)
@@ -33136,6 +35015,56 @@ func (o SqlConnectionInfoPtrOutput) Platform() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Port for Server
+func (o SqlConnectionInfoPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SqlConnectionInfo) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// Represents the ID of an HTTP resource represented by an Azure resource provider.
+func (o SqlConnectionInfoPtrOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlConnectionInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// server brand version
+func (o SqlConnectionInfoPtrOutput) ServerBrandVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlConnectionInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServerBrandVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// name of the server
+func (o SqlConnectionInfoPtrOutput) ServerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlConnectionInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServerName
+	}).(pulumi.StringPtrOutput)
+}
+
+// server version
+func (o SqlConnectionInfoPtrOutput) ServerVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlConnectionInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServerVersion
+	}).(pulumi.StringPtrOutput)
+}
+
 // Whether to trust the server certificate
 func (o SqlConnectionInfoPtrOutput) TrustServerCertificate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SqlConnectionInfo) *bool {
@@ -33181,6 +35110,16 @@ type SqlConnectionInfoResponse struct {
 	Password *string `pulumi:"password"`
 	// Server platform type for connection
 	Platform *string `pulumi:"platform"`
+	// Port for Server
+	Port *int `pulumi:"port"`
+	// Represents the ID of an HTTP resource represented by an Azure resource provider.
+	ResourceId *string `pulumi:"resourceId"`
+	// server brand version
+	ServerBrandVersion *string `pulumi:"serverBrandVersion"`
+	// name of the server
+	ServerName *string `pulumi:"serverName"`
+	// server version
+	ServerVersion *string `pulumi:"serverVersion"`
 	// Whether to trust the server certificate
 	TrustServerCertificate *bool `pulumi:"trustServerCertificate"`
 	// Type of connection info
@@ -33250,6 +35189,31 @@ func (o SqlConnectionInfoResponseOutput) Password() pulumi.StringPtrOutput {
 // Server platform type for connection
 func (o SqlConnectionInfoResponseOutput) Platform() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SqlConnectionInfoResponse) *string { return v.Platform }).(pulumi.StringPtrOutput)
+}
+
+// Port for Server
+func (o SqlConnectionInfoResponseOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SqlConnectionInfoResponse) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// Represents the ID of an HTTP resource represented by an Azure resource provider.
+func (o SqlConnectionInfoResponseOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlConnectionInfoResponse) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
+}
+
+// server brand version
+func (o SqlConnectionInfoResponseOutput) ServerBrandVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlConnectionInfoResponse) *string { return v.ServerBrandVersion }).(pulumi.StringPtrOutput)
+}
+
+// name of the server
+func (o SqlConnectionInfoResponseOutput) ServerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlConnectionInfoResponse) *string { return v.ServerName }).(pulumi.StringPtrOutput)
+}
+
+// server version
+func (o SqlConnectionInfoResponseOutput) ServerVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlConnectionInfoResponse) *string { return v.ServerVersion }).(pulumi.StringPtrOutput)
 }
 
 // Whether to trust the server certificate
@@ -33349,6 +35313,56 @@ func (o SqlConnectionInfoResponsePtrOutput) Platform() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Platform
+	}).(pulumi.StringPtrOutput)
+}
+
+// Port for Server
+func (o SqlConnectionInfoResponsePtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SqlConnectionInfoResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// Represents the ID of an HTTP resource represented by an Azure resource provider.
+func (o SqlConnectionInfoResponsePtrOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlConnectionInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// server brand version
+func (o SqlConnectionInfoResponsePtrOutput) ServerBrandVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlConnectionInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServerBrandVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// name of the server
+func (o SqlConnectionInfoResponsePtrOutput) ServerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlConnectionInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServerName
+	}).(pulumi.StringPtrOutput)
+}
+
+// server version
+func (o SqlConnectionInfoResponsePtrOutput) ServerVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlConnectionInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServerVersion
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -33837,7 +35851,7 @@ type SsisMigrationInfo struct {
 	EnvironmentOverwriteOption *string `pulumi:"environmentOverwriteOption"`
 	// The overwrite option for the SSIS project migration
 	ProjectOverwriteOption *string `pulumi:"projectOverwriteOption"`
-	// The SSIS store type of source, only SSIS catalog is supported now in DMS
+	// The SSIS store type of source, only SSIS catalog is supported now in DMS (classic)
 	SsisStoreType *string `pulumi:"ssisStoreType"`
 }
 
@@ -33858,7 +35872,7 @@ type SsisMigrationInfoArgs struct {
 	EnvironmentOverwriteOption pulumi.StringPtrInput `pulumi:"environmentOverwriteOption"`
 	// The overwrite option for the SSIS project migration
 	ProjectOverwriteOption pulumi.StringPtrInput `pulumi:"projectOverwriteOption"`
-	// The SSIS store type of source, only SSIS catalog is supported now in DMS
+	// The SSIS store type of source, only SSIS catalog is supported now in DMS (classic)
 	SsisStoreType pulumi.StringPtrInput `pulumi:"ssisStoreType"`
 }
 
@@ -33950,7 +35964,7 @@ func (o SsisMigrationInfoOutput) ProjectOverwriteOption() pulumi.StringPtrOutput
 	return o.ApplyT(func(v SsisMigrationInfo) *string { return v.ProjectOverwriteOption }).(pulumi.StringPtrOutput)
 }
 
-// The SSIS store type of source, only SSIS catalog is supported now in DMS
+// The SSIS store type of source, only SSIS catalog is supported now in DMS (classic)
 func (o SsisMigrationInfoOutput) SsisStoreType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SsisMigrationInfo) *string { return v.SsisStoreType }).(pulumi.StringPtrOutput)
 }
@@ -33999,7 +36013,7 @@ func (o SsisMigrationInfoPtrOutput) ProjectOverwriteOption() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// The SSIS store type of source, only SSIS catalog is supported now in DMS
+// The SSIS store type of source, only SSIS catalog is supported now in DMS (classic)
 func (o SsisMigrationInfoPtrOutput) SsisStoreType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SsisMigrationInfo) *string {
 		if v == nil {
@@ -34015,7 +36029,7 @@ type SsisMigrationInfoResponse struct {
 	EnvironmentOverwriteOption *string `pulumi:"environmentOverwriteOption"`
 	// The overwrite option for the SSIS project migration
 	ProjectOverwriteOption *string `pulumi:"projectOverwriteOption"`
-	// The SSIS store type of source, only SSIS catalog is supported now in DMS
+	// The SSIS store type of source, only SSIS catalog is supported now in DMS (classic)
 	SsisStoreType *string `pulumi:"ssisStoreType"`
 }
 
@@ -34044,7 +36058,7 @@ func (o SsisMigrationInfoResponseOutput) ProjectOverwriteOption() pulumi.StringP
 	return o.ApplyT(func(v SsisMigrationInfoResponse) *string { return v.ProjectOverwriteOption }).(pulumi.StringPtrOutput)
 }
 
-// The SSIS store type of source, only SSIS catalog is supported now in DMS
+// The SSIS store type of source, only SSIS catalog is supported now in DMS (classic)
 func (o SsisMigrationInfoResponseOutput) SsisStoreType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SsisMigrationInfoResponse) *string { return v.SsisStoreType }).(pulumi.StringPtrOutput)
 }
@@ -34093,7 +36107,7 @@ func (o SsisMigrationInfoResponsePtrOutput) ProjectOverwriteOption() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// The SSIS store type of source, only SSIS catalog is supported now in DMS
+// The SSIS store type of source, only SSIS catalog is supported now in DMS (classic)
 func (o SsisMigrationInfoResponsePtrOutput) SsisStoreType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SsisMigrationInfoResponse) *string {
 		if v == nil {
@@ -34225,23 +36239,15 @@ func (o SyncMigrationDatabaseErrorEventResponseArrayOutput) Index(i pulumi.IntIn
 	}).(SyncMigrationDatabaseErrorEventResponseOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
 type SystemDataResponse struct {
-	// The timestamp of resource creation (UTC).
-	CreatedAt *string `pulumi:"createdAt"`
-	// The identity that created the resource.
-	CreatedBy *string `pulumi:"createdBy"`
-	// The type of identity that created the resource.
-	CreatedByType *string `pulumi:"createdByType"`
-	// The timestamp of resource last modification (UTC)
-	LastModifiedAt *string `pulumi:"lastModifiedAt"`
-	// The identity that last modified the resource.
-	LastModifiedBy *string `pulumi:"lastModifiedBy"`
-	// The type of identity that last modified the resource.
+	CreatedAt          *string `pulumi:"createdAt"`
+	CreatedBy          *string `pulumi:"createdBy"`
+	CreatedByType      *string `pulumi:"createdByType"`
+	LastModifiedAt     *string `pulumi:"lastModifiedAt"`
+	LastModifiedBy     *string `pulumi:"lastModifiedBy"`
 	LastModifiedByType *string `pulumi:"lastModifiedByType"`
 }
 
-// Metadata pertaining to creation and last modification of the resource.
 type SystemDataResponseOutput struct{ *pulumi.OutputState }
 
 func (SystemDataResponseOutput) ElementType() reflect.Type {
@@ -34256,32 +36262,26 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx cont
 	return o
 }
 
-// The timestamp of resource creation (UTC).
 func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
 }
 
-// The identity that created the resource.
 func (o SystemDataResponseOutput) CreatedBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
 }
 
-// The type of identity that created the resource.
 func (o SystemDataResponseOutput) CreatedByType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
 }
 
-// The timestamp of resource last modification (UTC)
 func (o SystemDataResponseOutput) LastModifiedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
 }
 
-// The identity that last modified the resource.
 func (o SystemDataResponseOutput) LastModifiedBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
 }
 
-// The type of identity that last modified the resource.
 func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
 }
@@ -34583,7 +36583,7 @@ func (o ValidateMigrationInputSqlServerSqlDbSyncTaskPropertiesResponseOutput) Ta
 
 // Input for task that migrates SQL Server databases to Azure SQL Database Managed Instance online scenario.
 type ValidateMigrationInputSqlServerSqlMISyncTaskInput struct {
-	// Azure Active Directory Application the DMS instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
+	// Azure Active Directory Application the DMS (classic) instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
 	AzureApp AzureActiveDirectoryApp `pulumi:"azureApp"`
 	// Backup file share information for all selected databases.
 	BackupFileShare *FileShare `pulumi:"backupFileShare"`
@@ -34621,7 +36621,7 @@ type ValidateMigrationInputSqlServerSqlMISyncTaskInputInput interface {
 
 // Input for task that migrates SQL Server databases to Azure SQL Database Managed Instance online scenario.
 type ValidateMigrationInputSqlServerSqlMISyncTaskInputArgs struct {
-	// Azure Active Directory Application the DMS instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
+	// Azure Active Directory Application the DMS (classic) instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
 	AzureApp AzureActiveDirectoryAppInput `pulumi:"azureApp"`
 	// Backup file share information for all selected databases.
 	BackupFileShare FileSharePtrInput `pulumi:"backupFileShare"`
@@ -34722,7 +36722,7 @@ func (o ValidateMigrationInputSqlServerSqlMISyncTaskInputOutput) ToValidateMigra
 	}).(ValidateMigrationInputSqlServerSqlMISyncTaskInputPtrOutput)
 }
 
-// Azure Active Directory Application the DMS instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
+// Azure Active Directory Application the DMS (classic) instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
 func (o ValidateMigrationInputSqlServerSqlMISyncTaskInputOutput) AzureApp() AzureActiveDirectoryAppOutput {
 	return o.ApplyT(func(v ValidateMigrationInputSqlServerSqlMISyncTaskInput) AzureActiveDirectoryApp { return v.AzureApp }).(AzureActiveDirectoryAppOutput)
 }
@@ -34782,7 +36782,7 @@ func (o ValidateMigrationInputSqlServerSqlMISyncTaskInputPtrOutput) Elem() Valid
 	}).(ValidateMigrationInputSqlServerSqlMISyncTaskInputOutput)
 }
 
-// Azure Active Directory Application the DMS instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
+// Azure Active Directory Application the DMS (classic) instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
 func (o ValidateMigrationInputSqlServerSqlMISyncTaskInputPtrOutput) AzureApp() AzureActiveDirectoryAppPtrOutput {
 	return o.ApplyT(func(v *ValidateMigrationInputSqlServerSqlMISyncTaskInput) *AzureActiveDirectoryApp {
 		if v == nil {
@@ -34844,7 +36844,7 @@ func (o ValidateMigrationInputSqlServerSqlMISyncTaskInputPtrOutput) TargetConnec
 
 // Input for task that migrates SQL Server databases to Azure SQL Database Managed Instance online scenario.
 type ValidateMigrationInputSqlServerSqlMISyncTaskInputResponse struct {
-	// Azure Active Directory Application the DMS instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
+	// Azure Active Directory Application the DMS (classic) instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
 	AzureApp AzureActiveDirectoryAppResponse `pulumi:"azureApp"`
 	// Backup file share information for all selected databases.
 	BackupFileShare *FileShareResponse `pulumi:"backupFileShare"`
@@ -34884,7 +36884,7 @@ func (o ValidateMigrationInputSqlServerSqlMISyncTaskInputResponseOutput) ToValid
 	return o
 }
 
-// Azure Active Directory Application the DMS instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
+// Azure Active Directory Application the DMS (classic) instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
 func (o ValidateMigrationInputSqlServerSqlMISyncTaskInputResponseOutput) AzureApp() AzureActiveDirectoryAppResponseOutput {
 	return o.ApplyT(func(v ValidateMigrationInputSqlServerSqlMISyncTaskInputResponse) AzureActiveDirectoryAppResponse {
 		return v.AzureApp
@@ -34948,7 +36948,7 @@ func (o ValidateMigrationInputSqlServerSqlMISyncTaskInputResponsePtrOutput) Elem
 	}).(ValidateMigrationInputSqlServerSqlMISyncTaskInputResponseOutput)
 }
 
-// Azure Active Directory Application the DMS instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
+// Azure Active Directory Application the DMS (classic) instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
 func (o ValidateMigrationInputSqlServerSqlMISyncTaskInputResponsePtrOutput) AzureApp() AzureActiveDirectoryAppResponsePtrOutput {
 	return o.ApplyT(func(v *ValidateMigrationInputSqlServerSqlMISyncTaskInputResponse) *AzureActiveDirectoryAppResponse {
 		if v == nil {
@@ -36239,6 +38239,17 @@ type ValidateMongoDbTaskProperties struct {
 	TaskType string `pulumi:"taskType"`
 }
 
+// Defaults sets the appropriate defaults for ValidateMongoDbTaskProperties
+func (val *ValidateMongoDbTaskProperties) Defaults() *ValidateMongoDbTaskProperties {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Input = tmp.Input.Defaults()
+
+	return &tmp
+}
+
 // ValidateMongoDbTaskPropertiesInput is an input type that accepts ValidateMongoDbTaskPropertiesArgs and ValidateMongoDbTaskPropertiesOutput values.
 // You can construct a concrete instance of `ValidateMongoDbTaskPropertiesInput` via:
 //
@@ -36261,6 +38272,15 @@ type ValidateMongoDbTaskPropertiesArgs struct {
 	TaskType pulumi.StringInput `pulumi:"taskType"`
 }
 
+// Defaults sets the appropriate defaults for ValidateMongoDbTaskPropertiesArgs
+func (val *ValidateMongoDbTaskPropertiesArgs) Defaults() *ValidateMongoDbTaskPropertiesArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+
+	return &tmp
+}
 func (ValidateMongoDbTaskPropertiesArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*ValidateMongoDbTaskProperties)(nil)).Elem()
 }
@@ -36427,6 +38447,17 @@ type ValidateMongoDbTaskPropertiesResponse struct {
 	// Task type.
 	// Expected value is 'Validate.MongoDb'.
 	TaskType string `pulumi:"taskType"`
+}
+
+// Defaults sets the appropriate defaults for ValidateMongoDbTaskPropertiesResponse
+func (val *ValidateMongoDbTaskPropertiesResponse) Defaults() *ValidateMongoDbTaskPropertiesResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Input = tmp.Input.Defaults()
+
+	return &tmp
 }
 
 // Properties for the task that validates a migration between MongoDB data sources

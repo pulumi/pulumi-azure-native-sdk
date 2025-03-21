@@ -12,9 +12,7 @@ import (
 )
 
 // Gets the details of the Issue for an API specified by its identifier.
-// Azure REST API version: 2022-08-01.
-//
-// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
+// Azure REST API version: 2022-09-01-preview.
 func LookupApiIssue(ctx *pulumi.Context, args *LookupApiIssueArgs, opts ...pulumi.InvokeOption) (*LookupApiIssueResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupApiIssueResult
@@ -42,6 +40,8 @@ type LookupApiIssueArgs struct {
 type LookupApiIssueResult struct {
 	// A resource identifier for the API the issue was created for.
 	ApiId *string `pulumi:"apiId"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Date and time when the issue was created.
 	CreatedDate *string `pulumi:"createdDate"`
 	// Text describing the issue.
@@ -104,6 +104,11 @@ func (o LookupApiIssueResultOutput) ToLookupApiIssueResultOutputWithContext(ctx 
 // A resource identifier for the API the issue was created for.
 func (o LookupApiIssueResultOutput) ApiId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupApiIssueResult) *string { return v.ApiId }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupApiIssueResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApiIssueResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Date and time when the issue was created.

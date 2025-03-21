@@ -13,9 +13,7 @@ import (
 )
 
 // Custom IP prefix resource.
-// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2020-11-01.
-//
-// Other available API versions: 2021-03-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Azure REST API version: 2024-05-01. Prior API version in Azure Native 2.x: 2023-02-01.
 type CustomIPPrefix struct {
 	pulumi.CustomResourceState
 
@@ -23,6 +21,8 @@ type CustomIPPrefix struct {
 	Asn pulumi.StringPtrOutput `pulumi:"asn"`
 	// Authorization message for WAN validation.
 	AuthorizationMessage pulumi.StringPtrOutput `pulumi:"authorizationMessage"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The list of all Children for IPv6 /48 CustomIpPrefix.
 	ChildCustomIpPrefixes SubResourceResponseArrayOutput `pulumi:"childCustomIpPrefixes"`
 	// The prefix range in CIDR notation. Should include the start address and the prefix length.
@@ -296,6 +296,11 @@ func (o CustomIPPrefixOutput) Asn() pulumi.StringPtrOutput {
 // Authorization message for WAN validation.
 func (o CustomIPPrefixOutput) AuthorizationMessage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CustomIPPrefix) pulumi.StringPtrOutput { return v.AuthorizationMessage }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o CustomIPPrefixOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomIPPrefix) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The list of all Children for IPv6 /48 CustomIpPrefix.

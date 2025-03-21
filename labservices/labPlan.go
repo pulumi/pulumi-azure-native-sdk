@@ -13,14 +13,14 @@ import (
 )
 
 // Lab Plans act as a permission container for creating labs via labs.azure.com. Additionally, they can provide a set of default configurations that will apply at the time of creating a lab, but these defaults can still be overwritten.
-// Azure REST API version: 2022-08-01. Prior API version in Azure Native 1.x: 2021-10-01-preview.
-//
-// Other available API versions: 2023-06-07.
+// Azure REST API version: 2023-06-07. Prior API version in Azure Native 2.x: 2022-08-01.
 type LabPlan struct {
 	pulumi.CustomResourceState
 
 	// The allowed regions for the lab creator to use when creating labs using this lab plan.
 	AllowedRegions pulumi.StringArrayOutput `pulumi:"allowedRegions"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The default lab shutdown profile. This can be changed on a lab resource and only provides a default profile.
 	DefaultAutoShutdownProfile AutoShutdownProfileResponsePtrOutput `pulumi:"defaultAutoShutdownProfile"`
 	// The default lab connection profile. This can be changed on a lab resource and only provides a default profile.
@@ -37,6 +37,8 @@ type LabPlan struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Current provisioning state of the lab plan.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// Error details of last operation done on lab plan.
+	ResourceOperationError ResourceOperationErrorResponseOutput `pulumi:"resourceOperationError"`
 	// Resource ID of the Shared Image Gallery attached to this lab plan. When saving a lab template virtual machine image it will be persisted in this gallery. Shared images from the gallery can be made available to use when creating new labs.
 	SharedGalleryId pulumi.StringPtrOutput `pulumi:"sharedGalleryId"`
 	// Support contact information and instructions for users of the lab plan. This information is displayed to lab owners and virtual machine users for all labs in the lab plan.
@@ -209,6 +211,11 @@ func (o LabPlanOutput) AllowedRegions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *LabPlan) pulumi.StringArrayOutput { return v.AllowedRegions }).(pulumi.StringArrayOutput)
 }
 
+// The Azure API version of the resource.
+func (o LabPlanOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *LabPlan) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The default lab shutdown profile. This can be changed on a lab resource and only provides a default profile.
 func (o LabPlanOutput) DefaultAutoShutdownProfile() AutoShutdownProfileResponsePtrOutput {
 	return o.ApplyT(func(v *LabPlan) AutoShutdownProfileResponsePtrOutput { return v.DefaultAutoShutdownProfile }).(AutoShutdownProfileResponsePtrOutput)
@@ -247,6 +254,11 @@ func (o LabPlanOutput) Name() pulumi.StringOutput {
 // Current provisioning state of the lab plan.
 func (o LabPlanOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *LabPlan) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Error details of last operation done on lab plan.
+func (o LabPlanOutput) ResourceOperationError() ResourceOperationErrorResponseOutput {
+	return o.ApplyT(func(v *LabPlan) ResourceOperationErrorResponseOutput { return v.ResourceOperationError }).(ResourceOperationErrorResponseOutput)
 }
 
 // Resource ID of the Shared Image Gallery attached to this lab plan. When saving a lab template virtual machine image it will be persisted in this gallery. Shared images from the gallery can be made available to use when creating new labs.

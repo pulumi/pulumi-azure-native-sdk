@@ -13,8 +13,6 @@ import (
 
 // Gets a server encryption protector.
 // Azure REST API version: 2021-11-01.
-//
-// Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
 func LookupEncryptionProtector(ctx *pulumi.Context, args *LookupEncryptionProtectorArgs, opts ...pulumi.InvokeOption) (*LookupEncryptionProtectorResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupEncryptionProtectorResult
@@ -38,6 +36,8 @@ type LookupEncryptionProtectorArgs struct {
 type LookupEncryptionProtectorResult struct {
 	// Key auto rotation opt-in flag. Either true or false.
 	AutoRotationEnabled *bool `pulumi:"autoRotationEnabled"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource ID.
 	Id string `pulumi:"id"`
 	// Kind of encryption protector. This is metadata used for the Azure portal experience.
@@ -100,6 +100,11 @@ func (o LookupEncryptionProtectorResultOutput) ToLookupEncryptionProtectorResult
 // Key auto rotation opt-in flag. Either true or false.
 func (o LookupEncryptionProtectorResultOutput) AutoRotationEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupEncryptionProtectorResult) *bool { return v.AutoRotationEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupEncryptionProtectorResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEncryptionProtectorResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource ID.

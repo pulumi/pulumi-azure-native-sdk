@@ -12,9 +12,7 @@ import (
 )
 
 // Get a FqdnListGlobalRulestackResource
-// Azure REST API version: 2023-09-01.
-//
-// Other available API versions: 2022-08-29, 2022-08-29-preview, 2023-09-01-preview, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview.
+// Azure REST API version: 2025-02-06-preview.
 func LookupFqdnListGlobalRulestack(ctx *pulumi.Context, args *LookupFqdnListGlobalRulestackArgs, opts ...pulumi.InvokeOption) (*LookupFqdnListGlobalRulestackResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFqdnListGlobalRulestackResult
@@ -36,6 +34,8 @@ type LookupFqdnListGlobalRulestackArgs struct {
 type LookupFqdnListGlobalRulestackResult struct {
 	// comment for this object
 	AuditComment *string `pulumi:"auditComment"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// fqdn object description
 	Description *string `pulumi:"description"`
 	// etag info
@@ -92,6 +92,11 @@ func (o LookupFqdnListGlobalRulestackResultOutput) ToLookupFqdnListGlobalRulesta
 // comment for this object
 func (o LookupFqdnListGlobalRulestackResultOutput) AuditComment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupFqdnListGlobalRulestackResult) *string { return v.AuditComment }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupFqdnListGlobalRulestackResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFqdnListGlobalRulestackResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // fqdn object description

@@ -13,8 +13,6 @@ import (
 
 // Gets a Azure Active Directory administrator.
 // Azure REST API version: 2021-11-01.
-//
-// Other available API versions: 2014-04-01, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
 func LookupServerAzureADAdministrator(ctx *pulumi.Context, args *LookupServerAzureADAdministratorArgs, opts ...pulumi.InvokeOption) (*LookupServerAzureADAdministratorResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupServerAzureADAdministratorResult
@@ -40,6 +38,8 @@ type LookupServerAzureADAdministratorResult struct {
 	AdministratorType string `pulumi:"administratorType"`
 	// Azure Active Directory only Authentication enabled.
 	AzureADOnlyAuthentication bool `pulumi:"azureADOnlyAuthentication"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource ID.
 	Id string `pulumi:"id"`
 	// Login name of the server administrator.
@@ -99,6 +99,11 @@ func (o LookupServerAzureADAdministratorResultOutput) AdministratorType() pulumi
 // Azure Active Directory only Authentication enabled.
 func (o LookupServerAzureADAdministratorResultOutput) AzureADOnlyAuthentication() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupServerAzureADAdministratorResult) bool { return v.AzureADOnlyAuthentication }).(pulumi.BoolOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupServerAzureADAdministratorResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServerAzureADAdministratorResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource ID.

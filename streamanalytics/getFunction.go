@@ -13,8 +13,6 @@ import (
 
 // Gets details about the specified function.
 // Azure REST API version: 2020-03-01.
-//
-// Other available API versions: 2016-03-01, 2021-10-01-preview.
 func LookupFunction(ctx *pulumi.Context, args *LookupFunctionArgs, opts ...pulumi.InvokeOption) (*LookupFunctionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFunctionResult
@@ -36,6 +34,8 @@ type LookupFunctionArgs struct {
 
 // A function object, containing all information associated with the named function. All functions are contained under a streaming job.
 type LookupFunctionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource Id
 	Id string `pulumi:"id"`
 	// Resource name
@@ -81,6 +81,11 @@ func (o LookupFunctionResultOutput) ToLookupFunctionResultOutput() LookupFunctio
 
 func (o LookupFunctionResultOutput) ToLookupFunctionResultOutputWithContext(ctx context.Context) LookupFunctionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupFunctionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFunctionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource Id

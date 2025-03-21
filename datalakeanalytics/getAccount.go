@@ -34,6 +34,8 @@ type LookupAccountArgs struct {
 type LookupAccountResult struct {
 	// The unique identifier associated with this Data Lake Analytics account.
 	AccountId string `pulumi:"accountId"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The list of compute policies associated with this account.
 	ComputePolicies []ComputePolicyResponse `pulumi:"computePolicies"`
 	// The account creation time.
@@ -162,6 +164,11 @@ func (o LookupAccountResultOutput) ToLookupAccountResultOutputWithContext(ctx co
 // The unique identifier associated with this Data Lake Analytics account.
 func (o LookupAccountResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountResult) string { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupAccountResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The list of compute policies associated with this account.

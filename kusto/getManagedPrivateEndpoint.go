@@ -12,9 +12,7 @@ import (
 )
 
 // Gets a managed private endpoint.
-// Azure REST API version: 2022-12-29.
-//
-// Other available API versions: 2023-05-02, 2023-08-15, 2024-04-13.
+// Azure REST API version: 2024-04-13.
 func LookupManagedPrivateEndpoint(ctx *pulumi.Context, args *LookupManagedPrivateEndpointArgs, opts ...pulumi.InvokeOption) (*LookupManagedPrivateEndpointResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupManagedPrivateEndpointResult
@@ -30,12 +28,14 @@ type LookupManagedPrivateEndpointArgs struct {
 	ClusterName string `pulumi:"clusterName"`
 	// The name of the managed private endpoint.
 	ManagedPrivateEndpointName string `pulumi:"managedPrivateEndpointName"`
-	// The name of the resource group containing the Kusto cluster.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Class representing a managed private endpoint.
 type LookupManagedPrivateEndpointResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The groupId in which the managed private endpoint is created.
 	GroupId string `pulumi:"groupId"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -70,7 +70,7 @@ type LookupManagedPrivateEndpointOutputArgs struct {
 	ClusterName pulumi.StringInput `pulumi:"clusterName"`
 	// The name of the managed private endpoint.
 	ManagedPrivateEndpointName pulumi.StringInput `pulumi:"managedPrivateEndpointName"`
-	// The name of the resource group containing the Kusto cluster.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -91,6 +91,11 @@ func (o LookupManagedPrivateEndpointResultOutput) ToLookupManagedPrivateEndpoint
 
 func (o LookupManagedPrivateEndpointResultOutput) ToLookupManagedPrivateEndpointResultOutputWithContext(ctx context.Context) LookupManagedPrivateEndpointResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupManagedPrivateEndpointResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupManagedPrivateEndpointResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The groupId in which the managed private endpoint is created.

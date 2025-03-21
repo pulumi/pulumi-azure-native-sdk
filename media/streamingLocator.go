@@ -13,9 +13,7 @@ import (
 )
 
 // A Streaming Locator resource
-// Azure REST API version: 2023-01-01. Prior API version in Azure Native 1.x: 2020-05-01.
-//
-// Other available API versions: 2018-03-30-preview.
+// Azure REST API version: 2023-01-01. Prior API version in Azure Native 2.x: 2023-01-01.
 type StreamingLocator struct {
 	pulumi.CustomResourceState
 
@@ -23,6 +21,8 @@ type StreamingLocator struct {
 	AlternativeMediaId pulumi.StringPtrOutput `pulumi:"alternativeMediaId"`
 	// Asset Name
 	AssetName pulumi.StringOutput `pulumi:"assetName"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The ContentKeys used by this Streaming Locator.
 	ContentKeys StreamingLocatorContentKeyResponseArrayOutput `pulumi:"contentKeys"`
 	// The creation time of the Streaming Locator.
@@ -225,6 +225,11 @@ func (o StreamingLocatorOutput) AlternativeMediaId() pulumi.StringPtrOutput {
 // Asset Name
 func (o StreamingLocatorOutput) AssetName() pulumi.StringOutput {
 	return o.ApplyT(func(v *StreamingLocator) pulumi.StringOutput { return v.AssetName }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o StreamingLocatorOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *StreamingLocator) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The ContentKeys used by this Streaming Locator.

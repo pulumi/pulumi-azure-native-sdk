@@ -13,12 +13,12 @@ import (
 )
 
 // Represents a gallery.
-// Azure REST API version: 2023-04-01. Prior API version in Azure Native 1.x: 2022-09-01-preview.
-//
-// Other available API versions: 2023-08-01-preview, 2023-10-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview, 2024-10-01-preview.
+// Azure REST API version: 2024-02-01. Prior API version in Azure Native 2.x: 2023-04-01.
 type Gallery struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The resource ID of the backing Azure Compute Gallery.
 	GalleryResourceId pulumi.StringOutput `pulumi:"galleryResourceId"`
 	// The name of the resource
@@ -89,6 +89,9 @@ func NewGallery(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:devcenter/v20241001preview:Gallery"),
+		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20250201:Gallery"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -182,6 +185,11 @@ func (o GalleryOutput) ToGalleryOutput() GalleryOutput {
 
 func (o GalleryOutput) ToGalleryOutputWithContext(ctx context.Context) GalleryOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o GalleryOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Gallery) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The resource ID of the backing Azure Compute Gallery.

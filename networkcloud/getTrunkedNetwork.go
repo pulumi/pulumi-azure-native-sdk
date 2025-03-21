@@ -12,9 +12,7 @@ import (
 )
 
 // Get properties of the provided trunked network.
-// Azure REST API version: 2023-10-01-preview.
-//
-// Other available API versions: 2023-07-01, 2024-06-01-preview, 2024-07-01, 2024-10-01-preview.
+// Azure REST API version: 2025-02-01.
 func LookupTrunkedNetwork(ctx *pulumi.Context, args *LookupTrunkedNetworkArgs, opts ...pulumi.InvokeOption) (*LookupTrunkedNetworkResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTrunkedNetworkResult
@@ -35,12 +33,16 @@ type LookupTrunkedNetworkArgs struct {
 type LookupTrunkedNetworkResult struct {
 	// The list of resource IDs for the other Microsoft.NetworkCloud resources that have attached this network.
 	AssociatedResourceIds []string `pulumi:"associatedResourceIds"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The resource ID of the Network Cloud cluster this trunked network is associated with.
 	ClusterId string `pulumi:"clusterId"`
 	// The more detailed status of the trunked network.
 	DetailedStatus string `pulumi:"detailedStatus"`
 	// The descriptive message about the current detailed status.
 	DetailedStatusMessage string `pulumi:"detailedStatusMessage"`
+	// Resource ETag.
+	Etag string `pulumi:"etag"`
 	// The extended location of the cluster associated with the resource.
 	ExtendedLocation ExtendedLocationResponse `pulumi:"extendedLocation"`
 	// Field Deprecated. These fields will be empty/omitted. The list of Hybrid AKS cluster resource IDs that are associated with this trunked network.
@@ -122,6 +124,11 @@ func (o LookupTrunkedNetworkResultOutput) AssociatedResourceIds() pulumi.StringA
 	return o.ApplyT(func(v LookupTrunkedNetworkResult) []string { return v.AssociatedResourceIds }).(pulumi.StringArrayOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupTrunkedNetworkResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTrunkedNetworkResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The resource ID of the Network Cloud cluster this trunked network is associated with.
 func (o LookupTrunkedNetworkResultOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTrunkedNetworkResult) string { return v.ClusterId }).(pulumi.StringOutput)
@@ -135,6 +142,11 @@ func (o LookupTrunkedNetworkResultOutput) DetailedStatus() pulumi.StringOutput {
 // The descriptive message about the current detailed status.
 func (o LookupTrunkedNetworkResultOutput) DetailedStatusMessage() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTrunkedNetworkResult) string { return v.DetailedStatusMessage }).(pulumi.StringOutput)
+}
+
+// Resource ETag.
+func (o LookupTrunkedNetworkResultOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTrunkedNetworkResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
 // The extended location of the cluster associated with the resource.

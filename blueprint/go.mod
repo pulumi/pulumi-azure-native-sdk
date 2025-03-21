@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-azure-native-sdk/blueprint/v2
+module github.com/pulumi/pulumi-azure-native-sdk/blueprint/v3
 
 go 1.22
 

@@ -12,9 +12,7 @@ import (
 )
 
 // Get a Service Fabric node type of a given managed cluster.
-// Azure REST API version: 2023-03-01-preview.
-//
-// Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01-preview, 2024-02-01-preview, 2024-04-01, 2024-06-01-preview, 2024-09-01-preview, 2024-11-01-preview.
+// Azure REST API version: 2024-04-01.
 func LookupNodeType(ctx *pulumi.Context, args *LookupNodeTypeArgs, opts ...pulumi.InvokeOption) (*LookupNodeTypeResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNodeTypeResult
@@ -38,22 +36,32 @@ type LookupNodeTypeArgs struct {
 type LookupNodeTypeResult struct {
 	// Additional managed data disks.
 	AdditionalDataDisks []VmssDataDiskResponse `pulumi:"additionalDataDisks"`
+	// Specifies the settings for any additional secondary network interfaces to attach to the node type.
+	AdditionalNetworkInterfaceConfigurations []AdditionalNetworkInterfaceConfigurationResponse `pulumi:"additionalNetworkInterfaceConfigurations"`
 	// The range of ports from which cluster assigned port to Service Fabric applications.
 	ApplicationPorts *EndpointRangeDescriptionResponse `pulumi:"applicationPorts"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The capacity tags applied to the nodes in the node type, the cluster resource manager uses these tags to understand how much resource a node has.
 	Capacities map[string]string `pulumi:"capacities"`
+	// Specifies the computer name prefix. Limited to 9 characters. If specified, allows for a longer name to be specified for the node type name.
+	ComputerNamePrefix *string `pulumi:"computerNamePrefix"`
 	// Managed data disk letter. It can not use the reserved letter C or D and it can not change after created.
 	DataDiskLetter *string `pulumi:"dataDiskLetter"`
 	// Disk size for the managed disk attached to the vms on the node type in GBs.
 	DataDiskSizeGB *int `pulumi:"dataDiskSizeGB"`
 	// Managed data disk type. Specifies the storage account type for the managed disk
 	DataDiskType *string `pulumi:"dataDiskType"`
+	// Specifies the resource id of the DSCP configuration to apply to the node type network interface.
+	DscpConfigurationId *string `pulumi:"dscpConfigurationId"`
 	// Specifies whether the network interface is accelerated networking-enabled.
 	EnableAcceleratedNetworking *bool `pulumi:"enableAcceleratedNetworking"`
 	// Enable or disable the Host Encryption for the virtual machines on the node type. This will enable the encryption for all the disks including Resource/Temp disk at host itself. Default: The Encryption at host will be disabled unless this property is set to true for the resource.
 	EnableEncryptionAtHost *bool `pulumi:"enableEncryptionAtHost"`
-	// Specifies whether each node is allocated its own public IP address. This is only supported on secondary node types with custom Load Balancers.
+	// Specifies whether each node is allocated its own public IPv4 address. This is only supported on secondary node types with custom Load Balancers.
 	EnableNodePublicIP *bool `pulumi:"enableNodePublicIP"`
+	// Specifies whether each node is allocated its own public IPv6 address. This is only supported on secondary node types with custom Load Balancers.
+	EnableNodePublicIPv6 *bool `pulumi:"enableNodePublicIPv6"`
 	// Specifies whether the node type should be overprovisioned. It is only allowed for stateless node types.
 	EnableOverProvisioning *bool `pulumi:"enableOverProvisioning"`
 	// The range of ephemeral ports that nodes in this node type should be configured with.
@@ -76,6 +84,8 @@ type LookupNodeTypeResult struct {
 	MultiplePlacementGroups *bool `pulumi:"multiplePlacementGroups"`
 	// Azure resource name.
 	Name string `pulumi:"name"`
+	// Specifies the NAT configuration on default public Load Balancer for the node type. This is only supported for node types use the default public Load Balancer.
+	NatConfigurations []NodeTypeNatConfigResponse `pulumi:"natConfigurations"`
 	// Specifies the resource id of a NAT Gateway to attach to the subnet of this node type. Node type must use custom load balancer.
 	NatGatewayId *string `pulumi:"natGatewayId"`
 	// The Network Security Rules for this node type. This setting can only be specified for node types that are configured with frontend configurations.
@@ -86,8 +96,10 @@ type LookupNodeTypeResult struct {
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Specifies whether secure boot should be enabled on the nodeType. Can only be used with TrustedLaunch SecurityType
 	SecureBootEnabled *bool `pulumi:"secureBootEnabled"`
-	// Specifies the security type of the nodeType. Only TrustedLaunch is currently supported
+	// Specifies the security type of the nodeType. Only Standard and TrustedLaunch are currently supported
 	SecurityType *string `pulumi:"securityType"`
+	// Specifies the service artifact reference id used to set same image version for all virtual machines in the scale set when using 'latest' image version.
+	ServiceArtifactReferenceId *string `pulumi:"serviceArtifactReferenceId"`
 	// The node type sku.
 	Sku *NodeTypeSkuResponse `pulumi:"sku"`
 	// Indicates the time duration after which the platform will not try to restore the VMSS SPOT instances specified as ISO 8601.
@@ -198,14 +210,31 @@ func (o LookupNodeTypeResultOutput) AdditionalDataDisks() VmssDataDiskResponseAr
 	return o.ApplyT(func(v LookupNodeTypeResult) []VmssDataDiskResponse { return v.AdditionalDataDisks }).(VmssDataDiskResponseArrayOutput)
 }
 
+// Specifies the settings for any additional secondary network interfaces to attach to the node type.
+func (o LookupNodeTypeResultOutput) AdditionalNetworkInterfaceConfigurations() AdditionalNetworkInterfaceConfigurationResponseArrayOutput {
+	return o.ApplyT(func(v LookupNodeTypeResult) []AdditionalNetworkInterfaceConfigurationResponse {
+		return v.AdditionalNetworkInterfaceConfigurations
+	}).(AdditionalNetworkInterfaceConfigurationResponseArrayOutput)
+}
+
 // The range of ports from which cluster assigned port to Service Fabric applications.
 func (o LookupNodeTypeResultOutput) ApplicationPorts() EndpointRangeDescriptionResponsePtrOutput {
 	return o.ApplyT(func(v LookupNodeTypeResult) *EndpointRangeDescriptionResponse { return v.ApplicationPorts }).(EndpointRangeDescriptionResponsePtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupNodeTypeResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNodeTypeResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The capacity tags applied to the nodes in the node type, the cluster resource manager uses these tags to understand how much resource a node has.
 func (o LookupNodeTypeResultOutput) Capacities() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupNodeTypeResult) map[string]string { return v.Capacities }).(pulumi.StringMapOutput)
+}
+
+// Specifies the computer name prefix. Limited to 9 characters. If specified, allows for a longer name to be specified for the node type name.
+func (o LookupNodeTypeResultOutput) ComputerNamePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupNodeTypeResult) *string { return v.ComputerNamePrefix }).(pulumi.StringPtrOutput)
 }
 
 // Managed data disk letter. It can not use the reserved letter C or D and it can not change after created.
@@ -223,6 +252,11 @@ func (o LookupNodeTypeResultOutput) DataDiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNodeTypeResult) *string { return v.DataDiskType }).(pulumi.StringPtrOutput)
 }
 
+// Specifies the resource id of the DSCP configuration to apply to the node type network interface.
+func (o LookupNodeTypeResultOutput) DscpConfigurationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupNodeTypeResult) *string { return v.DscpConfigurationId }).(pulumi.StringPtrOutput)
+}
+
 // Specifies whether the network interface is accelerated networking-enabled.
 func (o LookupNodeTypeResultOutput) EnableAcceleratedNetworking() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupNodeTypeResult) *bool { return v.EnableAcceleratedNetworking }).(pulumi.BoolPtrOutput)
@@ -233,9 +267,14 @@ func (o LookupNodeTypeResultOutput) EnableEncryptionAtHost() pulumi.BoolPtrOutpu
 	return o.ApplyT(func(v LookupNodeTypeResult) *bool { return v.EnableEncryptionAtHost }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies whether each node is allocated its own public IP address. This is only supported on secondary node types with custom Load Balancers.
+// Specifies whether each node is allocated its own public IPv4 address. This is only supported on secondary node types with custom Load Balancers.
 func (o LookupNodeTypeResultOutput) EnableNodePublicIP() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupNodeTypeResult) *bool { return v.EnableNodePublicIP }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether each node is allocated its own public IPv6 address. This is only supported on secondary node types with custom Load Balancers.
+func (o LookupNodeTypeResultOutput) EnableNodePublicIPv6() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupNodeTypeResult) *bool { return v.EnableNodePublicIPv6 }).(pulumi.BoolPtrOutput)
 }
 
 // Specifies whether the node type should be overprovisioned. It is only allowed for stateless node types.
@@ -293,6 +332,11 @@ func (o LookupNodeTypeResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNodeTypeResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Specifies the NAT configuration on default public Load Balancer for the node type. This is only supported for node types use the default public Load Balancer.
+func (o LookupNodeTypeResultOutput) NatConfigurations() NodeTypeNatConfigResponseArrayOutput {
+	return o.ApplyT(func(v LookupNodeTypeResult) []NodeTypeNatConfigResponse { return v.NatConfigurations }).(NodeTypeNatConfigResponseArrayOutput)
+}
+
 // Specifies the resource id of a NAT Gateway to attach to the subnet of this node type. Node type must use custom load balancer.
 func (o LookupNodeTypeResultOutput) NatGatewayId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNodeTypeResult) *string { return v.NatGatewayId }).(pulumi.StringPtrOutput)
@@ -318,9 +362,14 @@ func (o LookupNodeTypeResultOutput) SecureBootEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupNodeTypeResult) *bool { return v.SecureBootEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the security type of the nodeType. Only TrustedLaunch is currently supported
+// Specifies the security type of the nodeType. Only Standard and TrustedLaunch are currently supported
 func (o LookupNodeTypeResultOutput) SecurityType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNodeTypeResult) *string { return v.SecurityType }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the service artifact reference id used to set same image version for all virtual machines in the scale set when using 'latest' image version.
+func (o LookupNodeTypeResultOutput) ServiceArtifactReferenceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupNodeTypeResult) *string { return v.ServiceArtifactReferenceId }).(pulumi.StringPtrOutput)
 }
 
 // The node type sku.

@@ -13,12 +13,12 @@ import (
 )
 
 // Data network resource. Must be created in the same location as its parent mobile network.
-// Azure REST API version: 2023-06-01. Prior API version in Azure Native 1.x: 2022-04-01-preview.
-//
-// Other available API versions: 2022-04-01-preview, 2022-11-01, 2023-09-01, 2024-02-01, 2024-04-01.
+// Azure REST API version: 2024-04-01. Prior API version in Azure Native 2.x: 2023-06-01.
 type DataNetwork struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// An optional description for this data network.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The geo-location where the resource lives
@@ -170,6 +170,11 @@ func (o DataNetworkOutput) ToDataNetworkOutput() DataNetworkOutput {
 
 func (o DataNetworkOutput) ToDataNetworkOutputWithContext(ctx context.Context) DataNetworkOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o DataNetworkOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DataNetwork) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // An optional description for this data network.

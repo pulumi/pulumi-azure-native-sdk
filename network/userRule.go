@@ -13,12 +13,12 @@ import (
 )
 
 // Network security user rule.
-// Azure REST API version: 2022-04-01-preview. Prior API version in Azure Native 1.x: 2021-02-01-preview.
-//
-// Other available API versions: 2021-05-01-preview.
+// Azure REST API version: 2022-04-01-preview. Prior API version in Azure Native 2.x: 2022-04-01-preview.
 type UserRule struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// A description for this rule.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The destination port ranges.
@@ -82,19 +82,37 @@ func NewUserRule(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:network/v20210201preview:UserRule"),
 		},
 		{
+			Type: pulumi.String("azure-native:network/v20210501preview:DefaultUserRule"),
+		},
+		{
 			Type: pulumi.String("azure-native:network/v20210501preview:UserRule"),
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20220201preview:UserRule"),
 		},
 		{
+			Type: pulumi.String("azure-native:network/v20220401preview:DefaultUserRule"),
+		},
+		{
 			Type: pulumi.String("azure-native:network/v20220401preview:UserRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20240301:SecurityUserRule"),
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20240301:UserRule"),
 		},
 		{
+			Type: pulumi.String("azure-native:network/v20240501:SecurityUserRule"),
+		},
+		{
 			Type: pulumi.String("azure-native:network/v20240501:UserRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:network:DefaultUserRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:network:SecurityUserRule"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -226,6 +244,11 @@ func (o UserRuleOutput) ToUserRuleOutput() UserRuleOutput {
 
 func (o UserRuleOutput) ToUserRuleOutputWithContext(ctx context.Context) UserRuleOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o UserRuleOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *UserRule) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A description for this rule.

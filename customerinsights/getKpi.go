@@ -36,6 +36,8 @@ type LookupKpiArgs struct {
 type LookupKpiResult struct {
 	// The aliases.
 	Aliases []KpiAliasResponse `pulumi:"aliases"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The calculation window.
 	CalculationWindow string `pulumi:"calculationWindow"`
 	// Name of calculation window field.
@@ -120,6 +122,11 @@ func (o LookupKpiResultOutput) ToLookupKpiResultOutputWithContext(ctx context.Co
 // The aliases.
 func (o LookupKpiResultOutput) Aliases() KpiAliasResponseArrayOutput {
 	return o.ApplyT(func(v LookupKpiResult) []KpiAliasResponse { return v.Aliases }).(KpiAliasResponseArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupKpiResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKpiResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The calculation window.

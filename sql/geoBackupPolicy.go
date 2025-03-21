@@ -13,12 +13,12 @@ import (
 )
 
 // A Geo backup policy.
-// Azure REST API version: 2021-11-01. Prior API version in Azure Native 1.x: 2014-04-01.
-//
-// Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
+// Azure REST API version: 2021-11-01. Prior API version in Azure Native 2.x: 2021-11-01.
 type GeoBackupPolicy struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Kind of geo backup policy.  This is metadata used for the Azure portal experience.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// Backup policy location.
@@ -179,6 +179,11 @@ func (o GeoBackupPolicyOutput) ToGeoBackupPolicyOutput() GeoBackupPolicyOutput {
 
 func (o GeoBackupPolicyOutput) ToGeoBackupPolicyOutputWithContext(ctx context.Context) GeoBackupPolicyOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o GeoBackupPolicyOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *GeoBackupPolicy) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Kind of geo backup policy.  This is metadata used for the Azure portal experience.

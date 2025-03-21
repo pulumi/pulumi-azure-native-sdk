@@ -13,10 +13,12 @@ import (
 )
 
 // Configures where to store the OMS agent data for workspaces under a scope
-// Azure REST API version: 2017-08-01-preview. Prior API version in Azure Native 1.x: 2017-08-01-preview.
+// Azure REST API version: 2017-08-01-preview. Prior API version in Azure Native 2.x: 2017-08-01-preview.
 type WorkspaceSetting struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Resource name
 	Name pulumi.StringOutput `pulumi:"name"`
 	// All the VMs in this scope will send their security data to the mentioned workspace unless overridden by a setting with more specific scope
@@ -132,6 +134,11 @@ func (o WorkspaceSettingOutput) ToWorkspaceSettingOutput() WorkspaceSettingOutpu
 
 func (o WorkspaceSettingOutput) ToWorkspaceSettingOutputWithContext(ctx context.Context) WorkspaceSettingOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o WorkspaceSettingOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkspaceSetting) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource name

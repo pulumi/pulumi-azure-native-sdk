@@ -12,9 +12,7 @@ import (
 )
 
 // Get properties of a CA certificate.
-// Azure REST API version: 2023-06-01-preview.
-//
-// Other available API versions: 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-02-15.
+// Azure REST API version: 2025-02-15.
 func LookupCaCertificate(ctx *pulumi.Context, args *LookupCaCertificateArgs, opts ...pulumi.InvokeOption) (*LookupCaCertificateResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCaCertificateResult
@@ -36,6 +34,8 @@ type LookupCaCertificateArgs struct {
 
 // The CA Certificate resource.
 type LookupCaCertificateResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Description for the CA Certificate resource.
 	Description *string `pulumi:"description"`
 	// Base64 encoded PEM (Privacy Enhanced Mail) format certificate data.
@@ -50,7 +50,7 @@ type LookupCaCertificateResult struct {
 	Name string `pulumi:"name"`
 	// Provisioning state of the CA Certificate resource.
 	ProvisioningState string `pulumi:"provisioningState"`
-	// The system metadata relating to the CaCertificate resource.
+	// The system metadata relating to the Event Grid resource.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Type of the resource.
 	Type string `pulumi:"type"`
@@ -93,6 +93,11 @@ func (o LookupCaCertificateResultOutput) ToLookupCaCertificateResultOutputWithCo
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupCaCertificateResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCaCertificateResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Description for the CA Certificate resource.
 func (o LookupCaCertificateResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupCaCertificateResult) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -128,7 +133,7 @@ func (o LookupCaCertificateResultOutput) ProvisioningState() pulumi.StringOutput
 	return o.ApplyT(func(v LookupCaCertificateResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// The system metadata relating to the CaCertificate resource.
+// The system metadata relating to the Event Grid resource.
 func (o LookupCaCertificateResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupCaCertificateResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }

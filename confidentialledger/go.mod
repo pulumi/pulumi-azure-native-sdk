@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-azure-native-sdk/confidentialledger/v2
+module github.com/pulumi/pulumi-azure-native-sdk/confidentialledger/v3
 
 go 1.22
 

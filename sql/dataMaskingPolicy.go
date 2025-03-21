@@ -13,14 +13,14 @@ import (
 )
 
 // A database data masking policy.
-// Azure REST API version: 2021-11-01. Prior API version in Azure Native 1.x: 2014-04-01.
-//
-// Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
+// Azure REST API version: 2021-11-01. Prior API version in Azure Native 2.x: 2021-11-01.
 type DataMaskingPolicy struct {
 	pulumi.CustomResourceState
 
 	// The list of the application principals. This is a legacy parameter and is no longer used.
 	ApplicationPrincipals pulumi.StringOutput `pulumi:"applicationPrincipals"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The state of the data masking policy.
 	DataMaskingState pulumi.StringOutput `pulumi:"dataMaskingState"`
 	// The list of the exempt principals. Specifies the semicolon-separated list of database users for which the data masking policy does not apply. The specified users receive data results without masking for all of the database queries.
@@ -192,6 +192,11 @@ func (o DataMaskingPolicyOutput) ToDataMaskingPolicyOutputWithContext(ctx contex
 // The list of the application principals. This is a legacy parameter and is no longer used.
 func (o DataMaskingPolicyOutput) ApplicationPrincipals() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataMaskingPolicy) pulumi.StringOutput { return v.ApplicationPrincipals }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o DataMaskingPolicyOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DataMaskingPolicy) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The state of the data masking policy.

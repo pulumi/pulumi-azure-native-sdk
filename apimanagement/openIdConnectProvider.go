@@ -13,12 +13,12 @@ import (
 )
 
 // OpenId Connect Provider details.
-// Azure REST API version: 2022-08-01. Prior API version in Azure Native 1.x: 2020-12-01.
-//
-// Other available API versions: 2016-10-10, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
+// Azure REST API version: 2022-09-01-preview. Prior API version in Azure Native 2.x: 2022-08-01.
 type OpenIdConnectProvider struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Client ID of developer console which is the client application.
 	ClientId pulumi.StringOutput `pulumi:"clientId"`
 	// Client Secret of developer console which is the client application.
@@ -244,6 +244,11 @@ func (o OpenIdConnectProviderOutput) ToOpenIdConnectProviderOutput() OpenIdConne
 
 func (o OpenIdConnectProviderOutput) ToOpenIdConnectProviderOutputWithContext(ctx context.Context) OpenIdConnectProviderOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o OpenIdConnectProviderOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *OpenIdConnectProvider) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Client ID of developer console which is the client application.

@@ -12,9 +12,7 @@ import (
 )
 
 // Gets the description of the specified namespace.
-// Azure REST API version: 2022-10-01-preview.
-//
-// Other available API versions: 2023-01-01-preview, 2024-01-01, 2024-05-01-preview.
+// Azure REST API version: 2024-01-01.
 func LookupNamespace(ctx *pulumi.Context, args *LookupNamespaceArgs, opts ...pulumi.InvokeOption) (*LookupNamespaceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNamespaceResult
@@ -36,6 +34,8 @@ type LookupNamespaceArgs struct {
 type LookupNamespaceResult struct {
 	// Alternate name specified when alias and namespace names are same.
 	AlternateName *string `pulumi:"alternateName"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Cluster ARM ID of the Namespace.
 	ClusterArmId *string `pulumi:"clusterArmId"`
 	// The time the Namespace was created.
@@ -138,6 +138,11 @@ func (o LookupNamespaceResultOutput) ToLookupNamespaceResultOutputWithContext(ct
 // Alternate name specified when alias and namespace names are same.
 func (o LookupNamespaceResultOutput) AlternateName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) *string { return v.AlternateName }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupNamespaceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNamespaceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Cluster ARM ID of the Namespace.

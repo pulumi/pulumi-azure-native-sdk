@@ -12,9 +12,7 @@ import (
 )
 
 // Container of a site
-// Azure REST API version: 2023-12-01.
-//
-// Other available API versions: 2024-04-01.
+// Azure REST API version: 2024-04-01.
 func LookupWebAppSiteContainerSlot(ctx *pulumi.Context, args *LookupWebAppSiteContainerSlotArgs, opts ...pulumi.InvokeOption) (*LookupWebAppSiteContainerSlotResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebAppSiteContainerSlotResult
@@ -40,6 +38,8 @@ type LookupWebAppSiteContainerSlotArgs struct {
 type LookupWebAppSiteContainerSlotResult struct {
 	// Auth Type
 	AuthType *string `pulumi:"authType"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Created Time
 	CreatedTime string `pulumi:"createdTime"`
 	// List of environment variables
@@ -114,6 +114,11 @@ func (o LookupWebAppSiteContainerSlotResultOutput) ToLookupWebAppSiteContainerSl
 // Auth Type
 func (o LookupWebAppSiteContainerSlotResultOutput) AuthType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppSiteContainerSlotResult) *string { return v.AuthType }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupWebAppSiteContainerSlotResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWebAppSiteContainerSlotResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Created Time

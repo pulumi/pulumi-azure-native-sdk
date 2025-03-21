@@ -13,8 +13,6 @@ import (
 
 // Gets an instance pool.
 // Azure REST API version: 2021-11-01.
-//
-// Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
 func LookupInstancePool(ctx *pulumi.Context, args *LookupInstancePoolArgs, opts ...pulumi.InvokeOption) (*LookupInstancePoolResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupInstancePoolResult
@@ -34,6 +32,8 @@ type LookupInstancePoolArgs struct {
 
 // An Azure SQL instance pool.
 type LookupInstancePoolResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource ID.
 	Id string `pulumi:"id"`
 	// The license type. Possible values are 'LicenseIncluded' (price for SQL license is included) and 'BasePrice' (without SQL license price).
@@ -87,6 +87,11 @@ func (o LookupInstancePoolResultOutput) ToLookupInstancePoolResultOutput() Looku
 
 func (o LookupInstancePoolResultOutput) ToLookupInstancePoolResultOutputWithContext(ctx context.Context) LookupInstancePoolResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupInstancePoolResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstancePoolResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource ID.

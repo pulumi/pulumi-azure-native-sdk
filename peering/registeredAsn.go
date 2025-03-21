@@ -13,12 +13,14 @@ import (
 )
 
 // The customer's ASN that is registered by the peering service provider.
-// Azure REST API version: 2022-10-01. Prior API version in Azure Native 1.x: 2021-01-01.
+// Azure REST API version: 2022-10-01. Prior API version in Azure Native 2.x: 2022-10-01.
 type RegisteredAsn struct {
 	pulumi.CustomResourceState
 
 	// The customer's ASN from which traffic originates.
 	Asn pulumi.IntPtrOutput `pulumi:"asn"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The peering service prefix key that is to be shared with the customer.
@@ -164,6 +166,11 @@ func (o RegisteredAsnOutput) ToRegisteredAsnOutputWithContext(ctx context.Contex
 // The customer's ASN from which traffic originates.
 func (o RegisteredAsnOutput) Asn() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RegisteredAsn) pulumi.IntPtrOutput { return v.Asn }).(pulumi.IntPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o RegisteredAsnOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegisteredAsn) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource.

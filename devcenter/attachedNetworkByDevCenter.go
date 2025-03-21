@@ -13,12 +13,12 @@ import (
 )
 
 // Represents an attached NetworkConnection.
-// Azure REST API version: 2023-04-01. Prior API version in Azure Native 1.x: 2022-09-01-preview.
-//
-// Other available API versions: 2023-08-01-preview, 2023-10-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview, 2024-10-01-preview.
+// Azure REST API version: 2024-02-01. Prior API version in Azure Native 2.x: 2023-04-01.
 type AttachedNetworkByDevCenter struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// AAD Join type of the network. This is populated based on the referenced Network Connection.
 	DomainJoinType pulumi.StringOutput `pulumi:"domainJoinType"`
 	// Health check status values
@@ -95,6 +95,9 @@ func NewAttachedNetworkByDevCenter(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:devcenter/v20241001preview:AttachedNetworkByDevCenter"),
+		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20250201:AttachedNetworkByDevCenter"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -188,6 +191,11 @@ func (o AttachedNetworkByDevCenterOutput) ToAttachedNetworkByDevCenterOutput() A
 
 func (o AttachedNetworkByDevCenterOutput) ToAttachedNetworkByDevCenterOutputWithContext(ctx context.Context) AttachedNetworkByDevCenterOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o AttachedNetworkByDevCenterOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *AttachedNetworkByDevCenter) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // AAD Join type of the network. This is populated based on the referenced Network Connection.

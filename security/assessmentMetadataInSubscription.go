@@ -13,13 +13,15 @@ import (
 )
 
 // Security assessment metadata response
-// Azure REST API version: 2021-06-01. Prior API version in Azure Native 1.x: 2020-01-01.
+// Azure REST API version: 2021-06-01. Prior API version in Azure Native 2.x: 2021-06-01.
 type AssessmentMetadataInSubscription struct {
 	pulumi.CustomResourceState
 
 	// BuiltIn if the assessment based on built-in Azure Policy definition, Custom if the assessment based on custom Azure Policy definition
-	AssessmentType pulumi.StringOutput      `pulumi:"assessmentType"`
-	Categories     pulumi.StringArrayOutput `pulumi:"categories"`
+	AssessmentType pulumi.StringOutput `pulumi:"assessmentType"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput      `pulumi:"azureApiVersion"`
+	Categories      pulumi.StringArrayOutput `pulumi:"categories"`
 	// Human readable description of the assessment
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// User friendly display name of the assessment
@@ -70,10 +72,16 @@ func NewAssessmentMetadataInSubscription(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:security/v20190101preview:AssessmentMetadataInSubscription"),
 		},
 		{
+			Type: pulumi.String("azure-native:security/v20190101preview:AssessmentsMetadataSubscription"),
+		},
+		{
 			Type: pulumi.String("azure-native:security/v20200101:AssessmentMetadataInSubscription"),
 		},
 		{
 			Type: pulumi.String("azure-native:security/v20210601:AssessmentMetadataInSubscription"),
+		},
+		{
+			Type: pulumi.String("azure-native:security:AssessmentsMetadataSubscription"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -208,6 +216,11 @@ func (o AssessmentMetadataInSubscriptionOutput) ToAssessmentMetadataInSubscripti
 // BuiltIn if the assessment based on built-in Azure Policy definition, Custom if the assessment based on custom Azure Policy definition
 func (o AssessmentMetadataInSubscriptionOutput) AssessmentType() pulumi.StringOutput {
 	return o.ApplyT(func(v *AssessmentMetadataInSubscription) pulumi.StringOutput { return v.AssessmentType }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o AssessmentMetadataInSubscriptionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *AssessmentMetadataInSubscription) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 func (o AssessmentMetadataInSubscriptionOutput) Categories() pulumi.StringArrayOutput {

@@ -13,8 +13,6 @@ import (
 
 // Gets Kubernetes Cluster Extension.
 // Azure REST API version: 2023-05-01.
-//
-// Other available API versions: 2020-07-01-preview, 2022-04-02-preview, 2022-07-01.
 func LookupExtension(ctx *pulumi.Context, args *LookupExtensionArgs, opts ...pulumi.InvokeOption) (*LookupExtensionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupExtensionResult
@@ -44,6 +42,8 @@ type LookupExtensionResult struct {
 	AksAssignedIdentity *ExtensionResponseAksAssignedIdentity `pulumi:"aksAssignedIdentity"`
 	// Flag to note if this extension participates in auto upgrade of minor version, or not.
 	AutoUpgradeMinorVersion *bool `pulumi:"autoUpgradeMinorVersion"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Configuration settings that are sensitive, as name-value pairs for configuring this extension.
 	ConfigurationProtectedSettings map[string]string `pulumi:"configurationProtectedSettings"`
 	// Configuration settings, as name-value pairs for configuring this extension.
@@ -152,6 +152,11 @@ func (o LookupExtensionResultOutput) AksAssignedIdentity() ExtensionResponseAksA
 // Flag to note if this extension participates in auto upgrade of minor version, or not.
 func (o LookupExtensionResultOutput) AutoUpgradeMinorVersion() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupExtensionResult) *bool { return v.AutoUpgradeMinorVersion }).(pulumi.BoolPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupExtensionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupExtensionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Configuration settings that are sensitive, as name-value pairs for configuring this extension.

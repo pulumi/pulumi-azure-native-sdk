@@ -12,9 +12,7 @@ import (
 )
 
 // Get Alias Subscription.
-// Azure REST API version: 2021-10-01.
-//
-// Other available API versions: 2020-09-01, 2024-08-01-preview.
+// Azure REST API version: 2024-08-01-preview.
 func LookupAlias(ctx *pulumi.Context, args *LookupAliasArgs, opts ...pulumi.InvokeOption) (*LookupAliasResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAliasResult
@@ -32,6 +30,8 @@ type LookupAliasArgs struct {
 
 // Subscription Information with the alias.
 type LookupAliasResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified ID for the alias resource.
 	Id string `pulumi:"id"`
 	// Alias ID.
@@ -75,6 +75,11 @@ func (o LookupAliasResultOutput) ToLookupAliasResultOutput() LookupAliasResultOu
 
 func (o LookupAliasResultOutput) ToLookupAliasResultOutputWithContext(ctx context.Context) LookupAliasResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupAliasResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAliasResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified ID for the alias resource.

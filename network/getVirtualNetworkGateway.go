@@ -12,9 +12,7 @@ import (
 )
 
 // Gets the specified virtual network gateway by resource group.
-// Azure REST API version: 2023-02-01.
-//
-// Other available API versions: 2019-08-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Azure REST API version: 2024-05-01.
 func LookupVirtualNetworkGateway(ctx *pulumi.Context, args *LookupVirtualNetworkGatewayArgs, opts ...pulumi.InvokeOption) (*LookupVirtualNetworkGatewayResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVirtualNetworkGatewayResult
@@ -42,6 +40,10 @@ type LookupVirtualNetworkGatewayResult struct {
 	AllowRemoteVnetTraffic *bool `pulumi:"allowRemoteVnetTraffic"`
 	// Configures this gateway to accept traffic from remote Virtual WAN networks.
 	AllowVirtualWanTraffic *bool `pulumi:"allowVirtualWanTraffic"`
+	// Autoscale configuration for virutal network gateway
+	AutoScaleConfiguration *VirtualNetworkGatewayAutoScaleConfigurationResponse `pulumi:"autoScaleConfiguration"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Virtual network gateway's BGP speaker settings.
 	BgpSettings *BgpSettingsResponse `pulumi:"bgpSettings"`
 	// The reference to the address space resource which represents the custom routes address space specified by the customer for virtual network gateway and VpnClient.
@@ -66,6 +68,8 @@ type LookupVirtualNetworkGatewayResult struct {
 	GatewayType *string `pulumi:"gatewayType"`
 	// Resource ID.
 	Id *string `pulumi:"id"`
+	// The identity of the virtual network gateway, if configured.
+	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
 	// The IP address allocated by the gateway to which dns requests can be sent.
 	InboundDnsForwardingEndpoint string `pulumi:"inboundDnsForwardingEndpoint"`
 	// IP configurations for virtual network gateway.
@@ -78,6 +82,8 @@ type LookupVirtualNetworkGatewayResult struct {
 	NatRules []VirtualNetworkGatewayNatRuleResponse `pulumi:"natRules"`
 	// The provisioning state of the virtual network gateway resource.
 	ProvisioningState string `pulumi:"provisioningState"`
+	// Property to indicate if the Express Route Gateway has resiliency model of MultiHomed or SingleHomed
+	ResiliencyModel *string `pulumi:"resiliencyModel"`
 	// The resource GUID property of the virtual network gateway resource.
 	ResourceGuid string `pulumi:"resourceGuid"`
 	// The reference to the VirtualNetworkGatewaySku resource which represents the SKU selected for Virtual network gateway.
@@ -153,6 +159,18 @@ func (o LookupVirtualNetworkGatewayResultOutput) AllowVirtualWanTraffic() pulumi
 	return o.ApplyT(func(v LookupVirtualNetworkGatewayResult) *bool { return v.AllowVirtualWanTraffic }).(pulumi.BoolPtrOutput)
 }
 
+// Autoscale configuration for virutal network gateway
+func (o LookupVirtualNetworkGatewayResultOutput) AutoScaleConfiguration() VirtualNetworkGatewayAutoScaleConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v LookupVirtualNetworkGatewayResult) *VirtualNetworkGatewayAutoScaleConfigurationResponse {
+		return v.AutoScaleConfiguration
+	}).(VirtualNetworkGatewayAutoScaleConfigurationResponsePtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupVirtualNetworkGatewayResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVirtualNetworkGatewayResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Virtual network gateway's BGP speaker settings.
 func (o LookupVirtualNetworkGatewayResultOutput) BgpSettings() BgpSettingsResponsePtrOutput {
 	return o.ApplyT(func(v LookupVirtualNetworkGatewayResult) *BgpSettingsResponse { return v.BgpSettings }).(BgpSettingsResponsePtrOutput)
@@ -213,6 +231,11 @@ func (o LookupVirtualNetworkGatewayResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVirtualNetworkGatewayResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// The identity of the virtual network gateway, if configured.
+func (o LookupVirtualNetworkGatewayResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupVirtualNetworkGatewayResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
+}
+
 // The IP address allocated by the gateway to which dns requests can be sent.
 func (o LookupVirtualNetworkGatewayResultOutput) InboundDnsForwardingEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualNetworkGatewayResult) string { return v.InboundDnsForwardingEndpoint }).(pulumi.StringOutput)
@@ -243,6 +266,11 @@ func (o LookupVirtualNetworkGatewayResultOutput) NatRules() VirtualNetworkGatewa
 // The provisioning state of the virtual network gateway resource.
 func (o LookupVirtualNetworkGatewayResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualNetworkGatewayResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Property to indicate if the Express Route Gateway has resiliency model of MultiHomed or SingleHomed
+func (o LookupVirtualNetworkGatewayResultOutput) ResiliencyModel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupVirtualNetworkGatewayResult) *string { return v.ResiliencyModel }).(pulumi.StringPtrOutput)
 }
 
 // The resource GUID property of the virtual network gateway resource.

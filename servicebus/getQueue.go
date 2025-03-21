@@ -12,9 +12,7 @@ import (
 )
 
 // Returns a description for the specified queue.
-// Azure REST API version: 2022-01-01-preview.
-//
-// Other available API versions: 2022-10-01-preview, 2023-01-01-preview, 2024-01-01.
+// Azure REST API version: 2024-01-01.
 func LookupQueue(ctx *pulumi.Context, args *LookupQueueArgs, opts ...pulumi.InvokeOption) (*LookupQueueResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupQueueResult
@@ -30,7 +28,7 @@ type LookupQueueArgs struct {
 	NamespaceName string `pulumi:"namespaceName"`
 	// The queue name.
 	QueueName string `pulumi:"queueName"`
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -40,6 +38,8 @@ type LookupQueueResult struct {
 	AccessedAt string `pulumi:"accessedAt"`
 	// ISO 8061 timeSpan idle interval after which the queue is automatically deleted. The minimum duration is 5 minutes.
 	AutoDeleteOnIdle *string `pulumi:"autoDeleteOnIdle"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Message Count Details.
 	CountDetails MessageCountDetailsResponse `pulumi:"countDetails"`
 	// The exact time the message was created.
@@ -106,7 +106,7 @@ type LookupQueueOutputArgs struct {
 	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
 	// The queue name.
 	QueueName pulumi.StringInput `pulumi:"queueName"`
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -137,6 +137,11 @@ func (o LookupQueueResultOutput) AccessedAt() pulumi.StringOutput {
 // ISO 8061 timeSpan idle interval after which the queue is automatically deleted. The minimum duration is 5 minutes.
 func (o LookupQueueResultOutput) AutoDeleteOnIdle() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupQueueResult) *string { return v.AutoDeleteOnIdle }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupQueueResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupQueueResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Message Count Details.

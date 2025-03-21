@@ -13,12 +13,12 @@ import (
 )
 
 // Represents an instance of a DNC controller.
-// Azure REST API version: 2021-03-15. Prior API version in Azure Native 1.x: 2021-03-15.
-//
-// Other available API versions: 2023-05-18-preview, 2023-06-27-preview.
+// Azure REST API version: 2023-06-27-preview. Prior API version in Azure Native 2.x: 2021-03-15.
 type ControllerDetails struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// dnc application id should be used by customer to authenticate with dnc gateway.
 	DncAppId pulumi.StringOutput `pulumi:"dncAppId"`
 	// dnc endpoint url that customers can use to connect to
@@ -31,6 +31,8 @@ type ControllerDetails struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The current state of dnc controller resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// The purpose of the dnc controller resource.
+	Purpose pulumi.StringPtrOutput `pulumi:"purpose"`
 	// Resource guid.
 	ResourceGuid pulumi.StringOutput `pulumi:"resourceGuid"`
 	// The resource tags.
@@ -48,6 +50,9 @@ func NewControllerDetails(ctx *pulumi.Context,
 
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.Purpose == nil {
+		args.Purpose = pulumi.StringPtr("prod")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -99,6 +104,8 @@ func (ControllerDetailsState) ElementType() reflect.Type {
 type controllerDetailsArgs struct {
 	// Location of the resource.
 	Location *string `pulumi:"location"`
+	// The purpose of the dnc controller resource.
+	Purpose *string `pulumi:"purpose"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the resource. It must be a minimum of 3 characters, and a maximum of 63.
@@ -111,6 +118,8 @@ type controllerDetailsArgs struct {
 type ControllerDetailsArgs struct {
 	// Location of the resource.
 	Location pulumi.StringPtrInput
+	// The purpose of the dnc controller resource.
+	Purpose pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The name of the resource. It must be a minimum of 3 characters, and a maximum of 63.
@@ -156,6 +165,11 @@ func (o ControllerDetailsOutput) ToControllerDetailsOutputWithContext(ctx contex
 	return o
 }
 
+// The Azure API version of the resource.
+func (o ControllerDetailsOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ControllerDetails) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // dnc application id should be used by customer to authenticate with dnc gateway.
 func (o ControllerDetailsOutput) DncAppId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ControllerDetails) pulumi.StringOutput { return v.DncAppId }).(pulumi.StringOutput)
@@ -184,6 +198,11 @@ func (o ControllerDetailsOutput) Name() pulumi.StringOutput {
 // The current state of dnc controller resource.
 func (o ControllerDetailsOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *ControllerDetails) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The purpose of the dnc controller resource.
+func (o ControllerDetailsOutput) Purpose() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ControllerDetails) pulumi.StringPtrOutput { return v.Purpose }).(pulumi.StringPtrOutput)
 }
 
 // Resource guid.

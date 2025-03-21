@@ -12,14 +12,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Azure REST API version: 2022-06-01. Prior API version in Azure Native 1.x: 2021-03-01.
-//
-// Other available API versions: 2022-08-01, 2023-01-01, 2023-07-07, 2023-10-20.
+// Azure REST API version: 2023-10-20. Prior API version in Azure Native 2.x: 2022-06-01.
 type Monitor struct {
 	pulumi.CustomResourceState
 
-	Identity IdentityPropertiesResponsePtrOutput `pulumi:"identity"`
-	Location pulumi.StringOutput                 `pulumi:"location"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput                 `pulumi:"azureApiVersion"`
+	Identity        IdentityPropertiesResponsePtrOutput `pulumi:"identity"`
+	Location        pulumi.StringOutput                 `pulumi:"location"`
 	// Name of the monitor resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Properties specific to the monitor resource.
@@ -160,6 +160,11 @@ func (o MonitorOutput) ToMonitorOutput() MonitorOutput {
 
 func (o MonitorOutput) ToMonitorOutputWithContext(ctx context.Context) MonitorOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o MonitorOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Monitor) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 func (o MonitorOutput) Identity() IdentityPropertiesResponsePtrOutput {

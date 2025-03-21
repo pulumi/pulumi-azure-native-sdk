@@ -13,12 +13,12 @@ import (
 )
 
 // Represents a Private Endpoint Connection ARM resource - a sub-resource of Notification Hubs namespace.
-// Azure REST API version: 2023-01-01-preview.
-//
-// Other available API versions: 2023-09-01, 2023-10-01-preview.
+// Azure REST API version: 2023-10-01-preview. Prior API version in Azure Native 2.x: 2023-01-01-preview.
 type PrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Private Endpoint Connection properties.
@@ -144,6 +144,11 @@ func (o PrivateEndpointConnectionOutput) ToPrivateEndpointConnectionOutput() Pri
 
 func (o PrivateEndpointConnectionOutput) ToPrivateEndpointConnectionOutputWithContext(ctx context.Context) PrivateEndpointConnectionOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o PrivateEndpointConnectionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrivateEndpointConnection) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

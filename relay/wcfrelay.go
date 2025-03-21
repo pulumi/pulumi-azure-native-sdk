@@ -13,12 +13,12 @@ import (
 )
 
 // Description of the WCF relay resource.
-// Azure REST API version: 2021-11-01. Prior API version in Azure Native 1.x: 2017-04-01.
-//
-// Other available API versions: 2024-01-01.
+// Azure REST API version: 2024-01-01. Prior API version in Azure Native 2.x: 2021-11-01.
 type WCFRelay struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The time the WCF relay was created.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// Returns true if the relay is dynamic; otherwise, false.
@@ -175,6 +175,11 @@ func (o WCFRelayOutput) ToWCFRelayOutput() WCFRelayOutput {
 
 func (o WCFRelayOutput) ToWCFRelayOutputWithContext(ctx context.Context) WCFRelayOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o WCFRelayOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *WCFRelay) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The time the WCF relay was created.

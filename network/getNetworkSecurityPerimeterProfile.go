@@ -36,6 +36,8 @@ type LookupNetworkSecurityPerimeterProfileArgs struct {
 type LookupNetworkSecurityPerimeterProfileResult struct {
 	// Version number that increases with every update to access rules within the profile.
 	AccessRulesVersion string `pulumi:"accessRulesVersion"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Version number that increases with every update to diagnostic settings within the profile.
 	DiagnosticSettingsVersion string `pulumi:"diagnosticSettingsVersion"`
 	// Resource ID.
@@ -90,6 +92,11 @@ func (o LookupNetworkSecurityPerimeterProfileResultOutput) ToLookupNetworkSecuri
 // Version number that increases with every update to access rules within the profile.
 func (o LookupNetworkSecurityPerimeterProfileResultOutput) AccessRulesVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkSecurityPerimeterProfileResult) string { return v.AccessRulesVersion }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupNetworkSecurityPerimeterProfileResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkSecurityPerimeterProfileResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Version number that increases with every update to diagnostic settings within the profile.

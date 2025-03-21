@@ -13,12 +13,12 @@ import (
 )
 
 // Definition of the watcher type.
-// Azure REST API version: 2020-01-13-preview. Prior API version in Azure Native 1.x: 2019-06-01.
-//
-// Other available API versions: 2023-05-15-preview, 2024-10-23.
+// Azure REST API version: 2023-05-15-preview. Prior API version in Azure Native 2.x: 2020-01-13-preview.
 type Watcher struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets or sets the creation time.
 	CreationTime pulumi.StringOutput `pulumi:"creationTime"`
 	// Gets or sets the description.
@@ -43,9 +43,11 @@ type Watcher struct {
 	ScriptRunOn pulumi.StringPtrOutput `pulumi:"scriptRunOn"`
 	// Gets the current status of the watcher.
 	Status pulumi.StringOutput `pulumi:"status"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The type of the resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -196,6 +198,11 @@ func (o WatcherOutput) ToWatcherOutputWithContext(ctx context.Context) WatcherOu
 	return o
 }
 
+// The Azure API version of the resource.
+func (o WatcherOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Watcher) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Gets or sets the creation time.
 func (o WatcherOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Watcher) pulumi.StringOutput { return v.CreationTime }).(pulumi.StringOutput)
@@ -256,12 +263,17 @@ func (o WatcherOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Watcher) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o WatcherOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Watcher) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
 // Resource tags.
 func (o WatcherOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Watcher) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The type of the resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o WatcherOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Watcher) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

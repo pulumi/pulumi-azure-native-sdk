@@ -13,12 +13,12 @@ import (
 )
 
 // Deployment information.
-// Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2021-01-01.
-//
-// Other available API versions: 2023-07-01, 2024-03-01, 2024-07-01, 2024-11-01.
+// Azure REST API version: 2024-03-01. Prior API version in Azure Native 2.x: 2022-09-01.
 type DeploymentAtManagementGroupScope struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// the location of the deployment.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// The name of the deployment.
@@ -186,6 +186,11 @@ func (o DeploymentAtManagementGroupScopeOutput) ToDeploymentAtManagementGroupSco
 
 func (o DeploymentAtManagementGroupScopeOutput) ToDeploymentAtManagementGroupScopeOutputWithContext(ctx context.Context) DeploymentAtManagementGroupScopeOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o DeploymentAtManagementGroupScopeOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DeploymentAtManagementGroupScope) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // the location of the deployment.

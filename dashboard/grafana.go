@@ -13,12 +13,12 @@ import (
 )
 
 // The grafana resource type.
-// Azure REST API version: 2022-08-01. Prior API version in Azure Native 1.x: 2022-05-01-preview.
-//
-// Other available API versions: 2021-09-01-preview, 2022-10-01-preview, 2023-09-01, 2023-10-01-preview, 2024-10-01.
+// Azure REST API version: 2024-10-01. Prior API version in Azure Native 2.x: 2022-08-01.
 type Grafana struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The managed identity of the grafana resource.
 	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the grafana resource lives
@@ -46,6 +46,9 @@ func NewGrafana(ctx *pulumi.Context,
 
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.Properties != nil {
+		args.Properties = args.Properties.ToManagedGrafanaPropertiesPtrOutput().ApplyT(func(v *ManagedGrafanaProperties) *ManagedGrafanaProperties { return v.Defaults() }).(ManagedGrafanaPropertiesPtrOutput)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -173,6 +176,11 @@ func (o GrafanaOutput) ToGrafanaOutput() GrafanaOutput {
 
 func (o GrafanaOutput) ToGrafanaOutputWithContext(ctx context.Context) GrafanaOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o GrafanaOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Grafana) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The managed identity of the grafana resource.

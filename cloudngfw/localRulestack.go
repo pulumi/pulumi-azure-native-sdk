@@ -13,14 +13,14 @@ import (
 )
 
 // PaloAltoNetworks LocalRulestack
-// Azure REST API version: 2023-09-01.
-//
-// Other available API versions: 2022-08-29, 2022-08-29-preview, 2023-09-01-preview, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview.
+// Azure REST API version: 2025-02-06-preview. Prior API version in Azure Native 2.x: 2023-09-01.
 type LocalRulestack struct {
 	pulumi.CustomResourceState
 
 	// subscription scope of global rulestack
 	AssociatedSubscriptions pulumi.StringArrayOutput `pulumi:"associatedSubscriptions"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Mode for default rules creation
 	DefaultMode pulumi.StringPtrOutput `pulumi:"defaultMode"`
 	// rulestack description
@@ -219,6 +219,11 @@ func (o LocalRulestackOutput) ToLocalRulestackOutputWithContext(ctx context.Cont
 // subscription scope of global rulestack
 func (o LocalRulestackOutput) AssociatedSubscriptions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *LocalRulestack) pulumi.StringArrayOutput { return v.AssociatedSubscriptions }).(pulumi.StringArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o LocalRulestackOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *LocalRulestack) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Mode for default rules creation

@@ -34,6 +34,8 @@ type LookupPublishedBlueprintArgs struct {
 
 // Represents a published blueprint.
 type LookupPublishedBlueprintResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Name of the published blueprint definition.
 	BlueprintName *string `pulumi:"blueprintName"`
 	// Version-specific change notes.
@@ -93,6 +95,11 @@ func (o LookupPublishedBlueprintResultOutput) ToLookupPublishedBlueprintResultOu
 
 func (o LookupPublishedBlueprintResultOutput) ToLookupPublishedBlueprintResultOutputWithContext(ctx context.Context) LookupPublishedBlueprintResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupPublishedBlueprintResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPublishedBlueprintResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Name of the published blueprint definition.

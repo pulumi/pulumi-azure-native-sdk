@@ -34,6 +34,8 @@ type LookupPrivateStoreCollectionOfferArgs struct {
 
 // The privateStore offer data structure.
 type LookupPrivateStoreCollectionOfferResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Private store offer creation date
 	CreatedAt string `pulumi:"createdAt"`
 	// Identifier for purposes of race condition
@@ -101,6 +103,11 @@ func (o LookupPrivateStoreCollectionOfferResultOutput) ToLookupPrivateStoreColle
 
 func (o LookupPrivateStoreCollectionOfferResultOutput) ToLookupPrivateStoreCollectionOfferResultOutputWithContext(ctx context.Context) LookupPrivateStoreCollectionOfferResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupPrivateStoreCollectionOfferResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPrivateStoreCollectionOfferResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Private store offer creation date

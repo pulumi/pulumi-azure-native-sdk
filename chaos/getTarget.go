@@ -12,9 +12,7 @@ import (
 )
 
 // Get a Target resource that extends a tracked regional resource.
-// Azure REST API version: 2023-04-15-preview.
-//
-// Other available API versions: 2023-09-01-preview, 2023-10-27-preview, 2023-11-01, 2024-01-01, 2024-03-22-preview, 2024-11-01-preview, 2025-01-01.
+// Azure REST API version: 2024-01-01.
 func LookupTarget(ctx *pulumi.Context, args *LookupTargetArgs, opts ...pulumi.InvokeOption) (*LookupTargetResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTargetResult
@@ -40,6 +38,8 @@ type LookupTargetArgs struct {
 
 // Model that represents a Target resource.
 type LookupTargetResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// Location of the target resource.
@@ -93,6 +93,11 @@ func (o LookupTargetResultOutput) ToLookupTargetResultOutput() LookupTargetResul
 
 func (o LookupTargetResultOutput) ToLookupTargetResultOutputWithContext(ctx context.Context) LookupTargetResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupTargetResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTargetResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

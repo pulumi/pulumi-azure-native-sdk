@@ -13,9 +13,7 @@ import (
 )
 
 // Description of topic resource.
-// Azure REST API version: 2022-01-01-preview. Prior API version in Azure Native 1.x: 2017-04-01.
-//
-// Other available API versions: 2022-10-01-preview, 2023-01-01-preview, 2024-01-01.
+// Azure REST API version: 2024-01-01. Prior API version in Azure Native 2.x: 2022-01-01-preview.
 type Topic struct {
 	pulumi.CustomResourceState
 
@@ -23,6 +21,8 @@ type Topic struct {
 	AccessedAt pulumi.StringOutput `pulumi:"accessedAt"`
 	// ISO 8601 timespan idle interval after which the topic is automatically deleted. The minimum duration is 5 minutes.
 	AutoDeleteOnIdle pulumi.StringPtrOutput `pulumi:"autoDeleteOnIdle"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Message count details
 	CountDetails MessageCountDetailsResponseOutput `pulumi:"countDetails"`
 	// Exact time the message was created.
@@ -165,7 +165,7 @@ type topicArgs struct {
 	NamespaceName string `pulumi:"namespaceName"`
 	// Value indicating if this topic requires duplicate detection.
 	RequiresDuplicateDetection *bool `pulumi:"requiresDuplicateDetection"`
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Enumerates the possible values for the status of a messaging entity.
 	Status *EntityStatus `pulumi:"status"`
@@ -197,7 +197,7 @@ type TopicArgs struct {
 	NamespaceName pulumi.StringInput
 	// Value indicating if this topic requires duplicate detection.
 	RequiresDuplicateDetection pulumi.BoolPtrInput
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Enumerates the possible values for the status of a messaging entity.
 	Status EntityStatusPtrInput
@@ -252,6 +252,11 @@ func (o TopicOutput) AccessedAt() pulumi.StringOutput {
 // ISO 8601 timespan idle interval after which the topic is automatically deleted. The minimum duration is 5 minutes.
 func (o TopicOutput) AutoDeleteOnIdle() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Topic) pulumi.StringPtrOutput { return v.AutoDeleteOnIdle }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o TopicOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Topic) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Message count details

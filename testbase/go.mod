@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-azure-native-sdk/testbase/v2
+module github.com/pulumi/pulumi-azure-native-sdk/testbase/v3
 
 go 1.22
 

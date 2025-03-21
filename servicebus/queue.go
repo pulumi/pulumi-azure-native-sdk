@@ -13,9 +13,7 @@ import (
 )
 
 // Description of queue Resource.
-// Azure REST API version: 2022-01-01-preview. Prior API version in Azure Native 1.x: 2017-04-01.
-//
-// Other available API versions: 2022-10-01-preview, 2023-01-01-preview, 2024-01-01.
+// Azure REST API version: 2024-01-01. Prior API version in Azure Native 2.x: 2022-01-01-preview.
 type Queue struct {
 	pulumi.CustomResourceState
 
@@ -23,6 +21,8 @@ type Queue struct {
 	AccessedAt pulumi.StringOutput `pulumi:"accessedAt"`
 	// ISO 8061 timeSpan idle interval after which the queue is automatically deleted. The minimum duration is 5 minutes.
 	AutoDeleteOnIdle pulumi.StringPtrOutput `pulumi:"autoDeleteOnIdle"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Message Count Details.
 	CountDetails MessageCountDetailsResponseOutput `pulumi:"countDetails"`
 	// The exact time the message was created.
@@ -189,7 +189,7 @@ type queueArgs struct {
 	RequiresDuplicateDetection *bool `pulumi:"requiresDuplicateDetection"`
 	// A value that indicates whether the queue supports the concept of sessions.
 	RequiresSession *bool `pulumi:"requiresSession"`
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Enumerates the possible values for the status of a messaging entity.
 	Status *EntityStatus `pulumi:"status"`
@@ -231,7 +231,7 @@ type QueueArgs struct {
 	RequiresDuplicateDetection pulumi.BoolPtrInput
 	// A value that indicates whether the queue supports the concept of sessions.
 	RequiresSession pulumi.BoolPtrInput
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Enumerates the possible values for the status of a messaging entity.
 	Status EntityStatusPtrInput
@@ -282,6 +282,11 @@ func (o QueueOutput) AccessedAt() pulumi.StringOutput {
 // ISO 8061 timeSpan idle interval after which the queue is automatically deleted. The minimum duration is 5 minutes.
 func (o QueueOutput) AutoDeleteOnIdle() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Queue) pulumi.StringPtrOutput { return v.AutoDeleteOnIdle }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o QueueOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Queue) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Message Count Details.

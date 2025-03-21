@@ -12,9 +12,7 @@ import (
 )
 
 // Organization resource.
-// Azure REST API version: 2021-12-01.
-//
-// Other available API versions: 2020-03-01-preview, 2023-08-22, 2024-02-13, 2024-07-01.
+// Azure REST API version: 2024-07-01.
 func LookupOrganization(ctx *pulumi.Context, args *LookupOrganizationArgs, opts ...pulumi.InvokeOption) (*LookupOrganizationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupOrganizationResult
@@ -34,6 +32,8 @@ type LookupOrganizationArgs struct {
 
 // Organization resource.
 type LookupOrganizationResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The creation time of the resource.
 	CreatedTime string `pulumi:"createdTime"`
 	// The ARM id of the resource.
@@ -93,6 +93,11 @@ func (o LookupOrganizationResultOutput) ToLookupOrganizationResultOutput() Looku
 
 func (o LookupOrganizationResultOutput) ToLookupOrganizationResultOutputWithContext(ctx context.Context) LookupOrganizationResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupOrganizationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOrganizationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The creation time of the resource.

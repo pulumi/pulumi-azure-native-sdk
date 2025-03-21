@@ -13,17 +13,17 @@ import (
 )
 
 // The Get Storage Account ManagementPolicies operation response.
-// Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2021-02-01.
-//
-// Other available API versions: 2023-01-01, 2023-04-01, 2023-05-01, 2024-01-01.
+// Azure REST API version: 2024-01-01. Prior API version in Azure Native 2.x: 2022-09-01.
 type ManagementPolicy struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Returns the date and time the ManagementPolicies was last modified.
 	LastModifiedTime pulumi.StringOutput `pulumi:"lastModifiedTime"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The Storage Account ManagementPolicy, in JSON format. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+	// The Storage Account ManagementPolicy, in JSON format. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.
 	Policy ManagementPolicySchemaResponseOutput `pulumi:"policy"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -136,7 +136,7 @@ type managementPolicyArgs struct {
 	AccountName string `pulumi:"accountName"`
 	// The name of the Storage Account Management Policy. It should always be 'default'
 	ManagementPolicyName *string `pulumi:"managementPolicyName"`
-	// The Storage Account ManagementPolicy, in JSON format. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+	// The Storage Account ManagementPolicy, in JSON format. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.
 	Policy ManagementPolicySchema `pulumi:"policy"`
 	// The name of the resource group within the user's subscription. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -148,7 +148,7 @@ type ManagementPolicyArgs struct {
 	AccountName pulumi.StringInput
 	// The name of the Storage Account Management Policy. It should always be 'default'
 	ManagementPolicyName pulumi.StringPtrInput
-	// The Storage Account ManagementPolicy, in JSON format. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+	// The Storage Account ManagementPolicy, in JSON format. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.
 	Policy ManagementPolicySchemaInput
 	// The name of the resource group within the user's subscription. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
@@ -191,6 +191,11 @@ func (o ManagementPolicyOutput) ToManagementPolicyOutputWithContext(ctx context.
 	return o
 }
 
+// The Azure API version of the resource.
+func (o ManagementPolicyOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ManagementPolicy) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Returns the date and time the ManagementPolicies was last modified.
 func (o ManagementPolicyOutput) LastModifiedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagementPolicy) pulumi.StringOutput { return v.LastModifiedTime }).(pulumi.StringOutput)
@@ -201,7 +206,7 @@ func (o ManagementPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagementPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The Storage Account ManagementPolicy, in JSON format. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+// The Storage Account ManagementPolicy, in JSON format. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.
 func (o ManagementPolicyOutput) Policy() ManagementPolicySchemaResponseOutput {
 	return o.ApplyT(func(v *ManagementPolicy) ManagementPolicySchemaResponseOutput { return v.Policy }).(ManagementPolicySchemaResponseOutput)
 }

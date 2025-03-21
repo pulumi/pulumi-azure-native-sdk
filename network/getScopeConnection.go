@@ -12,9 +12,7 @@ import (
 )
 
 // Get specified scope connection created by this Network Manager.
-// Azure REST API version: 2023-02-01.
-//
-// Other available API versions: 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Azure REST API version: 2024-05-01.
 func LookupScopeConnection(ctx *pulumi.Context, args *LookupScopeConnectionArgs, opts ...pulumi.InvokeOption) (*LookupScopeConnectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupScopeConnectionResult
@@ -36,6 +34,8 @@ type LookupScopeConnectionArgs struct {
 
 // The Scope Connections resource
 type LookupScopeConnectionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// A description of the scope connection.
 	Description *string `pulumi:"description"`
 	// A unique read-only string that changes whenever the resource is updated.
@@ -89,6 +89,11 @@ func (o LookupScopeConnectionResultOutput) ToLookupScopeConnectionResultOutput()
 
 func (o LookupScopeConnectionResultOutput) ToLookupScopeConnectionResultOutputWithContext(ctx context.Context) LookupScopeConnectionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupScopeConnectionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupScopeConnectionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A description of the scope connection.

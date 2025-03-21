@@ -12,9 +12,7 @@ import (
 )
 
 // Static Site Linked Backend ARM resource.
-// Azure REST API version: 2022-09-01.
-//
-// Other available API versions: 2023-01-01, 2023-12-01, 2024-04-01.
+// Azure REST API version: 2024-04-01.
 func LookupStaticSiteLinkedBackendForBuild(ctx *pulumi.Context, args *LookupStaticSiteLinkedBackendForBuildArgs, opts ...pulumi.InvokeOption) (*LookupStaticSiteLinkedBackendForBuildResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupStaticSiteLinkedBackendForBuildResult
@@ -38,6 +36,8 @@ type LookupStaticSiteLinkedBackendForBuildArgs struct {
 
 // Static Site Linked Backend ARM resource.
 type LookupStaticSiteLinkedBackendForBuildResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The resource id of the backend linked to the static site
 	BackendResourceId *string `pulumi:"backendResourceId"`
 	// The date and time on which the backend was linked to the static site.
@@ -93,6 +93,11 @@ func (o LookupStaticSiteLinkedBackendForBuildResultOutput) ToLookupStaticSiteLin
 
 func (o LookupStaticSiteLinkedBackendForBuildResultOutput) ToLookupStaticSiteLinkedBackendForBuildResultOutputWithContext(ctx context.Context) LookupStaticSiteLinkedBackendForBuildResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupStaticSiteLinkedBackendForBuildResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStaticSiteLinkedBackendForBuildResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The resource id of the backend linked to the static site

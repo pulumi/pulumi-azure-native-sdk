@@ -8004,6 +8004,80 @@ func (o ImportDiskDetailsResponseMapOutput) MapIndex(k pulumi.StringInput) Impor
 	}).(ImportDiskDetailsResponseOutput)
 }
 
+// Job Delay Notification details
+type JobDelayDetailsResponse struct {
+	// Description of the delay.
+	Description string `pulumi:"description"`
+	// Delay Error code
+	ErrorCode string `pulumi:"errorCode"`
+	// Timestamp when the delay notification was resolved.
+	ResolutionTime string `pulumi:"resolutionTime"`
+	// Timestamp when the delay notification was created.
+	StartTime string `pulumi:"startTime"`
+	// Status of notification
+	Status string `pulumi:"status"`
+}
+
+// Job Delay Notification details
+type JobDelayDetailsResponseOutput struct{ *pulumi.OutputState }
+
+func (JobDelayDetailsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobDelayDetailsResponse)(nil)).Elem()
+}
+
+func (o JobDelayDetailsResponseOutput) ToJobDelayDetailsResponseOutput() JobDelayDetailsResponseOutput {
+	return o
+}
+
+func (o JobDelayDetailsResponseOutput) ToJobDelayDetailsResponseOutputWithContext(ctx context.Context) JobDelayDetailsResponseOutput {
+	return o
+}
+
+// Description of the delay.
+func (o JobDelayDetailsResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v JobDelayDetailsResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Delay Error code
+func (o JobDelayDetailsResponseOutput) ErrorCode() pulumi.StringOutput {
+	return o.ApplyT(func(v JobDelayDetailsResponse) string { return v.ErrorCode }).(pulumi.StringOutput)
+}
+
+// Timestamp when the delay notification was resolved.
+func (o JobDelayDetailsResponseOutput) ResolutionTime() pulumi.StringOutput {
+	return o.ApplyT(func(v JobDelayDetailsResponse) string { return v.ResolutionTime }).(pulumi.StringOutput)
+}
+
+// Timestamp when the delay notification was created.
+func (o JobDelayDetailsResponseOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v JobDelayDetailsResponse) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+// Status of notification
+func (o JobDelayDetailsResponseOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v JobDelayDetailsResponse) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type JobDelayDetailsResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (JobDelayDetailsResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobDelayDetailsResponse)(nil)).Elem()
+}
+
+func (o JobDelayDetailsResponseArrayOutput) ToJobDelayDetailsResponseArrayOutput() JobDelayDetailsResponseArrayOutput {
+	return o
+}
+
+func (o JobDelayDetailsResponseArrayOutput) ToJobDelayDetailsResponseArrayOutputWithContext(ctx context.Context) JobDelayDetailsResponseArrayOutput {
+	return o
+}
+
+func (o JobDelayDetailsResponseArrayOutput) Index(i pulumi.IntInput) JobDelayDetailsResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobDelayDetailsResponse {
+		return vs[0].([]JobDelayDetailsResponse)[vs[1].(int)]
+	}).(JobDelayDetailsResponseOutput)
+}
+
 // Additional delivery info.
 type JobDeliveryInfo struct {
 	// Scheduled date time.
@@ -8206,6 +8280,8 @@ func (o JobDeliveryInfoResponsePtrOutput) ScheduledDateTime() pulumi.StringPtrOu
 
 // Job stages.
 type JobStagesResponse struct {
+	// Delay information for the job stages.
+	DelayInformation []JobDelayDetailsResponse `pulumi:"delayInformation"`
 	// Display name of the job stage.
 	DisplayName string `pulumi:"displayName"`
 	// Job Stage Details
@@ -8231,6 +8307,11 @@ func (o JobStagesResponseOutput) ToJobStagesResponseOutput() JobStagesResponseOu
 
 func (o JobStagesResponseOutput) ToJobStagesResponseOutputWithContext(ctx context.Context) JobStagesResponseOutput {
 	return o
+}
+
+// Delay information for the job stages.
+func (o JobStagesResponseOutput) DelayInformation() JobDelayDetailsResponseArrayOutput {
+	return o.ApplyT(func(v JobStagesResponse) []JobDelayDetailsResponse { return v.DelayInformation }).(JobDelayDetailsResponseArrayOutput)
 }
 
 // Display name of the job stage.
@@ -11277,6 +11358,8 @@ type SkuResponse struct {
 	DisplayName *string `pulumi:"displayName"`
 	// The sku family.
 	Family *string `pulumi:"family"`
+	// The model name.
+	Model string `pulumi:"model"`
 	// The sku name.
 	Name string `pulumi:"name"`
 }
@@ -11304,6 +11387,11 @@ func (o SkuResponseOutput) DisplayName() pulumi.StringPtrOutput {
 // The sku family.
 func (o SkuResponseOutput) Family() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SkuResponse) *string { return v.Family }).(pulumi.StringPtrOutput)
+}
+
+// The model name.
+func (o SkuResponseOutput) Model() pulumi.StringOutput {
+	return o.ApplyT(func(v SkuResponse) string { return v.Model }).(pulumi.StringOutput)
 }
 
 // The sku name.
@@ -13407,6 +13495,8 @@ func init() {
 	pulumi.RegisterOutputType(ImportDiskDetailsMapOutput{})
 	pulumi.RegisterOutputType(ImportDiskDetailsResponseOutput{})
 	pulumi.RegisterOutputType(ImportDiskDetailsResponseMapOutput{})
+	pulumi.RegisterOutputType(JobDelayDetailsResponseOutput{})
+	pulumi.RegisterOutputType(JobDelayDetailsResponseArrayOutput{})
 	pulumi.RegisterOutputType(JobDeliveryInfoOutput{})
 	pulumi.RegisterOutputType(JobDeliveryInfoPtrOutput{})
 	pulumi.RegisterOutputType(JobDeliveryInfoResponseOutput{})

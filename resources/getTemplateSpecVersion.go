@@ -13,8 +13,6 @@ import (
 
 // Gets a Template Spec version from a specific Template Spec.
 // Azure REST API version: 2022-02-01.
-//
-// Other available API versions: 2019-06-01-preview.
 func LookupTemplateSpecVersion(ctx *pulumi.Context, args *LookupTemplateSpecVersionArgs, opts ...pulumi.InvokeOption) (*LookupTemplateSpecVersionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTemplateSpecVersionResult
@@ -36,6 +34,8 @@ type LookupTemplateSpecVersionArgs struct {
 
 // Template Spec Version object.
 type LookupTemplateSpecVersionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Template Spec version description.
 	Description *string `pulumi:"description"`
 	// String Id used to locate any resource on Azure.
@@ -95,6 +95,11 @@ func (o LookupTemplateSpecVersionResultOutput) ToLookupTemplateSpecVersionResult
 
 func (o LookupTemplateSpecVersionResultOutput) ToLookupTemplateSpecVersionResultOutputWithContext(ctx context.Context) LookupTemplateSpecVersionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupTemplateSpecVersionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTemplateSpecVersionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Template Spec version description.

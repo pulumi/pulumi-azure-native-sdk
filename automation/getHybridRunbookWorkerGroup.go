@@ -12,9 +12,7 @@ import (
 )
 
 // Retrieve a hybrid runbook worker group.
-// Azure REST API version: 2022-08-08.
-//
-// Other available API versions: 2021-06-22, 2023-05-15-preview, 2023-11-01, 2024-10-23.
+// Azure REST API version: 2023-11-01.
 func LookupHybridRunbookWorkerGroup(ctx *pulumi.Context, args *LookupHybridRunbookWorkerGroupArgs, opts ...pulumi.InvokeOption) (*LookupHybridRunbookWorkerGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupHybridRunbookWorkerGroupResult
@@ -36,6 +34,8 @@ type LookupHybridRunbookWorkerGroupArgs struct {
 
 // Definition of hybrid runbook worker group.
 type LookupHybridRunbookWorkerGroupResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Sets the credential of a worker group.
 	Credential *RunAsCredentialAssociationPropertyResponse `pulumi:"credential"`
 	// Type of the HybridWorkerGroup.
@@ -85,6 +85,11 @@ func (o LookupHybridRunbookWorkerGroupResultOutput) ToLookupHybridRunbookWorkerG
 
 func (o LookupHybridRunbookWorkerGroupResultOutput) ToLookupHybridRunbookWorkerGroupResultOutputWithContext(ctx context.Context) LookupHybridRunbookWorkerGroupResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupHybridRunbookWorkerGroupResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHybridRunbookWorkerGroupResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Sets the credential of a worker group.

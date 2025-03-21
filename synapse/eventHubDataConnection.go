@@ -13,10 +13,12 @@ import (
 )
 
 // Class representing an event hub data connection.
-// Azure REST API version: 2021-06-01-preview.
+// Azure REST API version: 2021-06-01-preview. Prior API version in Azure Native 2.x: 2021-06-01-preview.
 type EventHubDataConnection struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The event hub messages compression type
 	Compression pulumi.StringPtrOutput `pulumi:"compression"`
 	// The event hub consumer group.
@@ -82,7 +84,19 @@ func NewEventHubDataConnection(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:synapse/v20210401preview:EventHubDataConnection"),
 		},
 		{
+			Type: pulumi.String("azure-native:synapse/v20210601preview:EventGridDataConnection"),
+		},
+		{
 			Type: pulumi.String("azure-native:synapse/v20210601preview:EventHubDataConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:synapse/v20210601preview:IotHubDataConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:synapse:EventGridDataConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:synapse:IotHubDataConnection"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -222,6 +236,11 @@ func (o EventHubDataConnectionOutput) ToEventHubDataConnectionOutput() EventHubD
 
 func (o EventHubDataConnectionOutput) ToEventHubDataConnectionOutputWithContext(ctx context.Context) EventHubDataConnectionOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o EventHubDataConnectionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *EventHubDataConnection) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The event hub messages compression type

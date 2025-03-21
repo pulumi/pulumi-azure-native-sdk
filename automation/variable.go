@@ -13,12 +13,12 @@ import (
 )
 
 // Definition of the variable.
-// Azure REST API version: 2022-08-08. Prior API version in Azure Native 1.x: 2019-06-01.
-//
-// Other available API versions: 2023-05-15-preview, 2023-11-01, 2024-10-23.
+// Azure REST API version: 2023-11-01. Prior API version in Azure Native 2.x: 2022-08-08.
 type Variable struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets or sets the creation time.
 	CreationTime pulumi.StringPtrOutput `pulumi:"creationTime"`
 	// Gets or sets the description.
@@ -177,6 +177,11 @@ func (o VariableOutput) ToVariableOutput() VariableOutput {
 
 func (o VariableOutput) ToVariableOutputWithContext(ctx context.Context) VariableOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o VariableOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Variable) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets the creation time.

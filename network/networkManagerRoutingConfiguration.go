@@ -13,12 +13,12 @@ import (
 )
 
 // Defines the routing configuration
-// Azure REST API version: 2024-03-01.
-//
-// Other available API versions: 2024-05-01.
+// Azure REST API version: 2024-05-01. Prior API version in Azure Native 2.x: 2024-03-01.
 type NetworkManagerRoutingConfiguration struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// A description of the routing configuration.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// A unique read-only string that changes whenever the resource is updated.
@@ -147,6 +147,11 @@ func (o NetworkManagerRoutingConfigurationOutput) ToNetworkManagerRoutingConfigu
 
 func (o NetworkManagerRoutingConfigurationOutput) ToNetworkManagerRoutingConfigurationOutputWithContext(ctx context.Context) NetworkManagerRoutingConfigurationOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o NetworkManagerRoutingConfigurationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkManagerRoutingConfiguration) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A description of the routing configuration.

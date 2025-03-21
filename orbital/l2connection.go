@@ -13,18 +13,20 @@ import (
 )
 
 // Connects an edge site to an orbital gateway and describes what layer 2 traffic to forward between them.
-// Azure REST API version: 2024-03-01-preview.
-//
-// Other available API versions: 2024-03-01.
+// Azure REST API version: 2024-03-01-preview. Prior API version in Azure Native 2.x: 2024-03-01-preview.
 type L2Connection struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Globally-unique identifier for this connection that is to be used as a circuit ID.
 	CircuitId pulumi.StringOutput `pulumi:"circuitId"`
 	// A reference to an Microsoft.Orbital/edgeSites resource to route traffic for.
 	EdgeSite L2ConnectionsPropertiesResponseEdgeSiteOutput `pulumi:"edgeSite"`
 	// A reference to an Microsoft.Orbital/groundStations resource to route traffic for.
 	GroundStation L2ConnectionsPropertiesResponseGroundStationOutput `pulumi:"groundStation"`
+	// The name of the partner router to establish a connection to within the ground station.
+	GroundStationPartnerRouter L2ConnectionsPropertiesResponseGroundStationPartnerRouterOutput `pulumi:"groundStationPartnerRouter"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -51,6 +53,9 @@ func NewL2Connection(ctx *pulumi.Context,
 	}
 	if args.GroundStation == nil {
 		return nil, errors.New("invalid value for required argument 'GroundStation'")
+	}
+	if args.GroundStationPartnerRouter == nil {
+		return nil, errors.New("invalid value for required argument 'GroundStationPartnerRouter'")
 	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
@@ -107,11 +112,13 @@ type l2connectionArgs struct {
 	EdgeSite L2ConnectionsPropertiesEdgeSite `pulumi:"edgeSite"`
 	// A reference to an Microsoft.Orbital/groundStations resource to route traffic for.
 	GroundStation L2ConnectionsPropertiesGroundStation `pulumi:"groundStation"`
+	// The name of the partner router to establish a connection to within the ground station.
+	GroundStationPartnerRouter L2ConnectionsPropertiesGroundStationPartnerRouter `pulumi:"groundStationPartnerRouter"`
 	// L2 Connection name.
 	L2ConnectionName *string `pulumi:"l2ConnectionName"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
-	// The unique name of the partner router that cross-connects with the Orbital Edge Router at the ground station site.
+	// The unique name of the partner router that cross-connects with the Orbital Edge Router at the edge site.
 	Name string `pulumi:"name"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -127,11 +134,13 @@ type L2ConnectionArgs struct {
 	EdgeSite L2ConnectionsPropertiesEdgeSiteInput
 	// A reference to an Microsoft.Orbital/groundStations resource to route traffic for.
 	GroundStation L2ConnectionsPropertiesGroundStationInput
+	// The name of the partner router to establish a connection to within the ground station.
+	GroundStationPartnerRouter L2ConnectionsPropertiesGroundStationPartnerRouterInput
 	// L2 Connection name.
 	L2ConnectionName pulumi.StringPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
-	// The unique name of the partner router that cross-connects with the Orbital Edge Router at the ground station site.
+	// The unique name of the partner router that cross-connects with the Orbital Edge Router at the edge site.
 	Name pulumi.StringInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
@@ -178,6 +187,11 @@ func (o L2ConnectionOutput) ToL2ConnectionOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The Azure API version of the resource.
+func (o L2ConnectionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *L2Connection) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Globally-unique identifier for this connection that is to be used as a circuit ID.
 func (o L2ConnectionOutput) CircuitId() pulumi.StringOutput {
 	return o.ApplyT(func(v *L2Connection) pulumi.StringOutput { return v.CircuitId }).(pulumi.StringOutput)
@@ -191,6 +205,13 @@ func (o L2ConnectionOutput) EdgeSite() L2ConnectionsPropertiesResponseEdgeSiteOu
 // A reference to an Microsoft.Orbital/groundStations resource to route traffic for.
 func (o L2ConnectionOutput) GroundStation() L2ConnectionsPropertiesResponseGroundStationOutput {
 	return o.ApplyT(func(v *L2Connection) L2ConnectionsPropertiesResponseGroundStationOutput { return v.GroundStation }).(L2ConnectionsPropertiesResponseGroundStationOutput)
+}
+
+// The name of the partner router to establish a connection to within the ground station.
+func (o L2ConnectionOutput) GroundStationPartnerRouter() L2ConnectionsPropertiesResponseGroundStationPartnerRouterOutput {
+	return o.ApplyT(func(v *L2Connection) L2ConnectionsPropertiesResponseGroundStationPartnerRouterOutput {
+		return v.GroundStationPartnerRouter
+	}).(L2ConnectionsPropertiesResponseGroundStationPartnerRouterOutput)
 }
 
 // The geo-location where the resource lives

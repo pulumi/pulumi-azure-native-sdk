@@ -12,9 +12,7 @@ import (
 )
 
 // Gets the managementpolicy associated with the specified storage account.
-// Azure REST API version: 2022-09-01.
-//
-// Other available API versions: 2023-01-01, 2023-04-01, 2023-05-01, 2024-01-01.
+// Azure REST API version: 2024-01-01.
 func LookupManagementPolicy(ctx *pulumi.Context, args *LookupManagementPolicyArgs, opts ...pulumi.InvokeOption) (*LookupManagementPolicyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupManagementPolicyResult
@@ -36,13 +34,15 @@ type LookupManagementPolicyArgs struct {
 
 // The Get Storage Account ManagementPolicies operation response.
 type LookupManagementPolicyResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// Returns the date and time the ManagementPolicies was last modified.
 	LastModifiedTime string `pulumi:"lastModifiedTime"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// The Storage Account ManagementPolicy, in JSON format. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+	// The Storage Account ManagementPolicy, in JSON format. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.
 	Policy ManagementPolicySchemaResponse `pulumi:"policy"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
@@ -85,6 +85,11 @@ func (o LookupManagementPolicyResultOutput) ToLookupManagementPolicyResultOutput
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupManagementPolicyResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupManagementPolicyResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupManagementPolicyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagementPolicyResult) string { return v.Id }).(pulumi.StringOutput)
@@ -100,7 +105,7 @@ func (o LookupManagementPolicyResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagementPolicyResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The Storage Account ManagementPolicy, in JSON format. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+// The Storage Account ManagementPolicy, in JSON format. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.
 func (o LookupManagementPolicyResultOutput) Policy() ManagementPolicySchemaResponseOutput {
 	return o.ApplyT(func(v LookupManagementPolicyResult) ManagementPolicySchemaResponse { return v.Policy }).(ManagementPolicySchemaResponseOutput)
 }

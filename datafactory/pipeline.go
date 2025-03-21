@@ -13,7 +13,7 @@ import (
 )
 
 // Pipeline resource type.
-// Azure REST API version: 2018-06-01. Prior API version in Azure Native 1.x: 2018-06-01.
+// Azure REST API version: 2018-06-01. Prior API version in Azure Native 2.x: 2018-06-01.
 type Pipeline struct {
 	pulumi.CustomResourceState
 
@@ -21,6 +21,8 @@ type Pipeline struct {
 	Activities pulumi.ArrayOutput `pulumi:"activities"`
 	// List of tags that can be used for describing the Pipeline.
 	Annotations pulumi.ArrayOutput `pulumi:"annotations"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The max number of concurrent runs for the pipeline.
 	Concurrency pulumi.IntPtrOutput `pulumi:"concurrency"`
 	// The description of the pipeline.
@@ -197,6 +199,11 @@ func (o PipelineOutput) Activities() pulumi.ArrayOutput {
 // List of tags that can be used for describing the Pipeline.
 func (o PipelineOutput) Annotations() pulumi.ArrayOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.ArrayOutput { return v.Annotations }).(pulumi.ArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o PipelineOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Pipeline) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The max number of concurrent runs for the pipeline.

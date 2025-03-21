@@ -32,6 +32,8 @@ type LookupAccountArgs struct {
 
 // An account data transfer object.
 type LookupAccountResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Time at which the account was created.
 	CreatedAt string `pulumi:"createdAt"`
 	// The resource id of the azure resource
@@ -89,6 +91,11 @@ func (o LookupAccountResultOutput) ToLookupAccountResultOutput() LookupAccountRe
 
 func (o LookupAccountResultOutput) ToLookupAccountResultOutputWithContext(ctx context.Context) LookupAccountResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupAccountResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Time at which the account was created.

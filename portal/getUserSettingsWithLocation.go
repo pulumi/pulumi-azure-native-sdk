@@ -32,6 +32,8 @@ type LookupUserSettingsWithLocationArgs struct {
 
 // Response to get user settings
 type LookupUserSettingsWithLocationResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The cloud shell user settings properties.
 	Properties UserPropertiesResponse `pulumi:"properties"`
 }
@@ -69,6 +71,11 @@ func (o LookupUserSettingsWithLocationResultOutput) ToLookupUserSettingsWithLoca
 
 func (o LookupUserSettingsWithLocationResultOutput) ToLookupUserSettingsWithLocationResultOutputWithContext(ctx context.Context) LookupUserSettingsWithLocationResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupUserSettingsWithLocationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserSettingsWithLocationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The cloud shell user settings properties.

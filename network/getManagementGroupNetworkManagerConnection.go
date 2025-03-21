@@ -12,9 +12,7 @@ import (
 )
 
 // Get a specified connection created by this management group.
-// Azure REST API version: 2023-02-01.
-//
-// Other available API versions: 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Azure REST API version: 2024-05-01.
 func LookupManagementGroupNetworkManagerConnection(ctx *pulumi.Context, args *LookupManagementGroupNetworkManagerConnectionArgs, opts ...pulumi.InvokeOption) (*LookupManagementGroupNetworkManagerConnectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupManagementGroupNetworkManagerConnectionResult
@@ -34,6 +32,8 @@ type LookupManagementGroupNetworkManagerConnectionArgs struct {
 
 // The Network Manager Connection resource
 type LookupManagementGroupNetworkManagerConnectionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// A description of the network manager connection.
 	Description *string `pulumi:"description"`
 	// A unique read-only string that changes whenever the resource is updated.
@@ -83,6 +83,11 @@ func (o LookupManagementGroupNetworkManagerConnectionResultOutput) ToLookupManag
 
 func (o LookupManagementGroupNetworkManagerConnectionResultOutput) ToLookupManagementGroupNetworkManagerConnectionResultOutputWithContext(ctx context.Context) LookupManagementGroupNetworkManagerConnectionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupManagementGroupNetworkManagerConnectionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupManagementGroupNetworkManagerConnectionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A description of the network manager connection.

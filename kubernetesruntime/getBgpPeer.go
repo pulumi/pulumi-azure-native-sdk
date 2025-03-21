@@ -13,8 +13,6 @@ import (
 
 // Get a BgpPeer
 // Azure REST API version: 2024-03-01.
-//
-// Other available API versions: 2023-10-01-preview.
 func LookupBgpPeer(ctx *pulumi.Context, args *LookupBgpPeerArgs, opts ...pulumi.InvokeOption) (*LookupBgpPeerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBgpPeerResult
@@ -34,6 +32,8 @@ type LookupBgpPeerArgs struct {
 
 // A BgpPeer resource for an Arc connected cluster (Microsoft.Kubernetes/connectedClusters)
 type LookupBgpPeerResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// My ASN
@@ -85,6 +85,11 @@ func (o LookupBgpPeerResultOutput) ToLookupBgpPeerResultOutput() LookupBgpPeerRe
 
 func (o LookupBgpPeerResultOutput) ToLookupBgpPeerResultOutputWithContext(ctx context.Context) LookupBgpPeerResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupBgpPeerResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBgpPeerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

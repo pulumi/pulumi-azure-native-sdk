@@ -12,9 +12,7 @@ import (
 )
 
 // Get the shared scheduled action from the given scope by name.
-// Azure REST API version: 2023-03-01.
-//
-// Other available API versions: 2023-04-01-preview, 2023-07-01-preview, 2023-08-01, 2023-09-01, 2023-11-01, 2024-08-01.
+// Azure REST API version: 2024-08-01.
 func LookupScheduledActionByScope(ctx *pulumi.Context, args *LookupScheduledActionByScopeArgs, opts ...pulumi.InvokeOption) (*LookupScheduledActionByScopeResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupScheduledActionByScopeResult
@@ -34,6 +32,8 @@ type LookupScheduledActionByScopeArgs struct {
 
 // Scheduled action definition.
 type LookupScheduledActionByScopeResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Scheduled action name.
 	DisplayName string `pulumi:"displayName"`
 	// Resource Etag. For update calls, eTag is optional and can be specified to achieve optimistic concurrency. Fetch the resource's eTag by doing a 'GET' call first and then including the latest eTag as part of the request body or 'If-Match' header while performing the update. For create calls, eTag is not required.
@@ -97,6 +97,11 @@ func (o LookupScheduledActionByScopeResultOutput) ToLookupScheduledActionByScope
 
 func (o LookupScheduledActionByScopeResultOutput) ToLookupScheduledActionByScopeResultOutputWithContext(ctx context.Context) LookupScheduledActionByScopeResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupScheduledActionByScopeResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupScheduledActionByScopeResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Scheduled action name.

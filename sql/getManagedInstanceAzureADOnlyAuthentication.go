@@ -13,8 +13,6 @@ import (
 
 // Gets a specific Azure Active Directory only authentication property.
 // Azure REST API version: 2021-11-01.
-//
-// Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
 func LookupManagedInstanceAzureADOnlyAuthentication(ctx *pulumi.Context, args *LookupManagedInstanceAzureADOnlyAuthenticationArgs, opts ...pulumi.InvokeOption) (*LookupManagedInstanceAzureADOnlyAuthenticationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupManagedInstanceAzureADOnlyAuthenticationResult
@@ -38,6 +36,8 @@ type LookupManagedInstanceAzureADOnlyAuthenticationArgs struct {
 type LookupManagedInstanceAzureADOnlyAuthenticationResult struct {
 	// Azure Active Directory only Authentication enabled.
 	AzureADOnlyAuthentication bool `pulumi:"azureADOnlyAuthentication"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource ID.
 	Id string `pulumi:"id"`
 	// Resource name.
@@ -86,6 +86,11 @@ func (o LookupManagedInstanceAzureADOnlyAuthenticationResultOutput) ToLookupMana
 // Azure Active Directory only Authentication enabled.
 func (o LookupManagedInstanceAzureADOnlyAuthenticationResultOutput) AzureADOnlyAuthentication() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupManagedInstanceAzureADOnlyAuthenticationResult) bool { return v.AzureADOnlyAuthentication }).(pulumi.BoolOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupManagedInstanceAzureADOnlyAuthenticationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupManagedInstanceAzureADOnlyAuthenticationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource ID.

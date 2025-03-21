@@ -13,10 +13,12 @@ import (
 )
 
 // Global parameters resource type.
-// Azure REST API version: 2018-06-01. Prior API version in Azure Native 1.x: 2018-06-01.
+// Azure REST API version: 2018-06-01. Prior API version in Azure Native 2.x: 2018-06-01.
 type GlobalParameter struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Etag identifies change in the resource.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The resource name.
@@ -139,6 +141,11 @@ func (o GlobalParameterOutput) ToGlobalParameterOutput() GlobalParameterOutput {
 
 func (o GlobalParameterOutput) ToGlobalParameterOutputWithContext(ctx context.Context) GlobalParameterOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o GlobalParameterOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *GlobalParameter) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Etag identifies change in the resource.

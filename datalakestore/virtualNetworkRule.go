@@ -13,10 +13,12 @@ import (
 )
 
 // Data Lake Store virtual network rule information.
-// Azure REST API version: 2016-11-01. Prior API version in Azure Native 1.x: 2016-11-01.
+// Azure REST API version: 2016-11-01. Prior API version in Azure Native 2.x: 2016-11-01.
 type VirtualNetworkRule struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The resource name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The resource identifier for the subnet.
@@ -137,6 +139,11 @@ func (o VirtualNetworkRuleOutput) ToVirtualNetworkRuleOutput() VirtualNetworkRul
 
 func (o VirtualNetworkRuleOutput) ToVirtualNetworkRuleOutputWithContext(ctx context.Context) VirtualNetworkRuleOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o VirtualNetworkRuleOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *VirtualNetworkRule) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The resource name.

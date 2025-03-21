@@ -13,14 +13,14 @@ import (
 )
 
 // Class representing an attached database configuration.
-// Azure REST API version: 2022-12-29. Prior API version in Azure Native 1.x: 2021-01-01.
-//
-// Other available API versions: 2023-05-02, 2023-08-15, 2024-04-13.
+// Azure REST API version: 2024-04-13. Prior API version in Azure Native 2.x: 2022-12-29.
 type AttachedDatabaseConfiguration struct {
 	pulumi.CustomResourceState
 
 	// The list of databases from the clusterResourceId which are currently attached to the cluster.
 	AttachedDatabaseNames pulumi.StringArrayOutput `pulumi:"attachedDatabaseNames"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The resource id of the cluster where the databases you would like to attach reside.
 	ClusterResourceId pulumi.StringOutput `pulumi:"clusterResourceId"`
 	// The name of the database which you would like to attach, use * if you want to follow all current and future databases.
@@ -159,7 +159,7 @@ type attachedDatabaseConfigurationArgs struct {
 	DefaultPrincipalsModificationKind string `pulumi:"defaultPrincipalsModificationKind"`
 	// Resource location.
 	Location *string `pulumi:"location"`
-	// The name of the resource group containing the Kusto cluster.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Table level sharing specifications
 	TableLevelSharingProperties *TableLevelSharingProperties `pulumi:"tableLevelSharingProperties"`
@@ -183,7 +183,7 @@ type AttachedDatabaseConfigurationArgs struct {
 	DefaultPrincipalsModificationKind pulumi.StringInput
 	// Resource location.
 	Location pulumi.StringPtrInput
-	// The name of the resource group containing the Kusto cluster.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Table level sharing specifications
 	TableLevelSharingProperties TableLevelSharingPropertiesPtrInput
@@ -229,6 +229,11 @@ func (o AttachedDatabaseConfigurationOutput) ToAttachedDatabaseConfigurationOutp
 // The list of databases from the clusterResourceId which are currently attached to the cluster.
 func (o AttachedDatabaseConfigurationOutput) AttachedDatabaseNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AttachedDatabaseConfiguration) pulumi.StringArrayOutput { return v.AttachedDatabaseNames }).(pulumi.StringArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o AttachedDatabaseConfigurationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *AttachedDatabaseConfiguration) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The resource id of the cluster where the databases you would like to attach reside.

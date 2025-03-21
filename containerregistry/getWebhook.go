@@ -12,9 +12,7 @@ import (
 )
 
 // Gets the properties of the specified webhook.
-// Azure REST API version: 2022-12-01.
-//
-// Other available API versions: 2023-01-01-preview, 2023-06-01-preview, 2023-07-01, 2023-08-01-preview, 2023-11-01-preview, 2024-11-01-preview.
+// Azure REST API version: 2024-11-01-preview.
 func LookupWebhook(ctx *pulumi.Context, args *LookupWebhookArgs, opts ...pulumi.InvokeOption) (*LookupWebhookResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebhookResult
@@ -38,6 +36,8 @@ type LookupWebhookArgs struct {
 type LookupWebhookResult struct {
 	// The list of actions that trigger the webhook to post notifications.
 	Actions []string `pulumi:"actions"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The resource ID.
 	Id string `pulumi:"id"`
 	// The location of the resource. This cannot be changed after the resource is created.
@@ -98,6 +98,11 @@ func (o LookupWebhookResultOutput) ToLookupWebhookResultOutputWithContext(ctx co
 // The list of actions that trigger the webhook to post notifications.
 func (o LookupWebhookResultOutput) Actions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupWebhookResult) []string { return v.Actions }).(pulumi.StringArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupWebhookResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWebhookResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The resource ID.

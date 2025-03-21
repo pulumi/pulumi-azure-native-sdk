@@ -12,9 +12,7 @@ import (
 )
 
 // Retrieve the python 2 package identified by package name.
-// Azure REST API version: 2022-08-08.
-//
-// Other available API versions: 2023-05-15-preview, 2023-11-01, 2024-10-23.
+// Azure REST API version: 2023-11-01.
 func LookupPython2Package(ctx *pulumi.Context, args *LookupPython2PackageArgs, opts ...pulumi.InvokeOption) (*LookupPython2PackageResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPython2PackageResult
@@ -36,39 +34,39 @@ type LookupPython2PackageArgs struct {
 
 // Definition of the module type.
 type LookupPython2PackageResult struct {
-	// Gets or sets the activity count of the module.
+	// Gets the activity count of the module.
 	ActivityCount *int `pulumi:"activityCount"`
-	// Gets or sets the contentLink of the module.
-	ContentLink *ContentLinkResponse `pulumi:"contentLink"`
-	// Gets or sets the creation time.
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// Gets the creation time.
 	CreationTime *string `pulumi:"creationTime"`
 	// Gets or sets the description.
 	Description *string `pulumi:"description"`
-	// Gets or sets the error info of the module.
+	// Gets the error info of the module.
 	Error *ModuleErrorInfoResponse `pulumi:"error"`
-	// Gets or sets the etag of the resource.
+	// Gets the etag of the resource.
 	Etag *string `pulumi:"etag"`
 	// Fully qualified resource Id for the resource
 	Id string `pulumi:"id"`
-	// Gets or sets type of module, if its composite or not.
+	// Gets type of module, if its composite or not.
 	IsComposite *bool `pulumi:"isComposite"`
-	// Gets or sets the isGlobal flag of the module.
+	// Gets the isGlobal flag of the module.
 	IsGlobal *bool `pulumi:"isGlobal"`
-	// Gets or sets the last modified time.
+	// Gets the last modified time.
 	LastModifiedTime *string `pulumi:"lastModifiedTime"`
 	// The Azure Region where the resource lives
 	Location *string `pulumi:"location"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// Gets or sets the provisioning state of the module.
+	// Gets the provisioning state of the module.
 	ProvisioningState *string `pulumi:"provisioningState"`
-	// Gets or sets the size in bytes of the module.
+	// Gets the size in bytes of the module.
 	SizeInBytes *float64 `pulumi:"sizeInBytes"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource.
 	Type string `pulumi:"type"`
-	// Gets or sets the version of the module.
+	// Gets the version of the module.
 	Version *string `pulumi:"version"`
 }
 
@@ -109,17 +107,17 @@ func (o LookupPython2PackageResultOutput) ToLookupPython2PackageResultOutputWith
 	return o
 }
 
-// Gets or sets the activity count of the module.
+// Gets the activity count of the module.
 func (o LookupPython2PackageResultOutput) ActivityCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupPython2PackageResult) *int { return v.ActivityCount }).(pulumi.IntPtrOutput)
 }
 
-// Gets or sets the contentLink of the module.
-func (o LookupPython2PackageResultOutput) ContentLink() ContentLinkResponsePtrOutput {
-	return o.ApplyT(func(v LookupPython2PackageResult) *ContentLinkResponse { return v.ContentLink }).(ContentLinkResponsePtrOutput)
+// The Azure API version of the resource.
+func (o LookupPython2PackageResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPython2PackageResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
-// Gets or sets the creation time.
+// Gets the creation time.
 func (o LookupPython2PackageResultOutput) CreationTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPython2PackageResult) *string { return v.CreationTime }).(pulumi.StringPtrOutput)
 }
@@ -129,12 +127,12 @@ func (o LookupPython2PackageResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPython2PackageResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Gets or sets the error info of the module.
+// Gets the error info of the module.
 func (o LookupPython2PackageResultOutput) Error() ModuleErrorInfoResponsePtrOutput {
 	return o.ApplyT(func(v LookupPython2PackageResult) *ModuleErrorInfoResponse { return v.Error }).(ModuleErrorInfoResponsePtrOutput)
 }
 
-// Gets or sets the etag of the resource.
+// Gets the etag of the resource.
 func (o LookupPython2PackageResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPython2PackageResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
@@ -144,17 +142,17 @@ func (o LookupPython2PackageResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPython2PackageResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Gets or sets type of module, if its composite or not.
+// Gets type of module, if its composite or not.
 func (o LookupPython2PackageResultOutput) IsComposite() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupPython2PackageResult) *bool { return v.IsComposite }).(pulumi.BoolPtrOutput)
 }
 
-// Gets or sets the isGlobal flag of the module.
+// Gets the isGlobal flag of the module.
 func (o LookupPython2PackageResultOutput) IsGlobal() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupPython2PackageResult) *bool { return v.IsGlobal }).(pulumi.BoolPtrOutput)
 }
 
-// Gets or sets the last modified time.
+// Gets the last modified time.
 func (o LookupPython2PackageResultOutput) LastModifiedTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPython2PackageResult) *string { return v.LastModifiedTime }).(pulumi.StringPtrOutput)
 }
@@ -169,12 +167,12 @@ func (o LookupPython2PackageResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPython2PackageResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Gets or sets the provisioning state of the module.
+// Gets the provisioning state of the module.
 func (o LookupPython2PackageResultOutput) ProvisioningState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPython2PackageResult) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
 }
 
-// Gets or sets the size in bytes of the module.
+// Gets the size in bytes of the module.
 func (o LookupPython2PackageResultOutput) SizeInBytes() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v LookupPython2PackageResult) *float64 { return v.SizeInBytes }).(pulumi.Float64PtrOutput)
 }
@@ -189,7 +187,7 @@ func (o LookupPython2PackageResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPython2PackageResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Gets or sets the version of the module.
+// Gets the version of the module.
 func (o LookupPython2PackageResultOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPython2PackageResult) *string { return v.Version }).(pulumi.StringPtrOutput)
 }

@@ -13,12 +13,12 @@ import (
 )
 
 // Wiki properties
-// Azure REST API version: 2022-08-01.
-//
-// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
+// Azure REST API version: 2022-09-01-preview. Prior API version in Azure Native 2.x: 2022-08-01.
 type ProductWiki struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Collection wiki documents included into this wiki.
 	Documents WikiDocumentationContractResponseArrayOutput `pulumi:"documents"`
 	// The name of the resource
@@ -157,6 +157,11 @@ func (o ProductWikiOutput) ToProductWikiOutput() ProductWikiOutput {
 
 func (o ProductWikiOutput) ToProductWikiOutputWithContext(ctx context.Context) ProductWikiOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ProductWikiOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProductWiki) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Collection wiki documents included into this wiki.

@@ -13,12 +13,12 @@ import (
 )
 
 // The workspace manager assignment
-// Azure REST API version: 2023-06-01-preview.
-//
-// Other available API versions: 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-12-01-preview, 2024-01-01-preview, 2024-04-01-preview, 2024-10-01-preview, 2025-01-01-preview.
+// Azure REST API version: 2025-01-01-preview. Prior API version in Azure Native 2.x: 2023-06-01-preview.
 type WorkspaceManagerAssignment struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Resource Etag.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// List of resources included in this workspace manager assignment
@@ -189,6 +189,11 @@ func (o WorkspaceManagerAssignmentOutput) ToWorkspaceManagerAssignmentOutput() W
 
 func (o WorkspaceManagerAssignmentOutput) ToWorkspaceManagerAssignmentOutputWithContext(ctx context.Context) WorkspaceManagerAssignmentOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o WorkspaceManagerAssignmentOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkspaceManagerAssignment) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource Etag.

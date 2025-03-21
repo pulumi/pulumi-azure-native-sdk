@@ -13,16 +13,24 @@ import (
 )
 
 // Public Cloud Connector
-// Azure REST API version: 2024-12-01.
+// Azure REST API version: 2024-12-01. Prior API version in Azure Native 2.x: 2024-12-01.
 type PublicCloudConnector struct {
 	pulumi.CustomResourceState
 
+	// Cloud profile for AWS.
+	AwsCloudProfile AwsCloudProfileResponseOutput `pulumi:"awsCloudProfile"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// Connector primary identifier.
+	ConnectorPrimaryIdentifier pulumi.StringOutput `pulumi:"connectorPrimaryIdentifier"`
+	// Host cloud the public cloud connector.
+	HostType pulumi.StringOutput `pulumi:"hostType"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The resource-specific properties for this resource.
-	Properties PublicCloudConnectorPropertiesResponseOutput `pulumi:"properties"`
+	// The resource provisioning state.
+	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
@@ -38,12 +46,16 @@ func NewPublicCloudConnector(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AwsCloudProfile == nil {
+		return nil, errors.New("invalid value for required argument 'AwsCloudProfile'")
+	}
+	if args.HostType == nil {
+		return nil, errors.New("invalid value for required argument 'HostType'")
+	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if args.Properties != nil {
-		args.Properties = args.Properties.ToPublicCloudConnectorPropertiesPtrOutput().ApplyT(func(v *PublicCloudConnectorProperties) *PublicCloudConnectorProperties { return v.Defaults() }).(PublicCloudConnectorPropertiesPtrOutput)
-	}
+	args.AwsCloudProfile = args.AwsCloudProfile.ToAwsCloudProfileOutput().ApplyT(func(v AwsCloudProfile) AwsCloudProfile { return *v.Defaults() }).(AwsCloudProfileOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:hybridconnectivity/v20241201:PublicCloudConnector"),
@@ -83,10 +95,12 @@ func (PublicCloudConnectorState) ElementType() reflect.Type {
 }
 
 type publicCloudConnectorArgs struct {
+	// Cloud profile for AWS.
+	AwsCloudProfile AwsCloudProfile `pulumi:"awsCloudProfile"`
+	// Host cloud the public cloud connector.
+	HostType string `pulumi:"hostType"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
-	// The resource-specific properties for this resource.
-	Properties *PublicCloudConnectorProperties `pulumi:"properties"`
 	// Represent public cloud connectors resource.
 	PublicCloudConnector *string `pulumi:"publicCloudConnector"`
 	// The name of the resource group. The name is case insensitive.
@@ -97,10 +111,12 @@ type publicCloudConnectorArgs struct {
 
 // The set of arguments for constructing a PublicCloudConnector resource.
 type PublicCloudConnectorArgs struct {
+	// Cloud profile for AWS.
+	AwsCloudProfile AwsCloudProfileInput
+	// Host cloud the public cloud connector.
+	HostType pulumi.StringInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
-	// The resource-specific properties for this resource.
-	Properties PublicCloudConnectorPropertiesPtrInput
 	// Represent public cloud connectors resource.
 	PublicCloudConnector pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
@@ -146,6 +162,26 @@ func (o PublicCloudConnectorOutput) ToPublicCloudConnectorOutputWithContext(ctx 
 	return o
 }
 
+// Cloud profile for AWS.
+func (o PublicCloudConnectorOutput) AwsCloudProfile() AwsCloudProfileResponseOutput {
+	return o.ApplyT(func(v *PublicCloudConnector) AwsCloudProfileResponseOutput { return v.AwsCloudProfile }).(AwsCloudProfileResponseOutput)
+}
+
+// The Azure API version of the resource.
+func (o PublicCloudConnectorOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PublicCloudConnector) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Connector primary identifier.
+func (o PublicCloudConnectorOutput) ConnectorPrimaryIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v *PublicCloudConnector) pulumi.StringOutput { return v.ConnectorPrimaryIdentifier }).(pulumi.StringOutput)
+}
+
+// Host cloud the public cloud connector.
+func (o PublicCloudConnectorOutput) HostType() pulumi.StringOutput {
+	return o.ApplyT(func(v *PublicCloudConnector) pulumi.StringOutput { return v.HostType }).(pulumi.StringOutput)
+}
+
 // The geo-location where the resource lives
 func (o PublicCloudConnectorOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *PublicCloudConnector) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
@@ -156,9 +192,9 @@ func (o PublicCloudConnectorOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *PublicCloudConnector) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The resource-specific properties for this resource.
-func (o PublicCloudConnectorOutput) Properties() PublicCloudConnectorPropertiesResponseOutput {
-	return o.ApplyT(func(v *PublicCloudConnector) PublicCloudConnectorPropertiesResponseOutput { return v.Properties }).(PublicCloudConnectorPropertiesResponseOutput)
+// The resource provisioning state.
+func (o PublicCloudConnectorOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v *PublicCloudConnector) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

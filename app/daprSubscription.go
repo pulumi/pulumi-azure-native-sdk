@@ -13,12 +13,12 @@ import (
 )
 
 // Dapr PubSub Event Subscription.
-// Azure REST API version: 2023-08-01-preview.
-//
-// Other available API versions: 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview.
+// Azure REST API version: 2024-10-02-preview. Prior API version in Azure Native 2.x: 2023-08-01-preview.
 type DaprSubscription struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Bulk subscription options
 	BulkSubscribe DaprSubscriptionBulkSubscribeOptionsResponsePtrOutput `pulumi:"bulkSubscribe"`
 	// Deadletter topic name
@@ -191,6 +191,11 @@ func (o DaprSubscriptionOutput) ToDaprSubscriptionOutput() DaprSubscriptionOutpu
 
 func (o DaprSubscriptionOutput) ToDaprSubscriptionOutputWithContext(ctx context.Context) DaprSubscriptionOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o DaprSubscriptionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DaprSubscription) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Bulk subscription options

@@ -13,12 +13,12 @@ import (
 )
 
 // Definition of the dsc node configuration.
-// Azure REST API version: 2022-08-08. Prior API version in Azure Native 1.x: 2019-06-01.
-//
-// Other available API versions: 2023-05-15-preview, 2023-11-01, 2024-10-23.
+// Azure REST API version: 2023-11-01. Prior API version in Azure Native 2.x: 2022-08-08.
 type DscNodeConfiguration struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets or sets the configuration of the node.
 	Configuration DscConfigurationAssociationPropertyResponsePtrOutput `pulumi:"configuration"`
 	// Gets or sets creation time.
@@ -189,6 +189,11 @@ func (o DscNodeConfigurationOutput) ToDscNodeConfigurationOutput() DscNodeConfig
 
 func (o DscNodeConfigurationOutput) ToDscNodeConfigurationOutputWithContext(ctx context.Context) DscNodeConfigurationOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o DscNodeConfigurationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DscNodeConfiguration) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets the configuration of the node.

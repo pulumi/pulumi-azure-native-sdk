@@ -13,12 +13,12 @@ import (
 )
 
 // Software update configuration properties.
-// Azure REST API version: 2019-06-01. Prior API version in Azure Native 1.x: 2019-06-01.
-//
-// Other available API versions: 2017-05-15-preview, 2023-05-15-preview, 2024-10-23.
+// Azure REST API version: 2023-05-15-preview. Prior API version in Azure Native 2.x: 2019-06-01.
 type SoftwareUpdateConfigurationByName struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// CreatedBy property, which only appears in the response.
 	CreatedBy pulumi.StringOutput `pulumi:"createdBy"`
 	// Creation time of the resource, which only appears in the response.
@@ -180,6 +180,11 @@ func (o SoftwareUpdateConfigurationByNameOutput) ToSoftwareUpdateConfigurationBy
 
 func (o SoftwareUpdateConfigurationByNameOutput) ToSoftwareUpdateConfigurationByNameOutputWithContext(ctx context.Context) SoftwareUpdateConfigurationByNameOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o SoftwareUpdateConfigurationByNameOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SoftwareUpdateConfigurationByName) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // CreatedBy property, which only appears in the response.

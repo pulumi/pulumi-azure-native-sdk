@@ -178,13 +178,13 @@ func (in *cleanupOptionsPtr) ToCleanupOptionsPtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(CleanupOptionsPtrOutput)
 }
 
-// denySettings Mode.
+// denySettings Mode that defines denied actions.
 type DenySettingsMode string
 
 const (
 	// Authorized users are able to read and modify the resources, but cannot delete.
 	DenySettingsModeDenyDelete = DenySettingsMode("denyDelete")
-	// Authorized users can only read from a resource, but cannot modify or delete it.
+	// Authorized users can read from a resource, but cannot modify or delete it.
 	DenySettingsModeDenyWriteAndDelete = DenySettingsMode("denyWriteAndDelete")
 	// No denyAssignments have been applied.
 	DenySettingsModeNone = DenySettingsMode("none")
@@ -515,7 +515,7 @@ func (in *deploymentModePtr) ToDeploymentModePtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(DeploymentModePtrOutput)
 }
 
-// Specifies the action that should be taken on the resource when the deployment stack is deleted. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
+// Specifies an action for a newly unmanaged resource. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
 type DeploymentStacksDeleteDetachEnum string
 
 const (

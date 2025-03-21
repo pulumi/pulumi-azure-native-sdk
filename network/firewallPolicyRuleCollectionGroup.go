@@ -13,12 +13,12 @@ import (
 )
 
 // Rule Collection Group resource.
-// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2020-11-01.
-//
-// Other available API versions: 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Azure REST API version: 2024-05-01. Prior API version in Azure Native 2.x: 2023-02-01.
 type FirewallPolicyRuleCollectionGroup struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The name of the resource that is unique within a resource group. This name can be used to access the resource.
@@ -29,6 +29,8 @@ type FirewallPolicyRuleCollectionGroup struct {
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Group of Firewall Policy rule collections.
 	RuleCollections pulumi.ArrayOutput `pulumi:"ruleCollections"`
+	// A read-only string that represents the size of the FirewallPolicyRuleCollectionGroupProperties in MB. (ex 1.2MB)
+	Size pulumi.StringOutput `pulumi:"size"`
 	// Rule Group type.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -222,6 +224,11 @@ func (o FirewallPolicyRuleCollectionGroupOutput) ToFirewallPolicyRuleCollectionG
 	return o
 }
 
+// The Azure API version of the resource.
+func (o FirewallPolicyRuleCollectionGroupOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *FirewallPolicyRuleCollectionGroup) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // A unique read-only string that changes whenever the resource is updated.
 func (o FirewallPolicyRuleCollectionGroupOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallPolicyRuleCollectionGroup) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
@@ -245,6 +252,11 @@ func (o FirewallPolicyRuleCollectionGroupOutput) ProvisioningState() pulumi.Stri
 // Group of Firewall Policy rule collections.
 func (o FirewallPolicyRuleCollectionGroupOutput) RuleCollections() pulumi.ArrayOutput {
 	return o.ApplyT(func(v *FirewallPolicyRuleCollectionGroup) pulumi.ArrayOutput { return v.RuleCollections }).(pulumi.ArrayOutput)
+}
+
+// A read-only string that represents the size of the FirewallPolicyRuleCollectionGroupProperties in MB. (ex 1.2MB)
+func (o FirewallPolicyRuleCollectionGroupOutput) Size() pulumi.StringOutput {
+	return o.ApplyT(func(v *FirewallPolicyRuleCollectionGroup) pulumi.StringOutput { return v.Size }).(pulumi.StringOutput)
 }
 
 // Rule Group type.

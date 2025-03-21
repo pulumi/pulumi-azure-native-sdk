@@ -12,9 +12,7 @@ import (
 )
 
 // Lists impacted resources in the tenant by an event (Security Advisory).
-// Azure REST API version: 2022-10-01.
-//
-// Other available API versions: 2022-10-01-preview, 2023-07-01-preview, 2023-10-01-preview, 2024-02-01.
+// Azure REST API version: 2024-02-01.
 func ListSecurityAdvisoryImpactedResourceByTenantIdAndEventId(ctx *pulumi.Context, args *ListSecurityAdvisoryImpactedResourceByTenantIdAndEventIdArgs, opts ...pulumi.InvokeOption) (*ListSecurityAdvisoryImpactedResourceByTenantIdAndEventIdResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListSecurityAdvisoryImpactedResourceByTenantIdAndEventIdResult

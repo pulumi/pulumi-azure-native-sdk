@@ -13,19 +13,19 @@ import (
 )
 
 // Represents a Database.
-// Azure REST API version: 2022-01-01. Prior API version in Azure Native 1.x: 2017-12-01.
-//
-// Other available API versions: 2017-12-01, 2023-06-01-preview, 2023-06-30, 2023-12-30.
+// Azure REST API version: 2023-12-30. Prior API version in Azure Native 2.x: 2022-01-01.
 type Database struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The charset of the database.
 	Charset pulumi.StringPtrOutput `pulumi:"charset"`
 	// The collation of the database.
 	Collation pulumi.StringPtrOutput `pulumi:"collation"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The system metadata relating to this resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -45,6 +45,9 @@ func NewDatabase(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ServerName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:dbformysql/v20171201:Database"),
+		},
 		{
 			Type: pulumi.String("azure-native:dbformysql/v20200701preview:Database"),
 		},
@@ -170,6 +173,11 @@ func (o DatabaseOutput) ToDatabaseOutputWithContext(ctx context.Context) Databas
 	return o
 }
 
+// The Azure API version of the resource.
+func (o DatabaseOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The charset of the database.
 func (o DatabaseOutput) Charset() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringPtrOutput { return v.Charset }).(pulumi.StringPtrOutput)
@@ -185,7 +193,7 @@ func (o DatabaseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The system metadata relating to this resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o DatabaseOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *Database) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

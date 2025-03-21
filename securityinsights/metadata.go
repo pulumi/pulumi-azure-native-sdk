@@ -13,14 +13,14 @@ import (
 )
 
 // Metadata resource definition.
-// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2021-03-01-preview.
-//
-// Other available API versions: 2021-03-01-preview, 2023-02-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-11-01, 2023-12-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-09-01, 2024-10-01-preview, 2025-01-01-preview.
+// Azure REST API version: 2024-09-01. Prior API version in Azure Native 2.x: 2023-02-01.
 type Metadata struct {
 	pulumi.CustomResourceState
 
 	// The creator of the content item.
 	Author MetadataAuthorResponsePtrOutput `pulumi:"author"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Categories for the solution content item
 	Categories MetadataCategoriesResponsePtrOutput `pulumi:"categories"`
 	// Static ID for the content.  Used to identify dependencies and content from solutions or community.  Hard-coded/static for out of the box content and solutions. Dynamic for user-created.  This is the resource name
@@ -179,6 +179,9 @@ func NewMetadata(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20250101preview:Metadata"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20250301:Metadata"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -349,6 +352,11 @@ func (o MetadataOutput) ToMetadataOutputWithContext(ctx context.Context) Metadat
 // The creator of the content item.
 func (o MetadataOutput) Author() MetadataAuthorResponsePtrOutput {
 	return o.ApplyT(func(v *Metadata) MetadataAuthorResponsePtrOutput { return v.Author }).(MetadataAuthorResponsePtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o MetadataOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Metadata) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Categories for the solution content item

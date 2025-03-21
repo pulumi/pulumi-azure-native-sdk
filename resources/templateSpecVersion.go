@@ -13,12 +13,12 @@ import (
 )
 
 // Template Spec Version object.
-// Azure REST API version: 2022-02-01. Prior API version in Azure Native 1.x: 2022-02-01.
-//
-// Other available API versions: 2019-06-01-preview.
+// Azure REST API version: 2022-02-01. Prior API version in Azure Native 2.x: 2022-02-01.
 type TemplateSpecVersion struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Template Spec version description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// An array of linked template artifacts.
@@ -183,6 +183,11 @@ func (o TemplateSpecVersionOutput) ToTemplateSpecVersionOutput() TemplateSpecVer
 
 func (o TemplateSpecVersionOutput) ToTemplateSpecVersionOutputWithContext(ctx context.Context) TemplateSpecVersionOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o TemplateSpecVersionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *TemplateSpecVersion) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Template Spec version description.

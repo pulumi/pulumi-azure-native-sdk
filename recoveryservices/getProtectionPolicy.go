@@ -13,9 +13,7 @@ import (
 
 // Provides the details of the backup policies associated to Recovery Services Vault. This is an asynchronous
 // operation. Status of the operation can be fetched using GetPolicyOperationResult API.
-// Azure REST API version: 2023-04-01.
-//
-// Other available API versions: 2023-06-01, 2023-08-01, 2024-01-01, 2024-02-01, 2024-04-01, 2024-04-30-preview, 2024-07-30-preview, 2024-10-01.
+// Azure REST API version: 2024-10-01.
 func LookupProtectionPolicy(ctx *pulumi.Context, args *LookupProtectionPolicyArgs, opts ...pulumi.InvokeOption) (*LookupProtectionPolicyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupProtectionPolicyResult
@@ -37,6 +35,8 @@ type LookupProtectionPolicyArgs struct {
 
 // Base class for backup policy. Workload-specific backup policies are derived from this class.
 type LookupProtectionPolicyResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Optional ETag.
 	ETag *string `pulumi:"eTag"`
 	// Resource Id represents the complete path to the resource.
@@ -88,6 +88,11 @@ func (o LookupProtectionPolicyResultOutput) ToLookupProtectionPolicyResultOutput
 
 func (o LookupProtectionPolicyResultOutput) ToLookupProtectionPolicyResultOutputWithContext(ctx context.Context) LookupProtectionPolicyResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupProtectionPolicyResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProtectionPolicyResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Optional ETag.

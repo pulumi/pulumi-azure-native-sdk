@@ -13,10 +13,12 @@ import (
 )
 
 // Sku sub resource.
-// Azure REST API version: 2022-01-01-preview. Prior API version in Azure Native 1.x: 2020-01-01-preview.
+// Azure REST API version: 2022-01-01-preview. Prior API version in Azure Native 2.x: 2022-01-01-preview.
 type VendorSkus struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The sku deployment mode.
 	DeploymentMode pulumi.StringPtrOutput `pulumi:"deploymentMode"`
 	// The parameters for the managed application to be supplied by the vendor.
@@ -173,6 +175,11 @@ func (o VendorSkusOutput) ToVendorSkusOutput() VendorSkusOutput {
 
 func (o VendorSkusOutput) ToVendorSkusOutputWithContext(ctx context.Context) VendorSkusOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o VendorSkusOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *VendorSkus) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The sku deployment mode.

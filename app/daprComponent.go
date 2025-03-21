@@ -13,12 +13,12 @@ import (
 )
 
 // Dapr Component.
-// Azure REST API version: 2022-10-01. Prior API version in Azure Native 1.x: 2022-03-01.
-//
-// Other available API versions: 2022-01-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview.
+// Azure REST API version: 2024-03-01. Prior API version in Azure Native 2.x: 2022-10-01.
 type DaprComponent struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Component type
 	ComponentType pulumi.StringPtrOutput `pulumi:"componentType"`
 	// Boolean describing if the component errors are ignores
@@ -222,6 +222,11 @@ func (o DaprComponentOutput) ToDaprComponentOutput() DaprComponentOutput {
 
 func (o DaprComponentOutput) ToDaprComponentOutputWithContext(ctx context.Context) DaprComponentOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o DaprComponentOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DaprComponent) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Component type

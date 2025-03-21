@@ -36,6 +36,8 @@ type LookupBackupLongTermRetentionPolicyArgs struct {
 
 // A long term retention policy.
 type LookupBackupLongTermRetentionPolicyResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource ID.
 	Id string `pulumi:"id"`
 	// The monthly retention policy for an LTR backup in an ISO 8601 format.
@@ -89,6 +91,11 @@ func (o LookupBackupLongTermRetentionPolicyResultOutput) ToLookupBackupLongTermR
 
 func (o LookupBackupLongTermRetentionPolicyResultOutput) ToLookupBackupLongTermRetentionPolicyResultOutputWithContext(ctx context.Context) LookupBackupLongTermRetentionPolicyResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupBackupLongTermRetentionPolicyResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackupLongTermRetentionPolicyResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource ID.

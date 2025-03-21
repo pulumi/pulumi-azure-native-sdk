@@ -13,10 +13,12 @@ import (
 )
 
 // Class representing a read write database.
-// Azure REST API version: 2021-06-01-preview.
+// Azure REST API version: 2021-06-01-preview. Prior API version in Azure Native 2.x: 2021-06-01-preview.
 type ReadWriteDatabase struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The time the data should be kept in cache for fast queries in TimeSpan.
 	HotCachePeriod pulumi.StringPtrOutput `pulumi:"hotCachePeriod"`
 	// Indicates whether the database is followed.
@@ -65,7 +67,13 @@ func NewReadWriteDatabase(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:synapse/v20210401preview:ReadWriteDatabase"),
 		},
 		{
+			Type: pulumi.String("azure-native:synapse/v20210601preview:ReadOnlyFollowingDatabase"),
+		},
+		{
 			Type: pulumi.String("azure-native:synapse/v20210601preview:ReadWriteDatabase"),
+		},
+		{
+			Type: pulumi.String("azure-native:synapse:ReadOnlyFollowingDatabase"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -177,6 +185,11 @@ func (o ReadWriteDatabaseOutput) ToReadWriteDatabaseOutput() ReadWriteDatabaseOu
 
 func (o ReadWriteDatabaseOutput) ToReadWriteDatabaseOutputWithContext(ctx context.Context) ReadWriteDatabaseOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ReadWriteDatabaseOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ReadWriteDatabase) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The time the data should be kept in cache for fast queries in TimeSpan.

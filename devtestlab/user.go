@@ -13,10 +13,12 @@ import (
 )
 
 // Profile of a lab user.
-// Azure REST API version: 2018-09-15. Prior API version in Azure Native 1.x: 2018-09-15.
+// Azure REST API version: 2018-09-15. Prior API version in Azure Native 2.x: 2018-09-15.
 type User struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The creation date of the user profile.
 	CreatedDate pulumi.StringOutput `pulumi:"createdDate"`
 	// The identity of the user.
@@ -161,6 +163,11 @@ func (o UserOutput) ToUserOutput() UserOutput {
 
 func (o UserOutput) ToUserOutputWithContext(ctx context.Context) UserOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o UserOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The creation date of the user profile.

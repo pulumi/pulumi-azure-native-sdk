@@ -13,7 +13,7 @@ import (
 )
 
 // The profile resource format.
-// Azure REST API version: 2017-04-26. Prior API version in Azure Native 1.x: 2017-04-26.
+// Azure REST API version: 2017-04-26. Prior API version in Azure Native 2.x: 2017-04-26.
 type Profile struct {
 	pulumi.CustomResourceState
 
@@ -21,6 +21,8 @@ type Profile struct {
 	ApiEntitySetName pulumi.StringPtrOutput `pulumi:"apiEntitySetName"`
 	// The attributes for the Type.
 	Attributes pulumi.StringArrayMapOutput `pulumi:"attributes"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Localized descriptions for the property.
 	Description pulumi.StringMapOutput `pulumi:"description"`
 	// Localized display names for the property.
@@ -237,6 +239,11 @@ func (o ProfileOutput) ApiEntitySetName() pulumi.StringPtrOutput {
 // The attributes for the Type.
 func (o ProfileOutput) Attributes() pulumi.StringArrayMapOutput {
 	return o.ApplyT(func(v *Profile) pulumi.StringArrayMapOutput { return v.Attributes }).(pulumi.StringArrayMapOutput)
+}
+
+// The Azure API version of the resource.
+func (o ProfileOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Profile) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Localized descriptions for the property.

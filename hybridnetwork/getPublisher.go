@@ -12,9 +12,7 @@ import (
 )
 
 // Gets information about the specified publisher.
-// Azure REST API version: 2023-09-01.
-//
-// Other available API versions: 2024-04-15.
+// Azure REST API version: 2024-04-15.
 func LookupPublisher(ctx *pulumi.Context, args *LookupPublisherArgs, opts ...pulumi.InvokeOption) (*LookupPublisherResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPublisherResult
@@ -34,6 +32,8 @@ type LookupPublisherArgs struct {
 
 // publisher resource.
 type LookupPublisherResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The managed identity of the publisher, if configured.
@@ -85,6 +85,11 @@ func (o LookupPublisherResultOutput) ToLookupPublisherResultOutput() LookupPubli
 
 func (o LookupPublisherResultOutput) ToLookupPublisherResultOutputWithContext(ctx context.Context) LookupPublisherResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupPublisherResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPublisherResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

@@ -13,14 +13,14 @@ import (
 )
 
 // ExpressRoutePort resource definition.
-// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2020-11-01.
-//
-// Other available API versions: 2019-08-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Azure REST API version: 2024-05-01. Prior API version in Azure Native 2.x: 2023-02-01.
 type ExpressRoutePort struct {
 	pulumi.CustomResourceState
 
 	// Date of the physical port allocation to be used in Letter of Authorization.
 	AllocationDate pulumi.StringOutput `pulumi:"allocationDate"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Bandwidth of procured ports in Gbps.
 	BandwidthInGbps pulumi.IntPtrOutput `pulumi:"bandwidthInGbps"`
 	// The billing type of the ExpressRoutePort resource.
@@ -304,6 +304,11 @@ func (o ExpressRoutePortOutput) ToExpressRoutePortOutputWithContext(ctx context.
 // Date of the physical port allocation to be used in Letter of Authorization.
 func (o ExpressRoutePortOutput) AllocationDate() pulumi.StringOutput {
 	return o.ApplyT(func(v *ExpressRoutePort) pulumi.StringOutput { return v.AllocationDate }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o ExpressRoutePortOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ExpressRoutePort) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Bandwidth of procured ports in Gbps.

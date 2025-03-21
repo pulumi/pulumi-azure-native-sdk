@@ -13,14 +13,14 @@ import (
 )
 
 // Workspace active directory administrator
-// Azure REST API version: 2021-06-01. Prior API version in Azure Native 1.x: 2021-03-01.
-//
-// Other available API versions: 2021-06-01-preview.
+// Azure REST API version: 2021-06-01. Prior API version in Azure Native 2.x: 2021-06-01.
 type WorkspaceAadAdmin struct {
 	pulumi.CustomResourceState
 
 	// Workspace active directory administrator type
 	AdministratorType pulumi.StringPtrOutput `pulumi:"administratorType"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Login of the workspace active directory administrator
 	Login pulumi.StringPtrOutput `pulumi:"login"`
 	// The name of the resource
@@ -173,6 +173,11 @@ func (o WorkspaceAadAdminOutput) ToWorkspaceAadAdminOutputWithContext(ctx contex
 // Workspace active directory administrator type
 func (o WorkspaceAadAdminOutput) AdministratorType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkspaceAadAdmin) pulumi.StringPtrOutput { return v.AdministratorType }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o WorkspaceAadAdminOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkspaceAadAdmin) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Login of the workspace active directory administrator

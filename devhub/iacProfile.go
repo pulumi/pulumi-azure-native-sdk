@@ -13,14 +13,14 @@ import (
 )
 
 // Resource representation of a IacProfile.
-// Azure REST API version: 2024-05-01-preview.
-//
-// Other available API versions: 2024-08-01-preview.
+// Azure REST API version: 2024-05-01-preview. Prior API version in Azure Native 2.x: 2024-05-01-preview.
 type IacProfile struct {
 	pulumi.CustomResourceState
 
 	// Determines the authorization status of requests.
 	AuthStatus pulumi.StringOutput `pulumi:"authStatus"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Repository Branch Name
 	BranchName pulumi.StringPtrOutput `pulumi:"branchName"`
 	// A unique read-only string that changes whenever the resource is updated.
@@ -73,6 +73,9 @@ func NewIacProfile(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:devhub/v20240801preview:IacProfile"),
+		},
+		{
+			Type: pulumi.String("azure-native:devhub/v20250301preview:IacProfile"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -207,6 +210,11 @@ func (o IacProfileOutput) ToIacProfileOutputWithContext(ctx context.Context) Iac
 // Determines the authorization status of requests.
 func (o IacProfileOutput) AuthStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *IacProfile) pulumi.StringOutput { return v.AuthStatus }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o IacProfileOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *IacProfile) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Repository Branch Name

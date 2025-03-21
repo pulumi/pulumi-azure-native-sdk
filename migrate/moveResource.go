@@ -13,12 +13,12 @@ import (
 )
 
 // Defines the move resource.
-// Azure REST API version: 2022-08-01. Prior API version in Azure Native 1.x: 2021-01-01.
-//
-// Other available API versions: 2023-08-01.
+// Azure REST API version: 2023-08-01. Prior API version in Azure Native 2.x: 2022-08-01.
 type MoveResource struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Defines the move resource properties.
@@ -150,6 +150,11 @@ func (o MoveResourceOutput) ToMoveResourceOutput() MoveResourceOutput {
 
 func (o MoveResourceOutput) ToMoveResourceOutputWithContext(ctx context.Context) MoveResourceOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o MoveResourceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *MoveResource) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

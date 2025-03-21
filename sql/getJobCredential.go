@@ -13,8 +13,6 @@ import (
 
 // Gets a jobs credential.
 // Azure REST API version: 2021-11-01.
-//
-// Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
 func LookupJobCredential(ctx *pulumi.Context, args *LookupJobCredentialArgs, opts ...pulumi.InvokeOption) (*LookupJobCredentialResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupJobCredentialResult
@@ -38,6 +36,8 @@ type LookupJobCredentialArgs struct {
 
 // A stored credential that can be used by a job to connect to target databases.
 type LookupJobCredentialResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource ID.
 	Id string `pulumi:"id"`
 	// Resource name.
@@ -85,6 +85,11 @@ func (o LookupJobCredentialResultOutput) ToLookupJobCredentialResultOutput() Loo
 
 func (o LookupJobCredentialResultOutput) ToLookupJobCredentialResultOutputWithContext(ctx context.Context) LookupJobCredentialResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupJobCredentialResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupJobCredentialResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource ID.

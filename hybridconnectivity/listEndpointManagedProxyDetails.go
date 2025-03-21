@@ -12,9 +12,7 @@ import (
 )
 
 // Fetches the managed proxy details
-// Azure REST API version: 2023-03-15.
-//
-// Other available API versions: 2022-05-01-preview, 2024-12-01.
+// Azure REST API version: 2024-12-01.
 func ListEndpointManagedProxyDetails(ctx *pulumi.Context, args *ListEndpointManagedProxyDetailsArgs, opts ...pulumi.InvokeOption) (*ListEndpointManagedProxyDetailsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListEndpointManagedProxyDetailsResult
@@ -30,7 +28,7 @@ type ListEndpointManagedProxyDetailsArgs struct {
 	EndpointName string `pulumi:"endpointName"`
 	// The target host name.
 	Hostname *string `pulumi:"hostname"`
-	// The fully qualified Azure Resource manager identifier of the resource to be connected.
+	// The fully qualified Azure Resource manager identifier of the resource.
 	ResourceUri string `pulumi:"resourceUri"`
 	// The name of the service.
 	Service string `pulumi:"service"`
@@ -60,7 +58,7 @@ type ListEndpointManagedProxyDetailsOutputArgs struct {
 	EndpointName pulumi.StringInput `pulumi:"endpointName"`
 	// The target host name.
 	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
-	// The fully qualified Azure Resource manager identifier of the resource to be connected.
+	// The fully qualified Azure Resource manager identifier of the resource.
 	ResourceUri pulumi.StringInput `pulumi:"resourceUri"`
 	// The name of the service.
 	Service pulumi.StringInput `pulumi:"service"`

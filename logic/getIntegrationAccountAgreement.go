@@ -13,8 +13,6 @@ import (
 
 // Gets an integration account agreement.
 // Azure REST API version: 2019-05-01.
-//
-// Other available API versions: 2015-08-01-preview.
 func LookupIntegrationAccountAgreement(ctx *pulumi.Context, args *LookupIntegrationAccountAgreementArgs, opts ...pulumi.InvokeOption) (*LookupIntegrationAccountAgreementResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIntegrationAccountAgreementResult
@@ -38,6 +36,8 @@ type LookupIntegrationAccountAgreementArgs struct {
 type LookupIntegrationAccountAgreementResult struct {
 	// The agreement type.
 	AgreementType string `pulumi:"agreementType"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The changed time.
 	ChangedTime string `pulumi:"changedTime"`
 	// The agreement content.
@@ -106,6 +106,11 @@ func (o LookupIntegrationAccountAgreementResultOutput) ToLookupIntegrationAccoun
 // The agreement type.
 func (o LookupIntegrationAccountAgreementResultOutput) AgreementType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIntegrationAccountAgreementResult) string { return v.AgreementType }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupIntegrationAccountAgreementResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIntegrationAccountAgreementResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The changed time.

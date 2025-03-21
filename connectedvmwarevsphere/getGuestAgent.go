@@ -12,9 +12,7 @@ import (
 )
 
 // Implements GuestAgent GET method.
-// Azure REST API version: 2022-07-15-preview.
-//
-// Other available API versions: 2023-03-01-preview.
+// Azure REST API version: 2023-03-01-preview.
 func LookupGuestAgent(ctx *pulumi.Context, args *LookupGuestAgentArgs, opts ...pulumi.InvokeOption) (*LookupGuestAgentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGuestAgentResult
@@ -36,25 +34,29 @@ type LookupGuestAgentArgs struct {
 
 // Defines the GuestAgent.
 type LookupGuestAgentResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Username / Password Credentials to provision guest agent.
 	Credentials *GuestCredentialResponse `pulumi:"credentials"`
 	// Gets the name of the corresponding resource in Kubernetes.
 	CustomResourceName string `pulumi:"customResourceName"`
 	// HTTP Proxy configuration for the VM.
 	HttpProxyConfig *HttpProxyConfigurationResponse `pulumi:"httpProxyConfig"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The name of the resource
 	Name string `pulumi:"name"`
+	// The resource id of the private link scope this machine is assigned to, if any.
+	PrivateLinkScopeResourceId *string `pulumi:"privateLinkScopeResourceId"`
 	// Gets or sets the guest agent provisioning action.
 	ProvisioningAction *string `pulumi:"provisioningAction"`
-	// Gets or sets the provisioning state.
+	// Gets the provisioning state.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Gets or sets the guest agent status.
 	Status string `pulumi:"status"`
 	// The resource status information.
 	Statuses []ResourceStatusResponse `pulumi:"statuses"`
-	// The system data.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
@@ -99,6 +101,11 @@ func (o LookupGuestAgentResultOutput) ToLookupGuestAgentResultOutputWithContext(
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupGuestAgentResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGuestAgentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Username / Password Credentials to provision guest agent.
 func (o LookupGuestAgentResultOutput) Credentials() GuestCredentialResponsePtrOutput {
 	return o.ApplyT(func(v LookupGuestAgentResult) *GuestCredentialResponse { return v.Credentials }).(GuestCredentialResponsePtrOutput)
@@ -114,7 +121,7 @@ func (o LookupGuestAgentResultOutput) HttpProxyConfig() HttpProxyConfigurationRe
 	return o.ApplyT(func(v LookupGuestAgentResult) *HttpProxyConfigurationResponse { return v.HttpProxyConfig }).(HttpProxyConfigurationResponsePtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupGuestAgentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGuestAgentResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -124,12 +131,17 @@ func (o LookupGuestAgentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGuestAgentResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The resource id of the private link scope this machine is assigned to, if any.
+func (o LookupGuestAgentResultOutput) PrivateLinkScopeResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupGuestAgentResult) *string { return v.PrivateLinkScopeResourceId }).(pulumi.StringPtrOutput)
+}
+
 // Gets or sets the guest agent provisioning action.
 func (o LookupGuestAgentResultOutput) ProvisioningAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupGuestAgentResult) *string { return v.ProvisioningAction }).(pulumi.StringPtrOutput)
 }
 
-// Gets or sets the provisioning state.
+// Gets the provisioning state.
 func (o LookupGuestAgentResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGuestAgentResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
@@ -144,7 +156,7 @@ func (o LookupGuestAgentResultOutput) Statuses() ResourceStatusResponseArrayOutp
 	return o.ApplyT(func(v LookupGuestAgentResult) []ResourceStatusResponse { return v.Statuses }).(ResourceStatusResponseArrayOutput)
 }
 
-// The system data.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupGuestAgentResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupGuestAgentResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }

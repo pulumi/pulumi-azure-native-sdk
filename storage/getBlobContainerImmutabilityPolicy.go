@@ -12,9 +12,7 @@ import (
 )
 
 // Gets the existing immutability policy along with the corresponding ETag in response headers and body.
-// Azure REST API version: 2022-09-01.
-//
-// Other available API versions: 2023-01-01, 2023-04-01, 2023-05-01, 2024-01-01.
+// Azure REST API version: 2024-01-01.
 func LookupBlobContainerImmutabilityPolicy(ctx *pulumi.Context, args *LookupBlobContainerImmutabilityPolicyArgs, opts ...pulumi.InvokeOption) (*LookupBlobContainerImmutabilityPolicyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBlobContainerImmutabilityPolicyResult
@@ -42,6 +40,8 @@ type LookupBlobContainerImmutabilityPolicyResult struct {
 	AllowProtectedAppendWrites *bool `pulumi:"allowProtectedAppendWrites"`
 	// This property can only be changed for unlocked time-based retention policies. When enabled, new blocks can be written to both 'Append and Bock Blobs' while maintaining immutability protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted. This property cannot be changed with ExtendImmutabilityPolicy API. The 'allowProtectedAppendWrites' and 'allowProtectedAppendWritesAll' properties are mutually exclusive.
 	AllowProtectedAppendWritesAll *bool `pulumi:"allowProtectedAppendWritesAll"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource Etag.
 	Etag string `pulumi:"etag"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -103,6 +103,11 @@ func (o LookupBlobContainerImmutabilityPolicyResultOutput) AllowProtectedAppendW
 // This property can only be changed for unlocked time-based retention policies. When enabled, new blocks can be written to both 'Append and Bock Blobs' while maintaining immutability protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted. This property cannot be changed with ExtendImmutabilityPolicy API. The 'allowProtectedAppendWrites' and 'allowProtectedAppendWritesAll' properties are mutually exclusive.
 func (o LookupBlobContainerImmutabilityPolicyResultOutput) AllowProtectedAppendWritesAll() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupBlobContainerImmutabilityPolicyResult) *bool { return v.AllowProtectedAppendWritesAll }).(pulumi.BoolPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupBlobContainerImmutabilityPolicyResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBlobContainerImmutabilityPolicyResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource Etag.

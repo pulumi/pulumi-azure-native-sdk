@@ -12,9 +12,7 @@ import (
 )
 
 // Gets the Defender for Storage settings for the specified storage account.
-// Azure REST API version: 2022-12-01-preview.
-//
-// Other available API versions: 2024-10-01-preview.
+// Azure REST API version: 2024-10-01-preview.
 func LookupDefenderForStorage(ctx *pulumi.Context, args *LookupDefenderForStorageArgs, opts ...pulumi.InvokeOption) (*LookupDefenderForStorageResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDefenderForStorageResult
@@ -34,6 +32,8 @@ type LookupDefenderForStorageArgs struct {
 
 // The Defender for Storage resource.
 type LookupDefenderForStorageResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource Id
 	Id string `pulumi:"id"`
 	// Resource name
@@ -77,6 +77,11 @@ func (o LookupDefenderForStorageResultOutput) ToLookupDefenderForStorageResultOu
 
 func (o LookupDefenderForStorageResultOutput) ToLookupDefenderForStorageResultOutputWithContext(ctx context.Context) LookupDefenderForStorageResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupDefenderForStorageResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDefenderForStorageResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource Id

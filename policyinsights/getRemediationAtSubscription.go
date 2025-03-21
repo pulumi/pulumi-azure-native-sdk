@@ -12,9 +12,7 @@ import (
 )
 
 // Gets an existing remediation at subscription scope.
-// Azure REST API version: 2021-10-01.
-//
-// Other available API versions: 2024-10-01.
+// Azure REST API version: 2024-10-01.
 func LookupRemediationAtSubscription(ctx *pulumi.Context, args *LookupRemediationAtSubscriptionArgs, opts ...pulumi.InvokeOption) (*LookupRemediationAtSubscriptionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRemediationAtSubscriptionResult
@@ -32,6 +30,8 @@ type LookupRemediationAtSubscriptionArgs struct {
 
 // The remediation definition.
 type LookupRemediationAtSubscriptionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The remediation correlation Id. Can be used to find events related to the remediation in the activity log.
 	CorrelationId string `pulumi:"correlationId"`
 	// The time at which the remediation was created.
@@ -99,6 +99,11 @@ func (o LookupRemediationAtSubscriptionResultOutput) ToLookupRemediationAtSubscr
 
 func (o LookupRemediationAtSubscriptionResultOutput) ToLookupRemediationAtSubscriptionResultOutputWithContext(ctx context.Context) LookupRemediationAtSubscriptionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupRemediationAtSubscriptionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRemediationAtSubscriptionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The remediation correlation Id. Can be used to find events related to the remediation in the activity log.

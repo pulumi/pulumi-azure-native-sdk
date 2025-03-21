@@ -13,9 +13,7 @@ import (
 )
 
 // A HyperV SiteResource
-// Azure REST API version: 2023-06-06.
-//
-// Other available API versions: 2023-10-01-preview, 2024-05-01-preview.
+// Azure REST API version: 2023-10-01-preview. Prior API version in Azure Native 2.x: 2023-06-06.
 type HypervSitesController struct {
 	pulumi.CustomResourceState
 
@@ -23,6 +21,8 @@ type HypervSitesController struct {
 	AgentDetails SiteAgentPropertiesResponsePtrOutput `pulumi:"agentDetails"`
 	// Gets or sets the Appliance Name.
 	ApplianceName pulumi.StringPtrOutput `pulumi:"applianceName"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets or sets the ARM ID of migration hub solution for SDS.
 	DiscoverySolutionId pulumi.StringPtrOutput `pulumi:"discoverySolutionId"`
 	// The geo-location where the resource lives
@@ -62,6 +62,9 @@ func NewHypervSitesController(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:offazure/v20200101:HypervSitesController"),
 		},
 		{
+			Type: pulumi.String("azure-native:offazure/v20200707:HyperVSite"),
+		},
+		{
 			Type: pulumi.String("azure-native:offazure/v20200707:HypervSitesController"),
 		},
 		{
@@ -72,6 +75,9 @@ func NewHypervSitesController(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:offazure/v20240501preview:HypervSitesController"),
+		},
+		{
+			Type: pulumi.String("azure-native:offazure:HyperVSite"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -199,6 +205,11 @@ func (o HypervSitesControllerOutput) AgentDetails() SiteAgentPropertiesResponseP
 // Gets or sets the Appliance Name.
 func (o HypervSitesControllerOutput) ApplianceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HypervSitesController) pulumi.StringPtrOutput { return v.ApplianceName }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o HypervSitesControllerOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *HypervSitesController) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets the ARM ID of migration hub solution for SDS.

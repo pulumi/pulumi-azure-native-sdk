@@ -13,8 +13,6 @@ import (
 
 // Gets a failover group.
 // Azure REST API version: 2021-11-01.
-//
-// Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
 func LookupInstanceFailoverGroup(ctx *pulumi.Context, args *LookupInstanceFailoverGroupArgs, opts ...pulumi.InvokeOption) (*LookupInstanceFailoverGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupInstanceFailoverGroupResult
@@ -36,6 +34,8 @@ type LookupInstanceFailoverGroupArgs struct {
 
 // An instance failover group.
 type LookupInstanceFailoverGroupResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource ID.
 	Id string `pulumi:"id"`
 	// List of managed instance pairs in the failover group.
@@ -91,6 +91,11 @@ func (o LookupInstanceFailoverGroupResultOutput) ToLookupInstanceFailoverGroupRe
 
 func (o LookupInstanceFailoverGroupResultOutput) ToLookupInstanceFailoverGroupResultOutputWithContext(ctx context.Context) LookupInstanceFailoverGroupResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupInstanceFailoverGroupResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceFailoverGroupResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource ID.

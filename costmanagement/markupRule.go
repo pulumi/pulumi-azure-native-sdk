@@ -13,10 +13,12 @@ import (
 )
 
 // Markup rule
-// Azure REST API version: 2022-10-05-preview.
+// Azure REST API version: 2022-10-05-preview. Prior API version in Azure Native 2.x: 2022-10-05-preview.
 type MarkupRule struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Customer information for the markup rule.
 	CustomerDetails CustomerMetadataResponseOutput `pulumi:"customerDetails"`
 	// The description of the markup rule.
@@ -173,6 +175,11 @@ func (o MarkupRuleOutput) ToMarkupRuleOutput() MarkupRuleOutput {
 
 func (o MarkupRuleOutput) ToMarkupRuleOutputWithContext(ctx context.Context) MarkupRuleOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o MarkupRuleOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *MarkupRule) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Customer information for the markup rule.

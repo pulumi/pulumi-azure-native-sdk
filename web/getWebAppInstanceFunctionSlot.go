@@ -12,9 +12,7 @@ import (
 )
 
 // Description for Get function information by its ID for web site, or a deployment slot.
-// Azure REST API version: 2022-09-01.
-//
-// Other available API versions: 2016-08-01, 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
+// Azure REST API version: 2024-04-01.
 func LookupWebAppInstanceFunctionSlot(ctx *pulumi.Context, args *LookupWebAppInstanceFunctionSlotArgs, opts ...pulumi.InvokeOption) (*LookupWebAppInstanceFunctionSlotResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebAppInstanceFunctionSlotResult
@@ -38,6 +36,8 @@ type LookupWebAppInstanceFunctionSlotArgs struct {
 
 // Function information.
 type LookupWebAppInstanceFunctionSlotResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Config information.
 	Config interface{} `pulumi:"config"`
 	// Config URI.
@@ -111,6 +111,11 @@ func (o LookupWebAppInstanceFunctionSlotResultOutput) ToLookupWebAppInstanceFunc
 
 func (o LookupWebAppInstanceFunctionSlotResultOutput) ToLookupWebAppInstanceFunctionSlotResultOutputWithContext(ctx context.Context) LookupWebAppInstanceFunctionSlotResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupWebAppInstanceFunctionSlotResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWebAppInstanceFunctionSlotResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Config information.

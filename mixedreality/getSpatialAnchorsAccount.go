@@ -11,10 +11,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Retrieve a Spatial Anchors Account.
-// Azure REST API version: 2021-01-01.
+// > [!NOTE]
+// >
+// > **Mixed Reality retirement**
+// >
+// > The Mixed Reality service is now deprecated and will be retired.
 //
-// Other available API versions: 2021-03-01-preview.
+//	Retrieve a Spatial Anchors Account.
+//
+// Azure REST API version: 2021-03-01-preview.
 func LookupSpatialAnchorsAccount(ctx *pulumi.Context, args *LookupSpatialAnchorsAccountArgs, opts ...pulumi.InvokeOption) (*LookupSpatialAnchorsAccountResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSpatialAnchorsAccountResult
@@ -38,6 +43,8 @@ type LookupSpatialAnchorsAccountResult struct {
 	AccountDomain string `pulumi:"accountDomain"`
 	// unique id of certain account.
 	AccountId string `pulumi:"accountId"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The identity associated with this account
@@ -105,6 +112,11 @@ func (o LookupSpatialAnchorsAccountResultOutput) AccountDomain() pulumi.StringOu
 // unique id of certain account.
 func (o LookupSpatialAnchorsAccountResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSpatialAnchorsAccountResult) string { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupSpatialAnchorsAccountResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSpatialAnchorsAccountResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

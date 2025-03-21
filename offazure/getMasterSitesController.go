@@ -12,9 +12,7 @@ import (
 )
 
 // Get a MasterSite
-// Azure REST API version: 2023-06-06.
-//
-// Other available API versions: 2023-10-01-preview, 2024-05-01-preview.
+// Azure REST API version: 2023-10-01-preview.
 func LookupMasterSitesController(ctx *pulumi.Context, args *LookupMasterSitesControllerArgs, opts ...pulumi.InvokeOption) (*LookupMasterSitesControllerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMasterSitesControllerResult
@@ -37,6 +35,8 @@ type LookupMasterSitesControllerResult struct {
 	// Gets or sets a value indicating whether multiple sites per site type are
 	// allowed.
 	AllowMultipleSites *bool `pulumi:"allowMultipleSites"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets or sets a value for customer storage account ARM id.
 	CustomerStorageAccountArmId *string `pulumi:"customerStorageAccountArmId"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -104,6 +104,11 @@ func (o LookupMasterSitesControllerResultOutput) ToLookupMasterSitesControllerRe
 // allowed.
 func (o LookupMasterSitesControllerResultOutput) AllowMultipleSites() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupMasterSitesControllerResult) *bool { return v.AllowMultipleSites }).(pulumi.BoolPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupMasterSitesControllerResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMasterSitesControllerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets a value for customer storage account ARM id.

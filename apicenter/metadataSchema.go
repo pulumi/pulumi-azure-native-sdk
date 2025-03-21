@@ -13,14 +13,14 @@ import (
 )
 
 // Metadata schema entity. Used to define metadata for the entities in API catalog.
-// Azure REST API version: 2024-03-01.
-//
-// Other available API versions: 2024-03-15-preview, 2024-06-01-preview.
+// Azure REST API version: 2024-03-15-preview. Prior API version in Azure Native 2.x: 2024-03-01.
 type MetadataSchema struct {
 	pulumi.CustomResourceState
 
 	// The assignees
 	AssignedTo MetadataAssignmentResponseArrayOutput `pulumi:"assignedTo"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The schema defining the type.
@@ -158,6 +158,11 @@ func (o MetadataSchemaOutput) ToMetadataSchemaOutputWithContext(ctx context.Cont
 // The assignees
 func (o MetadataSchemaOutput) AssignedTo() MetadataAssignmentResponseArrayOutput {
 	return o.ApplyT(func(v *MetadataSchema) MetadataAssignmentResponseArrayOutput { return v.AssignedTo }).(MetadataAssignmentResponseArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o MetadataSchemaOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *MetadataSchema) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

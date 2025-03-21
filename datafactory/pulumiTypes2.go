@@ -13,6 +13,252 @@ import (
 
 var _ = utilities.GetEnvOrDefault
 
+// Sap Business Warehouse Open Hub Destination Table properties.
+type SapOpenHubTableDataset struct {
+	// List of tags that can be used for describing the Dataset.
+	Annotations []interface{} `pulumi:"annotations"`
+	// The ID of request for delta loading. Once it is set, only data with requestId larger than the value of this property will be retrieved. The default value is 0. Type: integer (or Expression with resultType integer ).
+	BaseRequestId interface{} `pulumi:"baseRequestId"`
+	// Dataset description.
+	Description *string `pulumi:"description"`
+	// Whether to exclude the records of the last request. The default value is true. Type: boolean (or Expression with resultType boolean).
+	ExcludeLastRequest interface{} `pulumi:"excludeLastRequest"`
+	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+	Folder *DatasetFolder `pulumi:"folder"`
+	// Linked service reference.
+	LinkedServiceName LinkedServiceReference `pulumi:"linkedServiceName"`
+	// The name of the Open Hub Destination with destination type as Database Table. Type: string (or Expression with resultType string).
+	OpenHubDestinationName interface{} `pulumi:"openHubDestinationName"`
+	// Parameters for dataset.
+	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
+	// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+	Schema interface{} `pulumi:"schema"`
+	// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+	Structure interface{} `pulumi:"structure"`
+	// Type of dataset.
+	// Expected value is 'SapOpenHubTable'.
+	Type string `pulumi:"type"`
+}
+
+// SapOpenHubTableDatasetInput is an input type that accepts SapOpenHubTableDatasetArgs and SapOpenHubTableDatasetOutput values.
+// You can construct a concrete instance of `SapOpenHubTableDatasetInput` via:
+//
+//	SapOpenHubTableDatasetArgs{...}
+type SapOpenHubTableDatasetInput interface {
+	pulumi.Input
+
+	ToSapOpenHubTableDatasetOutput() SapOpenHubTableDatasetOutput
+	ToSapOpenHubTableDatasetOutputWithContext(context.Context) SapOpenHubTableDatasetOutput
+}
+
+// Sap Business Warehouse Open Hub Destination Table properties.
+type SapOpenHubTableDatasetArgs struct {
+	// List of tags that can be used for describing the Dataset.
+	Annotations pulumi.ArrayInput `pulumi:"annotations"`
+	// The ID of request for delta loading. Once it is set, only data with requestId larger than the value of this property will be retrieved. The default value is 0. Type: integer (or Expression with resultType integer ).
+	BaseRequestId pulumi.Input `pulumi:"baseRequestId"`
+	// Dataset description.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Whether to exclude the records of the last request. The default value is true. Type: boolean (or Expression with resultType boolean).
+	ExcludeLastRequest pulumi.Input `pulumi:"excludeLastRequest"`
+	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+	Folder DatasetFolderPtrInput `pulumi:"folder"`
+	// Linked service reference.
+	LinkedServiceName LinkedServiceReferenceInput `pulumi:"linkedServiceName"`
+	// The name of the Open Hub Destination with destination type as Database Table. Type: string (or Expression with resultType string).
+	OpenHubDestinationName pulumi.Input `pulumi:"openHubDestinationName"`
+	// Parameters for dataset.
+	Parameters ParameterSpecificationMapInput `pulumi:"parameters"`
+	// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+	Schema pulumi.Input `pulumi:"schema"`
+	// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+	Structure pulumi.Input `pulumi:"structure"`
+	// Type of dataset.
+	// Expected value is 'SapOpenHubTable'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (SapOpenHubTableDatasetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SapOpenHubTableDataset)(nil)).Elem()
+}
+
+func (i SapOpenHubTableDatasetArgs) ToSapOpenHubTableDatasetOutput() SapOpenHubTableDatasetOutput {
+	return i.ToSapOpenHubTableDatasetOutputWithContext(context.Background())
+}
+
+func (i SapOpenHubTableDatasetArgs) ToSapOpenHubTableDatasetOutputWithContext(ctx context.Context) SapOpenHubTableDatasetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SapOpenHubTableDatasetOutput)
+}
+
+// Sap Business Warehouse Open Hub Destination Table properties.
+type SapOpenHubTableDatasetOutput struct{ *pulumi.OutputState }
+
+func (SapOpenHubTableDatasetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SapOpenHubTableDataset)(nil)).Elem()
+}
+
+func (o SapOpenHubTableDatasetOutput) ToSapOpenHubTableDatasetOutput() SapOpenHubTableDatasetOutput {
+	return o
+}
+
+func (o SapOpenHubTableDatasetOutput) ToSapOpenHubTableDatasetOutputWithContext(ctx context.Context) SapOpenHubTableDatasetOutput {
+	return o
+}
+
+// List of tags that can be used for describing the Dataset.
+func (o SapOpenHubTableDatasetOutput) Annotations() pulumi.ArrayOutput {
+	return o.ApplyT(func(v SapOpenHubTableDataset) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
+}
+
+// The ID of request for delta loading. Once it is set, only data with requestId larger than the value of this property will be retrieved. The default value is 0. Type: integer (or Expression with resultType integer ).
+func (o SapOpenHubTableDatasetOutput) BaseRequestId() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapOpenHubTableDataset) interface{} { return v.BaseRequestId }).(pulumi.AnyOutput)
+}
+
+// Dataset description.
+func (o SapOpenHubTableDatasetOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapOpenHubTableDataset) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Whether to exclude the records of the last request. The default value is true. Type: boolean (or Expression with resultType boolean).
+func (o SapOpenHubTableDatasetOutput) ExcludeLastRequest() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapOpenHubTableDataset) interface{} { return v.ExcludeLastRequest }).(pulumi.AnyOutput)
+}
+
+// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+func (o SapOpenHubTableDatasetOutput) Folder() DatasetFolderPtrOutput {
+	return o.ApplyT(func(v SapOpenHubTableDataset) *DatasetFolder { return v.Folder }).(DatasetFolderPtrOutput)
+}
+
+// Linked service reference.
+func (o SapOpenHubTableDatasetOutput) LinkedServiceName() LinkedServiceReferenceOutput {
+	return o.ApplyT(func(v SapOpenHubTableDataset) LinkedServiceReference { return v.LinkedServiceName }).(LinkedServiceReferenceOutput)
+}
+
+// The name of the Open Hub Destination with destination type as Database Table. Type: string (or Expression with resultType string).
+func (o SapOpenHubTableDatasetOutput) OpenHubDestinationName() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapOpenHubTableDataset) interface{} { return v.OpenHubDestinationName }).(pulumi.AnyOutput)
+}
+
+// Parameters for dataset.
+func (o SapOpenHubTableDatasetOutput) Parameters() ParameterSpecificationMapOutput {
+	return o.ApplyT(func(v SapOpenHubTableDataset) map[string]ParameterSpecification { return v.Parameters }).(ParameterSpecificationMapOutput)
+}
+
+// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+func (o SapOpenHubTableDatasetOutput) Schema() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapOpenHubTableDataset) interface{} { return v.Schema }).(pulumi.AnyOutput)
+}
+
+// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+func (o SapOpenHubTableDatasetOutput) Structure() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapOpenHubTableDataset) interface{} { return v.Structure }).(pulumi.AnyOutput)
+}
+
+// Type of dataset.
+// Expected value is 'SapOpenHubTable'.
+func (o SapOpenHubTableDatasetOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SapOpenHubTableDataset) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Sap Business Warehouse Open Hub Destination Table properties.
+type SapOpenHubTableDatasetResponse struct {
+	// List of tags that can be used for describing the Dataset.
+	Annotations []interface{} `pulumi:"annotations"`
+	// The ID of request for delta loading. Once it is set, only data with requestId larger than the value of this property will be retrieved. The default value is 0. Type: integer (or Expression with resultType integer ).
+	BaseRequestId interface{} `pulumi:"baseRequestId"`
+	// Dataset description.
+	Description *string `pulumi:"description"`
+	// Whether to exclude the records of the last request. The default value is true. Type: boolean (or Expression with resultType boolean).
+	ExcludeLastRequest interface{} `pulumi:"excludeLastRequest"`
+	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+	Folder *DatasetResponseFolder `pulumi:"folder"`
+	// Linked service reference.
+	LinkedServiceName LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
+	// The name of the Open Hub Destination with destination type as Database Table. Type: string (or Expression with resultType string).
+	OpenHubDestinationName interface{} `pulumi:"openHubDestinationName"`
+	// Parameters for dataset.
+	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
+	// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+	Schema interface{} `pulumi:"schema"`
+	// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+	Structure interface{} `pulumi:"structure"`
+	// Type of dataset.
+	// Expected value is 'SapOpenHubTable'.
+	Type string `pulumi:"type"`
+}
+
+// Sap Business Warehouse Open Hub Destination Table properties.
+type SapOpenHubTableDatasetResponseOutput struct{ *pulumi.OutputState }
+
+func (SapOpenHubTableDatasetResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SapOpenHubTableDatasetResponse)(nil)).Elem()
+}
+
+func (o SapOpenHubTableDatasetResponseOutput) ToSapOpenHubTableDatasetResponseOutput() SapOpenHubTableDatasetResponseOutput {
+	return o
+}
+
+func (o SapOpenHubTableDatasetResponseOutput) ToSapOpenHubTableDatasetResponseOutputWithContext(ctx context.Context) SapOpenHubTableDatasetResponseOutput {
+	return o
+}
+
+// List of tags that can be used for describing the Dataset.
+func (o SapOpenHubTableDatasetResponseOutput) Annotations() pulumi.ArrayOutput {
+	return o.ApplyT(func(v SapOpenHubTableDatasetResponse) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
+}
+
+// The ID of request for delta loading. Once it is set, only data with requestId larger than the value of this property will be retrieved. The default value is 0. Type: integer (or Expression with resultType integer ).
+func (o SapOpenHubTableDatasetResponseOutput) BaseRequestId() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapOpenHubTableDatasetResponse) interface{} { return v.BaseRequestId }).(pulumi.AnyOutput)
+}
+
+// Dataset description.
+func (o SapOpenHubTableDatasetResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapOpenHubTableDatasetResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Whether to exclude the records of the last request. The default value is true. Type: boolean (or Expression with resultType boolean).
+func (o SapOpenHubTableDatasetResponseOutput) ExcludeLastRequest() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapOpenHubTableDatasetResponse) interface{} { return v.ExcludeLastRequest }).(pulumi.AnyOutput)
+}
+
+// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+func (o SapOpenHubTableDatasetResponseOutput) Folder() DatasetResponseFolderPtrOutput {
+	return o.ApplyT(func(v SapOpenHubTableDatasetResponse) *DatasetResponseFolder { return v.Folder }).(DatasetResponseFolderPtrOutput)
+}
+
+// Linked service reference.
+func (o SapOpenHubTableDatasetResponseOutput) LinkedServiceName() LinkedServiceReferenceResponseOutput {
+	return o.ApplyT(func(v SapOpenHubTableDatasetResponse) LinkedServiceReferenceResponse { return v.LinkedServiceName }).(LinkedServiceReferenceResponseOutput)
+}
+
+// The name of the Open Hub Destination with destination type as Database Table. Type: string (or Expression with resultType string).
+func (o SapOpenHubTableDatasetResponseOutput) OpenHubDestinationName() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapOpenHubTableDatasetResponse) interface{} { return v.OpenHubDestinationName }).(pulumi.AnyOutput)
+}
+
+// Parameters for dataset.
+func (o SapOpenHubTableDatasetResponseOutput) Parameters() ParameterSpecificationResponseMapOutput {
+	return o.ApplyT(func(v SapOpenHubTableDatasetResponse) map[string]ParameterSpecificationResponse { return v.Parameters }).(ParameterSpecificationResponseMapOutput)
+}
+
+// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+func (o SapOpenHubTableDatasetResponseOutput) Schema() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapOpenHubTableDatasetResponse) interface{} { return v.Schema }).(pulumi.AnyOutput)
+}
+
+// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+func (o SapOpenHubTableDatasetResponseOutput) Structure() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapOpenHubTableDatasetResponse) interface{} { return v.Structure }).(pulumi.AnyOutput)
+}
+
+// Type of dataset.
+// Expected value is 'SapOpenHubTable'.
+func (o SapOpenHubTableDatasetResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SapOpenHubTableDatasetResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
 // SAP Table Linked Service.
 type SapTableLinkedService struct {
 	// List of tags that can be used for describing the linked service.
@@ -4815,6 +5061,8 @@ type ServiceNowV2ObjectDataset struct {
 	// Type of dataset.
 	// Expected value is 'ServiceNowV2Object'.
 	Type string `pulumi:"type"`
+	// Type of value copied from source.
+	ValueType *string `pulumi:"valueType"`
 }
 
 // ServiceNowV2ObjectDatasetInput is an input type that accepts ServiceNowV2ObjectDatasetArgs and ServiceNowV2ObjectDatasetOutput values.
@@ -4849,6 +5097,8 @@ type ServiceNowV2ObjectDatasetArgs struct {
 	// Type of dataset.
 	// Expected value is 'ServiceNowV2Object'.
 	Type pulumi.StringInput `pulumi:"type"`
+	// Type of value copied from source.
+	ValueType pulumi.StringPtrInput `pulumi:"valueType"`
 }
 
 func (ServiceNowV2ObjectDatasetArgs) ElementType() reflect.Type {
@@ -4924,6 +5174,11 @@ func (o ServiceNowV2ObjectDatasetOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceNowV2ObjectDataset) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Type of value copied from source.
+func (o ServiceNowV2ObjectDatasetOutput) ValueType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceNowV2ObjectDataset) *string { return v.ValueType }).(pulumi.StringPtrOutput)
+}
+
 // ServiceNowV2 server dataset.
 type ServiceNowV2ObjectDatasetResponse struct {
 	// List of tags that can be used for describing the Dataset.
@@ -4945,6 +5200,8 @@ type ServiceNowV2ObjectDatasetResponse struct {
 	// Type of dataset.
 	// Expected value is 'ServiceNowV2Object'.
 	Type string `pulumi:"type"`
+	// Type of value copied from source.
+	ValueType *string `pulumi:"valueType"`
 }
 
 // ServiceNowV2 server dataset.
@@ -5008,6 +5265,11 @@ func (o ServiceNowV2ObjectDatasetResponseOutput) TableName() pulumi.AnyOutput {
 // Expected value is 'ServiceNowV2Object'.
 func (o ServiceNowV2ObjectDatasetResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceNowV2ObjectDatasetResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Type of value copied from source.
+func (o ServiceNowV2ObjectDatasetResponseOutput) ValueType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceNowV2ObjectDatasetResponse) *string { return v.ValueType }).(pulumi.StringPtrOutput)
 }
 
 // A copy activity ServiceNowV2 server source.
@@ -32756,6 +33018,8 @@ func (o ZohoSourceResponseOutput) Type() pulumi.StringOutput {
 }
 
 func init() {
+	pulumi.RegisterOutputType(SapOpenHubTableDatasetOutput{})
+	pulumi.RegisterOutputType(SapOpenHubTableDatasetResponseOutput{})
 	pulumi.RegisterOutputType(SapTableLinkedServiceOutput{})
 	pulumi.RegisterOutputType(SapTableLinkedServiceResponseOutput{})
 	pulumi.RegisterOutputType(SapTablePartitionSettingsOutput{})

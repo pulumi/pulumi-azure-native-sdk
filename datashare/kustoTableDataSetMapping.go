@@ -13,10 +13,12 @@ import (
 )
 
 // A Kusto database data set mapping
-// Azure REST API version: 2021-08-01. Prior API version in Azure Native 1.x: 2020-09-01.
+// Azure REST API version: 2021-08-01. Prior API version in Azure Native 2.x: 2021-08-01.
 type KustoTableDataSetMapping struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The id of the source data set.
 	DataSetId pulumi.StringOutput `pulumi:"dataSetId"`
 	// Gets the status of the data set mapping.
@@ -75,10 +77,82 @@ func NewKustoTableDataSetMapping(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:datashare/v20200901:KustoTableDataSetMapping"),
 		},
 		{
+			Type: pulumi.String("azure-native:datashare/v20201001preview:ADLSGen2StorageAccountDataSetMapping"),
+		},
+		{
+			Type: pulumi.String("azure-native:datashare/v20201001preview:BlobStorageAccountDataSetMapping"),
+		},
+		{
 			Type: pulumi.String("azure-native:datashare/v20201001preview:KustoTableDataSetMapping"),
 		},
 		{
+			Type: pulumi.String("azure-native:datashare/v20210801:ADLSGen2FileDataSetMapping"),
+		},
+		{
+			Type: pulumi.String("azure-native:datashare/v20210801:ADLSGen2FileSystemDataSetMapping"),
+		},
+		{
+			Type: pulumi.String("azure-native:datashare/v20210801:ADLSGen2FolderDataSetMapping"),
+		},
+		{
+			Type: pulumi.String("azure-native:datashare/v20210801:BlobContainerDataSetMapping"),
+		},
+		{
+			Type: pulumi.String("azure-native:datashare/v20210801:BlobDataSetMapping"),
+		},
+		{
+			Type: pulumi.String("azure-native:datashare/v20210801:BlobFolderDataSetMapping"),
+		},
+		{
+			Type: pulumi.String("azure-native:datashare/v20210801:KustoClusterDataSetMapping"),
+		},
+		{
+			Type: pulumi.String("azure-native:datashare/v20210801:KustoDatabaseDataSetMapping"),
+		},
+		{
 			Type: pulumi.String("azure-native:datashare/v20210801:KustoTableDataSetMapping"),
+		},
+		{
+			Type: pulumi.String("azure-native:datashare/v20210801:SqlDBTableDataSetMapping"),
+		},
+		{
+			Type: pulumi.String("azure-native:datashare/v20210801:SqlDWTableDataSetMapping"),
+		},
+		{
+			Type: pulumi.String("azure-native:datashare/v20210801:SynapseWorkspaceSqlPoolTableDataSetMapping"),
+		},
+		{
+			Type: pulumi.String("azure-native:datashare:ADLSGen2FileDataSetMapping"),
+		},
+		{
+			Type: pulumi.String("azure-native:datashare:ADLSGen2FileSystemDataSetMapping"),
+		},
+		{
+			Type: pulumi.String("azure-native:datashare:ADLSGen2FolderDataSetMapping"),
+		},
+		{
+			Type: pulumi.String("azure-native:datashare:BlobContainerDataSetMapping"),
+		},
+		{
+			Type: pulumi.String("azure-native:datashare:BlobDataSetMapping"),
+		},
+		{
+			Type: pulumi.String("azure-native:datashare:BlobFolderDataSetMapping"),
+		},
+		{
+			Type: pulumi.String("azure-native:datashare:KustoClusterDataSetMapping"),
+		},
+		{
+			Type: pulumi.String("azure-native:datashare:KustoDatabaseDataSetMapping"),
+		},
+		{
+			Type: pulumi.String("azure-native:datashare:SqlDBTableDataSetMapping"),
+		},
+		{
+			Type: pulumi.String("azure-native:datashare:SqlDWTableDataSetMapping"),
+		},
+		{
+			Type: pulumi.String("azure-native:datashare:SynapseWorkspaceSqlPoolTableDataSetMapping"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -186,6 +260,11 @@ func (o KustoTableDataSetMappingOutput) ToKustoTableDataSetMappingOutput() Kusto
 
 func (o KustoTableDataSetMappingOutput) ToKustoTableDataSetMappingOutputWithContext(ctx context.Context) KustoTableDataSetMappingOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o KustoTableDataSetMappingOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *KustoTableDataSetMapping) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The id of the source data set.

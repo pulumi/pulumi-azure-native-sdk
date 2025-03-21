@@ -12,9 +12,7 @@ import (
 )
 
 // Description for Gets a Swift Virtual Network connection.
-// Azure REST API version: 2022-09-01.
-//
-// Other available API versions: 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
+// Azure REST API version: 2024-04-01.
 func LookupWebAppSwiftVirtualNetworkConnectionSlot(ctx *pulumi.Context, args *LookupWebAppSwiftVirtualNetworkConnectionSlotArgs, opts ...pulumi.InvokeOption) (*LookupWebAppSwiftVirtualNetworkConnectionSlotResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebAppSwiftVirtualNetworkConnectionSlotResult
@@ -36,6 +34,8 @@ type LookupWebAppSwiftVirtualNetworkConnectionSlotArgs struct {
 
 // Swift Virtual Network Contract. This is used to enable the new Swift way of doing virtual network integration.
 type LookupWebAppSwiftVirtualNetworkConnectionSlotResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource Id.
 	Id string `pulumi:"id"`
 	// Kind of resource.
@@ -85,6 +85,11 @@ func (o LookupWebAppSwiftVirtualNetworkConnectionSlotResultOutput) ToLookupWebAp
 
 func (o LookupWebAppSwiftVirtualNetworkConnectionSlotResultOutput) ToLookupWebAppSwiftVirtualNetworkConnectionSlotResultOutputWithContext(ctx context.Context) LookupWebAppSwiftVirtualNetworkConnectionSlotResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupWebAppSwiftVirtualNetworkConnectionSlotResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWebAppSwiftVirtualNetworkConnectionSlotResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource Id.

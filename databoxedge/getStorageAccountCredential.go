@@ -12,9 +12,7 @@ import (
 )
 
 // Gets the properties of the specified storage account credential.
-// Azure REST API version: 2022-03-01.
-//
-// Other available API versions: 2023-01-01-preview, 2023-07-01, 2023-12-01.
+// Azure REST API version: 2023-07-01.
 func LookupStorageAccountCredential(ctx *pulumi.Context, args *LookupStorageAccountCredentialArgs, opts ...pulumi.InvokeOption) (*LookupStorageAccountCredentialResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupStorageAccountCredentialResult
@@ -42,6 +40,8 @@ type LookupStorageAccountCredentialResult struct {
 	AccountType string `pulumi:"accountType"`
 	// Alias for the storage account.
 	Alias string `pulumi:"alias"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Blob end point for private clouds.
 	BlobDomainName *string `pulumi:"blobDomainName"`
 	// Connection string for the storage account. Use this string if username and account key are not specified.
@@ -112,6 +112,11 @@ func (o LookupStorageAccountCredentialResultOutput) AccountType() pulumi.StringO
 // Alias for the storage account.
 func (o LookupStorageAccountCredentialResultOutput) Alias() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageAccountCredentialResult) string { return v.Alias }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupStorageAccountCredentialResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStorageAccountCredentialResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Blob end point for private clouds.

@@ -12,9 +12,7 @@ import (
 )
 
 // Get a ScalingPlanPersonalSchedule.
-// Azure REST API version: 2023-07-07-preview.
-//
-// Other available API versions: 2023-09-05, 2023-10-04-preview, 2023-11-01-preview, 2024-01-16-preview, 2024-03-06-preview, 2024-04-03, 2024-04-08-preview, 2024-08-08-preview.
+// Azure REST API version: 2024-04-03.
 func LookupScalingPlanPersonalSchedule(ctx *pulumi.Context, args *LookupScalingPlanPersonalScheduleArgs, opts ...pulumi.InvokeOption) (*LookupScalingPlanPersonalScheduleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupScalingPlanPersonalScheduleResult
@@ -36,9 +34,11 @@ type LookupScalingPlanPersonalScheduleArgs struct {
 
 // Represents a ScalingPlanPersonalSchedule definition.
 type LookupScalingPlanPersonalScheduleResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Set of days of the week on which this schedule is active.
 	DaysOfWeek []string `pulumi:"daysOfWeek"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The name of the resource
 	Name string `pulumi:"name"`
@@ -92,7 +92,7 @@ type LookupScalingPlanPersonalScheduleResult struct {
 	RampUpStartTime *TimeResponse `pulumi:"rampUpStartTime"`
 	// The desired configuration of Start VM On Connect for the hostpool during the ramp up phase. If this is disabled, session hosts must be turned on using rampUpAutoStartHosts or by turning them on manually.
 	RampUpStartVMOnConnect *string `pulumi:"rampUpStartVMOnConnect"`
-	// Metadata pertaining to creation and last modification of the resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
@@ -159,12 +159,17 @@ func (o LookupScalingPlanPersonalScheduleResultOutput) ToLookupScalingPlanPerson
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupScalingPlanPersonalScheduleResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupScalingPlanPersonalScheduleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Set of days of the week on which this schedule is active.
 func (o LookupScalingPlanPersonalScheduleResultOutput) DaysOfWeek() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupScalingPlanPersonalScheduleResult) []string { return v.DaysOfWeek }).(pulumi.StringArrayOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupScalingPlanPersonalScheduleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupScalingPlanPersonalScheduleResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -299,7 +304,7 @@ func (o LookupScalingPlanPersonalScheduleResultOutput) RampUpStartVMOnConnect() 
 	return o.ApplyT(func(v LookupScalingPlanPersonalScheduleResult) *string { return v.RampUpStartVMOnConnect }).(pulumi.StringPtrOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupScalingPlanPersonalScheduleResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupScalingPlanPersonalScheduleResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }

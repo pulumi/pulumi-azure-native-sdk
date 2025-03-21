@@ -12,9 +12,7 @@ import (
 )
 
 // Get a custom certificate.
-// Azure REST API version: 2023-02-01.
-//
-// Other available API versions: 2023-03-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-08-01-preview, 2024-10-01-preview.
+// Azure REST API version: 2024-03-01.
 func LookupSignalRCustomCertificate(ctx *pulumi.Context, args *LookupSignalRCustomCertificateArgs, opts ...pulumi.InvokeOption) (*LookupSignalRCustomCertificateResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSignalRCustomCertificateResult
@@ -28,7 +26,7 @@ func LookupSignalRCustomCertificate(ctx *pulumi.Context, args *LookupSignalRCust
 type LookupSignalRCustomCertificateArgs struct {
 	// Custom certificate name
 	CertificateName string `pulumi:"certificateName"`
-	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the resource.
 	ResourceName string `pulumi:"resourceName"`
@@ -36,7 +34,9 @@ type LookupSignalRCustomCertificateArgs struct {
 
 // A custom certificate.
 type LookupSignalRCustomCertificateResult struct {
-	// Fully qualified resource Id for the resource.
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Base uri of the KeyVault that stores certificate.
 	KeyVaultBaseUri string `pulumi:"keyVaultBaseUri"`
@@ -44,13 +44,13 @@ type LookupSignalRCustomCertificateResult struct {
 	KeyVaultSecretName string `pulumi:"keyVaultSecretName"`
 	// Certificate secret version.
 	KeyVaultSecretVersion *string `pulumi:"keyVaultSecretVersion"`
-	// The name of the resource.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// Provisioning state of the resource.
 	ProvisioningState string `pulumi:"provisioningState"`
-	// Metadata pertaining to creation and last modification of the resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	// The type of the resource - e.g. "Microsoft.SignalRService/SignalR"
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -66,7 +66,7 @@ func LookupSignalRCustomCertificateOutput(ctx *pulumi.Context, args LookupSignal
 type LookupSignalRCustomCertificateOutputArgs struct {
 	// Custom certificate name
 	CertificateName pulumi.StringInput `pulumi:"certificateName"`
-	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the resource.
 	ResourceName pulumi.StringInput `pulumi:"resourceName"`
@@ -91,7 +91,12 @@ func (o LookupSignalRCustomCertificateResultOutput) ToLookupSignalRCustomCertifi
 	return o
 }
 
-// Fully qualified resource Id for the resource.
+// The Azure API version of the resource.
+func (o LookupSignalRCustomCertificateResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSignalRCustomCertificateResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupSignalRCustomCertificateResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSignalRCustomCertificateResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -111,7 +116,7 @@ func (o LookupSignalRCustomCertificateResultOutput) KeyVaultSecretVersion() pulu
 	return o.ApplyT(func(v LookupSignalRCustomCertificateResult) *string { return v.KeyVaultSecretVersion }).(pulumi.StringPtrOutput)
 }
 
-// The name of the resource.
+// The name of the resource
 func (o LookupSignalRCustomCertificateResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSignalRCustomCertificateResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -121,12 +126,12 @@ func (o LookupSignalRCustomCertificateResultOutput) ProvisioningState() pulumi.S
 	return o.ApplyT(func(v LookupSignalRCustomCertificateResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupSignalRCustomCertificateResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupSignalRCustomCertificateResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// The type of the resource - e.g. "Microsoft.SignalRService/SignalR"
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupSignalRCustomCertificateResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSignalRCustomCertificateResult) string { return v.Type }).(pulumi.StringOutput)
 }

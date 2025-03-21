@@ -13,14 +13,14 @@ import (
 )
 
 // Describes an Arc Gateway.
-// Azure REST API version: 2024-03-31-preview.
-//
-// Other available API versions: 2024-05-20-preview, 2024-07-31-preview, 2024-09-10-preview, 2024-11-10-preview.
+// Azure REST API version: 2024-07-31-preview. Prior API version in Azure Native 2.x: 2024-03-31-preview.
 type Gateway struct {
 	pulumi.CustomResourceState
 
 	// Specifies the list of features that are enabled for this Gateway.
 	AllowedFeatures pulumi.StringArrayOutput `pulumi:"allowedFeatures"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The endpoint fqdn for the Gateway.
 	GatewayEndpoint pulumi.StringOutput `pulumi:"gatewayEndpoint"`
 	// A unique, immutable, identifier for the Gateway.
@@ -66,6 +66,9 @@ func NewGateway(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:hybridcompute/v20241110preview:Gateway"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridcompute/v20250113:Gateway"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -172,6 +175,11 @@ func (o GatewayOutput) ToGatewayOutputWithContext(ctx context.Context) GatewayOu
 // Specifies the list of features that are enabled for this Gateway.
 func (o GatewayOutput) AllowedFeatures() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringArrayOutput { return v.AllowedFeatures }).(pulumi.StringArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o GatewayOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The endpoint fqdn for the Gateway.

@@ -12,9 +12,7 @@ import (
 )
 
 // Gets the budget for the scope by budget name.
-// Azure REST API version: 2023-05-01.
-//
-// Other available API versions: 2023-11-01, 2024-08-01.
+// Azure REST API version: 2024-08-01.
 func LookupBudget(ctx *pulumi.Context, args *LookupBudgetArgs, opts ...pulumi.InvokeOption) (*LookupBudgetResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBudgetResult
@@ -36,6 +34,8 @@ type LookupBudgetArgs struct {
 type LookupBudgetResult struct {
 	// The total amount of cost to track with the budget
 	Amount float64 `pulumi:"amount"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The category of the budget, whether the budget tracks cost or usage.
 	Category string `pulumi:"category"`
 	// The current amount of cost which is being tracked for a budget.
@@ -98,6 +98,11 @@ func (o LookupBudgetResultOutput) ToLookupBudgetResultOutputWithContext(ctx cont
 // The total amount of cost to track with the budget
 func (o LookupBudgetResultOutput) Amount() pulumi.Float64Output {
 	return o.ApplyT(func(v LookupBudgetResult) float64 { return v.Amount }).(pulumi.Float64Output)
+}
+
+// The Azure API version of the resource.
+func (o LookupBudgetResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBudgetResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The category of the budget, whether the budget tracks cost or usage.

@@ -13,14 +13,14 @@ import (
 )
 
 // Represents a server.
-// Azure REST API version: 2018-06-01. Prior API version in Azure Native 1.x: 2018-06-01.
-//
-// Other available API versions: 2018-06-01-preview.
+// Azure REST API version: 2018-06-01. Prior API version in Azure Native 2.x: 2018-06-01.
 type Server struct {
 	pulumi.CustomResourceState
 
 	// The administrator's login name of a server. Can only be specified when the server is being created (and is required for creation).
 	AdministratorLogin pulumi.StringPtrOutput `pulumi:"administratorLogin"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Earliest restore point creation time (ISO8601 format)
 	EarliestRestoreDate pulumi.StringPtrOutput `pulumi:"earliestRestoreDate"`
 	// The fully qualified domain name of a server.
@@ -182,6 +182,11 @@ func (o ServerOutput) ToServerOutputWithContext(ctx context.Context) ServerOutpu
 // The administrator's login name of a server. Can only be specified when the server is being created (and is required for creation).
 func (o ServerOutput) AdministratorLogin() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Server) pulumi.StringPtrOutput { return v.AdministratorLogin }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o ServerOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Server) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Earliest restore point creation time (ISO8601 format)

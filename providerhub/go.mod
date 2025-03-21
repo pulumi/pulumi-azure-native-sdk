@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-azure-native-sdk/providerhub/v2
+module github.com/pulumi/pulumi-azure-native-sdk/providerhub/v3
 
 go 1.22
 

@@ -13,12 +13,12 @@ import (
 )
 
 // Properties of the blob container, including Id, resource name, resource type, Etag.
-// Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2021-02-01.
-//
-// Other available API versions: 2023-01-01, 2023-04-01, 2023-05-01, 2024-01-01.
+// Azure REST API version: 2024-01-01. Prior API version in Azure Native 2.x: 2022-09-01.
 type BlobContainer struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Default the container to use specified encryption scope for all writes.
 	DefaultEncryptionScope pulumi.StringPtrOutput `pulumi:"defaultEncryptionScope"`
 	// Indicates whether the blob container was deleted.
@@ -252,6 +252,11 @@ func (o BlobContainerOutput) ToBlobContainerOutput() BlobContainerOutput {
 
 func (o BlobContainerOutput) ToBlobContainerOutputWithContext(ctx context.Context) BlobContainerOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o BlobContainerOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *BlobContainer) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Default the container to use specified encryption scope for all writes.

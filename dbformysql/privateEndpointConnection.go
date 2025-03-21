@@ -13,12 +13,12 @@ import (
 )
 
 // The private endpoint connection resource.
-// Azure REST API version: 2022-09-30-preview. Prior API version in Azure Native 1.x: 2018-06-01.
-//
-// Other available API versions: 2018-06-01-privatepreview, 2023-06-30.
+// Azure REST API version: 2023-06-30. Prior API version in Azure Native 2.x: 2022-09-30-preview.
 type PrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The group ids for the private endpoint resource.
 	GroupIds pulumi.StringArrayOutput `pulumi:"groupIds"`
 	// The name of the resource
@@ -52,6 +52,9 @@ func NewPrivateEndpointConnection(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ServerName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:dbformysql/v20180601privatepreview:PrivateEndpointConnection"),
+		},
 		{
 			Type: pulumi.String("azure-native:dbformysql/v20220930preview:PrivateEndpointConnection"),
 		},
@@ -148,6 +151,11 @@ func (o PrivateEndpointConnectionOutput) ToPrivateEndpointConnectionOutput() Pri
 
 func (o PrivateEndpointConnectionOutput) ToPrivateEndpointConnectionOutputWithContext(ctx context.Context) PrivateEndpointConnectionOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o PrivateEndpointConnectionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrivateEndpointConnection) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The group ids for the private endpoint resource.

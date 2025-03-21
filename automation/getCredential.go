@@ -12,9 +12,7 @@ import (
 )
 
 // Retrieve the credential identified by credential name.
-// Azure REST API version: 2022-08-08.
-//
-// Other available API versions: 2023-05-15-preview, 2023-11-01, 2024-10-23.
+// Azure REST API version: 2023-11-01.
 func LookupCredential(ctx *pulumi.Context, args *LookupCredentialArgs, opts ...pulumi.InvokeOption) (*LookupCredentialResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCredentialResult
@@ -36,6 +34,8 @@ type LookupCredentialArgs struct {
 
 // Definition of the credential.
 type LookupCredentialResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets the creation time.
 	CreationTime string `pulumi:"creationTime"`
 	// Gets or sets the description.
@@ -87,6 +87,11 @@ func (o LookupCredentialResultOutput) ToLookupCredentialResultOutput() LookupCre
 
 func (o LookupCredentialResultOutput) ToLookupCredentialResultOutputWithContext(ctx context.Context) LookupCredentialResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupCredentialResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCredentialResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets the creation time.

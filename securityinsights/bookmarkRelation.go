@@ -13,12 +13,12 @@ import (
 )
 
 // Represents a relation between two resources
-// Azure REST API version: 2023-06-01-preview. Prior API version in Azure Native 1.x: 2019-01-01-preview.
-//
-// Other available API versions: 2019-01-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-12-01-preview, 2024-01-01-preview, 2024-04-01-preview, 2024-10-01-preview, 2025-01-01-preview.
+// Azure REST API version: 2025-01-01-preview. Prior API version in Azure Native 2.x: 2023-06-01-preview.
 type BookmarkRelation struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Etag of the azure resource
 	Etag pulumi.StringPtrOutput `pulumi:"etag"`
 	// The name of the resource
@@ -234,6 +234,11 @@ func (o BookmarkRelationOutput) ToBookmarkRelationOutput() BookmarkRelationOutpu
 
 func (o BookmarkRelationOutput) ToBookmarkRelationOutputWithContext(ctx context.Context) BookmarkRelationOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o BookmarkRelationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *BookmarkRelation) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Etag of the azure resource

@@ -13,9 +13,7 @@ import (
 )
 
 // A Kubernetes cluster specialized for web workloads by Azure App Service
-// Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2021-01-01.
-//
-// Other available API versions: 2023-01-01, 2023-12-01, 2024-04-01.
+// Azure REST API version: 2024-04-01. Prior API version in Azure Native 2.x: 2022-09-01.
 type KubeEnvironment struct {
 	pulumi.CustomResourceState
 
@@ -28,6 +26,8 @@ type KubeEnvironment struct {
 	// components types. Eg: Choosing between BuildService kind,
 	// FrontEnd Service ArtifactsStorageType etc.
 	ArcConfiguration ArcConfigurationResponsePtrOutput `pulumi:"arcConfiguration"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Cluster configuration for Container Apps Environments to configure Dapr Instrumentation Key and VNET Configuration
 	ContainerAppsConfiguration ContainerAppsConfigurationResponsePtrOutput `pulumi:"containerAppsConfiguration"`
 	// Default Domain Name for the cluster
@@ -40,7 +40,7 @@ type KubeEnvironment struct {
 	ExtendedLocation ExtendedLocationResponsePtrOutput `pulumi:"extendedLocation"`
 	// Only visible within Vnet/Subnet
 	InternalLoadBalancerEnabled pulumi.BoolPtrOutput `pulumi:"internalLoadBalancerEnabled"`
-	// Kind of resource.
+	// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// Resource Location.
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -146,7 +146,7 @@ type kubeEnvironmentArgs struct {
 	ExtendedLocation *ExtendedLocation `pulumi:"extendedLocation"`
 	// Only visible within Vnet/Subnet
 	InternalLoadBalancerEnabled *bool `pulumi:"internalLoadBalancerEnabled"`
-	// Kind of resource.
+	// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
 	Kind *string `pulumi:"kind"`
 	// Resource Location.
 	Location *string `pulumi:"location"`
@@ -179,7 +179,7 @@ type KubeEnvironmentArgs struct {
 	ExtendedLocation ExtendedLocationPtrInput
 	// Only visible within Vnet/Subnet
 	InternalLoadBalancerEnabled pulumi.BoolPtrInput
-	// Kind of resource.
+	// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
 	Kind pulumi.StringPtrInput
 	// Resource Location.
 	Location pulumi.StringPtrInput
@@ -248,6 +248,11 @@ func (o KubeEnvironmentOutput) ArcConfiguration() ArcConfigurationResponsePtrOut
 	return o.ApplyT(func(v *KubeEnvironment) ArcConfigurationResponsePtrOutput { return v.ArcConfiguration }).(ArcConfigurationResponsePtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o KubeEnvironmentOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *KubeEnvironment) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Cluster configuration for Container Apps Environments to configure Dapr Instrumentation Key and VNET Configuration
 func (o KubeEnvironmentOutput) ContainerAppsConfiguration() ContainerAppsConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v *KubeEnvironment) ContainerAppsConfigurationResponsePtrOutput {
@@ -280,7 +285,7 @@ func (o KubeEnvironmentOutput) InternalLoadBalancerEnabled() pulumi.BoolPtrOutpu
 	return o.ApplyT(func(v *KubeEnvironment) pulumi.BoolPtrOutput { return v.InternalLoadBalancerEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Kind of resource.
+// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
 func (o KubeEnvironmentOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KubeEnvironment) pulumi.StringPtrOutput { return v.Kind }).(pulumi.StringPtrOutput)
 }

@@ -13,16 +13,20 @@ import (
 )
 
 // The description of Dicom Service
-// Azure REST API version: 2023-02-28. Prior API version in Azure Native 1.x: 2022-05-15.
-//
-// Other available API versions: 2023-09-06, 2023-11-01, 2023-12-01, 2024-03-01, 2024-03-31.
+// Azure REST API version: 2024-03-31. Prior API version in Azure Native 2.x: 2023-02-28.
 type DicomService struct {
 	pulumi.CustomResourceState
 
 	// Dicom Service authentication configuration.
 	AuthenticationConfiguration DicomServiceAuthenticationConfigurationResponsePtrOutput `pulumi:"authenticationConfiguration"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Dicom Service Cors configuration.
 	CorsConfiguration CorsConfigurationResponsePtrOutput `pulumi:"corsConfiguration"`
+	// If data partitions is enabled or not.
+	EnableDataPartitions pulumi.BoolPtrOutput `pulumi:"enableDataPartitions"`
+	// The encryption settings of the DICOM service
+	Encryption EncryptionResponsePtrOutput `pulumi:"encryption"`
 	// An etag associated with the resource, used for optimistic concurrency when editing it.
 	Etag pulumi.StringPtrOutput `pulumi:"etag"`
 	// DICOM Service event support status.
@@ -41,6 +45,8 @@ type DicomService struct {
 	PublicNetworkAccess pulumi.StringOutput `pulumi:"publicNetworkAccess"`
 	// The url of the Dicom Services.
 	ServiceUrl pulumi.StringOutput `pulumi:"serviceUrl"`
+	// The configuration of external storage account
+	StorageConfiguration StorageConfigurationResponsePtrOutput `pulumi:"storageConfiguration"`
 	// Metadata pertaining to creation and last modification of the resource.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
@@ -102,6 +108,9 @@ func NewDicomService(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:healthcareapis/v20240331:DicomService"),
 		},
+		{
+			Type: pulumi.String("azure-native:healthcareapis/v20250301preview:DicomService"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -141,12 +150,18 @@ type dicomServiceArgs struct {
 	CorsConfiguration *CorsConfiguration `pulumi:"corsConfiguration"`
 	// The name of DICOM Service resource.
 	DicomServiceName *string `pulumi:"dicomServiceName"`
+	// If data partitions is enabled or not.
+	EnableDataPartitions *bool `pulumi:"enableDataPartitions"`
+	// The encryption settings of the DICOM service
+	Encryption *Encryption `pulumi:"encryption"`
 	// Setting indicating whether the service has a managed identity associated with it.
 	Identity *ServiceManagedIdentityIdentity `pulumi:"identity"`
 	// The resource location.
 	Location *string `pulumi:"location"`
 	// The name of the resource group that contains the service instance.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The configuration of external storage account
+	StorageConfiguration *StorageConfiguration `pulumi:"storageConfiguration"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The name of workspace resource.
@@ -159,12 +174,18 @@ type DicomServiceArgs struct {
 	CorsConfiguration CorsConfigurationPtrInput
 	// The name of DICOM Service resource.
 	DicomServiceName pulumi.StringPtrInput
+	// If data partitions is enabled or not.
+	EnableDataPartitions pulumi.BoolPtrInput
+	// The encryption settings of the DICOM service
+	Encryption EncryptionPtrInput
 	// Setting indicating whether the service has a managed identity associated with it.
 	Identity ServiceManagedIdentityIdentityPtrInput
 	// The resource location.
 	Location pulumi.StringPtrInput
 	// The name of the resource group that contains the service instance.
 	ResourceGroupName pulumi.StringInput
+	// The configuration of external storage account
+	StorageConfiguration StorageConfigurationPtrInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
 	// The name of workspace resource.
@@ -215,9 +236,24 @@ func (o DicomServiceOutput) AuthenticationConfiguration() DicomServiceAuthentica
 	}).(DicomServiceAuthenticationConfigurationResponsePtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o DicomServiceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DicomService) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Dicom Service Cors configuration.
 func (o DicomServiceOutput) CorsConfiguration() CorsConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v *DicomService) CorsConfigurationResponsePtrOutput { return v.CorsConfiguration }).(CorsConfigurationResponsePtrOutput)
+}
+
+// If data partitions is enabled or not.
+func (o DicomServiceOutput) EnableDataPartitions() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DicomService) pulumi.BoolPtrOutput { return v.EnableDataPartitions }).(pulumi.BoolPtrOutput)
+}
+
+// The encryption settings of the DICOM service
+func (o DicomServiceOutput) Encryption() EncryptionResponsePtrOutput {
+	return o.ApplyT(func(v *DicomService) EncryptionResponsePtrOutput { return v.Encryption }).(EncryptionResponsePtrOutput)
 }
 
 // An etag associated with the resource, used for optimistic concurrency when editing it.
@@ -265,6 +301,11 @@ func (o DicomServiceOutput) PublicNetworkAccess() pulumi.StringOutput {
 // The url of the Dicom Services.
 func (o DicomServiceOutput) ServiceUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *DicomService) pulumi.StringOutput { return v.ServiceUrl }).(pulumi.StringOutput)
+}
+
+// The configuration of external storage account
+func (o DicomServiceOutput) StorageConfiguration() StorageConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *DicomService) StorageConfigurationResponsePtrOutput { return v.StorageConfiguration }).(StorageConfigurationResponsePtrOutput)
 }
 
 // Metadata pertaining to creation and last modification of the resource.

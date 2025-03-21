@@ -12,9 +12,7 @@ import (
 )
 
 // View a threat intelligence indicator by name.
-// Azure REST API version: 2023-02-01.
-//
-// Other available API versions: 2021-04-01, 2021-09-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-11-01, 2023-12-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-09-01, 2024-10-01-preview, 2025-01-01-preview.
+// Azure REST API version: 2024-09-01.
 func LookupThreatIntelligenceIndicator(ctx *pulumi.Context, args *LookupThreatIntelligenceIndicatorArgs, opts ...pulumi.InvokeOption) (*LookupThreatIntelligenceIndicatorResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupThreatIntelligenceIndicatorResult
@@ -36,6 +34,8 @@ type LookupThreatIntelligenceIndicatorArgs struct {
 
 // Threat intelligence information object.
 type LookupThreatIntelligenceIndicatorResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Etag of the azure resource
 	Etag *string `pulumi:"etag"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -85,6 +85,11 @@ func (o LookupThreatIntelligenceIndicatorResultOutput) ToLookupThreatIntelligenc
 
 func (o LookupThreatIntelligenceIndicatorResultOutput) ToLookupThreatIntelligenceIndicatorResultOutputWithContext(ctx context.Context) LookupThreatIntelligenceIndicatorResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupThreatIntelligenceIndicatorResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupThreatIntelligenceIndicatorResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Etag of the azure resource

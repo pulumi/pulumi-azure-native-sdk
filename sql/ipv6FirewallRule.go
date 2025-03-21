@@ -13,12 +13,12 @@ import (
 )
 
 // An IPv6 server firewall rule.
-// Azure REST API version: 2021-11-01. Prior API version in Azure Native 1.x: 2021-08-01-preview.
-//
-// Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
+// Azure REST API version: 2021-11-01. Prior API version in Azure Native 2.x: 2021-11-01.
 type IPv6FirewallRule struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The end IP address of the firewall rule. Must be IPv6 format. Must be greater than or equal to startIpAddress.
 	EndIPv6Address pulumi.StringPtrOutput `pulumi:"endIPv6Address"`
 	// Resource name.
@@ -176,6 +176,11 @@ func (o IPv6FirewallRuleOutput) ToIPv6FirewallRuleOutput() IPv6FirewallRuleOutpu
 
 func (o IPv6FirewallRuleOutput) ToIPv6FirewallRuleOutputWithContext(ctx context.Context) IPv6FirewallRuleOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o IPv6FirewallRuleOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *IPv6FirewallRule) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The end IP address of the firewall rule. Must be IPv6 format. Must be greater than or equal to startIpAddress.

@@ -13,12 +13,12 @@ import (
 )
 
 // The application type name resource
-// Azure REST API version: 2023-03-01-preview.
-//
-// Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01-preview, 2024-02-01-preview, 2024-04-01, 2024-06-01-preview, 2024-09-01-preview, 2024-11-01-preview.
+// Azure REST API version: 2024-04-01. Prior API version in Azure Native 2.x: 2023-03-01-preview.
 type ManagedClusterApplicationType struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Resource location depends on the parent resource.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// Azure resource name.
@@ -206,6 +206,11 @@ func (o ManagedClusterApplicationTypeOutput) ToManagedClusterApplicationTypeOutp
 
 func (o ManagedClusterApplicationTypeOutput) ToManagedClusterApplicationTypeOutputWithContext(ctx context.Context) ManagedClusterApplicationTypeOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ManagedClusterApplicationTypeOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ManagedClusterApplicationType) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource location depends on the parent resource.

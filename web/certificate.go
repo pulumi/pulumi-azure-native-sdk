@@ -13,12 +13,12 @@ import (
 )
 
 // SSL certificate for an app.
-// Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2020-12-01.
-//
-// Other available API versions: 2016-03-01, 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
+// Azure REST API version: 2024-04-01. Prior API version in Azure Native 2.x: 2022-09-01.
 type Certificate struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// CNAME of the certificate to be issued via free certificate
 	CanonicalName pulumi.StringPtrOutput `pulumi:"canonicalName"`
 	// Raw bytes of .cer file
@@ -43,7 +43,7 @@ type Certificate struct {
 	KeyVaultSecretName pulumi.StringPtrOutput `pulumi:"keyVaultSecretName"`
 	// Status of the Key Vault secret.
 	KeyVaultSecretStatus pulumi.StringOutput `pulumi:"keyVaultSecretStatus"`
-	// Kind of resource.
+	// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// Resource Location.
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -181,7 +181,7 @@ type certificateArgs struct {
 	KeyVaultId *string `pulumi:"keyVaultId"`
 	// Key Vault secret name.
 	KeyVaultSecretName *string `pulumi:"keyVaultSecretName"`
-	// Kind of resource.
+	// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
 	Kind *string `pulumi:"kind"`
 	// Resource Location.
 	Location *string `pulumi:"location"`
@@ -211,7 +211,7 @@ type CertificateArgs struct {
 	KeyVaultId pulumi.StringPtrInput
 	// Key Vault secret name.
 	KeyVaultSecretName pulumi.StringPtrInput
-	// Kind of resource.
+	// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
 	Kind pulumi.StringPtrInput
 	// Resource Location.
 	Location pulumi.StringPtrInput
@@ -264,6 +264,11 @@ func (o CertificateOutput) ToCertificateOutput() CertificateOutput {
 
 func (o CertificateOutput) ToCertificateOutputWithContext(ctx context.Context) CertificateOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o CertificateOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // CNAME of the certificate to be issued via free certificate
@@ -326,7 +331,7 @@ func (o CertificateOutput) KeyVaultSecretStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.KeyVaultSecretStatus }).(pulumi.StringOutput)
 }
 
-// Kind of resource.
+// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
 func (o CertificateOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringPtrOutput { return v.Kind }).(pulumi.StringPtrOutput)
 }

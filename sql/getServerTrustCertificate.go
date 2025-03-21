@@ -13,8 +13,6 @@ import (
 
 // Gets a server trust certificate that was uploaded from box to Sql Managed Instance.
 // Azure REST API version: 2021-11-01.
-//
-// Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
 func LookupServerTrustCertificate(ctx *pulumi.Context, args *LookupServerTrustCertificateArgs, opts ...pulumi.InvokeOption) (*LookupServerTrustCertificateResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupServerTrustCertificateResult
@@ -36,6 +34,8 @@ type LookupServerTrustCertificateArgs struct {
 
 // Server trust certificate imported from box to enable connection between box and Sql Managed Instance.
 type LookupServerTrustCertificateResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The certificate name
 	CertificateName string `pulumi:"certificateName"`
 	// Resource ID.
@@ -85,6 +85,11 @@ func (o LookupServerTrustCertificateResultOutput) ToLookupServerTrustCertificate
 
 func (o LookupServerTrustCertificateResultOutput) ToLookupServerTrustCertificateResultOutputWithContext(ctx context.Context) LookupServerTrustCertificateResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupServerTrustCertificateResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServerTrustCertificateResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The certificate name

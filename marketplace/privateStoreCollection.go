@@ -13,7 +13,7 @@ import (
 )
 
 // The Collection data structure.
-// Azure REST API version: 2023-01-01. Prior API version in Azure Native 1.x: 2021-12-01.
+// Azure REST API version: 2023-01-01. Prior API version in Azure Native 2.x: 2023-01-01.
 type PrivateStoreCollection struct {
 	pulumi.CustomResourceState
 
@@ -25,6 +25,8 @@ type PrivateStoreCollection struct {
 	ApproveAllItems pulumi.BoolOutput `pulumi:"approveAllItems"`
 	// Gets the modified date of all items approved.
 	ApproveAllItemsModifiedAt pulumi.StringOutput `pulumi:"approveAllItemsModifiedAt"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets or sets the association with Commercial's Billing Account.
 	Claim pulumi.StringPtrOutput `pulumi:"claim"`
 	// Gets collection Id.
@@ -195,6 +197,11 @@ func (o PrivateStoreCollectionOutput) ApproveAllItems() pulumi.BoolOutput {
 // Gets the modified date of all items approved.
 func (o PrivateStoreCollectionOutput) ApproveAllItemsModifiedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateStoreCollection) pulumi.StringOutput { return v.ApproveAllItemsModifiedAt }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o PrivateStoreCollectionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrivateStoreCollection) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets the association with Commercial's Billing Account.

@@ -13,8 +13,6 @@ import (
 
 // Gets a failover group.
 // Azure REST API version: 2021-11-01.
-//
-// Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
 func LookupFailoverGroup(ctx *pulumi.Context, args *LookupFailoverGroupArgs, opts ...pulumi.InvokeOption) (*LookupFailoverGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFailoverGroupResult
@@ -36,6 +34,8 @@ type LookupFailoverGroupArgs struct {
 
 // A failover group.
 type LookupFailoverGroupResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// List of databases in the failover group.
 	Databases []string `pulumi:"databases"`
 	// Resource ID.
@@ -95,6 +95,11 @@ func (o LookupFailoverGroupResultOutput) ToLookupFailoverGroupResultOutput() Loo
 
 func (o LookupFailoverGroupResultOutput) ToLookupFailoverGroupResultOutputWithContext(ctx context.Context) LookupFailoverGroupResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupFailoverGroupResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFailoverGroupResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // List of databases in the failover group.

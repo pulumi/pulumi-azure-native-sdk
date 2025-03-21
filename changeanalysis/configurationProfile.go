@@ -12,10 +12,12 @@ import (
 )
 
 // A profile object that contains change analysis configuration, such as notification settings, for this subscription
-// Azure REST API version: 2020-04-01-preview. Prior API version in Azure Native 1.x: 2020-04-01-preview.
+// Azure REST API version: 2020-04-01-preview. Prior API version in Azure Native 2.x: 2020-04-01-preview.
 type ConfigurationProfile struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The identity block returned by ARM resource that supports managed identity.
 	Identity ResourceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The location where the resource is to be deployed.
@@ -133,6 +135,11 @@ func (o ConfigurationProfileOutput) ToConfigurationProfileOutput() Configuration
 
 func (o ConfigurationProfileOutput) ToConfigurationProfileOutputWithContext(ctx context.Context) ConfigurationProfileOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ConfigurationProfileOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConfigurationProfile) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The identity block returned by ARM resource that supports managed identity.

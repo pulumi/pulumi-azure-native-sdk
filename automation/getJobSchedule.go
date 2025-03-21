@@ -12,9 +12,7 @@ import (
 )
 
 // Retrieve the job schedule identified by job schedule name.
-// Azure REST API version: 2022-08-08.
-//
-// Other available API versions: 2023-05-15-preview, 2023-11-01, 2024-10-23.
+// Azure REST API version: 2023-11-01.
 func LookupJobSchedule(ctx *pulumi.Context, args *LookupJobScheduleArgs, opts ...pulumi.InvokeOption) (*LookupJobScheduleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupJobScheduleResult
@@ -36,6 +34,8 @@ type LookupJobScheduleArgs struct {
 
 // Definition of the job schedule.
 type LookupJobScheduleResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets the id of the resource.
 	Id string `pulumi:"id"`
 	// Gets or sets the id of job schedule.
@@ -89,6 +89,11 @@ func (o LookupJobScheduleResultOutput) ToLookupJobScheduleResultOutput() LookupJ
 
 func (o LookupJobScheduleResultOutput) ToLookupJobScheduleResultOutputWithContext(ctx context.Context) LookupJobScheduleResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupJobScheduleResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupJobScheduleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets the id of the resource.

@@ -12,9 +12,7 @@ import (
 )
 
 // The Private Endpoint Connection resource.
-// Azure REST API version: 2024-02-02-preview.
-//
-// Other available API versions: 2024-08-02-preview, 2024-10-02-preview.
+// Azure REST API version: 2024-10-02-preview.
 func LookupManagedEnvironmentPrivateEndpointConnection(ctx *pulumi.Context, args *LookupManagedEnvironmentPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupManagedEnvironmentPrivateEndpointConnectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupManagedEnvironmentPrivateEndpointConnectionResult
@@ -36,6 +34,8 @@ type LookupManagedEnvironmentPrivateEndpointConnectionArgs struct {
 
 // The Private Endpoint Connection resource.
 type LookupManagedEnvironmentPrivateEndpointConnectionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The group ids for the private endpoint resource.
 	GroupIds []string `pulumi:"groupIds"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -89,6 +89,11 @@ func (o LookupManagedEnvironmentPrivateEndpointConnectionResultOutput) ToLookupM
 
 func (o LookupManagedEnvironmentPrivateEndpointConnectionResultOutput) ToLookupManagedEnvironmentPrivateEndpointConnectionResultOutputWithContext(ctx context.Context) LookupManagedEnvironmentPrivateEndpointConnectionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupManagedEnvironmentPrivateEndpointConnectionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupManagedEnvironmentPrivateEndpointConnectionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The group ids for the private endpoint resource.

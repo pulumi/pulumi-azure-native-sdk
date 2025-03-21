@@ -13,12 +13,12 @@ import (
 )
 
 // Resource information with extended details.
-// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2019-09-01.
-//
-// Other available API versions: 2023-07-01, 2024-04-01-preview, 2024-11-01, 2024-12-01-preview.
+// Azure REST API version: 2024-11-01. Prior API version in Azure Native 2.x: 2023-02-01.
 type Vault struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Azure location of the key vault resource.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// Name of the key vault resource.
@@ -198,6 +198,11 @@ func (o VaultOutput) ToVaultOutput() VaultOutput {
 
 func (o VaultOutput) ToVaultOutputWithContext(ctx context.Context) VaultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o VaultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Vault) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Azure location of the key vault resource.

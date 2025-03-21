@@ -13,12 +13,12 @@ import (
 )
 
 // Defines the vCenter.
-// Azure REST API version: 2022-07-15-preview. Prior API version in Azure Native 1.x: 2020-10-01-preview.
-//
-// Other available API versions: 2023-03-01-preview, 2023-10-01, 2023-12-01.
+// Azure REST API version: 2023-12-01. Prior API version in Azure Native 2.x: 2022-07-15-preview.
 type VCenter struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets or sets the connection status to the vCenter.
 	ConnectionStatus pulumi.StringOutput `pulumi:"connectionStatus"`
 	// Username / Password Credentials to connect to vcenter.
@@ -39,7 +39,7 @@ type VCenter struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Gets or sets the port of the vCenter.
 	Port pulumi.IntPtrOutput `pulumi:"port"`
-	// Gets or sets the provisioning state.
+	// Gets the provisioning state.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// The resource status information.
 	Statuses ResourceStatusResponseArrayOutput `pulumi:"statuses"`
@@ -201,6 +201,11 @@ func (o VCenterOutput) ToVCenterOutputWithContext(ctx context.Context) VCenterOu
 	return o
 }
 
+// The Azure API version of the resource.
+func (o VCenterOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *VCenter) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Gets or sets the connection status to the vCenter.
 func (o VCenterOutput) ConnectionStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *VCenter) pulumi.StringOutput { return v.ConnectionStatus }).(pulumi.StringOutput)
@@ -251,7 +256,7 @@ func (o VCenterOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VCenter) pulumi.IntPtrOutput { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-// Gets or sets the provisioning state.
+// Gets the provisioning state.
 func (o VCenterOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *VCenter) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }

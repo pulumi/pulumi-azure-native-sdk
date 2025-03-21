@@ -13,15 +13,17 @@ import (
 )
 
 // A datastore resource
-// Azure REST API version: 2022-05-01. Prior API version in Azure Native 1.x: 2021-01-01-preview.
-//
-// Other available API versions: 2023-03-01, 2023-09-01.
+// Azure REST API version: 2023-09-01. Prior API version in Azure Native 2.x: 2022-05-01.
 type Datastore struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// An iSCSI volume
 	DiskPoolVolume DiskPoolVolumeResponsePtrOutput `pulumi:"diskPoolVolume"`
-	// Resource name.
+	// An Elastic SAN volume
+	ElasticSanVolume ElasticSanVolumeResponsePtrOutput `pulumi:"elasticSanVolume"`
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// An Azure NetApp Files volume
 	NetAppVolume NetAppVolumeResponsePtrOutput `pulumi:"netAppVolume"`
@@ -29,7 +31,9 @@ type Datastore struct {
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// The operational status of the datastore
 	Status pulumi.StringOutput `pulumi:"status"`
-	// Resource type.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -106,12 +110,14 @@ func (DatastoreState) ElementType() reflect.Type {
 }
 
 type datastoreArgs struct {
-	// Name of the cluster in the private cloud
+	// Name of the cluster
 	ClusterName string `pulumi:"clusterName"`
-	// Name of the datastore in the private cloud cluster
+	// Name of the datastore
 	DatastoreName *string `pulumi:"datastoreName"`
 	// An iSCSI volume
 	DiskPoolVolume *DiskPoolVolume `pulumi:"diskPoolVolume"`
+	// An Elastic SAN volume
+	ElasticSanVolume *ElasticSanVolume `pulumi:"elasticSanVolume"`
 	// An Azure NetApp Files volume
 	NetAppVolume *NetAppVolume `pulumi:"netAppVolume"`
 	// Name of the private cloud
@@ -122,12 +128,14 @@ type datastoreArgs struct {
 
 // The set of arguments for constructing a Datastore resource.
 type DatastoreArgs struct {
-	// Name of the cluster in the private cloud
+	// Name of the cluster
 	ClusterName pulumi.StringInput
-	// Name of the datastore in the private cloud cluster
+	// Name of the datastore
 	DatastoreName pulumi.StringPtrInput
 	// An iSCSI volume
 	DiskPoolVolume DiskPoolVolumePtrInput
+	// An Elastic SAN volume
+	ElasticSanVolume ElasticSanVolumePtrInput
 	// An Azure NetApp Files volume
 	NetAppVolume NetAppVolumePtrInput
 	// Name of the private cloud
@@ -173,12 +181,22 @@ func (o DatastoreOutput) ToDatastoreOutputWithContext(ctx context.Context) Datas
 	return o
 }
 
+// The Azure API version of the resource.
+func (o DatastoreOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Datastore) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // An iSCSI volume
 func (o DatastoreOutput) DiskPoolVolume() DiskPoolVolumeResponsePtrOutput {
 	return o.ApplyT(func(v *Datastore) DiskPoolVolumeResponsePtrOutput { return v.DiskPoolVolume }).(DiskPoolVolumeResponsePtrOutput)
 }
 
-// Resource name.
+// An Elastic SAN volume
+func (o DatastoreOutput) ElasticSanVolume() ElasticSanVolumeResponsePtrOutput {
+	return o.ApplyT(func(v *Datastore) ElasticSanVolumeResponsePtrOutput { return v.ElasticSanVolume }).(ElasticSanVolumeResponsePtrOutput)
+}
+
+// The name of the resource
 func (o DatastoreOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Datastore) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -198,7 +216,12 @@ func (o DatastoreOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Datastore) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// Resource type.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o DatastoreOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Datastore) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o DatastoreOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Datastore) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

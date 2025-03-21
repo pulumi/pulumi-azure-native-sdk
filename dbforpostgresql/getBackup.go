@@ -12,9 +12,7 @@ import (
 )
 
 // Get specific backup for a given server.
-// Azure REST API version: 2024-03-01-preview.
-//
-// Other available API versions: 2024-08-01, 2024-11-01-preview.
+// Azure REST API version: 2024-08-01.
 func LookupBackup(ctx *pulumi.Context, args *LookupBackupArgs, opts ...pulumi.InvokeOption) (*LookupBackupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBackupResult
@@ -36,6 +34,8 @@ type LookupBackupArgs struct {
 
 // Server backup properties
 type LookupBackupResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Backup type.
 	BackupType *string `pulumi:"backupType"`
 	// Backup completed time (ISO8601 format).
@@ -87,6 +87,11 @@ func (o LookupBackupResultOutput) ToLookupBackupResultOutput() LookupBackupResul
 
 func (o LookupBackupResultOutput) ToLookupBackupResultOutputWithContext(ctx context.Context) LookupBackupResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupBackupResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackupResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Backup type.

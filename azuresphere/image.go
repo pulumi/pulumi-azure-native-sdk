@@ -13,12 +13,12 @@ import (
 )
 
 // An image resource belonging to a catalog resource.
-// Azure REST API version: 2022-09-01-preview. Prior API version in Azure Native 1.x: 2022-09-01-preview.
-//
-// Other available API versions: 2024-04-01.
+// Azure REST API version: 2024-04-01. Prior API version in Azure Native 2.x: 2022-09-01-preview.
 type Image struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The image component id.
 	ComponentId pulumi.StringOutput `pulumi:"componentId"`
 	// The image description.
@@ -165,6 +165,11 @@ func (o ImageOutput) ToImageOutput() ImageOutput {
 
 func (o ImageOutput) ToImageOutputWithContext(ctx context.Context) ImageOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ImageOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The image component id.

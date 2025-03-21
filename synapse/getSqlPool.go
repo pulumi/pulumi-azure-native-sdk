@@ -13,8 +13,6 @@ import (
 
 // Get SQL pool properties
 // Azure REST API version: 2021-06-01.
-//
-// Other available API versions: 2021-05-01, 2021-06-01-preview.
 func LookupSqlPool(ctx *pulumi.Context, args *LookupSqlPoolArgs, opts ...pulumi.InvokeOption) (*LookupSqlPoolResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSqlPoolResult
@@ -36,6 +34,8 @@ type LookupSqlPoolArgs struct {
 
 // A SQL Analytics pool
 type LookupSqlPoolResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Collation mode
 	Collation *string `pulumi:"collation"`
 	// Date the SQL pool was created
@@ -119,6 +119,11 @@ func (o LookupSqlPoolResultOutput) ToLookupSqlPoolResultOutput() LookupSqlPoolRe
 
 func (o LookupSqlPoolResultOutput) ToLookupSqlPoolResultOutputWithContext(ctx context.Context) LookupSqlPoolResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupSqlPoolResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSqlPoolResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Collation mode

@@ -34,6 +34,8 @@ type LookupBandwidthSettingArgs struct {
 
 // The bandwidth setting.
 type LookupBandwidthSettingResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The path ID that uniquely identifies the object.
 	Id string `pulumi:"id"`
 	// The Kind of the object. Currently only Series8000 is supported
@@ -83,6 +85,11 @@ func (o LookupBandwidthSettingResultOutput) ToLookupBandwidthSettingResultOutput
 
 func (o LookupBandwidthSettingResultOutput) ToLookupBandwidthSettingResultOutputWithContext(ctx context.Context) LookupBandwidthSettingResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupBandwidthSettingResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBandwidthSettingResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The path ID that uniquely identifies the object.

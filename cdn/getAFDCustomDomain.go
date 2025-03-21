@@ -12,9 +12,7 @@ import (
 )
 
 // Gets an existing AzureFrontDoor domain with the specified domain name under the specified subscription, resource group and profile.
-// Azure REST API version: 2023-05-01.
-//
-// Other available API versions: 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01.
+// Azure REST API version: 2024-09-01.
 func LookupAFDCustomDomain(ctx *pulumi.Context, args *LookupAFDCustomDomainArgs, opts ...pulumi.InvokeOption) (*LookupAFDCustomDomainResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAFDCustomDomainResult
@@ -36,6 +34,8 @@ type LookupAFDCustomDomainArgs struct {
 
 // Friendly domain name mapping to the endpoint hostname that the customer provides for branding purposes, e.g. www.contoso.com.
 type LookupAFDCustomDomainResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource reference to the Azure DNS zone
 	AzureDnsZone     *ResourceReferenceResponse `pulumi:"azureDnsZone"`
 	DeploymentStatus string                     `pulumi:"deploymentStatus"`
@@ -100,6 +100,11 @@ func (o LookupAFDCustomDomainResultOutput) ToLookupAFDCustomDomainResultOutput()
 
 func (o LookupAFDCustomDomainResultOutput) ToLookupAFDCustomDomainResultOutputWithContext(ctx context.Context) LookupAFDCustomDomainResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupAFDCustomDomainResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAFDCustomDomainResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource reference to the Azure DNS zone

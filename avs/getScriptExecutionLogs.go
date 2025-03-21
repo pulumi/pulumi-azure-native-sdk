@@ -12,9 +12,7 @@ import (
 )
 
 // Return the logs for a script execution resource
-// Azure REST API version: 2022-05-01.
-//
-// Other available API versions: 2023-03-01, 2023-09-01.
+// Azure REST API version: 2023-09-01.
 func GetScriptExecutionLogs(ctx *pulumi.Context, args *GetScriptExecutionLogsArgs, opts ...pulumi.InvokeOption) (*GetScriptExecutionLogsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetScriptExecutionLogsResult
@@ -30,7 +28,7 @@ type GetScriptExecutionLogsArgs struct {
 	PrivateCloudName string `pulumi:"privateCloudName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Name of the user-invoked script execution resource
+	// Name of the script cmdlet.
 	ScriptExecutionName string `pulumi:"scriptExecutionName"`
 }
 
@@ -38,17 +36,19 @@ type GetScriptExecutionLogsArgs struct {
 type GetScriptExecutionLogsResult struct {
 	// Standard error output stream from the powershell execution
 	Errors []string `pulumi:"errors"`
-	// Error message if the script was able to run, but if the script itself had errors or powershell threw an exception
+	// Error message if the script was able to run, but if the script itself had
+	// errors or powershell threw an exception
 	FailureReason *string `pulumi:"failureReason"`
 	// Time the script execution was finished
 	FinishedAt string `pulumi:"finishedAt"`
-	// Parameters that will be hidden/not visible to ARM, such as passwords and credentials
+	// Parameters that will be hidden/not visible to ARM, such as passwords and
+	// credentials
 	HiddenParameters []interface{} `pulumi:"hiddenParameters"`
-	// Resource ID.
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Standard information out stream from the powershell execution
 	Information []string `pulumi:"information"`
-	// Resource name.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// User-defined dictionary.
 	NamedOutputs map[string]interface{} `pulumi:"namedOutputs"`
@@ -66,9 +66,11 @@ type GetScriptExecutionLogsResult struct {
 	StartedAt string `pulumi:"startedAt"`
 	// Time the script execution was submitted
 	SubmittedAt string `pulumi:"submittedAt"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Time limit for execution
 	Timeout string `pulumi:"timeout"`
-	// Resource type.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// Standard warning out stream from the powershell execution
 	Warnings []string `pulumi:"warnings"`
@@ -88,7 +90,7 @@ type GetScriptExecutionLogsOutputArgs struct {
 	PrivateCloudName pulumi.StringInput `pulumi:"privateCloudName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	// Name of the user-invoked script execution resource
+	// Name of the script cmdlet.
 	ScriptExecutionName pulumi.StringInput `pulumi:"scriptExecutionName"`
 }
 
@@ -116,7 +118,8 @@ func (o GetScriptExecutionLogsResultOutput) Errors() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetScriptExecutionLogsResult) []string { return v.Errors }).(pulumi.StringArrayOutput)
 }
 
-// Error message if the script was able to run, but if the script itself had errors or powershell threw an exception
+// Error message if the script was able to run, but if the script itself had
+// errors or powershell threw an exception
 func (o GetScriptExecutionLogsResultOutput) FailureReason() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetScriptExecutionLogsResult) *string { return v.FailureReason }).(pulumi.StringPtrOutput)
 }
@@ -126,12 +129,13 @@ func (o GetScriptExecutionLogsResultOutput) FinishedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetScriptExecutionLogsResult) string { return v.FinishedAt }).(pulumi.StringOutput)
 }
 
-// Parameters that will be hidden/not visible to ARM, such as passwords and credentials
+// Parameters that will be hidden/not visible to ARM, such as passwords and
+// credentials
 func (o GetScriptExecutionLogsResultOutput) HiddenParameters() pulumi.ArrayOutput {
 	return o.ApplyT(func(v GetScriptExecutionLogsResult) []interface{} { return v.HiddenParameters }).(pulumi.ArrayOutput)
 }
 
-// Resource ID.
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o GetScriptExecutionLogsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetScriptExecutionLogsResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -141,7 +145,7 @@ func (o GetScriptExecutionLogsResultOutput) Information() pulumi.StringArrayOutp
 	return o.ApplyT(func(v GetScriptExecutionLogsResult) []string { return v.Information }).(pulumi.StringArrayOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o GetScriptExecutionLogsResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetScriptExecutionLogsResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -186,12 +190,17 @@ func (o GetScriptExecutionLogsResultOutput) SubmittedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetScriptExecutionLogsResult) string { return v.SubmittedAt }).(pulumi.StringOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o GetScriptExecutionLogsResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v GetScriptExecutionLogsResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
 // Time limit for execution
 func (o GetScriptExecutionLogsResultOutput) Timeout() pulumi.StringOutput {
 	return o.ApplyT(func(v GetScriptExecutionLogsResult) string { return v.Timeout }).(pulumi.StringOutput)
 }
 
-// Resource type.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o GetScriptExecutionLogsResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetScriptExecutionLogsResult) string { return v.Type }).(pulumi.StringOutput)
 }

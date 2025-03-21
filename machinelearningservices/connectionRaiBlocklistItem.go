@@ -12,16 +12,16 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Azure REST API version: 2024-04-01-preview.
-//
-// Other available API versions: 2024-07-01-preview, 2024-10-01-preview.
+// Azure REST API version: 2025-01-01-preview. Prior API version in Azure Native 2.x: 2024-04-01-preview.
 type ConnectionRaiBlocklistItem struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// RAI Custom Blocklist properties.
-	Properties RaiBlocklistPropertiesResponseOutput `pulumi:"properties"`
+	// RAI Custom Blocklist Item properties.
+	Properties RaiBlocklistItemPropertiesResponseOutput `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -41,6 +41,9 @@ func NewConnectionRaiBlocklistItem(ctx *pulumi.Context,
 	if args.Properties == nil {
 		return nil, errors.New("invalid value for required argument 'Properties'")
 	}
+	if args.RaiBlocklistName == nil {
+		return nil, errors.New("invalid value for required argument 'RaiBlocklistName'")
+	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
@@ -49,6 +52,9 @@ func NewConnectionRaiBlocklistItem(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20240401preview:ConnectionRaiBlocklist"),
+		},
+		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20240401preview:ConnectionRaiBlocklistItem"),
 		},
 		{
@@ -56,6 +62,12 @@ func NewConnectionRaiBlocklistItem(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001preview:ConnectionRaiBlocklistItem"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250101preview:ConnectionRaiBlocklistItem"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices:ConnectionRaiBlocklist"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -94,10 +106,14 @@ func (ConnectionRaiBlocklistItemState) ElementType() reflect.Type {
 type connectionRaiBlocklistItemArgs struct {
 	// Friendly name of the workspace connection
 	ConnectionName string `pulumi:"connectionName"`
-	// RAI Custom Blocklist properties.
-	Properties RaiBlocklistProperties `pulumi:"properties"`
+	// RAI Custom Blocklist Item properties.
+	Properties RaiBlocklistItemProperties `pulumi:"properties"`
+	// Api version used by proxy call
+	ProxyApiVersion *string `pulumi:"proxyApiVersion"`
+	// Name of the RaiBlocklist Item
+	RaiBlocklistItemName *string `pulumi:"raiBlocklistItemName"`
 	// The name of the RaiBlocklist.
-	RaiBlocklistName *string `pulumi:"raiBlocklistName"`
+	RaiBlocklistName string `pulumi:"raiBlocklistName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Azure Machine Learning Workspace Name
@@ -108,10 +124,14 @@ type connectionRaiBlocklistItemArgs struct {
 type ConnectionRaiBlocklistItemArgs struct {
 	// Friendly name of the workspace connection
 	ConnectionName pulumi.StringInput
-	// RAI Custom Blocklist properties.
-	Properties RaiBlocklistPropertiesInput
+	// RAI Custom Blocklist Item properties.
+	Properties RaiBlocklistItemPropertiesInput
+	// Api version used by proxy call
+	ProxyApiVersion pulumi.StringPtrInput
+	// Name of the RaiBlocklist Item
+	RaiBlocklistItemName pulumi.StringPtrInput
 	// The name of the RaiBlocklist.
-	RaiBlocklistName pulumi.StringPtrInput
+	RaiBlocklistName pulumi.StringInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Azure Machine Learning Workspace Name
@@ -155,14 +175,19 @@ func (o ConnectionRaiBlocklistItemOutput) ToConnectionRaiBlocklistItemOutputWith
 	return o
 }
 
+// The Azure API version of the resource.
+func (o ConnectionRaiBlocklistItemOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConnectionRaiBlocklistItem) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The name of the resource
 func (o ConnectionRaiBlocklistItemOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectionRaiBlocklistItem) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// RAI Custom Blocklist properties.
-func (o ConnectionRaiBlocklistItemOutput) Properties() RaiBlocklistPropertiesResponseOutput {
-	return o.ApplyT(func(v *ConnectionRaiBlocklistItem) RaiBlocklistPropertiesResponseOutput { return v.Properties }).(RaiBlocklistPropertiesResponseOutput)
+// RAI Custom Blocklist Item properties.
+func (o ConnectionRaiBlocklistItemOutput) Properties() RaiBlocklistItemPropertiesResponseOutput {
+	return o.ApplyT(func(v *ConnectionRaiBlocklistItem) RaiBlocklistItemPropertiesResponseOutput { return v.Properties }).(RaiBlocklistItemPropertiesResponseOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

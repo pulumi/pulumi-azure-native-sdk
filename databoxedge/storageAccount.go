@@ -13,12 +13,12 @@ import (
 )
 
 // Represents a Storage Account on the  Data Box Edge/Gateway device.
-// Azure REST API version: 2022-03-01. Prior API version in Azure Native 1.x: 2020-12-01.
-//
-// Other available API versions: 2023-01-01-preview, 2023-07-01, 2023-12-01.
+// Azure REST API version: 2023-07-01. Prior API version in Azure Native 2.x: 2022-03-01.
 type StorageAccount struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// BlobEndpoint of Storage Account
 	BlobEndpoint pulumi.StringOutput `pulumi:"blobEndpoint"`
 	// The Container Count. Present only for Storage Accounts with DataPolicy set to Cloud.
@@ -205,6 +205,11 @@ func (o StorageAccountOutput) ToStorageAccountOutput() StorageAccountOutput {
 
 func (o StorageAccountOutput) ToStorageAccountOutputWithContext(ctx context.Context) StorageAccountOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o StorageAccountOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *StorageAccount) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // BlobEndpoint of Storage Account

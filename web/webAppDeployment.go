@@ -13,9 +13,7 @@ import (
 )
 
 // User credentials used for publishing activity.
-// Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2020-12-01.
-//
-// Other available API versions: 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
+// Azure REST API version: 2024-04-01. Prior API version in Azure Native 2.x: 2022-09-01.
 type WebAppDeployment struct {
 	pulumi.CustomResourceState
 
@@ -25,6 +23,8 @@ type WebAppDeployment struct {
 	Author pulumi.StringPtrOutput `pulumi:"author"`
 	// Author email.
 	AuthorEmail pulumi.StringPtrOutput `pulumi:"authorEmail"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Who performed the deployment.
 	Deployer pulumi.StringPtrOutput `pulumi:"deployer"`
 	// Details on deployment.
@@ -256,6 +256,11 @@ func (o WebAppDeploymentOutput) Author() pulumi.StringPtrOutput {
 // Author email.
 func (o WebAppDeploymentOutput) AuthorEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WebAppDeployment) pulumi.StringPtrOutput { return v.AuthorEmail }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o WebAppDeploymentOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *WebAppDeployment) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Who performed the deployment.

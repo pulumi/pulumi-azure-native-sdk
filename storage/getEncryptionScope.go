@@ -12,9 +12,7 @@ import (
 )
 
 // Returns the properties for the specified encryption scope.
-// Azure REST API version: 2022-09-01.
-//
-// Other available API versions: 2023-01-01, 2023-04-01, 2023-05-01, 2024-01-01.
+// Azure REST API version: 2024-01-01.
 func LookupEncryptionScope(ctx *pulumi.Context, args *LookupEncryptionScopeArgs, opts ...pulumi.InvokeOption) (*LookupEncryptionScopeResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupEncryptionScopeResult
@@ -36,6 +34,8 @@ type LookupEncryptionScopeArgs struct {
 
 // The Encryption Scope resource.
 type LookupEncryptionScopeResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets the creation date and time of the encryption scope in UTC.
 	CreationTime string `pulumi:"creationTime"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -91,6 +91,11 @@ func (o LookupEncryptionScopeResultOutput) ToLookupEncryptionScopeResultOutput()
 
 func (o LookupEncryptionScopeResultOutput) ToLookupEncryptionScopeResultOutputWithContext(ctx context.Context) LookupEncryptionScopeResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupEncryptionScopeResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEncryptionScopeResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets the creation date and time of the encryption scope in UTC.

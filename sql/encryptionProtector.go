@@ -13,14 +13,14 @@ import (
 )
 
 // The server encryption protector.
-// Azure REST API version: 2021-11-01. Prior API version in Azure Native 1.x: 2020-11-01-preview.
-//
-// Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
+// Azure REST API version: 2021-11-01. Prior API version in Azure Native 2.x: 2021-11-01.
 type EncryptionProtector struct {
 	pulumi.CustomResourceState
 
 	// Key auto rotation opt-in flag. Either true or false.
 	AutoRotationEnabled pulumi.BoolPtrOutput `pulumi:"autoRotationEnabled"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Kind of encryption protector. This is metadata used for the Azure portal experience.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// Resource location.
@@ -214,6 +214,11 @@ func (o EncryptionProtectorOutput) ToEncryptionProtectorOutputWithContext(ctx co
 // Key auto rotation opt-in flag. Either true or false.
 func (o EncryptionProtectorOutput) AutoRotationEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *EncryptionProtector) pulumi.BoolPtrOutput { return v.AutoRotationEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o EncryptionProtectorOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *EncryptionProtector) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Kind of encryption protector. This is metadata used for the Azure portal experience.

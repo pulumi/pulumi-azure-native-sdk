@@ -13,12 +13,12 @@ import (
 )
 
 // The description of the service.
-// Azure REST API version: 2023-02-28. Prior API version in Azure Native 1.x: 2022-05-15.
-//
-// Other available API versions: 2023-09-06, 2023-11-01, 2023-12-01, 2024-03-01, 2024-03-31.
+// Azure REST API version: 2024-03-31. Prior API version in Azure Native 2.x: 2023-02-28.
 type Service struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// An etag associated with the resource, used for optimistic concurrency when editing it.
 	Etag pulumi.StringPtrOutput `pulumi:"etag"`
 	// Setting indicating whether the service has a managed identity associated with it.
@@ -106,6 +106,9 @@ func NewService(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:healthcareapis/v20240331:Service"),
+		},
+		{
+			Type: pulumi.String("azure-native:healthcareapis/v20250301preview:Service"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -211,6 +214,11 @@ func (o ServiceOutput) ToServiceOutput() ServiceOutput {
 
 func (o ServiceOutput) ToServiceOutputWithContext(ctx context.Context) ServiceOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ServiceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // An etag associated with the resource, used for optimistic concurrency when editing it.

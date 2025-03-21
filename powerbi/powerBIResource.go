@@ -12,10 +12,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Azure REST API version: 2020-06-01. Prior API version in Azure Native 1.x: 2020-06-01.
+// Azure REST API version: 2020-06-01. Prior API version in Azure Native 2.x: 2020-06-01.
 type PowerBIResource struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Specifies the location of the resource.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// Specifies the name of the resource.
@@ -148,6 +150,11 @@ func (o PowerBIResourceOutput) ToPowerBIResourceOutput() PowerBIResourceOutput {
 
 func (o PowerBIResourceOutput) ToPowerBIResourceOutputWithContext(ctx context.Context) PowerBIResourceOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o PowerBIResourceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PowerBIResource) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Specifies the location of the resource.

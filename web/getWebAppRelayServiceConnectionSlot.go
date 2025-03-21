@@ -12,9 +12,7 @@ import (
 )
 
 // Description for Gets a hybrid connection configuration by its name.
-// Azure REST API version: 2022-09-01.
-//
-// Other available API versions: 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
+// Azure REST API version: 2024-04-01.
 func LookupWebAppRelayServiceConnectionSlot(ctx *pulumi.Context, args *LookupWebAppRelayServiceConnectionSlotArgs, opts ...pulumi.InvokeOption) (*LookupWebAppRelayServiceConnectionSlotResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebAppRelayServiceConnectionSlotResult
@@ -38,6 +36,8 @@ type LookupWebAppRelayServiceConnectionSlotArgs struct {
 
 // Hybrid Connection for an App Service app.
 type LookupWebAppRelayServiceConnectionSlotResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion        string  `pulumi:"azureApiVersion"`
 	BiztalkUri             *string `pulumi:"biztalkUri"`
 	EntityConnectionString *string `pulumi:"entityConnectionString"`
 	EntityName             *string `pulumi:"entityName"`
@@ -92,6 +92,11 @@ func (o LookupWebAppRelayServiceConnectionSlotResultOutput) ToLookupWebAppRelayS
 
 func (o LookupWebAppRelayServiceConnectionSlotResultOutput) ToLookupWebAppRelayServiceConnectionSlotResultOutputWithContext(ctx context.Context) LookupWebAppRelayServiceConnectionSlotResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupWebAppRelayServiceConnectionSlotResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWebAppRelayServiceConnectionSlotResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 func (o LookupWebAppRelayServiceConnectionSlotResultOutput) BiztalkUri() pulumi.StringPtrOutput {

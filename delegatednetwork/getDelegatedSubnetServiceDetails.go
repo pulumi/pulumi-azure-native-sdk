@@ -12,9 +12,7 @@ import (
 )
 
 // Gets details about the specified dnc DelegatedSubnet Link.
-// Azure REST API version: 2021-03-15.
-//
-// Other available API versions: 2023-05-18-preview, 2023-06-27-preview.
+// Azure REST API version: 2023-06-27-preview.
 func LookupDelegatedSubnetServiceDetails(ctx *pulumi.Context, args *LookupDelegatedSubnetServiceDetailsArgs, opts ...pulumi.InvokeOption) (*LookupDelegatedSubnetServiceDetailsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDelegatedSubnetServiceDetailsResult
@@ -34,6 +32,11 @@ type LookupDelegatedSubnetServiceDetailsArgs struct {
 
 // Represents an instance of a orchestrator.
 type LookupDelegatedSubnetServiceDetailsResult struct {
+	// Defines prefix size of CIDR blocks allocated to nodes in VnetBlock Mode.
+	// Delegated subnet's prefix size should be smaller than this by a minimum of 3.
+	AllocationBlockPrefixSize *int `pulumi:"allocationBlockPrefixSize"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Properties of the controller.
 	ControllerDetails *ControllerDetailsResponse `pulumi:"controllerDetails"`
 	// An identifier that represents the resource.
@@ -87,6 +90,17 @@ func (o LookupDelegatedSubnetServiceDetailsResultOutput) ToLookupDelegatedSubnet
 
 func (o LookupDelegatedSubnetServiceDetailsResultOutput) ToLookupDelegatedSubnetServiceDetailsResultOutputWithContext(ctx context.Context) LookupDelegatedSubnetServiceDetailsResultOutput {
 	return o
+}
+
+// Defines prefix size of CIDR blocks allocated to nodes in VnetBlock Mode.
+// Delegated subnet's prefix size should be smaller than this by a minimum of 3.
+func (o LookupDelegatedSubnetServiceDetailsResultOutput) AllocationBlockPrefixSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LookupDelegatedSubnetServiceDetailsResult) *int { return v.AllocationBlockPrefixSize }).(pulumi.IntPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupDelegatedSubnetServiceDetailsResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDelegatedSubnetServiceDetailsResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Properties of the controller.

@@ -13,10 +13,12 @@ import (
 )
 
 // Schema Contract details.
-// Azure REST API version: 2021-04-01-preview. Prior API version in Azure Native 1.x: 2021-04-01-preview.
+// Azure REST API version: 2021-04-01-preview. Prior API version in Azure Native 2.x: 2021-04-01-preview.
 type Schema struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Free-form schema entity description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The name of the resource
@@ -59,25 +61,49 @@ func NewSchema(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:apimanagement/v20220401preview:Schema"),
 		},
 		{
+			Type: pulumi.String("azure-native:apimanagement/v20220801:GlobalSchema"),
+		},
+		{
 			Type: pulumi.String("azure-native:apimanagement/v20220801:Schema"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20220901preview:GlobalSchema"),
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20220901preview:Schema"),
 		},
 		{
+			Type: pulumi.String("azure-native:apimanagement/v20230301preview:GlobalSchema"),
+		},
+		{
 			Type: pulumi.String("azure-native:apimanagement/v20230301preview:Schema"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20230501preview:GlobalSchema"),
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20230501preview:Schema"),
 		},
 		{
+			Type: pulumi.String("azure-native:apimanagement/v20230901preview:GlobalSchema"),
+		},
+		{
 			Type: pulumi.String("azure-native:apimanagement/v20230901preview:Schema"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20240501:GlobalSchema"),
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20240501:Schema"),
 		},
 		{
+			Type: pulumi.String("azure-native:apimanagement/v20240601preview:GlobalSchema"),
+		},
+		{
 			Type: pulumi.String("azure-native:apimanagement/v20240601preview:Schema"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement:GlobalSchema"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -179,6 +205,11 @@ func (o SchemaOutput) ToSchemaOutput() SchemaOutput {
 
 func (o SchemaOutput) ToSchemaOutputWithContext(ctx context.Context) SchemaOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o SchemaOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Schema) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Free-form schema entity description.

@@ -13,14 +13,16 @@ import (
 )
 
 // Represents a Schedule to execute a task.
-// Azure REST API version: 2023-04-01. Prior API version in Azure Native 1.x: 2022-09-01-preview.
-//
-// Other available API versions: 2023-08-01-preview, 2023-10-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview, 2024-10-01-preview.
+// Azure REST API version: 2024-02-01. Prior API version in Azure Native 2.x: 2023-04-01.
 type Schedule struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The frequency of this scheduled task.
 	Frequency pulumi.StringOutput `pulumi:"frequency"`
+	// The geo-location where the resource lives
+	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The provisioning state of the resource.
@@ -29,6 +31,8 @@ type Schedule struct {
 	State pulumi.StringPtrOutput `pulumi:"state"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// Resource tags.
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The target time to trigger the action. The format is HH:MM.
 	Time pulumi.StringOutput `pulumi:"time"`
 	// The IANA timezone id at which the schedule should execute.
@@ -108,6 +112,9 @@ func NewSchedule(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:devcenter/v20241001preview:Schedule"),
 		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20250201:Schedule"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -145,6 +152,8 @@ func (ScheduleState) ElementType() reflect.Type {
 type scheduleArgs struct {
 	// The frequency of this scheduled task.
 	Frequency string `pulumi:"frequency"`
+	// The geo-location where the resource lives
+	Location *string `pulumi:"location"`
 	// Name of the pool.
 	PoolName string `pulumi:"poolName"`
 	// The name of the project.
@@ -155,6 +164,8 @@ type scheduleArgs struct {
 	ScheduleName *string `pulumi:"scheduleName"`
 	// Indicates whether or not this scheduled task is enabled.
 	State *string `pulumi:"state"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
 	// The target time to trigger the action. The format is HH:MM.
 	Time string `pulumi:"time"`
 	// The IANA timezone id at which the schedule should execute.
@@ -169,6 +180,8 @@ type scheduleArgs struct {
 type ScheduleArgs struct {
 	// The frequency of this scheduled task.
 	Frequency pulumi.StringInput
+	// The geo-location where the resource lives
+	Location pulumi.StringPtrInput
 	// Name of the pool.
 	PoolName pulumi.StringInput
 	// The name of the project.
@@ -179,6 +192,8 @@ type ScheduleArgs struct {
 	ScheduleName pulumi.StringPtrInput
 	// Indicates whether or not this scheduled task is enabled.
 	State pulumi.StringPtrInput
+	// Resource tags.
+	Tags pulumi.StringMapInput
 	// The target time to trigger the action. The format is HH:MM.
 	Time pulumi.StringInput
 	// The IANA timezone id at which the schedule should execute.
@@ -226,9 +241,19 @@ func (o ScheduleOutput) ToScheduleOutputWithContext(ctx context.Context) Schedul
 	return o
 }
 
+// The Azure API version of the resource.
+func (o ScheduleOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Schedule) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The frequency of this scheduled task.
 func (o ScheduleOutput) Frequency() pulumi.StringOutput {
 	return o.ApplyT(func(v *Schedule) pulumi.StringOutput { return v.Frequency }).(pulumi.StringOutput)
+}
+
+// The geo-location where the resource lives
+func (o ScheduleOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Schedule) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
 }
 
 // The name of the resource
@@ -249,6 +274,11 @@ func (o ScheduleOutput) State() pulumi.StringPtrOutput {
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o ScheduleOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *Schedule) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// Resource tags.
+func (o ScheduleOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Schedule) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The target time to trigger the action. The format is HH:MM.

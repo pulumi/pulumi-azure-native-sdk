@@ -12,9 +12,7 @@ import (
 )
 
 // Get a SharedPrivateLinkResource
-// Azure REST API version: 2023-09-01-preview.
-//
-// Other available API versions: 2024-07-19-preview, 2024-10-01-preview, 2025-01-02.
+// Azure REST API version: 2024-10-01-preview.
 func LookupSharedPrivateLinkResource(ctx *pulumi.Context, args *LookupSharedPrivateLinkResourceArgs, opts ...pulumi.InvokeOption) (*LookupSharedPrivateLinkResourceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSharedPrivateLinkResourceResult
@@ -36,11 +34,13 @@ type LookupSharedPrivateLinkResourceArgs struct {
 
 // Concrete proxy resource types can be created by aliasing this type using a specific property type.
 type LookupSharedPrivateLinkResourceResult struct {
-	// The DNS zone to be included in the DNS name of the shared private link. Value is required for Azure Data Explorer clusters and SQL managed instances. The value to use is the second segment of the host FQDN name of the resource that the shared private link resource is for.
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// The DNS zone segment to be included in the DNS name of the shared private link. Value is required for Azure Data Explorer clusters and SQL managed instances, and must be omitted for SQL logical servers and key vaults. The value is the second segment of the host FQDN name of the resource that the shared private link resource is for. For example: if the host name is 'adx-cluster-21187695.eastus.kusto.windows.net', then the value is 'eastus'; if the host name is 'sql-mi-23961134.767d5869f605.database.windows.net', then the value is '767d5869f605'.
 	DnsZone *string `pulumi:"dnsZone"`
 	// The group id from the provider of resource the shared private link resource is for.
 	GroupId string `pulumi:"groupId"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The name of the resource
 	Name string `pulumi:"name"`
@@ -95,7 +95,12 @@ func (o LookupSharedPrivateLinkResourceResultOutput) ToLookupSharedPrivateLinkRe
 	return o
 }
 
-// The DNS zone to be included in the DNS name of the shared private link. Value is required for Azure Data Explorer clusters and SQL managed instances. The value to use is the second segment of the host FQDN name of the resource that the shared private link resource is for.
+// The Azure API version of the resource.
+func (o LookupSharedPrivateLinkResourceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSharedPrivateLinkResourceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// The DNS zone segment to be included in the DNS name of the shared private link. Value is required for Azure Data Explorer clusters and SQL managed instances, and must be omitted for SQL logical servers and key vaults. The value is the second segment of the host FQDN name of the resource that the shared private link resource is for. For example: if the host name is 'adx-cluster-21187695.eastus.kusto.windows.net', then the value is 'eastus'; if the host name is 'sql-mi-23961134.767d5869f605.database.windows.net', then the value is '767d5869f605'.
 func (o LookupSharedPrivateLinkResourceResultOutput) DnsZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSharedPrivateLinkResourceResult) *string { return v.DnsZone }).(pulumi.StringPtrOutput)
 }
@@ -105,7 +110,7 @@ func (o LookupSharedPrivateLinkResourceResultOutput) GroupId() pulumi.StringOutp
 	return o.ApplyT(func(v LookupSharedPrivateLinkResourceResult) string { return v.GroupId }).(pulumi.StringOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupSharedPrivateLinkResourceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSharedPrivateLinkResourceResult) string { return v.Id }).(pulumi.StringOutput)
 }

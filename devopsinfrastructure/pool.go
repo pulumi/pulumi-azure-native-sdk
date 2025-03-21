@@ -13,14 +13,14 @@ import (
 )
 
 // Concrete tracked resource types can be created by aliasing this type using a specific property type.
-// Azure REST API version: 2023-10-30-preview.
-//
-// Other available API versions: 2023-12-13-preview, 2024-03-26-preview, 2024-04-04-preview, 2024-10-19, 2025-01-21.
+// Azure REST API version: 2025-01-21. Prior API version in Azure Native 2.x: 2023-10-30-preview.
 type Pool struct {
 	pulumi.CustomResourceState
 
 	// Defines how the machine will be handled once it executed a job.
 	AgentProfile pulumi.AnyOutput `pulumi:"agentProfile"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The resource id of the DevCenter Project the pool belongs to.
 	DevCenterProjectResourceId pulumi.StringOutput `pulumi:"devCenterProjectResourceId"`
 	// Defines the type of fabric the agent will run on.
@@ -34,7 +34,7 @@ type Pool struct {
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Defines the organization in which the pool will be used.
-	OrganizationProfile AzureDevOpsOrganizationProfileResponseOutput `pulumi:"organizationProfile"`
+	OrganizationProfile pulumi.AnyOutput `pulumi:"organizationProfile"`
 	// The status of the current operation.
 	ProvisioningState pulumi.StringPtrOutput `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -70,7 +70,6 @@ func NewPool(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	args.FabricProfile = args.FabricProfile.ToVmssFabricProfileOutput().ApplyT(func(v VmssFabricProfile) VmssFabricProfile { return *v.Defaults() }).(VmssFabricProfileOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:devopsinfrastructure/v20231030preview:Pool"),
@@ -138,7 +137,7 @@ type poolArgs struct {
 	// Defines how many resources can there be created at any given time.
 	MaximumConcurrency int `pulumi:"maximumConcurrency"`
 	// Defines the organization in which the pool will be used.
-	OrganizationProfile AzureDevOpsOrganizationProfile `pulumi:"organizationProfile"`
+	OrganizationProfile interface{} `pulumi:"organizationProfile"`
 	// Name of the pool. It needs to be globally unique.
 	PoolName *string `pulumi:"poolName"`
 	// The status of the current operation.
@@ -164,7 +163,7 @@ type PoolArgs struct {
 	// Defines how many resources can there be created at any given time.
 	MaximumConcurrency pulumi.IntInput
 	// Defines the organization in which the pool will be used.
-	OrganizationProfile AzureDevOpsOrganizationProfileInput
+	OrganizationProfile pulumi.Input
 	// Name of the pool. It needs to be globally unique.
 	PoolName pulumi.StringPtrInput
 	// The status of the current operation.
@@ -217,6 +216,11 @@ func (o PoolOutput) AgentProfile() pulumi.AnyOutput {
 	return o.ApplyT(func(v *Pool) pulumi.AnyOutput { return v.AgentProfile }).(pulumi.AnyOutput)
 }
 
+// The Azure API version of the resource.
+func (o PoolOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Pool) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The resource id of the DevCenter Project the pool belongs to.
 func (o PoolOutput) DevCenterProjectResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pool) pulumi.StringOutput { return v.DevCenterProjectResourceId }).(pulumi.StringOutput)
@@ -248,8 +252,8 @@ func (o PoolOutput) Name() pulumi.StringOutput {
 }
 
 // Defines the organization in which the pool will be used.
-func (o PoolOutput) OrganizationProfile() AzureDevOpsOrganizationProfileResponseOutput {
-	return o.ApplyT(func(v *Pool) AzureDevOpsOrganizationProfileResponseOutput { return v.OrganizationProfile }).(AzureDevOpsOrganizationProfileResponseOutput)
+func (o PoolOutput) OrganizationProfile() pulumi.AnyOutput {
+	return o.ApplyT(func(v *Pool) pulumi.AnyOutput { return v.OrganizationProfile }).(pulumi.AnyOutput)
 }
 
 // The status of the current operation.

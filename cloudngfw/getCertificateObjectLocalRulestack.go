@@ -12,9 +12,7 @@ import (
 )
 
 // Get a CertificateObjectLocalRulestackResource
-// Azure REST API version: 2023-09-01.
-//
-// Other available API versions: 2022-08-29, 2022-08-29-preview, 2023-09-01-preview, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview.
+// Azure REST API version: 2025-02-06-preview.
 func LookupCertificateObjectLocalRulestack(ctx *pulumi.Context, args *LookupCertificateObjectLocalRulestackArgs, opts ...pulumi.InvokeOption) (*LookupCertificateObjectLocalRulestackResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCertificateObjectLocalRulestackResult
@@ -38,6 +36,8 @@ type LookupCertificateObjectLocalRulestackArgs struct {
 type LookupCertificateObjectLocalRulestackResult struct {
 	// comment for this object
 	AuditComment *string `pulumi:"auditComment"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// use certificate self signed
 	CertificateSelfSigned string `pulumi:"certificateSelfSigned"`
 	// Resource Id of certificate signer, to be populated only when certificateSelfSigned is false
@@ -98,6 +98,11 @@ func (o LookupCertificateObjectLocalRulestackResultOutput) ToLookupCertificateOb
 // comment for this object
 func (o LookupCertificateObjectLocalRulestackResultOutput) AuditComment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupCertificateObjectLocalRulestackResult) *string { return v.AuditComment }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupCertificateObjectLocalRulestackResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCertificateObjectLocalRulestackResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // use certificate self signed

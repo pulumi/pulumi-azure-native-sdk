@@ -12,9 +12,7 @@ import (
 )
 
 // Gets an API Management gateway resource description.
-// Azure REST API version: 2023-09-01-preview.
-//
-// Other available API versions: 2024-05-01, 2024-06-01-preview.
+// Azure REST API version: 2024-06-01-preview.
 func LookupApiGateway(ctx *pulumi.Context, args *LookupApiGatewayArgs, opts ...pulumi.InvokeOption) (*LookupApiGatewayResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupApiGatewayResult
@@ -34,6 +32,8 @@ type LookupApiGatewayArgs struct {
 
 // A single API Management gateway resource in List or Get response.
 type LookupApiGatewayResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Information regarding how the gateway should integrate with backend systems.
 	Backend *BackendConfigurationResponse `pulumi:"backend"`
 	// Information regarding the Configuration API of the API Management gateway. This is only applicable for API gateway with Standard SKU.
@@ -99,6 +99,11 @@ func (o LookupApiGatewayResultOutput) ToLookupApiGatewayResultOutput() LookupApi
 
 func (o LookupApiGatewayResultOutput) ToLookupApiGatewayResultOutputWithContext(ctx context.Context) LookupApiGatewayResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupApiGatewayResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApiGatewayResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Information regarding how the gateway should integrate with backend systems.

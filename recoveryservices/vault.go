@@ -13,12 +13,12 @@ import (
 )
 
 // Resource information, as returned by the resource provider.
-// Azure REST API version: 2023-04-01. Prior API version in Azure Native 1.x: 2021-01-01.
-//
-// Other available API versions: 2020-02-02, 2023-06-01, 2023-08-01, 2024-01-01, 2024-02-01, 2024-04-01, 2024-04-30-preview, 2024-09-30-preview, 2024-10-01.
+// Azure REST API version: 2024-10-01. Prior API version in Azure Native 2.x: 2023-04-01.
 type Vault struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Optional ETag.
 	Etag pulumi.StringPtrOutput `pulumi:"etag"`
 	// Identity for the resource.
@@ -253,6 +253,11 @@ func (o VaultOutput) ToVaultOutput() VaultOutput {
 
 func (o VaultOutput) ToVaultOutputWithContext(ctx context.Context) VaultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o VaultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Vault) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Optional ETag.

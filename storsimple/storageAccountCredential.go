@@ -13,12 +13,14 @@ import (
 )
 
 // The storage account credential.
-// Azure REST API version: 2017-06-01. Prior API version in Azure Native 1.x: 2017-06-01.
+// Azure REST API version: 2017-06-01. Prior API version in Azure Native 2.x: 2017-06-01.
 type StorageAccountCredential struct {
 	pulumi.CustomResourceState
 
 	// The details of the storage account password.
 	AccessKey AsymmetricEncryptedSecretResponsePtrOutput `pulumi:"accessKey"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The storage endpoint
 	EndPoint pulumi.StringOutput `pulumi:"endPoint"`
 	// The Kind of the object. Currently only Series8000 is supported
@@ -168,6 +170,11 @@ func (o StorageAccountCredentialOutput) ToStorageAccountCredentialOutputWithCont
 // The details of the storage account password.
 func (o StorageAccountCredentialOutput) AccessKey() AsymmetricEncryptedSecretResponsePtrOutput {
 	return o.ApplyT(func(v *StorageAccountCredential) AsymmetricEncryptedSecretResponsePtrOutput { return v.AccessKey }).(AsymmetricEncryptedSecretResponsePtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o StorageAccountCredentialOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *StorageAccountCredential) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The storage endpoint

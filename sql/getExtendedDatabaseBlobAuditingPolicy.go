@@ -13,8 +13,6 @@ import (
 
 // Gets an extended database's blob auditing policy.
 // Azure REST API version: 2021-11-01.
-//
-// Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
 func LookupExtendedDatabaseBlobAuditingPolicy(ctx *pulumi.Context, args *LookupExtendedDatabaseBlobAuditingPolicyArgs, opts ...pulumi.InvokeOption) (*LookupExtendedDatabaseBlobAuditingPolicyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupExtendedDatabaseBlobAuditingPolicyResult
@@ -100,6 +98,8 @@ type LookupExtendedDatabaseBlobAuditingPolicyResult struct {
 	//
 	// For more information, see [Database-Level Audit Actions](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions)
 	AuditActionsAndGroups []string `pulumi:"auditActionsAndGroups"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource ID.
 	Id string `pulumi:"id"`
 	// Specifies whether audit events are sent to Azure Monitor.
@@ -239,6 +239,11 @@ func (o LookupExtendedDatabaseBlobAuditingPolicyResultOutput) ToLookupExtendedDa
 // For more information, see [Database-Level Audit Actions](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions)
 func (o LookupExtendedDatabaseBlobAuditingPolicyResultOutput) AuditActionsAndGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupExtendedDatabaseBlobAuditingPolicyResult) []string { return v.AuditActionsAndGroups }).(pulumi.StringArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupExtendedDatabaseBlobAuditingPolicyResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupExtendedDatabaseBlobAuditingPolicyResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource ID.

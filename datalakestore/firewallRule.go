@@ -13,10 +13,12 @@ import (
 )
 
 // Data Lake Store firewall rule information.
-// Azure REST API version: 2016-11-01. Prior API version in Azure Native 1.x: 2016-11-01.
+// Azure REST API version: 2016-11-01. Prior API version in Azure Native 2.x: 2016-11-01.
 type FirewallRule struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The end IP address for the firewall rule. This can be either ipv4 or ipv6. Start and End should be in the same protocol.
 	EndIpAddress pulumi.StringOutput `pulumi:"endIpAddress"`
 	// The resource name.
@@ -146,6 +148,11 @@ func (o FirewallRuleOutput) ToFirewallRuleOutput() FirewallRuleOutput {
 
 func (o FirewallRuleOutput) ToFirewallRuleOutputWithContext(ctx context.Context) FirewallRuleOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o FirewallRuleOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *FirewallRule) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The end IP address for the firewall rule. This can be either ipv4 or ipv6. Start and End should be in the same protocol.

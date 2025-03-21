@@ -13,10 +13,12 @@ import (
 )
 
 // Represents an instance of an auto scale v-core resource.
-// Azure REST API version: 2021-01-01. Prior API version in Azure Native 1.x: 2021-01-01.
+// Azure REST API version: 2021-01-01. Prior API version in Azure Native 2.x: 2021-01-01.
 type AutoScaleVCore struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The maximum capacity of an auto scale v-core resource.
 	CapacityLimit pulumi.IntPtrOutput `pulumi:"capacityLimit"`
 	// The object ID of the capacity resource associated with the auto scale v-core resource.
@@ -162,6 +164,11 @@ func (o AutoScaleVCoreOutput) ToAutoScaleVCoreOutput() AutoScaleVCoreOutput {
 
 func (o AutoScaleVCoreOutput) ToAutoScaleVCoreOutputWithContext(ctx context.Context) AutoScaleVCoreOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o AutoScaleVCoreOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *AutoScaleVCore) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The maximum capacity of an auto scale v-core resource.

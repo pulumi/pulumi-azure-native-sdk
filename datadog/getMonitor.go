@@ -11,9 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Azure REST API version: 2022-06-01.
-//
-// Other available API versions: 2022-08-01, 2023-01-01, 2023-07-07, 2023-10-20.
+// Azure REST API version: 2023-10-20.
 func LookupMonitor(ctx *pulumi.Context, args *LookupMonitorArgs, opts ...pulumi.InvokeOption) (*LookupMonitorResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMonitorResult
@@ -32,6 +30,8 @@ type LookupMonitorArgs struct {
 }
 
 type LookupMonitorResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// ARM id of the monitor resource.
 	Id       string                      `pulumi:"id"`
 	Identity *IdentityPropertiesResponse `pulumi:"identity"`
@@ -80,6 +80,11 @@ func (o LookupMonitorResultOutput) ToLookupMonitorResultOutput() LookupMonitorRe
 
 func (o LookupMonitorResultOutput) ToLookupMonitorResultOutputWithContext(ctx context.Context) LookupMonitorResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupMonitorResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMonitorResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // ARM id of the monitor resource.

@@ -13,12 +13,12 @@ import (
 )
 
 // The flow resource definition.
-// Azure REST API version: 2023-10-11-preview.
-//
-// Other available API versions: 2024-01-25, 2024-05-07, 2024-09-11, 2024-09-27.
+// Azure REST API version: 2024-09-27. Prior API version in Azure Native 2.x: 2023-10-11-preview.
 type Flow struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The managed identity of the flow resource, if configured.
 	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
@@ -174,6 +174,11 @@ func (o FlowOutput) ToFlowOutput() FlowOutput {
 
 func (o FlowOutput) ToFlowOutputWithContext(ctx context.Context) FlowOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o FlowOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Flow) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The managed identity of the flow resource, if configured.

@@ -13,14 +13,14 @@ import (
 )
 
 // Represents a Configuration.
-// Azure REST API version: 2018-06-01. Prior API version in Azure Native 1.x: 2018-06-01.
-//
-// Other available API versions: 2018-06-01-preview.
+// Azure REST API version: 2018-06-01. Prior API version in Azure Native 2.x: 2018-06-01.
 type Configuration struct {
 	pulumi.CustomResourceState
 
 	// Allowed values of the configuration.
 	AllowedValues pulumi.StringOutput `pulumi:"allowedValues"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Data type of the configuration.
 	DataType pulumi.StringOutput `pulumi:"dataType"`
 	// Default value of the configuration.
@@ -158,6 +158,11 @@ func (o ConfigurationOutput) ToConfigurationOutputWithContext(ctx context.Contex
 // Allowed values of the configuration.
 func (o ConfigurationOutput) AllowedValues() pulumi.StringOutput {
 	return o.ApplyT(func(v *Configuration) pulumi.StringOutput { return v.AllowedValues }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o ConfigurationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Configuration) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Data type of the configuration.

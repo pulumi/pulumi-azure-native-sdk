@@ -13,14 +13,14 @@ import (
 )
 
 // Defines the admin rule collection.
-// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2021-02-01-preview.
-//
-// Other available API versions: 2021-02-01-preview, 2021-05-01-preview, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-01-01-preview, 2024-03-01, 2024-05-01.
+// Azure REST API version: 2024-05-01. Prior API version in Azure Native 2.x: 2023-02-01.
 type AdminRuleCollection struct {
 	pulumi.CustomResourceState
 
 	// Groups for configuration
 	AppliesToGroups NetworkManagerSecurityGroupItemResponseArrayOutput `pulumi:"appliesToGroups"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// A description of the admin rule collection.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// A unique read-only string that changes whenever the resource is updated.
@@ -221,6 +221,11 @@ func (o AdminRuleCollectionOutput) AppliesToGroups() NetworkManagerSecurityGroup
 	return o.ApplyT(func(v *AdminRuleCollection) NetworkManagerSecurityGroupItemResponseArrayOutput {
 		return v.AppliesToGroups
 	}).(NetworkManagerSecurityGroupItemResponseArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o AdminRuleCollectionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *AdminRuleCollection) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A description of the admin rule collection.

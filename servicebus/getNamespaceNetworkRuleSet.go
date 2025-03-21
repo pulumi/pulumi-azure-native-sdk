@@ -12,9 +12,7 @@ import (
 )
 
 // Gets NetworkRuleSet for a Namespace.
-// Azure REST API version: 2022-01-01-preview.
-//
-// Other available API versions: 2022-10-01-preview, 2023-01-01-preview, 2024-01-01.
+// Azure REST API version: 2024-01-01.
 func LookupNamespaceNetworkRuleSet(ctx *pulumi.Context, args *LookupNamespaceNetworkRuleSetArgs, opts ...pulumi.InvokeOption) (*LookupNamespaceNetworkRuleSetResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNamespaceNetworkRuleSetResult
@@ -28,12 +26,14 @@ func LookupNamespaceNetworkRuleSet(ctx *pulumi.Context, args *LookupNamespaceNet
 type LookupNamespaceNetworkRuleSetArgs struct {
 	// The namespace name
 	NamespaceName string `pulumi:"namespaceName"`
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Description of NetworkRuleSet resource.
 type LookupNamespaceNetworkRuleSetResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Default Action for Network Rule Set
 	DefaultAction *string `pulumi:"defaultAction"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -80,7 +80,7 @@ func LookupNamespaceNetworkRuleSetOutput(ctx *pulumi.Context, args LookupNamespa
 type LookupNamespaceNetworkRuleSetOutputArgs struct {
 	// The namespace name
 	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -101,6 +101,11 @@ func (o LookupNamespaceNetworkRuleSetResultOutput) ToLookupNamespaceNetworkRuleS
 
 func (o LookupNamespaceNetworkRuleSetResultOutput) ToLookupNamespaceNetworkRuleSetResultOutputWithContext(ctx context.Context) LookupNamespaceNetworkRuleSetResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupNamespaceNetworkRuleSetResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNamespaceNetworkRuleSetResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Default Action for Network Rule Set

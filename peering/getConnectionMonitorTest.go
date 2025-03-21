@@ -34,6 +34,8 @@ type LookupConnectionMonitorTestArgs struct {
 
 // The Connection Monitor Test class.
 type LookupConnectionMonitorTestResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The Connection Monitor test destination
 	Destination *string `pulumi:"destination"`
 	// The Connection Monitor test destination port
@@ -91,6 +93,11 @@ func (o LookupConnectionMonitorTestResultOutput) ToLookupConnectionMonitorTestRe
 
 func (o LookupConnectionMonitorTestResultOutput) ToLookupConnectionMonitorTestResultOutputWithContext(ctx context.Context) LookupConnectionMonitorTestResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupConnectionMonitorTestResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectionMonitorTestResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The Connection Monitor test destination

@@ -12,9 +12,7 @@ import (
 )
 
 // The metric setting details for the role
-// Azure REST API version: 2022-03-01.
-//
-// Other available API versions: 2023-01-01-preview, 2023-07-01, 2023-12-01.
+// Azure REST API version: 2023-07-01.
 func LookupMonitoringConfig(ctx *pulumi.Context, args *LookupMonitoringConfigArgs, opts ...pulumi.InvokeOption) (*LookupMonitoringConfigResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMonitoringConfigResult
@@ -36,6 +34,8 @@ type LookupMonitoringConfigArgs struct {
 
 // The metric setting details for the role
 type LookupMonitoringConfigResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The path ID that uniquely identifies the object.
 	Id string `pulumi:"id"`
 	// The metrics configuration details
@@ -83,6 +83,11 @@ func (o LookupMonitoringConfigResultOutput) ToLookupMonitoringConfigResultOutput
 
 func (o LookupMonitoringConfigResultOutput) ToLookupMonitoringConfigResultOutputWithContext(ctx context.Context) LookupMonitoringConfigResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupMonitoringConfigResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMonitoringConfigResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The path ID that uniquely identifies the object.

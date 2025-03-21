@@ -13,12 +13,12 @@ import (
 )
 
 // An output object, containing all information associated with the named output. All outputs are contained under a streaming job.
-// Azure REST API version: 2020-03-01. Prior API version in Azure Native 1.x: 2016-03-01.
-//
-// Other available API versions: 2021-10-01-preview.
+// Azure REST API version: 2020-03-01. Prior API version in Azure Native 2.x: 2020-03-01.
 type Output struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Describes the data source that output will be written to. Required on PUT (CreateOrReplace) requests.
 	Datasource pulumi.AnyOutput `pulumi:"datasource"`
 	// Describes conditions applicable to the Input, Output, or the job overall, that warrant customer attention.
@@ -171,6 +171,11 @@ func (o OutputOutput) ToOutputOutput() OutputOutput {
 
 func (o OutputOutput) ToOutputOutputWithContext(ctx context.Context) OutputOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o OutputOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Output) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Describes the data source that output will be written to. Required on PUT (CreateOrReplace) requests.

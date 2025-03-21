@@ -12,9 +12,7 @@ import (
 )
 
 // Gets the primary and secondary connection strings for the Namespace.
-// Azure REST API version: 2022-10-01-preview.
-//
-// Other available API versions: 2023-01-01-preview, 2024-01-01, 2024-05-01-preview.
+// Azure REST API version: 2024-01-01.
 func ListDisasterRecoveryConfigKeys(ctx *pulumi.Context, args *ListDisasterRecoveryConfigKeysArgs, opts ...pulumi.InvokeOption) (*ListDisasterRecoveryConfigKeysResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListDisasterRecoveryConfigKeysResult

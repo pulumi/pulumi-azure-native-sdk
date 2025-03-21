@@ -12,9 +12,7 @@ import (
 )
 
 // Get a Connection Setting registration for a Bot Service
-// Azure REST API version: 2022-09-15.
-//
-// Other available API versions: 2023-09-15-preview.
+// Azure REST API version: 2023-09-15-preview.
 func LookupBotConnection(ctx *pulumi.Context, args *LookupBotConnectionArgs, opts ...pulumi.InvokeOption) (*LookupBotConnectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBotConnectionResult
@@ -36,6 +34,8 @@ type LookupBotConnectionArgs struct {
 
 // Bot channel resource definition
 type LookupBotConnectionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Entity Tag.
 	Etag *string `pulumi:"etag"`
 	// Specifies the resource ID.
@@ -103,6 +103,11 @@ func (o LookupBotConnectionResultOutput) ToLookupBotConnectionResultOutput() Loo
 
 func (o LookupBotConnectionResultOutput) ToLookupBotConnectionResultOutputWithContext(ctx context.Context) LookupBotConnectionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupBotConnectionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBotConnectionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Entity Tag.

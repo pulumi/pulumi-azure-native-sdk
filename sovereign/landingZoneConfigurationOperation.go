@@ -13,10 +13,12 @@ import (
 )
 
 // Concrete proxy resource types can be created by aliasing this type using a specific property type.
-// Azure REST API version: 2025-02-27-preview.
+// Azure REST API version: 2025-02-27-preview. Prior API version in Azure Native 2.x: 2025-02-27-preview.
 type LandingZoneConfigurationOperation struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The resource-specific properties for this resource.
@@ -136,6 +138,11 @@ func (o LandingZoneConfigurationOperationOutput) ToLandingZoneConfigurationOpera
 
 func (o LandingZoneConfigurationOperationOutput) ToLandingZoneConfigurationOperationOutputWithContext(ctx context.Context) LandingZoneConfigurationOperationOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LandingZoneConfigurationOperationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *LandingZoneConfigurationOperation) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

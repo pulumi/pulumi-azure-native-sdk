@@ -12,7 +12,7 @@ import (
 )
 
 // Gets a setting.
-// Azure REST API version: 2023-06-01-preview.
+// Azure REST API version: 2025-01-01-preview.
 func LookupUeba(ctx *pulumi.Context, args *LookupUebaArgs, opts ...pulumi.InvokeOption) (*LookupUebaResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupUebaResult
@@ -34,6 +34,8 @@ type LookupUebaArgs struct {
 
 // Settings with single toggle.
 type LookupUebaResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The relevant data sources that enriched by ueba
 	DataSources []string `pulumi:"dataSources"`
 	// Etag of the azure resource
@@ -86,6 +88,11 @@ func (o LookupUebaResultOutput) ToLookupUebaResultOutput() LookupUebaResultOutpu
 
 func (o LookupUebaResultOutput) ToLookupUebaResultOutputWithContext(ctx context.Context) LookupUebaResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupUebaResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUebaResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The relevant data sources that enriched by ueba

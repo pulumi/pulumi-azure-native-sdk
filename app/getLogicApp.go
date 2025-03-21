@@ -12,9 +12,7 @@ import (
 )
 
 // A logic app extension resource
-// Azure REST API version: 2024-02-02-preview.
-//
-// Other available API versions: 2024-08-02-preview, 2024-10-02-preview.
+// Azure REST API version: 2024-10-02-preview.
 func LookupLogicApp(ctx *pulumi.Context, args *LookupLogicAppArgs, opts ...pulumi.InvokeOption) (*LookupLogicAppResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupLogicAppResult
@@ -36,6 +34,8 @@ type LookupLogicAppArgs struct {
 
 // A logic app extension resource
 type LookupLogicAppResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The name of the resource
@@ -81,6 +81,11 @@ func (o LookupLogicAppResultOutput) ToLookupLogicAppResultOutput() LookupLogicAp
 
 func (o LookupLogicAppResultOutput) ToLookupLogicAppResultOutputWithContext(ctx context.Context) LookupLogicAppResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupLogicAppResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLogicAppResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

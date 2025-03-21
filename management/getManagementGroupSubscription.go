@@ -13,9 +13,7 @@ import (
 
 // Retrieves details about given subscription which is associated with the management group.
 //
-// Azure REST API version: 2021-04-01.
-//
-// Other available API versions: 2023-04-01.
+// Azure REST API version: 2023-04-01.
 func LookupManagementGroupSubscription(ctx *pulumi.Context, args *LookupManagementGroupSubscriptionArgs, opts ...pulumi.InvokeOption) (*LookupManagementGroupSubscriptionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupManagementGroupSubscriptionResult
@@ -35,6 +33,8 @@ type LookupManagementGroupSubscriptionArgs struct {
 
 // The details of subscription under management group.
 type LookupManagementGroupSubscriptionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The friendly name of the subscription.
 	DisplayName *string `pulumi:"displayName"`
 	// The fully qualified ID for the subscription.  For example, /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000/subscriptions/0000000-0000-0000-0000-000000000001
@@ -84,6 +84,11 @@ func (o LookupManagementGroupSubscriptionResultOutput) ToLookupManagementGroupSu
 
 func (o LookupManagementGroupSubscriptionResultOutput) ToLookupManagementGroupSubscriptionResultOutputWithContext(ctx context.Context) LookupManagementGroupSubscriptionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupManagementGroupSubscriptionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupManagementGroupSubscriptionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The friendly name of the subscription.

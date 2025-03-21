@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-azure-native-sdk/dbformysql/v2
+module github.com/pulumi/pulumi-azure-native-sdk/dbformysql/v3
 
 go 1.22
 

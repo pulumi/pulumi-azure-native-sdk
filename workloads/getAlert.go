@@ -38,6 +38,8 @@ type LookupAlertResult struct {
 	AlertRuleProperties *AlertRulePropertiesResponse `pulumi:"alertRuleProperties"`
 	// ID of the alert rule resource created.
 	AlertRuleResourceId string `pulumi:"alertRuleResourceId"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Defines the alert instance errors.
 	Errors ErrorDetailResponse `pulumi:"errors"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -103,6 +105,11 @@ func (o LookupAlertResultOutput) AlertRuleProperties() AlertRulePropertiesRespon
 // ID of the alert rule resource created.
 func (o LookupAlertResultOutput) AlertRuleResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAlertResult) string { return v.AlertRuleResourceId }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupAlertResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAlertResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Defines the alert instance errors.

@@ -36,6 +36,8 @@ type LookupKustoClusterDataSetArgs struct {
 
 // A kusto cluster data set.
 type LookupKustoClusterDataSetResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Unique id for identifying a data set resource
 	DataSetId string `pulumi:"dataSetId"`
 	// The resource id of the azure resource
@@ -94,6 +96,11 @@ func (o LookupKustoClusterDataSetResultOutput) ToLookupKustoClusterDataSetResult
 
 func (o LookupKustoClusterDataSetResultOutput) ToLookupKustoClusterDataSetResultOutputWithContext(ctx context.Context) LookupKustoClusterDataSetResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupKustoClusterDataSetResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKustoClusterDataSetResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Unique id for identifying a data set resource

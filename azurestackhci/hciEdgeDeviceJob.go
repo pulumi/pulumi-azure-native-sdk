@@ -13,10 +13,12 @@ import (
 )
 
 // Edge device job for Azure Stack HCI solution.
-// Azure REST API version: 2024-09-01-preview.
+// Azure REST API version: 2024-12-01-preview. Prior API version in Azure Native 2.x: 2024-09-01-preview.
 type HciEdgeDeviceJob struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Edge device kind.
 	// Expected value is 'HCI'.
 	Kind pulumi.StringOutput `pulumi:"kind"`
@@ -155,6 +157,11 @@ func (o HciEdgeDeviceJobOutput) ToHciEdgeDeviceJobOutput() HciEdgeDeviceJobOutpu
 
 func (o HciEdgeDeviceJobOutput) ToHciEdgeDeviceJobOutputWithContext(ctx context.Context) HciEdgeDeviceJobOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o HciEdgeDeviceJobOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *HciEdgeDeviceJob) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Edge device kind.

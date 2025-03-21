@@ -13,12 +13,12 @@ import (
 )
 
 // Azure Resource Manager resource envelope.
-// Azure REST API version: 2023-04-01. Prior API version in Azure Native 1.x: 2021-03-01-preview.
-//
-// Other available API versions: 2021-03-01-preview, 2022-02-01-preview, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-04-01-preview, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview.
+// Azure REST API version: 2024-10-01. Prior API version in Azure Native 2.x: 2023-04-01.
 type Job struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// [Required] Additional attributes of the entity.
 	JobBaseProperties pulumi.AnyOutput `pulumi:"jobBaseProperties"`
 	// The name of the resource
@@ -102,6 +102,9 @@ func NewJob(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001preview:Job"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250101preview:Job"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -195,6 +198,11 @@ func (o JobOutput) ToJobOutput() JobOutput {
 
 func (o JobOutput) ToJobOutputWithContext(ctx context.Context) JobOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o JobOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // [Required] Additional attributes of the entity.

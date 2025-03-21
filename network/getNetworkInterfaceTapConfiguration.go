@@ -12,9 +12,7 @@ import (
 )
 
 // Get the specified tap configuration on a network interface.
-// Azure REST API version: 2023-02-01.
-//
-// Other available API versions: 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Azure REST API version: 2024-05-01.
 func LookupNetworkInterfaceTapConfiguration(ctx *pulumi.Context, args *LookupNetworkInterfaceTapConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupNetworkInterfaceTapConfigurationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNetworkInterfaceTapConfigurationResult
@@ -36,6 +34,8 @@ type LookupNetworkInterfaceTapConfigurationArgs struct {
 
 // Tap configuration in a Network Interface.
 type LookupNetworkInterfaceTapConfigurationResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag string `pulumi:"etag"`
 	// Resource ID.
@@ -95,6 +95,11 @@ func (o LookupNetworkInterfaceTapConfigurationResultOutput) ToLookupNetworkInter
 
 func (o LookupNetworkInterfaceTapConfigurationResultOutput) ToLookupNetworkInterfaceTapConfigurationResultOutputWithContext(ctx context.Context) LookupNetworkInterfaceTapConfigurationResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupNetworkInterfaceTapConfigurationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkInterfaceTapConfigurationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A unique read-only string that changes whenever the resource is updated.

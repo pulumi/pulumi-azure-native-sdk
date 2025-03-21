@@ -12,9 +12,7 @@ import (
 )
 
 // Get properties of a partner configuration.
-// Azure REST API version: 2022-06-15.
-//
-// Other available API versions: 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-02-15.
+// Azure REST API version: 2025-02-15.
 func LookupPartnerConfiguration(ctx *pulumi.Context, args *LookupPartnerConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupPartnerConfigurationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPartnerConfigurationResult
@@ -32,6 +30,8 @@ type LookupPartnerConfigurationArgs struct {
 
 // Partner configuration information
 type LookupPartnerConfigurationResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified identifier of the resource.
 	Id string `pulumi:"id"`
 	// Location of the resource.
@@ -42,7 +42,7 @@ type LookupPartnerConfigurationResult struct {
 	PartnerAuthorization *PartnerAuthorizationResponse `pulumi:"partnerAuthorization"`
 	// Provisioning state of the partner configuration.
 	ProvisioningState *string `pulumi:"provisioningState"`
-	// The system metadata relating to partner configuration resource.
+	// The system metadata relating to the Event Grid resource.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Tags of the resource.
 	Tags map[string]string `pulumi:"tags"`
@@ -83,6 +83,11 @@ func (o LookupPartnerConfigurationResultOutput) ToLookupPartnerConfigurationResu
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupPartnerConfigurationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPartnerConfigurationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Fully qualified identifier of the resource.
 func (o LookupPartnerConfigurationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPartnerConfigurationResult) string { return v.Id }).(pulumi.StringOutput)
@@ -108,7 +113,7 @@ func (o LookupPartnerConfigurationResultOutput) ProvisioningState() pulumi.Strin
 	return o.ApplyT(func(v LookupPartnerConfigurationResult) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
 }
 
-// The system metadata relating to partner configuration resource.
+// The system metadata relating to the Event Grid resource.
 func (o LookupPartnerConfigurationResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupPartnerConfigurationResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }

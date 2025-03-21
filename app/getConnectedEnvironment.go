@@ -12,9 +12,7 @@ import (
 )
 
 // Get the properties of an connectedEnvironment.
-// Azure REST API version: 2022-10-01.
-//
-// Other available API versions: 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview.
+// Azure REST API version: 2024-03-01.
 func LookupConnectedEnvironment(ctx *pulumi.Context, args *LookupConnectedEnvironmentArgs, opts ...pulumi.InvokeOption) (*LookupConnectedEnvironmentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupConnectedEnvironmentResult
@@ -34,6 +32,8 @@ type LookupConnectedEnvironmentArgs struct {
 
 // An environment for Kubernetes cluster specialized for web workloads by Azure App Service
 type LookupConnectedEnvironmentResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Custom domain configuration for the environment
 	CustomDomainConfiguration *CustomDomainConfigurationResponse `pulumi:"customDomainConfiguration"`
 	// Application Insights connection string used by Dapr to export Service to Service communication telemetry
@@ -95,6 +95,11 @@ func (o LookupConnectedEnvironmentResultOutput) ToLookupConnectedEnvironmentResu
 
 func (o LookupConnectedEnvironmentResultOutput) ToLookupConnectedEnvironmentResultOutputWithContext(ctx context.Context) LookupConnectedEnvironmentResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupConnectedEnvironmentResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectedEnvironmentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Custom domain configuration for the environment

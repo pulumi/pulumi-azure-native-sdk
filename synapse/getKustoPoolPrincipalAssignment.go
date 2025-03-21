@@ -38,6 +38,8 @@ type LookupKustoPoolPrincipalAssignmentArgs struct {
 type LookupKustoPoolPrincipalAssignmentResult struct {
 	// The service principal object id in AAD (Azure active directory)
 	AadObjectId string `pulumi:"aadObjectId"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The name of the resource
@@ -104,6 +106,11 @@ func (o LookupKustoPoolPrincipalAssignmentResultOutput) ToLookupKustoPoolPrincip
 // The service principal object id in AAD (Azure active directory)
 func (o LookupKustoPoolPrincipalAssignmentResultOutput) AadObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKustoPoolPrincipalAssignmentResult) string { return v.AadObjectId }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupKustoPoolPrincipalAssignmentResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKustoPoolPrincipalAssignmentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

@@ -13,8 +13,6 @@ import (
 
 // Gets the sensitivity label of a given column
 // Azure REST API version: 2021-06-01.
-//
-// Other available API versions: 2021-06-01-preview.
 func LookupSqlPoolSensitivityLabel(ctx *pulumi.Context, args *LookupSqlPoolSensitivityLabelArgs, opts ...pulumi.InvokeOption) (*LookupSqlPoolSensitivityLabelResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSqlPoolSensitivityLabelResult
@@ -44,6 +42,8 @@ type LookupSqlPoolSensitivityLabelArgs struct {
 
 // A sensitivity label.
 type LookupSqlPoolSensitivityLabelResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The column name.
 	ColumnName string `pulumi:"columnName"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -114,6 +114,11 @@ func (o LookupSqlPoolSensitivityLabelResultOutput) ToLookupSqlPoolSensitivityLab
 
 func (o LookupSqlPoolSensitivityLabelResultOutput) ToLookupSqlPoolSensitivityLabelResultOutputWithContext(ctx context.Context) LookupSqlPoolSensitivityLabelResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupSqlPoolSensitivityLabelResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSqlPoolSensitivityLabelResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The column name.

@@ -12,9 +12,7 @@ import (
 )
 
 // Returns a list of databases that are owned by this cluster and were followed by another cluster.
-// Azure REST API version: 2022-12-29.
-//
-// Other available API versions: 2022-07-07, 2023-05-02, 2023-08-15, 2024-04-13.
+// Azure REST API version: 2024-04-13.
 func ListClusterFollowerDatabases(ctx *pulumi.Context, args *ListClusterFollowerDatabasesArgs, opts ...pulumi.InvokeOption) (*ListClusterFollowerDatabasesResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListClusterFollowerDatabasesResult
@@ -28,7 +26,7 @@ func ListClusterFollowerDatabases(ctx *pulumi.Context, args *ListClusterFollower
 type ListClusterFollowerDatabasesArgs struct {
 	// The name of the Kusto cluster.
 	ClusterName string `pulumi:"clusterName"`
-	// The name of the resource group containing the Kusto cluster.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -50,7 +48,7 @@ func ListClusterFollowerDatabasesOutput(ctx *pulumi.Context, args ListClusterFol
 type ListClusterFollowerDatabasesOutputArgs struct {
 	// The name of the Kusto cluster.
 	ClusterName pulumi.StringInput `pulumi:"clusterName"`
-	// The name of the resource group containing the Kusto cluster.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 

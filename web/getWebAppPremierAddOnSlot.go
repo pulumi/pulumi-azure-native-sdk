@@ -12,9 +12,7 @@ import (
 )
 
 // Description for Gets a named add-on of an app.
-// Azure REST API version: 2022-09-01.
-//
-// Other available API versions: 2016-08-01, 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
+// Azure REST API version: 2024-04-01.
 func LookupWebAppPremierAddOnSlot(ctx *pulumi.Context, args *LookupWebAppPremierAddOnSlotArgs, opts ...pulumi.InvokeOption) (*LookupWebAppPremierAddOnSlotResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebAppPremierAddOnSlotResult
@@ -38,9 +36,11 @@ type LookupWebAppPremierAddOnSlotArgs struct {
 
 // Premier add-on.
 type LookupWebAppPremierAddOnSlotResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource Id.
 	Id string `pulumi:"id"`
-	// Kind of resource.
+	// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
 	Kind *string `pulumi:"kind"`
 	// Resource Location.
 	Location string `pulumi:"location"`
@@ -101,12 +101,17 @@ func (o LookupWebAppPremierAddOnSlotResultOutput) ToLookupWebAppPremierAddOnSlot
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupWebAppPremierAddOnSlotResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWebAppPremierAddOnSlotResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Resource Id.
 func (o LookupWebAppPremierAddOnSlotResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppPremierAddOnSlotResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Kind of resource.
+// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
 func (o LookupWebAppPremierAddOnSlotResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppPremierAddOnSlotResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }

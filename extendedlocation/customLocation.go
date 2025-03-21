@@ -13,14 +13,14 @@ import (
 )
 
 // Custom Locations definition.
-// Azure REST API version: 2021-08-15. Prior API version in Azure Native 1.x: 2021-03-15-preview.
-//
-// Other available API versions: 2021-08-31-preview.
+// Azure REST API version: 2021-08-31-preview. Prior API version in Azure Native 2.x: 2021-08-15.
 type CustomLocation struct {
 	pulumi.CustomResourceState
 
 	// This is optional input that contains the authentication that should be used to generate the namespace.
 	Authentication CustomLocationPropertiesResponseAuthenticationPtrOutput `pulumi:"authentication"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Contains the reference to the add-on that contains charts to deploy CRDs and operators.
 	ClusterExtensionIds pulumi.StringArrayOutput `pulumi:"clusterExtensionIds"`
 	// Display name for the Custom Locations location.
@@ -198,6 +198,11 @@ func (o CustomLocationOutput) Authentication() CustomLocationPropertiesResponseA
 	return o.ApplyT(func(v *CustomLocation) CustomLocationPropertiesResponseAuthenticationPtrOutput {
 		return v.Authentication
 	}).(CustomLocationPropertiesResponseAuthenticationPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o CustomLocationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomLocation) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Contains the reference to the add-on that contains charts to deploy CRDs and operators.

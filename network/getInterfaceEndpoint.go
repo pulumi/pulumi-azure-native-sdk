@@ -34,6 +34,8 @@ type LookupInterfaceEndpointArgs struct {
 
 // Interface endpoint resource.
 type LookupInterfaceEndpointResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// A reference to the service being brought into the virtual network.
 	EndpointService *EndpointServiceResponse `pulumi:"endpointService"`
 	// Gets a unique read-only string that changes whenever the resource is updated.
@@ -105,6 +107,11 @@ func (o LookupInterfaceEndpointResultOutput) ToLookupInterfaceEndpointResultOutp
 
 func (o LookupInterfaceEndpointResultOutput) ToLookupInterfaceEndpointResultOutputWithContext(ctx context.Context) LookupInterfaceEndpointResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupInterfaceEndpointResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInterfaceEndpointResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A reference to the service being brought into the virtual network.

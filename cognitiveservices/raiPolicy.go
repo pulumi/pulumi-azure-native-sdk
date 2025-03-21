@@ -13,12 +13,12 @@ import (
 )
 
 // Cognitive Services RaiPolicy.
-// Azure REST API version: 2023-10-01-preview.
-//
-// Other available API versions: 2024-04-01-preview, 2024-06-01-preview, 2024-10-01.
+// Azure REST API version: 2024-10-01. Prior API version in Azure Native 2.x: 2023-10-01-preview.
 type RaiPolicy struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Resource Etag.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The name of the resource
@@ -155,6 +155,11 @@ func (o RaiPolicyOutput) ToRaiPolicyOutput() RaiPolicyOutput {
 
 func (o RaiPolicyOutput) ToRaiPolicyOutputWithContext(ctx context.Context) RaiPolicyOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o RaiPolicyOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *RaiPolicy) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource Etag.

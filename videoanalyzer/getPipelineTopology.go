@@ -39,6 +39,8 @@ type LookupPipelineTopologyArgs struct {
 //   - Processors: list of nodes which perform data analysis or transformations.
 //   - Sinks: list of one or more data sinks which allow for data to be stored or exported to other destinations.
 type LookupPipelineTopologyResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// An optional description of the pipeline topology. It is recommended that the expected use of the topology to be described here.
 	Description *string `pulumi:"description"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -103,6 +105,11 @@ func (o LookupPipelineTopologyResultOutput) ToLookupPipelineTopologyResultOutput
 
 func (o LookupPipelineTopologyResultOutput) ToLookupPipelineTopologyResultOutputWithContext(ctx context.Context) LookupPipelineTopologyResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupPipelineTopologyResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPipelineTopologyResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // An optional description of the pipeline topology. It is recommended that the expected use of the topology to be described here.

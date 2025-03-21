@@ -12,7 +12,7 @@ import (
 )
 
 // Gets a specific addon by name.
-// Azure REST API version: 2022-03-01.
+// Azure REST API version: 2023-07-01.
 func LookupArcAddon(ctx *pulumi.Context, args *LookupArcAddonArgs, opts ...pulumi.InvokeOption) (*LookupArcAddonResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupArcAddonResult
@@ -36,6 +36,8 @@ type LookupArcAddonArgs struct {
 
 // Arc Addon.
 type LookupArcAddonResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Host OS supported by the Arc addon.
 	HostPlatform string `pulumi:"hostPlatform"`
 	// Platform where the runtime is hosted.
@@ -102,6 +104,11 @@ func (o LookupArcAddonResultOutput) ToLookupArcAddonResultOutput() LookupArcAddo
 
 func (o LookupArcAddonResultOutput) ToLookupArcAddonResultOutputWithContext(ctx context.Context) LookupArcAddonResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupArcAddonResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupArcAddonResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Host OS supported by the Arc addon.

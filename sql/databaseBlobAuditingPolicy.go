@@ -13,9 +13,7 @@ import (
 )
 
 // A database blob auditing policy.
-// Azure REST API version: 2021-11-01. Prior API version in Azure Native 1.x: 2020-11-01-preview.
-//
-// Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
+// Azure REST API version: 2021-11-01. Prior API version in Azure Native 2.x: 2021-11-01.
 type DatabaseBlobAuditingPolicy struct {
 	pulumi.CustomResourceState
 
@@ -81,6 +79,8 @@ type DatabaseBlobAuditingPolicy struct {
 	//
 	// For more information, see [Database-Level Audit Actions](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions)
 	AuditActionsAndGroups pulumi.StringArrayOutput `pulumi:"auditActionsAndGroups"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Specifies whether audit events are sent to Azure Monitor.
 	// In order to send the events to Azure Monitor, specify 'State' as 'Enabled' and 'IsAzureMonitorTargetEnabled' as true.
 	//
@@ -539,6 +539,11 @@ func (o DatabaseBlobAuditingPolicyOutput) ToDatabaseBlobAuditingPolicyOutputWith
 // For more information, see [Database-Level Audit Actions](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions)
 func (o DatabaseBlobAuditingPolicyOutput) AuditActionsAndGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DatabaseBlobAuditingPolicy) pulumi.StringArrayOutput { return v.AuditActionsAndGroups }).(pulumi.StringArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o DatabaseBlobAuditingPolicyOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseBlobAuditingPolicy) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Specifies whether audit events are sent to Azure Monitor.

@@ -34,6 +34,8 @@ type LookupMqttBridgeConnectorArgs struct {
 
 // MQ mqttBridgeConnector resource
 type LookupMqttBridgeConnectorResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The number of instances to deploy for a bridge rollout.
 	BridgeInstances *int `pulumi:"bridgeInstances"`
 	// The client id prefix of the dynamically generated client ids.
@@ -115,6 +117,11 @@ func (o LookupMqttBridgeConnectorResultOutput) ToLookupMqttBridgeConnectorResult
 
 func (o LookupMqttBridgeConnectorResultOutput) ToLookupMqttBridgeConnectorResultOutputWithContext(ctx context.Context) LookupMqttBridgeConnectorResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupMqttBridgeConnectorResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMqttBridgeConnectorResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The number of instances to deploy for a bridge rollout.

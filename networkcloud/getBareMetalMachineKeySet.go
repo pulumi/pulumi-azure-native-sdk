@@ -12,9 +12,7 @@ import (
 )
 
 // Get bare metal machine key set of the provided cluster.
-// Azure REST API version: 2023-10-01-preview.
-//
-// Other available API versions: 2023-07-01, 2024-06-01-preview, 2024-07-01, 2024-10-01-preview.
+// Azure REST API version: 2025-02-01.
 func LookupBareMetalMachineKeySet(ctx *pulumi.Context, args *LookupBareMetalMachineKeySetArgs, opts ...pulumi.InvokeOption) (*LookupBareMetalMachineKeySetResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBareMetalMachineKeySetResult
@@ -35,12 +33,16 @@ type LookupBareMetalMachineKeySetArgs struct {
 }
 
 type LookupBareMetalMachineKeySetResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The object ID of Azure Active Directory group that all users in the list must be in for access to be granted. Users that are not in the group will not have access.
 	AzureGroupId string `pulumi:"azureGroupId"`
 	// The more detailed status of the key set.
 	DetailedStatus string `pulumi:"detailedStatus"`
 	// The descriptive message about the current detailed status.
 	DetailedStatusMessage string `pulumi:"detailedStatusMessage"`
+	// Resource ETag.
+	Etag string `pulumi:"etag"`
 	// The date and time after which the users in this key set will be removed from the bare metal machines.
 	Expiration string `pulumi:"expiration"`
 	// The extended location of the cluster associated with the resource.
@@ -109,6 +111,11 @@ func (o LookupBareMetalMachineKeySetResultOutput) ToLookupBareMetalMachineKeySet
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupBareMetalMachineKeySetResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBareMetalMachineKeySetResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The object ID of Azure Active Directory group that all users in the list must be in for access to be granted. Users that are not in the group will not have access.
 func (o LookupBareMetalMachineKeySetResultOutput) AzureGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBareMetalMachineKeySetResult) string { return v.AzureGroupId }).(pulumi.StringOutput)
@@ -122,6 +129,11 @@ func (o LookupBareMetalMachineKeySetResultOutput) DetailedStatus() pulumi.String
 // The descriptive message about the current detailed status.
 func (o LookupBareMetalMachineKeySetResultOutput) DetailedStatusMessage() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBareMetalMachineKeySetResult) string { return v.DetailedStatusMessage }).(pulumi.StringOutput)
+}
+
+// Resource ETag.
+func (o LookupBareMetalMachineKeySetResultOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBareMetalMachineKeySetResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
 // The date and time after which the users in this key set will be removed from the bare metal machines.

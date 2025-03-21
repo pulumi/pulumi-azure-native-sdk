@@ -12,9 +12,7 @@ import (
 )
 
 // Get an VolumeGroups.
-// Azure REST API version: 2021-11-20-preview.
-//
-// Other available API versions: 2022-12-01-preview, 2023-01-01, 2024-05-01, 2024-06-01-preview.
+// Azure REST API version: 2024-05-01.
 func LookupVolumeGroup(ctx *pulumi.Context, args *LookupVolumeGroupArgs, opts ...pulumi.InvokeOption) (*LookupVolumeGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVolumeGroupResult
@@ -36,23 +34,31 @@ type LookupVolumeGroupArgs struct {
 
 // Response for Volume Group request.
 type LookupVolumeGroupResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Type of encryption
 	Encryption *string `pulumi:"encryption"`
-	// Azure resource identifier.
+	// Encryption Properties describing Key Vault and Identity information
+	EncryptionProperties *EncryptionPropertiesResponse `pulumi:"encryptionProperties"`
+	// A boolean indicating whether or not Data Integrity Check is enabled
+	EnforceDataIntegrityCheckForIscsi *bool `pulumi:"enforceDataIntegrityCheckForIscsi"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
-	// Azure resource name.
+	// The identity of the resource.
+	Identity *IdentityResponse `pulumi:"identity"`
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// A collection of rules governing the accessibility from specific network locations.
 	NetworkAcls *NetworkRuleSetResponse `pulumi:"networkAcls"`
+	// The list of Private Endpoint Connections.
+	PrivateEndpointConnections []PrivateEndpointConnectionResponse `pulumi:"privateEndpointConnections"`
 	// Type of storage target
 	ProtocolType *string `pulumi:"protocolType"`
 	// State of the operation on the resource.
 	ProvisioningState string `pulumi:"provisioningState"`
-	// Resource metadata required by ARM RPC
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	// Azure resource tags.
-	Tags map[string]string `pulumi:"tags"`
-	// Azure resource type.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -93,17 +99,37 @@ func (o LookupVolumeGroupResultOutput) ToLookupVolumeGroupResultOutputWithContex
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupVolumeGroupResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVolumeGroupResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Type of encryption
 func (o LookupVolumeGroupResultOutput) Encryption() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVolumeGroupResult) *string { return v.Encryption }).(pulumi.StringPtrOutput)
 }
 
-// Azure resource identifier.
+// Encryption Properties describing Key Vault and Identity information
+func (o LookupVolumeGroupResultOutput) EncryptionProperties() EncryptionPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v LookupVolumeGroupResult) *EncryptionPropertiesResponse { return v.EncryptionProperties }).(EncryptionPropertiesResponsePtrOutput)
+}
+
+// A boolean indicating whether or not Data Integrity Check is enabled
+func (o LookupVolumeGroupResultOutput) EnforceDataIntegrityCheckForIscsi() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupVolumeGroupResult) *bool { return v.EnforceDataIntegrityCheckForIscsi }).(pulumi.BoolPtrOutput)
+}
+
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupVolumeGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVolumeGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Azure resource name.
+// The identity of the resource.
+func (o LookupVolumeGroupResultOutput) Identity() IdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupVolumeGroupResult) *IdentityResponse { return v.Identity }).(IdentityResponsePtrOutput)
+}
+
+// The name of the resource
 func (o LookupVolumeGroupResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVolumeGroupResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -111,6 +137,13 @@ func (o LookupVolumeGroupResultOutput) Name() pulumi.StringOutput {
 // A collection of rules governing the accessibility from specific network locations.
 func (o LookupVolumeGroupResultOutput) NetworkAcls() NetworkRuleSetResponsePtrOutput {
 	return o.ApplyT(func(v LookupVolumeGroupResult) *NetworkRuleSetResponse { return v.NetworkAcls }).(NetworkRuleSetResponsePtrOutput)
+}
+
+// The list of Private Endpoint Connections.
+func (o LookupVolumeGroupResultOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseArrayOutput {
+	return o.ApplyT(func(v LookupVolumeGroupResult) []PrivateEndpointConnectionResponse {
+		return v.PrivateEndpointConnections
+	}).(PrivateEndpointConnectionResponseArrayOutput)
 }
 
 // Type of storage target
@@ -123,17 +156,12 @@ func (o LookupVolumeGroupResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVolumeGroupResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Resource metadata required by ARM RPC
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupVolumeGroupResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupVolumeGroupResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Azure resource tags.
-func (o LookupVolumeGroupResultOutput) Tags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupVolumeGroupResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
-}
-
-// Azure resource type.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupVolumeGroupResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVolumeGroupResult) string { return v.Type }).(pulumi.StringOutput)
 }

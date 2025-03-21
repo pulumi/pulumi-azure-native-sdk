@@ -13,10 +13,12 @@ import (
 )
 
 // ProfessionalService REST API resource definition.
-// Azure REST API version: 2023-07-01-preview. Prior API version in Azure Native 1.x: 2023-07-01-preview.
+// Azure REST API version: 2023-07-01-preview. Prior API version in Azure Native 2.x: 2023-07-01-preview.
 type ProfessionalServiceSubscriptionLevel struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// professionalService properties
@@ -145,6 +147,11 @@ func (o ProfessionalServiceSubscriptionLevelOutput) ToProfessionalServiceSubscri
 
 func (o ProfessionalServiceSubscriptionLevelOutput) ToProfessionalServiceSubscriptionLevelOutputWithContext(ctx context.Context) ProfessionalServiceSubscriptionLevelOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ProfessionalServiceSubscriptionLevelOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProfessionalServiceSubscriptionLevel) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

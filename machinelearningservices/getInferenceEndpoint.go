@@ -11,9 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Azure REST API version: 2023-08-01-preview.
-//
-// Other available API versions: 2024-01-01-preview, 2024-04-01-preview, 2024-10-01-preview.
+// Azure REST API version: 2025-01-01-preview.
 func LookupInferenceEndpoint(ctx *pulumi.Context, args *LookupInferenceEndpointArgs, opts ...pulumi.InvokeOption) (*LookupInferenceEndpointResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupInferenceEndpointResult
@@ -21,7 +19,7 @@ func LookupInferenceEndpoint(ctx *pulumi.Context, args *LookupInferenceEndpointA
 	if err != nil {
 		return nil, err
 	}
-	return &rv, nil
+	return rv.Defaults(), nil
 }
 
 type LookupInferenceEndpointArgs struct {
@@ -36,6 +34,8 @@ type LookupInferenceEndpointArgs struct {
 }
 
 type LookupInferenceEndpointResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// Managed service identity (system assigned and/or user assigned identities)
@@ -58,6 +58,16 @@ type LookupInferenceEndpointResult struct {
 	Type string `pulumi:"type"`
 }
 
+// Defaults sets the appropriate defaults for LookupInferenceEndpointResult
+func (val *LookupInferenceEndpointResult) Defaults() *LookupInferenceEndpointResult {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.InferenceEndpointProperties = *tmp.InferenceEndpointProperties.Defaults()
+
+	return &tmp
+}
 func LookupInferenceEndpointOutput(ctx *pulumi.Context, args LookupInferenceEndpointOutputArgs, opts ...pulumi.InvokeOption) LookupInferenceEndpointResultOutput {
 	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupInferenceEndpointResultOutput, error) {
@@ -94,6 +104,11 @@ func (o LookupInferenceEndpointResultOutput) ToLookupInferenceEndpointResultOutp
 
 func (o LookupInferenceEndpointResultOutput) ToLookupInferenceEndpointResultOutputWithContext(ctx context.Context) LookupInferenceEndpointResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupInferenceEndpointResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInferenceEndpointResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

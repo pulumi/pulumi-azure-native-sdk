@@ -12,9 +12,7 @@ import (
 )
 
 // Get a SecurityPolicy
-// Azure REST API version: 2024-05-01-preview.
-//
-// Other available API versions: 2025-01-01.
+// Azure REST API version: 2025-01-01.
 func LookupSecurityPoliciesInterface(ctx *pulumi.Context, args *LookupSecurityPoliciesInterfaceArgs, opts ...pulumi.InvokeOption) (*LookupSecurityPoliciesInterfaceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSecurityPoliciesInterfaceResult
@@ -36,6 +34,8 @@ type LookupSecurityPoliciesInterfaceArgs struct {
 
 // SecurityPolicy Subresource of Traffic Controller.
 type LookupSecurityPoliciesInterfaceResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -52,7 +52,7 @@ type LookupSecurityPoliciesInterfaceResult struct {
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
-	// Web Application Firewall Policy of the Traffic Controller Security Policy
+	// Web Application Firewall Policy of the Traffic Controller Security Policy. Single Security Policy can have only one policy type set.
 	WafPolicy *WafPolicyResponse `pulumi:"wafPolicy"`
 }
 
@@ -91,6 +91,11 @@ func (o LookupSecurityPoliciesInterfaceResultOutput) ToLookupSecurityPoliciesInt
 
 func (o LookupSecurityPoliciesInterfaceResultOutput) ToLookupSecurityPoliciesInterfaceResultOutputWithContext(ctx context.Context) LookupSecurityPoliciesInterfaceResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupSecurityPoliciesInterfaceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecurityPoliciesInterfaceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -133,7 +138,7 @@ func (o LookupSecurityPoliciesInterfaceResultOutput) Type() pulumi.StringOutput 
 	return o.ApplyT(func(v LookupSecurityPoliciesInterfaceResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Web Application Firewall Policy of the Traffic Controller Security Policy
+// Web Application Firewall Policy of the Traffic Controller Security Policy. Single Security Policy can have only one policy type set.
 func (o LookupSecurityPoliciesInterfaceResultOutput) WafPolicy() WafPolicyResponsePtrOutput {
 	return o.ApplyT(func(v LookupSecurityPoliciesInterfaceResult) *WafPolicyResponse { return v.WafPolicy }).(WafPolicyResponsePtrOutput)
 }

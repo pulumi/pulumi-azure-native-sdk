@@ -13,12 +13,12 @@ import (
 )
 
 // Defines the HybridIdentityMetadata.
-// Azure REST API version: 2022-05-21-preview.
-//
-// Other available API versions: 2023-04-01-preview.
+// Azure REST API version: 2023-04-01-preview. Prior API version in Azure Native 2.x: 2022-05-21-preview.
 type HybridIdentityMetadata struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The identity of the resource.
 	Identity IdentityResponseOutput `pulumi:"identity"`
 	// The name of the resource
@@ -151,6 +151,11 @@ func (o HybridIdentityMetadataOutput) ToHybridIdentityMetadataOutput() HybridIde
 
 func (o HybridIdentityMetadataOutput) ToHybridIdentityMetadataOutputWithContext(ctx context.Context) HybridIdentityMetadataOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o HybridIdentityMetadataOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *HybridIdentityMetadata) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The identity of the resource.

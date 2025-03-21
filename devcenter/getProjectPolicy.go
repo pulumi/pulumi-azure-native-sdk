@@ -34,6 +34,8 @@ type LookupProjectPolicyArgs struct {
 
 // Represents an project policy resource.
 type LookupProjectPolicyResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The name of the resource
@@ -85,6 +87,11 @@ func (o LookupProjectPolicyResultOutput) ToLookupProjectPolicyResultOutput() Loo
 
 func (o LookupProjectPolicyResultOutput) ToLookupProjectPolicyResultOutputWithContext(ctx context.Context) LookupProjectPolicyResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupProjectPolicyResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectPolicyResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

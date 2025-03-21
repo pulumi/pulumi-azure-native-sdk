@@ -12,12 +12,12 @@ import (
 )
 
 // The management group details.
-// Azure REST API version: 2021-04-01. Prior API version in Azure Native 1.x: 2020-05-01.
-//
-// Other available API versions: 2023-04-01.
+// Azure REST API version: 2023-04-01. Prior API version in Azure Native 2.x: 2021-04-01.
 type ManagementGroup struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The list of children.
 	Children ManagementGroupChildInfoResponseArrayOutput `pulumi:"children"`
 	// The details of a management group.
@@ -159,6 +159,11 @@ func (o ManagementGroupOutput) ToManagementGroupOutput() ManagementGroupOutput {
 
 func (o ManagementGroupOutput) ToManagementGroupOutputWithContext(ctx context.Context) ManagementGroupOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ManagementGroupOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ManagementGroup) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The list of children.

@@ -13,12 +13,12 @@ import (
 )
 
 // The private endpoint connection resource.
-// Azure REST API version: 2022-08-31-preview.
-//
-// Other available API versions: 2023-12-10-preview, 2024-06-30-preview.
+// Azure REST API version: 2024-06-30-preview. Prior API version in Azure Native 2.x: 2022-08-31-preview.
 type CloudHsmClusterPrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Modified whenever there is a change in the state of private endpoint connection.
 	Etag pulumi.StringPtrOutput `pulumi:"etag"`
 	// The group ids for the private endpoint resource.
@@ -98,7 +98,7 @@ func (CloudHsmClusterPrivateEndpointConnectionState) ElementType() reflect.Type 
 }
 
 type cloudHsmClusterPrivateEndpointConnectionArgs struct {
-	// The name of the Cloud HSM Cluster within the specified resource group. Cloud HSM Cluster names must be between 3 and 24 characters in length.
+	// The name of the Cloud HSM Cluster within the specified resource group. Cloud HSM Cluster names must be between 3 and 23 characters in length.
 	CloudHsmClusterName string `pulumi:"cloudHsmClusterName"`
 	// Name of the private endpoint connection associated with the Cloud HSM Cluster.
 	PeConnectionName *string `pulumi:"peConnectionName"`
@@ -110,7 +110,7 @@ type cloudHsmClusterPrivateEndpointConnectionArgs struct {
 
 // The set of arguments for constructing a CloudHsmClusterPrivateEndpointConnection resource.
 type CloudHsmClusterPrivateEndpointConnectionArgs struct {
-	// The name of the Cloud HSM Cluster within the specified resource group. Cloud HSM Cluster names must be between 3 and 24 characters in length.
+	// The name of the Cloud HSM Cluster within the specified resource group. Cloud HSM Cluster names must be between 3 and 23 characters in length.
 	CloudHsmClusterName pulumi.StringInput
 	// Name of the private endpoint connection associated with the Cloud HSM Cluster.
 	PeConnectionName pulumi.StringPtrInput
@@ -155,6 +155,11 @@ func (o CloudHsmClusterPrivateEndpointConnectionOutput) ToCloudHsmClusterPrivate
 
 func (o CloudHsmClusterPrivateEndpointConnectionOutput) ToCloudHsmClusterPrivateEndpointConnectionOutputWithContext(ctx context.Context) CloudHsmClusterPrivateEndpointConnectionOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o CloudHsmClusterPrivateEndpointConnectionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *CloudHsmClusterPrivateEndpointConnection) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Modified whenever there is a change in the state of private endpoint connection.

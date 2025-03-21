@@ -13,10 +13,12 @@ import (
 )
 
 // Site REST Resource.
-// Azure REST API version: 2020-07-07. Prior API version in Azure Native 1.x: 2020-01-01.
+// Azure REST API version: 2020-07-07. Prior API version in Azure Native 2.x: 2020-07-07.
 type HyperVSite struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// eTag for concurrency control.
 	ETag pulumi.StringPtrOutput `pulumi:"eTag"`
 	// Azure location in which Sites is created.
@@ -53,10 +55,22 @@ func NewHyperVSite(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:offazure/v20230606:HyperVSite"),
 		},
 		{
+			Type: pulumi.String("azure-native:offazure/v20230606:HypervSitesController"),
+		},
+		{
 			Type: pulumi.String("azure-native:offazure/v20231001preview:HyperVSite"),
 		},
 		{
+			Type: pulumi.String("azure-native:offazure/v20231001preview:HypervSitesController"),
+		},
+		{
 			Type: pulumi.String("azure-native:offazure/v20240501preview:HyperVSite"),
+		},
+		{
+			Type: pulumi.String("azure-native:offazure/v20240501preview:HypervSitesController"),
+		},
+		{
+			Type: pulumi.String("azure-native:offazure:HypervSitesController"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -160,6 +174,11 @@ func (o HyperVSiteOutput) ToHyperVSiteOutput() HyperVSiteOutput {
 
 func (o HyperVSiteOutput) ToHyperVSiteOutputWithContext(ctx context.Context) HyperVSiteOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o HyperVSiteOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *HyperVSite) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // eTag for concurrency control.

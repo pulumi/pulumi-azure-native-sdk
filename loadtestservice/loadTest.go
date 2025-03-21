@@ -13,12 +13,12 @@ import (
 )
 
 // LoadTest details.
-// Azure REST API version: 2022-12-01. Prior API version in Azure Native 1.x: 2021-12-01-preview.
-//
-// Other available API versions: 2021-12-01-preview, 2023-12-01-preview.
+// Azure REST API version: 2023-12-01-preview. Prior API version in Azure Native 2.x: 2022-12-01.
 type LoadTest struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Resource data plane URI.
 	DataPlaneURI pulumi.StringOutput `pulumi:"dataPlaneURI"`
 	// Description of the resource.
@@ -63,6 +63,9 @@ func NewLoadTest(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:loadtestservice/v20231201preview:LoadTest"),
+		},
+		{
+			Type: pulumi.String("azure-native:loadtestservice/v20241201preview:LoadTest"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -168,6 +171,11 @@ func (o LoadTestOutput) ToLoadTestOutput() LoadTestOutput {
 
 func (o LoadTestOutput) ToLoadTestOutputWithContext(ctx context.Context) LoadTestOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LoadTestOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadTest) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource data plane URI.

@@ -13,12 +13,12 @@ import (
 )
 
 // Wrapper resource for tags API requests and responses.
-// Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2019-10-01.
-//
-// Other available API versions: 2023-07-01, 2024-03-01, 2024-07-01, 2024-11-01.
+// Azure REST API version: 2024-03-01. Prior API version in Azure Native 2.x: 2022-09-01.
 type TagAtScope struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the tags wrapper resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The set of tags.
@@ -158,6 +158,11 @@ func (o TagAtScopeOutput) ToTagAtScopeOutput() TagAtScopeOutput {
 
 func (o TagAtScopeOutput) ToTagAtScopeOutputWithContext(ctx context.Context) TagAtScopeOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o TagAtScopeOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *TagAtScope) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the tags wrapper resource.

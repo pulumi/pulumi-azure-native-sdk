@@ -13,14 +13,14 @@ import (
 )
 
 // Represents an incident in Azure Security Insights.
-// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2020-01-01.
-//
-// Other available API versions: 2021-03-01-preview, 2023-02-01-preview, 2023-03-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-11-01, 2023-12-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-09-01, 2024-10-01-preview, 2025-01-01-preview.
+// Azure REST API version: 2024-09-01. Prior API version in Azure Native 2.x: 2023-02-01.
 type Incident struct {
 	pulumi.CustomResourceState
 
 	// Additional data on the incident
 	AdditionalData IncidentAdditionalDataResponseOutput `pulumi:"additionalData"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The reason the incident was closed
 	Classification pulumi.StringPtrOutput `pulumi:"classification"`
 	// Describes the reason the incident was closed
@@ -201,6 +201,9 @@ func NewIncident(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20250101preview:Incident"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20250301:Incident"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -338,6 +341,11 @@ func (o IncidentOutput) ToIncidentOutputWithContext(ctx context.Context) Inciden
 // Additional data on the incident
 func (o IncidentOutput) AdditionalData() IncidentAdditionalDataResponseOutput {
 	return o.ApplyT(func(v *Incident) IncidentAdditionalDataResponseOutput { return v.AdditionalData }).(IncidentAdditionalDataResponseOutput)
+}
+
+// The Azure API version of the resource.
+func (o IncidentOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Incident) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The reason the incident was closed

@@ -13,8 +13,6 @@ import (
 
 // Gets a sync group.
 // Azure REST API version: 2021-11-01.
-//
-// Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
 func LookupSyncGroup(ctx *pulumi.Context, args *LookupSyncGroupArgs, opts ...pulumi.InvokeOption) (*LookupSyncGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSyncGroupResult
@@ -38,6 +36,8 @@ type LookupSyncGroupArgs struct {
 
 // An Azure SQL Database sync group.
 type LookupSyncGroupResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Conflict logging retention period.
 	ConflictLoggingRetentionInDays *int `pulumi:"conflictLoggingRetentionInDays"`
 	// Conflict resolution policy of the sync group.
@@ -107,6 +107,11 @@ func (o LookupSyncGroupResultOutput) ToLookupSyncGroupResultOutput() LookupSyncG
 
 func (o LookupSyncGroupResultOutput) ToLookupSyncGroupResultOutputWithContext(ctx context.Context) LookupSyncGroupResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupSyncGroupResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSyncGroupResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Conflict logging retention period.

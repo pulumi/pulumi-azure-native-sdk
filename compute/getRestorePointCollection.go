@@ -12,9 +12,7 @@ import (
 )
 
 // The operation to get the restore point collection.
-// Azure REST API version: 2023-03-01.
-//
-// Other available API versions: 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01.
+// Azure REST API version: 2024-11-01.
 func LookupRestorePointCollection(ctx *pulumi.Context, args *LookupRestorePointCollectionArgs, opts ...pulumi.InvokeOption) (*LookupRestorePointCollectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRestorePointCollectionResult
@@ -36,6 +34,8 @@ type LookupRestorePointCollectionArgs struct {
 
 // Create or update Restore Point collection parameters.
 type LookupRestorePointCollectionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource Id
 	Id string `pulumi:"id"`
 	// Resource location
@@ -91,6 +91,11 @@ func (o LookupRestorePointCollectionResultOutput) ToLookupRestorePointCollection
 
 func (o LookupRestorePointCollectionResultOutput) ToLookupRestorePointCollectionResultOutputWithContext(ctx context.Context) LookupRestorePointCollectionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupRestorePointCollectionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRestorePointCollectionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource Id

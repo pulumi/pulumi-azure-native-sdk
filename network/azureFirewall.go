@@ -13,9 +13,7 @@ import (
 )
 
 // Azure Firewall resource.
-// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2020-11-01.
-//
-// Other available API versions: 2020-04-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Azure REST API version: 2024-05-01. Prior API version in Azure Native 2.x: 2023-02-01.
 type AzureFirewall struct {
 	pulumi.CustomResourceState
 
@@ -23,6 +21,10 @@ type AzureFirewall struct {
 	AdditionalProperties pulumi.StringMapOutput `pulumi:"additionalProperties"`
 	// Collection of application rule collections used by Azure Firewall.
 	ApplicationRuleCollections AzureFirewallApplicationRuleCollectionResponseArrayOutput `pulumi:"applicationRuleCollections"`
+	// Properties to provide a custom autoscale configuration to this azure firewall.
+	AutoscaleConfiguration AzureFirewallAutoscaleConfigurationResponsePtrOutput `pulumi:"autoscaleConfiguration"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The firewallPolicy associated with this azure firewall.
@@ -229,6 +231,8 @@ type azureFirewallArgs struct {
 	AdditionalProperties map[string]string `pulumi:"additionalProperties"`
 	// Collection of application rule collections used by Azure Firewall.
 	ApplicationRuleCollections []AzureFirewallApplicationRuleCollection `pulumi:"applicationRuleCollections"`
+	// Properties to provide a custom autoscale configuration to this azure firewall.
+	AutoscaleConfiguration *AzureFirewallAutoscaleConfiguration `pulumi:"autoscaleConfiguration"`
 	// The name of the Azure Firewall.
 	AzureFirewallName *string `pulumi:"azureFirewallName"`
 	// The firewallPolicy associated with this azure firewall.
@@ -267,6 +271,8 @@ type AzureFirewallArgs struct {
 	AdditionalProperties pulumi.StringMapInput
 	// Collection of application rule collections used by Azure Firewall.
 	ApplicationRuleCollections AzureFirewallApplicationRuleCollectionArrayInput
+	// Properties to provide a custom autoscale configuration to this azure firewall.
+	AutoscaleConfiguration AzureFirewallAutoscaleConfigurationPtrInput
 	// The name of the Azure Firewall.
 	AzureFirewallName pulumi.StringPtrInput
 	// The firewallPolicy associated with this azure firewall.
@@ -346,6 +352,18 @@ func (o AzureFirewallOutput) ApplicationRuleCollections() AzureFirewallApplicati
 	return o.ApplyT(func(v *AzureFirewall) AzureFirewallApplicationRuleCollectionResponseArrayOutput {
 		return v.ApplicationRuleCollections
 	}).(AzureFirewallApplicationRuleCollectionResponseArrayOutput)
+}
+
+// Properties to provide a custom autoscale configuration to this azure firewall.
+func (o AzureFirewallOutput) AutoscaleConfiguration() AzureFirewallAutoscaleConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *AzureFirewall) AzureFirewallAutoscaleConfigurationResponsePtrOutput {
+		return v.AutoscaleConfiguration
+	}).(AzureFirewallAutoscaleConfigurationResponsePtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o AzureFirewallOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *AzureFirewall) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A unique read-only string that changes whenever the resource is updated.

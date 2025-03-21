@@ -13,20 +13,30 @@ import (
 )
 
 // The policy assignment.
-// Azure REST API version: 2022-06-01. Prior API version in Azure Native 1.x: 2020-09-01.
-//
-// Other available API versions: 2019-06-01, 2020-03-01, 2023-04-01, 2024-04-01, 2024-05-01, 2025-01-01.
+// Azure REST API version: 2025-01-01. Prior API version in Azure Native 2.x: 2022-06-01.
 type PolicyAssignment struct {
 	pulumi.CustomResourceState
 
+	// The type of policy assignment. Possible values are NotSpecified, System, SystemHidden, and Custom. Immutable.
+	AssignmentType pulumi.StringPtrOutput `pulumi:"assignmentType"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// The version of the policy definition to use.
+	DefinitionVersion pulumi.StringPtrOutput `pulumi:"definitionVersion"`
 	// This message will be part of response in case of policy violation.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The display name of the policy assignment.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
-	// The policy assignment enforcement mode. Possible values are Default and DoNotEnforce.
+	// The effective version of the policy definition in use. This is only present if requested via the $expand query parameter.
+	EffectiveDefinitionVersion pulumi.StringOutput `pulumi:"effectiveDefinitionVersion"`
+	// The policy assignment enforcement mode. Possible values are Default, DoNotEnforce, and Enroll
 	EnforcementMode pulumi.StringPtrOutput `pulumi:"enforcementMode"`
 	// The managed identity associated with the policy assignment.
 	Identity IdentityResponsePtrOutput `pulumi:"identity"`
+	// The instance ID of the policy assignment. This ID only and always changes when the assignment is deleted and recreated.
+	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
+	// The latest version of the policy definition available. This is only present if requested via the $expand query parameter.
+	LatestDefinitionVersion pulumi.StringOutput `pulumi:"latestDefinitionVersion"`
 	// The location of the policy assignment. Only required when utilizing managed identity.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// The policy assignment metadata. Metadata is an open ended object and is typically a collection of key value pairs.
@@ -118,6 +128,9 @@ func NewPolicyAssignment(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:authorization/v20250101:PolicyAssignment"),
 		},
+		{
+			Type: pulumi.String("azure-native:authorization/v20250301:PolicyAssignment"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -153,11 +166,15 @@ func (PolicyAssignmentState) ElementType() reflect.Type {
 }
 
 type policyAssignmentArgs struct {
+	// The type of policy assignment. Possible values are NotSpecified, System, SystemHidden, and Custom. Immutable.
+	AssignmentType *string `pulumi:"assignmentType"`
+	// The version of the policy definition to use.
+	DefinitionVersion *string `pulumi:"definitionVersion"`
 	// This message will be part of response in case of policy violation.
 	Description *string `pulumi:"description"`
 	// The display name of the policy assignment.
 	DisplayName *string `pulumi:"displayName"`
-	// The policy assignment enforcement mode. Possible values are Default and DoNotEnforce.
+	// The policy assignment enforcement mode. Possible values are Default, DoNotEnforce, and Enroll
 	EnforcementMode *string `pulumi:"enforcementMode"`
 	// The managed identity associated with the policy assignment.
 	Identity *Identity `pulumi:"identity"`
@@ -185,11 +202,15 @@ type policyAssignmentArgs struct {
 
 // The set of arguments for constructing a PolicyAssignment resource.
 type PolicyAssignmentArgs struct {
+	// The type of policy assignment. Possible values are NotSpecified, System, SystemHidden, and Custom. Immutable.
+	AssignmentType pulumi.StringPtrInput
+	// The version of the policy definition to use.
+	DefinitionVersion pulumi.StringPtrInput
 	// This message will be part of response in case of policy violation.
 	Description pulumi.StringPtrInput
 	// The display name of the policy assignment.
 	DisplayName pulumi.StringPtrInput
-	// The policy assignment enforcement mode. Possible values are Default and DoNotEnforce.
+	// The policy assignment enforcement mode. Possible values are Default, DoNotEnforce, and Enroll
 	EnforcementMode pulumi.StringPtrInput
 	// The managed identity associated with the policy assignment.
 	Identity IdentityPtrInput
@@ -252,6 +273,21 @@ func (o PolicyAssignmentOutput) ToPolicyAssignmentOutputWithContext(ctx context.
 	return o
 }
 
+// The type of policy assignment. Possible values are NotSpecified, System, SystemHidden, and Custom. Immutable.
+func (o PolicyAssignmentOutput) AssignmentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PolicyAssignment) pulumi.StringPtrOutput { return v.AssignmentType }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o PolicyAssignmentOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PolicyAssignment) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// The version of the policy definition to use.
+func (o PolicyAssignmentOutput) DefinitionVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PolicyAssignment) pulumi.StringPtrOutput { return v.DefinitionVersion }).(pulumi.StringPtrOutput)
+}
+
 // This message will be part of response in case of policy violation.
 func (o PolicyAssignmentOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PolicyAssignment) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -262,7 +298,12 @@ func (o PolicyAssignmentOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PolicyAssignment) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// The policy assignment enforcement mode. Possible values are Default and DoNotEnforce.
+// The effective version of the policy definition in use. This is only present if requested via the $expand query parameter.
+func (o PolicyAssignmentOutput) EffectiveDefinitionVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PolicyAssignment) pulumi.StringOutput { return v.EffectiveDefinitionVersion }).(pulumi.StringOutput)
+}
+
+// The policy assignment enforcement mode. Possible values are Default, DoNotEnforce, and Enroll
 func (o PolicyAssignmentOutput) EnforcementMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PolicyAssignment) pulumi.StringPtrOutput { return v.EnforcementMode }).(pulumi.StringPtrOutput)
 }
@@ -270,6 +311,16 @@ func (o PolicyAssignmentOutput) EnforcementMode() pulumi.StringPtrOutput {
 // The managed identity associated with the policy assignment.
 func (o PolicyAssignmentOutput) Identity() IdentityResponsePtrOutput {
 	return o.ApplyT(func(v *PolicyAssignment) IdentityResponsePtrOutput { return v.Identity }).(IdentityResponsePtrOutput)
+}
+
+// The instance ID of the policy assignment. This ID only and always changes when the assignment is deleted and recreated.
+func (o PolicyAssignmentOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *PolicyAssignment) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The latest version of the policy definition available. This is only present if requested via the $expand query parameter.
+func (o PolicyAssignmentOutput) LatestDefinitionVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PolicyAssignment) pulumi.StringOutput { return v.LatestDefinitionVersion }).(pulumi.StringOutput)
 }
 
 // The location of the policy assignment. Only required when utilizing managed identity.

@@ -36,6 +36,8 @@ type LookupKafkaConnectorTopicMapArgs struct {
 
 // MQ kafkaConnector/topicMap resource
 type LookupKafkaConnectorTopicMapResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The batching settings for kafka messages.
 	Batching *KafkaTopicMapBatchingResponse `pulumi:"batching"`
 	// The compression to use for kafka messages.
@@ -123,6 +125,11 @@ func (o LookupKafkaConnectorTopicMapResultOutput) ToLookupKafkaConnectorTopicMap
 
 func (o LookupKafkaConnectorTopicMapResultOutput) ToLookupKafkaConnectorTopicMapResultOutputWithContext(ctx context.Context) LookupKafkaConnectorTopicMapResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupKafkaConnectorTopicMapResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKafkaConnectorTopicMapResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The batching settings for kafka messages.

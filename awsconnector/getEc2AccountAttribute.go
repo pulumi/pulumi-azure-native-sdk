@@ -32,6 +32,8 @@ type LookupEc2AccountAttributeArgs struct {
 
 // A Microsoft.AwsConnector resource
 type LookupEc2AccountAttributeResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -81,6 +83,11 @@ func (o LookupEc2AccountAttributeResultOutput) ToLookupEc2AccountAttributeResult
 
 func (o LookupEc2AccountAttributeResultOutput) ToLookupEc2AccountAttributeResultOutputWithContext(ctx context.Context) LookupEc2AccountAttributeResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupEc2AccountAttributeResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEc2AccountAttributeResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

@@ -13,13 +13,13 @@ import (
 )
 
 // Backup policy information
-// Azure REST API version: 2022-11-01. Prior API version in Azure Native 1.x: 2020-12-01.
-//
-// Other available API versions: 2021-04-01, 2021-04-01-preview, 2022-11-01-preview, 2023-05-01, 2023-05-01-preview, 2023-07-01, 2023-07-01-preview, 2023-11-01, 2023-11-01-preview, 2024-01-01, 2024-03-01, 2024-03-01-preview, 2024-05-01, 2024-05-01-preview, 2024-07-01, 2024-07-01-preview, 2024-09-01, 2024-09-01-preview.
+// Azure REST API version: 2024-09-01. Prior API version in Azure Native 2.x: 2022-11-01.
 type BackupPolicy struct {
 	pulumi.CustomResourceState
 
-	// Backup Policy Resource ID
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// Backup Policy GUID ID
 	BackupPolicyId pulumi.StringOutput `pulumi:"backupPolicyId"`
 	// Daily backups count to keep
 	DailyBackupsToKeep pulumi.IntPtrOutput `pulumi:"dailyBackupsToKeep"`
@@ -279,7 +279,12 @@ func (o BackupPolicyOutput) ToBackupPolicyOutputWithContext(ctx context.Context)
 	return o
 }
 
-// Backup Policy Resource ID
+// The Azure API version of the resource.
+func (o BackupPolicyOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackupPolicy) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Backup Policy GUID ID
 func (o BackupPolicyOutput) BackupPolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackupPolicy) pulumi.StringOutput { return v.BackupPolicyId }).(pulumi.StringOutput)
 }

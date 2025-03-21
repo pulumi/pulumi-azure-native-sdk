@@ -12,9 +12,7 @@ import (
 )
 
 // Static Site Database Connection resource.
-// Azure REST API version: 2022-09-01.
-//
-// Other available API versions: 2023-01-01, 2023-12-01, 2024-04-01.
+// Azure REST API version: 2024-04-01.
 func LookupStaticSiteBuildDatabaseConnection(ctx *pulumi.Context, args *LookupStaticSiteBuildDatabaseConnectionArgs, opts ...pulumi.InvokeOption) (*LookupStaticSiteBuildDatabaseConnectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupStaticSiteBuildDatabaseConnectionResult
@@ -38,6 +36,8 @@ type LookupStaticSiteBuildDatabaseConnectionArgs struct {
 
 // Static Site Database Connection resource.
 type LookupStaticSiteBuildDatabaseConnectionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// A list of configuration files associated with this database connection.
 	ConfigurationFiles []StaticSiteDatabaseConnectionConfigurationFileOverviewResponse `pulumi:"configurationFiles"`
 	// If present, the identity is used in conjunction with connection string to connect to the database. Use of the system-assigned managed identity is indicated with the string 'SystemAssigned', while use of a user-assigned managed identity is indicated with the resource id of the managed identity resource.
@@ -95,6 +95,11 @@ func (o LookupStaticSiteBuildDatabaseConnectionResultOutput) ToLookupStaticSiteB
 
 func (o LookupStaticSiteBuildDatabaseConnectionResultOutput) ToLookupStaticSiteBuildDatabaseConnectionResultOutputWithContext(ctx context.Context) LookupStaticSiteBuildDatabaseConnectionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupStaticSiteBuildDatabaseConnectionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStaticSiteBuildDatabaseConnectionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A list of configuration files associated with this database connection.

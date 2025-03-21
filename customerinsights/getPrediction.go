@@ -36,6 +36,8 @@ type LookupPredictionArgs struct {
 type LookupPredictionResult struct {
 	// Whether do auto analyze.
 	AutoAnalyze bool `pulumi:"autoAnalyze"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Description of the prediction.
 	Description map[string]string `pulumi:"description"`
 	// Display name of the prediction.
@@ -116,6 +118,11 @@ func (o LookupPredictionResultOutput) ToLookupPredictionResultOutputWithContext(
 // Whether do auto analyze.
 func (o LookupPredictionResultOutput) AutoAnalyze() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupPredictionResult) bool { return v.AutoAnalyze }).(pulumi.BoolOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupPredictionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPredictionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Description of the prediction.

@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-azure-native-sdk/fluidrelay/v2
+module github.com/pulumi/pulumi-azure-native-sdk/fluidrelay/v3
 
 go 1.22
 

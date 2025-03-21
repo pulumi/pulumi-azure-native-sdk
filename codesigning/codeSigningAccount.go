@@ -13,14 +13,14 @@ import (
 )
 
 // Trusted signing account resource.
-// Azure REST API version: 2024-02-05-preview.
-//
-// Other available API versions: 2024-09-30-preview.
+// Azure REST API version: 2024-09-30-preview. Prior API version in Azure Native 2.x: 2024-02-05-preview.
 type CodeSigningAccount struct {
 	pulumi.CustomResourceState
 
 	// The URI of the trusted signing account which is used during signing files.
 	AccountUri pulumi.StringOutput `pulumi:"accountUri"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -155,6 +155,11 @@ func (o CodeSigningAccountOutput) ToCodeSigningAccountOutputWithContext(ctx cont
 // The URI of the trusted signing account which is used during signing files.
 func (o CodeSigningAccountOutput) AccountUri() pulumi.StringOutput {
 	return o.ApplyT(func(v *CodeSigningAccount) pulumi.StringOutput { return v.AccountUri }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o CodeSigningAccountOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *CodeSigningAccount) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The geo-location where the resource lives

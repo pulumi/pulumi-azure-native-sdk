@@ -12,9 +12,7 @@ import (
 )
 
 // Gets the view for the defined scope by view name.
-// Azure REST API version: 2023-03-01.
-//
-// Other available API versions: 2019-11-01, 2020-06-01, 2022-10-01, 2022-10-05-preview, 2023-04-01-preview, 2023-07-01-preview, 2023-08-01, 2023-09-01, 2023-11-01, 2024-08-01.
+// Azure REST API version: 2024-08-01.
 func LookupViewByScope(ctx *pulumi.Context, args *LookupViewByScopeArgs, opts ...pulumi.InvokeOption) (*LookupViewByScopeResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupViewByScopeResult
@@ -36,6 +34,8 @@ type LookupViewByScopeArgs struct {
 type LookupViewByScopeResult struct {
 	// Show costs accumulated over time.
 	Accumulated *string `pulumi:"accumulated"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Chart type of the main view in Cost Analysis. Required.
 	Chart *string `pulumi:"chart"`
 	// Date the user created this view.
@@ -112,6 +112,11 @@ func (o LookupViewByScopeResultOutput) ToLookupViewByScopeResultOutputWithContex
 // Show costs accumulated over time.
 func (o LookupViewByScopeResultOutput) Accumulated() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupViewByScopeResult) *string { return v.Accumulated }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupViewByScopeResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupViewByScopeResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Chart type of the main view in Cost Analysis. Required.

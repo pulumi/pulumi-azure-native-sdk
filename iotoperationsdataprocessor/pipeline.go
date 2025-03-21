@@ -13,10 +13,12 @@ import (
 )
 
 // A Pipeline resource belonging to an Instance resource.
-// Azure REST API version: 2023-10-04-preview.
+// Azure REST API version: 2023-10-04-preview. Prior API version in Azure Native 2.x: 2023-10-04-preview.
 type Pipeline struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Detailed description of the Pipeline.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Flag indicating whether the pipeline should be running or not.
@@ -186,6 +188,11 @@ func (o PipelineOutput) ToPipelineOutput() PipelineOutput {
 
 func (o PipelineOutput) ToPipelineOutputWithContext(ctx context.Context) PipelineOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o PipelineOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Pipeline) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Detailed description of the Pipeline.

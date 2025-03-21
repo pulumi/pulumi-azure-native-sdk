@@ -13,12 +13,12 @@ import (
 )
 
 // A profile is a logical grouping of endpoints that share the same settings.
-// Azure REST API version: 2023-05-01. Prior API version in Azure Native 1.x: 2020-09-01.
-//
-// Other available API versions: 2020-09-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01.
+// Azure REST API version: 2024-09-01. Prior API version in Azure Native 2.x: 2023-05-01.
 type Profile struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Key-Value pair representing additional properties for profiles.
 	ExtendedProperties pulumi.StringMapOutput `pulumi:"extendedProperties"`
 	// The Id of the frontdoor.
@@ -29,6 +29,8 @@ type Profile struct {
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// Resource location.
 	Location pulumi.StringOutput `pulumi:"location"`
+	// Defines rules that scrub sensitive fields in the Azure Front Door profile logs.
+	LogScrubbing ProfileLogScrubbingResponsePtrOutput `pulumi:"logScrubbing"`
 	// Resource name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Send and receive timeout on forwarding request to the origin. When timeout is reached, the request fails and returns.
@@ -163,6 +165,8 @@ type profileArgs struct {
 	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// Resource location.
 	Location *string `pulumi:"location"`
+	// Defines rules that scrub sensitive fields in the Azure Front Door profile logs.
+	LogScrubbing *ProfileLogScrubbing `pulumi:"logScrubbing"`
 	// Send and receive timeout on forwarding request to the origin. When timeout is reached, the request fails and returns.
 	OriginResponseTimeoutSeconds *int `pulumi:"originResponseTimeoutSeconds"`
 	// Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
@@ -181,6 +185,8 @@ type ProfileArgs struct {
 	Identity ManagedServiceIdentityPtrInput
 	// Resource location.
 	Location pulumi.StringPtrInput
+	// Defines rules that scrub sensitive fields in the Azure Front Door profile logs.
+	LogScrubbing ProfileLogScrubbingPtrInput
 	// Send and receive timeout on forwarding request to the origin. When timeout is reached, the request fails and returns.
 	OriginResponseTimeoutSeconds pulumi.IntPtrInput
 	// Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
@@ -230,6 +236,11 @@ func (o ProfileOutput) ToProfileOutputWithContext(ctx context.Context) ProfileOu
 	return o
 }
 
+// The Azure API version of the resource.
+func (o ProfileOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Profile) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Key-Value pair representing additional properties for profiles.
 func (o ProfileOutput) ExtendedProperties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Profile) pulumi.StringMapOutput { return v.ExtendedProperties }).(pulumi.StringMapOutput)
@@ -253,6 +264,11 @@ func (o ProfileOutput) Kind() pulumi.StringOutput {
 // Resource location.
 func (o ProfileOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Profile) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// Defines rules that scrub sensitive fields in the Azure Front Door profile logs.
+func (o ProfileOutput) LogScrubbing() ProfileLogScrubbingResponsePtrOutput {
+	return o.ApplyT(func(v *Profile) ProfileLogScrubbingResponsePtrOutput { return v.LogScrubbing }).(ProfileLogScrubbingResponsePtrOutput)
 }
 
 // Resource name.

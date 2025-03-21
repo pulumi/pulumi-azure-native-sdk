@@ -13,8 +13,6 @@ import (
 
 // Gets the JIT request.
 // Azure REST API version: 2021-07-01.
-//
-// Other available API versions: 2023-12-01-preview.
 func LookupJitRequest(ctx *pulumi.Context, args *LookupJitRequestArgs, opts ...pulumi.InvokeOption) (*LookupJitRequestResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupJitRequestResult
@@ -36,6 +34,8 @@ type LookupJitRequestArgs struct {
 type LookupJitRequestResult struct {
 	// The parent application id.
 	ApplicationResourceId string `pulumi:"applicationResourceId"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The client entity that created the JIT request.
 	CreatedBy ApplicationClientDetailsResponse `pulumi:"createdBy"`
 	// Resource ID
@@ -102,6 +102,11 @@ func (o LookupJitRequestResultOutput) ToLookupJitRequestResultOutputWithContext(
 // The parent application id.
 func (o LookupJitRequestResultOutput) ApplicationResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJitRequestResult) string { return v.ApplicationResourceId }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupJitRequestResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupJitRequestResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The client entity that created the JIT request.

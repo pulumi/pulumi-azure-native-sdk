@@ -13,14 +13,14 @@ import (
 )
 
 // LocalRulestack Certificate Object
-// Azure REST API version: 2023-09-01.
-//
-// Other available API versions: 2022-08-29, 2022-08-29-preview, 2023-09-01-preview, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview.
+// Azure REST API version: 2025-02-06-preview. Prior API version in Azure Native 2.x: 2023-09-01.
 type CertificateObjectLocalRulestack struct {
 	pulumi.CustomResourceState
 
 	// comment for this object
 	AuditComment pulumi.StringPtrOutput `pulumi:"auditComment"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// use certificate self signed
 	CertificateSelfSigned pulumi.StringOutput `pulumi:"certificateSelfSigned"`
 	// Resource Id of certificate signer, to be populated only when certificateSelfSigned is false
@@ -189,6 +189,11 @@ func (o CertificateObjectLocalRulestackOutput) ToCertificateObjectLocalRulestack
 // comment for this object
 func (o CertificateObjectLocalRulestackOutput) AuditComment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CertificateObjectLocalRulestack) pulumi.StringPtrOutput { return v.AuditComment }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o CertificateObjectLocalRulestackOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *CertificateObjectLocalRulestack) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // use certificate self signed

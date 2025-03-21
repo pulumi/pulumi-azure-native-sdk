@@ -12,9 +12,7 @@ import (
 )
 
 // Gets a devcenter plan member.
-// Azure REST API version: 2024-05-01-preview.
-//
-// Other available API versions: 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview, 2024-10-01-preview.
+// Azure REST API version: 2024-10-01-preview.
 func LookupPlanMember(ctx *pulumi.Context, args *LookupPlanMemberArgs, opts ...pulumi.InvokeOption) (*LookupPlanMemberResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPlanMemberResult
@@ -36,6 +34,8 @@ type LookupPlanMemberArgs struct {
 
 // Represents a devcenter plan member resource.
 type LookupPlanMemberResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The unique id of the member.
@@ -46,10 +46,14 @@ type LookupPlanMemberResult struct {
 	Name string `pulumi:"name"`
 	// The provisioning state of the resource.
 	ProvisioningState string `pulumi:"provisioningState"`
+	// The sync status of the member.
+	SyncStatus PlanMemberSyncStatusResponse `pulumi:"syncStatus"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
+	// The tier of the member.
+	Tier *string `pulumi:"tier"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -91,6 +95,11 @@ func (o LookupPlanMemberResultOutput) ToLookupPlanMemberResultOutputWithContext(
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupPlanMemberResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPlanMemberResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupPlanMemberResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPlanMemberResult) string { return v.Id }).(pulumi.StringOutput)
@@ -116,6 +125,11 @@ func (o LookupPlanMemberResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPlanMemberResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The sync status of the member.
+func (o LookupPlanMemberResultOutput) SyncStatus() PlanMemberSyncStatusResponseOutput {
+	return o.ApplyT(func(v LookupPlanMemberResult) PlanMemberSyncStatusResponse { return v.SyncStatus }).(PlanMemberSyncStatusResponseOutput)
+}
+
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupPlanMemberResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupPlanMemberResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
@@ -124,6 +138,11 @@ func (o LookupPlanMemberResultOutput) SystemData() SystemDataResponseOutput {
 // Resource tags.
 func (o LookupPlanMemberResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupPlanMemberResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The tier of the member.
+func (o LookupPlanMemberResultOutput) Tier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupPlanMemberResult) *string { return v.Tier }).(pulumi.StringPtrOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

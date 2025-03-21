@@ -13,10 +13,12 @@ import (
 )
 
 // The gateway definition
-// Azure REST API version: 2016-06-01. Prior API version in Azure Native 1.x: 2016-06-01.
+// Azure REST API version: 2016-06-01. Prior API version in Azure Native 2.x: 2016-06-01.
 type ConnectionGateway struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Resource ETag
 	Etag pulumi.StringPtrOutput `pulumi:"etag"`
 	// Resource location
@@ -142,6 +144,11 @@ func (o ConnectionGatewayOutput) ToConnectionGatewayOutput() ConnectionGatewayOu
 
 func (o ConnectionGatewayOutput) ToConnectionGatewayOutputWithContext(ctx context.Context) ConnectionGatewayOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ConnectionGatewayOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConnectionGateway) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource ETag

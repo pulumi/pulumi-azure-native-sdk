@@ -13,10 +13,12 @@ import (
 )
 
 // Database Migration Resource for Mongo to CosmosDb.
-// Azure REST API version: 2023-07-15-preview.
+// Azure REST API version: 2023-07-15-preview. Prior API version in Azure Native 2.x: 2023-07-15-preview.
 type DatabaseMigrationsMongoToCosmosDbRUMongo struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// List of Mongo Collections to be migrated.
 	CollectionList MongoMigrationCollectionResponseArrayOutput `pulumi:"collectionList"`
 	// Database migration end time.
@@ -192,6 +194,11 @@ func (o DatabaseMigrationsMongoToCosmosDbRUMongoOutput) ToDatabaseMigrationsMong
 
 func (o DatabaseMigrationsMongoToCosmosDbRUMongoOutput) ToDatabaseMigrationsMongoToCosmosDbRUMongoOutputWithContext(ctx context.Context) DatabaseMigrationsMongoToCosmosDbRUMongoOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o DatabaseMigrationsMongoToCosmosDbRUMongoOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseMigrationsMongoToCosmosDbRUMongo) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // List of Mongo Collections to be migrated.

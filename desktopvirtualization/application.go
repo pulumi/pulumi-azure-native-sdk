@@ -13,14 +13,14 @@ import (
 )
 
 // Schema for Application properties.
-// Azure REST API version: 2022-09-09. Prior API version in Azure Native 1.x: 2021-02-01-preview.
-//
-// Other available API versions: 2022-10-14-preview, 2023-07-07-preview, 2023-09-05, 2023-10-04-preview, 2023-11-01-preview, 2024-01-16-preview, 2024-03-06-preview, 2024-04-03, 2024-04-08-preview, 2024-08-08-preview.
+// Azure REST API version: 2024-04-03. Prior API version in Azure Native 2.x: 2022-09-09.
 type Application struct {
 	pulumi.CustomResourceState
 
 	// Resource Type of Application.
 	ApplicationType pulumi.StringPtrOutput `pulumi:"applicationType"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Command Line Arguments for Application.
 	CommandLineArguments pulumi.StringPtrOutput `pulumi:"commandLineArguments"`
 	// Specifies whether this published application can be launched with command line arguments provided by the client, command line arguments specified at publish time, or no command line arguments at all.
@@ -49,7 +49,7 @@ type Application struct {
 	ObjectId pulumi.StringOutput `pulumi:"objectId"`
 	// Specifies whether to show the RemoteApp program in the RD Web Access server.
 	ShowInPortal pulumi.BoolPtrOutput `pulumi:"showInPortal"`
-	// Metadata pertaining to creation and last modification of the resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -149,6 +149,9 @@ func NewApplication(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:desktopvirtualization/v20240808preview:Application"),
+		},
+		{
+			Type: pulumi.String("azure-native:desktopvirtualization/v20241101preview:Application"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -289,6 +292,11 @@ func (o ApplicationOutput) ApplicationType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Application) pulumi.StringPtrOutput { return v.ApplicationType }).(pulumi.StringPtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o ApplicationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Application) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Command Line Arguments for Application.
 func (o ApplicationOutput) CommandLineArguments() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Application) pulumi.StringPtrOutput { return v.CommandLineArguments }).(pulumi.StringPtrOutput)
@@ -359,7 +367,7 @@ func (o ApplicationOutput) ShowInPortal() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Application) pulumi.BoolPtrOutput { return v.ShowInPortal }).(pulumi.BoolPtrOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o ApplicationOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *Application) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

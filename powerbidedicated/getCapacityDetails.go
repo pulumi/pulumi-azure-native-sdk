@@ -34,6 +34,8 @@ type LookupCapacityDetailsArgs struct {
 type LookupCapacityDetailsResult struct {
 	// A collection of Dedicated capacity administrators
 	Administration *DedicatedCapacityAdministratorsResponse `pulumi:"administration"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Capacity name
 	FriendlyName string `pulumi:"friendlyName"`
 	// An identifier that represents the PowerBI Dedicated resource.
@@ -98,6 +100,11 @@ func (o LookupCapacityDetailsResultOutput) ToLookupCapacityDetailsResultOutputWi
 // A collection of Dedicated capacity administrators
 func (o LookupCapacityDetailsResultOutput) Administration() DedicatedCapacityAdministratorsResponsePtrOutput {
 	return o.ApplyT(func(v LookupCapacityDetailsResult) *DedicatedCapacityAdministratorsResponse { return v.Administration }).(DedicatedCapacityAdministratorsResponsePtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupCapacityDetailsResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCapacityDetailsResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Capacity name

@@ -13,9 +13,7 @@ import (
 )
 
 // PreRulestack rule list
-// Azure REST API version: 2023-09-01.
-//
-// Other available API versions: 2022-08-29, 2022-08-29-preview, 2023-09-01-preview, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview.
+// Azure REST API version: 2025-02-06-preview. Prior API version in Azure Native 2.x: 2023-09-01.
 type PreRule struct {
 	pulumi.CustomResourceState
 
@@ -25,6 +23,8 @@ type PreRule struct {
 	Applications pulumi.StringArrayOutput `pulumi:"applications"`
 	// rule comment
 	AuditComment pulumi.StringPtrOutput `pulumi:"auditComment"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// rule category
 	Category CategoryResponsePtrOutput `pulumi:"category"`
 	// enable or disable decryption
@@ -274,6 +274,11 @@ func (o PreRuleOutput) Applications() pulumi.StringArrayOutput {
 // rule comment
 func (o PreRuleOutput) AuditComment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PreRule) pulumi.StringPtrOutput { return v.AuditComment }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o PreRuleOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PreRule) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // rule category

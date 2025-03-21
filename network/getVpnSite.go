@@ -12,9 +12,7 @@ import (
 )
 
 // Retrieves the details of a VPN site.
-// Azure REST API version: 2023-02-01.
-//
-// Other available API versions: 2018-07-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Azure REST API version: 2024-05-01.
 func LookupVpnSite(ctx *pulumi.Context, args *LookupVpnSiteArgs, opts ...pulumi.InvokeOption) (*LookupVpnSiteResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVpnSiteResult
@@ -36,6 +34,8 @@ type LookupVpnSiteArgs struct {
 type LookupVpnSiteResult struct {
 	// The AddressSpace that contains an array of IP address ranges.
 	AddressSpace *AddressSpaceResponse `pulumi:"addressSpace"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The set of bgp properties.
 	BgpProperties *BgpSettingsResponse `pulumi:"bgpProperties"`
 	// The device properties.
@@ -106,6 +106,11 @@ func (o LookupVpnSiteResultOutput) ToLookupVpnSiteResultOutputWithContext(ctx co
 // The AddressSpace that contains an array of IP address ranges.
 func (o LookupVpnSiteResultOutput) AddressSpace() AddressSpaceResponsePtrOutput {
 	return o.ApplyT(func(v LookupVpnSiteResult) *AddressSpaceResponse { return v.AddressSpace }).(AddressSpaceResponsePtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupVpnSiteResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpnSiteResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The set of bgp properties.

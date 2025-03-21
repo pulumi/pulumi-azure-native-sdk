@@ -13,10 +13,12 @@ import (
 )
 
 // A Instance resource is a logical container for a set of child resources.
-// Azure REST API version: 2023-10-04-preview.
+// Azure REST API version: 2023-10-04-preview. Prior API version in Azure Native 2.x: 2023-10-04-preview.
 type Instance struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Detailed description of the Instance.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Edge location of the resource.
@@ -152,6 +154,11 @@ func (o InstanceOutput) ToInstanceOutput() InstanceOutput {
 
 func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) InstanceOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o InstanceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Detailed description of the Instance.

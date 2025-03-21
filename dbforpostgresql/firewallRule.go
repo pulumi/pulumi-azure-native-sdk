@@ -13,12 +13,12 @@ import (
 )
 
 // Represents a server firewall rule.
-// Azure REST API version: 2022-12-01. Prior API version in Azure Native 1.x: 2017-12-01.
-//
-// Other available API versions: 2017-12-01, 2020-10-05-privatepreview, 2022-11-08, 2023-03-01-preview, 2023-03-02-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-08-01, 2024-11-01-preview.
+// Azure REST API version: 2024-08-01. Prior API version in Azure Native 2.x: 2022-12-01.
 type FirewallRule struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The end IP address of the server firewall rule. Must be IPv4 format.
 	EndIpAddress pulumi.StringOutput `pulumi:"endIpAddress"`
 	// The name of the resource
@@ -52,10 +52,16 @@ func NewFirewallRule(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:dbforpostgresql/v20171201:FirewallRule"),
+		},
+		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20200214preview:FirewallRule"),
 		},
 		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20200214privatepreview:FirewallRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:dbforpostgresql/v20201005privatepreview:FirewallRule"),
 		},
 		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20210410privatepreview:FirewallRule"),
@@ -76,10 +82,16 @@ func NewFirewallRule(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:dbforpostgresql/v20220308preview:FirewallRule"),
 		},
 		{
+			Type: pulumi.String("azure-native:dbforpostgresql/v20221108:FirewallRule"),
+		},
+		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20221201:FirewallRule"),
 		},
 		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20230301preview:FirewallRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:dbforpostgresql/v20230302preview:FirewallRule"),
 		},
 		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20230601preview:FirewallRule"),
@@ -192,6 +204,11 @@ func (o FirewallRuleOutput) ToFirewallRuleOutput() FirewallRuleOutput {
 
 func (o FirewallRuleOutput) ToFirewallRuleOutputWithContext(ctx context.Context) FirewallRuleOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o FirewallRuleOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *FirewallRule) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The end IP address of the server firewall rule. Must be IPv4 format.

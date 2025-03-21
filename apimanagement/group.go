@@ -13,12 +13,12 @@ import (
 )
 
 // Contract details.
-// Azure REST API version: 2022-08-01. Prior API version in Azure Native 1.x: 2020-12-01.
-//
-// Other available API versions: 2016-10-10, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
+// Azure REST API version: 2022-09-01-preview. Prior API version in Azure Native 2.x: 2022-08-01.
 type Group struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// true if the group is one of the three system groups (Administrators, Developers, or Guests); otherwise false.
 	BuiltIn pulumi.BoolOutput `pulumi:"builtIn"`
 	// Group description. Can contain HTML formatting tags.
@@ -220,6 +220,11 @@ func (o GroupOutput) ToGroupOutput() GroupOutput {
 
 func (o GroupOutput) ToGroupOutputWithContext(ctx context.Context) GroupOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o GroupOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // true if the group is one of the three system groups (Administrators, Developers, or Guests); otherwise false.

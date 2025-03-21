@@ -13,10 +13,12 @@ import (
 )
 
 // Machine Learning datastore object wrapped into ARM resource envelope.
-// Azure REST API version: 2020-05-01-preview. Prior API version in Azure Native 1.x: 2020-05-01-preview.
+// Azure REST API version: 2020-05-01-preview. Prior API version in Azure Native 2.x: 2020-05-01-preview.
 type MachineLearningDatastore struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The identity of the resource.
 	Identity IdentityResponsePtrOutput `pulumi:"identity"`
 	// Specifies the location of the resource.
@@ -60,7 +62,13 @@ func NewMachineLearningDatastore(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:machinelearningservices/v20200501preview:MachineLearningDatastore"),
 		},
 		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20210301preview:Datastore"),
+		},
+		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20210301preview:MachineLearningDatastore"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20220201preview:Datastore"),
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20220201preview:MachineLearningDatastore"),
@@ -84,37 +92,76 @@ func NewMachineLearningDatastore(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:machinelearningservices/v20230201preview:MachineLearningDatastore"),
 		},
 		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230401:Datastore"),
+		},
+		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20230401:MachineLearningDatastore"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230401preview:Datastore"),
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20230401preview:MachineLearningDatastore"),
 		},
 		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230601preview:Datastore"),
+		},
+		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20230601preview:MachineLearningDatastore"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20230801preview:Datastore"),
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20230801preview:MachineLearningDatastore"),
 		},
 		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20231001:Datastore"),
+		},
+		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20231001:MachineLearningDatastore"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20240101preview:Datastore"),
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20240101preview:MachineLearningDatastore"),
 		},
 		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20240401:Datastore"),
+		},
+		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20240401:MachineLearningDatastore"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20240401preview:Datastore"),
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20240401preview:MachineLearningDatastore"),
 		},
 		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20240701preview:Datastore"),
+		},
+		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20240701preview:MachineLearningDatastore"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20241001:Datastore"),
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001:MachineLearningDatastore"),
 		},
 		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20241001preview:Datastore"),
+		},
+		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001preview:MachineLearningDatastore"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250101preview:MachineLearningDatastore"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices:Datastore"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -328,6 +375,11 @@ func (o MachineLearningDatastoreOutput) ToMachineLearningDatastoreOutput() Machi
 
 func (o MachineLearningDatastoreOutput) ToMachineLearningDatastoreOutputWithContext(ctx context.Context) MachineLearningDatastoreOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o MachineLearningDatastoreOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *MachineLearningDatastore) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The identity of the resource.

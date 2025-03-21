@@ -12,9 +12,7 @@ import (
 )
 
 // Get a Vcenter
-// Azure REST API version: 2023-06-06.
-//
-// Other available API versions: 2023-10-01-preview, 2024-05-01-preview.
+// Azure REST API version: 2023-10-01-preview.
 func LookupVcenterController(ctx *pulumi.Context, args *LookupVcenterControllerArgs, opts ...pulumi.InvokeOption) (*LookupVcenterControllerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVcenterControllerResult
@@ -36,6 +34,8 @@ type LookupVcenterControllerArgs struct {
 
 // A vcenter resource belonging to a site resource.
 type LookupVcenterControllerResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets the timestamp marking vCenter creation.
 	CreatedTimestamp string `pulumi:"createdTimestamp"`
 	// Gets the errors.
@@ -103,6 +103,11 @@ func (o LookupVcenterControllerResultOutput) ToLookupVcenterControllerResultOutp
 
 func (o LookupVcenterControllerResultOutput) ToLookupVcenterControllerResultOutputWithContext(ctx context.Context) LookupVcenterControllerResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupVcenterControllerResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVcenterControllerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets the timestamp marking vCenter creation.

@@ -13,12 +13,12 @@ import (
 )
 
 // Global Schema Contract details.
-// Azure REST API version: 2022-08-01.
-//
-// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
+// Azure REST API version: 2022-09-01-preview. Prior API version in Azure Native 2.x: 2022-08-01.
 type GlobalSchema struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Free-form schema entity description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The name of the resource
@@ -52,6 +52,9 @@ func NewGlobalSchema(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:apimanagement/v20210401preview:GlobalSchema"),
 		},
 		{
+			Type: pulumi.String("azure-native:apimanagement/v20210401preview:Schema"),
+		},
+		{
 			Type: pulumi.String("azure-native:apimanagement/v20210801:GlobalSchema"),
 		},
 		{
@@ -80,6 +83,9 @@ func NewGlobalSchema(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20240601preview:GlobalSchema"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement:Schema"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -181,6 +187,11 @@ func (o GlobalSchemaOutput) ToGlobalSchemaOutput() GlobalSchemaOutput {
 
 func (o GlobalSchemaOutput) ToGlobalSchemaOutputWithContext(ctx context.Context) GlobalSchemaOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o GlobalSchemaOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *GlobalSchema) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Free-form schema entity description.

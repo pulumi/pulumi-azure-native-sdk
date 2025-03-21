@@ -13,12 +13,12 @@ import (
 )
 
 // Virtual Router Peering resource.
-// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2022-01-01.
-//
-// Other available API versions: 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Azure REST API version: 2024-05-01. Prior API version in Azure Native 2.x: 2023-02-01.
 type VirtualRouterPeering struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Name of the virtual router peering that is unique within a virtual router.
@@ -241,6 +241,11 @@ func (o VirtualRouterPeeringOutput) ToVirtualRouterPeeringOutput() VirtualRouter
 
 func (o VirtualRouterPeeringOutput) ToVirtualRouterPeeringOutputWithContext(ctx context.Context) VirtualRouterPeeringOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o VirtualRouterPeeringOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *VirtualRouterPeering) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A unique read-only string that changes whenever the resource is updated.

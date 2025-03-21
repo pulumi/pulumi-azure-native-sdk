@@ -13,10 +13,12 @@ import (
 )
 
 // A secret.
-// Azure REST API version: 2018-09-15. Prior API version in Azure Native 1.x: 2018-09-15.
+// Azure REST API version: 2018-09-15. Prior API version in Azure Native 2.x: 2018-09-15.
 type Secret struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The location of the resource.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// The name of the resource.
@@ -160,6 +162,11 @@ func (o SecretOutput) ToSecretOutput() SecretOutput {
 
 func (o SecretOutput) ToSecretOutputWithContext(ctx context.Context) SecretOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o SecretOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Secret) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The location of the resource.

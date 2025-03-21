@@ -13,8 +13,6 @@ import (
 
 // Gets the details of the tag specified by its identifier.
 // Azure REST API version: 2022-09-01-preview.
-//
-// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
 func LookupWorkspaceTag(ctx *pulumi.Context, args *LookupWorkspaceTagArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceTagResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkspaceTagResult
@@ -38,6 +36,8 @@ type LookupWorkspaceTagArgs struct {
 
 // Tag Contract details.
 type LookupWorkspaceTagResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Tag name.
 	DisplayName string `pulumi:"displayName"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -85,6 +85,11 @@ func (o LookupWorkspaceTagResultOutput) ToLookupWorkspaceTagResultOutput() Looku
 
 func (o LookupWorkspaceTagResultOutput) ToLookupWorkspaceTagResultOutputWithContext(ctx context.Context) LookupWorkspaceTagResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupWorkspaceTagResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkspaceTagResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Tag name.

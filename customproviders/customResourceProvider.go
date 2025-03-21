@@ -13,12 +13,14 @@ import (
 )
 
 // A manifest file that defines the custom resource provider resources.
-// Azure REST API version: 2018-09-01-preview. Prior API version in Azure Native 1.x: 2018-09-01-preview.
+// Azure REST API version: 2018-09-01-preview. Prior API version in Azure Native 2.x: 2018-09-01-preview.
 type CustomResourceProvider struct {
 	pulumi.CustomResourceState
 
 	// A list of actions that the custom resource provider implements.
 	Actions CustomRPActionRouteDefinitionResponseArrayOutput `pulumi:"actions"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Resource location
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Resource name
@@ -158,6 +160,11 @@ func (o CustomResourceProviderOutput) ToCustomResourceProviderOutputWithContext(
 // A list of actions that the custom resource provider implements.
 func (o CustomResourceProviderOutput) Actions() CustomRPActionRouteDefinitionResponseArrayOutput {
 	return o.ApplyT(func(v *CustomResourceProvider) CustomRPActionRouteDefinitionResponseArrayOutput { return v.Actions }).(CustomRPActionRouteDefinitionResponseArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o CustomResourceProviderOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomResourceProvider) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource location

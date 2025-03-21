@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-azure-native-sdk/machinelearning/v2
+module github.com/pulumi/pulumi-azure-native-sdk/machinelearning/v3
 
 go 1.22
 

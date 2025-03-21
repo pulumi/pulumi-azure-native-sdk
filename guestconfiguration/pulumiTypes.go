@@ -1094,6 +1094,8 @@ type GuestConfigurationNavigation struct {
 	ConfigurationProtectedParameter []ConfigurationParameter `pulumi:"configurationProtectedParameter"`
 	// Combined hash of the guest configuration package and configuration parameters.
 	ContentHash *string `pulumi:"contentHash"`
+	// Managed identity with storage access of the guest configuration package and configuration parameters.
+	ContentManagedIdentity *string `pulumi:"contentManagedIdentity"`
 	// Uri of the storage where guest configuration package is uploaded.
 	ContentUri *string `pulumi:"contentUri"`
 	// Kind of the guest configuration. For example:DSC
@@ -1125,6 +1127,8 @@ type GuestConfigurationNavigationArgs struct {
 	ConfigurationProtectedParameter ConfigurationParameterArrayInput `pulumi:"configurationProtectedParameter"`
 	// Combined hash of the guest configuration package and configuration parameters.
 	ContentHash pulumi.StringPtrInput `pulumi:"contentHash"`
+	// Managed identity with storage access of the guest configuration package and configuration parameters.
+	ContentManagedIdentity pulumi.StringPtrInput `pulumi:"contentManagedIdentity"`
 	// Uri of the storage where guest configuration package is uploaded.
 	ContentUri pulumi.StringPtrInput `pulumi:"contentUri"`
 	// Kind of the guest configuration. For example:DSC
@@ -1235,6 +1239,11 @@ func (o GuestConfigurationNavigationOutput) ContentHash() pulumi.StringPtrOutput
 	return o.ApplyT(func(v GuestConfigurationNavigation) *string { return v.ContentHash }).(pulumi.StringPtrOutput)
 }
 
+// Managed identity with storage access of the guest configuration package and configuration parameters.
+func (o GuestConfigurationNavigationOutput) ContentManagedIdentity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuestConfigurationNavigation) *string { return v.ContentManagedIdentity }).(pulumi.StringPtrOutput)
+}
+
 // Uri of the storage where guest configuration package is uploaded.
 func (o GuestConfigurationNavigationOutput) ContentUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GuestConfigurationNavigation) *string { return v.ContentUri }).(pulumi.StringPtrOutput)
@@ -1319,6 +1328,16 @@ func (o GuestConfigurationNavigationPtrOutput) ContentHash() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// Managed identity with storage access of the guest configuration package and configuration parameters.
+func (o GuestConfigurationNavigationPtrOutput) ContentManagedIdentity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestConfigurationNavigation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ContentManagedIdentity
+	}).(pulumi.StringPtrOutput)
+}
+
 // Uri of the storage where guest configuration package is uploaded.
 func (o GuestConfigurationNavigationPtrOutput) ContentUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GuestConfigurationNavigation) *string {
@@ -1373,6 +1392,8 @@ type GuestConfigurationNavigationResponse struct {
 	ConfigurationSetting ConfigurationSettingResponse `pulumi:"configurationSetting"`
 	// Combined hash of the guest configuration package and configuration parameters.
 	ContentHash *string `pulumi:"contentHash"`
+	// Managed identity with storage access of the guest configuration package and configuration parameters.
+	ContentManagedIdentity *string `pulumi:"contentManagedIdentity"`
 	// Specifies the content type of the configuration. Possible values could be Builtin or Custom.
 	ContentType string `pulumi:"contentType"`
 	// Uri of the storage where guest configuration package is uploaded.
@@ -1445,6 +1466,11 @@ func (o GuestConfigurationNavigationResponseOutput) ConfigurationSetting() Confi
 // Combined hash of the guest configuration package and configuration parameters.
 func (o GuestConfigurationNavigationResponseOutput) ContentHash() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GuestConfigurationNavigationResponse) *string { return v.ContentHash }).(pulumi.StringPtrOutput)
+}
+
+// Managed identity with storage access of the guest configuration package and configuration parameters.
+func (o GuestConfigurationNavigationResponseOutput) ContentManagedIdentity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuestConfigurationNavigationResponse) *string { return v.ContentManagedIdentity }).(pulumi.StringPtrOutput)
 }
 
 // Specifies the content type of the configuration. Possible values could be Builtin or Custom.
@@ -1553,6 +1579,16 @@ func (o GuestConfigurationNavigationResponsePtrOutput) ContentHash() pulumi.Stri
 			return nil
 		}
 		return v.ContentHash
+	}).(pulumi.StringPtrOutput)
+}
+
+// Managed identity with storage access of the guest configuration package and configuration parameters.
+func (o GuestConfigurationNavigationResponsePtrOutput) ContentManagedIdentity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestConfigurationNavigationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ContentManagedIdentity
 	}).(pulumi.StringPtrOutput)
 }
 

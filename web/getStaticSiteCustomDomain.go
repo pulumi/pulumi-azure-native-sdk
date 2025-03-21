@@ -12,9 +12,7 @@ import (
 )
 
 // Description for Gets an existing custom domain for a particular static site.
-// Azure REST API version: 2022-09-01.
-//
-// Other available API versions: 2023-01-01, 2023-12-01, 2024-04-01.
+// Azure REST API version: 2024-04-01.
 func LookupStaticSiteCustomDomain(ctx *pulumi.Context, args *LookupStaticSiteCustomDomainArgs, opts ...pulumi.InvokeOption) (*LookupStaticSiteCustomDomainResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupStaticSiteCustomDomainResult
@@ -36,6 +34,8 @@ type LookupStaticSiteCustomDomainArgs struct {
 
 // Static Site Custom Domain Overview ARM resource.
 type LookupStaticSiteCustomDomainResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The date and time on which the custom domain was created for the static site.
 	CreatedOn string `pulumi:"createdOn"`
 	// The domain name for the static site custom domain.
@@ -90,6 +90,11 @@ func (o LookupStaticSiteCustomDomainResultOutput) ToLookupStaticSiteCustomDomain
 
 func (o LookupStaticSiteCustomDomainResultOutput) ToLookupStaticSiteCustomDomainResultOutputWithContext(ctx context.Context) LookupStaticSiteCustomDomainResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupStaticSiteCustomDomainResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStaticSiteCustomDomainResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The date and time on which the custom domain was created for the static site.

@@ -12,9 +12,7 @@ import (
 )
 
 // Get the full endpoint URL for an event subscription of a partner topic.
-// Azure REST API version: 2022-06-15.
-//
-// Other available API versions: 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-02-15.
+// Azure REST API version: 2025-02-15.
 func GetPartnerTopicEventSubscriptionFullUrl(ctx *pulumi.Context, args *GetPartnerTopicEventSubscriptionFullUrlArgs, opts ...pulumi.InvokeOption) (*GetPartnerTopicEventSubscriptionFullUrlResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetPartnerTopicEventSubscriptionFullUrlResult
@@ -26,7 +24,7 @@ func GetPartnerTopicEventSubscriptionFullUrl(ctx *pulumi.Context, args *GetPartn
 }
 
 type GetPartnerTopicEventSubscriptionFullUrlArgs struct {
-	// Name of the event subscription to be created. Event subscription names must be between 3 and 100 characters in length and use alphanumeric letters only.
+	// Name of the event subscription.
 	EventSubscriptionName string `pulumi:"eventSubscriptionName"`
 	// Name of the partner topic.
 	PartnerTopicName string `pulumi:"partnerTopicName"`
@@ -34,7 +32,7 @@ type GetPartnerTopicEventSubscriptionFullUrlArgs struct {
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
-// Full endpoint url of an event subscription
+// Full endpoint URL of an event subscription
 type GetPartnerTopicEventSubscriptionFullUrlResult struct {
 	// The URL that represents the endpoint of the destination of an event subscription.
 	EndpointUrl *string `pulumi:"endpointUrl"`
@@ -50,7 +48,7 @@ func GetPartnerTopicEventSubscriptionFullUrlOutput(ctx *pulumi.Context, args Get
 }
 
 type GetPartnerTopicEventSubscriptionFullUrlOutputArgs struct {
-	// Name of the event subscription to be created. Event subscription names must be between 3 and 100 characters in length and use alphanumeric letters only.
+	// Name of the event subscription.
 	EventSubscriptionName pulumi.StringInput `pulumi:"eventSubscriptionName"`
 	// Name of the partner topic.
 	PartnerTopicName pulumi.StringInput `pulumi:"partnerTopicName"`
@@ -62,7 +60,7 @@ func (GetPartnerTopicEventSubscriptionFullUrlOutputArgs) ElementType() reflect.T
 	return reflect.TypeOf((*GetPartnerTopicEventSubscriptionFullUrlArgs)(nil)).Elem()
 }
 
-// Full endpoint url of an event subscription
+// Full endpoint URL of an event subscription
 type GetPartnerTopicEventSubscriptionFullUrlResultOutput struct{ *pulumi.OutputState }
 
 func (GetPartnerTopicEventSubscriptionFullUrlResultOutput) ElementType() reflect.Type {

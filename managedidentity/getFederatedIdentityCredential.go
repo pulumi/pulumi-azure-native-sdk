@@ -13,8 +13,6 @@ import (
 
 // Gets the federated identity credential.
 // Azure REST API version: 2023-01-31.
-//
-// Other available API versions: 2023-07-31-preview, 2024-11-30.
 func LookupFederatedIdentityCredential(ctx *pulumi.Context, args *LookupFederatedIdentityCredentialArgs, opts ...pulumi.InvokeOption) (*LookupFederatedIdentityCredentialResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFederatedIdentityCredentialResult
@@ -38,6 +36,8 @@ type LookupFederatedIdentityCredentialArgs struct {
 type LookupFederatedIdentityCredentialResult struct {
 	// The list of audiences that can appear in the issued token.
 	Audiences []string `pulumi:"audiences"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The URL of the issuer to be trusted.
@@ -92,6 +92,11 @@ func (o LookupFederatedIdentityCredentialResultOutput) ToLookupFederatedIdentity
 // The list of audiences that can appear in the issued token.
 func (o LookupFederatedIdentityCredentialResultOutput) Audiences() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupFederatedIdentityCredentialResult) []string { return v.Audiences }).(pulumi.StringArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupFederatedIdentityCredentialResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFederatedIdentityCredentialResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

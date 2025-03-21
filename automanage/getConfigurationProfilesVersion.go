@@ -34,6 +34,8 @@ type LookupConfigurationProfilesVersionArgs struct {
 
 // Definition of the configuration profile.
 type LookupConfigurationProfilesVersionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -85,6 +87,11 @@ func (o LookupConfigurationProfilesVersionResultOutput) ToLookupConfigurationPro
 
 func (o LookupConfigurationProfilesVersionResultOutput) ToLookupConfigurationProfilesVersionResultOutputWithContext(ctx context.Context) LookupConfigurationProfilesVersionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupConfigurationProfilesVersionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConfigurationProfilesVersionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

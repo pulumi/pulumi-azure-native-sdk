@@ -13,8 +13,6 @@ import (
 
 // Gets the sensitivity label of a given column
 // Azure REST API version: 2021-11-01.
-//
-// Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
 func LookupSensitivityLabel(ctx *pulumi.Context, args *LookupSensitivityLabelArgs, opts ...pulumi.InvokeOption) (*LookupSensitivityLabelResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSensitivityLabelResult
@@ -44,6 +42,8 @@ type LookupSensitivityLabelArgs struct {
 
 // A sensitivity label.
 type LookupSensitivityLabelResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The column name.
 	ColumnName string `pulumi:"columnName"`
 	// Resource ID.
@@ -114,6 +114,11 @@ func (o LookupSensitivityLabelResultOutput) ToLookupSensitivityLabelResultOutput
 
 func (o LookupSensitivityLabelResultOutput) ToLookupSensitivityLabelResultOutputWithContext(ctx context.Context) LookupSensitivityLabelResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupSensitivityLabelResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSensitivityLabelResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The column name.

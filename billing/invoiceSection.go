@@ -13,10 +13,12 @@ import (
 )
 
 // An invoice section.
-// Azure REST API version: 2024-04-01.
+// Azure REST API version: 2024-04-01. Prior API version in Azure Native 2.x: 2024-04-01.
 type InvoiceSection struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// An invoice section.
@@ -142,6 +144,11 @@ func (o InvoiceSectionOutput) ToInvoiceSectionOutput() InvoiceSectionOutput {
 
 func (o InvoiceSectionOutput) ToInvoiceSectionOutputWithContext(ctx context.Context) InvoiceSectionOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o InvoiceSectionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *InvoiceSection) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

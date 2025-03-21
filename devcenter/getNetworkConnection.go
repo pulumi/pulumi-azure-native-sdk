@@ -12,9 +12,7 @@ import (
 )
 
 // Gets a network connection resource
-// Azure REST API version: 2023-04-01.
-//
-// Other available API versions: 2023-08-01-preview, 2023-10-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview, 2024-10-01-preview.
+// Azure REST API version: 2024-02-01.
 func LookupNetworkConnection(ctx *pulumi.Context, args *LookupNetworkConnectionArgs, opts ...pulumi.InvokeOption) (*LookupNetworkConnectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNetworkConnectionResult
@@ -34,6 +32,8 @@ type LookupNetworkConnectionArgs struct {
 
 // Network related settings
 type LookupNetworkConnectionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// AAD Join type.
 	DomainJoinType string `pulumi:"domainJoinType"`
 	// Active Directory domain name
@@ -44,7 +44,7 @@ type LookupNetworkConnectionResult struct {
 	DomainUsername *string `pulumi:"domainUsername"`
 	// Overall health status of the network connection. Health checks are run on creation, update, and periodically to validate the network connection.
 	HealthCheckStatus string `pulumi:"healthCheckStatus"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
@@ -101,6 +101,11 @@ func (o LookupNetworkConnectionResultOutput) ToLookupNetworkConnectionResultOutp
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupNetworkConnectionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkConnectionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // AAD Join type.
 func (o LookupNetworkConnectionResultOutput) DomainJoinType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkConnectionResult) string { return v.DomainJoinType }).(pulumi.StringOutput)
@@ -126,7 +131,7 @@ func (o LookupNetworkConnectionResultOutput) HealthCheckStatus() pulumi.StringOu
 	return o.ApplyT(func(v LookupNetworkConnectionResult) string { return v.HealthCheckStatus }).(pulumi.StringOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupNetworkConnectionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkConnectionResult) string { return v.Id }).(pulumi.StringOutput)
 }

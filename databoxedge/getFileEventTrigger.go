@@ -12,7 +12,7 @@ import (
 )
 
 // Get a specific trigger by name.
-// Azure REST API version: 2022-03-01.
+// Azure REST API version: 2023-07-01.
 func LookupFileEventTrigger(ctx *pulumi.Context, args *LookupFileEventTriggerArgs, opts ...pulumi.InvokeOption) (*LookupFileEventTriggerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFileEventTriggerResult
@@ -34,6 +34,8 @@ type LookupFileEventTriggerArgs struct {
 
 // Trigger details.
 type LookupFileEventTriggerResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// A custom context tag typically used to correlate the trigger against its usage. For example, if a periodic timer trigger is intended for certain specific IoT modules in the device, the tag can be the name or the image URL of the module.
 	CustomContextTag *string `pulumi:"customContextTag"`
 	// The path ID that uniquely identifies the object.
@@ -88,6 +90,11 @@ func (o LookupFileEventTriggerResultOutput) ToLookupFileEventTriggerResultOutput
 
 func (o LookupFileEventTriggerResultOutput) ToLookupFileEventTriggerResultOutputWithContext(ctx context.Context) LookupFileEventTriggerResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupFileEventTriggerResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFileEventTriggerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A custom context tag typically used to correlate the trigger against its usage. For example, if a periodic timer trigger is intended for certain specific IoT modules in the device, the tag can be the name or the image URL of the module.

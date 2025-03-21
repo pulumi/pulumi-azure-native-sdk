@@ -12,9 +12,7 @@ import (
 )
 
 // Retrieves information about the view of a license.
-// Azure REST API version: 2023-06-20-preview.
-//
-// Other available API versions: 2023-10-03-preview, 2024-03-31-preview, 2024-05-20-preview, 2024-07-10, 2024-07-31-preview, 2024-09-10-preview, 2024-11-10-preview.
+// Azure REST API version: 2024-07-10.
 func LookupLicense(ctx *pulumi.Context, args *LookupLicenseArgs, opts ...pulumi.InvokeOption) (*LookupLicenseResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupLicenseResult
@@ -34,6 +32,8 @@ type LookupLicenseArgs struct {
 
 // Describes a license in a hybrid machine.
 type LookupLicenseResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// Describes the properties of a License.
@@ -89,6 +89,11 @@ func (o LookupLicenseResultOutput) ToLookupLicenseResultOutput() LookupLicenseRe
 
 func (o LookupLicenseResultOutput) ToLookupLicenseResultOutputWithContext(ctx context.Context) LookupLicenseResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupLicenseResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLicenseResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

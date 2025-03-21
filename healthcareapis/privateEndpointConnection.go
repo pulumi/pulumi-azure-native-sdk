@@ -13,12 +13,12 @@ import (
 )
 
 // The Private Endpoint Connection resource.
-// Azure REST API version: 2023-02-28. Prior API version in Azure Native 1.x: 2022-05-15.
-//
-// Other available API versions: 2023-09-06, 2023-11-01, 2023-12-01, 2024-03-01, 2024-03-31.
+// Azure REST API version: 2024-03-31. Prior API version in Azure Native 2.x: 2023-02-28.
 type PrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The resource of private end point.
@@ -94,6 +94,9 @@ func NewPrivateEndpointConnection(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:healthcareapis/v20240331:PrivateEndpointConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:healthcareapis/v20250301preview:PrivateEndpointConnection"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -187,6 +190,11 @@ func (o PrivateEndpointConnectionOutput) ToPrivateEndpointConnectionOutput() Pri
 
 func (o PrivateEndpointConnectionOutput) ToPrivateEndpointConnectionOutputWithContext(ctx context.Context) PrivateEndpointConnectionOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o PrivateEndpointConnectionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrivateEndpointConnection) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

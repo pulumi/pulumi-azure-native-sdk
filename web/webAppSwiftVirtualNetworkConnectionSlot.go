@@ -13,12 +13,12 @@ import (
 )
 
 // Swift Virtual Network Contract. This is used to enable the new Swift way of doing virtual network integration.
-// Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2020-10-01.
-//
-// Other available API versions: 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
+// Azure REST API version: 2024-04-01. Prior API version in Azure Native 2.x: 2022-09-01.
 type WebAppSwiftVirtualNetworkConnectionSlot struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Kind of resource.
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// Resource Name.
@@ -190,6 +190,11 @@ func (o WebAppSwiftVirtualNetworkConnectionSlotOutput) ToWebAppSwiftVirtualNetwo
 
 func (o WebAppSwiftVirtualNetworkConnectionSlotOutput) ToWebAppSwiftVirtualNetworkConnectionSlotOutputWithContext(ctx context.Context) WebAppSwiftVirtualNetworkConnectionSlotOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o WebAppSwiftVirtualNetworkConnectionSlotOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *WebAppSwiftVirtualNetworkConnectionSlot) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Kind of resource.

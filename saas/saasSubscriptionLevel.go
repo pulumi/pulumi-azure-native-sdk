@@ -13,10 +13,12 @@ import (
 )
 
 // SaaS REST API resource definition.
-// Azure REST API version: 2018-03-01-beta. Prior API version in Azure Native 1.x: 2018-03-01-beta.
+// Azure REST API version: 2018-03-01-beta. Prior API version in Azure Native 2.x: 2018-03-01-beta.
 type SaasSubscriptionLevel struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// saas properties
@@ -141,6 +143,11 @@ func (o SaasSubscriptionLevelOutput) ToSaasSubscriptionLevelOutput() SaasSubscri
 
 func (o SaasSubscriptionLevelOutput) ToSaasSubscriptionLevelOutputWithContext(ctx context.Context) SaasSubscriptionLevelOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o SaasSubscriptionLevelOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SaasSubscriptionLevel) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

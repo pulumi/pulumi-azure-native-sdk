@@ -13,14 +13,14 @@ import (
 )
 
 // Virtual Appliance Site resource.
-// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2020-11-01.
-//
-// Other available API versions: 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Azure REST API version: 2024-05-01. Prior API version in Azure Native 2.x: 2023-02-01.
 type VirtualApplianceSite struct {
 	pulumi.CustomResourceState
 
 	// Address Prefix.
 	AddressPrefix pulumi.StringPtrOutput `pulumi:"addressPrefix"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Name of the virtual appliance site.
@@ -225,6 +225,11 @@ func (o VirtualApplianceSiteOutput) ToVirtualApplianceSiteOutputWithContext(ctx 
 // Address Prefix.
 func (o VirtualApplianceSiteOutput) AddressPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualApplianceSite) pulumi.StringPtrOutput { return v.AddressPrefix }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o VirtualApplianceSiteOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *VirtualApplianceSite) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A unique read-only string that changes whenever the resource is updated.

@@ -12,9 +12,7 @@ import (
 )
 
 // This operation retrieves the policy definition version in the given management group with the given name.
-// Azure REST API version: 2023-04-01.
-//
-// Other available API versions: 2024-05-01, 2025-01-01.
+// Azure REST API version: 2025-01-01.
 func LookupPolicyDefinitionVersionAtManagementGroup(ctx *pulumi.Context, args *LookupPolicyDefinitionVersionAtManagementGroupArgs, opts ...pulumi.InvokeOption) (*LookupPolicyDefinitionVersionAtManagementGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPolicyDefinitionVersionAtManagementGroupResult
@@ -36,6 +34,8 @@ type LookupPolicyDefinitionVersionAtManagementGroupArgs struct {
 
 // The ID of the policy definition version.
 type LookupPolicyDefinitionVersionAtManagementGroupResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The policy definition description.
 	Description *string `pulumi:"description"`
 	// The display name of the policy definition.
@@ -109,6 +109,11 @@ func (o LookupPolicyDefinitionVersionAtManagementGroupResultOutput) ToLookupPoli
 
 func (o LookupPolicyDefinitionVersionAtManagementGroupResultOutput) ToLookupPolicyDefinitionVersionAtManagementGroupResultOutputWithContext(ctx context.Context) LookupPolicyDefinitionVersionAtManagementGroupResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupPolicyDefinitionVersionAtManagementGroupResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPolicyDefinitionVersionAtManagementGroupResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The policy definition description.

@@ -12,9 +12,7 @@ import (
 )
 
 // Retrieve the certificate identified by certificate name.
-// Azure REST API version: 2022-08-08.
-//
-// Other available API versions: 2023-05-15-preview, 2023-11-01, 2024-10-23.
+// Azure REST API version: 2023-11-01.
 func LookupCertificate(ctx *pulumi.Context, args *LookupCertificateArgs, opts ...pulumi.InvokeOption) (*LookupCertificateResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCertificateResult
@@ -36,6 +34,8 @@ type LookupCertificateArgs struct {
 
 // Definition of the certificate.
 type LookupCertificateResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets the creation time.
 	CreationTime string `pulumi:"creationTime"`
 	// Gets or sets the description.
@@ -91,6 +91,11 @@ func (o LookupCertificateResultOutput) ToLookupCertificateResultOutput() LookupC
 
 func (o LookupCertificateResultOutput) ToLookupCertificateResultOutputWithContext(ctx context.Context) LookupCertificateResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupCertificateResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCertificateResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets the creation time.

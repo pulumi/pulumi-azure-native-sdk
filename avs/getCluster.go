@@ -11,10 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A cluster resource
-// Azure REST API version: 2022-05-01.
-//
-// Other available API versions: 2020-03-20, 2021-06-01, 2023-03-01, 2023-09-01.
+// Get a Cluster
+// Azure REST API version: 2023-09-01.
 func LookupCluster(ctx *pulumi.Context, args *LookupClusterArgs, opts ...pulumi.InvokeOption) (*LookupClusterResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupClusterResult
@@ -26,7 +24,7 @@ func LookupCluster(ctx *pulumi.Context, args *LookupClusterArgs, opts ...pulumi.
 }
 
 type LookupClusterArgs struct {
-	// Name of the cluster in the private cloud
+	// Name of the cluster
 	ClusterName string `pulumi:"clusterName"`
 	// Name of the private cloud
 	PrivateCloudName string `pulumi:"privateCloudName"`
@@ -36,22 +34,28 @@ type LookupClusterArgs struct {
 
 // A cluster resource
 type LookupClusterResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The identity
 	ClusterId int `pulumi:"clusterId"`
 	// The cluster size
 	ClusterSize *int `pulumi:"clusterSize"`
 	// The hosts
 	Hosts []string `pulumi:"hosts"`
-	// Resource ID.
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
-	// Resource name.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// The state of the cluster provisioning
 	ProvisioningState string `pulumi:"provisioningState"`
-	// The cluster SKU
+	// The SKU (Stock Keeping Unit) assigned to this resource.
 	Sku SkuResponse `pulumi:"sku"`
-	// Resource type.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
+	// Name of the vsan datastore associated with the cluster
+	VsanDatastoreName *string `pulumi:"vsanDatastoreName"`
 }
 
 func LookupClusterOutput(ctx *pulumi.Context, args LookupClusterOutputArgs, opts ...pulumi.InvokeOption) LookupClusterResultOutput {
@@ -64,7 +68,7 @@ func LookupClusterOutput(ctx *pulumi.Context, args LookupClusterOutputArgs, opts
 }
 
 type LookupClusterOutputArgs struct {
-	// Name of the cluster in the private cloud
+	// Name of the cluster
 	ClusterName pulumi.StringInput `pulumi:"clusterName"`
 	// Name of the private cloud
 	PrivateCloudName pulumi.StringInput `pulumi:"privateCloudName"`
@@ -91,6 +95,11 @@ func (o LookupClusterResultOutput) ToLookupClusterResultOutputWithContext(ctx co
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupClusterResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The identity
 func (o LookupClusterResultOutput) ClusterId() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupClusterResult) int { return v.ClusterId }).(pulumi.IntOutput)
@@ -106,12 +115,12 @@ func (o LookupClusterResultOutput) Hosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupClusterResult) []string { return v.Hosts }).(pulumi.StringArrayOutput)
 }
 
-// Resource ID.
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupClusterResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o LookupClusterResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -121,14 +130,24 @@ func (o LookupClusterResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// The cluster SKU
+// The SKU (Stock Keeping Unit) assigned to this resource.
 func (o LookupClusterResultOutput) Sku() SkuResponseOutput {
 	return o.ApplyT(func(v LookupClusterResult) SkuResponse { return v.Sku }).(SkuResponseOutput)
 }
 
-// Resource type.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupClusterResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupClusterResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupClusterResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Name of the vsan datastore associated with the cluster
+func (o LookupClusterResultOutput) VsanDatastoreName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupClusterResult) *string { return v.VsanDatastoreName }).(pulumi.StringPtrOutput)
 }
 
 func init() {

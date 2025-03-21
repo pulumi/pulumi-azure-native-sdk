@@ -12,9 +12,7 @@ import (
 )
 
 // Gets a connection monitor by name.
-// Azure REST API version: 2023-02-01.
-//
-// Other available API versions: 2019-09-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Azure REST API version: 2024-05-01.
 func LookupConnectionMonitor(ctx *pulumi.Context, args *LookupConnectionMonitorArgs, opts ...pulumi.InvokeOption) (*LookupConnectionMonitorResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupConnectionMonitorResult
@@ -38,6 +36,8 @@ type LookupConnectionMonitorArgs struct {
 type LookupConnectionMonitorResult struct {
 	// Determines if the connection monitor will start automatically once created.
 	AutoStart *bool `pulumi:"autoStart"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Type of connection monitor.
 	ConnectionMonitorType string `pulumi:"connectionMonitorType"`
 	// Describes the destination of connection monitor.
@@ -132,6 +132,11 @@ func (o LookupConnectionMonitorResultOutput) ToLookupConnectionMonitorResultOutp
 // Determines if the connection monitor will start automatically once created.
 func (o LookupConnectionMonitorResultOutput) AutoStart() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupConnectionMonitorResult) *bool { return v.AutoStart }).(pulumi.BoolPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupConnectionMonitorResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectionMonitorResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Type of connection monitor.

@@ -11,10 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The service tasks resource is a nested, proxy-only resource representing work performed by a DMS instance. The GET method retrieves information about a service task.
-// Azure REST API version: 2021-06-30.
-//
-// Other available API versions: 2022-03-30-preview, 2023-07-15-preview.
+// The service tasks resource is a nested, proxy-only resource representing work performed by a DMS (classic) instance. The GET method retrieves information about a service task.
+// Azure REST API version: 2023-07-15-preview.
 func LookupServiceTask(ctx *pulumi.Context, args *LookupServiceTaskArgs, opts ...pulumi.InvokeOption) (*LookupServiceTaskResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupServiceTaskResult
@@ -38,6 +36,8 @@ type LookupServiceTaskArgs struct {
 
 // A task resource
 type LookupServiceTaskResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// HTTP strong entity tag value. This is ignored if submitted.
 	Etag *string `pulumi:"etag"`
 	// Resource ID.
@@ -89,6 +89,11 @@ func (o LookupServiceTaskResultOutput) ToLookupServiceTaskResultOutput() LookupS
 
 func (o LookupServiceTaskResultOutput) ToLookupServiceTaskResultOutputWithContext(ctx context.Context) LookupServiceTaskResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupServiceTaskResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceTaskResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // HTTP strong entity tag value. This is ignored if submitted.

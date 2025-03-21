@@ -16,9 +16,7 @@ import (
 // represented in the status of this resource. All resources associated with this cloud services network will be part
 // of the same layer 2 (L2) isolation domain. At least one service network must be created but may be reused across many
 // virtual machines and/or Hybrid AKS clusters.
-// Azure REST API version: 2023-10-01-preview. Prior API version in Azure Native 1.x: 2022-12-12-preview.
-//
-// Other available API versions: 2023-07-01, 2024-06-01-preview, 2024-07-01, 2024-10-01-preview.
+// Azure REST API version: 2025-02-01. Prior API version in Azure Native 2.x: 2023-10-01-preview.
 type CloudServicesNetwork struct {
 	pulumi.CustomResourceState
 
@@ -26,6 +24,8 @@ type CloudServicesNetwork struct {
 	AdditionalEgressEndpoints EgressEndpointResponseArrayOutput `pulumi:"additionalEgressEndpoints"`
 	// The list of resource IDs for the other Microsoft.NetworkCloud resources that have attached this network.
 	AssociatedResourceIds pulumi.StringArrayOutput `pulumi:"associatedResourceIds"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The resource ID of the Network Cloud cluster this cloud services network is associated with.
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
 	// The more detailed status of the cloud services network.
@@ -36,6 +36,8 @@ type CloudServicesNetwork struct {
 	EnableDefaultEgressEndpoints pulumi.StringPtrOutput `pulumi:"enableDefaultEgressEndpoints"`
 	// The full list of additional and default egress endpoints that are currently enabled.
 	EnabledEgressEndpoints EgressEndpointResponseArrayOutput `pulumi:"enabledEgressEndpoints"`
+	// Resource ETag.
+	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The extended location of the cluster associated with the resource.
 	ExtendedLocation ExtendedLocationResponseOutput `pulumi:"extendedLocation"`
 	// Field Deprecated. These fields will be empty/omitted. The list of Hybrid AKS cluster resource IDs that are associated with this cloud services network.
@@ -89,6 +91,9 @@ func NewCloudServicesNetwork(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:networkcloud/v20241001preview:CloudServicesNetwork"),
+		},
+		{
+			Type: pulumi.String("azure-native:networkcloud/v20250201:CloudServicesNetwork"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -206,6 +211,11 @@ func (o CloudServicesNetworkOutput) AssociatedResourceIds() pulumi.StringArrayOu
 	return o.ApplyT(func(v *CloudServicesNetwork) pulumi.StringArrayOutput { return v.AssociatedResourceIds }).(pulumi.StringArrayOutput)
 }
 
+// The Azure API version of the resource.
+func (o CloudServicesNetworkOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *CloudServicesNetwork) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The resource ID of the Network Cloud cluster this cloud services network is associated with.
 func (o CloudServicesNetworkOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *CloudServicesNetwork) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
@@ -229,6 +239,11 @@ func (o CloudServicesNetworkOutput) EnableDefaultEgressEndpoints() pulumi.String
 // The full list of additional and default egress endpoints that are currently enabled.
 func (o CloudServicesNetworkOutput) EnabledEgressEndpoints() EgressEndpointResponseArrayOutput {
 	return o.ApplyT(func(v *CloudServicesNetwork) EgressEndpointResponseArrayOutput { return v.EnabledEgressEndpoints }).(EgressEndpointResponseArrayOutput)
+}
+
+// Resource ETag.
+func (o CloudServicesNetworkOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *CloudServicesNetwork) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
 // The extended location of the cluster associated with the resource.

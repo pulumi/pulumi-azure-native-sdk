@@ -12,9 +12,7 @@ import (
 )
 
 // Retrieves the requested ExpressRoutePort resource.
-// Azure REST API version: 2023-02-01.
-//
-// Other available API versions: 2019-08-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Azure REST API version: 2024-05-01.
 func LookupExpressRoutePort(ctx *pulumi.Context, args *LookupExpressRoutePortArgs, opts ...pulumi.InvokeOption) (*LookupExpressRoutePortResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupExpressRoutePortResult
@@ -36,6 +34,8 @@ type LookupExpressRoutePortArgs struct {
 type LookupExpressRoutePortResult struct {
 	// Date of the physical port allocation to be used in Letter of Authorization.
 	AllocationDate string `pulumi:"allocationDate"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Bandwidth of procured ports in Gbps.
 	BandwidthInGbps *int `pulumi:"bandwidthInGbps"`
 	// The billing type of the ExpressRoutePort resource.
@@ -112,6 +112,11 @@ func (o LookupExpressRoutePortResultOutput) ToLookupExpressRoutePortResultOutput
 // Date of the physical port allocation to be used in Letter of Authorization.
 func (o LookupExpressRoutePortResultOutput) AllocationDate() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExpressRoutePortResult) string { return v.AllocationDate }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupExpressRoutePortResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupExpressRoutePortResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Bandwidth of procured ports in Gbps.

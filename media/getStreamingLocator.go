@@ -13,8 +13,6 @@ import (
 
 // Get the details of a Streaming Locator in the Media Services account
 // Azure REST API version: 2023-01-01.
-//
-// Other available API versions: 2018-03-30-preview.
 func LookupStreamingLocator(ctx *pulumi.Context, args *LookupStreamingLocatorArgs, opts ...pulumi.InvokeOption) (*LookupStreamingLocatorResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupStreamingLocatorResult
@@ -40,6 +38,8 @@ type LookupStreamingLocatorResult struct {
 	AlternativeMediaId *string `pulumi:"alternativeMediaId"`
 	// Asset Name
 	AssetName string `pulumi:"assetName"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The ContentKeys used by this Streaming Locator.
 	ContentKeys []StreamingLocatorContentKeyResponse `pulumi:"contentKeys"`
 	// The creation time of the Streaming Locator.
@@ -111,6 +111,11 @@ func (o LookupStreamingLocatorResultOutput) AlternativeMediaId() pulumi.StringPt
 // Asset Name
 func (o LookupStreamingLocatorResultOutput) AssetName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStreamingLocatorResult) string { return v.AssetName }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupStreamingLocatorResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStreamingLocatorResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The ContentKeys used by this Streaming Locator.

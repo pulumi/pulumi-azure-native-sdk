@@ -38,6 +38,8 @@ type LookupSourceControlConfigurationArgs struct {
 
 // The SourceControl Configuration object returned in Get & Put response.
 type LookupSourceControlConfigurationResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Compliance Status of the Configuration
 	ComplianceStatus ComplianceStatusResponse `pulumi:"complianceStatus"`
 	// Name-value pairs of protected configuration settings for the configuration
@@ -125,6 +127,11 @@ func (o LookupSourceControlConfigurationResultOutput) ToLookupSourceControlConfi
 
 func (o LookupSourceControlConfigurationResultOutput) ToLookupSourceControlConfigurationResultOutputWithContext(ctx context.Context) LookupSourceControlConfigurationResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupSourceControlConfigurationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSourceControlConfigurationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Compliance Status of the Configuration

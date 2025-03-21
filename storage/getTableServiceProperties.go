@@ -12,9 +12,7 @@ import (
 )
 
 // Gets the properties of a storage account’s Table service, including properties for Storage Analytics and CORS (Cross-Origin Resource Sharing) rules.
-// Azure REST API version: 2022-09-01.
-//
-// Other available API versions: 2023-01-01, 2023-04-01, 2023-05-01, 2024-01-01.
+// Azure REST API version: 2024-01-01.
 func LookupTableServiceProperties(ctx *pulumi.Context, args *LookupTableServicePropertiesArgs, opts ...pulumi.InvokeOption) (*LookupTableServicePropertiesResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTableServicePropertiesResult
@@ -36,6 +34,8 @@ type LookupTableServicePropertiesArgs struct {
 
 // The properties of a storage account’s Table service.
 type LookupTableServicePropertiesResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Specifies CORS rules for the Table service. You can include up to five CorsRule elements in the request. If no CorsRule elements are included in the request body, all CORS rules will be deleted, and CORS will be disabled for the Table service.
 	Cors *CorsRulesResponse `pulumi:"cors"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -81,6 +81,11 @@ func (o LookupTableServicePropertiesResultOutput) ToLookupTableServiceProperties
 
 func (o LookupTableServicePropertiesResultOutput) ToLookupTableServicePropertiesResultOutputWithContext(ctx context.Context) LookupTableServicePropertiesResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupTableServicePropertiesResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTableServicePropertiesResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Specifies CORS rules for the Table service. You can include up to five CorsRule elements in the request. If no CorsRule elements are included in the request body, all CORS rules will be deleted, and CORS will be disabled for the Table service.

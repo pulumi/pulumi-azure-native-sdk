@@ -12,9 +12,7 @@ import (
 )
 
 // Gets the specified ExpressRouteConnection.
-// Azure REST API version: 2023-02-01.
-//
-// Other available API versions: 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Azure REST API version: 2024-05-01.
 func LookupExpressRouteConnection(ctx *pulumi.Context, args *LookupExpressRouteConnectionArgs, opts ...pulumi.InvokeOption) (*LookupExpressRouteConnectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupExpressRouteConnectionResult
@@ -38,6 +36,8 @@ type LookupExpressRouteConnectionArgs struct {
 type LookupExpressRouteConnectionResult struct {
 	// Authorization key to establish the connection.
 	AuthorizationKey *string `pulumi:"authorizationKey"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Enable internet security.
 	EnableInternetSecurity *bool `pulumi:"enableInternetSecurity"`
 	// Bypass the ExpressRoute gateway when accessing private-links. ExpressRoute FastPath (expressRouteGatewayBypass) must be enabled.
@@ -98,6 +98,11 @@ func (o LookupExpressRouteConnectionResultOutput) ToLookupExpressRouteConnection
 // Authorization key to establish the connection.
 func (o LookupExpressRouteConnectionResultOutput) AuthorizationKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupExpressRouteConnectionResult) *string { return v.AuthorizationKey }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupExpressRouteConnectionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupExpressRouteConnectionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Enable internet security.

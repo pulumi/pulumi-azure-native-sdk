@@ -13,12 +13,12 @@ import (
 )
 
 // Information about the SourceToCloud builder resource.
-// Azure REST API version: 2023-08-01-preview.
-//
-// Other available API versions: 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview.
+// Azure REST API version: 2024-10-02-preview. Prior API version in Azure Native 2.x: 2023-08-01-preview.
 type Builder struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// List of mappings of container registries and the managed identity used to connect to it.
 	ContainerRegistries ContainerRegistryResponseArrayOutput `pulumi:"containerRegistries"`
 	// Resource ID of the container apps environment that the builder is associated with.
@@ -172,6 +172,11 @@ func (o BuilderOutput) ToBuilderOutput() BuilderOutput {
 
 func (o BuilderOutput) ToBuilderOutputWithContext(ctx context.Context) BuilderOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o BuilderOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Builder) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // List of mappings of container registries and the managed identity used to connect to it.

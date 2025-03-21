@@ -12,9 +12,7 @@ import (
 )
 
 // Description for Get the named hostname binding for an app (or deployment slot, if specified).
-// Azure REST API version: 2022-09-01.
-//
-// Other available API versions: 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
+// Azure REST API version: 2024-04-01.
 func LookupWebAppHostNameBindingSlot(ctx *pulumi.Context, args *LookupWebAppHostNameBindingSlotArgs, opts ...pulumi.InvokeOption) (*LookupWebAppHostNameBindingSlotResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebAppHostNameBindingSlotResult
@@ -38,6 +36,8 @@ type LookupWebAppHostNameBindingSlotArgs struct {
 
 // A hostname binding object.
 type LookupWebAppHostNameBindingSlotResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Azure resource name.
 	AzureResourceName *string `pulumi:"azureResourceName"`
 	// Azure resource type.
@@ -103,6 +103,11 @@ func (o LookupWebAppHostNameBindingSlotResultOutput) ToLookupWebAppHostNameBindi
 
 func (o LookupWebAppHostNameBindingSlotResultOutput) ToLookupWebAppHostNameBindingSlotResultOutputWithContext(ctx context.Context) LookupWebAppHostNameBindingSlotResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupWebAppHostNameBindingSlotResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWebAppHostNameBindingSlotResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Azure resource name.

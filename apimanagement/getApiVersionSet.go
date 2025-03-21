@@ -12,9 +12,7 @@ import (
 )
 
 // Gets the details of the Api Version Set specified by its identifier.
-// Azure REST API version: 2022-08-01.
-//
-// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
+// Azure REST API version: 2022-09-01-preview.
 func LookupApiVersionSet(ctx *pulumi.Context, args *LookupApiVersionSetArgs, opts ...pulumi.InvokeOption) (*LookupApiVersionSetResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupApiVersionSetResult
@@ -36,6 +34,8 @@ type LookupApiVersionSetArgs struct {
 
 // API Version Set Contract details.
 type LookupApiVersionSetResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Description of API Version Set.
 	Description *string `pulumi:"description"`
 	// Name of API Version Set
@@ -89,6 +89,11 @@ func (o LookupApiVersionSetResultOutput) ToLookupApiVersionSetResultOutput() Loo
 
 func (o LookupApiVersionSetResultOutput) ToLookupApiVersionSetResultOutputWithContext(ctx context.Context) LookupApiVersionSetResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupApiVersionSetResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApiVersionSetResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Description of API Version Set.

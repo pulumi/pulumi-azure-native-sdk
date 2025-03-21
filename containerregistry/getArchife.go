@@ -12,9 +12,7 @@ import (
 )
 
 // Gets the properties of the archive.
-// Azure REST API version: 2023-06-01-preview.
-//
-// Other available API versions: 2023-08-01-preview, 2023-11-01-preview, 2024-11-01-preview.
+// Azure REST API version: 2024-11-01-preview.
 func LookupArchife(ctx *pulumi.Context, args *LookupArchifeArgs, opts ...pulumi.InvokeOption) (*LookupArchifeResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupArchifeResult
@@ -38,6 +36,8 @@ type LookupArchifeArgs struct {
 
 // An object that represents a archive for a container registry.
 type LookupArchifeResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The resource ID.
 	Id string `pulumi:"id"`
 	// The name of the resource.
@@ -93,6 +93,11 @@ func (o LookupArchifeResultOutput) ToLookupArchifeResultOutput() LookupArchifeRe
 
 func (o LookupArchifeResultOutput) ToLookupArchifeResultOutputWithContext(ctx context.Context) LookupArchifeResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupArchifeResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupArchifeResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The resource ID.

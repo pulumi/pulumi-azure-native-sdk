@@ -13,9 +13,7 @@ import (
 )
 
 // ArcSetting details.
-// Azure REST API version: 2023-03-01. Prior API version in Azure Native 1.x: 2021-01-01-preview.
-//
-// Other available API versions: 2021-09-01-preview, 2022-12-15-preview, 2023-06-01, 2023-08-01, 2023-08-01-preview, 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-04-01, 2024-09-01-preview, 2024-12-01-preview.
+// Azure REST API version: 2024-04-01. Prior API version in Azure Native 2.x: 2023-03-01.
 type ArcSetting struct {
 	pulumi.CustomResourceState
 
@@ -31,6 +29,8 @@ type ArcSetting struct {
 	ArcInstanceResourceGroup pulumi.StringPtrOutput `pulumi:"arcInstanceResourceGroup"`
 	// Object id of arc AAD service principal.
 	ArcServicePrincipalObjectId pulumi.StringPtrOutput `pulumi:"arcServicePrincipalObjectId"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// contains connectivity related configuration for ARC resources
 	ConnectivityProperties ArcConnectivityPropertiesResponseArrayOutput `pulumi:"connectivityProperties"`
 	// Properties for each of the default extensions category
@@ -266,6 +266,11 @@ func (o ArcSettingOutput) ArcInstanceResourceGroup() pulumi.StringPtrOutput {
 // Object id of arc AAD service principal.
 func (o ArcSettingOutput) ArcServicePrincipalObjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ArcSetting) pulumi.StringPtrOutput { return v.ArcServicePrincipalObjectId }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o ArcSettingOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ArcSetting) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // contains connectivity related configuration for ARC resources

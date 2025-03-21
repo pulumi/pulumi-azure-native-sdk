@@ -13,14 +13,14 @@ import (
 )
 
 // ExpressRouteConnection resource.
-// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2020-11-01.
-//
-// Other available API versions: 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Azure REST API version: 2024-05-01. Prior API version in Azure Native 2.x: 2023-02-01.
 type ExpressRouteConnection struct {
 	pulumi.CustomResourceState
 
 	// Authorization key to establish the connection.
 	AuthorizationKey pulumi.StringPtrOutput `pulumi:"authorizationKey"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Enable internet security.
 	EnableInternetSecurity pulumi.BoolPtrOutput `pulumi:"enableInternetSecurity"`
 	// Bypass the ExpressRoute gateway when accessing private-links. ExpressRoute FastPath (expressRouteGatewayBypass) must be enabled.
@@ -299,6 +299,11 @@ func (o ExpressRouteConnectionOutput) ToExpressRouteConnectionOutputWithContext(
 // Authorization key to establish the connection.
 func (o ExpressRouteConnectionOutput) AuthorizationKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ExpressRouteConnection) pulumi.StringPtrOutput { return v.AuthorizationKey }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o ExpressRouteConnectionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ExpressRouteConnection) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Enable internet security.

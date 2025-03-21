@@ -13,12 +13,12 @@ import (
 )
 
 // REST model used to encapsulate Private Link properties for tracked resources.
-// Azure REST API version: 2023-06-06.
-//
-// Other available API versions: 2023-10-01-preview, 2024-05-01-preview.
+// Azure REST API version: 2023-10-01-preview. Prior API version in Azure Native 2.x: 2023-06-06.
 type PrivateEndpointConnectionController struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// array of group ids
 	GroupIds pulumi.StringArrayOutput `pulumi:"groupIds"`
 	// The name of the resource
@@ -50,6 +50,9 @@ func NewPrivateEndpointConnectionController(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:offazure/v20200707:PrivateEndpointConnection"),
+		},
+		{
 			Type: pulumi.String("azure-native:offazure/v20200707:PrivateEndpointConnectionController"),
 		},
 		{
@@ -60,6 +63,9 @@ func NewPrivateEndpointConnectionController(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:offazure/v20240501preview:PrivateEndpointConnectionController"),
+		},
+		{
+			Type: pulumi.String("azure-native:offazure:PrivateEndpointConnection"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -153,6 +159,11 @@ func (o PrivateEndpointConnectionControllerOutput) ToPrivateEndpointConnectionCo
 
 func (o PrivateEndpointConnectionControllerOutput) ToPrivateEndpointConnectionControllerOutputWithContext(ctx context.Context) PrivateEndpointConnectionControllerOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o PrivateEndpointConnectionControllerOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrivateEndpointConnectionController) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // array of group ids

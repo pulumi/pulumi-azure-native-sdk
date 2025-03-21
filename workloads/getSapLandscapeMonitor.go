@@ -12,9 +12,7 @@ import (
 )
 
 // Gets configuration values for Single Pane Of Glass for SAP monitor for the specified subscription, resource group, and resource name.
-// Azure REST API version: 2023-04-01.
-//
-// Other available API versions: 2023-10-01-preview, 2023-12-01-preview, 2024-02-01-preview.
+// Azure REST API version: 2024-02-01-preview.
 func LookupSapLandscapeMonitor(ctx *pulumi.Context, args *LookupSapLandscapeMonitorArgs, opts ...pulumi.InvokeOption) (*LookupSapLandscapeMonitorResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSapLandscapeMonitorResult
@@ -34,9 +32,11 @@ type LookupSapLandscapeMonitorArgs struct {
 
 // configuration associated with SAP Landscape Monitor Dashboard.
 type LookupSapLandscapeMonitorResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets or sets the SID groupings by landscape and Environment.
-	Grouping *SapLandscapeMonitorPropertiesResponseGrouping `pulumi:"grouping"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Grouping *SapLandscapeMonitorPropertiesGroupingResponse `pulumi:"grouping"`
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The name of the resource
 	Name string `pulumi:"name"`
@@ -85,14 +85,19 @@ func (o LookupSapLandscapeMonitorResultOutput) ToLookupSapLandscapeMonitorResult
 	return o
 }
 
-// Gets or sets the SID groupings by landscape and Environment.
-func (o LookupSapLandscapeMonitorResultOutput) Grouping() SapLandscapeMonitorPropertiesResponseGroupingPtrOutput {
-	return o.ApplyT(func(v LookupSapLandscapeMonitorResult) *SapLandscapeMonitorPropertiesResponseGrouping {
-		return v.Grouping
-	}).(SapLandscapeMonitorPropertiesResponseGroupingPtrOutput)
+// The Azure API version of the resource.
+func (o LookupSapLandscapeMonitorResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSapLandscapeMonitorResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Gets or sets the SID groupings by landscape and Environment.
+func (o LookupSapLandscapeMonitorResultOutput) Grouping() SapLandscapeMonitorPropertiesGroupingResponsePtrOutput {
+	return o.ApplyT(func(v LookupSapLandscapeMonitorResult) *SapLandscapeMonitorPropertiesGroupingResponse {
+		return v.Grouping
+	}).(SapLandscapeMonitorPropertiesGroupingResponsePtrOutput)
+}
+
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupSapLandscapeMonitorResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSapLandscapeMonitorResult) string { return v.Id }).(pulumi.StringOutput)
 }

@@ -34,6 +34,8 @@ type LookupMachineLearningDatastoreArgs struct {
 
 // Machine Learning datastore object wrapped into ARM resource envelope.
 type LookupMachineLearningDatastoreResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Specifies the resource ID.
 	Id string `pulumi:"id"`
 	// The identity of the resource.
@@ -97,6 +99,11 @@ func (o LookupMachineLearningDatastoreResultOutput) ToLookupMachineLearningDatas
 
 func (o LookupMachineLearningDatastoreResultOutput) ToLookupMachineLearningDatastoreResultOutputWithContext(ctx context.Context) LookupMachineLearningDatastoreResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupMachineLearningDatastoreResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMachineLearningDatastoreResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Specifies the resource ID.

@@ -13,10 +13,12 @@ import (
 )
 
 // Security Standard on a resource
-// Azure REST API version: 2021-08-01-preview. Prior API version in Azure Native 1.x: 2021-08-01-preview.
+// Azure REST API version: 2021-08-01-preview. Prior API version in Azure Native 2.x: 2021-08-01-preview.
 type Standard struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// category of the standard provided
 	Category pulumi.StringPtrOutput `pulumi:"category"`
 	// List of component objects containing component unique keys (such as assessment keys) to apply to standard scope.  Currently only supports assessment keys.
@@ -175,6 +177,11 @@ func (o StandardOutput) ToStandardOutput() StandardOutput {
 
 func (o StandardOutput) ToStandardOutputWithContext(ctx context.Context) StandardOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o StandardOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Standard) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // category of the standard provided

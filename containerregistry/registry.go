@@ -13,14 +13,16 @@ import (
 )
 
 // An object that represents a container registry.
-// Azure REST API version: 2022-12-01. Prior API version in Azure Native 1.x: 2019-05-01.
-//
-// Other available API versions: 2017-03-01, 2019-05-01, 2023-01-01-preview, 2023-06-01-preview, 2023-07-01, 2023-08-01-preview, 2023-11-01-preview, 2024-11-01-preview.
+// Azure REST API version: 2023-01-01-preview. Prior API version in Azure Native 2.x: 2022-12-01.
 type Registry struct {
 	pulumi.CustomResourceState
 
 	// The value that indicates whether the admin user is enabled.
 	AdminUserEnabled pulumi.BoolPtrOutput `pulumi:"adminUserEnabled"`
+	// Enables registry-wide pull from unauthenticated clients.
+	AnonymousPullEnabled pulumi.BoolPtrOutput `pulumi:"anonymousPullEnabled"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The creation date of the container registry in ISO8601 format.
 	CreationDate pulumi.StringOutput `pulumi:"creationDate"`
 	// Enable a single data endpoint per region for serving data.
@@ -78,6 +80,9 @@ func NewRegistry(ctx *pulumi.Context,
 	}
 	if args.AdminUserEnabled == nil {
 		args.AdminUserEnabled = pulumi.BoolPtr(false)
+	}
+	if args.AnonymousPullEnabled == nil {
+		args.AnonymousPullEnabled = pulumi.BoolPtr(false)
 	}
 	if args.NetworkRuleBypassOptions == nil {
 		args.NetworkRuleBypassOptions = pulumi.StringPtr("AzureServices")
@@ -183,6 +188,8 @@ func (RegistryState) ElementType() reflect.Type {
 type registryArgs struct {
 	// The value that indicates whether the admin user is enabled.
 	AdminUserEnabled *bool `pulumi:"adminUserEnabled"`
+	// Enables registry-wide pull from unauthenticated clients.
+	AnonymousPullEnabled *bool `pulumi:"anonymousPullEnabled"`
 	// Enable a single data endpoint per region for serving data.
 	DataEndpointEnabled *bool `pulumi:"dataEndpointEnabled"`
 	// The encryption settings of container registry.
@@ -215,6 +222,8 @@ type registryArgs struct {
 type RegistryArgs struct {
 	// The value that indicates whether the admin user is enabled.
 	AdminUserEnabled pulumi.BoolPtrInput
+	// Enables registry-wide pull from unauthenticated clients.
+	AnonymousPullEnabled pulumi.BoolPtrInput
 	// Enable a single data endpoint per region for serving data.
 	DataEndpointEnabled pulumi.BoolPtrInput
 	// The encryption settings of container registry.
@@ -283,6 +292,16 @@ func (o RegistryOutput) ToRegistryOutputWithContext(ctx context.Context) Registr
 // The value that indicates whether the admin user is enabled.
 func (o RegistryOutput) AdminUserEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Registry) pulumi.BoolPtrOutput { return v.AdminUserEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Enables registry-wide pull from unauthenticated clients.
+func (o RegistryOutput) AnonymousPullEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Registry) pulumi.BoolPtrOutput { return v.AnonymousPullEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o RegistryOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Registry) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The creation date of the container registry in ISO8601 format.

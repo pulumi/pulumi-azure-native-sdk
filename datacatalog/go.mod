@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-azure-native-sdk/datacatalog/v2
+module github.com/pulumi/pulumi-azure-native-sdk/datacatalog/v3
 
 go 1.22
 

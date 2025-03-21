@@ -13,25 +13,25 @@ import (
 )
 
 // A custom certificate.
-// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2022-02-01.
-//
-// Other available API versions: 2023-03-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-08-01-preview, 2024-10-01-preview.
+// Azure REST API version: 2024-03-01. Prior API version in Azure Native 2.x: 2023-02-01.
 type SignalRCustomCertificate struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Base uri of the KeyVault that stores certificate.
 	KeyVaultBaseUri pulumi.StringOutput `pulumi:"keyVaultBaseUri"`
 	// Certificate secret name.
 	KeyVaultSecretName pulumi.StringOutput `pulumi:"keyVaultSecretName"`
 	// Certificate secret version.
 	KeyVaultSecretVersion pulumi.StringPtrOutput `pulumi:"keyVaultSecretVersion"`
-	// The name of the resource.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Provisioning state of the resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// Metadata pertaining to creation and last modification of the resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// The type of the resource - e.g. "Microsoft.SignalRService/SignalR"
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -131,7 +131,7 @@ type signalRCustomCertificateArgs struct {
 	KeyVaultSecretName string `pulumi:"keyVaultSecretName"`
 	// Certificate secret version.
 	KeyVaultSecretVersion *string `pulumi:"keyVaultSecretVersion"`
-	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the resource.
 	ResourceName string `pulumi:"resourceName"`
@@ -147,7 +147,7 @@ type SignalRCustomCertificateArgs struct {
 	KeyVaultSecretName pulumi.StringInput
 	// Certificate secret version.
 	KeyVaultSecretVersion pulumi.StringPtrInput
-	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The name of the resource.
 	ResourceName pulumi.StringInput
@@ -190,6 +190,11 @@ func (o SignalRCustomCertificateOutput) ToSignalRCustomCertificateOutputWithCont
 	return o
 }
 
+// The Azure API version of the resource.
+func (o SignalRCustomCertificateOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SignalRCustomCertificate) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Base uri of the KeyVault that stores certificate.
 func (o SignalRCustomCertificateOutput) KeyVaultBaseUri() pulumi.StringOutput {
 	return o.ApplyT(func(v *SignalRCustomCertificate) pulumi.StringOutput { return v.KeyVaultBaseUri }).(pulumi.StringOutput)
@@ -205,7 +210,7 @@ func (o SignalRCustomCertificateOutput) KeyVaultSecretVersion() pulumi.StringPtr
 	return o.ApplyT(func(v *SignalRCustomCertificate) pulumi.StringPtrOutput { return v.KeyVaultSecretVersion }).(pulumi.StringPtrOutput)
 }
 
-// The name of the resource.
+// The name of the resource
 func (o SignalRCustomCertificateOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SignalRCustomCertificate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -215,12 +220,12 @@ func (o SignalRCustomCertificateOutput) ProvisioningState() pulumi.StringOutput 
 	return o.ApplyT(func(v *SignalRCustomCertificate) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o SignalRCustomCertificateOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *SignalRCustomCertificate) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// The type of the resource - e.g. "Microsoft.SignalRService/SignalR"
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o SignalRCustomCertificateOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *SignalRCustomCertificate) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

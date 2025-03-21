@@ -13,12 +13,14 @@ import (
 )
 
 // Governance assignment over a given scope
-// Azure REST API version: 2022-01-01-preview.
+// Azure REST API version: 2022-01-01-preview. Prior API version in Azure Native 2.x: 2022-01-01-preview.
 type GovernanceAssignment struct {
 	pulumi.CustomResourceState
 
 	// The additional data for the governance assignment - e.g. links to ticket (optional), see example
 	AdditionalData GovernanceAssignmentAdditionalDataResponsePtrOutput `pulumi:"additionalData"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The email notifications settings for the governance rule, states whether to disable notifications for mangers and owners
 	GovernanceEmailNotification GovernanceEmailNotificationResponsePtrOutput `pulumi:"governanceEmailNotification"`
 	// Defines whether there is a grace period on the governance assignment
@@ -174,6 +176,11 @@ func (o GovernanceAssignmentOutput) AdditionalData() GovernanceAssignmentAdditio
 	return o.ApplyT(func(v *GovernanceAssignment) GovernanceAssignmentAdditionalDataResponsePtrOutput {
 		return v.AdditionalData
 	}).(GovernanceAssignmentAdditionalDataResponsePtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o GovernanceAssignmentOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *GovernanceAssignment) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The email notifications settings for the governance rule, states whether to disable notifications for mangers and owners

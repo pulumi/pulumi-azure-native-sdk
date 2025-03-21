@@ -12,9 +12,7 @@ import (
 )
 
 // get a dryrun job
-// Azure REST API version: 2022-11-01-preview.
-//
-// Other available API versions: 2023-04-01-preview, 2024-04-01, 2024-07-01-preview.
+// Azure REST API version: 2024-04-01.
 func LookupConnectorDryrun(ctx *pulumi.Context, args *LookupConnectorDryrunArgs, opts ...pulumi.InvokeOption) (*LookupConnectorDryrunResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupConnectorDryrunResult
@@ -38,6 +36,8 @@ type LookupConnectorDryrunArgs struct {
 
 // a dryrun job resource
 type LookupConnectorDryrunResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The name of the resource
@@ -93,6 +93,11 @@ func (o LookupConnectorDryrunResultOutput) ToLookupConnectorDryrunResultOutput()
 
 func (o LookupConnectorDryrunResultOutput) ToLookupConnectorDryrunResultOutputWithContext(ctx context.Context) LookupConnectorDryrunResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupConnectorDryrunResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectorDryrunResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

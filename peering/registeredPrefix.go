@@ -13,10 +13,12 @@ import (
 )
 
 // The customer's prefix that is registered by the peering service provider.
-// Azure REST API version: 2022-10-01. Prior API version in Azure Native 1.x: 2021-01-01.
+// Azure REST API version: 2022-10-01. Prior API version in Azure Native 2.x: 2022-10-01.
 type RegisteredPrefix struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The error message associated with the validation state, if any.
 	ErrorMessage pulumi.StringOutput `pulumi:"errorMessage"`
 	// The name of the resource.
@@ -163,6 +165,11 @@ func (o RegisteredPrefixOutput) ToRegisteredPrefixOutput() RegisteredPrefixOutpu
 
 func (o RegisteredPrefixOutput) ToRegisteredPrefixOutputWithContext(ctx context.Context) RegisteredPrefixOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o RegisteredPrefixOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegisteredPrefix) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The error message associated with the validation state, if any.

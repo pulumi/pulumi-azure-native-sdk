@@ -12,9 +12,7 @@ import (
 )
 
 // Implements AvailabilitySet GET method.
-// Azure REST API version: 2022-05-21-preview.
-//
-// Other available API versions: 2023-04-01-preview, 2023-10-07, 2024-06-01.
+// Azure REST API version: 2023-04-01-preview.
 func LookupAvailabilitySet(ctx *pulumi.Context, args *LookupAvailabilitySetArgs, opts ...pulumi.InvokeOption) (*LookupAvailabilitySetResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAvailabilitySetResult
@@ -36,6 +34,8 @@ type LookupAvailabilitySetArgs struct {
 type LookupAvailabilitySetResult struct {
 	// Name of the availability set.
 	AvailabilitySetName *string `pulumi:"availabilitySetName"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The extended location.
 	ExtendedLocation *ExtendedLocationResponse `pulumi:"extendedLocation"`
 	// Resource Id
@@ -94,6 +94,11 @@ func (o LookupAvailabilitySetResultOutput) ToLookupAvailabilitySetResultOutputWi
 // Name of the availability set.
 func (o LookupAvailabilitySetResultOutput) AvailabilitySetName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAvailabilitySetResult) *string { return v.AvailabilitySetName }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupAvailabilitySetResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAvailabilitySetResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The extended location.

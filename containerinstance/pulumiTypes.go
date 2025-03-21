@@ -13,206 +13,6 @@ import (
 
 var _ = utilities.GetEnvOrDefault
 
-// The API entity reference.
-type ApiEntityReference struct {
-	// The ARM resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
-	Id *string `pulumi:"id"`
-}
-
-// ApiEntityReferenceInput is an input type that accepts ApiEntityReferenceArgs and ApiEntityReferenceOutput values.
-// You can construct a concrete instance of `ApiEntityReferenceInput` via:
-//
-//	ApiEntityReferenceArgs{...}
-type ApiEntityReferenceInput interface {
-	pulumi.Input
-
-	ToApiEntityReferenceOutput() ApiEntityReferenceOutput
-	ToApiEntityReferenceOutputWithContext(context.Context) ApiEntityReferenceOutput
-}
-
-// The API entity reference.
-type ApiEntityReferenceArgs struct {
-	// The ARM resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
-	Id pulumi.StringPtrInput `pulumi:"id"`
-}
-
-func (ApiEntityReferenceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApiEntityReference)(nil)).Elem()
-}
-
-func (i ApiEntityReferenceArgs) ToApiEntityReferenceOutput() ApiEntityReferenceOutput {
-	return i.ToApiEntityReferenceOutputWithContext(context.Background())
-}
-
-func (i ApiEntityReferenceArgs) ToApiEntityReferenceOutputWithContext(ctx context.Context) ApiEntityReferenceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApiEntityReferenceOutput)
-}
-
-func (i ApiEntityReferenceArgs) ToApiEntityReferencePtrOutput() ApiEntityReferencePtrOutput {
-	return i.ToApiEntityReferencePtrOutputWithContext(context.Background())
-}
-
-func (i ApiEntityReferenceArgs) ToApiEntityReferencePtrOutputWithContext(ctx context.Context) ApiEntityReferencePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApiEntityReferenceOutput).ToApiEntityReferencePtrOutputWithContext(ctx)
-}
-
-// ApiEntityReferencePtrInput is an input type that accepts ApiEntityReferenceArgs, ApiEntityReferencePtr and ApiEntityReferencePtrOutput values.
-// You can construct a concrete instance of `ApiEntityReferencePtrInput` via:
-//
-//	        ApiEntityReferenceArgs{...}
-//
-//	or:
-//
-//	        nil
-type ApiEntityReferencePtrInput interface {
-	pulumi.Input
-
-	ToApiEntityReferencePtrOutput() ApiEntityReferencePtrOutput
-	ToApiEntityReferencePtrOutputWithContext(context.Context) ApiEntityReferencePtrOutput
-}
-
-type apiEntityReferencePtrType ApiEntityReferenceArgs
-
-func ApiEntityReferencePtr(v *ApiEntityReferenceArgs) ApiEntityReferencePtrInput {
-	return (*apiEntityReferencePtrType)(v)
-}
-
-func (*apiEntityReferencePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ApiEntityReference)(nil)).Elem()
-}
-
-func (i *apiEntityReferencePtrType) ToApiEntityReferencePtrOutput() ApiEntityReferencePtrOutput {
-	return i.ToApiEntityReferencePtrOutputWithContext(context.Background())
-}
-
-func (i *apiEntityReferencePtrType) ToApiEntityReferencePtrOutputWithContext(ctx context.Context) ApiEntityReferencePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApiEntityReferencePtrOutput)
-}
-
-// The API entity reference.
-type ApiEntityReferenceOutput struct{ *pulumi.OutputState }
-
-func (ApiEntityReferenceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApiEntityReference)(nil)).Elem()
-}
-
-func (o ApiEntityReferenceOutput) ToApiEntityReferenceOutput() ApiEntityReferenceOutput {
-	return o
-}
-
-func (o ApiEntityReferenceOutput) ToApiEntityReferenceOutputWithContext(ctx context.Context) ApiEntityReferenceOutput {
-	return o
-}
-
-func (o ApiEntityReferenceOutput) ToApiEntityReferencePtrOutput() ApiEntityReferencePtrOutput {
-	return o.ToApiEntityReferencePtrOutputWithContext(context.Background())
-}
-
-func (o ApiEntityReferenceOutput) ToApiEntityReferencePtrOutputWithContext(ctx context.Context) ApiEntityReferencePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApiEntityReference) *ApiEntityReference {
-		return &v
-	}).(ApiEntityReferencePtrOutput)
-}
-
-// The ARM resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
-func (o ApiEntityReferenceOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ApiEntityReference) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-type ApiEntityReferencePtrOutput struct{ *pulumi.OutputState }
-
-func (ApiEntityReferencePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ApiEntityReference)(nil)).Elem()
-}
-
-func (o ApiEntityReferencePtrOutput) ToApiEntityReferencePtrOutput() ApiEntityReferencePtrOutput {
-	return o
-}
-
-func (o ApiEntityReferencePtrOutput) ToApiEntityReferencePtrOutputWithContext(ctx context.Context) ApiEntityReferencePtrOutput {
-	return o
-}
-
-func (o ApiEntityReferencePtrOutput) Elem() ApiEntityReferenceOutput {
-	return o.ApplyT(func(v *ApiEntityReference) ApiEntityReference {
-		if v != nil {
-			return *v
-		}
-		var ret ApiEntityReference
-		return ret
-	}).(ApiEntityReferenceOutput)
-}
-
-// The ARM resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
-func (o ApiEntityReferencePtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ApiEntityReference) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
-// The API entity reference.
-type ApiEntityReferenceResponse struct {
-	// The ARM resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
-	Id *string `pulumi:"id"`
-}
-
-// The API entity reference.
-type ApiEntityReferenceResponseOutput struct{ *pulumi.OutputState }
-
-func (ApiEntityReferenceResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApiEntityReferenceResponse)(nil)).Elem()
-}
-
-func (o ApiEntityReferenceResponseOutput) ToApiEntityReferenceResponseOutput() ApiEntityReferenceResponseOutput {
-	return o
-}
-
-func (o ApiEntityReferenceResponseOutput) ToApiEntityReferenceResponseOutputWithContext(ctx context.Context) ApiEntityReferenceResponseOutput {
-	return o
-}
-
-// The ARM resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
-func (o ApiEntityReferenceResponseOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ApiEntityReferenceResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-type ApiEntityReferenceResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ApiEntityReferenceResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ApiEntityReferenceResponse)(nil)).Elem()
-}
-
-func (o ApiEntityReferenceResponsePtrOutput) ToApiEntityReferenceResponsePtrOutput() ApiEntityReferenceResponsePtrOutput {
-	return o
-}
-
-func (o ApiEntityReferenceResponsePtrOutput) ToApiEntityReferenceResponsePtrOutputWithContext(ctx context.Context) ApiEntityReferenceResponsePtrOutput {
-	return o
-}
-
-func (o ApiEntityReferenceResponsePtrOutput) Elem() ApiEntityReferenceResponseOutput {
-	return o.ApplyT(func(v *ApiEntityReferenceResponse) ApiEntityReferenceResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ApiEntityReferenceResponse
-		return ret
-	}).(ApiEntityReferenceResponseOutput)
-}
-
-// The ARM resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
-func (o ApiEntityReferenceResponsePtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ApiEntityReferenceResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
 // The properties of the Azure File volume. Azure File shares are mounted as volumes.
 type AzureFileVolume struct {
 	// The flag indicating whether the Azure File shared mounted as a volume is read-only.
@@ -221,8 +21,6 @@ type AzureFileVolume struct {
 	ShareName string `pulumi:"shareName"`
 	// The storage account access key used to access the Azure File share.
 	StorageAccountKey *string `pulumi:"storageAccountKey"`
-	// The reference to the storage account access key used to access the Azure File share.
-	StorageAccountKeyReference *string `pulumi:"storageAccountKeyReference"`
 	// The name of the storage account that contains the Azure File share.
 	StorageAccountName string `pulumi:"storageAccountName"`
 }
@@ -246,8 +44,6 @@ type AzureFileVolumeArgs struct {
 	ShareName pulumi.StringInput `pulumi:"shareName"`
 	// The storage account access key used to access the Azure File share.
 	StorageAccountKey pulumi.StringPtrInput `pulumi:"storageAccountKey"`
-	// The reference to the storage account access key used to access the Azure File share.
-	StorageAccountKeyReference pulumi.StringPtrInput `pulumi:"storageAccountKeyReference"`
 	// The name of the storage account that contains the Azure File share.
 	StorageAccountName pulumi.StringInput `pulumi:"storageAccountName"`
 }
@@ -345,11 +141,6 @@ func (o AzureFileVolumeOutput) StorageAccountKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AzureFileVolume) *string { return v.StorageAccountKey }).(pulumi.StringPtrOutput)
 }
 
-// The reference to the storage account access key used to access the Azure File share.
-func (o AzureFileVolumeOutput) StorageAccountKeyReference() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AzureFileVolume) *string { return v.StorageAccountKeyReference }).(pulumi.StringPtrOutput)
-}
-
 // The name of the storage account that contains the Azure File share.
 func (o AzureFileVolumeOutput) StorageAccountName() pulumi.StringOutput {
 	return o.ApplyT(func(v AzureFileVolume) string { return v.StorageAccountName }).(pulumi.StringOutput)
@@ -409,16 +200,6 @@ func (o AzureFileVolumePtrOutput) StorageAccountKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The reference to the storage account access key used to access the Azure File share.
-func (o AzureFileVolumePtrOutput) StorageAccountKeyReference() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AzureFileVolume) *string {
-		if v == nil {
-			return nil
-		}
-		return v.StorageAccountKeyReference
-	}).(pulumi.StringPtrOutput)
-}
-
 // The name of the storage account that contains the Azure File share.
 func (o AzureFileVolumePtrOutput) StorageAccountName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AzureFileVolume) *string {
@@ -437,8 +218,6 @@ type AzureFileVolumeResponse struct {
 	ShareName string `pulumi:"shareName"`
 	// The storage account access key used to access the Azure File share.
 	StorageAccountKey *string `pulumi:"storageAccountKey"`
-	// The reference to the storage account access key used to access the Azure File share.
-	StorageAccountKeyReference *string `pulumi:"storageAccountKeyReference"`
 	// The name of the storage account that contains the Azure File share.
 	StorageAccountName string `pulumi:"storageAccountName"`
 }
@@ -471,11 +250,6 @@ func (o AzureFileVolumeResponseOutput) ShareName() pulumi.StringOutput {
 // The storage account access key used to access the Azure File share.
 func (o AzureFileVolumeResponseOutput) StorageAccountKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AzureFileVolumeResponse) *string { return v.StorageAccountKey }).(pulumi.StringPtrOutput)
-}
-
-// The reference to the storage account access key used to access the Azure File share.
-func (o AzureFileVolumeResponseOutput) StorageAccountKeyReference() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AzureFileVolumeResponse) *string { return v.StorageAccountKeyReference }).(pulumi.StringPtrOutput)
 }
 
 // The name of the storage account that contains the Azure File share.
@@ -534,16 +308,6 @@ func (o AzureFileVolumeResponsePtrOutput) StorageAccountKey() pulumi.StringPtrOu
 			return nil
 		}
 		return v.StorageAccountKey
-	}).(pulumi.StringPtrOutput)
-}
-
-// The reference to the storage account access key used to access the Azure File share.
-func (o AzureFileVolumeResponsePtrOutput) StorageAccountKeyReference() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AzureFileVolumeResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.StorageAccountKeyReference
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1819,150 +1583,240 @@ func (o ContainerGroupIdentityResponsePtrOutput) UserAssignedIdentities() UserAs
 	}).(UserAssignedIdentitiesResponseMapOutput)
 }
 
-// The object that contains a reference to a Container Group Profile
-type ContainerGroupProfileStub struct {
-	// The API entity reference.
-	Resource *ApiEntityReference `pulumi:"resource"`
+// The container group profile reference.
+type ContainerGroupProfileReferenceDefinition struct {
+	// The container group profile reference id.This will be an ARM resource id in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroupProfiles/{containerGroupProfileName}'.
+	Id *string `pulumi:"id"`
+	// The container group profile reference revision.
+	Revision *int `pulumi:"revision"`
 }
 
-// ContainerGroupProfileStubInput is an input type that accepts ContainerGroupProfileStubArgs and ContainerGroupProfileStubOutput values.
-// You can construct a concrete instance of `ContainerGroupProfileStubInput` via:
+// ContainerGroupProfileReferenceDefinitionInput is an input type that accepts ContainerGroupProfileReferenceDefinitionArgs and ContainerGroupProfileReferenceDefinitionOutput values.
+// You can construct a concrete instance of `ContainerGroupProfileReferenceDefinitionInput` via:
 //
-//	ContainerGroupProfileStubArgs{...}
-type ContainerGroupProfileStubInput interface {
+//	ContainerGroupProfileReferenceDefinitionArgs{...}
+type ContainerGroupProfileReferenceDefinitionInput interface {
 	pulumi.Input
 
-	ToContainerGroupProfileStubOutput() ContainerGroupProfileStubOutput
-	ToContainerGroupProfileStubOutputWithContext(context.Context) ContainerGroupProfileStubOutput
+	ToContainerGroupProfileReferenceDefinitionOutput() ContainerGroupProfileReferenceDefinitionOutput
+	ToContainerGroupProfileReferenceDefinitionOutputWithContext(context.Context) ContainerGroupProfileReferenceDefinitionOutput
 }
 
-// The object that contains a reference to a Container Group Profile
-type ContainerGroupProfileStubArgs struct {
-	// The API entity reference.
-	Resource ApiEntityReferencePtrInput `pulumi:"resource"`
+// The container group profile reference.
+type ContainerGroupProfileReferenceDefinitionArgs struct {
+	// The container group profile reference id.This will be an ARM resource id in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroupProfiles/{containerGroupProfileName}'.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The container group profile reference revision.
+	Revision pulumi.IntPtrInput `pulumi:"revision"`
 }
 
-func (ContainerGroupProfileStubArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ContainerGroupProfileStub)(nil)).Elem()
+func (ContainerGroupProfileReferenceDefinitionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerGroupProfileReferenceDefinition)(nil)).Elem()
 }
 
-func (i ContainerGroupProfileStubArgs) ToContainerGroupProfileStubOutput() ContainerGroupProfileStubOutput {
-	return i.ToContainerGroupProfileStubOutputWithContext(context.Background())
+func (i ContainerGroupProfileReferenceDefinitionArgs) ToContainerGroupProfileReferenceDefinitionOutput() ContainerGroupProfileReferenceDefinitionOutput {
+	return i.ToContainerGroupProfileReferenceDefinitionOutputWithContext(context.Background())
 }
 
-func (i ContainerGroupProfileStubArgs) ToContainerGroupProfileStubOutputWithContext(ctx context.Context) ContainerGroupProfileStubOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupProfileStubOutput)
+func (i ContainerGroupProfileReferenceDefinitionArgs) ToContainerGroupProfileReferenceDefinitionOutputWithContext(ctx context.Context) ContainerGroupProfileReferenceDefinitionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupProfileReferenceDefinitionOutput)
 }
 
-// ContainerGroupProfileStubArrayInput is an input type that accepts ContainerGroupProfileStubArray and ContainerGroupProfileStubArrayOutput values.
-// You can construct a concrete instance of `ContainerGroupProfileStubArrayInput` via:
+func (i ContainerGroupProfileReferenceDefinitionArgs) ToContainerGroupProfileReferenceDefinitionPtrOutput() ContainerGroupProfileReferenceDefinitionPtrOutput {
+	return i.ToContainerGroupProfileReferenceDefinitionPtrOutputWithContext(context.Background())
+}
+
+func (i ContainerGroupProfileReferenceDefinitionArgs) ToContainerGroupProfileReferenceDefinitionPtrOutputWithContext(ctx context.Context) ContainerGroupProfileReferenceDefinitionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupProfileReferenceDefinitionOutput).ToContainerGroupProfileReferenceDefinitionPtrOutputWithContext(ctx)
+}
+
+// ContainerGroupProfileReferenceDefinitionPtrInput is an input type that accepts ContainerGroupProfileReferenceDefinitionArgs, ContainerGroupProfileReferenceDefinitionPtr and ContainerGroupProfileReferenceDefinitionPtrOutput values.
+// You can construct a concrete instance of `ContainerGroupProfileReferenceDefinitionPtrInput` via:
 //
-//	ContainerGroupProfileStubArray{ ContainerGroupProfileStubArgs{...} }
-type ContainerGroupProfileStubArrayInput interface {
+//	        ContainerGroupProfileReferenceDefinitionArgs{...}
+//
+//	or:
+//
+//	        nil
+type ContainerGroupProfileReferenceDefinitionPtrInput interface {
 	pulumi.Input
 
-	ToContainerGroupProfileStubArrayOutput() ContainerGroupProfileStubArrayOutput
-	ToContainerGroupProfileStubArrayOutputWithContext(context.Context) ContainerGroupProfileStubArrayOutput
+	ToContainerGroupProfileReferenceDefinitionPtrOutput() ContainerGroupProfileReferenceDefinitionPtrOutput
+	ToContainerGroupProfileReferenceDefinitionPtrOutputWithContext(context.Context) ContainerGroupProfileReferenceDefinitionPtrOutput
 }
 
-type ContainerGroupProfileStubArray []ContainerGroupProfileStubInput
+type containerGroupProfileReferenceDefinitionPtrType ContainerGroupProfileReferenceDefinitionArgs
 
-func (ContainerGroupProfileStubArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ContainerGroupProfileStub)(nil)).Elem()
+func ContainerGroupProfileReferenceDefinitionPtr(v *ContainerGroupProfileReferenceDefinitionArgs) ContainerGroupProfileReferenceDefinitionPtrInput {
+	return (*containerGroupProfileReferenceDefinitionPtrType)(v)
 }
 
-func (i ContainerGroupProfileStubArray) ToContainerGroupProfileStubArrayOutput() ContainerGroupProfileStubArrayOutput {
-	return i.ToContainerGroupProfileStubArrayOutputWithContext(context.Background())
+func (*containerGroupProfileReferenceDefinitionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContainerGroupProfileReferenceDefinition)(nil)).Elem()
 }
 
-func (i ContainerGroupProfileStubArray) ToContainerGroupProfileStubArrayOutputWithContext(ctx context.Context) ContainerGroupProfileStubArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupProfileStubArrayOutput)
+func (i *containerGroupProfileReferenceDefinitionPtrType) ToContainerGroupProfileReferenceDefinitionPtrOutput() ContainerGroupProfileReferenceDefinitionPtrOutput {
+	return i.ToContainerGroupProfileReferenceDefinitionPtrOutputWithContext(context.Background())
 }
 
-// The object that contains a reference to a Container Group Profile
-type ContainerGroupProfileStubOutput struct{ *pulumi.OutputState }
-
-func (ContainerGroupProfileStubOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ContainerGroupProfileStub)(nil)).Elem()
+func (i *containerGroupProfileReferenceDefinitionPtrType) ToContainerGroupProfileReferenceDefinitionPtrOutputWithContext(ctx context.Context) ContainerGroupProfileReferenceDefinitionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupProfileReferenceDefinitionPtrOutput)
 }
 
-func (o ContainerGroupProfileStubOutput) ToContainerGroupProfileStubOutput() ContainerGroupProfileStubOutput {
+// The container group profile reference.
+type ContainerGroupProfileReferenceDefinitionOutput struct{ *pulumi.OutputState }
+
+func (ContainerGroupProfileReferenceDefinitionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerGroupProfileReferenceDefinition)(nil)).Elem()
+}
+
+func (o ContainerGroupProfileReferenceDefinitionOutput) ToContainerGroupProfileReferenceDefinitionOutput() ContainerGroupProfileReferenceDefinitionOutput {
 	return o
 }
 
-func (o ContainerGroupProfileStubOutput) ToContainerGroupProfileStubOutputWithContext(ctx context.Context) ContainerGroupProfileStubOutput {
+func (o ContainerGroupProfileReferenceDefinitionOutput) ToContainerGroupProfileReferenceDefinitionOutputWithContext(ctx context.Context) ContainerGroupProfileReferenceDefinitionOutput {
 	return o
 }
 
-// The API entity reference.
-func (o ContainerGroupProfileStubOutput) Resource() ApiEntityReferencePtrOutput {
-	return o.ApplyT(func(v ContainerGroupProfileStub) *ApiEntityReference { return v.Resource }).(ApiEntityReferencePtrOutput)
+func (o ContainerGroupProfileReferenceDefinitionOutput) ToContainerGroupProfileReferenceDefinitionPtrOutput() ContainerGroupProfileReferenceDefinitionPtrOutput {
+	return o.ToContainerGroupProfileReferenceDefinitionPtrOutputWithContext(context.Background())
 }
 
-type ContainerGroupProfileStubArrayOutput struct{ *pulumi.OutputState }
-
-func (ContainerGroupProfileStubArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ContainerGroupProfileStub)(nil)).Elem()
+func (o ContainerGroupProfileReferenceDefinitionOutput) ToContainerGroupProfileReferenceDefinitionPtrOutputWithContext(ctx context.Context) ContainerGroupProfileReferenceDefinitionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContainerGroupProfileReferenceDefinition) *ContainerGroupProfileReferenceDefinition {
+		return &v
+	}).(ContainerGroupProfileReferenceDefinitionPtrOutput)
 }
 
-func (o ContainerGroupProfileStubArrayOutput) ToContainerGroupProfileStubArrayOutput() ContainerGroupProfileStubArrayOutput {
+// The container group profile reference id.This will be an ARM resource id in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroupProfiles/{containerGroupProfileName}'.
+func (o ContainerGroupProfileReferenceDefinitionOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ContainerGroupProfileReferenceDefinition) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The container group profile reference revision.
+func (o ContainerGroupProfileReferenceDefinitionOutput) Revision() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ContainerGroupProfileReferenceDefinition) *int { return v.Revision }).(pulumi.IntPtrOutput)
+}
+
+type ContainerGroupProfileReferenceDefinitionPtrOutput struct{ *pulumi.OutputState }
+
+func (ContainerGroupProfileReferenceDefinitionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContainerGroupProfileReferenceDefinition)(nil)).Elem()
+}
+
+func (o ContainerGroupProfileReferenceDefinitionPtrOutput) ToContainerGroupProfileReferenceDefinitionPtrOutput() ContainerGroupProfileReferenceDefinitionPtrOutput {
 	return o
 }
 
-func (o ContainerGroupProfileStubArrayOutput) ToContainerGroupProfileStubArrayOutputWithContext(ctx context.Context) ContainerGroupProfileStubArrayOutput {
+func (o ContainerGroupProfileReferenceDefinitionPtrOutput) ToContainerGroupProfileReferenceDefinitionPtrOutputWithContext(ctx context.Context) ContainerGroupProfileReferenceDefinitionPtrOutput {
 	return o
 }
 
-func (o ContainerGroupProfileStubArrayOutput) Index(i pulumi.IntInput) ContainerGroupProfileStubOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContainerGroupProfileStub {
-		return vs[0].([]ContainerGroupProfileStub)[vs[1].(int)]
-	}).(ContainerGroupProfileStubOutput)
+func (o ContainerGroupProfileReferenceDefinitionPtrOutput) Elem() ContainerGroupProfileReferenceDefinitionOutput {
+	return o.ApplyT(func(v *ContainerGroupProfileReferenceDefinition) ContainerGroupProfileReferenceDefinition {
+		if v != nil {
+			return *v
+		}
+		var ret ContainerGroupProfileReferenceDefinition
+		return ret
+	}).(ContainerGroupProfileReferenceDefinitionOutput)
 }
 
-// The object that contains a reference to a Container Group Profile
-type ContainerGroupProfileStubResponse struct {
-	// The API entity reference.
-	Resource *ApiEntityReferenceResponse `pulumi:"resource"`
+// The container group profile reference id.This will be an ARM resource id in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroupProfiles/{containerGroupProfileName}'.
+func (o ContainerGroupProfileReferenceDefinitionPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContainerGroupProfileReferenceDefinition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
 }
 
-// The object that contains a reference to a Container Group Profile
-type ContainerGroupProfileStubResponseOutput struct{ *pulumi.OutputState }
-
-func (ContainerGroupProfileStubResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ContainerGroupProfileStubResponse)(nil)).Elem()
+// The container group profile reference revision.
+func (o ContainerGroupProfileReferenceDefinitionPtrOutput) Revision() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ContainerGroupProfileReferenceDefinition) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Revision
+	}).(pulumi.IntPtrOutput)
 }
 
-func (o ContainerGroupProfileStubResponseOutput) ToContainerGroupProfileStubResponseOutput() ContainerGroupProfileStubResponseOutput {
+// The container group profile reference.
+type ContainerGroupProfileReferenceDefinitionResponse struct {
+	// The container group profile reference id.This will be an ARM resource id in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroupProfiles/{containerGroupProfileName}'.
+	Id *string `pulumi:"id"`
+	// The container group profile reference revision.
+	Revision *int `pulumi:"revision"`
+}
+
+// The container group profile reference.
+type ContainerGroupProfileReferenceDefinitionResponseOutput struct{ *pulumi.OutputState }
+
+func (ContainerGroupProfileReferenceDefinitionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerGroupProfileReferenceDefinitionResponse)(nil)).Elem()
+}
+
+func (o ContainerGroupProfileReferenceDefinitionResponseOutput) ToContainerGroupProfileReferenceDefinitionResponseOutput() ContainerGroupProfileReferenceDefinitionResponseOutput {
 	return o
 }
 
-func (o ContainerGroupProfileStubResponseOutput) ToContainerGroupProfileStubResponseOutputWithContext(ctx context.Context) ContainerGroupProfileStubResponseOutput {
+func (o ContainerGroupProfileReferenceDefinitionResponseOutput) ToContainerGroupProfileReferenceDefinitionResponseOutputWithContext(ctx context.Context) ContainerGroupProfileReferenceDefinitionResponseOutput {
 	return o
 }
 
-// The API entity reference.
-func (o ContainerGroupProfileStubResponseOutput) Resource() ApiEntityReferenceResponsePtrOutput {
-	return o.ApplyT(func(v ContainerGroupProfileStubResponse) *ApiEntityReferenceResponse { return v.Resource }).(ApiEntityReferenceResponsePtrOutput)
+// The container group profile reference id.This will be an ARM resource id in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroupProfiles/{containerGroupProfileName}'.
+func (o ContainerGroupProfileReferenceDefinitionResponseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ContainerGroupProfileReferenceDefinitionResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-type ContainerGroupProfileStubResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (ContainerGroupProfileStubResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ContainerGroupProfileStubResponse)(nil)).Elem()
+// The container group profile reference revision.
+func (o ContainerGroupProfileReferenceDefinitionResponseOutput) Revision() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ContainerGroupProfileReferenceDefinitionResponse) *int { return v.Revision }).(pulumi.IntPtrOutput)
 }
 
-func (o ContainerGroupProfileStubResponseArrayOutput) ToContainerGroupProfileStubResponseArrayOutput() ContainerGroupProfileStubResponseArrayOutput {
+type ContainerGroupProfileReferenceDefinitionResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ContainerGroupProfileReferenceDefinitionResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContainerGroupProfileReferenceDefinitionResponse)(nil)).Elem()
+}
+
+func (o ContainerGroupProfileReferenceDefinitionResponsePtrOutput) ToContainerGroupProfileReferenceDefinitionResponsePtrOutput() ContainerGroupProfileReferenceDefinitionResponsePtrOutput {
 	return o
 }
 
-func (o ContainerGroupProfileStubResponseArrayOutput) ToContainerGroupProfileStubResponseArrayOutputWithContext(ctx context.Context) ContainerGroupProfileStubResponseArrayOutput {
+func (o ContainerGroupProfileReferenceDefinitionResponsePtrOutput) ToContainerGroupProfileReferenceDefinitionResponsePtrOutputWithContext(ctx context.Context) ContainerGroupProfileReferenceDefinitionResponsePtrOutput {
 	return o
 }
 
-func (o ContainerGroupProfileStubResponseArrayOutput) Index(i pulumi.IntInput) ContainerGroupProfileStubResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContainerGroupProfileStubResponse {
-		return vs[0].([]ContainerGroupProfileStubResponse)[vs[1].(int)]
-	}).(ContainerGroupProfileStubResponseOutput)
+func (o ContainerGroupProfileReferenceDefinitionResponsePtrOutput) Elem() ContainerGroupProfileReferenceDefinitionResponseOutput {
+	return o.ApplyT(func(v *ContainerGroupProfileReferenceDefinitionResponse) ContainerGroupProfileReferenceDefinitionResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ContainerGroupProfileReferenceDefinitionResponse
+		return ret
+	}).(ContainerGroupProfileReferenceDefinitionResponseOutput)
+}
+
+// The container group profile reference id.This will be an ARM resource id in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroupProfiles/{containerGroupProfileName}'.
+func (o ContainerGroupProfileReferenceDefinitionResponsePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContainerGroupProfileReferenceDefinitionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// The container group profile reference revision.
+func (o ContainerGroupProfileReferenceDefinitionResponsePtrOutput) Revision() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ContainerGroupProfileReferenceDefinitionResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Revision
+	}).(pulumi.IntPtrOutput)
 }
 
 // The instance view of the container group. Only valid in response.
@@ -3752,199 +3606,6 @@ func (o DnsConfigurationResponsePtrOutput) SearchDomains() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Describes the elastic profile of the Container Scale Set
-type ElasticProfile struct {
-	DesiredCount *int `pulumi:"desiredCount"`
-}
-
-// ElasticProfileInput is an input type that accepts ElasticProfileArgs and ElasticProfileOutput values.
-// You can construct a concrete instance of `ElasticProfileInput` via:
-//
-//	ElasticProfileArgs{...}
-type ElasticProfileInput interface {
-	pulumi.Input
-
-	ToElasticProfileOutput() ElasticProfileOutput
-	ToElasticProfileOutputWithContext(context.Context) ElasticProfileOutput
-}
-
-// Describes the elastic profile of the Container Scale Set
-type ElasticProfileArgs struct {
-	DesiredCount pulumi.IntPtrInput `pulumi:"desiredCount"`
-}
-
-func (ElasticProfileArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ElasticProfile)(nil)).Elem()
-}
-
-func (i ElasticProfileArgs) ToElasticProfileOutput() ElasticProfileOutput {
-	return i.ToElasticProfileOutputWithContext(context.Background())
-}
-
-func (i ElasticProfileArgs) ToElasticProfileOutputWithContext(ctx context.Context) ElasticProfileOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElasticProfileOutput)
-}
-
-func (i ElasticProfileArgs) ToElasticProfilePtrOutput() ElasticProfilePtrOutput {
-	return i.ToElasticProfilePtrOutputWithContext(context.Background())
-}
-
-func (i ElasticProfileArgs) ToElasticProfilePtrOutputWithContext(ctx context.Context) ElasticProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElasticProfileOutput).ToElasticProfilePtrOutputWithContext(ctx)
-}
-
-// ElasticProfilePtrInput is an input type that accepts ElasticProfileArgs, ElasticProfilePtr and ElasticProfilePtrOutput values.
-// You can construct a concrete instance of `ElasticProfilePtrInput` via:
-//
-//	        ElasticProfileArgs{...}
-//
-//	or:
-//
-//	        nil
-type ElasticProfilePtrInput interface {
-	pulumi.Input
-
-	ToElasticProfilePtrOutput() ElasticProfilePtrOutput
-	ToElasticProfilePtrOutputWithContext(context.Context) ElasticProfilePtrOutput
-}
-
-type elasticProfilePtrType ElasticProfileArgs
-
-func ElasticProfilePtr(v *ElasticProfileArgs) ElasticProfilePtrInput {
-	return (*elasticProfilePtrType)(v)
-}
-
-func (*elasticProfilePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ElasticProfile)(nil)).Elem()
-}
-
-func (i *elasticProfilePtrType) ToElasticProfilePtrOutput() ElasticProfilePtrOutput {
-	return i.ToElasticProfilePtrOutputWithContext(context.Background())
-}
-
-func (i *elasticProfilePtrType) ToElasticProfilePtrOutputWithContext(ctx context.Context) ElasticProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElasticProfilePtrOutput)
-}
-
-// Describes the elastic profile of the Container Scale Set
-type ElasticProfileOutput struct{ *pulumi.OutputState }
-
-func (ElasticProfileOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ElasticProfile)(nil)).Elem()
-}
-
-func (o ElasticProfileOutput) ToElasticProfileOutput() ElasticProfileOutput {
-	return o
-}
-
-func (o ElasticProfileOutput) ToElasticProfileOutputWithContext(ctx context.Context) ElasticProfileOutput {
-	return o
-}
-
-func (o ElasticProfileOutput) ToElasticProfilePtrOutput() ElasticProfilePtrOutput {
-	return o.ToElasticProfilePtrOutputWithContext(context.Background())
-}
-
-func (o ElasticProfileOutput) ToElasticProfilePtrOutputWithContext(ctx context.Context) ElasticProfilePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElasticProfile) *ElasticProfile {
-		return &v
-	}).(ElasticProfilePtrOutput)
-}
-
-func (o ElasticProfileOutput) DesiredCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ElasticProfile) *int { return v.DesiredCount }).(pulumi.IntPtrOutput)
-}
-
-type ElasticProfilePtrOutput struct{ *pulumi.OutputState }
-
-func (ElasticProfilePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ElasticProfile)(nil)).Elem()
-}
-
-func (o ElasticProfilePtrOutput) ToElasticProfilePtrOutput() ElasticProfilePtrOutput {
-	return o
-}
-
-func (o ElasticProfilePtrOutput) ToElasticProfilePtrOutputWithContext(ctx context.Context) ElasticProfilePtrOutput {
-	return o
-}
-
-func (o ElasticProfilePtrOutput) Elem() ElasticProfileOutput {
-	return o.ApplyT(func(v *ElasticProfile) ElasticProfile {
-		if v != nil {
-			return *v
-		}
-		var ret ElasticProfile
-		return ret
-	}).(ElasticProfileOutput)
-}
-
-func (o ElasticProfilePtrOutput) DesiredCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ElasticProfile) *int {
-		if v == nil {
-			return nil
-		}
-		return v.DesiredCount
-	}).(pulumi.IntPtrOutput)
-}
-
-// Describes the elastic profile of the Container Scale Set
-type ElasticProfileResponse struct {
-	DesiredCount *int `pulumi:"desiredCount"`
-}
-
-// Describes the elastic profile of the Container Scale Set
-type ElasticProfileResponseOutput struct{ *pulumi.OutputState }
-
-func (ElasticProfileResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ElasticProfileResponse)(nil)).Elem()
-}
-
-func (o ElasticProfileResponseOutput) ToElasticProfileResponseOutput() ElasticProfileResponseOutput {
-	return o
-}
-
-func (o ElasticProfileResponseOutput) ToElasticProfileResponseOutputWithContext(ctx context.Context) ElasticProfileResponseOutput {
-	return o
-}
-
-func (o ElasticProfileResponseOutput) DesiredCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ElasticProfileResponse) *int { return v.DesiredCount }).(pulumi.IntPtrOutput)
-}
-
-type ElasticProfileResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ElasticProfileResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ElasticProfileResponse)(nil)).Elem()
-}
-
-func (o ElasticProfileResponsePtrOutput) ToElasticProfileResponsePtrOutput() ElasticProfileResponsePtrOutput {
-	return o
-}
-
-func (o ElasticProfileResponsePtrOutput) ToElasticProfileResponsePtrOutputWithContext(ctx context.Context) ElasticProfileResponsePtrOutput {
-	return o
-}
-
-func (o ElasticProfileResponsePtrOutput) Elem() ElasticProfileResponseOutput {
-	return o.ApplyT(func(v *ElasticProfileResponse) ElasticProfileResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ElasticProfileResponse
-		return ret
-	}).(ElasticProfileResponseOutput)
-}
-
-func (o ElasticProfileResponsePtrOutput) DesiredCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ElasticProfileResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return v.DesiredCount
-	}).(pulumi.IntPtrOutput)
-}
-
 // The container group encryption properties.
 type EncryptionProperties struct {
 	// The keyvault managed identity.
@@ -4259,8 +3920,6 @@ type EnvironmentVariable struct {
 	Name string `pulumi:"name"`
 	// The value of the secure environment variable.
 	SecureValue *string `pulumi:"secureValue"`
-	// The reference of the secure environment variable.
-	SecureValueReference *string `pulumi:"secureValueReference"`
 	// The value of the environment variable.
 	Value *string `pulumi:"value"`
 }
@@ -4282,8 +3941,6 @@ type EnvironmentVariableArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// The value of the secure environment variable.
 	SecureValue pulumi.StringPtrInput `pulumi:"secureValue"`
-	// The reference of the secure environment variable.
-	SecureValueReference pulumi.StringPtrInput `pulumi:"secureValueReference"`
 	// The value of the environment variable.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
@@ -4350,11 +4007,6 @@ func (o EnvironmentVariableOutput) SecureValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentVariable) *string { return v.SecureValue }).(pulumi.StringPtrOutput)
 }
 
-// The reference of the secure environment variable.
-func (o EnvironmentVariableOutput) SecureValueReference() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EnvironmentVariable) *string { return v.SecureValueReference }).(pulumi.StringPtrOutput)
-}
-
 // The value of the environment variable.
 func (o EnvironmentVariableOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentVariable) *string { return v.Value }).(pulumi.StringPtrOutput)
@@ -4386,8 +4038,6 @@ type EnvironmentVariableResponse struct {
 	Name string `pulumi:"name"`
 	// The value of the secure environment variable.
 	SecureValue *string `pulumi:"secureValue"`
-	// The reference of the secure environment variable.
-	SecureValueReference *string `pulumi:"secureValueReference"`
 	// The value of the environment variable.
 	Value *string `pulumi:"value"`
 }
@@ -4415,11 +4065,6 @@ func (o EnvironmentVariableResponseOutput) Name() pulumi.StringOutput {
 // The value of the secure environment variable.
 func (o EnvironmentVariableResponseOutput) SecureValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentVariableResponse) *string { return v.SecureValue }).(pulumi.StringPtrOutput)
-}
-
-// The reference of the secure environment variable.
-func (o EnvironmentVariableResponseOutput) SecureValueReference() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EnvironmentVariableResponse) *string { return v.SecureValueReference }).(pulumi.StringPtrOutput)
 }
 
 // The value of the environment variable.
@@ -5206,8 +4851,6 @@ type ImageRegistryCredential struct {
 	IdentityUrl *string `pulumi:"identityUrl"`
 	// The password for the private registry.
 	Password *string `pulumi:"password"`
-	// The reference for the private registry password.
-	PasswordReference *string `pulumi:"passwordReference"`
 	// The Docker image registry server without a protocol such as "http" and "https".
 	Server string `pulumi:"server"`
 	// The username for the private registry.
@@ -5233,8 +4876,6 @@ type ImageRegistryCredentialArgs struct {
 	IdentityUrl pulumi.StringPtrInput `pulumi:"identityUrl"`
 	// The password for the private registry.
 	Password pulumi.StringPtrInput `pulumi:"password"`
-	// The reference for the private registry password.
-	PasswordReference pulumi.StringPtrInput `pulumi:"passwordReference"`
 	// The Docker image registry server without a protocol such as "http" and "https".
 	Server pulumi.StringInput `pulumi:"server"`
 	// The username for the private registry.
@@ -5308,11 +4949,6 @@ func (o ImageRegistryCredentialOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageRegistryCredential) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
-// The reference for the private registry password.
-func (o ImageRegistryCredentialOutput) PasswordReference() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ImageRegistryCredential) *string { return v.PasswordReference }).(pulumi.StringPtrOutput)
-}
-
 // The Docker image registry server without a protocol such as "http" and "https".
 func (o ImageRegistryCredentialOutput) Server() pulumi.StringOutput {
 	return o.ApplyT(func(v ImageRegistryCredential) string { return v.Server }).(pulumi.StringOutput)
@@ -5351,8 +4987,6 @@ type ImageRegistryCredentialResponse struct {
 	IdentityUrl *string `pulumi:"identityUrl"`
 	// The password for the private registry.
 	Password *string `pulumi:"password"`
-	// The reference for the private registry password.
-	PasswordReference *string `pulumi:"passwordReference"`
 	// The Docker image registry server without a protocol such as "http" and "https".
 	Server string `pulumi:"server"`
 	// The username for the private registry.
@@ -5387,11 +5021,6 @@ func (o ImageRegistryCredentialResponseOutput) IdentityUrl() pulumi.StringPtrOut
 // The password for the private registry.
 func (o ImageRegistryCredentialResponseOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageRegistryCredentialResponse) *string { return v.Password }).(pulumi.StringPtrOutput)
-}
-
-// The reference for the private registry password.
-func (o ImageRegistryCredentialResponseOutput) PasswordReference() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ImageRegistryCredentialResponse) *string { return v.PasswordReference }).(pulumi.StringPtrOutput)
 }
 
 // The Docker image registry server without a protocol such as "http" and "https".
@@ -6450,278 +6079,6 @@ func (o LogAnalyticsResponsePtrOutput) WorkspaceResourceId() pulumi.StringPtrOut
 		}
 		return v.WorkspaceResourceId
 	}).(pulumi.StringPtrOutput)
-}
-
-// Identity for the nGroup.
-type NGroupIdentity struct {
-	// The type of identity used for the container scale set. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the nGroup.
-	Type *ResourceIdentityType `pulumi:"type"`
-	// The list of user identities associated with the container scale set. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
-}
-
-// NGroupIdentityInput is an input type that accepts NGroupIdentityArgs and NGroupIdentityOutput values.
-// You can construct a concrete instance of `NGroupIdentityInput` via:
-//
-//	NGroupIdentityArgs{...}
-type NGroupIdentityInput interface {
-	pulumi.Input
-
-	ToNGroupIdentityOutput() NGroupIdentityOutput
-	ToNGroupIdentityOutputWithContext(context.Context) NGroupIdentityOutput
-}
-
-// Identity for the nGroup.
-type NGroupIdentityArgs struct {
-	// The type of identity used for the container scale set. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the nGroup.
-	Type ResourceIdentityTypePtrInput `pulumi:"type"`
-	// The list of user identities associated with the container scale set. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
-}
-
-func (NGroupIdentityArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*NGroupIdentity)(nil)).Elem()
-}
-
-func (i NGroupIdentityArgs) ToNGroupIdentityOutput() NGroupIdentityOutput {
-	return i.ToNGroupIdentityOutputWithContext(context.Background())
-}
-
-func (i NGroupIdentityArgs) ToNGroupIdentityOutputWithContext(ctx context.Context) NGroupIdentityOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NGroupIdentityOutput)
-}
-
-func (i NGroupIdentityArgs) ToNGroupIdentityPtrOutput() NGroupIdentityPtrOutput {
-	return i.ToNGroupIdentityPtrOutputWithContext(context.Background())
-}
-
-func (i NGroupIdentityArgs) ToNGroupIdentityPtrOutputWithContext(ctx context.Context) NGroupIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NGroupIdentityOutput).ToNGroupIdentityPtrOutputWithContext(ctx)
-}
-
-// NGroupIdentityPtrInput is an input type that accepts NGroupIdentityArgs, NGroupIdentityPtr and NGroupIdentityPtrOutput values.
-// You can construct a concrete instance of `NGroupIdentityPtrInput` via:
-//
-//	        NGroupIdentityArgs{...}
-//
-//	or:
-//
-//	        nil
-type NGroupIdentityPtrInput interface {
-	pulumi.Input
-
-	ToNGroupIdentityPtrOutput() NGroupIdentityPtrOutput
-	ToNGroupIdentityPtrOutputWithContext(context.Context) NGroupIdentityPtrOutput
-}
-
-type ngroupIdentityPtrType NGroupIdentityArgs
-
-func NGroupIdentityPtr(v *NGroupIdentityArgs) NGroupIdentityPtrInput {
-	return (*ngroupIdentityPtrType)(v)
-}
-
-func (*ngroupIdentityPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**NGroupIdentity)(nil)).Elem()
-}
-
-func (i *ngroupIdentityPtrType) ToNGroupIdentityPtrOutput() NGroupIdentityPtrOutput {
-	return i.ToNGroupIdentityPtrOutputWithContext(context.Background())
-}
-
-func (i *ngroupIdentityPtrType) ToNGroupIdentityPtrOutputWithContext(ctx context.Context) NGroupIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NGroupIdentityPtrOutput)
-}
-
-// Identity for the nGroup.
-type NGroupIdentityOutput struct{ *pulumi.OutputState }
-
-func (NGroupIdentityOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NGroupIdentity)(nil)).Elem()
-}
-
-func (o NGroupIdentityOutput) ToNGroupIdentityOutput() NGroupIdentityOutput {
-	return o
-}
-
-func (o NGroupIdentityOutput) ToNGroupIdentityOutputWithContext(ctx context.Context) NGroupIdentityOutput {
-	return o
-}
-
-func (o NGroupIdentityOutput) ToNGroupIdentityPtrOutput() NGroupIdentityPtrOutput {
-	return o.ToNGroupIdentityPtrOutputWithContext(context.Background())
-}
-
-func (o NGroupIdentityOutput) ToNGroupIdentityPtrOutputWithContext(ctx context.Context) NGroupIdentityPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v NGroupIdentity) *NGroupIdentity {
-		return &v
-	}).(NGroupIdentityPtrOutput)
-}
-
-// The type of identity used for the container scale set. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the nGroup.
-func (o NGroupIdentityOutput) Type() ResourceIdentityTypePtrOutput {
-	return o.ApplyT(func(v NGroupIdentity) *ResourceIdentityType { return v.Type }).(ResourceIdentityTypePtrOutput)
-}
-
-// The list of user identities associated with the container scale set. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-func (o NGroupIdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v NGroupIdentity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
-}
-
-type NGroupIdentityPtrOutput struct{ *pulumi.OutputState }
-
-func (NGroupIdentityPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**NGroupIdentity)(nil)).Elem()
-}
-
-func (o NGroupIdentityPtrOutput) ToNGroupIdentityPtrOutput() NGroupIdentityPtrOutput {
-	return o
-}
-
-func (o NGroupIdentityPtrOutput) ToNGroupIdentityPtrOutputWithContext(ctx context.Context) NGroupIdentityPtrOutput {
-	return o
-}
-
-func (o NGroupIdentityPtrOutput) Elem() NGroupIdentityOutput {
-	return o.ApplyT(func(v *NGroupIdentity) NGroupIdentity {
-		if v != nil {
-			return *v
-		}
-		var ret NGroupIdentity
-		return ret
-	}).(NGroupIdentityOutput)
-}
-
-// The type of identity used for the container scale set. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the nGroup.
-func (o NGroupIdentityPtrOutput) Type() ResourceIdentityTypePtrOutput {
-	return o.ApplyT(func(v *NGroupIdentity) *ResourceIdentityType {
-		if v == nil {
-			return nil
-		}
-		return v.Type
-	}).(ResourceIdentityTypePtrOutput)
-}
-
-// The list of user identities associated with the container scale set. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-func (o NGroupIdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *NGroupIdentity) []string {
-		if v == nil {
-			return nil
-		}
-		return v.UserAssignedIdentities
-	}).(pulumi.StringArrayOutput)
-}
-
-// Identity for the nGroup.
-type NGroupIdentityResponse struct {
-	// The principal id of the nGroup identity. This property will only be provided for a system assigned identity.
-	PrincipalId string `pulumi:"principalId"`
-	// The tenant id associated with the nGroup. This property will only be provided for a system assigned identity.
-	TenantId string `pulumi:"tenantId"`
-	// The type of identity used for the container scale set. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the nGroup.
-	Type *string `pulumi:"type"`
-	// The list of user identities associated with the container scale set. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-	UserAssignedIdentities map[string]UserAssignedIdentityResponse `pulumi:"userAssignedIdentities"`
-}
-
-// Identity for the nGroup.
-type NGroupIdentityResponseOutput struct{ *pulumi.OutputState }
-
-func (NGroupIdentityResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NGroupIdentityResponse)(nil)).Elem()
-}
-
-func (o NGroupIdentityResponseOutput) ToNGroupIdentityResponseOutput() NGroupIdentityResponseOutput {
-	return o
-}
-
-func (o NGroupIdentityResponseOutput) ToNGroupIdentityResponseOutputWithContext(ctx context.Context) NGroupIdentityResponseOutput {
-	return o
-}
-
-// The principal id of the nGroup identity. This property will only be provided for a system assigned identity.
-func (o NGroupIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
-	return o.ApplyT(func(v NGroupIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
-}
-
-// The tenant id associated with the nGroup. This property will only be provided for a system assigned identity.
-func (o NGroupIdentityResponseOutput) TenantId() pulumi.StringOutput {
-	return o.ApplyT(func(v NGroupIdentityResponse) string { return v.TenantId }).(pulumi.StringOutput)
-}
-
-// The type of identity used for the container scale set. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the nGroup.
-func (o NGroupIdentityResponseOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NGroupIdentityResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
-}
-
-// The list of user identities associated with the container scale set. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-func (o NGroupIdentityResponseOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
-	return o.ApplyT(func(v NGroupIdentityResponse) map[string]UserAssignedIdentityResponse {
-		return v.UserAssignedIdentities
-	}).(UserAssignedIdentityResponseMapOutput)
-}
-
-type NGroupIdentityResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (NGroupIdentityResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**NGroupIdentityResponse)(nil)).Elem()
-}
-
-func (o NGroupIdentityResponsePtrOutput) ToNGroupIdentityResponsePtrOutput() NGroupIdentityResponsePtrOutput {
-	return o
-}
-
-func (o NGroupIdentityResponsePtrOutput) ToNGroupIdentityResponsePtrOutputWithContext(ctx context.Context) NGroupIdentityResponsePtrOutput {
-	return o
-}
-
-func (o NGroupIdentityResponsePtrOutput) Elem() NGroupIdentityResponseOutput {
-	return o.ApplyT(func(v *NGroupIdentityResponse) NGroupIdentityResponse {
-		if v != nil {
-			return *v
-		}
-		var ret NGroupIdentityResponse
-		return ret
-	}).(NGroupIdentityResponseOutput)
-}
-
-// The principal id of the nGroup identity. This property will only be provided for a system assigned identity.
-func (o NGroupIdentityResponsePtrOutput) PrincipalId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NGroupIdentityResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PrincipalId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The tenant id associated with the nGroup. This property will only be provided for a system assigned identity.
-func (o NGroupIdentityResponsePtrOutput) TenantId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NGroupIdentityResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.TenantId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The type of identity used for the container scale set. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the nGroup.
-func (o NGroupIdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NGroupIdentityResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
-// The list of user identities associated with the container scale set. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-func (o NGroupIdentityResponsePtrOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
-	return o.ApplyT(func(v *NGroupIdentityResponse) map[string]UserAssignedIdentityResponse {
-		if v == nil {
-			return nil
-		}
-		return v.UserAssignedIdentities
-	}).(UserAssignedIdentityResponseMapOutput)
 }
 
 // The port exposed on the container group.
@@ -8284,65 +7641,240 @@ func (o SecurityContextDefinitionResponsePtrOutput) SeccompProfile() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
-type SystemDataResponse struct {
-	// The timestamp of resource creation (UTC).
-	CreatedAt *string `pulumi:"createdAt"`
-	// The identity that created the resource.
-	CreatedBy *string `pulumi:"createdBy"`
-	// The type of identity that created the resource.
-	CreatedByType *string `pulumi:"createdByType"`
-	// The timestamp of resource last modification (UTC)
-	LastModifiedAt *string `pulumi:"lastModifiedAt"`
-	// The identity that last modified the resource.
-	LastModifiedBy *string `pulumi:"lastModifiedBy"`
-	// The type of identity that last modified the resource.
-	LastModifiedByType *string `pulumi:"lastModifiedByType"`
+// The standby pool profile reference.
+type StandbyPoolProfileDefinition struct {
+	// The flag to determine whether ACI should fail the create request if the container group can not be obtained from standby pool.
+	FailContainerGroupCreateOnReuseFailure *bool `pulumi:"failContainerGroupCreateOnReuseFailure"`
+	// The standby pool profile reference id.This will be an ARM resource id in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyContainerGroupPools/{standbyPoolName}'.
+	Id *string `pulumi:"id"`
 }
 
-// Metadata pertaining to creation and last modification of the resource.
-type SystemDataResponseOutput struct{ *pulumi.OutputState }
+// StandbyPoolProfileDefinitionInput is an input type that accepts StandbyPoolProfileDefinitionArgs and StandbyPoolProfileDefinitionOutput values.
+// You can construct a concrete instance of `StandbyPoolProfileDefinitionInput` via:
+//
+//	StandbyPoolProfileDefinitionArgs{...}
+type StandbyPoolProfileDefinitionInput interface {
+	pulumi.Input
 
-func (SystemDataResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SystemDataResponse)(nil)).Elem()
+	ToStandbyPoolProfileDefinitionOutput() StandbyPoolProfileDefinitionOutput
+	ToStandbyPoolProfileDefinitionOutputWithContext(context.Context) StandbyPoolProfileDefinitionOutput
 }
 
-func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataResponseOutput {
+// The standby pool profile reference.
+type StandbyPoolProfileDefinitionArgs struct {
+	// The flag to determine whether ACI should fail the create request if the container group can not be obtained from standby pool.
+	FailContainerGroupCreateOnReuseFailure pulumi.BoolPtrInput `pulumi:"failContainerGroupCreateOnReuseFailure"`
+	// The standby pool profile reference id.This will be an ARM resource id in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyContainerGroupPools/{standbyPoolName}'.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+}
+
+func (StandbyPoolProfileDefinitionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StandbyPoolProfileDefinition)(nil)).Elem()
+}
+
+func (i StandbyPoolProfileDefinitionArgs) ToStandbyPoolProfileDefinitionOutput() StandbyPoolProfileDefinitionOutput {
+	return i.ToStandbyPoolProfileDefinitionOutputWithContext(context.Background())
+}
+
+func (i StandbyPoolProfileDefinitionArgs) ToStandbyPoolProfileDefinitionOutputWithContext(ctx context.Context) StandbyPoolProfileDefinitionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StandbyPoolProfileDefinitionOutput)
+}
+
+func (i StandbyPoolProfileDefinitionArgs) ToStandbyPoolProfileDefinitionPtrOutput() StandbyPoolProfileDefinitionPtrOutput {
+	return i.ToStandbyPoolProfileDefinitionPtrOutputWithContext(context.Background())
+}
+
+func (i StandbyPoolProfileDefinitionArgs) ToStandbyPoolProfileDefinitionPtrOutputWithContext(ctx context.Context) StandbyPoolProfileDefinitionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StandbyPoolProfileDefinitionOutput).ToStandbyPoolProfileDefinitionPtrOutputWithContext(ctx)
+}
+
+// StandbyPoolProfileDefinitionPtrInput is an input type that accepts StandbyPoolProfileDefinitionArgs, StandbyPoolProfileDefinitionPtr and StandbyPoolProfileDefinitionPtrOutput values.
+// You can construct a concrete instance of `StandbyPoolProfileDefinitionPtrInput` via:
+//
+//	        StandbyPoolProfileDefinitionArgs{...}
+//
+//	or:
+//
+//	        nil
+type StandbyPoolProfileDefinitionPtrInput interface {
+	pulumi.Input
+
+	ToStandbyPoolProfileDefinitionPtrOutput() StandbyPoolProfileDefinitionPtrOutput
+	ToStandbyPoolProfileDefinitionPtrOutputWithContext(context.Context) StandbyPoolProfileDefinitionPtrOutput
+}
+
+type standbyPoolProfileDefinitionPtrType StandbyPoolProfileDefinitionArgs
+
+func StandbyPoolProfileDefinitionPtr(v *StandbyPoolProfileDefinitionArgs) StandbyPoolProfileDefinitionPtrInput {
+	return (*standbyPoolProfileDefinitionPtrType)(v)
+}
+
+func (*standbyPoolProfileDefinitionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StandbyPoolProfileDefinition)(nil)).Elem()
+}
+
+func (i *standbyPoolProfileDefinitionPtrType) ToStandbyPoolProfileDefinitionPtrOutput() StandbyPoolProfileDefinitionPtrOutput {
+	return i.ToStandbyPoolProfileDefinitionPtrOutputWithContext(context.Background())
+}
+
+func (i *standbyPoolProfileDefinitionPtrType) ToStandbyPoolProfileDefinitionPtrOutputWithContext(ctx context.Context) StandbyPoolProfileDefinitionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StandbyPoolProfileDefinitionPtrOutput)
+}
+
+// The standby pool profile reference.
+type StandbyPoolProfileDefinitionOutput struct{ *pulumi.OutputState }
+
+func (StandbyPoolProfileDefinitionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StandbyPoolProfileDefinition)(nil)).Elem()
+}
+
+func (o StandbyPoolProfileDefinitionOutput) ToStandbyPoolProfileDefinitionOutput() StandbyPoolProfileDefinitionOutput {
 	return o
 }
 
-func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
+func (o StandbyPoolProfileDefinitionOutput) ToStandbyPoolProfileDefinitionOutputWithContext(ctx context.Context) StandbyPoolProfileDefinitionOutput {
 	return o
 }
 
-// The timestamp of resource creation (UTC).
-func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+func (o StandbyPoolProfileDefinitionOutput) ToStandbyPoolProfileDefinitionPtrOutput() StandbyPoolProfileDefinitionPtrOutput {
+	return o.ToStandbyPoolProfileDefinitionPtrOutputWithContext(context.Background())
 }
 
-// The identity that created the resource.
-func (o SystemDataResponseOutput) CreatedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
+func (o StandbyPoolProfileDefinitionOutput) ToStandbyPoolProfileDefinitionPtrOutputWithContext(ctx context.Context) StandbyPoolProfileDefinitionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StandbyPoolProfileDefinition) *StandbyPoolProfileDefinition {
+		return &v
+	}).(StandbyPoolProfileDefinitionPtrOutput)
 }
 
-// The type of identity that created the resource.
-func (o SystemDataResponseOutput) CreatedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
+// The flag to determine whether ACI should fail the create request if the container group can not be obtained from standby pool.
+func (o StandbyPoolProfileDefinitionOutput) FailContainerGroupCreateOnReuseFailure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v StandbyPoolProfileDefinition) *bool { return v.FailContainerGroupCreateOnReuseFailure }).(pulumi.BoolPtrOutput)
 }
 
-// The timestamp of resource last modification (UTC)
-func (o SystemDataResponseOutput) LastModifiedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
+// The standby pool profile reference id.This will be an ARM resource id in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyContainerGroupPools/{standbyPoolName}'.
+func (o StandbyPoolProfileDefinitionOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StandbyPoolProfileDefinition) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// The identity that last modified the resource.
-func (o SystemDataResponseOutput) LastModifiedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
+type StandbyPoolProfileDefinitionPtrOutput struct{ *pulumi.OutputState }
+
+func (StandbyPoolProfileDefinitionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StandbyPoolProfileDefinition)(nil)).Elem()
 }
 
-// The type of identity that last modified the resource.
-func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
+func (o StandbyPoolProfileDefinitionPtrOutput) ToStandbyPoolProfileDefinitionPtrOutput() StandbyPoolProfileDefinitionPtrOutput {
+	return o
+}
+
+func (o StandbyPoolProfileDefinitionPtrOutput) ToStandbyPoolProfileDefinitionPtrOutputWithContext(ctx context.Context) StandbyPoolProfileDefinitionPtrOutput {
+	return o
+}
+
+func (o StandbyPoolProfileDefinitionPtrOutput) Elem() StandbyPoolProfileDefinitionOutput {
+	return o.ApplyT(func(v *StandbyPoolProfileDefinition) StandbyPoolProfileDefinition {
+		if v != nil {
+			return *v
+		}
+		var ret StandbyPoolProfileDefinition
+		return ret
+	}).(StandbyPoolProfileDefinitionOutput)
+}
+
+// The flag to determine whether ACI should fail the create request if the container group can not be obtained from standby pool.
+func (o StandbyPoolProfileDefinitionPtrOutput) FailContainerGroupCreateOnReuseFailure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *StandbyPoolProfileDefinition) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.FailContainerGroupCreateOnReuseFailure
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The standby pool profile reference id.This will be an ARM resource id in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyContainerGroupPools/{standbyPoolName}'.
+func (o StandbyPoolProfileDefinitionPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StandbyPoolProfileDefinition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// The standby pool profile reference.
+type StandbyPoolProfileDefinitionResponse struct {
+	// The flag to determine whether ACI should fail the create request if the container group can not be obtained from standby pool.
+	FailContainerGroupCreateOnReuseFailure *bool `pulumi:"failContainerGroupCreateOnReuseFailure"`
+	// The standby pool profile reference id.This will be an ARM resource id in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyContainerGroupPools/{standbyPoolName}'.
+	Id *string `pulumi:"id"`
+}
+
+// The standby pool profile reference.
+type StandbyPoolProfileDefinitionResponseOutput struct{ *pulumi.OutputState }
+
+func (StandbyPoolProfileDefinitionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StandbyPoolProfileDefinitionResponse)(nil)).Elem()
+}
+
+func (o StandbyPoolProfileDefinitionResponseOutput) ToStandbyPoolProfileDefinitionResponseOutput() StandbyPoolProfileDefinitionResponseOutput {
+	return o
+}
+
+func (o StandbyPoolProfileDefinitionResponseOutput) ToStandbyPoolProfileDefinitionResponseOutputWithContext(ctx context.Context) StandbyPoolProfileDefinitionResponseOutput {
+	return o
+}
+
+// The flag to determine whether ACI should fail the create request if the container group can not be obtained from standby pool.
+func (o StandbyPoolProfileDefinitionResponseOutput) FailContainerGroupCreateOnReuseFailure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v StandbyPoolProfileDefinitionResponse) *bool { return v.FailContainerGroupCreateOnReuseFailure }).(pulumi.BoolPtrOutput)
+}
+
+// The standby pool profile reference id.This will be an ARM resource id in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyContainerGroupPools/{standbyPoolName}'.
+func (o StandbyPoolProfileDefinitionResponseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StandbyPoolProfileDefinitionResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type StandbyPoolProfileDefinitionResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (StandbyPoolProfileDefinitionResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StandbyPoolProfileDefinitionResponse)(nil)).Elem()
+}
+
+func (o StandbyPoolProfileDefinitionResponsePtrOutput) ToStandbyPoolProfileDefinitionResponsePtrOutput() StandbyPoolProfileDefinitionResponsePtrOutput {
+	return o
+}
+
+func (o StandbyPoolProfileDefinitionResponsePtrOutput) ToStandbyPoolProfileDefinitionResponsePtrOutputWithContext(ctx context.Context) StandbyPoolProfileDefinitionResponsePtrOutput {
+	return o
+}
+
+func (o StandbyPoolProfileDefinitionResponsePtrOutput) Elem() StandbyPoolProfileDefinitionResponseOutput {
+	return o.ApplyT(func(v *StandbyPoolProfileDefinitionResponse) StandbyPoolProfileDefinitionResponse {
+		if v != nil {
+			return *v
+		}
+		var ret StandbyPoolProfileDefinitionResponse
+		return ret
+	}).(StandbyPoolProfileDefinitionResponseOutput)
+}
+
+// The flag to determine whether ACI should fail the create request if the container group can not be obtained from standby pool.
+func (o StandbyPoolProfileDefinitionResponsePtrOutput) FailContainerGroupCreateOnReuseFailure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *StandbyPoolProfileDefinitionResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.FailContainerGroupCreateOnReuseFailure
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The standby pool profile reference id.This will be an ARM resource id in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyContainerGroupPools/{standbyPoolName}'.
+func (o StandbyPoolProfileDefinitionResponsePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StandbyPoolProfileDefinitionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
 }
 
 // The list of user identities associated with the container group. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
@@ -8398,59 +7930,6 @@ func (o UserAssignedIdentitiesResponseMapOutput) MapIndex(k pulumi.StringInput) 
 	}).(UserAssignedIdentitiesResponseOutput)
 }
 
-// User assigned identity properties
-type UserAssignedIdentityResponse struct {
-	// The client ID of the assigned identity.
-	ClientId string `pulumi:"clientId"`
-	// The principal ID of the assigned identity.
-	PrincipalId string `pulumi:"principalId"`
-}
-
-// User assigned identity properties
-type UserAssignedIdentityResponseOutput struct{ *pulumi.OutputState }
-
-func (UserAssignedIdentityResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*UserAssignedIdentityResponse)(nil)).Elem()
-}
-
-func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutput() UserAssignedIdentityResponseOutput {
-	return o
-}
-
-func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutputWithContext(ctx context.Context) UserAssignedIdentityResponseOutput {
-	return o
-}
-
-// The client ID of the assigned identity.
-func (o UserAssignedIdentityResponseOutput) ClientId() pulumi.StringOutput {
-	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.ClientId }).(pulumi.StringOutput)
-}
-
-// The principal ID of the assigned identity.
-func (o UserAssignedIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
-	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
-}
-
-type UserAssignedIdentityResponseMapOutput struct{ *pulumi.OutputState }
-
-func (UserAssignedIdentityResponseMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]UserAssignedIdentityResponse)(nil)).Elem()
-}
-
-func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutput() UserAssignedIdentityResponseMapOutput {
-	return o
-}
-
-func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutputWithContext(ctx context.Context) UserAssignedIdentityResponseMapOutput {
-	return o
-}
-
-func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentityResponseOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) UserAssignedIdentityResponse {
-		return vs[0].(map[string]UserAssignedIdentityResponse)[vs[1].(string)]
-	}).(UserAssignedIdentityResponseOutput)
-}
-
 // The properties of the volume.
 type Volume struct {
 	// The Azure File volume.
@@ -8463,8 +7942,6 @@ type Volume struct {
 	Name string `pulumi:"name"`
 	// The secret volume.
 	Secret map[string]string `pulumi:"secret"`
-	// The secret reference volume.
-	SecretReference map[string]string `pulumi:"secretReference"`
 }
 
 // VolumeInput is an input type that accepts VolumeArgs and VolumeOutput values.
@@ -8490,8 +7967,6 @@ type VolumeArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// The secret volume.
 	Secret pulumi.StringMapInput `pulumi:"secret"`
-	// The secret reference volume.
-	SecretReference pulumi.StringMapInput `pulumi:"secretReference"`
 }
 
 func (VolumeArgs) ElementType() reflect.Type {
@@ -8569,11 +8044,6 @@ func (o VolumeOutput) Name() pulumi.StringOutput {
 // The secret volume.
 func (o VolumeOutput) Secret() pulumi.StringMapOutput {
 	return o.ApplyT(func(v Volume) map[string]string { return v.Secret }).(pulumi.StringMapOutput)
-}
-
-// The secret reference volume.
-func (o VolumeOutput) SecretReference() pulumi.StringMapOutput {
-	return o.ApplyT(func(v Volume) map[string]string { return v.SecretReference }).(pulumi.StringMapOutput)
 }
 
 type VolumeArrayOutput struct{ *pulumi.OutputState }
@@ -8786,8 +8256,6 @@ type VolumeResponse struct {
 	Name string `pulumi:"name"`
 	// The secret volume.
 	Secret map[string]string `pulumi:"secret"`
-	// The secret reference volume.
-	SecretReference map[string]string `pulumi:"secretReference"`
 }
 
 // The properties of the volume.
@@ -8830,11 +8298,6 @@ func (o VolumeResponseOutput) Secret() pulumi.StringMapOutput {
 	return o.ApplyT(func(v VolumeResponse) map[string]string { return v.Secret }).(pulumi.StringMapOutput)
 }
 
-// The secret reference volume.
-func (o VolumeResponseOutput) SecretReference() pulumi.StringMapOutput {
-	return o.ApplyT(func(v VolumeResponse) map[string]string { return v.SecretReference }).(pulumi.StringMapOutput)
-}
-
 type VolumeResponseArrayOutput struct{ *pulumi.OutputState }
 
 func (VolumeResponseArrayOutput) ElementType() reflect.Type {
@@ -8856,10 +8319,6 @@ func (o VolumeResponseArrayOutput) Index(i pulumi.IntInput) VolumeResponseOutput
 }
 
 func init() {
-	pulumi.RegisterOutputType(ApiEntityReferenceOutput{})
-	pulumi.RegisterOutputType(ApiEntityReferencePtrOutput{})
-	pulumi.RegisterOutputType(ApiEntityReferenceResponseOutput{})
-	pulumi.RegisterOutputType(ApiEntityReferenceResponsePtrOutput{})
 	pulumi.RegisterOutputType(AzureFileVolumeOutput{})
 	pulumi.RegisterOutputType(AzureFileVolumePtrOutput{})
 	pulumi.RegisterOutputType(AzureFileVolumeResponseOutput{})
@@ -8886,10 +8345,10 @@ func init() {
 	pulumi.RegisterOutputType(ContainerGroupIdentityPtrOutput{})
 	pulumi.RegisterOutputType(ContainerGroupIdentityResponseOutput{})
 	pulumi.RegisterOutputType(ContainerGroupIdentityResponsePtrOutput{})
-	pulumi.RegisterOutputType(ContainerGroupProfileStubOutput{})
-	pulumi.RegisterOutputType(ContainerGroupProfileStubArrayOutput{})
-	pulumi.RegisterOutputType(ContainerGroupProfileStubResponseOutput{})
-	pulumi.RegisterOutputType(ContainerGroupProfileStubResponseArrayOutput{})
+	pulumi.RegisterOutputType(ContainerGroupProfileReferenceDefinitionOutput{})
+	pulumi.RegisterOutputType(ContainerGroupProfileReferenceDefinitionPtrOutput{})
+	pulumi.RegisterOutputType(ContainerGroupProfileReferenceDefinitionResponseOutput{})
+	pulumi.RegisterOutputType(ContainerGroupProfileReferenceDefinitionResponsePtrOutput{})
 	pulumi.RegisterOutputType(ContainerGroupPropertiesResponseInstanceViewOutput{})
 	pulumi.RegisterOutputType(ContainerGroupSubnetIdOutput{})
 	pulumi.RegisterOutputType(ContainerGroupSubnetIdArrayOutput{})
@@ -8919,10 +8378,6 @@ func init() {
 	pulumi.RegisterOutputType(DnsConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(DnsConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(DnsConfigurationResponsePtrOutput{})
-	pulumi.RegisterOutputType(ElasticProfileOutput{})
-	pulumi.RegisterOutputType(ElasticProfilePtrOutput{})
-	pulumi.RegisterOutputType(ElasticProfileResponseOutput{})
-	pulumi.RegisterOutputType(ElasticProfileResponsePtrOutput{})
 	pulumi.RegisterOutputType(EncryptionPropertiesOutput{})
 	pulumi.RegisterOutputType(EncryptionPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(EncryptionPropertiesResponseOutput{})
@@ -8962,10 +8417,6 @@ func init() {
 	pulumi.RegisterOutputType(LogAnalyticsPtrOutput{})
 	pulumi.RegisterOutputType(LogAnalyticsResponseOutput{})
 	pulumi.RegisterOutputType(LogAnalyticsResponsePtrOutput{})
-	pulumi.RegisterOutputType(NGroupIdentityOutput{})
-	pulumi.RegisterOutputType(NGroupIdentityPtrOutput{})
-	pulumi.RegisterOutputType(NGroupIdentityResponseOutput{})
-	pulumi.RegisterOutputType(NGroupIdentityResponsePtrOutput{})
 	pulumi.RegisterOutputType(PortOutput{})
 	pulumi.RegisterOutputType(PortArrayOutput{})
 	pulumi.RegisterOutputType(PortResponseOutput{})
@@ -8990,11 +8441,12 @@ func init() {
 	pulumi.RegisterOutputType(SecurityContextDefinitionPtrOutput{})
 	pulumi.RegisterOutputType(SecurityContextDefinitionResponseOutput{})
 	pulumi.RegisterOutputType(SecurityContextDefinitionResponsePtrOutput{})
-	pulumi.RegisterOutputType(SystemDataResponseOutput{})
+	pulumi.RegisterOutputType(StandbyPoolProfileDefinitionOutput{})
+	pulumi.RegisterOutputType(StandbyPoolProfileDefinitionPtrOutput{})
+	pulumi.RegisterOutputType(StandbyPoolProfileDefinitionResponseOutput{})
+	pulumi.RegisterOutputType(StandbyPoolProfileDefinitionResponsePtrOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentitiesResponseOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentitiesResponseMapOutput{})
-	pulumi.RegisterOutputType(UserAssignedIdentityResponseOutput{})
-	pulumi.RegisterOutputType(UserAssignedIdentityResponseMapOutput{})
 	pulumi.RegisterOutputType(VolumeOutput{})
 	pulumi.RegisterOutputType(VolumeArrayOutput{})
 	pulumi.RegisterOutputType(VolumeMountOutput{})

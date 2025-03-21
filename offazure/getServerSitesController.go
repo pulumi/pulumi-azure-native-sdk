@@ -12,9 +12,7 @@ import (
 )
 
 // Get a ServerSiteResource
-// Azure REST API version: 2023-06-06.
-//
-// Other available API versions: 2023-10-01-preview, 2024-05-01-preview.
+// Azure REST API version: 2023-10-01-preview.
 func LookupServerSitesController(ctx *pulumi.Context, args *LookupServerSitesControllerArgs, opts ...pulumi.InvokeOption) (*LookupServerSitesControllerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupServerSitesControllerResult
@@ -38,6 +36,8 @@ type LookupServerSitesControllerResult struct {
 	AgentDetails *SiteAgentPropertiesResponse `pulumi:"agentDetails"`
 	// Gets or sets the Appliance Name.
 	ApplianceName *string `pulumi:"applianceName"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets or sets the ARM ID of migration hub solution for SDS.
 	DiscoverySolutionId *string `pulumi:"discoverySolutionId"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -107,6 +107,11 @@ func (o LookupServerSitesControllerResultOutput) AgentDetails() SiteAgentPropert
 // Gets or sets the Appliance Name.
 func (o LookupServerSitesControllerResultOutput) ApplianceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServerSitesControllerResult) *string { return v.ApplianceName }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupServerSitesControllerResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServerSitesControllerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets the ARM ID of migration hub solution for SDS.

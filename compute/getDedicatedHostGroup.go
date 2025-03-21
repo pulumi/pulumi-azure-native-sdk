@@ -12,9 +12,7 @@ import (
 )
 
 // Retrieves information about a dedicated host group.
-// Azure REST API version: 2023-03-01.
-//
-// Other available API versions: 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01.
+// Azure REST API version: 2024-11-01.
 func LookupDedicatedHostGroup(ctx *pulumi.Context, args *LookupDedicatedHostGroupArgs, opts ...pulumi.InvokeOption) (*LookupDedicatedHostGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDedicatedHostGroupResult
@@ -38,6 +36,8 @@ type LookupDedicatedHostGroupArgs struct {
 type LookupDedicatedHostGroupResult struct {
 	// Enables or disables a capability on the dedicated host group. Minimum api-version: 2022-03-01.
 	AdditionalCapabilities *DedicatedHostGroupPropertiesResponseAdditionalCapabilities `pulumi:"additionalCapabilities"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// A list of references to all dedicated hosts in the dedicated host group.
 	Hosts []SubResourceReadOnlyResponse `pulumi:"hosts"`
 	// Resource Id
@@ -102,6 +102,11 @@ func (o LookupDedicatedHostGroupResultOutput) AdditionalCapabilities() Dedicated
 	return o.ApplyT(func(v LookupDedicatedHostGroupResult) *DedicatedHostGroupPropertiesResponseAdditionalCapabilities {
 		return v.AdditionalCapabilities
 	}).(DedicatedHostGroupPropertiesResponseAdditionalCapabilitiesPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupDedicatedHostGroupResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDedicatedHostGroupResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A list of references to all dedicated hosts in the dedicated host group.

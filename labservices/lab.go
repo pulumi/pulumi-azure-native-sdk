@@ -13,14 +13,14 @@ import (
 )
 
 // The lab resource.
-// Azure REST API version: 2022-08-01. Prior API version in Azure Native 1.x: 2018-10-15.
-//
-// Other available API versions: 2018-10-15, 2023-06-07.
+// Azure REST API version: 2023-06-07. Prior API version in Azure Native 2.x: 2022-08-01.
 type Lab struct {
 	pulumi.CustomResourceState
 
 	// The resource auto shutdown configuration for the lab. This controls whether actions are taken on resources that are sitting idle.
 	AutoShutdownProfile AutoShutdownProfileResponseOutput `pulumi:"autoShutdownProfile"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The connection profile for the lab. This controls settings such as web access to lab resources or whether RDP or SSH ports are open.
 	ConnectionProfile ConnectionProfileResponseOutput `pulumi:"connectionProfile"`
 	// The description of the lab.
@@ -35,6 +35,8 @@ type Lab struct {
 	NetworkProfile LabNetworkProfileResponsePtrOutput `pulumi:"networkProfile"`
 	// Current provisioning state of the lab.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// Error details of last operation done on lab.
+	ResourceOperationError ResourceOperationErrorResponseOutput `pulumi:"resourceOperationError"`
 	// The lab user list management profile.
 	RosterProfile RosterProfileResponsePtrOutput `pulumi:"rosterProfile"`
 	// The lab security profile.
@@ -79,6 +81,9 @@ func NewLab(ctx *pulumi.Context,
 	args.ConnectionProfile = args.ConnectionProfile.ToConnectionProfileOutput().ApplyT(func(v ConnectionProfile) ConnectionProfile { return *v.Defaults() }).(ConnectionProfileOutput)
 	args.VirtualMachineProfile = args.VirtualMachineProfile.ToVirtualMachineProfileOutput().ApplyT(func(v VirtualMachineProfile) VirtualMachineProfile { return *v.Defaults() }).(VirtualMachineProfileOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:labservices/v20181015:Lab"),
+		},
 		{
 			Type: pulumi.String("azure-native:labservices/v20211001preview:Lab"),
 		},
@@ -226,6 +231,11 @@ func (o LabOutput) AutoShutdownProfile() AutoShutdownProfileResponseOutput {
 	return o.ApplyT(func(v *Lab) AutoShutdownProfileResponseOutput { return v.AutoShutdownProfile }).(AutoShutdownProfileResponseOutput)
 }
 
+// The Azure API version of the resource.
+func (o LabOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Lab) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The connection profile for the lab. This controls settings such as web access to lab resources or whether RDP or SSH ports are open.
 func (o LabOutput) ConnectionProfile() ConnectionProfileResponseOutput {
 	return o.ApplyT(func(v *Lab) ConnectionProfileResponseOutput { return v.ConnectionProfile }).(ConnectionProfileResponseOutput)
@@ -259,6 +269,11 @@ func (o LabOutput) NetworkProfile() LabNetworkProfileResponsePtrOutput {
 // Current provisioning state of the lab.
 func (o LabOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *Lab) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Error details of last operation done on lab.
+func (o LabOutput) ResourceOperationError() ResourceOperationErrorResponseOutput {
+	return o.ApplyT(func(v *Lab) ResourceOperationErrorResponseOutput { return v.ResourceOperationError }).(ResourceOperationErrorResponseOutput)
 }
 
 // The lab user list management profile.

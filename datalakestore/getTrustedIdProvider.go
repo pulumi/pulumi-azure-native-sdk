@@ -34,6 +34,8 @@ type LookupTrustedIdProviderArgs struct {
 
 // Data Lake Store trusted identity provider information.
 type LookupTrustedIdProviderResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The resource identifier.
 	Id string `pulumi:"id"`
 	// The URL of this trusted identity provider.
@@ -79,6 +81,11 @@ func (o LookupTrustedIdProviderResultOutput) ToLookupTrustedIdProviderResultOutp
 
 func (o LookupTrustedIdProviderResultOutput) ToLookupTrustedIdProviderResultOutputWithContext(ctx context.Context) LookupTrustedIdProviderResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupTrustedIdProviderResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTrustedIdProviderResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The resource identifier.

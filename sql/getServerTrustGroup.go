@@ -13,8 +13,6 @@ import (
 
 // Gets a server trust group.
 // Azure REST API version: 2021-11-01.
-//
-// Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
 func LookupServerTrustGroup(ctx *pulumi.Context, args *LookupServerTrustGroupArgs, opts ...pulumi.InvokeOption) (*LookupServerTrustGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupServerTrustGroupResult
@@ -36,6 +34,8 @@ type LookupServerTrustGroupArgs struct {
 
 // A server trust group.
 type LookupServerTrustGroupResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Group members information for the server trust group.
 	GroupMembers []ServerInfoResponse `pulumi:"groupMembers"`
 	// Resource ID.
@@ -83,6 +83,11 @@ func (o LookupServerTrustGroupResultOutput) ToLookupServerTrustGroupResultOutput
 
 func (o LookupServerTrustGroupResultOutput) ToLookupServerTrustGroupResultOutputWithContext(ctx context.Context) LookupServerTrustGroupResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupServerTrustGroupResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServerTrustGroupResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Group members information for the server trust group.

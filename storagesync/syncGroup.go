@@ -13,12 +13,12 @@ import (
 )
 
 // Sync Group object.
-// Azure REST API version: 2022-06-01. Prior API version in Azure Native 1.x: 2020-03-01.
-//
-// Other available API versions: 2022-09-01.
+// Azure REST API version: 2022-09-01. Prior API version in Azure Native 2.x: 2022-06-01.
 type SyncGroup struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Sync group status
@@ -169,6 +169,11 @@ func (o SyncGroupOutput) ToSyncGroupOutput() SyncGroupOutput {
 
 func (o SyncGroupOutput) ToSyncGroupOutputWithContext(ctx context.Context) SyncGroupOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o SyncGroupOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SyncGroup) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

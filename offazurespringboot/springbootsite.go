@@ -13,10 +13,12 @@ import (
 )
 
 // The springbootsites envelope resource definition.
-// Azure REST API version: 2023-01-01-preview.
+// Azure REST API version: 2024-04-01-preview.
 type Springbootsite struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The extended location definition.
 	ExtendedLocation SpringbootsitesModelResponseExtendedLocationPtrOutput `pulumi:"extendedLocation"`
 	// The geo-location where the resource lives
@@ -48,16 +50,7 @@ func NewSpringbootsite(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:offazurespringboot/v20230101preview:Springbootsite"),
 		},
 		{
-			Type: pulumi.String("azure-native:offazurespringboot/v20230101preview:springbootsite"),
-		},
-		{
 			Type: pulumi.String("azure-native:offazurespringboot/v20240401preview:Springbootsite"),
-		},
-		{
-			Type: pulumi.String("azure-native:offazurespringboot/v20240401preview:springbootsite"),
-		},
-		{
-			Type: pulumi.String("azure-native:offazurespringboot:springbootsite"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -159,6 +152,11 @@ func (o SpringbootsiteOutput) ToSpringbootsiteOutput() SpringbootsiteOutput {
 
 func (o SpringbootsiteOutput) ToSpringbootsiteOutputWithContext(ctx context.Context) SpringbootsiteOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o SpringbootsiteOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Springbootsite) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The extended location definition.

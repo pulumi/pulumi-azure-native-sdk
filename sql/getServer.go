@@ -13,8 +13,6 @@ import (
 
 // Gets a server.
 // Azure REST API version: 2021-11-01.
-//
-// Other available API versions: 2014-04-01, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
 func LookupServer(ctx *pulumi.Context, args *LookupServerArgs, opts ...pulumi.InvokeOption) (*LookupServerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupServerResult
@@ -40,6 +38,8 @@ type LookupServerResult struct {
 	AdministratorLogin *string `pulumi:"administratorLogin"`
 	// The Azure Active Directory administrator of the server.
 	Administrators *ServerExternalAdministratorResponse `pulumi:"administrators"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The Client id used for cross tenant CMK scenario
 	FederatedClientId *string `pulumi:"federatedClientId"`
 	// The fully qualified domain name of the server.
@@ -123,6 +123,11 @@ func (o LookupServerResultOutput) AdministratorLogin() pulumi.StringPtrOutput {
 // The Azure Active Directory administrator of the server.
 func (o LookupServerResultOutput) Administrators() ServerExternalAdministratorResponsePtrOutput {
 	return o.ApplyT(func(v LookupServerResult) *ServerExternalAdministratorResponse { return v.Administrators }).(ServerExternalAdministratorResponsePtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupServerResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The Client id used for cross tenant CMK scenario

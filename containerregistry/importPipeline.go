@@ -13,12 +13,12 @@ import (
 )
 
 // An object that represents an import pipeline for a container registry.
-// Azure REST API version: 2023-01-01-preview. Prior API version in Azure Native 1.x: 2020-11-01-preview.
-//
-// Other available API versions: 2023-06-01-preview, 2023-08-01-preview, 2023-11-01-preview, 2024-11-01-preview.
+// Azure REST API version: 2023-01-01-preview. Prior API version in Azure Native 2.x: 2023-01-01-preview.
 type ImportPipeline struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The identity of the import pipeline.
 	Identity IdentityPropertiesResponsePtrOutput `pulumi:"identity"`
 	// The location of the import pipeline.
@@ -201,6 +201,11 @@ func (o ImportPipelineOutput) ToImportPipelineOutput() ImportPipelineOutput {
 
 func (o ImportPipelineOutput) ToImportPipelineOutputWithContext(ctx context.Context) ImportPipelineOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ImportPipelineOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ImportPipeline) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The identity of the import pipeline.

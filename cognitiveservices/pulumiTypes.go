@@ -56,6 +56,8 @@ func (o AbusePenaltyResponseOutput) RateLimitPercentage() pulumi.Float64PtrOutpu
 // Properties of Cognitive Services account.
 type AccountProperties struct {
 	AllowedFqdnList []string `pulumi:"allowedFqdnList"`
+	// The user owned AML workspace properties.
+	AmlWorkspace *UserOwnedAmlWorkspace `pulumi:"amlWorkspace"`
 	// The api properties for special APIs.
 	ApiProperties *ApiProperties `pulumi:"apiProperties"`
 	// Optional subdomain name used for token-based authentication.
@@ -72,9 +74,11 @@ type AccountProperties struct {
 	// A collection of rules governing the accessibility from specific network locations.
 	NetworkAcls *NetworkRuleSet `pulumi:"networkAcls"`
 	// Whether or not public endpoint access is allowed for this account.
-	PublicNetworkAccess           *string `pulumi:"publicNetworkAccess"`
-	Restore                       *bool   `pulumi:"restore"`
-	RestrictOutboundNetworkAccess *bool   `pulumi:"restrictOutboundNetworkAccess"`
+	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
+	// Cognitive Services Rai Monitor Config.
+	RaiMonitorConfig              *RaiMonitorConfig `pulumi:"raiMonitorConfig"`
+	Restore                       *bool             `pulumi:"restore"`
+	RestrictOutboundNetworkAccess *bool             `pulumi:"restrictOutboundNetworkAccess"`
 	// The storage accounts for this resource.
 	UserOwnedStorage []UserOwnedStorage `pulumi:"userOwnedStorage"`
 }
@@ -104,6 +108,8 @@ type AccountPropertiesInput interface {
 // Properties of Cognitive Services account.
 type AccountPropertiesArgs struct {
 	AllowedFqdnList pulumi.StringArrayInput `pulumi:"allowedFqdnList"`
+	// The user owned AML workspace properties.
+	AmlWorkspace UserOwnedAmlWorkspacePtrInput `pulumi:"amlWorkspace"`
 	// The api properties for special APIs.
 	ApiProperties ApiPropertiesPtrInput `pulumi:"apiProperties"`
 	// Optional subdomain name used for token-based authentication.
@@ -120,9 +126,11 @@ type AccountPropertiesArgs struct {
 	// A collection of rules governing the accessibility from specific network locations.
 	NetworkAcls NetworkRuleSetPtrInput `pulumi:"networkAcls"`
 	// Whether or not public endpoint access is allowed for this account.
-	PublicNetworkAccess           pulumi.StringPtrInput `pulumi:"publicNetworkAccess"`
-	Restore                       pulumi.BoolPtrInput   `pulumi:"restore"`
-	RestrictOutboundNetworkAccess pulumi.BoolPtrInput   `pulumi:"restrictOutboundNetworkAccess"`
+	PublicNetworkAccess pulumi.StringPtrInput `pulumi:"publicNetworkAccess"`
+	// Cognitive Services Rai Monitor Config.
+	RaiMonitorConfig              RaiMonitorConfigPtrInput `pulumi:"raiMonitorConfig"`
+	Restore                       pulumi.BoolPtrInput      `pulumi:"restore"`
+	RestrictOutboundNetworkAccess pulumi.BoolPtrInput      `pulumi:"restrictOutboundNetworkAccess"`
 	// The storage accounts for this resource.
 	UserOwnedStorage UserOwnedStorageArrayInput `pulumi:"userOwnedStorage"`
 }
@@ -218,6 +226,11 @@ func (o AccountPropertiesOutput) AllowedFqdnList() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccountProperties) []string { return v.AllowedFqdnList }).(pulumi.StringArrayOutput)
 }
 
+// The user owned AML workspace properties.
+func (o AccountPropertiesOutput) AmlWorkspace() UserOwnedAmlWorkspacePtrOutput {
+	return o.ApplyT(func(v AccountProperties) *UserOwnedAmlWorkspace { return v.AmlWorkspace }).(UserOwnedAmlWorkspacePtrOutput)
+}
+
 // The api properties for special APIs.
 func (o AccountPropertiesOutput) ApiProperties() ApiPropertiesPtrOutput {
 	return o.ApplyT(func(v AccountProperties) *ApiProperties { return v.ApiProperties }).(ApiPropertiesPtrOutput)
@@ -260,6 +273,11 @@ func (o AccountPropertiesOutput) NetworkAcls() NetworkRuleSetPtrOutput {
 // Whether or not public endpoint access is allowed for this account.
 func (o AccountPropertiesOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccountProperties) *string { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
+}
+
+// Cognitive Services Rai Monitor Config.
+func (o AccountPropertiesOutput) RaiMonitorConfig() RaiMonitorConfigPtrOutput {
+	return o.ApplyT(func(v AccountProperties) *RaiMonitorConfig { return v.RaiMonitorConfig }).(RaiMonitorConfigPtrOutput)
 }
 
 func (o AccountPropertiesOutput) Restore() pulumi.BoolPtrOutput {
@@ -306,6 +324,16 @@ func (o AccountPropertiesPtrOutput) AllowedFqdnList() pulumi.StringArrayOutput {
 		}
 		return v.AllowedFqdnList
 	}).(pulumi.StringArrayOutput)
+}
+
+// The user owned AML workspace properties.
+func (o AccountPropertiesPtrOutput) AmlWorkspace() UserOwnedAmlWorkspacePtrOutput {
+	return o.ApplyT(func(v *AccountProperties) *UserOwnedAmlWorkspace {
+		if v == nil {
+			return nil
+		}
+		return v.AmlWorkspace
+	}).(UserOwnedAmlWorkspacePtrOutput)
 }
 
 // The api properties for special APIs.
@@ -397,6 +425,16 @@ func (o AccountPropertiesPtrOutput) PublicNetworkAccess() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// Cognitive Services Rai Monitor Config.
+func (o AccountPropertiesPtrOutput) RaiMonitorConfig() RaiMonitorConfigPtrOutput {
+	return o.ApplyT(func(v *AccountProperties) *RaiMonitorConfig {
+		if v == nil {
+			return nil
+		}
+		return v.RaiMonitorConfig
+	}).(RaiMonitorConfigPtrOutput)
+}
+
 func (o AccountPropertiesPtrOutput) Restore() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AccountProperties) *bool {
 		if v == nil {
@@ -430,6 +468,8 @@ type AccountPropertiesResponse struct {
 	// The abuse penalty.
 	AbusePenalty    AbusePenaltyResponse `pulumi:"abusePenalty"`
 	AllowedFqdnList []string             `pulumi:"allowedFqdnList"`
+	// The user owned AML workspace properties.
+	AmlWorkspace *UserOwnedAmlWorkspaceResponse `pulumi:"amlWorkspace"`
 	// The api properties for special APIs.
 	ApiProperties *ApiPropertiesResponse `pulumi:"apiProperties"`
 	// The call rate limit Cognitive Services account.
@@ -467,9 +507,11 @@ type AccountPropertiesResponse struct {
 	// Gets the status of the cognitive services account at the time the operation was called.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Whether or not public endpoint access is allowed for this account.
-	PublicNetworkAccess           *string            `pulumi:"publicNetworkAccess"`
-	QuotaLimit                    QuotaLimitResponse `pulumi:"quotaLimit"`
-	RestrictOutboundNetworkAccess *bool              `pulumi:"restrictOutboundNetworkAccess"`
+	PublicNetworkAccess *string            `pulumi:"publicNetworkAccess"`
+	QuotaLimit          QuotaLimitResponse `pulumi:"quotaLimit"`
+	// Cognitive Services Rai Monitor Config.
+	RaiMonitorConfig              *RaiMonitorConfigResponse `pulumi:"raiMonitorConfig"`
+	RestrictOutboundNetworkAccess *bool                     `pulumi:"restrictOutboundNetworkAccess"`
 	// The scheduled purge date, only available for deleted account.
 	ScheduledPurgeDate string `pulumi:"scheduledPurgeDate"`
 	// Sku change info of account.
@@ -511,6 +553,11 @@ func (o AccountPropertiesResponseOutput) AbusePenalty() AbusePenaltyResponseOutp
 
 func (o AccountPropertiesResponseOutput) AllowedFqdnList() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccountPropertiesResponse) []string { return v.AllowedFqdnList }).(pulumi.StringArrayOutput)
+}
+
+// The user owned AML workspace properties.
+func (o AccountPropertiesResponseOutput) AmlWorkspace() UserOwnedAmlWorkspaceResponsePtrOutput {
+	return o.ApplyT(func(v AccountPropertiesResponse) *UserOwnedAmlWorkspaceResponse { return v.AmlWorkspace }).(UserOwnedAmlWorkspaceResponsePtrOutput)
 }
 
 // The api properties for special APIs.
@@ -617,6 +664,11 @@ func (o AccountPropertiesResponseOutput) PublicNetworkAccess() pulumi.StringPtrO
 
 func (o AccountPropertiesResponseOutput) QuotaLimit() QuotaLimitResponseOutput {
 	return o.ApplyT(func(v AccountPropertiesResponse) QuotaLimitResponse { return v.QuotaLimit }).(QuotaLimitResponseOutput)
+}
+
+// Cognitive Services Rai Monitor Config.
+func (o AccountPropertiesResponseOutput) RaiMonitorConfig() RaiMonitorConfigResponsePtrOutput {
+	return o.ApplyT(func(v AccountPropertiesResponse) *RaiMonitorConfigResponse { return v.RaiMonitorConfig }).(RaiMonitorConfigResponsePtrOutput)
 }
 
 func (o AccountPropertiesResponseOutput) RestrictOutboundNetworkAccess() pulumi.BoolPtrOutput {
@@ -1987,14 +2039,432 @@ func (o CommitmentQuotaResponsePtrOutput) Unit() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Gets or sets the source to which filter applies.
+type CustomBlocklistConfig struct {
+	// If blocking would occur.
+	Blocking *bool `pulumi:"blocking"`
+	// Name of ContentFilter.
+	BlocklistName *string `pulumi:"blocklistName"`
+	// Content source to apply the Content Filters.
+	Source *string `pulumi:"source"`
+}
+
+// CustomBlocklistConfigInput is an input type that accepts CustomBlocklistConfigArgs and CustomBlocklistConfigOutput values.
+// You can construct a concrete instance of `CustomBlocklistConfigInput` via:
+//
+//	CustomBlocklistConfigArgs{...}
+type CustomBlocklistConfigInput interface {
+	pulumi.Input
+
+	ToCustomBlocklistConfigOutput() CustomBlocklistConfigOutput
+	ToCustomBlocklistConfigOutputWithContext(context.Context) CustomBlocklistConfigOutput
+}
+
+// Gets or sets the source to which filter applies.
+type CustomBlocklistConfigArgs struct {
+	// If blocking would occur.
+	Blocking pulumi.BoolPtrInput `pulumi:"blocking"`
+	// Name of ContentFilter.
+	BlocklistName pulumi.StringPtrInput `pulumi:"blocklistName"`
+	// Content source to apply the Content Filters.
+	Source pulumi.StringPtrInput `pulumi:"source"`
+}
+
+func (CustomBlocklistConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomBlocklistConfig)(nil)).Elem()
+}
+
+func (i CustomBlocklistConfigArgs) ToCustomBlocklistConfigOutput() CustomBlocklistConfigOutput {
+	return i.ToCustomBlocklistConfigOutputWithContext(context.Background())
+}
+
+func (i CustomBlocklistConfigArgs) ToCustomBlocklistConfigOutputWithContext(ctx context.Context) CustomBlocklistConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomBlocklistConfigOutput)
+}
+
+// CustomBlocklistConfigArrayInput is an input type that accepts CustomBlocklistConfigArray and CustomBlocklistConfigArrayOutput values.
+// You can construct a concrete instance of `CustomBlocklistConfigArrayInput` via:
+//
+//	CustomBlocklistConfigArray{ CustomBlocklistConfigArgs{...} }
+type CustomBlocklistConfigArrayInput interface {
+	pulumi.Input
+
+	ToCustomBlocklistConfigArrayOutput() CustomBlocklistConfigArrayOutput
+	ToCustomBlocklistConfigArrayOutputWithContext(context.Context) CustomBlocklistConfigArrayOutput
+}
+
+type CustomBlocklistConfigArray []CustomBlocklistConfigInput
+
+func (CustomBlocklistConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomBlocklistConfig)(nil)).Elem()
+}
+
+func (i CustomBlocklistConfigArray) ToCustomBlocklistConfigArrayOutput() CustomBlocklistConfigArrayOutput {
+	return i.ToCustomBlocklistConfigArrayOutputWithContext(context.Background())
+}
+
+func (i CustomBlocklistConfigArray) ToCustomBlocklistConfigArrayOutputWithContext(ctx context.Context) CustomBlocklistConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomBlocklistConfigArrayOutput)
+}
+
+// Gets or sets the source to which filter applies.
+type CustomBlocklistConfigOutput struct{ *pulumi.OutputState }
+
+func (CustomBlocklistConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomBlocklistConfig)(nil)).Elem()
+}
+
+func (o CustomBlocklistConfigOutput) ToCustomBlocklistConfigOutput() CustomBlocklistConfigOutput {
+	return o
+}
+
+func (o CustomBlocklistConfigOutput) ToCustomBlocklistConfigOutputWithContext(ctx context.Context) CustomBlocklistConfigOutput {
+	return o
+}
+
+// If blocking would occur.
+func (o CustomBlocklistConfigOutput) Blocking() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CustomBlocklistConfig) *bool { return v.Blocking }).(pulumi.BoolPtrOutput)
+}
+
+// Name of ContentFilter.
+func (o CustomBlocklistConfigOutput) BlocklistName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomBlocklistConfig) *string { return v.BlocklistName }).(pulumi.StringPtrOutput)
+}
+
+// Content source to apply the Content Filters.
+func (o CustomBlocklistConfigOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomBlocklistConfig) *string { return v.Source }).(pulumi.StringPtrOutput)
+}
+
+type CustomBlocklistConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (CustomBlocklistConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomBlocklistConfig)(nil)).Elem()
+}
+
+func (o CustomBlocklistConfigArrayOutput) ToCustomBlocklistConfigArrayOutput() CustomBlocklistConfigArrayOutput {
+	return o
+}
+
+func (o CustomBlocklistConfigArrayOutput) ToCustomBlocklistConfigArrayOutputWithContext(ctx context.Context) CustomBlocklistConfigArrayOutput {
+	return o
+}
+
+func (o CustomBlocklistConfigArrayOutput) Index(i pulumi.IntInput) CustomBlocklistConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CustomBlocklistConfig {
+		return vs[0].([]CustomBlocklistConfig)[vs[1].(int)]
+	}).(CustomBlocklistConfigOutput)
+}
+
+// Gets or sets the source to which filter applies.
+type CustomBlocklistConfigResponse struct {
+	// If blocking would occur.
+	Blocking *bool `pulumi:"blocking"`
+	// Name of ContentFilter.
+	BlocklistName *string `pulumi:"blocklistName"`
+	// Content source to apply the Content Filters.
+	Source *string `pulumi:"source"`
+}
+
+// Gets or sets the source to which filter applies.
+type CustomBlocklistConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (CustomBlocklistConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomBlocklistConfigResponse)(nil)).Elem()
+}
+
+func (o CustomBlocklistConfigResponseOutput) ToCustomBlocklistConfigResponseOutput() CustomBlocklistConfigResponseOutput {
+	return o
+}
+
+func (o CustomBlocklistConfigResponseOutput) ToCustomBlocklistConfigResponseOutputWithContext(ctx context.Context) CustomBlocklistConfigResponseOutput {
+	return o
+}
+
+// If blocking would occur.
+func (o CustomBlocklistConfigResponseOutput) Blocking() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CustomBlocklistConfigResponse) *bool { return v.Blocking }).(pulumi.BoolPtrOutput)
+}
+
+// Name of ContentFilter.
+func (o CustomBlocklistConfigResponseOutput) BlocklistName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomBlocklistConfigResponse) *string { return v.BlocklistName }).(pulumi.StringPtrOutput)
+}
+
+// Content source to apply the Content Filters.
+func (o CustomBlocklistConfigResponseOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomBlocklistConfigResponse) *string { return v.Source }).(pulumi.StringPtrOutput)
+}
+
+type CustomBlocklistConfigResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (CustomBlocklistConfigResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomBlocklistConfigResponse)(nil)).Elem()
+}
+
+func (o CustomBlocklistConfigResponseArrayOutput) ToCustomBlocklistConfigResponseArrayOutput() CustomBlocklistConfigResponseArrayOutput {
+	return o
+}
+
+func (o CustomBlocklistConfigResponseArrayOutput) ToCustomBlocklistConfigResponseArrayOutputWithContext(ctx context.Context) CustomBlocklistConfigResponseArrayOutput {
+	return o
+}
+
+func (o CustomBlocklistConfigResponseArrayOutput) Index(i pulumi.IntInput) CustomBlocklistConfigResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CustomBlocklistConfigResponse {
+		return vs[0].([]CustomBlocklistConfigResponse)[vs[1].(int)]
+	}).(CustomBlocklistConfigResponseOutput)
+}
+
+// Internal use only.
+type DeploymentCapacitySettings struct {
+	// The designated capacity.
+	DesignatedCapacity *int `pulumi:"designatedCapacity"`
+	// The priority of this capacity setting.
+	Priority *int `pulumi:"priority"`
+}
+
+// DeploymentCapacitySettingsInput is an input type that accepts DeploymentCapacitySettingsArgs and DeploymentCapacitySettingsOutput values.
+// You can construct a concrete instance of `DeploymentCapacitySettingsInput` via:
+//
+//	DeploymentCapacitySettingsArgs{...}
+type DeploymentCapacitySettingsInput interface {
+	pulumi.Input
+
+	ToDeploymentCapacitySettingsOutput() DeploymentCapacitySettingsOutput
+	ToDeploymentCapacitySettingsOutputWithContext(context.Context) DeploymentCapacitySettingsOutput
+}
+
+// Internal use only.
+type DeploymentCapacitySettingsArgs struct {
+	// The designated capacity.
+	DesignatedCapacity pulumi.IntPtrInput `pulumi:"designatedCapacity"`
+	// The priority of this capacity setting.
+	Priority pulumi.IntPtrInput `pulumi:"priority"`
+}
+
+func (DeploymentCapacitySettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentCapacitySettings)(nil)).Elem()
+}
+
+func (i DeploymentCapacitySettingsArgs) ToDeploymentCapacitySettingsOutput() DeploymentCapacitySettingsOutput {
+	return i.ToDeploymentCapacitySettingsOutputWithContext(context.Background())
+}
+
+func (i DeploymentCapacitySettingsArgs) ToDeploymentCapacitySettingsOutputWithContext(ctx context.Context) DeploymentCapacitySettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentCapacitySettingsOutput)
+}
+
+func (i DeploymentCapacitySettingsArgs) ToDeploymentCapacitySettingsPtrOutput() DeploymentCapacitySettingsPtrOutput {
+	return i.ToDeploymentCapacitySettingsPtrOutputWithContext(context.Background())
+}
+
+func (i DeploymentCapacitySettingsArgs) ToDeploymentCapacitySettingsPtrOutputWithContext(ctx context.Context) DeploymentCapacitySettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentCapacitySettingsOutput).ToDeploymentCapacitySettingsPtrOutputWithContext(ctx)
+}
+
+// DeploymentCapacitySettingsPtrInput is an input type that accepts DeploymentCapacitySettingsArgs, DeploymentCapacitySettingsPtr and DeploymentCapacitySettingsPtrOutput values.
+// You can construct a concrete instance of `DeploymentCapacitySettingsPtrInput` via:
+//
+//	        DeploymentCapacitySettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeploymentCapacitySettingsPtrInput interface {
+	pulumi.Input
+
+	ToDeploymentCapacitySettingsPtrOutput() DeploymentCapacitySettingsPtrOutput
+	ToDeploymentCapacitySettingsPtrOutputWithContext(context.Context) DeploymentCapacitySettingsPtrOutput
+}
+
+type deploymentCapacitySettingsPtrType DeploymentCapacitySettingsArgs
+
+func DeploymentCapacitySettingsPtr(v *DeploymentCapacitySettingsArgs) DeploymentCapacitySettingsPtrInput {
+	return (*deploymentCapacitySettingsPtrType)(v)
+}
+
+func (*deploymentCapacitySettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentCapacitySettings)(nil)).Elem()
+}
+
+func (i *deploymentCapacitySettingsPtrType) ToDeploymentCapacitySettingsPtrOutput() DeploymentCapacitySettingsPtrOutput {
+	return i.ToDeploymentCapacitySettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *deploymentCapacitySettingsPtrType) ToDeploymentCapacitySettingsPtrOutputWithContext(ctx context.Context) DeploymentCapacitySettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentCapacitySettingsPtrOutput)
+}
+
+// Internal use only.
+type DeploymentCapacitySettingsOutput struct{ *pulumi.OutputState }
+
+func (DeploymentCapacitySettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentCapacitySettings)(nil)).Elem()
+}
+
+func (o DeploymentCapacitySettingsOutput) ToDeploymentCapacitySettingsOutput() DeploymentCapacitySettingsOutput {
+	return o
+}
+
+func (o DeploymentCapacitySettingsOutput) ToDeploymentCapacitySettingsOutputWithContext(ctx context.Context) DeploymentCapacitySettingsOutput {
+	return o
+}
+
+func (o DeploymentCapacitySettingsOutput) ToDeploymentCapacitySettingsPtrOutput() DeploymentCapacitySettingsPtrOutput {
+	return o.ToDeploymentCapacitySettingsPtrOutputWithContext(context.Background())
+}
+
+func (o DeploymentCapacitySettingsOutput) ToDeploymentCapacitySettingsPtrOutputWithContext(ctx context.Context) DeploymentCapacitySettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeploymentCapacitySettings) *DeploymentCapacitySettings {
+		return &v
+	}).(DeploymentCapacitySettingsPtrOutput)
+}
+
+// The designated capacity.
+func (o DeploymentCapacitySettingsOutput) DesignatedCapacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DeploymentCapacitySettings) *int { return v.DesignatedCapacity }).(pulumi.IntPtrOutput)
+}
+
+// The priority of this capacity setting.
+func (o DeploymentCapacitySettingsOutput) Priority() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DeploymentCapacitySettings) *int { return v.Priority }).(pulumi.IntPtrOutput)
+}
+
+type DeploymentCapacitySettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (DeploymentCapacitySettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentCapacitySettings)(nil)).Elem()
+}
+
+func (o DeploymentCapacitySettingsPtrOutput) ToDeploymentCapacitySettingsPtrOutput() DeploymentCapacitySettingsPtrOutput {
+	return o
+}
+
+func (o DeploymentCapacitySettingsPtrOutput) ToDeploymentCapacitySettingsPtrOutputWithContext(ctx context.Context) DeploymentCapacitySettingsPtrOutput {
+	return o
+}
+
+func (o DeploymentCapacitySettingsPtrOutput) Elem() DeploymentCapacitySettingsOutput {
+	return o.ApplyT(func(v *DeploymentCapacitySettings) DeploymentCapacitySettings {
+		if v != nil {
+			return *v
+		}
+		var ret DeploymentCapacitySettings
+		return ret
+	}).(DeploymentCapacitySettingsOutput)
+}
+
+// The designated capacity.
+func (o DeploymentCapacitySettingsPtrOutput) DesignatedCapacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DeploymentCapacitySettings) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DesignatedCapacity
+	}).(pulumi.IntPtrOutput)
+}
+
+// The priority of this capacity setting.
+func (o DeploymentCapacitySettingsPtrOutput) Priority() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DeploymentCapacitySettings) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Priority
+	}).(pulumi.IntPtrOutput)
+}
+
+// Internal use only.
+type DeploymentCapacitySettingsResponse struct {
+	// The designated capacity.
+	DesignatedCapacity *int `pulumi:"designatedCapacity"`
+	// The priority of this capacity setting.
+	Priority *int `pulumi:"priority"`
+}
+
+// Internal use only.
+type DeploymentCapacitySettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (DeploymentCapacitySettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentCapacitySettingsResponse)(nil)).Elem()
+}
+
+func (o DeploymentCapacitySettingsResponseOutput) ToDeploymentCapacitySettingsResponseOutput() DeploymentCapacitySettingsResponseOutput {
+	return o
+}
+
+func (o DeploymentCapacitySettingsResponseOutput) ToDeploymentCapacitySettingsResponseOutputWithContext(ctx context.Context) DeploymentCapacitySettingsResponseOutput {
+	return o
+}
+
+// The designated capacity.
+func (o DeploymentCapacitySettingsResponseOutput) DesignatedCapacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DeploymentCapacitySettingsResponse) *int { return v.DesignatedCapacity }).(pulumi.IntPtrOutput)
+}
+
+// The priority of this capacity setting.
+func (o DeploymentCapacitySettingsResponseOutput) Priority() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DeploymentCapacitySettingsResponse) *int { return v.Priority }).(pulumi.IntPtrOutput)
+}
+
+type DeploymentCapacitySettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DeploymentCapacitySettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentCapacitySettingsResponse)(nil)).Elem()
+}
+
+func (o DeploymentCapacitySettingsResponsePtrOutput) ToDeploymentCapacitySettingsResponsePtrOutput() DeploymentCapacitySettingsResponsePtrOutput {
+	return o
+}
+
+func (o DeploymentCapacitySettingsResponsePtrOutput) ToDeploymentCapacitySettingsResponsePtrOutputWithContext(ctx context.Context) DeploymentCapacitySettingsResponsePtrOutput {
+	return o
+}
+
+func (o DeploymentCapacitySettingsResponsePtrOutput) Elem() DeploymentCapacitySettingsResponseOutput {
+	return o.ApplyT(func(v *DeploymentCapacitySettingsResponse) DeploymentCapacitySettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DeploymentCapacitySettingsResponse
+		return ret
+	}).(DeploymentCapacitySettingsResponseOutput)
+}
+
+// The designated capacity.
+func (o DeploymentCapacitySettingsResponsePtrOutput) DesignatedCapacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DeploymentCapacitySettingsResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DesignatedCapacity
+	}).(pulumi.IntPtrOutput)
+}
+
+// The priority of this capacity setting.
+func (o DeploymentCapacitySettingsResponsePtrOutput) Priority() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DeploymentCapacitySettingsResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Priority
+	}).(pulumi.IntPtrOutput)
+}
+
 // Properties of Cognitive Services account deployment model.
 type DeploymentModel struct {
 	// Deployment model format.
 	Format *string `pulumi:"format"`
 	// Deployment model name.
 	Name *string `pulumi:"name"`
+	// Deployment model publisher.
+	Publisher *string `pulumi:"publisher"`
 	// Optional. Deployment model source ARM resource ID.
 	Source *string `pulumi:"source"`
+	// Optional. Source of the model, another Microsoft.CognitiveServices accounts ARM resource ID.
+	SourceAccount *string `pulumi:"sourceAccount"`
 	// Optional. Deployment model version. If version is not specified, a default version will be assigned. The default version is different for different models and might change when there is new version available for a model. Default version for a model could be found from list models API.
 	Version *string `pulumi:"version"`
 }
@@ -2016,8 +2486,12 @@ type DeploymentModelArgs struct {
 	Format pulumi.StringPtrInput `pulumi:"format"`
 	// Deployment model name.
 	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Deployment model publisher.
+	Publisher pulumi.StringPtrInput `pulumi:"publisher"`
 	// Optional. Deployment model source ARM resource ID.
 	Source pulumi.StringPtrInput `pulumi:"source"`
+	// Optional. Source of the model, another Microsoft.CognitiveServices accounts ARM resource ID.
+	SourceAccount pulumi.StringPtrInput `pulumi:"sourceAccount"`
 	// Optional. Deployment model version. If version is not specified, a default version will be assigned. The default version is different for different models and might change when there is new version available for a model. Default version for a model could be found from list models API.
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
@@ -2110,9 +2584,19 @@ func (o DeploymentModelOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeploymentModel) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Deployment model publisher.
+func (o DeploymentModelOutput) Publisher() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentModel) *string { return v.Publisher }).(pulumi.StringPtrOutput)
+}
+
 // Optional. Deployment model source ARM resource ID.
 func (o DeploymentModelOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeploymentModel) *string { return v.Source }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Source of the model, another Microsoft.CognitiveServices accounts ARM resource ID.
+func (o DeploymentModelOutput) SourceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentModel) *string { return v.SourceAccount }).(pulumi.StringPtrOutput)
 }
 
 // Optional. Deployment model version. If version is not specified, a default version will be assigned. The default version is different for different models and might change when there is new version available for a model. Default version for a model could be found from list models API.
@@ -2164,6 +2648,16 @@ func (o DeploymentModelPtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Deployment model publisher.
+func (o DeploymentModelPtrOutput) Publisher() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentModel) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Publisher
+	}).(pulumi.StringPtrOutput)
+}
+
 // Optional. Deployment model source ARM resource ID.
 func (o DeploymentModelPtrOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DeploymentModel) *string {
@@ -2171,6 +2665,16 @@ func (o DeploymentModelPtrOutput) Source() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Source
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Source of the model, another Microsoft.CognitiveServices accounts ARM resource ID.
+func (o DeploymentModelPtrOutput) SourceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentModel) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceAccount
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2192,8 +2696,12 @@ type DeploymentModelResponse struct {
 	Format *string `pulumi:"format"`
 	// Deployment model name.
 	Name *string `pulumi:"name"`
+	// Deployment model publisher.
+	Publisher *string `pulumi:"publisher"`
 	// Optional. Deployment model source ARM resource ID.
 	Source *string `pulumi:"source"`
+	// Optional. Source of the model, another Microsoft.CognitiveServices accounts ARM resource ID.
+	SourceAccount *string `pulumi:"sourceAccount"`
 	// Optional. Deployment model version. If version is not specified, a default version will be assigned. The default version is different for different models and might change when there is new version available for a model. Default version for a model could be found from list models API.
 	Version *string `pulumi:"version"`
 }
@@ -2228,9 +2736,19 @@ func (o DeploymentModelResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeploymentModelResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Deployment model publisher.
+func (o DeploymentModelResponseOutput) Publisher() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentModelResponse) *string { return v.Publisher }).(pulumi.StringPtrOutput)
+}
+
 // Optional. Deployment model source ARM resource ID.
 func (o DeploymentModelResponseOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeploymentModelResponse) *string { return v.Source }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Source of the model, another Microsoft.CognitiveServices accounts ARM resource ID.
+func (o DeploymentModelResponseOutput) SourceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentModelResponse) *string { return v.SourceAccount }).(pulumi.StringPtrOutput)
 }
 
 // Optional. Deployment model version. If version is not specified, a default version will be assigned. The default version is different for different models and might change when there is new version available for a model. Default version for a model could be found from list models API.
@@ -2292,6 +2810,16 @@ func (o DeploymentModelResponsePtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Deployment model publisher.
+func (o DeploymentModelResponsePtrOutput) Publisher() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentModelResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Publisher
+	}).(pulumi.StringPtrOutput)
+}
+
 // Optional. Deployment model source ARM resource ID.
 func (o DeploymentModelResponsePtrOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DeploymentModelResponse) *string {
@@ -2299,6 +2827,16 @@ func (o DeploymentModelResponsePtrOutput) Source() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Source
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Source of the model, another Microsoft.CognitiveServices accounts ARM resource ID.
+func (o DeploymentModelResponsePtrOutput) SourceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentModelResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceAccount
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2314,11 +2852,17 @@ func (o DeploymentModelResponsePtrOutput) Version() pulumi.StringPtrOutput {
 
 // Properties of Cognitive Services account deployment.
 type DeploymentProperties struct {
+	// Internal use only.
+	CapacitySettings *DeploymentCapacitySettings `pulumi:"capacitySettings"`
+	// The current capacity.
+	CurrentCapacity *int `pulumi:"currentCapacity"`
 	// Properties of Cognitive Services account deployment model.
 	Model *DeploymentModel `pulumi:"model"`
+	// The name of parent deployment.
+	ParentDeploymentName *string `pulumi:"parentDeploymentName"`
 	// The name of RAI policy.
 	RaiPolicyName *string `pulumi:"raiPolicyName"`
-	// Properties of Cognitive Services account deployment model.
+	// Properties of Cognitive Services account deployment model. (Deprecated, please use Deployment.sku instead.)
 	ScaleSettings *DeploymentScaleSettings `pulumi:"scaleSettings"`
 	// Deployment model version upgrade option.
 	VersionUpgradeOption *string `pulumi:"versionUpgradeOption"`
@@ -2337,11 +2881,17 @@ type DeploymentPropertiesInput interface {
 
 // Properties of Cognitive Services account deployment.
 type DeploymentPropertiesArgs struct {
+	// Internal use only.
+	CapacitySettings DeploymentCapacitySettingsPtrInput `pulumi:"capacitySettings"`
+	// The current capacity.
+	CurrentCapacity pulumi.IntPtrInput `pulumi:"currentCapacity"`
 	// Properties of Cognitive Services account deployment model.
 	Model DeploymentModelPtrInput `pulumi:"model"`
+	// The name of parent deployment.
+	ParentDeploymentName pulumi.StringPtrInput `pulumi:"parentDeploymentName"`
 	// The name of RAI policy.
 	RaiPolicyName pulumi.StringPtrInput `pulumi:"raiPolicyName"`
-	// Properties of Cognitive Services account deployment model.
+	// Properties of Cognitive Services account deployment model. (Deprecated, please use Deployment.sku instead.)
 	ScaleSettings DeploymentScaleSettingsPtrInput `pulumi:"scaleSettings"`
 	// Deployment model version upgrade option.
 	VersionUpgradeOption pulumi.StringPtrInput `pulumi:"versionUpgradeOption"`
@@ -2425,9 +2975,24 @@ func (o DeploymentPropertiesOutput) ToDeploymentPropertiesPtrOutputWithContext(c
 	}).(DeploymentPropertiesPtrOutput)
 }
 
+// Internal use only.
+func (o DeploymentPropertiesOutput) CapacitySettings() DeploymentCapacitySettingsPtrOutput {
+	return o.ApplyT(func(v DeploymentProperties) *DeploymentCapacitySettings { return v.CapacitySettings }).(DeploymentCapacitySettingsPtrOutput)
+}
+
+// The current capacity.
+func (o DeploymentPropertiesOutput) CurrentCapacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DeploymentProperties) *int { return v.CurrentCapacity }).(pulumi.IntPtrOutput)
+}
+
 // Properties of Cognitive Services account deployment model.
 func (o DeploymentPropertiesOutput) Model() DeploymentModelPtrOutput {
 	return o.ApplyT(func(v DeploymentProperties) *DeploymentModel { return v.Model }).(DeploymentModelPtrOutput)
+}
+
+// The name of parent deployment.
+func (o DeploymentPropertiesOutput) ParentDeploymentName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentProperties) *string { return v.ParentDeploymentName }).(pulumi.StringPtrOutput)
 }
 
 // The name of RAI policy.
@@ -2435,7 +3000,7 @@ func (o DeploymentPropertiesOutput) RaiPolicyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeploymentProperties) *string { return v.RaiPolicyName }).(pulumi.StringPtrOutput)
 }
 
-// Properties of Cognitive Services account deployment model.
+// Properties of Cognitive Services account deployment model. (Deprecated, please use Deployment.sku instead.)
 func (o DeploymentPropertiesOutput) ScaleSettings() DeploymentScaleSettingsPtrOutput {
 	return o.ApplyT(func(v DeploymentProperties) *DeploymentScaleSettings { return v.ScaleSettings }).(DeploymentScaleSettingsPtrOutput)
 }
@@ -2469,6 +3034,26 @@ func (o DeploymentPropertiesPtrOutput) Elem() DeploymentPropertiesOutput {
 	}).(DeploymentPropertiesOutput)
 }
 
+// Internal use only.
+func (o DeploymentPropertiesPtrOutput) CapacitySettings() DeploymentCapacitySettingsPtrOutput {
+	return o.ApplyT(func(v *DeploymentProperties) *DeploymentCapacitySettings {
+		if v == nil {
+			return nil
+		}
+		return v.CapacitySettings
+	}).(DeploymentCapacitySettingsPtrOutput)
+}
+
+// The current capacity.
+func (o DeploymentPropertiesPtrOutput) CurrentCapacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DeploymentProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CurrentCapacity
+	}).(pulumi.IntPtrOutput)
+}
+
 // Properties of Cognitive Services account deployment model.
 func (o DeploymentPropertiesPtrOutput) Model() DeploymentModelPtrOutput {
 	return o.ApplyT(func(v *DeploymentProperties) *DeploymentModel {
@@ -2477,6 +3062,16 @@ func (o DeploymentPropertiesPtrOutput) Model() DeploymentModelPtrOutput {
 		}
 		return v.Model
 	}).(DeploymentModelPtrOutput)
+}
+
+// The name of parent deployment.
+func (o DeploymentPropertiesPtrOutput) ParentDeploymentName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ParentDeploymentName
+	}).(pulumi.StringPtrOutput)
 }
 
 // The name of RAI policy.
@@ -2489,7 +3084,7 @@ func (o DeploymentPropertiesPtrOutput) RaiPolicyName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Properties of Cognitive Services account deployment model.
+// Properties of Cognitive Services account deployment model. (Deprecated, please use Deployment.sku instead.)
 func (o DeploymentPropertiesPtrOutput) ScaleSettings() DeploymentScaleSettingsPtrOutput {
 	return o.ApplyT(func(v *DeploymentProperties) *DeploymentScaleSettings {
 		if v == nil {
@@ -2515,14 +3110,22 @@ type DeploymentPropertiesResponse struct {
 	CallRateLimit CallRateLimitResponse `pulumi:"callRateLimit"`
 	// The capabilities.
 	Capabilities map[string]string `pulumi:"capabilities"`
+	// Internal use only.
+	CapacitySettings *DeploymentCapacitySettingsResponse `pulumi:"capacitySettings"`
+	// The current capacity.
+	CurrentCapacity *int `pulumi:"currentCapacity"`
+	// If the dynamic throttling is enabled.
+	DynamicThrottlingEnabled bool `pulumi:"dynamicThrottlingEnabled"`
 	// Properties of Cognitive Services account deployment model.
 	Model *DeploymentModelResponse `pulumi:"model"`
+	// The name of parent deployment.
+	ParentDeploymentName *string `pulumi:"parentDeploymentName"`
 	// Gets the status of the resource at the time the operation was called.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// The name of RAI policy.
 	RaiPolicyName *string                  `pulumi:"raiPolicyName"`
 	RateLimits    []ThrottlingRuleResponse `pulumi:"rateLimits"`
-	// Properties of Cognitive Services account deployment model.
+	// Properties of Cognitive Services account deployment model. (Deprecated, please use Deployment.sku instead.)
 	ScaleSettings *DeploymentScaleSettingsResponse `pulumi:"scaleSettings"`
 	// Deployment model version upgrade option.
 	VersionUpgradeOption *string `pulumi:"versionUpgradeOption"`
@@ -2553,9 +3156,29 @@ func (o DeploymentPropertiesResponseOutput) Capabilities() pulumi.StringMapOutpu
 	return o.ApplyT(func(v DeploymentPropertiesResponse) map[string]string { return v.Capabilities }).(pulumi.StringMapOutput)
 }
 
+// Internal use only.
+func (o DeploymentPropertiesResponseOutput) CapacitySettings() DeploymentCapacitySettingsResponsePtrOutput {
+	return o.ApplyT(func(v DeploymentPropertiesResponse) *DeploymentCapacitySettingsResponse { return v.CapacitySettings }).(DeploymentCapacitySettingsResponsePtrOutput)
+}
+
+// The current capacity.
+func (o DeploymentPropertiesResponseOutput) CurrentCapacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DeploymentPropertiesResponse) *int { return v.CurrentCapacity }).(pulumi.IntPtrOutput)
+}
+
+// If the dynamic throttling is enabled.
+func (o DeploymentPropertiesResponseOutput) DynamicThrottlingEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v DeploymentPropertiesResponse) bool { return v.DynamicThrottlingEnabled }).(pulumi.BoolOutput)
+}
+
 // Properties of Cognitive Services account deployment model.
 func (o DeploymentPropertiesResponseOutput) Model() DeploymentModelResponsePtrOutput {
 	return o.ApplyT(func(v DeploymentPropertiesResponse) *DeploymentModelResponse { return v.Model }).(DeploymentModelResponsePtrOutput)
+}
+
+// The name of parent deployment.
+func (o DeploymentPropertiesResponseOutput) ParentDeploymentName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentPropertiesResponse) *string { return v.ParentDeploymentName }).(pulumi.StringPtrOutput)
 }
 
 // Gets the status of the resource at the time the operation was called.
@@ -2572,7 +3195,7 @@ func (o DeploymentPropertiesResponseOutput) RateLimits() ThrottlingRuleResponseA
 	return o.ApplyT(func(v DeploymentPropertiesResponse) []ThrottlingRuleResponse { return v.RateLimits }).(ThrottlingRuleResponseArrayOutput)
 }
 
-// Properties of Cognitive Services account deployment model.
+// Properties of Cognitive Services account deployment model. (Deprecated, please use Deployment.sku instead.)
 func (o DeploymentPropertiesResponseOutput) ScaleSettings() DeploymentScaleSettingsResponsePtrOutput {
 	return o.ApplyT(func(v DeploymentPropertiesResponse) *DeploymentScaleSettingsResponse { return v.ScaleSettings }).(DeploymentScaleSettingsResponsePtrOutput)
 }
@@ -2582,7 +3205,7 @@ func (o DeploymentPropertiesResponseOutput) VersionUpgradeOption() pulumi.String
 	return o.ApplyT(func(v DeploymentPropertiesResponse) *string { return v.VersionUpgradeOption }).(pulumi.StringPtrOutput)
 }
 
-// Properties of Cognitive Services account deployment model.
+// Properties of Cognitive Services account deployment model. (Deprecated, please use Deployment.sku instead.)
 type DeploymentScaleSettings struct {
 	// Deployment capacity.
 	Capacity *int `pulumi:"capacity"`
@@ -2601,7 +3224,7 @@ type DeploymentScaleSettingsInput interface {
 	ToDeploymentScaleSettingsOutputWithContext(context.Context) DeploymentScaleSettingsOutput
 }
 
-// Properties of Cognitive Services account deployment model.
+// Properties of Cognitive Services account deployment model. (Deprecated, please use Deployment.sku instead.)
 type DeploymentScaleSettingsArgs struct {
 	// Deployment capacity.
 	Capacity pulumi.IntPtrInput `pulumi:"capacity"`
@@ -2662,7 +3285,7 @@ func (i *deploymentScaleSettingsPtrType) ToDeploymentScaleSettingsPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(DeploymentScaleSettingsPtrOutput)
 }
 
-// Properties of Cognitive Services account deployment model.
+// Properties of Cognitive Services account deployment model. (Deprecated, please use Deployment.sku instead.)
 type DeploymentScaleSettingsOutput struct{ *pulumi.OutputState }
 
 func (DeploymentScaleSettingsOutput) ElementType() reflect.Type {
@@ -2741,7 +3364,7 @@ func (o DeploymentScaleSettingsPtrOutput) ScaleType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Properties of Cognitive Services account deployment model.
+// Properties of Cognitive Services account deployment model. (Deprecated, please use Deployment.sku instead.)
 type DeploymentScaleSettingsResponse struct {
 	// Deployment active capacity. This value might be different from `capacity` if customer recently updated `capacity`.
 	ActiveCapacity int `pulumi:"activeCapacity"`
@@ -2751,7 +3374,7 @@ type DeploymentScaleSettingsResponse struct {
 	ScaleType *string `pulumi:"scaleType"`
 }
 
-// Properties of Cognitive Services account deployment model.
+// Properties of Cognitive Services account deployment model. (Deprecated, please use Deployment.sku instead.)
 type DeploymentScaleSettingsResponseOutput struct{ *pulumi.OutputState }
 
 func (DeploymentScaleSettingsResponseOutput) ElementType() reflect.Type {
@@ -4318,6 +4941,8 @@ func (o MultiRegionSettingsResponsePtrOutput) RoutingMethod() pulumi.StringPtrOu
 
 // A set of rules governing the network accessibility.
 type NetworkRuleSet struct {
+	// Setting for trusted services.
+	Bypass *string `pulumi:"bypass"`
 	// The default action when no rule from ipRules and from virtualNetworkRules match. This is only used after the bypass property has been evaluated.
 	DefaultAction *string `pulumi:"defaultAction"`
 	// The list of IP address rules.
@@ -4339,6 +4964,8 @@ type NetworkRuleSetInput interface {
 
 // A set of rules governing the network accessibility.
 type NetworkRuleSetArgs struct {
+	// Setting for trusted services.
+	Bypass pulumi.StringPtrInput `pulumi:"bypass"`
 	// The default action when no rule from ipRules and from virtualNetworkRules match. This is only used after the bypass property has been evaluated.
 	DefaultAction pulumi.StringPtrInput `pulumi:"defaultAction"`
 	// The list of IP address rules.
@@ -4425,6 +5052,11 @@ func (o NetworkRuleSetOutput) ToNetworkRuleSetPtrOutputWithContext(ctx context.C
 	}).(NetworkRuleSetPtrOutput)
 }
 
+// Setting for trusted services.
+func (o NetworkRuleSetOutput) Bypass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkRuleSet) *string { return v.Bypass }).(pulumi.StringPtrOutput)
+}
+
 // The default action when no rule from ipRules and from virtualNetworkRules match. This is only used after the bypass property has been evaluated.
 func (o NetworkRuleSetOutput) DefaultAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkRuleSet) *string { return v.DefaultAction }).(pulumi.StringPtrOutput)
@@ -4464,6 +5096,16 @@ func (o NetworkRuleSetPtrOutput) Elem() NetworkRuleSetOutput {
 	}).(NetworkRuleSetOutput)
 }
 
+// Setting for trusted services.
+func (o NetworkRuleSetPtrOutput) Bypass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkRuleSet) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Bypass
+	}).(pulumi.StringPtrOutput)
+}
+
 // The default action when no rule from ipRules and from virtualNetworkRules match. This is only used after the bypass property has been evaluated.
 func (o NetworkRuleSetPtrOutput) DefaultAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkRuleSet) *string {
@@ -4496,6 +5138,8 @@ func (o NetworkRuleSetPtrOutput) VirtualNetworkRules() VirtualNetworkRuleArrayOu
 
 // A set of rules governing the network accessibility.
 type NetworkRuleSetResponse struct {
+	// Setting for trusted services.
+	Bypass *string `pulumi:"bypass"`
 	// The default action when no rule from ipRules and from virtualNetworkRules match. This is only used after the bypass property has been evaluated.
 	DefaultAction *string `pulumi:"defaultAction"`
 	// The list of IP address rules.
@@ -4517,6 +5161,11 @@ func (o NetworkRuleSetResponseOutput) ToNetworkRuleSetResponseOutput() NetworkRu
 
 func (o NetworkRuleSetResponseOutput) ToNetworkRuleSetResponseOutputWithContext(ctx context.Context) NetworkRuleSetResponseOutput {
 	return o
+}
+
+// Setting for trusted services.
+func (o NetworkRuleSetResponseOutput) Bypass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkRuleSetResponse) *string { return v.Bypass }).(pulumi.StringPtrOutput)
 }
 
 // The default action when no rule from ipRules and from virtualNetworkRules match. This is only used after the bypass property has been evaluated.
@@ -4556,6 +5205,16 @@ func (o NetworkRuleSetResponsePtrOutput) Elem() NetworkRuleSetResponseOutput {
 		var ret NetworkRuleSetResponse
 		return ret
 	}).(NetworkRuleSetResponseOutput)
+}
+
+// Setting for trusted services.
+func (o NetworkRuleSetResponsePtrOutput) Bypass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkRuleSetResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Bypass
+	}).(pulumi.StringPtrOutput)
 }
 
 // The default action when no rule from ipRules and from virtualNetworkRules match. This is only used after the bypass property has been evaluated.
@@ -5316,168 +5975,6 @@ func (o QuotaLimitResponseOutput) Rules() ThrottlingRuleResponseArrayOutput {
 	return o.ApplyT(func(v QuotaLimitResponse) []ThrottlingRuleResponse { return v.Rules }).(ThrottlingRuleResponseArrayOutput)
 }
 
-// Azure OpenAI blocklist config.
-type RaiBlocklistConfig struct {
-	// If blocking would occur.
-	Blocking *bool `pulumi:"blocking"`
-	// Name of ContentFilter.
-	BlocklistName *string `pulumi:"blocklistName"`
-}
-
-// RaiBlocklistConfigInput is an input type that accepts RaiBlocklistConfigArgs and RaiBlocklistConfigOutput values.
-// You can construct a concrete instance of `RaiBlocklistConfigInput` via:
-//
-//	RaiBlocklistConfigArgs{...}
-type RaiBlocklistConfigInput interface {
-	pulumi.Input
-
-	ToRaiBlocklistConfigOutput() RaiBlocklistConfigOutput
-	ToRaiBlocklistConfigOutputWithContext(context.Context) RaiBlocklistConfigOutput
-}
-
-// Azure OpenAI blocklist config.
-type RaiBlocklistConfigArgs struct {
-	// If blocking would occur.
-	Blocking pulumi.BoolPtrInput `pulumi:"blocking"`
-	// Name of ContentFilter.
-	BlocklistName pulumi.StringPtrInput `pulumi:"blocklistName"`
-}
-
-func (RaiBlocklistConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RaiBlocklistConfig)(nil)).Elem()
-}
-
-func (i RaiBlocklistConfigArgs) ToRaiBlocklistConfigOutput() RaiBlocklistConfigOutput {
-	return i.ToRaiBlocklistConfigOutputWithContext(context.Background())
-}
-
-func (i RaiBlocklistConfigArgs) ToRaiBlocklistConfigOutputWithContext(ctx context.Context) RaiBlocklistConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RaiBlocklistConfigOutput)
-}
-
-// RaiBlocklistConfigArrayInput is an input type that accepts RaiBlocklistConfigArray and RaiBlocklistConfigArrayOutput values.
-// You can construct a concrete instance of `RaiBlocklistConfigArrayInput` via:
-//
-//	RaiBlocklistConfigArray{ RaiBlocklistConfigArgs{...} }
-type RaiBlocklistConfigArrayInput interface {
-	pulumi.Input
-
-	ToRaiBlocklistConfigArrayOutput() RaiBlocklistConfigArrayOutput
-	ToRaiBlocklistConfigArrayOutputWithContext(context.Context) RaiBlocklistConfigArrayOutput
-}
-
-type RaiBlocklistConfigArray []RaiBlocklistConfigInput
-
-func (RaiBlocklistConfigArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RaiBlocklistConfig)(nil)).Elem()
-}
-
-func (i RaiBlocklistConfigArray) ToRaiBlocklistConfigArrayOutput() RaiBlocklistConfigArrayOutput {
-	return i.ToRaiBlocklistConfigArrayOutputWithContext(context.Background())
-}
-
-func (i RaiBlocklistConfigArray) ToRaiBlocklistConfigArrayOutputWithContext(ctx context.Context) RaiBlocklistConfigArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RaiBlocklistConfigArrayOutput)
-}
-
-// Azure OpenAI blocklist config.
-type RaiBlocklistConfigOutput struct{ *pulumi.OutputState }
-
-func (RaiBlocklistConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RaiBlocklistConfig)(nil)).Elem()
-}
-
-func (o RaiBlocklistConfigOutput) ToRaiBlocklistConfigOutput() RaiBlocklistConfigOutput {
-	return o
-}
-
-func (o RaiBlocklistConfigOutput) ToRaiBlocklistConfigOutputWithContext(ctx context.Context) RaiBlocklistConfigOutput {
-	return o
-}
-
-// If blocking would occur.
-func (o RaiBlocklistConfigOutput) Blocking() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RaiBlocklistConfig) *bool { return v.Blocking }).(pulumi.BoolPtrOutput)
-}
-
-// Name of ContentFilter.
-func (o RaiBlocklistConfigOutput) BlocklistName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RaiBlocklistConfig) *string { return v.BlocklistName }).(pulumi.StringPtrOutput)
-}
-
-type RaiBlocklistConfigArrayOutput struct{ *pulumi.OutputState }
-
-func (RaiBlocklistConfigArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RaiBlocklistConfig)(nil)).Elem()
-}
-
-func (o RaiBlocklistConfigArrayOutput) ToRaiBlocklistConfigArrayOutput() RaiBlocklistConfigArrayOutput {
-	return o
-}
-
-func (o RaiBlocklistConfigArrayOutput) ToRaiBlocklistConfigArrayOutputWithContext(ctx context.Context) RaiBlocklistConfigArrayOutput {
-	return o
-}
-
-func (o RaiBlocklistConfigArrayOutput) Index(i pulumi.IntInput) RaiBlocklistConfigOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RaiBlocklistConfig {
-		return vs[0].([]RaiBlocklistConfig)[vs[1].(int)]
-	}).(RaiBlocklistConfigOutput)
-}
-
-// Azure OpenAI blocklist config.
-type RaiBlocklistConfigResponse struct {
-	// If blocking would occur.
-	Blocking *bool `pulumi:"blocking"`
-	// Name of ContentFilter.
-	BlocklistName *string `pulumi:"blocklistName"`
-}
-
-// Azure OpenAI blocklist config.
-type RaiBlocklistConfigResponseOutput struct{ *pulumi.OutputState }
-
-func (RaiBlocklistConfigResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RaiBlocklistConfigResponse)(nil)).Elem()
-}
-
-func (o RaiBlocklistConfigResponseOutput) ToRaiBlocklistConfigResponseOutput() RaiBlocklistConfigResponseOutput {
-	return o
-}
-
-func (o RaiBlocklistConfigResponseOutput) ToRaiBlocklistConfigResponseOutputWithContext(ctx context.Context) RaiBlocklistConfigResponseOutput {
-	return o
-}
-
-// If blocking would occur.
-func (o RaiBlocklistConfigResponseOutput) Blocking() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RaiBlocklistConfigResponse) *bool { return v.Blocking }).(pulumi.BoolPtrOutput)
-}
-
-// Name of ContentFilter.
-func (o RaiBlocklistConfigResponseOutput) BlocklistName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RaiBlocklistConfigResponse) *string { return v.BlocklistName }).(pulumi.StringPtrOutput)
-}
-
-type RaiBlocklistConfigResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (RaiBlocklistConfigResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RaiBlocklistConfigResponse)(nil)).Elem()
-}
-
-func (o RaiBlocklistConfigResponseArrayOutput) ToRaiBlocklistConfigResponseArrayOutput() RaiBlocklistConfigResponseArrayOutput {
-	return o
-}
-
-func (o RaiBlocklistConfigResponseArrayOutput) ToRaiBlocklistConfigResponseArrayOutputWithContext(ctx context.Context) RaiBlocklistConfigResponseArrayOutput {
-	return o
-}
-
-func (o RaiBlocklistConfigResponseArrayOutput) Index(i pulumi.IntInput) RaiBlocklistConfigResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RaiBlocklistConfigResponse {
-		return vs[0].([]RaiBlocklistConfigResponse)[vs[1].(int)]
-	}).(RaiBlocklistConfigResponseOutput)
-}
-
 // RAI Custom Blocklist Item properties.
 type RaiBlocklistItemProperties struct {
 	// If the pattern is a regex pattern.
@@ -5836,16 +6333,252 @@ func (o RaiBlocklistPropertiesResponseOutput) Description() pulumi.StringPtrOutp
 	return o.ApplyT(func(v RaiBlocklistPropertiesResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Cognitive Services Rai Monitor Config.
+type RaiMonitorConfig struct {
+	// The storage resource Id.
+	AdxStorageResourceId *string `pulumi:"adxStorageResourceId"`
+	// The identity client Id to access the storage.
+	IdentityClientId *string `pulumi:"identityClientId"`
+}
+
+// RaiMonitorConfigInput is an input type that accepts RaiMonitorConfigArgs and RaiMonitorConfigOutput values.
+// You can construct a concrete instance of `RaiMonitorConfigInput` via:
+//
+//	RaiMonitorConfigArgs{...}
+type RaiMonitorConfigInput interface {
+	pulumi.Input
+
+	ToRaiMonitorConfigOutput() RaiMonitorConfigOutput
+	ToRaiMonitorConfigOutputWithContext(context.Context) RaiMonitorConfigOutput
+}
+
+// Cognitive Services Rai Monitor Config.
+type RaiMonitorConfigArgs struct {
+	// The storage resource Id.
+	AdxStorageResourceId pulumi.StringPtrInput `pulumi:"adxStorageResourceId"`
+	// The identity client Id to access the storage.
+	IdentityClientId pulumi.StringPtrInput `pulumi:"identityClientId"`
+}
+
+func (RaiMonitorConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RaiMonitorConfig)(nil)).Elem()
+}
+
+func (i RaiMonitorConfigArgs) ToRaiMonitorConfigOutput() RaiMonitorConfigOutput {
+	return i.ToRaiMonitorConfigOutputWithContext(context.Background())
+}
+
+func (i RaiMonitorConfigArgs) ToRaiMonitorConfigOutputWithContext(ctx context.Context) RaiMonitorConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RaiMonitorConfigOutput)
+}
+
+func (i RaiMonitorConfigArgs) ToRaiMonitorConfigPtrOutput() RaiMonitorConfigPtrOutput {
+	return i.ToRaiMonitorConfigPtrOutputWithContext(context.Background())
+}
+
+func (i RaiMonitorConfigArgs) ToRaiMonitorConfigPtrOutputWithContext(ctx context.Context) RaiMonitorConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RaiMonitorConfigOutput).ToRaiMonitorConfigPtrOutputWithContext(ctx)
+}
+
+// RaiMonitorConfigPtrInput is an input type that accepts RaiMonitorConfigArgs, RaiMonitorConfigPtr and RaiMonitorConfigPtrOutput values.
+// You can construct a concrete instance of `RaiMonitorConfigPtrInput` via:
+//
+//	        RaiMonitorConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type RaiMonitorConfigPtrInput interface {
+	pulumi.Input
+
+	ToRaiMonitorConfigPtrOutput() RaiMonitorConfigPtrOutput
+	ToRaiMonitorConfigPtrOutputWithContext(context.Context) RaiMonitorConfigPtrOutput
+}
+
+type raiMonitorConfigPtrType RaiMonitorConfigArgs
+
+func RaiMonitorConfigPtr(v *RaiMonitorConfigArgs) RaiMonitorConfigPtrInput {
+	return (*raiMonitorConfigPtrType)(v)
+}
+
+func (*raiMonitorConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RaiMonitorConfig)(nil)).Elem()
+}
+
+func (i *raiMonitorConfigPtrType) ToRaiMonitorConfigPtrOutput() RaiMonitorConfigPtrOutput {
+	return i.ToRaiMonitorConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *raiMonitorConfigPtrType) ToRaiMonitorConfigPtrOutputWithContext(ctx context.Context) RaiMonitorConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RaiMonitorConfigPtrOutput)
+}
+
+// Cognitive Services Rai Monitor Config.
+type RaiMonitorConfigOutput struct{ *pulumi.OutputState }
+
+func (RaiMonitorConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RaiMonitorConfig)(nil)).Elem()
+}
+
+func (o RaiMonitorConfigOutput) ToRaiMonitorConfigOutput() RaiMonitorConfigOutput {
+	return o
+}
+
+func (o RaiMonitorConfigOutput) ToRaiMonitorConfigOutputWithContext(ctx context.Context) RaiMonitorConfigOutput {
+	return o
+}
+
+func (o RaiMonitorConfigOutput) ToRaiMonitorConfigPtrOutput() RaiMonitorConfigPtrOutput {
+	return o.ToRaiMonitorConfigPtrOutputWithContext(context.Background())
+}
+
+func (o RaiMonitorConfigOutput) ToRaiMonitorConfigPtrOutputWithContext(ctx context.Context) RaiMonitorConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RaiMonitorConfig) *RaiMonitorConfig {
+		return &v
+	}).(RaiMonitorConfigPtrOutput)
+}
+
+// The storage resource Id.
+func (o RaiMonitorConfigOutput) AdxStorageResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiMonitorConfig) *string { return v.AdxStorageResourceId }).(pulumi.StringPtrOutput)
+}
+
+// The identity client Id to access the storage.
+func (o RaiMonitorConfigOutput) IdentityClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiMonitorConfig) *string { return v.IdentityClientId }).(pulumi.StringPtrOutput)
+}
+
+type RaiMonitorConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (RaiMonitorConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RaiMonitorConfig)(nil)).Elem()
+}
+
+func (o RaiMonitorConfigPtrOutput) ToRaiMonitorConfigPtrOutput() RaiMonitorConfigPtrOutput {
+	return o
+}
+
+func (o RaiMonitorConfigPtrOutput) ToRaiMonitorConfigPtrOutputWithContext(ctx context.Context) RaiMonitorConfigPtrOutput {
+	return o
+}
+
+func (o RaiMonitorConfigPtrOutput) Elem() RaiMonitorConfigOutput {
+	return o.ApplyT(func(v *RaiMonitorConfig) RaiMonitorConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RaiMonitorConfig
+		return ret
+	}).(RaiMonitorConfigOutput)
+}
+
+// The storage resource Id.
+func (o RaiMonitorConfigPtrOutput) AdxStorageResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RaiMonitorConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AdxStorageResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The identity client Id to access the storage.
+func (o RaiMonitorConfigPtrOutput) IdentityClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RaiMonitorConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentityClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Cognitive Services Rai Monitor Config.
+type RaiMonitorConfigResponse struct {
+	// The storage resource Id.
+	AdxStorageResourceId *string `pulumi:"adxStorageResourceId"`
+	// The identity client Id to access the storage.
+	IdentityClientId *string `pulumi:"identityClientId"`
+}
+
+// Cognitive Services Rai Monitor Config.
+type RaiMonitorConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (RaiMonitorConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RaiMonitorConfigResponse)(nil)).Elem()
+}
+
+func (o RaiMonitorConfigResponseOutput) ToRaiMonitorConfigResponseOutput() RaiMonitorConfigResponseOutput {
+	return o
+}
+
+func (o RaiMonitorConfigResponseOutput) ToRaiMonitorConfigResponseOutputWithContext(ctx context.Context) RaiMonitorConfigResponseOutput {
+	return o
+}
+
+// The storage resource Id.
+func (o RaiMonitorConfigResponseOutput) AdxStorageResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiMonitorConfigResponse) *string { return v.AdxStorageResourceId }).(pulumi.StringPtrOutput)
+}
+
+// The identity client Id to access the storage.
+func (o RaiMonitorConfigResponseOutput) IdentityClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiMonitorConfigResponse) *string { return v.IdentityClientId }).(pulumi.StringPtrOutput)
+}
+
+type RaiMonitorConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (RaiMonitorConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RaiMonitorConfigResponse)(nil)).Elem()
+}
+
+func (o RaiMonitorConfigResponsePtrOutput) ToRaiMonitorConfigResponsePtrOutput() RaiMonitorConfigResponsePtrOutput {
+	return o
+}
+
+func (o RaiMonitorConfigResponsePtrOutput) ToRaiMonitorConfigResponsePtrOutputWithContext(ctx context.Context) RaiMonitorConfigResponsePtrOutput {
+	return o
+}
+
+func (o RaiMonitorConfigResponsePtrOutput) Elem() RaiMonitorConfigResponseOutput {
+	return o.ApplyT(func(v *RaiMonitorConfigResponse) RaiMonitorConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RaiMonitorConfigResponse
+		return ret
+	}).(RaiMonitorConfigResponseOutput)
+}
+
+// The storage resource Id.
+func (o RaiMonitorConfigResponsePtrOutput) AdxStorageResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RaiMonitorConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AdxStorageResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The identity client Id to access the storage.
+func (o RaiMonitorConfigResponsePtrOutput) IdentityClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RaiMonitorConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentityClientId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Azure OpenAI Content Filter.
 type RaiPolicyContentFilter struct {
-	// Level at which content is filtered.
-	AllowedContentLevel *string `pulumi:"allowedContentLevel"`
 	// If blocking would occur.
 	Blocking *bool `pulumi:"blocking"`
 	// If the ContentFilter is enabled.
 	Enabled *bool `pulumi:"enabled"`
 	// Name of ContentFilter.
 	Name *string `pulumi:"name"`
+	// Level at which content is filtered.
+	SeverityThreshold *string `pulumi:"severityThreshold"`
 	// Content source to apply the Content Filters.
 	Source *string `pulumi:"source"`
 }
@@ -5863,14 +6596,14 @@ type RaiPolicyContentFilterInput interface {
 
 // Azure OpenAI Content Filter.
 type RaiPolicyContentFilterArgs struct {
-	// Level at which content is filtered.
-	AllowedContentLevel pulumi.StringPtrInput `pulumi:"allowedContentLevel"`
 	// If blocking would occur.
 	Blocking pulumi.BoolPtrInput `pulumi:"blocking"`
 	// If the ContentFilter is enabled.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// Name of ContentFilter.
 	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Level at which content is filtered.
+	SeverityThreshold pulumi.StringPtrInput `pulumi:"severityThreshold"`
 	// Content source to apply the Content Filters.
 	Source pulumi.StringPtrInput `pulumi:"source"`
 }
@@ -5927,11 +6660,6 @@ func (o RaiPolicyContentFilterOutput) ToRaiPolicyContentFilterOutputWithContext(
 	return o
 }
 
-// Level at which content is filtered.
-func (o RaiPolicyContentFilterOutput) AllowedContentLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RaiPolicyContentFilter) *string { return v.AllowedContentLevel }).(pulumi.StringPtrOutput)
-}
-
 // If blocking would occur.
 func (o RaiPolicyContentFilterOutput) Blocking() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v RaiPolicyContentFilter) *bool { return v.Blocking }).(pulumi.BoolPtrOutput)
@@ -5945,6 +6673,11 @@ func (o RaiPolicyContentFilterOutput) Enabled() pulumi.BoolPtrOutput {
 // Name of ContentFilter.
 func (o RaiPolicyContentFilterOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RaiPolicyContentFilter) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Level at which content is filtered.
+func (o RaiPolicyContentFilterOutput) SeverityThreshold() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiPolicyContentFilter) *string { return v.SeverityThreshold }).(pulumi.StringPtrOutput)
 }
 
 // Content source to apply the Content Filters.
@@ -5974,14 +6707,14 @@ func (o RaiPolicyContentFilterArrayOutput) Index(i pulumi.IntInput) RaiPolicyCon
 
 // Azure OpenAI Content Filter.
 type RaiPolicyContentFilterResponse struct {
-	// Level at which content is filtered.
-	AllowedContentLevel *string `pulumi:"allowedContentLevel"`
 	// If blocking would occur.
 	Blocking *bool `pulumi:"blocking"`
 	// If the ContentFilter is enabled.
 	Enabled *bool `pulumi:"enabled"`
 	// Name of ContentFilter.
 	Name *string `pulumi:"name"`
+	// Level at which content is filtered.
+	SeverityThreshold *string `pulumi:"severityThreshold"`
 	// Content source to apply the Content Filters.
 	Source *string `pulumi:"source"`
 }
@@ -6001,11 +6734,6 @@ func (o RaiPolicyContentFilterResponseOutput) ToRaiPolicyContentFilterResponseOu
 	return o
 }
 
-// Level at which content is filtered.
-func (o RaiPolicyContentFilterResponseOutput) AllowedContentLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RaiPolicyContentFilterResponse) *string { return v.AllowedContentLevel }).(pulumi.StringPtrOutput)
-}
-
 // If blocking would occur.
 func (o RaiPolicyContentFilterResponseOutput) Blocking() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v RaiPolicyContentFilterResponse) *bool { return v.Blocking }).(pulumi.BoolPtrOutput)
@@ -6019,6 +6747,11 @@ func (o RaiPolicyContentFilterResponseOutput) Enabled() pulumi.BoolPtrOutput {
 // Name of ContentFilter.
 func (o RaiPolicyContentFilterResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RaiPolicyContentFilterResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Level at which content is filtered.
+func (o RaiPolicyContentFilterResponseOutput) SeverityThreshold() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiPolicyContentFilterResponse) *string { return v.SeverityThreshold }).(pulumi.StringPtrOutput)
 }
 
 // Content source to apply the Content Filters.
@@ -6048,16 +6781,14 @@ func (o RaiPolicyContentFilterResponseArrayOutput) Index(i pulumi.IntInput) RaiP
 
 // Azure OpenAI Content Filters properties.
 type RaiPolicyProperties struct {
-	// Name of the base Content Filters.
+	// Name of Rai policy.
 	BasePolicyName *string `pulumi:"basePolicyName"`
-	// The list of blocklists for completion.
-	CompletionBlocklists []RaiBlocklistConfig `pulumi:"completionBlocklists"`
 	// The list of Content Filters.
 	ContentFilters []RaiPolicyContentFilter `pulumi:"contentFilters"`
-	// Content Filters mode.
+	// The list of custom Blocklist.
+	CustomBlocklists []CustomBlocklistConfig `pulumi:"customBlocklists"`
+	// Rai policy mode. The enum value mapping is as below: Default = 0, Deferred=1, Blocking=2, Asynchronous_filter =3. Please use 'Asynchronous_filter' after 2024-10-01. It is the same as 'Deferred' in previous version.
 	Mode *string `pulumi:"mode"`
-	// The list of blocklists for prompt.
-	PromptBlocklists []RaiBlocklistConfig `pulumi:"promptBlocklists"`
 }
 
 // RaiPolicyPropertiesInput is an input type that accepts RaiPolicyPropertiesArgs and RaiPolicyPropertiesOutput values.
@@ -6073,16 +6804,14 @@ type RaiPolicyPropertiesInput interface {
 
 // Azure OpenAI Content Filters properties.
 type RaiPolicyPropertiesArgs struct {
-	// Name of the base Content Filters.
+	// Name of Rai policy.
 	BasePolicyName pulumi.StringPtrInput `pulumi:"basePolicyName"`
-	// The list of blocklists for completion.
-	CompletionBlocklists RaiBlocklistConfigArrayInput `pulumi:"completionBlocklists"`
 	// The list of Content Filters.
 	ContentFilters RaiPolicyContentFilterArrayInput `pulumi:"contentFilters"`
-	// Content Filters mode.
+	// The list of custom Blocklist.
+	CustomBlocklists CustomBlocklistConfigArrayInput `pulumi:"customBlocklists"`
+	// Rai policy mode. The enum value mapping is as below: Default = 0, Deferred=1, Blocking=2, Asynchronous_filter =3. Please use 'Asynchronous_filter' after 2024-10-01. It is the same as 'Deferred' in previous version.
 	Mode pulumi.StringPtrInput `pulumi:"mode"`
-	// The list of blocklists for prompt.
-	PromptBlocklists RaiBlocklistConfigArrayInput `pulumi:"promptBlocklists"`
 }
 
 func (RaiPolicyPropertiesArgs) ElementType() reflect.Type {
@@ -6163,14 +6892,9 @@ func (o RaiPolicyPropertiesOutput) ToRaiPolicyPropertiesPtrOutputWithContext(ctx
 	}).(RaiPolicyPropertiesPtrOutput)
 }
 
-// Name of the base Content Filters.
+// Name of Rai policy.
 func (o RaiPolicyPropertiesOutput) BasePolicyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RaiPolicyProperties) *string { return v.BasePolicyName }).(pulumi.StringPtrOutput)
-}
-
-// The list of blocklists for completion.
-func (o RaiPolicyPropertiesOutput) CompletionBlocklists() RaiBlocklistConfigArrayOutput {
-	return o.ApplyT(func(v RaiPolicyProperties) []RaiBlocklistConfig { return v.CompletionBlocklists }).(RaiBlocklistConfigArrayOutput)
 }
 
 // The list of Content Filters.
@@ -6178,14 +6902,14 @@ func (o RaiPolicyPropertiesOutput) ContentFilters() RaiPolicyContentFilterArrayO
 	return o.ApplyT(func(v RaiPolicyProperties) []RaiPolicyContentFilter { return v.ContentFilters }).(RaiPolicyContentFilterArrayOutput)
 }
 
-// Content Filters mode.
-func (o RaiPolicyPropertiesOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RaiPolicyProperties) *string { return v.Mode }).(pulumi.StringPtrOutput)
+// The list of custom Blocklist.
+func (o RaiPolicyPropertiesOutput) CustomBlocklists() CustomBlocklistConfigArrayOutput {
+	return o.ApplyT(func(v RaiPolicyProperties) []CustomBlocklistConfig { return v.CustomBlocklists }).(CustomBlocklistConfigArrayOutput)
 }
 
-// The list of blocklists for prompt.
-func (o RaiPolicyPropertiesOutput) PromptBlocklists() RaiBlocklistConfigArrayOutput {
-	return o.ApplyT(func(v RaiPolicyProperties) []RaiBlocklistConfig { return v.PromptBlocklists }).(RaiBlocklistConfigArrayOutput)
+// Rai policy mode. The enum value mapping is as below: Default = 0, Deferred=1, Blocking=2, Asynchronous_filter =3. Please use 'Asynchronous_filter' after 2024-10-01. It is the same as 'Deferred' in previous version.
+func (o RaiPolicyPropertiesOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiPolicyProperties) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
 
 type RaiPolicyPropertiesPtrOutput struct{ *pulumi.OutputState }
@@ -6212,7 +6936,7 @@ func (o RaiPolicyPropertiesPtrOutput) Elem() RaiPolicyPropertiesOutput {
 	}).(RaiPolicyPropertiesOutput)
 }
 
-// Name of the base Content Filters.
+// Name of Rai policy.
 func (o RaiPolicyPropertiesPtrOutput) BasePolicyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RaiPolicyProperties) *string {
 		if v == nil {
@@ -6220,16 +6944,6 @@ func (o RaiPolicyPropertiesPtrOutput) BasePolicyName() pulumi.StringPtrOutput {
 		}
 		return v.BasePolicyName
 	}).(pulumi.StringPtrOutput)
-}
-
-// The list of blocklists for completion.
-func (o RaiPolicyPropertiesPtrOutput) CompletionBlocklists() RaiBlocklistConfigArrayOutput {
-	return o.ApplyT(func(v *RaiPolicyProperties) []RaiBlocklistConfig {
-		if v == nil {
-			return nil
-		}
-		return v.CompletionBlocklists
-	}).(RaiBlocklistConfigArrayOutput)
 }
 
 // The list of Content Filters.
@@ -6242,7 +6956,17 @@ func (o RaiPolicyPropertiesPtrOutput) ContentFilters() RaiPolicyContentFilterArr
 	}).(RaiPolicyContentFilterArrayOutput)
 }
 
-// Content Filters mode.
+// The list of custom Blocklist.
+func (o RaiPolicyPropertiesPtrOutput) CustomBlocklists() CustomBlocklistConfigArrayOutput {
+	return o.ApplyT(func(v *RaiPolicyProperties) []CustomBlocklistConfig {
+		if v == nil {
+			return nil
+		}
+		return v.CustomBlocklists
+	}).(CustomBlocklistConfigArrayOutput)
+}
+
+// Rai policy mode. The enum value mapping is as below: Default = 0, Deferred=1, Blocking=2, Asynchronous_filter =3. Please use 'Asynchronous_filter' after 2024-10-01. It is the same as 'Deferred' in previous version.
 func (o RaiPolicyPropertiesPtrOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RaiPolicyProperties) *string {
 		if v == nil {
@@ -6252,30 +6976,18 @@ func (o RaiPolicyPropertiesPtrOutput) Mode() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The list of blocklists for prompt.
-func (o RaiPolicyPropertiesPtrOutput) PromptBlocklists() RaiBlocklistConfigArrayOutput {
-	return o.ApplyT(func(v *RaiPolicyProperties) []RaiBlocklistConfig {
-		if v == nil {
-			return nil
-		}
-		return v.PromptBlocklists
-	}).(RaiBlocklistConfigArrayOutput)
-}
-
 // Azure OpenAI Content Filters properties.
 type RaiPolicyPropertiesResponse struct {
-	// Name of the base Content Filters.
+	// Name of Rai policy.
 	BasePolicyName *string `pulumi:"basePolicyName"`
-	// The list of blocklists for completion.
-	CompletionBlocklists []RaiBlocklistConfigResponse `pulumi:"completionBlocklists"`
 	// The list of Content Filters.
 	ContentFilters []RaiPolicyContentFilterResponse `pulumi:"contentFilters"`
-	// Content Filters mode.
+	// The list of custom Blocklist.
+	CustomBlocklists []CustomBlocklistConfigResponse `pulumi:"customBlocklists"`
+	// Rai policy mode. The enum value mapping is as below: Default = 0, Deferred=1, Blocking=2, Asynchronous_filter =3. Please use 'Asynchronous_filter' after 2024-10-01. It is the same as 'Deferred' in previous version.
 	Mode *string `pulumi:"mode"`
 	// Content Filters policy type.
-	PolicyType string `pulumi:"policyType"`
-	// The list of blocklists for prompt.
-	PromptBlocklists []RaiBlocklistConfigResponse `pulumi:"promptBlocklists"`
+	Type string `pulumi:"type"`
 }
 
 // Azure OpenAI Content Filters properties.
@@ -6293,14 +7005,9 @@ func (o RaiPolicyPropertiesResponseOutput) ToRaiPolicyPropertiesResponseOutputWi
 	return o
 }
 
-// Name of the base Content Filters.
+// Name of Rai policy.
 func (o RaiPolicyPropertiesResponseOutput) BasePolicyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RaiPolicyPropertiesResponse) *string { return v.BasePolicyName }).(pulumi.StringPtrOutput)
-}
-
-// The list of blocklists for completion.
-func (o RaiPolicyPropertiesResponseOutput) CompletionBlocklists() RaiBlocklistConfigResponseArrayOutput {
-	return o.ApplyT(func(v RaiPolicyPropertiesResponse) []RaiBlocklistConfigResponse { return v.CompletionBlocklists }).(RaiBlocklistConfigResponseArrayOutput)
 }
 
 // The list of Content Filters.
@@ -6308,19 +7015,19 @@ func (o RaiPolicyPropertiesResponseOutput) ContentFilters() RaiPolicyContentFilt
 	return o.ApplyT(func(v RaiPolicyPropertiesResponse) []RaiPolicyContentFilterResponse { return v.ContentFilters }).(RaiPolicyContentFilterResponseArrayOutput)
 }
 
-// Content Filters mode.
+// The list of custom Blocklist.
+func (o RaiPolicyPropertiesResponseOutput) CustomBlocklists() CustomBlocklistConfigResponseArrayOutput {
+	return o.ApplyT(func(v RaiPolicyPropertiesResponse) []CustomBlocklistConfigResponse { return v.CustomBlocklists }).(CustomBlocklistConfigResponseArrayOutput)
+}
+
+// Rai policy mode. The enum value mapping is as below: Default = 0, Deferred=1, Blocking=2, Asynchronous_filter =3. Please use 'Asynchronous_filter' after 2024-10-01. It is the same as 'Deferred' in previous version.
 func (o RaiPolicyPropertiesResponseOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RaiPolicyPropertiesResponse) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
 
 // Content Filters policy type.
-func (o RaiPolicyPropertiesResponseOutput) PolicyType() pulumi.StringOutput {
-	return o.ApplyT(func(v RaiPolicyPropertiesResponse) string { return v.PolicyType }).(pulumi.StringOutput)
-}
-
-// The list of blocklists for prompt.
-func (o RaiPolicyPropertiesResponseOutput) PromptBlocklists() RaiBlocklistConfigResponseArrayOutput {
-	return o.ApplyT(func(v RaiPolicyPropertiesResponse) []RaiBlocklistConfigResponse { return v.PromptBlocklists }).(RaiBlocklistConfigResponseArrayOutput)
+func (o RaiPolicyPropertiesResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v RaiPolicyPropertiesResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
 // The call rate limit Cognitive Services account.
@@ -7166,6 +7873,242 @@ func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) Us
 	}).(UserAssignedIdentityResponseOutput)
 }
 
+// The user owned AML workspace for Cognitive Services account.
+type UserOwnedAmlWorkspace struct {
+	// Identity Client id of a AML workspace resource.
+	IdentityClientId *string `pulumi:"identityClientId"`
+	// Full resource id of a AML workspace resource.
+	ResourceId *string `pulumi:"resourceId"`
+}
+
+// UserOwnedAmlWorkspaceInput is an input type that accepts UserOwnedAmlWorkspaceArgs and UserOwnedAmlWorkspaceOutput values.
+// You can construct a concrete instance of `UserOwnedAmlWorkspaceInput` via:
+//
+//	UserOwnedAmlWorkspaceArgs{...}
+type UserOwnedAmlWorkspaceInput interface {
+	pulumi.Input
+
+	ToUserOwnedAmlWorkspaceOutput() UserOwnedAmlWorkspaceOutput
+	ToUserOwnedAmlWorkspaceOutputWithContext(context.Context) UserOwnedAmlWorkspaceOutput
+}
+
+// The user owned AML workspace for Cognitive Services account.
+type UserOwnedAmlWorkspaceArgs struct {
+	// Identity Client id of a AML workspace resource.
+	IdentityClientId pulumi.StringPtrInput `pulumi:"identityClientId"`
+	// Full resource id of a AML workspace resource.
+	ResourceId pulumi.StringPtrInput `pulumi:"resourceId"`
+}
+
+func (UserOwnedAmlWorkspaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserOwnedAmlWorkspace)(nil)).Elem()
+}
+
+func (i UserOwnedAmlWorkspaceArgs) ToUserOwnedAmlWorkspaceOutput() UserOwnedAmlWorkspaceOutput {
+	return i.ToUserOwnedAmlWorkspaceOutputWithContext(context.Background())
+}
+
+func (i UserOwnedAmlWorkspaceArgs) ToUserOwnedAmlWorkspaceOutputWithContext(ctx context.Context) UserOwnedAmlWorkspaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserOwnedAmlWorkspaceOutput)
+}
+
+func (i UserOwnedAmlWorkspaceArgs) ToUserOwnedAmlWorkspacePtrOutput() UserOwnedAmlWorkspacePtrOutput {
+	return i.ToUserOwnedAmlWorkspacePtrOutputWithContext(context.Background())
+}
+
+func (i UserOwnedAmlWorkspaceArgs) ToUserOwnedAmlWorkspacePtrOutputWithContext(ctx context.Context) UserOwnedAmlWorkspacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserOwnedAmlWorkspaceOutput).ToUserOwnedAmlWorkspacePtrOutputWithContext(ctx)
+}
+
+// UserOwnedAmlWorkspacePtrInput is an input type that accepts UserOwnedAmlWorkspaceArgs, UserOwnedAmlWorkspacePtr and UserOwnedAmlWorkspacePtrOutput values.
+// You can construct a concrete instance of `UserOwnedAmlWorkspacePtrInput` via:
+//
+//	        UserOwnedAmlWorkspaceArgs{...}
+//
+//	or:
+//
+//	        nil
+type UserOwnedAmlWorkspacePtrInput interface {
+	pulumi.Input
+
+	ToUserOwnedAmlWorkspacePtrOutput() UserOwnedAmlWorkspacePtrOutput
+	ToUserOwnedAmlWorkspacePtrOutputWithContext(context.Context) UserOwnedAmlWorkspacePtrOutput
+}
+
+type userOwnedAmlWorkspacePtrType UserOwnedAmlWorkspaceArgs
+
+func UserOwnedAmlWorkspacePtr(v *UserOwnedAmlWorkspaceArgs) UserOwnedAmlWorkspacePtrInput {
+	return (*userOwnedAmlWorkspacePtrType)(v)
+}
+
+func (*userOwnedAmlWorkspacePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserOwnedAmlWorkspace)(nil)).Elem()
+}
+
+func (i *userOwnedAmlWorkspacePtrType) ToUserOwnedAmlWorkspacePtrOutput() UserOwnedAmlWorkspacePtrOutput {
+	return i.ToUserOwnedAmlWorkspacePtrOutputWithContext(context.Background())
+}
+
+func (i *userOwnedAmlWorkspacePtrType) ToUserOwnedAmlWorkspacePtrOutputWithContext(ctx context.Context) UserOwnedAmlWorkspacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserOwnedAmlWorkspacePtrOutput)
+}
+
+// The user owned AML workspace for Cognitive Services account.
+type UserOwnedAmlWorkspaceOutput struct{ *pulumi.OutputState }
+
+func (UserOwnedAmlWorkspaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserOwnedAmlWorkspace)(nil)).Elem()
+}
+
+func (o UserOwnedAmlWorkspaceOutput) ToUserOwnedAmlWorkspaceOutput() UserOwnedAmlWorkspaceOutput {
+	return o
+}
+
+func (o UserOwnedAmlWorkspaceOutput) ToUserOwnedAmlWorkspaceOutputWithContext(ctx context.Context) UserOwnedAmlWorkspaceOutput {
+	return o
+}
+
+func (o UserOwnedAmlWorkspaceOutput) ToUserOwnedAmlWorkspacePtrOutput() UserOwnedAmlWorkspacePtrOutput {
+	return o.ToUserOwnedAmlWorkspacePtrOutputWithContext(context.Background())
+}
+
+func (o UserOwnedAmlWorkspaceOutput) ToUserOwnedAmlWorkspacePtrOutputWithContext(ctx context.Context) UserOwnedAmlWorkspacePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UserOwnedAmlWorkspace) *UserOwnedAmlWorkspace {
+		return &v
+	}).(UserOwnedAmlWorkspacePtrOutput)
+}
+
+// Identity Client id of a AML workspace resource.
+func (o UserOwnedAmlWorkspaceOutput) IdentityClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserOwnedAmlWorkspace) *string { return v.IdentityClientId }).(pulumi.StringPtrOutput)
+}
+
+// Full resource id of a AML workspace resource.
+func (o UserOwnedAmlWorkspaceOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserOwnedAmlWorkspace) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
+}
+
+type UserOwnedAmlWorkspacePtrOutput struct{ *pulumi.OutputState }
+
+func (UserOwnedAmlWorkspacePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserOwnedAmlWorkspace)(nil)).Elem()
+}
+
+func (o UserOwnedAmlWorkspacePtrOutput) ToUserOwnedAmlWorkspacePtrOutput() UserOwnedAmlWorkspacePtrOutput {
+	return o
+}
+
+func (o UserOwnedAmlWorkspacePtrOutput) ToUserOwnedAmlWorkspacePtrOutputWithContext(ctx context.Context) UserOwnedAmlWorkspacePtrOutput {
+	return o
+}
+
+func (o UserOwnedAmlWorkspacePtrOutput) Elem() UserOwnedAmlWorkspaceOutput {
+	return o.ApplyT(func(v *UserOwnedAmlWorkspace) UserOwnedAmlWorkspace {
+		if v != nil {
+			return *v
+		}
+		var ret UserOwnedAmlWorkspace
+		return ret
+	}).(UserOwnedAmlWorkspaceOutput)
+}
+
+// Identity Client id of a AML workspace resource.
+func (o UserOwnedAmlWorkspacePtrOutput) IdentityClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserOwnedAmlWorkspace) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentityClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Full resource id of a AML workspace resource.
+func (o UserOwnedAmlWorkspacePtrOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserOwnedAmlWorkspace) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The user owned AML workspace for Cognitive Services account.
+type UserOwnedAmlWorkspaceResponse struct {
+	// Identity Client id of a AML workspace resource.
+	IdentityClientId *string `pulumi:"identityClientId"`
+	// Full resource id of a AML workspace resource.
+	ResourceId *string `pulumi:"resourceId"`
+}
+
+// The user owned AML workspace for Cognitive Services account.
+type UserOwnedAmlWorkspaceResponseOutput struct{ *pulumi.OutputState }
+
+func (UserOwnedAmlWorkspaceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserOwnedAmlWorkspaceResponse)(nil)).Elem()
+}
+
+func (o UserOwnedAmlWorkspaceResponseOutput) ToUserOwnedAmlWorkspaceResponseOutput() UserOwnedAmlWorkspaceResponseOutput {
+	return o
+}
+
+func (o UserOwnedAmlWorkspaceResponseOutput) ToUserOwnedAmlWorkspaceResponseOutputWithContext(ctx context.Context) UserOwnedAmlWorkspaceResponseOutput {
+	return o
+}
+
+// Identity Client id of a AML workspace resource.
+func (o UserOwnedAmlWorkspaceResponseOutput) IdentityClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserOwnedAmlWorkspaceResponse) *string { return v.IdentityClientId }).(pulumi.StringPtrOutput)
+}
+
+// Full resource id of a AML workspace resource.
+func (o UserOwnedAmlWorkspaceResponseOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserOwnedAmlWorkspaceResponse) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
+}
+
+type UserOwnedAmlWorkspaceResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (UserOwnedAmlWorkspaceResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserOwnedAmlWorkspaceResponse)(nil)).Elem()
+}
+
+func (o UserOwnedAmlWorkspaceResponsePtrOutput) ToUserOwnedAmlWorkspaceResponsePtrOutput() UserOwnedAmlWorkspaceResponsePtrOutput {
+	return o
+}
+
+func (o UserOwnedAmlWorkspaceResponsePtrOutput) ToUserOwnedAmlWorkspaceResponsePtrOutputWithContext(ctx context.Context) UserOwnedAmlWorkspaceResponsePtrOutput {
+	return o
+}
+
+func (o UserOwnedAmlWorkspaceResponsePtrOutput) Elem() UserOwnedAmlWorkspaceResponseOutput {
+	return o.ApplyT(func(v *UserOwnedAmlWorkspaceResponse) UserOwnedAmlWorkspaceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret UserOwnedAmlWorkspaceResponse
+		return ret
+	}).(UserOwnedAmlWorkspaceResponseOutput)
+}
+
+// Identity Client id of a AML workspace resource.
+func (o UserOwnedAmlWorkspaceResponsePtrOutput) IdentityClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserOwnedAmlWorkspaceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentityClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Full resource id of a AML workspace resource.
+func (o UserOwnedAmlWorkspaceResponsePtrOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserOwnedAmlWorkspaceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
 // The user owned storage for Cognitive Services account.
 type UserOwnedStorage struct {
 	IdentityClientId *string `pulumi:"identityClientId"`
@@ -7523,6 +8466,14 @@ func init() {
 	pulumi.RegisterOutputType(CommitmentPlanPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(CommitmentQuotaResponseOutput{})
 	pulumi.RegisterOutputType(CommitmentQuotaResponsePtrOutput{})
+	pulumi.RegisterOutputType(CustomBlocklistConfigOutput{})
+	pulumi.RegisterOutputType(CustomBlocklistConfigArrayOutput{})
+	pulumi.RegisterOutputType(CustomBlocklistConfigResponseOutput{})
+	pulumi.RegisterOutputType(CustomBlocklistConfigResponseArrayOutput{})
+	pulumi.RegisterOutputType(DeploymentCapacitySettingsOutput{})
+	pulumi.RegisterOutputType(DeploymentCapacitySettingsPtrOutput{})
+	pulumi.RegisterOutputType(DeploymentCapacitySettingsResponseOutput{})
+	pulumi.RegisterOutputType(DeploymentCapacitySettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(DeploymentModelOutput{})
 	pulumi.RegisterOutputType(DeploymentModelPtrOutput{})
 	pulumi.RegisterOutputType(DeploymentModelResponseOutput{})
@@ -7574,16 +8525,16 @@ func init() {
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateResponseOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateResponsePtrOutput{})
 	pulumi.RegisterOutputType(QuotaLimitResponseOutput{})
-	pulumi.RegisterOutputType(RaiBlocklistConfigOutput{})
-	pulumi.RegisterOutputType(RaiBlocklistConfigArrayOutput{})
-	pulumi.RegisterOutputType(RaiBlocklistConfigResponseOutput{})
-	pulumi.RegisterOutputType(RaiBlocklistConfigResponseArrayOutput{})
 	pulumi.RegisterOutputType(RaiBlocklistItemPropertiesOutput{})
 	pulumi.RegisterOutputType(RaiBlocklistItemPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(RaiBlocklistItemPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(RaiBlocklistPropertiesOutput{})
 	pulumi.RegisterOutputType(RaiBlocklistPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(RaiBlocklistPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(RaiMonitorConfigOutput{})
+	pulumi.RegisterOutputType(RaiMonitorConfigPtrOutput{})
+	pulumi.RegisterOutputType(RaiMonitorConfigResponseOutput{})
+	pulumi.RegisterOutputType(RaiMonitorConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(RaiPolicyContentFilterOutput{})
 	pulumi.RegisterOutputType(RaiPolicyContentFilterArrayOutput{})
 	pulumi.RegisterOutputType(RaiPolicyContentFilterResponseOutput{})
@@ -7609,6 +8560,10 @@ func init() {
 	pulumi.RegisterOutputType(ThrottlingRuleResponseArrayOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentityResponseOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentityResponseMapOutput{})
+	pulumi.RegisterOutputType(UserOwnedAmlWorkspaceOutput{})
+	pulumi.RegisterOutputType(UserOwnedAmlWorkspacePtrOutput{})
+	pulumi.RegisterOutputType(UserOwnedAmlWorkspaceResponseOutput{})
+	pulumi.RegisterOutputType(UserOwnedAmlWorkspaceResponsePtrOutput{})
 	pulumi.RegisterOutputType(UserOwnedStorageOutput{})
 	pulumi.RegisterOutputType(UserOwnedStorageArrayOutput{})
 	pulumi.RegisterOutputType(UserOwnedStorageResponseOutput{})

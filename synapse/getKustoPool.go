@@ -34,6 +34,8 @@ type LookupKustoPoolArgs struct {
 
 // Class representing a Kusto kusto pool.
 type LookupKustoPoolResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The Kusto Pool data ingestion URI.
 	DataIngestionUri string `pulumi:"dataIngestionUri"`
 	// A boolean value that indicates if the purge operations are enabled.
@@ -123,6 +125,11 @@ func (o LookupKustoPoolResultOutput) ToLookupKustoPoolResultOutput() LookupKusto
 
 func (o LookupKustoPoolResultOutput) ToLookupKustoPoolResultOutputWithContext(ctx context.Context) LookupKustoPoolResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupKustoPoolResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKustoPoolResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The Kusto Pool data ingestion URI.

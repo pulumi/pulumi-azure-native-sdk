@@ -12,9 +12,7 @@ import (
 )
 
 // Get a draft Firewall Policy.
-// Azure REST API version: 2023-11-01.
-//
-// Other available API versions: 2024-01-01, 2024-03-01, 2024-05-01.
+// Azure REST API version: 2024-05-01.
 func LookupFirewallPolicyDraft(ctx *pulumi.Context, args *LookupFirewallPolicyDraftArgs, opts ...pulumi.InvokeOption) (*LookupFirewallPolicyDraftResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFirewallPolicyDraftResult
@@ -34,6 +32,8 @@ type LookupFirewallPolicyDraftArgs struct {
 
 // FirewallPolicy Resource.
 type LookupFirewallPolicyDraftResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The parent firewall policy from which rules are inherited.
 	BasePolicy *SubResourceResponse `pulumi:"basePolicy"`
 	// DNS Proxy Settings definition.
@@ -97,6 +97,11 @@ func (o LookupFirewallPolicyDraftResultOutput) ToLookupFirewallPolicyDraftResult
 
 func (o LookupFirewallPolicyDraftResultOutput) ToLookupFirewallPolicyDraftResultOutputWithContext(ctx context.Context) LookupFirewallPolicyDraftResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupFirewallPolicyDraftResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFirewallPolicyDraftResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The parent firewall policy from which rules are inherited.

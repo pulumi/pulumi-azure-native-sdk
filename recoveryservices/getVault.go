@@ -12,9 +12,7 @@ import (
 )
 
 // Get the Vault details.
-// Azure REST API version: 2023-04-01.
-//
-// Other available API versions: 2020-02-02, 2023-06-01, 2023-08-01, 2024-01-01, 2024-02-01, 2024-04-01, 2024-04-30-preview, 2024-09-30-preview, 2024-10-01.
+// Azure REST API version: 2024-10-01.
 func LookupVault(ctx *pulumi.Context, args *LookupVaultArgs, opts ...pulumi.InvokeOption) (*LookupVaultResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVaultResult
@@ -34,6 +32,8 @@ type LookupVaultArgs struct {
 
 // Resource information, as returned by the resource provider.
 type LookupVaultResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Optional ETag.
 	Etag *string `pulumi:"etag"`
 	// Resource Id represents the complete path to the resource.
@@ -89,6 +89,11 @@ func (o LookupVaultResultOutput) ToLookupVaultResultOutput() LookupVaultResultOu
 
 func (o LookupVaultResultOutput) ToLookupVaultResultOutputWithContext(ctx context.Context) LookupVaultResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupVaultResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVaultResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Optional ETag.

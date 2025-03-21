@@ -13,14 +13,14 @@ import (
 )
 
 // Description of Rule Resource.
-// Azure REST API version: 2022-01-01-preview. Prior API version in Azure Native 1.x: 2017-04-01.
-//
-// Other available API versions: 2022-10-01-preview, 2023-01-01-preview, 2024-01-01.
+// Azure REST API version: 2024-01-01. Prior API version in Azure Native 2.x: 2022-01-01-preview.
 type Rule struct {
 	pulumi.CustomResourceState
 
 	// Represents the filter actions which are allowed for the transformation of a message that have been matched by a filter expression.
 	Action ActionResponsePtrOutput `pulumi:"action"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Properties of correlationFilter
 	CorrelationFilter CorrelationFilterResponsePtrOutput `pulumi:"correlationFilter"`
 	// Filter type that is evaluated against a BrokeredMessage.
@@ -133,10 +133,10 @@ type ruleArgs struct {
 	// Properties of correlationFilter
 	CorrelationFilter *CorrelationFilter `pulumi:"correlationFilter"`
 	// Filter type that is evaluated against a BrokeredMessage.
-	FilterType *string `pulumi:"filterType"`
+	FilterType *FilterType `pulumi:"filterType"`
 	// The namespace name
 	NamespaceName string `pulumi:"namespaceName"`
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The rule name.
 	RuleName *string `pulumi:"ruleName"`
@@ -155,10 +155,10 @@ type RuleArgs struct {
 	// Properties of correlationFilter
 	CorrelationFilter CorrelationFilterPtrInput
 	// Filter type that is evaluated against a BrokeredMessage.
-	FilterType pulumi.StringPtrInput
+	FilterType FilterTypePtrInput
 	// The namespace name
 	NamespaceName pulumi.StringInput
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The rule name.
 	RuleName pulumi.StringPtrInput
@@ -210,6 +210,11 @@ func (o RuleOutput) ToRuleOutputWithContext(ctx context.Context) RuleOutput {
 // Represents the filter actions which are allowed for the transformation of a message that have been matched by a filter expression.
 func (o RuleOutput) Action() ActionResponsePtrOutput {
 	return o.ApplyT(func(v *Rule) ActionResponsePtrOutput { return v.Action }).(ActionResponsePtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o RuleOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Properties of correlationFilter

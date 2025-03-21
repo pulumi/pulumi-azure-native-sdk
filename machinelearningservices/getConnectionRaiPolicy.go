@@ -12,9 +12,7 @@ import (
 )
 
 // Azure OpenAI Content Filters resource.
-// Azure REST API version: 2024-04-01-preview.
-//
-// Other available API versions: 2024-07-01-preview, 2024-10-01-preview.
+// Azure REST API version: 2025-01-01-preview.
 func LookupConnectionRaiPolicy(ctx *pulumi.Context, args *LookupConnectionRaiPolicyArgs, opts ...pulumi.InvokeOption) (*LookupConnectionRaiPolicyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupConnectionRaiPolicyResult
@@ -38,6 +36,8 @@ type LookupConnectionRaiPolicyArgs struct {
 
 // Azure OpenAI Content Filters resource.
 type LookupConnectionRaiPolicyResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The name of the resource
@@ -87,6 +87,11 @@ func (o LookupConnectionRaiPolicyResultOutput) ToLookupConnectionRaiPolicyResult
 
 func (o LookupConnectionRaiPolicyResultOutput) ToLookupConnectionRaiPolicyResultOutputWithContext(ctx context.Context) LookupConnectionRaiPolicyResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupConnectionRaiPolicyResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectionRaiPolicyResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

@@ -13,12 +13,12 @@ import (
 )
 
 // Policy fragment contract details.
-// Azure REST API version: 2022-09-01-preview.
-//
-// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
+// Azure REST API version: 2022-09-01-preview. Prior API version in Azure Native 2.x: 2022-09-01-preview.
 type WorkspacePolicyFragment struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Policy fragment description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Format of the policy fragment content.
@@ -176,6 +176,11 @@ func (o WorkspacePolicyFragmentOutput) ToWorkspacePolicyFragmentOutput() Workspa
 
 func (o WorkspacePolicyFragmentOutput) ToWorkspacePolicyFragmentOutputWithContext(ctx context.Context) WorkspacePolicyFragmentOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o WorkspacePolicyFragmentOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkspacePolicyFragment) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Policy fragment description.

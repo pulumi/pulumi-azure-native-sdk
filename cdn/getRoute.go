@@ -12,9 +12,7 @@ import (
 )
 
 // Gets an existing route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
-// Azure REST API version: 2023-05-01.
-//
-// Other available API versions: 2020-09-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01.
+// Azure REST API version: 2024-09-01.
 func LookupRoute(ctx *pulumi.Context, args *LookupRouteArgs, opts ...pulumi.InvokeOption) (*LookupRouteResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRouteResult
@@ -38,6 +36,8 @@ type LookupRouteArgs struct {
 
 // Friendly Routes name mapping to the any Routes or secret related information.
 type LookupRouteResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The caching configuration for this route. To disable caching, do not provide a cacheConfiguration object.
 	CacheConfiguration *AfdRouteCacheConfigurationResponse `pulumi:"cacheConfiguration"`
 	// Domains referenced by this endpoint.
@@ -132,6 +132,11 @@ func (o LookupRouteResultOutput) ToLookupRouteResultOutput() LookupRouteResultOu
 
 func (o LookupRouteResultOutput) ToLookupRouteResultOutputWithContext(ctx context.Context) LookupRouteResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupRouteResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRouteResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The caching configuration for this route. To disable caching, do not provide a cacheConfiguration object.

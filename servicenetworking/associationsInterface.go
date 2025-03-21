@@ -13,14 +13,14 @@ import (
 )
 
 // Association Subresource of Traffic Controller
-// Azure REST API version: 2023-05-01-preview. Prior API version in Azure Native 1.x: 2022-10-01-preview.
-//
-// Other available API versions: 2022-10-01-preview, 2023-11-01, 2024-05-01-preview, 2025-01-01.
+// Azure REST API version: 2025-01-01. Prior API version in Azure Native 2.x: 2023-05-01-preview.
 type AssociationsInterface struct {
 	pulumi.CustomResourceState
 
 	// Association Type
 	AssociationType pulumi.StringOutput `pulumi:"associationType"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -68,6 +68,9 @@ func NewAssociationsInterface(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:servicenetworking/v20250101:AssociationsInterface"),
+		},
+		{
+			Type: pulumi.String("azure-native:servicenetworking/v20250301preview:AssociationsInterface"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -178,6 +181,11 @@ func (o AssociationsInterfaceOutput) ToAssociationsInterfaceOutputWithContext(ct
 // Association Type
 func (o AssociationsInterfaceOutput) AssociationType() pulumi.StringOutput {
 	return o.ApplyT(func(v *AssociationsInterface) pulumi.StringOutput { return v.AssociationType }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o AssociationsInterfaceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *AssociationsInterface) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The geo-location where the resource lives

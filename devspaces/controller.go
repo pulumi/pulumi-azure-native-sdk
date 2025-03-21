@@ -12,10 +12,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Azure REST API version: 2019-04-01. Prior API version in Azure Native 1.x: 2019-04-01.
+// Azure REST API version: 2019-04-01. Prior API version in Azure Native 2.x: 2019-04-01.
 type Controller struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// DNS name for accessing DataPlane services
 	DataPlaneFqdn pulumi.StringOutput `pulumi:"dataPlaneFqdn"`
 	// DNS suffix for public endpoints running in the Azure Dev Spaces Controller.
@@ -165,6 +167,11 @@ func (o ControllerOutput) ToControllerOutput() ControllerOutput {
 
 func (o ControllerOutput) ToControllerOutputWithContext(ctx context.Context) ControllerOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ControllerOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Controller) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // DNS name for accessing DataPlane services

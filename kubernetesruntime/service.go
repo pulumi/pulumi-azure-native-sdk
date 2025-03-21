@@ -13,12 +13,12 @@ import (
 )
 
 // A Service resource for an Arc connected cluster (Microsoft.Kubernetes/connectedClusters)
-// Azure REST API version: 2024-03-01.
-//
-// Other available API versions: 2023-10-01-preview.
+// Azure REST API version: 2024-03-01. Prior API version in Azure Native 2.x: 2024-03-01.
 type Service struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Resource provision state
@@ -132,6 +132,11 @@ func (o ServiceOutput) ToServiceOutput() ServiceOutput {
 
 func (o ServiceOutput) ToServiceOutputWithContext(ctx context.Context) ServiceOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ServiceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

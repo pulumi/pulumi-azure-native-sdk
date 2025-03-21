@@ -13,10 +13,12 @@ import (
 )
 
 // Vault model.
-// Azure REST API version: 2021-02-16-preview.
+// Azure REST API version: 2021-02-16-preview. Prior API version in Azure Native 2.x: 2021-02-16-preview.
 type Vault struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets or sets the location of the vault.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Gets or sets the name of the resource.
@@ -43,6 +45,9 @@ func NewVault(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:datareplication/v20210216preview:Vault"),
+		},
+		{
+			Type: pulumi.String("azure-native:datareplication/v20240901:Vault"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -140,6 +145,11 @@ func (o VaultOutput) ToVaultOutput() VaultOutput {
 
 func (o VaultOutput) ToVaultOutputWithContext(ctx context.Context) VaultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o VaultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Vault) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets the location of the vault.

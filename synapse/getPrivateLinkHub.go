@@ -13,8 +13,6 @@ import (
 
 // Gets a privateLinkHub
 // Azure REST API version: 2021-06-01.
-//
-// Other available API versions: 2021-06-01-preview.
 func LookupPrivateLinkHub(ctx *pulumi.Context, args *LookupPrivateLinkHubArgs, opts ...pulumi.InvokeOption) (*LookupPrivateLinkHubResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivateLinkHubResult
@@ -34,6 +32,8 @@ type LookupPrivateLinkHubArgs struct {
 
 // A privateLinkHub
 type LookupPrivateLinkHubResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -83,6 +83,11 @@ func (o LookupPrivateLinkHubResultOutput) ToLookupPrivateLinkHubResultOutput() L
 
 func (o LookupPrivateLinkHubResultOutput) ToLookupPrivateLinkHubResultOutputWithContext(ctx context.Context) LookupPrivateLinkHubResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupPrivateLinkHubResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPrivateLinkHubResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

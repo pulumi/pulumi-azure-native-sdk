@@ -12,9 +12,7 @@ import (
 )
 
 // Gets a linked service instance.
-// Azure REST API version: 2020-08-01.
-//
-// Other available API versions: 2015-11-01-preview, 2023-09-01.
+// Azure REST API version: 2023-09-01.
 func LookupLinkedService(ctx *pulumi.Context, args *LookupLinkedServiceArgs, opts ...pulumi.InvokeOption) (*LookupLinkedServiceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupLinkedServiceResult
@@ -36,6 +34,8 @@ type LookupLinkedServiceArgs struct {
 
 // The top level Linked service resource container.
 type LookupLinkedServiceResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The name of the resource
@@ -87,6 +87,11 @@ func (o LookupLinkedServiceResultOutput) ToLookupLinkedServiceResultOutput() Loo
 
 func (o LookupLinkedServiceResultOutput) ToLookupLinkedServiceResultOutputWithContext(ctx context.Context) LookupLinkedServiceResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupLinkedServiceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLinkedServiceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

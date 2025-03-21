@@ -12,9 +12,7 @@ import (
 )
 
 // Gets the details of the Documentation specified by its identifier.
-// Azure REST API version: 2022-08-01.
-//
-// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
+// Azure REST API version: 2022-09-01-preview.
 func LookupDocumentation(ctx *pulumi.Context, args *LookupDocumentationArgs, opts ...pulumi.InvokeOption) (*LookupDocumentationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDocumentationResult
@@ -36,6 +34,8 @@ type LookupDocumentationArgs struct {
 
 // Markdown documentation details.
 type LookupDocumentationResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Markdown documentation content.
 	Content *string `pulumi:"content"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -83,6 +83,11 @@ func (o LookupDocumentationResultOutput) ToLookupDocumentationResultOutput() Loo
 
 func (o LookupDocumentationResultOutput) ToLookupDocumentationResultOutputWithContext(ctx context.Context) LookupDocumentationResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupDocumentationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDocumentationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Markdown documentation content.

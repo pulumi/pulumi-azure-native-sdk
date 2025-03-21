@@ -13,10 +13,12 @@ import (
 )
 
 // Cloud shell console
-// Azure REST API version: 2018-10-01. Prior API version in Azure Native 1.x: 2018-10-01.
+// Azure REST API version: 2018-10-01. Prior API version in Azure Native 2.x: 2018-10-01.
 type ConsoleWithLocation struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Cloud shell console properties.
 	Properties ConsolePropertiesResponseOutput `pulumi:"properties"`
 }
@@ -119,6 +121,11 @@ func (o ConsoleWithLocationOutput) ToConsoleWithLocationOutput() ConsoleWithLoca
 
 func (o ConsoleWithLocationOutput) ToConsoleWithLocationOutputWithContext(ctx context.Context) ConsoleWithLocationOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ConsoleWithLocationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConsoleWithLocation) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Cloud shell console properties.

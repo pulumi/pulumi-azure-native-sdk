@@ -13,21 +13,21 @@ import (
 )
 
 // Defines the HybridIdentityMetadata.
-// Azure REST API version: 2022-07-15-preview. Prior API version in Azure Native 1.x: 2020-10-01-preview.
-//
-// Other available API versions: 2023-03-01-preview.
+// Azure REST API version: 2023-03-01-preview. Prior API version in Azure Native 2.x: 2022-07-15-preview.
 type HybridIdentityMetadatum struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The identity of the resource.
 	Identity IdentityResponseOutput `pulumi:"identity"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Gets or sets the provisioning state.
+	// Gets the provisioning state.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Gets or sets the Public Key.
 	PublicKey pulumi.StringPtrOutput `pulumi:"publicKey"`
-	// The system data.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -159,6 +159,11 @@ func (o HybridIdentityMetadatumOutput) ToHybridIdentityMetadatumOutputWithContex
 	return o
 }
 
+// The Azure API version of the resource.
+func (o HybridIdentityMetadatumOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *HybridIdentityMetadatum) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The identity of the resource.
 func (o HybridIdentityMetadatumOutput) Identity() IdentityResponseOutput {
 	return o.ApplyT(func(v *HybridIdentityMetadatum) IdentityResponseOutput { return v.Identity }).(IdentityResponseOutput)
@@ -169,7 +174,7 @@ func (o HybridIdentityMetadatumOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *HybridIdentityMetadatum) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Gets or sets the provisioning state.
+// Gets the provisioning state.
 func (o HybridIdentityMetadatumOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *HybridIdentityMetadatum) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
@@ -179,7 +184,7 @@ func (o HybridIdentityMetadatumOutput) PublicKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HybridIdentityMetadatum) pulumi.StringPtrOutput { return v.PublicKey }).(pulumi.StringPtrOutput)
 }
 
-// The system data.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o HybridIdentityMetadatumOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *HybridIdentityMetadatum) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

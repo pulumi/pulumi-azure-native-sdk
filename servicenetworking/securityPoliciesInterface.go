@@ -13,12 +13,12 @@ import (
 )
 
 // SecurityPolicy Subresource of Traffic Controller.
-// Azure REST API version: 2024-05-01-preview.
-//
-// Other available API versions: 2025-01-01.
+// Azure REST API version: 2025-01-01. Prior API version in Azure Native 2.x: 2024-05-01-preview.
 type SecurityPoliciesInterface struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -33,7 +33,7 @@ type SecurityPoliciesInterface struct {
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
-	// Web Application Firewall Policy of the Traffic Controller Security Policy
+	// Web Application Firewall Policy of the Traffic Controller Security Policy. Single Security Policy can have only one policy type set.
 	WafPolicy WafPolicyResponsePtrOutput `pulumi:"wafPolicy"`
 }
 
@@ -56,6 +56,9 @@ func NewSecurityPoliciesInterface(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:servicenetworking/v20250101:SecurityPoliciesInterface"),
+		},
+		{
+			Type: pulumi.String("azure-native:servicenetworking/v20250301preview:SecurityPoliciesInterface"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -102,7 +105,7 @@ type securityPoliciesInterfaceArgs struct {
 	Tags map[string]string `pulumi:"tags"`
 	// traffic controller name for path
 	TrafficControllerName string `pulumi:"trafficControllerName"`
-	// Web Application Firewall Policy of the Traffic Controller Security Policy
+	// Web Application Firewall Policy of the Traffic Controller Security Policy. Single Security Policy can have only one policy type set.
 	WafPolicy *WafPolicy `pulumi:"wafPolicy"`
 }
 
@@ -118,7 +121,7 @@ type SecurityPoliciesInterfaceArgs struct {
 	Tags pulumi.StringMapInput
 	// traffic controller name for path
 	TrafficControllerName pulumi.StringInput
-	// Web Application Firewall Policy of the Traffic Controller Security Policy
+	// Web Application Firewall Policy of the Traffic Controller Security Policy. Single Security Policy can have only one policy type set.
 	WafPolicy WafPolicyPtrInput
 }
 
@@ -159,6 +162,11 @@ func (o SecurityPoliciesInterfaceOutput) ToSecurityPoliciesInterfaceOutputWithCo
 	return o
 }
 
+// The Azure API version of the resource.
+func (o SecurityPoliciesInterfaceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecurityPoliciesInterface) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The geo-location where the resource lives
 func (o SecurityPoliciesInterfaceOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityPoliciesInterface) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
@@ -194,7 +202,7 @@ func (o SecurityPoliciesInterfaceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityPoliciesInterface) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// Web Application Firewall Policy of the Traffic Controller Security Policy
+// Web Application Firewall Policy of the Traffic Controller Security Policy. Single Security Policy can have only one policy type set.
 func (o SecurityPoliciesInterfaceOutput) WafPolicy() WafPolicyResponsePtrOutput {
 	return o.ApplyT(func(v *SecurityPoliciesInterface) WafPolicyResponsePtrOutput { return v.WafPolicy }).(WafPolicyResponsePtrOutput)
 }

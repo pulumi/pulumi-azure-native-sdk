@@ -13,9 +13,7 @@ import (
 )
 
 // The RouteMap child resource of a Virtual hub.
-// Azure REST API version: 2023-02-01.
-//
-// Other available API versions: 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Azure REST API version: 2024-05-01. Prior API version in Azure Native 2.x: 2023-02-01.
 type RouteMap struct {
 	pulumi.CustomResourceState
 
@@ -23,6 +21,8 @@ type RouteMap struct {
 	AssociatedInboundConnections pulumi.StringArrayOutput `pulumi:"associatedInboundConnections"`
 	// List of connections which have this RoutMap associated for outbound traffic.
 	AssociatedOutboundConnections pulumi.StringArrayOutput `pulumi:"associatedOutboundConnections"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The name of the resource that is unique within a resource group. This name can be used to access the resource.
@@ -202,6 +202,11 @@ func (o RouteMapOutput) AssociatedInboundConnections() pulumi.StringArrayOutput 
 // List of connections which have this RoutMap associated for outbound traffic.
 func (o RouteMapOutput) AssociatedOutboundConnections() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RouteMap) pulumi.StringArrayOutput { return v.AssociatedOutboundConnections }).(pulumi.StringArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o RouteMapOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouteMap) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A unique read-only string that changes whenever the resource is updated.

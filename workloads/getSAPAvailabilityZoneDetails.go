@@ -12,9 +12,7 @@ import (
 )
 
 // Get the recommended SAP Availability Zone Pair Details for your region.
-// Azure REST API version: 2023-04-01.
-//
-// Other available API versions: 2021-12-01-preview, 2022-11-01-preview, 2023-10-01-preview.
+// Azure REST API version: 2023-10-01-preview.
 func GetSAPAvailabilityZoneDetails(ctx *pulumi.Context, args *GetSAPAvailabilityZoneDetailsArgs, opts ...pulumi.InvokeOption) (*GetSAPAvailabilityZoneDetailsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetSAPAvailabilityZoneDetailsResult

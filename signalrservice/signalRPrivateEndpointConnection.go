@@ -13,15 +13,15 @@ import (
 )
 
 // A private endpoint connection to an azure resource
-// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2020-05-01.
-//
-// Other available API versions: 2023-03-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-08-01-preview, 2024-10-01-preview.
+// Azure REST API version: 2024-03-01. Prior API version in Azure Native 2.x: 2023-02-01.
 type SignalRPrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Group IDs
 	GroupIds pulumi.StringArrayOutput `pulumi:"groupIds"`
-	// The name of the resource.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Private endpoint
 	PrivateEndpoint PrivateEndpointResponsePtrOutput `pulumi:"privateEndpoint"`
@@ -29,9 +29,9 @@ type SignalRPrivateEndpointConnection struct {
 	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStateResponsePtrOutput `pulumi:"privateLinkServiceConnectionState"`
 	// Provisioning state of the resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// Metadata pertaining to creation and last modification of the resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// The type of the resource - e.g. "Microsoft.SignalRService/SignalR"
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -137,11 +137,11 @@ func (SignalRPrivateEndpointConnectionState) ElementType() reflect.Type {
 type signalRPrivateEndpointConnectionArgs struct {
 	// Private endpoint
 	PrivateEndpoint *PrivateEndpoint `pulumi:"privateEndpoint"`
-	// The name of the private endpoint connection
+	// The name of the private endpoint connection associated with the Azure resource.
 	PrivateEndpointConnectionName *string `pulumi:"privateEndpointConnectionName"`
 	// Connection state of the private endpoint connection
 	PrivateLinkServiceConnectionState *PrivateLinkServiceConnectionState `pulumi:"privateLinkServiceConnectionState"`
-	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the resource.
 	ResourceName string `pulumi:"resourceName"`
@@ -151,11 +151,11 @@ type signalRPrivateEndpointConnectionArgs struct {
 type SignalRPrivateEndpointConnectionArgs struct {
 	// Private endpoint
 	PrivateEndpoint PrivateEndpointPtrInput
-	// The name of the private endpoint connection
+	// The name of the private endpoint connection associated with the Azure resource.
 	PrivateEndpointConnectionName pulumi.StringPtrInput
 	// Connection state of the private endpoint connection
 	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStatePtrInput
-	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The name of the resource.
 	ResourceName pulumi.StringInput
@@ -198,12 +198,17 @@ func (o SignalRPrivateEndpointConnectionOutput) ToSignalRPrivateEndpointConnecti
 	return o
 }
 
+// The Azure API version of the resource.
+func (o SignalRPrivateEndpointConnectionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SignalRPrivateEndpointConnection) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Group IDs
 func (o SignalRPrivateEndpointConnectionOutput) GroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SignalRPrivateEndpointConnection) pulumi.StringArrayOutput { return v.GroupIds }).(pulumi.StringArrayOutput)
 }
 
-// The name of the resource.
+// The name of the resource
 func (o SignalRPrivateEndpointConnectionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SignalRPrivateEndpointConnection) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -225,12 +230,12 @@ func (o SignalRPrivateEndpointConnectionOutput) ProvisioningState() pulumi.Strin
 	return o.ApplyT(func(v *SignalRPrivateEndpointConnection) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o SignalRPrivateEndpointConnectionOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *SignalRPrivateEndpointConnection) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// The type of the resource - e.g. "Microsoft.SignalRService/SignalR"
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o SignalRPrivateEndpointConnectionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *SignalRPrivateEndpointConnection) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

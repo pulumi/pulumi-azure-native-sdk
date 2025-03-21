@@ -13,17 +13,17 @@ import (
 )
 
 // Domain Topic.
-// Azure REST API version: 2022-06-15. Prior API version in Azure Native 1.x: 2020-06-01.
-//
-// Other available API versions: 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-02-15.
+// Azure REST API version: 2025-02-15. Prior API version in Azure Native 2.x: 2022-06-15.
 type DomainTopic struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Provisioning state of the domain topic.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// The system metadata relating to Domain Topic resource.
+	// The system metadata relating to the Event Grid resource.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Type of the resource.
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -178,6 +178,11 @@ func (o DomainTopicOutput) ToDomainTopicOutputWithContext(ctx context.Context) D
 	return o
 }
 
+// The Azure API version of the resource.
+func (o DomainTopicOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DomainTopic) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Name of the resource.
 func (o DomainTopicOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DomainTopic) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -188,7 +193,7 @@ func (o DomainTopicOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *DomainTopic) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// The system metadata relating to Domain Topic resource.
+// The system metadata relating to the Event Grid resource.
 func (o DomainTopicOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *DomainTopic) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

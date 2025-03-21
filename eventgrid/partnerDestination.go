@@ -13,14 +13,14 @@ import (
 )
 
 // Event Grid Partner Destination.
-// Azure REST API version: 2023-06-01-preview. Prior API version in Azure Native 1.x: 2021-10-15-preview.
-//
-// Other available API versions: 2021-10-15-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview.
+// Azure REST API version: 2024-12-15-preview. Prior API version in Azure Native 2.x: 2023-06-01-preview.
 type PartnerDestination struct {
 	pulumi.CustomResourceState
 
 	// Activation state of the partner destination.
 	ActivationState pulumi.StringPtrOutput `pulumi:"activationState"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Endpoint Base URL of the partner destination
 	EndpointBaseUrl pulumi.StringPtrOutput `pulumi:"endpointBaseUrl"`
 	// Endpoint context associated with this partner destination.
@@ -38,7 +38,7 @@ type PartnerDestination struct {
 	PartnerRegistrationImmutableId pulumi.StringPtrOutput `pulumi:"partnerRegistrationImmutableId"`
 	// Provisioning state of the partner destination.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// The system metadata relating to Partner Destination resource.
+	// The system metadata relating to the Event Grid resource.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Tags of the resource.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
@@ -197,6 +197,11 @@ func (o PartnerDestinationOutput) ActivationState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PartnerDestination) pulumi.StringPtrOutput { return v.ActivationState }).(pulumi.StringPtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o PartnerDestinationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PartnerDestination) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Endpoint Base URL of the partner destination
 func (o PartnerDestinationOutput) EndpointBaseUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PartnerDestination) pulumi.StringPtrOutput { return v.EndpointBaseUrl }).(pulumi.StringPtrOutput)
@@ -238,7 +243,7 @@ func (o PartnerDestinationOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *PartnerDestination) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// The system metadata relating to Partner Destination resource.
+// The system metadata relating to the Event Grid resource.
 func (o PartnerDestinationOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *PartnerDestination) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

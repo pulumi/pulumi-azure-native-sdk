@@ -13,10 +13,12 @@ import (
 )
 
 // A Target resource belonging to an Instance resource.
-// Azure REST API version: 2023-10-04-preview.
+// Azure REST API version: 2023-10-04-preview. Prior API version in Azure Native 2.x: 2023-10-04-preview.
 type Target struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// A list of components.
 	Components ComponentPropertiesResponseArrayOutput `pulumi:"components"`
 	// Edge location of the resource.
@@ -176,6 +178,11 @@ func (o TargetOutput) ToTargetOutput() TargetOutput {
 
 func (o TargetOutput) ToTargetOutputWithContext(ctx context.Context) TargetOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o TargetOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Target) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A list of components.

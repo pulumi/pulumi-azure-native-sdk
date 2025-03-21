@@ -12,9 +12,7 @@ import (
 )
 
 // Retrieves the details of a RouteMap.
-// Azure REST API version: 2023-02-01.
-//
-// Other available API versions: 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Azure REST API version: 2024-05-01.
 func LookupRouteMap(ctx *pulumi.Context, args *LookupRouteMapArgs, opts ...pulumi.InvokeOption) (*LookupRouteMapResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRouteMapResult
@@ -40,6 +38,8 @@ type LookupRouteMapResult struct {
 	AssociatedInboundConnections []string `pulumi:"associatedInboundConnections"`
 	// List of connections which have this RoutMap associated for outbound traffic.
 	AssociatedOutboundConnections []string `pulumi:"associatedOutboundConnections"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag string `pulumi:"etag"`
 	// Resource ID.
@@ -99,6 +99,11 @@ func (o LookupRouteMapResultOutput) AssociatedInboundConnections() pulumi.String
 // List of connections which have this RoutMap associated for outbound traffic.
 func (o LookupRouteMapResultOutput) AssociatedOutboundConnections() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupRouteMapResult) []string { return v.AssociatedOutboundConnections }).(pulumi.StringArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupRouteMapResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRouteMapResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A unique read-only string that changes whenever the resource is updated.

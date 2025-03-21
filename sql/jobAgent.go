@@ -13,12 +13,12 @@ import (
 )
 
 // An Azure SQL job agent.
-// Azure REST API version: 2021-11-01. Prior API version in Azure Native 1.x: 2020-11-01-preview.
-//
-// Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
+// Azure REST API version: 2021-11-01. Prior API version in Azure Native 2.x: 2021-11-01.
 type JobAgent struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Resource ID of the database to store job metadata in.
 	DatabaseId pulumi.StringOutput `pulumi:"databaseId"`
 	// Resource location.
@@ -207,6 +207,11 @@ func (o JobAgentOutput) ToJobAgentOutput() JobAgentOutput {
 
 func (o JobAgentOutput) ToJobAgentOutputWithContext(ctx context.Context) JobAgentOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o JobAgentOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *JobAgent) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource ID of the database to store job metadata in.

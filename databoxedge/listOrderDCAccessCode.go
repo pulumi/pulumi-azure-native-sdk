@@ -12,9 +12,7 @@ import (
 )
 
 // DC Access code in the case of Self Managed Shipping.
-// Azure REST API version: 2022-03-01.
-//
-// Other available API versions: 2022-04-01-preview, 2023-01-01-preview, 2023-07-01, 2023-12-01.
+// Azure REST API version: 2023-07-01.
 func ListOrderDCAccessCode(ctx *pulumi.Context, args *ListOrderDCAccessCodeArgs, opts ...pulumi.InvokeOption) (*ListOrderDCAccessCodeResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListOrderDCAccessCodeResult

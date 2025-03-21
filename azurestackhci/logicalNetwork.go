@@ -13,14 +13,14 @@ import (
 )
 
 // The logical network resource definition.
-// Azure REST API version: 2023-09-01-preview.
-//
-// Other available API versions: 2024-01-01, 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-02-01-preview.
+// Azure REST API version: 2025-02-01-preview. Prior API version in Azure Native 2.x: 2023-09-01-preview.
 type LogicalNetwork struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// DhcpOptions contains an array of DNS servers available to VMs deployed in the logical network. Standard DHCP option for a subnet overrides logical network DHCP options.
-	DhcpOptions LogicalNetworkPropertiesResponseDhcpOptionsPtrOutput `pulumi:"dhcpOptions"`
+	DhcpOptions LogicalNetworkPropertiesDhcpOptionsResponsePtrOutput `pulumi:"dhcpOptions"`
 	// The extendedLocation of the resource.
 	ExtendedLocation ExtendedLocationResponsePtrOutput `pulumi:"extendedLocation"`
 	// The geo-location where the resource lives
@@ -188,9 +188,14 @@ func (o LogicalNetworkOutput) ToLogicalNetworkOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LogicalNetworkOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *LogicalNetwork) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // DhcpOptions contains an array of DNS servers available to VMs deployed in the logical network. Standard DHCP option for a subnet overrides logical network DHCP options.
-func (o LogicalNetworkOutput) DhcpOptions() LogicalNetworkPropertiesResponseDhcpOptionsPtrOutput {
-	return o.ApplyT(func(v *LogicalNetwork) LogicalNetworkPropertiesResponseDhcpOptionsPtrOutput { return v.DhcpOptions }).(LogicalNetworkPropertiesResponseDhcpOptionsPtrOutput)
+func (o LogicalNetworkOutput) DhcpOptions() LogicalNetworkPropertiesDhcpOptionsResponsePtrOutput {
+	return o.ApplyT(func(v *LogicalNetwork) LogicalNetworkPropertiesDhcpOptionsResponsePtrOutput { return v.DhcpOptions }).(LogicalNetworkPropertiesDhcpOptionsResponsePtrOutput)
 }
 
 // The extendedLocation of the resource.

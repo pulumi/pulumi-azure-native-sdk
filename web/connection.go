@@ -13,12 +13,12 @@ import (
 )
 
 // API connection
-// Azure REST API version: 2016-06-01. Prior API version in Azure Native 1.x: 2016-06-01.
-//
-// Other available API versions: 2015-08-01-preview.
+// Azure REST API version: 2016-06-01. Prior API version in Azure Native 2.x: 2016-06-01.
 type Connection struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Resource ETag
 	Etag pulumi.StringPtrOutput `pulumi:"etag"`
 	// Resource location
@@ -147,6 +147,11 @@ func (o ConnectionOutput) ToConnectionOutput() ConnectionOutput {
 
 func (o ConnectionOutput) ToConnectionOutputWithContext(ctx context.Context) ConnectionOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ConnectionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource ETag

@@ -13,10 +13,12 @@ import (
 )
 
 // The SourceControl Configuration object returned in Get & Put response.
-// Azure REST API version: 2023-05-01. Prior API version in Azure Native 1.x: 2021-03-01.
+// Azure REST API version: 2023-05-01. Prior API version in Azure Native 2.x: 2023-05-01.
 type SourceControlConfiguration struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Compliance Status of the Configuration
 	ComplianceStatus ComplianceStatusResponseOutput `pulumi:"complianceStatus"`
 	// Name-value pairs of protected configuration settings for the configuration
@@ -243,6 +245,11 @@ func (o SourceControlConfigurationOutput) ToSourceControlConfigurationOutput() S
 
 func (o SourceControlConfigurationOutput) ToSourceControlConfigurationOutputWithContext(ctx context.Context) SourceControlConfigurationOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o SourceControlConfigurationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SourceControlConfiguration) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Compliance Status of the Configuration

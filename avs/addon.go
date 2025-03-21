@@ -13,17 +13,21 @@ import (
 )
 
 // An addon resource
-// Azure REST API version: 2022-05-01. Prior API version in Azure Native 1.x: 2020-07-17-preview.
-//
-// Other available API versions: 2021-01-01-preview, 2023-03-01, 2023-09-01.
+// Azure REST API version: 2023-09-01. Prior API version in Azure Native 2.x: 2022-05-01.
 type Addon struct {
 	pulumi.CustomResourceState
 
-	// Resource name.
+	// Addon type
+	AddonType pulumi.StringOutput `pulumi:"addonType"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The properties of an addon resource
-	Properties pulumi.AnyOutput `pulumi:"properties"`
-	// Resource type.
+	// The state of the addon provisioning
+	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -34,6 +38,9 @@ func NewAddon(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AddonType == nil {
+		return nil, errors.New("invalid value for required argument 'AddonType'")
+	}
 	if args.PrivateCloudName == nil {
 		return nil, errors.New("invalid value for required argument 'PrivateCloudName'")
 	}
@@ -97,24 +104,24 @@ func (AddonState) ElementType() reflect.Type {
 }
 
 type addonArgs struct {
-	// Name of the addon for the private cloud
+	// Name of the addon.
 	AddonName *string `pulumi:"addonName"`
-	// The name of the private cloud.
+	// Addon type
+	AddonType string `pulumi:"addonType"`
+	// Name of the private cloud
 	PrivateCloudName string `pulumi:"privateCloudName"`
-	// The properties of an addon resource
-	Properties interface{} `pulumi:"properties"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The set of arguments for constructing a Addon resource.
 type AddonArgs struct {
-	// Name of the addon for the private cloud
+	// Name of the addon.
 	AddonName pulumi.StringPtrInput
-	// The name of the private cloud.
+	// Addon type
+	AddonType pulumi.StringInput
+	// Name of the private cloud
 	PrivateCloudName pulumi.StringInput
-	// The properties of an addon resource
-	Properties pulumi.Input
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 }
@@ -156,17 +163,32 @@ func (o AddonOutput) ToAddonOutputWithContext(ctx context.Context) AddonOutput {
 	return o
 }
 
-// Resource name.
+// Addon type
+func (o AddonOutput) AddonType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Addon) pulumi.StringOutput { return v.AddonType }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o AddonOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Addon) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// The name of the resource
 func (o AddonOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Addon) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The properties of an addon resource
-func (o AddonOutput) Properties() pulumi.AnyOutput {
-	return o.ApplyT(func(v *Addon) pulumi.AnyOutput { return v.Properties }).(pulumi.AnyOutput)
+// The state of the addon provisioning
+func (o AddonOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v *Addon) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Resource type.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o AddonOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Addon) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o AddonOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Addon) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

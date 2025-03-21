@@ -12,9 +12,7 @@ import (
 )
 
 // Get an order item.
-// Azure REST API version: 2022-05-01-preview.
-//
-// Other available API versions: 2024-02-01.
+// Azure REST API version: 2024-02-01.
 func LookupOrderItem(ctx *pulumi.Context, args *LookupOrderItemArgs, opts ...pulumi.InvokeOption) (*LookupOrderItemResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupOrderItemResult
@@ -22,7 +20,7 @@ func LookupOrderItem(ctx *pulumi.Context, args *LookupOrderItemArgs, opts ...pul
 	if err != nil {
 		return nil, err
 	}
-	return &rv, nil
+	return rv.Defaults(), nil
 }
 
 type LookupOrderItemArgs struct {
@@ -37,9 +35,13 @@ type LookupOrderItemArgs struct {
 // Represents order item resource.
 type LookupOrderItemResult struct {
 	// Represents shipping and return address for order item.
-	AddressDetails AddressDetailsResponse `pulumi:"addressDetails"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	AddressDetails *AddressDetailsResponse `pulumi:"addressDetails"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
+	// Msi identity of the resource
+	Identity *ResourceIdentityResponse `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// The name of the resource
@@ -48,9 +50,11 @@ type LookupOrderItemResult struct {
 	OrderId string `pulumi:"orderId"`
 	// Represents order item details.
 	OrderItemDetails OrderItemDetailsResponse `pulumi:"orderItemDetails"`
+	// Provisioning state
+	ProvisioningState string `pulumi:"provisioningState"`
 	// Start time of order item.
 	StartTime string `pulumi:"startTime"`
-	// Represents resource creation and update time.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
@@ -58,6 +62,18 @@ type LookupOrderItemResult struct {
 	Type string `pulumi:"type"`
 }
 
+// Defaults sets the appropriate defaults for LookupOrderItemResult
+func (val *LookupOrderItemResult) Defaults() *LookupOrderItemResult {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Identity = tmp.Identity.Defaults()
+
+	tmp.OrderItemDetails = *tmp.OrderItemDetails.Defaults()
+
+	return &tmp
+}
 func LookupOrderItemOutput(ctx *pulumi.Context, args LookupOrderItemOutputArgs, opts ...pulumi.InvokeOption) LookupOrderItemResultOutput {
 	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupOrderItemResultOutput, error) {
@@ -96,13 +112,23 @@ func (o LookupOrderItemResultOutput) ToLookupOrderItemResultOutputWithContext(ct
 }
 
 // Represents shipping and return address for order item.
-func (o LookupOrderItemResultOutput) AddressDetails() AddressDetailsResponseOutput {
-	return o.ApplyT(func(v LookupOrderItemResult) AddressDetailsResponse { return v.AddressDetails }).(AddressDetailsResponseOutput)
+func (o LookupOrderItemResultOutput) AddressDetails() AddressDetailsResponsePtrOutput {
+	return o.ApplyT(func(v LookupOrderItemResult) *AddressDetailsResponse { return v.AddressDetails }).(AddressDetailsResponsePtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// The Azure API version of the resource.
+func (o LookupOrderItemResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOrderItemResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupOrderItemResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrderItemResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Msi identity of the resource
+func (o LookupOrderItemResultOutput) Identity() ResourceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupOrderItemResult) *ResourceIdentityResponse { return v.Identity }).(ResourceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -125,12 +151,17 @@ func (o LookupOrderItemResultOutput) OrderItemDetails() OrderItemDetailsResponse
 	return o.ApplyT(func(v LookupOrderItemResult) OrderItemDetailsResponse { return v.OrderItemDetails }).(OrderItemDetailsResponseOutput)
 }
 
+// Provisioning state
+func (o LookupOrderItemResultOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOrderItemResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
 // Start time of order item.
 func (o LookupOrderItemResultOutput) StartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrderItemResult) string { return v.StartTime }).(pulumi.StringOutput)
 }
 
-// Represents resource creation and update time.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupOrderItemResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupOrderItemResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }

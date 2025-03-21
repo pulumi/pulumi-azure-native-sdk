@@ -13,10 +13,12 @@ import (
 )
 
 // The EngagementFabric channel
-// Azure REST API version: 2018-09-01-preview. Prior API version in Azure Native 1.x: 2018-09-01-preview.
+// Azure REST API version: 2018-09-01-preview. Prior API version in Azure Native 2.x: 2018-09-01-preview.
 type Channel struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The functions to be enabled for the channel
 	ChannelFunctions pulumi.StringArrayOutput `pulumi:"channelFunctions"`
 	// The channel type
@@ -149,6 +151,11 @@ func (o ChannelOutput) ToChannelOutput() ChannelOutput {
 
 func (o ChannelOutput) ToChannelOutputWithContext(ctx context.Context) ChannelOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ChannelOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Channel) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The functions to be enabled for the channel

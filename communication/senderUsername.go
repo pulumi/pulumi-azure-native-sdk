@@ -13,12 +13,12 @@ import (
 )
 
 // A class representing a SenderUsername resource.
-// Azure REST API version: 2023-03-31.
-//
-// Other available API versions: 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2024-09-01-preview.
+// Azure REST API version: 2023-06-01-preview. Prior API version in Azure Native 2.x: 2023-03-31.
 type SenderUsername struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The location where the SenderUsername resource data is stored at rest.
 	DataLocation pulumi.StringOutput `pulumi:"dataLocation"`
 	// The display name for the senderUsername.
@@ -173,6 +173,11 @@ func (o SenderUsernameOutput) ToSenderUsernameOutput() SenderUsernameOutput {
 
 func (o SenderUsernameOutput) ToSenderUsernameOutputWithContext(ctx context.Context) SenderUsernameOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o SenderUsernameOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SenderUsername) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The location where the SenderUsername resource data is stored at rest.

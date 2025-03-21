@@ -13,12 +13,14 @@ import (
 )
 
 // Pool resource
-// Azure REST API version: 2023-07-01-preview. Prior API version in Azure Native 1.x: 2023-03-01-preview.
+// Azure REST API version: 2023-07-01-preview. Prior API version in Azure Native 2.x: 2023-07-01-preview.
 type Pool struct {
 	pulumi.CustomResourceState
 
 	// List of resources that should have access to the pool. Typically ARM references to AKS clusters or ACI Container Groups. For local and standard this must be a single reference. For ElasticSAN there can be many.
 	Assignments AssignmentResponseArrayOutput `pulumi:"assignments"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -181,6 +183,11 @@ func (o PoolOutput) ToPoolOutputWithContext(ctx context.Context) PoolOutput {
 // List of resources that should have access to the pool. Typically ARM references to AKS clusters or ACI Container Groups. For local and standard this must be a single reference. For ElasticSAN there can be many.
 func (o PoolOutput) Assignments() AssignmentResponseArrayOutput {
 	return o.ApplyT(func(v *Pool) AssignmentResponseArrayOutput { return v.Assignments }).(AssignmentResponseArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o PoolOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Pool) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The geo-location where the resource lives

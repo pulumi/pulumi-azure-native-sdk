@@ -13,9 +13,7 @@ import (
 )
 
 // The Client resource.
-// Azure REST API version: 2023-06-01-preview.
-//
-// Other available API versions: 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-02-15.
+// Azure REST API version: 2025-02-15. Prior API version in Azure Native 2.x: 2023-06-01-preview.
 type Client struct {
 	pulumi.CustomResourceState
 
@@ -23,10 +21,10 @@ type Client struct {
 	// Example:
 	// "attributes": { "room": "345", "floor": 12, "deviceTypes": ["Fan", "Light"] }
 	Attributes pulumi.AnyOutput `pulumi:"attributes"`
-	// Authentication information for the client.
-	Authentication ClientAuthenticationResponsePtrOutput `pulumi:"authentication"`
 	// The name presented by the client for authentication. The default value is the name of the resource.
 	AuthenticationName pulumi.StringPtrOutput `pulumi:"authenticationName"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The client certificate authentication information.
 	ClientCertificateAuthentication ClientCertificateAuthenticationResponsePtrOutput `pulumi:"clientCertificateAuthentication"`
 	// Description for the Client resource.
@@ -37,7 +35,7 @@ type Client struct {
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Indicates if the client is enabled or not. Default value is Enabled.
 	State pulumi.StringPtrOutput `pulumi:"state"`
-	// The system metadata relating to the Client resource.
+	// The system metadata relating to the Event Grid resource.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Type of the resource.
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -114,8 +112,6 @@ type clientArgs struct {
 	// Example:
 	// "attributes": { "room": "345", "floor": 12, "deviceTypes": ["Fan", "Light"] }
 	Attributes interface{} `pulumi:"attributes"`
-	// Authentication information for the client.
-	Authentication *ClientAuthentication `pulumi:"authentication"`
 	// The name presented by the client for authentication. The default value is the name of the resource.
 	AuthenticationName *string `pulumi:"authenticationName"`
 	// The client certificate authentication information.
@@ -138,8 +134,6 @@ type ClientArgs struct {
 	// Example:
 	// "attributes": { "room": "345", "floor": 12, "deviceTypes": ["Fan", "Light"] }
 	Attributes pulumi.Input
-	// Authentication information for the client.
-	Authentication ClientAuthenticationPtrInput
 	// The name presented by the client for authentication. The default value is the name of the resource.
 	AuthenticationName pulumi.StringPtrInput
 	// The client certificate authentication information.
@@ -200,14 +194,14 @@ func (o ClientOutput) Attributes() pulumi.AnyOutput {
 	return o.ApplyT(func(v *Client) pulumi.AnyOutput { return v.Attributes }).(pulumi.AnyOutput)
 }
 
-// Authentication information for the client.
-func (o ClientOutput) Authentication() ClientAuthenticationResponsePtrOutput {
-	return o.ApplyT(func(v *Client) ClientAuthenticationResponsePtrOutput { return v.Authentication }).(ClientAuthenticationResponsePtrOutput)
-}
-
 // The name presented by the client for authentication. The default value is the name of the resource.
 func (o ClientOutput) AuthenticationName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Client) pulumi.StringPtrOutput { return v.AuthenticationName }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o ClientOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Client) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The client certificate authentication information.
@@ -237,7 +231,7 @@ func (o ClientOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Client) pulumi.StringPtrOutput { return v.State }).(pulumi.StringPtrOutput)
 }
 
-// The system metadata relating to the Client resource.
+// The system metadata relating to the Event Grid resource.
 func (o ClientOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *Client) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

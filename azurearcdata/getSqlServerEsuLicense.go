@@ -32,6 +32,8 @@ type LookupSqlServerEsuLicenseArgs struct {
 
 // Describe SQL Server ESU license resource.
 type LookupSqlServerEsuLicenseResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -81,6 +83,11 @@ func (o LookupSqlServerEsuLicenseResultOutput) ToLookupSqlServerEsuLicenseResult
 
 func (o LookupSqlServerEsuLicenseResultOutput) ToLookupSqlServerEsuLicenseResultOutputWithContext(ctx context.Context) LookupSqlServerEsuLicenseResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupSqlServerEsuLicenseResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSqlServerEsuLicenseResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

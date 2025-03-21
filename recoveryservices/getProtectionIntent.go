@@ -13,9 +13,7 @@ import (
 
 // Provides the details of the protection intent up item. This is an asynchronous operation. To know the status of the operation,
 // call the GetItemOperationResult API.
-// Azure REST API version: 2023-04-01.
-//
-// Other available API versions: 2023-06-01, 2023-08-01, 2024-01-01, 2024-02-01, 2024-04-01, 2024-04-30-preview, 2024-07-30-preview, 2024-10-01.
+// Azure REST API version: 2024-10-01.
 func LookupProtectionIntent(ctx *pulumi.Context, args *LookupProtectionIntentArgs, opts ...pulumi.InvokeOption) (*LookupProtectionIntentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupProtectionIntentResult
@@ -39,6 +37,8 @@ type LookupProtectionIntentArgs struct {
 
 // Base class for backup ProtectionIntent.
 type LookupProtectionIntentResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Optional ETag.
 	ETag *string `pulumi:"eTag"`
 	// Resource Id represents the complete path to the resource.
@@ -92,6 +92,11 @@ func (o LookupProtectionIntentResultOutput) ToLookupProtectionIntentResultOutput
 
 func (o LookupProtectionIntentResultOutput) ToLookupProtectionIntentResultOutputWithContext(ctx context.Context) LookupProtectionIntentResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupProtectionIntentResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProtectionIntentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Optional ETag.

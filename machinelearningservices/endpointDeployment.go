@@ -12,12 +12,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Azure REST API version: 2024-01-01-preview.
-//
-// Other available API versions: 2024-04-01-preview, 2024-07-01-preview, 2024-10-01-preview.
+// Azure REST API version: 2025-01-01-preview. Prior API version in Azure Native 2.x: 2024-01-01-preview.
 type EndpointDeployment struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name       pulumi.StringOutput `pulumi:"name"`
 	Properties pulumi.AnyOutput    `pulumi:"properties"`
@@ -58,6 +58,9 @@ func NewEndpointDeployment(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001preview:EndpointDeployment"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250101preview:EndpointDeployment"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -153,6 +156,11 @@ func (o EndpointDeploymentOutput) ToEndpointDeploymentOutput() EndpointDeploymen
 
 func (o EndpointDeploymentOutput) ToEndpointDeploymentOutputWithContext(ctx context.Context) EndpointDeploymentOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o EndpointDeploymentOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *EndpointDeployment) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

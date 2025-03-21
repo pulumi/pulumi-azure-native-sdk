@@ -34,6 +34,8 @@ type LookupProfessionalServiceSubscriptionLevelArgs struct {
 
 // ProfessionalService REST API resource definition.
 type LookupProfessionalServiceSubscriptionLevelResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The resource uri
 	Id string `pulumi:"id"`
 	// The name of the resource
@@ -81,6 +83,11 @@ func (o LookupProfessionalServiceSubscriptionLevelResultOutput) ToLookupProfessi
 
 func (o LookupProfessionalServiceSubscriptionLevelResultOutput) ToLookupProfessionalServiceSubscriptionLevelResultOutputWithContext(ctx context.Context) LookupProfessionalServiceSubscriptionLevelResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupProfessionalServiceSubscriptionLevelResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProfessionalServiceSubscriptionLevelResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The resource uri

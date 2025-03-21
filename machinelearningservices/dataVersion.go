@@ -13,12 +13,12 @@ import (
 )
 
 // Azure Resource Manager resource envelope.
-// Azure REST API version: 2023-04-01. Prior API version in Azure Native 1.x: 2021-03-01-preview.
-//
-// Other available API versions: 2021-03-01-preview, 2022-02-01-preview, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-04-01-preview, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview.
+// Azure REST API version: 2024-10-01. Prior API version in Azure Native 2.x: 2023-04-01.
 type DataVersion struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// [Required] Additional attributes of the entity.
 	DataVersionBaseProperties pulumi.AnyOutput `pulumi:"dataVersionBaseProperties"`
 	// The name of the resource
@@ -105,6 +105,9 @@ func NewDataVersion(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001preview:DataVersion"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250101preview:DataVersion"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -202,6 +205,11 @@ func (o DataVersionOutput) ToDataVersionOutput() DataVersionOutput {
 
 func (o DataVersionOutput) ToDataVersionOutputWithContext(ctx context.Context) DataVersionOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o DataVersionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DataVersion) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // [Required] Additional attributes of the entity.

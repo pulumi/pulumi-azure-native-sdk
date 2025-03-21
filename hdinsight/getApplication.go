@@ -12,9 +12,7 @@ import (
 )
 
 // Gets properties of the specified application.
-// Azure REST API version: 2021-06-01.
-//
-// Other available API versions: 2023-04-15-preview, 2023-08-15-preview, 2024-08-01-preview.
+// Azure REST API version: 2024-08-01-preview.
 func LookupApplication(ctx *pulumi.Context, args *LookupApplicationArgs, opts ...pulumi.InvokeOption) (*LookupApplicationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupApplicationResult
@@ -36,6 +34,8 @@ type LookupApplicationArgs struct {
 
 // The HDInsight cluster application
 type LookupApplicationResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The ETag for the application
 	Etag *string `pulumi:"etag"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -87,6 +87,11 @@ func (o LookupApplicationResultOutput) ToLookupApplicationResultOutput() LookupA
 
 func (o LookupApplicationResultOutput) ToLookupApplicationResultOutputWithContext(ctx context.Context) LookupApplicationResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupApplicationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApplicationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The ETag for the application

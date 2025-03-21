@@ -13,10 +13,12 @@ import (
 )
 
 // The DataManager resource.
-// Azure REST API version: 2019-06-01. Prior API version in Azure Native 1.x: 2019-06-01.
+// Azure REST API version: 2019-06-01. Prior API version in Azure Native 2.x: 2019-06-01.
 type DataManager struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Etag of the Resource.
 	Etag pulumi.StringPtrOutput `pulumi:"etag"`
 	// The location of the resource. This will be one of the supported and registered Azure Geo Regions (e.g. West US, East
@@ -153,6 +155,11 @@ func (o DataManagerOutput) ToDataManagerOutput() DataManagerOutput {
 
 func (o DataManagerOutput) ToDataManagerOutputWithContext(ctx context.Context) DataManagerOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o DataManagerOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DataManager) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Etag of the Resource.

@@ -32,6 +32,8 @@ type LookupAssignmentArgs struct {
 
 // Represents a blueprint assignment.
 type LookupAssignmentResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// ID of the published version of a blueprint definition.
 	BlueprintId *string `pulumi:"blueprintId"`
 	// Multi-line explain this resource.
@@ -95,6 +97,11 @@ func (o LookupAssignmentResultOutput) ToLookupAssignmentResultOutput() LookupAss
 
 func (o LookupAssignmentResultOutput) ToLookupAssignmentResultOutputWithContext(ctx context.Context) LookupAssignmentResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupAssignmentResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAssignmentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // ID of the published version of a blueprint definition.

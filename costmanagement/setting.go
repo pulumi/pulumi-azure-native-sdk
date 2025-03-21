@@ -13,10 +13,12 @@ import (
 )
 
 // State of the myscope setting.
-// Azure REST API version: 2019-11-01. Prior API version in Azure Native 1.x: 2019-11-01.
+// Azure REST API version: 2019-11-01. Prior API version in Azure Native 2.x: 2019-11-01.
 type Setting struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Array of scopes with additional details used by Cost Management in the Azure portal.
 	Cache SettingsPropertiesResponseCacheArrayOutput `pulumi:"cache"`
 	// Resource kind.
@@ -137,6 +139,11 @@ func (o SettingOutput) ToSettingOutput() SettingOutput {
 
 func (o SettingOutput) ToSettingOutputWithContext(ctx context.Context) SettingOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o SettingOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Setting) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Array of scopes with additional details used by Cost Management in the Azure portal.

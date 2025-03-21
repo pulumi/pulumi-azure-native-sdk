@@ -12,9 +12,7 @@ import (
 )
 
 // Gets the specified IpAllocation by resource group.
-// Azure REST API version: 2023-02-01.
-//
-// Other available API versions: 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Azure REST API version: 2024-05-01.
 func LookupIpAllocation(ctx *pulumi.Context, args *LookupIpAllocationArgs, opts ...pulumi.InvokeOption) (*LookupIpAllocationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIpAllocationResult
@@ -38,6 +36,8 @@ type LookupIpAllocationArgs struct {
 type LookupIpAllocationResult struct {
 	// IpAllocation tags.
 	AllocationTags map[string]string `pulumi:"allocationTags"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag string `pulumi:"etag"`
 	// Resource ID.
@@ -116,6 +116,11 @@ func (o LookupIpAllocationResultOutput) ToLookupIpAllocationResultOutputWithCont
 // IpAllocation tags.
 func (o LookupIpAllocationResultOutput) AllocationTags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupIpAllocationResult) map[string]string { return v.AllocationTags }).(pulumi.StringMapOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupIpAllocationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIpAllocationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A unique read-only string that changes whenever the resource is updated.

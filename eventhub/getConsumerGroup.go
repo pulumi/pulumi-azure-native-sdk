@@ -12,9 +12,7 @@ import (
 )
 
 // Gets a description for the specified consumer group.
-// Azure REST API version: 2022-10-01-preview.
-//
-// Other available API versions: 2023-01-01-preview, 2024-01-01, 2024-05-01-preview.
+// Azure REST API version: 2024-01-01.
 func LookupConsumerGroup(ctx *pulumi.Context, args *LookupConsumerGroupArgs, opts ...pulumi.InvokeOption) (*LookupConsumerGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupConsumerGroupResult
@@ -38,6 +36,8 @@ type LookupConsumerGroupArgs struct {
 
 // Single item in List or Get Consumer group operation
 type LookupConsumerGroupResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Exact time the message was created.
 	CreatedAt string `pulumi:"createdAt"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -93,6 +93,11 @@ func (o LookupConsumerGroupResultOutput) ToLookupConsumerGroupResultOutput() Loo
 
 func (o LookupConsumerGroupResultOutput) ToLookupConsumerGroupResultOutputWithContext(ctx context.Context) LookupConsumerGroupResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupConsumerGroupResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConsumerGroupResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Exact time the message was created.

@@ -13,9 +13,7 @@ import (
 )
 
 // Configuration settings for the Azure App Service Authentication / Authorization feature.
-// Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2020-12-01.
-//
-// Other available API versions: 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
+// Azure REST API version: 2024-04-01. Prior API version in Azure Native 2.x: 2022-09-01.
 type WebAppAuthSettingsSlot struct {
 	pulumi.CustomResourceState
 
@@ -35,6 +33,8 @@ type WebAppAuthSettingsSlot struct {
 	// The path of the config file containing auth settings.
 	// If the path is relative, base will the site's root directory.
 	AuthFilePath pulumi.StringPtrOutput `pulumi:"authFilePath"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The Client ID of this relying party application, known as the client_id.
 	// This setting is required for enabling OpenID Connection authentication with Azure Active Directory or
 	// other 3rd party OpenID Connect providers.
@@ -104,7 +104,7 @@ type WebAppAuthSettingsSlot struct {
 	// "false" otherwise
 	IsAuthFromFile pulumi.StringPtrOutput `pulumi:"isAuthFromFile"`
 	// The OpenID Connect Issuer URI that represents the entity which issues access tokens for this application.
-	// When using Azure Active Directory, this value is the URI of the directory tenant, e.g. https://sts.windows.net/{tenant-guid}/.
+	// When using Azure Active Directory, this value is the URI of the directory tenant, e.g. `https://sts.windows.net/{tenant-guid}/`.
 	// This URI is a case-sensitive identifier for the token issuer.
 	// More information on OpenID Connect Discovery: http://openid.net/specs/openid-connect-discovery-1_0.html
 	Issuer pulumi.StringPtrOutput `pulumi:"issuer"`
@@ -346,7 +346,7 @@ type webAppAuthSettingsSlotArgs struct {
 	// "false" otherwise
 	IsAuthFromFile *string `pulumi:"isAuthFromFile"`
 	// The OpenID Connect Issuer URI that represents the entity which issues access tokens for this application.
-	// When using Azure Active Directory, this value is the URI of the directory tenant, e.g. https://sts.windows.net/{tenant-guid}/.
+	// When using Azure Active Directory, this value is the URI of the directory tenant, e.g. `https://sts.windows.net/{tenant-guid}/`.
 	// This URI is a case-sensitive identifier for the token issuer.
 	// More information on OpenID Connect Discovery: http://openid.net/specs/openid-connect-discovery-1_0.html
 	Issuer *string `pulumi:"issuer"`
@@ -486,7 +486,7 @@ type WebAppAuthSettingsSlotArgs struct {
 	// "false" otherwise
 	IsAuthFromFile pulumi.StringPtrInput
 	// The OpenID Connect Issuer URI that represents the entity which issues access tokens for this application.
-	// When using Azure Active Directory, this value is the URI of the directory tenant, e.g. https://sts.windows.net/{tenant-guid}/.
+	// When using Azure Active Directory, this value is the URI of the directory tenant, e.g. `https://sts.windows.net/{tenant-guid}/`.
 	// This URI is a case-sensitive identifier for the token issuer.
 	// More information on OpenID Connect Discovery: http://openid.net/specs/openid-connect-discovery-1_0.html
 	Issuer pulumi.StringPtrInput
@@ -605,6 +605,11 @@ func (o WebAppAuthSettingsSlotOutput) AllowedExternalRedirectUrls() pulumi.Strin
 // If the path is relative, base will the site's root directory.
 func (o WebAppAuthSettingsSlotOutput) AuthFilePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WebAppAuthSettingsSlot) pulumi.StringPtrOutput { return v.AuthFilePath }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o WebAppAuthSettingsSlotOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *WebAppAuthSettingsSlot) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The Client ID of this relying party application, known as the client_id.
@@ -736,7 +741,7 @@ func (o WebAppAuthSettingsSlotOutput) IsAuthFromFile() pulumi.StringPtrOutput {
 }
 
 // The OpenID Connect Issuer URI that represents the entity which issues access tokens for this application.
-// When using Azure Active Directory, this value is the URI of the directory tenant, e.g. https://sts.windows.net/{tenant-guid}/.
+// When using Azure Active Directory, this value is the URI of the directory tenant, e.g. `https://sts.windows.net/{tenant-guid}/`.
 // This URI is a case-sensitive identifier for the token issuer.
 // More information on OpenID Connect Discovery: http://openid.net/specs/openid-connect-discovery-1_0.html
 func (o WebAppAuthSettingsSlotOutput) Issuer() pulumi.StringPtrOutput {

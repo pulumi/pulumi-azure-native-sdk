@@ -13,8 +13,6 @@ import (
 
 // Capture properties of Open AI resource Integration.
 // Azure REST API version: 2024-03-01.
-//
-// Other available API versions: 2024-01-01-preview, 2024-05-01-preview, 2024-06-15-preview, 2024-10-01-preview.
 func LookupOpenAI(ctx *pulumi.Context, args *LookupOpenAIArgs, opts ...pulumi.InvokeOption) (*LookupOpenAIResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupOpenAIResult
@@ -36,6 +34,8 @@ type LookupOpenAIArgs struct {
 
 // Capture properties of Open AI resource Integration.
 type LookupOpenAIResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The id of the integration.
 	Id string `pulumi:"id"`
 	// Name of the integration.
@@ -81,6 +81,11 @@ func (o LookupOpenAIResultOutput) ToLookupOpenAIResultOutput() LookupOpenAIResul
 
 func (o LookupOpenAIResultOutput) ToLookupOpenAIResultOutputWithContext(ctx context.Context) LookupOpenAIResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupOpenAIResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOpenAIResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The id of the integration.

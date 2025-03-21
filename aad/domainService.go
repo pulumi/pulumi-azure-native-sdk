@@ -13,10 +13,12 @@ import (
 )
 
 // Domain service.
-// Azure REST API version: 2022-12-01. Prior API version in Azure Native 1.x: 2021-03-01.
+// Azure REST API version: 2022-12-01. Prior API version in Azure Native 2.x: 2022-12-01.
 type DomainService struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Configuration diagnostics data containing latest execution from client.
 	ConfigDiagnostics ConfigDiagnosticsResponsePtrOutput `pulumi:"configDiagnostics"`
 	// Deployment Id
@@ -244,6 +246,11 @@ func (o DomainServiceOutput) ToDomainServiceOutput() DomainServiceOutput {
 
 func (o DomainServiceOutput) ToDomainServiceOutputWithContext(ctx context.Context) DomainServiceOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o DomainServiceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DomainService) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Configuration diagnostics data containing latest execution from client.

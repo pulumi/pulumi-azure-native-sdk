@@ -13,8 +13,6 @@ import (
 
 // Gets the properties of the export pipeline.
 // Azure REST API version: 2023-01-01-preview.
-//
-// Other available API versions: 2023-06-01-preview, 2023-08-01-preview, 2023-11-01-preview, 2024-11-01-preview.
 func LookupExportPipeline(ctx *pulumi.Context, args *LookupExportPipelineArgs, opts ...pulumi.InvokeOption) (*LookupExportPipelineResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupExportPipelineResult
@@ -36,6 +34,8 @@ type LookupExportPipelineArgs struct {
 
 // An object that represents an export pipeline for a container registry.
 type LookupExportPipelineResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The resource ID.
 	Id string `pulumi:"id"`
 	// The identity of the export pipeline.
@@ -91,6 +91,11 @@ func (o LookupExportPipelineResultOutput) ToLookupExportPipelineResultOutput() L
 
 func (o LookupExportPipelineResultOutput) ToLookupExportPipelineResultOutputWithContext(ctx context.Context) LookupExportPipelineResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupExportPipelineResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupExportPipelineResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The resource ID.

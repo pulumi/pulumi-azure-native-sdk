@@ -12,9 +12,7 @@ import (
 )
 
 // Azure Resource Manager resource envelope.
-// Azure REST API version: 2023-04-01-preview.
-//
-// Other available API versions: 2020-09-01-preview, 2021-03-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2024-01-01-preview, 2024-04-01-preview.
+// Azure REST API version: 2024-01-01-preview.
 func LookupLabelingJob(ctx *pulumi.Context, args *LookupLabelingJobArgs, opts ...pulumi.InvokeOption) (*LookupLabelingJobResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupLabelingJobResult
@@ -28,10 +26,6 @@ func LookupLabelingJob(ctx *pulumi.Context, args *LookupLabelingJobArgs, opts ..
 type LookupLabelingJobArgs struct {
 	// The name and identifier for the LabelingJob.
 	Id string `pulumi:"id"`
-	// Boolean value to indicate whether to include JobInstructions in response.
-	IncludeJobInstructions *bool `pulumi:"includeJobInstructions"`
-	// Boolean value to indicate Whether to include LabelCategories in response.
-	IncludeLabelCategories *bool `pulumi:"includeLabelCategories"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Name of Azure Machine Learning workspace.
@@ -40,6 +34,8 @@ type LookupLabelingJobArgs struct {
 
 // Azure Resource Manager resource envelope.
 type LookupLabelingJobResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// [Required] Additional attributes of the entity.
@@ -74,10 +70,6 @@ func LookupLabelingJobOutput(ctx *pulumi.Context, args LookupLabelingJobOutputAr
 type LookupLabelingJobOutputArgs struct {
 	// The name and identifier for the LabelingJob.
 	Id pulumi.StringInput `pulumi:"id"`
-	// Boolean value to indicate whether to include JobInstructions in response.
-	IncludeJobInstructions pulumi.BoolPtrInput `pulumi:"includeJobInstructions"`
-	// Boolean value to indicate Whether to include LabelCategories in response.
-	IncludeLabelCategories pulumi.BoolPtrInput `pulumi:"includeLabelCategories"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// Name of Azure Machine Learning workspace.
@@ -101,6 +93,11 @@ func (o LookupLabelingJobResultOutput) ToLookupLabelingJobResultOutput() LookupL
 
 func (o LookupLabelingJobResultOutput) ToLookupLabelingJobResultOutputWithContext(ctx context.Context) LookupLabelingJobResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupLabelingJobResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLabelingJobResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

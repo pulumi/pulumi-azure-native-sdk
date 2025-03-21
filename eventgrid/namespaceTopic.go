@@ -13,12 +13,12 @@ import (
 )
 
 // Namespace topic details.
-// Azure REST API version: 2023-06-01-preview.
-//
-// Other available API versions: 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-02-15.
+// Azure REST API version: 2025-02-15. Prior API version in Azure Native 2.x: 2023-06-01-preview.
 type NamespaceTopic struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Event retention for the namespace topic expressed in days. The property default value is 1 day.
 	// Min event retention duration value is 1 day and max event retention duration value is 1 day.
 	EventRetentionInDays pulumi.IntPtrOutput `pulumi:"eventRetentionInDays"`
@@ -30,7 +30,7 @@ type NamespaceTopic struct {
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Publisher type of the namespace topic.
 	PublisherType pulumi.StringPtrOutput `pulumi:"publisherType"`
-	// The system metadata relating to namespace topic resource.
+	// The system metadata relating to the Event Grid resource.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Type of the resource.
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -172,6 +172,11 @@ func (o NamespaceTopicOutput) ToNamespaceTopicOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The Azure API version of the resource.
+func (o NamespaceTopicOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *NamespaceTopic) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Event retention for the namespace topic expressed in days. The property default value is 1 day.
 // Min event retention duration value is 1 day and max event retention duration value is 1 day.
 func (o NamespaceTopicOutput) EventRetentionInDays() pulumi.IntPtrOutput {
@@ -198,7 +203,7 @@ func (o NamespaceTopicOutput) PublisherType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NamespaceTopic) pulumi.StringPtrOutput { return v.PublisherType }).(pulumi.StringPtrOutput)
 }
 
-// The system metadata relating to namespace topic resource.
+// The system metadata relating to the Event Grid resource.
 func (o NamespaceTopicOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *NamespaceTopic) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

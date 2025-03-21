@@ -15,6 +15,8 @@ var _ = utilities.GetEnvOrDefault
 
 // The access key directly from target resource properties, which target service is Azure Resource, such as Microsoft.Storage
 type AccessKeyInfoBase struct {
+	// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+	AuthMode *string `pulumi:"authMode"`
 	// The authentication type.
 	// Expected value is 'accessKey'.
 	AuthType string `pulumi:"authType"`
@@ -35,6 +37,8 @@ type AccessKeyInfoBaseInput interface {
 
 // The access key directly from target resource properties, which target service is Azure Resource, such as Microsoft.Storage
 type AccessKeyInfoBaseArgs struct {
+	// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+	AuthMode pulumi.StringPtrInput `pulumi:"authMode"`
 	// The authentication type.
 	// Expected value is 'accessKey'.
 	AuthType pulumi.StringInput `pulumi:"authType"`
@@ -120,6 +124,11 @@ func (o AccessKeyInfoBaseOutput) ToAccessKeyInfoBasePtrOutputWithContext(ctx con
 	}).(AccessKeyInfoBasePtrOutput)
 }
 
+// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+func (o AccessKeyInfoBaseOutput) AuthMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessKeyInfoBase) *string { return v.AuthMode }).(pulumi.StringPtrOutput)
+}
+
 // The authentication type.
 // Expected value is 'accessKey'.
 func (o AccessKeyInfoBaseOutput) AuthType() pulumi.StringOutput {
@@ -155,6 +164,16 @@ func (o AccessKeyInfoBasePtrOutput) Elem() AccessKeyInfoBaseOutput {
 	}).(AccessKeyInfoBaseOutput)
 }
 
+// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+func (o AccessKeyInfoBasePtrOutput) AuthMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessKeyInfoBase) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthMode
+	}).(pulumi.StringPtrOutput)
+}
+
 // The authentication type.
 // Expected value is 'accessKey'.
 func (o AccessKeyInfoBasePtrOutput) AuthType() pulumi.StringPtrOutput {
@@ -178,6 +197,8 @@ func (o AccessKeyInfoBasePtrOutput) Permissions() pulumi.StringArrayOutput {
 
 // The access key directly from target resource properties, which target service is Azure Resource, such as Microsoft.Storage
 type AccessKeyInfoBaseResponse struct {
+	// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+	AuthMode *string `pulumi:"authMode"`
 	// The authentication type.
 	// Expected value is 'accessKey'.
 	AuthType string `pulumi:"authType"`
@@ -198,6 +219,11 @@ func (o AccessKeyInfoBaseResponseOutput) ToAccessKeyInfoBaseResponseOutput() Acc
 
 func (o AccessKeyInfoBaseResponseOutput) ToAccessKeyInfoBaseResponseOutputWithContext(ctx context.Context) AccessKeyInfoBaseResponseOutput {
 	return o
+}
+
+// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+func (o AccessKeyInfoBaseResponseOutput) AuthMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessKeyInfoBaseResponse) *string { return v.AuthMode }).(pulumi.StringPtrOutput)
 }
 
 // The authentication type.
@@ -233,6 +259,16 @@ func (o AccessKeyInfoBaseResponsePtrOutput) Elem() AccessKeyInfoBaseResponseOutp
 		var ret AccessKeyInfoBaseResponse
 		return ret
 	}).(AccessKeyInfoBaseResponseOutput)
+}
+
+// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+func (o AccessKeyInfoBaseResponsePtrOutput) AuthMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessKeyInfoBaseResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthMode
+	}).(pulumi.StringPtrOutput)
 }
 
 // The authentication type.
@@ -826,6 +862,10 @@ type ConfigurationInfo struct {
 	Action *string `pulumi:"action"`
 	// A dictionary of additional configurations to be added. Service will auto generate a set of basic configurations and this property is to full fill more customized configurations
 	AdditionalConfigurations map[string]string `pulumi:"additionalConfigurations"`
+	// A dictionary of additional properties to be added in the end of connection string.
+	AdditionalConnectionStringProperties map[string]string `pulumi:"additionalConnectionStringProperties"`
+	// An option to store configuration into different place
+	ConfigurationStore *ConfigurationStore `pulumi:"configurationStore"`
 	// Optional. A dictionary of default key name and customized key name mapping. If not specified, default key name will be used for generate configurations
 	CustomizedKeys map[string]string `pulumi:"customizedKeys"`
 	// Indicates some additional properties for dapr client type
@@ -851,6 +891,10 @@ type ConfigurationInfoArgs struct {
 	Action pulumi.StringPtrInput `pulumi:"action"`
 	// A dictionary of additional configurations to be added. Service will auto generate a set of basic configurations and this property is to full fill more customized configurations
 	AdditionalConfigurations pulumi.StringMapInput `pulumi:"additionalConfigurations"`
+	// A dictionary of additional properties to be added in the end of connection string.
+	AdditionalConnectionStringProperties pulumi.StringMapInput `pulumi:"additionalConnectionStringProperties"`
+	// An option to store configuration into different place
+	ConfigurationStore ConfigurationStorePtrInput `pulumi:"configurationStore"`
 	// Optional. A dictionary of default key name and customized key name mapping. If not specified, default key name will be used for generate configurations
 	CustomizedKeys pulumi.StringMapInput `pulumi:"customizedKeys"`
 	// Indicates some additional properties for dapr client type
@@ -947,6 +991,16 @@ func (o ConfigurationInfoOutput) AdditionalConfigurations() pulumi.StringMapOutp
 	return o.ApplyT(func(v ConfigurationInfo) map[string]string { return v.AdditionalConfigurations }).(pulumi.StringMapOutput)
 }
 
+// A dictionary of additional properties to be added in the end of connection string.
+func (o ConfigurationInfoOutput) AdditionalConnectionStringProperties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ConfigurationInfo) map[string]string { return v.AdditionalConnectionStringProperties }).(pulumi.StringMapOutput)
+}
+
+// An option to store configuration into different place
+func (o ConfigurationInfoOutput) ConfigurationStore() ConfigurationStorePtrOutput {
+	return o.ApplyT(func(v ConfigurationInfo) *ConfigurationStore { return v.ConfigurationStore }).(ConfigurationStorePtrOutput)
+}
+
 // Optional. A dictionary of default key name and customized key name mapping. If not specified, default key name will be used for generate configurations
 func (o ConfigurationInfoOutput) CustomizedKeys() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ConfigurationInfo) map[string]string { return v.CustomizedKeys }).(pulumi.StringMapOutput)
@@ -1006,6 +1060,26 @@ func (o ConfigurationInfoPtrOutput) AdditionalConfigurations() pulumi.StringMapO
 	}).(pulumi.StringMapOutput)
 }
 
+// A dictionary of additional properties to be added in the end of connection string.
+func (o ConfigurationInfoPtrOutput) AdditionalConnectionStringProperties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ConfigurationInfo) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalConnectionStringProperties
+	}).(pulumi.StringMapOutput)
+}
+
+// An option to store configuration into different place
+func (o ConfigurationInfoPtrOutput) ConfigurationStore() ConfigurationStorePtrOutput {
+	return o.ApplyT(func(v *ConfigurationInfo) *ConfigurationStore {
+		if v == nil {
+			return nil
+		}
+		return v.ConfigurationStore
+	}).(ConfigurationStorePtrOutput)
+}
+
 // Optional. A dictionary of default key name and customized key name mapping. If not specified, default key name will be used for generate configurations
 func (o ConfigurationInfoPtrOutput) CustomizedKeys() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ConfigurationInfo) map[string]string {
@@ -1042,6 +1116,10 @@ type ConfigurationInfoResponse struct {
 	Action *string `pulumi:"action"`
 	// A dictionary of additional configurations to be added. Service will auto generate a set of basic configurations and this property is to full fill more customized configurations
 	AdditionalConfigurations map[string]string `pulumi:"additionalConfigurations"`
+	// A dictionary of additional properties to be added in the end of connection string.
+	AdditionalConnectionStringProperties map[string]string `pulumi:"additionalConnectionStringProperties"`
+	// An option to store configuration into different place
+	ConfigurationStore *ConfigurationStoreResponse `pulumi:"configurationStore"`
 	// Optional. A dictionary of default key name and customized key name mapping. If not specified, default key name will be used for generate configurations
 	CustomizedKeys map[string]string `pulumi:"customizedKeys"`
 	// Indicates some additional properties for dapr client type
@@ -1073,6 +1151,16 @@ func (o ConfigurationInfoResponseOutput) Action() pulumi.StringPtrOutput {
 // A dictionary of additional configurations to be added. Service will auto generate a set of basic configurations and this property is to full fill more customized configurations
 func (o ConfigurationInfoResponseOutput) AdditionalConfigurations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ConfigurationInfoResponse) map[string]string { return v.AdditionalConfigurations }).(pulumi.StringMapOutput)
+}
+
+// A dictionary of additional properties to be added in the end of connection string.
+func (o ConfigurationInfoResponseOutput) AdditionalConnectionStringProperties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ConfigurationInfoResponse) map[string]string { return v.AdditionalConnectionStringProperties }).(pulumi.StringMapOutput)
+}
+
+// An option to store configuration into different place
+func (o ConfigurationInfoResponseOutput) ConfigurationStore() ConfigurationStoreResponsePtrOutput {
+	return o.ApplyT(func(v ConfigurationInfoResponse) *ConfigurationStoreResponse { return v.ConfigurationStore }).(ConfigurationStoreResponsePtrOutput)
 }
 
 // Optional. A dictionary of default key name and customized key name mapping. If not specified, default key name will be used for generate configurations
@@ -1134,6 +1222,26 @@ func (o ConfigurationInfoResponsePtrOutput) AdditionalConfigurations() pulumi.St
 	}).(pulumi.StringMapOutput)
 }
 
+// A dictionary of additional properties to be added in the end of connection string.
+func (o ConfigurationInfoResponsePtrOutput) AdditionalConnectionStringProperties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ConfigurationInfoResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalConnectionStringProperties
+	}).(pulumi.StringMapOutput)
+}
+
+// An option to store configuration into different place
+func (o ConfigurationInfoResponsePtrOutput) ConfigurationStore() ConfigurationStoreResponsePtrOutput {
+	return o.ApplyT(func(v *ConfigurationInfoResponse) *ConfigurationStoreResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ConfigurationStore
+	}).(ConfigurationStoreResponsePtrOutput)
+}
+
 // Optional. A dictionary of default key name and customized key name mapping. If not specified, default key name will be used for generate configurations
 func (o ConfigurationInfoResponsePtrOutput) CustomizedKeys() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ConfigurationInfoResponse) map[string]string {
@@ -1161,6 +1269,206 @@ func (o ConfigurationInfoResponsePtrOutput) DeleteOrUpdateBehavior() pulumi.Stri
 			return nil
 		}
 		return v.DeleteOrUpdateBehavior
+	}).(pulumi.StringPtrOutput)
+}
+
+// An option to store configuration into different place
+type ConfigurationStore struct {
+	// The app configuration id to store configuration
+	AppConfigurationId *string `pulumi:"appConfigurationId"`
+}
+
+// ConfigurationStoreInput is an input type that accepts ConfigurationStoreArgs and ConfigurationStoreOutput values.
+// You can construct a concrete instance of `ConfigurationStoreInput` via:
+//
+//	ConfigurationStoreArgs{...}
+type ConfigurationStoreInput interface {
+	pulumi.Input
+
+	ToConfigurationStoreOutput() ConfigurationStoreOutput
+	ToConfigurationStoreOutputWithContext(context.Context) ConfigurationStoreOutput
+}
+
+// An option to store configuration into different place
+type ConfigurationStoreArgs struct {
+	// The app configuration id to store configuration
+	AppConfigurationId pulumi.StringPtrInput `pulumi:"appConfigurationId"`
+}
+
+func (ConfigurationStoreArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigurationStore)(nil)).Elem()
+}
+
+func (i ConfigurationStoreArgs) ToConfigurationStoreOutput() ConfigurationStoreOutput {
+	return i.ToConfigurationStoreOutputWithContext(context.Background())
+}
+
+func (i ConfigurationStoreArgs) ToConfigurationStoreOutputWithContext(ctx context.Context) ConfigurationStoreOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationStoreOutput)
+}
+
+func (i ConfigurationStoreArgs) ToConfigurationStorePtrOutput() ConfigurationStorePtrOutput {
+	return i.ToConfigurationStorePtrOutputWithContext(context.Background())
+}
+
+func (i ConfigurationStoreArgs) ToConfigurationStorePtrOutputWithContext(ctx context.Context) ConfigurationStorePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationStoreOutput).ToConfigurationStorePtrOutputWithContext(ctx)
+}
+
+// ConfigurationStorePtrInput is an input type that accepts ConfigurationStoreArgs, ConfigurationStorePtr and ConfigurationStorePtrOutput values.
+// You can construct a concrete instance of `ConfigurationStorePtrInput` via:
+//
+//	        ConfigurationStoreArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConfigurationStorePtrInput interface {
+	pulumi.Input
+
+	ToConfigurationStorePtrOutput() ConfigurationStorePtrOutput
+	ToConfigurationStorePtrOutputWithContext(context.Context) ConfigurationStorePtrOutput
+}
+
+type configurationStorePtrType ConfigurationStoreArgs
+
+func ConfigurationStorePtr(v *ConfigurationStoreArgs) ConfigurationStorePtrInput {
+	return (*configurationStorePtrType)(v)
+}
+
+func (*configurationStorePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigurationStore)(nil)).Elem()
+}
+
+func (i *configurationStorePtrType) ToConfigurationStorePtrOutput() ConfigurationStorePtrOutput {
+	return i.ToConfigurationStorePtrOutputWithContext(context.Background())
+}
+
+func (i *configurationStorePtrType) ToConfigurationStorePtrOutputWithContext(ctx context.Context) ConfigurationStorePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationStorePtrOutput)
+}
+
+// An option to store configuration into different place
+type ConfigurationStoreOutput struct{ *pulumi.OutputState }
+
+func (ConfigurationStoreOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigurationStore)(nil)).Elem()
+}
+
+func (o ConfigurationStoreOutput) ToConfigurationStoreOutput() ConfigurationStoreOutput {
+	return o
+}
+
+func (o ConfigurationStoreOutput) ToConfigurationStoreOutputWithContext(ctx context.Context) ConfigurationStoreOutput {
+	return o
+}
+
+func (o ConfigurationStoreOutput) ToConfigurationStorePtrOutput() ConfigurationStorePtrOutput {
+	return o.ToConfigurationStorePtrOutputWithContext(context.Background())
+}
+
+func (o ConfigurationStoreOutput) ToConfigurationStorePtrOutputWithContext(ctx context.Context) ConfigurationStorePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfigurationStore) *ConfigurationStore {
+		return &v
+	}).(ConfigurationStorePtrOutput)
+}
+
+// The app configuration id to store configuration
+func (o ConfigurationStoreOutput) AppConfigurationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigurationStore) *string { return v.AppConfigurationId }).(pulumi.StringPtrOutput)
+}
+
+type ConfigurationStorePtrOutput struct{ *pulumi.OutputState }
+
+func (ConfigurationStorePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigurationStore)(nil)).Elem()
+}
+
+func (o ConfigurationStorePtrOutput) ToConfigurationStorePtrOutput() ConfigurationStorePtrOutput {
+	return o
+}
+
+func (o ConfigurationStorePtrOutput) ToConfigurationStorePtrOutputWithContext(ctx context.Context) ConfigurationStorePtrOutput {
+	return o
+}
+
+func (o ConfigurationStorePtrOutput) Elem() ConfigurationStoreOutput {
+	return o.ApplyT(func(v *ConfigurationStore) ConfigurationStore {
+		if v != nil {
+			return *v
+		}
+		var ret ConfigurationStore
+		return ret
+	}).(ConfigurationStoreOutput)
+}
+
+// The app configuration id to store configuration
+func (o ConfigurationStorePtrOutput) AppConfigurationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConfigurationStore) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AppConfigurationId
+	}).(pulumi.StringPtrOutput)
+}
+
+// An option to store configuration into different place
+type ConfigurationStoreResponse struct {
+	// The app configuration id to store configuration
+	AppConfigurationId *string `pulumi:"appConfigurationId"`
+}
+
+// An option to store configuration into different place
+type ConfigurationStoreResponseOutput struct{ *pulumi.OutputState }
+
+func (ConfigurationStoreResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigurationStoreResponse)(nil)).Elem()
+}
+
+func (o ConfigurationStoreResponseOutput) ToConfigurationStoreResponseOutput() ConfigurationStoreResponseOutput {
+	return o
+}
+
+func (o ConfigurationStoreResponseOutput) ToConfigurationStoreResponseOutputWithContext(ctx context.Context) ConfigurationStoreResponseOutput {
+	return o
+}
+
+// The app configuration id to store configuration
+func (o ConfigurationStoreResponseOutput) AppConfigurationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigurationStoreResponse) *string { return v.AppConfigurationId }).(pulumi.StringPtrOutput)
+}
+
+type ConfigurationStoreResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ConfigurationStoreResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigurationStoreResponse)(nil)).Elem()
+}
+
+func (o ConfigurationStoreResponsePtrOutput) ToConfigurationStoreResponsePtrOutput() ConfigurationStoreResponsePtrOutput {
+	return o
+}
+
+func (o ConfigurationStoreResponsePtrOutput) ToConfigurationStoreResponsePtrOutputWithContext(ctx context.Context) ConfigurationStoreResponsePtrOutput {
+	return o
+}
+
+func (o ConfigurationStoreResponsePtrOutput) Elem() ConfigurationStoreResponseOutput {
+	return o.ApplyT(func(v *ConfigurationStoreResponse) ConfigurationStoreResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ConfigurationStoreResponse
+		return ret
+	}).(ConfigurationStoreResponseOutput)
+}
+
+// The app configuration id to store configuration
+func (o ConfigurationStoreResponsePtrOutput) AppConfigurationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConfigurationStoreResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AppConfigurationId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2166,8 +2474,12 @@ func (o CreateOrUpdateDryrunParametersResponsePtrOutput) VNetSolution() VNetSolu
 
 // The dapr component metadata.
 type DaprMetadata struct {
+	// The description of the metadata, returned from configuration api
+	Description *string `pulumi:"description"`
 	// Metadata property name.
 	Name *string `pulumi:"name"`
+	// The value indicating whether the metadata is required or not
+	Required *string `pulumi:"required"`
 	// The secret name where dapr could get value
 	SecretRef *string `pulumi:"secretRef"`
 	// Metadata property value.
@@ -2187,8 +2499,12 @@ type DaprMetadataInput interface {
 
 // The dapr component metadata.
 type DaprMetadataArgs struct {
+	// The description of the metadata, returned from configuration api
+	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Metadata property name.
 	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The value indicating whether the metadata is required or not
+	Required pulumi.StringPtrInput `pulumi:"required"`
 	// The secret name where dapr could get value
 	SecretRef pulumi.StringPtrInput `pulumi:"secretRef"`
 	// Metadata property value.
@@ -2247,9 +2563,19 @@ func (o DaprMetadataOutput) ToDaprMetadataOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The description of the metadata, returned from configuration api
+func (o DaprMetadataOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DaprMetadata) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
 // Metadata property name.
 func (o DaprMetadataOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DaprMetadata) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The value indicating whether the metadata is required or not
+func (o DaprMetadataOutput) Required() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DaprMetadata) *string { return v.Required }).(pulumi.StringPtrOutput)
 }
 
 // The secret name where dapr could get value
@@ -2284,8 +2610,12 @@ func (o DaprMetadataArrayOutput) Index(i pulumi.IntInput) DaprMetadataOutput {
 
 // The dapr component metadata.
 type DaprMetadataResponse struct {
+	// The description of the metadata, returned from configuration api
+	Description *string `pulumi:"description"`
 	// Metadata property name.
 	Name *string `pulumi:"name"`
+	// The value indicating whether the metadata is required or not
+	Required *string `pulumi:"required"`
 	// The secret name where dapr could get value
 	SecretRef *string `pulumi:"secretRef"`
 	// Metadata property value.
@@ -2307,9 +2637,19 @@ func (o DaprMetadataResponseOutput) ToDaprMetadataResponseOutputWithContext(ctx 
 	return o
 }
 
+// The description of the metadata, returned from configuration api
+func (o DaprMetadataResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DaprMetadataResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
 // Metadata property name.
 func (o DaprMetadataResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DaprMetadataResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The value indicating whether the metadata is required or not
+func (o DaprMetadataResponseOutput) Required() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DaprMetadataResponse) *string { return v.Required }).(pulumi.StringPtrOutput)
 }
 
 // The secret name where dapr could get value
@@ -2560,10 +2900,14 @@ func (o DaprPropertiesPtrOutput) Version() pulumi.StringPtrOutput {
 
 // Indicates some additional properties for dapr client type
 type DaprPropertiesResponse struct {
+	// The direction supported by the dapr binding component
+	BindingComponentDirection string `pulumi:"bindingComponentDirection"`
 	// The dapr component type
 	ComponentType *string `pulumi:"componentType"`
 	// Additional dapr metadata
 	Metadata []DaprMetadataResponse `pulumi:"metadata"`
+	// The runtime version supported by the properties
+	RuntimeVersion string `pulumi:"runtimeVersion"`
 	// The dapr component scopes
 	Scopes []string `pulumi:"scopes"`
 	// The name of a secret store dapr to retrieve secret
@@ -2587,6 +2931,11 @@ func (o DaprPropertiesResponseOutput) ToDaprPropertiesResponseOutputWithContext(
 	return o
 }
 
+// The direction supported by the dapr binding component
+func (o DaprPropertiesResponseOutput) BindingComponentDirection() pulumi.StringOutput {
+	return o.ApplyT(func(v DaprPropertiesResponse) string { return v.BindingComponentDirection }).(pulumi.StringOutput)
+}
+
 // The dapr component type
 func (o DaprPropertiesResponseOutput) ComponentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DaprPropertiesResponse) *string { return v.ComponentType }).(pulumi.StringPtrOutput)
@@ -2595,6 +2944,11 @@ func (o DaprPropertiesResponseOutput) ComponentType() pulumi.StringPtrOutput {
 // Additional dapr metadata
 func (o DaprPropertiesResponseOutput) Metadata() DaprMetadataResponseArrayOutput {
 	return o.ApplyT(func(v DaprPropertiesResponse) []DaprMetadataResponse { return v.Metadata }).(DaprMetadataResponseArrayOutput)
+}
+
+// The runtime version supported by the properties
+func (o DaprPropertiesResponseOutput) RuntimeVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v DaprPropertiesResponse) string { return v.RuntimeVersion }).(pulumi.StringOutput)
 }
 
 // The dapr component scopes
@@ -2636,6 +2990,16 @@ func (o DaprPropertiesResponsePtrOutput) Elem() DaprPropertiesResponseOutput {
 	}).(DaprPropertiesResponseOutput)
 }
 
+// The direction supported by the dapr binding component
+func (o DaprPropertiesResponsePtrOutput) BindingComponentDirection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DaprPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BindingComponentDirection
+	}).(pulumi.StringPtrOutput)
+}
+
 // The dapr component type
 func (o DaprPropertiesResponsePtrOutput) ComponentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DaprPropertiesResponse) *string {
@@ -2654,6 +3018,16 @@ func (o DaprPropertiesResponsePtrOutput) Metadata() DaprMetadataResponseArrayOut
 		}
 		return v.Metadata
 	}).(DaprMetadataResponseArrayOutput)
+}
+
+// The runtime version supported by the properties
+func (o DaprPropertiesResponsePtrOutput) RuntimeVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DaprPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RuntimeVersion
+	}).(pulumi.StringPtrOutput)
 }
 
 // The dapr component scopes
@@ -2758,6 +3132,357 @@ func (o DryrunOperationPreviewResponseArrayOutput) Index(i pulumi.IntInput) Dryr
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DryrunOperationPreviewResponse {
 		return vs[0].([]DryrunOperationPreviewResponse)[vs[1].(int)]
 	}).(DryrunOperationPreviewResponseOutput)
+}
+
+// The authentication info when authType is EasyAuth Microsoft Entra ID
+type EasyAuthMicrosoftEntraIDAuthInfo struct {
+	// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+	AuthMode *string `pulumi:"authMode"`
+	// The authentication type.
+	// Expected value is 'easyAuthMicrosoftEntraID'.
+	AuthType string `pulumi:"authType"`
+	// Application clientId for EasyAuth Microsoft Entra ID.
+	ClientId *string `pulumi:"clientId"`
+	// Indicates whether to clean up previous operation when Linker is updating or deleting
+	DeleteOrUpdateBehavior *string `pulumi:"deleteOrUpdateBehavior"`
+	// Application Secret for EasyAuth Microsoft Entra ID.
+	Secret *string `pulumi:"secret"`
+}
+
+// EasyAuthMicrosoftEntraIDAuthInfoInput is an input type that accepts EasyAuthMicrosoftEntraIDAuthInfoArgs and EasyAuthMicrosoftEntraIDAuthInfoOutput values.
+// You can construct a concrete instance of `EasyAuthMicrosoftEntraIDAuthInfoInput` via:
+//
+//	EasyAuthMicrosoftEntraIDAuthInfoArgs{...}
+type EasyAuthMicrosoftEntraIDAuthInfoInput interface {
+	pulumi.Input
+
+	ToEasyAuthMicrosoftEntraIDAuthInfoOutput() EasyAuthMicrosoftEntraIDAuthInfoOutput
+	ToEasyAuthMicrosoftEntraIDAuthInfoOutputWithContext(context.Context) EasyAuthMicrosoftEntraIDAuthInfoOutput
+}
+
+// The authentication info when authType is EasyAuth Microsoft Entra ID
+type EasyAuthMicrosoftEntraIDAuthInfoArgs struct {
+	// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+	AuthMode pulumi.StringPtrInput `pulumi:"authMode"`
+	// The authentication type.
+	// Expected value is 'easyAuthMicrosoftEntraID'.
+	AuthType pulumi.StringInput `pulumi:"authType"`
+	// Application clientId for EasyAuth Microsoft Entra ID.
+	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
+	// Indicates whether to clean up previous operation when Linker is updating or deleting
+	DeleteOrUpdateBehavior pulumi.StringPtrInput `pulumi:"deleteOrUpdateBehavior"`
+	// Application Secret for EasyAuth Microsoft Entra ID.
+	Secret pulumi.StringPtrInput `pulumi:"secret"`
+}
+
+func (EasyAuthMicrosoftEntraIDAuthInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EasyAuthMicrosoftEntraIDAuthInfo)(nil)).Elem()
+}
+
+func (i EasyAuthMicrosoftEntraIDAuthInfoArgs) ToEasyAuthMicrosoftEntraIDAuthInfoOutput() EasyAuthMicrosoftEntraIDAuthInfoOutput {
+	return i.ToEasyAuthMicrosoftEntraIDAuthInfoOutputWithContext(context.Background())
+}
+
+func (i EasyAuthMicrosoftEntraIDAuthInfoArgs) ToEasyAuthMicrosoftEntraIDAuthInfoOutputWithContext(ctx context.Context) EasyAuthMicrosoftEntraIDAuthInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EasyAuthMicrosoftEntraIDAuthInfoOutput)
+}
+
+func (i EasyAuthMicrosoftEntraIDAuthInfoArgs) ToEasyAuthMicrosoftEntraIDAuthInfoPtrOutput() EasyAuthMicrosoftEntraIDAuthInfoPtrOutput {
+	return i.ToEasyAuthMicrosoftEntraIDAuthInfoPtrOutputWithContext(context.Background())
+}
+
+func (i EasyAuthMicrosoftEntraIDAuthInfoArgs) ToEasyAuthMicrosoftEntraIDAuthInfoPtrOutputWithContext(ctx context.Context) EasyAuthMicrosoftEntraIDAuthInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EasyAuthMicrosoftEntraIDAuthInfoOutput).ToEasyAuthMicrosoftEntraIDAuthInfoPtrOutputWithContext(ctx)
+}
+
+// EasyAuthMicrosoftEntraIDAuthInfoPtrInput is an input type that accepts EasyAuthMicrosoftEntraIDAuthInfoArgs, EasyAuthMicrosoftEntraIDAuthInfoPtr and EasyAuthMicrosoftEntraIDAuthInfoPtrOutput values.
+// You can construct a concrete instance of `EasyAuthMicrosoftEntraIDAuthInfoPtrInput` via:
+//
+//	        EasyAuthMicrosoftEntraIDAuthInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type EasyAuthMicrosoftEntraIDAuthInfoPtrInput interface {
+	pulumi.Input
+
+	ToEasyAuthMicrosoftEntraIDAuthInfoPtrOutput() EasyAuthMicrosoftEntraIDAuthInfoPtrOutput
+	ToEasyAuthMicrosoftEntraIDAuthInfoPtrOutputWithContext(context.Context) EasyAuthMicrosoftEntraIDAuthInfoPtrOutput
+}
+
+type easyAuthMicrosoftEntraIDAuthInfoPtrType EasyAuthMicrosoftEntraIDAuthInfoArgs
+
+func EasyAuthMicrosoftEntraIDAuthInfoPtr(v *EasyAuthMicrosoftEntraIDAuthInfoArgs) EasyAuthMicrosoftEntraIDAuthInfoPtrInput {
+	return (*easyAuthMicrosoftEntraIDAuthInfoPtrType)(v)
+}
+
+func (*easyAuthMicrosoftEntraIDAuthInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EasyAuthMicrosoftEntraIDAuthInfo)(nil)).Elem()
+}
+
+func (i *easyAuthMicrosoftEntraIDAuthInfoPtrType) ToEasyAuthMicrosoftEntraIDAuthInfoPtrOutput() EasyAuthMicrosoftEntraIDAuthInfoPtrOutput {
+	return i.ToEasyAuthMicrosoftEntraIDAuthInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *easyAuthMicrosoftEntraIDAuthInfoPtrType) ToEasyAuthMicrosoftEntraIDAuthInfoPtrOutputWithContext(ctx context.Context) EasyAuthMicrosoftEntraIDAuthInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EasyAuthMicrosoftEntraIDAuthInfoPtrOutput)
+}
+
+// The authentication info when authType is EasyAuth Microsoft Entra ID
+type EasyAuthMicrosoftEntraIDAuthInfoOutput struct{ *pulumi.OutputState }
+
+func (EasyAuthMicrosoftEntraIDAuthInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EasyAuthMicrosoftEntraIDAuthInfo)(nil)).Elem()
+}
+
+func (o EasyAuthMicrosoftEntraIDAuthInfoOutput) ToEasyAuthMicrosoftEntraIDAuthInfoOutput() EasyAuthMicrosoftEntraIDAuthInfoOutput {
+	return o
+}
+
+func (o EasyAuthMicrosoftEntraIDAuthInfoOutput) ToEasyAuthMicrosoftEntraIDAuthInfoOutputWithContext(ctx context.Context) EasyAuthMicrosoftEntraIDAuthInfoOutput {
+	return o
+}
+
+func (o EasyAuthMicrosoftEntraIDAuthInfoOutput) ToEasyAuthMicrosoftEntraIDAuthInfoPtrOutput() EasyAuthMicrosoftEntraIDAuthInfoPtrOutput {
+	return o.ToEasyAuthMicrosoftEntraIDAuthInfoPtrOutputWithContext(context.Background())
+}
+
+func (o EasyAuthMicrosoftEntraIDAuthInfoOutput) ToEasyAuthMicrosoftEntraIDAuthInfoPtrOutputWithContext(ctx context.Context) EasyAuthMicrosoftEntraIDAuthInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EasyAuthMicrosoftEntraIDAuthInfo) *EasyAuthMicrosoftEntraIDAuthInfo {
+		return &v
+	}).(EasyAuthMicrosoftEntraIDAuthInfoPtrOutput)
+}
+
+// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+func (o EasyAuthMicrosoftEntraIDAuthInfoOutput) AuthMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EasyAuthMicrosoftEntraIDAuthInfo) *string { return v.AuthMode }).(pulumi.StringPtrOutput)
+}
+
+// The authentication type.
+// Expected value is 'easyAuthMicrosoftEntraID'.
+func (o EasyAuthMicrosoftEntraIDAuthInfoOutput) AuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v EasyAuthMicrosoftEntraIDAuthInfo) string { return v.AuthType }).(pulumi.StringOutput)
+}
+
+// Application clientId for EasyAuth Microsoft Entra ID.
+func (o EasyAuthMicrosoftEntraIDAuthInfoOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EasyAuthMicrosoftEntraIDAuthInfo) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether to clean up previous operation when Linker is updating or deleting
+func (o EasyAuthMicrosoftEntraIDAuthInfoOutput) DeleteOrUpdateBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EasyAuthMicrosoftEntraIDAuthInfo) *string { return v.DeleteOrUpdateBehavior }).(pulumi.StringPtrOutput)
+}
+
+// Application Secret for EasyAuth Microsoft Entra ID.
+func (o EasyAuthMicrosoftEntraIDAuthInfoOutput) Secret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EasyAuthMicrosoftEntraIDAuthInfo) *string { return v.Secret }).(pulumi.StringPtrOutput)
+}
+
+type EasyAuthMicrosoftEntraIDAuthInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (EasyAuthMicrosoftEntraIDAuthInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EasyAuthMicrosoftEntraIDAuthInfo)(nil)).Elem()
+}
+
+func (o EasyAuthMicrosoftEntraIDAuthInfoPtrOutput) ToEasyAuthMicrosoftEntraIDAuthInfoPtrOutput() EasyAuthMicrosoftEntraIDAuthInfoPtrOutput {
+	return o
+}
+
+func (o EasyAuthMicrosoftEntraIDAuthInfoPtrOutput) ToEasyAuthMicrosoftEntraIDAuthInfoPtrOutputWithContext(ctx context.Context) EasyAuthMicrosoftEntraIDAuthInfoPtrOutput {
+	return o
+}
+
+func (o EasyAuthMicrosoftEntraIDAuthInfoPtrOutput) Elem() EasyAuthMicrosoftEntraIDAuthInfoOutput {
+	return o.ApplyT(func(v *EasyAuthMicrosoftEntraIDAuthInfo) EasyAuthMicrosoftEntraIDAuthInfo {
+		if v != nil {
+			return *v
+		}
+		var ret EasyAuthMicrosoftEntraIDAuthInfo
+		return ret
+	}).(EasyAuthMicrosoftEntraIDAuthInfoOutput)
+}
+
+// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+func (o EasyAuthMicrosoftEntraIDAuthInfoPtrOutput) AuthMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EasyAuthMicrosoftEntraIDAuthInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// The authentication type.
+// Expected value is 'easyAuthMicrosoftEntraID'.
+func (o EasyAuthMicrosoftEntraIDAuthInfoPtrOutput) AuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EasyAuthMicrosoftEntraIDAuthInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AuthType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Application clientId for EasyAuth Microsoft Entra ID.
+func (o EasyAuthMicrosoftEntraIDAuthInfoPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EasyAuthMicrosoftEntraIDAuthInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether to clean up previous operation when Linker is updating or deleting
+func (o EasyAuthMicrosoftEntraIDAuthInfoPtrOutput) DeleteOrUpdateBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EasyAuthMicrosoftEntraIDAuthInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeleteOrUpdateBehavior
+	}).(pulumi.StringPtrOutput)
+}
+
+// Application Secret for EasyAuth Microsoft Entra ID.
+func (o EasyAuthMicrosoftEntraIDAuthInfoPtrOutput) Secret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EasyAuthMicrosoftEntraIDAuthInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Secret
+	}).(pulumi.StringPtrOutput)
+}
+
+// The authentication info when authType is EasyAuth Microsoft Entra ID
+type EasyAuthMicrosoftEntraIDAuthInfoResponse struct {
+	// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+	AuthMode *string `pulumi:"authMode"`
+	// The authentication type.
+	// Expected value is 'easyAuthMicrosoftEntraID'.
+	AuthType string `pulumi:"authType"`
+	// Application clientId for EasyAuth Microsoft Entra ID.
+	ClientId *string `pulumi:"clientId"`
+	// Indicates whether to clean up previous operation when Linker is updating or deleting
+	DeleteOrUpdateBehavior *string `pulumi:"deleteOrUpdateBehavior"`
+	// Application Secret for EasyAuth Microsoft Entra ID.
+	Secret *string `pulumi:"secret"`
+}
+
+// The authentication info when authType is EasyAuth Microsoft Entra ID
+type EasyAuthMicrosoftEntraIDAuthInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (EasyAuthMicrosoftEntraIDAuthInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EasyAuthMicrosoftEntraIDAuthInfoResponse)(nil)).Elem()
+}
+
+func (o EasyAuthMicrosoftEntraIDAuthInfoResponseOutput) ToEasyAuthMicrosoftEntraIDAuthInfoResponseOutput() EasyAuthMicrosoftEntraIDAuthInfoResponseOutput {
+	return o
+}
+
+func (o EasyAuthMicrosoftEntraIDAuthInfoResponseOutput) ToEasyAuthMicrosoftEntraIDAuthInfoResponseOutputWithContext(ctx context.Context) EasyAuthMicrosoftEntraIDAuthInfoResponseOutput {
+	return o
+}
+
+// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+func (o EasyAuthMicrosoftEntraIDAuthInfoResponseOutput) AuthMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EasyAuthMicrosoftEntraIDAuthInfoResponse) *string { return v.AuthMode }).(pulumi.StringPtrOutput)
+}
+
+// The authentication type.
+// Expected value is 'easyAuthMicrosoftEntraID'.
+func (o EasyAuthMicrosoftEntraIDAuthInfoResponseOutput) AuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v EasyAuthMicrosoftEntraIDAuthInfoResponse) string { return v.AuthType }).(pulumi.StringOutput)
+}
+
+// Application clientId for EasyAuth Microsoft Entra ID.
+func (o EasyAuthMicrosoftEntraIDAuthInfoResponseOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EasyAuthMicrosoftEntraIDAuthInfoResponse) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether to clean up previous operation when Linker is updating or deleting
+func (o EasyAuthMicrosoftEntraIDAuthInfoResponseOutput) DeleteOrUpdateBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EasyAuthMicrosoftEntraIDAuthInfoResponse) *string { return v.DeleteOrUpdateBehavior }).(pulumi.StringPtrOutput)
+}
+
+// Application Secret for EasyAuth Microsoft Entra ID.
+func (o EasyAuthMicrosoftEntraIDAuthInfoResponseOutput) Secret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EasyAuthMicrosoftEntraIDAuthInfoResponse) *string { return v.Secret }).(pulumi.StringPtrOutput)
+}
+
+type EasyAuthMicrosoftEntraIDAuthInfoResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (EasyAuthMicrosoftEntraIDAuthInfoResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EasyAuthMicrosoftEntraIDAuthInfoResponse)(nil)).Elem()
+}
+
+func (o EasyAuthMicrosoftEntraIDAuthInfoResponsePtrOutput) ToEasyAuthMicrosoftEntraIDAuthInfoResponsePtrOutput() EasyAuthMicrosoftEntraIDAuthInfoResponsePtrOutput {
+	return o
+}
+
+func (o EasyAuthMicrosoftEntraIDAuthInfoResponsePtrOutput) ToEasyAuthMicrosoftEntraIDAuthInfoResponsePtrOutputWithContext(ctx context.Context) EasyAuthMicrosoftEntraIDAuthInfoResponsePtrOutput {
+	return o
+}
+
+func (o EasyAuthMicrosoftEntraIDAuthInfoResponsePtrOutput) Elem() EasyAuthMicrosoftEntraIDAuthInfoResponseOutput {
+	return o.ApplyT(func(v *EasyAuthMicrosoftEntraIDAuthInfoResponse) EasyAuthMicrosoftEntraIDAuthInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret EasyAuthMicrosoftEntraIDAuthInfoResponse
+		return ret
+	}).(EasyAuthMicrosoftEntraIDAuthInfoResponseOutput)
+}
+
+// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+func (o EasyAuthMicrosoftEntraIDAuthInfoResponsePtrOutput) AuthMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EasyAuthMicrosoftEntraIDAuthInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// The authentication type.
+// Expected value is 'easyAuthMicrosoftEntraID'.
+func (o EasyAuthMicrosoftEntraIDAuthInfoResponsePtrOutput) AuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EasyAuthMicrosoftEntraIDAuthInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AuthType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Application clientId for EasyAuth Microsoft Entra ID.
+func (o EasyAuthMicrosoftEntraIDAuthInfoResponsePtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EasyAuthMicrosoftEntraIDAuthInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether to clean up previous operation when Linker is updating or deleting
+func (o EasyAuthMicrosoftEntraIDAuthInfoResponsePtrOutput) DeleteOrUpdateBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EasyAuthMicrosoftEntraIDAuthInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeleteOrUpdateBehavior
+	}).(pulumi.StringPtrOutput)
+}
+
+// Application Secret for EasyAuth Microsoft Entra ID.
+func (o EasyAuthMicrosoftEntraIDAuthInfoResponsePtrOutput) Secret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EasyAuthMicrosoftEntraIDAuthInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Secret
+	}).(pulumi.StringPtrOutput)
 }
 
 // Target service's firewall rules. to allow connections from source service.
@@ -3877,6 +4602,8 @@ func (o PublicNetworkSolutionResponsePtrOutput) FirewallRules() FirewallRulesRes
 
 // The authentication info when authType is secret
 type SecretAuthInfo struct {
+	// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+	AuthMode *string `pulumi:"authMode"`
 	// The authentication type.
 	// Expected value is 'secret'.
 	AuthType string `pulumi:"authType"`
@@ -3899,6 +4626,8 @@ type SecretAuthInfoInput interface {
 
 // The authentication info when authType is secret
 type SecretAuthInfoArgs struct {
+	// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+	AuthMode pulumi.StringPtrInput `pulumi:"authMode"`
 	// The authentication type.
 	// Expected value is 'secret'.
 	AuthType pulumi.StringInput `pulumi:"authType"`
@@ -3986,6 +4715,11 @@ func (o SecretAuthInfoOutput) ToSecretAuthInfoPtrOutputWithContext(ctx context.C
 	}).(SecretAuthInfoPtrOutput)
 }
 
+// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+func (o SecretAuthInfoOutput) AuthMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretAuthInfo) *string { return v.AuthMode }).(pulumi.StringPtrOutput)
+}
+
 // The authentication type.
 // Expected value is 'secret'.
 func (o SecretAuthInfoOutput) AuthType() pulumi.StringOutput {
@@ -4026,6 +4760,16 @@ func (o SecretAuthInfoPtrOutput) Elem() SecretAuthInfoOutput {
 	}).(SecretAuthInfoOutput)
 }
 
+// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+func (o SecretAuthInfoPtrOutput) AuthMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretAuthInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthMode
+	}).(pulumi.StringPtrOutput)
+}
+
 // The authentication type.
 // Expected value is 'secret'.
 func (o SecretAuthInfoPtrOutput) AuthType() pulumi.StringPtrOutput {
@@ -4059,6 +4803,8 @@ func (o SecretAuthInfoPtrOutput) SecretInfo() pulumi.AnyOutput {
 
 // The authentication info when authType is secret
 type SecretAuthInfoResponse struct {
+	// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+	AuthMode *string `pulumi:"authMode"`
 	// The authentication type.
 	// Expected value is 'secret'.
 	AuthType string `pulumi:"authType"`
@@ -4081,6 +4827,11 @@ func (o SecretAuthInfoResponseOutput) ToSecretAuthInfoResponseOutput() SecretAut
 
 func (o SecretAuthInfoResponseOutput) ToSecretAuthInfoResponseOutputWithContext(ctx context.Context) SecretAuthInfoResponseOutput {
 	return o
+}
+
+// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+func (o SecretAuthInfoResponseOutput) AuthMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretAuthInfoResponse) *string { return v.AuthMode }).(pulumi.StringPtrOutput)
 }
 
 // The authentication type.
@@ -4121,6 +4872,16 @@ func (o SecretAuthInfoResponsePtrOutput) Elem() SecretAuthInfoResponseOutput {
 		var ret SecretAuthInfoResponse
 		return ret
 	}).(SecretAuthInfoResponseOutput)
+}
+
+// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+func (o SecretAuthInfoResponsePtrOutput) AuthMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretAuthInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthMode
+	}).(pulumi.StringPtrOutput)
 }
 
 // The authentication type.
@@ -4635,6 +5396,8 @@ func (o SelfHostedServerResponsePtrOutput) Type() pulumi.StringPtrOutput {
 
 // The authentication info when authType is servicePrincipal certificate
 type ServicePrincipalCertificateAuthInfo struct {
+	// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+	AuthMode *string `pulumi:"authMode"`
 	// The authentication type.
 	// Expected value is 'servicePrincipalCertificate'.
 	AuthType string `pulumi:"authType"`
@@ -4663,6 +5426,8 @@ type ServicePrincipalCertificateAuthInfoInput interface {
 
 // The authentication info when authType is servicePrincipal certificate
 type ServicePrincipalCertificateAuthInfoArgs struct {
+	// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+	AuthMode pulumi.StringPtrInput `pulumi:"authMode"`
 	// The authentication type.
 	// Expected value is 'servicePrincipalCertificate'.
 	AuthType pulumi.StringInput `pulumi:"authType"`
@@ -4756,6 +5521,11 @@ func (o ServicePrincipalCertificateAuthInfoOutput) ToServicePrincipalCertificate
 	}).(ServicePrincipalCertificateAuthInfoPtrOutput)
 }
 
+// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+func (o ServicePrincipalCertificateAuthInfoOutput) AuthMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePrincipalCertificateAuthInfo) *string { return v.AuthMode }).(pulumi.StringPtrOutput)
+}
+
 // The authentication type.
 // Expected value is 'servicePrincipalCertificate'.
 func (o ServicePrincipalCertificateAuthInfoOutput) AuthType() pulumi.StringOutput {
@@ -4809,6 +5579,16 @@ func (o ServicePrincipalCertificateAuthInfoPtrOutput) Elem() ServicePrincipalCer
 		var ret ServicePrincipalCertificateAuthInfo
 		return ret
 	}).(ServicePrincipalCertificateAuthInfoOutput)
+}
+
+// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+func (o ServicePrincipalCertificateAuthInfoPtrOutput) AuthMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePrincipalCertificateAuthInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthMode
+	}).(pulumi.StringPtrOutput)
 }
 
 // The authentication type.
@@ -4874,6 +5654,8 @@ func (o ServicePrincipalCertificateAuthInfoPtrOutput) Roles() pulumi.StringArray
 
 // The authentication info when authType is servicePrincipal certificate
 type ServicePrincipalCertificateAuthInfoResponse struct {
+	// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+	AuthMode *string `pulumi:"authMode"`
 	// The authentication type.
 	// Expected value is 'servicePrincipalCertificate'.
 	AuthType string `pulumi:"authType"`
@@ -4902,6 +5684,11 @@ func (o ServicePrincipalCertificateAuthInfoResponseOutput) ToServicePrincipalCer
 
 func (o ServicePrincipalCertificateAuthInfoResponseOutput) ToServicePrincipalCertificateAuthInfoResponseOutputWithContext(ctx context.Context) ServicePrincipalCertificateAuthInfoResponseOutput {
 	return o
+}
+
+// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+func (o ServicePrincipalCertificateAuthInfoResponseOutput) AuthMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePrincipalCertificateAuthInfoResponse) *string { return v.AuthMode }).(pulumi.StringPtrOutput)
 }
 
 // The authentication type.
@@ -4957,6 +5744,16 @@ func (o ServicePrincipalCertificateAuthInfoResponsePtrOutput) Elem() ServicePrin
 		var ret ServicePrincipalCertificateAuthInfoResponse
 		return ret
 	}).(ServicePrincipalCertificateAuthInfoResponseOutput)
+}
+
+// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+func (o ServicePrincipalCertificateAuthInfoResponsePtrOutput) AuthMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePrincipalCertificateAuthInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthMode
+	}).(pulumi.StringPtrOutput)
 }
 
 // The authentication type.
@@ -5022,6 +5819,8 @@ func (o ServicePrincipalCertificateAuthInfoResponsePtrOutput) Roles() pulumi.Str
 
 // The authentication info when authType is servicePrincipal secret
 type ServicePrincipalSecretAuthInfo struct {
+	// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+	AuthMode *string `pulumi:"authMode"`
 	// The authentication type.
 	// Expected value is 'servicePrincipalSecret'.
 	AuthType string `pulumi:"authType"`
@@ -5052,6 +5851,8 @@ type ServicePrincipalSecretAuthInfoInput interface {
 
 // The authentication info when authType is servicePrincipal secret
 type ServicePrincipalSecretAuthInfoArgs struct {
+	// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+	AuthMode pulumi.StringPtrInput `pulumi:"authMode"`
 	// The authentication type.
 	// Expected value is 'servicePrincipalSecret'.
 	AuthType pulumi.StringInput `pulumi:"authType"`
@@ -5147,6 +5948,11 @@ func (o ServicePrincipalSecretAuthInfoOutput) ToServicePrincipalSecretAuthInfoPt
 	}).(ServicePrincipalSecretAuthInfoPtrOutput)
 }
 
+// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+func (o ServicePrincipalSecretAuthInfoOutput) AuthMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePrincipalSecretAuthInfo) *string { return v.AuthMode }).(pulumi.StringPtrOutput)
+}
+
 // The authentication type.
 // Expected value is 'servicePrincipalSecret'.
 func (o ServicePrincipalSecretAuthInfoOutput) AuthType() pulumi.StringOutput {
@@ -5205,6 +6011,16 @@ func (o ServicePrincipalSecretAuthInfoPtrOutput) Elem() ServicePrincipalSecretAu
 		var ret ServicePrincipalSecretAuthInfo
 		return ret
 	}).(ServicePrincipalSecretAuthInfoOutput)
+}
+
+// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+func (o ServicePrincipalSecretAuthInfoPtrOutput) AuthMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePrincipalSecretAuthInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthMode
+	}).(pulumi.StringPtrOutput)
 }
 
 // The authentication type.
@@ -5280,6 +6096,8 @@ func (o ServicePrincipalSecretAuthInfoPtrOutput) UserName() pulumi.StringPtrOutp
 
 // The authentication info when authType is servicePrincipal secret
 type ServicePrincipalSecretAuthInfoResponse struct {
+	// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+	AuthMode *string `pulumi:"authMode"`
 	// The authentication type.
 	// Expected value is 'servicePrincipalSecret'.
 	AuthType string `pulumi:"authType"`
@@ -5310,6 +6128,11 @@ func (o ServicePrincipalSecretAuthInfoResponseOutput) ToServicePrincipalSecretAu
 
 func (o ServicePrincipalSecretAuthInfoResponseOutput) ToServicePrincipalSecretAuthInfoResponseOutputWithContext(ctx context.Context) ServicePrincipalSecretAuthInfoResponseOutput {
 	return o
+}
+
+// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+func (o ServicePrincipalSecretAuthInfoResponseOutput) AuthMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePrincipalSecretAuthInfoResponse) *string { return v.AuthMode }).(pulumi.StringPtrOutput)
 }
 
 // The authentication type.
@@ -5370,6 +6193,16 @@ func (o ServicePrincipalSecretAuthInfoResponsePtrOutput) Elem() ServicePrincipal
 		var ret ServicePrincipalSecretAuthInfoResponse
 		return ret
 	}).(ServicePrincipalSecretAuthInfoResponseOutput)
+}
+
+// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+func (o ServicePrincipalSecretAuthInfoResponsePtrOutput) AuthMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePrincipalSecretAuthInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthMode
+	}).(pulumi.StringPtrOutput)
 }
 
 // The authentication type.
@@ -5445,6 +6278,12 @@ func (o ServicePrincipalSecretAuthInfoResponsePtrOutput) UserName() pulumi.Strin
 
 // A configuration item for source resource
 type SourceConfigurationResponse struct {
+	// The type of setting
+	ConfigType string `pulumi:"configType"`
+	// Descriptive information for the configuration
+	Description *string `pulumi:"description"`
+	// The identity for key vault reference, system or user-assigned managed identity ID
+	KeyVaultReferenceIdentity *string `pulumi:"keyVaultReferenceIdentity"`
 	// The name of setting.
 	Name *string `pulumi:"name"`
 	// The value of setting
@@ -5464,6 +6303,21 @@ func (o SourceConfigurationResponseOutput) ToSourceConfigurationResponseOutput()
 
 func (o SourceConfigurationResponseOutput) ToSourceConfigurationResponseOutputWithContext(ctx context.Context) SourceConfigurationResponseOutput {
 	return o
+}
+
+// The type of setting
+func (o SourceConfigurationResponseOutput) ConfigType() pulumi.StringOutput {
+	return o.ApplyT(func(v SourceConfigurationResponse) string { return v.ConfigType }).(pulumi.StringOutput)
+}
+
+// Descriptive information for the configuration
+func (o SourceConfigurationResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SourceConfigurationResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The identity for key vault reference, system or user-assigned managed identity ID
+func (o SourceConfigurationResponseOutput) KeyVaultReferenceIdentity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SourceConfigurationResponse) *string { return v.KeyVaultReferenceIdentity }).(pulumi.StringPtrOutput)
 }
 
 // The name of setting.
@@ -5498,6 +6352,8 @@ func (o SourceConfigurationResponseArrayOutput) Index(i pulumi.IntInput) SourceC
 
 // The authentication info when authType is systemAssignedIdentity
 type SystemAssignedIdentityAuthInfo struct {
+	// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+	AuthMode *string `pulumi:"authMode"`
 	// The authentication type.
 	// Expected value is 'systemAssignedIdentity'.
 	AuthType string `pulumi:"authType"`
@@ -5522,6 +6378,8 @@ type SystemAssignedIdentityAuthInfoInput interface {
 
 // The authentication info when authType is systemAssignedIdentity
 type SystemAssignedIdentityAuthInfoArgs struct {
+	// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+	AuthMode pulumi.StringPtrInput `pulumi:"authMode"`
 	// The authentication type.
 	// Expected value is 'systemAssignedIdentity'.
 	AuthType pulumi.StringInput `pulumi:"authType"`
@@ -5611,6 +6469,11 @@ func (o SystemAssignedIdentityAuthInfoOutput) ToSystemAssignedIdentityAuthInfoPt
 	}).(SystemAssignedIdentityAuthInfoPtrOutput)
 }
 
+// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+func (o SystemAssignedIdentityAuthInfoOutput) AuthMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemAssignedIdentityAuthInfo) *string { return v.AuthMode }).(pulumi.StringPtrOutput)
+}
+
 // The authentication type.
 // Expected value is 'systemAssignedIdentity'.
 func (o SystemAssignedIdentityAuthInfoOutput) AuthType() pulumi.StringOutput {
@@ -5656,6 +6519,16 @@ func (o SystemAssignedIdentityAuthInfoPtrOutput) Elem() SystemAssignedIdentityAu
 	}).(SystemAssignedIdentityAuthInfoOutput)
 }
 
+// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+func (o SystemAssignedIdentityAuthInfoPtrOutput) AuthMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SystemAssignedIdentityAuthInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthMode
+	}).(pulumi.StringPtrOutput)
+}
+
 // The authentication type.
 // Expected value is 'systemAssignedIdentity'.
 func (o SystemAssignedIdentityAuthInfoPtrOutput) AuthType() pulumi.StringPtrOutput {
@@ -5699,6 +6572,8 @@ func (o SystemAssignedIdentityAuthInfoPtrOutput) UserName() pulumi.StringPtrOutp
 
 // The authentication info when authType is systemAssignedIdentity
 type SystemAssignedIdentityAuthInfoResponse struct {
+	// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+	AuthMode *string `pulumi:"authMode"`
 	// The authentication type.
 	// Expected value is 'systemAssignedIdentity'.
 	AuthType string `pulumi:"authType"`
@@ -5723,6 +6598,11 @@ func (o SystemAssignedIdentityAuthInfoResponseOutput) ToSystemAssignedIdentityAu
 
 func (o SystemAssignedIdentityAuthInfoResponseOutput) ToSystemAssignedIdentityAuthInfoResponseOutputWithContext(ctx context.Context) SystemAssignedIdentityAuthInfoResponseOutput {
 	return o
+}
+
+// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+func (o SystemAssignedIdentityAuthInfoResponseOutput) AuthMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemAssignedIdentityAuthInfoResponse) *string { return v.AuthMode }).(pulumi.StringPtrOutput)
 }
 
 // The authentication type.
@@ -5768,6 +6648,16 @@ func (o SystemAssignedIdentityAuthInfoResponsePtrOutput) Elem() SystemAssignedId
 		var ret SystemAssignedIdentityAuthInfoResponse
 		return ret
 	}).(SystemAssignedIdentityAuthInfoResponseOutput)
+}
+
+// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+func (o SystemAssignedIdentityAuthInfoResponsePtrOutput) AuthMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SystemAssignedIdentityAuthInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthMode
+	}).(pulumi.StringPtrOutput)
 }
 
 // The authentication type.
@@ -5874,6 +6764,8 @@ func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 
 // The authentication info when authType is user account
 type UserAccountAuthInfo struct {
+	// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+	AuthMode *string `pulumi:"authMode"`
 	// The authentication type.
 	// Expected value is 'userAccount'.
 	AuthType string `pulumi:"authType"`
@@ -5900,6 +6792,8 @@ type UserAccountAuthInfoInput interface {
 
 // The authentication info when authType is user account
 type UserAccountAuthInfoArgs struct {
+	// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+	AuthMode pulumi.StringPtrInput `pulumi:"authMode"`
 	// The authentication type.
 	// Expected value is 'userAccount'.
 	AuthType pulumi.StringInput `pulumi:"authType"`
@@ -5991,6 +6885,11 @@ func (o UserAccountAuthInfoOutput) ToUserAccountAuthInfoPtrOutputWithContext(ctx
 	}).(UserAccountAuthInfoPtrOutput)
 }
 
+// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+func (o UserAccountAuthInfoOutput) AuthMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserAccountAuthInfo) *string { return v.AuthMode }).(pulumi.StringPtrOutput)
+}
+
 // The authentication type.
 // Expected value is 'userAccount'.
 func (o UserAccountAuthInfoOutput) AuthType() pulumi.StringOutput {
@@ -6039,6 +6938,16 @@ func (o UserAccountAuthInfoPtrOutput) Elem() UserAccountAuthInfoOutput {
 		var ret UserAccountAuthInfo
 		return ret
 	}).(UserAccountAuthInfoOutput)
+}
+
+// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+func (o UserAccountAuthInfoPtrOutput) AuthMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserAccountAuthInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthMode
+	}).(pulumi.StringPtrOutput)
 }
 
 // The authentication type.
@@ -6094,6 +7003,8 @@ func (o UserAccountAuthInfoPtrOutput) UserName() pulumi.StringPtrOutput {
 
 // The authentication info when authType is user account
 type UserAccountAuthInfoResponse struct {
+	// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+	AuthMode *string `pulumi:"authMode"`
 	// The authentication type.
 	// Expected value is 'userAccount'.
 	AuthType string `pulumi:"authType"`
@@ -6120,6 +7031,11 @@ func (o UserAccountAuthInfoResponseOutput) ToUserAccountAuthInfoResponseOutput()
 
 func (o UserAccountAuthInfoResponseOutput) ToUserAccountAuthInfoResponseOutputWithContext(ctx context.Context) UserAccountAuthInfoResponseOutput {
 	return o
+}
+
+// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+func (o UserAccountAuthInfoResponseOutput) AuthMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserAccountAuthInfoResponse) *string { return v.AuthMode }).(pulumi.StringPtrOutput)
 }
 
 // The authentication type.
@@ -6170,6 +7086,16 @@ func (o UserAccountAuthInfoResponsePtrOutput) Elem() UserAccountAuthInfoResponse
 		var ret UserAccountAuthInfoResponse
 		return ret
 	}).(UserAccountAuthInfoResponseOutput)
+}
+
+// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+func (o UserAccountAuthInfoResponsePtrOutput) AuthMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserAccountAuthInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthMode
+	}).(pulumi.StringPtrOutput)
 }
 
 // The authentication type.
@@ -6225,6 +7151,8 @@ func (o UserAccountAuthInfoResponsePtrOutput) UserName() pulumi.StringPtrOutput 
 
 // The authentication info when authType is userAssignedIdentity
 type UserAssignedIdentityAuthInfo struct {
+	// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+	AuthMode *string `pulumi:"authMode"`
 	// The authentication type.
 	// Expected value is 'userAssignedIdentity'.
 	AuthType string `pulumi:"authType"`
@@ -6253,6 +7181,8 @@ type UserAssignedIdentityAuthInfoInput interface {
 
 // The authentication info when authType is userAssignedIdentity
 type UserAssignedIdentityAuthInfoArgs struct {
+	// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+	AuthMode pulumi.StringPtrInput `pulumi:"authMode"`
 	// The authentication type.
 	// Expected value is 'userAssignedIdentity'.
 	AuthType pulumi.StringInput `pulumi:"authType"`
@@ -6346,6 +7276,11 @@ func (o UserAssignedIdentityAuthInfoOutput) ToUserAssignedIdentityAuthInfoPtrOut
 	}).(UserAssignedIdentityAuthInfoPtrOutput)
 }
 
+// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+func (o UserAssignedIdentityAuthInfoOutput) AuthMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserAssignedIdentityAuthInfo) *string { return v.AuthMode }).(pulumi.StringPtrOutput)
+}
+
 // The authentication type.
 // Expected value is 'userAssignedIdentity'.
 func (o UserAssignedIdentityAuthInfoOutput) AuthType() pulumi.StringOutput {
@@ -6399,6 +7334,16 @@ func (o UserAssignedIdentityAuthInfoPtrOutput) Elem() UserAssignedIdentityAuthIn
 		var ret UserAssignedIdentityAuthInfo
 		return ret
 	}).(UserAssignedIdentityAuthInfoOutput)
+}
+
+// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+func (o UserAssignedIdentityAuthInfoPtrOutput) AuthMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserAssignedIdentityAuthInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthMode
+	}).(pulumi.StringPtrOutput)
 }
 
 // The authentication type.
@@ -6464,6 +7409,8 @@ func (o UserAssignedIdentityAuthInfoPtrOutput) UserName() pulumi.StringPtrOutput
 
 // The authentication info when authType is userAssignedIdentity
 type UserAssignedIdentityAuthInfoResponse struct {
+	// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+	AuthMode *string `pulumi:"authMode"`
 	// The authentication type.
 	// Expected value is 'userAssignedIdentity'.
 	AuthType string `pulumi:"authType"`
@@ -6492,6 +7439,11 @@ func (o UserAssignedIdentityAuthInfoResponseOutput) ToUserAssignedIdentityAuthIn
 
 func (o UserAssignedIdentityAuthInfoResponseOutput) ToUserAssignedIdentityAuthInfoResponseOutputWithContext(ctx context.Context) UserAssignedIdentityAuthInfoResponseOutput {
 	return o
+}
+
+// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+func (o UserAssignedIdentityAuthInfoResponseOutput) AuthMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserAssignedIdentityAuthInfoResponse) *string { return v.AuthMode }).(pulumi.StringPtrOutput)
 }
 
 // The authentication type.
@@ -6547,6 +7499,16 @@ func (o UserAssignedIdentityAuthInfoResponsePtrOutput) Elem() UserAssignedIdenti
 		var ret UserAssignedIdentityAuthInfoResponse
 		return ret
 	}).(UserAssignedIdentityAuthInfoResponseOutput)
+}
+
+// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
+func (o UserAssignedIdentityAuthInfoResponsePtrOutput) AuthMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserAssignedIdentityAuthInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthMode
+	}).(pulumi.StringPtrOutput)
 }
 
 // The authentication type.
@@ -7107,6 +8069,10 @@ func init() {
 	pulumi.RegisterOutputType(ConfigurationInfoPtrOutput{})
 	pulumi.RegisterOutputType(ConfigurationInfoResponseOutput{})
 	pulumi.RegisterOutputType(ConfigurationInfoResponsePtrOutput{})
+	pulumi.RegisterOutputType(ConfigurationStoreOutput{})
+	pulumi.RegisterOutputType(ConfigurationStorePtrOutput{})
+	pulumi.RegisterOutputType(ConfigurationStoreResponseOutput{})
+	pulumi.RegisterOutputType(ConfigurationStoreResponsePtrOutput{})
 	pulumi.RegisterOutputType(ConfluentBootstrapServerOutput{})
 	pulumi.RegisterOutputType(ConfluentBootstrapServerPtrOutput{})
 	pulumi.RegisterOutputType(ConfluentBootstrapServerResponseOutput{})
@@ -7129,6 +8095,10 @@ func init() {
 	pulumi.RegisterOutputType(DaprPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(DryrunOperationPreviewResponseOutput{})
 	pulumi.RegisterOutputType(DryrunOperationPreviewResponseArrayOutput{})
+	pulumi.RegisterOutputType(EasyAuthMicrosoftEntraIDAuthInfoOutput{})
+	pulumi.RegisterOutputType(EasyAuthMicrosoftEntraIDAuthInfoPtrOutput{})
+	pulumi.RegisterOutputType(EasyAuthMicrosoftEntraIDAuthInfoResponseOutput{})
+	pulumi.RegisterOutputType(EasyAuthMicrosoftEntraIDAuthInfoResponsePtrOutput{})
 	pulumi.RegisterOutputType(FirewallRulesOutput{})
 	pulumi.RegisterOutputType(FirewallRulesPtrOutput{})
 	pulumi.RegisterOutputType(FirewallRulesResponseOutput{})

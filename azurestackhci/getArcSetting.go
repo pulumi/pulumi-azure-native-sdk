@@ -12,9 +12,7 @@ import (
 )
 
 // Get ArcSetting resource details of HCI Cluster.
-// Azure REST API version: 2023-03-01.
-//
-// Other available API versions: 2021-09-01-preview, 2022-12-15-preview, 2023-06-01, 2023-08-01, 2023-08-01-preview, 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-04-01, 2024-09-01-preview, 2024-12-01-preview.
+// Azure REST API version: 2024-04-01.
 func LookupArcSetting(ctx *pulumi.Context, args *LookupArcSettingArgs, opts ...pulumi.InvokeOption) (*LookupArcSettingResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupArcSettingResult
@@ -48,11 +46,13 @@ type LookupArcSettingResult struct {
 	ArcInstanceResourceGroup *string `pulumi:"arcInstanceResourceGroup"`
 	// Object id of arc AAD service principal.
 	ArcServicePrincipalObjectId *string `pulumi:"arcServicePrincipalObjectId"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// contains connectivity related configuration for ARC resources
 	ConnectivityProperties []ArcConnectivityPropertiesResponse `pulumi:"connectivityProperties"`
 	// Properties for each of the default extensions category
 	DefaultExtensions []DefaultExtensionDetailsResponse `pulumi:"defaultExtensions"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The name of the resource
 	Name string `pulumi:"name"`
@@ -133,6 +133,11 @@ func (o LookupArcSettingResultOutput) ArcServicePrincipalObjectId() pulumi.Strin
 	return o.ApplyT(func(v LookupArcSettingResult) *string { return v.ArcServicePrincipalObjectId }).(pulumi.StringPtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupArcSettingResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupArcSettingResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // contains connectivity related configuration for ARC resources
 func (o LookupArcSettingResultOutput) ConnectivityProperties() ArcConnectivityPropertiesResponseArrayOutput {
 	return o.ApplyT(func(v LookupArcSettingResult) []ArcConnectivityPropertiesResponse { return v.ConnectivityProperties }).(ArcConnectivityPropertiesResponseArrayOutput)
@@ -143,7 +148,7 @@ func (o LookupArcSettingResultOutput) DefaultExtensions() DefaultExtensionDetail
 	return o.ApplyT(func(v LookupArcSettingResult) []DefaultExtensionDetailsResponse { return v.DefaultExtensions }).(DefaultExtensionDetailsResponseArrayOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupArcSettingResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupArcSettingResult) string { return v.Id }).(pulumi.StringOutput)
 }

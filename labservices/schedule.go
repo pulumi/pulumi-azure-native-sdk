@@ -13,12 +13,12 @@ import (
 )
 
 // Schedule for automatically turning virtual machines in a lab on and off at specified times.
-// Azure REST API version: 2022-08-01. Prior API version in Azure Native 1.x: 2021-10-01-preview.
-//
-// Other available API versions: 2023-06-07.
+// Azure REST API version: 2023-06-07. Prior API version in Azure Native 2.x: 2022-08-01.
 type Schedule struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Notes for this schedule.
@@ -27,6 +27,8 @@ type Schedule struct {
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// The recurrence pattern of the scheduled actions.
 	RecurrencePattern RecurrencePatternResponsePtrOutput `pulumi:"recurrencePattern"`
+	// Error details of last operation done on schedule.
+	ResourceOperationError ResourceOperationErrorResponseOutput `pulumi:"resourceOperationError"`
 	// When lab user virtual machines will be started. Timestamp offsets will be ignored and timeZoneId is used instead.
 	StartAt pulumi.StringPtrOutput `pulumi:"startAt"`
 	// When lab user virtual machines will be stopped. Timestamp offsets will be ignored and timeZoneId is used instead.
@@ -181,6 +183,11 @@ func (o ScheduleOutput) ToScheduleOutputWithContext(ctx context.Context) Schedul
 	return o
 }
 
+// The Azure API version of the resource.
+func (o ScheduleOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Schedule) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The name of the resource
 func (o ScheduleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Schedule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -199,6 +206,11 @@ func (o ScheduleOutput) ProvisioningState() pulumi.StringOutput {
 // The recurrence pattern of the scheduled actions.
 func (o ScheduleOutput) RecurrencePattern() RecurrencePatternResponsePtrOutput {
 	return o.ApplyT(func(v *Schedule) RecurrencePatternResponsePtrOutput { return v.RecurrencePattern }).(RecurrencePatternResponsePtrOutput)
+}
+
+// Error details of last operation done on schedule.
+func (o ScheduleOutput) ResourceOperationError() ResourceOperationErrorResponseOutput {
+	return o.ApplyT(func(v *Schedule) ResourceOperationErrorResponseOutput { return v.ResourceOperationError }).(ResourceOperationErrorResponseOutput)
 }
 
 // When lab user virtual machines will be started. Timestamp offsets will be ignored and timeZoneId is used instead.

@@ -13,10 +13,12 @@ import (
 )
 
 // The registration assignment.
-// Azure REST API version: 2022-10-01. Prior API version in Azure Native 1.x: 2019-09-01.
+// Azure REST API version: 2022-10-01. Prior API version in Azure Native 2.x: 2022-10-01.
 type RegistrationAssignment struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the registration assignment.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The properties of a registration assignment.
@@ -147,6 +149,11 @@ func (o RegistrationAssignmentOutput) ToRegistrationAssignmentOutput() Registrat
 
 func (o RegistrationAssignmentOutput) ToRegistrationAssignmentOutputWithContext(ctx context.Context) RegistrationAssignmentOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o RegistrationAssignmentOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegistrationAssignment) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the registration assignment.

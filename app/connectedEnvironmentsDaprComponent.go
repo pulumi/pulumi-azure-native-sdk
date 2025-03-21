@@ -13,12 +13,12 @@ import (
 )
 
 // Dapr Component.
-// Azure REST API version: 2022-10-01.
-//
-// Other available API versions: 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview.
+// Azure REST API version: 2024-03-01. Prior API version in Azure Native 2.x: 2022-10-01.
 type ConnectedEnvironmentsDaprComponent struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Component type
 	ComponentType pulumi.StringPtrOutput `pulumi:"componentType"`
 	// Boolean describing if the component errors are ignores
@@ -216,6 +216,11 @@ func (o ConnectedEnvironmentsDaprComponentOutput) ToConnectedEnvironmentsDaprCom
 
 func (o ConnectedEnvironmentsDaprComponentOutput) ToConnectedEnvironmentsDaprComponentOutputWithContext(ctx context.Context) ConnectedEnvironmentsDaprComponentOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ConnectedEnvironmentsDaprComponentOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConnectedEnvironmentsDaprComponent) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Component type

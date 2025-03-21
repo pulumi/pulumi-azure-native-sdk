@@ -13,14 +13,14 @@ import (
 )
 
 // Container of a site
-// Azure REST API version: 2023-12-01.
-//
-// Other available API versions: 2024-04-01.
+// Azure REST API version: 2024-04-01. Prior API version in Azure Native 2.x: 2023-12-01.
 type WebAppSiteContainer struct {
 	pulumi.CustomResourceState
 
 	// Auth Type
 	AuthType pulumi.StringPtrOutput `pulumi:"authType"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Created Time
 	CreatedTime pulumi.StringOutput `pulumi:"createdTime"`
 	// List of environment variables
@@ -214,6 +214,11 @@ func (o WebAppSiteContainerOutput) ToWebAppSiteContainerOutputWithContext(ctx co
 // Auth Type
 func (o WebAppSiteContainerOutput) AuthType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WebAppSiteContainer) pulumi.StringPtrOutput { return v.AuthType }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o WebAppSiteContainerOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *WebAppSiteContainer) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Created Time

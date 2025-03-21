@@ -32,6 +32,8 @@ type LookupDaxClusterArgs struct {
 
 // A Microsoft.AwsConnector resource
 type LookupDaxClusterResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -81,6 +83,11 @@ func (o LookupDaxClusterResultOutput) ToLookupDaxClusterResultOutput() LookupDax
 
 func (o LookupDaxClusterResultOutput) ToLookupDaxClusterResultOutputWithContext(ctx context.Context) LookupDaxClusterResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupDaxClusterResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDaxClusterResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

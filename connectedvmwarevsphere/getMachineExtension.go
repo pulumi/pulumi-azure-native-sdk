@@ -12,9 +12,7 @@ import (
 )
 
 // The operation to get the extension.
-// Azure REST API version: 2022-07-15-preview.
-//
-// Other available API versions: 2022-01-10-preview, 2023-03-01-preview.
+// Azure REST API version: 2023-03-01-preview.
 func LookupMachineExtension(ctx *pulumi.Context, args *LookupMachineExtensionArgs, opts ...pulumi.InvokeOption) (*LookupMachineExtensionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMachineExtensionResult
@@ -38,6 +36,8 @@ type LookupMachineExtensionArgs struct {
 type LookupMachineExtensionResult struct {
 	// Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
 	AutoUpgradeMinorVersion *bool `pulumi:"autoUpgradeMinorVersion"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Indicates whether the extension should be automatically upgraded by the platform if there is a newer version available.
 	EnableAutomaticUpgrade *bool `pulumi:"enableAutomaticUpgrade"`
 	// How the extension handler should be forced to update even if the extension configuration has not changed.
@@ -108,6 +108,11 @@ func (o LookupMachineExtensionResultOutput) ToLookupMachineExtensionResultOutput
 // Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
 func (o LookupMachineExtensionResultOutput) AutoUpgradeMinorVersion() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupMachineExtensionResult) *bool { return v.AutoUpgradeMinorVersion }).(pulumi.BoolPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupMachineExtensionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMachineExtensionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Indicates whether the extension should be automatically upgraded by the platform if there is a newer version available.

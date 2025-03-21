@@ -12,14 +12,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2021-02-01.
-//
-// Other available API versions: 2023-01-01, 2023-04-01, 2023-05-01, 2024-01-01.
+// Azure REST API version: 2024-01-01. Prior API version in Azure Native 2.x: 2022-09-01.
 type Queue struct {
 	pulumi.CustomResourceState
 
 	// Integer indicating an approximate number of messages in the queue. This number is not lower than the actual number of messages in the queue, but could be higher.
 	ApproximateMessageCount pulumi.IntOutput `pulumi:"approximateMessageCount"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// A name-value pair that represents queue metadata.
 	Metadata pulumi.StringMapOutput `pulumi:"metadata"`
 	// The name of the resource
@@ -181,6 +181,11 @@ func (o QueueOutput) ToQueueOutputWithContext(ctx context.Context) QueueOutput {
 // Integer indicating an approximate number of messages in the queue. This number is not lower than the actual number of messages in the queue, but could be higher.
 func (o QueueOutput) ApproximateMessageCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *Queue) pulumi.IntOutput { return v.ApproximateMessageCount }).(pulumi.IntOutput)
+}
+
+// The Azure API version of the resource.
+func (o QueueOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Queue) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A name-value pair that represents queue metadata.

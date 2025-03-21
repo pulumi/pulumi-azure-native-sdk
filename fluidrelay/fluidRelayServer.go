@@ -13,12 +13,12 @@ import (
 )
 
 // A FluidRelay Server.
-// Azure REST API version: 2022-06-01. Prior API version in Azure Native 1.x: 2021-03-12-preview.
-//
-// Other available API versions: 2021-06-15-preview.
+// Azure REST API version: 2022-06-01. Prior API version in Azure Native 2.x: 2022-06-01.
 type FluidRelayServer struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// All encryption configuration for a resource.
 	Encryption EncryptionPropertiesResponsePtrOutput `pulumi:"encryption"`
 	// The Fluid Relay Service endpoints for this server.
@@ -189,6 +189,11 @@ func (o FluidRelayServerOutput) ToFluidRelayServerOutput() FluidRelayServerOutpu
 
 func (o FluidRelayServerOutput) ToFluidRelayServerOutputWithContext(ctx context.Context) FluidRelayServerOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o FluidRelayServerOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *FluidRelayServer) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // All encryption configuration for a resource.

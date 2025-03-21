@@ -13,24 +13,26 @@ import (
 )
 
 // Edge device resource
-// Azure REST API version: 2023-08-01-preview.
-//
-// Other available API versions: 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-04-01, 2024-09-01-preview, 2024-12-01-preview.
+// Azure REST API version: 2024-04-01. Prior API version in Azure Native 2.x: 2023-08-01-preview.
 type DeploymentSetting struct {
 	pulumi.CustomResourceState
 
 	// Azure resource ids of Arc machines to be part of cluster.
 	ArcNodeResourceIds pulumi.StringArrayOutput `pulumi:"arcNodeResourceIds"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Scale units will contains list of deployment data
 	DeploymentConfiguration DeploymentConfigurationResponseOutput `pulumi:"deploymentConfiguration"`
 	// The deployment mode for cluster deployment.
 	DeploymentMode pulumi.StringOutput `pulumi:"deploymentMode"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The intended operation for a cluster.
+	OperationType pulumi.StringPtrOutput `pulumi:"operationType"`
 	// DeploymentSetting provisioning state
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Deployment Status reported from cluster.
-	ReportedProperties ReportedPropertiesResponseOutput `pulumi:"reportedProperties"`
+	ReportedProperties EceReportedPropertiesResponseOutput `pulumi:"reportedProperties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -58,6 +60,9 @@ func NewDeploymentSetting(ctx *pulumi.Context,
 	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.OperationType == nil {
+		args.OperationType = pulumi.StringPtr("ClusterProvisioning")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -126,6 +131,8 @@ type deploymentSettingArgs struct {
 	DeploymentMode string `pulumi:"deploymentMode"`
 	// Name of Deployment Setting
 	DeploymentSettingsName *string `pulumi:"deploymentSettingsName"`
+	// The intended operation for a cluster.
+	OperationType *string `pulumi:"operationType"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
@@ -142,6 +149,8 @@ type DeploymentSettingArgs struct {
 	DeploymentMode pulumi.StringInput
 	// Name of Deployment Setting
 	DeploymentSettingsName pulumi.StringPtrInput
+	// The intended operation for a cluster.
+	OperationType pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 }
@@ -188,6 +197,11 @@ func (o DeploymentSettingOutput) ArcNodeResourceIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DeploymentSetting) pulumi.StringArrayOutput { return v.ArcNodeResourceIds }).(pulumi.StringArrayOutput)
 }
 
+// The Azure API version of the resource.
+func (o DeploymentSettingOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DeploymentSetting) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Scale units will contains list of deployment data
 func (o DeploymentSettingOutput) DeploymentConfiguration() DeploymentConfigurationResponseOutput {
 	return o.ApplyT(func(v *DeploymentSetting) DeploymentConfigurationResponseOutput { return v.DeploymentConfiguration }).(DeploymentConfigurationResponseOutput)
@@ -203,14 +217,19 @@ func (o DeploymentSettingOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DeploymentSetting) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// The intended operation for a cluster.
+func (o DeploymentSettingOutput) OperationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentSetting) pulumi.StringPtrOutput { return v.OperationType }).(pulumi.StringPtrOutput)
+}
+
 // DeploymentSetting provisioning state
 func (o DeploymentSettingOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *DeploymentSetting) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
 // Deployment Status reported from cluster.
-func (o DeploymentSettingOutput) ReportedProperties() ReportedPropertiesResponseOutput {
-	return o.ApplyT(func(v *DeploymentSetting) ReportedPropertiesResponseOutput { return v.ReportedProperties }).(ReportedPropertiesResponseOutput)
+func (o DeploymentSettingOutput) ReportedProperties() EceReportedPropertiesResponseOutput {
+	return o.ApplyT(func(v *DeploymentSetting) EceReportedPropertiesResponseOutput { return v.ReportedProperties }).(EceReportedPropertiesResponseOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

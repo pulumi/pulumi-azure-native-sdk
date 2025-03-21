@@ -13,12 +13,12 @@ import (
 )
 
 // Represents an curation profile resource.
-// Azure REST API version: 2024-08-01-preview.
-//
-// Other available API versions: 2024-10-01-preview.
+// Azure REST API version: 2024-10-01-preview. Prior API version in Azure Native 2.x: 2024-08-01-preview.
 type CurationProfile struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The provisioning state of the resource.
@@ -149,6 +149,11 @@ func (o CurationProfileOutput) ToCurationProfileOutput() CurationProfileOutput {
 
 func (o CurationProfileOutput) ToCurationProfileOutputWithContext(ctx context.Context) CurationProfileOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o CurationProfileOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *CurationProfile) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

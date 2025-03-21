@@ -13,10 +13,12 @@ import (
 )
 
 // A report resource.
-// Azure REST API version: 2018-08-01-preview. Prior API version in Azure Native 1.x: 2018-08-01-preview.
+// Azure REST API version: 2018-08-01-preview. Prior API version in Azure Native 2.x: 2018-08-01-preview.
 type ReportByBillingAccount struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Has definition for the report.
 	Definition ReportDefinitionResponseOutput `pulumi:"definition"`
 	// Has delivery information for the report.
@@ -153,6 +155,11 @@ func (o ReportByBillingAccountOutput) ToReportByBillingAccountOutput() ReportByB
 
 func (o ReportByBillingAccountOutput) ToReportByBillingAccountOutputWithContext(ctx context.Context) ReportByBillingAccountOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ReportByBillingAccountOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ReportByBillingAccount) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Has definition for the report.

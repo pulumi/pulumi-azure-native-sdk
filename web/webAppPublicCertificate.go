@@ -13,12 +13,12 @@ import (
 )
 
 // Public certificate object
-// Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2020-12-01.
-//
-// Other available API versions: 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
+// Azure REST API version: 2024-04-01. Prior API version in Azure Native 2.x: 2022-09-01.
 type WebAppPublicCertificate struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Public Certificate byte array
 	Blob pulumi.StringPtrOutput `pulumi:"blob"`
 	// Kind of resource.
@@ -198,6 +198,11 @@ func (o WebAppPublicCertificateOutput) ToWebAppPublicCertificateOutput() WebAppP
 
 func (o WebAppPublicCertificateOutput) ToWebAppPublicCertificateOutputWithContext(ctx context.Context) WebAppPublicCertificateOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o WebAppPublicCertificateOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *WebAppPublicCertificate) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Public Certificate byte array

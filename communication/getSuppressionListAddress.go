@@ -13,8 +13,6 @@ import (
 
 // Get a SuppressionListAddress.
 // Azure REST API version: 2023-06-01-preview.
-//
-// Other available API versions: 2024-09-01-preview.
 func LookupSuppressionListAddress(ctx *pulumi.Context, args *LookupSuppressionListAddressArgs, opts ...pulumi.InvokeOption) (*LookupSuppressionListAddressResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSuppressionListAddressResult
@@ -40,6 +38,8 @@ type LookupSuppressionListAddressArgs struct {
 
 // A object that represents a SuppressionList record.
 type LookupSuppressionListAddressResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The location where the SuppressionListAddress data is stored at rest. This value is inherited from the parent Domains resource.
 	DataLocation string `pulumi:"dataLocation"`
 	// Email address of the recipient.
@@ -101,6 +101,11 @@ func (o LookupSuppressionListAddressResultOutput) ToLookupSuppressionListAddress
 
 func (o LookupSuppressionListAddressResultOutput) ToLookupSuppressionListAddressResultOutputWithContext(ctx context.Context) LookupSuppressionListAddressResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupSuppressionListAddressResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSuppressionListAddressResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The location where the SuppressionListAddress data is stored at rest. This value is inherited from the parent Domains resource.

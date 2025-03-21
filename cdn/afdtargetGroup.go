@@ -13,10 +13,12 @@ import (
 )
 
 // AFDTargetGroup comprises a list of Endpoints that is used for tunnelling protocols to allow certain traffic.
-// Azure REST API version: 2024-06-01-preview.
+// Azure REST API version: 2024-06-01-preview. Prior API version in Azure Native 2.x: 2024-06-01-preview.
 type AFDTargetGroup struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion  pulumi.StringOutput `pulumi:"azureApiVersion"`
 	DeploymentStatus pulumi.StringOutput `pulumi:"deploymentStatus"`
 	// Resource name.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -142,6 +144,11 @@ func (o AFDTargetGroupOutput) ToAFDTargetGroupOutput() AFDTargetGroupOutput {
 
 func (o AFDTargetGroupOutput) ToAFDTargetGroupOutputWithContext(ctx context.Context) AFDTargetGroupOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o AFDTargetGroupOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *AFDTargetGroup) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 func (o AFDTargetGroupOutput) DeploymentStatus() pulumi.StringOutput {

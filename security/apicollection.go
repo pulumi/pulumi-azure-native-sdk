@@ -13,12 +13,14 @@ import (
 )
 
 // An API collection as represented by Defender for APIs.
-// Azure REST API version: 2022-11-20-preview.
+// Azure REST API version: 2022-11-20-preview. Prior API version in Azure Native 2.x: 2022-11-20-preview.
 type APICollection struct {
 	pulumi.CustomResourceState
 
 	// Additional data regarding the API collection.
 	AdditionalData pulumi.StringMapOutput `pulumi:"additionalData"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The display name of the Azure API Management API.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// Resource name
@@ -46,6 +48,12 @@ func NewAPICollection(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:security/v20231115:APICollection"),
+		},
+		{
+			Type: pulumi.String("azure-native:security/v20231115:APICollectionByAzureApiManagementService"),
+		},
+		{
+			Type: pulumi.String("azure-native:security:APICollectionByAzureApiManagementService"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -140,6 +148,11 @@ func (o APICollectionOutput) ToAPICollectionOutputWithContext(ctx context.Contex
 // Additional data regarding the API collection.
 func (o APICollectionOutput) AdditionalData() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *APICollection) pulumi.StringMapOutput { return v.AdditionalData }).(pulumi.StringMapOutput)
+}
+
+// The Azure API version of the resource.
+func (o APICollectionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *APICollection) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The display name of the Azure API Management API.

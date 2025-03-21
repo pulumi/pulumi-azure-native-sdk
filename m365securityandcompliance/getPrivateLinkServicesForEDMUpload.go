@@ -32,6 +32,8 @@ type LookupPrivateLinkServicesForEDMUploadArgs struct {
 
 // The description of the service.
 type LookupPrivateLinkServicesForEDMUploadResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// An etag associated with the resource, used for optimistic concurrency when editing it.
 	Etag *string `pulumi:"etag"`
 	// The resource identifier.
@@ -87,6 +89,11 @@ func (o LookupPrivateLinkServicesForEDMUploadResultOutput) ToLookupPrivateLinkSe
 
 func (o LookupPrivateLinkServicesForEDMUploadResultOutput) ToLookupPrivateLinkServicesForEDMUploadResultOutputWithContext(ctx context.Context) LookupPrivateLinkServicesForEDMUploadResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupPrivateLinkServicesForEDMUploadResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPrivateLinkServicesForEDMUploadResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // An etag associated with the resource, used for optimistic concurrency when editing it.

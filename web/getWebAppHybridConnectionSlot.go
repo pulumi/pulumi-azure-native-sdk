@@ -12,9 +12,7 @@ import (
 )
 
 // Description for Retrieves a specific Service Bus Hybrid Connection used by this Web App.
-// Azure REST API version: 2022-09-01.
-//
-// Other available API versions: 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
+// Azure REST API version: 2024-04-01.
 func LookupWebAppHybridConnectionSlot(ctx *pulumi.Context, args *LookupWebAppHybridConnectionSlotArgs, opts ...pulumi.InvokeOption) (*LookupWebAppHybridConnectionSlotResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebAppHybridConnectionSlotResult
@@ -40,6 +38,8 @@ type LookupWebAppHybridConnectionSlotArgs struct {
 
 // Hybrid Connection contract. This is used to configure a Hybrid Connection.
 type LookupWebAppHybridConnectionSlotResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The hostname of the endpoint.
 	Hostname *string `pulumi:"hostname"`
 	// Resource Id.
@@ -106,6 +106,11 @@ func (o LookupWebAppHybridConnectionSlotResultOutput) ToLookupWebAppHybridConnec
 
 func (o LookupWebAppHybridConnectionSlotResultOutput) ToLookupWebAppHybridConnectionSlotResultOutputWithContext(ctx context.Context) LookupWebAppHybridConnectionSlotResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupWebAppHybridConnectionSlotResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWebAppHybridConnectionSlotResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The hostname of the endpoint.

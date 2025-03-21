@@ -13,8 +13,6 @@ import (
 
 // Get the details of the specified Video Analyzer account
 // Azure REST API version: 2021-11-01-preview.
-//
-// Other available API versions: 2021-05-01-preview.
 func LookupVideoAnalyzer(ctx *pulumi.Context, args *LookupVideoAnalyzerArgs, opts ...pulumi.InvokeOption) (*LookupVideoAnalyzerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVideoAnalyzerResult
@@ -34,6 +32,8 @@ type LookupVideoAnalyzerArgs struct {
 
 // The Video Analyzer account.
 type LookupVideoAnalyzerResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The account encryption properties.
 	Encryption *AccountEncryptionResponse `pulumi:"encryption"`
 	// The endpoints associated with this resource.
@@ -99,6 +99,11 @@ func (o LookupVideoAnalyzerResultOutput) ToLookupVideoAnalyzerResultOutput() Loo
 
 func (o LookupVideoAnalyzerResultOutput) ToLookupVideoAnalyzerResultOutputWithContext(ctx context.Context) LookupVideoAnalyzerResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupVideoAnalyzerResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVideoAnalyzerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The account encryption properties.

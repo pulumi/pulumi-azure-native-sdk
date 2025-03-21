@@ -32,6 +32,8 @@ type LookupEc2KeyPairArgs struct {
 
 // A Microsoft.AwsConnector resource
 type LookupEc2KeyPairResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -91,6 +93,11 @@ func (o LookupEc2KeyPairResultOutput) ToLookupEc2KeyPairResultOutput() LookupEc2
 
 func (o LookupEc2KeyPairResultOutput) ToLookupEc2KeyPairResultOutputWithContext(ctx context.Context) LookupEc2KeyPairResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupEc2KeyPairResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEc2KeyPairResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

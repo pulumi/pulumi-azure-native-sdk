@@ -38,6 +38,8 @@ type LookupVirtualNetworkArgs struct {
 type LookupVirtualNetworkResult struct {
 	// The allowed subnets of the virtual network.
 	AllowedSubnets []SubnetResponse `pulumi:"allowedSubnets"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The creation date of the virtual network.
 	CreatedDate string `pulumi:"createdDate"`
 	// The description of the virtual network.
@@ -106,6 +108,11 @@ func (o LookupVirtualNetworkResultOutput) ToLookupVirtualNetworkResultOutputWith
 // The allowed subnets of the virtual network.
 func (o LookupVirtualNetworkResultOutput) AllowedSubnets() SubnetResponseArrayOutput {
 	return o.ApplyT(func(v LookupVirtualNetworkResult) []SubnetResponse { return v.AllowedSubnets }).(SubnetResponseArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupVirtualNetworkResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVirtualNetworkResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The creation date of the virtual network.

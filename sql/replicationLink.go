@@ -13,12 +13,12 @@ import (
 )
 
 // A replication link.
-// Azure REST API version: 2023-05-01-preview.
-//
-// Other available API versions: 2023-08-01-preview, 2024-05-01-preview.
+// Azure REST API version: 2024-05-01-preview. Prior API version in Azure Native 2.x: 2023-05-01-preview.
 type ReplicationLink struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Whether the user is currently allowed to terminate the link.
 	IsTerminationAllowed pulumi.BoolOutput `pulumi:"isTerminationAllowed"`
 	// Link type (GEO, NAMED, STANDBY). Update operation does not support NAMED.
@@ -169,6 +169,11 @@ func (o ReplicationLinkOutput) ToReplicationLinkOutput() ReplicationLinkOutput {
 
 func (o ReplicationLinkOutput) ToReplicationLinkOutputWithContext(ctx context.Context) ReplicationLinkOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ReplicationLinkOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ReplicationLink) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Whether the user is currently allowed to terminate the link.

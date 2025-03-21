@@ -13,12 +13,12 @@ import (
 )
 
 // Guest Usages Resource
-// Azure REST API version: 2021-04-01. Prior API version in Azure Native 1.x: 2020-05-01-preview.
-//
-// Other available API versions: 2023-01-18-preview, 2023-05-17-preview.
+// Azure REST API version: 2023-05-17-preview. Prior API version in Azure Native 2.x: 2021-04-01.
 type GuestUsage struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Location of the Guest Usages resource.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// The name of the Guest Usages resource.
@@ -152,6 +152,11 @@ func (o GuestUsageOutput) ToGuestUsageOutput() GuestUsageOutput {
 
 func (o GuestUsageOutput) ToGuestUsageOutputWithContext(ctx context.Context) GuestUsageOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o GuestUsageOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *GuestUsage) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Location of the Guest Usages resource.

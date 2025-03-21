@@ -12,9 +12,7 @@ import (
 )
 
 // Gets the details of the email template specified by its identifier.
-// Azure REST API version: 2022-08-01.
-//
-// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
+// Azure REST API version: 2022-09-01-preview.
 func LookupEmailTemplate(ctx *pulumi.Context, args *LookupEmailTemplateArgs, opts ...pulumi.InvokeOption) (*LookupEmailTemplateResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupEmailTemplateResult
@@ -36,6 +34,8 @@ type LookupEmailTemplateArgs struct {
 
 // Email Template details.
 type LookupEmailTemplateResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Email Template Body. This should be a valid XDocument
 	Body string `pulumi:"body"`
 	// Description of the Email Template.
@@ -91,6 +91,11 @@ func (o LookupEmailTemplateResultOutput) ToLookupEmailTemplateResultOutput() Loo
 
 func (o LookupEmailTemplateResultOutput) ToLookupEmailTemplateResultOutputWithContext(ctx context.Context) LookupEmailTemplateResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupEmailTemplateResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEmailTemplateResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Email Template Body. This should be a valid XDocument

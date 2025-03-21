@@ -13,12 +13,12 @@ import (
 )
 
 // The Permission binding resource.
-// Azure REST API version: 2023-06-01-preview.
-//
-// Other available API versions: 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-02-15.
+// Azure REST API version: 2025-02-15. Prior API version in Azure Native 2.x: 2023-06-01-preview.
 type PermissionBinding struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the client group resource that the permission is bound to.
 	// The client group needs to be a resource under the same namespace the permission binding is a part of.
 	ClientGroupName pulumi.StringPtrOutput `pulumi:"clientGroupName"`
@@ -30,7 +30,7 @@ type PermissionBinding struct {
 	Permission pulumi.StringPtrOutput `pulumi:"permission"`
 	// Provisioning state of the PermissionBinding resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// The system metadata relating to the PermissionBinding resource.
+	// The system metadata relating to the Event Grid resource.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The name of the Topic Space resource that the permission is bound to.
 	// The Topic space needs to be a resource under the same namespace the permission binding is a part of.
@@ -178,6 +178,11 @@ func (o PermissionBindingOutput) ToPermissionBindingOutputWithContext(ctx contex
 	return o
 }
 
+// The Azure API version of the resource.
+func (o PermissionBindingOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PermissionBinding) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The name of the client group resource that the permission is bound to.
 // The client group needs to be a resource under the same namespace the permission binding is a part of.
 func (o PermissionBindingOutput) ClientGroupName() pulumi.StringPtrOutput {
@@ -204,7 +209,7 @@ func (o PermissionBindingOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *PermissionBinding) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// The system metadata relating to the PermissionBinding resource.
+// The system metadata relating to the Event Grid resource.
 func (o PermissionBindingOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *PermissionBinding) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

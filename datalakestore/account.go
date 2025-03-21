@@ -13,12 +13,14 @@ import (
 )
 
 // Data Lake Store account information.
-// Azure REST API version: 2016-11-01. Prior API version in Azure Native 1.x: 2016-11-01.
+// Azure REST API version: 2016-11-01. Prior API version in Azure Native 2.x: 2016-11-01.
 type Account struct {
 	pulumi.CustomResourceState
 
 	// The unique identifier associated with this Data Lake Store account.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The account creation time.
 	CreationTime pulumi.StringOutput `pulumi:"creationTime"`
 	// The commitment tier in use for the current month.
@@ -220,6 +222,11 @@ func (o AccountOutput) ToAccountOutputWithContext(ctx context.Context) AccountOu
 // The unique identifier associated with this Data Lake Store account.
 func (o AccountOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o AccountOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The account creation time.

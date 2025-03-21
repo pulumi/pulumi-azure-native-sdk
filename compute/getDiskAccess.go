@@ -12,9 +12,7 @@ import (
 )
 
 // Gets information about a disk access resource.
-// Azure REST API version: 2022-07-02.
-//
-// Other available API versions: 2023-01-02, 2023-04-02, 2023-10-02, 2024-03-02.
+// Azure REST API version: 2024-03-02.
 func LookupDiskAccess(ctx *pulumi.Context, args *LookupDiskAccessArgs, opts ...pulumi.InvokeOption) (*LookupDiskAccessResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDiskAccessResult
@@ -34,6 +32,8 @@ type LookupDiskAccessArgs struct {
 
 // disk access resource.
 type LookupDiskAccessResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The extended location where the disk access will be created. Extended location cannot be changed.
 	ExtendedLocation *ExtendedLocationResponse `pulumi:"extendedLocation"`
 	// Resource Id
@@ -87,6 +87,11 @@ func (o LookupDiskAccessResultOutput) ToLookupDiskAccessResultOutput() LookupDis
 
 func (o LookupDiskAccessResultOutput) ToLookupDiskAccessResultOutputWithContext(ctx context.Context) LookupDiskAccessResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupDiskAccessResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDiskAccessResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The extended location where the disk access will be created. Extended location cannot be changed.

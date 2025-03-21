@@ -12,9 +12,7 @@ import (
 )
 
 // Get all delivery attributes for an event subscription of a partner topic.
-// Azure REST API version: 2022-06-15.
-//
-// Other available API versions: 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-02-15.
+// Azure REST API version: 2025-02-15.
 func GetPartnerTopicEventSubscriptionDeliveryAttributes(ctx *pulumi.Context, args *GetPartnerTopicEventSubscriptionDeliveryAttributesArgs, opts ...pulumi.InvokeOption) (*GetPartnerTopicEventSubscriptionDeliveryAttributesResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetPartnerTopicEventSubscriptionDeliveryAttributesResult
@@ -26,7 +24,7 @@ func GetPartnerTopicEventSubscriptionDeliveryAttributes(ctx *pulumi.Context, arg
 }
 
 type GetPartnerTopicEventSubscriptionDeliveryAttributesArgs struct {
-	// Name of the event subscription to be created. Event subscription names must be between 3 and 100 characters in length and use alphanumeric letters only.
+	// Name of the event subscription.
 	EventSubscriptionName string `pulumi:"eventSubscriptionName"`
 	// Name of the partner topic.
 	PartnerTopicName string `pulumi:"partnerTopicName"`
@@ -50,7 +48,7 @@ func GetPartnerTopicEventSubscriptionDeliveryAttributesOutput(ctx *pulumi.Contex
 }
 
 type GetPartnerTopicEventSubscriptionDeliveryAttributesOutputArgs struct {
-	// Name of the event subscription to be created. Event subscription names must be between 3 and 100 characters in length and use alphanumeric letters only.
+	// Name of the event subscription.
 	EventSubscriptionName pulumi.StringInput `pulumi:"eventSubscriptionName"`
 	// Name of the partner topic.
 	PartnerTopicName pulumi.StringInput `pulumi:"partnerTopicName"`

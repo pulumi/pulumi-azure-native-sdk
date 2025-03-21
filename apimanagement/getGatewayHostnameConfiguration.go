@@ -12,9 +12,7 @@ import (
 )
 
 // Get details of a hostname configuration
-// Azure REST API version: 2022-08-01.
-//
-// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
+// Azure REST API version: 2022-09-01-preview.
 func LookupGatewayHostnameConfiguration(ctx *pulumi.Context, args *LookupGatewayHostnameConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupGatewayHostnameConfigurationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGatewayHostnameConfigurationResult
@@ -38,6 +36,8 @@ type LookupGatewayHostnameConfigurationArgs struct {
 
 // Gateway hostname configuration details.
 type LookupGatewayHostnameConfigurationResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Identifier of Certificate entity that will be used for TLS connection establishment
 	CertificateId *string `pulumi:"certificateId"`
 	// Hostname value. Supports valid domain name, partial or full wildcard
@@ -95,6 +95,11 @@ func (o LookupGatewayHostnameConfigurationResultOutput) ToLookupGatewayHostnameC
 
 func (o LookupGatewayHostnameConfigurationResultOutput) ToLookupGatewayHostnameConfigurationResultOutputWithContext(ctx context.Context) LookupGatewayHostnameConfigurationResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupGatewayHostnameConfigurationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGatewayHostnameConfigurationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Identifier of Certificate entity that will be used for TLS connection establishment

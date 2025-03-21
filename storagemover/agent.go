@@ -13,9 +13,7 @@ import (
 )
 
 // The Agent resource.
-// Azure REST API version: 2023-03-01. Prior API version in Azure Native 1.x: 2022-07-01-preview.
-//
-// Other available API versions: 2023-07-01-preview, 2023-10-01, 2024-07-01.
+// Azure REST API version: 2024-07-01. Prior API version in Azure Native 2.x: 2023-03-01.
 type Agent struct {
 	pulumi.CustomResourceState
 
@@ -27,6 +25,8 @@ type Agent struct {
 	ArcResourceId pulumi.StringOutput `pulumi:"arcResourceId"`
 	// The VM UUID of the Hybrid Compute resource for the Agent.
 	ArcVmUuid pulumi.StringOutput `pulumi:"arcVmUuid"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// A description for the Agent.
 	Description  pulumi.StringPtrOutput                    `pulumi:"description"`
 	ErrorDetails AgentPropertiesResponseErrorDetailsOutput `pulumi:"errorDetails"`
@@ -42,10 +42,14 @@ type Agent struct {
 	NumberOfCores pulumi.Float64Output `pulumi:"numberOfCores"`
 	// The provisioning state of this resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// Resource system metadata.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// The agent's local time zone represented in Windows format.
+	TimeZone pulumi.StringOutput `pulumi:"timeZone"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
+	// The WAN-link upload limit schedule that applies to any Job Run the agent executes. Data plane operations (migrating files) are affected. Control plane operations ensure seamless migration functionality and are not limited by this schedule. The schedule is interpreted with the agent's local time.
+	UploadLimitSchedule UploadLimitScheduleResponsePtrOutput `pulumi:"uploadLimitSchedule"`
 	// Uptime of the Agent in seconds.
 	UptimeInSeconds pulumi.Float64Output `pulumi:"uptimeInSeconds"`
 }
@@ -132,6 +136,8 @@ type agentArgs struct {
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the Storage Mover resource.
 	StorageMoverName string `pulumi:"storageMoverName"`
+	// The WAN-link upload limit schedule that applies to any Job Run the agent executes. Data plane operations (migrating files) are affected. Control plane operations ensure seamless migration functionality and are not limited by this schedule. The schedule is interpreted with the agent's local time.
+	UploadLimitSchedule *UploadLimitSchedule `pulumi:"uploadLimitSchedule"`
 }
 
 // The set of arguments for constructing a Agent resource.
@@ -148,6 +154,8 @@ type AgentArgs struct {
 	ResourceGroupName pulumi.StringInput
 	// The name of the Storage Mover resource.
 	StorageMoverName pulumi.StringInput
+	// The WAN-link upload limit schedule that applies to any Job Run the agent executes. Data plane operations (migrating files) are affected. Control plane operations ensure seamless migration functionality and are not limited by this schedule. The schedule is interpreted with the agent's local time.
+	UploadLimitSchedule UploadLimitSchedulePtrInput
 }
 
 func (AgentArgs) ElementType() reflect.Type {
@@ -207,6 +215,11 @@ func (o AgentOutput) ArcVmUuid() pulumi.StringOutput {
 	return o.ApplyT(func(v *Agent) pulumi.StringOutput { return v.ArcVmUuid }).(pulumi.StringOutput)
 }
 
+// The Azure API version of the resource.
+func (o AgentOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Agent) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // A description for the Agent.
 func (o AgentOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Agent) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -246,14 +259,24 @@ func (o AgentOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *Agent) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Resource system metadata.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o AgentOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *Agent) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The agent's local time zone represented in Windows format.
+func (o AgentOutput) TimeZone() pulumi.StringOutput {
+	return o.ApplyT(func(v *Agent) pulumi.StringOutput { return v.TimeZone }).(pulumi.StringOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o AgentOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Agent) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// The WAN-link upload limit schedule that applies to any Job Run the agent executes. Data plane operations (migrating files) are affected. Control plane operations ensure seamless migration functionality and are not limited by this schedule. The schedule is interpreted with the agent's local time.
+func (o AgentOutput) UploadLimitSchedule() UploadLimitScheduleResponsePtrOutput {
+	return o.ApplyT(func(v *Agent) UploadLimitScheduleResponsePtrOutput { return v.UploadLimitSchedule }).(UploadLimitScheduleResponsePtrOutput)
 }
 
 // Uptime of the Agent in seconds.

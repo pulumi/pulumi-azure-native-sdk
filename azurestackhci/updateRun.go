@@ -13,12 +13,12 @@ import (
 )
 
 // Details of an Update run
-// Azure REST API version: 2023-03-01.
-//
-// Other available API versions: 2022-12-15-preview, 2023-06-01, 2023-08-01, 2023-08-01-preview, 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-04-01, 2024-09-01-preview, 2024-12-01-preview.
+// Azure REST API version: 2024-04-01. Prior API version in Azure Native 2.x: 2023-03-01.
 type UpdateRun struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// More detailed description of the step.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Duration of the update run.
@@ -27,6 +27,8 @@ type UpdateRun struct {
 	EndTimeUtc pulumi.StringPtrOutput `pulumi:"endTimeUtc"`
 	// Error message, specified if the step is in a failed state.
 	ErrorMessage pulumi.StringPtrOutput `pulumi:"errorMessage"`
+	// Expected execution time of a given step. This is optionally authored in the update action plan and can be empty.
+	ExpectedExecutionTime pulumi.StringPtrOutput `pulumi:"expectedExecutionTime"`
 	// Timestamp of the most recently completed step in the update run.
 	LastUpdatedTime pulumi.StringPtrOutput `pulumi:"lastUpdatedTime"`
 	// Completion time of this step or the last completed sub-step.
@@ -154,6 +156,8 @@ type updateRunArgs struct {
 	EndTimeUtc *string `pulumi:"endTimeUtc"`
 	// Error message, specified if the step is in a failed state.
 	ErrorMessage *string `pulumi:"errorMessage"`
+	// Expected execution time of a given step. This is optionally authored in the update action plan and can be empty.
+	ExpectedExecutionTime *string `pulumi:"expectedExecutionTime"`
 	// Timestamp of the most recently completed step in the update run.
 	LastUpdatedTime *string `pulumi:"lastUpdatedTime"`
 	// Completion time of this step or the last completed sub-step.
@@ -192,6 +196,8 @@ type UpdateRunArgs struct {
 	EndTimeUtc pulumi.StringPtrInput
 	// Error message, specified if the step is in a failed state.
 	ErrorMessage pulumi.StringPtrInput
+	// Expected execution time of a given step. This is optionally authored in the update action plan and can be empty.
+	ExpectedExecutionTime pulumi.StringPtrInput
 	// Timestamp of the most recently completed step in the update run.
 	LastUpdatedTime pulumi.StringPtrInput
 	// Completion time of this step or the last completed sub-step.
@@ -255,6 +261,11 @@ func (o UpdateRunOutput) ToUpdateRunOutputWithContext(ctx context.Context) Updat
 	return o
 }
 
+// The Azure API version of the resource.
+func (o UpdateRunOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *UpdateRun) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // More detailed description of the step.
 func (o UpdateRunOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UpdateRun) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -273,6 +284,11 @@ func (o UpdateRunOutput) EndTimeUtc() pulumi.StringPtrOutput {
 // Error message, specified if the step is in a failed state.
 func (o UpdateRunOutput) ErrorMessage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UpdateRun) pulumi.StringPtrOutput { return v.ErrorMessage }).(pulumi.StringPtrOutput)
+}
+
+// Expected execution time of a given step. This is optionally authored in the update action plan and can be empty.
+func (o UpdateRunOutput) ExpectedExecutionTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UpdateRun) pulumi.StringPtrOutput { return v.ExpectedExecutionTime }).(pulumi.StringPtrOutput)
 }
 
 // Timestamp of the most recently completed step in the update run.

@@ -13,12 +13,14 @@ import (
 )
 
 // The integration account RosettaNet process configuration.
-// Azure REST API version: 2016-06-01. Prior API version in Azure Native 1.x: 2016-06-01.
+// Azure REST API version: 2016-06-01. Prior API version in Azure Native 2.x: 2016-06-01.
 type RosettaNetProcessConfiguration struct {
 	pulumi.CustomResourceState
 
 	// The RosettaNet process configuration activity settings.
 	ActivitySettings RosettaNetPipActivitySettingsResponseOutput `pulumi:"activitySettings"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The changed time.
 	ChangedTime pulumi.StringOutput `pulumi:"changedTime"`
 	// The created time.
@@ -217,6 +219,11 @@ func (o RosettaNetProcessConfigurationOutput) ActivitySettings() RosettaNetPipAc
 	return o.ApplyT(func(v *RosettaNetProcessConfiguration) RosettaNetPipActivitySettingsResponseOutput {
 		return v.ActivitySettings
 	}).(RosettaNetPipActivitySettingsResponseOutput)
+}
+
+// The Azure API version of the resource.
+func (o RosettaNetProcessConfigurationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *RosettaNetProcessConfiguration) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The changed time.

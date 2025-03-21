@@ -13,10 +13,12 @@ import (
 )
 
 // A Transform encapsulates the rules or instructions for generating desired outputs from input media, such as by transcoding or by extracting insights. After the Transform is created, it can be applied to input media by creating Jobs.
-// Azure REST API version: 2022-07-01. Prior API version in Azure Native 1.x: 2020-05-01.
+// Azure REST API version: 2022-07-01. Prior API version in Azure Native 2.x: 2022-07-01.
 type Transform struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The UTC date and time when the Transform was created, in 'YYYY-MM-DDThh:mm:ssZ' format.
 	Created pulumi.StringOutput `pulumi:"created"`
 	// An optional verbose description of the Transform.
@@ -170,6 +172,11 @@ func (o TransformOutput) ToTransformOutput() TransformOutput {
 
 func (o TransformOutput) ToTransformOutputWithContext(ctx context.Context) TransformOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o TransformOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Transform) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The UTC date and time when the Transform was created, in 'YYYY-MM-DDThh:mm:ssZ' format.

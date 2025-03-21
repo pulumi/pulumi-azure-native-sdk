@@ -13,12 +13,12 @@ import (
 )
 
 // Workspace details.
-// Azure REST API version: 2022-09-01-preview.
-//
-// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
+// Azure REST API version: 2022-09-01-preview. Prior API version in Azure Native 2.x: 2022-09-01-preview.
 type Workspace struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Description of the workspace.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Name of the workspace.
@@ -160,6 +160,11 @@ func (o WorkspaceOutput) ToWorkspaceOutput() WorkspaceOutput {
 
 func (o WorkspaceOutput) ToWorkspaceOutputWithContext(ctx context.Context) WorkspaceOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o WorkspaceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Workspace) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Description of the workspace.

@@ -13,7 +13,7 @@ import (
 )
 
 // Represents Anomaly Security ML Analytics Settings
-// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2022-05-01-preview.
+// Azure REST API version: 2024-09-01. Prior API version in Azure Native 2.x: 2023-02-01.
 type AnomalySecurityMLAnalyticsSettings struct {
 	pulumi.CustomResourceState
 
@@ -21,6 +21,8 @@ type AnomalySecurityMLAnalyticsSettings struct {
 	AnomalySettingsVersion pulumi.IntPtrOutput `pulumi:"anomalySettingsVersion"`
 	// The anomaly version of the AnomalySecurityMLAnalyticsSettings.
 	AnomalyVersion pulumi.StringOutput `pulumi:"anomalyVersion"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The customizable observations of the AnomalySecurityMLAnalyticsSettings.
 	CustomizableObservations pulumi.AnyOutput `pulumi:"customizableObservations"`
 	// The description of the SecurityMLAnalyticsSettings.
@@ -174,6 +176,9 @@ func NewAnomalySecurityMLAnalyticsSettings(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20250101preview:AnomalySecurityMLAnalyticsSettings"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20250301:AnomalySecurityMLAnalyticsSettings"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -331,6 +336,11 @@ func (o AnomalySecurityMLAnalyticsSettingsOutput) AnomalySettingsVersion() pulum
 // The anomaly version of the AnomalySecurityMLAnalyticsSettings.
 func (o AnomalySecurityMLAnalyticsSettingsOutput) AnomalyVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *AnomalySecurityMLAnalyticsSettings) pulumi.StringOutput { return v.AnomalyVersion }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o AnomalySecurityMLAnalyticsSettingsOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *AnomalySecurityMLAnalyticsSettings) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The customizable observations of the AnomalySecurityMLAnalyticsSettings.

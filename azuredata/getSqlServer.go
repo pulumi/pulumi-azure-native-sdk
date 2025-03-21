@@ -36,6 +36,8 @@ type LookupSqlServerArgs struct {
 
 // A SQL server.
 type LookupSqlServerResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Cores of the Sql Server.
 	Cores *int `pulumi:"cores"`
 	// Sql Server Edition.
@@ -91,6 +93,11 @@ func (o LookupSqlServerResultOutput) ToLookupSqlServerResultOutput() LookupSqlSe
 
 func (o LookupSqlServerResultOutput) ToLookupSqlServerResultOutputWithContext(ctx context.Context) LookupSqlServerResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupSqlServerResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSqlServerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Cores of the Sql Server.

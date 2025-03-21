@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-azure-native-sdk/dashboard/v2
+module github.com/pulumi/pulumi-azure-native-sdk/dashboard/v3
 
 go 1.22
 

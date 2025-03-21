@@ -12,9 +12,7 @@ import (
 )
 
 // Gets the specified application gateway.
-// Azure REST API version: 2023-02-01.
-//
-// Other available API versions: 2019-06-01, 2019-08-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Azure REST API version: 2024-05-01.
 func LookupApplicationGateway(ctx *pulumi.Context, args *LookupApplicationGatewayArgs, opts ...pulumi.InvokeOption) (*LookupApplicationGatewayResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupApplicationGatewayResult
@@ -38,6 +36,8 @@ type LookupApplicationGatewayResult struct {
 	AuthenticationCertificates []ApplicationGatewayAuthenticationCertificateResponse `pulumi:"authenticationCertificates"`
 	// Autoscale Configuration.
 	AutoscaleConfiguration *ApplicationGatewayAutoscaleConfigurationResponse `pulumi:"autoscaleConfiguration"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Backend address pool of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
 	BackendAddressPools []ApplicationGatewayBackendAddressPoolResponse `pulumi:"backendAddressPools"`
 	// Backend http settings of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
@@ -171,6 +171,11 @@ func (o LookupApplicationGatewayResultOutput) AutoscaleConfiguration() Applicati
 	return o.ApplyT(func(v LookupApplicationGatewayResult) *ApplicationGatewayAutoscaleConfigurationResponse {
 		return v.AutoscaleConfiguration
 	}).(ApplicationGatewayAutoscaleConfigurationResponsePtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupApplicationGatewayResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApplicationGatewayResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Backend address pool of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).

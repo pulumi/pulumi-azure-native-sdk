@@ -13,12 +13,12 @@ import (
 )
 
 // The HDInsight cluster.
-// Azure REST API version: 2021-06-01. Prior API version in Azure Native 1.x: 2018-06-01-preview.
-//
-// Other available API versions: 2023-04-15-preview, 2023-06-01-preview, 2023-08-15-preview, 2023-11-01-preview, 2024-05-01-preview, 2024-08-01-preview.
+// Azure REST API version: 2024-08-01-preview. Prior API version in Azure Native 2.x: 2021-06-01.
 type Cluster struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The ETag for the resource
 	Etag pulumi.StringPtrOutput `pulumi:"etag"`
 	// The identity of the cluster, if configured.
@@ -66,10 +66,22 @@ func NewCluster(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:hdinsight/v20230415preview:Cluster"),
 		},
 		{
+			Type: pulumi.String("azure-native:hdinsight/v20230601preview:Cluster"),
+		},
+		{
 			Type: pulumi.String("azure-native:hdinsight/v20230815preview:Cluster"),
 		},
 		{
+			Type: pulumi.String("azure-native:hdinsight/v20231101preview:Cluster"),
+		},
+		{
+			Type: pulumi.String("azure-native:hdinsight/v20240501preview:Cluster"),
+		},
+		{
 			Type: pulumi.String("azure-native:hdinsight/v20240801preview:Cluster"),
+		},
+		{
+			Type: pulumi.String("azure-native:hdinsight/v20250115preview:Cluster"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -175,6 +187,11 @@ func (o ClusterOutput) ToClusterOutput() ClusterOutput {
 
 func (o ClusterOutput) ToClusterOutputWithContext(ctx context.Context) ClusterOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ClusterOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The ETag for the resource

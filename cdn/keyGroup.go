@@ -13,12 +13,12 @@ import (
 )
 
 // Contains a list of references of UrlSigningKey type secret objects.
-// Azure REST API version: 2023-07-01-preview.
-//
-// Other available API versions: 2024-05-01-preview, 2024-06-01-preview.
+// Azure REST API version: 2024-06-01-preview. Prior API version in Azure Native 2.x: 2023-07-01-preview.
 type KeyGroup struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion  pulumi.StringOutput `pulumi:"azureApiVersion"`
 	DeploymentStatus pulumi.StringOutput `pulumi:"deploymentStatus"`
 	// Names of UrlSigningKey type secret objects
 	KeyReferences ResourceReferenceResponseArrayOutput `pulumi:"keyReferences"`
@@ -96,7 +96,7 @@ type keyGroupArgs struct {
 	KeyReferences []ResourceReference `pulumi:"keyReferences"`
 	// Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
 	ProfileName string `pulumi:"profileName"`
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -108,7 +108,7 @@ type KeyGroupArgs struct {
 	KeyReferences ResourceReferenceArrayInput
 	// Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
 	ProfileName pulumi.StringInput
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 }
 
@@ -147,6 +147,11 @@ func (o KeyGroupOutput) ToKeyGroupOutput() KeyGroupOutput {
 
 func (o KeyGroupOutput) ToKeyGroupOutputWithContext(ctx context.Context) KeyGroupOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o KeyGroupOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *KeyGroup) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 func (o KeyGroupOutput) DeploymentStatus() pulumi.StringOutput {

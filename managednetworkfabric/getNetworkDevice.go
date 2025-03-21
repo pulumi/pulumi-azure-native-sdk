@@ -11,10 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Get the Network Device resource details.
-// Azure REST API version: 2023-02-01-preview.
-//
-// Other available API versions: 2023-06-15.
+// Gets the Network Device resource details.
+// Azure REST API version: 2023-06-15.
 func LookupNetworkDevice(ctx *pulumi.Context, args *LookupNetworkDeviceArgs, opts ...pulumi.InvokeOption) (*LookupNetworkDeviceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNetworkDeviceResult
@@ -26,33 +24,43 @@ func LookupNetworkDevice(ctx *pulumi.Context, args *LookupNetworkDeviceArgs, opt
 }
 
 type LookupNetworkDeviceArgs struct {
-	// Name of the Network Device
+	// Name of the Network Device.
 	NetworkDeviceName string `pulumi:"networkDeviceName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
-// The NetworkDevice resource definition.
+// The Network Device resource definition.
 type LookupNetworkDeviceResult struct {
+	// Administrative state of the resource.
+	AdministrativeState string `pulumi:"administrativeState"`
 	// Switch configuration description.
 	Annotation *string `pulumi:"annotation"`
-	// The host Name of the device.
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// Configuration state of the resource.
+	ConfigurationState string `pulumi:"configurationState"`
+	// The host name of the device.
 	HostName *string `pulumi:"hostName"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
+	// Management IPv4 Address.
+	ManagementIpv4Address string `pulumi:"managementIpv4Address"`
+	// Management IPv6 Address.
+	ManagementIpv6Address string `pulumi:"managementIpv6Address"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// networkDeviceRole is the device role: Example: CE | ToR.
+	// NetworkDeviceRole is the device role: Example: CE | ToR.
 	NetworkDeviceRole string `pulumi:"networkDeviceRole"`
 	// Network Device SKU name.
-	NetworkDeviceSku string `pulumi:"networkDeviceSku"`
+	NetworkDeviceSku *string `pulumi:"networkDeviceSku"`
 	// Reference to network rack resource id.
 	NetworkRackId string `pulumi:"networkRackId"`
-	// Gets the provisioning state of the resource.
+	// Provisioning state of the resource.
 	ProvisioningState string `pulumi:"provisioningState"`
-	// serialNumber of the format Make;Model;HardwareRevisionId;SerialNumber. Example: Arista;DCS-7280DR3-24;12.05;JPE21116969
+	// Serial number of the device. Format of serial Number - Make;Model;HardwareRevisionId;SerialNumber.
 	SerialNumber string `pulumi:"serialNumber"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
@@ -74,7 +82,7 @@ func LookupNetworkDeviceOutput(ctx *pulumi.Context, args LookupNetworkDeviceOutp
 }
 
 type LookupNetworkDeviceOutputArgs struct {
-	// Name of the Network Device
+	// Name of the Network Device.
 	NetworkDeviceName pulumi.StringInput `pulumi:"networkDeviceName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
@@ -84,7 +92,7 @@ func (LookupNetworkDeviceOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupNetworkDeviceArgs)(nil)).Elem()
 }
 
-// The NetworkDevice resource definition.
+// The Network Device resource definition.
 type LookupNetworkDeviceResultOutput struct{ *pulumi.OutputState }
 
 func (LookupNetworkDeviceResultOutput) ElementType() reflect.Type {
@@ -99,17 +107,32 @@ func (o LookupNetworkDeviceResultOutput) ToLookupNetworkDeviceResultOutputWithCo
 	return o
 }
 
+// Administrative state of the resource.
+func (o LookupNetworkDeviceResultOutput) AdministrativeState() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkDeviceResult) string { return v.AdministrativeState }).(pulumi.StringOutput)
+}
+
 // Switch configuration description.
 func (o LookupNetworkDeviceResultOutput) Annotation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNetworkDeviceResult) *string { return v.Annotation }).(pulumi.StringPtrOutput)
 }
 
-// The host Name of the device.
+// The Azure API version of the resource.
+func (o LookupNetworkDeviceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkDeviceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Configuration state of the resource.
+func (o LookupNetworkDeviceResultOutput) ConfigurationState() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkDeviceResult) string { return v.ConfigurationState }).(pulumi.StringOutput)
+}
+
+// The host name of the device.
 func (o LookupNetworkDeviceResultOutput) HostName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNetworkDeviceResult) *string { return v.HostName }).(pulumi.StringPtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupNetworkDeviceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkDeviceResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -119,19 +142,29 @@ func (o LookupNetworkDeviceResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkDeviceResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Management IPv4 Address.
+func (o LookupNetworkDeviceResultOutput) ManagementIpv4Address() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkDeviceResult) string { return v.ManagementIpv4Address }).(pulumi.StringOutput)
+}
+
+// Management IPv6 Address.
+func (o LookupNetworkDeviceResultOutput) ManagementIpv6Address() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkDeviceResult) string { return v.ManagementIpv6Address }).(pulumi.StringOutput)
+}
+
 // The name of the resource
 func (o LookupNetworkDeviceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkDeviceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// networkDeviceRole is the device role: Example: CE | ToR.
+// NetworkDeviceRole is the device role: Example: CE | ToR.
 func (o LookupNetworkDeviceResultOutput) NetworkDeviceRole() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkDeviceResult) string { return v.NetworkDeviceRole }).(pulumi.StringOutput)
 }
 
 // Network Device SKU name.
-func (o LookupNetworkDeviceResultOutput) NetworkDeviceSku() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupNetworkDeviceResult) string { return v.NetworkDeviceSku }).(pulumi.StringOutput)
+func (o LookupNetworkDeviceResultOutput) NetworkDeviceSku() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupNetworkDeviceResult) *string { return v.NetworkDeviceSku }).(pulumi.StringPtrOutput)
 }
 
 // Reference to network rack resource id.
@@ -139,12 +172,12 @@ func (o LookupNetworkDeviceResultOutput) NetworkRackId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkDeviceResult) string { return v.NetworkRackId }).(pulumi.StringOutput)
 }
 
-// Gets the provisioning state of the resource.
+// Provisioning state of the resource.
 func (o LookupNetworkDeviceResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkDeviceResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// serialNumber of the format Make;Model;HardwareRevisionId;SerialNumber. Example: Arista;DCS-7280DR3-24;12.05;JPE21116969
+// Serial number of the device. Format of serial Number - Make;Model;HardwareRevisionId;SerialNumber.
 func (o LookupNetworkDeviceResultOutput) SerialNumber() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkDeviceResult) string { return v.SerialNumber }).(pulumi.StringOutput)
 }

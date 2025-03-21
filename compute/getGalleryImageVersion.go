@@ -12,9 +12,7 @@ import (
 )
 
 // Retrieves information about a gallery image version.
-// Azure REST API version: 2022-03-03.
-//
-// Other available API versions: 2022-08-03, 2023-07-03, 2024-03-03.
+// Azure REST API version: 2024-03-03.
 func LookupGalleryImageVersion(ctx *pulumi.Context, args *LookupGalleryImageVersionArgs, opts ...pulumi.InvokeOption) (*LookupGalleryImageVersionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGalleryImageVersionResult
@@ -40,6 +38,8 @@ type LookupGalleryImageVersionArgs struct {
 
 // Specifies information about the gallery image version that you want to create or update.
 type LookupGalleryImageVersionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource Id
 	Id string `pulumi:"id"`
 	// Resource location
@@ -52,14 +52,20 @@ type LookupGalleryImageVersionResult struct {
 	PublishingProfile *GalleryImageVersionPublishingProfileResponse `pulumi:"publishingProfile"`
 	// This is the replication status of the gallery image version.
 	ReplicationStatus ReplicationStatusResponse `pulumi:"replicationStatus"`
+	// Indicates if this is a soft-delete resource restoration request.
+	Restore *bool `pulumi:"restore"`
 	// This is the safety profile of the Gallery Image Version.
 	SafetyProfile *GalleryImageVersionSafetyProfileResponse `pulumi:"safetyProfile"`
+	// The security profile of a gallery image version
+	SecurityProfile *ImageVersionSecurityProfileResponse `pulumi:"securityProfile"`
 	// This is the storage profile of a Gallery Image Version.
 	StorageProfile GalleryImageVersionStorageProfileResponse `pulumi:"storageProfile"`
 	// Resource tags
 	Tags map[string]string `pulumi:"tags"`
 	// Resource type
 	Type string `pulumi:"type"`
+	// This is the validations profile of a Gallery Image Version.
+	ValidationsProfile ValidationsProfileResponse `pulumi:"validationsProfile"`
 }
 
 func LookupGalleryImageVersionOutput(ctx *pulumi.Context, args LookupGalleryImageVersionOutputArgs, opts ...pulumi.InvokeOption) LookupGalleryImageVersionResultOutput {
@@ -103,6 +109,11 @@ func (o LookupGalleryImageVersionResultOutput) ToLookupGalleryImageVersionResult
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupGalleryImageVersionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGalleryImageVersionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Resource Id
 func (o LookupGalleryImageVersionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGalleryImageVersionResult) string { return v.Id }).(pulumi.StringOutput)
@@ -135,11 +146,21 @@ func (o LookupGalleryImageVersionResultOutput) ReplicationStatus() ReplicationSt
 	return o.ApplyT(func(v LookupGalleryImageVersionResult) ReplicationStatusResponse { return v.ReplicationStatus }).(ReplicationStatusResponseOutput)
 }
 
+// Indicates if this is a soft-delete resource restoration request.
+func (o LookupGalleryImageVersionResultOutput) Restore() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupGalleryImageVersionResult) *bool { return v.Restore }).(pulumi.BoolPtrOutput)
+}
+
 // This is the safety profile of the Gallery Image Version.
 func (o LookupGalleryImageVersionResultOutput) SafetyProfile() GalleryImageVersionSafetyProfileResponsePtrOutput {
 	return o.ApplyT(func(v LookupGalleryImageVersionResult) *GalleryImageVersionSafetyProfileResponse {
 		return v.SafetyProfile
 	}).(GalleryImageVersionSafetyProfileResponsePtrOutput)
+}
+
+// The security profile of a gallery image version
+func (o LookupGalleryImageVersionResultOutput) SecurityProfile() ImageVersionSecurityProfileResponsePtrOutput {
+	return o.ApplyT(func(v LookupGalleryImageVersionResult) *ImageVersionSecurityProfileResponse { return v.SecurityProfile }).(ImageVersionSecurityProfileResponsePtrOutput)
 }
 
 // This is the storage profile of a Gallery Image Version.
@@ -157,6 +178,11 @@ func (o LookupGalleryImageVersionResultOutput) Tags() pulumi.StringMapOutput {
 // Resource type
 func (o LookupGalleryImageVersionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGalleryImageVersionResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// This is the validations profile of a Gallery Image Version.
+func (o LookupGalleryImageVersionResultOutput) ValidationsProfile() ValidationsProfileResponseOutput {
+	return o.ApplyT(func(v LookupGalleryImageVersionResult) ValidationsProfileResponse { return v.ValidationsProfile }).(ValidationsProfileResponseOutput)
 }
 
 func init() {

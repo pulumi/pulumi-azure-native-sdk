@@ -12,9 +12,7 @@ import (
 )
 
 // Get properties of the provided virtual machine.
-// Azure REST API version: 2023-10-01-preview.
-//
-// Other available API versions: 2023-07-01, 2024-06-01-preview, 2024-07-01, 2024-10-01-preview.
+// Azure REST API version: 2025-02-01.
 func LookupVirtualMachine(ctx *pulumi.Context, args *LookupVirtualMachineArgs, opts ...pulumi.InvokeOption) (*LookupVirtualMachineResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVirtualMachineResult
@@ -37,6 +35,8 @@ type LookupVirtualMachineResult struct {
 	AdminUsername string `pulumi:"adminUsername"`
 	// The cluster availability zone containing this virtual machine.
 	AvailabilityZone string `pulumi:"availabilityZone"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The resource ID of the bare metal machine that hosts the virtual machine.
 	BareMetalMachineId string `pulumi:"bareMetalMachineId"`
 	// Selects the boot method for the virtual machine.
@@ -45,12 +45,16 @@ type LookupVirtualMachineResult struct {
 	CloudServicesNetworkAttachment NetworkAttachmentResponse `pulumi:"cloudServicesNetworkAttachment"`
 	// The resource ID of the cluster the virtual machine is created for.
 	ClusterId string `pulumi:"clusterId"`
+	// The extended location to use for creation of a VM console resource.
+	ConsoleExtendedLocation *ExtendedLocationResponse `pulumi:"consoleExtendedLocation"`
 	// The number of CPU cores in the virtual machine.
 	CpuCores float64 `pulumi:"cpuCores"`
 	// The more detailed status of the virtual machine.
 	DetailedStatus string `pulumi:"detailedStatus"`
 	// The descriptive message about the current detailed status.
 	DetailedStatusMessage string `pulumi:"detailedStatusMessage"`
+	// Resource ETag.
+	Etag string `pulumi:"etag"`
 	// The extended location of the cluster associated with the resource.
 	ExtendedLocation ExtendedLocationResponse `pulumi:"extendedLocation"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -59,7 +63,7 @@ type LookupVirtualMachineResult struct {
 	IsolateEmulatorThread *string `pulumi:"isolateEmulatorThread"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
-	// The memory size of the virtual machine in GB.
+	// The memory size of the virtual machine. Allocations are measured in gibibytes.
 	MemorySizeGB float64 `pulumi:"memorySizeGB"`
 	// The name of the resource
 	Name string `pulumi:"name"`
@@ -167,6 +171,11 @@ func (o LookupVirtualMachineResultOutput) AvailabilityZone() pulumi.StringOutput
 	return o.ApplyT(func(v LookupVirtualMachineResult) string { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupVirtualMachineResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVirtualMachineResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The resource ID of the bare metal machine that hosts the virtual machine.
 func (o LookupVirtualMachineResultOutput) BareMetalMachineId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) string { return v.BareMetalMachineId }).(pulumi.StringOutput)
@@ -187,6 +196,11 @@ func (o LookupVirtualMachineResultOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) string { return v.ClusterId }).(pulumi.StringOutput)
 }
 
+// The extended location to use for creation of a VM console resource.
+func (o LookupVirtualMachineResultOutput) ConsoleExtendedLocation() ExtendedLocationResponsePtrOutput {
+	return o.ApplyT(func(v LookupVirtualMachineResult) *ExtendedLocationResponse { return v.ConsoleExtendedLocation }).(ExtendedLocationResponsePtrOutput)
+}
+
 // The number of CPU cores in the virtual machine.
 func (o LookupVirtualMachineResultOutput) CpuCores() pulumi.Float64Output {
 	return o.ApplyT(func(v LookupVirtualMachineResult) float64 { return v.CpuCores }).(pulumi.Float64Output)
@@ -200,6 +214,11 @@ func (o LookupVirtualMachineResultOutput) DetailedStatus() pulumi.StringOutput {
 // The descriptive message about the current detailed status.
 func (o LookupVirtualMachineResultOutput) DetailedStatusMessage() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) string { return v.DetailedStatusMessage }).(pulumi.StringOutput)
+}
+
+// Resource ETag.
+func (o LookupVirtualMachineResultOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVirtualMachineResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
 // The extended location of the cluster associated with the resource.
@@ -222,7 +241,7 @@ func (o LookupVirtualMachineResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// The memory size of the virtual machine in GB.
+// The memory size of the virtual machine. Allocations are measured in gibibytes.
 func (o LookupVirtualMachineResultOutput) MemorySizeGB() pulumi.Float64Output {
 	return o.ApplyT(func(v LookupVirtualMachineResult) float64 { return v.MemorySizeGB }).(pulumi.Float64Output)
 }

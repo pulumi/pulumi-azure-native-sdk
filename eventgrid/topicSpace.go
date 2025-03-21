@@ -13,19 +13,19 @@ import (
 )
 
 // The Topic space resource.
-// Azure REST API version: 2023-06-01-preview.
-//
-// Other available API versions: 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-02-15.
+// Azure REST API version: 2025-02-15. Prior API version in Azure Native 2.x: 2023-06-01-preview.
 type TopicSpace struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Description for the Topic Space resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Provisioning state of the TopicSpace resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// The system metadata relating to the TopicSpace resource.
+	// The system metadata relating to the Event Grid resource.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The topic filters in the topic space.
 	// Example: "topicTemplates": [
@@ -172,6 +172,11 @@ func (o TopicSpaceOutput) ToTopicSpaceOutputWithContext(ctx context.Context) Top
 	return o
 }
 
+// The Azure API version of the resource.
+func (o TopicSpaceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *TopicSpace) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Description for the Topic Space resource.
 func (o TopicSpaceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TopicSpace) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -187,7 +192,7 @@ func (o TopicSpaceOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *TopicSpace) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// The system metadata relating to the TopicSpace resource.
+// The system metadata relating to the Event Grid resource.
 func (o TopicSpaceOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *TopicSpace) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

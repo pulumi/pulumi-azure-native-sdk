@@ -12,9 +12,7 @@ import (
 )
 
 // Gets properties of a SAP monitor for the specified subscription, resource group, and resource name.
-// Azure REST API version: 2023-04-01.
-//
-// Other available API versions: 2023-12-01-preview, 2024-02-01-preview.
+// Azure REST API version: 2024-02-01-preview.
 func LookupMonitor(ctx *pulumi.Context, args *LookupMonitorArgs, opts ...pulumi.InvokeOption) (*LookupMonitorResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMonitorResult
@@ -36,18 +34,22 @@ type LookupMonitorArgs struct {
 type LookupMonitorResult struct {
 	// The SAP monitor resources will be deployed in the SAP monitoring region. The subnet region should be same as the SAP monitoring region.
 	AppLocation *string `pulumi:"appLocation"`
+	// App service plan configuration
+	AppServicePlanConfiguration *AppServicePlanConfigurationResponse `pulumi:"appServicePlanConfiguration"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Defines the SAP monitor errors.
-	Errors MonitorPropertiesResponseErrors `pulumi:"errors"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Errors ErrorDetailResponse `pulumi:"errors"`
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
-	// [currently not in use] Managed service identity(user assigned identities)
-	Identity *UserAssignedServiceIdentityResponse `pulumi:"identity"`
+	// The managed service identities assigned to this resource.
+	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// The ARM ID of the Log Analytics Workspace that is used for SAP monitoring.
 	LogAnalyticsWorkspaceArmId *string `pulumi:"logAnalyticsWorkspaceArmId"`
 	// Managed resource group configuration
-	ManagedResourceGroupConfiguration *ManagedRGConfigurationResponse `pulumi:"managedResourceGroupConfiguration"`
+	ManagedResourceGroupConfiguration *ManagedResourceGroupConfigurationResponse `pulumi:"managedResourceGroupConfiguration"`
 	// The subnet which the SAP monitor will be deployed in
 	MonitorSubnet *string `pulumi:"monitorSubnet"`
 	// The ARM ID of the MSI used for SAP monitoring.
@@ -110,19 +112,29 @@ func (o LookupMonitorResultOutput) AppLocation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupMonitorResult) *string { return v.AppLocation }).(pulumi.StringPtrOutput)
 }
 
-// Defines the SAP monitor errors.
-func (o LookupMonitorResultOutput) Errors() MonitorPropertiesResponseErrorsOutput {
-	return o.ApplyT(func(v LookupMonitorResult) MonitorPropertiesResponseErrors { return v.Errors }).(MonitorPropertiesResponseErrorsOutput)
+// App service plan configuration
+func (o LookupMonitorResultOutput) AppServicePlanConfiguration() AppServicePlanConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v LookupMonitorResult) *AppServicePlanConfigurationResponse { return v.AppServicePlanConfiguration }).(AppServicePlanConfigurationResponsePtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// The Azure API version of the resource.
+func (o LookupMonitorResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMonitorResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Defines the SAP monitor errors.
+func (o LookupMonitorResultOutput) Errors() ErrorDetailResponseOutput {
+	return o.ApplyT(func(v LookupMonitorResult) ErrorDetailResponse { return v.Errors }).(ErrorDetailResponseOutput)
+}
+
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupMonitorResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMonitorResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// [currently not in use] Managed service identity(user assigned identities)
-func (o LookupMonitorResultOutput) Identity() UserAssignedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v LookupMonitorResult) *UserAssignedServiceIdentityResponse { return v.Identity }).(UserAssignedServiceIdentityResponsePtrOutput)
+// The managed service identities assigned to this resource.
+func (o LookupMonitorResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupMonitorResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -136,10 +148,10 @@ func (o LookupMonitorResultOutput) LogAnalyticsWorkspaceArmId() pulumi.StringPtr
 }
 
 // Managed resource group configuration
-func (o LookupMonitorResultOutput) ManagedResourceGroupConfiguration() ManagedRGConfigurationResponsePtrOutput {
-	return o.ApplyT(func(v LookupMonitorResult) *ManagedRGConfigurationResponse {
+func (o LookupMonitorResultOutput) ManagedResourceGroupConfiguration() ManagedResourceGroupConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v LookupMonitorResult) *ManagedResourceGroupConfigurationResponse {
 		return v.ManagedResourceGroupConfiguration
-	}).(ManagedRGConfigurationResponsePtrOutput)
+	}).(ManagedResourceGroupConfigurationResponsePtrOutput)
 }
 
 // The subnet which the SAP monitor will be deployed in

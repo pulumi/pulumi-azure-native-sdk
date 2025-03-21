@@ -12,9 +12,7 @@ import (
 )
 
 // Gets a comment for a given incident.
-// Azure REST API version: 2023-02-01.
-//
-// Other available API versions: 2021-03-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-11-01, 2023-12-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-09-01, 2024-10-01-preview, 2025-01-01-preview.
+// Azure REST API version: 2024-09-01.
 func LookupIncidentComment(ctx *pulumi.Context, args *LookupIncidentCommentArgs, opts ...pulumi.InvokeOption) (*LookupIncidentCommentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIncidentCommentResult
@@ -40,6 +38,8 @@ type LookupIncidentCommentArgs struct {
 type LookupIncidentCommentResult struct {
 	// Describes the client that created the comment
 	Author ClientInfoResponse `pulumi:"author"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The time the comment was created
 	CreatedTimeUtc string `pulumi:"createdTimeUtc"`
 	// Etag of the azure resource
@@ -100,6 +100,11 @@ func (o LookupIncidentCommentResultOutput) ToLookupIncidentCommentResultOutputWi
 // Describes the client that created the comment
 func (o LookupIncidentCommentResultOutput) Author() ClientInfoResponseOutput {
 	return o.ApplyT(func(v LookupIncidentCommentResult) ClientInfoResponse { return v.Author }).(ClientInfoResponseOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupIncidentCommentResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIncidentCommentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The time the comment was created

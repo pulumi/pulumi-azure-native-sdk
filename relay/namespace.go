@@ -13,12 +13,12 @@ import (
 )
 
 // Description of a namespace resource.
-// Azure REST API version: 2021-11-01. Prior API version in Azure Native 1.x: 2017-04-01.
-//
-// Other available API versions: 2024-01-01.
+// Azure REST API version: 2024-01-01. Prior API version in Azure Native 2.x: 2021-11-01.
 type Namespace struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The time the namespace was created.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// Resource location.
@@ -184,6 +184,11 @@ func (o NamespaceOutput) ToNamespaceOutput() NamespaceOutput {
 
 func (o NamespaceOutput) ToNamespaceOutputWithContext(ctx context.Context) NamespaceOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o NamespaceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The time the namespace was created.

@@ -13,12 +13,12 @@ import (
 )
 
 // Function information.
-// Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2020-12-01.
-//
-// Other available API versions: 2016-08-01, 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
+// Azure REST API version: 2024-04-01. Prior API version in Azure Native 2.x: 2022-09-01.
 type WebAppInstanceFunctionSlot struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Config information.
 	Config pulumi.AnyOutput `pulumi:"config"`
 	// Config URI.
@@ -269,6 +269,11 @@ func (o WebAppInstanceFunctionSlotOutput) ToWebAppInstanceFunctionSlotOutput() W
 
 func (o WebAppInstanceFunctionSlotOutput) ToWebAppInstanceFunctionSlotOutputWithContext(ctx context.Context) WebAppInstanceFunctionSlotOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o WebAppInstanceFunctionSlotOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *WebAppInstanceFunctionSlot) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Config information.

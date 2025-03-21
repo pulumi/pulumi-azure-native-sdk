@@ -12,9 +12,7 @@ import (
 )
 
 // Get a InstanceResource
-// Azure REST API version: 2024-07-01-preview.
-//
-// Other available API versions: 2024-08-15-preview, 2024-09-15-preview, 2024-11-01.
+// Azure REST API version: 2024-11-01.
 func LookupInstance(ctx *pulumi.Context, args *LookupInstanceArgs, opts ...pulumi.InvokeOption) (*LookupInstanceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupInstanceResult
@@ -34,10 +32,14 @@ type LookupInstanceArgs struct {
 
 // A Instance resource is a logical container for a set of child resources.
 type LookupInstanceResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Edge location of the resource.
 	ExtendedLocation ExtendedLocationResponse `pulumi:"extendedLocation"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
+	// The managed service identities assigned to this resource.
+	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// The name of the resource
@@ -87,6 +89,11 @@ func (o LookupInstanceResultOutput) ToLookupInstanceResultOutputWithContext(ctx 
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupInstanceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Edge location of the resource.
 func (o LookupInstanceResultOutput) ExtendedLocation() ExtendedLocationResponseOutput {
 	return o.ApplyT(func(v LookupInstanceResult) ExtendedLocationResponse { return v.ExtendedLocation }).(ExtendedLocationResponseOutput)
@@ -95,6 +102,11 @@ func (o LookupInstanceResultOutput) ExtendedLocation() ExtendedLocationResponseO
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupInstanceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The managed service identities assigned to this resource.
+func (o LookupInstanceResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupInstanceResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives

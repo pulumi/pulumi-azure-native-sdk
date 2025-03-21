@@ -13,10 +13,12 @@ import (
 )
 
 // A CommunityProviderHub resource
-// Azure REST API version: 2023-11-01.
+// Azure REST API version: 2023-11-01. Prior API version in Azure Native 2.x: 2023-11-01.
 type CommunityTraining struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// To indicate whether the Community Training instance has Disaster Recovery enabled
 	DisasterRecoveryEnabled pulumi.BoolOutput `pulumi:"disasterRecoveryEnabled"`
 	// The identity configuration of the Community Training resource
@@ -207,6 +209,11 @@ func (o CommunityTrainingOutput) ToCommunityTrainingOutput() CommunityTrainingOu
 
 func (o CommunityTrainingOutput) ToCommunityTrainingOutputWithContext(ctx context.Context) CommunityTrainingOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o CommunityTrainingOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *CommunityTraining) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // To indicate whether the Community Training instance has Disaster Recovery enabled

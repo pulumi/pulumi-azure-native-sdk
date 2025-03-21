@@ -12,9 +12,7 @@ import (
 )
 
 // Get Rule Collection Group Draft.
-// Azure REST API version: 2023-11-01.
-//
-// Other available API versions: 2024-01-01, 2024-03-01, 2024-05-01.
+// Azure REST API version: 2024-05-01.
 func LookupFirewallPolicyRuleCollectionGroupDraft(ctx *pulumi.Context, args *LookupFirewallPolicyRuleCollectionGroupDraftArgs, opts ...pulumi.InvokeOption) (*LookupFirewallPolicyRuleCollectionGroupDraftResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFirewallPolicyRuleCollectionGroupDraftResult
@@ -36,6 +34,8 @@ type LookupFirewallPolicyRuleCollectionGroupDraftArgs struct {
 
 // Rule Collection Group resource.
 type LookupFirewallPolicyRuleCollectionGroupDraftResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource ID.
 	Id *string `pulumi:"id"`
 	// The name of the resource that is unique within a resource group. This name can be used to access the resource.
@@ -85,6 +85,11 @@ func (o LookupFirewallPolicyRuleCollectionGroupDraftResultOutput) ToLookupFirewa
 
 func (o LookupFirewallPolicyRuleCollectionGroupDraftResultOutput) ToLookupFirewallPolicyRuleCollectionGroupDraftResultOutputWithContext(ctx context.Context) LookupFirewallPolicyRuleCollectionGroupDraftResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupFirewallPolicyRuleCollectionGroupDraftResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFirewallPolicyRuleCollectionGroupDraftResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource ID.

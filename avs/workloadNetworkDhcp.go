@@ -13,17 +13,27 @@ import (
 )
 
 // NSX DHCP
-// Azure REST API version: 2022-05-01. Prior API version in Azure Native 1.x: 2020-07-17-preview.
-//
-// Other available API versions: 2021-01-01-preview, 2023-03-01, 2023-09-01.
+// Azure REST API version: 2023-09-01. Prior API version in Azure Native 2.x: 2022-05-01.
 type WorkloadNetworkDhcp struct {
 	pulumi.CustomResourceState
 
-	// Resource name.
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// Type of DHCP: SERVER or RELAY.
+	DhcpType pulumi.StringOutput `pulumi:"dhcpType"`
+	// Display name of the DHCP entity.
+	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// DHCP properties.
-	Properties pulumi.AnyOutput `pulumi:"properties"`
-	// Resource type.
+	// The provisioning state
+	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// NSX revision number.
+	Revision pulumi.Float64PtrOutput `pulumi:"revision"`
+	// NSX Segments consuming DHCP.
+	Segments pulumi.StringArrayOutput `pulumi:"segments"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -34,6 +44,9 @@ func NewWorkloadNetworkDhcp(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.DhcpType == nil {
+		return nil, errors.New("invalid value for required argument 'DhcpType'")
+	}
 	if args.PrivateCloudName == nil {
 		return nil, errors.New("invalid value for required argument 'PrivateCloudName'")
 	}
@@ -97,26 +110,34 @@ func (WorkloadNetworkDhcpState) ElementType() reflect.Type {
 }
 
 type workloadNetworkDhcpArgs struct {
-	// NSX DHCP identifier. Generally the same as the DHCP display name
+	// The ID of the DHCP configuration
 	DhcpId *string `pulumi:"dhcpId"`
+	// Type of DHCP: SERVER or RELAY.
+	DhcpType string `pulumi:"dhcpType"`
+	// Display name of the DHCP entity.
+	DisplayName *string `pulumi:"displayName"`
 	// Name of the private cloud
 	PrivateCloudName string `pulumi:"privateCloudName"`
-	// DHCP properties.
-	Properties interface{} `pulumi:"properties"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// NSX revision number.
+	Revision *float64 `pulumi:"revision"`
 }
 
 // The set of arguments for constructing a WorkloadNetworkDhcp resource.
 type WorkloadNetworkDhcpArgs struct {
-	// NSX DHCP identifier. Generally the same as the DHCP display name
+	// The ID of the DHCP configuration
 	DhcpId pulumi.StringPtrInput
+	// Type of DHCP: SERVER or RELAY.
+	DhcpType pulumi.StringInput
+	// Display name of the DHCP entity.
+	DisplayName pulumi.StringPtrInput
 	// Name of the private cloud
 	PrivateCloudName pulumi.StringInput
-	// DHCP properties.
-	Properties pulumi.Input
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
+	// NSX revision number.
+	Revision pulumi.Float64PtrInput
 }
 
 func (WorkloadNetworkDhcpArgs) ElementType() reflect.Type {
@@ -156,17 +177,47 @@ func (o WorkloadNetworkDhcpOutput) ToWorkloadNetworkDhcpOutputWithContext(ctx co
 	return o
 }
 
-// Resource name.
+// The Azure API version of the resource.
+func (o WorkloadNetworkDhcpOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkloadNetworkDhcp) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Type of DHCP: SERVER or RELAY.
+func (o WorkloadNetworkDhcpOutput) DhcpType() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkloadNetworkDhcp) pulumi.StringOutput { return v.DhcpType }).(pulumi.StringOutput)
+}
+
+// Display name of the DHCP entity.
+func (o WorkloadNetworkDhcpOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkloadNetworkDhcp) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// The name of the resource
 func (o WorkloadNetworkDhcpOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkloadNetworkDhcp) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// DHCP properties.
-func (o WorkloadNetworkDhcpOutput) Properties() pulumi.AnyOutput {
-	return o.ApplyT(func(v *WorkloadNetworkDhcp) pulumi.AnyOutput { return v.Properties }).(pulumi.AnyOutput)
+// The provisioning state
+func (o WorkloadNetworkDhcpOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkloadNetworkDhcp) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Resource type.
+// NSX revision number.
+func (o WorkloadNetworkDhcpOutput) Revision() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *WorkloadNetworkDhcp) pulumi.Float64PtrOutput { return v.Revision }).(pulumi.Float64PtrOutput)
+}
+
+// NSX Segments consuming DHCP.
+func (o WorkloadNetworkDhcpOutput) Segments() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WorkloadNetworkDhcp) pulumi.StringArrayOutput { return v.Segments }).(pulumi.StringArrayOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o WorkloadNetworkDhcpOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *WorkloadNetworkDhcp) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o WorkloadNetworkDhcpOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkloadNetworkDhcp) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

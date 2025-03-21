@@ -12,9 +12,7 @@ import (
 )
 
 // Gets the specified Azure dedicated HSM.
-// Azure REST API version: 2021-11-30.
-//
-// Other available API versions: 2024-06-30-preview.
+// Azure REST API version: 2024-06-30-preview.
 func LookupDedicatedHsm(ctx *pulumi.Context, args *LookupDedicatedHsmArgs, opts ...pulumi.InvokeOption) (*LookupDedicatedHsmResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDedicatedHsmResult
@@ -26,21 +24,23 @@ func LookupDedicatedHsm(ctx *pulumi.Context, args *LookupDedicatedHsmArgs, opts 
 }
 
 type LookupDedicatedHsmArgs struct {
-	// The name of the dedicated HSM.
+	// Name of the dedicated Hsm
 	Name string `pulumi:"name"`
-	// The name of the Resource Group to which the dedicated hsm belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Resource information with extended details.
 type LookupDedicatedHsmResult struct {
-	// The Azure Resource Manager resource ID for the dedicated HSM.
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
-	// The supported Azure location where the dedicated HSM should be created.
+	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// Specifies the management network interfaces of the dedicated hsm.
 	ManagementNetworkProfile *NetworkProfileResponse `pulumi:"managementNetworkProfile"`
-	// The name of the dedicated HSM.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// Specifies the network interfaces of the dedicated hsm.
 	NetworkProfile *NetworkProfileResponse `pulumi:"networkProfile"`
@@ -52,11 +52,11 @@ type LookupDedicatedHsmResult struct {
 	StampId *string `pulumi:"stampId"`
 	// Resource Status Message.
 	StatusMessage string `pulumi:"statusMessage"`
-	// Metadata pertaining to creation and last modification of the resource
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	// Resource tags
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
-	// The resource type of the dedicated HSM.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// The Dedicated Hsm zones.
 	Zones []string `pulumi:"zones"`
@@ -72,9 +72,9 @@ func LookupDedicatedHsmOutput(ctx *pulumi.Context, args LookupDedicatedHsmOutput
 }
 
 type LookupDedicatedHsmOutputArgs struct {
-	// The name of the dedicated HSM.
+	// Name of the dedicated Hsm
 	Name pulumi.StringInput `pulumi:"name"`
-	// The name of the Resource Group to which the dedicated hsm belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -97,12 +97,17 @@ func (o LookupDedicatedHsmResultOutput) ToLookupDedicatedHsmResultOutputWithCont
 	return o
 }
 
-// The Azure Resource Manager resource ID for the dedicated HSM.
+// The Azure API version of the resource.
+func (o LookupDedicatedHsmResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDedicatedHsmResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupDedicatedHsmResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDedicatedHsmResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The supported Azure location where the dedicated HSM should be created.
+// The geo-location where the resource lives
 func (o LookupDedicatedHsmResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDedicatedHsmResult) string { return v.Location }).(pulumi.StringOutput)
 }
@@ -112,7 +117,7 @@ func (o LookupDedicatedHsmResultOutput) ManagementNetworkProfile() NetworkProfil
 	return o.ApplyT(func(v LookupDedicatedHsmResult) *NetworkProfileResponse { return v.ManagementNetworkProfile }).(NetworkProfileResponsePtrOutput)
 }
 
-// The name of the dedicated HSM.
+// The name of the resource
 func (o LookupDedicatedHsmResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDedicatedHsmResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -142,17 +147,17 @@ func (o LookupDedicatedHsmResultOutput) StatusMessage() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDedicatedHsmResult) string { return v.StatusMessage }).(pulumi.StringOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupDedicatedHsmResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupDedicatedHsmResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Resource tags
+// Resource tags.
 func (o LookupDedicatedHsmResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupDedicatedHsmResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The resource type of the dedicated HSM.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupDedicatedHsmResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDedicatedHsmResult) string { return v.Type }).(pulumi.StringOutput)
 }

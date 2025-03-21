@@ -12,9 +12,7 @@ import (
 )
 
 // Description for Get the certificate associated with a certificate order.
-// Azure REST API version: 2022-09-01.
-//
-// Other available API versions: 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
+// Azure REST API version: 2024-04-01.
 func LookupAppServiceCertificateOrderCertificate(ctx *pulumi.Context, args *LookupAppServiceCertificateOrderCertificateArgs, opts ...pulumi.InvokeOption) (*LookupAppServiceCertificateOrderCertificateResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAppServiceCertificateOrderCertificateResult
@@ -36,13 +34,15 @@ type LookupAppServiceCertificateOrderCertificateArgs struct {
 
 // Key Vault container ARM resource for a certificate that is purchased through Azure.
 type LookupAppServiceCertificateOrderCertificateResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource Id.
 	Id string `pulumi:"id"`
 	// Key Vault resource Id.
 	KeyVaultId *string `pulumi:"keyVaultId"`
 	// Key Vault secret name.
 	KeyVaultSecretName *string `pulumi:"keyVaultSecretName"`
-	// Kind of resource.
+	// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
 	Kind *string `pulumi:"kind"`
 	// Resource Location.
 	Location string `pulumi:"location"`
@@ -93,6 +93,11 @@ func (o LookupAppServiceCertificateOrderCertificateResultOutput) ToLookupAppServ
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupAppServiceCertificateOrderCertificateResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAppServiceCertificateOrderCertificateResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Resource Id.
 func (o LookupAppServiceCertificateOrderCertificateResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAppServiceCertificateOrderCertificateResult) string { return v.Id }).(pulumi.StringOutput)
@@ -108,7 +113,7 @@ func (o LookupAppServiceCertificateOrderCertificateResultOutput) KeyVaultSecretN
 	return o.ApplyT(func(v LookupAppServiceCertificateOrderCertificateResult) *string { return v.KeyVaultSecretName }).(pulumi.StringPtrOutput)
 }
 
-// Kind of resource.
+// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
 func (o LookupAppServiceCertificateOrderCertificateResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAppServiceCertificateOrderCertificateResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }

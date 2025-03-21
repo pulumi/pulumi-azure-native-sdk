@@ -13,12 +13,12 @@ import (
 )
 
 // A file resource
-// Azure REST API version: 2021-06-30. Prior API version in Azure Native 1.x: 2018-07-15-preview.
-//
-// Other available API versions: 2022-03-30-preview, 2023-07-15-preview.
+// Azure REST API version: 2023-07-15-preview. Prior API version in Azure Native 2.x: 2021-06-30.
 type File struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// HTTP strong entity tag value. This is ignored if submitted.
 	Etag pulumi.StringPtrOutput `pulumi:"etag"`
 	// Resource name.
@@ -162,6 +162,11 @@ func (o FileOutput) ToFileOutput() FileOutput {
 
 func (o FileOutput) ToFileOutputWithContext(ctx context.Context) FileOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o FileOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *File) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // HTTP strong entity tag value. This is ignored if submitted.

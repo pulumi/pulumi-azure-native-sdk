@@ -13,12 +13,12 @@ import (
 )
 
 // Settings defined at the Management Group scope.
-// Azure REST API version: 2021-04-01. Prior API version in Azure Native 1.x: 2020-05-01.
-//
-// Other available API versions: 2023-04-01.
+// Azure REST API version: 2023-04-01. Prior API version in Azure Native 2.x: 2021-04-01.
 type HierarchySetting struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Settings that sets the default Management Group under which new subscriptions get added in this tenant. For example, /providers/Microsoft.Management/managementGroups/defaultGroup
 	DefaultManagementGroup pulumi.StringPtrOutput `pulumi:"defaultManagementGroup"`
 	// The name of the object. In this case, default.
@@ -145,6 +145,11 @@ func (o HierarchySettingOutput) ToHierarchySettingOutput() HierarchySettingOutpu
 
 func (o HierarchySettingOutput) ToHierarchySettingOutputWithContext(ctx context.Context) HierarchySettingOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o HierarchySettingOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *HierarchySetting) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Settings that sets the default Management Group under which new subscriptions get added in this tenant. For example, /providers/Microsoft.Management/managementGroups/defaultGroup

@@ -12,9 +12,7 @@ import (
 )
 
 // support info for firewall.
-// Azure REST API version: 2023-09-01.
-//
-// Other available API versions: 2022-08-29, 2022-08-29-preview, 2023-09-01-preview, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview.
+// Azure REST API version: 2025-02-06-preview.
 func GetFirewallSupportInfo(ctx *pulumi.Context, args *GetFirewallSupportInfoArgs, opts ...pulumi.InvokeOption) (*GetFirewallSupportInfoResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetFirewallSupportInfoResult
@@ -36,10 +34,14 @@ type GetFirewallSupportInfoArgs struct {
 
 // Support information for the resource
 type GetFirewallSupportInfoResult struct {
-	// Support account associated with given resource
+	// Support account associated with given resource when association type is tenant
 	AccountId *string `pulumi:"accountId"`
+	// Support account associated with given resource when association type is billing
+	AccountIdForBilling *string `pulumi:"accountIdForBilling"`
 	// account registered in Customer Support Portal
 	AccountRegistered *string `pulumi:"accountRegistered"`
+	// Association Type
+	AssociationType *string `pulumi:"associationType"`
 	// Product usage is in free trial period
 	FreeTrial *string `pulumi:"freeTrial"`
 	// Free trial credit remaining
@@ -99,14 +101,24 @@ func (o GetFirewallSupportInfoResultOutput) ToGetFirewallSupportInfoResultOutput
 	return o
 }
 
-// Support account associated with given resource
+// Support account associated with given resource when association type is tenant
 func (o GetFirewallSupportInfoResultOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFirewallSupportInfoResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+}
+
+// Support account associated with given resource when association type is billing
+func (o GetFirewallSupportInfoResultOutput) AccountIdForBilling() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFirewallSupportInfoResult) *string { return v.AccountIdForBilling }).(pulumi.StringPtrOutput)
 }
 
 // account registered in Customer Support Portal
 func (o GetFirewallSupportInfoResultOutput) AccountRegistered() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFirewallSupportInfoResult) *string { return v.AccountRegistered }).(pulumi.StringPtrOutput)
+}
+
+// Association Type
+func (o GetFirewallSupportInfoResultOutput) AssociationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFirewallSupportInfoResult) *string { return v.AssociationType }).(pulumi.StringPtrOutput)
 }
 
 // Product usage is in free trial period

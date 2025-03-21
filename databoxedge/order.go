@@ -13,12 +13,12 @@ import (
 )
 
 // The order details.
-// Azure REST API version: 2022-03-01. Prior API version in Azure Native 1.x: 2020-12-01.
-//
-// Other available API versions: 2022-04-01-preview, 2023-01-01-preview, 2023-07-01, 2023-12-01.
+// Azure REST API version: 2023-07-01. Prior API version in Azure Native 2.x: 2022-03-01.
 type Order struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The contact details.
 	ContactInformation ContactDetailsResponseOutput `pulumi:"contactInformation"`
 	// Current status of the order.
@@ -211,6 +211,11 @@ func (o OrderOutput) ToOrderOutput() OrderOutput {
 
 func (o OrderOutput) ToOrderOutputWithContext(ctx context.Context) OrderOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o OrderOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Order) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The contact details.

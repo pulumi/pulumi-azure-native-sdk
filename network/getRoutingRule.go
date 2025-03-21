@@ -12,9 +12,7 @@ import (
 )
 
 // Gets a network manager routing configuration routing rule.
-// Azure REST API version: 2024-03-01.
-//
-// Other available API versions: 2024-05-01.
+// Azure REST API version: 2024-05-01.
 func LookupRoutingRule(ctx *pulumi.Context, args *LookupRoutingRuleArgs, opts ...pulumi.InvokeOption) (*LookupRoutingRuleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRoutingRuleResult
@@ -40,6 +38,8 @@ type LookupRoutingRuleArgs struct {
 
 // Network routing rule.
 type LookupRoutingRuleResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// A description for this rule.
 	Description *string `pulumi:"description"`
 	// Indicates the destination for this particular rule.
@@ -101,6 +101,11 @@ func (o LookupRoutingRuleResultOutput) ToLookupRoutingRuleResultOutput() LookupR
 
 func (o LookupRoutingRuleResultOutput) ToLookupRoutingRuleResultOutputWithContext(ctx context.Context) LookupRoutingRuleResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupRoutingRuleResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRoutingRuleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A description for this rule.

@@ -13,10 +13,12 @@ import (
 )
 
 // An object that represents a machine learning workspace.
-// Azure REST API version: 2019-10-01. Prior API version in Azure Native 1.x: 2016-04-01.
+// Azure REST API version: 2019-10-01. Prior API version in Azure Native 2.x: 2019-10-01.
 type Workspace struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The creation time for this workspace resource.
 	CreationTime pulumi.StringOutput `pulumi:"creationTime"`
 	// The key vault identifier used for encrypted workspaces.
@@ -176,6 +178,11 @@ func (o WorkspaceOutput) ToWorkspaceOutput() WorkspaceOutput {
 
 func (o WorkspaceOutput) ToWorkspaceOutputWithContext(ctx context.Context) WorkspaceOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o WorkspaceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Workspace) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The creation time for this workspace resource.

@@ -36,6 +36,8 @@ type LookupNetworkSecurityPerimeterAssociationArgs struct {
 type LookupNetworkSecurityPerimeterAssociationResult struct {
 	// Access mode on the association.
 	AccessMode *string `pulumi:"accessMode"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Specifies if there are provisioning issues
 	HasProvisioningIssues string `pulumi:"hasProvisioningIssues"`
 	// Resource ID.
@@ -96,6 +98,11 @@ func (o LookupNetworkSecurityPerimeterAssociationResultOutput) ToLookupNetworkSe
 // Access mode on the association.
 func (o LookupNetworkSecurityPerimeterAssociationResultOutput) AccessMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNetworkSecurityPerimeterAssociationResult) *string { return v.AccessMode }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupNetworkSecurityPerimeterAssociationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkSecurityPerimeterAssociationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Specifies if there are provisioning issues

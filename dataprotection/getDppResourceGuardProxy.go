@@ -12,9 +12,7 @@ import (
 )
 
 // ResourceGuardProxyBaseResource object, used for response and request bodies for ResourceGuardProxy APIs
-// Azure REST API version: 2023-01-01.
-//
-// Other available API versions: 2023-04-01-preview, 2023-05-01, 2023-06-01-preview, 2023-08-01-preview, 2023-11-01, 2023-12-01, 2024-02-01-preview, 2024-03-01, 2024-04-01, 2025-01-01.
+// Azure REST API version: 2025-01-01.
 func LookupDppResourceGuardProxy(ctx *pulumi.Context, args *LookupDppResourceGuardProxyArgs, opts ...pulumi.InvokeOption) (*LookupDppResourceGuardProxyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDppResourceGuardProxyResult
@@ -36,6 +34,8 @@ type LookupDppResourceGuardProxyArgs struct {
 
 // ResourceGuardProxyBaseResource object, used for response and request bodies for ResourceGuardProxy APIs
 type LookupDppResourceGuardProxyResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource Id represents the complete path to the resource.
 	Id string `pulumi:"id"`
 	// Resource name associated with the resource.
@@ -83,6 +83,11 @@ func (o LookupDppResourceGuardProxyResultOutput) ToLookupDppResourceGuardProxyRe
 
 func (o LookupDppResourceGuardProxyResultOutput) ToLookupDppResourceGuardProxyResultOutputWithContext(ctx context.Context) LookupDppResourceGuardProxyResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupDppResourceGuardProxyResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDppResourceGuardProxyResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource Id represents the complete path to the resource.

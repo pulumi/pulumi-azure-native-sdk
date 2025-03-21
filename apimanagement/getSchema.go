@@ -34,6 +34,8 @@ type LookupSchemaArgs struct {
 
 // Schema Contract details.
 type LookupSchemaResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Free-form schema entity description.
 	Description *string `pulumi:"description"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -83,6 +85,11 @@ func (o LookupSchemaResultOutput) ToLookupSchemaResultOutput() LookupSchemaResul
 
 func (o LookupSchemaResultOutput) ToLookupSchemaResultOutputWithContext(ctx context.Context) LookupSchemaResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupSchemaResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSchemaResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Free-form schema entity description.

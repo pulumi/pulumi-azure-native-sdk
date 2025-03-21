@@ -36,6 +36,8 @@ type LookupSapInstanceArgs struct {
 type LookupSapInstanceResult struct {
 	// Enter a business function/department identifier to group multiple SIDs.
 	Application string `pulumi:"application"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The Environment; PRD, QA, DEV, etc to which SAP system belongs to. Select from the list of available dropdown values.
 	Environment string `pulumi:"environment"`
 	// Defines the errors related to SAP Instance resource.
@@ -100,6 +102,11 @@ func (o LookupSapInstanceResultOutput) ToLookupSapInstanceResultOutputWithContex
 // Enter a business function/department identifier to group multiple SIDs.
 func (o LookupSapInstanceResultOutput) Application() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSapInstanceResult) string { return v.Application }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupSapInstanceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSapInstanceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The Environment; PRD, QA, DEV, etc to which SAP system belongs to. Select from the list of available dropdown values.

@@ -13,43 +13,41 @@ import (
 )
 
 // Definition of the module type.
-// Azure REST API version: 2022-08-08. Prior API version in Azure Native 1.x: 2019-06-01.
-//
-// Other available API versions: 2023-05-15-preview, 2023-11-01, 2024-10-23.
+// Azure REST API version: 2023-11-01. Prior API version in Azure Native 2.x: 2022-08-08.
 type Python2Package struct {
 	pulumi.CustomResourceState
 
-	// Gets or sets the activity count of the module.
+	// Gets the activity count of the module.
 	ActivityCount pulumi.IntPtrOutput `pulumi:"activityCount"`
-	// Gets or sets the contentLink of the module.
-	ContentLink ContentLinkResponsePtrOutput `pulumi:"contentLink"`
-	// Gets or sets the creation time.
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// Gets the creation time.
 	CreationTime pulumi.StringPtrOutput `pulumi:"creationTime"`
 	// Gets or sets the description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Gets or sets the error info of the module.
+	// Gets the error info of the module.
 	Error ModuleErrorInfoResponsePtrOutput `pulumi:"error"`
-	// Gets or sets the etag of the resource.
+	// Gets the etag of the resource.
 	Etag pulumi.StringPtrOutput `pulumi:"etag"`
-	// Gets or sets type of module, if its composite or not.
+	// Gets type of module, if its composite or not.
 	IsComposite pulumi.BoolPtrOutput `pulumi:"isComposite"`
-	// Gets or sets the isGlobal flag of the module.
+	// Gets the isGlobal flag of the module.
 	IsGlobal pulumi.BoolPtrOutput `pulumi:"isGlobal"`
-	// Gets or sets the last modified time.
+	// Gets the last modified time.
 	LastModifiedTime pulumi.StringPtrOutput `pulumi:"lastModifiedTime"`
 	// The Azure Region where the resource lives
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Gets or sets the provisioning state of the module.
+	// Gets the provisioning state of the module.
 	ProvisioningState pulumi.StringPtrOutput `pulumi:"provisioningState"`
-	// Gets or sets the size in bytes of the module.
+	// Gets the size in bytes of the module.
 	SizeInBytes pulumi.Float64PtrOutput `pulumi:"sizeInBytes"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource.
 	Type pulumi.StringOutput `pulumi:"type"`
-	// Gets or sets the version of the module.
+	// Gets the version of the module.
 	Version pulumi.StringPtrOutput `pulumi:"version"`
 }
 
@@ -189,17 +187,17 @@ func (o Python2PackageOutput) ToPython2PackageOutputWithContext(ctx context.Cont
 	return o
 }
 
-// Gets or sets the activity count of the module.
+// Gets the activity count of the module.
 func (o Python2PackageOutput) ActivityCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Python2Package) pulumi.IntPtrOutput { return v.ActivityCount }).(pulumi.IntPtrOutput)
 }
 
-// Gets or sets the contentLink of the module.
-func (o Python2PackageOutput) ContentLink() ContentLinkResponsePtrOutput {
-	return o.ApplyT(func(v *Python2Package) ContentLinkResponsePtrOutput { return v.ContentLink }).(ContentLinkResponsePtrOutput)
+// The Azure API version of the resource.
+func (o Python2PackageOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Python2Package) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
-// Gets or sets the creation time.
+// Gets the creation time.
 func (o Python2PackageOutput) CreationTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Python2Package) pulumi.StringPtrOutput { return v.CreationTime }).(pulumi.StringPtrOutput)
 }
@@ -209,27 +207,27 @@ func (o Python2PackageOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Python2Package) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Gets or sets the error info of the module.
+// Gets the error info of the module.
 func (o Python2PackageOutput) Error() ModuleErrorInfoResponsePtrOutput {
 	return o.ApplyT(func(v *Python2Package) ModuleErrorInfoResponsePtrOutput { return v.Error }).(ModuleErrorInfoResponsePtrOutput)
 }
 
-// Gets or sets the etag of the resource.
+// Gets the etag of the resource.
 func (o Python2PackageOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Python2Package) pulumi.StringPtrOutput { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
-// Gets or sets type of module, if its composite or not.
+// Gets type of module, if its composite or not.
 func (o Python2PackageOutput) IsComposite() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Python2Package) pulumi.BoolPtrOutput { return v.IsComposite }).(pulumi.BoolPtrOutput)
 }
 
-// Gets or sets the isGlobal flag of the module.
+// Gets the isGlobal flag of the module.
 func (o Python2PackageOutput) IsGlobal() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Python2Package) pulumi.BoolPtrOutput { return v.IsGlobal }).(pulumi.BoolPtrOutput)
 }
 
-// Gets or sets the last modified time.
+// Gets the last modified time.
 func (o Python2PackageOutput) LastModifiedTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Python2Package) pulumi.StringPtrOutput { return v.LastModifiedTime }).(pulumi.StringPtrOutput)
 }
@@ -244,12 +242,12 @@ func (o Python2PackageOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Python2Package) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Gets or sets the provisioning state of the module.
+// Gets the provisioning state of the module.
 func (o Python2PackageOutput) ProvisioningState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Python2Package) pulumi.StringPtrOutput { return v.ProvisioningState }).(pulumi.StringPtrOutput)
 }
 
-// Gets or sets the size in bytes of the module.
+// Gets the size in bytes of the module.
 func (o Python2PackageOutput) SizeInBytes() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *Python2Package) pulumi.Float64PtrOutput { return v.SizeInBytes }).(pulumi.Float64PtrOutput)
 }
@@ -264,7 +262,7 @@ func (o Python2PackageOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Python2Package) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// Gets or sets the version of the module.
+// Gets the version of the module.
 func (o Python2PackageOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Python2Package) pulumi.StringPtrOutput { return v.Version }).(pulumi.StringPtrOutput)
 }

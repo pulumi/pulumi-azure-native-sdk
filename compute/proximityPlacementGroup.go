@@ -13,14 +13,14 @@ import (
 )
 
 // Specifies information about the proximity placement group.
-// Azure REST API version: 2023-03-01. Prior API version in Azure Native 1.x: 2020-12-01.
-//
-// Other available API versions: 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01.
+// Azure REST API version: 2024-11-01. Prior API version in Azure Native 2.x: 2023-03-01.
 type ProximityPlacementGroup struct {
 	pulumi.CustomResourceState
 
 	// A list of references to all availability sets in the proximity placement group.
 	AvailabilitySets SubResourceWithColocationStatusResponseArrayOutput `pulumi:"availabilitySets"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Describes colocation status of the Proximity Placement Group.
 	ColocationStatus InstanceViewStatusResponsePtrOutput `pulumi:"colocationStatus"`
 	// Specifies the user intent of the proximity placement group.
@@ -113,6 +113,9 @@ func NewProximityPlacementGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:compute/v20240701:ProximityPlacementGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:compute/v20241101:ProximityPlacementGroup"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -229,6 +232,11 @@ func (o ProximityPlacementGroupOutput) AvailabilitySets() SubResourceWithColocat
 	return o.ApplyT(func(v *ProximityPlacementGroup) SubResourceWithColocationStatusResponseArrayOutput {
 		return v.AvailabilitySets
 	}).(SubResourceWithColocationStatusResponseArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o ProximityPlacementGroupOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProximityPlacementGroup) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Describes colocation status of the Proximity Placement Group.

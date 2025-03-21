@@ -13,8 +13,6 @@ import (
 
 // Get the specified role management policy for a resource scope
 // Azure REST API version: 2024-09-01-preview.
-//
-// Other available API versions: 2020-10-01, 2020-10-01-preview, 2024-02-01-preview.
 func LookupRoleManagementPolicy(ctx *pulumi.Context, args *LookupRoleManagementPolicyArgs, opts ...pulumi.InvokeOption) (*LookupRoleManagementPolicyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRoleManagementPolicyResult
@@ -34,6 +32,8 @@ type LookupRoleManagementPolicyArgs struct {
 
 // Role management policy
 type LookupRoleManagementPolicyResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The role management policy description.
 	Description *string `pulumi:"description"`
 	// The role management policy display name.
@@ -93,6 +93,11 @@ func (o LookupRoleManagementPolicyResultOutput) ToLookupRoleManagementPolicyResu
 
 func (o LookupRoleManagementPolicyResultOutput) ToLookupRoleManagementPolicyResultOutputWithContext(ctx context.Context) LookupRoleManagementPolicyResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupRoleManagementPolicyResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRoleManagementPolicyResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The role management policy description.

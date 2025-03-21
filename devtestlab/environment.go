@@ -13,12 +13,14 @@ import (
 )
 
 // An environment, which is essentially an ARM template deployment.
-// Azure REST API version: 2018-09-15. Prior API version in Azure Native 1.x: 2018-09-15.
+// Azure REST API version: 2018-09-15. Prior API version in Azure Native 2.x: 2018-09-15.
 type Environment struct {
 	pulumi.CustomResourceState
 
 	// The display name of the Azure Resource Manager template that produced the environment.
 	ArmTemplateDisplayName pulumi.StringPtrOutput `pulumi:"armTemplateDisplayName"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The creator of the environment.
 	CreatedByUser pulumi.StringOutput `pulumi:"createdByUser"`
 	// The deployment properties of the environment.
@@ -175,6 +177,11 @@ func (o EnvironmentOutput) ToEnvironmentOutputWithContext(ctx context.Context) E
 // The display name of the Azure Resource Manager template that produced the environment.
 func (o EnvironmentOutput) ArmTemplateDisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringPtrOutput { return v.ArmTemplateDisplayName }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o EnvironmentOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The creator of the environment.

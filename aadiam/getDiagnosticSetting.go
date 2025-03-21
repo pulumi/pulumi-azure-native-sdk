@@ -13,8 +13,6 @@ import (
 
 // Gets the active diagnostic setting for AadIam.
 // Azure REST API version: 2017-04-01.
-//
-// Other available API versions: 2017-04-01-preview.
 func LookupDiagnosticSetting(ctx *pulumi.Context, args *LookupDiagnosticSettingArgs, opts ...pulumi.InvokeOption) (*LookupDiagnosticSettingResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDiagnosticSettingResult
@@ -32,6 +30,8 @@ type LookupDiagnosticSettingArgs struct {
 
 // The diagnostic setting resource.
 type LookupDiagnosticSettingResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The resource Id for the event hub authorization rule.
 	EventHubAuthorizationRuleId *string `pulumi:"eventHubAuthorizationRuleId"`
 	// The name of the event hub. If none is specified, the default event hub will be selected.
@@ -83,6 +83,11 @@ func (o LookupDiagnosticSettingResultOutput) ToLookupDiagnosticSettingResultOutp
 
 func (o LookupDiagnosticSettingResultOutput) ToLookupDiagnosticSettingResultOutputWithContext(ctx context.Context) LookupDiagnosticSettingResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupDiagnosticSettingResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDiagnosticSettingResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The resource Id for the event hub authorization rule.

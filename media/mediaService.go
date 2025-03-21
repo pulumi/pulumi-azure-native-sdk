@@ -13,12 +13,12 @@ import (
 )
 
 // A Media Services account.
-// Azure REST API version: 2023-01-01. Prior API version in Azure Native 1.x: 2020-05-01.
-//
-// Other available API versions: 2015-10-01.
+// Azure REST API version: 2023-01-01. Prior API version in Azure Native 2.x: 2023-01-01.
 type MediaService struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The account encryption properties.
 	Encryption AccountEncryptionResponsePtrOutput `pulumi:"encryption"`
 	// The Managed Identity for the Media Services account.
@@ -209,6 +209,11 @@ func (o MediaServiceOutput) ToMediaServiceOutput() MediaServiceOutput {
 
 func (o MediaServiceOutput) ToMediaServiceOutputWithContext(ctx context.Context) MediaServiceOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o MediaServiceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *MediaService) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The account encryption properties.

@@ -11,10 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Gets a Deployment Stack with a given name.
-// Azure REST API version: 2022-08-01-preview.
-//
-// Other available API versions: 2024-03-01.
+// Gets a Deployment stack with a given name at Resource Group scope.
+// Azure REST API version: 2024-03-01.
 func LookupDeploymentStackAtResourceGroup(ctx *pulumi.Context, args *LookupDeploymentStackAtResourceGroupArgs, opts ...pulumi.InvokeOption) (*LookupDeploymentStackAtResourceGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDeploymentStackAtResourceGroupResult
@@ -34,11 +32,15 @@ type LookupDeploymentStackAtResourceGroupArgs struct {
 
 // Deployment stack object.
 type LookupDeploymentStackAtResourceGroupResult struct {
-	// Defines the behavior of resources that are not managed immediately after the stack is updated.
-	ActionOnUnmanage DeploymentStackPropertiesResponseActionOnUnmanage `pulumi:"actionOnUnmanage"`
+	// Defines the behavior of resources that are no longer managed after the Deployment stack is updated or deleted.
+	ActionOnUnmanage ActionOnUnmanageResponse `pulumi:"actionOnUnmanage"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// The correlation id of the last Deployment stack upsert or delete operation. It is in GUID format and is used for tracing.
+	CorrelationId string `pulumi:"correlationId"`
 	// The debug setting of the deployment.
 	DebugSetting *DeploymentStacksDebugSettingResponse `pulumi:"debugSetting"`
-	// An array of resources that were deleted during the most recent update.
+	// An array of resources that were deleted during the most recent Deployment stack update. Deleted means that the resource was removed from the template and relevant deletion operations were specified.
 	DeletedResources []ResourceReferenceResponse `pulumi:"deletedResources"`
 	// Defines how resources deployed by the stack are locked.
 	DenySettings DenySettingsResponse `pulumi:"denySettings"`
@@ -46,26 +48,26 @@ type LookupDeploymentStackAtResourceGroupResult struct {
 	DeploymentId string `pulumi:"deploymentId"`
 	// The scope at which the initial deployment should be created. If a scope is not specified, it will default to the scope of the deployment stack. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroupId}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}').
 	DeploymentScope *string `pulumi:"deploymentScope"`
-	// Deployment stack description.
+	// Deployment stack description. Max length of 4096 characters.
 	Description *string `pulumi:"description"`
-	// An array of resources that were detached during the most recent update.
+	// An array of resources that were detached during the most recent Deployment stack update. Detached means that the resource was removed from the template, but no relevant deletion operations were specified. So, the resource still exists while no longer being associated with the stack.
 	DetachedResources []ResourceReferenceResponse `pulumi:"detachedResources"`
-	// The duration of the deployment stack update.
+	// The duration of the last successful Deployment stack update.
 	Duration string `pulumi:"duration"`
-	// Common error response for all Azure Resource Manager APIs to return error details for failed operations. (This also follows the OData error response format.).
-	Error *ErrorResponseResponse `pulumi:"error"`
-	// An array of resources that failed to reach goal state during the most recent update.
+	// The error detail.
+	Error *ErrorDetailResponse `pulumi:"error"`
+	// An array of resources that failed to reach goal state during the most recent update. Each resourceId is accompanied by an error message.
 	FailedResources []ResourceReferenceExtendedResponse `pulumi:"failedResources"`
 	// String Id used to locate any resource on Azure.
 	Id string `pulumi:"id"`
-	// The location of the deployment stack. It cannot be changed after creation. It must be one of the supported Azure locations.
+	// The location of the Deployment stack. It cannot be changed after creation. It must be one of the supported Azure locations.
 	Location *string `pulumi:"location"`
 	// Name of this resource.
 	Name string `pulumi:"name"`
-	// The outputs of the underlying deployment.
+	// The outputs of the deployment resource created by the deployment stack.
 	Outputs interface{} `pulumi:"outputs"`
-	// Name and value pairs that define the deployment parameters for the template. Use this element when providing the parameter values directly in the request, rather than linking to an existing parameter file. Use either the parametersLink property or the parameters property, but not both. It can be a JObject or a well formed JSON string.
-	Parameters interface{} `pulumi:"parameters"`
+	// Name and value pairs that define the deployment parameters for the template. Use this element when providing the parameter values directly in the request, rather than linking to an existing parameter file. Use either the parametersLink property or the parameters property, but not both.
+	Parameters map[string]DeploymentParameterResponse `pulumi:"parameters"`
 	// The URI of parameters file. Use this element to link to an existing parameters file. Use either the parametersLink property or the parameters property, but not both.
 	ParametersLink *DeploymentStacksParametersLinkResponse `pulumi:"parametersLink"`
 	// State of the deployment stack.
@@ -115,11 +117,19 @@ func (o LookupDeploymentStackAtResourceGroupResultOutput) ToLookupDeploymentStac
 	return o
 }
 
-// Defines the behavior of resources that are not managed immediately after the stack is updated.
-func (o LookupDeploymentStackAtResourceGroupResultOutput) ActionOnUnmanage() DeploymentStackPropertiesResponseActionOnUnmanageOutput {
-	return o.ApplyT(func(v LookupDeploymentStackAtResourceGroupResult) DeploymentStackPropertiesResponseActionOnUnmanage {
-		return v.ActionOnUnmanage
-	}).(DeploymentStackPropertiesResponseActionOnUnmanageOutput)
+// Defines the behavior of resources that are no longer managed after the Deployment stack is updated or deleted.
+func (o LookupDeploymentStackAtResourceGroupResultOutput) ActionOnUnmanage() ActionOnUnmanageResponseOutput {
+	return o.ApplyT(func(v LookupDeploymentStackAtResourceGroupResult) ActionOnUnmanageResponse { return v.ActionOnUnmanage }).(ActionOnUnmanageResponseOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupDeploymentStackAtResourceGroupResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDeploymentStackAtResourceGroupResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// The correlation id of the last Deployment stack upsert or delete operation. It is in GUID format and is used for tracing.
+func (o LookupDeploymentStackAtResourceGroupResultOutput) CorrelationId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDeploymentStackAtResourceGroupResult) string { return v.CorrelationId }).(pulumi.StringOutput)
 }
 
 // The debug setting of the deployment.
@@ -129,7 +139,7 @@ func (o LookupDeploymentStackAtResourceGroupResultOutput) DebugSetting() Deploym
 	}).(DeploymentStacksDebugSettingResponsePtrOutput)
 }
 
-// An array of resources that were deleted during the most recent update.
+// An array of resources that were deleted during the most recent Deployment stack update. Deleted means that the resource was removed from the template and relevant deletion operations were specified.
 func (o LookupDeploymentStackAtResourceGroupResultOutput) DeletedResources() ResourceReferenceResponseArrayOutput {
 	return o.ApplyT(func(v LookupDeploymentStackAtResourceGroupResult) []ResourceReferenceResponse {
 		return v.DeletedResources
@@ -151,29 +161,29 @@ func (o LookupDeploymentStackAtResourceGroupResultOutput) DeploymentScope() pulu
 	return o.ApplyT(func(v LookupDeploymentStackAtResourceGroupResult) *string { return v.DeploymentScope }).(pulumi.StringPtrOutput)
 }
 
-// Deployment stack description.
+// Deployment stack description. Max length of 4096 characters.
 func (o LookupDeploymentStackAtResourceGroupResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDeploymentStackAtResourceGroupResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// An array of resources that were detached during the most recent update.
+// An array of resources that were detached during the most recent Deployment stack update. Detached means that the resource was removed from the template, but no relevant deletion operations were specified. So, the resource still exists while no longer being associated with the stack.
 func (o LookupDeploymentStackAtResourceGroupResultOutput) DetachedResources() ResourceReferenceResponseArrayOutput {
 	return o.ApplyT(func(v LookupDeploymentStackAtResourceGroupResult) []ResourceReferenceResponse {
 		return v.DetachedResources
 	}).(ResourceReferenceResponseArrayOutput)
 }
 
-// The duration of the deployment stack update.
+// The duration of the last successful Deployment stack update.
 func (o LookupDeploymentStackAtResourceGroupResultOutput) Duration() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeploymentStackAtResourceGroupResult) string { return v.Duration }).(pulumi.StringOutput)
 }
 
-// Common error response for all Azure Resource Manager APIs to return error details for failed operations. (This also follows the OData error response format.).
-func (o LookupDeploymentStackAtResourceGroupResultOutput) Error() ErrorResponseResponsePtrOutput {
-	return o.ApplyT(func(v LookupDeploymentStackAtResourceGroupResult) *ErrorResponseResponse { return v.Error }).(ErrorResponseResponsePtrOutput)
+// The error detail.
+func (o LookupDeploymentStackAtResourceGroupResultOutput) Error() ErrorDetailResponsePtrOutput {
+	return o.ApplyT(func(v LookupDeploymentStackAtResourceGroupResult) *ErrorDetailResponse { return v.Error }).(ErrorDetailResponsePtrOutput)
 }
 
-// An array of resources that failed to reach goal state during the most recent update.
+// An array of resources that failed to reach goal state during the most recent update. Each resourceId is accompanied by an error message.
 func (o LookupDeploymentStackAtResourceGroupResultOutput) FailedResources() ResourceReferenceExtendedResponseArrayOutput {
 	return o.ApplyT(func(v LookupDeploymentStackAtResourceGroupResult) []ResourceReferenceExtendedResponse {
 		return v.FailedResources
@@ -185,7 +195,7 @@ func (o LookupDeploymentStackAtResourceGroupResultOutput) Id() pulumi.StringOutp
 	return o.ApplyT(func(v LookupDeploymentStackAtResourceGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The location of the deployment stack. It cannot be changed after creation. It must be one of the supported Azure locations.
+// The location of the Deployment stack. It cannot be changed after creation. It must be one of the supported Azure locations.
 func (o LookupDeploymentStackAtResourceGroupResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDeploymentStackAtResourceGroupResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
@@ -195,14 +205,16 @@ func (o LookupDeploymentStackAtResourceGroupResultOutput) Name() pulumi.StringOu
 	return o.ApplyT(func(v LookupDeploymentStackAtResourceGroupResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The outputs of the underlying deployment.
+// The outputs of the deployment resource created by the deployment stack.
 func (o LookupDeploymentStackAtResourceGroupResultOutput) Outputs() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupDeploymentStackAtResourceGroupResult) interface{} { return v.Outputs }).(pulumi.AnyOutput)
 }
 
-// Name and value pairs that define the deployment parameters for the template. Use this element when providing the parameter values directly in the request, rather than linking to an existing parameter file. Use either the parametersLink property or the parameters property, but not both. It can be a JObject or a well formed JSON string.
-func (o LookupDeploymentStackAtResourceGroupResultOutput) Parameters() pulumi.AnyOutput {
-	return o.ApplyT(func(v LookupDeploymentStackAtResourceGroupResult) interface{} { return v.Parameters }).(pulumi.AnyOutput)
+// Name and value pairs that define the deployment parameters for the template. Use this element when providing the parameter values directly in the request, rather than linking to an existing parameter file. Use either the parametersLink property or the parameters property, but not both.
+func (o LookupDeploymentStackAtResourceGroupResultOutput) Parameters() DeploymentParameterResponseMapOutput {
+	return o.ApplyT(func(v LookupDeploymentStackAtResourceGroupResult) map[string]DeploymentParameterResponse {
+		return v.Parameters
+	}).(DeploymentParameterResponseMapOutput)
 }
 
 // The URI of parameters file. Use this element to link to an existing parameters file. Use either the parametersLink property or the parameters property, but not both.

@@ -13,12 +13,12 @@ import (
 )
 
 // The Flux Configuration object returned in Get & Put response.
-// Azure REST API version: 2023-05-01. Prior API version in Azure Native 1.x: 2021-11-01-preview.
-//
-// Other available API versions: 2021-11-01-preview, 2022-01-01-preview, 2024-04-01-preview.
+// Azure REST API version: 2023-05-01. Prior API version in Azure Native 2.x: 2023-05-01.
 type FluxConfiguration struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Parameters to reconcile to the AzureBlob source kind type.
 	AzureBlob AzureBlobDefinitionResponsePtrOutput `pulumi:"azureBlob"`
 	// Parameters to reconcile to the Bucket source kind type.
@@ -123,6 +123,9 @@ func NewFluxConfiguration(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:kubernetesconfiguration/v20240401preview:FluxConfiguration"),
+		},
+		{
+			Type: pulumi.String("azure-native:kubernetesconfiguration/v20241101:FluxConfiguration"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -264,6 +267,11 @@ func (o FluxConfigurationOutput) ToFluxConfigurationOutput() FluxConfigurationOu
 
 func (o FluxConfigurationOutput) ToFluxConfigurationOutputWithContext(ctx context.Context) FluxConfigurationOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o FluxConfigurationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *FluxConfiguration) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Parameters to reconcile to the AzureBlob source kind type.

@@ -12,9 +12,7 @@ import (
 )
 
 // Gets the details of the authorization access policy specified by its identifier.
-// Azure REST API version: 2022-08-01.
-//
-// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
+// Azure REST API version: 2022-09-01-preview.
 func LookupAuthorizationAccessPolicy(ctx *pulumi.Context, args *LookupAuthorizationAccessPolicyArgs, opts ...pulumi.InvokeOption) (*LookupAuthorizationAccessPolicyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAuthorizationAccessPolicyResult
@@ -40,6 +38,8 @@ type LookupAuthorizationAccessPolicyArgs struct {
 
 // Authorization access policy contract.
 type LookupAuthorizationAccessPolicyResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The name of the resource
@@ -91,6 +91,11 @@ func (o LookupAuthorizationAccessPolicyResultOutput) ToLookupAuthorizationAccess
 
 func (o LookupAuthorizationAccessPolicyResultOutput) ToLookupAuthorizationAccessPolicyResultOutputWithContext(ctx context.Context) LookupAuthorizationAccessPolicyResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupAuthorizationAccessPolicyResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAuthorizationAccessPolicyResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

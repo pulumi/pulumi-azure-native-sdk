@@ -12,7 +12,7 @@ import (
 )
 
 // Returns a data connection.
-// Azure REST API version: 2022-12-29.
+// Azure REST API version: 2024-04-13.
 func LookupEventGridDataConnection(ctx *pulumi.Context, args *LookupEventGridDataConnectionArgs, opts ...pulumi.InvokeOption) (*LookupEventGridDataConnectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupEventGridDataConnectionResult
@@ -30,12 +30,14 @@ type LookupEventGridDataConnectionArgs struct {
 	DataConnectionName string `pulumi:"dataConnectionName"`
 	// The name of the database in the Kusto cluster.
 	DatabaseName string `pulumi:"databaseName"`
-	// The name of the resource group containing the Kusto cluster.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Class representing an Event Grid data connection.
 type LookupEventGridDataConnectionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The name of blob storage event type to process.
 	BlobStorageEventType *string `pulumi:"blobStorageEventType"`
 	// The event hub consumer group.
@@ -103,7 +105,7 @@ type LookupEventGridDataConnectionOutputArgs struct {
 	DataConnectionName pulumi.StringInput `pulumi:"dataConnectionName"`
 	// The name of the database in the Kusto cluster.
 	DatabaseName pulumi.StringInput `pulumi:"databaseName"`
-	// The name of the resource group containing the Kusto cluster.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -124,6 +126,11 @@ func (o LookupEventGridDataConnectionResultOutput) ToLookupEventGridDataConnecti
 
 func (o LookupEventGridDataConnectionResultOutput) ToLookupEventGridDataConnectionResultOutputWithContext(ctx context.Context) LookupEventGridDataConnectionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupEventGridDataConnectionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEventGridDataConnectionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of blob storage event type to process.

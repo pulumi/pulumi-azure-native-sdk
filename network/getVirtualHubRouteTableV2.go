@@ -12,9 +12,7 @@ import (
 )
 
 // Retrieves the details of a VirtualHubRouteTableV2.
-// Azure REST API version: 2023-02-01.
-//
-// Other available API versions: 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Azure REST API version: 2024-05-01.
 func LookupVirtualHubRouteTableV2(ctx *pulumi.Context, args *LookupVirtualHubRouteTableV2Args, opts ...pulumi.InvokeOption) (*LookupVirtualHubRouteTableV2Result, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVirtualHubRouteTableV2Result
@@ -38,6 +36,8 @@ type LookupVirtualHubRouteTableV2Args struct {
 type LookupVirtualHubRouteTableV2Result struct {
 	// List of all connections attached to this route table v2.
 	AttachedConnections []string `pulumi:"attachedConnections"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag string `pulumi:"etag"`
 	// Resource ID.
@@ -90,6 +90,11 @@ func (o LookupVirtualHubRouteTableV2ResultOutput) ToLookupVirtualHubRouteTableV2
 // List of all connections attached to this route table v2.
 func (o LookupVirtualHubRouteTableV2ResultOutput) AttachedConnections() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupVirtualHubRouteTableV2Result) []string { return v.AttachedConnections }).(pulumi.StringArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupVirtualHubRouteTableV2ResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVirtualHubRouteTableV2Result) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A unique read-only string that changes whenever the resource is updated.

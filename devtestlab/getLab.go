@@ -38,6 +38,8 @@ type LookupLabResult struct {
 	Announcement *LabAnnouncementPropertiesResponse `pulumi:"announcement"`
 	// The lab's artifact storage account.
 	ArtifactsStorageAccount string `pulumi:"artifactsStorageAccount"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The creation date of the lab.
 	CreatedDate string `pulumi:"createdDate"`
 	// The lab's default premium storage account.
@@ -145,6 +147,11 @@ func (o LookupLabResultOutput) Announcement() LabAnnouncementPropertiesResponseP
 // The lab's artifact storage account.
 func (o LookupLabResultOutput) ArtifactsStorageAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLabResult) string { return v.ArtifactsStorageAccount }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupLabResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLabResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The creation date of the lab.

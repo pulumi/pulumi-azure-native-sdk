@@ -13,12 +13,14 @@ import (
 )
 
 // Represents an environment type.
-// Azure REST API version: 2023-04-01. Prior API version in Azure Native 1.x: 2022-09-01-preview.
-//
-// Other available API versions: 2023-08-01-preview, 2023-10-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview, 2024-10-01-preview.
+// Azure REST API version: 2024-02-01. Prior API version in Azure Native 2.x: 2023-04-01.
 type EnvironmentType struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// The display name of the environment type.
+	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The provisioning state of the resource.
@@ -87,6 +89,9 @@ func NewEnvironmentType(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:devcenter/v20241001preview:EnvironmentType"),
 		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20250201:EnvironmentType"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -124,6 +129,8 @@ func (EnvironmentTypeState) ElementType() reflect.Type {
 type environmentTypeArgs struct {
 	// The name of the devcenter.
 	DevCenterName string `pulumi:"devCenterName"`
+	// The display name of the environment type.
+	DisplayName *string `pulumi:"displayName"`
 	// The name of the environment type.
 	EnvironmentTypeName *string `pulumi:"environmentTypeName"`
 	// The name of the resource group. The name is case insensitive.
@@ -136,6 +143,8 @@ type environmentTypeArgs struct {
 type EnvironmentTypeArgs struct {
 	// The name of the devcenter.
 	DevCenterName pulumi.StringInput
+	// The display name of the environment type.
+	DisplayName pulumi.StringPtrInput
 	// The name of the environment type.
 	EnvironmentTypeName pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
@@ -179,6 +188,16 @@ func (o EnvironmentTypeOutput) ToEnvironmentTypeOutput() EnvironmentTypeOutput {
 
 func (o EnvironmentTypeOutput) ToEnvironmentTypeOutputWithContext(ctx context.Context) EnvironmentTypeOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o EnvironmentTypeOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *EnvironmentType) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// The display name of the environment type.
+func (o EnvironmentTypeOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnvironmentType) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
 // The name of the resource

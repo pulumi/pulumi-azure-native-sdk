@@ -13,12 +13,12 @@ import (
 )
 
 // The shared dashboard resource definition.
-// Azure REST API version: 2020-09-01-preview. Prior API version in Azure Native 1.x: 2020-09-01-preview.
-//
-// Other available API versions: 2019-01-01-preview, 2022-12-01-preview.
+// Azure REST API version: 2022-12-01-preview. Prior API version in Azure Native 2.x: 2020-09-01-preview.
 type Dashboard struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -58,6 +58,9 @@ func NewDashboard(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:portal/v20221201preview:Dashboard"),
+		},
+		{
+			Type: pulumi.String("azure-native:portal/v20250401preview:Dashboard"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -155,6 +158,11 @@ func (o DashboardOutput) ToDashboardOutput() DashboardOutput {
 
 func (o DashboardOutput) ToDashboardOutputWithContext(ctx context.Context) DashboardOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o DashboardOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Dashboard) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The geo-location where the resource lives

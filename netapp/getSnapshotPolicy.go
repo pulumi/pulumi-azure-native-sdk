@@ -12,9 +12,7 @@ import (
 )
 
 // Get a snapshot Policy
-// Azure REST API version: 2022-11-01.
-//
-// Other available API versions: 2022-11-01-preview, 2023-05-01, 2023-05-01-preview, 2023-07-01, 2023-07-01-preview, 2023-11-01, 2023-11-01-preview, 2024-01-01, 2024-03-01, 2024-03-01-preview, 2024-05-01, 2024-05-01-preview, 2024-07-01, 2024-07-01-preview, 2024-09-01, 2024-09-01-preview.
+// Azure REST API version: 2024-09-01.
 func LookupSnapshotPolicy(ctx *pulumi.Context, args *LookupSnapshotPolicyArgs, opts ...pulumi.InvokeOption) (*LookupSnapshotPolicyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSnapshotPolicyResult
@@ -36,6 +34,8 @@ type LookupSnapshotPolicyArgs struct {
 
 // Snapshot policy information
 type LookupSnapshotPolicyResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Schedule for daily snapshots
 	DailySchedule *DailyScheduleResponse `pulumi:"dailySchedule"`
 	// The property to decide policy is enabled or not
@@ -44,7 +44,7 @@ type LookupSnapshotPolicyResult struct {
 	Etag string `pulumi:"etag"`
 	// Schedule for hourly snapshots
 	HourlySchedule *HourlyScheduleResponse `pulumi:"hourlySchedule"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
@@ -101,6 +101,11 @@ func (o LookupSnapshotPolicyResultOutput) ToLookupSnapshotPolicyResultOutputWith
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupSnapshotPolicyResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSnapshotPolicyResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Schedule for daily snapshots
 func (o LookupSnapshotPolicyResultOutput) DailySchedule() DailyScheduleResponsePtrOutput {
 	return o.ApplyT(func(v LookupSnapshotPolicyResult) *DailyScheduleResponse { return v.DailySchedule }).(DailyScheduleResponsePtrOutput)
@@ -121,7 +126,7 @@ func (o LookupSnapshotPolicyResultOutput) HourlySchedule() HourlyScheduleRespons
 	return o.ApplyT(func(v LookupSnapshotPolicyResult) *HourlyScheduleResponse { return v.HourlySchedule }).(HourlyScheduleResponsePtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupSnapshotPolicyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSnapshotPolicyResult) string { return v.Id }).(pulumi.StringOutput)
 }

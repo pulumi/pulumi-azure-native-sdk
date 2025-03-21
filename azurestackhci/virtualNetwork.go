@@ -13,12 +13,12 @@ import (
 )
 
 // The virtual network resource definition.
-// Azure REST API version: 2022-12-15-preview.
-//
-// Other available API versions: 2023-07-01-preview.
+// Azure REST API version: 2023-07-01-preview. Prior API version in Azure Native 2.x: 2022-12-15-preview.
 type VirtualNetwork struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// DhcpOptions contains an array of DNS servers available to VMs deployed in the virtual network. Standard DHCP option for a subnet overrides VNET DHCP options.
 	DhcpOptions VirtualNetworkPropertiesResponseDhcpOptionsPtrOutput `pulumi:"dhcpOptions"`
 	// The extendedLocation of the resource.
@@ -61,6 +61,9 @@ func NewVirtualNetwork(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20210901preview:VirtualNetwork"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20210901preview:VirtualnetworkRetrieve"),
 		},
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20221215preview:VirtualNetwork"),
@@ -180,6 +183,11 @@ func (o VirtualNetworkOutput) ToVirtualNetworkOutput() VirtualNetworkOutput {
 
 func (o VirtualNetworkOutput) ToVirtualNetworkOutputWithContext(ctx context.Context) VirtualNetworkOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o VirtualNetworkOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *VirtualNetwork) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // DhcpOptions contains an array of DNS servers available to VMs deployed in the virtual network. Standard DHCP option for a subnet overrides VNET DHCP options.

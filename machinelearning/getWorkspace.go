@@ -32,6 +32,8 @@ type LookupWorkspaceArgs struct {
 
 // An object that represents a machine learning workspace.
 type LookupWorkspaceResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The creation time for this workspace resource.
 	CreationTime string `pulumi:"creationTime"`
 	// The resource ID.
@@ -95,6 +97,11 @@ func (o LookupWorkspaceResultOutput) ToLookupWorkspaceResultOutput() LookupWorks
 
 func (o LookupWorkspaceResultOutput) ToLookupWorkspaceResultOutputWithContext(ctx context.Context) LookupWorkspaceResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupWorkspaceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkspaceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The creation time for this workspace resource.

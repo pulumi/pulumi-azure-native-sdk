@@ -13,8 +13,6 @@ import (
 
 // Gets the details of the group specified by its identifier.
 // Azure REST API version: 2022-09-01-preview.
-//
-// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
 func LookupWorkspaceGroup(ctx *pulumi.Context, args *LookupWorkspaceGroupArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkspaceGroupResult
@@ -38,6 +36,8 @@ type LookupWorkspaceGroupArgs struct {
 
 // Contract details.
 type LookupWorkspaceGroupResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// true if the group is one of the three system groups (Administrators, Developers, or Guests); otherwise false.
 	BuiltIn bool `pulumi:"builtIn"`
 	// Group description. Can contain HTML formatting tags.
@@ -91,6 +91,11 @@ func (o LookupWorkspaceGroupResultOutput) ToLookupWorkspaceGroupResultOutput() L
 
 func (o LookupWorkspaceGroupResultOutput) ToLookupWorkspaceGroupResultOutputWithContext(ctx context.Context) LookupWorkspaceGroupResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupWorkspaceGroupResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkspaceGroupResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // true if the group is one of the three system groups (Administrators, Developers, or Guests); otherwise false.

@@ -13,12 +13,12 @@ import (
 )
 
 // An object that represents a cache rule for a container registry.
-// Azure REST API version: 2023-01-01-preview.
-//
-// Other available API versions: 2023-06-01-preview, 2023-07-01, 2023-08-01-preview, 2023-11-01-preview, 2024-11-01-preview.
+// Azure REST API version: 2024-11-01-preview. Prior API version in Azure Native 2.x: 2023-01-01-preview.
 type CacheRule struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The creation date of the cache rule.
 	CreationDate pulumi.StringOutput `pulumi:"creationDate"`
 	// The ARM resource ID of the credential store which is associated with the cache rule.
@@ -172,6 +172,11 @@ func (o CacheRuleOutput) ToCacheRuleOutput() CacheRuleOutput {
 
 func (o CacheRuleOutput) ToCacheRuleOutputWithContext(ctx context.Context) CacheRuleOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o CacheRuleOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *CacheRule) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The creation date of the cache rule.

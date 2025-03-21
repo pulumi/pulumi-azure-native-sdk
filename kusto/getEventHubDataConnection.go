@@ -12,7 +12,7 @@ import (
 )
 
 // Returns a data connection.
-// Azure REST API version: 2022-12-29.
+// Azure REST API version: 2024-04-13.
 func LookupEventHubDataConnection(ctx *pulumi.Context, args *LookupEventHubDataConnectionArgs, opts ...pulumi.InvokeOption) (*LookupEventHubDataConnectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupEventHubDataConnectionResult
@@ -30,12 +30,14 @@ type LookupEventHubDataConnectionArgs struct {
 	DataConnectionName string `pulumi:"dataConnectionName"`
 	// The name of the database in the Kusto cluster.
 	DatabaseName string `pulumi:"databaseName"`
-	// The name of the resource group containing the Kusto cluster.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Class representing an event hub data connection.
 type LookupEventHubDataConnectionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The event hub messages compression type
 	Compression *string `pulumi:"compression"`
 	// The event hub consumer group.
@@ -101,7 +103,7 @@ type LookupEventHubDataConnectionOutputArgs struct {
 	DataConnectionName pulumi.StringInput `pulumi:"dataConnectionName"`
 	// The name of the database in the Kusto cluster.
 	DatabaseName pulumi.StringInput `pulumi:"databaseName"`
-	// The name of the resource group containing the Kusto cluster.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -122,6 +124,11 @@ func (o LookupEventHubDataConnectionResultOutput) ToLookupEventHubDataConnection
 
 func (o LookupEventHubDataConnectionResultOutput) ToLookupEventHubDataConnectionResultOutputWithContext(ctx context.Context) LookupEventHubDataConnectionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupEventHubDataConnectionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEventHubDataConnectionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The event hub messages compression type

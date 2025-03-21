@@ -13,12 +13,12 @@ import (
 )
 
 // Represents a user who has access to one or more shares on the Data Box Edge/Gateway device.
-// Azure REST API version: 2022-03-01. Prior API version in Azure Native 1.x: 2020-12-01.
-//
-// Other available API versions: 2021-02-01-preview, 2023-01-01-preview, 2023-07-01, 2023-12-01.
+// Azure REST API version: 2023-07-01. Prior API version in Azure Native 2.x: 2022-03-01.
 type User struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The password details.
 	EncryptedPassword AsymmetricEncryptedSecretResponsePtrOutput `pulumi:"encryptedPassword"`
 	// The object name.
@@ -197,6 +197,11 @@ func (o UserOutput) ToUserOutput() UserOutput {
 
 func (o UserOutput) ToUserOutputWithContext(ctx context.Context) UserOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o UserOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The password details.

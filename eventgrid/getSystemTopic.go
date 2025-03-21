@@ -12,9 +12,7 @@ import (
 )
 
 // Get properties of a system topic.
-// Azure REST API version: 2022-06-15.
-//
-// Other available API versions: 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-02-15.
+// Azure REST API version: 2025-02-15.
 func LookupSystemTopic(ctx *pulumi.Context, args *LookupSystemTopicArgs, opts ...pulumi.InvokeOption) (*LookupSystemTopicResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSystemTopicResult
@@ -34,6 +32,8 @@ type LookupSystemTopicArgs struct {
 
 // EventGrid System Topic.
 type LookupSystemTopicResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified identifier of the resource.
 	Id string `pulumi:"id"`
 	// Identity information for the resource.
@@ -48,7 +48,7 @@ type LookupSystemTopicResult struct {
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Source for the system topic.
 	Source *string `pulumi:"source"`
-	// The system metadata relating to System Topic resource.
+	// The system metadata relating to the Event Grid resource.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Tags of the resource.
 	Tags map[string]string `pulumi:"tags"`
@@ -93,6 +93,11 @@ func (o LookupSystemTopicResultOutput) ToLookupSystemTopicResultOutputWithContex
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupSystemTopicResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSystemTopicResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Fully qualified identifier of the resource.
 func (o LookupSystemTopicResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSystemTopicResult) string { return v.Id }).(pulumi.StringOutput)
@@ -128,7 +133,7 @@ func (o LookupSystemTopicResultOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSystemTopicResult) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
 
-// The system metadata relating to System Topic resource.
+// The system metadata relating to the Event Grid resource.
 func (o LookupSystemTopicResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupSystemTopicResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }

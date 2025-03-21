@@ -13,12 +13,12 @@ import (
 )
 
 // The integration account schema.
-// Azure REST API version: 2019-05-01. Prior API version in Azure Native 1.x: 2019-05-01.
-//
-// Other available API versions: 2015-08-01-preview.
+// Azure REST API version: 2019-05-01. Prior API version in Azure Native 2.x: 2019-05-01.
 type IntegrationAccountSchema struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The changed time.
 	ChangedTime pulumi.StringOutput `pulumi:"changedTime"`
 	// The content.
@@ -71,6 +71,9 @@ func NewIntegrationAccountSchema(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:logic/v20160601:IntegrationAccountSchema"),
+		},
+		{
+			Type: pulumi.String("azure-native:logic/v20160601:Schema"),
 		},
 		{
 			Type: pulumi.String("azure-native:logic/v20180701preview:IntegrationAccountSchema"),
@@ -202,6 +205,11 @@ func (o IntegrationAccountSchemaOutput) ToIntegrationAccountSchemaOutput() Integ
 
 func (o IntegrationAccountSchemaOutput) ToIntegrationAccountSchemaOutputWithContext(ctx context.Context) IntegrationAccountSchemaOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o IntegrationAccountSchemaOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *IntegrationAccountSchema) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The changed time.

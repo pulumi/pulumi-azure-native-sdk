@@ -12,9 +12,7 @@ import (
 )
 
 // Gets a Job Definition resource.
-// Azure REST API version: 2023-03-01.
-//
-// Other available API versions: 2023-07-01-preview, 2023-10-01, 2024-07-01.
+// Azure REST API version: 2024-07-01.
 func LookupJobDefinition(ctx *pulumi.Context, args *LookupJobDefinitionArgs, opts ...pulumi.InvokeOption) (*LookupJobDefinitionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupJobDefinitionResult
@@ -42,6 +40,8 @@ type LookupJobDefinitionResult struct {
 	AgentName *string `pulumi:"agentName"`
 	// Fully qualified resource id of the Agent to assign for new Job Runs of this Job Definition.
 	AgentResourceId string `pulumi:"agentResourceId"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Strategy to use for copy.
 	CopyMode string `pulumi:"copyMode"`
 	// A description for the Job Definition.
@@ -64,7 +64,7 @@ type LookupJobDefinitionResult struct {
 	SourceResourceId string `pulumi:"sourceResourceId"`
 	// The subpath to use when reading from the source Endpoint.
 	SourceSubpath *string `pulumi:"sourceSubpath"`
-	// Resource system metadata.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The name of the target Endpoint.
 	TargetName string `pulumi:"targetName"`
@@ -125,6 +125,11 @@ func (o LookupJobDefinitionResultOutput) AgentResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobDefinitionResult) string { return v.AgentResourceId }).(pulumi.StringOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupJobDefinitionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupJobDefinitionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Strategy to use for copy.
 func (o LookupJobDefinitionResultOutput) CopyMode() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobDefinitionResult) string { return v.CopyMode }).(pulumi.StringOutput)
@@ -180,7 +185,7 @@ func (o LookupJobDefinitionResultOutput) SourceSubpath() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v LookupJobDefinitionResult) *string { return v.SourceSubpath }).(pulumi.StringPtrOutput)
 }
 
-// Resource system metadata.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupJobDefinitionResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupJobDefinitionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }

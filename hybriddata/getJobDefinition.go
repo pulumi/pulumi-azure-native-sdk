@@ -36,6 +36,8 @@ type LookupJobDefinitionArgs struct {
 
 // Job Definition.
 type LookupJobDefinitionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// List of customer secrets containing a key identifier and key value. The key identifier is a way for the specific data source to understand the key. Value contains customer secret encrypted by the encryptionKeys.
 	CustomerSecrets []CustomerSecretResponse `pulumi:"customerSecrets"`
 	// A generic json used differently by each data service type.
@@ -111,6 +113,11 @@ func (o LookupJobDefinitionResultOutput) ToLookupJobDefinitionResultOutput() Loo
 
 func (o LookupJobDefinitionResultOutput) ToLookupJobDefinitionResultOutputWithContext(ctx context.Context) LookupJobDefinitionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupJobDefinitionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupJobDefinitionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // List of customer secrets containing a key identifier and key value. The key identifier is a way for the specific data source to understand the key. Value contains customer secret encrypted by the encryptionKeys.

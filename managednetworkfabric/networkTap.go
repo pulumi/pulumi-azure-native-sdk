@@ -13,7 +13,7 @@ import (
 )
 
 // The Network Tap resource definition.
-// Azure REST API version: 2023-06-15.
+// Azure REST API version: 2023-06-15. Prior API version in Azure Native 2.x: 2023-06-15.
 type NetworkTap struct {
 	pulumi.CustomResourceState
 
@@ -21,6 +21,8 @@ type NetworkTap struct {
 	AdministrativeState pulumi.StringOutput `pulumi:"administrativeState"`
 	// Switch configuration description.
 	Annotation pulumi.StringPtrOutput `pulumi:"annotation"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets the configurations state of the resource.
 	ConfigurationState pulumi.StringOutput `pulumi:"configurationState"`
 	// List of destinations to send the filter traffic.
@@ -186,6 +188,11 @@ func (o NetworkTapOutput) AdministrativeState() pulumi.StringOutput {
 // Switch configuration description.
 func (o NetworkTapOutput) Annotation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkTap) pulumi.StringPtrOutput { return v.Annotation }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o NetworkTapOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkTap) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets the configurations state of the resource.

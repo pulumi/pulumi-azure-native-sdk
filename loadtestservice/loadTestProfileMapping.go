@@ -13,10 +13,12 @@ import (
 )
 
 // LoadTest profile mapping resource details
-// Azure REST API version: 2023-12-01-preview.
+// Azure REST API version: 2023-12-01-preview. Prior API version in Azure Native 2.x: 2023-12-01-preview.
 type LoadTestProfileMapping struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Mapped Azure Load Test resource Id.
 	AzureLoadTestingResourceId pulumi.StringPtrOutput `pulumi:"azureLoadTestingResourceId"`
 	// The name of the resource
@@ -44,6 +46,9 @@ func NewLoadTestProfileMapping(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:loadtestservice/v20231201preview:LoadTestProfileMapping"),
+		},
+		{
+			Type: pulumi.String("azure-native:loadtestservice/v20241201preview:LoadTestProfileMapping"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -141,6 +146,11 @@ func (o LoadTestProfileMappingOutput) ToLoadTestProfileMappingOutput() LoadTestP
 
 func (o LoadTestProfileMappingOutput) ToLoadTestProfileMappingOutputWithContext(ctx context.Context) LoadTestProfileMappingOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LoadTestProfileMappingOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadTestProfileMapping) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Mapped Azure Load Test resource Id.

@@ -36,6 +36,8 @@ type LookupEnvironmentSpecificationVersionArgs struct {
 
 // Azure Resource Manager resource envelope.
 type LookupEnvironmentSpecificationVersionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The name of the resource
@@ -85,6 +87,11 @@ func (o LookupEnvironmentSpecificationVersionResultOutput) ToLookupEnvironmentSp
 
 func (o LookupEnvironmentSpecificationVersionResultOutput) ToLookupEnvironmentSpecificationVersionResultOutputWithContext(ctx context.Context) LookupEnvironmentSpecificationVersionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupEnvironmentSpecificationVersionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEnvironmentSpecificationVersionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

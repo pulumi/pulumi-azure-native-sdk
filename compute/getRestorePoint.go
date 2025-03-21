@@ -12,9 +12,7 @@ import (
 )
 
 // The operation to get the restore point.
-// Azure REST API version: 2023-03-01.
-//
-// Other available API versions: 2021-11-01, 2022-11-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01.
+// Azure REST API version: 2024-11-01.
 func LookupRestorePoint(ctx *pulumi.Context, args *LookupRestorePointArgs, opts ...pulumi.InvokeOption) (*LookupRestorePointResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRestorePointResult
@@ -38,6 +36,8 @@ type LookupRestorePointArgs struct {
 
 // Restore Point details.
 type LookupRestorePointResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// ConsistencyMode of the RestorePoint. Can be specified in the input while creating a restore point. For now, only CrashConsistent is accepted as a valid input. Please refer to https://aka.ms/RestorePoints for more details.
 	ConsistencyMode *string `pulumi:"consistencyMode"`
 	// List of disk resource ids that the customer wishes to exclude from the restore point. If no disks are specified, all disks will be included.
@@ -97,6 +97,11 @@ func (o LookupRestorePointResultOutput) ToLookupRestorePointResultOutput() Looku
 
 func (o LookupRestorePointResultOutput) ToLookupRestorePointResultOutputWithContext(ctx context.Context) LookupRestorePointResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupRestorePointResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRestorePointResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // ConsistencyMode of the RestorePoint. Can be specified in the input while creating a restore point. For now, only CrashConsistent is accepted as a valid input. Please refer to https://aka.ms/RestorePoints for more details.

@@ -13,12 +13,14 @@ import (
 )
 
 // The NSP resource association resource
-// Azure REST API version: 2024-06-01-preview.
+// Azure REST API version: 2024-06-01-preview. Prior API version in Azure Native 2.x: 2024-06-01-preview.
 type NetworkSecurityPerimeterAssociation struct {
 	pulumi.CustomResourceState
 
 	// Access mode on the association.
 	AccessMode pulumi.StringPtrOutput `pulumi:"accessMode"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Specifies if there are provisioning issues
 	HasProvisioningIssues pulumi.StringOutput `pulumi:"hasProvisioningIssues"`
 	// Resource location.
@@ -55,13 +57,25 @@ func NewNetworkSecurityPerimeterAssociation(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:network/v20210201preview:NetworkSecurityPerimeterAssociation"),
 		},
 		{
+			Type: pulumi.String("azure-native:network/v20210201preview:NspAssociation"),
+		},
+		{
 			Type: pulumi.String("azure-native:network/v20230701preview:NetworkSecurityPerimeterAssociation"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20230701preview:NspAssociation"),
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20230801preview:NetworkSecurityPerimeterAssociation"),
 		},
 		{
+			Type: pulumi.String("azure-native:network/v20230801preview:NspAssociation"),
+		},
+		{
 			Type: pulumi.String("azure-native:network/v20240601preview:NetworkSecurityPerimeterAssociation"),
+		},
+		{
+			Type: pulumi.String("azure-native:network:NspAssociation"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -180,6 +194,11 @@ func (o NetworkSecurityPerimeterAssociationOutput) ToNetworkSecurityPerimeterAss
 // Access mode on the association.
 func (o NetworkSecurityPerimeterAssociationOutput) AccessMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkSecurityPerimeterAssociation) pulumi.StringPtrOutput { return v.AccessMode }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o NetworkSecurityPerimeterAssociationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkSecurityPerimeterAssociation) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Specifies if there are provisioning issues

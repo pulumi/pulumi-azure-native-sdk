@@ -12,9 +12,7 @@ import (
 )
 
 // Represents a container on the  Data Box Edge/Gateway device.
-// Azure REST API version: 2022-03-01.
-//
-// Other available API versions: 2023-01-01-preview, 2023-07-01, 2023-12-01.
+// Azure REST API version: 2023-07-01.
 func LookupContainer(ctx *pulumi.Context, args *LookupContainerArgs, opts ...pulumi.InvokeOption) (*LookupContainerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupContainerResult
@@ -38,6 +36,8 @@ type LookupContainerArgs struct {
 
 // Represents a container on the  Data Box Edge/Gateway device.
 type LookupContainerResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Current status of the container.
 	ContainerStatus string `pulumi:"containerStatus"`
 	// The UTC time when container got created.
@@ -93,6 +93,11 @@ func (o LookupContainerResultOutput) ToLookupContainerResultOutput() LookupConta
 
 func (o LookupContainerResultOutput) ToLookupContainerResultOutputWithContext(ctx context.Context) LookupContainerResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupContainerResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupContainerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Current status of the container.

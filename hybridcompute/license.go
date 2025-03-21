@@ -13,12 +13,12 @@ import (
 )
 
 // Describes a license in a hybrid machine.
-// Azure REST API version: 2023-06-20-preview.
-//
-// Other available API versions: 2023-10-03-preview, 2024-03-31-preview, 2024-05-20-preview, 2024-07-10, 2024-07-31-preview, 2024-09-10-preview, 2024-11-10-preview.
+// Azure REST API version: 2024-07-10. Prior API version in Azure Native 2.x: 2023-06-20-preview.
 type License struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Describes the properties of a License.
 	LicenseDetails LicenseDetailsResponsePtrOutput `pulumi:"licenseDetails"`
 	// The type of the license resource.
@@ -73,6 +73,9 @@ func NewLicense(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:hybridcompute/v20241110preview:License"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridcompute/v20250113:License"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -178,6 +181,11 @@ func (o LicenseOutput) ToLicenseOutput() LicenseOutput {
 
 func (o LicenseOutput) ToLicenseOutputWithContext(ctx context.Context) LicenseOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LicenseOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *License) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Describes the properties of a License.

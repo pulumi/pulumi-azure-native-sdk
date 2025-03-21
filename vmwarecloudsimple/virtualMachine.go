@@ -13,12 +13,14 @@ import (
 )
 
 // Virtual machine model
-// Azure REST API version: 2019-04-01. Prior API version in Azure Native 1.x: 2019-04-01.
+// Azure REST API version: 2019-04-01. Prior API version in Azure Native 2.x: 2019-04-01.
 type VirtualMachine struct {
 	pulumi.CustomResourceState
 
 	// The amount of memory
 	AmountOfRam pulumi.IntOutput `pulumi:"amountOfRam"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The list of Virtual Disks' Controllers
 	Controllers VirtualDiskControllerResponseArrayOutput `pulumi:"controllers"`
 	// Virtual machine properties
@@ -239,6 +241,11 @@ func (o VirtualMachineOutput) ToVirtualMachineOutputWithContext(ctx context.Cont
 // The amount of memory
 func (o VirtualMachineOutput) AmountOfRam() pulumi.IntOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.IntOutput { return v.AmountOfRam }).(pulumi.IntOutput)
+}
+
+// The Azure API version of the resource.
+func (o VirtualMachineOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *VirtualMachine) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The list of Virtual Disks' Controllers

@@ -12,9 +12,7 @@ import (
 )
 
 // Gets a resource group.
-// Azure REST API version: 2022-09-01.
-//
-// Other available API versions: 2023-07-01, 2024-03-01, 2024-07-01, 2024-11-01.
+// Azure REST API version: 2024-03-01.
 func LookupResourceGroup(ctx *pulumi.Context, args *LookupResourceGroupArgs, opts ...pulumi.InvokeOption) (*LookupResourceGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupResourceGroupResult
@@ -32,6 +30,8 @@ type LookupResourceGroupArgs struct {
 
 // Resource group information.
 type LookupResourceGroupResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The ID of the resource group.
 	Id string `pulumi:"id"`
 	// The location of the resource group. It cannot be changed after the resource group has been created. It must be one of the supported Azure locations.
@@ -79,6 +79,11 @@ func (o LookupResourceGroupResultOutput) ToLookupResourceGroupResultOutput() Loo
 
 func (o LookupResourceGroupResultOutput) ToLookupResourceGroupResultOutputWithContext(ctx context.Context) LookupResourceGroupResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupResourceGroupResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupResourceGroupResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The ID of the resource group.

@@ -13,12 +13,12 @@ import (
 )
 
 // A managed database resource.
-// Azure REST API version: 2021-11-01. Prior API version in Azure Native 1.x: 2020-11-01-preview.
-//
-// Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
+// Azure REST API version: 2021-11-01. Prior API version in Azure Native 2.x: 2021-11-01.
 type ManagedDatabase struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Collation of the metadata catalog.
 	CatalogCollation pulumi.StringPtrOutput `pulumi:"catalogCollation"`
 	// Collation of the managed database.
@@ -258,6 +258,11 @@ func (o ManagedDatabaseOutput) ToManagedDatabaseOutput() ManagedDatabaseOutput {
 
 func (o ManagedDatabaseOutput) ToManagedDatabaseOutputWithContext(ctx context.Context) ManagedDatabaseOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ManagedDatabaseOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ManagedDatabase) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Collation of the metadata catalog.

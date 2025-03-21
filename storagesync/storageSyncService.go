@@ -13,12 +13,14 @@ import (
 )
 
 // Storage Sync Service object.
-// Azure REST API version: 2022-06-01. Prior API version in Azure Native 1.x: 2020-03-01.
-//
-// Other available API versions: 2022-09-01.
+// Azure REST API version: 2022-09-01. Prior API version in Azure Native 2.x: 2022-06-01.
 type StorageSyncService struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// managed identities for the Storage Sync service to interact with other Azure services without maintaining any secrets or credentials in code.
+	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// Incoming Traffic Policy
 	IncomingTrafficPolicy pulumi.StringPtrOutput `pulumi:"incomingTrafficPolicy"`
 	// Resource Last Operation Name
@@ -43,6 +45,8 @@ type StorageSyncService struct {
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
+	// Use Identity authorization when customer have finished setup RBAC permissions.
+	UseIdentity pulumi.BoolOutput `pulumi:"useIdentity"`
 }
 
 // NewStorageSyncService registers a new resource with the given unique name, arguments, and options.
@@ -127,30 +131,38 @@ func (StorageSyncServiceState) ElementType() reflect.Type {
 }
 
 type storageSyncServiceArgs struct {
+	// managed identities for the Storage Sync to interact with other Azure services without maintaining any secrets or credentials in code.
+	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// Incoming Traffic Policy
 	IncomingTrafficPolicy *string `pulumi:"incomingTrafficPolicy"`
-	// Required. Gets or sets the location of the resource. This will be one of the supported and registered Azure Geo Regions (e.g. West US, East US, Southeast Asia, etc.). The geo region of a resource cannot be changed once it is created, but if an identical geo region is specified on update, the request will succeed.
+	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Name of Storage Sync Service resource.
 	StorageSyncServiceName *string `pulumi:"storageSyncServiceName"`
-	// Gets or sets a list of key value pairs that describe the resource. These tags can be used for viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key with a length no greater than 128 characters and a value with a length no greater than 256 characters.
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
+	// Use Identity authorization when customer have finished setup RBAC permissions.
+	UseIdentity *bool `pulumi:"useIdentity"`
 }
 
 // The set of arguments for constructing a StorageSyncService resource.
 type StorageSyncServiceArgs struct {
+	// managed identities for the Storage Sync to interact with other Azure services without maintaining any secrets or credentials in code.
+	Identity ManagedServiceIdentityPtrInput
 	// Incoming Traffic Policy
 	IncomingTrafficPolicy pulumi.StringPtrInput
-	// Required. Gets or sets the location of the resource. This will be one of the supported and registered Azure Geo Regions (e.g. West US, East US, Southeast Asia, etc.). The geo region of a resource cannot be changed once it is created, but if an identical geo region is specified on update, the request will succeed.
+	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Name of Storage Sync Service resource.
 	StorageSyncServiceName pulumi.StringPtrInput
-	// Gets or sets a list of key value pairs that describe the resource. These tags can be used for viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key with a length no greater than 128 characters and a value with a length no greater than 256 characters.
+	// Resource tags.
 	Tags pulumi.StringMapInput
+	// Use Identity authorization when customer have finished setup RBAC permissions.
+	UseIdentity pulumi.BoolPtrInput
 }
 
 func (StorageSyncServiceArgs) ElementType() reflect.Type {
@@ -188,6 +200,16 @@ func (o StorageSyncServiceOutput) ToStorageSyncServiceOutput() StorageSyncServic
 
 func (o StorageSyncServiceOutput) ToStorageSyncServiceOutputWithContext(ctx context.Context) StorageSyncServiceOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o StorageSyncServiceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *StorageSyncService) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// managed identities for the Storage Sync service to interact with other Azure services without maintaining any secrets or credentials in code.
+func (o StorageSyncServiceOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *StorageSyncService) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // Incoming Traffic Policy
@@ -250,6 +272,11 @@ func (o StorageSyncServiceOutput) Tags() pulumi.StringMapOutput {
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o StorageSyncServiceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *StorageSyncService) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// Use Identity authorization when customer have finished setup RBAC permissions.
+func (o StorageSyncServiceOutput) UseIdentity() pulumi.BoolOutput {
+	return o.ApplyT(func(v *StorageSyncService) pulumi.BoolOutput { return v.UseIdentity }).(pulumi.BoolOutput)
 }
 
 func init() {

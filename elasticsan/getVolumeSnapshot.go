@@ -12,9 +12,7 @@ import (
 )
 
 // Get a Volume Snapshot.
-// Azure REST API version: 2023-01-01.
-//
-// Other available API versions: 2024-05-01, 2024-06-01-preview.
+// Azure REST API version: 2024-05-01.
 func LookupVolumeSnapshot(ctx *pulumi.Context, args *LookupVolumeSnapshotArgs, opts ...pulumi.InvokeOption) (*LookupVolumeSnapshotResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVolumeSnapshotResult
@@ -38,6 +36,8 @@ type LookupVolumeSnapshotArgs struct {
 
 // Response for Volume Snapshot request.
 type LookupVolumeSnapshotResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Data used when creating a volume snapshot.
 	CreationData SnapshotCreationDataResponse `pulumi:"creationData"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -93,6 +93,11 @@ func (o LookupVolumeSnapshotResultOutput) ToLookupVolumeSnapshotResultOutput() L
 
 func (o LookupVolumeSnapshotResultOutput) ToLookupVolumeSnapshotResultOutputWithContext(ctx context.Context) LookupVolumeSnapshotResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupVolumeSnapshotResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVolumeSnapshotResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Data used when creating a volume snapshot.

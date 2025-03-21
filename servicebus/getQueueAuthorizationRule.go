@@ -12,9 +12,7 @@ import (
 )
 
 // Gets an authorization rule for a queue by rule name.
-// Azure REST API version: 2022-01-01-preview.
-//
-// Other available API versions: 2022-10-01-preview, 2023-01-01-preview, 2024-01-01.
+// Azure REST API version: 2024-01-01.
 func LookupQueueAuthorizationRule(ctx *pulumi.Context, args *LookupQueueAuthorizationRuleArgs, opts ...pulumi.InvokeOption) (*LookupQueueAuthorizationRuleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupQueueAuthorizationRuleResult
@@ -32,12 +30,14 @@ type LookupQueueAuthorizationRuleArgs struct {
 	NamespaceName string `pulumi:"namespaceName"`
 	// The queue name.
 	QueueName string `pulumi:"queueName"`
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Description of a namespace authorization rule.
 type LookupQueueAuthorizationRuleResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -68,7 +68,7 @@ type LookupQueueAuthorizationRuleOutputArgs struct {
 	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
 	// The queue name.
 	QueueName pulumi.StringInput `pulumi:"queueName"`
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -89,6 +89,11 @@ func (o LookupQueueAuthorizationRuleResultOutput) ToLookupQueueAuthorizationRule
 
 func (o LookupQueueAuthorizationRuleResultOutput) ToLookupQueueAuthorizationRuleResultOutputWithContext(ctx context.Context) LookupQueueAuthorizationRuleResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupQueueAuthorizationRuleResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupQueueAuthorizationRuleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

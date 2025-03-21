@@ -12,9 +12,7 @@ import (
 )
 
 // Get a private endpoint connection.
-// Azure REST API version: 2022-10-14-preview.
-//
-// Other available API versions: 2023-07-07-preview, 2023-09-05, 2023-10-04-preview, 2023-11-01-preview, 2024-01-16-preview, 2024-03-06-preview, 2024-04-03, 2024-04-08-preview, 2024-08-08-preview.
+// Azure REST API version: 2024-04-03.
 func LookupPrivateEndpointConnectionByWorkspace(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionByWorkspaceArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionByWorkspaceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivateEndpointConnectionByWorkspaceResult
@@ -26,7 +24,7 @@ func LookupPrivateEndpointConnectionByWorkspace(ctx *pulumi.Context, args *Looku
 }
 
 type LookupPrivateEndpointConnectionByWorkspaceArgs struct {
-	// The name of the private endpoint connection associated with the Azure resource
+	// The name of the private endpoint connection associated with the Azure resource.
 	PrivateEndpointConnectionName string `pulumi:"privateEndpointConnectionName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -36,17 +34,21 @@ type LookupPrivateEndpointConnectionByWorkspaceArgs struct {
 
 // The Private Endpoint Connection resource.
 type LookupPrivateEndpointConnectionByWorkspaceResult struct {
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// The group ids for the private endpoint resource.
+	GroupIds []string `pulumi:"groupIds"`
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// The resource of private end point.
+	// The private endpoint resource.
 	PrivateEndpoint *PrivateEndpointResponse `pulumi:"privateEndpoint"`
 	// A collection of information about the state of the connection between service consumer and provider.
 	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStateResponse `pulumi:"privateLinkServiceConnectionState"`
 	// The provisioning state of the private endpoint connection resource.
 	ProvisioningState string `pulumi:"provisioningState"`
-	// Metadata pertaining to creation and last modification of the resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
@@ -62,7 +64,7 @@ func LookupPrivateEndpointConnectionByWorkspaceOutput(ctx *pulumi.Context, args 
 }
 
 type LookupPrivateEndpointConnectionByWorkspaceOutputArgs struct {
-	// The name of the private endpoint connection associated with the Azure resource
+	// The name of the private endpoint connection associated with the Azure resource.
 	PrivateEndpointConnectionName pulumi.StringInput `pulumi:"privateEndpointConnectionName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
@@ -89,7 +91,17 @@ func (o LookupPrivateEndpointConnectionByWorkspaceResultOutput) ToLookupPrivateE
 	return o
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// The Azure API version of the resource.
+func (o LookupPrivateEndpointConnectionByWorkspaceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPrivateEndpointConnectionByWorkspaceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// The group ids for the private endpoint resource.
+func (o LookupPrivateEndpointConnectionByWorkspaceResultOutput) GroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupPrivateEndpointConnectionByWorkspaceResult) []string { return v.GroupIds }).(pulumi.StringArrayOutput)
+}
+
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupPrivateEndpointConnectionByWorkspaceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionByWorkspaceResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -99,7 +111,7 @@ func (o LookupPrivateEndpointConnectionByWorkspaceResultOutput) Name() pulumi.St
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionByWorkspaceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The resource of private end point.
+// The private endpoint resource.
 func (o LookupPrivateEndpointConnectionByWorkspaceResultOutput) PrivateEndpoint() PrivateEndpointResponsePtrOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionByWorkspaceResult) *PrivateEndpointResponse {
 		return v.PrivateEndpoint
@@ -118,7 +130,7 @@ func (o LookupPrivateEndpointConnectionByWorkspaceResultOutput) ProvisioningStat
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionByWorkspaceResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupPrivateEndpointConnectionByWorkspaceResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionByWorkspaceResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }

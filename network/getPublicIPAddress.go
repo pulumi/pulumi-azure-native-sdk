@@ -12,9 +12,7 @@ import (
 )
 
 // Gets the specified public IP address in a specified resource group.
-// Azure REST API version: 2023-02-01.
-//
-// Other available API versions: 2019-06-01, 2019-08-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Azure REST API version: 2024-05-01.
 func LookupPublicIPAddress(ctx *pulumi.Context, args *LookupPublicIPAddressArgs, opts ...pulumi.InvokeOption) (*LookupPublicIPAddressResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPublicIPAddressResult
@@ -36,6 +34,8 @@ type LookupPublicIPAddressArgs struct {
 
 // Public IP address resource.
 type LookupPublicIPAddressResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The DDoS protection custom policy associated with the public IP address.
 	DdosSettings *DdosSettingsResponse `pulumi:"ddosSettings"`
 	// Specify what happens to the public IP address when the VM using it is deleted
@@ -137,6 +137,11 @@ func (o LookupPublicIPAddressResultOutput) ToLookupPublicIPAddressResultOutput()
 
 func (o LookupPublicIPAddressResultOutput) ToLookupPublicIPAddressResultOutputWithContext(ctx context.Context) LookupPublicIPAddressResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupPublicIPAddressResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPublicIPAddressResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The DDoS protection custom policy associated with the public IP address.

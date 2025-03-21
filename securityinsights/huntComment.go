@@ -13,12 +13,12 @@ import (
 )
 
 // Represents a Hunt Comment in Azure Security Insights
-// Azure REST API version: 2023-06-01-preview.
-//
-// Other available API versions: 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-12-01-preview, 2024-01-01-preview, 2024-04-01-preview, 2024-10-01-preview, 2025-01-01-preview.
+// Azure REST API version: 2025-01-01-preview. Prior API version in Azure Native 2.x: 2023-06-01-preview.
 type HuntComment struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Etag of the azure resource
 	Etag pulumi.StringPtrOutput `pulumi:"etag"`
 	// The message for the comment
@@ -183,6 +183,11 @@ func (o HuntCommentOutput) ToHuntCommentOutput() HuntCommentOutput {
 
 func (o HuntCommentOutput) ToHuntCommentOutputWithContext(ctx context.Context) HuntCommentOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o HuntCommentOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *HuntComment) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Etag of the azure resource

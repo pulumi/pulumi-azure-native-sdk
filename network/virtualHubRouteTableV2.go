@@ -13,14 +13,14 @@ import (
 )
 
 // VirtualHubRouteTableV2 Resource.
-// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2020-11-01.
-//
-// Other available API versions: 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Azure REST API version: 2024-05-01. Prior API version in Azure Native 2.x: 2023-02-01.
 type VirtualHubRouteTableV2 struct {
 	pulumi.CustomResourceState
 
 	// List of all connections attached to this route table v2.
 	AttachedConnections pulumi.StringArrayOutput `pulumi:"attachedConnections"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The name of the resource that is unique within a resource group. This name can be used to access the resource.
@@ -238,6 +238,11 @@ func (o VirtualHubRouteTableV2Output) ToVirtualHubRouteTableV2OutputWithContext(
 // List of all connections attached to this route table v2.
 func (o VirtualHubRouteTableV2Output) AttachedConnections() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *VirtualHubRouteTableV2) pulumi.StringArrayOutput { return v.AttachedConnections }).(pulumi.StringArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o VirtualHubRouteTableV2Output) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *VirtualHubRouteTableV2) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A unique read-only string that changes whenever the resource is updated.

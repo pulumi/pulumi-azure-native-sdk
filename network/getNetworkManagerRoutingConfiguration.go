@@ -12,9 +12,7 @@ import (
 )
 
 // Retrieves a network manager routing configuration.
-// Azure REST API version: 2024-03-01.
-//
-// Other available API versions: 2024-05-01.
+// Azure REST API version: 2024-05-01.
 func LookupNetworkManagerRoutingConfiguration(ctx *pulumi.Context, args *LookupNetworkManagerRoutingConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupNetworkManagerRoutingConfigurationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNetworkManagerRoutingConfigurationResult
@@ -36,6 +34,8 @@ type LookupNetworkManagerRoutingConfigurationArgs struct {
 
 // Defines the routing configuration
 type LookupNetworkManagerRoutingConfigurationResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// A description of the routing configuration.
 	Description *string `pulumi:"description"`
 	// A unique read-only string that changes whenever the resource is updated.
@@ -89,6 +89,11 @@ func (o LookupNetworkManagerRoutingConfigurationResultOutput) ToLookupNetworkMan
 
 func (o LookupNetworkManagerRoutingConfigurationResultOutput) ToLookupNetworkManagerRoutingConfigurationResultOutputWithContext(ctx context.Context) LookupNetworkManagerRoutingConfigurationResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupNetworkManagerRoutingConfigurationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkManagerRoutingConfigurationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A description of the routing configuration.

@@ -12,9 +12,7 @@ import (
 )
 
 // Get a private access resource
-// Azure REST API version: 2023-10-27-preview.
-//
-// Other available API versions: 2024-03-22-preview, 2024-11-01-preview.
+// Azure REST API version: 2024-03-22-preview.
 func LookupPrivateAccess(ctx *pulumi.Context, args *LookupPrivateAccessArgs, opts ...pulumi.InvokeOption) (*LookupPrivateAccessResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivateAccessResult
@@ -34,6 +32,8 @@ type LookupPrivateAccessArgs struct {
 
 // PrivateAccesses tracked resource.
 type LookupPrivateAccessResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -42,6 +42,10 @@ type LookupPrivateAccessResult struct {
 	Name string `pulumi:"name"`
 	// A readonly collection of private endpoint connection. Currently only one endpoint connection is supported.
 	PrivateEndpointConnections []PrivateEndpointConnectionResponse `pulumi:"privateEndpointConnections"`
+	// Most recent provisioning state for the given privateAccess resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Public Network Access Control for PrivateAccess resource.
+	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
@@ -85,6 +89,11 @@ func (o LookupPrivateAccessResultOutput) ToLookupPrivateAccessResultOutputWithCo
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupPrivateAccessResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPrivateAccessResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupPrivateAccessResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateAccessResult) string { return v.Id }).(pulumi.StringOutput)
@@ -105,6 +114,16 @@ func (o LookupPrivateAccessResultOutput) PrivateEndpointConnections() PrivateEnd
 	return o.ApplyT(func(v LookupPrivateAccessResult) []PrivateEndpointConnectionResponse {
 		return v.PrivateEndpointConnections
 	}).(PrivateEndpointConnectionResponseArrayOutput)
+}
+
+// Most recent provisioning state for the given privateAccess resource.
+func (o LookupPrivateAccessResultOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPrivateAccessResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Public Network Access Control for PrivateAccess resource.
+func (o LookupPrivateAccessResultOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupPrivateAccessResult) *string { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

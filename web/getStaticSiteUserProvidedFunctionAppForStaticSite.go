@@ -12,9 +12,7 @@ import (
 )
 
 // Description for Gets the details of the user provided function app registered with a static site
-// Azure REST API version: 2022-09-01.
-//
-// Other available API versions: 2023-01-01, 2023-12-01, 2024-04-01.
+// Azure REST API version: 2024-04-01.
 func LookupStaticSiteUserProvidedFunctionAppForStaticSite(ctx *pulumi.Context, args *LookupStaticSiteUserProvidedFunctionAppForStaticSiteArgs, opts ...pulumi.InvokeOption) (*LookupStaticSiteUserProvidedFunctionAppForStaticSiteResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupStaticSiteUserProvidedFunctionAppForStaticSiteResult
@@ -36,6 +34,8 @@ type LookupStaticSiteUserProvidedFunctionAppForStaticSiteArgs struct {
 
 // Static Site User Provided Function App ARM resource.
 type LookupStaticSiteUserProvidedFunctionAppForStaticSiteResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The date and time on which the function app was registered with the static site.
 	CreatedOn string `pulumi:"createdOn"`
 	// The region of the function app registered with the static site
@@ -87,6 +87,11 @@ func (o LookupStaticSiteUserProvidedFunctionAppForStaticSiteResultOutput) ToLook
 
 func (o LookupStaticSiteUserProvidedFunctionAppForStaticSiteResultOutput) ToLookupStaticSiteUserProvidedFunctionAppForStaticSiteResultOutputWithContext(ctx context.Context) LookupStaticSiteUserProvidedFunctionAppForStaticSiteResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupStaticSiteUserProvidedFunctionAppForStaticSiteResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStaticSiteUserProvidedFunctionAppForStaticSiteResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The date and time on which the function app was registered with the static site.

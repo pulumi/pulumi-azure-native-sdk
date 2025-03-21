@@ -13,26 +13,34 @@ import (
 )
 
 // A SQL virtual machine.
-// Azure REST API version: 2022-02-01. Prior API version in Azure Native 1.x: 2017-03-01-preview.
-//
-// Other available API versions: 2023-01-01-preview, 2023-10-01.
+// Azure REST API version: 2023-10-01. Prior API version in Azure Native 2.x: 2022-02-01.
 type SqlVirtualMachine struct {
 	pulumi.CustomResourceState
 
-	// Assessment Settings.
+	// Additional VM Patching solution enabled on the Virtual Machine
+	AdditionalVmPatch pulumi.StringOutput `pulumi:"additionalVmPatch"`
+	// SQL best practices Assessment Settings.
 	AssessmentSettings AssessmentSettingsResponsePtrOutput `pulumi:"assessmentSettings"`
 	// Auto backup settings for SQL Server.
 	AutoBackupSettings AutoBackupSettingsResponsePtrOutput `pulumi:"autoBackupSettings"`
 	// Auto patching settings for applying critical security updates to SQL virtual machine.
 	AutoPatchingSettings AutoPatchingSettingsResponsePtrOutput `pulumi:"autoPatchingSettings"`
-	// Azure Active Directory identity of the server.
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// Enable automatic upgrade of Sql IaaS extension Agent.
+	EnableAutomaticUpgrade pulumi.BoolPtrOutput `pulumi:"enableAutomaticUpgrade"`
+	// DO NOT USE. This value will be deprecated. Azure Active Directory identity of the server.
 	Identity ResourceIdentityResponsePtrOutput `pulumi:"identity"`
 	// Key vault credential settings.
 	KeyVaultCredentialSettings KeyVaultCredentialSettingsResponsePtrOutput `pulumi:"keyVaultCredentialSettings"`
+	// SQL IaaS Agent least privilege mode.
+	LeastPrivilegeMode pulumi.StringPtrOutput `pulumi:"leastPrivilegeMode"`
 	// Resource location.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Resource name.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Operating System of the current SQL Virtual Machine.
+	OsType pulumi.StringOutput `pulumi:"osType"`
 	// Provisioning state to track the async operation status.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// SQL Server configuration management settings.
@@ -41,7 +49,7 @@ type SqlVirtualMachine struct {
 	SqlImageOffer pulumi.StringPtrOutput `pulumi:"sqlImageOffer"`
 	// SQL Server edition type.
 	SqlImageSku pulumi.StringPtrOutput `pulumi:"sqlImageSku"`
-	// SQL Server Management type.
+	// SQL Server Management type. NOTE: This parameter is not used anymore. API will automatically detect the Sql Management, refrain from using it.
 	SqlManagement pulumi.StringPtrOutput `pulumi:"sqlManagement"`
 	// SQL Server license type.
 	SqlServerLicenseType pulumi.StringPtrOutput `pulumi:"sqlServerLicenseType"`
@@ -53,8 +61,12 @@ type SqlVirtualMachine struct {
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	// Troubleshooting status
+	TroubleshootingStatus TroubleshootingStatusResponseOutput `pulumi:"troubleshootingStatus"`
 	// Resource type.
 	Type pulumi.StringOutput `pulumi:"type"`
+	// Virtual Machine Identity details used for Sql IaaS extension configurations.
+	VirtualMachineIdentitySettings VirtualMachineIdentityResponsePtrOutput `pulumi:"virtualMachineIdentitySettings"`
 	// ARM Resource id of underlying virtual machine created from SQL marketplace image.
 	VirtualMachineResourceId pulumi.StringPtrOutput `pulumi:"virtualMachineResourceId"`
 	// Domain credentials for setting up Windows Server Failover Cluster for SQL availability group.
@@ -72,6 +84,18 @@ func NewSqlVirtualMachine(ctx *pulumi.Context,
 
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.AutoPatchingSettings != nil {
+		args.AutoPatchingSettings = args.AutoPatchingSettings.ToAutoPatchingSettingsPtrOutput().ApplyT(func(v *AutoPatchingSettings) *AutoPatchingSettings { return v.Defaults() }).(AutoPatchingSettingsPtrOutput)
+	}
+	if args.EnableAutomaticUpgrade == nil {
+		args.EnableAutomaticUpgrade = pulumi.BoolPtr(false)
+	}
+	if args.LeastPrivilegeMode == nil {
+		args.LeastPrivilegeMode = pulumi.StringPtr("NotSet")
+	}
+	if args.StorageConfigurationSettings != nil {
+		args.StorageConfigurationSettings = args.StorageConfigurationSettings.ToStorageConfigurationSettingsPtrOutput().ApplyT(func(v *StorageConfigurationSettings) *StorageConfigurationSettings { return v.Defaults() }).(StorageConfigurationSettingsPtrOutput)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -133,16 +157,20 @@ func (SqlVirtualMachineState) ElementType() reflect.Type {
 }
 
 type sqlVirtualMachineArgs struct {
-	// Assessment Settings.
+	// SQL best practices Assessment Settings.
 	AssessmentSettings *AssessmentSettings `pulumi:"assessmentSettings"`
 	// Auto backup settings for SQL Server.
 	AutoBackupSettings *AutoBackupSettings `pulumi:"autoBackupSettings"`
 	// Auto patching settings for applying critical security updates to SQL virtual machine.
 	AutoPatchingSettings *AutoPatchingSettings `pulumi:"autoPatchingSettings"`
-	// Azure Active Directory identity of the server.
+	// Enable automatic upgrade of Sql IaaS extension Agent.
+	EnableAutomaticUpgrade *bool `pulumi:"enableAutomaticUpgrade"`
+	// DO NOT USE. This value will be deprecated. Azure Active Directory identity of the server.
 	Identity *ResourceIdentity `pulumi:"identity"`
 	// Key vault credential settings.
 	KeyVaultCredentialSettings *KeyVaultCredentialSettings `pulumi:"keyVaultCredentialSettings"`
+	// SQL IaaS Agent least privilege mode.
+	LeastPrivilegeMode *string `pulumi:"leastPrivilegeMode"`
 	// Resource location.
 	Location *string `pulumi:"location"`
 	// Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
@@ -153,7 +181,7 @@ type sqlVirtualMachineArgs struct {
 	SqlImageOffer *string `pulumi:"sqlImageOffer"`
 	// SQL Server edition type.
 	SqlImageSku *string `pulumi:"sqlImageSku"`
-	// SQL Server Management type.
+	// SQL Server Management type. NOTE: This parameter is not used anymore. API will automatically detect the Sql Management, refrain from using it.
 	SqlManagement *string `pulumi:"sqlManagement"`
 	// SQL Server license type.
 	SqlServerLicenseType *string `pulumi:"sqlServerLicenseType"`
@@ -165,6 +193,8 @@ type sqlVirtualMachineArgs struct {
 	StorageConfigurationSettings *StorageConfigurationSettings `pulumi:"storageConfigurationSettings"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
+	// Virtual Machine Identity details used for Sql IaaS extension configurations.
+	VirtualMachineIdentitySettings *VirtualMachineIdentity `pulumi:"virtualMachineIdentitySettings"`
 	// ARM Resource id of underlying virtual machine created from SQL marketplace image.
 	VirtualMachineResourceId *string `pulumi:"virtualMachineResourceId"`
 	// Domain credentials for setting up Windows Server Failover Cluster for SQL availability group.
@@ -175,16 +205,20 @@ type sqlVirtualMachineArgs struct {
 
 // The set of arguments for constructing a SqlVirtualMachine resource.
 type SqlVirtualMachineArgs struct {
-	// Assessment Settings.
+	// SQL best practices Assessment Settings.
 	AssessmentSettings AssessmentSettingsPtrInput
 	// Auto backup settings for SQL Server.
 	AutoBackupSettings AutoBackupSettingsPtrInput
 	// Auto patching settings for applying critical security updates to SQL virtual machine.
 	AutoPatchingSettings AutoPatchingSettingsPtrInput
-	// Azure Active Directory identity of the server.
+	// Enable automatic upgrade of Sql IaaS extension Agent.
+	EnableAutomaticUpgrade pulumi.BoolPtrInput
+	// DO NOT USE. This value will be deprecated. Azure Active Directory identity of the server.
 	Identity ResourceIdentityPtrInput
 	// Key vault credential settings.
 	KeyVaultCredentialSettings KeyVaultCredentialSettingsPtrInput
+	// SQL IaaS Agent least privilege mode.
+	LeastPrivilegeMode pulumi.StringPtrInput
 	// Resource location.
 	Location pulumi.StringPtrInput
 	// Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
@@ -195,7 +229,7 @@ type SqlVirtualMachineArgs struct {
 	SqlImageOffer pulumi.StringPtrInput
 	// SQL Server edition type.
 	SqlImageSku pulumi.StringPtrInput
-	// SQL Server Management type.
+	// SQL Server Management type. NOTE: This parameter is not used anymore. API will automatically detect the Sql Management, refrain from using it.
 	SqlManagement pulumi.StringPtrInput
 	// SQL Server license type.
 	SqlServerLicenseType pulumi.StringPtrInput
@@ -207,6 +241,8 @@ type SqlVirtualMachineArgs struct {
 	StorageConfigurationSettings StorageConfigurationSettingsPtrInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
+	// Virtual Machine Identity details used for Sql IaaS extension configurations.
+	VirtualMachineIdentitySettings VirtualMachineIdentityPtrInput
 	// ARM Resource id of underlying virtual machine created from SQL marketplace image.
 	VirtualMachineResourceId pulumi.StringPtrInput
 	// Domain credentials for setting up Windows Server Failover Cluster for SQL availability group.
@@ -252,7 +288,12 @@ func (o SqlVirtualMachineOutput) ToSqlVirtualMachineOutputWithContext(ctx contex
 	return o
 }
 
-// Assessment Settings.
+// Additional VM Patching solution enabled on the Virtual Machine
+func (o SqlVirtualMachineOutput) AdditionalVmPatch() pulumi.StringOutput {
+	return o.ApplyT(func(v *SqlVirtualMachine) pulumi.StringOutput { return v.AdditionalVmPatch }).(pulumi.StringOutput)
+}
+
+// SQL best practices Assessment Settings.
 func (o SqlVirtualMachineOutput) AssessmentSettings() AssessmentSettingsResponsePtrOutput {
 	return o.ApplyT(func(v *SqlVirtualMachine) AssessmentSettingsResponsePtrOutput { return v.AssessmentSettings }).(AssessmentSettingsResponsePtrOutput)
 }
@@ -267,7 +308,17 @@ func (o SqlVirtualMachineOutput) AutoPatchingSettings() AutoPatchingSettingsResp
 	return o.ApplyT(func(v *SqlVirtualMachine) AutoPatchingSettingsResponsePtrOutput { return v.AutoPatchingSettings }).(AutoPatchingSettingsResponsePtrOutput)
 }
 
-// Azure Active Directory identity of the server.
+// The Azure API version of the resource.
+func (o SqlVirtualMachineOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SqlVirtualMachine) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Enable automatic upgrade of Sql IaaS extension Agent.
+func (o SqlVirtualMachineOutput) EnableAutomaticUpgrade() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SqlVirtualMachine) pulumi.BoolPtrOutput { return v.EnableAutomaticUpgrade }).(pulumi.BoolPtrOutput)
+}
+
+// DO NOT USE. This value will be deprecated. Azure Active Directory identity of the server.
 func (o SqlVirtualMachineOutput) Identity() ResourceIdentityResponsePtrOutput {
 	return o.ApplyT(func(v *SqlVirtualMachine) ResourceIdentityResponsePtrOutput { return v.Identity }).(ResourceIdentityResponsePtrOutput)
 }
@@ -279,6 +330,11 @@ func (o SqlVirtualMachineOutput) KeyVaultCredentialSettings() KeyVaultCredential
 	}).(KeyVaultCredentialSettingsResponsePtrOutput)
 }
 
+// SQL IaaS Agent least privilege mode.
+func (o SqlVirtualMachineOutput) LeastPrivilegeMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlVirtualMachine) pulumi.StringPtrOutput { return v.LeastPrivilegeMode }).(pulumi.StringPtrOutput)
+}
+
 // Resource location.
 func (o SqlVirtualMachineOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlVirtualMachine) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
@@ -287,6 +343,11 @@ func (o SqlVirtualMachineOutput) Location() pulumi.StringOutput {
 // Resource name.
 func (o SqlVirtualMachineOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlVirtualMachine) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Operating System of the current SQL Virtual Machine.
+func (o SqlVirtualMachineOutput) OsType() pulumi.StringOutput {
+	return o.ApplyT(func(v *SqlVirtualMachine) pulumi.StringOutput { return v.OsType }).(pulumi.StringOutput)
 }
 
 // Provisioning state to track the async operation status.
@@ -311,7 +372,7 @@ func (o SqlVirtualMachineOutput) SqlImageSku() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlVirtualMachine) pulumi.StringPtrOutput { return v.SqlImageSku }).(pulumi.StringPtrOutput)
 }
 
-// SQL Server Management type.
+// SQL Server Management type. NOTE: This parameter is not used anymore. API will automatically detect the Sql Management, refrain from using it.
 func (o SqlVirtualMachineOutput) SqlManagement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlVirtualMachine) pulumi.StringPtrOutput { return v.SqlManagement }).(pulumi.StringPtrOutput)
 }
@@ -343,9 +404,21 @@ func (o SqlVirtualMachineOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *SqlVirtualMachine) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Troubleshooting status
+func (o SqlVirtualMachineOutput) TroubleshootingStatus() TroubleshootingStatusResponseOutput {
+	return o.ApplyT(func(v *SqlVirtualMachine) TroubleshootingStatusResponseOutput { return v.TroubleshootingStatus }).(TroubleshootingStatusResponseOutput)
+}
+
 // Resource type.
 func (o SqlVirtualMachineOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlVirtualMachine) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// Virtual Machine Identity details used for Sql IaaS extension configurations.
+func (o SqlVirtualMachineOutput) VirtualMachineIdentitySettings() VirtualMachineIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *SqlVirtualMachine) VirtualMachineIdentityResponsePtrOutput {
+		return v.VirtualMachineIdentitySettings
+	}).(VirtualMachineIdentityResponsePtrOutput)
 }
 
 // ARM Resource id of underlying virtual machine created from SQL marketplace image.

@@ -13,12 +13,12 @@ import (
 )
 
 // The policy definition.
-// Azure REST API version: 2021-06-01. Prior API version in Azure Native 1.x: 2020-09-01.
-//
-// Other available API versions: 2018-05-01, 2019-06-01, 2023-04-01, 2024-05-01, 2025-01-01.
+// Azure REST API version: 2025-01-01. Prior API version in Azure Native 2.x: 2021-06-01.
 type PolicyDefinitionAtManagementGroup struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The policy definition description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The display name of the policy definition.
@@ -39,6 +39,10 @@ type PolicyDefinitionAtManagementGroup struct {
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource (Microsoft.Authorization/policyDefinitions).
 	Type pulumi.StringOutput `pulumi:"type"`
+	// The policy definition version in #.#.# format.
+	Version pulumi.StringPtrOutput `pulumi:"version"`
+	// A list of available versions for this policy definition.
+	Versions pulumi.StringArrayOutput `pulumi:"versions"`
 }
 
 // NewPolicyDefinitionAtManagementGroup registers a new resource with the given unique name, arguments, and options.
@@ -90,6 +94,9 @@ func NewPolicyDefinitionAtManagementGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:authorization/v20250101:PolicyDefinitionAtManagementGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:authorization/v20250301:PolicyDefinitionAtManagementGroup"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -144,6 +151,10 @@ type policyDefinitionAtManagementGroupArgs struct {
 	PolicyRule interface{} `pulumi:"policyRule"`
 	// The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
 	PolicyType *string `pulumi:"policyType"`
+	// The policy definition version in #.#.# format.
+	Version *string `pulumi:"version"`
+	// A list of available versions for this policy definition.
+	Versions []string `pulumi:"versions"`
 }
 
 // The set of arguments for constructing a PolicyDefinitionAtManagementGroup resource.
@@ -166,6 +177,10 @@ type PolicyDefinitionAtManagementGroupArgs struct {
 	PolicyRule pulumi.Input
 	// The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
 	PolicyType pulumi.StringPtrInput
+	// The policy definition version in #.#.# format.
+	Version pulumi.StringPtrInput
+	// A list of available versions for this policy definition.
+	Versions pulumi.StringArrayInput
 }
 
 func (PolicyDefinitionAtManagementGroupArgs) ElementType() reflect.Type {
@@ -203,6 +218,11 @@ func (o PolicyDefinitionAtManagementGroupOutput) ToPolicyDefinitionAtManagementG
 
 func (o PolicyDefinitionAtManagementGroupOutput) ToPolicyDefinitionAtManagementGroupOutputWithContext(ctx context.Context) PolicyDefinitionAtManagementGroupOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o PolicyDefinitionAtManagementGroupOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PolicyDefinitionAtManagementGroup) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The policy definition description.
@@ -255,6 +275,16 @@ func (o PolicyDefinitionAtManagementGroupOutput) SystemData() SystemDataResponse
 // The type of the resource (Microsoft.Authorization/policyDefinitions).
 func (o PolicyDefinitionAtManagementGroupOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *PolicyDefinitionAtManagementGroup) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// The policy definition version in #.#.# format.
+func (o PolicyDefinitionAtManagementGroupOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PolicyDefinitionAtManagementGroup) pulumi.StringPtrOutput { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+// A list of available versions for this policy definition.
+func (o PolicyDefinitionAtManagementGroupOutput) Versions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PolicyDefinitionAtManagementGroup) pulumi.StringArrayOutput { return v.Versions }).(pulumi.StringArrayOutput)
 }
 
 func init() {

@@ -13,12 +13,12 @@ import (
 )
 
 // Source control configuration for an app.
-// Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2020-12-01.
-//
-// Other available API versions: 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
+// Azure REST API version: 2024-04-01. Prior API version in Azure Native 2.x: 2022-09-01.
 type WebAppSourceControl struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Name of branch to use for deployment.
 	Branch pulumi.StringPtrOutput `pulumi:"branch"`
 	// <code>true</code> to enable deployment rollback; otherwise, <code>false</code>.
@@ -225,6 +225,11 @@ func (o WebAppSourceControlOutput) ToWebAppSourceControlOutput() WebAppSourceCon
 
 func (o WebAppSourceControlOutput) ToWebAppSourceControlOutputWithContext(ctx context.Context) WebAppSourceControlOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o WebAppSourceControlOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *WebAppSourceControl) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Name of branch to use for deployment.

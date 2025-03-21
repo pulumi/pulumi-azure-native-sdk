@@ -13,8 +13,6 @@ import (
 
 // Get a role assignment by scope and name.
 // Azure REST API version: 2022-04-01.
-//
-// Other available API versions: 2017-10-01-preview, 2020-03-01-preview, 2020-04-01-preview.
 func LookupRoleAssignment(ctx *pulumi.Context, args *LookupRoleAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupRoleAssignmentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRoleAssignmentResult
@@ -36,6 +34,8 @@ type LookupRoleAssignmentArgs struct {
 
 // Role Assignments
 type LookupRoleAssignmentResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The conditions on the role assignment. This limits the resources it can be assigned to. e.g.: @Resource[Microsoft.Storage/storageAccounts/blobServices/containers:ContainerName] StringEqualsIgnoreCase 'foo_storage_container'
 	Condition *string `pulumi:"condition"`
 	// Version of the condition. Currently the only accepted value is '2.0'
@@ -115,6 +115,11 @@ func (o LookupRoleAssignmentResultOutput) ToLookupRoleAssignmentResultOutput() L
 
 func (o LookupRoleAssignmentResultOutput) ToLookupRoleAssignmentResultOutputWithContext(ctx context.Context) LookupRoleAssignmentResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupRoleAssignmentResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRoleAssignmentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The conditions on the role assignment. This limits the resources it can be assigned to. e.g.: @Resource[Microsoft.Storage/storageAccounts/blobServices/containers:ContainerName] StringEqualsIgnoreCase 'foo_storage_container'

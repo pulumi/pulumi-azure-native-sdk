@@ -13,12 +13,12 @@ import (
 )
 
 // The properties of a storage account’s Queue service.
-// Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2021-02-01.
-//
-// Other available API versions: 2023-01-01, 2023-04-01, 2023-05-01, 2024-01-01.
+// Azure REST API version: 2024-01-01. Prior API version in Azure Native 2.x: 2022-09-01.
 type QueueServiceProperties struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Specifies CORS rules for the Queue service. You can include up to five CorsRule elements in the request. If no CorsRule elements are included in the request body, all CORS rules will be deleted, and CORS will be disabled for the Queue service.
 	Cors CorsRulesResponsePtrOutput `pulumi:"cors"`
 	// The name of the resource
@@ -175,6 +175,11 @@ func (o QueueServicePropertiesOutput) ToQueueServicePropertiesOutput() QueueServ
 
 func (o QueueServicePropertiesOutput) ToQueueServicePropertiesOutputWithContext(ctx context.Context) QueueServicePropertiesOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o QueueServicePropertiesOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *QueueServiceProperties) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Specifies CORS rules for the Queue service. You can include up to five CorsRule elements in the request. If no CorsRule elements are included in the request body, all CORS rules will be deleted, and CORS will be disabled for the Queue service.

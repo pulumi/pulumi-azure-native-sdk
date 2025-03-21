@@ -13,8 +13,6 @@ import (
 
 // Gets an elastic pool.
 // Azure REST API version: 2021-11-01.
-//
-// Other available API versions: 2014-04-01, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
 func LookupElasticPool(ctx *pulumi.Context, args *LookupElasticPoolArgs, opts ...pulumi.InvokeOption) (*LookupElasticPoolResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupElasticPoolResult
@@ -36,6 +34,8 @@ type LookupElasticPoolArgs struct {
 
 // An elastic pool.
 type LookupElasticPoolResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The creation date of the elastic pool (ISO8601 format).
 	CreationDate string `pulumi:"creationDate"`
 	// The number of secondary replicas associated with the elastic pool that are used to provide high availability. Applicable only to Hyperscale elastic pools.
@@ -107,6 +107,11 @@ func (o LookupElasticPoolResultOutput) ToLookupElasticPoolResultOutput() LookupE
 
 func (o LookupElasticPoolResultOutput) ToLookupElasticPoolResultOutputWithContext(ctx context.Context) LookupElasticPoolResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupElasticPoolResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupElasticPoolResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The creation date of the elastic pool (ISO8601 format).

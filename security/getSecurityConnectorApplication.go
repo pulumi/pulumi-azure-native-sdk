@@ -34,6 +34,8 @@ type LookupSecurityConnectorApplicationArgs struct {
 
 // Security Application over a given scope
 type LookupSecurityConnectorApplicationResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// description of the application
 	Description *string `pulumi:"description"`
 	// display name of the application
@@ -83,6 +85,11 @@ func (o LookupSecurityConnectorApplicationResultOutput) ToLookupSecurityConnecto
 
 func (o LookupSecurityConnectorApplicationResultOutput) ToLookupSecurityConnectorApplicationResultOutputWithContext(ctx context.Context) LookupSecurityConnectorApplicationResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupSecurityConnectorApplicationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecurityConnectorApplicationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // description of the application

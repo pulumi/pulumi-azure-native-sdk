@@ -13,12 +13,12 @@ import (
 )
 
 // Datasources under OMS Workspace.
-// Azure REST API version: 2020-08-01. Prior API version in Azure Native 1.x: 2020-08-01.
-//
-// Other available API versions: 2015-11-01-preview, 2023-09-01.
+// Azure REST API version: 2023-09-01. Prior API version in Azure Native 2.x: 2020-08-01.
 type DataSource struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The ETag of the data source.
 	Etag pulumi.StringPtrOutput `pulumi:"etag"`
 	// The kind of the DataSource.
@@ -64,6 +64,9 @@ func NewDataSource(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:operationalinsights/v20230901:DataSource"),
+		},
+		{
+			Type: pulumi.String("azure-native:operationalinsights/v20250201:DataSource"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -165,6 +168,11 @@ func (o DataSourceOutput) ToDataSourceOutput() DataSourceOutput {
 
 func (o DataSourceOutput) ToDataSourceOutputWithContext(ctx context.Context) DataSourceOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o DataSourceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DataSource) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The ETag of the data source.

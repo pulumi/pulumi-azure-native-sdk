@@ -12,9 +12,7 @@ import (
 )
 
 // Retrieves the details of a virtual wan vpn gateway.
-// Azure REST API version: 2023-02-01.
-//
-// Other available API versions: 2018-07-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Azure REST API version: 2024-05-01.
 func LookupVpnGateway(ctx *pulumi.Context, args *LookupVpnGatewayArgs, opts ...pulumi.InvokeOption) (*LookupVpnGatewayResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVpnGatewayResult
@@ -34,6 +32,8 @@ type LookupVpnGatewayArgs struct {
 
 // VpnGateway Resource.
 type LookupVpnGatewayResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Local network gateway's BGP speaker settings.
 	BgpSettings *BgpSettingsResponse `pulumi:"bgpSettings"`
 	// List of all vpn connections to the gateway.
@@ -99,6 +99,11 @@ func (o LookupVpnGatewayResultOutput) ToLookupVpnGatewayResultOutput() LookupVpn
 
 func (o LookupVpnGatewayResultOutput) ToLookupVpnGatewayResultOutputWithContext(ctx context.Context) LookupVpnGatewayResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupVpnGatewayResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpnGatewayResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Local network gateway's BGP speaker settings.

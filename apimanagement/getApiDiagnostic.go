@@ -12,9 +12,7 @@ import (
 )
 
 // Gets the details of the Diagnostic for an API specified by its identifier.
-// Azure REST API version: 2022-08-01.
-//
-// Other available API versions: 2018-01-01, 2019-01-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
+// Azure REST API version: 2022-09-01-preview.
 func LookupApiDiagnostic(ctx *pulumi.Context, args *LookupApiDiagnosticArgs, opts ...pulumi.InvokeOption) (*LookupApiDiagnosticResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupApiDiagnosticResult
@@ -40,6 +38,8 @@ type LookupApiDiagnosticArgs struct {
 type LookupApiDiagnosticResult struct {
 	// Specifies for what type of messages sampling settings should not apply.
 	AlwaysLog *string `pulumi:"alwaysLog"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Diagnostic settings for incoming/outgoing HTTP messages to the Backend
 	Backend *PipelineDiagnosticSettingsResponse `pulumi:"backend"`
 	// Diagnostic settings for incoming/outgoing HTTP messages to the Gateway.
@@ -108,6 +108,11 @@ func (o LookupApiDiagnosticResultOutput) ToLookupApiDiagnosticResultOutputWithCo
 // Specifies for what type of messages sampling settings should not apply.
 func (o LookupApiDiagnosticResultOutput) AlwaysLog() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupApiDiagnosticResult) *string { return v.AlwaysLog }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupApiDiagnosticResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApiDiagnosticResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Diagnostic settings for incoming/outgoing HTTP messages to the Backend

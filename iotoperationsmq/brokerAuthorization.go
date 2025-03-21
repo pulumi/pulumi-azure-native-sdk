@@ -13,12 +13,14 @@ import (
 )
 
 // MQ broker/authorization resource
-// Azure REST API version: 2023-10-04-preview.
+// Azure REST API version: 2023-10-04-preview. Prior API version in Azure Native 2.x: 2023-10-04-preview.
 type BrokerAuthorization struct {
 	pulumi.CustomResourceState
 
 	// The list of authorization policies supported by the Authorization Resource.
 	AuthorizationPolicies AuthorizationConfigResponseOutput `pulumi:"authorizationPolicies"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Extended Location
 	ExtendedLocation ExtendedLocationPropertyResponseOutput `pulumi:"extendedLocation"`
 	// The array of listener Resources it supports.
@@ -184,6 +186,11 @@ func (o BrokerAuthorizationOutput) ToBrokerAuthorizationOutputWithContext(ctx co
 // The list of authorization policies supported by the Authorization Resource.
 func (o BrokerAuthorizationOutput) AuthorizationPolicies() AuthorizationConfigResponseOutput {
 	return o.ApplyT(func(v *BrokerAuthorization) AuthorizationConfigResponseOutput { return v.AuthorizationPolicies }).(AuthorizationConfigResponseOutput)
+}
+
+// The Azure API version of the resource.
+func (o BrokerAuthorizationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *BrokerAuthorization) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Extended Location

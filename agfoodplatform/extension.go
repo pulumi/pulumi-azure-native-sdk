@@ -13,14 +13,14 @@ import (
 )
 
 // Extension resource.
-// Azure REST API version: 2023-06-01-preview. Prior API version in Azure Native 1.x: 2020-05-12-preview.
-//
-// Other available API versions: 2021-09-01-preview.
+// Azure REST API version: 2023-06-01-preview. Prior API version in Azure Native 2.x: 2023-06-01-preview.
 type Extension struct {
 	pulumi.CustomResourceState
 
 	// Additional Api Properties.
 	AdditionalApiProperties ApiPropertiesResponseMapOutput `pulumi:"additionalApiProperties"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The ETag value to implement optimistic concurrency.
 	ETag pulumi.StringOutput `pulumi:"eTag"`
 	// Extension api docs link.
@@ -165,6 +165,11 @@ func (o ExtensionOutput) ToExtensionOutputWithContext(ctx context.Context) Exten
 // Additional Api Properties.
 func (o ExtensionOutput) AdditionalApiProperties() ApiPropertiesResponseMapOutput {
 	return o.ApplyT(func(v *Extension) ApiPropertiesResponseMapOutput { return v.AdditionalApiProperties }).(ApiPropertiesResponseMapOutput)
+}
+
+// The Azure API version of the resource.
+func (o ExtensionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Extension) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The ETag value to implement optimistic concurrency.

@@ -12,9 +12,7 @@ import (
 )
 
 // Gets the specified Azure Firewall.
-// Azure REST API version: 2023-02-01.
-//
-// Other available API versions: 2020-04-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Azure REST API version: 2024-05-01.
 func LookupAzureFirewall(ctx *pulumi.Context, args *LookupAzureFirewallArgs, opts ...pulumi.InvokeOption) (*LookupAzureFirewallResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAzureFirewallResult
@@ -38,6 +36,10 @@ type LookupAzureFirewallResult struct {
 	AdditionalProperties map[string]string `pulumi:"additionalProperties"`
 	// Collection of application rule collections used by Azure Firewall.
 	ApplicationRuleCollections []AzureFirewallApplicationRuleCollectionResponse `pulumi:"applicationRuleCollections"`
+	// Properties to provide a custom autoscale configuration to this azure firewall.
+	AutoscaleConfiguration *AzureFirewallAutoscaleConfigurationResponse `pulumi:"autoscaleConfiguration"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag string `pulumi:"etag"`
 	// The firewallPolicy associated with this azure firewall.
@@ -121,6 +123,18 @@ func (o LookupAzureFirewallResultOutput) ApplicationRuleCollections() AzureFirew
 	return o.ApplyT(func(v LookupAzureFirewallResult) []AzureFirewallApplicationRuleCollectionResponse {
 		return v.ApplicationRuleCollections
 	}).(AzureFirewallApplicationRuleCollectionResponseArrayOutput)
+}
+
+// Properties to provide a custom autoscale configuration to this azure firewall.
+func (o LookupAzureFirewallResultOutput) AutoscaleConfiguration() AzureFirewallAutoscaleConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v LookupAzureFirewallResult) *AzureFirewallAutoscaleConfigurationResponse {
+		return v.AutoscaleConfiguration
+	}).(AzureFirewallAutoscaleConfigurationResponsePtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupAzureFirewallResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAzureFirewallResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A unique read-only string that changes whenever the resource is updated.

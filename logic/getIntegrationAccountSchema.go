@@ -13,8 +13,6 @@ import (
 
 // Gets an integration account schema.
 // Azure REST API version: 2019-05-01.
-//
-// Other available API versions: 2015-08-01-preview.
 func LookupIntegrationAccountSchema(ctx *pulumi.Context, args *LookupIntegrationAccountSchemaArgs, opts ...pulumi.InvokeOption) (*LookupIntegrationAccountSchemaResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIntegrationAccountSchemaResult
@@ -36,6 +34,8 @@ type LookupIntegrationAccountSchemaArgs struct {
 
 // The integration account schema.
 type LookupIntegrationAccountSchemaResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The changed time.
 	ChangedTime string `pulumi:"changedTime"`
 	// The content.
@@ -103,6 +103,11 @@ func (o LookupIntegrationAccountSchemaResultOutput) ToLookupIntegrationAccountSc
 
 func (o LookupIntegrationAccountSchemaResultOutput) ToLookupIntegrationAccountSchemaResultOutputWithContext(ctx context.Context) LookupIntegrationAccountSchemaResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupIntegrationAccountSchemaResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIntegrationAccountSchemaResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The changed time.

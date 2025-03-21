@@ -12,9 +12,7 @@ import (
 )
 
 // Get properties of an event subscription of a partner topic.
-// Azure REST API version: 2022-06-15.
-//
-// Other available API versions: 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-02-15.
+// Azure REST API version: 2025-02-15.
 func LookupPartnerTopicEventSubscription(ctx *pulumi.Context, args *LookupPartnerTopicEventSubscriptionArgs, opts ...pulumi.InvokeOption) (*LookupPartnerTopicEventSubscriptionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPartnerTopicEventSubscriptionResult
@@ -26,7 +24,7 @@ func LookupPartnerTopicEventSubscription(ctx *pulumi.Context, args *LookupPartne
 }
 
 type LookupPartnerTopicEventSubscriptionArgs struct {
-	// Name of the event subscription to be found. Event subscription names must be between 3 and 100 characters in length and use alphanumeric letters only.
+	// Name of the event subscription to be found.
 	EventSubscriptionName string `pulumi:"eventSubscriptionName"`
 	// Name of the partner topic.
 	PartnerTopicName string `pulumi:"partnerTopicName"`
@@ -34,8 +32,10 @@ type LookupPartnerTopicEventSubscriptionArgs struct {
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
-// Event Subscription
+// Event Subscription.
 type LookupPartnerTopicEventSubscriptionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.
 	// Uses Azure Event Grid's identity to acquire the authentication tokens being used during delivery / dead-lettering.
 	DeadLetterDestination *StorageBlobDeadLetterDestinationResponse `pulumi:"deadLetterDestination"`
@@ -64,7 +64,7 @@ type LookupPartnerTopicEventSubscriptionResult struct {
 	ProvisioningState string `pulumi:"provisioningState"`
 	// The retry policy for events. This can be used to configure maximum number of delivery attempts and time to live for events.
 	RetryPolicy *RetryPolicyResponse `pulumi:"retryPolicy"`
-	// The system metadata relating to Event Subscription resource.
+	// The system metadata relating to the Event Grid resource.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Name of the topic of the event subscription.
 	Topic string `pulumi:"topic"`
@@ -98,7 +98,7 @@ func LookupPartnerTopicEventSubscriptionOutput(ctx *pulumi.Context, args LookupP
 }
 
 type LookupPartnerTopicEventSubscriptionOutputArgs struct {
-	// Name of the event subscription to be found. Event subscription names must be between 3 and 100 characters in length and use alphanumeric letters only.
+	// Name of the event subscription to be found.
 	EventSubscriptionName pulumi.StringInput `pulumi:"eventSubscriptionName"`
 	// Name of the partner topic.
 	PartnerTopicName pulumi.StringInput `pulumi:"partnerTopicName"`
@@ -110,7 +110,7 @@ func (LookupPartnerTopicEventSubscriptionOutputArgs) ElementType() reflect.Type 
 	return reflect.TypeOf((*LookupPartnerTopicEventSubscriptionArgs)(nil)).Elem()
 }
 
-// Event Subscription
+// Event Subscription.
 type LookupPartnerTopicEventSubscriptionResultOutput struct{ *pulumi.OutputState }
 
 func (LookupPartnerTopicEventSubscriptionResultOutput) ElementType() reflect.Type {
@@ -123,6 +123,11 @@ func (o LookupPartnerTopicEventSubscriptionResultOutput) ToLookupPartnerTopicEve
 
 func (o LookupPartnerTopicEventSubscriptionResultOutput) ToLookupPartnerTopicEventSubscriptionResultOutputWithContext(ctx context.Context) LookupPartnerTopicEventSubscriptionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupPartnerTopicEventSubscriptionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPartnerTopicEventSubscriptionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.
@@ -195,7 +200,7 @@ func (o LookupPartnerTopicEventSubscriptionResultOutput) RetryPolicy() RetryPoli
 	return o.ApplyT(func(v LookupPartnerTopicEventSubscriptionResult) *RetryPolicyResponse { return v.RetryPolicy }).(RetryPolicyResponsePtrOutput)
 }
 
-// The system metadata relating to Event Subscription resource.
+// The system metadata relating to the Event Grid resource.
 func (o LookupPartnerTopicEventSubscriptionResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupPartnerTopicEventSubscriptionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }

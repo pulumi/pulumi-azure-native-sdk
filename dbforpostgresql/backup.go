@@ -13,12 +13,12 @@ import (
 )
 
 // Server backup properties
-// Azure REST API version: 2024-03-01-preview.
-//
-// Other available API versions: 2024-08-01, 2024-11-01-preview.
+// Azure REST API version: 2024-08-01. Prior API version in Azure Native 2.x: 2024-03-01-preview.
 type Backup struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Backup type.
 	BackupType pulumi.StringPtrOutput `pulumi:"backupType"`
 	// Backup completed time (ISO8601 format).
@@ -144,6 +144,11 @@ func (o BackupOutput) ToBackupOutput() BackupOutput {
 
 func (o BackupOutput) ToBackupOutputWithContext(ctx context.Context) BackupOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o BackupOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Backup type.

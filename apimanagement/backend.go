@@ -13,12 +13,14 @@ import (
 )
 
 // Backend details.
-// Azure REST API version: 2022-08-01. Prior API version in Azure Native 1.x: 2020-12-01.
-//
-// Other available API versions: 2016-10-10, 2018-01-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
+// Azure REST API version: 2022-09-01-preview. Prior API version in Azure Native 2.x: 2022-08-01.
 type Backend struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// Backend Circuit Breaker Configuration
+	CircuitBreaker BackendCircuitBreakerResponsePtrOutput `pulumi:"circuitBreaker"`
 	// Backend Credentials Contract Properties
 	Credentials BackendCredentialsContractResponsePtrOutput `pulumi:"credentials"`
 	// Backend Description.
@@ -169,6 +171,8 @@ func (BackendState) ElementType() reflect.Type {
 type backendArgs struct {
 	// Identifier of the Backend entity. Must be unique in the current API Management service instance.
 	BackendId *string `pulumi:"backendId"`
+	// Backend Circuit Breaker Configuration
+	CircuitBreaker *BackendCircuitBreaker `pulumi:"circuitBreaker"`
 	// Backend Credentials Contract Properties
 	Credentials *BackendCredentialsContract `pulumi:"credentials"`
 	// Backend Description.
@@ -197,6 +201,8 @@ type backendArgs struct {
 type BackendArgs struct {
 	// Identifier of the Backend entity. Must be unique in the current API Management service instance.
 	BackendId pulumi.StringPtrInput
+	// Backend Circuit Breaker Configuration
+	CircuitBreaker BackendCircuitBreakerPtrInput
 	// Backend Credentials Contract Properties
 	Credentials BackendCredentialsContractPtrInput
 	// Backend Description.
@@ -256,6 +262,16 @@ func (o BackendOutput) ToBackendOutput() BackendOutput {
 
 func (o BackendOutput) ToBackendOutputWithContext(ctx context.Context) BackendOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o BackendOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backend) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Backend Circuit Breaker Configuration
+func (o BackendOutput) CircuitBreaker() BackendCircuitBreakerResponsePtrOutput {
+	return o.ApplyT(func(v *Backend) BackendCircuitBreakerResponsePtrOutput { return v.CircuitBreaker }).(BackendCircuitBreakerResponsePtrOutput)
 }
 
 // Backend Credentials Contract Properties

@@ -12,9 +12,7 @@ import (
 )
 
 // Gets an existing attestation at resource scope.
-// Azure REST API version: 2022-09-01.
-//
-// Other available API versions: 2024-10-01.
+// Azure REST API version: 2024-10-01.
 func LookupAttestationAtResource(ctx *pulumi.Context, args *LookupAttestationAtResourceArgs, opts ...pulumi.InvokeOption) (*LookupAttestationAtResourceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAttestationAtResourceResult
@@ -36,6 +34,8 @@ type LookupAttestationAtResourceArgs struct {
 type LookupAttestationAtResourceResult struct {
 	// The time the evidence was assessed
 	AssessmentDate *string `pulumi:"assessmentDate"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Comments describing why this attestation was created.
 	Comments *string `pulumi:"comments"`
 	// The compliance state that should be set on the resource.
@@ -104,6 +104,11 @@ func (o LookupAttestationAtResourceResultOutput) ToLookupAttestationAtResourceRe
 // The time the evidence was assessed
 func (o LookupAttestationAtResourceResultOutput) AssessmentDate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAttestationAtResourceResult) *string { return v.AssessmentDate }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupAttestationAtResourceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAttestationAtResourceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Comments describing why this attestation was created.

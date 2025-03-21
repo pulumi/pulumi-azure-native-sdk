@@ -13,15 +13,15 @@ import (
 )
 
 // The configuration of the event streaming service resource attached to the Purview account for kafka notifications.
-// Azure REST API version: 2021-12-01.
-//
-// Other available API versions: 2023-05-01-preview, 2024-04-01-preview.
+// Azure REST API version: 2024-04-01-preview. Prior API version in Azure Native 2.x: 2021-12-01.
 type KafkaConfiguration struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Consumer group for hook event hub.
 	ConsumerGroup pulumi.StringPtrOutput `pulumi:"consumerGroup"`
-	// Credentials to access event hub.
+	// Credentials to access the event streaming service attached to the purview account.
 	Credentials CredentialsResponsePtrOutput `pulumi:"credentials"`
 	// Optional partition Id for notification event hub. If not set, all partitions will be leveraged.
 	EventHubPartitionId pulumi.StringPtrOutput `pulumi:"eventHubPartitionId"`
@@ -108,7 +108,7 @@ type kafkaConfigurationArgs struct {
 	AccountName string `pulumi:"accountName"`
 	// Consumer group for hook event hub.
 	ConsumerGroup *string `pulumi:"consumerGroup"`
-	// Credentials to access event hub.
+	// Credentials to access the event streaming service attached to the purview account.
 	Credentials *Credentials `pulumi:"credentials"`
 	// Optional partition Id for notification event hub. If not set, all partitions will be leveraged.
 	EventHubPartitionId *string `pulumi:"eventHubPartitionId"`
@@ -131,7 +131,7 @@ type KafkaConfigurationArgs struct {
 	AccountName pulumi.StringInput
 	// Consumer group for hook event hub.
 	ConsumerGroup pulumi.StringPtrInput
-	// Credentials to access event hub.
+	// Credentials to access the event streaming service attached to the purview account.
 	Credentials CredentialsPtrInput
 	// Optional partition Id for notification event hub. If not set, all partitions will be leveraged.
 	EventHubPartitionId pulumi.StringPtrInput
@@ -185,12 +185,17 @@ func (o KafkaConfigurationOutput) ToKafkaConfigurationOutputWithContext(ctx cont
 	return o
 }
 
+// The Azure API version of the resource.
+func (o KafkaConfigurationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *KafkaConfiguration) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Consumer group for hook event hub.
 func (o KafkaConfigurationOutput) ConsumerGroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaConfiguration) pulumi.StringPtrOutput { return v.ConsumerGroup }).(pulumi.StringPtrOutput)
 }
 
-// Credentials to access event hub.
+// Credentials to access the event streaming service attached to the purview account.
 func (o KafkaConfigurationOutput) Credentials() CredentialsResponsePtrOutput {
 	return o.ApplyT(func(v *KafkaConfiguration) CredentialsResponsePtrOutput { return v.Credentials }).(CredentialsResponsePtrOutput)
 }

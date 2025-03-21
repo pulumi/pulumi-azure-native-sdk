@@ -12,8 +12,6 @@ import (
 )
 
 // Azure REST API version: 2023-01-15.
-//
-// Other available API versions: 2018-12-20, 2021-11-15.
 func GetRecoveryPointAccessToken(ctx *pulumi.Context, args *GetRecoveryPointAccessTokenArgs, opts ...pulumi.InvokeOption) (*GetRecoveryPointAccessTokenResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetRecoveryPointAccessTokenResult

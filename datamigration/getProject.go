@@ -12,9 +12,7 @@ import (
 )
 
 // The project resource is a nested resource representing a stored migration project. The GET method retrieves information about a project.
-// Azure REST API version: 2021-06-30.
-//
-// Other available API versions: 2021-10-30-preview, 2022-03-30-preview, 2023-07-15-preview.
+// Azure REST API version: 2023-07-15-preview.
 func LookupProject(ctx *pulumi.Context, args *LookupProjectArgs, opts ...pulumi.InvokeOption) (*LookupProjectResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupProjectResult
@@ -36,32 +34,32 @@ type LookupProjectArgs struct {
 
 // A project resource
 type LookupProjectResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// Field that defines the Azure active directory application info, used to connect to the target Azure resource
+	AzureAuthenticationInfo *AzureActiveDirectoryAppResponse `pulumi:"azureAuthenticationInfo"`
 	// UTC Date and time when project was created
 	CreationTime string `pulumi:"creationTime"`
 	// List of DatabaseInfo
 	DatabasesInfo []DatabaseInfoResponse `pulumi:"databasesInfo"`
-	// Resource ID.
-	Id string `pulumi:"id"`
-	// Resource location.
-	Location string `pulumi:"location"`
-	// Resource name.
-	Name string `pulumi:"name"`
+	// HTTP strong entity tag value. This is ignored if submitted.
+	Etag     *string `pulumi:"etag"`
+	Id       string  `pulumi:"id"`
+	Location *string `pulumi:"location"`
+	Name     string  `pulumi:"name"`
 	// The project's provisioning state
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Information for connecting to source
 	SourceConnectionInfo interface{} `pulumi:"sourceConnectionInfo"`
 	// Source platform for the project
-	SourcePlatform string `pulumi:"sourcePlatform"`
-	// Metadata pertaining to creation and last modification of the resource.
-	SystemData SystemDataResponse `pulumi:"systemData"`
-	// Resource tags.
-	Tags map[string]string `pulumi:"tags"`
+	SourcePlatform string             `pulumi:"sourcePlatform"`
+	SystemData     SystemDataResponse `pulumi:"systemData"`
+	Tags           map[string]string  `pulumi:"tags"`
 	// Information for connecting to target
 	TargetConnectionInfo interface{} `pulumi:"targetConnectionInfo"`
 	// Target platform for the project
 	TargetPlatform string `pulumi:"targetPlatform"`
-	// Resource type.
-	Type string `pulumi:"type"`
+	Type           string `pulumi:"type"`
 }
 
 func LookupProjectOutput(ctx *pulumi.Context, args LookupProjectOutputArgs, opts ...pulumi.InvokeOption) LookupProjectResultOutput {
@@ -101,6 +99,16 @@ func (o LookupProjectResultOutput) ToLookupProjectResultOutputWithContext(ctx co
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupProjectResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Field that defines the Azure active directory application info, used to connect to the target Azure resource
+func (o LookupProjectResultOutput) AzureAuthenticationInfo() AzureActiveDirectoryAppResponsePtrOutput {
+	return o.ApplyT(func(v LookupProjectResult) *AzureActiveDirectoryAppResponse { return v.AzureAuthenticationInfo }).(AzureActiveDirectoryAppResponsePtrOutput)
+}
+
 // UTC Date and time when project was created
 func (o LookupProjectResultOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.CreationTime }).(pulumi.StringOutput)
@@ -111,17 +119,19 @@ func (o LookupProjectResultOutput) DatabasesInfo() DatabaseInfoResponseArrayOutp
 	return o.ApplyT(func(v LookupProjectResult) []DatabaseInfoResponse { return v.DatabasesInfo }).(DatabaseInfoResponseArrayOutput)
 }
 
-// Resource ID.
+// HTTP strong entity tag value. This is ignored if submitted.
+func (o LookupProjectResultOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupProjectResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
+}
+
 func (o LookupProjectResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Resource location.
-func (o LookupProjectResultOutput) Location() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupProjectResult) string { return v.Location }).(pulumi.StringOutput)
+func (o LookupProjectResultOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupProjectResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// Resource name.
 func (o LookupProjectResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -141,12 +151,10 @@ func (o LookupProjectResultOutput) SourcePlatform() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.SourcePlatform }).(pulumi.StringOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
 func (o LookupProjectResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupProjectResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Resource tags.
 func (o LookupProjectResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupProjectResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
@@ -161,7 +169,6 @@ func (o LookupProjectResultOutput) TargetPlatform() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.TargetPlatform }).(pulumi.StringOutput)
 }
 
-// Resource type.
 func (o LookupProjectResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -13,8 +13,6 @@ import (
 
 // Gets the specified ground station in a specified resource group.
 // Azure REST API version: 2024-03-01-preview.
-//
-// Other available API versions: 2024-03-01.
 func LookupGroundStation(ctx *pulumi.Context, args *LookupGroundStationArgs, opts ...pulumi.InvokeOption) (*LookupGroundStationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGroundStationResult
@@ -36,6 +34,8 @@ type LookupGroundStationArgs struct {
 type LookupGroundStationResult struct {
 	// Altitude of the ground station.
 	AltitudeMeters *float64 `pulumi:"altitudeMeters"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Ground station capabilities.
 	Capabilities []string `pulumi:"capabilities"`
 	// City of ground station.
@@ -102,6 +102,11 @@ func (o LookupGroundStationResultOutput) ToLookupGroundStationResultOutputWithCo
 // Altitude of the ground station.
 func (o LookupGroundStationResultOutput) AltitudeMeters() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v LookupGroundStationResult) *float64 { return v.AltitudeMeters }).(pulumi.Float64PtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupGroundStationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroundStationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Ground station capabilities.

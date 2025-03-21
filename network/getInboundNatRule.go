@@ -12,9 +12,7 @@ import (
 )
 
 // Gets the specified load balancer inbound NAT rule.
-// Azure REST API version: 2023-02-01.
-//
-// Other available API versions: 2019-06-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Azure REST API version: 2024-05-01.
 func LookupInboundNatRule(ctx *pulumi.Context, args *LookupInboundNatRuleArgs, opts ...pulumi.InvokeOption) (*LookupInboundNatRuleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupInboundNatRuleResult
@@ -38,6 +36,8 @@ type LookupInboundNatRuleArgs struct {
 
 // Inbound NAT rule of the load balancer.
 type LookupInboundNatRuleResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// A reference to backendAddressPool resource.
 	BackendAddressPool *SubResourceResponse `pulumi:"backendAddressPool"`
 	// A reference to a private IP address defined on a network interface of a VM. Traffic sent to the frontend port of each of the frontend IP configurations is forwarded to the backend IP.
@@ -119,6 +119,11 @@ func (o LookupInboundNatRuleResultOutput) ToLookupInboundNatRuleResultOutput() L
 
 func (o LookupInboundNatRuleResultOutput) ToLookupInboundNatRuleResultOutputWithContext(ctx context.Context) LookupInboundNatRuleResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupInboundNatRuleResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInboundNatRuleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A reference to backendAddressPool resource.

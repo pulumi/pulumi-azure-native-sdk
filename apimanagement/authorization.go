@@ -13,14 +13,14 @@ import (
 )
 
 // Authorization contract.
-// Azure REST API version: 2022-08-01.
-//
-// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
+// Azure REST API version: 2022-09-01-preview. Prior API version in Azure Native 2.x: 2022-08-01.
 type Authorization struct {
 	pulumi.CustomResourceState
 
 	// Authorization type options
 	AuthorizationType pulumi.StringPtrOutput `pulumi:"authorizationType"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Authorization error details.
 	Error AuthorizationErrorResponsePtrOutput `pulumi:"error"`
 	// The name of the resource
@@ -193,6 +193,11 @@ func (o AuthorizationOutput) ToAuthorizationOutputWithContext(ctx context.Contex
 // Authorization type options
 func (o AuthorizationOutput) AuthorizationType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Authorization) pulumi.StringPtrOutput { return v.AuthorizationType }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o AuthorizationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Authorization) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Authorization error details.

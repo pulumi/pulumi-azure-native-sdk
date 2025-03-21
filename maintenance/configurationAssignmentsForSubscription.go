@@ -12,12 +12,12 @@ import (
 )
 
 // Configuration Assignment
-// Azure REST API version: 2023-04-01.
-//
-// Other available API versions: 2023-09-01-preview, 2023-10-01-preview.
+// Azure REST API version: 2023-10-01-preview. Prior API version in Azure Native 2.x: 2023-04-01.
 type ConfigurationAssignmentsForSubscription struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Properties of the configuration assignment
 	Filter ConfigurationAssignmentFilterPropertiesResponsePtrOutput `pulumi:"filter"`
 	// Location of the resource
@@ -147,6 +147,11 @@ func (o ConfigurationAssignmentsForSubscriptionOutput) ToConfigurationAssignment
 
 func (o ConfigurationAssignmentsForSubscriptionOutput) ToConfigurationAssignmentsForSubscriptionOutputWithContext(ctx context.Context) ConfigurationAssignmentsForSubscriptionOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ConfigurationAssignmentsForSubscriptionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConfigurationAssignmentsForSubscription) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Properties of the configuration assignment

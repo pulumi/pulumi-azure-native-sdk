@@ -13,8 +13,6 @@ import (
 
 // Gets a private endpoint connection.
 // Azure REST API version: 2021-11-01.
-//
-// Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
 func LookupManagedInstancePrivateEndpointConnection(ctx *pulumi.Context, args *LookupManagedInstancePrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupManagedInstancePrivateEndpointConnectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupManagedInstancePrivateEndpointConnectionResult
@@ -36,6 +34,8 @@ type LookupManagedInstancePrivateEndpointConnectionArgs struct {
 
 // A private endpoint connection
 type LookupManagedInstancePrivateEndpointConnectionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource ID.
 	Id string `pulumi:"id"`
 	// Resource name.
@@ -85,6 +85,11 @@ func (o LookupManagedInstancePrivateEndpointConnectionResultOutput) ToLookupMana
 
 func (o LookupManagedInstancePrivateEndpointConnectionResultOutput) ToLookupManagedInstancePrivateEndpointConnectionResultOutputWithContext(ctx context.Context) LookupManagedInstancePrivateEndpointConnectionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupManagedInstancePrivateEndpointConnectionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupManagedInstancePrivateEndpointConnectionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource ID.

@@ -12,9 +12,7 @@ import (
 )
 
 // Gets the private link resource.
-// Azure REST API version: 2023-06-06.
-//
-// Other available API versions: 2023-10-01-preview, 2024-05-01-preview.
+// Azure REST API version: 2023-10-01-preview.
 func LookupPrivateEndpointConnectionController(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionControllerArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionControllerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivateEndpointConnectionControllerResult
@@ -36,6 +34,8 @@ type LookupPrivateEndpointConnectionControllerArgs struct {
 
 // REST model used to encapsulate Private Link properties for tracked resources.
 type LookupPrivateEndpointConnectionControllerResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// array of group ids
 	GroupIds []string `pulumi:"groupIds"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -89,6 +89,11 @@ func (o LookupPrivateEndpointConnectionControllerResultOutput) ToLookupPrivateEn
 
 func (o LookupPrivateEndpointConnectionControllerResultOutput) ToLookupPrivateEndpointConnectionControllerResultOutputWithContext(ctx context.Context) LookupPrivateEndpointConnectionControllerResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupPrivateEndpointConnectionControllerResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPrivateEndpointConnectionControllerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // array of group ids

@@ -31,6 +31,8 @@ type LookupJobCollectionArgs struct {
 }
 
 type LookupJobCollectionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets the job collection resource identifier.
 	Id string `pulumi:"id"`
 	// Gets or sets the storage account location.
@@ -77,6 +79,11 @@ func (o LookupJobCollectionResultOutput) ToLookupJobCollectionResultOutput() Loo
 
 func (o LookupJobCollectionResultOutput) ToLookupJobCollectionResultOutputWithContext(ctx context.Context) LookupJobCollectionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupJobCollectionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupJobCollectionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets the job collection resource identifier.

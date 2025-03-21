@@ -12,9 +12,7 @@ import (
 )
 
 // Retrieves information about a gallery image definition.
-// Azure REST API version: 2022-03-03.
-//
-// Other available API versions: 2022-08-03, 2023-07-03, 2024-03-03.
+// Azure REST API version: 2024-03-03.
 func LookupGalleryImage(ctx *pulumi.Context, args *LookupGalleryImageArgs, opts ...pulumi.InvokeOption) (*LookupGalleryImageResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGalleryImageResult
@@ -36,8 +34,12 @@ type LookupGalleryImageArgs struct {
 
 // Specifies information about the gallery image definition that you want to create or update.
 type LookupGalleryImageResult struct {
+	// Optional. Must be set to true if the gallery image features are being updated.
+	AllowUpdateImage *bool `pulumi:"allowUpdateImage"`
 	// The architecture of the image. Applicable to OS disks only.
 	Architecture *string `pulumi:"architecture"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The description of this gallery image definition resource. This property is updatable.
 	Description *string `pulumi:"description"`
 	// Describes the disallowed disk types.
@@ -60,7 +62,7 @@ type LookupGalleryImageResult struct {
 	Name string `pulumi:"name"`
 	// This property allows the user to specify whether the virtual machines created under this image are 'Generalized' or 'Specialized'.
 	OsState string `pulumi:"osState"`
-	// This property allows you to specify the type of the OS that is included in the disk when creating a VM from a managed image. <br><br> Possible values are: <br><br> **Windows** <br><br> **Linux**
+	// This property allows you to specify the type of the OS that is included in the disk when creating a VM from a managed image. Possible values are: **Windows,** **Linux.**
 	OsType string `pulumi:"osType"`
 	// The privacy statement uri.
 	PrivacyStatementUri *string `pulumi:"privacyStatementUri"`
@@ -115,9 +117,19 @@ func (o LookupGalleryImageResultOutput) ToLookupGalleryImageResultOutputWithCont
 	return o
 }
 
+// Optional. Must be set to true if the gallery image features are being updated.
+func (o LookupGalleryImageResultOutput) AllowUpdateImage() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupGalleryImageResult) *bool { return v.AllowUpdateImage }).(pulumi.BoolPtrOutput)
+}
+
 // The architecture of the image. Applicable to OS disks only.
 func (o LookupGalleryImageResultOutput) Architecture() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupGalleryImageResult) *string { return v.Architecture }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupGalleryImageResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGalleryImageResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The description of this gallery image definition resource. This property is updatable.
@@ -175,7 +187,7 @@ func (o LookupGalleryImageResultOutput) OsState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGalleryImageResult) string { return v.OsState }).(pulumi.StringOutput)
 }
 
-// This property allows you to specify the type of the OS that is included in the disk when creating a VM from a managed image. <br><br> Possible values are: <br><br> **Windows** <br><br> **Linux**
+// This property allows you to specify the type of the OS that is included in the disk when creating a VM from a managed image. Possible values are: **Windows,** **Linux.**
 func (o LookupGalleryImageResultOutput) OsType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGalleryImageResult) string { return v.OsType }).(pulumi.StringOutput)
 }

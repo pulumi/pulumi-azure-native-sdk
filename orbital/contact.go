@@ -13,14 +13,14 @@ import (
 )
 
 // Customer creates a contact resource for a spacecraft resource.
-// Azure REST API version: 2022-11-01.
-//
-// Other available API versions: 2022-03-01.
+// Azure REST API version: 2022-11-01. Prior API version in Azure Native 2.x: 2022-11-01.
 type Contact struct {
 	pulumi.CustomResourceState
 
 	// The configuration associated with the allocated antenna.
 	AntennaConfiguration ContactsPropertiesResponseAntennaConfigurationOutput `pulumi:"antennaConfiguration"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The reference to the contact profile resource.
 	ContactProfile ContactsPropertiesResponseContactProfileOutput `pulumi:"contactProfile"`
 	// Azimuth of the antenna at the end of the contact in decimal degrees.
@@ -200,6 +200,11 @@ func (o ContactOutput) ToContactOutputWithContext(ctx context.Context) ContactOu
 // The configuration associated with the allocated antenna.
 func (o ContactOutput) AntennaConfiguration() ContactsPropertiesResponseAntennaConfigurationOutput {
 	return o.ApplyT(func(v *Contact) ContactsPropertiesResponseAntennaConfigurationOutput { return v.AntennaConfiguration }).(ContactsPropertiesResponseAntennaConfigurationOutput)
+}
+
+// The Azure API version of the resource.
+func (o ContactOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Contact) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The reference to the contact profile resource.

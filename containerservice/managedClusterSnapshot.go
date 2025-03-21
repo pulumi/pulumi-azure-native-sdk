@@ -13,12 +13,12 @@ import (
 )
 
 // A managed cluster snapshot resource.
-// Azure REST API version: 2023-05-02-preview. Prior API version in Azure Native 1.x: 2022-02-02-preview.
-//
-// Other available API versions: 2023-06-02-preview, 2023-07-02-preview, 2023-08-02-preview, 2023-09-02-preview, 2023-10-02-preview, 2023-11-02-preview, 2024-01-02-preview, 2024-02-02-preview, 2024-03-02-preview, 2024-04-02-preview, 2024-05-02-preview, 2024-06-02-preview, 2024-07-02-preview, 2024-09-02-preview.
+// Azure REST API version: 2024-10-02-preview. Prior API version in Azure Native 2.x: 2023-05-02-preview.
 type ManagedClusterSnapshot struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// CreationData to be used to specify the source resource ID to create this snapshot.
 	CreationData CreationDataResponsePtrOutput `pulumi:"creationData"`
 	// The geo-location where the resource lives
@@ -138,6 +138,9 @@ func NewManagedClusterSnapshot(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:containerservice/v20240902preview:ManagedClusterSnapshot"),
 		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20241002preview:ManagedClusterSnapshot"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -238,6 +241,11 @@ func (o ManagedClusterSnapshotOutput) ToManagedClusterSnapshotOutput() ManagedCl
 
 func (o ManagedClusterSnapshotOutput) ToManagedClusterSnapshotOutputWithContext(ctx context.Context) ManagedClusterSnapshotOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ManagedClusterSnapshotOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ManagedClusterSnapshot) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // CreationData to be used to specify the source resource ID to create this snapshot.

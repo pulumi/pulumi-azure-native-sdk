@@ -12,9 +12,7 @@ import (
 )
 
 // Get a Binding and its properties.
-// Azure REST API version: 2023-05-01-preview.
-//
-// Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01, 2024-01-01-preview, 2024-05-01-preview.
+// Azure REST API version: 2024-01-01-preview.
 func LookupBinding(ctx *pulumi.Context, args *LookupBindingArgs, opts ...pulumi.InvokeOption) (*LookupBindingResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBindingResult
@@ -38,6 +36,8 @@ type LookupBindingArgs struct {
 
 // Binding resource payload
 type LookupBindingResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource Id for the resource.
 	Id string `pulumi:"id"`
 	// The name of the resource.
@@ -87,6 +87,11 @@ func (o LookupBindingResultOutput) ToLookupBindingResultOutput() LookupBindingRe
 
 func (o LookupBindingResultOutput) ToLookupBindingResultOutputWithContext(ctx context.Context) LookupBindingResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupBindingResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBindingResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource Id for the resource.

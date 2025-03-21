@@ -12,9 +12,7 @@ import (
 )
 
 // Get all delivery attributes for an event subscription for topic.
-// Azure REST API version: 2022-06-15.
-//
-// Other available API versions: 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-02-15.
+// Azure REST API version: 2025-02-15.
 func GetTopicEventSubscriptionDeliveryAttributes(ctx *pulumi.Context, args *GetTopicEventSubscriptionDeliveryAttributesArgs, opts ...pulumi.InvokeOption) (*GetTopicEventSubscriptionDeliveryAttributesResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetTopicEventSubscriptionDeliveryAttributesResult
@@ -30,7 +28,7 @@ type GetTopicEventSubscriptionDeliveryAttributesArgs struct {
 	EventSubscriptionName string `pulumi:"eventSubscriptionName"`
 	// The name of the resource group within the user's subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Name of the domain topic.
+	// Name of the topic.
 	TopicName string `pulumi:"topicName"`
 }
 
@@ -54,7 +52,7 @@ type GetTopicEventSubscriptionDeliveryAttributesOutputArgs struct {
 	EventSubscriptionName pulumi.StringInput `pulumi:"eventSubscriptionName"`
 	// The name of the resource group within the user's subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	// Name of the domain topic.
+	// Name of the topic.
 	TopicName pulumi.StringInput `pulumi:"topicName"`
 }
 

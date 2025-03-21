@@ -12,9 +12,7 @@ import (
 )
 
 // Gets the specified Content Filters associated with the Azure OpenAI account.
-// Azure REST API version: 2023-10-01-preview.
-//
-// Other available API versions: 2024-04-01-preview, 2024-06-01-preview, 2024-10-01.
+// Azure REST API version: 2024-10-01.
 func LookupRaiPolicy(ctx *pulumi.Context, args *LookupRaiPolicyArgs, opts ...pulumi.InvokeOption) (*LookupRaiPolicyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRaiPolicyResult
@@ -36,6 +34,8 @@ type LookupRaiPolicyArgs struct {
 
 // Cognitive Services RaiPolicy.
 type LookupRaiPolicyResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource Etag.
 	Etag string `pulumi:"etag"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -87,6 +87,11 @@ func (o LookupRaiPolicyResultOutput) ToLookupRaiPolicyResultOutput() LookupRaiPo
 
 func (o LookupRaiPolicyResultOutput) ToLookupRaiPolicyResultOutputWithContext(ctx context.Context) LookupRaiPolicyResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupRaiPolicyResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRaiPolicyResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource Etag.

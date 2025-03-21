@@ -13,12 +13,12 @@ import (
 )
 
 // An instance failover group.
-// Azure REST API version: 2021-11-01. Prior API version in Azure Native 1.x: 2020-11-01-preview.
-//
-// Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
+// Azure REST API version: 2021-11-01. Prior API version in Azure Native 2.x: 2021-11-01.
 type InstanceFailoverGroup struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// List of managed instance pairs in the failover group.
 	ManagedInstancePairs ManagedInstancePairInfoResponseArrayOutput `pulumi:"managedInstancePairs"`
 	// Resource name.
@@ -215,6 +215,11 @@ func (o InstanceFailoverGroupOutput) ToInstanceFailoverGroupOutput() InstanceFai
 
 func (o InstanceFailoverGroupOutput) ToInstanceFailoverGroupOutputWithContext(ctx context.Context) InstanceFailoverGroupOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o InstanceFailoverGroupOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceFailoverGroup) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // List of managed instance pairs in the failover group.

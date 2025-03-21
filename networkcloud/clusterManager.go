@@ -12,9 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Azure REST API version: 2023-10-01-preview. Prior API version in Azure Native 1.x: 2022-12-12-preview.
-//
-// Other available API versions: 2023-07-01, 2024-06-01-preview, 2024-07-01, 2024-10-01-preview.
+// Azure REST API version: 2025-02-01. Prior API version in Azure Native 2.x: 2023-10-01-preview.
 type ClusterManager struct {
 	pulumi.CustomResourceState
 
@@ -22,14 +20,20 @@ type ClusterManager struct {
 	AnalyticsWorkspaceId pulumi.StringPtrOutput `pulumi:"analyticsWorkspaceId"`
 	// Field deprecated, this value will no longer influence the cluster manager allocation process and will be removed in a future version. The Azure availability zones within the region that will be used to support the cluster manager resource.
 	AvailabilityZones pulumi.StringArrayOutput `pulumi:"availabilityZones"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The list of the cluster versions the manager supports. It is used as input in clusterVersion property of a cluster resource.
 	ClusterVersions ClusterAvailableVersionResponseArrayOutput `pulumi:"clusterVersions"`
 	// The detailed status that provides additional information about the cluster manager.
 	DetailedStatus pulumi.StringOutput `pulumi:"detailedStatus"`
 	// The descriptive message about the current detailed status.
 	DetailedStatusMessage pulumi.StringOutput `pulumi:"detailedStatusMessage"`
+	// Resource ETag.
+	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The resource ID of the fabric controller that has one to one mapping with the cluster manager.
 	FabricControllerId pulumi.StringOutput `pulumi:"fabricControllerId"`
+	// The identity of the cluster manager.
+	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The configuration of the managed resource group associated with the resource.
@@ -79,6 +83,9 @@ func NewClusterManager(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:networkcloud/v20241001preview:ClusterManager"),
 		},
+		{
+			Type: pulumi.String("azure-native:networkcloud/v20250201:ClusterManager"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -122,6 +129,8 @@ type clusterManagerArgs struct {
 	ClusterManagerName *string `pulumi:"clusterManagerName"`
 	// The resource ID of the fabric controller that has one to one mapping with the cluster manager.
 	FabricControllerId string `pulumi:"fabricControllerId"`
+	// The identity of the cluster manager.
+	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// The configuration of the managed resource group associated with the resource.
@@ -144,6 +153,8 @@ type ClusterManagerArgs struct {
 	ClusterManagerName pulumi.StringPtrInput
 	// The resource ID of the fabric controller that has one to one mapping with the cluster manager.
 	FabricControllerId pulumi.StringInput
+	// The identity of the cluster manager.
+	Identity ManagedServiceIdentityPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// The configuration of the managed resource group associated with the resource.
@@ -203,6 +214,11 @@ func (o ClusterManagerOutput) AvailabilityZones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ClusterManager) pulumi.StringArrayOutput { return v.AvailabilityZones }).(pulumi.StringArrayOutput)
 }
 
+// The Azure API version of the resource.
+func (o ClusterManagerOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterManager) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The list of the cluster versions the manager supports. It is used as input in clusterVersion property of a cluster resource.
 func (o ClusterManagerOutput) ClusterVersions() ClusterAvailableVersionResponseArrayOutput {
 	return o.ApplyT(func(v *ClusterManager) ClusterAvailableVersionResponseArrayOutput { return v.ClusterVersions }).(ClusterAvailableVersionResponseArrayOutput)
@@ -218,9 +234,19 @@ func (o ClusterManagerOutput) DetailedStatusMessage() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClusterManager) pulumi.StringOutput { return v.DetailedStatusMessage }).(pulumi.StringOutput)
 }
 
+// Resource ETag.
+func (o ClusterManagerOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterManager) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
 // The resource ID of the fabric controller that has one to one mapping with the cluster manager.
 func (o ClusterManagerOutput) FabricControllerId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClusterManager) pulumi.StringOutput { return v.FabricControllerId }).(pulumi.StringOutput)
+}
+
+// The identity of the cluster manager.
+func (o ClusterManagerOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *ClusterManager) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives

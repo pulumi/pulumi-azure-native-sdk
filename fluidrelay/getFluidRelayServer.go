@@ -13,8 +13,6 @@ import (
 
 // A FluidRelay Server.
 // Azure REST API version: 2022-06-01.
-//
-// Other available API versions: 2021-06-15-preview.
 func LookupFluidRelayServer(ctx *pulumi.Context, args *LookupFluidRelayServerArgs, opts ...pulumi.InvokeOption) (*LookupFluidRelayServerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFluidRelayServerResult
@@ -34,6 +32,8 @@ type LookupFluidRelayServerArgs struct {
 
 // A FluidRelay Server.
 type LookupFluidRelayServerResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// All encryption configuration for a resource.
 	Encryption *EncryptionPropertiesResponse `pulumi:"encryption"`
 	// The Fluid Relay Service endpoints for this server.
@@ -93,6 +93,11 @@ func (o LookupFluidRelayServerResultOutput) ToLookupFluidRelayServerResultOutput
 
 func (o LookupFluidRelayServerResultOutput) ToLookupFluidRelayServerResultOutputWithContext(ctx context.Context) LookupFluidRelayServerResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupFluidRelayServerResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFluidRelayServerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // All encryption configuration for a resource.

@@ -13,9 +13,7 @@ import (
 )
 
 // SpatialAnchorsAccount Response.
-// Azure REST API version: 2021-01-01. Prior API version in Azure Native 1.x: 2021-01-01.
-//
-// Other available API versions: 2021-03-01-preview.
+// Azure REST API version: 2021-03-01-preview. Prior API version in Azure Native 2.x: 2021-01-01.
 type SpatialAnchorsAccount struct {
 	pulumi.CustomResourceState
 
@@ -23,6 +21,8 @@ type SpatialAnchorsAccount struct {
 	AccountDomain pulumi.StringOutput `pulumi:"accountDomain"`
 	// unique id of certain account.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The identity associated with this account
 	Identity IdentityResponsePtrOutput `pulumi:"identity"`
 	// The kind of account, if supported
@@ -193,6 +193,11 @@ func (o SpatialAnchorsAccountOutput) AccountDomain() pulumi.StringOutput {
 // unique id of certain account.
 func (o SpatialAnchorsAccountOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SpatialAnchorsAccount) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o SpatialAnchorsAccountOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SpatialAnchorsAccount) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The identity associated with this account

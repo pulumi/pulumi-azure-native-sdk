@@ -12,9 +12,7 @@ import (
 )
 
 // Get a StandbyVirtualMachinePoolResource
-// Azure REST API version: 2023-12-01-preview.
-//
-// Other available API versions: 2024-03-01, 2024-03-01-preview.
+// Azure REST API version: 2024-03-01.
 func LookupStandbyVirtualMachinePool(ctx *pulumi.Context, args *LookupStandbyVirtualMachinePoolArgs, opts ...pulumi.InvokeOption) (*LookupStandbyVirtualMachinePoolResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupStandbyVirtualMachinePoolResult
@@ -36,6 +34,8 @@ type LookupStandbyVirtualMachinePoolArgs struct {
 type LookupStandbyVirtualMachinePoolResult struct {
 	// Specifies the fully qualified resource ID of a virtual machine scale set the pool is attached to.
 	AttachedVirtualMachineScaleSetId *string `pulumi:"attachedVirtualMachineScaleSetId"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Specifies the elasticity profile of the standby virtual machine pools.
 	ElasticityProfile *StandbyVirtualMachinePoolElasticityProfileResponse `pulumi:"elasticityProfile"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -94,6 +94,11 @@ func (o LookupStandbyVirtualMachinePoolResultOutput) ToLookupStandbyVirtualMachi
 // Specifies the fully qualified resource ID of a virtual machine scale set the pool is attached to.
 func (o LookupStandbyVirtualMachinePoolResultOutput) AttachedVirtualMachineScaleSetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupStandbyVirtualMachinePoolResult) *string { return v.AttachedVirtualMachineScaleSetId }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupStandbyVirtualMachinePoolResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStandbyVirtualMachinePoolResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Specifies the elasticity profile of the standby virtual machine pools.

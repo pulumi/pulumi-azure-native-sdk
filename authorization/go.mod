@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-azure-native-sdk/authorization/v2
+module github.com/pulumi/pulumi-azure-native-sdk/authorization/v3
 
 go 1.22
 

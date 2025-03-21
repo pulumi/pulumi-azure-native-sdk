@@ -13,8 +13,6 @@ import (
 
 // Gets the operation link for the tag.
 // Azure REST API version: 2022-09-01-preview.
-//
-// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
 func LookupTagOperationLink(ctx *pulumi.Context, args *LookupTagOperationLinkArgs, opts ...pulumi.InvokeOption) (*LookupTagOperationLinkResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTagOperationLinkResult
@@ -38,6 +36,8 @@ type LookupTagOperationLinkArgs struct {
 
 // Tag-operation link details.
 type LookupTagOperationLinkResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The name of the resource
@@ -85,6 +85,11 @@ func (o LookupTagOperationLinkResultOutput) ToLookupTagOperationLinkResultOutput
 
 func (o LookupTagOperationLinkResultOutput) ToLookupTagOperationLinkResultOutputWithContext(ctx context.Context) LookupTagOperationLinkResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupTagOperationLinkResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTagOperationLinkResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

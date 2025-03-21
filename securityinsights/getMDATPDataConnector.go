@@ -12,7 +12,7 @@ import (
 )
 
 // Gets a data connector.
-// Azure REST API version: 2023-02-01.
+// Azure REST API version: 2024-09-01.
 func LookupMDATPDataConnector(ctx *pulumi.Context, args *LookupMDATPDataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupMDATPDataConnectorResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMDATPDataConnectorResult
@@ -34,6 +34,8 @@ type LookupMDATPDataConnectorArgs struct {
 
 // Represents MDATP (Microsoft Defender Advanced Threat Protection) data connector.
 type LookupMDATPDataConnectorResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The available data types for the connector.
 	DataTypes *AlertsDataTypeOfDataConnectorResponse `pulumi:"dataTypes"`
 	// Etag of the azure resource
@@ -88,6 +90,11 @@ func (o LookupMDATPDataConnectorResultOutput) ToLookupMDATPDataConnectorResultOu
 
 func (o LookupMDATPDataConnectorResultOutput) ToLookupMDATPDataConnectorResultOutputWithContext(ctx context.Context) LookupMDATPDataConnectorResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupMDATPDataConnectorResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMDATPDataConnectorResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The available data types for the connector.

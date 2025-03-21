@@ -13,14 +13,14 @@ import (
 )
 
 // Friendly Rules name mapping to the any Rules or secret related information.
-// Azure REST API version: 2023-05-01. Prior API version in Azure Native 1.x: 2020-09-01.
-//
-// Other available API versions: 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01.
+// Azure REST API version: 2024-09-01. Prior API version in Azure Native 2.x: 2023-05-01.
 type Rule struct {
 	pulumi.CustomResourceState
 
 	// A list of actions that are executed when all the conditions of a rule are satisfied.
 	Actions pulumi.ArrayOutput `pulumi:"actions"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// A list of conditions that must be matched for the actions to be executed
 	Conditions       pulumi.ArrayOutput  `pulumi:"conditions"`
 	DeploymentStatus pulumi.StringOutput `pulumi:"deploymentStatus"`
@@ -209,6 +209,11 @@ func (o RuleOutput) ToRuleOutputWithContext(ctx context.Context) RuleOutput {
 // A list of actions that are executed when all the conditions of a rule are satisfied.
 func (o RuleOutput) Actions() pulumi.ArrayOutput {
 	return o.ApplyT(func(v *Rule) pulumi.ArrayOutput { return v.Actions }).(pulumi.ArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o RuleOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A list of conditions that must be matched for the actions to be executed

@@ -13,12 +13,12 @@ import (
 )
 
 // Certificate details.
-// Azure REST API version: 2023-09-01-preview.
-//
-// Other available API versions: 2024-05-01, 2024-06-01-preview.
+// Azure REST API version: 2024-06-01-preview. Prior API version in Azure Native 2.x: 2023-09-01-preview.
 type WorkspaceCertificate struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Expiration date of the certificate. The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
 	ExpirationDate pulumi.StringOutput `pulumi:"expirationDate"`
 	// KeyVault location details of the certificate.
@@ -163,6 +163,11 @@ func (o WorkspaceCertificateOutput) ToWorkspaceCertificateOutput() WorkspaceCert
 
 func (o WorkspaceCertificateOutput) ToWorkspaceCertificateOutputWithContext(ctx context.Context) WorkspaceCertificateOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o WorkspaceCertificateOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkspaceCertificate) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Expiration date of the certificate. The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.

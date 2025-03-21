@@ -13,12 +13,12 @@ import (
 )
 
 // Description of NetworkRuleSet resource.
-// Azure REST API version: 2022-01-01-preview. Prior API version in Azure Native 1.x: 2017-04-01.
-//
-// Other available API versions: 2022-10-01-preview, 2023-01-01-preview, 2024-01-01.
+// Azure REST API version: 2024-01-01. Prior API version in Azure Native 2.x: 2022-01-01-preview.
 type NamespaceNetworkRuleSet struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Default Action for Network Rule Set
 	DefaultAction pulumi.StringPtrOutput `pulumi:"defaultAction"`
 	// List of IpRules
@@ -126,7 +126,7 @@ type namespaceNetworkRuleSetArgs struct {
 	NamespaceName string `pulumi:"namespaceName"`
 	// This determines if traffic is allowed over public network. By default it is enabled.
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Value that indicates whether Trusted Service Access is Enabled or not.
 	TrustedServiceAccessEnabled *bool `pulumi:"trustedServiceAccessEnabled"`
@@ -144,7 +144,7 @@ type NamespaceNetworkRuleSetArgs struct {
 	NamespaceName pulumi.StringInput
 	// This determines if traffic is allowed over public network. By default it is enabled.
 	PublicNetworkAccess pulumi.StringPtrInput
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Value that indicates whether Trusted Service Access is Enabled or not.
 	TrustedServiceAccessEnabled pulumi.BoolPtrInput
@@ -187,6 +187,11 @@ func (o NamespaceNetworkRuleSetOutput) ToNamespaceNetworkRuleSetOutput() Namespa
 
 func (o NamespaceNetworkRuleSetOutput) ToNamespaceNetworkRuleSetOutputWithContext(ctx context.Context) NamespaceNetworkRuleSetOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o NamespaceNetworkRuleSetOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *NamespaceNetworkRuleSet) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Default Action for Network Rule Set

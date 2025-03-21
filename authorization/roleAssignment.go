@@ -13,12 +13,12 @@ import (
 )
 
 // Role Assignments
-// Azure REST API version: 2022-04-01. Prior API version in Azure Native 1.x: 2020-10-01-preview.
-//
-// Other available API versions: 2017-10-01-preview, 2020-03-01-preview, 2020-04-01-preview.
+// Azure REST API version: 2022-04-01. Prior API version in Azure Native 2.x: 2022-04-01.
 type RoleAssignment struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The conditions on the role assignment. This limits the resources it can be assigned to. e.g.: @Resource[Microsoft.Storage/storageAccounts/blobServices/containers:ContainerName] StringEqualsIgnoreCase 'foo_storage_container'
 	Condition pulumi.StringPtrOutput `pulumi:"condition"`
 	// Version of the condition. Currently the only accepted value is '2.0'
@@ -208,6 +208,11 @@ func (o RoleAssignmentOutput) ToRoleAssignmentOutput() RoleAssignmentOutput {
 
 func (o RoleAssignmentOutput) ToRoleAssignmentOutputWithContext(ctx context.Context) RoleAssignmentOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o RoleAssignmentOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *RoleAssignment) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The conditions on the role assignment. This limits the resources it can be assigned to. e.g.: @Resource[Microsoft.Storage/storageAccounts/blobServices/containers:ContainerName] StringEqualsIgnoreCase 'foo_storage_container'

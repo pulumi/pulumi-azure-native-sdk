@@ -13,12 +13,12 @@ import (
 )
 
 // The Encryption Scope resource.
-// Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2021-02-01.
-//
-// Other available API versions: 2023-01-01, 2023-04-01, 2023-05-01, 2024-01-01.
+// Azure REST API version: 2024-01-01. Prior API version in Azure Native 2.x: 2022-09-01.
 type EncryptionScope struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets the creation date and time of the encryption scope in UTC.
 	CreationTime pulumi.StringOutput `pulumi:"creationTime"`
 	// The key vault properties for the encryption scope. This is a required field if encryption scope 'source' attribute is set to 'Microsoft.KeyVault'.
@@ -197,6 +197,11 @@ func (o EncryptionScopeOutput) ToEncryptionScopeOutput() EncryptionScopeOutput {
 
 func (o EncryptionScopeOutput) ToEncryptionScopeOutputWithContext(ctx context.Context) EncryptionScopeOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o EncryptionScopeOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *EncryptionScope) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets the creation date and time of the encryption scope in UTC.

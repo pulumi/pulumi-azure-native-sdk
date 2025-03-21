@@ -12,9 +12,7 @@ import (
 )
 
 // Azure Resource Manager resource envelope.
-// Azure REST API version: 2023-04-01.
-//
-// Other available API versions: 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-04-01-preview, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview.
+// Azure REST API version: 2024-10-01.
 func LookupRegistryComponentVersion(ctx *pulumi.Context, args *LookupRegistryComponentVersionArgs, opts ...pulumi.InvokeOption) (*LookupRegistryComponentVersionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRegistryComponentVersionResult
@@ -38,6 +36,8 @@ type LookupRegistryComponentVersionArgs struct {
 
 // Azure Resource Manager resource envelope.
 type LookupRegistryComponentVersionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// [Required] Additional attributes of the entity.
 	ComponentVersionProperties ComponentVersionResponse `pulumi:"componentVersionProperties"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -97,6 +97,11 @@ func (o LookupRegistryComponentVersionResultOutput) ToLookupRegistryComponentVer
 
 func (o LookupRegistryComponentVersionResultOutput) ToLookupRegistryComponentVersionResultOutputWithContext(ctx context.Context) LookupRegistryComponentVersionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupRegistryComponentVersionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegistryComponentVersionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // [Required] Additional attributes of the entity.

@@ -13,12 +13,12 @@ import (
 )
 
 // A reference data set provides metadata about the events in an environment. Metadata in the reference data set will be joined with events as they are read from event sources. The metadata that makes up the reference data set is uploaded or modified through the Time Series Insights data plane APIs.
-// Azure REST API version: 2020-05-15. Prior API version in Azure Native 1.x: 2020-05-15.
-//
-// Other available API versions: 2021-06-30-preview.
+// Azure REST API version: 2020-05-15. Prior API version in Azure Native 2.x: 2020-05-15.
 type ReferenceDataSet struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The time the resource was created.
 	CreationTime pulumi.StringOutput `pulumi:"creationTime"`
 	// The reference data set key comparison behavior can be set using this property. By default, the value is 'Ordinal' - which means case sensitive key comparison will be performed while joining reference data with events or while adding new reference data. When 'OrdinalIgnoreCase' is set, case insensitive comparison will be used.
@@ -176,6 +176,11 @@ func (o ReferenceDataSetOutput) ToReferenceDataSetOutput() ReferenceDataSetOutpu
 
 func (o ReferenceDataSetOutput) ToReferenceDataSetOutputWithContext(ctx context.Context) ReferenceDataSetOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ReferenceDataSetOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ReferenceDataSet) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The time the resource was created.

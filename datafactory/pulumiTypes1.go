@@ -13,6 +13,236 @@ import (
 
 var _ = utilities.GetEnvOrDefault
 
+// Greenplum Database dataset.
+type GreenplumTableDataset struct {
+	// List of tags that can be used for describing the Dataset.
+	Annotations []interface{} `pulumi:"annotations"`
+	// Dataset description.
+	Description *string `pulumi:"description"`
+	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+	Folder *DatasetFolder `pulumi:"folder"`
+	// Linked service reference.
+	LinkedServiceName LinkedServiceReference `pulumi:"linkedServiceName"`
+	// Parameters for dataset.
+	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
+	// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+	Schema interface{} `pulumi:"schema"`
+	// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+	Structure interface{} `pulumi:"structure"`
+	// The table name of Greenplum. Type: string (or Expression with resultType string).
+	Table interface{} `pulumi:"table"`
+	// This property will be retired. Please consider using schema + table properties instead.
+	TableName interface{} `pulumi:"tableName"`
+	// Type of dataset.
+	// Expected value is 'GreenplumTable'.
+	Type string `pulumi:"type"`
+}
+
+// GreenplumTableDatasetInput is an input type that accepts GreenplumTableDatasetArgs and GreenplumTableDatasetOutput values.
+// You can construct a concrete instance of `GreenplumTableDatasetInput` via:
+//
+//	GreenplumTableDatasetArgs{...}
+type GreenplumTableDatasetInput interface {
+	pulumi.Input
+
+	ToGreenplumTableDatasetOutput() GreenplumTableDatasetOutput
+	ToGreenplumTableDatasetOutputWithContext(context.Context) GreenplumTableDatasetOutput
+}
+
+// Greenplum Database dataset.
+type GreenplumTableDatasetArgs struct {
+	// List of tags that can be used for describing the Dataset.
+	Annotations pulumi.ArrayInput `pulumi:"annotations"`
+	// Dataset description.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+	Folder DatasetFolderPtrInput `pulumi:"folder"`
+	// Linked service reference.
+	LinkedServiceName LinkedServiceReferenceInput `pulumi:"linkedServiceName"`
+	// Parameters for dataset.
+	Parameters ParameterSpecificationMapInput `pulumi:"parameters"`
+	// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+	Schema pulumi.Input `pulumi:"schema"`
+	// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+	Structure pulumi.Input `pulumi:"structure"`
+	// The table name of Greenplum. Type: string (or Expression with resultType string).
+	Table pulumi.Input `pulumi:"table"`
+	// This property will be retired. Please consider using schema + table properties instead.
+	TableName pulumi.Input `pulumi:"tableName"`
+	// Type of dataset.
+	// Expected value is 'GreenplumTable'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GreenplumTableDatasetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GreenplumTableDataset)(nil)).Elem()
+}
+
+func (i GreenplumTableDatasetArgs) ToGreenplumTableDatasetOutput() GreenplumTableDatasetOutput {
+	return i.ToGreenplumTableDatasetOutputWithContext(context.Background())
+}
+
+func (i GreenplumTableDatasetArgs) ToGreenplumTableDatasetOutputWithContext(ctx context.Context) GreenplumTableDatasetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GreenplumTableDatasetOutput)
+}
+
+// Greenplum Database dataset.
+type GreenplumTableDatasetOutput struct{ *pulumi.OutputState }
+
+func (GreenplumTableDatasetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GreenplumTableDataset)(nil)).Elem()
+}
+
+func (o GreenplumTableDatasetOutput) ToGreenplumTableDatasetOutput() GreenplumTableDatasetOutput {
+	return o
+}
+
+func (o GreenplumTableDatasetOutput) ToGreenplumTableDatasetOutputWithContext(ctx context.Context) GreenplumTableDatasetOutput {
+	return o
+}
+
+// List of tags that can be used for describing the Dataset.
+func (o GreenplumTableDatasetOutput) Annotations() pulumi.ArrayOutput {
+	return o.ApplyT(func(v GreenplumTableDataset) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
+}
+
+// Dataset description.
+func (o GreenplumTableDatasetOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GreenplumTableDataset) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+func (o GreenplumTableDatasetOutput) Folder() DatasetFolderPtrOutput {
+	return o.ApplyT(func(v GreenplumTableDataset) *DatasetFolder { return v.Folder }).(DatasetFolderPtrOutput)
+}
+
+// Linked service reference.
+func (o GreenplumTableDatasetOutput) LinkedServiceName() LinkedServiceReferenceOutput {
+	return o.ApplyT(func(v GreenplumTableDataset) LinkedServiceReference { return v.LinkedServiceName }).(LinkedServiceReferenceOutput)
+}
+
+// Parameters for dataset.
+func (o GreenplumTableDatasetOutput) Parameters() ParameterSpecificationMapOutput {
+	return o.ApplyT(func(v GreenplumTableDataset) map[string]ParameterSpecification { return v.Parameters }).(ParameterSpecificationMapOutput)
+}
+
+// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+func (o GreenplumTableDatasetOutput) Schema() pulumi.AnyOutput {
+	return o.ApplyT(func(v GreenplumTableDataset) interface{} { return v.Schema }).(pulumi.AnyOutput)
+}
+
+// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+func (o GreenplumTableDatasetOutput) Structure() pulumi.AnyOutput {
+	return o.ApplyT(func(v GreenplumTableDataset) interface{} { return v.Structure }).(pulumi.AnyOutput)
+}
+
+// The table name of Greenplum. Type: string (or Expression with resultType string).
+func (o GreenplumTableDatasetOutput) Table() pulumi.AnyOutput {
+	return o.ApplyT(func(v GreenplumTableDataset) interface{} { return v.Table }).(pulumi.AnyOutput)
+}
+
+// This property will be retired. Please consider using schema + table properties instead.
+func (o GreenplumTableDatasetOutput) TableName() pulumi.AnyOutput {
+	return o.ApplyT(func(v GreenplumTableDataset) interface{} { return v.TableName }).(pulumi.AnyOutput)
+}
+
+// Type of dataset.
+// Expected value is 'GreenplumTable'.
+func (o GreenplumTableDatasetOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GreenplumTableDataset) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Greenplum Database dataset.
+type GreenplumTableDatasetResponse struct {
+	// List of tags that can be used for describing the Dataset.
+	Annotations []interface{} `pulumi:"annotations"`
+	// Dataset description.
+	Description *string `pulumi:"description"`
+	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+	Folder *DatasetResponseFolder `pulumi:"folder"`
+	// Linked service reference.
+	LinkedServiceName LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
+	// Parameters for dataset.
+	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
+	// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+	Schema interface{} `pulumi:"schema"`
+	// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+	Structure interface{} `pulumi:"structure"`
+	// The table name of Greenplum. Type: string (or Expression with resultType string).
+	Table interface{} `pulumi:"table"`
+	// This property will be retired. Please consider using schema + table properties instead.
+	TableName interface{} `pulumi:"tableName"`
+	// Type of dataset.
+	// Expected value is 'GreenplumTable'.
+	Type string `pulumi:"type"`
+}
+
+// Greenplum Database dataset.
+type GreenplumTableDatasetResponseOutput struct{ *pulumi.OutputState }
+
+func (GreenplumTableDatasetResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GreenplumTableDatasetResponse)(nil)).Elem()
+}
+
+func (o GreenplumTableDatasetResponseOutput) ToGreenplumTableDatasetResponseOutput() GreenplumTableDatasetResponseOutput {
+	return o
+}
+
+func (o GreenplumTableDatasetResponseOutput) ToGreenplumTableDatasetResponseOutputWithContext(ctx context.Context) GreenplumTableDatasetResponseOutput {
+	return o
+}
+
+// List of tags that can be used for describing the Dataset.
+func (o GreenplumTableDatasetResponseOutput) Annotations() pulumi.ArrayOutput {
+	return o.ApplyT(func(v GreenplumTableDatasetResponse) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
+}
+
+// Dataset description.
+func (o GreenplumTableDatasetResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GreenplumTableDatasetResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+func (o GreenplumTableDatasetResponseOutput) Folder() DatasetResponseFolderPtrOutput {
+	return o.ApplyT(func(v GreenplumTableDatasetResponse) *DatasetResponseFolder { return v.Folder }).(DatasetResponseFolderPtrOutput)
+}
+
+// Linked service reference.
+func (o GreenplumTableDatasetResponseOutput) LinkedServiceName() LinkedServiceReferenceResponseOutput {
+	return o.ApplyT(func(v GreenplumTableDatasetResponse) LinkedServiceReferenceResponse { return v.LinkedServiceName }).(LinkedServiceReferenceResponseOutput)
+}
+
+// Parameters for dataset.
+func (o GreenplumTableDatasetResponseOutput) Parameters() ParameterSpecificationResponseMapOutput {
+	return o.ApplyT(func(v GreenplumTableDatasetResponse) map[string]ParameterSpecificationResponse { return v.Parameters }).(ParameterSpecificationResponseMapOutput)
+}
+
+// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+func (o GreenplumTableDatasetResponseOutput) Schema() pulumi.AnyOutput {
+	return o.ApplyT(func(v GreenplumTableDatasetResponse) interface{} { return v.Schema }).(pulumi.AnyOutput)
+}
+
+// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+func (o GreenplumTableDatasetResponseOutput) Structure() pulumi.AnyOutput {
+	return o.ApplyT(func(v GreenplumTableDatasetResponse) interface{} { return v.Structure }).(pulumi.AnyOutput)
+}
+
+// The table name of Greenplum. Type: string (or Expression with resultType string).
+func (o GreenplumTableDatasetResponseOutput) Table() pulumi.AnyOutput {
+	return o.ApplyT(func(v GreenplumTableDatasetResponse) interface{} { return v.Table }).(pulumi.AnyOutput)
+}
+
+// This property will be retired. Please consider using schema + table properties instead.
+func (o GreenplumTableDatasetResponseOutput) TableName() pulumi.AnyOutput {
+	return o.ApplyT(func(v GreenplumTableDatasetResponse) interface{} { return v.TableName }).(pulumi.AnyOutput)
+}
+
+// Type of dataset.
+// Expected value is 'GreenplumTable'.
+func (o GreenplumTableDatasetResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GreenplumTableDatasetResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
 // HBase server linked service.
 type HBaseLinkedService struct {
 	// Specifies whether to require a CA-issued SSL certificate name to match the host name of the server when connecting over SSL. The default value is false.
@@ -44949,11 +45179,11 @@ func (o PowerQuerySourceResponseArrayOutput) Index(i pulumi.IntInput) PowerQuery
 	}).(PowerQuerySourceResponseOutput)
 }
 
-// Presto server linked service.
+// Presto server linked service. This linked service has supported version property. The Version 1.0 is scheduled for deprecation while your pipeline will continue to run after EOL but without any bug fix or new features.
 type PrestoLinkedService struct {
-	// Specifies whether to require a CA-issued SSL certificate name to match the host name of the server when connecting over SSL. The default value is false.
+	// Specifies whether to require a CA-issued SSL certificate name to match the host name of the server when connecting over SSL. The default value is false. Only used for Version 1.0.
 	AllowHostNameCNMismatch interface{} `pulumi:"allowHostNameCNMismatch"`
-	// Specifies whether to allow self-signed certificates from the server. The default value is false.
+	// Specifies whether to allow self-signed certificates from the server. The default value is false. Only used for Version 1.0.
 	AllowSelfSignedServerCert interface{} `pulumi:"allowSelfSignedServerCert"`
 	// List of tags that can be used for describing the linked service.
 	Annotations []interface{} `pulumi:"annotations"`
@@ -44965,7 +45195,9 @@ type PrestoLinkedService struct {
 	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// Specifies whether the connections to the server are encrypted using SSL. The default value is false.
+	// Specifies whether the connections to the server will validate server certificate, the default value is True. Only used for Version 2.0
+	EnableServerCertificateValidation interface{} `pulumi:"enableServerCertificateValidation"`
+	// Specifies whether the connections to the server are encrypted using SSL. The default value for legacy version is False. The default value for version 2.0 is True.
 	EnableSsl interface{} `pulumi:"enableSsl"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential *string `pulumi:"encryptedCredential"`
@@ -44975,18 +45207,18 @@ type PrestoLinkedService struct {
 	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
 	// The password corresponding to the user name.
 	Password interface{} `pulumi:"password"`
-	// The TCP port that the Presto server uses to listen for client connections. The default value is 8080.
+	// The TCP port that the Presto server uses to listen for client connections. The default value is 8080 when disable SSL, default value is 443 when enable SSL.
 	Port interface{} `pulumi:"port"`
-	// The version of the Presto server. (i.e. 0.148-t)
+	// The version of the Presto server. (i.e. 0.148-t) Only used for Version 1.0.
 	ServerVersion interface{} `pulumi:"serverVersion"`
-	// The local time zone used by the connection. Valid values for this option are specified in the IANA Time Zone Database. The default value is the system time zone.
+	// The local time zone used by the connection. Valid values for this option are specified in the IANA Time Zone Database. The default value for Version 1.0 is the client system time zone. The default value for Version 2.0 is server system timeZone
 	TimeZoneID interface{} `pulumi:"timeZoneID"`
-	// The full path of the .pem file containing trusted CA certificates for verifying the server when connecting over SSL. This property can only be set when using SSL on self-hosted IR. The default value is the cacerts.pem file installed with the IR.
+	// The full path of the .pem file containing trusted CA certificates for verifying the server when connecting over SSL. This property can only be set when using SSL on self-hosted IR. The default value is the cacerts.pem file installed with the IR. Only used for Version 1.0.
 	TrustedCertPath interface{} `pulumi:"trustedCertPath"`
 	// Type of linked service.
 	// Expected value is 'Presto'.
 	Type string `pulumi:"type"`
-	// Specifies whether to use a CA certificate from the system trust store or from a specified PEM file. The default value is false.
+	// Specifies whether to use a CA certificate from the system trust store or from a specified PEM file. The default value is false. Only used for Version 1.0.
 	UseSystemTrustStore interface{} `pulumi:"useSystemTrustStore"`
 	// The user name used to connect to the Presto server.
 	Username interface{} `pulumi:"username"`
@@ -45005,11 +45237,11 @@ type PrestoLinkedServiceInput interface {
 	ToPrestoLinkedServiceOutputWithContext(context.Context) PrestoLinkedServiceOutput
 }
 
-// Presto server linked service.
+// Presto server linked service. This linked service has supported version property. The Version 1.0 is scheduled for deprecation while your pipeline will continue to run after EOL but without any bug fix or new features.
 type PrestoLinkedServiceArgs struct {
-	// Specifies whether to require a CA-issued SSL certificate name to match the host name of the server when connecting over SSL. The default value is false.
+	// Specifies whether to require a CA-issued SSL certificate name to match the host name of the server when connecting over SSL. The default value is false. Only used for Version 1.0.
 	AllowHostNameCNMismatch pulumi.Input `pulumi:"allowHostNameCNMismatch"`
-	// Specifies whether to allow self-signed certificates from the server. The default value is false.
+	// Specifies whether to allow self-signed certificates from the server. The default value is false. Only used for Version 1.0.
 	AllowSelfSignedServerCert pulumi.Input `pulumi:"allowSelfSignedServerCert"`
 	// List of tags that can be used for describing the linked service.
 	Annotations pulumi.ArrayInput `pulumi:"annotations"`
@@ -45021,7 +45253,9 @@ type PrestoLinkedServiceArgs struct {
 	ConnectVia IntegrationRuntimeReferencePtrInput `pulumi:"connectVia"`
 	// Linked service description.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Specifies whether the connections to the server are encrypted using SSL. The default value is false.
+	// Specifies whether the connections to the server will validate server certificate, the default value is True. Only used for Version 2.0
+	EnableServerCertificateValidation pulumi.Input `pulumi:"enableServerCertificateValidation"`
+	// Specifies whether the connections to the server are encrypted using SSL. The default value for legacy version is False. The default value for version 2.0 is True.
 	EnableSsl pulumi.Input `pulumi:"enableSsl"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential pulumi.StringPtrInput `pulumi:"encryptedCredential"`
@@ -45031,18 +45265,18 @@ type PrestoLinkedServiceArgs struct {
 	Parameters ParameterSpecificationMapInput `pulumi:"parameters"`
 	// The password corresponding to the user name.
 	Password pulumi.Input `pulumi:"password"`
-	// The TCP port that the Presto server uses to listen for client connections. The default value is 8080.
+	// The TCP port that the Presto server uses to listen for client connections. The default value is 8080 when disable SSL, default value is 443 when enable SSL.
 	Port pulumi.Input `pulumi:"port"`
-	// The version of the Presto server. (i.e. 0.148-t)
+	// The version of the Presto server. (i.e. 0.148-t) Only used for Version 1.0.
 	ServerVersion pulumi.Input `pulumi:"serverVersion"`
-	// The local time zone used by the connection. Valid values for this option are specified in the IANA Time Zone Database. The default value is the system time zone.
+	// The local time zone used by the connection. Valid values for this option are specified in the IANA Time Zone Database. The default value for Version 1.0 is the client system time zone. The default value for Version 2.0 is server system timeZone
 	TimeZoneID pulumi.Input `pulumi:"timeZoneID"`
-	// The full path of the .pem file containing trusted CA certificates for verifying the server when connecting over SSL. This property can only be set when using SSL on self-hosted IR. The default value is the cacerts.pem file installed with the IR.
+	// The full path of the .pem file containing trusted CA certificates for verifying the server when connecting over SSL. This property can only be set when using SSL on self-hosted IR. The default value is the cacerts.pem file installed with the IR. Only used for Version 1.0.
 	TrustedCertPath pulumi.Input `pulumi:"trustedCertPath"`
 	// Type of linked service.
 	// Expected value is 'Presto'.
 	Type pulumi.StringInput `pulumi:"type"`
-	// Specifies whether to use a CA certificate from the system trust store or from a specified PEM file. The default value is false.
+	// Specifies whether to use a CA certificate from the system trust store or from a specified PEM file. The default value is false. Only used for Version 1.0.
 	UseSystemTrustStore pulumi.Input `pulumi:"useSystemTrustStore"`
 	// The user name used to connect to the Presto server.
 	Username pulumi.Input `pulumi:"username"`
@@ -45062,7 +45296,7 @@ func (i PrestoLinkedServiceArgs) ToPrestoLinkedServiceOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(PrestoLinkedServiceOutput)
 }
 
-// Presto server linked service.
+// Presto server linked service. This linked service has supported version property. The Version 1.0 is scheduled for deprecation while your pipeline will continue to run after EOL but without any bug fix or new features.
 type PrestoLinkedServiceOutput struct{ *pulumi.OutputState }
 
 func (PrestoLinkedServiceOutput) ElementType() reflect.Type {
@@ -45077,12 +45311,12 @@ func (o PrestoLinkedServiceOutput) ToPrestoLinkedServiceOutputWithContext(ctx co
 	return o
 }
 
-// Specifies whether to require a CA-issued SSL certificate name to match the host name of the server when connecting over SSL. The default value is false.
+// Specifies whether to require a CA-issued SSL certificate name to match the host name of the server when connecting over SSL. The default value is false. Only used for Version 1.0.
 func (o PrestoLinkedServiceOutput) AllowHostNameCNMismatch() pulumi.AnyOutput {
 	return o.ApplyT(func(v PrestoLinkedService) interface{} { return v.AllowHostNameCNMismatch }).(pulumi.AnyOutput)
 }
 
-// Specifies whether to allow self-signed certificates from the server. The default value is false.
+// Specifies whether to allow self-signed certificates from the server. The default value is false. Only used for Version 1.0.
 func (o PrestoLinkedServiceOutput) AllowSelfSignedServerCert() pulumi.AnyOutput {
 	return o.ApplyT(func(v PrestoLinkedService) interface{} { return v.AllowSelfSignedServerCert }).(pulumi.AnyOutput)
 }
@@ -45112,7 +45346,12 @@ func (o PrestoLinkedServiceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrestoLinkedService) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Specifies whether the connections to the server are encrypted using SSL. The default value is false.
+// Specifies whether the connections to the server will validate server certificate, the default value is True. Only used for Version 2.0
+func (o PrestoLinkedServiceOutput) EnableServerCertificateValidation() pulumi.AnyOutput {
+	return o.ApplyT(func(v PrestoLinkedService) interface{} { return v.EnableServerCertificateValidation }).(pulumi.AnyOutput)
+}
+
+// Specifies whether the connections to the server are encrypted using SSL. The default value for legacy version is False. The default value for version 2.0 is True.
 func (o PrestoLinkedServiceOutput) EnableSsl() pulumi.AnyOutput {
 	return o.ApplyT(func(v PrestoLinkedService) interface{} { return v.EnableSsl }).(pulumi.AnyOutput)
 }
@@ -45137,22 +45376,22 @@ func (o PrestoLinkedServiceOutput) Password() pulumi.AnyOutput {
 	return o.ApplyT(func(v PrestoLinkedService) interface{} { return v.Password }).(pulumi.AnyOutput)
 }
 
-// The TCP port that the Presto server uses to listen for client connections. The default value is 8080.
+// The TCP port that the Presto server uses to listen for client connections. The default value is 8080 when disable SSL, default value is 443 when enable SSL.
 func (o PrestoLinkedServiceOutput) Port() pulumi.AnyOutput {
 	return o.ApplyT(func(v PrestoLinkedService) interface{} { return v.Port }).(pulumi.AnyOutput)
 }
 
-// The version of the Presto server. (i.e. 0.148-t)
+// The version of the Presto server. (i.e. 0.148-t) Only used for Version 1.0.
 func (o PrestoLinkedServiceOutput) ServerVersion() pulumi.AnyOutput {
 	return o.ApplyT(func(v PrestoLinkedService) interface{} { return v.ServerVersion }).(pulumi.AnyOutput)
 }
 
-// The local time zone used by the connection. Valid values for this option are specified in the IANA Time Zone Database. The default value is the system time zone.
+// The local time zone used by the connection. Valid values for this option are specified in the IANA Time Zone Database. The default value for Version 1.0 is the client system time zone. The default value for Version 2.0 is server system timeZone
 func (o PrestoLinkedServiceOutput) TimeZoneID() pulumi.AnyOutput {
 	return o.ApplyT(func(v PrestoLinkedService) interface{} { return v.TimeZoneID }).(pulumi.AnyOutput)
 }
 
-// The full path of the .pem file containing trusted CA certificates for verifying the server when connecting over SSL. This property can only be set when using SSL on self-hosted IR. The default value is the cacerts.pem file installed with the IR.
+// The full path of the .pem file containing trusted CA certificates for verifying the server when connecting over SSL. This property can only be set when using SSL on self-hosted IR. The default value is the cacerts.pem file installed with the IR. Only used for Version 1.0.
 func (o PrestoLinkedServiceOutput) TrustedCertPath() pulumi.AnyOutput {
 	return o.ApplyT(func(v PrestoLinkedService) interface{} { return v.TrustedCertPath }).(pulumi.AnyOutput)
 }
@@ -45163,7 +45402,7 @@ func (o PrestoLinkedServiceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v PrestoLinkedService) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Specifies whether to use a CA certificate from the system trust store or from a specified PEM file. The default value is false.
+// Specifies whether to use a CA certificate from the system trust store or from a specified PEM file. The default value is false. Only used for Version 1.0.
 func (o PrestoLinkedServiceOutput) UseSystemTrustStore() pulumi.AnyOutput {
 	return o.ApplyT(func(v PrestoLinkedService) interface{} { return v.UseSystemTrustStore }).(pulumi.AnyOutput)
 }
@@ -45178,11 +45417,11 @@ func (o PrestoLinkedServiceOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrestoLinkedService) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
-// Presto server linked service.
+// Presto server linked service. This linked service has supported version property. The Version 1.0 is scheduled for deprecation while your pipeline will continue to run after EOL but without any bug fix or new features.
 type PrestoLinkedServiceResponse struct {
-	// Specifies whether to require a CA-issued SSL certificate name to match the host name of the server when connecting over SSL. The default value is false.
+	// Specifies whether to require a CA-issued SSL certificate name to match the host name of the server when connecting over SSL. The default value is false. Only used for Version 1.0.
 	AllowHostNameCNMismatch interface{} `pulumi:"allowHostNameCNMismatch"`
-	// Specifies whether to allow self-signed certificates from the server. The default value is false.
+	// Specifies whether to allow self-signed certificates from the server. The default value is false. Only used for Version 1.0.
 	AllowSelfSignedServerCert interface{} `pulumi:"allowSelfSignedServerCert"`
 	// List of tags that can be used for describing the linked service.
 	Annotations []interface{} `pulumi:"annotations"`
@@ -45194,7 +45433,9 @@ type PrestoLinkedServiceResponse struct {
 	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
-	// Specifies whether the connections to the server are encrypted using SSL. The default value is false.
+	// Specifies whether the connections to the server will validate server certificate, the default value is True. Only used for Version 2.0
+	EnableServerCertificateValidation interface{} `pulumi:"enableServerCertificateValidation"`
+	// Specifies whether the connections to the server are encrypted using SSL. The default value for legacy version is False. The default value for version 2.0 is True.
 	EnableSsl interface{} `pulumi:"enableSsl"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential *string `pulumi:"encryptedCredential"`
@@ -45204,18 +45445,18 @@ type PrestoLinkedServiceResponse struct {
 	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
 	// The password corresponding to the user name.
 	Password interface{} `pulumi:"password"`
-	// The TCP port that the Presto server uses to listen for client connections. The default value is 8080.
+	// The TCP port that the Presto server uses to listen for client connections. The default value is 8080 when disable SSL, default value is 443 when enable SSL.
 	Port interface{} `pulumi:"port"`
-	// The version of the Presto server. (i.e. 0.148-t)
+	// The version of the Presto server. (i.e. 0.148-t) Only used for Version 1.0.
 	ServerVersion interface{} `pulumi:"serverVersion"`
-	// The local time zone used by the connection. Valid values for this option are specified in the IANA Time Zone Database. The default value is the system time zone.
+	// The local time zone used by the connection. Valid values for this option are specified in the IANA Time Zone Database. The default value for Version 1.0 is the client system time zone. The default value for Version 2.0 is server system timeZone
 	TimeZoneID interface{} `pulumi:"timeZoneID"`
-	// The full path of the .pem file containing trusted CA certificates for verifying the server when connecting over SSL. This property can only be set when using SSL on self-hosted IR. The default value is the cacerts.pem file installed with the IR.
+	// The full path of the .pem file containing trusted CA certificates for verifying the server when connecting over SSL. This property can only be set when using SSL on self-hosted IR. The default value is the cacerts.pem file installed with the IR. Only used for Version 1.0.
 	TrustedCertPath interface{} `pulumi:"trustedCertPath"`
 	// Type of linked service.
 	// Expected value is 'Presto'.
 	Type string `pulumi:"type"`
-	// Specifies whether to use a CA certificate from the system trust store or from a specified PEM file. The default value is false.
+	// Specifies whether to use a CA certificate from the system trust store or from a specified PEM file. The default value is false. Only used for Version 1.0.
 	UseSystemTrustStore interface{} `pulumi:"useSystemTrustStore"`
 	// The user name used to connect to the Presto server.
 	Username interface{} `pulumi:"username"`
@@ -45223,7 +45464,7 @@ type PrestoLinkedServiceResponse struct {
 	Version *string `pulumi:"version"`
 }
 
-// Presto server linked service.
+// Presto server linked service. This linked service has supported version property. The Version 1.0 is scheduled for deprecation while your pipeline will continue to run after EOL but without any bug fix or new features.
 type PrestoLinkedServiceResponseOutput struct{ *pulumi.OutputState }
 
 func (PrestoLinkedServiceResponseOutput) ElementType() reflect.Type {
@@ -45238,12 +45479,12 @@ func (o PrestoLinkedServiceResponseOutput) ToPrestoLinkedServiceResponseOutputWi
 	return o
 }
 
-// Specifies whether to require a CA-issued SSL certificate name to match the host name of the server when connecting over SSL. The default value is false.
+// Specifies whether to require a CA-issued SSL certificate name to match the host name of the server when connecting over SSL. The default value is false. Only used for Version 1.0.
 func (o PrestoLinkedServiceResponseOutput) AllowHostNameCNMismatch() pulumi.AnyOutput {
 	return o.ApplyT(func(v PrestoLinkedServiceResponse) interface{} { return v.AllowHostNameCNMismatch }).(pulumi.AnyOutput)
 }
 
-// Specifies whether to allow self-signed certificates from the server. The default value is false.
+// Specifies whether to allow self-signed certificates from the server. The default value is false. Only used for Version 1.0.
 func (o PrestoLinkedServiceResponseOutput) AllowSelfSignedServerCert() pulumi.AnyOutput {
 	return o.ApplyT(func(v PrestoLinkedServiceResponse) interface{} { return v.AllowSelfSignedServerCert }).(pulumi.AnyOutput)
 }
@@ -45273,7 +45514,12 @@ func (o PrestoLinkedServiceResponseOutput) Description() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v PrestoLinkedServiceResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Specifies whether the connections to the server are encrypted using SSL. The default value is false.
+// Specifies whether the connections to the server will validate server certificate, the default value is True. Only used for Version 2.0
+func (o PrestoLinkedServiceResponseOutput) EnableServerCertificateValidation() pulumi.AnyOutput {
+	return o.ApplyT(func(v PrestoLinkedServiceResponse) interface{} { return v.EnableServerCertificateValidation }).(pulumi.AnyOutput)
+}
+
+// Specifies whether the connections to the server are encrypted using SSL. The default value for legacy version is False. The default value for version 2.0 is True.
 func (o PrestoLinkedServiceResponseOutput) EnableSsl() pulumi.AnyOutput {
 	return o.ApplyT(func(v PrestoLinkedServiceResponse) interface{} { return v.EnableSsl }).(pulumi.AnyOutput)
 }
@@ -45298,22 +45544,22 @@ func (o PrestoLinkedServiceResponseOutput) Password() pulumi.AnyOutput {
 	return o.ApplyT(func(v PrestoLinkedServiceResponse) interface{} { return v.Password }).(pulumi.AnyOutput)
 }
 
-// The TCP port that the Presto server uses to listen for client connections. The default value is 8080.
+// The TCP port that the Presto server uses to listen for client connections. The default value is 8080 when disable SSL, default value is 443 when enable SSL.
 func (o PrestoLinkedServiceResponseOutput) Port() pulumi.AnyOutput {
 	return o.ApplyT(func(v PrestoLinkedServiceResponse) interface{} { return v.Port }).(pulumi.AnyOutput)
 }
 
-// The version of the Presto server. (i.e. 0.148-t)
+// The version of the Presto server. (i.e. 0.148-t) Only used for Version 1.0.
 func (o PrestoLinkedServiceResponseOutput) ServerVersion() pulumi.AnyOutput {
 	return o.ApplyT(func(v PrestoLinkedServiceResponse) interface{} { return v.ServerVersion }).(pulumi.AnyOutput)
 }
 
-// The local time zone used by the connection. Valid values for this option are specified in the IANA Time Zone Database. The default value is the system time zone.
+// The local time zone used by the connection. Valid values for this option are specified in the IANA Time Zone Database. The default value for Version 1.0 is the client system time zone. The default value for Version 2.0 is server system timeZone
 func (o PrestoLinkedServiceResponseOutput) TimeZoneID() pulumi.AnyOutput {
 	return o.ApplyT(func(v PrestoLinkedServiceResponse) interface{} { return v.TimeZoneID }).(pulumi.AnyOutput)
 }
 
-// The full path of the .pem file containing trusted CA certificates for verifying the server when connecting over SSL. This property can only be set when using SSL on self-hosted IR. The default value is the cacerts.pem file installed with the IR.
+// The full path of the .pem file containing trusted CA certificates for verifying the server when connecting over SSL. This property can only be set when using SSL on self-hosted IR. The default value is the cacerts.pem file installed with the IR. Only used for Version 1.0.
 func (o PrestoLinkedServiceResponseOutput) TrustedCertPath() pulumi.AnyOutput {
 	return o.ApplyT(func(v PrestoLinkedServiceResponse) interface{} { return v.TrustedCertPath }).(pulumi.AnyOutput)
 }
@@ -45324,7 +45570,7 @@ func (o PrestoLinkedServiceResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v PrestoLinkedServiceResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Specifies whether to use a CA certificate from the system trust store or from a specified PEM file. The default value is false.
+// Specifies whether to use a CA certificate from the system trust store or from a specified PEM file. The default value is false. Only used for Version 1.0.
 func (o PrestoLinkedServiceResponseOutput) UseSystemTrustStore() pulumi.AnyOutput {
 	return o.ApplyT(func(v PrestoLinkedServiceResponse) interface{} { return v.UseSystemTrustStore }).(pulumi.AnyOutput)
 }
@@ -61990,253 +62236,9 @@ func (o SapOpenHubSourceResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v SapOpenHubSourceResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Sap Business Warehouse Open Hub Destination Table properties.
-type SapOpenHubTableDataset struct {
-	// List of tags that can be used for describing the Dataset.
-	Annotations []interface{} `pulumi:"annotations"`
-	// The ID of request for delta loading. Once it is set, only data with requestId larger than the value of this property will be retrieved. The default value is 0. Type: integer (or Expression with resultType integer ).
-	BaseRequestId interface{} `pulumi:"baseRequestId"`
-	// Dataset description.
-	Description *string `pulumi:"description"`
-	// Whether to exclude the records of the last request. The default value is true. Type: boolean (or Expression with resultType boolean).
-	ExcludeLastRequest interface{} `pulumi:"excludeLastRequest"`
-	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-	Folder *DatasetFolder `pulumi:"folder"`
-	// Linked service reference.
-	LinkedServiceName LinkedServiceReference `pulumi:"linkedServiceName"`
-	// The name of the Open Hub Destination with destination type as Database Table. Type: string (or Expression with resultType string).
-	OpenHubDestinationName interface{} `pulumi:"openHubDestinationName"`
-	// Parameters for dataset.
-	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
-	// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
-	Schema interface{} `pulumi:"schema"`
-	// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
-	Structure interface{} `pulumi:"structure"`
-	// Type of dataset.
-	// Expected value is 'SapOpenHubTable'.
-	Type string `pulumi:"type"`
-}
-
-// SapOpenHubTableDatasetInput is an input type that accepts SapOpenHubTableDatasetArgs and SapOpenHubTableDatasetOutput values.
-// You can construct a concrete instance of `SapOpenHubTableDatasetInput` via:
-//
-//	SapOpenHubTableDatasetArgs{...}
-type SapOpenHubTableDatasetInput interface {
-	pulumi.Input
-
-	ToSapOpenHubTableDatasetOutput() SapOpenHubTableDatasetOutput
-	ToSapOpenHubTableDatasetOutputWithContext(context.Context) SapOpenHubTableDatasetOutput
-}
-
-// Sap Business Warehouse Open Hub Destination Table properties.
-type SapOpenHubTableDatasetArgs struct {
-	// List of tags that can be used for describing the Dataset.
-	Annotations pulumi.ArrayInput `pulumi:"annotations"`
-	// The ID of request for delta loading. Once it is set, only data with requestId larger than the value of this property will be retrieved. The default value is 0. Type: integer (or Expression with resultType integer ).
-	BaseRequestId pulumi.Input `pulumi:"baseRequestId"`
-	// Dataset description.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Whether to exclude the records of the last request. The default value is true. Type: boolean (or Expression with resultType boolean).
-	ExcludeLastRequest pulumi.Input `pulumi:"excludeLastRequest"`
-	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-	Folder DatasetFolderPtrInput `pulumi:"folder"`
-	// Linked service reference.
-	LinkedServiceName LinkedServiceReferenceInput `pulumi:"linkedServiceName"`
-	// The name of the Open Hub Destination with destination type as Database Table. Type: string (or Expression with resultType string).
-	OpenHubDestinationName pulumi.Input `pulumi:"openHubDestinationName"`
-	// Parameters for dataset.
-	Parameters ParameterSpecificationMapInput `pulumi:"parameters"`
-	// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
-	Schema pulumi.Input `pulumi:"schema"`
-	// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
-	Structure pulumi.Input `pulumi:"structure"`
-	// Type of dataset.
-	// Expected value is 'SapOpenHubTable'.
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (SapOpenHubTableDatasetArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SapOpenHubTableDataset)(nil)).Elem()
-}
-
-func (i SapOpenHubTableDatasetArgs) ToSapOpenHubTableDatasetOutput() SapOpenHubTableDatasetOutput {
-	return i.ToSapOpenHubTableDatasetOutputWithContext(context.Background())
-}
-
-func (i SapOpenHubTableDatasetArgs) ToSapOpenHubTableDatasetOutputWithContext(ctx context.Context) SapOpenHubTableDatasetOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SapOpenHubTableDatasetOutput)
-}
-
-// Sap Business Warehouse Open Hub Destination Table properties.
-type SapOpenHubTableDatasetOutput struct{ *pulumi.OutputState }
-
-func (SapOpenHubTableDatasetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SapOpenHubTableDataset)(nil)).Elem()
-}
-
-func (o SapOpenHubTableDatasetOutput) ToSapOpenHubTableDatasetOutput() SapOpenHubTableDatasetOutput {
-	return o
-}
-
-func (o SapOpenHubTableDatasetOutput) ToSapOpenHubTableDatasetOutputWithContext(ctx context.Context) SapOpenHubTableDatasetOutput {
-	return o
-}
-
-// List of tags that can be used for describing the Dataset.
-func (o SapOpenHubTableDatasetOutput) Annotations() pulumi.ArrayOutput {
-	return o.ApplyT(func(v SapOpenHubTableDataset) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
-}
-
-// The ID of request for delta loading. Once it is set, only data with requestId larger than the value of this property will be retrieved. The default value is 0. Type: integer (or Expression with resultType integer ).
-func (o SapOpenHubTableDatasetOutput) BaseRequestId() pulumi.AnyOutput {
-	return o.ApplyT(func(v SapOpenHubTableDataset) interface{} { return v.BaseRequestId }).(pulumi.AnyOutput)
-}
-
-// Dataset description.
-func (o SapOpenHubTableDatasetOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SapOpenHubTableDataset) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Whether to exclude the records of the last request. The default value is true. Type: boolean (or Expression with resultType boolean).
-func (o SapOpenHubTableDatasetOutput) ExcludeLastRequest() pulumi.AnyOutput {
-	return o.ApplyT(func(v SapOpenHubTableDataset) interface{} { return v.ExcludeLastRequest }).(pulumi.AnyOutput)
-}
-
-// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-func (o SapOpenHubTableDatasetOutput) Folder() DatasetFolderPtrOutput {
-	return o.ApplyT(func(v SapOpenHubTableDataset) *DatasetFolder { return v.Folder }).(DatasetFolderPtrOutput)
-}
-
-// Linked service reference.
-func (o SapOpenHubTableDatasetOutput) LinkedServiceName() LinkedServiceReferenceOutput {
-	return o.ApplyT(func(v SapOpenHubTableDataset) LinkedServiceReference { return v.LinkedServiceName }).(LinkedServiceReferenceOutput)
-}
-
-// The name of the Open Hub Destination with destination type as Database Table. Type: string (or Expression with resultType string).
-func (o SapOpenHubTableDatasetOutput) OpenHubDestinationName() pulumi.AnyOutput {
-	return o.ApplyT(func(v SapOpenHubTableDataset) interface{} { return v.OpenHubDestinationName }).(pulumi.AnyOutput)
-}
-
-// Parameters for dataset.
-func (o SapOpenHubTableDatasetOutput) Parameters() ParameterSpecificationMapOutput {
-	return o.ApplyT(func(v SapOpenHubTableDataset) map[string]ParameterSpecification { return v.Parameters }).(ParameterSpecificationMapOutput)
-}
-
-// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
-func (o SapOpenHubTableDatasetOutput) Schema() pulumi.AnyOutput {
-	return o.ApplyT(func(v SapOpenHubTableDataset) interface{} { return v.Schema }).(pulumi.AnyOutput)
-}
-
-// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
-func (o SapOpenHubTableDatasetOutput) Structure() pulumi.AnyOutput {
-	return o.ApplyT(func(v SapOpenHubTableDataset) interface{} { return v.Structure }).(pulumi.AnyOutput)
-}
-
-// Type of dataset.
-// Expected value is 'SapOpenHubTable'.
-func (o SapOpenHubTableDatasetOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v SapOpenHubTableDataset) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Sap Business Warehouse Open Hub Destination Table properties.
-type SapOpenHubTableDatasetResponse struct {
-	// List of tags that can be used for describing the Dataset.
-	Annotations []interface{} `pulumi:"annotations"`
-	// The ID of request for delta loading. Once it is set, only data with requestId larger than the value of this property will be retrieved. The default value is 0. Type: integer (or Expression with resultType integer ).
-	BaseRequestId interface{} `pulumi:"baseRequestId"`
-	// Dataset description.
-	Description *string `pulumi:"description"`
-	// Whether to exclude the records of the last request. The default value is true. Type: boolean (or Expression with resultType boolean).
-	ExcludeLastRequest interface{} `pulumi:"excludeLastRequest"`
-	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-	Folder *DatasetResponseFolder `pulumi:"folder"`
-	// Linked service reference.
-	LinkedServiceName LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
-	// The name of the Open Hub Destination with destination type as Database Table. Type: string (or Expression with resultType string).
-	OpenHubDestinationName interface{} `pulumi:"openHubDestinationName"`
-	// Parameters for dataset.
-	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
-	// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
-	Schema interface{} `pulumi:"schema"`
-	// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
-	Structure interface{} `pulumi:"structure"`
-	// Type of dataset.
-	// Expected value is 'SapOpenHubTable'.
-	Type string `pulumi:"type"`
-}
-
-// Sap Business Warehouse Open Hub Destination Table properties.
-type SapOpenHubTableDatasetResponseOutput struct{ *pulumi.OutputState }
-
-func (SapOpenHubTableDatasetResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SapOpenHubTableDatasetResponse)(nil)).Elem()
-}
-
-func (o SapOpenHubTableDatasetResponseOutput) ToSapOpenHubTableDatasetResponseOutput() SapOpenHubTableDatasetResponseOutput {
-	return o
-}
-
-func (o SapOpenHubTableDatasetResponseOutput) ToSapOpenHubTableDatasetResponseOutputWithContext(ctx context.Context) SapOpenHubTableDatasetResponseOutput {
-	return o
-}
-
-// List of tags that can be used for describing the Dataset.
-func (o SapOpenHubTableDatasetResponseOutput) Annotations() pulumi.ArrayOutput {
-	return o.ApplyT(func(v SapOpenHubTableDatasetResponse) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
-}
-
-// The ID of request for delta loading. Once it is set, only data with requestId larger than the value of this property will be retrieved. The default value is 0. Type: integer (or Expression with resultType integer ).
-func (o SapOpenHubTableDatasetResponseOutput) BaseRequestId() pulumi.AnyOutput {
-	return o.ApplyT(func(v SapOpenHubTableDatasetResponse) interface{} { return v.BaseRequestId }).(pulumi.AnyOutput)
-}
-
-// Dataset description.
-func (o SapOpenHubTableDatasetResponseOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SapOpenHubTableDatasetResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Whether to exclude the records of the last request. The default value is true. Type: boolean (or Expression with resultType boolean).
-func (o SapOpenHubTableDatasetResponseOutput) ExcludeLastRequest() pulumi.AnyOutput {
-	return o.ApplyT(func(v SapOpenHubTableDatasetResponse) interface{} { return v.ExcludeLastRequest }).(pulumi.AnyOutput)
-}
-
-// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-func (o SapOpenHubTableDatasetResponseOutput) Folder() DatasetResponseFolderPtrOutput {
-	return o.ApplyT(func(v SapOpenHubTableDatasetResponse) *DatasetResponseFolder { return v.Folder }).(DatasetResponseFolderPtrOutput)
-}
-
-// Linked service reference.
-func (o SapOpenHubTableDatasetResponseOutput) LinkedServiceName() LinkedServiceReferenceResponseOutput {
-	return o.ApplyT(func(v SapOpenHubTableDatasetResponse) LinkedServiceReferenceResponse { return v.LinkedServiceName }).(LinkedServiceReferenceResponseOutput)
-}
-
-// The name of the Open Hub Destination with destination type as Database Table. Type: string (or Expression with resultType string).
-func (o SapOpenHubTableDatasetResponseOutput) OpenHubDestinationName() pulumi.AnyOutput {
-	return o.ApplyT(func(v SapOpenHubTableDatasetResponse) interface{} { return v.OpenHubDestinationName }).(pulumi.AnyOutput)
-}
-
-// Parameters for dataset.
-func (o SapOpenHubTableDatasetResponseOutput) Parameters() ParameterSpecificationResponseMapOutput {
-	return o.ApplyT(func(v SapOpenHubTableDatasetResponse) map[string]ParameterSpecificationResponse { return v.Parameters }).(ParameterSpecificationResponseMapOutput)
-}
-
-// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
-func (o SapOpenHubTableDatasetResponseOutput) Schema() pulumi.AnyOutput {
-	return o.ApplyT(func(v SapOpenHubTableDatasetResponse) interface{} { return v.Schema }).(pulumi.AnyOutput)
-}
-
-// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
-func (o SapOpenHubTableDatasetResponseOutput) Structure() pulumi.AnyOutput {
-	return o.ApplyT(func(v SapOpenHubTableDatasetResponse) interface{} { return v.Structure }).(pulumi.AnyOutput)
-}
-
-// Type of dataset.
-// Expected value is 'SapOpenHubTable'.
-func (o SapOpenHubTableDatasetResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v SapOpenHubTableDatasetResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
 func init() {
+	pulumi.RegisterOutputType(GreenplumTableDatasetOutput{})
+	pulumi.RegisterOutputType(GreenplumTableDatasetResponseOutput{})
 	pulumi.RegisterOutputType(HBaseLinkedServiceOutput{})
 	pulumi.RegisterOutputType(HBaseLinkedServiceResponseOutput{})
 	pulumi.RegisterOutputType(HBaseObjectDatasetOutput{})
@@ -62892,6 +62894,4 @@ func init() {
 	pulumi.RegisterOutputType(SapOpenHubLinkedServiceResponseOutput{})
 	pulumi.RegisterOutputType(SapOpenHubSourceOutput{})
 	pulumi.RegisterOutputType(SapOpenHubSourceResponseOutput{})
-	pulumi.RegisterOutputType(SapOpenHubTableDatasetOutput{})
-	pulumi.RegisterOutputType(SapOpenHubTableDatasetResponseOutput{})
 }

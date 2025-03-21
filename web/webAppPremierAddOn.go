@@ -13,13 +13,13 @@ import (
 )
 
 // Premier add-on.
-// Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2020-12-01.
-//
-// Other available API versions: 2016-08-01, 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
+// Azure REST API version: 2024-04-01. Prior API version in Azure Native 2.x: 2022-09-01.
 type WebAppPremierAddOn struct {
 	pulumi.CustomResourceState
 
-	// Kind of resource.
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// Resource Location.
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -144,7 +144,7 @@ func (WebAppPremierAddOnState) ElementType() reflect.Type {
 }
 
 type webAppPremierAddOnArgs struct {
-	// Kind of resource.
+	// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
 	Kind *string `pulumi:"kind"`
 	// Resource Location.
 	Location *string `pulumi:"location"`
@@ -170,7 +170,7 @@ type webAppPremierAddOnArgs struct {
 
 // The set of arguments for constructing a WebAppPremierAddOn resource.
 type WebAppPremierAddOnArgs struct {
-	// Kind of resource.
+	// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
 	Kind pulumi.StringPtrInput
 	// Resource Location.
 	Location pulumi.StringPtrInput
@@ -231,7 +231,12 @@ func (o WebAppPremierAddOnOutput) ToWebAppPremierAddOnOutputWithContext(ctx cont
 	return o
 }
 
-// Kind of resource.
+// The Azure API version of the resource.
+func (o WebAppPremierAddOnOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *WebAppPremierAddOn) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
 func (o WebAppPremierAddOnOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WebAppPremierAddOn) pulumi.StringPtrOutput { return v.Kind }).(pulumi.StringPtrOutput)
 }

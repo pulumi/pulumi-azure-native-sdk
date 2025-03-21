@@ -13,12 +13,12 @@ import (
 )
 
 // Static Site Database Connection resource.
-// Azure REST API version: 2022-09-01.
-//
-// Other available API versions: 2023-01-01, 2023-12-01, 2024-04-01.
+// Azure REST API version: 2024-04-01. Prior API version in Azure Native 2.x: 2022-09-01.
 type StaticSiteBuildDatabaseConnection struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// A list of configuration files associated with this database connection.
 	ConfigurationFiles StaticSiteDatabaseConnectionConfigurationFileOverviewResponseArrayOutput `pulumi:"configurationFiles"`
 	// If present, the identity is used in conjunction with connection string to connect to the database. Use of the system-assigned managed identity is indicated with the string 'SystemAssigned', while use of a user-assigned managed identity is indicated with the resource id of the managed identity resource.
@@ -184,6 +184,11 @@ func (o StaticSiteBuildDatabaseConnectionOutput) ToStaticSiteBuildDatabaseConnec
 
 func (o StaticSiteBuildDatabaseConnectionOutput) ToStaticSiteBuildDatabaseConnectionOutputWithContext(ctx context.Context) StaticSiteBuildDatabaseConnectionOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o StaticSiteBuildDatabaseConnectionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *StaticSiteBuildDatabaseConnection) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A list of configuration files associated with this database connection.

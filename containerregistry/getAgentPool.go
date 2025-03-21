@@ -35,6 +35,8 @@ type LookupAgentPoolArgs struct {
 // The agentpool that has the ARM resource and properties.
 // The agentpool will have all information to create an agent pool.
 type LookupAgentPoolResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The count of agent machine
 	Count *int `pulumi:"count"`
 	// The resource ID.
@@ -95,6 +97,11 @@ func (o LookupAgentPoolResultOutput) ToLookupAgentPoolResultOutput() LookupAgent
 
 func (o LookupAgentPoolResultOutput) ToLookupAgentPoolResultOutputWithContext(ctx context.Context) LookupAgentPoolResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupAgentPoolResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAgentPoolResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The count of agent machine

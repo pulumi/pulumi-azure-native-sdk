@@ -12,9 +12,7 @@ import (
 )
 
 // Get a SqlDiscoverySiteDataSource
-// Azure REST API version: 2023-06-06.
-//
-// Other available API versions: 2023-10-01-preview, 2024-05-01-preview.
+// Azure REST API version: 2023-10-01-preview.
 func LookupSqlDiscoverySiteDataSourceController(ctx *pulumi.Context, args *LookupSqlDiscoverySiteDataSourceControllerArgs, opts ...pulumi.InvokeOption) (*LookupSqlDiscoverySiteDataSourceControllerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSqlDiscoverySiteDataSourceControllerResult
@@ -38,6 +36,8 @@ type LookupSqlDiscoverySiteDataSourceControllerArgs struct {
 
 // A SQL discovery site data source resource.
 type LookupSqlDiscoverySiteDataSourceControllerResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets or sets the discovery site Id.
 	DiscoverySiteId *string `pulumi:"discoverySiteId"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -89,6 +89,11 @@ func (o LookupSqlDiscoverySiteDataSourceControllerResultOutput) ToLookupSqlDisco
 
 func (o LookupSqlDiscoverySiteDataSourceControllerResultOutput) ToLookupSqlDiscoverySiteDataSourceControllerResultOutputWithContext(ctx context.Context) LookupSqlDiscoverySiteDataSourceControllerResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupSqlDiscoverySiteDataSourceControllerResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSqlDiscoverySiteDataSourceControllerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets the discovery site Id.

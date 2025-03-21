@@ -13,12 +13,12 @@ import (
 )
 
 // Define the move collection.
-// Azure REST API version: 2022-08-01. Prior API version in Azure Native 1.x: 2021-01-01.
-//
-// Other available API versions: 2023-08-01.
+// Azure REST API version: 2023-08-01. Prior API version in Azure Native 2.x: 2022-08-01.
 type MoveCollection struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The etag of the resource.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Defines the MSI properties of the Move Collection.
@@ -163,6 +163,11 @@ func (o MoveCollectionOutput) ToMoveCollectionOutput() MoveCollectionOutput {
 
 func (o MoveCollectionOutput) ToMoveCollectionOutputWithContext(ctx context.Context) MoveCollectionOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o MoveCollectionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *MoveCollection) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The etag of the resource.

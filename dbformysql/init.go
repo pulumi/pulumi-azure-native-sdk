@@ -33,6 +33,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &PrivateEndpointConnection{}
 	case "azure-native:dbformysql:Server":
 		r = &Server{}
+	case "azure-native:dbformysql:SingleServer":
+		r = &SingleServer{}
+	case "azure-native:dbformysql:SingleServerDatabase":
+		r = &SingleServerDatabase{}
+	case "azure-native:dbformysql:SingleServerFirewallRule":
+		r = &SingleServerFirewallRule{}
+	case "azure-native:dbformysql:SingleServerServerAdministrator":
+		r = &SingleServerServerAdministrator{}
+	case "azure-native:dbformysql:SingleServerVirtualNetworkRule":
+		r = &SingleServerVirtualNetworkRule{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

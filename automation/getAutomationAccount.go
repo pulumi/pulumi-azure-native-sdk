@@ -12,9 +12,7 @@ import (
 )
 
 // Get information about an Automation Account.
-// Azure REST API version: 2022-08-08.
-//
-// Other available API versions: 2023-05-15-preview, 2023-11-01, 2024-10-23.
+// Azure REST API version: 2023-11-01.
 func LookupAutomationAccount(ctx *pulumi.Context, args *LookupAutomationAccountArgs, opts ...pulumi.InvokeOption) (*LookupAutomationAccountResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAutomationAccountResult
@@ -36,6 +34,8 @@ type LookupAutomationAccountArgs struct {
 type LookupAutomationAccountResult struct {
 	// URL of automation hybrid service which is used for hybrid worker on-boarding.
 	AutomationHybridServiceUrl *string `pulumi:"automationHybridServiceUrl"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets the creation time.
 	CreationTime string `pulumi:"creationTime"`
 	// Gets or sets the description.
@@ -112,6 +112,11 @@ func (o LookupAutomationAccountResultOutput) ToLookupAutomationAccountResultOutp
 // URL of automation hybrid service which is used for hybrid worker on-boarding.
 func (o LookupAutomationAccountResultOutput) AutomationHybridServiceUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAutomationAccountResult) *string { return v.AutomationHybridServiceUrl }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupAutomationAccountResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAutomationAccountResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets the creation time.

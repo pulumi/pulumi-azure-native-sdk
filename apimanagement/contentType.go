@@ -13,12 +13,12 @@ import (
 )
 
 // Content type contract details.
-// Azure REST API version: 2022-08-01. Prior API version in Azure Native 1.x: 2020-12-01.
-//
-// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
+// Azure REST API version: 2022-09-01-preview. Prior API version in Azure Native 2.x: 2022-08-01.
 type ContentType struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Content type description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The name of the resource
@@ -198,6 +198,11 @@ func (o ContentTypeOutput) ToContentTypeOutput() ContentTypeOutput {
 
 func (o ContentTypeOutput) ToContentTypeOutputWithContext(ctx context.Context) ContentTypeOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ContentTypeOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ContentType) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Content type description.

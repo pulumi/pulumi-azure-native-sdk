@@ -12,9 +12,7 @@ import (
 )
 
 // Get a Fleet
-// Azure REST API version: 2024-05-01-preview.
-//
-// Other available API versions: 2023-11-01-preview, 2024-11-01.
+// Azure REST API version: 2024-11-01.
 func LookupFleet(ctx *pulumi.Context, args *LookupFleetArgs, opts ...pulumi.InvokeOption) (*LookupFleetResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFleetResult
@@ -34,6 +32,10 @@ type LookupFleetArgs struct {
 
 // An Compute Fleet resource
 type LookupFleetResult struct {
+	// Represents the configuration for additional locations where Fleet resources may be deployed.
+	AdditionalLocationsProfile *AdditionalLocationsProfileResponse `pulumi:"additionalLocationsProfile"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Compute Profile to use for running user's workloads.
 	ComputeProfile ComputeProfileResponse `pulumi:"computeProfile"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -62,6 +64,8 @@ type LookupFleetResult struct {
 	Type string `pulumi:"type"`
 	// Specifies the ID which uniquely identifies a Compute Fleet.
 	UniqueId string `pulumi:"uniqueId"`
+	// Attribute based Fleet.
+	VmAttributes *VMAttributesResponse `pulumi:"vmAttributes"`
 	// List of VM sizes supported for Compute Fleet
 	VmSizesProfile []VmSizeProfileResponse `pulumi:"vmSizesProfile"`
 	// Zones in which the Compute Fleet is available
@@ -101,6 +105,16 @@ func (o LookupFleetResultOutput) ToLookupFleetResultOutput() LookupFleetResultOu
 
 func (o LookupFleetResultOutput) ToLookupFleetResultOutputWithContext(ctx context.Context) LookupFleetResultOutput {
 	return o
+}
+
+// Represents the configuration for additional locations where Fleet resources may be deployed.
+func (o LookupFleetResultOutput) AdditionalLocationsProfile() AdditionalLocationsProfileResponsePtrOutput {
+	return o.ApplyT(func(v LookupFleetResult) *AdditionalLocationsProfileResponse { return v.AdditionalLocationsProfile }).(AdditionalLocationsProfileResponsePtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupFleetResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFleetResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Compute Profile to use for running user's workloads.
@@ -171,6 +185,11 @@ func (o LookupFleetResultOutput) Type() pulumi.StringOutput {
 // Specifies the ID which uniquely identifies a Compute Fleet.
 func (o LookupFleetResultOutput) UniqueId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFleetResult) string { return v.UniqueId }).(pulumi.StringOutput)
+}
+
+// Attribute based Fleet.
+func (o LookupFleetResultOutput) VmAttributes() VMAttributesResponsePtrOutput {
+	return o.ApplyT(func(v LookupFleetResult) *VMAttributesResponse { return v.VmAttributes }).(VMAttributesResponsePtrOutput)
 }
 
 // List of VM sizes supported for Compute Fleet

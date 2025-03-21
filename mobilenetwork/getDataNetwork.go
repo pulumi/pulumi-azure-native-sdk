@@ -12,9 +12,7 @@ import (
 )
 
 // Gets information about the specified data network.
-// Azure REST API version: 2023-06-01.
-//
-// Other available API versions: 2022-04-01-preview, 2022-11-01, 2023-09-01, 2024-02-01, 2024-04-01.
+// Azure REST API version: 2024-04-01.
 func LookupDataNetwork(ctx *pulumi.Context, args *LookupDataNetworkArgs, opts ...pulumi.InvokeOption) (*LookupDataNetworkResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDataNetworkResult
@@ -36,6 +34,8 @@ type LookupDataNetworkArgs struct {
 
 // Data network resource. Must be created in the same location as its parent mobile network.
 type LookupDataNetworkResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// An optional description for this data network.
 	Description *string `pulumi:"description"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -89,6 +89,11 @@ func (o LookupDataNetworkResultOutput) ToLookupDataNetworkResultOutput() LookupD
 
 func (o LookupDataNetworkResultOutput) ToLookupDataNetworkResultOutputWithContext(ctx context.Context) LookupDataNetworkResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupDataNetworkResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDataNetworkResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // An optional description for this data network.

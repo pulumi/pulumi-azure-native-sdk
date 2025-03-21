@@ -18,10 +18,12 @@ import (
 //   - Sources: list of one or more data sources nodes such as an RTSP source which allows for content to be ingested from cameras.
 //   - Processors: list of nodes which perform data analysis or transformations.
 //   - Sinks: list of one or more data sinks which allow for data to be stored or exported to other destinations.
-//     Azure REST API version: 2021-11-01-preview. Prior API version in Azure Native 1.x: 2021-11-01-preview.
+//     Azure REST API version: 2021-11-01-preview. Prior API version in Azure Native 2.x: 2021-11-01-preview.
 type PipelineTopology struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// An optional description of the pipeline topology. It is recommended that the expected use of the topology to be described here.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Topology kind.
@@ -189,6 +191,11 @@ func (o PipelineTopologyOutput) ToPipelineTopologyOutput() PipelineTopologyOutpu
 
 func (o PipelineTopologyOutput) ToPipelineTopologyOutputWithContext(ctx context.Context) PipelineTopologyOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o PipelineTopologyOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PipelineTopology) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // An optional description of the pipeline topology. It is recommended that the expected use of the topology to be described here.

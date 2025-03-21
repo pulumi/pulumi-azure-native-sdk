@@ -32,6 +32,8 @@ type LookupVaultArgs struct {
 
 // Vault model.
 type LookupVaultResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets or sets the Id of the resource.
 	Id string `pulumi:"id"`
 	// Gets or sets the location of the vault.
@@ -80,6 +82,11 @@ func (o LookupVaultResultOutput) ToLookupVaultResultOutput() LookupVaultResultOu
 
 func (o LookupVaultResultOutput) ToLookupVaultResultOutputWithContext(ctx context.Context) LookupVaultResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupVaultResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVaultResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets the Id of the resource.

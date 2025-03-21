@@ -13,12 +13,12 @@ import (
 )
 
 // Represents a devcenter encryption set resource.
-// Azure REST API version: 2024-05-01-preview.
-//
-// Other available API versions: 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview, 2024-10-01-preview.
+// Azure REST API version: 2024-10-01-preview. Prior API version in Azure Native 2.x: 2024-05-01-preview.
 type EncryptionSet struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Devbox disk encryption enable or disable status. Indicates if Devbox disks encryption using DevCenter CMK is enabled or not.
 	DevboxDisksEncryptionEnableStatus pulumi.StringPtrOutput `pulumi:"devboxDisksEncryptionEnableStatus"`
 	// Managed identity properties
@@ -176,6 +176,11 @@ func (o EncryptionSetOutput) ToEncryptionSetOutput() EncryptionSetOutput {
 
 func (o EncryptionSetOutput) ToEncryptionSetOutputWithContext(ctx context.Context) EncryptionSetOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o EncryptionSetOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *EncryptionSet) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Devbox disk encryption enable or disable status. Indicates if Devbox disks encryption using DevCenter CMK is enabled or not.

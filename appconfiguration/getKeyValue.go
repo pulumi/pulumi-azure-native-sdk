@@ -12,9 +12,7 @@ import (
 )
 
 // Gets the properties of the specified key-value. NOTE: This operation is intended for use in ARM Template deployments. For all other scenarios involving App Configuration key-values the data plane API should be used instead.
-// Azure REST API version: 2023-03-01.
-//
-// Other available API versions: 2023-08-01-preview, 2023-09-01-preview, 2024-05-01.
+// Azure REST API version: 2024-05-01.
 func LookupKeyValue(ctx *pulumi.Context, args *LookupKeyValueArgs, opts ...pulumi.InvokeOption) (*LookupKeyValueResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupKeyValueResult
@@ -36,6 +34,8 @@ type LookupKeyValueArgs struct {
 
 // The key-value resource along with all resource properties.
 type LookupKeyValueResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The content type of the key-value's value.
 	// Providing a proper content-type can enable transformations of values when they are retrieved by applications.
 	ContentType *string `pulumi:"contentType"`
@@ -99,6 +99,11 @@ func (o LookupKeyValueResultOutput) ToLookupKeyValueResultOutput() LookupKeyValu
 
 func (o LookupKeyValueResultOutput) ToLookupKeyValueResultOutputWithContext(ctx context.Context) LookupKeyValueResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupKeyValueResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKeyValueResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The content type of the key-value's value.

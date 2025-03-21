@@ -12,9 +12,7 @@ import (
 )
 
 // Gets the specified network profile in a specified resource group.
-// Azure REST API version: 2023-02-01.
-//
-// Other available API versions: 2019-08-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Azure REST API version: 2024-05-01.
 func LookupNetworkProfile(ctx *pulumi.Context, args *LookupNetworkProfileArgs, opts ...pulumi.InvokeOption) (*LookupNetworkProfileResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNetworkProfileResult
@@ -36,6 +34,8 @@ type LookupNetworkProfileArgs struct {
 
 // Network profile resource.
 type LookupNetworkProfileResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// List of chid container network interface configurations.
 	ContainerNetworkInterfaceConfigurations []ContainerNetworkInterfaceConfigurationResponse `pulumi:"containerNetworkInterfaceConfigurations"`
 	// List of child container network interfaces.
@@ -93,6 +93,11 @@ func (o LookupNetworkProfileResultOutput) ToLookupNetworkProfileResultOutput() L
 
 func (o LookupNetworkProfileResultOutput) ToLookupNetworkProfileResultOutputWithContext(ctx context.Context) LookupNetworkProfileResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupNetworkProfileResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkProfileResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // List of chid container network interface configurations.

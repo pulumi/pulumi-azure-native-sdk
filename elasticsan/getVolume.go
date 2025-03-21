@@ -12,9 +12,7 @@ import (
 )
 
 // Get an Volume.
-// Azure REST API version: 2021-11-20-preview.
-//
-// Other available API versions: 2022-12-01-preview, 2023-01-01, 2024-05-01, 2024-06-01-preview.
+// Azure REST API version: 2024-05-01.
 func LookupVolume(ctx *pulumi.Context, args *LookupVolumeArgs, opts ...pulumi.InvokeOption) (*LookupVolumeResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVolumeResult
@@ -38,21 +36,25 @@ type LookupVolumeArgs struct {
 
 // Response for Volume request.
 type LookupVolumeResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// State of the operation on the resource.
 	CreationData *SourceCreationDataResponse `pulumi:"creationData"`
-	// Azure resource identifier.
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
-	// Azure resource name.
+	// Parent resource information.
+	ManagedBy *ManagedByInfoResponse `pulumi:"managedBy"`
+	// The name of the resource
 	Name string `pulumi:"name"`
+	// State of the operation on the resource.
+	ProvisioningState string `pulumi:"provisioningState"`
 	// Volume size.
-	SizeGiB *float64 `pulumi:"sizeGiB"`
+	SizeGiB float64 `pulumi:"sizeGiB"`
 	// Storage target information
 	StorageTarget IscsiTargetInfoResponse `pulumi:"storageTarget"`
-	// Resource metadata required by ARM RPC
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	// Azure resource tags.
-	Tags map[string]string `pulumi:"tags"`
-	// Azure resource type.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// Unique Id of the volume in GUID format
 	VolumeId string `pulumi:"volumeId"`
@@ -97,24 +99,39 @@ func (o LookupVolumeResultOutput) ToLookupVolumeResultOutputWithContext(ctx cont
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupVolumeResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVolumeResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // State of the operation on the resource.
 func (o LookupVolumeResultOutput) CreationData() SourceCreationDataResponsePtrOutput {
 	return o.ApplyT(func(v LookupVolumeResult) *SourceCreationDataResponse { return v.CreationData }).(SourceCreationDataResponsePtrOutput)
 }
 
-// Azure resource identifier.
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupVolumeResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVolumeResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Azure resource name.
+// Parent resource information.
+func (o LookupVolumeResultOutput) ManagedBy() ManagedByInfoResponsePtrOutput {
+	return o.ApplyT(func(v LookupVolumeResult) *ManagedByInfoResponse { return v.ManagedBy }).(ManagedByInfoResponsePtrOutput)
+}
+
+// The name of the resource
 func (o LookupVolumeResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVolumeResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// State of the operation on the resource.
+func (o LookupVolumeResultOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVolumeResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
 // Volume size.
-func (o LookupVolumeResultOutput) SizeGiB() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v LookupVolumeResult) *float64 { return v.SizeGiB }).(pulumi.Float64PtrOutput)
+func (o LookupVolumeResultOutput) SizeGiB() pulumi.Float64Output {
+	return o.ApplyT(func(v LookupVolumeResult) float64 { return v.SizeGiB }).(pulumi.Float64Output)
 }
 
 // Storage target information
@@ -122,17 +139,12 @@ func (o LookupVolumeResultOutput) StorageTarget() IscsiTargetInfoResponseOutput 
 	return o.ApplyT(func(v LookupVolumeResult) IscsiTargetInfoResponse { return v.StorageTarget }).(IscsiTargetInfoResponseOutput)
 }
 
-// Resource metadata required by ARM RPC
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupVolumeResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupVolumeResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Azure resource tags.
-func (o LookupVolumeResultOutput) Tags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupVolumeResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
-}
-
-// Azure resource type.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupVolumeResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVolumeResult) string { return v.Type }).(pulumi.StringOutput)
 }

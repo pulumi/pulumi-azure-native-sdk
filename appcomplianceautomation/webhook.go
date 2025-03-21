@@ -13,10 +13,12 @@ import (
 )
 
 // A class represent an AppComplianceAutomation webhook resource.
-// Azure REST API version: 2024-06-27.
+// Azure REST API version: 2024-06-27. Prior API version in Azure Native 2.x: 2024-06-27.
 type Webhook struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// content type
 	ContentType pulumi.StringPtrOutput `pulumi:"contentType"`
 	// webhook deliveryStatus
@@ -181,6 +183,11 @@ func (o WebhookOutput) ToWebhookOutput() WebhookOutput {
 
 func (o WebhookOutput) ToWebhookOutputWithContext(ctx context.Context) WebhookOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o WebhookOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Webhook) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // content type

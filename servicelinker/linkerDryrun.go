@@ -13,12 +13,12 @@ import (
 )
 
 // a dryrun job resource
-// Azure REST API version: 2022-11-01-preview.
-//
-// Other available API versions: 2023-04-01-preview, 2024-04-01, 2024-07-01-preview.
+// Azure REST API version: 2024-04-01. Prior API version in Azure Native 2.x: 2022-11-01-preview.
 type LinkerDryrun struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// the preview of the operations for creation
@@ -146,6 +146,11 @@ func (o LinkerDryrunOutput) ToLinkerDryrunOutput() LinkerDryrunOutput {
 
 func (o LinkerDryrunOutput) ToLinkerDryrunOutputWithContext(ctx context.Context) LinkerDryrunOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LinkerDryrunOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *LinkerDryrun) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

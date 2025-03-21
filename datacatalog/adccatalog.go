@@ -13,12 +13,14 @@ import (
 )
 
 // Azure Data Catalog.
-// Azure REST API version: 2016-03-30. Prior API version in Azure Native 1.x: 2016-03-30.
+// Azure REST API version: 2016-03-30. Prior API version in Azure Native 2.x: 2016-03-30.
 type ADCCatalog struct {
 	pulumi.CustomResourceState
 
 	// Azure data catalog admin list.
 	Admins PrincipalsResponseArrayOutput `pulumi:"admins"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Automatic unit adjustment enabled or not.
 	EnableAutomaticUnitAdjustment pulumi.BoolPtrOutput `pulumi:"enableAutomaticUnitAdjustment"`
 	// Resource etag
@@ -176,6 +178,11 @@ func (o ADCCatalogOutput) ToADCCatalogOutputWithContext(ctx context.Context) ADC
 // Azure data catalog admin list.
 func (o ADCCatalogOutput) Admins() PrincipalsResponseArrayOutput {
 	return o.ApplyT(func(v *ADCCatalog) PrincipalsResponseArrayOutput { return v.Admins }).(PrincipalsResponseArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o ADCCatalogOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ADCCatalog) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Automatic unit adjustment enabled or not.

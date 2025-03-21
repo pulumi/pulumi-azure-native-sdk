@@ -12,9 +12,7 @@ import (
 )
 
 // Retrieves the details of specified NVA connection.
-// Azure REST API version: 2023-06-01.
-//
-// Other available API versions: 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Azure REST API version: 2024-05-01.
 func LookupNetworkVirtualApplianceConnection(ctx *pulumi.Context, args *LookupNetworkVirtualApplianceConnectionArgs, opts ...pulumi.InvokeOption) (*LookupNetworkVirtualApplianceConnectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNetworkVirtualApplianceConnectionResult
@@ -36,22 +34,14 @@ type LookupNetworkVirtualApplianceConnectionArgs struct {
 
 // NetworkVirtualApplianceConnection resource.
 type LookupNetworkVirtualApplianceConnectionResult struct {
-	// Network Virtual Appliance ASN.
-	Asn *float64 `pulumi:"asn"`
-	// List of bgpPeerAddresses for the NVA instances
-	BgpPeerAddress []string `pulumi:"bgpPeerAddress"`
-	// Enable internet security.
-	EnableInternetSecurity *bool `pulumi:"enableInternetSecurity"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource ID.
 	Id *string `pulumi:"id"`
 	// The name of the resource.
 	Name *string `pulumi:"name"`
-	// The provisioning state of the NetworkVirtualApplianceConnection resource.
-	ProvisioningState string `pulumi:"provisioningState"`
-	// The Routing Configuration indicating the associated and propagated route tables on this connection.
-	RoutingConfiguration *RoutingConfigurationResponse `pulumi:"routingConfiguration"`
-	// Unique identifier for the connection.
-	TunnelIdentifier *float64 `pulumi:"tunnelIdentifier"`
+	// Properties of the express route connection.
+	Properties NetworkVirtualApplianceConnectionPropertiesResponse `pulumi:"properties"`
 }
 
 func LookupNetworkVirtualApplianceConnectionOutput(ctx *pulumi.Context, args LookupNetworkVirtualApplianceConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupNetworkVirtualApplianceConnectionResultOutput {
@@ -91,19 +81,9 @@ func (o LookupNetworkVirtualApplianceConnectionResultOutput) ToLookupNetworkVirt
 	return o
 }
 
-// Network Virtual Appliance ASN.
-func (o LookupNetworkVirtualApplianceConnectionResultOutput) Asn() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v LookupNetworkVirtualApplianceConnectionResult) *float64 { return v.Asn }).(pulumi.Float64PtrOutput)
-}
-
-// List of bgpPeerAddresses for the NVA instances
-func (o LookupNetworkVirtualApplianceConnectionResultOutput) BgpPeerAddress() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupNetworkVirtualApplianceConnectionResult) []string { return v.BgpPeerAddress }).(pulumi.StringArrayOutput)
-}
-
-// Enable internet security.
-func (o LookupNetworkVirtualApplianceConnectionResultOutput) EnableInternetSecurity() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v LookupNetworkVirtualApplianceConnectionResult) *bool { return v.EnableInternetSecurity }).(pulumi.BoolPtrOutput)
+// The Azure API version of the resource.
+func (o LookupNetworkVirtualApplianceConnectionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkVirtualApplianceConnectionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource ID.
@@ -116,21 +96,11 @@ func (o LookupNetworkVirtualApplianceConnectionResultOutput) Name() pulumi.Strin
 	return o.ApplyT(func(v LookupNetworkVirtualApplianceConnectionResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The provisioning state of the NetworkVirtualApplianceConnection resource.
-func (o LookupNetworkVirtualApplianceConnectionResultOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupNetworkVirtualApplianceConnectionResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// The Routing Configuration indicating the associated and propagated route tables on this connection.
-func (o LookupNetworkVirtualApplianceConnectionResultOutput) RoutingConfiguration() RoutingConfigurationResponsePtrOutput {
-	return o.ApplyT(func(v LookupNetworkVirtualApplianceConnectionResult) *RoutingConfigurationResponse {
-		return v.RoutingConfiguration
-	}).(RoutingConfigurationResponsePtrOutput)
-}
-
-// Unique identifier for the connection.
-func (o LookupNetworkVirtualApplianceConnectionResultOutput) TunnelIdentifier() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v LookupNetworkVirtualApplianceConnectionResult) *float64 { return v.TunnelIdentifier }).(pulumi.Float64PtrOutput)
+// Properties of the express route connection.
+func (o LookupNetworkVirtualApplianceConnectionResultOutput) Properties() NetworkVirtualApplianceConnectionPropertiesResponseOutput {
+	return o.ApplyT(func(v LookupNetworkVirtualApplianceConnectionResult) NetworkVirtualApplianceConnectionPropertiesResponse {
+		return v.Properties
+	}).(NetworkVirtualApplianceConnectionPropertiesResponseOutput)
 }
 
 func init() {

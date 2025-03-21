@@ -12,9 +12,7 @@ import (
 )
 
 // Product serial and status for the service
-// Azure REST API version: 2024-02-07-preview.
-//
-// Other available API versions: 2025-02-06-preview.
+// Azure REST API version: 2025-02-06-preview.
 func ListPaloAltoNetworksCloudngfwProductSerialNumberStatus(ctx *pulumi.Context, args *ListPaloAltoNetworksCloudngfwProductSerialNumberStatusArgs, opts ...pulumi.InvokeOption) (*ListPaloAltoNetworksCloudngfwProductSerialNumberStatusResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListPaloAltoNetworksCloudngfwProductSerialNumberStatusResult

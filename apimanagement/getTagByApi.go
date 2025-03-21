@@ -12,9 +12,7 @@ import (
 )
 
 // Get tag associated with the API.
-// Azure REST API version: 2022-08-01.
-//
-// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
+// Azure REST API version: 2022-09-01-preview.
 func LookupTagByApi(ctx *pulumi.Context, args *LookupTagByApiArgs, opts ...pulumi.InvokeOption) (*LookupTagByApiResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTagByApiResult
@@ -38,6 +36,8 @@ type LookupTagByApiArgs struct {
 
 // Tag Contract details.
 type LookupTagByApiResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Tag name.
 	DisplayName string `pulumi:"displayName"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -85,6 +85,11 @@ func (o LookupTagByApiResultOutput) ToLookupTagByApiResultOutput() LookupTagByAp
 
 func (o LookupTagByApiResultOutput) ToLookupTagByApiResultOutputWithContext(ctx context.Context) LookupTagByApiResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupTagByApiResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTagByApiResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Tag name.

@@ -13,8 +13,6 @@ import (
 
 // Gets information about a server.
 // Azure REST API version: 2018-06-01.
-//
-// Other available API versions: 2018-06-01-preview.
 func LookupServer(ctx *pulumi.Context, args *LookupServerArgs, opts ...pulumi.InvokeOption) (*LookupServerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupServerResult
@@ -36,6 +34,8 @@ type LookupServerArgs struct {
 type LookupServerResult struct {
 	// The administrator's login name of a server. Can only be specified when the server is being created (and is required for creation).
 	AdministratorLogin *string `pulumi:"administratorLogin"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Earliest restore point creation time (ISO8601 format)
 	EarliestRestoreDate *string `pulumi:"earliestRestoreDate"`
 	// The fully qualified domain name of a server.
@@ -112,6 +112,11 @@ func (o LookupServerResultOutput) ToLookupServerResultOutputWithContext(ctx cont
 // The administrator's login name of a server. Can only be specified when the server is being created (and is required for creation).
 func (o LookupServerResultOutput) AdministratorLogin() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServerResult) *string { return v.AdministratorLogin }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupServerResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Earliest restore point creation time (ISO8601 format)

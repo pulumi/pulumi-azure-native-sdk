@@ -36,6 +36,8 @@ type LookupRosettaNetProcessConfigurationArgs struct {
 type LookupRosettaNetProcessConfigurationResult struct {
 	// The RosettaNet process configuration activity settings.
 	ActivitySettings RosettaNetPipActivitySettingsResponse `pulumi:"activitySettings"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The changed time.
 	ChangedTime string `pulumi:"changedTime"`
 	// The created time.
@@ -108,6 +110,11 @@ func (o LookupRosettaNetProcessConfigurationResultOutput) ActivitySettings() Ros
 	return o.ApplyT(func(v LookupRosettaNetProcessConfigurationResult) RosettaNetPipActivitySettingsResponse {
 		return v.ActivitySettings
 	}).(RosettaNetPipActivitySettingsResponseOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupRosettaNetProcessConfigurationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRosettaNetProcessConfigurationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The changed time.

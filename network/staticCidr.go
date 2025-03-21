@@ -13,12 +13,12 @@ import (
 )
 
 // Instance of StaticCidr resource.
-// Azure REST API version: 2024-01-01-preview.
-//
-// Other available API versions: 2024-05-01.
+// Azure REST API version: 2024-05-01. Prior API version in Azure Native 2.x: 2024-01-01-preview.
 type StaticCidr struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Properties of static CIDR resource.
@@ -148,6 +148,11 @@ func (o StaticCidrOutput) ToStaticCidrOutput() StaticCidrOutput {
 
 func (o StaticCidrOutput) ToStaticCidrOutputWithContext(ctx context.Context) StaticCidrOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o StaticCidrOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *StaticCidr) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

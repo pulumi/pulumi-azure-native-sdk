@@ -13,10 +13,12 @@ import (
 )
 
 // The container for solution.
-// Azure REST API version: 2015-11-01-preview. Prior API version in Azure Native 1.x: 2015-11-01-preview.
+// Azure REST API version: 2015-11-01-preview. Prior API version in Azure Native 2.x: 2015-11-01-preview.
 type ManagementConfiguration struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Resource location
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// Resource name.
@@ -133,6 +135,11 @@ func (o ManagementConfigurationOutput) ToManagementConfigurationOutput() Managem
 
 func (o ManagementConfigurationOutput) ToManagementConfigurationOutputWithContext(ctx context.Context) ManagementConfigurationOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ManagementConfigurationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ManagementConfiguration) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource location

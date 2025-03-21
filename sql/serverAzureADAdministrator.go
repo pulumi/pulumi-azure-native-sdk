@@ -13,9 +13,7 @@ import (
 )
 
 // Azure Active Directory administrator.
-// Azure REST API version: 2021-11-01. Prior API version in Azure Native 1.x: 2020-11-01-preview.
-//
-// Other available API versions: 2014-04-01, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
+// Azure REST API version: 2021-11-01. Prior API version in Azure Native 2.x: 2021-11-01.
 type ServerAzureADAdministrator struct {
 	pulumi.CustomResourceState
 
@@ -23,6 +21,8 @@ type ServerAzureADAdministrator struct {
 	AdministratorType pulumi.StringOutput `pulumi:"administratorType"`
 	// Azure Active Directory only Authentication enabled.
 	AzureADOnlyAuthentication pulumi.BoolOutput `pulumi:"azureADOnlyAuthentication"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Login name of the server administrator.
 	Login pulumi.StringOutput `pulumi:"login"`
 	// Resource name.
@@ -229,6 +229,11 @@ func (o ServerAzureADAdministratorOutput) AdministratorType() pulumi.StringOutpu
 // Azure Active Directory only Authentication enabled.
 func (o ServerAzureADAdministratorOutput) AzureADOnlyAuthentication() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ServerAzureADAdministrator) pulumi.BoolOutput { return v.AzureADOnlyAuthentication }).(pulumi.BoolOutput)
+}
+
+// The Azure API version of the resource.
+func (o ServerAzureADAdministratorOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerAzureADAdministrator) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Login name of the server administrator.

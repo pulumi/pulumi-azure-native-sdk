@@ -13,12 +13,12 @@ import (
 )
 
 // Issue Comment Contract details.
-// Azure REST API version: 2022-08-01. Prior API version in Azure Native 1.x: 2020-12-01.
-//
-// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
+// Azure REST API version: 2022-09-01-preview. Prior API version in Azure Native 2.x: 2022-08-01.
 type ApiIssueComment struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Date and time when the comment was created.
 	CreatedDate pulumi.StringPtrOutput `pulumi:"createdDate"`
 	// The name of the resource
@@ -225,6 +225,11 @@ func (o ApiIssueCommentOutput) ToApiIssueCommentOutput() ApiIssueCommentOutput {
 
 func (o ApiIssueCommentOutput) ToApiIssueCommentOutputWithContext(ctx context.Context) ApiIssueCommentOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ApiIssueCommentOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApiIssueComment) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Date and time when the comment was created.

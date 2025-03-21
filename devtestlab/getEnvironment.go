@@ -40,6 +40,8 @@ type LookupEnvironmentArgs struct {
 type LookupEnvironmentResult struct {
 	// The display name of the Azure Resource Manager template that produced the environment.
 	ArmTemplateDisplayName *string `pulumi:"armTemplateDisplayName"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The creator of the environment.
 	CreatedByUser string `pulumi:"createdByUser"`
 	// The deployment properties of the environment.
@@ -106,6 +108,11 @@ func (o LookupEnvironmentResultOutput) ToLookupEnvironmentResultOutputWithContex
 // The display name of the Azure Resource Manager template that produced the environment.
 func (o LookupEnvironmentResultOutput) ArmTemplateDisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) *string { return v.ArmTemplateDisplayName }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupEnvironmentResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The creator of the environment.

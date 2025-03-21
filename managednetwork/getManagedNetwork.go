@@ -32,6 +32,8 @@ type LookupManagedNetworkArgs struct {
 
 // The Managed Network resource
 type LookupManagedNetworkResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The collection of groups and policies concerned with connectivity
 	Connectivity ConnectivityCollectionResponse `pulumi:"connectivity"`
 	// A unique read-only string that changes whenever the resource is updated.
@@ -85,6 +87,11 @@ func (o LookupManagedNetworkResultOutput) ToLookupManagedNetworkResultOutput() L
 
 func (o LookupManagedNetworkResultOutput) ToLookupManagedNetworkResultOutputWithContext(ctx context.Context) LookupManagedNetworkResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupManagedNetworkResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupManagedNetworkResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The collection of groups and policies concerned with connectivity

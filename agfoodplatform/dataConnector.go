@@ -13,10 +13,12 @@ import (
 )
 
 // DataConnector Model.
-// Azure REST API version: 2023-06-01-preview.
+// Azure REST API version: 2023-06-01-preview. Prior API version in Azure Native 2.x: 2023-06-01-preview.
 type DataConnector struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The ETag value to implement optimistic concurrency.
 	ETag pulumi.StringOutput `pulumi:"eTag"`
 	// The name of the resource
@@ -141,6 +143,11 @@ func (o DataConnectorOutput) ToDataConnectorOutput() DataConnectorOutput {
 
 func (o DataConnectorOutput) ToDataConnectorOutputWithContext(ctx context.Context) DataConnectorOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o DataConnectorOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DataConnector) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The ETag value to implement optimistic concurrency.

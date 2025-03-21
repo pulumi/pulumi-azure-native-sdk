@@ -12,9 +12,7 @@ import (
 )
 
 // Returns a BotService Channel registration specified by the parameters.
-// Azure REST API version: 2022-09-15.
-//
-// Other available API versions: 2023-09-15-preview.
+// Azure REST API version: 2023-09-15-preview.
 func LookupChannel(ctx *pulumi.Context, args *LookupChannelArgs, opts ...pulumi.InvokeOption) (*LookupChannelResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupChannelResult
@@ -36,6 +34,8 @@ type LookupChannelArgs struct {
 
 // Bot channel resource definition
 type LookupChannelResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Entity Tag.
 	Etag *string `pulumi:"etag"`
 	// Specifies the resource ID.
@@ -93,6 +93,11 @@ func (o LookupChannelResultOutput) ToLookupChannelResultOutput() LookupChannelRe
 
 func (o LookupChannelResultOutput) ToLookupChannelResultOutputWithContext(ctx context.Context) LookupChannelResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupChannelResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupChannelResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Entity Tag.

@@ -342,6 +342,172 @@ func (in *autoExecuteStatusPtr) ToAutoExecuteStatusPtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(AutoExecuteStatusPtrOutput)
 }
 
+// The BackupStorageAccessTier for the LTR backups
+type BackupStorageAccessTier string
+
+const (
+	BackupStorageAccessTierHot     = BackupStorageAccessTier("Hot")
+	BackupStorageAccessTierArchive = BackupStorageAccessTier("Archive")
+)
+
+func (BackupStorageAccessTier) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupStorageAccessTier)(nil)).Elem()
+}
+
+func (e BackupStorageAccessTier) ToBackupStorageAccessTierOutput() BackupStorageAccessTierOutput {
+	return pulumi.ToOutput(e).(BackupStorageAccessTierOutput)
+}
+
+func (e BackupStorageAccessTier) ToBackupStorageAccessTierOutputWithContext(ctx context.Context) BackupStorageAccessTierOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(BackupStorageAccessTierOutput)
+}
+
+func (e BackupStorageAccessTier) ToBackupStorageAccessTierPtrOutput() BackupStorageAccessTierPtrOutput {
+	return e.ToBackupStorageAccessTierPtrOutputWithContext(context.Background())
+}
+
+func (e BackupStorageAccessTier) ToBackupStorageAccessTierPtrOutputWithContext(ctx context.Context) BackupStorageAccessTierPtrOutput {
+	return BackupStorageAccessTier(e).ToBackupStorageAccessTierOutputWithContext(ctx).ToBackupStorageAccessTierPtrOutputWithContext(ctx)
+}
+
+func (e BackupStorageAccessTier) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e BackupStorageAccessTier) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e BackupStorageAccessTier) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e BackupStorageAccessTier) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type BackupStorageAccessTierOutput struct{ *pulumi.OutputState }
+
+func (BackupStorageAccessTierOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupStorageAccessTier)(nil)).Elem()
+}
+
+func (o BackupStorageAccessTierOutput) ToBackupStorageAccessTierOutput() BackupStorageAccessTierOutput {
+	return o
+}
+
+func (o BackupStorageAccessTierOutput) ToBackupStorageAccessTierOutputWithContext(ctx context.Context) BackupStorageAccessTierOutput {
+	return o
+}
+
+func (o BackupStorageAccessTierOutput) ToBackupStorageAccessTierPtrOutput() BackupStorageAccessTierPtrOutput {
+	return o.ToBackupStorageAccessTierPtrOutputWithContext(context.Background())
+}
+
+func (o BackupStorageAccessTierOutput) ToBackupStorageAccessTierPtrOutputWithContext(ctx context.Context) BackupStorageAccessTierPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackupStorageAccessTier) *BackupStorageAccessTier {
+		return &v
+	}).(BackupStorageAccessTierPtrOutput)
+}
+
+func (o BackupStorageAccessTierOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o BackupStorageAccessTierOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e BackupStorageAccessTier) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o BackupStorageAccessTierOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o BackupStorageAccessTierOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e BackupStorageAccessTier) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type BackupStorageAccessTierPtrOutput struct{ *pulumi.OutputState }
+
+func (BackupStorageAccessTierPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackupStorageAccessTier)(nil)).Elem()
+}
+
+func (o BackupStorageAccessTierPtrOutput) ToBackupStorageAccessTierPtrOutput() BackupStorageAccessTierPtrOutput {
+	return o
+}
+
+func (o BackupStorageAccessTierPtrOutput) ToBackupStorageAccessTierPtrOutputWithContext(ctx context.Context) BackupStorageAccessTierPtrOutput {
+	return o
+}
+
+func (o BackupStorageAccessTierPtrOutput) Elem() BackupStorageAccessTierOutput {
+	return o.ApplyT(func(v *BackupStorageAccessTier) BackupStorageAccessTier {
+		if v != nil {
+			return *v
+		}
+		var ret BackupStorageAccessTier
+		return ret
+	}).(BackupStorageAccessTierOutput)
+}
+
+func (o BackupStorageAccessTierPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o BackupStorageAccessTierPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *BackupStorageAccessTier) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// BackupStorageAccessTierInput is an input type that accepts values of the BackupStorageAccessTier enum
+// A concrete instance of `BackupStorageAccessTierInput` can be one of the following:
+//
+//	BackupStorageAccessTierHot
+//	BackupStorageAccessTierArchive
+type BackupStorageAccessTierInput interface {
+	pulumi.Input
+
+	ToBackupStorageAccessTierOutput() BackupStorageAccessTierOutput
+	ToBackupStorageAccessTierOutputWithContext(context.Context) BackupStorageAccessTierOutput
+}
+
+var backupStorageAccessTierPtrType = reflect.TypeOf((**BackupStorageAccessTier)(nil)).Elem()
+
+type BackupStorageAccessTierPtrInput interface {
+	pulumi.Input
+
+	ToBackupStorageAccessTierPtrOutput() BackupStorageAccessTierPtrOutput
+	ToBackupStorageAccessTierPtrOutputWithContext(context.Context) BackupStorageAccessTierPtrOutput
+}
+
+type backupStorageAccessTierPtr string
+
+func BackupStorageAccessTierPtr(v string) BackupStorageAccessTierPtrInput {
+	return (*backupStorageAccessTierPtr)(&v)
+}
+
+func (*backupStorageAccessTierPtr) ElementType() reflect.Type {
+	return backupStorageAccessTierPtrType
+}
+
+func (in *backupStorageAccessTierPtr) ToBackupStorageAccessTierPtrOutput() BackupStorageAccessTierPtrOutput {
+	return pulumi.ToOutput(in).(BackupStorageAccessTierPtrOutput)
+}
+
+func (in *backupStorageAccessTierPtr) ToBackupStorageAccessTierPtrOutputWithContext(ctx context.Context) BackupStorageAccessTierPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(BackupStorageAccessTierPtrOutput)
+}
+
 // The storage account type to be used to store backups for this instance. The options are Local (LocallyRedundantStorage), Zone (ZoneRedundantStorage), Geo (GeoRedundantStorage) and GeoZone(GeoZoneRedundantStorage)
 type BackupStorageRedundancy string
 
@@ -7896,6 +8062,8 @@ func init() {
 	pulumi.RegisterOutputType(AdministratorTypePtrOutput{})
 	pulumi.RegisterOutputType(AutoExecuteStatusOutput{})
 	pulumi.RegisterOutputType(AutoExecuteStatusPtrOutput{})
+	pulumi.RegisterOutputType(BackupStorageAccessTierOutput{})
+	pulumi.RegisterOutputType(BackupStorageAccessTierPtrOutput{})
 	pulumi.RegisterOutputType(BackupStorageRedundancyOutput{})
 	pulumi.RegisterOutputType(BackupStorageRedundancyPtrOutput{})
 	pulumi.RegisterOutputType(BlobAuditingPolicyStateOutput{})

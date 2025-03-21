@@ -12,9 +12,7 @@ import (
 )
 
 // Gets the properties of the specified Iot Connector FHIR destination.
-// Azure REST API version: 2023-02-28.
-//
-// Other available API versions: 2023-09-06, 2023-11-01, 2023-12-01, 2024-03-01, 2024-03-31.
+// Azure REST API version: 2024-03-31.
 func LookupIotConnectorFhirDestination(ctx *pulumi.Context, args *LookupIotConnectorFhirDestinationArgs, opts ...pulumi.InvokeOption) (*LookupIotConnectorFhirDestinationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIotConnectorFhirDestinationResult
@@ -38,6 +36,8 @@ type LookupIotConnectorFhirDestinationArgs struct {
 
 // IoT Connector FHIR destination definition.
 type LookupIotConnectorFhirDestinationResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// An etag associated with the resource, used for optimistic concurrency when editing it.
 	Etag *string `pulumi:"etag"`
 	// FHIR Mappings
@@ -95,6 +95,11 @@ func (o LookupIotConnectorFhirDestinationResultOutput) ToLookupIotConnectorFhirD
 
 func (o LookupIotConnectorFhirDestinationResultOutput) ToLookupIotConnectorFhirDestinationResultOutputWithContext(ctx context.Context) LookupIotConnectorFhirDestinationResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupIotConnectorFhirDestinationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIotConnectorFhirDestinationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // An etag associated with the resource, used for optimistic concurrency when editing it.

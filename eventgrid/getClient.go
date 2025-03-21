@@ -12,9 +12,7 @@ import (
 )
 
 // Get properties of a client.
-// Azure REST API version: 2023-06-01-preview.
-//
-// Other available API versions: 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-02-15.
+// Azure REST API version: 2025-02-15.
 func LookupClient(ctx *pulumi.Context, args *LookupClientArgs, opts ...pulumi.InvokeOption) (*LookupClientResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupClientResult
@@ -40,10 +38,10 @@ type LookupClientResult struct {
 	// Example:
 	// "attributes": { "room": "345", "floor": 12, "deviceTypes": ["Fan", "Light"] }
 	Attributes interface{} `pulumi:"attributes"`
-	// Authentication information for the client.
-	Authentication *ClientAuthenticationResponse `pulumi:"authentication"`
 	// The name presented by the client for authentication. The default value is the name of the resource.
 	AuthenticationName *string `pulumi:"authenticationName"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The client certificate authentication information.
 	ClientCertificateAuthentication *ClientCertificateAuthenticationResponse `pulumi:"clientCertificateAuthentication"`
 	// Description for the Client resource.
@@ -56,7 +54,7 @@ type LookupClientResult struct {
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Indicates if the client is enabled or not. Default value is Enabled.
 	State *string `pulumi:"state"`
-	// The system metadata relating to the Client resource.
+	// The system metadata relating to the Event Grid resource.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Type of the resource.
 	Type string `pulumi:"type"`
@@ -118,14 +116,14 @@ func (o LookupClientResultOutput) Attributes() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupClientResult) interface{} { return v.Attributes }).(pulumi.AnyOutput)
 }
 
-// Authentication information for the client.
-func (o LookupClientResultOutput) Authentication() ClientAuthenticationResponsePtrOutput {
-	return o.ApplyT(func(v LookupClientResult) *ClientAuthenticationResponse { return v.Authentication }).(ClientAuthenticationResponsePtrOutput)
-}
-
 // The name presented by the client for authentication. The default value is the name of the resource.
 func (o LookupClientResultOutput) AuthenticationName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupClientResult) *string { return v.AuthenticationName }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupClientResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClientResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The client certificate authentication information.
@@ -160,7 +158,7 @@ func (o LookupClientResultOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupClientResult) *string { return v.State }).(pulumi.StringPtrOutput)
 }
 
-// The system metadata relating to the Client resource.
+// The system metadata relating to the Event Grid resource.
 func (o LookupClientResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupClientResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }

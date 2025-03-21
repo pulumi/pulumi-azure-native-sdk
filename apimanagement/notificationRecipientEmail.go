@@ -13,12 +13,12 @@ import (
 )
 
 // Recipient Email details.
-// Azure REST API version: 2022-08-01. Prior API version in Azure Native 1.x: 2020-12-01.
-//
-// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
+// Azure REST API version: 2022-09-01-preview. Prior API version in Azure Native 2.x: 2022-08-01.
 type NotificationRecipientEmail struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// User Email subscribed to notification.
 	Email pulumi.StringPtrOutput `pulumi:"email"`
 	// The name of the resource
@@ -196,6 +196,11 @@ func (o NotificationRecipientEmailOutput) ToNotificationRecipientEmailOutput() N
 
 func (o NotificationRecipientEmailOutput) ToNotificationRecipientEmailOutputWithContext(ctx context.Context) NotificationRecipientEmailOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o NotificationRecipientEmailOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *NotificationRecipientEmail) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // User Email subscribed to notification.

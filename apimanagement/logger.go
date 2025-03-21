@@ -13,12 +13,12 @@ import (
 )
 
 // Logger details.
-// Azure REST API version: 2022-08-01. Prior API version in Azure Native 1.x: 2020-12-01.
-//
-// Other available API versions: 2016-10-10, 2017-03-01, 2018-01-01, 2019-12-01-preview, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
+// Azure REST API version: 2022-09-01-preview. Prior API version in Azure Native 2.x: 2022-08-01.
 type Logger struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name and SendRule connection string of the event hub for azureEventHub logger.
 	// Instrumentation key for applicationInsights logger.
 	Credentials pulumi.StringMapOutput `pulumi:"credentials"`
@@ -229,6 +229,11 @@ func (o LoggerOutput) ToLoggerOutput() LoggerOutput {
 
 func (o LoggerOutput) ToLoggerOutputWithContext(ctx context.Context) LoggerOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LoggerOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Logger) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name and SendRule connection string of the event hub for azureEventHub logger.

@@ -34,6 +34,8 @@ type LookupReplicationExtensionArgs struct {
 
 // Replication extension model.
 type LookupReplicationExtensionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets or sets the Id of the resource.
 	Id string `pulumi:"id"`
 	// Gets or sets the name of the resource.
@@ -80,6 +82,11 @@ func (o LookupReplicationExtensionResultOutput) ToLookupReplicationExtensionResu
 
 func (o LookupReplicationExtensionResultOutput) ToLookupReplicationExtensionResultOutputWithContext(ctx context.Context) LookupReplicationExtensionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupReplicationExtensionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupReplicationExtensionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets the Id of the resource.

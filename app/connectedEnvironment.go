@@ -13,12 +13,12 @@ import (
 )
 
 // An environment for Kubernetes cluster specialized for web workloads by Azure App Service
-// Azure REST API version: 2022-10-01.
-//
-// Other available API versions: 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview.
+// Azure REST API version: 2024-03-01. Prior API version in Azure Native 2.x: 2022-10-01.
 type ConnectedEnvironment struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Custom domain configuration for the environment
 	CustomDomainConfiguration CustomDomainConfigurationResponsePtrOutput `pulumi:"customDomainConfiguration"`
 	// Application Insights connection string used by Dapr to export Service to Service communication telemetry
@@ -200,6 +200,11 @@ func (o ConnectedEnvironmentOutput) ToConnectedEnvironmentOutput() ConnectedEnvi
 
 func (o ConnectedEnvironmentOutput) ToConnectedEnvironmentOutputWithContext(ctx context.Context) ConnectedEnvironmentOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ConnectedEnvironmentOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConnectedEnvironment) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Custom domain configuration for the environment

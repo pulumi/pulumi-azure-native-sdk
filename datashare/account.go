@@ -13,10 +13,12 @@ import (
 )
 
 // An account data transfer object.
-// Azure REST API version: 2021-08-01. Prior API version in Azure Native 1.x: 2020-09-01.
+// Azure REST API version: 2021-08-01. Prior API version in Azure Native 2.x: 2021-08-01.
 type Account struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Time at which the account was created.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// Identity Info on the Account
@@ -164,6 +166,11 @@ func (o AccountOutput) ToAccountOutput() AccountOutput {
 
 func (o AccountOutput) ToAccountOutputWithContext(ctx context.Context) AccountOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o AccountOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Time at which the account was created.

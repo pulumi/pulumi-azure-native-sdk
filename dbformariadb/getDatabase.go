@@ -13,8 +13,6 @@ import (
 
 // Gets information about a database.
 // Azure REST API version: 2018-06-01.
-//
-// Other available API versions: 2018-06-01-preview.
 func LookupDatabase(ctx *pulumi.Context, args *LookupDatabaseArgs, opts ...pulumi.InvokeOption) (*LookupDatabaseResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDatabaseResult
@@ -36,6 +34,8 @@ type LookupDatabaseArgs struct {
 
 // Represents a Database.
 type LookupDatabaseResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The charset of the database.
 	Charset *string `pulumi:"charset"`
 	// The collation of the database.
@@ -83,6 +83,11 @@ func (o LookupDatabaseResultOutput) ToLookupDatabaseResultOutput() LookupDatabas
 
 func (o LookupDatabaseResultOutput) ToLookupDatabaseResultOutputWithContext(ctx context.Context) LookupDatabaseResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupDatabaseResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The charset of the database.

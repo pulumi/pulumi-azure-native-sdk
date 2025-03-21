@@ -12,9 +12,7 @@ import (
 )
 
 // Get the Service Registry and its properties.
-// Azure REST API version: 2023-05-01-preview.
-//
-// Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01, 2024-01-01-preview, 2024-05-01-preview.
+// Azure REST API version: 2024-01-01-preview.
 func LookupServiceRegistry(ctx *pulumi.Context, args *LookupServiceRegistryArgs, opts ...pulumi.InvokeOption) (*LookupServiceRegistryResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupServiceRegistryResult
@@ -36,6 +34,8 @@ type LookupServiceRegistryArgs struct {
 
 // Service Registry resource
 type LookupServiceRegistryResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource Id for the resource.
 	Id string `pulumi:"id"`
 	// The name of the resource.
@@ -83,6 +83,11 @@ func (o LookupServiceRegistryResultOutput) ToLookupServiceRegistryResultOutput()
 
 func (o LookupServiceRegistryResultOutput) ToLookupServiceRegistryResultOutputWithContext(ctx context.Context) LookupServiceRegistryResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupServiceRegistryResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceRegistryResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource Id for the resource.

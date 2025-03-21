@@ -11,9 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Azure REST API version: 2024-01-01-preview.
-//
-// Other available API versions: 2024-04-01-preview, 2024-07-01-preview, 2024-10-01-preview.
+// Azure REST API version: 2025-01-01-preview.
 func LookupEndpointDeployment(ctx *pulumi.Context, args *LookupEndpointDeploymentArgs, opts ...pulumi.InvokeOption) (*LookupEndpointDeploymentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupEndpointDeploymentResult
@@ -36,6 +34,8 @@ type LookupEndpointDeploymentArgs struct {
 }
 
 type LookupEndpointDeploymentResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The name of the resource
@@ -83,6 +83,11 @@ func (o LookupEndpointDeploymentResultOutput) ToLookupEndpointDeploymentResultOu
 
 func (o LookupEndpointDeploymentResultOutput) ToLookupEndpointDeploymentResultOutputWithContext(ctx context.Context) LookupEndpointDeploymentResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupEndpointDeploymentResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEndpointDeploymentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

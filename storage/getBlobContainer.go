@@ -12,9 +12,7 @@ import (
 )
 
 // Gets properties of a specified container.
-// Azure REST API version: 2022-09-01.
-//
-// Other available API versions: 2023-01-01, 2023-04-01, 2023-05-01, 2024-01-01.
+// Azure REST API version: 2024-01-01.
 func LookupBlobContainer(ctx *pulumi.Context, args *LookupBlobContainerArgs, opts ...pulumi.InvokeOption) (*LookupBlobContainerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBlobContainerResult
@@ -36,6 +34,8 @@ type LookupBlobContainerArgs struct {
 
 // Properties of the blob container, including Id, resource name, resource type, Etag.
 type LookupBlobContainerResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Default the container to use specified encryption scope for all writes.
 	DefaultEncryptionScope *string `pulumi:"defaultEncryptionScope"`
 	// Indicates whether the blob container was deleted.
@@ -119,6 +119,11 @@ func (o LookupBlobContainerResultOutput) ToLookupBlobContainerResultOutput() Loo
 
 func (o LookupBlobContainerResultOutput) ToLookupBlobContainerResultOutputWithContext(ctx context.Context) LookupBlobContainerResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupBlobContainerResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBlobContainerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Default the container to use specified encryption scope for all writes.

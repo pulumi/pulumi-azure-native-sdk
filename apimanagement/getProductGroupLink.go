@@ -13,8 +13,6 @@ import (
 
 // Gets the group link for the product.
 // Azure REST API version: 2022-09-01-preview.
-//
-// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
 func LookupProductGroupLink(ctx *pulumi.Context, args *LookupProductGroupLinkArgs, opts ...pulumi.InvokeOption) (*LookupProductGroupLinkResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupProductGroupLinkResult
@@ -38,6 +36,8 @@ type LookupProductGroupLinkArgs struct {
 
 // Product-group link details.
 type LookupProductGroupLinkResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Full resource Id of a group.
 	GroupId string `pulumi:"groupId"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -85,6 +85,11 @@ func (o LookupProductGroupLinkResultOutput) ToLookupProductGroupLinkResultOutput
 
 func (o LookupProductGroupLinkResultOutput) ToLookupProductGroupLinkResultOutputWithContext(ctx context.Context) LookupProductGroupLinkResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupProductGroupLinkResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProductGroupLinkResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Full resource Id of a group.

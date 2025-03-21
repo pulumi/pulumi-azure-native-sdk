@@ -13,12 +13,12 @@ import (
 )
 
 // A SQL Migration Service.
-// Azure REST API version: 2022-03-30-preview. Prior API version in Azure Native 1.x: 2021-10-30-preview.
-//
-// Other available API versions: 2023-07-15-preview.
+// Azure REST API version: 2023-07-15-preview. Prior API version in Azure Native 2.x: 2022-03-30-preview.
 type SqlMigrationService struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Current state of the Integration runtime.
 	IntegrationRuntimeState pulumi.StringOutput    `pulumi:"integrationRuntimeState"`
 	Location                pulumi.StringPtrOutput `pulumi:"location"`
@@ -141,6 +141,11 @@ func (o SqlMigrationServiceOutput) ToSqlMigrationServiceOutput() SqlMigrationSer
 
 func (o SqlMigrationServiceOutput) ToSqlMigrationServiceOutputWithContext(ctx context.Context) SqlMigrationServiceOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o SqlMigrationServiceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SqlMigrationService) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Current state of the Integration runtime.

@@ -12,9 +12,7 @@ import (
 )
 
 // Gets the specified deployments associated with the Cognitive Services account.
-// Azure REST API version: 2023-05-01.
-//
-// Other available API versions: 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview, 2024-10-01.
+// Azure REST API version: 2024-10-01.
 func LookupDeployment(ctx *pulumi.Context, args *LookupDeploymentArgs, opts ...pulumi.InvokeOption) (*LookupDeploymentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDeploymentResult
@@ -36,6 +34,8 @@ type LookupDeploymentArgs struct {
 
 // Cognitive Services account deployment.
 type LookupDeploymentResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource Etag.
 	Etag string `pulumi:"etag"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -48,6 +48,8 @@ type LookupDeploymentResult struct {
 	Sku *SkuResponse `pulumi:"sku"`
 	// Metadata pertaining to creation and last modification of the resource.
 	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -89,6 +91,11 @@ func (o LookupDeploymentResultOutput) ToLookupDeploymentResultOutputWithContext(
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupDeploymentResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDeploymentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Resource Etag.
 func (o LookupDeploymentResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeploymentResult) string { return v.Etag }).(pulumi.StringOutput)
@@ -117,6 +124,11 @@ func (o LookupDeploymentResultOutput) Sku() SkuResponsePtrOutput {
 // Metadata pertaining to creation and last modification of the resource.
 func (o LookupDeploymentResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupDeploymentResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// Resource tags.
+func (o LookupDeploymentResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupDeploymentResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

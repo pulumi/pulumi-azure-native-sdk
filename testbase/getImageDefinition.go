@@ -36,6 +36,8 @@ type LookupImageDefinitionArgs struct {
 type LookupImageDefinitionResult struct {
 	// Custom image architecture.
 	Architecture string `pulumi:"architecture"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The name of the resource
@@ -91,6 +93,11 @@ func (o LookupImageDefinitionResultOutput) ToLookupImageDefinitionResultOutputWi
 // Custom image architecture.
 func (o LookupImageDefinitionResultOutput) Architecture() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupImageDefinitionResult) string { return v.Architecture }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupImageDefinitionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupImageDefinitionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

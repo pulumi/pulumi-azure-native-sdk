@@ -12,9 +12,7 @@ import (
 )
 
 // Gets information about the specified virtual network tap.
-// Azure REST API version: 2023-02-01.
-//
-// Other available API versions: 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Azure REST API version: 2024-05-01.
 func LookupVirtualNetworkTap(ctx *pulumi.Context, args *LookupVirtualNetworkTapArgs, opts ...pulumi.InvokeOption) (*LookupVirtualNetworkTapResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVirtualNetworkTapResult
@@ -34,6 +32,8 @@ type LookupVirtualNetworkTapArgs struct {
 
 // Virtual Network Tap resource.
 type LookupVirtualNetworkTapResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The reference to the private IP address on the internal Load Balancer that will receive the tap.
 	DestinationLoadBalancerFrontEndIPConfiguration *FrontendIPConfigurationResponse `pulumi:"destinationLoadBalancerFrontEndIPConfiguration"`
 	// The reference to the private IP Address of the collector nic that will receive the tap.
@@ -105,6 +105,11 @@ func (o LookupVirtualNetworkTapResultOutput) ToLookupVirtualNetworkTapResultOutp
 
 func (o LookupVirtualNetworkTapResultOutput) ToLookupVirtualNetworkTapResultOutputWithContext(ctx context.Context) LookupVirtualNetworkTapResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupVirtualNetworkTapResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVirtualNetworkTapResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The reference to the private IP address on the internal Load Balancer that will receive the tap.

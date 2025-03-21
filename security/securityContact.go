@@ -12,20 +12,22 @@ import (
 )
 
 // Contact details and configurations for notifications coming from Microsoft Defender for Cloud.
-// Azure REST API version: 2020-01-01-preview. Prior API version in Azure Native 1.x: 2020-01-01-preview.
-//
-// Other available API versions: 2017-08-01-preview, 2023-12-01-preview.
+// Azure REST API version: 2023-12-01-preview. Prior API version in Azure Native 2.x: 2020-01-01-preview.
 type SecurityContact struct {
 	pulumi.CustomResourceState
 
-	// Defines whether to send email notifications about new security alerts
-	AlertNotifications SecurityContactPropertiesResponseAlertNotificationsPtrOutput `pulumi:"alertNotifications"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// List of email addresses which will get notifications from Microsoft Defender for Cloud by the configurations defined in this security contact.
 	Emails pulumi.StringPtrOutput `pulumi:"emails"`
+	// Indicates whether the security contact is enabled.
+	IsEnabled pulumi.BoolPtrOutput `pulumi:"isEnabled"`
 	// Resource name
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Defines whether to send email notifications from Microsoft Defender for Cloud to persons with specific RBAC roles on the subscription.
 	NotificationsByRole SecurityContactPropertiesResponseNotificationsByRolePtrOutput `pulumi:"notificationsByRole"`
+	// A collection of sources types which evaluate the email notification.
+	NotificationsSources pulumi.ArrayOutput `pulumi:"notificationsSources"`
 	// The security contact's phone number
 	Phone pulumi.StringPtrOutput `pulumi:"phone"`
 	// Resource type
@@ -84,12 +86,14 @@ func (SecurityContactState) ElementType() reflect.Type {
 }
 
 type securityContactArgs struct {
-	// Defines whether to send email notifications about new security alerts
-	AlertNotifications *SecurityContactPropertiesAlertNotifications `pulumi:"alertNotifications"`
 	// List of email addresses which will get notifications from Microsoft Defender for Cloud by the configurations defined in this security contact.
 	Emails *string `pulumi:"emails"`
+	// Indicates whether the security contact is enabled.
+	IsEnabled *bool `pulumi:"isEnabled"`
 	// Defines whether to send email notifications from Microsoft Defender for Cloud to persons with specific RBAC roles on the subscription.
 	NotificationsByRole *SecurityContactPropertiesNotificationsByRole `pulumi:"notificationsByRole"`
+	// A collection of sources types which evaluate the email notification.
+	NotificationsSources []interface{} `pulumi:"notificationsSources"`
 	// The security contact's phone number
 	Phone *string `pulumi:"phone"`
 	// Name of the security contact object
@@ -98,12 +102,14 @@ type securityContactArgs struct {
 
 // The set of arguments for constructing a SecurityContact resource.
 type SecurityContactArgs struct {
-	// Defines whether to send email notifications about new security alerts
-	AlertNotifications SecurityContactPropertiesAlertNotificationsPtrInput
 	// List of email addresses which will get notifications from Microsoft Defender for Cloud by the configurations defined in this security contact.
 	Emails pulumi.StringPtrInput
+	// Indicates whether the security contact is enabled.
+	IsEnabled pulumi.BoolPtrInput
 	// Defines whether to send email notifications from Microsoft Defender for Cloud to persons with specific RBAC roles on the subscription.
 	NotificationsByRole SecurityContactPropertiesNotificationsByRolePtrInput
+	// A collection of sources types which evaluate the email notification.
+	NotificationsSources pulumi.ArrayInput
 	// The security contact's phone number
 	Phone pulumi.StringPtrInput
 	// Name of the security contact object
@@ -147,16 +153,19 @@ func (o SecurityContactOutput) ToSecurityContactOutputWithContext(ctx context.Co
 	return o
 }
 
-// Defines whether to send email notifications about new security alerts
-func (o SecurityContactOutput) AlertNotifications() SecurityContactPropertiesResponseAlertNotificationsPtrOutput {
-	return o.ApplyT(func(v *SecurityContact) SecurityContactPropertiesResponseAlertNotificationsPtrOutput {
-		return v.AlertNotifications
-	}).(SecurityContactPropertiesResponseAlertNotificationsPtrOutput)
+// The Azure API version of the resource.
+func (o SecurityContactOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecurityContact) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // List of email addresses which will get notifications from Microsoft Defender for Cloud by the configurations defined in this security contact.
 func (o SecurityContactOutput) Emails() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityContact) pulumi.StringPtrOutput { return v.Emails }).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether the security contact is enabled.
+func (o SecurityContactOutput) IsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SecurityContact) pulumi.BoolPtrOutput { return v.IsEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // Resource name
@@ -169,6 +178,11 @@ func (o SecurityContactOutput) NotificationsByRole() SecurityContactPropertiesRe
 	return o.ApplyT(func(v *SecurityContact) SecurityContactPropertiesResponseNotificationsByRolePtrOutput {
 		return v.NotificationsByRole
 	}).(SecurityContactPropertiesResponseNotificationsByRolePtrOutput)
+}
+
+// A collection of sources types which evaluate the email notification.
+func (o SecurityContactOutput) NotificationsSources() pulumi.ArrayOutput {
+	return o.ApplyT(func(v *SecurityContact) pulumi.ArrayOutput { return v.NotificationsSources }).(pulumi.ArrayOutput)
 }
 
 // The security contact's phone number

@@ -12,9 +12,7 @@ import (
 )
 
 // Description for Get the properties of an App Service Environment.
-// Azure REST API version: 2022-09-01.
-//
-// Other available API versions: 2019-08-01, 2020-10-01, 2021-01-15, 2023-01-01, 2023-12-01, 2024-04-01.
+// Azure REST API version: 2024-04-01.
 func LookupAppServiceEnvironment(ctx *pulumi.Context, args *LookupAppServiceEnvironmentArgs, opts ...pulumi.InvokeOption) (*LookupAppServiceEnvironmentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAppServiceEnvironmentResult
@@ -34,6 +32,8 @@ type LookupAppServiceEnvironmentArgs struct {
 
 // App Service Environment ARM resource.
 type LookupAppServiceEnvironmentResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Custom settings for changing the behavior of the App Service Environment.
 	ClusterSettings []NameValuePairResponse `pulumi:"clusterSettings"`
 	// Full view of the custom domain suffix configuration for ASEv3.
@@ -52,7 +52,7 @@ type LookupAppServiceEnvironmentResult struct {
 	InternalLoadBalancingMode *string `pulumi:"internalLoadBalancingMode"`
 	// Number of IP SSL addresses reserved for the App Service Environment.
 	IpsslAddressCount *int `pulumi:"ipsslAddressCount"`
-	// Kind of resource.
+	// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
 	Kind *string `pulumi:"kind"`
 	// Resource Location.
 	Location string `pulumi:"location"`
@@ -136,6 +136,11 @@ func (o LookupAppServiceEnvironmentResultOutput) ToLookupAppServiceEnvironmentRe
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupAppServiceEnvironmentResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAppServiceEnvironmentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Custom settings for changing the behavior of the App Service Environment.
 func (o LookupAppServiceEnvironmentResultOutput) ClusterSettings() NameValuePairResponseArrayOutput {
 	return o.ApplyT(func(v LookupAppServiceEnvironmentResult) []NameValuePairResponse { return v.ClusterSettings }).(NameValuePairResponseArrayOutput)
@@ -183,7 +188,7 @@ func (o LookupAppServiceEnvironmentResultOutput) IpsslAddressCount() pulumi.IntP
 	return o.ApplyT(func(v LookupAppServiceEnvironmentResult) *int { return v.IpsslAddressCount }).(pulumi.IntPtrOutput)
 }
 
-// Kind of resource.
+// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
 func (o LookupAppServiceEnvironmentResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAppServiceEnvironmentResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }

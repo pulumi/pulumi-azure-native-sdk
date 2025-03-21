@@ -12,9 +12,7 @@ import (
 )
 
 // Retrieves Alias(Disaster Recovery configuration) for primary or secondary namespace
-// Azure REST API version: 2022-10-01-preview.
-//
-// Other available API versions: 2023-01-01-preview, 2024-01-01, 2024-05-01-preview.
+// Azure REST API version: 2024-01-01.
 func LookupDisasterRecoveryConfig(ctx *pulumi.Context, args *LookupDisasterRecoveryConfigArgs, opts ...pulumi.InvokeOption) (*LookupDisasterRecoveryConfigResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDisasterRecoveryConfigResult
@@ -38,6 +36,8 @@ type LookupDisasterRecoveryConfigArgs struct {
 type LookupDisasterRecoveryConfigResult struct {
 	// Alternate name specified when alias and namespace names are same.
 	AlternateName *string `pulumi:"alternateName"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -98,6 +98,11 @@ func (o LookupDisasterRecoveryConfigResultOutput) ToLookupDisasterRecoveryConfig
 // Alternate name specified when alias and namespace names are same.
 func (o LookupDisasterRecoveryConfigResultOutput) AlternateName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDisasterRecoveryConfigResult) *string { return v.AlternateName }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupDisasterRecoveryConfigResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDisasterRecoveryConfigResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

@@ -13,10 +13,12 @@ import (
 )
 
 // The representation of an edge module.
-// Azure REST API version: 2021-11-01-preview. Prior API version in Azure Native 1.x: 2021-05-01-preview.
+// Azure REST API version: 2021-11-01-preview. Prior API version in Azure Native 2.x: 2021-11-01-preview.
 type EdgeModule struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Internal ID generated for the instance of the Video Analyzer edge module.
 	EdgeModuleId pulumi.StringOutput `pulumi:"edgeModuleId"`
 	// The name of the resource
@@ -135,6 +137,11 @@ func (o EdgeModuleOutput) ToEdgeModuleOutput() EdgeModuleOutput {
 
 func (o EdgeModuleOutput) ToEdgeModuleOutputWithContext(ctx context.Context) EdgeModuleOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o EdgeModuleOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *EdgeModule) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Internal ID generated for the instance of the Video Analyzer edge module.

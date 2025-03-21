@@ -12,7 +12,7 @@ import (
 )
 
 // Gets a data connector.
-// Azure REST API version: 2023-02-01.
+// Azure REST API version: 2024-09-01.
 func LookupAADDataConnector(ctx *pulumi.Context, args *LookupAADDataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupAADDataConnectorResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAADDataConnectorResult
@@ -34,6 +34,8 @@ type LookupAADDataConnectorArgs struct {
 
 // Represents AAD (Azure Active Directory) data connector.
 type LookupAADDataConnectorResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The available data types for the connector.
 	DataTypes *AlertsDataTypeOfDataConnectorResponse `pulumi:"dataTypes"`
 	// Etag of the azure resource
@@ -88,6 +90,11 @@ func (o LookupAADDataConnectorResultOutput) ToLookupAADDataConnectorResultOutput
 
 func (o LookupAADDataConnectorResultOutput) ToLookupAADDataConnectorResultOutputWithContext(ctx context.Context) LookupAADDataConnectorResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupAADDataConnectorResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAADDataConnectorResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The available data types for the connector.

@@ -13,12 +13,12 @@ import (
 )
 
 // A failover group resource.
-// Azure REST API version: 2023-01-15-preview.
-//
-// Other available API versions: 2024-01-01, 2024-05-01-preview.
+// Azure REST API version: 2024-01-01. Prior API version in Azure Native 2.x: 2023-01-15-preview.
 type FailoverGroup struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// null
@@ -55,6 +55,9 @@ func NewFailoverGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azurearcdata/v20240501preview:FailoverGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurearcdata/v20250301preview:FailoverGroup"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -148,6 +151,11 @@ func (o FailoverGroupOutput) ToFailoverGroupOutput() FailoverGroupOutput {
 
 func (o FailoverGroupOutput) ToFailoverGroupOutputWithContext(ctx context.Context) FailoverGroupOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o FailoverGroupOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *FailoverGroup) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

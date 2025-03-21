@@ -13,10 +13,12 @@ import (
 )
 
 // A Microsoft.AwsConnector resource
-// Azure REST API version: 2024-12-01.
+// Azure REST API version: 2024-12-01. Prior API version in Azure Native 2.x: 2024-12-01.
 type Route53HostedZone struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -141,6 +143,11 @@ func (o Route53HostedZoneOutput) ToRoute53HostedZoneOutput() Route53HostedZoneOu
 
 func (o Route53HostedZoneOutput) ToRoute53HostedZoneOutputWithContext(ctx context.Context) Route53HostedZoneOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o Route53HostedZoneOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Route53HostedZone) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The geo-location where the resource lives

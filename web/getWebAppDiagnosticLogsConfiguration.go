@@ -12,9 +12,7 @@ import (
 )
 
 // Description for Gets the logging configuration of an app.
-// Azure REST API version: 2022-09-01.
-//
-// Other available API versions: 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
+// Azure REST API version: 2024-04-01.
 func LookupWebAppDiagnosticLogsConfiguration(ctx *pulumi.Context, args *LookupWebAppDiagnosticLogsConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupWebAppDiagnosticLogsConfigurationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebAppDiagnosticLogsConfigurationResult
@@ -36,6 +34,8 @@ type LookupWebAppDiagnosticLogsConfigurationArgs struct {
 type LookupWebAppDiagnosticLogsConfigurationResult struct {
 	// Application logs configuration.
 	ApplicationLogs *ApplicationLogsConfigResponse `pulumi:"applicationLogs"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Detailed error messages configuration.
 	DetailedErrorMessages *EnabledConfigResponse `pulumi:"detailedErrorMessages"`
 	// Failed requests tracing configuration.
@@ -102,6 +102,11 @@ func (o LookupWebAppDiagnosticLogsConfigurationResultOutput) ApplicationLogs() A
 	return o.ApplyT(func(v LookupWebAppDiagnosticLogsConfigurationResult) *ApplicationLogsConfigResponse {
 		return v.ApplicationLogs
 	}).(ApplicationLogsConfigResponsePtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupWebAppDiagnosticLogsConfigurationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWebAppDiagnosticLogsConfigurationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Detailed error messages configuration.

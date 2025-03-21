@@ -34,6 +34,8 @@ type LookupIntegrationAccountBatchConfigurationArgs struct {
 
 // The batch configuration resource definition.
 type LookupIntegrationAccountBatchConfigurationResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The resource id.
 	Id string `pulumi:"id"`
 	// The resource location.
@@ -83,6 +85,11 @@ func (o LookupIntegrationAccountBatchConfigurationResultOutput) ToLookupIntegrat
 
 func (o LookupIntegrationAccountBatchConfigurationResultOutput) ToLookupIntegrationAccountBatchConfigurationResultOutputWithContext(ctx context.Context) LookupIntegrationAccountBatchConfigurationResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupIntegrationAccountBatchConfigurationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIntegrationAccountBatchConfigurationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The resource id.

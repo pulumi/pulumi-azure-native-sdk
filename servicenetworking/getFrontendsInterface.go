@@ -12,9 +12,7 @@ import (
 )
 
 // Get a Frontend
-// Azure REST API version: 2023-05-01-preview.
-//
-// Other available API versions: 2022-10-01-preview, 2023-11-01, 2024-05-01-preview, 2025-01-01.
+// Azure REST API version: 2025-01-01.
 func LookupFrontendsInterface(ctx *pulumi.Context, args *LookupFrontendsInterfaceArgs, opts ...pulumi.InvokeOption) (*LookupFrontendsInterfaceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFrontendsInterfaceResult
@@ -34,8 +32,10 @@ type LookupFrontendsInterfaceArgs struct {
 	TrafficControllerName string `pulumi:"trafficControllerName"`
 }
 
-// Frontend Subresource of Traffic Controller.
+// Frontend Sub Resource of Traffic Controller.
 type LookupFrontendsInterfaceResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The Fully Qualified Domain Name of the DNS record associated to a Traffic Controller frontend.
 	Fqdn string `pulumi:"fqdn"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -76,7 +76,7 @@ func (LookupFrontendsInterfaceOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupFrontendsInterfaceArgs)(nil)).Elem()
 }
 
-// Frontend Subresource of Traffic Controller.
+// Frontend Sub Resource of Traffic Controller.
 type LookupFrontendsInterfaceResultOutput struct{ *pulumi.OutputState }
 
 func (LookupFrontendsInterfaceResultOutput) ElementType() reflect.Type {
@@ -89,6 +89,11 @@ func (o LookupFrontendsInterfaceResultOutput) ToLookupFrontendsInterfaceResultOu
 
 func (o LookupFrontendsInterfaceResultOutput) ToLookupFrontendsInterfaceResultOutputWithContext(ctx context.Context) LookupFrontendsInterfaceResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupFrontendsInterfaceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFrontendsInterfaceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The Fully Qualified Domain Name of the DNS record associated to a Traffic Controller frontend.

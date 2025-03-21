@@ -12,9 +12,7 @@ import (
 )
 
 // Get a Association
-// Azure REST API version: 2023-05-01-preview.
-//
-// Other available API versions: 2022-10-01-preview, 2023-11-01, 2024-05-01-preview, 2025-01-01.
+// Azure REST API version: 2025-01-01.
 func LookupAssociationsInterface(ctx *pulumi.Context, args *LookupAssociationsInterfaceArgs, opts ...pulumi.InvokeOption) (*LookupAssociationsInterfaceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAssociationsInterfaceResult
@@ -38,6 +36,8 @@ type LookupAssociationsInterfaceArgs struct {
 type LookupAssociationsInterfaceResult struct {
 	// Association Type
 	AssociationType string `pulumi:"associationType"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -96,6 +96,11 @@ func (o LookupAssociationsInterfaceResultOutput) ToLookupAssociationsInterfaceRe
 // Association Type
 func (o LookupAssociationsInterfaceResultOutput) AssociationType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAssociationsInterfaceResult) string { return v.AssociationType }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupAssociationsInterfaceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAssociationsInterfaceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

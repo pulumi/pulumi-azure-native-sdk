@@ -12,9 +12,7 @@ import (
 )
 
 // Description for Gets the source control configuration of an app.
-// Azure REST API version: 2022-09-01.
-//
-// Other available API versions: 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
+// Azure REST API version: 2024-04-01.
 func LookupWebAppSourceControlSlot(ctx *pulumi.Context, args *LookupWebAppSourceControlSlotArgs, opts ...pulumi.InvokeOption) (*LookupWebAppSourceControlSlotResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebAppSourceControlSlotResult
@@ -36,6 +34,8 @@ type LookupWebAppSourceControlSlotArgs struct {
 
 // Source control configuration for an app.
 type LookupWebAppSourceControlSlotResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Name of branch to use for deployment.
 	Branch *string `pulumi:"branch"`
 	// <code>true</code> to enable deployment rollback; otherwise, <code>false</code>.
@@ -95,6 +95,11 @@ func (o LookupWebAppSourceControlSlotResultOutput) ToLookupWebAppSourceControlSl
 
 func (o LookupWebAppSourceControlSlotResultOutput) ToLookupWebAppSourceControlSlotResultOutputWithContext(ctx context.Context) LookupWebAppSourceControlSlotResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupWebAppSourceControlSlotResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWebAppSourceControlSlotResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Name of branch to use for deployment.

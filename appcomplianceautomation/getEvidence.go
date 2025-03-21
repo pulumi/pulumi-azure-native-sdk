@@ -32,6 +32,8 @@ type LookupEvidenceArgs struct {
 
 // A class represent an AppComplianceAutomation evidence resource.
 type LookupEvidenceResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Control id.
 	ControlId *string `pulumi:"controlId"`
 	// Evidence type.
@@ -87,6 +89,11 @@ func (o LookupEvidenceResultOutput) ToLookupEvidenceResultOutput() LookupEvidenc
 
 func (o LookupEvidenceResultOutput) ToLookupEvidenceResultOutputWithContext(ctx context.Context) LookupEvidenceResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupEvidenceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEvidenceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Control id.

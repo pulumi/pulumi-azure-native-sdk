@@ -13,23 +13,23 @@ import (
 )
 
 // A custom domain
-// Azure REST API version: 2023-02-01.
-//
-// Other available API versions: 2023-03-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-08-01-preview, 2024-10-01-preview.
+// Azure REST API version: 2024-03-01. Prior API version in Azure Native 2.x: 2023-02-01.
 type WebPubSubCustomDomain struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Reference to a resource.
 	CustomCertificate ResourceReferenceResponseOutput `pulumi:"customCertificate"`
 	// The custom domain name.
 	DomainName pulumi.StringOutput `pulumi:"domainName"`
-	// The name of the resource.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Provisioning state of the resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// Metadata pertaining to creation and last modification of the resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// The type of the resource - e.g. "Microsoft.SignalRService/SignalR"
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -124,7 +124,7 @@ type webPubSubCustomDomainArgs struct {
 	DomainName string `pulumi:"domainName"`
 	// Custom domain name.
 	Name *string `pulumi:"name"`
-	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the resource.
 	ResourceName string `pulumi:"resourceName"`
@@ -138,7 +138,7 @@ type WebPubSubCustomDomainArgs struct {
 	DomainName pulumi.StringInput
 	// Custom domain name.
 	Name pulumi.StringPtrInput
-	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The name of the resource.
 	ResourceName pulumi.StringInput
@@ -181,6 +181,11 @@ func (o WebPubSubCustomDomainOutput) ToWebPubSubCustomDomainOutputWithContext(ct
 	return o
 }
 
+// The Azure API version of the resource.
+func (o WebPubSubCustomDomainOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *WebPubSubCustomDomain) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Reference to a resource.
 func (o WebPubSubCustomDomainOutput) CustomCertificate() ResourceReferenceResponseOutput {
 	return o.ApplyT(func(v *WebPubSubCustomDomain) ResourceReferenceResponseOutput { return v.CustomCertificate }).(ResourceReferenceResponseOutput)
@@ -191,7 +196,7 @@ func (o WebPubSubCustomDomainOutput) DomainName() pulumi.StringOutput {
 	return o.ApplyT(func(v *WebPubSubCustomDomain) pulumi.StringOutput { return v.DomainName }).(pulumi.StringOutput)
 }
 
-// The name of the resource.
+// The name of the resource
 func (o WebPubSubCustomDomainOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *WebPubSubCustomDomain) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -201,12 +206,12 @@ func (o WebPubSubCustomDomainOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *WebPubSubCustomDomain) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o WebPubSubCustomDomainOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *WebPubSubCustomDomain) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// The type of the resource - e.g. "Microsoft.SignalRService/SignalR"
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o WebPubSubCustomDomainOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *WebPubSubCustomDomain) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

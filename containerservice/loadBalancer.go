@@ -13,14 +13,14 @@ import (
 )
 
 // The configurations regarding multiple standard load balancers. If not supplied, single load balancer mode will be used. Multiple standard load balancers mode will be used if at lease one configuration is supplied. There has to be a configuration named `kubernetes`.
-// Azure REST API version: 2024-03-02-preview.
-//
-// Other available API versions: 2024-04-02-preview, 2024-05-02-preview, 2024-06-02-preview, 2024-07-02-preview, 2024-09-02-preview.
+// Azure REST API version: 2024-10-02-preview. Prior API version in Azure Native 2.x: 2024-03-02-preview.
 type LoadBalancer struct {
 	pulumi.CustomResourceState
 
 	// Whether to automatically place services on the load balancer. If not supplied, the default value is true. If set to false manually, both of the external and the internal load balancer will not be selected for services unless they explicitly target it.
 	AllowServicePlacement pulumi.BoolPtrOutput `pulumi:"allowServicePlacement"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Nodes that match this selector will be possible members of this load balancer.
@@ -76,6 +76,9 @@ func NewLoadBalancer(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:containerservice/v20240902preview:LoadBalancer"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20241002preview:LoadBalancer"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -194,6 +197,11 @@ func (o LoadBalancerOutput) ToLoadBalancerOutputWithContext(ctx context.Context)
 // Whether to automatically place services on the load balancer. If not supplied, the default value is true. If set to false manually, both of the external and the internal load balancer will not be selected for services unless they explicitly target it.
 func (o LoadBalancerOutput) AllowServicePlacement() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.BoolPtrOutput { return v.AllowServicePlacement }).(pulumi.BoolPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LoadBalancerOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

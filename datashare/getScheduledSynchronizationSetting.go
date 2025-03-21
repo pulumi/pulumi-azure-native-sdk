@@ -36,6 +36,8 @@ type LookupScheduledSynchronizationSettingArgs struct {
 
 // A type of synchronization setting based on schedule
 type LookupScheduledSynchronizationSettingResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Time at which the synchronization setting was created.
 	CreatedAt string `pulumi:"createdAt"`
 	// The resource id of the azure resource
@@ -96,6 +98,11 @@ func (o LookupScheduledSynchronizationSettingResultOutput) ToLookupScheduledSync
 
 func (o LookupScheduledSynchronizationSettingResultOutput) ToLookupScheduledSynchronizationSettingResultOutputWithContext(ctx context.Context) LookupScheduledSynchronizationSettingResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupScheduledSynchronizationSettingResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupScheduledSynchronizationSettingResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Time at which the synchronization setting was created.

@@ -12,9 +12,7 @@ import (
 )
 
 // Implements virtual network GET method.
-// Azure REST API version: 2022-07-15-preview.
-//
-// Other available API versions: 2023-03-01-preview, 2023-10-01, 2023-12-01.
+// Azure REST API version: 2023-12-01.
 func LookupVirtualNetwork(ctx *pulumi.Context, args *LookupVirtualNetworkArgs, opts ...pulumi.InvokeOption) (*LookupVirtualNetworkResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVirtualNetworkResult
@@ -34,6 +32,8 @@ type LookupVirtualNetworkArgs struct {
 
 // Define the virtualNetwork.
 type LookupVirtualNetworkResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets the name of the corresponding resource in Kubernetes.
 	CustomResourceName string `pulumi:"customResourceName"`
 	// Gets or sets the extended location.
@@ -52,7 +52,7 @@ type LookupVirtualNetworkResult struct {
 	MoRefId *string `pulumi:"moRefId"`
 	// Gets or sets the name.
 	Name string `pulumi:"name"`
-	// Gets or sets the provisioning state.
+	// Gets the provisioning state.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// The resource status information.
 	Statuses []ResourceStatusResponse `pulumi:"statuses"`
@@ -103,6 +103,11 @@ func (o LookupVirtualNetworkResultOutput) ToLookupVirtualNetworkResultOutputWith
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupVirtualNetworkResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVirtualNetworkResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Gets the name of the corresponding resource in Kubernetes.
 func (o LookupVirtualNetworkResultOutput) CustomResourceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualNetworkResult) string { return v.CustomResourceName }).(pulumi.StringOutput)
@@ -148,7 +153,7 @@ func (o LookupVirtualNetworkResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualNetworkResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Gets or sets the provisioning state.
+// Gets the provisioning state.
 func (o LookupVirtualNetworkResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualNetworkResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }

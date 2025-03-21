@@ -32,6 +32,8 @@ type LookupRegistrationDefinitionArgs struct {
 
 // The registration definition.
 type LookupRegistrationDefinitionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The fully qualified path of the registration definition.
 	Id string `pulumi:"id"`
 	// The name of the registration definition.
@@ -79,6 +81,11 @@ func (o LookupRegistrationDefinitionResultOutput) ToLookupRegistrationDefinition
 
 func (o LookupRegistrationDefinitionResultOutput) ToLookupRegistrationDefinitionResultOutputWithContext(ctx context.Context) LookupRegistrationDefinitionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupRegistrationDefinitionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegistrationDefinitionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The fully qualified path of the registration definition.

@@ -13,12 +13,12 @@ import (
 )
 
 // The managed private endpoint resource type.
-// Azure REST API version: 2022-10-01-preview.
-//
-// Other available API versions: 2023-09-01, 2023-10-01-preview, 2024-10-01.
+// Azure REST API version: 2024-10-01. Prior API version in Azure Native 2.x: 2022-10-01-preview.
 type ManagedPrivateEndpoint struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The state of managed private endpoint connection.
 	ConnectionState ManagedPrivateEndpointConnectionStateResponseOutput `pulumi:"connectionState"`
 	// The group Ids of the managed private endpoint.
@@ -189,6 +189,11 @@ func (o ManagedPrivateEndpointOutput) ToManagedPrivateEndpointOutput() ManagedPr
 
 func (o ManagedPrivateEndpointOutput) ToManagedPrivateEndpointOutputWithContext(ctx context.Context) ManagedPrivateEndpointOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ManagedPrivateEndpointOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ManagedPrivateEndpoint) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The state of managed private endpoint connection.

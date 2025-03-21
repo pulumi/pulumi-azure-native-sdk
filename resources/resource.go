@@ -13,12 +13,12 @@ import (
 )
 
 // Resource information.
-// Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2019-05-01.
-//
-// Other available API versions: 2023-07-01, 2024-03-01, 2024-07-01, 2024-11-01.
+// Azure REST API version: 2024-03-01. Prior API version in Azure Native 2.x: 2022-09-01.
 type Resource struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Resource extended location.
 	ExtendedLocation ExtendedLocationResponsePtrOutput `pulumi:"extendedLocation"`
 	// The identity of the resource.
@@ -271,6 +271,11 @@ func (o ResourceOutput) ToResourceOutput() ResourceOutput {
 
 func (o ResourceOutput) ToResourceOutputWithContext(ctx context.Context) ResourceOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ResourceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Resource) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource extended location.

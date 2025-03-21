@@ -21,10 +21,22 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "azure-native:monitor:ActionGroup":
+		r = &ActionGroup{}
 	case "azure-native:monitor:AzureMonitorWorkspace":
 		r = &AzureMonitorWorkspace{}
 	case "azure-native:monitor:PipelineGroup":
 		r = &PipelineGroup{}
+	case "azure-native:monitor:PrivateEndpointConnection":
+		r = &PrivateEndpointConnection{}
+	case "azure-native:monitor:PrivateLinkScope":
+		r = &PrivateLinkScope{}
+	case "azure-native:monitor:PrivateLinkScopedResource":
+		r = &PrivateLinkScopedResource{}
+	case "azure-native:monitor:ScheduledQueryRule":
+		r = &ScheduledQueryRule{}
+	case "azure-native:monitor:TenantActionGroup":
+		r = &TenantActionGroup{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

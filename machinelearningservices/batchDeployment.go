@@ -12,12 +12,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Azure REST API version: 2023-04-01. Prior API version in Azure Native 1.x: 2021-03-01-preview.
-//
-// Other available API versions: 2021-03-01-preview, 2022-02-01-preview, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-04-01-preview, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview.
+// Azure REST API version: 2024-10-01. Prior API version in Azure Native 2.x: 2023-04-01.
 type BatchDeployment struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// [Required] Additional attributes of the entity.
 	BatchDeploymentProperties BatchDeploymentResponseOutput `pulumi:"batchDeploymentProperties"`
 	// Managed service identity (system assigned and/or user assigned identities)
@@ -115,6 +115,9 @@ func NewBatchDeployment(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001preview:BatchDeployment"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250101preview:BatchDeployment"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -232,6 +235,11 @@ func (o BatchDeploymentOutput) ToBatchDeploymentOutput() BatchDeploymentOutput {
 
 func (o BatchDeploymentOutput) ToBatchDeploymentOutputWithContext(ctx context.Context) BatchDeploymentOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o BatchDeploymentOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *BatchDeployment) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // [Required] Additional attributes of the entity.

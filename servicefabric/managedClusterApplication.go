@@ -13,12 +13,12 @@ import (
 )
 
 // The application resource.
-// Azure REST API version: 2023-03-01-preview.
-//
-// Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01-preview, 2024-02-01-preview, 2024-04-01, 2024-06-01-preview, 2024-09-01-preview, 2024-11-01-preview.
+// Azure REST API version: 2024-04-01. Prior API version in Azure Native 2.x: 2023-03-01-preview.
 type ManagedClusterApplication struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Describes the managed identities for an Azure resource.
 	Identity ManagedIdentityResponsePtrOutput `pulumi:"identity"`
 	// Resource location depends on the parent resource.
@@ -239,6 +239,11 @@ func (o ManagedClusterApplicationOutput) ToManagedClusterApplicationOutput() Man
 
 func (o ManagedClusterApplicationOutput) ToManagedClusterApplicationOutputWithContext(ctx context.Context) ManagedClusterApplicationOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ManagedClusterApplicationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ManagedClusterApplication) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Describes the managed identities for an Azure resource.

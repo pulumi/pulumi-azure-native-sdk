@@ -13,9 +13,7 @@ import (
 )
 
 // Database, Server or Elastic Pool Advisor.
-// Azure REST API version: 2021-11-01. Prior API version in Azure Native 1.x: 2020-11-01-preview.
-//
-// Other available API versions: 2014-04-01, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
+// Azure REST API version: 2021-11-01. Prior API version in Azure Native 2.x: 2021-11-01.
 type ServerAdvisor struct {
 	pulumi.CustomResourceState
 
@@ -25,6 +23,8 @@ type ServerAdvisor struct {
 	AutoExecuteStatus pulumi.StringOutput `pulumi:"autoExecuteStatus"`
 	// Gets the resource from which current value of auto-execute status is inherited. Auto-execute status can be set on (and inherited from) different levels in the resource hierarchy. Possible values are 'Subscription', 'Server', 'ElasticPool', 'Database' and 'Default' (when status is not explicitly set on any level).
 	AutoExecuteStatusInheritedFrom pulumi.StringOutput `pulumi:"autoExecuteStatusInheritedFrom"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Resource kind.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// Gets the time when the current resource was analyzed for recommendations by this advisor.
@@ -219,6 +219,11 @@ func (o ServerAdvisorOutput) AutoExecuteStatus() pulumi.StringOutput {
 // Gets the resource from which current value of auto-execute status is inherited. Auto-execute status can be set on (and inherited from) different levels in the resource hierarchy. Possible values are 'Subscription', 'Server', 'ElasticPool', 'Database' and 'Default' (when status is not explicitly set on any level).
 func (o ServerAdvisorOutput) AutoExecuteStatusInheritedFrom() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerAdvisor) pulumi.StringOutput { return v.AutoExecuteStatusInheritedFrom }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o ServerAdvisorOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerAdvisor) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource kind.

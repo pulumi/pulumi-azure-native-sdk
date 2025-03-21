@@ -13,12 +13,12 @@ import (
 )
 
 // Channel info.
-// Azure REST API version: 2022-06-15. Prior API version in Azure Native 1.x: 2021-10-15-preview.
-//
-// Other available API versions: 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-02-15.
+// Azure REST API version: 2025-02-15. Prior API version in Azure Native 2.x: 2022-06-15.
 type Channel struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The type of the event channel which represents the direction flow of events.
 	ChannelType pulumi.StringPtrOutput `pulumi:"channelType"`
 	// Expiration time of the channel. If this timer expires while the corresponding partner topic is never activated,
@@ -34,7 +34,7 @@ type Channel struct {
 	ProvisioningState pulumi.StringPtrOutput `pulumi:"provisioningState"`
 	// The readiness state of the corresponding partner topic.
 	ReadinessState pulumi.StringPtrOutput `pulumi:"readinessState"`
-	// The system metadata relating to Channel resource.
+	// The system metadata relating to the Event Grid resource.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Type of the resource.
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -191,6 +191,11 @@ func (o ChannelOutput) ToChannelOutputWithContext(ctx context.Context) ChannelOu
 	return o
 }
 
+// The Azure API version of the resource.
+func (o ChannelOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Channel) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The type of the event channel which represents the direction flow of events.
 func (o ChannelOutput) ChannelType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Channel) pulumi.StringPtrOutput { return v.ChannelType }).(pulumi.StringPtrOutput)
@@ -227,7 +232,7 @@ func (o ChannelOutput) ReadinessState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Channel) pulumi.StringPtrOutput { return v.ReadinessState }).(pulumi.StringPtrOutput)
 }
 
-// The system metadata relating to Channel resource.
+// The system metadata relating to the Event Grid resource.
 func (o ChannelOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *Channel) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

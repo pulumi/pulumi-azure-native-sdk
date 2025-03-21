@@ -12,9 +12,7 @@ import (
 )
 
 // Get a VmwareSite
-// Azure REST API version: 2023-06-06.
-//
-// Other available API versions: 2023-10-01-preview, 2024-05-01-preview.
+// Azure REST API version: 2023-10-01-preview.
 func LookupSitesController(ctx *pulumi.Context, args *LookupSitesControllerArgs, opts ...pulumi.InvokeOption) (*LookupSitesControllerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSitesControllerResult
@@ -38,6 +36,8 @@ type LookupSitesControllerResult struct {
 	AgentDetails *SiteAgentPropertiesResponse `pulumi:"agentDetails"`
 	// Gets or sets the Appliance Name.
 	ApplianceName *string `pulumi:"applianceName"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets or sets the ARM ID of migration hub solution for SDS.
 	DiscoverySolutionId *string `pulumi:"discoverySolutionId"`
 	// If eTag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
@@ -109,6 +109,11 @@ func (o LookupSitesControllerResultOutput) AgentDetails() SiteAgentPropertiesRes
 // Gets or sets the Appliance Name.
 func (o LookupSitesControllerResultOutput) ApplianceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSitesControllerResult) *string { return v.ApplianceName }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupSitesControllerResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSitesControllerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets the ARM ID of migration hub solution for SDS.

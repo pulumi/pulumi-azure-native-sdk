@@ -13,12 +13,12 @@ import (
 )
 
 // Authorization access policy contract.
-// Azure REST API version: 2022-08-01.
-//
-// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
+// Azure REST API version: 2022-09-01-preview. Prior API version in Azure Native 2.x: 2022-08-01.
 type AuthorizationAccessPolicy struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The Object Id
@@ -177,6 +177,11 @@ func (o AuthorizationAccessPolicyOutput) ToAuthorizationAccessPolicyOutput() Aut
 
 func (o AuthorizationAccessPolicyOutput) ToAuthorizationAccessPolicyOutputWithContext(ctx context.Context) AuthorizationAccessPolicyOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o AuthorizationAccessPolicyOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthorizationAccessPolicy) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

@@ -12,9 +12,7 @@ import (
 )
 
 // Gets a SQL virtual machine group.
-// Azure REST API version: 2022-02-01.
-//
-// Other available API versions: 2023-01-01-preview, 2023-10-01.
+// Azure REST API version: 2023-10-01.
 func LookupSqlVirtualMachineGroup(ctx *pulumi.Context, args *LookupSqlVirtualMachineGroupArgs, opts ...pulumi.InvokeOption) (*LookupSqlVirtualMachineGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSqlVirtualMachineGroupResult
@@ -34,6 +32,8 @@ type LookupSqlVirtualMachineGroupArgs struct {
 
 // A SQL virtual machine group.
 type LookupSqlVirtualMachineGroupResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Cluster type.
 	ClusterConfiguration string `pulumi:"clusterConfiguration"`
 	// Type of cluster manager: Windows Server Failover Cluster (WSFC), implied by the scale type of the group and the OS type.
@@ -95,6 +95,11 @@ func (o LookupSqlVirtualMachineGroupResultOutput) ToLookupSqlVirtualMachineGroup
 
 func (o LookupSqlVirtualMachineGroupResultOutput) ToLookupSqlVirtualMachineGroupResultOutputWithContext(ctx context.Context) LookupSqlVirtualMachineGroupResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupSqlVirtualMachineGroupResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSqlVirtualMachineGroupResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Cluster type.

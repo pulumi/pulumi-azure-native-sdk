@@ -13,9 +13,7 @@ import (
 )
 
 // Describes a license profile in a hybrid machine.
-// Azure REST API version: 2023-06-20-preview.
-//
-// Other available API versions: 2023-10-03-preview, 2024-03-31-preview, 2024-05-20-preview, 2024-07-10, 2024-07-31-preview, 2024-09-10-preview, 2024-11-10-preview.
+// Azure REST API version: 2024-07-10. Prior API version in Azure Native 2.x: 2023-06-20-preview.
 type LicenseProfile struct {
 	pulumi.CustomResourceState
 
@@ -23,6 +21,18 @@ type LicenseProfile struct {
 	AssignedLicense pulumi.StringPtrOutput `pulumi:"assignedLicense"`
 	// The guid id of the license.
 	AssignedLicenseImmutableId pulumi.StringOutput `pulumi:"assignedLicenseImmutableId"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// The timestamp in UTC when the billing ends.
+	BillingEndDate pulumi.StringOutput `pulumi:"billingEndDate"`
+	// The timestamp in UTC when the billing starts.
+	BillingStartDate pulumi.StringOutput `pulumi:"billingStartDate"`
+	// The timestamp in UTC when the user disenrolled the feature.
+	DisenrollmentDate pulumi.StringOutput `pulumi:"disenrollmentDate"`
+	// The timestamp in UTC when the user enrolls the feature.
+	EnrollmentDate pulumi.StringOutput `pulumi:"enrollmentDate"`
+	// The errors that were encountered during the feature enrollment or disenrollment.
+	Error ErrorDetailResponseOutput `pulumi:"error"`
 	// Indicates the eligibility state of Esu.
 	EsuEligibility pulumi.StringOutput `pulumi:"esuEligibility"`
 	// Indicates whether there is an ESU Key currently active for the machine.
@@ -33,10 +43,18 @@ type LicenseProfile struct {
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The list of product features.
+	ProductFeatures ProductFeatureResponseArrayOutput `pulumi:"productFeatures"`
+	// Indicates the product type of the license.
+	ProductType pulumi.StringPtrOutput `pulumi:"productType"`
 	// The provisioning state, which only appears in the response.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// The type of the Esu servers.
 	ServerType pulumi.StringOutput `pulumi:"serverType"`
+	// Specifies if this machine is licensed as part of a Software Assurance agreement.
+	SoftwareAssuranceCustomer pulumi.BoolPtrOutput `pulumi:"softwareAssuranceCustomer"`
+	// Indicates the subscription status of the product.
+	SubscriptionStatus pulumi.StringPtrOutput `pulumi:"subscriptionStatus"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
@@ -83,6 +101,9 @@ func NewLicenseProfile(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:hybridcompute/v20241110preview:LicenseProfile"),
 		},
+		{
+			Type: pulumi.String("azure-native:hybridcompute/v20250113:LicenseProfile"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -126,8 +147,16 @@ type licenseProfileArgs struct {
 	Location *string `pulumi:"location"`
 	// The name of the hybrid machine.
 	MachineName string `pulumi:"machineName"`
+	// The list of product features.
+	ProductFeatures []ProductFeature `pulumi:"productFeatures"`
+	// Indicates the product type of the license.
+	ProductType *string `pulumi:"productType"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Specifies if this machine is licensed as part of a Software Assurance agreement.
+	SoftwareAssuranceCustomer *bool `pulumi:"softwareAssuranceCustomer"`
+	// Indicates the subscription status of the product.
+	SubscriptionStatus *string `pulumi:"subscriptionStatus"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 }
@@ -142,8 +171,16 @@ type LicenseProfileArgs struct {
 	Location pulumi.StringPtrInput
 	// The name of the hybrid machine.
 	MachineName pulumi.StringInput
+	// The list of product features.
+	ProductFeatures ProductFeatureArrayInput
+	// Indicates the product type of the license.
+	ProductType pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
+	// Specifies if this machine is licensed as part of a Software Assurance agreement.
+	SoftwareAssuranceCustomer pulumi.BoolPtrInput
+	// Indicates the subscription status of the product.
+	SubscriptionStatus pulumi.StringPtrInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
 }
@@ -195,6 +232,36 @@ func (o LicenseProfileOutput) AssignedLicenseImmutableId() pulumi.StringOutput {
 	return o.ApplyT(func(v *LicenseProfile) pulumi.StringOutput { return v.AssignedLicenseImmutableId }).(pulumi.StringOutput)
 }
 
+// The Azure API version of the resource.
+func (o LicenseProfileOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *LicenseProfile) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// The timestamp in UTC when the billing ends.
+func (o LicenseProfileOutput) BillingEndDate() pulumi.StringOutput {
+	return o.ApplyT(func(v *LicenseProfile) pulumi.StringOutput { return v.BillingEndDate }).(pulumi.StringOutput)
+}
+
+// The timestamp in UTC when the billing starts.
+func (o LicenseProfileOutput) BillingStartDate() pulumi.StringOutput {
+	return o.ApplyT(func(v *LicenseProfile) pulumi.StringOutput { return v.BillingStartDate }).(pulumi.StringOutput)
+}
+
+// The timestamp in UTC when the user disenrolled the feature.
+func (o LicenseProfileOutput) DisenrollmentDate() pulumi.StringOutput {
+	return o.ApplyT(func(v *LicenseProfile) pulumi.StringOutput { return v.DisenrollmentDate }).(pulumi.StringOutput)
+}
+
+// The timestamp in UTC when the user enrolls the feature.
+func (o LicenseProfileOutput) EnrollmentDate() pulumi.StringOutput {
+	return o.ApplyT(func(v *LicenseProfile) pulumi.StringOutput { return v.EnrollmentDate }).(pulumi.StringOutput)
+}
+
+// The errors that were encountered during the feature enrollment or disenrollment.
+func (o LicenseProfileOutput) Error() ErrorDetailResponseOutput {
+	return o.ApplyT(func(v *LicenseProfile) ErrorDetailResponseOutput { return v.Error }).(ErrorDetailResponseOutput)
+}
+
 // Indicates the eligibility state of Esu.
 func (o LicenseProfileOutput) EsuEligibility() pulumi.StringOutput {
 	return o.ApplyT(func(v *LicenseProfile) pulumi.StringOutput { return v.EsuEligibility }).(pulumi.StringOutput)
@@ -220,6 +287,16 @@ func (o LicenseProfileOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *LicenseProfile) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// The list of product features.
+func (o LicenseProfileOutput) ProductFeatures() ProductFeatureResponseArrayOutput {
+	return o.ApplyT(func(v *LicenseProfile) ProductFeatureResponseArrayOutput { return v.ProductFeatures }).(ProductFeatureResponseArrayOutput)
+}
+
+// Indicates the product type of the license.
+func (o LicenseProfileOutput) ProductType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LicenseProfile) pulumi.StringPtrOutput { return v.ProductType }).(pulumi.StringPtrOutput)
+}
+
 // The provisioning state, which only appears in the response.
 func (o LicenseProfileOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *LicenseProfile) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
@@ -228,6 +305,16 @@ func (o LicenseProfileOutput) ProvisioningState() pulumi.StringOutput {
 // The type of the Esu servers.
 func (o LicenseProfileOutput) ServerType() pulumi.StringOutput {
 	return o.ApplyT(func(v *LicenseProfile) pulumi.StringOutput { return v.ServerType }).(pulumi.StringOutput)
+}
+
+// Specifies if this machine is licensed as part of a Software Assurance agreement.
+func (o LicenseProfileOutput) SoftwareAssuranceCustomer() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *LicenseProfile) pulumi.BoolPtrOutput { return v.SoftwareAssuranceCustomer }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates the subscription status of the product.
+func (o LicenseProfileOutput) SubscriptionStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LicenseProfile) pulumi.StringPtrOutput { return v.SubscriptionStatus }).(pulumi.StringPtrOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

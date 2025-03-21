@@ -12,9 +12,7 @@ import (
 )
 
 // Response for POST requests that return single SharedAccessAuthorizationRule.
-// Azure REST API version: 2023-01-01-preview.
-//
-// Other available API versions: 2017-04-01, 2023-09-01, 2023-10-01-preview.
+// Azure REST API version: 2023-10-01-preview.
 func LookupNamespaceAuthorizationRule(ctx *pulumi.Context, args *LookupNamespaceAuthorizationRuleArgs, opts ...pulumi.InvokeOption) (*LookupNamespaceAuthorizationRuleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNamespaceAuthorizationRuleResult
@@ -36,14 +34,34 @@ type LookupNamespaceAuthorizationRuleArgs struct {
 
 // Response for POST requests that return single SharedAccessAuthorizationRule.
 type LookupNamespaceAuthorizationRuleResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// Gets a string that describes the claim type
+	ClaimType string `pulumi:"claimType"`
+	// Gets a string that describes the claim value
+	ClaimValue string `pulumi:"claimValue"`
+	// Gets the created time for this rule
+	CreatedTime string `pulumi:"createdTime"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
+	// Gets a string that describes the authorization rule.
+	KeyName string `pulumi:"keyName"`
 	// Deprecated - only for compatibility.
 	Location *string `pulumi:"location"`
+	// Gets the last modified time for this rule
+	ModifiedTime string `pulumi:"modifiedTime"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// SharedAccessAuthorizationRule properties.
-	Properties SharedAccessAuthorizationRulePropertiesResponse `pulumi:"properties"`
+	// Gets a base64-encoded 256-bit primary key for signing and
+	// validating the SAS token.
+	PrimaryKey *string `pulumi:"primaryKey"`
+	// Gets the revision number for the rule
+	Revision int `pulumi:"revision"`
+	// Gets or sets the rights associated with the rule.
+	Rights []string `pulumi:"rights"`
+	// Gets a base64-encoded 256-bit primary key for signing and
+	// validating the SAS token.
+	SecondaryKey *string `pulumi:"secondaryKey"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Deprecated - only for compatibility.
@@ -89,9 +107,34 @@ func (o LookupNamespaceAuthorizationRuleResultOutput) ToLookupNamespaceAuthoriza
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupNamespaceAuthorizationRuleResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNamespaceAuthorizationRuleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Gets a string that describes the claim type
+func (o LookupNamespaceAuthorizationRuleResultOutput) ClaimType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNamespaceAuthorizationRuleResult) string { return v.ClaimType }).(pulumi.StringOutput)
+}
+
+// Gets a string that describes the claim value
+func (o LookupNamespaceAuthorizationRuleResultOutput) ClaimValue() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNamespaceAuthorizationRuleResult) string { return v.ClaimValue }).(pulumi.StringOutput)
+}
+
+// Gets the created time for this rule
+func (o LookupNamespaceAuthorizationRuleResultOutput) CreatedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNamespaceAuthorizationRuleResult) string { return v.CreatedTime }).(pulumi.StringOutput)
+}
+
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupNamespaceAuthorizationRuleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamespaceAuthorizationRuleResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Gets a string that describes the authorization rule.
+func (o LookupNamespaceAuthorizationRuleResultOutput) KeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNamespaceAuthorizationRuleResult) string { return v.KeyName }).(pulumi.StringOutput)
 }
 
 // Deprecated - only for compatibility.
@@ -99,16 +142,36 @@ func (o LookupNamespaceAuthorizationRuleResultOutput) Location() pulumi.StringPt
 	return o.ApplyT(func(v LookupNamespaceAuthorizationRuleResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// Gets the last modified time for this rule
+func (o LookupNamespaceAuthorizationRuleResultOutput) ModifiedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNamespaceAuthorizationRuleResult) string { return v.ModifiedTime }).(pulumi.StringOutput)
+}
+
 // The name of the resource
 func (o LookupNamespaceAuthorizationRuleResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamespaceAuthorizationRuleResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// SharedAccessAuthorizationRule properties.
-func (o LookupNamespaceAuthorizationRuleResultOutput) Properties() SharedAccessAuthorizationRulePropertiesResponseOutput {
-	return o.ApplyT(func(v LookupNamespaceAuthorizationRuleResult) SharedAccessAuthorizationRulePropertiesResponse {
-		return v.Properties
-	}).(SharedAccessAuthorizationRulePropertiesResponseOutput)
+// Gets a base64-encoded 256-bit primary key for signing and
+// validating the SAS token.
+func (o LookupNamespaceAuthorizationRuleResultOutput) PrimaryKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupNamespaceAuthorizationRuleResult) *string { return v.PrimaryKey }).(pulumi.StringPtrOutput)
+}
+
+// Gets the revision number for the rule
+func (o LookupNamespaceAuthorizationRuleResultOutput) Revision() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupNamespaceAuthorizationRuleResult) int { return v.Revision }).(pulumi.IntOutput)
+}
+
+// Gets or sets the rights associated with the rule.
+func (o LookupNamespaceAuthorizationRuleResultOutput) Rights() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupNamespaceAuthorizationRuleResult) []string { return v.Rights }).(pulumi.StringArrayOutput)
+}
+
+// Gets a base64-encoded 256-bit primary key for signing and
+// validating the SAS token.
+func (o LookupNamespaceAuthorizationRuleResultOutput) SecondaryKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupNamespaceAuthorizationRuleResult) *string { return v.SecondaryKey }).(pulumi.StringPtrOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

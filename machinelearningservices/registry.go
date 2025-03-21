@@ -12,12 +12,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Azure REST API version: 2023-04-01.
-//
-// Other available API versions: 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-04-01-preview, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview.
+// Azure REST API version: 2024-10-01. Prior API version in Azure Native 2.x: 2023-04-01.
 type Registry struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Managed service identity (system assigned and/or user assigned identities)
 	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
@@ -93,6 +93,9 @@ func NewRegistry(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001preview:Registry"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250101preview:Registry"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -202,6 +205,11 @@ func (o RegistryOutput) ToRegistryOutput() RegistryOutput {
 
 func (o RegistryOutput) ToRegistryOutputWithContext(ctx context.Context) RegistryOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o RegistryOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Registry) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Managed service identity (system assigned and/or user assigned identities)

@@ -13,12 +13,12 @@ import (
 )
 
 // Azure Resource Manager resource envelope.
-// Azure REST API version: 2023-04-01.
-//
-// Other available API versions: 2022-02-01-preview, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-04-01-preview, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview.
+// Azure REST API version: 2024-10-01. Prior API version in Azure Native 2.x: 2023-04-01.
 type EnvironmentVersion struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// [Required] Additional attributes of the entity.
 	EnvironmentVersionProperties EnvironmentVersionResponseOutput `pulumi:"environmentVersionProperties"`
 	// The name of the resource
@@ -50,6 +50,9 @@ func NewEnvironmentVersion(ctx *pulumi.Context,
 	}
 	args.EnvironmentVersionProperties = args.EnvironmentVersionProperties.ToEnvironmentVersionTypeOutput().ApplyT(func(v EnvironmentVersionType) EnvironmentVersionType { return *v.Defaults() }).(EnvironmentVersionTypeOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20210301preview:EnvironmentSpecificationVersion"),
+		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20210301preview:EnvironmentVersion"),
 		},
@@ -106,6 +109,12 @@ func NewEnvironmentVersion(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001preview:EnvironmentVersion"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250101preview:EnvironmentVersion"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices:EnvironmentSpecificationVersion"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -203,6 +212,11 @@ func (o EnvironmentVersionOutput) ToEnvironmentVersionOutput() EnvironmentVersio
 
 func (o EnvironmentVersionOutput) ToEnvironmentVersionOutputWithContext(ctx context.Context) EnvironmentVersionOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o EnvironmentVersionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *EnvironmentVersion) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // [Required] Additional attributes of the entity.

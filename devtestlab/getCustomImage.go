@@ -38,6 +38,8 @@ type LookupCustomImageArgs struct {
 type LookupCustomImageResult struct {
 	// The author of the custom image.
 	Author *string `pulumi:"author"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The creation date of the custom image.
 	CreationDate string `pulumi:"creationDate"`
 	// Storage information about the plan related to this custom image
@@ -114,6 +116,11 @@ func (o LookupCustomImageResultOutput) ToLookupCustomImageResultOutputWithContex
 // The author of the custom image.
 func (o LookupCustomImageResultOutput) Author() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupCustomImageResult) *string { return v.Author }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupCustomImageResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCustomImageResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The creation date of the custom image.

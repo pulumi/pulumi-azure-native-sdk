@@ -34,6 +34,8 @@ type LookupServiceArgs struct {
 type LookupServiceResult struct {
 	// Windows IoT Device Service OEM AAD domain
 	AdminDomainName *string `pulumi:"adminDomainName"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Windows IoT Device Service ODM AAD domain
 	BillingDomainName *string `pulumi:"billingDomainName"`
 	// The Etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal ETag convention.
@@ -94,6 +96,11 @@ func (o LookupServiceResultOutput) ToLookupServiceResultOutputWithContext(ctx co
 // Windows IoT Device Service OEM AAD domain
 func (o LookupServiceResultOutput) AdminDomainName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServiceResult) *string { return v.AdminDomainName }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupServiceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Windows IoT Device Service ODM AAD domain

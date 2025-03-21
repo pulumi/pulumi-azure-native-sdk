@@ -13,12 +13,12 @@ import (
 )
 
 // A job agent private endpoint.
-// Azure REST API version: 2023-05-01-preview.
-//
-// Other available API versions: 2023-08-01-preview, 2024-05-01-preview.
+// Azure REST API version: 2024-05-01-preview. Prior API version in Azure Native 2.x: 2023-05-01-preview.
 type JobPrivateEndpoint struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Resource name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Private endpoint id of the private endpoint.
@@ -154,6 +154,11 @@ func (o JobPrivateEndpointOutput) ToJobPrivateEndpointOutput() JobPrivateEndpoin
 
 func (o JobPrivateEndpointOutput) ToJobPrivateEndpointOutputWithContext(ctx context.Context) JobPrivateEndpointOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o JobPrivateEndpointOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *JobPrivateEndpoint) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource name.

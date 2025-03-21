@@ -13,8 +13,6 @@ import (
 
 // Gets a workload group
 // Azure REST API version: 2021-11-01.
-//
-// Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
 func LookupWorkloadGroup(ctx *pulumi.Context, args *LookupWorkloadGroupArgs, opts ...pulumi.InvokeOption) (*LookupWorkloadGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkloadGroupResult
@@ -38,6 +36,8 @@ type LookupWorkloadGroupArgs struct {
 
 // Workload group operations for a data warehouse
 type LookupWorkloadGroupResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource ID.
 	Id string `pulumi:"id"`
 	// The workload group importance level.
@@ -95,6 +95,11 @@ func (o LookupWorkloadGroupResultOutput) ToLookupWorkloadGroupResultOutput() Loo
 
 func (o LookupWorkloadGroupResultOutput) ToLookupWorkloadGroupResultOutputWithContext(ctx context.Context) LookupWorkloadGroupResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupWorkloadGroupResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkloadGroupResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource ID.

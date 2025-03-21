@@ -12,7 +12,7 @@ import (
 )
 
 // Get a springbootsites resource.
-// Azure REST API version: 2023-01-01-preview.
+// Azure REST API version: 2024-04-01-preview.
 func LookupSpringbootsite(ctx *pulumi.Context, args *LookupSpringbootsiteArgs, opts ...pulumi.InvokeOption) (*LookupSpringbootsiteResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSpringbootsiteResult
@@ -32,6 +32,8 @@ type LookupSpringbootsiteArgs struct {
 
 // The springbootsites envelope resource definition.
 type LookupSpringbootsiteResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The extended location definition.
 	ExtendedLocation *SpringbootsitesModelResponseExtendedLocation `pulumi:"extendedLocation"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -83,6 +85,11 @@ func (o LookupSpringbootsiteResultOutput) ToLookupSpringbootsiteResultOutput() L
 
 func (o LookupSpringbootsiteResultOutput) ToLookupSpringbootsiteResultOutputWithContext(ctx context.Context) LookupSpringbootsiteResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupSpringbootsiteResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSpringbootsiteResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The extended location definition.

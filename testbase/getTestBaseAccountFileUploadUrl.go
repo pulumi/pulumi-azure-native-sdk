@@ -12,9 +12,7 @@ import (
 )
 
 // Gets the file upload URL of a Test Base Account.
-// Azure REST API version: 2022-04-01-preview.
-//
-// Other available API versions: 2023-11-01-preview.
+// Azure REST API version: 2023-11-01-preview.
 func GetTestBaseAccountFileUploadUrl(ctx *pulumi.Context, args *GetTestBaseAccountFileUploadUrlArgs, opts ...pulumi.InvokeOption) (*GetTestBaseAccountFileUploadUrlResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetTestBaseAccountFileUploadUrlResult
@@ -28,8 +26,10 @@ func GetTestBaseAccountFileUploadUrl(ctx *pulumi.Context, args *GetTestBaseAccou
 type GetTestBaseAccountFileUploadUrlArgs struct {
 	// The custom file name of the uploaded blob.
 	BlobName *string `pulumi:"blobName"`
-	// The name of the resource group that contains the resource.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Resource type for file uploading.
+	ResourceType *string `pulumi:"resourceType"`
 	// The resource name of the Test Base Account.
 	TestBaseAccountName string `pulumi:"testBaseAccountName"`
 }
@@ -54,8 +54,10 @@ func GetTestBaseAccountFileUploadUrlOutput(ctx *pulumi.Context, args GetTestBase
 type GetTestBaseAccountFileUploadUrlOutputArgs struct {
 	// The custom file name of the uploaded blob.
 	BlobName pulumi.StringPtrInput `pulumi:"blobName"`
-	// The name of the resource group that contains the resource.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Resource type for file uploading.
+	ResourceType pulumi.StringPtrInput `pulumi:"resourceType"`
 	// The resource name of the Test Base Account.
 	TestBaseAccountName pulumi.StringInput `pulumi:"testBaseAccountName"`
 }

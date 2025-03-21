@@ -13,12 +13,12 @@ import (
 )
 
 // The remediation definition.
-// Azure REST API version: 2021-10-01. Prior API version in Azure Native 1.x: 2019-07-01.
-//
-// Other available API versions: 2024-10-01.
+// Azure REST API version: 2024-10-01. Prior API version in Azure Native 2.x: 2021-10-01.
 type RemediationAtResourceGroup struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The remediation correlation Id. Can be used to find events related to the remediation in the activity log.
 	CorrelationId pulumi.StringOutput `pulumi:"correlationId"`
 	// The time at which the remediation was created.
@@ -188,6 +188,11 @@ func (o RemediationAtResourceGroupOutput) ToRemediationAtResourceGroupOutput() R
 
 func (o RemediationAtResourceGroupOutput) ToRemediationAtResourceGroupOutputWithContext(ctx context.Context) RemediationAtResourceGroupOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o RemediationAtResourceGroupOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *RemediationAtResourceGroup) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The remediation correlation Id. Can be used to find events related to the remediation in the activity log.

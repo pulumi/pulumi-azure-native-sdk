@@ -32,6 +32,8 @@ type LookupSecurityOperatorArgs struct {
 
 // Security operator under a given subscription and pricing
 type LookupSecurityOperatorResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource Id
 	Id string `pulumi:"id"`
 	// Identity for the resource.
@@ -75,6 +77,11 @@ func (o LookupSecurityOperatorResultOutput) ToLookupSecurityOperatorResultOutput
 
 func (o LookupSecurityOperatorResultOutput) ToLookupSecurityOperatorResultOutputWithContext(ctx context.Context) LookupSecurityOperatorResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupSecurityOperatorResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecurityOperatorResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource Id

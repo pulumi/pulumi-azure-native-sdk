@@ -13,12 +13,14 @@ import (
 )
 
 // A long term retention policy.
-// Azure REST API version: 2022-11-01-preview.
-//
-// Other available API versions: 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
+// Azure REST API version: 2024-05-01-preview. Prior API version in Azure Native 2.x: 2022-11-01-preview.
 type ManagedInstanceLongTermRetentionPolicy struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// The BackupStorageAccessTier for the LTR backups
+	BackupStorageAccessTier pulumi.StringPtrOutput `pulumi:"backupStorageAccessTier"`
 	// The monthly retention policy for an LTR backup in an ISO 8601 format.
 	MonthlyRetention pulumi.StringPtrOutput `pulumi:"monthlyRetention"`
 	// Resource name.
@@ -106,6 +108,8 @@ func (ManagedInstanceLongTermRetentionPolicyState) ElementType() reflect.Type {
 }
 
 type managedInstanceLongTermRetentionPolicyArgs struct {
+	// The BackupStorageAccessTier for the LTR backups
+	BackupStorageAccessTier *string `pulumi:"backupStorageAccessTier"`
 	// The name of the database.
 	DatabaseName string `pulumi:"databaseName"`
 	// The name of the managed instance.
@@ -126,6 +130,8 @@ type managedInstanceLongTermRetentionPolicyArgs struct {
 
 // The set of arguments for constructing a ManagedInstanceLongTermRetentionPolicy resource.
 type ManagedInstanceLongTermRetentionPolicyArgs struct {
+	// The BackupStorageAccessTier for the LTR backups
+	BackupStorageAccessTier pulumi.StringPtrInput
 	// The name of the database.
 	DatabaseName pulumi.StringInput
 	// The name of the managed instance.
@@ -179,6 +185,18 @@ func (o ManagedInstanceLongTermRetentionPolicyOutput) ToManagedInstanceLongTermR
 
 func (o ManagedInstanceLongTermRetentionPolicyOutput) ToManagedInstanceLongTermRetentionPolicyOutputWithContext(ctx context.Context) ManagedInstanceLongTermRetentionPolicyOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ManagedInstanceLongTermRetentionPolicyOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ManagedInstanceLongTermRetentionPolicy) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// The BackupStorageAccessTier for the LTR backups
+func (o ManagedInstanceLongTermRetentionPolicyOutput) BackupStorageAccessTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedInstanceLongTermRetentionPolicy) pulumi.StringPtrOutput {
+		return v.BackupStorageAccessTier
+	}).(pulumi.StringPtrOutput)
 }
 
 // The monthly retention policy for an LTR backup in an ISO 8601 format.

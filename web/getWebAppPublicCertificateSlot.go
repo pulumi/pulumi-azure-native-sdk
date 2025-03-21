@@ -12,9 +12,7 @@ import (
 )
 
 // Description for Get the named public certificate for an app (or deployment slot, if specified).
-// Azure REST API version: 2022-09-01.
-//
-// Other available API versions: 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
+// Azure REST API version: 2024-04-01.
 func LookupWebAppPublicCertificateSlot(ctx *pulumi.Context, args *LookupWebAppPublicCertificateSlotArgs, opts ...pulumi.InvokeOption) (*LookupWebAppPublicCertificateSlotResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebAppPublicCertificateSlotResult
@@ -38,6 +36,8 @@ type LookupWebAppPublicCertificateSlotArgs struct {
 
 // Public certificate object
 type LookupWebAppPublicCertificateSlotResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Public Certificate byte array
 	Blob *string `pulumi:"blob"`
 	// Resource Id.
@@ -91,6 +91,11 @@ func (o LookupWebAppPublicCertificateSlotResultOutput) ToLookupWebAppPublicCerti
 
 func (o LookupWebAppPublicCertificateSlotResultOutput) ToLookupWebAppPublicCertificateSlotResultOutputWithContext(ctx context.Context) LookupWebAppPublicCertificateSlotResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupWebAppPublicCertificateSlotResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWebAppPublicCertificateSlotResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Public Certificate byte array

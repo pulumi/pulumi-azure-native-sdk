@@ -12,9 +12,7 @@ import (
 )
 
 // Gets the properties of the Data Box Edge/Data Box Gateway device.
-// Azure REST API version: 2022-03-01.
-//
-// Other available API versions: 2021-02-01, 2021-02-01-preview, 2022-04-01-preview, 2023-01-01-preview, 2023-07-01, 2023-12-01.
+// Azure REST API version: 2023-07-01.
 func LookupDevice(ctx *pulumi.Context, args *LookupDeviceArgs, opts ...pulumi.InvokeOption) (*LookupDeviceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDeviceResult
@@ -34,6 +32,8 @@ type LookupDeviceArgs struct {
 
 // The Data Box Edge/Gateway device.
 type LookupDeviceResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Type of compute roles configured.
 	ConfiguredRoleTypes []string `pulumi:"configuredRoleTypes"`
 	// The Data Box Edge/Gateway device culture.
@@ -66,6 +66,8 @@ type LookupDeviceResult struct {
 	Identity *ResourceIdentityResponse `pulumi:"identity"`
 	// The kind of the device.
 	Kind string `pulumi:"kind"`
+	// Kubernetes Workload Profile
+	KubernetesWorkloadProfile string `pulumi:"kubernetesWorkloadProfile"`
 	// The location of the device. This is a supported and registered Azure geographical region (for example, West US, East US, or Southeast Asia). The geographical region of a device cannot be changed once it is created, but if an identical geographical region is specified on update, the request will succeed.
 	Location string `pulumi:"location"`
 	// The description of the Data Box Edge/Gateway device model.
@@ -123,6 +125,11 @@ func (o LookupDeviceResultOutput) ToLookupDeviceResultOutput() LookupDeviceResul
 
 func (o LookupDeviceResultOutput) ToLookupDeviceResultOutputWithContext(ctx context.Context) LookupDeviceResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupDeviceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDeviceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Type of compute roles configured.
@@ -203,6 +210,11 @@ func (o LookupDeviceResultOutput) Identity() ResourceIdentityResponsePtrOutput {
 // The kind of the device.
 func (o LookupDeviceResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeviceResult) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// Kubernetes Workload Profile
+func (o LookupDeviceResultOutput) KubernetesWorkloadProfile() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDeviceResult) string { return v.KubernetesWorkloadProfile }).(pulumi.StringOutput)
 }
 
 // The location of the device. This is a supported and registered Azure geographical region (for example, West US, East US, or Southeast Asia). The geographical region of a device cannot be changed once it is created, but if an identical geographical region is specified on update, the request will succeed.

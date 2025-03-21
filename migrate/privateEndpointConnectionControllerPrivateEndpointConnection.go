@@ -13,12 +13,12 @@ import (
 )
 
 // REST model used to encapsulate the user visible state of a PrivateEndpoint.
-// Azure REST API version: 2020-05-01.
-//
-// Other available API versions: 2023-01-01.
+// Azure REST API version: 2020-05-01. Prior API version in Azure Native 2.x: 2020-05-01.
 type PrivateEndpointConnectionControllerPrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets the tag for optimistic concurrency control.
 	ETag pulumi.StringOutput `pulumi:"eTag"`
 	// Gets the name of the resource.
@@ -147,6 +147,13 @@ func (o PrivateEndpointConnectionControllerPrivateEndpointConnectionOutput) ToPr
 
 func (o PrivateEndpointConnectionControllerPrivateEndpointConnectionOutput) ToPrivateEndpointConnectionControllerPrivateEndpointConnectionOutputWithContext(ctx context.Context) PrivateEndpointConnectionControllerPrivateEndpointConnectionOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o PrivateEndpointConnectionControllerPrivateEndpointConnectionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrivateEndpointConnectionControllerPrivateEndpointConnection) pulumi.StringOutput {
+		return v.AzureApiVersion
+	}).(pulumi.StringOutput)
 }
 
 // Gets the tag for optimistic concurrency control.

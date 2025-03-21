@@ -13,14 +13,14 @@ import (
 )
 
 // Security Rule resource.
-// Azure REST API version: 2024-02-01-preview.
-//
-// Other available API versions: 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-02-01-preview.
+// Azure REST API version: 2025-02-01-preview. Prior API version in Azure Native 2.x: 2024-02-01-preview.
 type SecurityRule struct {
 	pulumi.CustomResourceState
 
 	// The network traffic is allowed or denied.
 	Access pulumi.StringOutput `pulumi:"access"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// A description for this rule. Restricted to 140 chars.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The destination address prefixes. CIDR or destination IP ranges.
@@ -226,6 +226,11 @@ func (o SecurityRuleOutput) ToSecurityRuleOutputWithContext(ctx context.Context)
 // The network traffic is allowed or denied.
 func (o SecurityRuleOutput) Access() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityRule) pulumi.StringOutput { return v.Access }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o SecurityRuleOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecurityRule) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A description for this rule. Restricted to 140 chars.

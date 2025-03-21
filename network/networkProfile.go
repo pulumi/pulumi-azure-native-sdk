@@ -13,12 +13,12 @@ import (
 )
 
 // Network profile resource.
-// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2020-11-01.
-//
-// Other available API versions: 2019-08-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Azure REST API version: 2024-05-01. Prior API version in Azure Native 2.x: 2023-02-01.
 type NetworkProfile struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// List of chid container network interface configurations.
 	ContainerNetworkInterfaceConfigurations ContainerNetworkInterfaceConfigurationResponseArrayOutput `pulumi:"containerNetworkInterfaceConfigurations"`
 	// List of child container network interfaces.
@@ -261,6 +261,11 @@ func (o NetworkProfileOutput) ToNetworkProfileOutput() NetworkProfileOutput {
 
 func (o NetworkProfileOutput) ToNetworkProfileOutputWithContext(ctx context.Context) NetworkProfileOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o NetworkProfileOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkProfile) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // List of chid container network interface configurations.

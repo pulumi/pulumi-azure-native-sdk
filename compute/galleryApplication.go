@@ -13,12 +13,12 @@ import (
 )
 
 // Specifies information about the gallery Application Definition that you want to create or update.
-// Azure REST API version: 2022-03-03. Prior API version in Azure Native 1.x: 2020-09-30.
-//
-// Other available API versions: 2022-08-03, 2023-07-03, 2024-03-03.
+// Azure REST API version: 2024-03-03. Prior API version in Azure Native 2.x: 2022-03-03.
 type GalleryApplication struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// A list of custom actions that can be performed with all of the Gallery Application Versions within this Gallery Application.
 	CustomActions GalleryApplicationCustomActionResponseArrayOutput `pulumi:"customActions"`
 	// The description of this gallery Application Definition resource. This property is updatable.
@@ -35,7 +35,7 @@ type GalleryApplication struct {
 	PrivacyStatementUri pulumi.StringPtrOutput `pulumi:"privacyStatementUri"`
 	// The release note uri.
 	ReleaseNoteUri pulumi.StringPtrOutput `pulumi:"releaseNoteUri"`
-	// This property allows you to specify the supported type of the OS that application is built for. <br><br> Possible values are: <br><br> **Windows** <br><br> **Linux**
+	// This property allows you to specify the supported type of the OS that application is built for. Possible values are: **Windows,** **Linux.**
 	SupportedOSType pulumi.StringOutput `pulumi:"supportedOSType"`
 	// Resource tags
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
@@ -148,7 +148,7 @@ type galleryApplicationArgs struct {
 	ReleaseNoteUri *string `pulumi:"releaseNoteUri"`
 	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// This property allows you to specify the supported type of the OS that application is built for. <br><br> Possible values are: <br><br> **Windows** <br><br> **Linux**
+	// This property allows you to specify the supported type of the OS that application is built for. Possible values are: **Windows,** **Linux.**
 	SupportedOSType OperatingSystemTypes `pulumi:"supportedOSType"`
 	// Resource tags
 	Tags map[string]string `pulumi:"tags"`
@@ -176,7 +176,7 @@ type GalleryApplicationArgs struct {
 	ReleaseNoteUri pulumi.StringPtrInput
 	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput
-	// This property allows you to specify the supported type of the OS that application is built for. <br><br> Possible values are: <br><br> **Windows** <br><br> **Linux**
+	// This property allows you to specify the supported type of the OS that application is built for. Possible values are: **Windows,** **Linux.**
 	SupportedOSType OperatingSystemTypesInput
 	// Resource tags
 	Tags pulumi.StringMapInput
@@ -219,6 +219,11 @@ func (o GalleryApplicationOutput) ToGalleryApplicationOutputWithContext(ctx cont
 	return o
 }
 
+// The Azure API version of the resource.
+func (o GalleryApplicationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *GalleryApplication) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // A list of custom actions that can be performed with all of the Gallery Application Versions within this Gallery Application.
 func (o GalleryApplicationOutput) CustomActions() GalleryApplicationCustomActionResponseArrayOutput {
 	return o.ApplyT(func(v *GalleryApplication) GalleryApplicationCustomActionResponseArrayOutput { return v.CustomActions }).(GalleryApplicationCustomActionResponseArrayOutput)
@@ -259,7 +264,7 @@ func (o GalleryApplicationOutput) ReleaseNoteUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GalleryApplication) pulumi.StringPtrOutput { return v.ReleaseNoteUri }).(pulumi.StringPtrOutput)
 }
 
-// This property allows you to specify the supported type of the OS that application is built for. <br><br> Possible values are: <br><br> **Windows** <br><br> **Linux**
+// This property allows you to specify the supported type of the OS that application is built for. Possible values are: **Windows,** **Linux.**
 func (o GalleryApplicationOutput) SupportedOSType() pulumi.StringOutput {
 	return o.ApplyT(func(v *GalleryApplication) pulumi.StringOutput { return v.SupportedOSType }).(pulumi.StringOutput)
 }

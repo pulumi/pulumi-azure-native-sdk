@@ -13,12 +13,12 @@ import (
 )
 
 // An object that represents an export pipeline for a container registry.
-// Azure REST API version: 2023-01-01-preview. Prior API version in Azure Native 1.x: 2020-11-01-preview.
-//
-// Other available API versions: 2023-06-01-preview, 2023-08-01-preview, 2023-11-01-preview, 2024-11-01-preview.
+// Azure REST API version: 2023-01-01-preview. Prior API version in Azure Native 2.x: 2023-01-01-preview.
 type ExportPipeline struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The identity of the export pipeline.
 	Identity IdentityPropertiesResponsePtrOutput `pulumi:"identity"`
 	// The location of the export pipeline.
@@ -191,6 +191,11 @@ func (o ExportPipelineOutput) ToExportPipelineOutput() ExportPipelineOutput {
 
 func (o ExportPipelineOutput) ToExportPipelineOutputWithContext(ctx context.Context) ExportPipelineOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ExportPipelineOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ExportPipeline) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The identity of the export pipeline.

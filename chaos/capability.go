@@ -13,12 +13,12 @@ import (
 )
 
 // Model that represents a Capability resource.
-// Azure REST API version: 2023-04-15-preview. Prior API version in Azure Native 1.x: 2021-09-15-preview.
-//
-// Other available API versions: 2023-09-01-preview, 2023-10-27-preview, 2023-11-01, 2024-01-01, 2024-03-22-preview, 2024-11-01-preview, 2025-01-01.
+// Azure REST API version: 2024-01-01. Prior API version in Azure Native 2.x: 2023-04-15-preview.
 type Capability struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The properties of a capability resource.
@@ -188,6 +188,11 @@ func (o CapabilityOutput) ToCapabilityOutput() CapabilityOutput {
 
 func (o CapabilityOutput) ToCapabilityOutputWithContext(ctx context.Context) CapabilityOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o CapabilityOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Capability) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

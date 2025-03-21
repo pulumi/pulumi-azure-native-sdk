@@ -12,9 +12,7 @@ import (
 )
 
 // Returns a list of database principals of the given Kusto cluster and database.
-// Azure REST API version: 2022-12-29.
-//
-// Other available API versions: 2022-07-07, 2023-05-02, 2023-08-15, 2024-04-13.
+// Azure REST API version: 2024-04-13.
 func ListDatabasePrincipals(ctx *pulumi.Context, args *ListDatabasePrincipalsArgs, opts ...pulumi.InvokeOption) (*ListDatabasePrincipalsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListDatabasePrincipalsResult
@@ -30,7 +28,7 @@ type ListDatabasePrincipalsArgs struct {
 	ClusterName string `pulumi:"clusterName"`
 	// The name of the database in the Kusto cluster.
 	DatabaseName string `pulumi:"databaseName"`
-	// The name of the resource group containing the Kusto cluster.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -54,7 +52,7 @@ type ListDatabasePrincipalsOutputArgs struct {
 	ClusterName pulumi.StringInput `pulumi:"clusterName"`
 	// The name of the database in the Kusto cluster.
 	DatabaseName pulumi.StringInput `pulumi:"databaseName"`
-	// The name of the resource group containing the Kusto cluster.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 

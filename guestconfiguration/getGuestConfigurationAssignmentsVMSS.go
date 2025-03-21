@@ -12,9 +12,7 @@ import (
 )
 
 // Get information about a guest configuration assignment for VMSS
-// Azure REST API version: 2022-01-25.
-//
-// Other available API versions: 2024-04-05.
+// Azure REST API version: 2024-04-05.
 func LookupGuestConfigurationAssignmentsVMSS(ctx *pulumi.Context, args *LookupGuestConfigurationAssignmentsVMSSArgs, opts ...pulumi.InvokeOption) (*LookupGuestConfigurationAssignmentsVMSSResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGuestConfigurationAssignmentsVMSSResult
@@ -36,6 +34,8 @@ type LookupGuestConfigurationAssignmentsVMSSArgs struct {
 
 // Guest configuration assignment is an association between a machine and guest configuration.
 type LookupGuestConfigurationAssignmentsVMSSResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// ARM resource id of the guest configuration assignment.
 	Id string `pulumi:"id"`
 	// Region where the VM is located.
@@ -95,6 +95,11 @@ func (o LookupGuestConfigurationAssignmentsVMSSResultOutput) ToLookupGuestConfig
 
 func (o LookupGuestConfigurationAssignmentsVMSSResultOutput) ToLookupGuestConfigurationAssignmentsVMSSResultOutputWithContext(ctx context.Context) LookupGuestConfigurationAssignmentsVMSSResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupGuestConfigurationAssignmentsVMSSResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGuestConfigurationAssignmentsVMSSResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // ARM resource id of the guest configuration assignment.

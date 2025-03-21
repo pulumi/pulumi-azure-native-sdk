@@ -12,9 +12,7 @@ import (
 )
 
 // Retrieves the details of a Virtual Hub Ip configuration.
-// Azure REST API version: 2023-02-01.
-//
-// Other available API versions: 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Azure REST API version: 2024-05-01.
 func LookupVirtualHubIpConfiguration(ctx *pulumi.Context, args *LookupVirtualHubIpConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupVirtualHubIpConfigurationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVirtualHubIpConfigurationResult
@@ -36,6 +34,8 @@ type LookupVirtualHubIpConfigurationArgs struct {
 
 // IpConfigurations.
 type LookupVirtualHubIpConfigurationResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag string `pulumi:"etag"`
 	// Resource ID.
@@ -103,6 +103,11 @@ func (o LookupVirtualHubIpConfigurationResultOutput) ToLookupVirtualHubIpConfigu
 
 func (o LookupVirtualHubIpConfigurationResultOutput) ToLookupVirtualHubIpConfigurationResultOutputWithContext(ctx context.Context) LookupVirtualHubIpConfigurationResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupVirtualHubIpConfigurationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVirtualHubIpConfigurationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A unique read-only string that changes whenever the resource is updated.

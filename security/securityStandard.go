@@ -13,12 +13,14 @@ import (
 )
 
 // Security Standard on a resource
-// Azure REST API version: 2024-08-01.
+// Azure REST API version: 2024-08-01. Prior API version in Azure Native 2.x: 2024-08-01.
 type SecurityStandard struct {
 	pulumi.CustomResourceState
 
 	// List of assessment keys to apply to standard scope.
 	Assessments PartialAssessmentPropertiesResponseArrayOutput `pulumi:"assessments"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// List of all standard supported clouds.
 	CloudProviders pulumi.StringArrayOutput `pulumi:"cloudProviders"`
 	// Description of the standard
@@ -160,6 +162,11 @@ func (o SecurityStandardOutput) ToSecurityStandardOutputWithContext(ctx context.
 // List of assessment keys to apply to standard scope.
 func (o SecurityStandardOutput) Assessments() PartialAssessmentPropertiesResponseArrayOutput {
 	return o.ApplyT(func(v *SecurityStandard) PartialAssessmentPropertiesResponseArrayOutput { return v.Assessments }).(PartialAssessmentPropertiesResponseArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o SecurityStandardOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecurityStandard) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // List of all standard supported clouds.

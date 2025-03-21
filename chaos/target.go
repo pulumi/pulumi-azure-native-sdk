@@ -13,12 +13,12 @@ import (
 )
 
 // Model that represents a Target resource.
-// Azure REST API version: 2023-04-15-preview. Prior API version in Azure Native 1.x: 2021-09-15-preview.
-//
-// Other available API versions: 2023-09-01-preview, 2023-10-27-preview, 2023-11-01, 2024-01-01, 2024-03-22-preview, 2024-11-01-preview, 2025-01-01.
+// Azure REST API version: 2024-01-01. Prior API version in Azure Native 2.x: 2023-04-15-preview.
 type Target struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Location of the target resource.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// The name of the resource
@@ -194,6 +194,11 @@ func (o TargetOutput) ToTargetOutput() TargetOutput {
 
 func (o TargetOutput) ToTargetOutputWithContext(ctx context.Context) TargetOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o TargetOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Target) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Location of the target resource.

@@ -12,9 +12,7 @@ import (
 )
 
 // Agent Pool.
-// Azure REST API version: 2023-04-01.
-//
-// Other available API versions: 2020-06-01, 2021-02-01, 2021-08-01, 2022-04-02-preview, 2023-05-02-preview, 2023-06-01, 2023-06-02-preview, 2023-07-01, 2023-07-02-preview, 2023-08-01, 2023-08-02-preview, 2023-09-01, 2023-09-02-preview, 2023-10-01, 2023-10-02-preview, 2023-11-01, 2023-11-02-preview, 2024-01-01, 2024-01-02-preview, 2024-02-01, 2024-02-02-preview, 2024-03-02-preview, 2024-04-02-preview, 2024-05-01, 2024-05-02-preview, 2024-06-02-preview, 2024-07-01, 2024-07-02-preview, 2024-08-01, 2024-09-01, 2024-09-02-preview, 2024-10-01.
+// Azure REST API version: 2024-10-01.
 func LookupAgentPool(ctx *pulumi.Context, args *LookupAgentPoolArgs, opts ...pulumi.InvokeOption) (*LookupAgentPoolResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAgentPoolResult
@@ -38,12 +36,18 @@ type LookupAgentPoolArgs struct {
 type LookupAgentPoolResult struct {
 	// The list of Availability zones to use for nodes. This can only be specified if the AgentPoolType property is 'VirtualMachineScaleSets'.
 	AvailabilityZones []string `pulumi:"availabilityZones"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// AKS will associate the specified agent pool with the Capacity Reservation Group.
+	CapacityReservationGroupID *string `pulumi:"capacityReservationGroupID"`
 	// Number of agents (VMs) to host docker containers. Allowed values must be in the range of 0 to 1000 (inclusive) for user pools and in the range of 1 to 1000 (inclusive) for system pools. The default value is 1.
 	Count *int `pulumi:"count"`
 	// CreationData to be used to specify the source Snapshot ID if the node pool will be created/upgraded using a snapshot.
 	CreationData *CreationDataResponse `pulumi:"creationData"`
 	// If orchestratorVersion is a fully specified version <major.minor.patch>, this field will be exactly equal to it. If orchestratorVersion is <major.minor>, this field will contain the full <major.minor.patch> version being used.
 	CurrentOrchestratorVersion string `pulumi:"currentOrchestratorVersion"`
+	// Unique read-only string used to implement optimistic concurrency. The eTag value will change when the resource is updated. Specify an if-match or if-none-match header with the eTag value for a subsequent request to enable optimistic concurrency per the normal etag convention.
+	ETag string `pulumi:"eTag"`
 	// Whether to enable auto-scaler
 	EnableAutoScaling *bool `pulumi:"enableAutoScaling"`
 	// This is only supported on certain VM sizes and in certain Azure regions. For more information, see: https://docs.microsoft.com/azure/aks/enable-host-encryption
@@ -70,12 +74,16 @@ type LookupAgentPoolResult struct {
 	MaxCount *int `pulumi:"maxCount"`
 	// The maximum number of pods that can run on a node.
 	MaxPods *int `pulumi:"maxPods"`
+	// A base64-encoded string which will be written to /etc/motd after decoding. This allows customization of the message of the day for Linux nodes. It must not be specified for Windows nodes. It must be a static string (i.e., will be printed raw and not be executed as a script).
+	MessageOfTheDay *string `pulumi:"messageOfTheDay"`
 	// The minimum number of nodes for auto-scaling
 	MinCount *int `pulumi:"minCount"`
 	// A cluster must have at least one 'System' Agent Pool at all times. For additional information on agent pool restrictions and best practices, see: https://docs.microsoft.com/azure/aks/use-system-pools
 	Mode *string `pulumi:"mode"`
 	// The name of the resource that is unique within a resource group. This name can be used to access the resource.
 	Name string `pulumi:"name"`
+	// Network-related settings of an agent pool.
+	NetworkProfile *AgentPoolNetworkProfileResponse `pulumi:"networkProfile"`
 	// The version of node image
 	NodeImageVersion string `pulumi:"nodeImageVersion"`
 	// The node labels to be persisted across all nodes in agent pool.
@@ -108,6 +116,8 @@ type LookupAgentPoolResult struct {
 	ScaleSetEvictionPolicy *string `pulumi:"scaleSetEvictionPolicy"`
 	// The Virtual Machine Scale Set priority. If not specified, the default is 'Regular'.
 	ScaleSetPriority *string `pulumi:"scaleSetPriority"`
+	// The security settings of an agent pool.
+	SecurityProfile *AgentPoolSecurityProfileResponse `pulumi:"securityProfile"`
 	// Possible values are any decimal value greater than zero or -1 which indicates the willingness to pay any on-demand price. For more details on spot pricing, see [spot VMs pricing](https://docs.microsoft.com/azure/virtual-machines/spot-vms#pricing)
 	SpotMaxPrice *float64 `pulumi:"spotMaxPrice"`
 	// The tags to be persisted on the agent pool virtual machine scale set.
@@ -116,10 +126,12 @@ type LookupAgentPoolResult struct {
 	Type string `pulumi:"type"`
 	// Settings for upgrading the agentpool
 	UpgradeSettings *AgentPoolUpgradeSettingsResponse `pulumi:"upgradeSettings"`
-	// VM size availability varies by region. If a node contains insufficient compute resources (memory, cpu, etc) pods might fail to run correctly. For more details on restricted VM sizes, see: https://docs.microsoft.com/azure/aks/quotas-skus-regions
+	// VM size availability varies by region. If a node contains insufficient compute resources (memory, cpu, etc) pods might fail to run correctly. If this field is not specified, AKS will attempt to find an appropriate VM SKU for your pool, based on quota and capacity. For more details on restricted VM sizes, see: https://docs.microsoft.com/azure/aks/quotas-skus-regions
 	VmSize *string `pulumi:"vmSize"`
 	// If this is not specified, a VNET and subnet will be generated and used. If no podSubnetID is specified, this applies to nodes and pods, otherwise it applies to just nodes. This is of the form: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}
 	VnetSubnetID *string `pulumi:"vnetSubnetID"`
+	// The Windows agent pool's specific profile.
+	WindowsProfile *AgentPoolWindowsProfileResponse `pulumi:"windowsProfile"`
 	// Determines the type of workload a node can run.
 	WorkloadRuntime *string `pulumi:"workloadRuntime"`
 }
@@ -166,6 +178,16 @@ func (o LookupAgentPoolResultOutput) AvailabilityZones() pulumi.StringArrayOutpu
 	return o.ApplyT(func(v LookupAgentPoolResult) []string { return v.AvailabilityZones }).(pulumi.StringArrayOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupAgentPoolResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAgentPoolResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// AKS will associate the specified agent pool with the Capacity Reservation Group.
+func (o LookupAgentPoolResultOutput) CapacityReservationGroupID() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAgentPoolResult) *string { return v.CapacityReservationGroupID }).(pulumi.StringPtrOutput)
+}
+
 // Number of agents (VMs) to host docker containers. Allowed values must be in the range of 0 to 1000 (inclusive) for user pools and in the range of 1 to 1000 (inclusive) for system pools. The default value is 1.
 func (o LookupAgentPoolResultOutput) Count() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupAgentPoolResult) *int { return v.Count }).(pulumi.IntPtrOutput)
@@ -179,6 +201,11 @@ func (o LookupAgentPoolResultOutput) CreationData() CreationDataResponsePtrOutpu
 // If orchestratorVersion is a fully specified version <major.minor.patch>, this field will be exactly equal to it. If orchestratorVersion is <major.minor>, this field will contain the full <major.minor.patch> version being used.
 func (o LookupAgentPoolResultOutput) CurrentOrchestratorVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAgentPoolResult) string { return v.CurrentOrchestratorVersion }).(pulumi.StringOutput)
+}
+
+// Unique read-only string used to implement optimistic concurrency. The eTag value will change when the resource is updated. Specify an if-match or if-none-match header with the eTag value for a subsequent request to enable optimistic concurrency per the normal etag convention.
+func (o LookupAgentPoolResultOutput) ETag() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAgentPoolResult) string { return v.ETag }).(pulumi.StringOutput)
 }
 
 // Whether to enable auto-scaler
@@ -246,6 +273,11 @@ func (o LookupAgentPoolResultOutput) MaxPods() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupAgentPoolResult) *int { return v.MaxPods }).(pulumi.IntPtrOutput)
 }
 
+// A base64-encoded string which will be written to /etc/motd after decoding. This allows customization of the message of the day for Linux nodes. It must not be specified for Windows nodes. It must be a static string (i.e., will be printed raw and not be executed as a script).
+func (o LookupAgentPoolResultOutput) MessageOfTheDay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAgentPoolResult) *string { return v.MessageOfTheDay }).(pulumi.StringPtrOutput)
+}
+
 // The minimum number of nodes for auto-scaling
 func (o LookupAgentPoolResultOutput) MinCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupAgentPoolResult) *int { return v.MinCount }).(pulumi.IntPtrOutput)
@@ -259,6 +291,11 @@ func (o LookupAgentPoolResultOutput) Mode() pulumi.StringPtrOutput {
 // The name of the resource that is unique within a resource group. This name can be used to access the resource.
 func (o LookupAgentPoolResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAgentPoolResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Network-related settings of an agent pool.
+func (o LookupAgentPoolResultOutput) NetworkProfile() AgentPoolNetworkProfileResponsePtrOutput {
+	return o.ApplyT(func(v LookupAgentPoolResult) *AgentPoolNetworkProfileResponse { return v.NetworkProfile }).(AgentPoolNetworkProfileResponsePtrOutput)
 }
 
 // The version of node image
@@ -341,6 +378,11 @@ func (o LookupAgentPoolResultOutput) ScaleSetPriority() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAgentPoolResult) *string { return v.ScaleSetPriority }).(pulumi.StringPtrOutput)
 }
 
+// The security settings of an agent pool.
+func (o LookupAgentPoolResultOutput) SecurityProfile() AgentPoolSecurityProfileResponsePtrOutput {
+	return o.ApplyT(func(v LookupAgentPoolResult) *AgentPoolSecurityProfileResponse { return v.SecurityProfile }).(AgentPoolSecurityProfileResponsePtrOutput)
+}
+
 // Possible values are any decimal value greater than zero or -1 which indicates the willingness to pay any on-demand price. For more details on spot pricing, see [spot VMs pricing](https://docs.microsoft.com/azure/virtual-machines/spot-vms#pricing)
 func (o LookupAgentPoolResultOutput) SpotMaxPrice() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v LookupAgentPoolResult) *float64 { return v.SpotMaxPrice }).(pulumi.Float64PtrOutput)
@@ -361,7 +403,7 @@ func (o LookupAgentPoolResultOutput) UpgradeSettings() AgentPoolUpgradeSettingsR
 	return o.ApplyT(func(v LookupAgentPoolResult) *AgentPoolUpgradeSettingsResponse { return v.UpgradeSettings }).(AgentPoolUpgradeSettingsResponsePtrOutput)
 }
 
-// VM size availability varies by region. If a node contains insufficient compute resources (memory, cpu, etc) pods might fail to run correctly. For more details on restricted VM sizes, see: https://docs.microsoft.com/azure/aks/quotas-skus-regions
+// VM size availability varies by region. If a node contains insufficient compute resources (memory, cpu, etc) pods might fail to run correctly. If this field is not specified, AKS will attempt to find an appropriate VM SKU for your pool, based on quota and capacity. For more details on restricted VM sizes, see: https://docs.microsoft.com/azure/aks/quotas-skus-regions
 func (o LookupAgentPoolResultOutput) VmSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAgentPoolResult) *string { return v.VmSize }).(pulumi.StringPtrOutput)
 }
@@ -369,6 +411,11 @@ func (o LookupAgentPoolResultOutput) VmSize() pulumi.StringPtrOutput {
 // If this is not specified, a VNET and subnet will be generated and used. If no podSubnetID is specified, this applies to nodes and pods, otherwise it applies to just nodes. This is of the form: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}
 func (o LookupAgentPoolResultOutput) VnetSubnetID() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAgentPoolResult) *string { return v.VnetSubnetID }).(pulumi.StringPtrOutput)
+}
+
+// The Windows agent pool's specific profile.
+func (o LookupAgentPoolResultOutput) WindowsProfile() AgentPoolWindowsProfileResponsePtrOutput {
+	return o.ApplyT(func(v LookupAgentPoolResult) *AgentPoolWindowsProfileResponse { return v.WindowsProfile }).(AgentPoolWindowsProfileResponsePtrOutput)
 }
 
 // Determines the type of workload a node can run.

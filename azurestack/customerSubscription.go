@@ -13,12 +13,12 @@ import (
 )
 
 // Customer subscription.
-// Azure REST API version: 2022-06-01. Prior API version in Azure Native 1.x: 2017-06-01.
-//
-// Other available API versions: 2020-06-01-preview.
+// Azure REST API version: 2022-06-01. Prior API version in Azure Native 2.x: 2022-06-01.
 type CustomerSubscription struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The entity tag used for optimistic concurrency when modifying the resource.
 	Etag pulumi.StringPtrOutput `pulumi:"etag"`
 	// Name of the resource.
@@ -144,6 +144,11 @@ func (o CustomerSubscriptionOutput) ToCustomerSubscriptionOutput() CustomerSubsc
 
 func (o CustomerSubscriptionOutput) ToCustomerSubscriptionOutputWithContext(ctx context.Context) CustomerSubscriptionOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o CustomerSubscriptionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomerSubscription) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The entity tag used for optimistic concurrency when modifying the resource.

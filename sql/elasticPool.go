@@ -13,12 +13,12 @@ import (
 )
 
 // An elastic pool.
-// Azure REST API version: 2021-11-01. Prior API version in Azure Native 1.x: 2020-11-01-preview.
-//
-// Other available API versions: 2014-04-01, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
+// Azure REST API version: 2021-11-01. Prior API version in Azure Native 2.x: 2021-11-01.
 type ElasticPool struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The creation date of the elastic pool (ISO8601 format).
 	CreationDate pulumi.StringOutput `pulumi:"creationDate"`
 	// The number of secondary replicas associated with the elastic pool that are used to provide high availability. Applicable only to Hyperscale elastic pools.
@@ -253,6 +253,11 @@ func (o ElasticPoolOutput) ToElasticPoolOutput() ElasticPoolOutput {
 
 func (o ElasticPoolOutput) ToElasticPoolOutputWithContext(ctx context.Context) ElasticPoolOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ElasticPoolOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ElasticPool) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The creation date of the elastic pool (ISO8601 format).

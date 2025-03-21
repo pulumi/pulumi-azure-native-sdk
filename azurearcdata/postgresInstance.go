@@ -13,12 +13,12 @@ import (
 )
 
 // A Postgres Instance.
-// Azure REST API version: 2023-01-15-preview. Prior API version in Azure Native 1.x: 2021-06-01-preview.
-//
-// Other available API versions: 2024-01-01, 2024-05-01-preview.
+// Azure REST API version: 2024-01-01. Prior API version in Azure Native 2.x: 2023-01-15-preview.
 type PostgresInstance struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The extendedLocation of the resource.
 	ExtendedLocation ExtendedLocationResponsePtrOutput `pulumi:"extendedLocation"`
 	// The geo-location where the resource lives
@@ -74,6 +74,9 @@ func NewPostgresInstance(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azurearcdata/v20240501preview:PostgresInstance"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurearcdata/v20250301preview:PostgresInstance"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -179,6 +182,11 @@ func (o PostgresInstanceOutput) ToPostgresInstanceOutput() PostgresInstanceOutpu
 
 func (o PostgresInstanceOutput) ToPostgresInstanceOutputWithContext(ctx context.Context) PostgresInstanceOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o PostgresInstanceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PostgresInstance) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The extendedLocation of the resource.

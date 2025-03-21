@@ -13,12 +13,12 @@ import (
 )
 
 // The storage task assignment.
-// Azure REST API version: 2023-05-01.
-//
-// Other available API versions: 2024-01-01.
+// Azure REST API version: 2024-01-01. Prior API version in Azure Native 2.x: 2023-05-01.
 type StorageTaskAssignment struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Properties of the storage task assignment.
@@ -142,6 +142,11 @@ func (o StorageTaskAssignmentOutput) ToStorageTaskAssignmentOutput() StorageTask
 
 func (o StorageTaskAssignmentOutput) ToStorageTaskAssignmentOutputWithContext(ctx context.Context) StorageTaskAssignmentOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o StorageTaskAssignmentOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *StorageTaskAssignment) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

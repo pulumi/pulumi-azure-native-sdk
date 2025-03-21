@@ -12,9 +12,7 @@ import (
 )
 
 // The virtual network resource definition.
-// Azure REST API version: 2022-12-15-preview.
-//
-// Other available API versions: 2023-07-01-preview.
+// Azure REST API version: 2023-07-01-preview.
 func LookupVirtualNetwork(ctx *pulumi.Context, args *LookupVirtualNetworkArgs, opts ...pulumi.InvokeOption) (*LookupVirtualNetworkResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVirtualNetworkResult
@@ -34,6 +32,8 @@ type LookupVirtualNetworkArgs struct {
 
 // The virtual network resource definition.
 type LookupVirtualNetworkResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// DhcpOptions contains an array of DNS servers available to VMs deployed in the virtual network. Standard DHCP option for a subnet overrides VNET DHCP options.
 	DhcpOptions *VirtualNetworkPropertiesResponseDhcpOptions `pulumi:"dhcpOptions"`
 	// The extendedLocation of the resource.
@@ -95,6 +95,11 @@ func (o LookupVirtualNetworkResultOutput) ToLookupVirtualNetworkResultOutput() L
 
 func (o LookupVirtualNetworkResultOutput) ToLookupVirtualNetworkResultOutputWithContext(ctx context.Context) LookupVirtualNetworkResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupVirtualNetworkResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVirtualNetworkResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // DhcpOptions contains an array of DNS servers available to VMs deployed in the virtual network. Standard DHCP option for a subnet overrides VNET DHCP options.

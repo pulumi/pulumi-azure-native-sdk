@@ -13,14 +13,14 @@ import (
 )
 
 // Class representing a database principal assignment.
-// Azure REST API version: 2022-12-29. Prior API version in Azure Native 1.x: 2021-01-01.
-//
-// Other available API versions: 2023-05-02, 2023-08-15, 2024-04-13.
+// Azure REST API version: 2024-04-13. Prior API version in Azure Native 2.x: 2022-12-29.
 type DatabasePrincipalAssignment struct {
 	pulumi.CustomResourceState
 
 	// The service principal object id in AAD (Azure active directory)
 	AadObjectId pulumi.StringOutput `pulumi:"aadObjectId"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The principal ID assigned to the database principal. It can be a user email, application ID, or security group name.
@@ -151,7 +151,7 @@ type databasePrincipalAssignmentArgs struct {
 	PrincipalId string `pulumi:"principalId"`
 	// Principal type.
 	PrincipalType string `pulumi:"principalType"`
-	// The name of the resource group containing the Kusto cluster.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Database principal role.
 	Role string `pulumi:"role"`
@@ -171,7 +171,7 @@ type DatabasePrincipalAssignmentArgs struct {
 	PrincipalId pulumi.StringInput
 	// Principal type.
 	PrincipalType pulumi.StringInput
-	// The name of the resource group containing the Kusto cluster.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Database principal role.
 	Role pulumi.StringInput
@@ -219,6 +219,11 @@ func (o DatabasePrincipalAssignmentOutput) ToDatabasePrincipalAssignmentOutputWi
 // The service principal object id in AAD (Azure active directory)
 func (o DatabasePrincipalAssignmentOutput) AadObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabasePrincipalAssignment) pulumi.StringOutput { return v.AadObjectId }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o DatabasePrincipalAssignmentOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabasePrincipalAssignment) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

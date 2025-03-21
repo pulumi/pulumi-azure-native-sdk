@@ -13,14 +13,14 @@ import (
 )
 
 // configuration associated with SAP Landscape Monitor Dashboard.
-// Azure REST API version: 2023-04-01.
-//
-// Other available API versions: 2023-10-01-preview, 2023-12-01-preview, 2024-02-01-preview.
+// Azure REST API version: 2024-02-01-preview. Prior API version in Azure Native 2.x: 2023-04-01.
 type SapLandscapeMonitor struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets or sets the SID groupings by landscape and Environment.
-	Grouping SapLandscapeMonitorPropertiesResponseGroupingPtrOutput `pulumi:"grouping"`
+	Grouping SapLandscapeMonitorPropertiesGroupingResponsePtrOutput `pulumi:"grouping"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// State of provisioning of the SAP monitor.
@@ -156,9 +156,14 @@ func (o SapLandscapeMonitorOutput) ToSapLandscapeMonitorOutputWithContext(ctx co
 	return o
 }
 
+// The Azure API version of the resource.
+func (o SapLandscapeMonitorOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SapLandscapeMonitor) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Gets or sets the SID groupings by landscape and Environment.
-func (o SapLandscapeMonitorOutput) Grouping() SapLandscapeMonitorPropertiesResponseGroupingPtrOutput {
-	return o.ApplyT(func(v *SapLandscapeMonitor) SapLandscapeMonitorPropertiesResponseGroupingPtrOutput { return v.Grouping }).(SapLandscapeMonitorPropertiesResponseGroupingPtrOutput)
+func (o SapLandscapeMonitorOutput) Grouping() SapLandscapeMonitorPropertiesGroupingResponsePtrOutput {
+	return o.ApplyT(func(v *SapLandscapeMonitor) SapLandscapeMonitorPropertiesGroupingResponsePtrOutput { return v.Grouping }).(SapLandscapeMonitorPropertiesGroupingResponsePtrOutput)
 }
 
 // The name of the resource

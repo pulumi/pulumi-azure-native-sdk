@@ -13,12 +13,12 @@ import (
 )
 
 // Issue Attachment Contract details.
-// Azure REST API version: 2022-08-01. Prior API version in Azure Native 1.x: 2020-12-01.
-//
-// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
+// Azure REST API version: 2022-09-01-preview. Prior API version in Azure Native 2.x: 2022-08-01.
 type ApiIssueAttachment struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// An HTTP link or Base64-encoded binary data.
 	Content pulumi.StringOutput `pulumi:"content"`
 	// Either 'link' if content is provided via an HTTP link or the MIME type of the Base64-encoded binary data provided in the 'content' property.
@@ -228,6 +228,11 @@ func (o ApiIssueAttachmentOutput) ToApiIssueAttachmentOutput() ApiIssueAttachmen
 
 func (o ApiIssueAttachmentOutput) ToApiIssueAttachmentOutputWithContext(ctx context.Context) ApiIssueAttachmentOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ApiIssueAttachmentOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApiIssueAttachment) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // An HTTP link or Base64-encoded binary data.

@@ -12,9 +12,7 @@ import (
 )
 
 // List service accounts success response
-// Azure REST API version: 2023-08-22.
-//
-// Other available API versions: 2024-02-13, 2024-07-01.
+// Azure REST API version: 2024-07-01.
 func ListAccessServiceAccounts(ctx *pulumi.Context, args *ListAccessServiceAccountsArgs, opts ...pulumi.InvokeOption) (*ListAccessServiceAccountsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListAccessServiceAccountsResult
@@ -28,7 +26,7 @@ func ListAccessServiceAccounts(ctx *pulumi.Context, args *ListAccessServiceAccou
 type ListAccessServiceAccountsArgs struct {
 	// Organization resource name
 	OrganizationName string `pulumi:"organizationName"`
-	// The name of the resource group. The name is case insensitive.
+	// Resource group name
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Search filters for the request
 	SearchFilters map[string]string `pulumi:"searchFilters"`
@@ -56,7 +54,7 @@ func ListAccessServiceAccountsOutput(ctx *pulumi.Context, args ListAccessService
 type ListAccessServiceAccountsOutputArgs struct {
 	// Organization resource name
 	OrganizationName pulumi.StringInput `pulumi:"organizationName"`
-	// The name of the resource group. The name is case insensitive.
+	// Resource group name
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// Search filters for the request
 	SearchFilters pulumi.StringMapInput `pulumi:"searchFilters"`

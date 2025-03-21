@@ -12,10 +12,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Azure REST API version: 2020-01-01. Prior API version in Azure Native 1.x: 2020-01-01.
+// Azure REST API version: 2020-01-01. Prior API version in Azure Native 2.x: 2020-01-01.
 type JitNetworkAccessPolicy struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Kind of the resource
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// Location where the resource is stored
@@ -152,6 +154,11 @@ func (o JitNetworkAccessPolicyOutput) ToJitNetworkAccessPolicyOutput() JitNetwor
 
 func (o JitNetworkAccessPolicyOutput) ToJitNetworkAccessPolicyOutputWithContext(ctx context.Context) JitNetworkAccessPolicyOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o JitNetworkAccessPolicyOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *JitNetworkAccessPolicy) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Kind of the resource

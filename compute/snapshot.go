@@ -13,12 +13,12 @@ import (
 )
 
 // Snapshot resource.
-// Azure REST API version: 2022-07-02. Prior API version in Azure Native 1.x: 2020-12-01.
-//
-// Other available API versions: 2023-01-02, 2023-04-02, 2023-10-02, 2024-03-02.
+// Azure REST API version: 2024-03-02. Prior API version in Azure Native 2.x: 2022-07-02.
 type Snapshot struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Percentage complete for the background copy when a resource is created via the CopyStart operation.
 	CompletionPercent pulumi.Float64PtrOutput `pulumi:"completionPercent"`
 	// Indicates the error details if the background copy of a resource created via the CopyStart operation fails.
@@ -326,6 +326,11 @@ func (o SnapshotOutput) ToSnapshotOutput() SnapshotOutput {
 
 func (o SnapshotOutput) ToSnapshotOutputWithContext(ctx context.Context) SnapshotOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o SnapshotOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Percentage complete for the background copy when a resource is created via the CopyStart operation.

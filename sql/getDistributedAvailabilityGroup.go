@@ -13,8 +13,6 @@ import (
 
 // Gets a distributed availability group info.
 // Azure REST API version: 2021-11-01.
-//
-// Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
 func LookupDistributedAvailabilityGroup(ctx *pulumi.Context, args *LookupDistributedAvailabilityGroupArgs, opts ...pulumi.InvokeOption) (*LookupDistributedAvailabilityGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDistributedAvailabilityGroupResult
@@ -36,6 +34,8 @@ type LookupDistributedAvailabilityGroupArgs struct {
 
 // Distributed availability group between box and Sql Managed Instance.
 type LookupDistributedAvailabilityGroupResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The distributed availability group id
 	DistributedAvailabilityGroupId string `pulumi:"distributedAvailabilityGroupId"`
 	// Resource ID.
@@ -99,6 +99,11 @@ func (o LookupDistributedAvailabilityGroupResultOutput) ToLookupDistributedAvail
 
 func (o LookupDistributedAvailabilityGroupResultOutput) ToLookupDistributedAvailabilityGroupResultOutputWithContext(ctx context.Context) LookupDistributedAvailabilityGroupResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupDistributedAvailabilityGroupResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDistributedAvailabilityGroupResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The distributed availability group id

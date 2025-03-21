@@ -36,6 +36,8 @@ type LookupSqlDBTableDataSetMappingArgs struct {
 
 // A SQL DB Table data set mapping.
 type LookupSqlDBTableDataSetMappingResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The id of the source data set.
 	DataSetId string `pulumi:"dataSetId"`
 	// Gets the status of the data set mapping.
@@ -100,6 +102,11 @@ func (o LookupSqlDBTableDataSetMappingResultOutput) ToLookupSqlDBTableDataSetMap
 
 func (o LookupSqlDBTableDataSetMappingResultOutput) ToLookupSqlDBTableDataSetMappingResultOutputWithContext(ctx context.Context) LookupSqlDBTableDataSetMappingResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupSqlDBTableDataSetMappingResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSqlDBTableDataSetMappingResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The id of the source data set.

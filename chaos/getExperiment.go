@@ -12,9 +12,7 @@ import (
 )
 
 // Get a Experiment resource.
-// Azure REST API version: 2023-04-15-preview.
-//
-// Other available API versions: 2023-09-01-preview, 2023-10-27-preview, 2023-11-01, 2024-01-01, 2024-03-22-preview, 2024-11-01-preview, 2025-01-01.
+// Azure REST API version: 2024-01-01.
 func LookupExperiment(ctx *pulumi.Context, args *LookupExperimentArgs, opts ...pulumi.InvokeOption) (*LookupExperimentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupExperimentResult
@@ -34,6 +32,8 @@ type LookupExperimentArgs struct {
 
 // Model that represents a Experiment resource.
 type LookupExperimentResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The identity of the experiment resource.
@@ -85,6 +85,11 @@ func (o LookupExperimentResultOutput) ToLookupExperimentResultOutput() LookupExp
 
 func (o LookupExperimentResultOutput) ToLookupExperimentResultOutputWithContext(ctx context.Context) LookupExperimentResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupExperimentResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupExperimentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

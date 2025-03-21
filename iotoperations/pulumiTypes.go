@@ -734,417 +734,6 @@ func (o AuthorizationRuleResponseArrayOutput) Index(i pulumi.IntInput) Authoriza
 	}).(AuthorizationRuleResponseOutput)
 }
 
-// Automatic TLS server certificate management with cert-manager
-type AutomaticCertMethod struct {
-	// Lifetime of certificate. Must be specified using a Go time.Duration format (h|m|s). E.g. 240h for 240 hours and 45m for 45 minutes.
-	Duration *string `pulumi:"duration"`
-	// cert-manager issuerRef.
-	IssuerRef CertManagerIssuerRef `pulumi:"issuerRef"`
-	// Type of certificate private key.
-	PrivateKey *CertManagerPrivateKey `pulumi:"privateKey"`
-	// When to begin renewing certificate. Must be specified using a Go time.Duration format (h|m|s). E.g. 240h for 240 hours and 45m for 45 minutes.
-	RenewBefore *string `pulumi:"renewBefore"`
-	// Additional Subject Alternative Names (SANs) to include in the certificate.
-	San *SanForCert `pulumi:"san"`
-	// Secret for storing server certificate. Any existing data will be overwritten. This is a reference to the secret through an identifying name, not the secret itself.
-	SecretRef *string `pulumi:"secretRef"`
-}
-
-// Defaults sets the appropriate defaults for AutomaticCertMethod
-func (val *AutomaticCertMethod) Defaults() *AutomaticCertMethod {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	tmp.IssuerRef = *tmp.IssuerRef.Defaults()
-
-	return &tmp
-}
-
-// AutomaticCertMethodInput is an input type that accepts AutomaticCertMethodArgs and AutomaticCertMethodOutput values.
-// You can construct a concrete instance of `AutomaticCertMethodInput` via:
-//
-//	AutomaticCertMethodArgs{...}
-type AutomaticCertMethodInput interface {
-	pulumi.Input
-
-	ToAutomaticCertMethodOutput() AutomaticCertMethodOutput
-	ToAutomaticCertMethodOutputWithContext(context.Context) AutomaticCertMethodOutput
-}
-
-// Automatic TLS server certificate management with cert-manager
-type AutomaticCertMethodArgs struct {
-	// Lifetime of certificate. Must be specified using a Go time.Duration format (h|m|s). E.g. 240h for 240 hours and 45m for 45 minutes.
-	Duration pulumi.StringPtrInput `pulumi:"duration"`
-	// cert-manager issuerRef.
-	IssuerRef CertManagerIssuerRefInput `pulumi:"issuerRef"`
-	// Type of certificate private key.
-	PrivateKey CertManagerPrivateKeyPtrInput `pulumi:"privateKey"`
-	// When to begin renewing certificate. Must be specified using a Go time.Duration format (h|m|s). E.g. 240h for 240 hours and 45m for 45 minutes.
-	RenewBefore pulumi.StringPtrInput `pulumi:"renewBefore"`
-	// Additional Subject Alternative Names (SANs) to include in the certificate.
-	San SanForCertPtrInput `pulumi:"san"`
-	// Secret for storing server certificate. Any existing data will be overwritten. This is a reference to the secret through an identifying name, not the secret itself.
-	SecretRef pulumi.StringPtrInput `pulumi:"secretRef"`
-}
-
-// Defaults sets the appropriate defaults for AutomaticCertMethodArgs
-func (val *AutomaticCertMethodArgs) Defaults() *AutomaticCertMethodArgs {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-
-	return &tmp
-}
-func (AutomaticCertMethodArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AutomaticCertMethod)(nil)).Elem()
-}
-
-func (i AutomaticCertMethodArgs) ToAutomaticCertMethodOutput() AutomaticCertMethodOutput {
-	return i.ToAutomaticCertMethodOutputWithContext(context.Background())
-}
-
-func (i AutomaticCertMethodArgs) ToAutomaticCertMethodOutputWithContext(ctx context.Context) AutomaticCertMethodOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AutomaticCertMethodOutput)
-}
-
-func (i AutomaticCertMethodArgs) ToAutomaticCertMethodPtrOutput() AutomaticCertMethodPtrOutput {
-	return i.ToAutomaticCertMethodPtrOutputWithContext(context.Background())
-}
-
-func (i AutomaticCertMethodArgs) ToAutomaticCertMethodPtrOutputWithContext(ctx context.Context) AutomaticCertMethodPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AutomaticCertMethodOutput).ToAutomaticCertMethodPtrOutputWithContext(ctx)
-}
-
-// AutomaticCertMethodPtrInput is an input type that accepts AutomaticCertMethodArgs, AutomaticCertMethodPtr and AutomaticCertMethodPtrOutput values.
-// You can construct a concrete instance of `AutomaticCertMethodPtrInput` via:
-//
-//	        AutomaticCertMethodArgs{...}
-//
-//	or:
-//
-//	        nil
-type AutomaticCertMethodPtrInput interface {
-	pulumi.Input
-
-	ToAutomaticCertMethodPtrOutput() AutomaticCertMethodPtrOutput
-	ToAutomaticCertMethodPtrOutputWithContext(context.Context) AutomaticCertMethodPtrOutput
-}
-
-type automaticCertMethodPtrType AutomaticCertMethodArgs
-
-func AutomaticCertMethodPtr(v *AutomaticCertMethodArgs) AutomaticCertMethodPtrInput {
-	return (*automaticCertMethodPtrType)(v)
-}
-
-func (*automaticCertMethodPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AutomaticCertMethod)(nil)).Elem()
-}
-
-func (i *automaticCertMethodPtrType) ToAutomaticCertMethodPtrOutput() AutomaticCertMethodPtrOutput {
-	return i.ToAutomaticCertMethodPtrOutputWithContext(context.Background())
-}
-
-func (i *automaticCertMethodPtrType) ToAutomaticCertMethodPtrOutputWithContext(ctx context.Context) AutomaticCertMethodPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AutomaticCertMethodPtrOutput)
-}
-
-// Automatic TLS server certificate management with cert-manager
-type AutomaticCertMethodOutput struct{ *pulumi.OutputState }
-
-func (AutomaticCertMethodOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AutomaticCertMethod)(nil)).Elem()
-}
-
-func (o AutomaticCertMethodOutput) ToAutomaticCertMethodOutput() AutomaticCertMethodOutput {
-	return o
-}
-
-func (o AutomaticCertMethodOutput) ToAutomaticCertMethodOutputWithContext(ctx context.Context) AutomaticCertMethodOutput {
-	return o
-}
-
-func (o AutomaticCertMethodOutput) ToAutomaticCertMethodPtrOutput() AutomaticCertMethodPtrOutput {
-	return o.ToAutomaticCertMethodPtrOutputWithContext(context.Background())
-}
-
-func (o AutomaticCertMethodOutput) ToAutomaticCertMethodPtrOutputWithContext(ctx context.Context) AutomaticCertMethodPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutomaticCertMethod) *AutomaticCertMethod {
-		return &v
-	}).(AutomaticCertMethodPtrOutput)
-}
-
-// Lifetime of certificate. Must be specified using a Go time.Duration format (h|m|s). E.g. 240h for 240 hours and 45m for 45 minutes.
-func (o AutomaticCertMethodOutput) Duration() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AutomaticCertMethod) *string { return v.Duration }).(pulumi.StringPtrOutput)
-}
-
-// cert-manager issuerRef.
-func (o AutomaticCertMethodOutput) IssuerRef() CertManagerIssuerRefOutput {
-	return o.ApplyT(func(v AutomaticCertMethod) CertManagerIssuerRef { return v.IssuerRef }).(CertManagerIssuerRefOutput)
-}
-
-// Type of certificate private key.
-func (o AutomaticCertMethodOutput) PrivateKey() CertManagerPrivateKeyPtrOutput {
-	return o.ApplyT(func(v AutomaticCertMethod) *CertManagerPrivateKey { return v.PrivateKey }).(CertManagerPrivateKeyPtrOutput)
-}
-
-// When to begin renewing certificate. Must be specified using a Go time.Duration format (h|m|s). E.g. 240h for 240 hours and 45m for 45 minutes.
-func (o AutomaticCertMethodOutput) RenewBefore() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AutomaticCertMethod) *string { return v.RenewBefore }).(pulumi.StringPtrOutput)
-}
-
-// Additional Subject Alternative Names (SANs) to include in the certificate.
-func (o AutomaticCertMethodOutput) San() SanForCertPtrOutput {
-	return o.ApplyT(func(v AutomaticCertMethod) *SanForCert { return v.San }).(SanForCertPtrOutput)
-}
-
-// Secret for storing server certificate. Any existing data will be overwritten. This is a reference to the secret through an identifying name, not the secret itself.
-func (o AutomaticCertMethodOutput) SecretRef() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AutomaticCertMethod) *string { return v.SecretRef }).(pulumi.StringPtrOutput)
-}
-
-type AutomaticCertMethodPtrOutput struct{ *pulumi.OutputState }
-
-func (AutomaticCertMethodPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AutomaticCertMethod)(nil)).Elem()
-}
-
-func (o AutomaticCertMethodPtrOutput) ToAutomaticCertMethodPtrOutput() AutomaticCertMethodPtrOutput {
-	return o
-}
-
-func (o AutomaticCertMethodPtrOutput) ToAutomaticCertMethodPtrOutputWithContext(ctx context.Context) AutomaticCertMethodPtrOutput {
-	return o
-}
-
-func (o AutomaticCertMethodPtrOutput) Elem() AutomaticCertMethodOutput {
-	return o.ApplyT(func(v *AutomaticCertMethod) AutomaticCertMethod {
-		if v != nil {
-			return *v
-		}
-		var ret AutomaticCertMethod
-		return ret
-	}).(AutomaticCertMethodOutput)
-}
-
-// Lifetime of certificate. Must be specified using a Go time.Duration format (h|m|s). E.g. 240h for 240 hours and 45m for 45 minutes.
-func (o AutomaticCertMethodPtrOutput) Duration() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AutomaticCertMethod) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Duration
-	}).(pulumi.StringPtrOutput)
-}
-
-// cert-manager issuerRef.
-func (o AutomaticCertMethodPtrOutput) IssuerRef() CertManagerIssuerRefPtrOutput {
-	return o.ApplyT(func(v *AutomaticCertMethod) *CertManagerIssuerRef {
-		if v == nil {
-			return nil
-		}
-		return &v.IssuerRef
-	}).(CertManagerIssuerRefPtrOutput)
-}
-
-// Type of certificate private key.
-func (o AutomaticCertMethodPtrOutput) PrivateKey() CertManagerPrivateKeyPtrOutput {
-	return o.ApplyT(func(v *AutomaticCertMethod) *CertManagerPrivateKey {
-		if v == nil {
-			return nil
-		}
-		return v.PrivateKey
-	}).(CertManagerPrivateKeyPtrOutput)
-}
-
-// When to begin renewing certificate. Must be specified using a Go time.Duration format (h|m|s). E.g. 240h for 240 hours and 45m for 45 minutes.
-func (o AutomaticCertMethodPtrOutput) RenewBefore() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AutomaticCertMethod) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RenewBefore
-	}).(pulumi.StringPtrOutput)
-}
-
-// Additional Subject Alternative Names (SANs) to include in the certificate.
-func (o AutomaticCertMethodPtrOutput) San() SanForCertPtrOutput {
-	return o.ApplyT(func(v *AutomaticCertMethod) *SanForCert {
-		if v == nil {
-			return nil
-		}
-		return v.San
-	}).(SanForCertPtrOutput)
-}
-
-// Secret for storing server certificate. Any existing data will be overwritten. This is a reference to the secret through an identifying name, not the secret itself.
-func (o AutomaticCertMethodPtrOutput) SecretRef() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AutomaticCertMethod) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretRef
-	}).(pulumi.StringPtrOutput)
-}
-
-// Automatic TLS server certificate management with cert-manager
-type AutomaticCertMethodResponse struct {
-	// Lifetime of certificate. Must be specified using a Go time.Duration format (h|m|s). E.g. 240h for 240 hours and 45m for 45 minutes.
-	Duration *string `pulumi:"duration"`
-	// cert-manager issuerRef.
-	IssuerRef CertManagerIssuerRefResponse `pulumi:"issuerRef"`
-	// Type of certificate private key.
-	PrivateKey *CertManagerPrivateKeyResponse `pulumi:"privateKey"`
-	// When to begin renewing certificate. Must be specified using a Go time.Duration format (h|m|s). E.g. 240h for 240 hours and 45m for 45 minutes.
-	RenewBefore *string `pulumi:"renewBefore"`
-	// Additional Subject Alternative Names (SANs) to include in the certificate.
-	San *SanForCertResponse `pulumi:"san"`
-	// Secret for storing server certificate. Any existing data will be overwritten. This is a reference to the secret through an identifying name, not the secret itself.
-	SecretRef *string `pulumi:"secretRef"`
-}
-
-// Defaults sets the appropriate defaults for AutomaticCertMethodResponse
-func (val *AutomaticCertMethodResponse) Defaults() *AutomaticCertMethodResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	tmp.IssuerRef = *tmp.IssuerRef.Defaults()
-
-	return &tmp
-}
-
-// Automatic TLS server certificate management with cert-manager
-type AutomaticCertMethodResponseOutput struct{ *pulumi.OutputState }
-
-func (AutomaticCertMethodResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AutomaticCertMethodResponse)(nil)).Elem()
-}
-
-func (o AutomaticCertMethodResponseOutput) ToAutomaticCertMethodResponseOutput() AutomaticCertMethodResponseOutput {
-	return o
-}
-
-func (o AutomaticCertMethodResponseOutput) ToAutomaticCertMethodResponseOutputWithContext(ctx context.Context) AutomaticCertMethodResponseOutput {
-	return o
-}
-
-// Lifetime of certificate. Must be specified using a Go time.Duration format (h|m|s). E.g. 240h for 240 hours and 45m for 45 minutes.
-func (o AutomaticCertMethodResponseOutput) Duration() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AutomaticCertMethodResponse) *string { return v.Duration }).(pulumi.StringPtrOutput)
-}
-
-// cert-manager issuerRef.
-func (o AutomaticCertMethodResponseOutput) IssuerRef() CertManagerIssuerRefResponseOutput {
-	return o.ApplyT(func(v AutomaticCertMethodResponse) CertManagerIssuerRefResponse { return v.IssuerRef }).(CertManagerIssuerRefResponseOutput)
-}
-
-// Type of certificate private key.
-func (o AutomaticCertMethodResponseOutput) PrivateKey() CertManagerPrivateKeyResponsePtrOutput {
-	return o.ApplyT(func(v AutomaticCertMethodResponse) *CertManagerPrivateKeyResponse { return v.PrivateKey }).(CertManagerPrivateKeyResponsePtrOutput)
-}
-
-// When to begin renewing certificate. Must be specified using a Go time.Duration format (h|m|s). E.g. 240h for 240 hours and 45m for 45 minutes.
-func (o AutomaticCertMethodResponseOutput) RenewBefore() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AutomaticCertMethodResponse) *string { return v.RenewBefore }).(pulumi.StringPtrOutput)
-}
-
-// Additional Subject Alternative Names (SANs) to include in the certificate.
-func (o AutomaticCertMethodResponseOutput) San() SanForCertResponsePtrOutput {
-	return o.ApplyT(func(v AutomaticCertMethodResponse) *SanForCertResponse { return v.San }).(SanForCertResponsePtrOutput)
-}
-
-// Secret for storing server certificate. Any existing data will be overwritten. This is a reference to the secret through an identifying name, not the secret itself.
-func (o AutomaticCertMethodResponseOutput) SecretRef() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AutomaticCertMethodResponse) *string { return v.SecretRef }).(pulumi.StringPtrOutput)
-}
-
-type AutomaticCertMethodResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (AutomaticCertMethodResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AutomaticCertMethodResponse)(nil)).Elem()
-}
-
-func (o AutomaticCertMethodResponsePtrOutput) ToAutomaticCertMethodResponsePtrOutput() AutomaticCertMethodResponsePtrOutput {
-	return o
-}
-
-func (o AutomaticCertMethodResponsePtrOutput) ToAutomaticCertMethodResponsePtrOutputWithContext(ctx context.Context) AutomaticCertMethodResponsePtrOutput {
-	return o
-}
-
-func (o AutomaticCertMethodResponsePtrOutput) Elem() AutomaticCertMethodResponseOutput {
-	return o.ApplyT(func(v *AutomaticCertMethodResponse) AutomaticCertMethodResponse {
-		if v != nil {
-			return *v
-		}
-		var ret AutomaticCertMethodResponse
-		return ret
-	}).(AutomaticCertMethodResponseOutput)
-}
-
-// Lifetime of certificate. Must be specified using a Go time.Duration format (h|m|s). E.g. 240h for 240 hours and 45m for 45 minutes.
-func (o AutomaticCertMethodResponsePtrOutput) Duration() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AutomaticCertMethodResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Duration
-	}).(pulumi.StringPtrOutput)
-}
-
-// cert-manager issuerRef.
-func (o AutomaticCertMethodResponsePtrOutput) IssuerRef() CertManagerIssuerRefResponsePtrOutput {
-	return o.ApplyT(func(v *AutomaticCertMethodResponse) *CertManagerIssuerRefResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.IssuerRef
-	}).(CertManagerIssuerRefResponsePtrOutput)
-}
-
-// Type of certificate private key.
-func (o AutomaticCertMethodResponsePtrOutput) PrivateKey() CertManagerPrivateKeyResponsePtrOutput {
-	return o.ApplyT(func(v *AutomaticCertMethodResponse) *CertManagerPrivateKeyResponse {
-		if v == nil {
-			return nil
-		}
-		return v.PrivateKey
-	}).(CertManagerPrivateKeyResponsePtrOutput)
-}
-
-// When to begin renewing certificate. Must be specified using a Go time.Duration format (h|m|s). E.g. 240h for 240 hours and 45m for 45 minutes.
-func (o AutomaticCertMethodResponsePtrOutput) RenewBefore() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AutomaticCertMethodResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RenewBefore
-	}).(pulumi.StringPtrOutput)
-}
-
-// Additional Subject Alternative Names (SANs) to include in the certificate.
-func (o AutomaticCertMethodResponsePtrOutput) San() SanForCertResponsePtrOutput {
-	return o.ApplyT(func(v *AutomaticCertMethodResponse) *SanForCertResponse {
-		if v == nil {
-			return nil
-		}
-		return v.San
-	}).(SanForCertResponsePtrOutput)
-}
-
-// Secret for storing server certificate. Any existing data will be overwritten. This is a reference to the secret through an identifying name, not the secret itself.
-func (o AutomaticCertMethodResponsePtrOutput) SecretRef() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AutomaticCertMethodResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretRef
-	}).(pulumi.StringPtrOutput)
-}
-
 // Desired properties of the backend instances of the broker
 type BackendChain struct {
 	// The desired number of physical backend partitions.
@@ -3063,13 +2652,13 @@ func (o BrokerAuthenticatorMethodX509ResponsePtrOutput) TrustedClientCaCert() pu
 // Set of broker authentication policies. Only one method is supported for each entry.
 type BrokerAuthenticatorMethods struct {
 	// Custom authentication configuration.
-	Custom *BrokerAuthenticatorMethodCustom `pulumi:"custom"`
+	CustomSettings *BrokerAuthenticatorMethodCustom `pulumi:"customSettings"`
 	// Custom authentication configuration.
 	Method string `pulumi:"method"`
 	// ServiceAccountToken authentication configuration.
-	ServiceAccountToken *BrokerAuthenticatorMethodSat `pulumi:"serviceAccountToken"`
+	ServiceAccountTokenSettings *BrokerAuthenticatorMethodSat `pulumi:"serviceAccountTokenSettings"`
 	// X.509 authentication configuration.
-	X509Credentials *BrokerAuthenticatorMethodX509 `pulumi:"x509Credentials"`
+	X509Settings *BrokerAuthenticatorMethodX509 `pulumi:"x509Settings"`
 }
 
 // Defaults sets the appropriate defaults for BrokerAuthenticatorMethods
@@ -3078,7 +2667,7 @@ func (val *BrokerAuthenticatorMethods) Defaults() *BrokerAuthenticatorMethods {
 		return nil
 	}
 	tmp := *val
-	tmp.X509Credentials = tmp.X509Credentials.Defaults()
+	tmp.X509Settings = tmp.X509Settings.Defaults()
 
 	return &tmp
 }
@@ -3097,13 +2686,13 @@ type BrokerAuthenticatorMethodsInput interface {
 // Set of broker authentication policies. Only one method is supported for each entry.
 type BrokerAuthenticatorMethodsArgs struct {
 	// Custom authentication configuration.
-	Custom BrokerAuthenticatorMethodCustomPtrInput `pulumi:"custom"`
+	CustomSettings BrokerAuthenticatorMethodCustomPtrInput `pulumi:"customSettings"`
 	// Custom authentication configuration.
 	Method pulumi.StringInput `pulumi:"method"`
 	// ServiceAccountToken authentication configuration.
-	ServiceAccountToken BrokerAuthenticatorMethodSatPtrInput `pulumi:"serviceAccountToken"`
+	ServiceAccountTokenSettings BrokerAuthenticatorMethodSatPtrInput `pulumi:"serviceAccountTokenSettings"`
 	// X.509 authentication configuration.
-	X509Credentials BrokerAuthenticatorMethodX509PtrInput `pulumi:"x509Credentials"`
+	X509Settings BrokerAuthenticatorMethodX509PtrInput `pulumi:"x509Settings"`
 }
 
 // Defaults sets the appropriate defaults for BrokerAuthenticatorMethodsArgs
@@ -3168,8 +2757,8 @@ func (o BrokerAuthenticatorMethodsOutput) ToBrokerAuthenticatorMethodsOutputWith
 }
 
 // Custom authentication configuration.
-func (o BrokerAuthenticatorMethodsOutput) Custom() BrokerAuthenticatorMethodCustomPtrOutput {
-	return o.ApplyT(func(v BrokerAuthenticatorMethods) *BrokerAuthenticatorMethodCustom { return v.Custom }).(BrokerAuthenticatorMethodCustomPtrOutput)
+func (o BrokerAuthenticatorMethodsOutput) CustomSettings() BrokerAuthenticatorMethodCustomPtrOutput {
+	return o.ApplyT(func(v BrokerAuthenticatorMethods) *BrokerAuthenticatorMethodCustom { return v.CustomSettings }).(BrokerAuthenticatorMethodCustomPtrOutput)
 }
 
 // Custom authentication configuration.
@@ -3178,13 +2767,13 @@ func (o BrokerAuthenticatorMethodsOutput) Method() pulumi.StringOutput {
 }
 
 // ServiceAccountToken authentication configuration.
-func (o BrokerAuthenticatorMethodsOutput) ServiceAccountToken() BrokerAuthenticatorMethodSatPtrOutput {
-	return o.ApplyT(func(v BrokerAuthenticatorMethods) *BrokerAuthenticatorMethodSat { return v.ServiceAccountToken }).(BrokerAuthenticatorMethodSatPtrOutput)
+func (o BrokerAuthenticatorMethodsOutput) ServiceAccountTokenSettings() BrokerAuthenticatorMethodSatPtrOutput {
+	return o.ApplyT(func(v BrokerAuthenticatorMethods) *BrokerAuthenticatorMethodSat { return v.ServiceAccountTokenSettings }).(BrokerAuthenticatorMethodSatPtrOutput)
 }
 
 // X.509 authentication configuration.
-func (o BrokerAuthenticatorMethodsOutput) X509Credentials() BrokerAuthenticatorMethodX509PtrOutput {
-	return o.ApplyT(func(v BrokerAuthenticatorMethods) *BrokerAuthenticatorMethodX509 { return v.X509Credentials }).(BrokerAuthenticatorMethodX509PtrOutput)
+func (o BrokerAuthenticatorMethodsOutput) X509Settings() BrokerAuthenticatorMethodX509PtrOutput {
+	return o.ApplyT(func(v BrokerAuthenticatorMethods) *BrokerAuthenticatorMethodX509 { return v.X509Settings }).(BrokerAuthenticatorMethodX509PtrOutput)
 }
 
 type BrokerAuthenticatorMethodsArrayOutput struct{ *pulumi.OutputState }
@@ -3210,13 +2799,13 @@ func (o BrokerAuthenticatorMethodsArrayOutput) Index(i pulumi.IntInput) BrokerAu
 // Set of broker authentication policies. Only one method is supported for each entry.
 type BrokerAuthenticatorMethodsResponse struct {
 	// Custom authentication configuration.
-	Custom *BrokerAuthenticatorMethodCustomResponse `pulumi:"custom"`
+	CustomSettings *BrokerAuthenticatorMethodCustomResponse `pulumi:"customSettings"`
 	// Custom authentication configuration.
 	Method string `pulumi:"method"`
 	// ServiceAccountToken authentication configuration.
-	ServiceAccountToken *BrokerAuthenticatorMethodSatResponse `pulumi:"serviceAccountToken"`
+	ServiceAccountTokenSettings *BrokerAuthenticatorMethodSatResponse `pulumi:"serviceAccountTokenSettings"`
 	// X.509 authentication configuration.
-	X509Credentials *BrokerAuthenticatorMethodX509Response `pulumi:"x509Credentials"`
+	X509Settings *BrokerAuthenticatorMethodX509Response `pulumi:"x509Settings"`
 }
 
 // Defaults sets the appropriate defaults for BrokerAuthenticatorMethodsResponse
@@ -3225,7 +2814,7 @@ func (val *BrokerAuthenticatorMethodsResponse) Defaults() *BrokerAuthenticatorMe
 		return nil
 	}
 	tmp := *val
-	tmp.X509Credentials = tmp.X509Credentials.Defaults()
+	tmp.X509Settings = tmp.X509Settings.Defaults()
 
 	return &tmp
 }
@@ -3246,8 +2835,10 @@ func (o BrokerAuthenticatorMethodsResponseOutput) ToBrokerAuthenticatorMethodsRe
 }
 
 // Custom authentication configuration.
-func (o BrokerAuthenticatorMethodsResponseOutput) Custom() BrokerAuthenticatorMethodCustomResponsePtrOutput {
-	return o.ApplyT(func(v BrokerAuthenticatorMethodsResponse) *BrokerAuthenticatorMethodCustomResponse { return v.Custom }).(BrokerAuthenticatorMethodCustomResponsePtrOutput)
+func (o BrokerAuthenticatorMethodsResponseOutput) CustomSettings() BrokerAuthenticatorMethodCustomResponsePtrOutput {
+	return o.ApplyT(func(v BrokerAuthenticatorMethodsResponse) *BrokerAuthenticatorMethodCustomResponse {
+		return v.CustomSettings
+	}).(BrokerAuthenticatorMethodCustomResponsePtrOutput)
 }
 
 // Custom authentication configuration.
@@ -3256,16 +2847,16 @@ func (o BrokerAuthenticatorMethodsResponseOutput) Method() pulumi.StringOutput {
 }
 
 // ServiceAccountToken authentication configuration.
-func (o BrokerAuthenticatorMethodsResponseOutput) ServiceAccountToken() BrokerAuthenticatorMethodSatResponsePtrOutput {
+func (o BrokerAuthenticatorMethodsResponseOutput) ServiceAccountTokenSettings() BrokerAuthenticatorMethodSatResponsePtrOutput {
 	return o.ApplyT(func(v BrokerAuthenticatorMethodsResponse) *BrokerAuthenticatorMethodSatResponse {
-		return v.ServiceAccountToken
+		return v.ServiceAccountTokenSettings
 	}).(BrokerAuthenticatorMethodSatResponsePtrOutput)
 }
 
 // X.509 authentication configuration.
-func (o BrokerAuthenticatorMethodsResponseOutput) X509Credentials() BrokerAuthenticatorMethodX509ResponsePtrOutput {
+func (o BrokerAuthenticatorMethodsResponseOutput) X509Settings() BrokerAuthenticatorMethodX509ResponsePtrOutput {
 	return o.ApplyT(func(v BrokerAuthenticatorMethodsResponse) *BrokerAuthenticatorMethodX509Response {
-		return v.X509Credentials
+		return v.X509Settings
 	}).(BrokerAuthenticatorMethodX509ResponsePtrOutput)
 }
 
@@ -3848,8 +3439,6 @@ func (o BrokerDiagnosticsResponsePtrOutput) Traces() TracesResponsePtrOutput {
 
 // Defines a Broker listener. A listener is a collection of ports on which the broker accepts connections from clients.
 type BrokerListenerProperties struct {
-	// Broker associated with this listener.
-	BrokerRef string `pulumi:"brokerRef"`
 	// Ports on which this listener accepts client connections.
 	Ports []ListenerPort `pulumi:"ports"`
 	// Kubernetes Service name of this listener.
@@ -3864,10 +3453,6 @@ func (val *BrokerListenerProperties) Defaults() *BrokerListenerProperties {
 		return nil
 	}
 	tmp := *val
-	if tmp.ServiceName == nil {
-		serviceName_ := "aio-mq-dmqtt-frontend"
-		tmp.ServiceName = &serviceName_
-	}
 	if tmp.ServiceType == nil {
 		serviceType_ := "ClusterIp"
 		tmp.ServiceType = &serviceType_
@@ -3888,8 +3473,6 @@ type BrokerListenerPropertiesInput interface {
 
 // Defines a Broker listener. A listener is a collection of ports on which the broker accepts connections from clients.
 type BrokerListenerPropertiesArgs struct {
-	// Broker associated with this listener.
-	BrokerRef pulumi.StringInput `pulumi:"brokerRef"`
 	// Ports on which this listener accepts client connections.
 	Ports ListenerPortArrayInput `pulumi:"ports"`
 	// Kubernetes Service name of this listener.
@@ -3904,9 +3487,6 @@ func (val *BrokerListenerPropertiesArgs) Defaults() *BrokerListenerPropertiesArg
 		return nil
 	}
 	tmp := *val
-	if tmp.ServiceName == nil {
-		tmp.ServiceName = pulumi.StringPtr("aio-mq-dmqtt-frontend")
-	}
 	if tmp.ServiceType == nil {
 		tmp.ServiceType = pulumi.StringPtr("ClusterIp")
 	}
@@ -3990,11 +3570,6 @@ func (o BrokerListenerPropertiesOutput) ToBrokerListenerPropertiesPtrOutputWithC
 	}).(BrokerListenerPropertiesPtrOutput)
 }
 
-// Broker associated with this listener.
-func (o BrokerListenerPropertiesOutput) BrokerRef() pulumi.StringOutput {
-	return o.ApplyT(func(v BrokerListenerProperties) string { return v.BrokerRef }).(pulumi.StringOutput)
-}
-
 // Ports on which this listener accepts client connections.
 func (o BrokerListenerPropertiesOutput) Ports() ListenerPortArrayOutput {
 	return o.ApplyT(func(v BrokerListenerProperties) []ListenerPort { return v.Ports }).(ListenerPortArrayOutput)
@@ -4034,16 +3609,6 @@ func (o BrokerListenerPropertiesPtrOutput) Elem() BrokerListenerPropertiesOutput
 	}).(BrokerListenerPropertiesOutput)
 }
 
-// Broker associated with this listener.
-func (o BrokerListenerPropertiesPtrOutput) BrokerRef() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BrokerListenerProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.BrokerRef
-	}).(pulumi.StringPtrOutput)
-}
-
 // Ports on which this listener accepts client connections.
 func (o BrokerListenerPropertiesPtrOutput) Ports() ListenerPortArrayOutput {
 	return o.ApplyT(func(v *BrokerListenerProperties) []ListenerPort {
@@ -4076,8 +3641,6 @@ func (o BrokerListenerPropertiesPtrOutput) ServiceType() pulumi.StringPtrOutput 
 
 // Defines a Broker listener. A listener is a collection of ports on which the broker accepts connections from clients.
 type BrokerListenerPropertiesResponse struct {
-	// Broker associated with this listener.
-	BrokerRef string `pulumi:"brokerRef"`
 	// Ports on which this listener accepts client connections.
 	Ports []ListenerPortResponse `pulumi:"ports"`
 	// The status of the last operation.
@@ -4094,10 +3657,6 @@ func (val *BrokerListenerPropertiesResponse) Defaults() *BrokerListenerPropertie
 		return nil
 	}
 	tmp := *val
-	if tmp.ServiceName == nil {
-		serviceName_ := "aio-mq-dmqtt-frontend"
-		tmp.ServiceName = &serviceName_
-	}
 	if tmp.ServiceType == nil {
 		serviceType_ := "ClusterIp"
 		tmp.ServiceType = &serviceType_
@@ -4118,11 +3677,6 @@ func (o BrokerListenerPropertiesResponseOutput) ToBrokerListenerPropertiesRespon
 
 func (o BrokerListenerPropertiesResponseOutput) ToBrokerListenerPropertiesResponseOutputWithContext(ctx context.Context) BrokerListenerPropertiesResponseOutput {
 	return o
-}
-
-// Broker associated with this listener.
-func (o BrokerListenerPropertiesResponseOutput) BrokerRef() pulumi.StringOutput {
-	return o.ApplyT(func(v BrokerListenerPropertiesResponse) string { return v.BrokerRef }).(pulumi.StringOutput)
 }
 
 // Ports on which this listener accepts client connections.
@@ -4504,6 +4058,8 @@ func (o BrokerPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput 
 
 // Broker Resource Rule properties. This defines the objects that represent the actions or topics, such as - method.Connect, method.Publish, etc.
 type BrokerResourceRule struct {
+	// A list of client IDs that match the clients. The client IDs are case-sensitive and must match the client IDs provided by the clients during connection. This subfield may be set if the method is Connect.
+	ClientIds []string `pulumi:"clientIds"`
 	// Give access for a Broker method (i.e., Connect, Subscribe, or Publish).
 	Method string `pulumi:"method"`
 	// A list of topics or topic patterns that match the topics that the clients can publish or subscribe to. This subfield is required if the method is Publish or Subscribe.
@@ -4523,6 +4079,8 @@ type BrokerResourceRuleInput interface {
 
 // Broker Resource Rule properties. This defines the objects that represent the actions or topics, such as - method.Connect, method.Publish, etc.
 type BrokerResourceRuleArgs struct {
+	// A list of client IDs that match the clients. The client IDs are case-sensitive and must match the client IDs provided by the clients during connection. This subfield may be set if the method is Connect.
+	ClientIds pulumi.StringArrayInput `pulumi:"clientIds"`
 	// Give access for a Broker method (i.e., Connect, Subscribe, or Publish).
 	Method pulumi.StringInput `pulumi:"method"`
 	// A list of topics or topic patterns that match the topics that the clients can publish or subscribe to. This subfield is required if the method is Publish or Subscribe.
@@ -4581,6 +4139,11 @@ func (o BrokerResourceRuleOutput) ToBrokerResourceRuleOutputWithContext(ctx cont
 	return o
 }
 
+// A list of client IDs that match the clients. The client IDs are case-sensitive and must match the client IDs provided by the clients during connection. This subfield may be set if the method is Connect.
+func (o BrokerResourceRuleOutput) ClientIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BrokerResourceRule) []string { return v.ClientIds }).(pulumi.StringArrayOutput)
+}
+
 // Give access for a Broker method (i.e., Connect, Subscribe, or Publish).
 func (o BrokerResourceRuleOutput) Method() pulumi.StringOutput {
 	return o.ApplyT(func(v BrokerResourceRule) string { return v.Method }).(pulumi.StringOutput)
@@ -4613,6 +4176,8 @@ func (o BrokerResourceRuleArrayOutput) Index(i pulumi.IntInput) BrokerResourceRu
 
 // Broker Resource Rule properties. This defines the objects that represent the actions or topics, such as - method.Connect, method.Publish, etc.
 type BrokerResourceRuleResponse struct {
+	// A list of client IDs that match the clients. The client IDs are case-sensitive and must match the client IDs provided by the clients during connection. This subfield may be set if the method is Connect.
+	ClientIds []string `pulumi:"clientIds"`
 	// Give access for a Broker method (i.e., Connect, Subscribe, or Publish).
 	Method string `pulumi:"method"`
 	// A list of topics or topic patterns that match the topics that the clients can publish or subscribe to. This subfield is required if the method is Publish or Subscribe.
@@ -4632,6 +4197,11 @@ func (o BrokerResourceRuleResponseOutput) ToBrokerResourceRuleResponseOutput() B
 
 func (o BrokerResourceRuleResponseOutput) ToBrokerResourceRuleResponseOutputWithContext(ctx context.Context) BrokerResourceRuleResponseOutput {
 	return o
+}
+
+// A list of client IDs that match the clients. The client IDs are case-sensitive and must match the client IDs provided by the clients during connection. This subfield may be set if the method is Connect.
+func (o BrokerResourceRuleResponseOutput) ClientIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BrokerResourceRuleResponse) []string { return v.ClientIds }).(pulumi.StringArrayOutput)
 }
 
 // Give access for a Broker method (i.e., Connect, Subscribe, or Publish).
@@ -5207,10 +4777,421 @@ func (o CertManagerCertOptionsResponsePtrOutput) RenewBefore() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+// Automatic TLS server certificate management with cert-manager
+type CertManagerCertificateSpec struct {
+	// Lifetime of certificate. Must be specified using a Go time.Duration format (h|m|s). E.g. 240h for 240 hours and 45m for 45 minutes.
+	Duration *string `pulumi:"duration"`
+	// cert-manager issuerRef.
+	IssuerRef CertManagerIssuerRef `pulumi:"issuerRef"`
+	// Type of certificate private key.
+	PrivateKey *CertManagerPrivateKey `pulumi:"privateKey"`
+	// When to begin renewing certificate. Must be specified using a Go time.Duration format (h|m|s). E.g. 240h for 240 hours and 45m for 45 minutes.
+	RenewBefore *string `pulumi:"renewBefore"`
+	// Additional Subject Alternative Names (SANs) to include in the certificate.
+	San *SanForCert `pulumi:"san"`
+	// Secret for storing server certificate. Any existing data will be overwritten. This is a reference to the secret through an identifying name, not the secret itself.
+	SecretName *string `pulumi:"secretName"`
+}
+
+// Defaults sets the appropriate defaults for CertManagerCertificateSpec
+func (val *CertManagerCertificateSpec) Defaults() *CertManagerCertificateSpec {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.IssuerRef = *tmp.IssuerRef.Defaults()
+
+	return &tmp
+}
+
+// CertManagerCertificateSpecInput is an input type that accepts CertManagerCertificateSpecArgs and CertManagerCertificateSpecOutput values.
+// You can construct a concrete instance of `CertManagerCertificateSpecInput` via:
+//
+//	CertManagerCertificateSpecArgs{...}
+type CertManagerCertificateSpecInput interface {
+	pulumi.Input
+
+	ToCertManagerCertificateSpecOutput() CertManagerCertificateSpecOutput
+	ToCertManagerCertificateSpecOutputWithContext(context.Context) CertManagerCertificateSpecOutput
+}
+
+// Automatic TLS server certificate management with cert-manager
+type CertManagerCertificateSpecArgs struct {
+	// Lifetime of certificate. Must be specified using a Go time.Duration format (h|m|s). E.g. 240h for 240 hours and 45m for 45 minutes.
+	Duration pulumi.StringPtrInput `pulumi:"duration"`
+	// cert-manager issuerRef.
+	IssuerRef CertManagerIssuerRefInput `pulumi:"issuerRef"`
+	// Type of certificate private key.
+	PrivateKey CertManagerPrivateKeyPtrInput `pulumi:"privateKey"`
+	// When to begin renewing certificate. Must be specified using a Go time.Duration format (h|m|s). E.g. 240h for 240 hours and 45m for 45 minutes.
+	RenewBefore pulumi.StringPtrInput `pulumi:"renewBefore"`
+	// Additional Subject Alternative Names (SANs) to include in the certificate.
+	San SanForCertPtrInput `pulumi:"san"`
+	// Secret for storing server certificate. Any existing data will be overwritten. This is a reference to the secret through an identifying name, not the secret itself.
+	SecretName pulumi.StringPtrInput `pulumi:"secretName"`
+}
+
+// Defaults sets the appropriate defaults for CertManagerCertificateSpecArgs
+func (val *CertManagerCertificateSpecArgs) Defaults() *CertManagerCertificateSpecArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+
+	return &tmp
+}
+func (CertManagerCertificateSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertManagerCertificateSpec)(nil)).Elem()
+}
+
+func (i CertManagerCertificateSpecArgs) ToCertManagerCertificateSpecOutput() CertManagerCertificateSpecOutput {
+	return i.ToCertManagerCertificateSpecOutputWithContext(context.Background())
+}
+
+func (i CertManagerCertificateSpecArgs) ToCertManagerCertificateSpecOutputWithContext(ctx context.Context) CertManagerCertificateSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertManagerCertificateSpecOutput)
+}
+
+func (i CertManagerCertificateSpecArgs) ToCertManagerCertificateSpecPtrOutput() CertManagerCertificateSpecPtrOutput {
+	return i.ToCertManagerCertificateSpecPtrOutputWithContext(context.Background())
+}
+
+func (i CertManagerCertificateSpecArgs) ToCertManagerCertificateSpecPtrOutputWithContext(ctx context.Context) CertManagerCertificateSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertManagerCertificateSpecOutput).ToCertManagerCertificateSpecPtrOutputWithContext(ctx)
+}
+
+// CertManagerCertificateSpecPtrInput is an input type that accepts CertManagerCertificateSpecArgs, CertManagerCertificateSpecPtr and CertManagerCertificateSpecPtrOutput values.
+// You can construct a concrete instance of `CertManagerCertificateSpecPtrInput` via:
+//
+//	        CertManagerCertificateSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type CertManagerCertificateSpecPtrInput interface {
+	pulumi.Input
+
+	ToCertManagerCertificateSpecPtrOutput() CertManagerCertificateSpecPtrOutput
+	ToCertManagerCertificateSpecPtrOutputWithContext(context.Context) CertManagerCertificateSpecPtrOutput
+}
+
+type certManagerCertificateSpecPtrType CertManagerCertificateSpecArgs
+
+func CertManagerCertificateSpecPtr(v *CertManagerCertificateSpecArgs) CertManagerCertificateSpecPtrInput {
+	return (*certManagerCertificateSpecPtrType)(v)
+}
+
+func (*certManagerCertificateSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertManagerCertificateSpec)(nil)).Elem()
+}
+
+func (i *certManagerCertificateSpecPtrType) ToCertManagerCertificateSpecPtrOutput() CertManagerCertificateSpecPtrOutput {
+	return i.ToCertManagerCertificateSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *certManagerCertificateSpecPtrType) ToCertManagerCertificateSpecPtrOutputWithContext(ctx context.Context) CertManagerCertificateSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertManagerCertificateSpecPtrOutput)
+}
+
+// Automatic TLS server certificate management with cert-manager
+type CertManagerCertificateSpecOutput struct{ *pulumi.OutputState }
+
+func (CertManagerCertificateSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertManagerCertificateSpec)(nil)).Elem()
+}
+
+func (o CertManagerCertificateSpecOutput) ToCertManagerCertificateSpecOutput() CertManagerCertificateSpecOutput {
+	return o
+}
+
+func (o CertManagerCertificateSpecOutput) ToCertManagerCertificateSpecOutputWithContext(ctx context.Context) CertManagerCertificateSpecOutput {
+	return o
+}
+
+func (o CertManagerCertificateSpecOutput) ToCertManagerCertificateSpecPtrOutput() CertManagerCertificateSpecPtrOutput {
+	return o.ToCertManagerCertificateSpecPtrOutputWithContext(context.Background())
+}
+
+func (o CertManagerCertificateSpecOutput) ToCertManagerCertificateSpecPtrOutputWithContext(ctx context.Context) CertManagerCertificateSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CertManagerCertificateSpec) *CertManagerCertificateSpec {
+		return &v
+	}).(CertManagerCertificateSpecPtrOutput)
+}
+
+// Lifetime of certificate. Must be specified using a Go time.Duration format (h|m|s). E.g. 240h for 240 hours and 45m for 45 minutes.
+func (o CertManagerCertificateSpecOutput) Duration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertManagerCertificateSpec) *string { return v.Duration }).(pulumi.StringPtrOutput)
+}
+
+// cert-manager issuerRef.
+func (o CertManagerCertificateSpecOutput) IssuerRef() CertManagerIssuerRefOutput {
+	return o.ApplyT(func(v CertManagerCertificateSpec) CertManagerIssuerRef { return v.IssuerRef }).(CertManagerIssuerRefOutput)
+}
+
+// Type of certificate private key.
+func (o CertManagerCertificateSpecOutput) PrivateKey() CertManagerPrivateKeyPtrOutput {
+	return o.ApplyT(func(v CertManagerCertificateSpec) *CertManagerPrivateKey { return v.PrivateKey }).(CertManagerPrivateKeyPtrOutput)
+}
+
+// When to begin renewing certificate. Must be specified using a Go time.Duration format (h|m|s). E.g. 240h for 240 hours and 45m for 45 minutes.
+func (o CertManagerCertificateSpecOutput) RenewBefore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertManagerCertificateSpec) *string { return v.RenewBefore }).(pulumi.StringPtrOutput)
+}
+
+// Additional Subject Alternative Names (SANs) to include in the certificate.
+func (o CertManagerCertificateSpecOutput) San() SanForCertPtrOutput {
+	return o.ApplyT(func(v CertManagerCertificateSpec) *SanForCert { return v.San }).(SanForCertPtrOutput)
+}
+
+// Secret for storing server certificate. Any existing data will be overwritten. This is a reference to the secret through an identifying name, not the secret itself.
+func (o CertManagerCertificateSpecOutput) SecretName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertManagerCertificateSpec) *string { return v.SecretName }).(pulumi.StringPtrOutput)
+}
+
+type CertManagerCertificateSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (CertManagerCertificateSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertManagerCertificateSpec)(nil)).Elem()
+}
+
+func (o CertManagerCertificateSpecPtrOutput) ToCertManagerCertificateSpecPtrOutput() CertManagerCertificateSpecPtrOutput {
+	return o
+}
+
+func (o CertManagerCertificateSpecPtrOutput) ToCertManagerCertificateSpecPtrOutputWithContext(ctx context.Context) CertManagerCertificateSpecPtrOutput {
+	return o
+}
+
+func (o CertManagerCertificateSpecPtrOutput) Elem() CertManagerCertificateSpecOutput {
+	return o.ApplyT(func(v *CertManagerCertificateSpec) CertManagerCertificateSpec {
+		if v != nil {
+			return *v
+		}
+		var ret CertManagerCertificateSpec
+		return ret
+	}).(CertManagerCertificateSpecOutput)
+}
+
+// Lifetime of certificate. Must be specified using a Go time.Duration format (h|m|s). E.g. 240h for 240 hours and 45m for 45 minutes.
+func (o CertManagerCertificateSpecPtrOutput) Duration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CertManagerCertificateSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Duration
+	}).(pulumi.StringPtrOutput)
+}
+
+// cert-manager issuerRef.
+func (o CertManagerCertificateSpecPtrOutput) IssuerRef() CertManagerIssuerRefPtrOutput {
+	return o.ApplyT(func(v *CertManagerCertificateSpec) *CertManagerIssuerRef {
+		if v == nil {
+			return nil
+		}
+		return &v.IssuerRef
+	}).(CertManagerIssuerRefPtrOutput)
+}
+
+// Type of certificate private key.
+func (o CertManagerCertificateSpecPtrOutput) PrivateKey() CertManagerPrivateKeyPtrOutput {
+	return o.ApplyT(func(v *CertManagerCertificateSpec) *CertManagerPrivateKey {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateKey
+	}).(CertManagerPrivateKeyPtrOutput)
+}
+
+// When to begin renewing certificate. Must be specified using a Go time.Duration format (h|m|s). E.g. 240h for 240 hours and 45m for 45 minutes.
+func (o CertManagerCertificateSpecPtrOutput) RenewBefore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CertManagerCertificateSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RenewBefore
+	}).(pulumi.StringPtrOutput)
+}
+
+// Additional Subject Alternative Names (SANs) to include in the certificate.
+func (o CertManagerCertificateSpecPtrOutput) San() SanForCertPtrOutput {
+	return o.ApplyT(func(v *CertManagerCertificateSpec) *SanForCert {
+		if v == nil {
+			return nil
+		}
+		return v.San
+	}).(SanForCertPtrOutput)
+}
+
+// Secret for storing server certificate. Any existing data will be overwritten. This is a reference to the secret through an identifying name, not the secret itself.
+func (o CertManagerCertificateSpecPtrOutput) SecretName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CertManagerCertificateSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Automatic TLS server certificate management with cert-manager
+type CertManagerCertificateSpecResponse struct {
+	// Lifetime of certificate. Must be specified using a Go time.Duration format (h|m|s). E.g. 240h for 240 hours and 45m for 45 minutes.
+	Duration *string `pulumi:"duration"`
+	// cert-manager issuerRef.
+	IssuerRef CertManagerIssuerRefResponse `pulumi:"issuerRef"`
+	// Type of certificate private key.
+	PrivateKey *CertManagerPrivateKeyResponse `pulumi:"privateKey"`
+	// When to begin renewing certificate. Must be specified using a Go time.Duration format (h|m|s). E.g. 240h for 240 hours and 45m for 45 minutes.
+	RenewBefore *string `pulumi:"renewBefore"`
+	// Additional Subject Alternative Names (SANs) to include in the certificate.
+	San *SanForCertResponse `pulumi:"san"`
+	// Secret for storing server certificate. Any existing data will be overwritten. This is a reference to the secret through an identifying name, not the secret itself.
+	SecretName *string `pulumi:"secretName"`
+}
+
+// Defaults sets the appropriate defaults for CertManagerCertificateSpecResponse
+func (val *CertManagerCertificateSpecResponse) Defaults() *CertManagerCertificateSpecResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.IssuerRef = *tmp.IssuerRef.Defaults()
+
+	return &tmp
+}
+
+// Automatic TLS server certificate management with cert-manager
+type CertManagerCertificateSpecResponseOutput struct{ *pulumi.OutputState }
+
+func (CertManagerCertificateSpecResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertManagerCertificateSpecResponse)(nil)).Elem()
+}
+
+func (o CertManagerCertificateSpecResponseOutput) ToCertManagerCertificateSpecResponseOutput() CertManagerCertificateSpecResponseOutput {
+	return o
+}
+
+func (o CertManagerCertificateSpecResponseOutput) ToCertManagerCertificateSpecResponseOutputWithContext(ctx context.Context) CertManagerCertificateSpecResponseOutput {
+	return o
+}
+
+// Lifetime of certificate. Must be specified using a Go time.Duration format (h|m|s). E.g. 240h for 240 hours and 45m for 45 minutes.
+func (o CertManagerCertificateSpecResponseOutput) Duration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertManagerCertificateSpecResponse) *string { return v.Duration }).(pulumi.StringPtrOutput)
+}
+
+// cert-manager issuerRef.
+func (o CertManagerCertificateSpecResponseOutput) IssuerRef() CertManagerIssuerRefResponseOutput {
+	return o.ApplyT(func(v CertManagerCertificateSpecResponse) CertManagerIssuerRefResponse { return v.IssuerRef }).(CertManagerIssuerRefResponseOutput)
+}
+
+// Type of certificate private key.
+func (o CertManagerCertificateSpecResponseOutput) PrivateKey() CertManagerPrivateKeyResponsePtrOutput {
+	return o.ApplyT(func(v CertManagerCertificateSpecResponse) *CertManagerPrivateKeyResponse { return v.PrivateKey }).(CertManagerPrivateKeyResponsePtrOutput)
+}
+
+// When to begin renewing certificate. Must be specified using a Go time.Duration format (h|m|s). E.g. 240h for 240 hours and 45m for 45 minutes.
+func (o CertManagerCertificateSpecResponseOutput) RenewBefore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertManagerCertificateSpecResponse) *string { return v.RenewBefore }).(pulumi.StringPtrOutput)
+}
+
+// Additional Subject Alternative Names (SANs) to include in the certificate.
+func (o CertManagerCertificateSpecResponseOutput) San() SanForCertResponsePtrOutput {
+	return o.ApplyT(func(v CertManagerCertificateSpecResponse) *SanForCertResponse { return v.San }).(SanForCertResponsePtrOutput)
+}
+
+// Secret for storing server certificate. Any existing data will be overwritten. This is a reference to the secret through an identifying name, not the secret itself.
+func (o CertManagerCertificateSpecResponseOutput) SecretName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertManagerCertificateSpecResponse) *string { return v.SecretName }).(pulumi.StringPtrOutput)
+}
+
+type CertManagerCertificateSpecResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CertManagerCertificateSpecResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertManagerCertificateSpecResponse)(nil)).Elem()
+}
+
+func (o CertManagerCertificateSpecResponsePtrOutput) ToCertManagerCertificateSpecResponsePtrOutput() CertManagerCertificateSpecResponsePtrOutput {
+	return o
+}
+
+func (o CertManagerCertificateSpecResponsePtrOutput) ToCertManagerCertificateSpecResponsePtrOutputWithContext(ctx context.Context) CertManagerCertificateSpecResponsePtrOutput {
+	return o
+}
+
+func (o CertManagerCertificateSpecResponsePtrOutput) Elem() CertManagerCertificateSpecResponseOutput {
+	return o.ApplyT(func(v *CertManagerCertificateSpecResponse) CertManagerCertificateSpecResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CertManagerCertificateSpecResponse
+		return ret
+	}).(CertManagerCertificateSpecResponseOutput)
+}
+
+// Lifetime of certificate. Must be specified using a Go time.Duration format (h|m|s). E.g. 240h for 240 hours and 45m for 45 minutes.
+func (o CertManagerCertificateSpecResponsePtrOutput) Duration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CertManagerCertificateSpecResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Duration
+	}).(pulumi.StringPtrOutput)
+}
+
+// cert-manager issuerRef.
+func (o CertManagerCertificateSpecResponsePtrOutput) IssuerRef() CertManagerIssuerRefResponsePtrOutput {
+	return o.ApplyT(func(v *CertManagerCertificateSpecResponse) *CertManagerIssuerRefResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.IssuerRef
+	}).(CertManagerIssuerRefResponsePtrOutput)
+}
+
+// Type of certificate private key.
+func (o CertManagerCertificateSpecResponsePtrOutput) PrivateKey() CertManagerPrivateKeyResponsePtrOutput {
+	return o.ApplyT(func(v *CertManagerCertificateSpecResponse) *CertManagerPrivateKeyResponse {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateKey
+	}).(CertManagerPrivateKeyResponsePtrOutput)
+}
+
+// When to begin renewing certificate. Must be specified using a Go time.Duration format (h|m|s). E.g. 240h for 240 hours and 45m for 45 minutes.
+func (o CertManagerCertificateSpecResponsePtrOutput) RenewBefore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CertManagerCertificateSpecResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RenewBefore
+	}).(pulumi.StringPtrOutput)
+}
+
+// Additional Subject Alternative Names (SANs) to include in the certificate.
+func (o CertManagerCertificateSpecResponsePtrOutput) San() SanForCertResponsePtrOutput {
+	return o.ApplyT(func(v *CertManagerCertificateSpecResponse) *SanForCertResponse {
+		if v == nil {
+			return nil
+		}
+		return v.San
+	}).(SanForCertResponsePtrOutput)
+}
+
+// Secret for storing server certificate. Any existing data will be overwritten. This is a reference to the secret through an identifying name, not the secret itself.
+func (o CertManagerCertificateSpecResponsePtrOutput) SecretName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CertManagerCertificateSpecResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretName
+	}).(pulumi.StringPtrOutput)
+}
+
 // Cert-Manager issuerRef properties
 type CertManagerIssuerRef struct {
 	// group of issuer.
-	ApiGroup string `pulumi:"apiGroup"`
+	Group string `pulumi:"group"`
 	// kind of issuer (Issuer or ClusterIssuer).
 	Kind string `pulumi:"kind"`
 	// name of issuer.
@@ -5223,8 +5204,8 @@ func (val *CertManagerIssuerRef) Defaults() *CertManagerIssuerRef {
 		return nil
 	}
 	tmp := *val
-	if utilities.IsZero(tmp.ApiGroup) {
-		tmp.ApiGroup = "cert-manager.io"
+	if utilities.IsZero(tmp.Group) {
+		tmp.Group = "cert-manager.io"
 	}
 	return &tmp
 }
@@ -5243,7 +5224,7 @@ type CertManagerIssuerRefInput interface {
 // Cert-Manager issuerRef properties
 type CertManagerIssuerRefArgs struct {
 	// group of issuer.
-	ApiGroup pulumi.StringInput `pulumi:"apiGroup"`
+	Group pulumi.StringInput `pulumi:"group"`
 	// kind of issuer (Issuer or ClusterIssuer).
 	Kind pulumi.StringInput `pulumi:"kind"`
 	// name of issuer.
@@ -5256,8 +5237,8 @@ func (val *CertManagerIssuerRefArgs) Defaults() *CertManagerIssuerRefArgs {
 		return nil
 	}
 	tmp := *val
-	if tmp.ApiGroup == nil {
-		tmp.ApiGroup = pulumi.String("cert-manager.io")
+	if tmp.Group == nil {
+		tmp.Group = pulumi.String("cert-manager.io")
 	}
 	return &tmp
 }
@@ -5340,8 +5321,8 @@ func (o CertManagerIssuerRefOutput) ToCertManagerIssuerRefPtrOutputWithContext(c
 }
 
 // group of issuer.
-func (o CertManagerIssuerRefOutput) ApiGroup() pulumi.StringOutput {
-	return o.ApplyT(func(v CertManagerIssuerRef) string { return v.ApiGroup }).(pulumi.StringOutput)
+func (o CertManagerIssuerRefOutput) Group() pulumi.StringOutput {
+	return o.ApplyT(func(v CertManagerIssuerRef) string { return v.Group }).(pulumi.StringOutput)
 }
 
 // kind of issuer (Issuer or ClusterIssuer).
@@ -5379,12 +5360,12 @@ func (o CertManagerIssuerRefPtrOutput) Elem() CertManagerIssuerRefOutput {
 }
 
 // group of issuer.
-func (o CertManagerIssuerRefPtrOutput) ApiGroup() pulumi.StringPtrOutput {
+func (o CertManagerIssuerRefPtrOutput) Group() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CertManagerIssuerRef) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.ApiGroup
+		return &v.Group
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -5411,7 +5392,7 @@ func (o CertManagerIssuerRefPtrOutput) Name() pulumi.StringPtrOutput {
 // Cert-Manager issuerRef properties
 type CertManagerIssuerRefResponse struct {
 	// group of issuer.
-	ApiGroup string `pulumi:"apiGroup"`
+	Group string `pulumi:"group"`
 	// kind of issuer (Issuer or ClusterIssuer).
 	Kind string `pulumi:"kind"`
 	// name of issuer.
@@ -5424,8 +5405,8 @@ func (val *CertManagerIssuerRefResponse) Defaults() *CertManagerIssuerRefRespons
 		return nil
 	}
 	tmp := *val
-	if utilities.IsZero(tmp.ApiGroup) {
-		tmp.ApiGroup = "cert-manager.io"
+	if utilities.IsZero(tmp.Group) {
+		tmp.Group = "cert-manager.io"
 	}
 	return &tmp
 }
@@ -5446,8 +5427,8 @@ func (o CertManagerIssuerRefResponseOutput) ToCertManagerIssuerRefResponseOutput
 }
 
 // group of issuer.
-func (o CertManagerIssuerRefResponseOutput) ApiGroup() pulumi.StringOutput {
-	return o.ApplyT(func(v CertManagerIssuerRefResponse) string { return v.ApiGroup }).(pulumi.StringOutput)
+func (o CertManagerIssuerRefResponseOutput) Group() pulumi.StringOutput {
+	return o.ApplyT(func(v CertManagerIssuerRefResponse) string { return v.Group }).(pulumi.StringOutput)
 }
 
 // kind of issuer (Issuer or ClusterIssuer).
@@ -5485,12 +5466,12 @@ func (o CertManagerIssuerRefResponsePtrOutput) Elem() CertManagerIssuerRefRespon
 }
 
 // group of issuer.
-func (o CertManagerIssuerRefResponsePtrOutput) ApiGroup() pulumi.StringPtrOutput {
+func (o CertManagerIssuerRefResponsePtrOutput) Group() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CertManagerIssuerRefResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.ApiGroup
+		return &v.Group
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -6161,248 +6142,8 @@ func (o ClientConfigResponsePtrOutput) SubscriberQueueLimit() SubscriberQueueLim
 	}).(SubscriberQueueLimitResponsePtrOutput)
 }
 
-// DataFlow BuiltIn Transformation properties
-type DataFlowBuiltInTransformation struct {
-	// Enrich data from Broker State Store. Dataset references a key in Broker State Store.
-	Datasets []DataFlowBuiltInTransformationDataset `pulumi:"datasets"`
-	// Filters input record or datapoints based on condition.
-	Filter []DataFlowBuiltInTransformationFilter `pulumi:"filter"`
-	// Maps input to output message.
-	Map []DataFlowBuiltInTransformationMap `pulumi:"map"`
-	// Reference to the schema that describes the output of the transformation.
-	SchemaRef *string `pulumi:"schemaRef"`
-	// Serialization format. Optional; defaults to JSON. Allowed value JSON Schema/draft-7, Parquet. Default: Json
-	SerializationFormat *string `pulumi:"serializationFormat"`
-}
-
-// Defaults sets the appropriate defaults for DataFlowBuiltInTransformation
-func (val *DataFlowBuiltInTransformation) Defaults() *DataFlowBuiltInTransformation {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.SerializationFormat == nil {
-		serializationFormat_ := "Json"
-		tmp.SerializationFormat = &serializationFormat_
-	}
-	return &tmp
-}
-
-// DataFlowBuiltInTransformationInput is an input type that accepts DataFlowBuiltInTransformationArgs and DataFlowBuiltInTransformationOutput values.
-// You can construct a concrete instance of `DataFlowBuiltInTransformationInput` via:
-//
-//	DataFlowBuiltInTransformationArgs{...}
-type DataFlowBuiltInTransformationInput interface {
-	pulumi.Input
-
-	ToDataFlowBuiltInTransformationOutput() DataFlowBuiltInTransformationOutput
-	ToDataFlowBuiltInTransformationOutputWithContext(context.Context) DataFlowBuiltInTransformationOutput
-}
-
-// DataFlow BuiltIn Transformation properties
-type DataFlowBuiltInTransformationArgs struct {
-	// Enrich data from Broker State Store. Dataset references a key in Broker State Store.
-	Datasets DataFlowBuiltInTransformationDatasetArrayInput `pulumi:"datasets"`
-	// Filters input record or datapoints based on condition.
-	Filter DataFlowBuiltInTransformationFilterArrayInput `pulumi:"filter"`
-	// Maps input to output message.
-	Map DataFlowBuiltInTransformationMapArrayInput `pulumi:"map"`
-	// Reference to the schema that describes the output of the transformation.
-	SchemaRef pulumi.StringPtrInput `pulumi:"schemaRef"`
-	// Serialization format. Optional; defaults to JSON. Allowed value JSON Schema/draft-7, Parquet. Default: Json
-	SerializationFormat pulumi.StringPtrInput `pulumi:"serializationFormat"`
-}
-
-// Defaults sets the appropriate defaults for DataFlowBuiltInTransformationArgs
-func (val *DataFlowBuiltInTransformationArgs) Defaults() *DataFlowBuiltInTransformationArgs {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.SerializationFormat == nil {
-		tmp.SerializationFormat = pulumi.StringPtr("Json")
-	}
-	return &tmp
-}
-func (DataFlowBuiltInTransformationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowBuiltInTransformation)(nil)).Elem()
-}
-
-func (i DataFlowBuiltInTransformationArgs) ToDataFlowBuiltInTransformationOutput() DataFlowBuiltInTransformationOutput {
-	return i.ToDataFlowBuiltInTransformationOutputWithContext(context.Background())
-}
-
-func (i DataFlowBuiltInTransformationArgs) ToDataFlowBuiltInTransformationOutputWithContext(ctx context.Context) DataFlowBuiltInTransformationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataFlowBuiltInTransformationOutput)
-}
-
-func (i DataFlowBuiltInTransformationArgs) ToDataFlowBuiltInTransformationPtrOutput() DataFlowBuiltInTransformationPtrOutput {
-	return i.ToDataFlowBuiltInTransformationPtrOutputWithContext(context.Background())
-}
-
-func (i DataFlowBuiltInTransformationArgs) ToDataFlowBuiltInTransformationPtrOutputWithContext(ctx context.Context) DataFlowBuiltInTransformationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataFlowBuiltInTransformationOutput).ToDataFlowBuiltInTransformationPtrOutputWithContext(ctx)
-}
-
-// DataFlowBuiltInTransformationPtrInput is an input type that accepts DataFlowBuiltInTransformationArgs, DataFlowBuiltInTransformationPtr and DataFlowBuiltInTransformationPtrOutput values.
-// You can construct a concrete instance of `DataFlowBuiltInTransformationPtrInput` via:
-//
-//	        DataFlowBuiltInTransformationArgs{...}
-//
-//	or:
-//
-//	        nil
-type DataFlowBuiltInTransformationPtrInput interface {
-	pulumi.Input
-
-	ToDataFlowBuiltInTransformationPtrOutput() DataFlowBuiltInTransformationPtrOutput
-	ToDataFlowBuiltInTransformationPtrOutputWithContext(context.Context) DataFlowBuiltInTransformationPtrOutput
-}
-
-type dataFlowBuiltInTransformationPtrType DataFlowBuiltInTransformationArgs
-
-func DataFlowBuiltInTransformationPtr(v *DataFlowBuiltInTransformationArgs) DataFlowBuiltInTransformationPtrInput {
-	return (*dataFlowBuiltInTransformationPtrType)(v)
-}
-
-func (*dataFlowBuiltInTransformationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DataFlowBuiltInTransformation)(nil)).Elem()
-}
-
-func (i *dataFlowBuiltInTransformationPtrType) ToDataFlowBuiltInTransformationPtrOutput() DataFlowBuiltInTransformationPtrOutput {
-	return i.ToDataFlowBuiltInTransformationPtrOutputWithContext(context.Background())
-}
-
-func (i *dataFlowBuiltInTransformationPtrType) ToDataFlowBuiltInTransformationPtrOutputWithContext(ctx context.Context) DataFlowBuiltInTransformationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataFlowBuiltInTransformationPtrOutput)
-}
-
-// DataFlow BuiltIn Transformation properties
-type DataFlowBuiltInTransformationOutput struct{ *pulumi.OutputState }
-
-func (DataFlowBuiltInTransformationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowBuiltInTransformation)(nil)).Elem()
-}
-
-func (o DataFlowBuiltInTransformationOutput) ToDataFlowBuiltInTransformationOutput() DataFlowBuiltInTransformationOutput {
-	return o
-}
-
-func (o DataFlowBuiltInTransformationOutput) ToDataFlowBuiltInTransformationOutputWithContext(ctx context.Context) DataFlowBuiltInTransformationOutput {
-	return o
-}
-
-func (o DataFlowBuiltInTransformationOutput) ToDataFlowBuiltInTransformationPtrOutput() DataFlowBuiltInTransformationPtrOutput {
-	return o.ToDataFlowBuiltInTransformationPtrOutputWithContext(context.Background())
-}
-
-func (o DataFlowBuiltInTransformationOutput) ToDataFlowBuiltInTransformationPtrOutputWithContext(ctx context.Context) DataFlowBuiltInTransformationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataFlowBuiltInTransformation) *DataFlowBuiltInTransformation {
-		return &v
-	}).(DataFlowBuiltInTransformationPtrOutput)
-}
-
-// Enrich data from Broker State Store. Dataset references a key in Broker State Store.
-func (o DataFlowBuiltInTransformationOutput) Datasets() DataFlowBuiltInTransformationDatasetArrayOutput {
-	return o.ApplyT(func(v DataFlowBuiltInTransformation) []DataFlowBuiltInTransformationDataset { return v.Datasets }).(DataFlowBuiltInTransformationDatasetArrayOutput)
-}
-
-// Filters input record or datapoints based on condition.
-func (o DataFlowBuiltInTransformationOutput) Filter() DataFlowBuiltInTransformationFilterArrayOutput {
-	return o.ApplyT(func(v DataFlowBuiltInTransformation) []DataFlowBuiltInTransformationFilter { return v.Filter }).(DataFlowBuiltInTransformationFilterArrayOutput)
-}
-
-// Maps input to output message.
-func (o DataFlowBuiltInTransformationOutput) Map() DataFlowBuiltInTransformationMapArrayOutput {
-	return o.ApplyT(func(v DataFlowBuiltInTransformation) []DataFlowBuiltInTransformationMap { return v.Map }).(DataFlowBuiltInTransformationMapArrayOutput)
-}
-
-// Reference to the schema that describes the output of the transformation.
-func (o DataFlowBuiltInTransformationOutput) SchemaRef() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataFlowBuiltInTransformation) *string { return v.SchemaRef }).(pulumi.StringPtrOutput)
-}
-
-// Serialization format. Optional; defaults to JSON. Allowed value JSON Schema/draft-7, Parquet. Default: Json
-func (o DataFlowBuiltInTransformationOutput) SerializationFormat() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataFlowBuiltInTransformation) *string { return v.SerializationFormat }).(pulumi.StringPtrOutput)
-}
-
-type DataFlowBuiltInTransformationPtrOutput struct{ *pulumi.OutputState }
-
-func (DataFlowBuiltInTransformationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DataFlowBuiltInTransformation)(nil)).Elem()
-}
-
-func (o DataFlowBuiltInTransformationPtrOutput) ToDataFlowBuiltInTransformationPtrOutput() DataFlowBuiltInTransformationPtrOutput {
-	return o
-}
-
-func (o DataFlowBuiltInTransformationPtrOutput) ToDataFlowBuiltInTransformationPtrOutputWithContext(ctx context.Context) DataFlowBuiltInTransformationPtrOutput {
-	return o
-}
-
-func (o DataFlowBuiltInTransformationPtrOutput) Elem() DataFlowBuiltInTransformationOutput {
-	return o.ApplyT(func(v *DataFlowBuiltInTransformation) DataFlowBuiltInTransformation {
-		if v != nil {
-			return *v
-		}
-		var ret DataFlowBuiltInTransformation
-		return ret
-	}).(DataFlowBuiltInTransformationOutput)
-}
-
-// Enrich data from Broker State Store. Dataset references a key in Broker State Store.
-func (o DataFlowBuiltInTransformationPtrOutput) Datasets() DataFlowBuiltInTransformationDatasetArrayOutput {
-	return o.ApplyT(func(v *DataFlowBuiltInTransformation) []DataFlowBuiltInTransformationDataset {
-		if v == nil {
-			return nil
-		}
-		return v.Datasets
-	}).(DataFlowBuiltInTransformationDatasetArrayOutput)
-}
-
-// Filters input record or datapoints based on condition.
-func (o DataFlowBuiltInTransformationPtrOutput) Filter() DataFlowBuiltInTransformationFilterArrayOutput {
-	return o.ApplyT(func(v *DataFlowBuiltInTransformation) []DataFlowBuiltInTransformationFilter {
-		if v == nil {
-			return nil
-		}
-		return v.Filter
-	}).(DataFlowBuiltInTransformationFilterArrayOutput)
-}
-
-// Maps input to output message.
-func (o DataFlowBuiltInTransformationPtrOutput) Map() DataFlowBuiltInTransformationMapArrayOutput {
-	return o.ApplyT(func(v *DataFlowBuiltInTransformation) []DataFlowBuiltInTransformationMap {
-		if v == nil {
-			return nil
-		}
-		return v.Map
-	}).(DataFlowBuiltInTransformationMapArrayOutput)
-}
-
-// Reference to the schema that describes the output of the transformation.
-func (o DataFlowBuiltInTransformationPtrOutput) SchemaRef() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataFlowBuiltInTransformation) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SchemaRef
-	}).(pulumi.StringPtrOutput)
-}
-
-// Serialization format. Optional; defaults to JSON. Allowed value JSON Schema/draft-7, Parquet. Default: Json
-func (o DataFlowBuiltInTransformationPtrOutput) SerializationFormat() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataFlowBuiltInTransformation) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SerializationFormat
-	}).(pulumi.StringPtrOutput)
-}
-
-// DataFlow BuiltIn Transformation dataset properties
-type DataFlowBuiltInTransformationDataset struct {
+// Dataflow BuiltIn Transformation dataset properties
+type DataflowBuiltInTransformationDataset struct {
 	// A user provided optional description of the dataset.
 	Description *string `pulumi:"description"`
 	// Condition to enrich data from Broker State Store. Example: $1 < 0 || $1 > $2 (Assuming inputs section $1 and $2 are provided)
@@ -6415,19 +6156,19 @@ type DataFlowBuiltInTransformationDataset struct {
 	SchemaRef *string `pulumi:"schemaRef"`
 }
 
-// DataFlowBuiltInTransformationDatasetInput is an input type that accepts DataFlowBuiltInTransformationDatasetArgs and DataFlowBuiltInTransformationDatasetOutput values.
-// You can construct a concrete instance of `DataFlowBuiltInTransformationDatasetInput` via:
+// DataflowBuiltInTransformationDatasetInput is an input type that accepts DataflowBuiltInTransformationDatasetArgs and DataflowBuiltInTransformationDatasetOutput values.
+// You can construct a concrete instance of `DataflowBuiltInTransformationDatasetInput` via:
 //
-//	DataFlowBuiltInTransformationDatasetArgs{...}
-type DataFlowBuiltInTransformationDatasetInput interface {
+//	DataflowBuiltInTransformationDatasetArgs{...}
+type DataflowBuiltInTransformationDatasetInput interface {
 	pulumi.Input
 
-	ToDataFlowBuiltInTransformationDatasetOutput() DataFlowBuiltInTransformationDatasetOutput
-	ToDataFlowBuiltInTransformationDatasetOutputWithContext(context.Context) DataFlowBuiltInTransformationDatasetOutput
+	ToDataflowBuiltInTransformationDatasetOutput() DataflowBuiltInTransformationDatasetOutput
+	ToDataflowBuiltInTransformationDatasetOutputWithContext(context.Context) DataflowBuiltInTransformationDatasetOutput
 }
 
-// DataFlow BuiltIn Transformation dataset properties
-type DataFlowBuiltInTransformationDatasetArgs struct {
+// Dataflow BuiltIn Transformation dataset properties
+type DataflowBuiltInTransformationDatasetArgs struct {
 	// A user provided optional description of the dataset.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Condition to enrich data from Broker State Store. Example: $1 < 0 || $1 > $2 (Assuming inputs section $1 and $2 are provided)
@@ -6440,105 +6181,105 @@ type DataFlowBuiltInTransformationDatasetArgs struct {
 	SchemaRef pulumi.StringPtrInput `pulumi:"schemaRef"`
 }
 
-func (DataFlowBuiltInTransformationDatasetArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowBuiltInTransformationDataset)(nil)).Elem()
+func (DataflowBuiltInTransformationDatasetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowBuiltInTransformationDataset)(nil)).Elem()
 }
 
-func (i DataFlowBuiltInTransformationDatasetArgs) ToDataFlowBuiltInTransformationDatasetOutput() DataFlowBuiltInTransformationDatasetOutput {
-	return i.ToDataFlowBuiltInTransformationDatasetOutputWithContext(context.Background())
+func (i DataflowBuiltInTransformationDatasetArgs) ToDataflowBuiltInTransformationDatasetOutput() DataflowBuiltInTransformationDatasetOutput {
+	return i.ToDataflowBuiltInTransformationDatasetOutputWithContext(context.Background())
 }
 
-func (i DataFlowBuiltInTransformationDatasetArgs) ToDataFlowBuiltInTransformationDatasetOutputWithContext(ctx context.Context) DataFlowBuiltInTransformationDatasetOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataFlowBuiltInTransformationDatasetOutput)
+func (i DataflowBuiltInTransformationDatasetArgs) ToDataflowBuiltInTransformationDatasetOutputWithContext(ctx context.Context) DataflowBuiltInTransformationDatasetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowBuiltInTransformationDatasetOutput)
 }
 
-// DataFlowBuiltInTransformationDatasetArrayInput is an input type that accepts DataFlowBuiltInTransformationDatasetArray and DataFlowBuiltInTransformationDatasetArrayOutput values.
-// You can construct a concrete instance of `DataFlowBuiltInTransformationDatasetArrayInput` via:
+// DataflowBuiltInTransformationDatasetArrayInput is an input type that accepts DataflowBuiltInTransformationDatasetArray and DataflowBuiltInTransformationDatasetArrayOutput values.
+// You can construct a concrete instance of `DataflowBuiltInTransformationDatasetArrayInput` via:
 //
-//	DataFlowBuiltInTransformationDatasetArray{ DataFlowBuiltInTransformationDatasetArgs{...} }
-type DataFlowBuiltInTransformationDatasetArrayInput interface {
+//	DataflowBuiltInTransformationDatasetArray{ DataflowBuiltInTransformationDatasetArgs{...} }
+type DataflowBuiltInTransformationDatasetArrayInput interface {
 	pulumi.Input
 
-	ToDataFlowBuiltInTransformationDatasetArrayOutput() DataFlowBuiltInTransformationDatasetArrayOutput
-	ToDataFlowBuiltInTransformationDatasetArrayOutputWithContext(context.Context) DataFlowBuiltInTransformationDatasetArrayOutput
+	ToDataflowBuiltInTransformationDatasetArrayOutput() DataflowBuiltInTransformationDatasetArrayOutput
+	ToDataflowBuiltInTransformationDatasetArrayOutputWithContext(context.Context) DataflowBuiltInTransformationDatasetArrayOutput
 }
 
-type DataFlowBuiltInTransformationDatasetArray []DataFlowBuiltInTransformationDatasetInput
+type DataflowBuiltInTransformationDatasetArray []DataflowBuiltInTransformationDatasetInput
 
-func (DataFlowBuiltInTransformationDatasetArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DataFlowBuiltInTransformationDataset)(nil)).Elem()
+func (DataflowBuiltInTransformationDatasetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataflowBuiltInTransformationDataset)(nil)).Elem()
 }
 
-func (i DataFlowBuiltInTransformationDatasetArray) ToDataFlowBuiltInTransformationDatasetArrayOutput() DataFlowBuiltInTransformationDatasetArrayOutput {
-	return i.ToDataFlowBuiltInTransformationDatasetArrayOutputWithContext(context.Background())
+func (i DataflowBuiltInTransformationDatasetArray) ToDataflowBuiltInTransformationDatasetArrayOutput() DataflowBuiltInTransformationDatasetArrayOutput {
+	return i.ToDataflowBuiltInTransformationDatasetArrayOutputWithContext(context.Background())
 }
 
-func (i DataFlowBuiltInTransformationDatasetArray) ToDataFlowBuiltInTransformationDatasetArrayOutputWithContext(ctx context.Context) DataFlowBuiltInTransformationDatasetArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataFlowBuiltInTransformationDatasetArrayOutput)
+func (i DataflowBuiltInTransformationDatasetArray) ToDataflowBuiltInTransformationDatasetArrayOutputWithContext(ctx context.Context) DataflowBuiltInTransformationDatasetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowBuiltInTransformationDatasetArrayOutput)
 }
 
-// DataFlow BuiltIn Transformation dataset properties
-type DataFlowBuiltInTransformationDatasetOutput struct{ *pulumi.OutputState }
+// Dataflow BuiltIn Transformation dataset properties
+type DataflowBuiltInTransformationDatasetOutput struct{ *pulumi.OutputState }
 
-func (DataFlowBuiltInTransformationDatasetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowBuiltInTransformationDataset)(nil)).Elem()
+func (DataflowBuiltInTransformationDatasetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowBuiltInTransformationDataset)(nil)).Elem()
 }
 
-func (o DataFlowBuiltInTransformationDatasetOutput) ToDataFlowBuiltInTransformationDatasetOutput() DataFlowBuiltInTransformationDatasetOutput {
+func (o DataflowBuiltInTransformationDatasetOutput) ToDataflowBuiltInTransformationDatasetOutput() DataflowBuiltInTransformationDatasetOutput {
 	return o
 }
 
-func (o DataFlowBuiltInTransformationDatasetOutput) ToDataFlowBuiltInTransformationDatasetOutputWithContext(ctx context.Context) DataFlowBuiltInTransformationDatasetOutput {
+func (o DataflowBuiltInTransformationDatasetOutput) ToDataflowBuiltInTransformationDatasetOutputWithContext(ctx context.Context) DataflowBuiltInTransformationDatasetOutput {
 	return o
 }
 
 // A user provided optional description of the dataset.
-func (o DataFlowBuiltInTransformationDatasetOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataFlowBuiltInTransformationDataset) *string { return v.Description }).(pulumi.StringPtrOutput)
+func (o DataflowBuiltInTransformationDatasetOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowBuiltInTransformationDataset) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // Condition to enrich data from Broker State Store. Example: $1 < 0 || $1 > $2 (Assuming inputs section $1 and $2 are provided)
-func (o DataFlowBuiltInTransformationDatasetOutput) Expression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataFlowBuiltInTransformationDataset) *string { return v.Expression }).(pulumi.StringPtrOutput)
+func (o DataflowBuiltInTransformationDatasetOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowBuiltInTransformationDataset) *string { return v.Expression }).(pulumi.StringPtrOutput)
 }
 
 // List of fields for enriching from the Broker State Store.
-func (o DataFlowBuiltInTransformationDatasetOutput) Inputs() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v DataFlowBuiltInTransformationDataset) []string { return v.Inputs }).(pulumi.StringArrayOutput)
+func (o DataflowBuiltInTransformationDatasetOutput) Inputs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DataflowBuiltInTransformationDataset) []string { return v.Inputs }).(pulumi.StringArrayOutput)
 }
 
 // The key of the dataset.
-func (o DataFlowBuiltInTransformationDatasetOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func(v DataFlowBuiltInTransformationDataset) string { return v.Key }).(pulumi.StringOutput)
+func (o DataflowBuiltInTransformationDatasetOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowBuiltInTransformationDataset) string { return v.Key }).(pulumi.StringOutput)
 }
 
 // The reference to the schema that describes the dataset. Allowed: JSON Schema/draft-7.
-func (o DataFlowBuiltInTransformationDatasetOutput) SchemaRef() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataFlowBuiltInTransformationDataset) *string { return v.SchemaRef }).(pulumi.StringPtrOutput)
+func (o DataflowBuiltInTransformationDatasetOutput) SchemaRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowBuiltInTransformationDataset) *string { return v.SchemaRef }).(pulumi.StringPtrOutput)
 }
 
-type DataFlowBuiltInTransformationDatasetArrayOutput struct{ *pulumi.OutputState }
+type DataflowBuiltInTransformationDatasetArrayOutput struct{ *pulumi.OutputState }
 
-func (DataFlowBuiltInTransformationDatasetArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DataFlowBuiltInTransformationDataset)(nil)).Elem()
+func (DataflowBuiltInTransformationDatasetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataflowBuiltInTransformationDataset)(nil)).Elem()
 }
 
-func (o DataFlowBuiltInTransformationDatasetArrayOutput) ToDataFlowBuiltInTransformationDatasetArrayOutput() DataFlowBuiltInTransformationDatasetArrayOutput {
+func (o DataflowBuiltInTransformationDatasetArrayOutput) ToDataflowBuiltInTransformationDatasetArrayOutput() DataflowBuiltInTransformationDatasetArrayOutput {
 	return o
 }
 
-func (o DataFlowBuiltInTransformationDatasetArrayOutput) ToDataFlowBuiltInTransformationDatasetArrayOutputWithContext(ctx context.Context) DataFlowBuiltInTransformationDatasetArrayOutput {
+func (o DataflowBuiltInTransformationDatasetArrayOutput) ToDataflowBuiltInTransformationDatasetArrayOutputWithContext(ctx context.Context) DataflowBuiltInTransformationDatasetArrayOutput {
 	return o
 }
 
-func (o DataFlowBuiltInTransformationDatasetArrayOutput) Index(i pulumi.IntInput) DataFlowBuiltInTransformationDatasetOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataFlowBuiltInTransformationDataset {
-		return vs[0].([]DataFlowBuiltInTransformationDataset)[vs[1].(int)]
-	}).(DataFlowBuiltInTransformationDatasetOutput)
+func (o DataflowBuiltInTransformationDatasetArrayOutput) Index(i pulumi.IntInput) DataflowBuiltInTransformationDatasetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataflowBuiltInTransformationDataset {
+		return vs[0].([]DataflowBuiltInTransformationDataset)[vs[1].(int)]
+	}).(DataflowBuiltInTransformationDatasetOutput)
 }
 
-// DataFlow BuiltIn Transformation dataset properties
-type DataFlowBuiltInTransformationDatasetResponse struct {
+// Dataflow BuiltIn Transformation dataset properties
+type DataflowBuiltInTransformationDatasetResponse struct {
 	// A user provided optional description of the dataset.
 	Description *string `pulumi:"description"`
 	// Condition to enrich data from Broker State Store. Example: $1 < 0 || $1 > $2 (Assuming inputs section $1 and $2 are provided)
@@ -6551,68 +6292,68 @@ type DataFlowBuiltInTransformationDatasetResponse struct {
 	SchemaRef *string `pulumi:"schemaRef"`
 }
 
-// DataFlow BuiltIn Transformation dataset properties
-type DataFlowBuiltInTransformationDatasetResponseOutput struct{ *pulumi.OutputState }
+// Dataflow BuiltIn Transformation dataset properties
+type DataflowBuiltInTransformationDatasetResponseOutput struct{ *pulumi.OutputState }
 
-func (DataFlowBuiltInTransformationDatasetResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowBuiltInTransformationDatasetResponse)(nil)).Elem()
+func (DataflowBuiltInTransformationDatasetResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowBuiltInTransformationDatasetResponse)(nil)).Elem()
 }
 
-func (o DataFlowBuiltInTransformationDatasetResponseOutput) ToDataFlowBuiltInTransformationDatasetResponseOutput() DataFlowBuiltInTransformationDatasetResponseOutput {
+func (o DataflowBuiltInTransformationDatasetResponseOutput) ToDataflowBuiltInTransformationDatasetResponseOutput() DataflowBuiltInTransformationDatasetResponseOutput {
 	return o
 }
 
-func (o DataFlowBuiltInTransformationDatasetResponseOutput) ToDataFlowBuiltInTransformationDatasetResponseOutputWithContext(ctx context.Context) DataFlowBuiltInTransformationDatasetResponseOutput {
+func (o DataflowBuiltInTransformationDatasetResponseOutput) ToDataflowBuiltInTransformationDatasetResponseOutputWithContext(ctx context.Context) DataflowBuiltInTransformationDatasetResponseOutput {
 	return o
 }
 
 // A user provided optional description of the dataset.
-func (o DataFlowBuiltInTransformationDatasetResponseOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataFlowBuiltInTransformationDatasetResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+func (o DataflowBuiltInTransformationDatasetResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowBuiltInTransformationDatasetResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // Condition to enrich data from Broker State Store. Example: $1 < 0 || $1 > $2 (Assuming inputs section $1 and $2 are provided)
-func (o DataFlowBuiltInTransformationDatasetResponseOutput) Expression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataFlowBuiltInTransformationDatasetResponse) *string { return v.Expression }).(pulumi.StringPtrOutput)
+func (o DataflowBuiltInTransformationDatasetResponseOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowBuiltInTransformationDatasetResponse) *string { return v.Expression }).(pulumi.StringPtrOutput)
 }
 
 // List of fields for enriching from the Broker State Store.
-func (o DataFlowBuiltInTransformationDatasetResponseOutput) Inputs() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v DataFlowBuiltInTransformationDatasetResponse) []string { return v.Inputs }).(pulumi.StringArrayOutput)
+func (o DataflowBuiltInTransformationDatasetResponseOutput) Inputs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DataflowBuiltInTransformationDatasetResponse) []string { return v.Inputs }).(pulumi.StringArrayOutput)
 }
 
 // The key of the dataset.
-func (o DataFlowBuiltInTransformationDatasetResponseOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func(v DataFlowBuiltInTransformationDatasetResponse) string { return v.Key }).(pulumi.StringOutput)
+func (o DataflowBuiltInTransformationDatasetResponseOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowBuiltInTransformationDatasetResponse) string { return v.Key }).(pulumi.StringOutput)
 }
 
 // The reference to the schema that describes the dataset. Allowed: JSON Schema/draft-7.
-func (o DataFlowBuiltInTransformationDatasetResponseOutput) SchemaRef() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataFlowBuiltInTransformationDatasetResponse) *string { return v.SchemaRef }).(pulumi.StringPtrOutput)
+func (o DataflowBuiltInTransformationDatasetResponseOutput) SchemaRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowBuiltInTransformationDatasetResponse) *string { return v.SchemaRef }).(pulumi.StringPtrOutput)
 }
 
-type DataFlowBuiltInTransformationDatasetResponseArrayOutput struct{ *pulumi.OutputState }
+type DataflowBuiltInTransformationDatasetResponseArrayOutput struct{ *pulumi.OutputState }
 
-func (DataFlowBuiltInTransformationDatasetResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DataFlowBuiltInTransformationDatasetResponse)(nil)).Elem()
+func (DataflowBuiltInTransformationDatasetResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataflowBuiltInTransformationDatasetResponse)(nil)).Elem()
 }
 
-func (o DataFlowBuiltInTransformationDatasetResponseArrayOutput) ToDataFlowBuiltInTransformationDatasetResponseArrayOutput() DataFlowBuiltInTransformationDatasetResponseArrayOutput {
+func (o DataflowBuiltInTransformationDatasetResponseArrayOutput) ToDataflowBuiltInTransformationDatasetResponseArrayOutput() DataflowBuiltInTransformationDatasetResponseArrayOutput {
 	return o
 }
 
-func (o DataFlowBuiltInTransformationDatasetResponseArrayOutput) ToDataFlowBuiltInTransformationDatasetResponseArrayOutputWithContext(ctx context.Context) DataFlowBuiltInTransformationDatasetResponseArrayOutput {
+func (o DataflowBuiltInTransformationDatasetResponseArrayOutput) ToDataflowBuiltInTransformationDatasetResponseArrayOutputWithContext(ctx context.Context) DataflowBuiltInTransformationDatasetResponseArrayOutput {
 	return o
 }
 
-func (o DataFlowBuiltInTransformationDatasetResponseArrayOutput) Index(i pulumi.IntInput) DataFlowBuiltInTransformationDatasetResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataFlowBuiltInTransformationDatasetResponse {
-		return vs[0].([]DataFlowBuiltInTransformationDatasetResponse)[vs[1].(int)]
-	}).(DataFlowBuiltInTransformationDatasetResponseOutput)
+func (o DataflowBuiltInTransformationDatasetResponseArrayOutput) Index(i pulumi.IntInput) DataflowBuiltInTransformationDatasetResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataflowBuiltInTransformationDatasetResponse {
+		return vs[0].([]DataflowBuiltInTransformationDatasetResponse)[vs[1].(int)]
+	}).(DataflowBuiltInTransformationDatasetResponseOutput)
 }
 
-// DataFlow BuiltIn Transformation filter properties
-type DataFlowBuiltInTransformationFilter struct {
+// Dataflow BuiltIn Transformation filter properties
+type DataflowBuiltInTransformationFilter struct {
 	// A user provided optional description of the filter.
 	Description *string `pulumi:"description"`
 	// Condition to filter data. Can reference input fields with {n} where n is the index of the input field starting from 1. Example: $1 < 0 || $1 > $2 (Assuming inputs section $1 and $2 are provided)
@@ -6623,8 +6364,8 @@ type DataFlowBuiltInTransformationFilter struct {
 	Type *string `pulumi:"type"`
 }
 
-// Defaults sets the appropriate defaults for DataFlowBuiltInTransformationFilter
-func (val *DataFlowBuiltInTransformationFilter) Defaults() *DataFlowBuiltInTransformationFilter {
+// Defaults sets the appropriate defaults for DataflowBuiltInTransformationFilter
+func (val *DataflowBuiltInTransformationFilter) Defaults() *DataflowBuiltInTransformationFilter {
 	if val == nil {
 		return nil
 	}
@@ -6636,19 +6377,19 @@ func (val *DataFlowBuiltInTransformationFilter) Defaults() *DataFlowBuiltInTrans
 	return &tmp
 }
 
-// DataFlowBuiltInTransformationFilterInput is an input type that accepts DataFlowBuiltInTransformationFilterArgs and DataFlowBuiltInTransformationFilterOutput values.
-// You can construct a concrete instance of `DataFlowBuiltInTransformationFilterInput` via:
+// DataflowBuiltInTransformationFilterInput is an input type that accepts DataflowBuiltInTransformationFilterArgs and DataflowBuiltInTransformationFilterOutput values.
+// You can construct a concrete instance of `DataflowBuiltInTransformationFilterInput` via:
 //
-//	DataFlowBuiltInTransformationFilterArgs{...}
-type DataFlowBuiltInTransformationFilterInput interface {
+//	DataflowBuiltInTransformationFilterArgs{...}
+type DataflowBuiltInTransformationFilterInput interface {
 	pulumi.Input
 
-	ToDataFlowBuiltInTransformationFilterOutput() DataFlowBuiltInTransformationFilterOutput
-	ToDataFlowBuiltInTransformationFilterOutputWithContext(context.Context) DataFlowBuiltInTransformationFilterOutput
+	ToDataflowBuiltInTransformationFilterOutput() DataflowBuiltInTransformationFilterOutput
+	ToDataflowBuiltInTransformationFilterOutputWithContext(context.Context) DataflowBuiltInTransformationFilterOutput
 }
 
-// DataFlow BuiltIn Transformation filter properties
-type DataFlowBuiltInTransformationFilterArgs struct {
+// Dataflow BuiltIn Transformation filter properties
+type DataflowBuiltInTransformationFilterArgs struct {
 	// A user provided optional description of the filter.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Condition to filter data. Can reference input fields with {n} where n is the index of the input field starting from 1. Example: $1 < 0 || $1 > $2 (Assuming inputs section $1 and $2 are provided)
@@ -6659,8 +6400,8 @@ type DataFlowBuiltInTransformationFilterArgs struct {
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
-// Defaults sets the appropriate defaults for DataFlowBuiltInTransformationFilterArgs
-func (val *DataFlowBuiltInTransformationFilterArgs) Defaults() *DataFlowBuiltInTransformationFilterArgs {
+// Defaults sets the appropriate defaults for DataflowBuiltInTransformationFilterArgs
+func (val *DataflowBuiltInTransformationFilterArgs) Defaults() *DataflowBuiltInTransformationFilterArgs {
 	if val == nil {
 		return nil
 	}
@@ -6670,100 +6411,100 @@ func (val *DataFlowBuiltInTransformationFilterArgs) Defaults() *DataFlowBuiltInT
 	}
 	return &tmp
 }
-func (DataFlowBuiltInTransformationFilterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowBuiltInTransformationFilter)(nil)).Elem()
+func (DataflowBuiltInTransformationFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowBuiltInTransformationFilter)(nil)).Elem()
 }
 
-func (i DataFlowBuiltInTransformationFilterArgs) ToDataFlowBuiltInTransformationFilterOutput() DataFlowBuiltInTransformationFilterOutput {
-	return i.ToDataFlowBuiltInTransformationFilterOutputWithContext(context.Background())
+func (i DataflowBuiltInTransformationFilterArgs) ToDataflowBuiltInTransformationFilterOutput() DataflowBuiltInTransformationFilterOutput {
+	return i.ToDataflowBuiltInTransformationFilterOutputWithContext(context.Background())
 }
 
-func (i DataFlowBuiltInTransformationFilterArgs) ToDataFlowBuiltInTransformationFilterOutputWithContext(ctx context.Context) DataFlowBuiltInTransformationFilterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataFlowBuiltInTransformationFilterOutput)
+func (i DataflowBuiltInTransformationFilterArgs) ToDataflowBuiltInTransformationFilterOutputWithContext(ctx context.Context) DataflowBuiltInTransformationFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowBuiltInTransformationFilterOutput)
 }
 
-// DataFlowBuiltInTransformationFilterArrayInput is an input type that accepts DataFlowBuiltInTransformationFilterArray and DataFlowBuiltInTransformationFilterArrayOutput values.
-// You can construct a concrete instance of `DataFlowBuiltInTransformationFilterArrayInput` via:
+// DataflowBuiltInTransformationFilterArrayInput is an input type that accepts DataflowBuiltInTransformationFilterArray and DataflowBuiltInTransformationFilterArrayOutput values.
+// You can construct a concrete instance of `DataflowBuiltInTransformationFilterArrayInput` via:
 //
-//	DataFlowBuiltInTransformationFilterArray{ DataFlowBuiltInTransformationFilterArgs{...} }
-type DataFlowBuiltInTransformationFilterArrayInput interface {
+//	DataflowBuiltInTransformationFilterArray{ DataflowBuiltInTransformationFilterArgs{...} }
+type DataflowBuiltInTransformationFilterArrayInput interface {
 	pulumi.Input
 
-	ToDataFlowBuiltInTransformationFilterArrayOutput() DataFlowBuiltInTransformationFilterArrayOutput
-	ToDataFlowBuiltInTransformationFilterArrayOutputWithContext(context.Context) DataFlowBuiltInTransformationFilterArrayOutput
+	ToDataflowBuiltInTransformationFilterArrayOutput() DataflowBuiltInTransformationFilterArrayOutput
+	ToDataflowBuiltInTransformationFilterArrayOutputWithContext(context.Context) DataflowBuiltInTransformationFilterArrayOutput
 }
 
-type DataFlowBuiltInTransformationFilterArray []DataFlowBuiltInTransformationFilterInput
+type DataflowBuiltInTransformationFilterArray []DataflowBuiltInTransformationFilterInput
 
-func (DataFlowBuiltInTransformationFilterArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DataFlowBuiltInTransformationFilter)(nil)).Elem()
+func (DataflowBuiltInTransformationFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataflowBuiltInTransformationFilter)(nil)).Elem()
 }
 
-func (i DataFlowBuiltInTransformationFilterArray) ToDataFlowBuiltInTransformationFilterArrayOutput() DataFlowBuiltInTransformationFilterArrayOutput {
-	return i.ToDataFlowBuiltInTransformationFilterArrayOutputWithContext(context.Background())
+func (i DataflowBuiltInTransformationFilterArray) ToDataflowBuiltInTransformationFilterArrayOutput() DataflowBuiltInTransformationFilterArrayOutput {
+	return i.ToDataflowBuiltInTransformationFilterArrayOutputWithContext(context.Background())
 }
 
-func (i DataFlowBuiltInTransformationFilterArray) ToDataFlowBuiltInTransformationFilterArrayOutputWithContext(ctx context.Context) DataFlowBuiltInTransformationFilterArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataFlowBuiltInTransformationFilterArrayOutput)
+func (i DataflowBuiltInTransformationFilterArray) ToDataflowBuiltInTransformationFilterArrayOutputWithContext(ctx context.Context) DataflowBuiltInTransformationFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowBuiltInTransformationFilterArrayOutput)
 }
 
-// DataFlow BuiltIn Transformation filter properties
-type DataFlowBuiltInTransformationFilterOutput struct{ *pulumi.OutputState }
+// Dataflow BuiltIn Transformation filter properties
+type DataflowBuiltInTransformationFilterOutput struct{ *pulumi.OutputState }
 
-func (DataFlowBuiltInTransformationFilterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowBuiltInTransformationFilter)(nil)).Elem()
+func (DataflowBuiltInTransformationFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowBuiltInTransformationFilter)(nil)).Elem()
 }
 
-func (o DataFlowBuiltInTransformationFilterOutput) ToDataFlowBuiltInTransformationFilterOutput() DataFlowBuiltInTransformationFilterOutput {
+func (o DataflowBuiltInTransformationFilterOutput) ToDataflowBuiltInTransformationFilterOutput() DataflowBuiltInTransformationFilterOutput {
 	return o
 }
 
-func (o DataFlowBuiltInTransformationFilterOutput) ToDataFlowBuiltInTransformationFilterOutputWithContext(ctx context.Context) DataFlowBuiltInTransformationFilterOutput {
+func (o DataflowBuiltInTransformationFilterOutput) ToDataflowBuiltInTransformationFilterOutputWithContext(ctx context.Context) DataflowBuiltInTransformationFilterOutput {
 	return o
 }
 
 // A user provided optional description of the filter.
-func (o DataFlowBuiltInTransformationFilterOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataFlowBuiltInTransformationFilter) *string { return v.Description }).(pulumi.StringPtrOutput)
+func (o DataflowBuiltInTransformationFilterOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowBuiltInTransformationFilter) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // Condition to filter data. Can reference input fields with {n} where n is the index of the input field starting from 1. Example: $1 < 0 || $1 > $2 (Assuming inputs section $1 and $2 are provided)
-func (o DataFlowBuiltInTransformationFilterOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v DataFlowBuiltInTransformationFilter) string { return v.Expression }).(pulumi.StringOutput)
+func (o DataflowBuiltInTransformationFilterOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowBuiltInTransformationFilter) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 // List of fields for filtering in JSON path expression.
-func (o DataFlowBuiltInTransformationFilterOutput) Inputs() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v DataFlowBuiltInTransformationFilter) []string { return v.Inputs }).(pulumi.StringArrayOutput)
+func (o DataflowBuiltInTransformationFilterOutput) Inputs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DataflowBuiltInTransformationFilter) []string { return v.Inputs }).(pulumi.StringArrayOutput)
 }
 
 // The type of dataflow operation.
-func (o DataFlowBuiltInTransformationFilterOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataFlowBuiltInTransformationFilter) *string { return v.Type }).(pulumi.StringPtrOutput)
+func (o DataflowBuiltInTransformationFilterOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowBuiltInTransformationFilter) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-type DataFlowBuiltInTransformationFilterArrayOutput struct{ *pulumi.OutputState }
+type DataflowBuiltInTransformationFilterArrayOutput struct{ *pulumi.OutputState }
 
-func (DataFlowBuiltInTransformationFilterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DataFlowBuiltInTransformationFilter)(nil)).Elem()
+func (DataflowBuiltInTransformationFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataflowBuiltInTransformationFilter)(nil)).Elem()
 }
 
-func (o DataFlowBuiltInTransformationFilterArrayOutput) ToDataFlowBuiltInTransformationFilterArrayOutput() DataFlowBuiltInTransformationFilterArrayOutput {
+func (o DataflowBuiltInTransformationFilterArrayOutput) ToDataflowBuiltInTransformationFilterArrayOutput() DataflowBuiltInTransformationFilterArrayOutput {
 	return o
 }
 
-func (o DataFlowBuiltInTransformationFilterArrayOutput) ToDataFlowBuiltInTransformationFilterArrayOutputWithContext(ctx context.Context) DataFlowBuiltInTransformationFilterArrayOutput {
+func (o DataflowBuiltInTransformationFilterArrayOutput) ToDataflowBuiltInTransformationFilterArrayOutputWithContext(ctx context.Context) DataflowBuiltInTransformationFilterArrayOutput {
 	return o
 }
 
-func (o DataFlowBuiltInTransformationFilterArrayOutput) Index(i pulumi.IntInput) DataFlowBuiltInTransformationFilterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataFlowBuiltInTransformationFilter {
-		return vs[0].([]DataFlowBuiltInTransformationFilter)[vs[1].(int)]
-	}).(DataFlowBuiltInTransformationFilterOutput)
+func (o DataflowBuiltInTransformationFilterArrayOutput) Index(i pulumi.IntInput) DataflowBuiltInTransformationFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataflowBuiltInTransformationFilter {
+		return vs[0].([]DataflowBuiltInTransformationFilter)[vs[1].(int)]
+	}).(DataflowBuiltInTransformationFilterOutput)
 }
 
-// DataFlow BuiltIn Transformation filter properties
-type DataFlowBuiltInTransformationFilterResponse struct {
+// Dataflow BuiltIn Transformation filter properties
+type DataflowBuiltInTransformationFilterResponse struct {
 	// A user provided optional description of the filter.
 	Description *string `pulumi:"description"`
 	// Condition to filter data. Can reference input fields with {n} where n is the index of the input field starting from 1. Example: $1 < 0 || $1 > $2 (Assuming inputs section $1 and $2 are provided)
@@ -6774,8 +6515,8 @@ type DataFlowBuiltInTransformationFilterResponse struct {
 	Type *string `pulumi:"type"`
 }
 
-// Defaults sets the appropriate defaults for DataFlowBuiltInTransformationFilterResponse
-func (val *DataFlowBuiltInTransformationFilterResponse) Defaults() *DataFlowBuiltInTransformationFilterResponse {
+// Defaults sets the appropriate defaults for DataflowBuiltInTransformationFilterResponse
+func (val *DataflowBuiltInTransformationFilterResponse) Defaults() *DataflowBuiltInTransformationFilterResponse {
 	if val == nil {
 		return nil
 	}
@@ -6787,63 +6528,63 @@ func (val *DataFlowBuiltInTransformationFilterResponse) Defaults() *DataFlowBuil
 	return &tmp
 }
 
-// DataFlow BuiltIn Transformation filter properties
-type DataFlowBuiltInTransformationFilterResponseOutput struct{ *pulumi.OutputState }
+// Dataflow BuiltIn Transformation filter properties
+type DataflowBuiltInTransformationFilterResponseOutput struct{ *pulumi.OutputState }
 
-func (DataFlowBuiltInTransformationFilterResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowBuiltInTransformationFilterResponse)(nil)).Elem()
+func (DataflowBuiltInTransformationFilterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowBuiltInTransformationFilterResponse)(nil)).Elem()
 }
 
-func (o DataFlowBuiltInTransformationFilterResponseOutput) ToDataFlowBuiltInTransformationFilterResponseOutput() DataFlowBuiltInTransformationFilterResponseOutput {
+func (o DataflowBuiltInTransformationFilterResponseOutput) ToDataflowBuiltInTransformationFilterResponseOutput() DataflowBuiltInTransformationFilterResponseOutput {
 	return o
 }
 
-func (o DataFlowBuiltInTransformationFilterResponseOutput) ToDataFlowBuiltInTransformationFilterResponseOutputWithContext(ctx context.Context) DataFlowBuiltInTransformationFilterResponseOutput {
+func (o DataflowBuiltInTransformationFilterResponseOutput) ToDataflowBuiltInTransformationFilterResponseOutputWithContext(ctx context.Context) DataflowBuiltInTransformationFilterResponseOutput {
 	return o
 }
 
 // A user provided optional description of the filter.
-func (o DataFlowBuiltInTransformationFilterResponseOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataFlowBuiltInTransformationFilterResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+func (o DataflowBuiltInTransformationFilterResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowBuiltInTransformationFilterResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // Condition to filter data. Can reference input fields with {n} where n is the index of the input field starting from 1. Example: $1 < 0 || $1 > $2 (Assuming inputs section $1 and $2 are provided)
-func (o DataFlowBuiltInTransformationFilterResponseOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v DataFlowBuiltInTransformationFilterResponse) string { return v.Expression }).(pulumi.StringOutput)
+func (o DataflowBuiltInTransformationFilterResponseOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowBuiltInTransformationFilterResponse) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 // List of fields for filtering in JSON path expression.
-func (o DataFlowBuiltInTransformationFilterResponseOutput) Inputs() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v DataFlowBuiltInTransformationFilterResponse) []string { return v.Inputs }).(pulumi.StringArrayOutput)
+func (o DataflowBuiltInTransformationFilterResponseOutput) Inputs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DataflowBuiltInTransformationFilterResponse) []string { return v.Inputs }).(pulumi.StringArrayOutput)
 }
 
 // The type of dataflow operation.
-func (o DataFlowBuiltInTransformationFilterResponseOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataFlowBuiltInTransformationFilterResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
+func (o DataflowBuiltInTransformationFilterResponseOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowBuiltInTransformationFilterResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-type DataFlowBuiltInTransformationFilterResponseArrayOutput struct{ *pulumi.OutputState }
+type DataflowBuiltInTransformationFilterResponseArrayOutput struct{ *pulumi.OutputState }
 
-func (DataFlowBuiltInTransformationFilterResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DataFlowBuiltInTransformationFilterResponse)(nil)).Elem()
+func (DataflowBuiltInTransformationFilterResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataflowBuiltInTransformationFilterResponse)(nil)).Elem()
 }
 
-func (o DataFlowBuiltInTransformationFilterResponseArrayOutput) ToDataFlowBuiltInTransformationFilterResponseArrayOutput() DataFlowBuiltInTransformationFilterResponseArrayOutput {
+func (o DataflowBuiltInTransformationFilterResponseArrayOutput) ToDataflowBuiltInTransformationFilterResponseArrayOutput() DataflowBuiltInTransformationFilterResponseArrayOutput {
 	return o
 }
 
-func (o DataFlowBuiltInTransformationFilterResponseArrayOutput) ToDataFlowBuiltInTransformationFilterResponseArrayOutputWithContext(ctx context.Context) DataFlowBuiltInTransformationFilterResponseArrayOutput {
+func (o DataflowBuiltInTransformationFilterResponseArrayOutput) ToDataflowBuiltInTransformationFilterResponseArrayOutputWithContext(ctx context.Context) DataflowBuiltInTransformationFilterResponseArrayOutput {
 	return o
 }
 
-func (o DataFlowBuiltInTransformationFilterResponseArrayOutput) Index(i pulumi.IntInput) DataFlowBuiltInTransformationFilterResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataFlowBuiltInTransformationFilterResponse {
-		return vs[0].([]DataFlowBuiltInTransformationFilterResponse)[vs[1].(int)]
-	}).(DataFlowBuiltInTransformationFilterResponseOutput)
+func (o DataflowBuiltInTransformationFilterResponseArrayOutput) Index(i pulumi.IntInput) DataflowBuiltInTransformationFilterResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataflowBuiltInTransformationFilterResponse {
+		return vs[0].([]DataflowBuiltInTransformationFilterResponse)[vs[1].(int)]
+	}).(DataflowBuiltInTransformationFilterResponseOutput)
 }
 
-// DataFlow BuiltIn Transformation map properties
-type DataFlowBuiltInTransformationMap struct {
+// Dataflow BuiltIn Transformation map properties
+type DataflowBuiltInTransformationMap struct {
 	// A user provided optional description of the mapping function.
 	Description *string `pulumi:"description"`
 	// Modify the inputs field(s) to the final output field. Example: $1 * 2.2 (Assuming inputs section $1 is provided)
@@ -6856,19 +6597,19 @@ type DataFlowBuiltInTransformationMap struct {
 	Type *string `pulumi:"type"`
 }
 
-// DataFlowBuiltInTransformationMapInput is an input type that accepts DataFlowBuiltInTransformationMap and DataFlowBuiltInTransformationMapOutput values.
-// You can construct a concrete instance of `DataFlowBuiltInTransformationMapInput` via:
+// DataflowBuiltInTransformationMapInput is an input type that accepts DataflowBuiltInTransformationMap and DataflowBuiltInTransformationMapOutput values.
+// You can construct a concrete instance of `DataflowBuiltInTransformationMapInput` via:
 //
-//	DataFlowBuiltInTransformationMap{ "key": DataFlowBuiltInTransformationArgs{...} }
-type DataFlowBuiltInTransformationMapInput interface {
+//	DataflowBuiltInTransformationMap{ "key": DataflowBuiltInTransformationArgs{...} }
+type DataflowBuiltInTransformationMapInput interface {
 	pulumi.Input
 
-	ToDataFlowBuiltInTransformationMapOutput() DataFlowBuiltInTransformationMapOutput
-	ToDataFlowBuiltInTransformationMapOutputWithContext(context.Context) DataFlowBuiltInTransformationMapOutput
+	ToDataflowBuiltInTransformationMapOutput() DataflowBuiltInTransformationMapOutput
+	ToDataflowBuiltInTransformationMapOutputWithContext(context.Context) DataflowBuiltInTransformationMapOutput
 }
 
-// DataFlow BuiltIn Transformation map properties
-type DataFlowBuiltInTransformationMapArgs struct {
+// Dataflow BuiltIn Transformation map properties
+type DataflowBuiltInTransformationMapArgs struct {
 	// A user provided optional description of the mapping function.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Modify the inputs field(s) to the final output field. Example: $1 * 2.2 (Assuming inputs section $1 is provided)
@@ -6881,105 +6622,105 @@ type DataFlowBuiltInTransformationMapArgs struct {
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
-func (DataFlowBuiltInTransformationMapArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowBuiltInTransformationMap)(nil)).Elem()
+func (DataflowBuiltInTransformationMapArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowBuiltInTransformationMap)(nil)).Elem()
 }
 
-func (i DataFlowBuiltInTransformationMapArgs) ToDataFlowBuiltInTransformationMapOutput() DataFlowBuiltInTransformationMapOutput {
-	return i.ToDataFlowBuiltInTransformationMapOutputWithContext(context.Background())
+func (i DataflowBuiltInTransformationMapArgs) ToDataflowBuiltInTransformationMapOutput() DataflowBuiltInTransformationMapOutput {
+	return i.ToDataflowBuiltInTransformationMapOutputWithContext(context.Background())
 }
 
-func (i DataFlowBuiltInTransformationMapArgs) ToDataFlowBuiltInTransformationMapOutputWithContext(ctx context.Context) DataFlowBuiltInTransformationMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataFlowBuiltInTransformationMapOutput)
+func (i DataflowBuiltInTransformationMapArgs) ToDataflowBuiltInTransformationMapOutputWithContext(ctx context.Context) DataflowBuiltInTransformationMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowBuiltInTransformationMapOutput)
 }
 
-// DataFlowBuiltInTransformationMapArrayInput is an input type that accepts DataFlowBuiltInTransformationMapArray and DataFlowBuiltInTransformationMapArrayOutput values.
-// You can construct a concrete instance of `DataFlowBuiltInTransformationMapArrayInput` via:
+// DataflowBuiltInTransformationMapArrayInput is an input type that accepts DataflowBuiltInTransformationMapArray and DataflowBuiltInTransformationMapArrayOutput values.
+// You can construct a concrete instance of `DataflowBuiltInTransformationMapArrayInput` via:
 //
-//	DataFlowBuiltInTransformationMapArray{ DataFlowBuiltInTransformationMapArgs{...} }
-type DataFlowBuiltInTransformationMapArrayInput interface {
+//	DataflowBuiltInTransformationMapArray{ DataflowBuiltInTransformationMapArgs{...} }
+type DataflowBuiltInTransformationMapArrayInput interface {
 	pulumi.Input
 
-	ToDataFlowBuiltInTransformationMapArrayOutput() DataFlowBuiltInTransformationMapArrayOutput
-	ToDataFlowBuiltInTransformationMapArrayOutputWithContext(context.Context) DataFlowBuiltInTransformationMapArrayOutput
+	ToDataflowBuiltInTransformationMapArrayOutput() DataflowBuiltInTransformationMapArrayOutput
+	ToDataflowBuiltInTransformationMapArrayOutputWithContext(context.Context) DataflowBuiltInTransformationMapArrayOutput
 }
 
-type DataFlowBuiltInTransformationMapArray []DataFlowBuiltInTransformationMapInput
+type DataflowBuiltInTransformationMapArray []DataflowBuiltInTransformationMapInput
 
-func (DataFlowBuiltInTransformationMapArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DataFlowBuiltInTransformationMap)(nil)).Elem()
+func (DataflowBuiltInTransformationMapArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataflowBuiltInTransformationMap)(nil)).Elem()
 }
 
-func (i DataFlowBuiltInTransformationMapArray) ToDataFlowBuiltInTransformationMapArrayOutput() DataFlowBuiltInTransformationMapArrayOutput {
-	return i.ToDataFlowBuiltInTransformationMapArrayOutputWithContext(context.Background())
+func (i DataflowBuiltInTransformationMapArray) ToDataflowBuiltInTransformationMapArrayOutput() DataflowBuiltInTransformationMapArrayOutput {
+	return i.ToDataflowBuiltInTransformationMapArrayOutputWithContext(context.Background())
 }
 
-func (i DataFlowBuiltInTransformationMapArray) ToDataFlowBuiltInTransformationMapArrayOutputWithContext(ctx context.Context) DataFlowBuiltInTransformationMapArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataFlowBuiltInTransformationMapArrayOutput)
+func (i DataflowBuiltInTransformationMapArray) ToDataflowBuiltInTransformationMapArrayOutputWithContext(ctx context.Context) DataflowBuiltInTransformationMapArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowBuiltInTransformationMapArrayOutput)
 }
 
-// DataFlow BuiltIn Transformation map properties
-type DataFlowBuiltInTransformationMapOutput struct{ *pulumi.OutputState }
+// Dataflow BuiltIn Transformation map properties
+type DataflowBuiltInTransformationMapOutput struct{ *pulumi.OutputState }
 
-func (DataFlowBuiltInTransformationMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowBuiltInTransformationMap)(nil)).Elem()
+func (DataflowBuiltInTransformationMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowBuiltInTransformationMap)(nil)).Elem()
 }
 
-func (o DataFlowBuiltInTransformationMapOutput) ToDataFlowBuiltInTransformationMapOutput() DataFlowBuiltInTransformationMapOutput {
+func (o DataflowBuiltInTransformationMapOutput) ToDataflowBuiltInTransformationMapOutput() DataflowBuiltInTransformationMapOutput {
 	return o
 }
 
-func (o DataFlowBuiltInTransformationMapOutput) ToDataFlowBuiltInTransformationMapOutputWithContext(ctx context.Context) DataFlowBuiltInTransformationMapOutput {
+func (o DataflowBuiltInTransformationMapOutput) ToDataflowBuiltInTransformationMapOutputWithContext(ctx context.Context) DataflowBuiltInTransformationMapOutput {
 	return o
 }
 
 // A user provided optional description of the mapping function.
-func (o DataFlowBuiltInTransformationMapOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataFlowBuiltInTransformationMap) *string { return v.Description }).(pulumi.StringPtrOutput)
+func (o DataflowBuiltInTransformationMapOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowBuiltInTransformationMap) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // Modify the inputs field(s) to the final output field. Example: $1 * 2.2 (Assuming inputs section $1 is provided)
-func (o DataFlowBuiltInTransformationMapOutput) Expression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataFlowBuiltInTransformationMap) *string { return v.Expression }).(pulumi.StringPtrOutput)
+func (o DataflowBuiltInTransformationMapOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowBuiltInTransformationMap) *string { return v.Expression }).(pulumi.StringPtrOutput)
 }
 
 // List of fields for mapping in JSON path expression.
-func (o DataFlowBuiltInTransformationMapOutput) Inputs() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v DataFlowBuiltInTransformationMap) []string { return v.Inputs }).(pulumi.StringArrayOutput)
+func (o DataflowBuiltInTransformationMapOutput) Inputs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DataflowBuiltInTransformationMap) []string { return v.Inputs }).(pulumi.StringArrayOutput)
 }
 
 // Where and how the input fields to be organized in the output record.
-func (o DataFlowBuiltInTransformationMapOutput) Output() pulumi.StringOutput {
-	return o.ApplyT(func(v DataFlowBuiltInTransformationMap) string { return v.Output }).(pulumi.StringOutput)
+func (o DataflowBuiltInTransformationMapOutput) Output() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowBuiltInTransformationMap) string { return v.Output }).(pulumi.StringOutput)
 }
 
 // Type of transformation.
-func (o DataFlowBuiltInTransformationMapOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataFlowBuiltInTransformationMap) *string { return v.Type }).(pulumi.StringPtrOutput)
+func (o DataflowBuiltInTransformationMapOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowBuiltInTransformationMap) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-type DataFlowBuiltInTransformationMapArrayOutput struct{ *pulumi.OutputState }
+type DataflowBuiltInTransformationMapArrayOutput struct{ *pulumi.OutputState }
 
-func (DataFlowBuiltInTransformationMapArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DataFlowBuiltInTransformationMap)(nil)).Elem()
+func (DataflowBuiltInTransformationMapArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataflowBuiltInTransformationMap)(nil)).Elem()
 }
 
-func (o DataFlowBuiltInTransformationMapArrayOutput) ToDataFlowBuiltInTransformationMapArrayOutput() DataFlowBuiltInTransformationMapArrayOutput {
+func (o DataflowBuiltInTransformationMapArrayOutput) ToDataflowBuiltInTransformationMapArrayOutput() DataflowBuiltInTransformationMapArrayOutput {
 	return o
 }
 
-func (o DataFlowBuiltInTransformationMapArrayOutput) ToDataFlowBuiltInTransformationMapArrayOutputWithContext(ctx context.Context) DataFlowBuiltInTransformationMapArrayOutput {
+func (o DataflowBuiltInTransformationMapArrayOutput) ToDataflowBuiltInTransformationMapArrayOutputWithContext(ctx context.Context) DataflowBuiltInTransformationMapArrayOutput {
 	return o
 }
 
-func (o DataFlowBuiltInTransformationMapArrayOutput) Index(i pulumi.IntInput) DataFlowBuiltInTransformationMapOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataFlowBuiltInTransformationMap {
-		return vs[0].([]DataFlowBuiltInTransformationMap)[vs[1].(int)]
-	}).(DataFlowBuiltInTransformationMapOutput)
+func (o DataflowBuiltInTransformationMapArrayOutput) Index(i pulumi.IntInput) DataflowBuiltInTransformationMapOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataflowBuiltInTransformationMap {
+		return vs[0].([]DataflowBuiltInTransformationMap)[vs[1].(int)]
+	}).(DataflowBuiltInTransformationMapOutput)
 }
 
-// DataFlow BuiltIn Transformation map properties
-type DataFlowBuiltInTransformationMapResponse struct {
+// Dataflow BuiltIn Transformation map properties
+type DataflowBuiltInTransformationMapResponse struct {
 	// A user provided optional description of the mapping function.
 	Description *string `pulumi:"description"`
 	// Modify the inputs field(s) to the final output field. Example: $1 * 2.2 (Assuming inputs section $1 is provided)
@@ -6992,82 +6733,82 @@ type DataFlowBuiltInTransformationMapResponse struct {
 	Type *string `pulumi:"type"`
 }
 
-// DataFlow BuiltIn Transformation map properties
-type DataFlowBuiltInTransformationMapResponseOutput struct{ *pulumi.OutputState }
+// Dataflow BuiltIn Transformation map properties
+type DataflowBuiltInTransformationMapResponseOutput struct{ *pulumi.OutputState }
 
-func (DataFlowBuiltInTransformationMapResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowBuiltInTransformationMapResponse)(nil)).Elem()
+func (DataflowBuiltInTransformationMapResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowBuiltInTransformationMapResponse)(nil)).Elem()
 }
 
-func (o DataFlowBuiltInTransformationMapResponseOutput) ToDataFlowBuiltInTransformationMapResponseOutput() DataFlowBuiltInTransformationMapResponseOutput {
+func (o DataflowBuiltInTransformationMapResponseOutput) ToDataflowBuiltInTransformationMapResponseOutput() DataflowBuiltInTransformationMapResponseOutput {
 	return o
 }
 
-func (o DataFlowBuiltInTransformationMapResponseOutput) ToDataFlowBuiltInTransformationMapResponseOutputWithContext(ctx context.Context) DataFlowBuiltInTransformationMapResponseOutput {
+func (o DataflowBuiltInTransformationMapResponseOutput) ToDataflowBuiltInTransformationMapResponseOutputWithContext(ctx context.Context) DataflowBuiltInTransformationMapResponseOutput {
 	return o
 }
 
 // A user provided optional description of the mapping function.
-func (o DataFlowBuiltInTransformationMapResponseOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataFlowBuiltInTransformationMapResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+func (o DataflowBuiltInTransformationMapResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowBuiltInTransformationMapResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // Modify the inputs field(s) to the final output field. Example: $1 * 2.2 (Assuming inputs section $1 is provided)
-func (o DataFlowBuiltInTransformationMapResponseOutput) Expression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataFlowBuiltInTransformationMapResponse) *string { return v.Expression }).(pulumi.StringPtrOutput)
+func (o DataflowBuiltInTransformationMapResponseOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowBuiltInTransformationMapResponse) *string { return v.Expression }).(pulumi.StringPtrOutput)
 }
 
 // List of fields for mapping in JSON path expression.
-func (o DataFlowBuiltInTransformationMapResponseOutput) Inputs() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v DataFlowBuiltInTransformationMapResponse) []string { return v.Inputs }).(pulumi.StringArrayOutput)
+func (o DataflowBuiltInTransformationMapResponseOutput) Inputs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DataflowBuiltInTransformationMapResponse) []string { return v.Inputs }).(pulumi.StringArrayOutput)
 }
 
 // Where and how the input fields to be organized in the output record.
-func (o DataFlowBuiltInTransformationMapResponseOutput) Output() pulumi.StringOutput {
-	return o.ApplyT(func(v DataFlowBuiltInTransformationMapResponse) string { return v.Output }).(pulumi.StringOutput)
+func (o DataflowBuiltInTransformationMapResponseOutput) Output() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowBuiltInTransformationMapResponse) string { return v.Output }).(pulumi.StringOutput)
 }
 
 // Type of transformation.
-func (o DataFlowBuiltInTransformationMapResponseOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataFlowBuiltInTransformationMapResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
+func (o DataflowBuiltInTransformationMapResponseOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowBuiltInTransformationMapResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-type DataFlowBuiltInTransformationMapResponseArrayOutput struct{ *pulumi.OutputState }
+type DataflowBuiltInTransformationMapResponseArrayOutput struct{ *pulumi.OutputState }
 
-func (DataFlowBuiltInTransformationMapResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DataFlowBuiltInTransformationMapResponse)(nil)).Elem()
+func (DataflowBuiltInTransformationMapResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataflowBuiltInTransformationMapResponse)(nil)).Elem()
 }
 
-func (o DataFlowBuiltInTransformationMapResponseArrayOutput) ToDataFlowBuiltInTransformationMapResponseArrayOutput() DataFlowBuiltInTransformationMapResponseArrayOutput {
+func (o DataflowBuiltInTransformationMapResponseArrayOutput) ToDataflowBuiltInTransformationMapResponseArrayOutput() DataflowBuiltInTransformationMapResponseArrayOutput {
 	return o
 }
 
-func (o DataFlowBuiltInTransformationMapResponseArrayOutput) ToDataFlowBuiltInTransformationMapResponseArrayOutputWithContext(ctx context.Context) DataFlowBuiltInTransformationMapResponseArrayOutput {
+func (o DataflowBuiltInTransformationMapResponseArrayOutput) ToDataflowBuiltInTransformationMapResponseArrayOutputWithContext(ctx context.Context) DataflowBuiltInTransformationMapResponseArrayOutput {
 	return o
 }
 
-func (o DataFlowBuiltInTransformationMapResponseArrayOutput) Index(i pulumi.IntInput) DataFlowBuiltInTransformationMapResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataFlowBuiltInTransformationMapResponse {
-		return vs[0].([]DataFlowBuiltInTransformationMapResponse)[vs[1].(int)]
-	}).(DataFlowBuiltInTransformationMapResponseOutput)
+func (o DataflowBuiltInTransformationMapResponseArrayOutput) Index(i pulumi.IntInput) DataflowBuiltInTransformationMapResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataflowBuiltInTransformationMapResponse {
+		return vs[0].([]DataflowBuiltInTransformationMapResponse)[vs[1].(int)]
+	}).(DataflowBuiltInTransformationMapResponseOutput)
 }
 
-// DataFlow BuiltIn Transformation properties
-type DataFlowBuiltInTransformationResponse struct {
+// Dataflow BuiltIn Transformation properties
+type DataflowBuiltInTransformationSettings struct {
 	// Enrich data from Broker State Store. Dataset references a key in Broker State Store.
-	Datasets []DataFlowBuiltInTransformationDatasetResponse `pulumi:"datasets"`
+	Datasets []DataflowBuiltInTransformationDataset `pulumi:"datasets"`
 	// Filters input record or datapoints based on condition.
-	Filter []DataFlowBuiltInTransformationFilterResponse `pulumi:"filter"`
+	Filter []DataflowBuiltInTransformationFilter `pulumi:"filter"`
 	// Maps input to output message.
-	Map []DataFlowBuiltInTransformationMapResponse `pulumi:"map"`
+	Map []DataflowBuiltInTransformationMap `pulumi:"map"`
 	// Reference to the schema that describes the output of the transformation.
 	SchemaRef *string `pulumi:"schemaRef"`
 	// Serialization format. Optional; defaults to JSON. Allowed value JSON Schema/draft-7, Parquet. Default: Json
 	SerializationFormat *string `pulumi:"serializationFormat"`
 }
 
-// Defaults sets the appropriate defaults for DataFlowBuiltInTransformationResponse
-func (val *DataFlowBuiltInTransformationResponse) Defaults() *DataFlowBuiltInTransformationResponse {
+// Defaults sets the appropriate defaults for DataflowBuiltInTransformationSettings
+func (val *DataflowBuiltInTransformationSettings) Defaults() *DataflowBuiltInTransformationSettings {
 	if val == nil {
 		return nil
 	}
@@ -7079,107 +6820,204 @@ func (val *DataFlowBuiltInTransformationResponse) Defaults() *DataFlowBuiltInTra
 	return &tmp
 }
 
-// DataFlow BuiltIn Transformation properties
-type DataFlowBuiltInTransformationResponseOutput struct{ *pulumi.OutputState }
+// DataflowBuiltInTransformationSettingsInput is an input type that accepts DataflowBuiltInTransformationSettingsArgs and DataflowBuiltInTransformationSettingsOutput values.
+// You can construct a concrete instance of `DataflowBuiltInTransformationSettingsInput` via:
+//
+//	DataflowBuiltInTransformationSettingsArgs{...}
+type DataflowBuiltInTransformationSettingsInput interface {
+	pulumi.Input
 
-func (DataFlowBuiltInTransformationResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowBuiltInTransformationResponse)(nil)).Elem()
+	ToDataflowBuiltInTransformationSettingsOutput() DataflowBuiltInTransformationSettingsOutput
+	ToDataflowBuiltInTransformationSettingsOutputWithContext(context.Context) DataflowBuiltInTransformationSettingsOutput
 }
 
-func (o DataFlowBuiltInTransformationResponseOutput) ToDataFlowBuiltInTransformationResponseOutput() DataFlowBuiltInTransformationResponseOutput {
+// Dataflow BuiltIn Transformation properties
+type DataflowBuiltInTransformationSettingsArgs struct {
+	// Enrich data from Broker State Store. Dataset references a key in Broker State Store.
+	Datasets DataflowBuiltInTransformationDatasetArrayInput `pulumi:"datasets"`
+	// Filters input record or datapoints based on condition.
+	Filter DataflowBuiltInTransformationFilterArrayInput `pulumi:"filter"`
+	// Maps input to output message.
+	Map DataflowBuiltInTransformationMapArrayInput `pulumi:"map"`
+	// Reference to the schema that describes the output of the transformation.
+	SchemaRef pulumi.StringPtrInput `pulumi:"schemaRef"`
+	// Serialization format. Optional; defaults to JSON. Allowed value JSON Schema/draft-7, Parquet. Default: Json
+	SerializationFormat pulumi.StringPtrInput `pulumi:"serializationFormat"`
+}
+
+// Defaults sets the appropriate defaults for DataflowBuiltInTransformationSettingsArgs
+func (val *DataflowBuiltInTransformationSettingsArgs) Defaults() *DataflowBuiltInTransformationSettingsArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.SerializationFormat == nil {
+		tmp.SerializationFormat = pulumi.StringPtr("Json")
+	}
+	return &tmp
+}
+func (DataflowBuiltInTransformationSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowBuiltInTransformationSettings)(nil)).Elem()
+}
+
+func (i DataflowBuiltInTransformationSettingsArgs) ToDataflowBuiltInTransformationSettingsOutput() DataflowBuiltInTransformationSettingsOutput {
+	return i.ToDataflowBuiltInTransformationSettingsOutputWithContext(context.Background())
+}
+
+func (i DataflowBuiltInTransformationSettingsArgs) ToDataflowBuiltInTransformationSettingsOutputWithContext(ctx context.Context) DataflowBuiltInTransformationSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowBuiltInTransformationSettingsOutput)
+}
+
+func (i DataflowBuiltInTransformationSettingsArgs) ToDataflowBuiltInTransformationSettingsPtrOutput() DataflowBuiltInTransformationSettingsPtrOutput {
+	return i.ToDataflowBuiltInTransformationSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i DataflowBuiltInTransformationSettingsArgs) ToDataflowBuiltInTransformationSettingsPtrOutputWithContext(ctx context.Context) DataflowBuiltInTransformationSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowBuiltInTransformationSettingsOutput).ToDataflowBuiltInTransformationSettingsPtrOutputWithContext(ctx)
+}
+
+// DataflowBuiltInTransformationSettingsPtrInput is an input type that accepts DataflowBuiltInTransformationSettingsArgs, DataflowBuiltInTransformationSettingsPtr and DataflowBuiltInTransformationSettingsPtrOutput values.
+// You can construct a concrete instance of `DataflowBuiltInTransformationSettingsPtrInput` via:
+//
+//	        DataflowBuiltInTransformationSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataflowBuiltInTransformationSettingsPtrInput interface {
+	pulumi.Input
+
+	ToDataflowBuiltInTransformationSettingsPtrOutput() DataflowBuiltInTransformationSettingsPtrOutput
+	ToDataflowBuiltInTransformationSettingsPtrOutputWithContext(context.Context) DataflowBuiltInTransformationSettingsPtrOutput
+}
+
+type dataflowBuiltInTransformationSettingsPtrType DataflowBuiltInTransformationSettingsArgs
+
+func DataflowBuiltInTransformationSettingsPtr(v *DataflowBuiltInTransformationSettingsArgs) DataflowBuiltInTransformationSettingsPtrInput {
+	return (*dataflowBuiltInTransformationSettingsPtrType)(v)
+}
+
+func (*dataflowBuiltInTransformationSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowBuiltInTransformationSettings)(nil)).Elem()
+}
+
+func (i *dataflowBuiltInTransformationSettingsPtrType) ToDataflowBuiltInTransformationSettingsPtrOutput() DataflowBuiltInTransformationSettingsPtrOutput {
+	return i.ToDataflowBuiltInTransformationSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *dataflowBuiltInTransformationSettingsPtrType) ToDataflowBuiltInTransformationSettingsPtrOutputWithContext(ctx context.Context) DataflowBuiltInTransformationSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowBuiltInTransformationSettingsPtrOutput)
+}
+
+// Dataflow BuiltIn Transformation properties
+type DataflowBuiltInTransformationSettingsOutput struct{ *pulumi.OutputState }
+
+func (DataflowBuiltInTransformationSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowBuiltInTransformationSettings)(nil)).Elem()
+}
+
+func (o DataflowBuiltInTransformationSettingsOutput) ToDataflowBuiltInTransformationSettingsOutput() DataflowBuiltInTransformationSettingsOutput {
 	return o
 }
 
-func (o DataFlowBuiltInTransformationResponseOutput) ToDataFlowBuiltInTransformationResponseOutputWithContext(ctx context.Context) DataFlowBuiltInTransformationResponseOutput {
+func (o DataflowBuiltInTransformationSettingsOutput) ToDataflowBuiltInTransformationSettingsOutputWithContext(ctx context.Context) DataflowBuiltInTransformationSettingsOutput {
 	return o
+}
+
+func (o DataflowBuiltInTransformationSettingsOutput) ToDataflowBuiltInTransformationSettingsPtrOutput() DataflowBuiltInTransformationSettingsPtrOutput {
+	return o.ToDataflowBuiltInTransformationSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o DataflowBuiltInTransformationSettingsOutput) ToDataflowBuiltInTransformationSettingsPtrOutputWithContext(ctx context.Context) DataflowBuiltInTransformationSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataflowBuiltInTransformationSettings) *DataflowBuiltInTransformationSettings {
+		return &v
+	}).(DataflowBuiltInTransformationSettingsPtrOutput)
 }
 
 // Enrich data from Broker State Store. Dataset references a key in Broker State Store.
-func (o DataFlowBuiltInTransformationResponseOutput) Datasets() DataFlowBuiltInTransformationDatasetResponseArrayOutput {
-	return o.ApplyT(func(v DataFlowBuiltInTransformationResponse) []DataFlowBuiltInTransformationDatasetResponse {
+func (o DataflowBuiltInTransformationSettingsOutput) Datasets() DataflowBuiltInTransformationDatasetArrayOutput {
+	return o.ApplyT(func(v DataflowBuiltInTransformationSettings) []DataflowBuiltInTransformationDataset {
 		return v.Datasets
-	}).(DataFlowBuiltInTransformationDatasetResponseArrayOutput)
+	}).(DataflowBuiltInTransformationDatasetArrayOutput)
 }
 
 // Filters input record or datapoints based on condition.
-func (o DataFlowBuiltInTransformationResponseOutput) Filter() DataFlowBuiltInTransformationFilterResponseArrayOutput {
-	return o.ApplyT(func(v DataFlowBuiltInTransformationResponse) []DataFlowBuiltInTransformationFilterResponse {
-		return v.Filter
-	}).(DataFlowBuiltInTransformationFilterResponseArrayOutput)
+func (o DataflowBuiltInTransformationSettingsOutput) Filter() DataflowBuiltInTransformationFilterArrayOutput {
+	return o.ApplyT(func(v DataflowBuiltInTransformationSettings) []DataflowBuiltInTransformationFilter { return v.Filter }).(DataflowBuiltInTransformationFilterArrayOutput)
 }
 
 // Maps input to output message.
-func (o DataFlowBuiltInTransformationResponseOutput) Map() DataFlowBuiltInTransformationMapResponseArrayOutput {
-	return o.ApplyT(func(v DataFlowBuiltInTransformationResponse) []DataFlowBuiltInTransformationMapResponse { return v.Map }).(DataFlowBuiltInTransformationMapResponseArrayOutput)
+func (o DataflowBuiltInTransformationSettingsOutput) Map() DataflowBuiltInTransformationMapArrayOutput {
+	return o.ApplyT(func(v DataflowBuiltInTransformationSettings) []DataflowBuiltInTransformationMap { return v.Map }).(DataflowBuiltInTransformationMapArrayOutput)
 }
 
 // Reference to the schema that describes the output of the transformation.
-func (o DataFlowBuiltInTransformationResponseOutput) SchemaRef() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataFlowBuiltInTransformationResponse) *string { return v.SchemaRef }).(pulumi.StringPtrOutput)
+func (o DataflowBuiltInTransformationSettingsOutput) SchemaRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowBuiltInTransformationSettings) *string { return v.SchemaRef }).(pulumi.StringPtrOutput)
 }
 
 // Serialization format. Optional; defaults to JSON. Allowed value JSON Schema/draft-7, Parquet. Default: Json
-func (o DataFlowBuiltInTransformationResponseOutput) SerializationFormat() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataFlowBuiltInTransformationResponse) *string { return v.SerializationFormat }).(pulumi.StringPtrOutput)
+func (o DataflowBuiltInTransformationSettingsOutput) SerializationFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowBuiltInTransformationSettings) *string { return v.SerializationFormat }).(pulumi.StringPtrOutput)
 }
 
-type DataFlowBuiltInTransformationResponsePtrOutput struct{ *pulumi.OutputState }
+type DataflowBuiltInTransformationSettingsPtrOutput struct{ *pulumi.OutputState }
 
-func (DataFlowBuiltInTransformationResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DataFlowBuiltInTransformationResponse)(nil)).Elem()
+func (DataflowBuiltInTransformationSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowBuiltInTransformationSettings)(nil)).Elem()
 }
 
-func (o DataFlowBuiltInTransformationResponsePtrOutput) ToDataFlowBuiltInTransformationResponsePtrOutput() DataFlowBuiltInTransformationResponsePtrOutput {
+func (o DataflowBuiltInTransformationSettingsPtrOutput) ToDataflowBuiltInTransformationSettingsPtrOutput() DataflowBuiltInTransformationSettingsPtrOutput {
 	return o
 }
 
-func (o DataFlowBuiltInTransformationResponsePtrOutput) ToDataFlowBuiltInTransformationResponsePtrOutputWithContext(ctx context.Context) DataFlowBuiltInTransformationResponsePtrOutput {
+func (o DataflowBuiltInTransformationSettingsPtrOutput) ToDataflowBuiltInTransformationSettingsPtrOutputWithContext(ctx context.Context) DataflowBuiltInTransformationSettingsPtrOutput {
 	return o
 }
 
-func (o DataFlowBuiltInTransformationResponsePtrOutput) Elem() DataFlowBuiltInTransformationResponseOutput {
-	return o.ApplyT(func(v *DataFlowBuiltInTransformationResponse) DataFlowBuiltInTransformationResponse {
+func (o DataflowBuiltInTransformationSettingsPtrOutput) Elem() DataflowBuiltInTransformationSettingsOutput {
+	return o.ApplyT(func(v *DataflowBuiltInTransformationSettings) DataflowBuiltInTransformationSettings {
 		if v != nil {
 			return *v
 		}
-		var ret DataFlowBuiltInTransformationResponse
+		var ret DataflowBuiltInTransformationSettings
 		return ret
-	}).(DataFlowBuiltInTransformationResponseOutput)
+	}).(DataflowBuiltInTransformationSettingsOutput)
 }
 
 // Enrich data from Broker State Store. Dataset references a key in Broker State Store.
-func (o DataFlowBuiltInTransformationResponsePtrOutput) Datasets() DataFlowBuiltInTransformationDatasetResponseArrayOutput {
-	return o.ApplyT(func(v *DataFlowBuiltInTransformationResponse) []DataFlowBuiltInTransformationDatasetResponse {
+func (o DataflowBuiltInTransformationSettingsPtrOutput) Datasets() DataflowBuiltInTransformationDatasetArrayOutput {
+	return o.ApplyT(func(v *DataflowBuiltInTransformationSettings) []DataflowBuiltInTransformationDataset {
 		if v == nil {
 			return nil
 		}
 		return v.Datasets
-	}).(DataFlowBuiltInTransformationDatasetResponseArrayOutput)
+	}).(DataflowBuiltInTransformationDatasetArrayOutput)
 }
 
 // Filters input record or datapoints based on condition.
-func (o DataFlowBuiltInTransformationResponsePtrOutput) Filter() DataFlowBuiltInTransformationFilterResponseArrayOutput {
-	return o.ApplyT(func(v *DataFlowBuiltInTransformationResponse) []DataFlowBuiltInTransformationFilterResponse {
+func (o DataflowBuiltInTransformationSettingsPtrOutput) Filter() DataflowBuiltInTransformationFilterArrayOutput {
+	return o.ApplyT(func(v *DataflowBuiltInTransformationSettings) []DataflowBuiltInTransformationFilter {
 		if v == nil {
 			return nil
 		}
 		return v.Filter
-	}).(DataFlowBuiltInTransformationFilterResponseArrayOutput)
+	}).(DataflowBuiltInTransformationFilterArrayOutput)
 }
 
 // Maps input to output message.
-func (o DataFlowBuiltInTransformationResponsePtrOutput) Map() DataFlowBuiltInTransformationMapResponseArrayOutput {
-	return o.ApplyT(func(v *DataFlowBuiltInTransformationResponse) []DataFlowBuiltInTransformationMapResponse {
+func (o DataflowBuiltInTransformationSettingsPtrOutput) Map() DataflowBuiltInTransformationMapArrayOutput {
+	return o.ApplyT(func(v *DataflowBuiltInTransformationSettings) []DataflowBuiltInTransformationMap {
 		if v == nil {
 			return nil
 		}
 		return v.Map
-	}).(DataFlowBuiltInTransformationMapResponseArrayOutput)
+	}).(DataflowBuiltInTransformationMapArrayOutput)
 }
 
 // Reference to the schema that describes the output of the transformation.
-func (o DataFlowBuiltInTransformationResponsePtrOutput) SchemaRef() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataFlowBuiltInTransformationResponse) *string {
+func (o DataflowBuiltInTransformationSettingsPtrOutput) SchemaRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowBuiltInTransformationSettings) *string {
 		if v == nil {
 			return nil
 		}
@@ -7188,8 +7026,8 @@ func (o DataFlowBuiltInTransformationResponsePtrOutput) SchemaRef() pulumi.Strin
 }
 
 // Serialization format. Optional; defaults to JSON. Allowed value JSON Schema/draft-7, Parquet. Default: Json
-func (o DataFlowBuiltInTransformationResponsePtrOutput) SerializationFormat() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataFlowBuiltInTransformationResponse) *string {
+func (o DataflowBuiltInTransformationSettingsPtrOutput) SerializationFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowBuiltInTransformationSettings) *string {
 		if v == nil {
 			return nil
 		}
@@ -7197,1484 +7035,522 @@ func (o DataFlowBuiltInTransformationResponsePtrOutput) SerializationFormat() pu
 	}).(pulumi.StringPtrOutput)
 }
 
-// DataFlow Destination Operation properties
-type DataFlowDestinationOperation struct {
+// Dataflow BuiltIn Transformation properties
+type DataflowBuiltInTransformationSettingsResponse struct {
+	// Enrich data from Broker State Store. Dataset references a key in Broker State Store.
+	Datasets []DataflowBuiltInTransformationDatasetResponse `pulumi:"datasets"`
+	// Filters input record or datapoints based on condition.
+	Filter []DataflowBuiltInTransformationFilterResponse `pulumi:"filter"`
+	// Maps input to output message.
+	Map []DataflowBuiltInTransformationMapResponse `pulumi:"map"`
+	// Reference to the schema that describes the output of the transformation.
+	SchemaRef *string `pulumi:"schemaRef"`
+	// Serialization format. Optional; defaults to JSON. Allowed value JSON Schema/draft-7, Parquet. Default: Json
+	SerializationFormat *string `pulumi:"serializationFormat"`
+}
+
+// Defaults sets the appropriate defaults for DataflowBuiltInTransformationSettingsResponse
+func (val *DataflowBuiltInTransformationSettingsResponse) Defaults() *DataflowBuiltInTransformationSettingsResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.SerializationFormat == nil {
+		serializationFormat_ := "Json"
+		tmp.SerializationFormat = &serializationFormat_
+	}
+	return &tmp
+}
+
+// Dataflow BuiltIn Transformation properties
+type DataflowBuiltInTransformationSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (DataflowBuiltInTransformationSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowBuiltInTransformationSettingsResponse)(nil)).Elem()
+}
+
+func (o DataflowBuiltInTransformationSettingsResponseOutput) ToDataflowBuiltInTransformationSettingsResponseOutput() DataflowBuiltInTransformationSettingsResponseOutput {
+	return o
+}
+
+func (o DataflowBuiltInTransformationSettingsResponseOutput) ToDataflowBuiltInTransformationSettingsResponseOutputWithContext(ctx context.Context) DataflowBuiltInTransformationSettingsResponseOutput {
+	return o
+}
+
+// Enrich data from Broker State Store. Dataset references a key in Broker State Store.
+func (o DataflowBuiltInTransformationSettingsResponseOutput) Datasets() DataflowBuiltInTransformationDatasetResponseArrayOutput {
+	return o.ApplyT(func(v DataflowBuiltInTransformationSettingsResponse) []DataflowBuiltInTransformationDatasetResponse {
+		return v.Datasets
+	}).(DataflowBuiltInTransformationDatasetResponseArrayOutput)
+}
+
+// Filters input record or datapoints based on condition.
+func (o DataflowBuiltInTransformationSettingsResponseOutput) Filter() DataflowBuiltInTransformationFilterResponseArrayOutput {
+	return o.ApplyT(func(v DataflowBuiltInTransformationSettingsResponse) []DataflowBuiltInTransformationFilterResponse {
+		return v.Filter
+	}).(DataflowBuiltInTransformationFilterResponseArrayOutput)
+}
+
+// Maps input to output message.
+func (o DataflowBuiltInTransformationSettingsResponseOutput) Map() DataflowBuiltInTransformationMapResponseArrayOutput {
+	return o.ApplyT(func(v DataflowBuiltInTransformationSettingsResponse) []DataflowBuiltInTransformationMapResponse {
+		return v.Map
+	}).(DataflowBuiltInTransformationMapResponseArrayOutput)
+}
+
+// Reference to the schema that describes the output of the transformation.
+func (o DataflowBuiltInTransformationSettingsResponseOutput) SchemaRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowBuiltInTransformationSettingsResponse) *string { return v.SchemaRef }).(pulumi.StringPtrOutput)
+}
+
+// Serialization format. Optional; defaults to JSON. Allowed value JSON Schema/draft-7, Parquet. Default: Json
+func (o DataflowBuiltInTransformationSettingsResponseOutput) SerializationFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowBuiltInTransformationSettingsResponse) *string { return v.SerializationFormat }).(pulumi.StringPtrOutput)
+}
+
+type DataflowBuiltInTransformationSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DataflowBuiltInTransformationSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowBuiltInTransformationSettingsResponse)(nil)).Elem()
+}
+
+func (o DataflowBuiltInTransformationSettingsResponsePtrOutput) ToDataflowBuiltInTransformationSettingsResponsePtrOutput() DataflowBuiltInTransformationSettingsResponsePtrOutput {
+	return o
+}
+
+func (o DataflowBuiltInTransformationSettingsResponsePtrOutput) ToDataflowBuiltInTransformationSettingsResponsePtrOutputWithContext(ctx context.Context) DataflowBuiltInTransformationSettingsResponsePtrOutput {
+	return o
+}
+
+func (o DataflowBuiltInTransformationSettingsResponsePtrOutput) Elem() DataflowBuiltInTransformationSettingsResponseOutput {
+	return o.ApplyT(func(v *DataflowBuiltInTransformationSettingsResponse) DataflowBuiltInTransformationSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DataflowBuiltInTransformationSettingsResponse
+		return ret
+	}).(DataflowBuiltInTransformationSettingsResponseOutput)
+}
+
+// Enrich data from Broker State Store. Dataset references a key in Broker State Store.
+func (o DataflowBuiltInTransformationSettingsResponsePtrOutput) Datasets() DataflowBuiltInTransformationDatasetResponseArrayOutput {
+	return o.ApplyT(func(v *DataflowBuiltInTransformationSettingsResponse) []DataflowBuiltInTransformationDatasetResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Datasets
+	}).(DataflowBuiltInTransformationDatasetResponseArrayOutput)
+}
+
+// Filters input record or datapoints based on condition.
+func (o DataflowBuiltInTransformationSettingsResponsePtrOutput) Filter() DataflowBuiltInTransformationFilterResponseArrayOutput {
+	return o.ApplyT(func(v *DataflowBuiltInTransformationSettingsResponse) []DataflowBuiltInTransformationFilterResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Filter
+	}).(DataflowBuiltInTransformationFilterResponseArrayOutput)
+}
+
+// Maps input to output message.
+func (o DataflowBuiltInTransformationSettingsResponsePtrOutput) Map() DataflowBuiltInTransformationMapResponseArrayOutput {
+	return o.ApplyT(func(v *DataflowBuiltInTransformationSettingsResponse) []DataflowBuiltInTransformationMapResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Map
+	}).(DataflowBuiltInTransformationMapResponseArrayOutput)
+}
+
+// Reference to the schema that describes the output of the transformation.
+func (o DataflowBuiltInTransformationSettingsResponsePtrOutput) SchemaRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowBuiltInTransformationSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SchemaRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// Serialization format. Optional; defaults to JSON. Allowed value JSON Schema/draft-7, Parquet. Default: Json
+func (o DataflowBuiltInTransformationSettingsResponsePtrOutput) SerializationFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowBuiltInTransformationSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SerializationFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// Dataflow Destination Operation properties
+type DataflowDestinationOperationSettings struct {
 	// Destination location, can be a topic or table name. Supports dynamic values with $topic, $systemProperties, $userProperties, $payload, $context, and $subscription.
 	DataDestination string `pulumi:"dataDestination"`
 	// Reference to the Endpoint CR. Can be of Broker, Kafka, Fabric, ADLS, ADX type.
 	EndpointRef string `pulumi:"endpointRef"`
 }
 
-// DataFlowDestinationOperationInput is an input type that accepts DataFlowDestinationOperationArgs and DataFlowDestinationOperationOutput values.
-// You can construct a concrete instance of `DataFlowDestinationOperationInput` via:
+// DataflowDestinationOperationSettingsInput is an input type that accepts DataflowDestinationOperationSettingsArgs and DataflowDestinationOperationSettingsOutput values.
+// You can construct a concrete instance of `DataflowDestinationOperationSettingsInput` via:
 //
-//	DataFlowDestinationOperationArgs{...}
-type DataFlowDestinationOperationInput interface {
+//	DataflowDestinationOperationSettingsArgs{...}
+type DataflowDestinationOperationSettingsInput interface {
 	pulumi.Input
 
-	ToDataFlowDestinationOperationOutput() DataFlowDestinationOperationOutput
-	ToDataFlowDestinationOperationOutputWithContext(context.Context) DataFlowDestinationOperationOutput
+	ToDataflowDestinationOperationSettingsOutput() DataflowDestinationOperationSettingsOutput
+	ToDataflowDestinationOperationSettingsOutputWithContext(context.Context) DataflowDestinationOperationSettingsOutput
 }
 
-// DataFlow Destination Operation properties
-type DataFlowDestinationOperationArgs struct {
+// Dataflow Destination Operation properties
+type DataflowDestinationOperationSettingsArgs struct {
 	// Destination location, can be a topic or table name. Supports dynamic values with $topic, $systemProperties, $userProperties, $payload, $context, and $subscription.
 	DataDestination pulumi.StringInput `pulumi:"dataDestination"`
 	// Reference to the Endpoint CR. Can be of Broker, Kafka, Fabric, ADLS, ADX type.
 	EndpointRef pulumi.StringInput `pulumi:"endpointRef"`
 }
 
-func (DataFlowDestinationOperationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowDestinationOperation)(nil)).Elem()
+func (DataflowDestinationOperationSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowDestinationOperationSettings)(nil)).Elem()
 }
 
-func (i DataFlowDestinationOperationArgs) ToDataFlowDestinationOperationOutput() DataFlowDestinationOperationOutput {
-	return i.ToDataFlowDestinationOperationOutputWithContext(context.Background())
+func (i DataflowDestinationOperationSettingsArgs) ToDataflowDestinationOperationSettingsOutput() DataflowDestinationOperationSettingsOutput {
+	return i.ToDataflowDestinationOperationSettingsOutputWithContext(context.Background())
 }
 
-func (i DataFlowDestinationOperationArgs) ToDataFlowDestinationOperationOutputWithContext(ctx context.Context) DataFlowDestinationOperationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataFlowDestinationOperationOutput)
+func (i DataflowDestinationOperationSettingsArgs) ToDataflowDestinationOperationSettingsOutputWithContext(ctx context.Context) DataflowDestinationOperationSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowDestinationOperationSettingsOutput)
 }
 
-// DataFlow Destination Operation properties
-type DataFlowDestinationOperationOutput struct{ *pulumi.OutputState }
-
-func (DataFlowDestinationOperationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowDestinationOperation)(nil)).Elem()
+func (i DataflowDestinationOperationSettingsArgs) ToDataflowDestinationOperationSettingsPtrOutput() DataflowDestinationOperationSettingsPtrOutput {
+	return i.ToDataflowDestinationOperationSettingsPtrOutputWithContext(context.Background())
 }
 
-func (o DataFlowDestinationOperationOutput) ToDataFlowDestinationOperationOutput() DataFlowDestinationOperationOutput {
+func (i DataflowDestinationOperationSettingsArgs) ToDataflowDestinationOperationSettingsPtrOutputWithContext(ctx context.Context) DataflowDestinationOperationSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowDestinationOperationSettingsOutput).ToDataflowDestinationOperationSettingsPtrOutputWithContext(ctx)
+}
+
+// DataflowDestinationOperationSettingsPtrInput is an input type that accepts DataflowDestinationOperationSettingsArgs, DataflowDestinationOperationSettingsPtr and DataflowDestinationOperationSettingsPtrOutput values.
+// You can construct a concrete instance of `DataflowDestinationOperationSettingsPtrInput` via:
+//
+//	        DataflowDestinationOperationSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataflowDestinationOperationSettingsPtrInput interface {
+	pulumi.Input
+
+	ToDataflowDestinationOperationSettingsPtrOutput() DataflowDestinationOperationSettingsPtrOutput
+	ToDataflowDestinationOperationSettingsPtrOutputWithContext(context.Context) DataflowDestinationOperationSettingsPtrOutput
+}
+
+type dataflowDestinationOperationSettingsPtrType DataflowDestinationOperationSettingsArgs
+
+func DataflowDestinationOperationSettingsPtr(v *DataflowDestinationOperationSettingsArgs) DataflowDestinationOperationSettingsPtrInput {
+	return (*dataflowDestinationOperationSettingsPtrType)(v)
+}
+
+func (*dataflowDestinationOperationSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowDestinationOperationSettings)(nil)).Elem()
+}
+
+func (i *dataflowDestinationOperationSettingsPtrType) ToDataflowDestinationOperationSettingsPtrOutput() DataflowDestinationOperationSettingsPtrOutput {
+	return i.ToDataflowDestinationOperationSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *dataflowDestinationOperationSettingsPtrType) ToDataflowDestinationOperationSettingsPtrOutputWithContext(ctx context.Context) DataflowDestinationOperationSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowDestinationOperationSettingsPtrOutput)
+}
+
+// Dataflow Destination Operation properties
+type DataflowDestinationOperationSettingsOutput struct{ *pulumi.OutputState }
+
+func (DataflowDestinationOperationSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowDestinationOperationSettings)(nil)).Elem()
+}
+
+func (o DataflowDestinationOperationSettingsOutput) ToDataflowDestinationOperationSettingsOutput() DataflowDestinationOperationSettingsOutput {
 	return o
 }
 
-func (o DataFlowDestinationOperationOutput) ToDataFlowDestinationOperationOutputWithContext(ctx context.Context) DataFlowDestinationOperationOutput {
+func (o DataflowDestinationOperationSettingsOutput) ToDataflowDestinationOperationSettingsOutputWithContext(ctx context.Context) DataflowDestinationOperationSettingsOutput {
 	return o
+}
+
+func (o DataflowDestinationOperationSettingsOutput) ToDataflowDestinationOperationSettingsPtrOutput() DataflowDestinationOperationSettingsPtrOutput {
+	return o.ToDataflowDestinationOperationSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o DataflowDestinationOperationSettingsOutput) ToDataflowDestinationOperationSettingsPtrOutputWithContext(ctx context.Context) DataflowDestinationOperationSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataflowDestinationOperationSettings) *DataflowDestinationOperationSettings {
+		return &v
+	}).(DataflowDestinationOperationSettingsPtrOutput)
 }
 
 // Destination location, can be a topic or table name. Supports dynamic values with $topic, $systemProperties, $userProperties, $payload, $context, and $subscription.
-func (o DataFlowDestinationOperationOutput) DataDestination() pulumi.StringOutput {
-	return o.ApplyT(func(v DataFlowDestinationOperation) string { return v.DataDestination }).(pulumi.StringOutput)
+func (o DataflowDestinationOperationSettingsOutput) DataDestination() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowDestinationOperationSettings) string { return v.DataDestination }).(pulumi.StringOutput)
 }
 
 // Reference to the Endpoint CR. Can be of Broker, Kafka, Fabric, ADLS, ADX type.
-func (o DataFlowDestinationOperationOutput) EndpointRef() pulumi.StringOutput {
-	return o.ApplyT(func(v DataFlowDestinationOperation) string { return v.EndpointRef }).(pulumi.StringOutput)
+func (o DataflowDestinationOperationSettingsOutput) EndpointRef() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowDestinationOperationSettings) string { return v.EndpointRef }).(pulumi.StringOutput)
 }
 
-// DataFlow Destination Operation properties
-type DataFlowDestinationOperationResponse struct {
+type DataflowDestinationOperationSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (DataflowDestinationOperationSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowDestinationOperationSettings)(nil)).Elem()
+}
+
+func (o DataflowDestinationOperationSettingsPtrOutput) ToDataflowDestinationOperationSettingsPtrOutput() DataflowDestinationOperationSettingsPtrOutput {
+	return o
+}
+
+func (o DataflowDestinationOperationSettingsPtrOutput) ToDataflowDestinationOperationSettingsPtrOutputWithContext(ctx context.Context) DataflowDestinationOperationSettingsPtrOutput {
+	return o
+}
+
+func (o DataflowDestinationOperationSettingsPtrOutput) Elem() DataflowDestinationOperationSettingsOutput {
+	return o.ApplyT(func(v *DataflowDestinationOperationSettings) DataflowDestinationOperationSettings {
+		if v != nil {
+			return *v
+		}
+		var ret DataflowDestinationOperationSettings
+		return ret
+	}).(DataflowDestinationOperationSettingsOutput)
+}
+
+// Destination location, can be a topic or table name. Supports dynamic values with $topic, $systemProperties, $userProperties, $payload, $context, and $subscription.
+func (o DataflowDestinationOperationSettingsPtrOutput) DataDestination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowDestinationOperationSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DataDestination
+	}).(pulumi.StringPtrOutput)
+}
+
+// Reference to the Endpoint CR. Can be of Broker, Kafka, Fabric, ADLS, ADX type.
+func (o DataflowDestinationOperationSettingsPtrOutput) EndpointRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowDestinationOperationSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EndpointRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// Dataflow Destination Operation properties
+type DataflowDestinationOperationSettingsResponse struct {
 	// Destination location, can be a topic or table name. Supports dynamic values with $topic, $systemProperties, $userProperties, $payload, $context, and $subscription.
 	DataDestination string `pulumi:"dataDestination"`
 	// Reference to the Endpoint CR. Can be of Broker, Kafka, Fabric, ADLS, ADX type.
 	EndpointRef string `pulumi:"endpointRef"`
 }
 
-// DataFlow Destination Operation properties
-type DataFlowDestinationOperationResponseOutput struct{ *pulumi.OutputState }
+// Dataflow Destination Operation properties
+type DataflowDestinationOperationSettingsResponseOutput struct{ *pulumi.OutputState }
 
-func (DataFlowDestinationOperationResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowDestinationOperationResponse)(nil)).Elem()
+func (DataflowDestinationOperationSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowDestinationOperationSettingsResponse)(nil)).Elem()
 }
 
-func (o DataFlowDestinationOperationResponseOutput) ToDataFlowDestinationOperationResponseOutput() DataFlowDestinationOperationResponseOutput {
+func (o DataflowDestinationOperationSettingsResponseOutput) ToDataflowDestinationOperationSettingsResponseOutput() DataflowDestinationOperationSettingsResponseOutput {
 	return o
 }
 
-func (o DataFlowDestinationOperationResponseOutput) ToDataFlowDestinationOperationResponseOutputWithContext(ctx context.Context) DataFlowDestinationOperationResponseOutput {
+func (o DataflowDestinationOperationSettingsResponseOutput) ToDataflowDestinationOperationSettingsResponseOutputWithContext(ctx context.Context) DataflowDestinationOperationSettingsResponseOutput {
 	return o
 }
 
 // Destination location, can be a topic or table name. Supports dynamic values with $topic, $systemProperties, $userProperties, $payload, $context, and $subscription.
-func (o DataFlowDestinationOperationResponseOutput) DataDestination() pulumi.StringOutput {
-	return o.ApplyT(func(v DataFlowDestinationOperationResponse) string { return v.DataDestination }).(pulumi.StringOutput)
+func (o DataflowDestinationOperationSettingsResponseOutput) DataDestination() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowDestinationOperationSettingsResponse) string { return v.DataDestination }).(pulumi.StringOutput)
 }
 
 // Reference to the Endpoint CR. Can be of Broker, Kafka, Fabric, ADLS, ADX type.
-func (o DataFlowDestinationOperationResponseOutput) EndpointRef() pulumi.StringOutput {
-	return o.ApplyT(func(v DataFlowDestinationOperationResponse) string { return v.EndpointRef }).(pulumi.StringOutput)
+func (o DataflowDestinationOperationSettingsResponseOutput) EndpointRef() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowDestinationOperationSettingsResponse) string { return v.EndpointRef }).(pulumi.StringOutput)
 }
 
-// Azure Data Explorer Authentication properties. NOTE - only authentication property is allowed per entry.
-type DataFlowEndpointAuthentication struct {
-	// SAS token authentication.
-	AccessTokenSecretRef *string `pulumi:"accessTokenSecretRef"`
-	// Mode of Authentication.
-	Method string `pulumi:"method"`
-	// SASL authentication.
-	SaslSettings *DataFlowEndpointAuthenticationSasl `pulumi:"saslSettings"`
-	// Service Account Token authentication.
-	ServiceAccountTokenSettings *DataFlowEndpointAuthenticationServiceAccountToken `pulumi:"serviceAccountTokenSettings"`
-	// System-assigned managed identity authentication.
-	SystemAssignedManagedIdentitySettings *DataFlowEndpointAuthenticationSystemAssignedManagedIdentity `pulumi:"systemAssignedManagedIdentitySettings"`
-	// User-assigned managed identity authentication.
-	UserAssignedManagedIdentitySettings *DataFlowEndpointAuthenticationUserAssignedManagedIdentity `pulumi:"userAssignedManagedIdentitySettings"`
-	// X.509 certificate authentication.
-	X509CredentialsSettings *DataFlowEndpointAuthenticationX509 `pulumi:"x509CredentialsSettings"`
+type DataflowDestinationOperationSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DataflowDestinationOperationSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowDestinationOperationSettingsResponse)(nil)).Elem()
 }
 
-// DataFlowEndpointAuthenticationInput is an input type that accepts DataFlowEndpointAuthenticationArgs and DataFlowEndpointAuthenticationOutput values.
-// You can construct a concrete instance of `DataFlowEndpointAuthenticationInput` via:
-//
-//	DataFlowEndpointAuthenticationArgs{...}
-type DataFlowEndpointAuthenticationInput interface {
-	pulumi.Input
-
-	ToDataFlowEndpointAuthenticationOutput() DataFlowEndpointAuthenticationOutput
-	ToDataFlowEndpointAuthenticationOutputWithContext(context.Context) DataFlowEndpointAuthenticationOutput
-}
-
-// Azure Data Explorer Authentication properties. NOTE - only authentication property is allowed per entry.
-type DataFlowEndpointAuthenticationArgs struct {
-	// SAS token authentication.
-	AccessTokenSecretRef pulumi.StringPtrInput `pulumi:"accessTokenSecretRef"`
-	// Mode of Authentication.
-	Method pulumi.StringInput `pulumi:"method"`
-	// SASL authentication.
-	SaslSettings DataFlowEndpointAuthenticationSaslPtrInput `pulumi:"saslSettings"`
-	// Service Account Token authentication.
-	ServiceAccountTokenSettings DataFlowEndpointAuthenticationServiceAccountTokenPtrInput `pulumi:"serviceAccountTokenSettings"`
-	// System-assigned managed identity authentication.
-	SystemAssignedManagedIdentitySettings DataFlowEndpointAuthenticationSystemAssignedManagedIdentityPtrInput `pulumi:"systemAssignedManagedIdentitySettings"`
-	// User-assigned managed identity authentication.
-	UserAssignedManagedIdentitySettings DataFlowEndpointAuthenticationUserAssignedManagedIdentityPtrInput `pulumi:"userAssignedManagedIdentitySettings"`
-	// X.509 certificate authentication.
-	X509CredentialsSettings DataFlowEndpointAuthenticationX509PtrInput `pulumi:"x509CredentialsSettings"`
-}
-
-func (DataFlowEndpointAuthenticationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowEndpointAuthentication)(nil)).Elem()
-}
-
-func (i DataFlowEndpointAuthenticationArgs) ToDataFlowEndpointAuthenticationOutput() DataFlowEndpointAuthenticationOutput {
-	return i.ToDataFlowEndpointAuthenticationOutputWithContext(context.Background())
-}
-
-func (i DataFlowEndpointAuthenticationArgs) ToDataFlowEndpointAuthenticationOutputWithContext(ctx context.Context) DataFlowEndpointAuthenticationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataFlowEndpointAuthenticationOutput)
-}
-
-func (i DataFlowEndpointAuthenticationArgs) ToDataFlowEndpointAuthenticationPtrOutput() DataFlowEndpointAuthenticationPtrOutput {
-	return i.ToDataFlowEndpointAuthenticationPtrOutputWithContext(context.Background())
-}
-
-func (i DataFlowEndpointAuthenticationArgs) ToDataFlowEndpointAuthenticationPtrOutputWithContext(ctx context.Context) DataFlowEndpointAuthenticationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataFlowEndpointAuthenticationOutput).ToDataFlowEndpointAuthenticationPtrOutputWithContext(ctx)
-}
-
-// DataFlowEndpointAuthenticationPtrInput is an input type that accepts DataFlowEndpointAuthenticationArgs, DataFlowEndpointAuthenticationPtr and DataFlowEndpointAuthenticationPtrOutput values.
-// You can construct a concrete instance of `DataFlowEndpointAuthenticationPtrInput` via:
-//
-//	        DataFlowEndpointAuthenticationArgs{...}
-//
-//	or:
-//
-//	        nil
-type DataFlowEndpointAuthenticationPtrInput interface {
-	pulumi.Input
-
-	ToDataFlowEndpointAuthenticationPtrOutput() DataFlowEndpointAuthenticationPtrOutput
-	ToDataFlowEndpointAuthenticationPtrOutputWithContext(context.Context) DataFlowEndpointAuthenticationPtrOutput
-}
-
-type dataFlowEndpointAuthenticationPtrType DataFlowEndpointAuthenticationArgs
-
-func DataFlowEndpointAuthenticationPtr(v *DataFlowEndpointAuthenticationArgs) DataFlowEndpointAuthenticationPtrInput {
-	return (*dataFlowEndpointAuthenticationPtrType)(v)
-}
-
-func (*dataFlowEndpointAuthenticationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DataFlowEndpointAuthentication)(nil)).Elem()
-}
-
-func (i *dataFlowEndpointAuthenticationPtrType) ToDataFlowEndpointAuthenticationPtrOutput() DataFlowEndpointAuthenticationPtrOutput {
-	return i.ToDataFlowEndpointAuthenticationPtrOutputWithContext(context.Background())
-}
-
-func (i *dataFlowEndpointAuthenticationPtrType) ToDataFlowEndpointAuthenticationPtrOutputWithContext(ctx context.Context) DataFlowEndpointAuthenticationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataFlowEndpointAuthenticationPtrOutput)
-}
-
-// Azure Data Explorer Authentication properties. NOTE - only authentication property is allowed per entry.
-type DataFlowEndpointAuthenticationOutput struct{ *pulumi.OutputState }
-
-func (DataFlowEndpointAuthenticationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowEndpointAuthentication)(nil)).Elem()
-}
-
-func (o DataFlowEndpointAuthenticationOutput) ToDataFlowEndpointAuthenticationOutput() DataFlowEndpointAuthenticationOutput {
+func (o DataflowDestinationOperationSettingsResponsePtrOutput) ToDataflowDestinationOperationSettingsResponsePtrOutput() DataflowDestinationOperationSettingsResponsePtrOutput {
 	return o
 }
 
-func (o DataFlowEndpointAuthenticationOutput) ToDataFlowEndpointAuthenticationOutputWithContext(ctx context.Context) DataFlowEndpointAuthenticationOutput {
+func (o DataflowDestinationOperationSettingsResponsePtrOutput) ToDataflowDestinationOperationSettingsResponsePtrOutputWithContext(ctx context.Context) DataflowDestinationOperationSettingsResponsePtrOutput {
 	return o
 }
 
-func (o DataFlowEndpointAuthenticationOutput) ToDataFlowEndpointAuthenticationPtrOutput() DataFlowEndpointAuthenticationPtrOutput {
-	return o.ToDataFlowEndpointAuthenticationPtrOutputWithContext(context.Background())
-}
-
-func (o DataFlowEndpointAuthenticationOutput) ToDataFlowEndpointAuthenticationPtrOutputWithContext(ctx context.Context) DataFlowEndpointAuthenticationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataFlowEndpointAuthentication) *DataFlowEndpointAuthentication {
-		return &v
-	}).(DataFlowEndpointAuthenticationPtrOutput)
-}
-
-// SAS token authentication.
-func (o DataFlowEndpointAuthenticationOutput) AccessTokenSecretRef() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointAuthentication) *string { return v.AccessTokenSecretRef }).(pulumi.StringPtrOutput)
-}
-
-// Mode of Authentication.
-func (o DataFlowEndpointAuthenticationOutput) Method() pulumi.StringOutput {
-	return o.ApplyT(func(v DataFlowEndpointAuthentication) string { return v.Method }).(pulumi.StringOutput)
-}
-
-// SASL authentication.
-func (o DataFlowEndpointAuthenticationOutput) SaslSettings() DataFlowEndpointAuthenticationSaslPtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointAuthentication) *DataFlowEndpointAuthenticationSasl { return v.SaslSettings }).(DataFlowEndpointAuthenticationSaslPtrOutput)
-}
-
-// Service Account Token authentication.
-func (o DataFlowEndpointAuthenticationOutput) ServiceAccountTokenSettings() DataFlowEndpointAuthenticationServiceAccountTokenPtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointAuthentication) *DataFlowEndpointAuthenticationServiceAccountToken {
-		return v.ServiceAccountTokenSettings
-	}).(DataFlowEndpointAuthenticationServiceAccountTokenPtrOutput)
-}
-
-// System-assigned managed identity authentication.
-func (o DataFlowEndpointAuthenticationOutput) SystemAssignedManagedIdentitySettings() DataFlowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointAuthentication) *DataFlowEndpointAuthenticationSystemAssignedManagedIdentity {
-		return v.SystemAssignedManagedIdentitySettings
-	}).(DataFlowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput)
-}
-
-// User-assigned managed identity authentication.
-func (o DataFlowEndpointAuthenticationOutput) UserAssignedManagedIdentitySettings() DataFlowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointAuthentication) *DataFlowEndpointAuthenticationUserAssignedManagedIdentity {
-		return v.UserAssignedManagedIdentitySettings
-	}).(DataFlowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput)
-}
-
-// X.509 certificate authentication.
-func (o DataFlowEndpointAuthenticationOutput) X509CredentialsSettings() DataFlowEndpointAuthenticationX509PtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointAuthentication) *DataFlowEndpointAuthenticationX509 {
-		return v.X509CredentialsSettings
-	}).(DataFlowEndpointAuthenticationX509PtrOutput)
-}
-
-type DataFlowEndpointAuthenticationPtrOutput struct{ *pulumi.OutputState }
-
-func (DataFlowEndpointAuthenticationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DataFlowEndpointAuthentication)(nil)).Elem()
-}
-
-func (o DataFlowEndpointAuthenticationPtrOutput) ToDataFlowEndpointAuthenticationPtrOutput() DataFlowEndpointAuthenticationPtrOutput {
-	return o
-}
-
-func (o DataFlowEndpointAuthenticationPtrOutput) ToDataFlowEndpointAuthenticationPtrOutputWithContext(ctx context.Context) DataFlowEndpointAuthenticationPtrOutput {
-	return o
-}
-
-func (o DataFlowEndpointAuthenticationPtrOutput) Elem() DataFlowEndpointAuthenticationOutput {
-	return o.ApplyT(func(v *DataFlowEndpointAuthentication) DataFlowEndpointAuthentication {
+func (o DataflowDestinationOperationSettingsResponsePtrOutput) Elem() DataflowDestinationOperationSettingsResponseOutput {
+	return o.ApplyT(func(v *DataflowDestinationOperationSettingsResponse) DataflowDestinationOperationSettingsResponse {
 		if v != nil {
 			return *v
 		}
-		var ret DataFlowEndpointAuthentication
+		var ret DataflowDestinationOperationSettingsResponse
 		return ret
-	}).(DataFlowEndpointAuthenticationOutput)
+	}).(DataflowDestinationOperationSettingsResponseOutput)
 }
 
-// SAS token authentication.
-func (o DataFlowEndpointAuthenticationPtrOutput) AccessTokenSecretRef() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointAuthentication) *string {
+// Destination location, can be a topic or table name. Supports dynamic values with $topic, $systemProperties, $userProperties, $payload, $context, and $subscription.
+func (o DataflowDestinationOperationSettingsResponsePtrOutput) DataDestination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowDestinationOperationSettingsResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return v.AccessTokenSecretRef
+		return &v.DataDestination
 	}).(pulumi.StringPtrOutput)
 }
 
-// Mode of Authentication.
-func (o DataFlowEndpointAuthenticationPtrOutput) Method() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointAuthentication) *string {
+// Reference to the Endpoint CR. Can be of Broker, Kafka, Fabric, ADLS, ADX type.
+func (o DataflowDestinationOperationSettingsResponsePtrOutput) EndpointRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowDestinationOperationSettingsResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.Method
+		return &v.EndpointRef
 	}).(pulumi.StringPtrOutput)
 }
 
-// SASL authentication.
-func (o DataFlowEndpointAuthenticationPtrOutput) SaslSettings() DataFlowEndpointAuthenticationSaslPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointAuthentication) *DataFlowEndpointAuthenticationSasl {
-		if v == nil {
-			return nil
-		}
-		return v.SaslSettings
-	}).(DataFlowEndpointAuthenticationSaslPtrOutput)
-}
-
-// Service Account Token authentication.
-func (o DataFlowEndpointAuthenticationPtrOutput) ServiceAccountTokenSettings() DataFlowEndpointAuthenticationServiceAccountTokenPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointAuthentication) *DataFlowEndpointAuthenticationServiceAccountToken {
-		if v == nil {
-			return nil
-		}
-		return v.ServiceAccountTokenSettings
-	}).(DataFlowEndpointAuthenticationServiceAccountTokenPtrOutput)
-}
-
-// System-assigned managed identity authentication.
-func (o DataFlowEndpointAuthenticationPtrOutput) SystemAssignedManagedIdentitySettings() DataFlowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointAuthentication) *DataFlowEndpointAuthenticationSystemAssignedManagedIdentity {
-		if v == nil {
-			return nil
-		}
-		return v.SystemAssignedManagedIdentitySettings
-	}).(DataFlowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput)
-}
-
-// User-assigned managed identity authentication.
-func (o DataFlowEndpointAuthenticationPtrOutput) UserAssignedManagedIdentitySettings() DataFlowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointAuthentication) *DataFlowEndpointAuthenticationUserAssignedManagedIdentity {
-		if v == nil {
-			return nil
-		}
-		return v.UserAssignedManagedIdentitySettings
-	}).(DataFlowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput)
-}
-
-// X.509 certificate authentication.
-func (o DataFlowEndpointAuthenticationPtrOutput) X509CredentialsSettings() DataFlowEndpointAuthenticationX509PtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointAuthentication) *DataFlowEndpointAuthenticationX509 {
-		if v == nil {
-			return nil
-		}
-		return v.X509CredentialsSettings
-	}).(DataFlowEndpointAuthenticationX509PtrOutput)
-}
-
-// Azure Data Explorer Authentication properties. NOTE - only authentication property is allowed per entry.
-type DataFlowEndpointAuthenticationResponse struct {
-	// SAS token authentication.
-	AccessTokenSecretRef *string `pulumi:"accessTokenSecretRef"`
-	// Mode of Authentication.
-	Method string `pulumi:"method"`
-	// SASL authentication.
-	SaslSettings *DataFlowEndpointAuthenticationSaslResponse `pulumi:"saslSettings"`
-	// Service Account Token authentication.
-	ServiceAccountTokenSettings *DataFlowEndpointAuthenticationServiceAccountTokenResponse `pulumi:"serviceAccountTokenSettings"`
-	// System-assigned managed identity authentication.
-	SystemAssignedManagedIdentitySettings *DataFlowEndpointAuthenticationSystemAssignedManagedIdentityResponse `pulumi:"systemAssignedManagedIdentitySettings"`
-	// User-assigned managed identity authentication.
-	UserAssignedManagedIdentitySettings *DataFlowEndpointAuthenticationUserAssignedManagedIdentityResponse `pulumi:"userAssignedManagedIdentitySettings"`
-	// X.509 certificate authentication.
-	X509CredentialsSettings *DataFlowEndpointAuthenticationX509Response `pulumi:"x509CredentialsSettings"`
-}
-
-// Azure Data Explorer Authentication properties. NOTE - only authentication property is allowed per entry.
-type DataFlowEndpointAuthenticationResponseOutput struct{ *pulumi.OutputState }
-
-func (DataFlowEndpointAuthenticationResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowEndpointAuthenticationResponse)(nil)).Elem()
-}
-
-func (o DataFlowEndpointAuthenticationResponseOutput) ToDataFlowEndpointAuthenticationResponseOutput() DataFlowEndpointAuthenticationResponseOutput {
-	return o
-}
-
-func (o DataFlowEndpointAuthenticationResponseOutput) ToDataFlowEndpointAuthenticationResponseOutputWithContext(ctx context.Context) DataFlowEndpointAuthenticationResponseOutput {
-	return o
-}
-
-// SAS token authentication.
-func (o DataFlowEndpointAuthenticationResponseOutput) AccessTokenSecretRef() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointAuthenticationResponse) *string { return v.AccessTokenSecretRef }).(pulumi.StringPtrOutput)
-}
-
-// Mode of Authentication.
-func (o DataFlowEndpointAuthenticationResponseOutput) Method() pulumi.StringOutput {
-	return o.ApplyT(func(v DataFlowEndpointAuthenticationResponse) string { return v.Method }).(pulumi.StringOutput)
-}
-
-// SASL authentication.
-func (o DataFlowEndpointAuthenticationResponseOutput) SaslSettings() DataFlowEndpointAuthenticationSaslResponsePtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointAuthenticationResponse) *DataFlowEndpointAuthenticationSaslResponse {
-		return v.SaslSettings
-	}).(DataFlowEndpointAuthenticationSaslResponsePtrOutput)
-}
-
-// Service Account Token authentication.
-func (o DataFlowEndpointAuthenticationResponseOutput) ServiceAccountTokenSettings() DataFlowEndpointAuthenticationServiceAccountTokenResponsePtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointAuthenticationResponse) *DataFlowEndpointAuthenticationServiceAccountTokenResponse {
-		return v.ServiceAccountTokenSettings
-	}).(DataFlowEndpointAuthenticationServiceAccountTokenResponsePtrOutput)
-}
-
-// System-assigned managed identity authentication.
-func (o DataFlowEndpointAuthenticationResponseOutput) SystemAssignedManagedIdentitySettings() DataFlowEndpointAuthenticationSystemAssignedManagedIdentityResponsePtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointAuthenticationResponse) *DataFlowEndpointAuthenticationSystemAssignedManagedIdentityResponse {
-		return v.SystemAssignedManagedIdentitySettings
-	}).(DataFlowEndpointAuthenticationSystemAssignedManagedIdentityResponsePtrOutput)
-}
-
-// User-assigned managed identity authentication.
-func (o DataFlowEndpointAuthenticationResponseOutput) UserAssignedManagedIdentitySettings() DataFlowEndpointAuthenticationUserAssignedManagedIdentityResponsePtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointAuthenticationResponse) *DataFlowEndpointAuthenticationUserAssignedManagedIdentityResponse {
-		return v.UserAssignedManagedIdentitySettings
-	}).(DataFlowEndpointAuthenticationUserAssignedManagedIdentityResponsePtrOutput)
-}
-
-// X.509 certificate authentication.
-func (o DataFlowEndpointAuthenticationResponseOutput) X509CredentialsSettings() DataFlowEndpointAuthenticationX509ResponsePtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointAuthenticationResponse) *DataFlowEndpointAuthenticationX509Response {
-		return v.X509CredentialsSettings
-	}).(DataFlowEndpointAuthenticationX509ResponsePtrOutput)
-}
-
-// DataFlowEndpoint Authentication Sasl properties
-type DataFlowEndpointAuthenticationSasl struct {
-	// Type of SASL authentication. Can be PLAIN, SCRAM-SHA-256, or SCRAM-SHA-512.
-	SaslType string `pulumi:"saslType"`
+// DataflowEndpoint Authentication Access Token properties
+type DataflowEndpointAuthenticationAccessToken struct {
 	// Token secret name.
-	TokenSecretRef string `pulumi:"tokenSecretRef"`
-}
-
-// DataFlowEndpointAuthenticationSaslInput is an input type that accepts DataFlowEndpointAuthenticationSaslArgs and DataFlowEndpointAuthenticationSaslOutput values.
-// You can construct a concrete instance of `DataFlowEndpointAuthenticationSaslInput` via:
-//
-//	DataFlowEndpointAuthenticationSaslArgs{...}
-type DataFlowEndpointAuthenticationSaslInput interface {
-	pulumi.Input
-
-	ToDataFlowEndpointAuthenticationSaslOutput() DataFlowEndpointAuthenticationSaslOutput
-	ToDataFlowEndpointAuthenticationSaslOutputWithContext(context.Context) DataFlowEndpointAuthenticationSaslOutput
-}
-
-// DataFlowEndpoint Authentication Sasl properties
-type DataFlowEndpointAuthenticationSaslArgs struct {
-	// Type of SASL authentication. Can be PLAIN, SCRAM-SHA-256, or SCRAM-SHA-512.
-	SaslType pulumi.StringInput `pulumi:"saslType"`
-	// Token secret name.
-	TokenSecretRef pulumi.StringInput `pulumi:"tokenSecretRef"`
-}
-
-func (DataFlowEndpointAuthenticationSaslArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowEndpointAuthenticationSasl)(nil)).Elem()
-}
-
-func (i DataFlowEndpointAuthenticationSaslArgs) ToDataFlowEndpointAuthenticationSaslOutput() DataFlowEndpointAuthenticationSaslOutput {
-	return i.ToDataFlowEndpointAuthenticationSaslOutputWithContext(context.Background())
-}
-
-func (i DataFlowEndpointAuthenticationSaslArgs) ToDataFlowEndpointAuthenticationSaslOutputWithContext(ctx context.Context) DataFlowEndpointAuthenticationSaslOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataFlowEndpointAuthenticationSaslOutput)
-}
-
-func (i DataFlowEndpointAuthenticationSaslArgs) ToDataFlowEndpointAuthenticationSaslPtrOutput() DataFlowEndpointAuthenticationSaslPtrOutput {
-	return i.ToDataFlowEndpointAuthenticationSaslPtrOutputWithContext(context.Background())
-}
-
-func (i DataFlowEndpointAuthenticationSaslArgs) ToDataFlowEndpointAuthenticationSaslPtrOutputWithContext(ctx context.Context) DataFlowEndpointAuthenticationSaslPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataFlowEndpointAuthenticationSaslOutput).ToDataFlowEndpointAuthenticationSaslPtrOutputWithContext(ctx)
-}
-
-// DataFlowEndpointAuthenticationSaslPtrInput is an input type that accepts DataFlowEndpointAuthenticationSaslArgs, DataFlowEndpointAuthenticationSaslPtr and DataFlowEndpointAuthenticationSaslPtrOutput values.
-// You can construct a concrete instance of `DataFlowEndpointAuthenticationSaslPtrInput` via:
-//
-//	        DataFlowEndpointAuthenticationSaslArgs{...}
-//
-//	or:
-//
-//	        nil
-type DataFlowEndpointAuthenticationSaslPtrInput interface {
-	pulumi.Input
-
-	ToDataFlowEndpointAuthenticationSaslPtrOutput() DataFlowEndpointAuthenticationSaslPtrOutput
-	ToDataFlowEndpointAuthenticationSaslPtrOutputWithContext(context.Context) DataFlowEndpointAuthenticationSaslPtrOutput
-}
-
-type dataFlowEndpointAuthenticationSaslPtrType DataFlowEndpointAuthenticationSaslArgs
-
-func DataFlowEndpointAuthenticationSaslPtr(v *DataFlowEndpointAuthenticationSaslArgs) DataFlowEndpointAuthenticationSaslPtrInput {
-	return (*dataFlowEndpointAuthenticationSaslPtrType)(v)
-}
-
-func (*dataFlowEndpointAuthenticationSaslPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DataFlowEndpointAuthenticationSasl)(nil)).Elem()
-}
-
-func (i *dataFlowEndpointAuthenticationSaslPtrType) ToDataFlowEndpointAuthenticationSaslPtrOutput() DataFlowEndpointAuthenticationSaslPtrOutput {
-	return i.ToDataFlowEndpointAuthenticationSaslPtrOutputWithContext(context.Background())
-}
-
-func (i *dataFlowEndpointAuthenticationSaslPtrType) ToDataFlowEndpointAuthenticationSaslPtrOutputWithContext(ctx context.Context) DataFlowEndpointAuthenticationSaslPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataFlowEndpointAuthenticationSaslPtrOutput)
-}
-
-// DataFlowEndpoint Authentication Sasl properties
-type DataFlowEndpointAuthenticationSaslOutput struct{ *pulumi.OutputState }
-
-func (DataFlowEndpointAuthenticationSaslOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowEndpointAuthenticationSasl)(nil)).Elem()
-}
-
-func (o DataFlowEndpointAuthenticationSaslOutput) ToDataFlowEndpointAuthenticationSaslOutput() DataFlowEndpointAuthenticationSaslOutput {
-	return o
-}
-
-func (o DataFlowEndpointAuthenticationSaslOutput) ToDataFlowEndpointAuthenticationSaslOutputWithContext(ctx context.Context) DataFlowEndpointAuthenticationSaslOutput {
-	return o
-}
-
-func (o DataFlowEndpointAuthenticationSaslOutput) ToDataFlowEndpointAuthenticationSaslPtrOutput() DataFlowEndpointAuthenticationSaslPtrOutput {
-	return o.ToDataFlowEndpointAuthenticationSaslPtrOutputWithContext(context.Background())
-}
-
-func (o DataFlowEndpointAuthenticationSaslOutput) ToDataFlowEndpointAuthenticationSaslPtrOutputWithContext(ctx context.Context) DataFlowEndpointAuthenticationSaslPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataFlowEndpointAuthenticationSasl) *DataFlowEndpointAuthenticationSasl {
-		return &v
-	}).(DataFlowEndpointAuthenticationSaslPtrOutput)
-}
-
-// Type of SASL authentication. Can be PLAIN, SCRAM-SHA-256, or SCRAM-SHA-512.
-func (o DataFlowEndpointAuthenticationSaslOutput) SaslType() pulumi.StringOutput {
-	return o.ApplyT(func(v DataFlowEndpointAuthenticationSasl) string { return v.SaslType }).(pulumi.StringOutput)
-}
-
-// Token secret name.
-func (o DataFlowEndpointAuthenticationSaslOutput) TokenSecretRef() pulumi.StringOutput {
-	return o.ApplyT(func(v DataFlowEndpointAuthenticationSasl) string { return v.TokenSecretRef }).(pulumi.StringOutput)
-}
-
-type DataFlowEndpointAuthenticationSaslPtrOutput struct{ *pulumi.OutputState }
-
-func (DataFlowEndpointAuthenticationSaslPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DataFlowEndpointAuthenticationSasl)(nil)).Elem()
-}
-
-func (o DataFlowEndpointAuthenticationSaslPtrOutput) ToDataFlowEndpointAuthenticationSaslPtrOutput() DataFlowEndpointAuthenticationSaslPtrOutput {
-	return o
-}
-
-func (o DataFlowEndpointAuthenticationSaslPtrOutput) ToDataFlowEndpointAuthenticationSaslPtrOutputWithContext(ctx context.Context) DataFlowEndpointAuthenticationSaslPtrOutput {
-	return o
-}
-
-func (o DataFlowEndpointAuthenticationSaslPtrOutput) Elem() DataFlowEndpointAuthenticationSaslOutput {
-	return o.ApplyT(func(v *DataFlowEndpointAuthenticationSasl) DataFlowEndpointAuthenticationSasl {
-		if v != nil {
-			return *v
-		}
-		var ret DataFlowEndpointAuthenticationSasl
-		return ret
-	}).(DataFlowEndpointAuthenticationSaslOutput)
-}
-
-// Type of SASL authentication. Can be PLAIN, SCRAM-SHA-256, or SCRAM-SHA-512.
-func (o DataFlowEndpointAuthenticationSaslPtrOutput) SaslType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointAuthenticationSasl) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.SaslType
-	}).(pulumi.StringPtrOutput)
-}
-
-// Token secret name.
-func (o DataFlowEndpointAuthenticationSaslPtrOutput) TokenSecretRef() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointAuthenticationSasl) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.TokenSecretRef
-	}).(pulumi.StringPtrOutput)
-}
-
-// DataFlowEndpoint Authentication Sasl properties
-type DataFlowEndpointAuthenticationSaslResponse struct {
-	// Type of SASL authentication. Can be PLAIN, SCRAM-SHA-256, or SCRAM-SHA-512.
-	SaslType string `pulumi:"saslType"`
-	// Token secret name.
-	TokenSecretRef string `pulumi:"tokenSecretRef"`
-}
-
-// DataFlowEndpoint Authentication Sasl properties
-type DataFlowEndpointAuthenticationSaslResponseOutput struct{ *pulumi.OutputState }
-
-func (DataFlowEndpointAuthenticationSaslResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowEndpointAuthenticationSaslResponse)(nil)).Elem()
-}
-
-func (o DataFlowEndpointAuthenticationSaslResponseOutput) ToDataFlowEndpointAuthenticationSaslResponseOutput() DataFlowEndpointAuthenticationSaslResponseOutput {
-	return o
-}
-
-func (o DataFlowEndpointAuthenticationSaslResponseOutput) ToDataFlowEndpointAuthenticationSaslResponseOutputWithContext(ctx context.Context) DataFlowEndpointAuthenticationSaslResponseOutput {
-	return o
-}
-
-// Type of SASL authentication. Can be PLAIN, SCRAM-SHA-256, or SCRAM-SHA-512.
-func (o DataFlowEndpointAuthenticationSaslResponseOutput) SaslType() pulumi.StringOutput {
-	return o.ApplyT(func(v DataFlowEndpointAuthenticationSaslResponse) string { return v.SaslType }).(pulumi.StringOutput)
-}
-
-// Token secret name.
-func (o DataFlowEndpointAuthenticationSaslResponseOutput) TokenSecretRef() pulumi.StringOutput {
-	return o.ApplyT(func(v DataFlowEndpointAuthenticationSaslResponse) string { return v.TokenSecretRef }).(pulumi.StringOutput)
-}
-
-type DataFlowEndpointAuthenticationSaslResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (DataFlowEndpointAuthenticationSaslResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DataFlowEndpointAuthenticationSaslResponse)(nil)).Elem()
-}
-
-func (o DataFlowEndpointAuthenticationSaslResponsePtrOutput) ToDataFlowEndpointAuthenticationSaslResponsePtrOutput() DataFlowEndpointAuthenticationSaslResponsePtrOutput {
-	return o
-}
-
-func (o DataFlowEndpointAuthenticationSaslResponsePtrOutput) ToDataFlowEndpointAuthenticationSaslResponsePtrOutputWithContext(ctx context.Context) DataFlowEndpointAuthenticationSaslResponsePtrOutput {
-	return o
-}
-
-func (o DataFlowEndpointAuthenticationSaslResponsePtrOutput) Elem() DataFlowEndpointAuthenticationSaslResponseOutput {
-	return o.ApplyT(func(v *DataFlowEndpointAuthenticationSaslResponse) DataFlowEndpointAuthenticationSaslResponse {
-		if v != nil {
-			return *v
-		}
-		var ret DataFlowEndpointAuthenticationSaslResponse
-		return ret
-	}).(DataFlowEndpointAuthenticationSaslResponseOutput)
-}
-
-// Type of SASL authentication. Can be PLAIN, SCRAM-SHA-256, or SCRAM-SHA-512.
-func (o DataFlowEndpointAuthenticationSaslResponsePtrOutput) SaslType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointAuthenticationSaslResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.SaslType
-	}).(pulumi.StringPtrOutput)
-}
-
-// Token secret name.
-func (o DataFlowEndpointAuthenticationSaslResponsePtrOutput) TokenSecretRef() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointAuthenticationSaslResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.TokenSecretRef
-	}).(pulumi.StringPtrOutput)
-}
-
-// Service Account Token for BrokerAuthentication
-type DataFlowEndpointAuthenticationServiceAccountToken struct {
-	// Audience of the service account. Optional, defaults to the broker internal service account audience.
-	Audience string `pulumi:"audience"`
-}
-
-// DataFlowEndpointAuthenticationServiceAccountTokenInput is an input type that accepts DataFlowEndpointAuthenticationServiceAccountTokenArgs and DataFlowEndpointAuthenticationServiceAccountTokenOutput values.
-// You can construct a concrete instance of `DataFlowEndpointAuthenticationServiceAccountTokenInput` via:
-//
-//	DataFlowEndpointAuthenticationServiceAccountTokenArgs{...}
-type DataFlowEndpointAuthenticationServiceAccountTokenInput interface {
-	pulumi.Input
-
-	ToDataFlowEndpointAuthenticationServiceAccountTokenOutput() DataFlowEndpointAuthenticationServiceAccountTokenOutput
-	ToDataFlowEndpointAuthenticationServiceAccountTokenOutputWithContext(context.Context) DataFlowEndpointAuthenticationServiceAccountTokenOutput
-}
-
-// Service Account Token for BrokerAuthentication
-type DataFlowEndpointAuthenticationServiceAccountTokenArgs struct {
-	// Audience of the service account. Optional, defaults to the broker internal service account audience.
-	Audience pulumi.StringInput `pulumi:"audience"`
-}
-
-func (DataFlowEndpointAuthenticationServiceAccountTokenArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowEndpointAuthenticationServiceAccountToken)(nil)).Elem()
-}
-
-func (i DataFlowEndpointAuthenticationServiceAccountTokenArgs) ToDataFlowEndpointAuthenticationServiceAccountTokenOutput() DataFlowEndpointAuthenticationServiceAccountTokenOutput {
-	return i.ToDataFlowEndpointAuthenticationServiceAccountTokenOutputWithContext(context.Background())
-}
-
-func (i DataFlowEndpointAuthenticationServiceAccountTokenArgs) ToDataFlowEndpointAuthenticationServiceAccountTokenOutputWithContext(ctx context.Context) DataFlowEndpointAuthenticationServiceAccountTokenOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataFlowEndpointAuthenticationServiceAccountTokenOutput)
-}
-
-func (i DataFlowEndpointAuthenticationServiceAccountTokenArgs) ToDataFlowEndpointAuthenticationServiceAccountTokenPtrOutput() DataFlowEndpointAuthenticationServiceAccountTokenPtrOutput {
-	return i.ToDataFlowEndpointAuthenticationServiceAccountTokenPtrOutputWithContext(context.Background())
-}
-
-func (i DataFlowEndpointAuthenticationServiceAccountTokenArgs) ToDataFlowEndpointAuthenticationServiceAccountTokenPtrOutputWithContext(ctx context.Context) DataFlowEndpointAuthenticationServiceAccountTokenPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataFlowEndpointAuthenticationServiceAccountTokenOutput).ToDataFlowEndpointAuthenticationServiceAccountTokenPtrOutputWithContext(ctx)
-}
-
-// DataFlowEndpointAuthenticationServiceAccountTokenPtrInput is an input type that accepts DataFlowEndpointAuthenticationServiceAccountTokenArgs, DataFlowEndpointAuthenticationServiceAccountTokenPtr and DataFlowEndpointAuthenticationServiceAccountTokenPtrOutput values.
-// You can construct a concrete instance of `DataFlowEndpointAuthenticationServiceAccountTokenPtrInput` via:
-//
-//	        DataFlowEndpointAuthenticationServiceAccountTokenArgs{...}
-//
-//	or:
-//
-//	        nil
-type DataFlowEndpointAuthenticationServiceAccountTokenPtrInput interface {
-	pulumi.Input
-
-	ToDataFlowEndpointAuthenticationServiceAccountTokenPtrOutput() DataFlowEndpointAuthenticationServiceAccountTokenPtrOutput
-	ToDataFlowEndpointAuthenticationServiceAccountTokenPtrOutputWithContext(context.Context) DataFlowEndpointAuthenticationServiceAccountTokenPtrOutput
-}
-
-type dataFlowEndpointAuthenticationServiceAccountTokenPtrType DataFlowEndpointAuthenticationServiceAccountTokenArgs
-
-func DataFlowEndpointAuthenticationServiceAccountTokenPtr(v *DataFlowEndpointAuthenticationServiceAccountTokenArgs) DataFlowEndpointAuthenticationServiceAccountTokenPtrInput {
-	return (*dataFlowEndpointAuthenticationServiceAccountTokenPtrType)(v)
-}
-
-func (*dataFlowEndpointAuthenticationServiceAccountTokenPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DataFlowEndpointAuthenticationServiceAccountToken)(nil)).Elem()
-}
-
-func (i *dataFlowEndpointAuthenticationServiceAccountTokenPtrType) ToDataFlowEndpointAuthenticationServiceAccountTokenPtrOutput() DataFlowEndpointAuthenticationServiceAccountTokenPtrOutput {
-	return i.ToDataFlowEndpointAuthenticationServiceAccountTokenPtrOutputWithContext(context.Background())
-}
-
-func (i *dataFlowEndpointAuthenticationServiceAccountTokenPtrType) ToDataFlowEndpointAuthenticationServiceAccountTokenPtrOutputWithContext(ctx context.Context) DataFlowEndpointAuthenticationServiceAccountTokenPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataFlowEndpointAuthenticationServiceAccountTokenPtrOutput)
-}
-
-// Service Account Token for BrokerAuthentication
-type DataFlowEndpointAuthenticationServiceAccountTokenOutput struct{ *pulumi.OutputState }
-
-func (DataFlowEndpointAuthenticationServiceAccountTokenOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowEndpointAuthenticationServiceAccountToken)(nil)).Elem()
-}
-
-func (o DataFlowEndpointAuthenticationServiceAccountTokenOutput) ToDataFlowEndpointAuthenticationServiceAccountTokenOutput() DataFlowEndpointAuthenticationServiceAccountTokenOutput {
-	return o
-}
-
-func (o DataFlowEndpointAuthenticationServiceAccountTokenOutput) ToDataFlowEndpointAuthenticationServiceAccountTokenOutputWithContext(ctx context.Context) DataFlowEndpointAuthenticationServiceAccountTokenOutput {
-	return o
-}
-
-func (o DataFlowEndpointAuthenticationServiceAccountTokenOutput) ToDataFlowEndpointAuthenticationServiceAccountTokenPtrOutput() DataFlowEndpointAuthenticationServiceAccountTokenPtrOutput {
-	return o.ToDataFlowEndpointAuthenticationServiceAccountTokenPtrOutputWithContext(context.Background())
-}
-
-func (o DataFlowEndpointAuthenticationServiceAccountTokenOutput) ToDataFlowEndpointAuthenticationServiceAccountTokenPtrOutputWithContext(ctx context.Context) DataFlowEndpointAuthenticationServiceAccountTokenPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataFlowEndpointAuthenticationServiceAccountToken) *DataFlowEndpointAuthenticationServiceAccountToken {
-		return &v
-	}).(DataFlowEndpointAuthenticationServiceAccountTokenPtrOutput)
-}
-
-// Audience of the service account. Optional, defaults to the broker internal service account audience.
-func (o DataFlowEndpointAuthenticationServiceAccountTokenOutput) Audience() pulumi.StringOutput {
-	return o.ApplyT(func(v DataFlowEndpointAuthenticationServiceAccountToken) string { return v.Audience }).(pulumi.StringOutput)
-}
-
-type DataFlowEndpointAuthenticationServiceAccountTokenPtrOutput struct{ *pulumi.OutputState }
-
-func (DataFlowEndpointAuthenticationServiceAccountTokenPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DataFlowEndpointAuthenticationServiceAccountToken)(nil)).Elem()
-}
-
-func (o DataFlowEndpointAuthenticationServiceAccountTokenPtrOutput) ToDataFlowEndpointAuthenticationServiceAccountTokenPtrOutput() DataFlowEndpointAuthenticationServiceAccountTokenPtrOutput {
-	return o
-}
-
-func (o DataFlowEndpointAuthenticationServiceAccountTokenPtrOutput) ToDataFlowEndpointAuthenticationServiceAccountTokenPtrOutputWithContext(ctx context.Context) DataFlowEndpointAuthenticationServiceAccountTokenPtrOutput {
-	return o
-}
-
-func (o DataFlowEndpointAuthenticationServiceAccountTokenPtrOutput) Elem() DataFlowEndpointAuthenticationServiceAccountTokenOutput {
-	return o.ApplyT(func(v *DataFlowEndpointAuthenticationServiceAccountToken) DataFlowEndpointAuthenticationServiceAccountToken {
-		if v != nil {
-			return *v
-		}
-		var ret DataFlowEndpointAuthenticationServiceAccountToken
-		return ret
-	}).(DataFlowEndpointAuthenticationServiceAccountTokenOutput)
-}
-
-// Audience of the service account. Optional, defaults to the broker internal service account audience.
-func (o DataFlowEndpointAuthenticationServiceAccountTokenPtrOutput) Audience() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointAuthenticationServiceAccountToken) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Audience
-	}).(pulumi.StringPtrOutput)
-}
-
-// Service Account Token for BrokerAuthentication
-type DataFlowEndpointAuthenticationServiceAccountTokenResponse struct {
-	// Audience of the service account. Optional, defaults to the broker internal service account audience.
-	Audience string `pulumi:"audience"`
-}
-
-// Service Account Token for BrokerAuthentication
-type DataFlowEndpointAuthenticationServiceAccountTokenResponseOutput struct{ *pulumi.OutputState }
-
-func (DataFlowEndpointAuthenticationServiceAccountTokenResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowEndpointAuthenticationServiceAccountTokenResponse)(nil)).Elem()
-}
-
-func (o DataFlowEndpointAuthenticationServiceAccountTokenResponseOutput) ToDataFlowEndpointAuthenticationServiceAccountTokenResponseOutput() DataFlowEndpointAuthenticationServiceAccountTokenResponseOutput {
-	return o
-}
-
-func (o DataFlowEndpointAuthenticationServiceAccountTokenResponseOutput) ToDataFlowEndpointAuthenticationServiceAccountTokenResponseOutputWithContext(ctx context.Context) DataFlowEndpointAuthenticationServiceAccountTokenResponseOutput {
-	return o
-}
-
-// Audience of the service account. Optional, defaults to the broker internal service account audience.
-func (o DataFlowEndpointAuthenticationServiceAccountTokenResponseOutput) Audience() pulumi.StringOutput {
-	return o.ApplyT(func(v DataFlowEndpointAuthenticationServiceAccountTokenResponse) string { return v.Audience }).(pulumi.StringOutput)
-}
-
-type DataFlowEndpointAuthenticationServiceAccountTokenResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (DataFlowEndpointAuthenticationServiceAccountTokenResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DataFlowEndpointAuthenticationServiceAccountTokenResponse)(nil)).Elem()
-}
-
-func (o DataFlowEndpointAuthenticationServiceAccountTokenResponsePtrOutput) ToDataFlowEndpointAuthenticationServiceAccountTokenResponsePtrOutput() DataFlowEndpointAuthenticationServiceAccountTokenResponsePtrOutput {
-	return o
-}
-
-func (o DataFlowEndpointAuthenticationServiceAccountTokenResponsePtrOutput) ToDataFlowEndpointAuthenticationServiceAccountTokenResponsePtrOutputWithContext(ctx context.Context) DataFlowEndpointAuthenticationServiceAccountTokenResponsePtrOutput {
-	return o
-}
-
-func (o DataFlowEndpointAuthenticationServiceAccountTokenResponsePtrOutput) Elem() DataFlowEndpointAuthenticationServiceAccountTokenResponseOutput {
-	return o.ApplyT(func(v *DataFlowEndpointAuthenticationServiceAccountTokenResponse) DataFlowEndpointAuthenticationServiceAccountTokenResponse {
-		if v != nil {
-			return *v
-		}
-		var ret DataFlowEndpointAuthenticationServiceAccountTokenResponse
-		return ret
-	}).(DataFlowEndpointAuthenticationServiceAccountTokenResponseOutput)
-}
-
-// Audience of the service account. Optional, defaults to the broker internal service account audience.
-func (o DataFlowEndpointAuthenticationServiceAccountTokenResponsePtrOutput) Audience() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointAuthenticationServiceAccountTokenResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Audience
-	}).(pulumi.StringPtrOutput)
-}
-
-// DataFlowEndpoint Authentication SystemAssignedManagedIdentity properties
-type DataFlowEndpointAuthenticationSystemAssignedManagedIdentity struct {
-	// Audience of the service to authenticate against. Optional; defaults to the audience for Service host configuration.
-	Audience string `pulumi:"audience"`
-}
-
-// DataFlowEndpointAuthenticationSystemAssignedManagedIdentityInput is an input type that accepts DataFlowEndpointAuthenticationSystemAssignedManagedIdentityArgs and DataFlowEndpointAuthenticationSystemAssignedManagedIdentityOutput values.
-// You can construct a concrete instance of `DataFlowEndpointAuthenticationSystemAssignedManagedIdentityInput` via:
-//
-//	DataFlowEndpointAuthenticationSystemAssignedManagedIdentityArgs{...}
-type DataFlowEndpointAuthenticationSystemAssignedManagedIdentityInput interface {
-	pulumi.Input
-
-	ToDataFlowEndpointAuthenticationSystemAssignedManagedIdentityOutput() DataFlowEndpointAuthenticationSystemAssignedManagedIdentityOutput
-	ToDataFlowEndpointAuthenticationSystemAssignedManagedIdentityOutputWithContext(context.Context) DataFlowEndpointAuthenticationSystemAssignedManagedIdentityOutput
-}
-
-// DataFlowEndpoint Authentication SystemAssignedManagedIdentity properties
-type DataFlowEndpointAuthenticationSystemAssignedManagedIdentityArgs struct {
-	// Audience of the service to authenticate against. Optional; defaults to the audience for Service host configuration.
-	Audience pulumi.StringInput `pulumi:"audience"`
-}
-
-func (DataFlowEndpointAuthenticationSystemAssignedManagedIdentityArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowEndpointAuthenticationSystemAssignedManagedIdentity)(nil)).Elem()
-}
-
-func (i DataFlowEndpointAuthenticationSystemAssignedManagedIdentityArgs) ToDataFlowEndpointAuthenticationSystemAssignedManagedIdentityOutput() DataFlowEndpointAuthenticationSystemAssignedManagedIdentityOutput {
-	return i.ToDataFlowEndpointAuthenticationSystemAssignedManagedIdentityOutputWithContext(context.Background())
-}
-
-func (i DataFlowEndpointAuthenticationSystemAssignedManagedIdentityArgs) ToDataFlowEndpointAuthenticationSystemAssignedManagedIdentityOutputWithContext(ctx context.Context) DataFlowEndpointAuthenticationSystemAssignedManagedIdentityOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataFlowEndpointAuthenticationSystemAssignedManagedIdentityOutput)
-}
-
-func (i DataFlowEndpointAuthenticationSystemAssignedManagedIdentityArgs) ToDataFlowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput() DataFlowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput {
-	return i.ToDataFlowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutputWithContext(context.Background())
-}
-
-func (i DataFlowEndpointAuthenticationSystemAssignedManagedIdentityArgs) ToDataFlowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutputWithContext(ctx context.Context) DataFlowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataFlowEndpointAuthenticationSystemAssignedManagedIdentityOutput).ToDataFlowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutputWithContext(ctx)
-}
-
-// DataFlowEndpointAuthenticationSystemAssignedManagedIdentityPtrInput is an input type that accepts DataFlowEndpointAuthenticationSystemAssignedManagedIdentityArgs, DataFlowEndpointAuthenticationSystemAssignedManagedIdentityPtr and DataFlowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput values.
-// You can construct a concrete instance of `DataFlowEndpointAuthenticationSystemAssignedManagedIdentityPtrInput` via:
-//
-//	        DataFlowEndpointAuthenticationSystemAssignedManagedIdentityArgs{...}
-//
-//	or:
-//
-//	        nil
-type DataFlowEndpointAuthenticationSystemAssignedManagedIdentityPtrInput interface {
-	pulumi.Input
-
-	ToDataFlowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput() DataFlowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput
-	ToDataFlowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutputWithContext(context.Context) DataFlowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput
-}
-
-type dataFlowEndpointAuthenticationSystemAssignedManagedIdentityPtrType DataFlowEndpointAuthenticationSystemAssignedManagedIdentityArgs
-
-func DataFlowEndpointAuthenticationSystemAssignedManagedIdentityPtr(v *DataFlowEndpointAuthenticationSystemAssignedManagedIdentityArgs) DataFlowEndpointAuthenticationSystemAssignedManagedIdentityPtrInput {
-	return (*dataFlowEndpointAuthenticationSystemAssignedManagedIdentityPtrType)(v)
-}
-
-func (*dataFlowEndpointAuthenticationSystemAssignedManagedIdentityPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DataFlowEndpointAuthenticationSystemAssignedManagedIdentity)(nil)).Elem()
-}
-
-func (i *dataFlowEndpointAuthenticationSystemAssignedManagedIdentityPtrType) ToDataFlowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput() DataFlowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput {
-	return i.ToDataFlowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutputWithContext(context.Background())
-}
-
-func (i *dataFlowEndpointAuthenticationSystemAssignedManagedIdentityPtrType) ToDataFlowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutputWithContext(ctx context.Context) DataFlowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataFlowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput)
-}
-
-// DataFlowEndpoint Authentication SystemAssignedManagedIdentity properties
-type DataFlowEndpointAuthenticationSystemAssignedManagedIdentityOutput struct{ *pulumi.OutputState }
-
-func (DataFlowEndpointAuthenticationSystemAssignedManagedIdentityOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowEndpointAuthenticationSystemAssignedManagedIdentity)(nil)).Elem()
-}
-
-func (o DataFlowEndpointAuthenticationSystemAssignedManagedIdentityOutput) ToDataFlowEndpointAuthenticationSystemAssignedManagedIdentityOutput() DataFlowEndpointAuthenticationSystemAssignedManagedIdentityOutput {
-	return o
-}
-
-func (o DataFlowEndpointAuthenticationSystemAssignedManagedIdentityOutput) ToDataFlowEndpointAuthenticationSystemAssignedManagedIdentityOutputWithContext(ctx context.Context) DataFlowEndpointAuthenticationSystemAssignedManagedIdentityOutput {
-	return o
-}
-
-func (o DataFlowEndpointAuthenticationSystemAssignedManagedIdentityOutput) ToDataFlowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput() DataFlowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput {
-	return o.ToDataFlowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutputWithContext(context.Background())
-}
-
-func (o DataFlowEndpointAuthenticationSystemAssignedManagedIdentityOutput) ToDataFlowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutputWithContext(ctx context.Context) DataFlowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataFlowEndpointAuthenticationSystemAssignedManagedIdentity) *DataFlowEndpointAuthenticationSystemAssignedManagedIdentity {
-		return &v
-	}).(DataFlowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput)
-}
-
-// Audience of the service to authenticate against. Optional; defaults to the audience for Service host configuration.
-func (o DataFlowEndpointAuthenticationSystemAssignedManagedIdentityOutput) Audience() pulumi.StringOutput {
-	return o.ApplyT(func(v DataFlowEndpointAuthenticationSystemAssignedManagedIdentity) string { return v.Audience }).(pulumi.StringOutput)
-}
-
-type DataFlowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput struct{ *pulumi.OutputState }
-
-func (DataFlowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DataFlowEndpointAuthenticationSystemAssignedManagedIdentity)(nil)).Elem()
-}
-
-func (o DataFlowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput) ToDataFlowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput() DataFlowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput {
-	return o
-}
-
-func (o DataFlowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput) ToDataFlowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutputWithContext(ctx context.Context) DataFlowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput {
-	return o
-}
-
-func (o DataFlowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput) Elem() DataFlowEndpointAuthenticationSystemAssignedManagedIdentityOutput {
-	return o.ApplyT(func(v *DataFlowEndpointAuthenticationSystemAssignedManagedIdentity) DataFlowEndpointAuthenticationSystemAssignedManagedIdentity {
-		if v != nil {
-			return *v
-		}
-		var ret DataFlowEndpointAuthenticationSystemAssignedManagedIdentity
-		return ret
-	}).(DataFlowEndpointAuthenticationSystemAssignedManagedIdentityOutput)
-}
-
-// Audience of the service to authenticate against. Optional; defaults to the audience for Service host configuration.
-func (o DataFlowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput) Audience() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointAuthenticationSystemAssignedManagedIdentity) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Audience
-	}).(pulumi.StringPtrOutput)
-}
-
-// DataFlowEndpoint Authentication SystemAssignedManagedIdentity properties
-type DataFlowEndpointAuthenticationSystemAssignedManagedIdentityResponse struct {
-	// Audience of the service to authenticate against. Optional; defaults to the audience for Service host configuration.
-	Audience string `pulumi:"audience"`
-}
-
-// DataFlowEndpoint Authentication SystemAssignedManagedIdentity properties
-type DataFlowEndpointAuthenticationSystemAssignedManagedIdentityResponseOutput struct{ *pulumi.OutputState }
-
-func (DataFlowEndpointAuthenticationSystemAssignedManagedIdentityResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowEndpointAuthenticationSystemAssignedManagedIdentityResponse)(nil)).Elem()
-}
-
-func (o DataFlowEndpointAuthenticationSystemAssignedManagedIdentityResponseOutput) ToDataFlowEndpointAuthenticationSystemAssignedManagedIdentityResponseOutput() DataFlowEndpointAuthenticationSystemAssignedManagedIdentityResponseOutput {
-	return o
-}
-
-func (o DataFlowEndpointAuthenticationSystemAssignedManagedIdentityResponseOutput) ToDataFlowEndpointAuthenticationSystemAssignedManagedIdentityResponseOutputWithContext(ctx context.Context) DataFlowEndpointAuthenticationSystemAssignedManagedIdentityResponseOutput {
-	return o
-}
-
-// Audience of the service to authenticate against. Optional; defaults to the audience for Service host configuration.
-func (o DataFlowEndpointAuthenticationSystemAssignedManagedIdentityResponseOutput) Audience() pulumi.StringOutput {
-	return o.ApplyT(func(v DataFlowEndpointAuthenticationSystemAssignedManagedIdentityResponse) string { return v.Audience }).(pulumi.StringOutput)
-}
-
-type DataFlowEndpointAuthenticationSystemAssignedManagedIdentityResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (DataFlowEndpointAuthenticationSystemAssignedManagedIdentityResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DataFlowEndpointAuthenticationSystemAssignedManagedIdentityResponse)(nil)).Elem()
-}
-
-func (o DataFlowEndpointAuthenticationSystemAssignedManagedIdentityResponsePtrOutput) ToDataFlowEndpointAuthenticationSystemAssignedManagedIdentityResponsePtrOutput() DataFlowEndpointAuthenticationSystemAssignedManagedIdentityResponsePtrOutput {
-	return o
-}
-
-func (o DataFlowEndpointAuthenticationSystemAssignedManagedIdentityResponsePtrOutput) ToDataFlowEndpointAuthenticationSystemAssignedManagedIdentityResponsePtrOutputWithContext(ctx context.Context) DataFlowEndpointAuthenticationSystemAssignedManagedIdentityResponsePtrOutput {
-	return o
-}
-
-func (o DataFlowEndpointAuthenticationSystemAssignedManagedIdentityResponsePtrOutput) Elem() DataFlowEndpointAuthenticationSystemAssignedManagedIdentityResponseOutput {
-	return o.ApplyT(func(v *DataFlowEndpointAuthenticationSystemAssignedManagedIdentityResponse) DataFlowEndpointAuthenticationSystemAssignedManagedIdentityResponse {
-		if v != nil {
-			return *v
-		}
-		var ret DataFlowEndpointAuthenticationSystemAssignedManagedIdentityResponse
-		return ret
-	}).(DataFlowEndpointAuthenticationSystemAssignedManagedIdentityResponseOutput)
-}
-
-// Audience of the service to authenticate against. Optional; defaults to the audience for Service host configuration.
-func (o DataFlowEndpointAuthenticationSystemAssignedManagedIdentityResponsePtrOutput) Audience() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointAuthenticationSystemAssignedManagedIdentityResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Audience
-	}).(pulumi.StringPtrOutput)
-}
-
-// DataFlowEndpoint Authentication UserAssignedManagedIdentity properties
-type DataFlowEndpointAuthenticationUserAssignedManagedIdentity struct {
-	// Resource identifier (application ID URI) of the resource, affixed with the .default suffix.
-	Audience string `pulumi:"audience"`
-	// Client ID for the user-assigned managed identity.
-	ClientId string `pulumi:"clientId"`
-	// Tenant ID.
-	TenantId string `pulumi:"tenantId"`
-}
-
-// DataFlowEndpointAuthenticationUserAssignedManagedIdentityInput is an input type that accepts DataFlowEndpointAuthenticationUserAssignedManagedIdentityArgs and DataFlowEndpointAuthenticationUserAssignedManagedIdentityOutput values.
-// You can construct a concrete instance of `DataFlowEndpointAuthenticationUserAssignedManagedIdentityInput` via:
-//
-//	DataFlowEndpointAuthenticationUserAssignedManagedIdentityArgs{...}
-type DataFlowEndpointAuthenticationUserAssignedManagedIdentityInput interface {
-	pulumi.Input
-
-	ToDataFlowEndpointAuthenticationUserAssignedManagedIdentityOutput() DataFlowEndpointAuthenticationUserAssignedManagedIdentityOutput
-	ToDataFlowEndpointAuthenticationUserAssignedManagedIdentityOutputWithContext(context.Context) DataFlowEndpointAuthenticationUserAssignedManagedIdentityOutput
-}
-
-// DataFlowEndpoint Authentication UserAssignedManagedIdentity properties
-type DataFlowEndpointAuthenticationUserAssignedManagedIdentityArgs struct {
-	// Resource identifier (application ID URI) of the resource, affixed with the .default suffix.
-	Audience pulumi.StringInput `pulumi:"audience"`
-	// Client ID for the user-assigned managed identity.
-	ClientId pulumi.StringInput `pulumi:"clientId"`
-	// Tenant ID.
-	TenantId pulumi.StringInput `pulumi:"tenantId"`
-}
-
-func (DataFlowEndpointAuthenticationUserAssignedManagedIdentityArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowEndpointAuthenticationUserAssignedManagedIdentity)(nil)).Elem()
-}
-
-func (i DataFlowEndpointAuthenticationUserAssignedManagedIdentityArgs) ToDataFlowEndpointAuthenticationUserAssignedManagedIdentityOutput() DataFlowEndpointAuthenticationUserAssignedManagedIdentityOutput {
-	return i.ToDataFlowEndpointAuthenticationUserAssignedManagedIdentityOutputWithContext(context.Background())
-}
-
-func (i DataFlowEndpointAuthenticationUserAssignedManagedIdentityArgs) ToDataFlowEndpointAuthenticationUserAssignedManagedIdentityOutputWithContext(ctx context.Context) DataFlowEndpointAuthenticationUserAssignedManagedIdentityOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataFlowEndpointAuthenticationUserAssignedManagedIdentityOutput)
-}
-
-func (i DataFlowEndpointAuthenticationUserAssignedManagedIdentityArgs) ToDataFlowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput() DataFlowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput {
-	return i.ToDataFlowEndpointAuthenticationUserAssignedManagedIdentityPtrOutputWithContext(context.Background())
-}
-
-func (i DataFlowEndpointAuthenticationUserAssignedManagedIdentityArgs) ToDataFlowEndpointAuthenticationUserAssignedManagedIdentityPtrOutputWithContext(ctx context.Context) DataFlowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataFlowEndpointAuthenticationUserAssignedManagedIdentityOutput).ToDataFlowEndpointAuthenticationUserAssignedManagedIdentityPtrOutputWithContext(ctx)
-}
-
-// DataFlowEndpointAuthenticationUserAssignedManagedIdentityPtrInput is an input type that accepts DataFlowEndpointAuthenticationUserAssignedManagedIdentityArgs, DataFlowEndpointAuthenticationUserAssignedManagedIdentityPtr and DataFlowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput values.
-// You can construct a concrete instance of `DataFlowEndpointAuthenticationUserAssignedManagedIdentityPtrInput` via:
-//
-//	        DataFlowEndpointAuthenticationUserAssignedManagedIdentityArgs{...}
-//
-//	or:
-//
-//	        nil
-type DataFlowEndpointAuthenticationUserAssignedManagedIdentityPtrInput interface {
-	pulumi.Input
-
-	ToDataFlowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput() DataFlowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput
-	ToDataFlowEndpointAuthenticationUserAssignedManagedIdentityPtrOutputWithContext(context.Context) DataFlowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput
-}
-
-type dataFlowEndpointAuthenticationUserAssignedManagedIdentityPtrType DataFlowEndpointAuthenticationUserAssignedManagedIdentityArgs
-
-func DataFlowEndpointAuthenticationUserAssignedManagedIdentityPtr(v *DataFlowEndpointAuthenticationUserAssignedManagedIdentityArgs) DataFlowEndpointAuthenticationUserAssignedManagedIdentityPtrInput {
-	return (*dataFlowEndpointAuthenticationUserAssignedManagedIdentityPtrType)(v)
-}
-
-func (*dataFlowEndpointAuthenticationUserAssignedManagedIdentityPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DataFlowEndpointAuthenticationUserAssignedManagedIdentity)(nil)).Elem()
-}
-
-func (i *dataFlowEndpointAuthenticationUserAssignedManagedIdentityPtrType) ToDataFlowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput() DataFlowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput {
-	return i.ToDataFlowEndpointAuthenticationUserAssignedManagedIdentityPtrOutputWithContext(context.Background())
-}
-
-func (i *dataFlowEndpointAuthenticationUserAssignedManagedIdentityPtrType) ToDataFlowEndpointAuthenticationUserAssignedManagedIdentityPtrOutputWithContext(ctx context.Context) DataFlowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataFlowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput)
-}
-
-// DataFlowEndpoint Authentication UserAssignedManagedIdentity properties
-type DataFlowEndpointAuthenticationUserAssignedManagedIdentityOutput struct{ *pulumi.OutputState }
-
-func (DataFlowEndpointAuthenticationUserAssignedManagedIdentityOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowEndpointAuthenticationUserAssignedManagedIdentity)(nil)).Elem()
-}
-
-func (o DataFlowEndpointAuthenticationUserAssignedManagedIdentityOutput) ToDataFlowEndpointAuthenticationUserAssignedManagedIdentityOutput() DataFlowEndpointAuthenticationUserAssignedManagedIdentityOutput {
-	return o
-}
-
-func (o DataFlowEndpointAuthenticationUserAssignedManagedIdentityOutput) ToDataFlowEndpointAuthenticationUserAssignedManagedIdentityOutputWithContext(ctx context.Context) DataFlowEndpointAuthenticationUserAssignedManagedIdentityOutput {
-	return o
-}
-
-func (o DataFlowEndpointAuthenticationUserAssignedManagedIdentityOutput) ToDataFlowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput() DataFlowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput {
-	return o.ToDataFlowEndpointAuthenticationUserAssignedManagedIdentityPtrOutputWithContext(context.Background())
-}
-
-func (o DataFlowEndpointAuthenticationUserAssignedManagedIdentityOutput) ToDataFlowEndpointAuthenticationUserAssignedManagedIdentityPtrOutputWithContext(ctx context.Context) DataFlowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataFlowEndpointAuthenticationUserAssignedManagedIdentity) *DataFlowEndpointAuthenticationUserAssignedManagedIdentity {
-		return &v
-	}).(DataFlowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput)
-}
-
-// Resource identifier (application ID URI) of the resource, affixed with the .default suffix.
-func (o DataFlowEndpointAuthenticationUserAssignedManagedIdentityOutput) Audience() pulumi.StringOutput {
-	return o.ApplyT(func(v DataFlowEndpointAuthenticationUserAssignedManagedIdentity) string { return v.Audience }).(pulumi.StringOutput)
-}
-
-// Client ID for the user-assigned managed identity.
-func (o DataFlowEndpointAuthenticationUserAssignedManagedIdentityOutput) ClientId() pulumi.StringOutput {
-	return o.ApplyT(func(v DataFlowEndpointAuthenticationUserAssignedManagedIdentity) string { return v.ClientId }).(pulumi.StringOutput)
-}
-
-// Tenant ID.
-func (o DataFlowEndpointAuthenticationUserAssignedManagedIdentityOutput) TenantId() pulumi.StringOutput {
-	return o.ApplyT(func(v DataFlowEndpointAuthenticationUserAssignedManagedIdentity) string { return v.TenantId }).(pulumi.StringOutput)
-}
-
-type DataFlowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput struct{ *pulumi.OutputState }
-
-func (DataFlowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DataFlowEndpointAuthenticationUserAssignedManagedIdentity)(nil)).Elem()
-}
-
-func (o DataFlowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput) ToDataFlowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput() DataFlowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput {
-	return o
-}
-
-func (o DataFlowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput) ToDataFlowEndpointAuthenticationUserAssignedManagedIdentityPtrOutputWithContext(ctx context.Context) DataFlowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput {
-	return o
-}
-
-func (o DataFlowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput) Elem() DataFlowEndpointAuthenticationUserAssignedManagedIdentityOutput {
-	return o.ApplyT(func(v *DataFlowEndpointAuthenticationUserAssignedManagedIdentity) DataFlowEndpointAuthenticationUserAssignedManagedIdentity {
-		if v != nil {
-			return *v
-		}
-		var ret DataFlowEndpointAuthenticationUserAssignedManagedIdentity
-		return ret
-	}).(DataFlowEndpointAuthenticationUserAssignedManagedIdentityOutput)
-}
-
-// Resource identifier (application ID URI) of the resource, affixed with the .default suffix.
-func (o DataFlowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput) Audience() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointAuthenticationUserAssignedManagedIdentity) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Audience
-	}).(pulumi.StringPtrOutput)
-}
-
-// Client ID for the user-assigned managed identity.
-func (o DataFlowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput) ClientId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointAuthenticationUserAssignedManagedIdentity) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ClientId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Tenant ID.
-func (o DataFlowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput) TenantId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointAuthenticationUserAssignedManagedIdentity) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.TenantId
-	}).(pulumi.StringPtrOutput)
-}
-
-// DataFlowEndpoint Authentication UserAssignedManagedIdentity properties
-type DataFlowEndpointAuthenticationUserAssignedManagedIdentityResponse struct {
-	// Resource identifier (application ID URI) of the resource, affixed with the .default suffix.
-	Audience string `pulumi:"audience"`
-	// Client ID for the user-assigned managed identity.
-	ClientId string `pulumi:"clientId"`
-	// Tenant ID.
-	TenantId string `pulumi:"tenantId"`
-}
-
-// DataFlowEndpoint Authentication UserAssignedManagedIdentity properties
-type DataFlowEndpointAuthenticationUserAssignedManagedIdentityResponseOutput struct{ *pulumi.OutputState }
-
-func (DataFlowEndpointAuthenticationUserAssignedManagedIdentityResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowEndpointAuthenticationUserAssignedManagedIdentityResponse)(nil)).Elem()
-}
-
-func (o DataFlowEndpointAuthenticationUserAssignedManagedIdentityResponseOutput) ToDataFlowEndpointAuthenticationUserAssignedManagedIdentityResponseOutput() DataFlowEndpointAuthenticationUserAssignedManagedIdentityResponseOutput {
-	return o
-}
-
-func (o DataFlowEndpointAuthenticationUserAssignedManagedIdentityResponseOutput) ToDataFlowEndpointAuthenticationUserAssignedManagedIdentityResponseOutputWithContext(ctx context.Context) DataFlowEndpointAuthenticationUserAssignedManagedIdentityResponseOutput {
-	return o
-}
-
-// Resource identifier (application ID URI) of the resource, affixed with the .default suffix.
-func (o DataFlowEndpointAuthenticationUserAssignedManagedIdentityResponseOutput) Audience() pulumi.StringOutput {
-	return o.ApplyT(func(v DataFlowEndpointAuthenticationUserAssignedManagedIdentityResponse) string { return v.Audience }).(pulumi.StringOutput)
-}
-
-// Client ID for the user-assigned managed identity.
-func (o DataFlowEndpointAuthenticationUserAssignedManagedIdentityResponseOutput) ClientId() pulumi.StringOutput {
-	return o.ApplyT(func(v DataFlowEndpointAuthenticationUserAssignedManagedIdentityResponse) string { return v.ClientId }).(pulumi.StringOutput)
-}
-
-// Tenant ID.
-func (o DataFlowEndpointAuthenticationUserAssignedManagedIdentityResponseOutput) TenantId() pulumi.StringOutput {
-	return o.ApplyT(func(v DataFlowEndpointAuthenticationUserAssignedManagedIdentityResponse) string { return v.TenantId }).(pulumi.StringOutput)
-}
-
-type DataFlowEndpointAuthenticationUserAssignedManagedIdentityResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (DataFlowEndpointAuthenticationUserAssignedManagedIdentityResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DataFlowEndpointAuthenticationUserAssignedManagedIdentityResponse)(nil)).Elem()
-}
-
-func (o DataFlowEndpointAuthenticationUserAssignedManagedIdentityResponsePtrOutput) ToDataFlowEndpointAuthenticationUserAssignedManagedIdentityResponsePtrOutput() DataFlowEndpointAuthenticationUserAssignedManagedIdentityResponsePtrOutput {
-	return o
-}
-
-func (o DataFlowEndpointAuthenticationUserAssignedManagedIdentityResponsePtrOutput) ToDataFlowEndpointAuthenticationUserAssignedManagedIdentityResponsePtrOutputWithContext(ctx context.Context) DataFlowEndpointAuthenticationUserAssignedManagedIdentityResponsePtrOutput {
-	return o
-}
-
-func (o DataFlowEndpointAuthenticationUserAssignedManagedIdentityResponsePtrOutput) Elem() DataFlowEndpointAuthenticationUserAssignedManagedIdentityResponseOutput {
-	return o.ApplyT(func(v *DataFlowEndpointAuthenticationUserAssignedManagedIdentityResponse) DataFlowEndpointAuthenticationUserAssignedManagedIdentityResponse {
-		if v != nil {
-			return *v
-		}
-		var ret DataFlowEndpointAuthenticationUserAssignedManagedIdentityResponse
-		return ret
-	}).(DataFlowEndpointAuthenticationUserAssignedManagedIdentityResponseOutput)
-}
-
-// Resource identifier (application ID URI) of the resource, affixed with the .default suffix.
-func (o DataFlowEndpointAuthenticationUserAssignedManagedIdentityResponsePtrOutput) Audience() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointAuthenticationUserAssignedManagedIdentityResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Audience
-	}).(pulumi.StringPtrOutput)
-}
-
-// Client ID for the user-assigned managed identity.
-func (o DataFlowEndpointAuthenticationUserAssignedManagedIdentityResponsePtrOutput) ClientId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointAuthenticationUserAssignedManagedIdentityResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ClientId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Tenant ID.
-func (o DataFlowEndpointAuthenticationUserAssignedManagedIdentityResponsePtrOutput) TenantId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointAuthenticationUserAssignedManagedIdentityResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.TenantId
-	}).(pulumi.StringPtrOutput)
-}
-
-// DataFlowEndpoint Authentication X509 properties
-type DataFlowEndpointAuthenticationX509 struct {
-	// Secret reference of the X.509 certificate.
 	SecretRef string `pulumi:"secretRef"`
 }
 
-// DataFlowEndpointAuthenticationX509Input is an input type that accepts DataFlowEndpointAuthenticationX509Args and DataFlowEndpointAuthenticationX509Output values.
-// You can construct a concrete instance of `DataFlowEndpointAuthenticationX509Input` via:
+// DataflowEndpointAuthenticationAccessTokenInput is an input type that accepts DataflowEndpointAuthenticationAccessTokenArgs and DataflowEndpointAuthenticationAccessTokenOutput values.
+// You can construct a concrete instance of `DataflowEndpointAuthenticationAccessTokenInput` via:
 //
-//	DataFlowEndpointAuthenticationX509Args{...}
-type DataFlowEndpointAuthenticationX509Input interface {
+//	DataflowEndpointAuthenticationAccessTokenArgs{...}
+type DataflowEndpointAuthenticationAccessTokenInput interface {
 	pulumi.Input
 
-	ToDataFlowEndpointAuthenticationX509Output() DataFlowEndpointAuthenticationX509Output
-	ToDataFlowEndpointAuthenticationX509OutputWithContext(context.Context) DataFlowEndpointAuthenticationX509Output
+	ToDataflowEndpointAuthenticationAccessTokenOutput() DataflowEndpointAuthenticationAccessTokenOutput
+	ToDataflowEndpointAuthenticationAccessTokenOutputWithContext(context.Context) DataflowEndpointAuthenticationAccessTokenOutput
 }
 
-// DataFlowEndpoint Authentication X509 properties
-type DataFlowEndpointAuthenticationX509Args struct {
-	// Secret reference of the X.509 certificate.
+// DataflowEndpoint Authentication Access Token properties
+type DataflowEndpointAuthenticationAccessTokenArgs struct {
+	// Token secret name.
 	SecretRef pulumi.StringInput `pulumi:"secretRef"`
 }
 
-func (DataFlowEndpointAuthenticationX509Args) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowEndpointAuthenticationX509)(nil)).Elem()
+func (DataflowEndpointAuthenticationAccessTokenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowEndpointAuthenticationAccessToken)(nil)).Elem()
 }
 
-func (i DataFlowEndpointAuthenticationX509Args) ToDataFlowEndpointAuthenticationX509Output() DataFlowEndpointAuthenticationX509Output {
-	return i.ToDataFlowEndpointAuthenticationX509OutputWithContext(context.Background())
+func (i DataflowEndpointAuthenticationAccessTokenArgs) ToDataflowEndpointAuthenticationAccessTokenOutput() DataflowEndpointAuthenticationAccessTokenOutput {
+	return i.ToDataflowEndpointAuthenticationAccessTokenOutputWithContext(context.Background())
 }
 
-func (i DataFlowEndpointAuthenticationX509Args) ToDataFlowEndpointAuthenticationX509OutputWithContext(ctx context.Context) DataFlowEndpointAuthenticationX509Output {
-	return pulumi.ToOutputWithContext(ctx, i).(DataFlowEndpointAuthenticationX509Output)
+func (i DataflowEndpointAuthenticationAccessTokenArgs) ToDataflowEndpointAuthenticationAccessTokenOutputWithContext(ctx context.Context) DataflowEndpointAuthenticationAccessTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowEndpointAuthenticationAccessTokenOutput)
 }
 
-func (i DataFlowEndpointAuthenticationX509Args) ToDataFlowEndpointAuthenticationX509PtrOutput() DataFlowEndpointAuthenticationX509PtrOutput {
-	return i.ToDataFlowEndpointAuthenticationX509PtrOutputWithContext(context.Background())
+func (i DataflowEndpointAuthenticationAccessTokenArgs) ToDataflowEndpointAuthenticationAccessTokenPtrOutput() DataflowEndpointAuthenticationAccessTokenPtrOutput {
+	return i.ToDataflowEndpointAuthenticationAccessTokenPtrOutputWithContext(context.Background())
 }
 
-func (i DataFlowEndpointAuthenticationX509Args) ToDataFlowEndpointAuthenticationX509PtrOutputWithContext(ctx context.Context) DataFlowEndpointAuthenticationX509PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataFlowEndpointAuthenticationX509Output).ToDataFlowEndpointAuthenticationX509PtrOutputWithContext(ctx)
+func (i DataflowEndpointAuthenticationAccessTokenArgs) ToDataflowEndpointAuthenticationAccessTokenPtrOutputWithContext(ctx context.Context) DataflowEndpointAuthenticationAccessTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowEndpointAuthenticationAccessTokenOutput).ToDataflowEndpointAuthenticationAccessTokenPtrOutputWithContext(ctx)
 }
 
-// DataFlowEndpointAuthenticationX509PtrInput is an input type that accepts DataFlowEndpointAuthenticationX509Args, DataFlowEndpointAuthenticationX509Ptr and DataFlowEndpointAuthenticationX509PtrOutput values.
-// You can construct a concrete instance of `DataFlowEndpointAuthenticationX509PtrInput` via:
+// DataflowEndpointAuthenticationAccessTokenPtrInput is an input type that accepts DataflowEndpointAuthenticationAccessTokenArgs, DataflowEndpointAuthenticationAccessTokenPtr and DataflowEndpointAuthenticationAccessTokenPtrOutput values.
+// You can construct a concrete instance of `DataflowEndpointAuthenticationAccessTokenPtrInput` via:
 //
-//	        DataFlowEndpointAuthenticationX509Args{...}
+//	        DataflowEndpointAuthenticationAccessTokenArgs{...}
 //
 //	or:
 //
 //	        nil
-type DataFlowEndpointAuthenticationX509PtrInput interface {
+type DataflowEndpointAuthenticationAccessTokenPtrInput interface {
 	pulumi.Input
 
-	ToDataFlowEndpointAuthenticationX509PtrOutput() DataFlowEndpointAuthenticationX509PtrOutput
-	ToDataFlowEndpointAuthenticationX509PtrOutputWithContext(context.Context) DataFlowEndpointAuthenticationX509PtrOutput
+	ToDataflowEndpointAuthenticationAccessTokenPtrOutput() DataflowEndpointAuthenticationAccessTokenPtrOutput
+	ToDataflowEndpointAuthenticationAccessTokenPtrOutputWithContext(context.Context) DataflowEndpointAuthenticationAccessTokenPtrOutput
 }
 
-type dataFlowEndpointAuthenticationX509PtrType DataFlowEndpointAuthenticationX509Args
+type dataflowEndpointAuthenticationAccessTokenPtrType DataflowEndpointAuthenticationAccessTokenArgs
 
-func DataFlowEndpointAuthenticationX509Ptr(v *DataFlowEndpointAuthenticationX509Args) DataFlowEndpointAuthenticationX509PtrInput {
-	return (*dataFlowEndpointAuthenticationX509PtrType)(v)
+func DataflowEndpointAuthenticationAccessTokenPtr(v *DataflowEndpointAuthenticationAccessTokenArgs) DataflowEndpointAuthenticationAccessTokenPtrInput {
+	return (*dataflowEndpointAuthenticationAccessTokenPtrType)(v)
 }
 
-func (*dataFlowEndpointAuthenticationX509PtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DataFlowEndpointAuthenticationX509)(nil)).Elem()
+func (*dataflowEndpointAuthenticationAccessTokenPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowEndpointAuthenticationAccessToken)(nil)).Elem()
 }
 
-func (i *dataFlowEndpointAuthenticationX509PtrType) ToDataFlowEndpointAuthenticationX509PtrOutput() DataFlowEndpointAuthenticationX509PtrOutput {
-	return i.ToDataFlowEndpointAuthenticationX509PtrOutputWithContext(context.Background())
+func (i *dataflowEndpointAuthenticationAccessTokenPtrType) ToDataflowEndpointAuthenticationAccessTokenPtrOutput() DataflowEndpointAuthenticationAccessTokenPtrOutput {
+	return i.ToDataflowEndpointAuthenticationAccessTokenPtrOutputWithContext(context.Background())
 }
 
-func (i *dataFlowEndpointAuthenticationX509PtrType) ToDataFlowEndpointAuthenticationX509PtrOutputWithContext(ctx context.Context) DataFlowEndpointAuthenticationX509PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataFlowEndpointAuthenticationX509PtrOutput)
+func (i *dataflowEndpointAuthenticationAccessTokenPtrType) ToDataflowEndpointAuthenticationAccessTokenPtrOutputWithContext(ctx context.Context) DataflowEndpointAuthenticationAccessTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowEndpointAuthenticationAccessTokenPtrOutput)
 }
 
-// DataFlowEndpoint Authentication X509 properties
-type DataFlowEndpointAuthenticationX509Output struct{ *pulumi.OutputState }
+// DataflowEndpoint Authentication Access Token properties
+type DataflowEndpointAuthenticationAccessTokenOutput struct{ *pulumi.OutputState }
 
-func (DataFlowEndpointAuthenticationX509Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowEndpointAuthenticationX509)(nil)).Elem()
+func (DataflowEndpointAuthenticationAccessTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowEndpointAuthenticationAccessToken)(nil)).Elem()
 }
 
-func (o DataFlowEndpointAuthenticationX509Output) ToDataFlowEndpointAuthenticationX509Output() DataFlowEndpointAuthenticationX509Output {
+func (o DataflowEndpointAuthenticationAccessTokenOutput) ToDataflowEndpointAuthenticationAccessTokenOutput() DataflowEndpointAuthenticationAccessTokenOutput {
 	return o
 }
 
-func (o DataFlowEndpointAuthenticationX509Output) ToDataFlowEndpointAuthenticationX509OutputWithContext(ctx context.Context) DataFlowEndpointAuthenticationX509Output {
+func (o DataflowEndpointAuthenticationAccessTokenOutput) ToDataflowEndpointAuthenticationAccessTokenOutputWithContext(ctx context.Context) DataflowEndpointAuthenticationAccessTokenOutput {
 	return o
 }
 
-func (o DataFlowEndpointAuthenticationX509Output) ToDataFlowEndpointAuthenticationX509PtrOutput() DataFlowEndpointAuthenticationX509PtrOutput {
-	return o.ToDataFlowEndpointAuthenticationX509PtrOutputWithContext(context.Background())
+func (o DataflowEndpointAuthenticationAccessTokenOutput) ToDataflowEndpointAuthenticationAccessTokenPtrOutput() DataflowEndpointAuthenticationAccessTokenPtrOutput {
+	return o.ToDataflowEndpointAuthenticationAccessTokenPtrOutputWithContext(context.Background())
 }
 
-func (o DataFlowEndpointAuthenticationX509Output) ToDataFlowEndpointAuthenticationX509PtrOutputWithContext(ctx context.Context) DataFlowEndpointAuthenticationX509PtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataFlowEndpointAuthenticationX509) *DataFlowEndpointAuthenticationX509 {
+func (o DataflowEndpointAuthenticationAccessTokenOutput) ToDataflowEndpointAuthenticationAccessTokenPtrOutputWithContext(ctx context.Context) DataflowEndpointAuthenticationAccessTokenPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataflowEndpointAuthenticationAccessToken) *DataflowEndpointAuthenticationAccessToken {
 		return &v
-	}).(DataFlowEndpointAuthenticationX509PtrOutput)
+	}).(DataflowEndpointAuthenticationAccessTokenPtrOutput)
 }
 
-// Secret reference of the X.509 certificate.
-func (o DataFlowEndpointAuthenticationX509Output) SecretRef() pulumi.StringOutput {
-	return o.ApplyT(func(v DataFlowEndpointAuthenticationX509) string { return v.SecretRef }).(pulumi.StringOutput)
+// Token secret name.
+func (o DataflowEndpointAuthenticationAccessTokenOutput) SecretRef() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowEndpointAuthenticationAccessToken) string { return v.SecretRef }).(pulumi.StringOutput)
 }
 
-type DataFlowEndpointAuthenticationX509PtrOutput struct{ *pulumi.OutputState }
+type DataflowEndpointAuthenticationAccessTokenPtrOutput struct{ *pulumi.OutputState }
 
-func (DataFlowEndpointAuthenticationX509PtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DataFlowEndpointAuthenticationX509)(nil)).Elem()
+func (DataflowEndpointAuthenticationAccessTokenPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowEndpointAuthenticationAccessToken)(nil)).Elem()
 }
 
-func (o DataFlowEndpointAuthenticationX509PtrOutput) ToDataFlowEndpointAuthenticationX509PtrOutput() DataFlowEndpointAuthenticationX509PtrOutput {
+func (o DataflowEndpointAuthenticationAccessTokenPtrOutput) ToDataflowEndpointAuthenticationAccessTokenPtrOutput() DataflowEndpointAuthenticationAccessTokenPtrOutput {
 	return o
 }
 
-func (o DataFlowEndpointAuthenticationX509PtrOutput) ToDataFlowEndpointAuthenticationX509PtrOutputWithContext(ctx context.Context) DataFlowEndpointAuthenticationX509PtrOutput {
+func (o DataflowEndpointAuthenticationAccessTokenPtrOutput) ToDataflowEndpointAuthenticationAccessTokenPtrOutputWithContext(ctx context.Context) DataflowEndpointAuthenticationAccessTokenPtrOutput {
 	return o
 }
 
-func (o DataFlowEndpointAuthenticationX509PtrOutput) Elem() DataFlowEndpointAuthenticationX509Output {
-	return o.ApplyT(func(v *DataFlowEndpointAuthenticationX509) DataFlowEndpointAuthenticationX509 {
+func (o DataflowEndpointAuthenticationAccessTokenPtrOutput) Elem() DataflowEndpointAuthenticationAccessTokenOutput {
+	return o.ApplyT(func(v *DataflowEndpointAuthenticationAccessToken) DataflowEndpointAuthenticationAccessToken {
 		if v != nil {
 			return *v
 		}
-		var ret DataFlowEndpointAuthenticationX509
+		var ret DataflowEndpointAuthenticationAccessToken
 		return ret
-	}).(DataFlowEndpointAuthenticationX509Output)
+	}).(DataflowEndpointAuthenticationAccessTokenOutput)
 }
 
-// Secret reference of the X.509 certificate.
-func (o DataFlowEndpointAuthenticationX509PtrOutput) SecretRef() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointAuthenticationX509) *string {
+// Token secret name.
+func (o DataflowEndpointAuthenticationAccessTokenPtrOutput) SecretRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointAuthenticationAccessToken) *string {
 		if v == nil {
 			return nil
 		}
@@ -8682,59 +7558,1167 @@ func (o DataFlowEndpointAuthenticationX509PtrOutput) SecretRef() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// DataFlowEndpoint Authentication X509 properties
-type DataFlowEndpointAuthenticationX509Response struct {
+// DataflowEndpoint Authentication Access Token properties
+type DataflowEndpointAuthenticationAccessTokenResponse struct {
+	// Token secret name.
+	SecretRef string `pulumi:"secretRef"`
+}
+
+// DataflowEndpoint Authentication Access Token properties
+type DataflowEndpointAuthenticationAccessTokenResponseOutput struct{ *pulumi.OutputState }
+
+func (DataflowEndpointAuthenticationAccessTokenResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowEndpointAuthenticationAccessTokenResponse)(nil)).Elem()
+}
+
+func (o DataflowEndpointAuthenticationAccessTokenResponseOutput) ToDataflowEndpointAuthenticationAccessTokenResponseOutput() DataflowEndpointAuthenticationAccessTokenResponseOutput {
+	return o
+}
+
+func (o DataflowEndpointAuthenticationAccessTokenResponseOutput) ToDataflowEndpointAuthenticationAccessTokenResponseOutputWithContext(ctx context.Context) DataflowEndpointAuthenticationAccessTokenResponseOutput {
+	return o
+}
+
+// Token secret name.
+func (o DataflowEndpointAuthenticationAccessTokenResponseOutput) SecretRef() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowEndpointAuthenticationAccessTokenResponse) string { return v.SecretRef }).(pulumi.StringOutput)
+}
+
+type DataflowEndpointAuthenticationAccessTokenResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DataflowEndpointAuthenticationAccessTokenResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowEndpointAuthenticationAccessTokenResponse)(nil)).Elem()
+}
+
+func (o DataflowEndpointAuthenticationAccessTokenResponsePtrOutput) ToDataflowEndpointAuthenticationAccessTokenResponsePtrOutput() DataflowEndpointAuthenticationAccessTokenResponsePtrOutput {
+	return o
+}
+
+func (o DataflowEndpointAuthenticationAccessTokenResponsePtrOutput) ToDataflowEndpointAuthenticationAccessTokenResponsePtrOutputWithContext(ctx context.Context) DataflowEndpointAuthenticationAccessTokenResponsePtrOutput {
+	return o
+}
+
+func (o DataflowEndpointAuthenticationAccessTokenResponsePtrOutput) Elem() DataflowEndpointAuthenticationAccessTokenResponseOutput {
+	return o.ApplyT(func(v *DataflowEndpointAuthenticationAccessTokenResponse) DataflowEndpointAuthenticationAccessTokenResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DataflowEndpointAuthenticationAccessTokenResponse
+		return ret
+	}).(DataflowEndpointAuthenticationAccessTokenResponseOutput)
+}
+
+// Token secret name.
+func (o DataflowEndpointAuthenticationAccessTokenResponsePtrOutput) SecretRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointAuthenticationAccessTokenResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SecretRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// DataflowEndpoint Authentication Sasl properties
+type DataflowEndpointAuthenticationSasl struct {
+	// Type of SASL authentication. Can be PLAIN, SCRAM-SHA-256, or SCRAM-SHA-512.
+	SaslType string `pulumi:"saslType"`
+	// Token secret name.
+	SecretRef string `pulumi:"secretRef"`
+}
+
+// DataflowEndpointAuthenticationSaslInput is an input type that accepts DataflowEndpointAuthenticationSaslArgs and DataflowEndpointAuthenticationSaslOutput values.
+// You can construct a concrete instance of `DataflowEndpointAuthenticationSaslInput` via:
+//
+//	DataflowEndpointAuthenticationSaslArgs{...}
+type DataflowEndpointAuthenticationSaslInput interface {
+	pulumi.Input
+
+	ToDataflowEndpointAuthenticationSaslOutput() DataflowEndpointAuthenticationSaslOutput
+	ToDataflowEndpointAuthenticationSaslOutputWithContext(context.Context) DataflowEndpointAuthenticationSaslOutput
+}
+
+// DataflowEndpoint Authentication Sasl properties
+type DataflowEndpointAuthenticationSaslArgs struct {
+	// Type of SASL authentication. Can be PLAIN, SCRAM-SHA-256, or SCRAM-SHA-512.
+	SaslType pulumi.StringInput `pulumi:"saslType"`
+	// Token secret name.
+	SecretRef pulumi.StringInput `pulumi:"secretRef"`
+}
+
+func (DataflowEndpointAuthenticationSaslArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowEndpointAuthenticationSasl)(nil)).Elem()
+}
+
+func (i DataflowEndpointAuthenticationSaslArgs) ToDataflowEndpointAuthenticationSaslOutput() DataflowEndpointAuthenticationSaslOutput {
+	return i.ToDataflowEndpointAuthenticationSaslOutputWithContext(context.Background())
+}
+
+func (i DataflowEndpointAuthenticationSaslArgs) ToDataflowEndpointAuthenticationSaslOutputWithContext(ctx context.Context) DataflowEndpointAuthenticationSaslOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowEndpointAuthenticationSaslOutput)
+}
+
+func (i DataflowEndpointAuthenticationSaslArgs) ToDataflowEndpointAuthenticationSaslPtrOutput() DataflowEndpointAuthenticationSaslPtrOutput {
+	return i.ToDataflowEndpointAuthenticationSaslPtrOutputWithContext(context.Background())
+}
+
+func (i DataflowEndpointAuthenticationSaslArgs) ToDataflowEndpointAuthenticationSaslPtrOutputWithContext(ctx context.Context) DataflowEndpointAuthenticationSaslPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowEndpointAuthenticationSaslOutput).ToDataflowEndpointAuthenticationSaslPtrOutputWithContext(ctx)
+}
+
+// DataflowEndpointAuthenticationSaslPtrInput is an input type that accepts DataflowEndpointAuthenticationSaslArgs, DataflowEndpointAuthenticationSaslPtr and DataflowEndpointAuthenticationSaslPtrOutput values.
+// You can construct a concrete instance of `DataflowEndpointAuthenticationSaslPtrInput` via:
+//
+//	        DataflowEndpointAuthenticationSaslArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataflowEndpointAuthenticationSaslPtrInput interface {
+	pulumi.Input
+
+	ToDataflowEndpointAuthenticationSaslPtrOutput() DataflowEndpointAuthenticationSaslPtrOutput
+	ToDataflowEndpointAuthenticationSaslPtrOutputWithContext(context.Context) DataflowEndpointAuthenticationSaslPtrOutput
+}
+
+type dataflowEndpointAuthenticationSaslPtrType DataflowEndpointAuthenticationSaslArgs
+
+func DataflowEndpointAuthenticationSaslPtr(v *DataflowEndpointAuthenticationSaslArgs) DataflowEndpointAuthenticationSaslPtrInput {
+	return (*dataflowEndpointAuthenticationSaslPtrType)(v)
+}
+
+func (*dataflowEndpointAuthenticationSaslPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowEndpointAuthenticationSasl)(nil)).Elem()
+}
+
+func (i *dataflowEndpointAuthenticationSaslPtrType) ToDataflowEndpointAuthenticationSaslPtrOutput() DataflowEndpointAuthenticationSaslPtrOutput {
+	return i.ToDataflowEndpointAuthenticationSaslPtrOutputWithContext(context.Background())
+}
+
+func (i *dataflowEndpointAuthenticationSaslPtrType) ToDataflowEndpointAuthenticationSaslPtrOutputWithContext(ctx context.Context) DataflowEndpointAuthenticationSaslPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowEndpointAuthenticationSaslPtrOutput)
+}
+
+// DataflowEndpoint Authentication Sasl properties
+type DataflowEndpointAuthenticationSaslOutput struct{ *pulumi.OutputState }
+
+func (DataflowEndpointAuthenticationSaslOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowEndpointAuthenticationSasl)(nil)).Elem()
+}
+
+func (o DataflowEndpointAuthenticationSaslOutput) ToDataflowEndpointAuthenticationSaslOutput() DataflowEndpointAuthenticationSaslOutput {
+	return o
+}
+
+func (o DataflowEndpointAuthenticationSaslOutput) ToDataflowEndpointAuthenticationSaslOutputWithContext(ctx context.Context) DataflowEndpointAuthenticationSaslOutput {
+	return o
+}
+
+func (o DataflowEndpointAuthenticationSaslOutput) ToDataflowEndpointAuthenticationSaslPtrOutput() DataflowEndpointAuthenticationSaslPtrOutput {
+	return o.ToDataflowEndpointAuthenticationSaslPtrOutputWithContext(context.Background())
+}
+
+func (o DataflowEndpointAuthenticationSaslOutput) ToDataflowEndpointAuthenticationSaslPtrOutputWithContext(ctx context.Context) DataflowEndpointAuthenticationSaslPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataflowEndpointAuthenticationSasl) *DataflowEndpointAuthenticationSasl {
+		return &v
+	}).(DataflowEndpointAuthenticationSaslPtrOutput)
+}
+
+// Type of SASL authentication. Can be PLAIN, SCRAM-SHA-256, or SCRAM-SHA-512.
+func (o DataflowEndpointAuthenticationSaslOutput) SaslType() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowEndpointAuthenticationSasl) string { return v.SaslType }).(pulumi.StringOutput)
+}
+
+// Token secret name.
+func (o DataflowEndpointAuthenticationSaslOutput) SecretRef() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowEndpointAuthenticationSasl) string { return v.SecretRef }).(pulumi.StringOutput)
+}
+
+type DataflowEndpointAuthenticationSaslPtrOutput struct{ *pulumi.OutputState }
+
+func (DataflowEndpointAuthenticationSaslPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowEndpointAuthenticationSasl)(nil)).Elem()
+}
+
+func (o DataflowEndpointAuthenticationSaslPtrOutput) ToDataflowEndpointAuthenticationSaslPtrOutput() DataflowEndpointAuthenticationSaslPtrOutput {
+	return o
+}
+
+func (o DataflowEndpointAuthenticationSaslPtrOutput) ToDataflowEndpointAuthenticationSaslPtrOutputWithContext(ctx context.Context) DataflowEndpointAuthenticationSaslPtrOutput {
+	return o
+}
+
+func (o DataflowEndpointAuthenticationSaslPtrOutput) Elem() DataflowEndpointAuthenticationSaslOutput {
+	return o.ApplyT(func(v *DataflowEndpointAuthenticationSasl) DataflowEndpointAuthenticationSasl {
+		if v != nil {
+			return *v
+		}
+		var ret DataflowEndpointAuthenticationSasl
+		return ret
+	}).(DataflowEndpointAuthenticationSaslOutput)
+}
+
+// Type of SASL authentication. Can be PLAIN, SCRAM-SHA-256, or SCRAM-SHA-512.
+func (o DataflowEndpointAuthenticationSaslPtrOutput) SaslType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointAuthenticationSasl) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SaslType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Token secret name.
+func (o DataflowEndpointAuthenticationSaslPtrOutput) SecretRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointAuthenticationSasl) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SecretRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// DataflowEndpoint Authentication Sasl properties
+type DataflowEndpointAuthenticationSaslResponse struct {
+	// Type of SASL authentication. Can be PLAIN, SCRAM-SHA-256, or SCRAM-SHA-512.
+	SaslType string `pulumi:"saslType"`
+	// Token secret name.
+	SecretRef string `pulumi:"secretRef"`
+}
+
+// DataflowEndpoint Authentication Sasl properties
+type DataflowEndpointAuthenticationSaslResponseOutput struct{ *pulumi.OutputState }
+
+func (DataflowEndpointAuthenticationSaslResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowEndpointAuthenticationSaslResponse)(nil)).Elem()
+}
+
+func (o DataflowEndpointAuthenticationSaslResponseOutput) ToDataflowEndpointAuthenticationSaslResponseOutput() DataflowEndpointAuthenticationSaslResponseOutput {
+	return o
+}
+
+func (o DataflowEndpointAuthenticationSaslResponseOutput) ToDataflowEndpointAuthenticationSaslResponseOutputWithContext(ctx context.Context) DataflowEndpointAuthenticationSaslResponseOutput {
+	return o
+}
+
+// Type of SASL authentication. Can be PLAIN, SCRAM-SHA-256, or SCRAM-SHA-512.
+func (o DataflowEndpointAuthenticationSaslResponseOutput) SaslType() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowEndpointAuthenticationSaslResponse) string { return v.SaslType }).(pulumi.StringOutput)
+}
+
+// Token secret name.
+func (o DataflowEndpointAuthenticationSaslResponseOutput) SecretRef() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowEndpointAuthenticationSaslResponse) string { return v.SecretRef }).(pulumi.StringOutput)
+}
+
+type DataflowEndpointAuthenticationSaslResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DataflowEndpointAuthenticationSaslResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowEndpointAuthenticationSaslResponse)(nil)).Elem()
+}
+
+func (o DataflowEndpointAuthenticationSaslResponsePtrOutput) ToDataflowEndpointAuthenticationSaslResponsePtrOutput() DataflowEndpointAuthenticationSaslResponsePtrOutput {
+	return o
+}
+
+func (o DataflowEndpointAuthenticationSaslResponsePtrOutput) ToDataflowEndpointAuthenticationSaslResponsePtrOutputWithContext(ctx context.Context) DataflowEndpointAuthenticationSaslResponsePtrOutput {
+	return o
+}
+
+func (o DataflowEndpointAuthenticationSaslResponsePtrOutput) Elem() DataflowEndpointAuthenticationSaslResponseOutput {
+	return o.ApplyT(func(v *DataflowEndpointAuthenticationSaslResponse) DataflowEndpointAuthenticationSaslResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DataflowEndpointAuthenticationSaslResponse
+		return ret
+	}).(DataflowEndpointAuthenticationSaslResponseOutput)
+}
+
+// Type of SASL authentication. Can be PLAIN, SCRAM-SHA-256, or SCRAM-SHA-512.
+func (o DataflowEndpointAuthenticationSaslResponsePtrOutput) SaslType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointAuthenticationSaslResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SaslType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Token secret name.
+func (o DataflowEndpointAuthenticationSaslResponsePtrOutput) SecretRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointAuthenticationSaslResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SecretRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// Service Account Token for BrokerAuthentication
+type DataflowEndpointAuthenticationServiceAccountToken struct {
+	// Audience of the service account. Optional, defaults to the broker internal service account audience.
+	Audience string `pulumi:"audience"`
+}
+
+// DataflowEndpointAuthenticationServiceAccountTokenInput is an input type that accepts DataflowEndpointAuthenticationServiceAccountTokenArgs and DataflowEndpointAuthenticationServiceAccountTokenOutput values.
+// You can construct a concrete instance of `DataflowEndpointAuthenticationServiceAccountTokenInput` via:
+//
+//	DataflowEndpointAuthenticationServiceAccountTokenArgs{...}
+type DataflowEndpointAuthenticationServiceAccountTokenInput interface {
+	pulumi.Input
+
+	ToDataflowEndpointAuthenticationServiceAccountTokenOutput() DataflowEndpointAuthenticationServiceAccountTokenOutput
+	ToDataflowEndpointAuthenticationServiceAccountTokenOutputWithContext(context.Context) DataflowEndpointAuthenticationServiceAccountTokenOutput
+}
+
+// Service Account Token for BrokerAuthentication
+type DataflowEndpointAuthenticationServiceAccountTokenArgs struct {
+	// Audience of the service account. Optional, defaults to the broker internal service account audience.
+	Audience pulumi.StringInput `pulumi:"audience"`
+}
+
+func (DataflowEndpointAuthenticationServiceAccountTokenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowEndpointAuthenticationServiceAccountToken)(nil)).Elem()
+}
+
+func (i DataflowEndpointAuthenticationServiceAccountTokenArgs) ToDataflowEndpointAuthenticationServiceAccountTokenOutput() DataflowEndpointAuthenticationServiceAccountTokenOutput {
+	return i.ToDataflowEndpointAuthenticationServiceAccountTokenOutputWithContext(context.Background())
+}
+
+func (i DataflowEndpointAuthenticationServiceAccountTokenArgs) ToDataflowEndpointAuthenticationServiceAccountTokenOutputWithContext(ctx context.Context) DataflowEndpointAuthenticationServiceAccountTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowEndpointAuthenticationServiceAccountTokenOutput)
+}
+
+func (i DataflowEndpointAuthenticationServiceAccountTokenArgs) ToDataflowEndpointAuthenticationServiceAccountTokenPtrOutput() DataflowEndpointAuthenticationServiceAccountTokenPtrOutput {
+	return i.ToDataflowEndpointAuthenticationServiceAccountTokenPtrOutputWithContext(context.Background())
+}
+
+func (i DataflowEndpointAuthenticationServiceAccountTokenArgs) ToDataflowEndpointAuthenticationServiceAccountTokenPtrOutputWithContext(ctx context.Context) DataflowEndpointAuthenticationServiceAccountTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowEndpointAuthenticationServiceAccountTokenOutput).ToDataflowEndpointAuthenticationServiceAccountTokenPtrOutputWithContext(ctx)
+}
+
+// DataflowEndpointAuthenticationServiceAccountTokenPtrInput is an input type that accepts DataflowEndpointAuthenticationServiceAccountTokenArgs, DataflowEndpointAuthenticationServiceAccountTokenPtr and DataflowEndpointAuthenticationServiceAccountTokenPtrOutput values.
+// You can construct a concrete instance of `DataflowEndpointAuthenticationServiceAccountTokenPtrInput` via:
+//
+//	        DataflowEndpointAuthenticationServiceAccountTokenArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataflowEndpointAuthenticationServiceAccountTokenPtrInput interface {
+	pulumi.Input
+
+	ToDataflowEndpointAuthenticationServiceAccountTokenPtrOutput() DataflowEndpointAuthenticationServiceAccountTokenPtrOutput
+	ToDataflowEndpointAuthenticationServiceAccountTokenPtrOutputWithContext(context.Context) DataflowEndpointAuthenticationServiceAccountTokenPtrOutput
+}
+
+type dataflowEndpointAuthenticationServiceAccountTokenPtrType DataflowEndpointAuthenticationServiceAccountTokenArgs
+
+func DataflowEndpointAuthenticationServiceAccountTokenPtr(v *DataflowEndpointAuthenticationServiceAccountTokenArgs) DataflowEndpointAuthenticationServiceAccountTokenPtrInput {
+	return (*dataflowEndpointAuthenticationServiceAccountTokenPtrType)(v)
+}
+
+func (*dataflowEndpointAuthenticationServiceAccountTokenPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowEndpointAuthenticationServiceAccountToken)(nil)).Elem()
+}
+
+func (i *dataflowEndpointAuthenticationServiceAccountTokenPtrType) ToDataflowEndpointAuthenticationServiceAccountTokenPtrOutput() DataflowEndpointAuthenticationServiceAccountTokenPtrOutput {
+	return i.ToDataflowEndpointAuthenticationServiceAccountTokenPtrOutputWithContext(context.Background())
+}
+
+func (i *dataflowEndpointAuthenticationServiceAccountTokenPtrType) ToDataflowEndpointAuthenticationServiceAccountTokenPtrOutputWithContext(ctx context.Context) DataflowEndpointAuthenticationServiceAccountTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowEndpointAuthenticationServiceAccountTokenPtrOutput)
+}
+
+// Service Account Token for BrokerAuthentication
+type DataflowEndpointAuthenticationServiceAccountTokenOutput struct{ *pulumi.OutputState }
+
+func (DataflowEndpointAuthenticationServiceAccountTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowEndpointAuthenticationServiceAccountToken)(nil)).Elem()
+}
+
+func (o DataflowEndpointAuthenticationServiceAccountTokenOutput) ToDataflowEndpointAuthenticationServiceAccountTokenOutput() DataflowEndpointAuthenticationServiceAccountTokenOutput {
+	return o
+}
+
+func (o DataflowEndpointAuthenticationServiceAccountTokenOutput) ToDataflowEndpointAuthenticationServiceAccountTokenOutputWithContext(ctx context.Context) DataflowEndpointAuthenticationServiceAccountTokenOutput {
+	return o
+}
+
+func (o DataflowEndpointAuthenticationServiceAccountTokenOutput) ToDataflowEndpointAuthenticationServiceAccountTokenPtrOutput() DataflowEndpointAuthenticationServiceAccountTokenPtrOutput {
+	return o.ToDataflowEndpointAuthenticationServiceAccountTokenPtrOutputWithContext(context.Background())
+}
+
+func (o DataflowEndpointAuthenticationServiceAccountTokenOutput) ToDataflowEndpointAuthenticationServiceAccountTokenPtrOutputWithContext(ctx context.Context) DataflowEndpointAuthenticationServiceAccountTokenPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataflowEndpointAuthenticationServiceAccountToken) *DataflowEndpointAuthenticationServiceAccountToken {
+		return &v
+	}).(DataflowEndpointAuthenticationServiceAccountTokenPtrOutput)
+}
+
+// Audience of the service account. Optional, defaults to the broker internal service account audience.
+func (o DataflowEndpointAuthenticationServiceAccountTokenOutput) Audience() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowEndpointAuthenticationServiceAccountToken) string { return v.Audience }).(pulumi.StringOutput)
+}
+
+type DataflowEndpointAuthenticationServiceAccountTokenPtrOutput struct{ *pulumi.OutputState }
+
+func (DataflowEndpointAuthenticationServiceAccountTokenPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowEndpointAuthenticationServiceAccountToken)(nil)).Elem()
+}
+
+func (o DataflowEndpointAuthenticationServiceAccountTokenPtrOutput) ToDataflowEndpointAuthenticationServiceAccountTokenPtrOutput() DataflowEndpointAuthenticationServiceAccountTokenPtrOutput {
+	return o
+}
+
+func (o DataflowEndpointAuthenticationServiceAccountTokenPtrOutput) ToDataflowEndpointAuthenticationServiceAccountTokenPtrOutputWithContext(ctx context.Context) DataflowEndpointAuthenticationServiceAccountTokenPtrOutput {
+	return o
+}
+
+func (o DataflowEndpointAuthenticationServiceAccountTokenPtrOutput) Elem() DataflowEndpointAuthenticationServiceAccountTokenOutput {
+	return o.ApplyT(func(v *DataflowEndpointAuthenticationServiceAccountToken) DataflowEndpointAuthenticationServiceAccountToken {
+		if v != nil {
+			return *v
+		}
+		var ret DataflowEndpointAuthenticationServiceAccountToken
+		return ret
+	}).(DataflowEndpointAuthenticationServiceAccountTokenOutput)
+}
+
+// Audience of the service account. Optional, defaults to the broker internal service account audience.
+func (o DataflowEndpointAuthenticationServiceAccountTokenPtrOutput) Audience() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointAuthenticationServiceAccountToken) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Audience
+	}).(pulumi.StringPtrOutput)
+}
+
+// Service Account Token for BrokerAuthentication
+type DataflowEndpointAuthenticationServiceAccountTokenResponse struct {
+	// Audience of the service account. Optional, defaults to the broker internal service account audience.
+	Audience string `pulumi:"audience"`
+}
+
+// Service Account Token for BrokerAuthentication
+type DataflowEndpointAuthenticationServiceAccountTokenResponseOutput struct{ *pulumi.OutputState }
+
+func (DataflowEndpointAuthenticationServiceAccountTokenResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowEndpointAuthenticationServiceAccountTokenResponse)(nil)).Elem()
+}
+
+func (o DataflowEndpointAuthenticationServiceAccountTokenResponseOutput) ToDataflowEndpointAuthenticationServiceAccountTokenResponseOutput() DataflowEndpointAuthenticationServiceAccountTokenResponseOutput {
+	return o
+}
+
+func (o DataflowEndpointAuthenticationServiceAccountTokenResponseOutput) ToDataflowEndpointAuthenticationServiceAccountTokenResponseOutputWithContext(ctx context.Context) DataflowEndpointAuthenticationServiceAccountTokenResponseOutput {
+	return o
+}
+
+// Audience of the service account. Optional, defaults to the broker internal service account audience.
+func (o DataflowEndpointAuthenticationServiceAccountTokenResponseOutput) Audience() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowEndpointAuthenticationServiceAccountTokenResponse) string { return v.Audience }).(pulumi.StringOutput)
+}
+
+type DataflowEndpointAuthenticationServiceAccountTokenResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DataflowEndpointAuthenticationServiceAccountTokenResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowEndpointAuthenticationServiceAccountTokenResponse)(nil)).Elem()
+}
+
+func (o DataflowEndpointAuthenticationServiceAccountTokenResponsePtrOutput) ToDataflowEndpointAuthenticationServiceAccountTokenResponsePtrOutput() DataflowEndpointAuthenticationServiceAccountTokenResponsePtrOutput {
+	return o
+}
+
+func (o DataflowEndpointAuthenticationServiceAccountTokenResponsePtrOutput) ToDataflowEndpointAuthenticationServiceAccountTokenResponsePtrOutputWithContext(ctx context.Context) DataflowEndpointAuthenticationServiceAccountTokenResponsePtrOutput {
+	return o
+}
+
+func (o DataflowEndpointAuthenticationServiceAccountTokenResponsePtrOutput) Elem() DataflowEndpointAuthenticationServiceAccountTokenResponseOutput {
+	return o.ApplyT(func(v *DataflowEndpointAuthenticationServiceAccountTokenResponse) DataflowEndpointAuthenticationServiceAccountTokenResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DataflowEndpointAuthenticationServiceAccountTokenResponse
+		return ret
+	}).(DataflowEndpointAuthenticationServiceAccountTokenResponseOutput)
+}
+
+// Audience of the service account. Optional, defaults to the broker internal service account audience.
+func (o DataflowEndpointAuthenticationServiceAccountTokenResponsePtrOutput) Audience() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointAuthenticationServiceAccountTokenResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Audience
+	}).(pulumi.StringPtrOutput)
+}
+
+// DataflowEndpoint Authentication SystemAssignedManagedIdentity properties
+type DataflowEndpointAuthenticationSystemAssignedManagedIdentity struct {
+	// Audience of the service to authenticate against. Optional; defaults to the audience for Service host configuration.
+	Audience *string `pulumi:"audience"`
+}
+
+// DataflowEndpointAuthenticationSystemAssignedManagedIdentityInput is an input type that accepts DataflowEndpointAuthenticationSystemAssignedManagedIdentityArgs and DataflowEndpointAuthenticationSystemAssignedManagedIdentityOutput values.
+// You can construct a concrete instance of `DataflowEndpointAuthenticationSystemAssignedManagedIdentityInput` via:
+//
+//	DataflowEndpointAuthenticationSystemAssignedManagedIdentityArgs{...}
+type DataflowEndpointAuthenticationSystemAssignedManagedIdentityInput interface {
+	pulumi.Input
+
+	ToDataflowEndpointAuthenticationSystemAssignedManagedIdentityOutput() DataflowEndpointAuthenticationSystemAssignedManagedIdentityOutput
+	ToDataflowEndpointAuthenticationSystemAssignedManagedIdentityOutputWithContext(context.Context) DataflowEndpointAuthenticationSystemAssignedManagedIdentityOutput
+}
+
+// DataflowEndpoint Authentication SystemAssignedManagedIdentity properties
+type DataflowEndpointAuthenticationSystemAssignedManagedIdentityArgs struct {
+	// Audience of the service to authenticate against. Optional; defaults to the audience for Service host configuration.
+	Audience pulumi.StringPtrInput `pulumi:"audience"`
+}
+
+func (DataflowEndpointAuthenticationSystemAssignedManagedIdentityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowEndpointAuthenticationSystemAssignedManagedIdentity)(nil)).Elem()
+}
+
+func (i DataflowEndpointAuthenticationSystemAssignedManagedIdentityArgs) ToDataflowEndpointAuthenticationSystemAssignedManagedIdentityOutput() DataflowEndpointAuthenticationSystemAssignedManagedIdentityOutput {
+	return i.ToDataflowEndpointAuthenticationSystemAssignedManagedIdentityOutputWithContext(context.Background())
+}
+
+func (i DataflowEndpointAuthenticationSystemAssignedManagedIdentityArgs) ToDataflowEndpointAuthenticationSystemAssignedManagedIdentityOutputWithContext(ctx context.Context) DataflowEndpointAuthenticationSystemAssignedManagedIdentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowEndpointAuthenticationSystemAssignedManagedIdentityOutput)
+}
+
+func (i DataflowEndpointAuthenticationSystemAssignedManagedIdentityArgs) ToDataflowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput() DataflowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput {
+	return i.ToDataflowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i DataflowEndpointAuthenticationSystemAssignedManagedIdentityArgs) ToDataflowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutputWithContext(ctx context.Context) DataflowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowEndpointAuthenticationSystemAssignedManagedIdentityOutput).ToDataflowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutputWithContext(ctx)
+}
+
+// DataflowEndpointAuthenticationSystemAssignedManagedIdentityPtrInput is an input type that accepts DataflowEndpointAuthenticationSystemAssignedManagedIdentityArgs, DataflowEndpointAuthenticationSystemAssignedManagedIdentityPtr and DataflowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput values.
+// You can construct a concrete instance of `DataflowEndpointAuthenticationSystemAssignedManagedIdentityPtrInput` via:
+//
+//	        DataflowEndpointAuthenticationSystemAssignedManagedIdentityArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataflowEndpointAuthenticationSystemAssignedManagedIdentityPtrInput interface {
+	pulumi.Input
+
+	ToDataflowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput() DataflowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput
+	ToDataflowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutputWithContext(context.Context) DataflowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput
+}
+
+type dataflowEndpointAuthenticationSystemAssignedManagedIdentityPtrType DataflowEndpointAuthenticationSystemAssignedManagedIdentityArgs
+
+func DataflowEndpointAuthenticationSystemAssignedManagedIdentityPtr(v *DataflowEndpointAuthenticationSystemAssignedManagedIdentityArgs) DataflowEndpointAuthenticationSystemAssignedManagedIdentityPtrInput {
+	return (*dataflowEndpointAuthenticationSystemAssignedManagedIdentityPtrType)(v)
+}
+
+func (*dataflowEndpointAuthenticationSystemAssignedManagedIdentityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowEndpointAuthenticationSystemAssignedManagedIdentity)(nil)).Elem()
+}
+
+func (i *dataflowEndpointAuthenticationSystemAssignedManagedIdentityPtrType) ToDataflowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput() DataflowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput {
+	return i.ToDataflowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i *dataflowEndpointAuthenticationSystemAssignedManagedIdentityPtrType) ToDataflowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutputWithContext(ctx context.Context) DataflowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput)
+}
+
+// DataflowEndpoint Authentication SystemAssignedManagedIdentity properties
+type DataflowEndpointAuthenticationSystemAssignedManagedIdentityOutput struct{ *pulumi.OutputState }
+
+func (DataflowEndpointAuthenticationSystemAssignedManagedIdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowEndpointAuthenticationSystemAssignedManagedIdentity)(nil)).Elem()
+}
+
+func (o DataflowEndpointAuthenticationSystemAssignedManagedIdentityOutput) ToDataflowEndpointAuthenticationSystemAssignedManagedIdentityOutput() DataflowEndpointAuthenticationSystemAssignedManagedIdentityOutput {
+	return o
+}
+
+func (o DataflowEndpointAuthenticationSystemAssignedManagedIdentityOutput) ToDataflowEndpointAuthenticationSystemAssignedManagedIdentityOutputWithContext(ctx context.Context) DataflowEndpointAuthenticationSystemAssignedManagedIdentityOutput {
+	return o
+}
+
+func (o DataflowEndpointAuthenticationSystemAssignedManagedIdentityOutput) ToDataflowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput() DataflowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput {
+	return o.ToDataflowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutputWithContext(context.Background())
+}
+
+func (o DataflowEndpointAuthenticationSystemAssignedManagedIdentityOutput) ToDataflowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutputWithContext(ctx context.Context) DataflowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataflowEndpointAuthenticationSystemAssignedManagedIdentity) *DataflowEndpointAuthenticationSystemAssignedManagedIdentity {
+		return &v
+	}).(DataflowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput)
+}
+
+// Audience of the service to authenticate against. Optional; defaults to the audience for Service host configuration.
+func (o DataflowEndpointAuthenticationSystemAssignedManagedIdentityOutput) Audience() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowEndpointAuthenticationSystemAssignedManagedIdentity) *string { return v.Audience }).(pulumi.StringPtrOutput)
+}
+
+type DataflowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput struct{ *pulumi.OutputState }
+
+func (DataflowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowEndpointAuthenticationSystemAssignedManagedIdentity)(nil)).Elem()
+}
+
+func (o DataflowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput) ToDataflowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput() DataflowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput {
+	return o
+}
+
+func (o DataflowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput) ToDataflowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutputWithContext(ctx context.Context) DataflowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput {
+	return o
+}
+
+func (o DataflowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput) Elem() DataflowEndpointAuthenticationSystemAssignedManagedIdentityOutput {
+	return o.ApplyT(func(v *DataflowEndpointAuthenticationSystemAssignedManagedIdentity) DataflowEndpointAuthenticationSystemAssignedManagedIdentity {
+		if v != nil {
+			return *v
+		}
+		var ret DataflowEndpointAuthenticationSystemAssignedManagedIdentity
+		return ret
+	}).(DataflowEndpointAuthenticationSystemAssignedManagedIdentityOutput)
+}
+
+// Audience of the service to authenticate against. Optional; defaults to the audience for Service host configuration.
+func (o DataflowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput) Audience() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointAuthenticationSystemAssignedManagedIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Audience
+	}).(pulumi.StringPtrOutput)
+}
+
+// DataflowEndpoint Authentication SystemAssignedManagedIdentity properties
+type DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponse struct {
+	// Audience of the service to authenticate against. Optional; defaults to the audience for Service host configuration.
+	Audience *string `pulumi:"audience"`
+}
+
+// DataflowEndpoint Authentication SystemAssignedManagedIdentity properties
+type DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponseOutput struct{ *pulumi.OutputState }
+
+func (DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponse)(nil)).Elem()
+}
+
+func (o DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponseOutput) ToDataflowEndpointAuthenticationSystemAssignedManagedIdentityResponseOutput() DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponseOutput {
+	return o
+}
+
+func (o DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponseOutput) ToDataflowEndpointAuthenticationSystemAssignedManagedIdentityResponseOutputWithContext(ctx context.Context) DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponseOutput {
+	return o
+}
+
+// Audience of the service to authenticate against. Optional; defaults to the audience for Service host configuration.
+func (o DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponseOutput) Audience() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponse) *string { return v.Audience }).(pulumi.StringPtrOutput)
+}
+
+type DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponse)(nil)).Elem()
+}
+
+func (o DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponsePtrOutput) ToDataflowEndpointAuthenticationSystemAssignedManagedIdentityResponsePtrOutput() DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponsePtrOutput {
+	return o
+}
+
+func (o DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponsePtrOutput) ToDataflowEndpointAuthenticationSystemAssignedManagedIdentityResponsePtrOutputWithContext(ctx context.Context) DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponsePtrOutput {
+	return o
+}
+
+func (o DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponsePtrOutput) Elem() DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponseOutput {
+	return o.ApplyT(func(v *DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponse) DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponse
+		return ret
+	}).(DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponseOutput)
+}
+
+// Audience of the service to authenticate against. Optional; defaults to the audience for Service host configuration.
+func (o DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponsePtrOutput) Audience() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Audience
+	}).(pulumi.StringPtrOutput)
+}
+
+// DataflowEndpoint Authentication UserAssignedManagedIdentity properties
+type DataflowEndpointAuthenticationUserAssignedManagedIdentity struct {
+	// Client ID for the user-assigned managed identity.
+	ClientId string `pulumi:"clientId"`
+	// Resource identifier (application ID URI) of the resource, affixed with the .default suffix.
+	Scope *string `pulumi:"scope"`
+	// Tenant ID.
+	TenantId string `pulumi:"tenantId"`
+}
+
+// DataflowEndpointAuthenticationUserAssignedManagedIdentityInput is an input type that accepts DataflowEndpointAuthenticationUserAssignedManagedIdentityArgs and DataflowEndpointAuthenticationUserAssignedManagedIdentityOutput values.
+// You can construct a concrete instance of `DataflowEndpointAuthenticationUserAssignedManagedIdentityInput` via:
+//
+//	DataflowEndpointAuthenticationUserAssignedManagedIdentityArgs{...}
+type DataflowEndpointAuthenticationUserAssignedManagedIdentityInput interface {
+	pulumi.Input
+
+	ToDataflowEndpointAuthenticationUserAssignedManagedIdentityOutput() DataflowEndpointAuthenticationUserAssignedManagedIdentityOutput
+	ToDataflowEndpointAuthenticationUserAssignedManagedIdentityOutputWithContext(context.Context) DataflowEndpointAuthenticationUserAssignedManagedIdentityOutput
+}
+
+// DataflowEndpoint Authentication UserAssignedManagedIdentity properties
+type DataflowEndpointAuthenticationUserAssignedManagedIdentityArgs struct {
+	// Client ID for the user-assigned managed identity.
+	ClientId pulumi.StringInput `pulumi:"clientId"`
+	// Resource identifier (application ID URI) of the resource, affixed with the .default suffix.
+	Scope pulumi.StringPtrInput `pulumi:"scope"`
+	// Tenant ID.
+	TenantId pulumi.StringInput `pulumi:"tenantId"`
+}
+
+func (DataflowEndpointAuthenticationUserAssignedManagedIdentityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowEndpointAuthenticationUserAssignedManagedIdentity)(nil)).Elem()
+}
+
+func (i DataflowEndpointAuthenticationUserAssignedManagedIdentityArgs) ToDataflowEndpointAuthenticationUserAssignedManagedIdentityOutput() DataflowEndpointAuthenticationUserAssignedManagedIdentityOutput {
+	return i.ToDataflowEndpointAuthenticationUserAssignedManagedIdentityOutputWithContext(context.Background())
+}
+
+func (i DataflowEndpointAuthenticationUserAssignedManagedIdentityArgs) ToDataflowEndpointAuthenticationUserAssignedManagedIdentityOutputWithContext(ctx context.Context) DataflowEndpointAuthenticationUserAssignedManagedIdentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowEndpointAuthenticationUserAssignedManagedIdentityOutput)
+}
+
+func (i DataflowEndpointAuthenticationUserAssignedManagedIdentityArgs) ToDataflowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput() DataflowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput {
+	return i.ToDataflowEndpointAuthenticationUserAssignedManagedIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i DataflowEndpointAuthenticationUserAssignedManagedIdentityArgs) ToDataflowEndpointAuthenticationUserAssignedManagedIdentityPtrOutputWithContext(ctx context.Context) DataflowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowEndpointAuthenticationUserAssignedManagedIdentityOutput).ToDataflowEndpointAuthenticationUserAssignedManagedIdentityPtrOutputWithContext(ctx)
+}
+
+// DataflowEndpointAuthenticationUserAssignedManagedIdentityPtrInput is an input type that accepts DataflowEndpointAuthenticationUserAssignedManagedIdentityArgs, DataflowEndpointAuthenticationUserAssignedManagedIdentityPtr and DataflowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput values.
+// You can construct a concrete instance of `DataflowEndpointAuthenticationUserAssignedManagedIdentityPtrInput` via:
+//
+//	        DataflowEndpointAuthenticationUserAssignedManagedIdentityArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataflowEndpointAuthenticationUserAssignedManagedIdentityPtrInput interface {
+	pulumi.Input
+
+	ToDataflowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput() DataflowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput
+	ToDataflowEndpointAuthenticationUserAssignedManagedIdentityPtrOutputWithContext(context.Context) DataflowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput
+}
+
+type dataflowEndpointAuthenticationUserAssignedManagedIdentityPtrType DataflowEndpointAuthenticationUserAssignedManagedIdentityArgs
+
+func DataflowEndpointAuthenticationUserAssignedManagedIdentityPtr(v *DataflowEndpointAuthenticationUserAssignedManagedIdentityArgs) DataflowEndpointAuthenticationUserAssignedManagedIdentityPtrInput {
+	return (*dataflowEndpointAuthenticationUserAssignedManagedIdentityPtrType)(v)
+}
+
+func (*dataflowEndpointAuthenticationUserAssignedManagedIdentityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowEndpointAuthenticationUserAssignedManagedIdentity)(nil)).Elem()
+}
+
+func (i *dataflowEndpointAuthenticationUserAssignedManagedIdentityPtrType) ToDataflowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput() DataflowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput {
+	return i.ToDataflowEndpointAuthenticationUserAssignedManagedIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i *dataflowEndpointAuthenticationUserAssignedManagedIdentityPtrType) ToDataflowEndpointAuthenticationUserAssignedManagedIdentityPtrOutputWithContext(ctx context.Context) DataflowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput)
+}
+
+// DataflowEndpoint Authentication UserAssignedManagedIdentity properties
+type DataflowEndpointAuthenticationUserAssignedManagedIdentityOutput struct{ *pulumi.OutputState }
+
+func (DataflowEndpointAuthenticationUserAssignedManagedIdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowEndpointAuthenticationUserAssignedManagedIdentity)(nil)).Elem()
+}
+
+func (o DataflowEndpointAuthenticationUserAssignedManagedIdentityOutput) ToDataflowEndpointAuthenticationUserAssignedManagedIdentityOutput() DataflowEndpointAuthenticationUserAssignedManagedIdentityOutput {
+	return o
+}
+
+func (o DataflowEndpointAuthenticationUserAssignedManagedIdentityOutput) ToDataflowEndpointAuthenticationUserAssignedManagedIdentityOutputWithContext(ctx context.Context) DataflowEndpointAuthenticationUserAssignedManagedIdentityOutput {
+	return o
+}
+
+func (o DataflowEndpointAuthenticationUserAssignedManagedIdentityOutput) ToDataflowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput() DataflowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput {
+	return o.ToDataflowEndpointAuthenticationUserAssignedManagedIdentityPtrOutputWithContext(context.Background())
+}
+
+func (o DataflowEndpointAuthenticationUserAssignedManagedIdentityOutput) ToDataflowEndpointAuthenticationUserAssignedManagedIdentityPtrOutputWithContext(ctx context.Context) DataflowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataflowEndpointAuthenticationUserAssignedManagedIdentity) *DataflowEndpointAuthenticationUserAssignedManagedIdentity {
+		return &v
+	}).(DataflowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput)
+}
+
+// Client ID for the user-assigned managed identity.
+func (o DataflowEndpointAuthenticationUserAssignedManagedIdentityOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowEndpointAuthenticationUserAssignedManagedIdentity) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// Resource identifier (application ID URI) of the resource, affixed with the .default suffix.
+func (o DataflowEndpointAuthenticationUserAssignedManagedIdentityOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowEndpointAuthenticationUserAssignedManagedIdentity) *string { return v.Scope }).(pulumi.StringPtrOutput)
+}
+
+// Tenant ID.
+func (o DataflowEndpointAuthenticationUserAssignedManagedIdentityOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowEndpointAuthenticationUserAssignedManagedIdentity) string { return v.TenantId }).(pulumi.StringOutput)
+}
+
+type DataflowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput struct{ *pulumi.OutputState }
+
+func (DataflowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowEndpointAuthenticationUserAssignedManagedIdentity)(nil)).Elem()
+}
+
+func (o DataflowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput) ToDataflowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput() DataflowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput {
+	return o
+}
+
+func (o DataflowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput) ToDataflowEndpointAuthenticationUserAssignedManagedIdentityPtrOutputWithContext(ctx context.Context) DataflowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput {
+	return o
+}
+
+func (o DataflowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput) Elem() DataflowEndpointAuthenticationUserAssignedManagedIdentityOutput {
+	return o.ApplyT(func(v *DataflowEndpointAuthenticationUserAssignedManagedIdentity) DataflowEndpointAuthenticationUserAssignedManagedIdentity {
+		if v != nil {
+			return *v
+		}
+		var ret DataflowEndpointAuthenticationUserAssignedManagedIdentity
+		return ret
+	}).(DataflowEndpointAuthenticationUserAssignedManagedIdentityOutput)
+}
+
+// Client ID for the user-assigned managed identity.
+func (o DataflowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointAuthenticationUserAssignedManagedIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Resource identifier (application ID URI) of the resource, affixed with the .default suffix.
+func (o DataflowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointAuthenticationUserAssignedManagedIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Scope
+	}).(pulumi.StringPtrOutput)
+}
+
+// Tenant ID.
+func (o DataflowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointAuthenticationUserAssignedManagedIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TenantId
+	}).(pulumi.StringPtrOutput)
+}
+
+// DataflowEndpoint Authentication UserAssignedManagedIdentity properties
+type DataflowEndpointAuthenticationUserAssignedManagedIdentityResponse struct {
+	// Client ID for the user-assigned managed identity.
+	ClientId string `pulumi:"clientId"`
+	// Resource identifier (application ID URI) of the resource, affixed with the .default suffix.
+	Scope *string `pulumi:"scope"`
+	// Tenant ID.
+	TenantId string `pulumi:"tenantId"`
+}
+
+// DataflowEndpoint Authentication UserAssignedManagedIdentity properties
+type DataflowEndpointAuthenticationUserAssignedManagedIdentityResponseOutput struct{ *pulumi.OutputState }
+
+func (DataflowEndpointAuthenticationUserAssignedManagedIdentityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowEndpointAuthenticationUserAssignedManagedIdentityResponse)(nil)).Elem()
+}
+
+func (o DataflowEndpointAuthenticationUserAssignedManagedIdentityResponseOutput) ToDataflowEndpointAuthenticationUserAssignedManagedIdentityResponseOutput() DataflowEndpointAuthenticationUserAssignedManagedIdentityResponseOutput {
+	return o
+}
+
+func (o DataflowEndpointAuthenticationUserAssignedManagedIdentityResponseOutput) ToDataflowEndpointAuthenticationUserAssignedManagedIdentityResponseOutputWithContext(ctx context.Context) DataflowEndpointAuthenticationUserAssignedManagedIdentityResponseOutput {
+	return o
+}
+
+// Client ID for the user-assigned managed identity.
+func (o DataflowEndpointAuthenticationUserAssignedManagedIdentityResponseOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowEndpointAuthenticationUserAssignedManagedIdentityResponse) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// Resource identifier (application ID URI) of the resource, affixed with the .default suffix.
+func (o DataflowEndpointAuthenticationUserAssignedManagedIdentityResponseOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowEndpointAuthenticationUserAssignedManagedIdentityResponse) *string { return v.Scope }).(pulumi.StringPtrOutput)
+}
+
+// Tenant ID.
+func (o DataflowEndpointAuthenticationUserAssignedManagedIdentityResponseOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowEndpointAuthenticationUserAssignedManagedIdentityResponse) string { return v.TenantId }).(pulumi.StringOutput)
+}
+
+type DataflowEndpointAuthenticationUserAssignedManagedIdentityResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DataflowEndpointAuthenticationUserAssignedManagedIdentityResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowEndpointAuthenticationUserAssignedManagedIdentityResponse)(nil)).Elem()
+}
+
+func (o DataflowEndpointAuthenticationUserAssignedManagedIdentityResponsePtrOutput) ToDataflowEndpointAuthenticationUserAssignedManagedIdentityResponsePtrOutput() DataflowEndpointAuthenticationUserAssignedManagedIdentityResponsePtrOutput {
+	return o
+}
+
+func (o DataflowEndpointAuthenticationUserAssignedManagedIdentityResponsePtrOutput) ToDataflowEndpointAuthenticationUserAssignedManagedIdentityResponsePtrOutputWithContext(ctx context.Context) DataflowEndpointAuthenticationUserAssignedManagedIdentityResponsePtrOutput {
+	return o
+}
+
+func (o DataflowEndpointAuthenticationUserAssignedManagedIdentityResponsePtrOutput) Elem() DataflowEndpointAuthenticationUserAssignedManagedIdentityResponseOutput {
+	return o.ApplyT(func(v *DataflowEndpointAuthenticationUserAssignedManagedIdentityResponse) DataflowEndpointAuthenticationUserAssignedManagedIdentityResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DataflowEndpointAuthenticationUserAssignedManagedIdentityResponse
+		return ret
+	}).(DataflowEndpointAuthenticationUserAssignedManagedIdentityResponseOutput)
+}
+
+// Client ID for the user-assigned managed identity.
+func (o DataflowEndpointAuthenticationUserAssignedManagedIdentityResponsePtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointAuthenticationUserAssignedManagedIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Resource identifier (application ID URI) of the resource, affixed with the .default suffix.
+func (o DataflowEndpointAuthenticationUserAssignedManagedIdentityResponsePtrOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointAuthenticationUserAssignedManagedIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Scope
+	}).(pulumi.StringPtrOutput)
+}
+
+// Tenant ID.
+func (o DataflowEndpointAuthenticationUserAssignedManagedIdentityResponsePtrOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointAuthenticationUserAssignedManagedIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TenantId
+	}).(pulumi.StringPtrOutput)
+}
+
+// DataflowEndpoint Authentication X509 properties
+type DataflowEndpointAuthenticationX509 struct {
 	// Secret reference of the X.509 certificate.
 	SecretRef string `pulumi:"secretRef"`
 }
 
-// DataFlowEndpoint Authentication X509 properties
-type DataFlowEndpointAuthenticationX509ResponseOutput struct{ *pulumi.OutputState }
+// DataflowEndpointAuthenticationX509Input is an input type that accepts DataflowEndpointAuthenticationX509Args and DataflowEndpointAuthenticationX509Output values.
+// You can construct a concrete instance of `DataflowEndpointAuthenticationX509Input` via:
+//
+//	DataflowEndpointAuthenticationX509Args{...}
+type DataflowEndpointAuthenticationX509Input interface {
+	pulumi.Input
 
-func (DataFlowEndpointAuthenticationX509ResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowEndpointAuthenticationX509Response)(nil)).Elem()
+	ToDataflowEndpointAuthenticationX509Output() DataflowEndpointAuthenticationX509Output
+	ToDataflowEndpointAuthenticationX509OutputWithContext(context.Context) DataflowEndpointAuthenticationX509Output
 }
 
-func (o DataFlowEndpointAuthenticationX509ResponseOutput) ToDataFlowEndpointAuthenticationX509ResponseOutput() DataFlowEndpointAuthenticationX509ResponseOutput {
+// DataflowEndpoint Authentication X509 properties
+type DataflowEndpointAuthenticationX509Args struct {
+	// Secret reference of the X.509 certificate.
+	SecretRef pulumi.StringInput `pulumi:"secretRef"`
+}
+
+func (DataflowEndpointAuthenticationX509Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowEndpointAuthenticationX509)(nil)).Elem()
+}
+
+func (i DataflowEndpointAuthenticationX509Args) ToDataflowEndpointAuthenticationX509Output() DataflowEndpointAuthenticationX509Output {
+	return i.ToDataflowEndpointAuthenticationX509OutputWithContext(context.Background())
+}
+
+func (i DataflowEndpointAuthenticationX509Args) ToDataflowEndpointAuthenticationX509OutputWithContext(ctx context.Context) DataflowEndpointAuthenticationX509Output {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowEndpointAuthenticationX509Output)
+}
+
+func (i DataflowEndpointAuthenticationX509Args) ToDataflowEndpointAuthenticationX509PtrOutput() DataflowEndpointAuthenticationX509PtrOutput {
+	return i.ToDataflowEndpointAuthenticationX509PtrOutputWithContext(context.Background())
+}
+
+func (i DataflowEndpointAuthenticationX509Args) ToDataflowEndpointAuthenticationX509PtrOutputWithContext(ctx context.Context) DataflowEndpointAuthenticationX509PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowEndpointAuthenticationX509Output).ToDataflowEndpointAuthenticationX509PtrOutputWithContext(ctx)
+}
+
+// DataflowEndpointAuthenticationX509PtrInput is an input type that accepts DataflowEndpointAuthenticationX509Args, DataflowEndpointAuthenticationX509Ptr and DataflowEndpointAuthenticationX509PtrOutput values.
+// You can construct a concrete instance of `DataflowEndpointAuthenticationX509PtrInput` via:
+//
+//	        DataflowEndpointAuthenticationX509Args{...}
+//
+//	or:
+//
+//	        nil
+type DataflowEndpointAuthenticationX509PtrInput interface {
+	pulumi.Input
+
+	ToDataflowEndpointAuthenticationX509PtrOutput() DataflowEndpointAuthenticationX509PtrOutput
+	ToDataflowEndpointAuthenticationX509PtrOutputWithContext(context.Context) DataflowEndpointAuthenticationX509PtrOutput
+}
+
+type dataflowEndpointAuthenticationX509PtrType DataflowEndpointAuthenticationX509Args
+
+func DataflowEndpointAuthenticationX509Ptr(v *DataflowEndpointAuthenticationX509Args) DataflowEndpointAuthenticationX509PtrInput {
+	return (*dataflowEndpointAuthenticationX509PtrType)(v)
+}
+
+func (*dataflowEndpointAuthenticationX509PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowEndpointAuthenticationX509)(nil)).Elem()
+}
+
+func (i *dataflowEndpointAuthenticationX509PtrType) ToDataflowEndpointAuthenticationX509PtrOutput() DataflowEndpointAuthenticationX509PtrOutput {
+	return i.ToDataflowEndpointAuthenticationX509PtrOutputWithContext(context.Background())
+}
+
+func (i *dataflowEndpointAuthenticationX509PtrType) ToDataflowEndpointAuthenticationX509PtrOutputWithContext(ctx context.Context) DataflowEndpointAuthenticationX509PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowEndpointAuthenticationX509PtrOutput)
+}
+
+// DataflowEndpoint Authentication X509 properties
+type DataflowEndpointAuthenticationX509Output struct{ *pulumi.OutputState }
+
+func (DataflowEndpointAuthenticationX509Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowEndpointAuthenticationX509)(nil)).Elem()
+}
+
+func (o DataflowEndpointAuthenticationX509Output) ToDataflowEndpointAuthenticationX509Output() DataflowEndpointAuthenticationX509Output {
 	return o
 }
 
-func (o DataFlowEndpointAuthenticationX509ResponseOutput) ToDataFlowEndpointAuthenticationX509ResponseOutputWithContext(ctx context.Context) DataFlowEndpointAuthenticationX509ResponseOutput {
+func (o DataflowEndpointAuthenticationX509Output) ToDataflowEndpointAuthenticationX509OutputWithContext(ctx context.Context) DataflowEndpointAuthenticationX509Output {
 	return o
+}
+
+func (o DataflowEndpointAuthenticationX509Output) ToDataflowEndpointAuthenticationX509PtrOutput() DataflowEndpointAuthenticationX509PtrOutput {
+	return o.ToDataflowEndpointAuthenticationX509PtrOutputWithContext(context.Background())
+}
+
+func (o DataflowEndpointAuthenticationX509Output) ToDataflowEndpointAuthenticationX509PtrOutputWithContext(ctx context.Context) DataflowEndpointAuthenticationX509PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataflowEndpointAuthenticationX509) *DataflowEndpointAuthenticationX509 {
+		return &v
+	}).(DataflowEndpointAuthenticationX509PtrOutput)
 }
 
 // Secret reference of the X.509 certificate.
-func (o DataFlowEndpointAuthenticationX509ResponseOutput) SecretRef() pulumi.StringOutput {
-	return o.ApplyT(func(v DataFlowEndpointAuthenticationX509Response) string { return v.SecretRef }).(pulumi.StringOutput)
+func (o DataflowEndpointAuthenticationX509Output) SecretRef() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowEndpointAuthenticationX509) string { return v.SecretRef }).(pulumi.StringOutput)
 }
 
-type DataFlowEndpointAuthenticationX509ResponsePtrOutput struct{ *pulumi.OutputState }
+type DataflowEndpointAuthenticationX509PtrOutput struct{ *pulumi.OutputState }
 
-func (DataFlowEndpointAuthenticationX509ResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DataFlowEndpointAuthenticationX509Response)(nil)).Elem()
+func (DataflowEndpointAuthenticationX509PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowEndpointAuthenticationX509)(nil)).Elem()
 }
 
-func (o DataFlowEndpointAuthenticationX509ResponsePtrOutput) ToDataFlowEndpointAuthenticationX509ResponsePtrOutput() DataFlowEndpointAuthenticationX509ResponsePtrOutput {
+func (o DataflowEndpointAuthenticationX509PtrOutput) ToDataflowEndpointAuthenticationX509PtrOutput() DataflowEndpointAuthenticationX509PtrOutput {
 	return o
 }
 
-func (o DataFlowEndpointAuthenticationX509ResponsePtrOutput) ToDataFlowEndpointAuthenticationX509ResponsePtrOutputWithContext(ctx context.Context) DataFlowEndpointAuthenticationX509ResponsePtrOutput {
+func (o DataflowEndpointAuthenticationX509PtrOutput) ToDataflowEndpointAuthenticationX509PtrOutputWithContext(ctx context.Context) DataflowEndpointAuthenticationX509PtrOutput {
 	return o
 }
 
-func (o DataFlowEndpointAuthenticationX509ResponsePtrOutput) Elem() DataFlowEndpointAuthenticationX509ResponseOutput {
-	return o.ApplyT(func(v *DataFlowEndpointAuthenticationX509Response) DataFlowEndpointAuthenticationX509Response {
+func (o DataflowEndpointAuthenticationX509PtrOutput) Elem() DataflowEndpointAuthenticationX509Output {
+	return o.ApplyT(func(v *DataflowEndpointAuthenticationX509) DataflowEndpointAuthenticationX509 {
 		if v != nil {
 			return *v
 		}
-		var ret DataFlowEndpointAuthenticationX509Response
+		var ret DataflowEndpointAuthenticationX509
 		return ret
-	}).(DataFlowEndpointAuthenticationX509ResponseOutput)
+	}).(DataflowEndpointAuthenticationX509Output)
 }
 
 // Secret reference of the X.509 certificate.
-func (o DataFlowEndpointAuthenticationX509ResponsePtrOutput) SecretRef() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointAuthenticationX509Response) *string {
+func (o DataflowEndpointAuthenticationX509PtrOutput) SecretRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointAuthenticationX509) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SecretRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// DataflowEndpoint Authentication X509 properties
+type DataflowEndpointAuthenticationX509Response struct {
+	// Secret reference of the X.509 certificate.
+	SecretRef string `pulumi:"secretRef"`
+}
+
+// DataflowEndpoint Authentication X509 properties
+type DataflowEndpointAuthenticationX509ResponseOutput struct{ *pulumi.OutputState }
+
+func (DataflowEndpointAuthenticationX509ResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowEndpointAuthenticationX509Response)(nil)).Elem()
+}
+
+func (o DataflowEndpointAuthenticationX509ResponseOutput) ToDataflowEndpointAuthenticationX509ResponseOutput() DataflowEndpointAuthenticationX509ResponseOutput {
+	return o
+}
+
+func (o DataflowEndpointAuthenticationX509ResponseOutput) ToDataflowEndpointAuthenticationX509ResponseOutputWithContext(ctx context.Context) DataflowEndpointAuthenticationX509ResponseOutput {
+	return o
+}
+
+// Secret reference of the X.509 certificate.
+func (o DataflowEndpointAuthenticationX509ResponseOutput) SecretRef() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowEndpointAuthenticationX509Response) string { return v.SecretRef }).(pulumi.StringOutput)
+}
+
+type DataflowEndpointAuthenticationX509ResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DataflowEndpointAuthenticationX509ResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowEndpointAuthenticationX509Response)(nil)).Elem()
+}
+
+func (o DataflowEndpointAuthenticationX509ResponsePtrOutput) ToDataflowEndpointAuthenticationX509ResponsePtrOutput() DataflowEndpointAuthenticationX509ResponsePtrOutput {
+	return o
+}
+
+func (o DataflowEndpointAuthenticationX509ResponsePtrOutput) ToDataflowEndpointAuthenticationX509ResponsePtrOutputWithContext(ctx context.Context) DataflowEndpointAuthenticationX509ResponsePtrOutput {
+	return o
+}
+
+func (o DataflowEndpointAuthenticationX509ResponsePtrOutput) Elem() DataflowEndpointAuthenticationX509ResponseOutput {
+	return o.ApplyT(func(v *DataflowEndpointAuthenticationX509Response) DataflowEndpointAuthenticationX509Response {
+		if v != nil {
+			return *v
+		}
+		var ret DataflowEndpointAuthenticationX509Response
+		return ret
+	}).(DataflowEndpointAuthenticationX509ResponseOutput)
+}
+
+// Secret reference of the X.509 certificate.
+func (o DataflowEndpointAuthenticationX509ResponsePtrOutput) SecretRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointAuthenticationX509Response) *string {
 		if v == nil {
 			return nil
 		}
@@ -8743,7 +8727,9 @@ func (o DataFlowEndpointAuthenticationX509ResponsePtrOutput) SecretRef() pulumi.
 }
 
 // Azure Data Explorer endpoint properties
-type DataFlowEndpointDataExplorer struct {
+type DataflowEndpointDataExplorer struct {
+	// Authentication configuration. NOTE - only authentication property is allowed per entry.
+	Authentication DataflowEndpointDataExplorerAuthentication `pulumi:"authentication"`
 	// Azure Data Explorer endpoint batching configuration.
 	Batching *BatchingConfiguration `pulumi:"batching"`
 	// Database name.
@@ -8752,8 +8738,8 @@ type DataFlowEndpointDataExplorer struct {
 	Host string `pulumi:"host"`
 }
 
-// Defaults sets the appropriate defaults for DataFlowEndpointDataExplorer
-func (val *DataFlowEndpointDataExplorer) Defaults() *DataFlowEndpointDataExplorer {
+// Defaults sets the appropriate defaults for DataflowEndpointDataExplorer
+func (val *DataflowEndpointDataExplorer) Defaults() *DataflowEndpointDataExplorer {
 	if val == nil {
 		return nil
 	}
@@ -8763,19 +8749,21 @@ func (val *DataFlowEndpointDataExplorer) Defaults() *DataFlowEndpointDataExplore
 	return &tmp
 }
 
-// DataFlowEndpointDataExplorerInput is an input type that accepts DataFlowEndpointDataExplorerArgs and DataFlowEndpointDataExplorerOutput values.
-// You can construct a concrete instance of `DataFlowEndpointDataExplorerInput` via:
+// DataflowEndpointDataExplorerInput is an input type that accepts DataflowEndpointDataExplorerArgs and DataflowEndpointDataExplorerOutput values.
+// You can construct a concrete instance of `DataflowEndpointDataExplorerInput` via:
 //
-//	DataFlowEndpointDataExplorerArgs{...}
-type DataFlowEndpointDataExplorerInput interface {
+//	DataflowEndpointDataExplorerArgs{...}
+type DataflowEndpointDataExplorerInput interface {
 	pulumi.Input
 
-	ToDataFlowEndpointDataExplorerOutput() DataFlowEndpointDataExplorerOutput
-	ToDataFlowEndpointDataExplorerOutputWithContext(context.Context) DataFlowEndpointDataExplorerOutput
+	ToDataflowEndpointDataExplorerOutput() DataflowEndpointDataExplorerOutput
+	ToDataflowEndpointDataExplorerOutputWithContext(context.Context) DataflowEndpointDataExplorerOutput
 }
 
 // Azure Data Explorer endpoint properties
-type DataFlowEndpointDataExplorerArgs struct {
+type DataflowEndpointDataExplorerArgs struct {
+	// Authentication configuration. NOTE - only authentication property is allowed per entry.
+	Authentication DataflowEndpointDataExplorerAuthenticationInput `pulumi:"authentication"`
 	// Azure Data Explorer endpoint batching configuration.
 	Batching BatchingConfigurationPtrInput `pulumi:"batching"`
 	// Database name.
@@ -8784,8 +8772,8 @@ type DataFlowEndpointDataExplorerArgs struct {
 	Host pulumi.StringInput `pulumi:"host"`
 }
 
-// Defaults sets the appropriate defaults for DataFlowEndpointDataExplorerArgs
-func (val *DataFlowEndpointDataExplorerArgs) Defaults() *DataFlowEndpointDataExplorerArgs {
+// Defaults sets the appropriate defaults for DataflowEndpointDataExplorerArgs
+func (val *DataflowEndpointDataExplorerArgs) Defaults() *DataflowEndpointDataExplorerArgs {
 	if val == nil {
 		return nil
 	}
@@ -8793,126 +8781,143 @@ func (val *DataFlowEndpointDataExplorerArgs) Defaults() *DataFlowEndpointDataExp
 
 	return &tmp
 }
-func (DataFlowEndpointDataExplorerArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowEndpointDataExplorer)(nil)).Elem()
+func (DataflowEndpointDataExplorerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowEndpointDataExplorer)(nil)).Elem()
 }
 
-func (i DataFlowEndpointDataExplorerArgs) ToDataFlowEndpointDataExplorerOutput() DataFlowEndpointDataExplorerOutput {
-	return i.ToDataFlowEndpointDataExplorerOutputWithContext(context.Background())
+func (i DataflowEndpointDataExplorerArgs) ToDataflowEndpointDataExplorerOutput() DataflowEndpointDataExplorerOutput {
+	return i.ToDataflowEndpointDataExplorerOutputWithContext(context.Background())
 }
 
-func (i DataFlowEndpointDataExplorerArgs) ToDataFlowEndpointDataExplorerOutputWithContext(ctx context.Context) DataFlowEndpointDataExplorerOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataFlowEndpointDataExplorerOutput)
+func (i DataflowEndpointDataExplorerArgs) ToDataflowEndpointDataExplorerOutputWithContext(ctx context.Context) DataflowEndpointDataExplorerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowEndpointDataExplorerOutput)
 }
 
-func (i DataFlowEndpointDataExplorerArgs) ToDataFlowEndpointDataExplorerPtrOutput() DataFlowEndpointDataExplorerPtrOutput {
-	return i.ToDataFlowEndpointDataExplorerPtrOutputWithContext(context.Background())
+func (i DataflowEndpointDataExplorerArgs) ToDataflowEndpointDataExplorerPtrOutput() DataflowEndpointDataExplorerPtrOutput {
+	return i.ToDataflowEndpointDataExplorerPtrOutputWithContext(context.Background())
 }
 
-func (i DataFlowEndpointDataExplorerArgs) ToDataFlowEndpointDataExplorerPtrOutputWithContext(ctx context.Context) DataFlowEndpointDataExplorerPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataFlowEndpointDataExplorerOutput).ToDataFlowEndpointDataExplorerPtrOutputWithContext(ctx)
+func (i DataflowEndpointDataExplorerArgs) ToDataflowEndpointDataExplorerPtrOutputWithContext(ctx context.Context) DataflowEndpointDataExplorerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowEndpointDataExplorerOutput).ToDataflowEndpointDataExplorerPtrOutputWithContext(ctx)
 }
 
-// DataFlowEndpointDataExplorerPtrInput is an input type that accepts DataFlowEndpointDataExplorerArgs, DataFlowEndpointDataExplorerPtr and DataFlowEndpointDataExplorerPtrOutput values.
-// You can construct a concrete instance of `DataFlowEndpointDataExplorerPtrInput` via:
+// DataflowEndpointDataExplorerPtrInput is an input type that accepts DataflowEndpointDataExplorerArgs, DataflowEndpointDataExplorerPtr and DataflowEndpointDataExplorerPtrOutput values.
+// You can construct a concrete instance of `DataflowEndpointDataExplorerPtrInput` via:
 //
-//	        DataFlowEndpointDataExplorerArgs{...}
+//	        DataflowEndpointDataExplorerArgs{...}
 //
 //	or:
 //
 //	        nil
-type DataFlowEndpointDataExplorerPtrInput interface {
+type DataflowEndpointDataExplorerPtrInput interface {
 	pulumi.Input
 
-	ToDataFlowEndpointDataExplorerPtrOutput() DataFlowEndpointDataExplorerPtrOutput
-	ToDataFlowEndpointDataExplorerPtrOutputWithContext(context.Context) DataFlowEndpointDataExplorerPtrOutput
+	ToDataflowEndpointDataExplorerPtrOutput() DataflowEndpointDataExplorerPtrOutput
+	ToDataflowEndpointDataExplorerPtrOutputWithContext(context.Context) DataflowEndpointDataExplorerPtrOutput
 }
 
-type dataFlowEndpointDataExplorerPtrType DataFlowEndpointDataExplorerArgs
+type dataflowEndpointDataExplorerPtrType DataflowEndpointDataExplorerArgs
 
-func DataFlowEndpointDataExplorerPtr(v *DataFlowEndpointDataExplorerArgs) DataFlowEndpointDataExplorerPtrInput {
-	return (*dataFlowEndpointDataExplorerPtrType)(v)
+func DataflowEndpointDataExplorerPtr(v *DataflowEndpointDataExplorerArgs) DataflowEndpointDataExplorerPtrInput {
+	return (*dataflowEndpointDataExplorerPtrType)(v)
 }
 
-func (*dataFlowEndpointDataExplorerPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DataFlowEndpointDataExplorer)(nil)).Elem()
+func (*dataflowEndpointDataExplorerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowEndpointDataExplorer)(nil)).Elem()
 }
 
-func (i *dataFlowEndpointDataExplorerPtrType) ToDataFlowEndpointDataExplorerPtrOutput() DataFlowEndpointDataExplorerPtrOutput {
-	return i.ToDataFlowEndpointDataExplorerPtrOutputWithContext(context.Background())
+func (i *dataflowEndpointDataExplorerPtrType) ToDataflowEndpointDataExplorerPtrOutput() DataflowEndpointDataExplorerPtrOutput {
+	return i.ToDataflowEndpointDataExplorerPtrOutputWithContext(context.Background())
 }
 
-func (i *dataFlowEndpointDataExplorerPtrType) ToDataFlowEndpointDataExplorerPtrOutputWithContext(ctx context.Context) DataFlowEndpointDataExplorerPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataFlowEndpointDataExplorerPtrOutput)
+func (i *dataflowEndpointDataExplorerPtrType) ToDataflowEndpointDataExplorerPtrOutputWithContext(ctx context.Context) DataflowEndpointDataExplorerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowEndpointDataExplorerPtrOutput)
 }
 
 // Azure Data Explorer endpoint properties
-type DataFlowEndpointDataExplorerOutput struct{ *pulumi.OutputState }
+type DataflowEndpointDataExplorerOutput struct{ *pulumi.OutputState }
 
-func (DataFlowEndpointDataExplorerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowEndpointDataExplorer)(nil)).Elem()
+func (DataflowEndpointDataExplorerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowEndpointDataExplorer)(nil)).Elem()
 }
 
-func (o DataFlowEndpointDataExplorerOutput) ToDataFlowEndpointDataExplorerOutput() DataFlowEndpointDataExplorerOutput {
+func (o DataflowEndpointDataExplorerOutput) ToDataflowEndpointDataExplorerOutput() DataflowEndpointDataExplorerOutput {
 	return o
 }
 
-func (o DataFlowEndpointDataExplorerOutput) ToDataFlowEndpointDataExplorerOutputWithContext(ctx context.Context) DataFlowEndpointDataExplorerOutput {
+func (o DataflowEndpointDataExplorerOutput) ToDataflowEndpointDataExplorerOutputWithContext(ctx context.Context) DataflowEndpointDataExplorerOutput {
 	return o
 }
 
-func (o DataFlowEndpointDataExplorerOutput) ToDataFlowEndpointDataExplorerPtrOutput() DataFlowEndpointDataExplorerPtrOutput {
-	return o.ToDataFlowEndpointDataExplorerPtrOutputWithContext(context.Background())
+func (o DataflowEndpointDataExplorerOutput) ToDataflowEndpointDataExplorerPtrOutput() DataflowEndpointDataExplorerPtrOutput {
+	return o.ToDataflowEndpointDataExplorerPtrOutputWithContext(context.Background())
 }
 
-func (o DataFlowEndpointDataExplorerOutput) ToDataFlowEndpointDataExplorerPtrOutputWithContext(ctx context.Context) DataFlowEndpointDataExplorerPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataFlowEndpointDataExplorer) *DataFlowEndpointDataExplorer {
+func (o DataflowEndpointDataExplorerOutput) ToDataflowEndpointDataExplorerPtrOutputWithContext(ctx context.Context) DataflowEndpointDataExplorerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataflowEndpointDataExplorer) *DataflowEndpointDataExplorer {
 		return &v
-	}).(DataFlowEndpointDataExplorerPtrOutput)
+	}).(DataflowEndpointDataExplorerPtrOutput)
+}
+
+// Authentication configuration. NOTE - only authentication property is allowed per entry.
+func (o DataflowEndpointDataExplorerOutput) Authentication() DataflowEndpointDataExplorerAuthenticationOutput {
+	return o.ApplyT(func(v DataflowEndpointDataExplorer) DataflowEndpointDataExplorerAuthentication {
+		return v.Authentication
+	}).(DataflowEndpointDataExplorerAuthenticationOutput)
 }
 
 // Azure Data Explorer endpoint batching configuration.
-func (o DataFlowEndpointDataExplorerOutput) Batching() BatchingConfigurationPtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointDataExplorer) *BatchingConfiguration { return v.Batching }).(BatchingConfigurationPtrOutput)
+func (o DataflowEndpointDataExplorerOutput) Batching() BatchingConfigurationPtrOutput {
+	return o.ApplyT(func(v DataflowEndpointDataExplorer) *BatchingConfiguration { return v.Batching }).(BatchingConfigurationPtrOutput)
 }
 
 // Database name.
-func (o DataFlowEndpointDataExplorerOutput) Database() pulumi.StringOutput {
-	return o.ApplyT(func(v DataFlowEndpointDataExplorer) string { return v.Database }).(pulumi.StringOutput)
+func (o DataflowEndpointDataExplorerOutput) Database() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowEndpointDataExplorer) string { return v.Database }).(pulumi.StringOutput)
 }
 
 // Host of the Azure Data Explorer in the form of <cluster>.<region>.kusto.windows.net .
-func (o DataFlowEndpointDataExplorerOutput) Host() pulumi.StringOutput {
-	return o.ApplyT(func(v DataFlowEndpointDataExplorer) string { return v.Host }).(pulumi.StringOutput)
+func (o DataflowEndpointDataExplorerOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowEndpointDataExplorer) string { return v.Host }).(pulumi.StringOutput)
 }
 
-type DataFlowEndpointDataExplorerPtrOutput struct{ *pulumi.OutputState }
+type DataflowEndpointDataExplorerPtrOutput struct{ *pulumi.OutputState }
 
-func (DataFlowEndpointDataExplorerPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DataFlowEndpointDataExplorer)(nil)).Elem()
+func (DataflowEndpointDataExplorerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowEndpointDataExplorer)(nil)).Elem()
 }
 
-func (o DataFlowEndpointDataExplorerPtrOutput) ToDataFlowEndpointDataExplorerPtrOutput() DataFlowEndpointDataExplorerPtrOutput {
+func (o DataflowEndpointDataExplorerPtrOutput) ToDataflowEndpointDataExplorerPtrOutput() DataflowEndpointDataExplorerPtrOutput {
 	return o
 }
 
-func (o DataFlowEndpointDataExplorerPtrOutput) ToDataFlowEndpointDataExplorerPtrOutputWithContext(ctx context.Context) DataFlowEndpointDataExplorerPtrOutput {
+func (o DataflowEndpointDataExplorerPtrOutput) ToDataflowEndpointDataExplorerPtrOutputWithContext(ctx context.Context) DataflowEndpointDataExplorerPtrOutput {
 	return o
 }
 
-func (o DataFlowEndpointDataExplorerPtrOutput) Elem() DataFlowEndpointDataExplorerOutput {
-	return o.ApplyT(func(v *DataFlowEndpointDataExplorer) DataFlowEndpointDataExplorer {
+func (o DataflowEndpointDataExplorerPtrOutput) Elem() DataflowEndpointDataExplorerOutput {
+	return o.ApplyT(func(v *DataflowEndpointDataExplorer) DataflowEndpointDataExplorer {
 		if v != nil {
 			return *v
 		}
-		var ret DataFlowEndpointDataExplorer
+		var ret DataflowEndpointDataExplorer
 		return ret
-	}).(DataFlowEndpointDataExplorerOutput)
+	}).(DataflowEndpointDataExplorerOutput)
+}
+
+// Authentication configuration. NOTE - only authentication property is allowed per entry.
+func (o DataflowEndpointDataExplorerPtrOutput) Authentication() DataflowEndpointDataExplorerAuthenticationPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointDataExplorer) *DataflowEndpointDataExplorerAuthentication {
+		if v == nil {
+			return nil
+		}
+		return &v.Authentication
+	}).(DataflowEndpointDataExplorerAuthenticationPtrOutput)
 }
 
 // Azure Data Explorer endpoint batching configuration.
-func (o DataFlowEndpointDataExplorerPtrOutput) Batching() BatchingConfigurationPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointDataExplorer) *BatchingConfiguration {
+func (o DataflowEndpointDataExplorerPtrOutput) Batching() BatchingConfigurationPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointDataExplorer) *BatchingConfiguration {
 		if v == nil {
 			return nil
 		}
@@ -8921,8 +8926,8 @@ func (o DataFlowEndpointDataExplorerPtrOutput) Batching() BatchingConfigurationP
 }
 
 // Database name.
-func (o DataFlowEndpointDataExplorerPtrOutput) Database() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointDataExplorer) *string {
+func (o DataflowEndpointDataExplorerPtrOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointDataExplorer) *string {
 		if v == nil {
 			return nil
 		}
@@ -8931,8 +8936,8 @@ func (o DataFlowEndpointDataExplorerPtrOutput) Database() pulumi.StringPtrOutput
 }
 
 // Host of the Azure Data Explorer in the form of <cluster>.<region>.kusto.windows.net .
-func (o DataFlowEndpointDataExplorerPtrOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointDataExplorer) *string {
+func (o DataflowEndpointDataExplorerPtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointDataExplorer) *string {
 		if v == nil {
 			return nil
 		}
@@ -8940,8 +8945,290 @@ func (o DataFlowEndpointDataExplorerPtrOutput) Host() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Azure Data Explorer Authentication properties. NOTE - only authentication property is allowed per entry.
+type DataflowEndpointDataExplorerAuthentication struct {
+	// Mode of Authentication.
+	Method interface{} `pulumi:"method"`
+	// System-assigned managed identity authentication.
+	SystemAssignedManagedIdentitySettings *DataflowEndpointAuthenticationSystemAssignedManagedIdentity `pulumi:"systemAssignedManagedIdentitySettings"`
+	// User-assigned managed identity authentication.
+	UserAssignedManagedIdentitySettings *DataflowEndpointAuthenticationUserAssignedManagedIdentity `pulumi:"userAssignedManagedIdentitySettings"`
+}
+
+// DataflowEndpointDataExplorerAuthenticationInput is an input type that accepts DataflowEndpointDataExplorerAuthenticationArgs and DataflowEndpointDataExplorerAuthenticationOutput values.
+// You can construct a concrete instance of `DataflowEndpointDataExplorerAuthenticationInput` via:
+//
+//	DataflowEndpointDataExplorerAuthenticationArgs{...}
+type DataflowEndpointDataExplorerAuthenticationInput interface {
+	pulumi.Input
+
+	ToDataflowEndpointDataExplorerAuthenticationOutput() DataflowEndpointDataExplorerAuthenticationOutput
+	ToDataflowEndpointDataExplorerAuthenticationOutputWithContext(context.Context) DataflowEndpointDataExplorerAuthenticationOutput
+}
+
+// Azure Data Explorer Authentication properties. NOTE - only authentication property is allowed per entry.
+type DataflowEndpointDataExplorerAuthenticationArgs struct {
+	// Mode of Authentication.
+	Method pulumi.Input `pulumi:"method"`
+	// System-assigned managed identity authentication.
+	SystemAssignedManagedIdentitySettings DataflowEndpointAuthenticationSystemAssignedManagedIdentityPtrInput `pulumi:"systemAssignedManagedIdentitySettings"`
+	// User-assigned managed identity authentication.
+	UserAssignedManagedIdentitySettings DataflowEndpointAuthenticationUserAssignedManagedIdentityPtrInput `pulumi:"userAssignedManagedIdentitySettings"`
+}
+
+func (DataflowEndpointDataExplorerAuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowEndpointDataExplorerAuthentication)(nil)).Elem()
+}
+
+func (i DataflowEndpointDataExplorerAuthenticationArgs) ToDataflowEndpointDataExplorerAuthenticationOutput() DataflowEndpointDataExplorerAuthenticationOutput {
+	return i.ToDataflowEndpointDataExplorerAuthenticationOutputWithContext(context.Background())
+}
+
+func (i DataflowEndpointDataExplorerAuthenticationArgs) ToDataflowEndpointDataExplorerAuthenticationOutputWithContext(ctx context.Context) DataflowEndpointDataExplorerAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowEndpointDataExplorerAuthenticationOutput)
+}
+
+func (i DataflowEndpointDataExplorerAuthenticationArgs) ToDataflowEndpointDataExplorerAuthenticationPtrOutput() DataflowEndpointDataExplorerAuthenticationPtrOutput {
+	return i.ToDataflowEndpointDataExplorerAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i DataflowEndpointDataExplorerAuthenticationArgs) ToDataflowEndpointDataExplorerAuthenticationPtrOutputWithContext(ctx context.Context) DataflowEndpointDataExplorerAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowEndpointDataExplorerAuthenticationOutput).ToDataflowEndpointDataExplorerAuthenticationPtrOutputWithContext(ctx)
+}
+
+// DataflowEndpointDataExplorerAuthenticationPtrInput is an input type that accepts DataflowEndpointDataExplorerAuthenticationArgs, DataflowEndpointDataExplorerAuthenticationPtr and DataflowEndpointDataExplorerAuthenticationPtrOutput values.
+// You can construct a concrete instance of `DataflowEndpointDataExplorerAuthenticationPtrInput` via:
+//
+//	        DataflowEndpointDataExplorerAuthenticationArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataflowEndpointDataExplorerAuthenticationPtrInput interface {
+	pulumi.Input
+
+	ToDataflowEndpointDataExplorerAuthenticationPtrOutput() DataflowEndpointDataExplorerAuthenticationPtrOutput
+	ToDataflowEndpointDataExplorerAuthenticationPtrOutputWithContext(context.Context) DataflowEndpointDataExplorerAuthenticationPtrOutput
+}
+
+type dataflowEndpointDataExplorerAuthenticationPtrType DataflowEndpointDataExplorerAuthenticationArgs
+
+func DataflowEndpointDataExplorerAuthenticationPtr(v *DataflowEndpointDataExplorerAuthenticationArgs) DataflowEndpointDataExplorerAuthenticationPtrInput {
+	return (*dataflowEndpointDataExplorerAuthenticationPtrType)(v)
+}
+
+func (*dataflowEndpointDataExplorerAuthenticationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowEndpointDataExplorerAuthentication)(nil)).Elem()
+}
+
+func (i *dataflowEndpointDataExplorerAuthenticationPtrType) ToDataflowEndpointDataExplorerAuthenticationPtrOutput() DataflowEndpointDataExplorerAuthenticationPtrOutput {
+	return i.ToDataflowEndpointDataExplorerAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i *dataflowEndpointDataExplorerAuthenticationPtrType) ToDataflowEndpointDataExplorerAuthenticationPtrOutputWithContext(ctx context.Context) DataflowEndpointDataExplorerAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowEndpointDataExplorerAuthenticationPtrOutput)
+}
+
+// Azure Data Explorer Authentication properties. NOTE - only authentication property is allowed per entry.
+type DataflowEndpointDataExplorerAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (DataflowEndpointDataExplorerAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowEndpointDataExplorerAuthentication)(nil)).Elem()
+}
+
+func (o DataflowEndpointDataExplorerAuthenticationOutput) ToDataflowEndpointDataExplorerAuthenticationOutput() DataflowEndpointDataExplorerAuthenticationOutput {
+	return o
+}
+
+func (o DataflowEndpointDataExplorerAuthenticationOutput) ToDataflowEndpointDataExplorerAuthenticationOutputWithContext(ctx context.Context) DataflowEndpointDataExplorerAuthenticationOutput {
+	return o
+}
+
+func (o DataflowEndpointDataExplorerAuthenticationOutput) ToDataflowEndpointDataExplorerAuthenticationPtrOutput() DataflowEndpointDataExplorerAuthenticationPtrOutput {
+	return o.ToDataflowEndpointDataExplorerAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (o DataflowEndpointDataExplorerAuthenticationOutput) ToDataflowEndpointDataExplorerAuthenticationPtrOutputWithContext(ctx context.Context) DataflowEndpointDataExplorerAuthenticationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataflowEndpointDataExplorerAuthentication) *DataflowEndpointDataExplorerAuthentication {
+		return &v
+	}).(DataflowEndpointDataExplorerAuthenticationPtrOutput)
+}
+
+// Mode of Authentication.
+func (o DataflowEndpointDataExplorerAuthenticationOutput) Method() pulumi.AnyOutput {
+	return o.ApplyT(func(v DataflowEndpointDataExplorerAuthentication) interface{} { return v.Method }).(pulumi.AnyOutput)
+}
+
+// System-assigned managed identity authentication.
+func (o DataflowEndpointDataExplorerAuthenticationOutput) SystemAssignedManagedIdentitySettings() DataflowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput {
+	return o.ApplyT(func(v DataflowEndpointDataExplorerAuthentication) *DataflowEndpointAuthenticationSystemAssignedManagedIdentity {
+		return v.SystemAssignedManagedIdentitySettings
+	}).(DataflowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput)
+}
+
+// User-assigned managed identity authentication.
+func (o DataflowEndpointDataExplorerAuthenticationOutput) UserAssignedManagedIdentitySettings() DataflowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput {
+	return o.ApplyT(func(v DataflowEndpointDataExplorerAuthentication) *DataflowEndpointAuthenticationUserAssignedManagedIdentity {
+		return v.UserAssignedManagedIdentitySettings
+	}).(DataflowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput)
+}
+
+type DataflowEndpointDataExplorerAuthenticationPtrOutput struct{ *pulumi.OutputState }
+
+func (DataflowEndpointDataExplorerAuthenticationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowEndpointDataExplorerAuthentication)(nil)).Elem()
+}
+
+func (o DataflowEndpointDataExplorerAuthenticationPtrOutput) ToDataflowEndpointDataExplorerAuthenticationPtrOutput() DataflowEndpointDataExplorerAuthenticationPtrOutput {
+	return o
+}
+
+func (o DataflowEndpointDataExplorerAuthenticationPtrOutput) ToDataflowEndpointDataExplorerAuthenticationPtrOutputWithContext(ctx context.Context) DataflowEndpointDataExplorerAuthenticationPtrOutput {
+	return o
+}
+
+func (o DataflowEndpointDataExplorerAuthenticationPtrOutput) Elem() DataflowEndpointDataExplorerAuthenticationOutput {
+	return o.ApplyT(func(v *DataflowEndpointDataExplorerAuthentication) DataflowEndpointDataExplorerAuthentication {
+		if v != nil {
+			return *v
+		}
+		var ret DataflowEndpointDataExplorerAuthentication
+		return ret
+	}).(DataflowEndpointDataExplorerAuthenticationOutput)
+}
+
+// Mode of Authentication.
+func (o DataflowEndpointDataExplorerAuthenticationPtrOutput) Method() pulumi.AnyOutput {
+	return o.ApplyT(func(v *DataflowEndpointDataExplorerAuthentication) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Method
+	}).(pulumi.AnyOutput)
+}
+
+// System-assigned managed identity authentication.
+func (o DataflowEndpointDataExplorerAuthenticationPtrOutput) SystemAssignedManagedIdentitySettings() DataflowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointDataExplorerAuthentication) *DataflowEndpointAuthenticationSystemAssignedManagedIdentity {
+		if v == nil {
+			return nil
+		}
+		return v.SystemAssignedManagedIdentitySettings
+	}).(DataflowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput)
+}
+
+// User-assigned managed identity authentication.
+func (o DataflowEndpointDataExplorerAuthenticationPtrOutput) UserAssignedManagedIdentitySettings() DataflowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointDataExplorerAuthentication) *DataflowEndpointAuthenticationUserAssignedManagedIdentity {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedManagedIdentitySettings
+	}).(DataflowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput)
+}
+
+// Azure Data Explorer Authentication properties. NOTE - only authentication property is allowed per entry.
+type DataflowEndpointDataExplorerAuthenticationResponse struct {
+	// Mode of Authentication.
+	Method interface{} `pulumi:"method"`
+	// System-assigned managed identity authentication.
+	SystemAssignedManagedIdentitySettings *DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponse `pulumi:"systemAssignedManagedIdentitySettings"`
+	// User-assigned managed identity authentication.
+	UserAssignedManagedIdentitySettings *DataflowEndpointAuthenticationUserAssignedManagedIdentityResponse `pulumi:"userAssignedManagedIdentitySettings"`
+}
+
+// Azure Data Explorer Authentication properties. NOTE - only authentication property is allowed per entry.
+type DataflowEndpointDataExplorerAuthenticationResponseOutput struct{ *pulumi.OutputState }
+
+func (DataflowEndpointDataExplorerAuthenticationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowEndpointDataExplorerAuthenticationResponse)(nil)).Elem()
+}
+
+func (o DataflowEndpointDataExplorerAuthenticationResponseOutput) ToDataflowEndpointDataExplorerAuthenticationResponseOutput() DataflowEndpointDataExplorerAuthenticationResponseOutput {
+	return o
+}
+
+func (o DataflowEndpointDataExplorerAuthenticationResponseOutput) ToDataflowEndpointDataExplorerAuthenticationResponseOutputWithContext(ctx context.Context) DataflowEndpointDataExplorerAuthenticationResponseOutput {
+	return o
+}
+
+// Mode of Authentication.
+func (o DataflowEndpointDataExplorerAuthenticationResponseOutput) Method() pulumi.AnyOutput {
+	return o.ApplyT(func(v DataflowEndpointDataExplorerAuthenticationResponse) interface{} { return v.Method }).(pulumi.AnyOutput)
+}
+
+// System-assigned managed identity authentication.
+func (o DataflowEndpointDataExplorerAuthenticationResponseOutput) SystemAssignedManagedIdentitySettings() DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponsePtrOutput {
+	return o.ApplyT(func(v DataflowEndpointDataExplorerAuthenticationResponse) *DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponse {
+		return v.SystemAssignedManagedIdentitySettings
+	}).(DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponsePtrOutput)
+}
+
+// User-assigned managed identity authentication.
+func (o DataflowEndpointDataExplorerAuthenticationResponseOutput) UserAssignedManagedIdentitySettings() DataflowEndpointAuthenticationUserAssignedManagedIdentityResponsePtrOutput {
+	return o.ApplyT(func(v DataflowEndpointDataExplorerAuthenticationResponse) *DataflowEndpointAuthenticationUserAssignedManagedIdentityResponse {
+		return v.UserAssignedManagedIdentitySettings
+	}).(DataflowEndpointAuthenticationUserAssignedManagedIdentityResponsePtrOutput)
+}
+
+type DataflowEndpointDataExplorerAuthenticationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DataflowEndpointDataExplorerAuthenticationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowEndpointDataExplorerAuthenticationResponse)(nil)).Elem()
+}
+
+func (o DataflowEndpointDataExplorerAuthenticationResponsePtrOutput) ToDataflowEndpointDataExplorerAuthenticationResponsePtrOutput() DataflowEndpointDataExplorerAuthenticationResponsePtrOutput {
+	return o
+}
+
+func (o DataflowEndpointDataExplorerAuthenticationResponsePtrOutput) ToDataflowEndpointDataExplorerAuthenticationResponsePtrOutputWithContext(ctx context.Context) DataflowEndpointDataExplorerAuthenticationResponsePtrOutput {
+	return o
+}
+
+func (o DataflowEndpointDataExplorerAuthenticationResponsePtrOutput) Elem() DataflowEndpointDataExplorerAuthenticationResponseOutput {
+	return o.ApplyT(func(v *DataflowEndpointDataExplorerAuthenticationResponse) DataflowEndpointDataExplorerAuthenticationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DataflowEndpointDataExplorerAuthenticationResponse
+		return ret
+	}).(DataflowEndpointDataExplorerAuthenticationResponseOutput)
+}
+
+// Mode of Authentication.
+func (o DataflowEndpointDataExplorerAuthenticationResponsePtrOutput) Method() pulumi.AnyOutput {
+	return o.ApplyT(func(v *DataflowEndpointDataExplorerAuthenticationResponse) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Method
+	}).(pulumi.AnyOutput)
+}
+
+// System-assigned managed identity authentication.
+func (o DataflowEndpointDataExplorerAuthenticationResponsePtrOutput) SystemAssignedManagedIdentitySettings() DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointDataExplorerAuthenticationResponse) *DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponse {
+		if v == nil {
+			return nil
+		}
+		return v.SystemAssignedManagedIdentitySettings
+	}).(DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponsePtrOutput)
+}
+
+// User-assigned managed identity authentication.
+func (o DataflowEndpointDataExplorerAuthenticationResponsePtrOutput) UserAssignedManagedIdentitySettings() DataflowEndpointAuthenticationUserAssignedManagedIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointDataExplorerAuthenticationResponse) *DataflowEndpointAuthenticationUserAssignedManagedIdentityResponse {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedManagedIdentitySettings
+	}).(DataflowEndpointAuthenticationUserAssignedManagedIdentityResponsePtrOutput)
+}
+
 // Azure Data Explorer endpoint properties
-type DataFlowEndpointDataExplorerResponse struct {
+type DataflowEndpointDataExplorerResponse struct {
+	// Authentication configuration. NOTE - only authentication property is allowed per entry.
+	Authentication DataflowEndpointDataExplorerAuthenticationResponse `pulumi:"authentication"`
 	// Azure Data Explorer endpoint batching configuration.
 	Batching *BatchingConfigurationResponse `pulumi:"batching"`
 	// Database name.
@@ -8950,8 +9237,8 @@ type DataFlowEndpointDataExplorerResponse struct {
 	Host string `pulumi:"host"`
 }
 
-// Defaults sets the appropriate defaults for DataFlowEndpointDataExplorerResponse
-func (val *DataFlowEndpointDataExplorerResponse) Defaults() *DataFlowEndpointDataExplorerResponse {
+// Defaults sets the appropriate defaults for DataflowEndpointDataExplorerResponse
+func (val *DataflowEndpointDataExplorerResponse) Defaults() *DataflowEndpointDataExplorerResponse {
 	if val == nil {
 		return nil
 	}
@@ -8962,62 +9249,79 @@ func (val *DataFlowEndpointDataExplorerResponse) Defaults() *DataFlowEndpointDat
 }
 
 // Azure Data Explorer endpoint properties
-type DataFlowEndpointDataExplorerResponseOutput struct{ *pulumi.OutputState }
+type DataflowEndpointDataExplorerResponseOutput struct{ *pulumi.OutputState }
 
-func (DataFlowEndpointDataExplorerResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowEndpointDataExplorerResponse)(nil)).Elem()
+func (DataflowEndpointDataExplorerResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowEndpointDataExplorerResponse)(nil)).Elem()
 }
 
-func (o DataFlowEndpointDataExplorerResponseOutput) ToDataFlowEndpointDataExplorerResponseOutput() DataFlowEndpointDataExplorerResponseOutput {
+func (o DataflowEndpointDataExplorerResponseOutput) ToDataflowEndpointDataExplorerResponseOutput() DataflowEndpointDataExplorerResponseOutput {
 	return o
 }
 
-func (o DataFlowEndpointDataExplorerResponseOutput) ToDataFlowEndpointDataExplorerResponseOutputWithContext(ctx context.Context) DataFlowEndpointDataExplorerResponseOutput {
+func (o DataflowEndpointDataExplorerResponseOutput) ToDataflowEndpointDataExplorerResponseOutputWithContext(ctx context.Context) DataflowEndpointDataExplorerResponseOutput {
 	return o
+}
+
+// Authentication configuration. NOTE - only authentication property is allowed per entry.
+func (o DataflowEndpointDataExplorerResponseOutput) Authentication() DataflowEndpointDataExplorerAuthenticationResponseOutput {
+	return o.ApplyT(func(v DataflowEndpointDataExplorerResponse) DataflowEndpointDataExplorerAuthenticationResponse {
+		return v.Authentication
+	}).(DataflowEndpointDataExplorerAuthenticationResponseOutput)
 }
 
 // Azure Data Explorer endpoint batching configuration.
-func (o DataFlowEndpointDataExplorerResponseOutput) Batching() BatchingConfigurationResponsePtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointDataExplorerResponse) *BatchingConfigurationResponse { return v.Batching }).(BatchingConfigurationResponsePtrOutput)
+func (o DataflowEndpointDataExplorerResponseOutput) Batching() BatchingConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v DataflowEndpointDataExplorerResponse) *BatchingConfigurationResponse { return v.Batching }).(BatchingConfigurationResponsePtrOutput)
 }
 
 // Database name.
-func (o DataFlowEndpointDataExplorerResponseOutput) Database() pulumi.StringOutput {
-	return o.ApplyT(func(v DataFlowEndpointDataExplorerResponse) string { return v.Database }).(pulumi.StringOutput)
+func (o DataflowEndpointDataExplorerResponseOutput) Database() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowEndpointDataExplorerResponse) string { return v.Database }).(pulumi.StringOutput)
 }
 
 // Host of the Azure Data Explorer in the form of <cluster>.<region>.kusto.windows.net .
-func (o DataFlowEndpointDataExplorerResponseOutput) Host() pulumi.StringOutput {
-	return o.ApplyT(func(v DataFlowEndpointDataExplorerResponse) string { return v.Host }).(pulumi.StringOutput)
+func (o DataflowEndpointDataExplorerResponseOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowEndpointDataExplorerResponse) string { return v.Host }).(pulumi.StringOutput)
 }
 
-type DataFlowEndpointDataExplorerResponsePtrOutput struct{ *pulumi.OutputState }
+type DataflowEndpointDataExplorerResponsePtrOutput struct{ *pulumi.OutputState }
 
-func (DataFlowEndpointDataExplorerResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DataFlowEndpointDataExplorerResponse)(nil)).Elem()
+func (DataflowEndpointDataExplorerResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowEndpointDataExplorerResponse)(nil)).Elem()
 }
 
-func (o DataFlowEndpointDataExplorerResponsePtrOutput) ToDataFlowEndpointDataExplorerResponsePtrOutput() DataFlowEndpointDataExplorerResponsePtrOutput {
+func (o DataflowEndpointDataExplorerResponsePtrOutput) ToDataflowEndpointDataExplorerResponsePtrOutput() DataflowEndpointDataExplorerResponsePtrOutput {
 	return o
 }
 
-func (o DataFlowEndpointDataExplorerResponsePtrOutput) ToDataFlowEndpointDataExplorerResponsePtrOutputWithContext(ctx context.Context) DataFlowEndpointDataExplorerResponsePtrOutput {
+func (o DataflowEndpointDataExplorerResponsePtrOutput) ToDataflowEndpointDataExplorerResponsePtrOutputWithContext(ctx context.Context) DataflowEndpointDataExplorerResponsePtrOutput {
 	return o
 }
 
-func (o DataFlowEndpointDataExplorerResponsePtrOutput) Elem() DataFlowEndpointDataExplorerResponseOutput {
-	return o.ApplyT(func(v *DataFlowEndpointDataExplorerResponse) DataFlowEndpointDataExplorerResponse {
+func (o DataflowEndpointDataExplorerResponsePtrOutput) Elem() DataflowEndpointDataExplorerResponseOutput {
+	return o.ApplyT(func(v *DataflowEndpointDataExplorerResponse) DataflowEndpointDataExplorerResponse {
 		if v != nil {
 			return *v
 		}
-		var ret DataFlowEndpointDataExplorerResponse
+		var ret DataflowEndpointDataExplorerResponse
 		return ret
-	}).(DataFlowEndpointDataExplorerResponseOutput)
+	}).(DataflowEndpointDataExplorerResponseOutput)
+}
+
+// Authentication configuration. NOTE - only authentication property is allowed per entry.
+func (o DataflowEndpointDataExplorerResponsePtrOutput) Authentication() DataflowEndpointDataExplorerAuthenticationResponsePtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointDataExplorerResponse) *DataflowEndpointDataExplorerAuthenticationResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Authentication
+	}).(DataflowEndpointDataExplorerAuthenticationResponsePtrOutput)
 }
 
 // Azure Data Explorer endpoint batching configuration.
-func (o DataFlowEndpointDataExplorerResponsePtrOutput) Batching() BatchingConfigurationResponsePtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointDataExplorerResponse) *BatchingConfigurationResponse {
+func (o DataflowEndpointDataExplorerResponsePtrOutput) Batching() BatchingConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointDataExplorerResponse) *BatchingConfigurationResponse {
 		if v == nil {
 			return nil
 		}
@@ -9026,8 +9330,8 @@ func (o DataFlowEndpointDataExplorerResponsePtrOutput) Batching() BatchingConfig
 }
 
 // Database name.
-func (o DataFlowEndpointDataExplorerResponsePtrOutput) Database() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointDataExplorerResponse) *string {
+func (o DataflowEndpointDataExplorerResponsePtrOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointDataExplorerResponse) *string {
 		if v == nil {
 			return nil
 		}
@@ -9036,8 +9340,8 @@ func (o DataFlowEndpointDataExplorerResponsePtrOutput) Database() pulumi.StringP
 }
 
 // Host of the Azure Data Explorer in the form of <cluster>.<region>.kusto.windows.net .
-func (o DataFlowEndpointDataExplorerResponsePtrOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointDataExplorerResponse) *string {
+func (o DataflowEndpointDataExplorerResponsePtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointDataExplorerResponse) *string {
 		if v == nil {
 			return nil
 		}
@@ -9046,15 +9350,17 @@ func (o DataFlowEndpointDataExplorerResponsePtrOutput) Host() pulumi.StringPtrOu
 }
 
 // Azure Data Lake endpoint properties
-type DataFlowEndpointDataLakeStorage struct {
+type DataflowEndpointDataLakeStorage struct {
+	// Authentication configuration. NOTE - only authentication property is allowed per entry.
+	Authentication DataflowEndpointDataLakeStorageAuthentication `pulumi:"authentication"`
 	// Azure Data Lake endpoint batching configuration.
 	Batching *BatchingConfiguration `pulumi:"batching"`
 	// Host of the Azure Data Lake in the form of <account>.blob.core.windows.net .
 	Host string `pulumi:"host"`
 }
 
-// Defaults sets the appropriate defaults for DataFlowEndpointDataLakeStorage
-func (val *DataFlowEndpointDataLakeStorage) Defaults() *DataFlowEndpointDataLakeStorage {
+// Defaults sets the appropriate defaults for DataflowEndpointDataLakeStorage
+func (val *DataflowEndpointDataLakeStorage) Defaults() *DataflowEndpointDataLakeStorage {
 	if val == nil {
 		return nil
 	}
@@ -9064,27 +9370,29 @@ func (val *DataFlowEndpointDataLakeStorage) Defaults() *DataFlowEndpointDataLake
 	return &tmp
 }
 
-// DataFlowEndpointDataLakeStorageInput is an input type that accepts DataFlowEndpointDataLakeStorageArgs and DataFlowEndpointDataLakeStorageOutput values.
-// You can construct a concrete instance of `DataFlowEndpointDataLakeStorageInput` via:
+// DataflowEndpointDataLakeStorageInput is an input type that accepts DataflowEndpointDataLakeStorageArgs and DataflowEndpointDataLakeStorageOutput values.
+// You can construct a concrete instance of `DataflowEndpointDataLakeStorageInput` via:
 //
-//	DataFlowEndpointDataLakeStorageArgs{...}
-type DataFlowEndpointDataLakeStorageInput interface {
+//	DataflowEndpointDataLakeStorageArgs{...}
+type DataflowEndpointDataLakeStorageInput interface {
 	pulumi.Input
 
-	ToDataFlowEndpointDataLakeStorageOutput() DataFlowEndpointDataLakeStorageOutput
-	ToDataFlowEndpointDataLakeStorageOutputWithContext(context.Context) DataFlowEndpointDataLakeStorageOutput
+	ToDataflowEndpointDataLakeStorageOutput() DataflowEndpointDataLakeStorageOutput
+	ToDataflowEndpointDataLakeStorageOutputWithContext(context.Context) DataflowEndpointDataLakeStorageOutput
 }
 
 // Azure Data Lake endpoint properties
-type DataFlowEndpointDataLakeStorageArgs struct {
+type DataflowEndpointDataLakeStorageArgs struct {
+	// Authentication configuration. NOTE - only authentication property is allowed per entry.
+	Authentication DataflowEndpointDataLakeStorageAuthenticationInput `pulumi:"authentication"`
 	// Azure Data Lake endpoint batching configuration.
 	Batching BatchingConfigurationPtrInput `pulumi:"batching"`
 	// Host of the Azure Data Lake in the form of <account>.blob.core.windows.net .
 	Host pulumi.StringInput `pulumi:"host"`
 }
 
-// Defaults sets the appropriate defaults for DataFlowEndpointDataLakeStorageArgs
-func (val *DataFlowEndpointDataLakeStorageArgs) Defaults() *DataFlowEndpointDataLakeStorageArgs {
+// Defaults sets the appropriate defaults for DataflowEndpointDataLakeStorageArgs
+func (val *DataflowEndpointDataLakeStorageArgs) Defaults() *DataflowEndpointDataLakeStorageArgs {
 	if val == nil {
 		return nil
 	}
@@ -9092,121 +9400,138 @@ func (val *DataFlowEndpointDataLakeStorageArgs) Defaults() *DataFlowEndpointData
 
 	return &tmp
 }
-func (DataFlowEndpointDataLakeStorageArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowEndpointDataLakeStorage)(nil)).Elem()
+func (DataflowEndpointDataLakeStorageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowEndpointDataLakeStorage)(nil)).Elem()
 }
 
-func (i DataFlowEndpointDataLakeStorageArgs) ToDataFlowEndpointDataLakeStorageOutput() DataFlowEndpointDataLakeStorageOutput {
-	return i.ToDataFlowEndpointDataLakeStorageOutputWithContext(context.Background())
+func (i DataflowEndpointDataLakeStorageArgs) ToDataflowEndpointDataLakeStorageOutput() DataflowEndpointDataLakeStorageOutput {
+	return i.ToDataflowEndpointDataLakeStorageOutputWithContext(context.Background())
 }
 
-func (i DataFlowEndpointDataLakeStorageArgs) ToDataFlowEndpointDataLakeStorageOutputWithContext(ctx context.Context) DataFlowEndpointDataLakeStorageOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataFlowEndpointDataLakeStorageOutput)
+func (i DataflowEndpointDataLakeStorageArgs) ToDataflowEndpointDataLakeStorageOutputWithContext(ctx context.Context) DataflowEndpointDataLakeStorageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowEndpointDataLakeStorageOutput)
 }
 
-func (i DataFlowEndpointDataLakeStorageArgs) ToDataFlowEndpointDataLakeStoragePtrOutput() DataFlowEndpointDataLakeStoragePtrOutput {
-	return i.ToDataFlowEndpointDataLakeStoragePtrOutputWithContext(context.Background())
+func (i DataflowEndpointDataLakeStorageArgs) ToDataflowEndpointDataLakeStoragePtrOutput() DataflowEndpointDataLakeStoragePtrOutput {
+	return i.ToDataflowEndpointDataLakeStoragePtrOutputWithContext(context.Background())
 }
 
-func (i DataFlowEndpointDataLakeStorageArgs) ToDataFlowEndpointDataLakeStoragePtrOutputWithContext(ctx context.Context) DataFlowEndpointDataLakeStoragePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataFlowEndpointDataLakeStorageOutput).ToDataFlowEndpointDataLakeStoragePtrOutputWithContext(ctx)
+func (i DataflowEndpointDataLakeStorageArgs) ToDataflowEndpointDataLakeStoragePtrOutputWithContext(ctx context.Context) DataflowEndpointDataLakeStoragePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowEndpointDataLakeStorageOutput).ToDataflowEndpointDataLakeStoragePtrOutputWithContext(ctx)
 }
 
-// DataFlowEndpointDataLakeStoragePtrInput is an input type that accepts DataFlowEndpointDataLakeStorageArgs, DataFlowEndpointDataLakeStoragePtr and DataFlowEndpointDataLakeStoragePtrOutput values.
-// You can construct a concrete instance of `DataFlowEndpointDataLakeStoragePtrInput` via:
+// DataflowEndpointDataLakeStoragePtrInput is an input type that accepts DataflowEndpointDataLakeStorageArgs, DataflowEndpointDataLakeStoragePtr and DataflowEndpointDataLakeStoragePtrOutput values.
+// You can construct a concrete instance of `DataflowEndpointDataLakeStoragePtrInput` via:
 //
-//	        DataFlowEndpointDataLakeStorageArgs{...}
+//	        DataflowEndpointDataLakeStorageArgs{...}
 //
 //	or:
 //
 //	        nil
-type DataFlowEndpointDataLakeStoragePtrInput interface {
+type DataflowEndpointDataLakeStoragePtrInput interface {
 	pulumi.Input
 
-	ToDataFlowEndpointDataLakeStoragePtrOutput() DataFlowEndpointDataLakeStoragePtrOutput
-	ToDataFlowEndpointDataLakeStoragePtrOutputWithContext(context.Context) DataFlowEndpointDataLakeStoragePtrOutput
+	ToDataflowEndpointDataLakeStoragePtrOutput() DataflowEndpointDataLakeStoragePtrOutput
+	ToDataflowEndpointDataLakeStoragePtrOutputWithContext(context.Context) DataflowEndpointDataLakeStoragePtrOutput
 }
 
-type dataFlowEndpointDataLakeStoragePtrType DataFlowEndpointDataLakeStorageArgs
+type dataflowEndpointDataLakeStoragePtrType DataflowEndpointDataLakeStorageArgs
 
-func DataFlowEndpointDataLakeStoragePtr(v *DataFlowEndpointDataLakeStorageArgs) DataFlowEndpointDataLakeStoragePtrInput {
-	return (*dataFlowEndpointDataLakeStoragePtrType)(v)
+func DataflowEndpointDataLakeStoragePtr(v *DataflowEndpointDataLakeStorageArgs) DataflowEndpointDataLakeStoragePtrInput {
+	return (*dataflowEndpointDataLakeStoragePtrType)(v)
 }
 
-func (*dataFlowEndpointDataLakeStoragePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DataFlowEndpointDataLakeStorage)(nil)).Elem()
+func (*dataflowEndpointDataLakeStoragePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowEndpointDataLakeStorage)(nil)).Elem()
 }
 
-func (i *dataFlowEndpointDataLakeStoragePtrType) ToDataFlowEndpointDataLakeStoragePtrOutput() DataFlowEndpointDataLakeStoragePtrOutput {
-	return i.ToDataFlowEndpointDataLakeStoragePtrOutputWithContext(context.Background())
+func (i *dataflowEndpointDataLakeStoragePtrType) ToDataflowEndpointDataLakeStoragePtrOutput() DataflowEndpointDataLakeStoragePtrOutput {
+	return i.ToDataflowEndpointDataLakeStoragePtrOutputWithContext(context.Background())
 }
 
-func (i *dataFlowEndpointDataLakeStoragePtrType) ToDataFlowEndpointDataLakeStoragePtrOutputWithContext(ctx context.Context) DataFlowEndpointDataLakeStoragePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataFlowEndpointDataLakeStoragePtrOutput)
+func (i *dataflowEndpointDataLakeStoragePtrType) ToDataflowEndpointDataLakeStoragePtrOutputWithContext(ctx context.Context) DataflowEndpointDataLakeStoragePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowEndpointDataLakeStoragePtrOutput)
 }
 
 // Azure Data Lake endpoint properties
-type DataFlowEndpointDataLakeStorageOutput struct{ *pulumi.OutputState }
+type DataflowEndpointDataLakeStorageOutput struct{ *pulumi.OutputState }
 
-func (DataFlowEndpointDataLakeStorageOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowEndpointDataLakeStorage)(nil)).Elem()
+func (DataflowEndpointDataLakeStorageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowEndpointDataLakeStorage)(nil)).Elem()
 }
 
-func (o DataFlowEndpointDataLakeStorageOutput) ToDataFlowEndpointDataLakeStorageOutput() DataFlowEndpointDataLakeStorageOutput {
+func (o DataflowEndpointDataLakeStorageOutput) ToDataflowEndpointDataLakeStorageOutput() DataflowEndpointDataLakeStorageOutput {
 	return o
 }
 
-func (o DataFlowEndpointDataLakeStorageOutput) ToDataFlowEndpointDataLakeStorageOutputWithContext(ctx context.Context) DataFlowEndpointDataLakeStorageOutput {
+func (o DataflowEndpointDataLakeStorageOutput) ToDataflowEndpointDataLakeStorageOutputWithContext(ctx context.Context) DataflowEndpointDataLakeStorageOutput {
 	return o
 }
 
-func (o DataFlowEndpointDataLakeStorageOutput) ToDataFlowEndpointDataLakeStoragePtrOutput() DataFlowEndpointDataLakeStoragePtrOutput {
-	return o.ToDataFlowEndpointDataLakeStoragePtrOutputWithContext(context.Background())
+func (o DataflowEndpointDataLakeStorageOutput) ToDataflowEndpointDataLakeStoragePtrOutput() DataflowEndpointDataLakeStoragePtrOutput {
+	return o.ToDataflowEndpointDataLakeStoragePtrOutputWithContext(context.Background())
 }
 
-func (o DataFlowEndpointDataLakeStorageOutput) ToDataFlowEndpointDataLakeStoragePtrOutputWithContext(ctx context.Context) DataFlowEndpointDataLakeStoragePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataFlowEndpointDataLakeStorage) *DataFlowEndpointDataLakeStorage {
+func (o DataflowEndpointDataLakeStorageOutput) ToDataflowEndpointDataLakeStoragePtrOutputWithContext(ctx context.Context) DataflowEndpointDataLakeStoragePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataflowEndpointDataLakeStorage) *DataflowEndpointDataLakeStorage {
 		return &v
-	}).(DataFlowEndpointDataLakeStoragePtrOutput)
+	}).(DataflowEndpointDataLakeStoragePtrOutput)
+}
+
+// Authentication configuration. NOTE - only authentication property is allowed per entry.
+func (o DataflowEndpointDataLakeStorageOutput) Authentication() DataflowEndpointDataLakeStorageAuthenticationOutput {
+	return o.ApplyT(func(v DataflowEndpointDataLakeStorage) DataflowEndpointDataLakeStorageAuthentication {
+		return v.Authentication
+	}).(DataflowEndpointDataLakeStorageAuthenticationOutput)
 }
 
 // Azure Data Lake endpoint batching configuration.
-func (o DataFlowEndpointDataLakeStorageOutput) Batching() BatchingConfigurationPtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointDataLakeStorage) *BatchingConfiguration { return v.Batching }).(BatchingConfigurationPtrOutput)
+func (o DataflowEndpointDataLakeStorageOutput) Batching() BatchingConfigurationPtrOutput {
+	return o.ApplyT(func(v DataflowEndpointDataLakeStorage) *BatchingConfiguration { return v.Batching }).(BatchingConfigurationPtrOutput)
 }
 
 // Host of the Azure Data Lake in the form of <account>.blob.core.windows.net .
-func (o DataFlowEndpointDataLakeStorageOutput) Host() pulumi.StringOutput {
-	return o.ApplyT(func(v DataFlowEndpointDataLakeStorage) string { return v.Host }).(pulumi.StringOutput)
+func (o DataflowEndpointDataLakeStorageOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowEndpointDataLakeStorage) string { return v.Host }).(pulumi.StringOutput)
 }
 
-type DataFlowEndpointDataLakeStoragePtrOutput struct{ *pulumi.OutputState }
+type DataflowEndpointDataLakeStoragePtrOutput struct{ *pulumi.OutputState }
 
-func (DataFlowEndpointDataLakeStoragePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DataFlowEndpointDataLakeStorage)(nil)).Elem()
+func (DataflowEndpointDataLakeStoragePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowEndpointDataLakeStorage)(nil)).Elem()
 }
 
-func (o DataFlowEndpointDataLakeStoragePtrOutput) ToDataFlowEndpointDataLakeStoragePtrOutput() DataFlowEndpointDataLakeStoragePtrOutput {
+func (o DataflowEndpointDataLakeStoragePtrOutput) ToDataflowEndpointDataLakeStoragePtrOutput() DataflowEndpointDataLakeStoragePtrOutput {
 	return o
 }
 
-func (o DataFlowEndpointDataLakeStoragePtrOutput) ToDataFlowEndpointDataLakeStoragePtrOutputWithContext(ctx context.Context) DataFlowEndpointDataLakeStoragePtrOutput {
+func (o DataflowEndpointDataLakeStoragePtrOutput) ToDataflowEndpointDataLakeStoragePtrOutputWithContext(ctx context.Context) DataflowEndpointDataLakeStoragePtrOutput {
 	return o
 }
 
-func (o DataFlowEndpointDataLakeStoragePtrOutput) Elem() DataFlowEndpointDataLakeStorageOutput {
-	return o.ApplyT(func(v *DataFlowEndpointDataLakeStorage) DataFlowEndpointDataLakeStorage {
+func (o DataflowEndpointDataLakeStoragePtrOutput) Elem() DataflowEndpointDataLakeStorageOutput {
+	return o.ApplyT(func(v *DataflowEndpointDataLakeStorage) DataflowEndpointDataLakeStorage {
 		if v != nil {
 			return *v
 		}
-		var ret DataFlowEndpointDataLakeStorage
+		var ret DataflowEndpointDataLakeStorage
 		return ret
-	}).(DataFlowEndpointDataLakeStorageOutput)
+	}).(DataflowEndpointDataLakeStorageOutput)
+}
+
+// Authentication configuration. NOTE - only authentication property is allowed per entry.
+func (o DataflowEndpointDataLakeStoragePtrOutput) Authentication() DataflowEndpointDataLakeStorageAuthenticationPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointDataLakeStorage) *DataflowEndpointDataLakeStorageAuthentication {
+		if v == nil {
+			return nil
+		}
+		return &v.Authentication
+	}).(DataflowEndpointDataLakeStorageAuthenticationPtrOutput)
 }
 
 // Azure Data Lake endpoint batching configuration.
-func (o DataFlowEndpointDataLakeStoragePtrOutput) Batching() BatchingConfigurationPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointDataLakeStorage) *BatchingConfiguration {
+func (o DataflowEndpointDataLakeStoragePtrOutput) Batching() BatchingConfigurationPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointDataLakeStorage) *BatchingConfiguration {
 		if v == nil {
 			return nil
 		}
@@ -9215,8 +9540,8 @@ func (o DataFlowEndpointDataLakeStoragePtrOutput) Batching() BatchingConfigurati
 }
 
 // Host of the Azure Data Lake in the form of <account>.blob.core.windows.net .
-func (o DataFlowEndpointDataLakeStoragePtrOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointDataLakeStorage) *string {
+func (o DataflowEndpointDataLakeStoragePtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointDataLakeStorage) *string {
 		if v == nil {
 			return nil
 		}
@@ -9224,16 +9549,338 @@ func (o DataFlowEndpointDataLakeStoragePtrOutput) Host() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+// Azure Data Lake endpoint Authentication properties.  NOTE Enum - Only one method is supported for one entry
+type DataflowEndpointDataLakeStorageAuthentication struct {
+	// SAS token authentication.
+	AccessTokenSettings *DataflowEndpointAuthenticationAccessToken `pulumi:"accessTokenSettings"`
+	// Mode of Authentication.
+	Method string `pulumi:"method"`
+	// System-assigned managed identity authentication.
+	SystemAssignedManagedIdentitySettings *DataflowEndpointAuthenticationSystemAssignedManagedIdentity `pulumi:"systemAssignedManagedIdentitySettings"`
+	// User-assigned managed identity authentication.
+	UserAssignedManagedIdentitySettings *DataflowEndpointAuthenticationUserAssignedManagedIdentity `pulumi:"userAssignedManagedIdentitySettings"`
+}
+
+// DataflowEndpointDataLakeStorageAuthenticationInput is an input type that accepts DataflowEndpointDataLakeStorageAuthenticationArgs and DataflowEndpointDataLakeStorageAuthenticationOutput values.
+// You can construct a concrete instance of `DataflowEndpointDataLakeStorageAuthenticationInput` via:
+//
+//	DataflowEndpointDataLakeStorageAuthenticationArgs{...}
+type DataflowEndpointDataLakeStorageAuthenticationInput interface {
+	pulumi.Input
+
+	ToDataflowEndpointDataLakeStorageAuthenticationOutput() DataflowEndpointDataLakeStorageAuthenticationOutput
+	ToDataflowEndpointDataLakeStorageAuthenticationOutputWithContext(context.Context) DataflowEndpointDataLakeStorageAuthenticationOutput
+}
+
+// Azure Data Lake endpoint Authentication properties.  NOTE Enum - Only one method is supported for one entry
+type DataflowEndpointDataLakeStorageAuthenticationArgs struct {
+	// SAS token authentication.
+	AccessTokenSettings DataflowEndpointAuthenticationAccessTokenPtrInput `pulumi:"accessTokenSettings"`
+	// Mode of Authentication.
+	Method pulumi.StringInput `pulumi:"method"`
+	// System-assigned managed identity authentication.
+	SystemAssignedManagedIdentitySettings DataflowEndpointAuthenticationSystemAssignedManagedIdentityPtrInput `pulumi:"systemAssignedManagedIdentitySettings"`
+	// User-assigned managed identity authentication.
+	UserAssignedManagedIdentitySettings DataflowEndpointAuthenticationUserAssignedManagedIdentityPtrInput `pulumi:"userAssignedManagedIdentitySettings"`
+}
+
+func (DataflowEndpointDataLakeStorageAuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowEndpointDataLakeStorageAuthentication)(nil)).Elem()
+}
+
+func (i DataflowEndpointDataLakeStorageAuthenticationArgs) ToDataflowEndpointDataLakeStorageAuthenticationOutput() DataflowEndpointDataLakeStorageAuthenticationOutput {
+	return i.ToDataflowEndpointDataLakeStorageAuthenticationOutputWithContext(context.Background())
+}
+
+func (i DataflowEndpointDataLakeStorageAuthenticationArgs) ToDataflowEndpointDataLakeStorageAuthenticationOutputWithContext(ctx context.Context) DataflowEndpointDataLakeStorageAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowEndpointDataLakeStorageAuthenticationOutput)
+}
+
+func (i DataflowEndpointDataLakeStorageAuthenticationArgs) ToDataflowEndpointDataLakeStorageAuthenticationPtrOutput() DataflowEndpointDataLakeStorageAuthenticationPtrOutput {
+	return i.ToDataflowEndpointDataLakeStorageAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i DataflowEndpointDataLakeStorageAuthenticationArgs) ToDataflowEndpointDataLakeStorageAuthenticationPtrOutputWithContext(ctx context.Context) DataflowEndpointDataLakeStorageAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowEndpointDataLakeStorageAuthenticationOutput).ToDataflowEndpointDataLakeStorageAuthenticationPtrOutputWithContext(ctx)
+}
+
+// DataflowEndpointDataLakeStorageAuthenticationPtrInput is an input type that accepts DataflowEndpointDataLakeStorageAuthenticationArgs, DataflowEndpointDataLakeStorageAuthenticationPtr and DataflowEndpointDataLakeStorageAuthenticationPtrOutput values.
+// You can construct a concrete instance of `DataflowEndpointDataLakeStorageAuthenticationPtrInput` via:
+//
+//	        DataflowEndpointDataLakeStorageAuthenticationArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataflowEndpointDataLakeStorageAuthenticationPtrInput interface {
+	pulumi.Input
+
+	ToDataflowEndpointDataLakeStorageAuthenticationPtrOutput() DataflowEndpointDataLakeStorageAuthenticationPtrOutput
+	ToDataflowEndpointDataLakeStorageAuthenticationPtrOutputWithContext(context.Context) DataflowEndpointDataLakeStorageAuthenticationPtrOutput
+}
+
+type dataflowEndpointDataLakeStorageAuthenticationPtrType DataflowEndpointDataLakeStorageAuthenticationArgs
+
+func DataflowEndpointDataLakeStorageAuthenticationPtr(v *DataflowEndpointDataLakeStorageAuthenticationArgs) DataflowEndpointDataLakeStorageAuthenticationPtrInput {
+	return (*dataflowEndpointDataLakeStorageAuthenticationPtrType)(v)
+}
+
+func (*dataflowEndpointDataLakeStorageAuthenticationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowEndpointDataLakeStorageAuthentication)(nil)).Elem()
+}
+
+func (i *dataflowEndpointDataLakeStorageAuthenticationPtrType) ToDataflowEndpointDataLakeStorageAuthenticationPtrOutput() DataflowEndpointDataLakeStorageAuthenticationPtrOutput {
+	return i.ToDataflowEndpointDataLakeStorageAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i *dataflowEndpointDataLakeStorageAuthenticationPtrType) ToDataflowEndpointDataLakeStorageAuthenticationPtrOutputWithContext(ctx context.Context) DataflowEndpointDataLakeStorageAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowEndpointDataLakeStorageAuthenticationPtrOutput)
+}
+
+// Azure Data Lake endpoint Authentication properties.  NOTE Enum - Only one method is supported for one entry
+type DataflowEndpointDataLakeStorageAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (DataflowEndpointDataLakeStorageAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowEndpointDataLakeStorageAuthentication)(nil)).Elem()
+}
+
+func (o DataflowEndpointDataLakeStorageAuthenticationOutput) ToDataflowEndpointDataLakeStorageAuthenticationOutput() DataflowEndpointDataLakeStorageAuthenticationOutput {
+	return o
+}
+
+func (o DataflowEndpointDataLakeStorageAuthenticationOutput) ToDataflowEndpointDataLakeStorageAuthenticationOutputWithContext(ctx context.Context) DataflowEndpointDataLakeStorageAuthenticationOutput {
+	return o
+}
+
+func (o DataflowEndpointDataLakeStorageAuthenticationOutput) ToDataflowEndpointDataLakeStorageAuthenticationPtrOutput() DataflowEndpointDataLakeStorageAuthenticationPtrOutput {
+	return o.ToDataflowEndpointDataLakeStorageAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (o DataflowEndpointDataLakeStorageAuthenticationOutput) ToDataflowEndpointDataLakeStorageAuthenticationPtrOutputWithContext(ctx context.Context) DataflowEndpointDataLakeStorageAuthenticationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataflowEndpointDataLakeStorageAuthentication) *DataflowEndpointDataLakeStorageAuthentication {
+		return &v
+	}).(DataflowEndpointDataLakeStorageAuthenticationPtrOutput)
+}
+
+// SAS token authentication.
+func (o DataflowEndpointDataLakeStorageAuthenticationOutput) AccessTokenSettings() DataflowEndpointAuthenticationAccessTokenPtrOutput {
+	return o.ApplyT(func(v DataflowEndpointDataLakeStorageAuthentication) *DataflowEndpointAuthenticationAccessToken {
+		return v.AccessTokenSettings
+	}).(DataflowEndpointAuthenticationAccessTokenPtrOutput)
+}
+
+// Mode of Authentication.
+func (o DataflowEndpointDataLakeStorageAuthenticationOutput) Method() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowEndpointDataLakeStorageAuthentication) string { return v.Method }).(pulumi.StringOutput)
+}
+
+// System-assigned managed identity authentication.
+func (o DataflowEndpointDataLakeStorageAuthenticationOutput) SystemAssignedManagedIdentitySettings() DataflowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput {
+	return o.ApplyT(func(v DataflowEndpointDataLakeStorageAuthentication) *DataflowEndpointAuthenticationSystemAssignedManagedIdentity {
+		return v.SystemAssignedManagedIdentitySettings
+	}).(DataflowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput)
+}
+
+// User-assigned managed identity authentication.
+func (o DataflowEndpointDataLakeStorageAuthenticationOutput) UserAssignedManagedIdentitySettings() DataflowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput {
+	return o.ApplyT(func(v DataflowEndpointDataLakeStorageAuthentication) *DataflowEndpointAuthenticationUserAssignedManagedIdentity {
+		return v.UserAssignedManagedIdentitySettings
+	}).(DataflowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput)
+}
+
+type DataflowEndpointDataLakeStorageAuthenticationPtrOutput struct{ *pulumi.OutputState }
+
+func (DataflowEndpointDataLakeStorageAuthenticationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowEndpointDataLakeStorageAuthentication)(nil)).Elem()
+}
+
+func (o DataflowEndpointDataLakeStorageAuthenticationPtrOutput) ToDataflowEndpointDataLakeStorageAuthenticationPtrOutput() DataflowEndpointDataLakeStorageAuthenticationPtrOutput {
+	return o
+}
+
+func (o DataflowEndpointDataLakeStorageAuthenticationPtrOutput) ToDataflowEndpointDataLakeStorageAuthenticationPtrOutputWithContext(ctx context.Context) DataflowEndpointDataLakeStorageAuthenticationPtrOutput {
+	return o
+}
+
+func (o DataflowEndpointDataLakeStorageAuthenticationPtrOutput) Elem() DataflowEndpointDataLakeStorageAuthenticationOutput {
+	return o.ApplyT(func(v *DataflowEndpointDataLakeStorageAuthentication) DataflowEndpointDataLakeStorageAuthentication {
+		if v != nil {
+			return *v
+		}
+		var ret DataflowEndpointDataLakeStorageAuthentication
+		return ret
+	}).(DataflowEndpointDataLakeStorageAuthenticationOutput)
+}
+
+// SAS token authentication.
+func (o DataflowEndpointDataLakeStorageAuthenticationPtrOutput) AccessTokenSettings() DataflowEndpointAuthenticationAccessTokenPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointDataLakeStorageAuthentication) *DataflowEndpointAuthenticationAccessToken {
+		if v == nil {
+			return nil
+		}
+		return v.AccessTokenSettings
+	}).(DataflowEndpointAuthenticationAccessTokenPtrOutput)
+}
+
+// Mode of Authentication.
+func (o DataflowEndpointDataLakeStorageAuthenticationPtrOutput) Method() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointDataLakeStorageAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Method
+	}).(pulumi.StringPtrOutput)
+}
+
+// System-assigned managed identity authentication.
+func (o DataflowEndpointDataLakeStorageAuthenticationPtrOutput) SystemAssignedManagedIdentitySettings() DataflowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointDataLakeStorageAuthentication) *DataflowEndpointAuthenticationSystemAssignedManagedIdentity {
+		if v == nil {
+			return nil
+		}
+		return v.SystemAssignedManagedIdentitySettings
+	}).(DataflowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput)
+}
+
+// User-assigned managed identity authentication.
+func (o DataflowEndpointDataLakeStorageAuthenticationPtrOutput) UserAssignedManagedIdentitySettings() DataflowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointDataLakeStorageAuthentication) *DataflowEndpointAuthenticationUserAssignedManagedIdentity {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedManagedIdentitySettings
+	}).(DataflowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput)
+}
+
+// Azure Data Lake endpoint Authentication properties.  NOTE Enum - Only one method is supported for one entry
+type DataflowEndpointDataLakeStorageAuthenticationResponse struct {
+	// SAS token authentication.
+	AccessTokenSettings *DataflowEndpointAuthenticationAccessTokenResponse `pulumi:"accessTokenSettings"`
+	// Mode of Authentication.
+	Method string `pulumi:"method"`
+	// System-assigned managed identity authentication.
+	SystemAssignedManagedIdentitySettings *DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponse `pulumi:"systemAssignedManagedIdentitySettings"`
+	// User-assigned managed identity authentication.
+	UserAssignedManagedIdentitySettings *DataflowEndpointAuthenticationUserAssignedManagedIdentityResponse `pulumi:"userAssignedManagedIdentitySettings"`
+}
+
+// Azure Data Lake endpoint Authentication properties.  NOTE Enum - Only one method is supported for one entry
+type DataflowEndpointDataLakeStorageAuthenticationResponseOutput struct{ *pulumi.OutputState }
+
+func (DataflowEndpointDataLakeStorageAuthenticationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowEndpointDataLakeStorageAuthenticationResponse)(nil)).Elem()
+}
+
+func (o DataflowEndpointDataLakeStorageAuthenticationResponseOutput) ToDataflowEndpointDataLakeStorageAuthenticationResponseOutput() DataflowEndpointDataLakeStorageAuthenticationResponseOutput {
+	return o
+}
+
+func (o DataflowEndpointDataLakeStorageAuthenticationResponseOutput) ToDataflowEndpointDataLakeStorageAuthenticationResponseOutputWithContext(ctx context.Context) DataflowEndpointDataLakeStorageAuthenticationResponseOutput {
+	return o
+}
+
+// SAS token authentication.
+func (o DataflowEndpointDataLakeStorageAuthenticationResponseOutput) AccessTokenSettings() DataflowEndpointAuthenticationAccessTokenResponsePtrOutput {
+	return o.ApplyT(func(v DataflowEndpointDataLakeStorageAuthenticationResponse) *DataflowEndpointAuthenticationAccessTokenResponse {
+		return v.AccessTokenSettings
+	}).(DataflowEndpointAuthenticationAccessTokenResponsePtrOutput)
+}
+
+// Mode of Authentication.
+func (o DataflowEndpointDataLakeStorageAuthenticationResponseOutput) Method() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowEndpointDataLakeStorageAuthenticationResponse) string { return v.Method }).(pulumi.StringOutput)
+}
+
+// System-assigned managed identity authentication.
+func (o DataflowEndpointDataLakeStorageAuthenticationResponseOutput) SystemAssignedManagedIdentitySettings() DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponsePtrOutput {
+	return o.ApplyT(func(v DataflowEndpointDataLakeStorageAuthenticationResponse) *DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponse {
+		return v.SystemAssignedManagedIdentitySettings
+	}).(DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponsePtrOutput)
+}
+
+// User-assigned managed identity authentication.
+func (o DataflowEndpointDataLakeStorageAuthenticationResponseOutput) UserAssignedManagedIdentitySettings() DataflowEndpointAuthenticationUserAssignedManagedIdentityResponsePtrOutput {
+	return o.ApplyT(func(v DataflowEndpointDataLakeStorageAuthenticationResponse) *DataflowEndpointAuthenticationUserAssignedManagedIdentityResponse {
+		return v.UserAssignedManagedIdentitySettings
+	}).(DataflowEndpointAuthenticationUserAssignedManagedIdentityResponsePtrOutput)
+}
+
+type DataflowEndpointDataLakeStorageAuthenticationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DataflowEndpointDataLakeStorageAuthenticationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowEndpointDataLakeStorageAuthenticationResponse)(nil)).Elem()
+}
+
+func (o DataflowEndpointDataLakeStorageAuthenticationResponsePtrOutput) ToDataflowEndpointDataLakeStorageAuthenticationResponsePtrOutput() DataflowEndpointDataLakeStorageAuthenticationResponsePtrOutput {
+	return o
+}
+
+func (o DataflowEndpointDataLakeStorageAuthenticationResponsePtrOutput) ToDataflowEndpointDataLakeStorageAuthenticationResponsePtrOutputWithContext(ctx context.Context) DataflowEndpointDataLakeStorageAuthenticationResponsePtrOutput {
+	return o
+}
+
+func (o DataflowEndpointDataLakeStorageAuthenticationResponsePtrOutput) Elem() DataflowEndpointDataLakeStorageAuthenticationResponseOutput {
+	return o.ApplyT(func(v *DataflowEndpointDataLakeStorageAuthenticationResponse) DataflowEndpointDataLakeStorageAuthenticationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DataflowEndpointDataLakeStorageAuthenticationResponse
+		return ret
+	}).(DataflowEndpointDataLakeStorageAuthenticationResponseOutput)
+}
+
+// SAS token authentication.
+func (o DataflowEndpointDataLakeStorageAuthenticationResponsePtrOutput) AccessTokenSettings() DataflowEndpointAuthenticationAccessTokenResponsePtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointDataLakeStorageAuthenticationResponse) *DataflowEndpointAuthenticationAccessTokenResponse {
+		if v == nil {
+			return nil
+		}
+		return v.AccessTokenSettings
+	}).(DataflowEndpointAuthenticationAccessTokenResponsePtrOutput)
+}
+
+// Mode of Authentication.
+func (o DataflowEndpointDataLakeStorageAuthenticationResponsePtrOutput) Method() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointDataLakeStorageAuthenticationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Method
+	}).(pulumi.StringPtrOutput)
+}
+
+// System-assigned managed identity authentication.
+func (o DataflowEndpointDataLakeStorageAuthenticationResponsePtrOutput) SystemAssignedManagedIdentitySettings() DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointDataLakeStorageAuthenticationResponse) *DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponse {
+		if v == nil {
+			return nil
+		}
+		return v.SystemAssignedManagedIdentitySettings
+	}).(DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponsePtrOutput)
+}
+
+// User-assigned managed identity authentication.
+func (o DataflowEndpointDataLakeStorageAuthenticationResponsePtrOutput) UserAssignedManagedIdentitySettings() DataflowEndpointAuthenticationUserAssignedManagedIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointDataLakeStorageAuthenticationResponse) *DataflowEndpointAuthenticationUserAssignedManagedIdentityResponse {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedManagedIdentitySettings
+	}).(DataflowEndpointAuthenticationUserAssignedManagedIdentityResponsePtrOutput)
+}
+
 // Azure Data Lake endpoint properties
-type DataFlowEndpointDataLakeStorageResponse struct {
+type DataflowEndpointDataLakeStorageResponse struct {
+	// Authentication configuration. NOTE - only authentication property is allowed per entry.
+	Authentication DataflowEndpointDataLakeStorageAuthenticationResponse `pulumi:"authentication"`
 	// Azure Data Lake endpoint batching configuration.
 	Batching *BatchingConfigurationResponse `pulumi:"batching"`
 	// Host of the Azure Data Lake in the form of <account>.blob.core.windows.net .
 	Host string `pulumi:"host"`
 }
 
-// Defaults sets the appropriate defaults for DataFlowEndpointDataLakeStorageResponse
-func (val *DataFlowEndpointDataLakeStorageResponse) Defaults() *DataFlowEndpointDataLakeStorageResponse {
+// Defaults sets the appropriate defaults for DataflowEndpointDataLakeStorageResponse
+func (val *DataflowEndpointDataLakeStorageResponse) Defaults() *DataflowEndpointDataLakeStorageResponse {
 	if val == nil {
 		return nil
 	}
@@ -9244,57 +9891,74 @@ func (val *DataFlowEndpointDataLakeStorageResponse) Defaults() *DataFlowEndpoint
 }
 
 // Azure Data Lake endpoint properties
-type DataFlowEndpointDataLakeStorageResponseOutput struct{ *pulumi.OutputState }
+type DataflowEndpointDataLakeStorageResponseOutput struct{ *pulumi.OutputState }
 
-func (DataFlowEndpointDataLakeStorageResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowEndpointDataLakeStorageResponse)(nil)).Elem()
+func (DataflowEndpointDataLakeStorageResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowEndpointDataLakeStorageResponse)(nil)).Elem()
 }
 
-func (o DataFlowEndpointDataLakeStorageResponseOutput) ToDataFlowEndpointDataLakeStorageResponseOutput() DataFlowEndpointDataLakeStorageResponseOutput {
+func (o DataflowEndpointDataLakeStorageResponseOutput) ToDataflowEndpointDataLakeStorageResponseOutput() DataflowEndpointDataLakeStorageResponseOutput {
 	return o
 }
 
-func (o DataFlowEndpointDataLakeStorageResponseOutput) ToDataFlowEndpointDataLakeStorageResponseOutputWithContext(ctx context.Context) DataFlowEndpointDataLakeStorageResponseOutput {
+func (o DataflowEndpointDataLakeStorageResponseOutput) ToDataflowEndpointDataLakeStorageResponseOutputWithContext(ctx context.Context) DataflowEndpointDataLakeStorageResponseOutput {
 	return o
+}
+
+// Authentication configuration. NOTE - only authentication property is allowed per entry.
+func (o DataflowEndpointDataLakeStorageResponseOutput) Authentication() DataflowEndpointDataLakeStorageAuthenticationResponseOutput {
+	return o.ApplyT(func(v DataflowEndpointDataLakeStorageResponse) DataflowEndpointDataLakeStorageAuthenticationResponse {
+		return v.Authentication
+	}).(DataflowEndpointDataLakeStorageAuthenticationResponseOutput)
 }
 
 // Azure Data Lake endpoint batching configuration.
-func (o DataFlowEndpointDataLakeStorageResponseOutput) Batching() BatchingConfigurationResponsePtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointDataLakeStorageResponse) *BatchingConfigurationResponse { return v.Batching }).(BatchingConfigurationResponsePtrOutput)
+func (o DataflowEndpointDataLakeStorageResponseOutput) Batching() BatchingConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v DataflowEndpointDataLakeStorageResponse) *BatchingConfigurationResponse { return v.Batching }).(BatchingConfigurationResponsePtrOutput)
 }
 
 // Host of the Azure Data Lake in the form of <account>.blob.core.windows.net .
-func (o DataFlowEndpointDataLakeStorageResponseOutput) Host() pulumi.StringOutput {
-	return o.ApplyT(func(v DataFlowEndpointDataLakeStorageResponse) string { return v.Host }).(pulumi.StringOutput)
+func (o DataflowEndpointDataLakeStorageResponseOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowEndpointDataLakeStorageResponse) string { return v.Host }).(pulumi.StringOutput)
 }
 
-type DataFlowEndpointDataLakeStorageResponsePtrOutput struct{ *pulumi.OutputState }
+type DataflowEndpointDataLakeStorageResponsePtrOutput struct{ *pulumi.OutputState }
 
-func (DataFlowEndpointDataLakeStorageResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DataFlowEndpointDataLakeStorageResponse)(nil)).Elem()
+func (DataflowEndpointDataLakeStorageResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowEndpointDataLakeStorageResponse)(nil)).Elem()
 }
 
-func (o DataFlowEndpointDataLakeStorageResponsePtrOutput) ToDataFlowEndpointDataLakeStorageResponsePtrOutput() DataFlowEndpointDataLakeStorageResponsePtrOutput {
+func (o DataflowEndpointDataLakeStorageResponsePtrOutput) ToDataflowEndpointDataLakeStorageResponsePtrOutput() DataflowEndpointDataLakeStorageResponsePtrOutput {
 	return o
 }
 
-func (o DataFlowEndpointDataLakeStorageResponsePtrOutput) ToDataFlowEndpointDataLakeStorageResponsePtrOutputWithContext(ctx context.Context) DataFlowEndpointDataLakeStorageResponsePtrOutput {
+func (o DataflowEndpointDataLakeStorageResponsePtrOutput) ToDataflowEndpointDataLakeStorageResponsePtrOutputWithContext(ctx context.Context) DataflowEndpointDataLakeStorageResponsePtrOutput {
 	return o
 }
 
-func (o DataFlowEndpointDataLakeStorageResponsePtrOutput) Elem() DataFlowEndpointDataLakeStorageResponseOutput {
-	return o.ApplyT(func(v *DataFlowEndpointDataLakeStorageResponse) DataFlowEndpointDataLakeStorageResponse {
+func (o DataflowEndpointDataLakeStorageResponsePtrOutput) Elem() DataflowEndpointDataLakeStorageResponseOutput {
+	return o.ApplyT(func(v *DataflowEndpointDataLakeStorageResponse) DataflowEndpointDataLakeStorageResponse {
 		if v != nil {
 			return *v
 		}
-		var ret DataFlowEndpointDataLakeStorageResponse
+		var ret DataflowEndpointDataLakeStorageResponse
 		return ret
-	}).(DataFlowEndpointDataLakeStorageResponseOutput)
+	}).(DataflowEndpointDataLakeStorageResponseOutput)
+}
+
+// Authentication configuration. NOTE - only authentication property is allowed per entry.
+func (o DataflowEndpointDataLakeStorageResponsePtrOutput) Authentication() DataflowEndpointDataLakeStorageAuthenticationResponsePtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointDataLakeStorageResponse) *DataflowEndpointDataLakeStorageAuthenticationResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Authentication
+	}).(DataflowEndpointDataLakeStorageAuthenticationResponsePtrOutput)
 }
 
 // Azure Data Lake endpoint batching configuration.
-func (o DataFlowEndpointDataLakeStorageResponsePtrOutput) Batching() BatchingConfigurationResponsePtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointDataLakeStorageResponse) *BatchingConfigurationResponse {
+func (o DataflowEndpointDataLakeStorageResponsePtrOutput) Batching() BatchingConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointDataLakeStorageResponse) *BatchingConfigurationResponse {
 		if v == nil {
 			return nil
 		}
@@ -9303,8 +9967,8 @@ func (o DataFlowEndpointDataLakeStorageResponsePtrOutput) Batching() BatchingCon
 }
 
 // Host of the Azure Data Lake in the form of <account>.blob.core.windows.net .
-func (o DataFlowEndpointDataLakeStorageResponsePtrOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointDataLakeStorageResponse) *string {
+func (o DataflowEndpointDataLakeStorageResponsePtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointDataLakeStorageResponse) *string {
 		if v == nil {
 			return nil
 		}
@@ -9313,19 +9977,21 @@ func (o DataFlowEndpointDataLakeStorageResponsePtrOutput) Host() pulumi.StringPt
 }
 
 // Microsoft Fabric endpoint properties
-type DataFlowEndpointFabricOneLake struct {
+type DataflowEndpointFabricOneLake struct {
+	// Authentication configuration. NOTE - only one authentication property is allowed per entry.
+	Authentication DataflowEndpointFabricOneLakeAuthentication `pulumi:"authentication"`
 	// Batching configuration.
 	Batching *BatchingConfiguration `pulumi:"batching"`
 	// Host of the Microsoft Fabric in the form of https://<host>.fabric.microsoft.com.
 	Host string `pulumi:"host"`
 	// Names of the workspace and lakehouse.
-	Names DataFlowEndpointFabricOneLakeNames `pulumi:"names"`
+	Names DataflowEndpointFabricOneLakeNames `pulumi:"names"`
 	// Type of location of the data in the workspace. Can be either tables or files.
 	OneLakePathType string `pulumi:"oneLakePathType"`
 }
 
-// Defaults sets the appropriate defaults for DataFlowEndpointFabricOneLake
-func (val *DataFlowEndpointFabricOneLake) Defaults() *DataFlowEndpointFabricOneLake {
+// Defaults sets the appropriate defaults for DataflowEndpointFabricOneLake
+func (val *DataflowEndpointFabricOneLake) Defaults() *DataflowEndpointFabricOneLake {
 	if val == nil {
 		return nil
 	}
@@ -9335,31 +10001,33 @@ func (val *DataFlowEndpointFabricOneLake) Defaults() *DataFlowEndpointFabricOneL
 	return &tmp
 }
 
-// DataFlowEndpointFabricOneLakeInput is an input type that accepts DataFlowEndpointFabricOneLakeArgs and DataFlowEndpointFabricOneLakeOutput values.
-// You can construct a concrete instance of `DataFlowEndpointFabricOneLakeInput` via:
+// DataflowEndpointFabricOneLakeInput is an input type that accepts DataflowEndpointFabricOneLakeArgs and DataflowEndpointFabricOneLakeOutput values.
+// You can construct a concrete instance of `DataflowEndpointFabricOneLakeInput` via:
 //
-//	DataFlowEndpointFabricOneLakeArgs{...}
-type DataFlowEndpointFabricOneLakeInput interface {
+//	DataflowEndpointFabricOneLakeArgs{...}
+type DataflowEndpointFabricOneLakeInput interface {
 	pulumi.Input
 
-	ToDataFlowEndpointFabricOneLakeOutput() DataFlowEndpointFabricOneLakeOutput
-	ToDataFlowEndpointFabricOneLakeOutputWithContext(context.Context) DataFlowEndpointFabricOneLakeOutput
+	ToDataflowEndpointFabricOneLakeOutput() DataflowEndpointFabricOneLakeOutput
+	ToDataflowEndpointFabricOneLakeOutputWithContext(context.Context) DataflowEndpointFabricOneLakeOutput
 }
 
 // Microsoft Fabric endpoint properties
-type DataFlowEndpointFabricOneLakeArgs struct {
+type DataflowEndpointFabricOneLakeArgs struct {
+	// Authentication configuration. NOTE - only one authentication property is allowed per entry.
+	Authentication DataflowEndpointFabricOneLakeAuthenticationInput `pulumi:"authentication"`
 	// Batching configuration.
 	Batching BatchingConfigurationPtrInput `pulumi:"batching"`
 	// Host of the Microsoft Fabric in the form of https://<host>.fabric.microsoft.com.
 	Host pulumi.StringInput `pulumi:"host"`
 	// Names of the workspace and lakehouse.
-	Names DataFlowEndpointFabricOneLakeNamesInput `pulumi:"names"`
+	Names DataflowEndpointFabricOneLakeNamesInput `pulumi:"names"`
 	// Type of location of the data in the workspace. Can be either tables or files.
 	OneLakePathType pulumi.StringInput `pulumi:"oneLakePathType"`
 }
 
-// Defaults sets the appropriate defaults for DataFlowEndpointFabricOneLakeArgs
-func (val *DataFlowEndpointFabricOneLakeArgs) Defaults() *DataFlowEndpointFabricOneLakeArgs {
+// Defaults sets the appropriate defaults for DataflowEndpointFabricOneLakeArgs
+func (val *DataflowEndpointFabricOneLakeArgs) Defaults() *DataflowEndpointFabricOneLakeArgs {
 	if val == nil {
 		return nil
 	}
@@ -9367,131 +10035,148 @@ func (val *DataFlowEndpointFabricOneLakeArgs) Defaults() *DataFlowEndpointFabric
 
 	return &tmp
 }
-func (DataFlowEndpointFabricOneLakeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowEndpointFabricOneLake)(nil)).Elem()
+func (DataflowEndpointFabricOneLakeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowEndpointFabricOneLake)(nil)).Elem()
 }
 
-func (i DataFlowEndpointFabricOneLakeArgs) ToDataFlowEndpointFabricOneLakeOutput() DataFlowEndpointFabricOneLakeOutput {
-	return i.ToDataFlowEndpointFabricOneLakeOutputWithContext(context.Background())
+func (i DataflowEndpointFabricOneLakeArgs) ToDataflowEndpointFabricOneLakeOutput() DataflowEndpointFabricOneLakeOutput {
+	return i.ToDataflowEndpointFabricOneLakeOutputWithContext(context.Background())
 }
 
-func (i DataFlowEndpointFabricOneLakeArgs) ToDataFlowEndpointFabricOneLakeOutputWithContext(ctx context.Context) DataFlowEndpointFabricOneLakeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataFlowEndpointFabricOneLakeOutput)
+func (i DataflowEndpointFabricOneLakeArgs) ToDataflowEndpointFabricOneLakeOutputWithContext(ctx context.Context) DataflowEndpointFabricOneLakeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowEndpointFabricOneLakeOutput)
 }
 
-func (i DataFlowEndpointFabricOneLakeArgs) ToDataFlowEndpointFabricOneLakePtrOutput() DataFlowEndpointFabricOneLakePtrOutput {
-	return i.ToDataFlowEndpointFabricOneLakePtrOutputWithContext(context.Background())
+func (i DataflowEndpointFabricOneLakeArgs) ToDataflowEndpointFabricOneLakePtrOutput() DataflowEndpointFabricOneLakePtrOutput {
+	return i.ToDataflowEndpointFabricOneLakePtrOutputWithContext(context.Background())
 }
 
-func (i DataFlowEndpointFabricOneLakeArgs) ToDataFlowEndpointFabricOneLakePtrOutputWithContext(ctx context.Context) DataFlowEndpointFabricOneLakePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataFlowEndpointFabricOneLakeOutput).ToDataFlowEndpointFabricOneLakePtrOutputWithContext(ctx)
+func (i DataflowEndpointFabricOneLakeArgs) ToDataflowEndpointFabricOneLakePtrOutputWithContext(ctx context.Context) DataflowEndpointFabricOneLakePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowEndpointFabricOneLakeOutput).ToDataflowEndpointFabricOneLakePtrOutputWithContext(ctx)
 }
 
-// DataFlowEndpointFabricOneLakePtrInput is an input type that accepts DataFlowEndpointFabricOneLakeArgs, DataFlowEndpointFabricOneLakePtr and DataFlowEndpointFabricOneLakePtrOutput values.
-// You can construct a concrete instance of `DataFlowEndpointFabricOneLakePtrInput` via:
+// DataflowEndpointFabricOneLakePtrInput is an input type that accepts DataflowEndpointFabricOneLakeArgs, DataflowEndpointFabricOneLakePtr and DataflowEndpointFabricOneLakePtrOutput values.
+// You can construct a concrete instance of `DataflowEndpointFabricOneLakePtrInput` via:
 //
-//	        DataFlowEndpointFabricOneLakeArgs{...}
+//	        DataflowEndpointFabricOneLakeArgs{...}
 //
 //	or:
 //
 //	        nil
-type DataFlowEndpointFabricOneLakePtrInput interface {
+type DataflowEndpointFabricOneLakePtrInput interface {
 	pulumi.Input
 
-	ToDataFlowEndpointFabricOneLakePtrOutput() DataFlowEndpointFabricOneLakePtrOutput
-	ToDataFlowEndpointFabricOneLakePtrOutputWithContext(context.Context) DataFlowEndpointFabricOneLakePtrOutput
+	ToDataflowEndpointFabricOneLakePtrOutput() DataflowEndpointFabricOneLakePtrOutput
+	ToDataflowEndpointFabricOneLakePtrOutputWithContext(context.Context) DataflowEndpointFabricOneLakePtrOutput
 }
 
-type dataFlowEndpointFabricOneLakePtrType DataFlowEndpointFabricOneLakeArgs
+type dataflowEndpointFabricOneLakePtrType DataflowEndpointFabricOneLakeArgs
 
-func DataFlowEndpointFabricOneLakePtr(v *DataFlowEndpointFabricOneLakeArgs) DataFlowEndpointFabricOneLakePtrInput {
-	return (*dataFlowEndpointFabricOneLakePtrType)(v)
+func DataflowEndpointFabricOneLakePtr(v *DataflowEndpointFabricOneLakeArgs) DataflowEndpointFabricOneLakePtrInput {
+	return (*dataflowEndpointFabricOneLakePtrType)(v)
 }
 
-func (*dataFlowEndpointFabricOneLakePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DataFlowEndpointFabricOneLake)(nil)).Elem()
+func (*dataflowEndpointFabricOneLakePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowEndpointFabricOneLake)(nil)).Elem()
 }
 
-func (i *dataFlowEndpointFabricOneLakePtrType) ToDataFlowEndpointFabricOneLakePtrOutput() DataFlowEndpointFabricOneLakePtrOutput {
-	return i.ToDataFlowEndpointFabricOneLakePtrOutputWithContext(context.Background())
+func (i *dataflowEndpointFabricOneLakePtrType) ToDataflowEndpointFabricOneLakePtrOutput() DataflowEndpointFabricOneLakePtrOutput {
+	return i.ToDataflowEndpointFabricOneLakePtrOutputWithContext(context.Background())
 }
 
-func (i *dataFlowEndpointFabricOneLakePtrType) ToDataFlowEndpointFabricOneLakePtrOutputWithContext(ctx context.Context) DataFlowEndpointFabricOneLakePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataFlowEndpointFabricOneLakePtrOutput)
+func (i *dataflowEndpointFabricOneLakePtrType) ToDataflowEndpointFabricOneLakePtrOutputWithContext(ctx context.Context) DataflowEndpointFabricOneLakePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowEndpointFabricOneLakePtrOutput)
 }
 
 // Microsoft Fabric endpoint properties
-type DataFlowEndpointFabricOneLakeOutput struct{ *pulumi.OutputState }
+type DataflowEndpointFabricOneLakeOutput struct{ *pulumi.OutputState }
 
-func (DataFlowEndpointFabricOneLakeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowEndpointFabricOneLake)(nil)).Elem()
+func (DataflowEndpointFabricOneLakeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowEndpointFabricOneLake)(nil)).Elem()
 }
 
-func (o DataFlowEndpointFabricOneLakeOutput) ToDataFlowEndpointFabricOneLakeOutput() DataFlowEndpointFabricOneLakeOutput {
+func (o DataflowEndpointFabricOneLakeOutput) ToDataflowEndpointFabricOneLakeOutput() DataflowEndpointFabricOneLakeOutput {
 	return o
 }
 
-func (o DataFlowEndpointFabricOneLakeOutput) ToDataFlowEndpointFabricOneLakeOutputWithContext(ctx context.Context) DataFlowEndpointFabricOneLakeOutput {
+func (o DataflowEndpointFabricOneLakeOutput) ToDataflowEndpointFabricOneLakeOutputWithContext(ctx context.Context) DataflowEndpointFabricOneLakeOutput {
 	return o
 }
 
-func (o DataFlowEndpointFabricOneLakeOutput) ToDataFlowEndpointFabricOneLakePtrOutput() DataFlowEndpointFabricOneLakePtrOutput {
-	return o.ToDataFlowEndpointFabricOneLakePtrOutputWithContext(context.Background())
+func (o DataflowEndpointFabricOneLakeOutput) ToDataflowEndpointFabricOneLakePtrOutput() DataflowEndpointFabricOneLakePtrOutput {
+	return o.ToDataflowEndpointFabricOneLakePtrOutputWithContext(context.Background())
 }
 
-func (o DataFlowEndpointFabricOneLakeOutput) ToDataFlowEndpointFabricOneLakePtrOutputWithContext(ctx context.Context) DataFlowEndpointFabricOneLakePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataFlowEndpointFabricOneLake) *DataFlowEndpointFabricOneLake {
+func (o DataflowEndpointFabricOneLakeOutput) ToDataflowEndpointFabricOneLakePtrOutputWithContext(ctx context.Context) DataflowEndpointFabricOneLakePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataflowEndpointFabricOneLake) *DataflowEndpointFabricOneLake {
 		return &v
-	}).(DataFlowEndpointFabricOneLakePtrOutput)
+	}).(DataflowEndpointFabricOneLakePtrOutput)
+}
+
+// Authentication configuration. NOTE - only one authentication property is allowed per entry.
+func (o DataflowEndpointFabricOneLakeOutput) Authentication() DataflowEndpointFabricOneLakeAuthenticationOutput {
+	return o.ApplyT(func(v DataflowEndpointFabricOneLake) DataflowEndpointFabricOneLakeAuthentication {
+		return v.Authentication
+	}).(DataflowEndpointFabricOneLakeAuthenticationOutput)
 }
 
 // Batching configuration.
-func (o DataFlowEndpointFabricOneLakeOutput) Batching() BatchingConfigurationPtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointFabricOneLake) *BatchingConfiguration { return v.Batching }).(BatchingConfigurationPtrOutput)
+func (o DataflowEndpointFabricOneLakeOutput) Batching() BatchingConfigurationPtrOutput {
+	return o.ApplyT(func(v DataflowEndpointFabricOneLake) *BatchingConfiguration { return v.Batching }).(BatchingConfigurationPtrOutput)
 }
 
 // Host of the Microsoft Fabric in the form of https://<host>.fabric.microsoft.com.
-func (o DataFlowEndpointFabricOneLakeOutput) Host() pulumi.StringOutput {
-	return o.ApplyT(func(v DataFlowEndpointFabricOneLake) string { return v.Host }).(pulumi.StringOutput)
+func (o DataflowEndpointFabricOneLakeOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowEndpointFabricOneLake) string { return v.Host }).(pulumi.StringOutput)
 }
 
 // Names of the workspace and lakehouse.
-func (o DataFlowEndpointFabricOneLakeOutput) Names() DataFlowEndpointFabricOneLakeNamesOutput {
-	return o.ApplyT(func(v DataFlowEndpointFabricOneLake) DataFlowEndpointFabricOneLakeNames { return v.Names }).(DataFlowEndpointFabricOneLakeNamesOutput)
+func (o DataflowEndpointFabricOneLakeOutput) Names() DataflowEndpointFabricOneLakeNamesOutput {
+	return o.ApplyT(func(v DataflowEndpointFabricOneLake) DataflowEndpointFabricOneLakeNames { return v.Names }).(DataflowEndpointFabricOneLakeNamesOutput)
 }
 
 // Type of location of the data in the workspace. Can be either tables or files.
-func (o DataFlowEndpointFabricOneLakeOutput) OneLakePathType() pulumi.StringOutput {
-	return o.ApplyT(func(v DataFlowEndpointFabricOneLake) string { return v.OneLakePathType }).(pulumi.StringOutput)
+func (o DataflowEndpointFabricOneLakeOutput) OneLakePathType() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowEndpointFabricOneLake) string { return v.OneLakePathType }).(pulumi.StringOutput)
 }
 
-type DataFlowEndpointFabricOneLakePtrOutput struct{ *pulumi.OutputState }
+type DataflowEndpointFabricOneLakePtrOutput struct{ *pulumi.OutputState }
 
-func (DataFlowEndpointFabricOneLakePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DataFlowEndpointFabricOneLake)(nil)).Elem()
+func (DataflowEndpointFabricOneLakePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowEndpointFabricOneLake)(nil)).Elem()
 }
 
-func (o DataFlowEndpointFabricOneLakePtrOutput) ToDataFlowEndpointFabricOneLakePtrOutput() DataFlowEndpointFabricOneLakePtrOutput {
+func (o DataflowEndpointFabricOneLakePtrOutput) ToDataflowEndpointFabricOneLakePtrOutput() DataflowEndpointFabricOneLakePtrOutput {
 	return o
 }
 
-func (o DataFlowEndpointFabricOneLakePtrOutput) ToDataFlowEndpointFabricOneLakePtrOutputWithContext(ctx context.Context) DataFlowEndpointFabricOneLakePtrOutput {
+func (o DataflowEndpointFabricOneLakePtrOutput) ToDataflowEndpointFabricOneLakePtrOutputWithContext(ctx context.Context) DataflowEndpointFabricOneLakePtrOutput {
 	return o
 }
 
-func (o DataFlowEndpointFabricOneLakePtrOutput) Elem() DataFlowEndpointFabricOneLakeOutput {
-	return o.ApplyT(func(v *DataFlowEndpointFabricOneLake) DataFlowEndpointFabricOneLake {
+func (o DataflowEndpointFabricOneLakePtrOutput) Elem() DataflowEndpointFabricOneLakeOutput {
+	return o.ApplyT(func(v *DataflowEndpointFabricOneLake) DataflowEndpointFabricOneLake {
 		if v != nil {
 			return *v
 		}
-		var ret DataFlowEndpointFabricOneLake
+		var ret DataflowEndpointFabricOneLake
 		return ret
-	}).(DataFlowEndpointFabricOneLakeOutput)
+	}).(DataflowEndpointFabricOneLakeOutput)
+}
+
+// Authentication configuration. NOTE - only one authentication property is allowed per entry.
+func (o DataflowEndpointFabricOneLakePtrOutput) Authentication() DataflowEndpointFabricOneLakeAuthenticationPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointFabricOneLake) *DataflowEndpointFabricOneLakeAuthentication {
+		if v == nil {
+			return nil
+		}
+		return &v.Authentication
+	}).(DataflowEndpointFabricOneLakeAuthenticationPtrOutput)
 }
 
 // Batching configuration.
-func (o DataFlowEndpointFabricOneLakePtrOutput) Batching() BatchingConfigurationPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointFabricOneLake) *BatchingConfiguration {
+func (o DataflowEndpointFabricOneLakePtrOutput) Batching() BatchingConfigurationPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointFabricOneLake) *BatchingConfiguration {
 		if v == nil {
 			return nil
 		}
@@ -9500,8 +10185,8 @@ func (o DataFlowEndpointFabricOneLakePtrOutput) Batching() BatchingConfiguration
 }
 
 // Host of the Microsoft Fabric in the form of https://<host>.fabric.microsoft.com.
-func (o DataFlowEndpointFabricOneLakePtrOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointFabricOneLake) *string {
+func (o DataflowEndpointFabricOneLakePtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointFabricOneLake) *string {
 		if v == nil {
 			return nil
 		}
@@ -9510,18 +10195,18 @@ func (o DataFlowEndpointFabricOneLakePtrOutput) Host() pulumi.StringPtrOutput {
 }
 
 // Names of the workspace and lakehouse.
-func (o DataFlowEndpointFabricOneLakePtrOutput) Names() DataFlowEndpointFabricOneLakeNamesPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointFabricOneLake) *DataFlowEndpointFabricOneLakeNames {
+func (o DataflowEndpointFabricOneLakePtrOutput) Names() DataflowEndpointFabricOneLakeNamesPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointFabricOneLake) *DataflowEndpointFabricOneLakeNames {
 		if v == nil {
 			return nil
 		}
 		return &v.Names
-	}).(DataFlowEndpointFabricOneLakeNamesPtrOutput)
+	}).(DataflowEndpointFabricOneLakeNamesPtrOutput)
 }
 
 // Type of location of the data in the workspace. Can be either tables or files.
-func (o DataFlowEndpointFabricOneLakePtrOutput) OneLakePathType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointFabricOneLake) *string {
+func (o DataflowEndpointFabricOneLakePtrOutput) OneLakePathType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointFabricOneLake) *string {
 		if v == nil {
 			return nil
 		}
@@ -9529,148 +10214,428 @@ func (o DataFlowEndpointFabricOneLakePtrOutput) OneLakePathType() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
+// Microsoft Fabric endpoint. Authentication properties. NOTE - Only one method is supported for one entry
+type DataflowEndpointFabricOneLakeAuthentication struct {
+	// Mode of Authentication.
+	Method interface{} `pulumi:"method"`
+	// System-assigned managed identity authentication.
+	SystemAssignedManagedIdentitySettings *DataflowEndpointAuthenticationSystemAssignedManagedIdentity `pulumi:"systemAssignedManagedIdentitySettings"`
+	// User-assigned managed identity authentication.
+	UserAssignedManagedIdentitySettings *DataflowEndpointAuthenticationUserAssignedManagedIdentity `pulumi:"userAssignedManagedIdentitySettings"`
+}
+
+// DataflowEndpointFabricOneLakeAuthenticationInput is an input type that accepts DataflowEndpointFabricOneLakeAuthenticationArgs and DataflowEndpointFabricOneLakeAuthenticationOutput values.
+// You can construct a concrete instance of `DataflowEndpointFabricOneLakeAuthenticationInput` via:
+//
+//	DataflowEndpointFabricOneLakeAuthenticationArgs{...}
+type DataflowEndpointFabricOneLakeAuthenticationInput interface {
+	pulumi.Input
+
+	ToDataflowEndpointFabricOneLakeAuthenticationOutput() DataflowEndpointFabricOneLakeAuthenticationOutput
+	ToDataflowEndpointFabricOneLakeAuthenticationOutputWithContext(context.Context) DataflowEndpointFabricOneLakeAuthenticationOutput
+}
+
+// Microsoft Fabric endpoint. Authentication properties. NOTE - Only one method is supported for one entry
+type DataflowEndpointFabricOneLakeAuthenticationArgs struct {
+	// Mode of Authentication.
+	Method pulumi.Input `pulumi:"method"`
+	// System-assigned managed identity authentication.
+	SystemAssignedManagedIdentitySettings DataflowEndpointAuthenticationSystemAssignedManagedIdentityPtrInput `pulumi:"systemAssignedManagedIdentitySettings"`
+	// User-assigned managed identity authentication.
+	UserAssignedManagedIdentitySettings DataflowEndpointAuthenticationUserAssignedManagedIdentityPtrInput `pulumi:"userAssignedManagedIdentitySettings"`
+}
+
+func (DataflowEndpointFabricOneLakeAuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowEndpointFabricOneLakeAuthentication)(nil)).Elem()
+}
+
+func (i DataflowEndpointFabricOneLakeAuthenticationArgs) ToDataflowEndpointFabricOneLakeAuthenticationOutput() DataflowEndpointFabricOneLakeAuthenticationOutput {
+	return i.ToDataflowEndpointFabricOneLakeAuthenticationOutputWithContext(context.Background())
+}
+
+func (i DataflowEndpointFabricOneLakeAuthenticationArgs) ToDataflowEndpointFabricOneLakeAuthenticationOutputWithContext(ctx context.Context) DataflowEndpointFabricOneLakeAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowEndpointFabricOneLakeAuthenticationOutput)
+}
+
+func (i DataflowEndpointFabricOneLakeAuthenticationArgs) ToDataflowEndpointFabricOneLakeAuthenticationPtrOutput() DataflowEndpointFabricOneLakeAuthenticationPtrOutput {
+	return i.ToDataflowEndpointFabricOneLakeAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i DataflowEndpointFabricOneLakeAuthenticationArgs) ToDataflowEndpointFabricOneLakeAuthenticationPtrOutputWithContext(ctx context.Context) DataflowEndpointFabricOneLakeAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowEndpointFabricOneLakeAuthenticationOutput).ToDataflowEndpointFabricOneLakeAuthenticationPtrOutputWithContext(ctx)
+}
+
+// DataflowEndpointFabricOneLakeAuthenticationPtrInput is an input type that accepts DataflowEndpointFabricOneLakeAuthenticationArgs, DataflowEndpointFabricOneLakeAuthenticationPtr and DataflowEndpointFabricOneLakeAuthenticationPtrOutput values.
+// You can construct a concrete instance of `DataflowEndpointFabricOneLakeAuthenticationPtrInput` via:
+//
+//	        DataflowEndpointFabricOneLakeAuthenticationArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataflowEndpointFabricOneLakeAuthenticationPtrInput interface {
+	pulumi.Input
+
+	ToDataflowEndpointFabricOneLakeAuthenticationPtrOutput() DataflowEndpointFabricOneLakeAuthenticationPtrOutput
+	ToDataflowEndpointFabricOneLakeAuthenticationPtrOutputWithContext(context.Context) DataflowEndpointFabricOneLakeAuthenticationPtrOutput
+}
+
+type dataflowEndpointFabricOneLakeAuthenticationPtrType DataflowEndpointFabricOneLakeAuthenticationArgs
+
+func DataflowEndpointFabricOneLakeAuthenticationPtr(v *DataflowEndpointFabricOneLakeAuthenticationArgs) DataflowEndpointFabricOneLakeAuthenticationPtrInput {
+	return (*dataflowEndpointFabricOneLakeAuthenticationPtrType)(v)
+}
+
+func (*dataflowEndpointFabricOneLakeAuthenticationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowEndpointFabricOneLakeAuthentication)(nil)).Elem()
+}
+
+func (i *dataflowEndpointFabricOneLakeAuthenticationPtrType) ToDataflowEndpointFabricOneLakeAuthenticationPtrOutput() DataflowEndpointFabricOneLakeAuthenticationPtrOutput {
+	return i.ToDataflowEndpointFabricOneLakeAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i *dataflowEndpointFabricOneLakeAuthenticationPtrType) ToDataflowEndpointFabricOneLakeAuthenticationPtrOutputWithContext(ctx context.Context) DataflowEndpointFabricOneLakeAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowEndpointFabricOneLakeAuthenticationPtrOutput)
+}
+
+// Microsoft Fabric endpoint. Authentication properties. NOTE - Only one method is supported for one entry
+type DataflowEndpointFabricOneLakeAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (DataflowEndpointFabricOneLakeAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowEndpointFabricOneLakeAuthentication)(nil)).Elem()
+}
+
+func (o DataflowEndpointFabricOneLakeAuthenticationOutput) ToDataflowEndpointFabricOneLakeAuthenticationOutput() DataflowEndpointFabricOneLakeAuthenticationOutput {
+	return o
+}
+
+func (o DataflowEndpointFabricOneLakeAuthenticationOutput) ToDataflowEndpointFabricOneLakeAuthenticationOutputWithContext(ctx context.Context) DataflowEndpointFabricOneLakeAuthenticationOutput {
+	return o
+}
+
+func (o DataflowEndpointFabricOneLakeAuthenticationOutput) ToDataflowEndpointFabricOneLakeAuthenticationPtrOutput() DataflowEndpointFabricOneLakeAuthenticationPtrOutput {
+	return o.ToDataflowEndpointFabricOneLakeAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (o DataflowEndpointFabricOneLakeAuthenticationOutput) ToDataflowEndpointFabricOneLakeAuthenticationPtrOutputWithContext(ctx context.Context) DataflowEndpointFabricOneLakeAuthenticationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataflowEndpointFabricOneLakeAuthentication) *DataflowEndpointFabricOneLakeAuthentication {
+		return &v
+	}).(DataflowEndpointFabricOneLakeAuthenticationPtrOutput)
+}
+
+// Mode of Authentication.
+func (o DataflowEndpointFabricOneLakeAuthenticationOutput) Method() pulumi.AnyOutput {
+	return o.ApplyT(func(v DataflowEndpointFabricOneLakeAuthentication) interface{} { return v.Method }).(pulumi.AnyOutput)
+}
+
+// System-assigned managed identity authentication.
+func (o DataflowEndpointFabricOneLakeAuthenticationOutput) SystemAssignedManagedIdentitySettings() DataflowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput {
+	return o.ApplyT(func(v DataflowEndpointFabricOneLakeAuthentication) *DataflowEndpointAuthenticationSystemAssignedManagedIdentity {
+		return v.SystemAssignedManagedIdentitySettings
+	}).(DataflowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput)
+}
+
+// User-assigned managed identity authentication.
+func (o DataflowEndpointFabricOneLakeAuthenticationOutput) UserAssignedManagedIdentitySettings() DataflowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput {
+	return o.ApplyT(func(v DataflowEndpointFabricOneLakeAuthentication) *DataflowEndpointAuthenticationUserAssignedManagedIdentity {
+		return v.UserAssignedManagedIdentitySettings
+	}).(DataflowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput)
+}
+
+type DataflowEndpointFabricOneLakeAuthenticationPtrOutput struct{ *pulumi.OutputState }
+
+func (DataflowEndpointFabricOneLakeAuthenticationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowEndpointFabricOneLakeAuthentication)(nil)).Elem()
+}
+
+func (o DataflowEndpointFabricOneLakeAuthenticationPtrOutput) ToDataflowEndpointFabricOneLakeAuthenticationPtrOutput() DataflowEndpointFabricOneLakeAuthenticationPtrOutput {
+	return o
+}
+
+func (o DataflowEndpointFabricOneLakeAuthenticationPtrOutput) ToDataflowEndpointFabricOneLakeAuthenticationPtrOutputWithContext(ctx context.Context) DataflowEndpointFabricOneLakeAuthenticationPtrOutput {
+	return o
+}
+
+func (o DataflowEndpointFabricOneLakeAuthenticationPtrOutput) Elem() DataflowEndpointFabricOneLakeAuthenticationOutput {
+	return o.ApplyT(func(v *DataflowEndpointFabricOneLakeAuthentication) DataflowEndpointFabricOneLakeAuthentication {
+		if v != nil {
+			return *v
+		}
+		var ret DataflowEndpointFabricOneLakeAuthentication
+		return ret
+	}).(DataflowEndpointFabricOneLakeAuthenticationOutput)
+}
+
+// Mode of Authentication.
+func (o DataflowEndpointFabricOneLakeAuthenticationPtrOutput) Method() pulumi.AnyOutput {
+	return o.ApplyT(func(v *DataflowEndpointFabricOneLakeAuthentication) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Method
+	}).(pulumi.AnyOutput)
+}
+
+// System-assigned managed identity authentication.
+func (o DataflowEndpointFabricOneLakeAuthenticationPtrOutput) SystemAssignedManagedIdentitySettings() DataflowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointFabricOneLakeAuthentication) *DataflowEndpointAuthenticationSystemAssignedManagedIdentity {
+		if v == nil {
+			return nil
+		}
+		return v.SystemAssignedManagedIdentitySettings
+	}).(DataflowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput)
+}
+
+// User-assigned managed identity authentication.
+func (o DataflowEndpointFabricOneLakeAuthenticationPtrOutput) UserAssignedManagedIdentitySettings() DataflowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointFabricOneLakeAuthentication) *DataflowEndpointAuthenticationUserAssignedManagedIdentity {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedManagedIdentitySettings
+	}).(DataflowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput)
+}
+
+// Microsoft Fabric endpoint. Authentication properties. NOTE - Only one method is supported for one entry
+type DataflowEndpointFabricOneLakeAuthenticationResponse struct {
+	// Mode of Authentication.
+	Method interface{} `pulumi:"method"`
+	// System-assigned managed identity authentication.
+	SystemAssignedManagedIdentitySettings *DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponse `pulumi:"systemAssignedManagedIdentitySettings"`
+	// User-assigned managed identity authentication.
+	UserAssignedManagedIdentitySettings *DataflowEndpointAuthenticationUserAssignedManagedIdentityResponse `pulumi:"userAssignedManagedIdentitySettings"`
+}
+
+// Microsoft Fabric endpoint. Authentication properties. NOTE - Only one method is supported for one entry
+type DataflowEndpointFabricOneLakeAuthenticationResponseOutput struct{ *pulumi.OutputState }
+
+func (DataflowEndpointFabricOneLakeAuthenticationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowEndpointFabricOneLakeAuthenticationResponse)(nil)).Elem()
+}
+
+func (o DataflowEndpointFabricOneLakeAuthenticationResponseOutput) ToDataflowEndpointFabricOneLakeAuthenticationResponseOutput() DataflowEndpointFabricOneLakeAuthenticationResponseOutput {
+	return o
+}
+
+func (o DataflowEndpointFabricOneLakeAuthenticationResponseOutput) ToDataflowEndpointFabricOneLakeAuthenticationResponseOutputWithContext(ctx context.Context) DataflowEndpointFabricOneLakeAuthenticationResponseOutput {
+	return o
+}
+
+// Mode of Authentication.
+func (o DataflowEndpointFabricOneLakeAuthenticationResponseOutput) Method() pulumi.AnyOutput {
+	return o.ApplyT(func(v DataflowEndpointFabricOneLakeAuthenticationResponse) interface{} { return v.Method }).(pulumi.AnyOutput)
+}
+
+// System-assigned managed identity authentication.
+func (o DataflowEndpointFabricOneLakeAuthenticationResponseOutput) SystemAssignedManagedIdentitySettings() DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponsePtrOutput {
+	return o.ApplyT(func(v DataflowEndpointFabricOneLakeAuthenticationResponse) *DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponse {
+		return v.SystemAssignedManagedIdentitySettings
+	}).(DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponsePtrOutput)
+}
+
+// User-assigned managed identity authentication.
+func (o DataflowEndpointFabricOneLakeAuthenticationResponseOutput) UserAssignedManagedIdentitySettings() DataflowEndpointAuthenticationUserAssignedManagedIdentityResponsePtrOutput {
+	return o.ApplyT(func(v DataflowEndpointFabricOneLakeAuthenticationResponse) *DataflowEndpointAuthenticationUserAssignedManagedIdentityResponse {
+		return v.UserAssignedManagedIdentitySettings
+	}).(DataflowEndpointAuthenticationUserAssignedManagedIdentityResponsePtrOutput)
+}
+
+type DataflowEndpointFabricOneLakeAuthenticationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DataflowEndpointFabricOneLakeAuthenticationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowEndpointFabricOneLakeAuthenticationResponse)(nil)).Elem()
+}
+
+func (o DataflowEndpointFabricOneLakeAuthenticationResponsePtrOutput) ToDataflowEndpointFabricOneLakeAuthenticationResponsePtrOutput() DataflowEndpointFabricOneLakeAuthenticationResponsePtrOutput {
+	return o
+}
+
+func (o DataflowEndpointFabricOneLakeAuthenticationResponsePtrOutput) ToDataflowEndpointFabricOneLakeAuthenticationResponsePtrOutputWithContext(ctx context.Context) DataflowEndpointFabricOneLakeAuthenticationResponsePtrOutput {
+	return o
+}
+
+func (o DataflowEndpointFabricOneLakeAuthenticationResponsePtrOutput) Elem() DataflowEndpointFabricOneLakeAuthenticationResponseOutput {
+	return o.ApplyT(func(v *DataflowEndpointFabricOneLakeAuthenticationResponse) DataflowEndpointFabricOneLakeAuthenticationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DataflowEndpointFabricOneLakeAuthenticationResponse
+		return ret
+	}).(DataflowEndpointFabricOneLakeAuthenticationResponseOutput)
+}
+
+// Mode of Authentication.
+func (o DataflowEndpointFabricOneLakeAuthenticationResponsePtrOutput) Method() pulumi.AnyOutput {
+	return o.ApplyT(func(v *DataflowEndpointFabricOneLakeAuthenticationResponse) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Method
+	}).(pulumi.AnyOutput)
+}
+
+// System-assigned managed identity authentication.
+func (o DataflowEndpointFabricOneLakeAuthenticationResponsePtrOutput) SystemAssignedManagedIdentitySettings() DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointFabricOneLakeAuthenticationResponse) *DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponse {
+		if v == nil {
+			return nil
+		}
+		return v.SystemAssignedManagedIdentitySettings
+	}).(DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponsePtrOutput)
+}
+
+// User-assigned managed identity authentication.
+func (o DataflowEndpointFabricOneLakeAuthenticationResponsePtrOutput) UserAssignedManagedIdentitySettings() DataflowEndpointAuthenticationUserAssignedManagedIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointFabricOneLakeAuthenticationResponse) *DataflowEndpointAuthenticationUserAssignedManagedIdentityResponse {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedManagedIdentitySettings
+	}).(DataflowEndpointAuthenticationUserAssignedManagedIdentityResponsePtrOutput)
+}
+
 // Microsoft Fabric endpoint Names properties
-type DataFlowEndpointFabricOneLakeNames struct {
+type DataflowEndpointFabricOneLakeNames struct {
 	// Lakehouse name.
 	LakehouseName string `pulumi:"lakehouseName"`
 	// Workspace name.
 	WorkspaceName string `pulumi:"workspaceName"`
 }
 
-// DataFlowEndpointFabricOneLakeNamesInput is an input type that accepts DataFlowEndpointFabricOneLakeNamesArgs and DataFlowEndpointFabricOneLakeNamesOutput values.
-// You can construct a concrete instance of `DataFlowEndpointFabricOneLakeNamesInput` via:
+// DataflowEndpointFabricOneLakeNamesInput is an input type that accepts DataflowEndpointFabricOneLakeNamesArgs and DataflowEndpointFabricOneLakeNamesOutput values.
+// You can construct a concrete instance of `DataflowEndpointFabricOneLakeNamesInput` via:
 //
-//	DataFlowEndpointFabricOneLakeNamesArgs{...}
-type DataFlowEndpointFabricOneLakeNamesInput interface {
+//	DataflowEndpointFabricOneLakeNamesArgs{...}
+type DataflowEndpointFabricOneLakeNamesInput interface {
 	pulumi.Input
 
-	ToDataFlowEndpointFabricOneLakeNamesOutput() DataFlowEndpointFabricOneLakeNamesOutput
-	ToDataFlowEndpointFabricOneLakeNamesOutputWithContext(context.Context) DataFlowEndpointFabricOneLakeNamesOutput
+	ToDataflowEndpointFabricOneLakeNamesOutput() DataflowEndpointFabricOneLakeNamesOutput
+	ToDataflowEndpointFabricOneLakeNamesOutputWithContext(context.Context) DataflowEndpointFabricOneLakeNamesOutput
 }
 
 // Microsoft Fabric endpoint Names properties
-type DataFlowEndpointFabricOneLakeNamesArgs struct {
+type DataflowEndpointFabricOneLakeNamesArgs struct {
 	// Lakehouse name.
 	LakehouseName pulumi.StringInput `pulumi:"lakehouseName"`
 	// Workspace name.
 	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
-func (DataFlowEndpointFabricOneLakeNamesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowEndpointFabricOneLakeNames)(nil)).Elem()
+func (DataflowEndpointFabricOneLakeNamesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowEndpointFabricOneLakeNames)(nil)).Elem()
 }
 
-func (i DataFlowEndpointFabricOneLakeNamesArgs) ToDataFlowEndpointFabricOneLakeNamesOutput() DataFlowEndpointFabricOneLakeNamesOutput {
-	return i.ToDataFlowEndpointFabricOneLakeNamesOutputWithContext(context.Background())
+func (i DataflowEndpointFabricOneLakeNamesArgs) ToDataflowEndpointFabricOneLakeNamesOutput() DataflowEndpointFabricOneLakeNamesOutput {
+	return i.ToDataflowEndpointFabricOneLakeNamesOutputWithContext(context.Background())
 }
 
-func (i DataFlowEndpointFabricOneLakeNamesArgs) ToDataFlowEndpointFabricOneLakeNamesOutputWithContext(ctx context.Context) DataFlowEndpointFabricOneLakeNamesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataFlowEndpointFabricOneLakeNamesOutput)
+func (i DataflowEndpointFabricOneLakeNamesArgs) ToDataflowEndpointFabricOneLakeNamesOutputWithContext(ctx context.Context) DataflowEndpointFabricOneLakeNamesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowEndpointFabricOneLakeNamesOutput)
 }
 
-func (i DataFlowEndpointFabricOneLakeNamesArgs) ToDataFlowEndpointFabricOneLakeNamesPtrOutput() DataFlowEndpointFabricOneLakeNamesPtrOutput {
-	return i.ToDataFlowEndpointFabricOneLakeNamesPtrOutputWithContext(context.Background())
+func (i DataflowEndpointFabricOneLakeNamesArgs) ToDataflowEndpointFabricOneLakeNamesPtrOutput() DataflowEndpointFabricOneLakeNamesPtrOutput {
+	return i.ToDataflowEndpointFabricOneLakeNamesPtrOutputWithContext(context.Background())
 }
 
-func (i DataFlowEndpointFabricOneLakeNamesArgs) ToDataFlowEndpointFabricOneLakeNamesPtrOutputWithContext(ctx context.Context) DataFlowEndpointFabricOneLakeNamesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataFlowEndpointFabricOneLakeNamesOutput).ToDataFlowEndpointFabricOneLakeNamesPtrOutputWithContext(ctx)
+func (i DataflowEndpointFabricOneLakeNamesArgs) ToDataflowEndpointFabricOneLakeNamesPtrOutputWithContext(ctx context.Context) DataflowEndpointFabricOneLakeNamesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowEndpointFabricOneLakeNamesOutput).ToDataflowEndpointFabricOneLakeNamesPtrOutputWithContext(ctx)
 }
 
-// DataFlowEndpointFabricOneLakeNamesPtrInput is an input type that accepts DataFlowEndpointFabricOneLakeNamesArgs, DataFlowEndpointFabricOneLakeNamesPtr and DataFlowEndpointFabricOneLakeNamesPtrOutput values.
-// You can construct a concrete instance of `DataFlowEndpointFabricOneLakeNamesPtrInput` via:
+// DataflowEndpointFabricOneLakeNamesPtrInput is an input type that accepts DataflowEndpointFabricOneLakeNamesArgs, DataflowEndpointFabricOneLakeNamesPtr and DataflowEndpointFabricOneLakeNamesPtrOutput values.
+// You can construct a concrete instance of `DataflowEndpointFabricOneLakeNamesPtrInput` via:
 //
-//	        DataFlowEndpointFabricOneLakeNamesArgs{...}
+//	        DataflowEndpointFabricOneLakeNamesArgs{...}
 //
 //	or:
 //
 //	        nil
-type DataFlowEndpointFabricOneLakeNamesPtrInput interface {
+type DataflowEndpointFabricOneLakeNamesPtrInput interface {
 	pulumi.Input
 
-	ToDataFlowEndpointFabricOneLakeNamesPtrOutput() DataFlowEndpointFabricOneLakeNamesPtrOutput
-	ToDataFlowEndpointFabricOneLakeNamesPtrOutputWithContext(context.Context) DataFlowEndpointFabricOneLakeNamesPtrOutput
+	ToDataflowEndpointFabricOneLakeNamesPtrOutput() DataflowEndpointFabricOneLakeNamesPtrOutput
+	ToDataflowEndpointFabricOneLakeNamesPtrOutputWithContext(context.Context) DataflowEndpointFabricOneLakeNamesPtrOutput
 }
 
-type dataFlowEndpointFabricOneLakeNamesPtrType DataFlowEndpointFabricOneLakeNamesArgs
+type dataflowEndpointFabricOneLakeNamesPtrType DataflowEndpointFabricOneLakeNamesArgs
 
-func DataFlowEndpointFabricOneLakeNamesPtr(v *DataFlowEndpointFabricOneLakeNamesArgs) DataFlowEndpointFabricOneLakeNamesPtrInput {
-	return (*dataFlowEndpointFabricOneLakeNamesPtrType)(v)
+func DataflowEndpointFabricOneLakeNamesPtr(v *DataflowEndpointFabricOneLakeNamesArgs) DataflowEndpointFabricOneLakeNamesPtrInput {
+	return (*dataflowEndpointFabricOneLakeNamesPtrType)(v)
 }
 
-func (*dataFlowEndpointFabricOneLakeNamesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DataFlowEndpointFabricOneLakeNames)(nil)).Elem()
+func (*dataflowEndpointFabricOneLakeNamesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowEndpointFabricOneLakeNames)(nil)).Elem()
 }
 
-func (i *dataFlowEndpointFabricOneLakeNamesPtrType) ToDataFlowEndpointFabricOneLakeNamesPtrOutput() DataFlowEndpointFabricOneLakeNamesPtrOutput {
-	return i.ToDataFlowEndpointFabricOneLakeNamesPtrOutputWithContext(context.Background())
+func (i *dataflowEndpointFabricOneLakeNamesPtrType) ToDataflowEndpointFabricOneLakeNamesPtrOutput() DataflowEndpointFabricOneLakeNamesPtrOutput {
+	return i.ToDataflowEndpointFabricOneLakeNamesPtrOutputWithContext(context.Background())
 }
 
-func (i *dataFlowEndpointFabricOneLakeNamesPtrType) ToDataFlowEndpointFabricOneLakeNamesPtrOutputWithContext(ctx context.Context) DataFlowEndpointFabricOneLakeNamesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataFlowEndpointFabricOneLakeNamesPtrOutput)
+func (i *dataflowEndpointFabricOneLakeNamesPtrType) ToDataflowEndpointFabricOneLakeNamesPtrOutputWithContext(ctx context.Context) DataflowEndpointFabricOneLakeNamesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowEndpointFabricOneLakeNamesPtrOutput)
 }
 
 // Microsoft Fabric endpoint Names properties
-type DataFlowEndpointFabricOneLakeNamesOutput struct{ *pulumi.OutputState }
+type DataflowEndpointFabricOneLakeNamesOutput struct{ *pulumi.OutputState }
 
-func (DataFlowEndpointFabricOneLakeNamesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowEndpointFabricOneLakeNames)(nil)).Elem()
+func (DataflowEndpointFabricOneLakeNamesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowEndpointFabricOneLakeNames)(nil)).Elem()
 }
 
-func (o DataFlowEndpointFabricOneLakeNamesOutput) ToDataFlowEndpointFabricOneLakeNamesOutput() DataFlowEndpointFabricOneLakeNamesOutput {
+func (o DataflowEndpointFabricOneLakeNamesOutput) ToDataflowEndpointFabricOneLakeNamesOutput() DataflowEndpointFabricOneLakeNamesOutput {
 	return o
 }
 
-func (o DataFlowEndpointFabricOneLakeNamesOutput) ToDataFlowEndpointFabricOneLakeNamesOutputWithContext(ctx context.Context) DataFlowEndpointFabricOneLakeNamesOutput {
+func (o DataflowEndpointFabricOneLakeNamesOutput) ToDataflowEndpointFabricOneLakeNamesOutputWithContext(ctx context.Context) DataflowEndpointFabricOneLakeNamesOutput {
 	return o
 }
 
-func (o DataFlowEndpointFabricOneLakeNamesOutput) ToDataFlowEndpointFabricOneLakeNamesPtrOutput() DataFlowEndpointFabricOneLakeNamesPtrOutput {
-	return o.ToDataFlowEndpointFabricOneLakeNamesPtrOutputWithContext(context.Background())
+func (o DataflowEndpointFabricOneLakeNamesOutput) ToDataflowEndpointFabricOneLakeNamesPtrOutput() DataflowEndpointFabricOneLakeNamesPtrOutput {
+	return o.ToDataflowEndpointFabricOneLakeNamesPtrOutputWithContext(context.Background())
 }
 
-func (o DataFlowEndpointFabricOneLakeNamesOutput) ToDataFlowEndpointFabricOneLakeNamesPtrOutputWithContext(ctx context.Context) DataFlowEndpointFabricOneLakeNamesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataFlowEndpointFabricOneLakeNames) *DataFlowEndpointFabricOneLakeNames {
+func (o DataflowEndpointFabricOneLakeNamesOutput) ToDataflowEndpointFabricOneLakeNamesPtrOutputWithContext(ctx context.Context) DataflowEndpointFabricOneLakeNamesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataflowEndpointFabricOneLakeNames) *DataflowEndpointFabricOneLakeNames {
 		return &v
-	}).(DataFlowEndpointFabricOneLakeNamesPtrOutput)
+	}).(DataflowEndpointFabricOneLakeNamesPtrOutput)
 }
 
 // Lakehouse name.
-func (o DataFlowEndpointFabricOneLakeNamesOutput) LakehouseName() pulumi.StringOutput {
-	return o.ApplyT(func(v DataFlowEndpointFabricOneLakeNames) string { return v.LakehouseName }).(pulumi.StringOutput)
+func (o DataflowEndpointFabricOneLakeNamesOutput) LakehouseName() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowEndpointFabricOneLakeNames) string { return v.LakehouseName }).(pulumi.StringOutput)
 }
 
 // Workspace name.
-func (o DataFlowEndpointFabricOneLakeNamesOutput) WorkspaceName() pulumi.StringOutput {
-	return o.ApplyT(func(v DataFlowEndpointFabricOneLakeNames) string { return v.WorkspaceName }).(pulumi.StringOutput)
+func (o DataflowEndpointFabricOneLakeNamesOutput) WorkspaceName() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowEndpointFabricOneLakeNames) string { return v.WorkspaceName }).(pulumi.StringOutput)
 }
 
-type DataFlowEndpointFabricOneLakeNamesPtrOutput struct{ *pulumi.OutputState }
+type DataflowEndpointFabricOneLakeNamesPtrOutput struct{ *pulumi.OutputState }
 
-func (DataFlowEndpointFabricOneLakeNamesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DataFlowEndpointFabricOneLakeNames)(nil)).Elem()
+func (DataflowEndpointFabricOneLakeNamesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowEndpointFabricOneLakeNames)(nil)).Elem()
 }
 
-func (o DataFlowEndpointFabricOneLakeNamesPtrOutput) ToDataFlowEndpointFabricOneLakeNamesPtrOutput() DataFlowEndpointFabricOneLakeNamesPtrOutput {
+func (o DataflowEndpointFabricOneLakeNamesPtrOutput) ToDataflowEndpointFabricOneLakeNamesPtrOutput() DataflowEndpointFabricOneLakeNamesPtrOutput {
 	return o
 }
 
-func (o DataFlowEndpointFabricOneLakeNamesPtrOutput) ToDataFlowEndpointFabricOneLakeNamesPtrOutputWithContext(ctx context.Context) DataFlowEndpointFabricOneLakeNamesPtrOutput {
+func (o DataflowEndpointFabricOneLakeNamesPtrOutput) ToDataflowEndpointFabricOneLakeNamesPtrOutputWithContext(ctx context.Context) DataflowEndpointFabricOneLakeNamesPtrOutput {
 	return o
 }
 
-func (o DataFlowEndpointFabricOneLakeNamesPtrOutput) Elem() DataFlowEndpointFabricOneLakeNamesOutput {
-	return o.ApplyT(func(v *DataFlowEndpointFabricOneLakeNames) DataFlowEndpointFabricOneLakeNames {
+func (o DataflowEndpointFabricOneLakeNamesPtrOutput) Elem() DataflowEndpointFabricOneLakeNamesOutput {
+	return o.ApplyT(func(v *DataflowEndpointFabricOneLakeNames) DataflowEndpointFabricOneLakeNames {
 		if v != nil {
 			return *v
 		}
-		var ret DataFlowEndpointFabricOneLakeNames
+		var ret DataflowEndpointFabricOneLakeNames
 		return ret
-	}).(DataFlowEndpointFabricOneLakeNamesOutput)
+	}).(DataflowEndpointFabricOneLakeNamesOutput)
 }
 
 // Lakehouse name.
-func (o DataFlowEndpointFabricOneLakeNamesPtrOutput) LakehouseName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointFabricOneLakeNames) *string {
+func (o DataflowEndpointFabricOneLakeNamesPtrOutput) LakehouseName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointFabricOneLakeNames) *string {
 		if v == nil {
 			return nil
 		}
@@ -9679,8 +10644,8 @@ func (o DataFlowEndpointFabricOneLakeNamesPtrOutput) LakehouseName() pulumi.Stri
 }
 
 // Workspace name.
-func (o DataFlowEndpointFabricOneLakeNamesPtrOutput) WorkspaceName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointFabricOneLakeNames) *string {
+func (o DataflowEndpointFabricOneLakeNamesPtrOutput) WorkspaceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointFabricOneLakeNames) *string {
 		if v == nil {
 			return nil
 		}
@@ -9689,7 +10654,7 @@ func (o DataFlowEndpointFabricOneLakeNamesPtrOutput) WorkspaceName() pulumi.Stri
 }
 
 // Microsoft Fabric endpoint Names properties
-type DataFlowEndpointFabricOneLakeNamesResponse struct {
+type DataflowEndpointFabricOneLakeNamesResponse struct {
 	// Lakehouse name.
 	LakehouseName string `pulumi:"lakehouseName"`
 	// Workspace name.
@@ -9697,57 +10662,57 @@ type DataFlowEndpointFabricOneLakeNamesResponse struct {
 }
 
 // Microsoft Fabric endpoint Names properties
-type DataFlowEndpointFabricOneLakeNamesResponseOutput struct{ *pulumi.OutputState }
+type DataflowEndpointFabricOneLakeNamesResponseOutput struct{ *pulumi.OutputState }
 
-func (DataFlowEndpointFabricOneLakeNamesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowEndpointFabricOneLakeNamesResponse)(nil)).Elem()
+func (DataflowEndpointFabricOneLakeNamesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowEndpointFabricOneLakeNamesResponse)(nil)).Elem()
 }
 
-func (o DataFlowEndpointFabricOneLakeNamesResponseOutput) ToDataFlowEndpointFabricOneLakeNamesResponseOutput() DataFlowEndpointFabricOneLakeNamesResponseOutput {
+func (o DataflowEndpointFabricOneLakeNamesResponseOutput) ToDataflowEndpointFabricOneLakeNamesResponseOutput() DataflowEndpointFabricOneLakeNamesResponseOutput {
 	return o
 }
 
-func (o DataFlowEndpointFabricOneLakeNamesResponseOutput) ToDataFlowEndpointFabricOneLakeNamesResponseOutputWithContext(ctx context.Context) DataFlowEndpointFabricOneLakeNamesResponseOutput {
+func (o DataflowEndpointFabricOneLakeNamesResponseOutput) ToDataflowEndpointFabricOneLakeNamesResponseOutputWithContext(ctx context.Context) DataflowEndpointFabricOneLakeNamesResponseOutput {
 	return o
 }
 
 // Lakehouse name.
-func (o DataFlowEndpointFabricOneLakeNamesResponseOutput) LakehouseName() pulumi.StringOutput {
-	return o.ApplyT(func(v DataFlowEndpointFabricOneLakeNamesResponse) string { return v.LakehouseName }).(pulumi.StringOutput)
+func (o DataflowEndpointFabricOneLakeNamesResponseOutput) LakehouseName() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowEndpointFabricOneLakeNamesResponse) string { return v.LakehouseName }).(pulumi.StringOutput)
 }
 
 // Workspace name.
-func (o DataFlowEndpointFabricOneLakeNamesResponseOutput) WorkspaceName() pulumi.StringOutput {
-	return o.ApplyT(func(v DataFlowEndpointFabricOneLakeNamesResponse) string { return v.WorkspaceName }).(pulumi.StringOutput)
+func (o DataflowEndpointFabricOneLakeNamesResponseOutput) WorkspaceName() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowEndpointFabricOneLakeNamesResponse) string { return v.WorkspaceName }).(pulumi.StringOutput)
 }
 
-type DataFlowEndpointFabricOneLakeNamesResponsePtrOutput struct{ *pulumi.OutputState }
+type DataflowEndpointFabricOneLakeNamesResponsePtrOutput struct{ *pulumi.OutputState }
 
-func (DataFlowEndpointFabricOneLakeNamesResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DataFlowEndpointFabricOneLakeNamesResponse)(nil)).Elem()
+func (DataflowEndpointFabricOneLakeNamesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowEndpointFabricOneLakeNamesResponse)(nil)).Elem()
 }
 
-func (o DataFlowEndpointFabricOneLakeNamesResponsePtrOutput) ToDataFlowEndpointFabricOneLakeNamesResponsePtrOutput() DataFlowEndpointFabricOneLakeNamesResponsePtrOutput {
+func (o DataflowEndpointFabricOneLakeNamesResponsePtrOutput) ToDataflowEndpointFabricOneLakeNamesResponsePtrOutput() DataflowEndpointFabricOneLakeNamesResponsePtrOutput {
 	return o
 }
 
-func (o DataFlowEndpointFabricOneLakeNamesResponsePtrOutput) ToDataFlowEndpointFabricOneLakeNamesResponsePtrOutputWithContext(ctx context.Context) DataFlowEndpointFabricOneLakeNamesResponsePtrOutput {
+func (o DataflowEndpointFabricOneLakeNamesResponsePtrOutput) ToDataflowEndpointFabricOneLakeNamesResponsePtrOutputWithContext(ctx context.Context) DataflowEndpointFabricOneLakeNamesResponsePtrOutput {
 	return o
 }
 
-func (o DataFlowEndpointFabricOneLakeNamesResponsePtrOutput) Elem() DataFlowEndpointFabricOneLakeNamesResponseOutput {
-	return o.ApplyT(func(v *DataFlowEndpointFabricOneLakeNamesResponse) DataFlowEndpointFabricOneLakeNamesResponse {
+func (o DataflowEndpointFabricOneLakeNamesResponsePtrOutput) Elem() DataflowEndpointFabricOneLakeNamesResponseOutput {
+	return o.ApplyT(func(v *DataflowEndpointFabricOneLakeNamesResponse) DataflowEndpointFabricOneLakeNamesResponse {
 		if v != nil {
 			return *v
 		}
-		var ret DataFlowEndpointFabricOneLakeNamesResponse
+		var ret DataflowEndpointFabricOneLakeNamesResponse
 		return ret
-	}).(DataFlowEndpointFabricOneLakeNamesResponseOutput)
+	}).(DataflowEndpointFabricOneLakeNamesResponseOutput)
 }
 
 // Lakehouse name.
-func (o DataFlowEndpointFabricOneLakeNamesResponsePtrOutput) LakehouseName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointFabricOneLakeNamesResponse) *string {
+func (o DataflowEndpointFabricOneLakeNamesResponsePtrOutput) LakehouseName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointFabricOneLakeNamesResponse) *string {
 		if v == nil {
 			return nil
 		}
@@ -9756,8 +10721,8 @@ func (o DataFlowEndpointFabricOneLakeNamesResponsePtrOutput) LakehouseName() pul
 }
 
 // Workspace name.
-func (o DataFlowEndpointFabricOneLakeNamesResponsePtrOutput) WorkspaceName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointFabricOneLakeNamesResponse) *string {
+func (o DataflowEndpointFabricOneLakeNamesResponsePtrOutput) WorkspaceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointFabricOneLakeNamesResponse) *string {
 		if v == nil {
 			return nil
 		}
@@ -9766,19 +10731,21 @@ func (o DataFlowEndpointFabricOneLakeNamesResponsePtrOutput) WorkspaceName() pul
 }
 
 // Microsoft Fabric endpoint properties
-type DataFlowEndpointFabricOneLakeResponse struct {
+type DataflowEndpointFabricOneLakeResponse struct {
+	// Authentication configuration. NOTE - only one authentication property is allowed per entry.
+	Authentication DataflowEndpointFabricOneLakeAuthenticationResponse `pulumi:"authentication"`
 	// Batching configuration.
 	Batching *BatchingConfigurationResponse `pulumi:"batching"`
 	// Host of the Microsoft Fabric in the form of https://<host>.fabric.microsoft.com.
 	Host string `pulumi:"host"`
 	// Names of the workspace and lakehouse.
-	Names DataFlowEndpointFabricOneLakeNamesResponse `pulumi:"names"`
+	Names DataflowEndpointFabricOneLakeNamesResponse `pulumi:"names"`
 	// Type of location of the data in the workspace. Can be either tables or files.
 	OneLakePathType string `pulumi:"oneLakePathType"`
 }
 
-// Defaults sets the appropriate defaults for DataFlowEndpointFabricOneLakeResponse
-func (val *DataFlowEndpointFabricOneLakeResponse) Defaults() *DataFlowEndpointFabricOneLakeResponse {
+// Defaults sets the appropriate defaults for DataflowEndpointFabricOneLakeResponse
+func (val *DataflowEndpointFabricOneLakeResponse) Defaults() *DataflowEndpointFabricOneLakeResponse {
 	if val == nil {
 		return nil
 	}
@@ -9789,69 +10756,86 @@ func (val *DataFlowEndpointFabricOneLakeResponse) Defaults() *DataFlowEndpointFa
 }
 
 // Microsoft Fabric endpoint properties
-type DataFlowEndpointFabricOneLakeResponseOutput struct{ *pulumi.OutputState }
+type DataflowEndpointFabricOneLakeResponseOutput struct{ *pulumi.OutputState }
 
-func (DataFlowEndpointFabricOneLakeResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowEndpointFabricOneLakeResponse)(nil)).Elem()
+func (DataflowEndpointFabricOneLakeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowEndpointFabricOneLakeResponse)(nil)).Elem()
 }
 
-func (o DataFlowEndpointFabricOneLakeResponseOutput) ToDataFlowEndpointFabricOneLakeResponseOutput() DataFlowEndpointFabricOneLakeResponseOutput {
+func (o DataflowEndpointFabricOneLakeResponseOutput) ToDataflowEndpointFabricOneLakeResponseOutput() DataflowEndpointFabricOneLakeResponseOutput {
 	return o
 }
 
-func (o DataFlowEndpointFabricOneLakeResponseOutput) ToDataFlowEndpointFabricOneLakeResponseOutputWithContext(ctx context.Context) DataFlowEndpointFabricOneLakeResponseOutput {
+func (o DataflowEndpointFabricOneLakeResponseOutput) ToDataflowEndpointFabricOneLakeResponseOutputWithContext(ctx context.Context) DataflowEndpointFabricOneLakeResponseOutput {
 	return o
+}
+
+// Authentication configuration. NOTE - only one authentication property is allowed per entry.
+func (o DataflowEndpointFabricOneLakeResponseOutput) Authentication() DataflowEndpointFabricOneLakeAuthenticationResponseOutput {
+	return o.ApplyT(func(v DataflowEndpointFabricOneLakeResponse) DataflowEndpointFabricOneLakeAuthenticationResponse {
+		return v.Authentication
+	}).(DataflowEndpointFabricOneLakeAuthenticationResponseOutput)
 }
 
 // Batching configuration.
-func (o DataFlowEndpointFabricOneLakeResponseOutput) Batching() BatchingConfigurationResponsePtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointFabricOneLakeResponse) *BatchingConfigurationResponse { return v.Batching }).(BatchingConfigurationResponsePtrOutput)
+func (o DataflowEndpointFabricOneLakeResponseOutput) Batching() BatchingConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v DataflowEndpointFabricOneLakeResponse) *BatchingConfigurationResponse { return v.Batching }).(BatchingConfigurationResponsePtrOutput)
 }
 
 // Host of the Microsoft Fabric in the form of https://<host>.fabric.microsoft.com.
-func (o DataFlowEndpointFabricOneLakeResponseOutput) Host() pulumi.StringOutput {
-	return o.ApplyT(func(v DataFlowEndpointFabricOneLakeResponse) string { return v.Host }).(pulumi.StringOutput)
+func (o DataflowEndpointFabricOneLakeResponseOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowEndpointFabricOneLakeResponse) string { return v.Host }).(pulumi.StringOutput)
 }
 
 // Names of the workspace and lakehouse.
-func (o DataFlowEndpointFabricOneLakeResponseOutput) Names() DataFlowEndpointFabricOneLakeNamesResponseOutput {
-	return o.ApplyT(func(v DataFlowEndpointFabricOneLakeResponse) DataFlowEndpointFabricOneLakeNamesResponse {
+func (o DataflowEndpointFabricOneLakeResponseOutput) Names() DataflowEndpointFabricOneLakeNamesResponseOutput {
+	return o.ApplyT(func(v DataflowEndpointFabricOneLakeResponse) DataflowEndpointFabricOneLakeNamesResponse {
 		return v.Names
-	}).(DataFlowEndpointFabricOneLakeNamesResponseOutput)
+	}).(DataflowEndpointFabricOneLakeNamesResponseOutput)
 }
 
 // Type of location of the data in the workspace. Can be either tables or files.
-func (o DataFlowEndpointFabricOneLakeResponseOutput) OneLakePathType() pulumi.StringOutput {
-	return o.ApplyT(func(v DataFlowEndpointFabricOneLakeResponse) string { return v.OneLakePathType }).(pulumi.StringOutput)
+func (o DataflowEndpointFabricOneLakeResponseOutput) OneLakePathType() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowEndpointFabricOneLakeResponse) string { return v.OneLakePathType }).(pulumi.StringOutput)
 }
 
-type DataFlowEndpointFabricOneLakeResponsePtrOutput struct{ *pulumi.OutputState }
+type DataflowEndpointFabricOneLakeResponsePtrOutput struct{ *pulumi.OutputState }
 
-func (DataFlowEndpointFabricOneLakeResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DataFlowEndpointFabricOneLakeResponse)(nil)).Elem()
+func (DataflowEndpointFabricOneLakeResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowEndpointFabricOneLakeResponse)(nil)).Elem()
 }
 
-func (o DataFlowEndpointFabricOneLakeResponsePtrOutput) ToDataFlowEndpointFabricOneLakeResponsePtrOutput() DataFlowEndpointFabricOneLakeResponsePtrOutput {
+func (o DataflowEndpointFabricOneLakeResponsePtrOutput) ToDataflowEndpointFabricOneLakeResponsePtrOutput() DataflowEndpointFabricOneLakeResponsePtrOutput {
 	return o
 }
 
-func (o DataFlowEndpointFabricOneLakeResponsePtrOutput) ToDataFlowEndpointFabricOneLakeResponsePtrOutputWithContext(ctx context.Context) DataFlowEndpointFabricOneLakeResponsePtrOutput {
+func (o DataflowEndpointFabricOneLakeResponsePtrOutput) ToDataflowEndpointFabricOneLakeResponsePtrOutputWithContext(ctx context.Context) DataflowEndpointFabricOneLakeResponsePtrOutput {
 	return o
 }
 
-func (o DataFlowEndpointFabricOneLakeResponsePtrOutput) Elem() DataFlowEndpointFabricOneLakeResponseOutput {
-	return o.ApplyT(func(v *DataFlowEndpointFabricOneLakeResponse) DataFlowEndpointFabricOneLakeResponse {
+func (o DataflowEndpointFabricOneLakeResponsePtrOutput) Elem() DataflowEndpointFabricOneLakeResponseOutput {
+	return o.ApplyT(func(v *DataflowEndpointFabricOneLakeResponse) DataflowEndpointFabricOneLakeResponse {
 		if v != nil {
 			return *v
 		}
-		var ret DataFlowEndpointFabricOneLakeResponse
+		var ret DataflowEndpointFabricOneLakeResponse
 		return ret
-	}).(DataFlowEndpointFabricOneLakeResponseOutput)
+	}).(DataflowEndpointFabricOneLakeResponseOutput)
+}
+
+// Authentication configuration. NOTE - only one authentication property is allowed per entry.
+func (o DataflowEndpointFabricOneLakeResponsePtrOutput) Authentication() DataflowEndpointFabricOneLakeAuthenticationResponsePtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointFabricOneLakeResponse) *DataflowEndpointFabricOneLakeAuthenticationResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Authentication
+	}).(DataflowEndpointFabricOneLakeAuthenticationResponsePtrOutput)
 }
 
 // Batching configuration.
-func (o DataFlowEndpointFabricOneLakeResponsePtrOutput) Batching() BatchingConfigurationResponsePtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointFabricOneLakeResponse) *BatchingConfigurationResponse {
+func (o DataflowEndpointFabricOneLakeResponsePtrOutput) Batching() BatchingConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointFabricOneLakeResponse) *BatchingConfigurationResponse {
 		if v == nil {
 			return nil
 		}
@@ -9860,8 +10844,8 @@ func (o DataFlowEndpointFabricOneLakeResponsePtrOutput) Batching() BatchingConfi
 }
 
 // Host of the Microsoft Fabric in the form of https://<host>.fabric.microsoft.com.
-func (o DataFlowEndpointFabricOneLakeResponsePtrOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointFabricOneLakeResponse) *string {
+func (o DataflowEndpointFabricOneLakeResponsePtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointFabricOneLakeResponse) *string {
 		if v == nil {
 			return nil
 		}
@@ -9870,18 +10854,18 @@ func (o DataFlowEndpointFabricOneLakeResponsePtrOutput) Host() pulumi.StringPtrO
 }
 
 // Names of the workspace and lakehouse.
-func (o DataFlowEndpointFabricOneLakeResponsePtrOutput) Names() DataFlowEndpointFabricOneLakeNamesResponsePtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointFabricOneLakeResponse) *DataFlowEndpointFabricOneLakeNamesResponse {
+func (o DataflowEndpointFabricOneLakeResponsePtrOutput) Names() DataflowEndpointFabricOneLakeNamesResponsePtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointFabricOneLakeResponse) *DataflowEndpointFabricOneLakeNamesResponse {
 		if v == nil {
 			return nil
 		}
 		return &v.Names
-	}).(DataFlowEndpointFabricOneLakeNamesResponsePtrOutput)
+	}).(DataflowEndpointFabricOneLakeNamesResponsePtrOutput)
 }
 
 // Type of location of the data in the workspace. Can be either tables or files.
-func (o DataFlowEndpointFabricOneLakeResponsePtrOutput) OneLakePathType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointFabricOneLakeResponse) *string {
+func (o DataflowEndpointFabricOneLakeResponsePtrOutput) OneLakePathType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointFabricOneLakeResponse) *string {
 		if v == nil {
 			return nil
 		}
@@ -9890,9 +10874,13 @@ func (o DataFlowEndpointFabricOneLakeResponsePtrOutput) OneLakePathType() pulumi
 }
 
 // Kafka endpoint properties
-type DataFlowEndpointKafka struct {
+type DataflowEndpointKafka struct {
+	// Authentication configuration. NOTE - only authentication property is allowed per entry.
+	Authentication DataflowEndpointKafkaAuthentication `pulumi:"authentication"`
 	// Batching configuration.
-	Batching *DataFlowEndpointKafkaBatching `pulumi:"batching"`
+	Batching *DataflowEndpointKafkaBatching `pulumi:"batching"`
+	// Cloud event mapping config.
+	CloudEventAttributes *string `pulumi:"cloudEventAttributes"`
 	// Compression. Can be none, gzip, lz4, or snappy. No effect if the endpoint is used as a source.
 	Compression *string `pulumi:"compression"`
 	// Consumer group ID.
@@ -9900,17 +10888,17 @@ type DataFlowEndpointKafka struct {
 	// Copy Broker properties. No effect if the endpoint is used as a source or if the dataflow doesn't have an Broker source.
 	CopyMqttProperties *string `pulumi:"copyMqttProperties"`
 	// Kafka endpoint host.
-	Host *string `pulumi:"host"`
+	Host string `pulumi:"host"`
 	// Kafka acks. Can be all, one, or zero. No effect if the endpoint is used as a source.
 	KafkaAcks *string `pulumi:"kafkaAcks"`
 	// Partition handling strategy. Can be default or static. No effect if the endpoint is used as a source.
 	PartitionStrategy *string `pulumi:"partitionStrategy"`
 	// TLS configuration.
-	Tls TlsProperties `pulumi:"tls"`
+	Tls *TlsProperties `pulumi:"tls"`
 }
 
-// Defaults sets the appropriate defaults for DataFlowEndpointKafka
-func (val *DataFlowEndpointKafka) Defaults() *DataFlowEndpointKafka {
+// Defaults sets the appropriate defaults for DataflowEndpointKafka
+func (val *DataflowEndpointKafka) Defaults() *DataflowEndpointKafka {
 	if val == nil {
 		return nil
 	}
@@ -9922,7 +10910,7 @@ func (val *DataFlowEndpointKafka) Defaults() *DataFlowEndpointKafka {
 		tmp.Compression = &compression_
 	}
 	if tmp.CopyMqttProperties == nil {
-		copyMqttProperties_ := "Disabled"
+		copyMqttProperties_ := "Enabled"
 		tmp.CopyMqttProperties = &copyMqttProperties_
 	}
 	if tmp.KafkaAcks == nil {
@@ -9933,26 +10921,30 @@ func (val *DataFlowEndpointKafka) Defaults() *DataFlowEndpointKafka {
 		partitionStrategy_ := "Default"
 		tmp.PartitionStrategy = &partitionStrategy_
 	}
-	tmp.Tls = *tmp.Tls.Defaults()
+	tmp.Tls = tmp.Tls.Defaults()
 
 	return &tmp
 }
 
-// DataFlowEndpointKafkaInput is an input type that accepts DataFlowEndpointKafkaArgs and DataFlowEndpointKafkaOutput values.
-// You can construct a concrete instance of `DataFlowEndpointKafkaInput` via:
+// DataflowEndpointKafkaInput is an input type that accepts DataflowEndpointKafkaArgs and DataflowEndpointKafkaOutput values.
+// You can construct a concrete instance of `DataflowEndpointKafkaInput` via:
 //
-//	DataFlowEndpointKafkaArgs{...}
-type DataFlowEndpointKafkaInput interface {
+//	DataflowEndpointKafkaArgs{...}
+type DataflowEndpointKafkaInput interface {
 	pulumi.Input
 
-	ToDataFlowEndpointKafkaOutput() DataFlowEndpointKafkaOutput
-	ToDataFlowEndpointKafkaOutputWithContext(context.Context) DataFlowEndpointKafkaOutput
+	ToDataflowEndpointKafkaOutput() DataflowEndpointKafkaOutput
+	ToDataflowEndpointKafkaOutputWithContext(context.Context) DataflowEndpointKafkaOutput
 }
 
 // Kafka endpoint properties
-type DataFlowEndpointKafkaArgs struct {
+type DataflowEndpointKafkaArgs struct {
+	// Authentication configuration. NOTE - only authentication property is allowed per entry.
+	Authentication DataflowEndpointKafkaAuthenticationInput `pulumi:"authentication"`
 	// Batching configuration.
-	Batching DataFlowEndpointKafkaBatchingPtrInput `pulumi:"batching"`
+	Batching DataflowEndpointKafkaBatchingPtrInput `pulumi:"batching"`
+	// Cloud event mapping config.
+	CloudEventAttributes pulumi.StringPtrInput `pulumi:"cloudEventAttributes"`
 	// Compression. Can be none, gzip, lz4, or snappy. No effect if the endpoint is used as a source.
 	Compression pulumi.StringPtrInput `pulumi:"compression"`
 	// Consumer group ID.
@@ -9960,17 +10952,17 @@ type DataFlowEndpointKafkaArgs struct {
 	// Copy Broker properties. No effect if the endpoint is used as a source or if the dataflow doesn't have an Broker source.
 	CopyMqttProperties pulumi.StringPtrInput `pulumi:"copyMqttProperties"`
 	// Kafka endpoint host.
-	Host pulumi.StringPtrInput `pulumi:"host"`
+	Host pulumi.StringInput `pulumi:"host"`
 	// Kafka acks. Can be all, one, or zero. No effect if the endpoint is used as a source.
 	KafkaAcks pulumi.StringPtrInput `pulumi:"kafkaAcks"`
 	// Partition handling strategy. Can be default or static. No effect if the endpoint is used as a source.
 	PartitionStrategy pulumi.StringPtrInput `pulumi:"partitionStrategy"`
 	// TLS configuration.
-	Tls TlsPropertiesInput `pulumi:"tls"`
+	Tls TlsPropertiesPtrInput `pulumi:"tls"`
 }
 
-// Defaults sets the appropriate defaults for DataFlowEndpointKafkaArgs
-func (val *DataFlowEndpointKafkaArgs) Defaults() *DataFlowEndpointKafkaArgs {
+// Defaults sets the appropriate defaults for DataflowEndpointKafkaArgs
+func (val *DataflowEndpointKafkaArgs) Defaults() *DataflowEndpointKafkaArgs {
 	if val == nil {
 		return nil
 	}
@@ -9980,7 +10972,7 @@ func (val *DataFlowEndpointKafkaArgs) Defaults() *DataFlowEndpointKafkaArgs {
 		tmp.Compression = pulumi.StringPtr("None")
 	}
 	if tmp.CopyMqttProperties == nil {
-		tmp.CopyMqttProperties = pulumi.StringPtr("Disabled")
+		tmp.CopyMqttProperties = pulumi.StringPtr("Enabled")
 	}
 	if tmp.KafkaAcks == nil {
 		tmp.KafkaAcks = pulumi.StringPtr("All")
@@ -9991,161 +10983,191 @@ func (val *DataFlowEndpointKafkaArgs) Defaults() *DataFlowEndpointKafkaArgs {
 
 	return &tmp
 }
-func (DataFlowEndpointKafkaArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowEndpointKafka)(nil)).Elem()
+func (DataflowEndpointKafkaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowEndpointKafka)(nil)).Elem()
 }
 
-func (i DataFlowEndpointKafkaArgs) ToDataFlowEndpointKafkaOutput() DataFlowEndpointKafkaOutput {
-	return i.ToDataFlowEndpointKafkaOutputWithContext(context.Background())
+func (i DataflowEndpointKafkaArgs) ToDataflowEndpointKafkaOutput() DataflowEndpointKafkaOutput {
+	return i.ToDataflowEndpointKafkaOutputWithContext(context.Background())
 }
 
-func (i DataFlowEndpointKafkaArgs) ToDataFlowEndpointKafkaOutputWithContext(ctx context.Context) DataFlowEndpointKafkaOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataFlowEndpointKafkaOutput)
+func (i DataflowEndpointKafkaArgs) ToDataflowEndpointKafkaOutputWithContext(ctx context.Context) DataflowEndpointKafkaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowEndpointKafkaOutput)
 }
 
-func (i DataFlowEndpointKafkaArgs) ToDataFlowEndpointKafkaPtrOutput() DataFlowEndpointKafkaPtrOutput {
-	return i.ToDataFlowEndpointKafkaPtrOutputWithContext(context.Background())
+func (i DataflowEndpointKafkaArgs) ToDataflowEndpointKafkaPtrOutput() DataflowEndpointKafkaPtrOutput {
+	return i.ToDataflowEndpointKafkaPtrOutputWithContext(context.Background())
 }
 
-func (i DataFlowEndpointKafkaArgs) ToDataFlowEndpointKafkaPtrOutputWithContext(ctx context.Context) DataFlowEndpointKafkaPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataFlowEndpointKafkaOutput).ToDataFlowEndpointKafkaPtrOutputWithContext(ctx)
+func (i DataflowEndpointKafkaArgs) ToDataflowEndpointKafkaPtrOutputWithContext(ctx context.Context) DataflowEndpointKafkaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowEndpointKafkaOutput).ToDataflowEndpointKafkaPtrOutputWithContext(ctx)
 }
 
-// DataFlowEndpointKafkaPtrInput is an input type that accepts DataFlowEndpointKafkaArgs, DataFlowEndpointKafkaPtr and DataFlowEndpointKafkaPtrOutput values.
-// You can construct a concrete instance of `DataFlowEndpointKafkaPtrInput` via:
+// DataflowEndpointKafkaPtrInput is an input type that accepts DataflowEndpointKafkaArgs, DataflowEndpointKafkaPtr and DataflowEndpointKafkaPtrOutput values.
+// You can construct a concrete instance of `DataflowEndpointKafkaPtrInput` via:
 //
-//	        DataFlowEndpointKafkaArgs{...}
+//	        DataflowEndpointKafkaArgs{...}
 //
 //	or:
 //
 //	        nil
-type DataFlowEndpointKafkaPtrInput interface {
+type DataflowEndpointKafkaPtrInput interface {
 	pulumi.Input
 
-	ToDataFlowEndpointKafkaPtrOutput() DataFlowEndpointKafkaPtrOutput
-	ToDataFlowEndpointKafkaPtrOutputWithContext(context.Context) DataFlowEndpointKafkaPtrOutput
+	ToDataflowEndpointKafkaPtrOutput() DataflowEndpointKafkaPtrOutput
+	ToDataflowEndpointKafkaPtrOutputWithContext(context.Context) DataflowEndpointKafkaPtrOutput
 }
 
-type dataFlowEndpointKafkaPtrType DataFlowEndpointKafkaArgs
+type dataflowEndpointKafkaPtrType DataflowEndpointKafkaArgs
 
-func DataFlowEndpointKafkaPtr(v *DataFlowEndpointKafkaArgs) DataFlowEndpointKafkaPtrInput {
-	return (*dataFlowEndpointKafkaPtrType)(v)
+func DataflowEndpointKafkaPtr(v *DataflowEndpointKafkaArgs) DataflowEndpointKafkaPtrInput {
+	return (*dataflowEndpointKafkaPtrType)(v)
 }
 
-func (*dataFlowEndpointKafkaPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DataFlowEndpointKafka)(nil)).Elem()
+func (*dataflowEndpointKafkaPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowEndpointKafka)(nil)).Elem()
 }
 
-func (i *dataFlowEndpointKafkaPtrType) ToDataFlowEndpointKafkaPtrOutput() DataFlowEndpointKafkaPtrOutput {
-	return i.ToDataFlowEndpointKafkaPtrOutputWithContext(context.Background())
+func (i *dataflowEndpointKafkaPtrType) ToDataflowEndpointKafkaPtrOutput() DataflowEndpointKafkaPtrOutput {
+	return i.ToDataflowEndpointKafkaPtrOutputWithContext(context.Background())
 }
 
-func (i *dataFlowEndpointKafkaPtrType) ToDataFlowEndpointKafkaPtrOutputWithContext(ctx context.Context) DataFlowEndpointKafkaPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataFlowEndpointKafkaPtrOutput)
+func (i *dataflowEndpointKafkaPtrType) ToDataflowEndpointKafkaPtrOutputWithContext(ctx context.Context) DataflowEndpointKafkaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowEndpointKafkaPtrOutput)
 }
 
 // Kafka endpoint properties
-type DataFlowEndpointKafkaOutput struct{ *pulumi.OutputState }
+type DataflowEndpointKafkaOutput struct{ *pulumi.OutputState }
 
-func (DataFlowEndpointKafkaOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowEndpointKafka)(nil)).Elem()
+func (DataflowEndpointKafkaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowEndpointKafka)(nil)).Elem()
 }
 
-func (o DataFlowEndpointKafkaOutput) ToDataFlowEndpointKafkaOutput() DataFlowEndpointKafkaOutput {
+func (o DataflowEndpointKafkaOutput) ToDataflowEndpointKafkaOutput() DataflowEndpointKafkaOutput {
 	return o
 }
 
-func (o DataFlowEndpointKafkaOutput) ToDataFlowEndpointKafkaOutputWithContext(ctx context.Context) DataFlowEndpointKafkaOutput {
+func (o DataflowEndpointKafkaOutput) ToDataflowEndpointKafkaOutputWithContext(ctx context.Context) DataflowEndpointKafkaOutput {
 	return o
 }
 
-func (o DataFlowEndpointKafkaOutput) ToDataFlowEndpointKafkaPtrOutput() DataFlowEndpointKafkaPtrOutput {
-	return o.ToDataFlowEndpointKafkaPtrOutputWithContext(context.Background())
+func (o DataflowEndpointKafkaOutput) ToDataflowEndpointKafkaPtrOutput() DataflowEndpointKafkaPtrOutput {
+	return o.ToDataflowEndpointKafkaPtrOutputWithContext(context.Background())
 }
 
-func (o DataFlowEndpointKafkaOutput) ToDataFlowEndpointKafkaPtrOutputWithContext(ctx context.Context) DataFlowEndpointKafkaPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataFlowEndpointKafka) *DataFlowEndpointKafka {
+func (o DataflowEndpointKafkaOutput) ToDataflowEndpointKafkaPtrOutputWithContext(ctx context.Context) DataflowEndpointKafkaPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataflowEndpointKafka) *DataflowEndpointKafka {
 		return &v
-	}).(DataFlowEndpointKafkaPtrOutput)
+	}).(DataflowEndpointKafkaPtrOutput)
+}
+
+// Authentication configuration. NOTE - only authentication property is allowed per entry.
+func (o DataflowEndpointKafkaOutput) Authentication() DataflowEndpointKafkaAuthenticationOutput {
+	return o.ApplyT(func(v DataflowEndpointKafka) DataflowEndpointKafkaAuthentication { return v.Authentication }).(DataflowEndpointKafkaAuthenticationOutput)
 }
 
 // Batching configuration.
-func (o DataFlowEndpointKafkaOutput) Batching() DataFlowEndpointKafkaBatchingPtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointKafka) *DataFlowEndpointKafkaBatching { return v.Batching }).(DataFlowEndpointKafkaBatchingPtrOutput)
+func (o DataflowEndpointKafkaOutput) Batching() DataflowEndpointKafkaBatchingPtrOutput {
+	return o.ApplyT(func(v DataflowEndpointKafka) *DataflowEndpointKafkaBatching { return v.Batching }).(DataflowEndpointKafkaBatchingPtrOutput)
+}
+
+// Cloud event mapping config.
+func (o DataflowEndpointKafkaOutput) CloudEventAttributes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowEndpointKafka) *string { return v.CloudEventAttributes }).(pulumi.StringPtrOutput)
 }
 
 // Compression. Can be none, gzip, lz4, or snappy. No effect if the endpoint is used as a source.
-func (o DataFlowEndpointKafkaOutput) Compression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointKafka) *string { return v.Compression }).(pulumi.StringPtrOutput)
+func (o DataflowEndpointKafkaOutput) Compression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowEndpointKafka) *string { return v.Compression }).(pulumi.StringPtrOutput)
 }
 
 // Consumer group ID.
-func (o DataFlowEndpointKafkaOutput) ConsumerGroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointKafka) *string { return v.ConsumerGroupId }).(pulumi.StringPtrOutput)
+func (o DataflowEndpointKafkaOutput) ConsumerGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowEndpointKafka) *string { return v.ConsumerGroupId }).(pulumi.StringPtrOutput)
 }
 
 // Copy Broker properties. No effect if the endpoint is used as a source or if the dataflow doesn't have an Broker source.
-func (o DataFlowEndpointKafkaOutput) CopyMqttProperties() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointKafka) *string { return v.CopyMqttProperties }).(pulumi.StringPtrOutput)
+func (o DataflowEndpointKafkaOutput) CopyMqttProperties() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowEndpointKafka) *string { return v.CopyMqttProperties }).(pulumi.StringPtrOutput)
 }
 
 // Kafka endpoint host.
-func (o DataFlowEndpointKafkaOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointKafka) *string { return v.Host }).(pulumi.StringPtrOutput)
+func (o DataflowEndpointKafkaOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowEndpointKafka) string { return v.Host }).(pulumi.StringOutput)
 }
 
 // Kafka acks. Can be all, one, or zero. No effect if the endpoint is used as a source.
-func (o DataFlowEndpointKafkaOutput) KafkaAcks() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointKafka) *string { return v.KafkaAcks }).(pulumi.StringPtrOutput)
+func (o DataflowEndpointKafkaOutput) KafkaAcks() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowEndpointKafka) *string { return v.KafkaAcks }).(pulumi.StringPtrOutput)
 }
 
 // Partition handling strategy. Can be default or static. No effect if the endpoint is used as a source.
-func (o DataFlowEndpointKafkaOutput) PartitionStrategy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointKafka) *string { return v.PartitionStrategy }).(pulumi.StringPtrOutput)
+func (o DataflowEndpointKafkaOutput) PartitionStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowEndpointKafka) *string { return v.PartitionStrategy }).(pulumi.StringPtrOutput)
 }
 
 // TLS configuration.
-func (o DataFlowEndpointKafkaOutput) Tls() TlsPropertiesOutput {
-	return o.ApplyT(func(v DataFlowEndpointKafka) TlsProperties { return v.Tls }).(TlsPropertiesOutput)
+func (o DataflowEndpointKafkaOutput) Tls() TlsPropertiesPtrOutput {
+	return o.ApplyT(func(v DataflowEndpointKafka) *TlsProperties { return v.Tls }).(TlsPropertiesPtrOutput)
 }
 
-type DataFlowEndpointKafkaPtrOutput struct{ *pulumi.OutputState }
+type DataflowEndpointKafkaPtrOutput struct{ *pulumi.OutputState }
 
-func (DataFlowEndpointKafkaPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DataFlowEndpointKafka)(nil)).Elem()
+func (DataflowEndpointKafkaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowEndpointKafka)(nil)).Elem()
 }
 
-func (o DataFlowEndpointKafkaPtrOutput) ToDataFlowEndpointKafkaPtrOutput() DataFlowEndpointKafkaPtrOutput {
+func (o DataflowEndpointKafkaPtrOutput) ToDataflowEndpointKafkaPtrOutput() DataflowEndpointKafkaPtrOutput {
 	return o
 }
 
-func (o DataFlowEndpointKafkaPtrOutput) ToDataFlowEndpointKafkaPtrOutputWithContext(ctx context.Context) DataFlowEndpointKafkaPtrOutput {
+func (o DataflowEndpointKafkaPtrOutput) ToDataflowEndpointKafkaPtrOutputWithContext(ctx context.Context) DataflowEndpointKafkaPtrOutput {
 	return o
 }
 
-func (o DataFlowEndpointKafkaPtrOutput) Elem() DataFlowEndpointKafkaOutput {
-	return o.ApplyT(func(v *DataFlowEndpointKafka) DataFlowEndpointKafka {
+func (o DataflowEndpointKafkaPtrOutput) Elem() DataflowEndpointKafkaOutput {
+	return o.ApplyT(func(v *DataflowEndpointKafka) DataflowEndpointKafka {
 		if v != nil {
 			return *v
 		}
-		var ret DataFlowEndpointKafka
+		var ret DataflowEndpointKafka
 		return ret
-	}).(DataFlowEndpointKafkaOutput)
+	}).(DataflowEndpointKafkaOutput)
+}
+
+// Authentication configuration. NOTE - only authentication property is allowed per entry.
+func (o DataflowEndpointKafkaPtrOutput) Authentication() DataflowEndpointKafkaAuthenticationPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointKafka) *DataflowEndpointKafkaAuthentication {
+		if v == nil {
+			return nil
+		}
+		return &v.Authentication
+	}).(DataflowEndpointKafkaAuthenticationPtrOutput)
 }
 
 // Batching configuration.
-func (o DataFlowEndpointKafkaPtrOutput) Batching() DataFlowEndpointKafkaBatchingPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointKafka) *DataFlowEndpointKafkaBatching {
+func (o DataflowEndpointKafkaPtrOutput) Batching() DataflowEndpointKafkaBatchingPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointKafka) *DataflowEndpointKafkaBatching {
 		if v == nil {
 			return nil
 		}
 		return v.Batching
-	}).(DataFlowEndpointKafkaBatchingPtrOutput)
+	}).(DataflowEndpointKafkaBatchingPtrOutput)
+}
+
+// Cloud event mapping config.
+func (o DataflowEndpointKafkaPtrOutput) CloudEventAttributes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointKafka) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CloudEventAttributes
+	}).(pulumi.StringPtrOutput)
 }
 
 // Compression. Can be none, gzip, lz4, or snappy. No effect if the endpoint is used as a source.
-func (o DataFlowEndpointKafkaPtrOutput) Compression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointKafka) *string {
+func (o DataflowEndpointKafkaPtrOutput) Compression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointKafka) *string {
 		if v == nil {
 			return nil
 		}
@@ -10154,8 +11176,8 @@ func (o DataFlowEndpointKafkaPtrOutput) Compression() pulumi.StringPtrOutput {
 }
 
 // Consumer group ID.
-func (o DataFlowEndpointKafkaPtrOutput) ConsumerGroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointKafka) *string {
+func (o DataflowEndpointKafkaPtrOutput) ConsumerGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointKafka) *string {
 		if v == nil {
 			return nil
 		}
@@ -10164,8 +11186,8 @@ func (o DataFlowEndpointKafkaPtrOutput) ConsumerGroupId() pulumi.StringPtrOutput
 }
 
 // Copy Broker properties. No effect if the endpoint is used as a source or if the dataflow doesn't have an Broker source.
-func (o DataFlowEndpointKafkaPtrOutput) CopyMqttProperties() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointKafka) *string {
+func (o DataflowEndpointKafkaPtrOutput) CopyMqttProperties() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointKafka) *string {
 		if v == nil {
 			return nil
 		}
@@ -10174,18 +11196,18 @@ func (o DataFlowEndpointKafkaPtrOutput) CopyMqttProperties() pulumi.StringPtrOut
 }
 
 // Kafka endpoint host.
-func (o DataFlowEndpointKafkaPtrOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointKafka) *string {
+func (o DataflowEndpointKafkaPtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointKafka) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Host
+		return &v.Host
 	}).(pulumi.StringPtrOutput)
 }
 
 // Kafka acks. Can be all, one, or zero. No effect if the endpoint is used as a source.
-func (o DataFlowEndpointKafkaPtrOutput) KafkaAcks() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointKafka) *string {
+func (o DataflowEndpointKafkaPtrOutput) KafkaAcks() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointKafka) *string {
 		if v == nil {
 			return nil
 		}
@@ -10194,8 +11216,8 @@ func (o DataFlowEndpointKafkaPtrOutput) KafkaAcks() pulumi.StringPtrOutput {
 }
 
 // Partition handling strategy. Can be default or static. No effect if the endpoint is used as a source.
-func (o DataFlowEndpointKafkaPtrOutput) PartitionStrategy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointKafka) *string {
+func (o DataflowEndpointKafkaPtrOutput) PartitionStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointKafka) *string {
 		if v == nil {
 			return nil
 		}
@@ -10204,17 +11226,375 @@ func (o DataFlowEndpointKafkaPtrOutput) PartitionStrategy() pulumi.StringPtrOutp
 }
 
 // TLS configuration.
-func (o DataFlowEndpointKafkaPtrOutput) Tls() TlsPropertiesPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointKafka) *TlsProperties {
+func (o DataflowEndpointKafkaPtrOutput) Tls() TlsPropertiesPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointKafka) *TlsProperties {
 		if v == nil {
 			return nil
 		}
-		return &v.Tls
+		return v.Tls
 	}).(TlsPropertiesPtrOutput)
 }
 
+// Kafka endpoint Authentication properties. NOTE - only authentication property is allowed per entry
+type DataflowEndpointKafkaAuthentication struct {
+	// Mode of Authentication.
+	Method string `pulumi:"method"`
+	// SASL authentication.
+	SaslSettings *DataflowEndpointAuthenticationSasl `pulumi:"saslSettings"`
+	// System-assigned managed identity authentication.
+	SystemAssignedManagedIdentitySettings *DataflowEndpointAuthenticationSystemAssignedManagedIdentity `pulumi:"systemAssignedManagedIdentitySettings"`
+	// User-assigned managed identity authentication.
+	UserAssignedManagedIdentitySettings *DataflowEndpointAuthenticationUserAssignedManagedIdentity `pulumi:"userAssignedManagedIdentitySettings"`
+	// X.509 certificate authentication.
+	X509CertificateSettings *DataflowEndpointAuthenticationX509 `pulumi:"x509CertificateSettings"`
+}
+
+// DataflowEndpointKafkaAuthenticationInput is an input type that accepts DataflowEndpointKafkaAuthenticationArgs and DataflowEndpointKafkaAuthenticationOutput values.
+// You can construct a concrete instance of `DataflowEndpointKafkaAuthenticationInput` via:
+//
+//	DataflowEndpointKafkaAuthenticationArgs{...}
+type DataflowEndpointKafkaAuthenticationInput interface {
+	pulumi.Input
+
+	ToDataflowEndpointKafkaAuthenticationOutput() DataflowEndpointKafkaAuthenticationOutput
+	ToDataflowEndpointKafkaAuthenticationOutputWithContext(context.Context) DataflowEndpointKafkaAuthenticationOutput
+}
+
+// Kafka endpoint Authentication properties. NOTE - only authentication property is allowed per entry
+type DataflowEndpointKafkaAuthenticationArgs struct {
+	// Mode of Authentication.
+	Method pulumi.StringInput `pulumi:"method"`
+	// SASL authentication.
+	SaslSettings DataflowEndpointAuthenticationSaslPtrInput `pulumi:"saslSettings"`
+	// System-assigned managed identity authentication.
+	SystemAssignedManagedIdentitySettings DataflowEndpointAuthenticationSystemAssignedManagedIdentityPtrInput `pulumi:"systemAssignedManagedIdentitySettings"`
+	// User-assigned managed identity authentication.
+	UserAssignedManagedIdentitySettings DataflowEndpointAuthenticationUserAssignedManagedIdentityPtrInput `pulumi:"userAssignedManagedIdentitySettings"`
+	// X.509 certificate authentication.
+	X509CertificateSettings DataflowEndpointAuthenticationX509PtrInput `pulumi:"x509CertificateSettings"`
+}
+
+func (DataflowEndpointKafkaAuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowEndpointKafkaAuthentication)(nil)).Elem()
+}
+
+func (i DataflowEndpointKafkaAuthenticationArgs) ToDataflowEndpointKafkaAuthenticationOutput() DataflowEndpointKafkaAuthenticationOutput {
+	return i.ToDataflowEndpointKafkaAuthenticationOutputWithContext(context.Background())
+}
+
+func (i DataflowEndpointKafkaAuthenticationArgs) ToDataflowEndpointKafkaAuthenticationOutputWithContext(ctx context.Context) DataflowEndpointKafkaAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowEndpointKafkaAuthenticationOutput)
+}
+
+func (i DataflowEndpointKafkaAuthenticationArgs) ToDataflowEndpointKafkaAuthenticationPtrOutput() DataflowEndpointKafkaAuthenticationPtrOutput {
+	return i.ToDataflowEndpointKafkaAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i DataflowEndpointKafkaAuthenticationArgs) ToDataflowEndpointKafkaAuthenticationPtrOutputWithContext(ctx context.Context) DataflowEndpointKafkaAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowEndpointKafkaAuthenticationOutput).ToDataflowEndpointKafkaAuthenticationPtrOutputWithContext(ctx)
+}
+
+// DataflowEndpointKafkaAuthenticationPtrInput is an input type that accepts DataflowEndpointKafkaAuthenticationArgs, DataflowEndpointKafkaAuthenticationPtr and DataflowEndpointKafkaAuthenticationPtrOutput values.
+// You can construct a concrete instance of `DataflowEndpointKafkaAuthenticationPtrInput` via:
+//
+//	        DataflowEndpointKafkaAuthenticationArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataflowEndpointKafkaAuthenticationPtrInput interface {
+	pulumi.Input
+
+	ToDataflowEndpointKafkaAuthenticationPtrOutput() DataflowEndpointKafkaAuthenticationPtrOutput
+	ToDataflowEndpointKafkaAuthenticationPtrOutputWithContext(context.Context) DataflowEndpointKafkaAuthenticationPtrOutput
+}
+
+type dataflowEndpointKafkaAuthenticationPtrType DataflowEndpointKafkaAuthenticationArgs
+
+func DataflowEndpointKafkaAuthenticationPtr(v *DataflowEndpointKafkaAuthenticationArgs) DataflowEndpointKafkaAuthenticationPtrInput {
+	return (*dataflowEndpointKafkaAuthenticationPtrType)(v)
+}
+
+func (*dataflowEndpointKafkaAuthenticationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowEndpointKafkaAuthentication)(nil)).Elem()
+}
+
+func (i *dataflowEndpointKafkaAuthenticationPtrType) ToDataflowEndpointKafkaAuthenticationPtrOutput() DataflowEndpointKafkaAuthenticationPtrOutput {
+	return i.ToDataflowEndpointKafkaAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i *dataflowEndpointKafkaAuthenticationPtrType) ToDataflowEndpointKafkaAuthenticationPtrOutputWithContext(ctx context.Context) DataflowEndpointKafkaAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowEndpointKafkaAuthenticationPtrOutput)
+}
+
+// Kafka endpoint Authentication properties. NOTE - only authentication property is allowed per entry
+type DataflowEndpointKafkaAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (DataflowEndpointKafkaAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowEndpointKafkaAuthentication)(nil)).Elem()
+}
+
+func (o DataflowEndpointKafkaAuthenticationOutput) ToDataflowEndpointKafkaAuthenticationOutput() DataflowEndpointKafkaAuthenticationOutput {
+	return o
+}
+
+func (o DataflowEndpointKafkaAuthenticationOutput) ToDataflowEndpointKafkaAuthenticationOutputWithContext(ctx context.Context) DataflowEndpointKafkaAuthenticationOutput {
+	return o
+}
+
+func (o DataflowEndpointKafkaAuthenticationOutput) ToDataflowEndpointKafkaAuthenticationPtrOutput() DataflowEndpointKafkaAuthenticationPtrOutput {
+	return o.ToDataflowEndpointKafkaAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (o DataflowEndpointKafkaAuthenticationOutput) ToDataflowEndpointKafkaAuthenticationPtrOutputWithContext(ctx context.Context) DataflowEndpointKafkaAuthenticationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataflowEndpointKafkaAuthentication) *DataflowEndpointKafkaAuthentication {
+		return &v
+	}).(DataflowEndpointKafkaAuthenticationPtrOutput)
+}
+
+// Mode of Authentication.
+func (o DataflowEndpointKafkaAuthenticationOutput) Method() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowEndpointKafkaAuthentication) string { return v.Method }).(pulumi.StringOutput)
+}
+
+// SASL authentication.
+func (o DataflowEndpointKafkaAuthenticationOutput) SaslSettings() DataflowEndpointAuthenticationSaslPtrOutput {
+	return o.ApplyT(func(v DataflowEndpointKafkaAuthentication) *DataflowEndpointAuthenticationSasl { return v.SaslSettings }).(DataflowEndpointAuthenticationSaslPtrOutput)
+}
+
+// System-assigned managed identity authentication.
+func (o DataflowEndpointKafkaAuthenticationOutput) SystemAssignedManagedIdentitySettings() DataflowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput {
+	return o.ApplyT(func(v DataflowEndpointKafkaAuthentication) *DataflowEndpointAuthenticationSystemAssignedManagedIdentity {
+		return v.SystemAssignedManagedIdentitySettings
+	}).(DataflowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput)
+}
+
+// User-assigned managed identity authentication.
+func (o DataflowEndpointKafkaAuthenticationOutput) UserAssignedManagedIdentitySettings() DataflowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput {
+	return o.ApplyT(func(v DataflowEndpointKafkaAuthentication) *DataflowEndpointAuthenticationUserAssignedManagedIdentity {
+		return v.UserAssignedManagedIdentitySettings
+	}).(DataflowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput)
+}
+
+// X.509 certificate authentication.
+func (o DataflowEndpointKafkaAuthenticationOutput) X509CertificateSettings() DataflowEndpointAuthenticationX509PtrOutput {
+	return o.ApplyT(func(v DataflowEndpointKafkaAuthentication) *DataflowEndpointAuthenticationX509 {
+		return v.X509CertificateSettings
+	}).(DataflowEndpointAuthenticationX509PtrOutput)
+}
+
+type DataflowEndpointKafkaAuthenticationPtrOutput struct{ *pulumi.OutputState }
+
+func (DataflowEndpointKafkaAuthenticationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowEndpointKafkaAuthentication)(nil)).Elem()
+}
+
+func (o DataflowEndpointKafkaAuthenticationPtrOutput) ToDataflowEndpointKafkaAuthenticationPtrOutput() DataflowEndpointKafkaAuthenticationPtrOutput {
+	return o
+}
+
+func (o DataflowEndpointKafkaAuthenticationPtrOutput) ToDataflowEndpointKafkaAuthenticationPtrOutputWithContext(ctx context.Context) DataflowEndpointKafkaAuthenticationPtrOutput {
+	return o
+}
+
+func (o DataflowEndpointKafkaAuthenticationPtrOutput) Elem() DataflowEndpointKafkaAuthenticationOutput {
+	return o.ApplyT(func(v *DataflowEndpointKafkaAuthentication) DataflowEndpointKafkaAuthentication {
+		if v != nil {
+			return *v
+		}
+		var ret DataflowEndpointKafkaAuthentication
+		return ret
+	}).(DataflowEndpointKafkaAuthenticationOutput)
+}
+
+// Mode of Authentication.
+func (o DataflowEndpointKafkaAuthenticationPtrOutput) Method() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointKafkaAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Method
+	}).(pulumi.StringPtrOutput)
+}
+
+// SASL authentication.
+func (o DataflowEndpointKafkaAuthenticationPtrOutput) SaslSettings() DataflowEndpointAuthenticationSaslPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointKafkaAuthentication) *DataflowEndpointAuthenticationSasl {
+		if v == nil {
+			return nil
+		}
+		return v.SaslSettings
+	}).(DataflowEndpointAuthenticationSaslPtrOutput)
+}
+
+// System-assigned managed identity authentication.
+func (o DataflowEndpointKafkaAuthenticationPtrOutput) SystemAssignedManagedIdentitySettings() DataflowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointKafkaAuthentication) *DataflowEndpointAuthenticationSystemAssignedManagedIdentity {
+		if v == nil {
+			return nil
+		}
+		return v.SystemAssignedManagedIdentitySettings
+	}).(DataflowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput)
+}
+
+// User-assigned managed identity authentication.
+func (o DataflowEndpointKafkaAuthenticationPtrOutput) UserAssignedManagedIdentitySettings() DataflowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointKafkaAuthentication) *DataflowEndpointAuthenticationUserAssignedManagedIdentity {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedManagedIdentitySettings
+	}).(DataflowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput)
+}
+
+// X.509 certificate authentication.
+func (o DataflowEndpointKafkaAuthenticationPtrOutput) X509CertificateSettings() DataflowEndpointAuthenticationX509PtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointKafkaAuthentication) *DataflowEndpointAuthenticationX509 {
+		if v == nil {
+			return nil
+		}
+		return v.X509CertificateSettings
+	}).(DataflowEndpointAuthenticationX509PtrOutput)
+}
+
+// Kafka endpoint Authentication properties. NOTE - only authentication property is allowed per entry
+type DataflowEndpointKafkaAuthenticationResponse struct {
+	// Mode of Authentication.
+	Method string `pulumi:"method"`
+	// SASL authentication.
+	SaslSettings *DataflowEndpointAuthenticationSaslResponse `pulumi:"saslSettings"`
+	// System-assigned managed identity authentication.
+	SystemAssignedManagedIdentitySettings *DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponse `pulumi:"systemAssignedManagedIdentitySettings"`
+	// User-assigned managed identity authentication.
+	UserAssignedManagedIdentitySettings *DataflowEndpointAuthenticationUserAssignedManagedIdentityResponse `pulumi:"userAssignedManagedIdentitySettings"`
+	// X.509 certificate authentication.
+	X509CertificateSettings *DataflowEndpointAuthenticationX509Response `pulumi:"x509CertificateSettings"`
+}
+
+// Kafka endpoint Authentication properties. NOTE - only authentication property is allowed per entry
+type DataflowEndpointKafkaAuthenticationResponseOutput struct{ *pulumi.OutputState }
+
+func (DataflowEndpointKafkaAuthenticationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowEndpointKafkaAuthenticationResponse)(nil)).Elem()
+}
+
+func (o DataflowEndpointKafkaAuthenticationResponseOutput) ToDataflowEndpointKafkaAuthenticationResponseOutput() DataflowEndpointKafkaAuthenticationResponseOutput {
+	return o
+}
+
+func (o DataflowEndpointKafkaAuthenticationResponseOutput) ToDataflowEndpointKafkaAuthenticationResponseOutputWithContext(ctx context.Context) DataflowEndpointKafkaAuthenticationResponseOutput {
+	return o
+}
+
+// Mode of Authentication.
+func (o DataflowEndpointKafkaAuthenticationResponseOutput) Method() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowEndpointKafkaAuthenticationResponse) string { return v.Method }).(pulumi.StringOutput)
+}
+
+// SASL authentication.
+func (o DataflowEndpointKafkaAuthenticationResponseOutput) SaslSettings() DataflowEndpointAuthenticationSaslResponsePtrOutput {
+	return o.ApplyT(func(v DataflowEndpointKafkaAuthenticationResponse) *DataflowEndpointAuthenticationSaslResponse {
+		return v.SaslSettings
+	}).(DataflowEndpointAuthenticationSaslResponsePtrOutput)
+}
+
+// System-assigned managed identity authentication.
+func (o DataflowEndpointKafkaAuthenticationResponseOutput) SystemAssignedManagedIdentitySettings() DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponsePtrOutput {
+	return o.ApplyT(func(v DataflowEndpointKafkaAuthenticationResponse) *DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponse {
+		return v.SystemAssignedManagedIdentitySettings
+	}).(DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponsePtrOutput)
+}
+
+// User-assigned managed identity authentication.
+func (o DataflowEndpointKafkaAuthenticationResponseOutput) UserAssignedManagedIdentitySettings() DataflowEndpointAuthenticationUserAssignedManagedIdentityResponsePtrOutput {
+	return o.ApplyT(func(v DataflowEndpointKafkaAuthenticationResponse) *DataflowEndpointAuthenticationUserAssignedManagedIdentityResponse {
+		return v.UserAssignedManagedIdentitySettings
+	}).(DataflowEndpointAuthenticationUserAssignedManagedIdentityResponsePtrOutput)
+}
+
+// X.509 certificate authentication.
+func (o DataflowEndpointKafkaAuthenticationResponseOutput) X509CertificateSettings() DataflowEndpointAuthenticationX509ResponsePtrOutput {
+	return o.ApplyT(func(v DataflowEndpointKafkaAuthenticationResponse) *DataflowEndpointAuthenticationX509Response {
+		return v.X509CertificateSettings
+	}).(DataflowEndpointAuthenticationX509ResponsePtrOutput)
+}
+
+type DataflowEndpointKafkaAuthenticationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DataflowEndpointKafkaAuthenticationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowEndpointKafkaAuthenticationResponse)(nil)).Elem()
+}
+
+func (o DataflowEndpointKafkaAuthenticationResponsePtrOutput) ToDataflowEndpointKafkaAuthenticationResponsePtrOutput() DataflowEndpointKafkaAuthenticationResponsePtrOutput {
+	return o
+}
+
+func (o DataflowEndpointKafkaAuthenticationResponsePtrOutput) ToDataflowEndpointKafkaAuthenticationResponsePtrOutputWithContext(ctx context.Context) DataflowEndpointKafkaAuthenticationResponsePtrOutput {
+	return o
+}
+
+func (o DataflowEndpointKafkaAuthenticationResponsePtrOutput) Elem() DataflowEndpointKafkaAuthenticationResponseOutput {
+	return o.ApplyT(func(v *DataflowEndpointKafkaAuthenticationResponse) DataflowEndpointKafkaAuthenticationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DataflowEndpointKafkaAuthenticationResponse
+		return ret
+	}).(DataflowEndpointKafkaAuthenticationResponseOutput)
+}
+
+// Mode of Authentication.
+func (o DataflowEndpointKafkaAuthenticationResponsePtrOutput) Method() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointKafkaAuthenticationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Method
+	}).(pulumi.StringPtrOutput)
+}
+
+// SASL authentication.
+func (o DataflowEndpointKafkaAuthenticationResponsePtrOutput) SaslSettings() DataflowEndpointAuthenticationSaslResponsePtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointKafkaAuthenticationResponse) *DataflowEndpointAuthenticationSaslResponse {
+		if v == nil {
+			return nil
+		}
+		return v.SaslSettings
+	}).(DataflowEndpointAuthenticationSaslResponsePtrOutput)
+}
+
+// System-assigned managed identity authentication.
+func (o DataflowEndpointKafkaAuthenticationResponsePtrOutput) SystemAssignedManagedIdentitySettings() DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointKafkaAuthenticationResponse) *DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponse {
+		if v == nil {
+			return nil
+		}
+		return v.SystemAssignedManagedIdentitySettings
+	}).(DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponsePtrOutput)
+}
+
+// User-assigned managed identity authentication.
+func (o DataflowEndpointKafkaAuthenticationResponsePtrOutput) UserAssignedManagedIdentitySettings() DataflowEndpointAuthenticationUserAssignedManagedIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointKafkaAuthenticationResponse) *DataflowEndpointAuthenticationUserAssignedManagedIdentityResponse {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedManagedIdentitySettings
+	}).(DataflowEndpointAuthenticationUserAssignedManagedIdentityResponsePtrOutput)
+}
+
+// X.509 certificate authentication.
+func (o DataflowEndpointKafkaAuthenticationResponsePtrOutput) X509CertificateSettings() DataflowEndpointAuthenticationX509ResponsePtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointKafkaAuthenticationResponse) *DataflowEndpointAuthenticationX509Response {
+		if v == nil {
+			return nil
+		}
+		return v.X509CertificateSettings
+	}).(DataflowEndpointAuthenticationX509ResponsePtrOutput)
+}
+
 // Kafka endpoint Batching properties
-type DataFlowEndpointKafkaBatching struct {
+type DataflowEndpointKafkaBatching struct {
 	// Batching latency in milliseconds.
 	LatencyMs *int `pulumi:"latencyMs"`
 	// Maximum number of bytes in a batch.
@@ -10225,8 +11605,8 @@ type DataFlowEndpointKafkaBatching struct {
 	Mode *string `pulumi:"mode"`
 }
 
-// Defaults sets the appropriate defaults for DataFlowEndpointKafkaBatching
-func (val *DataFlowEndpointKafkaBatching) Defaults() *DataFlowEndpointKafkaBatching {
+// Defaults sets the appropriate defaults for DataflowEndpointKafkaBatching
+func (val *DataflowEndpointKafkaBatching) Defaults() *DataflowEndpointKafkaBatching {
 	if val == nil {
 		return nil
 	}
@@ -10250,19 +11630,19 @@ func (val *DataFlowEndpointKafkaBatching) Defaults() *DataFlowEndpointKafkaBatch
 	return &tmp
 }
 
-// DataFlowEndpointKafkaBatchingInput is an input type that accepts DataFlowEndpointKafkaBatchingArgs and DataFlowEndpointKafkaBatchingOutput values.
-// You can construct a concrete instance of `DataFlowEndpointKafkaBatchingInput` via:
+// DataflowEndpointKafkaBatchingInput is an input type that accepts DataflowEndpointKafkaBatchingArgs and DataflowEndpointKafkaBatchingOutput values.
+// You can construct a concrete instance of `DataflowEndpointKafkaBatchingInput` via:
 //
-//	DataFlowEndpointKafkaBatchingArgs{...}
-type DataFlowEndpointKafkaBatchingInput interface {
+//	DataflowEndpointKafkaBatchingArgs{...}
+type DataflowEndpointKafkaBatchingInput interface {
 	pulumi.Input
 
-	ToDataFlowEndpointKafkaBatchingOutput() DataFlowEndpointKafkaBatchingOutput
-	ToDataFlowEndpointKafkaBatchingOutputWithContext(context.Context) DataFlowEndpointKafkaBatchingOutput
+	ToDataflowEndpointKafkaBatchingOutput() DataflowEndpointKafkaBatchingOutput
+	ToDataflowEndpointKafkaBatchingOutputWithContext(context.Context) DataflowEndpointKafkaBatchingOutput
 }
 
 // Kafka endpoint Batching properties
-type DataFlowEndpointKafkaBatchingArgs struct {
+type DataflowEndpointKafkaBatchingArgs struct {
 	// Batching latency in milliseconds.
 	LatencyMs pulumi.IntPtrInput `pulumi:"latencyMs"`
 	// Maximum number of bytes in a batch.
@@ -10273,8 +11653,8 @@ type DataFlowEndpointKafkaBatchingArgs struct {
 	Mode pulumi.StringPtrInput `pulumi:"mode"`
 }
 
-// Defaults sets the appropriate defaults for DataFlowEndpointKafkaBatchingArgs
-func (val *DataFlowEndpointKafkaBatchingArgs) Defaults() *DataFlowEndpointKafkaBatchingArgs {
+// Defaults sets the appropriate defaults for DataflowEndpointKafkaBatchingArgs
+func (val *DataflowEndpointKafkaBatchingArgs) Defaults() *DataflowEndpointKafkaBatchingArgs {
 	if val == nil {
 		return nil
 	}
@@ -10293,131 +11673,131 @@ func (val *DataFlowEndpointKafkaBatchingArgs) Defaults() *DataFlowEndpointKafkaB
 	}
 	return &tmp
 }
-func (DataFlowEndpointKafkaBatchingArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowEndpointKafkaBatching)(nil)).Elem()
+func (DataflowEndpointKafkaBatchingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowEndpointKafkaBatching)(nil)).Elem()
 }
 
-func (i DataFlowEndpointKafkaBatchingArgs) ToDataFlowEndpointKafkaBatchingOutput() DataFlowEndpointKafkaBatchingOutput {
-	return i.ToDataFlowEndpointKafkaBatchingOutputWithContext(context.Background())
+func (i DataflowEndpointKafkaBatchingArgs) ToDataflowEndpointKafkaBatchingOutput() DataflowEndpointKafkaBatchingOutput {
+	return i.ToDataflowEndpointKafkaBatchingOutputWithContext(context.Background())
 }
 
-func (i DataFlowEndpointKafkaBatchingArgs) ToDataFlowEndpointKafkaBatchingOutputWithContext(ctx context.Context) DataFlowEndpointKafkaBatchingOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataFlowEndpointKafkaBatchingOutput)
+func (i DataflowEndpointKafkaBatchingArgs) ToDataflowEndpointKafkaBatchingOutputWithContext(ctx context.Context) DataflowEndpointKafkaBatchingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowEndpointKafkaBatchingOutput)
 }
 
-func (i DataFlowEndpointKafkaBatchingArgs) ToDataFlowEndpointKafkaBatchingPtrOutput() DataFlowEndpointKafkaBatchingPtrOutput {
-	return i.ToDataFlowEndpointKafkaBatchingPtrOutputWithContext(context.Background())
+func (i DataflowEndpointKafkaBatchingArgs) ToDataflowEndpointKafkaBatchingPtrOutput() DataflowEndpointKafkaBatchingPtrOutput {
+	return i.ToDataflowEndpointKafkaBatchingPtrOutputWithContext(context.Background())
 }
 
-func (i DataFlowEndpointKafkaBatchingArgs) ToDataFlowEndpointKafkaBatchingPtrOutputWithContext(ctx context.Context) DataFlowEndpointKafkaBatchingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataFlowEndpointKafkaBatchingOutput).ToDataFlowEndpointKafkaBatchingPtrOutputWithContext(ctx)
+func (i DataflowEndpointKafkaBatchingArgs) ToDataflowEndpointKafkaBatchingPtrOutputWithContext(ctx context.Context) DataflowEndpointKafkaBatchingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowEndpointKafkaBatchingOutput).ToDataflowEndpointKafkaBatchingPtrOutputWithContext(ctx)
 }
 
-// DataFlowEndpointKafkaBatchingPtrInput is an input type that accepts DataFlowEndpointKafkaBatchingArgs, DataFlowEndpointKafkaBatchingPtr and DataFlowEndpointKafkaBatchingPtrOutput values.
-// You can construct a concrete instance of `DataFlowEndpointKafkaBatchingPtrInput` via:
+// DataflowEndpointKafkaBatchingPtrInput is an input type that accepts DataflowEndpointKafkaBatchingArgs, DataflowEndpointKafkaBatchingPtr and DataflowEndpointKafkaBatchingPtrOutput values.
+// You can construct a concrete instance of `DataflowEndpointKafkaBatchingPtrInput` via:
 //
-//	        DataFlowEndpointKafkaBatchingArgs{...}
+//	        DataflowEndpointKafkaBatchingArgs{...}
 //
 //	or:
 //
 //	        nil
-type DataFlowEndpointKafkaBatchingPtrInput interface {
+type DataflowEndpointKafkaBatchingPtrInput interface {
 	pulumi.Input
 
-	ToDataFlowEndpointKafkaBatchingPtrOutput() DataFlowEndpointKafkaBatchingPtrOutput
-	ToDataFlowEndpointKafkaBatchingPtrOutputWithContext(context.Context) DataFlowEndpointKafkaBatchingPtrOutput
+	ToDataflowEndpointKafkaBatchingPtrOutput() DataflowEndpointKafkaBatchingPtrOutput
+	ToDataflowEndpointKafkaBatchingPtrOutputWithContext(context.Context) DataflowEndpointKafkaBatchingPtrOutput
 }
 
-type dataFlowEndpointKafkaBatchingPtrType DataFlowEndpointKafkaBatchingArgs
+type dataflowEndpointKafkaBatchingPtrType DataflowEndpointKafkaBatchingArgs
 
-func DataFlowEndpointKafkaBatchingPtr(v *DataFlowEndpointKafkaBatchingArgs) DataFlowEndpointKafkaBatchingPtrInput {
-	return (*dataFlowEndpointKafkaBatchingPtrType)(v)
+func DataflowEndpointKafkaBatchingPtr(v *DataflowEndpointKafkaBatchingArgs) DataflowEndpointKafkaBatchingPtrInput {
+	return (*dataflowEndpointKafkaBatchingPtrType)(v)
 }
 
-func (*dataFlowEndpointKafkaBatchingPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DataFlowEndpointKafkaBatching)(nil)).Elem()
+func (*dataflowEndpointKafkaBatchingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowEndpointKafkaBatching)(nil)).Elem()
 }
 
-func (i *dataFlowEndpointKafkaBatchingPtrType) ToDataFlowEndpointKafkaBatchingPtrOutput() DataFlowEndpointKafkaBatchingPtrOutput {
-	return i.ToDataFlowEndpointKafkaBatchingPtrOutputWithContext(context.Background())
+func (i *dataflowEndpointKafkaBatchingPtrType) ToDataflowEndpointKafkaBatchingPtrOutput() DataflowEndpointKafkaBatchingPtrOutput {
+	return i.ToDataflowEndpointKafkaBatchingPtrOutputWithContext(context.Background())
 }
 
-func (i *dataFlowEndpointKafkaBatchingPtrType) ToDataFlowEndpointKafkaBatchingPtrOutputWithContext(ctx context.Context) DataFlowEndpointKafkaBatchingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataFlowEndpointKafkaBatchingPtrOutput)
+func (i *dataflowEndpointKafkaBatchingPtrType) ToDataflowEndpointKafkaBatchingPtrOutputWithContext(ctx context.Context) DataflowEndpointKafkaBatchingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowEndpointKafkaBatchingPtrOutput)
 }
 
 // Kafka endpoint Batching properties
-type DataFlowEndpointKafkaBatchingOutput struct{ *pulumi.OutputState }
+type DataflowEndpointKafkaBatchingOutput struct{ *pulumi.OutputState }
 
-func (DataFlowEndpointKafkaBatchingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowEndpointKafkaBatching)(nil)).Elem()
+func (DataflowEndpointKafkaBatchingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowEndpointKafkaBatching)(nil)).Elem()
 }
 
-func (o DataFlowEndpointKafkaBatchingOutput) ToDataFlowEndpointKafkaBatchingOutput() DataFlowEndpointKafkaBatchingOutput {
+func (o DataflowEndpointKafkaBatchingOutput) ToDataflowEndpointKafkaBatchingOutput() DataflowEndpointKafkaBatchingOutput {
 	return o
 }
 
-func (o DataFlowEndpointKafkaBatchingOutput) ToDataFlowEndpointKafkaBatchingOutputWithContext(ctx context.Context) DataFlowEndpointKafkaBatchingOutput {
+func (o DataflowEndpointKafkaBatchingOutput) ToDataflowEndpointKafkaBatchingOutputWithContext(ctx context.Context) DataflowEndpointKafkaBatchingOutput {
 	return o
 }
 
-func (o DataFlowEndpointKafkaBatchingOutput) ToDataFlowEndpointKafkaBatchingPtrOutput() DataFlowEndpointKafkaBatchingPtrOutput {
-	return o.ToDataFlowEndpointKafkaBatchingPtrOutputWithContext(context.Background())
+func (o DataflowEndpointKafkaBatchingOutput) ToDataflowEndpointKafkaBatchingPtrOutput() DataflowEndpointKafkaBatchingPtrOutput {
+	return o.ToDataflowEndpointKafkaBatchingPtrOutputWithContext(context.Background())
 }
 
-func (o DataFlowEndpointKafkaBatchingOutput) ToDataFlowEndpointKafkaBatchingPtrOutputWithContext(ctx context.Context) DataFlowEndpointKafkaBatchingPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataFlowEndpointKafkaBatching) *DataFlowEndpointKafkaBatching {
+func (o DataflowEndpointKafkaBatchingOutput) ToDataflowEndpointKafkaBatchingPtrOutputWithContext(ctx context.Context) DataflowEndpointKafkaBatchingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataflowEndpointKafkaBatching) *DataflowEndpointKafkaBatching {
 		return &v
-	}).(DataFlowEndpointKafkaBatchingPtrOutput)
+	}).(DataflowEndpointKafkaBatchingPtrOutput)
 }
 
 // Batching latency in milliseconds.
-func (o DataFlowEndpointKafkaBatchingOutput) LatencyMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointKafkaBatching) *int { return v.LatencyMs }).(pulumi.IntPtrOutput)
+func (o DataflowEndpointKafkaBatchingOutput) LatencyMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DataflowEndpointKafkaBatching) *int { return v.LatencyMs }).(pulumi.IntPtrOutput)
 }
 
 // Maximum number of bytes in a batch.
-func (o DataFlowEndpointKafkaBatchingOutput) MaxBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointKafkaBatching) *int { return v.MaxBytes }).(pulumi.IntPtrOutput)
+func (o DataflowEndpointKafkaBatchingOutput) MaxBytes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DataflowEndpointKafkaBatching) *int { return v.MaxBytes }).(pulumi.IntPtrOutput)
 }
 
 // Maximum number of messages in a batch.
-func (o DataFlowEndpointKafkaBatchingOutput) MaxMessages() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointKafkaBatching) *int { return v.MaxMessages }).(pulumi.IntPtrOutput)
+func (o DataflowEndpointKafkaBatchingOutput) MaxMessages() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DataflowEndpointKafkaBatching) *int { return v.MaxMessages }).(pulumi.IntPtrOutput)
 }
 
 // Mode for batching.
-func (o DataFlowEndpointKafkaBatchingOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointKafkaBatching) *string { return v.Mode }).(pulumi.StringPtrOutput)
+func (o DataflowEndpointKafkaBatchingOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowEndpointKafkaBatching) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
 
-type DataFlowEndpointKafkaBatchingPtrOutput struct{ *pulumi.OutputState }
+type DataflowEndpointKafkaBatchingPtrOutput struct{ *pulumi.OutputState }
 
-func (DataFlowEndpointKafkaBatchingPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DataFlowEndpointKafkaBatching)(nil)).Elem()
+func (DataflowEndpointKafkaBatchingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowEndpointKafkaBatching)(nil)).Elem()
 }
 
-func (o DataFlowEndpointKafkaBatchingPtrOutput) ToDataFlowEndpointKafkaBatchingPtrOutput() DataFlowEndpointKafkaBatchingPtrOutput {
+func (o DataflowEndpointKafkaBatchingPtrOutput) ToDataflowEndpointKafkaBatchingPtrOutput() DataflowEndpointKafkaBatchingPtrOutput {
 	return o
 }
 
-func (o DataFlowEndpointKafkaBatchingPtrOutput) ToDataFlowEndpointKafkaBatchingPtrOutputWithContext(ctx context.Context) DataFlowEndpointKafkaBatchingPtrOutput {
+func (o DataflowEndpointKafkaBatchingPtrOutput) ToDataflowEndpointKafkaBatchingPtrOutputWithContext(ctx context.Context) DataflowEndpointKafkaBatchingPtrOutput {
 	return o
 }
 
-func (o DataFlowEndpointKafkaBatchingPtrOutput) Elem() DataFlowEndpointKafkaBatchingOutput {
-	return o.ApplyT(func(v *DataFlowEndpointKafkaBatching) DataFlowEndpointKafkaBatching {
+func (o DataflowEndpointKafkaBatchingPtrOutput) Elem() DataflowEndpointKafkaBatchingOutput {
+	return o.ApplyT(func(v *DataflowEndpointKafkaBatching) DataflowEndpointKafkaBatching {
 		if v != nil {
 			return *v
 		}
-		var ret DataFlowEndpointKafkaBatching
+		var ret DataflowEndpointKafkaBatching
 		return ret
-	}).(DataFlowEndpointKafkaBatchingOutput)
+	}).(DataflowEndpointKafkaBatchingOutput)
 }
 
 // Batching latency in milliseconds.
-func (o DataFlowEndpointKafkaBatchingPtrOutput) LatencyMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointKafkaBatching) *int {
+func (o DataflowEndpointKafkaBatchingPtrOutput) LatencyMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointKafkaBatching) *int {
 		if v == nil {
 			return nil
 		}
@@ -10426,8 +11806,8 @@ func (o DataFlowEndpointKafkaBatchingPtrOutput) LatencyMs() pulumi.IntPtrOutput 
 }
 
 // Maximum number of bytes in a batch.
-func (o DataFlowEndpointKafkaBatchingPtrOutput) MaxBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointKafkaBatching) *int {
+func (o DataflowEndpointKafkaBatchingPtrOutput) MaxBytes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointKafkaBatching) *int {
 		if v == nil {
 			return nil
 		}
@@ -10436,8 +11816,8 @@ func (o DataFlowEndpointKafkaBatchingPtrOutput) MaxBytes() pulumi.IntPtrOutput {
 }
 
 // Maximum number of messages in a batch.
-func (o DataFlowEndpointKafkaBatchingPtrOutput) MaxMessages() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointKafkaBatching) *int {
+func (o DataflowEndpointKafkaBatchingPtrOutput) MaxMessages() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointKafkaBatching) *int {
 		if v == nil {
 			return nil
 		}
@@ -10446,8 +11826,8 @@ func (o DataFlowEndpointKafkaBatchingPtrOutput) MaxMessages() pulumi.IntPtrOutpu
 }
 
 // Mode for batching.
-func (o DataFlowEndpointKafkaBatchingPtrOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointKafkaBatching) *string {
+func (o DataflowEndpointKafkaBatchingPtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointKafkaBatching) *string {
 		if v == nil {
 			return nil
 		}
@@ -10456,7 +11836,7 @@ func (o DataFlowEndpointKafkaBatchingPtrOutput) Mode() pulumi.StringPtrOutput {
 }
 
 // Kafka endpoint Batching properties
-type DataFlowEndpointKafkaBatchingResponse struct {
+type DataflowEndpointKafkaBatchingResponse struct {
 	// Batching latency in milliseconds.
 	LatencyMs *int `pulumi:"latencyMs"`
 	// Maximum number of bytes in a batch.
@@ -10467,8 +11847,8 @@ type DataFlowEndpointKafkaBatchingResponse struct {
 	Mode *string `pulumi:"mode"`
 }
 
-// Defaults sets the appropriate defaults for DataFlowEndpointKafkaBatchingResponse
-func (val *DataFlowEndpointKafkaBatchingResponse) Defaults() *DataFlowEndpointKafkaBatchingResponse {
+// Defaults sets the appropriate defaults for DataflowEndpointKafkaBatchingResponse
+func (val *DataflowEndpointKafkaBatchingResponse) Defaults() *DataflowEndpointKafkaBatchingResponse {
 	if val == nil {
 		return nil
 	}
@@ -10493,67 +11873,67 @@ func (val *DataFlowEndpointKafkaBatchingResponse) Defaults() *DataFlowEndpointKa
 }
 
 // Kafka endpoint Batching properties
-type DataFlowEndpointKafkaBatchingResponseOutput struct{ *pulumi.OutputState }
+type DataflowEndpointKafkaBatchingResponseOutput struct{ *pulumi.OutputState }
 
-func (DataFlowEndpointKafkaBatchingResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowEndpointKafkaBatchingResponse)(nil)).Elem()
+func (DataflowEndpointKafkaBatchingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowEndpointKafkaBatchingResponse)(nil)).Elem()
 }
 
-func (o DataFlowEndpointKafkaBatchingResponseOutput) ToDataFlowEndpointKafkaBatchingResponseOutput() DataFlowEndpointKafkaBatchingResponseOutput {
+func (o DataflowEndpointKafkaBatchingResponseOutput) ToDataflowEndpointKafkaBatchingResponseOutput() DataflowEndpointKafkaBatchingResponseOutput {
 	return o
 }
 
-func (o DataFlowEndpointKafkaBatchingResponseOutput) ToDataFlowEndpointKafkaBatchingResponseOutputWithContext(ctx context.Context) DataFlowEndpointKafkaBatchingResponseOutput {
+func (o DataflowEndpointKafkaBatchingResponseOutput) ToDataflowEndpointKafkaBatchingResponseOutputWithContext(ctx context.Context) DataflowEndpointKafkaBatchingResponseOutput {
 	return o
 }
 
 // Batching latency in milliseconds.
-func (o DataFlowEndpointKafkaBatchingResponseOutput) LatencyMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointKafkaBatchingResponse) *int { return v.LatencyMs }).(pulumi.IntPtrOutput)
+func (o DataflowEndpointKafkaBatchingResponseOutput) LatencyMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DataflowEndpointKafkaBatchingResponse) *int { return v.LatencyMs }).(pulumi.IntPtrOutput)
 }
 
 // Maximum number of bytes in a batch.
-func (o DataFlowEndpointKafkaBatchingResponseOutput) MaxBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointKafkaBatchingResponse) *int { return v.MaxBytes }).(pulumi.IntPtrOutput)
+func (o DataflowEndpointKafkaBatchingResponseOutput) MaxBytes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DataflowEndpointKafkaBatchingResponse) *int { return v.MaxBytes }).(pulumi.IntPtrOutput)
 }
 
 // Maximum number of messages in a batch.
-func (o DataFlowEndpointKafkaBatchingResponseOutput) MaxMessages() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointKafkaBatchingResponse) *int { return v.MaxMessages }).(pulumi.IntPtrOutput)
+func (o DataflowEndpointKafkaBatchingResponseOutput) MaxMessages() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DataflowEndpointKafkaBatchingResponse) *int { return v.MaxMessages }).(pulumi.IntPtrOutput)
 }
 
 // Mode for batching.
-func (o DataFlowEndpointKafkaBatchingResponseOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointKafkaBatchingResponse) *string { return v.Mode }).(pulumi.StringPtrOutput)
+func (o DataflowEndpointKafkaBatchingResponseOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowEndpointKafkaBatchingResponse) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
 
-type DataFlowEndpointKafkaBatchingResponsePtrOutput struct{ *pulumi.OutputState }
+type DataflowEndpointKafkaBatchingResponsePtrOutput struct{ *pulumi.OutputState }
 
-func (DataFlowEndpointKafkaBatchingResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DataFlowEndpointKafkaBatchingResponse)(nil)).Elem()
+func (DataflowEndpointKafkaBatchingResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowEndpointKafkaBatchingResponse)(nil)).Elem()
 }
 
-func (o DataFlowEndpointKafkaBatchingResponsePtrOutput) ToDataFlowEndpointKafkaBatchingResponsePtrOutput() DataFlowEndpointKafkaBatchingResponsePtrOutput {
+func (o DataflowEndpointKafkaBatchingResponsePtrOutput) ToDataflowEndpointKafkaBatchingResponsePtrOutput() DataflowEndpointKafkaBatchingResponsePtrOutput {
 	return o
 }
 
-func (o DataFlowEndpointKafkaBatchingResponsePtrOutput) ToDataFlowEndpointKafkaBatchingResponsePtrOutputWithContext(ctx context.Context) DataFlowEndpointKafkaBatchingResponsePtrOutput {
+func (o DataflowEndpointKafkaBatchingResponsePtrOutput) ToDataflowEndpointKafkaBatchingResponsePtrOutputWithContext(ctx context.Context) DataflowEndpointKafkaBatchingResponsePtrOutput {
 	return o
 }
 
-func (o DataFlowEndpointKafkaBatchingResponsePtrOutput) Elem() DataFlowEndpointKafkaBatchingResponseOutput {
-	return o.ApplyT(func(v *DataFlowEndpointKafkaBatchingResponse) DataFlowEndpointKafkaBatchingResponse {
+func (o DataflowEndpointKafkaBatchingResponsePtrOutput) Elem() DataflowEndpointKafkaBatchingResponseOutput {
+	return o.ApplyT(func(v *DataflowEndpointKafkaBatchingResponse) DataflowEndpointKafkaBatchingResponse {
 		if v != nil {
 			return *v
 		}
-		var ret DataFlowEndpointKafkaBatchingResponse
+		var ret DataflowEndpointKafkaBatchingResponse
 		return ret
-	}).(DataFlowEndpointKafkaBatchingResponseOutput)
+	}).(DataflowEndpointKafkaBatchingResponseOutput)
 }
 
 // Batching latency in milliseconds.
-func (o DataFlowEndpointKafkaBatchingResponsePtrOutput) LatencyMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointKafkaBatchingResponse) *int {
+func (o DataflowEndpointKafkaBatchingResponsePtrOutput) LatencyMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointKafkaBatchingResponse) *int {
 		if v == nil {
 			return nil
 		}
@@ -10562,8 +11942,8 @@ func (o DataFlowEndpointKafkaBatchingResponsePtrOutput) LatencyMs() pulumi.IntPt
 }
 
 // Maximum number of bytes in a batch.
-func (o DataFlowEndpointKafkaBatchingResponsePtrOutput) MaxBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointKafkaBatchingResponse) *int {
+func (o DataflowEndpointKafkaBatchingResponsePtrOutput) MaxBytes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointKafkaBatchingResponse) *int {
 		if v == nil {
 			return nil
 		}
@@ -10572,8 +11952,8 @@ func (o DataFlowEndpointKafkaBatchingResponsePtrOutput) MaxBytes() pulumi.IntPtr
 }
 
 // Maximum number of messages in a batch.
-func (o DataFlowEndpointKafkaBatchingResponsePtrOutput) MaxMessages() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointKafkaBatchingResponse) *int {
+func (o DataflowEndpointKafkaBatchingResponsePtrOutput) MaxMessages() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointKafkaBatchingResponse) *int {
 		if v == nil {
 			return nil
 		}
@@ -10582,8 +11962,8 @@ func (o DataFlowEndpointKafkaBatchingResponsePtrOutput) MaxMessages() pulumi.Int
 }
 
 // Mode for batching.
-func (o DataFlowEndpointKafkaBatchingResponsePtrOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointKafkaBatchingResponse) *string {
+func (o DataflowEndpointKafkaBatchingResponsePtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointKafkaBatchingResponse) *string {
 		if v == nil {
 			return nil
 		}
@@ -10592,9 +11972,13 @@ func (o DataFlowEndpointKafkaBatchingResponsePtrOutput) Mode() pulumi.StringPtrO
 }
 
 // Kafka endpoint properties
-type DataFlowEndpointKafkaResponse struct {
+type DataflowEndpointKafkaResponse struct {
+	// Authentication configuration. NOTE - only authentication property is allowed per entry.
+	Authentication DataflowEndpointKafkaAuthenticationResponse `pulumi:"authentication"`
 	// Batching configuration.
-	Batching *DataFlowEndpointKafkaBatchingResponse `pulumi:"batching"`
+	Batching *DataflowEndpointKafkaBatchingResponse `pulumi:"batching"`
+	// Cloud event mapping config.
+	CloudEventAttributes *string `pulumi:"cloudEventAttributes"`
 	// Compression. Can be none, gzip, lz4, or snappy. No effect if the endpoint is used as a source.
 	Compression *string `pulumi:"compression"`
 	// Consumer group ID.
@@ -10602,17 +11986,17 @@ type DataFlowEndpointKafkaResponse struct {
 	// Copy Broker properties. No effect if the endpoint is used as a source or if the dataflow doesn't have an Broker source.
 	CopyMqttProperties *string `pulumi:"copyMqttProperties"`
 	// Kafka endpoint host.
-	Host *string `pulumi:"host"`
+	Host string `pulumi:"host"`
 	// Kafka acks. Can be all, one, or zero. No effect if the endpoint is used as a source.
 	KafkaAcks *string `pulumi:"kafkaAcks"`
 	// Partition handling strategy. Can be default or static. No effect if the endpoint is used as a source.
 	PartitionStrategy *string `pulumi:"partitionStrategy"`
 	// TLS configuration.
-	Tls TlsPropertiesResponse `pulumi:"tls"`
+	Tls *TlsPropertiesResponse `pulumi:"tls"`
 }
 
-// Defaults sets the appropriate defaults for DataFlowEndpointKafkaResponse
-func (val *DataFlowEndpointKafkaResponse) Defaults() *DataFlowEndpointKafkaResponse {
+// Defaults sets the appropriate defaults for DataflowEndpointKafkaResponse
+func (val *DataflowEndpointKafkaResponse) Defaults() *DataflowEndpointKafkaResponse {
 	if val == nil {
 		return nil
 	}
@@ -10624,7 +12008,7 @@ func (val *DataFlowEndpointKafkaResponse) Defaults() *DataFlowEndpointKafkaRespo
 		tmp.Compression = &compression_
 	}
 	if tmp.CopyMqttProperties == nil {
-		copyMqttProperties_ := "Disabled"
+		copyMqttProperties_ := "Enabled"
 		tmp.CopyMqttProperties = &copyMqttProperties_
 	}
 	if tmp.KafkaAcks == nil {
@@ -10635,103 +12019,135 @@ func (val *DataFlowEndpointKafkaResponse) Defaults() *DataFlowEndpointKafkaRespo
 		partitionStrategy_ := "Default"
 		tmp.PartitionStrategy = &partitionStrategy_
 	}
-	tmp.Tls = *tmp.Tls.Defaults()
+	tmp.Tls = tmp.Tls.Defaults()
 
 	return &tmp
 }
 
 // Kafka endpoint properties
-type DataFlowEndpointKafkaResponseOutput struct{ *pulumi.OutputState }
+type DataflowEndpointKafkaResponseOutput struct{ *pulumi.OutputState }
 
-func (DataFlowEndpointKafkaResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowEndpointKafkaResponse)(nil)).Elem()
+func (DataflowEndpointKafkaResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowEndpointKafkaResponse)(nil)).Elem()
 }
 
-func (o DataFlowEndpointKafkaResponseOutput) ToDataFlowEndpointKafkaResponseOutput() DataFlowEndpointKafkaResponseOutput {
+func (o DataflowEndpointKafkaResponseOutput) ToDataflowEndpointKafkaResponseOutput() DataflowEndpointKafkaResponseOutput {
 	return o
 }
 
-func (o DataFlowEndpointKafkaResponseOutput) ToDataFlowEndpointKafkaResponseOutputWithContext(ctx context.Context) DataFlowEndpointKafkaResponseOutput {
+func (o DataflowEndpointKafkaResponseOutput) ToDataflowEndpointKafkaResponseOutputWithContext(ctx context.Context) DataflowEndpointKafkaResponseOutput {
 	return o
+}
+
+// Authentication configuration. NOTE - only authentication property is allowed per entry.
+func (o DataflowEndpointKafkaResponseOutput) Authentication() DataflowEndpointKafkaAuthenticationResponseOutput {
+	return o.ApplyT(func(v DataflowEndpointKafkaResponse) DataflowEndpointKafkaAuthenticationResponse {
+		return v.Authentication
+	}).(DataflowEndpointKafkaAuthenticationResponseOutput)
 }
 
 // Batching configuration.
-func (o DataFlowEndpointKafkaResponseOutput) Batching() DataFlowEndpointKafkaBatchingResponsePtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointKafkaResponse) *DataFlowEndpointKafkaBatchingResponse { return v.Batching }).(DataFlowEndpointKafkaBatchingResponsePtrOutput)
+func (o DataflowEndpointKafkaResponseOutput) Batching() DataflowEndpointKafkaBatchingResponsePtrOutput {
+	return o.ApplyT(func(v DataflowEndpointKafkaResponse) *DataflowEndpointKafkaBatchingResponse { return v.Batching }).(DataflowEndpointKafkaBatchingResponsePtrOutput)
+}
+
+// Cloud event mapping config.
+func (o DataflowEndpointKafkaResponseOutput) CloudEventAttributes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowEndpointKafkaResponse) *string { return v.CloudEventAttributes }).(pulumi.StringPtrOutput)
 }
 
 // Compression. Can be none, gzip, lz4, or snappy. No effect if the endpoint is used as a source.
-func (o DataFlowEndpointKafkaResponseOutput) Compression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointKafkaResponse) *string { return v.Compression }).(pulumi.StringPtrOutput)
+func (o DataflowEndpointKafkaResponseOutput) Compression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowEndpointKafkaResponse) *string { return v.Compression }).(pulumi.StringPtrOutput)
 }
 
 // Consumer group ID.
-func (o DataFlowEndpointKafkaResponseOutput) ConsumerGroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointKafkaResponse) *string { return v.ConsumerGroupId }).(pulumi.StringPtrOutput)
+func (o DataflowEndpointKafkaResponseOutput) ConsumerGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowEndpointKafkaResponse) *string { return v.ConsumerGroupId }).(pulumi.StringPtrOutput)
 }
 
 // Copy Broker properties. No effect if the endpoint is used as a source or if the dataflow doesn't have an Broker source.
-func (o DataFlowEndpointKafkaResponseOutput) CopyMqttProperties() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointKafkaResponse) *string { return v.CopyMqttProperties }).(pulumi.StringPtrOutput)
+func (o DataflowEndpointKafkaResponseOutput) CopyMqttProperties() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowEndpointKafkaResponse) *string { return v.CopyMqttProperties }).(pulumi.StringPtrOutput)
 }
 
 // Kafka endpoint host.
-func (o DataFlowEndpointKafkaResponseOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointKafkaResponse) *string { return v.Host }).(pulumi.StringPtrOutput)
+func (o DataflowEndpointKafkaResponseOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowEndpointKafkaResponse) string { return v.Host }).(pulumi.StringOutput)
 }
 
 // Kafka acks. Can be all, one, or zero. No effect if the endpoint is used as a source.
-func (o DataFlowEndpointKafkaResponseOutput) KafkaAcks() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointKafkaResponse) *string { return v.KafkaAcks }).(pulumi.StringPtrOutput)
+func (o DataflowEndpointKafkaResponseOutput) KafkaAcks() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowEndpointKafkaResponse) *string { return v.KafkaAcks }).(pulumi.StringPtrOutput)
 }
 
 // Partition handling strategy. Can be default or static. No effect if the endpoint is used as a source.
-func (o DataFlowEndpointKafkaResponseOutput) PartitionStrategy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointKafkaResponse) *string { return v.PartitionStrategy }).(pulumi.StringPtrOutput)
+func (o DataflowEndpointKafkaResponseOutput) PartitionStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowEndpointKafkaResponse) *string { return v.PartitionStrategy }).(pulumi.StringPtrOutput)
 }
 
 // TLS configuration.
-func (o DataFlowEndpointKafkaResponseOutput) Tls() TlsPropertiesResponseOutput {
-	return o.ApplyT(func(v DataFlowEndpointKafkaResponse) TlsPropertiesResponse { return v.Tls }).(TlsPropertiesResponseOutput)
+func (o DataflowEndpointKafkaResponseOutput) Tls() TlsPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v DataflowEndpointKafkaResponse) *TlsPropertiesResponse { return v.Tls }).(TlsPropertiesResponsePtrOutput)
 }
 
-type DataFlowEndpointKafkaResponsePtrOutput struct{ *pulumi.OutputState }
+type DataflowEndpointKafkaResponsePtrOutput struct{ *pulumi.OutputState }
 
-func (DataFlowEndpointKafkaResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DataFlowEndpointKafkaResponse)(nil)).Elem()
+func (DataflowEndpointKafkaResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowEndpointKafkaResponse)(nil)).Elem()
 }
 
-func (o DataFlowEndpointKafkaResponsePtrOutput) ToDataFlowEndpointKafkaResponsePtrOutput() DataFlowEndpointKafkaResponsePtrOutput {
+func (o DataflowEndpointKafkaResponsePtrOutput) ToDataflowEndpointKafkaResponsePtrOutput() DataflowEndpointKafkaResponsePtrOutput {
 	return o
 }
 
-func (o DataFlowEndpointKafkaResponsePtrOutput) ToDataFlowEndpointKafkaResponsePtrOutputWithContext(ctx context.Context) DataFlowEndpointKafkaResponsePtrOutput {
+func (o DataflowEndpointKafkaResponsePtrOutput) ToDataflowEndpointKafkaResponsePtrOutputWithContext(ctx context.Context) DataflowEndpointKafkaResponsePtrOutput {
 	return o
 }
 
-func (o DataFlowEndpointKafkaResponsePtrOutput) Elem() DataFlowEndpointKafkaResponseOutput {
-	return o.ApplyT(func(v *DataFlowEndpointKafkaResponse) DataFlowEndpointKafkaResponse {
+func (o DataflowEndpointKafkaResponsePtrOutput) Elem() DataflowEndpointKafkaResponseOutput {
+	return o.ApplyT(func(v *DataflowEndpointKafkaResponse) DataflowEndpointKafkaResponse {
 		if v != nil {
 			return *v
 		}
-		var ret DataFlowEndpointKafkaResponse
+		var ret DataflowEndpointKafkaResponse
 		return ret
-	}).(DataFlowEndpointKafkaResponseOutput)
+	}).(DataflowEndpointKafkaResponseOutput)
+}
+
+// Authentication configuration. NOTE - only authentication property is allowed per entry.
+func (o DataflowEndpointKafkaResponsePtrOutput) Authentication() DataflowEndpointKafkaAuthenticationResponsePtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointKafkaResponse) *DataflowEndpointKafkaAuthenticationResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Authentication
+	}).(DataflowEndpointKafkaAuthenticationResponsePtrOutput)
 }
 
 // Batching configuration.
-func (o DataFlowEndpointKafkaResponsePtrOutput) Batching() DataFlowEndpointKafkaBatchingResponsePtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointKafkaResponse) *DataFlowEndpointKafkaBatchingResponse {
+func (o DataflowEndpointKafkaResponsePtrOutput) Batching() DataflowEndpointKafkaBatchingResponsePtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointKafkaResponse) *DataflowEndpointKafkaBatchingResponse {
 		if v == nil {
 			return nil
 		}
 		return v.Batching
-	}).(DataFlowEndpointKafkaBatchingResponsePtrOutput)
+	}).(DataflowEndpointKafkaBatchingResponsePtrOutput)
+}
+
+// Cloud event mapping config.
+func (o DataflowEndpointKafkaResponsePtrOutput) CloudEventAttributes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointKafkaResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CloudEventAttributes
+	}).(pulumi.StringPtrOutput)
 }
 
 // Compression. Can be none, gzip, lz4, or snappy. No effect if the endpoint is used as a source.
-func (o DataFlowEndpointKafkaResponsePtrOutput) Compression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointKafkaResponse) *string {
+func (o DataflowEndpointKafkaResponsePtrOutput) Compression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointKafkaResponse) *string {
 		if v == nil {
 			return nil
 		}
@@ -10740,8 +12156,8 @@ func (o DataFlowEndpointKafkaResponsePtrOutput) Compression() pulumi.StringPtrOu
 }
 
 // Consumer group ID.
-func (o DataFlowEndpointKafkaResponsePtrOutput) ConsumerGroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointKafkaResponse) *string {
+func (o DataflowEndpointKafkaResponsePtrOutput) ConsumerGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointKafkaResponse) *string {
 		if v == nil {
 			return nil
 		}
@@ -10750,8 +12166,8 @@ func (o DataFlowEndpointKafkaResponsePtrOutput) ConsumerGroupId() pulumi.StringP
 }
 
 // Copy Broker properties. No effect if the endpoint is used as a source or if the dataflow doesn't have an Broker source.
-func (o DataFlowEndpointKafkaResponsePtrOutput) CopyMqttProperties() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointKafkaResponse) *string {
+func (o DataflowEndpointKafkaResponsePtrOutput) CopyMqttProperties() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointKafkaResponse) *string {
 		if v == nil {
 			return nil
 		}
@@ -10760,18 +12176,18 @@ func (o DataFlowEndpointKafkaResponsePtrOutput) CopyMqttProperties() pulumi.Stri
 }
 
 // Kafka endpoint host.
-func (o DataFlowEndpointKafkaResponsePtrOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointKafkaResponse) *string {
+func (o DataflowEndpointKafkaResponsePtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointKafkaResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Host
+		return &v.Host
 	}).(pulumi.StringPtrOutput)
 }
 
 // Kafka acks. Can be all, one, or zero. No effect if the endpoint is used as a source.
-func (o DataFlowEndpointKafkaResponsePtrOutput) KafkaAcks() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointKafkaResponse) *string {
+func (o DataflowEndpointKafkaResponsePtrOutput) KafkaAcks() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointKafkaResponse) *string {
 		if v == nil {
 			return nil
 		}
@@ -10780,8 +12196,8 @@ func (o DataFlowEndpointKafkaResponsePtrOutput) KafkaAcks() pulumi.StringPtrOutp
 }
 
 // Partition handling strategy. Can be default or static. No effect if the endpoint is used as a source.
-func (o DataFlowEndpointKafkaResponsePtrOutput) PartitionStrategy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointKafkaResponse) *string {
+func (o DataflowEndpointKafkaResponsePtrOutput) PartitionStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointKafkaResponse) *string {
 		if v == nil {
 			return nil
 		}
@@ -10790,148 +12206,148 @@ func (o DataFlowEndpointKafkaResponsePtrOutput) PartitionStrategy() pulumi.Strin
 }
 
 // TLS configuration.
-func (o DataFlowEndpointKafkaResponsePtrOutput) Tls() TlsPropertiesResponsePtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointKafkaResponse) *TlsPropertiesResponse {
+func (o DataflowEndpointKafkaResponsePtrOutput) Tls() TlsPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointKafkaResponse) *TlsPropertiesResponse {
 		if v == nil {
 			return nil
 		}
-		return &v.Tls
+		return v.Tls
 	}).(TlsPropertiesResponsePtrOutput)
 }
 
 // Local persistent volume endpoint properties
-type DataFlowEndpointLocalStorage struct {
+type DataflowEndpointLocalStorage struct {
 	// Persistent volume claim name.
 	PersistentVolumeClaimRef string `pulumi:"persistentVolumeClaimRef"`
 }
 
-// DataFlowEndpointLocalStorageInput is an input type that accepts DataFlowEndpointLocalStorageArgs and DataFlowEndpointLocalStorageOutput values.
-// You can construct a concrete instance of `DataFlowEndpointLocalStorageInput` via:
+// DataflowEndpointLocalStorageInput is an input type that accepts DataflowEndpointLocalStorageArgs and DataflowEndpointLocalStorageOutput values.
+// You can construct a concrete instance of `DataflowEndpointLocalStorageInput` via:
 //
-//	DataFlowEndpointLocalStorageArgs{...}
-type DataFlowEndpointLocalStorageInput interface {
+//	DataflowEndpointLocalStorageArgs{...}
+type DataflowEndpointLocalStorageInput interface {
 	pulumi.Input
 
-	ToDataFlowEndpointLocalStorageOutput() DataFlowEndpointLocalStorageOutput
-	ToDataFlowEndpointLocalStorageOutputWithContext(context.Context) DataFlowEndpointLocalStorageOutput
+	ToDataflowEndpointLocalStorageOutput() DataflowEndpointLocalStorageOutput
+	ToDataflowEndpointLocalStorageOutputWithContext(context.Context) DataflowEndpointLocalStorageOutput
 }
 
 // Local persistent volume endpoint properties
-type DataFlowEndpointLocalStorageArgs struct {
+type DataflowEndpointLocalStorageArgs struct {
 	// Persistent volume claim name.
 	PersistentVolumeClaimRef pulumi.StringInput `pulumi:"persistentVolumeClaimRef"`
 }
 
-func (DataFlowEndpointLocalStorageArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowEndpointLocalStorage)(nil)).Elem()
+func (DataflowEndpointLocalStorageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowEndpointLocalStorage)(nil)).Elem()
 }
 
-func (i DataFlowEndpointLocalStorageArgs) ToDataFlowEndpointLocalStorageOutput() DataFlowEndpointLocalStorageOutput {
-	return i.ToDataFlowEndpointLocalStorageOutputWithContext(context.Background())
+func (i DataflowEndpointLocalStorageArgs) ToDataflowEndpointLocalStorageOutput() DataflowEndpointLocalStorageOutput {
+	return i.ToDataflowEndpointLocalStorageOutputWithContext(context.Background())
 }
 
-func (i DataFlowEndpointLocalStorageArgs) ToDataFlowEndpointLocalStorageOutputWithContext(ctx context.Context) DataFlowEndpointLocalStorageOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataFlowEndpointLocalStorageOutput)
+func (i DataflowEndpointLocalStorageArgs) ToDataflowEndpointLocalStorageOutputWithContext(ctx context.Context) DataflowEndpointLocalStorageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowEndpointLocalStorageOutput)
 }
 
-func (i DataFlowEndpointLocalStorageArgs) ToDataFlowEndpointLocalStoragePtrOutput() DataFlowEndpointLocalStoragePtrOutput {
-	return i.ToDataFlowEndpointLocalStoragePtrOutputWithContext(context.Background())
+func (i DataflowEndpointLocalStorageArgs) ToDataflowEndpointLocalStoragePtrOutput() DataflowEndpointLocalStoragePtrOutput {
+	return i.ToDataflowEndpointLocalStoragePtrOutputWithContext(context.Background())
 }
 
-func (i DataFlowEndpointLocalStorageArgs) ToDataFlowEndpointLocalStoragePtrOutputWithContext(ctx context.Context) DataFlowEndpointLocalStoragePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataFlowEndpointLocalStorageOutput).ToDataFlowEndpointLocalStoragePtrOutputWithContext(ctx)
+func (i DataflowEndpointLocalStorageArgs) ToDataflowEndpointLocalStoragePtrOutputWithContext(ctx context.Context) DataflowEndpointLocalStoragePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowEndpointLocalStorageOutput).ToDataflowEndpointLocalStoragePtrOutputWithContext(ctx)
 }
 
-// DataFlowEndpointLocalStoragePtrInput is an input type that accepts DataFlowEndpointLocalStorageArgs, DataFlowEndpointLocalStoragePtr and DataFlowEndpointLocalStoragePtrOutput values.
-// You can construct a concrete instance of `DataFlowEndpointLocalStoragePtrInput` via:
+// DataflowEndpointLocalStoragePtrInput is an input type that accepts DataflowEndpointLocalStorageArgs, DataflowEndpointLocalStoragePtr and DataflowEndpointLocalStoragePtrOutput values.
+// You can construct a concrete instance of `DataflowEndpointLocalStoragePtrInput` via:
 //
-//	        DataFlowEndpointLocalStorageArgs{...}
+//	        DataflowEndpointLocalStorageArgs{...}
 //
 //	or:
 //
 //	        nil
-type DataFlowEndpointLocalStoragePtrInput interface {
+type DataflowEndpointLocalStoragePtrInput interface {
 	pulumi.Input
 
-	ToDataFlowEndpointLocalStoragePtrOutput() DataFlowEndpointLocalStoragePtrOutput
-	ToDataFlowEndpointLocalStoragePtrOutputWithContext(context.Context) DataFlowEndpointLocalStoragePtrOutput
+	ToDataflowEndpointLocalStoragePtrOutput() DataflowEndpointLocalStoragePtrOutput
+	ToDataflowEndpointLocalStoragePtrOutputWithContext(context.Context) DataflowEndpointLocalStoragePtrOutput
 }
 
-type dataFlowEndpointLocalStoragePtrType DataFlowEndpointLocalStorageArgs
+type dataflowEndpointLocalStoragePtrType DataflowEndpointLocalStorageArgs
 
-func DataFlowEndpointLocalStoragePtr(v *DataFlowEndpointLocalStorageArgs) DataFlowEndpointLocalStoragePtrInput {
-	return (*dataFlowEndpointLocalStoragePtrType)(v)
+func DataflowEndpointLocalStoragePtr(v *DataflowEndpointLocalStorageArgs) DataflowEndpointLocalStoragePtrInput {
+	return (*dataflowEndpointLocalStoragePtrType)(v)
 }
 
-func (*dataFlowEndpointLocalStoragePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DataFlowEndpointLocalStorage)(nil)).Elem()
+func (*dataflowEndpointLocalStoragePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowEndpointLocalStorage)(nil)).Elem()
 }
 
-func (i *dataFlowEndpointLocalStoragePtrType) ToDataFlowEndpointLocalStoragePtrOutput() DataFlowEndpointLocalStoragePtrOutput {
-	return i.ToDataFlowEndpointLocalStoragePtrOutputWithContext(context.Background())
+func (i *dataflowEndpointLocalStoragePtrType) ToDataflowEndpointLocalStoragePtrOutput() DataflowEndpointLocalStoragePtrOutput {
+	return i.ToDataflowEndpointLocalStoragePtrOutputWithContext(context.Background())
 }
 
-func (i *dataFlowEndpointLocalStoragePtrType) ToDataFlowEndpointLocalStoragePtrOutputWithContext(ctx context.Context) DataFlowEndpointLocalStoragePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataFlowEndpointLocalStoragePtrOutput)
+func (i *dataflowEndpointLocalStoragePtrType) ToDataflowEndpointLocalStoragePtrOutputWithContext(ctx context.Context) DataflowEndpointLocalStoragePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowEndpointLocalStoragePtrOutput)
 }
 
 // Local persistent volume endpoint properties
-type DataFlowEndpointLocalStorageOutput struct{ *pulumi.OutputState }
+type DataflowEndpointLocalStorageOutput struct{ *pulumi.OutputState }
 
-func (DataFlowEndpointLocalStorageOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowEndpointLocalStorage)(nil)).Elem()
+func (DataflowEndpointLocalStorageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowEndpointLocalStorage)(nil)).Elem()
 }
 
-func (o DataFlowEndpointLocalStorageOutput) ToDataFlowEndpointLocalStorageOutput() DataFlowEndpointLocalStorageOutput {
+func (o DataflowEndpointLocalStorageOutput) ToDataflowEndpointLocalStorageOutput() DataflowEndpointLocalStorageOutput {
 	return o
 }
 
-func (o DataFlowEndpointLocalStorageOutput) ToDataFlowEndpointLocalStorageOutputWithContext(ctx context.Context) DataFlowEndpointLocalStorageOutput {
+func (o DataflowEndpointLocalStorageOutput) ToDataflowEndpointLocalStorageOutputWithContext(ctx context.Context) DataflowEndpointLocalStorageOutput {
 	return o
 }
 
-func (o DataFlowEndpointLocalStorageOutput) ToDataFlowEndpointLocalStoragePtrOutput() DataFlowEndpointLocalStoragePtrOutput {
-	return o.ToDataFlowEndpointLocalStoragePtrOutputWithContext(context.Background())
+func (o DataflowEndpointLocalStorageOutput) ToDataflowEndpointLocalStoragePtrOutput() DataflowEndpointLocalStoragePtrOutput {
+	return o.ToDataflowEndpointLocalStoragePtrOutputWithContext(context.Background())
 }
 
-func (o DataFlowEndpointLocalStorageOutput) ToDataFlowEndpointLocalStoragePtrOutputWithContext(ctx context.Context) DataFlowEndpointLocalStoragePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataFlowEndpointLocalStorage) *DataFlowEndpointLocalStorage {
+func (o DataflowEndpointLocalStorageOutput) ToDataflowEndpointLocalStoragePtrOutputWithContext(ctx context.Context) DataflowEndpointLocalStoragePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataflowEndpointLocalStorage) *DataflowEndpointLocalStorage {
 		return &v
-	}).(DataFlowEndpointLocalStoragePtrOutput)
+	}).(DataflowEndpointLocalStoragePtrOutput)
 }
 
 // Persistent volume claim name.
-func (o DataFlowEndpointLocalStorageOutput) PersistentVolumeClaimRef() pulumi.StringOutput {
-	return o.ApplyT(func(v DataFlowEndpointLocalStorage) string { return v.PersistentVolumeClaimRef }).(pulumi.StringOutput)
+func (o DataflowEndpointLocalStorageOutput) PersistentVolumeClaimRef() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowEndpointLocalStorage) string { return v.PersistentVolumeClaimRef }).(pulumi.StringOutput)
 }
 
-type DataFlowEndpointLocalStoragePtrOutput struct{ *pulumi.OutputState }
+type DataflowEndpointLocalStoragePtrOutput struct{ *pulumi.OutputState }
 
-func (DataFlowEndpointLocalStoragePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DataFlowEndpointLocalStorage)(nil)).Elem()
+func (DataflowEndpointLocalStoragePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowEndpointLocalStorage)(nil)).Elem()
 }
 
-func (o DataFlowEndpointLocalStoragePtrOutput) ToDataFlowEndpointLocalStoragePtrOutput() DataFlowEndpointLocalStoragePtrOutput {
+func (o DataflowEndpointLocalStoragePtrOutput) ToDataflowEndpointLocalStoragePtrOutput() DataflowEndpointLocalStoragePtrOutput {
 	return o
 }
 
-func (o DataFlowEndpointLocalStoragePtrOutput) ToDataFlowEndpointLocalStoragePtrOutputWithContext(ctx context.Context) DataFlowEndpointLocalStoragePtrOutput {
+func (o DataflowEndpointLocalStoragePtrOutput) ToDataflowEndpointLocalStoragePtrOutputWithContext(ctx context.Context) DataflowEndpointLocalStoragePtrOutput {
 	return o
 }
 
-func (o DataFlowEndpointLocalStoragePtrOutput) Elem() DataFlowEndpointLocalStorageOutput {
-	return o.ApplyT(func(v *DataFlowEndpointLocalStorage) DataFlowEndpointLocalStorage {
+func (o DataflowEndpointLocalStoragePtrOutput) Elem() DataflowEndpointLocalStorageOutput {
+	return o.ApplyT(func(v *DataflowEndpointLocalStorage) DataflowEndpointLocalStorage {
 		if v != nil {
 			return *v
 		}
-		var ret DataFlowEndpointLocalStorage
+		var ret DataflowEndpointLocalStorage
 		return ret
-	}).(DataFlowEndpointLocalStorageOutput)
+	}).(DataflowEndpointLocalStorageOutput)
 }
 
 // Persistent volume claim name.
-func (o DataFlowEndpointLocalStoragePtrOutput) PersistentVolumeClaimRef() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointLocalStorage) *string {
+func (o DataflowEndpointLocalStoragePtrOutput) PersistentVolumeClaimRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointLocalStorage) *string {
 		if v == nil {
 			return nil
 		}
@@ -10940,58 +12356,58 @@ func (o DataFlowEndpointLocalStoragePtrOutput) PersistentVolumeClaimRef() pulumi
 }
 
 // Local persistent volume endpoint properties
-type DataFlowEndpointLocalStorageResponse struct {
+type DataflowEndpointLocalStorageResponse struct {
 	// Persistent volume claim name.
 	PersistentVolumeClaimRef string `pulumi:"persistentVolumeClaimRef"`
 }
 
 // Local persistent volume endpoint properties
-type DataFlowEndpointLocalStorageResponseOutput struct{ *pulumi.OutputState }
+type DataflowEndpointLocalStorageResponseOutput struct{ *pulumi.OutputState }
 
-func (DataFlowEndpointLocalStorageResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowEndpointLocalStorageResponse)(nil)).Elem()
+func (DataflowEndpointLocalStorageResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowEndpointLocalStorageResponse)(nil)).Elem()
 }
 
-func (o DataFlowEndpointLocalStorageResponseOutput) ToDataFlowEndpointLocalStorageResponseOutput() DataFlowEndpointLocalStorageResponseOutput {
+func (o DataflowEndpointLocalStorageResponseOutput) ToDataflowEndpointLocalStorageResponseOutput() DataflowEndpointLocalStorageResponseOutput {
 	return o
 }
 
-func (o DataFlowEndpointLocalStorageResponseOutput) ToDataFlowEndpointLocalStorageResponseOutputWithContext(ctx context.Context) DataFlowEndpointLocalStorageResponseOutput {
+func (o DataflowEndpointLocalStorageResponseOutput) ToDataflowEndpointLocalStorageResponseOutputWithContext(ctx context.Context) DataflowEndpointLocalStorageResponseOutput {
 	return o
 }
 
 // Persistent volume claim name.
-func (o DataFlowEndpointLocalStorageResponseOutput) PersistentVolumeClaimRef() pulumi.StringOutput {
-	return o.ApplyT(func(v DataFlowEndpointLocalStorageResponse) string { return v.PersistentVolumeClaimRef }).(pulumi.StringOutput)
+func (o DataflowEndpointLocalStorageResponseOutput) PersistentVolumeClaimRef() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowEndpointLocalStorageResponse) string { return v.PersistentVolumeClaimRef }).(pulumi.StringOutput)
 }
 
-type DataFlowEndpointLocalStorageResponsePtrOutput struct{ *pulumi.OutputState }
+type DataflowEndpointLocalStorageResponsePtrOutput struct{ *pulumi.OutputState }
 
-func (DataFlowEndpointLocalStorageResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DataFlowEndpointLocalStorageResponse)(nil)).Elem()
+func (DataflowEndpointLocalStorageResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowEndpointLocalStorageResponse)(nil)).Elem()
 }
 
-func (o DataFlowEndpointLocalStorageResponsePtrOutput) ToDataFlowEndpointLocalStorageResponsePtrOutput() DataFlowEndpointLocalStorageResponsePtrOutput {
+func (o DataflowEndpointLocalStorageResponsePtrOutput) ToDataflowEndpointLocalStorageResponsePtrOutput() DataflowEndpointLocalStorageResponsePtrOutput {
 	return o
 }
 
-func (o DataFlowEndpointLocalStorageResponsePtrOutput) ToDataFlowEndpointLocalStorageResponsePtrOutputWithContext(ctx context.Context) DataFlowEndpointLocalStorageResponsePtrOutput {
+func (o DataflowEndpointLocalStorageResponsePtrOutput) ToDataflowEndpointLocalStorageResponsePtrOutputWithContext(ctx context.Context) DataflowEndpointLocalStorageResponsePtrOutput {
 	return o
 }
 
-func (o DataFlowEndpointLocalStorageResponsePtrOutput) Elem() DataFlowEndpointLocalStorageResponseOutput {
-	return o.ApplyT(func(v *DataFlowEndpointLocalStorageResponse) DataFlowEndpointLocalStorageResponse {
+func (o DataflowEndpointLocalStorageResponsePtrOutput) Elem() DataflowEndpointLocalStorageResponseOutput {
+	return o.ApplyT(func(v *DataflowEndpointLocalStorageResponse) DataflowEndpointLocalStorageResponse {
 		if v != nil {
 			return *v
 		}
-		var ret DataFlowEndpointLocalStorageResponse
+		var ret DataflowEndpointLocalStorageResponse
 		return ret
-	}).(DataFlowEndpointLocalStorageResponseOutput)
+	}).(DataflowEndpointLocalStorageResponseOutput)
 }
 
 // Persistent volume claim name.
-func (o DataFlowEndpointLocalStorageResponsePtrOutput) PersistentVolumeClaimRef() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointLocalStorageResponse) *string {
+func (o DataflowEndpointLocalStorageResponsePtrOutput) PersistentVolumeClaimRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointLocalStorageResponse) *string {
 		if v == nil {
 			return nil
 		}
@@ -11000,9 +12416,13 @@ func (o DataFlowEndpointLocalStorageResponsePtrOutput) PersistentVolumeClaimRef(
 }
 
 // Broker endpoint properties
-type DataFlowEndpointMqtt struct {
+type DataflowEndpointMqtt struct {
+	// authentication properties. DEFAULT: kubernetes.audience=aio-internal. NOTE - Enum field only property is allowed
+	Authentication DataflowEndpointMqttAuthentication `pulumi:"authentication"`
 	// Client ID prefix. Client ID generated by the dataflow is <prefix>-TBD. Optional; no prefix if omitted.
 	ClientIdPrefix *string `pulumi:"clientIdPrefix"`
+	// Cloud event mapping config.
+	CloudEventAttributes *string `pulumi:"cloudEventAttributes"`
 	// Host of the Broker in the form of <hostname>:<port>. Optional; connects to Broker if omitted.
 	Host *string `pulumi:"host"`
 	// Broker KeepAlive for connection in seconds.
@@ -11021,16 +12441,12 @@ type DataFlowEndpointMqtt struct {
 	Tls *TlsProperties `pulumi:"tls"`
 }
 
-// Defaults sets the appropriate defaults for DataFlowEndpointMqtt
-func (val *DataFlowEndpointMqtt) Defaults() *DataFlowEndpointMqtt {
+// Defaults sets the appropriate defaults for DataflowEndpointMqtt
+func (val *DataflowEndpointMqtt) Defaults() *DataflowEndpointMqtt {
 	if val == nil {
 		return nil
 	}
 	tmp := *val
-	if tmp.Host == nil {
-		host_ := "aio-mq-dmqtt-frontend:1883"
-		tmp.Host = &host_
-	}
 	if tmp.KeepAliveSeconds == nil {
 		keepAliveSeconds_ := 60
 		tmp.KeepAliveSeconds = &keepAliveSeconds_
@@ -11051,30 +12467,30 @@ func (val *DataFlowEndpointMqtt) Defaults() *DataFlowEndpointMqtt {
 		retain_ := "Keep"
 		tmp.Retain = &retain_
 	}
-	if tmp.SessionExpirySeconds == nil {
-		sessionExpirySeconds_ := 3600
-		tmp.SessionExpirySeconds = &sessionExpirySeconds_
-	}
 	tmp.Tls = tmp.Tls.Defaults()
 
 	return &tmp
 }
 
-// DataFlowEndpointMqttInput is an input type that accepts DataFlowEndpointMqttArgs and DataFlowEndpointMqttOutput values.
-// You can construct a concrete instance of `DataFlowEndpointMqttInput` via:
+// DataflowEndpointMqttInput is an input type that accepts DataflowEndpointMqttArgs and DataflowEndpointMqttOutput values.
+// You can construct a concrete instance of `DataflowEndpointMqttInput` via:
 //
-//	DataFlowEndpointMqttArgs{...}
-type DataFlowEndpointMqttInput interface {
+//	DataflowEndpointMqttArgs{...}
+type DataflowEndpointMqttInput interface {
 	pulumi.Input
 
-	ToDataFlowEndpointMqttOutput() DataFlowEndpointMqttOutput
-	ToDataFlowEndpointMqttOutputWithContext(context.Context) DataFlowEndpointMqttOutput
+	ToDataflowEndpointMqttOutput() DataflowEndpointMqttOutput
+	ToDataflowEndpointMqttOutputWithContext(context.Context) DataflowEndpointMqttOutput
 }
 
 // Broker endpoint properties
-type DataFlowEndpointMqttArgs struct {
+type DataflowEndpointMqttArgs struct {
+	// authentication properties. DEFAULT: kubernetes.audience=aio-internal. NOTE - Enum field only property is allowed
+	Authentication DataflowEndpointMqttAuthenticationInput `pulumi:"authentication"`
 	// Client ID prefix. Client ID generated by the dataflow is <prefix>-TBD. Optional; no prefix if omitted.
 	ClientIdPrefix pulumi.StringPtrInput `pulumi:"clientIdPrefix"`
+	// Cloud event mapping config.
+	CloudEventAttributes pulumi.StringPtrInput `pulumi:"cloudEventAttributes"`
 	// Host of the Broker in the form of <hostname>:<port>. Optional; connects to Broker if omitted.
 	Host pulumi.StringPtrInput `pulumi:"host"`
 	// Broker KeepAlive for connection in seconds.
@@ -11093,15 +12509,12 @@ type DataFlowEndpointMqttArgs struct {
 	Tls TlsPropertiesPtrInput `pulumi:"tls"`
 }
 
-// Defaults sets the appropriate defaults for DataFlowEndpointMqttArgs
-func (val *DataFlowEndpointMqttArgs) Defaults() *DataFlowEndpointMqttArgs {
+// Defaults sets the appropriate defaults for DataflowEndpointMqttArgs
+func (val *DataflowEndpointMqttArgs) Defaults() *DataflowEndpointMqttArgs {
 	if val == nil {
 		return nil
 	}
 	tmp := *val
-	if tmp.Host == nil {
-		tmp.Host = pulumi.StringPtr("aio-mq-dmqtt-frontend:1883")
-	}
 	if tmp.KeepAliveSeconds == nil {
 		tmp.KeepAliveSeconds = pulumi.IntPtr(60)
 	}
@@ -11117,162 +12530,179 @@ func (val *DataFlowEndpointMqttArgs) Defaults() *DataFlowEndpointMqttArgs {
 	if tmp.Retain == nil {
 		tmp.Retain = pulumi.StringPtr("Keep")
 	}
-	if tmp.SessionExpirySeconds == nil {
-		tmp.SessionExpirySeconds = pulumi.IntPtr(3600)
-	}
 
 	return &tmp
 }
-func (DataFlowEndpointMqttArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowEndpointMqtt)(nil)).Elem()
+func (DataflowEndpointMqttArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowEndpointMqtt)(nil)).Elem()
 }
 
-func (i DataFlowEndpointMqttArgs) ToDataFlowEndpointMqttOutput() DataFlowEndpointMqttOutput {
-	return i.ToDataFlowEndpointMqttOutputWithContext(context.Background())
+func (i DataflowEndpointMqttArgs) ToDataflowEndpointMqttOutput() DataflowEndpointMqttOutput {
+	return i.ToDataflowEndpointMqttOutputWithContext(context.Background())
 }
 
-func (i DataFlowEndpointMqttArgs) ToDataFlowEndpointMqttOutputWithContext(ctx context.Context) DataFlowEndpointMqttOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataFlowEndpointMqttOutput)
+func (i DataflowEndpointMqttArgs) ToDataflowEndpointMqttOutputWithContext(ctx context.Context) DataflowEndpointMqttOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowEndpointMqttOutput)
 }
 
-func (i DataFlowEndpointMqttArgs) ToDataFlowEndpointMqttPtrOutput() DataFlowEndpointMqttPtrOutput {
-	return i.ToDataFlowEndpointMqttPtrOutputWithContext(context.Background())
+func (i DataflowEndpointMqttArgs) ToDataflowEndpointMqttPtrOutput() DataflowEndpointMqttPtrOutput {
+	return i.ToDataflowEndpointMqttPtrOutputWithContext(context.Background())
 }
 
-func (i DataFlowEndpointMqttArgs) ToDataFlowEndpointMqttPtrOutputWithContext(ctx context.Context) DataFlowEndpointMqttPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataFlowEndpointMqttOutput).ToDataFlowEndpointMqttPtrOutputWithContext(ctx)
+func (i DataflowEndpointMqttArgs) ToDataflowEndpointMqttPtrOutputWithContext(ctx context.Context) DataflowEndpointMqttPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowEndpointMqttOutput).ToDataflowEndpointMqttPtrOutputWithContext(ctx)
 }
 
-// DataFlowEndpointMqttPtrInput is an input type that accepts DataFlowEndpointMqttArgs, DataFlowEndpointMqttPtr and DataFlowEndpointMqttPtrOutput values.
-// You can construct a concrete instance of `DataFlowEndpointMqttPtrInput` via:
+// DataflowEndpointMqttPtrInput is an input type that accepts DataflowEndpointMqttArgs, DataflowEndpointMqttPtr and DataflowEndpointMqttPtrOutput values.
+// You can construct a concrete instance of `DataflowEndpointMqttPtrInput` via:
 //
-//	        DataFlowEndpointMqttArgs{...}
+//	        DataflowEndpointMqttArgs{...}
 //
 //	or:
 //
 //	        nil
-type DataFlowEndpointMqttPtrInput interface {
+type DataflowEndpointMqttPtrInput interface {
 	pulumi.Input
 
-	ToDataFlowEndpointMqttPtrOutput() DataFlowEndpointMqttPtrOutput
-	ToDataFlowEndpointMqttPtrOutputWithContext(context.Context) DataFlowEndpointMqttPtrOutput
+	ToDataflowEndpointMqttPtrOutput() DataflowEndpointMqttPtrOutput
+	ToDataflowEndpointMqttPtrOutputWithContext(context.Context) DataflowEndpointMqttPtrOutput
 }
 
-type dataFlowEndpointMqttPtrType DataFlowEndpointMqttArgs
+type dataflowEndpointMqttPtrType DataflowEndpointMqttArgs
 
-func DataFlowEndpointMqttPtr(v *DataFlowEndpointMqttArgs) DataFlowEndpointMqttPtrInput {
-	return (*dataFlowEndpointMqttPtrType)(v)
+func DataflowEndpointMqttPtr(v *DataflowEndpointMqttArgs) DataflowEndpointMqttPtrInput {
+	return (*dataflowEndpointMqttPtrType)(v)
 }
 
-func (*dataFlowEndpointMqttPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DataFlowEndpointMqtt)(nil)).Elem()
+func (*dataflowEndpointMqttPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowEndpointMqtt)(nil)).Elem()
 }
 
-func (i *dataFlowEndpointMqttPtrType) ToDataFlowEndpointMqttPtrOutput() DataFlowEndpointMqttPtrOutput {
-	return i.ToDataFlowEndpointMqttPtrOutputWithContext(context.Background())
+func (i *dataflowEndpointMqttPtrType) ToDataflowEndpointMqttPtrOutput() DataflowEndpointMqttPtrOutput {
+	return i.ToDataflowEndpointMqttPtrOutputWithContext(context.Background())
 }
 
-func (i *dataFlowEndpointMqttPtrType) ToDataFlowEndpointMqttPtrOutputWithContext(ctx context.Context) DataFlowEndpointMqttPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataFlowEndpointMqttPtrOutput)
+func (i *dataflowEndpointMqttPtrType) ToDataflowEndpointMqttPtrOutputWithContext(ctx context.Context) DataflowEndpointMqttPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowEndpointMqttPtrOutput)
 }
 
 // Broker endpoint properties
-type DataFlowEndpointMqttOutput struct{ *pulumi.OutputState }
+type DataflowEndpointMqttOutput struct{ *pulumi.OutputState }
 
-func (DataFlowEndpointMqttOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowEndpointMqtt)(nil)).Elem()
+func (DataflowEndpointMqttOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowEndpointMqtt)(nil)).Elem()
 }
 
-func (o DataFlowEndpointMqttOutput) ToDataFlowEndpointMqttOutput() DataFlowEndpointMqttOutput {
+func (o DataflowEndpointMqttOutput) ToDataflowEndpointMqttOutput() DataflowEndpointMqttOutput {
 	return o
 }
 
-func (o DataFlowEndpointMqttOutput) ToDataFlowEndpointMqttOutputWithContext(ctx context.Context) DataFlowEndpointMqttOutput {
+func (o DataflowEndpointMqttOutput) ToDataflowEndpointMqttOutputWithContext(ctx context.Context) DataflowEndpointMqttOutput {
 	return o
 }
 
-func (o DataFlowEndpointMqttOutput) ToDataFlowEndpointMqttPtrOutput() DataFlowEndpointMqttPtrOutput {
-	return o.ToDataFlowEndpointMqttPtrOutputWithContext(context.Background())
+func (o DataflowEndpointMqttOutput) ToDataflowEndpointMqttPtrOutput() DataflowEndpointMqttPtrOutput {
+	return o.ToDataflowEndpointMqttPtrOutputWithContext(context.Background())
 }
 
-func (o DataFlowEndpointMqttOutput) ToDataFlowEndpointMqttPtrOutputWithContext(ctx context.Context) DataFlowEndpointMqttPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataFlowEndpointMqtt) *DataFlowEndpointMqtt {
+func (o DataflowEndpointMqttOutput) ToDataflowEndpointMqttPtrOutputWithContext(ctx context.Context) DataflowEndpointMqttPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataflowEndpointMqtt) *DataflowEndpointMqtt {
 		return &v
-	}).(DataFlowEndpointMqttPtrOutput)
+	}).(DataflowEndpointMqttPtrOutput)
+}
+
+// authentication properties. DEFAULT: kubernetes.audience=aio-internal. NOTE - Enum field only property is allowed
+func (o DataflowEndpointMqttOutput) Authentication() DataflowEndpointMqttAuthenticationOutput {
+	return o.ApplyT(func(v DataflowEndpointMqtt) DataflowEndpointMqttAuthentication { return v.Authentication }).(DataflowEndpointMqttAuthenticationOutput)
 }
 
 // Client ID prefix. Client ID generated by the dataflow is <prefix>-TBD. Optional; no prefix if omitted.
-func (o DataFlowEndpointMqttOutput) ClientIdPrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointMqtt) *string { return v.ClientIdPrefix }).(pulumi.StringPtrOutput)
+func (o DataflowEndpointMqttOutput) ClientIdPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowEndpointMqtt) *string { return v.ClientIdPrefix }).(pulumi.StringPtrOutput)
+}
+
+// Cloud event mapping config.
+func (o DataflowEndpointMqttOutput) CloudEventAttributes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowEndpointMqtt) *string { return v.CloudEventAttributes }).(pulumi.StringPtrOutput)
 }
 
 // Host of the Broker in the form of <hostname>:<port>. Optional; connects to Broker if omitted.
-func (o DataFlowEndpointMqttOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointMqtt) *string { return v.Host }).(pulumi.StringPtrOutput)
+func (o DataflowEndpointMqttOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowEndpointMqtt) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
 
 // Broker KeepAlive for connection in seconds.
-func (o DataFlowEndpointMqttOutput) KeepAliveSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointMqtt) *int { return v.KeepAliveSeconds }).(pulumi.IntPtrOutput)
+func (o DataflowEndpointMqttOutput) KeepAliveSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DataflowEndpointMqtt) *int { return v.KeepAliveSeconds }).(pulumi.IntPtrOutput)
 }
 
 // The max number of messages to keep in flight. For subscribe, this is the receive maximum. For publish, this is the maximum number of messages to send before waiting for an ack.
-func (o DataFlowEndpointMqttOutput) MaxInflightMessages() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointMqtt) *int { return v.MaxInflightMessages }).(pulumi.IntPtrOutput)
+func (o DataflowEndpointMqttOutput) MaxInflightMessages() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DataflowEndpointMqtt) *int { return v.MaxInflightMessages }).(pulumi.IntPtrOutput)
 }
 
 // Enable or disable websockets.
-func (o DataFlowEndpointMqttOutput) Protocol() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointMqtt) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+func (o DataflowEndpointMqttOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowEndpointMqtt) *string { return v.Protocol }).(pulumi.StringPtrOutput)
 }
 
 // Qos for Broker connection.
-func (o DataFlowEndpointMqttOutput) Qos() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointMqtt) *int { return v.Qos }).(pulumi.IntPtrOutput)
+func (o DataflowEndpointMqttOutput) Qos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DataflowEndpointMqtt) *int { return v.Qos }).(pulumi.IntPtrOutput)
 }
 
 // Whether or not to keep the retain setting.
-func (o DataFlowEndpointMqttOutput) Retain() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointMqtt) *string { return v.Retain }).(pulumi.StringPtrOutput)
+func (o DataflowEndpointMqttOutput) Retain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowEndpointMqtt) *string { return v.Retain }).(pulumi.StringPtrOutput)
 }
 
 // Session expiry in seconds.
-func (o DataFlowEndpointMqttOutput) SessionExpirySeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointMqtt) *int { return v.SessionExpirySeconds }).(pulumi.IntPtrOutput)
+func (o DataflowEndpointMqttOutput) SessionExpirySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DataflowEndpointMqtt) *int { return v.SessionExpirySeconds }).(pulumi.IntPtrOutput)
 }
 
 // TLS configuration.
-func (o DataFlowEndpointMqttOutput) Tls() TlsPropertiesPtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointMqtt) *TlsProperties { return v.Tls }).(TlsPropertiesPtrOutput)
+func (o DataflowEndpointMqttOutput) Tls() TlsPropertiesPtrOutput {
+	return o.ApplyT(func(v DataflowEndpointMqtt) *TlsProperties { return v.Tls }).(TlsPropertiesPtrOutput)
 }
 
-type DataFlowEndpointMqttPtrOutput struct{ *pulumi.OutputState }
+type DataflowEndpointMqttPtrOutput struct{ *pulumi.OutputState }
 
-func (DataFlowEndpointMqttPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DataFlowEndpointMqtt)(nil)).Elem()
+func (DataflowEndpointMqttPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowEndpointMqtt)(nil)).Elem()
 }
 
-func (o DataFlowEndpointMqttPtrOutput) ToDataFlowEndpointMqttPtrOutput() DataFlowEndpointMqttPtrOutput {
+func (o DataflowEndpointMqttPtrOutput) ToDataflowEndpointMqttPtrOutput() DataflowEndpointMqttPtrOutput {
 	return o
 }
 
-func (o DataFlowEndpointMqttPtrOutput) ToDataFlowEndpointMqttPtrOutputWithContext(ctx context.Context) DataFlowEndpointMqttPtrOutput {
+func (o DataflowEndpointMqttPtrOutput) ToDataflowEndpointMqttPtrOutputWithContext(ctx context.Context) DataflowEndpointMqttPtrOutput {
 	return o
 }
 
-func (o DataFlowEndpointMqttPtrOutput) Elem() DataFlowEndpointMqttOutput {
-	return o.ApplyT(func(v *DataFlowEndpointMqtt) DataFlowEndpointMqtt {
+func (o DataflowEndpointMqttPtrOutput) Elem() DataflowEndpointMqttOutput {
+	return o.ApplyT(func(v *DataflowEndpointMqtt) DataflowEndpointMqtt {
 		if v != nil {
 			return *v
 		}
-		var ret DataFlowEndpointMqtt
+		var ret DataflowEndpointMqtt
 		return ret
-	}).(DataFlowEndpointMqttOutput)
+	}).(DataflowEndpointMqttOutput)
+}
+
+// authentication properties. DEFAULT: kubernetes.audience=aio-internal. NOTE - Enum field only property is allowed
+func (o DataflowEndpointMqttPtrOutput) Authentication() DataflowEndpointMqttAuthenticationPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointMqtt) *DataflowEndpointMqttAuthentication {
+		if v == nil {
+			return nil
+		}
+		return &v.Authentication
+	}).(DataflowEndpointMqttAuthenticationPtrOutput)
 }
 
 // Client ID prefix. Client ID generated by the dataflow is <prefix>-TBD. Optional; no prefix if omitted.
-func (o DataFlowEndpointMqttPtrOutput) ClientIdPrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointMqtt) *string {
+func (o DataflowEndpointMqttPtrOutput) ClientIdPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointMqtt) *string {
 		if v == nil {
 			return nil
 		}
@@ -11280,9 +12710,19 @@ func (o DataFlowEndpointMqttPtrOutput) ClientIdPrefix() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Cloud event mapping config.
+func (o DataflowEndpointMqttPtrOutput) CloudEventAttributes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointMqtt) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CloudEventAttributes
+	}).(pulumi.StringPtrOutput)
+}
+
 // Host of the Broker in the form of <hostname>:<port>. Optional; connects to Broker if omitted.
-func (o DataFlowEndpointMqttPtrOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointMqtt) *string {
+func (o DataflowEndpointMqttPtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointMqtt) *string {
 		if v == nil {
 			return nil
 		}
@@ -11291,8 +12731,8 @@ func (o DataFlowEndpointMqttPtrOutput) Host() pulumi.StringPtrOutput {
 }
 
 // Broker KeepAlive for connection in seconds.
-func (o DataFlowEndpointMqttPtrOutput) KeepAliveSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointMqtt) *int {
+func (o DataflowEndpointMqttPtrOutput) KeepAliveSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointMqtt) *int {
 		if v == nil {
 			return nil
 		}
@@ -11301,8 +12741,8 @@ func (o DataFlowEndpointMqttPtrOutput) KeepAliveSeconds() pulumi.IntPtrOutput {
 }
 
 // The max number of messages to keep in flight. For subscribe, this is the receive maximum. For publish, this is the maximum number of messages to send before waiting for an ack.
-func (o DataFlowEndpointMqttPtrOutput) MaxInflightMessages() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointMqtt) *int {
+func (o DataflowEndpointMqttPtrOutput) MaxInflightMessages() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointMqtt) *int {
 		if v == nil {
 			return nil
 		}
@@ -11311,8 +12751,8 @@ func (o DataFlowEndpointMqttPtrOutput) MaxInflightMessages() pulumi.IntPtrOutput
 }
 
 // Enable or disable websockets.
-func (o DataFlowEndpointMqttPtrOutput) Protocol() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointMqtt) *string {
+func (o DataflowEndpointMqttPtrOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointMqtt) *string {
 		if v == nil {
 			return nil
 		}
@@ -11321,8 +12761,8 @@ func (o DataFlowEndpointMqttPtrOutput) Protocol() pulumi.StringPtrOutput {
 }
 
 // Qos for Broker connection.
-func (o DataFlowEndpointMqttPtrOutput) Qos() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointMqtt) *int {
+func (o DataflowEndpointMqttPtrOutput) Qos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointMqtt) *int {
 		if v == nil {
 			return nil
 		}
@@ -11331,8 +12771,8 @@ func (o DataFlowEndpointMqttPtrOutput) Qos() pulumi.IntPtrOutput {
 }
 
 // Whether or not to keep the retain setting.
-func (o DataFlowEndpointMqttPtrOutput) Retain() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointMqtt) *string {
+func (o DataflowEndpointMqttPtrOutput) Retain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointMqtt) *string {
 		if v == nil {
 			return nil
 		}
@@ -11341,8 +12781,8 @@ func (o DataFlowEndpointMqttPtrOutput) Retain() pulumi.StringPtrOutput {
 }
 
 // Session expiry in seconds.
-func (o DataFlowEndpointMqttPtrOutput) SessionExpirySeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointMqtt) *int {
+func (o DataflowEndpointMqttPtrOutput) SessionExpirySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointMqtt) *int {
 		if v == nil {
 			return nil
 		}
@@ -11351,8 +12791,8 @@ func (o DataFlowEndpointMqttPtrOutput) SessionExpirySeconds() pulumi.IntPtrOutpu
 }
 
 // TLS configuration.
-func (o DataFlowEndpointMqttPtrOutput) Tls() TlsPropertiesPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointMqtt) *TlsProperties {
+func (o DataflowEndpointMqttPtrOutput) Tls() TlsPropertiesPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointMqtt) *TlsProperties {
 		if v == nil {
 			return nil
 		}
@@ -11360,10 +12800,374 @@ func (o DataFlowEndpointMqttPtrOutput) Tls() TlsPropertiesPtrOutput {
 	}).(TlsPropertiesPtrOutput)
 }
 
+// Mqtt endpoint Authentication properties. NOTE - only authentication property is allowed per entry.
+type DataflowEndpointMqttAuthentication struct {
+	// Mode of Authentication.
+	Method string `pulumi:"method"`
+	// Kubernetes service account token authentication. Default audience if not set is aio-internal
+	ServiceAccountTokenSettings *DataflowEndpointAuthenticationServiceAccountToken `pulumi:"serviceAccountTokenSettings"`
+	// System-assigned managed identity authentication.
+	SystemAssignedManagedIdentitySettings *DataflowEndpointAuthenticationSystemAssignedManagedIdentity `pulumi:"systemAssignedManagedIdentitySettings"`
+	// User-assigned managed identity authentication.
+	UserAssignedManagedIdentitySettings *DataflowEndpointAuthenticationUserAssignedManagedIdentity `pulumi:"userAssignedManagedIdentitySettings"`
+	// X.509 certificate authentication.
+	X509CertificateSettings *DataflowEndpointAuthenticationX509 `pulumi:"x509CertificateSettings"`
+}
+
+// DataflowEndpointMqttAuthenticationInput is an input type that accepts DataflowEndpointMqttAuthenticationArgs and DataflowEndpointMqttAuthenticationOutput values.
+// You can construct a concrete instance of `DataflowEndpointMqttAuthenticationInput` via:
+//
+//	DataflowEndpointMqttAuthenticationArgs{...}
+type DataflowEndpointMqttAuthenticationInput interface {
+	pulumi.Input
+
+	ToDataflowEndpointMqttAuthenticationOutput() DataflowEndpointMqttAuthenticationOutput
+	ToDataflowEndpointMqttAuthenticationOutputWithContext(context.Context) DataflowEndpointMqttAuthenticationOutput
+}
+
+// Mqtt endpoint Authentication properties. NOTE - only authentication property is allowed per entry.
+type DataflowEndpointMqttAuthenticationArgs struct {
+	// Mode of Authentication.
+	Method pulumi.StringInput `pulumi:"method"`
+	// Kubernetes service account token authentication. Default audience if not set is aio-internal
+	ServiceAccountTokenSettings DataflowEndpointAuthenticationServiceAccountTokenPtrInput `pulumi:"serviceAccountTokenSettings"`
+	// System-assigned managed identity authentication.
+	SystemAssignedManagedIdentitySettings DataflowEndpointAuthenticationSystemAssignedManagedIdentityPtrInput `pulumi:"systemAssignedManagedIdentitySettings"`
+	// User-assigned managed identity authentication.
+	UserAssignedManagedIdentitySettings DataflowEndpointAuthenticationUserAssignedManagedIdentityPtrInput `pulumi:"userAssignedManagedIdentitySettings"`
+	// X.509 certificate authentication.
+	X509CertificateSettings DataflowEndpointAuthenticationX509PtrInput `pulumi:"x509CertificateSettings"`
+}
+
+func (DataflowEndpointMqttAuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowEndpointMqttAuthentication)(nil)).Elem()
+}
+
+func (i DataflowEndpointMqttAuthenticationArgs) ToDataflowEndpointMqttAuthenticationOutput() DataflowEndpointMqttAuthenticationOutput {
+	return i.ToDataflowEndpointMqttAuthenticationOutputWithContext(context.Background())
+}
+
+func (i DataflowEndpointMqttAuthenticationArgs) ToDataflowEndpointMqttAuthenticationOutputWithContext(ctx context.Context) DataflowEndpointMqttAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowEndpointMqttAuthenticationOutput)
+}
+
+func (i DataflowEndpointMqttAuthenticationArgs) ToDataflowEndpointMqttAuthenticationPtrOutput() DataflowEndpointMqttAuthenticationPtrOutput {
+	return i.ToDataflowEndpointMqttAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i DataflowEndpointMqttAuthenticationArgs) ToDataflowEndpointMqttAuthenticationPtrOutputWithContext(ctx context.Context) DataflowEndpointMqttAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowEndpointMqttAuthenticationOutput).ToDataflowEndpointMqttAuthenticationPtrOutputWithContext(ctx)
+}
+
+// DataflowEndpointMqttAuthenticationPtrInput is an input type that accepts DataflowEndpointMqttAuthenticationArgs, DataflowEndpointMqttAuthenticationPtr and DataflowEndpointMqttAuthenticationPtrOutput values.
+// You can construct a concrete instance of `DataflowEndpointMqttAuthenticationPtrInput` via:
+//
+//	        DataflowEndpointMqttAuthenticationArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataflowEndpointMqttAuthenticationPtrInput interface {
+	pulumi.Input
+
+	ToDataflowEndpointMqttAuthenticationPtrOutput() DataflowEndpointMqttAuthenticationPtrOutput
+	ToDataflowEndpointMqttAuthenticationPtrOutputWithContext(context.Context) DataflowEndpointMqttAuthenticationPtrOutput
+}
+
+type dataflowEndpointMqttAuthenticationPtrType DataflowEndpointMqttAuthenticationArgs
+
+func DataflowEndpointMqttAuthenticationPtr(v *DataflowEndpointMqttAuthenticationArgs) DataflowEndpointMqttAuthenticationPtrInput {
+	return (*dataflowEndpointMqttAuthenticationPtrType)(v)
+}
+
+func (*dataflowEndpointMqttAuthenticationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowEndpointMqttAuthentication)(nil)).Elem()
+}
+
+func (i *dataflowEndpointMqttAuthenticationPtrType) ToDataflowEndpointMqttAuthenticationPtrOutput() DataflowEndpointMqttAuthenticationPtrOutput {
+	return i.ToDataflowEndpointMqttAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i *dataflowEndpointMqttAuthenticationPtrType) ToDataflowEndpointMqttAuthenticationPtrOutputWithContext(ctx context.Context) DataflowEndpointMqttAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowEndpointMqttAuthenticationPtrOutput)
+}
+
+// Mqtt endpoint Authentication properties. NOTE - only authentication property is allowed per entry.
+type DataflowEndpointMqttAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (DataflowEndpointMqttAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowEndpointMqttAuthentication)(nil)).Elem()
+}
+
+func (o DataflowEndpointMqttAuthenticationOutput) ToDataflowEndpointMqttAuthenticationOutput() DataflowEndpointMqttAuthenticationOutput {
+	return o
+}
+
+func (o DataflowEndpointMqttAuthenticationOutput) ToDataflowEndpointMqttAuthenticationOutputWithContext(ctx context.Context) DataflowEndpointMqttAuthenticationOutput {
+	return o
+}
+
+func (o DataflowEndpointMqttAuthenticationOutput) ToDataflowEndpointMqttAuthenticationPtrOutput() DataflowEndpointMqttAuthenticationPtrOutput {
+	return o.ToDataflowEndpointMqttAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (o DataflowEndpointMqttAuthenticationOutput) ToDataflowEndpointMqttAuthenticationPtrOutputWithContext(ctx context.Context) DataflowEndpointMqttAuthenticationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataflowEndpointMqttAuthentication) *DataflowEndpointMqttAuthentication {
+		return &v
+	}).(DataflowEndpointMqttAuthenticationPtrOutput)
+}
+
+// Mode of Authentication.
+func (o DataflowEndpointMqttAuthenticationOutput) Method() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowEndpointMqttAuthentication) string { return v.Method }).(pulumi.StringOutput)
+}
+
+// Kubernetes service account token authentication. Default audience if not set is aio-internal
+func (o DataflowEndpointMqttAuthenticationOutput) ServiceAccountTokenSettings() DataflowEndpointAuthenticationServiceAccountTokenPtrOutput {
+	return o.ApplyT(func(v DataflowEndpointMqttAuthentication) *DataflowEndpointAuthenticationServiceAccountToken {
+		return v.ServiceAccountTokenSettings
+	}).(DataflowEndpointAuthenticationServiceAccountTokenPtrOutput)
+}
+
+// System-assigned managed identity authentication.
+func (o DataflowEndpointMqttAuthenticationOutput) SystemAssignedManagedIdentitySettings() DataflowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput {
+	return o.ApplyT(func(v DataflowEndpointMqttAuthentication) *DataflowEndpointAuthenticationSystemAssignedManagedIdentity {
+		return v.SystemAssignedManagedIdentitySettings
+	}).(DataflowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput)
+}
+
+// User-assigned managed identity authentication.
+func (o DataflowEndpointMqttAuthenticationOutput) UserAssignedManagedIdentitySettings() DataflowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput {
+	return o.ApplyT(func(v DataflowEndpointMqttAuthentication) *DataflowEndpointAuthenticationUserAssignedManagedIdentity {
+		return v.UserAssignedManagedIdentitySettings
+	}).(DataflowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput)
+}
+
+// X.509 certificate authentication.
+func (o DataflowEndpointMqttAuthenticationOutput) X509CertificateSettings() DataflowEndpointAuthenticationX509PtrOutput {
+	return o.ApplyT(func(v DataflowEndpointMqttAuthentication) *DataflowEndpointAuthenticationX509 {
+		return v.X509CertificateSettings
+	}).(DataflowEndpointAuthenticationX509PtrOutput)
+}
+
+type DataflowEndpointMqttAuthenticationPtrOutput struct{ *pulumi.OutputState }
+
+func (DataflowEndpointMqttAuthenticationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowEndpointMqttAuthentication)(nil)).Elem()
+}
+
+func (o DataflowEndpointMqttAuthenticationPtrOutput) ToDataflowEndpointMqttAuthenticationPtrOutput() DataflowEndpointMqttAuthenticationPtrOutput {
+	return o
+}
+
+func (o DataflowEndpointMqttAuthenticationPtrOutput) ToDataflowEndpointMqttAuthenticationPtrOutputWithContext(ctx context.Context) DataflowEndpointMqttAuthenticationPtrOutput {
+	return o
+}
+
+func (o DataflowEndpointMqttAuthenticationPtrOutput) Elem() DataflowEndpointMqttAuthenticationOutput {
+	return o.ApplyT(func(v *DataflowEndpointMqttAuthentication) DataflowEndpointMqttAuthentication {
+		if v != nil {
+			return *v
+		}
+		var ret DataflowEndpointMqttAuthentication
+		return ret
+	}).(DataflowEndpointMqttAuthenticationOutput)
+}
+
+// Mode of Authentication.
+func (o DataflowEndpointMqttAuthenticationPtrOutput) Method() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointMqttAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Method
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kubernetes service account token authentication. Default audience if not set is aio-internal
+func (o DataflowEndpointMqttAuthenticationPtrOutput) ServiceAccountTokenSettings() DataflowEndpointAuthenticationServiceAccountTokenPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointMqttAuthentication) *DataflowEndpointAuthenticationServiceAccountToken {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccountTokenSettings
+	}).(DataflowEndpointAuthenticationServiceAccountTokenPtrOutput)
+}
+
+// System-assigned managed identity authentication.
+func (o DataflowEndpointMqttAuthenticationPtrOutput) SystemAssignedManagedIdentitySettings() DataflowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointMqttAuthentication) *DataflowEndpointAuthenticationSystemAssignedManagedIdentity {
+		if v == nil {
+			return nil
+		}
+		return v.SystemAssignedManagedIdentitySettings
+	}).(DataflowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput)
+}
+
+// User-assigned managed identity authentication.
+func (o DataflowEndpointMqttAuthenticationPtrOutput) UserAssignedManagedIdentitySettings() DataflowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointMqttAuthentication) *DataflowEndpointAuthenticationUserAssignedManagedIdentity {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedManagedIdentitySettings
+	}).(DataflowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput)
+}
+
+// X.509 certificate authentication.
+func (o DataflowEndpointMqttAuthenticationPtrOutput) X509CertificateSettings() DataflowEndpointAuthenticationX509PtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointMqttAuthentication) *DataflowEndpointAuthenticationX509 {
+		if v == nil {
+			return nil
+		}
+		return v.X509CertificateSettings
+	}).(DataflowEndpointAuthenticationX509PtrOutput)
+}
+
+// Mqtt endpoint Authentication properties. NOTE - only authentication property is allowed per entry.
+type DataflowEndpointMqttAuthenticationResponse struct {
+	// Mode of Authentication.
+	Method string `pulumi:"method"`
+	// Kubernetes service account token authentication. Default audience if not set is aio-internal
+	ServiceAccountTokenSettings *DataflowEndpointAuthenticationServiceAccountTokenResponse `pulumi:"serviceAccountTokenSettings"`
+	// System-assigned managed identity authentication.
+	SystemAssignedManagedIdentitySettings *DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponse `pulumi:"systemAssignedManagedIdentitySettings"`
+	// User-assigned managed identity authentication.
+	UserAssignedManagedIdentitySettings *DataflowEndpointAuthenticationUserAssignedManagedIdentityResponse `pulumi:"userAssignedManagedIdentitySettings"`
+	// X.509 certificate authentication.
+	X509CertificateSettings *DataflowEndpointAuthenticationX509Response `pulumi:"x509CertificateSettings"`
+}
+
+// Mqtt endpoint Authentication properties. NOTE - only authentication property is allowed per entry.
+type DataflowEndpointMqttAuthenticationResponseOutput struct{ *pulumi.OutputState }
+
+func (DataflowEndpointMqttAuthenticationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowEndpointMqttAuthenticationResponse)(nil)).Elem()
+}
+
+func (o DataflowEndpointMqttAuthenticationResponseOutput) ToDataflowEndpointMqttAuthenticationResponseOutput() DataflowEndpointMqttAuthenticationResponseOutput {
+	return o
+}
+
+func (o DataflowEndpointMqttAuthenticationResponseOutput) ToDataflowEndpointMqttAuthenticationResponseOutputWithContext(ctx context.Context) DataflowEndpointMqttAuthenticationResponseOutput {
+	return o
+}
+
+// Mode of Authentication.
+func (o DataflowEndpointMqttAuthenticationResponseOutput) Method() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowEndpointMqttAuthenticationResponse) string { return v.Method }).(pulumi.StringOutput)
+}
+
+// Kubernetes service account token authentication. Default audience if not set is aio-internal
+func (o DataflowEndpointMqttAuthenticationResponseOutput) ServiceAccountTokenSettings() DataflowEndpointAuthenticationServiceAccountTokenResponsePtrOutput {
+	return o.ApplyT(func(v DataflowEndpointMqttAuthenticationResponse) *DataflowEndpointAuthenticationServiceAccountTokenResponse {
+		return v.ServiceAccountTokenSettings
+	}).(DataflowEndpointAuthenticationServiceAccountTokenResponsePtrOutput)
+}
+
+// System-assigned managed identity authentication.
+func (o DataflowEndpointMqttAuthenticationResponseOutput) SystemAssignedManagedIdentitySettings() DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponsePtrOutput {
+	return o.ApplyT(func(v DataflowEndpointMqttAuthenticationResponse) *DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponse {
+		return v.SystemAssignedManagedIdentitySettings
+	}).(DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponsePtrOutput)
+}
+
+// User-assigned managed identity authentication.
+func (o DataflowEndpointMqttAuthenticationResponseOutput) UserAssignedManagedIdentitySettings() DataflowEndpointAuthenticationUserAssignedManagedIdentityResponsePtrOutput {
+	return o.ApplyT(func(v DataflowEndpointMqttAuthenticationResponse) *DataflowEndpointAuthenticationUserAssignedManagedIdentityResponse {
+		return v.UserAssignedManagedIdentitySettings
+	}).(DataflowEndpointAuthenticationUserAssignedManagedIdentityResponsePtrOutput)
+}
+
+// X.509 certificate authentication.
+func (o DataflowEndpointMqttAuthenticationResponseOutput) X509CertificateSettings() DataflowEndpointAuthenticationX509ResponsePtrOutput {
+	return o.ApplyT(func(v DataflowEndpointMqttAuthenticationResponse) *DataflowEndpointAuthenticationX509Response {
+		return v.X509CertificateSettings
+	}).(DataflowEndpointAuthenticationX509ResponsePtrOutput)
+}
+
+type DataflowEndpointMqttAuthenticationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DataflowEndpointMqttAuthenticationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowEndpointMqttAuthenticationResponse)(nil)).Elem()
+}
+
+func (o DataflowEndpointMqttAuthenticationResponsePtrOutput) ToDataflowEndpointMqttAuthenticationResponsePtrOutput() DataflowEndpointMqttAuthenticationResponsePtrOutput {
+	return o
+}
+
+func (o DataflowEndpointMqttAuthenticationResponsePtrOutput) ToDataflowEndpointMqttAuthenticationResponsePtrOutputWithContext(ctx context.Context) DataflowEndpointMqttAuthenticationResponsePtrOutput {
+	return o
+}
+
+func (o DataflowEndpointMqttAuthenticationResponsePtrOutput) Elem() DataflowEndpointMqttAuthenticationResponseOutput {
+	return o.ApplyT(func(v *DataflowEndpointMqttAuthenticationResponse) DataflowEndpointMqttAuthenticationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DataflowEndpointMqttAuthenticationResponse
+		return ret
+	}).(DataflowEndpointMqttAuthenticationResponseOutput)
+}
+
+// Mode of Authentication.
+func (o DataflowEndpointMqttAuthenticationResponsePtrOutput) Method() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointMqttAuthenticationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Method
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kubernetes service account token authentication. Default audience if not set is aio-internal
+func (o DataflowEndpointMqttAuthenticationResponsePtrOutput) ServiceAccountTokenSettings() DataflowEndpointAuthenticationServiceAccountTokenResponsePtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointMqttAuthenticationResponse) *DataflowEndpointAuthenticationServiceAccountTokenResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccountTokenSettings
+	}).(DataflowEndpointAuthenticationServiceAccountTokenResponsePtrOutput)
+}
+
+// System-assigned managed identity authentication.
+func (o DataflowEndpointMqttAuthenticationResponsePtrOutput) SystemAssignedManagedIdentitySettings() DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointMqttAuthenticationResponse) *DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponse {
+		if v == nil {
+			return nil
+		}
+		return v.SystemAssignedManagedIdentitySettings
+	}).(DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponsePtrOutput)
+}
+
+// User-assigned managed identity authentication.
+func (o DataflowEndpointMqttAuthenticationResponsePtrOutput) UserAssignedManagedIdentitySettings() DataflowEndpointAuthenticationUserAssignedManagedIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointMqttAuthenticationResponse) *DataflowEndpointAuthenticationUserAssignedManagedIdentityResponse {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedManagedIdentitySettings
+	}).(DataflowEndpointAuthenticationUserAssignedManagedIdentityResponsePtrOutput)
+}
+
+// X.509 certificate authentication.
+func (o DataflowEndpointMqttAuthenticationResponsePtrOutput) X509CertificateSettings() DataflowEndpointAuthenticationX509ResponsePtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointMqttAuthenticationResponse) *DataflowEndpointAuthenticationX509Response {
+		if v == nil {
+			return nil
+		}
+		return v.X509CertificateSettings
+	}).(DataflowEndpointAuthenticationX509ResponsePtrOutput)
+}
+
 // Broker endpoint properties
-type DataFlowEndpointMqttResponse struct {
+type DataflowEndpointMqttResponse struct {
+	// authentication properties. DEFAULT: kubernetes.audience=aio-internal. NOTE - Enum field only property is allowed
+	Authentication DataflowEndpointMqttAuthenticationResponse `pulumi:"authentication"`
 	// Client ID prefix. Client ID generated by the dataflow is <prefix>-TBD. Optional; no prefix if omitted.
 	ClientIdPrefix *string `pulumi:"clientIdPrefix"`
+	// Cloud event mapping config.
+	CloudEventAttributes *string `pulumi:"cloudEventAttributes"`
 	// Host of the Broker in the form of <hostname>:<port>. Optional; connects to Broker if omitted.
 	Host *string `pulumi:"host"`
 	// Broker KeepAlive for connection in seconds.
@@ -11382,16 +13186,12 @@ type DataFlowEndpointMqttResponse struct {
 	Tls *TlsPropertiesResponse `pulumi:"tls"`
 }
 
-// Defaults sets the appropriate defaults for DataFlowEndpointMqttResponse
-func (val *DataFlowEndpointMqttResponse) Defaults() *DataFlowEndpointMqttResponse {
+// Defaults sets the appropriate defaults for DataflowEndpointMqttResponse
+func (val *DataflowEndpointMqttResponse) Defaults() *DataflowEndpointMqttResponse {
 	if val == nil {
 		return nil
 	}
 	tmp := *val
-	if tmp.Host == nil {
-		host_ := "aio-mq-dmqtt-frontend:1883"
-		tmp.Host = &host_
-	}
 	if tmp.KeepAliveSeconds == nil {
 		keepAliveSeconds_ := 60
 		tmp.KeepAliveSeconds = &keepAliveSeconds_
@@ -11412,102 +13212,120 @@ func (val *DataFlowEndpointMqttResponse) Defaults() *DataFlowEndpointMqttRespons
 		retain_ := "Keep"
 		tmp.Retain = &retain_
 	}
-	if tmp.SessionExpirySeconds == nil {
-		sessionExpirySeconds_ := 3600
-		tmp.SessionExpirySeconds = &sessionExpirySeconds_
-	}
 	tmp.Tls = tmp.Tls.Defaults()
 
 	return &tmp
 }
 
 // Broker endpoint properties
-type DataFlowEndpointMqttResponseOutput struct{ *pulumi.OutputState }
+type DataflowEndpointMqttResponseOutput struct{ *pulumi.OutputState }
 
-func (DataFlowEndpointMqttResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowEndpointMqttResponse)(nil)).Elem()
+func (DataflowEndpointMqttResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowEndpointMqttResponse)(nil)).Elem()
 }
 
-func (o DataFlowEndpointMqttResponseOutput) ToDataFlowEndpointMqttResponseOutput() DataFlowEndpointMqttResponseOutput {
+func (o DataflowEndpointMqttResponseOutput) ToDataflowEndpointMqttResponseOutput() DataflowEndpointMqttResponseOutput {
 	return o
 }
 
-func (o DataFlowEndpointMqttResponseOutput) ToDataFlowEndpointMqttResponseOutputWithContext(ctx context.Context) DataFlowEndpointMqttResponseOutput {
+func (o DataflowEndpointMqttResponseOutput) ToDataflowEndpointMqttResponseOutputWithContext(ctx context.Context) DataflowEndpointMqttResponseOutput {
 	return o
+}
+
+// authentication properties. DEFAULT: kubernetes.audience=aio-internal. NOTE - Enum field only property is allowed
+func (o DataflowEndpointMqttResponseOutput) Authentication() DataflowEndpointMqttAuthenticationResponseOutput {
+	return o.ApplyT(func(v DataflowEndpointMqttResponse) DataflowEndpointMqttAuthenticationResponse {
+		return v.Authentication
+	}).(DataflowEndpointMqttAuthenticationResponseOutput)
 }
 
 // Client ID prefix. Client ID generated by the dataflow is <prefix>-TBD. Optional; no prefix if omitted.
-func (o DataFlowEndpointMqttResponseOutput) ClientIdPrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointMqttResponse) *string { return v.ClientIdPrefix }).(pulumi.StringPtrOutput)
+func (o DataflowEndpointMqttResponseOutput) ClientIdPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowEndpointMqttResponse) *string { return v.ClientIdPrefix }).(pulumi.StringPtrOutput)
+}
+
+// Cloud event mapping config.
+func (o DataflowEndpointMqttResponseOutput) CloudEventAttributes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowEndpointMqttResponse) *string { return v.CloudEventAttributes }).(pulumi.StringPtrOutput)
 }
 
 // Host of the Broker in the form of <hostname>:<port>. Optional; connects to Broker if omitted.
-func (o DataFlowEndpointMqttResponseOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointMqttResponse) *string { return v.Host }).(pulumi.StringPtrOutput)
+func (o DataflowEndpointMqttResponseOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowEndpointMqttResponse) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
 
 // Broker KeepAlive for connection in seconds.
-func (o DataFlowEndpointMqttResponseOutput) KeepAliveSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointMqttResponse) *int { return v.KeepAliveSeconds }).(pulumi.IntPtrOutput)
+func (o DataflowEndpointMqttResponseOutput) KeepAliveSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DataflowEndpointMqttResponse) *int { return v.KeepAliveSeconds }).(pulumi.IntPtrOutput)
 }
 
 // The max number of messages to keep in flight. For subscribe, this is the receive maximum. For publish, this is the maximum number of messages to send before waiting for an ack.
-func (o DataFlowEndpointMqttResponseOutput) MaxInflightMessages() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointMqttResponse) *int { return v.MaxInflightMessages }).(pulumi.IntPtrOutput)
+func (o DataflowEndpointMqttResponseOutput) MaxInflightMessages() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DataflowEndpointMqttResponse) *int { return v.MaxInflightMessages }).(pulumi.IntPtrOutput)
 }
 
 // Enable or disable websockets.
-func (o DataFlowEndpointMqttResponseOutput) Protocol() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointMqttResponse) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+func (o DataflowEndpointMqttResponseOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowEndpointMqttResponse) *string { return v.Protocol }).(pulumi.StringPtrOutput)
 }
 
 // Qos for Broker connection.
-func (o DataFlowEndpointMqttResponseOutput) Qos() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointMqttResponse) *int { return v.Qos }).(pulumi.IntPtrOutput)
+func (o DataflowEndpointMqttResponseOutput) Qos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DataflowEndpointMqttResponse) *int { return v.Qos }).(pulumi.IntPtrOutput)
 }
 
 // Whether or not to keep the retain setting.
-func (o DataFlowEndpointMqttResponseOutput) Retain() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointMqttResponse) *string { return v.Retain }).(pulumi.StringPtrOutput)
+func (o DataflowEndpointMqttResponseOutput) Retain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowEndpointMqttResponse) *string { return v.Retain }).(pulumi.StringPtrOutput)
 }
 
 // Session expiry in seconds.
-func (o DataFlowEndpointMqttResponseOutput) SessionExpirySeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointMqttResponse) *int { return v.SessionExpirySeconds }).(pulumi.IntPtrOutput)
+func (o DataflowEndpointMqttResponseOutput) SessionExpirySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DataflowEndpointMqttResponse) *int { return v.SessionExpirySeconds }).(pulumi.IntPtrOutput)
 }
 
 // TLS configuration.
-func (o DataFlowEndpointMqttResponseOutput) Tls() TlsPropertiesResponsePtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointMqttResponse) *TlsPropertiesResponse { return v.Tls }).(TlsPropertiesResponsePtrOutput)
+func (o DataflowEndpointMqttResponseOutput) Tls() TlsPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v DataflowEndpointMqttResponse) *TlsPropertiesResponse { return v.Tls }).(TlsPropertiesResponsePtrOutput)
 }
 
-type DataFlowEndpointMqttResponsePtrOutput struct{ *pulumi.OutputState }
+type DataflowEndpointMqttResponsePtrOutput struct{ *pulumi.OutputState }
 
-func (DataFlowEndpointMqttResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DataFlowEndpointMqttResponse)(nil)).Elem()
+func (DataflowEndpointMqttResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowEndpointMqttResponse)(nil)).Elem()
 }
 
-func (o DataFlowEndpointMqttResponsePtrOutput) ToDataFlowEndpointMqttResponsePtrOutput() DataFlowEndpointMqttResponsePtrOutput {
+func (o DataflowEndpointMqttResponsePtrOutput) ToDataflowEndpointMqttResponsePtrOutput() DataflowEndpointMqttResponsePtrOutput {
 	return o
 }
 
-func (o DataFlowEndpointMqttResponsePtrOutput) ToDataFlowEndpointMqttResponsePtrOutputWithContext(ctx context.Context) DataFlowEndpointMqttResponsePtrOutput {
+func (o DataflowEndpointMqttResponsePtrOutput) ToDataflowEndpointMqttResponsePtrOutputWithContext(ctx context.Context) DataflowEndpointMqttResponsePtrOutput {
 	return o
 }
 
-func (o DataFlowEndpointMqttResponsePtrOutput) Elem() DataFlowEndpointMqttResponseOutput {
-	return o.ApplyT(func(v *DataFlowEndpointMqttResponse) DataFlowEndpointMqttResponse {
+func (o DataflowEndpointMqttResponsePtrOutput) Elem() DataflowEndpointMqttResponseOutput {
+	return o.ApplyT(func(v *DataflowEndpointMqttResponse) DataflowEndpointMqttResponse {
 		if v != nil {
 			return *v
 		}
-		var ret DataFlowEndpointMqttResponse
+		var ret DataflowEndpointMqttResponse
 		return ret
-	}).(DataFlowEndpointMqttResponseOutput)
+	}).(DataflowEndpointMqttResponseOutput)
+}
+
+// authentication properties. DEFAULT: kubernetes.audience=aio-internal. NOTE - Enum field only property is allowed
+func (o DataflowEndpointMqttResponsePtrOutput) Authentication() DataflowEndpointMqttAuthenticationResponsePtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointMqttResponse) *DataflowEndpointMqttAuthenticationResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Authentication
+	}).(DataflowEndpointMqttAuthenticationResponsePtrOutput)
 }
 
 // Client ID prefix. Client ID generated by the dataflow is <prefix>-TBD. Optional; no prefix if omitted.
-func (o DataFlowEndpointMqttResponsePtrOutput) ClientIdPrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointMqttResponse) *string {
+func (o DataflowEndpointMqttResponsePtrOutput) ClientIdPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointMqttResponse) *string {
 		if v == nil {
 			return nil
 		}
@@ -11515,9 +13333,19 @@ func (o DataFlowEndpointMqttResponsePtrOutput) ClientIdPrefix() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+// Cloud event mapping config.
+func (o DataflowEndpointMqttResponsePtrOutput) CloudEventAttributes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointMqttResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CloudEventAttributes
+	}).(pulumi.StringPtrOutput)
+}
+
 // Host of the Broker in the form of <hostname>:<port>. Optional; connects to Broker if omitted.
-func (o DataFlowEndpointMqttResponsePtrOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointMqttResponse) *string {
+func (o DataflowEndpointMqttResponsePtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointMqttResponse) *string {
 		if v == nil {
 			return nil
 		}
@@ -11526,8 +13354,8 @@ func (o DataFlowEndpointMqttResponsePtrOutput) Host() pulumi.StringPtrOutput {
 }
 
 // Broker KeepAlive for connection in seconds.
-func (o DataFlowEndpointMqttResponsePtrOutput) KeepAliveSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointMqttResponse) *int {
+func (o DataflowEndpointMqttResponsePtrOutput) KeepAliveSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointMqttResponse) *int {
 		if v == nil {
 			return nil
 		}
@@ -11536,8 +13364,8 @@ func (o DataFlowEndpointMqttResponsePtrOutput) KeepAliveSeconds() pulumi.IntPtrO
 }
 
 // The max number of messages to keep in flight. For subscribe, this is the receive maximum. For publish, this is the maximum number of messages to send before waiting for an ack.
-func (o DataFlowEndpointMqttResponsePtrOutput) MaxInflightMessages() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointMqttResponse) *int {
+func (o DataflowEndpointMqttResponsePtrOutput) MaxInflightMessages() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointMqttResponse) *int {
 		if v == nil {
 			return nil
 		}
@@ -11546,8 +13374,8 @@ func (o DataFlowEndpointMqttResponsePtrOutput) MaxInflightMessages() pulumi.IntP
 }
 
 // Enable or disable websockets.
-func (o DataFlowEndpointMqttResponsePtrOutput) Protocol() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointMqttResponse) *string {
+func (o DataflowEndpointMqttResponsePtrOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointMqttResponse) *string {
 		if v == nil {
 			return nil
 		}
@@ -11556,8 +13384,8 @@ func (o DataFlowEndpointMqttResponsePtrOutput) Protocol() pulumi.StringPtrOutput
 }
 
 // Qos for Broker connection.
-func (o DataFlowEndpointMqttResponsePtrOutput) Qos() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointMqttResponse) *int {
+func (o DataflowEndpointMqttResponsePtrOutput) Qos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointMqttResponse) *int {
 		if v == nil {
 			return nil
 		}
@@ -11566,8 +13394,8 @@ func (o DataFlowEndpointMqttResponsePtrOutput) Qos() pulumi.IntPtrOutput {
 }
 
 // Whether or not to keep the retain setting.
-func (o DataFlowEndpointMqttResponsePtrOutput) Retain() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointMqttResponse) *string {
+func (o DataflowEndpointMqttResponsePtrOutput) Retain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointMqttResponse) *string {
 		if v == nil {
 			return nil
 		}
@@ -11576,8 +13404,8 @@ func (o DataFlowEndpointMqttResponsePtrOutput) Retain() pulumi.StringPtrOutput {
 }
 
 // Session expiry in seconds.
-func (o DataFlowEndpointMqttResponsePtrOutput) SessionExpirySeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointMqttResponse) *int {
+func (o DataflowEndpointMqttResponsePtrOutput) SessionExpirySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointMqttResponse) *int {
 		if v == nil {
 			return nil
 		}
@@ -11586,8 +13414,8 @@ func (o DataFlowEndpointMqttResponsePtrOutput) SessionExpirySeconds() pulumi.Int
 }
 
 // TLS configuration.
-func (o DataFlowEndpointMqttResponsePtrOutput) Tls() TlsPropertiesResponsePtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointMqttResponse) *TlsPropertiesResponse {
+func (o DataflowEndpointMqttResponsePtrOutput) Tls() TlsPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointMqttResponse) *TlsPropertiesResponse {
 		if v == nil {
 			return nil
 		}
@@ -11595,28 +13423,26 @@ func (o DataFlowEndpointMqttResponsePtrOutput) Tls() TlsPropertiesResponsePtrOut
 	}).(TlsPropertiesResponsePtrOutput)
 }
 
-// DataFlowEndpoint Resource properties. NOTE - Only one type of endpoint is supported for one Resource
-type DataFlowEndpointProperties struct {
-	// Authentication configuration.
-	Authentication DataFlowEndpointAuthentication `pulumi:"authentication"`
+// DataflowEndpoint Resource properties. NOTE - Only one type of endpoint is supported for one Resource
+type DataflowEndpointProperties struct {
 	// Azure Data Explorer endpoint.
-	DataExplorerSettings *DataFlowEndpointDataExplorer `pulumi:"dataExplorerSettings"`
+	DataExplorerSettings *DataflowEndpointDataExplorer `pulumi:"dataExplorerSettings"`
 	// Azure Data Lake endpoint.
-	DataLakeStorageSettings *DataFlowEndpointDataLakeStorage `pulumi:"dataLakeStorageSettings"`
+	DataLakeStorageSettings *DataflowEndpointDataLakeStorage `pulumi:"dataLakeStorageSettings"`
 	// Endpoint Type.
 	EndpointType string `pulumi:"endpointType"`
 	// Microsoft Fabric endpoint.
-	FabricOneLakeSettings *DataFlowEndpointFabricOneLake `pulumi:"fabricOneLakeSettings"`
+	FabricOneLakeSettings *DataflowEndpointFabricOneLake `pulumi:"fabricOneLakeSettings"`
 	// Kafka endpoint.
-	KafkaSettings *DataFlowEndpointKafka `pulumi:"kafkaSettings"`
+	KafkaSettings *DataflowEndpointKafka `pulumi:"kafkaSettings"`
 	// Local persistent volume endpoint.
-	LocalStorageSettings *DataFlowEndpointLocalStorage `pulumi:"localStorageSettings"`
+	LocalStorageSettings *DataflowEndpointLocalStorage `pulumi:"localStorageSettings"`
 	// Broker endpoint.
-	MqttSettings *DataFlowEndpointMqtt `pulumi:"mqttSettings"`
+	MqttSettings *DataflowEndpointMqtt `pulumi:"mqttSettings"`
 }
 
-// Defaults sets the appropriate defaults for DataFlowEndpointProperties
-func (val *DataFlowEndpointProperties) Defaults() *DataFlowEndpointProperties {
+// Defaults sets the appropriate defaults for DataflowEndpointProperties
+func (val *DataflowEndpointProperties) Defaults() *DataflowEndpointProperties {
 	if val == nil {
 		return nil
 	}
@@ -11634,39 +13460,37 @@ func (val *DataFlowEndpointProperties) Defaults() *DataFlowEndpointProperties {
 	return &tmp
 }
 
-// DataFlowEndpointPropertiesInput is an input type that accepts DataFlowEndpointPropertiesArgs and DataFlowEndpointPropertiesOutput values.
-// You can construct a concrete instance of `DataFlowEndpointPropertiesInput` via:
+// DataflowEndpointPropertiesInput is an input type that accepts DataflowEndpointPropertiesArgs and DataflowEndpointPropertiesOutput values.
+// You can construct a concrete instance of `DataflowEndpointPropertiesInput` via:
 //
-//	DataFlowEndpointPropertiesArgs{...}
-type DataFlowEndpointPropertiesInput interface {
+//	DataflowEndpointPropertiesArgs{...}
+type DataflowEndpointPropertiesInput interface {
 	pulumi.Input
 
-	ToDataFlowEndpointPropertiesOutput() DataFlowEndpointPropertiesOutput
-	ToDataFlowEndpointPropertiesOutputWithContext(context.Context) DataFlowEndpointPropertiesOutput
+	ToDataflowEndpointPropertiesOutput() DataflowEndpointPropertiesOutput
+	ToDataflowEndpointPropertiesOutputWithContext(context.Context) DataflowEndpointPropertiesOutput
 }
 
-// DataFlowEndpoint Resource properties. NOTE - Only one type of endpoint is supported for one Resource
-type DataFlowEndpointPropertiesArgs struct {
-	// Authentication configuration.
-	Authentication DataFlowEndpointAuthenticationInput `pulumi:"authentication"`
+// DataflowEndpoint Resource properties. NOTE - Only one type of endpoint is supported for one Resource
+type DataflowEndpointPropertiesArgs struct {
 	// Azure Data Explorer endpoint.
-	DataExplorerSettings DataFlowEndpointDataExplorerPtrInput `pulumi:"dataExplorerSettings"`
+	DataExplorerSettings DataflowEndpointDataExplorerPtrInput `pulumi:"dataExplorerSettings"`
 	// Azure Data Lake endpoint.
-	DataLakeStorageSettings DataFlowEndpointDataLakeStoragePtrInput `pulumi:"dataLakeStorageSettings"`
+	DataLakeStorageSettings DataflowEndpointDataLakeStoragePtrInput `pulumi:"dataLakeStorageSettings"`
 	// Endpoint Type.
 	EndpointType pulumi.StringInput `pulumi:"endpointType"`
 	// Microsoft Fabric endpoint.
-	FabricOneLakeSettings DataFlowEndpointFabricOneLakePtrInput `pulumi:"fabricOneLakeSettings"`
+	FabricOneLakeSettings DataflowEndpointFabricOneLakePtrInput `pulumi:"fabricOneLakeSettings"`
 	// Kafka endpoint.
-	KafkaSettings DataFlowEndpointKafkaPtrInput `pulumi:"kafkaSettings"`
+	KafkaSettings DataflowEndpointKafkaPtrInput `pulumi:"kafkaSettings"`
 	// Local persistent volume endpoint.
-	LocalStorageSettings DataFlowEndpointLocalStoragePtrInput `pulumi:"localStorageSettings"`
+	LocalStorageSettings DataflowEndpointLocalStoragePtrInput `pulumi:"localStorageSettings"`
 	// Broker endpoint.
-	MqttSettings DataFlowEndpointMqttPtrInput `pulumi:"mqttSettings"`
+	MqttSettings DataflowEndpointMqttPtrInput `pulumi:"mqttSettings"`
 }
 
-// Defaults sets the appropriate defaults for DataFlowEndpointPropertiesArgs
-func (val *DataFlowEndpointPropertiesArgs) Defaults() *DataFlowEndpointPropertiesArgs {
+// Defaults sets the appropriate defaults for DataflowEndpointPropertiesArgs
+func (val *DataflowEndpointPropertiesArgs) Defaults() *DataflowEndpointPropertiesArgs {
 	if val == nil {
 		return nil
 	}
@@ -11674,181 +13498,166 @@ func (val *DataFlowEndpointPropertiesArgs) Defaults() *DataFlowEndpointPropertie
 
 	return &tmp
 }
-func (DataFlowEndpointPropertiesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowEndpointProperties)(nil)).Elem()
+func (DataflowEndpointPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowEndpointProperties)(nil)).Elem()
 }
 
-func (i DataFlowEndpointPropertiesArgs) ToDataFlowEndpointPropertiesOutput() DataFlowEndpointPropertiesOutput {
-	return i.ToDataFlowEndpointPropertiesOutputWithContext(context.Background())
+func (i DataflowEndpointPropertiesArgs) ToDataflowEndpointPropertiesOutput() DataflowEndpointPropertiesOutput {
+	return i.ToDataflowEndpointPropertiesOutputWithContext(context.Background())
 }
 
-func (i DataFlowEndpointPropertiesArgs) ToDataFlowEndpointPropertiesOutputWithContext(ctx context.Context) DataFlowEndpointPropertiesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataFlowEndpointPropertiesOutput)
+func (i DataflowEndpointPropertiesArgs) ToDataflowEndpointPropertiesOutputWithContext(ctx context.Context) DataflowEndpointPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowEndpointPropertiesOutput)
 }
 
-func (i DataFlowEndpointPropertiesArgs) ToDataFlowEndpointPropertiesPtrOutput() DataFlowEndpointPropertiesPtrOutput {
-	return i.ToDataFlowEndpointPropertiesPtrOutputWithContext(context.Background())
+func (i DataflowEndpointPropertiesArgs) ToDataflowEndpointPropertiesPtrOutput() DataflowEndpointPropertiesPtrOutput {
+	return i.ToDataflowEndpointPropertiesPtrOutputWithContext(context.Background())
 }
 
-func (i DataFlowEndpointPropertiesArgs) ToDataFlowEndpointPropertiesPtrOutputWithContext(ctx context.Context) DataFlowEndpointPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataFlowEndpointPropertiesOutput).ToDataFlowEndpointPropertiesPtrOutputWithContext(ctx)
+func (i DataflowEndpointPropertiesArgs) ToDataflowEndpointPropertiesPtrOutputWithContext(ctx context.Context) DataflowEndpointPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowEndpointPropertiesOutput).ToDataflowEndpointPropertiesPtrOutputWithContext(ctx)
 }
 
-// DataFlowEndpointPropertiesPtrInput is an input type that accepts DataFlowEndpointPropertiesArgs, DataFlowEndpointPropertiesPtr and DataFlowEndpointPropertiesPtrOutput values.
-// You can construct a concrete instance of `DataFlowEndpointPropertiesPtrInput` via:
+// DataflowEndpointPropertiesPtrInput is an input type that accepts DataflowEndpointPropertiesArgs, DataflowEndpointPropertiesPtr and DataflowEndpointPropertiesPtrOutput values.
+// You can construct a concrete instance of `DataflowEndpointPropertiesPtrInput` via:
 //
-//	        DataFlowEndpointPropertiesArgs{...}
+//	        DataflowEndpointPropertiesArgs{...}
 //
 //	or:
 //
 //	        nil
-type DataFlowEndpointPropertiesPtrInput interface {
+type DataflowEndpointPropertiesPtrInput interface {
 	pulumi.Input
 
-	ToDataFlowEndpointPropertiesPtrOutput() DataFlowEndpointPropertiesPtrOutput
-	ToDataFlowEndpointPropertiesPtrOutputWithContext(context.Context) DataFlowEndpointPropertiesPtrOutput
+	ToDataflowEndpointPropertiesPtrOutput() DataflowEndpointPropertiesPtrOutput
+	ToDataflowEndpointPropertiesPtrOutputWithContext(context.Context) DataflowEndpointPropertiesPtrOutput
 }
 
-type dataFlowEndpointPropertiesPtrType DataFlowEndpointPropertiesArgs
+type dataflowEndpointPropertiesPtrType DataflowEndpointPropertiesArgs
 
-func DataFlowEndpointPropertiesPtr(v *DataFlowEndpointPropertiesArgs) DataFlowEndpointPropertiesPtrInput {
-	return (*dataFlowEndpointPropertiesPtrType)(v)
+func DataflowEndpointPropertiesPtr(v *DataflowEndpointPropertiesArgs) DataflowEndpointPropertiesPtrInput {
+	return (*dataflowEndpointPropertiesPtrType)(v)
 }
 
-func (*dataFlowEndpointPropertiesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DataFlowEndpointProperties)(nil)).Elem()
+func (*dataflowEndpointPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowEndpointProperties)(nil)).Elem()
 }
 
-func (i *dataFlowEndpointPropertiesPtrType) ToDataFlowEndpointPropertiesPtrOutput() DataFlowEndpointPropertiesPtrOutput {
-	return i.ToDataFlowEndpointPropertiesPtrOutputWithContext(context.Background())
+func (i *dataflowEndpointPropertiesPtrType) ToDataflowEndpointPropertiesPtrOutput() DataflowEndpointPropertiesPtrOutput {
+	return i.ToDataflowEndpointPropertiesPtrOutputWithContext(context.Background())
 }
 
-func (i *dataFlowEndpointPropertiesPtrType) ToDataFlowEndpointPropertiesPtrOutputWithContext(ctx context.Context) DataFlowEndpointPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataFlowEndpointPropertiesPtrOutput)
+func (i *dataflowEndpointPropertiesPtrType) ToDataflowEndpointPropertiesPtrOutputWithContext(ctx context.Context) DataflowEndpointPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowEndpointPropertiesPtrOutput)
 }
 
-// DataFlowEndpoint Resource properties. NOTE - Only one type of endpoint is supported for one Resource
-type DataFlowEndpointPropertiesOutput struct{ *pulumi.OutputState }
+// DataflowEndpoint Resource properties. NOTE - Only one type of endpoint is supported for one Resource
+type DataflowEndpointPropertiesOutput struct{ *pulumi.OutputState }
 
-func (DataFlowEndpointPropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowEndpointProperties)(nil)).Elem()
+func (DataflowEndpointPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowEndpointProperties)(nil)).Elem()
 }
 
-func (o DataFlowEndpointPropertiesOutput) ToDataFlowEndpointPropertiesOutput() DataFlowEndpointPropertiesOutput {
+func (o DataflowEndpointPropertiesOutput) ToDataflowEndpointPropertiesOutput() DataflowEndpointPropertiesOutput {
 	return o
 }
 
-func (o DataFlowEndpointPropertiesOutput) ToDataFlowEndpointPropertiesOutputWithContext(ctx context.Context) DataFlowEndpointPropertiesOutput {
+func (o DataflowEndpointPropertiesOutput) ToDataflowEndpointPropertiesOutputWithContext(ctx context.Context) DataflowEndpointPropertiesOutput {
 	return o
 }
 
-func (o DataFlowEndpointPropertiesOutput) ToDataFlowEndpointPropertiesPtrOutput() DataFlowEndpointPropertiesPtrOutput {
-	return o.ToDataFlowEndpointPropertiesPtrOutputWithContext(context.Background())
+func (o DataflowEndpointPropertiesOutput) ToDataflowEndpointPropertiesPtrOutput() DataflowEndpointPropertiesPtrOutput {
+	return o.ToDataflowEndpointPropertiesPtrOutputWithContext(context.Background())
 }
 
-func (o DataFlowEndpointPropertiesOutput) ToDataFlowEndpointPropertiesPtrOutputWithContext(ctx context.Context) DataFlowEndpointPropertiesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataFlowEndpointProperties) *DataFlowEndpointProperties {
+func (o DataflowEndpointPropertiesOutput) ToDataflowEndpointPropertiesPtrOutputWithContext(ctx context.Context) DataflowEndpointPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataflowEndpointProperties) *DataflowEndpointProperties {
 		return &v
-	}).(DataFlowEndpointPropertiesPtrOutput)
-}
-
-// Authentication configuration.
-func (o DataFlowEndpointPropertiesOutput) Authentication() DataFlowEndpointAuthenticationOutput {
-	return o.ApplyT(func(v DataFlowEndpointProperties) DataFlowEndpointAuthentication { return v.Authentication }).(DataFlowEndpointAuthenticationOutput)
+	}).(DataflowEndpointPropertiesPtrOutput)
 }
 
 // Azure Data Explorer endpoint.
-func (o DataFlowEndpointPropertiesOutput) DataExplorerSettings() DataFlowEndpointDataExplorerPtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointProperties) *DataFlowEndpointDataExplorer { return v.DataExplorerSettings }).(DataFlowEndpointDataExplorerPtrOutput)
+func (o DataflowEndpointPropertiesOutput) DataExplorerSettings() DataflowEndpointDataExplorerPtrOutput {
+	return o.ApplyT(func(v DataflowEndpointProperties) *DataflowEndpointDataExplorer { return v.DataExplorerSettings }).(DataflowEndpointDataExplorerPtrOutput)
 }
 
 // Azure Data Lake endpoint.
-func (o DataFlowEndpointPropertiesOutput) DataLakeStorageSettings() DataFlowEndpointDataLakeStoragePtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointProperties) *DataFlowEndpointDataLakeStorage { return v.DataLakeStorageSettings }).(DataFlowEndpointDataLakeStoragePtrOutput)
+func (o DataflowEndpointPropertiesOutput) DataLakeStorageSettings() DataflowEndpointDataLakeStoragePtrOutput {
+	return o.ApplyT(func(v DataflowEndpointProperties) *DataflowEndpointDataLakeStorage { return v.DataLakeStorageSettings }).(DataflowEndpointDataLakeStoragePtrOutput)
 }
 
 // Endpoint Type.
-func (o DataFlowEndpointPropertiesOutput) EndpointType() pulumi.StringOutput {
-	return o.ApplyT(func(v DataFlowEndpointProperties) string { return v.EndpointType }).(pulumi.StringOutput)
+func (o DataflowEndpointPropertiesOutput) EndpointType() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowEndpointProperties) string { return v.EndpointType }).(pulumi.StringOutput)
 }
 
 // Microsoft Fabric endpoint.
-func (o DataFlowEndpointPropertiesOutput) FabricOneLakeSettings() DataFlowEndpointFabricOneLakePtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointProperties) *DataFlowEndpointFabricOneLake { return v.FabricOneLakeSettings }).(DataFlowEndpointFabricOneLakePtrOutput)
+func (o DataflowEndpointPropertiesOutput) FabricOneLakeSettings() DataflowEndpointFabricOneLakePtrOutput {
+	return o.ApplyT(func(v DataflowEndpointProperties) *DataflowEndpointFabricOneLake { return v.FabricOneLakeSettings }).(DataflowEndpointFabricOneLakePtrOutput)
 }
 
 // Kafka endpoint.
-func (o DataFlowEndpointPropertiesOutput) KafkaSettings() DataFlowEndpointKafkaPtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointProperties) *DataFlowEndpointKafka { return v.KafkaSettings }).(DataFlowEndpointKafkaPtrOutput)
+func (o DataflowEndpointPropertiesOutput) KafkaSettings() DataflowEndpointKafkaPtrOutput {
+	return o.ApplyT(func(v DataflowEndpointProperties) *DataflowEndpointKafka { return v.KafkaSettings }).(DataflowEndpointKafkaPtrOutput)
 }
 
 // Local persistent volume endpoint.
-func (o DataFlowEndpointPropertiesOutput) LocalStorageSettings() DataFlowEndpointLocalStoragePtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointProperties) *DataFlowEndpointLocalStorage { return v.LocalStorageSettings }).(DataFlowEndpointLocalStoragePtrOutput)
+func (o DataflowEndpointPropertiesOutput) LocalStorageSettings() DataflowEndpointLocalStoragePtrOutput {
+	return o.ApplyT(func(v DataflowEndpointProperties) *DataflowEndpointLocalStorage { return v.LocalStorageSettings }).(DataflowEndpointLocalStoragePtrOutput)
 }
 
 // Broker endpoint.
-func (o DataFlowEndpointPropertiesOutput) MqttSettings() DataFlowEndpointMqttPtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointProperties) *DataFlowEndpointMqtt { return v.MqttSettings }).(DataFlowEndpointMqttPtrOutput)
+func (o DataflowEndpointPropertiesOutput) MqttSettings() DataflowEndpointMqttPtrOutput {
+	return o.ApplyT(func(v DataflowEndpointProperties) *DataflowEndpointMqtt { return v.MqttSettings }).(DataflowEndpointMqttPtrOutput)
 }
 
-type DataFlowEndpointPropertiesPtrOutput struct{ *pulumi.OutputState }
+type DataflowEndpointPropertiesPtrOutput struct{ *pulumi.OutputState }
 
-func (DataFlowEndpointPropertiesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DataFlowEndpointProperties)(nil)).Elem()
+func (DataflowEndpointPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowEndpointProperties)(nil)).Elem()
 }
 
-func (o DataFlowEndpointPropertiesPtrOutput) ToDataFlowEndpointPropertiesPtrOutput() DataFlowEndpointPropertiesPtrOutput {
+func (o DataflowEndpointPropertiesPtrOutput) ToDataflowEndpointPropertiesPtrOutput() DataflowEndpointPropertiesPtrOutput {
 	return o
 }
 
-func (o DataFlowEndpointPropertiesPtrOutput) ToDataFlowEndpointPropertiesPtrOutputWithContext(ctx context.Context) DataFlowEndpointPropertiesPtrOutput {
+func (o DataflowEndpointPropertiesPtrOutput) ToDataflowEndpointPropertiesPtrOutputWithContext(ctx context.Context) DataflowEndpointPropertiesPtrOutput {
 	return o
 }
 
-func (o DataFlowEndpointPropertiesPtrOutput) Elem() DataFlowEndpointPropertiesOutput {
-	return o.ApplyT(func(v *DataFlowEndpointProperties) DataFlowEndpointProperties {
+func (o DataflowEndpointPropertiesPtrOutput) Elem() DataflowEndpointPropertiesOutput {
+	return o.ApplyT(func(v *DataflowEndpointProperties) DataflowEndpointProperties {
 		if v != nil {
 			return *v
 		}
-		var ret DataFlowEndpointProperties
+		var ret DataflowEndpointProperties
 		return ret
-	}).(DataFlowEndpointPropertiesOutput)
-}
-
-// Authentication configuration.
-func (o DataFlowEndpointPropertiesPtrOutput) Authentication() DataFlowEndpointAuthenticationPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointProperties) *DataFlowEndpointAuthentication {
-		if v == nil {
-			return nil
-		}
-		return &v.Authentication
-	}).(DataFlowEndpointAuthenticationPtrOutput)
+	}).(DataflowEndpointPropertiesOutput)
 }
 
 // Azure Data Explorer endpoint.
-func (o DataFlowEndpointPropertiesPtrOutput) DataExplorerSettings() DataFlowEndpointDataExplorerPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointProperties) *DataFlowEndpointDataExplorer {
+func (o DataflowEndpointPropertiesPtrOutput) DataExplorerSettings() DataflowEndpointDataExplorerPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointProperties) *DataflowEndpointDataExplorer {
 		if v == nil {
 			return nil
 		}
 		return v.DataExplorerSettings
-	}).(DataFlowEndpointDataExplorerPtrOutput)
+	}).(DataflowEndpointDataExplorerPtrOutput)
 }
 
 // Azure Data Lake endpoint.
-func (o DataFlowEndpointPropertiesPtrOutput) DataLakeStorageSettings() DataFlowEndpointDataLakeStoragePtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointProperties) *DataFlowEndpointDataLakeStorage {
+func (o DataflowEndpointPropertiesPtrOutput) DataLakeStorageSettings() DataflowEndpointDataLakeStoragePtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointProperties) *DataflowEndpointDataLakeStorage {
 		if v == nil {
 			return nil
 		}
 		return v.DataLakeStorageSettings
-	}).(DataFlowEndpointDataLakeStoragePtrOutput)
+	}).(DataflowEndpointDataLakeStoragePtrOutput)
 }
 
 // Endpoint Type.
-func (o DataFlowEndpointPropertiesPtrOutput) EndpointType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointProperties) *string {
+func (o DataflowEndpointPropertiesPtrOutput) EndpointType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointProperties) *string {
 		if v == nil {
 			return nil
 		}
@@ -11857,69 +13666,67 @@ func (o DataFlowEndpointPropertiesPtrOutput) EndpointType() pulumi.StringPtrOutp
 }
 
 // Microsoft Fabric endpoint.
-func (o DataFlowEndpointPropertiesPtrOutput) FabricOneLakeSettings() DataFlowEndpointFabricOneLakePtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointProperties) *DataFlowEndpointFabricOneLake {
+func (o DataflowEndpointPropertiesPtrOutput) FabricOneLakeSettings() DataflowEndpointFabricOneLakePtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointProperties) *DataflowEndpointFabricOneLake {
 		if v == nil {
 			return nil
 		}
 		return v.FabricOneLakeSettings
-	}).(DataFlowEndpointFabricOneLakePtrOutput)
+	}).(DataflowEndpointFabricOneLakePtrOutput)
 }
 
 // Kafka endpoint.
-func (o DataFlowEndpointPropertiesPtrOutput) KafkaSettings() DataFlowEndpointKafkaPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointProperties) *DataFlowEndpointKafka {
+func (o DataflowEndpointPropertiesPtrOutput) KafkaSettings() DataflowEndpointKafkaPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointProperties) *DataflowEndpointKafka {
 		if v == nil {
 			return nil
 		}
 		return v.KafkaSettings
-	}).(DataFlowEndpointKafkaPtrOutput)
+	}).(DataflowEndpointKafkaPtrOutput)
 }
 
 // Local persistent volume endpoint.
-func (o DataFlowEndpointPropertiesPtrOutput) LocalStorageSettings() DataFlowEndpointLocalStoragePtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointProperties) *DataFlowEndpointLocalStorage {
+func (o DataflowEndpointPropertiesPtrOutput) LocalStorageSettings() DataflowEndpointLocalStoragePtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointProperties) *DataflowEndpointLocalStorage {
 		if v == nil {
 			return nil
 		}
 		return v.LocalStorageSettings
-	}).(DataFlowEndpointLocalStoragePtrOutput)
+	}).(DataflowEndpointLocalStoragePtrOutput)
 }
 
 // Broker endpoint.
-func (o DataFlowEndpointPropertiesPtrOutput) MqttSettings() DataFlowEndpointMqttPtrOutput {
-	return o.ApplyT(func(v *DataFlowEndpointProperties) *DataFlowEndpointMqtt {
+func (o DataflowEndpointPropertiesPtrOutput) MqttSettings() DataflowEndpointMqttPtrOutput {
+	return o.ApplyT(func(v *DataflowEndpointProperties) *DataflowEndpointMqtt {
 		if v == nil {
 			return nil
 		}
 		return v.MqttSettings
-	}).(DataFlowEndpointMqttPtrOutput)
+	}).(DataflowEndpointMqttPtrOutput)
 }
 
-// DataFlowEndpoint Resource properties. NOTE - Only one type of endpoint is supported for one Resource
-type DataFlowEndpointPropertiesResponse struct {
-	// Authentication configuration.
-	Authentication DataFlowEndpointAuthenticationResponse `pulumi:"authentication"`
+// DataflowEndpoint Resource properties. NOTE - Only one type of endpoint is supported for one Resource
+type DataflowEndpointPropertiesResponse struct {
 	// Azure Data Explorer endpoint.
-	DataExplorerSettings *DataFlowEndpointDataExplorerResponse `pulumi:"dataExplorerSettings"`
+	DataExplorerSettings *DataflowEndpointDataExplorerResponse `pulumi:"dataExplorerSettings"`
 	// Azure Data Lake endpoint.
-	DataLakeStorageSettings *DataFlowEndpointDataLakeStorageResponse `pulumi:"dataLakeStorageSettings"`
+	DataLakeStorageSettings *DataflowEndpointDataLakeStorageResponse `pulumi:"dataLakeStorageSettings"`
 	// Endpoint Type.
 	EndpointType string `pulumi:"endpointType"`
 	// Microsoft Fabric endpoint.
-	FabricOneLakeSettings *DataFlowEndpointFabricOneLakeResponse `pulumi:"fabricOneLakeSettings"`
+	FabricOneLakeSettings *DataflowEndpointFabricOneLakeResponse `pulumi:"fabricOneLakeSettings"`
 	// Kafka endpoint.
-	KafkaSettings *DataFlowEndpointKafkaResponse `pulumi:"kafkaSettings"`
+	KafkaSettings *DataflowEndpointKafkaResponse `pulumi:"kafkaSettings"`
 	// Local persistent volume endpoint.
-	LocalStorageSettings *DataFlowEndpointLocalStorageResponse `pulumi:"localStorageSettings"`
+	LocalStorageSettings *DataflowEndpointLocalStorageResponse `pulumi:"localStorageSettings"`
 	// Broker endpoint.
-	MqttSettings *DataFlowEndpointMqttResponse `pulumi:"mqttSettings"`
+	MqttSettings *DataflowEndpointMqttResponse `pulumi:"mqttSettings"`
 	// The status of the last operation.
 	ProvisioningState string `pulumi:"provisioningState"`
 }
 
-// Defaults sets the appropriate defaults for DataFlowEndpointPropertiesResponse
-func (val *DataFlowEndpointPropertiesResponse) Defaults() *DataFlowEndpointPropertiesResponse {
+// Defaults sets the appropriate defaults for DataflowEndpointPropertiesResponse
+func (val *DataflowEndpointPropertiesResponse) Defaults() *DataflowEndpointPropertiesResponse {
 	if val == nil {
 		return nil
 	}
@@ -11937,130 +13744,123 @@ func (val *DataFlowEndpointPropertiesResponse) Defaults() *DataFlowEndpointPrope
 	return &tmp
 }
 
-// DataFlowEndpoint Resource properties. NOTE - Only one type of endpoint is supported for one Resource
-type DataFlowEndpointPropertiesResponseOutput struct{ *pulumi.OutputState }
+// DataflowEndpoint Resource properties. NOTE - Only one type of endpoint is supported for one Resource
+type DataflowEndpointPropertiesResponseOutput struct{ *pulumi.OutputState }
 
-func (DataFlowEndpointPropertiesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowEndpointPropertiesResponse)(nil)).Elem()
+func (DataflowEndpointPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowEndpointPropertiesResponse)(nil)).Elem()
 }
 
-func (o DataFlowEndpointPropertiesResponseOutput) ToDataFlowEndpointPropertiesResponseOutput() DataFlowEndpointPropertiesResponseOutput {
+func (o DataflowEndpointPropertiesResponseOutput) ToDataflowEndpointPropertiesResponseOutput() DataflowEndpointPropertiesResponseOutput {
 	return o
 }
 
-func (o DataFlowEndpointPropertiesResponseOutput) ToDataFlowEndpointPropertiesResponseOutputWithContext(ctx context.Context) DataFlowEndpointPropertiesResponseOutput {
+func (o DataflowEndpointPropertiesResponseOutput) ToDataflowEndpointPropertiesResponseOutputWithContext(ctx context.Context) DataflowEndpointPropertiesResponseOutput {
 	return o
-}
-
-// Authentication configuration.
-func (o DataFlowEndpointPropertiesResponseOutput) Authentication() DataFlowEndpointAuthenticationResponseOutput {
-	return o.ApplyT(func(v DataFlowEndpointPropertiesResponse) DataFlowEndpointAuthenticationResponse {
-		return v.Authentication
-	}).(DataFlowEndpointAuthenticationResponseOutput)
 }
 
 // Azure Data Explorer endpoint.
-func (o DataFlowEndpointPropertiesResponseOutput) DataExplorerSettings() DataFlowEndpointDataExplorerResponsePtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointPropertiesResponse) *DataFlowEndpointDataExplorerResponse {
+func (o DataflowEndpointPropertiesResponseOutput) DataExplorerSettings() DataflowEndpointDataExplorerResponsePtrOutput {
+	return o.ApplyT(func(v DataflowEndpointPropertiesResponse) *DataflowEndpointDataExplorerResponse {
 		return v.DataExplorerSettings
-	}).(DataFlowEndpointDataExplorerResponsePtrOutput)
+	}).(DataflowEndpointDataExplorerResponsePtrOutput)
 }
 
 // Azure Data Lake endpoint.
-func (o DataFlowEndpointPropertiesResponseOutput) DataLakeStorageSettings() DataFlowEndpointDataLakeStorageResponsePtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointPropertiesResponse) *DataFlowEndpointDataLakeStorageResponse {
+func (o DataflowEndpointPropertiesResponseOutput) DataLakeStorageSettings() DataflowEndpointDataLakeStorageResponsePtrOutput {
+	return o.ApplyT(func(v DataflowEndpointPropertiesResponse) *DataflowEndpointDataLakeStorageResponse {
 		return v.DataLakeStorageSettings
-	}).(DataFlowEndpointDataLakeStorageResponsePtrOutput)
+	}).(DataflowEndpointDataLakeStorageResponsePtrOutput)
 }
 
 // Endpoint Type.
-func (o DataFlowEndpointPropertiesResponseOutput) EndpointType() pulumi.StringOutput {
-	return o.ApplyT(func(v DataFlowEndpointPropertiesResponse) string { return v.EndpointType }).(pulumi.StringOutput)
+func (o DataflowEndpointPropertiesResponseOutput) EndpointType() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowEndpointPropertiesResponse) string { return v.EndpointType }).(pulumi.StringOutput)
 }
 
 // Microsoft Fabric endpoint.
-func (o DataFlowEndpointPropertiesResponseOutput) FabricOneLakeSettings() DataFlowEndpointFabricOneLakeResponsePtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointPropertiesResponse) *DataFlowEndpointFabricOneLakeResponse {
+func (o DataflowEndpointPropertiesResponseOutput) FabricOneLakeSettings() DataflowEndpointFabricOneLakeResponsePtrOutput {
+	return o.ApplyT(func(v DataflowEndpointPropertiesResponse) *DataflowEndpointFabricOneLakeResponse {
 		return v.FabricOneLakeSettings
-	}).(DataFlowEndpointFabricOneLakeResponsePtrOutput)
+	}).(DataflowEndpointFabricOneLakeResponsePtrOutput)
 }
 
 // Kafka endpoint.
-func (o DataFlowEndpointPropertiesResponseOutput) KafkaSettings() DataFlowEndpointKafkaResponsePtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointPropertiesResponse) *DataFlowEndpointKafkaResponse { return v.KafkaSettings }).(DataFlowEndpointKafkaResponsePtrOutput)
+func (o DataflowEndpointPropertiesResponseOutput) KafkaSettings() DataflowEndpointKafkaResponsePtrOutput {
+	return o.ApplyT(func(v DataflowEndpointPropertiesResponse) *DataflowEndpointKafkaResponse { return v.KafkaSettings }).(DataflowEndpointKafkaResponsePtrOutput)
 }
 
 // Local persistent volume endpoint.
-func (o DataFlowEndpointPropertiesResponseOutput) LocalStorageSettings() DataFlowEndpointLocalStorageResponsePtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointPropertiesResponse) *DataFlowEndpointLocalStorageResponse {
+func (o DataflowEndpointPropertiesResponseOutput) LocalStorageSettings() DataflowEndpointLocalStorageResponsePtrOutput {
+	return o.ApplyT(func(v DataflowEndpointPropertiesResponse) *DataflowEndpointLocalStorageResponse {
 		return v.LocalStorageSettings
-	}).(DataFlowEndpointLocalStorageResponsePtrOutput)
+	}).(DataflowEndpointLocalStorageResponsePtrOutput)
 }
 
 // Broker endpoint.
-func (o DataFlowEndpointPropertiesResponseOutput) MqttSettings() DataFlowEndpointMqttResponsePtrOutput {
-	return o.ApplyT(func(v DataFlowEndpointPropertiesResponse) *DataFlowEndpointMqttResponse { return v.MqttSettings }).(DataFlowEndpointMqttResponsePtrOutput)
+func (o DataflowEndpointPropertiesResponseOutput) MqttSettings() DataflowEndpointMqttResponsePtrOutput {
+	return o.ApplyT(func(v DataflowEndpointPropertiesResponse) *DataflowEndpointMqttResponse { return v.MqttSettings }).(DataflowEndpointMqttResponsePtrOutput)
 }
 
 // The status of the last operation.
-func (o DataFlowEndpointPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v DataFlowEndpointPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+func (o DataflowEndpointPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowEndpointPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// DataFlow Operation properties. NOTE - One only method is allowed to be used for one entry.
-type DataFlowOperation struct {
-	// Transformation configuration.
-	BuiltInTransformationSettings *DataFlowBuiltInTransformation `pulumi:"builtInTransformationSettings"`
+// Dataflow Operation properties. NOTE - One only method is allowed to be used for one entry.
+type DataflowOperation struct {
+	// Built In Transformation configuration.
+	BuiltInTransformationSettings *DataflowBuiltInTransformationSettings `pulumi:"builtInTransformationSettings"`
 	// Destination configuration.
-	DestinationSettings DataFlowDestinationOperation `pulumi:"destinationSettings"`
+	DestinationSettings *DataflowDestinationOperationSettings `pulumi:"destinationSettings"`
 	// Optional user provided name of the transformation.
 	Name *string `pulumi:"name"`
 	// Type of operation.
 	OperationType string `pulumi:"operationType"`
 	// Source configuration.
-	SourceSettings DataFlowSourceOperation `pulumi:"sourceSettings"`
+	SourceSettings *DataflowSourceOperationSettings `pulumi:"sourceSettings"`
 }
 
-// Defaults sets the appropriate defaults for DataFlowOperation
-func (val *DataFlowOperation) Defaults() *DataFlowOperation {
+// Defaults sets the appropriate defaults for DataflowOperation
+func (val *DataflowOperation) Defaults() *DataflowOperation {
 	if val == nil {
 		return nil
 	}
 	tmp := *val
 	tmp.BuiltInTransformationSettings = tmp.BuiltInTransformationSettings.Defaults()
 
-	tmp.SourceSettings = *tmp.SourceSettings.Defaults()
+	tmp.SourceSettings = tmp.SourceSettings.Defaults()
 
 	return &tmp
 }
 
-// DataFlowOperationInput is an input type that accepts DataFlowOperationArgs and DataFlowOperationOutput values.
-// You can construct a concrete instance of `DataFlowOperationInput` via:
+// DataflowOperationInput is an input type that accepts DataflowOperationArgs and DataflowOperationOutput values.
+// You can construct a concrete instance of `DataflowOperationInput` via:
 //
-//	DataFlowOperationArgs{...}
-type DataFlowOperationInput interface {
+//	DataflowOperationArgs{...}
+type DataflowOperationInput interface {
 	pulumi.Input
 
-	ToDataFlowOperationOutput() DataFlowOperationOutput
-	ToDataFlowOperationOutputWithContext(context.Context) DataFlowOperationOutput
+	ToDataflowOperationOutput() DataflowOperationOutput
+	ToDataflowOperationOutputWithContext(context.Context) DataflowOperationOutput
 }
 
-// DataFlow Operation properties. NOTE - One only method is allowed to be used for one entry.
-type DataFlowOperationArgs struct {
-	// Transformation configuration.
-	BuiltInTransformationSettings DataFlowBuiltInTransformationPtrInput `pulumi:"builtInTransformationSettings"`
+// Dataflow Operation properties. NOTE - One only method is allowed to be used for one entry.
+type DataflowOperationArgs struct {
+	// Built In Transformation configuration.
+	BuiltInTransformationSettings DataflowBuiltInTransformationSettingsPtrInput `pulumi:"builtInTransformationSettings"`
 	// Destination configuration.
-	DestinationSettings DataFlowDestinationOperationInput `pulumi:"destinationSettings"`
+	DestinationSettings DataflowDestinationOperationSettingsPtrInput `pulumi:"destinationSettings"`
 	// Optional user provided name of the transformation.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Type of operation.
 	OperationType pulumi.StringInput `pulumi:"operationType"`
 	// Source configuration.
-	SourceSettings DataFlowSourceOperationInput `pulumi:"sourceSettings"`
+	SourceSettings DataflowSourceOperationSettingsPtrInput `pulumi:"sourceSettings"`
 }
 
-// Defaults sets the appropriate defaults for DataFlowOperationArgs
-func (val *DataFlowOperationArgs) Defaults() *DataFlowOperationArgs {
+// Defaults sets the appropriate defaults for DataflowOperationArgs
+func (val *DataflowOperationArgs) Defaults() *DataflowOperationArgs {
 	if val == nil {
 		return nil
 	}
@@ -12068,354 +13868,365 @@ func (val *DataFlowOperationArgs) Defaults() *DataFlowOperationArgs {
 
 	return &tmp
 }
-func (DataFlowOperationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowOperation)(nil)).Elem()
+func (DataflowOperationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowOperation)(nil)).Elem()
 }
 
-func (i DataFlowOperationArgs) ToDataFlowOperationOutput() DataFlowOperationOutput {
-	return i.ToDataFlowOperationOutputWithContext(context.Background())
+func (i DataflowOperationArgs) ToDataflowOperationOutput() DataflowOperationOutput {
+	return i.ToDataflowOperationOutputWithContext(context.Background())
 }
 
-func (i DataFlowOperationArgs) ToDataFlowOperationOutputWithContext(ctx context.Context) DataFlowOperationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataFlowOperationOutput)
+func (i DataflowOperationArgs) ToDataflowOperationOutputWithContext(ctx context.Context) DataflowOperationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowOperationOutput)
 }
 
-// DataFlowOperationArrayInput is an input type that accepts DataFlowOperationArray and DataFlowOperationArrayOutput values.
-// You can construct a concrete instance of `DataFlowOperationArrayInput` via:
+// DataflowOperationArrayInput is an input type that accepts DataflowOperationArray and DataflowOperationArrayOutput values.
+// You can construct a concrete instance of `DataflowOperationArrayInput` via:
 //
-//	DataFlowOperationArray{ DataFlowOperationArgs{...} }
-type DataFlowOperationArrayInput interface {
+//	DataflowOperationArray{ DataflowOperationArgs{...} }
+type DataflowOperationArrayInput interface {
 	pulumi.Input
 
-	ToDataFlowOperationArrayOutput() DataFlowOperationArrayOutput
-	ToDataFlowOperationArrayOutputWithContext(context.Context) DataFlowOperationArrayOutput
+	ToDataflowOperationArrayOutput() DataflowOperationArrayOutput
+	ToDataflowOperationArrayOutputWithContext(context.Context) DataflowOperationArrayOutput
 }
 
-type DataFlowOperationArray []DataFlowOperationInput
+type DataflowOperationArray []DataflowOperationInput
 
-func (DataFlowOperationArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DataFlowOperation)(nil)).Elem()
+func (DataflowOperationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataflowOperation)(nil)).Elem()
 }
 
-func (i DataFlowOperationArray) ToDataFlowOperationArrayOutput() DataFlowOperationArrayOutput {
-	return i.ToDataFlowOperationArrayOutputWithContext(context.Background())
+func (i DataflowOperationArray) ToDataflowOperationArrayOutput() DataflowOperationArrayOutput {
+	return i.ToDataflowOperationArrayOutputWithContext(context.Background())
 }
 
-func (i DataFlowOperationArray) ToDataFlowOperationArrayOutputWithContext(ctx context.Context) DataFlowOperationArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataFlowOperationArrayOutput)
+func (i DataflowOperationArray) ToDataflowOperationArrayOutputWithContext(ctx context.Context) DataflowOperationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowOperationArrayOutput)
 }
 
-// DataFlow Operation properties. NOTE - One only method is allowed to be used for one entry.
-type DataFlowOperationOutput struct{ *pulumi.OutputState }
+// Dataflow Operation properties. NOTE - One only method is allowed to be used for one entry.
+type DataflowOperationOutput struct{ *pulumi.OutputState }
 
-func (DataFlowOperationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowOperation)(nil)).Elem()
+func (DataflowOperationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowOperation)(nil)).Elem()
 }
 
-func (o DataFlowOperationOutput) ToDataFlowOperationOutput() DataFlowOperationOutput {
+func (o DataflowOperationOutput) ToDataflowOperationOutput() DataflowOperationOutput {
 	return o
 }
 
-func (o DataFlowOperationOutput) ToDataFlowOperationOutputWithContext(ctx context.Context) DataFlowOperationOutput {
+func (o DataflowOperationOutput) ToDataflowOperationOutputWithContext(ctx context.Context) DataflowOperationOutput {
 	return o
 }
 
-// Transformation configuration.
-func (o DataFlowOperationOutput) BuiltInTransformationSettings() DataFlowBuiltInTransformationPtrOutput {
-	return o.ApplyT(func(v DataFlowOperation) *DataFlowBuiltInTransformation { return v.BuiltInTransformationSettings }).(DataFlowBuiltInTransformationPtrOutput)
+// Built In Transformation configuration.
+func (o DataflowOperationOutput) BuiltInTransformationSettings() DataflowBuiltInTransformationSettingsPtrOutput {
+	return o.ApplyT(func(v DataflowOperation) *DataflowBuiltInTransformationSettings {
+		return v.BuiltInTransformationSettings
+	}).(DataflowBuiltInTransformationSettingsPtrOutput)
 }
 
 // Destination configuration.
-func (o DataFlowOperationOutput) DestinationSettings() DataFlowDestinationOperationOutput {
-	return o.ApplyT(func(v DataFlowOperation) DataFlowDestinationOperation { return v.DestinationSettings }).(DataFlowDestinationOperationOutput)
+func (o DataflowOperationOutput) DestinationSettings() DataflowDestinationOperationSettingsPtrOutput {
+	return o.ApplyT(func(v DataflowOperation) *DataflowDestinationOperationSettings { return v.DestinationSettings }).(DataflowDestinationOperationSettingsPtrOutput)
 }
 
 // Optional user provided name of the transformation.
-func (o DataFlowOperationOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataFlowOperation) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o DataflowOperationOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowOperation) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // Type of operation.
-func (o DataFlowOperationOutput) OperationType() pulumi.StringOutput {
-	return o.ApplyT(func(v DataFlowOperation) string { return v.OperationType }).(pulumi.StringOutput)
+func (o DataflowOperationOutput) OperationType() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowOperation) string { return v.OperationType }).(pulumi.StringOutput)
 }
 
 // Source configuration.
-func (o DataFlowOperationOutput) SourceSettings() DataFlowSourceOperationOutput {
-	return o.ApplyT(func(v DataFlowOperation) DataFlowSourceOperation { return v.SourceSettings }).(DataFlowSourceOperationOutput)
+func (o DataflowOperationOutput) SourceSettings() DataflowSourceOperationSettingsPtrOutput {
+	return o.ApplyT(func(v DataflowOperation) *DataflowSourceOperationSettings { return v.SourceSettings }).(DataflowSourceOperationSettingsPtrOutput)
 }
 
-type DataFlowOperationArrayOutput struct{ *pulumi.OutputState }
+type DataflowOperationArrayOutput struct{ *pulumi.OutputState }
 
-func (DataFlowOperationArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DataFlowOperation)(nil)).Elem()
+func (DataflowOperationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataflowOperation)(nil)).Elem()
 }
 
-func (o DataFlowOperationArrayOutput) ToDataFlowOperationArrayOutput() DataFlowOperationArrayOutput {
+func (o DataflowOperationArrayOutput) ToDataflowOperationArrayOutput() DataflowOperationArrayOutput {
 	return o
 }
 
-func (o DataFlowOperationArrayOutput) ToDataFlowOperationArrayOutputWithContext(ctx context.Context) DataFlowOperationArrayOutput {
+func (o DataflowOperationArrayOutput) ToDataflowOperationArrayOutputWithContext(ctx context.Context) DataflowOperationArrayOutput {
 	return o
 }
 
-func (o DataFlowOperationArrayOutput) Index(i pulumi.IntInput) DataFlowOperationOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataFlowOperation {
-		return vs[0].([]DataFlowOperation)[vs[1].(int)]
-	}).(DataFlowOperationOutput)
+func (o DataflowOperationArrayOutput) Index(i pulumi.IntInput) DataflowOperationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataflowOperation {
+		return vs[0].([]DataflowOperation)[vs[1].(int)]
+	}).(DataflowOperationOutput)
 }
 
-// DataFlow Operation properties. NOTE - One only method is allowed to be used for one entry.
-type DataFlowOperationResponse struct {
-	// Transformation configuration.
-	BuiltInTransformationSettings *DataFlowBuiltInTransformationResponse `pulumi:"builtInTransformationSettings"`
+// Dataflow Operation properties. NOTE - One only method is allowed to be used for one entry.
+type DataflowOperationResponse struct {
+	// Built In Transformation configuration.
+	BuiltInTransformationSettings *DataflowBuiltInTransformationSettingsResponse `pulumi:"builtInTransformationSettings"`
 	// Destination configuration.
-	DestinationSettings DataFlowDestinationOperationResponse `pulumi:"destinationSettings"`
+	DestinationSettings *DataflowDestinationOperationSettingsResponse `pulumi:"destinationSettings"`
 	// Optional user provided name of the transformation.
 	Name *string `pulumi:"name"`
 	// Type of operation.
 	OperationType string `pulumi:"operationType"`
 	// Source configuration.
-	SourceSettings DataFlowSourceOperationResponse `pulumi:"sourceSettings"`
+	SourceSettings *DataflowSourceOperationSettingsResponse `pulumi:"sourceSettings"`
 }
 
-// Defaults sets the appropriate defaults for DataFlowOperationResponse
-func (val *DataFlowOperationResponse) Defaults() *DataFlowOperationResponse {
+// Defaults sets the appropriate defaults for DataflowOperationResponse
+func (val *DataflowOperationResponse) Defaults() *DataflowOperationResponse {
 	if val == nil {
 		return nil
 	}
 	tmp := *val
 	tmp.BuiltInTransformationSettings = tmp.BuiltInTransformationSettings.Defaults()
 
-	tmp.SourceSettings = *tmp.SourceSettings.Defaults()
+	tmp.SourceSettings = tmp.SourceSettings.Defaults()
 
 	return &tmp
 }
 
-// DataFlow Operation properties. NOTE - One only method is allowed to be used for one entry.
-type DataFlowOperationResponseOutput struct{ *pulumi.OutputState }
+// Dataflow Operation properties. NOTE - One only method is allowed to be used for one entry.
+type DataflowOperationResponseOutput struct{ *pulumi.OutputState }
 
-func (DataFlowOperationResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowOperationResponse)(nil)).Elem()
+func (DataflowOperationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowOperationResponse)(nil)).Elem()
 }
 
-func (o DataFlowOperationResponseOutput) ToDataFlowOperationResponseOutput() DataFlowOperationResponseOutput {
+func (o DataflowOperationResponseOutput) ToDataflowOperationResponseOutput() DataflowOperationResponseOutput {
 	return o
 }
 
-func (o DataFlowOperationResponseOutput) ToDataFlowOperationResponseOutputWithContext(ctx context.Context) DataFlowOperationResponseOutput {
+func (o DataflowOperationResponseOutput) ToDataflowOperationResponseOutputWithContext(ctx context.Context) DataflowOperationResponseOutput {
 	return o
 }
 
-// Transformation configuration.
-func (o DataFlowOperationResponseOutput) BuiltInTransformationSettings() DataFlowBuiltInTransformationResponsePtrOutput {
-	return o.ApplyT(func(v DataFlowOperationResponse) *DataFlowBuiltInTransformationResponse {
+// Built In Transformation configuration.
+func (o DataflowOperationResponseOutput) BuiltInTransformationSettings() DataflowBuiltInTransformationSettingsResponsePtrOutput {
+	return o.ApplyT(func(v DataflowOperationResponse) *DataflowBuiltInTransformationSettingsResponse {
 		return v.BuiltInTransformationSettings
-	}).(DataFlowBuiltInTransformationResponsePtrOutput)
+	}).(DataflowBuiltInTransformationSettingsResponsePtrOutput)
 }
 
 // Destination configuration.
-func (o DataFlowOperationResponseOutput) DestinationSettings() DataFlowDestinationOperationResponseOutput {
-	return o.ApplyT(func(v DataFlowOperationResponse) DataFlowDestinationOperationResponse { return v.DestinationSettings }).(DataFlowDestinationOperationResponseOutput)
+func (o DataflowOperationResponseOutput) DestinationSettings() DataflowDestinationOperationSettingsResponsePtrOutput {
+	return o.ApplyT(func(v DataflowOperationResponse) *DataflowDestinationOperationSettingsResponse {
+		return v.DestinationSettings
+	}).(DataflowDestinationOperationSettingsResponsePtrOutput)
 }
 
 // Optional user provided name of the transformation.
-func (o DataFlowOperationResponseOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataFlowOperationResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o DataflowOperationResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowOperationResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // Type of operation.
-func (o DataFlowOperationResponseOutput) OperationType() pulumi.StringOutput {
-	return o.ApplyT(func(v DataFlowOperationResponse) string { return v.OperationType }).(pulumi.StringOutput)
+func (o DataflowOperationResponseOutput) OperationType() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowOperationResponse) string { return v.OperationType }).(pulumi.StringOutput)
 }
 
 // Source configuration.
-func (o DataFlowOperationResponseOutput) SourceSettings() DataFlowSourceOperationResponseOutput {
-	return o.ApplyT(func(v DataFlowOperationResponse) DataFlowSourceOperationResponse { return v.SourceSettings }).(DataFlowSourceOperationResponseOutput)
+func (o DataflowOperationResponseOutput) SourceSettings() DataflowSourceOperationSettingsResponsePtrOutput {
+	return o.ApplyT(func(v DataflowOperationResponse) *DataflowSourceOperationSettingsResponse { return v.SourceSettings }).(DataflowSourceOperationSettingsResponsePtrOutput)
 }
 
-type DataFlowOperationResponseArrayOutput struct{ *pulumi.OutputState }
+type DataflowOperationResponseArrayOutput struct{ *pulumi.OutputState }
 
-func (DataFlowOperationResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DataFlowOperationResponse)(nil)).Elem()
+func (DataflowOperationResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataflowOperationResponse)(nil)).Elem()
 }
 
-func (o DataFlowOperationResponseArrayOutput) ToDataFlowOperationResponseArrayOutput() DataFlowOperationResponseArrayOutput {
+func (o DataflowOperationResponseArrayOutput) ToDataflowOperationResponseArrayOutput() DataflowOperationResponseArrayOutput {
 	return o
 }
 
-func (o DataFlowOperationResponseArrayOutput) ToDataFlowOperationResponseArrayOutputWithContext(ctx context.Context) DataFlowOperationResponseArrayOutput {
+func (o DataflowOperationResponseArrayOutput) ToDataflowOperationResponseArrayOutputWithContext(ctx context.Context) DataflowOperationResponseArrayOutput {
 	return o
 }
 
-func (o DataFlowOperationResponseArrayOutput) Index(i pulumi.IntInput) DataFlowOperationResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataFlowOperationResponse {
-		return vs[0].([]DataFlowOperationResponse)[vs[1].(int)]
-	}).(DataFlowOperationResponseOutput)
+func (o DataflowOperationResponseArrayOutput) Index(i pulumi.IntInput) DataflowOperationResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataflowOperationResponse {
+		return vs[0].([]DataflowOperationResponse)[vs[1].(int)]
+	}).(DataflowOperationResponseOutput)
 }
 
-// DataFlowProfile Resource properties
-type DataFlowProfileProperties struct {
+// DataflowProfile Resource properties
+type DataflowProfileProperties struct {
 	// Spec defines the desired identities of NBC diagnostics settings.
 	Diagnostics *ProfileDiagnostics `pulumi:"diagnostics"`
 	// To manually scale the dataflow profile, specify the maximum number of instances you want to run.
 	InstanceCount *int `pulumi:"instanceCount"`
 }
 
-// Defaults sets the appropriate defaults for DataFlowProfileProperties
-func (val *DataFlowProfileProperties) Defaults() *DataFlowProfileProperties {
+// Defaults sets the appropriate defaults for DataflowProfileProperties
+func (val *DataflowProfileProperties) Defaults() *DataflowProfileProperties {
 	if val == nil {
 		return nil
 	}
 	tmp := *val
 	tmp.Diagnostics = tmp.Diagnostics.Defaults()
 
+	if tmp.InstanceCount == nil {
+		instanceCount_ := 1
+		tmp.InstanceCount = &instanceCount_
+	}
 	return &tmp
 }
 
-// DataFlowProfilePropertiesInput is an input type that accepts DataFlowProfilePropertiesArgs and DataFlowProfilePropertiesOutput values.
-// You can construct a concrete instance of `DataFlowProfilePropertiesInput` via:
+// DataflowProfilePropertiesInput is an input type that accepts DataflowProfilePropertiesArgs and DataflowProfilePropertiesOutput values.
+// You can construct a concrete instance of `DataflowProfilePropertiesInput` via:
 //
-//	DataFlowProfilePropertiesArgs{...}
-type DataFlowProfilePropertiesInput interface {
+//	DataflowProfilePropertiesArgs{...}
+type DataflowProfilePropertiesInput interface {
 	pulumi.Input
 
-	ToDataFlowProfilePropertiesOutput() DataFlowProfilePropertiesOutput
-	ToDataFlowProfilePropertiesOutputWithContext(context.Context) DataFlowProfilePropertiesOutput
+	ToDataflowProfilePropertiesOutput() DataflowProfilePropertiesOutput
+	ToDataflowProfilePropertiesOutputWithContext(context.Context) DataflowProfilePropertiesOutput
 }
 
-// DataFlowProfile Resource properties
-type DataFlowProfilePropertiesArgs struct {
+// DataflowProfile Resource properties
+type DataflowProfilePropertiesArgs struct {
 	// Spec defines the desired identities of NBC diagnostics settings.
 	Diagnostics ProfileDiagnosticsPtrInput `pulumi:"diagnostics"`
 	// To manually scale the dataflow profile, specify the maximum number of instances you want to run.
 	InstanceCount pulumi.IntPtrInput `pulumi:"instanceCount"`
 }
 
-// Defaults sets the appropriate defaults for DataFlowProfilePropertiesArgs
-func (val *DataFlowProfilePropertiesArgs) Defaults() *DataFlowProfilePropertiesArgs {
+// Defaults sets the appropriate defaults for DataflowProfilePropertiesArgs
+func (val *DataflowProfilePropertiesArgs) Defaults() *DataflowProfilePropertiesArgs {
 	if val == nil {
 		return nil
 	}
 	tmp := *val
 
+	if tmp.InstanceCount == nil {
+		tmp.InstanceCount = pulumi.IntPtr(1)
+	}
 	return &tmp
 }
-func (DataFlowProfilePropertiesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowProfileProperties)(nil)).Elem()
+func (DataflowProfilePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowProfileProperties)(nil)).Elem()
 }
 
-func (i DataFlowProfilePropertiesArgs) ToDataFlowProfilePropertiesOutput() DataFlowProfilePropertiesOutput {
-	return i.ToDataFlowProfilePropertiesOutputWithContext(context.Background())
+func (i DataflowProfilePropertiesArgs) ToDataflowProfilePropertiesOutput() DataflowProfilePropertiesOutput {
+	return i.ToDataflowProfilePropertiesOutputWithContext(context.Background())
 }
 
-func (i DataFlowProfilePropertiesArgs) ToDataFlowProfilePropertiesOutputWithContext(ctx context.Context) DataFlowProfilePropertiesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataFlowProfilePropertiesOutput)
+func (i DataflowProfilePropertiesArgs) ToDataflowProfilePropertiesOutputWithContext(ctx context.Context) DataflowProfilePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowProfilePropertiesOutput)
 }
 
-func (i DataFlowProfilePropertiesArgs) ToDataFlowProfilePropertiesPtrOutput() DataFlowProfilePropertiesPtrOutput {
-	return i.ToDataFlowProfilePropertiesPtrOutputWithContext(context.Background())
+func (i DataflowProfilePropertiesArgs) ToDataflowProfilePropertiesPtrOutput() DataflowProfilePropertiesPtrOutput {
+	return i.ToDataflowProfilePropertiesPtrOutputWithContext(context.Background())
 }
 
-func (i DataFlowProfilePropertiesArgs) ToDataFlowProfilePropertiesPtrOutputWithContext(ctx context.Context) DataFlowProfilePropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataFlowProfilePropertiesOutput).ToDataFlowProfilePropertiesPtrOutputWithContext(ctx)
+func (i DataflowProfilePropertiesArgs) ToDataflowProfilePropertiesPtrOutputWithContext(ctx context.Context) DataflowProfilePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowProfilePropertiesOutput).ToDataflowProfilePropertiesPtrOutputWithContext(ctx)
 }
 
-// DataFlowProfilePropertiesPtrInput is an input type that accepts DataFlowProfilePropertiesArgs, DataFlowProfilePropertiesPtr and DataFlowProfilePropertiesPtrOutput values.
-// You can construct a concrete instance of `DataFlowProfilePropertiesPtrInput` via:
+// DataflowProfilePropertiesPtrInput is an input type that accepts DataflowProfilePropertiesArgs, DataflowProfilePropertiesPtr and DataflowProfilePropertiesPtrOutput values.
+// You can construct a concrete instance of `DataflowProfilePropertiesPtrInput` via:
 //
-//	        DataFlowProfilePropertiesArgs{...}
+//	        DataflowProfilePropertiesArgs{...}
 //
 //	or:
 //
 //	        nil
-type DataFlowProfilePropertiesPtrInput interface {
+type DataflowProfilePropertiesPtrInput interface {
 	pulumi.Input
 
-	ToDataFlowProfilePropertiesPtrOutput() DataFlowProfilePropertiesPtrOutput
-	ToDataFlowProfilePropertiesPtrOutputWithContext(context.Context) DataFlowProfilePropertiesPtrOutput
+	ToDataflowProfilePropertiesPtrOutput() DataflowProfilePropertiesPtrOutput
+	ToDataflowProfilePropertiesPtrOutputWithContext(context.Context) DataflowProfilePropertiesPtrOutput
 }
 
-type dataFlowProfilePropertiesPtrType DataFlowProfilePropertiesArgs
+type dataflowProfilePropertiesPtrType DataflowProfilePropertiesArgs
 
-func DataFlowProfilePropertiesPtr(v *DataFlowProfilePropertiesArgs) DataFlowProfilePropertiesPtrInput {
-	return (*dataFlowProfilePropertiesPtrType)(v)
+func DataflowProfilePropertiesPtr(v *DataflowProfilePropertiesArgs) DataflowProfilePropertiesPtrInput {
+	return (*dataflowProfilePropertiesPtrType)(v)
 }
 
-func (*dataFlowProfilePropertiesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DataFlowProfileProperties)(nil)).Elem()
+func (*dataflowProfilePropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowProfileProperties)(nil)).Elem()
 }
 
-func (i *dataFlowProfilePropertiesPtrType) ToDataFlowProfilePropertiesPtrOutput() DataFlowProfilePropertiesPtrOutput {
-	return i.ToDataFlowProfilePropertiesPtrOutputWithContext(context.Background())
+func (i *dataflowProfilePropertiesPtrType) ToDataflowProfilePropertiesPtrOutput() DataflowProfilePropertiesPtrOutput {
+	return i.ToDataflowProfilePropertiesPtrOutputWithContext(context.Background())
 }
 
-func (i *dataFlowProfilePropertiesPtrType) ToDataFlowProfilePropertiesPtrOutputWithContext(ctx context.Context) DataFlowProfilePropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataFlowProfilePropertiesPtrOutput)
+func (i *dataflowProfilePropertiesPtrType) ToDataflowProfilePropertiesPtrOutputWithContext(ctx context.Context) DataflowProfilePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowProfilePropertiesPtrOutput)
 }
 
-// DataFlowProfile Resource properties
-type DataFlowProfilePropertiesOutput struct{ *pulumi.OutputState }
+// DataflowProfile Resource properties
+type DataflowProfilePropertiesOutput struct{ *pulumi.OutputState }
 
-func (DataFlowProfilePropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowProfileProperties)(nil)).Elem()
+func (DataflowProfilePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowProfileProperties)(nil)).Elem()
 }
 
-func (o DataFlowProfilePropertiesOutput) ToDataFlowProfilePropertiesOutput() DataFlowProfilePropertiesOutput {
+func (o DataflowProfilePropertiesOutput) ToDataflowProfilePropertiesOutput() DataflowProfilePropertiesOutput {
 	return o
 }
 
-func (o DataFlowProfilePropertiesOutput) ToDataFlowProfilePropertiesOutputWithContext(ctx context.Context) DataFlowProfilePropertiesOutput {
+func (o DataflowProfilePropertiesOutput) ToDataflowProfilePropertiesOutputWithContext(ctx context.Context) DataflowProfilePropertiesOutput {
 	return o
 }
 
-func (o DataFlowProfilePropertiesOutput) ToDataFlowProfilePropertiesPtrOutput() DataFlowProfilePropertiesPtrOutput {
-	return o.ToDataFlowProfilePropertiesPtrOutputWithContext(context.Background())
+func (o DataflowProfilePropertiesOutput) ToDataflowProfilePropertiesPtrOutput() DataflowProfilePropertiesPtrOutput {
+	return o.ToDataflowProfilePropertiesPtrOutputWithContext(context.Background())
 }
 
-func (o DataFlowProfilePropertiesOutput) ToDataFlowProfilePropertiesPtrOutputWithContext(ctx context.Context) DataFlowProfilePropertiesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataFlowProfileProperties) *DataFlowProfileProperties {
+func (o DataflowProfilePropertiesOutput) ToDataflowProfilePropertiesPtrOutputWithContext(ctx context.Context) DataflowProfilePropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataflowProfileProperties) *DataflowProfileProperties {
 		return &v
-	}).(DataFlowProfilePropertiesPtrOutput)
+	}).(DataflowProfilePropertiesPtrOutput)
 }
 
 // Spec defines the desired identities of NBC diagnostics settings.
-func (o DataFlowProfilePropertiesOutput) Diagnostics() ProfileDiagnosticsPtrOutput {
-	return o.ApplyT(func(v DataFlowProfileProperties) *ProfileDiagnostics { return v.Diagnostics }).(ProfileDiagnosticsPtrOutput)
+func (o DataflowProfilePropertiesOutput) Diagnostics() ProfileDiagnosticsPtrOutput {
+	return o.ApplyT(func(v DataflowProfileProperties) *ProfileDiagnostics { return v.Diagnostics }).(ProfileDiagnosticsPtrOutput)
 }
 
 // To manually scale the dataflow profile, specify the maximum number of instances you want to run.
-func (o DataFlowProfilePropertiesOutput) InstanceCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v DataFlowProfileProperties) *int { return v.InstanceCount }).(pulumi.IntPtrOutput)
+func (o DataflowProfilePropertiesOutput) InstanceCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DataflowProfileProperties) *int { return v.InstanceCount }).(pulumi.IntPtrOutput)
 }
 
-type DataFlowProfilePropertiesPtrOutput struct{ *pulumi.OutputState }
+type DataflowProfilePropertiesPtrOutput struct{ *pulumi.OutputState }
 
-func (DataFlowProfilePropertiesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DataFlowProfileProperties)(nil)).Elem()
+func (DataflowProfilePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowProfileProperties)(nil)).Elem()
 }
 
-func (o DataFlowProfilePropertiesPtrOutput) ToDataFlowProfilePropertiesPtrOutput() DataFlowProfilePropertiesPtrOutput {
+func (o DataflowProfilePropertiesPtrOutput) ToDataflowProfilePropertiesPtrOutput() DataflowProfilePropertiesPtrOutput {
 	return o
 }
 
-func (o DataFlowProfilePropertiesPtrOutput) ToDataFlowProfilePropertiesPtrOutputWithContext(ctx context.Context) DataFlowProfilePropertiesPtrOutput {
+func (o DataflowProfilePropertiesPtrOutput) ToDataflowProfilePropertiesPtrOutputWithContext(ctx context.Context) DataflowProfilePropertiesPtrOutput {
 	return o
 }
 
-func (o DataFlowProfilePropertiesPtrOutput) Elem() DataFlowProfilePropertiesOutput {
-	return o.ApplyT(func(v *DataFlowProfileProperties) DataFlowProfileProperties {
+func (o DataflowProfilePropertiesPtrOutput) Elem() DataflowProfilePropertiesOutput {
+	return o.ApplyT(func(v *DataflowProfileProperties) DataflowProfileProperties {
 		if v != nil {
 			return *v
 		}
-		var ret DataFlowProfileProperties
+		var ret DataflowProfileProperties
 		return ret
-	}).(DataFlowProfilePropertiesOutput)
+	}).(DataflowProfilePropertiesOutput)
 }
 
 // Spec defines the desired identities of NBC diagnostics settings.
-func (o DataFlowProfilePropertiesPtrOutput) Diagnostics() ProfileDiagnosticsPtrOutput {
-	return o.ApplyT(func(v *DataFlowProfileProperties) *ProfileDiagnostics {
+func (o DataflowProfilePropertiesPtrOutput) Diagnostics() ProfileDiagnosticsPtrOutput {
+	return o.ApplyT(func(v *DataflowProfileProperties) *ProfileDiagnostics {
 		if v == nil {
 			return nil
 		}
@@ -12424,8 +14235,8 @@ func (o DataFlowProfilePropertiesPtrOutput) Diagnostics() ProfileDiagnosticsPtrO
 }
 
 // To manually scale the dataflow profile, specify the maximum number of instances you want to run.
-func (o DataFlowProfilePropertiesPtrOutput) InstanceCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *DataFlowProfileProperties) *int {
+func (o DataflowProfilePropertiesPtrOutput) InstanceCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DataflowProfileProperties) *int {
 		if v == nil {
 			return nil
 		}
@@ -12433,8 +14244,8 @@ func (o DataFlowProfilePropertiesPtrOutput) InstanceCount() pulumi.IntPtrOutput 
 	}).(pulumi.IntPtrOutput)
 }
 
-// DataFlowProfile Resource properties
-type DataFlowProfilePropertiesResponse struct {
+// DataflowProfile Resource properties
+type DataflowProfilePropertiesResponse struct {
 	// Spec defines the desired identities of NBC diagnostics settings.
 	Diagnostics *ProfileDiagnosticsResponse `pulumi:"diagnostics"`
 	// To manually scale the dataflow profile, specify the maximum number of instances you want to run.
@@ -12443,59 +14254,61 @@ type DataFlowProfilePropertiesResponse struct {
 	ProvisioningState string `pulumi:"provisioningState"`
 }
 
-// Defaults sets the appropriate defaults for DataFlowProfilePropertiesResponse
-func (val *DataFlowProfilePropertiesResponse) Defaults() *DataFlowProfilePropertiesResponse {
+// Defaults sets the appropriate defaults for DataflowProfilePropertiesResponse
+func (val *DataflowProfilePropertiesResponse) Defaults() *DataflowProfilePropertiesResponse {
 	if val == nil {
 		return nil
 	}
 	tmp := *val
 	tmp.Diagnostics = tmp.Diagnostics.Defaults()
 
+	if tmp.InstanceCount == nil {
+		instanceCount_ := 1
+		tmp.InstanceCount = &instanceCount_
+	}
 	return &tmp
 }
 
-// DataFlowProfile Resource properties
-type DataFlowProfilePropertiesResponseOutput struct{ *pulumi.OutputState }
+// DataflowProfile Resource properties
+type DataflowProfilePropertiesResponseOutput struct{ *pulumi.OutputState }
 
-func (DataFlowProfilePropertiesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowProfilePropertiesResponse)(nil)).Elem()
+func (DataflowProfilePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowProfilePropertiesResponse)(nil)).Elem()
 }
 
-func (o DataFlowProfilePropertiesResponseOutput) ToDataFlowProfilePropertiesResponseOutput() DataFlowProfilePropertiesResponseOutput {
+func (o DataflowProfilePropertiesResponseOutput) ToDataflowProfilePropertiesResponseOutput() DataflowProfilePropertiesResponseOutput {
 	return o
 }
 
-func (o DataFlowProfilePropertiesResponseOutput) ToDataFlowProfilePropertiesResponseOutputWithContext(ctx context.Context) DataFlowProfilePropertiesResponseOutput {
+func (o DataflowProfilePropertiesResponseOutput) ToDataflowProfilePropertiesResponseOutputWithContext(ctx context.Context) DataflowProfilePropertiesResponseOutput {
 	return o
 }
 
 // Spec defines the desired identities of NBC diagnostics settings.
-func (o DataFlowProfilePropertiesResponseOutput) Diagnostics() ProfileDiagnosticsResponsePtrOutput {
-	return o.ApplyT(func(v DataFlowProfilePropertiesResponse) *ProfileDiagnosticsResponse { return v.Diagnostics }).(ProfileDiagnosticsResponsePtrOutput)
+func (o DataflowProfilePropertiesResponseOutput) Diagnostics() ProfileDiagnosticsResponsePtrOutput {
+	return o.ApplyT(func(v DataflowProfilePropertiesResponse) *ProfileDiagnosticsResponse { return v.Diagnostics }).(ProfileDiagnosticsResponsePtrOutput)
 }
 
 // To manually scale the dataflow profile, specify the maximum number of instances you want to run.
-func (o DataFlowProfilePropertiesResponseOutput) InstanceCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v DataFlowProfilePropertiesResponse) *int { return v.InstanceCount }).(pulumi.IntPtrOutput)
+func (o DataflowProfilePropertiesResponseOutput) InstanceCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DataflowProfilePropertiesResponse) *int { return v.InstanceCount }).(pulumi.IntPtrOutput)
 }
 
 // The status of the last operation.
-func (o DataFlowProfilePropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v DataFlowProfilePropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+func (o DataflowProfilePropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowProfilePropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// DataFlow Resource properties
-type DataFlowProperties struct {
-	// Mode for DataFlow. Optional; defaults to Enabled.
+// Dataflow Resource properties
+type DataflowProperties struct {
+	// Mode for Dataflow. Optional; defaults to Enabled.
 	Mode *string `pulumi:"mode"`
 	// List of operations including source and destination references as well as transformation.
-	Operations []DataFlowOperation `pulumi:"operations"`
-	// Reference to the DataflowProfile CR.
-	ProfileRef string `pulumi:"profileRef"`
+	Operations []DataflowOperation `pulumi:"operations"`
 }
 
-// Defaults sets the appropriate defaults for DataFlowProperties
-func (val *DataFlowProperties) Defaults() *DataFlowProperties {
+// Defaults sets the appropriate defaults for DataflowProperties
+func (val *DataflowProperties) Defaults() *DataflowProperties {
 	if val == nil {
 		return nil
 	}
@@ -12507,29 +14320,27 @@ func (val *DataFlowProperties) Defaults() *DataFlowProperties {
 	return &tmp
 }
 
-// DataFlowPropertiesInput is an input type that accepts DataFlowPropertiesArgs and DataFlowPropertiesOutput values.
-// You can construct a concrete instance of `DataFlowPropertiesInput` via:
+// DataflowPropertiesInput is an input type that accepts DataflowPropertiesArgs and DataflowPropertiesOutput values.
+// You can construct a concrete instance of `DataflowPropertiesInput` via:
 //
-//	DataFlowPropertiesArgs{...}
-type DataFlowPropertiesInput interface {
+//	DataflowPropertiesArgs{...}
+type DataflowPropertiesInput interface {
 	pulumi.Input
 
-	ToDataFlowPropertiesOutput() DataFlowPropertiesOutput
-	ToDataFlowPropertiesOutputWithContext(context.Context) DataFlowPropertiesOutput
+	ToDataflowPropertiesOutput() DataflowPropertiesOutput
+	ToDataflowPropertiesOutputWithContext(context.Context) DataflowPropertiesOutput
 }
 
-// DataFlow Resource properties
-type DataFlowPropertiesArgs struct {
-	// Mode for DataFlow. Optional; defaults to Enabled.
+// Dataflow Resource properties
+type DataflowPropertiesArgs struct {
+	// Mode for Dataflow. Optional; defaults to Enabled.
 	Mode pulumi.StringPtrInput `pulumi:"mode"`
 	// List of operations including source and destination references as well as transformation.
-	Operations DataFlowOperationArrayInput `pulumi:"operations"`
-	// Reference to the DataflowProfile CR.
-	ProfileRef pulumi.StringInput `pulumi:"profileRef"`
+	Operations DataflowOperationArrayInput `pulumi:"operations"`
 }
 
-// Defaults sets the appropriate defaults for DataFlowPropertiesArgs
-func (val *DataFlowPropertiesArgs) Defaults() *DataFlowPropertiesArgs {
+// Defaults sets the appropriate defaults for DataflowPropertiesArgs
+func (val *DataflowPropertiesArgs) Defaults() *DataflowPropertiesArgs {
 	if val == nil {
 		return nil
 	}
@@ -12539,126 +14350,121 @@ func (val *DataFlowPropertiesArgs) Defaults() *DataFlowPropertiesArgs {
 	}
 	return &tmp
 }
-func (DataFlowPropertiesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowProperties)(nil)).Elem()
+func (DataflowPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowProperties)(nil)).Elem()
 }
 
-func (i DataFlowPropertiesArgs) ToDataFlowPropertiesOutput() DataFlowPropertiesOutput {
-	return i.ToDataFlowPropertiesOutputWithContext(context.Background())
+func (i DataflowPropertiesArgs) ToDataflowPropertiesOutput() DataflowPropertiesOutput {
+	return i.ToDataflowPropertiesOutputWithContext(context.Background())
 }
 
-func (i DataFlowPropertiesArgs) ToDataFlowPropertiesOutputWithContext(ctx context.Context) DataFlowPropertiesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataFlowPropertiesOutput)
+func (i DataflowPropertiesArgs) ToDataflowPropertiesOutputWithContext(ctx context.Context) DataflowPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowPropertiesOutput)
 }
 
-func (i DataFlowPropertiesArgs) ToDataFlowPropertiesPtrOutput() DataFlowPropertiesPtrOutput {
-	return i.ToDataFlowPropertiesPtrOutputWithContext(context.Background())
+func (i DataflowPropertiesArgs) ToDataflowPropertiesPtrOutput() DataflowPropertiesPtrOutput {
+	return i.ToDataflowPropertiesPtrOutputWithContext(context.Background())
 }
 
-func (i DataFlowPropertiesArgs) ToDataFlowPropertiesPtrOutputWithContext(ctx context.Context) DataFlowPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataFlowPropertiesOutput).ToDataFlowPropertiesPtrOutputWithContext(ctx)
+func (i DataflowPropertiesArgs) ToDataflowPropertiesPtrOutputWithContext(ctx context.Context) DataflowPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowPropertiesOutput).ToDataflowPropertiesPtrOutputWithContext(ctx)
 }
 
-// DataFlowPropertiesPtrInput is an input type that accepts DataFlowPropertiesArgs, DataFlowPropertiesPtr and DataFlowPropertiesPtrOutput values.
-// You can construct a concrete instance of `DataFlowPropertiesPtrInput` via:
+// DataflowPropertiesPtrInput is an input type that accepts DataflowPropertiesArgs, DataflowPropertiesPtr and DataflowPropertiesPtrOutput values.
+// You can construct a concrete instance of `DataflowPropertiesPtrInput` via:
 //
-//	        DataFlowPropertiesArgs{...}
+//	        DataflowPropertiesArgs{...}
 //
 //	or:
 //
 //	        nil
-type DataFlowPropertiesPtrInput interface {
+type DataflowPropertiesPtrInput interface {
 	pulumi.Input
 
-	ToDataFlowPropertiesPtrOutput() DataFlowPropertiesPtrOutput
-	ToDataFlowPropertiesPtrOutputWithContext(context.Context) DataFlowPropertiesPtrOutput
+	ToDataflowPropertiesPtrOutput() DataflowPropertiesPtrOutput
+	ToDataflowPropertiesPtrOutputWithContext(context.Context) DataflowPropertiesPtrOutput
 }
 
-type dataFlowPropertiesPtrType DataFlowPropertiesArgs
+type dataflowPropertiesPtrType DataflowPropertiesArgs
 
-func DataFlowPropertiesPtr(v *DataFlowPropertiesArgs) DataFlowPropertiesPtrInput {
-	return (*dataFlowPropertiesPtrType)(v)
+func DataflowPropertiesPtr(v *DataflowPropertiesArgs) DataflowPropertiesPtrInput {
+	return (*dataflowPropertiesPtrType)(v)
 }
 
-func (*dataFlowPropertiesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DataFlowProperties)(nil)).Elem()
+func (*dataflowPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowProperties)(nil)).Elem()
 }
 
-func (i *dataFlowPropertiesPtrType) ToDataFlowPropertiesPtrOutput() DataFlowPropertiesPtrOutput {
-	return i.ToDataFlowPropertiesPtrOutputWithContext(context.Background())
+func (i *dataflowPropertiesPtrType) ToDataflowPropertiesPtrOutput() DataflowPropertiesPtrOutput {
+	return i.ToDataflowPropertiesPtrOutputWithContext(context.Background())
 }
 
-func (i *dataFlowPropertiesPtrType) ToDataFlowPropertiesPtrOutputWithContext(ctx context.Context) DataFlowPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataFlowPropertiesPtrOutput)
+func (i *dataflowPropertiesPtrType) ToDataflowPropertiesPtrOutputWithContext(ctx context.Context) DataflowPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowPropertiesPtrOutput)
 }
 
-// DataFlow Resource properties
-type DataFlowPropertiesOutput struct{ *pulumi.OutputState }
+// Dataflow Resource properties
+type DataflowPropertiesOutput struct{ *pulumi.OutputState }
 
-func (DataFlowPropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowProperties)(nil)).Elem()
+func (DataflowPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowProperties)(nil)).Elem()
 }
 
-func (o DataFlowPropertiesOutput) ToDataFlowPropertiesOutput() DataFlowPropertiesOutput {
+func (o DataflowPropertiesOutput) ToDataflowPropertiesOutput() DataflowPropertiesOutput {
 	return o
 }
 
-func (o DataFlowPropertiesOutput) ToDataFlowPropertiesOutputWithContext(ctx context.Context) DataFlowPropertiesOutput {
+func (o DataflowPropertiesOutput) ToDataflowPropertiesOutputWithContext(ctx context.Context) DataflowPropertiesOutput {
 	return o
 }
 
-func (o DataFlowPropertiesOutput) ToDataFlowPropertiesPtrOutput() DataFlowPropertiesPtrOutput {
-	return o.ToDataFlowPropertiesPtrOutputWithContext(context.Background())
+func (o DataflowPropertiesOutput) ToDataflowPropertiesPtrOutput() DataflowPropertiesPtrOutput {
+	return o.ToDataflowPropertiesPtrOutputWithContext(context.Background())
 }
 
-func (o DataFlowPropertiesOutput) ToDataFlowPropertiesPtrOutputWithContext(ctx context.Context) DataFlowPropertiesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataFlowProperties) *DataFlowProperties {
+func (o DataflowPropertiesOutput) ToDataflowPropertiesPtrOutputWithContext(ctx context.Context) DataflowPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataflowProperties) *DataflowProperties {
 		return &v
-	}).(DataFlowPropertiesPtrOutput)
+	}).(DataflowPropertiesPtrOutput)
 }
 
-// Mode for DataFlow. Optional; defaults to Enabled.
-func (o DataFlowPropertiesOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataFlowProperties) *string { return v.Mode }).(pulumi.StringPtrOutput)
+// Mode for Dataflow. Optional; defaults to Enabled.
+func (o DataflowPropertiesOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowProperties) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
 
 // List of operations including source and destination references as well as transformation.
-func (o DataFlowPropertiesOutput) Operations() DataFlowOperationArrayOutput {
-	return o.ApplyT(func(v DataFlowProperties) []DataFlowOperation { return v.Operations }).(DataFlowOperationArrayOutput)
+func (o DataflowPropertiesOutput) Operations() DataflowOperationArrayOutput {
+	return o.ApplyT(func(v DataflowProperties) []DataflowOperation { return v.Operations }).(DataflowOperationArrayOutput)
 }
 
-// Reference to the DataflowProfile CR.
-func (o DataFlowPropertiesOutput) ProfileRef() pulumi.StringOutput {
-	return o.ApplyT(func(v DataFlowProperties) string { return v.ProfileRef }).(pulumi.StringOutput)
+type DataflowPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (DataflowPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowProperties)(nil)).Elem()
 }
 
-type DataFlowPropertiesPtrOutput struct{ *pulumi.OutputState }
-
-func (DataFlowPropertiesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DataFlowProperties)(nil)).Elem()
-}
-
-func (o DataFlowPropertiesPtrOutput) ToDataFlowPropertiesPtrOutput() DataFlowPropertiesPtrOutput {
+func (o DataflowPropertiesPtrOutput) ToDataflowPropertiesPtrOutput() DataflowPropertiesPtrOutput {
 	return o
 }
 
-func (o DataFlowPropertiesPtrOutput) ToDataFlowPropertiesPtrOutputWithContext(ctx context.Context) DataFlowPropertiesPtrOutput {
+func (o DataflowPropertiesPtrOutput) ToDataflowPropertiesPtrOutputWithContext(ctx context.Context) DataflowPropertiesPtrOutput {
 	return o
 }
 
-func (o DataFlowPropertiesPtrOutput) Elem() DataFlowPropertiesOutput {
-	return o.ApplyT(func(v *DataFlowProperties) DataFlowProperties {
+func (o DataflowPropertiesPtrOutput) Elem() DataflowPropertiesOutput {
+	return o.ApplyT(func(v *DataflowProperties) DataflowProperties {
 		if v != nil {
 			return *v
 		}
-		var ret DataFlowProperties
+		var ret DataflowProperties
 		return ret
-	}).(DataFlowPropertiesOutput)
+	}).(DataflowPropertiesOutput)
 }
 
-// Mode for DataFlow. Optional; defaults to Enabled.
-func (o DataFlowPropertiesPtrOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataFlowProperties) *string {
+// Mode for Dataflow. Optional; defaults to Enabled.
+func (o DataflowPropertiesPtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowProperties) *string {
 		if v == nil {
 			return nil
 		}
@@ -12667,39 +14473,27 @@ func (o DataFlowPropertiesPtrOutput) Mode() pulumi.StringPtrOutput {
 }
 
 // List of operations including source and destination references as well as transformation.
-func (o DataFlowPropertiesPtrOutput) Operations() DataFlowOperationArrayOutput {
-	return o.ApplyT(func(v *DataFlowProperties) []DataFlowOperation {
+func (o DataflowPropertiesPtrOutput) Operations() DataflowOperationArrayOutput {
+	return o.ApplyT(func(v *DataflowProperties) []DataflowOperation {
 		if v == nil {
 			return nil
 		}
 		return v.Operations
-	}).(DataFlowOperationArrayOutput)
+	}).(DataflowOperationArrayOutput)
 }
 
-// Reference to the DataflowProfile CR.
-func (o DataFlowPropertiesPtrOutput) ProfileRef() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataFlowProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ProfileRef
-	}).(pulumi.StringPtrOutput)
-}
-
-// DataFlow Resource properties
-type DataFlowPropertiesResponse struct {
-	// Mode for DataFlow. Optional; defaults to Enabled.
+// Dataflow Resource properties
+type DataflowPropertiesResponse struct {
+	// Mode for Dataflow. Optional; defaults to Enabled.
 	Mode *string `pulumi:"mode"`
 	// List of operations including source and destination references as well as transformation.
-	Operations []DataFlowOperationResponse `pulumi:"operations"`
-	// Reference to the DataflowProfile CR.
-	ProfileRef string `pulumi:"profileRef"`
+	Operations []DataflowOperationResponse `pulumi:"operations"`
 	// The status of the last operation.
 	ProvisioningState string `pulumi:"provisioningState"`
 }
 
-// Defaults sets the appropriate defaults for DataFlowPropertiesResponse
-func (val *DataFlowPropertiesResponse) Defaults() *DataFlowPropertiesResponse {
+// Defaults sets the appropriate defaults for DataflowPropertiesResponse
+func (val *DataflowPropertiesResponse) Defaults() *DataflowPropertiesResponse {
 	if val == nil {
 		return nil
 	}
@@ -12711,43 +14505,38 @@ func (val *DataFlowPropertiesResponse) Defaults() *DataFlowPropertiesResponse {
 	return &tmp
 }
 
-// DataFlow Resource properties
-type DataFlowPropertiesResponseOutput struct{ *pulumi.OutputState }
+// Dataflow Resource properties
+type DataflowPropertiesResponseOutput struct{ *pulumi.OutputState }
 
-func (DataFlowPropertiesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowPropertiesResponse)(nil)).Elem()
+func (DataflowPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowPropertiesResponse)(nil)).Elem()
 }
 
-func (o DataFlowPropertiesResponseOutput) ToDataFlowPropertiesResponseOutput() DataFlowPropertiesResponseOutput {
+func (o DataflowPropertiesResponseOutput) ToDataflowPropertiesResponseOutput() DataflowPropertiesResponseOutput {
 	return o
 }
 
-func (o DataFlowPropertiesResponseOutput) ToDataFlowPropertiesResponseOutputWithContext(ctx context.Context) DataFlowPropertiesResponseOutput {
+func (o DataflowPropertiesResponseOutput) ToDataflowPropertiesResponseOutputWithContext(ctx context.Context) DataflowPropertiesResponseOutput {
 	return o
 }
 
-// Mode for DataFlow. Optional; defaults to Enabled.
-func (o DataFlowPropertiesResponseOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataFlowPropertiesResponse) *string { return v.Mode }).(pulumi.StringPtrOutput)
+// Mode for Dataflow. Optional; defaults to Enabled.
+func (o DataflowPropertiesResponseOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowPropertiesResponse) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
 
 // List of operations including source and destination references as well as transformation.
-func (o DataFlowPropertiesResponseOutput) Operations() DataFlowOperationResponseArrayOutput {
-	return o.ApplyT(func(v DataFlowPropertiesResponse) []DataFlowOperationResponse { return v.Operations }).(DataFlowOperationResponseArrayOutput)
-}
-
-// Reference to the DataflowProfile CR.
-func (o DataFlowPropertiesResponseOutput) ProfileRef() pulumi.StringOutput {
-	return o.ApplyT(func(v DataFlowPropertiesResponse) string { return v.ProfileRef }).(pulumi.StringOutput)
+func (o DataflowPropertiesResponseOutput) Operations() DataflowOperationResponseArrayOutput {
+	return o.ApplyT(func(v DataflowPropertiesResponse) []DataflowOperationResponse { return v.Operations }).(DataflowOperationResponseArrayOutput)
 }
 
 // The status of the last operation.
-func (o DataFlowPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v DataFlowPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+func (o DataflowPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// DataFlow Source Operation properties
-type DataFlowSourceOperation struct {
+// Dataflow Source Operation properties
+type DataflowSourceOperationSettings struct {
 	// Reference to the resource in Azure Device Registry where the data in the endpoint originates from.
 	AssetRef *string `pulumi:"assetRef"`
 	// List of source locations. Can be Broker or Kafka topics. Supports wildcards # and +.
@@ -12760,8 +14549,8 @@ type DataFlowSourceOperation struct {
 	SerializationFormat *string `pulumi:"serializationFormat"`
 }
 
-// Defaults sets the appropriate defaults for DataFlowSourceOperation
-func (val *DataFlowSourceOperation) Defaults() *DataFlowSourceOperation {
+// Defaults sets the appropriate defaults for DataflowSourceOperationSettings
+func (val *DataflowSourceOperationSettings) Defaults() *DataflowSourceOperationSettings {
 	if val == nil {
 		return nil
 	}
@@ -12773,19 +14562,19 @@ func (val *DataFlowSourceOperation) Defaults() *DataFlowSourceOperation {
 	return &tmp
 }
 
-// DataFlowSourceOperationInput is an input type that accepts DataFlowSourceOperationArgs and DataFlowSourceOperationOutput values.
-// You can construct a concrete instance of `DataFlowSourceOperationInput` via:
+// DataflowSourceOperationSettingsInput is an input type that accepts DataflowSourceOperationSettingsArgs and DataflowSourceOperationSettingsOutput values.
+// You can construct a concrete instance of `DataflowSourceOperationSettingsInput` via:
 //
-//	DataFlowSourceOperationArgs{...}
-type DataFlowSourceOperationInput interface {
+//	DataflowSourceOperationSettingsArgs{...}
+type DataflowSourceOperationSettingsInput interface {
 	pulumi.Input
 
-	ToDataFlowSourceOperationOutput() DataFlowSourceOperationOutput
-	ToDataFlowSourceOperationOutputWithContext(context.Context) DataFlowSourceOperationOutput
+	ToDataflowSourceOperationSettingsOutput() DataflowSourceOperationSettingsOutput
+	ToDataflowSourceOperationSettingsOutputWithContext(context.Context) DataflowSourceOperationSettingsOutput
 }
 
-// DataFlow Source Operation properties
-type DataFlowSourceOperationArgs struct {
+// Dataflow Source Operation properties
+type DataflowSourceOperationSettingsArgs struct {
 	// Reference to the resource in Azure Device Registry where the data in the endpoint originates from.
 	AssetRef pulumi.StringPtrInput `pulumi:"assetRef"`
 	// List of source locations. Can be Broker or Kafka topics. Supports wildcards # and +.
@@ -12798,8 +14587,8 @@ type DataFlowSourceOperationArgs struct {
 	SerializationFormat pulumi.StringPtrInput `pulumi:"serializationFormat"`
 }
 
-// Defaults sets the appropriate defaults for DataFlowSourceOperationArgs
-func (val *DataFlowSourceOperationArgs) Defaults() *DataFlowSourceOperationArgs {
+// Defaults sets the appropriate defaults for DataflowSourceOperationSettingsArgs
+func (val *DataflowSourceOperationSettingsArgs) Defaults() *DataflowSourceOperationSettingsArgs {
 	if val == nil {
 		return nil
 	}
@@ -12809,60 +14598,185 @@ func (val *DataFlowSourceOperationArgs) Defaults() *DataFlowSourceOperationArgs 
 	}
 	return &tmp
 }
-func (DataFlowSourceOperationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowSourceOperation)(nil)).Elem()
+func (DataflowSourceOperationSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowSourceOperationSettings)(nil)).Elem()
 }
 
-func (i DataFlowSourceOperationArgs) ToDataFlowSourceOperationOutput() DataFlowSourceOperationOutput {
-	return i.ToDataFlowSourceOperationOutputWithContext(context.Background())
+func (i DataflowSourceOperationSettingsArgs) ToDataflowSourceOperationSettingsOutput() DataflowSourceOperationSettingsOutput {
+	return i.ToDataflowSourceOperationSettingsOutputWithContext(context.Background())
 }
 
-func (i DataFlowSourceOperationArgs) ToDataFlowSourceOperationOutputWithContext(ctx context.Context) DataFlowSourceOperationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataFlowSourceOperationOutput)
+func (i DataflowSourceOperationSettingsArgs) ToDataflowSourceOperationSettingsOutputWithContext(ctx context.Context) DataflowSourceOperationSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowSourceOperationSettingsOutput)
 }
 
-// DataFlow Source Operation properties
-type DataFlowSourceOperationOutput struct{ *pulumi.OutputState }
-
-func (DataFlowSourceOperationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowSourceOperation)(nil)).Elem()
+func (i DataflowSourceOperationSettingsArgs) ToDataflowSourceOperationSettingsPtrOutput() DataflowSourceOperationSettingsPtrOutput {
+	return i.ToDataflowSourceOperationSettingsPtrOutputWithContext(context.Background())
 }
 
-func (o DataFlowSourceOperationOutput) ToDataFlowSourceOperationOutput() DataFlowSourceOperationOutput {
+func (i DataflowSourceOperationSettingsArgs) ToDataflowSourceOperationSettingsPtrOutputWithContext(ctx context.Context) DataflowSourceOperationSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowSourceOperationSettingsOutput).ToDataflowSourceOperationSettingsPtrOutputWithContext(ctx)
+}
+
+// DataflowSourceOperationSettingsPtrInput is an input type that accepts DataflowSourceOperationSettingsArgs, DataflowSourceOperationSettingsPtr and DataflowSourceOperationSettingsPtrOutput values.
+// You can construct a concrete instance of `DataflowSourceOperationSettingsPtrInput` via:
+//
+//	        DataflowSourceOperationSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataflowSourceOperationSettingsPtrInput interface {
+	pulumi.Input
+
+	ToDataflowSourceOperationSettingsPtrOutput() DataflowSourceOperationSettingsPtrOutput
+	ToDataflowSourceOperationSettingsPtrOutputWithContext(context.Context) DataflowSourceOperationSettingsPtrOutput
+}
+
+type dataflowSourceOperationSettingsPtrType DataflowSourceOperationSettingsArgs
+
+func DataflowSourceOperationSettingsPtr(v *DataflowSourceOperationSettingsArgs) DataflowSourceOperationSettingsPtrInput {
+	return (*dataflowSourceOperationSettingsPtrType)(v)
+}
+
+func (*dataflowSourceOperationSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowSourceOperationSettings)(nil)).Elem()
+}
+
+func (i *dataflowSourceOperationSettingsPtrType) ToDataflowSourceOperationSettingsPtrOutput() DataflowSourceOperationSettingsPtrOutput {
+	return i.ToDataflowSourceOperationSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *dataflowSourceOperationSettingsPtrType) ToDataflowSourceOperationSettingsPtrOutputWithContext(ctx context.Context) DataflowSourceOperationSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataflowSourceOperationSettingsPtrOutput)
+}
+
+// Dataflow Source Operation properties
+type DataflowSourceOperationSettingsOutput struct{ *pulumi.OutputState }
+
+func (DataflowSourceOperationSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowSourceOperationSettings)(nil)).Elem()
+}
+
+func (o DataflowSourceOperationSettingsOutput) ToDataflowSourceOperationSettingsOutput() DataflowSourceOperationSettingsOutput {
 	return o
 }
 
-func (o DataFlowSourceOperationOutput) ToDataFlowSourceOperationOutputWithContext(ctx context.Context) DataFlowSourceOperationOutput {
+func (o DataflowSourceOperationSettingsOutput) ToDataflowSourceOperationSettingsOutputWithContext(ctx context.Context) DataflowSourceOperationSettingsOutput {
 	return o
+}
+
+func (o DataflowSourceOperationSettingsOutput) ToDataflowSourceOperationSettingsPtrOutput() DataflowSourceOperationSettingsPtrOutput {
+	return o.ToDataflowSourceOperationSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o DataflowSourceOperationSettingsOutput) ToDataflowSourceOperationSettingsPtrOutputWithContext(ctx context.Context) DataflowSourceOperationSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataflowSourceOperationSettings) *DataflowSourceOperationSettings {
+		return &v
+	}).(DataflowSourceOperationSettingsPtrOutput)
 }
 
 // Reference to the resource in Azure Device Registry where the data in the endpoint originates from.
-func (o DataFlowSourceOperationOutput) AssetRef() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataFlowSourceOperation) *string { return v.AssetRef }).(pulumi.StringPtrOutput)
+func (o DataflowSourceOperationSettingsOutput) AssetRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowSourceOperationSettings) *string { return v.AssetRef }).(pulumi.StringPtrOutput)
 }
 
 // List of source locations. Can be Broker or Kafka topics. Supports wildcards # and +.
-func (o DataFlowSourceOperationOutput) DataSources() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v DataFlowSourceOperation) []string { return v.DataSources }).(pulumi.StringArrayOutput)
+func (o DataflowSourceOperationSettingsOutput) DataSources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DataflowSourceOperationSettings) []string { return v.DataSources }).(pulumi.StringArrayOutput)
 }
 
 // Reference to the Dataflow Endpoint resource. Can only be of Broker and Kafka type.
-func (o DataFlowSourceOperationOutput) EndpointRef() pulumi.StringOutput {
-	return o.ApplyT(func(v DataFlowSourceOperation) string { return v.EndpointRef }).(pulumi.StringOutput)
+func (o DataflowSourceOperationSettingsOutput) EndpointRef() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowSourceOperationSettings) string { return v.EndpointRef }).(pulumi.StringOutput)
 }
 
 // Schema CR reference. Data will be deserialized according to the schema, and dropped if it doesn't match.
-func (o DataFlowSourceOperationOutput) SchemaRef() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataFlowSourceOperation) *string { return v.SchemaRef }).(pulumi.StringPtrOutput)
+func (o DataflowSourceOperationSettingsOutput) SchemaRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowSourceOperationSettings) *string { return v.SchemaRef }).(pulumi.StringPtrOutput)
 }
 
 // Content is a JSON Schema. Allowed: JSON Schema/draft-7.
-func (o DataFlowSourceOperationOutput) SerializationFormat() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataFlowSourceOperation) *string { return v.SerializationFormat }).(pulumi.StringPtrOutput)
+func (o DataflowSourceOperationSettingsOutput) SerializationFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowSourceOperationSettings) *string { return v.SerializationFormat }).(pulumi.StringPtrOutput)
 }
 
-// DataFlow Source Operation properties
-type DataFlowSourceOperationResponse struct {
+type DataflowSourceOperationSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (DataflowSourceOperationSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowSourceOperationSettings)(nil)).Elem()
+}
+
+func (o DataflowSourceOperationSettingsPtrOutput) ToDataflowSourceOperationSettingsPtrOutput() DataflowSourceOperationSettingsPtrOutput {
+	return o
+}
+
+func (o DataflowSourceOperationSettingsPtrOutput) ToDataflowSourceOperationSettingsPtrOutputWithContext(ctx context.Context) DataflowSourceOperationSettingsPtrOutput {
+	return o
+}
+
+func (o DataflowSourceOperationSettingsPtrOutput) Elem() DataflowSourceOperationSettingsOutput {
+	return o.ApplyT(func(v *DataflowSourceOperationSettings) DataflowSourceOperationSettings {
+		if v != nil {
+			return *v
+		}
+		var ret DataflowSourceOperationSettings
+		return ret
+	}).(DataflowSourceOperationSettingsOutput)
+}
+
+// Reference to the resource in Azure Device Registry where the data in the endpoint originates from.
+func (o DataflowSourceOperationSettingsPtrOutput) AssetRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowSourceOperationSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AssetRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of source locations. Can be Broker or Kafka topics. Supports wildcards # and +.
+func (o DataflowSourceOperationSettingsPtrOutput) DataSources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DataflowSourceOperationSettings) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DataSources
+	}).(pulumi.StringArrayOutput)
+}
+
+// Reference to the Dataflow Endpoint resource. Can only be of Broker and Kafka type.
+func (o DataflowSourceOperationSettingsPtrOutput) EndpointRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowSourceOperationSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EndpointRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// Schema CR reference. Data will be deserialized according to the schema, and dropped if it doesn't match.
+func (o DataflowSourceOperationSettingsPtrOutput) SchemaRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowSourceOperationSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SchemaRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// Content is a JSON Schema. Allowed: JSON Schema/draft-7.
+func (o DataflowSourceOperationSettingsPtrOutput) SerializationFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowSourceOperationSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SerializationFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// Dataflow Source Operation properties
+type DataflowSourceOperationSettingsResponse struct {
 	// Reference to the resource in Azure Device Registry where the data in the endpoint originates from.
 	AssetRef *string `pulumi:"assetRef"`
 	// List of source locations. Can be Broker or Kafka topics. Supports wildcards # and +.
@@ -12875,8 +14789,8 @@ type DataFlowSourceOperationResponse struct {
 	SerializationFormat *string `pulumi:"serializationFormat"`
 }
 
-// Defaults sets the appropriate defaults for DataFlowSourceOperationResponse
-func (val *DataFlowSourceOperationResponse) Defaults() *DataFlowSourceOperationResponse {
+// Defaults sets the appropriate defaults for DataflowSourceOperationSettingsResponse
+func (val *DataflowSourceOperationSettingsResponse) Defaults() *DataflowSourceOperationSettingsResponse {
 	if val == nil {
 		return nil
 	}
@@ -12888,52 +14802,124 @@ func (val *DataFlowSourceOperationResponse) Defaults() *DataFlowSourceOperationR
 	return &tmp
 }
 
-// DataFlow Source Operation properties
-type DataFlowSourceOperationResponseOutput struct{ *pulumi.OutputState }
+// Dataflow Source Operation properties
+type DataflowSourceOperationSettingsResponseOutput struct{ *pulumi.OutputState }
 
-func (DataFlowSourceOperationResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowSourceOperationResponse)(nil)).Elem()
+func (DataflowSourceOperationSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataflowSourceOperationSettingsResponse)(nil)).Elem()
 }
 
-func (o DataFlowSourceOperationResponseOutput) ToDataFlowSourceOperationResponseOutput() DataFlowSourceOperationResponseOutput {
+func (o DataflowSourceOperationSettingsResponseOutput) ToDataflowSourceOperationSettingsResponseOutput() DataflowSourceOperationSettingsResponseOutput {
 	return o
 }
 
-func (o DataFlowSourceOperationResponseOutput) ToDataFlowSourceOperationResponseOutputWithContext(ctx context.Context) DataFlowSourceOperationResponseOutput {
+func (o DataflowSourceOperationSettingsResponseOutput) ToDataflowSourceOperationSettingsResponseOutputWithContext(ctx context.Context) DataflowSourceOperationSettingsResponseOutput {
 	return o
 }
 
 // Reference to the resource in Azure Device Registry where the data in the endpoint originates from.
-func (o DataFlowSourceOperationResponseOutput) AssetRef() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataFlowSourceOperationResponse) *string { return v.AssetRef }).(pulumi.StringPtrOutput)
+func (o DataflowSourceOperationSettingsResponseOutput) AssetRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowSourceOperationSettingsResponse) *string { return v.AssetRef }).(pulumi.StringPtrOutput)
 }
 
 // List of source locations. Can be Broker or Kafka topics. Supports wildcards # and +.
-func (o DataFlowSourceOperationResponseOutput) DataSources() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v DataFlowSourceOperationResponse) []string { return v.DataSources }).(pulumi.StringArrayOutput)
+func (o DataflowSourceOperationSettingsResponseOutput) DataSources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DataflowSourceOperationSettingsResponse) []string { return v.DataSources }).(pulumi.StringArrayOutput)
 }
 
 // Reference to the Dataflow Endpoint resource. Can only be of Broker and Kafka type.
-func (o DataFlowSourceOperationResponseOutput) EndpointRef() pulumi.StringOutput {
-	return o.ApplyT(func(v DataFlowSourceOperationResponse) string { return v.EndpointRef }).(pulumi.StringOutput)
+func (o DataflowSourceOperationSettingsResponseOutput) EndpointRef() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowSourceOperationSettingsResponse) string { return v.EndpointRef }).(pulumi.StringOutput)
 }
 
 // Schema CR reference. Data will be deserialized according to the schema, and dropped if it doesn't match.
-func (o DataFlowSourceOperationResponseOutput) SchemaRef() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataFlowSourceOperationResponse) *string { return v.SchemaRef }).(pulumi.StringPtrOutput)
+func (o DataflowSourceOperationSettingsResponseOutput) SchemaRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowSourceOperationSettingsResponse) *string { return v.SchemaRef }).(pulumi.StringPtrOutput)
 }
 
 // Content is a JSON Schema. Allowed: JSON Schema/draft-7.
-func (o DataFlowSourceOperationResponseOutput) SerializationFormat() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataFlowSourceOperationResponse) *string { return v.SerializationFormat }).(pulumi.StringPtrOutput)
+func (o DataflowSourceOperationSettingsResponseOutput) SerializationFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataflowSourceOperationSettingsResponse) *string { return v.SerializationFormat }).(pulumi.StringPtrOutput)
+}
+
+type DataflowSourceOperationSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DataflowSourceOperationSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataflowSourceOperationSettingsResponse)(nil)).Elem()
+}
+
+func (o DataflowSourceOperationSettingsResponsePtrOutput) ToDataflowSourceOperationSettingsResponsePtrOutput() DataflowSourceOperationSettingsResponsePtrOutput {
+	return o
+}
+
+func (o DataflowSourceOperationSettingsResponsePtrOutput) ToDataflowSourceOperationSettingsResponsePtrOutputWithContext(ctx context.Context) DataflowSourceOperationSettingsResponsePtrOutput {
+	return o
+}
+
+func (o DataflowSourceOperationSettingsResponsePtrOutput) Elem() DataflowSourceOperationSettingsResponseOutput {
+	return o.ApplyT(func(v *DataflowSourceOperationSettingsResponse) DataflowSourceOperationSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DataflowSourceOperationSettingsResponse
+		return ret
+	}).(DataflowSourceOperationSettingsResponseOutput)
+}
+
+// Reference to the resource in Azure Device Registry where the data in the endpoint originates from.
+func (o DataflowSourceOperationSettingsResponsePtrOutput) AssetRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowSourceOperationSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AssetRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of source locations. Can be Broker or Kafka topics. Supports wildcards # and +.
+func (o DataflowSourceOperationSettingsResponsePtrOutput) DataSources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DataflowSourceOperationSettingsResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DataSources
+	}).(pulumi.StringArrayOutput)
+}
+
+// Reference to the Dataflow Endpoint resource. Can only be of Broker and Kafka type.
+func (o DataflowSourceOperationSettingsResponsePtrOutput) EndpointRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowSourceOperationSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EndpointRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// Schema CR reference. Data will be deserialized according to the schema, and dropped if it doesn't match.
+func (o DataflowSourceOperationSettingsResponsePtrOutput) SchemaRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowSourceOperationSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SchemaRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// Content is a JSON Schema. Allowed: JSON Schema/draft-7.
+func (o DataflowSourceOperationSettingsResponsePtrOutput) SerializationFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataflowSourceOperationSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SerializationFormat
+	}).(pulumi.StringPtrOutput)
 }
 
 // Diagnostic Log properties
 type DiagnosticsLogs struct {
 	// The log level. Examples - 'debug', 'info', 'warn', 'error', 'trace'.
 	Level *string `pulumi:"level"`
-	// The open telemetry export configuration.
-	OpentelemetryExportConfig *OpenTelemetryLogExportConfig `pulumi:"opentelemetryExportConfig"`
 }
 
 // Defaults sets the appropriate defaults for DiagnosticsLogs
@@ -12946,8 +14932,6 @@ func (val *DiagnosticsLogs) Defaults() *DiagnosticsLogs {
 		level_ := "info"
 		tmp.Level = &level_
 	}
-	tmp.OpentelemetryExportConfig = tmp.OpentelemetryExportConfig.Defaults()
-
 	return &tmp
 }
 
@@ -12966,8 +14950,6 @@ type DiagnosticsLogsInput interface {
 type DiagnosticsLogsArgs struct {
 	// The log level. Examples - 'debug', 'info', 'warn', 'error', 'trace'.
 	Level pulumi.StringPtrInput `pulumi:"level"`
-	// The open telemetry export configuration.
-	OpentelemetryExportConfig OpenTelemetryLogExportConfigPtrInput `pulumi:"opentelemetryExportConfig"`
 }
 
 // Defaults sets the appropriate defaults for DiagnosticsLogsArgs
@@ -12979,7 +14961,6 @@ func (val *DiagnosticsLogsArgs) Defaults() *DiagnosticsLogsArgs {
 	if tmp.Level == nil {
 		tmp.Level = pulumi.StringPtr("info")
 	}
-
 	return &tmp
 }
 func (DiagnosticsLogsArgs) ElementType() reflect.Type {
@@ -13065,11 +15046,6 @@ func (o DiagnosticsLogsOutput) Level() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DiagnosticsLogs) *string { return v.Level }).(pulumi.StringPtrOutput)
 }
 
-// The open telemetry export configuration.
-func (o DiagnosticsLogsOutput) OpentelemetryExportConfig() OpenTelemetryLogExportConfigPtrOutput {
-	return o.ApplyT(func(v DiagnosticsLogs) *OpenTelemetryLogExportConfig { return v.OpentelemetryExportConfig }).(OpenTelemetryLogExportConfigPtrOutput)
-}
-
 type DiagnosticsLogsPtrOutput struct{ *pulumi.OutputState }
 
 func (DiagnosticsLogsPtrOutput) ElementType() reflect.Type {
@@ -13104,22 +15080,10 @@ func (o DiagnosticsLogsPtrOutput) Level() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The open telemetry export configuration.
-func (o DiagnosticsLogsPtrOutput) OpentelemetryExportConfig() OpenTelemetryLogExportConfigPtrOutput {
-	return o.ApplyT(func(v *DiagnosticsLogs) *OpenTelemetryLogExportConfig {
-		if v == nil {
-			return nil
-		}
-		return v.OpentelemetryExportConfig
-	}).(OpenTelemetryLogExportConfigPtrOutput)
-}
-
 // Diagnostic Log properties
 type DiagnosticsLogsResponse struct {
 	// The log level. Examples - 'debug', 'info', 'warn', 'error', 'trace'.
 	Level *string `pulumi:"level"`
-	// The open telemetry export configuration.
-	OpentelemetryExportConfig *OpenTelemetryLogExportConfigResponse `pulumi:"opentelemetryExportConfig"`
 }
 
 // Defaults sets the appropriate defaults for DiagnosticsLogsResponse
@@ -13132,8 +15096,6 @@ func (val *DiagnosticsLogsResponse) Defaults() *DiagnosticsLogsResponse {
 		level_ := "info"
 		tmp.Level = &level_
 	}
-	tmp.OpentelemetryExportConfig = tmp.OpentelemetryExportConfig.Defaults()
-
 	return &tmp
 }
 
@@ -13155,13 +15117,6 @@ func (o DiagnosticsLogsResponseOutput) ToDiagnosticsLogsResponseOutputWithContex
 // The log level. Examples - 'debug', 'info', 'warn', 'error', 'trace'.
 func (o DiagnosticsLogsResponseOutput) Level() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DiagnosticsLogsResponse) *string { return v.Level }).(pulumi.StringPtrOutput)
-}
-
-// The open telemetry export configuration.
-func (o DiagnosticsLogsResponseOutput) OpentelemetryExportConfig() OpenTelemetryLogExportConfigResponsePtrOutput {
-	return o.ApplyT(func(v DiagnosticsLogsResponse) *OpenTelemetryLogExportConfigResponse {
-		return v.OpentelemetryExportConfig
-	}).(OpenTelemetryLogExportConfigResponsePtrOutput)
 }
 
 type DiagnosticsLogsResponsePtrOutput struct{ *pulumi.OutputState }
@@ -13196,16 +15151,6 @@ func (o DiagnosticsLogsResponsePtrOutput) Level() pulumi.StringPtrOutput {
 		}
 		return v.Level
 	}).(pulumi.StringPtrOutput)
-}
-
-// The open telemetry export configuration.
-func (o DiagnosticsLogsResponsePtrOutput) OpentelemetryExportConfig() OpenTelemetryLogExportConfigResponsePtrOutput {
-	return o.ApplyT(func(v *DiagnosticsLogsResponse) *OpenTelemetryLogExportConfigResponse {
-		if v == nil {
-			return nil
-		}
-		return v.OpentelemetryExportConfig
-	}).(OpenTelemetryLogExportConfigResponsePtrOutput)
 }
 
 // DiskBackedMessageBuffer properties
@@ -14087,10 +16032,12 @@ func (o GenerateResourceLimitsResponsePtrOutput) Cpu() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The properties of a Instance resource.
+// The properties of the Instance resource.
 type InstanceProperties struct {
 	// Detailed description of the Instance.
 	Description *string `pulumi:"description"`
+	// The reference to the Schema Registry for this AIO Instance.
+	SchemaRegistryRef SchemaRegistryRef `pulumi:"schemaRegistryRef"`
 }
 
 // InstancePropertiesInput is an input type that accepts InstancePropertiesArgs and InstancePropertiesOutput values.
@@ -14104,10 +16051,12 @@ type InstancePropertiesInput interface {
 	ToInstancePropertiesOutputWithContext(context.Context) InstancePropertiesOutput
 }
 
-// The properties of a Instance resource.
+// The properties of the Instance resource.
 type InstancePropertiesArgs struct {
 	// Detailed description of the Instance.
 	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The reference to the Schema Registry for this AIO Instance.
+	SchemaRegistryRef SchemaRegistryRefInput `pulumi:"schemaRegistryRef"`
 }
 
 func (InstancePropertiesArgs) ElementType() reflect.Type {
@@ -14163,7 +16112,7 @@ func (i *instancePropertiesPtrType) ToInstancePropertiesPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(InstancePropertiesPtrOutput)
 }
 
-// The properties of a Instance resource.
+// The properties of the Instance resource.
 type InstancePropertiesOutput struct{ *pulumi.OutputState }
 
 func (InstancePropertiesOutput) ElementType() reflect.Type {
@@ -14191,6 +16140,11 @@ func (o InstancePropertiesOutput) ToInstancePropertiesPtrOutputWithContext(ctx c
 // Detailed description of the Instance.
 func (o InstancePropertiesOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceProperties) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The reference to the Schema Registry for this AIO Instance.
+func (o InstancePropertiesOutput) SchemaRegistryRef() SchemaRegistryRefOutput {
+	return o.ApplyT(func(v InstanceProperties) SchemaRegistryRef { return v.SchemaRegistryRef }).(SchemaRegistryRefOutput)
 }
 
 type InstancePropertiesPtrOutput struct{ *pulumi.OutputState }
@@ -14227,17 +16181,29 @@ func (o InstancePropertiesPtrOutput) Description() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The properties of a Instance resource.
+// The reference to the Schema Registry for this AIO Instance.
+func (o InstancePropertiesPtrOutput) SchemaRegistryRef() SchemaRegistryRefPtrOutput {
+	return o.ApplyT(func(v *InstanceProperties) *SchemaRegistryRef {
+		if v == nil {
+			return nil
+		}
+		return &v.SchemaRegistryRef
+	}).(SchemaRegistryRefPtrOutput)
+}
+
+// The properties of the Instance resource.
 type InstancePropertiesResponse struct {
 	// Detailed description of the Instance.
 	Description *string `pulumi:"description"`
 	// The status of the last operation.
 	ProvisioningState string `pulumi:"provisioningState"`
+	// The reference to the Schema Registry for this AIO Instance.
+	SchemaRegistryRef SchemaRegistryRefResponse `pulumi:"schemaRegistryRef"`
 	// The Azure IoT Operations version.
 	Version string `pulumi:"version"`
 }
 
-// The properties of a Instance resource.
+// The properties of the Instance resource.
 type InstancePropertiesResponseOutput struct{ *pulumi.OutputState }
 
 func (InstancePropertiesResponseOutput) ElementType() reflect.Type {
@@ -14260,6 +16226,11 @@ func (o InstancePropertiesResponseOutput) Description() pulumi.StringPtrOutput {
 // The status of the last operation.
 func (o InstancePropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v InstancePropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The reference to the Schema Registry for this AIO Instance.
+func (o InstancePropertiesResponseOutput) SchemaRegistryRef() SchemaRegistryRefResponseOutput {
+	return o.ApplyT(func(v InstancePropertiesResponse) SchemaRegistryRefResponse { return v.SchemaRegistryRef }).(SchemaRegistryRefResponseOutput)
 }
 
 // The Azure IoT Operations version.
@@ -15115,10 +17086,280 @@ func (o LocalKubernetesReferenceResponsePtrOutput) Name() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// Managed service identity (system assigned and/or user assigned identities)
+type ManagedServiceIdentity struct {
+	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+	Type string `pulumi:"type"`
+	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
+}
+
+// ManagedServiceIdentityInput is an input type that accepts ManagedServiceIdentityArgs and ManagedServiceIdentityOutput values.
+// You can construct a concrete instance of `ManagedServiceIdentityInput` via:
+//
+//	ManagedServiceIdentityArgs{...}
+type ManagedServiceIdentityInput interface {
+	pulumi.Input
+
+	ToManagedServiceIdentityOutput() ManagedServiceIdentityOutput
+	ToManagedServiceIdentityOutputWithContext(context.Context) ManagedServiceIdentityOutput
+}
+
+// Managed service identity (system assigned and/or user assigned identities)
+type ManagedServiceIdentityArgs struct {
+	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+	Type pulumi.StringInput `pulumi:"type"`
+	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
+}
+
+func (ManagedServiceIdentityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedServiceIdentity)(nil)).Elem()
+}
+
+func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityOutput() ManagedServiceIdentityOutput {
+	return i.ToManagedServiceIdentityOutputWithContext(context.Background())
+}
+
+func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityOutputWithContext(ctx context.Context) ManagedServiceIdentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityOutput)
+}
+
+func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
+	return i.ToManagedServiceIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityOutput).ToManagedServiceIdentityPtrOutputWithContext(ctx)
+}
+
+// ManagedServiceIdentityPtrInput is an input type that accepts ManagedServiceIdentityArgs, ManagedServiceIdentityPtr and ManagedServiceIdentityPtrOutput values.
+// You can construct a concrete instance of `ManagedServiceIdentityPtrInput` via:
+//
+//	        ManagedServiceIdentityArgs{...}
+//
+//	or:
+//
+//	        nil
+type ManagedServiceIdentityPtrInput interface {
+	pulumi.Input
+
+	ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput
+	ToManagedServiceIdentityPtrOutputWithContext(context.Context) ManagedServiceIdentityPtrOutput
+}
+
+type managedServiceIdentityPtrType ManagedServiceIdentityArgs
+
+func ManagedServiceIdentityPtr(v *ManagedServiceIdentityArgs) ManagedServiceIdentityPtrInput {
+	return (*managedServiceIdentityPtrType)(v)
+}
+
+func (*managedServiceIdentityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedServiceIdentity)(nil)).Elem()
+}
+
+func (i *managedServiceIdentityPtrType) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
+	return i.ToManagedServiceIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i *managedServiceIdentityPtrType) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityPtrOutput)
+}
+
+// Managed service identity (system assigned and/or user assigned identities)
+type ManagedServiceIdentityOutput struct{ *pulumi.OutputState }
+
+func (ManagedServiceIdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedServiceIdentity)(nil)).Elem()
+}
+
+func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityOutput() ManagedServiceIdentityOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityOutputWithContext(ctx context.Context) ManagedServiceIdentityOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
+	return o.ToManagedServiceIdentityPtrOutputWithContext(context.Background())
+}
+
+func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedServiceIdentity) *ManagedServiceIdentity {
+		return &v
+	}).(ManagedServiceIdentityPtrOutput)
+}
+
+// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+func (o ManagedServiceIdentityOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedServiceIdentity) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+func (o ManagedServiceIdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ManagedServiceIdentity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
+}
+
+type ManagedServiceIdentityPtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedServiceIdentityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedServiceIdentity)(nil)).Elem()
+}
+
+func (o ManagedServiceIdentityPtrOutput) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityPtrOutput) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityPtrOutput) Elem() ManagedServiceIdentityOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentity) ManagedServiceIdentity {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedServiceIdentity
+		return ret
+	}).(ManagedServiceIdentityOutput)
+}
+
+// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+func (o ManagedServiceIdentityPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+func (o ManagedServiceIdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentity) []string {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentities
+	}).(pulumi.StringArrayOutput)
+}
+
+// Managed service identity (system assigned and/or user assigned identities)
+type ManagedServiceIdentityResponse struct {
+	// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+	PrincipalId string `pulumi:"principalId"`
+	// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+	TenantId string `pulumi:"tenantId"`
+	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+	Type string `pulumi:"type"`
+	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+	UserAssignedIdentities map[string]UserAssignedIdentityResponse `pulumi:"userAssignedIdentities"`
+}
+
+// Managed service identity (system assigned and/or user assigned identities)
+type ManagedServiceIdentityResponseOutput struct{ *pulumi.OutputState }
+
+func (ManagedServiceIdentityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedServiceIdentityResponse)(nil)).Elem()
+}
+
+func (o ManagedServiceIdentityResponseOutput) ToManagedServiceIdentityResponseOutput() ManagedServiceIdentityResponseOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityResponseOutput) ToManagedServiceIdentityResponseOutputWithContext(ctx context.Context) ManagedServiceIdentityResponseOutput {
+	return o
+}
+
+// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+func (o ManagedServiceIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedServiceIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+func (o ManagedServiceIdentityResponseOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedServiceIdentityResponse) string { return v.TenantId }).(pulumi.StringOutput)
+}
+
+// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+func (o ManagedServiceIdentityResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedServiceIdentityResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+func (o ManagedServiceIdentityResponseOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
+	return o.ApplyT(func(v ManagedServiceIdentityResponse) map[string]UserAssignedIdentityResponse {
+		return v.UserAssignedIdentities
+	}).(UserAssignedIdentityResponseMapOutput)
+}
+
+type ManagedServiceIdentityResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedServiceIdentityResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedServiceIdentityResponse)(nil)).Elem()
+}
+
+func (o ManagedServiceIdentityResponsePtrOutput) ToManagedServiceIdentityResponsePtrOutput() ManagedServiceIdentityResponsePtrOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityResponsePtrOutput) ToManagedServiceIdentityResponsePtrOutputWithContext(ctx context.Context) ManagedServiceIdentityResponsePtrOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityResponsePtrOutput) Elem() ManagedServiceIdentityResponseOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentityResponse) ManagedServiceIdentityResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedServiceIdentityResponse
+		return ret
+	}).(ManagedServiceIdentityResponseOutput)
+}
+
+// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+func (o ManagedServiceIdentityResponsePtrOutput) PrincipalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrincipalId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+func (o ManagedServiceIdentityResponsePtrOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TenantId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+func (o ManagedServiceIdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+func (o ManagedServiceIdentityResponsePtrOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentityResponse) map[string]UserAssignedIdentityResponse {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentities
+	}).(UserAssignedIdentityResponseMapOutput)
+}
+
 // Diagnostic Metrics properties
 type Metrics struct {
-	// The open telemetry export configuration.
-	OpentelemetryExportConfig *OpenTelemetryExportConfig `pulumi:"opentelemetryExportConfig"`
 	// The prometheus port to expose the metrics.
 	PrometheusPort *int `pulumi:"prometheusPort"`
 }
@@ -15129,8 +17370,6 @@ func (val *Metrics) Defaults() *Metrics {
 		return nil
 	}
 	tmp := *val
-	tmp.OpentelemetryExportConfig = tmp.OpentelemetryExportConfig.Defaults()
-
 	if tmp.PrometheusPort == nil {
 		prometheusPort_ := 9600
 		tmp.PrometheusPort = &prometheusPort_
@@ -15151,8 +17390,6 @@ type MetricsInput interface {
 
 // Diagnostic Metrics properties
 type MetricsArgs struct {
-	// The open telemetry export configuration.
-	OpentelemetryExportConfig OpenTelemetryExportConfigPtrInput `pulumi:"opentelemetryExportConfig"`
 	// The prometheus port to expose the metrics.
 	PrometheusPort pulumi.IntPtrInput `pulumi:"prometheusPort"`
 }
@@ -15163,7 +17400,6 @@ func (val *MetricsArgs) Defaults() *MetricsArgs {
 		return nil
 	}
 	tmp := *val
-
 	if tmp.PrometheusPort == nil {
 		tmp.PrometheusPort = pulumi.IntPtr(9600)
 	}
@@ -15247,11 +17483,6 @@ func (o MetricsOutput) ToMetricsPtrOutputWithContext(ctx context.Context) Metric
 	}).(MetricsPtrOutput)
 }
 
-// The open telemetry export configuration.
-func (o MetricsOutput) OpentelemetryExportConfig() OpenTelemetryExportConfigPtrOutput {
-	return o.ApplyT(func(v Metrics) *OpenTelemetryExportConfig { return v.OpentelemetryExportConfig }).(OpenTelemetryExportConfigPtrOutput)
-}
-
 // The prometheus port to expose the metrics.
 func (o MetricsOutput) PrometheusPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v Metrics) *int { return v.PrometheusPort }).(pulumi.IntPtrOutput)
@@ -15281,16 +17512,6 @@ func (o MetricsPtrOutput) Elem() MetricsOutput {
 	}).(MetricsOutput)
 }
 
-// The open telemetry export configuration.
-func (o MetricsPtrOutput) OpentelemetryExportConfig() OpenTelemetryExportConfigPtrOutput {
-	return o.ApplyT(func(v *Metrics) *OpenTelemetryExportConfig {
-		if v == nil {
-			return nil
-		}
-		return v.OpentelemetryExportConfig
-	}).(OpenTelemetryExportConfigPtrOutput)
-}
-
 // The prometheus port to expose the metrics.
 func (o MetricsPtrOutput) PrometheusPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Metrics) *int {
@@ -15303,8 +17524,6 @@ func (o MetricsPtrOutput) PrometheusPort() pulumi.IntPtrOutput {
 
 // Diagnostic Metrics properties
 type MetricsResponse struct {
-	// The open telemetry export configuration.
-	OpentelemetryExportConfig *OpenTelemetryExportConfigResponse `pulumi:"opentelemetryExportConfig"`
 	// The prometheus port to expose the metrics.
 	PrometheusPort *int `pulumi:"prometheusPort"`
 }
@@ -15315,8 +17534,6 @@ func (val *MetricsResponse) Defaults() *MetricsResponse {
 		return nil
 	}
 	tmp := *val
-	tmp.OpentelemetryExportConfig = tmp.OpentelemetryExportConfig.Defaults()
-
 	if tmp.PrometheusPort == nil {
 		prometheusPort_ := 9600
 		tmp.PrometheusPort = &prometheusPort_
@@ -15337,11 +17554,6 @@ func (o MetricsResponseOutput) ToMetricsResponseOutput() MetricsResponseOutput {
 
 func (o MetricsResponseOutput) ToMetricsResponseOutputWithContext(ctx context.Context) MetricsResponseOutput {
 	return o
-}
-
-// The open telemetry export configuration.
-func (o MetricsResponseOutput) OpentelemetryExportConfig() OpenTelemetryExportConfigResponsePtrOutput {
-	return o.ApplyT(func(v MetricsResponse) *OpenTelemetryExportConfigResponse { return v.OpentelemetryExportConfig }).(OpenTelemetryExportConfigResponsePtrOutput)
 }
 
 // The prometheus port to expose the metrics.
@@ -15373,16 +17585,6 @@ func (o MetricsResponsePtrOutput) Elem() MetricsResponseOutput {
 	}).(MetricsResponseOutput)
 }
 
-// The open telemetry export configuration.
-func (o MetricsResponsePtrOutput) OpentelemetryExportConfig() OpenTelemetryExportConfigResponsePtrOutput {
-	return o.ApplyT(func(v *MetricsResponse) *OpenTelemetryExportConfigResponse {
-		if v == nil {
-			return nil
-		}
-		return v.OpentelemetryExportConfig
-	}).(OpenTelemetryExportConfigResponsePtrOutput)
-}
-
 // The prometheus port to expose the metrics.
 func (o MetricsResponsePtrOutput) PrometheusPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *MetricsResponse) *int {
@@ -15391,599 +17593,6 @@ func (o MetricsResponsePtrOutput) PrometheusPort() pulumi.IntPtrOutput {
 		}
 		return v.PrometheusPort
 	}).(pulumi.IntPtrOutput)
-}
-
-// OpenTelemetry Export Configuration properties
-type OpenTelemetryExportConfig struct {
-	// How often to export the metrics to the open telemetry collector.
-	IntervalSeconds *int `pulumi:"intervalSeconds"`
-	// The open telemetry collector endpoint to export to.
-	OtlpGrpcEndpoint string `pulumi:"otlpGrpcEndpoint"`
-}
-
-// Defaults sets the appropriate defaults for OpenTelemetryExportConfig
-func (val *OpenTelemetryExportConfig) Defaults() *OpenTelemetryExportConfig {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.IntervalSeconds == nil {
-		intervalSeconds_ := 30
-		tmp.IntervalSeconds = &intervalSeconds_
-	}
-	return &tmp
-}
-
-// OpenTelemetryExportConfigInput is an input type that accepts OpenTelemetryExportConfigArgs and OpenTelemetryExportConfigOutput values.
-// You can construct a concrete instance of `OpenTelemetryExportConfigInput` via:
-//
-//	OpenTelemetryExportConfigArgs{...}
-type OpenTelemetryExportConfigInput interface {
-	pulumi.Input
-
-	ToOpenTelemetryExportConfigOutput() OpenTelemetryExportConfigOutput
-	ToOpenTelemetryExportConfigOutputWithContext(context.Context) OpenTelemetryExportConfigOutput
-}
-
-// OpenTelemetry Export Configuration properties
-type OpenTelemetryExportConfigArgs struct {
-	// How often to export the metrics to the open telemetry collector.
-	IntervalSeconds pulumi.IntPtrInput `pulumi:"intervalSeconds"`
-	// The open telemetry collector endpoint to export to.
-	OtlpGrpcEndpoint pulumi.StringInput `pulumi:"otlpGrpcEndpoint"`
-}
-
-// Defaults sets the appropriate defaults for OpenTelemetryExportConfigArgs
-func (val *OpenTelemetryExportConfigArgs) Defaults() *OpenTelemetryExportConfigArgs {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.IntervalSeconds == nil {
-		tmp.IntervalSeconds = pulumi.IntPtr(30)
-	}
-	return &tmp
-}
-func (OpenTelemetryExportConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OpenTelemetryExportConfig)(nil)).Elem()
-}
-
-func (i OpenTelemetryExportConfigArgs) ToOpenTelemetryExportConfigOutput() OpenTelemetryExportConfigOutput {
-	return i.ToOpenTelemetryExportConfigOutputWithContext(context.Background())
-}
-
-func (i OpenTelemetryExportConfigArgs) ToOpenTelemetryExportConfigOutputWithContext(ctx context.Context) OpenTelemetryExportConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OpenTelemetryExportConfigOutput)
-}
-
-func (i OpenTelemetryExportConfigArgs) ToOpenTelemetryExportConfigPtrOutput() OpenTelemetryExportConfigPtrOutput {
-	return i.ToOpenTelemetryExportConfigPtrOutputWithContext(context.Background())
-}
-
-func (i OpenTelemetryExportConfigArgs) ToOpenTelemetryExportConfigPtrOutputWithContext(ctx context.Context) OpenTelemetryExportConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OpenTelemetryExportConfigOutput).ToOpenTelemetryExportConfigPtrOutputWithContext(ctx)
-}
-
-// OpenTelemetryExportConfigPtrInput is an input type that accepts OpenTelemetryExportConfigArgs, OpenTelemetryExportConfigPtr and OpenTelemetryExportConfigPtrOutput values.
-// You can construct a concrete instance of `OpenTelemetryExportConfigPtrInput` via:
-//
-//	        OpenTelemetryExportConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type OpenTelemetryExportConfigPtrInput interface {
-	pulumi.Input
-
-	ToOpenTelemetryExportConfigPtrOutput() OpenTelemetryExportConfigPtrOutput
-	ToOpenTelemetryExportConfigPtrOutputWithContext(context.Context) OpenTelemetryExportConfigPtrOutput
-}
-
-type openTelemetryExportConfigPtrType OpenTelemetryExportConfigArgs
-
-func OpenTelemetryExportConfigPtr(v *OpenTelemetryExportConfigArgs) OpenTelemetryExportConfigPtrInput {
-	return (*openTelemetryExportConfigPtrType)(v)
-}
-
-func (*openTelemetryExportConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**OpenTelemetryExportConfig)(nil)).Elem()
-}
-
-func (i *openTelemetryExportConfigPtrType) ToOpenTelemetryExportConfigPtrOutput() OpenTelemetryExportConfigPtrOutput {
-	return i.ToOpenTelemetryExportConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *openTelemetryExportConfigPtrType) ToOpenTelemetryExportConfigPtrOutputWithContext(ctx context.Context) OpenTelemetryExportConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OpenTelemetryExportConfigPtrOutput)
-}
-
-// OpenTelemetry Export Configuration properties
-type OpenTelemetryExportConfigOutput struct{ *pulumi.OutputState }
-
-func (OpenTelemetryExportConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OpenTelemetryExportConfig)(nil)).Elem()
-}
-
-func (o OpenTelemetryExportConfigOutput) ToOpenTelemetryExportConfigOutput() OpenTelemetryExportConfigOutput {
-	return o
-}
-
-func (o OpenTelemetryExportConfigOutput) ToOpenTelemetryExportConfigOutputWithContext(ctx context.Context) OpenTelemetryExportConfigOutput {
-	return o
-}
-
-func (o OpenTelemetryExportConfigOutput) ToOpenTelemetryExportConfigPtrOutput() OpenTelemetryExportConfigPtrOutput {
-	return o.ToOpenTelemetryExportConfigPtrOutputWithContext(context.Background())
-}
-
-func (o OpenTelemetryExportConfigOutput) ToOpenTelemetryExportConfigPtrOutputWithContext(ctx context.Context) OpenTelemetryExportConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v OpenTelemetryExportConfig) *OpenTelemetryExportConfig {
-		return &v
-	}).(OpenTelemetryExportConfigPtrOutput)
-}
-
-// How often to export the metrics to the open telemetry collector.
-func (o OpenTelemetryExportConfigOutput) IntervalSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v OpenTelemetryExportConfig) *int { return v.IntervalSeconds }).(pulumi.IntPtrOutput)
-}
-
-// The open telemetry collector endpoint to export to.
-func (o OpenTelemetryExportConfigOutput) OtlpGrpcEndpoint() pulumi.StringOutput {
-	return o.ApplyT(func(v OpenTelemetryExportConfig) string { return v.OtlpGrpcEndpoint }).(pulumi.StringOutput)
-}
-
-type OpenTelemetryExportConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (OpenTelemetryExportConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**OpenTelemetryExportConfig)(nil)).Elem()
-}
-
-func (o OpenTelemetryExportConfigPtrOutput) ToOpenTelemetryExportConfigPtrOutput() OpenTelemetryExportConfigPtrOutput {
-	return o
-}
-
-func (o OpenTelemetryExportConfigPtrOutput) ToOpenTelemetryExportConfigPtrOutputWithContext(ctx context.Context) OpenTelemetryExportConfigPtrOutput {
-	return o
-}
-
-func (o OpenTelemetryExportConfigPtrOutput) Elem() OpenTelemetryExportConfigOutput {
-	return o.ApplyT(func(v *OpenTelemetryExportConfig) OpenTelemetryExportConfig {
-		if v != nil {
-			return *v
-		}
-		var ret OpenTelemetryExportConfig
-		return ret
-	}).(OpenTelemetryExportConfigOutput)
-}
-
-// How often to export the metrics to the open telemetry collector.
-func (o OpenTelemetryExportConfigPtrOutput) IntervalSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *OpenTelemetryExportConfig) *int {
-		if v == nil {
-			return nil
-		}
-		return v.IntervalSeconds
-	}).(pulumi.IntPtrOutput)
-}
-
-// The open telemetry collector endpoint to export to.
-func (o OpenTelemetryExportConfigPtrOutput) OtlpGrpcEndpoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OpenTelemetryExportConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.OtlpGrpcEndpoint
-	}).(pulumi.StringPtrOutput)
-}
-
-// OpenTelemetry Export Configuration properties
-type OpenTelemetryExportConfigResponse struct {
-	// How often to export the metrics to the open telemetry collector.
-	IntervalSeconds *int `pulumi:"intervalSeconds"`
-	// The open telemetry collector endpoint to export to.
-	OtlpGrpcEndpoint string `pulumi:"otlpGrpcEndpoint"`
-}
-
-// Defaults sets the appropriate defaults for OpenTelemetryExportConfigResponse
-func (val *OpenTelemetryExportConfigResponse) Defaults() *OpenTelemetryExportConfigResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.IntervalSeconds == nil {
-		intervalSeconds_ := 30
-		tmp.IntervalSeconds = &intervalSeconds_
-	}
-	return &tmp
-}
-
-// OpenTelemetry Export Configuration properties
-type OpenTelemetryExportConfigResponseOutput struct{ *pulumi.OutputState }
-
-func (OpenTelemetryExportConfigResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OpenTelemetryExportConfigResponse)(nil)).Elem()
-}
-
-func (o OpenTelemetryExportConfigResponseOutput) ToOpenTelemetryExportConfigResponseOutput() OpenTelemetryExportConfigResponseOutput {
-	return o
-}
-
-func (o OpenTelemetryExportConfigResponseOutput) ToOpenTelemetryExportConfigResponseOutputWithContext(ctx context.Context) OpenTelemetryExportConfigResponseOutput {
-	return o
-}
-
-// How often to export the metrics to the open telemetry collector.
-func (o OpenTelemetryExportConfigResponseOutput) IntervalSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v OpenTelemetryExportConfigResponse) *int { return v.IntervalSeconds }).(pulumi.IntPtrOutput)
-}
-
-// The open telemetry collector endpoint to export to.
-func (o OpenTelemetryExportConfigResponseOutput) OtlpGrpcEndpoint() pulumi.StringOutput {
-	return o.ApplyT(func(v OpenTelemetryExportConfigResponse) string { return v.OtlpGrpcEndpoint }).(pulumi.StringOutput)
-}
-
-type OpenTelemetryExportConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (OpenTelemetryExportConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**OpenTelemetryExportConfigResponse)(nil)).Elem()
-}
-
-func (o OpenTelemetryExportConfigResponsePtrOutput) ToOpenTelemetryExportConfigResponsePtrOutput() OpenTelemetryExportConfigResponsePtrOutput {
-	return o
-}
-
-func (o OpenTelemetryExportConfigResponsePtrOutput) ToOpenTelemetryExportConfigResponsePtrOutputWithContext(ctx context.Context) OpenTelemetryExportConfigResponsePtrOutput {
-	return o
-}
-
-func (o OpenTelemetryExportConfigResponsePtrOutput) Elem() OpenTelemetryExportConfigResponseOutput {
-	return o.ApplyT(func(v *OpenTelemetryExportConfigResponse) OpenTelemetryExportConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret OpenTelemetryExportConfigResponse
-		return ret
-	}).(OpenTelemetryExportConfigResponseOutput)
-}
-
-// How often to export the metrics to the open telemetry collector.
-func (o OpenTelemetryExportConfigResponsePtrOutput) IntervalSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *OpenTelemetryExportConfigResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return v.IntervalSeconds
-	}).(pulumi.IntPtrOutput)
-}
-
-// The open telemetry collector endpoint to export to.
-func (o OpenTelemetryExportConfigResponsePtrOutput) OtlpGrpcEndpoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OpenTelemetryExportConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.OtlpGrpcEndpoint
-	}).(pulumi.StringPtrOutput)
-}
-
-// OpenTelemetry Log Export Configuration properties
-type OpenTelemetryLogExportConfig struct {
-	// How often to export the metrics to the open telemetry collector.
-	IntervalSeconds *int `pulumi:"intervalSeconds"`
-	// The log level. Examples - 'debug', 'info', 'warn', 'error', 'trace'.
-	Level *string `pulumi:"level"`
-	// The open telemetry collector endpoint to export to.
-	OtlpGrpcEndpoint string `pulumi:"otlpGrpcEndpoint"`
-}
-
-// Defaults sets the appropriate defaults for OpenTelemetryLogExportConfig
-func (val *OpenTelemetryLogExportConfig) Defaults() *OpenTelemetryLogExportConfig {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.IntervalSeconds == nil {
-		intervalSeconds_ := 30
-		tmp.IntervalSeconds = &intervalSeconds_
-	}
-	if tmp.Level == nil {
-		level_ := "error"
-		tmp.Level = &level_
-	}
-	return &tmp
-}
-
-// OpenTelemetryLogExportConfigInput is an input type that accepts OpenTelemetryLogExportConfigArgs and OpenTelemetryLogExportConfigOutput values.
-// You can construct a concrete instance of `OpenTelemetryLogExportConfigInput` via:
-//
-//	OpenTelemetryLogExportConfigArgs{...}
-type OpenTelemetryLogExportConfigInput interface {
-	pulumi.Input
-
-	ToOpenTelemetryLogExportConfigOutput() OpenTelemetryLogExportConfigOutput
-	ToOpenTelemetryLogExportConfigOutputWithContext(context.Context) OpenTelemetryLogExportConfigOutput
-}
-
-// OpenTelemetry Log Export Configuration properties
-type OpenTelemetryLogExportConfigArgs struct {
-	// How often to export the metrics to the open telemetry collector.
-	IntervalSeconds pulumi.IntPtrInput `pulumi:"intervalSeconds"`
-	// The log level. Examples - 'debug', 'info', 'warn', 'error', 'trace'.
-	Level pulumi.StringPtrInput `pulumi:"level"`
-	// The open telemetry collector endpoint to export to.
-	OtlpGrpcEndpoint pulumi.StringInput `pulumi:"otlpGrpcEndpoint"`
-}
-
-// Defaults sets the appropriate defaults for OpenTelemetryLogExportConfigArgs
-func (val *OpenTelemetryLogExportConfigArgs) Defaults() *OpenTelemetryLogExportConfigArgs {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.IntervalSeconds == nil {
-		tmp.IntervalSeconds = pulumi.IntPtr(30)
-	}
-	if tmp.Level == nil {
-		tmp.Level = pulumi.StringPtr("error")
-	}
-	return &tmp
-}
-func (OpenTelemetryLogExportConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OpenTelemetryLogExportConfig)(nil)).Elem()
-}
-
-func (i OpenTelemetryLogExportConfigArgs) ToOpenTelemetryLogExportConfigOutput() OpenTelemetryLogExportConfigOutput {
-	return i.ToOpenTelemetryLogExportConfigOutputWithContext(context.Background())
-}
-
-func (i OpenTelemetryLogExportConfigArgs) ToOpenTelemetryLogExportConfigOutputWithContext(ctx context.Context) OpenTelemetryLogExportConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OpenTelemetryLogExportConfigOutput)
-}
-
-func (i OpenTelemetryLogExportConfigArgs) ToOpenTelemetryLogExportConfigPtrOutput() OpenTelemetryLogExportConfigPtrOutput {
-	return i.ToOpenTelemetryLogExportConfigPtrOutputWithContext(context.Background())
-}
-
-func (i OpenTelemetryLogExportConfigArgs) ToOpenTelemetryLogExportConfigPtrOutputWithContext(ctx context.Context) OpenTelemetryLogExportConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OpenTelemetryLogExportConfigOutput).ToOpenTelemetryLogExportConfigPtrOutputWithContext(ctx)
-}
-
-// OpenTelemetryLogExportConfigPtrInput is an input type that accepts OpenTelemetryLogExportConfigArgs, OpenTelemetryLogExportConfigPtr and OpenTelemetryLogExportConfigPtrOutput values.
-// You can construct a concrete instance of `OpenTelemetryLogExportConfigPtrInput` via:
-//
-//	        OpenTelemetryLogExportConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type OpenTelemetryLogExportConfigPtrInput interface {
-	pulumi.Input
-
-	ToOpenTelemetryLogExportConfigPtrOutput() OpenTelemetryLogExportConfigPtrOutput
-	ToOpenTelemetryLogExportConfigPtrOutputWithContext(context.Context) OpenTelemetryLogExportConfigPtrOutput
-}
-
-type openTelemetryLogExportConfigPtrType OpenTelemetryLogExportConfigArgs
-
-func OpenTelemetryLogExportConfigPtr(v *OpenTelemetryLogExportConfigArgs) OpenTelemetryLogExportConfigPtrInput {
-	return (*openTelemetryLogExportConfigPtrType)(v)
-}
-
-func (*openTelemetryLogExportConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**OpenTelemetryLogExportConfig)(nil)).Elem()
-}
-
-func (i *openTelemetryLogExportConfigPtrType) ToOpenTelemetryLogExportConfigPtrOutput() OpenTelemetryLogExportConfigPtrOutput {
-	return i.ToOpenTelemetryLogExportConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *openTelemetryLogExportConfigPtrType) ToOpenTelemetryLogExportConfigPtrOutputWithContext(ctx context.Context) OpenTelemetryLogExportConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OpenTelemetryLogExportConfigPtrOutput)
-}
-
-// OpenTelemetry Log Export Configuration properties
-type OpenTelemetryLogExportConfigOutput struct{ *pulumi.OutputState }
-
-func (OpenTelemetryLogExportConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OpenTelemetryLogExportConfig)(nil)).Elem()
-}
-
-func (o OpenTelemetryLogExportConfigOutput) ToOpenTelemetryLogExportConfigOutput() OpenTelemetryLogExportConfigOutput {
-	return o
-}
-
-func (o OpenTelemetryLogExportConfigOutput) ToOpenTelemetryLogExportConfigOutputWithContext(ctx context.Context) OpenTelemetryLogExportConfigOutput {
-	return o
-}
-
-func (o OpenTelemetryLogExportConfigOutput) ToOpenTelemetryLogExportConfigPtrOutput() OpenTelemetryLogExportConfigPtrOutput {
-	return o.ToOpenTelemetryLogExportConfigPtrOutputWithContext(context.Background())
-}
-
-func (o OpenTelemetryLogExportConfigOutput) ToOpenTelemetryLogExportConfigPtrOutputWithContext(ctx context.Context) OpenTelemetryLogExportConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v OpenTelemetryLogExportConfig) *OpenTelemetryLogExportConfig {
-		return &v
-	}).(OpenTelemetryLogExportConfigPtrOutput)
-}
-
-// How often to export the metrics to the open telemetry collector.
-func (o OpenTelemetryLogExportConfigOutput) IntervalSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v OpenTelemetryLogExportConfig) *int { return v.IntervalSeconds }).(pulumi.IntPtrOutput)
-}
-
-// The log level. Examples - 'debug', 'info', 'warn', 'error', 'trace'.
-func (o OpenTelemetryLogExportConfigOutput) Level() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OpenTelemetryLogExportConfig) *string { return v.Level }).(pulumi.StringPtrOutput)
-}
-
-// The open telemetry collector endpoint to export to.
-func (o OpenTelemetryLogExportConfigOutput) OtlpGrpcEndpoint() pulumi.StringOutput {
-	return o.ApplyT(func(v OpenTelemetryLogExportConfig) string { return v.OtlpGrpcEndpoint }).(pulumi.StringOutput)
-}
-
-type OpenTelemetryLogExportConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (OpenTelemetryLogExportConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**OpenTelemetryLogExportConfig)(nil)).Elem()
-}
-
-func (o OpenTelemetryLogExportConfigPtrOutput) ToOpenTelemetryLogExportConfigPtrOutput() OpenTelemetryLogExportConfigPtrOutput {
-	return o
-}
-
-func (o OpenTelemetryLogExportConfigPtrOutput) ToOpenTelemetryLogExportConfigPtrOutputWithContext(ctx context.Context) OpenTelemetryLogExportConfigPtrOutput {
-	return o
-}
-
-func (o OpenTelemetryLogExportConfigPtrOutput) Elem() OpenTelemetryLogExportConfigOutput {
-	return o.ApplyT(func(v *OpenTelemetryLogExportConfig) OpenTelemetryLogExportConfig {
-		if v != nil {
-			return *v
-		}
-		var ret OpenTelemetryLogExportConfig
-		return ret
-	}).(OpenTelemetryLogExportConfigOutput)
-}
-
-// How often to export the metrics to the open telemetry collector.
-func (o OpenTelemetryLogExportConfigPtrOutput) IntervalSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *OpenTelemetryLogExportConfig) *int {
-		if v == nil {
-			return nil
-		}
-		return v.IntervalSeconds
-	}).(pulumi.IntPtrOutput)
-}
-
-// The log level. Examples - 'debug', 'info', 'warn', 'error', 'trace'.
-func (o OpenTelemetryLogExportConfigPtrOutput) Level() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OpenTelemetryLogExportConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Level
-	}).(pulumi.StringPtrOutput)
-}
-
-// The open telemetry collector endpoint to export to.
-func (o OpenTelemetryLogExportConfigPtrOutput) OtlpGrpcEndpoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OpenTelemetryLogExportConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.OtlpGrpcEndpoint
-	}).(pulumi.StringPtrOutput)
-}
-
-// OpenTelemetry Log Export Configuration properties
-type OpenTelemetryLogExportConfigResponse struct {
-	// How often to export the metrics to the open telemetry collector.
-	IntervalSeconds *int `pulumi:"intervalSeconds"`
-	// The log level. Examples - 'debug', 'info', 'warn', 'error', 'trace'.
-	Level *string `pulumi:"level"`
-	// The open telemetry collector endpoint to export to.
-	OtlpGrpcEndpoint string `pulumi:"otlpGrpcEndpoint"`
-}
-
-// Defaults sets the appropriate defaults for OpenTelemetryLogExportConfigResponse
-func (val *OpenTelemetryLogExportConfigResponse) Defaults() *OpenTelemetryLogExportConfigResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.IntervalSeconds == nil {
-		intervalSeconds_ := 30
-		tmp.IntervalSeconds = &intervalSeconds_
-	}
-	if tmp.Level == nil {
-		level_ := "error"
-		tmp.Level = &level_
-	}
-	return &tmp
-}
-
-// OpenTelemetry Log Export Configuration properties
-type OpenTelemetryLogExportConfigResponseOutput struct{ *pulumi.OutputState }
-
-func (OpenTelemetryLogExportConfigResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OpenTelemetryLogExportConfigResponse)(nil)).Elem()
-}
-
-func (o OpenTelemetryLogExportConfigResponseOutput) ToOpenTelemetryLogExportConfigResponseOutput() OpenTelemetryLogExportConfigResponseOutput {
-	return o
-}
-
-func (o OpenTelemetryLogExportConfigResponseOutput) ToOpenTelemetryLogExportConfigResponseOutputWithContext(ctx context.Context) OpenTelemetryLogExportConfigResponseOutput {
-	return o
-}
-
-// How often to export the metrics to the open telemetry collector.
-func (o OpenTelemetryLogExportConfigResponseOutput) IntervalSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v OpenTelemetryLogExportConfigResponse) *int { return v.IntervalSeconds }).(pulumi.IntPtrOutput)
-}
-
-// The log level. Examples - 'debug', 'info', 'warn', 'error', 'trace'.
-func (o OpenTelemetryLogExportConfigResponseOutput) Level() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OpenTelemetryLogExportConfigResponse) *string { return v.Level }).(pulumi.StringPtrOutput)
-}
-
-// The open telemetry collector endpoint to export to.
-func (o OpenTelemetryLogExportConfigResponseOutput) OtlpGrpcEndpoint() pulumi.StringOutput {
-	return o.ApplyT(func(v OpenTelemetryLogExportConfigResponse) string { return v.OtlpGrpcEndpoint }).(pulumi.StringOutput)
-}
-
-type OpenTelemetryLogExportConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (OpenTelemetryLogExportConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**OpenTelemetryLogExportConfigResponse)(nil)).Elem()
-}
-
-func (o OpenTelemetryLogExportConfigResponsePtrOutput) ToOpenTelemetryLogExportConfigResponsePtrOutput() OpenTelemetryLogExportConfigResponsePtrOutput {
-	return o
-}
-
-func (o OpenTelemetryLogExportConfigResponsePtrOutput) ToOpenTelemetryLogExportConfigResponsePtrOutputWithContext(ctx context.Context) OpenTelemetryLogExportConfigResponsePtrOutput {
-	return o
-}
-
-func (o OpenTelemetryLogExportConfigResponsePtrOutput) Elem() OpenTelemetryLogExportConfigResponseOutput {
-	return o.ApplyT(func(v *OpenTelemetryLogExportConfigResponse) OpenTelemetryLogExportConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret OpenTelemetryLogExportConfigResponse
-		return ret
-	}).(OpenTelemetryLogExportConfigResponseOutput)
-}
-
-// How often to export the metrics to the open telemetry collector.
-func (o OpenTelemetryLogExportConfigResponsePtrOutput) IntervalSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *OpenTelemetryLogExportConfigResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return v.IntervalSeconds
-	}).(pulumi.IntPtrOutput)
-}
-
-// The log level. Examples - 'debug', 'info', 'warn', 'error', 'trace'.
-func (o OpenTelemetryLogExportConfigResponsePtrOutput) Level() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OpenTelemetryLogExportConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Level
-	}).(pulumi.StringPtrOutput)
-}
-
-// The open telemetry collector endpoint to export to.
-func (o OpenTelemetryLogExportConfigResponsePtrOutput) OtlpGrpcEndpoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OpenTelemetryLogExportConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.OtlpGrpcEndpoint
-	}).(pulumi.StringPtrOutput)
 }
 
 // PrincipalDefinition properties of Rule
@@ -16099,7 +17708,7 @@ func (o PrincipalDefinitionResponseOutput) Usernames() pulumi.StringArrayOutput 
 	return o.ApplyT(func(v PrincipalDefinitionResponse) []string { return v.Usernames }).(pulumi.StringArrayOutput)
 }
 
-// DataFlowProfile Diagnostics properties
+// DataflowProfile Diagnostics properties
 type ProfileDiagnostics struct {
 	// Diagnostic log settings for the resource.
 	Logs *DiagnosticsLogs `pulumi:"logs"`
@@ -16131,7 +17740,7 @@ type ProfileDiagnosticsInput interface {
 	ToProfileDiagnosticsOutputWithContext(context.Context) ProfileDiagnosticsOutput
 }
 
-// DataFlowProfile Diagnostics properties
+// DataflowProfile Diagnostics properties
 type ProfileDiagnosticsArgs struct {
 	// Diagnostic log settings for the resource.
 	Logs DiagnosticsLogsPtrInput `pulumi:"logs"`
@@ -16201,7 +17810,7 @@ func (i *profileDiagnosticsPtrType) ToProfileDiagnosticsPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(ProfileDiagnosticsPtrOutput)
 }
 
-// DataFlowProfile Diagnostics properties
+// DataflowProfile Diagnostics properties
 type ProfileDiagnosticsOutput struct{ *pulumi.OutputState }
 
 func (ProfileDiagnosticsOutput) ElementType() reflect.Type {
@@ -16280,7 +17889,7 @@ func (o ProfileDiagnosticsPtrOutput) Metrics() MetricsPtrOutput {
 	}).(MetricsPtrOutput)
 }
 
-// DataFlowProfile Diagnostics properties
+// DataflowProfile Diagnostics properties
 type ProfileDiagnosticsResponse struct {
 	// Diagnostic log settings for the resource.
 	Logs *DiagnosticsLogsResponse `pulumi:"logs"`
@@ -16301,7 +17910,7 @@ func (val *ProfileDiagnosticsResponse) Defaults() *ProfileDiagnosticsResponse {
 	return &tmp
 }
 
-// DataFlowProfile Diagnostics properties
+// DataflowProfile Diagnostics properties
 type ProfileDiagnosticsResponseOutput struct{ *pulumi.OutputState }
 
 func (ProfileDiagnosticsResponseOutput) ElementType() reflect.Type {
@@ -16604,6 +18213,172 @@ func (o SanForCertResponsePtrOutput) Ip() pulumi.StringArrayOutput {
 		}
 		return v.Ip
 	}).(pulumi.StringArrayOutput)
+}
+
+// The reference to the Schema Registry for this AIO Instance.
+type SchemaRegistryRef struct {
+	// The resource ID of the Schema Registry.
+	ResourceId string `pulumi:"resourceId"`
+}
+
+// SchemaRegistryRefInput is an input type that accepts SchemaRegistryRefArgs and SchemaRegistryRefOutput values.
+// You can construct a concrete instance of `SchemaRegistryRefInput` via:
+//
+//	SchemaRegistryRefArgs{...}
+type SchemaRegistryRefInput interface {
+	pulumi.Input
+
+	ToSchemaRegistryRefOutput() SchemaRegistryRefOutput
+	ToSchemaRegistryRefOutputWithContext(context.Context) SchemaRegistryRefOutput
+}
+
+// The reference to the Schema Registry for this AIO Instance.
+type SchemaRegistryRefArgs struct {
+	// The resource ID of the Schema Registry.
+	ResourceId pulumi.StringInput `pulumi:"resourceId"`
+}
+
+func (SchemaRegistryRefArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SchemaRegistryRef)(nil)).Elem()
+}
+
+func (i SchemaRegistryRefArgs) ToSchemaRegistryRefOutput() SchemaRegistryRefOutput {
+	return i.ToSchemaRegistryRefOutputWithContext(context.Background())
+}
+
+func (i SchemaRegistryRefArgs) ToSchemaRegistryRefOutputWithContext(ctx context.Context) SchemaRegistryRefOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SchemaRegistryRefOutput)
+}
+
+func (i SchemaRegistryRefArgs) ToSchemaRegistryRefPtrOutput() SchemaRegistryRefPtrOutput {
+	return i.ToSchemaRegistryRefPtrOutputWithContext(context.Background())
+}
+
+func (i SchemaRegistryRefArgs) ToSchemaRegistryRefPtrOutputWithContext(ctx context.Context) SchemaRegistryRefPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SchemaRegistryRefOutput).ToSchemaRegistryRefPtrOutputWithContext(ctx)
+}
+
+// SchemaRegistryRefPtrInput is an input type that accepts SchemaRegistryRefArgs, SchemaRegistryRefPtr and SchemaRegistryRefPtrOutput values.
+// You can construct a concrete instance of `SchemaRegistryRefPtrInput` via:
+//
+//	        SchemaRegistryRefArgs{...}
+//
+//	or:
+//
+//	        nil
+type SchemaRegistryRefPtrInput interface {
+	pulumi.Input
+
+	ToSchemaRegistryRefPtrOutput() SchemaRegistryRefPtrOutput
+	ToSchemaRegistryRefPtrOutputWithContext(context.Context) SchemaRegistryRefPtrOutput
+}
+
+type schemaRegistryRefPtrType SchemaRegistryRefArgs
+
+func SchemaRegistryRefPtr(v *SchemaRegistryRefArgs) SchemaRegistryRefPtrInput {
+	return (*schemaRegistryRefPtrType)(v)
+}
+
+func (*schemaRegistryRefPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SchemaRegistryRef)(nil)).Elem()
+}
+
+func (i *schemaRegistryRefPtrType) ToSchemaRegistryRefPtrOutput() SchemaRegistryRefPtrOutput {
+	return i.ToSchemaRegistryRefPtrOutputWithContext(context.Background())
+}
+
+func (i *schemaRegistryRefPtrType) ToSchemaRegistryRefPtrOutputWithContext(ctx context.Context) SchemaRegistryRefPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SchemaRegistryRefPtrOutput)
+}
+
+// The reference to the Schema Registry for this AIO Instance.
+type SchemaRegistryRefOutput struct{ *pulumi.OutputState }
+
+func (SchemaRegistryRefOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SchemaRegistryRef)(nil)).Elem()
+}
+
+func (o SchemaRegistryRefOutput) ToSchemaRegistryRefOutput() SchemaRegistryRefOutput {
+	return o
+}
+
+func (o SchemaRegistryRefOutput) ToSchemaRegistryRefOutputWithContext(ctx context.Context) SchemaRegistryRefOutput {
+	return o
+}
+
+func (o SchemaRegistryRefOutput) ToSchemaRegistryRefPtrOutput() SchemaRegistryRefPtrOutput {
+	return o.ToSchemaRegistryRefPtrOutputWithContext(context.Background())
+}
+
+func (o SchemaRegistryRefOutput) ToSchemaRegistryRefPtrOutputWithContext(ctx context.Context) SchemaRegistryRefPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SchemaRegistryRef) *SchemaRegistryRef {
+		return &v
+	}).(SchemaRegistryRefPtrOutput)
+}
+
+// The resource ID of the Schema Registry.
+func (o SchemaRegistryRefOutput) ResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v SchemaRegistryRef) string { return v.ResourceId }).(pulumi.StringOutput)
+}
+
+type SchemaRegistryRefPtrOutput struct{ *pulumi.OutputState }
+
+func (SchemaRegistryRefPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SchemaRegistryRef)(nil)).Elem()
+}
+
+func (o SchemaRegistryRefPtrOutput) ToSchemaRegistryRefPtrOutput() SchemaRegistryRefPtrOutput {
+	return o
+}
+
+func (o SchemaRegistryRefPtrOutput) ToSchemaRegistryRefPtrOutputWithContext(ctx context.Context) SchemaRegistryRefPtrOutput {
+	return o
+}
+
+func (o SchemaRegistryRefPtrOutput) Elem() SchemaRegistryRefOutput {
+	return o.ApplyT(func(v *SchemaRegistryRef) SchemaRegistryRef {
+		if v != nil {
+			return *v
+		}
+		var ret SchemaRegistryRef
+		return ret
+	}).(SchemaRegistryRefOutput)
+}
+
+// The resource ID of the Schema Registry.
+func (o SchemaRegistryRefPtrOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SchemaRegistryRef) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The reference to the Schema Registry for this AIO Instance.
+type SchemaRegistryRefResponse struct {
+	// The resource ID of the Schema Registry.
+	ResourceId string `pulumi:"resourceId"`
+}
+
+// The reference to the Schema Registry for this AIO Instance.
+type SchemaRegistryRefResponseOutput struct{ *pulumi.OutputState }
+
+func (SchemaRegistryRefResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SchemaRegistryRefResponse)(nil)).Elem()
+}
+
+func (o SchemaRegistryRefResponseOutput) ToSchemaRegistryRefResponseOutput() SchemaRegistryRefResponseOutput {
+	return o
+}
+
+func (o SchemaRegistryRefResponseOutput) ToSchemaRegistryRefResponseOutputWithContext(ctx context.Context) SchemaRegistryRefResponseOutput {
+	return o
+}
+
+// The resource ID of the Schema Registry.
+func (o SchemaRegistryRefResponseOutput) ResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v SchemaRegistryRefResponse) string { return v.ResourceId }).(pulumi.StringOutput)
 }
 
 // Broker Diagnostic Self check properties
@@ -17736,7 +19511,7 @@ func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 // Collection of different TLS types, NOTE- Enum at a time only one of them needs to be supported
 type TlsCertMethod struct {
 	// Option 1 - Automatic TLS server certificate management with cert-manager.
-	Automatic *AutomaticCertMethod `pulumi:"automatic"`
+	CertManagerCertificateSpec *CertManagerCertificateSpec `pulumi:"certManagerCertificateSpec"`
 	// Option 2 - Manual TLS server certificate management through a defined secret.
 	Manual *X509ManualCertificate `pulumi:"manual"`
 	// Mode of TLS server certificate management.
@@ -17749,7 +19524,7 @@ func (val *TlsCertMethod) Defaults() *TlsCertMethod {
 		return nil
 	}
 	tmp := *val
-	tmp.Automatic = tmp.Automatic.Defaults()
+	tmp.CertManagerCertificateSpec = tmp.CertManagerCertificateSpec.Defaults()
 
 	return &tmp
 }
@@ -17768,7 +19543,7 @@ type TlsCertMethodInput interface {
 // Collection of different TLS types, NOTE- Enum at a time only one of them needs to be supported
 type TlsCertMethodArgs struct {
 	// Option 1 - Automatic TLS server certificate management with cert-manager.
-	Automatic AutomaticCertMethodPtrInput `pulumi:"automatic"`
+	CertManagerCertificateSpec CertManagerCertificateSpecPtrInput `pulumi:"certManagerCertificateSpec"`
 	// Option 2 - Manual TLS server certificate management through a defined secret.
 	Manual X509ManualCertificatePtrInput `pulumi:"manual"`
 	// Mode of TLS server certificate management.
@@ -17863,8 +19638,8 @@ func (o TlsCertMethodOutput) ToTlsCertMethodPtrOutputWithContext(ctx context.Con
 }
 
 // Option 1 - Automatic TLS server certificate management with cert-manager.
-func (o TlsCertMethodOutput) Automatic() AutomaticCertMethodPtrOutput {
-	return o.ApplyT(func(v TlsCertMethod) *AutomaticCertMethod { return v.Automatic }).(AutomaticCertMethodPtrOutput)
+func (o TlsCertMethodOutput) CertManagerCertificateSpec() CertManagerCertificateSpecPtrOutput {
+	return o.ApplyT(func(v TlsCertMethod) *CertManagerCertificateSpec { return v.CertManagerCertificateSpec }).(CertManagerCertificateSpecPtrOutput)
 }
 
 // Option 2 - Manual TLS server certificate management through a defined secret.
@@ -17902,13 +19677,13 @@ func (o TlsCertMethodPtrOutput) Elem() TlsCertMethodOutput {
 }
 
 // Option 1 - Automatic TLS server certificate management with cert-manager.
-func (o TlsCertMethodPtrOutput) Automatic() AutomaticCertMethodPtrOutput {
-	return o.ApplyT(func(v *TlsCertMethod) *AutomaticCertMethod {
+func (o TlsCertMethodPtrOutput) CertManagerCertificateSpec() CertManagerCertificateSpecPtrOutput {
+	return o.ApplyT(func(v *TlsCertMethod) *CertManagerCertificateSpec {
 		if v == nil {
 			return nil
 		}
-		return v.Automatic
-	}).(AutomaticCertMethodPtrOutput)
+		return v.CertManagerCertificateSpec
+	}).(CertManagerCertificateSpecPtrOutput)
 }
 
 // Option 2 - Manual TLS server certificate management through a defined secret.
@@ -17934,7 +19709,7 @@ func (o TlsCertMethodPtrOutput) Mode() pulumi.StringPtrOutput {
 // Collection of different TLS types, NOTE- Enum at a time only one of them needs to be supported
 type TlsCertMethodResponse struct {
 	// Option 1 - Automatic TLS server certificate management with cert-manager.
-	Automatic *AutomaticCertMethodResponse `pulumi:"automatic"`
+	CertManagerCertificateSpec *CertManagerCertificateSpecResponse `pulumi:"certManagerCertificateSpec"`
 	// Option 2 - Manual TLS server certificate management through a defined secret.
 	Manual *X509ManualCertificateResponse `pulumi:"manual"`
 	// Mode of TLS server certificate management.
@@ -17947,7 +19722,7 @@ func (val *TlsCertMethodResponse) Defaults() *TlsCertMethodResponse {
 		return nil
 	}
 	tmp := *val
-	tmp.Automatic = tmp.Automatic.Defaults()
+	tmp.CertManagerCertificateSpec = tmp.CertManagerCertificateSpec.Defaults()
 
 	return &tmp
 }
@@ -17968,8 +19743,8 @@ func (o TlsCertMethodResponseOutput) ToTlsCertMethodResponseOutputWithContext(ct
 }
 
 // Option 1 - Automatic TLS server certificate management with cert-manager.
-func (o TlsCertMethodResponseOutput) Automatic() AutomaticCertMethodResponsePtrOutput {
-	return o.ApplyT(func(v TlsCertMethodResponse) *AutomaticCertMethodResponse { return v.Automatic }).(AutomaticCertMethodResponsePtrOutput)
+func (o TlsCertMethodResponseOutput) CertManagerCertificateSpec() CertManagerCertificateSpecResponsePtrOutput {
+	return o.ApplyT(func(v TlsCertMethodResponse) *CertManagerCertificateSpecResponse { return v.CertManagerCertificateSpec }).(CertManagerCertificateSpecResponsePtrOutput)
 }
 
 // Option 2 - Manual TLS server certificate management through a defined secret.
@@ -18007,13 +19782,13 @@ func (o TlsCertMethodResponsePtrOutput) Elem() TlsCertMethodResponseOutput {
 }
 
 // Option 1 - Automatic TLS server certificate management with cert-manager.
-func (o TlsCertMethodResponsePtrOutput) Automatic() AutomaticCertMethodResponsePtrOutput {
-	return o.ApplyT(func(v *TlsCertMethodResponse) *AutomaticCertMethodResponse {
+func (o TlsCertMethodResponsePtrOutput) CertManagerCertificateSpec() CertManagerCertificateSpecResponsePtrOutput {
+	return o.ApplyT(func(v *TlsCertMethodResponse) *CertManagerCertificateSpecResponse {
 		if v == nil {
 			return nil
 		}
-		return v.Automatic
-	}).(AutomaticCertMethodResponsePtrOutput)
+		return v.CertManagerCertificateSpec
+	}).(CertManagerCertificateSpecResponsePtrOutput)
 }
 
 // Option 2 - Manual TLS server certificate management through a defined secret.
@@ -18315,8 +20090,6 @@ type Traces struct {
 	CacheSizeMegabytes *int `pulumi:"cacheSizeMegabytes"`
 	// The toggle to enable/disable traces.
 	Mode *string `pulumi:"mode"`
-	// The open telemetry export configuration.
-	OpentelemetryExportConfig *OpenTelemetryExportConfig `pulumi:"opentelemetryExportConfig"`
 	// The self tracing properties.
 	SelfTracing *SelfTracing `pulumi:"selfTracing"`
 	// The span channel capacity.
@@ -18337,8 +20110,6 @@ func (val *Traces) Defaults() *Traces {
 		mode_ := "Enabled"
 		tmp.Mode = &mode_
 	}
-	tmp.OpentelemetryExportConfig = tmp.OpentelemetryExportConfig.Defaults()
-
 	tmp.SelfTracing = tmp.SelfTracing.Defaults()
 
 	if tmp.SpanChannelCapacity == nil {
@@ -18365,8 +20136,6 @@ type TracesArgs struct {
 	CacheSizeMegabytes pulumi.IntPtrInput `pulumi:"cacheSizeMegabytes"`
 	// The toggle to enable/disable traces.
 	Mode pulumi.StringPtrInput `pulumi:"mode"`
-	// The open telemetry export configuration.
-	OpentelemetryExportConfig OpenTelemetryExportConfigPtrInput `pulumi:"opentelemetryExportConfig"`
 	// The self tracing properties.
 	SelfTracing SelfTracingPtrInput `pulumi:"selfTracing"`
 	// The span channel capacity.
@@ -18479,11 +20248,6 @@ func (o TracesOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Traces) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
 
-// The open telemetry export configuration.
-func (o TracesOutput) OpentelemetryExportConfig() OpenTelemetryExportConfigPtrOutput {
-	return o.ApplyT(func(v Traces) *OpenTelemetryExportConfig { return v.OpentelemetryExportConfig }).(OpenTelemetryExportConfigPtrOutput)
-}
-
 // The self tracing properties.
 func (o TracesOutput) SelfTracing() SelfTracingPtrOutput {
 	return o.ApplyT(func(v Traces) *SelfTracing { return v.SelfTracing }).(SelfTracingPtrOutput)
@@ -18538,16 +20302,6 @@ func (o TracesPtrOutput) Mode() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The open telemetry export configuration.
-func (o TracesPtrOutput) OpentelemetryExportConfig() OpenTelemetryExportConfigPtrOutput {
-	return o.ApplyT(func(v *Traces) *OpenTelemetryExportConfig {
-		if v == nil {
-			return nil
-		}
-		return v.OpentelemetryExportConfig
-	}).(OpenTelemetryExportConfigPtrOutput)
-}
-
 // The self tracing properties.
 func (o TracesPtrOutput) SelfTracing() SelfTracingPtrOutput {
 	return o.ApplyT(func(v *Traces) *SelfTracing {
@@ -18574,8 +20328,6 @@ type TracesResponse struct {
 	CacheSizeMegabytes *int `pulumi:"cacheSizeMegabytes"`
 	// The toggle to enable/disable traces.
 	Mode *string `pulumi:"mode"`
-	// The open telemetry export configuration.
-	OpentelemetryExportConfig *OpenTelemetryExportConfigResponse `pulumi:"opentelemetryExportConfig"`
 	// The self tracing properties.
 	SelfTracing *SelfTracingResponse `pulumi:"selfTracing"`
 	// The span channel capacity.
@@ -18596,8 +20348,6 @@ func (val *TracesResponse) Defaults() *TracesResponse {
 		mode_ := "Enabled"
 		tmp.Mode = &mode_
 	}
-	tmp.OpentelemetryExportConfig = tmp.OpentelemetryExportConfig.Defaults()
-
 	tmp.SelfTracing = tmp.SelfTracing.Defaults()
 
 	if tmp.SpanChannelCapacity == nil {
@@ -18630,11 +20380,6 @@ func (o TracesResponseOutput) CacheSizeMegabytes() pulumi.IntPtrOutput {
 // The toggle to enable/disable traces.
 func (o TracesResponseOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TracesResponse) *string { return v.Mode }).(pulumi.StringPtrOutput)
-}
-
-// The open telemetry export configuration.
-func (o TracesResponseOutput) OpentelemetryExportConfig() OpenTelemetryExportConfigResponsePtrOutput {
-	return o.ApplyT(func(v TracesResponse) *OpenTelemetryExportConfigResponse { return v.OpentelemetryExportConfig }).(OpenTelemetryExportConfigResponsePtrOutput)
 }
 
 // The self tracing properties.
@@ -18691,16 +20436,6 @@ func (o TracesResponsePtrOutput) Mode() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The open telemetry export configuration.
-func (o TracesResponsePtrOutput) OpentelemetryExportConfig() OpenTelemetryExportConfigResponsePtrOutput {
-	return o.ApplyT(func(v *TracesResponse) *OpenTelemetryExportConfigResponse {
-		if v == nil {
-			return nil
-		}
-		return v.OpentelemetryExportConfig
-	}).(OpenTelemetryExportConfigResponsePtrOutput)
-}
-
 // The self tracing properties.
 func (o TracesResponsePtrOutput) SelfTracing() SelfTracingResponsePtrOutput {
 	return o.ApplyT(func(v *TracesResponse) *SelfTracingResponse {
@@ -18719,6 +20454,59 @@ func (o TracesResponsePtrOutput) SpanChannelCapacity() pulumi.IntPtrOutput {
 		}
 		return v.SpanChannelCapacity
 	}).(pulumi.IntPtrOutput)
+}
+
+// User assigned identity properties
+type UserAssignedIdentityResponse struct {
+	// The client ID of the assigned identity.
+	ClientId string `pulumi:"clientId"`
+	// The principal ID of the assigned identity.
+	PrincipalId string `pulumi:"principalId"`
+}
+
+// User assigned identity properties
+type UserAssignedIdentityResponseOutput struct{ *pulumi.OutputState }
+
+func (UserAssignedIdentityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserAssignedIdentityResponse)(nil)).Elem()
+}
+
+func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutput() UserAssignedIdentityResponseOutput {
+	return o
+}
+
+func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutputWithContext(ctx context.Context) UserAssignedIdentityResponseOutput {
+	return o
+}
+
+// The client ID of the assigned identity.
+func (o UserAssignedIdentityResponseOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// The principal ID of the assigned identity.
+func (o UserAssignedIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+type UserAssignedIdentityResponseMapOutput struct{ *pulumi.OutputState }
+
+func (UserAssignedIdentityResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]UserAssignedIdentityResponse)(nil)).Elem()
+}
+
+func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutput() UserAssignedIdentityResponseMapOutput {
+	return o
+}
+
+func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutputWithContext(ctx context.Context) UserAssignedIdentityResponseMapOutput {
+	return o
+}
+
+func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentityResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) UserAssignedIdentityResponse {
+		return vs[0].(map[string]UserAssignedIdentityResponse)[vs[1].(string)]
+	}).(UserAssignedIdentityResponseOutput)
 }
 
 // VolumeClaimResourceRequirements properties
@@ -20037,10 +21825,6 @@ func init() {
 	pulumi.RegisterOutputType(AuthorizationRuleArrayOutput{})
 	pulumi.RegisterOutputType(AuthorizationRuleResponseOutput{})
 	pulumi.RegisterOutputType(AuthorizationRuleResponseArrayOutput{})
-	pulumi.RegisterOutputType(AutomaticCertMethodOutput{})
-	pulumi.RegisterOutputType(AutomaticCertMethodPtrOutput{})
-	pulumi.RegisterOutputType(AutomaticCertMethodResponseOutput{})
-	pulumi.RegisterOutputType(AutomaticCertMethodResponsePtrOutput{})
 	pulumi.RegisterOutputType(BackendChainOutput{})
 	pulumi.RegisterOutputType(BackendChainPtrOutput{})
 	pulumi.RegisterOutputType(BackendChainResponseOutput{})
@@ -20101,6 +21885,10 @@ func init() {
 	pulumi.RegisterOutputType(CertManagerCertOptionsPtrOutput{})
 	pulumi.RegisterOutputType(CertManagerCertOptionsResponseOutput{})
 	pulumi.RegisterOutputType(CertManagerCertOptionsResponsePtrOutput{})
+	pulumi.RegisterOutputType(CertManagerCertificateSpecOutput{})
+	pulumi.RegisterOutputType(CertManagerCertificateSpecPtrOutput{})
+	pulumi.RegisterOutputType(CertManagerCertificateSpecResponseOutput{})
+	pulumi.RegisterOutputType(CertManagerCertificateSpecResponsePtrOutput{})
 	pulumi.RegisterOutputType(CertManagerIssuerRefOutput{})
 	pulumi.RegisterOutputType(CertManagerIssuerRefPtrOutput{})
 	pulumi.RegisterOutputType(CertManagerIssuerRefResponseOutput{})
@@ -20113,94 +21901,119 @@ func init() {
 	pulumi.RegisterOutputType(ClientConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClientConfigResponseOutput{})
 	pulumi.RegisterOutputType(ClientConfigResponsePtrOutput{})
-	pulumi.RegisterOutputType(DataFlowBuiltInTransformationOutput{})
-	pulumi.RegisterOutputType(DataFlowBuiltInTransformationPtrOutput{})
-	pulumi.RegisterOutputType(DataFlowBuiltInTransformationDatasetOutput{})
-	pulumi.RegisterOutputType(DataFlowBuiltInTransformationDatasetArrayOutput{})
-	pulumi.RegisterOutputType(DataFlowBuiltInTransformationDatasetResponseOutput{})
-	pulumi.RegisterOutputType(DataFlowBuiltInTransformationDatasetResponseArrayOutput{})
-	pulumi.RegisterOutputType(DataFlowBuiltInTransformationFilterOutput{})
-	pulumi.RegisterOutputType(DataFlowBuiltInTransformationFilterArrayOutput{})
-	pulumi.RegisterOutputType(DataFlowBuiltInTransformationFilterResponseOutput{})
-	pulumi.RegisterOutputType(DataFlowBuiltInTransformationFilterResponseArrayOutput{})
-	pulumi.RegisterOutputType(DataFlowBuiltInTransformationMapOutput{})
-	pulumi.RegisterOutputType(DataFlowBuiltInTransformationMapArrayOutput{})
-	pulumi.RegisterOutputType(DataFlowBuiltInTransformationMapResponseOutput{})
-	pulumi.RegisterOutputType(DataFlowBuiltInTransformationMapResponseArrayOutput{})
-	pulumi.RegisterOutputType(DataFlowBuiltInTransformationResponseOutput{})
-	pulumi.RegisterOutputType(DataFlowBuiltInTransformationResponsePtrOutput{})
-	pulumi.RegisterOutputType(DataFlowDestinationOperationOutput{})
-	pulumi.RegisterOutputType(DataFlowDestinationOperationResponseOutput{})
-	pulumi.RegisterOutputType(DataFlowEndpointAuthenticationOutput{})
-	pulumi.RegisterOutputType(DataFlowEndpointAuthenticationPtrOutput{})
-	pulumi.RegisterOutputType(DataFlowEndpointAuthenticationResponseOutput{})
-	pulumi.RegisterOutputType(DataFlowEndpointAuthenticationSaslOutput{})
-	pulumi.RegisterOutputType(DataFlowEndpointAuthenticationSaslPtrOutput{})
-	pulumi.RegisterOutputType(DataFlowEndpointAuthenticationSaslResponseOutput{})
-	pulumi.RegisterOutputType(DataFlowEndpointAuthenticationSaslResponsePtrOutput{})
-	pulumi.RegisterOutputType(DataFlowEndpointAuthenticationServiceAccountTokenOutput{})
-	pulumi.RegisterOutputType(DataFlowEndpointAuthenticationServiceAccountTokenPtrOutput{})
-	pulumi.RegisterOutputType(DataFlowEndpointAuthenticationServiceAccountTokenResponseOutput{})
-	pulumi.RegisterOutputType(DataFlowEndpointAuthenticationServiceAccountTokenResponsePtrOutput{})
-	pulumi.RegisterOutputType(DataFlowEndpointAuthenticationSystemAssignedManagedIdentityOutput{})
-	pulumi.RegisterOutputType(DataFlowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput{})
-	pulumi.RegisterOutputType(DataFlowEndpointAuthenticationSystemAssignedManagedIdentityResponseOutput{})
-	pulumi.RegisterOutputType(DataFlowEndpointAuthenticationSystemAssignedManagedIdentityResponsePtrOutput{})
-	pulumi.RegisterOutputType(DataFlowEndpointAuthenticationUserAssignedManagedIdentityOutput{})
-	pulumi.RegisterOutputType(DataFlowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput{})
-	pulumi.RegisterOutputType(DataFlowEndpointAuthenticationUserAssignedManagedIdentityResponseOutput{})
-	pulumi.RegisterOutputType(DataFlowEndpointAuthenticationUserAssignedManagedIdentityResponsePtrOutput{})
-	pulumi.RegisterOutputType(DataFlowEndpointAuthenticationX509Output{})
-	pulumi.RegisterOutputType(DataFlowEndpointAuthenticationX509PtrOutput{})
-	pulumi.RegisterOutputType(DataFlowEndpointAuthenticationX509ResponseOutput{})
-	pulumi.RegisterOutputType(DataFlowEndpointAuthenticationX509ResponsePtrOutput{})
-	pulumi.RegisterOutputType(DataFlowEndpointDataExplorerOutput{})
-	pulumi.RegisterOutputType(DataFlowEndpointDataExplorerPtrOutput{})
-	pulumi.RegisterOutputType(DataFlowEndpointDataExplorerResponseOutput{})
-	pulumi.RegisterOutputType(DataFlowEndpointDataExplorerResponsePtrOutput{})
-	pulumi.RegisterOutputType(DataFlowEndpointDataLakeStorageOutput{})
-	pulumi.RegisterOutputType(DataFlowEndpointDataLakeStoragePtrOutput{})
-	pulumi.RegisterOutputType(DataFlowEndpointDataLakeStorageResponseOutput{})
-	pulumi.RegisterOutputType(DataFlowEndpointDataLakeStorageResponsePtrOutput{})
-	pulumi.RegisterOutputType(DataFlowEndpointFabricOneLakeOutput{})
-	pulumi.RegisterOutputType(DataFlowEndpointFabricOneLakePtrOutput{})
-	pulumi.RegisterOutputType(DataFlowEndpointFabricOneLakeNamesOutput{})
-	pulumi.RegisterOutputType(DataFlowEndpointFabricOneLakeNamesPtrOutput{})
-	pulumi.RegisterOutputType(DataFlowEndpointFabricOneLakeNamesResponseOutput{})
-	pulumi.RegisterOutputType(DataFlowEndpointFabricOneLakeNamesResponsePtrOutput{})
-	pulumi.RegisterOutputType(DataFlowEndpointFabricOneLakeResponseOutput{})
-	pulumi.RegisterOutputType(DataFlowEndpointFabricOneLakeResponsePtrOutput{})
-	pulumi.RegisterOutputType(DataFlowEndpointKafkaOutput{})
-	pulumi.RegisterOutputType(DataFlowEndpointKafkaPtrOutput{})
-	pulumi.RegisterOutputType(DataFlowEndpointKafkaBatchingOutput{})
-	pulumi.RegisterOutputType(DataFlowEndpointKafkaBatchingPtrOutput{})
-	pulumi.RegisterOutputType(DataFlowEndpointKafkaBatchingResponseOutput{})
-	pulumi.RegisterOutputType(DataFlowEndpointKafkaBatchingResponsePtrOutput{})
-	pulumi.RegisterOutputType(DataFlowEndpointKafkaResponseOutput{})
-	pulumi.RegisterOutputType(DataFlowEndpointKafkaResponsePtrOutput{})
-	pulumi.RegisterOutputType(DataFlowEndpointLocalStorageOutput{})
-	pulumi.RegisterOutputType(DataFlowEndpointLocalStoragePtrOutput{})
-	pulumi.RegisterOutputType(DataFlowEndpointLocalStorageResponseOutput{})
-	pulumi.RegisterOutputType(DataFlowEndpointLocalStorageResponsePtrOutput{})
-	pulumi.RegisterOutputType(DataFlowEndpointMqttOutput{})
-	pulumi.RegisterOutputType(DataFlowEndpointMqttPtrOutput{})
-	pulumi.RegisterOutputType(DataFlowEndpointMqttResponseOutput{})
-	pulumi.RegisterOutputType(DataFlowEndpointMqttResponsePtrOutput{})
-	pulumi.RegisterOutputType(DataFlowEndpointPropertiesOutput{})
-	pulumi.RegisterOutputType(DataFlowEndpointPropertiesPtrOutput{})
-	pulumi.RegisterOutputType(DataFlowEndpointPropertiesResponseOutput{})
-	pulumi.RegisterOutputType(DataFlowOperationOutput{})
-	pulumi.RegisterOutputType(DataFlowOperationArrayOutput{})
-	pulumi.RegisterOutputType(DataFlowOperationResponseOutput{})
-	pulumi.RegisterOutputType(DataFlowOperationResponseArrayOutput{})
-	pulumi.RegisterOutputType(DataFlowProfilePropertiesOutput{})
-	pulumi.RegisterOutputType(DataFlowProfilePropertiesPtrOutput{})
-	pulumi.RegisterOutputType(DataFlowProfilePropertiesResponseOutput{})
-	pulumi.RegisterOutputType(DataFlowPropertiesOutput{})
-	pulumi.RegisterOutputType(DataFlowPropertiesPtrOutput{})
-	pulumi.RegisterOutputType(DataFlowPropertiesResponseOutput{})
-	pulumi.RegisterOutputType(DataFlowSourceOperationOutput{})
-	pulumi.RegisterOutputType(DataFlowSourceOperationResponseOutput{})
+	pulumi.RegisterOutputType(DataflowBuiltInTransformationDatasetOutput{})
+	pulumi.RegisterOutputType(DataflowBuiltInTransformationDatasetArrayOutput{})
+	pulumi.RegisterOutputType(DataflowBuiltInTransformationDatasetResponseOutput{})
+	pulumi.RegisterOutputType(DataflowBuiltInTransformationDatasetResponseArrayOutput{})
+	pulumi.RegisterOutputType(DataflowBuiltInTransformationFilterOutput{})
+	pulumi.RegisterOutputType(DataflowBuiltInTransformationFilterArrayOutput{})
+	pulumi.RegisterOutputType(DataflowBuiltInTransformationFilterResponseOutput{})
+	pulumi.RegisterOutputType(DataflowBuiltInTransformationFilterResponseArrayOutput{})
+	pulumi.RegisterOutputType(DataflowBuiltInTransformationMapOutput{})
+	pulumi.RegisterOutputType(DataflowBuiltInTransformationMapArrayOutput{})
+	pulumi.RegisterOutputType(DataflowBuiltInTransformationMapResponseOutput{})
+	pulumi.RegisterOutputType(DataflowBuiltInTransformationMapResponseArrayOutput{})
+	pulumi.RegisterOutputType(DataflowBuiltInTransformationSettingsOutput{})
+	pulumi.RegisterOutputType(DataflowBuiltInTransformationSettingsPtrOutput{})
+	pulumi.RegisterOutputType(DataflowBuiltInTransformationSettingsResponseOutput{})
+	pulumi.RegisterOutputType(DataflowBuiltInTransformationSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(DataflowDestinationOperationSettingsOutput{})
+	pulumi.RegisterOutputType(DataflowDestinationOperationSettingsPtrOutput{})
+	pulumi.RegisterOutputType(DataflowDestinationOperationSettingsResponseOutput{})
+	pulumi.RegisterOutputType(DataflowDestinationOperationSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointAuthenticationAccessTokenOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointAuthenticationAccessTokenPtrOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointAuthenticationAccessTokenResponseOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointAuthenticationAccessTokenResponsePtrOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointAuthenticationSaslOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointAuthenticationSaslPtrOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointAuthenticationSaslResponseOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointAuthenticationSaslResponsePtrOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointAuthenticationServiceAccountTokenOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointAuthenticationServiceAccountTokenPtrOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointAuthenticationServiceAccountTokenResponseOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointAuthenticationServiceAccountTokenResponsePtrOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointAuthenticationSystemAssignedManagedIdentityOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointAuthenticationSystemAssignedManagedIdentityPtrOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponseOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponsePtrOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointAuthenticationUserAssignedManagedIdentityOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointAuthenticationUserAssignedManagedIdentityPtrOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointAuthenticationUserAssignedManagedIdentityResponseOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointAuthenticationUserAssignedManagedIdentityResponsePtrOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointAuthenticationX509Output{})
+	pulumi.RegisterOutputType(DataflowEndpointAuthenticationX509PtrOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointAuthenticationX509ResponseOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointAuthenticationX509ResponsePtrOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointDataExplorerOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointDataExplorerPtrOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointDataExplorerAuthenticationOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointDataExplorerAuthenticationPtrOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointDataExplorerAuthenticationResponseOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointDataExplorerAuthenticationResponsePtrOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointDataExplorerResponseOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointDataExplorerResponsePtrOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointDataLakeStorageOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointDataLakeStoragePtrOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointDataLakeStorageAuthenticationOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointDataLakeStorageAuthenticationPtrOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointDataLakeStorageAuthenticationResponseOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointDataLakeStorageAuthenticationResponsePtrOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointDataLakeStorageResponseOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointDataLakeStorageResponsePtrOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointFabricOneLakeOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointFabricOneLakePtrOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointFabricOneLakeAuthenticationOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointFabricOneLakeAuthenticationPtrOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointFabricOneLakeAuthenticationResponseOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointFabricOneLakeAuthenticationResponsePtrOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointFabricOneLakeNamesOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointFabricOneLakeNamesPtrOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointFabricOneLakeNamesResponseOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointFabricOneLakeNamesResponsePtrOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointFabricOneLakeResponseOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointFabricOneLakeResponsePtrOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointKafkaOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointKafkaPtrOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointKafkaAuthenticationOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointKafkaAuthenticationPtrOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointKafkaAuthenticationResponseOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointKafkaAuthenticationResponsePtrOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointKafkaBatchingOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointKafkaBatchingPtrOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointKafkaBatchingResponseOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointKafkaBatchingResponsePtrOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointKafkaResponseOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointKafkaResponsePtrOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointLocalStorageOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointLocalStoragePtrOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointLocalStorageResponseOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointLocalStorageResponsePtrOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointMqttOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointMqttPtrOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointMqttAuthenticationOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointMqttAuthenticationPtrOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointMqttAuthenticationResponseOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointMqttAuthenticationResponsePtrOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointMqttResponseOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointMqttResponsePtrOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointPropertiesOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(DataflowEndpointPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(DataflowOperationOutput{})
+	pulumi.RegisterOutputType(DataflowOperationArrayOutput{})
+	pulumi.RegisterOutputType(DataflowOperationResponseOutput{})
+	pulumi.RegisterOutputType(DataflowOperationResponseArrayOutput{})
+	pulumi.RegisterOutputType(DataflowProfilePropertiesOutput{})
+	pulumi.RegisterOutputType(DataflowProfilePropertiesPtrOutput{})
+	pulumi.RegisterOutputType(DataflowProfilePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(DataflowPropertiesOutput{})
+	pulumi.RegisterOutputType(DataflowPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(DataflowPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(DataflowSourceOperationSettingsOutput{})
+	pulumi.RegisterOutputType(DataflowSourceOperationSettingsPtrOutput{})
+	pulumi.RegisterOutputType(DataflowSourceOperationSettingsResponseOutput{})
+	pulumi.RegisterOutputType(DataflowSourceOperationSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(DiagnosticsLogsOutput{})
 	pulumi.RegisterOutputType(DiagnosticsLogsPtrOutput{})
 	pulumi.RegisterOutputType(DiagnosticsLogsResponseOutput{})
@@ -20234,18 +22047,14 @@ func init() {
 	pulumi.RegisterOutputType(LocalKubernetesReferencePtrOutput{})
 	pulumi.RegisterOutputType(LocalKubernetesReferenceResponseOutput{})
 	pulumi.RegisterOutputType(LocalKubernetesReferenceResponsePtrOutput{})
+	pulumi.RegisterOutputType(ManagedServiceIdentityOutput{})
+	pulumi.RegisterOutputType(ManagedServiceIdentityPtrOutput{})
+	pulumi.RegisterOutputType(ManagedServiceIdentityResponseOutput{})
+	pulumi.RegisterOutputType(ManagedServiceIdentityResponsePtrOutput{})
 	pulumi.RegisterOutputType(MetricsOutput{})
 	pulumi.RegisterOutputType(MetricsPtrOutput{})
 	pulumi.RegisterOutputType(MetricsResponseOutput{})
 	pulumi.RegisterOutputType(MetricsResponsePtrOutput{})
-	pulumi.RegisterOutputType(OpenTelemetryExportConfigOutput{})
-	pulumi.RegisterOutputType(OpenTelemetryExportConfigPtrOutput{})
-	pulumi.RegisterOutputType(OpenTelemetryExportConfigResponseOutput{})
-	pulumi.RegisterOutputType(OpenTelemetryExportConfigResponsePtrOutput{})
-	pulumi.RegisterOutputType(OpenTelemetryLogExportConfigOutput{})
-	pulumi.RegisterOutputType(OpenTelemetryLogExportConfigPtrOutput{})
-	pulumi.RegisterOutputType(OpenTelemetryLogExportConfigResponseOutput{})
-	pulumi.RegisterOutputType(OpenTelemetryLogExportConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(PrincipalDefinitionOutput{})
 	pulumi.RegisterOutputType(PrincipalDefinitionResponseOutput{})
 	pulumi.RegisterOutputType(ProfileDiagnosticsOutput{})
@@ -20256,6 +22065,9 @@ func init() {
 	pulumi.RegisterOutputType(SanForCertPtrOutput{})
 	pulumi.RegisterOutputType(SanForCertResponseOutput{})
 	pulumi.RegisterOutputType(SanForCertResponsePtrOutput{})
+	pulumi.RegisterOutputType(SchemaRegistryRefOutput{})
+	pulumi.RegisterOutputType(SchemaRegistryRefPtrOutput{})
+	pulumi.RegisterOutputType(SchemaRegistryRefResponseOutput{})
 	pulumi.RegisterOutputType(SelfCheckOutput{})
 	pulumi.RegisterOutputType(SelfCheckPtrOutput{})
 	pulumi.RegisterOutputType(SelfCheckResponseOutput{})
@@ -20285,6 +22097,8 @@ func init() {
 	pulumi.RegisterOutputType(TracesPtrOutput{})
 	pulumi.RegisterOutputType(TracesResponseOutput{})
 	pulumi.RegisterOutputType(TracesResponsePtrOutput{})
+	pulumi.RegisterOutputType(UserAssignedIdentityResponseOutput{})
+	pulumi.RegisterOutputType(UserAssignedIdentityResponseMapOutput{})
 	pulumi.RegisterOutputType(VolumeClaimResourceRequirementsOutput{})
 	pulumi.RegisterOutputType(VolumeClaimResourceRequirementsPtrOutput{})
 	pulumi.RegisterOutputType(VolumeClaimResourceRequirementsResponseOutput{})

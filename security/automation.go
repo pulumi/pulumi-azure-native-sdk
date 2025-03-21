@@ -13,14 +13,14 @@ import (
 )
 
 // The security automation resource.
-// Azure REST API version: 2019-01-01-preview. Prior API version in Azure Native 1.x: 2019-01-01-preview.
-//
-// Other available API versions: 2023-12-01-preview.
+// Azure REST API version: 2023-12-01-preview. Prior API version in Azure Native 2.x: 2019-01-01-preview.
 type Automation struct {
 	pulumi.CustomResourceState
 
 	// A collection of the actions which are triggered if all the configured rules evaluations, within at least one rule set, are true.
 	Actions pulumi.ArrayOutput `pulumi:"actions"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The security automation description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Entity tag is used for comparing two or more entities from the same requested resource.
@@ -181,6 +181,11 @@ func (o AutomationOutput) ToAutomationOutputWithContext(ctx context.Context) Aut
 // A collection of the actions which are triggered if all the configured rules evaluations, within at least one rule set, are true.
 func (o AutomationOutput) Actions() pulumi.ArrayOutput {
 	return o.ApplyT(func(v *Automation) pulumi.ArrayOutput { return v.Actions }).(pulumi.ArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o AutomationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Automation) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The security automation description.

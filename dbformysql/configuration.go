@@ -13,14 +13,14 @@ import (
 )
 
 // Represents a Configuration.
-// Azure REST API version: 2022-01-01. Prior API version in Azure Native 1.x: 2017-12-01.
-//
-// Other available API versions: 2017-12-01, 2020-07-01-privatepreview, 2023-06-01-preview, 2023-06-30, 2023-12-30.
+// Azure REST API version: 2023-12-30. Prior API version in Azure Native 2.x: 2022-01-01.
 type Configuration struct {
 	pulumi.CustomResourceState
 
 	// Allowed values of the configuration.
 	AllowedValues pulumi.StringOutput `pulumi:"allowedValues"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Current value of the configuration.
 	CurrentValue pulumi.StringPtrOutput `pulumi:"currentValue"`
 	// Data type of the configuration.
@@ -41,7 +41,7 @@ type Configuration struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Source of the configuration.
 	Source pulumi.StringPtrOutput `pulumi:"source"`
-	// The system metadata relating to this resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -63,6 +63,9 @@ func NewConfiguration(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ServerName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:dbformysql/v20171201:Configuration"),
+		},
 		{
 			Type: pulumi.String("azure-native:dbformysql/v20200701preview:Configuration"),
 		},
@@ -197,6 +200,11 @@ func (o ConfigurationOutput) AllowedValues() pulumi.StringOutput {
 	return o.ApplyT(func(v *Configuration) pulumi.StringOutput { return v.AllowedValues }).(pulumi.StringOutput)
 }
 
+// The Azure API version of the resource.
+func (o ConfigurationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Configuration) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Current value of the configuration.
 func (o ConfigurationOutput) CurrentValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Configuration) pulumi.StringPtrOutput { return v.CurrentValue }).(pulumi.StringPtrOutput)
@@ -247,7 +255,7 @@ func (o ConfigurationOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Configuration) pulumi.StringPtrOutput { return v.Source }).(pulumi.StringPtrOutput)
 }
 
-// The system metadata relating to this resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o ConfigurationOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *Configuration) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

@@ -13,10 +13,12 @@ import (
 )
 
 // MQ mqttBridgeConnector resource
-// Azure REST API version: 2023-10-04-preview.
+// Azure REST API version: 2023-10-04-preview. Prior API version in Azure Native 2.x: 2023-10-04-preview.
 type MqttBridgeConnector struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The number of instances to deploy for a bridge rollout.
 	BridgeInstances pulumi.IntPtrOutput `pulumi:"bridgeInstances"`
 	// The client id prefix of the dynamically generated client ids.
@@ -216,6 +218,11 @@ func (o MqttBridgeConnectorOutput) ToMqttBridgeConnectorOutput() MqttBridgeConne
 
 func (o MqttBridgeConnectorOutput) ToMqttBridgeConnectorOutputWithContext(ctx context.Context) MqttBridgeConnectorOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o MqttBridgeConnectorOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *MqttBridgeConnector) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The number of instances to deploy for a bridge rollout.

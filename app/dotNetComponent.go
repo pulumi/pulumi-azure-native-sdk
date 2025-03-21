@@ -13,12 +13,12 @@ import (
 )
 
 // .NET Component.
-// Azure REST API version: 2023-11-02-preview.
-//
-// Other available API versions: 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview.
+// Azure REST API version: 2024-10-02-preview. Prior API version in Azure Native 2.x: 2023-11-02-preview.
 type DotNetComponent struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Type of the .NET Component.
 	ComponentType pulumi.StringPtrOutput `pulumi:"componentType"`
 	// List of .NET Components configuration properties
@@ -161,6 +161,11 @@ func (o DotNetComponentOutput) ToDotNetComponentOutput() DotNetComponentOutput {
 
 func (o DotNetComponentOutput) ToDotNetComponentOutputWithContext(ctx context.Context) DotNetComponentOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o DotNetComponentOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DotNetComponent) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Type of the .NET Component.

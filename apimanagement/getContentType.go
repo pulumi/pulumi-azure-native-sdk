@@ -12,9 +12,7 @@ import (
 )
 
 // Gets the details of the developer portal's content type. Content types describe content items' properties, validation rules, and constraints.
-// Azure REST API version: 2022-08-01.
-//
-// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
+// Azure REST API version: 2022-09-01-preview.
 func LookupContentType(ctx *pulumi.Context, args *LookupContentTypeArgs, opts ...pulumi.InvokeOption) (*LookupContentTypeResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupContentTypeResult
@@ -36,6 +34,8 @@ type LookupContentTypeArgs struct {
 
 // Content type contract details.
 type LookupContentTypeResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Content type description.
 	Description *string `pulumi:"description"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -85,6 +85,11 @@ func (o LookupContentTypeResultOutput) ToLookupContentTypeResultOutput() LookupC
 
 func (o LookupContentTypeResultOutput) ToLookupContentTypeResultOutputWithContext(ctx context.Context) LookupContentTypeResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupContentTypeResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupContentTypeResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Content type description.

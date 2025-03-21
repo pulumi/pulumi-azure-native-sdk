@@ -12,10 +12,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Azure REST API version: 2016-03-01. Prior API version in Azure Native 1.x: 2016-03-01.
+// Azure REST API version: 2016-03-01. Prior API version in Azure Native 2.x: 2016-03-01.
 type Job struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets the job resource name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Gets or sets the job properties.
@@ -139,6 +141,11 @@ func (o JobOutput) ToJobOutput() JobOutput {
 
 func (o JobOutput) ToJobOutputWithContext(ctx context.Context) JobOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o JobOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets the job resource name.

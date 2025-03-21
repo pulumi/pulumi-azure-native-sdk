@@ -11,9 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Azure REST API version: 2023-04-01.
-//
-// Other available API versions: 2021-03-01-preview, 2022-02-01-preview, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-04-01-preview, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview.
+// Azure REST API version: 2024-10-01.
 func LookupBatchEndpoint(ctx *pulumi.Context, args *LookupBatchEndpointArgs, opts ...pulumi.InvokeOption) (*LookupBatchEndpointResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBatchEndpointResult
@@ -34,6 +32,8 @@ type LookupBatchEndpointArgs struct {
 }
 
 type LookupBatchEndpointResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// [Required] Additional attributes of the entity.
 	BatchEndpointProperties BatchEndpointResponse `pulumi:"batchEndpointProperties"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -90,6 +90,11 @@ func (o LookupBatchEndpointResultOutput) ToLookupBatchEndpointResultOutput() Loo
 
 func (o LookupBatchEndpointResultOutput) ToLookupBatchEndpointResultOutputWithContext(ctx context.Context) LookupBatchEndpointResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupBatchEndpointResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBatchEndpointResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // [Required] Additional attributes of the entity.

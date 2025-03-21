@@ -12,9 +12,7 @@ import (
 )
 
 // The grafana resource type.
-// Azure REST API version: 2022-08-01.
-//
-// Other available API versions: 2021-09-01-preview, 2022-10-01-preview, 2023-09-01, 2023-10-01-preview, 2024-10-01.
+// Azure REST API version: 2024-10-01.
 func LookupGrafana(ctx *pulumi.Context, args *LookupGrafanaArgs, opts ...pulumi.InvokeOption) (*LookupGrafanaResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGrafanaResult
@@ -22,7 +20,7 @@ func LookupGrafana(ctx *pulumi.Context, args *LookupGrafanaArgs, opts ...pulumi.
 	if err != nil {
 		return nil, err
 	}
-	return &rv, nil
+	return rv.Defaults(), nil
 }
 
 type LookupGrafanaArgs struct {
@@ -34,6 +32,8 @@ type LookupGrafanaArgs struct {
 
 // The grafana resource type.
 type LookupGrafanaResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// ARM id of the grafana resource
 	Id string `pulumi:"id"`
 	// The managed identity of the grafana resource.
@@ -54,6 +54,16 @@ type LookupGrafanaResult struct {
 	Type string `pulumi:"type"`
 }
 
+// Defaults sets the appropriate defaults for LookupGrafanaResult
+func (val *LookupGrafanaResult) Defaults() *LookupGrafanaResult {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Properties = *tmp.Properties.Defaults()
+
+	return &tmp
+}
 func LookupGrafanaOutput(ctx *pulumi.Context, args LookupGrafanaOutputArgs, opts ...pulumi.InvokeOption) LookupGrafanaResultOutput {
 	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupGrafanaResultOutput, error) {
@@ -87,6 +97,11 @@ func (o LookupGrafanaResultOutput) ToLookupGrafanaResultOutput() LookupGrafanaRe
 
 func (o LookupGrafanaResultOutput) ToLookupGrafanaResultOutputWithContext(ctx context.Context) LookupGrafanaResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupGrafanaResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGrafanaResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // ARM id of the grafana resource

@@ -13,10 +13,12 @@ import (
 )
 
 // Contains information about a database Threat Detection policy.
-// Azure REST API version: 2014-04-01.
+// Azure REST API version: 2014-04-01. Prior API version in Azure Native 2.x: 2014-04-01.
 type DatabaseThreatDetectionPolicy struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Specifies the semicolon-separated list of alerts that are disabled, or empty string to disable no alerts. Possible values: Sql_Injection; Sql_Injection_Vulnerability; Access_Anomaly; Data_Exfiltration; Unsafe_Action.
 	DisabledAlerts pulumi.StringPtrOutput `pulumi:"disabledAlerts"`
 	// Specifies that the alert is sent to the account administrators.
@@ -65,6 +67,9 @@ func NewDatabaseThreatDetectionPolicy(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:sql/v20140401:DatabaseThreatDetectionPolicy"),
 		},
 		{
+			Type: pulumi.String("azure-native:sql/v20180601preview:DatabaseSecurityAlertPolicy"),
+		},
+		{
 			Type: pulumi.String("azure-native:sql/v20180601preview:DatabaseThreatDetectionPolicy"),
 		},
 		{
@@ -86,6 +91,9 @@ func NewDatabaseThreatDetectionPolicy(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:sql/v20210801preview:DatabaseThreatDetectionPolicy"),
 		},
 		{
+			Type: pulumi.String("azure-native:sql/v20211101:DatabaseSecurityAlertPolicy"),
+		},
+		{
 			Type: pulumi.String("azure-native:sql/v20211101:DatabaseThreatDetectionPolicy"),
 		},
 		{
@@ -101,19 +109,37 @@ func NewDatabaseThreatDetectionPolicy(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:sql/v20220801preview:DatabaseThreatDetectionPolicy"),
 		},
 		{
+			Type: pulumi.String("azure-native:sql/v20221101preview:DatabaseSecurityAlertPolicy"),
+		},
+		{
 			Type: pulumi.String("azure-native:sql/v20221101preview:DatabaseThreatDetectionPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql/v20230201preview:DatabaseSecurityAlertPolicy"),
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20230201preview:DatabaseThreatDetectionPolicy"),
 		},
 		{
+			Type: pulumi.String("azure-native:sql/v20230501preview:DatabaseSecurityAlertPolicy"),
+		},
+		{
 			Type: pulumi.String("azure-native:sql/v20230501preview:DatabaseThreatDetectionPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql/v20230801preview:DatabaseSecurityAlertPolicy"),
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20230801preview:DatabaseThreatDetectionPolicy"),
 		},
 		{
+			Type: pulumi.String("azure-native:sql/v20240501preview:DatabaseSecurityAlertPolicy"),
+		},
+		{
 			Type: pulumi.String("azure-native:sql/v20240501preview:DatabaseThreatDetectionPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql:DatabaseSecurityAlertPolicy"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -243,6 +269,11 @@ func (o DatabaseThreatDetectionPolicyOutput) ToDatabaseThreatDetectionPolicyOutp
 
 func (o DatabaseThreatDetectionPolicyOutput) ToDatabaseThreatDetectionPolicyOutputWithContext(ctx context.Context) DatabaseThreatDetectionPolicyOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o DatabaseThreatDetectionPolicyOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseThreatDetectionPolicy) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Specifies the semicolon-separated list of alerts that are disabled, or empty string to disable no alerts. Possible values: Sql_Injection; Sql_Injection_Vulnerability; Access_Anomaly; Data_Exfiltration; Unsafe_Action.

@@ -13,12 +13,12 @@ import (
 )
 
 // Appliances definition.
-// Azure REST API version: 2022-10-27. Prior API version in Azure Native 1.x: 2021-10-31-preview.
-//
-// Other available API versions: 2021-10-31-preview.
+// Azure REST API version: 2022-10-27. Prior API version in Azure Native 2.x: 2022-10-27.
 type Appliance struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Represents a supported Fabric/Infra. (AKSEdge etc...).
 	Distro pulumi.StringPtrOutput `pulumi:"distro"`
 	// Identity for the resource.
@@ -180,6 +180,11 @@ func (o ApplianceOutput) ToApplianceOutput() ApplianceOutput {
 
 func (o ApplianceOutput) ToApplianceOutputWithContext(ctx context.Context) ApplianceOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ApplianceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Appliance) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Represents a supported Fabric/Infra. (AKSEdge etc...).

@@ -12,9 +12,7 @@ import (
 )
 
 // Get properties of a topic space.
-// Azure REST API version: 2023-06-01-preview.
-//
-// Other available API versions: 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-02-15.
+// Azure REST API version: 2025-02-15.
 func LookupTopicSpace(ctx *pulumi.Context, args *LookupTopicSpaceArgs, opts ...pulumi.InvokeOption) (*LookupTopicSpaceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTopicSpaceResult
@@ -36,6 +34,8 @@ type LookupTopicSpaceArgs struct {
 
 // The Topic space resource.
 type LookupTopicSpaceResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Description for the Topic Space resource.
 	Description *string `pulumi:"description"`
 	// Fully qualified identifier of the resource.
@@ -44,7 +44,7 @@ type LookupTopicSpaceResult struct {
 	Name string `pulumi:"name"`
 	// Provisioning state of the TopicSpace resource.
 	ProvisioningState string `pulumi:"provisioningState"`
-	// The system metadata relating to the TopicSpace resource.
+	// The system metadata relating to the Event Grid resource.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The topic filters in the topic space.
 	// Example: "topicTemplates": [
@@ -93,6 +93,11 @@ func (o LookupTopicSpaceResultOutput) ToLookupTopicSpaceResultOutputWithContext(
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupTopicSpaceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTopicSpaceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Description for the Topic Space resource.
 func (o LookupTopicSpaceResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupTopicSpaceResult) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -113,7 +118,7 @@ func (o LookupTopicSpaceResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTopicSpaceResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// The system metadata relating to the TopicSpace resource.
+// The system metadata relating to the Event Grid resource.
 func (o LookupTopicSpaceResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupTopicSpaceResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }

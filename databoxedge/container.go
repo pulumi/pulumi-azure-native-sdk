@@ -13,12 +13,12 @@ import (
 )
 
 // Represents a container on the  Data Box Edge/Gateway device.
-// Azure REST API version: 2022-03-01. Prior API version in Azure Native 1.x: 2020-12-01.
-//
-// Other available API versions: 2023-01-01-preview, 2023-07-01, 2023-12-01.
+// Azure REST API version: 2023-07-01. Prior API version in Azure Native 2.x: 2022-03-01.
 type Container struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Current status of the container.
 	ContainerStatus pulumi.StringOutput `pulumi:"containerStatus"`
 	// The UTC time when container got created.
@@ -196,6 +196,11 @@ func (o ContainerOutput) ToContainerOutput() ContainerOutput {
 
 func (o ContainerOutput) ToContainerOutputWithContext(ctx context.Context) ContainerOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ContainerOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Container) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Current status of the container.

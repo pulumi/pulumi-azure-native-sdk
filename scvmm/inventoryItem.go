@@ -13,12 +13,12 @@ import (
 )
 
 // Defines the inventory item.
-// Azure REST API version: 2022-05-21-preview. Prior API version in Azure Native 1.x: 2020-06-05-preview.
-//
-// Other available API versions: 2023-04-01-preview, 2023-10-07, 2024-06-01.
+// Azure REST API version: 2023-04-01-preview. Prior API version in Azure Native 2.x: 2022-05-21-preview.
 type InventoryItem struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets the Managed Object name in VMM for the inventory item.
 	InventoryItemName pulumi.StringOutput `pulumi:"inventoryItemName"`
 	// They inventory type.
@@ -167,6 +167,11 @@ func (o InventoryItemOutput) ToInventoryItemOutput() InventoryItemOutput {
 
 func (o InventoryItemOutput) ToInventoryItemOutputWithContext(ctx context.Context) InventoryItemOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o InventoryItemOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *InventoryItem) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets the Managed Object name in VMM for the inventory item.

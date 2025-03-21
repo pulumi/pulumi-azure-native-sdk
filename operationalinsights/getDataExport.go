@@ -12,9 +12,7 @@ import (
 )
 
 // Gets a data export instance.
-// Azure REST API version: 2020-08-01.
-//
-// Other available API versions: 2023-09-01.
+// Azure REST API version: 2023-09-01.
 func LookupDataExport(ctx *pulumi.Context, args *LookupDataExportArgs, opts ...pulumi.InvokeOption) (*LookupDataExportResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDataExportResult
@@ -36,6 +34,8 @@ type LookupDataExportArgs struct {
 
 // The top level data export resource container.
 type LookupDataExportResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The latest data export rule modification time.
 	CreatedDate *string `pulumi:"createdDate"`
 	// The data export rule ID.
@@ -93,6 +93,11 @@ func (o LookupDataExportResultOutput) ToLookupDataExportResultOutput() LookupDat
 
 func (o LookupDataExportResultOutput) ToLookupDataExportResultOutputWithContext(ctx context.Context) LookupDataExportResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupDataExportResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDataExportResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The latest data export rule modification time.

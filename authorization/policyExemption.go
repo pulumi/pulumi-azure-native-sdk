@@ -13,12 +13,14 @@ import (
 )
 
 // The policy exemption.
-// Azure REST API version: 2022-07-01-preview. Prior API version in Azure Native 1.x: 2020-07-01-preview.
+// Azure REST API version: 2022-07-01-preview. Prior API version in Azure Native 2.x: 2022-07-01-preview.
 type PolicyExemption struct {
 	pulumi.CustomResourceState
 
 	// The option whether validate the exemption is at or under the assignment scope.
 	AssignmentScopeValidation pulumi.StringPtrOutput `pulumi:"assignmentScopeValidation"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The description of the policy exemption.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The display name of the policy exemption.
@@ -194,6 +196,11 @@ func (o PolicyExemptionOutput) ToPolicyExemptionOutputWithContext(ctx context.Co
 // The option whether validate the exemption is at or under the assignment scope.
 func (o PolicyExemptionOutput) AssignmentScopeValidation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PolicyExemption) pulumi.StringPtrOutput { return v.AssignmentScopeValidation }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o PolicyExemptionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PolicyExemption) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The description of the policy exemption.

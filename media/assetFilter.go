@@ -13,10 +13,12 @@ import (
 )
 
 // An Asset Filter.
-// Azure REST API version: 2023-01-01. Prior API version in Azure Native 1.x: 2020-05-01.
+// Azure REST API version: 2023-01-01. Prior API version in Azure Native 2.x: 2023-01-01.
 type AssetFilter struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The first quality.
 	FirstQuality FirstQualityResponsePtrOutput `pulumi:"firstQuality"`
 	// The name of the resource
@@ -170,6 +172,11 @@ func (o AssetFilterOutput) ToAssetFilterOutput() AssetFilterOutput {
 
 func (o AssetFilterOutput) ToAssetFilterOutputWithContext(ctx context.Context) AssetFilterOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o AssetFilterOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *AssetFilter) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The first quality.

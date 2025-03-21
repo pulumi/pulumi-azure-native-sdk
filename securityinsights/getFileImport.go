@@ -12,9 +12,7 @@ import (
 )
 
 // Gets a file import.
-// Azure REST API version: 2023-06-01-preview.
-//
-// Other available API versions: 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-12-01-preview, 2024-01-01-preview, 2024-04-01-preview, 2024-10-01-preview, 2025-01-01-preview.
+// Azure REST API version: 2025-01-01-preview.
 func LookupFileImport(ctx *pulumi.Context, args *LookupFileImportArgs, opts ...pulumi.InvokeOption) (*LookupFileImportResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFileImportResult
@@ -36,6 +34,8 @@ type LookupFileImportArgs struct {
 
 // Represents a file import in Azure Security Insights.
 type LookupFileImportResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The content type of this file.
 	ContentType string `pulumi:"contentType"`
 	// The time the file was imported.
@@ -46,7 +46,7 @@ type LookupFileImportResult struct {
 	ErrorsPreview []ValidationErrorResponse `pulumi:"errorsPreview"`
 	// The time the files associated with this import are deleted from the storage account.
 	FilesValidUntilTimeUTC string `pulumi:"filesValidUntilTimeUTC"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Represents the imported file.
 	ImportFile FileMetadataResponse `pulumi:"importFile"`
@@ -109,6 +109,11 @@ func (o LookupFileImportResultOutput) ToLookupFileImportResultOutputWithContext(
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupFileImportResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFileImportResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The content type of this file.
 func (o LookupFileImportResultOutput) ContentType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFileImportResult) string { return v.ContentType }).(pulumi.StringOutput)
@@ -134,7 +139,7 @@ func (o LookupFileImportResultOutput) FilesValidUntilTimeUTC() pulumi.StringOutp
 	return o.ApplyT(func(v LookupFileImportResult) string { return v.FilesValidUntilTimeUTC }).(pulumi.StringOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupFileImportResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFileImportResult) string { return v.Id }).(pulumi.StringOutput)
 }

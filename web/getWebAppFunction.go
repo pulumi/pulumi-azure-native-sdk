@@ -12,9 +12,7 @@ import (
 )
 
 // Description for Get function information by its ID for web site, or a deployment slot.
-// Azure REST API version: 2022-09-01.
-//
-// Other available API versions: 2016-08-01, 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
+// Azure REST API version: 2024-04-01.
 func LookupWebAppFunction(ctx *pulumi.Context, args *LookupWebAppFunctionArgs, opts ...pulumi.InvokeOption) (*LookupWebAppFunctionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebAppFunctionResult
@@ -36,6 +34,8 @@ type LookupWebAppFunctionArgs struct {
 
 // Function information.
 type LookupWebAppFunctionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Config information.
 	Config interface{} `pulumi:"config"`
 	// Config URI.
@@ -107,6 +107,11 @@ func (o LookupWebAppFunctionResultOutput) ToLookupWebAppFunctionResultOutput() L
 
 func (o LookupWebAppFunctionResultOutput) ToLookupWebAppFunctionResultOutputWithContext(ctx context.Context) LookupWebAppFunctionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupWebAppFunctionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWebAppFunctionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Config information.

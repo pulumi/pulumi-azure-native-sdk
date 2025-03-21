@@ -32,6 +32,8 @@ type LookupSpaceArgs struct {
 
 // An integration space.
 type LookupSpaceResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The description of the resource.
 	Description *string `pulumi:"description"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -83,6 +85,11 @@ func (o LookupSpaceResultOutput) ToLookupSpaceResultOutput() LookupSpaceResultOu
 
 func (o LookupSpaceResultOutput) ToLookupSpaceResultOutputWithContext(ctx context.Context) LookupSpaceResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupSpaceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSpaceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The description of the resource.

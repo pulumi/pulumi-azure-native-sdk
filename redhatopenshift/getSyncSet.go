@@ -12,9 +12,7 @@ import (
 )
 
 // The operation returns properties of a SyncSet.
-// Azure REST API version: 2022-09-04.
-//
-// Other available API versions: 2023-04-01, 2023-07-01-preview, 2023-09-04, 2023-11-22.
+// Azure REST API version: 2023-11-22.
 func LookupSyncSet(ctx *pulumi.Context, args *LookupSyncSetArgs, opts ...pulumi.InvokeOption) (*LookupSyncSetResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSyncSetResult
@@ -36,6 +34,8 @@ type LookupSyncSetArgs struct {
 
 // SyncSet represents a SyncSet for an Azure Red Hat OpenShift Cluster.
 type LookupSyncSetResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The name of the resource
@@ -83,6 +83,11 @@ func (o LookupSyncSetResultOutput) ToLookupSyncSetResultOutput() LookupSyncSetRe
 
 func (o LookupSyncSetResultOutput) ToLookupSyncSetResultOutputWithContext(ctx context.Context) LookupSyncSetResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupSyncSetResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSyncSetResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

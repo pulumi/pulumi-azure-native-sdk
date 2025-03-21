@@ -32,6 +32,8 @@ type LookupEnterpriseCustomerOperationArgs struct {
 
 // ConnectedCache Resource. Represents the high level Nodes needed to provision CacheNode and customer resources used in private preview
 type LookupEnterpriseCustomerOperationResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -81,6 +83,11 @@ func (o LookupEnterpriseCustomerOperationResultOutput) ToLookupEnterpriseCustome
 
 func (o LookupEnterpriseCustomerOperationResultOutput) ToLookupEnterpriseCustomerOperationResultOutputWithContext(ctx context.Context) LookupEnterpriseCustomerOperationResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupEnterpriseCustomerOperationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEnterpriseCustomerOperationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

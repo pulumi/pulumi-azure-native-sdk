@@ -12,9 +12,7 @@ import (
 )
 
 // Get a Pool
-// Azure REST API version: 2023-10-30-preview.
-//
-// Other available API versions: 2023-12-13-preview, 2024-03-26-preview, 2024-04-04-preview, 2024-10-19, 2025-01-21.
+// Azure REST API version: 2025-01-21.
 func LookupPool(ctx *pulumi.Context, args *LookupPoolArgs, opts ...pulumi.InvokeOption) (*LookupPoolResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPoolResult
@@ -22,7 +20,7 @@ func LookupPool(ctx *pulumi.Context, args *LookupPoolArgs, opts ...pulumi.Invoke
 	if err != nil {
 		return nil, err
 	}
-	return rv.Defaults(), nil
+	return &rv, nil
 }
 
 type LookupPoolArgs struct {
@@ -36,11 +34,13 @@ type LookupPoolArgs struct {
 type LookupPoolResult struct {
 	// Defines how the machine will be handled once it executed a job.
 	AgentProfile interface{} `pulumi:"agentProfile"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The resource id of the DevCenter Project the pool belongs to.
 	DevCenterProjectResourceId string `pulumi:"devCenterProjectResourceId"`
 	// Defines the type of fabric the agent will run on.
 	FabricProfile VmssFabricProfileResponse `pulumi:"fabricProfile"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The managed service identities assigned to this resource.
 	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
@@ -51,7 +51,7 @@ type LookupPoolResult struct {
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// Defines the organization in which the pool will be used.
-	OrganizationProfile AzureDevOpsOrganizationProfileResponse `pulumi:"organizationProfile"`
+	OrganizationProfile interface{} `pulumi:"organizationProfile"`
 	// The status of the current operation.
 	ProvisioningState *string `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -62,16 +62,6 @@ type LookupPoolResult struct {
 	Type string `pulumi:"type"`
 }
 
-// Defaults sets the appropriate defaults for LookupPoolResult
-func (val *LookupPoolResult) Defaults() *LookupPoolResult {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	tmp.FabricProfile = *tmp.FabricProfile.Defaults()
-
-	return &tmp
-}
 func LookupPoolOutput(ctx *pulumi.Context, args LookupPoolOutputArgs, opts ...pulumi.InvokeOption) LookupPoolResultOutput {
 	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupPoolResultOutput, error) {
@@ -112,6 +102,11 @@ func (o LookupPoolResultOutput) AgentProfile() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupPoolResult) interface{} { return v.AgentProfile }).(pulumi.AnyOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupPoolResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPoolResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The resource id of the DevCenter Project the pool belongs to.
 func (o LookupPoolResultOutput) DevCenterProjectResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPoolResult) string { return v.DevCenterProjectResourceId }).(pulumi.StringOutput)
@@ -122,7 +117,7 @@ func (o LookupPoolResultOutput) FabricProfile() VmssFabricProfileResponseOutput 
 	return o.ApplyT(func(v LookupPoolResult) VmssFabricProfileResponse { return v.FabricProfile }).(VmssFabricProfileResponseOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupPoolResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPoolResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -148,8 +143,8 @@ func (o LookupPoolResultOutput) Name() pulumi.StringOutput {
 }
 
 // Defines the organization in which the pool will be used.
-func (o LookupPoolResultOutput) OrganizationProfile() AzureDevOpsOrganizationProfileResponseOutput {
-	return o.ApplyT(func(v LookupPoolResult) AzureDevOpsOrganizationProfileResponse { return v.OrganizationProfile }).(AzureDevOpsOrganizationProfileResponseOutput)
+func (o LookupPoolResultOutput) OrganizationProfile() pulumi.AnyOutput {
+	return o.ApplyT(func(v LookupPoolResult) interface{} { return v.OrganizationProfile }).(pulumi.AnyOutput)
 }
 
 // The status of the current operation.

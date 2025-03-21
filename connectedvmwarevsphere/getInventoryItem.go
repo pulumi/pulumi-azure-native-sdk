@@ -12,9 +12,7 @@ import (
 )
 
 // Implements InventoryItem GET method.
-// Azure REST API version: 2022-07-15-preview.
-//
-// Other available API versions: 2023-03-01-preview, 2023-10-01, 2023-12-01.
+// Azure REST API version: 2023-12-01.
 func LookupInventoryItem(ctx *pulumi.Context, args *LookupInventoryItemArgs, opts ...pulumi.InvokeOption) (*LookupInventoryItemResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupInventoryItemResult
@@ -36,7 +34,9 @@ type LookupInventoryItemArgs struct {
 
 // Defines the inventory item.
 type LookupInventoryItemResult struct {
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// They inventory type.
 	InventoryType string `pulumi:"inventoryType"`
@@ -50,9 +50,9 @@ type LookupInventoryItemResult struct {
 	MoRefId *string `pulumi:"moRefId"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// Gets or sets the provisioning state.
+	// Gets the provisioning state.
 	ProvisioningState string `pulumi:"provisioningState"`
-	// The system data.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
@@ -95,7 +95,12 @@ func (o LookupInventoryItemResultOutput) ToLookupInventoryItemResultOutputWithCo
 	return o
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// The Azure API version of the resource.
+func (o LookupInventoryItemResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInventoryItemResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupInventoryItemResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInventoryItemResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -130,12 +135,12 @@ func (o LookupInventoryItemResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInventoryItemResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Gets or sets the provisioning state.
+// Gets the provisioning state.
 func (o LookupInventoryItemResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInventoryItemResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// The system data.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupInventoryItemResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupInventoryItemResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }

@@ -13,12 +13,12 @@ import (
 )
 
 // Active directory connector resource
-// Azure REST API version: 2023-01-15-preview. Prior API version in Azure Native 1.x: 2022-03-01-preview.
-//
-// Other available API versions: 2024-01-01, 2024-05-01-preview.
+// Azure REST API version: 2024-01-01. Prior API version in Azure Native 2.x: 2023-01-15-preview.
 type ActiveDirectoryConnector struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// null
@@ -61,6 +61,9 @@ func NewActiveDirectoryConnector(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azurearcdata/v20240501preview:ActiveDirectoryConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurearcdata/v20250301preview:ActiveDirectoryConnector"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -154,6 +157,11 @@ func (o ActiveDirectoryConnectorOutput) ToActiveDirectoryConnectorOutput() Activ
 
 func (o ActiveDirectoryConnectorOutput) ToActiveDirectoryConnectorOutputWithContext(ctx context.Context) ActiveDirectoryConnectorOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ActiveDirectoryConnectorOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ActiveDirectoryConnector) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

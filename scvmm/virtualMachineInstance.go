@@ -13,14 +13,14 @@ import (
 )
 
 // Define the virtualMachineInstance.
-// Azure REST API version: 2023-04-01-preview.
-//
-// Other available API versions: 2023-10-07, 2024-06-01.
+// Azure REST API version: 2023-04-01-preview. Prior API version in Azure Native 2.x: 2023-04-01-preview.
 type VirtualMachineInstance struct {
 	pulumi.CustomResourceState
 
 	// Availability Sets in vm.
 	AvailabilitySets VirtualMachineInstancePropertiesResponseAvailabilitySetsArrayOutput `pulumi:"availabilitySets"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets or sets the extended location.
 	ExtendedLocation ExtendedLocationResponseOutput `pulumi:"extendedLocation"`
 	// Hardware properties.
@@ -183,6 +183,11 @@ func (o VirtualMachineInstanceOutput) AvailabilitySets() VirtualMachineInstanceP
 	return o.ApplyT(func(v *VirtualMachineInstance) VirtualMachineInstancePropertiesResponseAvailabilitySetsArrayOutput {
 		return v.AvailabilitySets
 	}).(VirtualMachineInstancePropertiesResponseAvailabilitySetsArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o VirtualMachineInstanceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *VirtualMachineInstance) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets the extended location.

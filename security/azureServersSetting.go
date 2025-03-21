@@ -13,10 +13,12 @@ import (
 )
 
 // A vulnerability assessments setting on Azure servers in the defined scope.
-// Azure REST API version: 2023-05-01.
+// Azure REST API version: 2023-05-01. Prior API version in Azure Native 2.x: 2023-05-01.
 type AzureServersSetting struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The kind of the server vulnerability assessments setting
 	// Expected value is 'AzureServersSetting'.
 	Kind pulumi.StringOutput `pulumi:"kind"`
@@ -138,6 +140,11 @@ func (o AzureServersSettingOutput) ToAzureServersSettingOutput() AzureServersSet
 
 func (o AzureServersSettingOutput) ToAzureServersSettingOutputWithContext(ctx context.Context) AzureServersSettingOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o AzureServersSettingOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *AzureServersSetting) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The kind of the server vulnerability assessments setting

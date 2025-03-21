@@ -96,7 +96,7 @@ func (o ActionStatusResponseArrayOutput) Index(i pulumi.IntInput) ActionStatusRe
 	}).(ActionStatusResponseOutput)
 }
 
-// Model that represents a branch in the step.
+// Model that represents a branch in the step. 9 total per experiment.
 type Branch struct {
 	// List of actions.
 	Actions []interface{} `pulumi:"actions"`
@@ -115,7 +115,7 @@ type BranchInput interface {
 	ToBranchOutputWithContext(context.Context) BranchOutput
 }
 
-// Model that represents a branch in the step.
+// Model that represents a branch in the step. 9 total per experiment.
 type BranchArgs struct {
 	// List of actions.
 	Actions pulumi.ArrayInput `pulumi:"actions"`
@@ -160,7 +160,7 @@ func (i BranchArray) ToBranchArrayOutputWithContext(ctx context.Context) BranchA
 	return pulumi.ToOutputWithContext(ctx, i).(BranchArrayOutput)
 }
 
-// Model that represents a branch in the step.
+// Model that represents a branch in the step. 9 total per experiment.
 type BranchOutput struct{ *pulumi.OutputState }
 
 func (BranchOutput) ElementType() reflect.Type {
@@ -205,7 +205,7 @@ func (o BranchArrayOutput) Index(i pulumi.IntInput) BranchOutput {
 	}).(BranchOutput)
 }
 
-// Model that represents a branch in the step.
+// Model that represents a branch in the step. 9 total per experiment.
 type BranchResponse struct {
 	// List of actions.
 	Actions []interface{} `pulumi:"actions"`
@@ -213,7 +213,7 @@ type BranchResponse struct {
 	Name string `pulumi:"name"`
 }
 
-// Model that represents a branch in the step.
+// Model that represents a branch in the step. 9 total per experiment.
 type BranchResponseOutput struct{ *pulumi.OutputState }
 
 func (BranchResponseOutput) ElementType() reflect.Type {
@@ -922,8 +922,6 @@ func (o ExperimentExecutionDetailsPropertiesResponseRunInformationOutput) Steps(
 type ExperimentProperties struct {
 	// List of selectors.
 	Selectors []interface{} `pulumi:"selectors"`
-	// A boolean value that indicates if experiment should be started on creation or not.
-	StartOnCreation *bool `pulumi:"startOnCreation"`
 	// List of steps.
 	Steps []Step `pulumi:"steps"`
 }
@@ -943,8 +941,6 @@ type ExperimentPropertiesInput interface {
 type ExperimentPropertiesArgs struct {
 	// List of selectors.
 	Selectors pulumi.ArrayInput `pulumi:"selectors"`
-	// A boolean value that indicates if experiment should be started on creation or not.
-	StartOnCreation pulumi.BoolPtrInput `pulumi:"startOnCreation"`
 	// List of steps.
 	Steps StepArrayInput `pulumi:"steps"`
 }
@@ -981,11 +977,6 @@ func (o ExperimentPropertiesOutput) Selectors() pulumi.ArrayOutput {
 	return o.ApplyT(func(v ExperimentProperties) []interface{} { return v.Selectors }).(pulumi.ArrayOutput)
 }
 
-// A boolean value that indicates if experiment should be started on creation or not.
-func (o ExperimentPropertiesOutput) StartOnCreation() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ExperimentProperties) *bool { return v.StartOnCreation }).(pulumi.BoolPtrOutput)
-}
-
 // List of steps.
 func (o ExperimentPropertiesOutput) Steps() StepArrayOutput {
 	return o.ApplyT(func(v ExperimentProperties) []Step { return v.Steps }).(StepArrayOutput)
@@ -993,10 +984,10 @@ func (o ExperimentPropertiesOutput) Steps() StepArrayOutput {
 
 // Model that represents the Experiment properties model.
 type ExperimentPropertiesResponse struct {
+	// Most recent provisioning state for the given experiment resource.
+	ProvisioningState string `pulumi:"provisioningState"`
 	// List of selectors.
 	Selectors []interface{} `pulumi:"selectors"`
-	// A boolean value that indicates if experiment should be started on creation or not.
-	StartOnCreation *bool `pulumi:"startOnCreation"`
 	// List of steps.
 	Steps []StepResponse `pulumi:"steps"`
 }
@@ -1016,14 +1007,14 @@ func (o ExperimentPropertiesResponseOutput) ToExperimentPropertiesResponseOutput
 	return o
 }
 
+// Most recent provisioning state for the given experiment resource.
+func (o ExperimentPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v ExperimentPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
 // List of selectors.
 func (o ExperimentPropertiesResponseOutput) Selectors() pulumi.ArrayOutput {
 	return o.ApplyT(func(v ExperimentPropertiesResponse) []interface{} { return v.Selectors }).(pulumi.ArrayOutput)
-}
-
-// A boolean value that indicates if experiment should be started on creation or not.
-func (o ExperimentPropertiesResponseOutput) StartOnCreation() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ExperimentPropertiesResponse) *bool { return v.StartOnCreation }).(pulumi.BoolPtrOutput)
 }
 
 // List of steps.

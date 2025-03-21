@@ -13,8 +13,6 @@ import (
 
 // Gets the peer ASN with the specified name under the given subscription.
 // Azure REST API version: 2022-10-01.
-//
-// Other available API versions: 2021-01-01.
 func LookupPeerAsn(ctx *pulumi.Context, args *LookupPeerAsnArgs, opts ...pulumi.InvokeOption) (*LookupPeerAsnResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPeerAsnResult
@@ -32,6 +30,8 @@ type LookupPeerAsnArgs struct {
 
 // The essential information related to the peer's ASN.
 type LookupPeerAsnResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The error message for the validation state
 	ErrorMessage string `pulumi:"errorMessage"`
 	// The ID of the resource.
@@ -81,6 +81,11 @@ func (o LookupPeerAsnResultOutput) ToLookupPeerAsnResultOutput() LookupPeerAsnRe
 
 func (o LookupPeerAsnResultOutput) ToLookupPeerAsnResultOutputWithContext(ctx context.Context) LookupPeerAsnResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupPeerAsnResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPeerAsnResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The error message for the validation state

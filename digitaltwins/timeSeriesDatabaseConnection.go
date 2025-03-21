@@ -13,10 +13,12 @@ import (
 )
 
 // Describes a time series database connection resource.
-// Azure REST API version: 2023-01-31. Prior API version in Azure Native 1.x: 2021-06-30-preview.
+// Azure REST API version: 2023-01-31. Prior API version in Azure Native 2.x: 2023-01-31.
 type TimeSeriesDatabaseConnection struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Extension resource name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Properties of a specific time series database connection.
@@ -150,6 +152,11 @@ func (o TimeSeriesDatabaseConnectionOutput) ToTimeSeriesDatabaseConnectionOutput
 
 func (o TimeSeriesDatabaseConnectionOutput) ToTimeSeriesDatabaseConnectionOutputWithContext(ctx context.Context) TimeSeriesDatabaseConnectionOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o TimeSeriesDatabaseConnectionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *TimeSeriesDatabaseConnection) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Extension resource name.

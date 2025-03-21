@@ -13,14 +13,14 @@ import (
 )
 
 // Single item in List or Get Alias(Disaster Recovery configuration) operation
-// Azure REST API version: 2022-01-01-preview. Prior API version in Azure Native 1.x: 2017-04-01.
-//
-// Other available API versions: 2022-10-01-preview, 2023-01-01-preview, 2024-01-01.
+// Azure REST API version: 2024-01-01. Prior API version in Azure Native 2.x: 2022-01-01-preview.
 type DisasterRecoveryConfig struct {
 	pulumi.CustomResourceState
 
 	// Primary/Secondary eventhub namespace name, which is part of GEO DR pairing
 	AlternateName pulumi.StringPtrOutput `pulumi:"alternateName"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -123,7 +123,7 @@ type disasterRecoveryConfigArgs struct {
 	NamespaceName string `pulumi:"namespaceName"`
 	// ARM Id of the Primary/Secondary eventhub namespace name, which is part of GEO DR pairing
 	PartnerNamespace *string `pulumi:"partnerNamespace"`
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -137,7 +137,7 @@ type DisasterRecoveryConfigArgs struct {
 	NamespaceName pulumi.StringInput
 	// ARM Id of the Primary/Secondary eventhub namespace name, which is part of GEO DR pairing
 	PartnerNamespace pulumi.StringPtrInput
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 }
 
@@ -181,6 +181,11 @@ func (o DisasterRecoveryConfigOutput) ToDisasterRecoveryConfigOutputWithContext(
 // Primary/Secondary eventhub namespace name, which is part of GEO DR pairing
 func (o DisasterRecoveryConfigOutput) AlternateName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DisasterRecoveryConfig) pulumi.StringPtrOutput { return v.AlternateName }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o DisasterRecoveryConfigOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DisasterRecoveryConfig) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The geo-location where the resource lives

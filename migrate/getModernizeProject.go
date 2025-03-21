@@ -34,6 +34,8 @@ type LookupModernizeProjectArgs struct {
 
 // ModernizeProject model.
 type LookupModernizeProjectResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets or sets the Id of the resource.
 	Id       string                    `pulumi:"id"`
 	Identity *ResourceIdentityResponse `pulumi:"identity"`
@@ -85,6 +87,11 @@ func (o LookupModernizeProjectResultOutput) ToLookupModernizeProjectResultOutput
 
 func (o LookupModernizeProjectResultOutput) ToLookupModernizeProjectResultOutputWithContext(ctx context.Context) LookupModernizeProjectResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupModernizeProjectResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupModernizeProjectResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets the Id of the resource.

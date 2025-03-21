@@ -13,12 +13,12 @@ import (
 )
 
 // Integration runtime resource type.
-// Azure REST API version: 2021-06-01. Prior API version in Azure Native 1.x: 2021-03-01.
-//
-// Other available API versions: 2021-06-01-preview.
+// Azure REST API version: 2021-06-01. Prior API version in Azure Native 2.x: 2021-06-01.
 type IntegrationRuntime struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Resource Etag.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The name of the resource
@@ -159,6 +159,11 @@ func (o IntegrationRuntimeOutput) ToIntegrationRuntimeOutput() IntegrationRuntim
 
 func (o IntegrationRuntimeOutput) ToIntegrationRuntimeOutputWithContext(ctx context.Context) IntegrationRuntimeOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o IntegrationRuntimeOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *IntegrationRuntime) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource Etag.

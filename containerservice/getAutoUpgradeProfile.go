@@ -34,6 +34,8 @@ type LookupAutoUpgradeProfileArgs struct {
 
 // The AutoUpgradeProfile resource.
 type LookupAutoUpgradeProfileResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Configures how auto-upgrade will be run.
 	Channel string `pulumi:"channel"`
 	// If set to False: the auto upgrade has effect - target managed clusters will be upgraded on schedule.
@@ -94,6 +96,11 @@ func (o LookupAutoUpgradeProfileResultOutput) ToLookupAutoUpgradeProfileResultOu
 
 func (o LookupAutoUpgradeProfileResultOutput) ToLookupAutoUpgradeProfileResultOutputWithContext(ctx context.Context) LookupAutoUpgradeProfileResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupAutoUpgradeProfileResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAutoUpgradeProfileResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Configures how auto-upgrade will be run.

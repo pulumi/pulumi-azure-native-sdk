@@ -12,9 +12,7 @@ import (
 )
 
 // Gets the specified Security Partner Provider.
-// Azure REST API version: 2023-02-01.
-//
-// Other available API versions: 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Azure REST API version: 2024-05-01.
 func LookupSecurityPartnerProvider(ctx *pulumi.Context, args *LookupSecurityPartnerProviderArgs, opts ...pulumi.InvokeOption) (*LookupSecurityPartnerProviderResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSecurityPartnerProviderResult
@@ -34,6 +32,8 @@ type LookupSecurityPartnerProviderArgs struct {
 
 // Security Partner Provider resource.
 type LookupSecurityPartnerProviderResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The connection status with the Security Partner Provider.
 	ConnectionStatus string `pulumi:"connectionStatus"`
 	// A unique read-only string that changes whenever the resource is updated.
@@ -89,6 +89,11 @@ func (o LookupSecurityPartnerProviderResultOutput) ToLookupSecurityPartnerProvid
 
 func (o LookupSecurityPartnerProviderResultOutput) ToLookupSecurityPartnerProviderResultOutputWithContext(ctx context.Context) LookupSecurityPartnerProviderResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupSecurityPartnerProviderResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecurityPartnerProviderResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The connection status with the Security Partner Provider.

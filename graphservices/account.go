@@ -13,10 +13,12 @@ import (
 )
 
 // Account details
-// Azure REST API version: 2023-04-13. Prior API version in Azure Native 1.x: 2022-09-22-preview.
+// Azure REST API version: 2023-04-13. Prior API version in Azure Native 2.x: 2023-04-13.
 type Account struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Location of the resource.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// Azure resource name.
@@ -147,6 +149,11 @@ func (o AccountOutput) ToAccountOutput() AccountOutput {
 
 func (o AccountOutput) ToAccountOutputWithContext(ctx context.Context) AccountOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o AccountOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Location of the resource.

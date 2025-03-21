@@ -12,9 +12,7 @@ import (
 )
 
 // Gets a storage insight instance.
-// Azure REST API version: 2020-08-01.
-//
-// Other available API versions: 2023-09-01.
+// Azure REST API version: 2023-09-01.
 func LookupStorageInsightConfig(ctx *pulumi.Context, args *LookupStorageInsightConfigArgs, opts ...pulumi.InvokeOption) (*LookupStorageInsightConfigResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupStorageInsightConfigResult
@@ -36,6 +34,8 @@ type LookupStorageInsightConfigArgs struct {
 
 // The top level storage insight resource container.
 type LookupStorageInsightConfigResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The names of the blob containers that the workspace should read
 	Containers []string `pulumi:"containers"`
 	// The ETag of the storage insight.
@@ -91,6 +91,11 @@ func (o LookupStorageInsightConfigResultOutput) ToLookupStorageInsightConfigResu
 
 func (o LookupStorageInsightConfigResultOutput) ToLookupStorageInsightConfigResultOutputWithContext(ctx context.Context) LookupStorageInsightConfigResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupStorageInsightConfigResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStorageInsightConfigResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The names of the blob containers that the workspace should read

@@ -12,9 +12,7 @@ import (
 )
 
 // Gets the details of the issue Attachment for an API specified by its identifier.
-// Azure REST API version: 2022-08-01.
-//
-// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
+// Azure REST API version: 2022-09-01-preview.
 func LookupApiIssueAttachment(ctx *pulumi.Context, args *LookupApiIssueAttachmentArgs, opts ...pulumi.InvokeOption) (*LookupApiIssueAttachmentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupApiIssueAttachmentResult
@@ -40,6 +38,8 @@ type LookupApiIssueAttachmentArgs struct {
 
 // Issue Attachment Contract details.
 type LookupApiIssueAttachmentResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// An HTTP link or Base64-encoded binary data.
 	Content string `pulumi:"content"`
 	// Either 'link' if content is provided via an HTTP link or the MIME type of the Base64-encoded binary data provided in the 'content' property.
@@ -93,6 +93,11 @@ func (o LookupApiIssueAttachmentResultOutput) ToLookupApiIssueAttachmentResultOu
 
 func (o LookupApiIssueAttachmentResultOutput) ToLookupApiIssueAttachmentResultOutputWithContext(ctx context.Context) LookupApiIssueAttachmentResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupApiIssueAttachmentResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApiIssueAttachmentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // An HTTP link or Base64-encoded binary data.

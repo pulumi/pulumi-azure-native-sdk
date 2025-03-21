@@ -12,9 +12,7 @@ import (
 )
 
 // Get the Azure AD B2C tenant resource.
-// Azure REST API version: 2021-04-01.
-//
-// Other available API versions: 2019-01-01-preview, 2023-01-18-preview, 2023-05-17-preview.
+// Azure REST API version: 2023-05-17-preview.
 func LookupB2CTenant(ctx *pulumi.Context, args *LookupB2CTenantArgs, opts ...pulumi.InvokeOption) (*LookupB2CTenantResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupB2CTenantResult
@@ -33,10 +31,14 @@ type LookupB2CTenantArgs struct {
 }
 
 type LookupB2CTenantResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The billing configuration for the tenant.
 	BillingConfig *B2CTenantResourcePropertiesResponseBillingConfig `pulumi:"billingConfig"`
 	// An identifier that represents the Azure AD B2C tenant resource.
 	Id string `pulumi:"id"`
+	// Enable GoLocal add-on to store data at rest in the specific Geo. Refer to [aka.ms/B2CDataResidency](https://aka.ms/B2CDataResidency) to see local data residency options.
+	IsGoLocalTenant *bool `pulumi:"isGoLocalTenant"`
 	// The location in which the resource is hosted and data resides. Can be one of 'United States', 'Europe', 'Asia Pacific', or 'Australia'. Refer to [this documentation](https://aka.ms/B2CDataResidency) for more information.
 	Location string `pulumi:"location"`
 	// The name of the Azure AD B2C tenant resource.
@@ -87,6 +89,11 @@ func (o LookupB2CTenantResultOutput) ToLookupB2CTenantResultOutputWithContext(ct
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupB2CTenantResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupB2CTenantResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The billing configuration for the tenant.
 func (o LookupB2CTenantResultOutput) BillingConfig() B2CTenantResourcePropertiesResponseBillingConfigPtrOutput {
 	return o.ApplyT(func(v LookupB2CTenantResult) *B2CTenantResourcePropertiesResponseBillingConfig {
@@ -97,6 +104,11 @@ func (o LookupB2CTenantResultOutput) BillingConfig() B2CTenantResourceProperties
 // An identifier that represents the Azure AD B2C tenant resource.
 func (o LookupB2CTenantResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupB2CTenantResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Enable GoLocal add-on to store data at rest in the specific Geo. Refer to [aka.ms/B2CDataResidency](https://aka.ms/B2CDataResidency) to see local data residency options.
+func (o LookupB2CTenantResultOutput) IsGoLocalTenant() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupB2CTenantResult) *bool { return v.IsGoLocalTenant }).(pulumi.BoolPtrOutput)
 }
 
 // The location in which the resource is hosted and data resides. Can be one of 'United States', 'Europe', 'Asia Pacific', or 'Australia'. Refer to [this documentation](https://aka.ms/B2CDataResidency) for more information.

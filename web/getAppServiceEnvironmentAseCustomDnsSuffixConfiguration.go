@@ -12,9 +12,7 @@ import (
 )
 
 // Full view of the custom domain suffix configuration for ASEv3.
-// Azure REST API version: 2022-09-01.
-//
-// Other available API versions: 2023-01-01, 2023-12-01, 2024-04-01.
+// Azure REST API version: 2024-04-01.
 func LookupAppServiceEnvironmentAseCustomDnsSuffixConfiguration(ctx *pulumi.Context, args *LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationResult
@@ -34,6 +32,8 @@ type LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationArgs struct {
 
 // Full view of the custom domain suffix configuration for ASEv3.
 type LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The URL referencing the Azure Key Vault certificate secret that should be used as the default SSL/TLS certificate for sites with the custom domain suffix.
 	CertificateUrl *string `pulumi:"certificateUrl"`
 	// The default custom domain suffix to use for all sites deployed on the ASE.
@@ -85,6 +85,13 @@ func (o LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationResultOutput) 
 
 func (o LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationResultOutput) ToLookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationResultOutputWithContext(ctx context.Context) LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationResult) string {
+		return v.AzureApiVersion
+	}).(pulumi.StringOutput)
 }
 
 // The URL referencing the Azure Key Vault certificate secret that should be used as the default SSL/TLS certificate for sites with the custom domain suffix.

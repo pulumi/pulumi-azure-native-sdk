@@ -13,14 +13,14 @@ import (
 )
 
 // Slot Config names azure resource.
-// Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2020-12-01.
-//
-// Other available API versions: 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
+// Azure REST API version: 2024-04-01. Prior API version in Azure Native 2.x: 2022-09-01.
 type WebAppSlotConfigurationNames struct {
 	pulumi.CustomResourceState
 
 	// List of application settings names.
 	AppSettingNames pulumi.StringArrayOutput `pulumi:"appSettingNames"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// List of external Azure storage account identifiers.
 	AzureStorageConfigNames pulumi.StringArrayOutput `pulumi:"azureStorageConfigNames"`
 	// List of connection string names.
@@ -206,6 +206,11 @@ func (o WebAppSlotConfigurationNamesOutput) ToWebAppSlotConfigurationNamesOutput
 // List of application settings names.
 func (o WebAppSlotConfigurationNamesOutput) AppSettingNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WebAppSlotConfigurationNames) pulumi.StringArrayOutput { return v.AppSettingNames }).(pulumi.StringArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o WebAppSlotConfigurationNamesOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *WebAppSlotConfigurationNames) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // List of external Azure storage account identifiers.

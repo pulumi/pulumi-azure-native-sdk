@@ -13,10 +13,12 @@ import (
 )
 
 // A type of synchronization setting based on schedule
-// Azure REST API version: 2021-08-01. Prior API version in Azure Native 1.x: 2020-09-01.
+// Azure REST API version: 2021-08-01. Prior API version in Azure Native 2.x: 2021-08-01.
 type ScheduledSynchronizationSetting struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Time at which the synchronization setting was created.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// Kind of synchronization setting.
@@ -186,6 +188,11 @@ func (o ScheduledSynchronizationSettingOutput) ToScheduledSynchronizationSetting
 
 func (o ScheduledSynchronizationSettingOutput) ToScheduledSynchronizationSettingOutputWithContext(ctx context.Context) ScheduledSynchronizationSettingOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ScheduledSynchronizationSettingOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ScheduledSynchronizationSetting) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Time at which the synchronization setting was created.

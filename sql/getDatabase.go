@@ -13,8 +13,6 @@ import (
 
 // Gets a database.
 // Azure REST API version: 2021-11-01.
-//
-// Other available API versions: 2014-04-01, 2019-06-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
 func LookupDatabase(ctx *pulumi.Context, args *LookupDatabaseArgs, opts ...pulumi.InvokeOption) (*LookupDatabaseResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDatabaseResult
@@ -38,6 +36,8 @@ type LookupDatabaseArgs struct {
 type LookupDatabaseResult struct {
 	// Time in minutes after which database is automatically paused. A value of -1 means that automatic pause is disabled
 	AutoPauseDelay *int `pulumi:"autoPauseDelay"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Collation of the metadata catalog.
 	CatalogCollation *string `pulumi:"catalogCollation"`
 	// The collation of the database.
@@ -156,6 +156,11 @@ func (o LookupDatabaseResultOutput) ToLookupDatabaseResultOutputWithContext(ctx 
 // Time in minutes after which database is automatically paused. A value of -1 means that automatic pause is disabled
 func (o LookupDatabaseResultOutput) AutoPauseDelay() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupDatabaseResult) *int { return v.AutoPauseDelay }).(pulumi.IntPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupDatabaseResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Collation of the metadata catalog.

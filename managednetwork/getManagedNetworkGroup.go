@@ -34,6 +34,8 @@ type LookupManagedNetworkGroupArgs struct {
 
 // The Managed Network Group resource
 type LookupManagedNetworkGroupResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag string `pulumi:"etag"`
 	// Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -93,6 +95,11 @@ func (o LookupManagedNetworkGroupResultOutput) ToLookupManagedNetworkGroupResult
 
 func (o LookupManagedNetworkGroupResultOutput) ToLookupManagedNetworkGroupResultOutputWithContext(ctx context.Context) LookupManagedNetworkGroupResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupManagedNetworkGroupResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupManagedNetworkGroupResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A unique read-only string that changes whenever the resource is updated.

@@ -13,10 +13,12 @@ import (
 )
 
 // Contains the job information.
-// Azure REST API version: 2021-01-01. Prior API version in Azure Native 1.x: 2020-08-01.
+// Azure REST API version: 2021-01-01. Prior API version in Azure Native 2.x: 2021-01-01.
 type Job struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Specifies the job identity details
 	Identity IdentityDetailsResponsePtrOutput `pulumi:"identity"`
 	// Specifies the Azure location where the job is created.
@@ -152,6 +154,11 @@ func (o JobOutput) ToJobOutput() JobOutput {
 
 func (o JobOutput) ToJobOutputWithContext(ctx context.Context) JobOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o JobOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Specifies the job identity details

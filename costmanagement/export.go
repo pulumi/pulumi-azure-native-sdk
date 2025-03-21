@@ -13,12 +13,12 @@ import (
 )
 
 // An export resource.
-// Azure REST API version: 2023-03-01. Prior API version in Azure Native 1.x: 2020-06-01.
-//
-// Other available API versions: 2019-10-01, 2023-04-01-preview, 2023-07-01-preview, 2023-08-01, 2023-09-01, 2023-11-01, 2024-08-01.
+// Azure REST API version: 2024-08-01. Prior API version in Azure Native 2.x: 2023-03-01.
 type Export struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Has the definition for the export.
 	Definition ExportDefinitionResponseOutput `pulumi:"definition"`
 	// Has delivery information for the export.
@@ -27,6 +27,10 @@ type Export struct {
 	ETag pulumi.StringPtrOutput `pulumi:"eTag"`
 	// The format of the export being delivered. Currently only 'Csv' is supported.
 	Format pulumi.StringPtrOutput `pulumi:"format"`
+	// The managed identity associated with Export
+	Identity SystemAssignedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	// The location of the Export's managed identity. Only required when utilizing managed identity.
+	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// Resource name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// If the export has an active schedule, provides an estimate of the next run time.
@@ -106,6 +110,9 @@ func NewExport(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:costmanagement/v20240801:Export"),
 		},
+		{
+			Type: pulumi.String("azure-native:costmanagement/v20241001preview:Export"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -151,6 +158,10 @@ type exportArgs struct {
 	ExportName *string `pulumi:"exportName"`
 	// The format of the export being delivered. Currently only 'Csv' is supported.
 	Format *string `pulumi:"format"`
+	// The managed identity associated with Export
+	Identity *SystemAssignedServiceIdentity `pulumi:"identity"`
+	// The location of the Export's managed identity. Only required when utilizing managed identity.
+	Location *string `pulumi:"location"`
 	// If set to true, exported data will be partitioned by size and placed in a blob directory together with a manifest file. Note: this option is currently available only for Microsoft Customer Agreement commerce scopes.
 	PartitionData *bool `pulumi:"partitionData"`
 	// Has schedule information for the export.
@@ -171,6 +182,10 @@ type ExportArgs struct {
 	ExportName pulumi.StringPtrInput
 	// The format of the export being delivered. Currently only 'Csv' is supported.
 	Format pulumi.StringPtrInput
+	// The managed identity associated with Export
+	Identity SystemAssignedServiceIdentityPtrInput
+	// The location of the Export's managed identity. Only required when utilizing managed identity.
+	Location pulumi.StringPtrInput
 	// If set to true, exported data will be partitioned by size and placed in a blob directory together with a manifest file. Note: this option is currently available only for Microsoft Customer Agreement commerce scopes.
 	PartitionData pulumi.BoolPtrInput
 	// Has schedule information for the export.
@@ -216,6 +231,11 @@ func (o ExportOutput) ToExportOutputWithContext(ctx context.Context) ExportOutpu
 	return o
 }
 
+// The Azure API version of the resource.
+func (o ExportOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Export) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Has the definition for the export.
 func (o ExportOutput) Definition() ExportDefinitionResponseOutput {
 	return o.ApplyT(func(v *Export) ExportDefinitionResponseOutput { return v.Definition }).(ExportDefinitionResponseOutput)
@@ -234,6 +254,16 @@ func (o ExportOutput) ETag() pulumi.StringPtrOutput {
 // The format of the export being delivered. Currently only 'Csv' is supported.
 func (o ExportOutput) Format() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Export) pulumi.StringPtrOutput { return v.Format }).(pulumi.StringPtrOutput)
+}
+
+// The managed identity associated with Export
+func (o ExportOutput) Identity() SystemAssignedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *Export) SystemAssignedServiceIdentityResponsePtrOutput { return v.Identity }).(SystemAssignedServiceIdentityResponsePtrOutput)
+}
+
+// The location of the Export's managed identity. Only required when utilizing managed identity.
+func (o ExportOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Export) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
 }
 
 // Resource name.

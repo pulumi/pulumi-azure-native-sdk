@@ -12,9 +12,7 @@ import (
 )
 
 // Implements Cloud GET method.
-// Azure REST API version: 2022-05-21-preview.
-//
-// Other available API versions: 2023-04-01-preview, 2023-10-07, 2024-06-01.
+// Azure REST API version: 2023-04-01-preview.
 func LookupCloud(ctx *pulumi.Context, args *LookupCloudArgs, opts ...pulumi.InvokeOption) (*LookupCloudResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCloudResult
@@ -34,6 +32,8 @@ type LookupCloudArgs struct {
 
 // The Clouds resource definition.
 type LookupCloudResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Capacity of the cloud.
 	CloudCapacity CloudCapacityResponse `pulumi:"cloudCapacity"`
 	// Name of the cloud in VMMServer.
@@ -97,6 +97,11 @@ func (o LookupCloudResultOutput) ToLookupCloudResultOutput() LookupCloudResultOu
 
 func (o LookupCloudResultOutput) ToLookupCloudResultOutputWithContext(ctx context.Context) LookupCloudResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupCloudResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCloudResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Capacity of the cloud.

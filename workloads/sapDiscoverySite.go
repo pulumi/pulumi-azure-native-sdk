@@ -13,10 +13,12 @@ import (
 )
 
 // Define the SAP Migration discovery site resource.
-// Azure REST API version: 2023-10-01-preview.
+// Azure REST API version: 2023-10-01-preview. Prior API version in Azure Native 2.x: 2023-10-01-preview.
 type SapDiscoverySite struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Indicates any errors on the SAP Migration discovery site resource.
 	Errors SAPMigrateErrorResponseOutput `pulumi:"errors"`
 	// The extended location definition.
@@ -157,6 +159,11 @@ func (o SapDiscoverySiteOutput) ToSapDiscoverySiteOutput() SapDiscoverySiteOutpu
 
 func (o SapDiscoverySiteOutput) ToSapDiscoverySiteOutputWithContext(ctx context.Context) SapDiscoverySiteOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o SapDiscoverySiteOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SapDiscoverySite) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Indicates any errors on the SAP Migration discovery site resource.

@@ -13,12 +13,12 @@ import (
 )
 
 // Azure Resource Manager resource envelope.
-// Azure REST API version: 2023-04-01.
-//
-// Other available API versions: 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-04-01-preview, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview.
+// Azure REST API version: 2024-10-01. Prior API version in Azure Native 2.x: 2023-04-01.
 type RegistryEnvironmentVersion struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// [Required] Additional attributes of the entity.
 	EnvironmentVersionProperties EnvironmentVersionResponseOutput `pulumi:"environmentVersionProperties"`
 	// The name of the resource
@@ -91,6 +91,9 @@ func NewRegistryEnvironmentVersion(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001preview:RegistryEnvironmentVersion"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250101preview:RegistryEnvironmentVersion"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -188,6 +191,11 @@ func (o RegistryEnvironmentVersionOutput) ToRegistryEnvironmentVersionOutput() R
 
 func (o RegistryEnvironmentVersionOutput) ToRegistryEnvironmentVersionOutputWithContext(ctx context.Context) RegistryEnvironmentVersionOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o RegistryEnvironmentVersionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegistryEnvironmentVersion) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // [Required] Additional attributes of the entity.

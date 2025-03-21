@@ -13,17 +13,20 @@ import (
 )
 
 // Namespace resource.
-// Azure REST API version: 2023-06-01-preview.
-//
-// Other available API versions: 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-02-15.
+// Azure REST API version: 2025-02-15. Prior API version in Azure Native 2.x: 2023-06-01-preview.
 type Namespace struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Identity information for the Namespace resource.
 	Identity IdentityInfoResponsePtrOutput `pulumi:"identity"`
 	// This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled.
 	InboundIpRules InboundIpRuleResponseArrayOutput `pulumi:"inboundIpRules"`
-	// Allows the user to specify if the service is zone-redundant. This is a required property and user needs to specify this value explicitly.
+	// This is an optional property and it allows the user to specify if the namespace resource supports zone-redundancy capability or not. If this
+	// property is not specified explicitly by the user, its default value depends on the following conditions:
+	//     a. For Availability Zones enabled regions - The default property value would be true.
+	//     b. For non-Availability Zones enabled regions - The default property value would be false.
 	// Once specified, this property cannot be updated.
 	IsZoneRedundant pulumi.BoolPtrOutput `pulumi:"isZoneRedundant"`
 	// Location of the resource.
@@ -31,7 +34,8 @@ type Namespace struct {
 	// Minimum TLS version of the publisher allowed to publish to this namespace. Only TLS version 1.2 is supported.
 	MinimumTlsVersionAllowed pulumi.StringPtrOutput `pulumi:"minimumTlsVersionAllowed"`
 	// Name of the resource.
-	Name                       pulumi.StringOutput                          `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// List of private endpoint connections.
 	PrivateEndpointConnections PrivateEndpointConnectionResponseArrayOutput `pulumi:"privateEndpointConnections"`
 	// Provisioning state of the namespace resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
@@ -40,7 +44,7 @@ type Namespace struct {
 	PublicNetworkAccess pulumi.StringPtrOutput `pulumi:"publicNetworkAccess"`
 	// Represents available Sku pricing tiers.
 	Sku NamespaceSkuResponsePtrOutput `pulumi:"sku"`
-	// The system metadata relating to the namespace resource.
+	// The system metadata relating to the Event Grid resource.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Tags of the resource.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
@@ -120,7 +124,10 @@ type namespaceArgs struct {
 	Identity *IdentityInfo `pulumi:"identity"`
 	// This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled.
 	InboundIpRules []InboundIpRule `pulumi:"inboundIpRules"`
-	// Allows the user to specify if the service is zone-redundant. This is a required property and user needs to specify this value explicitly.
+	// This is an optional property and it allows the user to specify if the namespace resource supports zone-redundancy capability or not. If this
+	// property is not specified explicitly by the user, its default value depends on the following conditions:
+	//     a. For Availability Zones enabled regions - The default property value would be true.
+	//     b. For non-Availability Zones enabled regions - The default property value would be false.
 	// Once specified, this property cannot be updated.
 	IsZoneRedundant *bool `pulumi:"isZoneRedundant"`
 	// Location of the resource.
@@ -128,7 +135,8 @@ type namespaceArgs struct {
 	// Minimum TLS version of the publisher allowed to publish to this namespace. Only TLS version 1.2 is supported.
 	MinimumTlsVersionAllowed *string `pulumi:"minimumTlsVersionAllowed"`
 	// Name of the namespace.
-	NamespaceName              *string                         `pulumi:"namespaceName"`
+	NamespaceName *string `pulumi:"namespaceName"`
+	// List of private endpoint connections.
 	PrivateEndpointConnections []PrivateEndpointConnectionType `pulumi:"privateEndpointConnections"`
 	// This determines if traffic is allowed over public network. By default it is enabled.
 	// You can further restrict to specific IPs by configuring <seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.PubSub.NamespaceProperties.InboundIpRules" />
@@ -141,6 +149,8 @@ type namespaceArgs struct {
 	Tags map[string]string `pulumi:"tags"`
 	// Topic spaces configuration information for the namespace resource
 	TopicSpacesConfiguration *TopicSpacesConfiguration `pulumi:"topicSpacesConfiguration"`
+	// Topics configuration information for the namespace resource
+	TopicsConfiguration *TopicsConfiguration `pulumi:"topicsConfiguration"`
 }
 
 // The set of arguments for constructing a Namespace resource.
@@ -149,7 +159,10 @@ type NamespaceArgs struct {
 	Identity IdentityInfoPtrInput
 	// This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled.
 	InboundIpRules InboundIpRuleArrayInput
-	// Allows the user to specify if the service is zone-redundant. This is a required property and user needs to specify this value explicitly.
+	// This is an optional property and it allows the user to specify if the namespace resource supports zone-redundancy capability or not. If this
+	// property is not specified explicitly by the user, its default value depends on the following conditions:
+	//     a. For Availability Zones enabled regions - The default property value would be true.
+	//     b. For non-Availability Zones enabled regions - The default property value would be false.
 	// Once specified, this property cannot be updated.
 	IsZoneRedundant pulumi.BoolPtrInput
 	// Location of the resource.
@@ -157,7 +170,8 @@ type NamespaceArgs struct {
 	// Minimum TLS version of the publisher allowed to publish to this namespace. Only TLS version 1.2 is supported.
 	MinimumTlsVersionAllowed pulumi.StringPtrInput
 	// Name of the namespace.
-	NamespaceName              pulumi.StringPtrInput
+	NamespaceName pulumi.StringPtrInput
+	// List of private endpoint connections.
 	PrivateEndpointConnections PrivateEndpointConnectionTypeArrayInput
 	// This determines if traffic is allowed over public network. By default it is enabled.
 	// You can further restrict to specific IPs by configuring <seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.PubSub.NamespaceProperties.InboundIpRules" />
@@ -170,6 +184,8 @@ type NamespaceArgs struct {
 	Tags pulumi.StringMapInput
 	// Topic spaces configuration information for the namespace resource
 	TopicSpacesConfiguration TopicSpacesConfigurationPtrInput
+	// Topics configuration information for the namespace resource
+	TopicsConfiguration TopicsConfigurationPtrInput
 }
 
 func (NamespaceArgs) ElementType() reflect.Type {
@@ -209,6 +225,11 @@ func (o NamespaceOutput) ToNamespaceOutputWithContext(ctx context.Context) Names
 	return o
 }
 
+// The Azure API version of the resource.
+func (o NamespaceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Identity information for the Namespace resource.
 func (o NamespaceOutput) Identity() IdentityInfoResponsePtrOutput {
 	return o.ApplyT(func(v *Namespace) IdentityInfoResponsePtrOutput { return v.Identity }).(IdentityInfoResponsePtrOutput)
@@ -219,7 +240,12 @@ func (o NamespaceOutput) InboundIpRules() InboundIpRuleResponseArrayOutput {
 	return o.ApplyT(func(v *Namespace) InboundIpRuleResponseArrayOutput { return v.InboundIpRules }).(InboundIpRuleResponseArrayOutput)
 }
 
-// Allows the user to specify if the service is zone-redundant. This is a required property and user needs to specify this value explicitly.
+// This is an optional property and it allows the user to specify if the namespace resource supports zone-redundancy capability or not. If this
+// property is not specified explicitly by the user, its default value depends on the following conditions:
+//
+//	a. For Availability Zones enabled regions - The default property value would be true.
+//	b. For non-Availability Zones enabled regions - The default property value would be false.
+//
 // Once specified, this property cannot be updated.
 func (o NamespaceOutput) IsZoneRedundant() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.BoolPtrOutput { return v.IsZoneRedundant }).(pulumi.BoolPtrOutput)
@@ -240,6 +266,7 @@ func (o NamespaceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// List of private endpoint connections.
 func (o NamespaceOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseArrayOutput {
 	return o.ApplyT(func(v *Namespace) PrivateEndpointConnectionResponseArrayOutput { return v.PrivateEndpointConnections }).(PrivateEndpointConnectionResponseArrayOutput)
 }
@@ -260,7 +287,7 @@ func (o NamespaceOutput) Sku() NamespaceSkuResponsePtrOutput {
 	return o.ApplyT(func(v *Namespace) NamespaceSkuResponsePtrOutput { return v.Sku }).(NamespaceSkuResponsePtrOutput)
 }
 
-// The system metadata relating to the namespace resource.
+// The system metadata relating to the Event Grid resource.
 func (o NamespaceOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *Namespace) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

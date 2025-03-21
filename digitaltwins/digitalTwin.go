@@ -13,10 +13,12 @@ import (
 )
 
 // The description of the DigitalTwins service.
-// Azure REST API version: 2023-01-31. Prior API version in Azure Native 1.x: 2020-12-01.
+// Azure REST API version: 2023-01-31. Prior API version in Azure Native 2.x: 2023-01-31.
 type DigitalTwin struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Time when DigitalTwinsInstance was created.
 	CreatedTime pulumi.StringOutput `pulumi:"createdTime"`
 	// Api endpoint to work with DigitalTwinsInstance.
@@ -181,6 +183,11 @@ func (o DigitalTwinOutput) ToDigitalTwinOutput() DigitalTwinOutput {
 
 func (o DigitalTwinOutput) ToDigitalTwinOutputWithContext(ctx context.Context) DigitalTwinOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o DigitalTwinOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DigitalTwin) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Time when DigitalTwinsInstance was created.

@@ -13,12 +13,12 @@ import (
 )
 
 // Provider details.
-// Azure REST API version: 2023-04-01. Prior API version in Azure Native 1.x: 2018-07-10.
-//
-// Other available API versions: 2023-06-01, 2023-08-01, 2024-01-01, 2024-02-01, 2024-04-01, 2024-10-01.
+// Azure REST API version: 2024-10-01. Prior API version in Azure Native 2.x: 2023-04-01.
 type ReplicationRecoveryServicesProvider struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Resource Location
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// Resource Name
@@ -229,6 +229,11 @@ func (o ReplicationRecoveryServicesProviderOutput) ToReplicationRecoveryServices
 
 func (o ReplicationRecoveryServicesProviderOutput) ToReplicationRecoveryServicesProviderOutputWithContext(ctx context.Context) ReplicationRecoveryServicesProviderOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ReplicationRecoveryServicesProviderOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ReplicationRecoveryServicesProvider) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource Location

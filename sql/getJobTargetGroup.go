@@ -13,8 +13,6 @@ import (
 
 // Gets a target group.
 // Azure REST API version: 2021-11-01.
-//
-// Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
 func LookupJobTargetGroup(ctx *pulumi.Context, args *LookupJobTargetGroupArgs, opts ...pulumi.InvokeOption) (*LookupJobTargetGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupJobTargetGroupResult
@@ -38,6 +36,8 @@ type LookupJobTargetGroupArgs struct {
 
 // A group of job targets.
 type LookupJobTargetGroupResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource ID.
 	Id string `pulumi:"id"`
 	// Members of the target group.
@@ -85,6 +85,11 @@ func (o LookupJobTargetGroupResultOutput) ToLookupJobTargetGroupResultOutput() L
 
 func (o LookupJobTargetGroupResultOutput) ToLookupJobTargetGroupResultOutputWithContext(ctx context.Context) LookupJobTargetGroupResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupJobTargetGroupResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupJobTargetGroupResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource ID.

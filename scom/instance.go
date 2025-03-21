@@ -13,10 +13,12 @@ import (
 )
 
 // A SCOM instance resource
-// Azure REST API version: 2023-07-07-preview.
+// Azure REST API version: 2023-07-07-preview. Prior API version in Azure Native 2.x: 2023-07-07-preview.
 type Instance struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The Azure Active Directory identity of the SCOM instance
 	Identity ManagedIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
@@ -154,6 +156,11 @@ func (o InstanceOutput) ToInstanceOutput() InstanceOutput {
 
 func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) InstanceOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o InstanceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The Azure Active Directory identity of the SCOM instance

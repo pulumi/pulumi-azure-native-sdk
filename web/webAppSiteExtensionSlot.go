@@ -13,14 +13,14 @@ import (
 )
 
 // Site Extension Information.
-// Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2020-12-01.
-//
-// Other available API versions: 2016-08-01, 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
+// Azure REST API version: 2024-04-01. Prior API version in Azure Native 2.x: 2022-09-01.
 type WebAppSiteExtensionSlot struct {
 	pulumi.CustomResourceState
 
 	// List of authors.
 	Authors pulumi.StringArrayOutput `pulumi:"authors"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Site Extension comment.
 	Comment pulumi.StringPtrOutput `pulumi:"comment"`
 	// Detailed description.
@@ -231,6 +231,11 @@ func (o WebAppSiteExtensionSlotOutput) ToWebAppSiteExtensionSlotOutputWithContex
 // List of authors.
 func (o WebAppSiteExtensionSlotOutput) Authors() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WebAppSiteExtensionSlot) pulumi.StringArrayOutput { return v.Authors }).(pulumi.StringArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o WebAppSiteExtensionSlotOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *WebAppSiteExtensionSlot) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Site Extension comment.

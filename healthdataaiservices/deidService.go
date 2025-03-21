@@ -13,12 +13,12 @@ import (
 )
 
 // A HealthDataAIServicesProviderHub resource
-// Azure REST API version: 2024-02-28-preview.
-//
-// Other available API versions: 2024-09-20.
+// Azure REST API version: 2024-09-20. Prior API version in Azure Native 2.x: 2024-02-28-preview.
 type DeidService struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The managed service identities assigned to this resource.
 	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
@@ -152,6 +152,11 @@ func (o DeidServiceOutput) ToDeidServiceOutput() DeidServiceOutput {
 
 func (o DeidServiceOutput) ToDeidServiceOutputWithContext(ctx context.Context) DeidServiceOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o DeidServiceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DeidService) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The managed service identities assigned to this resource.

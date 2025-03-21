@@ -13,14 +13,14 @@ import (
 )
 
 // A workspace
-// Azure REST API version: 2021-06-01. Prior API version in Azure Native 1.x: 2021-03-01.
-//
-// Other available API versions: 2021-05-01, 2021-06-01-preview.
+// Azure REST API version: 2021-06-01. Prior API version in Azure Native 2.x: 2021-06-01.
 type Workspace struct {
 	pulumi.CustomResourceState
 
 	// The ADLA resource ID.
 	AdlaResourceId pulumi.StringOutput `pulumi:"adlaResourceId"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Connectivity endpoints
 	ConnectivityEndpoints pulumi.StringMapOutput `pulumi:"connectivityEndpoints"`
 	// Initial workspace AAD admin properties for a CSP subscription
@@ -272,6 +272,11 @@ func (o WorkspaceOutput) ToWorkspaceOutputWithContext(ctx context.Context) Works
 // The ADLA resource ID.
 func (o WorkspaceOutput) AdlaResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.StringOutput { return v.AdlaResourceId }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o WorkspaceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Workspace) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Connectivity endpoints

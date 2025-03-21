@@ -13,14 +13,14 @@ import (
 )
 
 // The VirtualMachines resource definition.
-// Azure REST API version: 2022-05-21-preview. Prior API version in Azure Native 1.x: 2020-06-05-preview.
-//
-// Other available API versions: 2023-04-01-preview.
+// Azure REST API version: 2023-04-01-preview. Prior API version in Azure Native 2.x: 2022-05-21-preview.
 type VirtualMachine struct {
 	pulumi.CustomResourceState
 
 	// Availability Sets in vm.
 	AvailabilitySets VirtualMachinePropertiesResponseAvailabilitySetsArrayOutput `pulumi:"availabilitySets"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Type of checkpoint supported for the vm.
 	CheckpointType pulumi.StringPtrOutput `pulumi:"checkpointType"`
 	// Checkpoints in the vm.
@@ -261,6 +261,11 @@ func (o VirtualMachineOutput) AvailabilitySets() VirtualMachinePropertiesRespons
 	return o.ApplyT(func(v *VirtualMachine) VirtualMachinePropertiesResponseAvailabilitySetsArrayOutput {
 		return v.AvailabilitySets
 	}).(VirtualMachinePropertiesResponseAvailabilitySetsArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o VirtualMachineOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *VirtualMachine) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Type of checkpoint supported for the vm.

@@ -12,9 +12,7 @@ import (
 )
 
 // Retrieve protection policy with specified name within a resource group.
-// Azure REST API version: 2023-02-01.
-//
-// Other available API versions: 2019-07-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Azure REST API version: 2024-05-01.
 func LookupWebApplicationFirewallPolicy(ctx *pulumi.Context, args *LookupWebApplicationFirewallPolicyArgs, opts ...pulumi.InvokeOption) (*LookupWebApplicationFirewallPolicyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebApplicationFirewallPolicyResult
@@ -34,8 +32,12 @@ type LookupWebApplicationFirewallPolicyArgs struct {
 
 // Defines web application firewall policy.
 type LookupWebApplicationFirewallPolicyResult struct {
+	// A collection of references to application gateway for containers.
+	ApplicationGatewayForContainers []ApplicationGatewayForContainersReferenceDefinitionResponse `pulumi:"applicationGatewayForContainers"`
 	// A collection of references to application gateways.
 	ApplicationGateways []ApplicationGatewayResponse `pulumi:"applicationGateways"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The custom rules inside the policy.
 	CustomRules []WebApplicationFirewallCustomRuleResponse `pulumi:"customRules"`
 	// A unique read-only string that changes whenever the resource is updated.
@@ -109,11 +111,23 @@ func (o LookupWebApplicationFirewallPolicyResultOutput) ToLookupWebApplicationFi
 	return o
 }
 
+// A collection of references to application gateway for containers.
+func (o LookupWebApplicationFirewallPolicyResultOutput) ApplicationGatewayForContainers() ApplicationGatewayForContainersReferenceDefinitionResponseArrayOutput {
+	return o.ApplyT(func(v LookupWebApplicationFirewallPolicyResult) []ApplicationGatewayForContainersReferenceDefinitionResponse {
+		return v.ApplicationGatewayForContainers
+	}).(ApplicationGatewayForContainersReferenceDefinitionResponseArrayOutput)
+}
+
 // A collection of references to application gateways.
 func (o LookupWebApplicationFirewallPolicyResultOutput) ApplicationGateways() ApplicationGatewayResponseArrayOutput {
 	return o.ApplyT(func(v LookupWebApplicationFirewallPolicyResult) []ApplicationGatewayResponse {
 		return v.ApplicationGateways
 	}).(ApplicationGatewayResponseArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupWebApplicationFirewallPolicyResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWebApplicationFirewallPolicyResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The custom rules inside the policy.

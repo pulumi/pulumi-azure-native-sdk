@@ -12,9 +12,7 @@ import (
 )
 
 // Gets a workspace manager group
-// Azure REST API version: 2023-06-01-preview.
-//
-// Other available API versions: 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-12-01-preview, 2024-01-01-preview, 2024-04-01-preview, 2024-10-01-preview, 2025-01-01-preview.
+// Azure REST API version: 2025-01-01-preview.
 func LookupWorkspaceManagerGroup(ctx *pulumi.Context, args *LookupWorkspaceManagerGroupArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceManagerGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkspaceManagerGroupResult
@@ -36,13 +34,15 @@ type LookupWorkspaceManagerGroupArgs struct {
 
 // The workspace manager group
 type LookupWorkspaceManagerGroupResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The description of the workspace manager group
 	Description *string `pulumi:"description"`
 	// The display name of the workspace manager group
 	DisplayName string `pulumi:"displayName"`
 	// Resource Etag.
 	Etag string `pulumi:"etag"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The names of the workspace manager members participating in this group.
 	MemberResourceNames []string `pulumi:"memberResourceNames"`
@@ -91,6 +91,11 @@ func (o LookupWorkspaceManagerGroupResultOutput) ToLookupWorkspaceManagerGroupRe
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupWorkspaceManagerGroupResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkspaceManagerGroupResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The description of the workspace manager group
 func (o LookupWorkspaceManagerGroupResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkspaceManagerGroupResult) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -106,7 +111,7 @@ func (o LookupWorkspaceManagerGroupResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceManagerGroupResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupWorkspaceManagerGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceManagerGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }

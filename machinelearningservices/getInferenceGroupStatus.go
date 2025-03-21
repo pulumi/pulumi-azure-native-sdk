@@ -11,9 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Azure REST API version: 2023-08-01-preview.
-//
-// Other available API versions: 2024-01-01-preview, 2024-04-01-preview, 2024-10-01-preview.
+// Azure REST API version: 2025-01-01-preview.
 func GetInferenceGroupStatus(ctx *pulumi.Context, args *GetInferenceGroupStatusArgs, opts ...pulumi.InvokeOption) (*GetInferenceGroupStatusResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetInferenceGroupStatusResult
@@ -38,8 +36,6 @@ type GetInferenceGroupStatusArgs struct {
 type GetInferenceGroupStatusResult struct {
 	// Gets or sets the actual capacity info for the group.
 	ActualCapacityInfo *ActualCapacityInfoResponse `pulumi:"actualCapacityInfo"`
-	// Gets or sets capacity used from the pool's reserved capacity.
-	BonusExtraCapacity *int `pulumi:"bonusExtraCapacity"`
 	// Gets or sets the actual number of endpoints in the group.
 	EndpointCount *int `pulumi:"endpointCount"`
 	// Gets or sets the request number of instances for the group.
@@ -54,10 +50,6 @@ func (val *GetInferenceGroupStatusResult) Defaults() *GetInferenceGroupStatusRes
 	tmp := *val
 	tmp.ActualCapacityInfo = tmp.ActualCapacityInfo.Defaults()
 
-	if tmp.BonusExtraCapacity == nil {
-		bonusExtraCapacity_ := 0
-		tmp.BonusExtraCapacity = &bonusExtraCapacity_
-	}
 	if tmp.EndpointCount == nil {
 		endpointCount_ := 0
 		tmp.EndpointCount = &endpointCount_
@@ -109,11 +101,6 @@ func (o GetInferenceGroupStatusResultOutput) ToGetInferenceGroupStatusResultOutp
 // Gets or sets the actual capacity info for the group.
 func (o GetInferenceGroupStatusResultOutput) ActualCapacityInfo() ActualCapacityInfoResponsePtrOutput {
 	return o.ApplyT(func(v GetInferenceGroupStatusResult) *ActualCapacityInfoResponse { return v.ActualCapacityInfo }).(ActualCapacityInfoResponsePtrOutput)
-}
-
-// Gets or sets capacity used from the pool's reserved capacity.
-func (o GetInferenceGroupStatusResultOutput) BonusExtraCapacity() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetInferenceGroupStatusResult) *int { return v.BonusExtraCapacity }).(pulumi.IntPtrOutput)
 }
 
 // Gets or sets the actual number of endpoints in the group.

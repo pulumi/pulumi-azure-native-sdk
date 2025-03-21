@@ -32,6 +32,8 @@ type LookupTargetArgs struct {
 
 // A Target resource belonging to an Instance resource.
 type LookupTargetResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// A list of components.
 	Components []ComponentPropertiesResponse `pulumi:"components"`
 	// Edge location of the resource.
@@ -93,6 +95,11 @@ func (o LookupTargetResultOutput) ToLookupTargetResultOutput() LookupTargetResul
 
 func (o LookupTargetResultOutput) ToLookupTargetResultOutputWithContext(ctx context.Context) LookupTargetResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupTargetResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTargetResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A list of components.

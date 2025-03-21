@@ -12,9 +12,7 @@ import (
 )
 
 // Gets the specified peering for the ExpressRouteCrossConnection.
-// Azure REST API version: 2023-02-01.
-//
-// Other available API versions: 2019-08-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Azure REST API version: 2024-05-01.
 func LookupExpressRouteCrossConnectionPeering(ctx *pulumi.Context, args *LookupExpressRouteCrossConnectionPeeringArgs, opts ...pulumi.InvokeOption) (*LookupExpressRouteCrossConnectionPeeringResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupExpressRouteCrossConnectionPeeringResult
@@ -38,6 +36,8 @@ type LookupExpressRouteCrossConnectionPeeringArgs struct {
 type LookupExpressRouteCrossConnectionPeeringResult struct {
 	// The Azure ASN.
 	AzureASN int `pulumi:"azureASN"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag string `pulumi:"etag"`
 	// The GatewayManager Etag.
@@ -114,6 +114,11 @@ func (o LookupExpressRouteCrossConnectionPeeringResultOutput) ToLookupExpressRou
 // The Azure ASN.
 func (o LookupExpressRouteCrossConnectionPeeringResultOutput) AzureASN() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupExpressRouteCrossConnectionPeeringResult) int { return v.AzureASN }).(pulumi.IntOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupExpressRouteCrossConnectionPeeringResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupExpressRouteCrossConnectionPeeringResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A unique read-only string that changes whenever the resource is updated.

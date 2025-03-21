@@ -13,12 +13,14 @@ import (
 )
 
 // Configuration Assignment
-// Azure REST API version: 2022-11-01-preview. Prior API version in Azure Native 1.x: 2021-04-01-preview.
-//
-// Other available API versions: 2023-04-01, 2023-09-01-preview, 2023-10-01-preview.
+// Azure REST API version: 2023-10-01-preview. Prior API version in Azure Native 2.x: 2022-11-01-preview.
 type ConfigurationAssignmentParent struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// Properties of the configuration assignment
+	Filter ConfigurationAssignmentFilterPropertiesResponsePtrOutput `pulumi:"filter"`
 	// Location of the resource
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// The maintenance configuration Id
@@ -117,6 +119,8 @@ func (ConfigurationAssignmentParentState) ElementType() reflect.Type {
 type configurationAssignmentParentArgs struct {
 	// Configuration assignment name
 	ConfigurationAssignmentName *string `pulumi:"configurationAssignmentName"`
+	// Properties of the configuration assignment
+	Filter *ConfigurationAssignmentFilterProperties `pulumi:"filter"`
 	// Location of the resource
 	Location *string `pulumi:"location"`
 	// The maintenance configuration Id
@@ -141,6 +145,8 @@ type configurationAssignmentParentArgs struct {
 type ConfigurationAssignmentParentArgs struct {
 	// Configuration assignment name
 	ConfigurationAssignmentName pulumi.StringPtrInput
+	// Properties of the configuration assignment
+	Filter ConfigurationAssignmentFilterPropertiesPtrInput
 	// Location of the resource
 	Location pulumi.StringPtrInput
 	// The maintenance configuration Id
@@ -196,6 +202,18 @@ func (o ConfigurationAssignmentParentOutput) ToConfigurationAssignmentParentOutp
 
 func (o ConfigurationAssignmentParentOutput) ToConfigurationAssignmentParentOutputWithContext(ctx context.Context) ConfigurationAssignmentParentOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ConfigurationAssignmentParentOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConfigurationAssignmentParent) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Properties of the configuration assignment
+func (o ConfigurationAssignmentParentOutput) Filter() ConfigurationAssignmentFilterPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *ConfigurationAssignmentParent) ConfigurationAssignmentFilterPropertiesResponsePtrOutput {
+		return v.Filter
+	}).(ConfigurationAssignmentFilterPropertiesResponsePtrOutput)
 }
 
 // Location of the resource

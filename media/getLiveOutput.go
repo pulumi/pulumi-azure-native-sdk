@@ -40,6 +40,8 @@ type LookupLiveOutputResult struct {
 	ArchiveWindowLength string `pulumi:"archiveWindowLength"`
 	// The asset that the live output will write to.
 	AssetName string `pulumi:"assetName"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The creation time the live output.
 	Created string `pulumi:"created"`
 	// The description of the live output.
@@ -115,6 +117,11 @@ func (o LookupLiveOutputResultOutput) ArchiveWindowLength() pulumi.StringOutput 
 // The asset that the live output will write to.
 func (o LookupLiveOutputResultOutput) AssetName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLiveOutputResult) string { return v.AssetName }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupLiveOutputResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLiveOutputResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The creation time the live output.

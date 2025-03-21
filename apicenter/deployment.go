@@ -13,12 +13,12 @@ import (
 )
 
 // API deployment entity.
-// Azure REST API version: 2024-03-01.
-//
-// Other available API versions: 2024-03-15-preview, 2024-06-01-preview.
+// Azure REST API version: 2024-03-15-preview. Prior API version in Azure Native 2.x: 2024-03-01.
 type Deployment struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The custom metadata defined for API catalog entities.
 	CustomProperties pulumi.AnyOutput `pulumi:"customProperties"`
 	// API center-scoped definition resource ID.
@@ -194,6 +194,11 @@ func (o DeploymentOutput) ToDeploymentOutput() DeploymentOutput {
 
 func (o DeploymentOutput) ToDeploymentOutputWithContext(ctx context.Context) DeploymentOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o DeploymentOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Deployment) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The custom metadata defined for API catalog entities.

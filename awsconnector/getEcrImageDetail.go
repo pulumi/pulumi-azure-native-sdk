@@ -32,6 +32,8 @@ type LookupEcrImageDetailArgs struct {
 
 // A Microsoft.AwsConnector resource
 type LookupEcrImageDetailResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -81,6 +83,11 @@ func (o LookupEcrImageDetailResultOutput) ToLookupEcrImageDetailResultOutput() L
 
 func (o LookupEcrImageDetailResultOutput) ToLookupEcrImageDetailResultOutputWithContext(ctx context.Context) LookupEcrImageDetailResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupEcrImageDetailResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEcrImageDetailResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

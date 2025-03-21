@@ -12,10 +12,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Azure REST API version: 2022-04-04-preview. Prior API version in Azure Native 1.x: 2022-04-04-preview.
+// Azure REST API version: 2022-04-04-preview. Prior API version in Azure Native 2.x: 2022-04-04-preview.
 type EnergyService struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Geo-location where the resource lives.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -140,6 +142,11 @@ func (o EnergyServiceOutput) ToEnergyServiceOutput() EnergyServiceOutput {
 
 func (o EnergyServiceOutput) ToEnergyServiceOutputWithContext(ctx context.Context) EnergyServiceOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o EnergyServiceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *EnergyService) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Geo-location where the resource lives.

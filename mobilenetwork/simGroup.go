@@ -13,12 +13,12 @@ import (
 )
 
 // SIM group resource.
-// Azure REST API version: 2023-06-01. Prior API version in Azure Native 1.x: 2022-04-01-preview.
-//
-// Other available API versions: 2022-04-01-preview, 2022-11-01, 2023-09-01, 2024-02-01, 2024-04-01.
+// Azure REST API version: 2024-04-01. Prior API version in Azure Native 2.x: 2023-06-01.
 type SimGroup struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// A key to encrypt the SIM data that belongs to this SIM group.
 	EncryptionKey KeyVaultKeyResponsePtrOutput `pulumi:"encryptionKey"`
 	// The identity used to retrieve the encryption key from Azure key vault.
@@ -172,6 +172,11 @@ func (o SimGroupOutput) ToSimGroupOutput() SimGroupOutput {
 
 func (o SimGroupOutput) ToSimGroupOutputWithContext(ctx context.Context) SimGroupOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o SimGroupOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SimGroup) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A key to encrypt the SIM data that belongs to this SIM group.

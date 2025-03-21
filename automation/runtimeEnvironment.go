@@ -13,12 +13,12 @@ import (
 )
 
 // Definition of the Runtime Environment type.
-// Azure REST API version: 2023-05-15-preview.
-//
-// Other available API versions: 2024-10-23.
+// Azure REST API version: 2023-05-15-preview. Prior API version in Azure Native 2.x: 2023-05-15-preview.
 type RuntimeEnvironment struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// List of Default packages for Environment
 	DefaultPackages pulumi.StringMapOutput `pulumi:"defaultPackages"`
 	// Gets or sets the description.
@@ -171,6 +171,11 @@ func (o RuntimeEnvironmentOutput) ToRuntimeEnvironmentOutput() RuntimeEnvironmen
 
 func (o RuntimeEnvironmentOutput) ToRuntimeEnvironmentOutputWithContext(ctx context.Context) RuntimeEnvironmentOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o RuntimeEnvironmentOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *RuntimeEnvironment) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // List of Default packages for Environment

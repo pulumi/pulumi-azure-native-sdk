@@ -12,9 +12,7 @@ import (
 )
 
 // Gets the properties of the specified replica.
-// Azure REST API version: 2023-03-01.
-//
-// Other available API versions: 2023-08-01-preview, 2023-09-01-preview, 2024-05-01.
+// Azure REST API version: 2024-05-01.
 func LookupReplica(ctx *pulumi.Context, args *LookupReplicaArgs, opts ...pulumi.InvokeOption) (*LookupReplicaResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupReplicaResult
@@ -36,6 +34,8 @@ type LookupReplicaArgs struct {
 
 // The replica resource.
 type LookupReplicaResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The URI of the replica where the replica API will be available.
 	Endpoint string `pulumi:"endpoint"`
 	// The resource ID.
@@ -87,6 +87,11 @@ func (o LookupReplicaResultOutput) ToLookupReplicaResultOutput() LookupReplicaRe
 
 func (o LookupReplicaResultOutput) ToLookupReplicaResultOutputWithContext(ctx context.Context) LookupReplicaResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupReplicaResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupReplicaResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The URI of the replica where the replica API will be available.

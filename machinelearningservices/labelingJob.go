@@ -13,12 +13,12 @@ import (
 )
 
 // Azure Resource Manager resource envelope.
-// Azure REST API version: 2023-04-01-preview. Prior API version in Azure Native 1.x: 2020-09-01-preview.
-//
-// Other available API versions: 2020-09-01-preview, 2021-03-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2024-01-01-preview, 2024-04-01-preview.
+// Azure REST API version: 2024-01-01-preview. Prior API version in Azure Native 2.x: 2023-04-01-preview.
 type LabelingJob struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// [Required] Additional attributes of the entity.
 	LabelingJobProperties LabelingJobResponseOutput `pulumi:"labelingJobProperties"`
 	// The name of the resource
@@ -172,6 +172,11 @@ func (o LabelingJobOutput) ToLabelingJobOutput() LabelingJobOutput {
 
 func (o LabelingJobOutput) ToLabelingJobOutputWithContext(ctx context.Context) LabelingJobOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LabelingJobOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *LabelingJob) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // [Required] Additional attributes of the entity.

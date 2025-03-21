@@ -34,6 +34,8 @@ type LookupManagedNetworkPeeringPolicyArgs struct {
 
 // The Managed Network Peering Policy resource
 type LookupManagedNetworkPeeringPolicyResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -81,6 +83,11 @@ func (o LookupManagedNetworkPeeringPolicyResultOutput) ToLookupManagedNetworkPee
 
 func (o LookupManagedNetworkPeeringPolicyResultOutput) ToLookupManagedNetworkPeeringPolicyResultOutputWithContext(ctx context.Context) LookupManagedNetworkPeeringPolicyResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupManagedNetworkPeeringPolicyResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupManagedNetworkPeeringPolicyResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

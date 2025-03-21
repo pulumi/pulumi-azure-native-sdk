@@ -12,9 +12,7 @@ import (
 )
 
 // Gets a devcenter encryption set.
-// Azure REST API version: 2024-05-01-preview.
-//
-// Other available API versions: 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview, 2024-10-01-preview.
+// Azure REST API version: 2024-10-01-preview.
 func LookupEncryptionSet(ctx *pulumi.Context, args *LookupEncryptionSetArgs, opts ...pulumi.InvokeOption) (*LookupEncryptionSetResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupEncryptionSetResult
@@ -36,6 +34,8 @@ type LookupEncryptionSetArgs struct {
 
 // Represents a devcenter encryption set resource.
 type LookupEncryptionSetResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Devbox disk encryption enable or disable status. Indicates if Devbox disks encryption using DevCenter CMK is enabled or not.
 	DevboxDisksEncryptionEnableStatus *string `pulumi:"devboxDisksEncryptionEnableStatus"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -93,6 +93,11 @@ func (o LookupEncryptionSetResultOutput) ToLookupEncryptionSetResultOutput() Loo
 
 func (o LookupEncryptionSetResultOutput) ToLookupEncryptionSetResultOutputWithContext(ctx context.Context) LookupEncryptionSetResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupEncryptionSetResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEncryptionSetResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Devbox disk encryption enable or disable status. Indicates if Devbox disks encryption using DevCenter CMK is enabled or not.

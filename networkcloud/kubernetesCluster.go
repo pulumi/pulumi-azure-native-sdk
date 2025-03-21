@@ -12,9 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Azure REST API version: 2023-10-01-preview.
-//
-// Other available API versions: 2023-07-01, 2024-06-01-preview, 2024-07-01, 2024-10-01-preview.
+// Azure REST API version: 2025-02-01. Prior API version in Azure Native 2.x: 2023-10-01-preview.
 type KubernetesCluster struct {
 	pulumi.CustomResourceState
 
@@ -26,6 +24,8 @@ type KubernetesCluster struct {
 	AttachedNetworkIds pulumi.StringArrayOutput `pulumi:"attachedNetworkIds"`
 	// The list of versions that this Kubernetes cluster can be upgraded to.
 	AvailableUpgrades AvailableUpgradeResponseArrayOutput `pulumi:"availableUpgrades"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The resource ID of the Network Cloud cluster.
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
 	// The resource ID of the connected cluster set up when this Kubernetes cluster is created.
@@ -38,13 +38,15 @@ type KubernetesCluster struct {
 	DetailedStatus pulumi.StringOutput `pulumi:"detailedStatus"`
 	// The descriptive message about the current detailed status.
 	DetailedStatusMessage pulumi.StringOutput `pulumi:"detailedStatusMessage"`
+	// Resource ETag.
+	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The extended location of the cluster associated with the resource.
 	ExtendedLocation ExtendedLocationResponseOutput `pulumi:"extendedLocation"`
 	// The current feature settings.
 	FeatureStatuses FeatureStatusResponseArrayOutput `pulumi:"featureStatuses"`
 	// The agent pools that are created with this Kubernetes cluster for running critical system services and workloads. This data in this field is only used during creation, and the field will be empty following the creation of the Kubernetes Cluster. After creation, the management of agent pools is done using the agentPools sub-resource.
 	InitialAgentPoolConfigurations InitialAgentPoolConfigurationResponseArrayOutput `pulumi:"initialAgentPoolConfigurations"`
-	// The Kubernetes version for this cluster. Accepts n.n, n.n.n, and n.n.n-n format. The interpreted version used will be resolved into this field after creation or update.
+	// The Kubernetes version for this cluster.
 	KubernetesVersion pulumi.StringOutput `pulumi:"kubernetesVersion"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -108,6 +110,9 @@ func NewKubernetesCluster(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:networkcloud/v20241001preview:KubernetesCluster"),
 		},
+		{
+			Type: pulumi.String("azure-native:networkcloud/v20250201:KubernetesCluster"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -155,7 +160,7 @@ type kubernetesClusterArgs struct {
 	InitialAgentPoolConfigurations []InitialAgentPoolConfiguration `pulumi:"initialAgentPoolConfigurations"`
 	// The name of the Kubernetes cluster.
 	KubernetesClusterName *string `pulumi:"kubernetesClusterName"`
-	// The Kubernetes version for this cluster. Accepts n.n, n.n.n, and n.n.n-n format. The interpreted version used will be resolved into this field after creation or update.
+	// The Kubernetes version for this cluster.
 	KubernetesVersion string `pulumi:"kubernetesVersion"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
@@ -183,7 +188,7 @@ type KubernetesClusterArgs struct {
 	InitialAgentPoolConfigurations InitialAgentPoolConfigurationArrayInput
 	// The name of the Kubernetes cluster.
 	KubernetesClusterName pulumi.StringPtrInput
-	// The Kubernetes version for this cluster. Accepts n.n, n.n.n, and n.n.n-n format. The interpreted version used will be resolved into this field after creation or update.
+	// The Kubernetes version for this cluster.
 	KubernetesVersion pulumi.StringInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
@@ -256,6 +261,11 @@ func (o KubernetesClusterOutput) AvailableUpgrades() AvailableUpgradeResponseArr
 	return o.ApplyT(func(v *KubernetesCluster) AvailableUpgradeResponseArrayOutput { return v.AvailableUpgrades }).(AvailableUpgradeResponseArrayOutput)
 }
 
+// The Azure API version of the resource.
+func (o KubernetesClusterOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *KubernetesCluster) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The resource ID of the Network Cloud cluster.
 func (o KubernetesClusterOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *KubernetesCluster) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
@@ -288,6 +298,11 @@ func (o KubernetesClusterOutput) DetailedStatusMessage() pulumi.StringOutput {
 	return o.ApplyT(func(v *KubernetesCluster) pulumi.StringOutput { return v.DetailedStatusMessage }).(pulumi.StringOutput)
 }
 
+// Resource ETag.
+func (o KubernetesClusterOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *KubernetesCluster) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
 // The extended location of the cluster associated with the resource.
 func (o KubernetesClusterOutput) ExtendedLocation() ExtendedLocationResponseOutput {
 	return o.ApplyT(func(v *KubernetesCluster) ExtendedLocationResponseOutput { return v.ExtendedLocation }).(ExtendedLocationResponseOutput)
@@ -305,7 +320,7 @@ func (o KubernetesClusterOutput) InitialAgentPoolConfigurations() InitialAgentPo
 	}).(InitialAgentPoolConfigurationResponseArrayOutput)
 }
 
-// The Kubernetes version for this cluster. Accepts n.n, n.n.n, and n.n.n-n format. The interpreted version used will be resolved into this field after creation or update.
+// The Kubernetes version for this cluster.
 func (o KubernetesClusterOutput) KubernetesVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *KubernetesCluster) pulumi.StringOutput { return v.KubernetesVersion }).(pulumi.StringOutput)
 }

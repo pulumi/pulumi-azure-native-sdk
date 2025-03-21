@@ -13,12 +13,12 @@ import (
 )
 
 // The Video Analyzer account.
-// Azure REST API version: 2021-11-01-preview. Prior API version in Azure Native 1.x: 2021-05-01-preview.
-//
-// Other available API versions: 2021-05-01-preview.
+// Azure REST API version: 2021-11-01-preview. Prior API version in Azure Native 2.x: 2021-11-01-preview.
 type VideoAnalyzer struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The account encryption properties.
 	Encryption AccountEncryptionResponsePtrOutput `pulumi:"encryption"`
 	// The endpoints associated with this resource.
@@ -185,6 +185,11 @@ func (o VideoAnalyzerOutput) ToVideoAnalyzerOutput() VideoAnalyzerOutput {
 
 func (o VideoAnalyzerOutput) ToVideoAnalyzerOutputWithContext(ctx context.Context) VideoAnalyzerOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o VideoAnalyzerOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *VideoAnalyzer) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The account encryption properties.

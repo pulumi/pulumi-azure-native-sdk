@@ -12,9 +12,7 @@ import (
 )
 
 // Description for Returns whether FTP is allowed on the site or not.
-// Azure REST API version: 2023-12-01.
-//
-// Other available API versions: 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2024-04-01.
+// Azure REST API version: 2024-04-01.
 func LookupWebAppFtpAllowedSlot(ctx *pulumi.Context, args *LookupWebAppFtpAllowedSlotArgs, opts ...pulumi.InvokeOption) (*LookupWebAppFtpAllowedSlotResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebAppFtpAllowedSlotResult
@@ -37,6 +35,8 @@ type LookupWebAppFtpAllowedSlotArgs struct {
 type LookupWebAppFtpAllowedSlotResult struct {
 	// <code>true</code> to allow access to a publishing method; otherwise, <code>false</code>.
 	Allow bool `pulumi:"allow"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource Id.
 	Id string `pulumi:"id"`
 	// Kind of resource.
@@ -86,6 +86,11 @@ func (o LookupWebAppFtpAllowedSlotResultOutput) ToLookupWebAppFtpAllowedSlotResu
 // <code>true</code> to allow access to a publishing method; otherwise, <code>false</code>.
 func (o LookupWebAppFtpAllowedSlotResultOutput) Allow() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupWebAppFtpAllowedSlotResult) bool { return v.Allow }).(pulumi.BoolOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupWebAppFtpAllowedSlotResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWebAppFtpAllowedSlotResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource Id.

@@ -32,6 +32,8 @@ type LookupAccountArgs struct {
 
 // Account details
 type LookupAccountResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Azure resource ID.
 	Id string `pulumi:"id"`
 	// Location of the resource.
@@ -81,6 +83,11 @@ func (o LookupAccountResultOutput) ToLookupAccountResultOutput() LookupAccountRe
 
 func (o LookupAccountResultOutput) ToLookupAccountResultOutputWithContext(ctx context.Context) LookupAccountResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupAccountResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Azure resource ID.

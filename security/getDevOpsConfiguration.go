@@ -12,9 +12,7 @@ import (
 )
 
 // DevOps Configuration resource.
-// Azure REST API version: 2023-09-01-preview.
-//
-// Other available API versions: 2024-04-01, 2024-05-15-preview.
+// Azure REST API version: 2024-04-01.
 func LookupDevOpsConfiguration(ctx *pulumi.Context, args *LookupDevOpsConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupDevOpsConfigurationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDevOpsConfigurationResult
@@ -34,6 +32,8 @@ type LookupDevOpsConfigurationArgs struct {
 
 // DevOps Configuration resource.
 type LookupDevOpsConfigurationResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The name of the resource
@@ -79,6 +79,11 @@ func (o LookupDevOpsConfigurationResultOutput) ToLookupDevOpsConfigurationResult
 
 func (o LookupDevOpsConfigurationResultOutput) ToLookupDevOpsConfigurationResultOutputWithContext(ctx context.Context) LookupDevOpsConfigurationResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupDevOpsConfigurationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDevOpsConfigurationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

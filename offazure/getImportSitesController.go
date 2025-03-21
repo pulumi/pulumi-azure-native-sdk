@@ -12,9 +12,7 @@ import (
 )
 
 // Get a ImportSite
-// Azure REST API version: 2023-06-06.
-//
-// Other available API versions: 2023-10-01-preview, 2024-05-01-preview.
+// Azure REST API version: 2023-10-01-preview.
 func LookupImportSitesController(ctx *pulumi.Context, args *LookupImportSitesControllerArgs, opts ...pulumi.InvokeOption) (*LookupImportSitesControllerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupImportSitesControllerResult
@@ -34,6 +32,8 @@ type LookupImportSitesControllerArgs struct {
 
 // A ImportSite
 type LookupImportSitesControllerResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets or sets the ARM ID of migration hub solution for SDS.
 	DiscoverySolutionId *string `pulumi:"discoverySolutionId"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -89,6 +89,11 @@ func (o LookupImportSitesControllerResultOutput) ToLookupImportSitesControllerRe
 
 func (o LookupImportSitesControllerResultOutput) ToLookupImportSitesControllerResultOutputWithContext(ctx context.Context) LookupImportSitesControllerResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupImportSitesControllerResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupImportSitesControllerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets the ARM ID of migration hub solution for SDS.

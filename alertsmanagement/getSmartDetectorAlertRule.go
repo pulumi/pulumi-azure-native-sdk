@@ -36,6 +36,8 @@ type LookupSmartDetectorAlertRuleArgs struct {
 type LookupSmartDetectorAlertRuleResult struct {
 	// The alert rule actions.
 	ActionGroups ActionGroupsInformationResponse `pulumi:"actionGroups"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The alert rule description.
 	Description *string `pulumi:"description"`
 	// The alert rule's detector.
@@ -114,6 +116,11 @@ func (o LookupSmartDetectorAlertRuleResultOutput) ToLookupSmartDetectorAlertRule
 // The alert rule actions.
 func (o LookupSmartDetectorAlertRuleResultOutput) ActionGroups() ActionGroupsInformationResponseOutput {
 	return o.ApplyT(func(v LookupSmartDetectorAlertRuleResult) ActionGroupsInformationResponse { return v.ActionGroups }).(ActionGroupsInformationResponseOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupSmartDetectorAlertRuleResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSmartDetectorAlertRuleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The alert rule description.

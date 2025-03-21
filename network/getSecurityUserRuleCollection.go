@@ -12,9 +12,7 @@ import (
 )
 
 // Gets a network manager security user configuration rule collection.
-// Azure REST API version: 2024-03-01.
-//
-// Other available API versions: 2024-05-01.
+// Azure REST API version: 2024-05-01.
 func LookupSecurityUserRuleCollection(ctx *pulumi.Context, args *LookupSecurityUserRuleCollectionArgs, opts ...pulumi.InvokeOption) (*LookupSecurityUserRuleCollectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSecurityUserRuleCollectionResult
@@ -40,6 +38,8 @@ type LookupSecurityUserRuleCollectionArgs struct {
 type LookupSecurityUserRuleCollectionResult struct {
 	// Groups for configuration
 	AppliesToGroups []SecurityUserGroupItemResponse `pulumi:"appliesToGroups"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// A description of the security user rule collection.
 	Description *string `pulumi:"description"`
 	// A unique read-only string that changes whenever the resource is updated.
@@ -102,6 +102,11 @@ func (o LookupSecurityUserRuleCollectionResultOutput) AppliesToGroups() Security
 	return o.ApplyT(func(v LookupSecurityUserRuleCollectionResult) []SecurityUserGroupItemResponse {
 		return v.AppliesToGroups
 	}).(SecurityUserGroupItemResponseArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupSecurityUserRuleCollectionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecurityUserRuleCollectionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A description of the security user rule collection.

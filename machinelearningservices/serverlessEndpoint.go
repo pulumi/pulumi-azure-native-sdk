@@ -12,14 +12,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Azure REST API version: 2023-08-01-preview.
-//
-// Other available API versions: 2024-01-01-preview, 2024-04-01, 2024-04-01-preview, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview.
+// Azure REST API version: 2024-10-01. Prior API version in Azure Native 2.x: 2023-08-01-preview.
 //
 // A Serverless Endpoint requires a Marketplace subscription. You can create one via the [MarketplaceSubscription resource](https://www.pulumi.com/registry/packages/azure-native/api-docs/machinelearningservices/marketplacesubscription/) and then making your endpoint [depend](https://www.pulumi.com/docs/iac/concepts/options/dependson/) on it.
 type ServerlessEndpoint struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Managed service identity (system assigned and/or user assigned identities)
 	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
@@ -77,6 +77,9 @@ func NewServerlessEndpoint(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001preview:ServerlessEndpoint"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250101preview:ServerlessEndpoint"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -190,6 +193,11 @@ func (o ServerlessEndpointOutput) ToServerlessEndpointOutput() ServerlessEndpoin
 
 func (o ServerlessEndpointOutput) ToServerlessEndpointOutputWithContext(ctx context.Context) ServerlessEndpointOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ServerlessEndpointOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerlessEndpoint) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Managed service identity (system assigned and/or user assigned identities)

@@ -13,12 +13,12 @@ import (
 )
 
 // Managed instance's Start/Stop schedule.
-// Azure REST API version: 2022-11-01-preview.
-//
-// Other available API versions: 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
+// Azure REST API version: 2024-05-01-preview. Prior API version in Azure Native 2.x: 2022-11-01-preview.
 type StartStopManagedInstanceSchedule struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The description of the schedule.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Resource name.
@@ -178,6 +178,11 @@ func (o StartStopManagedInstanceScheduleOutput) ToStartStopManagedInstanceSchedu
 
 func (o StartStopManagedInstanceScheduleOutput) ToStartStopManagedInstanceScheduleOutputWithContext(ctx context.Context) StartStopManagedInstanceScheduleOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o StartStopManagedInstanceScheduleOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *StartStopManagedInstanceSchedule) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The description of the schedule.

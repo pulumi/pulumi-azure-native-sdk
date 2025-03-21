@@ -12,9 +12,7 @@ import (
 )
 
 // Get the Application Live  and its properties.
-// Azure REST API version: 2023-05-01-preview.
-//
-// Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01, 2024-01-01-preview, 2024-05-01-preview.
+// Azure REST API version: 2024-01-01-preview.
 func LookupDevToolPortal(ctx *pulumi.Context, args *LookupDevToolPortalArgs, opts ...pulumi.InvokeOption) (*LookupDevToolPortalResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDevToolPortalResult
@@ -36,6 +34,8 @@ type LookupDevToolPortalArgs struct {
 
 // Dev Tool Portal resource
 type LookupDevToolPortalResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource Id for the resource.
 	Id string `pulumi:"id"`
 	// The name of the resource.
@@ -93,6 +93,11 @@ func (o LookupDevToolPortalResultOutput) ToLookupDevToolPortalResultOutput() Loo
 
 func (o LookupDevToolPortalResultOutput) ToLookupDevToolPortalResultOutputWithContext(ctx context.Context) LookupDevToolPortalResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupDevToolPortalResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDevToolPortalResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource Id for the resource.

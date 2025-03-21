@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-azure-native-sdk/edge/v2
+module github.com/pulumi/pulumi-azure-native-sdk/edge/v3
 
 go 1.22
 

@@ -13,12 +13,12 @@ import (
 )
 
 // Single item in a List or Get AuthorizationRule operation
-// Azure REST API version: 2021-11-01. Prior API version in Azure Native 1.x: 2017-04-01.
-//
-// Other available API versions: 2017-04-01, 2024-01-01.
+// Azure REST API version: 2024-01-01. Prior API version in Azure Native 2.x: 2021-11-01.
 type NamespaceAuthorizationRule struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -152,6 +152,11 @@ func (o NamespaceAuthorizationRuleOutput) ToNamespaceAuthorizationRuleOutput() N
 
 func (o NamespaceAuthorizationRuleOutput) ToNamespaceAuthorizationRuleOutputWithContext(ctx context.Context) NamespaceAuthorizationRuleOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o NamespaceAuthorizationRuleOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *NamespaceAuthorizationRule) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The geo-location where the resource lives

@@ -12,9 +12,7 @@ import (
 )
 
 // Get a BuilderResource
-// Azure REST API version: 2023-08-01-preview.
-//
-// Other available API versions: 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview.
+// Azure REST API version: 2024-10-02-preview.
 func LookupBuilder(ctx *pulumi.Context, args *LookupBuilderArgs, opts ...pulumi.InvokeOption) (*LookupBuilderResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBuilderResult
@@ -34,11 +32,13 @@ type LookupBuilderArgs struct {
 
 // Information about the SourceToCloud builder resource.
 type LookupBuilderResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// List of mappings of container registries and the managed identity used to connect to it.
 	ContainerRegistries []ContainerRegistryResponse `pulumi:"containerRegistries"`
 	// Resource ID of the container apps environment that the builder is associated with.
 	EnvironmentId string `pulumi:"environmentId"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The managed service identities assigned to this resource.
 	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
@@ -91,6 +91,11 @@ func (o LookupBuilderResultOutput) ToLookupBuilderResultOutputWithContext(ctx co
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupBuilderResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBuilderResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // List of mappings of container registries and the managed identity used to connect to it.
 func (o LookupBuilderResultOutput) ContainerRegistries() ContainerRegistryResponseArrayOutput {
 	return o.ApplyT(func(v LookupBuilderResult) []ContainerRegistryResponse { return v.ContainerRegistries }).(ContainerRegistryResponseArrayOutput)
@@ -101,7 +106,7 @@ func (o LookupBuilderResultOutput) EnvironmentId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBuilderResult) string { return v.EnvironmentId }).(pulumi.StringOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupBuilderResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBuilderResult) string { return v.Id }).(pulumi.StringOutput)
 }

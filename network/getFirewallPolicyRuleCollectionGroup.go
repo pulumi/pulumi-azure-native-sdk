@@ -12,9 +12,7 @@ import (
 )
 
 // Gets the specified FirewallPolicyRuleCollectionGroup.
-// Azure REST API version: 2023-02-01.
-//
-// Other available API versions: 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Azure REST API version: 2024-05-01.
 func LookupFirewallPolicyRuleCollectionGroup(ctx *pulumi.Context, args *LookupFirewallPolicyRuleCollectionGroupArgs, opts ...pulumi.InvokeOption) (*LookupFirewallPolicyRuleCollectionGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFirewallPolicyRuleCollectionGroupResult
@@ -36,6 +34,8 @@ type LookupFirewallPolicyRuleCollectionGroupArgs struct {
 
 // Rule Collection Group resource.
 type LookupFirewallPolicyRuleCollectionGroupResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag string `pulumi:"etag"`
 	// Resource ID.
@@ -48,6 +48,8 @@ type LookupFirewallPolicyRuleCollectionGroupResult struct {
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Group of Firewall Policy rule collections.
 	RuleCollections []interface{} `pulumi:"ruleCollections"`
+	// A read-only string that represents the size of the FirewallPolicyRuleCollectionGroupProperties in MB. (ex 1.2MB)
+	Size string `pulumi:"size"`
 	// Rule Group type.
 	Type string `pulumi:"type"`
 }
@@ -89,6 +91,11 @@ func (o LookupFirewallPolicyRuleCollectionGroupResultOutput) ToLookupFirewallPol
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupFirewallPolicyRuleCollectionGroupResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFirewallPolicyRuleCollectionGroupResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // A unique read-only string that changes whenever the resource is updated.
 func (o LookupFirewallPolicyRuleCollectionGroupResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFirewallPolicyRuleCollectionGroupResult) string { return v.Etag }).(pulumi.StringOutput)
@@ -117,6 +124,11 @@ func (o LookupFirewallPolicyRuleCollectionGroupResultOutput) ProvisioningState()
 // Group of Firewall Policy rule collections.
 func (o LookupFirewallPolicyRuleCollectionGroupResultOutput) RuleCollections() pulumi.ArrayOutput {
 	return o.ApplyT(func(v LookupFirewallPolicyRuleCollectionGroupResult) []interface{} { return v.RuleCollections }).(pulumi.ArrayOutput)
+}
+
+// A read-only string that represents the size of the FirewallPolicyRuleCollectionGroupProperties in MB. (ex 1.2MB)
+func (o LookupFirewallPolicyRuleCollectionGroupResultOutput) Size() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFirewallPolicyRuleCollectionGroupResult) string { return v.Size }).(pulumi.StringOutput)
 }
 
 // Rule Group type.

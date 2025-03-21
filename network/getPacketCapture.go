@@ -12,9 +12,7 @@ import (
 )
 
 // Gets a packet capture session by name.
-// Azure REST API version: 2023-02-01.
-//
-// Other available API versions: 2020-06-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Azure REST API version: 2024-05-01.
 func LookupPacketCapture(ctx *pulumi.Context, args *LookupPacketCaptureArgs, opts ...pulumi.InvokeOption) (*LookupPacketCaptureResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPacketCaptureResult
@@ -36,8 +34,14 @@ type LookupPacketCaptureArgs struct {
 
 // Information about packet capture session.
 type LookupPacketCaptureResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Number of bytes captured per packet, the remaining bytes are truncated.
 	BytesToCapturePerPacket *float64 `pulumi:"bytesToCapturePerPacket"`
+	// The capture setting holds the 'FileCount', 'FileSizeInBytes', 'SessionTimeLimitInSeconds' values.
+	CaptureSettings *PacketCaptureSettingsResponse `pulumi:"captureSettings"`
+	// This continuous capture is a nullable boolean, which can hold 'null', 'true' or 'false' value. If we do not pass this parameter, it would be consider as 'null', default value is 'null'.
+	ContinuousCapture *bool `pulumi:"continuousCapture"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag string `pulumi:"etag"`
 	// A list of packet capture filters.
@@ -72,6 +76,8 @@ func (val *LookupPacketCaptureResult) Defaults() *LookupPacketCaptureResult {
 		bytesToCapturePerPacket_ := 0.0
 		tmp.BytesToCapturePerPacket = &bytesToCapturePerPacket_
 	}
+	tmp.CaptureSettings = tmp.CaptureSettings.Defaults()
+
 	if tmp.TimeLimitInSeconds == nil {
 		timeLimitInSeconds_ := 18000
 		tmp.TimeLimitInSeconds = &timeLimitInSeconds_
@@ -119,9 +125,24 @@ func (o LookupPacketCaptureResultOutput) ToLookupPacketCaptureResultOutputWithCo
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupPacketCaptureResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPacketCaptureResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Number of bytes captured per packet, the remaining bytes are truncated.
 func (o LookupPacketCaptureResultOutput) BytesToCapturePerPacket() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v LookupPacketCaptureResult) *float64 { return v.BytesToCapturePerPacket }).(pulumi.Float64PtrOutput)
+}
+
+// The capture setting holds the 'FileCount', 'FileSizeInBytes', 'SessionTimeLimitInSeconds' values.
+func (o LookupPacketCaptureResultOutput) CaptureSettings() PacketCaptureSettingsResponsePtrOutput {
+	return o.ApplyT(func(v LookupPacketCaptureResult) *PacketCaptureSettingsResponse { return v.CaptureSettings }).(PacketCaptureSettingsResponsePtrOutput)
+}
+
+// This continuous capture is a nullable boolean, which can hold 'null', 'true' or 'false' value. If we do not pass this parameter, it would be consider as 'null', default value is 'null'.
+func (o LookupPacketCaptureResultOutput) ContinuousCapture() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupPacketCaptureResult) *bool { return v.ContinuousCapture }).(pulumi.BoolPtrOutput)
 }
 
 // A unique read-only string that changes whenever the resource is updated.

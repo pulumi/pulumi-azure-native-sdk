@@ -12,9 +12,7 @@ import (
 )
 
 // Support information for the service
-// Azure REST API version: 2024-02-07-preview.
-//
-// Other available API versions: 2024-01-19-preview, 2025-02-06-preview.
+// Azure REST API version: 2025-02-06-preview.
 func ListPaloAltoNetworksCloudngfwSupportInfo(ctx *pulumi.Context, args *ListPaloAltoNetworksCloudngfwSupportInfoArgs, opts ...pulumi.InvokeOption) (*ListPaloAltoNetworksCloudngfwSupportInfoResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListPaloAltoNetworksCloudngfwSupportInfoResult
@@ -30,10 +28,14 @@ type ListPaloAltoNetworksCloudngfwSupportInfoArgs struct {
 
 // Support information for the service
 type ListPaloAltoNetworksCloudngfwSupportInfoResult struct {
-	// Support account associated with given resource
+	// Support account associated with given resource when association type is tenant
 	AccountId *string `pulumi:"accountId"`
+	// Support account associated with given resource when association type is billing
+	AccountIdForBilling *string `pulumi:"accountIdForBilling"`
 	// account registered in Customer Support Portal
 	AccountRegistrationStatus *string `pulumi:"accountRegistrationStatus"`
+	// Association Type
+	AssociationType *string `pulumi:"associationType"`
 	// credits purchased, unit per hour
 	Credits *int `pulumi:"credits"`
 	// date in format yyyy-mm-dd
@@ -93,14 +95,24 @@ func (o ListPaloAltoNetworksCloudngfwSupportInfoResultOutput) ToListPaloAltoNetw
 	return o
 }
 
-// Support account associated with given resource
+// Support account associated with given resource when association type is tenant
 func (o ListPaloAltoNetworksCloudngfwSupportInfoResultOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListPaloAltoNetworksCloudngfwSupportInfoResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+}
+
+// Support account associated with given resource when association type is billing
+func (o ListPaloAltoNetworksCloudngfwSupportInfoResultOutput) AccountIdForBilling() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListPaloAltoNetworksCloudngfwSupportInfoResult) *string { return v.AccountIdForBilling }).(pulumi.StringPtrOutput)
 }
 
 // account registered in Customer Support Portal
 func (o ListPaloAltoNetworksCloudngfwSupportInfoResultOutput) AccountRegistrationStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListPaloAltoNetworksCloudngfwSupportInfoResult) *string { return v.AccountRegistrationStatus }).(pulumi.StringPtrOutput)
+}
+
+// Association Type
+func (o ListPaloAltoNetworksCloudngfwSupportInfoResultOutput) AssociationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListPaloAltoNetworksCloudngfwSupportInfoResult) *string { return v.AssociationType }).(pulumi.StringPtrOutput)
 }
 
 // credits purchased, unit per hour

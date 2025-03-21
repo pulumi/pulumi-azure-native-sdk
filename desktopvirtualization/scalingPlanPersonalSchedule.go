@@ -13,12 +13,12 @@ import (
 )
 
 // Represents a ScalingPlanPersonalSchedule definition.
-// Azure REST API version: 2023-07-07-preview.
-//
-// Other available API versions: 2023-09-05, 2023-10-04-preview, 2023-11-01-preview, 2024-01-16-preview, 2024-03-06-preview, 2024-04-03, 2024-04-08-preview, 2024-08-08-preview.
+// Azure REST API version: 2024-04-03. Prior API version in Azure Native 2.x: 2023-07-07-preview.
 type ScalingPlanPersonalSchedule struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Set of days of the week on which this schedule is active.
 	DaysOfWeek pulumi.StringArrayOutput `pulumi:"daysOfWeek"`
 	// The name of the resource
@@ -73,7 +73,7 @@ type ScalingPlanPersonalSchedule struct {
 	RampUpStartTime TimeResponsePtrOutput `pulumi:"rampUpStartTime"`
 	// The desired configuration of Start VM On Connect for the hostpool during the ramp up phase. If this is disabled, session hosts must be turned on using rampUpAutoStartHosts or by turning them on manually.
 	RampUpStartVMOnConnect pulumi.StringPtrOutput `pulumi:"rampUpStartVMOnConnect"`
-	// Metadata pertaining to creation and last modification of the resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -106,9 +106,6 @@ func NewScalingPlanPersonalSchedule(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:desktopvirtualization/v20230707preview:ScalingPlanPersonalSchedule"),
-		},
-		{
 			Type: pulumi.String("azure-native:desktopvirtualization/v20230905:ScalingPlanPersonalSchedule"),
 		},
 		{
@@ -131,6 +128,9 @@ func NewScalingPlanPersonalSchedule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:desktopvirtualization/v20240808preview:ScalingPlanPersonalSchedule"),
+		},
+		{
+			Type: pulumi.String("azure-native:desktopvirtualization/v20241101preview:ScalingPlanPersonalSchedule"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -326,6 +326,11 @@ func (o ScalingPlanPersonalScheduleOutput) ToScalingPlanPersonalScheduleOutputWi
 	return o
 }
 
+// The Azure API version of the resource.
+func (o ScalingPlanPersonalScheduleOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ScalingPlanPersonalSchedule) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Set of days of the week on which this schedule is active.
 func (o ScalingPlanPersonalScheduleOutput) DaysOfWeek() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ScalingPlanPersonalSchedule) pulumi.StringArrayOutput { return v.DaysOfWeek }).(pulumi.StringArrayOutput)
@@ -461,7 +466,7 @@ func (o ScalingPlanPersonalScheduleOutput) RampUpStartVMOnConnect() pulumi.Strin
 	return o.ApplyT(func(v *ScalingPlanPersonalSchedule) pulumi.StringPtrOutput { return v.RampUpStartVMOnConnect }).(pulumi.StringPtrOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o ScalingPlanPersonalScheduleOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *ScalingPlanPersonalSchedule) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

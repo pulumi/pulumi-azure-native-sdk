@@ -12,9 +12,7 @@ import (
 )
 
 // Gets an attached NetworkConnection.
-// Azure REST API version: 2023-04-01.
-//
-// Other available API versions: 2023-08-01-preview, 2023-10-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview, 2024-10-01-preview.
+// Azure REST API version: 2024-02-01.
 func LookupAttachedNetworkByDevCenter(ctx *pulumi.Context, args *LookupAttachedNetworkByDevCenterArgs, opts ...pulumi.InvokeOption) (*LookupAttachedNetworkByDevCenterResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAttachedNetworkByDevCenterResult
@@ -36,11 +34,13 @@ type LookupAttachedNetworkByDevCenterArgs struct {
 
 // Represents an attached NetworkConnection.
 type LookupAttachedNetworkByDevCenterResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// AAD Join type of the network. This is populated based on the referenced Network Connection.
 	DomainJoinType string `pulumi:"domainJoinType"`
 	// Health check status values
 	HealthCheckStatus string `pulumi:"healthCheckStatus"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The name of the resource
 	Name string `pulumi:"name"`
@@ -93,6 +93,11 @@ func (o LookupAttachedNetworkByDevCenterResultOutput) ToLookupAttachedNetworkByD
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupAttachedNetworkByDevCenterResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAttachedNetworkByDevCenterResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // AAD Join type of the network. This is populated based on the referenced Network Connection.
 func (o LookupAttachedNetworkByDevCenterResultOutput) DomainJoinType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAttachedNetworkByDevCenterResult) string { return v.DomainJoinType }).(pulumi.StringOutput)
@@ -103,7 +108,7 @@ func (o LookupAttachedNetworkByDevCenterResultOutput) HealthCheckStatus() pulumi
 	return o.ApplyT(func(v LookupAttachedNetworkByDevCenterResult) string { return v.HealthCheckStatus }).(pulumi.StringOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupAttachedNetworkByDevCenterResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAttachedNetworkByDevCenterResult) string { return v.Id }).(pulumi.StringOutput)
 }

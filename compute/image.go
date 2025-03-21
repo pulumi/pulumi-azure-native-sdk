@@ -13,12 +13,12 @@ import (
 )
 
 // The source user image virtual hard disk. The virtual hard disk will be copied before being attached to the virtual machine. If SourceImage is provided, the destination virtual hard drive must not exist.
-// Azure REST API version: 2023-03-01. Prior API version in Azure Native 1.x: 2020-12-01.
-//
-// Other available API versions: 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01.
+// Azure REST API version: 2024-11-01. Prior API version in Azure Native 2.x: 2023-03-01.
 type Image struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The extended location of the Image.
 	ExtendedLocation ExtendedLocationResponsePtrOutput `pulumi:"extendedLocation"`
 	// Specifies the HyperVGenerationType of the VirtualMachine created from the image. From API Version 2019-03-01 if the image source is a blob, then we need the user to specify the value, if the source is managed resource like disk or snapshot, we may require the user to specify the property if we cannot deduce it from the source managed resource.
@@ -118,6 +118,9 @@ func NewImage(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:compute/v20240701:Image"),
+		},
+		{
+			Type: pulumi.String("azure-native:compute/v20241101:Image"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -227,6 +230,11 @@ func (o ImageOutput) ToImageOutput() ImageOutput {
 
 func (o ImageOutput) ToImageOutputWithContext(ctx context.Context) ImageOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ImageOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The extended location of the Image.

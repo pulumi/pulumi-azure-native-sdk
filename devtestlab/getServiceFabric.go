@@ -40,6 +40,8 @@ type LookupServiceFabricArgs struct {
 type LookupServiceFabricResult struct {
 	// The applicable schedule for the virtual machine.
 	ApplicableSchedule ApplicableScheduleResponse `pulumi:"applicableSchedule"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The resource id of the environment under which the service fabric resource is present
 	EnvironmentId *string `pulumi:"environmentId"`
 	// The backing service fabric resource's id
@@ -114,6 +116,11 @@ func (o LookupServiceFabricResultOutput) ToLookupServiceFabricResultOutputWithCo
 // The applicable schedule for the virtual machine.
 func (o LookupServiceFabricResultOutput) ApplicableSchedule() ApplicableScheduleResponseOutput {
 	return o.ApplyT(func(v LookupServiceFabricResult) ApplicableScheduleResponse { return v.ApplicableSchedule }).(ApplicableScheduleResponseOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupServiceFabricResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceFabricResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The resource id of the environment under which the service fabric resource is present

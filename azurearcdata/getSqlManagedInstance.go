@@ -12,9 +12,7 @@ import (
 )
 
 // Retrieves a SQL Managed Instance resource
-// Azure REST API version: 2023-01-15-preview.
-//
-// Other available API versions: 2024-01-01, 2024-05-01-preview.
+// Azure REST API version: 2024-01-01.
 func LookupSqlManagedInstance(ctx *pulumi.Context, args *LookupSqlManagedInstanceArgs, opts ...pulumi.InvokeOption) (*LookupSqlManagedInstanceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSqlManagedInstanceResult
@@ -34,6 +32,8 @@ type LookupSqlManagedInstanceArgs struct {
 
 // A SqlManagedInstance.
 type LookupSqlManagedInstanceResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The extendedLocation of the resource.
 	ExtendedLocation *ExtendedLocationResponse `pulumi:"extendedLocation"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -99,6 +99,11 @@ func (o LookupSqlManagedInstanceResultOutput) ToLookupSqlManagedInstanceResultOu
 
 func (o LookupSqlManagedInstanceResultOutput) ToLookupSqlManagedInstanceResultOutputWithContext(ctx context.Context) LookupSqlManagedInstanceResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupSqlManagedInstanceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSqlManagedInstanceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The extendedLocation of the resource.

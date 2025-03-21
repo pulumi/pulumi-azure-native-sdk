@@ -13,10 +13,12 @@ import (
 )
 
 // Machine Learning dataset object wrapped into ARM resource envelope.
-// Azure REST API version: 2020-05-01-preview. Prior API version in Azure Native 1.x: 2020-05-01-preview.
+// Azure REST API version: 2020-05-01-preview. Prior API version in Azure Native 2.x: 2020-05-01-preview.
 type MachineLearningDataset struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The identity of the resource.
 	Identity IdentityResponsePtrOutput `pulumi:"identity"`
 	// Specifies the location of the resource.
@@ -165,6 +167,11 @@ func (o MachineLearningDatasetOutput) ToMachineLearningDatasetOutput() MachineLe
 
 func (o MachineLearningDatasetOutput) ToMachineLearningDatasetOutputWithContext(ctx context.Context) MachineLearningDatasetOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o MachineLearningDatasetOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *MachineLearningDataset) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The identity of the resource.

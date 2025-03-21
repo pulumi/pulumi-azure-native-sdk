@@ -12,9 +12,7 @@ import (
 )
 
 // Lists a Channel registration for a Bot Service including secrets
-// Azure REST API version: 2022-09-15.
-//
-// Other available API versions: 2023-09-15-preview.
+// Azure REST API version: 2023-09-15-preview.
 func ListChannelWithKeys(ctx *pulumi.Context, args *ListChannelWithKeysArgs, opts ...pulumi.InvokeOption) (*ListChannelWithKeysResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListChannelWithKeysResult

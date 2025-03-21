@@ -13,12 +13,12 @@ import (
 )
 
 // The ID of the policy definition version.
-// Azure REST API version: 2023-04-01.
-//
-// Other available API versions: 2024-05-01, 2025-01-01.
+// Azure REST API version: 2025-01-01. Prior API version in Azure Native 2.x: 2023-04-01.
 type PolicyDefinitionVersion struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The policy definition description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The display name of the policy definition.
@@ -65,6 +65,9 @@ func NewPolicyDefinitionVersion(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:authorization/v20250101:PolicyDefinitionVersion"),
+		},
+		{
+			Type: pulumi.String("azure-native:authorization/v20250301:PolicyDefinitionVersion"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -182,6 +185,11 @@ func (o PolicyDefinitionVersionOutput) ToPolicyDefinitionVersionOutput() PolicyD
 
 func (o PolicyDefinitionVersionOutput) ToPolicyDefinitionVersionOutputWithContext(ctx context.Context) PolicyDefinitionVersionOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o PolicyDefinitionVersionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PolicyDefinitionVersion) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The policy definition description.

@@ -13,10 +13,12 @@ import (
 )
 
 // Dedicated cloud service model
-// Azure REST API version: 2019-04-01. Prior API version in Azure Native 1.x: 2019-04-01.
+// Azure REST API version: 2019-04-01. Prior API version in Azure Native 2.x: 2019-04-01.
 type DedicatedCloudService struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// gateway Subnet for the account. It will collect the subnet address and always treat it as /28
 	GatewaySubnet pulumi.StringOutput `pulumi:"gatewaySubnet"`
 	// indicates whether account onboarded or not in a given region
@@ -148,6 +150,11 @@ func (o DedicatedCloudServiceOutput) ToDedicatedCloudServiceOutput() DedicatedCl
 
 func (o DedicatedCloudServiceOutput) ToDedicatedCloudServiceOutputWithContext(ctx context.Context) DedicatedCloudServiceOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o DedicatedCloudServiceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DedicatedCloudService) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // gateway Subnet for the account. It will collect the subnet address and always treat it as /28

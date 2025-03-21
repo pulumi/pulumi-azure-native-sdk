@@ -13,12 +13,12 @@ import (
 )
 
 // A single API Management gateway resource in List or Get response.
-// Azure REST API version: 2023-09-01-preview.
-//
-// Other available API versions: 2024-05-01, 2024-06-01-preview.
+// Azure REST API version: 2024-06-01-preview. Prior API version in Azure Native 2.x: 2023-09-01-preview.
 type ApiGatewayConfigConnection struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The default hostname of the data-plane gateway.
 	DefaultHostname pulumi.StringOutput `pulumi:"defaultHostname"`
 	// ETag of the resource.
@@ -154,6 +154,11 @@ func (o ApiGatewayConfigConnectionOutput) ToApiGatewayConfigConnectionOutput() A
 
 func (o ApiGatewayConfigConnectionOutput) ToApiGatewayConfigConnectionOutputWithContext(ctx context.Context) ApiGatewayConfigConnectionOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ApiGatewayConfigConnectionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApiGatewayConfigConnection) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The default hostname of the data-plane gateway.

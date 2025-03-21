@@ -12,9 +12,7 @@ import (
 )
 
 // Retrieves information about the model view or the instance view of a hybrid machine.
-// Azure REST API version: 2022-12-27.
-//
-// Other available API versions: 2020-08-02, 2020-08-15-preview, 2022-05-10-preview, 2023-06-20-preview, 2023-10-03-preview, 2024-03-31-preview, 2024-05-20-preview, 2024-07-10, 2024-07-31-preview, 2024-09-10-preview, 2024-11-10-preview.
+// Azure REST API version: 2024-07-10.
 func LookupMachine(ctx *pulumi.Context, args *LookupMachineArgs, opts ...pulumi.InvokeOption) (*LookupMachineResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMachineResult
@@ -44,6 +42,8 @@ type LookupMachineResult struct {
 	AgentUpgrade *AgentUpgradeResponse `pulumi:"agentUpgrade"`
 	// The hybrid machine agent full version.
 	AgentVersion string `pulumi:"agentVersion"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Public Key that the client provides to be used during initial resource onboarding
 	ClientPublicKey *string `pulumi:"clientPublicKey"`
 	// The metadata of the cloud environment (Azure/GCP/AWS/OCI...).
@@ -64,8 +64,12 @@ type LookupMachineResult struct {
 	Id string `pulumi:"id"`
 	// Identity for the resource.
 	Identity *IdentityResponse `pulumi:"identity"`
+	// Indicates which kind of Arc machine placement on-premises, such as HCI, SCVMM or VMware etc.
+	Kind *string `pulumi:"kind"`
 	// The time of the last status change.
 	LastStatusChange string `pulumi:"lastStatusChange"`
+	// Specifies the License related properties for a machine.
+	LicenseProfile *LicenseProfileMachineInstanceViewResponse `pulumi:"licenseProfile"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// Metadata pertaining to the geographic location of the resource.
@@ -76,6 +80,10 @@ type LookupMachineResult struct {
 	MssqlDiscovered *string `pulumi:"mssqlDiscovered"`
 	// The name of the resource
 	Name string `pulumi:"name"`
+	// Information about the network the machine is on.
+	NetworkProfile NetworkProfileResponse `pulumi:"networkProfile"`
+	// The edition of the Operating System.
+	OsEdition string `pulumi:"osEdition"`
 	// The Operating System running on the hybrid machine.
 	OsName string `pulumi:"osName"`
 	// Specifies the operating system settings for the hybrid machine.
@@ -167,6 +175,11 @@ func (o LookupMachineResultOutput) AgentVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMachineResult) string { return v.AgentVersion }).(pulumi.StringOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupMachineResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMachineResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Public Key that the client provides to be used during initial resource onboarding
 func (o LookupMachineResultOutput) ClientPublicKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupMachineResult) *string { return v.ClientPublicKey }).(pulumi.StringPtrOutput)
@@ -217,9 +230,19 @@ func (o LookupMachineResultOutput) Identity() IdentityResponsePtrOutput {
 	return o.ApplyT(func(v LookupMachineResult) *IdentityResponse { return v.Identity }).(IdentityResponsePtrOutput)
 }
 
+// Indicates which kind of Arc machine placement on-premises, such as HCI, SCVMM or VMware etc.
+func (o LookupMachineResultOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupMachineResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
 // The time of the last status change.
 func (o LookupMachineResultOutput) LastStatusChange() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMachineResult) string { return v.LastStatusChange }).(pulumi.StringOutput)
+}
+
+// Specifies the License related properties for a machine.
+func (o LookupMachineResultOutput) LicenseProfile() LicenseProfileMachineInstanceViewResponsePtrOutput {
+	return o.ApplyT(func(v LookupMachineResult) *LicenseProfileMachineInstanceViewResponse { return v.LicenseProfile }).(LicenseProfileMachineInstanceViewResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -245,6 +268,16 @@ func (o LookupMachineResultOutput) MssqlDiscovered() pulumi.StringPtrOutput {
 // The name of the resource
 func (o LookupMachineResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMachineResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Information about the network the machine is on.
+func (o LookupMachineResultOutput) NetworkProfile() NetworkProfileResponseOutput {
+	return o.ApplyT(func(v LookupMachineResult) NetworkProfileResponse { return v.NetworkProfile }).(NetworkProfileResponseOutput)
+}
+
+// The edition of the Operating System.
+func (o LookupMachineResultOutput) OsEdition() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMachineResult) string { return v.OsEdition }).(pulumi.StringOutput)
 }
 
 // The Operating System running on the hybrid machine.

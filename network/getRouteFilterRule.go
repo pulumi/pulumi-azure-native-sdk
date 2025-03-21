@@ -12,9 +12,7 @@ import (
 )
 
 // Gets the specified rule from a route filter.
-// Azure REST API version: 2023-02-01.
-//
-// Other available API versions: 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Azure REST API version: 2024-05-01.
 func LookupRouteFilterRule(ctx *pulumi.Context, args *LookupRouteFilterRuleArgs, opts ...pulumi.InvokeOption) (*LookupRouteFilterRuleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRouteFilterRuleResult
@@ -38,6 +36,8 @@ type LookupRouteFilterRuleArgs struct {
 type LookupRouteFilterRuleResult struct {
 	// The access type of the rule.
 	Access string `pulumi:"access"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The collection for bgp community values to filter on. e.g. ['12076:5010','12076:5020'].
 	Communities []string `pulumi:"communities"`
 	// A unique read-only string that changes whenever the resource is updated.
@@ -94,6 +94,11 @@ func (o LookupRouteFilterRuleResultOutput) ToLookupRouteFilterRuleResultOutputWi
 // The access type of the rule.
 func (o LookupRouteFilterRuleResultOutput) Access() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRouteFilterRuleResult) string { return v.Access }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupRouteFilterRuleResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRouteFilterRuleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The collection for bgp community values to filter on. e.g. ['12076:5010','12076:5020'].

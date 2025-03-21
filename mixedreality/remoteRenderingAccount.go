@@ -13,9 +13,7 @@ import (
 )
 
 // RemoteRenderingAccount Response.
-// Azure REST API version: 2021-01-01. Prior API version in Azure Native 1.x: 2021-01-01.
-//
-// Other available API versions: 2021-03-01-preview.
+// Azure REST API version: 2021-03-01-preview. Prior API version in Azure Native 2.x: 2021-01-01.
 type RemoteRenderingAccount struct {
 	pulumi.CustomResourceState
 
@@ -23,6 +21,8 @@ type RemoteRenderingAccount struct {
 	AccountDomain pulumi.StringOutput `pulumi:"accountDomain"`
 	// unique id of certain account.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The identity associated with this account
 	Identity IdentityResponsePtrOutput `pulumi:"identity"`
 	// The kind of account, if supported
@@ -67,6 +67,9 @@ func NewRemoteRenderingAccount(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:mixedreality/v20210301preview:RemoteRenderingAccount"),
+		},
+		{
+			Type: pulumi.String("azure-native:mixedreality/v20250101:RemoteRenderingAccount"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -190,6 +193,11 @@ func (o RemoteRenderingAccountOutput) AccountDomain() pulumi.StringOutput {
 // unique id of certain account.
 func (o RemoteRenderingAccountOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RemoteRenderingAccount) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o RemoteRenderingAccountOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *RemoteRenderingAccount) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The identity associated with this account

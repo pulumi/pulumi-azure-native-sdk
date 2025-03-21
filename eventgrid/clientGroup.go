@@ -13,12 +13,12 @@ import (
 )
 
 // The Client group resource.
-// Azure REST API version: 2023-06-01-preview.
-//
-// Other available API versions: 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-02-15.
+// Azure REST API version: 2025-02-15. Prior API version in Azure Native 2.x: 2023-06-01-preview.
 type ClientGroup struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Description for the Client Group resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Name of the resource.
@@ -28,7 +28,7 @@ type ClientGroup struct {
 	// The grouping query for the clients.
 	// Example : attributes.keyName IN ['a', 'b', 'c'].
 	Query pulumi.StringPtrOutput `pulumi:"query"`
-	// The system metadata relating to the ClientGroup resource.
+	// The system metadata relating to the Event Grid resource.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Type of the resource.
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -163,6 +163,11 @@ func (o ClientGroupOutput) ToClientGroupOutputWithContext(ctx context.Context) C
 	return o
 }
 
+// The Azure API version of the resource.
+func (o ClientGroupOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClientGroup) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Description for the Client Group resource.
 func (o ClientGroupOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientGroup) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -184,7 +189,7 @@ func (o ClientGroupOutput) Query() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientGroup) pulumi.StringPtrOutput { return v.Query }).(pulumi.StringPtrOutput)
 }
 
-// The system metadata relating to the ClientGroup resource.
+// The system metadata relating to the Event Grid resource.
 func (o ClientGroupOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *ClientGroup) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

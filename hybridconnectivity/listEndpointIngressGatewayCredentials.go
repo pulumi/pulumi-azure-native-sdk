@@ -12,9 +12,7 @@ import (
 )
 
 // Gets the ingress gateway endpoint credentials
-// Azure REST API version: 2023-03-15.
-//
-// Other available API versions: 2024-12-01.
+// Azure REST API version: 2024-12-01.
 func ListEndpointIngressGatewayCredentials(ctx *pulumi.Context, args *ListEndpointIngressGatewayCredentialsArgs, opts ...pulumi.InvokeOption) (*ListEndpointIngressGatewayCredentialsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListEndpointIngressGatewayCredentialsResult
@@ -30,9 +28,9 @@ type ListEndpointIngressGatewayCredentialsArgs struct {
 	EndpointName string `pulumi:"endpointName"`
 	// The is how long the endpoint access token is valid (in seconds).
 	Expiresin *int `pulumi:"expiresin"`
-	// The fully qualified Azure Resource manager identifier of the resource to be connected.
+	// The fully qualified Azure Resource manager identifier of the resource.
 	ResourceUri string `pulumi:"resourceUri"`
-	// The name of the service.
+	// The name of the service. If not provided, the request will by pass the generation of service configuration token.
 	ServiceName *string `pulumi:"serviceName"`
 }
 
@@ -72,9 +70,9 @@ type ListEndpointIngressGatewayCredentialsOutputArgs struct {
 	EndpointName pulumi.StringInput `pulumi:"endpointName"`
 	// The is how long the endpoint access token is valid (in seconds).
 	Expiresin pulumi.IntPtrInput `pulumi:"expiresin"`
-	// The fully qualified Azure Resource manager identifier of the resource to be connected.
+	// The fully qualified Azure Resource manager identifier of the resource.
 	ResourceUri pulumi.StringInput `pulumi:"resourceUri"`
-	// The name of the service.
+	// The name of the service. If not provided, the request will by pass the generation of service configuration token.
 	ServiceName pulumi.StringPtrInput `pulumi:"serviceName"`
 }
 

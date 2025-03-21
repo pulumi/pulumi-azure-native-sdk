@@ -13,14 +13,14 @@ import (
 )
 
 // A budget resource.
-// Azure REST API version: 2023-05-01. Prior API version in Azure Native 1.x: 2019-10-01.
-//
-// Other available API versions: 2023-11-01, 2024-08-01.
+// Azure REST API version: 2024-08-01. Prior API version in Azure Native 2.x: 2023-05-01.
 type Budget struct {
 	pulumi.CustomResourceState
 
 	// The total amount of cost to track with the budget
 	Amount pulumi.Float64Output `pulumi:"amount"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The category of the budget, whether the budget tracks cost or usage.
 	Category pulumi.StringOutput `pulumi:"category"`
 	// The current amount of cost which is being tracked for a budget.
@@ -225,6 +225,11 @@ func (o BudgetOutput) ToBudgetOutputWithContext(ctx context.Context) BudgetOutpu
 // The total amount of cost to track with the budget
 func (o BudgetOutput) Amount() pulumi.Float64Output {
 	return o.ApplyT(func(v *Budget) pulumi.Float64Output { return v.Amount }).(pulumi.Float64Output)
+}
+
+// The Azure API version of the resource.
+func (o BudgetOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Budget) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The category of the budget, whether the budget tracks cost or usage.

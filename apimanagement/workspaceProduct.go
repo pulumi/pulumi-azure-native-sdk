@@ -13,14 +13,14 @@ import (
 )
 
 // Product details.
-// Azure REST API version: 2022-09-01-preview.
-//
-// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
+// Azure REST API version: 2022-09-01-preview. Prior API version in Azure Native 2.x: 2022-09-01-preview.
 type WorkspaceProduct struct {
 	pulumi.CustomResourceState
 
 	// whether subscription approval is required. If false, new subscriptions will be approved automatically enabling developers to call the product’s APIs immediately after subscribing. If true, administrators must manually approve the subscription before the developer can any of the product’s APIs. Can be present only if subscriptionRequired property is present and has a value of false.
 	ApprovalRequired pulumi.BoolPtrOutput `pulumi:"approvalRequired"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Product description. May include HTML formatting tags.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Product name.
@@ -202,6 +202,11 @@ func (o WorkspaceProductOutput) ToWorkspaceProductOutputWithContext(ctx context.
 // whether subscription approval is required. If false, new subscriptions will be approved automatically enabling developers to call the product’s APIs immediately after subscribing. If true, administrators must manually approve the subscription before the developer can any of the product’s APIs. Can be present only if subscriptionRequired property is present and has a value of false.
 func (o WorkspaceProductOutput) ApprovalRequired() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WorkspaceProduct) pulumi.BoolPtrOutput { return v.ApprovalRequired }).(pulumi.BoolPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o WorkspaceProductOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkspaceProduct) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Product description. May include HTML formatting tags.

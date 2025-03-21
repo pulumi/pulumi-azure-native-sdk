@@ -13,12 +13,14 @@ import (
 )
 
 // The network security perimeter profile resource
-// Azure REST API version: 2024-06-01-preview.
+// Azure REST API version: 2024-06-01-preview. Prior API version in Azure Native 2.x: 2024-06-01-preview.
 type NetworkSecurityPerimeterProfile struct {
 	pulumi.CustomResourceState
 
 	// Version number that increases with every update to access rules within the profile.
 	AccessRulesVersion pulumi.StringOutput `pulumi:"accessRulesVersion"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Version number that increases with every update to diagnostic settings within the profile.
 	DiagnosticSettingsVersion pulumi.StringOutput `pulumi:"diagnosticSettingsVersion"`
 	// Resource location.
@@ -49,13 +51,25 @@ func NewNetworkSecurityPerimeterProfile(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:network/v20210201preview:NetworkSecurityPerimeterProfile"),
 		},
 		{
+			Type: pulumi.String("azure-native:network/v20210201preview:NspProfile"),
+		},
+		{
 			Type: pulumi.String("azure-native:network/v20230701preview:NetworkSecurityPerimeterProfile"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20230701preview:NspProfile"),
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20230801preview:NetworkSecurityPerimeterProfile"),
 		},
 		{
+			Type: pulumi.String("azure-native:network/v20230801preview:NspProfile"),
+		},
+		{
 			Type: pulumi.String("azure-native:network/v20240601preview:NetworkSecurityPerimeterProfile"),
+		},
+		{
+			Type: pulumi.String("azure-native:network:NspProfile"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -162,6 +176,11 @@ func (o NetworkSecurityPerimeterProfileOutput) ToNetworkSecurityPerimeterProfile
 // Version number that increases with every update to access rules within the profile.
 func (o NetworkSecurityPerimeterProfileOutput) AccessRulesVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkSecurityPerimeterProfile) pulumi.StringOutput { return v.AccessRulesVersion }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o NetworkSecurityPerimeterProfileOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkSecurityPerimeterProfile) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Version number that increases with every update to diagnostic settings within the profile.

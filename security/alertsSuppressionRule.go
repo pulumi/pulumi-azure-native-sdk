@@ -13,12 +13,14 @@ import (
 )
 
 // Describes the suppression rule
-// Azure REST API version: 2019-01-01-preview. Prior API version in Azure Native 1.x: 2019-01-01-preview.
+// Azure REST API version: 2019-01-01-preview. Prior API version in Azure Native 2.x: 2019-01-01-preview.
 type AlertsSuppressionRule struct {
 	pulumi.CustomResourceState
 
 	// Type of the alert to automatically suppress. For all alert types, use '*'
 	AlertType pulumi.StringOutput `pulumi:"alertType"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Any comment regarding the rule
 	Comment pulumi.StringPtrOutput `pulumi:"comment"`
 	// Expiration date of the rule, if value is not provided or provided as null there will no expiration at all
@@ -166,6 +168,11 @@ func (o AlertsSuppressionRuleOutput) ToAlertsSuppressionRuleOutputWithContext(ct
 // Type of the alert to automatically suppress. For all alert types, use '*'
 func (o AlertsSuppressionRuleOutput) AlertType() pulumi.StringOutput {
 	return o.ApplyT(func(v *AlertsSuppressionRule) pulumi.StringOutput { return v.AlertType }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o AlertsSuppressionRuleOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *AlertsSuppressionRule) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Any comment regarding the rule

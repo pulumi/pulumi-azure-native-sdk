@@ -13,10 +13,12 @@ import (
 )
 
 // A Policy.
-// Azure REST API version: 2018-09-15. Prior API version in Azure Native 1.x: 2018-09-15.
+// Azure REST API version: 2018-09-15. Prior API version in Azure Native 2.x: 2018-09-15.
 type Policy struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The creation date of the policy.
 	CreatedDate pulumi.StringOutput `pulumi:"createdDate"`
 	// The description of the policy.
@@ -195,6 +197,11 @@ func (o PolicyOutput) ToPolicyOutput() PolicyOutput {
 
 func (o PolicyOutput) ToPolicyOutputWithContext(ctx context.Context) PolicyOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o PolicyOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The creation date of the policy.

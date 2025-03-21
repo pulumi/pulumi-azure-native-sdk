@@ -21,30 +21,52 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:migrate:AksAssessmentOperation":
-		r = &AksAssessmentOperation{}
-	case "azure-native:migrate:Assessment":
-		r = &Assessment{}
+	case "azure-native:migrate:AssessmentProjectsAksAssessmentOperation":
+		r = &AssessmentProjectsAksAssessmentOperation{}
+	case "azure-native:migrate:AssessmentProjectsAssessment":
+		r = &AssessmentProjectsAssessment{}
+	case "azure-native:migrate:AssessmentProjectsAssessmentsOperation":
+		r = &AssessmentProjectsAssessmentsOperation{}
+	case "azure-native:migrate:AssessmentProjectsAvsAssessmentsOperation":
+		r = &AssessmentProjectsAvsAssessmentsOperation{}
+	case "azure-native:migrate:AssessmentProjectsBusinessCaseOperation":
+		r = &AssessmentProjectsBusinessCaseOperation{}
+	case "azure-native:migrate:AssessmentProjectsGroup":
+		r = &AssessmentProjectsGroup{}
+	case "azure-native:migrate:AssessmentProjectsGroupsOperation":
+		r = &AssessmentProjectsGroupsOperation{}
+	case "azure-native:migrate:AssessmentProjectsHyperVCollector":
+		r = &AssessmentProjectsHyperVCollector{}
+	case "azure-native:migrate:AssessmentProjectsHypervCollectorsOperation":
+		r = &AssessmentProjectsHypervCollectorsOperation{}
+	case "azure-native:migrate:AssessmentProjectsImportCollector":
+		r = &AssessmentProjectsImportCollector{}
+	case "azure-native:migrate:AssessmentProjectsImportCollectorsOperation":
+		r = &AssessmentProjectsImportCollectorsOperation{}
 	case "azure-native:migrate:AssessmentProjectsOperation":
 		r = &AssessmentProjectsOperation{}
-	case "azure-native:migrate:AssessmentsOperation":
-		r = &AssessmentsOperation{}
-	case "azure-native:migrate:AvsAssessmentsOperation":
-		r = &AvsAssessmentsOperation{}
-	case "azure-native:migrate:BusinessCaseOperation":
-		r = &BusinessCaseOperation{}
-	case "azure-native:migrate:Group":
-		r = &Group{}
-	case "azure-native:migrate:GroupsOperation":
-		r = &GroupsOperation{}
-	case "azure-native:migrate:HyperVCollector":
-		r = &HyperVCollector{}
-	case "azure-native:migrate:HypervCollectorsOperation":
-		r = &HypervCollectorsOperation{}
-	case "azure-native:migrate:ImportCollector":
-		r = &ImportCollector{}
-	case "azure-native:migrate:ImportCollectorsOperation":
-		r = &ImportCollectorsOperation{}
+	case "azure-native:migrate:AssessmentProjectsPrivateEndpointConnection":
+		r = &AssessmentProjectsPrivateEndpointConnection{}
+	case "azure-native:migrate:AssessmentProjectsPrivateEndpointConnectionOperation":
+		r = &AssessmentProjectsPrivateEndpointConnectionOperation{}
+	case "azure-native:migrate:AssessmentProjectsProject":
+		r = &AssessmentProjectsProject{}
+	case "azure-native:migrate:AssessmentProjectsServerCollector":
+		r = &AssessmentProjectsServerCollector{}
+	case "azure-native:migrate:AssessmentProjectsServerCollectorsOperation":
+		r = &AssessmentProjectsServerCollectorsOperation{}
+	case "azure-native:migrate:AssessmentProjectsSqlAssessmentV2Operation":
+		r = &AssessmentProjectsSqlAssessmentV2Operation{}
+	case "azure-native:migrate:AssessmentProjectsSqlCollectorOperation":
+		r = &AssessmentProjectsSqlCollectorOperation{}
+	case "azure-native:migrate:AssessmentProjectsVMwareCollector":
+		r = &AssessmentProjectsVMwareCollector{}
+	case "azure-native:migrate:AssessmentProjectsVmwareCollectorsOperation":
+		r = &AssessmentProjectsVmwareCollectorsOperation{}
+	case "azure-native:migrate:AssessmentProjectsWebAppAssessmentV2Operation":
+		r = &AssessmentProjectsWebAppAssessmentV2Operation{}
+	case "azure-native:migrate:AssessmentProjectsWebAppCollectorOperation":
+		r = &AssessmentProjectsWebAppCollectorOperation{}
 	case "azure-native:migrate:MigrateAgent":
 		r = &MigrateAgent{}
 	case "azure-native:migrate:MigrateProject":
@@ -57,36 +79,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &MoveCollection{}
 	case "azure-native:migrate:MoveResource":
 		r = &MoveResource{}
-	case "azure-native:migrate:PrivateEndpointConnection":
-		r = &PrivateEndpointConnection{}
 	case "azure-native:migrate:PrivateEndpointConnectionControllerPrivateEndpointConnection":
 		r = &PrivateEndpointConnectionControllerPrivateEndpointConnection{}
-	case "azure-native:migrate:PrivateEndpointConnectionOperation":
-		r = &PrivateEndpointConnectionOperation{}
-	case "azure-native:migrate:PrivateEndpointConnectionProxyController":
-		r = &PrivateEndpointConnectionProxyController{}
-	case "azure-native:migrate:Project":
-		r = &Project{}
-	case "azure-native:migrate:ServerCollector":
-		r = &ServerCollector{}
-	case "azure-native:migrate:ServerCollectorsOperation":
-		r = &ServerCollectorsOperation{}
 	case "azure-native:migrate:Solution":
 		r = &Solution{}
-	case "azure-native:migrate:SolutionsControllerSolution":
-		r = &SolutionsControllerSolution{}
-	case "azure-native:migrate:SqlAssessmentV2Operation":
-		r = &SqlAssessmentV2Operation{}
-	case "azure-native:migrate:SqlCollectorOperation":
-		r = &SqlCollectorOperation{}
-	case "azure-native:migrate:VMwareCollector":
-		r = &VMwareCollector{}
-	case "azure-native:migrate:VmwareCollectorsOperation":
-		r = &VmwareCollectorsOperation{}
-	case "azure-native:migrate:WebAppAssessmentV2Operation":
-		r = &WebAppAssessmentV2Operation{}
-	case "azure-native:migrate:WebAppCollectorOperation":
-		r = &WebAppCollectorOperation{}
 	case "azure-native:migrate:WorkloadDeployment":
 		r = &WorkloadDeployment{}
 	case "azure-native:migrate:WorkloadInstance":

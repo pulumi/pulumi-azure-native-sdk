@@ -12,9 +12,7 @@ import (
 )
 
 // Gets a network manager security configuration admin rule.
-// Azure REST API version: 2023-02-01.
-//
-// Other available API versions: 2021-02-01-preview, 2021-05-01-preview, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-01-01-preview, 2024-03-01, 2024-05-01.
+// Azure REST API version: 2024-05-01.
 func LookupAdminRule(ctx *pulumi.Context, args *LookupAdminRuleArgs, opts ...pulumi.InvokeOption) (*LookupAdminRuleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAdminRuleResult
@@ -42,6 +40,8 @@ type LookupAdminRuleArgs struct {
 type LookupAdminRuleResult struct {
 	// Indicates the access allowed for this particular rule
 	Access string `pulumi:"access"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// A description for this rule. Restricted to 140 chars.
 	Description *string `pulumi:"description"`
 	// The destination port ranges.
@@ -121,6 +121,11 @@ func (o LookupAdminRuleResultOutput) ToLookupAdminRuleResultOutputWithContext(ct
 // Indicates the access allowed for this particular rule
 func (o LookupAdminRuleResultOutput) Access() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAdminRuleResult) string { return v.Access }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupAdminRuleResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAdminRuleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A description for this rule. Restricted to 140 chars.

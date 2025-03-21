@@ -34,6 +34,8 @@ type LookupEdgeModuleArgs struct {
 
 // The representation of an edge module.
 type LookupEdgeModuleResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Internal ID generated for the instance of the Video Analyzer edge module.
 	EdgeModuleId string `pulumi:"edgeModuleId"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -81,6 +83,11 @@ func (o LookupEdgeModuleResultOutput) ToLookupEdgeModuleResultOutput() LookupEdg
 
 func (o LookupEdgeModuleResultOutput) ToLookupEdgeModuleResultOutputWithContext(ctx context.Context) LookupEdgeModuleResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupEdgeModuleResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEdgeModuleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Internal ID generated for the instance of the Video Analyzer edge module.

@@ -3750,6 +3750,59 @@ func (o ControlPlaneProfileResponsePtrOutput) VmSize() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The credential result response.
+type CredentialResultResponse struct {
+	// The name of the credential.
+	Name string `pulumi:"name"`
+	// Base64-encoded Kubernetes configuration file.
+	Value string `pulumi:"value"`
+}
+
+// The credential result response.
+type CredentialResultResponseOutput struct{ *pulumi.OutputState }
+
+func (CredentialResultResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CredentialResultResponse)(nil)).Elem()
+}
+
+func (o CredentialResultResponseOutput) ToCredentialResultResponseOutput() CredentialResultResponseOutput {
+	return o
+}
+
+func (o CredentialResultResponseOutput) ToCredentialResultResponseOutputWithContext(ctx context.Context) CredentialResultResponseOutput {
+	return o
+}
+
+// The name of the credential.
+func (o CredentialResultResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v CredentialResultResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Base64-encoded Kubernetes configuration file.
+func (o CredentialResultResponseOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v CredentialResultResponse) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type CredentialResultResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (CredentialResultResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CredentialResultResponse)(nil)).Elem()
+}
+
+func (o CredentialResultResponseArrayOutput) ToCredentialResultResponseArrayOutput() CredentialResultResponseArrayOutput {
+	return o
+}
+
+func (o CredentialResultResponseArrayOutput) ToCredentialResultResponseArrayOutputWithContext(ctx context.Context) CredentialResultResponseArrayOutput {
+	return o
+}
+
+func (o CredentialResultResponseArrayOutput) Index(i pulumi.IntInput) CredentialResultResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CredentialResultResponse {
+		return vs[0].([]CredentialResultResponse)[vs[1].(int)]
+	}).(CredentialResultResponseOutput)
+}
+
 // Configurations for provisioning the cluster with HTTP proxy servers.
 type HttpProxyConfig struct {
 	// The HTTP proxy server endpoint to use.
@@ -4690,6 +4743,99 @@ func (o LinuxProfilePropertiesSshPtrOutput) PublicKeys() LinuxProfilePropertiesP
 		}
 		return v.PublicKeys
 	}).(LinuxProfilePropertiesPublicKeysArrayOutput)
+}
+
+type ListCredentialResponseResponseError struct {
+	Code    *string `pulumi:"code"`
+	Message *string `pulumi:"message"`
+}
+
+type ListCredentialResponseResponseErrorOutput struct{ *pulumi.OutputState }
+
+func (ListCredentialResponseResponseErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListCredentialResponseResponseError)(nil)).Elem()
+}
+
+func (o ListCredentialResponseResponseErrorOutput) ToListCredentialResponseResponseErrorOutput() ListCredentialResponseResponseErrorOutput {
+	return o
+}
+
+func (o ListCredentialResponseResponseErrorOutput) ToListCredentialResponseResponseErrorOutputWithContext(ctx context.Context) ListCredentialResponseResponseErrorOutput {
+	return o
+}
+
+func (o ListCredentialResponseResponseErrorOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListCredentialResponseResponseError) *string { return v.Code }).(pulumi.StringPtrOutput)
+}
+
+func (o ListCredentialResponseResponseErrorOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListCredentialResponseResponseError) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type ListCredentialResponseResponseErrorPtrOutput struct{ *pulumi.OutputState }
+
+func (ListCredentialResponseResponseErrorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListCredentialResponseResponseError)(nil)).Elem()
+}
+
+func (o ListCredentialResponseResponseErrorPtrOutput) ToListCredentialResponseResponseErrorPtrOutput() ListCredentialResponseResponseErrorPtrOutput {
+	return o
+}
+
+func (o ListCredentialResponseResponseErrorPtrOutput) ToListCredentialResponseResponseErrorPtrOutputWithContext(ctx context.Context) ListCredentialResponseResponseErrorPtrOutput {
+	return o
+}
+
+func (o ListCredentialResponseResponseErrorPtrOutput) Elem() ListCredentialResponseResponseErrorOutput {
+	return o.ApplyT(func(v *ListCredentialResponseResponseError) ListCredentialResponseResponseError {
+		if v != nil {
+			return *v
+		}
+		var ret ListCredentialResponseResponseError
+		return ret
+	}).(ListCredentialResponseResponseErrorOutput)
+}
+
+func (o ListCredentialResponseResponseErrorPtrOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListCredentialResponseResponseError) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Code
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ListCredentialResponseResponseErrorPtrOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListCredentialResponseResponseError) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Message
+	}).(pulumi.StringPtrOutput)
+}
+
+type ListCredentialResponseResponseProperties struct {
+	// Base64-encoded Kubernetes configuration file.
+	Kubeconfigs []CredentialResultResponse `pulumi:"kubeconfigs"`
+}
+
+type ListCredentialResponseResponsePropertiesOutput struct{ *pulumi.OutputState }
+
+func (ListCredentialResponseResponsePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListCredentialResponseResponseProperties)(nil)).Elem()
+}
+
+func (o ListCredentialResponseResponsePropertiesOutput) ToListCredentialResponseResponsePropertiesOutput() ListCredentialResponseResponsePropertiesOutput {
+	return o
+}
+
+func (o ListCredentialResponseResponsePropertiesOutput) ToListCredentialResponseResponsePropertiesOutputWithContext(ctx context.Context) ListCredentialResponseResponsePropertiesOutput {
+	return o
+}
+
+// Base64-encoded Kubernetes configuration file.
+func (o ListCredentialResponseResponsePropertiesOutput) Kubeconfigs() CredentialResultResponseArrayOutput {
+	return o.ApplyT(func(v ListCredentialResponseResponseProperties) []CredentialResultResponse { return v.Kubeconfigs }).(CredentialResultResponseArrayOutput)
 }
 
 // LoadBalancerProfile - Profile of the cluster load balancer.
@@ -11980,6 +12126,8 @@ func init() {
 	pulumi.RegisterOutputType(ControlPlaneProfilePtrOutput{})
 	pulumi.RegisterOutputType(ControlPlaneProfileResponseOutput{})
 	pulumi.RegisterOutputType(ControlPlaneProfileResponsePtrOutput{})
+	pulumi.RegisterOutputType(CredentialResultResponseOutput{})
+	pulumi.RegisterOutputType(CredentialResultResponseArrayOutput{})
 	pulumi.RegisterOutputType(HttpProxyConfigOutput{})
 	pulumi.RegisterOutputType(HttpProxyConfigPtrOutput{})
 	pulumi.RegisterOutputType(HttpProxyConfigResponseResponseOutput{})
@@ -11996,6 +12144,9 @@ func init() {
 	pulumi.RegisterOutputType(LinuxProfilePropertiesResponseSshPtrOutput{})
 	pulumi.RegisterOutputType(LinuxProfilePropertiesSshOutput{})
 	pulumi.RegisterOutputType(LinuxProfilePropertiesSshPtrOutput{})
+	pulumi.RegisterOutputType(ListCredentialResponseResponseErrorOutput{})
+	pulumi.RegisterOutputType(ListCredentialResponseResponseErrorPtrOutput{})
+	pulumi.RegisterOutputType(ListCredentialResponseResponsePropertiesOutput{})
 	pulumi.RegisterOutputType(LoadBalancerProfileOutput{})
 	pulumi.RegisterOutputType(LoadBalancerProfilePtrOutput{})
 	pulumi.RegisterOutputType(LoadBalancerProfileResponseOutput{})

@@ -13,8 +13,6 @@ import (
 
 // List authentication keys in an integration runtime
 // Azure REST API version: 2021-06-01.
-//
-// Other available API versions: 2021-06-01-preview.
 func ListIntegrationRuntimeAuthKey(ctx *pulumi.Context, args *ListIntegrationRuntimeAuthKeyArgs, opts ...pulumi.InvokeOption) (*ListIntegrationRuntimeAuthKeyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListIntegrationRuntimeAuthKeyResult

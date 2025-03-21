@@ -13,10 +13,12 @@ import (
 )
 
 // The Private Endpoint Connection resource.
-// Azure REST API version: 2021-03-08. Prior API version in Azure Native 1.x: 2021-03-08.
+// Azure REST API version: 2021-03-08. Prior API version in Azure Native 2.x: 2021-03-08.
 type PrivateEndpointConnectionsSec struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The resource of private end point.
@@ -146,6 +148,11 @@ func (o PrivateEndpointConnectionsSecOutput) ToPrivateEndpointConnectionsSecOutp
 
 func (o PrivateEndpointConnectionsSecOutput) ToPrivateEndpointConnectionsSecOutputWithContext(ctx context.Context) PrivateEndpointConnectionsSecOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o PrivateEndpointConnectionsSecOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrivateEndpointConnectionsSec) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

@@ -12,9 +12,7 @@ import (
 )
 
 // Get properties of a permission binding.
-// Azure REST API version: 2023-06-01-preview.
-//
-// Other available API versions: 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-02-15.
+// Azure REST API version: 2025-02-15.
 func LookupPermissionBinding(ctx *pulumi.Context, args *LookupPermissionBindingArgs, opts ...pulumi.InvokeOption) (*LookupPermissionBindingResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPermissionBindingResult
@@ -36,6 +34,8 @@ type LookupPermissionBindingArgs struct {
 
 // The Permission binding resource.
 type LookupPermissionBindingResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The name of the client group resource that the permission is bound to.
 	// The client group needs to be a resource under the same namespace the permission binding is a part of.
 	ClientGroupName *string `pulumi:"clientGroupName"`
@@ -49,7 +49,7 @@ type LookupPermissionBindingResult struct {
 	Permission *string `pulumi:"permission"`
 	// Provisioning state of the PermissionBinding resource.
 	ProvisioningState string `pulumi:"provisioningState"`
-	// The system metadata relating to the PermissionBinding resource.
+	// The system metadata relating to the Event Grid resource.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The name of the Topic Space resource that the permission is bound to.
 	// The Topic space needs to be a resource under the same namespace the permission binding is a part of.
@@ -95,6 +95,11 @@ func (o LookupPermissionBindingResultOutput) ToLookupPermissionBindingResultOutp
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupPermissionBindingResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPermissionBindingResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The name of the client group resource that the permission is bound to.
 // The client group needs to be a resource under the same namespace the permission binding is a part of.
 func (o LookupPermissionBindingResultOutput) ClientGroupName() pulumi.StringPtrOutput {
@@ -126,7 +131,7 @@ func (o LookupPermissionBindingResultOutput) ProvisioningState() pulumi.StringOu
 	return o.ApplyT(func(v LookupPermissionBindingResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// The system metadata relating to the PermissionBinding resource.
+// The system metadata relating to the Event Grid resource.
 func (o LookupPermissionBindingResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupPermissionBindingResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }

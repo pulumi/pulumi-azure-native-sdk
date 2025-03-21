@@ -13,12 +13,12 @@ import (
 )
 
 // Specifies information about the capacity reservation.
-// Azure REST API version: 2023-03-01. Prior API version in Azure Native 1.x: 2021-04-01.
-//
-// Other available API versions: 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01.
+// Azure REST API version: 2024-11-01. Prior API version in Azure Native 2.x: 2023-03-01.
 type CapacityReservation struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The Capacity reservation instance view.
 	InstanceView CapacityReservationInstanceViewResponseOutput `pulumi:"instanceView"`
 	// Resource location
@@ -96,6 +96,9 @@ func NewCapacityReservation(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:compute/v20240701:CapacityReservation"),
+		},
+		{
+			Type: pulumi.String("azure-native:compute/v20241101:CapacityReservation"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -201,6 +204,11 @@ func (o CapacityReservationOutput) ToCapacityReservationOutput() CapacityReserva
 
 func (o CapacityReservationOutput) ToCapacityReservationOutputWithContext(ctx context.Context) CapacityReservationOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o CapacityReservationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *CapacityReservation) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The Capacity reservation instance view.

@@ -29,12 +29,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &BrokerAuthorization{}
 	case "azure-native:iotoperations:BrokerListener":
 		r = &BrokerListener{}
-	case "azure-native:iotoperations:DataFlow":
-		r = &DataFlow{}
-	case "azure-native:iotoperations:DataFlowEndpoint":
-		r = &DataFlowEndpoint{}
-	case "azure-native:iotoperations:DataFlowProfile":
-		r = &DataFlowProfile{}
+	case "azure-native:iotoperations:Dataflow":
+		r = &Dataflow{}
+	case "azure-native:iotoperations:DataflowEndpoint":
+		r = &DataflowEndpoint{}
+	case "azure-native:iotoperations:DataflowProfile":
+		r = &DataflowProfile{}
 	case "azure-native:iotoperations:Instance":
 		r = &Instance{}
 	default:

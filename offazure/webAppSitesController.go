@@ -13,12 +13,12 @@ import (
 )
 
 // WebApp site web model.
-// Azure REST API version: 2023-06-06.
-//
-// Other available API versions: 2023-10-01-preview, 2024-05-01-preview.
+// Azure REST API version: 2023-10-01-preview. Prior API version in Azure Native 2.x: 2023-06-06.
 type WebAppSitesController struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets or sets the discovery scenario.
 	DiscoveryScenario pulumi.StringPtrOutput `pulumi:"discoveryScenario"`
 	// The name of the resource
@@ -160,6 +160,11 @@ func (o WebAppSitesControllerOutput) ToWebAppSitesControllerOutput() WebAppSites
 
 func (o WebAppSitesControllerOutput) ToWebAppSitesControllerOutputWithContext(ctx context.Context) WebAppSitesControllerOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o WebAppSitesControllerOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *WebAppSitesController) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets the discovery scenario.

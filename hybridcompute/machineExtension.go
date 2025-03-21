@@ -13,12 +13,12 @@ import (
 )
 
 // Describes a Machine Extension.
-// Azure REST API version: 2022-12-27. Prior API version in Azure Native 1.x: 2020-08-02.
-//
-// Other available API versions: 2020-08-15-preview, 2022-05-10-preview, 2023-06-20-preview, 2023-10-03-preview, 2024-03-31-preview, 2024-05-20-preview, 2024-07-10, 2024-07-31-preview, 2024-09-10-preview, 2024-11-10-preview.
+// Azure REST API version: 2024-07-10. Prior API version in Azure Native 2.x: 2022-12-27.
 type MachineExtension struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -128,6 +128,9 @@ func NewMachineExtension(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:hybridcompute/v20241110preview:MachineExtension"),
 		},
+		{
+			Type: pulumi.String("azure-native:hybridcompute/v20250113:MachineExtension"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -228,6 +231,11 @@ func (o MachineExtensionOutput) ToMachineExtensionOutput() MachineExtensionOutpu
 
 func (o MachineExtensionOutput) ToMachineExtensionOutputWithContext(ctx context.Context) MachineExtensionOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o MachineExtensionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *MachineExtension) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The geo-location where the resource lives

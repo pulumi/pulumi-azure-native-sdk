@@ -13,12 +13,12 @@ import (
 )
 
 // Diagnostics package resource.
-// Azure REST API version: 2023-06-01.
-//
-// Other available API versions: 2023-09-01, 2024-02-01, 2024-04-01.
+// Azure REST API version: 2024-04-01. Prior API version in Azure Native 2.x: 2023-06-01.
 type DiagnosticsPackage struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The provisioning state of the diagnostics package resource.
@@ -147,6 +147,11 @@ func (o DiagnosticsPackageOutput) ToDiagnosticsPackageOutput() DiagnosticsPackag
 
 func (o DiagnosticsPackageOutput) ToDiagnosticsPackageOutputWithContext(ctx context.Context) DiagnosticsPackageOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o DiagnosticsPackageOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DiagnosticsPackage) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

@@ -36,6 +36,8 @@ type LookupChangeDataCaptureArgs struct {
 type LookupChangeDataCaptureResult struct {
 	// A boolean to determine if the vnet configuration needs to be overwritten.
 	AllowVNetOverride *bool `pulumi:"allowVNetOverride"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The description of the change data capture.
 	Description *string `pulumi:"description"`
 	// Etag identifies change in the resource.
@@ -98,6 +100,11 @@ func (o LookupChangeDataCaptureResultOutput) ToLookupChangeDataCaptureResultOutp
 // A boolean to determine if the vnet configuration needs to be overwritten.
 func (o LookupChangeDataCaptureResultOutput) AllowVNetOverride() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupChangeDataCaptureResult) *bool { return v.AllowVNetOverride }).(pulumi.BoolPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupChangeDataCaptureResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupChangeDataCaptureResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The description of the change data capture.

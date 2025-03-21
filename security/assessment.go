@@ -13,14 +13,14 @@ import (
 )
 
 // Security assessment on a resource - response format
-// Azure REST API version: 2021-06-01. Prior API version in Azure Native 1.x: 2020-01-01.
-//
-// Other available API versions: 2020-01-01.
+// Azure REST API version: 2021-06-01. Prior API version in Azure Native 2.x: 2021-06-01.
 type Assessment struct {
 	pulumi.CustomResourceState
 
 	// Additional data regarding the assessment
 	AdditionalData pulumi.StringMapOutput `pulumi:"additionalData"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// User friendly display name of the assessment
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Links relevant to the assessment
@@ -174,6 +174,11 @@ func (o AssessmentOutput) ToAssessmentOutputWithContext(ctx context.Context) Ass
 // Additional data regarding the assessment
 func (o AssessmentOutput) AdditionalData() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Assessment) pulumi.StringMapOutput { return v.AdditionalData }).(pulumi.StringMapOutput)
+}
+
+// The Azure API version of the resource.
+func (o AssessmentOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Assessment) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // User friendly display name of the assessment

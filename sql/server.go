@@ -13,9 +13,7 @@ import (
 )
 
 // An Azure SQL Database server.
-// Azure REST API version: 2021-11-01. Prior API version in Azure Native 1.x: 2020-11-01-preview.
-//
-// Other available API versions: 2014-04-01, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
+// Azure REST API version: 2021-11-01. Prior API version in Azure Native 2.x: 2021-11-01.
 //
 // **Warning:** when `AzureADOnlyAuthentication` is enabled, the Azure SQL API rejects any `AdministratorLoginPassword`, even if it is the same as the current one.
 //
@@ -33,6 +31,8 @@ type Server struct {
 	AdministratorLogin pulumi.StringPtrOutput `pulumi:"administratorLogin"`
 	// The Azure Active Directory administrator of the server.
 	Administrators ServerExternalAdministratorResponsePtrOutput `pulumi:"administrators"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The Client id used for cross tenant CMK scenario
 	FederatedClientId pulumi.StringPtrOutput `pulumi:"federatedClientId"`
 	// The fully qualified domain name of the server.
@@ -283,6 +283,11 @@ func (o ServerOutput) AdministratorLogin() pulumi.StringPtrOutput {
 // The Azure Active Directory administrator of the server.
 func (o ServerOutput) Administrators() ServerExternalAdministratorResponsePtrOutput {
 	return o.ApplyT(func(v *Server) ServerExternalAdministratorResponsePtrOutput { return v.Administrators }).(ServerExternalAdministratorResponsePtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o ServerOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Server) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The Client id used for cross tenant CMK scenario

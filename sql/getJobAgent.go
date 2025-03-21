@@ -13,8 +13,6 @@ import (
 
 // Gets a job agent.
 // Azure REST API version: 2021-11-01.
-//
-// Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
 func LookupJobAgent(ctx *pulumi.Context, args *LookupJobAgentArgs, opts ...pulumi.InvokeOption) (*LookupJobAgentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupJobAgentResult
@@ -36,6 +34,8 @@ type LookupJobAgentArgs struct {
 
 // An Azure SQL job agent.
 type LookupJobAgentResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource ID of the database to store job metadata in.
 	DatabaseId string `pulumi:"databaseId"`
 	// Resource ID.
@@ -89,6 +89,11 @@ func (o LookupJobAgentResultOutput) ToLookupJobAgentResultOutput() LookupJobAgen
 
 func (o LookupJobAgentResultOutput) ToLookupJobAgentResultOutputWithContext(ctx context.Context) LookupJobAgentResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupJobAgentResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupJobAgentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource ID of the database to store job metadata in.

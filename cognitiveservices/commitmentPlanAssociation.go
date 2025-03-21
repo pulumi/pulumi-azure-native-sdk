@@ -13,20 +13,22 @@ import (
 )
 
 // The commitment plan association.
-// Azure REST API version: 2023-05-01.
-//
-// Other available API versions: 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview, 2024-10-01.
+// Azure REST API version: 2024-10-01. Prior API version in Azure Native 2.x: 2023-05-01.
 type CommitmentPlanAssociation struct {
 	pulumi.CustomResourceState
 
 	// The Azure resource id of the account.
 	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Resource Etag.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Metadata pertaining to creation and last modification of the resource.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// Resource tags.
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -106,6 +108,8 @@ type commitmentPlanAssociationArgs struct {
 	CommitmentPlanName string `pulumi:"commitmentPlanName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a CommitmentPlanAssociation resource.
@@ -118,6 +122,8 @@ type CommitmentPlanAssociationArgs struct {
 	CommitmentPlanName pulumi.StringInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
+	// Resource tags.
+	Tags pulumi.StringMapInput
 }
 
 func (CommitmentPlanAssociationArgs) ElementType() reflect.Type {
@@ -162,6 +168,11 @@ func (o CommitmentPlanAssociationOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CommitmentPlanAssociation) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o CommitmentPlanAssociationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *CommitmentPlanAssociation) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Resource Etag.
 func (o CommitmentPlanAssociationOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *CommitmentPlanAssociation) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
@@ -175,6 +186,11 @@ func (o CommitmentPlanAssociationOutput) Name() pulumi.StringOutput {
 // Metadata pertaining to creation and last modification of the resource.
 func (o CommitmentPlanAssociationOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *CommitmentPlanAssociation) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// Resource tags.
+func (o CommitmentPlanAssociationOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *CommitmentPlanAssociation) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

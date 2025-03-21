@@ -13,12 +13,12 @@ import (
 )
 
 // Information about a partner registration.
-// Azure REST API version: 2022-06-15. Prior API version in Azure Native 1.x: 2021-06-01-preview.
-//
-// Other available API versions: 2021-10-15-preview, 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-02-15.
+// Azure REST API version: 2025-02-15. Prior API version in Azure Native 2.x: 2022-06-15.
 type PartnerRegistration struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Location of the resource.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Name of the resource.
@@ -28,7 +28,7 @@ type PartnerRegistration struct {
 	PartnerRegistrationImmutableId pulumi.StringPtrOutput `pulumi:"partnerRegistrationImmutableId"`
 	// Provisioning state of the partner registration.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// The system metadata relating to Partner Registration resource.
+	// The system metadata relating to the Event Grid resource.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Tags of the resource.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
@@ -177,6 +177,11 @@ func (o PartnerRegistrationOutput) ToPartnerRegistrationOutputWithContext(ctx co
 	return o
 }
 
+// The Azure API version of the resource.
+func (o PartnerRegistrationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PartnerRegistration) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Location of the resource.
 func (o PartnerRegistrationOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *PartnerRegistration) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
@@ -198,7 +203,7 @@ func (o PartnerRegistrationOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *PartnerRegistration) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// The system metadata relating to Partner Registration resource.
+// The system metadata relating to the Event Grid resource.
 func (o PartnerRegistrationOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *PartnerRegistration) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

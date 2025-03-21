@@ -13,12 +13,12 @@ import (
 )
 
 // The connection resource definition.
-// Azure REST API version: 2023-10-11-preview.
-//
-// Other available API versions: 2024-01-25, 2024-05-07, 2024-09-11, 2024-09-27.
+// Azure REST API version: 2024-09-27. Prior API version in Azure Native 2.x: 2023-10-11-preview.
 type Connection struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -155,6 +155,11 @@ func (o ConnectionOutput) ToConnectionOutput() ConnectionOutput {
 
 func (o ConnectionOutput) ToConnectionOutputWithContext(ctx context.Context) ConnectionOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ConnectionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The geo-location where the resource lives

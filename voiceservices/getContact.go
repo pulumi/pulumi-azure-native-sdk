@@ -34,6 +34,8 @@ type LookupContactArgs struct {
 
 // A Contact resource
 type LookupContactResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Full name of contact
 	ContactName string `pulumi:"contactName"`
 	// Email address of contact
@@ -93,6 +95,11 @@ func (o LookupContactResultOutput) ToLookupContactResultOutput() LookupContactRe
 
 func (o LookupContactResultOutput) ToLookupContactResultOutputWithContext(ctx context.Context) LookupContactResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupContactResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupContactResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Full name of contact

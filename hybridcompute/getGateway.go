@@ -12,9 +12,7 @@ import (
 )
 
 // Retrieves information about the view of a gateway.
-// Azure REST API version: 2024-03-31-preview.
-//
-// Other available API versions: 2024-05-20-preview, 2024-07-31-preview, 2024-09-10-preview, 2024-11-10-preview.
+// Azure REST API version: 2024-07-31-preview.
 func LookupGateway(ctx *pulumi.Context, args *LookupGatewayArgs, opts ...pulumi.InvokeOption) (*LookupGatewayResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGatewayResult
@@ -36,6 +34,8 @@ type LookupGatewayArgs struct {
 type LookupGatewayResult struct {
 	// Specifies the list of features that are enabled for this Gateway.
 	AllowedFeatures []string `pulumi:"allowedFeatures"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The endpoint fqdn for the Gateway.
 	GatewayEndpoint string `pulumi:"gatewayEndpoint"`
 	// A unique, immutable, identifier for the Gateway.
@@ -96,6 +96,11 @@ func (o LookupGatewayResultOutput) ToLookupGatewayResultOutputWithContext(ctx co
 // Specifies the list of features that are enabled for this Gateway.
 func (o LookupGatewayResultOutput) AllowedFeatures() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupGatewayResult) []string { return v.AllowedFeatures }).(pulumi.StringArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupGatewayResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGatewayResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The endpoint fqdn for the Gateway.

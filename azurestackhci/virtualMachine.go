@@ -13,10 +13,12 @@ import (
 )
 
 // The virtual machine resource definition.
-// Azure REST API version: 2022-12-15-preview.
+// Azure REST API version: 2022-12-15-preview. Prior API version in Azure Native 2.x: 2022-12-15-preview.
 type VirtualMachine struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The extendedLocation of the resource.
 	ExtendedLocation ExtendedLocationResponsePtrOutput `pulumi:"extendedLocation"`
 	// Guest agent status properties.
@@ -77,6 +79,9 @@ func NewVirtualMachine(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20210901preview:VirtualMachine"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20210901preview:VirtualmachineRetrieve"),
 		},
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20221215preview:VirtualMachine"),
@@ -201,6 +206,11 @@ func (o VirtualMachineOutput) ToVirtualMachineOutput() VirtualMachineOutput {
 
 func (o VirtualMachineOutput) ToVirtualMachineOutputWithContext(ctx context.Context) VirtualMachineOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o VirtualMachineOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *VirtualMachine) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The extendedLocation of the resource.

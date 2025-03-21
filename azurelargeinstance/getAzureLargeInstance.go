@@ -34,6 +34,8 @@ type LookupAzureLargeInstanceArgs struct {
 // Azure Large Instance info on Azure (ARM properties and AzureLargeInstance
 // properties)
 type LookupAzureLargeInstanceResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Specifies the Azure Large Instance unique ID.
 	AzureLargeInstanceId *string `pulumi:"azureLargeInstanceId"`
 	// Specifies the hardware settings for the Azure Large Instance.
@@ -100,6 +102,11 @@ func (o LookupAzureLargeInstanceResultOutput) ToLookupAzureLargeInstanceResultOu
 
 func (o LookupAzureLargeInstanceResultOutput) ToLookupAzureLargeInstanceResultOutputWithContext(ctx context.Context) LookupAzureLargeInstanceResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupAzureLargeInstanceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAzureLargeInstanceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Specifies the Azure Large Instance unique ID.

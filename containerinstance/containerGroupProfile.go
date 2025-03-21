@@ -13,10 +13,12 @@ import (
 )
 
 // A container group profile.
-// Azure REST API version: 2024-05-01-preview.
+// Azure REST API version: 2024-05-01-preview. Prior API version in Azure Native 2.x: 2024-05-01-preview.
 type ContainerGroupProfile struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The properties for confidential container group
 	ConfidentialComputeProperties ConfidentialComputePropertiesResponsePtrOutput `pulumi:"confidentialComputeProperties"`
 	// The containers within the container group.
@@ -84,7 +86,13 @@ func NewContainerGroupProfile(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:containerinstance/v20240501preview:ContainerGroupProfile"),
 		},
 		{
+			Type: pulumi.String("azure-native:containerinstance/v20241101preview:CGProfile"),
+		},
+		{
 			Type: pulumi.String("azure-native:containerinstance/v20241101preview:ContainerGroupProfile"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerinstance:CGProfile"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -240,6 +248,11 @@ func (o ContainerGroupProfileOutput) ToContainerGroupProfileOutput() ContainerGr
 
 func (o ContainerGroupProfileOutput) ToContainerGroupProfileOutputWithContext(ctx context.Context) ContainerGroupProfileOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ContainerGroupProfileOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ContainerGroupProfile) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The properties for confidential container group

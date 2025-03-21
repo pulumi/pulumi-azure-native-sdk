@@ -13,8 +13,6 @@ import (
 
 // Resource representation of a IacProfile.
 // Azure REST API version: 2024-05-01-preview.
-//
-// Other available API versions: 2024-08-01-preview.
 func LookupIacProfile(ctx *pulumi.Context, args *LookupIacProfileArgs, opts ...pulumi.InvokeOption) (*LookupIacProfileResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIacProfileResult
@@ -36,6 +34,8 @@ type LookupIacProfileArgs struct {
 type LookupIacProfileResult struct {
 	// Determines the authorization status of requests.
 	AuthStatus string `pulumi:"authStatus"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Repository Branch Name
 	BranchName *string `pulumi:"branchName"`
 	// A unique read-only string that changes whenever the resource is updated.
@@ -112,6 +112,11 @@ func (o LookupIacProfileResultOutput) ToLookupIacProfileResultOutputWithContext(
 // Determines the authorization status of requests.
 func (o LookupIacProfileResultOutput) AuthStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIacProfileResult) string { return v.AuthStatus }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupIacProfileResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIacProfileResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Repository Branch Name

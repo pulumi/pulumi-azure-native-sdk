@@ -12,9 +12,7 @@ import (
 )
 
 // Gets the download URL of the test execution console log file.
-// Azure REST API version: 2022-04-01-preview.
-//
-// Other available API versions: 2023-11-01-preview.
+// Azure REST API version: 2023-11-01-preview.
 func GetTestResultConsoleLogDownloadURL(ctx *pulumi.Context, args *GetTestResultConsoleLogDownloadURLArgs, opts ...pulumi.InvokeOption) (*GetTestResultConsoleLogDownloadURLResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetTestResultConsoleLogDownloadURLResult
@@ -30,7 +28,7 @@ type GetTestResultConsoleLogDownloadURLArgs struct {
 	LogFileName string `pulumi:"logFileName"`
 	// The resource name of the Test Base Package.
 	PackageName string `pulumi:"packageName"`
-	// The name of the resource group that contains the resource.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The resource name of the Test Base Account.
 	TestBaseAccountName string `pulumi:"testBaseAccountName"`
@@ -60,7 +58,7 @@ type GetTestResultConsoleLogDownloadURLOutputArgs struct {
 	LogFileName pulumi.StringInput `pulumi:"logFileName"`
 	// The resource name of the Test Base Package.
 	PackageName pulumi.StringInput `pulumi:"packageName"`
-	// The name of the resource group that contains the resource.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The resource name of the Test Base Account.
 	TestBaseAccountName pulumi.StringInput `pulumi:"testBaseAccountName"`

@@ -13,12 +13,12 @@ import (
 )
 
 // Define the datastore.
-// Azure REST API version: 2022-07-15-preview. Prior API version in Azure Native 1.x: 2020-10-01-preview.
-//
-// Other available API versions: 2023-03-01-preview, 2023-10-01, 2023-12-01.
+// Azure REST API version: 2023-12-01. Prior API version in Azure Native 2.x: 2022-07-15-preview.
 type Datastore struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets or sets Maximum capacity of this datastore in GBs.
 	CapacityGB pulumi.Float64Output `pulumi:"capacityGB"`
 	// Gets the name of the corresponding resource in Kubernetes.
@@ -196,6 +196,11 @@ func (o DatastoreOutput) ToDatastoreOutput() DatastoreOutput {
 
 func (o DatastoreOutput) ToDatastoreOutputWithContext(ctx context.Context) DatastoreOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o DatastoreOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Datastore) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets Maximum capacity of this datastore in GBs.

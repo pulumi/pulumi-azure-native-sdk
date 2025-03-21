@@ -13,10 +13,12 @@ import (
 )
 
 // The status of the Canonical support plan.
-// Azure REST API version: 2018-03-01. Prior API version in Azure Native 1.x: 2018-03-01.
+// Azure REST API version: 2018-03-01. Prior API version in Azure Native 2.x: 2018-03-01.
 type SupportPlanType struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the Canonical support plan, i.e. "essential", "standard" or "advanced".
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The provisioning state of the resource.
@@ -126,6 +128,11 @@ func (o SupportPlanTypeOutput) ToSupportPlanTypeOutput() SupportPlanTypeOutput {
 
 func (o SupportPlanTypeOutput) ToSupportPlanTypeOutputWithContext(ctx context.Context) SupportPlanTypeOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o SupportPlanTypeOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SupportPlanType) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the Canonical support plan, i.e. "essential", "standard" or "advanced".

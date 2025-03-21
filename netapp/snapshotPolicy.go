@@ -13,12 +13,12 @@ import (
 )
 
 // Snapshot policy information
-// Azure REST API version: 2022-11-01. Prior API version in Azure Native 1.x: 2020-12-01.
-//
-// Other available API versions: 2022-11-01-preview, 2023-05-01, 2023-05-01-preview, 2023-07-01, 2023-07-01-preview, 2023-11-01, 2023-11-01-preview, 2024-01-01, 2024-03-01, 2024-03-01-preview, 2024-05-01, 2024-05-01-preview, 2024-07-01, 2024-07-01-preview, 2024-09-01, 2024-09-01-preview.
+// Azure REST API version: 2024-09-01. Prior API version in Azure Native 2.x: 2022-11-01.
 type SnapshotPolicy struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Schedule for daily snapshots
 	DailySchedule DailyScheduleResponsePtrOutput `pulumi:"dailySchedule"`
 	// The property to decide policy is enabled or not
@@ -277,6 +277,11 @@ func (o SnapshotPolicyOutput) ToSnapshotPolicyOutput() SnapshotPolicyOutput {
 
 func (o SnapshotPolicyOutput) ToSnapshotPolicyOutputWithContext(ctx context.Context) SnapshotPolicyOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o SnapshotPolicyOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SnapshotPolicy) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Schedule for daily snapshots

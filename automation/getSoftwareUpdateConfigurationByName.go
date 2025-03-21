@@ -12,9 +12,7 @@ import (
 )
 
 // Get a single software update configuration by name.
-// Azure REST API version: 2019-06-01.
-//
-// Other available API versions: 2017-05-15-preview, 2023-05-15-preview, 2024-10-23.
+// Azure REST API version: 2023-05-15-preview.
 func LookupSoftwareUpdateConfigurationByName(ctx *pulumi.Context, args *LookupSoftwareUpdateConfigurationByNameArgs, opts ...pulumi.InvokeOption) (*LookupSoftwareUpdateConfigurationByNameResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSoftwareUpdateConfigurationByNameResult
@@ -36,6 +34,8 @@ type LookupSoftwareUpdateConfigurationByNameArgs struct {
 
 // Software update configuration properties.
 type LookupSoftwareUpdateConfigurationByNameResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// CreatedBy property, which only appears in the response.
 	CreatedBy string `pulumi:"createdBy"`
 	// Creation time of the resource, which only appears in the response.
@@ -107,6 +107,11 @@ func (o LookupSoftwareUpdateConfigurationByNameResultOutput) ToLookupSoftwareUpd
 
 func (o LookupSoftwareUpdateConfigurationByNameResultOutput) ToLookupSoftwareUpdateConfigurationByNameResultOutputWithContext(ctx context.Context) LookupSoftwareUpdateConfigurationByNameResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupSoftwareUpdateConfigurationByNameResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSoftwareUpdateConfigurationByNameResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // CreatedBy property, which only appears in the response.

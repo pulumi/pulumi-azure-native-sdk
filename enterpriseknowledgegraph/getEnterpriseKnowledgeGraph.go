@@ -32,6 +32,8 @@ type LookupEnterpriseKnowledgeGraphArgs struct {
 
 // EnterpriseKnowledgeGraph resource definition
 type LookupEnterpriseKnowledgeGraphResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Specifies the resource ID.
 	Id string `pulumi:"id"`
 	// Specifies the location of the resource.
@@ -81,6 +83,11 @@ func (o LookupEnterpriseKnowledgeGraphResultOutput) ToLookupEnterpriseKnowledgeG
 
 func (o LookupEnterpriseKnowledgeGraphResultOutput) ToLookupEnterpriseKnowledgeGraphResultOutputWithContext(ctx context.Context) LookupEnterpriseKnowledgeGraphResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupEnterpriseKnowledgeGraphResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEnterpriseKnowledgeGraphResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Specifies the resource ID.

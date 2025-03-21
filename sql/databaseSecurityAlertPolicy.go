@@ -13,12 +13,12 @@ import (
 )
 
 // A database security alert policy.
-// Azure REST API version: 2021-11-01. Prior API version in Azure Native 1.x: 2020-11-01-preview.
-//
-// Other available API versions: 2018-06-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
+// Azure REST API version: 2021-11-01. Prior API version in Azure Native 2.x: 2021-11-01.
 type DatabaseSecurityAlertPolicy struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Specifies the UTC creation time of the policy.
 	CreationTime pulumi.StringOutput `pulumi:"creationTime"`
 	// Specifies an array of alerts that are disabled. Allowed values are: Sql_Injection, Sql_Injection_Vulnerability, Access_Anomaly, Data_Exfiltration, Unsafe_Action, Brute_Force
@@ -65,6 +65,9 @@ func NewDatabaseSecurityAlertPolicy(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:sql/v20140401:DatabaseSecurityAlertPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql/v20140401:DatabaseThreatDetectionPolicy"),
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20180601preview:DatabaseSecurityAlertPolicy"),
@@ -116,6 +119,9 @@ func NewDatabaseSecurityAlertPolicy(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20240501preview:DatabaseSecurityAlertPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql:DatabaseThreatDetectionPolicy"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -237,6 +243,11 @@ func (o DatabaseSecurityAlertPolicyOutput) ToDatabaseSecurityAlertPolicyOutput()
 
 func (o DatabaseSecurityAlertPolicyOutput) ToDatabaseSecurityAlertPolicyOutputWithContext(ctx context.Context) DatabaseSecurityAlertPolicyOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o DatabaseSecurityAlertPolicyOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseSecurityAlertPolicy) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Specifies the UTC creation time of the policy.

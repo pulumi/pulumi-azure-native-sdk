@@ -13,16 +13,16 @@ import (
 )
 
 // A provider instance associated with SAP monitor.
-// Azure REST API version: 2023-04-01. Prior API version in Azure Native 1.x: 2021-12-01-preview.
-//
-// Other available API versions: 2023-10-01-preview, 2023-12-01-preview, 2024-02-01-preview.
+// Azure REST API version: 2024-02-01-preview. Prior API version in Azure Native 2.x: 2023-04-01.
 type ProviderInstance struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Defines the provider instance errors.
-	Errors ProviderInstancePropertiesResponseErrorsOutput `pulumi:"errors"`
-	// [currently not in use] Managed service identity(user assigned identities)
-	Identity UserAssignedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	Errors ErrorDetailResponseOutput `pulumi:"errors"`
+	// Resource health details
+	Health HealthResponseOutput `pulumi:"health"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Defines the provider specific properties.
@@ -102,8 +102,6 @@ func (ProviderInstanceState) ElementType() reflect.Type {
 }
 
 type providerInstanceArgs struct {
-	// [currently not in use] Managed service identity(user assigned identities)
-	Identity *UserAssignedServiceIdentity `pulumi:"identity"`
 	// Name of the SAP monitor resource.
 	MonitorName string `pulumi:"monitorName"`
 	// Name of the provider instance.
@@ -116,8 +114,6 @@ type providerInstanceArgs struct {
 
 // The set of arguments for constructing a ProviderInstance resource.
 type ProviderInstanceArgs struct {
-	// [currently not in use] Managed service identity(user assigned identities)
-	Identity UserAssignedServiceIdentityPtrInput
 	// Name of the SAP monitor resource.
 	MonitorName pulumi.StringInput
 	// Name of the provider instance.
@@ -165,14 +161,19 @@ func (o ProviderInstanceOutput) ToProviderInstanceOutputWithContext(ctx context.
 	return o
 }
 
-// Defines the provider instance errors.
-func (o ProviderInstanceOutput) Errors() ProviderInstancePropertiesResponseErrorsOutput {
-	return o.ApplyT(func(v *ProviderInstance) ProviderInstancePropertiesResponseErrorsOutput { return v.Errors }).(ProviderInstancePropertiesResponseErrorsOutput)
+// The Azure API version of the resource.
+func (o ProviderInstanceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProviderInstance) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
-// [currently not in use] Managed service identity(user assigned identities)
-func (o ProviderInstanceOutput) Identity() UserAssignedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *ProviderInstance) UserAssignedServiceIdentityResponsePtrOutput { return v.Identity }).(UserAssignedServiceIdentityResponsePtrOutput)
+// Defines the provider instance errors.
+func (o ProviderInstanceOutput) Errors() ErrorDetailResponseOutput {
+	return o.ApplyT(func(v *ProviderInstance) ErrorDetailResponseOutput { return v.Errors }).(ErrorDetailResponseOutput)
+}
+
+// Resource health details
+func (o ProviderInstanceOutput) Health() HealthResponseOutput {
+	return o.ApplyT(func(v *ProviderInstance) HealthResponseOutput { return v.Health }).(HealthResponseOutput)
 }
 
 // The name of the resource

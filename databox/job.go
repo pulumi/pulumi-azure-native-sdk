@@ -13,14 +13,18 @@ import (
 )
 
 // Job Resource.
-// Azure REST API version: 2022-12-01. Prior API version in Azure Native 1.x: 2020-11-01.
-//
-// Other available API versions: 2023-03-01, 2023-12-01, 2024-02-01-preview, 2024-03-01-preview.
+// Azure REST API version: 2024-03-01-preview. Prior API version in Azure Native 2.x: 2022-12-01.
 type Job struct {
 	pulumi.CustomResourceState
 
+	// Flag to indicate if all devices associated with the job are lost.
+	AllDevicesLost pulumi.BoolOutput `pulumi:"allDevicesLost"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Reason for cancellation.
 	CancellationReason pulumi.StringOutput `pulumi:"cancellationReason"`
+	// Name of the stage where delay might be present.
+	DelayedStage pulumi.StringOutput `pulumi:"delayedStage"`
 	// Delivery Info of Job.
 	DeliveryInfo JobDeliveryInfoResponsePtrOutput `pulumi:"deliveryInfo"`
 	// Delivery type of Job.
@@ -135,6 +139,9 @@ func NewJob(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:databox/v20240301preview:Job"),
+		},
+		{
+			Type: pulumi.String("azure-native:databox/v20250201:Job"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -254,9 +261,24 @@ func (o JobOutput) ToJobOutputWithContext(ctx context.Context) JobOutput {
 	return o
 }
 
+// Flag to indicate if all devices associated with the job are lost.
+func (o JobOutput) AllDevicesLost() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Job) pulumi.BoolOutput { return v.AllDevicesLost }).(pulumi.BoolOutput)
+}
+
+// The Azure API version of the resource.
+func (o JobOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Reason for cancellation.
 func (o JobOutput) CancellationReason() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.CancellationReason }).(pulumi.StringOutput)
+}
+
+// Name of the stage where delay might be present.
+func (o JobOutput) DelayedStage() pulumi.StringOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.DelayedStage }).(pulumi.StringOutput)
 }
 
 // Delivery Info of Job.

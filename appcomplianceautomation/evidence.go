@@ -13,10 +13,12 @@ import (
 )
 
 // A class represent an AppComplianceAutomation evidence resource.
-// Azure REST API version: 2024-06-27.
+// Azure REST API version: 2024-06-27. Prior API version in Azure Native 2.x: 2024-06-27.
 type Evidence struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Control id.
 	ControlId pulumi.StringPtrOutput `pulumi:"controlId"`
 	// Evidence type.
@@ -166,6 +168,11 @@ func (o EvidenceOutput) ToEvidenceOutput() EvidenceOutput {
 
 func (o EvidenceOutput) ToEvidenceOutputWithContext(ctx context.Context) EvidenceOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o EvidenceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Evidence) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Control id.

@@ -13,8 +13,6 @@ import (
 
 // List allowed upgrade plans for application.
 // Azure REST API version: 2021-07-01.
-//
-// Other available API versions: 2023-12-01-preview.
 func ListApplicationAllowedUpgradePlans(ctx *pulumi.Context, args *ListApplicationAllowedUpgradePlansArgs, opts ...pulumi.InvokeOption) (*ListApplicationAllowedUpgradePlansResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListApplicationAllowedUpgradePlansResult

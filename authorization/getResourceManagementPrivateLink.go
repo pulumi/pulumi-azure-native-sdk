@@ -31,6 +31,8 @@ type LookupResourceManagementPrivateLinkArgs struct {
 }
 
 type LookupResourceManagementPrivateLinkResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The rmplResourceID.
 	Id string `pulumi:"id"`
 	// the region of the rmpl
@@ -74,6 +76,11 @@ func (o LookupResourceManagementPrivateLinkResultOutput) ToLookupResourceManagem
 
 func (o LookupResourceManagementPrivateLinkResultOutput) ToLookupResourceManagementPrivateLinkResultOutputWithContext(ctx context.Context) LookupResourceManagementPrivateLinkResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupResourceManagementPrivateLinkResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupResourceManagementPrivateLinkResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The rmplResourceID.

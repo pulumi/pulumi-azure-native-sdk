@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Describes what response the data plane API of a Search service would send for requests that failed authentication.
+// Describes what response the data plane API of a search service would send for requests that failed authentication.
 type AadAuthFailureMode string
 
 const (
@@ -512,7 +512,7 @@ func (in *identityTypePtr) ToIdentityTypePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(IdentityTypePtrOutput)
 }
 
-// The provisioning state of the private link service connection. Can be Updating, Deleting, Failed, Succeeded, or Incomplete
+// The provisioning state of the private link service connection. Valid values are Updating, Deleting, Failed, Succeeded, or Incomplete
 type PrivateLinkServiceConnectionProvisioningState string
 
 const (
@@ -692,7 +692,7 @@ func (in *privateLinkServiceConnectionProvisioningStatePtr) ToPrivateLinkService
 	return pulumi.ToOutputWithContext(ctx, in).(PrivateLinkServiceConnectionProvisioningStatePtrOutput)
 }
 
-// Status of the the private link service connection. Can be Pending, Approved, Rejected, or Disconnected.
+// Status of the the private link service connection. Valid values are Pending, Approved, Rejected, or Disconnected.
 type PrivateLinkServiceConnectionStatus string
 
 const (
@@ -1032,13 +1032,13 @@ func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessPtrOutput)
 }
 
-// Describes how a search service should enforce having one or more non customer encrypted resources.
+// Describes how a search service should enforce having one or more non-customer-encrypted resources.
 type SearchEncryptionWithCmk string
 
 const (
-	// No enforcement will be made and the search service can have non customer encrypted resources.
+	// No enforcement will be made and the search service can have non-customer-encrypted resources.
 	SearchEncryptionWithCmkDisabled = SearchEncryptionWithCmk("Disabled")
-	// Search service will be marked as non-compliant if there are one or more non customer encrypted resources.
+	// Search service will be marked as non-compliant if there are one or more non-customer-encrypted resources.
 	SearchEncryptionWithCmkEnabled = SearchEncryptionWithCmk("Enabled")
 	// Enforcement policy is not explicitly specified, with the behavior being the same as if it were set to 'Disabled'.
 	SearchEncryptionWithCmkUnspecified = SearchEncryptionWithCmk("Unspecified")
@@ -1203,7 +1203,178 @@ func (in *searchEncryptionWithCmkPtr) ToSearchEncryptionWithCmkPtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(SearchEncryptionWithCmkPtrOutput)
 }
 
-// The provisioning state of the shared private link resource. Can be Updating, Deleting, Failed, Succeeded or Incomplete.
+// Sets options that control the availability of semantic search. This configuration is only possible for certain search SKUs in certain locations.
+type SearchSemanticSearch string
+
+const (
+	// Indicates that semantic ranking is disabled for the search service.
+	SearchSemanticSearchDisabled = SearchSemanticSearch("disabled")
+	// Enables semantic ranking on a search service and indicates that it is to be used within the limits of the free tier. This would cap the volume of semantic ranking requests and is offered at no extra charge. This is the default for newly provisioned search services.
+	SearchSemanticSearchFree = SearchSemanticSearch("free")
+	// Enables semantic ranking on a search service as a billable feature, with higher throughput and volume of semantic ranking requests.
+	SearchSemanticSearchStandard = SearchSemanticSearch("standard")
+)
+
+func (SearchSemanticSearch) ElementType() reflect.Type {
+	return reflect.TypeOf((*SearchSemanticSearch)(nil)).Elem()
+}
+
+func (e SearchSemanticSearch) ToSearchSemanticSearchOutput() SearchSemanticSearchOutput {
+	return pulumi.ToOutput(e).(SearchSemanticSearchOutput)
+}
+
+func (e SearchSemanticSearch) ToSearchSemanticSearchOutputWithContext(ctx context.Context) SearchSemanticSearchOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SearchSemanticSearchOutput)
+}
+
+func (e SearchSemanticSearch) ToSearchSemanticSearchPtrOutput() SearchSemanticSearchPtrOutput {
+	return e.ToSearchSemanticSearchPtrOutputWithContext(context.Background())
+}
+
+func (e SearchSemanticSearch) ToSearchSemanticSearchPtrOutputWithContext(ctx context.Context) SearchSemanticSearchPtrOutput {
+	return SearchSemanticSearch(e).ToSearchSemanticSearchOutputWithContext(ctx).ToSearchSemanticSearchPtrOutputWithContext(ctx)
+}
+
+func (e SearchSemanticSearch) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SearchSemanticSearch) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SearchSemanticSearch) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SearchSemanticSearch) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SearchSemanticSearchOutput struct{ *pulumi.OutputState }
+
+func (SearchSemanticSearchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SearchSemanticSearch)(nil)).Elem()
+}
+
+func (o SearchSemanticSearchOutput) ToSearchSemanticSearchOutput() SearchSemanticSearchOutput {
+	return o
+}
+
+func (o SearchSemanticSearchOutput) ToSearchSemanticSearchOutputWithContext(ctx context.Context) SearchSemanticSearchOutput {
+	return o
+}
+
+func (o SearchSemanticSearchOutput) ToSearchSemanticSearchPtrOutput() SearchSemanticSearchPtrOutput {
+	return o.ToSearchSemanticSearchPtrOutputWithContext(context.Background())
+}
+
+func (o SearchSemanticSearchOutput) ToSearchSemanticSearchPtrOutputWithContext(ctx context.Context) SearchSemanticSearchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SearchSemanticSearch) *SearchSemanticSearch {
+		return &v
+	}).(SearchSemanticSearchPtrOutput)
+}
+
+func (o SearchSemanticSearchOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SearchSemanticSearchOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SearchSemanticSearch) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SearchSemanticSearchOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SearchSemanticSearchOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SearchSemanticSearch) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SearchSemanticSearchPtrOutput struct{ *pulumi.OutputState }
+
+func (SearchSemanticSearchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SearchSemanticSearch)(nil)).Elem()
+}
+
+func (o SearchSemanticSearchPtrOutput) ToSearchSemanticSearchPtrOutput() SearchSemanticSearchPtrOutput {
+	return o
+}
+
+func (o SearchSemanticSearchPtrOutput) ToSearchSemanticSearchPtrOutputWithContext(ctx context.Context) SearchSemanticSearchPtrOutput {
+	return o
+}
+
+func (o SearchSemanticSearchPtrOutput) Elem() SearchSemanticSearchOutput {
+	return o.ApplyT(func(v *SearchSemanticSearch) SearchSemanticSearch {
+		if v != nil {
+			return *v
+		}
+		var ret SearchSemanticSearch
+		return ret
+	}).(SearchSemanticSearchOutput)
+}
+
+func (o SearchSemanticSearchPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SearchSemanticSearchPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SearchSemanticSearch) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SearchSemanticSearchInput is an input type that accepts values of the SearchSemanticSearch enum
+// A concrete instance of `SearchSemanticSearchInput` can be one of the following:
+//
+//	SearchSemanticSearchDisabled
+//	SearchSemanticSearchFree
+//	SearchSemanticSearchStandard
+type SearchSemanticSearchInput interface {
+	pulumi.Input
+
+	ToSearchSemanticSearchOutput() SearchSemanticSearchOutput
+	ToSearchSemanticSearchOutputWithContext(context.Context) SearchSemanticSearchOutput
+}
+
+var searchSemanticSearchPtrType = reflect.TypeOf((**SearchSemanticSearch)(nil)).Elem()
+
+type SearchSemanticSearchPtrInput interface {
+	pulumi.Input
+
+	ToSearchSemanticSearchPtrOutput() SearchSemanticSearchPtrOutput
+	ToSearchSemanticSearchPtrOutputWithContext(context.Context) SearchSemanticSearchPtrOutput
+}
+
+type searchSemanticSearchPtr string
+
+func SearchSemanticSearchPtr(v string) SearchSemanticSearchPtrInput {
+	return (*searchSemanticSearchPtr)(&v)
+}
+
+func (*searchSemanticSearchPtr) ElementType() reflect.Type {
+	return searchSemanticSearchPtrType
+}
+
+func (in *searchSemanticSearchPtr) ToSearchSemanticSearchPtrOutput() SearchSemanticSearchPtrOutput {
+	return pulumi.ToOutput(in).(SearchSemanticSearchPtrOutput)
+}
+
+func (in *searchSemanticSearchPtr) ToSearchSemanticSearchPtrOutputWithContext(ctx context.Context) SearchSemanticSearchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SearchSemanticSearchPtrOutput)
+}
+
+// The provisioning state of the shared private link resource. Valid values are Updating, Deleting, Failed, Succeeded or Incomplete.
 type SharedPrivateLinkResourceProvisioningState string
 
 const (
@@ -1375,7 +1546,7 @@ func (in *sharedPrivateLinkResourceProvisioningStatePtr) ToSharedPrivateLinkReso
 	return pulumi.ToOutputWithContext(ctx, in).(SharedPrivateLinkResourceProvisioningStatePtrOutput)
 }
 
-// Status of the shared private link resource. Can be Pending, Approved, Rejected or Disconnected.
+// Status of the shared private link resource. Valid values are Pending, Approved, Rejected or Disconnected.
 type SharedPrivateLinkResourceStatus string
 
 const (
@@ -1549,19 +1720,19 @@ func (in *sharedPrivateLinkResourceStatusPtr) ToSharedPrivateLinkResourceStatusP
 type SkuName string
 
 const (
-	// Free tier, with no SLA guarantees and a subset of features offered to paid tiers.
+	// Free tier, with no SLA guarantees and a subset of the features offered on billable tiers.
 	SkuNameFree = SkuName("free")
-	// Paid tier dedicated service with up to 3 replicas.
+	// Billable tier for a dedicated service having up to 3 replicas.
 	SkuNameBasic = SkuName("basic")
-	// Paid tier dedicated service with up to 12 partitions and 12 replicas.
+	// Billable tier for a dedicated service having up to 12 partitions and 12 replicas.
 	SkuNameStandard = SkuName("standard")
 	// Similar to 'standard', but with more capacity per search unit.
 	SkuNameStandard2 = SkuName("standard2")
 	//  The largest Standard offering with up to 12 partitions and 12 replicas (or up to 3 partitions with more indexes if you also set the hostingMode property to 'highDensity').
 	SkuNameStandard3 = SkuName("standard3")
-	// Paid tier dedicated service that supports 1TB per partition, up to 12 partitions.
+	// Billable tier for a dedicated service that supports 1TB per partition, up to 12 partitions.
 	SkuNameStorageOptimizedL1 = SkuName("storage_optimized_l1")
-	// Paid tier dedicated service that supports 2TB per partition, up to 12 partitions.
+	// Billable tier for a dedicated service that supports 2TB per partition, up to 12 partitions.
 	SkuNameStorageOptimizedL2 = SkuName("storage_optimized_l2")
 )
 
@@ -1743,6 +1914,8 @@ func init() {
 	pulumi.RegisterOutputType(PublicNetworkAccessPtrOutput{})
 	pulumi.RegisterOutputType(SearchEncryptionWithCmkOutput{})
 	pulumi.RegisterOutputType(SearchEncryptionWithCmkPtrOutput{})
+	pulumi.RegisterOutputType(SearchSemanticSearchOutput{})
+	pulumi.RegisterOutputType(SearchSemanticSearchPtrOutput{})
 	pulumi.RegisterOutputType(SharedPrivateLinkResourceProvisioningStateOutput{})
 	pulumi.RegisterOutputType(SharedPrivateLinkResourceProvisioningStatePtrOutput{})
 	pulumi.RegisterOutputType(SharedPrivateLinkResourceStatusOutput{})

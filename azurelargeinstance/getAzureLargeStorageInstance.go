@@ -34,6 +34,8 @@ type LookupAzureLargeStorageInstanceArgs struct {
 // AzureLargeStorageInstance info on Azure (ARM properties and
 // AzureLargeStorageInstance properties)
 type LookupAzureLargeStorageInstanceResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Specifies the AzureLargeStorageInstance unique ID.
 	AzureLargeStorageInstanceUniqueIdentifier *string `pulumi:"azureLargeStorageInstanceUniqueIdentifier"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -88,6 +90,11 @@ func (o LookupAzureLargeStorageInstanceResultOutput) ToLookupAzureLargeStorageIn
 
 func (o LookupAzureLargeStorageInstanceResultOutput) ToLookupAzureLargeStorageInstanceResultOutputWithContext(ctx context.Context) LookupAzureLargeStorageInstanceResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupAzureLargeStorageInstanceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAzureLargeStorageInstanceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Specifies the AzureLargeStorageInstance unique ID.

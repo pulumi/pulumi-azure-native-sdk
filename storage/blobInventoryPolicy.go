@@ -13,12 +13,12 @@ import (
 )
 
 // The storage account blob inventory policy.
-// Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2021-02-01.
-//
-// Other available API versions: 2023-01-01, 2023-04-01, 2023-05-01, 2024-01-01.
+// Azure REST API version: 2024-01-01. Prior API version in Azure Native 2.x: 2022-09-01.
 type BlobInventoryPolicy struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Returns the last modified date and time of the blob inventory policy.
 	LastModifiedTime pulumi.StringOutput `pulumi:"lastModifiedTime"`
 	// The name of the resource
@@ -182,6 +182,11 @@ func (o BlobInventoryPolicyOutput) ToBlobInventoryPolicyOutput() BlobInventoryPo
 
 func (o BlobInventoryPolicyOutput) ToBlobInventoryPolicyOutputWithContext(ctx context.Context) BlobInventoryPolicyOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o BlobInventoryPolicyOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *BlobInventoryPolicy) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Returns the last modified date and time of the blob inventory policy.

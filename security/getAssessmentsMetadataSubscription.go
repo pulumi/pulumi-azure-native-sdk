@@ -31,8 +31,10 @@ type LookupAssessmentsMetadataSubscriptionArgs struct {
 // Security assessment metadata
 type LookupAssessmentsMetadataSubscriptionResult struct {
 	// BuiltIn if the assessment based on built-in Azure Policy definition, Custom if the assessment based on custom Azure Policy definition
-	AssessmentType string   `pulumi:"assessmentType"`
-	Categories     []string `pulumi:"categories"`
+	AssessmentType string `pulumi:"assessmentType"`
+	// The Azure API version of the resource.
+	AzureApiVersion string   `pulumi:"azureApiVersion"`
+	Categories      []string `pulumi:"categories"`
 	// Human readable description of the assessment
 	Description *string `pulumi:"description"`
 	// User friendly display name of the assessment
@@ -94,6 +96,11 @@ func (o LookupAssessmentsMetadataSubscriptionResultOutput) ToLookupAssessmentsMe
 // BuiltIn if the assessment based on built-in Azure Policy definition, Custom if the assessment based on custom Azure Policy definition
 func (o LookupAssessmentsMetadataSubscriptionResultOutput) AssessmentType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAssessmentsMetadataSubscriptionResult) string { return v.AssessmentType }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupAssessmentsMetadataSubscriptionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAssessmentsMetadataSubscriptionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 func (o LookupAssessmentsMetadataSubscriptionResultOutput) Categories() pulumi.StringArrayOutput {

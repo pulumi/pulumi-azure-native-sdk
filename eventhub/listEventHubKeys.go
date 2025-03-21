@@ -12,9 +12,7 @@ import (
 )
 
 // Gets the ACS and SAS connection strings for the Event Hub.
-// Azure REST API version: 2022-10-01-preview.
-//
-// Other available API versions: 2023-01-01-preview, 2024-01-01, 2024-05-01-preview.
+// Azure REST API version: 2024-01-01.
 func ListEventHubKeys(ctx *pulumi.Context, args *ListEventHubKeysArgs, opts ...pulumi.InvokeOption) (*ListEventHubKeysResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListEventHubKeysResult

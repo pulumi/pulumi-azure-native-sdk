@@ -13,10 +13,12 @@ import (
 )
 
 // The SecretSync resource.
-// Azure REST API version: 2024-08-21-preview.
+// Azure REST API version: 2024-08-21-preview. Prior API version in Azure Native 2.x: 2024-08-21-preview.
 type SecretSync struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The complex type of the extended location.
 	ExtendedLocation AzureResourceManagerCommonTypesExtendedLocationResponsePtrOutput `pulumi:"extendedLocation"`
 	// ForceSynchronization can be used to force the secret synchronization. The secret synchronization is triggered by changing the value in this field. This field is not used to resolve synchronization conflicts.
@@ -187,6 +189,11 @@ func (o SecretSyncOutput) ToSecretSyncOutput() SecretSyncOutput {
 
 func (o SecretSyncOutput) ToSecretSyncOutputWithContext(ctx context.Context) SecretSyncOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o SecretSyncOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecretSync) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The complex type of the extended location.

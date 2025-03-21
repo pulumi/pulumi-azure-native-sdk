@@ -13,14 +13,14 @@ import (
 )
 
 // Information about JIT request definition.
-// Azure REST API version: 2021-07-01. Prior API version in Azure Native 1.x: 2019-07-01.
-//
-// Other available API versions: 2023-12-01-preview.
+// Azure REST API version: 2021-07-01. Prior API version in Azure Native 2.x: 2021-07-01.
 type JitRequest struct {
 	pulumi.CustomResourceState
 
 	// The parent application id.
 	ApplicationResourceId pulumi.StringOutput `pulumi:"applicationResourceId"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The client entity that created the JIT request.
 	CreatedBy ApplicationClientDetailsResponseOutput `pulumi:"createdBy"`
 	// The JIT authorization policies.
@@ -200,6 +200,11 @@ func (o JitRequestOutput) ToJitRequestOutputWithContext(ctx context.Context) Jit
 // The parent application id.
 func (o JitRequestOutput) ApplicationResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *JitRequest) pulumi.StringOutput { return v.ApplicationResourceId }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o JitRequestOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *JitRequest) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The client entity that created the JIT request.

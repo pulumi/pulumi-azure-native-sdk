@@ -13,34 +13,18 @@ import (
 )
 
 // P2SVpnServerConfiguration Resource.
-// Azure REST API version: 2019-07-01. Prior API version in Azure Native 1.x: 2019-07-01.
+// Azure REST API version: 2019-07-01. Prior API version in Azure Native 2.x: 2019-07-01.
 type P2sVpnServerConfiguration struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag pulumi.StringOutput `pulumi:"etag"`
-	// The name of the P2SVpnServerConfiguration that is unique within a VirtualWan in a resource group. This name can be used to access the resource along with Paren VirtualWan resource name.
+	// The name of the resource that is unique within a resource group. This name can be used to access the resource.
 	Name pulumi.StringPtrOutput `pulumi:"name"`
-	// List of references to P2SVpnGateways.
-	P2SVpnGateways SubResourceResponseArrayOutput `pulumi:"p2SVpnGateways"`
-	// Radius client root certificate of P2SVpnServerConfiguration.
-	P2SVpnServerConfigRadiusClientRootCertificates P2SVpnServerConfigRadiusClientRootCertificateResponseArrayOutput `pulumi:"p2SVpnServerConfigRadiusClientRootCertificates"`
-	// Radius Server root certificate of P2SVpnServerConfiguration.
-	P2SVpnServerConfigRadiusServerRootCertificates P2SVpnServerConfigRadiusServerRootCertificateResponseArrayOutput `pulumi:"p2SVpnServerConfigRadiusServerRootCertificates"`
-	// VPN client revoked certificate of P2SVpnServerConfiguration.
-	P2SVpnServerConfigVpnClientRevokedCertificates P2SVpnServerConfigVpnClientRevokedCertificateResponseArrayOutput `pulumi:"p2SVpnServerConfigVpnClientRevokedCertificates"`
-	// VPN client root certificate of P2SVpnServerConfiguration.
-	P2SVpnServerConfigVpnClientRootCertificates P2SVpnServerConfigVpnClientRootCertificateResponseArrayOutput `pulumi:"p2SVpnServerConfigVpnClientRootCertificates"`
-	// The provisioning state of the P2S VPN server configuration resource.
-	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// The radius server address property of the P2SVpnServerConfiguration resource for point to site client connection.
-	RadiusServerAddress pulumi.StringPtrOutput `pulumi:"radiusServerAddress"`
-	// The radius secret property of the P2SVpnServerConfiguration resource for point to site client connection.
-	RadiusServerSecret pulumi.StringPtrOutput `pulumi:"radiusServerSecret"`
-	// VpnClientIpsecPolicies for P2SVpnServerConfiguration.
-	VpnClientIpsecPolicies IpsecPolicyResponseArrayOutput `pulumi:"vpnClientIpsecPolicies"`
-	// VPN protocols for the P2SVpnServerConfiguration.
-	VpnProtocols pulumi.StringArrayOutput `pulumi:"vpnProtocols"`
+	// Properties of the P2SVpnServer configuration.
+	Properties P2SVpnServerConfigurationPropertiesResponseOutput `pulumi:"properties"`
 }
 
 // NewP2sVpnServerConfiguration registers a new resource with the given unique name, arguments, and options.
@@ -118,60 +102,32 @@ func (P2sVpnServerConfigurationState) ElementType() reflect.Type {
 type p2sVpnServerConfigurationArgs struct {
 	// Resource ID.
 	Id *string `pulumi:"id"`
-	// The name of the P2SVpnServerConfiguration that is unique within a VirtualWan in a resource group. This name can be used to access the resource along with Paren VirtualWan resource name.
+	// The name of the resource that is unique within a resource group. This name can be used to access the resource.
 	Name *string `pulumi:"name"`
-	// Radius client root certificate of P2SVpnServerConfiguration.
-	P2SVpnServerConfigRadiusClientRootCertificates []P2SVpnServerConfigRadiusClientRootCertificate `pulumi:"p2SVpnServerConfigRadiusClientRootCertificates"`
-	// Radius Server root certificate of P2SVpnServerConfiguration.
-	P2SVpnServerConfigRadiusServerRootCertificates []P2SVpnServerConfigRadiusServerRootCertificate `pulumi:"p2SVpnServerConfigRadiusServerRootCertificates"`
-	// VPN client revoked certificate of P2SVpnServerConfiguration.
-	P2SVpnServerConfigVpnClientRevokedCertificates []P2SVpnServerConfigVpnClientRevokedCertificate `pulumi:"p2SVpnServerConfigVpnClientRevokedCertificates"`
-	// VPN client root certificate of P2SVpnServerConfiguration.
-	P2SVpnServerConfigVpnClientRootCertificates []P2SVpnServerConfigVpnClientRootCertificate `pulumi:"p2SVpnServerConfigVpnClientRootCertificates"`
 	// The name of the P2SVpnServerConfiguration.
 	P2SVpnServerConfigurationName *string `pulumi:"p2SVpnServerConfigurationName"`
-	// The radius server address property of the P2SVpnServerConfiguration resource for point to site client connection.
-	RadiusServerAddress *string `pulumi:"radiusServerAddress"`
-	// The radius secret property of the P2SVpnServerConfiguration resource for point to site client connection.
-	RadiusServerSecret *string `pulumi:"radiusServerSecret"`
+	// Properties of the P2SVpnServer configuration.
+	Properties *P2SVpnServerConfigurationProperties `pulumi:"properties"`
 	// The resource group name of the VirtualWan.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the VirtualWan.
 	VirtualWanName string `pulumi:"virtualWanName"`
-	// VpnClientIpsecPolicies for P2SVpnServerConfiguration.
-	VpnClientIpsecPolicies []IpsecPolicy `pulumi:"vpnClientIpsecPolicies"`
-	// VPN protocols for the P2SVpnServerConfiguration.
-	VpnProtocols []string `pulumi:"vpnProtocols"`
 }
 
 // The set of arguments for constructing a P2sVpnServerConfiguration resource.
 type P2sVpnServerConfigurationArgs struct {
 	// Resource ID.
 	Id pulumi.StringPtrInput
-	// The name of the P2SVpnServerConfiguration that is unique within a VirtualWan in a resource group. This name can be used to access the resource along with Paren VirtualWan resource name.
+	// The name of the resource that is unique within a resource group. This name can be used to access the resource.
 	Name pulumi.StringPtrInput
-	// Radius client root certificate of P2SVpnServerConfiguration.
-	P2SVpnServerConfigRadiusClientRootCertificates P2SVpnServerConfigRadiusClientRootCertificateArrayInput
-	// Radius Server root certificate of P2SVpnServerConfiguration.
-	P2SVpnServerConfigRadiusServerRootCertificates P2SVpnServerConfigRadiusServerRootCertificateArrayInput
-	// VPN client revoked certificate of P2SVpnServerConfiguration.
-	P2SVpnServerConfigVpnClientRevokedCertificates P2SVpnServerConfigVpnClientRevokedCertificateArrayInput
-	// VPN client root certificate of P2SVpnServerConfiguration.
-	P2SVpnServerConfigVpnClientRootCertificates P2SVpnServerConfigVpnClientRootCertificateArrayInput
 	// The name of the P2SVpnServerConfiguration.
 	P2SVpnServerConfigurationName pulumi.StringPtrInput
-	// The radius server address property of the P2SVpnServerConfiguration resource for point to site client connection.
-	RadiusServerAddress pulumi.StringPtrInput
-	// The radius secret property of the P2SVpnServerConfiguration resource for point to site client connection.
-	RadiusServerSecret pulumi.StringPtrInput
+	// Properties of the P2SVpnServer configuration.
+	Properties P2SVpnServerConfigurationPropertiesPtrInput
 	// The resource group name of the VirtualWan.
 	ResourceGroupName pulumi.StringInput
 	// The name of the VirtualWan.
 	VirtualWanName pulumi.StringInput
-	// VpnClientIpsecPolicies for P2SVpnServerConfiguration.
-	VpnClientIpsecPolicies IpsecPolicyArrayInput
-	// VPN protocols for the P2SVpnServerConfiguration.
-	VpnProtocols pulumi.StringArrayInput
 }
 
 func (P2sVpnServerConfigurationArgs) ElementType() reflect.Type {
@@ -211,72 +167,26 @@ func (o P2sVpnServerConfigurationOutput) ToP2sVpnServerConfigurationOutputWithCo
 	return o
 }
 
+// The Azure API version of the resource.
+func (o P2sVpnServerConfigurationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *P2sVpnServerConfiguration) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // A unique read-only string that changes whenever the resource is updated.
 func (o P2sVpnServerConfigurationOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *P2sVpnServerConfiguration) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
-// The name of the P2SVpnServerConfiguration that is unique within a VirtualWan in a resource group. This name can be used to access the resource along with Paren VirtualWan resource name.
+// The name of the resource that is unique within a resource group. This name can be used to access the resource.
 func (o P2sVpnServerConfigurationOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *P2sVpnServerConfiguration) pulumi.StringPtrOutput { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// List of references to P2SVpnGateways.
-func (o P2sVpnServerConfigurationOutput) P2SVpnGateways() SubResourceResponseArrayOutput {
-	return o.ApplyT(func(v *P2sVpnServerConfiguration) SubResourceResponseArrayOutput { return v.P2SVpnGateways }).(SubResourceResponseArrayOutput)
-}
-
-// Radius client root certificate of P2SVpnServerConfiguration.
-func (o P2sVpnServerConfigurationOutput) P2SVpnServerConfigRadiusClientRootCertificates() P2SVpnServerConfigRadiusClientRootCertificateResponseArrayOutput {
-	return o.ApplyT(func(v *P2sVpnServerConfiguration) P2SVpnServerConfigRadiusClientRootCertificateResponseArrayOutput {
-		return v.P2SVpnServerConfigRadiusClientRootCertificates
-	}).(P2SVpnServerConfigRadiusClientRootCertificateResponseArrayOutput)
-}
-
-// Radius Server root certificate of P2SVpnServerConfiguration.
-func (o P2sVpnServerConfigurationOutput) P2SVpnServerConfigRadiusServerRootCertificates() P2SVpnServerConfigRadiusServerRootCertificateResponseArrayOutput {
-	return o.ApplyT(func(v *P2sVpnServerConfiguration) P2SVpnServerConfigRadiusServerRootCertificateResponseArrayOutput {
-		return v.P2SVpnServerConfigRadiusServerRootCertificates
-	}).(P2SVpnServerConfigRadiusServerRootCertificateResponseArrayOutput)
-}
-
-// VPN client revoked certificate of P2SVpnServerConfiguration.
-func (o P2sVpnServerConfigurationOutput) P2SVpnServerConfigVpnClientRevokedCertificates() P2SVpnServerConfigVpnClientRevokedCertificateResponseArrayOutput {
-	return o.ApplyT(func(v *P2sVpnServerConfiguration) P2SVpnServerConfigVpnClientRevokedCertificateResponseArrayOutput {
-		return v.P2SVpnServerConfigVpnClientRevokedCertificates
-	}).(P2SVpnServerConfigVpnClientRevokedCertificateResponseArrayOutput)
-}
-
-// VPN client root certificate of P2SVpnServerConfiguration.
-func (o P2sVpnServerConfigurationOutput) P2SVpnServerConfigVpnClientRootCertificates() P2SVpnServerConfigVpnClientRootCertificateResponseArrayOutput {
-	return o.ApplyT(func(v *P2sVpnServerConfiguration) P2SVpnServerConfigVpnClientRootCertificateResponseArrayOutput {
-		return v.P2SVpnServerConfigVpnClientRootCertificates
-	}).(P2SVpnServerConfigVpnClientRootCertificateResponseArrayOutput)
-}
-
-// The provisioning state of the P2S VPN server configuration resource.
-func (o P2sVpnServerConfigurationOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v *P2sVpnServerConfiguration) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// The radius server address property of the P2SVpnServerConfiguration resource for point to site client connection.
-func (o P2sVpnServerConfigurationOutput) RadiusServerAddress() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *P2sVpnServerConfiguration) pulumi.StringPtrOutput { return v.RadiusServerAddress }).(pulumi.StringPtrOutput)
-}
-
-// The radius secret property of the P2SVpnServerConfiguration resource for point to site client connection.
-func (o P2sVpnServerConfigurationOutput) RadiusServerSecret() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *P2sVpnServerConfiguration) pulumi.StringPtrOutput { return v.RadiusServerSecret }).(pulumi.StringPtrOutput)
-}
-
-// VpnClientIpsecPolicies for P2SVpnServerConfiguration.
-func (o P2sVpnServerConfigurationOutput) VpnClientIpsecPolicies() IpsecPolicyResponseArrayOutput {
-	return o.ApplyT(func(v *P2sVpnServerConfiguration) IpsecPolicyResponseArrayOutput { return v.VpnClientIpsecPolicies }).(IpsecPolicyResponseArrayOutput)
-}
-
-// VPN protocols for the P2SVpnServerConfiguration.
-func (o P2sVpnServerConfigurationOutput) VpnProtocols() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *P2sVpnServerConfiguration) pulumi.StringArrayOutput { return v.VpnProtocols }).(pulumi.StringArrayOutput)
+// Properties of the P2SVpnServer configuration.
+func (o P2sVpnServerConfigurationOutput) Properties() P2SVpnServerConfigurationPropertiesResponseOutput {
+	return o.ApplyT(func(v *P2sVpnServerConfiguration) P2SVpnServerConfigurationPropertiesResponseOutput {
+		return v.Properties
+	}).(P2SVpnServerConfigurationPropertiesResponseOutput)
 }
 
 func init() {

@@ -12,9 +12,7 @@ import (
 )
 
 // Implements VirtualNetwork GET method.
-// Azure REST API version: 2022-05-21-preview.
-//
-// Other available API versions: 2023-04-01-preview, 2023-10-07, 2024-06-01.
+// Azure REST API version: 2023-04-01-preview.
 func LookupVirtualNetwork(ctx *pulumi.Context, args *LookupVirtualNetworkArgs, opts ...pulumi.InvokeOption) (*LookupVirtualNetworkResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVirtualNetworkResult
@@ -34,6 +32,8 @@ type LookupVirtualNetworkArgs struct {
 
 // The VirtualNetworks resource definition.
 type LookupVirtualNetworkResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The extended location.
 	ExtendedLocation ExtendedLocationResponse `pulumi:"extendedLocation"`
 	// Resource Id
@@ -93,6 +93,11 @@ func (o LookupVirtualNetworkResultOutput) ToLookupVirtualNetworkResultOutput() L
 
 func (o LookupVirtualNetworkResultOutput) ToLookupVirtualNetworkResultOutputWithContext(ctx context.Context) LookupVirtualNetworkResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupVirtualNetworkResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVirtualNetworkResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The extended location.

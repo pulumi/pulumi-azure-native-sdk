@@ -13,10 +13,12 @@ import (
 )
 
 // The privateStore offer data structure.
-// Azure REST API version: 2023-01-01. Prior API version in Azure Native 1.x: 2021-12-01.
+// Azure REST API version: 2023-01-01. Prior API version in Azure Native 2.x: 2023-01-01.
 type PrivateStoreCollectionOffer struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Private store offer creation date
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// Identifier for purposes of race condition
@@ -184,6 +186,11 @@ func (o PrivateStoreCollectionOfferOutput) ToPrivateStoreCollectionOfferOutput()
 
 func (o PrivateStoreCollectionOfferOutput) ToPrivateStoreCollectionOfferOutputWithContext(ctx context.Context) PrivateStoreCollectionOfferOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o PrivateStoreCollectionOfferOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrivateStoreCollectionOffer) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Private store offer creation date

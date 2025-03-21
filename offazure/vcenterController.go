@@ -13,12 +13,12 @@ import (
 )
 
 // A vcenter resource belonging to a site resource.
-// Azure REST API version: 2023-06-06.
-//
-// Other available API versions: 2023-10-01-preview, 2024-05-01-preview.
+// Azure REST API version: 2023-10-01-preview. Prior API version in Azure Native 2.x: 2023-06-06.
 type VcenterController struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets the timestamp marking vCenter creation.
 	CreatedTimestamp pulumi.StringOutput `pulumi:"createdTimestamp"`
 	// Gets the errors.
@@ -186,6 +186,11 @@ func (o VcenterControllerOutput) ToVcenterControllerOutput() VcenterControllerOu
 
 func (o VcenterControllerOutput) ToVcenterControllerOutputWithContext(ctx context.Context) VcenterControllerOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o VcenterControllerOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *VcenterController) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets the timestamp marking vCenter creation.

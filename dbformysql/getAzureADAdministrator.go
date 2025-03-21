@@ -12,9 +12,7 @@ import (
 )
 
 // Gets information about an azure ad administrator.
-// Azure REST API version: 2022-01-01.
-//
-// Other available API versions: 2023-06-01-preview, 2023-06-30, 2023-12-30.
+// Azure REST API version: 2023-12-30.
 func LookupAzureADAdministrator(ctx *pulumi.Context, args *LookupAzureADAdministratorArgs, opts ...pulumi.InvokeOption) (*LookupAzureADAdministratorResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAzureADAdministratorResult
@@ -38,7 +36,9 @@ type LookupAzureADAdministratorArgs struct {
 type LookupAzureADAdministratorResult struct {
 	// Type of the sever administrator.
 	AdministratorType *string `pulumi:"administratorType"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The resource id of the identity used for AAD Authentication.
 	IdentityResourceId *string `pulumi:"identityResourceId"`
@@ -48,7 +48,7 @@ type LookupAzureADAdministratorResult struct {
 	Name string `pulumi:"name"`
 	// SID (object ID) of the server administrator.
 	Sid *string `pulumi:"sid"`
-	// The system metadata relating to this resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Tenant ID of the administrator.
 	TenantId *string `pulumi:"tenantId"`
@@ -98,7 +98,12 @@ func (o LookupAzureADAdministratorResultOutput) AdministratorType() pulumi.Strin
 	return o.ApplyT(func(v LookupAzureADAdministratorResult) *string { return v.AdministratorType }).(pulumi.StringPtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// The Azure API version of the resource.
+func (o LookupAzureADAdministratorResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAzureADAdministratorResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupAzureADAdministratorResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAzureADAdministratorResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -123,7 +128,7 @@ func (o LookupAzureADAdministratorResultOutput) Sid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAzureADAdministratorResult) *string { return v.Sid }).(pulumi.StringPtrOutput)
 }
 
-// The system metadata relating to this resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupAzureADAdministratorResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupAzureADAdministratorResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }

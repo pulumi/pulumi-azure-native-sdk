@@ -13,8 +13,6 @@ import (
 
 // Gets an IPv6 firewall rule.
 // Azure REST API version: 2021-11-01.
-//
-// Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
 func LookupIPv6FirewallRule(ctx *pulumi.Context, args *LookupIPv6FirewallRuleArgs, opts ...pulumi.InvokeOption) (*LookupIPv6FirewallRuleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIPv6FirewallRuleResult
@@ -36,6 +34,8 @@ type LookupIPv6FirewallRuleArgs struct {
 
 // An IPv6 server firewall rule.
 type LookupIPv6FirewallRuleResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The end IP address of the firewall rule. Must be IPv6 format. Must be greater than or equal to startIpAddress.
 	EndIPv6Address *string `pulumi:"endIPv6Address"`
 	// Resource ID.
@@ -83,6 +83,11 @@ func (o LookupIPv6FirewallRuleResultOutput) ToLookupIPv6FirewallRuleResultOutput
 
 func (o LookupIPv6FirewallRuleResultOutput) ToLookupIPv6FirewallRuleResultOutputWithContext(ctx context.Context) LookupIPv6FirewallRuleResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupIPv6FirewallRuleResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIPv6FirewallRuleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The end IP address of the firewall rule. Must be IPv6 format. Must be greater than or equal to startIpAddress.

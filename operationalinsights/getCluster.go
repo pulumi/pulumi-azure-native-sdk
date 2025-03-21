@@ -12,9 +12,7 @@ import (
 )
 
 // Gets a Log Analytics cluster instance.
-// Azure REST API version: 2021-06-01.
-//
-// Other available API versions: 2019-08-01-preview, 2020-08-01, 2022-10-01, 2023-09-01.
+// Azure REST API version: 2023-09-01.
 func LookupCluster(ctx *pulumi.Context, args *LookupClusterArgs, opts ...pulumi.InvokeOption) (*LookupClusterResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupClusterResult
@@ -36,6 +34,8 @@ type LookupClusterArgs struct {
 type LookupClusterResult struct {
 	// The list of Log Analytics workspaces associated with the cluster
 	AssociatedWorkspaces []AssociatedWorkspaceResponse `pulumi:"associatedWorkspaces"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The cluster's billing type.
 	BillingType *string `pulumi:"billingType"`
 	// Additional properties for capacity reservation
@@ -46,8 +46,8 @@ type LookupClusterResult struct {
 	CreatedDate string `pulumi:"createdDate"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
-	// The identity of the resource.
-	Identity *IdentityResponse `pulumi:"identity"`
+	// Resource's identity.
+	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
 	// Sets whether the cluster will support availability zones. This can be set as true only in regions where Azure Data Explorer support Availability Zones. This Property can not be modified after cluster creation. Default value is 'true' if region supports Availability Zones.
 	IsAvailabilityZonesEnabled *bool `pulumi:"isAvailabilityZonesEnabled"`
 	// Configures whether cluster will use double encryption. This Property can not be modified after cluster creation. Default value is 'true'
@@ -110,6 +110,11 @@ func (o LookupClusterResultOutput) AssociatedWorkspaces() AssociatedWorkspaceRes
 	return o.ApplyT(func(v LookupClusterResult) []AssociatedWorkspaceResponse { return v.AssociatedWorkspaces }).(AssociatedWorkspaceResponseArrayOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupClusterResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The cluster's billing type.
 func (o LookupClusterResultOutput) BillingType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupClusterResult) *string { return v.BillingType }).(pulumi.StringPtrOutput)
@@ -137,9 +142,9 @@ func (o LookupClusterResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The identity of the resource.
-func (o LookupClusterResultOutput) Identity() IdentityResponsePtrOutput {
-	return o.ApplyT(func(v LookupClusterResult) *IdentityResponse { return v.Identity }).(IdentityResponsePtrOutput)
+// Resource's identity.
+func (o LookupClusterResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupClusterResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // Sets whether the cluster will support availability zones. This can be set as true only in regions where Azure Data Explorer support Availability Zones. This Property can not be modified after cluster creation. Default value is 'true' if region supports Availability Zones.

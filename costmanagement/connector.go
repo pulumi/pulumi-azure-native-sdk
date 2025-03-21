@@ -13,10 +13,12 @@ import (
 )
 
 // The Connector model definition
-// Azure REST API version: 2018-08-01-preview.
+// Azure REST API version: 2018-08-01-preview. Prior API version in Azure Native 2.x: 2018-08-01-preview.
 type Connector struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Collection information
 	Collection ConnectorCollectionInfoResponseOutput `pulumi:"collection"`
 	// Connector definition creation datetime
@@ -60,7 +62,13 @@ func NewConnector(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:costmanagement/v20180801preview:Connector"),
 		},
 		{
+			Type: pulumi.String("azure-native:costmanagement/v20190301preview:CloudConnector"),
+		},
+		{
 			Type: pulumi.String("azure-native:costmanagement/v20190301preview:Connector"),
+		},
+		{
+			Type: pulumi.String("azure-native:costmanagement:CloudConnector"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -178,6 +186,11 @@ func (o ConnectorOutput) ToConnectorOutput() ConnectorOutput {
 
 func (o ConnectorOutput) ToConnectorOutputWithContext(ctx context.Context) ConnectorOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ConnectorOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connector) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Collection information

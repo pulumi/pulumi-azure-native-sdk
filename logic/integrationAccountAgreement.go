@@ -13,14 +13,14 @@ import (
 )
 
 // The integration account agreement.
-// Azure REST API version: 2019-05-01. Prior API version in Azure Native 1.x: 2019-05-01.
-//
-// Other available API versions: 2015-08-01-preview.
+// Azure REST API version: 2019-05-01. Prior API version in Azure Native 2.x: 2019-05-01.
 type IntegrationAccountAgreement struct {
 	pulumi.CustomResourceState
 
 	// The agreement type.
 	AgreementType pulumi.StringOutput `pulumi:"agreementType"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The changed time.
 	ChangedTime pulumi.StringOutput `pulumi:"changedTime"`
 	// The agreement content.
@@ -81,6 +81,9 @@ func NewIntegrationAccountAgreement(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:logic/v20150801preview:IntegrationAccountAgreement"),
+		},
+		{
+			Type: pulumi.String("azure-native:logic/v20160601:Agreement"),
 		},
 		{
 			Type: pulumi.String("azure-native:logic/v20160601:IntegrationAccountAgreement"),
@@ -220,6 +223,11 @@ func (o IntegrationAccountAgreementOutput) ToIntegrationAccountAgreementOutputWi
 // The agreement type.
 func (o IntegrationAccountAgreementOutput) AgreementType() pulumi.StringOutput {
 	return o.ApplyT(func(v *IntegrationAccountAgreement) pulumi.StringOutput { return v.AgreementType }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o IntegrationAccountAgreementOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *IntegrationAccountAgreement) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The changed time.

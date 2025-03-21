@@ -13,12 +13,14 @@ import (
 )
 
 // An Azure resource which represents access to a suite of Maps REST APIs.
-// Azure REST API version: 2021-02-01. Prior API version in Azure Native 1.x: 2018-05-01.
-//
-// Other available API versions: 2018-05-01, 2021-12-01-preview, 2023-06-01, 2023-08-01-preview, 2023-12-01-preview, 2024-01-01-preview, 2024-07-01-preview.
+// Azure REST API version: 2024-07-01-preview. Prior API version in Azure Native 2.x: 2021-02-01.
 type Account struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// Managed service identity (system assigned and/or user assigned identities)
+	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// Get or Set Kind property.
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// The geo-location where the resource lives
@@ -29,7 +31,7 @@ type Account struct {
 	Properties MapsAccountPropertiesResponseOutput `pulumi:"properties"`
 	// The SKU of this account.
 	Sku SkuResponseOutput `pulumi:"sku"`
-	// The system meta data relating to this resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
@@ -124,6 +126,8 @@ func (AccountState) ElementType() reflect.Type {
 type accountArgs struct {
 	// The name of the Maps Account.
 	AccountName *string `pulumi:"accountName"`
+	// Managed service identity (system assigned and/or user assigned identities)
+	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// Get or Set Kind property.
 	Kind *string `pulumi:"kind"`
 	// The geo-location where the resource lives
@@ -142,6 +146,8 @@ type accountArgs struct {
 type AccountArgs struct {
 	// The name of the Maps Account.
 	AccountName pulumi.StringPtrInput
+	// Managed service identity (system assigned and/or user assigned identities)
+	Identity ManagedServiceIdentityPtrInput
 	// Get or Set Kind property.
 	Kind pulumi.StringPtrInput
 	// The geo-location where the resource lives
@@ -193,6 +199,16 @@ func (o AccountOutput) ToAccountOutputWithContext(ctx context.Context) AccountOu
 	return o
 }
 
+// The Azure API version of the resource.
+func (o AccountOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Managed service identity (system assigned and/or user assigned identities)
+func (o AccountOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *Account) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
+}
+
 // Get or Set Kind property.
 func (o AccountOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringPtrOutput { return v.Kind }).(pulumi.StringPtrOutput)
@@ -218,7 +234,7 @@ func (o AccountOutput) Sku() SkuResponseOutput {
 	return o.ApplyT(func(v *Account) SkuResponseOutput { return v.Sku }).(SkuResponseOutput)
 }
 
-// The system meta data relating to this resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o AccountOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *Account) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

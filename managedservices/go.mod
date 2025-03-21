@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-azure-native-sdk/managedservices/v2
+module github.com/pulumi/pulumi-azure-native-sdk/managedservices/v3
 
 go 1.22
 

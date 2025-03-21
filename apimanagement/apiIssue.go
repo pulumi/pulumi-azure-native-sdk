@@ -13,14 +13,14 @@ import (
 )
 
 // Issue Contract details.
-// Azure REST API version: 2022-08-01. Prior API version in Azure Native 1.x: 2020-12-01.
-//
-// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
+// Azure REST API version: 2022-09-01-preview. Prior API version in Azure Native 2.x: 2022-08-01.
 type ApiIssue struct {
 	pulumi.CustomResourceState
 
 	// A resource identifier for the API the issue was created for.
 	ApiId pulumi.StringPtrOutput `pulumi:"apiId"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Date and time when the issue was created.
 	CreatedDate pulumi.StringPtrOutput `pulumi:"createdDate"`
 	// Text describing the issue.
@@ -240,6 +240,11 @@ func (o ApiIssueOutput) ToApiIssueOutputWithContext(ctx context.Context) ApiIssu
 // A resource identifier for the API the issue was created for.
 func (o ApiIssueOutput) ApiId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApiIssue) pulumi.StringPtrOutput { return v.ApiId }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o ApiIssueOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApiIssue) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Date and time when the issue was created.

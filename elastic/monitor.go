@@ -13,12 +13,12 @@ import (
 )
 
 // Monitor resource.
-// Azure REST API version: 2023-06-01. Prior API version in Azure Native 1.x: 2020-07-01.
-//
-// Other available API versions: 2023-06-15-preview, 2023-07-01-preview, 2023-10-01-preview, 2023-11-01-preview, 2024-01-01-preview, 2024-03-01, 2024-05-01-preview, 2024-06-15-preview, 2024-10-01-preview.
+// Azure REST API version: 2024-03-01. Prior API version in Azure Native 2.x: 2023-06-01.
 type Monitor struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Identity properties of the monitor resource.
 	Identity IdentityPropertiesResponsePtrOutput `pulumi:"identity"`
 	// The location of the monitor resource
@@ -105,6 +105,9 @@ func NewMonitor(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:elastic/v20241001preview:Monitor"),
 		},
+		{
+			Type: pulumi.String("azure-native:elastic/v20250115preview:Monitor"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -148,7 +151,7 @@ type monitorArgs struct {
 	MonitorName *string `pulumi:"monitorName"`
 	// Properties of the monitor resource.
 	Properties *MonitorProperties `pulumi:"properties"`
-	// The name of the resource group to which the Elastic resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// SKU of the monitor resource.
 	Sku *ResourceSku `pulumi:"sku"`
@@ -166,7 +169,7 @@ type MonitorArgs struct {
 	MonitorName pulumi.StringPtrInput
 	// Properties of the monitor resource.
 	Properties MonitorPropertiesPtrInput
-	// The name of the resource group to which the Elastic resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// SKU of the monitor resource.
 	Sku ResourceSkuPtrInput
@@ -209,6 +212,11 @@ func (o MonitorOutput) ToMonitorOutput() MonitorOutput {
 
 func (o MonitorOutput) ToMonitorOutputWithContext(ctx context.Context) MonitorOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o MonitorOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Monitor) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Identity properties of the monitor resource.

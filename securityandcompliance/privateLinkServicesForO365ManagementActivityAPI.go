@@ -13,10 +13,12 @@ import (
 )
 
 // The description of the service.
-// Azure REST API version: 2021-03-08. Prior API version in Azure Native 1.x: 2021-03-08.
+// Azure REST API version: 2021-03-08.
 type PrivateLinkServicesForO365ManagementActivityAPI struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// An etag associated with the resource, used for optimistic concurrency when editing it.
 	Etag pulumi.StringPtrOutput `pulumi:"etag"`
 	// Setting indicating whether the service has a managed identity associated with it.
@@ -55,16 +57,7 @@ func NewPrivateLinkServicesForO365ManagementActivityAPI(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:securityandcompliance/v20210111:PrivateLinkServicesForO365ManagementActivityAPI"),
 		},
 		{
-			Type: pulumi.String("azure-native:securityandcompliance/v20210111:privateLinkServicesForO365ManagementActivityAPI"),
-		},
-		{
 			Type: pulumi.String("azure-native:securityandcompliance/v20210308:PrivateLinkServicesForO365ManagementActivityAPI"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityandcompliance/v20210308:privateLinkServicesForO365ManagementActivityAPI"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityandcompliance:privateLinkServicesForO365ManagementActivityAPI"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -170,6 +163,11 @@ func (o PrivateLinkServicesForO365ManagementActivityAPIOutput) ToPrivateLinkServ
 
 func (o PrivateLinkServicesForO365ManagementActivityAPIOutput) ToPrivateLinkServicesForO365ManagementActivityAPIOutputWithContext(ctx context.Context) PrivateLinkServicesForO365ManagementActivityAPIOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o PrivateLinkServicesForO365ManagementActivityAPIOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrivateLinkServicesForO365ManagementActivityAPI) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // An etag associated with the resource, used for optimistic concurrency when editing it.

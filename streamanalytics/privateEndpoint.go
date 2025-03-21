@@ -13,12 +13,12 @@ import (
 )
 
 // Complete information about the private endpoint.
-// Azure REST API version: 2020-03-01. Prior API version in Azure Native 1.x: 2020-03-01-preview.
-//
-// Other available API versions: 2020-03-01-preview.
+// Azure REST API version: 2020-03-01. Prior API version in Azure Native 2.x: 2020-03-01.
 type PrivateEndpoint struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The date when this private endpoint was created.
 	CreatedDate pulumi.StringOutput `pulumi:"createdDate"`
 	// Unique opaque string (generally a GUID) that represents the metadata state of the resource (private endpoint) and changes whenever the resource is updated. Required on PUT (CreateOrUpdate) requests.
@@ -143,6 +143,11 @@ func (o PrivateEndpointOutput) ToPrivateEndpointOutput() PrivateEndpointOutput {
 
 func (o PrivateEndpointOutput) ToPrivateEndpointOutputWithContext(ctx context.Context) PrivateEndpointOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o PrivateEndpointOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrivateEndpoint) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The date when this private endpoint was created.

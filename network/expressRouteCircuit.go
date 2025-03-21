@@ -13,9 +13,7 @@ import (
 )
 
 // ExpressRouteCircuit resource.
-// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2020-11-01.
-//
-// Other available API versions: 2018-12-01, 2019-06-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Azure REST API version: 2024-05-01. Prior API version in Azure Native 2.x: 2023-02-01.
 type ExpressRouteCircuit struct {
 	pulumi.CustomResourceState
 
@@ -27,10 +25,14 @@ type ExpressRouteCircuit struct {
 	AuthorizationStatus pulumi.StringOutput `pulumi:"authorizationStatus"`
 	// The list of authorizations.
 	Authorizations ExpressRouteCircuitAuthorizationResponseArrayOutput `pulumi:"authorizations"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The bandwidth of the circuit when the circuit is provisioned on an ExpressRoutePort resource.
 	BandwidthInGbps pulumi.Float64PtrOutput `pulumi:"bandwidthInGbps"`
 	// The CircuitProvisioningState state of the resource.
 	CircuitProvisioningState pulumi.StringPtrOutput `pulumi:"circuitProvisioningState"`
+	// Flag denoting rate-limiting status of the ExpressRoute direct-port circuit.
+	EnableDirectPortRateLimit pulumi.BoolPtrOutput `pulumi:"enableDirectPortRateLimit"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The reference to the ExpressRoutePort resource when the circuit is provisioned on an ExpressRoutePort resource.
@@ -286,6 +288,8 @@ type expressRouteCircuitArgs struct {
 	CircuitName *string `pulumi:"circuitName"`
 	// The CircuitProvisioningState state of the resource.
 	CircuitProvisioningState *string `pulumi:"circuitProvisioningState"`
+	// Flag denoting rate-limiting status of the ExpressRoute direct-port circuit.
+	EnableDirectPortRateLimit *bool `pulumi:"enableDirectPortRateLimit"`
 	// The reference to the ExpressRoutePort resource when the circuit is provisioned on an ExpressRoutePort resource.
 	ExpressRoutePort *SubResource `pulumi:"expressRoutePort"`
 	// The GatewayManager Etag.
@@ -330,6 +334,8 @@ type ExpressRouteCircuitArgs struct {
 	CircuitName pulumi.StringPtrInput
 	// The CircuitProvisioningState state of the resource.
 	CircuitProvisioningState pulumi.StringPtrInput
+	// Flag denoting rate-limiting status of the ExpressRoute direct-port circuit.
+	EnableDirectPortRateLimit pulumi.BoolPtrInput
 	// The reference to the ExpressRoutePort resource when the circuit is provisioned on an ExpressRoutePort resource.
 	ExpressRoutePort SubResourcePtrInput
 	// The GatewayManager Etag.
@@ -418,6 +424,11 @@ func (o ExpressRouteCircuitOutput) Authorizations() ExpressRouteCircuitAuthoriza
 	}).(ExpressRouteCircuitAuthorizationResponseArrayOutput)
 }
 
+// The Azure API version of the resource.
+func (o ExpressRouteCircuitOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ExpressRouteCircuit) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The bandwidth of the circuit when the circuit is provisioned on an ExpressRoutePort resource.
 func (o ExpressRouteCircuitOutput) BandwidthInGbps() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *ExpressRouteCircuit) pulumi.Float64PtrOutput { return v.BandwidthInGbps }).(pulumi.Float64PtrOutput)
@@ -426,6 +437,11 @@ func (o ExpressRouteCircuitOutput) BandwidthInGbps() pulumi.Float64PtrOutput {
 // The CircuitProvisioningState state of the resource.
 func (o ExpressRouteCircuitOutput) CircuitProvisioningState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ExpressRouteCircuit) pulumi.StringPtrOutput { return v.CircuitProvisioningState }).(pulumi.StringPtrOutput)
+}
+
+// Flag denoting rate-limiting status of the ExpressRoute direct-port circuit.
+func (o ExpressRouteCircuitOutput) EnableDirectPortRateLimit() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ExpressRouteCircuit) pulumi.BoolPtrOutput { return v.EnableDirectPortRateLimit }).(pulumi.BoolPtrOutput)
 }
 
 // A unique read-only string that changes whenever the resource is updated.

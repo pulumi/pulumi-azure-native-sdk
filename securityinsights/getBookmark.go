@@ -12,9 +12,7 @@ import (
 )
 
 // Gets a bookmark.
-// Azure REST API version: 2023-02-01.
-//
-// Other available API versions: 2019-01-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-11-01, 2023-12-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-09-01, 2024-10-01-preview, 2025-01-01-preview.
+// Azure REST API version: 2024-09-01.
 func LookupBookmark(ctx *pulumi.Context, args *LookupBookmarkArgs, opts ...pulumi.InvokeOption) (*LookupBookmarkResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBookmarkResult
@@ -36,6 +34,8 @@ type LookupBookmarkArgs struct {
 
 // Represents a bookmark in Azure Security Insights.
 type LookupBookmarkResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The time the bookmark was created
 	Created *string `pulumi:"created"`
 	// Describes a user that created the bookmark
@@ -109,6 +109,11 @@ func (o LookupBookmarkResultOutput) ToLookupBookmarkResultOutput() LookupBookmar
 
 func (o LookupBookmarkResultOutput) ToLookupBookmarkResultOutputWithContext(ctx context.Context) LookupBookmarkResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupBookmarkResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBookmarkResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The time the bookmark was created

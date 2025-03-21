@@ -13,12 +13,12 @@ import (
 )
 
 // Virtual Network information ARM resource.
-// Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2020-12-01.
-//
-// Other available API versions: 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
+// Azure REST API version: 2024-04-01. Prior API version in Azure Native 2.x: 2022-09-01.
 type WebAppVnetConnection struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// A certificate file (.cer) blob containing the public key of the private key used to authenticate a
 	// Point-To-Site VPN connection.
 	CertBlob pulumi.StringPtrOutput `pulumi:"certBlob"`
@@ -220,6 +220,11 @@ func (o WebAppVnetConnectionOutput) ToWebAppVnetConnectionOutput() WebAppVnetCon
 
 func (o WebAppVnetConnectionOutput) ToWebAppVnetConnectionOutputWithContext(ctx context.Context) WebAppVnetConnectionOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o WebAppVnetConnectionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *WebAppVnetConnection) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A certificate file (.cer) blob containing the public key of the private key used to authenticate a

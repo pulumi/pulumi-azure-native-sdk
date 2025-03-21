@@ -38,6 +38,8 @@ type LookupADLSGen1FolderDataSetArgs struct {
 type LookupADLSGen1FolderDataSetResult struct {
 	// The ADLS account name.
 	AccountName string `pulumi:"accountName"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Unique id for identifying a data set resource
 	DataSetId string `pulumi:"dataSetId"`
 	// The folder path within the ADLS account.
@@ -101,6 +103,11 @@ func (o LookupADLSGen1FolderDataSetResultOutput) ToLookupADLSGen1FolderDataSetRe
 // The ADLS account name.
 func (o LookupADLSGen1FolderDataSetResultOutput) AccountName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupADLSGen1FolderDataSetResult) string { return v.AccountName }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupADLSGen1FolderDataSetResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupADLSGen1FolderDataSetResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Unique id for identifying a data set resource

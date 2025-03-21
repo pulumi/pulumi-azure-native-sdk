@@ -34,6 +34,8 @@ type LookupTaskHubArgs struct {
 
 // A Task Hub resource belonging to the scheduler
 type LookupTaskHubResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The name of the resource
@@ -81,6 +83,11 @@ func (o LookupTaskHubResultOutput) ToLookupTaskHubResultOutput() LookupTaskHubRe
 
 func (o LookupTaskHubResultOutput) ToLookupTaskHubResultOutputWithContext(ctx context.Context) LookupTaskHubResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupTaskHubResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTaskHubResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

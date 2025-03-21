@@ -34,6 +34,8 @@ type LookupNamespaceVirtualNetworkRuleArgs struct {
 
 // Single item in a List or Get VirtualNetworkRules operation
 type LookupNamespaceVirtualNetworkRuleResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource Id
 	Id string `pulumi:"id"`
 	// Resource name
@@ -79,6 +81,11 @@ func (o LookupNamespaceVirtualNetworkRuleResultOutput) ToLookupNamespaceVirtualN
 
 func (o LookupNamespaceVirtualNetworkRuleResultOutput) ToLookupNamespaceVirtualNetworkRuleResultOutputWithContext(ctx context.Context) LookupNamespaceVirtualNetworkRuleResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupNamespaceVirtualNetworkRuleResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNamespaceVirtualNetworkRuleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource Id

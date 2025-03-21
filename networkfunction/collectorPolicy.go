@@ -13,12 +13,12 @@ import (
 )
 
 // Collector policy resource.
-// Azure REST API version: 2022-11-01. Prior API version in Azure Native 1.x: 2022-05-01.
-//
-// Other available API versions: 2022-05-01.
+// Azure REST API version: 2022-11-01. Prior API version in Azure Native 2.x: 2022-11-01.
 type CollectorPolicy struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Emission policies.
 	EmissionPolicies EmissionPoliciesPropertiesFormatResponseArrayOutput `pulumi:"emissionPolicies"`
 	// A unique read-only string that changes whenever the resource is updated.
@@ -169,6 +169,11 @@ func (o CollectorPolicyOutput) ToCollectorPolicyOutput() CollectorPolicyOutput {
 
 func (o CollectorPolicyOutput) ToCollectorPolicyOutputWithContext(ctx context.Context) CollectorPolicyOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o CollectorPolicyOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *CollectorPolicy) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Emission policies.

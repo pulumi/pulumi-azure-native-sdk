@@ -36,6 +36,8 @@ type LookupOperatorApiConnectionResult struct {
 	AccountType string `pulumi:"accountType"`
 	// Application ID of the App Developer that is registered with the Operator in a specific country/region.
 	AppId *string `pulumi:"appId"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The Network API for the current operator in the country/region provided in the linked Operator API Plan.
 	CamaraApiName string `pulumi:"camaraApiName"`
 	// Details about the Application that would use the Operator's Network APIs.
@@ -109,6 +111,11 @@ func (o LookupOperatorApiConnectionResultOutput) AccountType() pulumi.StringOutp
 // Application ID of the App Developer that is registered with the Operator in a specific country/region.
 func (o LookupOperatorApiConnectionResultOutput) AppId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupOperatorApiConnectionResult) *string { return v.AppId }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupOperatorApiConnectionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOperatorApiConnectionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The Network API for the current operator in the country/region provided in the linked Operator API Plan.

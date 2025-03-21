@@ -13,10 +13,12 @@ import (
 )
 
 // An Azure Arc PrivateLinkScope definition.
-// Azure REST API version: 2022-04-02-preview. Prior API version in Azure Native 1.x: 2022-04-02-preview.
+// Azure REST API version: 2022-04-02-preview. Prior API version in Azure Native 2.x: 2022-04-02-preview.
 type PrivateLinkScope struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -44,6 +46,9 @@ func NewPrivateLinkScope(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:kubernetesconfiguration/v20220402preview:PrivateLinkScope"),
+		},
+		{
+			Type: pulumi.String("azure-native:kubernetesconfiguration/v20241101preview:PrivateLinkScope"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -141,6 +146,11 @@ func (o PrivateLinkScopeOutput) ToPrivateLinkScopeOutput() PrivateLinkScopeOutpu
 
 func (o PrivateLinkScopeOutput) ToPrivateLinkScopeOutputWithContext(ctx context.Context) PrivateLinkScopeOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o PrivateLinkScopeOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrivateLinkScope) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The geo-location where the resource lives

@@ -12,9 +12,7 @@ import (
 )
 
 // Fetches the details of a ExpressRoute gateway in a resource group.
-// Azure REST API version: 2023-02-01.
-//
-// Other available API versions: 2021-03-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Azure REST API version: 2024-05-01.
 func LookupExpressRouteGateway(ctx *pulumi.Context, args *LookupExpressRouteGatewayArgs, opts ...pulumi.InvokeOption) (*LookupExpressRouteGatewayResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupExpressRouteGatewayResult
@@ -38,6 +36,8 @@ type LookupExpressRouteGatewayResult struct {
 	AllowNonVirtualWanTraffic *bool `pulumi:"allowNonVirtualWanTraffic"`
 	// Configuration for auto scaling.
 	AutoScaleConfiguration *ExpressRouteGatewayPropertiesResponseAutoScaleConfiguration `pulumi:"autoScaleConfiguration"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag string `pulumi:"etag"`
 	// List of ExpressRoute connections to the ExpressRoute gateway.
@@ -103,6 +103,11 @@ func (o LookupExpressRouteGatewayResultOutput) AutoScaleConfiguration() ExpressR
 	return o.ApplyT(func(v LookupExpressRouteGatewayResult) *ExpressRouteGatewayPropertiesResponseAutoScaleConfiguration {
 		return v.AutoScaleConfiguration
 	}).(ExpressRouteGatewayPropertiesResponseAutoScaleConfigurationPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupExpressRouteGatewayResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupExpressRouteGatewayResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A unique read-only string that changes whenever the resource is updated.

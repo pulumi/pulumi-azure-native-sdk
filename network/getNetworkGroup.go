@@ -12,9 +12,7 @@ import (
 )
 
 // Gets the specified network group.
-// Azure REST API version: 2023-02-01.
-//
-// Other available API versions: 2021-02-01-preview, 2021-05-01-preview, 2022-04-01-preview, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Azure REST API version: 2024-05-01.
 func LookupNetworkGroup(ctx *pulumi.Context, args *LookupNetworkGroupArgs, opts ...pulumi.InvokeOption) (*LookupNetworkGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNetworkGroupResult
@@ -36,12 +34,16 @@ type LookupNetworkGroupArgs struct {
 
 // The network group resource
 type LookupNetworkGroupResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// A description of the network group.
 	Description *string `pulumi:"description"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag string `pulumi:"etag"`
 	// Resource ID.
 	Id string `pulumi:"id"`
+	// The type of the group member.
+	MemberType *string `pulumi:"memberType"`
 	// Resource name.
 	Name string `pulumi:"name"`
 	// The provisioning state of the scope assignment resource.
@@ -91,6 +93,11 @@ func (o LookupNetworkGroupResultOutput) ToLookupNetworkGroupResultOutputWithCont
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupNetworkGroupResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkGroupResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // A description of the network group.
 func (o LookupNetworkGroupResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNetworkGroupResult) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -104,6 +111,11 @@ func (o LookupNetworkGroupResultOutput) Etag() pulumi.StringOutput {
 // Resource ID.
 func (o LookupNetworkGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkGroupResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The type of the group member.
+func (o LookupNetworkGroupResultOutput) MemberType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupNetworkGroupResult) *string { return v.MemberType }).(pulumi.StringPtrOutput)
 }
 
 // Resource name.

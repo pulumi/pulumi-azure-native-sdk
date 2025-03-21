@@ -13,27 +13,27 @@ import (
 )
 
 // A Log Analytics QueryPack-Query definition.
-// Azure REST API version: 2019-09-01. Prior API version in Azure Native 1.x: 2019-09-01.
-//
-// Other available API versions: 2019-09-01-preview, 2023-09-01.
+// Azure REST API version: 2023-09-01. Prior API version in Azure Native 2.x: 2019-09-01.
 type Query struct {
 	pulumi.CustomResourceState
 
 	// Object Id of user creating the query.
 	Author pulumi.StringOutput `pulumi:"author"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Body of the query.
 	Body pulumi.StringOutput `pulumi:"body"`
 	// Description of the query.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Unique display name for your query within the Query Pack.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// Azure resource name
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Additional properties that can be set for the query.
 	Properties pulumi.AnyOutput `pulumi:"properties"`
 	// The related metadata items for the function.
 	Related LogAnalyticsQueryPackQueryPropertiesResponseRelatedPtrOutput `pulumi:"related"`
-	// Read only system data
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Tags associated with the query.
 	Tags pulumi.StringArrayMapOutput `pulumi:"tags"`
@@ -41,7 +41,7 @@ type Query struct {
 	TimeCreated pulumi.StringOutput `pulumi:"timeCreated"`
 	// Last modified date of the Log Analytics Query, in ISO 8601 format.
 	TimeModified pulumi.StringOutput `pulumi:"timeModified"`
-	// Azure resource type
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -73,6 +73,9 @@ func NewQuery(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:operationalinsights/v20230901:Query"),
+		},
+		{
+			Type: pulumi.String("azure-native:operationalinsights/v20250201:Query"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -193,6 +196,11 @@ func (o QueryOutput) Author() pulumi.StringOutput {
 	return o.ApplyT(func(v *Query) pulumi.StringOutput { return v.Author }).(pulumi.StringOutput)
 }
 
+// The Azure API version of the resource.
+func (o QueryOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Query) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Body of the query.
 func (o QueryOutput) Body() pulumi.StringOutput {
 	return o.ApplyT(func(v *Query) pulumi.StringOutput { return v.Body }).(pulumi.StringOutput)
@@ -208,7 +216,7 @@ func (o QueryOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Query) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// Azure resource name
+// The name of the resource
 func (o QueryOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Query) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -223,7 +231,7 @@ func (o QueryOutput) Related() LogAnalyticsQueryPackQueryPropertiesResponseRelat
 	return o.ApplyT(func(v *Query) LogAnalyticsQueryPackQueryPropertiesResponseRelatedPtrOutput { return v.Related }).(LogAnalyticsQueryPackQueryPropertiesResponseRelatedPtrOutput)
 }
 
-// Read only system data
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o QueryOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *Query) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
@@ -243,7 +251,7 @@ func (o QueryOutput) TimeModified() pulumi.StringOutput {
 	return o.ApplyT(func(v *Query) pulumi.StringOutput { return v.TimeModified }).(pulumi.StringOutput)
 }
 
-// Azure resource type
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o QueryOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Query) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

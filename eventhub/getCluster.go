@@ -12,9 +12,7 @@ import (
 )
 
 // Gets the resource description of the specified Event Hubs Cluster.
-// Azure REST API version: 2022-10-01-preview.
-//
-// Other available API versions: 2023-01-01-preview, 2024-01-01, 2024-05-01-preview.
+// Azure REST API version: 2024-01-01.
 func LookupCluster(ctx *pulumi.Context, args *LookupClusterArgs, opts ...pulumi.InvokeOption) (*LookupClusterResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupClusterResult
@@ -34,6 +32,8 @@ type LookupClusterArgs struct {
 
 // Single Event Hubs Cluster resource in List or Get operations.
 type LookupClusterResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The UTC time when the Event Hubs Cluster was created.
 	CreatedAt string `pulumi:"createdAt"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -44,6 +44,8 @@ type LookupClusterResult struct {
 	MetricId string `pulumi:"metricId"`
 	// The name of the resource
 	Name string `pulumi:"name"`
+	// Provisioning state of the Cluster.
+	ProvisioningState string `pulumi:"provisioningState"`
 	// Properties of the cluster SKU.
 	Sku *ClusterSkuResponse `pulumi:"sku"`
 	// Status of the Cluster resource
@@ -95,6 +97,11 @@ func (o LookupClusterResultOutput) ToLookupClusterResultOutputWithContext(ctx co
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupClusterResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The UTC time when the Event Hubs Cluster was created.
 func (o LookupClusterResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.CreatedAt }).(pulumi.StringOutput)
@@ -118,6 +125,11 @@ func (o LookupClusterResultOutput) MetricId() pulumi.StringOutput {
 // The name of the resource
 func (o LookupClusterResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Provisioning state of the Cluster.
+func (o LookupClusterResultOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
 // Properties of the cluster SKU.

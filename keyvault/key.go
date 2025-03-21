@@ -13,18 +13,18 @@ import (
 )
 
 // The key resource.
-// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2019-09-01.
-//
-// Other available API versions: 2023-07-01, 2024-04-01-preview, 2024-11-01, 2024-12-01-preview.
+// Azure REST API version: 2024-11-01. Prior API version in Azure Native 2.x: 2023-02-01.
 type Key struct {
 	pulumi.CustomResourceState
 
 	// The attributes of the key.
 	Attributes KeyAttributesResponsePtrOutput `pulumi:"attributes"`
-	// The elliptic curve name. For valid values, see JsonWebKeyCurveName.
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// The elliptic curve name. For valid values, see JsonWebKeyCurveName. Default for EC and EC-HSM keys is P-256
 	CurveName pulumi.StringPtrOutput   `pulumi:"curveName"`
 	KeyOps    pulumi.StringArrayOutput `pulumi:"keyOps"`
-	// The key size in bits. For example: 2048, 3072, or 4096 for RSA.
+	// The key size in bits. For example: 2048, 3072, or 4096 for RSA. Default for RSA and RSA-HSM keys is 2048. Exception made for bring your own key (BYOK), key exchange keys default to 4096.
 	KeySize pulumi.IntPtrOutput `pulumi:"keySize"`
 	// The URI to retrieve the current version of the key.
 	KeyUri pulumi.StringOutput `pulumi:"keyUri"`
@@ -209,7 +209,12 @@ func (o KeyOutput) Attributes() KeyAttributesResponsePtrOutput {
 	return o.ApplyT(func(v *Key) KeyAttributesResponsePtrOutput { return v.Attributes }).(KeyAttributesResponsePtrOutput)
 }
 
-// The elliptic curve name. For valid values, see JsonWebKeyCurveName.
+// The Azure API version of the resource.
+func (o KeyOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Key) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// The elliptic curve name. For valid values, see JsonWebKeyCurveName. Default for EC and EC-HSM keys is P-256
 func (o KeyOutput) CurveName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Key) pulumi.StringPtrOutput { return v.CurveName }).(pulumi.StringPtrOutput)
 }
@@ -218,7 +223,7 @@ func (o KeyOutput) KeyOps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Key) pulumi.StringArrayOutput { return v.KeyOps }).(pulumi.StringArrayOutput)
 }
 
-// The key size in bits. For example: 2048, 3072, or 4096 for RSA.
+// The key size in bits. For example: 2048, 3072, or 4096 for RSA. Default for RSA and RSA-HSM keys is 2048. Exception made for bring your own key (BYOK), key exchange keys default to 4096.
 func (o KeyOutput) KeySize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Key) pulumi.IntPtrOutput { return v.KeySize }).(pulumi.IntPtrOutput)
 }

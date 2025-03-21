@@ -21,14 +21,10 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:containerinstance:CGProfile":
-		r = &CGProfile{}
 	case "azure-native:containerinstance:ContainerGroup":
 		r = &ContainerGroup{}
 	case "azure-native:containerinstance:ContainerGroupProfile":
 		r = &ContainerGroupProfile{}
-	case "azure-native:containerinstance:NGroup":
-		r = &NGroup{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

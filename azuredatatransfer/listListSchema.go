@@ -12,9 +12,7 @@ import (
 )
 
 // Lists the schemas for the specified connection in a pipeline.
-// Azure REST API version: 2023-10-11-preview.
-//
-// Other available API versions: 2024-01-25, 2024-05-07, 2024-09-11, 2024-09-27.
+// Azure REST API version: 2024-09-27.
 func ListListSchema(ctx *pulumi.Context, args *ListListSchemaArgs, opts ...pulumi.InvokeOption) (*ListListSchemaResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListListSchemaResult
@@ -30,6 +28,8 @@ type ListListSchemaArgs struct {
 	ConnectionId *string `pulumi:"connectionId"`
 	// Content of the schema
 	Content *string `pulumi:"content"`
+	// The direction of the schema.
+	Direction *string `pulumi:"direction"`
 	// ID associated with this schema
 	Id *string `pulumi:"id"`
 	// Name of the schema
@@ -38,6 +38,10 @@ type ListListSchemaArgs struct {
 	PipelineName string `pulumi:"pipelineName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The Schema Type
+	SchemaType *string `pulumi:"schemaType"`
+	// Uri containing SAS token for the zipped schema
+	SchemaUri *string `pulumi:"schemaUri"`
 	// Status of the schema
 	Status *string `pulumi:"status"`
 }
@@ -62,6 +66,8 @@ type ListListSchemaOutputArgs struct {
 	ConnectionId pulumi.StringPtrInput `pulumi:"connectionId"`
 	// Content of the schema
 	Content pulumi.StringPtrInput `pulumi:"content"`
+	// The direction of the schema.
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// ID associated with this schema
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Name of the schema
@@ -70,6 +76,10 @@ type ListListSchemaOutputArgs struct {
 	PipelineName pulumi.StringInput `pulumi:"pipelineName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// The Schema Type
+	SchemaType pulumi.StringPtrInput `pulumi:"schemaType"`
+	// Uri containing SAS token for the zipped schema
+	SchemaUri pulumi.StringPtrInput `pulumi:"schemaUri"`
 	// Status of the schema
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }

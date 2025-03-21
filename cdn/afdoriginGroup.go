@@ -13,12 +13,12 @@ import (
 )
 
 // AFDOrigin group comprising of origins is used for load balancing to origins when the content cannot be served from Azure Front Door.
-// Azure REST API version: 2023-05-01. Prior API version in Azure Native 1.x: 2020-09-01.
-//
-// Other available API versions: 2020-09-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01.
+// Azure REST API version: 2024-09-01. Prior API version in Azure Native 2.x: 2023-05-01.
 type AFDOriginGroup struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion  pulumi.StringOutput `pulumi:"azureApiVersion"`
 	DeploymentStatus pulumi.StringOutput `pulumi:"deploymentStatus"`
 	// Health probe settings to the origin that is used to determine the health of the origin.
 	HealthProbeSettings HealthProbeParametersResponsePtrOutput `pulumi:"healthProbeSettings"`
@@ -188,6 +188,11 @@ func (o AFDOriginGroupOutput) ToAFDOriginGroupOutput() AFDOriginGroupOutput {
 
 func (o AFDOriginGroupOutput) ToAFDOriginGroupOutputWithContext(ctx context.Context) AFDOriginGroupOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o AFDOriginGroupOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *AFDOriginGroup) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 func (o AFDOriginGroupOutput) DeploymentStatus() pulumi.StringOutput {

@@ -12,9 +12,7 @@ import (
 )
 
 // Gets the download URL of a package.
-// Azure REST API version: 2022-04-01-preview.
-//
-// Other available API versions: 2023-11-01-preview.
+// Azure REST API version: 2023-11-01-preview.
 func GetPackageDownloadURL(ctx *pulumi.Context, args *GetPackageDownloadURLArgs, opts ...pulumi.InvokeOption) (*GetPackageDownloadURLResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetPackageDownloadURLResult
@@ -28,7 +26,7 @@ func GetPackageDownloadURL(ctx *pulumi.Context, args *GetPackageDownloadURLArgs,
 type GetPackageDownloadURLArgs struct {
 	// The resource name of the Test Base Package.
 	PackageName string `pulumi:"packageName"`
-	// The name of the resource group that contains the resource.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The resource name of the Test Base Account.
 	TestBaseAccountName string `pulumi:"testBaseAccountName"`
@@ -54,7 +52,7 @@ func GetPackageDownloadURLOutput(ctx *pulumi.Context, args GetPackageDownloadURL
 type GetPackageDownloadURLOutputArgs struct {
 	// The resource name of the Test Base Package.
 	PackageName pulumi.StringInput `pulumi:"packageName"`
-	// The name of the resource group that contains the resource.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The resource name of the Test Base Account.
 	TestBaseAccountName pulumi.StringInput `pulumi:"testBaseAccountName"`

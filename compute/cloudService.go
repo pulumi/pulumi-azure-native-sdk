@@ -13,12 +13,12 @@ import (
 )
 
 // Describes the cloud service.
-// Azure REST API version: 2022-09-04. Prior API version in Azure Native 1.x: 2021-03-01.
-//
-// Other available API versions: 2024-11-04.
+// Azure REST API version: 2022-09-04. Prior API version in Azure Native 2.x: 2022-09-04.
 type CloudService struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Resource location.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Resource name.
@@ -161,6 +161,11 @@ func (o CloudServiceOutput) ToCloudServiceOutput() CloudServiceOutput {
 
 func (o CloudServiceOutput) ToCloudServiceOutputWithContext(ctx context.Context) CloudServiceOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o CloudServiceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *CloudService) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource location.

@@ -13,8 +13,6 @@ import (
 
 // Get a server's security alert policy.
 // Azure REST API version: 2021-11-01.
-//
-// Other available API versions: 2017-03-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
 func LookupServerSecurityAlertPolicy(ctx *pulumi.Context, args *LookupServerSecurityAlertPolicyArgs, opts ...pulumi.InvokeOption) (*LookupServerSecurityAlertPolicyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupServerSecurityAlertPolicyResult
@@ -36,6 +34,8 @@ type LookupServerSecurityAlertPolicyArgs struct {
 
 // A server security alert policy.
 type LookupServerSecurityAlertPolicyResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Specifies the UTC creation time of the policy.
 	CreationTime string `pulumi:"creationTime"`
 	// Specifies an array of alerts that are disabled. Allowed values are: Sql_Injection, Sql_Injection_Vulnerability, Access_Anomaly, Data_Exfiltration, Unsafe_Action, Brute_Force
@@ -97,6 +97,11 @@ func (o LookupServerSecurityAlertPolicyResultOutput) ToLookupServerSecurityAlert
 
 func (o LookupServerSecurityAlertPolicyResultOutput) ToLookupServerSecurityAlertPolicyResultOutputWithContext(ctx context.Context) LookupServerSecurityAlertPolicyResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupServerSecurityAlertPolicyResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServerSecurityAlertPolicyResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Specifies the UTC creation time of the policy.

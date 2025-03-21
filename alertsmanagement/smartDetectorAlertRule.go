@@ -13,12 +13,14 @@ import (
 )
 
 // The alert rule information
-// Azure REST API version: 2021-04-01. Prior API version in Azure Native 1.x: 2019-06-01.
+// Azure REST API version: 2021-04-01. Prior API version in Azure Native 2.x: 2021-04-01.
 type SmartDetectorAlertRule struct {
 	pulumi.CustomResourceState
 
 	// The alert rule actions.
 	ActionGroups ActionGroupsInformationResponseOutput `pulumi:"actionGroups"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The alert rule description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The alert rule's detector.
@@ -213,6 +215,11 @@ func (o SmartDetectorAlertRuleOutput) ToSmartDetectorAlertRuleOutputWithContext(
 // The alert rule actions.
 func (o SmartDetectorAlertRuleOutput) ActionGroups() ActionGroupsInformationResponseOutput {
 	return o.ApplyT(func(v *SmartDetectorAlertRule) ActionGroupsInformationResponseOutput { return v.ActionGroups }).(ActionGroupsInformationResponseOutput)
+}
+
+// The Azure API version of the resource.
+func (o SmartDetectorAlertRuleOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SmartDetectorAlertRule) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The alert rule description.

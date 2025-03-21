@@ -13,14 +13,14 @@ import (
 )
 
 // Specifies information about the Dedicated host.
-// Azure REST API version: 2023-03-01. Prior API version in Azure Native 1.x: 2020-12-01.
-//
-// Other available API versions: 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01.
+// Azure REST API version: 2024-11-01. Prior API version in Azure Native 2.x: 2023-03-01.
 type DedicatedHost struct {
 	pulumi.CustomResourceState
 
 	// Specifies whether the dedicated host should be replaced automatically in case of a failure. The value is defaulted to 'true' when not provided.
 	AutoReplaceOnFailure pulumi.BoolPtrOutput `pulumi:"autoReplaceOnFailure"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// A unique id generated and assigned to the dedicated host by the platform. Does not change throughout the lifetime of the host.
 	HostId pulumi.StringOutput `pulumi:"hostId"`
 	// The dedicated host instance view.
@@ -116,6 +116,9 @@ func NewDedicatedHost(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:compute/v20240701:DedicatedHost"),
+		},
+		{
+			Type: pulumi.String("azure-native:compute/v20241101:DedicatedHost"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -234,6 +237,11 @@ func (o DedicatedHostOutput) ToDedicatedHostOutputWithContext(ctx context.Contex
 // Specifies whether the dedicated host should be replaced automatically in case of a failure. The value is defaulted to 'true' when not provided.
 func (o DedicatedHostOutput) AutoReplaceOnFailure() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DedicatedHost) pulumi.BoolPtrOutput { return v.AutoReplaceOnFailure }).(pulumi.BoolPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o DedicatedHostOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DedicatedHost) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A unique id generated and assigned to the dedicated host by the platform. Does not change throughout the lifetime of the host.

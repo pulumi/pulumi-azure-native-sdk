@@ -13,10 +13,12 @@ import (
 )
 
 // A Microsoft.AwsConnector resource
-// Azure REST API version: 2024-12-01.
+// Azure REST API version: 2024-12-01. Prior API version in Azure Native 2.x: 2024-12-01.
 type Ec2Instance struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The resource-specific properties for this resource.
@@ -128,6 +130,11 @@ func (o Ec2InstanceOutput) ToEc2InstanceOutput() Ec2InstanceOutput {
 
 func (o Ec2InstanceOutput) ToEc2InstanceOutputWithContext(ctx context.Context) Ec2InstanceOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o Ec2InstanceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Ec2Instance) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

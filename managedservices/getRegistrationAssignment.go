@@ -34,6 +34,8 @@ type LookupRegistrationAssignmentArgs struct {
 
 // The registration assignment.
 type LookupRegistrationAssignmentResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The fully qualified path of the registration assignment.
 	Id string `pulumi:"id"`
 	// The name of the registration assignment.
@@ -81,6 +83,11 @@ func (o LookupRegistrationAssignmentResultOutput) ToLookupRegistrationAssignment
 
 func (o LookupRegistrationAssignmentResultOutput) ToLookupRegistrationAssignmentResultOutputWithContext(ctx context.Context) LookupRegistrationAssignmentResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupRegistrationAssignmentResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegistrationAssignmentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The fully qualified path of the registration assignment.

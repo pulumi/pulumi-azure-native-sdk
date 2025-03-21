@@ -12,9 +12,7 @@ import (
 )
 
 // Retrieves the details of a VirtualWAN.
-// Azure REST API version: 2023-02-01.
-//
-// Other available API versions: 2019-07-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Azure REST API version: 2024-05-01.
 func LookupVirtualWan(ctx *pulumi.Context, args *LookupVirtualWanArgs, opts ...pulumi.InvokeOption) (*LookupVirtualWanResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVirtualWanResult
@@ -38,6 +36,8 @@ type LookupVirtualWanResult struct {
 	AllowBranchToBranchTraffic *bool `pulumi:"allowBranchToBranchTraffic"`
 	// True if Vnet to Vnet traffic is allowed.
 	AllowVnetToVnetTraffic *bool `pulumi:"allowVnetToVnetTraffic"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Vpn encryption to be disabled or not.
 	DisableVpnEncryption *bool `pulumi:"disableVpnEncryption"`
 	// A unique read-only string that changes whenever the resource is updated.
@@ -105,6 +105,11 @@ func (o LookupVirtualWanResultOutput) AllowBranchToBranchTraffic() pulumi.BoolPt
 // True if Vnet to Vnet traffic is allowed.
 func (o LookupVirtualWanResultOutput) AllowVnetToVnetTraffic() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupVirtualWanResult) *bool { return v.AllowVnetToVnetTraffic }).(pulumi.BoolPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupVirtualWanResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVirtualWanResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Vpn encryption to be disabled or not.

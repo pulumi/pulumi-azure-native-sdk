@@ -13,12 +13,12 @@ import (
 )
 
 // Managed CCF. Contains the properties of Managed CCF Resource.
-// Azure REST API version: 2023-01-26-preview.
-//
-// Other available API versions: 2023-06-28-preview, 2024-07-09-preview, 2024-09-19-preview.
+// Azure REST API version: 2023-06-28-preview. Prior API version in Azure Native 2.x: 2023-01-26-preview.
 type ManagedCCF struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -155,6 +155,11 @@ func (o ManagedCCFOutput) ToManagedCCFOutput() ManagedCCFOutput {
 
 func (o ManagedCCFOutput) ToManagedCCFOutputWithContext(ctx context.Context) ManagedCCFOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ManagedCCFOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ManagedCCF) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The geo-location where the resource lives

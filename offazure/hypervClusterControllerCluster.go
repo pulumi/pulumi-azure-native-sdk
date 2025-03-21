@@ -13,12 +13,12 @@ import (
 )
 
 // A cluster resource belonging to a site resource.
-// Azure REST API version: 2023-06-06.
-//
-// Other available API versions: 2023-10-01-preview, 2024-05-01-preview.
+// Azure REST API version: 2023-10-01-preview. Prior API version in Azure Native 2.x: 2023-06-06.
 type HypervClusterControllerCluster struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets the timestamp marking Hyper-V cluster creation.
 	CreatedTimestamp pulumi.StringOutput `pulumi:"createdTimestamp"`
 	// Gets the errors.
@@ -172,6 +172,11 @@ func (o HypervClusterControllerClusterOutput) ToHypervClusterControllerClusterOu
 
 func (o HypervClusterControllerClusterOutput) ToHypervClusterControllerClusterOutputWithContext(ctx context.Context) HypervClusterControllerClusterOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o HypervClusterControllerClusterOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *HypervClusterControllerCluster) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets the timestamp marking Hyper-V cluster creation.

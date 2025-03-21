@@ -36,6 +36,8 @@ type LookupDatabaseThreatDetectionPolicyArgs struct {
 
 // Contains information about a database Threat Detection policy.
 type LookupDatabaseThreatDetectionPolicyResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Specifies the semicolon-separated list of alerts that are disabled, or empty string to disable no alerts. Possible values: Sql_Injection; Sql_Injection_Vulnerability; Access_Anomaly; Data_Exfiltration; Unsafe_Action.
 	DisabledAlerts *string `pulumi:"disabledAlerts"`
 	// Specifies that the alert is sent to the account administrators.
@@ -99,6 +101,11 @@ func (o LookupDatabaseThreatDetectionPolicyResultOutput) ToLookupDatabaseThreatD
 
 func (o LookupDatabaseThreatDetectionPolicyResultOutput) ToLookupDatabaseThreatDetectionPolicyResultOutputWithContext(ctx context.Context) LookupDatabaseThreatDetectionPolicyResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupDatabaseThreatDetectionPolicyResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseThreatDetectionPolicyResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Specifies the semicolon-separated list of alerts that are disabled, or empty string to disable no alerts. Possible values: Sql_Injection; Sql_Injection_Vulnerability; Access_Anomaly; Data_Exfiltration; Unsafe_Action.

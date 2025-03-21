@@ -13,12 +13,12 @@ import (
 )
 
 // Arc Sql Server database
-// Azure REST API version: 2023-01-15-preview.
-//
-// Other available API versions: 2024-01-01, 2024-05-01-preview.
+// Azure REST API version: 2024-01-01. Prior API version in Azure Native 2.x: 2023-01-15-preview.
 type SqlServerDatabase struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -61,6 +61,9 @@ func NewSqlServerDatabase(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azurearcdata/v20240501preview:SqlServerDatabase"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurearcdata/v20250301preview:SqlServerDatabase"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -162,6 +165,11 @@ func (o SqlServerDatabaseOutput) ToSqlServerDatabaseOutput() SqlServerDatabaseOu
 
 func (o SqlServerDatabaseOutput) ToSqlServerDatabaseOutputWithContext(ctx context.Context) SqlServerDatabaseOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o SqlServerDatabaseOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SqlServerDatabase) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The geo-location where the resource lives

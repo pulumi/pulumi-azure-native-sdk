@@ -13,12 +13,12 @@ import (
 )
 
 // NamedValue details.
-// Azure REST API version: 2022-08-01. Prior API version in Azure Native 1.x: 2020-12-01.
-//
-// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
+// Azure REST API version: 2022-09-01-preview. Prior API version in Azure Native 2.x: 2022-08-01.
 type NamedValue struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Unique name of NamedValue. It may contain only letters, digits, period, dash, and underscore characters.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// KeyVault location details of the namedValue.
@@ -208,6 +208,11 @@ func (o NamedValueOutput) ToNamedValueOutput() NamedValueOutput {
 
 func (o NamedValueOutput) ToNamedValueOutputWithContext(ctx context.Context) NamedValueOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o NamedValueOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *NamedValue) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Unique name of NamedValue. It may contain only letters, digits, period, dash, and underscore characters.

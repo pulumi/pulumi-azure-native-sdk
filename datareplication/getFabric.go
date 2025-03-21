@@ -32,6 +32,8 @@ type LookupFabricArgs struct {
 
 // Fabric model.
 type LookupFabricResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets or sets the Id of the resource.
 	Id string `pulumi:"id"`
 	// Gets or sets the location of the fabric.
@@ -80,6 +82,11 @@ func (o LookupFabricResultOutput) ToLookupFabricResultOutput() LookupFabricResul
 
 func (o LookupFabricResultOutput) ToLookupFabricResultOutputWithContext(ctx context.Context) LookupFabricResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupFabricResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFabricResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets the Id of the resource.

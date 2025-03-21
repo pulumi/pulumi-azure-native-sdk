@@ -32,6 +32,8 @@ type LookupAdvancedThreatProtectionArgs struct {
 
 // The Advanced Threat Protection resource.
 type LookupAdvancedThreatProtectionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource Id
 	Id string `pulumi:"id"`
 	// Indicates whether Advanced Threat Protection is enabled.
@@ -75,6 +77,11 @@ func (o LookupAdvancedThreatProtectionResultOutput) ToLookupAdvancedThreatProtec
 
 func (o LookupAdvancedThreatProtectionResultOutput) ToLookupAdvancedThreatProtectionResultOutputWithContext(ctx context.Context) LookupAdvancedThreatProtectionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupAdvancedThreatProtectionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAdvancedThreatProtectionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource Id

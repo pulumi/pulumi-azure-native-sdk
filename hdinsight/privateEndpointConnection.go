@@ -13,12 +13,12 @@ import (
 )
 
 // The private endpoint connection.
-// Azure REST API version: 2021-06-01. Prior API version in Azure Native 1.x: 2021-06-01.
-//
-// Other available API versions: 2023-04-15-preview, 2023-08-15-preview, 2024-08-01-preview.
+// Azure REST API version: 2024-08-01-preview. Prior API version in Azure Native 2.x: 2021-06-01.
 type PrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The link identifier.
 	LinkIdentifier pulumi.StringOutput `pulumi:"linkIdentifier"`
 	// The name of the resource
@@ -63,6 +63,9 @@ func NewPrivateEndpointConnection(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:hdinsight/v20240801preview:PrivateEndpointConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:hdinsight/v20250115preview:PrivateEndpointConnection"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -156,6 +159,11 @@ func (o PrivateEndpointConnectionOutput) ToPrivateEndpointConnectionOutput() Pri
 
 func (o PrivateEndpointConnectionOutput) ToPrivateEndpointConnectionOutputWithContext(ctx context.Context) PrivateEndpointConnectionOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o PrivateEndpointConnectionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrivateEndpointConnection) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The link identifier.

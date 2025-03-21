@@ -12,9 +12,7 @@ import (
 )
 
 // Returns details of the API version.
-// Azure REST API version: 2024-03-01.
-//
-// Other available API versions: 2024-03-15-preview, 2024-06-01-preview.
+// Azure REST API version: 2024-03-15-preview.
 func LookupApiVersion(ctx *pulumi.Context, args *LookupApiVersionArgs, opts ...pulumi.InvokeOption) (*LookupApiVersionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupApiVersionResult
@@ -40,6 +38,8 @@ type LookupApiVersionArgs struct {
 
 // API version entity.
 type LookupApiVersionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Current lifecycle stage of the API.
@@ -93,6 +93,11 @@ func (o LookupApiVersionResultOutput) ToLookupApiVersionResultOutput() LookupApi
 
 func (o LookupApiVersionResultOutput) ToLookupApiVersionResultOutputWithContext(ctx context.Context) LookupApiVersionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupApiVersionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApiVersionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

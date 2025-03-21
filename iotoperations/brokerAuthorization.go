@@ -13,12 +13,12 @@ import (
 )
 
 // Instance broker authorizations resource
-// Azure REST API version: 2024-07-01-preview.
-//
-// Other available API versions: 2024-08-15-preview, 2024-09-15-preview, 2024-11-01.
+// Azure REST API version: 2024-11-01. Prior API version in Azure Native 2.x: 2024-07-01-preview.
 type BrokerAuthorization struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Edge location of the resource.
 	ExtendedLocation ExtendedLocationResponseOutput `pulumi:"extendedLocation"`
 	// The name of the resource
@@ -65,6 +65,9 @@ func NewBrokerAuthorization(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:iotoperations/v20241101:BrokerAuthorization"),
+		},
+		{
+			Type: pulumi.String("azure-native:iotoperations/v20250401:BrokerAuthorization"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -166,6 +169,11 @@ func (o BrokerAuthorizationOutput) ToBrokerAuthorizationOutput() BrokerAuthoriza
 
 func (o BrokerAuthorizationOutput) ToBrokerAuthorizationOutputWithContext(ctx context.Context) BrokerAuthorizationOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o BrokerAuthorizationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *BrokerAuthorization) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Edge location of the resource.

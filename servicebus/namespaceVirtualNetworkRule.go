@@ -13,10 +13,12 @@ import (
 )
 
 // Single item in a List or Get VirtualNetworkRules operation
-// Azure REST API version: 2018-01-01-preview. Prior API version in Azure Native 1.x: 2018-01-01-preview.
+// Azure REST API version: 2018-01-01-preview. Prior API version in Azure Native 2.x: 2018-01-01-preview.
 type NamespaceVirtualNetworkRule struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Resource name
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Resource type
@@ -134,6 +136,11 @@ func (o NamespaceVirtualNetworkRuleOutput) ToNamespaceVirtualNetworkRuleOutput()
 
 func (o NamespaceVirtualNetworkRuleOutput) ToNamespaceVirtualNetworkRuleOutputWithContext(ctx context.Context) NamespaceVirtualNetworkRuleOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o NamespaceVirtualNetworkRuleOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *NamespaceVirtualNetworkRule) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource name

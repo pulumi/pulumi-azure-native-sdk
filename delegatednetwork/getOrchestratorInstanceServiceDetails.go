@@ -12,9 +12,7 @@ import (
 )
 
 // Gets details about the orchestrator instance.
-// Azure REST API version: 2021-03-15.
-//
-// Other available API versions: 2023-05-18-preview, 2023-06-27-preview.
+// Azure REST API version: 2023-06-27-preview.
 func LookupOrchestratorInstanceServiceDetails(ctx *pulumi.Context, args *LookupOrchestratorInstanceServiceDetailsArgs, opts ...pulumi.InvokeOption) (*LookupOrchestratorInstanceServiceDetailsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupOrchestratorInstanceServiceDetailsResult
@@ -36,6 +34,8 @@ type LookupOrchestratorInstanceServiceDetailsArgs struct {
 type LookupOrchestratorInstanceServiceDetailsResult struct {
 	// K8s APIServer url. Either one of apiServerEndpoint or privateLinkResourceId can be specified
 	ApiServerEndpoint *string `pulumi:"apiServerEndpoint"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// RootCA certificate of kubernetes cluster base64 encoded
 	ClusterRootCA *string `pulumi:"clusterRootCA"`
 	// Properties of the controller.
@@ -104,6 +104,11 @@ func (o LookupOrchestratorInstanceServiceDetailsResultOutput) ToLookupOrchestrat
 // K8s APIServer url. Either one of apiServerEndpoint or privateLinkResourceId can be specified
 func (o LookupOrchestratorInstanceServiceDetailsResultOutput) ApiServerEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupOrchestratorInstanceServiceDetailsResult) *string { return v.ApiServerEndpoint }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupOrchestratorInstanceServiceDetailsResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOrchestratorInstanceServiceDetailsResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // RootCA certificate of kubernetes cluster base64 encoded

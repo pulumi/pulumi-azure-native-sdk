@@ -34,6 +34,8 @@ type LookupPrivateAtlaseArgs struct {
 
 // An Azure resource which represents which will provision the ability to create private location data.
 type LookupPrivateAtlaseResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -83,6 +85,11 @@ func (o LookupPrivateAtlaseResultOutput) ToLookupPrivateAtlaseResultOutput() Loo
 
 func (o LookupPrivateAtlaseResultOutput) ToLookupPrivateAtlaseResultOutputWithContext(ctx context.Context) LookupPrivateAtlaseResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupPrivateAtlaseResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPrivateAtlaseResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

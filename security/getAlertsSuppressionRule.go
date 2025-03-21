@@ -32,6 +32,8 @@ type LookupAlertsSuppressionRuleArgs struct {
 type LookupAlertsSuppressionRuleResult struct {
 	// Type of the alert to automatically suppress. For all alert types, use '*'
 	AlertType string `pulumi:"alertType"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Any comment regarding the rule
 	Comment *string `pulumi:"comment"`
 	// Expiration date of the rule, if value is not provided or provided as null there will no expiration at all
@@ -88,6 +90,11 @@ func (o LookupAlertsSuppressionRuleResultOutput) ToLookupAlertsSuppressionRuleRe
 // Type of the alert to automatically suppress. For all alert types, use '*'
 func (o LookupAlertsSuppressionRuleResultOutput) AlertType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAlertsSuppressionRuleResult) string { return v.AlertType }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupAlertsSuppressionRuleResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAlertsSuppressionRuleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Any comment regarding the rule

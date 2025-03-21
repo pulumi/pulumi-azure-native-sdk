@@ -13,14 +13,14 @@ import (
 )
 
 // The network manager connectivity configuration resource
-// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2021-02-01-preview.
-//
-// Other available API versions: 2021-02-01-preview, 2021-05-01-preview, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Azure REST API version: 2024-05-01. Prior API version in Azure Native 2.x: 2023-02-01.
 type ConnectivityConfiguration struct {
 	pulumi.CustomResourceState
 
 	// Groups for configuration
 	AppliesToGroups ConnectivityGroupItemResponseArrayOutput `pulumi:"appliesToGroups"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Connectivity topology type.
 	ConnectivityTopology pulumi.StringOutput `pulumi:"connectivityTopology"`
 	// Flag if need to remove current existing peerings.
@@ -236,6 +236,11 @@ func (o ConnectivityConfigurationOutput) ToConnectivityConfigurationOutputWithCo
 // Groups for configuration
 func (o ConnectivityConfigurationOutput) AppliesToGroups() ConnectivityGroupItemResponseArrayOutput {
 	return o.ApplyT(func(v *ConnectivityConfiguration) ConnectivityGroupItemResponseArrayOutput { return v.AppliesToGroups }).(ConnectivityGroupItemResponseArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o ConnectivityConfigurationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConnectivityConfiguration) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Connectivity topology type.

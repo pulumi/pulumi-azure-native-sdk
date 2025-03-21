@@ -12,9 +12,7 @@ import (
 )
 
 // Get a given StorageSyncService.
-// Azure REST API version: 2022-06-01.
-//
-// Other available API versions: 2022-09-01.
+// Azure REST API version: 2022-09-01.
 func LookupStorageSyncService(ctx *pulumi.Context, args *LookupStorageSyncServiceArgs, opts ...pulumi.InvokeOption) (*LookupStorageSyncServiceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupStorageSyncServiceResult
@@ -34,8 +32,12 @@ type LookupStorageSyncServiceArgs struct {
 
 // Storage Sync Service object.
 type LookupStorageSyncServiceResult struct {
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
+	// managed identities for the Storage Sync service to interact with other Azure services without maintaining any secrets or credentials in code.
+	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
 	// Incoming Traffic Policy
 	IncomingTrafficPolicy *string `pulumi:"incomingTrafficPolicy"`
 	// Resource Last Operation Name
@@ -60,6 +62,8 @@ type LookupStorageSyncServiceResult struct {
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
+	// Use Identity authorization when customer have finished setup RBAC permissions.
+	UseIdentity bool `pulumi:"useIdentity"`
 }
 
 func LookupStorageSyncServiceOutput(ctx *pulumi.Context, args LookupStorageSyncServiceOutputArgs, opts ...pulumi.InvokeOption) LookupStorageSyncServiceResultOutput {
@@ -97,9 +101,19 @@ func (o LookupStorageSyncServiceResultOutput) ToLookupStorageSyncServiceResultOu
 	return o
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// The Azure API version of the resource.
+func (o LookupStorageSyncServiceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStorageSyncServiceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupStorageSyncServiceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageSyncServiceResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// managed identities for the Storage Sync service to interact with other Azure services without maintaining any secrets or credentials in code.
+func (o LookupStorageSyncServiceResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupStorageSyncServiceResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // Incoming Traffic Policy
@@ -162,6 +176,11 @@ func (o LookupStorageSyncServiceResultOutput) Tags() pulumi.StringMapOutput {
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupStorageSyncServiceResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageSyncServiceResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Use Identity authorization when customer have finished setup RBAC permissions.
+func (o LookupStorageSyncServiceResultOutput) UseIdentity() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupStorageSyncServiceResult) bool { return v.UseIdentity }).(pulumi.BoolOutput)
 }
 
 func init() {

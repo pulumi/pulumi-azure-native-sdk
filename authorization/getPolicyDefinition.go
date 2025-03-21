@@ -12,9 +12,7 @@ import (
 )
 
 // This operation retrieves the policy definition in the given subscription with the given name.
-// Azure REST API version: 2021-06-01.
-//
-// Other available API versions: 2018-05-01, 2019-06-01, 2023-04-01, 2024-05-01, 2025-01-01.
+// Azure REST API version: 2025-01-01.
 func LookupPolicyDefinition(ctx *pulumi.Context, args *LookupPolicyDefinitionArgs, opts ...pulumi.InvokeOption) (*LookupPolicyDefinitionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPolicyDefinitionResult
@@ -32,6 +30,8 @@ type LookupPolicyDefinitionArgs struct {
 
 // The policy definition.
 type LookupPolicyDefinitionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The policy definition description.
 	Description *string `pulumi:"description"`
 	// The display name of the policy definition.
@@ -54,6 +54,10 @@ type LookupPolicyDefinitionResult struct {
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource (Microsoft.Authorization/policyDefinitions).
 	Type string `pulumi:"type"`
+	// The policy definition version in #.#.# format.
+	Version *string `pulumi:"version"`
+	// A list of available versions for this policy definition.
+	Versions []string `pulumi:"versions"`
 }
 
 // Defaults sets the appropriate defaults for LookupPolicyDefinitionResult
@@ -99,6 +103,11 @@ func (o LookupPolicyDefinitionResultOutput) ToLookupPolicyDefinitionResultOutput
 
 func (o LookupPolicyDefinitionResultOutput) ToLookupPolicyDefinitionResultOutputWithContext(ctx context.Context) LookupPolicyDefinitionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupPolicyDefinitionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPolicyDefinitionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The policy definition description.
@@ -154,6 +163,16 @@ func (o LookupPolicyDefinitionResultOutput) SystemData() SystemDataResponseOutpu
 // The type of the resource (Microsoft.Authorization/policyDefinitions).
 func (o LookupPolicyDefinitionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPolicyDefinitionResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The policy definition version in #.#.# format.
+func (o LookupPolicyDefinitionResultOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupPolicyDefinitionResult) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+// A list of available versions for this policy definition.
+func (o LookupPolicyDefinitionResultOutput) Versions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupPolicyDefinitionResult) []string { return v.Versions }).(pulumi.StringArrayOutput)
 }
 
 func init() {

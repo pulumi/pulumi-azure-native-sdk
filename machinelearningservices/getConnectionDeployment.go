@@ -11,9 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Azure REST API version: 2024-04-01-preview.
-//
-// Other available API versions: 2024-07-01-preview, 2024-10-01-preview.
+// Azure REST API version: 2025-01-01-preview.
 func LookupConnectionDeployment(ctx *pulumi.Context, args *LookupConnectionDeploymentArgs, opts ...pulumi.InvokeOption) (*LookupConnectionDeploymentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupConnectionDeploymentResult
@@ -36,12 +34,13 @@ type LookupConnectionDeploymentArgs struct {
 }
 
 type LookupConnectionDeploymentResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The name of the resource
-	Name       string                                       `pulumi:"name"`
-	Properties EndpointDeploymentResourcePropertiesResponse `pulumi:"properties"`
-	Sku        *CognitiveServicesSkuResponse                `pulumi:"sku"`
+	Name       string      `pulumi:"name"`
+	Properties interface{} `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -86,6 +85,11 @@ func (o LookupConnectionDeploymentResultOutput) ToLookupConnectionDeploymentResu
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupConnectionDeploymentResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectionDeploymentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupConnectionDeploymentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionDeploymentResult) string { return v.Id }).(pulumi.StringOutput)
@@ -96,14 +100,8 @@ func (o LookupConnectionDeploymentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionDeploymentResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o LookupConnectionDeploymentResultOutput) Properties() EndpointDeploymentResourcePropertiesResponseOutput {
-	return o.ApplyT(func(v LookupConnectionDeploymentResult) EndpointDeploymentResourcePropertiesResponse {
-		return v.Properties
-	}).(EndpointDeploymentResourcePropertiesResponseOutput)
-}
-
-func (o LookupConnectionDeploymentResultOutput) Sku() CognitiveServicesSkuResponsePtrOutput {
-	return o.ApplyT(func(v LookupConnectionDeploymentResult) *CognitiveServicesSkuResponse { return v.Sku }).(CognitiveServicesSkuResponsePtrOutput)
+func (o LookupConnectionDeploymentResultOutput) Properties() pulumi.AnyOutput {
+	return o.ApplyT(func(v LookupConnectionDeploymentResult) interface{} { return v.Properties }).(pulumi.AnyOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

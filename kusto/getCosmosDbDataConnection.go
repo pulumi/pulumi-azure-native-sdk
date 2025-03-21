@@ -12,7 +12,7 @@ import (
 )
 
 // Returns a data connection.
-// Azure REST API version: 2022-12-29.
+// Azure REST API version: 2024-04-13.
 func LookupCosmosDbDataConnection(ctx *pulumi.Context, args *LookupCosmosDbDataConnectionArgs, opts ...pulumi.InvokeOption) (*LookupCosmosDbDataConnectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCosmosDbDataConnectionResult
@@ -30,12 +30,14 @@ type LookupCosmosDbDataConnectionArgs struct {
 	DataConnectionName string `pulumi:"dataConnectionName"`
 	// The name of the database in the Kusto cluster.
 	DatabaseName string `pulumi:"databaseName"`
-	// The name of the resource group containing the Kusto cluster.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Class representing a CosmosDb data connection.
 type LookupCosmosDbDataConnectionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The resource ID of the Cosmos DB account used to create the data connection.
 	CosmosDbAccountResourceId string `pulumi:"cosmosDbAccountResourceId"`
 	// The name of an existing container in the Cosmos DB database.
@@ -83,7 +85,7 @@ type LookupCosmosDbDataConnectionOutputArgs struct {
 	DataConnectionName pulumi.StringInput `pulumi:"dataConnectionName"`
 	// The name of the database in the Kusto cluster.
 	DatabaseName pulumi.StringInput `pulumi:"databaseName"`
-	// The name of the resource group containing the Kusto cluster.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -104,6 +106,11 @@ func (o LookupCosmosDbDataConnectionResultOutput) ToLookupCosmosDbDataConnection
 
 func (o LookupCosmosDbDataConnectionResultOutput) ToLookupCosmosDbDataConnectionResultOutputWithContext(ctx context.Context) LookupCosmosDbDataConnectionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupCosmosDbDataConnectionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCosmosDbDataConnectionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The resource ID of the Cosmos DB account used to create the data connection.

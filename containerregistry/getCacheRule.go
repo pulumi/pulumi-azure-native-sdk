@@ -12,9 +12,7 @@ import (
 )
 
 // Gets the properties of the specified cache rule resource.
-// Azure REST API version: 2023-01-01-preview.
-//
-// Other available API versions: 2023-06-01-preview, 2023-07-01, 2023-08-01-preview, 2023-11-01-preview, 2024-11-01-preview.
+// Azure REST API version: 2024-11-01-preview.
 func LookupCacheRule(ctx *pulumi.Context, args *LookupCacheRuleArgs, opts ...pulumi.InvokeOption) (*LookupCacheRuleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCacheRuleResult
@@ -36,6 +34,8 @@ type LookupCacheRuleArgs struct {
 
 // An object that represents a cache rule for a container registry.
 type LookupCacheRuleResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The creation date of the cache rule.
 	CreationDate string `pulumi:"creationDate"`
 	// The ARM resource ID of the credential store which is associated with the cache rule.
@@ -92,6 +92,11 @@ func (o LookupCacheRuleResultOutput) ToLookupCacheRuleResultOutput() LookupCache
 
 func (o LookupCacheRuleResultOutput) ToLookupCacheRuleResultOutputWithContext(ctx context.Context) LookupCacheRuleResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupCacheRuleResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCacheRuleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The creation date of the cache rule.

@@ -12,9 +12,7 @@ import (
 )
 
 // Get all delivery attributes for an event subscription for domain.
-// Azure REST API version: 2022-06-15.
-//
-// Other available API versions: 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-02-15.
+// Azure REST API version: 2025-02-15.
 func GetDomainEventSubscriptionDeliveryAttributes(ctx *pulumi.Context, args *GetDomainEventSubscriptionDeliveryAttributesArgs, opts ...pulumi.InvokeOption) (*GetDomainEventSubscriptionDeliveryAttributesResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetDomainEventSubscriptionDeliveryAttributesResult
@@ -26,7 +24,7 @@ func GetDomainEventSubscriptionDeliveryAttributes(ctx *pulumi.Context, args *Get
 }
 
 type GetDomainEventSubscriptionDeliveryAttributesArgs struct {
-	// Name of the domain topic.
+	// Name of the domain.
 	DomainName string `pulumi:"domainName"`
 	// Name of the event subscription.
 	EventSubscriptionName string `pulumi:"eventSubscriptionName"`
@@ -50,7 +48,7 @@ func GetDomainEventSubscriptionDeliveryAttributesOutput(ctx *pulumi.Context, arg
 }
 
 type GetDomainEventSubscriptionDeliveryAttributesOutputArgs struct {
-	// Name of the domain topic.
+	// Name of the domain.
 	DomainName pulumi.StringInput `pulumi:"domainName"`
 	// Name of the event subscription.
 	EventSubscriptionName pulumi.StringInput `pulumi:"eventSubscriptionName"`

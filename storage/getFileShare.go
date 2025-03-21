@@ -12,9 +12,7 @@ import (
 )
 
 // Gets properties of a specified share.
-// Azure REST API version: 2022-09-01.
-//
-// Other available API versions: 2023-01-01, 2023-04-01, 2023-05-01, 2024-01-01.
+// Azure REST API version: 2024-01-01.
 func LookupFileShare(ctx *pulumi.Context, args *LookupFileShareArgs, opts ...pulumi.InvokeOption) (*LookupFileShareResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFileShareResult
@@ -44,6 +42,8 @@ type LookupFileShareResult struct {
 	AccessTierChangeTime string `pulumi:"accessTierChangeTime"`
 	// Indicates if there is a pending transition for access tier.
 	AccessTierStatus string `pulumi:"accessTierStatus"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Indicates whether the share was deleted.
 	Deleted bool `pulumi:"deleted"`
 	// The deleted time if the share was deleted.
@@ -52,8 +52,12 @@ type LookupFileShareResult struct {
 	EnabledProtocols *string `pulumi:"enabledProtocols"`
 	// Resource Etag.
 	Etag string `pulumi:"etag"`
+	// File Share Paid Bursting properties.
+	FileSharePaidBursting *FileSharePropertiesResponseFileSharePaidBursting `pulumi:"fileSharePaidBursting"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
+	// The calculated burst IOPS of the share. This property is only for file shares created under Files Provisioned v2 account type.
+	IncludedBurstIops int `pulumi:"includedBurstIops"`
 	// Returns the date and time the share was last modified.
 	LastModifiedTime string `pulumi:"lastModifiedTime"`
 	// Specifies whether the lease on a share is of infinite or fixed duration, only when the share is leased.
@@ -62,15 +66,27 @@ type LookupFileShareResult struct {
 	LeaseState string `pulumi:"leaseState"`
 	// The lease status of the share.
 	LeaseStatus string `pulumi:"leaseStatus"`
+	// The calculated maximum burst credits for the share. This property is only for file shares created under Files Provisioned v2 account type.
+	MaxBurstCreditsForIops float64 `pulumi:"maxBurstCreditsForIops"`
 	// A name-value pair to associate with the share as metadata.
 	Metadata map[string]string `pulumi:"metadata"`
 	// The name of the resource
 	Name string `pulumi:"name"`
+	// Returns the next allowed provisioned bandwidth downgrade time for the share. This property is only for file shares created under Files Provisioned v2 account type.
+	NextAllowedProvisionedBandwidthDowngradeTime string `pulumi:"nextAllowedProvisionedBandwidthDowngradeTime"`
+	// Returns the next allowed provisioned IOPS downgrade time for the share. This property is only for file shares created under Files Provisioned v2 account type.
+	NextAllowedProvisionedIopsDowngradeTime string `pulumi:"nextAllowedProvisionedIopsDowngradeTime"`
+	// Returns the next allowed provisioned storage size downgrade time for the share. This property is only for file shares created under Files Provisioned v1 SSD and Files Provisioned v2 account type
+	NextAllowedQuotaDowngradeTime string `pulumi:"nextAllowedQuotaDowngradeTime"`
+	// The provisioned bandwidth of the share, in mebibytes per second. This property is only for file shares created under Files Provisioned v2 account type. Please refer to the GetFileServiceUsage API response for the minimum and maximum allowed value for provisioned bandwidth.
+	ProvisionedBandwidthMibps *int `pulumi:"provisionedBandwidthMibps"`
+	// The provisioned IOPS of the share. This property is only for file shares created under Files Provisioned v2 account type. Please refer to the GetFileServiceUsage API response for the minimum and maximum allowed value for provisioned IOPS.
+	ProvisionedIops *int `pulumi:"provisionedIops"`
 	// Remaining retention days for share that was soft deleted.
 	RemainingRetentionDays int `pulumi:"remainingRetentionDays"`
 	// The property is for NFS share only. The default is NoRootSquash.
 	RootSquash *string `pulumi:"rootSquash"`
-	// The maximum size of the share, in gigabytes. Must be greater than 0, and less than or equal to 5TB (5120). For Large File Shares, the maximum size is 102400.
+	// The provisioned size of the share, in gibibytes. Must be greater than 0, and less than or equal to 5TB (5120). For Large File Shares, the maximum size is 102400. For file shares created under Files Provisioned v2 account type, please refer to the GetFileServiceUsage API response for the minimum and maximum allowed provisioned storage size.
 	ShareQuota *int `pulumi:"shareQuota"`
 	// The approximate size of the data stored on the share. Note that this value may not include all recently created or recently resized files.
 	ShareUsageBytes float64 `pulumi:"shareUsageBytes"`
@@ -138,6 +154,11 @@ func (o LookupFileShareResultOutput) AccessTierStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFileShareResult) string { return v.AccessTierStatus }).(pulumi.StringOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupFileShareResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFileShareResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Indicates whether the share was deleted.
 func (o LookupFileShareResultOutput) Deleted() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupFileShareResult) bool { return v.Deleted }).(pulumi.BoolOutput)
@@ -158,9 +179,21 @@ func (o LookupFileShareResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFileShareResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
+// File Share Paid Bursting properties.
+func (o LookupFileShareResultOutput) FileSharePaidBursting() FileSharePropertiesResponseFileSharePaidBurstingPtrOutput {
+	return o.ApplyT(func(v LookupFileShareResult) *FileSharePropertiesResponseFileSharePaidBursting {
+		return v.FileSharePaidBursting
+	}).(FileSharePropertiesResponseFileSharePaidBurstingPtrOutput)
+}
+
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupFileShareResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFileShareResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The calculated burst IOPS of the share. This property is only for file shares created under Files Provisioned v2 account type.
+func (o LookupFileShareResultOutput) IncludedBurstIops() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupFileShareResult) int { return v.IncludedBurstIops }).(pulumi.IntOutput)
 }
 
 // Returns the date and time the share was last modified.
@@ -183,6 +216,11 @@ func (o LookupFileShareResultOutput) LeaseStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFileShareResult) string { return v.LeaseStatus }).(pulumi.StringOutput)
 }
 
+// The calculated maximum burst credits for the share. This property is only for file shares created under Files Provisioned v2 account type.
+func (o LookupFileShareResultOutput) MaxBurstCreditsForIops() pulumi.Float64Output {
+	return o.ApplyT(func(v LookupFileShareResult) float64 { return v.MaxBurstCreditsForIops }).(pulumi.Float64Output)
+}
+
 // A name-value pair to associate with the share as metadata.
 func (o LookupFileShareResultOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupFileShareResult) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
@@ -191,6 +229,31 @@ func (o LookupFileShareResultOutput) Metadata() pulumi.StringMapOutput {
 // The name of the resource
 func (o LookupFileShareResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFileShareResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Returns the next allowed provisioned bandwidth downgrade time for the share. This property is only for file shares created under Files Provisioned v2 account type.
+func (o LookupFileShareResultOutput) NextAllowedProvisionedBandwidthDowngradeTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFileShareResult) string { return v.NextAllowedProvisionedBandwidthDowngradeTime }).(pulumi.StringOutput)
+}
+
+// Returns the next allowed provisioned IOPS downgrade time for the share. This property is only for file shares created under Files Provisioned v2 account type.
+func (o LookupFileShareResultOutput) NextAllowedProvisionedIopsDowngradeTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFileShareResult) string { return v.NextAllowedProvisionedIopsDowngradeTime }).(pulumi.StringOutput)
+}
+
+// Returns the next allowed provisioned storage size downgrade time for the share. This property is only for file shares created under Files Provisioned v1 SSD and Files Provisioned v2 account type
+func (o LookupFileShareResultOutput) NextAllowedQuotaDowngradeTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFileShareResult) string { return v.NextAllowedQuotaDowngradeTime }).(pulumi.StringOutput)
+}
+
+// The provisioned bandwidth of the share, in mebibytes per second. This property is only for file shares created under Files Provisioned v2 account type. Please refer to the GetFileServiceUsage API response for the minimum and maximum allowed value for provisioned bandwidth.
+func (o LookupFileShareResultOutput) ProvisionedBandwidthMibps() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LookupFileShareResult) *int { return v.ProvisionedBandwidthMibps }).(pulumi.IntPtrOutput)
+}
+
+// The provisioned IOPS of the share. This property is only for file shares created under Files Provisioned v2 account type. Please refer to the GetFileServiceUsage API response for the minimum and maximum allowed value for provisioned IOPS.
+func (o LookupFileShareResultOutput) ProvisionedIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LookupFileShareResult) *int { return v.ProvisionedIops }).(pulumi.IntPtrOutput)
 }
 
 // Remaining retention days for share that was soft deleted.
@@ -203,7 +266,7 @@ func (o LookupFileShareResultOutput) RootSquash() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupFileShareResult) *string { return v.RootSquash }).(pulumi.StringPtrOutput)
 }
 
-// The maximum size of the share, in gigabytes. Must be greater than 0, and less than or equal to 5TB (5120). For Large File Shares, the maximum size is 102400.
+// The provisioned size of the share, in gibibytes. Must be greater than 0, and less than or equal to 5TB (5120). For Large File Shares, the maximum size is 102400. For file shares created under Files Provisioned v2 account type, please refer to the GetFileServiceUsage API response for the minimum and maximum allowed provisioned storage size.
 func (o LookupFileShareResultOutput) ShareQuota() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupFileShareResult) *int { return v.ShareQuota }).(pulumi.IntPtrOutput)
 }

@@ -13,10 +13,12 @@ import (
 )
 
 // A Migration Service.
-// Azure REST API version: 2023-07-15-preview.
+// Azure REST API version: 2023-07-15-preview. Prior API version in Azure Native 2.x: 2023-07-15-preview.
 type MigrationService struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Current state of the Integration runtime.
 	IntegrationRuntimeState pulumi.StringOutput `pulumi:"integrationRuntimeState"`
 	// The geo-location where the resource lives
@@ -139,6 +141,11 @@ func (o MigrationServiceOutput) ToMigrationServiceOutput() MigrationServiceOutpu
 
 func (o MigrationServiceOutput) ToMigrationServiceOutputWithContext(ctx context.Context) MigrationServiceOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o MigrationServiceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *MigrationService) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Current state of the Integration runtime.

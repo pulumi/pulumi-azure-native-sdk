@@ -13,12 +13,12 @@ import (
 )
 
 // A hostname binding object.
-// Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2020-12-01.
-//
-// Other available API versions: 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
+// Azure REST API version: 2024-04-01. Prior API version in Azure Native 2.x: 2022-09-01.
 type WebAppHostNameBindingSlot struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Azure resource name.
 	AzureResourceName pulumi.StringPtrOutput `pulumi:"azureResourceName"`
 	// Azure resource type.
@@ -244,6 +244,11 @@ func (o WebAppHostNameBindingSlotOutput) ToWebAppHostNameBindingSlotOutput() Web
 
 func (o WebAppHostNameBindingSlotOutput) ToWebAppHostNameBindingSlotOutputWithContext(ctx context.Context) WebAppHostNameBindingSlotOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o WebAppHostNameBindingSlotOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *WebAppHostNameBindingSlot) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Azure resource name.

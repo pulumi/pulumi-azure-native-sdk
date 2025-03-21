@@ -2047,18 +2047,55 @@ func (in *customRuleEnabledStatePtr) ToCustomRuleEnabledStatePtrOutputWithContex
 }
 
 // The name of the action for the delivery rule.
-type DeliveryRuleAction string
+type DeliveryRuleActionName string
 
 const (
-	DeliveryRuleActionCacheExpiration            = DeliveryRuleAction("CacheExpiration")
-	DeliveryRuleActionCacheKeyQueryString        = DeliveryRuleAction("CacheKeyQueryString")
-	DeliveryRuleActionModifyRequestHeader        = DeliveryRuleAction("ModifyRequestHeader")
-	DeliveryRuleActionModifyResponseHeader       = DeliveryRuleAction("ModifyResponseHeader")
-	DeliveryRuleActionUrlRedirect                = DeliveryRuleAction("UrlRedirect")
-	DeliveryRuleActionUrlRewrite                 = DeliveryRuleAction("UrlRewrite")
-	DeliveryRuleActionUrlSigning                 = DeliveryRuleAction("UrlSigning")
-	DeliveryRuleActionOriginGroupOverride        = DeliveryRuleAction("OriginGroupOverride")
-	DeliveryRuleActionRouteConfigurationOverride = DeliveryRuleAction("RouteConfigurationOverride")
+	DeliveryRuleActionNameCacheExpiration            = DeliveryRuleActionName("CacheExpiration")
+	DeliveryRuleActionNameCacheKeyQueryString        = DeliveryRuleActionName("CacheKeyQueryString")
+	DeliveryRuleActionNameModifyRequestHeader        = DeliveryRuleActionName("ModifyRequestHeader")
+	DeliveryRuleActionNameModifyResponseHeader       = DeliveryRuleActionName("ModifyResponseHeader")
+	DeliveryRuleActionNameUrlRedirect                = DeliveryRuleActionName("UrlRedirect")
+	DeliveryRuleActionNameUrlRewrite                 = DeliveryRuleActionName("UrlRewrite")
+	DeliveryRuleActionNameUrlSigning                 = DeliveryRuleActionName("UrlSigning")
+	DeliveryRuleActionNameOriginGroupOverride        = DeliveryRuleActionName("OriginGroupOverride")
+	DeliveryRuleActionNameRouteConfigurationOverride = DeliveryRuleActionName("RouteConfigurationOverride")
+)
+
+type DeliveryRuleActionParametersType string
+
+const (
+	DeliveryRuleActionParametersTypeDeliveryRuleUrlRedirectActionParameters                 = DeliveryRuleActionParametersType("DeliveryRuleUrlRedirectActionParameters")
+	DeliveryRuleActionParametersTypeDeliveryRuleUrlSigningActionParameters                  = DeliveryRuleActionParametersType("DeliveryRuleUrlSigningActionParameters")
+	DeliveryRuleActionParametersTypeDeliveryRuleOriginGroupOverrideActionParameters         = DeliveryRuleActionParametersType("DeliveryRuleOriginGroupOverrideActionParameters")
+	DeliveryRuleActionParametersTypeDeliveryRuleUrlRewriteActionParameters                  = DeliveryRuleActionParametersType("DeliveryRuleUrlRewriteActionParameters")
+	DeliveryRuleActionParametersTypeDeliveryRuleHeaderActionParameters                      = DeliveryRuleActionParametersType("DeliveryRuleHeaderActionParameters")
+	DeliveryRuleActionParametersTypeDeliveryRuleCacheExpirationActionParameters             = DeliveryRuleActionParametersType("DeliveryRuleCacheExpirationActionParameters")
+	DeliveryRuleActionParametersTypeDeliveryRuleCacheKeyQueryStringBehaviorActionParameters = DeliveryRuleActionParametersType("DeliveryRuleCacheKeyQueryStringBehaviorActionParameters")
+	DeliveryRuleActionParametersTypeDeliveryRuleRouteConfigurationOverrideActionParameters  = DeliveryRuleActionParametersType("DeliveryRuleRouteConfigurationOverrideActionParameters")
+)
+
+type DeliveryRuleConditionParametersType string
+
+const (
+	DeliveryRuleConditionParametersTypeDeliveryRuleRemoteAddressConditionParameters         = DeliveryRuleConditionParametersType("DeliveryRuleRemoteAddressConditionParameters")
+	DeliveryRuleConditionParametersTypeDeliveryRuleRequestMethodConditionParameters         = DeliveryRuleConditionParametersType("DeliveryRuleRequestMethodConditionParameters")
+	DeliveryRuleConditionParametersTypeDeliveryRuleQueryStringConditionParameters           = DeliveryRuleConditionParametersType("DeliveryRuleQueryStringConditionParameters")
+	DeliveryRuleConditionParametersTypeDeliveryRulePostArgsConditionParameters              = DeliveryRuleConditionParametersType("DeliveryRulePostArgsConditionParameters")
+	DeliveryRuleConditionParametersTypeDeliveryRuleRequestUriConditionParameters            = DeliveryRuleConditionParametersType("DeliveryRuleRequestUriConditionParameters")
+	DeliveryRuleConditionParametersTypeDeliveryRuleRequestHeaderConditionParameters         = DeliveryRuleConditionParametersType("DeliveryRuleRequestHeaderConditionParameters")
+	DeliveryRuleConditionParametersTypeDeliveryRuleRequestBodyConditionParameters           = DeliveryRuleConditionParametersType("DeliveryRuleRequestBodyConditionParameters")
+	DeliveryRuleConditionParametersTypeDeliveryRuleRequestSchemeConditionParameters         = DeliveryRuleConditionParametersType("DeliveryRuleRequestSchemeConditionParameters")
+	DeliveryRuleConditionParametersTypeDeliveryRuleUrlPathMatchConditionParameters          = DeliveryRuleConditionParametersType("DeliveryRuleUrlPathMatchConditionParameters")
+	DeliveryRuleConditionParametersTypeDeliveryRuleUrlFileExtensionMatchConditionParameters = DeliveryRuleConditionParametersType("DeliveryRuleUrlFileExtensionMatchConditionParameters")
+	DeliveryRuleConditionParametersTypeDeliveryRuleUrlFilenameConditionParameters           = DeliveryRuleConditionParametersType("DeliveryRuleUrlFilenameConditionParameters")
+	DeliveryRuleConditionParametersTypeDeliveryRuleHttpVersionConditionParameters           = DeliveryRuleConditionParametersType("DeliveryRuleHttpVersionConditionParameters")
+	DeliveryRuleConditionParametersTypeDeliveryRuleCookiesConditionParameters               = DeliveryRuleConditionParametersType("DeliveryRuleCookiesConditionParameters")
+	DeliveryRuleConditionParametersTypeDeliveryRuleIsDeviceConditionParameters              = DeliveryRuleConditionParametersType("DeliveryRuleIsDeviceConditionParameters")
+	DeliveryRuleConditionParametersTypeDeliveryRuleSocketAddrConditionParameters            = DeliveryRuleConditionParametersType("DeliveryRuleSocketAddrConditionParameters")
+	DeliveryRuleConditionParametersTypeDeliveryRuleClientPortConditionParameters            = DeliveryRuleConditionParametersType("DeliveryRuleClientPortConditionParameters")
+	DeliveryRuleConditionParametersTypeDeliveryRuleServerPortConditionParameters            = DeliveryRuleConditionParametersType("DeliveryRuleServerPortConditionParameters")
+	DeliveryRuleConditionParametersTypeDeliveryRuleHostNameConditionParameters              = DeliveryRuleConditionParametersType("DeliveryRuleHostNameConditionParameters")
+	DeliveryRuleConditionParametersTypeDeliveryRuleSslProtocolConditionParameters           = DeliveryRuleConditionParametersType("DeliveryRuleSslProtocolConditionParameters")
 )
 
 // Protocol to use for the redirect. The default value is MatchRequest
@@ -3577,6 +3614,171 @@ func (in *httpsRedirectPtr) ToHttpsRedirectPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(HttpsRedirectPtrOutput)
 }
 
+type IsDeviceMatchValue string
+
+const (
+	IsDeviceMatchValueMobile  = IsDeviceMatchValue("Mobile")
+	IsDeviceMatchValueDesktop = IsDeviceMatchValue("Desktop")
+)
+
+func (IsDeviceMatchValue) ElementType() reflect.Type {
+	return reflect.TypeOf((*IsDeviceMatchValue)(nil)).Elem()
+}
+
+func (e IsDeviceMatchValue) ToIsDeviceMatchValueOutput() IsDeviceMatchValueOutput {
+	return pulumi.ToOutput(e).(IsDeviceMatchValueOutput)
+}
+
+func (e IsDeviceMatchValue) ToIsDeviceMatchValueOutputWithContext(ctx context.Context) IsDeviceMatchValueOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(IsDeviceMatchValueOutput)
+}
+
+func (e IsDeviceMatchValue) ToIsDeviceMatchValuePtrOutput() IsDeviceMatchValuePtrOutput {
+	return e.ToIsDeviceMatchValuePtrOutputWithContext(context.Background())
+}
+
+func (e IsDeviceMatchValue) ToIsDeviceMatchValuePtrOutputWithContext(ctx context.Context) IsDeviceMatchValuePtrOutput {
+	return IsDeviceMatchValue(e).ToIsDeviceMatchValueOutputWithContext(ctx).ToIsDeviceMatchValuePtrOutputWithContext(ctx)
+}
+
+func (e IsDeviceMatchValue) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e IsDeviceMatchValue) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e IsDeviceMatchValue) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e IsDeviceMatchValue) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type IsDeviceMatchValueOutput struct{ *pulumi.OutputState }
+
+func (IsDeviceMatchValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IsDeviceMatchValue)(nil)).Elem()
+}
+
+func (o IsDeviceMatchValueOutput) ToIsDeviceMatchValueOutput() IsDeviceMatchValueOutput {
+	return o
+}
+
+func (o IsDeviceMatchValueOutput) ToIsDeviceMatchValueOutputWithContext(ctx context.Context) IsDeviceMatchValueOutput {
+	return o
+}
+
+func (o IsDeviceMatchValueOutput) ToIsDeviceMatchValuePtrOutput() IsDeviceMatchValuePtrOutput {
+	return o.ToIsDeviceMatchValuePtrOutputWithContext(context.Background())
+}
+
+func (o IsDeviceMatchValueOutput) ToIsDeviceMatchValuePtrOutputWithContext(ctx context.Context) IsDeviceMatchValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IsDeviceMatchValue) *IsDeviceMatchValue {
+		return &v
+	}).(IsDeviceMatchValuePtrOutput)
+}
+
+func (o IsDeviceMatchValueOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o IsDeviceMatchValueOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e IsDeviceMatchValue) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o IsDeviceMatchValueOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o IsDeviceMatchValueOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e IsDeviceMatchValue) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type IsDeviceMatchValuePtrOutput struct{ *pulumi.OutputState }
+
+func (IsDeviceMatchValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IsDeviceMatchValue)(nil)).Elem()
+}
+
+func (o IsDeviceMatchValuePtrOutput) ToIsDeviceMatchValuePtrOutput() IsDeviceMatchValuePtrOutput {
+	return o
+}
+
+func (o IsDeviceMatchValuePtrOutput) ToIsDeviceMatchValuePtrOutputWithContext(ctx context.Context) IsDeviceMatchValuePtrOutput {
+	return o
+}
+
+func (o IsDeviceMatchValuePtrOutput) Elem() IsDeviceMatchValueOutput {
+	return o.ApplyT(func(v *IsDeviceMatchValue) IsDeviceMatchValue {
+		if v != nil {
+			return *v
+		}
+		var ret IsDeviceMatchValue
+		return ret
+	}).(IsDeviceMatchValueOutput)
+}
+
+func (o IsDeviceMatchValuePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o IsDeviceMatchValuePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *IsDeviceMatchValue) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// IsDeviceMatchValueInput is an input type that accepts values of the IsDeviceMatchValue enum
+// A concrete instance of `IsDeviceMatchValueInput` can be one of the following:
+//
+//	IsDeviceMatchValueMobile
+//	IsDeviceMatchValueDesktop
+type IsDeviceMatchValueInput interface {
+	pulumi.Input
+
+	ToIsDeviceMatchValueOutput() IsDeviceMatchValueOutput
+	ToIsDeviceMatchValueOutputWithContext(context.Context) IsDeviceMatchValueOutput
+}
+
+var isDeviceMatchValuePtrType = reflect.TypeOf((**IsDeviceMatchValue)(nil)).Elem()
+
+type IsDeviceMatchValuePtrInput interface {
+	pulumi.Input
+
+	ToIsDeviceMatchValuePtrOutput() IsDeviceMatchValuePtrOutput
+	ToIsDeviceMatchValuePtrOutputWithContext(context.Context) IsDeviceMatchValuePtrOutput
+}
+
+type isDeviceMatchValuePtr string
+
+func IsDeviceMatchValuePtr(v string) IsDeviceMatchValuePtrInput {
+	return (*isDeviceMatchValuePtr)(&v)
+}
+
+func (*isDeviceMatchValuePtr) ElementType() reflect.Type {
+	return isDeviceMatchValuePtrType
+}
+
+func (in *isDeviceMatchValuePtr) ToIsDeviceMatchValuePtrOutput() IsDeviceMatchValuePtrOutput {
+	return pulumi.ToOutput(in).(IsDeviceMatchValuePtrOutput)
+}
+
+func (in *isDeviceMatchValuePtr) ToIsDeviceMatchValuePtrOutputWithContext(ctx context.Context) IsDeviceMatchValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(IsDeviceMatchValuePtrOutput)
+}
+
 // Describes operator to be matched
 type IsDeviceOperator string
 
@@ -3739,6 +3941,169 @@ func (in *isDeviceOperatorPtr) ToIsDeviceOperatorPtrOutput() IsDeviceOperatorPtr
 
 func (in *isDeviceOperatorPtr) ToIsDeviceOperatorPtrOutputWithContext(ctx context.Context) IsDeviceOperatorPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IsDeviceOperatorPtrOutput)
+}
+
+type KeyVaultSigningKeyParametersType string
+
+const (
+	KeyVaultSigningKeyParametersTypeKeyVaultSigningKeyParameters = KeyVaultSigningKeyParametersType("KeyVaultSigningKeyParameters")
+)
+
+func (KeyVaultSigningKeyParametersType) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyVaultSigningKeyParametersType)(nil)).Elem()
+}
+
+func (e KeyVaultSigningKeyParametersType) ToKeyVaultSigningKeyParametersTypeOutput() KeyVaultSigningKeyParametersTypeOutput {
+	return pulumi.ToOutput(e).(KeyVaultSigningKeyParametersTypeOutput)
+}
+
+func (e KeyVaultSigningKeyParametersType) ToKeyVaultSigningKeyParametersTypeOutputWithContext(ctx context.Context) KeyVaultSigningKeyParametersTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(KeyVaultSigningKeyParametersTypeOutput)
+}
+
+func (e KeyVaultSigningKeyParametersType) ToKeyVaultSigningKeyParametersTypePtrOutput() KeyVaultSigningKeyParametersTypePtrOutput {
+	return e.ToKeyVaultSigningKeyParametersTypePtrOutputWithContext(context.Background())
+}
+
+func (e KeyVaultSigningKeyParametersType) ToKeyVaultSigningKeyParametersTypePtrOutputWithContext(ctx context.Context) KeyVaultSigningKeyParametersTypePtrOutput {
+	return KeyVaultSigningKeyParametersType(e).ToKeyVaultSigningKeyParametersTypeOutputWithContext(ctx).ToKeyVaultSigningKeyParametersTypePtrOutputWithContext(ctx)
+}
+
+func (e KeyVaultSigningKeyParametersType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e KeyVaultSigningKeyParametersType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e KeyVaultSigningKeyParametersType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e KeyVaultSigningKeyParametersType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type KeyVaultSigningKeyParametersTypeOutput struct{ *pulumi.OutputState }
+
+func (KeyVaultSigningKeyParametersTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyVaultSigningKeyParametersType)(nil)).Elem()
+}
+
+func (o KeyVaultSigningKeyParametersTypeOutput) ToKeyVaultSigningKeyParametersTypeOutput() KeyVaultSigningKeyParametersTypeOutput {
+	return o
+}
+
+func (o KeyVaultSigningKeyParametersTypeOutput) ToKeyVaultSigningKeyParametersTypeOutputWithContext(ctx context.Context) KeyVaultSigningKeyParametersTypeOutput {
+	return o
+}
+
+func (o KeyVaultSigningKeyParametersTypeOutput) ToKeyVaultSigningKeyParametersTypePtrOutput() KeyVaultSigningKeyParametersTypePtrOutput {
+	return o.ToKeyVaultSigningKeyParametersTypePtrOutputWithContext(context.Background())
+}
+
+func (o KeyVaultSigningKeyParametersTypeOutput) ToKeyVaultSigningKeyParametersTypePtrOutputWithContext(ctx context.Context) KeyVaultSigningKeyParametersTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KeyVaultSigningKeyParametersType) *KeyVaultSigningKeyParametersType {
+		return &v
+	}).(KeyVaultSigningKeyParametersTypePtrOutput)
+}
+
+func (o KeyVaultSigningKeyParametersTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o KeyVaultSigningKeyParametersTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e KeyVaultSigningKeyParametersType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o KeyVaultSigningKeyParametersTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o KeyVaultSigningKeyParametersTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e KeyVaultSigningKeyParametersType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type KeyVaultSigningKeyParametersTypePtrOutput struct{ *pulumi.OutputState }
+
+func (KeyVaultSigningKeyParametersTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeyVaultSigningKeyParametersType)(nil)).Elem()
+}
+
+func (o KeyVaultSigningKeyParametersTypePtrOutput) ToKeyVaultSigningKeyParametersTypePtrOutput() KeyVaultSigningKeyParametersTypePtrOutput {
+	return o
+}
+
+func (o KeyVaultSigningKeyParametersTypePtrOutput) ToKeyVaultSigningKeyParametersTypePtrOutputWithContext(ctx context.Context) KeyVaultSigningKeyParametersTypePtrOutput {
+	return o
+}
+
+func (o KeyVaultSigningKeyParametersTypePtrOutput) Elem() KeyVaultSigningKeyParametersTypeOutput {
+	return o.ApplyT(func(v *KeyVaultSigningKeyParametersType) KeyVaultSigningKeyParametersType {
+		if v != nil {
+			return *v
+		}
+		var ret KeyVaultSigningKeyParametersType
+		return ret
+	}).(KeyVaultSigningKeyParametersTypeOutput)
+}
+
+func (o KeyVaultSigningKeyParametersTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o KeyVaultSigningKeyParametersTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *KeyVaultSigningKeyParametersType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// KeyVaultSigningKeyParametersTypeInput is an input type that accepts values of the KeyVaultSigningKeyParametersType enum
+// A concrete instance of `KeyVaultSigningKeyParametersTypeInput` can be one of the following:
+//
+//	KeyVaultSigningKeyParametersTypeKeyVaultSigningKeyParameters
+type KeyVaultSigningKeyParametersTypeInput interface {
+	pulumi.Input
+
+	ToKeyVaultSigningKeyParametersTypeOutput() KeyVaultSigningKeyParametersTypeOutput
+	ToKeyVaultSigningKeyParametersTypeOutputWithContext(context.Context) KeyVaultSigningKeyParametersTypeOutput
+}
+
+var keyVaultSigningKeyParametersTypePtrType = reflect.TypeOf((**KeyVaultSigningKeyParametersType)(nil)).Elem()
+
+type KeyVaultSigningKeyParametersTypePtrInput interface {
+	pulumi.Input
+
+	ToKeyVaultSigningKeyParametersTypePtrOutput() KeyVaultSigningKeyParametersTypePtrOutput
+	ToKeyVaultSigningKeyParametersTypePtrOutputWithContext(context.Context) KeyVaultSigningKeyParametersTypePtrOutput
+}
+
+type keyVaultSigningKeyParametersTypePtr string
+
+func KeyVaultSigningKeyParametersTypePtr(v string) KeyVaultSigningKeyParametersTypePtrInput {
+	return (*keyVaultSigningKeyParametersTypePtr)(&v)
+}
+
+func (*keyVaultSigningKeyParametersTypePtr) ElementType() reflect.Type {
+	return keyVaultSigningKeyParametersTypePtrType
+}
+
+func (in *keyVaultSigningKeyParametersTypePtr) ToKeyVaultSigningKeyParametersTypePtrOutput() KeyVaultSigningKeyParametersTypePtrOutput {
+	return pulumi.ToOutput(in).(KeyVaultSigningKeyParametersTypePtrOutput)
+}
+
+func (in *keyVaultSigningKeyParametersTypePtr) ToKeyVaultSigningKeyParametersTypePtrOutputWithContext(ctx context.Context) KeyVaultSigningKeyParametersTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(KeyVaultSigningKeyParametersTypePtrOutput)
 }
 
 // whether this route will be linked to the default endpoint domain.
@@ -5642,6 +6007,172 @@ func (in *probeProtocolPtr) ToProbeProtocolPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(ProbeProtocolPtrOutput)
 }
 
+// State of the log scrubbing config. Default value is Enabled.
+type ProfileScrubbingState string
+
+const (
+	ProfileScrubbingStateEnabled  = ProfileScrubbingState("Enabled")
+	ProfileScrubbingStateDisabled = ProfileScrubbingState("Disabled")
+)
+
+func (ProfileScrubbingState) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProfileScrubbingState)(nil)).Elem()
+}
+
+func (e ProfileScrubbingState) ToProfileScrubbingStateOutput() ProfileScrubbingStateOutput {
+	return pulumi.ToOutput(e).(ProfileScrubbingStateOutput)
+}
+
+func (e ProfileScrubbingState) ToProfileScrubbingStateOutputWithContext(ctx context.Context) ProfileScrubbingStateOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ProfileScrubbingStateOutput)
+}
+
+func (e ProfileScrubbingState) ToProfileScrubbingStatePtrOutput() ProfileScrubbingStatePtrOutput {
+	return e.ToProfileScrubbingStatePtrOutputWithContext(context.Background())
+}
+
+func (e ProfileScrubbingState) ToProfileScrubbingStatePtrOutputWithContext(ctx context.Context) ProfileScrubbingStatePtrOutput {
+	return ProfileScrubbingState(e).ToProfileScrubbingStateOutputWithContext(ctx).ToProfileScrubbingStatePtrOutputWithContext(ctx)
+}
+
+func (e ProfileScrubbingState) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ProfileScrubbingState) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ProfileScrubbingState) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ProfileScrubbingState) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ProfileScrubbingStateOutput struct{ *pulumi.OutputState }
+
+func (ProfileScrubbingStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProfileScrubbingState)(nil)).Elem()
+}
+
+func (o ProfileScrubbingStateOutput) ToProfileScrubbingStateOutput() ProfileScrubbingStateOutput {
+	return o
+}
+
+func (o ProfileScrubbingStateOutput) ToProfileScrubbingStateOutputWithContext(ctx context.Context) ProfileScrubbingStateOutput {
+	return o
+}
+
+func (o ProfileScrubbingStateOutput) ToProfileScrubbingStatePtrOutput() ProfileScrubbingStatePtrOutput {
+	return o.ToProfileScrubbingStatePtrOutputWithContext(context.Background())
+}
+
+func (o ProfileScrubbingStateOutput) ToProfileScrubbingStatePtrOutputWithContext(ctx context.Context) ProfileScrubbingStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProfileScrubbingState) *ProfileScrubbingState {
+		return &v
+	}).(ProfileScrubbingStatePtrOutput)
+}
+
+func (o ProfileScrubbingStateOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ProfileScrubbingStateOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ProfileScrubbingState) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ProfileScrubbingStateOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ProfileScrubbingStateOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ProfileScrubbingState) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ProfileScrubbingStatePtrOutput struct{ *pulumi.OutputState }
+
+func (ProfileScrubbingStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProfileScrubbingState)(nil)).Elem()
+}
+
+func (o ProfileScrubbingStatePtrOutput) ToProfileScrubbingStatePtrOutput() ProfileScrubbingStatePtrOutput {
+	return o
+}
+
+func (o ProfileScrubbingStatePtrOutput) ToProfileScrubbingStatePtrOutputWithContext(ctx context.Context) ProfileScrubbingStatePtrOutput {
+	return o
+}
+
+func (o ProfileScrubbingStatePtrOutput) Elem() ProfileScrubbingStateOutput {
+	return o.ApplyT(func(v *ProfileScrubbingState) ProfileScrubbingState {
+		if v != nil {
+			return *v
+		}
+		var ret ProfileScrubbingState
+		return ret
+	}).(ProfileScrubbingStateOutput)
+}
+
+func (o ProfileScrubbingStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ProfileScrubbingStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ProfileScrubbingState) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ProfileScrubbingStateInput is an input type that accepts values of the ProfileScrubbingState enum
+// A concrete instance of `ProfileScrubbingStateInput` can be one of the following:
+//
+//	ProfileScrubbingStateEnabled
+//	ProfileScrubbingStateDisabled
+type ProfileScrubbingStateInput interface {
+	pulumi.Input
+
+	ToProfileScrubbingStateOutput() ProfileScrubbingStateOutput
+	ToProfileScrubbingStateOutputWithContext(context.Context) ProfileScrubbingStateOutput
+}
+
+var profileScrubbingStatePtrType = reflect.TypeOf((**ProfileScrubbingState)(nil)).Elem()
+
+type ProfileScrubbingStatePtrInput interface {
+	pulumi.Input
+
+	ToProfileScrubbingStatePtrOutput() ProfileScrubbingStatePtrOutput
+	ToProfileScrubbingStatePtrOutputWithContext(context.Context) ProfileScrubbingStatePtrOutput
+}
+
+type profileScrubbingStatePtr string
+
+func ProfileScrubbingStatePtr(v string) ProfileScrubbingStatePtrInput {
+	return (*profileScrubbingStatePtr)(&v)
+}
+
+func (*profileScrubbingStatePtr) ElementType() reflect.Type {
+	return profileScrubbingStatePtrType
+}
+
+func (in *profileScrubbingStatePtr) ToProfileScrubbingStatePtrOutput() ProfileScrubbingStatePtrOutput {
+	return pulumi.ToOutput(in).(ProfileScrubbingStatePtrOutput)
+}
+
+func (in *profileScrubbingStatePtr) ToProfileScrubbingStatePtrOutputWithContext(ctx context.Context) ProfileScrubbingStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ProfileScrubbingStatePtrOutput)
+}
+
 // Caching behavior for the requests
 type QueryStringBehavior string
 
@@ -6866,6 +7397,181 @@ func (in *requestHeaderOperatorPtr) ToRequestHeaderOperatorPtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(RequestHeaderOperatorPtrOutput)
 }
 
+type RequestMethodMatchValue string
+
+const (
+	RequestMethodMatchValueGET     = RequestMethodMatchValue("GET")
+	RequestMethodMatchValueHEAD    = RequestMethodMatchValue("HEAD")
+	RequestMethodMatchValuePOST    = RequestMethodMatchValue("POST")
+	RequestMethodMatchValuePUT     = RequestMethodMatchValue("PUT")
+	RequestMethodMatchValueDELETE  = RequestMethodMatchValue("DELETE")
+	RequestMethodMatchValueOPTIONS = RequestMethodMatchValue("OPTIONS")
+	RequestMethodMatchValueTRACE   = RequestMethodMatchValue("TRACE")
+)
+
+func (RequestMethodMatchValue) ElementType() reflect.Type {
+	return reflect.TypeOf((*RequestMethodMatchValue)(nil)).Elem()
+}
+
+func (e RequestMethodMatchValue) ToRequestMethodMatchValueOutput() RequestMethodMatchValueOutput {
+	return pulumi.ToOutput(e).(RequestMethodMatchValueOutput)
+}
+
+func (e RequestMethodMatchValue) ToRequestMethodMatchValueOutputWithContext(ctx context.Context) RequestMethodMatchValueOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(RequestMethodMatchValueOutput)
+}
+
+func (e RequestMethodMatchValue) ToRequestMethodMatchValuePtrOutput() RequestMethodMatchValuePtrOutput {
+	return e.ToRequestMethodMatchValuePtrOutputWithContext(context.Background())
+}
+
+func (e RequestMethodMatchValue) ToRequestMethodMatchValuePtrOutputWithContext(ctx context.Context) RequestMethodMatchValuePtrOutput {
+	return RequestMethodMatchValue(e).ToRequestMethodMatchValueOutputWithContext(ctx).ToRequestMethodMatchValuePtrOutputWithContext(ctx)
+}
+
+func (e RequestMethodMatchValue) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RequestMethodMatchValue) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RequestMethodMatchValue) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e RequestMethodMatchValue) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type RequestMethodMatchValueOutput struct{ *pulumi.OutputState }
+
+func (RequestMethodMatchValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RequestMethodMatchValue)(nil)).Elem()
+}
+
+func (o RequestMethodMatchValueOutput) ToRequestMethodMatchValueOutput() RequestMethodMatchValueOutput {
+	return o
+}
+
+func (o RequestMethodMatchValueOutput) ToRequestMethodMatchValueOutputWithContext(ctx context.Context) RequestMethodMatchValueOutput {
+	return o
+}
+
+func (o RequestMethodMatchValueOutput) ToRequestMethodMatchValuePtrOutput() RequestMethodMatchValuePtrOutput {
+	return o.ToRequestMethodMatchValuePtrOutputWithContext(context.Background())
+}
+
+func (o RequestMethodMatchValueOutput) ToRequestMethodMatchValuePtrOutputWithContext(ctx context.Context) RequestMethodMatchValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RequestMethodMatchValue) *RequestMethodMatchValue {
+		return &v
+	}).(RequestMethodMatchValuePtrOutput)
+}
+
+func (o RequestMethodMatchValueOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o RequestMethodMatchValueOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RequestMethodMatchValue) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o RequestMethodMatchValueOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RequestMethodMatchValueOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RequestMethodMatchValue) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type RequestMethodMatchValuePtrOutput struct{ *pulumi.OutputState }
+
+func (RequestMethodMatchValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RequestMethodMatchValue)(nil)).Elem()
+}
+
+func (o RequestMethodMatchValuePtrOutput) ToRequestMethodMatchValuePtrOutput() RequestMethodMatchValuePtrOutput {
+	return o
+}
+
+func (o RequestMethodMatchValuePtrOutput) ToRequestMethodMatchValuePtrOutputWithContext(ctx context.Context) RequestMethodMatchValuePtrOutput {
+	return o
+}
+
+func (o RequestMethodMatchValuePtrOutput) Elem() RequestMethodMatchValueOutput {
+	return o.ApplyT(func(v *RequestMethodMatchValue) RequestMethodMatchValue {
+		if v != nil {
+			return *v
+		}
+		var ret RequestMethodMatchValue
+		return ret
+	}).(RequestMethodMatchValueOutput)
+}
+
+func (o RequestMethodMatchValuePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RequestMethodMatchValuePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RequestMethodMatchValue) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// RequestMethodMatchValueInput is an input type that accepts values of the RequestMethodMatchValue enum
+// A concrete instance of `RequestMethodMatchValueInput` can be one of the following:
+//
+//	RequestMethodMatchValueGET
+//	RequestMethodMatchValueHEAD
+//	RequestMethodMatchValuePOST
+//	RequestMethodMatchValuePUT
+//	RequestMethodMatchValueDELETE
+//	RequestMethodMatchValueOPTIONS
+//	RequestMethodMatchValueTRACE
+type RequestMethodMatchValueInput interface {
+	pulumi.Input
+
+	ToRequestMethodMatchValueOutput() RequestMethodMatchValueOutput
+	ToRequestMethodMatchValueOutputWithContext(context.Context) RequestMethodMatchValueOutput
+}
+
+var requestMethodMatchValuePtrType = reflect.TypeOf((**RequestMethodMatchValue)(nil)).Elem()
+
+type RequestMethodMatchValuePtrInput interface {
+	pulumi.Input
+
+	ToRequestMethodMatchValuePtrOutput() RequestMethodMatchValuePtrOutput
+	ToRequestMethodMatchValuePtrOutputWithContext(context.Context) RequestMethodMatchValuePtrOutput
+}
+
+type requestMethodMatchValuePtr string
+
+func RequestMethodMatchValuePtr(v string) RequestMethodMatchValuePtrInput {
+	return (*requestMethodMatchValuePtr)(&v)
+}
+
+func (*requestMethodMatchValuePtr) ElementType() reflect.Type {
+	return requestMethodMatchValuePtrType
+}
+
+func (in *requestMethodMatchValuePtr) ToRequestMethodMatchValuePtrOutput() RequestMethodMatchValuePtrOutput {
+	return pulumi.ToOutput(in).(RequestMethodMatchValuePtrOutput)
+}
+
+func (in *requestMethodMatchValuePtr) ToRequestMethodMatchValuePtrOutputWithContext(ctx context.Context) RequestMethodMatchValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RequestMethodMatchValuePtrOutput)
+}
+
 // Describes operator to be matched
 type RequestMethodOperator string
 
@@ -7028,6 +7734,171 @@ func (in *requestMethodOperatorPtr) ToRequestMethodOperatorPtrOutput() RequestMe
 
 func (in *requestMethodOperatorPtr) ToRequestMethodOperatorPtrOutputWithContext(ctx context.Context) RequestMethodOperatorPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RequestMethodOperatorPtrOutput)
+}
+
+type RequestSchemeMatchValue string
+
+const (
+	RequestSchemeMatchValueHTTP  = RequestSchemeMatchValue("HTTP")
+	RequestSchemeMatchValueHTTPS = RequestSchemeMatchValue("HTTPS")
+)
+
+func (RequestSchemeMatchValue) ElementType() reflect.Type {
+	return reflect.TypeOf((*RequestSchemeMatchValue)(nil)).Elem()
+}
+
+func (e RequestSchemeMatchValue) ToRequestSchemeMatchValueOutput() RequestSchemeMatchValueOutput {
+	return pulumi.ToOutput(e).(RequestSchemeMatchValueOutput)
+}
+
+func (e RequestSchemeMatchValue) ToRequestSchemeMatchValueOutputWithContext(ctx context.Context) RequestSchemeMatchValueOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(RequestSchemeMatchValueOutput)
+}
+
+func (e RequestSchemeMatchValue) ToRequestSchemeMatchValuePtrOutput() RequestSchemeMatchValuePtrOutput {
+	return e.ToRequestSchemeMatchValuePtrOutputWithContext(context.Background())
+}
+
+func (e RequestSchemeMatchValue) ToRequestSchemeMatchValuePtrOutputWithContext(ctx context.Context) RequestSchemeMatchValuePtrOutput {
+	return RequestSchemeMatchValue(e).ToRequestSchemeMatchValueOutputWithContext(ctx).ToRequestSchemeMatchValuePtrOutputWithContext(ctx)
+}
+
+func (e RequestSchemeMatchValue) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RequestSchemeMatchValue) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RequestSchemeMatchValue) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e RequestSchemeMatchValue) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type RequestSchemeMatchValueOutput struct{ *pulumi.OutputState }
+
+func (RequestSchemeMatchValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RequestSchemeMatchValue)(nil)).Elem()
+}
+
+func (o RequestSchemeMatchValueOutput) ToRequestSchemeMatchValueOutput() RequestSchemeMatchValueOutput {
+	return o
+}
+
+func (o RequestSchemeMatchValueOutput) ToRequestSchemeMatchValueOutputWithContext(ctx context.Context) RequestSchemeMatchValueOutput {
+	return o
+}
+
+func (o RequestSchemeMatchValueOutput) ToRequestSchemeMatchValuePtrOutput() RequestSchemeMatchValuePtrOutput {
+	return o.ToRequestSchemeMatchValuePtrOutputWithContext(context.Background())
+}
+
+func (o RequestSchemeMatchValueOutput) ToRequestSchemeMatchValuePtrOutputWithContext(ctx context.Context) RequestSchemeMatchValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RequestSchemeMatchValue) *RequestSchemeMatchValue {
+		return &v
+	}).(RequestSchemeMatchValuePtrOutput)
+}
+
+func (o RequestSchemeMatchValueOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o RequestSchemeMatchValueOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RequestSchemeMatchValue) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o RequestSchemeMatchValueOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RequestSchemeMatchValueOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RequestSchemeMatchValue) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type RequestSchemeMatchValuePtrOutput struct{ *pulumi.OutputState }
+
+func (RequestSchemeMatchValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RequestSchemeMatchValue)(nil)).Elem()
+}
+
+func (o RequestSchemeMatchValuePtrOutput) ToRequestSchemeMatchValuePtrOutput() RequestSchemeMatchValuePtrOutput {
+	return o
+}
+
+func (o RequestSchemeMatchValuePtrOutput) ToRequestSchemeMatchValuePtrOutputWithContext(ctx context.Context) RequestSchemeMatchValuePtrOutput {
+	return o
+}
+
+func (o RequestSchemeMatchValuePtrOutput) Elem() RequestSchemeMatchValueOutput {
+	return o.ApplyT(func(v *RequestSchemeMatchValue) RequestSchemeMatchValue {
+		if v != nil {
+			return *v
+		}
+		var ret RequestSchemeMatchValue
+		return ret
+	}).(RequestSchemeMatchValueOutput)
+}
+
+func (o RequestSchemeMatchValuePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RequestSchemeMatchValuePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RequestSchemeMatchValue) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// RequestSchemeMatchValueInput is an input type that accepts values of the RequestSchemeMatchValue enum
+// A concrete instance of `RequestSchemeMatchValueInput` can be one of the following:
+//
+//	RequestSchemeMatchValueHTTP
+//	RequestSchemeMatchValueHTTPS
+type RequestSchemeMatchValueInput interface {
+	pulumi.Input
+
+	ToRequestSchemeMatchValueOutput() RequestSchemeMatchValueOutput
+	ToRequestSchemeMatchValueOutputWithContext(context.Context) RequestSchemeMatchValueOutput
+}
+
+var requestSchemeMatchValuePtrType = reflect.TypeOf((**RequestSchemeMatchValue)(nil)).Elem()
+
+type RequestSchemeMatchValuePtrInput interface {
+	pulumi.Input
+
+	ToRequestSchemeMatchValuePtrOutput() RequestSchemeMatchValuePtrOutput
+	ToRequestSchemeMatchValuePtrOutputWithContext(context.Context) RequestSchemeMatchValuePtrOutput
+}
+
+type requestSchemeMatchValuePtr string
+
+func RequestSchemeMatchValuePtr(v string) RequestSchemeMatchValuePtrInput {
+	return (*requestSchemeMatchValuePtr)(&v)
+}
+
+func (*requestSchemeMatchValuePtr) ElementType() reflect.Type {
+	return requestSchemeMatchValuePtrType
+}
+
+func (in *requestSchemeMatchValuePtr) ToRequestSchemeMatchValuePtrOutput() RequestSchemeMatchValuePtrOutput {
+	return pulumi.ToOutput(in).(RequestSchemeMatchValuePtrOutput)
+}
+
+func (in *requestSchemeMatchValuePtr) ToRequestSchemeMatchValuePtrOutputWithContext(ctx context.Context) RequestSchemeMatchValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RequestSchemeMatchValuePtrOutput)
 }
 
 // Describes operator to be matched
@@ -7882,6 +8753,504 @@ func (in *ruleQueryStringCachingBehaviorPtr) ToRuleQueryStringCachingBehaviorPtr
 
 func (in *ruleQueryStringCachingBehaviorPtr) ToRuleQueryStringCachingBehaviorPtrOutputWithContext(ctx context.Context) RuleQueryStringCachingBehaviorPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RuleQueryStringCachingBehaviorPtrOutput)
+}
+
+// When matchVariable is a collection, operate on the selector to specify which elements in the collection this rule applies to.
+type ScrubbingRuleEntryMatchOperator string
+
+const (
+	ScrubbingRuleEntryMatchOperatorEqualsAny = ScrubbingRuleEntryMatchOperator("EqualsAny")
+)
+
+func (ScrubbingRuleEntryMatchOperator) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScrubbingRuleEntryMatchOperator)(nil)).Elem()
+}
+
+func (e ScrubbingRuleEntryMatchOperator) ToScrubbingRuleEntryMatchOperatorOutput() ScrubbingRuleEntryMatchOperatorOutput {
+	return pulumi.ToOutput(e).(ScrubbingRuleEntryMatchOperatorOutput)
+}
+
+func (e ScrubbingRuleEntryMatchOperator) ToScrubbingRuleEntryMatchOperatorOutputWithContext(ctx context.Context) ScrubbingRuleEntryMatchOperatorOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ScrubbingRuleEntryMatchOperatorOutput)
+}
+
+func (e ScrubbingRuleEntryMatchOperator) ToScrubbingRuleEntryMatchOperatorPtrOutput() ScrubbingRuleEntryMatchOperatorPtrOutput {
+	return e.ToScrubbingRuleEntryMatchOperatorPtrOutputWithContext(context.Background())
+}
+
+func (e ScrubbingRuleEntryMatchOperator) ToScrubbingRuleEntryMatchOperatorPtrOutputWithContext(ctx context.Context) ScrubbingRuleEntryMatchOperatorPtrOutput {
+	return ScrubbingRuleEntryMatchOperator(e).ToScrubbingRuleEntryMatchOperatorOutputWithContext(ctx).ToScrubbingRuleEntryMatchOperatorPtrOutputWithContext(ctx)
+}
+
+func (e ScrubbingRuleEntryMatchOperator) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ScrubbingRuleEntryMatchOperator) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ScrubbingRuleEntryMatchOperator) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ScrubbingRuleEntryMatchOperator) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ScrubbingRuleEntryMatchOperatorOutput struct{ *pulumi.OutputState }
+
+func (ScrubbingRuleEntryMatchOperatorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScrubbingRuleEntryMatchOperator)(nil)).Elem()
+}
+
+func (o ScrubbingRuleEntryMatchOperatorOutput) ToScrubbingRuleEntryMatchOperatorOutput() ScrubbingRuleEntryMatchOperatorOutput {
+	return o
+}
+
+func (o ScrubbingRuleEntryMatchOperatorOutput) ToScrubbingRuleEntryMatchOperatorOutputWithContext(ctx context.Context) ScrubbingRuleEntryMatchOperatorOutput {
+	return o
+}
+
+func (o ScrubbingRuleEntryMatchOperatorOutput) ToScrubbingRuleEntryMatchOperatorPtrOutput() ScrubbingRuleEntryMatchOperatorPtrOutput {
+	return o.ToScrubbingRuleEntryMatchOperatorPtrOutputWithContext(context.Background())
+}
+
+func (o ScrubbingRuleEntryMatchOperatorOutput) ToScrubbingRuleEntryMatchOperatorPtrOutputWithContext(ctx context.Context) ScrubbingRuleEntryMatchOperatorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScrubbingRuleEntryMatchOperator) *ScrubbingRuleEntryMatchOperator {
+		return &v
+	}).(ScrubbingRuleEntryMatchOperatorPtrOutput)
+}
+
+func (o ScrubbingRuleEntryMatchOperatorOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ScrubbingRuleEntryMatchOperatorOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ScrubbingRuleEntryMatchOperator) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ScrubbingRuleEntryMatchOperatorOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ScrubbingRuleEntryMatchOperatorOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ScrubbingRuleEntryMatchOperator) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ScrubbingRuleEntryMatchOperatorPtrOutput struct{ *pulumi.OutputState }
+
+func (ScrubbingRuleEntryMatchOperatorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScrubbingRuleEntryMatchOperator)(nil)).Elem()
+}
+
+func (o ScrubbingRuleEntryMatchOperatorPtrOutput) ToScrubbingRuleEntryMatchOperatorPtrOutput() ScrubbingRuleEntryMatchOperatorPtrOutput {
+	return o
+}
+
+func (o ScrubbingRuleEntryMatchOperatorPtrOutput) ToScrubbingRuleEntryMatchOperatorPtrOutputWithContext(ctx context.Context) ScrubbingRuleEntryMatchOperatorPtrOutput {
+	return o
+}
+
+func (o ScrubbingRuleEntryMatchOperatorPtrOutput) Elem() ScrubbingRuleEntryMatchOperatorOutput {
+	return o.ApplyT(func(v *ScrubbingRuleEntryMatchOperator) ScrubbingRuleEntryMatchOperator {
+		if v != nil {
+			return *v
+		}
+		var ret ScrubbingRuleEntryMatchOperator
+		return ret
+	}).(ScrubbingRuleEntryMatchOperatorOutput)
+}
+
+func (o ScrubbingRuleEntryMatchOperatorPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ScrubbingRuleEntryMatchOperatorPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ScrubbingRuleEntryMatchOperator) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ScrubbingRuleEntryMatchOperatorInput is an input type that accepts values of the ScrubbingRuleEntryMatchOperator enum
+// A concrete instance of `ScrubbingRuleEntryMatchOperatorInput` can be one of the following:
+//
+//	ScrubbingRuleEntryMatchOperatorEqualsAny
+type ScrubbingRuleEntryMatchOperatorInput interface {
+	pulumi.Input
+
+	ToScrubbingRuleEntryMatchOperatorOutput() ScrubbingRuleEntryMatchOperatorOutput
+	ToScrubbingRuleEntryMatchOperatorOutputWithContext(context.Context) ScrubbingRuleEntryMatchOperatorOutput
+}
+
+var scrubbingRuleEntryMatchOperatorPtrType = reflect.TypeOf((**ScrubbingRuleEntryMatchOperator)(nil)).Elem()
+
+type ScrubbingRuleEntryMatchOperatorPtrInput interface {
+	pulumi.Input
+
+	ToScrubbingRuleEntryMatchOperatorPtrOutput() ScrubbingRuleEntryMatchOperatorPtrOutput
+	ToScrubbingRuleEntryMatchOperatorPtrOutputWithContext(context.Context) ScrubbingRuleEntryMatchOperatorPtrOutput
+}
+
+type scrubbingRuleEntryMatchOperatorPtr string
+
+func ScrubbingRuleEntryMatchOperatorPtr(v string) ScrubbingRuleEntryMatchOperatorPtrInput {
+	return (*scrubbingRuleEntryMatchOperatorPtr)(&v)
+}
+
+func (*scrubbingRuleEntryMatchOperatorPtr) ElementType() reflect.Type {
+	return scrubbingRuleEntryMatchOperatorPtrType
+}
+
+func (in *scrubbingRuleEntryMatchOperatorPtr) ToScrubbingRuleEntryMatchOperatorPtrOutput() ScrubbingRuleEntryMatchOperatorPtrOutput {
+	return pulumi.ToOutput(in).(ScrubbingRuleEntryMatchOperatorPtrOutput)
+}
+
+func (in *scrubbingRuleEntryMatchOperatorPtr) ToScrubbingRuleEntryMatchOperatorPtrOutputWithContext(ctx context.Context) ScrubbingRuleEntryMatchOperatorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ScrubbingRuleEntryMatchOperatorPtrOutput)
+}
+
+// The variable to be scrubbed from the logs.
+type ScrubbingRuleEntryMatchVariable string
+
+const (
+	ScrubbingRuleEntryMatchVariableRequestIPAddress    = ScrubbingRuleEntryMatchVariable("RequestIPAddress")
+	ScrubbingRuleEntryMatchVariableRequestUri          = ScrubbingRuleEntryMatchVariable("RequestUri")
+	ScrubbingRuleEntryMatchVariableQueryStringArgNames = ScrubbingRuleEntryMatchVariable("QueryStringArgNames")
+)
+
+func (ScrubbingRuleEntryMatchVariable) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScrubbingRuleEntryMatchVariable)(nil)).Elem()
+}
+
+func (e ScrubbingRuleEntryMatchVariable) ToScrubbingRuleEntryMatchVariableOutput() ScrubbingRuleEntryMatchVariableOutput {
+	return pulumi.ToOutput(e).(ScrubbingRuleEntryMatchVariableOutput)
+}
+
+func (e ScrubbingRuleEntryMatchVariable) ToScrubbingRuleEntryMatchVariableOutputWithContext(ctx context.Context) ScrubbingRuleEntryMatchVariableOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ScrubbingRuleEntryMatchVariableOutput)
+}
+
+func (e ScrubbingRuleEntryMatchVariable) ToScrubbingRuleEntryMatchVariablePtrOutput() ScrubbingRuleEntryMatchVariablePtrOutput {
+	return e.ToScrubbingRuleEntryMatchVariablePtrOutputWithContext(context.Background())
+}
+
+func (e ScrubbingRuleEntryMatchVariable) ToScrubbingRuleEntryMatchVariablePtrOutputWithContext(ctx context.Context) ScrubbingRuleEntryMatchVariablePtrOutput {
+	return ScrubbingRuleEntryMatchVariable(e).ToScrubbingRuleEntryMatchVariableOutputWithContext(ctx).ToScrubbingRuleEntryMatchVariablePtrOutputWithContext(ctx)
+}
+
+func (e ScrubbingRuleEntryMatchVariable) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ScrubbingRuleEntryMatchVariable) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ScrubbingRuleEntryMatchVariable) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ScrubbingRuleEntryMatchVariable) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ScrubbingRuleEntryMatchVariableOutput struct{ *pulumi.OutputState }
+
+func (ScrubbingRuleEntryMatchVariableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScrubbingRuleEntryMatchVariable)(nil)).Elem()
+}
+
+func (o ScrubbingRuleEntryMatchVariableOutput) ToScrubbingRuleEntryMatchVariableOutput() ScrubbingRuleEntryMatchVariableOutput {
+	return o
+}
+
+func (o ScrubbingRuleEntryMatchVariableOutput) ToScrubbingRuleEntryMatchVariableOutputWithContext(ctx context.Context) ScrubbingRuleEntryMatchVariableOutput {
+	return o
+}
+
+func (o ScrubbingRuleEntryMatchVariableOutput) ToScrubbingRuleEntryMatchVariablePtrOutput() ScrubbingRuleEntryMatchVariablePtrOutput {
+	return o.ToScrubbingRuleEntryMatchVariablePtrOutputWithContext(context.Background())
+}
+
+func (o ScrubbingRuleEntryMatchVariableOutput) ToScrubbingRuleEntryMatchVariablePtrOutputWithContext(ctx context.Context) ScrubbingRuleEntryMatchVariablePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScrubbingRuleEntryMatchVariable) *ScrubbingRuleEntryMatchVariable {
+		return &v
+	}).(ScrubbingRuleEntryMatchVariablePtrOutput)
+}
+
+func (o ScrubbingRuleEntryMatchVariableOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ScrubbingRuleEntryMatchVariableOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ScrubbingRuleEntryMatchVariable) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ScrubbingRuleEntryMatchVariableOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ScrubbingRuleEntryMatchVariableOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ScrubbingRuleEntryMatchVariable) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ScrubbingRuleEntryMatchVariablePtrOutput struct{ *pulumi.OutputState }
+
+func (ScrubbingRuleEntryMatchVariablePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScrubbingRuleEntryMatchVariable)(nil)).Elem()
+}
+
+func (o ScrubbingRuleEntryMatchVariablePtrOutput) ToScrubbingRuleEntryMatchVariablePtrOutput() ScrubbingRuleEntryMatchVariablePtrOutput {
+	return o
+}
+
+func (o ScrubbingRuleEntryMatchVariablePtrOutput) ToScrubbingRuleEntryMatchVariablePtrOutputWithContext(ctx context.Context) ScrubbingRuleEntryMatchVariablePtrOutput {
+	return o
+}
+
+func (o ScrubbingRuleEntryMatchVariablePtrOutput) Elem() ScrubbingRuleEntryMatchVariableOutput {
+	return o.ApplyT(func(v *ScrubbingRuleEntryMatchVariable) ScrubbingRuleEntryMatchVariable {
+		if v != nil {
+			return *v
+		}
+		var ret ScrubbingRuleEntryMatchVariable
+		return ret
+	}).(ScrubbingRuleEntryMatchVariableOutput)
+}
+
+func (o ScrubbingRuleEntryMatchVariablePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ScrubbingRuleEntryMatchVariablePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ScrubbingRuleEntryMatchVariable) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ScrubbingRuleEntryMatchVariableInput is an input type that accepts values of the ScrubbingRuleEntryMatchVariable enum
+// A concrete instance of `ScrubbingRuleEntryMatchVariableInput` can be one of the following:
+//
+//	ScrubbingRuleEntryMatchVariableRequestIPAddress
+//	ScrubbingRuleEntryMatchVariableRequestUri
+//	ScrubbingRuleEntryMatchVariableQueryStringArgNames
+type ScrubbingRuleEntryMatchVariableInput interface {
+	pulumi.Input
+
+	ToScrubbingRuleEntryMatchVariableOutput() ScrubbingRuleEntryMatchVariableOutput
+	ToScrubbingRuleEntryMatchVariableOutputWithContext(context.Context) ScrubbingRuleEntryMatchVariableOutput
+}
+
+var scrubbingRuleEntryMatchVariablePtrType = reflect.TypeOf((**ScrubbingRuleEntryMatchVariable)(nil)).Elem()
+
+type ScrubbingRuleEntryMatchVariablePtrInput interface {
+	pulumi.Input
+
+	ToScrubbingRuleEntryMatchVariablePtrOutput() ScrubbingRuleEntryMatchVariablePtrOutput
+	ToScrubbingRuleEntryMatchVariablePtrOutputWithContext(context.Context) ScrubbingRuleEntryMatchVariablePtrOutput
+}
+
+type scrubbingRuleEntryMatchVariablePtr string
+
+func ScrubbingRuleEntryMatchVariablePtr(v string) ScrubbingRuleEntryMatchVariablePtrInput {
+	return (*scrubbingRuleEntryMatchVariablePtr)(&v)
+}
+
+func (*scrubbingRuleEntryMatchVariablePtr) ElementType() reflect.Type {
+	return scrubbingRuleEntryMatchVariablePtrType
+}
+
+func (in *scrubbingRuleEntryMatchVariablePtr) ToScrubbingRuleEntryMatchVariablePtrOutput() ScrubbingRuleEntryMatchVariablePtrOutput {
+	return pulumi.ToOutput(in).(ScrubbingRuleEntryMatchVariablePtrOutput)
+}
+
+func (in *scrubbingRuleEntryMatchVariablePtr) ToScrubbingRuleEntryMatchVariablePtrOutputWithContext(ctx context.Context) ScrubbingRuleEntryMatchVariablePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ScrubbingRuleEntryMatchVariablePtrOutput)
+}
+
+// Defines the state of a log scrubbing rule. Default value is enabled.
+type ScrubbingRuleEntryState string
+
+const (
+	ScrubbingRuleEntryStateEnabled  = ScrubbingRuleEntryState("Enabled")
+	ScrubbingRuleEntryStateDisabled = ScrubbingRuleEntryState("Disabled")
+)
+
+func (ScrubbingRuleEntryState) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScrubbingRuleEntryState)(nil)).Elem()
+}
+
+func (e ScrubbingRuleEntryState) ToScrubbingRuleEntryStateOutput() ScrubbingRuleEntryStateOutput {
+	return pulumi.ToOutput(e).(ScrubbingRuleEntryStateOutput)
+}
+
+func (e ScrubbingRuleEntryState) ToScrubbingRuleEntryStateOutputWithContext(ctx context.Context) ScrubbingRuleEntryStateOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ScrubbingRuleEntryStateOutput)
+}
+
+func (e ScrubbingRuleEntryState) ToScrubbingRuleEntryStatePtrOutput() ScrubbingRuleEntryStatePtrOutput {
+	return e.ToScrubbingRuleEntryStatePtrOutputWithContext(context.Background())
+}
+
+func (e ScrubbingRuleEntryState) ToScrubbingRuleEntryStatePtrOutputWithContext(ctx context.Context) ScrubbingRuleEntryStatePtrOutput {
+	return ScrubbingRuleEntryState(e).ToScrubbingRuleEntryStateOutputWithContext(ctx).ToScrubbingRuleEntryStatePtrOutputWithContext(ctx)
+}
+
+func (e ScrubbingRuleEntryState) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ScrubbingRuleEntryState) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ScrubbingRuleEntryState) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ScrubbingRuleEntryState) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ScrubbingRuleEntryStateOutput struct{ *pulumi.OutputState }
+
+func (ScrubbingRuleEntryStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScrubbingRuleEntryState)(nil)).Elem()
+}
+
+func (o ScrubbingRuleEntryStateOutput) ToScrubbingRuleEntryStateOutput() ScrubbingRuleEntryStateOutput {
+	return o
+}
+
+func (o ScrubbingRuleEntryStateOutput) ToScrubbingRuleEntryStateOutputWithContext(ctx context.Context) ScrubbingRuleEntryStateOutput {
+	return o
+}
+
+func (o ScrubbingRuleEntryStateOutput) ToScrubbingRuleEntryStatePtrOutput() ScrubbingRuleEntryStatePtrOutput {
+	return o.ToScrubbingRuleEntryStatePtrOutputWithContext(context.Background())
+}
+
+func (o ScrubbingRuleEntryStateOutput) ToScrubbingRuleEntryStatePtrOutputWithContext(ctx context.Context) ScrubbingRuleEntryStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScrubbingRuleEntryState) *ScrubbingRuleEntryState {
+		return &v
+	}).(ScrubbingRuleEntryStatePtrOutput)
+}
+
+func (o ScrubbingRuleEntryStateOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ScrubbingRuleEntryStateOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ScrubbingRuleEntryState) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ScrubbingRuleEntryStateOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ScrubbingRuleEntryStateOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ScrubbingRuleEntryState) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ScrubbingRuleEntryStatePtrOutput struct{ *pulumi.OutputState }
+
+func (ScrubbingRuleEntryStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScrubbingRuleEntryState)(nil)).Elem()
+}
+
+func (o ScrubbingRuleEntryStatePtrOutput) ToScrubbingRuleEntryStatePtrOutput() ScrubbingRuleEntryStatePtrOutput {
+	return o
+}
+
+func (o ScrubbingRuleEntryStatePtrOutput) ToScrubbingRuleEntryStatePtrOutputWithContext(ctx context.Context) ScrubbingRuleEntryStatePtrOutput {
+	return o
+}
+
+func (o ScrubbingRuleEntryStatePtrOutput) Elem() ScrubbingRuleEntryStateOutput {
+	return o.ApplyT(func(v *ScrubbingRuleEntryState) ScrubbingRuleEntryState {
+		if v != nil {
+			return *v
+		}
+		var ret ScrubbingRuleEntryState
+		return ret
+	}).(ScrubbingRuleEntryStateOutput)
+}
+
+func (o ScrubbingRuleEntryStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ScrubbingRuleEntryStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ScrubbingRuleEntryState) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ScrubbingRuleEntryStateInput is an input type that accepts values of the ScrubbingRuleEntryState enum
+// A concrete instance of `ScrubbingRuleEntryStateInput` can be one of the following:
+//
+//	ScrubbingRuleEntryStateEnabled
+//	ScrubbingRuleEntryStateDisabled
+type ScrubbingRuleEntryStateInput interface {
+	pulumi.Input
+
+	ToScrubbingRuleEntryStateOutput() ScrubbingRuleEntryStateOutput
+	ToScrubbingRuleEntryStateOutputWithContext(context.Context) ScrubbingRuleEntryStateOutput
+}
+
+var scrubbingRuleEntryStatePtrType = reflect.TypeOf((**ScrubbingRuleEntryState)(nil)).Elem()
+
+type ScrubbingRuleEntryStatePtrInput interface {
+	pulumi.Input
+
+	ToScrubbingRuleEntryStatePtrOutput() ScrubbingRuleEntryStatePtrOutput
+	ToScrubbingRuleEntryStatePtrOutputWithContext(context.Context) ScrubbingRuleEntryStatePtrOutput
+}
+
+type scrubbingRuleEntryStatePtr string
+
+func ScrubbingRuleEntryStatePtr(v string) ScrubbingRuleEntryStatePtrInput {
+	return (*scrubbingRuleEntryStatePtr)(&v)
+}
+
+func (*scrubbingRuleEntryStatePtr) ElementType() reflect.Type {
+	return scrubbingRuleEntryStatePtrType
+}
+
+func (in *scrubbingRuleEntryStatePtr) ToScrubbingRuleEntryStatePtrOutput() ScrubbingRuleEntryStatePtrOutput {
+	return pulumi.ToOutput(in).(ScrubbingRuleEntryStatePtrOutput)
+}
+
+func (in *scrubbingRuleEntryStatePtr) ToScrubbingRuleEntryStatePtrOutputWithContext(ctx context.Context) ScrubbingRuleEntryStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ScrubbingRuleEntryStatePtrOutput)
 }
 
 // The type of the secret resource.
@@ -10224,8 +11593,12 @@ func init() {
 	pulumi.RegisterOutputType(HttpVersionOperatorPtrOutput{})
 	pulumi.RegisterOutputType(HttpsRedirectOutput{})
 	pulumi.RegisterOutputType(HttpsRedirectPtrOutput{})
+	pulumi.RegisterOutputType(IsDeviceMatchValueOutput{})
+	pulumi.RegisterOutputType(IsDeviceMatchValuePtrOutput{})
 	pulumi.RegisterOutputType(IsDeviceOperatorOutput{})
 	pulumi.RegisterOutputType(IsDeviceOperatorPtrOutput{})
+	pulumi.RegisterOutputType(KeyVaultSigningKeyParametersTypeOutput{})
+	pulumi.RegisterOutputType(KeyVaultSigningKeyParametersTypePtrOutput{})
 	pulumi.RegisterOutputType(LinkToDefaultDomainOutput{})
 	pulumi.RegisterOutputType(LinkToDefaultDomainPtrOutput{})
 	pulumi.RegisterOutputType(ManagedRuleEnabledStateOutput{})
@@ -10248,6 +11621,8 @@ func init() {
 	pulumi.RegisterOutputType(PostArgsOperatorPtrOutput{})
 	pulumi.RegisterOutputType(ProbeProtocolOutput{})
 	pulumi.RegisterOutputType(ProbeProtocolPtrOutput{})
+	pulumi.RegisterOutputType(ProfileScrubbingStateOutput{})
+	pulumi.RegisterOutputType(ProfileScrubbingStatePtrOutput{})
 	pulumi.RegisterOutputType(QueryStringBehaviorOutput{})
 	pulumi.RegisterOutputType(QueryStringBehaviorPtrOutput{})
 	pulumi.RegisterOutputType(QueryStringCachingBehaviorOutput{})
@@ -10262,8 +11637,12 @@ func init() {
 	pulumi.RegisterOutputType(RequestBodyOperatorPtrOutput{})
 	pulumi.RegisterOutputType(RequestHeaderOperatorOutput{})
 	pulumi.RegisterOutputType(RequestHeaderOperatorPtrOutput{})
+	pulumi.RegisterOutputType(RequestMethodMatchValueOutput{})
+	pulumi.RegisterOutputType(RequestMethodMatchValuePtrOutput{})
 	pulumi.RegisterOutputType(RequestMethodOperatorOutput{})
 	pulumi.RegisterOutputType(RequestMethodOperatorPtrOutput{})
+	pulumi.RegisterOutputType(RequestSchemeMatchValueOutput{})
+	pulumi.RegisterOutputType(RequestSchemeMatchValuePtrOutput{})
 	pulumi.RegisterOutputType(RequestUriOperatorOutput{})
 	pulumi.RegisterOutputType(RequestUriOperatorPtrOutput{})
 	pulumi.RegisterOutputType(ResponseBasedDetectedErrorTypesOutput{})
@@ -10274,6 +11653,12 @@ func init() {
 	pulumi.RegisterOutputType(RuleIsCompressionEnabledPtrOutput{})
 	pulumi.RegisterOutputType(RuleQueryStringCachingBehaviorOutput{})
 	pulumi.RegisterOutputType(RuleQueryStringCachingBehaviorPtrOutput{})
+	pulumi.RegisterOutputType(ScrubbingRuleEntryMatchOperatorOutput{})
+	pulumi.RegisterOutputType(ScrubbingRuleEntryMatchOperatorPtrOutput{})
+	pulumi.RegisterOutputType(ScrubbingRuleEntryMatchVariableOutput{})
+	pulumi.RegisterOutputType(ScrubbingRuleEntryMatchVariablePtrOutput{})
+	pulumi.RegisterOutputType(ScrubbingRuleEntryStateOutput{})
+	pulumi.RegisterOutputType(ScrubbingRuleEntryStatePtrOutput{})
 	pulumi.RegisterOutputType(ServerPortOperatorOutput{})
 	pulumi.RegisterOutputType(ServerPortOperatorPtrOutput{})
 	pulumi.RegisterOutputType(SharedPrivateLinkResourceStatusOutput{})

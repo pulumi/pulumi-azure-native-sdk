@@ -13,8 +13,6 @@ import (
 
 // Retrieves information about a virtual machine instance.
 // Azure REST API version: 2023-04-01-preview.
-//
-// Other available API versions: 2023-10-07, 2024-06-01.
 func LookupVirtualMachineInstance(ctx *pulumi.Context, args *LookupVirtualMachineInstanceArgs, opts ...pulumi.InvokeOption) (*LookupVirtualMachineInstanceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVirtualMachineInstanceResult
@@ -34,6 +32,8 @@ type LookupVirtualMachineInstanceArgs struct {
 type LookupVirtualMachineInstanceResult struct {
 	// Availability Sets in vm.
 	AvailabilitySets []VirtualMachineInstancePropertiesResponseAvailabilitySets `pulumi:"availabilitySets"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets or sets the extended location.
 	ExtendedLocation ExtendedLocationResponse `pulumi:"extendedLocation"`
 	// Hardware properties.
@@ -98,6 +98,11 @@ func (o LookupVirtualMachineInstanceResultOutput) AvailabilitySets() VirtualMach
 	return o.ApplyT(func(v LookupVirtualMachineInstanceResult) []VirtualMachineInstancePropertiesResponseAvailabilitySets {
 		return v.AvailabilitySets
 	}).(VirtualMachineInstancePropertiesResponseAvailabilitySetsArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupVirtualMachineInstanceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVirtualMachineInstanceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets the extended location.

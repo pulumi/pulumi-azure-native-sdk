@@ -13,14 +13,14 @@ import (
 )
 
 // A job step.
-// Azure REST API version: 2021-11-01. Prior API version in Azure Native 1.x: 2020-11-01-preview.
-//
-// Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
+// Azure REST API version: 2021-11-01. Prior API version in Azure Native 2.x: 2021-11-01.
 type JobStep struct {
 	pulumi.CustomResourceState
 
 	// The action payload of the job step.
 	Action JobStepActionResponseOutput `pulumi:"action"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The resource ID of the job credential that will be used to connect to the targets.
 	Credential pulumi.StringOutput `pulumi:"credential"`
 	// Execution options for the job step.
@@ -249,6 +249,11 @@ func (o JobStepOutput) ToJobStepOutputWithContext(ctx context.Context) JobStepOu
 // The action payload of the job step.
 func (o JobStepOutput) Action() JobStepActionResponseOutput {
 	return o.ApplyT(func(v *JobStep) JobStepActionResponseOutput { return v.Action }).(JobStepActionResponseOutput)
+}
+
+// The Azure API version of the resource.
+func (o JobStepOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *JobStep) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The resource ID of the job credential that will be used to connect to the targets.

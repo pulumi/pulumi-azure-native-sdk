@@ -13,12 +13,12 @@ import (
 )
 
 // Description of a backup which will be performed.
-// Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2020-12-01.
-//
-// Other available API versions: 2016-08-01, 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
+// Azure REST API version: 2024-04-01. Prior API version in Azure Native 2.x: 2022-09-01.
 type WebAppBackupConfiguration struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Name of the backup.
 	BackupName pulumi.StringPtrOutput `pulumi:"backupName"`
 	// Schedule for the backup if it is executed periodically.
@@ -219,6 +219,11 @@ func (o WebAppBackupConfigurationOutput) ToWebAppBackupConfigurationOutput() Web
 
 func (o WebAppBackupConfigurationOutput) ToWebAppBackupConfigurationOutputWithContext(ctx context.Context) WebAppBackupConfigurationOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o WebAppBackupConfigurationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *WebAppBackupConfiguration) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Name of the backup.

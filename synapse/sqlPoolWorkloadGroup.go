@@ -13,12 +13,12 @@ import (
 )
 
 // Workload group operations for a sql pool
-// Azure REST API version: 2021-06-01. Prior API version in Azure Native 1.x: 2021-03-01.
-//
-// Other available API versions: 2021-06-01-preview.
+// Azure REST API version: 2021-06-01. Prior API version in Azure Native 2.x: 2021-06-01.
 type SqlPoolWorkloadGroup struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The workload group importance level.
 	Importance pulumi.StringPtrOutput `pulumi:"importance"`
 	// The workload group cap percentage resource.
@@ -200,6 +200,11 @@ func (o SqlPoolWorkloadGroupOutput) ToSqlPoolWorkloadGroupOutput() SqlPoolWorklo
 
 func (o SqlPoolWorkloadGroupOutput) ToSqlPoolWorkloadGroupOutputWithContext(ctx context.Context) SqlPoolWorkloadGroupOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o SqlPoolWorkloadGroupOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SqlPoolWorkloadGroup) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The workload group importance level.

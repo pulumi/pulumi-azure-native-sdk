@@ -12,9 +12,7 @@ import (
 )
 
 // Gets an API Management service resource description.
-// Azure REST API version: 2022-08-01.
-//
-// Other available API versions: 2016-10-10, 2017-03-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
+// Azure REST API version: 2022-09-01-preview.
 func LookupApiManagementService(ctx *pulumi.Context, args *LookupApiManagementServiceArgs, opts ...pulumi.InvokeOption) (*LookupApiManagementServiceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupApiManagementServiceResult
@@ -38,6 +36,8 @@ type LookupApiManagementServiceResult struct {
 	AdditionalLocations []AdditionalLocationResponse `pulumi:"additionalLocations"`
 	// Control Plane Apis version constraint for the API Management service.
 	ApiVersionConstraint *ApiVersionConstraintResponse `pulumi:"apiVersionConstraint"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// List of Certificates that need to be installed in the API Management service. Max supported certificates that can be installed is 10.
 	Certificates []CertificateConfigurationResponse `pulumi:"certificates"`
 	// Creation UTC date of the API Management service.The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
@@ -187,6 +187,11 @@ func (o LookupApiManagementServiceResultOutput) AdditionalLocations() Additional
 // Control Plane Apis version constraint for the API Management service.
 func (o LookupApiManagementServiceResultOutput) ApiVersionConstraint() ApiVersionConstraintResponsePtrOutput {
 	return o.ApplyT(func(v LookupApiManagementServiceResult) *ApiVersionConstraintResponse { return v.ApiVersionConstraint }).(ApiVersionConstraintResponsePtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupApiManagementServiceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApiManagementServiceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // List of Certificates that need to be installed in the API Management service. Max supported certificates that can be installed is 10.

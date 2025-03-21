@@ -12,9 +12,7 @@ import (
 )
 
 // Returns details of the environment.
-// Azure REST API version: 2024-03-01.
-//
-// Other available API versions: 2024-03-15-preview, 2024-06-01-preview.
+// Azure REST API version: 2024-03-15-preview.
 func LookupEnvironment(ctx *pulumi.Context, args *LookupEnvironmentArgs, opts ...pulumi.InvokeOption) (*LookupEnvironmentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupEnvironmentResult
@@ -38,6 +36,8 @@ type LookupEnvironmentArgs struct {
 
 // Environment entity.
 type LookupEnvironmentResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The custom metadata defined for API catalog entities.
 	CustomProperties interface{} `pulumi:"customProperties"`
 	// The environment description.
@@ -97,6 +97,11 @@ func (o LookupEnvironmentResultOutput) ToLookupEnvironmentResultOutput() LookupE
 
 func (o LookupEnvironmentResultOutput) ToLookupEnvironmentResultOutputWithContext(ctx context.Context) LookupEnvironmentResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupEnvironmentResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The custom metadata defined for API catalog entities.

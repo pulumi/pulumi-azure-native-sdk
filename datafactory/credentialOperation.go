@@ -13,10 +13,12 @@ import (
 )
 
 // Credential resource type.
-// Azure REST API version: 2018-06-01. Prior API version in Azure Native 1.x: 2018-06-01.
+// Azure REST API version: 2018-06-01. Prior API version in Azure Native 2.x: 2018-06-01.
 type CredentialOperation struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Etag identifies change in the resource.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The resource name.
@@ -139,6 +141,11 @@ func (o CredentialOperationOutput) ToCredentialOperationOutput() CredentialOpera
 
 func (o CredentialOperationOutput) ToCredentialOperationOutputWithContext(ctx context.Context) CredentialOperationOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o CredentialOperationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *CredentialOperation) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Etag identifies change in the resource.

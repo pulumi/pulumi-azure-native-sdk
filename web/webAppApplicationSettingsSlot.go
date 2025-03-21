@@ -13,12 +13,12 @@ import (
 )
 
 // String dictionary resource.
-// Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2020-12-01.
-//
-// Other available API versions: 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
+// Azure REST API version: 2024-04-01. Prior API version in Azure Native 2.x: 2022-09-01.
 type WebAppApplicationSettingsSlot struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Kind of resource.
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// Resource Name.
@@ -196,6 +196,11 @@ func (o WebAppApplicationSettingsSlotOutput) ToWebAppApplicationSettingsSlotOutp
 
 func (o WebAppApplicationSettingsSlotOutput) ToWebAppApplicationSettingsSlotOutputWithContext(ctx context.Context) WebAppApplicationSettingsSlotOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o WebAppApplicationSettingsSlotOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *WebAppApplicationSettingsSlot) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Kind of resource.

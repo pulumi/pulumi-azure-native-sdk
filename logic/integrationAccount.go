@@ -13,12 +13,12 @@ import (
 )
 
 // The integration account.
-// Azure REST API version: 2019-05-01. Prior API version in Azure Native 1.x: 2019-05-01.
-//
-// Other available API versions: 2015-08-01-preview.
+// Azure REST API version: 2019-05-01. Prior API version in Azure Native 2.x: 2019-05-01.
 type IntegrationAccount struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The integration service environment.
 	IntegrationServiceEnvironment ResourceReferenceResponsePtrOutput `pulumi:"integrationServiceEnvironment"`
 	// The resource location.
@@ -162,6 +162,11 @@ func (o IntegrationAccountOutput) ToIntegrationAccountOutput() IntegrationAccoun
 
 func (o IntegrationAccountOutput) ToIntegrationAccountOutputWithContext(ctx context.Context) IntegrationAccountOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o IntegrationAccountOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *IntegrationAccount) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The integration service environment.

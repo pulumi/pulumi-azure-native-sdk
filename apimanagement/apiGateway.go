@@ -13,12 +13,12 @@ import (
 )
 
 // A single API Management gateway resource in List or Get response.
-// Azure REST API version: 2023-09-01-preview.
-//
-// Other available API versions: 2024-05-01, 2024-06-01-preview.
+// Azure REST API version: 2024-06-01-preview. Prior API version in Azure Native 2.x: 2023-09-01-preview.
 type ApiGateway struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Information regarding how the gateway should integrate with backend systems.
 	Backend BackendConfigurationResponsePtrOutput `pulumi:"backend"`
 	// Information regarding the Configuration API of the API Management gateway. This is only applicable for API gateway with Standard SKU.
@@ -176,6 +176,11 @@ func (o ApiGatewayOutput) ToApiGatewayOutput() ApiGatewayOutput {
 
 func (o ApiGatewayOutput) ToApiGatewayOutputWithContext(ctx context.Context) ApiGatewayOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ApiGatewayOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApiGateway) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Information regarding how the gateway should integrate with backend systems.

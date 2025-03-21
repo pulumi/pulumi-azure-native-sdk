@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-azure-native-sdk/deviceregistry/v2
+module github.com/pulumi/pulumi-azure-native-sdk/deviceregistry/v3
 
 go 1.22
 

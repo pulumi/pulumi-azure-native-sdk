@@ -12,9 +12,7 @@ import (
 )
 
 // Get properties of a domain topic.
-// Azure REST API version: 2022-06-15.
-//
-// Other available API versions: 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-02-15.
+// Azure REST API version: 2025-02-15.
 func LookupDomainTopic(ctx *pulumi.Context, args *LookupDomainTopicArgs, opts ...pulumi.InvokeOption) (*LookupDomainTopicResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDomainTopicResult
@@ -36,13 +34,15 @@ type LookupDomainTopicArgs struct {
 
 // Domain Topic.
 type LookupDomainTopicResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified identifier of the resource.
 	Id string `pulumi:"id"`
 	// Name of the resource.
 	Name string `pulumi:"name"`
 	// Provisioning state of the domain topic.
 	ProvisioningState string `pulumi:"provisioningState"`
-	// The system metadata relating to Domain Topic resource.
+	// The system metadata relating to the Event Grid resource.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Type of the resource.
 	Type string `pulumi:"type"`
@@ -85,6 +85,11 @@ func (o LookupDomainTopicResultOutput) ToLookupDomainTopicResultOutputWithContex
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupDomainTopicResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDomainTopicResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Fully qualified identifier of the resource.
 func (o LookupDomainTopicResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDomainTopicResult) string { return v.Id }).(pulumi.StringOutput)
@@ -100,7 +105,7 @@ func (o LookupDomainTopicResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDomainTopicResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// The system metadata relating to Domain Topic resource.
+// The system metadata relating to the Event Grid resource.
 func (o LookupDomainTopicResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupDomainTopicResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }

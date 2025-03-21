@@ -13,12 +13,12 @@ import (
 )
 
 // Define the virtualMachineInstance.
-// Azure REST API version: 2023-03-01-preview.
-//
-// Other available API versions: 2023-10-01, 2023-12-01.
+// Azure REST API version: 2023-12-01. Prior API version in Azure Native 2.x: 2023-03-01-preview.
 type VirtualMachineInstance struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets or sets the extended location.
 	ExtendedLocation ExtendedLocationResponsePtrOutput `pulumi:"extendedLocation"`
 	// Hardware properties.
@@ -183,6 +183,11 @@ func (o VirtualMachineInstanceOutput) ToVirtualMachineInstanceOutput() VirtualMa
 
 func (o VirtualMachineInstanceOutput) ToVirtualMachineInstanceOutputWithContext(ctx context.Context) VirtualMachineInstanceOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o VirtualMachineInstanceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *VirtualMachineInstance) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets the extended location.

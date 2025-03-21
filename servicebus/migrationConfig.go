@@ -13,12 +13,12 @@ import (
 )
 
 // Single item in List or Get Migration Config operation
-// Azure REST API version: 2022-01-01-preview. Prior API version in Azure Native 1.x: 2017-04-01.
-//
-// Other available API versions: 2022-10-01-preview, 2023-01-01-preview, 2024-01-01.
+// Azure REST API version: 2024-01-01. Prior API version in Azure Native 2.x: 2022-01-01-preview.
 type MigrationConfig struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// State in which Standard to Premium Migration is, possible values : Unknown, Reverting, Completing, Initiating, Syncing, Active
@@ -127,7 +127,7 @@ type migrationConfigArgs struct {
 	NamespaceName string `pulumi:"namespaceName"`
 	// Name to access Standard Namespace after migration
 	PostMigrationName string `pulumi:"postMigrationName"`
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Existing premium Namespace ARM Id name which has no entities, will be used for migration
 	TargetNamespace string `pulumi:"targetNamespace"`
@@ -141,7 +141,7 @@ type MigrationConfigArgs struct {
 	NamespaceName pulumi.StringInput
 	// Name to access Standard Namespace after migration
 	PostMigrationName pulumi.StringInput
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Existing premium Namespace ARM Id name which has no entities, will be used for migration
 	TargetNamespace pulumi.StringInput
@@ -182,6 +182,11 @@ func (o MigrationConfigOutput) ToMigrationConfigOutput() MigrationConfigOutput {
 
 func (o MigrationConfigOutput) ToMigrationConfigOutputWithContext(ctx context.Context) MigrationConfigOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o MigrationConfigOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *MigrationConfig) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The geo-location where the resource lives

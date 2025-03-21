@@ -13,8 +13,6 @@ import (
 
 // Returns AndroidMAMPolicy with given name.
 // Azure REST API version: 2015-01-14-preview.
-//
-// Other available API versions: 2015-01-14-privatepreview.
 func LookupAndroidMAMPolicyByName(ctx *pulumi.Context, args *LookupAndroidMAMPolicyByNameArgs, opts ...pulumi.InvokeOption) (*LookupAndroidMAMPolicyByNameResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAndroidMAMPolicyByNameResult
@@ -41,14 +39,16 @@ type LookupAndroidMAMPolicyByNameResult struct {
 	AppSharingFromLevel         *string `pulumi:"appSharingFromLevel"`
 	AppSharingToLevel           *string `pulumi:"appSharingToLevel"`
 	Authentication              *string `pulumi:"authentication"`
-	ClipboardSharingLevel       *string `pulumi:"clipboardSharingLevel"`
-	DataBackup                  *string `pulumi:"dataBackup"`
-	Description                 *string `pulumi:"description"`
-	DeviceCompliance            *string `pulumi:"deviceCompliance"`
-	FileEncryption              *string `pulumi:"fileEncryption"`
-	FileSharingSaveAs           *string `pulumi:"fileSharingSaveAs"`
-	FriendlyName                string  `pulumi:"friendlyName"`
-	GroupStatus                 string  `pulumi:"groupStatus"`
+	// The Azure API version of the resource.
+	AzureApiVersion       string  `pulumi:"azureApiVersion"`
+	ClipboardSharingLevel *string `pulumi:"clipboardSharingLevel"`
+	DataBackup            *string `pulumi:"dataBackup"`
+	Description           *string `pulumi:"description"`
+	DeviceCompliance      *string `pulumi:"deviceCompliance"`
+	FileEncryption        *string `pulumi:"fileEncryption"`
+	FileSharingSaveAs     *string `pulumi:"fileSharingSaveAs"`
+	FriendlyName          string  `pulumi:"friendlyName"`
+	GroupStatus           string  `pulumi:"groupStatus"`
 	// Resource Id
 	Id               string `pulumi:"id"`
 	LastModifiedTime string `pulumi:"lastModifiedTime"`
@@ -178,6 +178,11 @@ func (o LookupAndroidMAMPolicyByNameResultOutput) AppSharingToLevel() pulumi.Str
 
 func (o LookupAndroidMAMPolicyByNameResultOutput) Authentication() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAndroidMAMPolicyByNameResult) *string { return v.Authentication }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupAndroidMAMPolicyByNameResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAndroidMAMPolicyByNameResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 func (o LookupAndroidMAMPolicyByNameResultOutput) ClipboardSharingLevel() pulumi.StringPtrOutput {

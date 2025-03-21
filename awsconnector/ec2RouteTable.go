@@ -13,10 +13,12 @@ import (
 )
 
 // A Microsoft.AwsConnector resource
-// Azure REST API version: 2024-12-01.
+// Azure REST API version: 2024-12-01. Prior API version in Azure Native 2.x: 2024-12-01.
 type Ec2RouteTable struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -141,6 +143,11 @@ func (o Ec2RouteTableOutput) ToEc2RouteTableOutput() Ec2RouteTableOutput {
 
 func (o Ec2RouteTableOutput) ToEc2RouteTableOutputWithContext(ctx context.Context) Ec2RouteTableOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o Ec2RouteTableOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Ec2RouteTable) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The geo-location where the resource lives

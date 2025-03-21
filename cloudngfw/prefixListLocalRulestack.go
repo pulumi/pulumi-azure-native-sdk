@@ -13,14 +13,14 @@ import (
 )
 
 // LocalRulestack prefixList
-// Azure REST API version: 2023-09-01.
-//
-// Other available API versions: 2022-08-29, 2022-08-29-preview, 2023-09-01-preview, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview.
+// Azure REST API version: 2025-02-06-preview. Prior API version in Azure Native 2.x: 2023-09-01.
 type PrefixListLocalRulestack struct {
 	pulumi.CustomResourceState
 
 	// comment for this object
 	AuditComment pulumi.StringPtrOutput `pulumi:"auditComment"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// prefix description
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// etag info
@@ -183,6 +183,11 @@ func (o PrefixListLocalRulestackOutput) ToPrefixListLocalRulestackOutputWithCont
 // comment for this object
 func (o PrefixListLocalRulestackOutput) AuditComment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PrefixListLocalRulestack) pulumi.StringPtrOutput { return v.AuditComment }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o PrefixListLocalRulestackOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrefixListLocalRulestack) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // prefix description

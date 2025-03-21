@@ -13,12 +13,12 @@ import (
 )
 
 // Customer creates a spacecraft resource to schedule a contact.
-// Azure REST API version: 2022-11-01.
-//
-// Other available API versions: 2022-03-01.
+// Azure REST API version: 2022-11-01. Prior API version in Azure Native 2.x: 2022-11-01.
 type Spacecraft struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Immutable list of Spacecraft links.
 	Links SpacecraftLinkResponseArrayOutput `pulumi:"links"`
 	// The geo-location where the resource lives
@@ -182,6 +182,11 @@ func (o SpacecraftOutput) ToSpacecraftOutput() SpacecraftOutput {
 
 func (o SpacecraftOutput) ToSpacecraftOutputWithContext(ctx context.Context) SpacecraftOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o SpacecraftOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Spacecraft) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Immutable list of Spacecraft links.

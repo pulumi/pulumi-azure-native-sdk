@@ -12,7 +12,7 @@ import (
 )
 
 // Gets the Security ML Analytics Settings.
-// Azure REST API version: 2023-02-01.
+// Azure REST API version: 2024-09-01.
 func LookupAnomalySecurityMLAnalyticsSettings(ctx *pulumi.Context, args *LookupAnomalySecurityMLAnalyticsSettingsArgs, opts ...pulumi.InvokeOption) (*LookupAnomalySecurityMLAnalyticsSettingsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAnomalySecurityMLAnalyticsSettingsResult
@@ -38,6 +38,8 @@ type LookupAnomalySecurityMLAnalyticsSettingsResult struct {
 	AnomalySettingsVersion *int `pulumi:"anomalySettingsVersion"`
 	// The anomaly version of the AnomalySecurityMLAnalyticsSettings.
 	AnomalyVersion string `pulumi:"anomalyVersion"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The customizable observations of the AnomalySecurityMLAnalyticsSettings.
 	CustomizableObservations interface{} `pulumi:"customizableObservations"`
 	// The description of the SecurityMLAnalyticsSettings.
@@ -122,6 +124,11 @@ func (o LookupAnomalySecurityMLAnalyticsSettingsResultOutput) AnomalySettingsVer
 // The anomaly version of the AnomalySecurityMLAnalyticsSettings.
 func (o LookupAnomalySecurityMLAnalyticsSettingsResultOutput) AnomalyVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAnomalySecurityMLAnalyticsSettingsResult) string { return v.AnomalyVersion }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupAnomalySecurityMLAnalyticsSettingsResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAnomalySecurityMLAnalyticsSettingsResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The customizable observations of the AnomalySecurityMLAnalyticsSettings.

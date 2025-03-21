@@ -13,12 +13,12 @@ import (
 )
 
 // Environment entity.
-// Azure REST API version: 2024-03-01.
-//
-// Other available API versions: 2024-03-15-preview, 2024-06-01-preview.
+// Azure REST API version: 2024-03-15-preview. Prior API version in Azure Native 2.x: 2024-03-01.
 type Environment struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The custom metadata defined for API catalog entities.
 	CustomProperties pulumi.AnyOutput `pulumi:"customProperties"`
 	// The environment description.
@@ -187,6 +187,11 @@ func (o EnvironmentOutput) ToEnvironmentOutput() EnvironmentOutput {
 
 func (o EnvironmentOutput) ToEnvironmentOutputWithContext(ctx context.Context) EnvironmentOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o EnvironmentOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The custom metadata defined for API catalog entities.

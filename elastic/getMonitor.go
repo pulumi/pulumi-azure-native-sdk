@@ -12,9 +12,7 @@ import (
 )
 
 // Monitor resource.
-// Azure REST API version: 2023-06-01.
-//
-// Other available API versions: 2023-06-15-preview, 2023-07-01-preview, 2023-10-01-preview, 2023-11-01-preview, 2024-01-01-preview, 2024-03-01, 2024-05-01-preview, 2024-06-15-preview, 2024-10-01-preview.
+// Azure REST API version: 2024-03-01.
 func LookupMonitor(ctx *pulumi.Context, args *LookupMonitorArgs, opts ...pulumi.InvokeOption) (*LookupMonitorResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMonitorResult
@@ -28,12 +26,14 @@ func LookupMonitor(ctx *pulumi.Context, args *LookupMonitorArgs, opts ...pulumi.
 type LookupMonitorArgs struct {
 	// Monitor resource name
 	MonitorName string `pulumi:"monitorName"`
-	// The name of the resource group to which the Elastic resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Monitor resource.
 type LookupMonitorResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// ARM id of the monitor resource.
 	Id string `pulumi:"id"`
 	// Identity properties of the monitor resource.
@@ -66,7 +66,7 @@ func LookupMonitorOutput(ctx *pulumi.Context, args LookupMonitorOutputArgs, opts
 type LookupMonitorOutputArgs struct {
 	// Monitor resource name
 	MonitorName pulumi.StringInput `pulumi:"monitorName"`
-	// The name of the resource group to which the Elastic resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -87,6 +87,11 @@ func (o LookupMonitorResultOutput) ToLookupMonitorResultOutput() LookupMonitorRe
 
 func (o LookupMonitorResultOutput) ToLookupMonitorResultOutputWithContext(ctx context.Context) LookupMonitorResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupMonitorResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMonitorResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // ARM id of the monitor resource.

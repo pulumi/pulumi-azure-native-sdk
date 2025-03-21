@@ -13,12 +13,12 @@ import (
 )
 
 // API definition entity.
-// Azure REST API version: 2024-03-01.
-//
-// Other available API versions: 2024-03-15-preview, 2024-06-01-preview.
+// Azure REST API version: 2024-03-15-preview. Prior API version in Azure Native 2.x: 2024-03-01.
 type ApiDefinition struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// API definition description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The name of the resource
@@ -176,6 +176,11 @@ func (o ApiDefinitionOutput) ToApiDefinitionOutput() ApiDefinitionOutput {
 
 func (o ApiDefinitionOutput) ToApiDefinitionOutputWithContext(ctx context.Context) ApiDefinitionOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ApiDefinitionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApiDefinition) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // API definition description.

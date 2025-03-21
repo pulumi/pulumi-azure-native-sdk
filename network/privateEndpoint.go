@@ -13,14 +13,14 @@ import (
 )
 
 // Private endpoint resource.
-// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2020-11-01.
-//
-// Other available API versions: 2021-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Azure REST API version: 2024-05-01. Prior API version in Azure Native 2.x: 2023-02-01.
 type PrivateEndpoint struct {
 	pulumi.CustomResourceState
 
 	// Application security groups in which the private endpoint IP configuration is included.
 	ApplicationSecurityGroups ApplicationSecurityGroupResponseArrayOutput `pulumi:"applicationSecurityGroups"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// An array of custom dns configurations.
 	CustomDnsConfigs CustomDnsConfigPropertiesFormatResponseArrayOutput `pulumi:"customDnsConfigs"`
 	// The custom name of the network interface attached to the private endpoint.
@@ -76,6 +76,9 @@ func NewPrivateEndpoint(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20181201:PrivateEndpoint"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20190201:InterfaceEndpoint"),
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20190201:PrivateEndpoint"),
@@ -175,6 +178,9 @@ func NewPrivateEndpoint(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20240501:PrivateEndpoint"),
+		},
+		{
+			Type: pulumi.String("azure-native:network:InterfaceEndpoint"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -311,6 +317,11 @@ func (o PrivateEndpointOutput) ApplicationSecurityGroups() ApplicationSecurityGr
 	return o.ApplyT(func(v *PrivateEndpoint) ApplicationSecurityGroupResponseArrayOutput {
 		return v.ApplicationSecurityGroups
 	}).(ApplicationSecurityGroupResponseArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o PrivateEndpointOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrivateEndpoint) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // An array of custom dns configurations.

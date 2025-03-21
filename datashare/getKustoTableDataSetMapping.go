@@ -36,6 +36,8 @@ type LookupKustoTableDataSetMappingArgs struct {
 
 // A Kusto database data set mapping
 type LookupKustoTableDataSetMappingResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The id of the source data set.
 	DataSetId string `pulumi:"dataSetId"`
 	// Gets the status of the data set mapping.
@@ -96,6 +98,11 @@ func (o LookupKustoTableDataSetMappingResultOutput) ToLookupKustoTableDataSetMap
 
 func (o LookupKustoTableDataSetMappingResultOutput) ToLookupKustoTableDataSetMappingResultOutputWithContext(ctx context.Context) LookupKustoTableDataSetMappingResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupKustoTableDataSetMappingResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKustoTableDataSetMappingResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The id of the source data set.

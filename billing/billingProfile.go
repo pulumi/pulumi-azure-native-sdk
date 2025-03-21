@@ -13,10 +13,12 @@ import (
 )
 
 // A billing profile.
-// Azure REST API version: 2024-04-01.
+// Azure REST API version: 2024-04-01. Prior API version in Azure Native 2.x: 2024-04-01.
 type BillingProfile struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// A billing profile.
@@ -135,6 +137,11 @@ func (o BillingProfileOutput) ToBillingProfileOutput() BillingProfileOutput {
 
 func (o BillingProfileOutput) ToBillingProfileOutputWithContext(ctx context.Context) BillingProfileOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o BillingProfileOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *BillingProfile) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

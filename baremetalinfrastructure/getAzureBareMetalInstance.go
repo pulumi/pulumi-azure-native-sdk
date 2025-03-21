@@ -32,6 +32,8 @@ type LookupAzureBareMetalInstanceArgs struct {
 
 // AzureBareMetal instance info on Azure (ARM properties and AzureBareMetal properties)
 type LookupAzureBareMetalInstanceResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Specifies the Azure Bare Metal Instance unique ID.
 	AzureBareMetalInstanceId *string `pulumi:"azureBareMetalInstanceId"`
 	// Specifies the hardware settings for the Azure Bare Metal Instance.
@@ -99,6 +101,11 @@ func (o LookupAzureBareMetalInstanceResultOutput) ToLookupAzureBareMetalInstance
 
 func (o LookupAzureBareMetalInstanceResultOutput) ToLookupAzureBareMetalInstanceResultOutputWithContext(ctx context.Context) LookupAzureBareMetalInstanceResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupAzureBareMetalInstanceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAzureBareMetalInstanceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Specifies the Azure Bare Metal Instance unique ID.

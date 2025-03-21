@@ -13,12 +13,12 @@ import (
 )
 
 // Single item in List or Get Event Hub operation
-// Azure REST API version: 2022-10-01-preview. Prior API version in Azure Native 1.x: 2017-04-01.
-//
-// Other available API versions: 2023-01-01-preview, 2024-01-01, 2024-05-01-preview.
+// Azure REST API version: 2024-01-01. Prior API version in Azure Native 2.x: 2022-10-01-preview.
 type EventHub struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Properties of capture description
 	CaptureDescription CaptureDescriptionResponsePtrOutput `pulumi:"captureDescription"`
 	// Exact time the Event Hub was created.
@@ -43,6 +43,8 @@ type EventHub struct {
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The exact time the message was updated.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
+	// Gets and Sets Metadata of User.
+	UserMetadata pulumi.StringPtrOutput `pulumi:"userMetadata"`
 }
 
 // NewEventHub registers a new resource with the given unique name, arguments, and options.
@@ -146,6 +148,8 @@ type eventHubArgs struct {
 	RetentionDescription *RetentionDescription `pulumi:"retentionDescription"`
 	// Enumerates the possible values for the status of the Event Hub.
 	Status *EntityStatus `pulumi:"status"`
+	// Gets and Sets Metadata of User.
+	UserMetadata *string `pulumi:"userMetadata"`
 }
 
 // The set of arguments for constructing a EventHub resource.
@@ -166,6 +170,8 @@ type EventHubArgs struct {
 	RetentionDescription RetentionDescriptionPtrInput
 	// Enumerates the possible values for the status of the Event Hub.
 	Status EntityStatusPtrInput
+	// Gets and Sets Metadata of User.
+	UserMetadata pulumi.StringPtrInput
 }
 
 func (EventHubArgs) ElementType() reflect.Type {
@@ -203,6 +209,11 @@ func (o EventHubOutput) ToEventHubOutput() EventHubOutput {
 
 func (o EventHubOutput) ToEventHubOutputWithContext(ctx context.Context) EventHubOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o EventHubOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *EventHub) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Properties of capture description
@@ -263,6 +274,11 @@ func (o EventHubOutput) Type() pulumi.StringOutput {
 // The exact time the message was updated.
 func (o EventHubOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *EventHub) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// Gets and Sets Metadata of User.
+func (o EventHubOutput) UserMetadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventHub) pulumi.StringPtrOutput { return v.UserMetadata }).(pulumi.StringPtrOutput)
 }
 
 func init() {

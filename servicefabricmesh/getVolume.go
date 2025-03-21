@@ -32,6 +32,8 @@ type LookupVolumeArgs struct {
 
 // This type describes a volume resource.
 type LookupVolumeResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// This type describes a volume provided by an Azure Files file share.
 	AzureFileParameters *VolumeProviderParametersAzureFileResponse `pulumi:"azureFileParameters"`
 	// User readable description of the volume.
@@ -89,6 +91,11 @@ func (o LookupVolumeResultOutput) ToLookupVolumeResultOutput() LookupVolumeResul
 
 func (o LookupVolumeResultOutput) ToLookupVolumeResultOutputWithContext(ctx context.Context) LookupVolumeResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupVolumeResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVolumeResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // This type describes a volume provided by an Azure Files file share.

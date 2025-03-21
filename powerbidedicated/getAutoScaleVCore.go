@@ -32,6 +32,8 @@ type LookupAutoScaleVCoreArgs struct {
 
 // Represents an instance of an auto scale v-core resource.
 type LookupAutoScaleVCoreResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The maximum capacity of an auto scale v-core resource.
 	CapacityLimit *int `pulumi:"capacityLimit"`
 	// The object ID of the capacity resource associated with the auto scale v-core resource.
@@ -87,6 +89,11 @@ func (o LookupAutoScaleVCoreResultOutput) ToLookupAutoScaleVCoreResultOutput() L
 
 func (o LookupAutoScaleVCoreResultOutput) ToLookupAutoScaleVCoreResultOutputWithContext(ctx context.Context) LookupAutoScaleVCoreResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupAutoScaleVCoreResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAutoScaleVCoreResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The maximum capacity of an auto scale v-core resource.

@@ -13,14 +13,14 @@ import (
 )
 
 // ApiRelease details.
-// Azure REST API version: 2022-08-01. Prior API version in Azure Native 1.x: 2020-12-01.
-//
-// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
+// Azure REST API version: 2022-09-01-preview. Prior API version in Azure Native 2.x: 2022-08-01.
 type ApiRelease struct {
 	pulumi.CustomResourceState
 
 	// Identifier of the API the release belongs to.
 	ApiId pulumi.StringPtrOutput `pulumi:"apiId"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The time the API was released. The date conforms to the following format: yyyy-MM-ddTHH:mm:ssZ as specified by the ISO 8601 standard.
 	CreatedDateTime pulumi.StringOutput `pulumi:"createdDateTime"`
 	// The name of the resource
@@ -211,6 +211,11 @@ func (o ApiReleaseOutput) ToApiReleaseOutputWithContext(ctx context.Context) Api
 // Identifier of the API the release belongs to.
 func (o ApiReleaseOutput) ApiId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApiRelease) pulumi.StringPtrOutput { return v.ApiId }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o ApiReleaseOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApiRelease) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The time the API was released. The date conforms to the following format: yyyy-MM-ddTHH:mm:ssZ as specified by the ISO 8601 standard.

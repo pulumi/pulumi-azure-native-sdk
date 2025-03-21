@@ -13,12 +13,14 @@ import (
 )
 
 // Class representing a read only following database.
-// Azure REST API version: 2021-06-01-preview.
+// Azure REST API version: 2021-06-01-preview. Prior API version in Azure Native 2.x: 2021-06-01-preview.
 type ReadOnlyFollowingDatabase struct {
 	pulumi.CustomResourceState
 
 	// The name of the attached database configuration cluster
 	AttachedDatabaseConfigurationName pulumi.StringOutput `pulumi:"attachedDatabaseConfigurationName"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The time the data should be kept in cache for fast queries in TimeSpan.
 	HotCachePeriod pulumi.StringPtrOutput `pulumi:"hotCachePeriod"`
 	// Kind of the database
@@ -70,6 +72,12 @@ func NewReadOnlyFollowingDatabase(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:synapse/v20210601preview:ReadOnlyFollowingDatabase"),
+		},
+		{
+			Type: pulumi.String("azure-native:synapse/v20210601preview:ReadWriteDatabase"),
+		},
+		{
+			Type: pulumi.String("azure-native:synapse:ReadWriteDatabase"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -182,6 +190,11 @@ func (o ReadOnlyFollowingDatabaseOutput) ToReadOnlyFollowingDatabaseOutputWithCo
 // The name of the attached database configuration cluster
 func (o ReadOnlyFollowingDatabaseOutput) AttachedDatabaseConfigurationName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ReadOnlyFollowingDatabase) pulumi.StringOutput { return v.AttachedDatabaseConfigurationName }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o ReadOnlyFollowingDatabaseOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ReadOnlyFollowingDatabase) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The time the data should be kept in cache for fast queries in TimeSpan.

@@ -13,10 +13,12 @@ import (
 )
 
 // Schema version's definition.
-// Azure REST API version: 2024-09-01-preview.
+// Azure REST API version: 2024-09-01-preview. Prior API version in Azure Native 2.x: 2024-09-01-preview.
 type SchemaVersion struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Human-readable description of the schema.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Hash of the schema content.
@@ -158,6 +160,11 @@ func (o SchemaVersionOutput) ToSchemaVersionOutput() SchemaVersionOutput {
 
 func (o SchemaVersionOutput) ToSchemaVersionOutputWithContext(ctx context.Context) SchemaVersionOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o SchemaVersionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SchemaVersion) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Human-readable description of the schema.

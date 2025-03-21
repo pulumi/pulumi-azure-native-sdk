@@ -32,6 +32,8 @@ type LookupBlueprintArgs struct {
 
 // Represents a Blueprint definition.
 type LookupBlueprintResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Multi-line explain this resource.
 	Description *string `pulumi:"description"`
 	// One-liner string explain this resource.
@@ -89,6 +91,11 @@ func (o LookupBlueprintResultOutput) ToLookupBlueprintResultOutput() LookupBluep
 
 func (o LookupBlueprintResultOutput) ToLookupBlueprintResultOutputWithContext(ctx context.Context) LookupBlueprintResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupBlueprintResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBlueprintResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Multi-line explain this resource.

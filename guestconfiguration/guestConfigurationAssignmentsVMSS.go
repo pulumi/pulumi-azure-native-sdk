@@ -13,12 +13,12 @@ import (
 )
 
 // Guest configuration assignment is an association between a machine and guest configuration.
-// Azure REST API version: 2022-01-25.
-//
-// Other available API versions: 2024-04-05.
+// Azure REST API version: 2024-04-05. Prior API version in Azure Native 2.x: 2022-01-25.
 type GuestConfigurationAssignmentsVMSS struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Region where the VM is located.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// Name of the guest configuration assignment.
@@ -147,6 +147,11 @@ func (o GuestConfigurationAssignmentsVMSSOutput) ToGuestConfigurationAssignments
 
 func (o GuestConfigurationAssignmentsVMSSOutput) ToGuestConfigurationAssignmentsVMSSOutputWithContext(ctx context.Context) GuestConfigurationAssignmentsVMSSOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o GuestConfigurationAssignmentsVMSSOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *GuestConfigurationAssignmentsVMSS) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Region where the VM is located.

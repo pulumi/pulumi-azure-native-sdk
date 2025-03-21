@@ -13,10 +13,12 @@ import (
 )
 
 // The test base credential resource.
-// Azure REST API version: 2023-11-01-preview.
+// Azure REST API version: 2023-11-01-preview. Prior API version in Azure Native 2.x: 2023-11-01-preview.
 type Credential struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Credential type.
 	CredentialType pulumi.StringOutput `pulumi:"credentialType"`
 	// Credential display name.
@@ -148,6 +150,11 @@ func (o CredentialOutput) ToCredentialOutput() CredentialOutput {
 
 func (o CredentialOutput) ToCredentialOutputWithContext(ctx context.Context) CredentialOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o CredentialOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Credential) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Credential type.

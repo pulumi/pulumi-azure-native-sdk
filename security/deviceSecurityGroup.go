@@ -13,12 +13,14 @@ import (
 )
 
 // The device security group resource
-// Azure REST API version: 2019-08-01. Prior API version in Azure Native 1.x: 2019-08-01.
+// Azure REST API version: 2019-08-01. Prior API version in Azure Native 2.x: 2019-08-01.
 type DeviceSecurityGroup struct {
 	pulumi.CustomResourceState
 
 	// The allow-list custom alert rules.
 	AllowlistRules AllowlistCustomAlertRuleResponseArrayOutput `pulumi:"allowlistRules"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The deny-list custom alert rules.
 	DenylistRules DenylistCustomAlertRuleResponseArrayOutput `pulumi:"denylistRules"`
 	// Resource name
@@ -153,6 +155,11 @@ func (o DeviceSecurityGroupOutput) ToDeviceSecurityGroupOutputWithContext(ctx co
 // The allow-list custom alert rules.
 func (o DeviceSecurityGroupOutput) AllowlistRules() AllowlistCustomAlertRuleResponseArrayOutput {
 	return o.ApplyT(func(v *DeviceSecurityGroup) AllowlistCustomAlertRuleResponseArrayOutput { return v.AllowlistRules }).(AllowlistCustomAlertRuleResponseArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o DeviceSecurityGroupOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DeviceSecurityGroup) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The deny-list custom alert rules.

@@ -13,9 +13,7 @@ import (
 )
 
 // A network interface in a resource group.
-// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2020-11-01.
-//
-// Other available API versions: 2018-07-01, 2019-02-01, 2019-06-01, 2019-08-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Azure REST API version: 2024-05-01. Prior API version in Azure Native 2.x: 2023-02-01.
 type NetworkInterface struct {
 	pulumi.CustomResourceState
 
@@ -23,6 +21,10 @@ type NetworkInterface struct {
 	AuxiliaryMode pulumi.StringPtrOutput `pulumi:"auxiliaryMode"`
 	// Auxiliary sku of Network Interface resource.
 	AuxiliarySku pulumi.StringPtrOutput `pulumi:"auxiliarySku"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// Whether default outbound connectivity for nic was configured or not.
+	DefaultOutboundConnectivityEnabled pulumi.BoolOutput `pulumi:"defaultOutboundConnectivityEnabled"`
 	// Indicates whether to disable tcp state tracking.
 	DisableTcpStateTracking pulumi.BoolPtrOutput `pulumi:"disableTcpStateTracking"`
 	// The DNS settings in network interface.
@@ -408,6 +410,16 @@ func (o NetworkInterfaceOutput) AuxiliaryMode() pulumi.StringPtrOutput {
 // Auxiliary sku of Network Interface resource.
 func (o NetworkInterfaceOutput) AuxiliarySku() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkInterface) pulumi.StringPtrOutput { return v.AuxiliarySku }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o NetworkInterfaceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkInterface) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Whether default outbound connectivity for nic was configured or not.
+func (o NetworkInterfaceOutput) DefaultOutboundConnectivityEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *NetworkInterface) pulumi.BoolOutput { return v.DefaultOutboundConnectivityEnabled }).(pulumi.BoolOutput)
 }
 
 // Indicates whether to disable tcp state tracking.

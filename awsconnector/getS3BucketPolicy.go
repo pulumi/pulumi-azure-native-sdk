@@ -32,6 +32,8 @@ type LookupS3BucketPolicyArgs struct {
 
 // A Microsoft.AwsConnector resource
 type LookupS3BucketPolicyResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -81,6 +83,11 @@ func (o LookupS3BucketPolicyResultOutput) ToLookupS3BucketPolicyResultOutput() L
 
 func (o LookupS3BucketPolicyResultOutput) ToLookupS3BucketPolicyResultOutputWithContext(ctx context.Context) LookupS3BucketPolicyResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupS3BucketPolicyResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupS3BucketPolicyResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

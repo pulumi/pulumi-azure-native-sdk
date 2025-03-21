@@ -12,9 +12,7 @@ import (
 )
 
 // Get build service agent pool.
-// Azure REST API version: 2023-05-01-preview.
-//
-// Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01, 2024-01-01-preview, 2024-05-01-preview.
+// Azure REST API version: 2024-01-01-preview.
 func LookupBuildServiceAgentPool(ctx *pulumi.Context, args *LookupBuildServiceAgentPoolArgs, opts ...pulumi.InvokeOption) (*LookupBuildServiceAgentPoolResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBuildServiceAgentPoolResult
@@ -38,6 +36,8 @@ type LookupBuildServiceAgentPoolArgs struct {
 
 // The build service agent pool resource
 type LookupBuildServiceAgentPoolResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource Id for the resource.
 	Id string `pulumi:"id"`
 	// The name of the resource.
@@ -87,6 +87,11 @@ func (o LookupBuildServiceAgentPoolResultOutput) ToLookupBuildServiceAgentPoolRe
 
 func (o LookupBuildServiceAgentPoolResultOutput) ToLookupBuildServiceAgentPoolResultOutputWithContext(ctx context.Context) LookupBuildServiceAgentPoolResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupBuildServiceAgentPoolResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBuildServiceAgentPoolResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource Id for the resource.

@@ -13,12 +13,12 @@ import (
 )
 
 // The request to update subscriptions needed to be monitored by the Elastic monitor resource.
-// Azure REST API version: 2024-05-01-preview.
-//
-// Other available API versions: 2024-06-15-preview, 2024-10-01-preview.
+// Azure REST API version: 2025-01-15-preview. Prior API version in Azure Native 2.x: 2024-05-01-preview.
 type MonitoredSubscription struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Name of the monitored subscription resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The request to update subscriptions needed to be monitored by the Elastic monitor resource.
@@ -49,6 +49,9 @@ func NewMonitoredSubscription(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:elastic/v20241001preview:MonitoredSubscription"),
+		},
+		{
+			Type: pulumi.String("azure-native:elastic/v20250115preview:MonitoredSubscription"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -142,6 +145,11 @@ func (o MonitoredSubscriptionOutput) ToMonitoredSubscriptionOutput() MonitoredSu
 
 func (o MonitoredSubscriptionOutput) ToMonitoredSubscriptionOutputWithContext(ctx context.Context) MonitoredSubscriptionOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o MonitoredSubscriptionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *MonitoredSubscription) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Name of the monitored subscription resource.

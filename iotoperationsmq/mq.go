@@ -13,10 +13,12 @@ import (
 )
 
 // MQ resource
-// Azure REST API version: 2023-10-04-preview.
+// Azure REST API version: 2023-10-04-preview. Prior API version in Azure Native 2.x: 2023-10-04-preview.
 type Mq struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Extended Location
 	ExtendedLocation ExtendedLocationPropertyResponseOutput `pulumi:"extendedLocation"`
 	// The geo-location where the resource lives
@@ -146,6 +148,11 @@ func (o MqOutput) ToMqOutput() MqOutput {
 
 func (o MqOutput) ToMqOutputWithContext(ctx context.Context) MqOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o MqOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Mq) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Extended Location

@@ -13,12 +13,14 @@ import (
 )
 
 // Hub resource.
-// Azure REST API version: 2017-04-26. Prior API version in Azure Native 1.x: 2017-04-26.
+// Azure REST API version: 2017-04-26. Prior API version in Azure Native 2.x: 2017-04-26.
 type Hub struct {
 	pulumi.CustomResourceState
 
 	// API endpoint URL of the hub.
 	ApiEndpoint pulumi.StringOutput `pulumi:"apiEndpoint"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Billing settings of the hub.
 	HubBillingInfo HubBillingInfoFormatResponsePtrOutput `pulumi:"hubBillingInfo"`
 	// Resource location.
@@ -159,6 +161,11 @@ func (o HubOutput) ToHubOutputWithContext(ctx context.Context) HubOutput {
 // API endpoint URL of the hub.
 func (o HubOutput) ApiEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v *Hub) pulumi.StringOutput { return v.ApiEndpoint }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o HubOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Hub) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Billing settings of the hub.

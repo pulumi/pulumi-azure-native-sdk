@@ -12,9 +12,7 @@ import (
 )
 
 // Gets an existing origin within an endpoint.
-// Azure REST API version: 2023-05-01.
-//
-// Other available API versions: 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01.
+// Azure REST API version: 2024-09-01.
 func LookupOrigin(ctx *pulumi.Context, args *LookupOriginArgs, opts ...pulumi.InvokeOption) (*LookupOriginResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupOriginResult
@@ -38,6 +36,8 @@ type LookupOriginArgs struct {
 
 // CDN origin is the source of the content being delivered via CDN. When the edge nodes represented by an endpoint do not have the requested content cached, they attempt to fetch it from one or more of the configured origins.
 type LookupOriginResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Origin is enabled for load balancing or not
 	Enabled *bool `pulumi:"enabled"`
 	// The address of the origin. Domain names, IPv4 addresses, and IPv6 addresses are supported.This should be unique across all origins in an endpoint.
@@ -113,6 +113,11 @@ func (o LookupOriginResultOutput) ToLookupOriginResultOutput() LookupOriginResul
 
 func (o LookupOriginResultOutput) ToLookupOriginResultOutputWithContext(ctx context.Context) LookupOriginResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupOriginResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOriginResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Origin is enabled for load balancing or not

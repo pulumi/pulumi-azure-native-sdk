@@ -12,9 +12,7 @@ import (
 )
 
 // Gets a deployment.
-// Azure REST API version: 2022-09-01.
-//
-// Other available API versions: 2023-07-01, 2024-03-01, 2024-07-01, 2024-11-01.
+// Azure REST API version: 2024-03-01.
 func LookupDeploymentAtScope(ctx *pulumi.Context, args *LookupDeploymentAtScopeArgs, opts ...pulumi.InvokeOption) (*LookupDeploymentAtScopeResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDeploymentAtScopeResult
@@ -34,6 +32,8 @@ type LookupDeploymentAtScopeArgs struct {
 
 // Deployment information.
 type LookupDeploymentAtScopeResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The ID of the deployment.
 	Id string `pulumi:"id"`
 	// the location of the deployment.
@@ -81,6 +81,11 @@ func (o LookupDeploymentAtScopeResultOutput) ToLookupDeploymentAtScopeResultOutp
 
 func (o LookupDeploymentAtScopeResultOutput) ToLookupDeploymentAtScopeResultOutputWithContext(ctx context.Context) LookupDeploymentAtScopeResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupDeploymentAtScopeResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDeploymentAtScopeResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The ID of the deployment.

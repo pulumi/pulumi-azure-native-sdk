@@ -13,8 +13,6 @@ import (
 
 // Gets a managed instance key.
 // Azure REST API version: 2021-11-01.
-//
-// Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
 func LookupManagedInstanceKey(ctx *pulumi.Context, args *LookupManagedInstanceKeyArgs, opts ...pulumi.InvokeOption) (*LookupManagedInstanceKeyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupManagedInstanceKeyResult
@@ -38,6 +36,8 @@ type LookupManagedInstanceKeyArgs struct {
 type LookupManagedInstanceKeyResult struct {
 	// Key auto rotation opt-in flag. Either true or false.
 	AutoRotationEnabled bool `pulumi:"autoRotationEnabled"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The key creation date.
 	CreationDate string `pulumi:"creationDate"`
 	// Resource ID.
@@ -92,6 +92,11 @@ func (o LookupManagedInstanceKeyResultOutput) ToLookupManagedInstanceKeyResultOu
 // Key auto rotation opt-in flag. Either true or false.
 func (o LookupManagedInstanceKeyResultOutput) AutoRotationEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupManagedInstanceKeyResult) bool { return v.AutoRotationEnabled }).(pulumi.BoolOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupManagedInstanceKeyResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupManagedInstanceKeyResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The key creation date.

@@ -13,8 +13,6 @@ import (
 
 // List tokens for application.
 // Azure REST API version: 2021-07-01.
-//
-// Other available API versions: 2023-12-01-preview.
 func ListApplicationTokens(ctx *pulumi.Context, args *ListApplicationTokensArgs, opts ...pulumi.InvokeOption) (*ListApplicationTokensResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListApplicationTokensResult

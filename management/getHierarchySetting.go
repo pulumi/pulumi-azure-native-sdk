@@ -13,9 +13,7 @@ import (
 
 // Gets the hierarchy settings defined at the Management Group level. Settings can only be set on the root Management Group of the hierarchy.
 //
-// Azure REST API version: 2021-04-01.
-//
-// Other available API versions: 2023-04-01.
+// Azure REST API version: 2023-04-01.
 func LookupHierarchySetting(ctx *pulumi.Context, args *LookupHierarchySettingArgs, opts ...pulumi.InvokeOption) (*LookupHierarchySettingResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupHierarchySettingResult
@@ -33,6 +31,8 @@ type LookupHierarchySettingArgs struct {
 
 // Settings defined at the Management Group scope.
 type LookupHierarchySettingResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Settings that sets the default Management Group under which new subscriptions get added in this tenant. For example, /providers/Microsoft.Management/managementGroups/defaultGroup
 	DefaultManagementGroup *string `pulumi:"defaultManagementGroup"`
 	// The fully qualified ID for the settings object.  For example, /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000/settings/default.
@@ -78,6 +78,11 @@ func (o LookupHierarchySettingResultOutput) ToLookupHierarchySettingResultOutput
 
 func (o LookupHierarchySettingResultOutput) ToLookupHierarchySettingResultOutputWithContext(ctx context.Context) LookupHierarchySettingResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupHierarchySettingResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHierarchySettingResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Settings that sets the default Management Group under which new subscriptions get added in this tenant. For example, /providers/Microsoft.Management/managementGroups/defaultGroup

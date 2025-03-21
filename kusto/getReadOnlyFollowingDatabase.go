@@ -12,7 +12,7 @@ import (
 )
 
 // Returns a database.
-// Azure REST API version: 2022-12-29.
+// Azure REST API version: 2024-04-13.
 func LookupReadOnlyFollowingDatabase(ctx *pulumi.Context, args *LookupReadOnlyFollowingDatabaseArgs, opts ...pulumi.InvokeOption) (*LookupReadOnlyFollowingDatabaseResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupReadOnlyFollowingDatabaseResult
@@ -28,7 +28,7 @@ type LookupReadOnlyFollowingDatabaseArgs struct {
 	ClusterName string `pulumi:"clusterName"`
 	// The name of the database in the Kusto cluster.
 	DatabaseName string `pulumi:"databaseName"`
-	// The name of the resource group containing the Kusto cluster.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -36,6 +36,8 @@ type LookupReadOnlyFollowingDatabaseArgs struct {
 type LookupReadOnlyFollowingDatabaseResult struct {
 	// The name of the attached database configuration cluster
 	AttachedDatabaseConfigurationName string `pulumi:"attachedDatabaseConfigurationName"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The origin of the following setup.
 	DatabaseShareOrigin string `pulumi:"databaseShareOrigin"`
 	// The time the data should be kept in cache for fast queries in TimeSpan.
@@ -61,6 +63,8 @@ type LookupReadOnlyFollowingDatabaseResult struct {
 	SoftDeletePeriod string `pulumi:"softDeletePeriod"`
 	// The statistics of the database.
 	Statistics DatabaseStatisticsResponse `pulumi:"statistics"`
+	// The database suspension details. If the database is suspended, this object contains information related to the database's suspension state.
+	SuspensionDetails SuspensionDetailsResponse `pulumi:"suspensionDetails"`
 	// Table level sharing specifications
 	TableLevelSharingProperties TableLevelSharingPropertiesResponse `pulumi:"tableLevelSharingProperties"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -81,7 +85,7 @@ type LookupReadOnlyFollowingDatabaseOutputArgs struct {
 	ClusterName pulumi.StringInput `pulumi:"clusterName"`
 	// The name of the database in the Kusto cluster.
 	DatabaseName pulumi.StringInput `pulumi:"databaseName"`
-	// The name of the resource group containing the Kusto cluster.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -107,6 +111,11 @@ func (o LookupReadOnlyFollowingDatabaseResultOutput) ToLookupReadOnlyFollowingDa
 // The name of the attached database configuration cluster
 func (o LookupReadOnlyFollowingDatabaseResultOutput) AttachedDatabaseConfigurationName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReadOnlyFollowingDatabaseResult) string { return v.AttachedDatabaseConfigurationName }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupReadOnlyFollowingDatabaseResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupReadOnlyFollowingDatabaseResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The origin of the following setup.
@@ -168,6 +177,11 @@ func (o LookupReadOnlyFollowingDatabaseResultOutput) SoftDeletePeriod() pulumi.S
 // The statistics of the database.
 func (o LookupReadOnlyFollowingDatabaseResultOutput) Statistics() DatabaseStatisticsResponseOutput {
 	return o.ApplyT(func(v LookupReadOnlyFollowingDatabaseResult) DatabaseStatisticsResponse { return v.Statistics }).(DatabaseStatisticsResponseOutput)
+}
+
+// The database suspension details. If the database is suspended, this object contains information related to the database's suspension state.
+func (o LookupReadOnlyFollowingDatabaseResultOutput) SuspensionDetails() SuspensionDetailsResponseOutput {
+	return o.ApplyT(func(v LookupReadOnlyFollowingDatabaseResult) SuspensionDetailsResponse { return v.SuspensionDetails }).(SuspensionDetailsResponseOutput)
 }
 
 // Table level sharing specifications

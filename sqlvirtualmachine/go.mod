@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-azure-native-sdk/sqlvirtualmachine/v2
+module github.com/pulumi/pulumi-azure-native-sdk/sqlvirtualmachine/v3
 
 go 1.22
 

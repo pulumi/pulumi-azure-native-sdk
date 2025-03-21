@@ -13,12 +13,12 @@ import (
 )
 
 // NSX DNS Service
-// Azure REST API version: 2022-05-01. Prior API version in Azure Native 1.x: 2020-07-17-preview.
-//
-// Other available API versions: 2023-03-01, 2023-09-01.
+// Azure REST API version: 2023-09-01. Prior API version in Azure Native 2.x: 2022-05-01.
 type WorkloadNetworkDnsService struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Default DNS zone of the DNS Service.
 	DefaultDnsZone pulumi.StringPtrOutput `pulumi:"defaultDnsZone"`
 	// Display name of the DNS Service.
@@ -29,7 +29,7 @@ type WorkloadNetworkDnsService struct {
 	FqdnZones pulumi.StringArrayOutput `pulumi:"fqdnZones"`
 	// DNS Service log level.
 	LogLevel pulumi.StringPtrOutput `pulumi:"logLevel"`
-	// Resource name.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The provisioning state
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
@@ -37,7 +37,9 @@ type WorkloadNetworkDnsService struct {
 	Revision pulumi.Float64PtrOutput `pulumi:"revision"`
 	// DNS Service status.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// Resource type.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -115,7 +117,7 @@ type workloadNetworkDnsServiceArgs struct {
 	DefaultDnsZone *string `pulumi:"defaultDnsZone"`
 	// Display name of the DNS Service.
 	DisplayName *string `pulumi:"displayName"`
-	// NSX DNS Service identifier. Generally the same as the DNS Service's display name
+	// ID of the DNS service.
 	DnsServiceId *string `pulumi:"dnsServiceId"`
 	// DNS service IP of the DNS Service.
 	DnsServiceIp *string `pulumi:"dnsServiceIp"`
@@ -137,7 +139,7 @@ type WorkloadNetworkDnsServiceArgs struct {
 	DefaultDnsZone pulumi.StringPtrInput
 	// Display name of the DNS Service.
 	DisplayName pulumi.StringPtrInput
-	// NSX DNS Service identifier. Generally the same as the DNS Service's display name
+	// ID of the DNS service.
 	DnsServiceId pulumi.StringPtrInput
 	// DNS service IP of the DNS Service.
 	DnsServiceIp pulumi.StringPtrInput
@@ -190,6 +192,11 @@ func (o WorkloadNetworkDnsServiceOutput) ToWorkloadNetworkDnsServiceOutputWithCo
 	return o
 }
 
+// The Azure API version of the resource.
+func (o WorkloadNetworkDnsServiceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkloadNetworkDnsService) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Default DNS zone of the DNS Service.
 func (o WorkloadNetworkDnsServiceOutput) DefaultDnsZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkloadNetworkDnsService) pulumi.StringPtrOutput { return v.DefaultDnsZone }).(pulumi.StringPtrOutput)
@@ -215,7 +222,7 @@ func (o WorkloadNetworkDnsServiceOutput) LogLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkloadNetworkDnsService) pulumi.StringPtrOutput { return v.LogLevel }).(pulumi.StringPtrOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o WorkloadNetworkDnsServiceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkloadNetworkDnsService) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -235,7 +242,12 @@ func (o WorkloadNetworkDnsServiceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkloadNetworkDnsService) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// Resource type.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o WorkloadNetworkDnsServiceOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *WorkloadNetworkDnsService) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o WorkloadNetworkDnsServiceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkloadNetworkDnsService) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

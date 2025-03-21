@@ -12,9 +12,7 @@ import (
 )
 
 // The operation returns properties of a OpenShift cluster.
-// Azure REST API version: 2022-09-04.
-//
-// Other available API versions: 2023-04-01, 2023-07-01-preview, 2023-09-04, 2023-11-22, 2024-08-12-preview.
+// Azure REST API version: 2023-11-22.
 func LookupOpenShiftCluster(ctx *pulumi.Context, args *LookupOpenShiftClusterArgs, opts ...pulumi.InvokeOption) (*LookupOpenShiftClusterResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupOpenShiftClusterResult
@@ -36,6 +34,8 @@ type LookupOpenShiftClusterArgs struct {
 type LookupOpenShiftClusterResult struct {
 	// The cluster API server profile.
 	ApiserverProfile *APIServerProfileResponse `pulumi:"apiserverProfile"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The cluster profile.
 	ClusterProfile *ClusterProfileResponse `pulumi:"clusterProfile"`
 	// The console profile.
@@ -64,6 +64,8 @@ type LookupOpenShiftClusterResult struct {
 	Type string `pulumi:"type"`
 	// The cluster worker profiles.
 	WorkerProfiles []WorkerProfileResponse `pulumi:"workerProfiles"`
+	// The cluster worker profiles status.
+	WorkerProfilesStatus []WorkerProfileResponse `pulumi:"workerProfilesStatus"`
 }
 
 func LookupOpenShiftClusterOutput(ctx *pulumi.Context, args LookupOpenShiftClusterOutputArgs, opts ...pulumi.InvokeOption) LookupOpenShiftClusterResultOutput {
@@ -104,6 +106,11 @@ func (o LookupOpenShiftClusterResultOutput) ToLookupOpenShiftClusterResultOutput
 // The cluster API server profile.
 func (o LookupOpenShiftClusterResultOutput) ApiserverProfile() APIServerProfileResponsePtrOutput {
 	return o.ApplyT(func(v LookupOpenShiftClusterResult) *APIServerProfileResponse { return v.ApiserverProfile }).(APIServerProfileResponsePtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupOpenShiftClusterResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOpenShiftClusterResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The cluster profile.
@@ -176,6 +183,11 @@ func (o LookupOpenShiftClusterResultOutput) Type() pulumi.StringOutput {
 // The cluster worker profiles.
 func (o LookupOpenShiftClusterResultOutput) WorkerProfiles() WorkerProfileResponseArrayOutput {
 	return o.ApplyT(func(v LookupOpenShiftClusterResult) []WorkerProfileResponse { return v.WorkerProfiles }).(WorkerProfileResponseArrayOutput)
+}
+
+// The cluster worker profiles status.
+func (o LookupOpenShiftClusterResultOutput) WorkerProfilesStatus() WorkerProfileResponseArrayOutput {
+	return o.ApplyT(func(v LookupOpenShiftClusterResult) []WorkerProfileResponse { return v.WorkerProfilesStatus }).(WorkerProfileResponseArrayOutput)
 }
 
 func init() {

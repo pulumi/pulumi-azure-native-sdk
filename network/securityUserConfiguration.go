@@ -13,14 +13,12 @@ import (
 )
 
 // Defines the security user configuration
-// Azure REST API version: 2022-04-01-preview. Prior API version in Azure Native 1.x: 2021-02-01-preview.
-//
-// Other available API versions: 2021-05-01-preview, 2024-03-01, 2024-05-01.
+// Azure REST API version: 2024-05-01. Prior API version in Azure Native 2.x: 2022-04-01-preview.
 type SecurityUserConfiguration struct {
 	pulumi.CustomResourceState
 
-	// Flag if need to delete existing network security groups.
-	DeleteExistingNSGs pulumi.StringPtrOutput `pulumi:"deleteExistingNSGs"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// A description of the security user configuration.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// A unique read-only string that changes whenever the resource is updated.
@@ -29,6 +27,8 @@ type SecurityUserConfiguration struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The provisioning state of the resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// Unique identifier for this resource.
+	ResourceGuid pulumi.StringOutput `pulumi:"resourceGuid"`
 	// The system metadata related to this resource.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource type.
@@ -104,13 +104,11 @@ func (SecurityUserConfigurationState) ElementType() reflect.Type {
 type securityUserConfigurationArgs struct {
 	// The name of the network manager Security Configuration.
 	ConfigurationName *string `pulumi:"configurationName"`
-	// Flag if need to delete existing network security groups.
-	DeleteExistingNSGs *string `pulumi:"deleteExistingNSGs"`
 	// A description of the security user configuration.
 	Description *string `pulumi:"description"`
 	// The name of the network manager.
 	NetworkManagerName string `pulumi:"networkManagerName"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -118,13 +116,11 @@ type securityUserConfigurationArgs struct {
 type SecurityUserConfigurationArgs struct {
 	// The name of the network manager Security Configuration.
 	ConfigurationName pulumi.StringPtrInput
-	// Flag if need to delete existing network security groups.
-	DeleteExistingNSGs pulumi.StringPtrInput
 	// A description of the security user configuration.
 	Description pulumi.StringPtrInput
 	// The name of the network manager.
 	NetworkManagerName pulumi.StringInput
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 }
 
@@ -165,9 +161,9 @@ func (o SecurityUserConfigurationOutput) ToSecurityUserConfigurationOutputWithCo
 	return o
 }
 
-// Flag if need to delete existing network security groups.
-func (o SecurityUserConfigurationOutput) DeleteExistingNSGs() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SecurityUserConfiguration) pulumi.StringPtrOutput { return v.DeleteExistingNSGs }).(pulumi.StringPtrOutput)
+// The Azure API version of the resource.
+func (o SecurityUserConfigurationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecurityUserConfiguration) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A description of the security user configuration.
@@ -188,6 +184,11 @@ func (o SecurityUserConfigurationOutput) Name() pulumi.StringOutput {
 // The provisioning state of the resource.
 func (o SecurityUserConfigurationOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityUserConfiguration) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Unique identifier for this resource.
+func (o SecurityUserConfigurationOutput) ResourceGuid() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecurityUserConfiguration) pulumi.StringOutput { return v.ResourceGuid }).(pulumi.StringOutput)
 }
 
 // The system metadata related to this resource.

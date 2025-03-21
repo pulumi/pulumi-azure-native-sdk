@@ -13,12 +13,14 @@ import (
 )
 
 // See [planned maintenance](https://docs.microsoft.com/azure/aks/planned-maintenance) for more information about planned maintenance.
-// Azure REST API version: 2023-04-01. Prior API version in Azure Native 1.x: 2021-03-01.
-//
-// Other available API versions: 2023-05-02-preview, 2023-06-01, 2023-06-02-preview, 2023-07-01, 2023-07-02-preview, 2023-08-01, 2023-08-02-preview, 2023-09-01, 2023-09-02-preview, 2023-10-01, 2023-10-02-preview, 2023-11-01, 2023-11-02-preview, 2024-01-01, 2024-01-02-preview, 2024-02-01, 2024-02-02-preview, 2024-03-02-preview, 2024-04-02-preview, 2024-05-01, 2024-05-02-preview, 2024-06-02-preview, 2024-07-01, 2024-07-02-preview, 2024-08-01, 2024-09-01, 2024-09-02-preview, 2024-10-01.
+// Azure REST API version: 2024-10-01. Prior API version in Azure Native 2.x: 2023-04-01.
 type MaintenanceConfiguration struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// Maintenance window for the maintenance configuration.
+	MaintenanceWindow MaintenanceWindowResponsePtrOutput `pulumi:"maintenanceWindow"`
 	// The name of the resource that is unique within a resource group. This name can be used to access the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Time slots on which upgrade is not allowed.
@@ -43,6 +45,9 @@ func NewMaintenanceConfiguration(ctx *pulumi.Context,
 	}
 	if args.ResourceName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceName'")
+	}
+	if args.MaintenanceWindow != nil {
+		args.MaintenanceWindow = args.MaintenanceWindow.ToMaintenanceWindowPtrOutput().ApplyT(func(v *MaintenanceWindow) *MaintenanceWindow { return v.Defaults() }).(MaintenanceWindowPtrOutput)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -243,6 +248,12 @@ func NewMaintenanceConfiguration(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:containerservice/v20241001:MaintenanceConfiguration"),
 		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20241002preview:MaintenanceConfiguration"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20250101:MaintenanceConfiguration"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -280,6 +291,8 @@ func (MaintenanceConfigurationState) ElementType() reflect.Type {
 type maintenanceConfigurationArgs struct {
 	// The name of the maintenance configuration.
 	ConfigName *string `pulumi:"configName"`
+	// Maintenance window for the maintenance configuration.
+	MaintenanceWindow *MaintenanceWindow `pulumi:"maintenanceWindow"`
 	// Time slots on which upgrade is not allowed.
 	NotAllowedTime []TimeSpan `pulumi:"notAllowedTime"`
 	// The name of the resource group. The name is case insensitive.
@@ -294,6 +307,8 @@ type maintenanceConfigurationArgs struct {
 type MaintenanceConfigurationArgs struct {
 	// The name of the maintenance configuration.
 	ConfigName pulumi.StringPtrInput
+	// Maintenance window for the maintenance configuration.
+	MaintenanceWindow MaintenanceWindowPtrInput
 	// Time slots on which upgrade is not allowed.
 	NotAllowedTime TimeSpanArrayInput
 	// The name of the resource group. The name is case insensitive.
@@ -339,6 +354,16 @@ func (o MaintenanceConfigurationOutput) ToMaintenanceConfigurationOutput() Maint
 
 func (o MaintenanceConfigurationOutput) ToMaintenanceConfigurationOutputWithContext(ctx context.Context) MaintenanceConfigurationOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o MaintenanceConfigurationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *MaintenanceConfiguration) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Maintenance window for the maintenance configuration.
+func (o MaintenanceConfigurationOutput) MaintenanceWindow() MaintenanceWindowResponsePtrOutput {
+	return o.ApplyT(func(v *MaintenanceConfiguration) MaintenanceWindowResponsePtrOutput { return v.MaintenanceWindow }).(MaintenanceWindowResponsePtrOutput)
 }
 
 // The name of the resource that is unique within a resource group. This name can be used to access the resource.

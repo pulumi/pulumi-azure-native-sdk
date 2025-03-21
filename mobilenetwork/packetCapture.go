@@ -13,12 +13,12 @@ import (
 )
 
 // Packet capture session resource.
-// Azure REST API version: 2023-06-01.
-//
-// Other available API versions: 2023-09-01, 2024-02-01, 2024-04-01.
+// Azure REST API version: 2024-04-01. Prior API version in Azure Native 2.x: 2023-06-01.
 type PacketCapture struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Number of bytes captured per packet, the remaining bytes are truncated. The default "0" means the entire packet is captured.
 	BytesToCapturePerPacket pulumi.Float64PtrOutput `pulumi:"bytesToCapturePerPacket"`
 	// The start time of the packet capture session.
@@ -27,6 +27,8 @@ type PacketCapture struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// List of network interfaces to capture on.
 	NetworkInterfaces pulumi.StringArrayOutput `pulumi:"networkInterfaces"`
+	// The list of output files of a packet capture session.
+	OutputFiles pulumi.StringArrayOutput `pulumi:"outputFiles"`
 	// The provisioning state of the packet capture session resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// The reason the current packet capture session state.
@@ -184,6 +186,11 @@ func (o PacketCaptureOutput) ToPacketCaptureOutputWithContext(ctx context.Contex
 	return o
 }
 
+// The Azure API version of the resource.
+func (o PacketCaptureOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PacketCapture) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Number of bytes captured per packet, the remaining bytes are truncated. The default "0" means the entire packet is captured.
 func (o PacketCaptureOutput) BytesToCapturePerPacket() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *PacketCapture) pulumi.Float64PtrOutput { return v.BytesToCapturePerPacket }).(pulumi.Float64PtrOutput)
@@ -202,6 +209,11 @@ func (o PacketCaptureOutput) Name() pulumi.StringOutput {
 // List of network interfaces to capture on.
 func (o PacketCaptureOutput) NetworkInterfaces() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PacketCapture) pulumi.StringArrayOutput { return v.NetworkInterfaces }).(pulumi.StringArrayOutput)
+}
+
+// The list of output files of a packet capture session.
+func (o PacketCaptureOutput) OutputFiles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PacketCapture) pulumi.StringArrayOutput { return v.OutputFiles }).(pulumi.StringArrayOutput)
 }
 
 // The provisioning state of the packet capture session resource.

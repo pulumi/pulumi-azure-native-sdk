@@ -12,9 +12,7 @@ import (
 )
 
 // Gets information about the specified application.
-// Azure REST API version: 2023-05-01.
-//
-// Other available API versions: 2023-11-01, 2024-02-01, 2024-07-01.
+// Azure REST API version: 2024-07-01.
 func LookupApplication(ctx *pulumi.Context, args *LookupApplicationArgs, opts ...pulumi.InvokeOption) (*LookupApplicationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupApplicationResult
@@ -38,6 +36,8 @@ type LookupApplicationArgs struct {
 type LookupApplicationResult struct {
 	// A value indicating whether packages within the application may be overwritten using the same version string.
 	AllowUpdates *bool `pulumi:"allowUpdates"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The package to use if a client requests the application but does not specify a version. This property can only be set to the name of an existing package.
 	DefaultVersion *string `pulumi:"defaultVersion"`
 	// The display name for the application.
@@ -48,6 +48,8 @@ type LookupApplicationResult struct {
 	Id string `pulumi:"id"`
 	// The name of the resource.
 	Name string `pulumi:"name"`
+	// The tags of the resource.
+	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource.
 	Type string `pulumi:"type"`
 }
@@ -94,6 +96,11 @@ func (o LookupApplicationResultOutput) AllowUpdates() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupApplicationResult) *bool { return v.AllowUpdates }).(pulumi.BoolPtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupApplicationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApplicationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The package to use if a client requests the application but does not specify a version. This property can only be set to the name of an existing package.
 func (o LookupApplicationResultOutput) DefaultVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupApplicationResult) *string { return v.DefaultVersion }).(pulumi.StringPtrOutput)
@@ -117,6 +124,11 @@ func (o LookupApplicationResultOutput) Id() pulumi.StringOutput {
 // The name of the resource.
 func (o LookupApplicationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The tags of the resource.
+func (o LookupApplicationResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupApplicationResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The type of the resource.

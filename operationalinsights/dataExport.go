@@ -13,12 +13,12 @@ import (
 )
 
 // The top level data export resource container.
-// Azure REST API version: 2020-08-01. Prior API version in Azure Native 1.x: 2020-08-01.
-//
-// Other available API versions: 2023-09-01.
+// Azure REST API version: 2023-09-01. Prior API version in Azure Native 2.x: 2020-08-01.
 type DataExport struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The latest data export rule modification time.
 	CreatedDate pulumi.StringPtrOutput `pulumi:"createdDate"`
 	// The data export rule ID.
@@ -70,6 +70,9 @@ func NewDataExport(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:operationalinsights/v20230901:DataExport"),
+		},
+		{
+			Type: pulumi.String("azure-native:operationalinsights/v20250201:DataExport"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -187,6 +190,11 @@ func (o DataExportOutput) ToDataExportOutput() DataExportOutput {
 
 func (o DataExportOutput) ToDataExportOutputWithContext(ctx context.Context) DataExportOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o DataExportOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DataExport) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The latest data export rule modification time.

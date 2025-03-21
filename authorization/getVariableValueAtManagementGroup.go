@@ -34,6 +34,8 @@ type LookupVariableValueAtManagementGroupArgs struct {
 
 // The variable value.
 type LookupVariableValueAtManagementGroupResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The ID of the variable.
 	Id string `pulumi:"id"`
 	// The name of the variable.
@@ -81,6 +83,11 @@ func (o LookupVariableValueAtManagementGroupResultOutput) ToLookupVariableValueA
 
 func (o LookupVariableValueAtManagementGroupResultOutput) ToLookupVariableValueAtManagementGroupResultOutputWithContext(ctx context.Context) LookupVariableValueAtManagementGroupResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupVariableValueAtManagementGroupResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVariableValueAtManagementGroupResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The ID of the variable.

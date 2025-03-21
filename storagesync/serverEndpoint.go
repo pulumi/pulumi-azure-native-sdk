@@ -13,12 +13,12 @@ import (
 )
 
 // Server Endpoint object.
-// Azure REST API version: 2022-06-01. Prior API version in Azure Native 1.x: 2020-03-01.
-//
-// Other available API versions: 2022-09-01.
+// Azure REST API version: 2022-09-01. Prior API version in Azure Native 2.x: 2022-06-01.
 type ServerEndpoint struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Cloud Tiering.
 	CloudTiering pulumi.StringPtrOutput `pulumi:"cloudTiering"`
 	// Cloud tiering status. Only populated if cloud tiering is enabled.
@@ -49,6 +49,8 @@ type ServerEndpoint struct {
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Recall status. Only populated if cloud tiering is enabled.
 	RecallStatus ServerEndpointRecallStatusResponseOutput `pulumi:"recallStatus"`
+	// Server Endpoint provisioning status
+	ServerEndpointProvisioningStatus ServerEndpointProvisioningStatusResponsePtrOutput `pulumi:"serverEndpointProvisioningStatus"`
 	// Server Local path.
 	ServerLocalPath pulumi.StringPtrOutput `pulumi:"serverLocalPath"`
 	// Server name
@@ -82,15 +84,6 @@ func NewServerEndpoint(ctx *pulumi.Context,
 	}
 	if args.SyncGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'SyncGroupName'")
-	}
-	if args.InitialDownloadPolicy == nil {
-		args.InitialDownloadPolicy = pulumi.StringPtr("NamespaceThenModifiedFiles")
-	}
-	if args.InitialUploadPolicy == nil {
-		args.InitialUploadPolicy = pulumi.StringPtr("Merge")
-	}
-	if args.LocalCacheMode == nil {
-		args.LocalCacheMode = pulumi.StringPtr("UpdateLocallyCachedFiles")
 	}
 	if args.TierFilesOlderThanDays == nil {
 		args.TierFilesOlderThanDays = pulumi.IntPtr(0)
@@ -273,6 +266,11 @@ func (o ServerEndpointOutput) ToServerEndpointOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The Azure API version of the resource.
+func (o ServerEndpointOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerEndpoint) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Cloud Tiering.
 func (o ServerEndpointOutput) CloudTiering() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerEndpoint) pulumi.StringPtrOutput { return v.CloudTiering }).(pulumi.StringPtrOutput)
@@ -346,6 +344,13 @@ func (o ServerEndpointOutput) ProvisioningState() pulumi.StringOutput {
 // Recall status. Only populated if cloud tiering is enabled.
 func (o ServerEndpointOutput) RecallStatus() ServerEndpointRecallStatusResponseOutput {
 	return o.ApplyT(func(v *ServerEndpoint) ServerEndpointRecallStatusResponseOutput { return v.RecallStatus }).(ServerEndpointRecallStatusResponseOutput)
+}
+
+// Server Endpoint provisioning status
+func (o ServerEndpointOutput) ServerEndpointProvisioningStatus() ServerEndpointProvisioningStatusResponsePtrOutput {
+	return o.ApplyT(func(v *ServerEndpoint) ServerEndpointProvisioningStatusResponsePtrOutput {
+		return v.ServerEndpointProvisioningStatus
+	}).(ServerEndpointProvisioningStatusResponsePtrOutput)
 }
 
 // Server Local path.

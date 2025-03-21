@@ -34,6 +34,8 @@ type LookupTemplateSpecArgs struct {
 
 // Template Spec object.
 type LookupTemplateSpecResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Template Spec description.
 	Description *string `pulumi:"description"`
 	// Template Spec display name.
@@ -91,6 +93,11 @@ func (o LookupTemplateSpecResultOutput) ToLookupTemplateSpecResultOutput() Looku
 
 func (o LookupTemplateSpecResultOutput) ToLookupTemplateSpecResultOutputWithContext(ctx context.Context) LookupTemplateSpecResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupTemplateSpecResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTemplateSpecResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Template Spec description.

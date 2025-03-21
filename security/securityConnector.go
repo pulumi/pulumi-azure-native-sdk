@@ -13,12 +13,12 @@ import (
 )
 
 // The security connector resource.
-// Azure REST API version: 2023-03-01-preview. Prior API version in Azure Native 1.x: 2021-07-01-preview.
-//
-// Other available API versions: 2021-07-01-preview, 2023-10-01-preview, 2024-03-01-preview, 2024-07-01-preview, 2024-08-01-preview.
+// Azure REST API version: 2024-08-01-preview. Prior API version in Azure Native 2.x: 2023-03-01-preview.
 type SecurityConnector struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The security connector environment data.
 	EnvironmentData pulumi.AnyOutput `pulumi:"environmentData"`
 	// The multi cloud resource's cloud name.
@@ -195,6 +195,11 @@ func (o SecurityConnectorOutput) ToSecurityConnectorOutput() SecurityConnectorOu
 
 func (o SecurityConnectorOutput) ToSecurityConnectorOutputWithContext(ctx context.Context) SecurityConnectorOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o SecurityConnectorOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecurityConnector) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The security connector environment data.

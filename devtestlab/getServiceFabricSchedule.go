@@ -40,6 +40,8 @@ type LookupServiceFabricScheduleArgs struct {
 
 // A schedule.
 type LookupServiceFabricScheduleResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The creation date of the schedule.
 	CreatedDate string `pulumi:"createdDate"`
 	// If the schedule will occur once each day of the week, specify the daily recurrence.
@@ -129,6 +131,11 @@ func (o LookupServiceFabricScheduleResultOutput) ToLookupServiceFabricScheduleRe
 
 func (o LookupServiceFabricScheduleResultOutput) ToLookupServiceFabricScheduleResultOutputWithContext(ctx context.Context) LookupServiceFabricScheduleResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupServiceFabricScheduleResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceFabricScheduleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The creation date of the schedule.

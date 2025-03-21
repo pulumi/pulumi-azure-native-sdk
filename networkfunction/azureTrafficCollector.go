@@ -13,12 +13,12 @@ import (
 )
 
 // Azure Traffic Collector resource.
-// Azure REST API version: 2022-11-01. Prior API version in Azure Native 1.x: 2022-05-01.
-//
-// Other available API versions: 2022-08-01.
+// Azure REST API version: 2022-11-01. Prior API version in Azure Native 2.x: 2022-11-01.
 type AzureTrafficCollector struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Collector Policies for Azure Traffic Collector.
 	CollectorPolicies ResourceReferenceResponseArrayOutput `pulumi:"collectorPolicies"`
 	// A unique read-only string that changes whenever the resource is updated.
@@ -154,6 +154,11 @@ func (o AzureTrafficCollectorOutput) ToAzureTrafficCollectorOutput() AzureTraffi
 
 func (o AzureTrafficCollectorOutput) ToAzureTrafficCollectorOutputWithContext(ctx context.Context) AzureTrafficCollectorOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o AzureTrafficCollectorOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *AzureTrafficCollector) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Collector Policies for Azure Traffic Collector.

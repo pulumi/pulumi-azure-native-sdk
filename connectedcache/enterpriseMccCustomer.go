@@ -13,10 +13,12 @@ import (
 )
 
 // Represents the high level Nodes needed to provision customer resources
-// Azure REST API version: 2023-05-01-preview.
+// Azure REST API version: 2023-05-01-preview. Prior API version in Azure Native 2.x: 2023-05-01-preview.
 type EnterpriseMccCustomer struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -141,6 +143,11 @@ func (o EnterpriseMccCustomerOutput) ToEnterpriseMccCustomerOutput() EnterpriseM
 
 func (o EnterpriseMccCustomerOutput) ToEnterpriseMccCustomerOutputWithContext(ctx context.Context) EnterpriseMccCustomerOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o EnterpriseMccCustomerOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *EnterpriseMccCustomer) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The geo-location where the resource lives

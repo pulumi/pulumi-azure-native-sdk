@@ -13,12 +13,12 @@ import (
 )
 
 // Description of a namespace authorization rule.
-// Azure REST API version: 2022-01-01-preview. Prior API version in Azure Native 1.x: 2017-04-01.
-//
-// Other available API versions: 2022-10-01-preview, 2023-01-01-preview, 2024-01-01.
+// Azure REST API version: 2024-01-01. Prior API version in Azure Native 2.x: 2022-01-01-preview.
 type QueueAuthorizationRule struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -125,10 +125,10 @@ type queueAuthorizationRuleArgs struct {
 	NamespaceName string `pulumi:"namespaceName"`
 	// The queue name.
 	QueueName string `pulumi:"queueName"`
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The rights associated with the rule.
-	Rights []string `pulumi:"rights"`
+	Rights []AccessRights `pulumi:"rights"`
 }
 
 // The set of arguments for constructing a QueueAuthorizationRule resource.
@@ -139,10 +139,10 @@ type QueueAuthorizationRuleArgs struct {
 	NamespaceName pulumi.StringInput
 	// The queue name.
 	QueueName pulumi.StringInput
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The rights associated with the rule.
-	Rights pulumi.StringArrayInput
+	Rights AccessRightsArrayInput
 }
 
 func (QueueAuthorizationRuleArgs) ElementType() reflect.Type {
@@ -180,6 +180,11 @@ func (o QueueAuthorizationRuleOutput) ToQueueAuthorizationRuleOutput() QueueAuth
 
 func (o QueueAuthorizationRuleOutput) ToQueueAuthorizationRuleOutputWithContext(ctx context.Context) QueueAuthorizationRuleOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o QueueAuthorizationRuleOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *QueueAuthorizationRule) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The geo-location where the resource lives

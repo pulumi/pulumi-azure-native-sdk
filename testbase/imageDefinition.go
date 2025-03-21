@@ -13,12 +13,14 @@ import (
 )
 
 // The test base image definition resource.
-// Azure REST API version: 2023-11-01-preview.
+// Azure REST API version: 2023-11-01-preview. Prior API version in Azure Native 2.x: 2023-11-01-preview.
 type ImageDefinition struct {
 	pulumi.CustomResourceState
 
 	// Custom image architecture.
 	Architecture pulumi.StringOutput `pulumi:"architecture"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Custom image OS state.
@@ -163,6 +165,11 @@ func (o ImageDefinitionOutput) ToImageDefinitionOutputWithContext(ctx context.Co
 // Custom image architecture.
 func (o ImageDefinitionOutput) Architecture() pulumi.StringOutput {
 	return o.ApplyT(func(v *ImageDefinition) pulumi.StringOutput { return v.Architecture }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o ImageDefinitionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ImageDefinition) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

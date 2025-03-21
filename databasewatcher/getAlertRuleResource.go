@@ -12,9 +12,7 @@ import (
 )
 
 // Get a AlertRuleResource
-// Azure REST API version: 2024-07-19-preview.
-//
-// Other available API versions: 2024-10-01-preview, 2025-01-02.
+// Azure REST API version: 2024-10-01-preview.
 func LookupAlertRuleResource(ctx *pulumi.Context, args *LookupAlertRuleResourceArgs, opts ...pulumi.InvokeOption) (*LookupAlertRuleResourceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAlertRuleResourceResult
@@ -42,6 +40,8 @@ type LookupAlertRuleResourceResult struct {
 	AlertRuleTemplateId string `pulumi:"alertRuleTemplateId"`
 	// The alert rule template version.
 	AlertRuleTemplateVersion string `pulumi:"alertRuleTemplateVersion"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The properties with which the alert rule resource was created.
 	CreatedWithProperties string `pulumi:"createdWithProperties"`
 	// The creation time of the alert rule resource.
@@ -108,6 +108,11 @@ func (o LookupAlertRuleResourceResultOutput) AlertRuleTemplateId() pulumi.String
 // The alert rule template version.
 func (o LookupAlertRuleResourceResultOutput) AlertRuleTemplateVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAlertRuleResourceResult) string { return v.AlertRuleTemplateVersion }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupAlertRuleResourceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAlertRuleResourceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The properties with which the alert rule resource was created.

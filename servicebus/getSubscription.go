@@ -12,9 +12,7 @@ import (
 )
 
 // Returns a subscription description for the specified topic.
-// Azure REST API version: 2022-01-01-preview.
-//
-// Other available API versions: 2022-10-01-preview, 2023-01-01-preview, 2024-01-01.
+// Azure REST API version: 2024-01-01.
 func LookupSubscription(ctx *pulumi.Context, args *LookupSubscriptionArgs, opts ...pulumi.InvokeOption) (*LookupSubscriptionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSubscriptionResult
@@ -28,7 +26,7 @@ func LookupSubscription(ctx *pulumi.Context, args *LookupSubscriptionArgs, opts 
 type LookupSubscriptionArgs struct {
 	// The namespace name
 	NamespaceName string `pulumi:"namespaceName"`
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The subscription name.
 	SubscriptionName string `pulumi:"subscriptionName"`
@@ -42,6 +40,8 @@ type LookupSubscriptionResult struct {
 	AccessedAt string `pulumi:"accessedAt"`
 	// ISO 8061 timeSpan idle interval after which the topic is automatically deleted. The minimum duration is 5 minutes.
 	AutoDeleteOnIdle *string `pulumi:"autoDeleteOnIdle"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Properties specific to client affine subscriptions.
 	ClientAffineProperties *SBClientAffinePropertiesResponse `pulumi:"clientAffineProperties"`
 	// Message count details
@@ -100,7 +100,7 @@ func LookupSubscriptionOutput(ctx *pulumi.Context, args LookupSubscriptionOutput
 type LookupSubscriptionOutputArgs struct {
 	// The namespace name
 	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The subscription name.
 	SubscriptionName pulumi.StringInput `pulumi:"subscriptionName"`
@@ -135,6 +135,11 @@ func (o LookupSubscriptionResultOutput) AccessedAt() pulumi.StringOutput {
 // ISO 8061 timeSpan idle interval after which the topic is automatically deleted. The minimum duration is 5 minutes.
 func (o LookupSubscriptionResultOutput) AutoDeleteOnIdle() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSubscriptionResult) *string { return v.AutoDeleteOnIdle }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupSubscriptionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSubscriptionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Properties specific to client affine subscriptions.

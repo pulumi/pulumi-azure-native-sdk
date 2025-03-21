@@ -13,12 +13,12 @@ import (
 )
 
 // A private endpoint connection
-// Azure REST API version: 2022-12-29. Prior API version in Azure Native 1.x: 2021-08-27.
-//
-// Other available API versions: 2023-05-02, 2023-08-15, 2024-04-13.
+// Azure REST API version: 2024-04-13. Prior API version in Azure Native 2.x: 2022-12-29.
 type PrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Group id of the private endpoint.
 	GroupId pulumi.StringOutput `pulumi:"groupId"`
 	// The name of the resource
@@ -117,7 +117,7 @@ type privateEndpointConnectionArgs struct {
 	PrivateEndpointConnectionName *string `pulumi:"privateEndpointConnectionName"`
 	// Connection State of the Private Endpoint Connection.
 	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStateProperty `pulumi:"privateLinkServiceConnectionState"`
-	// The name of the resource group containing the Kusto cluster.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -129,7 +129,7 @@ type PrivateEndpointConnectionArgs struct {
 	PrivateEndpointConnectionName pulumi.StringPtrInput
 	// Connection State of the Private Endpoint Connection.
 	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStatePropertyInput
-	// The name of the resource group containing the Kusto cluster.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 }
 
@@ -168,6 +168,11 @@ func (o PrivateEndpointConnectionOutput) ToPrivateEndpointConnectionOutput() Pri
 
 func (o PrivateEndpointConnectionOutput) ToPrivateEndpointConnectionOutputWithContext(ctx context.Context) PrivateEndpointConnectionOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o PrivateEndpointConnectionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrivateEndpointConnection) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Group id of the private endpoint.

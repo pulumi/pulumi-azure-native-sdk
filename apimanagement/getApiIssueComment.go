@@ -12,9 +12,7 @@ import (
 )
 
 // Gets the details of the issue Comment for an API specified by its identifier.
-// Azure REST API version: 2022-08-01.
-//
-// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
+// Azure REST API version: 2022-09-01-preview.
 func LookupApiIssueComment(ctx *pulumi.Context, args *LookupApiIssueCommentArgs, opts ...pulumi.InvokeOption) (*LookupApiIssueCommentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupApiIssueCommentResult
@@ -40,6 +38,8 @@ type LookupApiIssueCommentArgs struct {
 
 // Issue Comment Contract details.
 type LookupApiIssueCommentResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Date and time when the comment was created.
 	CreatedDate *string `pulumi:"createdDate"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -93,6 +93,11 @@ func (o LookupApiIssueCommentResultOutput) ToLookupApiIssueCommentResultOutput()
 
 func (o LookupApiIssueCommentResultOutput) ToLookupApiIssueCommentResultOutputWithContext(ctx context.Context) LookupApiIssueCommentResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupApiIssueCommentResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApiIssueCommentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Date and time when the comment was created.

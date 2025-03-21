@@ -12,9 +12,7 @@ import (
 )
 
 // Get storage for a connectedEnvironment.
-// Azure REST API version: 2022-10-01.
-//
-// Other available API versions: 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview.
+// Azure REST API version: 2024-03-01.
 func LookupConnectedEnvironmentsStorage(ctx *pulumi.Context, args *LookupConnectedEnvironmentsStorageArgs, opts ...pulumi.InvokeOption) (*LookupConnectedEnvironmentsStorageResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupConnectedEnvironmentsStorageResult
@@ -36,6 +34,8 @@ type LookupConnectedEnvironmentsStorageArgs struct {
 
 // Storage resource for connectedEnvironment.
 type LookupConnectedEnvironmentsStorageResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The name of the resource
@@ -83,6 +83,11 @@ func (o LookupConnectedEnvironmentsStorageResultOutput) ToLookupConnectedEnviron
 
 func (o LookupConnectedEnvironmentsStorageResultOutput) ToLookupConnectedEnvironmentsStorageResultOutputWithContext(ctx context.Context) LookupConnectedEnvironmentsStorageResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupConnectedEnvironmentsStorageResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectedEnvironmentsStorageResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

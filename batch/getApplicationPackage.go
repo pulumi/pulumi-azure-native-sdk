@@ -12,9 +12,7 @@ import (
 )
 
 // Gets information about the specified application package.
-// Azure REST API version: 2023-05-01.
-//
-// Other available API versions: 2023-11-01, 2024-02-01, 2024-07-01.
+// Azure REST API version: 2024-07-01.
 func LookupApplicationPackage(ctx *pulumi.Context, args *LookupApplicationPackageArgs, opts ...pulumi.InvokeOption) (*LookupApplicationPackageResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupApplicationPackageResult
@@ -38,6 +36,8 @@ type LookupApplicationPackageArgs struct {
 
 // An application package which represents a particular version of an application.
 type LookupApplicationPackageResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The ETag of the resource, used for concurrency statements.
 	Etag string `pulumi:"etag"`
 	// The format of the application package, if the package is active.
@@ -54,6 +54,8 @@ type LookupApplicationPackageResult struct {
 	StorageUrl string `pulumi:"storageUrl"`
 	// The UTC time at which the Azure Storage URL will expire.
 	StorageUrlExpiry string `pulumi:"storageUrlExpiry"`
+	// The tags of the resource.
+	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource.
 	Type string `pulumi:"type"`
 }
@@ -97,6 +99,11 @@ func (o LookupApplicationPackageResultOutput) ToLookupApplicationPackageResultOu
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupApplicationPackageResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApplicationPackageResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The ETag of the resource, used for concurrency statements.
 func (o LookupApplicationPackageResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationPackageResult) string { return v.Etag }).(pulumi.StringOutput)
@@ -135,6 +142,11 @@ func (o LookupApplicationPackageResultOutput) StorageUrl() pulumi.StringOutput {
 // The UTC time at which the Azure Storage URL will expire.
 func (o LookupApplicationPackageResultOutput) StorageUrlExpiry() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationPackageResult) string { return v.StorageUrlExpiry }).(pulumi.StringOutput)
+}
+
+// The tags of the resource.
+func (o LookupApplicationPackageResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupApplicationPackageResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The type of the resource.

@@ -13,12 +13,16 @@ import (
 )
 
 // Get the update summaries for the cluster
-// Azure REST API version: 2023-03-01.
-//
-// Other available API versions: 2022-12-15-preview, 2023-06-01, 2023-08-01, 2023-08-01-preview, 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-04-01, 2024-09-01-preview, 2024-12-01-preview.
+// Azure REST API version: 2024-04-01. Prior API version in Azure Native 2.x: 2023-03-01.
 type UpdateSummary struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// Current OEM Version.
+	CurrentOemVersion pulumi.StringPtrOutput `pulumi:"currentOemVersion"`
+	// Current Sbe version of the stamp.
+	CurrentSbeVersion pulumi.StringPtrOutput `pulumi:"currentSbeVersion"`
 	// Current Solution Bundle version of the stamp.
 	CurrentVersion pulumi.StringPtrOutput `pulumi:"currentVersion"`
 	// Name of the hardware model.
@@ -135,6 +139,10 @@ func (UpdateSummaryState) ElementType() reflect.Type {
 type updateSummaryArgs struct {
 	// The name of the cluster.
 	ClusterName string `pulumi:"clusterName"`
+	// Current OEM Version.
+	CurrentOemVersion *string `pulumi:"currentOemVersion"`
+	// Current Sbe version of the stamp.
+	CurrentSbeVersion *string `pulumi:"currentSbeVersion"`
 	// Current Solution Bundle version of the stamp.
 	CurrentVersion *string `pulumi:"currentVersion"`
 	// Name of the hardware model.
@@ -159,6 +167,10 @@ type updateSummaryArgs struct {
 type UpdateSummaryArgs struct {
 	// The name of the cluster.
 	ClusterName pulumi.StringInput
+	// Current OEM Version.
+	CurrentOemVersion pulumi.StringPtrInput
+	// Current Sbe version of the stamp.
+	CurrentSbeVersion pulumi.StringPtrInput
 	// Current Solution Bundle version of the stamp.
 	CurrentVersion pulumi.StringPtrInput
 	// Name of the hardware model.
@@ -214,6 +226,21 @@ func (o UpdateSummaryOutput) ToUpdateSummaryOutput() UpdateSummaryOutput {
 
 func (o UpdateSummaryOutput) ToUpdateSummaryOutputWithContext(ctx context.Context) UpdateSummaryOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o UpdateSummaryOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *UpdateSummary) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Current OEM Version.
+func (o UpdateSummaryOutput) CurrentOemVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UpdateSummary) pulumi.StringPtrOutput { return v.CurrentOemVersion }).(pulumi.StringPtrOutput)
+}
+
+// Current Sbe version of the stamp.
+func (o UpdateSummaryOutput) CurrentSbeVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UpdateSummary) pulumi.StringPtrOutput { return v.CurrentSbeVersion }).(pulumi.StringPtrOutput)
 }
 
 // Current Solution Bundle version of the stamp.

@@ -12,7 +12,7 @@ import (
 )
 
 // List springbootservers resource.
-// Azure REST API version: 2023-01-01-preview.
+// Azure REST API version: 2024-04-01-preview.
 func LookupSpringbootserver(ctx *pulumi.Context, args *LookupSpringbootserverArgs, opts ...pulumi.InvokeOption) (*LookupSpringbootserverResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSpringbootserverResult
@@ -34,6 +34,8 @@ type LookupSpringbootserverArgs struct {
 
 // The springbootservers envelope resource definition.
 type LookupSpringbootserverResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The name of the resource
@@ -42,8 +44,6 @@ type LookupSpringbootserverResult struct {
 	Properties SpringbootserversPropertiesResponse `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	// Resource tags
-	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -85,6 +85,11 @@ func (o LookupSpringbootserverResultOutput) ToLookupSpringbootserverResultOutput
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupSpringbootserverResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSpringbootserverResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupSpringbootserverResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSpringbootserverResult) string { return v.Id }).(pulumi.StringOutput)
@@ -103,11 +108,6 @@ func (o LookupSpringbootserverResultOutput) Properties() SpringbootserversProper
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupSpringbootserverResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupSpringbootserverResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
-}
-
-// Resource tags
-func (o LookupSpringbootserverResultOutput) Tags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupSpringbootserverResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

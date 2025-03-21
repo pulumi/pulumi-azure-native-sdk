@@ -12,9 +12,7 @@ import (
 )
 
 // Retrieves Alias(Disaster Recovery configuration) for primary or secondary namespace
-// Azure REST API version: 2022-01-01-preview.
-//
-// Other available API versions: 2022-10-01-preview, 2023-01-01-preview, 2024-01-01.
+// Azure REST API version: 2024-01-01.
 func LookupDisasterRecoveryConfig(ctx *pulumi.Context, args *LookupDisasterRecoveryConfigArgs, opts ...pulumi.InvokeOption) (*LookupDisasterRecoveryConfigResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDisasterRecoveryConfigResult
@@ -30,7 +28,7 @@ type LookupDisasterRecoveryConfigArgs struct {
 	Alias string `pulumi:"alias"`
 	// The namespace name
 	NamespaceName string `pulumi:"namespaceName"`
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -38,6 +36,8 @@ type LookupDisasterRecoveryConfigArgs struct {
 type LookupDisasterRecoveryConfigResult struct {
 	// Primary/Secondary eventhub namespace name, which is part of GEO DR pairing
 	AlternateName *string `pulumi:"alternateName"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -72,7 +72,7 @@ type LookupDisasterRecoveryConfigOutputArgs struct {
 	Alias pulumi.StringInput `pulumi:"alias"`
 	// The namespace name
 	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -98,6 +98,11 @@ func (o LookupDisasterRecoveryConfigResultOutput) ToLookupDisasterRecoveryConfig
 // Primary/Secondary eventhub namespace name, which is part of GEO DR pairing
 func (o LookupDisasterRecoveryConfigResultOutput) AlternateName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDisasterRecoveryConfigResult) *string { return v.AlternateName }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupDisasterRecoveryConfigResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDisasterRecoveryConfigResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

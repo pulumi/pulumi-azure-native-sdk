@@ -12,9 +12,7 @@ import (
 )
 
 // Get a DeidService
-// Azure REST API version: 2024-02-28-preview.
-//
-// Other available API versions: 2024-09-20.
+// Azure REST API version: 2024-09-20.
 func LookupDeidService(ctx *pulumi.Context, args *LookupDeidServiceArgs, opts ...pulumi.InvokeOption) (*LookupDeidServiceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDeidServiceResult
@@ -34,6 +32,8 @@ type LookupDeidServiceArgs struct {
 
 // A HealthDataAIServicesProviderHub resource
 type LookupDeidServiceResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The managed service identities assigned to this resource.
@@ -85,6 +85,11 @@ func (o LookupDeidServiceResultOutput) ToLookupDeidServiceResultOutput() LookupD
 
 func (o LookupDeidServiceResultOutput) ToLookupDeidServiceResultOutputWithContext(ctx context.Context) LookupDeidServiceResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupDeidServiceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDeidServiceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

@@ -13,14 +13,14 @@ import (
 )
 
 // An device group resource belonging to a product resource.
-// Azure REST API version: 2022-09-01-preview. Prior API version in Azure Native 1.x: 2022-09-01-preview.
-//
-// Other available API versions: 2024-04-01.
+// Azure REST API version: 2024-04-01. Prior API version in Azure Native 2.x: 2022-09-01-preview.
 type DeviceGroup struct {
 	pulumi.CustomResourceState
 
 	// Flag to define if the user allows for crash dump collection.
 	AllowCrashDumpsCollection pulumi.StringPtrOutput `pulumi:"allowCrashDumpsCollection"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Description of the device group.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Deployment status for the device group.
@@ -181,6 +181,11 @@ func (o DeviceGroupOutput) ToDeviceGroupOutputWithContext(ctx context.Context) D
 // Flag to define if the user allows for crash dump collection.
 func (o DeviceGroupOutput) AllowCrashDumpsCollection() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DeviceGroup) pulumi.StringPtrOutput { return v.AllowCrashDumpsCollection }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o DeviceGroupOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DeviceGroup) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Description of the device group.

@@ -13,10 +13,12 @@ import (
 )
 
 // Advanced Ingress routing for path/header based routing for a Container App Environment
-// Azure REST API version: 2024-10-02-preview.
+// Azure REST API version: 2024-10-02-preview. Prior API version in Azure Native 2.x: 2024-10-02-preview.
 type HttpRouteConfig struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Http Route Config properties
@@ -136,6 +138,11 @@ func (o HttpRouteConfigOutput) ToHttpRouteConfigOutput() HttpRouteConfigOutput {
 
 func (o HttpRouteConfigOutput) ToHttpRouteConfigOutputWithContext(ctx context.Context) HttpRouteConfigOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o HttpRouteConfigOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *HttpRouteConfig) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

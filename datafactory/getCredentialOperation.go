@@ -34,6 +34,8 @@ type LookupCredentialOperationArgs struct {
 
 // Credential resource type.
 type LookupCredentialOperationResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Etag identifies change in the resource.
 	Etag string `pulumi:"etag"`
 	// The resource identifier.
@@ -81,6 +83,11 @@ func (o LookupCredentialOperationResultOutput) ToLookupCredentialOperationResult
 
 func (o LookupCredentialOperationResultOutput) ToLookupCredentialOperationResultOutputWithContext(ctx context.Context) LookupCredentialOperationResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupCredentialOperationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCredentialOperationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Etag identifies change in the resource.

@@ -12,9 +12,7 @@ import (
 )
 
 // Gets the specified virtual network peering.
-// Azure REST API version: 2023-02-01.
-//
-// Other available API versions: 2019-06-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Azure REST API version: 2024-05-01.
 func LookupVirtualNetworkPeering(ctx *pulumi.Context, args *LookupVirtualNetworkPeeringArgs, opts ...pulumi.InvokeOption) (*LookupVirtualNetworkPeeringResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVirtualNetworkPeeringResult
@@ -42,14 +40,26 @@ type LookupVirtualNetworkPeeringResult struct {
 	AllowGatewayTransit *bool `pulumi:"allowGatewayTransit"`
 	// Whether the VMs in the local virtual network space would be able to access the VMs in remote virtual network space.
 	AllowVirtualNetworkAccess *bool `pulumi:"allowVirtualNetworkAccess"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// If we need to verify the provisioning state of the remote gateway.
 	DoNotVerifyRemoteGateways *bool `pulumi:"doNotVerifyRemoteGateways"`
+	// Whether only Ipv6 address space is peered for subnet peering.
+	EnableOnlyIPv6Peering *bool `pulumi:"enableOnlyIPv6Peering"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag string `pulumi:"etag"`
 	// Resource ID.
 	Id *string `pulumi:"id"`
+	// The local address space of the local virtual network that is peered.
+	LocalAddressSpace *AddressSpaceResponse `pulumi:"localAddressSpace"`
+	// List of local subnet names that are subnet peered with remote virtual network.
+	LocalSubnetNames []string `pulumi:"localSubnetNames"`
+	// The current local address space of the local virtual network that is peered.
+	LocalVirtualNetworkAddressSpace *AddressSpaceResponse `pulumi:"localVirtualNetworkAddressSpace"`
 	// The name of the resource that is unique within a resource group. This name can be used to access the resource.
 	Name *string `pulumi:"name"`
+	// Whether complete virtual network address space is peered.
+	PeerCompleteVnets *bool `pulumi:"peerCompleteVnets"`
 	// The status of the virtual network peering.
 	PeeringState *string `pulumi:"peeringState"`
 	// The peering sync status of the virtual network peering.
@@ -60,6 +70,8 @@ type LookupVirtualNetworkPeeringResult struct {
 	RemoteAddressSpace *AddressSpaceResponse `pulumi:"remoteAddressSpace"`
 	// The reference to the remote virtual network's Bgp Communities.
 	RemoteBgpCommunities *VirtualNetworkBgpCommunitiesResponse `pulumi:"remoteBgpCommunities"`
+	// List of remote subnet names from remote virtual network that are subnet peered.
+	RemoteSubnetNames []string `pulumi:"remoteSubnetNames"`
 	// The reference to the remote virtual network. The remote virtual network can be in the same or different region (preview). See here to register for the preview and learn more (https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-create-peering).
 	RemoteVirtualNetwork *SubResourceResponse `pulumi:"remoteVirtualNetwork"`
 	// The reference to the current address space of the remote virtual network.
@@ -126,9 +138,19 @@ func (o LookupVirtualNetworkPeeringResultOutput) AllowVirtualNetworkAccess() pul
 	return o.ApplyT(func(v LookupVirtualNetworkPeeringResult) *bool { return v.AllowVirtualNetworkAccess }).(pulumi.BoolPtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupVirtualNetworkPeeringResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVirtualNetworkPeeringResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // If we need to verify the provisioning state of the remote gateway.
 func (o LookupVirtualNetworkPeeringResultOutput) DoNotVerifyRemoteGateways() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupVirtualNetworkPeeringResult) *bool { return v.DoNotVerifyRemoteGateways }).(pulumi.BoolPtrOutput)
+}
+
+// Whether only Ipv6 address space is peered for subnet peering.
+func (o LookupVirtualNetworkPeeringResultOutput) EnableOnlyIPv6Peering() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupVirtualNetworkPeeringResult) *bool { return v.EnableOnlyIPv6Peering }).(pulumi.BoolPtrOutput)
 }
 
 // A unique read-only string that changes whenever the resource is updated.
@@ -141,9 +163,31 @@ func (o LookupVirtualNetworkPeeringResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVirtualNetworkPeeringResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// The local address space of the local virtual network that is peered.
+func (o LookupVirtualNetworkPeeringResultOutput) LocalAddressSpace() AddressSpaceResponsePtrOutput {
+	return o.ApplyT(func(v LookupVirtualNetworkPeeringResult) *AddressSpaceResponse { return v.LocalAddressSpace }).(AddressSpaceResponsePtrOutput)
+}
+
+// List of local subnet names that are subnet peered with remote virtual network.
+func (o LookupVirtualNetworkPeeringResultOutput) LocalSubnetNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupVirtualNetworkPeeringResult) []string { return v.LocalSubnetNames }).(pulumi.StringArrayOutput)
+}
+
+// The current local address space of the local virtual network that is peered.
+func (o LookupVirtualNetworkPeeringResultOutput) LocalVirtualNetworkAddressSpace() AddressSpaceResponsePtrOutput {
+	return o.ApplyT(func(v LookupVirtualNetworkPeeringResult) *AddressSpaceResponse {
+		return v.LocalVirtualNetworkAddressSpace
+	}).(AddressSpaceResponsePtrOutput)
+}
+
 // The name of the resource that is unique within a resource group. This name can be used to access the resource.
 func (o LookupVirtualNetworkPeeringResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVirtualNetworkPeeringResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Whether complete virtual network address space is peered.
+func (o LookupVirtualNetworkPeeringResultOutput) PeerCompleteVnets() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupVirtualNetworkPeeringResult) *bool { return v.PeerCompleteVnets }).(pulumi.BoolPtrOutput)
 }
 
 // The status of the virtual network peering.
@@ -171,6 +215,11 @@ func (o LookupVirtualNetworkPeeringResultOutput) RemoteBgpCommunities() VirtualN
 	return o.ApplyT(func(v LookupVirtualNetworkPeeringResult) *VirtualNetworkBgpCommunitiesResponse {
 		return v.RemoteBgpCommunities
 	}).(VirtualNetworkBgpCommunitiesResponsePtrOutput)
+}
+
+// List of remote subnet names from remote virtual network that are subnet peered.
+func (o LookupVirtualNetworkPeeringResultOutput) RemoteSubnetNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupVirtualNetworkPeeringResult) []string { return v.RemoteSubnetNames }).(pulumi.StringArrayOutput)
 }
 
 // The reference to the remote virtual network. The remote virtual network can be in the same or different region (preview). See here to register for the preview and learn more (https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-create-peering).

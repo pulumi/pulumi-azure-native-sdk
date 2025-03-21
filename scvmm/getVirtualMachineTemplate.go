@@ -12,9 +12,7 @@ import (
 )
 
 // Implements VirtualMachineTemplate GET method.
-// Azure REST API version: 2022-05-21-preview.
-//
-// Other available API versions: 2023-04-01-preview, 2023-10-07, 2024-06-01.
+// Azure REST API version: 2023-04-01-preview.
 func LookupVirtualMachineTemplate(ctx *pulumi.Context, args *LookupVirtualMachineTemplateArgs, opts ...pulumi.InvokeOption) (*LookupVirtualMachineTemplateResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVirtualMachineTemplateResult
@@ -34,6 +32,8 @@ type LookupVirtualMachineTemplateArgs struct {
 
 // The VirtualMachineTemplates resource definition.
 type LookupVirtualMachineTemplateResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets or sets computer name.
 	ComputerName string `pulumi:"computerName"`
 	// Gets or sets the desired number of vCPUs for the vm.
@@ -119,6 +119,11 @@ func (o LookupVirtualMachineTemplateResultOutput) ToLookupVirtualMachineTemplate
 
 func (o LookupVirtualMachineTemplateResultOutput) ToLookupVirtualMachineTemplateResultOutputWithContext(ctx context.Context) LookupVirtualMachineTemplateResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupVirtualMachineTemplateResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVirtualMachineTemplateResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets computer name.

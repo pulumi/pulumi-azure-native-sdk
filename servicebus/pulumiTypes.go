@@ -1122,7 +1122,7 @@ func (o CorrelationFilterResponsePtrOutput) To() pulumi.StringPtrOutput {
 // Properties to configure Encryption
 type Encryption struct {
 	// Enumerates the possible value of keySource for Encryption
-	KeySource *string `pulumi:"keySource"`
+	KeySource *KeySource `pulumi:"keySource"`
 	// Properties of KeyVault
 	KeyVaultProperties []KeyVaultProperties `pulumi:"keyVaultProperties"`
 	// Enable Infrastructure Encryption (Double Encryption)
@@ -1136,7 +1136,7 @@ func (val *Encryption) Defaults() *Encryption {
 	}
 	tmp := *val
 	if tmp.KeySource == nil {
-		keySource_ := "Microsoft.KeyVault"
+		keySource_ := KeySource("Microsoft.KeyVault")
 		tmp.KeySource = &keySource_
 	}
 	return &tmp
@@ -1156,7 +1156,7 @@ type EncryptionInput interface {
 // Properties to configure Encryption
 type EncryptionArgs struct {
 	// Enumerates the possible value of keySource for Encryption
-	KeySource pulumi.StringPtrInput `pulumi:"keySource"`
+	KeySource KeySourcePtrInput `pulumi:"keySource"`
 	// Properties of KeyVault
 	KeyVaultProperties KeyVaultPropertiesArrayInput `pulumi:"keyVaultProperties"`
 	// Enable Infrastructure Encryption (Double Encryption)
@@ -1170,7 +1170,7 @@ func (val *EncryptionArgs) Defaults() *EncryptionArgs {
 	}
 	tmp := *val
 	if tmp.KeySource == nil {
-		tmp.KeySource = pulumi.StringPtr("Microsoft.KeyVault")
+		tmp.KeySource = KeySource("Microsoft.KeyVault")
 	}
 	return &tmp
 }
@@ -1253,8 +1253,8 @@ func (o EncryptionOutput) ToEncryptionPtrOutputWithContext(ctx context.Context) 
 }
 
 // Enumerates the possible value of keySource for Encryption
-func (o EncryptionOutput) KeySource() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Encryption) *string { return v.KeySource }).(pulumi.StringPtrOutput)
+func (o EncryptionOutput) KeySource() KeySourcePtrOutput {
+	return o.ApplyT(func(v Encryption) *KeySource { return v.KeySource }).(KeySourcePtrOutput)
 }
 
 // Properties of KeyVault
@@ -1292,13 +1292,13 @@ func (o EncryptionPtrOutput) Elem() EncryptionOutput {
 }
 
 // Enumerates the possible value of keySource for Encryption
-func (o EncryptionPtrOutput) KeySource() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Encryption) *string {
+func (o EncryptionPtrOutput) KeySource() KeySourcePtrOutput {
+	return o.ApplyT(func(v *Encryption) *KeySource {
 		if v == nil {
 			return nil
 		}
 		return v.KeySource
-	}).(pulumi.StringPtrOutput)
+	}).(KeySourcePtrOutput)
 }
 
 // Properties of KeyVault
@@ -1431,7 +1431,7 @@ func (o EncryptionResponsePtrOutput) RequireInfrastructureEncryption() pulumi.Bo
 // Properties to configure User Assigned Identities for Bring your Own Keys
 type Identity struct {
 	// Type of managed service identity.
-	Type *string `pulumi:"type"`
+	Type *ManagedServiceIdentityType `pulumi:"type"`
 	// Properties for User Assigned Identities
 	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
 }
@@ -1450,7 +1450,7 @@ type IdentityInput interface {
 // Properties to configure User Assigned Identities for Bring your Own Keys
 type IdentityArgs struct {
 	// Type of managed service identity.
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	Type ManagedServiceIdentityTypePtrInput `pulumi:"type"`
 	// Properties for User Assigned Identities
 	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
 }
@@ -1534,8 +1534,8 @@ func (o IdentityOutput) ToIdentityPtrOutputWithContext(ctx context.Context) Iden
 }
 
 // Type of managed service identity.
-func (o IdentityOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Identity) *string { return v.Type }).(pulumi.StringPtrOutput)
+func (o IdentityOutput) Type() ManagedServiceIdentityTypePtrOutput {
+	return o.ApplyT(func(v Identity) *ManagedServiceIdentityType { return v.Type }).(ManagedServiceIdentityTypePtrOutput)
 }
 
 // Properties for User Assigned Identities
@@ -1568,13 +1568,13 @@ func (o IdentityPtrOutput) Elem() IdentityOutput {
 }
 
 // Type of managed service identity.
-func (o IdentityPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Identity) *string {
+func (o IdentityPtrOutput) Type() ManagedServiceIdentityTypePtrOutput {
+	return o.ApplyT(func(v *Identity) *ManagedServiceIdentityType {
 		if v == nil {
 			return nil
 		}
 		return v.Type
-	}).(pulumi.StringPtrOutput)
+	}).(ManagedServiceIdentityTypePtrOutput)
 }
 
 // Properties for User Assigned Identities
@@ -2991,12 +2991,12 @@ func (o SBClientAffinePropertiesResponsePtrOutput) IsShared() pulumi.BoolPtrOutp
 
 // SKU of the namespace.
 type SBSku struct {
-	// The specified messaging units for the tier. For Premium tier, capacity are 1,2 and 4.
+	// Messaging units for your service bus premium namespace. Valid capacities are {1, 2, 4, 8, 16} multiples of your properties.premiumMessagingPartitions setting. For example, If properties.premiumMessagingPartitions is 1 then possible capacity values are 1, 2, 4, 8, and 16. If properties.premiumMessagingPartitions is 4 then possible capacity values are 4, 8, 16, 32 and 64
 	Capacity *int `pulumi:"capacity"`
 	// Name of this SKU.
-	Name string `pulumi:"name"`
+	Name SkuName `pulumi:"name"`
 	// The billing tier of this particular SKU.
-	Tier *string `pulumi:"tier"`
+	Tier *SkuTier `pulumi:"tier"`
 }
 
 // SBSkuInput is an input type that accepts SBSkuArgs and SBSkuOutput values.
@@ -3012,12 +3012,12 @@ type SBSkuInput interface {
 
 // SKU of the namespace.
 type SBSkuArgs struct {
-	// The specified messaging units for the tier. For Premium tier, capacity are 1,2 and 4.
+	// Messaging units for your service bus premium namespace. Valid capacities are {1, 2, 4, 8, 16} multiples of your properties.premiumMessagingPartitions setting. For example, If properties.premiumMessagingPartitions is 1 then possible capacity values are 1, 2, 4, 8, and 16. If properties.premiumMessagingPartitions is 4 then possible capacity values are 4, 8, 16, 32 and 64
 	Capacity pulumi.IntPtrInput `pulumi:"capacity"`
 	// Name of this SKU.
-	Name pulumi.StringInput `pulumi:"name"`
+	Name SkuNameInput `pulumi:"name"`
 	// The billing tier of this particular SKU.
-	Tier pulumi.StringPtrInput `pulumi:"tier"`
+	Tier SkuTierPtrInput `pulumi:"tier"`
 }
 
 func (SBSkuArgs) ElementType() reflect.Type {
@@ -3098,19 +3098,19 @@ func (o SBSkuOutput) ToSBSkuPtrOutputWithContext(ctx context.Context) SBSkuPtrOu
 	}).(SBSkuPtrOutput)
 }
 
-// The specified messaging units for the tier. For Premium tier, capacity are 1,2 and 4.
+// Messaging units for your service bus premium namespace. Valid capacities are {1, 2, 4, 8, 16} multiples of your properties.premiumMessagingPartitions setting. For example, If properties.premiumMessagingPartitions is 1 then possible capacity values are 1, 2, 4, 8, and 16. If properties.premiumMessagingPartitions is 4 then possible capacity values are 4, 8, 16, 32 and 64
 func (o SBSkuOutput) Capacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SBSku) *int { return v.Capacity }).(pulumi.IntPtrOutput)
 }
 
 // Name of this SKU.
-func (o SBSkuOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v SBSku) string { return v.Name }).(pulumi.StringOutput)
+func (o SBSkuOutput) Name() SkuNameOutput {
+	return o.ApplyT(func(v SBSku) SkuName { return v.Name }).(SkuNameOutput)
 }
 
 // The billing tier of this particular SKU.
-func (o SBSkuOutput) Tier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SBSku) *string { return v.Tier }).(pulumi.StringPtrOutput)
+func (o SBSkuOutput) Tier() SkuTierPtrOutput {
+	return o.ApplyT(func(v SBSku) *SkuTier { return v.Tier }).(SkuTierPtrOutput)
 }
 
 type SBSkuPtrOutput struct{ *pulumi.OutputState }
@@ -3137,7 +3137,7 @@ func (o SBSkuPtrOutput) Elem() SBSkuOutput {
 	}).(SBSkuOutput)
 }
 
-// The specified messaging units for the tier. For Premium tier, capacity are 1,2 and 4.
+// Messaging units for your service bus premium namespace. Valid capacities are {1, 2, 4, 8, 16} multiples of your properties.premiumMessagingPartitions setting. For example, If properties.premiumMessagingPartitions is 1 then possible capacity values are 1, 2, 4, 8, and 16. If properties.premiumMessagingPartitions is 4 then possible capacity values are 4, 8, 16, 32 and 64
 func (o SBSkuPtrOutput) Capacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SBSku) *int {
 		if v == nil {
@@ -3148,28 +3148,28 @@ func (o SBSkuPtrOutput) Capacity() pulumi.IntPtrOutput {
 }
 
 // Name of this SKU.
-func (o SBSkuPtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SBSku) *string {
+func (o SBSkuPtrOutput) Name() SkuNamePtrOutput {
+	return o.ApplyT(func(v *SBSku) *SkuName {
 		if v == nil {
 			return nil
 		}
 		return &v.Name
-	}).(pulumi.StringPtrOutput)
+	}).(SkuNamePtrOutput)
 }
 
 // The billing tier of this particular SKU.
-func (o SBSkuPtrOutput) Tier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SBSku) *string {
+func (o SBSkuPtrOutput) Tier() SkuTierPtrOutput {
+	return o.ApplyT(func(v *SBSku) *SkuTier {
 		if v == nil {
 			return nil
 		}
 		return v.Tier
-	}).(pulumi.StringPtrOutput)
+	}).(SkuTierPtrOutput)
 }
 
 // SKU of the namespace.
 type SBSkuResponse struct {
-	// The specified messaging units for the tier. For Premium tier, capacity are 1,2 and 4.
+	// Messaging units for your service bus premium namespace. Valid capacities are {1, 2, 4, 8, 16} multiples of your properties.premiumMessagingPartitions setting. For example, If properties.premiumMessagingPartitions is 1 then possible capacity values are 1, 2, 4, 8, and 16. If properties.premiumMessagingPartitions is 4 then possible capacity values are 4, 8, 16, 32 and 64
 	Capacity *int `pulumi:"capacity"`
 	// Name of this SKU.
 	Name string `pulumi:"name"`
@@ -3192,7 +3192,7 @@ func (o SBSkuResponseOutput) ToSBSkuResponseOutputWithContext(ctx context.Contex
 	return o
 }
 
-// The specified messaging units for the tier. For Premium tier, capacity are 1,2 and 4.
+// Messaging units for your service bus premium namespace. Valid capacities are {1, 2, 4, 8, 16} multiples of your properties.premiumMessagingPartitions setting. For example, If properties.premiumMessagingPartitions is 1 then possible capacity values are 1, 2, 4, 8, and 16. If properties.premiumMessagingPartitions is 4 then possible capacity values are 4, 8, 16, 32 and 64
 func (o SBSkuResponseOutput) Capacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SBSkuResponse) *int { return v.Capacity }).(pulumi.IntPtrOutput)
 }
@@ -3231,7 +3231,7 @@ func (o SBSkuResponsePtrOutput) Elem() SBSkuResponseOutput {
 	}).(SBSkuResponseOutput)
 }
 
-// The specified messaging units for the tier. For Premium tier, capacity are 1,2 and 4.
+// Messaging units for your service bus premium namespace. Valid capacities are {1, 2, 4, 8, 16} multiples of your properties.premiumMessagingPartitions setting. For example, If properties.premiumMessagingPartitions is 1 then possible capacity values are 1, 2, 4, 8, and 16. If properties.premiumMessagingPartitions is 4 then possible capacity values are 4, 8, 16, 32 and 64
 func (o SBSkuResponsePtrOutput) Capacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SBSkuResponse) *int {
 		if v == nil {

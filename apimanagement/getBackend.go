@@ -12,9 +12,7 @@ import (
 )
 
 // Gets the details of the backend specified by its identifier.
-// Azure REST API version: 2022-08-01.
-//
-// Other available API versions: 2016-10-10, 2018-01-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
+// Azure REST API version: 2022-09-01-preview.
 func LookupBackend(ctx *pulumi.Context, args *LookupBackendArgs, opts ...pulumi.InvokeOption) (*LookupBackendResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBackendResult
@@ -36,6 +34,10 @@ type LookupBackendArgs struct {
 
 // Backend details.
 type LookupBackendResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// Backend Circuit Breaker Configuration
+	CircuitBreaker *BackendCircuitBreakerResponse `pulumi:"circuitBreaker"`
 	// Backend Credentials Contract Properties
 	Credentials *BackendCredentialsContractResponse `pulumi:"credentials"`
 	// Backend Description.
@@ -107,6 +109,16 @@ func (o LookupBackendResultOutput) ToLookupBackendResultOutput() LookupBackendRe
 
 func (o LookupBackendResultOutput) ToLookupBackendResultOutputWithContext(ctx context.Context) LookupBackendResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupBackendResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackendResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Backend Circuit Breaker Configuration
+func (o LookupBackendResultOutput) CircuitBreaker() BackendCircuitBreakerResponsePtrOutput {
+	return o.ApplyT(func(v LookupBackendResult) *BackendCircuitBreakerResponse { return v.CircuitBreaker }).(BackendCircuitBreakerResponsePtrOutput)
 }
 
 // Backend Credentials Contract Properties

@@ -13,24 +13,28 @@ import (
 )
 
 // Template resource definition.
-// Azure REST API version: 2023-06-01-preview.
-//
-// Other available API versions: 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-11-01, 2023-12-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-09-01, 2024-10-01-preview, 2025-01-01-preview.
+// Azure REST API version: 2024-09-01. Prior API version in Azure Native 2.x: 2023-06-01-preview.
 type ContentTemplate struct {
 	pulumi.CustomResourceState
 
 	// The creator of the content item.
 	Author MetadataAuthorResponsePtrOutput `pulumi:"author"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Categories for the item
 	Categories MetadataCategoriesResponsePtrOutput `pulumi:"categories"`
 	// Static ID for the content.  Used to identify dependencies and content from solutions or community.  Hard-coded/static for out of the box content and solutions. Dynamic for user-created.  This is the resource name
 	ContentId pulumi.StringOutput `pulumi:"contentId"`
 	// The kind of content the template is for.
 	ContentKind pulumi.StringOutput `pulumi:"contentKind"`
+	// Unique ID for the content. It should be generated based on the contentId of the package, contentId of the template, contentKind of the template and the contentVersion of the template
+	ContentProductId pulumi.StringOutput `pulumi:"contentProductId"`
 	// Schema version of the content. Can be used to distinguish between different flow based on the schema version
 	ContentSchemaVersion pulumi.StringPtrOutput `pulumi:"contentSchemaVersion"`
 	// The custom version of the content. A optional free text
 	CustomVersion pulumi.StringPtrOutput `pulumi:"customVersion"`
+	// Dependant templates. Expandable.
+	DependantTemplates TemplatePropertiesResponseArrayOutput `pulumi:"dependantTemplates"`
 	// Dependencies for the content item, what other content items it requires to work.  Can describe more complex dependencies using a recursive/nested structure. For a single dependency an id/kind/version can be supplied or operator/criteria for complex formats.
 	Dependencies MetadataDependenciesResponsePtrOutput `pulumi:"dependencies"`
 	// The display name of the template
@@ -41,9 +45,11 @@ type ContentTemplate struct {
 	FirstPublishDate pulumi.StringPtrOutput `pulumi:"firstPublishDate"`
 	// the icon identifier. this id can later be fetched from the content metadata
 	Icon pulumi.StringPtrOutput `pulumi:"icon"`
+	// Flag indicates if this template is deprecated
+	IsDeprecated pulumi.StringOutput `pulumi:"isDeprecated"`
 	// last publish date for the content item
 	LastPublishDate pulumi.StringPtrOutput `pulumi:"lastPublishDate"`
-	// The JSON of the ARM template to deploy active content
+	// The JSON of the ARM template to deploy active content. Expandable.
 	MainTemplate pulumi.AnyOutput `pulumi:"mainTemplate"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -53,6 +59,8 @@ type ContentTemplate struct {
 	PackageKind pulumi.StringPtrOutput `pulumi:"packageKind"`
 	// the name of the package contains this template
 	PackageName pulumi.StringPtrOutput `pulumi:"packageName"`
+	// Version of the package.  Default and recommended format is numeric (e.g. 1, 1.0, 1.0.0, 1.0.0.0), following ARM metadata best practices.  Can also be any string, but then we cannot guarantee any version checks
+	PackageVersion pulumi.StringOutput `pulumi:"packageVersion"`
 	// preview image file names. These will be taken from the solution artifacts
 	PreviewImages pulumi.StringArrayOutput `pulumi:"previewImages"`
 	// preview image file names. These will be taken from the solution artifacts. used for dark theme support
@@ -88,11 +96,17 @@ func NewContentTemplate(ctx *pulumi.Context,
 	if args.ContentKind == nil {
 		return nil, errors.New("invalid value for required argument 'ContentKind'")
 	}
+	if args.ContentProductId == nil {
+		return nil, errors.New("invalid value for required argument 'ContentProductId'")
+	}
 	if args.DisplayName == nil {
 		return nil, errors.New("invalid value for required argument 'DisplayName'")
 	}
 	if args.PackageId == nil {
 		return nil, errors.New("invalid value for required argument 'PackageId'")
+	}
+	if args.PackageVersion == nil {
+		return nil, errors.New("invalid value for required argument 'PackageVersion'")
 	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
@@ -152,6 +166,9 @@ func NewContentTemplate(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20250101preview:ContentTemplate"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20250301:ContentTemplate"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -195,6 +212,8 @@ type contentTemplateArgs struct {
 	ContentId string `pulumi:"contentId"`
 	// The kind of content the template is for.
 	ContentKind string `pulumi:"contentKind"`
+	// Unique ID for the content. It should be generated based on the contentId of the package, contentId of the template, contentKind of the template and the contentVersion of the template
+	ContentProductId string `pulumi:"contentProductId"`
 	// Schema version of the content. Can be used to distinguish between different flow based on the schema version
 	ContentSchemaVersion *string `pulumi:"contentSchemaVersion"`
 	// The custom version of the content. A optional free text
@@ -209,7 +228,7 @@ type contentTemplateArgs struct {
 	Icon *string `pulumi:"icon"`
 	// last publish date for the content item
 	LastPublishDate *string `pulumi:"lastPublishDate"`
-	// The JSON of the ARM template to deploy active content
+	// The JSON of the ARM template to deploy active content. Expandable.
 	MainTemplate interface{} `pulumi:"mainTemplate"`
 	// the package Id contains this template
 	PackageId string `pulumi:"packageId"`
@@ -217,6 +236,8 @@ type contentTemplateArgs struct {
 	PackageKind *string `pulumi:"packageKind"`
 	// the name of the package contains this template
 	PackageName *string `pulumi:"packageName"`
+	// Version of the package.  Default and recommended format is numeric (e.g. 1, 1.0, 1.0.0, 1.0.0.0), following ARM metadata best practices.  Can also be any string, but then we cannot guarantee any version checks
+	PackageVersion string `pulumi:"packageVersion"`
 	// preview image file names. These will be taken from the solution artifacts
 	PreviewImages []string `pulumi:"previewImages"`
 	// preview image file names. These will be taken from the solution artifacts. used for dark theme support
@@ -251,6 +272,8 @@ type ContentTemplateArgs struct {
 	ContentId pulumi.StringInput
 	// The kind of content the template is for.
 	ContentKind pulumi.StringInput
+	// Unique ID for the content. It should be generated based on the contentId of the package, contentId of the template, contentKind of the template and the contentVersion of the template
+	ContentProductId pulumi.StringInput
 	// Schema version of the content. Can be used to distinguish between different flow based on the schema version
 	ContentSchemaVersion pulumi.StringPtrInput
 	// The custom version of the content. A optional free text
@@ -265,7 +288,7 @@ type ContentTemplateArgs struct {
 	Icon pulumi.StringPtrInput
 	// last publish date for the content item
 	LastPublishDate pulumi.StringPtrInput
-	// The JSON of the ARM template to deploy active content
+	// The JSON of the ARM template to deploy active content. Expandable.
 	MainTemplate pulumi.Input
 	// the package Id contains this template
 	PackageId pulumi.StringInput
@@ -273,6 +296,8 @@ type ContentTemplateArgs struct {
 	PackageKind pulumi.StringPtrInput
 	// the name of the package contains this template
 	PackageName pulumi.StringPtrInput
+	// Version of the package.  Default and recommended format is numeric (e.g. 1, 1.0, 1.0.0, 1.0.0.0), following ARM metadata best practices.  Can also be any string, but then we cannot guarantee any version checks
+	PackageVersion pulumi.StringInput
 	// preview image file names. These will be taken from the solution artifacts
 	PreviewImages pulumi.StringArrayInput
 	// preview image file names. These will be taken from the solution artifacts. used for dark theme support
@@ -339,6 +364,11 @@ func (o ContentTemplateOutput) Author() MetadataAuthorResponsePtrOutput {
 	return o.ApplyT(func(v *ContentTemplate) MetadataAuthorResponsePtrOutput { return v.Author }).(MetadataAuthorResponsePtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o ContentTemplateOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ContentTemplate) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Categories for the item
 func (o ContentTemplateOutput) Categories() MetadataCategoriesResponsePtrOutput {
 	return o.ApplyT(func(v *ContentTemplate) MetadataCategoriesResponsePtrOutput { return v.Categories }).(MetadataCategoriesResponsePtrOutput)
@@ -354,6 +384,11 @@ func (o ContentTemplateOutput) ContentKind() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContentTemplate) pulumi.StringOutput { return v.ContentKind }).(pulumi.StringOutput)
 }
 
+// Unique ID for the content. It should be generated based on the contentId of the package, contentId of the template, contentKind of the template and the contentVersion of the template
+func (o ContentTemplateOutput) ContentProductId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ContentTemplate) pulumi.StringOutput { return v.ContentProductId }).(pulumi.StringOutput)
+}
+
 // Schema version of the content. Can be used to distinguish between different flow based on the schema version
 func (o ContentTemplateOutput) ContentSchemaVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContentTemplate) pulumi.StringPtrOutput { return v.ContentSchemaVersion }).(pulumi.StringPtrOutput)
@@ -362,6 +397,11 @@ func (o ContentTemplateOutput) ContentSchemaVersion() pulumi.StringPtrOutput {
 // The custom version of the content. A optional free text
 func (o ContentTemplateOutput) CustomVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContentTemplate) pulumi.StringPtrOutput { return v.CustomVersion }).(pulumi.StringPtrOutput)
+}
+
+// Dependant templates. Expandable.
+func (o ContentTemplateOutput) DependantTemplates() TemplatePropertiesResponseArrayOutput {
+	return o.ApplyT(func(v *ContentTemplate) TemplatePropertiesResponseArrayOutput { return v.DependantTemplates }).(TemplatePropertiesResponseArrayOutput)
 }
 
 // Dependencies for the content item, what other content items it requires to work.  Can describe more complex dependencies using a recursive/nested structure. For a single dependency an id/kind/version can be supplied or operator/criteria for complex formats.
@@ -389,12 +429,17 @@ func (o ContentTemplateOutput) Icon() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContentTemplate) pulumi.StringPtrOutput { return v.Icon }).(pulumi.StringPtrOutput)
 }
 
+// Flag indicates if this template is deprecated
+func (o ContentTemplateOutput) IsDeprecated() pulumi.StringOutput {
+	return o.ApplyT(func(v *ContentTemplate) pulumi.StringOutput { return v.IsDeprecated }).(pulumi.StringOutput)
+}
+
 // last publish date for the content item
 func (o ContentTemplateOutput) LastPublishDate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContentTemplate) pulumi.StringPtrOutput { return v.LastPublishDate }).(pulumi.StringPtrOutput)
 }
 
-// The JSON of the ARM template to deploy active content
+// The JSON of the ARM template to deploy active content. Expandable.
 func (o ContentTemplateOutput) MainTemplate() pulumi.AnyOutput {
 	return o.ApplyT(func(v *ContentTemplate) pulumi.AnyOutput { return v.MainTemplate }).(pulumi.AnyOutput)
 }
@@ -417,6 +462,11 @@ func (o ContentTemplateOutput) PackageKind() pulumi.StringPtrOutput {
 // the name of the package contains this template
 func (o ContentTemplateOutput) PackageName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContentTemplate) pulumi.StringPtrOutput { return v.PackageName }).(pulumi.StringPtrOutput)
+}
+
+// Version of the package.  Default and recommended format is numeric (e.g. 1, 1.0, 1.0.0, 1.0.0.0), following ARM metadata best practices.  Can also be any string, but then we cannot guarantee any version checks
+func (o ContentTemplateOutput) PackageVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ContentTemplate) pulumi.StringOutput { return v.PackageVersion }).(pulumi.StringOutput)
 }
 
 // preview image file names. These will be taken from the solution artifacts

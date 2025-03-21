@@ -32,6 +32,8 @@ type LookupPrivateLinkServicesForO365ManagementActivityAPIArgs struct {
 
 // The description of the service.
 type LookupPrivateLinkServicesForO365ManagementActivityAPIResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// An etag associated with the resource, used for optimistic concurrency when editing it.
 	Etag *string `pulumi:"etag"`
 	// The resource identifier.
@@ -87,6 +89,11 @@ func (o LookupPrivateLinkServicesForO365ManagementActivityAPIResultOutput) ToLoo
 
 func (o LookupPrivateLinkServicesForO365ManagementActivityAPIResultOutput) ToLookupPrivateLinkServicesForO365ManagementActivityAPIResultOutputWithContext(ctx context.Context) LookupPrivateLinkServicesForO365ManagementActivityAPIResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupPrivateLinkServicesForO365ManagementActivityAPIResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPrivateLinkServicesForO365ManagementActivityAPIResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // An etag associated with the resource, used for optimistic concurrency when editing it.

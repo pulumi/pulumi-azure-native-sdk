@@ -13,12 +13,14 @@ import (
 )
 
 // The volume.
-// Azure REST API version: 2017-06-01. Prior API version in Azure Native 1.x: 2017-06-01.
+// Azure REST API version: 2017-06-01. Prior API version in Azure Native 2.x: 2017-06-01.
 type Volume struct {
 	pulumi.CustomResourceState
 
 	// The IDs of the access control records, associated with the volume.
 	AccessControlRecordIds pulumi.StringArrayOutput `pulumi:"accessControlRecordIds"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The IDs of the backup policies, in which this volume is part of.
 	BackupPolicyIds pulumi.StringArrayOutput `pulumi:"backupPolicyIds"`
 	// The backup status of the volume.
@@ -206,6 +208,11 @@ func (o VolumeOutput) ToVolumeOutputWithContext(ctx context.Context) VolumeOutpu
 // The IDs of the access control records, associated with the volume.
 func (o VolumeOutput) AccessControlRecordIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringArrayOutput { return v.AccessControlRecordIds }).(pulumi.StringArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o VolumeOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The IDs of the backup policies, in which this volume is part of.

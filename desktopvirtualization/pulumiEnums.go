@@ -858,6 +858,176 @@ func (in *hostPoolTypePtr) ToHostPoolTypePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(HostPoolTypePtrOutput)
 }
 
+// Enabled allows this resource to be accessed from both public and private networks, Disabled allows this resource to only be accessed via private endpoints
+type HostpoolPublicNetworkAccess string
+
+const (
+	HostpoolPublicNetworkAccessEnabled                    = HostpoolPublicNetworkAccess("Enabled")
+	HostpoolPublicNetworkAccessDisabled                   = HostpoolPublicNetworkAccess("Disabled")
+	HostpoolPublicNetworkAccessEnabledForSessionHostsOnly = HostpoolPublicNetworkAccess("EnabledForSessionHostsOnly")
+	HostpoolPublicNetworkAccessEnabledForClientsOnly      = HostpoolPublicNetworkAccess("EnabledForClientsOnly")
+)
+
+func (HostpoolPublicNetworkAccess) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostpoolPublicNetworkAccess)(nil)).Elem()
+}
+
+func (e HostpoolPublicNetworkAccess) ToHostpoolPublicNetworkAccessOutput() HostpoolPublicNetworkAccessOutput {
+	return pulumi.ToOutput(e).(HostpoolPublicNetworkAccessOutput)
+}
+
+func (e HostpoolPublicNetworkAccess) ToHostpoolPublicNetworkAccessOutputWithContext(ctx context.Context) HostpoolPublicNetworkAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(HostpoolPublicNetworkAccessOutput)
+}
+
+func (e HostpoolPublicNetworkAccess) ToHostpoolPublicNetworkAccessPtrOutput() HostpoolPublicNetworkAccessPtrOutput {
+	return e.ToHostpoolPublicNetworkAccessPtrOutputWithContext(context.Background())
+}
+
+func (e HostpoolPublicNetworkAccess) ToHostpoolPublicNetworkAccessPtrOutputWithContext(ctx context.Context) HostpoolPublicNetworkAccessPtrOutput {
+	return HostpoolPublicNetworkAccess(e).ToHostpoolPublicNetworkAccessOutputWithContext(ctx).ToHostpoolPublicNetworkAccessPtrOutputWithContext(ctx)
+}
+
+func (e HostpoolPublicNetworkAccess) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e HostpoolPublicNetworkAccess) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e HostpoolPublicNetworkAccess) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e HostpoolPublicNetworkAccess) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type HostpoolPublicNetworkAccessOutput struct{ *pulumi.OutputState }
+
+func (HostpoolPublicNetworkAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostpoolPublicNetworkAccess)(nil)).Elem()
+}
+
+func (o HostpoolPublicNetworkAccessOutput) ToHostpoolPublicNetworkAccessOutput() HostpoolPublicNetworkAccessOutput {
+	return o
+}
+
+func (o HostpoolPublicNetworkAccessOutput) ToHostpoolPublicNetworkAccessOutputWithContext(ctx context.Context) HostpoolPublicNetworkAccessOutput {
+	return o
+}
+
+func (o HostpoolPublicNetworkAccessOutput) ToHostpoolPublicNetworkAccessPtrOutput() HostpoolPublicNetworkAccessPtrOutput {
+	return o.ToHostpoolPublicNetworkAccessPtrOutputWithContext(context.Background())
+}
+
+func (o HostpoolPublicNetworkAccessOutput) ToHostpoolPublicNetworkAccessPtrOutputWithContext(ctx context.Context) HostpoolPublicNetworkAccessPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HostpoolPublicNetworkAccess) *HostpoolPublicNetworkAccess {
+		return &v
+	}).(HostpoolPublicNetworkAccessPtrOutput)
+}
+
+func (o HostpoolPublicNetworkAccessOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o HostpoolPublicNetworkAccessOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e HostpoolPublicNetworkAccess) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o HostpoolPublicNetworkAccessOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o HostpoolPublicNetworkAccessOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e HostpoolPublicNetworkAccess) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type HostpoolPublicNetworkAccessPtrOutput struct{ *pulumi.OutputState }
+
+func (HostpoolPublicNetworkAccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HostpoolPublicNetworkAccess)(nil)).Elem()
+}
+
+func (o HostpoolPublicNetworkAccessPtrOutput) ToHostpoolPublicNetworkAccessPtrOutput() HostpoolPublicNetworkAccessPtrOutput {
+	return o
+}
+
+func (o HostpoolPublicNetworkAccessPtrOutput) ToHostpoolPublicNetworkAccessPtrOutputWithContext(ctx context.Context) HostpoolPublicNetworkAccessPtrOutput {
+	return o
+}
+
+func (o HostpoolPublicNetworkAccessPtrOutput) Elem() HostpoolPublicNetworkAccessOutput {
+	return o.ApplyT(func(v *HostpoolPublicNetworkAccess) HostpoolPublicNetworkAccess {
+		if v != nil {
+			return *v
+		}
+		var ret HostpoolPublicNetworkAccess
+		return ret
+	}).(HostpoolPublicNetworkAccessOutput)
+}
+
+func (o HostpoolPublicNetworkAccessPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o HostpoolPublicNetworkAccessPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *HostpoolPublicNetworkAccess) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// HostpoolPublicNetworkAccessInput is an input type that accepts values of the HostpoolPublicNetworkAccess enum
+// A concrete instance of `HostpoolPublicNetworkAccessInput` can be one of the following:
+//
+//	HostpoolPublicNetworkAccessEnabled
+//	HostpoolPublicNetworkAccessDisabled
+//	HostpoolPublicNetworkAccessEnabledForSessionHostsOnly
+//	HostpoolPublicNetworkAccessEnabledForClientsOnly
+type HostpoolPublicNetworkAccessInput interface {
+	pulumi.Input
+
+	ToHostpoolPublicNetworkAccessOutput() HostpoolPublicNetworkAccessOutput
+	ToHostpoolPublicNetworkAccessOutputWithContext(context.Context) HostpoolPublicNetworkAccessOutput
+}
+
+var hostpoolPublicNetworkAccessPtrType = reflect.TypeOf((**HostpoolPublicNetworkAccess)(nil)).Elem()
+
+type HostpoolPublicNetworkAccessPtrInput interface {
+	pulumi.Input
+
+	ToHostpoolPublicNetworkAccessPtrOutput() HostpoolPublicNetworkAccessPtrOutput
+	ToHostpoolPublicNetworkAccessPtrOutputWithContext(context.Context) HostpoolPublicNetworkAccessPtrOutput
+}
+
+type hostpoolPublicNetworkAccessPtr string
+
+func HostpoolPublicNetworkAccessPtr(v string) HostpoolPublicNetworkAccessPtrInput {
+	return (*hostpoolPublicNetworkAccessPtr)(&v)
+}
+
+func (*hostpoolPublicNetworkAccessPtr) ElementType() reflect.Type {
+	return hostpoolPublicNetworkAccessPtrType
+}
+
+func (in *hostpoolPublicNetworkAccessPtr) ToHostpoolPublicNetworkAccessPtrOutput() HostpoolPublicNetworkAccessPtrOutput {
+	return pulumi.ToOutput(in).(HostpoolPublicNetworkAccessPtrOutput)
+}
+
+func (in *hostpoolPublicNetworkAccessPtr) ToHostpoolPublicNetworkAccessPtrOutputWithContext(ctx context.Context) HostpoolPublicNetworkAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(HostpoolPublicNetworkAccessPtrOutput)
+}
+
 // The type of the load balancer.
 type LoadBalancerType string
 
@@ -1692,6 +1862,172 @@ func (in *privateEndpointServiceConnectionStatusPtr) ToPrivateEndpointServiceCon
 
 func (in *privateEndpointServiceConnectionStatusPtr) ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(ctx context.Context) PrivateEndpointServiceConnectionStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PrivateEndpointServiceConnectionStatusPtrOutput)
+}
+
+// Enabled allows this resource to be accessed from both public and private networks, Disabled allows this resource to only be accessed via private endpoints
+type PublicNetworkAccess string
+
+const (
+	PublicNetworkAccessEnabled  = PublicNetworkAccess("Enabled")
+	PublicNetworkAccessDisabled = PublicNetworkAccess("Disabled")
+)
+
+func (PublicNetworkAccess) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicNetworkAccess)(nil)).Elem()
+}
+
+func (e PublicNetworkAccess) ToPublicNetworkAccessOutput() PublicNetworkAccessOutput {
+	return pulumi.ToOutput(e).(PublicNetworkAccessOutput)
+}
+
+func (e PublicNetworkAccess) ToPublicNetworkAccessOutputWithContext(ctx context.Context) PublicNetworkAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(PublicNetworkAccessOutput)
+}
+
+func (e PublicNetworkAccess) ToPublicNetworkAccessPtrOutput() PublicNetworkAccessPtrOutput {
+	return e.ToPublicNetworkAccessPtrOutputWithContext(context.Background())
+}
+
+func (e PublicNetworkAccess) ToPublicNetworkAccessPtrOutputWithContext(ctx context.Context) PublicNetworkAccessPtrOutput {
+	return PublicNetworkAccess(e).ToPublicNetworkAccessOutputWithContext(ctx).ToPublicNetworkAccessPtrOutputWithContext(ctx)
+}
+
+func (e PublicNetworkAccess) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PublicNetworkAccess) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PublicNetworkAccess) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e PublicNetworkAccess) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type PublicNetworkAccessOutput struct{ *pulumi.OutputState }
+
+func (PublicNetworkAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicNetworkAccess)(nil)).Elem()
+}
+
+func (o PublicNetworkAccessOutput) ToPublicNetworkAccessOutput() PublicNetworkAccessOutput {
+	return o
+}
+
+func (o PublicNetworkAccessOutput) ToPublicNetworkAccessOutputWithContext(ctx context.Context) PublicNetworkAccessOutput {
+	return o
+}
+
+func (o PublicNetworkAccessOutput) ToPublicNetworkAccessPtrOutput() PublicNetworkAccessPtrOutput {
+	return o.ToPublicNetworkAccessPtrOutputWithContext(context.Background())
+}
+
+func (o PublicNetworkAccessOutput) ToPublicNetworkAccessPtrOutputWithContext(ctx context.Context) PublicNetworkAccessPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PublicNetworkAccess) *PublicNetworkAccess {
+		return &v
+	}).(PublicNetworkAccessPtrOutput)
+}
+
+func (o PublicNetworkAccessOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o PublicNetworkAccessOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PublicNetworkAccess) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o PublicNetworkAccessOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PublicNetworkAccessOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PublicNetworkAccess) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type PublicNetworkAccessPtrOutput struct{ *pulumi.OutputState }
+
+func (PublicNetworkAccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PublicNetworkAccess)(nil)).Elem()
+}
+
+func (o PublicNetworkAccessPtrOutput) ToPublicNetworkAccessPtrOutput() PublicNetworkAccessPtrOutput {
+	return o
+}
+
+func (o PublicNetworkAccessPtrOutput) ToPublicNetworkAccessPtrOutputWithContext(ctx context.Context) PublicNetworkAccessPtrOutput {
+	return o
+}
+
+func (o PublicNetworkAccessPtrOutput) Elem() PublicNetworkAccessOutput {
+	return o.ApplyT(func(v *PublicNetworkAccess) PublicNetworkAccess {
+		if v != nil {
+			return *v
+		}
+		var ret PublicNetworkAccess
+		return ret
+	}).(PublicNetworkAccessOutput)
+}
+
+func (o PublicNetworkAccessPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PublicNetworkAccessPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *PublicNetworkAccess) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// PublicNetworkAccessInput is an input type that accepts values of the PublicNetworkAccess enum
+// A concrete instance of `PublicNetworkAccessInput` can be one of the following:
+//
+//	PublicNetworkAccessEnabled
+//	PublicNetworkAccessDisabled
+type PublicNetworkAccessInput interface {
+	pulumi.Input
+
+	ToPublicNetworkAccessOutput() PublicNetworkAccessOutput
+	ToPublicNetworkAccessOutputWithContext(context.Context) PublicNetworkAccessOutput
+}
+
+var publicNetworkAccessPtrType = reflect.TypeOf((**PublicNetworkAccess)(nil)).Elem()
+
+type PublicNetworkAccessPtrInput interface {
+	pulumi.Input
+
+	ToPublicNetworkAccessPtrOutput() PublicNetworkAccessPtrOutput
+	ToPublicNetworkAccessPtrOutputWithContext(context.Context) PublicNetworkAccessPtrOutput
+}
+
+type publicNetworkAccessPtr string
+
+func PublicNetworkAccessPtr(v string) PublicNetworkAccessPtrInput {
+	return (*publicNetworkAccessPtr)(&v)
+}
+
+func (*publicNetworkAccessPtr) ElementType() reflect.Type {
+	return publicNetworkAccessPtrType
+}
+
+func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutput() PublicNetworkAccessPtrOutput {
+	return pulumi.ToOutput(in).(PublicNetworkAccessPtrOutput)
+}
+
+func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutputWithContext(ctx context.Context) PublicNetworkAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessPtrOutput)
 }
 
 // The type of resetting the token.
@@ -3711,6 +4047,8 @@ func init() {
 	pulumi.RegisterOutputType(FailHealthCheckOnStagingFailurePtrOutput{})
 	pulumi.RegisterOutputType(HostPoolTypeOutput{})
 	pulumi.RegisterOutputType(HostPoolTypePtrOutput{})
+	pulumi.RegisterOutputType(HostpoolPublicNetworkAccessOutput{})
+	pulumi.RegisterOutputType(HostpoolPublicNetworkAccessPtrOutput{})
 	pulumi.RegisterOutputType(LoadBalancerTypeOutput{})
 	pulumi.RegisterOutputType(LoadBalancerTypePtrOutput{})
 	pulumi.RegisterOutputType(PackageTimestampedOutput{})
@@ -3721,6 +4059,8 @@ func init() {
 	pulumi.RegisterOutputType(PreferredAppGroupTypePtrOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointServiceConnectionStatusOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointServiceConnectionStatusPtrOutput{})
+	pulumi.RegisterOutputType(PublicNetworkAccessOutput{})
+	pulumi.RegisterOutputType(PublicNetworkAccessPtrOutput{})
 	pulumi.RegisterOutputType(RegistrationTokenOperationOutput{})
 	pulumi.RegisterOutputType(RegistrationTokenOperationPtrOutput{})
 	pulumi.RegisterOutputType(RemoteApplicationTypeOutput{})

@@ -13,9 +13,7 @@ import (
 )
 
 // An Azure SQL managed instance.
-// Azure REST API version: 2021-11-01. Prior API version in Azure Native 1.x: 2020-11-01-preview.
-//
-// Other available API versions: 2021-02-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
+// Azure REST API version: 2021-11-01. Prior API version in Azure Native 2.x: 2021-11-01.
 type ManagedInstance struct {
 	pulumi.CustomResourceState
 
@@ -23,6 +21,8 @@ type ManagedInstance struct {
 	AdministratorLogin pulumi.StringPtrOutput `pulumi:"administratorLogin"`
 	// The Azure Active Directory administrator of the server.
 	Administrators ManagedInstanceExternalAdministratorResponsePtrOutput `pulumi:"administrators"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Collation of the managed instance.
 	Collation pulumi.StringPtrOutput `pulumi:"collation"`
 	// The storage account type used to store backups for this instance. The options are Local (LocallyRedundantStorage), Zone (ZoneRedundantStorage), Geo (GeoRedundantStorage) and GeoZone(GeoZoneRedundantStorage)
@@ -372,6 +372,11 @@ func (o ManagedInstanceOutput) Administrators() ManagedInstanceExternalAdministr
 	return o.ApplyT(func(v *ManagedInstance) ManagedInstanceExternalAdministratorResponsePtrOutput {
 		return v.Administrators
 	}).(ManagedInstanceExternalAdministratorResponsePtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o ManagedInstanceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ManagedInstance) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Collation of the managed instance.

@@ -13,8 +13,6 @@ import (
 
 // Gets a user rule.
 // Azure REST API version: 2022-04-01-preview.
-//
-// Other available API versions: 2021-05-01-preview.
 func LookupUserRule(ctx *pulumi.Context, args *LookupUserRuleArgs, opts ...pulumi.InvokeOption) (*LookupUserRuleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupUserRuleResult
@@ -40,6 +38,8 @@ type LookupUserRuleArgs struct {
 
 // Network security user rule.
 type LookupUserRuleResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// A description for this rule.
 	Description *string `pulumi:"description"`
 	// The destination port ranges.
@@ -110,6 +110,11 @@ func (o LookupUserRuleResultOutput) ToLookupUserRuleResultOutput() LookupUserRul
 
 func (o LookupUserRuleResultOutput) ToLookupUserRuleResultOutputWithContext(ctx context.Context) LookupUserRuleResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupUserRuleResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserRuleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A description for this rule.

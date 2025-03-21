@@ -12,9 +12,7 @@ import (
 )
 
 // Gets the details of the recovery plan.
-// Azure REST API version: 2023-04-01.
-//
-// Other available API versions: 2023-06-01, 2023-08-01, 2024-01-01, 2024-02-01, 2024-04-01, 2024-10-01.
+// Azure REST API version: 2024-10-01.
 func LookupReplicationRecoveryPlan(ctx *pulumi.Context, args *LookupReplicationRecoveryPlanArgs, opts ...pulumi.InvokeOption) (*LookupReplicationRecoveryPlanResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupReplicationRecoveryPlanResult
@@ -36,6 +34,8 @@ type LookupReplicationRecoveryPlanArgs struct {
 
 // Recovery plan details.
 type LookupReplicationRecoveryPlanResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource Id
 	Id string `pulumi:"id"`
 	// Resource Location
@@ -83,6 +83,11 @@ func (o LookupReplicationRecoveryPlanResultOutput) ToLookupReplicationRecoveryPl
 
 func (o LookupReplicationRecoveryPlanResultOutput) ToLookupReplicationRecoveryPlanResultOutputWithContext(ctx context.Context) LookupReplicationRecoveryPlanResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupReplicationRecoveryPlanResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupReplicationRecoveryPlanResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource Id

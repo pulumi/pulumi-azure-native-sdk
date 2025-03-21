@@ -13,8 +13,6 @@ import (
 
 // Get installed extension details by extension id.
 // Azure REST API version: 2023-06-01-preview.
-//
-// Other available API versions: 2021-09-01-preview.
 func LookupExtension(ctx *pulumi.Context, args *LookupExtensionArgs, opts ...pulumi.InvokeOption) (*LookupExtensionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupExtensionResult
@@ -38,6 +36,8 @@ type LookupExtensionArgs struct {
 type LookupExtensionResult struct {
 	// Additional Api Properties.
 	AdditionalApiProperties map[string]ApiPropertiesResponse `pulumi:"additionalApiProperties"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The ETag value to implement optimistic concurrency.
 	ETag string `pulumi:"eTag"`
 	// Extension api docs link.
@@ -100,6 +100,11 @@ func (o LookupExtensionResultOutput) ToLookupExtensionResultOutputWithContext(ct
 // Additional Api Properties.
 func (o LookupExtensionResultOutput) AdditionalApiProperties() ApiPropertiesResponseMapOutput {
 	return o.ApplyT(func(v LookupExtensionResult) map[string]ApiPropertiesResponse { return v.AdditionalApiProperties }).(ApiPropertiesResponseMapOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupExtensionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupExtensionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The ETag value to implement optimistic concurrency.

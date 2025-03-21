@@ -11,10 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// NSX DNS Service
-// Azure REST API version: 2022-05-01.
-//
-// Other available API versions: 2023-03-01, 2023-09-01.
+// Get a WorkloadNetworkDnsService
+// Azure REST API version: 2023-09-01.
 func LookupWorkloadNetworkDnsService(ctx *pulumi.Context, args *LookupWorkloadNetworkDnsServiceArgs, opts ...pulumi.InvokeOption) (*LookupWorkloadNetworkDnsServiceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkloadNetworkDnsServiceResult
@@ -26,7 +24,7 @@ func LookupWorkloadNetworkDnsService(ctx *pulumi.Context, args *LookupWorkloadNe
 }
 
 type LookupWorkloadNetworkDnsServiceArgs struct {
-	// NSX DNS Service identifier. Generally the same as the DNS Service's display name
+	// ID of the DNS service.
 	DnsServiceId string `pulumi:"dnsServiceId"`
 	// Name of the private cloud
 	PrivateCloudName string `pulumi:"privateCloudName"`
@@ -36,6 +34,8 @@ type LookupWorkloadNetworkDnsServiceArgs struct {
 
 // NSX DNS Service
 type LookupWorkloadNetworkDnsServiceResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Default DNS zone of the DNS Service.
 	DefaultDnsZone *string `pulumi:"defaultDnsZone"`
 	// Display name of the DNS Service.
@@ -44,11 +44,11 @@ type LookupWorkloadNetworkDnsServiceResult struct {
 	DnsServiceIp *string `pulumi:"dnsServiceIp"`
 	// FQDN zones of the DNS Service.
 	FqdnZones []string `pulumi:"fqdnZones"`
-	// Resource ID.
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// DNS Service log level.
 	LogLevel *string `pulumi:"logLevel"`
-	// Resource name.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// The provisioning state
 	ProvisioningState string `pulumi:"provisioningState"`
@@ -56,7 +56,9 @@ type LookupWorkloadNetworkDnsServiceResult struct {
 	Revision *float64 `pulumi:"revision"`
 	// DNS Service status.
 	Status string `pulumi:"status"`
-	// Resource type.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -70,7 +72,7 @@ func LookupWorkloadNetworkDnsServiceOutput(ctx *pulumi.Context, args LookupWorkl
 }
 
 type LookupWorkloadNetworkDnsServiceOutputArgs struct {
-	// NSX DNS Service identifier. Generally the same as the DNS Service's display name
+	// ID of the DNS service.
 	DnsServiceId pulumi.StringInput `pulumi:"dnsServiceId"`
 	// Name of the private cloud
 	PrivateCloudName pulumi.StringInput `pulumi:"privateCloudName"`
@@ -97,6 +99,11 @@ func (o LookupWorkloadNetworkDnsServiceResultOutput) ToLookupWorkloadNetworkDnsS
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupWorkloadNetworkDnsServiceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkloadNetworkDnsServiceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Default DNS zone of the DNS Service.
 func (o LookupWorkloadNetworkDnsServiceResultOutput) DefaultDnsZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkloadNetworkDnsServiceResult) *string { return v.DefaultDnsZone }).(pulumi.StringPtrOutput)
@@ -117,7 +124,7 @@ func (o LookupWorkloadNetworkDnsServiceResultOutput) FqdnZones() pulumi.StringAr
 	return o.ApplyT(func(v LookupWorkloadNetworkDnsServiceResult) []string { return v.FqdnZones }).(pulumi.StringArrayOutput)
 }
 
-// Resource ID.
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupWorkloadNetworkDnsServiceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkloadNetworkDnsServiceResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -127,7 +134,7 @@ func (o LookupWorkloadNetworkDnsServiceResultOutput) LogLevel() pulumi.StringPtr
 	return o.ApplyT(func(v LookupWorkloadNetworkDnsServiceResult) *string { return v.LogLevel }).(pulumi.StringPtrOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o LookupWorkloadNetworkDnsServiceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkloadNetworkDnsServiceResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -147,7 +154,12 @@ func (o LookupWorkloadNetworkDnsServiceResultOutput) Status() pulumi.StringOutpu
 	return o.ApplyT(func(v LookupWorkloadNetworkDnsServiceResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// Resource type.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupWorkloadNetworkDnsServiceResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupWorkloadNetworkDnsServiceResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupWorkloadNetworkDnsServiceResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkloadNetworkDnsServiceResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -12,9 +12,7 @@ import (
 )
 
 // Gets information about the specified networkFunctionDefinition group.
-// Azure REST API version: 2023-09-01.
-//
-// Other available API versions: 2024-04-15.
+// Azure REST API version: 2024-04-15.
 func LookupNetworkFunctionDefinitionGroup(ctx *pulumi.Context, args *LookupNetworkFunctionDefinitionGroupArgs, opts ...pulumi.InvokeOption) (*LookupNetworkFunctionDefinitionGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNetworkFunctionDefinitionGroupResult
@@ -36,6 +34,8 @@ type LookupNetworkFunctionDefinitionGroupArgs struct {
 
 // Network function definition group resource.
 type LookupNetworkFunctionDefinitionGroupResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -87,6 +87,11 @@ func (o LookupNetworkFunctionDefinitionGroupResultOutput) ToLookupNetworkFunctio
 
 func (o LookupNetworkFunctionDefinitionGroupResultOutput) ToLookupNetworkFunctionDefinitionGroupResultOutputWithContext(ctx context.Context) LookupNetworkFunctionDefinitionGroupResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupNetworkFunctionDefinitionGroupResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkFunctionDefinitionGroupResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

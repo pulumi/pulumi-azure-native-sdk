@@ -13,12 +13,12 @@ import (
 )
 
 // Instance broker resource
-// Azure REST API version: 2024-07-01-preview.
-//
-// Other available API versions: 2024-08-15-preview, 2024-09-15-preview, 2024-11-01.
+// Azure REST API version: 2024-11-01. Prior API version in Azure Native 2.x: 2024-07-01-preview.
 type BrokerListener struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Edge location of the resource.
 	ExtendedLocation ExtendedLocationResponseOutput `pulumi:"extendedLocation"`
 	// The name of the resource
@@ -65,6 +65,9 @@ func NewBrokerListener(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:iotoperations/v20241101:BrokerListener"),
+		},
+		{
+			Type: pulumi.String("azure-native:iotoperations/v20250401:BrokerListener"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -166,6 +169,11 @@ func (o BrokerListenerOutput) ToBrokerListenerOutput() BrokerListenerOutput {
 
 func (o BrokerListenerOutput) ToBrokerListenerOutputWithContext(ctx context.Context) BrokerListenerOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o BrokerListenerOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *BrokerListener) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Edge location of the resource.

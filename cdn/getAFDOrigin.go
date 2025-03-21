@@ -12,9 +12,7 @@ import (
 )
 
 // Gets an existing origin within an origin group.
-// Azure REST API version: 2023-05-01.
-//
-// Other available API versions: 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01.
+// Azure REST API version: 2024-09-01.
 func LookupAFDOrigin(ctx *pulumi.Context, args *LookupAFDOriginArgs, opts ...pulumi.InvokeOption) (*LookupAFDOriginResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAFDOriginResult
@@ -38,6 +36,8 @@ type LookupAFDOriginArgs struct {
 
 // Azure Front Door origin is the source of the content being delivered via Azure Front Door. When the edge nodes represented by an endpoint do not have the requested content cached, they attempt to fetch it from one or more of the configured origins.
 type LookupAFDOriginResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource reference to the Azure origin resource.
 	AzureOrigin      *ResourceReferenceResponse `pulumi:"azureOrigin"`
 	DeploymentStatus string                     `pulumi:"deploymentStatus"`
@@ -130,6 +130,11 @@ func (o LookupAFDOriginResultOutput) ToLookupAFDOriginResultOutput() LookupAFDOr
 
 func (o LookupAFDOriginResultOutput) ToLookupAFDOriginResultOutputWithContext(ctx context.Context) LookupAFDOriginResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupAFDOriginResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAFDOriginResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource reference to the Azure origin resource.

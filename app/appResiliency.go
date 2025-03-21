@@ -13,12 +13,12 @@ import (
 )
 
 // Configuration to setup App Resiliency
-// Azure REST API version: 2023-08-01-preview.
-//
-// Other available API versions: 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview.
+// Azure REST API version: 2024-10-02-preview. Prior API version in Azure Native 2.x: 2023-08-01-preview.
 type AppResiliency struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Policy that defines circuit breaker conditions
 	CircuitBreakerPolicy CircuitBreakerPolicyResponsePtrOutput `pulumi:"circuitBreakerPolicy"`
 	// Defines parameters for http connection pooling
@@ -180,6 +180,11 @@ func (o AppResiliencyOutput) ToAppResiliencyOutput() AppResiliencyOutput {
 
 func (o AppResiliencyOutput) ToAppResiliencyOutputWithContext(ctx context.Context) AppResiliencyOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o AppResiliencyOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *AppResiliency) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Policy that defines circuit breaker conditions

@@ -13,14 +13,14 @@ import (
 )
 
 // An Assessment project site resource.
-// Azure REST API version: 2023-03-15.
-//
-// Other available API versions: 2023-04-01-preview, 2023-05-01-preview, 2023-09-09-preview, 2024-01-01-preview.
+// Azure REST API version: 2024-01-01-preview. Prior API version in Azure Native 2.x: 2023-03-15.
 type AssessmentProjectsOperation struct {
 	pulumi.CustomResourceState
 
 	// Assessment solution ARM id tracked by Microsoft.Migrate/migrateProjects.
 	AssessmentSolutionId pulumi.StringPtrOutput `pulumi:"assessmentSolutionId"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Time when this project was created. Date-Time represented in ISO-8601 format.
 	CreatedTimestamp pulumi.StringOutput `pulumi:"createdTimestamp"`
 	// The ARM id of the storage account used for interactions when public access is
@@ -73,6 +73,9 @@ func NewAssessmentProjectsOperation(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:migrate/v20191001:AssessmentProjectsOperation"),
 		},
 		{
+			Type: pulumi.String("azure-native:migrate/v20191001:Project"),
+		},
+		{
 			Type: pulumi.String("azure-native:migrate/v20230315:AssessmentProjectsOperation"),
 		},
 		{
@@ -86,6 +89,9 @@ func NewAssessmentProjectsOperation(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:migrate/v20240101preview:AssessmentProjectsOperation"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate:Project"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -220,6 +226,11 @@ func (o AssessmentProjectsOperationOutput) ToAssessmentProjectsOperationOutputWi
 // Assessment solution ARM id tracked by Microsoft.Migrate/migrateProjects.
 func (o AssessmentProjectsOperationOutput) AssessmentSolutionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AssessmentProjectsOperation) pulumi.StringPtrOutput { return v.AssessmentSolutionId }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o AssessmentProjectsOperationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *AssessmentProjectsOperation) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Time when this project was created. Date-Time represented in ISO-8601 format.

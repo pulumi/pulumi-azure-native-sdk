@@ -13,12 +13,12 @@ import (
 )
 
 // Capture properties of Open AI resource Integration.
-// Azure REST API version: 2024-03-01.
-//
-// Other available API versions: 2024-01-01-preview, 2024-05-01-preview, 2024-06-15-preview, 2024-10-01-preview.
+// Azure REST API version: 2024-03-01. Prior API version in Azure Native 2.x: 2024-03-01.
 type OpenAI struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Name of the integration.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Open AI Integration details.
@@ -55,6 +55,9 @@ func NewOpenAI(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:elastic/v20241001preview:OpenAI"),
+		},
+		{
+			Type: pulumi.String("azure-native:elastic/v20250115preview:OpenAI"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -148,6 +151,11 @@ func (o OpenAIOutput) ToOpenAIOutput() OpenAIOutput {
 
 func (o OpenAIOutput) ToOpenAIOutputWithContext(ctx context.Context) OpenAIOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o OpenAIOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *OpenAI) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Name of the integration.

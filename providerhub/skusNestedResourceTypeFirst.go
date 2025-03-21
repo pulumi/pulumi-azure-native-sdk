@@ -12,10 +12,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Azure REST API version: 2021-09-01-preview. Prior API version in Azure Native 1.x: 2020-11-20.
+// Azure REST API version: 2021-09-01-preview. Prior API version in Azure Native 2.x: 2021-09-01-preview.
 type SkusNestedResourceTypeFirst struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name       pulumi.StringOutput                 `pulumi:"name"`
 	Properties SkuResourceResponsePropertiesOutput `pulumi:"properties"`
@@ -148,6 +150,11 @@ func (o SkusNestedResourceTypeFirstOutput) ToSkusNestedResourceTypeFirstOutput()
 
 func (o SkusNestedResourceTypeFirstOutput) ToSkusNestedResourceTypeFirstOutputWithContext(ctx context.Context) SkusNestedResourceTypeFirstOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o SkusNestedResourceTypeFirstOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SkusNestedResourceTypeFirst) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

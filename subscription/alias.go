@@ -12,12 +12,12 @@ import (
 )
 
 // Subscription Information with the alias.
-// Azure REST API version: 2021-10-01. Prior API version in Azure Native 1.x: 2020-09-01.
-//
-// Other available API versions: 2020-09-01, 2024-08-01-preview.
+// Azure REST API version: 2024-08-01-preview. Prior API version in Azure Native 2.x: 2021-10-01.
 type Alias struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Alias ID.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Subscription Alias response properties.
@@ -132,6 +132,11 @@ func (o AliasOutput) ToAliasOutput() AliasOutput {
 
 func (o AliasOutput) ToAliasOutputWithContext(ctx context.Context) AliasOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o AliasOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Alias) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Alias ID.

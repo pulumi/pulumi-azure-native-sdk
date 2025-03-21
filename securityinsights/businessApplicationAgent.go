@@ -13,13 +13,13 @@ import (
 )
 
 // Describes the configuration of a Business Application Agent.
-// Azure REST API version: 2024-04-01-preview.
-//
-// Other available API versions: 2024-10-01-preview, 2025-01-01-preview.
+// Azure REST API version: 2025-01-01-preview. Prior API version in Azure Native 2.x: 2024-04-01-preview.
 type BusinessApplicationAgent struct {
 	pulumi.CustomResourceState
 
 	AgentSystems AgentSystemResponseArrayOutput `pulumi:"agentSystems"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Describes the configuration of a Business Application Agent.
 	Configuration SapAgentConfigurationResponseOutput `pulumi:"configuration"`
 	DisplayName   pulumi.StringOutput                 `pulumi:"displayName"`
@@ -161,6 +161,11 @@ func (o BusinessApplicationAgentOutput) ToBusinessApplicationAgentOutputWithCont
 
 func (o BusinessApplicationAgentOutput) AgentSystems() AgentSystemResponseArrayOutput {
 	return o.ApplyT(func(v *BusinessApplicationAgent) AgentSystemResponseArrayOutput { return v.AgentSystems }).(AgentSystemResponseArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o BusinessApplicationAgentOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *BusinessApplicationAgent) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Describes the configuration of a Business Application Agent.

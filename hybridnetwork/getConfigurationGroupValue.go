@@ -12,9 +12,7 @@ import (
 )
 
 // Gets information about the specified hybrid configuration group values.
-// Azure REST API version: 2023-09-01.
-//
-// Other available API versions: 2024-04-15.
+// Azure REST API version: 2024-04-15.
 func LookupConfigurationGroupValue(ctx *pulumi.Context, args *LookupConfigurationGroupValueArgs, opts ...pulumi.InvokeOption) (*LookupConfigurationGroupValueResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupConfigurationGroupValueResult
@@ -34,6 +32,8 @@ type LookupConfigurationGroupValueArgs struct {
 
 // Hybrid configuration group value resource.
 type LookupConfigurationGroupValueResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -83,6 +83,11 @@ func (o LookupConfigurationGroupValueResultOutput) ToLookupConfigurationGroupVal
 
 func (o LookupConfigurationGroupValueResultOutput) ToLookupConfigurationGroupValueResultOutputWithContext(ctx context.Context) LookupConfigurationGroupValueResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupConfigurationGroupValueResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConfigurationGroupValueResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

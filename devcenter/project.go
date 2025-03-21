@@ -13,18 +13,24 @@ import (
 )
 
 // Represents a project resource.
-// Azure REST API version: 2023-04-01. Prior API version in Azure Native 1.x: 2022-09-01-preview.
-//
-// Other available API versions: 2023-08-01-preview, 2023-10-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview, 2024-10-01-preview.
+// Azure REST API version: 2024-02-01. Prior API version in Azure Native 2.x: 2023-04-01.
 type Project struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// Settings to be used when associating a project with a catalog.
+	CatalogSettings ProjectCatalogSettingsResponsePtrOutput `pulumi:"catalogSettings"`
 	// Description of the project.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Resource Id of an associated DevCenter
 	DevCenterId pulumi.StringPtrOutput `pulumi:"devCenterId"`
 	// The URI of the Dev Center resource this project is associated with.
 	DevCenterUri pulumi.StringOutput `pulumi:"devCenterUri"`
+	// The display name of the project.
+	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
+	// Managed identity properties
+	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// When specified, limits the maximum number of Dev Boxes a single user can create across all pools in the project. This will have no effect on existing Dev Boxes when reduced.
@@ -94,6 +100,9 @@ func NewProject(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:devcenter/v20241001preview:Project"),
 		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20250201:Project"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -129,10 +138,16 @@ func (ProjectState) ElementType() reflect.Type {
 }
 
 type projectArgs struct {
+	// Settings to be used when associating a project with a catalog.
+	CatalogSettings *ProjectCatalogSettings `pulumi:"catalogSettings"`
 	// Description of the project.
 	Description *string `pulumi:"description"`
 	// Resource Id of an associated DevCenter
 	DevCenterId *string `pulumi:"devCenterId"`
+	// The display name of the project.
+	DisplayName *string `pulumi:"displayName"`
+	// Managed identity properties
+	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// When specified, limits the maximum number of Dev Boxes a single user can create across all pools in the project. This will have no effect on existing Dev Boxes when reduced.
@@ -147,10 +162,16 @@ type projectArgs struct {
 
 // The set of arguments for constructing a Project resource.
 type ProjectArgs struct {
+	// Settings to be used when associating a project with a catalog.
+	CatalogSettings ProjectCatalogSettingsPtrInput
 	// Description of the project.
 	Description pulumi.StringPtrInput
 	// Resource Id of an associated DevCenter
 	DevCenterId pulumi.StringPtrInput
+	// The display name of the project.
+	DisplayName pulumi.StringPtrInput
+	// Managed identity properties
+	Identity ManagedServiceIdentityPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// When specified, limits the maximum number of Dev Boxes a single user can create across all pools in the project. This will have no effect on existing Dev Boxes when reduced.
@@ -200,6 +221,16 @@ func (o ProjectOutput) ToProjectOutputWithContext(ctx context.Context) ProjectOu
 	return o
 }
 
+// The Azure API version of the resource.
+func (o ProjectOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Settings to be used when associating a project with a catalog.
+func (o ProjectOutput) CatalogSettings() ProjectCatalogSettingsResponsePtrOutput {
+	return o.ApplyT(func(v *Project) ProjectCatalogSettingsResponsePtrOutput { return v.CatalogSettings }).(ProjectCatalogSettingsResponsePtrOutput)
+}
+
 // Description of the project.
 func (o ProjectOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -213,6 +244,16 @@ func (o ProjectOutput) DevCenterId() pulumi.StringPtrOutput {
 // The URI of the Dev Center resource this project is associated with.
 func (o ProjectOutput) DevCenterUri() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.DevCenterUri }).(pulumi.StringOutput)
+}
+
+// The display name of the project.
+func (o ProjectOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Managed identity properties
+func (o ProjectOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *Project) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives

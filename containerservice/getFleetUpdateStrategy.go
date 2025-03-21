@@ -12,9 +12,7 @@ import (
 )
 
 // Get a FleetUpdateStrategy
-// Azure REST API version: 2023-08-15-preview.
-//
-// Other available API versions: 2023-10-15, 2024-02-02-preview, 2024-04-01, 2024-05-02-preview.
+// Azure REST API version: 2024-05-02-preview.
 func LookupFleetUpdateStrategy(ctx *pulumi.Context, args *LookupFleetUpdateStrategyArgs, opts ...pulumi.InvokeOption) (*LookupFleetUpdateStrategyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFleetUpdateStrategyResult
@@ -36,6 +34,8 @@ type LookupFleetUpdateStrategyArgs struct {
 
 // Defines a multi-stage process to perform update operations across members of a Fleet.
 type LookupFleetUpdateStrategyResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// If eTag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
 	ETag string `pulumi:"eTag"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -87,6 +87,11 @@ func (o LookupFleetUpdateStrategyResultOutput) ToLookupFleetUpdateStrategyResult
 
 func (o LookupFleetUpdateStrategyResultOutput) ToLookupFleetUpdateStrategyResultOutputWithContext(ctx context.Context) LookupFleetUpdateStrategyResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupFleetUpdateStrategyResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFleetUpdateStrategyResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // If eTag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.

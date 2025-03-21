@@ -12,9 +12,7 @@ import (
 )
 
 // Retrieves an Active Directory connector resource
-// Azure REST API version: 2023-01-15-preview.
-//
-// Other available API versions: 2024-01-01, 2024-05-01-preview.
+// Azure REST API version: 2024-01-01.
 func LookupActiveDirectoryConnector(ctx *pulumi.Context, args *LookupActiveDirectoryConnectorArgs, opts ...pulumi.InvokeOption) (*LookupActiveDirectoryConnectorResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupActiveDirectoryConnectorResult
@@ -36,6 +34,8 @@ type LookupActiveDirectoryConnectorArgs struct {
 
 // Active directory connector resource
 type LookupActiveDirectoryConnectorResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The name of the resource
@@ -93,6 +93,11 @@ func (o LookupActiveDirectoryConnectorResultOutput) ToLookupActiveDirectoryConne
 
 func (o LookupActiveDirectoryConnectorResultOutput) ToLookupActiveDirectoryConnectorResultOutputWithContext(ctx context.Context) LookupActiveDirectoryConnectorResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupActiveDirectoryConnectorResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupActiveDirectoryConnectorResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

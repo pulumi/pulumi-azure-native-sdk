@@ -13,12 +13,12 @@ import (
 )
 
 // Distributed availability group between box and Sql Managed Instance.
-// Azure REST API version: 2021-11-01. Prior API version in Azure Native 1.x: 2021-05-01-preview.
-//
-// Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
+// Azure REST API version: 2021-11-01. Prior API version in Azure Native 2.x: 2021-11-01.
 type DistributedAvailabilityGroup struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The distributed availability group id
 	DistributedAvailabilityGroupId pulumi.StringOutput `pulumi:"distributedAvailabilityGroupId"`
 	// The last hardened lsn
@@ -203,6 +203,11 @@ func (o DistributedAvailabilityGroupOutput) ToDistributedAvailabilityGroupOutput
 
 func (o DistributedAvailabilityGroupOutput) ToDistributedAvailabilityGroupOutputWithContext(ctx context.Context) DistributedAvailabilityGroupOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o DistributedAvailabilityGroupOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DistributedAvailabilityGroup) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The distributed availability group id

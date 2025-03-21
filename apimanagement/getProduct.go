@@ -12,9 +12,7 @@ import (
 )
 
 // Gets the details of the product specified by its identifier.
-// Azure REST API version: 2022-08-01.
-//
-// Other available API versions: 2016-10-10, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
+// Azure REST API version: 2022-09-01-preview.
 func LookupProduct(ctx *pulumi.Context, args *LookupProductArgs, opts ...pulumi.InvokeOption) (*LookupProductResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupProductResult
@@ -38,6 +36,8 @@ type LookupProductArgs struct {
 type LookupProductResult struct {
 	// whether subscription approval is required. If false, new subscriptions will be approved automatically enabling developers to call the product’s APIs immediately after subscribing. If true, administrators must manually approve the subscription before the developer can any of the product’s APIs. Can be present only if subscriptionRequired property is present and has a value of false.
 	ApprovalRequired *bool `pulumi:"approvalRequired"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Product description. May include HTML formatting tags.
 	Description *string `pulumi:"description"`
 	// Product name.
@@ -98,6 +98,11 @@ func (o LookupProductResultOutput) ToLookupProductResultOutputWithContext(ctx co
 // whether subscription approval is required. If false, new subscriptions will be approved automatically enabling developers to call the product’s APIs immediately after subscribing. If true, administrators must manually approve the subscription before the developer can any of the product’s APIs. Can be present only if subscriptionRequired property is present and has a value of false.
 func (o LookupProductResultOutput) ApprovalRequired() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupProductResult) *bool { return v.ApprovalRequired }).(pulumi.BoolPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupProductResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProductResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Product description. May include HTML formatting tags.

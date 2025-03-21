@@ -13,9 +13,7 @@ import (
 )
 
 // IoT Security solution configuration and resource information.
-// Azure REST API version: 2019-08-01. Prior API version in Azure Native 1.x: 2019-08-01.
-//
-// Other available API versions: 2017-08-01-preview.
+// Azure REST API version: 2019-08-01. Prior API version in Azure Native 2.x: 2019-08-01.
 type IotSecuritySolution struct {
 	pulumi.CustomResourceState
 
@@ -23,6 +21,8 @@ type IotSecuritySolution struct {
 	AdditionalWorkspaces AdditionalWorkspacesPropertiesResponseArrayOutput `pulumi:"additionalWorkspaces"`
 	// List of resources that were automatically discovered as relevant to the security solution.
 	AutoDiscoveredResources pulumi.StringArrayOutput `pulumi:"autoDiscoveredResources"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Disabled data sources. Disabling these data sources compromises the system.
 	DisabledDataSources pulumi.StringArrayOutput `pulumi:"disabledDataSources"`
 	// Resource display name.
@@ -226,6 +226,11 @@ func (o IotSecuritySolutionOutput) AdditionalWorkspaces() AdditionalWorkspacesPr
 // List of resources that were automatically discovered as relevant to the security solution.
 func (o IotSecuritySolutionOutput) AutoDiscoveredResources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *IotSecuritySolution) pulumi.StringArrayOutput { return v.AutoDiscoveredResources }).(pulumi.StringArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o IotSecuritySolutionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *IotSecuritySolution) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Disabled data sources. Disabling these data sources compromises the system.

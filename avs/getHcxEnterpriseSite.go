@@ -11,10 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An HCX Enterprise Site resource
-// Azure REST API version: 2022-05-01.
-//
-// Other available API versions: 2023-03-01, 2023-09-01.
+// Get a HcxEnterpriseSite
+// Azure REST API version: 2023-09-01.
 func LookupHcxEnterpriseSite(ctx *pulumi.Context, args *LookupHcxEnterpriseSiteArgs, opts ...pulumi.InvokeOption) (*LookupHcxEnterpriseSiteResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupHcxEnterpriseSiteResult
@@ -26,7 +24,7 @@ func LookupHcxEnterpriseSite(ctx *pulumi.Context, args *LookupHcxEnterpriseSiteA
 }
 
 type LookupHcxEnterpriseSiteArgs struct {
-	// Name of the HCX Enterprise Site in the private cloud
+	// Name of the HCX Enterprise Site
 	HcxEnterpriseSiteName string `pulumi:"hcxEnterpriseSiteName"`
 	// Name of the private cloud
 	PrivateCloudName string `pulumi:"privateCloudName"`
@@ -38,13 +36,19 @@ type LookupHcxEnterpriseSiteArgs struct {
 type LookupHcxEnterpriseSiteResult struct {
 	// The activation key
 	ActivationKey string `pulumi:"activationKey"`
-	// Resource ID.
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
-	// Resource name.
+	// The name of the resource
 	Name string `pulumi:"name"`
+	// The provisioning state of the resource.
+	ProvisioningState string `pulumi:"provisioningState"`
 	// The status of the HCX Enterprise Site
 	Status string `pulumi:"status"`
-	// Resource type.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -58,7 +62,7 @@ func LookupHcxEnterpriseSiteOutput(ctx *pulumi.Context, args LookupHcxEnterprise
 }
 
 type LookupHcxEnterpriseSiteOutputArgs struct {
-	// Name of the HCX Enterprise Site in the private cloud
+	// Name of the HCX Enterprise Site
 	HcxEnterpriseSiteName pulumi.StringInput `pulumi:"hcxEnterpriseSiteName"`
 	// Name of the private cloud
 	PrivateCloudName pulumi.StringInput `pulumi:"privateCloudName"`
@@ -90,14 +94,24 @@ func (o LookupHcxEnterpriseSiteResultOutput) ActivationKey() pulumi.StringOutput
 	return o.ApplyT(func(v LookupHcxEnterpriseSiteResult) string { return v.ActivationKey }).(pulumi.StringOutput)
 }
 
-// Resource ID.
+// The Azure API version of the resource.
+func (o LookupHcxEnterpriseSiteResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHcxEnterpriseSiteResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupHcxEnterpriseSiteResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHcxEnterpriseSiteResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o LookupHcxEnterpriseSiteResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHcxEnterpriseSiteResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The provisioning state of the resource.
+func (o LookupHcxEnterpriseSiteResultOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHcxEnterpriseSiteResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
 // The status of the HCX Enterprise Site
@@ -105,7 +119,12 @@ func (o LookupHcxEnterpriseSiteResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHcxEnterpriseSiteResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// Resource type.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupHcxEnterpriseSiteResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupHcxEnterpriseSiteResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupHcxEnterpriseSiteResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHcxEnterpriseSiteResult) string { return v.Type }).(pulumi.StringOutput)
 }

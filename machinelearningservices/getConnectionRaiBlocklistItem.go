@@ -11,9 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Azure REST API version: 2024-04-01-preview.
-//
-// Other available API versions: 2024-07-01-preview, 2024-10-01-preview.
+// Azure REST API version: 2025-01-01-preview.
 func LookupConnectionRaiBlocklistItem(ctx *pulumi.Context, args *LookupConnectionRaiBlocklistItemArgs, opts ...pulumi.InvokeOption) (*LookupConnectionRaiBlocklistItemResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupConnectionRaiBlocklistItemResult
@@ -27,6 +25,8 @@ func LookupConnectionRaiBlocklistItem(ctx *pulumi.Context, args *LookupConnectio
 type LookupConnectionRaiBlocklistItemArgs struct {
 	// Friendly name of the workspace connection
 	ConnectionName string `pulumi:"connectionName"`
+	// Name of the RaiBlocklist Item
+	RaiBlocklistItemName string `pulumi:"raiBlocklistItemName"`
 	// The name of the RaiBlocklist.
 	RaiBlocklistName string `pulumi:"raiBlocklistName"`
 	// The name of the resource group. The name is case insensitive.
@@ -36,12 +36,14 @@ type LookupConnectionRaiBlocklistItemArgs struct {
 }
 
 type LookupConnectionRaiBlocklistItemResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// RAI Custom Blocklist properties.
-	Properties RaiBlocklistPropertiesResponse `pulumi:"properties"`
+	// RAI Custom Blocklist Item properties.
+	Properties RaiBlocklistItemPropertiesResponse `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -60,6 +62,8 @@ func LookupConnectionRaiBlocklistItemOutput(ctx *pulumi.Context, args LookupConn
 type LookupConnectionRaiBlocklistItemOutputArgs struct {
 	// Friendly name of the workspace connection
 	ConnectionName pulumi.StringInput `pulumi:"connectionName"`
+	// Name of the RaiBlocklist Item
+	RaiBlocklistItemName pulumi.StringInput `pulumi:"raiBlocklistItemName"`
 	// The name of the RaiBlocklist.
 	RaiBlocklistName pulumi.StringInput `pulumi:"raiBlocklistName"`
 	// The name of the resource group. The name is case insensitive.
@@ -86,6 +90,11 @@ func (o LookupConnectionRaiBlocklistItemResultOutput) ToLookupConnectionRaiBlock
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupConnectionRaiBlocklistItemResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectionRaiBlocklistItemResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupConnectionRaiBlocklistItemResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionRaiBlocklistItemResult) string { return v.Id }).(pulumi.StringOutput)
@@ -96,9 +105,9 @@ func (o LookupConnectionRaiBlocklistItemResultOutput) Name() pulumi.StringOutput
 	return o.ApplyT(func(v LookupConnectionRaiBlocklistItemResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// RAI Custom Blocklist properties.
-func (o LookupConnectionRaiBlocklistItemResultOutput) Properties() RaiBlocklistPropertiesResponseOutput {
-	return o.ApplyT(func(v LookupConnectionRaiBlocklistItemResult) RaiBlocklistPropertiesResponse { return v.Properties }).(RaiBlocklistPropertiesResponseOutput)
+// RAI Custom Blocklist Item properties.
+func (o LookupConnectionRaiBlocklistItemResultOutput) Properties() RaiBlocklistItemPropertiesResponseOutput {
+	return o.ApplyT(func(v LookupConnectionRaiBlocklistItemResult) RaiBlocklistItemPropertiesResponse { return v.Properties }).(RaiBlocklistItemPropertiesResponseOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

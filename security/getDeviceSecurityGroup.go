@@ -34,6 +34,8 @@ type LookupDeviceSecurityGroupArgs struct {
 type LookupDeviceSecurityGroupResult struct {
 	// The allow-list custom alert rules.
 	AllowlistRules []AllowlistCustomAlertRuleResponse `pulumi:"allowlistRules"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The deny-list custom alert rules.
 	DenylistRules []DenylistCustomAlertRuleResponse `pulumi:"denylistRules"`
 	// Resource Id
@@ -86,6 +88,11 @@ func (o LookupDeviceSecurityGroupResultOutput) ToLookupDeviceSecurityGroupResult
 // The allow-list custom alert rules.
 func (o LookupDeviceSecurityGroupResultOutput) AllowlistRules() AllowlistCustomAlertRuleResponseArrayOutput {
 	return o.ApplyT(func(v LookupDeviceSecurityGroupResult) []AllowlistCustomAlertRuleResponse { return v.AllowlistRules }).(AllowlistCustomAlertRuleResponseArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupDeviceSecurityGroupResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDeviceSecurityGroupResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The deny-list custom alert rules.

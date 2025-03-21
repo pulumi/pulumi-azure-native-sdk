@@ -12,9 +12,7 @@ import (
 )
 
 // Gets the details of the Wiki for a Product specified by its identifier.
-// Azure REST API version: 2022-08-01.
-//
-// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
+// Azure REST API version: 2022-09-01-preview.
 func LookupProductWiki(ctx *pulumi.Context, args *LookupProductWikiArgs, opts ...pulumi.InvokeOption) (*LookupProductWikiResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupProductWikiResult
@@ -36,6 +34,8 @@ type LookupProductWikiArgs struct {
 
 // Wiki properties
 type LookupProductWikiResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Collection wiki documents included into this wiki.
 	Documents []WikiDocumentationContractResponse `pulumi:"documents"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -81,6 +81,11 @@ func (o LookupProductWikiResultOutput) ToLookupProductWikiResultOutput() LookupP
 
 func (o LookupProductWikiResultOutput) ToLookupProductWikiResultOutputWithContext(ctx context.Context) LookupProductWikiResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupProductWikiResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProductWikiResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Collection wiki documents included into this wiki.

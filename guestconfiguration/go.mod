@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-azure-native-sdk/guestconfiguration/v2
+module github.com/pulumi/pulumi-azure-native-sdk/guestconfiguration/v3
 
 go 1.22
 

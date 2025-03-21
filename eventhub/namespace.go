@@ -13,14 +13,14 @@ import (
 )
 
 // Single Namespace item in List or Get Operation
-// Azure REST API version: 2022-10-01-preview. Prior API version in Azure Native 1.x: 2017-04-01.
-//
-// Other available API versions: 2023-01-01-preview, 2024-01-01, 2024-05-01-preview.
+// Azure REST API version: 2024-01-01. Prior API version in Azure Native 2.x: 2022-10-01-preview.
 type Namespace struct {
 	pulumi.CustomResourceState
 
 	// Alternate name specified when alias and namespace names are same.
 	AlternateName pulumi.StringPtrOutput `pulumi:"alternateName"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Cluster ARM ID of the Namespace.
 	ClusterArmId pulumi.StringPtrOutput `pulumi:"clusterArmId"`
 	// The time the Namespace was created.
@@ -273,6 +273,11 @@ func (o NamespaceOutput) ToNamespaceOutputWithContext(ctx context.Context) Names
 // Alternate name specified when alias and namespace names are same.
 func (o NamespaceOutput) AlternateName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.StringPtrOutput { return v.AlternateName }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o NamespaceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Cluster ARM ID of the Namespace.

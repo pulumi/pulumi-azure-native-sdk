@@ -13,9 +13,7 @@ import (
 )
 
 // The ImmutabilityPolicy property of a blob container, including Id, resource name, resource type, Etag.
-// Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2021-02-01.
-//
-// Other available API versions: 2023-01-01, 2023-04-01, 2023-05-01, 2024-01-01.
+// Azure REST API version: 2024-01-01. Prior API version in Azure Native 2.x: 2022-09-01.
 type BlobContainerImmutabilityPolicy struct {
 	pulumi.CustomResourceState
 
@@ -23,6 +21,8 @@ type BlobContainerImmutabilityPolicy struct {
 	AllowProtectedAppendWrites pulumi.BoolPtrOutput `pulumi:"allowProtectedAppendWrites"`
 	// This property can only be changed for unlocked time-based retention policies. When enabled, new blocks can be written to both 'Append and Bock Blobs' while maintaining immutability protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted. This property cannot be changed with ExtendImmutabilityPolicy API. The 'allowProtectedAppendWrites' and 'allowProtectedAppendWritesAll' properties are mutually exclusive.
 	AllowProtectedAppendWritesAll pulumi.BoolPtrOutput `pulumi:"allowProtectedAppendWritesAll"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Resource Etag.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The immutability period for the blobs in the container since the policy creation, in days.
@@ -223,6 +223,11 @@ func (o BlobContainerImmutabilityPolicyOutput) AllowProtectedAppendWrites() pulu
 // This property can only be changed for unlocked time-based retention policies. When enabled, new blocks can be written to both 'Append and Bock Blobs' while maintaining immutability protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted. This property cannot be changed with ExtendImmutabilityPolicy API. The 'allowProtectedAppendWrites' and 'allowProtectedAppendWritesAll' properties are mutually exclusive.
 func (o BlobContainerImmutabilityPolicyOutput) AllowProtectedAppendWritesAll() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *BlobContainerImmutabilityPolicy) pulumi.BoolPtrOutput { return v.AllowProtectedAppendWritesAll }).(pulumi.BoolPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o BlobContainerImmutabilityPolicyOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *BlobContainerImmutabilityPolicy) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource Etag.

@@ -12,45 +12,49 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The NetworkFabric resource definition.
-// Azure REST API version: 2023-02-01-preview. Prior API version in Azure Native 1.x: 2023-02-01-preview.
-//
-// Other available API versions: 2023-06-15.
+// The Network Fabric resource definition.
+// Azure REST API version: 2023-06-15. Prior API version in Azure Native 2.x: 2023-02-01-preview.
 type NetworkFabric struct {
 	pulumi.CustomResourceState
 
+	// Administrative state of the resource.
+	AdministrativeState pulumi.StringOutput `pulumi:"administrativeState"`
 	// Switch configuration description.
 	Annotation pulumi.StringPtrOutput `pulumi:"annotation"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// Configuration state of the resource.
+	ConfigurationState pulumi.StringOutput `pulumi:"configurationState"`
 	// ASN of CE devices for CE/PE connectivity.
-	FabricASN pulumi.IntOutput `pulumi:"fabricASN"`
+	FabricASN pulumi.Float64Output `pulumi:"fabricASN"`
+	// The version of Network Fabric.
+	FabricVersion pulumi.StringPtrOutput `pulumi:"fabricVersion"`
 	// IPv4Prefix for Management Network. Example: 10.1.0.0/19.
-	Ipv4Prefix pulumi.StringPtrOutput `pulumi:"ipv4Prefix"`
-	// IPv6Prefix for Management Network. Example: 3FFE:FFFF:0:CD40::/59.
+	Ipv4Prefix pulumi.StringOutput `pulumi:"ipv4Prefix"`
+	// IPv6Prefix for Management Network. Example: 3FFE:FFFF:0:CD40::/59
 	Ipv6Prefix pulumi.StringPtrOutput `pulumi:"ipv6Prefix"`
-	// List of L2IsolationDomain resource IDs under the Network Fabric.
+	// List of L2 Isolation Domain resource IDs under the Network Fabric.
 	L2IsolationDomains pulumi.StringArrayOutput `pulumi:"l2IsolationDomains"`
-	// List of L3IsolationDomain resource IDs under the Network Fabric.
+	// List of L3 Isolation Domain resource IDs under the Network Fabric.
 	L3IsolationDomains pulumi.StringArrayOutput `pulumi:"l3IsolationDomains"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Configuration to be used to setup the management network.
-	ManagementNetworkConfiguration ManagementNetworkConfigurationResponseOutput `pulumi:"managementNetworkConfiguration"`
+	ManagementNetworkConfiguration ManagementNetworkConfigurationPropertiesResponseOutput `pulumi:"managementNetworkConfiguration"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Azure resource ID for the NetworkFabricController the NetworkFabric belongs.
 	NetworkFabricControllerId pulumi.StringOutput `pulumi:"networkFabricControllerId"`
 	// Supported Network Fabric SKU.Example: Compute / Aggregate racks. Once the user chooses a particular SKU, only supported racks can be added to the Network Fabric. The SKU determines whether it is a single / multi rack Network Fabric.
 	NetworkFabricSku pulumi.StringOutput `pulumi:"networkFabricSku"`
-	// Gets the operational state of the resource.
-	OperationalState pulumi.StringOutput `pulumi:"operationalState"`
-	// Gets the provisioning state of the resource.
+	// Provides you the latest status of the NFC service, whether it is Accepted, updating, Succeeded or Failed. During this process, the states keep changing based on the status of NFC provisioning.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// Number of racks associated to Network Fabric.Possible values are from 2-8.
-	RackCount pulumi.IntOutput `pulumi:"rackCount"`
+	// Number of compute racks associated to Network Fabric.
+	RackCount pulumi.IntPtrOutput `pulumi:"rackCount"`
 	// List of NetworkRack resource IDs under the Network Fabric. The number of racks allowed depends on the Network Fabric SKU.
 	Racks pulumi.StringArrayOutput `pulumi:"racks"`
-	// Router Id of CE to be used for MP-BGP between PE and CE
-	RouterId pulumi.StringOutput `pulumi:"routerId"`
+	// Array of router IDs.
+	RouterIds pulumi.StringArrayOutput `pulumi:"routerIds"`
 	// Number of servers.Possible values are from 1-16.
 	ServerCountPerRack pulumi.IntOutput `pulumi:"serverCountPerRack"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -73,6 +77,9 @@ func NewNetworkFabric(ctx *pulumi.Context,
 	if args.FabricASN == nil {
 		return nil, errors.New("invalid value for required argument 'FabricASN'")
 	}
+	if args.Ipv4Prefix == nil {
+		return nil, errors.New("invalid value for required argument 'Ipv4Prefix'")
+	}
 	if args.ManagementNetworkConfiguration == nil {
 		return nil, errors.New("invalid value for required argument 'ManagementNetworkConfiguration'")
 	}
@@ -81,9 +88,6 @@ func NewNetworkFabric(ctx *pulumi.Context,
 	}
 	if args.NetworkFabricSku == nil {
 		return nil, errors.New("invalid value for required argument 'NetworkFabricSku'")
-	}
-	if args.RackCount == nil {
-		return nil, errors.New("invalid value for required argument 'RackCount'")
 	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
@@ -94,7 +98,9 @@ func NewNetworkFabric(ctx *pulumi.Context,
 	if args.TerminalServerConfiguration == nil {
 		return nil, errors.New("invalid value for required argument 'TerminalServerConfiguration'")
 	}
-	args.ManagementNetworkConfiguration = args.ManagementNetworkConfiguration.ToManagementNetworkConfigurationOutput().ApplyT(func(v ManagementNetworkConfiguration) ManagementNetworkConfiguration { return *v.Defaults() }).(ManagementNetworkConfigurationOutput)
+	args.ManagementNetworkConfiguration = args.ManagementNetworkConfiguration.ToManagementNetworkConfigurationPropertiesOutput().ApplyT(func(v ManagementNetworkConfigurationProperties) ManagementNetworkConfigurationProperties {
+		return *v.Defaults()
+	}).(ManagementNetworkConfigurationPropertiesOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:managednetworkfabric/v20230201preview:NetworkFabric"),
@@ -140,23 +146,25 @@ type networkFabricArgs struct {
 	// Switch configuration description.
 	Annotation *string `pulumi:"annotation"`
 	// ASN of CE devices for CE/PE connectivity.
-	FabricASN int `pulumi:"fabricASN"`
+	FabricASN float64 `pulumi:"fabricASN"`
+	// The version of Network Fabric.
+	FabricVersion *string `pulumi:"fabricVersion"`
 	// IPv4Prefix for Management Network. Example: 10.1.0.0/19.
-	Ipv4Prefix *string `pulumi:"ipv4Prefix"`
-	// IPv6Prefix for Management Network. Example: 3FFE:FFFF:0:CD40::/59.
+	Ipv4Prefix string `pulumi:"ipv4Prefix"`
+	// IPv6Prefix for Management Network. Example: 3FFE:FFFF:0:CD40::/59
 	Ipv6Prefix *string `pulumi:"ipv6Prefix"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// Configuration to be used to setup the management network.
-	ManagementNetworkConfiguration ManagementNetworkConfiguration `pulumi:"managementNetworkConfiguration"`
+	ManagementNetworkConfiguration ManagementNetworkConfigurationProperties `pulumi:"managementNetworkConfiguration"`
 	// Azure resource ID for the NetworkFabricController the NetworkFabric belongs.
 	NetworkFabricControllerId string `pulumi:"networkFabricControllerId"`
-	// Name of the Network Fabric
+	// Name of the Network Fabric.
 	NetworkFabricName *string `pulumi:"networkFabricName"`
 	// Supported Network Fabric SKU.Example: Compute / Aggregate racks. Once the user chooses a particular SKU, only supported racks can be added to the Network Fabric. The SKU determines whether it is a single / multi rack Network Fabric.
 	NetworkFabricSku string `pulumi:"networkFabricSku"`
-	// Number of racks associated to Network Fabric.Possible values are from 2-8.
-	RackCount int `pulumi:"rackCount"`
+	// Number of compute racks associated to Network Fabric.
+	RackCount *int `pulumi:"rackCount"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Number of servers.Possible values are from 1-16.
@@ -172,23 +180,25 @@ type NetworkFabricArgs struct {
 	// Switch configuration description.
 	Annotation pulumi.StringPtrInput
 	// ASN of CE devices for CE/PE connectivity.
-	FabricASN pulumi.IntInput
+	FabricASN pulumi.Float64Input
+	// The version of Network Fabric.
+	FabricVersion pulumi.StringPtrInput
 	// IPv4Prefix for Management Network. Example: 10.1.0.0/19.
-	Ipv4Prefix pulumi.StringPtrInput
-	// IPv6Prefix for Management Network. Example: 3FFE:FFFF:0:CD40::/59.
+	Ipv4Prefix pulumi.StringInput
+	// IPv6Prefix for Management Network. Example: 3FFE:FFFF:0:CD40::/59
 	Ipv6Prefix pulumi.StringPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// Configuration to be used to setup the management network.
-	ManagementNetworkConfiguration ManagementNetworkConfigurationInput
+	ManagementNetworkConfiguration ManagementNetworkConfigurationPropertiesInput
 	// Azure resource ID for the NetworkFabricController the NetworkFabric belongs.
 	NetworkFabricControllerId pulumi.StringInput
-	// Name of the Network Fabric
+	// Name of the Network Fabric.
 	NetworkFabricName pulumi.StringPtrInput
 	// Supported Network Fabric SKU.Example: Compute / Aggregate racks. Once the user chooses a particular SKU, only supported racks can be added to the Network Fabric. The SKU determines whether it is a single / multi rack Network Fabric.
 	NetworkFabricSku pulumi.StringInput
-	// Number of racks associated to Network Fabric.Possible values are from 2-8.
-	RackCount pulumi.IntInput
+	// Number of compute racks associated to Network Fabric.
+	RackCount pulumi.IntPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Number of servers.Possible values are from 1-16.
@@ -236,32 +246,52 @@ func (o NetworkFabricOutput) ToNetworkFabricOutputWithContext(ctx context.Contex
 	return o
 }
 
+// Administrative state of the resource.
+func (o NetworkFabricOutput) AdministrativeState() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkFabric) pulumi.StringOutput { return v.AdministrativeState }).(pulumi.StringOutput)
+}
+
 // Switch configuration description.
 func (o NetworkFabricOutput) Annotation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkFabric) pulumi.StringPtrOutput { return v.Annotation }).(pulumi.StringPtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o NetworkFabricOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkFabric) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Configuration state of the resource.
+func (o NetworkFabricOutput) ConfigurationState() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkFabric) pulumi.StringOutput { return v.ConfigurationState }).(pulumi.StringOutput)
+}
+
 // ASN of CE devices for CE/PE connectivity.
-func (o NetworkFabricOutput) FabricASN() pulumi.IntOutput {
-	return o.ApplyT(func(v *NetworkFabric) pulumi.IntOutput { return v.FabricASN }).(pulumi.IntOutput)
+func (o NetworkFabricOutput) FabricASN() pulumi.Float64Output {
+	return o.ApplyT(func(v *NetworkFabric) pulumi.Float64Output { return v.FabricASN }).(pulumi.Float64Output)
+}
+
+// The version of Network Fabric.
+func (o NetworkFabricOutput) FabricVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkFabric) pulumi.StringPtrOutput { return v.FabricVersion }).(pulumi.StringPtrOutput)
 }
 
 // IPv4Prefix for Management Network. Example: 10.1.0.0/19.
-func (o NetworkFabricOutput) Ipv4Prefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NetworkFabric) pulumi.StringPtrOutput { return v.Ipv4Prefix }).(pulumi.StringPtrOutput)
+func (o NetworkFabricOutput) Ipv4Prefix() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkFabric) pulumi.StringOutput { return v.Ipv4Prefix }).(pulumi.StringOutput)
 }
 
-// IPv6Prefix for Management Network. Example: 3FFE:FFFF:0:CD40::/59.
+// IPv6Prefix for Management Network. Example: 3FFE:FFFF:0:CD40::/59
 func (o NetworkFabricOutput) Ipv6Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkFabric) pulumi.StringPtrOutput { return v.Ipv6Prefix }).(pulumi.StringPtrOutput)
 }
 
-// List of L2IsolationDomain resource IDs under the Network Fabric.
+// List of L2 Isolation Domain resource IDs under the Network Fabric.
 func (o NetworkFabricOutput) L2IsolationDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NetworkFabric) pulumi.StringArrayOutput { return v.L2IsolationDomains }).(pulumi.StringArrayOutput)
 }
 
-// List of L3IsolationDomain resource IDs under the Network Fabric.
+// List of L3 Isolation Domain resource IDs under the Network Fabric.
 func (o NetworkFabricOutput) L3IsolationDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NetworkFabric) pulumi.StringArrayOutput { return v.L3IsolationDomains }).(pulumi.StringArrayOutput)
 }
@@ -272,10 +302,10 @@ func (o NetworkFabricOutput) Location() pulumi.StringOutput {
 }
 
 // Configuration to be used to setup the management network.
-func (o NetworkFabricOutput) ManagementNetworkConfiguration() ManagementNetworkConfigurationResponseOutput {
-	return o.ApplyT(func(v *NetworkFabric) ManagementNetworkConfigurationResponseOutput {
+func (o NetworkFabricOutput) ManagementNetworkConfiguration() ManagementNetworkConfigurationPropertiesResponseOutput {
+	return o.ApplyT(func(v *NetworkFabric) ManagementNetworkConfigurationPropertiesResponseOutput {
 		return v.ManagementNetworkConfiguration
-	}).(ManagementNetworkConfigurationResponseOutput)
+	}).(ManagementNetworkConfigurationPropertiesResponseOutput)
 }
 
 // The name of the resource
@@ -293,19 +323,14 @@ func (o NetworkFabricOutput) NetworkFabricSku() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkFabric) pulumi.StringOutput { return v.NetworkFabricSku }).(pulumi.StringOutput)
 }
 
-// Gets the operational state of the resource.
-func (o NetworkFabricOutput) OperationalState() pulumi.StringOutput {
-	return o.ApplyT(func(v *NetworkFabric) pulumi.StringOutput { return v.OperationalState }).(pulumi.StringOutput)
-}
-
-// Gets the provisioning state of the resource.
+// Provides you the latest status of the NFC service, whether it is Accepted, updating, Succeeded or Failed. During this process, the states keep changing based on the status of NFC provisioning.
 func (o NetworkFabricOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkFabric) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Number of racks associated to Network Fabric.Possible values are from 2-8.
-func (o NetworkFabricOutput) RackCount() pulumi.IntOutput {
-	return o.ApplyT(func(v *NetworkFabric) pulumi.IntOutput { return v.RackCount }).(pulumi.IntOutput)
+// Number of compute racks associated to Network Fabric.
+func (o NetworkFabricOutput) RackCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NetworkFabric) pulumi.IntPtrOutput { return v.RackCount }).(pulumi.IntPtrOutput)
 }
 
 // List of NetworkRack resource IDs under the Network Fabric. The number of racks allowed depends on the Network Fabric SKU.
@@ -313,9 +338,9 @@ func (o NetworkFabricOutput) Racks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NetworkFabric) pulumi.StringArrayOutput { return v.Racks }).(pulumi.StringArrayOutput)
 }
 
-// Router Id of CE to be used for MP-BGP between PE and CE
-func (o NetworkFabricOutput) RouterId() pulumi.StringOutput {
-	return o.ApplyT(func(v *NetworkFabric) pulumi.StringOutput { return v.RouterId }).(pulumi.StringOutput)
+// Array of router IDs.
+func (o NetworkFabricOutput) RouterIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NetworkFabric) pulumi.StringArrayOutput { return v.RouterIds }).(pulumi.StringArrayOutput)
 }
 
 // Number of servers.Possible values are from 1-16.

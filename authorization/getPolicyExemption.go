@@ -34,6 +34,8 @@ type LookupPolicyExemptionArgs struct {
 type LookupPolicyExemptionResult struct {
 	// The option whether validate the exemption is at or under the assignment scope.
 	AssignmentScopeValidation *string `pulumi:"assignmentScopeValidation"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The description of the policy exemption.
 	Description *string `pulumi:"description"`
 	// The display name of the policy exemption.
@@ -110,6 +112,11 @@ func (o LookupPolicyExemptionResultOutput) ToLookupPolicyExemptionResultOutputWi
 // The option whether validate the exemption is at or under the assignment scope.
 func (o LookupPolicyExemptionResultOutput) AssignmentScopeValidation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPolicyExemptionResult) *string { return v.AssignmentScopeValidation }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupPolicyExemptionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPolicyExemptionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The description of the policy exemption.

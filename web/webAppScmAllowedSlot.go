@@ -13,14 +13,14 @@ import (
 )
 
 // Publishing Credentials Policies parameters.
-// Azure REST API version: 2023-12-01.
-//
-// Other available API versions: 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2024-04-01.
+// Azure REST API version: 2024-04-01. Prior API version in Azure Native 2.x: 2023-12-01.
 type WebAppScmAllowedSlot struct {
 	pulumi.CustomResourceState
 
 	// <code>true</code> to allow access to a publishing method; otherwise, <code>false</code>.
 	Allow pulumi.BoolOutput `pulumi:"allow"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Kind of resource.
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// Resource Name.
@@ -178,6 +178,11 @@ func (o WebAppScmAllowedSlotOutput) ToWebAppScmAllowedSlotOutputWithContext(ctx 
 // <code>true</code> to allow access to a publishing method; otherwise, <code>false</code>.
 func (o WebAppScmAllowedSlotOutput) Allow() pulumi.BoolOutput {
 	return o.ApplyT(func(v *WebAppScmAllowedSlot) pulumi.BoolOutput { return v.Allow }).(pulumi.BoolOutput)
+}
+
+// The Azure API version of the resource.
+func (o WebAppScmAllowedSlotOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *WebAppScmAllowedSlot) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Kind of resource.

@@ -13,14 +13,14 @@ import (
 )
 
 // Represents a share on the  Data Box Edge/Gateway device.
-// Azure REST API version: 2022-03-01. Prior API version in Azure Native 1.x: 2020-12-01.
-//
-// Other available API versions: 2023-01-01-preview, 2023-07-01, 2023-12-01.
+// Azure REST API version: 2023-07-01. Prior API version in Azure Native 2.x: 2022-03-01.
 type Share struct {
 	pulumi.CustomResourceState
 
 	// Access protocol to be used by the share.
 	AccessProtocol pulumi.StringOutput `pulumi:"accessProtocol"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Azure container mapping for the share.
 	AzureContainerInfo AzureContainerInfoResponsePtrOutput `pulumi:"azureContainerInfo"`
 	// List of IP addresses and corresponding access rights on the share(required for NFS protocol).
@@ -250,6 +250,11 @@ func (o ShareOutput) ToShareOutputWithContext(ctx context.Context) ShareOutput {
 // Access protocol to be used by the share.
 func (o ShareOutput) AccessProtocol() pulumi.StringOutput {
 	return o.ApplyT(func(v *Share) pulumi.StringOutput { return v.AccessProtocol }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o ShareOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Share) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Azure container mapping for the share.

@@ -12,9 +12,7 @@ import (
 )
 
 // Get properties of a topic.
-// Azure REST API version: 2022-06-15.
-//
-// Other available API versions: 2020-04-01-preview, 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-02-15.
+// Azure REST API version: 2025-02-15.
 func LookupTopic(ctx *pulumi.Context, args *LookupTopicArgs, opts ...pulumi.InvokeOption) (*LookupTopicResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTopicResult
@@ -34,12 +32,17 @@ type LookupTopicArgs struct {
 
 // EventGrid Topic
 type LookupTopicResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Data Residency Boundary of the resource.
 	DataResidencyBoundary *string `pulumi:"dataResidencyBoundary"`
 	// This boolean is used to enable or disable local auth. Default value is false. When the property is set to true, only AAD token will be used to authenticate if user is allowed to publish to the topic.
 	DisableLocalAuth *bool `pulumi:"disableLocalAuth"`
 	// Endpoint for the topic.
 	Endpoint string `pulumi:"endpoint"`
+	// Event Type Information for the user topic. This information is provided by the publisher and can be used by the
+	// subscriber to view different types of events that are published.
+	EventTypeInfo *EventTypeInfoResponse `pulumi:"eventTypeInfo"`
 	// Fully qualified identifier of the resource.
 	Id string `pulumi:"id"`
 	// Identity information for the resource.
@@ -54,15 +57,18 @@ type LookupTopicResult struct {
 	Location string `pulumi:"location"`
 	// Metric resource id for the topic.
 	MetricResourceId string `pulumi:"metricResourceId"`
+	// Minimum TLS version of the publisher allowed to publish to this topic
+	MinimumTlsVersionAllowed *string `pulumi:"minimumTlsVersionAllowed"`
 	// Name of the resource.
-	Name                       string                              `pulumi:"name"`
+	Name string `pulumi:"name"`
+	// List of private endpoint connections.
 	PrivateEndpointConnections []PrivateEndpointConnectionResponse `pulumi:"privateEndpointConnections"`
 	// Provisioning state of the topic.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// This determines if traffic is allowed over public network. By default it is enabled.
 	// You can further restrict to specific IPs by configuring <seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.TopicProperties.InboundIpRules" />
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
-	// The system metadata relating to Topic resource.
+	// The system metadata relating to the Event Grid resource.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Tags of the resource.
 	Tags map[string]string `pulumi:"tags"`
@@ -125,6 +131,11 @@ func (o LookupTopicResultOutput) ToLookupTopicResultOutputWithContext(ctx contex
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupTopicResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTopicResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Data Residency Boundary of the resource.
 func (o LookupTopicResultOutput) DataResidencyBoundary() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupTopicResult) *string { return v.DataResidencyBoundary }).(pulumi.StringPtrOutput)
@@ -138,6 +149,12 @@ func (o LookupTopicResultOutput) DisableLocalAuth() pulumi.BoolPtrOutput {
 // Endpoint for the topic.
 func (o LookupTopicResultOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTopicResult) string { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+// Event Type Information for the user topic. This information is provided by the publisher and can be used by the
+// subscriber to view different types of events that are published.
+func (o LookupTopicResultOutput) EventTypeInfo() EventTypeInfoResponsePtrOutput {
+	return o.ApplyT(func(v LookupTopicResult) *EventTypeInfoResponse { return v.EventTypeInfo }).(EventTypeInfoResponsePtrOutput)
 }
 
 // Fully qualified identifier of the resource.
@@ -175,11 +192,17 @@ func (o LookupTopicResultOutput) MetricResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTopicResult) string { return v.MetricResourceId }).(pulumi.StringOutput)
 }
 
+// Minimum TLS version of the publisher allowed to publish to this topic
+func (o LookupTopicResultOutput) MinimumTlsVersionAllowed() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupTopicResult) *string { return v.MinimumTlsVersionAllowed }).(pulumi.StringPtrOutput)
+}
+
 // Name of the resource.
 func (o LookupTopicResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTopicResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// List of private endpoint connections.
 func (o LookupTopicResultOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseArrayOutput {
 	return o.ApplyT(func(v LookupTopicResult) []PrivateEndpointConnectionResponse { return v.PrivateEndpointConnections }).(PrivateEndpointConnectionResponseArrayOutput)
 }
@@ -195,7 +218,7 @@ func (o LookupTopicResultOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupTopicResult) *string { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
 }
 
-// The system metadata relating to Topic resource.
+// The system metadata relating to the Event Grid resource.
 func (o LookupTopicResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupTopicResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }

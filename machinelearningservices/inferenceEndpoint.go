@@ -12,12 +12,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Azure REST API version: 2023-08-01-preview.
-//
-// Other available API versions: 2024-01-01-preview, 2024-04-01-preview, 2024-10-01-preview.
+// Azure REST API version: 2025-01-01-preview. Prior API version in Azure Native 2.x: 2023-08-01-preview.
 type InferenceEndpoint struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Managed service identity (system assigned and/or user assigned identities)
 	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// [Required] Additional attributes of the entity.
@@ -57,6 +57,7 @@ func NewInferenceEndpoint(ctx *pulumi.Context,
 	if args.WorkspaceName == nil {
 		return nil, errors.New("invalid value for required argument 'WorkspaceName'")
 	}
+	args.InferenceEndpointProperties = args.InferenceEndpointProperties.ToInferenceEndpointTypeOutput().ApplyT(func(v InferenceEndpointType) InferenceEndpointType { return *v.Defaults() }).(InferenceEndpointTypeOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20230801preview:InferenceEndpoint"),
@@ -69,6 +70,9 @@ func NewInferenceEndpoint(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001preview:InferenceEndpoint"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250101preview:InferenceEndpoint"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -186,6 +190,11 @@ func (o InferenceEndpointOutput) ToInferenceEndpointOutput() InferenceEndpointOu
 
 func (o InferenceEndpointOutput) ToInferenceEndpointOutputWithContext(ctx context.Context) InferenceEndpointOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o InferenceEndpointOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *InferenceEndpoint) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Managed service identity (system assigned and/or user assigned identities)

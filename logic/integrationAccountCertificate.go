@@ -13,12 +13,12 @@ import (
 )
 
 // The integration account certificate.
-// Azure REST API version: 2019-05-01. Prior API version in Azure Native 1.x: 2019-05-01.
-//
-// Other available API versions: 2015-08-01-preview.
+// Azure REST API version: 2019-05-01. Prior API version in Azure Native 2.x: 2019-05-01.
 type IntegrationAccountCertificate struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The changed time.
 	ChangedTime pulumi.StringOutput `pulumi:"changedTime"`
 	// The created time.
@@ -55,6 +55,9 @@ func NewIntegrationAccountCertificate(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:logic/v20150801preview:IntegrationAccountCertificate"),
+		},
+		{
+			Type: pulumi.String("azure-native:logic/v20160601:Certificate"),
 		},
 		{
 			Type: pulumi.String("azure-native:logic/v20160601:IntegrationAccountCertificate"),
@@ -173,6 +176,11 @@ func (o IntegrationAccountCertificateOutput) ToIntegrationAccountCertificateOutp
 
 func (o IntegrationAccountCertificateOutput) ToIntegrationAccountCertificateOutputWithContext(ctx context.Context) IntegrationAccountCertificateOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o IntegrationAccountCertificateOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *IntegrationAccountCertificate) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The changed time.

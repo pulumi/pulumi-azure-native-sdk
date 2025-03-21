@@ -12,9 +12,7 @@ import (
 )
 
 // Primary and secondary connection strings to the queue.
-// Azure REST API version: 2022-01-01-preview.
-//
-// Other available API versions: 2022-10-01-preview, 2023-01-01-preview, 2024-01-01.
+// Azure REST API version: 2024-01-01.
 func ListQueueKeys(ctx *pulumi.Context, args *ListQueueKeysArgs, opts ...pulumi.InvokeOption) (*ListQueueKeysResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListQueueKeysResult
@@ -32,7 +30,7 @@ type ListQueueKeysArgs struct {
 	NamespaceName string `pulumi:"namespaceName"`
 	// The queue name.
 	QueueName string `pulumi:"queueName"`
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -70,7 +68,7 @@ type ListQueueKeysOutputArgs struct {
 	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
 	// The queue name.
 	QueueName pulumi.StringInput `pulumi:"queueName"`
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 

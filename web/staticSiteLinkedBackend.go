@@ -13,12 +13,12 @@ import (
 )
 
 // Static Site Linked Backend ARM resource.
-// Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2022-03-01.
-//
-// Other available API versions: 2023-01-01, 2023-12-01, 2024-04-01.
+// Azure REST API version: 2024-04-01. Prior API version in Azure Native 2.x: 2022-09-01.
 type StaticSiteLinkedBackend struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The resource id of the backend linked to the static site
 	BackendResourceId pulumi.StringPtrOutput `pulumi:"backendResourceId"`
 	// The date and time on which the backend was linked to the static site.
@@ -167,6 +167,11 @@ func (o StaticSiteLinkedBackendOutput) ToStaticSiteLinkedBackendOutput() StaticS
 
 func (o StaticSiteLinkedBackendOutput) ToStaticSiteLinkedBackendOutputWithContext(ctx context.Context) StaticSiteLinkedBackendOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o StaticSiteLinkedBackendOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *StaticSiteLinkedBackend) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The resource id of the backend linked to the static site

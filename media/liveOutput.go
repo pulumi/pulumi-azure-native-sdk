@@ -13,7 +13,7 @@ import (
 )
 
 // The Live Output.
-// Azure REST API version: 2022-11-01. Prior API version in Azure Native 1.x: 2020-05-01.
+// Azure REST API version: 2022-11-01. Prior API version in Azure Native 2.x: 2022-11-01.
 type LiveOutput struct {
 	pulumi.CustomResourceState
 
@@ -21,6 +21,8 @@ type LiveOutput struct {
 	ArchiveWindowLength pulumi.StringOutput `pulumi:"archiveWindowLength"`
 	// The asset that the live output will write to.
 	AssetName pulumi.StringOutput `pulumi:"assetName"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The creation time the live output.
 	Created pulumi.StringOutput `pulumi:"created"`
 	// The description of the live output.
@@ -227,6 +229,11 @@ func (o LiveOutputOutput) ArchiveWindowLength() pulumi.StringOutput {
 // The asset that the live output will write to.
 func (o LiveOutputOutput) AssetName() pulumi.StringOutput {
 	return o.ApplyT(func(v *LiveOutput) pulumi.StringOutput { return v.AssetName }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o LiveOutputOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *LiveOutput) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The creation time the live output.

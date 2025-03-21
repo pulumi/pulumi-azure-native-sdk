@@ -12,9 +12,7 @@ import (
 )
 
 // List the authorization keys associated with this account.
-// Azure REST API version: 2021-12-01.
-//
-// Other available API versions: 2020-12-01-preview, 2021-07-01, 2023-05-01-preview, 2024-04-01-preview.
+// Azure REST API version: 2024-04-01-preview.
 func ListAccountKeys(ctx *pulumi.Context, args *ListAccountKeysArgs, opts ...pulumi.InvokeOption) (*ListAccountKeysResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListAccountKeysResult
@@ -32,7 +30,7 @@ type ListAccountKeysArgs struct {
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
-// The Account access keys.
+// The Purview Account access keys.
 type ListAccountKeysResult struct {
 	// Gets or sets the primary connection string.
 	AtlasKafkaPrimaryEndpoint *string `pulumi:"atlasKafkaPrimaryEndpoint"`
@@ -60,7 +58,7 @@ func (ListAccountKeysOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*ListAccountKeysArgs)(nil)).Elem()
 }
 
-// The Account access keys.
+// The Purview Account access keys.
 type ListAccountKeysResultOutput struct{ *pulumi.OutputState }
 
 func (ListAccountKeysResultOutput) ElementType() reflect.Type {

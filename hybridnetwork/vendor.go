@@ -12,10 +12,12 @@ import (
 )
 
 // Vendor resource.
-// Azure REST API version: 2022-01-01-preview. Prior API version in Azure Native 1.x: 2020-01-01-preview.
+// Azure REST API version: 2022-01-01-preview. Prior API version in Azure Native 2.x: 2022-01-01-preview.
 type Vendor struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The provisioning state of the vendor resource.
@@ -125,6 +127,11 @@ func (o VendorOutput) ToVendorOutput() VendorOutput {
 
 func (o VendorOutput) ToVendorOutputWithContext(ctx context.Context) VendorOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o VendorOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Vendor) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

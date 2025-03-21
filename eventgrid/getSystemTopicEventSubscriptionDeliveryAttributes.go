@@ -12,9 +12,7 @@ import (
 )
 
 // Get all delivery attributes for an event subscription.
-// Azure REST API version: 2022-06-15.
-//
-// Other available API versions: 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-02-15.
+// Azure REST API version: 2025-02-15.
 func GetSystemTopicEventSubscriptionDeliveryAttributes(ctx *pulumi.Context, args *GetSystemTopicEventSubscriptionDeliveryAttributesArgs, opts ...pulumi.InvokeOption) (*GetSystemTopicEventSubscriptionDeliveryAttributesResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetSystemTopicEventSubscriptionDeliveryAttributesResult
@@ -26,7 +24,7 @@ func GetSystemTopicEventSubscriptionDeliveryAttributes(ctx *pulumi.Context, args
 }
 
 type GetSystemTopicEventSubscriptionDeliveryAttributesArgs struct {
-	// Name of the event subscription to be created. Event subscription names must be between 3 and 100 characters in length and use alphanumeric letters only.
+	// Name of the event subscription.
 	EventSubscriptionName string `pulumi:"eventSubscriptionName"`
 	// The name of the resource group within the user's subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -50,7 +48,7 @@ func GetSystemTopicEventSubscriptionDeliveryAttributesOutput(ctx *pulumi.Context
 }
 
 type GetSystemTopicEventSubscriptionDeliveryAttributesOutputArgs struct {
-	// Name of the event subscription to be created. Event subscription names must be between 3 and 100 characters in length and use alphanumeric letters only.
+	// Name of the event subscription.
 	EventSubscriptionName pulumi.StringInput `pulumi:"eventSubscriptionName"`
 	// The name of the resource group within the user's subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`

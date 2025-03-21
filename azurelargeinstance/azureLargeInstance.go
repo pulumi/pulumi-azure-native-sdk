@@ -14,10 +14,12 @@ import (
 
 // Azure Large Instance info on Azure (ARM properties and AzureLargeInstance
 // properties)
-// Azure REST API version: 2024-08-01-preview.
+// Azure REST API version: 2024-08-01-preview. Prior API version in Azure Native 2.x: 2024-08-01-preview.
 type AzureLargeInstance struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Specifies the Azure Large Instance unique ID.
 	AzureLargeInstanceId pulumi.StringPtrOutput `pulumi:"azureLargeInstanceId"`
 	// Specifies the hardware settings for the Azure Large Instance.
@@ -186,6 +188,11 @@ func (o AzureLargeInstanceOutput) ToAzureLargeInstanceOutput() AzureLargeInstanc
 
 func (o AzureLargeInstanceOutput) ToAzureLargeInstanceOutputWithContext(ctx context.Context) AzureLargeInstanceOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o AzureLargeInstanceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *AzureLargeInstance) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Specifies the Azure Large Instance unique ID.

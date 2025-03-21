@@ -13,12 +13,12 @@ import (
 )
 
 // A workspace key
-// Azure REST API version: 2021-06-01. Prior API version in Azure Native 1.x: 2021-03-01.
-//
-// Other available API versions: 2021-06-01-preview.
+// Azure REST API version: 2021-06-01. Prior API version in Azure Native 2.x: 2021-06-01.
 type Key struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Used to activate the workspace after a customer managed key is provided.
 	IsActiveCMK pulumi.BoolPtrOutput `pulumi:"isActiveCMK"`
 	// The Key Vault Url of the workspace key.
@@ -160,6 +160,11 @@ func (o KeyOutput) ToKeyOutput() KeyOutput {
 
 func (o KeyOutput) ToKeyOutputWithContext(ctx context.Context) KeyOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o KeyOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Key) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Used to activate the workspace after a customer managed key is provided.

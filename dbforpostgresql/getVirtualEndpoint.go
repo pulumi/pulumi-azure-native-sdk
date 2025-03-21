@@ -12,9 +12,7 @@ import (
 )
 
 // Gets information about a virtual endpoint.
-// Azure REST API version: 2023-06-01-preview.
-//
-// Other available API versions: 2023-12-01-preview, 2024-03-01-preview, 2024-08-01, 2024-11-01-preview.
+// Azure REST API version: 2024-08-01.
 func LookupVirtualEndpoint(ctx *pulumi.Context, args *LookupVirtualEndpointArgs, opts ...pulumi.InvokeOption) (*LookupVirtualEndpointResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVirtualEndpointResult
@@ -36,6 +34,8 @@ type LookupVirtualEndpointArgs struct {
 
 // Represents a virtual endpoint for a server.
 type LookupVirtualEndpointResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The endpoint type for the virtual endpoint.
 	EndpointType *string `pulumi:"endpointType"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -87,6 +87,11 @@ func (o LookupVirtualEndpointResultOutput) ToLookupVirtualEndpointResultOutput()
 
 func (o LookupVirtualEndpointResultOutput) ToLookupVirtualEndpointResultOutputWithContext(ctx context.Context) LookupVirtualEndpointResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupVirtualEndpointResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVirtualEndpointResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The endpoint type for the virtual endpoint.

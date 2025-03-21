@@ -33,6 +33,8 @@ type LookupJitNetworkAccessPolicyArgs struct {
 }
 
 type LookupJitNetworkAccessPolicyResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource Id
 	Id string `pulumi:"id"`
 	// Kind of the resource
@@ -84,6 +86,11 @@ func (o LookupJitNetworkAccessPolicyResultOutput) ToLookupJitNetworkAccessPolicy
 
 func (o LookupJitNetworkAccessPolicyResultOutput) ToLookupJitNetworkAccessPolicyResultOutputWithContext(ctx context.Context) LookupJitNetworkAccessPolicyResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupJitNetworkAccessPolicyResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupJitNetworkAccessPolicyResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource Id

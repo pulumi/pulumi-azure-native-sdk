@@ -40,6 +40,8 @@ type LookupPrivateStoreCollectionResult struct {
 	ApproveAllItems bool `pulumi:"approveAllItems"`
 	// Gets the modified date of all items approved.
 	ApproveAllItemsModifiedAt string `pulumi:"approveAllItemsModifiedAt"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets or sets the association with Commercial's Billing Account.
 	Claim *string `pulumi:"claim"`
 	// Gets collection Id.
@@ -115,6 +117,11 @@ func (o LookupPrivateStoreCollectionResultOutput) ApproveAllItems() pulumi.BoolO
 // Gets the modified date of all items approved.
 func (o LookupPrivateStoreCollectionResultOutput) ApproveAllItemsModifiedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateStoreCollectionResult) string { return v.ApproveAllItemsModifiedAt }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupPrivateStoreCollectionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPrivateStoreCollectionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets the association with Commercial's Billing Account.

@@ -12,9 +12,7 @@ import (
 )
 
 // Returns details of the API deployment.
-// Azure REST API version: 2024-03-01.
-//
-// Other available API versions: 2024-03-15-preview, 2024-06-01-preview.
+// Azure REST API version: 2024-03-15-preview.
 func LookupDeployment(ctx *pulumi.Context, args *LookupDeploymentArgs, opts ...pulumi.InvokeOption) (*LookupDeploymentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDeploymentResult
@@ -40,6 +38,8 @@ type LookupDeploymentArgs struct {
 
 // API deployment entity.
 type LookupDeploymentResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The custom metadata defined for API catalog entities.
 	CustomProperties interface{} `pulumi:"customProperties"`
 	// API center-scoped definition resource ID.
@@ -103,6 +103,11 @@ func (o LookupDeploymentResultOutput) ToLookupDeploymentResultOutput() LookupDep
 
 func (o LookupDeploymentResultOutput) ToLookupDeploymentResultOutputWithContext(ctx context.Context) LookupDeploymentResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupDeploymentResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDeploymentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The custom metadata defined for API catalog entities.

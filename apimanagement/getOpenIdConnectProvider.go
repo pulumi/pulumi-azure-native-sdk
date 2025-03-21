@@ -12,9 +12,7 @@ import (
 )
 
 // Gets specific OpenID Connect Provider without secrets.
-// Azure REST API version: 2022-08-01.
-//
-// Other available API versions: 2016-10-10, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
+// Azure REST API version: 2022-09-01-preview.
 func LookupOpenIdConnectProvider(ctx *pulumi.Context, args *LookupOpenIdConnectProviderArgs, opts ...pulumi.InvokeOption) (*LookupOpenIdConnectProviderResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupOpenIdConnectProviderResult
@@ -36,6 +34,8 @@ type LookupOpenIdConnectProviderArgs struct {
 
 // OpenId Connect Provider details.
 type LookupOpenIdConnectProviderResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Client ID of developer console which is the client application.
 	ClientId string `pulumi:"clientId"`
 	// Client Secret of developer console which is the client application.
@@ -93,6 +93,11 @@ func (o LookupOpenIdConnectProviderResultOutput) ToLookupOpenIdConnectProviderRe
 
 func (o LookupOpenIdConnectProviderResultOutput) ToLookupOpenIdConnectProviderResultOutputWithContext(ctx context.Context) LookupOpenIdConnectProviderResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupOpenIdConnectProviderResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOpenIdConnectProviderResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Client ID of developer console which is the client application.

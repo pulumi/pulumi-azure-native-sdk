@@ -13,12 +13,12 @@ import (
 )
 
 // Workload classifier operations for a data warehouse
-// Azure REST API version: 2021-06-01. Prior API version in Azure Native 1.x: 2021-03-01.
-//
-// Other available API versions: 2021-06-01-preview.
+// Azure REST API version: 2021-06-01. Prior API version in Azure Native 2.x: 2021-06-01.
 type SqlPoolWorkloadClassifier struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The workload classifier context.
 	Context pulumi.StringPtrOutput `pulumi:"context"`
 	// The workload classifier end time for classification.
@@ -201,6 +201,11 @@ func (o SqlPoolWorkloadClassifierOutput) ToSqlPoolWorkloadClassifierOutput() Sql
 
 func (o SqlPoolWorkloadClassifierOutput) ToSqlPoolWorkloadClassifierOutputWithContext(ctx context.Context) SqlPoolWorkloadClassifierOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o SqlPoolWorkloadClassifierOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SqlPoolWorkloadClassifier) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The workload classifier context.

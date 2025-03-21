@@ -13,7 +13,7 @@ import (
 )
 
 // An Asset.
-// Azure REST API version: 2023-01-01. Prior API version in Azure Native 1.x: 2020-05-01.
+// Azure REST API version: 2023-01-01. Prior API version in Azure Native 2.x: 2023-01-01.
 type Asset struct {
 	pulumi.CustomResourceState
 
@@ -21,6 +21,8 @@ type Asset struct {
 	AlternateId pulumi.StringPtrOutput `pulumi:"alternateId"`
 	// The Asset ID.
 	AssetId pulumi.StringOutput `pulumi:"assetId"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the asset blob container.
 	Container pulumi.StringPtrOutput `pulumi:"container"`
 	// The creation date of the Asset.
@@ -199,6 +201,11 @@ func (o AssetOutput) AlternateId() pulumi.StringPtrOutput {
 // The Asset ID.
 func (o AssetOutput) AssetId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Asset) pulumi.StringOutput { return v.AssetId }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o AssetOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Asset) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the asset blob container.

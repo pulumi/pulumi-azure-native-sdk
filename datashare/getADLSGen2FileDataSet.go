@@ -36,6 +36,8 @@ type LookupADLSGen2FileDataSetArgs struct {
 
 // An ADLS Gen 2 file data set.
 type LookupADLSGen2FileDataSetResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Unique id for identifying a data set resource
 	DataSetId string `pulumi:"dataSetId"`
 	// File path within the file system.
@@ -98,6 +100,11 @@ func (o LookupADLSGen2FileDataSetResultOutput) ToLookupADLSGen2FileDataSetResult
 
 func (o LookupADLSGen2FileDataSetResultOutput) ToLookupADLSGen2FileDataSetResultOutputWithContext(ctx context.Context) LookupADLSGen2FileDataSetResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupADLSGen2FileDataSetResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupADLSGen2FileDataSetResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Unique id for identifying a data set resource

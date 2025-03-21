@@ -34,6 +34,8 @@ type LookupDraArgs struct {
 
 // Dra model.
 type LookupDraResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets or sets the Id of the resource.
 	Id string `pulumi:"id"`
 	// Gets or sets the name of the resource.
@@ -80,6 +82,11 @@ func (o LookupDraResultOutput) ToLookupDraResultOutput() LookupDraResultOutput {
 
 func (o LookupDraResultOutput) ToLookupDraResultOutputWithContext(ctx context.Context) LookupDraResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupDraResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDraResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets the Id of the resource.

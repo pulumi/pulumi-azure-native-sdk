@@ -13,8 +13,6 @@ import (
 
 // Gets a streaming endpoint.
 // Azure REST API version: 2022-11-01.
-//
-// Other available API versions: 2018-06-01-preview.
 func LookupStreamingEndpoint(ctx *pulumi.Context, args *LookupStreamingEndpointArgs, opts ...pulumi.InvokeOption) (*LookupStreamingEndpointResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupStreamingEndpointResult
@@ -40,6 +38,8 @@ type LookupStreamingEndpointResult struct {
 	AccessControl *StreamingEndpointAccessControlResponse `pulumi:"accessControl"`
 	// This feature is deprecated, do not set a value for this property.
 	AvailabilitySetName *string `pulumi:"availabilitySetName"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The CDN enabled flag.
 	CdnEnabled *bool `pulumi:"cdnEnabled"`
 	// The CDN profile name.
@@ -129,6 +129,11 @@ func (o LookupStreamingEndpointResultOutput) AccessControl() StreamingEndpointAc
 // This feature is deprecated, do not set a value for this property.
 func (o LookupStreamingEndpointResultOutput) AvailabilitySetName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupStreamingEndpointResult) *string { return v.AvailabilitySetName }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupStreamingEndpointResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStreamingEndpointResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The CDN enabled flag.

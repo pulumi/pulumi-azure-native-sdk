@@ -13,14 +13,14 @@ import (
 )
 
 // Configuration of App Service site logs.
-// Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2020-12-01.
-//
-// Other available API versions: 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
+// Azure REST API version: 2024-04-01. Prior API version in Azure Native 2.x: 2022-09-01.
 type WebAppDiagnosticLogsConfiguration struct {
 	pulumi.CustomResourceState
 
 	// Application logs configuration.
 	ApplicationLogs ApplicationLogsConfigResponsePtrOutput `pulumi:"applicationLogs"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Detailed error messages configuration.
 	DetailedErrorMessages EnabledConfigResponsePtrOutput `pulumi:"detailedErrorMessages"`
 	// Failed requests tracing configuration.
@@ -217,6 +217,11 @@ func (o WebAppDiagnosticLogsConfigurationOutput) ApplicationLogs() ApplicationLo
 	return o.ApplyT(func(v *WebAppDiagnosticLogsConfiguration) ApplicationLogsConfigResponsePtrOutput {
 		return v.ApplicationLogs
 	}).(ApplicationLogsConfigResponsePtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o WebAppDiagnosticLogsConfigurationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *WebAppDiagnosticLogsConfiguration) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Detailed error messages configuration.

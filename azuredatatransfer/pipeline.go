@@ -13,12 +13,12 @@ import (
 )
 
 // The pipeline resource definition.
-// Azure REST API version: 2023-10-11-preview.
-//
-// Other available API versions: 2024-01-25, 2024-05-07, 2024-09-11, 2024-09-27.
+// Azure REST API version: 2024-09-27. Prior API version in Azure Native 2.x: 2023-10-11-preview.
 type Pipeline struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -155,6 +155,11 @@ func (o PipelineOutput) ToPipelineOutput() PipelineOutput {
 
 func (o PipelineOutput) ToPipelineOutputWithContext(ctx context.Context) PipelineOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o PipelineOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Pipeline) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The geo-location where the resource lives

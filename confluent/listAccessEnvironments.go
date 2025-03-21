@@ -11,10 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// List environments success response
-// Azure REST API version: 2023-08-22.
-//
-// Other available API versions: 2024-02-13, 2024-07-01.
+// Details of the environments returned on successful response
+// Azure REST API version: 2024-07-01.
 func ListAccessEnvironments(ctx *pulumi.Context, args *ListAccessEnvironmentsArgs, opts ...pulumi.InvokeOption) (*ListAccessEnvironmentsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListAccessEnvironmentsResult
@@ -34,13 +32,13 @@ type ListAccessEnvironmentsArgs struct {
 	SearchFilters map[string]string `pulumi:"searchFilters"`
 }
 
-// List environments success response
+// Details of the environments returned on successful response
 type ListAccessEnvironmentsResult struct {
-	// Data of the environments list
+	// Environment list data
 	Data []EnvironmentRecordResponse `pulumi:"data"`
 	// Type of response
 	Kind *string `pulumi:"kind"`
-	// Metadata of the list
+	// Metadata of the  environment list
 	Metadata *ConfluentListMetadataResponse `pulumi:"metadata"`
 }
 
@@ -66,7 +64,7 @@ func (ListAccessEnvironmentsOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*ListAccessEnvironmentsArgs)(nil)).Elem()
 }
 
-// List environments success response
+// Details of the environments returned on successful response
 type ListAccessEnvironmentsResultOutput struct{ *pulumi.OutputState }
 
 func (ListAccessEnvironmentsResultOutput) ElementType() reflect.Type {
@@ -81,7 +79,7 @@ func (o ListAccessEnvironmentsResultOutput) ToListAccessEnvironmentsResultOutput
 	return o
 }
 
-// Data of the environments list
+// Environment list data
 func (o ListAccessEnvironmentsResultOutput) Data() EnvironmentRecordResponseArrayOutput {
 	return o.ApplyT(func(v ListAccessEnvironmentsResult) []EnvironmentRecordResponse { return v.Data }).(EnvironmentRecordResponseArrayOutput)
 }
@@ -91,7 +89,7 @@ func (o ListAccessEnvironmentsResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListAccessEnvironmentsResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
-// Metadata of the list
+// Metadata of the  environment list
 func (o ListAccessEnvironmentsResultOutput) Metadata() ConfluentListMetadataResponsePtrOutput {
 	return o.ApplyT(func(v ListAccessEnvironmentsResult) *ConfluentListMetadataResponse { return v.Metadata }).(ConfluentListMetadataResponsePtrOutput)
 }

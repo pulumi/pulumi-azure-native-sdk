@@ -13,10 +13,12 @@ import (
 )
 
 // A Task Hub resource belonging to the scheduler
-// Azure REST API version: 2024-10-01-preview.
+// Azure REST API version: 2024-10-01-preview. Prior API version in Azure Native 2.x: 2024-10-01-preview.
 type TaskHub struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The resource-specific properties for this resource.
@@ -132,6 +134,11 @@ func (o TaskHubOutput) ToTaskHubOutput() TaskHubOutput {
 
 func (o TaskHubOutput) ToTaskHubOutputWithContext(ctx context.Context) TaskHubOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o TaskHubOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *TaskHub) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

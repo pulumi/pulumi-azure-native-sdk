@@ -13,12 +13,12 @@ import (
 )
 
 // The HDInsight cluster application
-// Azure REST API version: 2021-06-01. Prior API version in Azure Native 1.x: 2018-06-01-preview.
-//
-// Other available API versions: 2023-04-15-preview, 2023-08-15-preview, 2024-08-01-preview.
+// Azure REST API version: 2024-08-01-preview. Prior API version in Azure Native 2.x: 2021-06-01.
 type Application struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The ETag for the application
 	Etag pulumi.StringPtrOutput `pulumi:"etag"`
 	// The name of the resource
@@ -64,6 +64,9 @@ func NewApplication(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:hdinsight/v20240801preview:Application"),
+		},
+		{
+			Type: pulumi.String("azure-native:hdinsight/v20250115preview:Application"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -161,6 +164,11 @@ func (o ApplicationOutput) ToApplicationOutput() ApplicationOutput {
 
 func (o ApplicationOutput) ToApplicationOutputWithContext(ctx context.Context) ApplicationOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ApplicationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Application) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The ETag for the application

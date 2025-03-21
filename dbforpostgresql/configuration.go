@@ -13,14 +13,14 @@ import (
 )
 
 // Represents a Configuration.
-// Azure REST API version: 2022-12-01. Prior API version in Azure Native 1.x: 2017-12-01.
-//
-// Other available API versions: 2017-12-01, 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-08-01, 2024-11-01-preview.
+// Azure REST API version: 2024-08-01. Prior API version in Azure Native 2.x: 2022-12-01.
 type Configuration struct {
 	pulumi.CustomResourceState
 
 	// Allowed values of the configuration.
 	AllowedValues pulumi.StringOutput `pulumi:"allowedValues"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Data type of the configuration.
 	DataType pulumi.StringOutput `pulumi:"dataType"`
 	// Default value of the configuration.
@@ -63,6 +63,9 @@ func NewConfiguration(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ServerName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:dbforpostgresql/v20171201:Configuration"),
+		},
 		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20210601:Configuration"),
 		},
@@ -200,6 +203,11 @@ func (o ConfigurationOutput) ToConfigurationOutputWithContext(ctx context.Contex
 // Allowed values of the configuration.
 func (o ConfigurationOutput) AllowedValues() pulumi.StringOutput {
 	return o.ApplyT(func(v *Configuration) pulumi.StringOutput { return v.AllowedValues }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o ConfigurationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Configuration) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Data type of the configuration.

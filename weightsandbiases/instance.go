@@ -13,10 +13,12 @@ import (
 )
 
 // Concrete tracked resource types can be created by aliasing this type using a specific property type.
-// Azure REST API version: 2024-09-18-preview.
+// Azure REST API version: 2024-09-18-preview. Prior API version in Azure Native 2.x: 2024-09-18-preview.
 type Instance struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The managed service identities assigned to this resource.
 	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
@@ -147,6 +149,11 @@ func (o InstanceOutput) ToInstanceOutput() InstanceOutput {
 
 func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) InstanceOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o InstanceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The managed service identities assigned to this resource.

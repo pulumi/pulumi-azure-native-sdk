@@ -13,14 +13,14 @@ import (
 )
 
 // Fabric Capacity resource
-// Azure REST API version: 2023-11-01.
-//
-// Other available API versions: 2025-01-15-preview.
+// Azure REST API version: 2023-11-01. Prior API version in Azure Native 2.x: 2023-11-01.
 type FabricCapacity struct {
 	pulumi.CustomResourceState
 
 	// The capacity administration
 	Administration CapacityAdministrationResponseOutput `pulumi:"administration"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -167,6 +167,11 @@ func (o FabricCapacityOutput) ToFabricCapacityOutputWithContext(ctx context.Cont
 // The capacity administration
 func (o FabricCapacityOutput) Administration() CapacityAdministrationResponseOutput {
 	return o.ApplyT(func(v *FabricCapacity) CapacityAdministrationResponseOutput { return v.Administration }).(CapacityAdministrationResponseOutput)
+}
+
+// The Azure API version of the resource.
+func (o FabricCapacityOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *FabricCapacity) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The geo-location where the resource lives

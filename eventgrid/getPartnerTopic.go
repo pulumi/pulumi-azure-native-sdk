@@ -12,9 +12,7 @@ import (
 )
 
 // Get properties of a partner topic.
-// Azure REST API version: 2022-06-15.
-//
-// Other available API versions: 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-02-15.
+// Azure REST API version: 2025-02-15.
 func LookupPartnerTopic(ctx *pulumi.Context, args *LookupPartnerTopicArgs, opts ...pulumi.InvokeOption) (*LookupPartnerTopicResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPartnerTopicResult
@@ -36,6 +34,8 @@ type LookupPartnerTopicArgs struct {
 type LookupPartnerTopicResult struct {
 	// Activation state of the partner topic.
 	ActivationState *string `pulumi:"activationState"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Event Type information from the corresponding event channel.
 	EventTypeInfo *EventTypeInfoResponse `pulumi:"eventTypeInfo"`
 	// Expiration time of the partner topic. If this timer expires while the partner topic is still never activated,
@@ -60,7 +60,7 @@ type LookupPartnerTopicResult struct {
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Source associated with this partner topic. This represents a unique partner resource.
 	Source *string `pulumi:"source"`
-	// The system metadata relating to Partner Topic resource.
+	// The system metadata relating to the Event Grid resource.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Tags of the resource.
 	Tags map[string]string `pulumi:"tags"`
@@ -106,6 +106,11 @@ func (o LookupPartnerTopicResultOutput) ToLookupPartnerTopicResultOutputWithCont
 // Activation state of the partner topic.
 func (o LookupPartnerTopicResultOutput) ActivationState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPartnerTopicResult) *string { return v.ActivationState }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupPartnerTopicResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPartnerTopicResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Event Type information from the corresponding event channel.
@@ -165,7 +170,7 @@ func (o LookupPartnerTopicResultOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPartnerTopicResult) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
 
-// The system metadata relating to Partner Topic resource.
+// The system metadata relating to the Event Grid resource.
 func (o LookupPartnerTopicResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupPartnerTopicResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }

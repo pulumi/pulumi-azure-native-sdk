@@ -12,9 +12,7 @@ import (
 )
 
 // Get the replica and its properties.
-// Azure REST API version: 2023-03-01-preview.
-//
-// Other available API versions: 2023-06-01-preview, 2023-08-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-08-01-preview, 2024-10-01-preview.
+// Azure REST API version: 2024-03-01.
 func LookupWebPubSubReplica(ctx *pulumi.Context, args *LookupWebPubSubReplicaArgs, opts ...pulumi.InvokeOption) (*LookupWebPubSubReplicaResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebPubSubReplicaResult
@@ -22,7 +20,7 @@ func LookupWebPubSubReplica(ctx *pulumi.Context, args *LookupWebPubSubReplicaArg
 	if err != nil {
 		return nil, err
 	}
-	return &rv, nil
+	return rv.Defaults(), nil
 }
 
 type LookupWebPubSubReplicaArgs struct {
@@ -36,6 +34,8 @@ type LookupWebPubSubReplicaArgs struct {
 
 // A class represent a replica resource.
 type LookupWebPubSubReplicaResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -44,6 +44,13 @@ type LookupWebPubSubReplicaResult struct {
 	Name string `pulumi:"name"`
 	// Provisioning state of the resource.
 	ProvisioningState string `pulumi:"provisioningState"`
+	// Enable or disable the regional endpoint. Default to "Enabled".
+	// When it's Disabled, new connections will not be routed to this endpoint, however existing connections will not be affected.
+	RegionEndpointEnabled *string `pulumi:"regionEndpointEnabled"`
+	// Stop or start the resource.  Default to "false".
+	// When it's true, the data plane of the resource is shutdown.
+	// When it's false, the data plane of the resource is started.
+	ResourceStopped *string `pulumi:"resourceStopped"`
 	// The billing information of the resource.
 	Sku *ResourceSkuResponse `pulumi:"sku"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -54,6 +61,22 @@ type LookupWebPubSubReplicaResult struct {
 	Type string `pulumi:"type"`
 }
 
+// Defaults sets the appropriate defaults for LookupWebPubSubReplicaResult
+func (val *LookupWebPubSubReplicaResult) Defaults() *LookupWebPubSubReplicaResult {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.RegionEndpointEnabled == nil {
+		regionEndpointEnabled_ := "Enabled"
+		tmp.RegionEndpointEnabled = &regionEndpointEnabled_
+	}
+	if tmp.ResourceStopped == nil {
+		resourceStopped_ := "false"
+		tmp.ResourceStopped = &resourceStopped_
+	}
+	return &tmp
+}
 func LookupWebPubSubReplicaOutput(ctx *pulumi.Context, args LookupWebPubSubReplicaOutputArgs, opts ...pulumi.InvokeOption) LookupWebPubSubReplicaResultOutput {
 	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupWebPubSubReplicaResultOutput, error) {
@@ -91,6 +114,11 @@ func (o LookupWebPubSubReplicaResultOutput) ToLookupWebPubSubReplicaResultOutput
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupWebPubSubReplicaResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWebPubSubReplicaResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupWebPubSubReplicaResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebPubSubReplicaResult) string { return v.Id }).(pulumi.StringOutput)
@@ -109,6 +137,19 @@ func (o LookupWebPubSubReplicaResultOutput) Name() pulumi.StringOutput {
 // Provisioning state of the resource.
 func (o LookupWebPubSubReplicaResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebPubSubReplicaResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Enable or disable the regional endpoint. Default to "Enabled".
+// When it's Disabled, new connections will not be routed to this endpoint, however existing connections will not be affected.
+func (o LookupWebPubSubReplicaResultOutput) RegionEndpointEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupWebPubSubReplicaResult) *string { return v.RegionEndpointEnabled }).(pulumi.StringPtrOutput)
+}
+
+// Stop or start the resource.  Default to "false".
+// When it's true, the data plane of the resource is shutdown.
+// When it's false, the data plane of the resource is started.
+func (o LookupWebPubSubReplicaResultOutput) ResourceStopped() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupWebPubSubReplicaResult) *string { return v.ResourceStopped }).(pulumi.StringPtrOutput)
 }
 
 // The billing information of the resource.

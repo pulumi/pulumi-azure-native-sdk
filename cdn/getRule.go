@@ -12,9 +12,7 @@ import (
 )
 
 // Gets an existing delivery rule within a rule set.
-// Azure REST API version: 2023-05-01.
-//
-// Other available API versions: 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01.
+// Azure REST API version: 2024-09-01.
 func LookupRule(ctx *pulumi.Context, args *LookupRuleArgs, opts ...pulumi.InvokeOption) (*LookupRuleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRuleResult
@@ -40,6 +38,8 @@ type LookupRuleArgs struct {
 type LookupRuleResult struct {
 	// A list of actions that are executed when all the conditions of a rule are satisfied.
 	Actions []interface{} `pulumi:"actions"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// A list of conditions that must be matched for the actions to be executed
 	Conditions       []interface{} `pulumi:"conditions"`
 	DeploymentStatus string        `pulumi:"deploymentStatus"`
@@ -115,6 +115,11 @@ func (o LookupRuleResultOutput) ToLookupRuleResultOutputWithContext(ctx context.
 // A list of actions that are executed when all the conditions of a rule are satisfied.
 func (o LookupRuleResultOutput) Actions() pulumi.ArrayOutput {
 	return o.ApplyT(func(v LookupRuleResult) []interface{} { return v.Actions }).(pulumi.ArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupRuleResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRuleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A list of conditions that must be matched for the actions to be executed

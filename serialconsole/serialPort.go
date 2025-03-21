@@ -13,10 +13,12 @@ import (
 )
 
 // Represents the serial port of the parent resource.
-// Azure REST API version: 2018-05-01. Prior API version in Azure Native 1.x: 2018-05-01.
+// Azure REST API version: 2018-05-01. Prior API version in Azure Native 2.x: 2018-05-01.
 type SerialPort struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Resource name
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Specifies whether the port is enabled for a serial console connection.
@@ -148,6 +150,11 @@ func (o SerialPortOutput) ToSerialPortOutput() SerialPortOutput {
 
 func (o SerialPortOutput) ToSerialPortOutputWithContext(ctx context.Context) SerialPortOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o SerialPortOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SerialPort) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource name

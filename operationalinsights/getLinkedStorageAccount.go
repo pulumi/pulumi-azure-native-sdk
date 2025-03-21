@@ -12,9 +12,7 @@ import (
 )
 
 // Gets all linked storage account of a specific data source type associated with the specified workspace.
-// Azure REST API version: 2020-08-01.
-//
-// Other available API versions: 2023-09-01.
+// Azure REST API version: 2023-09-01.
 func LookupLinkedStorageAccount(ctx *pulumi.Context, args *LookupLinkedStorageAccountArgs, opts ...pulumi.InvokeOption) (*LookupLinkedStorageAccountResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupLinkedStorageAccountResult
@@ -36,6 +34,8 @@ type LookupLinkedStorageAccountArgs struct {
 
 // Linked storage accounts top level resource container.
 type LookupLinkedStorageAccountResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Linked storage accounts type.
 	DataSourceType string `pulumi:"dataSourceType"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -83,6 +83,11 @@ func (o LookupLinkedStorageAccountResultOutput) ToLookupLinkedStorageAccountResu
 
 func (o LookupLinkedStorageAccountResultOutput) ToLookupLinkedStorageAccountResultOutputWithContext(ctx context.Context) LookupLinkedStorageAccountResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupLinkedStorageAccountResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLinkedStorageAccountResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Linked storage accounts type.

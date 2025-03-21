@@ -32,6 +32,8 @@ type LookupPrometheusRuleGroupArgs struct {
 
 // The Prometheus rule group resource.
 type LookupPrometheusRuleGroupResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Apply rule to data from a specific cluster.
 	ClusterName *string `pulumi:"clusterName"`
 	// Rule group description.
@@ -91,6 +93,11 @@ func (o LookupPrometheusRuleGroupResultOutput) ToLookupPrometheusRuleGroupResult
 
 func (o LookupPrometheusRuleGroupResultOutput) ToLookupPrometheusRuleGroupResultOutputWithContext(ctx context.Context) LookupPrometheusRuleGroupResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupPrometheusRuleGroupResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPrometheusRuleGroupResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Apply rule to data from a specific cluster.

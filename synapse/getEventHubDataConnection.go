@@ -38,6 +38,8 @@ type LookupEventHubDataConnectionArgs struct {
 
 // Class representing an event hub data connection.
 type LookupEventHubDataConnectionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The event hub messages compression type
 	Compression *string `pulumi:"compression"`
 	// The event hub consumer group.
@@ -110,6 +112,11 @@ func (o LookupEventHubDataConnectionResultOutput) ToLookupEventHubDataConnection
 
 func (o LookupEventHubDataConnectionResultOutput) ToLookupEventHubDataConnectionResultOutputWithContext(ctx context.Context) LookupEventHubDataConnectionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupEventHubDataConnectionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEventHubDataConnectionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The event hub messages compression type

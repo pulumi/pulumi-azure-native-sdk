@@ -13,14 +13,14 @@ import (
 )
 
 // An attestation resource.
-// Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2021-01-01.
-//
-// Other available API versions: 2024-10-01.
+// Azure REST API version: 2024-10-01. Prior API version in Azure Native 2.x: 2022-09-01.
 type AttestationAtResourceGroup struct {
 	pulumi.CustomResourceState
 
 	// The time the evidence was assessed
 	AssessmentDate pulumi.StringPtrOutput `pulumi:"assessmentDate"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Comments describing why this attestation was created.
 	Comments pulumi.StringPtrOutput `pulumi:"comments"`
 	// The compliance state that should be set on the resource.
@@ -197,6 +197,11 @@ func (o AttestationAtResourceGroupOutput) ToAttestationAtResourceGroupOutputWith
 // The time the evidence was assessed
 func (o AttestationAtResourceGroupOutput) AssessmentDate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AttestationAtResourceGroup) pulumi.StringPtrOutput { return v.AssessmentDate }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o AttestationAtResourceGroupOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *AttestationAtResourceGroup) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Comments describing why this attestation was created.

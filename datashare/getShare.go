@@ -34,6 +34,8 @@ type LookupShareArgs struct {
 
 // A share data transfer object.
 type LookupShareResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Time at which the share was created.
 	CreatedAt string `pulumi:"createdAt"`
 	// Share description.
@@ -93,6 +95,11 @@ func (o LookupShareResultOutput) ToLookupShareResultOutput() LookupShareResultOu
 
 func (o LookupShareResultOutput) ToLookupShareResultOutputWithContext(ctx context.Context) LookupShareResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupShareResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupShareResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Time at which the share was created.

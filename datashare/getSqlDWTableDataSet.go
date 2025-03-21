@@ -36,6 +36,8 @@ type LookupSqlDWTableDataSetArgs struct {
 
 // A SQL DW table data set.
 type LookupSqlDWTableDataSetResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Unique id for identifying a data set resource
 	DataSetId string `pulumi:"dataSetId"`
 	// DataWarehouse name of the source data set
@@ -96,6 +98,11 @@ func (o LookupSqlDWTableDataSetResultOutput) ToLookupSqlDWTableDataSetResultOutp
 
 func (o LookupSqlDWTableDataSetResultOutput) ToLookupSqlDWTableDataSetResultOutputWithContext(ctx context.Context) LookupSqlDWTableDataSetResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupSqlDWTableDataSetResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSqlDWTableDataSetResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Unique id for identifying a data set resource

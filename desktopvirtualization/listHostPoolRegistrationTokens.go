@@ -11,10 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Operation to list the RegistrationTokens associated with the HostPool.
-// Azure REST API version: 2024-04-08-preview.
-//
-// Other available API versions: 2024-04-03, 2024-08-08-preview.
+// Operation to list the RegistrationTokens associated with the HostPool
+// Azure REST API version: 2024-04-03.
 func ListHostPoolRegistrationTokens(ctx *pulumi.Context, args *ListHostPoolRegistrationTokensArgs, opts ...pulumi.InvokeOption) (*ListHostPoolRegistrationTokensResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListHostPoolRegistrationTokensResult

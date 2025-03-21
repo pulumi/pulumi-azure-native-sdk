@@ -36,6 +36,8 @@ type LookupNetworkTapResult struct {
 	AdministrativeState string `pulumi:"administrativeState"`
 	// Switch configuration description.
 	Annotation *string `pulumi:"annotation"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets the configurations state of the resource.
 	ConfigurationState string `pulumi:"configurationState"`
 	// List of destinations to send the filter traffic.
@@ -117,6 +119,11 @@ func (o LookupNetworkTapResultOutput) AdministrativeState() pulumi.StringOutput 
 // Switch configuration description.
 func (o LookupNetworkTapResultOutput) Annotation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNetworkTapResult) *string { return v.Annotation }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupNetworkTapResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkTapResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets the configurations state of the resource.

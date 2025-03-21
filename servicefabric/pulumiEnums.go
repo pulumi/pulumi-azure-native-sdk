@@ -2051,7 +2051,7 @@ func (in *nsgProtocolPtr) ToNsgProtocolPtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(NsgProtocolPtrOutput)
 }
 
-// Specifies how the service is partitioned.
+// Enumerates the ways that a service can be partitioned.
 type PartitionScheme string
 
 const (
@@ -2227,6 +2227,172 @@ func (in *privateEndpointNetworkPoliciesPtr) ToPrivateEndpointNetworkPoliciesPtr
 
 func (in *privateEndpointNetworkPoliciesPtr) ToPrivateEndpointNetworkPoliciesPtrOutputWithContext(ctx context.Context) PrivateEndpointNetworkPoliciesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PrivateEndpointNetworkPoliciesPtrOutput)
+}
+
+// Specifies whether the IP configuration's private IP is IPv4 or IPv6. Default is IPv4.
+type PrivateIPAddressVersion string
+
+const (
+	PrivateIPAddressVersionIPv4 = PrivateIPAddressVersion("IPv4")
+	PrivateIPAddressVersionIPv6 = PrivateIPAddressVersion("IPv6")
+)
+
+func (PrivateIPAddressVersion) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateIPAddressVersion)(nil)).Elem()
+}
+
+func (e PrivateIPAddressVersion) ToPrivateIPAddressVersionOutput() PrivateIPAddressVersionOutput {
+	return pulumi.ToOutput(e).(PrivateIPAddressVersionOutput)
+}
+
+func (e PrivateIPAddressVersion) ToPrivateIPAddressVersionOutputWithContext(ctx context.Context) PrivateIPAddressVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(PrivateIPAddressVersionOutput)
+}
+
+func (e PrivateIPAddressVersion) ToPrivateIPAddressVersionPtrOutput() PrivateIPAddressVersionPtrOutput {
+	return e.ToPrivateIPAddressVersionPtrOutputWithContext(context.Background())
+}
+
+func (e PrivateIPAddressVersion) ToPrivateIPAddressVersionPtrOutputWithContext(ctx context.Context) PrivateIPAddressVersionPtrOutput {
+	return PrivateIPAddressVersion(e).ToPrivateIPAddressVersionOutputWithContext(ctx).ToPrivateIPAddressVersionPtrOutputWithContext(ctx)
+}
+
+func (e PrivateIPAddressVersion) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PrivateIPAddressVersion) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PrivateIPAddressVersion) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e PrivateIPAddressVersion) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type PrivateIPAddressVersionOutput struct{ *pulumi.OutputState }
+
+func (PrivateIPAddressVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateIPAddressVersion)(nil)).Elem()
+}
+
+func (o PrivateIPAddressVersionOutput) ToPrivateIPAddressVersionOutput() PrivateIPAddressVersionOutput {
+	return o
+}
+
+func (o PrivateIPAddressVersionOutput) ToPrivateIPAddressVersionOutputWithContext(ctx context.Context) PrivateIPAddressVersionOutput {
+	return o
+}
+
+func (o PrivateIPAddressVersionOutput) ToPrivateIPAddressVersionPtrOutput() PrivateIPAddressVersionPtrOutput {
+	return o.ToPrivateIPAddressVersionPtrOutputWithContext(context.Background())
+}
+
+func (o PrivateIPAddressVersionOutput) ToPrivateIPAddressVersionPtrOutputWithContext(ctx context.Context) PrivateIPAddressVersionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateIPAddressVersion) *PrivateIPAddressVersion {
+		return &v
+	}).(PrivateIPAddressVersionPtrOutput)
+}
+
+func (o PrivateIPAddressVersionOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o PrivateIPAddressVersionOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PrivateIPAddressVersion) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o PrivateIPAddressVersionOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PrivateIPAddressVersionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PrivateIPAddressVersion) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type PrivateIPAddressVersionPtrOutput struct{ *pulumi.OutputState }
+
+func (PrivateIPAddressVersionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateIPAddressVersion)(nil)).Elem()
+}
+
+func (o PrivateIPAddressVersionPtrOutput) ToPrivateIPAddressVersionPtrOutput() PrivateIPAddressVersionPtrOutput {
+	return o
+}
+
+func (o PrivateIPAddressVersionPtrOutput) ToPrivateIPAddressVersionPtrOutputWithContext(ctx context.Context) PrivateIPAddressVersionPtrOutput {
+	return o
+}
+
+func (o PrivateIPAddressVersionPtrOutput) Elem() PrivateIPAddressVersionOutput {
+	return o.ApplyT(func(v *PrivateIPAddressVersion) PrivateIPAddressVersion {
+		if v != nil {
+			return *v
+		}
+		var ret PrivateIPAddressVersion
+		return ret
+	}).(PrivateIPAddressVersionOutput)
+}
+
+func (o PrivateIPAddressVersionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PrivateIPAddressVersionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *PrivateIPAddressVersion) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// PrivateIPAddressVersionInput is an input type that accepts values of the PrivateIPAddressVersion enum
+// A concrete instance of `PrivateIPAddressVersionInput` can be one of the following:
+//
+//	PrivateIPAddressVersionIPv4
+//	PrivateIPAddressVersionIPv6
+type PrivateIPAddressVersionInput interface {
+	pulumi.Input
+
+	ToPrivateIPAddressVersionOutput() PrivateIPAddressVersionOutput
+	ToPrivateIPAddressVersionOutputWithContext(context.Context) PrivateIPAddressVersionOutput
+}
+
+var privateIPAddressVersionPtrType = reflect.TypeOf((**PrivateIPAddressVersion)(nil)).Elem()
+
+type PrivateIPAddressVersionPtrInput interface {
+	pulumi.Input
+
+	ToPrivateIPAddressVersionPtrOutput() PrivateIPAddressVersionPtrOutput
+	ToPrivateIPAddressVersionPtrOutputWithContext(context.Context) PrivateIPAddressVersionPtrOutput
+}
+
+type privateIPAddressVersionPtr string
+
+func PrivateIPAddressVersionPtr(v string) PrivateIPAddressVersionPtrInput {
+	return (*privateIPAddressVersionPtr)(&v)
+}
+
+func (*privateIPAddressVersionPtr) ElementType() reflect.Type {
+	return privateIPAddressVersionPtrType
+}
+
+func (in *privateIPAddressVersionPtr) ToPrivateIPAddressVersionPtrOutput() PrivateIPAddressVersionPtrOutput {
+	return pulumi.ToOutput(in).(PrivateIPAddressVersionPtrOutput)
+}
+
+func (in *privateIPAddressVersionPtr) ToPrivateIPAddressVersionPtrOutputWithContext(ctx context.Context) PrivateIPAddressVersionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(PrivateIPAddressVersionPtrOutput)
 }
 
 // Enable or Disable apply network policies on private link service in the subnet.
@@ -2729,6 +2895,172 @@ func (in *protocolPtr) ToProtocolPtrOutputWithContext(ctx context.Context) Proto
 	return pulumi.ToOutputWithContext(ctx, in).(ProtocolPtrOutput)
 }
 
+// Specifies whether the IP configuration's public IP is IPv4 or IPv6. Default is IPv4.
+type PublicIPAddressVersion string
+
+const (
+	PublicIPAddressVersionIPv4 = PublicIPAddressVersion("IPv4")
+	PublicIPAddressVersionIPv6 = PublicIPAddressVersion("IPv6")
+)
+
+func (PublicIPAddressVersion) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicIPAddressVersion)(nil)).Elem()
+}
+
+func (e PublicIPAddressVersion) ToPublicIPAddressVersionOutput() PublicIPAddressVersionOutput {
+	return pulumi.ToOutput(e).(PublicIPAddressVersionOutput)
+}
+
+func (e PublicIPAddressVersion) ToPublicIPAddressVersionOutputWithContext(ctx context.Context) PublicIPAddressVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(PublicIPAddressVersionOutput)
+}
+
+func (e PublicIPAddressVersion) ToPublicIPAddressVersionPtrOutput() PublicIPAddressVersionPtrOutput {
+	return e.ToPublicIPAddressVersionPtrOutputWithContext(context.Background())
+}
+
+func (e PublicIPAddressVersion) ToPublicIPAddressVersionPtrOutputWithContext(ctx context.Context) PublicIPAddressVersionPtrOutput {
+	return PublicIPAddressVersion(e).ToPublicIPAddressVersionOutputWithContext(ctx).ToPublicIPAddressVersionPtrOutputWithContext(ctx)
+}
+
+func (e PublicIPAddressVersion) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PublicIPAddressVersion) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PublicIPAddressVersion) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e PublicIPAddressVersion) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type PublicIPAddressVersionOutput struct{ *pulumi.OutputState }
+
+func (PublicIPAddressVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicIPAddressVersion)(nil)).Elem()
+}
+
+func (o PublicIPAddressVersionOutput) ToPublicIPAddressVersionOutput() PublicIPAddressVersionOutput {
+	return o
+}
+
+func (o PublicIPAddressVersionOutput) ToPublicIPAddressVersionOutputWithContext(ctx context.Context) PublicIPAddressVersionOutput {
+	return o
+}
+
+func (o PublicIPAddressVersionOutput) ToPublicIPAddressVersionPtrOutput() PublicIPAddressVersionPtrOutput {
+	return o.ToPublicIPAddressVersionPtrOutputWithContext(context.Background())
+}
+
+func (o PublicIPAddressVersionOutput) ToPublicIPAddressVersionPtrOutputWithContext(ctx context.Context) PublicIPAddressVersionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PublicIPAddressVersion) *PublicIPAddressVersion {
+		return &v
+	}).(PublicIPAddressVersionPtrOutput)
+}
+
+func (o PublicIPAddressVersionOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o PublicIPAddressVersionOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PublicIPAddressVersion) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o PublicIPAddressVersionOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PublicIPAddressVersionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PublicIPAddressVersion) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type PublicIPAddressVersionPtrOutput struct{ *pulumi.OutputState }
+
+func (PublicIPAddressVersionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PublicIPAddressVersion)(nil)).Elem()
+}
+
+func (o PublicIPAddressVersionPtrOutput) ToPublicIPAddressVersionPtrOutput() PublicIPAddressVersionPtrOutput {
+	return o
+}
+
+func (o PublicIPAddressVersionPtrOutput) ToPublicIPAddressVersionPtrOutputWithContext(ctx context.Context) PublicIPAddressVersionPtrOutput {
+	return o
+}
+
+func (o PublicIPAddressVersionPtrOutput) Elem() PublicIPAddressVersionOutput {
+	return o.ApplyT(func(v *PublicIPAddressVersion) PublicIPAddressVersion {
+		if v != nil {
+			return *v
+		}
+		var ret PublicIPAddressVersion
+		return ret
+	}).(PublicIPAddressVersionOutput)
+}
+
+func (o PublicIPAddressVersionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PublicIPAddressVersionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *PublicIPAddressVersion) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// PublicIPAddressVersionInput is an input type that accepts values of the PublicIPAddressVersion enum
+// A concrete instance of `PublicIPAddressVersionInput` can be one of the following:
+//
+//	PublicIPAddressVersionIPv4
+//	PublicIPAddressVersionIPv6
+type PublicIPAddressVersionInput interface {
+	pulumi.Input
+
+	ToPublicIPAddressVersionOutput() PublicIPAddressVersionOutput
+	ToPublicIPAddressVersionOutputWithContext(context.Context) PublicIPAddressVersionOutput
+}
+
+var publicIPAddressVersionPtrType = reflect.TypeOf((**PublicIPAddressVersion)(nil)).Elem()
+
+type PublicIPAddressVersionPtrInput interface {
+	pulumi.Input
+
+	ToPublicIPAddressVersionPtrOutput() PublicIPAddressVersionPtrOutput
+	ToPublicIPAddressVersionPtrOutputWithContext(context.Context) PublicIPAddressVersionPtrOutput
+}
+
+type publicIPAddressVersionPtr string
+
+func PublicIPAddressVersionPtr(v string) PublicIPAddressVersionPtrInput {
+	return (*publicIPAddressVersionPtr)(&v)
+}
+
+func (*publicIPAddressVersionPtr) ElementType() reflect.Type {
+	return publicIPAddressVersionPtrType
+}
+
+func (in *publicIPAddressVersionPtr) ToPublicIPAddressVersionPtrOutput() PublicIPAddressVersionPtrOutput {
+	return pulumi.ToOutput(in).(PublicIPAddressVersionPtrOutput)
+}
+
+func (in *publicIPAddressVersionPtr) ToPublicIPAddressVersionPtrOutputWithContext(ctx context.Context) PublicIPAddressVersionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(PublicIPAddressVersionPtrOutput)
+}
+
 // The mode used to monitor health during a rolling upgrade. The values are Monitored, and UnmonitoredAuto.
 type RollingUpgradeMode string
 
@@ -2897,12 +3229,14 @@ func (in *rollingUpgradeModePtr) ToRollingUpgradeModePtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(RollingUpgradeModePtrOutput)
 }
 
-// Specifies the security type of the nodeType. Only TrustedLaunch is currently supported
+// Specifies the security type of the nodeType. Only Standard and TrustedLaunch are currently supported
 type SecurityType string
 
 const (
 	// Trusted Launch is a security type that secures generation 2 virtual machines.
 	SecurityTypeTrustedLaunch = SecurityType("TrustedLaunch")
+	// Standard is the default security type for all machines.
+	SecurityTypeStandard = SecurityType("Standard")
 )
 
 func (SecurityType) ElementType() reflect.Type {
@@ -3028,6 +3362,7 @@ func (o SecurityTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context)
 // A concrete instance of `SecurityTypeInput` can be one of the following:
 //
 //	SecurityTypeTrustedLaunch
+//	SecurityTypeStandard
 type SecurityTypeInput interface {
 	pulumi.Input
 
@@ -3598,7 +3933,7 @@ const (
 	ServicePlacementPolicyTypeNonPartiallyPlaceService = ServicePlacementPolicyType("NonPartiallyPlaceService")
 )
 
-// Specifies the mechanism associated with this scaling policy.
+// Enumerates the ways that a service can be partitioned.
 type ServiceScalingMechanismKind string
 
 const (
@@ -3608,7 +3943,7 @@ const (
 	ServiceScalingMechanismKindAddRemoveIncrementalNamedPartition = ServiceScalingMechanismKind("AddRemoveIncrementalNamedPartition")
 )
 
-// Specifies the trigger associated with this scaling policy.
+// Enumerates the ways that a service can be partitioned.
 type ServiceScalingTriggerKind string
 
 const (
@@ -3954,6 +4289,171 @@ func (in *vmSetupActionPtr) ToVmSetupActionPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(VmSetupActionPtrOutput)
 }
 
+// Vm extension setup order.
+type VmssExtensionSetupOrder string
+
+const (
+	// Indicates that the vm extension should run before the service fabric runtime starts.
+	VmssExtensionSetupOrderBeforeSFRuntime = VmssExtensionSetupOrder("BeforeSFRuntime")
+)
+
+func (VmssExtensionSetupOrder) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmssExtensionSetupOrder)(nil)).Elem()
+}
+
+func (e VmssExtensionSetupOrder) ToVmssExtensionSetupOrderOutput() VmssExtensionSetupOrderOutput {
+	return pulumi.ToOutput(e).(VmssExtensionSetupOrderOutput)
+}
+
+func (e VmssExtensionSetupOrder) ToVmssExtensionSetupOrderOutputWithContext(ctx context.Context) VmssExtensionSetupOrderOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(VmssExtensionSetupOrderOutput)
+}
+
+func (e VmssExtensionSetupOrder) ToVmssExtensionSetupOrderPtrOutput() VmssExtensionSetupOrderPtrOutput {
+	return e.ToVmssExtensionSetupOrderPtrOutputWithContext(context.Background())
+}
+
+func (e VmssExtensionSetupOrder) ToVmssExtensionSetupOrderPtrOutputWithContext(ctx context.Context) VmssExtensionSetupOrderPtrOutput {
+	return VmssExtensionSetupOrder(e).ToVmssExtensionSetupOrderOutputWithContext(ctx).ToVmssExtensionSetupOrderPtrOutputWithContext(ctx)
+}
+
+func (e VmssExtensionSetupOrder) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e VmssExtensionSetupOrder) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e VmssExtensionSetupOrder) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e VmssExtensionSetupOrder) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type VmssExtensionSetupOrderOutput struct{ *pulumi.OutputState }
+
+func (VmssExtensionSetupOrderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmssExtensionSetupOrder)(nil)).Elem()
+}
+
+func (o VmssExtensionSetupOrderOutput) ToVmssExtensionSetupOrderOutput() VmssExtensionSetupOrderOutput {
+	return o
+}
+
+func (o VmssExtensionSetupOrderOutput) ToVmssExtensionSetupOrderOutputWithContext(ctx context.Context) VmssExtensionSetupOrderOutput {
+	return o
+}
+
+func (o VmssExtensionSetupOrderOutput) ToVmssExtensionSetupOrderPtrOutput() VmssExtensionSetupOrderPtrOutput {
+	return o.ToVmssExtensionSetupOrderPtrOutputWithContext(context.Background())
+}
+
+func (o VmssExtensionSetupOrderOutput) ToVmssExtensionSetupOrderPtrOutputWithContext(ctx context.Context) VmssExtensionSetupOrderPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmssExtensionSetupOrder) *VmssExtensionSetupOrder {
+		return &v
+	}).(VmssExtensionSetupOrderPtrOutput)
+}
+
+func (o VmssExtensionSetupOrderOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o VmssExtensionSetupOrderOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e VmssExtensionSetupOrder) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o VmssExtensionSetupOrderOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o VmssExtensionSetupOrderOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e VmssExtensionSetupOrder) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type VmssExtensionSetupOrderPtrOutput struct{ *pulumi.OutputState }
+
+func (VmssExtensionSetupOrderPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmssExtensionSetupOrder)(nil)).Elem()
+}
+
+func (o VmssExtensionSetupOrderPtrOutput) ToVmssExtensionSetupOrderPtrOutput() VmssExtensionSetupOrderPtrOutput {
+	return o
+}
+
+func (o VmssExtensionSetupOrderPtrOutput) ToVmssExtensionSetupOrderPtrOutputWithContext(ctx context.Context) VmssExtensionSetupOrderPtrOutput {
+	return o
+}
+
+func (o VmssExtensionSetupOrderPtrOutput) Elem() VmssExtensionSetupOrderOutput {
+	return o.ApplyT(func(v *VmssExtensionSetupOrder) VmssExtensionSetupOrder {
+		if v != nil {
+			return *v
+		}
+		var ret VmssExtensionSetupOrder
+		return ret
+	}).(VmssExtensionSetupOrderOutput)
+}
+
+func (o VmssExtensionSetupOrderPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o VmssExtensionSetupOrderPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *VmssExtensionSetupOrder) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// VmssExtensionSetupOrderInput is an input type that accepts values of the VmssExtensionSetupOrder enum
+// A concrete instance of `VmssExtensionSetupOrderInput` can be one of the following:
+//
+//	VmssExtensionSetupOrderBeforeSFRuntime
+type VmssExtensionSetupOrderInput interface {
+	pulumi.Input
+
+	ToVmssExtensionSetupOrderOutput() VmssExtensionSetupOrderOutput
+	ToVmssExtensionSetupOrderOutputWithContext(context.Context) VmssExtensionSetupOrderOutput
+}
+
+var vmssExtensionSetupOrderPtrType = reflect.TypeOf((**VmssExtensionSetupOrder)(nil)).Elem()
+
+type VmssExtensionSetupOrderPtrInput interface {
+	pulumi.Input
+
+	ToVmssExtensionSetupOrderPtrOutput() VmssExtensionSetupOrderPtrOutput
+	ToVmssExtensionSetupOrderPtrOutputWithContext(context.Context) VmssExtensionSetupOrderPtrOutput
+}
+
+type vmssExtensionSetupOrderPtr string
+
+func VmssExtensionSetupOrderPtr(v string) VmssExtensionSetupOrderPtrInput {
+	return (*vmssExtensionSetupOrderPtr)(&v)
+}
+
+func (*vmssExtensionSetupOrderPtr) ElementType() reflect.Type {
+	return vmssExtensionSetupOrderPtrType
+}
+
+func (in *vmssExtensionSetupOrderPtr) ToVmssExtensionSetupOrderPtrOutput() VmssExtensionSetupOrderPtrOutput {
+	return pulumi.ToOutput(in).(VmssExtensionSetupOrderPtrOutput)
+}
+
+func (in *vmssExtensionSetupOrderPtr) ToVmssExtensionSetupOrderPtrOutputWithContext(ctx context.Context) VmssExtensionSetupOrderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(VmssExtensionSetupOrderPtrOutput)
+}
+
 // Indicates the update mode for Cross Az clusters.
 type ZonalUpdateMode string
 
@@ -4149,12 +4649,16 @@ func init() {
 	pulumi.RegisterOutputType(NsgProtocolPtrOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointNetworkPoliciesOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointNetworkPoliciesPtrOutput{})
+	pulumi.RegisterOutputType(PrivateIPAddressVersionOutput{})
+	pulumi.RegisterOutputType(PrivateIPAddressVersionPtrOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceNetworkPoliciesOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceNetworkPoliciesPtrOutput{})
 	pulumi.RegisterOutputType(ProbeProtocolOutput{})
 	pulumi.RegisterOutputType(ProbeProtocolPtrOutput{})
 	pulumi.RegisterOutputType(ProtocolOutput{})
 	pulumi.RegisterOutputType(ProtocolPtrOutput{})
+	pulumi.RegisterOutputType(PublicIPAddressVersionOutput{})
+	pulumi.RegisterOutputType(PublicIPAddressVersionPtrOutput{})
 	pulumi.RegisterOutputType(RollingUpgradeModeOutput{})
 	pulumi.RegisterOutputType(RollingUpgradeModePtrOutput{})
 	pulumi.RegisterOutputType(SecurityTypeOutput{})
@@ -4169,6 +4673,8 @@ func init() {
 	pulumi.RegisterOutputType(SkuNamePtrOutput{})
 	pulumi.RegisterOutputType(VmSetupActionOutput{})
 	pulumi.RegisterOutputType(VmSetupActionPtrOutput{})
+	pulumi.RegisterOutputType(VmssExtensionSetupOrderOutput{})
+	pulumi.RegisterOutputType(VmssExtensionSetupOrderPtrOutput{})
 	pulumi.RegisterOutputType(ZonalUpdateModeOutput{})
 	pulumi.RegisterOutputType(ZonalUpdateModePtrOutput{})
 }

@@ -13,10 +13,12 @@ import (
 )
 
 // A share subscription data transfer object.
-// Azure REST API version: 2021-08-01. Prior API version in Azure Native 1.x: 2020-09-01.
+// Azure REST API version: 2021-08-01. Prior API version in Azure Native 2.x: 2021-08-01.
 type ShareSubscription struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Time at which the share subscription was created.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// The expiration date of the share subscription.
@@ -190,6 +192,11 @@ func (o ShareSubscriptionOutput) ToShareSubscriptionOutput() ShareSubscriptionOu
 
 func (o ShareSubscriptionOutput) ToShareSubscriptionOutputWithContext(ctx context.Context) ShareSubscriptionOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ShareSubscriptionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ShareSubscription) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Time at which the share subscription was created.

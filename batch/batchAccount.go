@@ -13,9 +13,7 @@ import (
 )
 
 // Contains information about an Azure Batch account.
-// Azure REST API version: 2023-05-01. Prior API version in Azure Native 1.x: 2021-01-01.
-//
-// Other available API versions: 2022-01-01, 2023-11-01, 2024-02-01, 2024-07-01.
+// Azure REST API version: 2024-07-01. Prior API version in Azure Native 2.x: 2023-05-01.
 type BatchAccount struct {
 	pulumi.CustomResourceState
 
@@ -26,6 +24,8 @@ type BatchAccount struct {
 	AllowedAuthenticationModes pulumi.StringArrayOutput `pulumi:"allowedAuthenticationModes"`
 	// Contains information about the auto-storage account associated with a Batch account.
 	AutoStorage AutoStoragePropertiesResponseOutput `pulumi:"autoStorage"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// For accounts with PoolAllocationMode set to UserSubscription, quota is managed on the subscription so this value is not returned.
 	DedicatedCoreQuota pulumi.IntOutput `pulumi:"dedicatedCoreQuota"`
 	// A list of the dedicated core quota per Virtual Machine family for the Batch account. For accounts with PoolAllocationMode set to UserSubscription, quota is managed on the subscription so this value is not returned.
@@ -185,7 +185,7 @@ type batchAccountArgs struct {
 	Location *string `pulumi:"location"`
 	// The network profile only takes effect when publicNetworkAccess is enabled.
 	NetworkProfile *NetworkProfile `pulumi:"networkProfile"`
-	// The pool allocation mode also affects how clients may authenticate to the Batch Service API. If the mode is BatchService, clients may authenticate using access keys or Azure Active Directory. If the mode is UserSubscription, clients must use Azure Active Directory. The default is BatchService.
+	// The pool allocation mode also affects how clients may authenticate to the Batch Service API. If the mode is BatchService, clients may authenticate using access keys or Microsoft Entra ID. If the mode is UserSubscription, clients must use Microsoft Entra ID. The default is BatchService.
 	PoolAllocationMode *PoolAllocationMode `pulumi:"poolAllocationMode"`
 	// If not specified, the default value is 'enabled'.
 	PublicNetworkAccess *PublicNetworkAccessType `pulumi:"publicNetworkAccess"`
@@ -213,7 +213,7 @@ type BatchAccountArgs struct {
 	Location pulumi.StringPtrInput
 	// The network profile only takes effect when publicNetworkAccess is enabled.
 	NetworkProfile NetworkProfilePtrInput
-	// The pool allocation mode also affects how clients may authenticate to the Batch Service API. If the mode is BatchService, clients may authenticate using access keys or Azure Active Directory. If the mode is UserSubscription, clients must use Azure Active Directory. The default is BatchService.
+	// The pool allocation mode also affects how clients may authenticate to the Batch Service API. If the mode is BatchService, clients may authenticate using access keys or Microsoft Entra ID. If the mode is UserSubscription, clients must use Microsoft Entra ID. The default is BatchService.
 	PoolAllocationMode PoolAllocationModePtrInput
 	// If not specified, the default value is 'enabled'.
 	PublicNetworkAccess PublicNetworkAccessTypePtrInput
@@ -277,6 +277,11 @@ func (o BatchAccountOutput) AllowedAuthenticationModes() pulumi.StringArrayOutpu
 // Contains information about the auto-storage account associated with a Batch account.
 func (o BatchAccountOutput) AutoStorage() AutoStoragePropertiesResponseOutput {
 	return o.ApplyT(func(v *BatchAccount) AutoStoragePropertiesResponseOutput { return v.AutoStorage }).(AutoStoragePropertiesResponseOutput)
+}
+
+// The Azure API version of the resource.
+func (o BatchAccountOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *BatchAccount) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // For accounts with PoolAllocationMode set to UserSubscription, quota is managed on the subscription so this value is not returned.

@@ -13,12 +13,12 @@ import (
 )
 
 // Server trust certificate imported from box to enable connection between box and Sql Managed Instance.
-// Azure REST API version: 2021-11-01. Prior API version in Azure Native 1.x: 2021-05-01-preview.
-//
-// Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
+// Azure REST API version: 2021-11-01. Prior API version in Azure Native 2.x: 2021-11-01.
 type ServerTrustCertificate struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The certificate name
 	CertificateName pulumi.StringOutput `pulumi:"certificateName"`
 	// Resource name.
@@ -173,6 +173,11 @@ func (o ServerTrustCertificateOutput) ToServerTrustCertificateOutput() ServerTru
 
 func (o ServerTrustCertificateOutput) ToServerTrustCertificateOutputWithContext(ctx context.Context) ServerTrustCertificateOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ServerTrustCertificateOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerTrustCertificate) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The certificate name

@@ -13,14 +13,14 @@ import (
 )
 
 // Describes a VMSS VM Extension.
-// Azure REST API version: 2023-03-01. Prior API version in Azure Native 1.x: 2021-03-01.
-//
-// Other available API versions: 2021-11-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01.
+// Azure REST API version: 2024-11-01. Prior API version in Azure Native 2.x: 2023-03-01.
 type VirtualMachineScaleSetVMExtension struct {
 	pulumi.CustomResourceState
 
 	// Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
 	AutoUpgradeMinorVersion pulumi.BoolPtrOutput `pulumi:"autoUpgradeMinorVersion"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Indicates whether the extension should be automatically upgraded by the platform if there is a newer version of the extension available.
 	EnableAutomaticUpgrade pulumi.BoolPtrOutput `pulumi:"enableAutomaticUpgrade"`
 	// How the extension handler should be forced to update even if the extension configuration has not changed.
@@ -115,6 +115,9 @@ func NewVirtualMachineScaleSetVMExtension(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:compute/v20240701:VirtualMachineScaleSetVMExtension"),
+		},
+		{
+			Type: pulumi.String("azure-native:compute/v20241101:VirtualMachineScaleSetVMExtension"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -265,6 +268,11 @@ func (o VirtualMachineScaleSetVMExtensionOutput) ToVirtualMachineScaleSetVMExten
 // Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
 func (o VirtualMachineScaleSetVMExtensionOutput) AutoUpgradeMinorVersion() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetVMExtension) pulumi.BoolPtrOutput { return v.AutoUpgradeMinorVersion }).(pulumi.BoolPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o VirtualMachineScaleSetVMExtensionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetVMExtension) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Indicates whether the extension should be automatically upgraded by the platform if there is a newer version of the extension available.

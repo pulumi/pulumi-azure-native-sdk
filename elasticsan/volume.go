@@ -13,25 +13,27 @@ import (
 )
 
 // Response for Volume request.
-// Azure REST API version: 2021-11-20-preview. Prior API version in Azure Native 1.x: 2021-11-20-preview.
-//
-// Other available API versions: 2022-12-01-preview, 2023-01-01, 2024-05-01, 2024-06-01-preview.
+// Azure REST API version: 2024-05-01. Prior API version in Azure Native 2.x: 2021-11-20-preview.
 type Volume struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// State of the operation on the resource.
 	CreationData SourceCreationDataResponsePtrOutput `pulumi:"creationData"`
-	// Azure resource name.
+	// Parent resource information.
+	ManagedBy ManagedByInfoResponsePtrOutput `pulumi:"managedBy"`
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
+	// State of the operation on the resource.
+	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Volume size.
-	SizeGiB pulumi.Float64PtrOutput `pulumi:"sizeGiB"`
+	SizeGiB pulumi.Float64Output `pulumi:"sizeGiB"`
 	// Storage target information
 	StorageTarget IscsiTargetInfoResponseOutput `pulumi:"storageTarget"`
-	// Resource metadata required by ARM RPC
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// Azure resource tags.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// Azure resource type.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Unique Id of the volume in GUID format
 	VolumeId pulumi.StringOutput `pulumi:"volumeId"`
@@ -49,6 +51,9 @@ func NewVolume(ctx *pulumi.Context,
 	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.SizeGiB == nil {
+		return nil, errors.New("invalid value for required argument 'SizeGiB'")
 	}
 	if args.VolumeGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'VolumeGroupName'")
@@ -108,12 +113,12 @@ type volumeArgs struct {
 	CreationData *SourceCreationData `pulumi:"creationData"`
 	// The name of the ElasticSan.
 	ElasticSanName string `pulumi:"elasticSanName"`
+	// Parent resource information.
+	ManagedBy *ManagedByInfo `pulumi:"managedBy"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Volume size.
-	SizeGiB *float64 `pulumi:"sizeGiB"`
-	// Azure resource tags.
-	Tags map[string]string `pulumi:"tags"`
+	SizeGiB float64 `pulumi:"sizeGiB"`
 	// The name of the VolumeGroup.
 	VolumeGroupName string `pulumi:"volumeGroupName"`
 	// The name of the Volume.
@@ -126,12 +131,12 @@ type VolumeArgs struct {
 	CreationData SourceCreationDataPtrInput
 	// The name of the ElasticSan.
 	ElasticSanName pulumi.StringInput
+	// Parent resource information.
+	ManagedBy ManagedByInfoPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Volume size.
-	SizeGiB pulumi.Float64PtrInput
-	// Azure resource tags.
-	Tags pulumi.StringMapInput
+	SizeGiB pulumi.Float64Input
 	// The name of the VolumeGroup.
 	VolumeGroupName pulumi.StringInput
 	// The name of the Volume.
@@ -175,19 +180,34 @@ func (o VolumeOutput) ToVolumeOutputWithContext(ctx context.Context) VolumeOutpu
 	return o
 }
 
+// The Azure API version of the resource.
+func (o VolumeOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // State of the operation on the resource.
 func (o VolumeOutput) CreationData() SourceCreationDataResponsePtrOutput {
 	return o.ApplyT(func(v *Volume) SourceCreationDataResponsePtrOutput { return v.CreationData }).(SourceCreationDataResponsePtrOutput)
 }
 
-// Azure resource name.
+// Parent resource information.
+func (o VolumeOutput) ManagedBy() ManagedByInfoResponsePtrOutput {
+	return o.ApplyT(func(v *Volume) ManagedByInfoResponsePtrOutput { return v.ManagedBy }).(ManagedByInfoResponsePtrOutput)
+}
+
+// The name of the resource
 func (o VolumeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// State of the operation on the resource.
+func (o VolumeOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
 // Volume size.
-func (o VolumeOutput) SizeGiB() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *Volume) pulumi.Float64PtrOutput { return v.SizeGiB }).(pulumi.Float64PtrOutput)
+func (o VolumeOutput) SizeGiB() pulumi.Float64Output {
+	return o.ApplyT(func(v *Volume) pulumi.Float64Output { return v.SizeGiB }).(pulumi.Float64Output)
 }
 
 // Storage target information
@@ -195,17 +215,12 @@ func (o VolumeOutput) StorageTarget() IscsiTargetInfoResponseOutput {
 	return o.ApplyT(func(v *Volume) IscsiTargetInfoResponseOutput { return v.StorageTarget }).(IscsiTargetInfoResponseOutput)
 }
 
-// Resource metadata required by ARM RPC
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o VolumeOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *Volume) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Azure resource tags.
-func (o VolumeOutput) Tags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Volume) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
-}
-
-// Azure resource type.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o VolumeOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

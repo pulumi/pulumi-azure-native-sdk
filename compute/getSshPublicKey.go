@@ -12,9 +12,7 @@ import (
 )
 
 // Retrieves information about an SSH public key.
-// Azure REST API version: 2023-03-01.
-//
-// Other available API versions: 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01.
+// Azure REST API version: 2024-11-01.
 func LookupSshPublicKey(ctx *pulumi.Context, args *LookupSshPublicKeyArgs, opts ...pulumi.InvokeOption) (*LookupSshPublicKeyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSshPublicKeyResult
@@ -34,6 +32,8 @@ type LookupSshPublicKeyArgs struct {
 
 // Specifies information about the SSH public key.
 type LookupSshPublicKeyResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource Id
 	Id string `pulumi:"id"`
 	// Resource location
@@ -81,6 +81,11 @@ func (o LookupSshPublicKeyResultOutput) ToLookupSshPublicKeyResultOutput() Looku
 
 func (o LookupSshPublicKeyResultOutput) ToLookupSshPublicKeyResultOutputWithContext(ctx context.Context) LookupSshPublicKeyResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupSshPublicKeyResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSshPublicKeyResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource Id

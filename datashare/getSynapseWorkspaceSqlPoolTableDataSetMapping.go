@@ -36,6 +36,8 @@ type LookupSynapseWorkspaceSqlPoolTableDataSetMappingArgs struct {
 
 // A Synapse Workspace Sql Pool Table data set mapping
 type LookupSynapseWorkspaceSqlPoolTableDataSetMappingResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The id of the source data set.
 	DataSetId string `pulumi:"dataSetId"`
 	// Gets the status of the data set mapping.
@@ -94,6 +96,11 @@ func (o LookupSynapseWorkspaceSqlPoolTableDataSetMappingResultOutput) ToLookupSy
 
 func (o LookupSynapseWorkspaceSqlPoolTableDataSetMappingResultOutput) ToLookupSynapseWorkspaceSqlPoolTableDataSetMappingResultOutputWithContext(ctx context.Context) LookupSynapseWorkspaceSqlPoolTableDataSetMappingResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupSynapseWorkspaceSqlPoolTableDataSetMappingResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSynapseWorkspaceSqlPoolTableDataSetMappingResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The id of the source data set.

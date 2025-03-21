@@ -13,12 +13,12 @@ import (
 )
 
 // Definition of the runbook type.
-// Azure REST API version: 2022-08-08. Prior API version in Azure Native 1.x: 2019-06-01.
-//
-// Other available API versions: 2023-05-15-preview, 2023-11-01, 2024-10-23.
+// Azure REST API version: 2023-11-01. Prior API version in Azure Native 2.x: 2022-08-08.
 type Runbook struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets or sets the creation time.
 	CreationTime pulumi.StringPtrOutput `pulumi:"creationTime"`
 	// Gets or sets the description.
@@ -49,8 +49,6 @@ type Runbook struct {
 	Parameters RunbookParameterResponseMapOutput `pulumi:"parameters"`
 	// Gets or sets the provisioning state of the runbook.
 	ProvisioningState pulumi.StringPtrOutput `pulumi:"provisioningState"`
-	// Gets or sets the published runbook content link.
-	PublishContentLink ContentLinkResponsePtrOutput `pulumi:"publishContentLink"`
 	// Gets or sets the type of the runbook.
 	RunbookType pulumi.StringPtrOutput `pulumi:"runbookType"`
 	// Gets or sets the state of the runbook.
@@ -229,6 +227,11 @@ func (o RunbookOutput) ToRunbookOutputWithContext(ctx context.Context) RunbookOu
 	return o
 }
 
+// The Azure API version of the resource.
+func (o RunbookOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Runbook) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Gets or sets the creation time.
 func (o RunbookOutput) CreationTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Runbook) pulumi.StringPtrOutput { return v.CreationTime }).(pulumi.StringPtrOutput)
@@ -302,11 +305,6 @@ func (o RunbookOutput) Parameters() RunbookParameterResponseMapOutput {
 // Gets or sets the provisioning state of the runbook.
 func (o RunbookOutput) ProvisioningState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Runbook) pulumi.StringPtrOutput { return v.ProvisioningState }).(pulumi.StringPtrOutput)
-}
-
-// Gets or sets the published runbook content link.
-func (o RunbookOutput) PublishContentLink() ContentLinkResponsePtrOutput {
-	return o.ApplyT(func(v *Runbook) ContentLinkResponsePtrOutput { return v.PublishContentLink }).(ContentLinkResponsePtrOutput)
 }
 
 // Gets or sets the type of the runbook.

@@ -13,10 +13,12 @@ import (
 )
 
 // Security Application over a given scope
-// Azure REST API version: 2022-07-01-preview. Prior API version in Azure Native 1.x: 2022-07-01-preview.
+// Azure REST API version: 2022-07-01-preview. Prior API version in Azure Native 2.x: 2022-07-01-preview.
 type SecurityConnectorApplication struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// description of the application
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// display name of the application
@@ -149,6 +151,11 @@ func (o SecurityConnectorApplicationOutput) ToSecurityConnectorApplicationOutput
 
 func (o SecurityConnectorApplicationOutput) ToSecurityConnectorApplicationOutputWithContext(ctx context.Context) SecurityConnectorApplicationOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o SecurityConnectorApplicationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecurityConnectorApplication) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // description of the application

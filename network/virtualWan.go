@@ -13,9 +13,7 @@ import (
 )
 
 // VirtualWAN Resource.
-// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2020-11-01.
-//
-// Other available API versions: 2019-07-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Azure REST API version: 2024-05-01. Prior API version in Azure Native 2.x: 2023-02-01.
 type VirtualWan struct {
 	pulumi.CustomResourceState
 
@@ -23,6 +21,8 @@ type VirtualWan struct {
 	AllowBranchToBranchTraffic pulumi.BoolPtrOutput `pulumi:"allowBranchToBranchTraffic"`
 	// True if Vnet to Vnet traffic is allowed.
 	AllowVnetToVnetTraffic pulumi.BoolPtrOutput `pulumi:"allowVnetToVnetTraffic"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Vpn encryption to be disabled or not.
 	DisableVpnEncryption pulumi.BoolPtrOutput `pulumi:"disableVpnEncryption"`
 	// A unique read-only string that changes whenever the resource is updated.
@@ -61,6 +61,9 @@ func NewVirtualWan(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20180601:VirtualWan"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20180701:VirtualWAN"),
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20180701:VirtualWan"),
@@ -298,6 +301,11 @@ func (o VirtualWanOutput) AllowBranchToBranchTraffic() pulumi.BoolPtrOutput {
 // True if Vnet to Vnet traffic is allowed.
 func (o VirtualWanOutput) AllowVnetToVnetTraffic() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VirtualWan) pulumi.BoolPtrOutput { return v.AllowVnetToVnetTraffic }).(pulumi.BoolPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o VirtualWanOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *VirtualWan) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Vpn encryption to be disabled or not.

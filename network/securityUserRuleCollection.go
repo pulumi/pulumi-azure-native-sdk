@@ -13,14 +13,14 @@ import (
 )
 
 // Defines the security user rule collection.
-// Azure REST API version: 2024-03-01.
-//
-// Other available API versions: 2024-05-01.
+// Azure REST API version: 2024-05-01. Prior API version in Azure Native 2.x: 2024-03-01.
 type SecurityUserRuleCollection struct {
 	pulumi.CustomResourceState
 
 	// Groups for configuration
 	AppliesToGroups SecurityUserGroupItemResponseArrayOutput `pulumi:"appliesToGroups"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// A description of the security user rule collection.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// A unique read-only string that changes whenever the resource is updated.
@@ -61,7 +61,13 @@ func NewSecurityUserRuleCollection(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:network/v20210201preview:SecurityUserRuleCollection"),
 		},
 		{
+			Type: pulumi.String("azure-native:network/v20210201preview:UserRuleCollection"),
+		},
+		{
 			Type: pulumi.String("azure-native:network/v20210501preview:SecurityUserRuleCollection"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20210501preview:UserRuleCollection"),
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20220201preview:SecurityUserRuleCollection"),
@@ -70,10 +76,16 @@ func NewSecurityUserRuleCollection(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:network/v20220401preview:SecurityUserRuleCollection"),
 		},
 		{
+			Type: pulumi.String("azure-native:network/v20220401preview:UserRuleCollection"),
+		},
+		{
 			Type: pulumi.String("azure-native:network/v20240301:SecurityUserRuleCollection"),
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20240501:SecurityUserRuleCollection"),
+		},
+		{
+			Type: pulumi.String("azure-native:network:UserRuleCollection"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -180,6 +192,11 @@ func (o SecurityUserRuleCollectionOutput) ToSecurityUserRuleCollectionOutputWith
 // Groups for configuration
 func (o SecurityUserRuleCollectionOutput) AppliesToGroups() SecurityUserGroupItemResponseArrayOutput {
 	return o.ApplyT(func(v *SecurityUserRuleCollection) SecurityUserGroupItemResponseArrayOutput { return v.AppliesToGroups }).(SecurityUserGroupItemResponseArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o SecurityUserRuleCollectionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecurityUserRuleCollection) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A description of the security user rule collection.

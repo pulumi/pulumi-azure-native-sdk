@@ -2943,6 +2943,314 @@ func (o BackgroundJobResponsePtrOutput) State() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The backup profile for the SQL server.
+type BackupPolicy struct {
+	// The differential backup interval in hours.
+	DifferentialBackupHours *int `pulumi:"differentialBackupHours"`
+	// The value indicating days between full backups.
+	FullBackupDays *int `pulumi:"fullBackupDays"`
+	// The retention period for all the databases in this managed instance.
+	RetentionPeriodDays *int `pulumi:"retentionPeriodDays"`
+	// The value indicating minutes between transaction log backups.
+	TransactionLogBackupMinutes *int `pulumi:"transactionLogBackupMinutes"`
+}
+
+// BackupPolicyInput is an input type that accepts BackupPolicyArgs and BackupPolicyOutput values.
+// You can construct a concrete instance of `BackupPolicyInput` via:
+//
+//	BackupPolicyArgs{...}
+type BackupPolicyInput interface {
+	pulumi.Input
+
+	ToBackupPolicyOutput() BackupPolicyOutput
+	ToBackupPolicyOutputWithContext(context.Context) BackupPolicyOutput
+}
+
+// The backup profile for the SQL server.
+type BackupPolicyArgs struct {
+	// The differential backup interval in hours.
+	DifferentialBackupHours pulumi.IntPtrInput `pulumi:"differentialBackupHours"`
+	// The value indicating days between full backups.
+	FullBackupDays pulumi.IntPtrInput `pulumi:"fullBackupDays"`
+	// The retention period for all the databases in this managed instance.
+	RetentionPeriodDays pulumi.IntPtrInput `pulumi:"retentionPeriodDays"`
+	// The value indicating minutes between transaction log backups.
+	TransactionLogBackupMinutes pulumi.IntPtrInput `pulumi:"transactionLogBackupMinutes"`
+}
+
+func (BackupPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupPolicy)(nil)).Elem()
+}
+
+func (i BackupPolicyArgs) ToBackupPolicyOutput() BackupPolicyOutput {
+	return i.ToBackupPolicyOutputWithContext(context.Background())
+}
+
+func (i BackupPolicyArgs) ToBackupPolicyOutputWithContext(ctx context.Context) BackupPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupPolicyOutput)
+}
+
+func (i BackupPolicyArgs) ToBackupPolicyPtrOutput() BackupPolicyPtrOutput {
+	return i.ToBackupPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i BackupPolicyArgs) ToBackupPolicyPtrOutputWithContext(ctx context.Context) BackupPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupPolicyOutput).ToBackupPolicyPtrOutputWithContext(ctx)
+}
+
+// BackupPolicyPtrInput is an input type that accepts BackupPolicyArgs, BackupPolicyPtr and BackupPolicyPtrOutput values.
+// You can construct a concrete instance of `BackupPolicyPtrInput` via:
+//
+//	        BackupPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type BackupPolicyPtrInput interface {
+	pulumi.Input
+
+	ToBackupPolicyPtrOutput() BackupPolicyPtrOutput
+	ToBackupPolicyPtrOutputWithContext(context.Context) BackupPolicyPtrOutput
+}
+
+type backupPolicyPtrType BackupPolicyArgs
+
+func BackupPolicyPtr(v *BackupPolicyArgs) BackupPolicyPtrInput {
+	return (*backupPolicyPtrType)(v)
+}
+
+func (*backupPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackupPolicy)(nil)).Elem()
+}
+
+func (i *backupPolicyPtrType) ToBackupPolicyPtrOutput() BackupPolicyPtrOutput {
+	return i.ToBackupPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *backupPolicyPtrType) ToBackupPolicyPtrOutputWithContext(ctx context.Context) BackupPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupPolicyPtrOutput)
+}
+
+// The backup profile for the SQL server.
+type BackupPolicyOutput struct{ *pulumi.OutputState }
+
+func (BackupPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupPolicy)(nil)).Elem()
+}
+
+func (o BackupPolicyOutput) ToBackupPolicyOutput() BackupPolicyOutput {
+	return o
+}
+
+func (o BackupPolicyOutput) ToBackupPolicyOutputWithContext(ctx context.Context) BackupPolicyOutput {
+	return o
+}
+
+func (o BackupPolicyOutput) ToBackupPolicyPtrOutput() BackupPolicyPtrOutput {
+	return o.ToBackupPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o BackupPolicyOutput) ToBackupPolicyPtrOutputWithContext(ctx context.Context) BackupPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackupPolicy) *BackupPolicy {
+		return &v
+	}).(BackupPolicyPtrOutput)
+}
+
+// The differential backup interval in hours.
+func (o BackupPolicyOutput) DifferentialBackupHours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BackupPolicy) *int { return v.DifferentialBackupHours }).(pulumi.IntPtrOutput)
+}
+
+// The value indicating days between full backups.
+func (o BackupPolicyOutput) FullBackupDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BackupPolicy) *int { return v.FullBackupDays }).(pulumi.IntPtrOutput)
+}
+
+// The retention period for all the databases in this managed instance.
+func (o BackupPolicyOutput) RetentionPeriodDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BackupPolicy) *int { return v.RetentionPeriodDays }).(pulumi.IntPtrOutput)
+}
+
+// The value indicating minutes between transaction log backups.
+func (o BackupPolicyOutput) TransactionLogBackupMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BackupPolicy) *int { return v.TransactionLogBackupMinutes }).(pulumi.IntPtrOutput)
+}
+
+type BackupPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (BackupPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackupPolicy)(nil)).Elem()
+}
+
+func (o BackupPolicyPtrOutput) ToBackupPolicyPtrOutput() BackupPolicyPtrOutput {
+	return o
+}
+
+func (o BackupPolicyPtrOutput) ToBackupPolicyPtrOutputWithContext(ctx context.Context) BackupPolicyPtrOutput {
+	return o
+}
+
+func (o BackupPolicyPtrOutput) Elem() BackupPolicyOutput {
+	return o.ApplyT(func(v *BackupPolicy) BackupPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret BackupPolicy
+		return ret
+	}).(BackupPolicyOutput)
+}
+
+// The differential backup interval in hours.
+func (o BackupPolicyPtrOutput) DifferentialBackupHours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BackupPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DifferentialBackupHours
+	}).(pulumi.IntPtrOutput)
+}
+
+// The value indicating days between full backups.
+func (o BackupPolicyPtrOutput) FullBackupDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BackupPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.FullBackupDays
+	}).(pulumi.IntPtrOutput)
+}
+
+// The retention period for all the databases in this managed instance.
+func (o BackupPolicyPtrOutput) RetentionPeriodDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BackupPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RetentionPeriodDays
+	}).(pulumi.IntPtrOutput)
+}
+
+// The value indicating minutes between transaction log backups.
+func (o BackupPolicyPtrOutput) TransactionLogBackupMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BackupPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TransactionLogBackupMinutes
+	}).(pulumi.IntPtrOutput)
+}
+
+// The backup profile for the SQL server.
+type BackupPolicyResponse struct {
+	// The differential backup interval in hours.
+	DifferentialBackupHours *int `pulumi:"differentialBackupHours"`
+	// The value indicating days between full backups.
+	FullBackupDays *int `pulumi:"fullBackupDays"`
+	// The retention period for all the databases in this managed instance.
+	RetentionPeriodDays *int `pulumi:"retentionPeriodDays"`
+	// The value indicating minutes between transaction log backups.
+	TransactionLogBackupMinutes *int `pulumi:"transactionLogBackupMinutes"`
+}
+
+// The backup profile for the SQL server.
+type BackupPolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (BackupPolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupPolicyResponse)(nil)).Elem()
+}
+
+func (o BackupPolicyResponseOutput) ToBackupPolicyResponseOutput() BackupPolicyResponseOutput {
+	return o
+}
+
+func (o BackupPolicyResponseOutput) ToBackupPolicyResponseOutputWithContext(ctx context.Context) BackupPolicyResponseOutput {
+	return o
+}
+
+// The differential backup interval in hours.
+func (o BackupPolicyResponseOutput) DifferentialBackupHours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BackupPolicyResponse) *int { return v.DifferentialBackupHours }).(pulumi.IntPtrOutput)
+}
+
+// The value indicating days between full backups.
+func (o BackupPolicyResponseOutput) FullBackupDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BackupPolicyResponse) *int { return v.FullBackupDays }).(pulumi.IntPtrOutput)
+}
+
+// The retention period for all the databases in this managed instance.
+func (o BackupPolicyResponseOutput) RetentionPeriodDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BackupPolicyResponse) *int { return v.RetentionPeriodDays }).(pulumi.IntPtrOutput)
+}
+
+// The value indicating minutes between transaction log backups.
+func (o BackupPolicyResponseOutput) TransactionLogBackupMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BackupPolicyResponse) *int { return v.TransactionLogBackupMinutes }).(pulumi.IntPtrOutput)
+}
+
+type BackupPolicyResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (BackupPolicyResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackupPolicyResponse)(nil)).Elem()
+}
+
+func (o BackupPolicyResponsePtrOutput) ToBackupPolicyResponsePtrOutput() BackupPolicyResponsePtrOutput {
+	return o
+}
+
+func (o BackupPolicyResponsePtrOutput) ToBackupPolicyResponsePtrOutputWithContext(ctx context.Context) BackupPolicyResponsePtrOutput {
+	return o
+}
+
+func (o BackupPolicyResponsePtrOutput) Elem() BackupPolicyResponseOutput {
+	return o.ApplyT(func(v *BackupPolicyResponse) BackupPolicyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BackupPolicyResponse
+		return ret
+	}).(BackupPolicyResponseOutput)
+}
+
+// The differential backup interval in hours.
+func (o BackupPolicyResponsePtrOutput) DifferentialBackupHours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BackupPolicyResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DifferentialBackupHours
+	}).(pulumi.IntPtrOutput)
+}
+
+// The value indicating days between full backups.
+func (o BackupPolicyResponsePtrOutput) FullBackupDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BackupPolicyResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.FullBackupDays
+	}).(pulumi.IntPtrOutput)
+}
+
+// The retention period for all the databases in this managed instance.
+func (o BackupPolicyResponsePtrOutput) RetentionPeriodDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BackupPolicyResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RetentionPeriodDays
+	}).(pulumi.IntPtrOutput)
+}
+
+// The value indicating minutes between transaction log backups.
+func (o BackupPolicyResponsePtrOutput) TransactionLogBackupMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BackupPolicyResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TransactionLogBackupMinutes
+	}).(pulumi.IntPtrOutput)
+}
+
 // Username and password for basic login authentication.
 type BasicLoginInformation struct {
 	// Login password.
@@ -3707,6 +4015,117 @@ func (o ExtendedLocationResponsePtrOutput) Type() pulumi.StringPtrOutput {
 		}
 		return v.Type
 	}).(pulumi.StringPtrOutput)
+}
+
+// Failover Cluster Instance properties.
+type FailoverClusterResponse struct {
+	// The host names which are part of the SQL FCI resource group.
+	HostNames []string `pulumi:"hostNames"`
+	// The GUID of the SQL Server's underlying Failover Cluster.
+	Id string `pulumi:"id"`
+	// The network name to connect to the SQL FCI.
+	NetworkName string `pulumi:"networkName"`
+	// The ARM IDs of the Arc SQL Server resources, belonging to the current server's Failover cluster.
+	SqlInstanceIds []string `pulumi:"sqlInstanceIds"`
+}
+
+// Failover Cluster Instance properties.
+type FailoverClusterResponseOutput struct{ *pulumi.OutputState }
+
+func (FailoverClusterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FailoverClusterResponse)(nil)).Elem()
+}
+
+func (o FailoverClusterResponseOutput) ToFailoverClusterResponseOutput() FailoverClusterResponseOutput {
+	return o
+}
+
+func (o FailoverClusterResponseOutput) ToFailoverClusterResponseOutputWithContext(ctx context.Context) FailoverClusterResponseOutput {
+	return o
+}
+
+// The host names which are part of the SQL FCI resource group.
+func (o FailoverClusterResponseOutput) HostNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FailoverClusterResponse) []string { return v.HostNames }).(pulumi.StringArrayOutput)
+}
+
+// The GUID of the SQL Server's underlying Failover Cluster.
+func (o FailoverClusterResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v FailoverClusterResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The network name to connect to the SQL FCI.
+func (o FailoverClusterResponseOutput) NetworkName() pulumi.StringOutput {
+	return o.ApplyT(func(v FailoverClusterResponse) string { return v.NetworkName }).(pulumi.StringOutput)
+}
+
+// The ARM IDs of the Arc SQL Server resources, belonging to the current server's Failover cluster.
+func (o FailoverClusterResponseOutput) SqlInstanceIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FailoverClusterResponse) []string { return v.SqlInstanceIds }).(pulumi.StringArrayOutput)
+}
+
+type FailoverClusterResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (FailoverClusterResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FailoverClusterResponse)(nil)).Elem()
+}
+
+func (o FailoverClusterResponsePtrOutput) ToFailoverClusterResponsePtrOutput() FailoverClusterResponsePtrOutput {
+	return o
+}
+
+func (o FailoverClusterResponsePtrOutput) ToFailoverClusterResponsePtrOutputWithContext(ctx context.Context) FailoverClusterResponsePtrOutput {
+	return o
+}
+
+func (o FailoverClusterResponsePtrOutput) Elem() FailoverClusterResponseOutput {
+	return o.ApplyT(func(v *FailoverClusterResponse) FailoverClusterResponse {
+		if v != nil {
+			return *v
+		}
+		var ret FailoverClusterResponse
+		return ret
+	}).(FailoverClusterResponseOutput)
+}
+
+// The host names which are part of the SQL FCI resource group.
+func (o FailoverClusterResponsePtrOutput) HostNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *FailoverClusterResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.HostNames
+	}).(pulumi.StringArrayOutput)
+}
+
+// The GUID of the SQL Server's underlying Failover Cluster.
+func (o FailoverClusterResponsePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FailoverClusterResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// The network name to connect to the SQL FCI.
+func (o FailoverClusterResponsePtrOutput) NetworkName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FailoverClusterResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.NetworkName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ARM IDs of the Arc SQL Server resources, belonging to the current server's Failover cluster.
+func (o FailoverClusterResponsePtrOutput) SqlInstanceIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *FailoverClusterResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SqlInstanceIds
+	}).(pulumi.StringArrayOutput)
 }
 
 // The properties of a failover group resource.
@@ -6624,6 +7043,206 @@ func (o LogAnalyticsWorkspaceConfigResponsePtrOutput) WorkspaceId() pulumi.Strin
 		}
 		return v.WorkspaceId
 	}).(pulumi.StringPtrOutput)
+}
+
+// The monitoring configuration.
+type Monitoring struct {
+	// Indicates if monitoring is enabled for this SQL Server instance.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// MonitoringInput is an input type that accepts MonitoringArgs and MonitoringOutput values.
+// You can construct a concrete instance of `MonitoringInput` via:
+//
+//	MonitoringArgs{...}
+type MonitoringInput interface {
+	pulumi.Input
+
+	ToMonitoringOutput() MonitoringOutput
+	ToMonitoringOutputWithContext(context.Context) MonitoringOutput
+}
+
+// The monitoring configuration.
+type MonitoringArgs struct {
+	// Indicates if monitoring is enabled for this SQL Server instance.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (MonitoringArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Monitoring)(nil)).Elem()
+}
+
+func (i MonitoringArgs) ToMonitoringOutput() MonitoringOutput {
+	return i.ToMonitoringOutputWithContext(context.Background())
+}
+
+func (i MonitoringArgs) ToMonitoringOutputWithContext(ctx context.Context) MonitoringOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitoringOutput)
+}
+
+func (i MonitoringArgs) ToMonitoringPtrOutput() MonitoringPtrOutput {
+	return i.ToMonitoringPtrOutputWithContext(context.Background())
+}
+
+func (i MonitoringArgs) ToMonitoringPtrOutputWithContext(ctx context.Context) MonitoringPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitoringOutput).ToMonitoringPtrOutputWithContext(ctx)
+}
+
+// MonitoringPtrInput is an input type that accepts MonitoringArgs, MonitoringPtr and MonitoringPtrOutput values.
+// You can construct a concrete instance of `MonitoringPtrInput` via:
+//
+//	        MonitoringArgs{...}
+//
+//	or:
+//
+//	        nil
+type MonitoringPtrInput interface {
+	pulumi.Input
+
+	ToMonitoringPtrOutput() MonitoringPtrOutput
+	ToMonitoringPtrOutputWithContext(context.Context) MonitoringPtrOutput
+}
+
+type monitoringPtrType MonitoringArgs
+
+func MonitoringPtr(v *MonitoringArgs) MonitoringPtrInput {
+	return (*monitoringPtrType)(v)
+}
+
+func (*monitoringPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Monitoring)(nil)).Elem()
+}
+
+func (i *monitoringPtrType) ToMonitoringPtrOutput() MonitoringPtrOutput {
+	return i.ToMonitoringPtrOutputWithContext(context.Background())
+}
+
+func (i *monitoringPtrType) ToMonitoringPtrOutputWithContext(ctx context.Context) MonitoringPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitoringPtrOutput)
+}
+
+// The monitoring configuration.
+type MonitoringOutput struct{ *pulumi.OutputState }
+
+func (MonitoringOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Monitoring)(nil)).Elem()
+}
+
+func (o MonitoringOutput) ToMonitoringOutput() MonitoringOutput {
+	return o
+}
+
+func (o MonitoringOutput) ToMonitoringOutputWithContext(ctx context.Context) MonitoringOutput {
+	return o
+}
+
+func (o MonitoringOutput) ToMonitoringPtrOutput() MonitoringPtrOutput {
+	return o.ToMonitoringPtrOutputWithContext(context.Background())
+}
+
+func (o MonitoringOutput) ToMonitoringPtrOutputWithContext(ctx context.Context) MonitoringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Monitoring) *Monitoring {
+		return &v
+	}).(MonitoringPtrOutput)
+}
+
+// Indicates if monitoring is enabled for this SQL Server instance.
+func (o MonitoringOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v Monitoring) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type MonitoringPtrOutput struct{ *pulumi.OutputState }
+
+func (MonitoringPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Monitoring)(nil)).Elem()
+}
+
+func (o MonitoringPtrOutput) ToMonitoringPtrOutput() MonitoringPtrOutput {
+	return o
+}
+
+func (o MonitoringPtrOutput) ToMonitoringPtrOutputWithContext(ctx context.Context) MonitoringPtrOutput {
+	return o
+}
+
+func (o MonitoringPtrOutput) Elem() MonitoringOutput {
+	return o.ApplyT(func(v *Monitoring) Monitoring {
+		if v != nil {
+			return *v
+		}
+		var ret Monitoring
+		return ret
+	}).(MonitoringOutput)
+}
+
+// Indicates if monitoring is enabled for this SQL Server instance.
+func (o MonitoringPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Monitoring) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The monitoring configuration.
+type MonitoringResponse struct {
+	// Indicates if monitoring is enabled for this SQL Server instance.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// The monitoring configuration.
+type MonitoringResponseOutput struct{ *pulumi.OutputState }
+
+func (MonitoringResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitoringResponse)(nil)).Elem()
+}
+
+func (o MonitoringResponseOutput) ToMonitoringResponseOutput() MonitoringResponseOutput {
+	return o
+}
+
+func (o MonitoringResponseOutput) ToMonitoringResponseOutputWithContext(ctx context.Context) MonitoringResponseOutput {
+	return o
+}
+
+// Indicates if monitoring is enabled for this SQL Server instance.
+func (o MonitoringResponseOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MonitoringResponse) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type MonitoringResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (MonitoringResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MonitoringResponse)(nil)).Elem()
+}
+
+func (o MonitoringResponsePtrOutput) ToMonitoringResponsePtrOutput() MonitoringResponsePtrOutput {
+	return o
+}
+
+func (o MonitoringResponsePtrOutput) ToMonitoringResponsePtrOutputWithContext(ctx context.Context) MonitoringResponsePtrOutput {
+	return o
+}
+
+func (o MonitoringResponsePtrOutput) Elem() MonitoringResponseOutput {
+	return o.ApplyT(func(v *MonitoringResponse) MonitoringResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MonitoringResponse
+		return ret
+	}).(MonitoringResponseOutput)
+}
+
+// Indicates if monitoring is enabled for this SQL Server instance.
+func (o MonitoringResponsePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MonitoringResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Properties from the Kubernetes data controller
@@ -9758,10 +10377,14 @@ func (o SqlServerAvailabilityGroupResourcePropertiesResponseReplicasPtrOutput) V
 // The properties of Arc Sql Server database resource
 type SqlServerDatabaseResourceProperties struct {
 	BackupInformation *SqlServerDatabaseResourcePropertiesBackupInformation `pulumi:"backupInformation"`
+	// The backup profile for the SQL server.
+	BackupPolicy *BackupPolicy `pulumi:"backupPolicy"`
 	// Collation of the database.
 	CollationName *string `pulumi:"collationName"`
 	// Compatibility level of the database
 	CompatibilityLevel *int `pulumi:"compatibilityLevel"`
+	// Database create mode. PointInTimeRestore: Create a database by restoring a point in time backup of an existing database. sourceDatabaseId and restorePointInTime must be specified.
+	CreateMode *string `pulumi:"createMode"`
 	// Creation date of the database.
 	DatabaseCreationDate *string `pulumi:"databaseCreationDate"`
 	// List of features that are enabled for the database
@@ -9770,8 +10393,12 @@ type SqlServerDatabaseResourceProperties struct {
 	IsReadOnly *bool `pulumi:"isReadOnly"`
 	// Status of the database.
 	RecoveryMode *string `pulumi:"recoveryMode"`
+	// Conditional. If createMode is PointInTimeRestore, this value is required. Specifies the point in time (ISO8601 format) of the source database that will be restored to create the new database.
+	RestorePointInTime *string `pulumi:"restorePointInTime"`
 	// Size of the database.
 	SizeMB *float64 `pulumi:"sizeMB"`
+	// The resource identifier of the source database associated with create operation of this database.
+	SourceDatabaseId *string `pulumi:"sourceDatabaseId"`
 	// Space left of the database.
 	SpaceAvailableMB *float64 `pulumi:"spaceAvailableMB"`
 	// State of the database.
@@ -9792,10 +10419,14 @@ type SqlServerDatabaseResourcePropertiesInput interface {
 // The properties of Arc Sql Server database resource
 type SqlServerDatabaseResourcePropertiesArgs struct {
 	BackupInformation SqlServerDatabaseResourcePropertiesBackupInformationPtrInput `pulumi:"backupInformation"`
+	// The backup profile for the SQL server.
+	BackupPolicy BackupPolicyPtrInput `pulumi:"backupPolicy"`
 	// Collation of the database.
 	CollationName pulumi.StringPtrInput `pulumi:"collationName"`
 	// Compatibility level of the database
 	CompatibilityLevel pulumi.IntPtrInput `pulumi:"compatibilityLevel"`
+	// Database create mode. PointInTimeRestore: Create a database by restoring a point in time backup of an existing database. sourceDatabaseId and restorePointInTime must be specified.
+	CreateMode pulumi.StringPtrInput `pulumi:"createMode"`
 	// Creation date of the database.
 	DatabaseCreationDate pulumi.StringPtrInput `pulumi:"databaseCreationDate"`
 	// List of features that are enabled for the database
@@ -9804,8 +10435,12 @@ type SqlServerDatabaseResourcePropertiesArgs struct {
 	IsReadOnly pulumi.BoolPtrInput `pulumi:"isReadOnly"`
 	// Status of the database.
 	RecoveryMode pulumi.StringPtrInput `pulumi:"recoveryMode"`
+	// Conditional. If createMode is PointInTimeRestore, this value is required. Specifies the point in time (ISO8601 format) of the source database that will be restored to create the new database.
+	RestorePointInTime pulumi.StringPtrInput `pulumi:"restorePointInTime"`
 	// Size of the database.
 	SizeMB pulumi.Float64PtrInput `pulumi:"sizeMB"`
+	// The resource identifier of the source database associated with create operation of this database.
+	SourceDatabaseId pulumi.StringPtrInput `pulumi:"sourceDatabaseId"`
 	// Space left of the database.
 	SpaceAvailableMB pulumi.Float64PtrInput `pulumi:"spaceAvailableMB"`
 	// State of the database.
@@ -9845,6 +10480,11 @@ func (o SqlServerDatabaseResourcePropertiesOutput) BackupInformation() SqlServer
 	}).(SqlServerDatabaseResourcePropertiesBackupInformationPtrOutput)
 }
 
+// The backup profile for the SQL server.
+func (o SqlServerDatabaseResourcePropertiesOutput) BackupPolicy() BackupPolicyPtrOutput {
+	return o.ApplyT(func(v SqlServerDatabaseResourceProperties) *BackupPolicy { return v.BackupPolicy }).(BackupPolicyPtrOutput)
+}
+
 // Collation of the database.
 func (o SqlServerDatabaseResourcePropertiesOutput) CollationName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SqlServerDatabaseResourceProperties) *string { return v.CollationName }).(pulumi.StringPtrOutput)
@@ -9853,6 +10493,11 @@ func (o SqlServerDatabaseResourcePropertiesOutput) CollationName() pulumi.String
 // Compatibility level of the database
 func (o SqlServerDatabaseResourcePropertiesOutput) CompatibilityLevel() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SqlServerDatabaseResourceProperties) *int { return v.CompatibilityLevel }).(pulumi.IntPtrOutput)
+}
+
+// Database create mode. PointInTimeRestore: Create a database by restoring a point in time backup of an existing database. sourceDatabaseId and restorePointInTime must be specified.
+func (o SqlServerDatabaseResourcePropertiesOutput) CreateMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlServerDatabaseResourceProperties) *string { return v.CreateMode }).(pulumi.StringPtrOutput)
 }
 
 // Creation date of the database.
@@ -9877,9 +10522,19 @@ func (o SqlServerDatabaseResourcePropertiesOutput) RecoveryMode() pulumi.StringP
 	return o.ApplyT(func(v SqlServerDatabaseResourceProperties) *string { return v.RecoveryMode }).(pulumi.StringPtrOutput)
 }
 
+// Conditional. If createMode is PointInTimeRestore, this value is required. Specifies the point in time (ISO8601 format) of the source database that will be restored to create the new database.
+func (o SqlServerDatabaseResourcePropertiesOutput) RestorePointInTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlServerDatabaseResourceProperties) *string { return v.RestorePointInTime }).(pulumi.StringPtrOutput)
+}
+
 // Size of the database.
 func (o SqlServerDatabaseResourcePropertiesOutput) SizeMB() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v SqlServerDatabaseResourceProperties) *float64 { return v.SizeMB }).(pulumi.Float64PtrOutput)
+}
+
+// The resource identifier of the source database associated with create operation of this database.
+func (o SqlServerDatabaseResourcePropertiesOutput) SourceDatabaseId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlServerDatabaseResourceProperties) *string { return v.SourceDatabaseId }).(pulumi.StringPtrOutput)
 }
 
 // Space left of the database.
@@ -10292,22 +10947,34 @@ func (o SqlServerDatabaseResourcePropertiesDatabaseOptionsPtrOutput) IsTrustwort
 // The properties of Arc Sql Server database resource
 type SqlServerDatabaseResourcePropertiesResponse struct {
 	BackupInformation *SqlServerDatabaseResourcePropertiesResponseBackupInformation `pulumi:"backupInformation"`
+	// The backup profile for the SQL server.
+	BackupPolicy *BackupPolicyResponse `pulumi:"backupPolicy"`
 	// Collation of the database.
 	CollationName *string `pulumi:"collationName"`
 	// Compatibility level of the database
 	CompatibilityLevel *int `pulumi:"compatibilityLevel"`
+	// Database create mode. PointInTimeRestore: Create a database by restoring a point in time backup of an existing database. sourceDatabaseId and restorePointInTime must be specified.
+	CreateMode *string `pulumi:"createMode"`
 	// Creation date of the database.
 	DatabaseCreationDate *string `pulumi:"databaseCreationDate"`
 	// List of features that are enabled for the database
 	DatabaseOptions *SqlServerDatabaseResourcePropertiesResponseDatabaseOptions `pulumi:"databaseOptions"`
+	// This records the earliest start date and time that restore is available for this database (ISO8601 format).
+	EarliestRestoreDate string `pulumi:"earliestRestoreDate"`
 	// Whether the database is read only or not.
 	IsReadOnly *bool `pulumi:"isReadOnly"`
+	// The time when last successful database upload was performed.
+	LastDatabaseUploadTime string `pulumi:"lastDatabaseUploadTime"`
 	// The provisioning state of the Arc-enabled SQL Server database resource.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Status of the database.
 	RecoveryMode *string `pulumi:"recoveryMode"`
+	// Conditional. If createMode is PointInTimeRestore, this value is required. Specifies the point in time (ISO8601 format) of the source database that will be restored to create the new database.
+	RestorePointInTime *string `pulumi:"restorePointInTime"`
 	// Size of the database.
 	SizeMB *float64 `pulumi:"sizeMB"`
+	// The resource identifier of the source database associated with create operation of this database.
+	SourceDatabaseId *string `pulumi:"sourceDatabaseId"`
 	// Space left of the database.
 	SpaceAvailableMB *float64 `pulumi:"spaceAvailableMB"`
 	// State of the database.
@@ -10335,6 +11002,11 @@ func (o SqlServerDatabaseResourcePropertiesResponseOutput) BackupInformation() S
 	}).(SqlServerDatabaseResourcePropertiesResponseBackupInformationPtrOutput)
 }
 
+// The backup profile for the SQL server.
+func (o SqlServerDatabaseResourcePropertiesResponseOutput) BackupPolicy() BackupPolicyResponsePtrOutput {
+	return o.ApplyT(func(v SqlServerDatabaseResourcePropertiesResponse) *BackupPolicyResponse { return v.BackupPolicy }).(BackupPolicyResponsePtrOutput)
+}
+
 // Collation of the database.
 func (o SqlServerDatabaseResourcePropertiesResponseOutput) CollationName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SqlServerDatabaseResourcePropertiesResponse) *string { return v.CollationName }).(pulumi.StringPtrOutput)
@@ -10343,6 +11015,11 @@ func (o SqlServerDatabaseResourcePropertiesResponseOutput) CollationName() pulum
 // Compatibility level of the database
 func (o SqlServerDatabaseResourcePropertiesResponseOutput) CompatibilityLevel() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SqlServerDatabaseResourcePropertiesResponse) *int { return v.CompatibilityLevel }).(pulumi.IntPtrOutput)
+}
+
+// Database create mode. PointInTimeRestore: Create a database by restoring a point in time backup of an existing database. sourceDatabaseId and restorePointInTime must be specified.
+func (o SqlServerDatabaseResourcePropertiesResponseOutput) CreateMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlServerDatabaseResourcePropertiesResponse) *string { return v.CreateMode }).(pulumi.StringPtrOutput)
 }
 
 // Creation date of the database.
@@ -10357,9 +11034,19 @@ func (o SqlServerDatabaseResourcePropertiesResponseOutput) DatabaseOptions() Sql
 	}).(SqlServerDatabaseResourcePropertiesResponseDatabaseOptionsPtrOutput)
 }
 
+// This records the earliest start date and time that restore is available for this database (ISO8601 format).
+func (o SqlServerDatabaseResourcePropertiesResponseOutput) EarliestRestoreDate() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerDatabaseResourcePropertiesResponse) string { return v.EarliestRestoreDate }).(pulumi.StringOutput)
+}
+
 // Whether the database is read only or not.
 func (o SqlServerDatabaseResourcePropertiesResponseOutput) IsReadOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SqlServerDatabaseResourcePropertiesResponse) *bool { return v.IsReadOnly }).(pulumi.BoolPtrOutput)
+}
+
+// The time when last successful database upload was performed.
+func (o SqlServerDatabaseResourcePropertiesResponseOutput) LastDatabaseUploadTime() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerDatabaseResourcePropertiesResponse) string { return v.LastDatabaseUploadTime }).(pulumi.StringOutput)
 }
 
 // The provisioning state of the Arc-enabled SQL Server database resource.
@@ -10372,9 +11059,19 @@ func (o SqlServerDatabaseResourcePropertiesResponseOutput) RecoveryMode() pulumi
 	return o.ApplyT(func(v SqlServerDatabaseResourcePropertiesResponse) *string { return v.RecoveryMode }).(pulumi.StringPtrOutput)
 }
 
+// Conditional. If createMode is PointInTimeRestore, this value is required. Specifies the point in time (ISO8601 format) of the source database that will be restored to create the new database.
+func (o SqlServerDatabaseResourcePropertiesResponseOutput) RestorePointInTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlServerDatabaseResourcePropertiesResponse) *string { return v.RestorePointInTime }).(pulumi.StringPtrOutput)
+}
+
 // Size of the database.
 func (o SqlServerDatabaseResourcePropertiesResponseOutput) SizeMB() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v SqlServerDatabaseResourcePropertiesResponse) *float64 { return v.SizeMB }).(pulumi.Float64PtrOutput)
+}
+
+// The resource identifier of the source database associated with create operation of this database.
+func (o SqlServerDatabaseResourcePropertiesResponseOutput) SourceDatabaseId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlServerDatabaseResourcePropertiesResponse) *string { return v.SourceDatabaseId }).(pulumi.StringPtrOutput)
 }
 
 // Space left of the database.
@@ -10877,38 +11574,20 @@ func (o SqlServerInstanceJobStatusResponseArrayOutput) Index(i pulumi.IntInput) 
 
 // Properties of SqlServerInstance.
 type SqlServerInstanceProperties struct {
-	// Status of Azure Defender.
-	AzureDefenderStatus *string `pulumi:"azureDefenderStatus"`
-	// Timestamp of last Azure Defender status update.
-	AzureDefenderStatusLastUpdated *string `pulumi:"azureDefenderStatusLastUpdated"`
-	// SQL Server collation.
-	Collation *string `pulumi:"collation"`
-	// ARM Resource id of the container resource (Azure Arc for Servers).
-	ContainerResourceId string `pulumi:"containerResourceId"`
+	// The backup profile for the SQL server.
+	BackupPolicy *BackupPolicy `pulumi:"backupPolicy"`
 	// The number of total cores of the Operating System Environment (OSE) hosting the SQL Server instance.
 	Cores *string `pulumi:"cores"`
-	// SQL Server current version.
-	CurrentVersion *string `pulumi:"currentVersion"`
 	// SQL Server edition.
 	Edition *string `pulumi:"edition"`
 	// Type of host for Azure Arc SQL Server
 	HostType *string `pulumi:"hostType"`
 	// SQL Server instance name.
 	InstanceName *string `pulumi:"instanceName"`
-	// SQL Server license type.
-	LicenseType *string `pulumi:"licenseType"`
-	// SQL Server update level.
-	PatchLevel *string `pulumi:"patchLevel"`
-	// SQL Server product ID.
-	ProductId *string `pulumi:"productId"`
-	// The cloud connectivity status.
-	Status string `pulumi:"status"`
-	// Dynamic TCP ports used by SQL Server.
-	TcpDynamicPorts *string `pulumi:"tcpDynamicPorts"`
-	// Static TCP ports used by SQL Server.
-	TcpStaticPorts *string `pulumi:"tcpStaticPorts"`
-	// The number of logical processors used by the SQL Server instance.
-	VCore *string `pulumi:"vCore"`
+	// The monitoring configuration.
+	Monitoring *Monitoring `pulumi:"monitoring"`
+	// Upgrade Action for this resource is locked until it expires. The Expiration time indicated by this value. It is not locked when it is empty.
+	UpgradeLockedUntil *string `pulumi:"upgradeLockedUntil"`
 	// SQL Server version.
 	Version *string `pulumi:"version"`
 }
@@ -10926,38 +11605,20 @@ type SqlServerInstancePropertiesInput interface {
 
 // Properties of SqlServerInstance.
 type SqlServerInstancePropertiesArgs struct {
-	// Status of Azure Defender.
-	AzureDefenderStatus pulumi.StringPtrInput `pulumi:"azureDefenderStatus"`
-	// Timestamp of last Azure Defender status update.
-	AzureDefenderStatusLastUpdated pulumi.StringPtrInput `pulumi:"azureDefenderStatusLastUpdated"`
-	// SQL Server collation.
-	Collation pulumi.StringPtrInput `pulumi:"collation"`
-	// ARM Resource id of the container resource (Azure Arc for Servers).
-	ContainerResourceId pulumi.StringInput `pulumi:"containerResourceId"`
+	// The backup profile for the SQL server.
+	BackupPolicy BackupPolicyPtrInput `pulumi:"backupPolicy"`
 	// The number of total cores of the Operating System Environment (OSE) hosting the SQL Server instance.
 	Cores pulumi.StringPtrInput `pulumi:"cores"`
-	// SQL Server current version.
-	CurrentVersion pulumi.StringPtrInput `pulumi:"currentVersion"`
 	// SQL Server edition.
 	Edition pulumi.StringPtrInput `pulumi:"edition"`
 	// Type of host for Azure Arc SQL Server
 	HostType pulumi.StringPtrInput `pulumi:"hostType"`
 	// SQL Server instance name.
 	InstanceName pulumi.StringPtrInput `pulumi:"instanceName"`
-	// SQL Server license type.
-	LicenseType pulumi.StringPtrInput `pulumi:"licenseType"`
-	// SQL Server update level.
-	PatchLevel pulumi.StringPtrInput `pulumi:"patchLevel"`
-	// SQL Server product ID.
-	ProductId pulumi.StringPtrInput `pulumi:"productId"`
-	// The cloud connectivity status.
-	Status pulumi.StringInput `pulumi:"status"`
-	// Dynamic TCP ports used by SQL Server.
-	TcpDynamicPorts pulumi.StringPtrInput `pulumi:"tcpDynamicPorts"`
-	// Static TCP ports used by SQL Server.
-	TcpStaticPorts pulumi.StringPtrInput `pulumi:"tcpStaticPorts"`
-	// The number of logical processors used by the SQL Server instance.
-	VCore pulumi.StringPtrInput `pulumi:"vCore"`
+	// The monitoring configuration.
+	Monitoring MonitoringPtrInput `pulumi:"monitoring"`
+	// Upgrade Action for this resource is locked until it expires. The Expiration time indicated by this value. It is not locked when it is empty.
+	UpgradeLockedUntil pulumi.StringPtrInput `pulumi:"upgradeLockedUntil"`
 	// SQL Server version.
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
@@ -11040,34 +11701,14 @@ func (o SqlServerInstancePropertiesOutput) ToSqlServerInstancePropertiesPtrOutpu
 	}).(SqlServerInstancePropertiesPtrOutput)
 }
 
-// Status of Azure Defender.
-func (o SqlServerInstancePropertiesOutput) AzureDefenderStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlServerInstanceProperties) *string { return v.AzureDefenderStatus }).(pulumi.StringPtrOutput)
-}
-
-// Timestamp of last Azure Defender status update.
-func (o SqlServerInstancePropertiesOutput) AzureDefenderStatusLastUpdated() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlServerInstanceProperties) *string { return v.AzureDefenderStatusLastUpdated }).(pulumi.StringPtrOutput)
-}
-
-// SQL Server collation.
-func (o SqlServerInstancePropertiesOutput) Collation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlServerInstanceProperties) *string { return v.Collation }).(pulumi.StringPtrOutput)
-}
-
-// ARM Resource id of the container resource (Azure Arc for Servers).
-func (o SqlServerInstancePropertiesOutput) ContainerResourceId() pulumi.StringOutput {
-	return o.ApplyT(func(v SqlServerInstanceProperties) string { return v.ContainerResourceId }).(pulumi.StringOutput)
+// The backup profile for the SQL server.
+func (o SqlServerInstancePropertiesOutput) BackupPolicy() BackupPolicyPtrOutput {
+	return o.ApplyT(func(v SqlServerInstanceProperties) *BackupPolicy { return v.BackupPolicy }).(BackupPolicyPtrOutput)
 }
 
 // The number of total cores of the Operating System Environment (OSE) hosting the SQL Server instance.
 func (o SqlServerInstancePropertiesOutput) Cores() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SqlServerInstanceProperties) *string { return v.Cores }).(pulumi.StringPtrOutput)
-}
-
-// SQL Server current version.
-func (o SqlServerInstancePropertiesOutput) CurrentVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlServerInstanceProperties) *string { return v.CurrentVersion }).(pulumi.StringPtrOutput)
 }
 
 // SQL Server edition.
@@ -11085,39 +11726,14 @@ func (o SqlServerInstancePropertiesOutput) InstanceName() pulumi.StringPtrOutput
 	return o.ApplyT(func(v SqlServerInstanceProperties) *string { return v.InstanceName }).(pulumi.StringPtrOutput)
 }
 
-// SQL Server license type.
-func (o SqlServerInstancePropertiesOutput) LicenseType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlServerInstanceProperties) *string { return v.LicenseType }).(pulumi.StringPtrOutput)
+// The monitoring configuration.
+func (o SqlServerInstancePropertiesOutput) Monitoring() MonitoringPtrOutput {
+	return o.ApplyT(func(v SqlServerInstanceProperties) *Monitoring { return v.Monitoring }).(MonitoringPtrOutput)
 }
 
-// SQL Server update level.
-func (o SqlServerInstancePropertiesOutput) PatchLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlServerInstanceProperties) *string { return v.PatchLevel }).(pulumi.StringPtrOutput)
-}
-
-// SQL Server product ID.
-func (o SqlServerInstancePropertiesOutput) ProductId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlServerInstanceProperties) *string { return v.ProductId }).(pulumi.StringPtrOutput)
-}
-
-// The cloud connectivity status.
-func (o SqlServerInstancePropertiesOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func(v SqlServerInstanceProperties) string { return v.Status }).(pulumi.StringOutput)
-}
-
-// Dynamic TCP ports used by SQL Server.
-func (o SqlServerInstancePropertiesOutput) TcpDynamicPorts() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlServerInstanceProperties) *string { return v.TcpDynamicPorts }).(pulumi.StringPtrOutput)
-}
-
-// Static TCP ports used by SQL Server.
-func (o SqlServerInstancePropertiesOutput) TcpStaticPorts() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlServerInstanceProperties) *string { return v.TcpStaticPorts }).(pulumi.StringPtrOutput)
-}
-
-// The number of logical processors used by the SQL Server instance.
-func (o SqlServerInstancePropertiesOutput) VCore() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlServerInstanceProperties) *string { return v.VCore }).(pulumi.StringPtrOutput)
+// Upgrade Action for this resource is locked until it expires. The Expiration time indicated by this value. It is not locked when it is empty.
+func (o SqlServerInstancePropertiesOutput) UpgradeLockedUntil() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlServerInstanceProperties) *string { return v.UpgradeLockedUntil }).(pulumi.StringPtrOutput)
 }
 
 // SQL Server version.
@@ -11149,44 +11765,14 @@ func (o SqlServerInstancePropertiesPtrOutput) Elem() SqlServerInstanceProperties
 	}).(SqlServerInstancePropertiesOutput)
 }
 
-// Status of Azure Defender.
-func (o SqlServerInstancePropertiesPtrOutput) AzureDefenderStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SqlServerInstanceProperties) *string {
+// The backup profile for the SQL server.
+func (o SqlServerInstancePropertiesPtrOutput) BackupPolicy() BackupPolicyPtrOutput {
+	return o.ApplyT(func(v *SqlServerInstanceProperties) *BackupPolicy {
 		if v == nil {
 			return nil
 		}
-		return v.AzureDefenderStatus
-	}).(pulumi.StringPtrOutput)
-}
-
-// Timestamp of last Azure Defender status update.
-func (o SqlServerInstancePropertiesPtrOutput) AzureDefenderStatusLastUpdated() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SqlServerInstanceProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AzureDefenderStatusLastUpdated
-	}).(pulumi.StringPtrOutput)
-}
-
-// SQL Server collation.
-func (o SqlServerInstancePropertiesPtrOutput) Collation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SqlServerInstanceProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Collation
-	}).(pulumi.StringPtrOutput)
-}
-
-// ARM Resource id of the container resource (Azure Arc for Servers).
-func (o SqlServerInstancePropertiesPtrOutput) ContainerResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SqlServerInstanceProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ContainerResourceId
-	}).(pulumi.StringPtrOutput)
+		return v.BackupPolicy
+	}).(BackupPolicyPtrOutput)
 }
 
 // The number of total cores of the Operating System Environment (OSE) hosting the SQL Server instance.
@@ -11196,16 +11782,6 @@ func (o SqlServerInstancePropertiesPtrOutput) Cores() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Cores
-	}).(pulumi.StringPtrOutput)
-}
-
-// SQL Server current version.
-func (o SqlServerInstancePropertiesPtrOutput) CurrentVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SqlServerInstanceProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CurrentVersion
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -11239,73 +11815,23 @@ func (o SqlServerInstancePropertiesPtrOutput) InstanceName() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// SQL Server license type.
-func (o SqlServerInstancePropertiesPtrOutput) LicenseType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SqlServerInstanceProperties) *string {
+// The monitoring configuration.
+func (o SqlServerInstancePropertiesPtrOutput) Monitoring() MonitoringPtrOutput {
+	return o.ApplyT(func(v *SqlServerInstanceProperties) *Monitoring {
 		if v == nil {
 			return nil
 		}
-		return v.LicenseType
-	}).(pulumi.StringPtrOutput)
+		return v.Monitoring
+	}).(MonitoringPtrOutput)
 }
 
-// SQL Server update level.
-func (o SqlServerInstancePropertiesPtrOutput) PatchLevel() pulumi.StringPtrOutput {
+// Upgrade Action for this resource is locked until it expires. The Expiration time indicated by this value. It is not locked when it is empty.
+func (o SqlServerInstancePropertiesPtrOutput) UpgradeLockedUntil() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlServerInstanceProperties) *string {
 		if v == nil {
 			return nil
 		}
-		return v.PatchLevel
-	}).(pulumi.StringPtrOutput)
-}
-
-// SQL Server product ID.
-func (o SqlServerInstancePropertiesPtrOutput) ProductId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SqlServerInstanceProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ProductId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The cloud connectivity status.
-func (o SqlServerInstancePropertiesPtrOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SqlServerInstanceProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Status
-	}).(pulumi.StringPtrOutput)
-}
-
-// Dynamic TCP ports used by SQL Server.
-func (o SqlServerInstancePropertiesPtrOutput) TcpDynamicPorts() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SqlServerInstanceProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TcpDynamicPorts
-	}).(pulumi.StringPtrOutput)
-}
-
-// Static TCP ports used by SQL Server.
-func (o SqlServerInstancePropertiesPtrOutput) TcpStaticPorts() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SqlServerInstanceProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TcpStaticPorts
-	}).(pulumi.StringPtrOutput)
-}
-
-// The number of logical processors used by the SQL Server instance.
-func (o SqlServerInstancePropertiesPtrOutput) VCore() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SqlServerInstanceProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.VCore
+		return v.UpgradeLockedUntil
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -11321,12 +11847,16 @@ func (o SqlServerInstancePropertiesPtrOutput) Version() pulumi.StringPtrOutput {
 
 // Properties of SqlServerInstance.
 type SqlServerInstancePropertiesResponse struct {
+	// The role of the SQL Server, based on availability.
+	AlwaysOnRole string `pulumi:"alwaysOnRole"`
 	// Status of Azure Defender.
-	AzureDefenderStatus *string `pulumi:"azureDefenderStatus"`
+	AzureDefenderStatus string `pulumi:"azureDefenderStatus"`
 	// Timestamp of last Azure Defender status update.
-	AzureDefenderStatusLastUpdated *string `pulumi:"azureDefenderStatusLastUpdated"`
+	AzureDefenderStatusLastUpdated string `pulumi:"azureDefenderStatusLastUpdated"`
+	// The backup profile for the SQL server.
+	BackupPolicy *BackupPolicyResponse `pulumi:"backupPolicy"`
 	// SQL Server collation.
-	Collation *string `pulumi:"collation"`
+	Collation string `pulumi:"collation"`
 	// ARM Resource id of the container resource (Azure Arc for Servers).
 	ContainerResourceId string `pulumi:"containerResourceId"`
 	// The number of total cores of the Operating System Environment (OSE) hosting the SQL Server instance.
@@ -11334,29 +11864,39 @@ type SqlServerInstancePropertiesResponse struct {
 	// The time when the resource was created.
 	CreateTime string `pulumi:"createTime"`
 	// SQL Server current version.
-	CurrentVersion *string `pulumi:"currentVersion"`
+	CurrentVersion string `pulumi:"currentVersion"`
 	// SQL Server edition.
 	Edition *string `pulumi:"edition"`
+	// Failover Cluster Instance properties.
+	FailoverCluster *FailoverClusterResponse `pulumi:"failoverCluster"`
 	// Type of host for Azure Arc SQL Server
 	HostType *string `pulumi:"hostType"`
 	// SQL Server instance name.
 	InstanceName *string `pulumi:"instanceName"`
+	// The time when last successful inventory upload was performed.
+	LastInventoryUploadTime string `pulumi:"lastInventoryUploadTime"`
+	// The time when last successful usage upload was performed.
+	LastUsageUploadTime string `pulumi:"lastUsageUploadTime"`
 	// SQL Server license type.
-	LicenseType *string `pulumi:"licenseType"`
+	LicenseType string `pulumi:"licenseType"`
+	// The monitoring configuration.
+	Monitoring *MonitoringResponse `pulumi:"monitoring"`
 	// SQL Server update level.
-	PatchLevel *string `pulumi:"patchLevel"`
+	PatchLevel string `pulumi:"patchLevel"`
 	// SQL Server product ID.
-	ProductId *string `pulumi:"productId"`
+	ProductId string `pulumi:"productId"`
 	// The provisioning state of the Arc-enabled SQL Server resource.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// The cloud connectivity status.
 	Status string `pulumi:"status"`
 	// Dynamic TCP ports used by SQL Server.
-	TcpDynamicPorts *string `pulumi:"tcpDynamicPorts"`
+	TcpDynamicPorts string `pulumi:"tcpDynamicPorts"`
 	// Static TCP ports used by SQL Server.
-	TcpStaticPorts *string `pulumi:"tcpStaticPorts"`
+	TcpStaticPorts string `pulumi:"tcpStaticPorts"`
+	// Upgrade Action for this resource is locked until it expires. The Expiration time indicated by this value. It is not locked when it is empty.
+	UpgradeLockedUntil *string `pulumi:"upgradeLockedUntil"`
 	// The number of logical processors used by the SQL Server instance.
-	VCore *string `pulumi:"vCore"`
+	VCore string `pulumi:"vCore"`
 	// SQL Server version.
 	Version *string `pulumi:"version"`
 }
@@ -11376,19 +11916,29 @@ func (o SqlServerInstancePropertiesResponseOutput) ToSqlServerInstanceProperties
 	return o
 }
 
+// The role of the SQL Server, based on availability.
+func (o SqlServerInstancePropertiesResponseOutput) AlwaysOnRole() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) string { return v.AlwaysOnRole }).(pulumi.StringOutput)
+}
+
 // Status of Azure Defender.
-func (o SqlServerInstancePropertiesResponseOutput) AzureDefenderStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) *string { return v.AzureDefenderStatus }).(pulumi.StringPtrOutput)
+func (o SqlServerInstancePropertiesResponseOutput) AzureDefenderStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) string { return v.AzureDefenderStatus }).(pulumi.StringOutput)
 }
 
 // Timestamp of last Azure Defender status update.
-func (o SqlServerInstancePropertiesResponseOutput) AzureDefenderStatusLastUpdated() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) *string { return v.AzureDefenderStatusLastUpdated }).(pulumi.StringPtrOutput)
+func (o SqlServerInstancePropertiesResponseOutput) AzureDefenderStatusLastUpdated() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) string { return v.AzureDefenderStatusLastUpdated }).(pulumi.StringOutput)
+}
+
+// The backup profile for the SQL server.
+func (o SqlServerInstancePropertiesResponseOutput) BackupPolicy() BackupPolicyResponsePtrOutput {
+	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) *BackupPolicyResponse { return v.BackupPolicy }).(BackupPolicyResponsePtrOutput)
 }
 
 // SQL Server collation.
-func (o SqlServerInstancePropertiesResponseOutput) Collation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) *string { return v.Collation }).(pulumi.StringPtrOutput)
+func (o SqlServerInstancePropertiesResponseOutput) Collation() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) string { return v.Collation }).(pulumi.StringOutput)
 }
 
 // ARM Resource id of the container resource (Azure Arc for Servers).
@@ -11407,13 +11957,18 @@ func (o SqlServerInstancePropertiesResponseOutput) CreateTime() pulumi.StringOut
 }
 
 // SQL Server current version.
-func (o SqlServerInstancePropertiesResponseOutput) CurrentVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) *string { return v.CurrentVersion }).(pulumi.StringPtrOutput)
+func (o SqlServerInstancePropertiesResponseOutput) CurrentVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) string { return v.CurrentVersion }).(pulumi.StringOutput)
 }
 
 // SQL Server edition.
 func (o SqlServerInstancePropertiesResponseOutput) Edition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) *string { return v.Edition }).(pulumi.StringPtrOutput)
+}
+
+// Failover Cluster Instance properties.
+func (o SqlServerInstancePropertiesResponseOutput) FailoverCluster() FailoverClusterResponsePtrOutput {
+	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) *FailoverClusterResponse { return v.FailoverCluster }).(FailoverClusterResponsePtrOutput)
 }
 
 // Type of host for Azure Arc SQL Server
@@ -11426,19 +11981,34 @@ func (o SqlServerInstancePropertiesResponseOutput) InstanceName() pulumi.StringP
 	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) *string { return v.InstanceName }).(pulumi.StringPtrOutput)
 }
 
+// The time when last successful inventory upload was performed.
+func (o SqlServerInstancePropertiesResponseOutput) LastInventoryUploadTime() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) string { return v.LastInventoryUploadTime }).(pulumi.StringOutput)
+}
+
+// The time when last successful usage upload was performed.
+func (o SqlServerInstancePropertiesResponseOutput) LastUsageUploadTime() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) string { return v.LastUsageUploadTime }).(pulumi.StringOutput)
+}
+
 // SQL Server license type.
-func (o SqlServerInstancePropertiesResponseOutput) LicenseType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) *string { return v.LicenseType }).(pulumi.StringPtrOutput)
+func (o SqlServerInstancePropertiesResponseOutput) LicenseType() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) string { return v.LicenseType }).(pulumi.StringOutput)
+}
+
+// The monitoring configuration.
+func (o SqlServerInstancePropertiesResponseOutput) Monitoring() MonitoringResponsePtrOutput {
+	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) *MonitoringResponse { return v.Monitoring }).(MonitoringResponsePtrOutput)
 }
 
 // SQL Server update level.
-func (o SqlServerInstancePropertiesResponseOutput) PatchLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) *string { return v.PatchLevel }).(pulumi.StringPtrOutput)
+func (o SqlServerInstancePropertiesResponseOutput) PatchLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) string { return v.PatchLevel }).(pulumi.StringOutput)
 }
 
 // SQL Server product ID.
-func (o SqlServerInstancePropertiesResponseOutput) ProductId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) *string { return v.ProductId }).(pulumi.StringPtrOutput)
+func (o SqlServerInstancePropertiesResponseOutput) ProductId() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) string { return v.ProductId }).(pulumi.StringOutput)
 }
 
 // The provisioning state of the Arc-enabled SQL Server resource.
@@ -11452,18 +12022,23 @@ func (o SqlServerInstancePropertiesResponseOutput) Status() pulumi.StringOutput 
 }
 
 // Dynamic TCP ports used by SQL Server.
-func (o SqlServerInstancePropertiesResponseOutput) TcpDynamicPorts() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) *string { return v.TcpDynamicPorts }).(pulumi.StringPtrOutput)
+func (o SqlServerInstancePropertiesResponseOutput) TcpDynamicPorts() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) string { return v.TcpDynamicPorts }).(pulumi.StringOutput)
 }
 
 // Static TCP ports used by SQL Server.
-func (o SqlServerInstancePropertiesResponseOutput) TcpStaticPorts() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) *string { return v.TcpStaticPorts }).(pulumi.StringPtrOutput)
+func (o SqlServerInstancePropertiesResponseOutput) TcpStaticPorts() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) string { return v.TcpStaticPorts }).(pulumi.StringOutput)
+}
+
+// Upgrade Action for this resource is locked until it expires. The Expiration time indicated by this value. It is not locked when it is empty.
+func (o SqlServerInstancePropertiesResponseOutput) UpgradeLockedUntil() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) *string { return v.UpgradeLockedUntil }).(pulumi.StringPtrOutput)
 }
 
 // The number of logical processors used by the SQL Server instance.
-func (o SqlServerInstancePropertiesResponseOutput) VCore() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) *string { return v.VCore }).(pulumi.StringPtrOutput)
+func (o SqlServerInstancePropertiesResponseOutput) VCore() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) string { return v.VCore }).(pulumi.StringOutput)
 }
 
 // SQL Server version.
@@ -12351,6 +12926,10 @@ func init() {
 	pulumi.RegisterOutputType(AvailabilityGroupStateResponsePtrOutput{})
 	pulumi.RegisterOutputType(BackgroundJobResponseOutput{})
 	pulumi.RegisterOutputType(BackgroundJobResponsePtrOutput{})
+	pulumi.RegisterOutputType(BackupPolicyOutput{})
+	pulumi.RegisterOutputType(BackupPolicyPtrOutput{})
+	pulumi.RegisterOutputType(BackupPolicyResponseOutput{})
+	pulumi.RegisterOutputType(BackupPolicyResponsePtrOutput{})
 	pulumi.RegisterOutputType(BasicLoginInformationOutput{})
 	pulumi.RegisterOutputType(BasicLoginInformationPtrOutput{})
 	pulumi.RegisterOutputType(BasicLoginInformationResponseOutput{})
@@ -12361,6 +12940,8 @@ func init() {
 	pulumi.RegisterOutputType(ExtendedLocationPtrOutput{})
 	pulumi.RegisterOutputType(ExtendedLocationResponseOutput{})
 	pulumi.RegisterOutputType(ExtendedLocationResponsePtrOutput{})
+	pulumi.RegisterOutputType(FailoverClusterResponseOutput{})
+	pulumi.RegisterOutputType(FailoverClusterResponsePtrOutput{})
 	pulumi.RegisterOutputType(FailoverGroupPropertiesOutput{})
 	pulumi.RegisterOutputType(FailoverGroupPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(FailoverGroupSpecOutput{})
@@ -12407,6 +12988,10 @@ func init() {
 	pulumi.RegisterOutputType(LogAnalyticsWorkspaceConfigPtrOutput{})
 	pulumi.RegisterOutputType(LogAnalyticsWorkspaceConfigResponseOutput{})
 	pulumi.RegisterOutputType(LogAnalyticsWorkspaceConfigResponsePtrOutput{})
+	pulumi.RegisterOutputType(MonitoringOutput{})
+	pulumi.RegisterOutputType(MonitoringPtrOutput{})
+	pulumi.RegisterOutputType(MonitoringResponseOutput{})
+	pulumi.RegisterOutputType(MonitoringResponsePtrOutput{})
 	pulumi.RegisterOutputType(OnPremisePropertyOutput{})
 	pulumi.RegisterOutputType(OnPremisePropertyPtrOutput{})
 	pulumi.RegisterOutputType(OnPremisePropertyResponseOutput{})

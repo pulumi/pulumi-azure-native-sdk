@@ -12,9 +12,7 @@ import (
 )
 
 // The integration fabric resource type.
-// Azure REST API version: 2023-10-01-preview.
-//
-// Other available API versions: 2024-10-01.
+// Azure REST API version: 2024-10-01.
 func LookupIntegrationFabric(ctx *pulumi.Context, args *LookupIntegrationFabricArgs, opts ...pulumi.InvokeOption) (*LookupIntegrationFabricResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIntegrationFabricResult
@@ -36,6 +34,8 @@ type LookupIntegrationFabricArgs struct {
 
 // The integration fabric resource type.
 type LookupIntegrationFabricResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -86,6 +86,11 @@ func (o LookupIntegrationFabricResultOutput) ToLookupIntegrationFabricResultOutp
 
 func (o LookupIntegrationFabricResultOutput) ToLookupIntegrationFabricResultOutputWithContext(ctx context.Context) LookupIntegrationFabricResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupIntegrationFabricResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIntegrationFabricResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

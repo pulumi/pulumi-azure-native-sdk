@@ -13,10 +13,12 @@ import (
 )
 
 // The description of the service.
-// Azure REST API version: 2021-03-08. Prior API version in Azure Native 1.x: 2021-03-08.
+// Azure REST API version: 2021-03-08.
 type PrivateLinkServicesForM365SecurityCenter struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// An etag associated with the resource, used for optimistic concurrency when editing it.
 	Etag pulumi.StringPtrOutput `pulumi:"etag"`
 	// Setting indicating whether the service has a managed identity associated with it.
@@ -55,16 +57,7 @@ func NewPrivateLinkServicesForM365SecurityCenter(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:securityandcompliance/v20210111:PrivateLinkServicesForM365SecurityCenter"),
 		},
 		{
-			Type: pulumi.String("azure-native:securityandcompliance/v20210111:privateLinkServicesForM365SecurityCenter"),
-		},
-		{
 			Type: pulumi.String("azure-native:securityandcompliance/v20210308:PrivateLinkServicesForM365SecurityCenter"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityandcompliance/v20210308:privateLinkServicesForM365SecurityCenter"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityandcompliance:privateLinkServicesForM365SecurityCenter"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -170,6 +163,11 @@ func (o PrivateLinkServicesForM365SecurityCenterOutput) ToPrivateLinkServicesFor
 
 func (o PrivateLinkServicesForM365SecurityCenterOutput) ToPrivateLinkServicesForM365SecurityCenterOutputWithContext(ctx context.Context) PrivateLinkServicesForM365SecurityCenterOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o PrivateLinkServicesForM365SecurityCenterOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrivateLinkServicesForM365SecurityCenter) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // An etag associated with the resource, used for optimistic concurrency when editing it.

@@ -13,10 +13,12 @@ import (
 )
 
 // Response to get user settings
-// Azure REST API version: 2018-10-01. Prior API version in Azure Native 1.x: 2018-10-01.
+// Azure REST API version: 2018-10-01. Prior API version in Azure Native 2.x: 2018-10-01.
 type UserSettingsWithLocation struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The cloud shell user settings properties.
 	Properties UserPropertiesResponseOutput `pulumi:"properties"`
 }
@@ -126,6 +128,11 @@ func (o UserSettingsWithLocationOutput) ToUserSettingsWithLocationOutput() UserS
 
 func (o UserSettingsWithLocationOutput) ToUserSettingsWithLocationOutputWithContext(ctx context.Context) UserSettingsWithLocationOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o UserSettingsWithLocationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *UserSettingsWithLocation) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The cloud shell user settings properties.

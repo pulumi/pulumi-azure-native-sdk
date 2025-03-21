@@ -12,9 +12,7 @@ import (
 )
 
 // Gets the properties of the specified scope map.
-// Azure REST API version: 2022-12-01.
-//
-// Other available API versions: 2023-01-01-preview, 2023-06-01-preview, 2023-07-01, 2023-08-01-preview, 2023-11-01-preview, 2024-11-01-preview.
+// Azure REST API version: 2024-11-01-preview.
 func LookupScopeMap(ctx *pulumi.Context, args *LookupScopeMapArgs, opts ...pulumi.InvokeOption) (*LookupScopeMapResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupScopeMapResult
@@ -40,6 +38,8 @@ type LookupScopeMapResult struct {
 	// E.g. repositories/repository-name/content/read,
 	// repositories/repository-name/metadata/write
 	Actions []string `pulumi:"actions"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The creation date of scope map.
 	CreationDate string `pulumi:"creationDate"`
 	// The user friendly description of the scope map.
@@ -98,6 +98,11 @@ func (o LookupScopeMapResultOutput) ToLookupScopeMapResultOutputWithContext(ctx 
 // repositories/repository-name/metadata/write
 func (o LookupScopeMapResultOutput) Actions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupScopeMapResult) []string { return v.Actions }).(pulumi.StringArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupScopeMapResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupScopeMapResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The creation date of scope map.

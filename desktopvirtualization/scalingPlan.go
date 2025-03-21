@@ -13,12 +13,12 @@ import (
 )
 
 // Represents a scaling plan definition.
-// Azure REST API version: 2022-09-09. Prior API version in Azure Native 1.x: 2021-02-01-preview.
-//
-// Other available API versions: 2021-02-01-preview, 2022-02-10-preview, 2022-10-14-preview, 2023-07-07-preview, 2023-09-05, 2023-10-04-preview, 2023-11-01-preview, 2024-01-16-preview, 2024-03-06-preview, 2024-04-03, 2024-04-08-preview, 2024-08-08-preview.
+// Azure REST API version: 2024-04-03. Prior API version in Azure Native 2.x: 2022-09-09.
 type ScalingPlan struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Description of scaling plan.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
@@ -32,10 +32,10 @@ type ScalingPlan struct {
 	// HostPool type for desktop.
 	HostPoolType pulumi.StringPtrOutput                                       `pulumi:"hostPoolType"`
 	Identity     ResourceModelWithAllowedPropertySetResponseIdentityPtrOutput `pulumi:"identity"`
-	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
+	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// The geo-location where the resource lives
-	Location pulumi.StringPtrOutput `pulumi:"location"`
+	Location pulumi.StringOutput `pulumi:"location"`
 	// The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
 	ManagedBy pulumi.StringPtrOutput `pulumi:"managedBy"`
 	// The name of the resource
@@ -46,7 +46,7 @@ type ScalingPlan struct {
 	// List of ScalingPlanPooledSchedule definitions.
 	Schedules ScalingScheduleResponseArrayOutput                      `pulumi:"schedules"`
 	Sku       ResourceModelWithAllowedPropertySetResponseSkuPtrOutput `pulumi:"sku"`
-	// Metadata pertaining to creation and last modification of the resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
@@ -133,6 +133,9 @@ func NewScalingPlan(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:desktopvirtualization/v20240808preview:ScalingPlan"),
 		},
+		{
+			Type: pulumi.String("azure-native:desktopvirtualization/v20241101preview:ScalingPlan"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -179,7 +182,7 @@ type scalingPlanArgs struct {
 	// HostPool type for desktop.
 	HostPoolType *string                                      `pulumi:"hostPoolType"`
 	Identity     *ResourceModelWithAllowedPropertySetIdentity `pulumi:"identity"`
-	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
+	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
 	Kind *string `pulumi:"kind"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
@@ -212,7 +215,7 @@ type ScalingPlanArgs struct {
 	// HostPool type for desktop.
 	HostPoolType pulumi.StringPtrInput
 	Identity     ResourceModelWithAllowedPropertySetIdentityPtrInput
-	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
+	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
 	Kind pulumi.StringPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
@@ -269,6 +272,11 @@ func (o ScalingPlanOutput) ToScalingPlanOutputWithContext(ctx context.Context) S
 	return o
 }
 
+// The Azure API version of the resource.
+func (o ScalingPlanOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ScalingPlan) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Description of scaling plan.
 func (o ScalingPlanOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ScalingPlan) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -303,14 +311,14 @@ func (o ScalingPlanOutput) Identity() ResourceModelWithAllowedPropertySetRespons
 	return o.ApplyT(func(v *ScalingPlan) ResourceModelWithAllowedPropertySetResponseIdentityPtrOutput { return v.Identity }).(ResourceModelWithAllowedPropertySetResponseIdentityPtrOutput)
 }
 
-// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
+// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
 func (o ScalingPlanOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ScalingPlan) pulumi.StringPtrOutput { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
 // The geo-location where the resource lives
-func (o ScalingPlanOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ScalingPlan) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
+func (o ScalingPlanOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *ScalingPlan) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
 // The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
@@ -341,7 +349,7 @@ func (o ScalingPlanOutput) Sku() ResourceModelWithAllowedPropertySetResponseSkuP
 	return o.ApplyT(func(v *ScalingPlan) ResourceModelWithAllowedPropertySetResponseSkuPtrOutput { return v.Sku }).(ResourceModelWithAllowedPropertySetResponseSkuPtrOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o ScalingPlanOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *ScalingPlan) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

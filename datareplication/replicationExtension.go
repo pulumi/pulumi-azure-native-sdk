@@ -13,10 +13,12 @@ import (
 )
 
 // Replication extension model.
-// Azure REST API version: 2021-02-16-preview.
+// Azure REST API version: 2021-02-16-preview. Prior API version in Azure Native 2.x: 2021-02-16-preview.
 type ReplicationExtension struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets or sets the name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Replication extension model properties.
@@ -45,6 +47,9 @@ func NewReplicationExtension(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:datareplication/v20210216preview:ReplicationExtension"),
+		},
+		{
+			Type: pulumi.String("azure-native:datareplication/v20240901:ReplicationExtension"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -138,6 +143,11 @@ func (o ReplicationExtensionOutput) ToReplicationExtensionOutput() ReplicationEx
 
 func (o ReplicationExtensionOutput) ToReplicationExtensionOutputWithContext(ctx context.Context) ReplicationExtensionOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ReplicationExtensionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ReplicationExtension) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets the name of the resource.

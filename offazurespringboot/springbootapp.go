@@ -17,6 +17,8 @@ import (
 type Springbootapp struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The springbootapps resource definition.
@@ -43,12 +45,6 @@ func NewSpringbootapp(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:offazurespringboot/v20240401preview:Springbootapp"),
-		},
-		{
-			Type: pulumi.String("azure-native:offazurespringboot/v20240401preview:springbootapp"),
-		},
-		{
-			Type: pulumi.String("azure-native:offazurespringboot:springbootapp"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -142,6 +138,11 @@ func (o SpringbootappOutput) ToSpringbootappOutput() SpringbootappOutput {
 
 func (o SpringbootappOutput) ToSpringbootappOutputWithContext(ctx context.Context) SpringbootappOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o SpringbootappOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Springbootapp) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

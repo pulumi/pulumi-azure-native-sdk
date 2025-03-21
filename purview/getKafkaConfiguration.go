@@ -12,9 +12,7 @@ import (
 )
 
 // Gets the kafka configuration for the account
-// Azure REST API version: 2021-12-01.
-//
-// Other available API versions: 2023-05-01-preview, 2024-04-01-preview.
+// Azure REST API version: 2024-04-01-preview.
 func LookupKafkaConfiguration(ctx *pulumi.Context, args *LookupKafkaConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupKafkaConfigurationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupKafkaConfigurationResult
@@ -36,9 +34,11 @@ type LookupKafkaConfigurationArgs struct {
 
 // The configuration of the event streaming service resource attached to the Purview account for kafka notifications.
 type LookupKafkaConfigurationResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Consumer group for hook event hub.
 	ConsumerGroup *string `pulumi:"consumerGroup"`
-	// Credentials to access event hub.
+	// Credentials to access the event streaming service attached to the purview account.
 	Credentials *CredentialsResponse `pulumi:"credentials"`
 	// Optional partition Id for notification event hub. If not set, all partitions will be leveraged.
 	EventHubPartitionId *string `pulumi:"eventHubPartitionId"`
@@ -112,12 +112,17 @@ func (o LookupKafkaConfigurationResultOutput) ToLookupKafkaConfigurationResultOu
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupKafkaConfigurationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKafkaConfigurationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Consumer group for hook event hub.
 func (o LookupKafkaConfigurationResultOutput) ConsumerGroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupKafkaConfigurationResult) *string { return v.ConsumerGroup }).(pulumi.StringPtrOutput)
 }
 
-// Credentials to access event hub.
+// Credentials to access the event streaming service attached to the purview account.
 func (o LookupKafkaConfigurationResultOutput) Credentials() CredentialsResponsePtrOutput {
 	return o.ApplyT(func(v LookupKafkaConfigurationResult) *CredentialsResponse { return v.Credentials }).(CredentialsResponsePtrOutput)
 }

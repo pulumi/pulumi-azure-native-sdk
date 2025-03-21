@@ -12,9 +12,7 @@ import (
 )
 
 // Gets the properties of the specified user.
-// Azure REST API version: 2022-03-01.
-//
-// Other available API versions: 2021-02-01-preview, 2023-01-01-preview, 2023-07-01, 2023-12-01.
+// Azure REST API version: 2023-07-01.
 func LookupUser(ctx *pulumi.Context, args *LookupUserArgs, opts ...pulumi.InvokeOption) (*LookupUserResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupUserResult
@@ -36,6 +34,8 @@ type LookupUserArgs struct {
 
 // Represents a user who has access to one or more shares on the Data Box Edge/Gateway device.
 type LookupUserResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The password details.
 	EncryptedPassword *AsymmetricEncryptedSecretResponse `pulumi:"encryptedPassword"`
 	// The path ID that uniquely identifies the object.
@@ -87,6 +87,11 @@ func (o LookupUserResultOutput) ToLookupUserResultOutput() LookupUserResultOutpu
 
 func (o LookupUserResultOutput) ToLookupUserResultOutputWithContext(ctx context.Context) LookupUserResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupUserResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The password details.

@@ -12,9 +12,7 @@ import (
 )
 
 // Get properties of an event subscription of a namespace topic.
-// Azure REST API version: 2023-06-01-preview.
-//
-// Other available API versions: 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-02-15.
+// Azure REST API version: 2025-02-15.
 func LookupNamespaceTopicEventSubscription(ctx *pulumi.Context, args *LookupNamespaceTopicEventSubscriptionArgs, opts ...pulumi.InvokeOption) (*LookupNamespaceTopicEventSubscriptionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNamespaceTopicEventSubscriptionResult
@@ -26,7 +24,7 @@ func LookupNamespaceTopicEventSubscription(ctx *pulumi.Context, args *LookupName
 }
 
 type LookupNamespaceTopicEventSubscriptionArgs struct {
-	// Name of the event subscription to be created. Event subscription names must be between 3 and 100 characters in length and use alphanumeric letters only.
+	// Name of the event subscription to be found.
 	EventSubscriptionName string `pulumi:"eventSubscriptionName"`
 	// Name of the namespace.
 	NamespaceName string `pulumi:"namespaceName"`
@@ -38,10 +36,14 @@ type LookupNamespaceTopicEventSubscriptionArgs struct {
 
 // Event Subscription.
 type LookupNamespaceTopicEventSubscriptionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Information about the delivery configuration of the event subscription.
 	DeliveryConfiguration *DeliveryConfigurationResponse `pulumi:"deliveryConfiguration"`
 	// The event delivery schema for the event subscription.
 	EventDeliverySchema *string `pulumi:"eventDeliverySchema"`
+	// Expiration time of the event subscription.
+	ExpirationTimeUtc *string `pulumi:"expirationTimeUtc"`
 	// Information about the filter for the event subscription.
 	FiltersConfiguration *FiltersConfigurationResponse `pulumi:"filtersConfiguration"`
 	// Fully qualified identifier of the resource.
@@ -50,7 +52,7 @@ type LookupNamespaceTopicEventSubscriptionResult struct {
 	Name string `pulumi:"name"`
 	// Provisioning state of the event subscription.
 	ProvisioningState string `pulumi:"provisioningState"`
-	// The system metadata relating to Event Subscription resource.
+	// The system metadata relating to the Event Grid resource.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Type of the resource.
 	Type string `pulumi:"type"`
@@ -66,7 +68,7 @@ func LookupNamespaceTopicEventSubscriptionOutput(ctx *pulumi.Context, args Looku
 }
 
 type LookupNamespaceTopicEventSubscriptionOutputArgs struct {
-	// Name of the event subscription to be created. Event subscription names must be between 3 and 100 characters in length and use alphanumeric letters only.
+	// Name of the event subscription to be found.
 	EventSubscriptionName pulumi.StringInput `pulumi:"eventSubscriptionName"`
 	// Name of the namespace.
 	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
@@ -95,6 +97,11 @@ func (o LookupNamespaceTopicEventSubscriptionResultOutput) ToLookupNamespaceTopi
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupNamespaceTopicEventSubscriptionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNamespaceTopicEventSubscriptionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Information about the delivery configuration of the event subscription.
 func (o LookupNamespaceTopicEventSubscriptionResultOutput) DeliveryConfiguration() DeliveryConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v LookupNamespaceTopicEventSubscriptionResult) *DeliveryConfigurationResponse {
@@ -105,6 +112,11 @@ func (o LookupNamespaceTopicEventSubscriptionResultOutput) DeliveryConfiguration
 // The event delivery schema for the event subscription.
 func (o LookupNamespaceTopicEventSubscriptionResultOutput) EventDeliverySchema() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNamespaceTopicEventSubscriptionResult) *string { return v.EventDeliverySchema }).(pulumi.StringPtrOutput)
+}
+
+// Expiration time of the event subscription.
+func (o LookupNamespaceTopicEventSubscriptionResultOutput) ExpirationTimeUtc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupNamespaceTopicEventSubscriptionResult) *string { return v.ExpirationTimeUtc }).(pulumi.StringPtrOutput)
 }
 
 // Information about the filter for the event subscription.
@@ -129,7 +141,7 @@ func (o LookupNamespaceTopicEventSubscriptionResultOutput) ProvisioningState() p
 	return o.ApplyT(func(v LookupNamespaceTopicEventSubscriptionResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// The system metadata relating to Event Subscription resource.
+// The system metadata relating to the Event Grid resource.
 func (o LookupNamespaceTopicEventSubscriptionResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupNamespaceTopicEventSubscriptionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }

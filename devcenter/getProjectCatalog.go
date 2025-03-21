@@ -13,8 +13,6 @@ import (
 
 // Gets an associated project catalog.
 // Azure REST API version: 2024-02-01.
-//
-// Other available API versions: 2024-05-01-preview, 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview, 2024-10-01-preview.
 func LookupProjectCatalog(ctx *pulumi.Context, args *LookupProjectCatalogArgs, opts ...pulumi.InvokeOption) (*LookupProjectCatalogResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupProjectCatalogResult
@@ -38,6 +36,8 @@ type LookupProjectCatalogArgs struct {
 type LookupProjectCatalogResult struct {
 	// Properties for an Azure DevOps catalog type.
 	AdoGit *GitCatalogResponse `pulumi:"adoGit"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The connection state of the catalog.
 	ConnectionState string `pulumi:"connectionState"`
 	// Properties for a GitHub catalog type.
@@ -106,6 +106,11 @@ func (o LookupProjectCatalogResultOutput) ToLookupProjectCatalogResultOutputWith
 // Properties for an Azure DevOps catalog type.
 func (o LookupProjectCatalogResultOutput) AdoGit() GitCatalogResponsePtrOutput {
 	return o.ApplyT(func(v LookupProjectCatalogResult) *GitCatalogResponse { return v.AdoGit }).(GitCatalogResponsePtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupProjectCatalogResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectCatalogResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The connection state of the catalog.

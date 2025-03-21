@@ -36,6 +36,8 @@ type LookupStorageAccountCredentialArgs struct {
 type LookupStorageAccountCredentialResult struct {
 	// The details of the storage account password.
 	AccessKey *AsymmetricEncryptedSecretResponse `pulumi:"accessKey"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The storage endpoint
 	EndPoint string `pulumi:"endPoint"`
 	// The path ID that uniquely identifies the object.
@@ -92,6 +94,11 @@ func (o LookupStorageAccountCredentialResultOutput) ToLookupStorageAccountCreden
 // The details of the storage account password.
 func (o LookupStorageAccountCredentialResultOutput) AccessKey() AsymmetricEncryptedSecretResponsePtrOutput {
 	return o.ApplyT(func(v LookupStorageAccountCredentialResult) *AsymmetricEncryptedSecretResponse { return v.AccessKey }).(AsymmetricEncryptedSecretResponsePtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupStorageAccountCredentialResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStorageAccountCredentialResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The storage endpoint

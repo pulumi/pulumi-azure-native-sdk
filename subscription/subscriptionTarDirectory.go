@@ -12,10 +12,12 @@ import (
 )
 
 // Subscription Response for Changed Target Directory.
-// Azure REST API version: 2024-08-01-preview.
+// Azure REST API version: 2024-08-01-preview. Prior API version in Azure Native 2.x: 2024-08-01-preview.
 type SubscriptionTarDirectory struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Subscription Name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Subscription Changed Target Directory response properties.
@@ -119,6 +121,11 @@ func (o SubscriptionTarDirectoryOutput) ToSubscriptionTarDirectoryOutput() Subsc
 
 func (o SubscriptionTarDirectoryOutput) ToSubscriptionTarDirectoryOutputWithContext(ctx context.Context) SubscriptionTarDirectoryOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o SubscriptionTarDirectoryOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SubscriptionTarDirectory) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Subscription Name.

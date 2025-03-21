@@ -13,10 +13,12 @@ import (
 )
 
 // A Microsoft.AwsConnector resource
-// Azure REST API version: 2024-12-01.
+// Azure REST API version: 2024-12-01. Prior API version in Azure Native 2.x: 2024-12-01.
 type Ec2FlowLog struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -141,6 +143,11 @@ func (o Ec2FlowLogOutput) ToEc2FlowLogOutput() Ec2FlowLogOutput {
 
 func (o Ec2FlowLogOutput) ToEc2FlowLogOutputWithContext(ctx context.Context) Ec2FlowLogOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o Ec2FlowLogOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Ec2FlowLog) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The geo-location where the resource lives

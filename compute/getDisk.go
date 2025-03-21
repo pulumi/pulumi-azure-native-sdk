@@ -12,9 +12,7 @@ import (
 )
 
 // Gets information about a disk.
-// Azure REST API version: 2022-07-02.
-//
-// Other available API versions: 2023-01-02, 2023-04-02, 2023-10-02, 2024-03-02.
+// Azure REST API version: 2024-03-02.
 func LookupDisk(ctx *pulumi.Context, args *LookupDiskArgs, opts ...pulumi.InvokeOption) (*LookupDiskResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDiskResult
@@ -34,6 +32,8 @@ type LookupDiskArgs struct {
 
 // Disk resource.
 type LookupDiskResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Set to true to enable bursting beyond the provisioned performance target of the disk. Bursting is disabled by default. Does not apply to Ultra disks.
 	BurstingEnabled *bool `pulumi:"burstingEnabled"`
 	// Latest time when bursting was last enabled on a disk.
@@ -70,6 +70,8 @@ type LookupDiskResult struct {
 	HyperVGeneration *string `pulumi:"hyperVGeneration"`
 	// Resource Id
 	Id string `pulumi:"id"`
+	// The UTC time when the ownership state of the disk was last changed i.e., the time the disk was last attached or detached from a VM or the time when the VM to which the disk was attached was deallocated or started.
+	LastOwnershipUpdateTime string `pulumi:"lastOwnershipUpdateTime"`
 	// Resource location
 	Location string `pulumi:"location"`
 	// A relative URI containing the ID of the VM that has the disk attached.
@@ -151,6 +153,11 @@ func (o LookupDiskResultOutput) ToLookupDiskResultOutput() LookupDiskResultOutpu
 
 func (o LookupDiskResultOutput) ToLookupDiskResultOutputWithContext(ctx context.Context) LookupDiskResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupDiskResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDiskResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Set to true to enable bursting beyond the provisioned performance target of the disk. Bursting is disabled by default. Does not apply to Ultra disks.
@@ -241,6 +248,11 @@ func (o LookupDiskResultOutput) HyperVGeneration() pulumi.StringPtrOutput {
 // Resource Id
 func (o LookupDiskResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The UTC time when the ownership state of the disk was last changed i.e., the time the disk was last attached or detached from a VM or the time when the VM to which the disk was attached was deallocated or started.
+func (o LookupDiskResultOutput) LastOwnershipUpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDiskResult) string { return v.LastOwnershipUpdateTime }).(pulumi.StringOutput)
 }
 
 // Resource location

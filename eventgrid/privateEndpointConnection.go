@@ -12,12 +12,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Azure REST API version: 2022-06-15. Prior API version in Azure Native 1.x: 2020-06-01.
-//
-// Other available API versions: 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-02-15.
+// Azure REST API version: 2025-02-15. Prior API version in Azure Native 2.x: 2022-06-15.
 type PrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// GroupIds from the private link service resource.
 	GroupIds pulumi.StringArrayOutput `pulumi:"groupIds"`
 	// Name of the resource.
@@ -122,9 +122,9 @@ func (PrivateEndpointConnectionState) ElementType() reflect.Type {
 type privateEndpointConnectionArgs struct {
 	// GroupIds from the private link service resource.
 	GroupIds []string `pulumi:"groupIds"`
-	// The name of the parent resource (namely, either, the topic name, domain name, or partner namespace name).
+	// The name of the parent resource (namely, either, the topic name, domain name, or partner namespace name or namespace name).
 	ParentName string `pulumi:"parentName"`
-	// The type of the parent resource. This can be either \'topics\', \'domains\', or \'partnerNamespaces\'.
+	// The type of the parent resource. This can be either \'topics\', \'domains\', or \'partnerNamespaces\' or \'namespaces\'.
 	ParentType string `pulumi:"parentType"`
 	// The Private Endpoint resource for this Connection.
 	PrivateEndpoint *PrivateEndpoint `pulumi:"privateEndpoint"`
@@ -142,9 +142,9 @@ type privateEndpointConnectionArgs struct {
 type PrivateEndpointConnectionArgs struct {
 	// GroupIds from the private link service resource.
 	GroupIds pulumi.StringArrayInput
-	// The name of the parent resource (namely, either, the topic name, domain name, or partner namespace name).
+	// The name of the parent resource (namely, either, the topic name, domain name, or partner namespace name or namespace name).
 	ParentName pulumi.StringInput
-	// The type of the parent resource. This can be either \'topics\', \'domains\', or \'partnerNamespaces\'.
+	// The type of the parent resource. This can be either \'topics\', \'domains\', or \'partnerNamespaces\' or \'namespaces\'.
 	ParentType pulumi.StringInput
 	// The Private Endpoint resource for this Connection.
 	PrivateEndpoint PrivateEndpointPtrInput
@@ -193,6 +193,11 @@ func (o PrivateEndpointConnectionOutput) ToPrivateEndpointConnectionOutput() Pri
 
 func (o PrivateEndpointConnectionOutput) ToPrivateEndpointConnectionOutputWithContext(ctx context.Context) PrivateEndpointConnectionOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o PrivateEndpointConnectionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrivateEndpointConnection) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // GroupIds from the private link service resource.

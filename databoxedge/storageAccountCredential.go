@@ -13,9 +13,7 @@ import (
 )
 
 // The storage account credential.
-// Azure REST API version: 2022-03-01. Prior API version in Azure Native 1.x: 2020-12-01.
-//
-// Other available API versions: 2023-01-01-preview, 2023-07-01, 2023-12-01.
+// Azure REST API version: 2023-07-01. Prior API version in Azure Native 2.x: 2022-03-01.
 type StorageAccountCredential struct {
 	pulumi.CustomResourceState
 
@@ -25,6 +23,8 @@ type StorageAccountCredential struct {
 	AccountType pulumi.StringOutput `pulumi:"accountType"`
 	// Alias for the storage account.
 	Alias pulumi.StringOutput `pulumi:"alias"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Blob end point for private clouds.
 	BlobDomainName pulumi.StringPtrOutput `pulumi:"blobDomainName"`
 	// Connection string for the storage account. Use this string if username and account key are not specified.
@@ -252,6 +252,11 @@ func (o StorageAccountCredentialOutput) AccountType() pulumi.StringOutput {
 // Alias for the storage account.
 func (o StorageAccountCredentialOutput) Alias() pulumi.StringOutput {
 	return o.ApplyT(func(v *StorageAccountCredential) pulumi.StringOutput { return v.Alias }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o StorageAccountCredentialOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *StorageAccountCredential) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Blob end point for private clouds.

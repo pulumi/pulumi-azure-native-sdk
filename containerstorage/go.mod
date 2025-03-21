@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-azure-native-sdk/containerstorage/v2
+module github.com/pulumi/pulumi-azure-native-sdk/containerstorage/v3
 
 go 1.22
 

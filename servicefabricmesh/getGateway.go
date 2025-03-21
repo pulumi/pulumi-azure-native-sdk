@@ -32,6 +32,8 @@ type LookupGatewayArgs struct {
 
 // This type describes a gateway resource.
 type LookupGatewayResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// User readable description of the gateway.
 	Description *string `pulumi:"description"`
 	// Network that the Application is using.
@@ -95,6 +97,11 @@ func (o LookupGatewayResultOutput) ToLookupGatewayResultOutput() LookupGatewayRe
 
 func (o LookupGatewayResultOutput) ToLookupGatewayResultOutputWithContext(ctx context.Context) LookupGatewayResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupGatewayResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGatewayResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // User readable description of the gateway.

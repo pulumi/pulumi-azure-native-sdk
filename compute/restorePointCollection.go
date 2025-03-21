@@ -13,12 +13,12 @@ import (
 )
 
 // Create or update Restore Point collection parameters.
-// Azure REST API version: 2023-03-01. Prior API version in Azure Native 1.x: 2021-03-01.
-//
-// Other available API versions: 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01.
+// Azure REST API version: 2024-11-01. Prior API version in Azure Native 2.x: 2023-03-01.
 type RestorePointCollection struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Resource location
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Resource name
@@ -83,6 +83,9 @@ func NewRestorePointCollection(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:compute/v20240701:RestorePointCollection"),
+		},
+		{
+			Type: pulumi.String("azure-native:compute/v20241101:RestorePointCollection"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -180,6 +183,11 @@ func (o RestorePointCollectionOutput) ToRestorePointCollectionOutput() RestorePo
 
 func (o RestorePointCollectionOutput) ToRestorePointCollectionOutputWithContext(ctx context.Context) RestorePointCollectionOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o RestorePointCollectionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *RestorePointCollection) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource location

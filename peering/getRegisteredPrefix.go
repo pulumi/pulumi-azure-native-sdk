@@ -34,6 +34,8 @@ type LookupRegisteredPrefixArgs struct {
 
 // The customer's prefix that is registered by the peering service provider.
 type LookupRegisteredPrefixResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The error message associated with the validation state, if any.
 	ErrorMessage string `pulumi:"errorMessage"`
 	// The ID of the resource.
@@ -87,6 +89,11 @@ func (o LookupRegisteredPrefixResultOutput) ToLookupRegisteredPrefixResultOutput
 
 func (o LookupRegisteredPrefixResultOutput) ToLookupRegisteredPrefixResultOutputWithContext(ctx context.Context) LookupRegisteredPrefixResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupRegisteredPrefixResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegisteredPrefixResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The error message associated with the validation state, if any.

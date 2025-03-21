@@ -12,9 +12,7 @@ import (
 )
 
 // Gets information about a configuration of server.
-// Azure REST API version: 2022-12-01.
-//
-// Other available API versions: 2017-12-01, 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-08-01, 2024-11-01-preview.
+// Azure REST API version: 2024-08-01.
 func LookupConfiguration(ctx *pulumi.Context, args *LookupConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupConfigurationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupConfigurationResult
@@ -38,6 +36,8 @@ type LookupConfigurationArgs struct {
 type LookupConfigurationResult struct {
 	// Allowed values of the configuration.
 	AllowedValues string `pulumi:"allowedValues"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Data type of the configuration.
 	DataType string `pulumi:"dataType"`
 	// Default value of the configuration.
@@ -46,7 +46,7 @@ type LookupConfigurationResult struct {
 	Description string `pulumi:"description"`
 	// Configuration documentation link.
 	DocumentationLink string `pulumi:"documentationLink"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Configuration is pending restart or not.
 	IsConfigPendingRestart bool `pulumi:"isConfigPendingRestart"`
@@ -110,6 +110,11 @@ func (o LookupConfigurationResultOutput) AllowedValues() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigurationResult) string { return v.AllowedValues }).(pulumi.StringOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupConfigurationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConfigurationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Data type of the configuration.
 func (o LookupConfigurationResultOutput) DataType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigurationResult) string { return v.DataType }).(pulumi.StringOutput)
@@ -130,7 +135,7 @@ func (o LookupConfigurationResultOutput) DocumentationLink() pulumi.StringOutput
 	return o.ApplyT(func(v LookupConfigurationResult) string { return v.DocumentationLink }).(pulumi.StringOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupConfigurationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigurationResult) string { return v.Id }).(pulumi.StringOutput)
 }

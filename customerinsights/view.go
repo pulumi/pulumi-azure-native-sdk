@@ -13,10 +13,12 @@ import (
 )
 
 // The view resource format.
-// Azure REST API version: 2017-04-26. Prior API version in Azure Native 1.x: 2017-04-26.
+// Azure REST API version: 2017-04-26. Prior API version in Azure Native 2.x: 2017-04-26.
 type View struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Date time when view was last modified.
 	Changed pulumi.StringOutput `pulumi:"changed"`
 	// Date time when view was created.
@@ -160,6 +162,11 @@ func (o ViewOutput) ToViewOutput() ViewOutput {
 
 func (o ViewOutput) ToViewOutputWithContext(ctx context.Context) ViewOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ViewOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *View) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Date time when view was last modified.

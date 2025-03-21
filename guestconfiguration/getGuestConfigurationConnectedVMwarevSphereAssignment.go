@@ -12,9 +12,7 @@ import (
 )
 
 // Get information about a guest configuration assignment
-// Azure REST API version: 2022-01-25.
-//
-// Other available API versions: 2024-04-05.
+// Azure REST API version: 2024-04-05.
 func LookupGuestConfigurationConnectedVMwarevSphereAssignment(ctx *pulumi.Context, args *LookupGuestConfigurationConnectedVMwarevSphereAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupGuestConfigurationConnectedVMwarevSphereAssignmentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGuestConfigurationConnectedVMwarevSphereAssignmentResult
@@ -36,6 +34,8 @@ type LookupGuestConfigurationConnectedVMwarevSphereAssignmentArgs struct {
 
 // Guest configuration assignment is an association between a machine and guest configuration.
 type LookupGuestConfigurationConnectedVMwarevSphereAssignmentResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// ARM resource id of the guest configuration assignment.
 	Id string `pulumi:"id"`
 	// Region where the VM is located.
@@ -95,6 +95,13 @@ func (o LookupGuestConfigurationConnectedVMwarevSphereAssignmentResultOutput) To
 
 func (o LookupGuestConfigurationConnectedVMwarevSphereAssignmentResultOutput) ToLookupGuestConfigurationConnectedVMwarevSphereAssignmentResultOutputWithContext(ctx context.Context) LookupGuestConfigurationConnectedVMwarevSphereAssignmentResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupGuestConfigurationConnectedVMwarevSphereAssignmentResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGuestConfigurationConnectedVMwarevSphereAssignmentResult) string {
+		return v.AzureApiVersion
+	}).(pulumi.StringOutput)
 }
 
 // ARM resource id of the guest configuration assignment.

@@ -12,9 +12,7 @@ import (
 )
 
 // Implements HybridIdentityMetadata GET method.
-// Azure REST API version: 2022-05-21-preview.
-//
-// Other available API versions: 2023-04-01-preview.
+// Azure REST API version: 2023-04-01-preview.
 func LookupHybridIdentityMetadata(ctx *pulumi.Context, args *LookupHybridIdentityMetadataArgs, opts ...pulumi.InvokeOption) (*LookupHybridIdentityMetadataResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupHybridIdentityMetadataResult
@@ -36,6 +34,8 @@ type LookupHybridIdentityMetadataArgs struct {
 
 // Defines the HybridIdentityMetadata.
 type LookupHybridIdentityMetadataResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The identity of the resource.
@@ -89,6 +89,11 @@ func (o LookupHybridIdentityMetadataResultOutput) ToLookupHybridIdentityMetadata
 
 func (o LookupHybridIdentityMetadataResultOutput) ToLookupHybridIdentityMetadataResultOutputWithContext(ctx context.Context) LookupHybridIdentityMetadataResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupHybridIdentityMetadataResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHybridIdentityMetadataResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

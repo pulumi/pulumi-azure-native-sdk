@@ -12,9 +12,7 @@ import (
 )
 
 // Get a particular backup Policy
-// Azure REST API version: 2022-11-01.
-//
-// Other available API versions: 2021-04-01, 2021-04-01-preview, 2022-11-01-preview, 2023-05-01, 2023-05-01-preview, 2023-07-01, 2023-07-01-preview, 2023-11-01, 2023-11-01-preview, 2024-01-01, 2024-03-01, 2024-03-01-preview, 2024-05-01, 2024-05-01-preview, 2024-07-01, 2024-07-01-preview, 2024-09-01, 2024-09-01-preview.
+// Azure REST API version: 2024-09-01.
 func LookupBackupPolicy(ctx *pulumi.Context, args *LookupBackupPolicyArgs, opts ...pulumi.InvokeOption) (*LookupBackupPolicyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBackupPolicyResult
@@ -36,7 +34,9 @@ type LookupBackupPolicyArgs struct {
 
 // Backup policy information
 type LookupBackupPolicyResult struct {
-	// Backup Policy Resource ID
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// Backup Policy GUID ID
 	BackupPolicyId string `pulumi:"backupPolicyId"`
 	// Daily backups count to keep
 	DailyBackupsToKeep *int `pulumi:"dailyBackupsToKeep"`
@@ -44,7 +44,7 @@ type LookupBackupPolicyResult struct {
 	Enabled *bool `pulumi:"enabled"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag string `pulumi:"etag"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
@@ -105,7 +105,12 @@ func (o LookupBackupPolicyResultOutput) ToLookupBackupPolicyResultOutputWithCont
 	return o
 }
 
-// Backup Policy Resource ID
+// The Azure API version of the resource.
+func (o LookupBackupPolicyResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackupPolicyResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Backup Policy GUID ID
 func (o LookupBackupPolicyResultOutput) BackupPolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupPolicyResult) string { return v.BackupPolicyId }).(pulumi.StringOutput)
 }
@@ -125,7 +130,7 @@ func (o LookupBackupPolicyResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupPolicyResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupBackupPolicyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupPolicyResult) string { return v.Id }).(pulumi.StringOutput)
 }

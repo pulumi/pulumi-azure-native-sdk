@@ -36,6 +36,8 @@ type LookupVolumeContainerArgs struct {
 
 // The volume container.
 type LookupVolumeContainerResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The bandwidth-rate set on the volume container.
 	BandWidthRateInMbps *int `pulumi:"bandWidthRateInMbps"`
 	// The ID of the bandwidth setting associated with the volume container.
@@ -99,6 +101,11 @@ func (o LookupVolumeContainerResultOutput) ToLookupVolumeContainerResultOutput()
 
 func (o LookupVolumeContainerResultOutput) ToLookupVolumeContainerResultOutputWithContext(ctx context.Context) LookupVolumeContainerResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupVolumeContainerResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVolumeContainerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The bandwidth-rate set on the volume container.

@@ -13,10 +13,12 @@ import (
 )
 
 // ConnectedCache Resource. Represents the high level Nodes needed to provision CacheNode and customer resources used in private preview
-// Azure REST API version: 2023-05-01-preview.
+// Azure REST API version: 2023-05-01-preview. Prior API version in Azure Native 2.x: 2023-05-01-preview.
 type EnterpriseCustomerOperation struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -141,6 +143,11 @@ func (o EnterpriseCustomerOperationOutput) ToEnterpriseCustomerOperationOutput()
 
 func (o EnterpriseCustomerOperationOutput) ToEnterpriseCustomerOperationOutputWithContext(ctx context.Context) EnterpriseCustomerOperationOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o EnterpriseCustomerOperationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *EnterpriseCustomerOperation) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The geo-location where the resource lives

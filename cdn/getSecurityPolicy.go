@@ -12,9 +12,7 @@ import (
 )
 
 // Gets an existing security policy within a profile.
-// Azure REST API version: 2023-05-01.
-//
-// Other available API versions: 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01.
+// Azure REST API version: 2024-09-01.
 func LookupSecurityPolicy(ctx *pulumi.Context, args *LookupSecurityPolicyArgs, opts ...pulumi.InvokeOption) (*LookupSecurityPolicyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSecurityPolicyResult
@@ -36,6 +34,8 @@ type LookupSecurityPolicyArgs struct {
 
 // SecurityPolicy association for AzureFrontDoor profile
 type LookupSecurityPolicyResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion  string `pulumi:"azureApiVersion"`
 	DeploymentStatus string `pulumi:"deploymentStatus"`
 	// Resource ID.
 	Id string `pulumi:"id"`
@@ -88,6 +88,11 @@ func (o LookupSecurityPolicyResultOutput) ToLookupSecurityPolicyResultOutput() L
 
 func (o LookupSecurityPolicyResultOutput) ToLookupSecurityPolicyResultOutputWithContext(ctx context.Context) LookupSecurityPolicyResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupSecurityPolicyResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecurityPolicyResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 func (o LookupSecurityPolicyResultOutput) DeploymentStatus() pulumi.StringOutput {

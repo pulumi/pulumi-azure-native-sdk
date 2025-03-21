@@ -13,8 +13,6 @@ import (
 
 // Gets the API link for the product.
 // Azure REST API version: 2022-09-01-preview.
-//
-// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
 func LookupProductApiLink(ctx *pulumi.Context, args *LookupProductApiLinkArgs, opts ...pulumi.InvokeOption) (*LookupProductApiLinkResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupProductApiLinkResult
@@ -40,6 +38,8 @@ type LookupProductApiLinkArgs struct {
 type LookupProductApiLinkResult struct {
 	// Full resource Id of an API.
 	ApiId string `pulumi:"apiId"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The name of the resource
@@ -90,6 +90,11 @@ func (o LookupProductApiLinkResultOutput) ToLookupProductApiLinkResultOutputWith
 // Full resource Id of an API.
 func (o LookupProductApiLinkResultOutput) ApiId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProductApiLinkResult) string { return v.ApiId }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupProductApiLinkResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProductApiLinkResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

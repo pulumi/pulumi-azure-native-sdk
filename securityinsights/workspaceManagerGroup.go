@@ -13,12 +13,12 @@ import (
 )
 
 // The workspace manager group
-// Azure REST API version: 2023-06-01-preview.
-//
-// Other available API versions: 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-12-01-preview, 2024-01-01-preview, 2024-04-01-preview, 2024-10-01-preview, 2025-01-01-preview.
+// Azure REST API version: 2025-01-01-preview. Prior API version in Azure Native 2.x: 2023-06-01-preview.
 type WorkspaceManagerGroup struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The description of the workspace manager group
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The display name of the workspace manager group
@@ -191,6 +191,11 @@ func (o WorkspaceManagerGroupOutput) ToWorkspaceManagerGroupOutput() WorkspaceMa
 
 func (o WorkspaceManagerGroupOutput) ToWorkspaceManagerGroupOutputWithContext(ctx context.Context) WorkspaceManagerGroupOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o WorkspaceManagerGroupOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkspaceManagerGroup) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The description of the workspace manager group

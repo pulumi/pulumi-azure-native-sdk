@@ -11,10 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// List cluster success response
-// Azure REST API version: 2023-08-22.
-//
-// Other available API versions: 2024-02-13, 2024-07-01.
+// Details of the role bindings returned on successful response
+// Azure REST API version: 2024-07-01.
 func ListAccessRoleBindings(ctx *pulumi.Context, args *ListAccessRoleBindingsArgs, opts ...pulumi.InvokeOption) (*ListAccessRoleBindingsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListAccessRoleBindingsResult
@@ -34,9 +32,9 @@ type ListAccessRoleBindingsArgs struct {
 	SearchFilters map[string]string `pulumi:"searchFilters"`
 }
 
-// List cluster success response
+// Details of the role bindings returned on successful response
 type ListAccessRoleBindingsResult struct {
-	// Data of the environments list
+	// List of role binding
 	Data []RoleBindingRecordResponse `pulumi:"data"`
 	// Type of response
 	Kind *string `pulumi:"kind"`
@@ -66,7 +64,7 @@ func (ListAccessRoleBindingsOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*ListAccessRoleBindingsArgs)(nil)).Elem()
 }
 
-// List cluster success response
+// Details of the role bindings returned on successful response
 type ListAccessRoleBindingsResultOutput struct{ *pulumi.OutputState }
 
 func (ListAccessRoleBindingsResultOutput) ElementType() reflect.Type {
@@ -81,7 +79,7 @@ func (o ListAccessRoleBindingsResultOutput) ToListAccessRoleBindingsResultOutput
 	return o
 }
 
-// Data of the environments list
+// List of role binding
 func (o ListAccessRoleBindingsResultOutput) Data() RoleBindingRecordResponseArrayOutput {
 	return o.ApplyT(func(v ListAccessRoleBindingsResult) []RoleBindingRecordResponse { return v.Data }).(RoleBindingRecordResponseArrayOutput)
 }

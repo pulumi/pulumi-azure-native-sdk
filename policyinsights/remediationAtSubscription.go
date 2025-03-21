@@ -12,12 +12,12 @@ import (
 )
 
 // The remediation definition.
-// Azure REST API version: 2021-10-01. Prior API version in Azure Native 1.x: 2019-07-01.
-//
-// Other available API versions: 2024-10-01.
+// Azure REST API version: 2024-10-01. Prior API version in Azure Native 2.x: 2021-10-01.
 type RemediationAtSubscription struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The remediation correlation Id. Can be used to find events related to the remediation in the activity log.
 	CorrelationId pulumi.StringOutput `pulumi:"correlationId"`
 	// The time at which the remediation was created.
@@ -180,6 +180,11 @@ func (o RemediationAtSubscriptionOutput) ToRemediationAtSubscriptionOutput() Rem
 
 func (o RemediationAtSubscriptionOutput) ToRemediationAtSubscriptionOutputWithContext(ctx context.Context) RemediationAtSubscriptionOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o RemediationAtSubscriptionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *RemediationAtSubscription) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The remediation correlation Id. Can be used to find events related to the remediation in the activity log.

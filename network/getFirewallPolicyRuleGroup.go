@@ -34,6 +34,8 @@ type LookupFirewallPolicyRuleGroupArgs struct {
 
 // Rule Group resource.
 type LookupFirewallPolicyRuleGroupResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag string `pulumi:"etag"`
 	// Resource ID.
@@ -85,6 +87,11 @@ func (o LookupFirewallPolicyRuleGroupResultOutput) ToLookupFirewallPolicyRuleGro
 
 func (o LookupFirewallPolicyRuleGroupResultOutput) ToLookupFirewallPolicyRuleGroupResultOutputWithContext(ctx context.Context) LookupFirewallPolicyRuleGroupResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupFirewallPolicyRuleGroupResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFirewallPolicyRuleGroupResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A unique read-only string that changes whenever the resource is updated.

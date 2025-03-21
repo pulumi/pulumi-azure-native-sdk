@@ -13,12 +13,14 @@ import (
 )
 
 // The copilot settings tenant resource definition.
-// Azure REST API version: 2024-04-01-preview.
+// Azure REST API version: 2024-04-01. Prior API version in Azure Native 2.x: 2024-04-01-preview.
 type CopilotSetting struct {
 	pulumi.CustomResourceState
 
 	// Boolean indicating if role-based access control is enabled for copilot in this tenant.
 	AccessControlEnabled pulumi.BoolOutput `pulumi:"accessControlEnabled"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The status of the last provisioning operation performed on the resource.
@@ -40,6 +42,9 @@ func NewCopilotSetting(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'AccessControlEnabled'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:portalservices/v20240401:CopilotSetting"),
+		},
 		{
 			Type: pulumi.String("azure-native:portalservices/v20240401preview:CopilotSetting"),
 		},
@@ -128,6 +133,11 @@ func (o CopilotSettingOutput) ToCopilotSettingOutputWithContext(ctx context.Cont
 // Boolean indicating if role-based access control is enabled for copilot in this tenant.
 func (o CopilotSettingOutput) AccessControlEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *CopilotSetting) pulumi.BoolOutput { return v.AccessControlEnabled }).(pulumi.BoolOutput)
+}
+
+// The Azure API version of the resource.
+func (o CopilotSettingOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *CopilotSetting) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

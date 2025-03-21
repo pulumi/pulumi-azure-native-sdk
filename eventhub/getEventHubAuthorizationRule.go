@@ -12,9 +12,7 @@ import (
 )
 
 // Gets an AuthorizationRule for an Event Hub by rule name.
-// Azure REST API version: 2022-10-01-preview.
-//
-// Other available API versions: 2023-01-01-preview, 2024-01-01, 2024-05-01-preview.
+// Azure REST API version: 2024-01-01.
 func LookupEventHubAuthorizationRule(ctx *pulumi.Context, args *LookupEventHubAuthorizationRuleArgs, opts ...pulumi.InvokeOption) (*LookupEventHubAuthorizationRuleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupEventHubAuthorizationRuleResult
@@ -38,6 +36,8 @@ type LookupEventHubAuthorizationRuleArgs struct {
 
 // Single item in a List or Get AuthorizationRule operation
 type LookupEventHubAuthorizationRuleResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -89,6 +89,11 @@ func (o LookupEventHubAuthorizationRuleResultOutput) ToLookupEventHubAuthorizati
 
 func (o LookupEventHubAuthorizationRuleResultOutput) ToLookupEventHubAuthorizationRuleResultOutputWithContext(ctx context.Context) LookupEventHubAuthorizationRuleResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupEventHubAuthorizationRuleResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEventHubAuthorizationRuleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

@@ -34,6 +34,8 @@ type LookupContentKeyPolicyArgs struct {
 
 // A Content Key Policy resource.
 type LookupContentKeyPolicyResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The creation date of the Policy
 	Created string `pulumi:"created"`
 	// A description for the Policy.
@@ -89,6 +91,11 @@ func (o LookupContentKeyPolicyResultOutput) ToLookupContentKeyPolicyResultOutput
 
 func (o LookupContentKeyPolicyResultOutput) ToLookupContentKeyPolicyResultOutputWithContext(ctx context.Context) LookupContentKeyPolicyResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupContentKeyPolicyResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupContentKeyPolicyResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The creation date of the Policy

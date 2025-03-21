@@ -12,9 +12,7 @@ import (
 )
 
 // Implements IP Prefix GET method.
-// Azure REST API version: 2023-02-01-preview.
-//
-// Other available API versions: 2023-06-15.
+// Azure REST API version: 2023-06-15.
 func LookupIpPrefix(ctx *pulumi.Context, args *LookupIpPrefixArgs, opts ...pulumi.InvokeOption) (*LookupIpPrefixResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIpPrefixResult
@@ -26,25 +24,31 @@ func LookupIpPrefix(ctx *pulumi.Context, args *LookupIpPrefixArgs, opts ...pulum
 }
 
 type LookupIpPrefixArgs struct {
-	// Name of the IP Prefix
+	// Name of the IP Prefix.
 	IpPrefixName string `pulumi:"ipPrefixName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
-// The IPPrefix resource definition.
+// The IP Prefix resource definition.
 type LookupIpPrefixResult struct {
+	// Administrative state of the resource.
+	AdministrativeState string `pulumi:"administrativeState"`
 	// Switch configuration description.
 	Annotation *string `pulumi:"annotation"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// Configuration state of the resource.
+	ConfigurationState string `pulumi:"configurationState"`
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
-	// IpPrefix contains the list of IP PrefixRules objects.
-	IpPrefixRules []IpPrefixPropertiesResponseIpPrefixRules `pulumi:"ipPrefixRules"`
+	// The list of IP Prefix Rules.
+	IpPrefixRules []IpPrefixRuleResponse `pulumi:"ipPrefixRules"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// Gets the provisioning state of the resource.
+	// Provisioning state of the resource.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
@@ -64,7 +68,7 @@ func LookupIpPrefixOutput(ctx *pulumi.Context, args LookupIpPrefixOutputArgs, op
 }
 
 type LookupIpPrefixOutputArgs struct {
-	// Name of the IP Prefix
+	// Name of the IP Prefix.
 	IpPrefixName pulumi.StringInput `pulumi:"ipPrefixName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
@@ -74,7 +78,7 @@ func (LookupIpPrefixOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupIpPrefixArgs)(nil)).Elem()
 }
 
-// The IPPrefix resource definition.
+// The IP Prefix resource definition.
 type LookupIpPrefixResultOutput struct{ *pulumi.OutputState }
 
 func (LookupIpPrefixResultOutput) ElementType() reflect.Type {
@@ -89,19 +93,34 @@ func (o LookupIpPrefixResultOutput) ToLookupIpPrefixResultOutputWithContext(ctx 
 	return o
 }
 
+// Administrative state of the resource.
+func (o LookupIpPrefixResultOutput) AdministrativeState() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIpPrefixResult) string { return v.AdministrativeState }).(pulumi.StringOutput)
+}
+
 // Switch configuration description.
 func (o LookupIpPrefixResultOutput) Annotation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupIpPrefixResult) *string { return v.Annotation }).(pulumi.StringPtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// The Azure API version of the resource.
+func (o LookupIpPrefixResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIpPrefixResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Configuration state of the resource.
+func (o LookupIpPrefixResultOutput) ConfigurationState() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIpPrefixResult) string { return v.ConfigurationState }).(pulumi.StringOutput)
+}
+
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupIpPrefixResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIpPrefixResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// IpPrefix contains the list of IP PrefixRules objects.
-func (o LookupIpPrefixResultOutput) IpPrefixRules() IpPrefixPropertiesResponseIpPrefixRulesArrayOutput {
-	return o.ApplyT(func(v LookupIpPrefixResult) []IpPrefixPropertiesResponseIpPrefixRules { return v.IpPrefixRules }).(IpPrefixPropertiesResponseIpPrefixRulesArrayOutput)
+// The list of IP Prefix Rules.
+func (o LookupIpPrefixResultOutput) IpPrefixRules() IpPrefixRuleResponseArrayOutput {
+	return o.ApplyT(func(v LookupIpPrefixResult) []IpPrefixRuleResponse { return v.IpPrefixRules }).(IpPrefixRuleResponseArrayOutput)
 }
 
 // The geo-location where the resource lives
@@ -114,7 +133,7 @@ func (o LookupIpPrefixResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIpPrefixResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Gets the provisioning state of the resource.
+// Provisioning state of the resource.
 func (o LookupIpPrefixResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIpPrefixResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }

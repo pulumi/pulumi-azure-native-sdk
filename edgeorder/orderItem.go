@@ -13,14 +13,16 @@ import (
 )
 
 // Represents order item resource.
-// Azure REST API version: 2022-05-01-preview.
-//
-// Other available API versions: 2024-02-01.
+// Azure REST API version: 2024-02-01. Prior API version in Azure Native 2.x: 2022-05-01-preview.
 type OrderItem struct {
 	pulumi.CustomResourceState
 
 	// Represents shipping and return address for order item.
-	AddressDetails AddressDetailsResponseOutput `pulumi:"addressDetails"`
+	AddressDetails AddressDetailsResponsePtrOutput `pulumi:"addressDetails"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// Msi identity of the resource
+	Identity ResourceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -29,9 +31,11 @@ type OrderItem struct {
 	OrderId pulumi.StringOutput `pulumi:"orderId"`
 	// Represents order item details.
 	OrderItemDetails OrderItemDetailsResponseOutput `pulumi:"orderItemDetails"`
+	// Provisioning state
+	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Start time of order item.
 	StartTime pulumi.StringOutput `pulumi:"startTime"`
-	// Represents resource creation and update time.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
@@ -46,9 +50,6 @@ func NewOrderItem(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AddressDetails == nil {
-		return nil, errors.New("invalid value for required argument 'AddressDetails'")
-	}
 	if args.OrderId == nil {
 		return nil, errors.New("invalid value for required argument 'OrderId'")
 	}
@@ -58,6 +59,10 @@ func NewOrderItem(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
+	if args.Identity != nil {
+		args.Identity = args.Identity.ToResourceIdentityPtrOutput().ApplyT(func(v *ResourceIdentity) *ResourceIdentity { return v.Defaults() }).(ResourceIdentityPtrOutput)
+	}
+	args.OrderItemDetails = args.OrderItemDetails.ToOrderItemDetailsOutput().ApplyT(func(v OrderItemDetails) OrderItemDetails { return *v.Defaults() }).(OrderItemDetailsOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:edgeorder/v20201201preview:OrderItem"),
@@ -66,10 +71,16 @@ func NewOrderItem(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:edgeorder/v20211201:OrderItem"),
 		},
 		{
+			Type: pulumi.String("azure-native:edgeorder/v20211201:OrderItemByName"),
+		},
+		{
 			Type: pulumi.String("azure-native:edgeorder/v20220501preview:OrderItem"),
 		},
 		{
 			Type: pulumi.String("azure-native:edgeorder/v20240201:OrderItem"),
+		},
+		{
+			Type: pulumi.String("azure-native:edgeorder:OrderItemByName"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -107,7 +118,9 @@ func (OrderItemState) ElementType() reflect.Type {
 
 type orderItemArgs struct {
 	// Represents shipping and return address for order item.
-	AddressDetails AddressDetails `pulumi:"addressDetails"`
+	AddressDetails *AddressDetails `pulumi:"addressDetails"`
+	// Msi identity of the resource
+	Identity *ResourceIdentity `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// Id of the order to which order item belongs to.
@@ -125,7 +138,9 @@ type orderItemArgs struct {
 // The set of arguments for constructing a OrderItem resource.
 type OrderItemArgs struct {
 	// Represents shipping and return address for order item.
-	AddressDetails AddressDetailsInput
+	AddressDetails AddressDetailsPtrInput
+	// Msi identity of the resource
+	Identity ResourceIdentityPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// Id of the order to which order item belongs to.
@@ -178,8 +193,18 @@ func (o OrderItemOutput) ToOrderItemOutputWithContext(ctx context.Context) Order
 }
 
 // Represents shipping and return address for order item.
-func (o OrderItemOutput) AddressDetails() AddressDetailsResponseOutput {
-	return o.ApplyT(func(v *OrderItem) AddressDetailsResponseOutput { return v.AddressDetails }).(AddressDetailsResponseOutput)
+func (o OrderItemOutput) AddressDetails() AddressDetailsResponsePtrOutput {
+	return o.ApplyT(func(v *OrderItem) AddressDetailsResponsePtrOutput { return v.AddressDetails }).(AddressDetailsResponsePtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o OrderItemOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *OrderItem) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Msi identity of the resource
+func (o OrderItemOutput) Identity() ResourceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *OrderItem) ResourceIdentityResponsePtrOutput { return v.Identity }).(ResourceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -202,12 +227,17 @@ func (o OrderItemOutput) OrderItemDetails() OrderItemDetailsResponseOutput {
 	return o.ApplyT(func(v *OrderItem) OrderItemDetailsResponseOutput { return v.OrderItemDetails }).(OrderItemDetailsResponseOutput)
 }
 
+// Provisioning state
+func (o OrderItemOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v *OrderItem) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
 // Start time of order item.
 func (o OrderItemOutput) StartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrderItem) pulumi.StringOutput { return v.StartTime }).(pulumi.StringOutput)
 }
 
-// Represents resource creation and update time.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o OrderItemOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *OrderItem) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

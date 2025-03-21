@@ -36,6 +36,8 @@ type LookupDataLakeConnectorTopicMapArgs struct {
 
 // MQ dataLakeConnector/topicMap resource
 type LookupDataLakeConnectorTopicMapResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// DataLake Connector CRD to use.
 	DataLakeConnectorRef string `pulumi:"dataLakeConnectorRef"`
 	// Extended Location
@@ -105,6 +107,11 @@ func (o LookupDataLakeConnectorTopicMapResultOutput) ToLookupDataLakeConnectorTo
 
 func (o LookupDataLakeConnectorTopicMapResultOutput) ToLookupDataLakeConnectorTopicMapResultOutputWithContext(ctx context.Context) LookupDataLakeConnectorTopicMapResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupDataLakeConnectorTopicMapResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDataLakeConnectorTopicMapResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // DataLake Connector CRD to use.

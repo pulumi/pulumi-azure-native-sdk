@@ -13,8 +13,6 @@ import (
 
 // Returns a list of products.
 // Azure REST API version: 2022-06-01.
-//
-// Other available API versions: 2020-06-01-preview.
 func GetProducts(ctx *pulumi.Context, args *GetProductsArgs, opts ...pulumi.InvokeOption) (*GetProductsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetProductsResult

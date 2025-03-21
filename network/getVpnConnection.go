@@ -12,9 +12,7 @@ import (
 )
 
 // Retrieves the details of a vpn connection.
-// Azure REST API version: 2023-02-01.
-//
-// Other available API versions: 2018-07-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Azure REST API version: 2024-05-01.
 func LookupVpnConnection(ctx *pulumi.Context, args *LookupVpnConnectionArgs, opts ...pulumi.InvokeOption) (*LookupVpnConnectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVpnConnectionResult
@@ -36,6 +34,8 @@ type LookupVpnConnectionArgs struct {
 
 // VpnConnection Resource.
 type LookupVpnConnectionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Expected bandwidth in MBPS.
 	ConnectionBandwidth *int `pulumi:"connectionBandwidth"`
 	// The connection status.
@@ -117,6 +117,11 @@ func (o LookupVpnConnectionResultOutput) ToLookupVpnConnectionResultOutput() Loo
 
 func (o LookupVpnConnectionResultOutput) ToLookupVpnConnectionResultOutputWithContext(ctx context.Context) LookupVpnConnectionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupVpnConnectionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpnConnectionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Expected bandwidth in MBPS.

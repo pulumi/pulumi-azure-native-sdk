@@ -13,12 +13,12 @@ import (
 )
 
 // An access policy is used to grant users and applications access to the environment. Roles are assigned to service principals in Azure Active Directory. These roles define the actions the principal can perform through the Time Series Insights data plane APIs.
-// Azure REST API version: 2020-05-15. Prior API version in Azure Native 1.x: 2020-05-15.
-//
-// Other available API versions: 2021-06-30-preview.
+// Azure REST API version: 2020-05-15. Prior API version in Azure Native 2.x: 2020-05-15.
 type AccessPolicy struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// An description of the access policy.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Resource name
@@ -163,6 +163,11 @@ func (o AccessPolicyOutput) ToAccessPolicyOutput() AccessPolicyOutput {
 
 func (o AccessPolicyOutput) ToAccessPolicyOutputWithContext(ctx context.Context) AccessPolicyOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o AccessPolicyOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessPolicy) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // An description of the access policy.

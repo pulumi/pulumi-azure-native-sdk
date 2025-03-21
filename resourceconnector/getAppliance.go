@@ -13,8 +13,6 @@ import (
 
 // Gets the details of an Appliance with a specified resource group and name.
 // Azure REST API version: 2022-10-27.
-//
-// Other available API versions: 2021-10-31-preview.
 func LookupAppliance(ctx *pulumi.Context, args *LookupApplianceArgs, opts ...pulumi.InvokeOption) (*LookupApplianceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupApplianceResult
@@ -34,6 +32,8 @@ type LookupApplianceArgs struct {
 
 // Appliances definition.
 type LookupApplianceResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Represents a supported Fabric/Infra. (AKSEdge etc...).
 	Distro *string `pulumi:"distro"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -107,6 +107,11 @@ func (o LookupApplianceResultOutput) ToLookupApplianceResultOutput() LookupAppli
 
 func (o LookupApplianceResultOutput) ToLookupApplianceResultOutputWithContext(ctx context.Context) LookupApplianceResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupApplianceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApplianceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Represents a supported Fabric/Infra. (AKSEdge etc...).

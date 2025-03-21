@@ -11,10 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Gets an Azure BareMetal Storage instance for the specified subscription, resource group, and instance name.
-// Azure REST API version: 2023-04-06.
-//
-// Other available API versions: 2023-08-04-preview, 2023-11-01-preview, 2024-08-01-preview.
+// Gets an Azure Bare Metal Storage instance for the specified subscription, resource group, and instance name.
+// Azure REST API version: 2024-08-01-preview.
 func LookupAzureBareMetalStorageInstance(ctx *pulumi.Context, args *LookupAzureBareMetalStorageInstanceArgs, opts ...pulumi.InvokeOption) (*LookupAzureBareMetalStorageInstanceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAzureBareMetalStorageInstanceResult
@@ -26,7 +24,7 @@ func LookupAzureBareMetalStorageInstance(ctx *pulumi.Context, args *LookupAzureB
 }
 
 type LookupAzureBareMetalStorageInstanceArgs struct {
-	// Name of the AzureBareMetalStorage on Azure instance.
+	// Name of the Azure Bare Metal Storage Instance, also known as the ResourceName.
 	AzureBareMetalStorageInstanceName string `pulumi:"azureBareMetalStorageInstanceName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -34,17 +32,21 @@ type LookupAzureBareMetalStorageInstanceArgs struct {
 
 // AzureBareMetalStorageInstance info on Azure (ARM properties and AzureBareMetalStorage properties)
 type LookupAzureBareMetalStorageInstanceResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Specifies the AzureBareMetaStorageInstance unique ID.
 	AzureBareMetalStorageInstanceUniqueIdentifier *string `pulumi:"azureBareMetalStorageInstanceUniqueIdentifier"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
+	// The identity of Azure Bare Metal Storage Instance, if configured.
+	Identity *AzureBareMetalStorageInstanceIdentityResponse `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// Specifies the storage properties for the AzureBareMetalStorage instance.
 	StorageProperties *StoragePropertiesResponse `pulumi:"storageProperties"`
-	// The system metadata relating to this resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
@@ -62,7 +64,7 @@ func LookupAzureBareMetalStorageInstanceOutput(ctx *pulumi.Context, args LookupA
 }
 
 type LookupAzureBareMetalStorageInstanceOutputArgs struct {
-	// Name of the AzureBareMetalStorage on Azure instance.
+	// Name of the Azure Bare Metal Storage Instance, also known as the ResourceName.
 	AzureBareMetalStorageInstanceName pulumi.StringInput `pulumi:"azureBareMetalStorageInstanceName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
@@ -87,6 +89,11 @@ func (o LookupAzureBareMetalStorageInstanceResultOutput) ToLookupAzureBareMetalS
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupAzureBareMetalStorageInstanceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAzureBareMetalStorageInstanceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Specifies the AzureBareMetaStorageInstance unique ID.
 func (o LookupAzureBareMetalStorageInstanceResultOutput) AzureBareMetalStorageInstanceUniqueIdentifier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAzureBareMetalStorageInstanceResult) *string {
@@ -94,9 +101,16 @@ func (o LookupAzureBareMetalStorageInstanceResultOutput) AzureBareMetalStorageIn
 	}).(pulumi.StringPtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupAzureBareMetalStorageInstanceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAzureBareMetalStorageInstanceResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The identity of Azure Bare Metal Storage Instance, if configured.
+func (o LookupAzureBareMetalStorageInstanceResultOutput) Identity() AzureBareMetalStorageInstanceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupAzureBareMetalStorageInstanceResult) *AzureBareMetalStorageInstanceIdentityResponse {
+		return v.Identity
+	}).(AzureBareMetalStorageInstanceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -116,7 +130,7 @@ func (o LookupAzureBareMetalStorageInstanceResultOutput) StorageProperties() Sto
 	}).(StoragePropertiesResponsePtrOutput)
 }
 
-// The system metadata relating to this resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupAzureBareMetalStorageInstanceResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupAzureBareMetalStorageInstanceResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }

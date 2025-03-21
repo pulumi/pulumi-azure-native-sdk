@@ -12,9 +12,7 @@ import (
 )
 
 // Get the specified shared private link resource
-// Azure REST API version: 2023-02-01.
-//
-// Other available API versions: 2023-03-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-08-01-preview, 2024-10-01-preview.
+// Azure REST API version: 2024-03-01.
 func LookupSignalRSharedPrivateLinkResource(ctx *pulumi.Context, args *LookupSignalRSharedPrivateLinkResourceArgs, opts ...pulumi.InvokeOption) (*LookupSignalRSharedPrivateLinkResourceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSignalRSharedPrivateLinkResourceResult
@@ -26,21 +24,23 @@ func LookupSignalRSharedPrivateLinkResource(ctx *pulumi.Context, args *LookupSig
 }
 
 type LookupSignalRSharedPrivateLinkResourceArgs struct {
-	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the resource.
 	ResourceName string `pulumi:"resourceName"`
-	// The name of the shared private link resource
+	// The name of the shared private link resource.
 	SharedPrivateLinkResourceName string `pulumi:"sharedPrivateLinkResourceName"`
 }
 
 // Describes a Shared Private Link Resource
 type LookupSignalRSharedPrivateLinkResourceResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The group id from the provider of resource the shared private link resource is for
 	GroupId string `pulumi:"groupId"`
-	// Fully qualified resource Id for the resource.
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
-	// The name of the resource.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// The resource id of the resource the shared private link resource is for
 	PrivateLinkResourceId string `pulumi:"privateLinkResourceId"`
@@ -50,9 +50,9 @@ type LookupSignalRSharedPrivateLinkResourceResult struct {
 	RequestMessage *string `pulumi:"requestMessage"`
 	// Status of the shared private link resource
 	Status string `pulumi:"status"`
-	// Metadata pertaining to creation and last modification of the resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	// The type of the resource - e.g. "Microsoft.SignalRService/SignalR"
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -66,11 +66,11 @@ func LookupSignalRSharedPrivateLinkResourceOutput(ctx *pulumi.Context, args Look
 }
 
 type LookupSignalRSharedPrivateLinkResourceOutputArgs struct {
-	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the resource.
 	ResourceName pulumi.StringInput `pulumi:"resourceName"`
-	// The name of the shared private link resource
+	// The name of the shared private link resource.
 	SharedPrivateLinkResourceName pulumi.StringInput `pulumi:"sharedPrivateLinkResourceName"`
 }
 
@@ -93,17 +93,22 @@ func (o LookupSignalRSharedPrivateLinkResourceResultOutput) ToLookupSignalRShare
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupSignalRSharedPrivateLinkResourceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSignalRSharedPrivateLinkResourceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The group id from the provider of resource the shared private link resource is for
 func (o LookupSignalRSharedPrivateLinkResourceResultOutput) GroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSignalRSharedPrivateLinkResourceResult) string { return v.GroupId }).(pulumi.StringOutput)
 }
 
-// Fully qualified resource Id for the resource.
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupSignalRSharedPrivateLinkResourceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSignalRSharedPrivateLinkResourceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The name of the resource.
+// The name of the resource
 func (o LookupSignalRSharedPrivateLinkResourceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSignalRSharedPrivateLinkResourceResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -128,12 +133,12 @@ func (o LookupSignalRSharedPrivateLinkResourceResultOutput) Status() pulumi.Stri
 	return o.ApplyT(func(v LookupSignalRSharedPrivateLinkResourceResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupSignalRSharedPrivateLinkResourceResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupSignalRSharedPrivateLinkResourceResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// The type of the resource - e.g. "Microsoft.SignalRService/SignalR"
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupSignalRSharedPrivateLinkResourceResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSignalRSharedPrivateLinkResourceResult) string { return v.Type }).(pulumi.StringOutput)
 }

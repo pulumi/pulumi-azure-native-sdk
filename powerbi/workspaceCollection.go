@@ -12,10 +12,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Azure REST API version: 2016-01-29. Prior API version in Azure Native 1.x: 2016-01-29.
+// Azure REST API version: 2016-01-29. Prior API version in Azure Native 2.x: 2016-01-29.
 type WorkspaceCollection struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Azure location
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// Workspace collection name
@@ -134,6 +136,11 @@ func (o WorkspaceCollectionOutput) ToWorkspaceCollectionOutput() WorkspaceCollec
 
 func (o WorkspaceCollectionOutput) ToWorkspaceCollectionOutputWithContext(ctx context.Context) WorkspaceCollectionOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o WorkspaceCollectionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkspaceCollection) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Azure location

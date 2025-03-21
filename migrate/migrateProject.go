@@ -13,10 +13,12 @@ import (
 )
 
 // Migrate Project REST Resource.
-// Azure REST API version: 2018-09-01-preview. Prior API version in Azure Native 1.x: 2018-09-01-preview.
+// Azure REST API version: 2018-09-01-preview. Prior API version in Azure Native 2.x: 2018-09-01-preview.
 type MigrateProject struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets or sets the eTag for concurrency control.
 	ETag pulumi.StringPtrOutput `pulumi:"eTag"`
 	// Gets or sets the Azure location in which migrate project is created.
@@ -49,7 +51,16 @@ func NewMigrateProject(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:migrate/v20200501:MigrateProject"),
 		},
 		{
+			Type: pulumi.String("azure-native:migrate/v20200501:MigrateProjectsControllerMigrateProject"),
+		},
+		{
 			Type: pulumi.String("azure-native:migrate/v20230101:MigrateProject"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate/v20230101:MigrateProjectsControllerMigrateProject"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate:MigrateProjectsControllerMigrateProject"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -151,6 +162,11 @@ func (o MigrateProjectOutput) ToMigrateProjectOutput() MigrateProjectOutput {
 
 func (o MigrateProjectOutput) ToMigrateProjectOutputWithContext(ctx context.Context) MigrateProjectOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o MigrateProjectOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *MigrateProject) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets the eTag for concurrency control.

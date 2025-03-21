@@ -13,12 +13,12 @@ import (
 )
 
 // Registration information.
-// Azure REST API version: 2022-06-01. Prior API version in Azure Native 1.x: 2017-06-01.
-//
-// Other available API versions: 2020-06-01-preview.
+// Azure REST API version: 2022-06-01. Prior API version in Azure Native 2.x: 2022-06-01.
 type Registration struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Specifies the billing mode for the Azure Stack registration.
 	BillingModel pulumi.StringPtrOutput `pulumi:"billingModel"`
 	// The identifier of the registered Azure Stack.
@@ -155,6 +155,11 @@ func (o RegistrationOutput) ToRegistrationOutput() RegistrationOutput {
 
 func (o RegistrationOutput) ToRegistrationOutputWithContext(ctx context.Context) RegistrationOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o RegistrationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Registration) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Specifies the billing mode for the Azure Stack registration.

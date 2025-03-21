@@ -13,12 +13,12 @@ import (
 )
 
 // Specifies information about the SSH public key.
-// Azure REST API version: 2023-03-01. Prior API version in Azure Native 1.x: 2020-12-01.
-//
-// Other available API versions: 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01.
+// Azure REST API version: 2024-11-01. Prior API version in Azure Native 2.x: 2023-03-01.
 type SshPublicKey struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Resource location
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Resource name
@@ -86,6 +86,9 @@ func NewSshPublicKey(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:compute/v20240701:SshPublicKey"),
+		},
+		{
+			Type: pulumi.String("azure-native:compute/v20241101:SshPublicKey"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -183,6 +186,11 @@ func (o SshPublicKeyOutput) ToSshPublicKeyOutput() SshPublicKeyOutput {
 
 func (o SshPublicKeyOutput) ToSshPublicKeyOutputWithContext(ctx context.Context) SshPublicKeyOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o SshPublicKeyOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SshPublicKey) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource location

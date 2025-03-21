@@ -13,10 +13,12 @@ import (
 )
 
 // Alert processing rule object containing target scopes, conditions and scheduling logic.
-// Azure REST API version: 2021-08-08.
+// Azure REST API version: 2021-08-08. Prior API version in Azure Native 2.x: 2021-08-08.
 type AlertProcessingRuleByName struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Resource location
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Azure resource name
@@ -49,6 +51,9 @@ func NewAlertProcessingRuleByName(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:alertsmanagement/v20181102privatepreview:AlertProcessingRuleByName"),
 		},
 		{
+			Type: pulumi.String("azure-native:alertsmanagement/v20190505preview:ActionRuleByName"),
+		},
+		{
 			Type: pulumi.String("azure-native:alertsmanagement/v20190505preview:AlertProcessingRuleByName"),
 		},
 		{
@@ -56,6 +61,9 @@ func NewAlertProcessingRuleByName(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:alertsmanagement/v20210808preview:AlertProcessingRuleByName"),
+		},
+		{
+			Type: pulumi.String("azure-native:alertsmanagement:ActionRuleByName"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -153,6 +161,11 @@ func (o AlertProcessingRuleByNameOutput) ToAlertProcessingRuleByNameOutput() Ale
 
 func (o AlertProcessingRuleByNameOutput) ToAlertProcessingRuleByNameOutputWithContext(ctx context.Context) AlertProcessingRuleByNameOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o AlertProcessingRuleByNameOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *AlertProcessingRuleByName) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource location

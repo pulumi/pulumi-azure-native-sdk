@@ -36,6 +36,8 @@ type LookupBrokerArgs struct {
 type LookupBrokerResult struct {
 	// The details of Authentication Docker Image.
 	AuthImage ContainerImageResponse `pulumi:"authImage"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The details of Broker Docker Image.
 	BrokerImage ContainerImageResponse `pulumi:"brokerImage"`
 	// The details of Node Tolerations for Broker Pods.
@@ -138,6 +140,11 @@ func (o LookupBrokerResultOutput) ToLookupBrokerResultOutputWithContext(ctx cont
 // The details of Authentication Docker Image.
 func (o LookupBrokerResultOutput) AuthImage() ContainerImageResponseOutput {
 	return o.ApplyT(func(v LookupBrokerResult) ContainerImageResponse { return v.AuthImage }).(ContainerImageResponseOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupBrokerResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBrokerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The details of Broker Docker Image.

@@ -12,9 +12,7 @@ import (
 )
 
 // Gets a favorite process for a Test Base Package.
-// Azure REST API version: 2022-04-01-preview.
-//
-// Other available API versions: 2023-11-01-preview.
+// Azure REST API version: 2023-11-01-preview.
 func LookupFavoriteProcess(ctx *pulumi.Context, args *LookupFavoriteProcessArgs, opts ...pulumi.InvokeOption) (*LookupFavoriteProcessResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFavoriteProcessResult
@@ -30,7 +28,7 @@ type LookupFavoriteProcessArgs struct {
 	FavoriteProcessResourceName string `pulumi:"favoriteProcessResourceName"`
 	// The resource name of the Test Base Package.
 	PackageName string `pulumi:"packageName"`
-	// The name of the resource group that contains the resource.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The resource name of the Test Base Account.
 	TestBaseAccountName string `pulumi:"testBaseAccountName"`
@@ -40,13 +38,15 @@ type LookupFavoriteProcessArgs struct {
 type LookupFavoriteProcessResult struct {
 	// The actual name of the favorite process. It will be equal to resource name except for the scenario that the process name contains characters that are not allowed in the resource name.
 	ActualProcessName string `pulumi:"actualProcessName"`
-	// Resource ID.
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
-	// Resource name.
+	// The name of the resource
 	Name string `pulumi:"name"`
-	// The system metadata relating to this resource
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	// Resource type.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -64,7 +64,7 @@ type LookupFavoriteProcessOutputArgs struct {
 	FavoriteProcessResourceName pulumi.StringInput `pulumi:"favoriteProcessResourceName"`
 	// The resource name of the Test Base Package.
 	PackageName pulumi.StringInput `pulumi:"packageName"`
-	// The name of the resource group that contains the resource.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The resource name of the Test Base Account.
 	TestBaseAccountName pulumi.StringInput `pulumi:"testBaseAccountName"`
@@ -94,22 +94,27 @@ func (o LookupFavoriteProcessResultOutput) ActualProcessName() pulumi.StringOutp
 	return o.ApplyT(func(v LookupFavoriteProcessResult) string { return v.ActualProcessName }).(pulumi.StringOutput)
 }
 
-// Resource ID.
+// The Azure API version of the resource.
+func (o LookupFavoriteProcessResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFavoriteProcessResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupFavoriteProcessResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFavoriteProcessResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o LookupFavoriteProcessResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFavoriteProcessResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The system metadata relating to this resource
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupFavoriteProcessResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupFavoriteProcessResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Resource type.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupFavoriteProcessResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFavoriteProcessResult) string { return v.Type }).(pulumi.StringOutput)
 }

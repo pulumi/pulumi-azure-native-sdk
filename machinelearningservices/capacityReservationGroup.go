@@ -12,12 +12,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Azure REST API version: 2023-08-01-preview.
-//
-// Other available API versions: 2024-01-01-preview, 2024-04-01-preview.
+// Azure REST API version: 2024-01-01-preview. Prior API version in Azure Native 2.x: 2023-08-01-preview.
 type CapacityReservationGroup struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// [Required] Additional attributes of the entity.
 	CapacityReservationGroupProperties CapacityReservationGroupResponseOutput `pulumi:"capacityReservationGroupProperties"`
 	// Managed service identity (system assigned and/or user assigned identities)
@@ -98,7 +98,8 @@ func (CapacityReservationGroupState) ElementType() reflect.Type {
 type capacityReservationGroupArgs struct {
 	// [Required] Additional attributes of the entity.
 	CapacityReservationGroupProperties CapacityReservationGroupType `pulumi:"capacityReservationGroupProperties"`
-	GroupId                            *string                      `pulumi:"groupId"`
+	// Group ID
+	GroupId *string `pulumi:"groupId"`
 	// Managed service identity (system assigned and/or user assigned identities)
 	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
@@ -117,7 +118,8 @@ type capacityReservationGroupArgs struct {
 type CapacityReservationGroupArgs struct {
 	// [Required] Additional attributes of the entity.
 	CapacityReservationGroupProperties CapacityReservationGroupTypeInput
-	GroupId                            pulumi.StringPtrInput
+	// Group ID
+	GroupId pulumi.StringPtrInput
 	// Managed service identity (system assigned and/or user assigned identities)
 	Identity ManagedServiceIdentityPtrInput
 	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
@@ -167,6 +169,11 @@ func (o CapacityReservationGroupOutput) ToCapacityReservationGroupOutput() Capac
 
 func (o CapacityReservationGroupOutput) ToCapacityReservationGroupOutputWithContext(ctx context.Context) CapacityReservationGroupOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o CapacityReservationGroupOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *CapacityReservationGroup) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // [Required] Additional attributes of the entity.

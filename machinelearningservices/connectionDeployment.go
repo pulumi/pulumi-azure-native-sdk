@@ -12,16 +12,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Azure REST API version: 2024-04-01-preview.
-//
-// Other available API versions: 2024-07-01-preview, 2024-10-01-preview.
+// Azure REST API version: 2025-01-01-preview. Prior API version in Azure Native 2.x: 2024-04-01-preview.
 type ConnectionDeployment struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
-	Name       pulumi.StringOutput                                `pulumi:"name"`
-	Properties EndpointDeploymentResourcePropertiesResponseOutput `pulumi:"properties"`
-	Sku        CognitiveServicesSkuResponsePtrOutput              `pulumi:"sku"`
+	Name       pulumi.StringOutput `pulumi:"name"`
+	Properties pulumi.AnyOutput    `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -56,6 +55,9 @@ func NewConnectionDeployment(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001preview:ConnectionDeployment"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250101preview:ConnectionDeployment"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -95,11 +97,12 @@ type connectionDeploymentArgs struct {
 	// Friendly name of the workspace connection
 	ConnectionName string `pulumi:"connectionName"`
 	// Name of the deployment resource
-	DeploymentName *string                              `pulumi:"deploymentName"`
-	Properties     EndpointDeploymentResourceProperties `pulumi:"properties"`
+	DeploymentName *string     `pulumi:"deploymentName"`
+	Properties     interface{} `pulumi:"properties"`
+	// Api version used by proxy call
+	ProxyApiVersion *string `pulumi:"proxyApiVersion"`
 	// The name of the resource group. The name is case insensitive.
-	ResourceGroupName string                `pulumi:"resourceGroupName"`
-	Sku               *CognitiveServicesSku `pulumi:"sku"`
+	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Azure Machine Learning Workspace Name
 	WorkspaceName string `pulumi:"workspaceName"`
 }
@@ -110,10 +113,11 @@ type ConnectionDeploymentArgs struct {
 	ConnectionName pulumi.StringInput
 	// Name of the deployment resource
 	DeploymentName pulumi.StringPtrInput
-	Properties     EndpointDeploymentResourcePropertiesInput
+	Properties     pulumi.Input
+	// Api version used by proxy call
+	ProxyApiVersion pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
-	Sku               CognitiveServicesSkuPtrInput
 	// Azure Machine Learning Workspace Name
 	WorkspaceName pulumi.StringInput
 }
@@ -155,17 +159,18 @@ func (o ConnectionDeploymentOutput) ToConnectionDeploymentOutputWithContext(ctx 
 	return o
 }
 
+// The Azure API version of the resource.
+func (o ConnectionDeploymentOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConnectionDeployment) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The name of the resource
 func (o ConnectionDeploymentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectionDeployment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o ConnectionDeploymentOutput) Properties() EndpointDeploymentResourcePropertiesResponseOutput {
-	return o.ApplyT(func(v *ConnectionDeployment) EndpointDeploymentResourcePropertiesResponseOutput { return v.Properties }).(EndpointDeploymentResourcePropertiesResponseOutput)
-}
-
-func (o ConnectionDeploymentOutput) Sku() CognitiveServicesSkuResponsePtrOutput {
-	return o.ApplyT(func(v *ConnectionDeployment) CognitiveServicesSkuResponsePtrOutput { return v.Sku }).(CognitiveServicesSkuResponsePtrOutput)
+func (o ConnectionDeploymentOutput) Properties() pulumi.AnyOutput {
+	return o.ApplyT(func(v *ConnectionDeployment) pulumi.AnyOutput { return v.Properties }).(pulumi.AnyOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

@@ -13,8 +13,6 @@ import (
 
 // Gets a managed database.
 // Azure REST API version: 2021-11-01.
-//
-// Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
 func LookupManagedDatabase(ctx *pulumi.Context, args *LookupManagedDatabaseArgs, opts ...pulumi.InvokeOption) (*LookupManagedDatabaseResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupManagedDatabaseResult
@@ -36,6 +34,8 @@ type LookupManagedDatabaseArgs struct {
 
 // A managed database resource.
 type LookupManagedDatabaseResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Collation of the metadata catalog.
 	CatalogCollation *string `pulumi:"catalogCollation"`
 	// Collation of the managed database.
@@ -97,6 +97,11 @@ func (o LookupManagedDatabaseResultOutput) ToLookupManagedDatabaseResultOutput()
 
 func (o LookupManagedDatabaseResultOutput) ToLookupManagedDatabaseResultOutputWithContext(ctx context.Context) LookupManagedDatabaseResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupManagedDatabaseResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupManagedDatabaseResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Collation of the metadata catalog.

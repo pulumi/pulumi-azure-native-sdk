@@ -13,12 +13,12 @@ import (
 )
 
 // Bot channel resource definition
-// Azure REST API version: 2022-09-15. Prior API version in Azure Native 1.x: 2021-03-01.
-//
-// Other available API versions: 2023-09-15-preview.
+// Azure REST API version: 2023-09-15-preview. Prior API version in Azure Native 2.x: 2022-09-15.
 type BotConnection struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Entity Tag.
 	Etag pulumi.StringPtrOutput `pulumi:"etag"`
 	// Required. Gets or sets the Kind of the resource.
@@ -188,6 +188,11 @@ func (o BotConnectionOutput) ToBotConnectionOutput() BotConnectionOutput {
 
 func (o BotConnectionOutput) ToBotConnectionOutputWithContext(ctx context.Context) BotConnectionOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o BotConnectionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *BotConnection) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Entity Tag.

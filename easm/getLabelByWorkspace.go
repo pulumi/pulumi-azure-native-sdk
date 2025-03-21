@@ -34,6 +34,8 @@ type LookupLabelByWorkspaceArgs struct {
 
 // Label details
 type LookupLabelByWorkspaceResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Label color.
 	Color *string `pulumi:"color"`
 	// Label display name.
@@ -85,6 +87,11 @@ func (o LookupLabelByWorkspaceResultOutput) ToLookupLabelByWorkspaceResultOutput
 
 func (o LookupLabelByWorkspaceResultOutput) ToLookupLabelByWorkspaceResultOutputWithContext(ctx context.Context) LookupLabelByWorkspaceResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupLabelByWorkspaceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLabelByWorkspaceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Label color.

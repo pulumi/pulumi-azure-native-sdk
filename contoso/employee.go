@@ -13,10 +13,12 @@ import (
 )
 
 // Employee resource
-// Azure REST API version: 2021-10-01-preview.
+// Azure REST API version: 2021-11-01. Prior API version in Azure Native 2.x: 2021-10-01-preview.
 type Employee struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -44,6 +46,9 @@ func NewEmployee(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:contoso/v20211001preview:Employee"),
+		},
+		{
+			Type: pulumi.String("azure-native:contoso/v20211101:Employee"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -141,6 +146,11 @@ func (o EmployeeOutput) ToEmployeeOutput() EmployeeOutput {
 
 func (o EmployeeOutput) ToEmployeeOutputWithContext(ctx context.Context) EmployeeOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o EmployeeOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Employee) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The geo-location where the resource lives

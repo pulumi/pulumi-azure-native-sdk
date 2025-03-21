@@ -13,12 +13,14 @@ import (
 )
 
 // An Compute Fleet resource
-// Azure REST API version: 2024-05-01-preview.
-//
-// Other available API versions: 2023-11-01-preview, 2024-11-01.
+// Azure REST API version: 2024-11-01. Prior API version in Azure Native 2.x: 2024-05-01-preview.
 type Fleet struct {
 	pulumi.CustomResourceState
 
+	// Represents the configuration for additional locations where Fleet resources may be deployed.
+	AdditionalLocationsProfile AdditionalLocationsProfileResponsePtrOutput `pulumi:"additionalLocationsProfile"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Compute Profile to use for running user's workloads.
 	ComputeProfile ComputeProfileResponseOutput `pulumi:"computeProfile"`
 	// The managed service identities assigned to this resource.
@@ -45,6 +47,8 @@ type Fleet struct {
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Specifies the ID which uniquely identifies a Compute Fleet.
 	UniqueId pulumi.StringOutput `pulumi:"uniqueId"`
+	// Attribute based Fleet.
+	VmAttributes VMAttributesResponsePtrOutput `pulumi:"vmAttributes"`
 	// List of VM sizes supported for Compute Fleet
 	VmSizesProfile VmSizeProfileResponseArrayOutput `pulumi:"vmSizesProfile"`
 	// Zones in which the Compute Fleet is available
@@ -112,6 +116,8 @@ func (FleetState) ElementType() reflect.Type {
 }
 
 type fleetArgs struct {
+	// Represents the configuration for additional locations where Fleet resources may be deployed.
+	AdditionalLocationsProfile *AdditionalLocationsProfile `pulumi:"additionalLocationsProfile"`
 	// Compute Profile to use for running user's workloads.
 	ComputeProfile ComputeProfile `pulumi:"computeProfile"`
 	// The name of the Compute Fleet
@@ -130,6 +136,8 @@ type fleetArgs struct {
 	SpotPriorityProfile *SpotPriorityProfile `pulumi:"spotPriorityProfile"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
+	// Attribute based Fleet.
+	VmAttributes *VMAttributes `pulumi:"vmAttributes"`
 	// List of VM sizes supported for Compute Fleet
 	VmSizesProfile []VmSizeProfile `pulumi:"vmSizesProfile"`
 	// Zones in which the Compute Fleet is available
@@ -138,6 +146,8 @@ type fleetArgs struct {
 
 // The set of arguments for constructing a Fleet resource.
 type FleetArgs struct {
+	// Represents the configuration for additional locations where Fleet resources may be deployed.
+	AdditionalLocationsProfile AdditionalLocationsProfilePtrInput
 	// Compute Profile to use for running user's workloads.
 	ComputeProfile ComputeProfileInput
 	// The name of the Compute Fleet
@@ -156,6 +166,8 @@ type FleetArgs struct {
 	SpotPriorityProfile SpotPriorityProfilePtrInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
+	// Attribute based Fleet.
+	VmAttributes VMAttributesPtrInput
 	// List of VM sizes supported for Compute Fleet
 	VmSizesProfile VmSizeProfileArrayInput
 	// Zones in which the Compute Fleet is available
@@ -197,6 +209,16 @@ func (o FleetOutput) ToFleetOutput() FleetOutput {
 
 func (o FleetOutput) ToFleetOutputWithContext(ctx context.Context) FleetOutput {
 	return o
+}
+
+// Represents the configuration for additional locations where Fleet resources may be deployed.
+func (o FleetOutput) AdditionalLocationsProfile() AdditionalLocationsProfileResponsePtrOutput {
+	return o.ApplyT(func(v *Fleet) AdditionalLocationsProfileResponsePtrOutput { return v.AdditionalLocationsProfile }).(AdditionalLocationsProfileResponsePtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o FleetOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Fleet) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Compute Profile to use for running user's workloads.
@@ -262,6 +284,11 @@ func (o FleetOutput) Type() pulumi.StringOutput {
 // Specifies the ID which uniquely identifies a Compute Fleet.
 func (o FleetOutput) UniqueId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Fleet) pulumi.StringOutput { return v.UniqueId }).(pulumi.StringOutput)
+}
+
+// Attribute based Fleet.
+func (o FleetOutput) VmAttributes() VMAttributesResponsePtrOutput {
+	return o.ApplyT(func(v *Fleet) VMAttributesResponsePtrOutput { return v.VmAttributes }).(VMAttributesResponsePtrOutput)
 }
 
 // List of VM sizes supported for Compute Fleet

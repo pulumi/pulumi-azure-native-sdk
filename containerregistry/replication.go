@@ -13,12 +13,12 @@ import (
 )
 
 // An object that represents a replication for a container registry.
-// Azure REST API version: 2022-12-01. Prior API version in Azure Native 1.x: 2019-05-01.
-//
-// Other available API versions: 2023-01-01-preview, 2023-06-01-preview, 2023-07-01, 2023-08-01-preview, 2023-11-01-preview, 2024-11-01-preview.
+// Azure REST API version: 2024-11-01-preview. Prior API version in Azure Native 2.x: 2022-12-01.
 type Replication struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The location of the resource. This cannot be changed after the resource is created.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource.
@@ -211,6 +211,11 @@ func (o ReplicationOutput) ToReplicationOutput() ReplicationOutput {
 
 func (o ReplicationOutput) ToReplicationOutputWithContext(ctx context.Context) ReplicationOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ReplicationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Replication) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The location of the resource. This cannot be changed after the resource is created.

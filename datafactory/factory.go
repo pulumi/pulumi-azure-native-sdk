@@ -13,10 +13,12 @@ import (
 )
 
 // Factory resource type.
-// Azure REST API version: 2018-06-01. Prior API version in Azure Native 1.x: 2018-06-01.
+// Azure REST API version: 2018-06-01. Prior API version in Azure Native 2.x: 2018-06-01.
 type Factory struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Time the factory was created in ISO8601 format.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Etag identifies change in the resource.
@@ -180,6 +182,11 @@ func (o FactoryOutput) ToFactoryOutput() FactoryOutput {
 
 func (o FactoryOutput) ToFactoryOutputWithContext(ctx context.Context) FactoryOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o FactoryOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Factory) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Time the factory was created in ISO8601 format.

@@ -13,10 +13,12 @@ import (
 )
 
 // Live pipeline represents a unique instance of a live topology, used for real-time ingestion, archiving and publishing of content for a unique RTSP camera.
-// Azure REST API version: 2021-11-01-preview. Prior API version in Azure Native 1.x: 2021-11-01-preview.
+// Azure REST API version: 2021-11-01-preview. Prior API version in Azure Native 2.x: 2021-11-01-preview.
 type LivePipeline struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Maximum bitrate capacity in Kbps reserved for the live pipeline. The allowed range is from 500 to 3000 Kbps in increments of 100 Kbps. If the RTSP camera exceeds this capacity, then the service will disconnect temporarily from the camera. It will retry to re-establish connection (with exponential backoff), checking to see if the camera bitrate is now below the reserved capacity. Doing so will ensure that one 'noisy neighbor' does not affect other live pipelines in your account.
 	BitrateKbps pulumi.IntOutput `pulumi:"bitrateKbps"`
 	// An optional description for the pipeline.
@@ -162,6 +164,11 @@ func (o LivePipelineOutput) ToLivePipelineOutput() LivePipelineOutput {
 
 func (o LivePipelineOutput) ToLivePipelineOutputWithContext(ctx context.Context) LivePipelineOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LivePipelineOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *LivePipeline) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Maximum bitrate capacity in Kbps reserved for the live pipeline. The allowed range is from 500 to 3000 Kbps in increments of 100 Kbps. If the RTSP camera exceeds this capacity, then the service will disconnect temporarily from the camera. It will retry to re-establish connection (with exponential backoff), checking to see if the camera bitrate is now below the reserved capacity. Doing so will ensure that one 'noisy neighbor' does not affect other live pipelines in your account.

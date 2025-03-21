@@ -13,14 +13,14 @@ import (
 )
 
 // Defines the routing rule collection.
-// Azure REST API version: 2024-03-01.
-//
-// Other available API versions: 2024-05-01.
+// Azure REST API version: 2024-05-01. Prior API version in Azure Native 2.x: 2024-03-01.
 type RoutingRuleCollection struct {
 	pulumi.CustomResourceState
 
 	// Groups for configuration
 	AppliesTo NetworkManagerRoutingGroupItemResponseArrayOutput `pulumi:"appliesTo"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// A description of the routing rule collection.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Determines whether BGP route propagation is enabled. Defaults to true.
@@ -174,6 +174,11 @@ func (o RoutingRuleCollectionOutput) ToRoutingRuleCollectionOutputWithContext(ct
 // Groups for configuration
 func (o RoutingRuleCollectionOutput) AppliesTo() NetworkManagerRoutingGroupItemResponseArrayOutput {
 	return o.ApplyT(func(v *RoutingRuleCollection) NetworkManagerRoutingGroupItemResponseArrayOutput { return v.AppliesTo }).(NetworkManagerRoutingGroupItemResponseArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o RoutingRuleCollectionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *RoutingRuleCollection) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A description of the routing rule collection.

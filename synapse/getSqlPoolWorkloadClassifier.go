@@ -13,8 +13,6 @@ import (
 
 // Get a workload classifier of Sql pool's workload group.
 // Azure REST API version: 2021-06-01.
-//
-// Other available API versions: 2021-06-01-preview.
 func LookupSqlPoolWorkloadClassifier(ctx *pulumi.Context, args *LookupSqlPoolWorkloadClassifierArgs, opts ...pulumi.InvokeOption) (*LookupSqlPoolWorkloadClassifierResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSqlPoolWorkloadClassifierResult
@@ -40,6 +38,8 @@ type LookupSqlPoolWorkloadClassifierArgs struct {
 
 // Workload classifier operations for a data warehouse
 type LookupSqlPoolWorkloadClassifierResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The workload classifier context.
 	Context *string `pulumi:"context"`
 	// The workload classifier end time for classification.
@@ -99,6 +99,11 @@ func (o LookupSqlPoolWorkloadClassifierResultOutput) ToLookupSqlPoolWorkloadClas
 
 func (o LookupSqlPoolWorkloadClassifierResultOutput) ToLookupSqlPoolWorkloadClassifierResultOutputWithContext(ctx context.Context) LookupSqlPoolWorkloadClassifierResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupSqlPoolWorkloadClassifierResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSqlPoolWorkloadClassifierResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The workload classifier context.

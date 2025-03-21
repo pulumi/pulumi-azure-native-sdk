@@ -13,12 +13,12 @@ import (
 )
 
 // Solution resource.
-// Azure REST API version: 2023-06-01-preview.
-//
-// Other available API versions: 2021-09-01-preview.
+// Azure REST API version: 2023-06-01-preview. Prior API version in Azure Native 2.x: 2023-06-01-preview.
 type Solution struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The ETag value to implement optimistic concurrency.
 	ETag pulumi.StringOutput `pulumi:"eTag"`
 	// The name of the resource
@@ -143,6 +143,11 @@ func (o SolutionOutput) ToSolutionOutput() SolutionOutput {
 
 func (o SolutionOutput) ToSolutionOutputWithContext(ctx context.Context) SolutionOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o SolutionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Solution) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The ETag value to implement optimistic concurrency.

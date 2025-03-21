@@ -30,6 +30,8 @@ type LookupWorkspaceSettingArgs struct {
 
 // Configures where to store the OMS agent data for workspaces under a scope
 type LookupWorkspaceSettingResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource Id
 	Id string `pulumi:"id"`
 	// Resource name
@@ -73,6 +75,11 @@ func (o LookupWorkspaceSettingResultOutput) ToLookupWorkspaceSettingResultOutput
 
 func (o LookupWorkspaceSettingResultOutput) ToLookupWorkspaceSettingResultOutputWithContext(ctx context.Context) LookupWorkspaceSettingResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupWorkspaceSettingResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkspaceSettingResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource Id

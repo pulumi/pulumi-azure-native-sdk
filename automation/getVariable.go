@@ -12,9 +12,7 @@ import (
 )
 
 // Retrieve the variable identified by variable name.
-// Azure REST API version: 2022-08-08.
-//
-// Other available API versions: 2023-05-15-preview, 2023-11-01, 2024-10-23.
+// Azure REST API version: 2023-11-01.
 func LookupVariable(ctx *pulumi.Context, args *LookupVariableArgs, opts ...pulumi.InvokeOption) (*LookupVariableResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVariableResult
@@ -36,6 +34,8 @@ type LookupVariableArgs struct {
 
 // Definition of the variable.
 type LookupVariableResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets or sets the creation time.
 	CreationTime *string `pulumi:"creationTime"`
 	// Gets or sets the description.
@@ -89,6 +89,11 @@ func (o LookupVariableResultOutput) ToLookupVariableResultOutput() LookupVariabl
 
 func (o LookupVariableResultOutput) ToLookupVariableResultOutputWithContext(ctx context.Context) LookupVariableResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupVariableResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVariableResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets the creation time.

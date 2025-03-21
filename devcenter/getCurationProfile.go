@@ -12,9 +12,7 @@ import (
 )
 
 // Gets a specific curation profile.
-// Azure REST API version: 2024-08-01-preview.
-//
-// Other available API versions: 2024-10-01-preview.
+// Azure REST API version: 2024-10-01-preview.
 func LookupCurationProfile(ctx *pulumi.Context, args *LookupCurationProfileArgs, opts ...pulumi.InvokeOption) (*LookupCurationProfileResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCurationProfileResult
@@ -36,6 +34,8 @@ type LookupCurationProfileArgs struct {
 
 // Represents an curation profile resource.
 type LookupCurationProfileResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The name of the resource
@@ -87,6 +87,11 @@ func (o LookupCurationProfileResultOutput) ToLookupCurationProfileResultOutput()
 
 func (o LookupCurationProfileResultOutput) ToLookupCurationProfileResultOutputWithContext(ctx context.Context) LookupCurationProfileResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupCurationProfileResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCurationProfileResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

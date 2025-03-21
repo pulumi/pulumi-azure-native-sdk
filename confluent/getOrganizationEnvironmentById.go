@@ -34,6 +34,8 @@ type LookupOrganizationEnvironmentByIdArgs struct {
 
 // Details about environment name, metadata and environment id of an environment
 type LookupOrganizationEnvironmentByIdResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Id of the environment
 	Id *string `pulumi:"id"`
 	// Type of environment
@@ -83,6 +85,11 @@ func (o LookupOrganizationEnvironmentByIdResultOutput) ToLookupOrganizationEnvir
 
 func (o LookupOrganizationEnvironmentByIdResultOutput) ToLookupOrganizationEnvironmentByIdResultOutputWithContext(ctx context.Context) LookupOrganizationEnvironmentByIdResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupOrganizationEnvironmentByIdResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOrganizationEnvironmentByIdResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Id of the environment

@@ -38,6 +38,8 @@ type LookupIntegrationServiceEnvironmentManagedApiResult struct {
 	ApiDefinitionUrl string `pulumi:"apiDefinitionUrl"`
 	// The api definitions.
 	ApiDefinitions ApiResourceDefinitionsResponse `pulumi:"apiDefinitions"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The backend service.
 	BackendService ApiResourceBackendServiceResponse `pulumi:"backendService"`
 	// The capabilities.
@@ -119,6 +121,11 @@ func (o LookupIntegrationServiceEnvironmentManagedApiResultOutput) ApiDefinition
 	return o.ApplyT(func(v LookupIntegrationServiceEnvironmentManagedApiResult) ApiResourceDefinitionsResponse {
 		return v.ApiDefinitions
 	}).(ApiResourceDefinitionsResponseOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupIntegrationServiceEnvironmentManagedApiResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIntegrationServiceEnvironmentManagedApiResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The backend service.

@@ -12,9 +12,7 @@ import (
 )
 
 // Get a Product. '.default' and '.unassigned' are system defined values and cannot be used for product name.
-// Azure REST API version: 2022-09-01-preview.
-//
-// Other available API versions: 2024-04-01.
+// Azure REST API version: 2024-04-01.
 func LookupProduct(ctx *pulumi.Context, args *LookupProductArgs, opts ...pulumi.InvokeOption) (*LookupProductResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupProductResult
@@ -36,8 +34,10 @@ type LookupProductArgs struct {
 
 // An product resource belonging to a catalog resource.
 type LookupProductResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Description of the product
-	Description string `pulumi:"description"`
+	Description *string `pulumi:"description"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The name of the resource
@@ -87,9 +87,14 @@ func (o LookupProductResultOutput) ToLookupProductResultOutputWithContext(ctx co
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupProductResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProductResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Description of the product
-func (o LookupProductResultOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupProductResult) string { return v.Description }).(pulumi.StringOutput)
+func (o LookupProductResultOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupProductResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

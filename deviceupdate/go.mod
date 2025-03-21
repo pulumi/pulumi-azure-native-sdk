@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-azure-native-sdk/deviceupdate/v2
+module github.com/pulumi/pulumi-azure-native-sdk/deviceupdate/v3
 
 go 1.22
 

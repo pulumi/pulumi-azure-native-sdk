@@ -13,10 +13,12 @@ import (
 )
 
 // Fabric model.
-// Azure REST API version: 2021-02-16-preview.
+// Azure REST API version: 2021-02-16-preview. Prior API version in Azure Native 2.x: 2021-02-16-preview.
 type Fabric struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets or sets the location of the fabric.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Gets or sets the name of the resource.
@@ -46,6 +48,9 @@ func NewFabric(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:datareplication/v20210216preview:Fabric"),
+		},
+		{
+			Type: pulumi.String("azure-native:datareplication/v20240901:Fabric"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -143,6 +148,11 @@ func (o FabricOutput) ToFabricOutput() FabricOutput {
 
 func (o FabricOutput) ToFabricOutputWithContext(ctx context.Context) FabricOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o FabricOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Fabric) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets the location of the fabric.

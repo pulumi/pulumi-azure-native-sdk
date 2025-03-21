@@ -12,7 +12,7 @@ import (
 )
 
 // Obtains the details of a suppression.
-// Azure REST API version: 2023-01-01.
+// Azure REST API version: 2023-09-01-preview.
 func LookupSuppression(ctx *pulumi.Context, args *LookupSuppressionArgs, opts ...pulumi.InvokeOption) (*LookupSuppressionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSuppressionResult
@@ -34,6 +34,8 @@ type LookupSuppressionArgs struct {
 
 // The details of the snoozed or dismissed rule; for example, the duration, name, and GUID associated with the rule.
 type LookupSuppressionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets or sets the expiration time stamp.
 	ExpirationTimeStamp string `pulumi:"expirationTimeStamp"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -85,6 +87,11 @@ func (o LookupSuppressionResultOutput) ToLookupSuppressionResultOutput() LookupS
 
 func (o LookupSuppressionResultOutput) ToLookupSuppressionResultOutputWithContext(ctx context.Context) LookupSuppressionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupSuppressionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSuppressionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets the expiration time stamp.

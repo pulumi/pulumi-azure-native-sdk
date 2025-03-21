@@ -12,9 +12,7 @@ import (
 )
 
 // Get properties of the provided the Kubernetes cluster.
-// Azure REST API version: 2023-10-01-preview.
-//
-// Other available API versions: 2023-07-01, 2024-06-01-preview, 2024-07-01, 2024-10-01-preview.
+// Azure REST API version: 2025-02-01.
 func LookupKubernetesCluster(ctx *pulumi.Context, args *LookupKubernetesClusterArgs, opts ...pulumi.InvokeOption) (*LookupKubernetesClusterResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupKubernetesClusterResult
@@ -41,6 +39,8 @@ type LookupKubernetesClusterResult struct {
 	AttachedNetworkIds []string `pulumi:"attachedNetworkIds"`
 	// The list of versions that this Kubernetes cluster can be upgraded to.
 	AvailableUpgrades []AvailableUpgradeResponse `pulumi:"availableUpgrades"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The resource ID of the Network Cloud cluster.
 	ClusterId string `pulumi:"clusterId"`
 	// The resource ID of the connected cluster set up when this Kubernetes cluster is created.
@@ -53,6 +53,8 @@ type LookupKubernetesClusterResult struct {
 	DetailedStatus string `pulumi:"detailedStatus"`
 	// The descriptive message about the current detailed status.
 	DetailedStatusMessage string `pulumi:"detailedStatusMessage"`
+	// Resource ETag.
+	Etag string `pulumi:"etag"`
 	// The extended location of the cluster associated with the resource.
 	ExtendedLocation ExtendedLocationResponse `pulumi:"extendedLocation"`
 	// The current feature settings.
@@ -61,7 +63,7 @@ type LookupKubernetesClusterResult struct {
 	Id string `pulumi:"id"`
 	// The agent pools that are created with this Kubernetes cluster for running critical system services and workloads. This data in this field is only used during creation, and the field will be empty following the creation of the Kubernetes Cluster. After creation, the management of agent pools is done using the agentPools sub-resource.
 	InitialAgentPoolConfigurations []InitialAgentPoolConfigurationResponse `pulumi:"initialAgentPoolConfigurations"`
-	// The Kubernetes version for this cluster. Accepts n.n, n.n.n, and n.n.n-n format. The interpreted version used will be resolved into this field after creation or update.
+	// The Kubernetes version for this cluster.
 	KubernetesVersion string `pulumi:"kubernetesVersion"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
@@ -149,6 +151,11 @@ func (o LookupKubernetesClusterResultOutput) AvailableUpgrades() AvailableUpgrad
 	return o.ApplyT(func(v LookupKubernetesClusterResult) []AvailableUpgradeResponse { return v.AvailableUpgrades }).(AvailableUpgradeResponseArrayOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupKubernetesClusterResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The resource ID of the Network Cloud cluster.
 func (o LookupKubernetesClusterResultOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKubernetesClusterResult) string { return v.ClusterId }).(pulumi.StringOutput)
@@ -181,6 +188,11 @@ func (o LookupKubernetesClusterResultOutput) DetailedStatusMessage() pulumi.Stri
 	return o.ApplyT(func(v LookupKubernetesClusterResult) string { return v.DetailedStatusMessage }).(pulumi.StringOutput)
 }
 
+// Resource ETag.
+func (o LookupKubernetesClusterResultOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterResult) string { return v.Etag }).(pulumi.StringOutput)
+}
+
 // The extended location of the cluster associated with the resource.
 func (o LookupKubernetesClusterResultOutput) ExtendedLocation() ExtendedLocationResponseOutput {
 	return o.ApplyT(func(v LookupKubernetesClusterResult) ExtendedLocationResponse { return v.ExtendedLocation }).(ExtendedLocationResponseOutput)
@@ -203,7 +215,7 @@ func (o LookupKubernetesClusterResultOutput) InitialAgentPoolConfigurations() In
 	}).(InitialAgentPoolConfigurationResponseArrayOutput)
 }
 
-// The Kubernetes version for this cluster. Accepts n.n, n.n.n, and n.n.n-n format. The interpreted version used will be resolved into this field after creation or update.
+// The Kubernetes version for this cluster.
 func (o LookupKubernetesClusterResultOutput) KubernetesVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKubernetesClusterResult) string { return v.KubernetesVersion }).(pulumi.StringOutput)
 }

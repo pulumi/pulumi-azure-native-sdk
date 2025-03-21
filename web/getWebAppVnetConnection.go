@@ -12,9 +12,7 @@ import (
 )
 
 // Description for Gets a virtual network the app (or deployment slot) is connected to by name.
-// Azure REST API version: 2022-09-01.
-//
-// Other available API versions: 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
+// Azure REST API version: 2024-04-01.
 func LookupWebAppVnetConnection(ctx *pulumi.Context, args *LookupWebAppVnetConnectionArgs, opts ...pulumi.InvokeOption) (*LookupWebAppVnetConnectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebAppVnetConnectionResult
@@ -36,6 +34,8 @@ type LookupWebAppVnetConnectionArgs struct {
 
 // Virtual Network information ARM resource.
 type LookupWebAppVnetConnectionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// A certificate file (.cer) blob containing the public key of the private key used to authenticate a
 	// Point-To-Site VPN connection.
 	CertBlob *string `pulumi:"certBlob"`
@@ -96,6 +96,11 @@ func (o LookupWebAppVnetConnectionResultOutput) ToLookupWebAppVnetConnectionResu
 
 func (o LookupWebAppVnetConnectionResultOutput) ToLookupWebAppVnetConnectionResultOutputWithContext(ctx context.Context) LookupWebAppVnetConnectionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupWebAppVnetConnectionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWebAppVnetConnectionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A certificate file (.cer) blob containing the public key of the private key used to authenticate a

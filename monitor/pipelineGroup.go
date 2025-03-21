@@ -13,32 +13,20 @@ import (
 )
 
 // A pipeline group definition.
-// Azure REST API version: 2023-10-01-preview.
-//
-// Other available API versions: 2024-10-01-preview.
+// Azure REST API version: 2024-10-01-preview. Prior API version in Azure Native 2.x: 2023-10-01-preview.
 type PipelineGroup struct {
 	pulumi.CustomResourceState
 
-	// The exporters specified for a pipeline group instance.
-	Exporters ExporterResponseArrayOutput `pulumi:"exporters"`
-	// The extended location for given pipeline group.
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// The complex type of the extended location.
 	ExtendedLocation AzureResourceManagerCommonTypesExtendedLocationResponsePtrOutput `pulumi:"extendedLocation"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Networking configurations for the pipeline group instance.
-	NetworkingConfigurations NetworkingConfigurationResponseArrayOutput `pulumi:"networkingConfigurations"`
-	// The processors specified for a pipeline group instance.
-	Processors ProcessorResponseArrayOutput `pulumi:"processors"`
-	// The provisioning state of a pipeline group instance. Set to Succeeded if everything is healthy.
-	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// The receivers specified for a pipeline group instance.
-	Receivers ReceiverResponseArrayOutput `pulumi:"receivers"`
-	// Defines the amount of replicas of the pipeline group instance.
-	Replicas pulumi.IntPtrOutput `pulumi:"replicas"`
-	// The service section for a given pipeline group instance.
-	Service ServiceResponseOutput `pulumi:"service"`
+	// The resource-specific properties for this resource.
+	Properties PipelineGroupPropertiesResponseOutput `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
@@ -54,20 +42,8 @@ func NewPipelineGroup(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Exporters == nil {
-		return nil, errors.New("invalid value for required argument 'Exporters'")
-	}
-	if args.Processors == nil {
-		return nil, errors.New("invalid value for required argument 'Processors'")
-	}
-	if args.Receivers == nil {
-		return nil, errors.New("invalid value for required argument 'Receivers'")
-	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
-	}
-	if args.Service == nil {
-		return nil, errors.New("invalid value for required argument 'Service'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -111,52 +87,32 @@ func (PipelineGroupState) ElementType() reflect.Type {
 }
 
 type pipelineGroupArgs struct {
-	// The exporters specified for a pipeline group instance.
-	Exporters []Exporter `pulumi:"exporters"`
-	// The extended location for given pipeline group.
+	// The complex type of the extended location.
 	ExtendedLocation *AzureResourceManagerCommonTypesExtendedLocation `pulumi:"extendedLocation"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
-	// Networking configurations for the pipeline group instance.
-	NetworkingConfigurations []NetworkingConfiguration `pulumi:"networkingConfigurations"`
 	// The name of pipeline group. The name is case insensitive.
 	PipelineGroupName *string `pulumi:"pipelineGroupName"`
-	// The processors specified for a pipeline group instance.
-	Processors []Processor `pulumi:"processors"`
-	// The receivers specified for a pipeline group instance.
-	Receivers []Receiver `pulumi:"receivers"`
-	// Defines the amount of replicas of the pipeline group instance.
-	Replicas *int `pulumi:"replicas"`
+	// The resource-specific properties for this resource.
+	Properties *PipelineGroupProperties `pulumi:"properties"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// The service section for a given pipeline group instance.
-	Service Service `pulumi:"service"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a PipelineGroup resource.
 type PipelineGroupArgs struct {
-	// The exporters specified for a pipeline group instance.
-	Exporters ExporterArrayInput
-	// The extended location for given pipeline group.
+	// The complex type of the extended location.
 	ExtendedLocation AzureResourceManagerCommonTypesExtendedLocationPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
-	// Networking configurations for the pipeline group instance.
-	NetworkingConfigurations NetworkingConfigurationArrayInput
 	// The name of pipeline group. The name is case insensitive.
 	PipelineGroupName pulumi.StringPtrInput
-	// The processors specified for a pipeline group instance.
-	Processors ProcessorArrayInput
-	// The receivers specified for a pipeline group instance.
-	Receivers ReceiverArrayInput
-	// Defines the amount of replicas of the pipeline group instance.
-	Replicas pulumi.IntPtrInput
+	// The resource-specific properties for this resource.
+	Properties PipelineGroupPropertiesPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
-	// The service section for a given pipeline group instance.
-	Service ServiceInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
 }
@@ -198,12 +154,12 @@ func (o PipelineGroupOutput) ToPipelineGroupOutputWithContext(ctx context.Contex
 	return o
 }
 
-// The exporters specified for a pipeline group instance.
-func (o PipelineGroupOutput) Exporters() ExporterResponseArrayOutput {
-	return o.ApplyT(func(v *PipelineGroup) ExporterResponseArrayOutput { return v.Exporters }).(ExporterResponseArrayOutput)
+// The Azure API version of the resource.
+func (o PipelineGroupOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PipelineGroup) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
-// The extended location for given pipeline group.
+// The complex type of the extended location.
 func (o PipelineGroupOutput) ExtendedLocation() AzureResourceManagerCommonTypesExtendedLocationResponsePtrOutput {
 	return o.ApplyT(func(v *PipelineGroup) AzureResourceManagerCommonTypesExtendedLocationResponsePtrOutput {
 		return v.ExtendedLocation
@@ -220,34 +176,9 @@ func (o PipelineGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *PipelineGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Networking configurations for the pipeline group instance.
-func (o PipelineGroupOutput) NetworkingConfigurations() NetworkingConfigurationResponseArrayOutput {
-	return o.ApplyT(func(v *PipelineGroup) NetworkingConfigurationResponseArrayOutput { return v.NetworkingConfigurations }).(NetworkingConfigurationResponseArrayOutput)
-}
-
-// The processors specified for a pipeline group instance.
-func (o PipelineGroupOutput) Processors() ProcessorResponseArrayOutput {
-	return o.ApplyT(func(v *PipelineGroup) ProcessorResponseArrayOutput { return v.Processors }).(ProcessorResponseArrayOutput)
-}
-
-// The provisioning state of a pipeline group instance. Set to Succeeded if everything is healthy.
-func (o PipelineGroupOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v *PipelineGroup) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// The receivers specified for a pipeline group instance.
-func (o PipelineGroupOutput) Receivers() ReceiverResponseArrayOutput {
-	return o.ApplyT(func(v *PipelineGroup) ReceiverResponseArrayOutput { return v.Receivers }).(ReceiverResponseArrayOutput)
-}
-
-// Defines the amount of replicas of the pipeline group instance.
-func (o PipelineGroupOutput) Replicas() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *PipelineGroup) pulumi.IntPtrOutput { return v.Replicas }).(pulumi.IntPtrOutput)
-}
-
-// The service section for a given pipeline group instance.
-func (o PipelineGroupOutput) Service() ServiceResponseOutput {
-	return o.ApplyT(func(v *PipelineGroup) ServiceResponseOutput { return v.Service }).(ServiceResponseOutput)
+// The resource-specific properties for this resource.
+func (o PipelineGroupOutput) Properties() PipelineGroupPropertiesResponseOutput {
+	return o.ApplyT(func(v *PipelineGroup) PipelineGroupPropertiesResponseOutput { return v.Properties }).(PipelineGroupPropertiesResponseOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

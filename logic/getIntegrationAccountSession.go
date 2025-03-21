@@ -34,6 +34,8 @@ type LookupIntegrationAccountSessionArgs struct {
 
 // The integration account session.
 type LookupIntegrationAccountSessionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The changed time.
 	ChangedTime string `pulumi:"changedTime"`
 	// The session content.
@@ -87,6 +89,11 @@ func (o LookupIntegrationAccountSessionResultOutput) ToLookupIntegrationAccountS
 
 func (o LookupIntegrationAccountSessionResultOutput) ToLookupIntegrationAccountSessionResultOutputWithContext(ctx context.Context) LookupIntegrationAccountSessionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupIntegrationAccountSessionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIntegrationAccountSessionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The changed time.

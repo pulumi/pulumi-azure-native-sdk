@@ -13,10 +13,12 @@ import (
 )
 
 // MigrateAgent model.
-// Azure REST API version: 2022-05-01-preview.
+// Azure REST API version: 2022-05-01-preview. Prior API version in Azure Native 2.x: 2022-05-01-preview.
 type MigrateAgent struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets or sets the name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// MigrateAgent model properties.
@@ -145,6 +147,11 @@ func (o MigrateAgentOutput) ToMigrateAgentOutput() MigrateAgentOutput {
 
 func (o MigrateAgentOutput) ToMigrateAgentOutputWithContext(ctx context.Context) MigrateAgentOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o MigrateAgentOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *MigrateAgent) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets the name of the resource.

@@ -12,9 +12,7 @@ import (
 )
 
 // Gets the details of the authorization provider specified by its identifier.
-// Azure REST API version: 2022-08-01.
-//
-// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
+// Azure REST API version: 2022-09-01-preview.
 func LookupAuthorizationProvider(ctx *pulumi.Context, args *LookupAuthorizationProviderArgs, opts ...pulumi.InvokeOption) (*LookupAuthorizationProviderResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAuthorizationProviderResult
@@ -36,6 +34,8 @@ type LookupAuthorizationProviderArgs struct {
 
 // Authorization Provider contract.
 type LookupAuthorizationProviderResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Authorization Provider name. Must be 1 to 300 characters long.
 	DisplayName *string `pulumi:"displayName"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -85,6 +85,11 @@ func (o LookupAuthorizationProviderResultOutput) ToLookupAuthorizationProviderRe
 
 func (o LookupAuthorizationProviderResultOutput) ToLookupAuthorizationProviderResultOutputWithContext(ctx context.Context) LookupAuthorizationProviderResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupAuthorizationProviderResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAuthorizationProviderResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Authorization Provider name. Must be 1 to 300 characters long.

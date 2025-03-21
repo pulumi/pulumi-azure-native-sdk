@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-azure-native-sdk/easm/v2
+module github.com/pulumi/pulumi-azure-native-sdk/easm/v3
 
 go 1.22
 

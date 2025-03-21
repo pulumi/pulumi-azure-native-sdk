@@ -13,10 +13,12 @@ import (
 )
 
 // The Advanced Threat Protection resource.
-// Azure REST API version: 2019-01-01. Prior API version in Azure Native 1.x: 2019-01-01.
+// Azure REST API version: 2019-01-01. Prior API version in Azure Native 2.x: 2019-01-01.
 type AdvancedThreatProtection struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Indicates whether Advanced Threat Protection is enabled.
 	IsEnabled pulumi.BoolPtrOutput `pulumi:"isEnabled"`
 	// Resource name
@@ -130,6 +132,11 @@ func (o AdvancedThreatProtectionOutput) ToAdvancedThreatProtectionOutput() Advan
 
 func (o AdvancedThreatProtectionOutput) ToAdvancedThreatProtectionOutputWithContext(ctx context.Context) AdvancedThreatProtectionOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o AdvancedThreatProtectionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *AdvancedThreatProtection) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Indicates whether Advanced Threat Protection is enabled.

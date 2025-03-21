@@ -12,9 +12,7 @@ import (
 )
 
 // Returns the description for the specified hybrid connection.
-// Azure REST API version: 2021-11-01.
-//
-// Other available API versions: 2024-01-01.
+// Azure REST API version: 2024-01-01.
 func LookupHybridConnection(ctx *pulumi.Context, args *LookupHybridConnectionArgs, opts ...pulumi.InvokeOption) (*LookupHybridConnectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupHybridConnectionResult
@@ -36,6 +34,8 @@ type LookupHybridConnectionArgs struct {
 
 // Description of hybrid connection resource.
 type LookupHybridConnectionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The time the hybrid connection was created.
 	CreatedAt string `pulumi:"createdAt"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -93,6 +93,11 @@ func (o LookupHybridConnectionResultOutput) ToLookupHybridConnectionResultOutput
 
 func (o LookupHybridConnectionResultOutput) ToLookupHybridConnectionResultOutputWithContext(ctx context.Context) LookupHybridConnectionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupHybridConnectionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHybridConnectionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The time the hybrid connection was created.

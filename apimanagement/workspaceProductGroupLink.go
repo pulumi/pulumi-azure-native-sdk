@@ -13,12 +13,12 @@ import (
 )
 
 // Product-group link details.
-// Azure REST API version: 2022-09-01-preview.
-//
-// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
+// Azure REST API version: 2022-09-01-preview. Prior API version in Azure Native 2.x: 2022-09-01-preview.
 type WorkspaceProductGroupLink struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Full resource Id of a group.
 	GroupId pulumi.StringOutput `pulumi:"groupId"`
 	// The name of the resource
@@ -168,6 +168,11 @@ func (o WorkspaceProductGroupLinkOutput) ToWorkspaceProductGroupLinkOutput() Wor
 
 func (o WorkspaceProductGroupLinkOutput) ToWorkspaceProductGroupLinkOutputWithContext(ctx context.Context) WorkspaceProductGroupLinkOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o WorkspaceProductGroupLinkOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkspaceProductGroupLink) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Full resource Id of a group.

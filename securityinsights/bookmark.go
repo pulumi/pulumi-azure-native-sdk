@@ -13,12 +13,12 @@ import (
 )
 
 // Represents a bookmark in Azure Security Insights.
-// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2020-01-01.
-//
-// Other available API versions: 2019-01-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-11-01, 2023-12-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-09-01, 2024-10-01-preview, 2025-01-01-preview.
+// Azure REST API version: 2024-09-01. Prior API version in Azure Native 2.x: 2023-02-01.
 type Bookmark struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The time the bookmark was created
 	Created pulumi.StringPtrOutput `pulumi:"created"`
 	// Describes a user that created the bookmark
@@ -180,6 +180,9 @@ func NewBookmark(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20250101preview:Bookmark"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20250301:Bookmark"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -320,6 +323,11 @@ func (o BookmarkOutput) ToBookmarkOutput() BookmarkOutput {
 
 func (o BookmarkOutput) ToBookmarkOutputWithContext(ctx context.Context) BookmarkOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o BookmarkOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Bookmark) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The time the bookmark was created

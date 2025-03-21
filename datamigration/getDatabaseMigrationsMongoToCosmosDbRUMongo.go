@@ -34,6 +34,8 @@ type LookupDatabaseMigrationsMongoToCosmosDbRUMongoArgs struct {
 
 // Database Migration Resource for Mongo to CosmosDb.
 type LookupDatabaseMigrationsMongoToCosmosDbRUMongoResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// List of Mongo Collections to be migrated.
 	CollectionList []MongoMigrationCollectionResponse `pulumi:"collectionList"`
 	// Database migration end time.
@@ -105,6 +107,11 @@ func (o LookupDatabaseMigrationsMongoToCosmosDbRUMongoResultOutput) ToLookupData
 
 func (o LookupDatabaseMigrationsMongoToCosmosDbRUMongoResultOutput) ToLookupDatabaseMigrationsMongoToCosmosDbRUMongoResultOutputWithContext(ctx context.Context) LookupDatabaseMigrationsMongoToCosmosDbRUMongoResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupDatabaseMigrationsMongoToCosmosDbRUMongoResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseMigrationsMongoToCosmosDbRUMongoResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // List of Mongo Collections to be migrated.

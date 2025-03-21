@@ -13,19 +13,23 @@ import (
 )
 
 // A cloud link resource
-// Azure REST API version: 2022-05-01. Prior API version in Azure Native 1.x: 2021-06-01.
-//
-// Other available API versions: 2023-03-01, 2023-09-01.
+// Azure REST API version: 2023-09-01. Prior API version in Azure Native 2.x: 2022-05-01.
 type CloudLink struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Identifier of the other private cloud participating in the link.
 	LinkedCloud pulumi.StringPtrOutput `pulumi:"linkedCloud"`
-	// Resource name.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The provisioning state of the resource.
+	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// The state of the cloud link.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// Resource type.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -93,11 +97,11 @@ func (CloudLinkState) ElementType() reflect.Type {
 }
 
 type cloudLinkArgs struct {
-	// Name of the cloud link resource
+	// Name of the cloud link.
 	CloudLinkName *string `pulumi:"cloudLinkName"`
 	// Identifier of the other private cloud participating in the link.
 	LinkedCloud *string `pulumi:"linkedCloud"`
-	// The name of the private cloud.
+	// Name of the private cloud
 	PrivateCloudName string `pulumi:"privateCloudName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -105,11 +109,11 @@ type cloudLinkArgs struct {
 
 // The set of arguments for constructing a CloudLink resource.
 type CloudLinkArgs struct {
-	// Name of the cloud link resource
+	// Name of the cloud link.
 	CloudLinkName pulumi.StringPtrInput
 	// Identifier of the other private cloud participating in the link.
 	LinkedCloud pulumi.StringPtrInput
-	// The name of the private cloud.
+	// Name of the private cloud
 	PrivateCloudName pulumi.StringInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
@@ -152,14 +156,24 @@ func (o CloudLinkOutput) ToCloudLinkOutputWithContext(ctx context.Context) Cloud
 	return o
 }
 
+// The Azure API version of the resource.
+func (o CloudLinkOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *CloudLink) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Identifier of the other private cloud participating in the link.
 func (o CloudLinkOutput) LinkedCloud() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudLink) pulumi.StringPtrOutput { return v.LinkedCloud }).(pulumi.StringPtrOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o CloudLinkOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *CloudLink) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The provisioning state of the resource.
+func (o CloudLinkOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v *CloudLink) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
 // The state of the cloud link.
@@ -167,7 +181,12 @@ func (o CloudLinkOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *CloudLink) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// Resource type.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o CloudLinkOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *CloudLink) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o CloudLinkOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *CloudLink) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

@@ -12,9 +12,7 @@ import (
 )
 
 // Gets the details of the logger specified by its identifier.
-// Azure REST API version: 2022-08-01.
-//
-// Other available API versions: 2016-10-10, 2017-03-01, 2018-01-01, 2019-12-01-preview, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
+// Azure REST API version: 2022-09-01-preview.
 func LookupLogger(ctx *pulumi.Context, args *LookupLoggerArgs, opts ...pulumi.InvokeOption) (*LookupLoggerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupLoggerResult
@@ -36,6 +34,8 @@ type LookupLoggerArgs struct {
 
 // Logger details.
 type LookupLoggerResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The name and SendRule connection string of the event hub for azureEventHub logger.
 	// Instrumentation key for applicationInsights logger.
 	Credentials map[string]string `pulumi:"credentials"`
@@ -90,6 +90,11 @@ func (o LookupLoggerResultOutput) ToLookupLoggerResultOutput() LookupLoggerResul
 
 func (o LookupLoggerResultOutput) ToLookupLoggerResultOutputWithContext(ctx context.Context) LookupLoggerResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupLoggerResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLoggerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name and SendRule connection string of the event hub for azureEventHub logger.

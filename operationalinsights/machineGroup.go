@@ -13,10 +13,12 @@ import (
 )
 
 // A user-defined logical grouping of machines.
-// Azure REST API version: 2015-11-01-preview. Prior API version in Azure Native 1.x: 2015-11-01-preview.
+// Azure REST API version: 2015-11-01-preview. Prior API version in Azure Native 2.x: 2015-11-01-preview.
 type MachineGroup struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Count of machines in this group. The value of count may be bigger than the number of machines in case of the group has been truncated due to exceeding the max number of machines a group can handle.
 	Count pulumi.IntPtrOutput `pulumi:"count"`
 	// User defined name for the group
@@ -170,6 +172,11 @@ func (o MachineGroupOutput) ToMachineGroupOutput() MachineGroupOutput {
 
 func (o MachineGroupOutput) ToMachineGroupOutputWithContext(ctx context.Context) MachineGroupOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o MachineGroupOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *MachineGroup) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Count of machines in this group. The value of count may be bigger than the number of machines in case of the group has been truncated due to exceeding the max number of machines a group can handle.

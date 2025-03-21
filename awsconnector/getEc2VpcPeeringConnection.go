@@ -32,6 +32,8 @@ type LookupEc2VpcPeeringConnectionArgs struct {
 
 // A Microsoft.AwsConnector resource
 type LookupEc2VpcPeeringConnectionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -81,6 +83,11 @@ func (o LookupEc2VpcPeeringConnectionResultOutput) ToLookupEc2VpcPeeringConnecti
 
 func (o LookupEc2VpcPeeringConnectionResultOutput) ToLookupEc2VpcPeeringConnectionResultOutputWithContext(ctx context.Context) LookupEc2VpcPeeringConnectionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupEc2VpcPeeringConnectionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEc2VpcPeeringConnectionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

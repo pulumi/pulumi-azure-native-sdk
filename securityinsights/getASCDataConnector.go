@@ -12,7 +12,7 @@ import (
 )
 
 // Gets a data connector.
-// Azure REST API version: 2023-02-01.
+// Azure REST API version: 2024-09-01.
 func LookupASCDataConnector(ctx *pulumi.Context, args *LookupASCDataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupASCDataConnectorResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupASCDataConnectorResult
@@ -34,6 +34,8 @@ type LookupASCDataConnectorArgs struct {
 
 // Represents ASC (Azure Security Center) data connector.
 type LookupASCDataConnectorResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The available data types for the connector.
 	DataTypes *AlertsDataTypeOfDataConnectorResponse `pulumi:"dataTypes"`
 	// Etag of the azure resource
@@ -88,6 +90,11 @@ func (o LookupASCDataConnectorResultOutput) ToLookupASCDataConnectorResultOutput
 
 func (o LookupASCDataConnectorResultOutput) ToLookupASCDataConnectorResultOutputWithContext(ctx context.Context) LookupASCDataConnectorResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupASCDataConnectorResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupASCDataConnectorResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The available data types for the connector.

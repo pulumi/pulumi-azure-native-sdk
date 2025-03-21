@@ -13,12 +13,14 @@ import (
 )
 
 // Represents an instance of a Dedicated Capacity resource.
-// Azure REST API version: 2021-01-01. Prior API version in Azure Native 1.x: 2021-01-01.
+// Azure REST API version: 2021-01-01. Prior API version in Azure Native 2.x: 2021-01-01.
 type CapacityDetails struct {
 	pulumi.CustomResourceState
 
 	// A collection of Dedicated capacity administrators
 	Administration DedicatedCapacityAdministratorsResponsePtrOutput `pulumi:"administration"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Capacity name
 	FriendlyName pulumi.StringOutput `pulumi:"friendlyName"`
 	// Location of the PowerBI Dedicated resource.
@@ -176,6 +178,11 @@ func (o CapacityDetailsOutput) ToCapacityDetailsOutputWithContext(ctx context.Co
 // A collection of Dedicated capacity administrators
 func (o CapacityDetailsOutput) Administration() DedicatedCapacityAdministratorsResponsePtrOutput {
 	return o.ApplyT(func(v *CapacityDetails) DedicatedCapacityAdministratorsResponsePtrOutput { return v.Administration }).(DedicatedCapacityAdministratorsResponsePtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o CapacityDetailsOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *CapacityDetails) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Capacity name

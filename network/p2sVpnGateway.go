@@ -13,12 +13,12 @@ import (
 )
 
 // P2SVpnGateway Resource.
-// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2020-11-01.
-//
-// Other available API versions: 2019-07-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Azure REST API version: 2024-05-01. Prior API version in Azure Native 2.x: 2023-02-01.
 type P2sVpnGateway struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// List of all customer specified DNS servers IP addresses.
 	CustomDnsServers pulumi.StringArrayOutput `pulumi:"customDnsServers"`
 	// A unique read-only string that changes whenever the resource is updated.
@@ -289,6 +289,11 @@ func (o P2sVpnGatewayOutput) ToP2sVpnGatewayOutput() P2sVpnGatewayOutput {
 
 func (o P2sVpnGatewayOutput) ToP2sVpnGatewayOutputWithContext(ctx context.Context) P2sVpnGatewayOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o P2sVpnGatewayOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *P2sVpnGateway) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // List of all customer specified DNS servers IP addresses.

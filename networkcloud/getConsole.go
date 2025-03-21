@@ -12,9 +12,7 @@ import (
 )
 
 // Get properties of the provided virtual machine console.
-// Azure REST API version: 2023-10-01-preview.
-//
-// Other available API versions: 2023-07-01, 2024-06-01-preview, 2024-07-01, 2024-10-01-preview.
+// Azure REST API version: 2025-02-01.
 func LookupConsole(ctx *pulumi.Context, args *LookupConsoleArgs, opts ...pulumi.InvokeOption) (*LookupConsoleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupConsoleResult
@@ -35,12 +33,16 @@ type LookupConsoleArgs struct {
 }
 
 type LookupConsoleResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The more detailed status of the console.
 	DetailedStatus string `pulumi:"detailedStatus"`
 	// The descriptive message about the current detailed status.
 	DetailedStatusMessage string `pulumi:"detailedStatusMessage"`
 	// The indicator of whether the console access is enabled.
 	Enabled string `pulumi:"enabled"`
+	// Resource ETag.
+	Etag string `pulumi:"etag"`
 	// The date and time after which the key will be disallowed access.
 	Expiration *string `pulumi:"expiration"`
 	// The extended location of the cluster manager associated with the cluster this virtual machine is created on.
@@ -103,6 +105,11 @@ func (o LookupConsoleResultOutput) ToLookupConsoleResultOutputWithContext(ctx co
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupConsoleResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConsoleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The more detailed status of the console.
 func (o LookupConsoleResultOutput) DetailedStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConsoleResult) string { return v.DetailedStatus }).(pulumi.StringOutput)
@@ -116,6 +123,11 @@ func (o LookupConsoleResultOutput) DetailedStatusMessage() pulumi.StringOutput {
 // The indicator of whether the console access is enabled.
 func (o LookupConsoleResultOutput) Enabled() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConsoleResult) string { return v.Enabled }).(pulumi.StringOutput)
+}
+
+// Resource ETag.
+func (o LookupConsoleResultOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConsoleResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
 // The date and time after which the key will be disallowed access.

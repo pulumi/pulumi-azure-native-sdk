@@ -12,9 +12,7 @@ import (
 )
 
 // Gets an existing remediation at resource scope.
-// Azure REST API version: 2021-10-01.
-//
-// Other available API versions: 2024-10-01.
+// Azure REST API version: 2024-10-01.
 func LookupRemediationAtResource(ctx *pulumi.Context, args *LookupRemediationAtResourceArgs, opts ...pulumi.InvokeOption) (*LookupRemediationAtResourceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRemediationAtResourceResult
@@ -34,6 +32,8 @@ type LookupRemediationAtResourceArgs struct {
 
 // The remediation definition.
 type LookupRemediationAtResourceResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The remediation correlation Id. Can be used to find events related to the remediation in the activity log.
 	CorrelationId string `pulumi:"correlationId"`
 	// The time at which the remediation was created.
@@ -103,6 +103,11 @@ func (o LookupRemediationAtResourceResultOutput) ToLookupRemediationAtResourceRe
 
 func (o LookupRemediationAtResourceResultOutput) ToLookupRemediationAtResourceResultOutputWithContext(ctx context.Context) LookupRemediationAtResourceResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupRemediationAtResourceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRemediationAtResourceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The remediation correlation Id. Can be used to find events related to the remediation in the activity log.

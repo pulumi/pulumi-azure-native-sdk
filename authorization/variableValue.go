@@ -13,10 +13,12 @@ import (
 )
 
 // The variable value.
-// Azure REST API version: 2022-08-01-preview.
+// Azure REST API version: 2022-08-01-preview. Prior API version in Azure Native 2.x: 2022-08-01-preview.
 type VariableValue struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the variable.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -132,6 +134,11 @@ func (o VariableValueOutput) ToVariableValueOutput() VariableValueOutput {
 
 func (o VariableValueOutput) ToVariableValueOutputWithContext(ctx context.Context) VariableValueOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o VariableValueOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *VariableValue) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the variable.

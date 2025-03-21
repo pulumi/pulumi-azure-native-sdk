@@ -12,9 +12,7 @@ import (
 )
 
 // Gets the specified authorization from the specified express route circuit.
-// Azure REST API version: 2023-02-01.
-//
-// Other available API versions: 2019-06-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Azure REST API version: 2024-05-01.
 func LookupExpressRouteCircuitAuthorization(ctx *pulumi.Context, args *LookupExpressRouteCircuitAuthorizationArgs, opts ...pulumi.InvokeOption) (*LookupExpressRouteCircuitAuthorizationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupExpressRouteCircuitAuthorizationResult
@@ -40,6 +38,10 @@ type LookupExpressRouteCircuitAuthorizationResult struct {
 	AuthorizationKey *string `pulumi:"authorizationKey"`
 	// The authorization use status.
 	AuthorizationUseStatus *string `pulumi:"authorizationUseStatus"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// The reference to the ExpressRoute connection resource using the authorization.
+	ConnectionResourceUri string `pulumi:"connectionResourceUri"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag string `pulumi:"etag"`
 	// Resource ID.
@@ -97,6 +99,16 @@ func (o LookupExpressRouteCircuitAuthorizationResultOutput) AuthorizationKey() p
 // The authorization use status.
 func (o LookupExpressRouteCircuitAuthorizationResultOutput) AuthorizationUseStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupExpressRouteCircuitAuthorizationResult) *string { return v.AuthorizationUseStatus }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupExpressRouteCircuitAuthorizationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupExpressRouteCircuitAuthorizationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// The reference to the ExpressRoute connection resource using the authorization.
+func (o LookupExpressRouteCircuitAuthorizationResultOutput) ConnectionResourceUri() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupExpressRouteCircuitAuthorizationResult) string { return v.ConnectionResourceUri }).(pulumi.StringOutput)
 }
 
 // A unique read-only string that changes whenever the resource is updated.

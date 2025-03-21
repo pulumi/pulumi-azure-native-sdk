@@ -12,9 +12,7 @@ import (
 )
 
 // Get properties of the provided the Kubernetes cluster feature.
-// Azure REST API version: 2024-06-01-preview.
-//
-// Other available API versions: 2024-07-01, 2024-10-01-preview.
+// Azure REST API version: 2025-02-01.
 func LookupKubernetesClusterFeature(ctx *pulumi.Context, args *LookupKubernetesClusterFeatureArgs, opts ...pulumi.InvokeOption) (*LookupKubernetesClusterFeatureResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupKubernetesClusterFeatureResult
@@ -37,10 +35,14 @@ type LookupKubernetesClusterFeatureArgs struct {
 type LookupKubernetesClusterFeatureResult struct {
 	// The lifecycle indicator of the feature.
 	AvailabilityLifecycle string `pulumi:"availabilityLifecycle"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The detailed status of the feature.
 	DetailedStatus string `pulumi:"detailedStatus"`
 	// The descriptive message for the detailed status of the feature.
 	DetailedStatusMessage string `pulumi:"detailedStatusMessage"`
+	// Resource ETag.
+	Etag string `pulumi:"etag"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -104,6 +106,11 @@ func (o LookupKubernetesClusterFeatureResultOutput) AvailabilityLifecycle() pulu
 	return o.ApplyT(func(v LookupKubernetesClusterFeatureResult) string { return v.AvailabilityLifecycle }).(pulumi.StringOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupKubernetesClusterFeatureResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterFeatureResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The detailed status of the feature.
 func (o LookupKubernetesClusterFeatureResultOutput) DetailedStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKubernetesClusterFeatureResult) string { return v.DetailedStatus }).(pulumi.StringOutput)
@@ -112,6 +119,11 @@ func (o LookupKubernetesClusterFeatureResultOutput) DetailedStatus() pulumi.Stri
 // The descriptive message for the detailed status of the feature.
 func (o LookupKubernetesClusterFeatureResultOutput) DetailedStatusMessage() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKubernetesClusterFeatureResult) string { return v.DetailedStatusMessage }).(pulumi.StringOutput)
+}
+
+// Resource ETag.
+func (o LookupKubernetesClusterFeatureResultOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterFeatureResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

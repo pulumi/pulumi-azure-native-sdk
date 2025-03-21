@@ -12,9 +12,7 @@ import (
 )
 
 // Migration item.
-// Azure REST API version: 2023-04-01.
-//
-// Other available API versions: 2023-06-01, 2023-08-01, 2024-01-01, 2024-02-01, 2024-04-01, 2024-10-01.
+// Azure REST API version: 2024-10-01.
 func LookupReplicationMigrationItem(ctx *pulumi.Context, args *LookupReplicationMigrationItemArgs, opts ...pulumi.InvokeOption) (*LookupReplicationMigrationItemResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupReplicationMigrationItemResult
@@ -40,6 +38,8 @@ type LookupReplicationMigrationItemArgs struct {
 
 // Migration item.
 type LookupReplicationMigrationItemResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource Id
 	Id string `pulumi:"id"`
 	// Resource Location
@@ -91,6 +91,11 @@ func (o LookupReplicationMigrationItemResultOutput) ToLookupReplicationMigration
 
 func (o LookupReplicationMigrationItemResultOutput) ToLookupReplicationMigrationItemResultOutputWithContext(ctx context.Context) LookupReplicationMigrationItemResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupReplicationMigrationItemResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupReplicationMigrationItemResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource Id

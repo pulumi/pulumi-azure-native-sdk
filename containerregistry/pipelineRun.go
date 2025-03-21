@@ -13,12 +13,12 @@ import (
 )
 
 // An object that represents a pipeline run for a container registry.
-// Azure REST API version: 2023-01-01-preview. Prior API version in Azure Native 1.x: 2020-11-01-preview.
-//
-// Other available API versions: 2023-06-01-preview, 2023-08-01-preview, 2023-11-01-preview, 2024-11-01-preview.
+// Azure REST API version: 2024-11-01-preview. Prior API version in Azure Native 2.x: 2023-01-01-preview.
 type PipelineRun struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// How the pipeline run should be forced to recreate even if the pipeline run configuration has not changed.
 	ForceUpdateTag pulumi.StringPtrOutput `pulumi:"forceUpdateTag"`
 	// The name of the resource.
@@ -181,6 +181,11 @@ func (o PipelineRunOutput) ToPipelineRunOutput() PipelineRunOutput {
 
 func (o PipelineRunOutput) ToPipelineRunOutputWithContext(ctx context.Context) PipelineRunOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o PipelineRunOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PipelineRun) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // How the pipeline run should be forced to recreate even if the pipeline run configuration has not changed.

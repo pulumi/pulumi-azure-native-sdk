@@ -12,9 +12,7 @@ import (
 )
 
 // Get the full endpoint URL for a nested event subscription for domain topic.
-// Azure REST API version: 2022-06-15.
-//
-// Other available API versions: 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-02-15.
+// Azure REST API version: 2025-02-15.
 func GetDomainTopicEventSubscriptionFullUrl(ctx *pulumi.Context, args *GetDomainTopicEventSubscriptionFullUrlArgs, opts ...pulumi.InvokeOption) (*GetDomainTopicEventSubscriptionFullUrlResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetDomainTopicEventSubscriptionFullUrlResult
@@ -36,7 +34,7 @@ type GetDomainTopicEventSubscriptionFullUrlArgs struct {
 	TopicName string `pulumi:"topicName"`
 }
 
-// Full endpoint url of an event subscription
+// Full endpoint URL of an event subscription
 type GetDomainTopicEventSubscriptionFullUrlResult struct {
 	// The URL that represents the endpoint of the destination of an event subscription.
 	EndpointUrl *string `pulumi:"endpointUrl"`
@@ -66,7 +64,7 @@ func (GetDomainTopicEventSubscriptionFullUrlOutputArgs) ElementType() reflect.Ty
 	return reflect.TypeOf((*GetDomainTopicEventSubscriptionFullUrlArgs)(nil)).Elem()
 }
 
-// Full endpoint url of an event subscription
+// Full endpoint URL of an event subscription
 type GetDomainTopicEventSubscriptionFullUrlResultOutput struct{ *pulumi.OutputState }
 
 func (GetDomainTopicEventSubscriptionFullUrlResultOutput) ElementType() reflect.Type {

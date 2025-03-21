@@ -12,9 +12,7 @@ import (
 )
 
 // Gets the specified route from a route table.
-// Azure REST API version: 2023-02-01.
-//
-// Other available API versions: 2019-06-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Azure REST API version: 2024-05-01.
 func LookupRoute(ctx *pulumi.Context, args *LookupRouteArgs, opts ...pulumi.InvokeOption) (*LookupRouteResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRouteResult
@@ -38,6 +36,8 @@ type LookupRouteArgs struct {
 type LookupRouteResult struct {
 	// The destination CIDR to which the route applies.
 	AddressPrefix *string `pulumi:"addressPrefix"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag string `pulumi:"etag"`
 	// A value indicating whether this route overrides overlapping BGP routes regardless of LPM.
@@ -96,6 +96,11 @@ func (o LookupRouteResultOutput) ToLookupRouteResultOutputWithContext(ctx contex
 // The destination CIDR to which the route applies.
 func (o LookupRouteResultOutput) AddressPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRouteResult) *string { return v.AddressPrefix }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupRouteResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRouteResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A unique read-only string that changes whenever the resource is updated.

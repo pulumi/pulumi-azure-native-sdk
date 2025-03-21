@@ -13,20 +13,22 @@ import (
 )
 
 // Represents a Package in Azure Security Insights.
-// Azure REST API version: 2023-06-01-preview.
-//
-// Other available API versions: 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-11-01, 2023-12-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-09-01, 2024-10-01-preview, 2025-01-01-preview.
+// Azure REST API version: 2024-09-01. Prior API version in Azure Native 2.x: 2023-06-01-preview.
 type ContentPackage struct {
 	pulumi.CustomResourceState
 
 	// The author of the package
 	Author MetadataAuthorResponsePtrOutput `pulumi:"author"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The categories of the package
 	Categories MetadataCategoriesResponsePtrOutput `pulumi:"categories"`
-	// The package id
+	// The content id of the package
 	ContentId pulumi.StringOutput `pulumi:"contentId"`
 	// The package kind
 	ContentKind pulumi.StringOutput `pulumi:"contentKind"`
+	// Unique ID for the content. It should be generated based on the contentId, contentKind and the contentVersion of the package
+	ContentProductId pulumi.StringOutput `pulumi:"contentProductId"`
 	// The version of the content schema.
 	ContentSchemaVersion pulumi.StringPtrOutput `pulumi:"contentSchemaVersion"`
 	// The support tier of the package
@@ -41,6 +43,8 @@ type ContentPackage struct {
 	FirstPublishDate pulumi.StringPtrOutput `pulumi:"firstPublishDate"`
 	// the icon identifier. this id can later be fetched from the content metadata
 	Icon pulumi.StringPtrOutput `pulumi:"icon"`
+	// Flag indicates if this template is deprecated
+	IsDeprecated pulumi.StringPtrOutput `pulumi:"isDeprecated"`
 	// Flag indicates if this package is among the featured list.
 	IsFeatured pulumi.StringPtrOutput `pulumi:"isFeatured"`
 	// Flag indicates if this is a newly published package.
@@ -83,6 +87,9 @@ func NewContentPackage(ctx *pulumi.Context,
 	}
 	if args.ContentKind == nil {
 		return nil, errors.New("invalid value for required argument 'ContentKind'")
+	}
+	if args.ContentProductId == nil {
+		return nil, errors.New("invalid value for required argument 'ContentProductId'")
 	}
 	if args.DisplayName == nil {
 		return nil, errors.New("invalid value for required argument 'DisplayName'")
@@ -142,6 +149,9 @@ func NewContentPackage(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20250101preview:ContentPackage"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20250301:ContentPackage"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -181,10 +191,12 @@ type contentPackageArgs struct {
 	Author *MetadataAuthor `pulumi:"author"`
 	// The categories of the package
 	Categories *MetadataCategories `pulumi:"categories"`
-	// The package id
+	// The content id of the package
 	ContentId string `pulumi:"contentId"`
 	// The package kind
 	ContentKind string `pulumi:"contentKind"`
+	// Unique ID for the content. It should be generated based on the contentId, contentKind and the contentVersion of the package
+	ContentProductId string `pulumi:"contentProductId"`
 	// The version of the content schema.
 	ContentSchemaVersion *string `pulumi:"contentSchemaVersion"`
 	// The support tier of the package
@@ -197,6 +209,8 @@ type contentPackageArgs struct {
 	FirstPublishDate *string `pulumi:"firstPublishDate"`
 	// the icon identifier. this id can later be fetched from the content metadata
 	Icon *string `pulumi:"icon"`
+	// Flag indicates if this template is deprecated
+	IsDeprecated *string `pulumi:"isDeprecated"`
 	// Flag indicates if this package is among the featured list.
 	IsFeatured *string `pulumi:"isFeatured"`
 	// Flag indicates if this is a newly published package.
@@ -233,10 +247,12 @@ type ContentPackageArgs struct {
 	Author MetadataAuthorPtrInput
 	// The categories of the package
 	Categories MetadataCategoriesPtrInput
-	// The package id
+	// The content id of the package
 	ContentId pulumi.StringInput
 	// The package kind
 	ContentKind pulumi.StringInput
+	// Unique ID for the content. It should be generated based on the contentId, contentKind and the contentVersion of the package
+	ContentProductId pulumi.StringInput
 	// The version of the content schema.
 	ContentSchemaVersion pulumi.StringPtrInput
 	// The support tier of the package
@@ -249,6 +265,8 @@ type ContentPackageArgs struct {
 	FirstPublishDate pulumi.StringPtrInput
 	// the icon identifier. this id can later be fetched from the content metadata
 	Icon pulumi.StringPtrInput
+	// Flag indicates if this template is deprecated
+	IsDeprecated pulumi.StringPtrInput
 	// Flag indicates if this package is among the featured list.
 	IsFeatured pulumi.StringPtrInput
 	// Flag indicates if this is a newly published package.
@@ -321,12 +339,17 @@ func (o ContentPackageOutput) Author() MetadataAuthorResponsePtrOutput {
 	return o.ApplyT(func(v *ContentPackage) MetadataAuthorResponsePtrOutput { return v.Author }).(MetadataAuthorResponsePtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o ContentPackageOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ContentPackage) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The categories of the package
 func (o ContentPackageOutput) Categories() MetadataCategoriesResponsePtrOutput {
 	return o.ApplyT(func(v *ContentPackage) MetadataCategoriesResponsePtrOutput { return v.Categories }).(MetadataCategoriesResponsePtrOutput)
 }
 
-// The package id
+// The content id of the package
 func (o ContentPackageOutput) ContentId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContentPackage) pulumi.StringOutput { return v.ContentId }).(pulumi.StringOutput)
 }
@@ -334,6 +357,11 @@ func (o ContentPackageOutput) ContentId() pulumi.StringOutput {
 // The package kind
 func (o ContentPackageOutput) ContentKind() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContentPackage) pulumi.StringOutput { return v.ContentKind }).(pulumi.StringOutput)
+}
+
+// Unique ID for the content. It should be generated based on the contentId, contentKind and the contentVersion of the package
+func (o ContentPackageOutput) ContentProductId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ContentPackage) pulumi.StringOutput { return v.ContentProductId }).(pulumi.StringOutput)
 }
 
 // The version of the content schema.
@@ -369,6 +397,11 @@ func (o ContentPackageOutput) FirstPublishDate() pulumi.StringPtrOutput {
 // the icon identifier. this id can later be fetched from the content metadata
 func (o ContentPackageOutput) Icon() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContentPackage) pulumi.StringPtrOutput { return v.Icon }).(pulumi.StringPtrOutput)
+}
+
+// Flag indicates if this template is deprecated
+func (o ContentPackageOutput) IsDeprecated() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContentPackage) pulumi.StringPtrOutput { return v.IsDeprecated }).(pulumi.StringPtrOutput)
 }
 
 // Flag indicates if this package is among the featured list.

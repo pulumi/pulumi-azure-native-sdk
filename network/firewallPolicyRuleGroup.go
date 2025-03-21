@@ -13,10 +13,12 @@ import (
 )
 
 // Rule Group resource.
-// Azure REST API version: 2020-04-01. Prior API version in Azure Native 1.x: 2020-04-01.
+// Azure REST API version: 2020-04-01. Prior API version in Azure Native 2.x: 2020-04-01.
 type FirewallPolicyRuleGroup struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The name of the resource that is unique within a resource group. This name can be used to access the resource.
@@ -173,6 +175,11 @@ func (o FirewallPolicyRuleGroupOutput) ToFirewallPolicyRuleGroupOutput() Firewal
 
 func (o FirewallPolicyRuleGroupOutput) ToFirewallPolicyRuleGroupOutputWithContext(ctx context.Context) FirewallPolicyRuleGroupOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o FirewallPolicyRuleGroupOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *FirewallPolicyRuleGroup) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A unique read-only string that changes whenever the resource is updated.

@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-azure-native-sdk/logic/v2
+module github.com/pulumi/pulumi-azure-native-sdk/logic/v3
 
 go 1.22
 

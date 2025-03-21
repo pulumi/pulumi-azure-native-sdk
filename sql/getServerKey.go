@@ -13,8 +13,6 @@ import (
 
 // Gets a server key.
 // Azure REST API version: 2021-11-01.
-//
-// Other available API versions: 2015-05-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
 func LookupServerKey(ctx *pulumi.Context, args *LookupServerKeyArgs, opts ...pulumi.InvokeOption) (*LookupServerKeyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupServerKeyResult
@@ -38,6 +36,8 @@ type LookupServerKeyArgs struct {
 type LookupServerKeyResult struct {
 	// Key auto rotation opt-in flag. Either true or false.
 	AutoRotationEnabled bool `pulumi:"autoRotationEnabled"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The server key creation date.
 	CreationDate string `pulumi:"creationDate"`
 	// Resource ID.
@@ -96,6 +96,11 @@ func (o LookupServerKeyResultOutput) ToLookupServerKeyResultOutputWithContext(ct
 // Key auto rotation opt-in flag. Either true or false.
 func (o LookupServerKeyResultOutput) AutoRotationEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupServerKeyResult) bool { return v.AutoRotationEnabled }).(pulumi.BoolOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupServerKeyResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServerKeyResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The server key creation date.

@@ -13,8 +13,6 @@ import (
 
 // Get installed Solution details by Solution id.
 // Azure REST API version: 2023-06-01-preview.
-//
-// Other available API versions: 2021-09-01-preview.
 func LookupSolution(ctx *pulumi.Context, args *LookupSolutionArgs, opts ...pulumi.InvokeOption) (*LookupSolutionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSolutionResult
@@ -36,6 +34,8 @@ type LookupSolutionArgs struct {
 
 // Solution resource.
 type LookupSolutionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The ETag value to implement optimistic concurrency.
 	ETag string `pulumi:"eTag"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -85,6 +85,11 @@ func (o LookupSolutionResultOutput) ToLookupSolutionResultOutput() LookupSolutio
 
 func (o LookupSolutionResultOutput) ToLookupSolutionResultOutputWithContext(ctx context.Context) LookupSolutionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupSolutionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSolutionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The ETag value to implement optimistic concurrency.

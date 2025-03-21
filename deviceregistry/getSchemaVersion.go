@@ -36,6 +36,8 @@ type LookupSchemaVersionArgs struct {
 
 // Schema version's definition.
 type LookupSchemaVersionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Human-readable description of the schema.
 	Description *string `pulumi:"description"`
 	// Hash of the schema content.
@@ -93,6 +95,11 @@ func (o LookupSchemaVersionResultOutput) ToLookupSchemaVersionResultOutput() Loo
 
 func (o LookupSchemaVersionResultOutput) ToLookupSchemaVersionResultOutputWithContext(ctx context.Context) LookupSchemaVersionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupSchemaVersionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSchemaVersionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Human-readable description of the schema.

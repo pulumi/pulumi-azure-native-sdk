@@ -13,15 +13,17 @@ import (
 )
 
 // ObjectAnchorsAccount Response.
-// Azure REST API version: 2021-03-01-preview. Prior API version in Azure Native 1.x: 2021-03-01-preview.
+// Azure REST API version: 2021-03-01-preview. Prior API version in Azure Native 2.x: 2021-03-01-preview.
 type ObjectAnchorsAccount struct {
 	pulumi.CustomResourceState
 
 	// Correspond domain name of certain Spatial Anchors Account
 	AccountDomain pulumi.StringOutput `pulumi:"accountDomain"`
 	// unique id of certain account.
-	AccountId pulumi.StringOutput                           `pulumi:"accountId"`
-	Identity  ObjectAnchorsAccountResponseIdentityPtrOutput `pulumi:"identity"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput                           `pulumi:"azureApiVersion"`
+	Identity        ObjectAnchorsAccountResponseIdentityPtrOutput `pulumi:"identity"`
 	// The kind of account, if supported
 	Kind SkuResponsePtrOutput `pulumi:"kind"`
 	// The geo-location where the resource lives
@@ -176,6 +178,11 @@ func (o ObjectAnchorsAccountOutput) AccountDomain() pulumi.StringOutput {
 // unique id of certain account.
 func (o ObjectAnchorsAccountOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ObjectAnchorsAccount) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o ObjectAnchorsAccountOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ObjectAnchorsAccount) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 func (o ObjectAnchorsAccountOutput) Identity() ObjectAnchorsAccountResponseIdentityPtrOutput {

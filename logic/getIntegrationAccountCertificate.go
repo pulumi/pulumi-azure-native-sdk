@@ -13,8 +13,6 @@ import (
 
 // Gets an integration account certificate.
 // Azure REST API version: 2019-05-01.
-//
-// Other available API versions: 2015-08-01-preview.
 func LookupIntegrationAccountCertificate(ctx *pulumi.Context, args *LookupIntegrationAccountCertificateArgs, opts ...pulumi.InvokeOption) (*LookupIntegrationAccountCertificateResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIntegrationAccountCertificateResult
@@ -36,6 +34,8 @@ type LookupIntegrationAccountCertificateArgs struct {
 
 // The integration account certificate.
 type LookupIntegrationAccountCertificateResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The changed time.
 	ChangedTime string `pulumi:"changedTime"`
 	// The created time.
@@ -93,6 +93,11 @@ func (o LookupIntegrationAccountCertificateResultOutput) ToLookupIntegrationAcco
 
 func (o LookupIntegrationAccountCertificateResultOutput) ToLookupIntegrationAccountCertificateResultOutputWithContext(ctx context.Context) LookupIntegrationAccountCertificateResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupIntegrationAccountCertificateResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIntegrationAccountCertificateResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The changed time.

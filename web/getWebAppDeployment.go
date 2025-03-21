@@ -12,9 +12,7 @@ import (
 )
 
 // Description for Get a deployment by its ID for an app, or a deployment slot.
-// Azure REST API version: 2022-09-01.
-//
-// Other available API versions: 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
+// Azure REST API version: 2024-04-01.
 func LookupWebAppDeployment(ctx *pulumi.Context, args *LookupWebAppDeploymentArgs, opts ...pulumi.InvokeOption) (*LookupWebAppDeploymentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebAppDeploymentResult
@@ -42,6 +40,8 @@ type LookupWebAppDeploymentResult struct {
 	Author *string `pulumi:"author"`
 	// Author email.
 	AuthorEmail *string `pulumi:"authorEmail"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Who performed the deployment.
 	Deployer *string `pulumi:"deployer"`
 	// Details on deployment.
@@ -114,6 +114,11 @@ func (o LookupWebAppDeploymentResultOutput) Author() pulumi.StringPtrOutput {
 // Author email.
 func (o LookupWebAppDeploymentResultOutput) AuthorEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppDeploymentResult) *string { return v.AuthorEmail }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupWebAppDeploymentResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWebAppDeploymentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Who performed the deployment.

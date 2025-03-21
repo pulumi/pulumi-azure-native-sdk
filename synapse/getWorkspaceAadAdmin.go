@@ -13,8 +13,6 @@ import (
 
 // Gets a workspace active directory admin
 // Azure REST API version: 2021-06-01.
-//
-// Other available API versions: 2021-06-01-preview.
 func LookupWorkspaceAadAdmin(ctx *pulumi.Context, args *LookupWorkspaceAadAdminArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceAadAdminResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkspaceAadAdminResult
@@ -36,6 +34,8 @@ type LookupWorkspaceAadAdminArgs struct {
 type LookupWorkspaceAadAdminResult struct {
 	// Workspace active directory administrator type
 	AdministratorType *string `pulumi:"administratorType"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// Login of the workspace active directory administrator
@@ -88,6 +88,11 @@ func (o LookupWorkspaceAadAdminResultOutput) ToLookupWorkspaceAadAdminResultOutp
 // Workspace active directory administrator type
 func (o LookupWorkspaceAadAdminResultOutput) AdministratorType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkspaceAadAdminResult) *string { return v.AdministratorType }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupWorkspaceAadAdminResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkspaceAadAdminResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

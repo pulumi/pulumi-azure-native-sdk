@@ -13,8 +13,6 @@ import (
 
 // Gets a managed instance.
 // Azure REST API version: 2021-11-01.
-//
-// Other available API versions: 2021-02-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
 func LookupManagedInstance(ctx *pulumi.Context, args *LookupManagedInstanceArgs, opts ...pulumi.InvokeOption) (*LookupManagedInstanceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupManagedInstanceResult
@@ -40,6 +38,8 @@ type LookupManagedInstanceResult struct {
 	AdministratorLogin *string `pulumi:"administratorLogin"`
 	// The Azure Active Directory administrator of the server.
 	Administrators *ManagedInstanceExternalAdministratorResponse `pulumi:"administrators"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Collation of the managed instance.
 	Collation *string `pulumi:"collation"`
 	// The storage account type used to store backups for this instance. The options are Local (LocallyRedundantStorage), Zone (ZoneRedundantStorage), Geo (GeoRedundantStorage) and GeoZone(GeoZoneRedundantStorage)
@@ -151,6 +151,11 @@ func (o LookupManagedInstanceResultOutput) Administrators() ManagedInstanceExter
 	return o.ApplyT(func(v LookupManagedInstanceResult) *ManagedInstanceExternalAdministratorResponse {
 		return v.Administrators
 	}).(ManagedInstanceExternalAdministratorResponsePtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupManagedInstanceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupManagedInstanceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Collation of the managed instance.

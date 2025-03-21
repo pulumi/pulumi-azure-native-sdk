@@ -36,6 +36,8 @@ type LookupWorkloadInstanceArgs struct {
 
 // Workload instance model.
 type LookupWorkloadInstanceResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets or sets the Id of the resource.
 	Id string `pulumi:"id"`
 	// Gets or sets the name of the resource.
@@ -86,6 +88,11 @@ func (o LookupWorkloadInstanceResultOutput) ToLookupWorkloadInstanceResultOutput
 
 func (o LookupWorkloadInstanceResultOutput) ToLookupWorkloadInstanceResultOutputWithContext(ctx context.Context) LookupWorkloadInstanceResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupWorkloadInstanceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkloadInstanceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets the Id of the resource.

@@ -30,6 +30,8 @@ type LookupVariableArgs struct {
 
 // The variable.
 type LookupVariableResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Variable column definitions.
 	Columns []PolicyVariableColumnResponse `pulumi:"columns"`
 	// The ID of the variable.
@@ -73,6 +75,11 @@ func (o LookupVariableResultOutput) ToLookupVariableResultOutput() LookupVariabl
 
 func (o LookupVariableResultOutput) ToLookupVariableResultOutputWithContext(ctx context.Context) LookupVariableResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupVariableResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVariableResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Variable column definitions.

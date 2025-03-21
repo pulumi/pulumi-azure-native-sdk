@@ -13,12 +13,12 @@ import (
 )
 
 // FirewallPolicy Resource.
-// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2020-11-01.
-//
-// Other available API versions: 2020-04-01, 2021-08-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Azure REST API version: 2024-05-01. Prior API version in Azure Native 2.x: 2023-02-01.
 type FirewallPolicy struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The parent firewall policy from which rules are inherited.
 	BasePolicy SubResourceResponsePtrOutput `pulumi:"basePolicy"`
 	// List of references to Child Firewall Policies.
@@ -45,6 +45,8 @@ type FirewallPolicy struct {
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// List of references to FirewallPolicyRuleCollectionGroups.
 	RuleCollectionGroups SubResourceResponseArrayOutput `pulumi:"ruleCollectionGroups"`
+	// A read-only string that represents the size of the FirewallPolicyPropertiesFormat in MB. (ex 0.5MB)
+	Size pulumi.StringOutput `pulumi:"size"`
 	// The Firewall Policy SKU.
 	Sku FirewallPolicySkuResponsePtrOutput `pulumi:"sku"`
 	// The private IP addresses/IP ranges to which traffic will not be SNAT.
@@ -313,6 +315,11 @@ func (o FirewallPolicyOutput) ToFirewallPolicyOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The Azure API version of the resource.
+func (o FirewallPolicyOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *FirewallPolicy) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The parent firewall policy from which rules are inherited.
 func (o FirewallPolicyOutput) BasePolicy() SubResourceResponsePtrOutput {
 	return o.ApplyT(func(v *FirewallPolicy) SubResourceResponsePtrOutput { return v.BasePolicy }).(SubResourceResponsePtrOutput)
@@ -376,6 +383,11 @@ func (o FirewallPolicyOutput) ProvisioningState() pulumi.StringOutput {
 // List of references to FirewallPolicyRuleCollectionGroups.
 func (o FirewallPolicyOutput) RuleCollectionGroups() SubResourceResponseArrayOutput {
 	return o.ApplyT(func(v *FirewallPolicy) SubResourceResponseArrayOutput { return v.RuleCollectionGroups }).(SubResourceResponseArrayOutput)
+}
+
+// A read-only string that represents the size of the FirewallPolicyPropertiesFormat in MB. (ex 0.5MB)
+func (o FirewallPolicyOutput) Size() pulumi.StringOutput {
+	return o.ApplyT(func(v *FirewallPolicy) pulumi.StringOutput { return v.Size }).(pulumi.StringOutput)
 }
 
 // The Firewall Policy SKU.

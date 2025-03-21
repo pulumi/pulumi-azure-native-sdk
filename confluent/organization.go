@@ -13,12 +13,12 @@ import (
 )
 
 // Organization resource.
-// Azure REST API version: 2021-12-01. Prior API version in Azure Native 1.x: 2020-03-01.
-//
-// Other available API versions: 2020-03-01-preview, 2023-08-22, 2024-02-13, 2024-07-01.
+// Azure REST API version: 2024-07-01. Prior API version in Azure Native 2.x: 2021-12-01.
 type Organization struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The creation time of the resource.
 	CreatedTime pulumi.StringOutput `pulumi:"createdTime"`
 	// Location of Organization resource
@@ -119,6 +119,8 @@ func (OrganizationState) ElementType() reflect.Type {
 }
 
 type organizationArgs struct {
+	// Link an existing Confluent organization
+	LinkOrganization *LinkOrganization `pulumi:"linkOrganization"`
 	// Location of Organization resource
 	Location *string `pulumi:"location"`
 	// Confluent offer detail
@@ -135,6 +137,8 @@ type organizationArgs struct {
 
 // The set of arguments for constructing a Organization resource.
 type OrganizationArgs struct {
+	// Link an existing Confluent organization
+	LinkOrganization LinkOrganizationPtrInput
 	// Location of Organization resource
 	Location pulumi.StringPtrInput
 	// Confluent offer detail
@@ -184,6 +188,11 @@ func (o OrganizationOutput) ToOrganizationOutput() OrganizationOutput {
 
 func (o OrganizationOutput) ToOrganizationOutputWithContext(ctx context.Context) OrganizationOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o OrganizationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Organization) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The creation time of the resource.

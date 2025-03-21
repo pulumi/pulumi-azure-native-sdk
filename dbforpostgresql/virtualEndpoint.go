@@ -13,12 +13,12 @@ import (
 )
 
 // Represents a virtual endpoint for a server.
-// Azure REST API version: 2023-06-01-preview.
-//
-// Other available API versions: 2023-12-01-preview, 2024-03-01-preview, 2024-08-01, 2024-11-01-preview.
+// Azure REST API version: 2024-08-01. Prior API version in Azure Native 2.x: 2023-06-01-preview.
 type VirtualEndpoint struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The endpoint type for the virtual endpoint.
 	EndpointType pulumi.StringPtrOutput `pulumi:"endpointType"`
 	// List of members for a virtual endpoint
@@ -158,6 +158,11 @@ func (o VirtualEndpointOutput) ToVirtualEndpointOutput() VirtualEndpointOutput {
 
 func (o VirtualEndpointOutput) ToVirtualEndpointOutputWithContext(ctx context.Context) VirtualEndpointOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o VirtualEndpointOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *VirtualEndpoint) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The endpoint type for the virtual endpoint.

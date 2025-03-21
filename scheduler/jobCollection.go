@@ -12,10 +12,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Azure REST API version: 2016-03-01. Prior API version in Azure Native 1.x: 2016-03-01.
+// Azure REST API version: 2016-03-01. Prior API version in Azure Native 2.x: 2016-03-01.
 type JobCollection struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets or sets the storage account location.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// Gets or sets the job collection resource name.
@@ -148,6 +150,11 @@ func (o JobCollectionOutput) ToJobCollectionOutput() JobCollectionOutput {
 
 func (o JobCollectionOutput) ToJobCollectionOutputWithContext(ctx context.Context) JobCollectionOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o JobCollectionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *JobCollection) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets the storage account location.

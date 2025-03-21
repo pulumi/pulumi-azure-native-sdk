@@ -13,12 +13,12 @@ import (
 )
 
 // Policy Contract details.
-// Azure REST API version: 2022-09-01-preview.
-//
-// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
+// Azure REST API version: 2022-09-01-preview. Prior API version in Azure Native 2.x: 2022-09-01-preview.
 type WorkspaceApiOperationPolicy struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Format of the policyContent.
 	Format pulumi.StringPtrOutput `pulumi:"format"`
 	// The name of the resource
@@ -184,6 +184,11 @@ func (o WorkspaceApiOperationPolicyOutput) ToWorkspaceApiOperationPolicyOutput()
 
 func (o WorkspaceApiOperationPolicyOutput) ToWorkspaceApiOperationPolicyOutputWithContext(ctx context.Context) WorkspaceApiOperationPolicyOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o WorkspaceApiOperationPolicyOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkspaceApiOperationPolicy) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Format of the policyContent.

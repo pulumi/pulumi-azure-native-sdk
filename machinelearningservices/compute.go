@@ -13,12 +13,12 @@ import (
 )
 
 // Machine Learning compute object wrapped into ARM resource envelope.
-// Azure REST API version: 2023-04-01.
-//
-// Other available API versions: 2022-01-01-preview, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-04-01-preview, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview.
+// Azure REST API version: 2024-10-01. Prior API version in Azure Native 2.x: 2023-04-01.
 type Compute struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The identity of the resource.
 	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// Specifies the location of the resource.
@@ -103,6 +103,9 @@ func NewCompute(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:machinelearningservices/v20210401:Compute"),
 		},
 		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20210401:MachineLearningCompute"),
+		},
+		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20210701:Compute"),
 		},
 		{
@@ -161,6 +164,9 @@ func NewCompute(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001preview:Compute"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250101preview:Compute"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -270,6 +276,11 @@ func (o ComputeOutput) ToComputeOutput() ComputeOutput {
 
 func (o ComputeOutput) ToComputeOutputWithContext(ctx context.Context) ComputeOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ComputeOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Compute) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The identity of the resource.

@@ -13,14 +13,14 @@ import (
 )
 
 // A server key.
-// Azure REST API version: 2021-11-01. Prior API version in Azure Native 1.x: 2020-11-01-preview.
-//
-// Other available API versions: 2015-05-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
+// Azure REST API version: 2021-11-01. Prior API version in Azure Native 2.x: 2021-11-01.
 type ServerKey struct {
 	pulumi.CustomResourceState
 
 	// Key auto rotation opt-in flag. Either true or false.
 	AutoRotationEnabled pulumi.BoolOutput `pulumi:"autoRotationEnabled"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The server key creation date.
 	CreationDate pulumi.StringOutput `pulumi:"creationDate"`
 	// Kind of encryption protector. This is metadata used for the Azure portal experience.
@@ -206,6 +206,11 @@ func (o ServerKeyOutput) ToServerKeyOutputWithContext(ctx context.Context) Serve
 // Key auto rotation opt-in flag. Either true or false.
 func (o ServerKeyOutput) AutoRotationEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ServerKey) pulumi.BoolOutput { return v.AutoRotationEnabled }).(pulumi.BoolOutput)
+}
+
+// The Azure API version of the resource.
+func (o ServerKeyOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerKey) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The server key creation date.

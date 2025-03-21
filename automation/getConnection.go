@@ -12,9 +12,7 @@ import (
 )
 
 // Retrieve the connection identified by connection name.
-// Azure REST API version: 2022-08-08.
-//
-// Other available API versions: 2023-05-15-preview, 2023-11-01, 2024-10-23.
+// Azure REST API version: 2023-11-01.
 func LookupConnection(ctx *pulumi.Context, args *LookupConnectionArgs, opts ...pulumi.InvokeOption) (*LookupConnectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupConnectionResult
@@ -36,6 +34,8 @@ type LookupConnectionArgs struct {
 
 // Definition of the connection.
 type LookupConnectionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets or sets the connectionType of the connection.
 	ConnectionType *ConnectionTypeAssociationPropertyResponse `pulumi:"connectionType"`
 	// Gets the creation time.
@@ -89,6 +89,11 @@ func (o LookupConnectionResultOutput) ToLookupConnectionResultOutput() LookupCon
 
 func (o LookupConnectionResultOutput) ToLookupConnectionResultOutputWithContext(ctx context.Context) LookupConnectionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupConnectionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets the connectionType of the connection.

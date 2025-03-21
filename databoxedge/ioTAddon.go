@@ -13,10 +13,12 @@ import (
 )
 
 // IoT Addon.
-// Azure REST API version: 2022-03-01. Prior API version in Azure Native 1.x: 2020-12-01.
+// Azure REST API version: 2023-07-01. Prior API version in Azure Native 2.x: 2022-03-01.
 type IoTAddon struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Host OS supported by the IoT addon.
 	HostPlatform pulumi.StringOutput `pulumi:"hostPlatform"`
 	// Platform where the runtime is hosted.
@@ -98,13 +100,25 @@ func NewIoTAddon(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:databoxedge/v20221201preview:IoTAddon"),
 		},
 		{
+			Type: pulumi.String("azure-native:databoxedge/v20230101preview:ArcAddon"),
+		},
+		{
 			Type: pulumi.String("azure-native:databoxedge/v20230101preview:IoTAddon"),
+		},
+		{
+			Type: pulumi.String("azure-native:databoxedge/v20230701:ArcAddon"),
 		},
 		{
 			Type: pulumi.String("azure-native:databoxedge/v20230701:IoTAddon"),
 		},
 		{
+			Type: pulumi.String("azure-native:databoxedge/v20231201:ArcAddon"),
+		},
+		{
 			Type: pulumi.String("azure-native:databoxedge/v20231201:IoTAddon"),
+		},
+		{
+			Type: pulumi.String("azure-native:databoxedge:ArcAddon"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -212,6 +226,11 @@ func (o IoTAddonOutput) ToIoTAddonOutput() IoTAddonOutput {
 
 func (o IoTAddonOutput) ToIoTAddonOutputWithContext(ctx context.Context) IoTAddonOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o IoTAddonOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *IoTAddon) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Host OS supported by the IoT addon.

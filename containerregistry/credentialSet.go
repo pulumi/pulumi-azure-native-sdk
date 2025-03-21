@@ -13,15 +13,15 @@ import (
 )
 
 // An object that represents a credential set resource for a container registry.
-// Azure REST API version: 2023-01-01-preview.
-//
-// Other available API versions: 2023-06-01-preview, 2023-07-01, 2023-08-01-preview, 2023-11-01-preview, 2024-11-01-preview.
+// Azure REST API version: 2023-01-01-preview. Prior API version in Azure Native 2.x: 2023-01-01-preview.
 type CredentialSet struct {
 	pulumi.CustomResourceState
 
 	// List of authentication credentials stored for an upstream.
 	// Usually consists of a primary and an optional secondary credential.
 	AuthCredentials AuthCredentialResponseArrayOutput `pulumi:"authCredentials"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The creation date of credential store resource.
 	CreationDate pulumi.StringOutput `pulumi:"creationDate"`
 	// Identities associated with the resource. This is used to access the KeyVault secrets.
@@ -178,6 +178,11 @@ func (o CredentialSetOutput) ToCredentialSetOutputWithContext(ctx context.Contex
 // Usually consists of a primary and an optional secondary credential.
 func (o CredentialSetOutput) AuthCredentials() AuthCredentialResponseArrayOutput {
 	return o.ApplyT(func(v *CredentialSet) AuthCredentialResponseArrayOutput { return v.AuthCredentials }).(AuthCredentialResponseArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o CredentialSetOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *CredentialSet) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The creation date of credential store resource.

@@ -12,9 +12,7 @@ import (
 )
 
 // Gets the details of the Schema specified by its identifier.
-// Azure REST API version: 2022-08-01.
-//
-// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
+// Azure REST API version: 2022-09-01-preview.
 func LookupGlobalSchema(ctx *pulumi.Context, args *LookupGlobalSchemaArgs, opts ...pulumi.InvokeOption) (*LookupGlobalSchemaResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGlobalSchemaResult
@@ -36,6 +34,8 @@ type LookupGlobalSchemaArgs struct {
 
 // Global Schema Contract details.
 type LookupGlobalSchemaResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Free-form schema entity description.
 	Description *string `pulumi:"description"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -85,6 +85,11 @@ func (o LookupGlobalSchemaResultOutput) ToLookupGlobalSchemaResultOutput() Looku
 
 func (o LookupGlobalSchemaResultOutput) ToLookupGlobalSchemaResultOutputWithContext(ctx context.Context) LookupGlobalSchemaResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupGlobalSchemaResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGlobalSchemaResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Free-form schema entity description.

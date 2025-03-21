@@ -11,9 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Azure REST API version: 2022-04-01-preview.
-//
-// Other available API versions: 2023-11-01-preview.
+// Azure REST API version: 2023-11-01-preview.
 func GetBillingHubServiceFreeHourBalance(ctx *pulumi.Context, args *GetBillingHubServiceFreeHourBalanceArgs, opts ...pulumi.InvokeOption) (*GetBillingHubServiceFreeHourBalanceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetBillingHubServiceFreeHourBalanceResult
@@ -25,7 +23,7 @@ func GetBillingHubServiceFreeHourBalance(ctx *pulumi.Context, args *GetBillingHu
 }
 
 type GetBillingHubServiceFreeHourBalanceArgs struct {
-	// The name of the resource group that contains the resource.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The resource name of the Test Base Account.
 	TestBaseAccountName string `pulumi:"testBaseAccountName"`
@@ -46,7 +44,7 @@ func GetBillingHubServiceFreeHourBalanceOutput(ctx *pulumi.Context, args GetBill
 }
 
 type GetBillingHubServiceFreeHourBalanceOutputArgs struct {
-	// The name of the resource group that contains the resource.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The resource name of the Test Base Account.
 	TestBaseAccountName pulumi.StringInput `pulumi:"testBaseAccountName"`

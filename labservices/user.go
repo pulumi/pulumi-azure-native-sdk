@@ -13,14 +13,14 @@ import (
 )
 
 // User of a lab that can register for and use virtual machines within the lab.
-// Azure REST API version: 2022-08-01. Prior API version in Azure Native 1.x: 2018-10-15.
-//
-// Other available API versions: 2018-10-15, 2023-06-07.
+// Azure REST API version: 2023-06-07. Prior API version in Azure Native 2.x: 2022-08-01.
 type User struct {
 	pulumi.CustomResourceState
 
 	// The amount of usage quota time the user gets in addition to the lab usage quota.
 	AdditionalUsageQuota pulumi.StringPtrOutput `pulumi:"additionalUsageQuota"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Display name of the user, for example user's full name.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Email address of the user.
@@ -35,6 +35,8 @@ type User struct {
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// State of the user's registration within the lab.
 	RegistrationState pulumi.StringOutput `pulumi:"registrationState"`
+	// Error details of last operation done on lab plan.
+	ResourceOperationError ResourceOperationErrorResponseOutput `pulumi:"resourceOperationError"`
 	// Metadata pertaining to creation and last modification of the user resource.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// How long the user has used their virtual machines in this lab.
@@ -60,6 +62,9 @@ func NewUser(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:labservices/v20181015:User"),
+		},
 		{
 			Type: pulumi.String("azure-native:labservices/v20211001preview:User"),
 		},
@@ -175,6 +180,11 @@ func (o UserOutput) AdditionalUsageQuota() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.AdditionalUsageQuota }).(pulumi.StringPtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o UserOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Display name of the user, for example user's full name.
 func (o UserOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
@@ -208,6 +218,11 @@ func (o UserOutput) ProvisioningState() pulumi.StringOutput {
 // State of the user's registration within the lab.
 func (o UserOutput) RegistrationState() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.RegistrationState }).(pulumi.StringOutput)
+}
+
+// Error details of last operation done on lab plan.
+func (o UserOutput) ResourceOperationError() ResourceOperationErrorResponseOutput {
+	return o.ApplyT(func(v *User) ResourceOperationErrorResponseOutput { return v.ResourceOperationError }).(ResourceOperationErrorResponseOutput)
 }
 
 // Metadata pertaining to creation and last modification of the user resource.

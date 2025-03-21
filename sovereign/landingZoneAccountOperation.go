@@ -13,10 +13,12 @@ import (
 )
 
 // The Landing zone account resource type. A Landing zone account is the container for configuring, deploying and managing multiple landing zones.
-// Azure REST API version: 2025-02-27-preview.
+// Azure REST API version: 2025-02-27-preview. Prior API version in Azure Native 2.x: 2025-02-27-preview.
 type LandingZoneAccountOperation struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The managed service identities assigned to this resource.
 	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
@@ -147,6 +149,11 @@ func (o LandingZoneAccountOperationOutput) ToLandingZoneAccountOperationOutput()
 
 func (o LandingZoneAccountOperationOutput) ToLandingZoneAccountOperationOutputWithContext(ctx context.Context) LandingZoneAccountOperationOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LandingZoneAccountOperationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *LandingZoneAccountOperation) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The managed service identities assigned to this resource.

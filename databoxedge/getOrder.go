@@ -12,9 +12,7 @@ import (
 )
 
 // The order details.
-// Azure REST API version: 2022-03-01.
-//
-// Other available API versions: 2022-04-01-preview, 2023-01-01-preview, 2023-07-01, 2023-12-01.
+// Azure REST API version: 2023-07-01.
 func LookupOrder(ctx *pulumi.Context, args *LookupOrderArgs, opts ...pulumi.InvokeOption) (*LookupOrderResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupOrderResult
@@ -34,6 +32,8 @@ type LookupOrderArgs struct {
 
 // The order details.
 type LookupOrderResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The contact details.
 	ContactInformation ContactDetailsResponse `pulumi:"contactInformation"`
 	// Current status of the order.
@@ -97,6 +97,11 @@ func (o LookupOrderResultOutput) ToLookupOrderResultOutput() LookupOrderResultOu
 
 func (o LookupOrderResultOutput) ToLookupOrderResultOutputWithContext(ctx context.Context) LookupOrderResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupOrderResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOrderResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The contact details.

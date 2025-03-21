@@ -13,12 +13,12 @@ import (
 )
 
 // Private endpoint connection resource.
-// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2019-09-01.
-//
-// Other available API versions: 2023-07-01, 2024-04-01-preview, 2024-11-01, 2024-12-01-preview.
+// Azure REST API version: 2024-11-01. Prior API version in Azure Native 2.x: 2023-02-01.
 type PrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Modified whenever there is a change in the state of private endpoint connection.
 	Etag pulumi.StringPtrOutput `pulumi:"etag"`
 	// Azure location of the key vault resource.
@@ -188,6 +188,11 @@ func (o PrivateEndpointConnectionOutput) ToPrivateEndpointConnectionOutput() Pri
 
 func (o PrivateEndpointConnectionOutput) ToPrivateEndpointConnectionOutputWithContext(ctx context.Context) PrivateEndpointConnectionOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o PrivateEndpointConnectionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrivateEndpointConnection) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Modified whenever there is a change in the state of private endpoint connection.

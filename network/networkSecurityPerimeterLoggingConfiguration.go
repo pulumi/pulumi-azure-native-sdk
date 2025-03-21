@@ -13,10 +13,12 @@ import (
 )
 
 // The NSP logging configuration
-// Azure REST API version: 2024-06-01-preview.
+// Azure REST API version: 2024-06-01-preview. Prior API version in Azure Native 2.x: 2024-06-01-preview.
 type NetworkSecurityPerimeterLoggingConfiguration struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Resource name.
@@ -136,6 +138,11 @@ func (o NetworkSecurityPerimeterLoggingConfigurationOutput) ToNetworkSecurityPer
 
 func (o NetworkSecurityPerimeterLoggingConfigurationOutput) ToNetworkSecurityPerimeterLoggingConfigurationOutputWithContext(ctx context.Context) NetworkSecurityPerimeterLoggingConfigurationOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o NetworkSecurityPerimeterLoggingConfigurationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkSecurityPerimeterLoggingConfiguration) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A unique read-only string that changes whenever the resource is updated.

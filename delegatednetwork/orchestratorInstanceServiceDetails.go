@@ -13,14 +13,14 @@ import (
 )
 
 // Represents an instance of a orchestrator.
-// Azure REST API version: 2021-03-15. Prior API version in Azure Native 1.x: 2021-03-15.
-//
-// Other available API versions: 2023-05-18-preview, 2023-06-27-preview.
+// Azure REST API version: 2023-06-27-preview. Prior API version in Azure Native 2.x: 2021-03-15.
 type OrchestratorInstanceServiceDetails struct {
 	pulumi.CustomResourceState
 
 	// K8s APIServer url. Either one of apiServerEndpoint or privateLinkResourceId can be specified
 	ApiServerEndpoint pulumi.StringPtrOutput `pulumi:"apiServerEndpoint"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// RootCA certificate of kubernetes cluster base64 encoded
 	ClusterRootCA pulumi.StringPtrOutput `pulumi:"clusterRootCA"`
 	// Properties of the controller.
@@ -207,6 +207,11 @@ func (o OrchestratorInstanceServiceDetailsOutput) ToOrchestratorInstanceServiceD
 // K8s APIServer url. Either one of apiServerEndpoint or privateLinkResourceId can be specified
 func (o OrchestratorInstanceServiceDetailsOutput) ApiServerEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OrchestratorInstanceServiceDetails) pulumi.StringPtrOutput { return v.ApiServerEndpoint }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o OrchestratorInstanceServiceDetailsOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *OrchestratorInstanceServiceDetails) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // RootCA certificate of kubernetes cluster base64 encoded

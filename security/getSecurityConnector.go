@@ -12,9 +12,7 @@ import (
 )
 
 // Retrieves details of a specific security connector
-// Azure REST API version: 2023-03-01-preview.
-//
-// Other available API versions: 2021-07-01-preview, 2023-10-01-preview, 2024-03-01-preview, 2024-07-01-preview, 2024-08-01-preview.
+// Azure REST API version: 2024-08-01-preview.
 func LookupSecurityConnector(ctx *pulumi.Context, args *LookupSecurityConnectorArgs, opts ...pulumi.InvokeOption) (*LookupSecurityConnectorResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSecurityConnectorResult
@@ -34,6 +32,8 @@ type LookupSecurityConnectorArgs struct {
 
 // The security connector resource.
 type LookupSecurityConnectorResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The security connector environment data.
 	EnvironmentData interface{} `pulumi:"environmentData"`
 	// The multi cloud resource's cloud name.
@@ -95,6 +95,11 @@ func (o LookupSecurityConnectorResultOutput) ToLookupSecurityConnectorResultOutp
 
 func (o LookupSecurityConnectorResultOutput) ToLookupSecurityConnectorResultOutputWithContext(ctx context.Context) LookupSecurityConnectorResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupSecurityConnectorResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecurityConnectorResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The security connector environment data.

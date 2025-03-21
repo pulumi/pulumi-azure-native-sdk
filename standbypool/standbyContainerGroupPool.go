@@ -13,12 +13,12 @@ import (
 )
 
 // A StandbyContainerGroupPoolResource.
-// Azure REST API version: 2023-12-01-preview.
-//
-// Other available API versions: 2024-03-01, 2024-03-01-preview.
+// Azure REST API version: 2024-03-01. Prior API version in Azure Native 2.x: 2023-12-01-preview.
 type StandbyContainerGroupPool struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Specifies container group properties of standby container group pools.
 	ContainerGroupProperties ContainerGroupPropertiesResponseOutput `pulumi:"containerGroupProperties"`
 	// Specifies elasticity profile of standby container group pools.
@@ -62,6 +62,9 @@ func NewStandbyContainerGroupPool(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:standbypool/v20240301preview:StandbyContainerGroupPool"),
+		},
+		{
+			Type: pulumi.String("azure-native:standbypool/v20250301:StandbyContainerGroupPool"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -163,6 +166,11 @@ func (o StandbyContainerGroupPoolOutput) ToStandbyContainerGroupPoolOutput() Sta
 
 func (o StandbyContainerGroupPoolOutput) ToStandbyContainerGroupPoolOutputWithContext(ctx context.Context) StandbyContainerGroupPoolOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o StandbyContainerGroupPoolOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *StandbyContainerGroupPool) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Specifies container group properties of standby container group pools.

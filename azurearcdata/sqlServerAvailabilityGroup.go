@@ -13,12 +13,12 @@ import (
 )
 
 // Arc Sql Server Availability Group
-// Azure REST API version: 2024-01-01.
-//
-// Other available API versions: 2024-05-01-preview.
+// Azure REST API version: 2024-01-01. Prior API version in Azure Native 2.x: 2024-01-01.
 type SqlServerAvailabilityGroup struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -55,6 +55,9 @@ func NewSqlServerAvailabilityGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azurearcdata/v20240501preview:SqlServerAvailabilityGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurearcdata/v20250301preview:SqlServerAvailabilityGroup"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -156,6 +159,11 @@ func (o SqlServerAvailabilityGroupOutput) ToSqlServerAvailabilityGroupOutput() S
 
 func (o SqlServerAvailabilityGroupOutput) ToSqlServerAvailabilityGroupOutputWithContext(ctx context.Context) SqlServerAvailabilityGroupOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o SqlServerAvailabilityGroupOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SqlServerAvailabilityGroup) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The geo-location where the resource lives

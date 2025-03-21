@@ -12,9 +12,7 @@ import (
 )
 
 // Gets the specified service Endpoint Policies in a specified resource group.
-// Azure REST API version: 2023-02-01.
-//
-// Other available API versions: 2018-07-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Azure REST API version: 2024-05-01.
 func LookupServiceEndpointPolicy(ctx *pulumi.Context, args *LookupServiceEndpointPolicyArgs, opts ...pulumi.InvokeOption) (*LookupServiceEndpointPolicyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupServiceEndpointPolicyResult
@@ -36,6 +34,8 @@ type LookupServiceEndpointPolicyArgs struct {
 
 // Service End point policy resource.
 type LookupServiceEndpointPolicyResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// A collection of contextual service endpoint policy.
 	ContextualServiceEndpointPolicies []string `pulumi:"contextualServiceEndpointPolicies"`
 	// A unique read-only string that changes whenever the resource is updated.
@@ -99,6 +99,11 @@ func (o LookupServiceEndpointPolicyResultOutput) ToLookupServiceEndpointPolicyRe
 
 func (o LookupServiceEndpointPolicyResultOutput) ToLookupServiceEndpointPolicyResultOutputWithContext(ctx context.Context) LookupServiceEndpointPolicyResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupServiceEndpointPolicyResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceEndpointPolicyResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A collection of contextual service endpoint policy.

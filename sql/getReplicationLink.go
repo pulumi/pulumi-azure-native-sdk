@@ -12,9 +12,7 @@ import (
 )
 
 // Gets a replication link.
-// Azure REST API version: 2023-05-01-preview.
-//
-// Other available API versions: 2023-08-01-preview, 2024-05-01-preview.
+// Azure REST API version: 2024-05-01-preview.
 func LookupReplicationLink(ctx *pulumi.Context, args *LookupReplicationLinkArgs, opts ...pulumi.InvokeOption) (*LookupReplicationLinkResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupReplicationLinkResult
@@ -38,6 +36,8 @@ type LookupReplicationLinkArgs struct {
 
 // A replication link.
 type LookupReplicationLinkResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource ID.
 	Id string `pulumi:"id"`
 	// Whether the user is currently allowed to terminate the link.
@@ -107,6 +107,11 @@ func (o LookupReplicationLinkResultOutput) ToLookupReplicationLinkResultOutput()
 
 func (o LookupReplicationLinkResultOutput) ToLookupReplicationLinkResultOutputWithContext(ctx context.Context) LookupReplicationLinkResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupReplicationLinkResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupReplicationLinkResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource ID.

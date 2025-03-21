@@ -13,8 +13,6 @@ import (
 
 // Gets details about the specified output.
 // Azure REST API version: 2020-03-01.
-//
-// Other available API versions: 2021-10-01-preview.
 func LookupOutput(ctx *pulumi.Context, args *LookupOutputArgs, opts ...pulumi.InvokeOption) (*LookupOutputResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupOutputResult
@@ -36,6 +34,8 @@ type LookupOutputArgs struct {
 
 // An output object, containing all information associated with the named output. All outputs are contained under a streaming job.
 type LookupOutputResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Describes the data source that output will be written to. Required on PUT (CreateOrReplace) requests.
 	Datasource interface{} `pulumi:"datasource"`
 	// Describes conditions applicable to the Input, Output, or the job overall, that warrant customer attention.
@@ -91,6 +91,11 @@ func (o LookupOutputResultOutput) ToLookupOutputResultOutput() LookupOutputResul
 
 func (o LookupOutputResultOutput) ToLookupOutputResultOutputWithContext(ctx context.Context) LookupOutputResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupOutputResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOutputResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Describes the data source that output will be written to. Required on PUT (CreateOrReplace) requests.

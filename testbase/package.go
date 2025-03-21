@@ -13,43 +13,51 @@ import (
 )
 
 // The Test Base Package resource.
-// Azure REST API version: 2022-04-01-preview. Prior API version in Azure Native 1.x: 2022-04-01-preview.
-//
-// Other available API versions: 2023-11-01-preview.
+// Azure REST API version: 2023-11-01-preview. Prior API version in Azure Native 2.x: 2022-04-01-preview.
 type Package struct {
 	pulumi.CustomResourceState
 
 	// Application name
 	ApplicationName pulumi.StringOutput `pulumi:"applicationName"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The file path of the package.
-	BlobPath pulumi.StringOutput `pulumi:"blobPath"`
-	// Resource Etag.
-	Etag pulumi.StringOutput `pulumi:"etag"`
+	BlobPath pulumi.StringPtrOutput `pulumi:"blobPath"`
+	// The id of draft package. Used to create or update this package from a draft package.
+	DraftPackageId pulumi.StringPtrOutput `pulumi:"draftPackageId"`
+	// The list of first party applications to test along with user application.
+	FirstPartyApps FirstPartyAppDefinitionResponseArrayOutput `pulumi:"firstPartyApps"`
 	// The flighting ring for feature update.
-	FlightingRing pulumi.StringOutput `pulumi:"flightingRing"`
+	FlightingRing pulumi.StringPtrOutput `pulumi:"flightingRing"`
+	// The list of gallery apps to test along with user application.
+	GalleryApps GalleryAppDefinitionResponseArrayOutput `pulumi:"galleryApps"`
+	// Specifies the baseline os and target os for inplace upgrade.
+	InplaceUpgradeOSPair InplaceUpgradeOSInfoResponsePtrOutput `pulumi:"inplaceUpgradeOSPair"`
+	// The metadata of Intune enrollment.
+	IntuneEnrollmentMetadata IntuneEnrollmentMetadataResponsePtrOutput `pulumi:"intuneEnrollmentMetadata"`
 	// Flag showing that whether the package is enabled. It doesn't schedule test for package which is not enabled.
 	IsEnabled pulumi.BoolOutput `pulumi:"isEnabled"`
 	// The UTC timestamp when the package was last modified.
 	LastModifiedTime pulumi.StringOutput `pulumi:"lastModifiedTime"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
-	// Resource name.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The status of the package.
 	PackageStatus pulumi.StringOutput `pulumi:"packageStatus"`
 	// The provisioning state of the resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// The system metadata relating to this resource
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// The tags of the resource.
+	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Specifies the target OSs of specific OS Update types.
 	TargetOSList TargetOSInfoResponseArrayOutput `pulumi:"targetOSList"`
-	// OOB, functional or both. Mapped to the data in 'tests' property.
+	// OOB, functional or flow driven. Mapped to the data in 'tests' property.
 	TestTypes pulumi.StringArrayOutput `pulumi:"testTypes"`
 	// The detailed test information.
 	Tests TestResponseArrayOutput `pulumi:"tests"`
-	// Resource type.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The validation results. There's validation on package when it's created or updated.
 	ValidationResults PackageValidationResultResponseArrayOutput `pulumi:"validationResults"`
@@ -67,23 +75,11 @@ func NewPackage(ctx *pulumi.Context,
 	if args.ApplicationName == nil {
 		return nil, errors.New("invalid value for required argument 'ApplicationName'")
 	}
-	if args.BlobPath == nil {
-		return nil, errors.New("invalid value for required argument 'BlobPath'")
-	}
-	if args.FlightingRing == nil {
-		return nil, errors.New("invalid value for required argument 'FlightingRing'")
-	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if args.TargetOSList == nil {
-		return nil, errors.New("invalid value for required argument 'TargetOSList'")
-	}
 	if args.TestBaseAccountName == nil {
 		return nil, errors.New("invalid value for required argument 'TestBaseAccountName'")
-	}
-	if args.Tests == nil {
-		return nil, errors.New("invalid value for required argument 'Tests'")
 	}
 	if args.Version == nil {
 		return nil, errors.New("invalid value for required argument 'Version'")
@@ -136,16 +132,24 @@ type packageArgs struct {
 	// Application name
 	ApplicationName string `pulumi:"applicationName"`
 	// The file path of the package.
-	BlobPath string `pulumi:"blobPath"`
+	BlobPath *string `pulumi:"blobPath"`
+	// The id of draft package. Used to create or update this package from a draft package.
+	DraftPackageId *string `pulumi:"draftPackageId"`
+	// The list of first party applications to test along with user application.
+	FirstPartyApps []FirstPartyAppDefinition `pulumi:"firstPartyApps"`
 	// The flighting ring for feature update.
-	FlightingRing string `pulumi:"flightingRing"`
+	FlightingRing *string `pulumi:"flightingRing"`
+	// Specifies the baseline os and target os for inplace upgrade.
+	InplaceUpgradeOSPair *InplaceUpgradeOSInfo `pulumi:"inplaceUpgradeOSPair"`
+	// The metadata of Intune enrollment.
+	IntuneEnrollmentMetadata *IntuneEnrollmentMetadata `pulumi:"intuneEnrollmentMetadata"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// The resource name of the Test Base Package.
 	PackageName *string `pulumi:"packageName"`
-	// The name of the resource group that contains the resource.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// The tags of the resource.
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// Specifies the target OSs of specific OS Update types.
 	TargetOSList []TargetOSInfo `pulumi:"targetOSList"`
@@ -162,16 +166,24 @@ type PackageArgs struct {
 	// Application name
 	ApplicationName pulumi.StringInput
 	// The file path of the package.
-	BlobPath pulumi.StringInput
+	BlobPath pulumi.StringPtrInput
+	// The id of draft package. Used to create or update this package from a draft package.
+	DraftPackageId pulumi.StringPtrInput
+	// The list of first party applications to test along with user application.
+	FirstPartyApps FirstPartyAppDefinitionArrayInput
 	// The flighting ring for feature update.
-	FlightingRing pulumi.StringInput
+	FlightingRing pulumi.StringPtrInput
+	// Specifies the baseline os and target os for inplace upgrade.
+	InplaceUpgradeOSPair InplaceUpgradeOSInfoPtrInput
+	// The metadata of Intune enrollment.
+	IntuneEnrollmentMetadata IntuneEnrollmentMetadataPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// The resource name of the Test Base Package.
 	PackageName pulumi.StringPtrInput
-	// The name of the resource group that contains the resource.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
-	// The tags of the resource.
+	// Resource tags.
 	Tags pulumi.StringMapInput
 	// Specifies the target OSs of specific OS Update types.
 	TargetOSList TargetOSInfoArrayInput
@@ -225,19 +237,44 @@ func (o PackageOutput) ApplicationName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Package) pulumi.StringOutput { return v.ApplicationName }).(pulumi.StringOutput)
 }
 
-// The file path of the package.
-func (o PackageOutput) BlobPath() pulumi.StringOutput {
-	return o.ApplyT(func(v *Package) pulumi.StringOutput { return v.BlobPath }).(pulumi.StringOutput)
+// The Azure API version of the resource.
+func (o PackageOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Package) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
-// Resource Etag.
-func (o PackageOutput) Etag() pulumi.StringOutput {
-	return o.ApplyT(func(v *Package) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+// The file path of the package.
+func (o PackageOutput) BlobPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Package) pulumi.StringPtrOutput { return v.BlobPath }).(pulumi.StringPtrOutput)
+}
+
+// The id of draft package. Used to create or update this package from a draft package.
+func (o PackageOutput) DraftPackageId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Package) pulumi.StringPtrOutput { return v.DraftPackageId }).(pulumi.StringPtrOutput)
+}
+
+// The list of first party applications to test along with user application.
+func (o PackageOutput) FirstPartyApps() FirstPartyAppDefinitionResponseArrayOutput {
+	return o.ApplyT(func(v *Package) FirstPartyAppDefinitionResponseArrayOutput { return v.FirstPartyApps }).(FirstPartyAppDefinitionResponseArrayOutput)
 }
 
 // The flighting ring for feature update.
-func (o PackageOutput) FlightingRing() pulumi.StringOutput {
-	return o.ApplyT(func(v *Package) pulumi.StringOutput { return v.FlightingRing }).(pulumi.StringOutput)
+func (o PackageOutput) FlightingRing() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Package) pulumi.StringPtrOutput { return v.FlightingRing }).(pulumi.StringPtrOutput)
+}
+
+// The list of gallery apps to test along with user application.
+func (o PackageOutput) GalleryApps() GalleryAppDefinitionResponseArrayOutput {
+	return o.ApplyT(func(v *Package) GalleryAppDefinitionResponseArrayOutput { return v.GalleryApps }).(GalleryAppDefinitionResponseArrayOutput)
+}
+
+// Specifies the baseline os and target os for inplace upgrade.
+func (o PackageOutput) InplaceUpgradeOSPair() InplaceUpgradeOSInfoResponsePtrOutput {
+	return o.ApplyT(func(v *Package) InplaceUpgradeOSInfoResponsePtrOutput { return v.InplaceUpgradeOSPair }).(InplaceUpgradeOSInfoResponsePtrOutput)
+}
+
+// The metadata of Intune enrollment.
+func (o PackageOutput) IntuneEnrollmentMetadata() IntuneEnrollmentMetadataResponsePtrOutput {
+	return o.ApplyT(func(v *Package) IntuneEnrollmentMetadataResponsePtrOutput { return v.IntuneEnrollmentMetadata }).(IntuneEnrollmentMetadataResponsePtrOutput)
 }
 
 // Flag showing that whether the package is enabled. It doesn't schedule test for package which is not enabled.
@@ -255,7 +292,7 @@ func (o PackageOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Package) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o PackageOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Package) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -270,12 +307,12 @@ func (o PackageOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *Package) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// The system metadata relating to this resource
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o PackageOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *Package) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// The tags of the resource.
+// Resource tags.
 func (o PackageOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Package) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
@@ -285,7 +322,7 @@ func (o PackageOutput) TargetOSList() TargetOSInfoResponseArrayOutput {
 	return o.ApplyT(func(v *Package) TargetOSInfoResponseArrayOutput { return v.TargetOSList }).(TargetOSInfoResponseArrayOutput)
 }
 
-// OOB, functional or both. Mapped to the data in 'tests' property.
+// OOB, functional or flow driven. Mapped to the data in 'tests' property.
 func (o PackageOutput) TestTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Package) pulumi.StringArrayOutput { return v.TestTypes }).(pulumi.StringArrayOutput)
 }
@@ -295,7 +332,7 @@ func (o PackageOutput) Tests() TestResponseArrayOutput {
 	return o.ApplyT(func(v *Package) TestResponseArrayOutput { return v.Tests }).(TestResponseArrayOutput)
 }
 
-// Resource type.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o PackageOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Package) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

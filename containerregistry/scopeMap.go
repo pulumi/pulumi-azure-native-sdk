@@ -13,9 +13,7 @@ import (
 )
 
 // An object that represents a scope map for a container registry.
-// Azure REST API version: 2022-12-01. Prior API version in Azure Native 1.x: 2020-11-01-preview.
-//
-// Other available API versions: 2023-01-01-preview, 2023-06-01-preview, 2023-07-01, 2023-08-01-preview, 2023-11-01-preview, 2024-11-01-preview.
+// Azure REST API version: 2024-11-01-preview. Prior API version in Azure Native 2.x: 2022-12-01.
 type ScopeMap struct {
 	pulumi.CustomResourceState
 
@@ -23,6 +21,8 @@ type ScopeMap struct {
 	// E.g. repositories/repository-name/content/read,
 	// repositories/repository-name/metadata/write
 	Actions pulumi.StringArrayOutput `pulumi:"actions"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The creation date of scope map.
 	CreationDate pulumi.StringOutput `pulumi:"creationDate"`
 	// The user friendly description of the scope map.
@@ -200,6 +200,11 @@ func (o ScopeMapOutput) ToScopeMapOutputWithContext(ctx context.Context) ScopeMa
 // repositories/repository-name/metadata/write
 func (o ScopeMapOutput) Actions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ScopeMap) pulumi.StringArrayOutput { return v.Actions }).(pulumi.StringArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o ScopeMapOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ScopeMap) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The creation date of scope map.

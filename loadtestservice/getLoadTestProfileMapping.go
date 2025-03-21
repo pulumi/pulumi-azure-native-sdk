@@ -32,6 +32,8 @@ type LookupLoadTestProfileMappingArgs struct {
 
 // LoadTest profile mapping resource details
 type LookupLoadTestProfileMappingResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Mapped Azure Load Test resource Id.
 	AzureLoadTestingResourceId *string `pulumi:"azureLoadTestingResourceId"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -81,6 +83,11 @@ func (o LookupLoadTestProfileMappingResultOutput) ToLookupLoadTestProfileMapping
 
 func (o LookupLoadTestProfileMappingResultOutput) ToLookupLoadTestProfileMappingResultOutputWithContext(ctx context.Context) LookupLoadTestProfileMappingResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupLoadTestProfileMappingResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLoadTestProfileMappingResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Mapped Azure Load Test resource Id.

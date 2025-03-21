@@ -12,12 +12,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Azure REST API version: 2023-08-01-preview.
-//
-// Other available API versions: 2024-01-01-preview, 2024-04-01-preview, 2024-10-01-preview.
+// Azure REST API version: 2025-01-01-preview. Prior API version in Azure Native 2.x: 2023-08-01-preview.
 type InferenceGroup struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Managed service identity (system assigned and/or user assigned identities)
 	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// [Required] Additional attributes of the entity.
@@ -70,6 +70,9 @@ func NewInferenceGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001preview:InferenceGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250101preview:InferenceGroup"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -187,6 +190,11 @@ func (o InferenceGroupOutput) ToInferenceGroupOutput() InferenceGroupOutput {
 
 func (o InferenceGroupOutput) ToInferenceGroupOutputWithContext(ctx context.Context) InferenceGroupOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o InferenceGroupOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *InferenceGroup) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Managed service identity (system assigned and/or user assigned identities)

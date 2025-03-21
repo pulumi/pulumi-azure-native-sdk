@@ -34,6 +34,8 @@ type LookupStreamingPolicyArgs struct {
 
 // A Streaming Policy resource
 type LookupStreamingPolicyResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Configuration of CommonEncryptionCbcs
 	CommonEncryptionCbcs *CommonEncryptionCbcsResponse `pulumi:"commonEncryptionCbcs"`
 	// Configuration of CommonEncryptionCenc
@@ -91,6 +93,11 @@ func (o LookupStreamingPolicyResultOutput) ToLookupStreamingPolicyResultOutput()
 
 func (o LookupStreamingPolicyResultOutput) ToLookupStreamingPolicyResultOutputWithContext(ctx context.Context) LookupStreamingPolicyResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupStreamingPolicyResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStreamingPolicyResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Configuration of CommonEncryptionCbcs

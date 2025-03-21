@@ -12,9 +12,7 @@ import (
 )
 
 // Get the access keys of the resource.
-// Azure REST API version: 2023-02-01.
-//
-// Other available API versions: 2023-03-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-08-01-preview, 2024-10-01-preview.
+// Azure REST API version: 2024-03-01.
 func ListSignalRKeys(ctx *pulumi.Context, args *ListSignalRKeysArgs, opts ...pulumi.InvokeOption) (*ListSignalRKeysResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListSignalRKeysResult
@@ -26,7 +24,7 @@ func ListSignalRKeys(ctx *pulumi.Context, args *ListSignalRKeysArgs, opts ...pul
 }
 
 type ListSignalRKeysArgs struct {
-	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the resource.
 	ResourceName string `pulumi:"resourceName"`
@@ -54,7 +52,7 @@ func ListSignalRKeysOutput(ctx *pulumi.Context, args ListSignalRKeysOutputArgs, 
 }
 
 type ListSignalRKeysOutputArgs struct {
-	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the resource.
 	ResourceName pulumi.StringInput `pulumi:"resourceName"`

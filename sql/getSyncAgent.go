@@ -13,8 +13,6 @@ import (
 
 // Gets a sync agent.
 // Azure REST API version: 2021-11-01.
-//
-// Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
 func LookupSyncAgent(ctx *pulumi.Context, args *LookupSyncAgentArgs, opts ...pulumi.InvokeOption) (*LookupSyncAgentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSyncAgentResult
@@ -36,6 +34,8 @@ type LookupSyncAgentArgs struct {
 
 // An Azure SQL Database sync agent.
 type LookupSyncAgentResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Expiration time of the sync agent version.
 	ExpiryTime string `pulumi:"expiryTime"`
 	// Resource ID.
@@ -91,6 +91,11 @@ func (o LookupSyncAgentResultOutput) ToLookupSyncAgentResultOutput() LookupSyncA
 
 func (o LookupSyncAgentResultOutput) ToLookupSyncAgentResultOutputWithContext(ctx context.Context) LookupSyncAgentResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupSyncAgentResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSyncAgentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Expiration time of the sync agent version.

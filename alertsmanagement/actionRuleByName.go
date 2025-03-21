@@ -13,10 +13,12 @@ import (
 )
 
 // Action rule object containing target scope, conditions and suppression logic
-// Azure REST API version: 2019-05-05-preview. Prior API version in Azure Native 1.x: 2019-05-05-preview.
+// Azure REST API version: 2019-05-05-preview. Prior API version in Azure Native 2.x: 2019-05-05-preview.
 type ActionRuleByName struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Resource location
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Azure resource name
@@ -50,7 +52,13 @@ func NewActionRuleByName(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:alertsmanagement/v20210808:ActionRuleByName"),
 		},
 		{
+			Type: pulumi.String("azure-native:alertsmanagement/v20210808:AlertProcessingRuleByName"),
+		},
+		{
 			Type: pulumi.String("azure-native:alertsmanagement/v20210808preview:ActionRuleByName"),
+		},
+		{
+			Type: pulumi.String("azure-native:alertsmanagement:AlertProcessingRuleByName"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -148,6 +156,11 @@ func (o ActionRuleByNameOutput) ToActionRuleByNameOutput() ActionRuleByNameOutpu
 
 func (o ActionRuleByNameOutput) ToActionRuleByNameOutputWithContext(ctx context.Context) ActionRuleByNameOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ActionRuleByNameOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ActionRuleByName) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource location

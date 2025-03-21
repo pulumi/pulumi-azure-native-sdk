@@ -13,12 +13,14 @@ import (
 )
 
 // The Internet Gateway Rule resource definition.
-// Azure REST API version: 2023-06-15.
+// Azure REST API version: 2023-06-15. Prior API version in Azure Native 2.x: 2023-06-15.
 type InternetGatewayRule struct {
 	pulumi.CustomResourceState
 
 	// Switch configuration description.
 	Annotation pulumi.StringPtrOutput `pulumi:"annotation"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// List of Internet Gateway resource Id.
 	InternetGatewayIds pulumi.StringArrayOutput `pulumi:"internetGatewayIds"`
 	// The geo-location where the resource lives
@@ -159,6 +161,11 @@ func (o InternetGatewayRuleOutput) ToInternetGatewayRuleOutputWithContext(ctx co
 // Switch configuration description.
 func (o InternetGatewayRuleOutput) Annotation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InternetGatewayRule) pulumi.StringPtrOutput { return v.Annotation }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o InternetGatewayRuleOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *InternetGatewayRule) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // List of Internet Gateway resource Id.

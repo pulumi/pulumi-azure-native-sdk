@@ -12,9 +12,7 @@ import (
 )
 
 // Gets details of a migration.
-// Azure REST API version: 2023-03-01-preview.
-//
-// Other available API versions: 2021-06-15-privatepreview, 2022-05-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-08-01, 2024-11-01-preview.
+// Azure REST API version: 2024-08-01.
 func LookupMigration(ctx *pulumi.Context, args *LookupMigrationArgs, opts ...pulumi.InvokeOption) (*LookupMigrationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMigrationResult
@@ -38,6 +36,8 @@ type LookupMigrationArgs struct {
 
 // Represents a migration resource.
 type LookupMigrationResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// To trigger cancel for entire migration we need to send this flag as True
 	Cancel *string `pulumi:"cancel"`
 	// Current status of migration
@@ -48,14 +48,20 @@ type LookupMigrationResult struct {
 	DbsToMigrate []string `pulumi:"dbsToMigrate"`
 	// When you want to trigger cutover for specific databases send triggerCutover flag as True and database names in this array
 	DbsToTriggerCutoverOn []string `pulumi:"dbsToTriggerCutoverOn"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
+	// To migrate roles and permissions we need to send this flag as True
+	MigrateRoles *string `pulumi:"migrateRoles"`
 	// ID for migration, a GUID.
 	MigrationId string `pulumi:"migrationId"`
+	// ResourceId of the private endpoint migration instance
+	MigrationInstanceResourceId *string `pulumi:"migrationInstanceResourceId"`
 	// There are two types of migration modes Online and Offline
 	MigrationMode *string `pulumi:"migrationMode"`
+	// This indicates the supported Migration option for the migration
+	MigrationOption *string `pulumi:"migrationOption"`
 	// End time in UTC for migration window
 	MigrationWindowEndTimeInUtc *string `pulumi:"migrationWindowEndTimeInUtc"`
 	// Start time in UTC for migration window
@@ -66,19 +72,23 @@ type LookupMigrationResult struct {
 	OverwriteDbsInTarget *string `pulumi:"overwriteDbsInTarget"`
 	// Indicates whether to setup LogicalReplicationOnSourceDb, if needed
 	SetupLogicalReplicationOnSourceDbIfNeeded *string `pulumi:"setupLogicalReplicationOnSourceDbIfNeeded"`
-	// Source server fully qualified domain name or ip. It is a optional value, if customer provide it, dms will always use it for connection
+	// Source server fully qualified domain name (FQDN) or IP address. It is a optional value, if customer provide it, migration service will always use it for connection
 	SourceDbServerFullyQualifiedDomainName *string `pulumi:"sourceDbServerFullyQualifiedDomainName"`
 	// Metadata of the source database server
 	SourceDbServerMetadata DbServerMetadataResponse `pulumi:"sourceDbServerMetadata"`
-	// ResourceId of the source database server
+	// ResourceId of the source database server in case the sourceType is PostgreSQLSingleServer. For other source types this should be ipaddress:port@username or hostname:port@username
 	SourceDbServerResourceId *string `pulumi:"sourceDbServerResourceId"`
+	// migration source server type : OnPremises, AWS, GCP, AzureVM, PostgreSQLSingleServer, AWS_RDS, AWS_AURORA, AWS_EC2, GCP_CloudSQL, GCP_AlloyDB, GCP_Compute, or EDB
+	SourceType *string `pulumi:"sourceType"`
+	// SSL modes for migration. Default SSL mode for PostgreSQLSingleServer is VerifyFull and Prefer for other source types
+	SslMode *string `pulumi:"sslMode"`
 	// Indicates whether the data migration should start right away
 	StartDataMigration *string `pulumi:"startDataMigration"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
-	// Target server fully qualified domain name or ip. It is a optional value, if customer provide it, dms will always use it for connection
+	// Target server fully qualified domain name (FQDN) or IP address. It is a optional value, if customer provide it, migration service will always use it for connection
 	TargetDbServerFullyQualifiedDomainName *string `pulumi:"targetDbServerFullyQualifiedDomainName"`
 	// Metadata of the target database server
 	TargetDbServerMetadata DbServerMetadataResponse `pulumi:"targetDbServerMetadata"`
@@ -129,6 +139,11 @@ func (o LookupMigrationResultOutput) ToLookupMigrationResultOutputWithContext(ct
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupMigrationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMigrationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // To trigger cancel for entire migration we need to send this flag as True
 func (o LookupMigrationResultOutput) Cancel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupMigrationResult) *string { return v.Cancel }).(pulumi.StringPtrOutput)
@@ -154,7 +169,7 @@ func (o LookupMigrationResultOutput) DbsToTriggerCutoverOn() pulumi.StringArrayO
 	return o.ApplyT(func(v LookupMigrationResult) []string { return v.DbsToTriggerCutoverOn }).(pulumi.StringArrayOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupMigrationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMigrationResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -164,14 +179,29 @@ func (o LookupMigrationResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMigrationResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// To migrate roles and permissions we need to send this flag as True
+func (o LookupMigrationResultOutput) MigrateRoles() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupMigrationResult) *string { return v.MigrateRoles }).(pulumi.StringPtrOutput)
+}
+
 // ID for migration, a GUID.
 func (o LookupMigrationResultOutput) MigrationId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMigrationResult) string { return v.MigrationId }).(pulumi.StringOutput)
 }
 
+// ResourceId of the private endpoint migration instance
+func (o LookupMigrationResultOutput) MigrationInstanceResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupMigrationResult) *string { return v.MigrationInstanceResourceId }).(pulumi.StringPtrOutput)
+}
+
 // There are two types of migration modes Online and Offline
 func (o LookupMigrationResultOutput) MigrationMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupMigrationResult) *string { return v.MigrationMode }).(pulumi.StringPtrOutput)
+}
+
+// This indicates the supported Migration option for the migration
+func (o LookupMigrationResultOutput) MigrationOption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupMigrationResult) *string { return v.MigrationOption }).(pulumi.StringPtrOutput)
 }
 
 // End time in UTC for migration window
@@ -199,7 +229,7 @@ func (o LookupMigrationResultOutput) SetupLogicalReplicationOnSourceDbIfNeeded()
 	return o.ApplyT(func(v LookupMigrationResult) *string { return v.SetupLogicalReplicationOnSourceDbIfNeeded }).(pulumi.StringPtrOutput)
 }
 
-// Source server fully qualified domain name or ip. It is a optional value, if customer provide it, dms will always use it for connection
+// Source server fully qualified domain name (FQDN) or IP address. It is a optional value, if customer provide it, migration service will always use it for connection
 func (o LookupMigrationResultOutput) SourceDbServerFullyQualifiedDomainName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupMigrationResult) *string { return v.SourceDbServerFullyQualifiedDomainName }).(pulumi.StringPtrOutput)
 }
@@ -209,9 +239,19 @@ func (o LookupMigrationResultOutput) SourceDbServerMetadata() DbServerMetadataRe
 	return o.ApplyT(func(v LookupMigrationResult) DbServerMetadataResponse { return v.SourceDbServerMetadata }).(DbServerMetadataResponseOutput)
 }
 
-// ResourceId of the source database server
+// ResourceId of the source database server in case the sourceType is PostgreSQLSingleServer. For other source types this should be ipaddress:port@username or hostname:port@username
 func (o LookupMigrationResultOutput) SourceDbServerResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupMigrationResult) *string { return v.SourceDbServerResourceId }).(pulumi.StringPtrOutput)
+}
+
+// migration source server type : OnPremises, AWS, GCP, AzureVM, PostgreSQLSingleServer, AWS_RDS, AWS_AURORA, AWS_EC2, GCP_CloudSQL, GCP_AlloyDB, GCP_Compute, or EDB
+func (o LookupMigrationResultOutput) SourceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupMigrationResult) *string { return v.SourceType }).(pulumi.StringPtrOutput)
+}
+
+// SSL modes for migration. Default SSL mode for PostgreSQLSingleServer is VerifyFull and Prefer for other source types
+func (o LookupMigrationResultOutput) SslMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupMigrationResult) *string { return v.SslMode }).(pulumi.StringPtrOutput)
 }
 
 // Indicates whether the data migration should start right away
@@ -229,7 +269,7 @@ func (o LookupMigrationResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupMigrationResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Target server fully qualified domain name or ip. It is a optional value, if customer provide it, dms will always use it for connection
+// Target server fully qualified domain name (FQDN) or IP address. It is a optional value, if customer provide it, migration service will always use it for connection
 func (o LookupMigrationResultOutput) TargetDbServerFullyQualifiedDomainName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupMigrationResult) *string { return v.TargetDbServerFullyQualifiedDomainName }).(pulumi.StringPtrOutput)
 }

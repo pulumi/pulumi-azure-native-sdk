@@ -12,9 +12,7 @@ import (
 )
 
 // Gets the specified NSP association by name.
-// Azure REST API version: 2021-02-01-preview.
-//
-// Other available API versions: 2023-07-01-preview, 2023-08-01-preview.
+// Azure REST API version: 2023-08-01-preview.
 func LookupNspAssociation(ctx *pulumi.Context, args *LookupNspAssociationArgs, opts ...pulumi.InvokeOption) (*LookupNspAssociationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNspAssociationResult
@@ -38,6 +36,8 @@ type LookupNspAssociationArgs struct {
 type LookupNspAssociationResult struct {
 	// Access mode on the association.
 	AccessMode *string `pulumi:"accessMode"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Specifies if there are provisioning issues
 	HasProvisioningIssues string `pulumi:"hasProvisioningIssues"`
 	// Resource ID.
@@ -98,6 +98,11 @@ func (o LookupNspAssociationResultOutput) ToLookupNspAssociationResultOutputWith
 // Access mode on the association.
 func (o LookupNspAssociationResultOutput) AccessMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNspAssociationResult) *string { return v.AccessMode }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupNspAssociationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNspAssociationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Specifies if there are provisioning issues

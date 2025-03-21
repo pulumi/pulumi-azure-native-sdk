@@ -13,8 +13,6 @@ import (
 
 // Get a Big Data pool.
 // Azure REST API version: 2021-06-01.
-//
-// Other available API versions: 2021-05-01, 2021-06-01-preview.
 func LookupBigDataPool(ctx *pulumi.Context, args *LookupBigDataPoolArgs, opts ...pulumi.InvokeOption) (*LookupBigDataPoolResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBigDataPoolResult
@@ -40,6 +38,8 @@ type LookupBigDataPoolResult struct {
 	AutoPause *AutoPausePropertiesResponse `pulumi:"autoPause"`
 	// Auto-scaling properties
 	AutoScale *AutoScalePropertiesResponse `pulumi:"autoScale"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The cache size
 	CacheSize *int `pulumi:"cacheSize"`
 	// The time when the Big Data pool was created.
@@ -131,6 +131,11 @@ func (o LookupBigDataPoolResultOutput) AutoPause() AutoPausePropertiesResponsePt
 // Auto-scaling properties
 func (o LookupBigDataPoolResultOutput) AutoScale() AutoScalePropertiesResponsePtrOutput {
 	return o.ApplyT(func(v LookupBigDataPoolResult) *AutoScalePropertiesResponse { return v.AutoScale }).(AutoScalePropertiesResponsePtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupBigDataPoolResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBigDataPoolResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The cache size

@@ -13,10 +13,12 @@ import (
 )
 
 // A schedule.
-// Azure REST API version: 2018-09-15. Prior API version in Azure Native 1.x: 2018-09-15.
+// Azure REST API version: 2018-09-15. Prior API version in Azure Native 2.x: 2018-09-15.
 type Schedule struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The creation date of the schedule.
 	CreatedDate pulumi.StringOutput `pulumi:"createdDate"`
 	// If the schedule will occur once each day of the week, specify the daily recurrence.
@@ -206,6 +208,11 @@ func (o ScheduleOutput) ToScheduleOutput() ScheduleOutput {
 
 func (o ScheduleOutput) ToScheduleOutputWithContext(ctx context.Context) ScheduleOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ScheduleOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Schedule) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The creation date of the schedule.

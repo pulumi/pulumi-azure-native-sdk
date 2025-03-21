@@ -12,9 +12,7 @@ import (
 )
 
 // Description for Get site extension information by its ID for a web site, or a deployment slot.
-// Azure REST API version: 2022-09-01.
-//
-// Other available API versions: 2016-08-01, 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
+// Azure REST API version: 2024-04-01.
 func LookupWebAppSiteExtensionSlot(ctx *pulumi.Context, args *LookupWebAppSiteExtensionSlotArgs, opts ...pulumi.InvokeOption) (*LookupWebAppSiteExtensionSlotResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebAppSiteExtensionSlotResult
@@ -40,6 +38,8 @@ type LookupWebAppSiteExtensionSlotArgs struct {
 type LookupWebAppSiteExtensionSlotResult struct {
 	// List of authors.
 	Authors []string `pulumi:"authors"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Site Extension comment.
 	Comment *string `pulumi:"comment"`
 	// Detailed description.
@@ -129,6 +129,11 @@ func (o LookupWebAppSiteExtensionSlotResultOutput) ToLookupWebAppSiteExtensionSl
 // List of authors.
 func (o LookupWebAppSiteExtensionSlotResultOutput) Authors() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupWebAppSiteExtensionSlotResult) []string { return v.Authors }).(pulumi.StringArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupWebAppSiteExtensionSlotResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWebAppSiteExtensionSlotResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Site Extension comment.

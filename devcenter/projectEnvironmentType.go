@@ -13,16 +13,20 @@ import (
 )
 
 // Represents an environment type.
-// Azure REST API version: 2023-04-01. Prior API version in Azure Native 1.x: 2022-09-01-preview.
-//
-// Other available API versions: 2023-08-01-preview, 2023-10-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview, 2024-10-01-preview.
+// Azure REST API version: 2024-02-01. Prior API version in Azure Native 2.x: 2023-04-01.
 type ProjectEnvironmentType struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The role definition assigned to the environment creator on backing resources.
 	CreatorRoleAssignment ProjectEnvironmentTypeUpdatePropertiesResponseCreatorRoleAssignmentPtrOutput `pulumi:"creatorRoleAssignment"`
 	// Id of a subscription that the environment type will be mapped to. The environment's resources will be deployed into this subscription.
 	DeploymentTargetId pulumi.StringPtrOutput `pulumi:"deploymentTargetId"`
+	// The display name of the project environment type.
+	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
+	// The number of environments of this type.
+	EnvironmentCount pulumi.IntOutput `pulumi:"environmentCount"`
 	// Managed identity properties
 	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location for the environment type
@@ -99,6 +103,9 @@ func NewProjectEnvironmentType(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:devcenter/v20241001preview:ProjectEnvironmentType"),
 		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20250201:ProjectEnvironmentType"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -138,6 +145,8 @@ type projectEnvironmentTypeArgs struct {
 	CreatorRoleAssignment *ProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignment `pulumi:"creatorRoleAssignment"`
 	// Id of a subscription that the environment type will be mapped to. The environment's resources will be deployed into this subscription.
 	DeploymentTargetId *string `pulumi:"deploymentTargetId"`
+	// The display name of the project environment type.
+	DisplayName *string `pulumi:"displayName"`
 	// The name of the environment type.
 	EnvironmentTypeName *string `pulumi:"environmentTypeName"`
 	// Managed identity properties
@@ -162,6 +171,8 @@ type ProjectEnvironmentTypeArgs struct {
 	CreatorRoleAssignment ProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignmentPtrInput
 	// Id of a subscription that the environment type will be mapped to. The environment's resources will be deployed into this subscription.
 	DeploymentTargetId pulumi.StringPtrInput
+	// The display name of the project environment type.
+	DisplayName pulumi.StringPtrInput
 	// The name of the environment type.
 	EnvironmentTypeName pulumi.StringPtrInput
 	// Managed identity properties
@@ -217,6 +228,11 @@ func (o ProjectEnvironmentTypeOutput) ToProjectEnvironmentTypeOutputWithContext(
 	return o
 }
 
+// The Azure API version of the resource.
+func (o ProjectEnvironmentTypeOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectEnvironmentType) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The role definition assigned to the environment creator on backing resources.
 func (o ProjectEnvironmentTypeOutput) CreatorRoleAssignment() ProjectEnvironmentTypeUpdatePropertiesResponseCreatorRoleAssignmentPtrOutput {
 	return o.ApplyT(func(v *ProjectEnvironmentType) ProjectEnvironmentTypeUpdatePropertiesResponseCreatorRoleAssignmentPtrOutput {
@@ -227,6 +243,16 @@ func (o ProjectEnvironmentTypeOutput) CreatorRoleAssignment() ProjectEnvironment
 // Id of a subscription that the environment type will be mapped to. The environment's resources will be deployed into this subscription.
 func (o ProjectEnvironmentTypeOutput) DeploymentTargetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProjectEnvironmentType) pulumi.StringPtrOutput { return v.DeploymentTargetId }).(pulumi.StringPtrOutput)
+}
+
+// The display name of the project environment type.
+func (o ProjectEnvironmentTypeOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectEnvironmentType) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// The number of environments of this type.
+func (o ProjectEnvironmentTypeOutput) EnvironmentCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *ProjectEnvironmentType) pulumi.IntOutput { return v.EnvironmentCount }).(pulumi.IntOutput)
 }
 
 // Managed identity properties

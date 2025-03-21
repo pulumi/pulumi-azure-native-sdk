@@ -32,6 +32,8 @@ type LookupDataManagerArgs struct {
 
 // The DataManager resource.
 type LookupDataManagerResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Etag of the Resource.
 	Etag *string `pulumi:"etag"`
 	// The Resource Id.
@@ -84,6 +86,11 @@ func (o LookupDataManagerResultOutput) ToLookupDataManagerResultOutput() LookupD
 
 func (o LookupDataManagerResultOutput) ToLookupDataManagerResultOutputWithContext(ctx context.Context) LookupDataManagerResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupDataManagerResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDataManagerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Etag of the Resource.

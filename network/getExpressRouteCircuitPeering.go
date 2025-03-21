@@ -12,9 +12,7 @@ import (
 )
 
 // Gets the specified peering for the express route circuit.
-// Azure REST API version: 2023-02-01.
-//
-// Other available API versions: 2019-02-01, 2019-06-01, 2019-08-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Azure REST API version: 2024-05-01.
 func LookupExpressRouteCircuitPeering(ctx *pulumi.Context, args *LookupExpressRouteCircuitPeeringArgs, opts ...pulumi.InvokeOption) (*LookupExpressRouteCircuitPeeringResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupExpressRouteCircuitPeeringResult
@@ -38,6 +36,8 @@ type LookupExpressRouteCircuitPeeringArgs struct {
 type LookupExpressRouteCircuitPeeringResult struct {
 	// The Azure ASN.
 	AzureASN *int `pulumi:"azureASN"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The list of circuit connections associated with Azure Private Peering for this circuit.
 	Connections []ExpressRouteCircuitConnectionResponse `pulumi:"connections"`
 	// A unique read-only string that changes whenever the resource is updated.
@@ -126,6 +126,11 @@ func (o LookupExpressRouteCircuitPeeringResultOutput) ToLookupExpressRouteCircui
 // The Azure ASN.
 func (o LookupExpressRouteCircuitPeeringResultOutput) AzureASN() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupExpressRouteCircuitPeeringResult) *int { return v.AzureASN }).(pulumi.IntPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupExpressRouteCircuitPeeringResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupExpressRouteCircuitPeeringResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The list of circuit connections associated with Azure Private Peering for this circuit.

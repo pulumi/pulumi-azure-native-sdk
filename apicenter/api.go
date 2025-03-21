@@ -13,12 +13,12 @@ import (
 )
 
 // API entity.
-// Azure REST API version: 2024-03-01.
-//
-// Other available API versions: 2024-03-15-preview, 2024-06-01-preview.
+// Azure REST API version: 2024-03-15-preview. Prior API version in Azure Native 2.x: 2024-03-01.
 type Api struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The set of contacts
 	Contacts ContactResponseArrayOutput `pulumi:"contacts"`
 	// The custom metadata defined for API catalog entities.
@@ -207,6 +207,11 @@ func (o ApiOutput) ToApiOutput() ApiOutput {
 
 func (o ApiOutput) ToApiOutputWithContext(ctx context.Context) ApiOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ApiOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Api) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The set of contacts

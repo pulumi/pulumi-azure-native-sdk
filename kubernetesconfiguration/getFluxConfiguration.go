@@ -13,8 +13,6 @@ import (
 
 // Gets details of the Flux Configuration.
 // Azure REST API version: 2023-05-01.
-//
-// Other available API versions: 2021-11-01-preview, 2022-01-01-preview, 2024-04-01-preview.
 func LookupFluxConfiguration(ctx *pulumi.Context, args *LookupFluxConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupFluxConfigurationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFluxConfigurationResult
@@ -40,6 +38,8 @@ type LookupFluxConfigurationArgs struct {
 
 // The Flux Configuration object returned in Get & Put response.
 type LookupFluxConfigurationResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Parameters to reconcile to the AzureBlob source kind type.
 	AzureBlob *AzureBlobDefinitionResponse `pulumi:"azureBlob"`
 	// Parameters to reconcile to the Bucket source kind type.
@@ -153,6 +153,11 @@ func (o LookupFluxConfigurationResultOutput) ToLookupFluxConfigurationResultOutp
 
 func (o LookupFluxConfigurationResultOutput) ToLookupFluxConfigurationResultOutputWithContext(ctx context.Context) LookupFluxConfigurationResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupFluxConfigurationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFluxConfigurationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Parameters to reconcile to the AzureBlob source kind type.

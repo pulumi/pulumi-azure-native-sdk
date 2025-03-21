@@ -13,10 +13,12 @@ import (
 )
 
 // Details of topic record
-// Azure REST API version: 2024-07-01.
+// Azure REST API version: 2024-07-01. Prior API version in Azure Native 2.x: 2024-07-01.
 type Topic struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Config Specification of the topic
 	Configs TopicsRelatedLinkResponsePtrOutput `pulumi:"configs"`
 	// Input Config Specification of the topic
@@ -196,6 +198,11 @@ func (o TopicOutput) ToTopicOutput() TopicOutput {
 
 func (o TopicOutput) ToTopicOutputWithContext(ctx context.Context) TopicOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o TopicOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Topic) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Config Specification of the topic

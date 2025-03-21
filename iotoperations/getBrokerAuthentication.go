@@ -12,9 +12,7 @@ import (
 )
 
 // Get a BrokerAuthenticationResource
-// Azure REST API version: 2024-07-01-preview.
-//
-// Other available API versions: 2024-08-15-preview, 2024-09-15-preview, 2024-11-01.
+// Azure REST API version: 2024-11-01.
 func LookupBrokerAuthentication(ctx *pulumi.Context, args *LookupBrokerAuthenticationArgs, opts ...pulumi.InvokeOption) (*LookupBrokerAuthenticationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBrokerAuthenticationResult
@@ -38,6 +36,8 @@ type LookupBrokerAuthenticationArgs struct {
 
 // Instance broker authentication resource
 type LookupBrokerAuthenticationResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Edge location of the resource.
 	ExtendedLocation ExtendedLocationResponse `pulumi:"extendedLocation"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -89,6 +89,11 @@ func (o LookupBrokerAuthenticationResultOutput) ToLookupBrokerAuthenticationResu
 
 func (o LookupBrokerAuthenticationResultOutput) ToLookupBrokerAuthenticationResultOutputWithContext(ctx context.Context) LookupBrokerAuthenticationResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupBrokerAuthenticationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBrokerAuthenticationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Edge location of the resource.

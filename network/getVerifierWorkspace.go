@@ -12,9 +12,7 @@ import (
 )
 
 // Instance of Verifier Workspace.
-// Azure REST API version: 2024-01-01-preview.
-//
-// Other available API versions: 2024-05-01.
+// Azure REST API version: 2024-05-01.
 func LookupVerifierWorkspace(ctx *pulumi.Context, args *LookupVerifierWorkspaceArgs, opts ...pulumi.InvokeOption) (*LookupVerifierWorkspaceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVerifierWorkspaceResult
@@ -36,6 +34,8 @@ type LookupVerifierWorkspaceArgs struct {
 
 // Instance of Verifier Workspace.
 type LookupVerifierWorkspaceResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -87,6 +87,11 @@ func (o LookupVerifierWorkspaceResultOutput) ToLookupVerifierWorkspaceResultOutp
 
 func (o LookupVerifierWorkspaceResultOutput) ToLookupVerifierWorkspaceResultOutputWithContext(ctx context.Context) LookupVerifierWorkspaceResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupVerifierWorkspaceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVerifierWorkspaceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

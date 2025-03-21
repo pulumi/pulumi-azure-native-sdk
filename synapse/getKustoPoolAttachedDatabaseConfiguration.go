@@ -38,6 +38,8 @@ type LookupKustoPoolAttachedDatabaseConfigurationArgs struct {
 type LookupKustoPoolAttachedDatabaseConfigurationResult struct {
 	// The list of databases from the clusterResourceId which are currently attached to the kusto pool.
 	AttachedDatabaseNames []string `pulumi:"attachedDatabaseNames"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The name of the database which you would like to attach, use * if you want to follow all current and future databases.
 	DatabaseName string `pulumi:"databaseName"`
 	// The default principals modification kind
@@ -102,6 +104,11 @@ func (o LookupKustoPoolAttachedDatabaseConfigurationResultOutput) ToLookupKustoP
 // The list of databases from the clusterResourceId which are currently attached to the kusto pool.
 func (o LookupKustoPoolAttachedDatabaseConfigurationResultOutput) AttachedDatabaseNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupKustoPoolAttachedDatabaseConfigurationResult) []string { return v.AttachedDatabaseNames }).(pulumi.StringArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupKustoPoolAttachedDatabaseConfigurationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKustoPoolAttachedDatabaseConfigurationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the database which you would like to attach, use * if you want to follow all current and future databases.

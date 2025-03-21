@@ -12,9 +12,7 @@ import (
 )
 
 // Gets the specified Azure key vault.
-// Azure REST API version: 2023-02-01.
-//
-// Other available API versions: 2023-07-01, 2024-04-01-preview, 2024-11-01, 2024-12-01-preview.
+// Azure REST API version: 2024-11-01.
 func LookupVault(ctx *pulumi.Context, args *LookupVaultArgs, opts ...pulumi.InvokeOption) (*LookupVaultResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVaultResult
@@ -34,6 +32,8 @@ type LookupVaultArgs struct {
 
 // Resource information with extended details.
 type LookupVaultResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified identifier of the key vault resource.
 	Id string `pulumi:"id"`
 	// Azure location of the key vault resource.
@@ -93,6 +93,11 @@ func (o LookupVaultResultOutput) ToLookupVaultResultOutput() LookupVaultResultOu
 
 func (o LookupVaultResultOutput) ToLookupVaultResultOutputWithContext(ctx context.Context) LookupVaultResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupVaultResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVaultResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified identifier of the key vault resource.

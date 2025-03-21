@@ -12,9 +12,7 @@ import (
 )
 
 // Returns a Azure Arc PrivateLinkScope.
-// Azure REST API version: 2022-12-27.
-//
-// Other available API versions: 2020-08-15-preview, 2023-06-20-preview, 2023-10-03-preview, 2024-03-31-preview, 2024-05-20-preview, 2024-07-10, 2024-07-31-preview, 2024-09-10-preview, 2024-11-10-preview.
+// Azure REST API version: 2024-07-10.
 func LookupPrivateLinkScope(ctx *pulumi.Context, args *LookupPrivateLinkScopeArgs, opts ...pulumi.InvokeOption) (*LookupPrivateLinkScopeResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivateLinkScopeResult
@@ -34,6 +32,8 @@ type LookupPrivateLinkScopeArgs struct {
 
 // An Azure Arc PrivateLinkScope definition.
 type LookupPrivateLinkScopeResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Azure resource Id
 	Id string `pulumi:"id"`
 	// Resource location
@@ -83,6 +83,11 @@ func (o LookupPrivateLinkScopeResultOutput) ToLookupPrivateLinkScopeResultOutput
 
 func (o LookupPrivateLinkScopeResultOutput) ToLookupPrivateLinkScopeResultOutputWithContext(ctx context.Context) LookupPrivateLinkScopeResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupPrivateLinkScopeResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPrivateLinkScopeResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Azure resource Id

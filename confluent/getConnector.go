@@ -38,6 +38,8 @@ type LookupConnectorArgs struct {
 
 // Details of connector record
 type LookupConnectorResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Connector Info Base
 	ConnectorBasicInfo *ConnectorInfoBaseResponse `pulumi:"connectorBasicInfo"`
 	// Connector Service type info base properties.
@@ -93,6 +95,11 @@ func (o LookupConnectorResultOutput) ToLookupConnectorResultOutput() LookupConne
 
 func (o LookupConnectorResultOutput) ToLookupConnectorResultOutputWithContext(ctx context.Context) LookupConnectorResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupConnectorResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectorResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Connector Info Base

@@ -13,10 +13,12 @@ import (
 )
 
 // The connector mapping resource format.
-// Azure REST API version: 2017-04-26. Prior API version in Azure Native 1.x: 2017-04-26.
+// Azure REST API version: 2017-04-26. Prior API version in Azure Native 2.x: 2017-04-26.
 type ConnectorMapping struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The connector mapping name
 	ConnectorMappingName pulumi.StringOutput `pulumi:"connectorMappingName"`
 	// The connector name.
@@ -201,6 +203,11 @@ func (o ConnectorMappingOutput) ToConnectorMappingOutput() ConnectorMappingOutpu
 
 func (o ConnectorMappingOutput) ToConnectorMappingOutputWithContext(ctx context.Context) ConnectorMappingOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ConnectorMappingOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConnectorMapping) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The connector mapping name

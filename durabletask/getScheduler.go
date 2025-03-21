@@ -32,6 +32,8 @@ type LookupSchedulerArgs struct {
 
 // A Durable Task Scheduler resource
 type LookupSchedulerResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -81,6 +83,11 @@ func (o LookupSchedulerResultOutput) ToLookupSchedulerResultOutput() LookupSched
 
 func (o LookupSchedulerResultOutput) ToLookupSchedulerResultOutputWithContext(ctx context.Context) LookupSchedulerResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupSchedulerResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSchedulerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

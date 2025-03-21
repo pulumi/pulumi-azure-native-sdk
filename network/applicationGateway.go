@@ -13,9 +13,7 @@ import (
 )
 
 // Application gateway resource.
-// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2020-11-01.
-//
-// Other available API versions: 2019-06-01, 2019-08-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Azure REST API version: 2024-05-01. Prior API version in Azure Native 2.x: 2023-02-01.
 type ApplicationGateway struct {
 	pulumi.CustomResourceState
 
@@ -23,6 +21,8 @@ type ApplicationGateway struct {
 	AuthenticationCertificates ApplicationGatewayAuthenticationCertificateResponseArrayOutput `pulumi:"authenticationCertificates"`
 	// Autoscale Configuration.
 	AutoscaleConfiguration ApplicationGatewayAutoscaleConfigurationResponsePtrOutput `pulumi:"autoscaleConfiguration"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Backend address pool of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
 	BackendAddressPools ApplicationGatewayBackendAddressPoolResponseArrayOutput `pulumi:"backendAddressPools"`
 	// Backend http settings of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
@@ -522,6 +522,11 @@ func (o ApplicationGatewayOutput) AutoscaleConfiguration() ApplicationGatewayAut
 	return o.ApplyT(func(v *ApplicationGateway) ApplicationGatewayAutoscaleConfigurationResponsePtrOutput {
 		return v.AutoscaleConfiguration
 	}).(ApplicationGatewayAutoscaleConfigurationResponsePtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o ApplicationGatewayOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApplicationGateway) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Backend address pool of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).

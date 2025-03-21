@@ -13,12 +13,12 @@ import (
 )
 
 // A ImportSite
-// Azure REST API version: 2023-06-06.
-//
-// Other available API versions: 2023-10-01-preview, 2024-05-01-preview.
+// Azure REST API version: 2023-10-01-preview. Prior API version in Azure Native 2.x: 2023-06-06.
 type ImportSitesController struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets or sets the ARM ID of migration hub solution for SDS.
 	DiscoverySolutionId pulumi.StringPtrOutput `pulumi:"discoverySolutionId"`
 	// The geo-location where the resource lives
@@ -159,6 +159,11 @@ func (o ImportSitesControllerOutput) ToImportSitesControllerOutput() ImportSites
 
 func (o ImportSitesControllerOutput) ToImportSitesControllerOutputWithContext(ctx context.Context) ImportSitesControllerOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ImportSitesControllerOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ImportSitesController) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets the ARM ID of migration hub solution for SDS.

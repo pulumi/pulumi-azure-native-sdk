@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-azure-native-sdk/azuredatatransfer/v2
+module github.com/pulumi/pulumi-azure-native-sdk/azuredatatransfer/v3
 
 go 1.22
 

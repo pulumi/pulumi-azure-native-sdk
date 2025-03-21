@@ -12,9 +12,7 @@ import (
 )
 
 // Implements vCenter GET method.
-// Azure REST API version: 2022-07-15-preview.
-//
-// Other available API versions: 2023-03-01-preview, 2023-10-01, 2023-12-01.
+// Azure REST API version: 2023-12-01.
 func LookupVCenter(ctx *pulumi.Context, args *LookupVCenterArgs, opts ...pulumi.InvokeOption) (*LookupVCenterResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVCenterResult
@@ -34,6 +32,8 @@ type LookupVCenterArgs struct {
 
 // Defines the vCenter.
 type LookupVCenterResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets or sets the connection status to the vCenter.
 	ConnectionStatus string `pulumi:"connectionStatus"`
 	// Username / Password Credentials to connect to vcenter.
@@ -56,7 +56,7 @@ type LookupVCenterResult struct {
 	Name string `pulumi:"name"`
 	// Gets or sets the port of the vCenter.
 	Port *int `pulumi:"port"`
-	// Gets or sets the provisioning state.
+	// Gets the provisioning state.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// The resource status information.
 	Statuses []ResourceStatusResponse `pulumi:"statuses"`
@@ -105,6 +105,11 @@ func (o LookupVCenterResultOutput) ToLookupVCenterResultOutput() LookupVCenterRe
 
 func (o LookupVCenterResultOutput) ToLookupVCenterResultOutputWithContext(ctx context.Context) LookupVCenterResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupVCenterResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVCenterResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets the connection status to the vCenter.
@@ -162,7 +167,7 @@ func (o LookupVCenterResultOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupVCenterResult) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-// Gets or sets the provisioning state.
+// Gets the provisioning state.
 func (o LookupVCenterResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVCenterResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }

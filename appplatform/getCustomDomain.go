@@ -12,9 +12,7 @@ import (
 )
 
 // Get the custom domain of one lifecycle application.
-// Azure REST API version: 2023-05-01-preview.
-//
-// Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01, 2024-01-01-preview, 2024-05-01-preview.
+// Azure REST API version: 2024-01-01-preview.
 func LookupCustomDomain(ctx *pulumi.Context, args *LookupCustomDomainArgs, opts ...pulumi.InvokeOption) (*LookupCustomDomainResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCustomDomainResult
@@ -38,6 +36,8 @@ type LookupCustomDomainArgs struct {
 
 // Custom domain resource payload.
 type LookupCustomDomainResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource Id for the resource.
 	Id string `pulumi:"id"`
 	// The name of the resource.
@@ -87,6 +87,11 @@ func (o LookupCustomDomainResultOutput) ToLookupCustomDomainResultOutput() Looku
 
 func (o LookupCustomDomainResultOutput) ToLookupCustomDomainResultOutputWithContext(ctx context.Context) LookupCustomDomainResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupCustomDomainResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCustomDomainResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource Id for the resource.

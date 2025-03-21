@@ -32,6 +32,8 @@ type LookupSolutionArgs struct {
 
 // The container for solution.
 type LookupSolutionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource ID.
 	Id string `pulumi:"id"`
 	// Resource location
@@ -81,6 +83,11 @@ func (o LookupSolutionResultOutput) ToLookupSolutionResultOutput() LookupSolutio
 
 func (o LookupSolutionResultOutput) ToLookupSolutionResultOutputWithContext(ctx context.Context) LookupSolutionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupSolutionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSolutionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource ID.

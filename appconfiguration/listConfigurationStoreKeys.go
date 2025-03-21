@@ -12,9 +12,7 @@ import (
 )
 
 // Lists the access key for the specified configuration store.
-// Azure REST API version: 2023-03-01.
-//
-// Other available API versions: 2023-08-01-preview, 2023-09-01-preview, 2024-05-01.
+// Azure REST API version: 2024-05-01.
 func ListConfigurationStoreKeys(ctx *pulumi.Context, args *ListConfigurationStoreKeysArgs, opts ...pulumi.InvokeOption) (*ListConfigurationStoreKeysResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListConfigurationStoreKeysResult

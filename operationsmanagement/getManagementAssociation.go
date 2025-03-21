@@ -38,6 +38,8 @@ type LookupManagementAssociationArgs struct {
 
 // The container for solution.
 type LookupManagementAssociationResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource ID.
 	Id string `pulumi:"id"`
 	// Resource location
@@ -89,6 +91,11 @@ func (o LookupManagementAssociationResultOutput) ToLookupManagementAssociationRe
 
 func (o LookupManagementAssociationResultOutput) ToLookupManagementAssociationResultOutputWithContext(ctx context.Context) LookupManagementAssociationResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupManagementAssociationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupManagementAssociationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource ID.

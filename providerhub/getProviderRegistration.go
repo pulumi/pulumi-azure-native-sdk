@@ -29,6 +29,8 @@ type LookupProviderRegistrationArgs struct {
 }
 
 type LookupProviderRegistrationResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The name of the resource
@@ -70,6 +72,11 @@ func (o LookupProviderRegistrationResultOutput) ToLookupProviderRegistrationResu
 
 func (o LookupProviderRegistrationResultOutput) ToLookupProviderRegistrationResultOutputWithContext(ctx context.Context) LookupProviderRegistrationResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupProviderRegistrationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProviderRegistrationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

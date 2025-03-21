@@ -13,12 +13,14 @@ import (
 )
 
 // Change data capture resource type.
-// Azure REST API version: 2018-06-01.
+// Azure REST API version: 2018-06-01. Prior API version in Azure Native 2.x: 2018-06-01.
 type ChangeDataCapture struct {
 	pulumi.CustomResourceState
 
 	// A boolean to determine if the vnet configuration needs to be overwritten.
 	AllowVNetOverride pulumi.BoolPtrOutput `pulumi:"allowVNetOverride"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The description of the change data capture.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Etag identifies change in the resource.
@@ -186,6 +188,11 @@ func (o ChangeDataCaptureOutput) ToChangeDataCaptureOutputWithContext(ctx contex
 // A boolean to determine if the vnet configuration needs to be overwritten.
 func (o ChangeDataCaptureOutput) AllowVNetOverride() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ChangeDataCapture) pulumi.BoolPtrOutput { return v.AllowVNetOverride }).(pulumi.BoolPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o ChangeDataCaptureOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ChangeDataCapture) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The description of the change data capture.

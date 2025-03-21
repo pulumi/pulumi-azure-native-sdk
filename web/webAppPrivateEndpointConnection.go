@@ -13,12 +13,12 @@ import (
 )
 
 // Remote Private Endpoint Connection ARM resource.
-// Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2020-12-01.
-//
-// Other available API versions: 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
+// Azure REST API version: 2024-04-01. Prior API version in Azure Native 2.x: 2022-09-01.
 type WebAppPrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Private IPAddresses mapped to the remote private endpoint
 	IpAddresses pulumi.StringArrayOutput `pulumi:"ipAddresses"`
 	// Kind of resource.
@@ -188,6 +188,11 @@ func (o WebAppPrivateEndpointConnectionOutput) ToWebAppPrivateEndpointConnection
 
 func (o WebAppPrivateEndpointConnectionOutput) ToWebAppPrivateEndpointConnectionOutputWithContext(ctx context.Context) WebAppPrivateEndpointConnectionOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o WebAppPrivateEndpointConnectionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *WebAppPrivateEndpointConnection) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Private IPAddresses mapped to the remote private endpoint

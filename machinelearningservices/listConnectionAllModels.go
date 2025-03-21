@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Azure REST API version: 2024-10-01-preview.
+// Azure REST API version: 2025-01-01-preview.
 func ListConnectionAllModels(ctx *pulumi.Context, args *ListConnectionAllModelsArgs, opts ...pulumi.InvokeOption) (*ListConnectionAllModelsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListConnectionAllModelsResult

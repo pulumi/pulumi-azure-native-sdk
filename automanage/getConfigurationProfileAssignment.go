@@ -34,6 +34,8 @@ type LookupConfigurationProfileAssignmentArgs struct {
 
 // Configuration profile assignment is an association between a VM and automanage profile configuration.
 type LookupConfigurationProfileAssignmentResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// Azure resource id. Indicates if this resource is managed by another Azure resource.
@@ -83,6 +85,11 @@ func (o LookupConfigurationProfileAssignmentResultOutput) ToLookupConfigurationP
 
 func (o LookupConfigurationProfileAssignmentResultOutput) ToLookupConfigurationProfileAssignmentResultOutputWithContext(ctx context.Context) LookupConfigurationProfileAssignmentResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupConfigurationProfileAssignmentResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConfigurationProfileAssignmentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

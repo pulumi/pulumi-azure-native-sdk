@@ -13,8 +13,6 @@ import (
 
 // Gets the accessProfile for the specified role name of the managed cluster with a specified resource group and name.
 // Azure REST API version: 2020-03-01.
-//
-// Other available API versions: 2019-06-01.
 func ListManagedClusterAccessProfile(ctx *pulumi.Context, args *ListManagedClusterAccessProfileArgs, opts ...pulumi.InvokeOption) (*ListManagedClusterAccessProfileResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListManagedClusterAccessProfileResult

@@ -13,9 +13,7 @@ import (
 )
 
 // API details.
-// Azure REST API version: 2022-08-01. Prior API version in Azure Native 1.x: 2020-12-01.
-//
-// Other available API versions: 2017-03-01, 2018-06-01-preview, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
+// Azure REST API version: 2022-09-01-preview. Prior API version in Azure Native 2.x: 2022-08-01.
 type ProductApi struct {
 	pulumi.CustomResourceState
 
@@ -35,6 +33,8 @@ type ProductApi struct {
 	ApiVersionSetId pulumi.StringPtrOutput `pulumi:"apiVersionSetId"`
 	// Collection of authentication settings included into this API.
 	AuthenticationSettings AuthenticationSettingsContractResponsePtrOutput `pulumi:"authenticationSettings"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Contact information for the API.
 	Contact ApiContactInformationResponsePtrOutput `pulumi:"contact"`
 	// Description of the API. May include HTML formatting tags.
@@ -276,6 +276,11 @@ func (o ProductApiOutput) ApiVersionSetId() pulumi.StringPtrOutput {
 // Collection of authentication settings included into this API.
 func (o ProductApiOutput) AuthenticationSettings() AuthenticationSettingsContractResponsePtrOutput {
 	return o.ApplyT(func(v *ProductApi) AuthenticationSettingsContractResponsePtrOutput { return v.AuthenticationSettings }).(AuthenticationSettingsContractResponsePtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o ProductApiOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProductApi) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Contact information for the API.

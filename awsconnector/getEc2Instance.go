@@ -30,6 +30,8 @@ type LookupEc2InstanceArgs struct {
 
 // A Microsoft.AwsConnector resource
 type LookupEc2InstanceResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The name of the resource
@@ -83,6 +85,11 @@ func (o LookupEc2InstanceResultOutput) ToLookupEc2InstanceResultOutput() LookupE
 
 func (o LookupEc2InstanceResultOutput) ToLookupEc2InstanceResultOutputWithContext(ctx context.Context) LookupEc2InstanceResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupEc2InstanceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEc2InstanceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

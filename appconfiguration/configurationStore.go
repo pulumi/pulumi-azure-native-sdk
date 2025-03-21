@@ -13,14 +13,16 @@ import (
 )
 
 // The configuration store along with all resource properties. The Configuration Store will have all information to begin utilizing it.
-// Azure REST API version: 2023-03-01. Prior API version in Azure Native 1.x: 2020-06-01.
-//
-// Other available API versions: 2023-08-01-preview, 2023-09-01-preview, 2024-05-01.
+// Azure REST API version: 2024-05-01. Prior API version in Azure Native 2.x: 2023-03-01.
 type ConfigurationStore struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The creation date of configuration store.
 	CreationDate pulumi.StringOutput `pulumi:"creationDate"`
+	// Property specifying the configuration of data plane proxy for Azure Resource Manager (ARM).
+	DataPlaneProxy DataPlaneProxyPropertiesResponsePtrOutput `pulumi:"dataPlaneProxy"`
 	// Disables all authentication methods other than AAD authentication.
 	DisableLocalAuth pulumi.BoolPtrOutput `pulumi:"disableLocalAuth"`
 	// Property specifying whether protection against purge is enabled for this configuration store.
@@ -154,6 +156,8 @@ type configurationStoreArgs struct {
 	ConfigStoreName *string `pulumi:"configStoreName"`
 	// Indicates whether the configuration store need to be recovered.
 	CreateMode *CreateMode `pulumi:"createMode"`
+	// Property specifying the configuration of data plane proxy for Azure Resource Manager (ARM).
+	DataPlaneProxy *DataPlaneProxyProperties `pulumi:"dataPlaneProxy"`
 	// Disables all authentication methods other than AAD authentication.
 	DisableLocalAuth *bool `pulumi:"disableLocalAuth"`
 	// Property specifying whether protection against purge is enabled for this configuration store.
@@ -182,6 +186,8 @@ type ConfigurationStoreArgs struct {
 	ConfigStoreName pulumi.StringPtrInput
 	// Indicates whether the configuration store need to be recovered.
 	CreateMode CreateModePtrInput
+	// Property specifying the configuration of data plane proxy for Azure Resource Manager (ARM).
+	DataPlaneProxy DataPlaneProxyPropertiesPtrInput
 	// Disables all authentication methods other than AAD authentication.
 	DisableLocalAuth pulumi.BoolPtrInput
 	// Property specifying whether protection against purge is enabled for this configuration store.
@@ -241,9 +247,19 @@ func (o ConfigurationStoreOutput) ToConfigurationStoreOutputWithContext(ctx cont
 	return o
 }
 
+// The Azure API version of the resource.
+func (o ConfigurationStoreOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConfigurationStore) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The creation date of configuration store.
 func (o ConfigurationStoreOutput) CreationDate() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConfigurationStore) pulumi.StringOutput { return v.CreationDate }).(pulumi.StringOutput)
+}
+
+// Property specifying the configuration of data plane proxy for Azure Resource Manager (ARM).
+func (o ConfigurationStoreOutput) DataPlaneProxy() DataPlaneProxyPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *ConfigurationStore) DataPlaneProxyPropertiesResponsePtrOutput { return v.DataPlaneProxy }).(DataPlaneProxyPropertiesResponsePtrOutput)
 }
 
 // Disables all authentication methods other than AAD authentication.

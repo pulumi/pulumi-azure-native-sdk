@@ -34,6 +34,8 @@ type LookupIntegrationAccountAssemblyArgs struct {
 
 // The assembly definition.
 type LookupIntegrationAccountAssemblyResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The resource id.
 	Id string `pulumi:"id"`
 	// The resource location.
@@ -83,6 +85,11 @@ func (o LookupIntegrationAccountAssemblyResultOutput) ToLookupIntegrationAccount
 
 func (o LookupIntegrationAccountAssemblyResultOutput) ToLookupIntegrationAccountAssemblyResultOutputWithContext(ctx context.Context) LookupIntegrationAccountAssemblyResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupIntegrationAccountAssemblyResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIntegrationAccountAssemblyResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The resource id.

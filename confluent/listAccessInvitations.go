@@ -12,9 +12,7 @@ import (
 )
 
 // List invitations success response
-// Azure REST API version: 2023-08-22.
-//
-// Other available API versions: 2024-02-13, 2024-07-01.
+// Azure REST API version: 2024-07-01.
 func ListAccessInvitations(ctx *pulumi.Context, args *ListAccessInvitationsArgs, opts ...pulumi.InvokeOption) (*ListAccessInvitationsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListAccessInvitationsResult
@@ -28,7 +26,7 @@ func ListAccessInvitations(ctx *pulumi.Context, args *ListAccessInvitationsArgs,
 type ListAccessInvitationsArgs struct {
 	// Organization resource name
 	OrganizationName string `pulumi:"organizationName"`
-	// The name of the resource group. The name is case insensitive.
+	// Resource group name
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Search filters for the request
 	SearchFilters map[string]string `pulumi:"searchFilters"`
@@ -56,7 +54,7 @@ func ListAccessInvitationsOutput(ctx *pulumi.Context, args ListAccessInvitations
 type ListAccessInvitationsOutputArgs struct {
 	// Organization resource name
 	OrganizationName pulumi.StringInput `pulumi:"organizationName"`
-	// The name of the resource group. The name is case insensitive.
+	// Resource group name
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// Search filters for the request
 	SearchFilters pulumi.StringMapInput `pulumi:"searchFilters"`

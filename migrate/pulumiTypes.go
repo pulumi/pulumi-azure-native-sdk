@@ -4897,7 +4897,7 @@ type AvailabilitySetResourceSettings struct {
 	// Gets or sets the target resource group name.
 	TargetResourceGroupName *string `pulumi:"targetResourceGroupName"`
 	// Gets or sets the target Resource name.
-	TargetResourceName string `pulumi:"targetResourceName"`
+	TargetResourceName *string `pulumi:"targetResourceName"`
 	// Gets or sets the target update domain.
 	UpdateDomain *int `pulumi:"updateDomain"`
 }
@@ -4925,7 +4925,7 @@ type AvailabilitySetResourceSettingsArgs struct {
 	// Gets or sets the target resource group name.
 	TargetResourceGroupName pulumi.StringPtrInput `pulumi:"targetResourceGroupName"`
 	// Gets or sets the target Resource name.
-	TargetResourceName pulumi.StringInput `pulumi:"targetResourceName"`
+	TargetResourceName pulumi.StringPtrInput `pulumi:"targetResourceName"`
 	// Gets or sets the target update domain.
 	UpdateDomain pulumi.IntPtrInput `pulumi:"updateDomain"`
 }
@@ -5030,8 +5030,8 @@ func (o AvailabilitySetResourceSettingsOutput) TargetResourceGroupName() pulumi.
 }
 
 // Gets or sets the target Resource name.
-func (o AvailabilitySetResourceSettingsOutput) TargetResourceName() pulumi.StringOutput {
-	return o.ApplyT(func(v AvailabilitySetResourceSettings) string { return v.TargetResourceName }).(pulumi.StringOutput)
+func (o AvailabilitySetResourceSettingsOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvailabilitySetResourceSettings) *string { return v.TargetResourceName }).(pulumi.StringPtrOutput)
 }
 
 // Gets or sets the target update domain.
@@ -5110,7 +5110,7 @@ func (o AvailabilitySetResourceSettingsPtrOutput) TargetResourceName() pulumi.St
 		if v == nil {
 			return nil
 		}
-		return &v.TargetResourceName
+		return v.TargetResourceName
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -5136,7 +5136,7 @@ type AvailabilitySetResourceSettingsResponse struct {
 	// Gets or sets the target resource group name.
 	TargetResourceGroupName *string `pulumi:"targetResourceGroupName"`
 	// Gets or sets the target Resource name.
-	TargetResourceName string `pulumi:"targetResourceName"`
+	TargetResourceName *string `pulumi:"targetResourceName"`
 	// Gets or sets the target update domain.
 	UpdateDomain *int `pulumi:"updateDomain"`
 }
@@ -5178,8 +5178,8 @@ func (o AvailabilitySetResourceSettingsResponseOutput) TargetResourceGroupName()
 }
 
 // Gets or sets the target Resource name.
-func (o AvailabilitySetResourceSettingsResponseOutput) TargetResourceName() pulumi.StringOutput {
-	return o.ApplyT(func(v AvailabilitySetResourceSettingsResponse) string { return v.TargetResourceName }).(pulumi.StringOutput)
+func (o AvailabilitySetResourceSettingsResponseOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvailabilitySetResourceSettingsResponse) *string { return v.TargetResourceName }).(pulumi.StringPtrOutput)
 }
 
 // Gets or sets the target update domain.
@@ -5258,7 +5258,7 @@ func (o AvailabilitySetResourceSettingsResponsePtrOutput) TargetResourceName() p
 		if v == nil {
 			return nil
 		}
-		return &v.TargetResourceName
+		return v.TargetResourceName
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -5270,6 +5270,952 @@ func (o AvailabilitySetResourceSettingsResponsePtrOutput) UpdateDomain() pulumi.
 		}
 		return v.UpdateDomain
 	}).(pulumi.IntPtrOutput)
+}
+
+// Details on the Estimated External Storage for AVS Assessment.
+type AvsEstimatedExternalStorageResponse struct {
+	// Total monthly cost for type of storage.
+	MonthlyPrice *float64 `pulumi:"monthlyPrice"`
+	// Recommended External Storage.
+	StorageType *string `pulumi:"storageType"`
+	// Predicted storage utilization.
+	StorageUtilization *float64 `pulumi:"storageUtilization"`
+	// Predicted total Storage used in GB.
+	TotalStorageInGB *float64 `pulumi:"totalStorageInGB"`
+}
+
+// Details on the Estimated External Storage for AVS Assessment.
+type AvsEstimatedExternalStorageResponseOutput struct{ *pulumi.OutputState }
+
+func (AvsEstimatedExternalStorageResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AvsEstimatedExternalStorageResponse)(nil)).Elem()
+}
+
+func (o AvsEstimatedExternalStorageResponseOutput) ToAvsEstimatedExternalStorageResponseOutput() AvsEstimatedExternalStorageResponseOutput {
+	return o
+}
+
+func (o AvsEstimatedExternalStorageResponseOutput) ToAvsEstimatedExternalStorageResponseOutputWithContext(ctx context.Context) AvsEstimatedExternalStorageResponseOutput {
+	return o
+}
+
+// Total monthly cost for type of storage.
+func (o AvsEstimatedExternalStorageResponseOutput) MonthlyPrice() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AvsEstimatedExternalStorageResponse) *float64 { return v.MonthlyPrice }).(pulumi.Float64PtrOutput)
+}
+
+// Recommended External Storage.
+func (o AvsEstimatedExternalStorageResponseOutput) StorageType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvsEstimatedExternalStorageResponse) *string { return v.StorageType }).(pulumi.StringPtrOutput)
+}
+
+// Predicted storage utilization.
+func (o AvsEstimatedExternalStorageResponseOutput) StorageUtilization() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AvsEstimatedExternalStorageResponse) *float64 { return v.StorageUtilization }).(pulumi.Float64PtrOutput)
+}
+
+// Predicted total Storage used in GB.
+func (o AvsEstimatedExternalStorageResponseOutput) TotalStorageInGB() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AvsEstimatedExternalStorageResponse) *float64 { return v.TotalStorageInGB }).(pulumi.Float64PtrOutput)
+}
+
+type AvsEstimatedExternalStorageResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AvsEstimatedExternalStorageResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AvsEstimatedExternalStorageResponse)(nil)).Elem()
+}
+
+func (o AvsEstimatedExternalStorageResponseArrayOutput) ToAvsEstimatedExternalStorageResponseArrayOutput() AvsEstimatedExternalStorageResponseArrayOutput {
+	return o
+}
+
+func (o AvsEstimatedExternalStorageResponseArrayOutput) ToAvsEstimatedExternalStorageResponseArrayOutputWithContext(ctx context.Context) AvsEstimatedExternalStorageResponseArrayOutput {
+	return o
+}
+
+func (o AvsEstimatedExternalStorageResponseArrayOutput) Index(i pulumi.IntInput) AvsEstimatedExternalStorageResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AvsEstimatedExternalStorageResponse {
+		return vs[0].([]AvsEstimatedExternalStorageResponse)[vs[1].(int)]
+	}).(AvsEstimatedExternalStorageResponseOutput)
+}
+
+// Details on the Estimated Network Costs for AVS Assessment.
+type AvsEstimatedNetworkResponse struct {
+	// Monthly cost for network type.
+	MonthlyPrice *float64 `pulumi:"monthlyPrice"`
+	// Recommended Network Sku.
+	NetworkType *string `pulumi:"networkType"`
+}
+
+// Details on the Estimated Network Costs for AVS Assessment.
+type AvsEstimatedNetworkResponseOutput struct{ *pulumi.OutputState }
+
+func (AvsEstimatedNetworkResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AvsEstimatedNetworkResponse)(nil)).Elem()
+}
+
+func (o AvsEstimatedNetworkResponseOutput) ToAvsEstimatedNetworkResponseOutput() AvsEstimatedNetworkResponseOutput {
+	return o
+}
+
+func (o AvsEstimatedNetworkResponseOutput) ToAvsEstimatedNetworkResponseOutputWithContext(ctx context.Context) AvsEstimatedNetworkResponseOutput {
+	return o
+}
+
+// Monthly cost for network type.
+func (o AvsEstimatedNetworkResponseOutput) MonthlyPrice() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AvsEstimatedNetworkResponse) *float64 { return v.MonthlyPrice }).(pulumi.Float64PtrOutput)
+}
+
+// Recommended Network Sku.
+func (o AvsEstimatedNetworkResponseOutput) NetworkType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvsEstimatedNetworkResponse) *string { return v.NetworkType }).(pulumi.StringPtrOutput)
+}
+
+type AvsEstimatedNetworkResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AvsEstimatedNetworkResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AvsEstimatedNetworkResponse)(nil)).Elem()
+}
+
+func (o AvsEstimatedNetworkResponseArrayOutput) ToAvsEstimatedNetworkResponseArrayOutput() AvsEstimatedNetworkResponseArrayOutput {
+	return o
+}
+
+func (o AvsEstimatedNetworkResponseArrayOutput) ToAvsEstimatedNetworkResponseArrayOutputWithContext(ctx context.Context) AvsEstimatedNetworkResponseArrayOutput {
+	return o
+}
+
+func (o AvsEstimatedNetworkResponseArrayOutput) Index(i pulumi.IntInput) AvsEstimatedNetworkResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AvsEstimatedNetworkResponse {
+		return vs[0].([]AvsEstimatedNetworkResponse)[vs[1].(int)]
+	}).(AvsEstimatedNetworkResponseOutput)
+}
+
+// Details on the Estimated nodes for AVS Assessment.
+type AvsEstimatedNodeResponse struct {
+	// Predicted CPU utilization.
+	CpuUtilization *float64 `pulumi:"cpuUtilization"`
+	// FttRaidLevel recommended for Node.
+	FttRaidLevel *string `pulumi:"fttRaidLevel"`
+	// Total monthly cost for type and number of nodes.
+	MonthlyPrice *float64 `pulumi:"monthlyPrice"`
+	// Number of nodes that will be needed.
+	NodeNumber *int `pulumi:"nodeNumber"`
+	// Recommended SKU.
+	NodeType *string `pulumi:"nodeType"`
+	// Pricing model indicates what hour multiplier to use while estimating the Nodes cost.
+	PricingModel *string `pulumi:"pricingModel"`
+	// Predicted RAM utilization.
+	RamUtilization *float64 `pulumi:"ramUtilization"`
+	// Predicted storage utilization.
+	StorageUtilization *float64 `pulumi:"storageUtilization"`
+	// Predicted total CPU cores across the set of nodes.
+	TotalCpu *float64 `pulumi:"totalCpu"`
+	// Predicted total RAM used in GB.
+	TotalRam *float64 `pulumi:"totalRam"`
+	// Predicted total Storage used in GB.
+	TotalStorage *float64 `pulumi:"totalStorage"`
+}
+
+// Details on the Estimated nodes for AVS Assessment.
+type AvsEstimatedNodeResponseOutput struct{ *pulumi.OutputState }
+
+func (AvsEstimatedNodeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AvsEstimatedNodeResponse)(nil)).Elem()
+}
+
+func (o AvsEstimatedNodeResponseOutput) ToAvsEstimatedNodeResponseOutput() AvsEstimatedNodeResponseOutput {
+	return o
+}
+
+func (o AvsEstimatedNodeResponseOutput) ToAvsEstimatedNodeResponseOutputWithContext(ctx context.Context) AvsEstimatedNodeResponseOutput {
+	return o
+}
+
+// Predicted CPU utilization.
+func (o AvsEstimatedNodeResponseOutput) CpuUtilization() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AvsEstimatedNodeResponse) *float64 { return v.CpuUtilization }).(pulumi.Float64PtrOutput)
+}
+
+// FttRaidLevel recommended for Node.
+func (o AvsEstimatedNodeResponseOutput) FttRaidLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvsEstimatedNodeResponse) *string { return v.FttRaidLevel }).(pulumi.StringPtrOutput)
+}
+
+// Total monthly cost for type and number of nodes.
+func (o AvsEstimatedNodeResponseOutput) MonthlyPrice() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AvsEstimatedNodeResponse) *float64 { return v.MonthlyPrice }).(pulumi.Float64PtrOutput)
+}
+
+// Number of nodes that will be needed.
+func (o AvsEstimatedNodeResponseOutput) NodeNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AvsEstimatedNodeResponse) *int { return v.NodeNumber }).(pulumi.IntPtrOutput)
+}
+
+// Recommended SKU.
+func (o AvsEstimatedNodeResponseOutput) NodeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvsEstimatedNodeResponse) *string { return v.NodeType }).(pulumi.StringPtrOutput)
+}
+
+// Pricing model indicates what hour multiplier to use while estimating the Nodes cost.
+func (o AvsEstimatedNodeResponseOutput) PricingModel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvsEstimatedNodeResponse) *string { return v.PricingModel }).(pulumi.StringPtrOutput)
+}
+
+// Predicted RAM utilization.
+func (o AvsEstimatedNodeResponseOutput) RamUtilization() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AvsEstimatedNodeResponse) *float64 { return v.RamUtilization }).(pulumi.Float64PtrOutput)
+}
+
+// Predicted storage utilization.
+func (o AvsEstimatedNodeResponseOutput) StorageUtilization() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AvsEstimatedNodeResponse) *float64 { return v.StorageUtilization }).(pulumi.Float64PtrOutput)
+}
+
+// Predicted total CPU cores across the set of nodes.
+func (o AvsEstimatedNodeResponseOutput) TotalCpu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AvsEstimatedNodeResponse) *float64 { return v.TotalCpu }).(pulumi.Float64PtrOutput)
+}
+
+// Predicted total RAM used in GB.
+func (o AvsEstimatedNodeResponseOutput) TotalRam() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AvsEstimatedNodeResponse) *float64 { return v.TotalRam }).(pulumi.Float64PtrOutput)
+}
+
+// Predicted total Storage used in GB.
+func (o AvsEstimatedNodeResponseOutput) TotalStorage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AvsEstimatedNodeResponse) *float64 { return v.TotalStorage }).(pulumi.Float64PtrOutput)
+}
+
+type AvsEstimatedNodeResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AvsEstimatedNodeResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AvsEstimatedNodeResponse)(nil)).Elem()
+}
+
+func (o AvsEstimatedNodeResponseArrayOutput) ToAvsEstimatedNodeResponseArrayOutput() AvsEstimatedNodeResponseArrayOutput {
+	return o
+}
+
+func (o AvsEstimatedNodeResponseArrayOutput) ToAvsEstimatedNodeResponseArrayOutputWithContext(ctx context.Context) AvsEstimatedNodeResponseArrayOutput {
+	return o
+}
+
+func (o AvsEstimatedNodeResponseArrayOutput) Index(i pulumi.IntInput) AvsEstimatedNodeResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AvsEstimatedNodeResponse {
+		return vs[0].([]AvsEstimatedNodeResponse)[vs[1].(int)]
+	}).(AvsEstimatedNodeResponseOutput)
+}
+
+// Azure Arc Management settings.
+type AzureArcManagementSettings struct {
+	// Gets the azure arc monitoring settings.
+	MonitoringSettings AzureArcMonitoringSettings `pulumi:"monitoringSettings"`
+}
+
+// AzureArcManagementSettingsInput is an input type that accepts AzureArcManagementSettingsArgs and AzureArcManagementSettingsOutput values.
+// You can construct a concrete instance of `AzureArcManagementSettingsInput` via:
+//
+//	AzureArcManagementSettingsArgs{...}
+type AzureArcManagementSettingsInput interface {
+	pulumi.Input
+
+	ToAzureArcManagementSettingsOutput() AzureArcManagementSettingsOutput
+	ToAzureArcManagementSettingsOutputWithContext(context.Context) AzureArcManagementSettingsOutput
+}
+
+// Azure Arc Management settings.
+type AzureArcManagementSettingsArgs struct {
+	// Gets the azure arc monitoring settings.
+	MonitoringSettings AzureArcMonitoringSettingsInput `pulumi:"monitoringSettings"`
+}
+
+func (AzureArcManagementSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureArcManagementSettings)(nil)).Elem()
+}
+
+func (i AzureArcManagementSettingsArgs) ToAzureArcManagementSettingsOutput() AzureArcManagementSettingsOutput {
+	return i.ToAzureArcManagementSettingsOutputWithContext(context.Background())
+}
+
+func (i AzureArcManagementSettingsArgs) ToAzureArcManagementSettingsOutputWithContext(ctx context.Context) AzureArcManagementSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureArcManagementSettingsOutput)
+}
+
+func (i AzureArcManagementSettingsArgs) ToAzureArcManagementSettingsPtrOutput() AzureArcManagementSettingsPtrOutput {
+	return i.ToAzureArcManagementSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i AzureArcManagementSettingsArgs) ToAzureArcManagementSettingsPtrOutputWithContext(ctx context.Context) AzureArcManagementSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureArcManagementSettingsOutput).ToAzureArcManagementSettingsPtrOutputWithContext(ctx)
+}
+
+// AzureArcManagementSettingsPtrInput is an input type that accepts AzureArcManagementSettingsArgs, AzureArcManagementSettingsPtr and AzureArcManagementSettingsPtrOutput values.
+// You can construct a concrete instance of `AzureArcManagementSettingsPtrInput` via:
+//
+//	        AzureArcManagementSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AzureArcManagementSettingsPtrInput interface {
+	pulumi.Input
+
+	ToAzureArcManagementSettingsPtrOutput() AzureArcManagementSettingsPtrOutput
+	ToAzureArcManagementSettingsPtrOutputWithContext(context.Context) AzureArcManagementSettingsPtrOutput
+}
+
+type azureArcManagementSettingsPtrType AzureArcManagementSettingsArgs
+
+func AzureArcManagementSettingsPtr(v *AzureArcManagementSettingsArgs) AzureArcManagementSettingsPtrInput {
+	return (*azureArcManagementSettingsPtrType)(v)
+}
+
+func (*azureArcManagementSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureArcManagementSettings)(nil)).Elem()
+}
+
+func (i *azureArcManagementSettingsPtrType) ToAzureArcManagementSettingsPtrOutput() AzureArcManagementSettingsPtrOutput {
+	return i.ToAzureArcManagementSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *azureArcManagementSettingsPtrType) ToAzureArcManagementSettingsPtrOutputWithContext(ctx context.Context) AzureArcManagementSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureArcManagementSettingsPtrOutput)
+}
+
+// Azure Arc Management settings.
+type AzureArcManagementSettingsOutput struct{ *pulumi.OutputState }
+
+func (AzureArcManagementSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureArcManagementSettings)(nil)).Elem()
+}
+
+func (o AzureArcManagementSettingsOutput) ToAzureArcManagementSettingsOutput() AzureArcManagementSettingsOutput {
+	return o
+}
+
+func (o AzureArcManagementSettingsOutput) ToAzureArcManagementSettingsOutputWithContext(ctx context.Context) AzureArcManagementSettingsOutput {
+	return o
+}
+
+func (o AzureArcManagementSettingsOutput) ToAzureArcManagementSettingsPtrOutput() AzureArcManagementSettingsPtrOutput {
+	return o.ToAzureArcManagementSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o AzureArcManagementSettingsOutput) ToAzureArcManagementSettingsPtrOutputWithContext(ctx context.Context) AzureArcManagementSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureArcManagementSettings) *AzureArcManagementSettings {
+		return &v
+	}).(AzureArcManagementSettingsPtrOutput)
+}
+
+// Gets the azure arc monitoring settings.
+func (o AzureArcManagementSettingsOutput) MonitoringSettings() AzureArcMonitoringSettingsOutput {
+	return o.ApplyT(func(v AzureArcManagementSettings) AzureArcMonitoringSettings { return v.MonitoringSettings }).(AzureArcMonitoringSettingsOutput)
+}
+
+type AzureArcManagementSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (AzureArcManagementSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureArcManagementSettings)(nil)).Elem()
+}
+
+func (o AzureArcManagementSettingsPtrOutput) ToAzureArcManagementSettingsPtrOutput() AzureArcManagementSettingsPtrOutput {
+	return o
+}
+
+func (o AzureArcManagementSettingsPtrOutput) ToAzureArcManagementSettingsPtrOutputWithContext(ctx context.Context) AzureArcManagementSettingsPtrOutput {
+	return o
+}
+
+func (o AzureArcManagementSettingsPtrOutput) Elem() AzureArcManagementSettingsOutput {
+	return o.ApplyT(func(v *AzureArcManagementSettings) AzureArcManagementSettings {
+		if v != nil {
+			return *v
+		}
+		var ret AzureArcManagementSettings
+		return ret
+	}).(AzureArcManagementSettingsOutput)
+}
+
+// Gets the azure arc monitoring settings.
+func (o AzureArcManagementSettingsPtrOutput) MonitoringSettings() AzureArcMonitoringSettingsPtrOutput {
+	return o.ApplyT(func(v *AzureArcManagementSettings) *AzureArcMonitoringSettings {
+		if v == nil {
+			return nil
+		}
+		return &v.MonitoringSettings
+	}).(AzureArcMonitoringSettingsPtrOutput)
+}
+
+// Azure Arc Management settings.
+type AzureArcManagementSettingsResponse struct {
+	// Gets the azure arc monitoring settings.
+	MonitoringSettings AzureArcMonitoringSettingsResponse `pulumi:"monitoringSettings"`
+}
+
+// Azure Arc Management settings.
+type AzureArcManagementSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (AzureArcManagementSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureArcManagementSettingsResponse)(nil)).Elem()
+}
+
+func (o AzureArcManagementSettingsResponseOutput) ToAzureArcManagementSettingsResponseOutput() AzureArcManagementSettingsResponseOutput {
+	return o
+}
+
+func (o AzureArcManagementSettingsResponseOutput) ToAzureArcManagementSettingsResponseOutputWithContext(ctx context.Context) AzureArcManagementSettingsResponseOutput {
+	return o
+}
+
+// Gets the azure arc monitoring settings.
+func (o AzureArcManagementSettingsResponseOutput) MonitoringSettings() AzureArcMonitoringSettingsResponseOutput {
+	return o.ApplyT(func(v AzureArcManagementSettingsResponse) AzureArcMonitoringSettingsResponse {
+		return v.MonitoringSettings
+	}).(AzureArcMonitoringSettingsResponseOutput)
+}
+
+type AzureArcManagementSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AzureArcManagementSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureArcManagementSettingsResponse)(nil)).Elem()
+}
+
+func (o AzureArcManagementSettingsResponsePtrOutput) ToAzureArcManagementSettingsResponsePtrOutput() AzureArcManagementSettingsResponsePtrOutput {
+	return o
+}
+
+func (o AzureArcManagementSettingsResponsePtrOutput) ToAzureArcManagementSettingsResponsePtrOutputWithContext(ctx context.Context) AzureArcManagementSettingsResponsePtrOutput {
+	return o
+}
+
+func (o AzureArcManagementSettingsResponsePtrOutput) Elem() AzureArcManagementSettingsResponseOutput {
+	return o.ApplyT(func(v *AzureArcManagementSettingsResponse) AzureArcManagementSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AzureArcManagementSettingsResponse
+		return ret
+	}).(AzureArcManagementSettingsResponseOutput)
+}
+
+// Gets the azure arc monitoring settings.
+func (o AzureArcManagementSettingsResponsePtrOutput) MonitoringSettings() AzureArcMonitoringSettingsResponsePtrOutput {
+	return o.ApplyT(func(v *AzureArcManagementSettingsResponse) *AzureArcMonitoringSettingsResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.MonitoringSettings
+	}).(AzureArcMonitoringSettingsResponsePtrOutput)
+}
+
+// Azure Arc Monitoring settings.
+type AzureArcMonitoringSettings struct {
+	// Number of alert rules settings.
+	AlertRulesCount int `pulumi:"alertRulesCount"`
+	// Logs volume settings.
+	LogsVolumeInGB float64 `pulumi:"logsVolumeInGB"`
+}
+
+// AzureArcMonitoringSettingsInput is an input type that accepts AzureArcMonitoringSettingsArgs and AzureArcMonitoringSettingsOutput values.
+// You can construct a concrete instance of `AzureArcMonitoringSettingsInput` via:
+//
+//	AzureArcMonitoringSettingsArgs{...}
+type AzureArcMonitoringSettingsInput interface {
+	pulumi.Input
+
+	ToAzureArcMonitoringSettingsOutput() AzureArcMonitoringSettingsOutput
+	ToAzureArcMonitoringSettingsOutputWithContext(context.Context) AzureArcMonitoringSettingsOutput
+}
+
+// Azure Arc Monitoring settings.
+type AzureArcMonitoringSettingsArgs struct {
+	// Number of alert rules settings.
+	AlertRulesCount pulumi.IntInput `pulumi:"alertRulesCount"`
+	// Logs volume settings.
+	LogsVolumeInGB pulumi.Float64Input `pulumi:"logsVolumeInGB"`
+}
+
+func (AzureArcMonitoringSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureArcMonitoringSettings)(nil)).Elem()
+}
+
+func (i AzureArcMonitoringSettingsArgs) ToAzureArcMonitoringSettingsOutput() AzureArcMonitoringSettingsOutput {
+	return i.ToAzureArcMonitoringSettingsOutputWithContext(context.Background())
+}
+
+func (i AzureArcMonitoringSettingsArgs) ToAzureArcMonitoringSettingsOutputWithContext(ctx context.Context) AzureArcMonitoringSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureArcMonitoringSettingsOutput)
+}
+
+func (i AzureArcMonitoringSettingsArgs) ToAzureArcMonitoringSettingsPtrOutput() AzureArcMonitoringSettingsPtrOutput {
+	return i.ToAzureArcMonitoringSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i AzureArcMonitoringSettingsArgs) ToAzureArcMonitoringSettingsPtrOutputWithContext(ctx context.Context) AzureArcMonitoringSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureArcMonitoringSettingsOutput).ToAzureArcMonitoringSettingsPtrOutputWithContext(ctx)
+}
+
+// AzureArcMonitoringSettingsPtrInput is an input type that accepts AzureArcMonitoringSettingsArgs, AzureArcMonitoringSettingsPtr and AzureArcMonitoringSettingsPtrOutput values.
+// You can construct a concrete instance of `AzureArcMonitoringSettingsPtrInput` via:
+//
+//	        AzureArcMonitoringSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AzureArcMonitoringSettingsPtrInput interface {
+	pulumi.Input
+
+	ToAzureArcMonitoringSettingsPtrOutput() AzureArcMonitoringSettingsPtrOutput
+	ToAzureArcMonitoringSettingsPtrOutputWithContext(context.Context) AzureArcMonitoringSettingsPtrOutput
+}
+
+type azureArcMonitoringSettingsPtrType AzureArcMonitoringSettingsArgs
+
+func AzureArcMonitoringSettingsPtr(v *AzureArcMonitoringSettingsArgs) AzureArcMonitoringSettingsPtrInput {
+	return (*azureArcMonitoringSettingsPtrType)(v)
+}
+
+func (*azureArcMonitoringSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureArcMonitoringSettings)(nil)).Elem()
+}
+
+func (i *azureArcMonitoringSettingsPtrType) ToAzureArcMonitoringSettingsPtrOutput() AzureArcMonitoringSettingsPtrOutput {
+	return i.ToAzureArcMonitoringSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *azureArcMonitoringSettingsPtrType) ToAzureArcMonitoringSettingsPtrOutputWithContext(ctx context.Context) AzureArcMonitoringSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureArcMonitoringSettingsPtrOutput)
+}
+
+// Azure Arc Monitoring settings.
+type AzureArcMonitoringSettingsOutput struct{ *pulumi.OutputState }
+
+func (AzureArcMonitoringSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureArcMonitoringSettings)(nil)).Elem()
+}
+
+func (o AzureArcMonitoringSettingsOutput) ToAzureArcMonitoringSettingsOutput() AzureArcMonitoringSettingsOutput {
+	return o
+}
+
+func (o AzureArcMonitoringSettingsOutput) ToAzureArcMonitoringSettingsOutputWithContext(ctx context.Context) AzureArcMonitoringSettingsOutput {
+	return o
+}
+
+func (o AzureArcMonitoringSettingsOutput) ToAzureArcMonitoringSettingsPtrOutput() AzureArcMonitoringSettingsPtrOutput {
+	return o.ToAzureArcMonitoringSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o AzureArcMonitoringSettingsOutput) ToAzureArcMonitoringSettingsPtrOutputWithContext(ctx context.Context) AzureArcMonitoringSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureArcMonitoringSettings) *AzureArcMonitoringSettings {
+		return &v
+	}).(AzureArcMonitoringSettingsPtrOutput)
+}
+
+// Number of alert rules settings.
+func (o AzureArcMonitoringSettingsOutput) AlertRulesCount() pulumi.IntOutput {
+	return o.ApplyT(func(v AzureArcMonitoringSettings) int { return v.AlertRulesCount }).(pulumi.IntOutput)
+}
+
+// Logs volume settings.
+func (o AzureArcMonitoringSettingsOutput) LogsVolumeInGB() pulumi.Float64Output {
+	return o.ApplyT(func(v AzureArcMonitoringSettings) float64 { return v.LogsVolumeInGB }).(pulumi.Float64Output)
+}
+
+type AzureArcMonitoringSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (AzureArcMonitoringSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureArcMonitoringSettings)(nil)).Elem()
+}
+
+func (o AzureArcMonitoringSettingsPtrOutput) ToAzureArcMonitoringSettingsPtrOutput() AzureArcMonitoringSettingsPtrOutput {
+	return o
+}
+
+func (o AzureArcMonitoringSettingsPtrOutput) ToAzureArcMonitoringSettingsPtrOutputWithContext(ctx context.Context) AzureArcMonitoringSettingsPtrOutput {
+	return o
+}
+
+func (o AzureArcMonitoringSettingsPtrOutput) Elem() AzureArcMonitoringSettingsOutput {
+	return o.ApplyT(func(v *AzureArcMonitoringSettings) AzureArcMonitoringSettings {
+		if v != nil {
+			return *v
+		}
+		var ret AzureArcMonitoringSettings
+		return ret
+	}).(AzureArcMonitoringSettingsOutput)
+}
+
+// Number of alert rules settings.
+func (o AzureArcMonitoringSettingsPtrOutput) AlertRulesCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AzureArcMonitoringSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.AlertRulesCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Logs volume settings.
+func (o AzureArcMonitoringSettingsPtrOutput) LogsVolumeInGB() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *AzureArcMonitoringSettings) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.LogsVolumeInGB
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Azure Arc Monitoring settings.
+type AzureArcMonitoringSettingsResponse struct {
+	// Number of alert rules settings.
+	AlertRulesCount int `pulumi:"alertRulesCount"`
+	// Logs volume settings.
+	LogsVolumeInGB float64 `pulumi:"logsVolumeInGB"`
+}
+
+// Azure Arc Monitoring settings.
+type AzureArcMonitoringSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (AzureArcMonitoringSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureArcMonitoringSettingsResponse)(nil)).Elem()
+}
+
+func (o AzureArcMonitoringSettingsResponseOutput) ToAzureArcMonitoringSettingsResponseOutput() AzureArcMonitoringSettingsResponseOutput {
+	return o
+}
+
+func (o AzureArcMonitoringSettingsResponseOutput) ToAzureArcMonitoringSettingsResponseOutputWithContext(ctx context.Context) AzureArcMonitoringSettingsResponseOutput {
+	return o
+}
+
+// Number of alert rules settings.
+func (o AzureArcMonitoringSettingsResponseOutput) AlertRulesCount() pulumi.IntOutput {
+	return o.ApplyT(func(v AzureArcMonitoringSettingsResponse) int { return v.AlertRulesCount }).(pulumi.IntOutput)
+}
+
+// Logs volume settings.
+func (o AzureArcMonitoringSettingsResponseOutput) LogsVolumeInGB() pulumi.Float64Output {
+	return o.ApplyT(func(v AzureArcMonitoringSettingsResponse) float64 { return v.LogsVolumeInGB }).(pulumi.Float64Output)
+}
+
+type AzureArcMonitoringSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AzureArcMonitoringSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureArcMonitoringSettingsResponse)(nil)).Elem()
+}
+
+func (o AzureArcMonitoringSettingsResponsePtrOutput) ToAzureArcMonitoringSettingsResponsePtrOutput() AzureArcMonitoringSettingsResponsePtrOutput {
+	return o
+}
+
+func (o AzureArcMonitoringSettingsResponsePtrOutput) ToAzureArcMonitoringSettingsResponsePtrOutputWithContext(ctx context.Context) AzureArcMonitoringSettingsResponsePtrOutput {
+	return o
+}
+
+func (o AzureArcMonitoringSettingsResponsePtrOutput) Elem() AzureArcMonitoringSettingsResponseOutput {
+	return o.ApplyT(func(v *AzureArcMonitoringSettingsResponse) AzureArcMonitoringSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AzureArcMonitoringSettingsResponse
+		return ret
+	}).(AzureArcMonitoringSettingsResponseOutput)
+}
+
+// Number of alert rules settings.
+func (o AzureArcMonitoringSettingsResponsePtrOutput) AlertRulesCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AzureArcMonitoringSettingsResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.AlertRulesCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Logs volume settings.
+func (o AzureArcMonitoringSettingsResponsePtrOutput) LogsVolumeInGB() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *AzureArcMonitoringSettingsResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.LogsVolumeInGB
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Azure arc settings for a business case.
+type AzureArcSettings struct {
+	// AzureArc state indicates whether to include azure arc related costs in on-premises or not.
+	AzureArcState string `pulumi:"azureArcState"`
+	// Gets Azure arc labour cost percentage.
+	LaborCostPercentage *float64 `pulumi:"laborCostPercentage"`
+	// Management settings.
+	ManagementSettings *AzureArcManagementSettings `pulumi:"managementSettings"`
+}
+
+// AzureArcSettingsInput is an input type that accepts AzureArcSettingsArgs and AzureArcSettingsOutput values.
+// You can construct a concrete instance of `AzureArcSettingsInput` via:
+//
+//	AzureArcSettingsArgs{...}
+type AzureArcSettingsInput interface {
+	pulumi.Input
+
+	ToAzureArcSettingsOutput() AzureArcSettingsOutput
+	ToAzureArcSettingsOutputWithContext(context.Context) AzureArcSettingsOutput
+}
+
+// Azure arc settings for a business case.
+type AzureArcSettingsArgs struct {
+	// AzureArc state indicates whether to include azure arc related costs in on-premises or not.
+	AzureArcState pulumi.StringInput `pulumi:"azureArcState"`
+	// Gets Azure arc labour cost percentage.
+	LaborCostPercentage pulumi.Float64PtrInput `pulumi:"laborCostPercentage"`
+	// Management settings.
+	ManagementSettings AzureArcManagementSettingsPtrInput `pulumi:"managementSettings"`
+}
+
+func (AzureArcSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureArcSettings)(nil)).Elem()
+}
+
+func (i AzureArcSettingsArgs) ToAzureArcSettingsOutput() AzureArcSettingsOutput {
+	return i.ToAzureArcSettingsOutputWithContext(context.Background())
+}
+
+func (i AzureArcSettingsArgs) ToAzureArcSettingsOutputWithContext(ctx context.Context) AzureArcSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureArcSettingsOutput)
+}
+
+func (i AzureArcSettingsArgs) ToAzureArcSettingsPtrOutput() AzureArcSettingsPtrOutput {
+	return i.ToAzureArcSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i AzureArcSettingsArgs) ToAzureArcSettingsPtrOutputWithContext(ctx context.Context) AzureArcSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureArcSettingsOutput).ToAzureArcSettingsPtrOutputWithContext(ctx)
+}
+
+// AzureArcSettingsPtrInput is an input type that accepts AzureArcSettingsArgs, AzureArcSettingsPtr and AzureArcSettingsPtrOutput values.
+// You can construct a concrete instance of `AzureArcSettingsPtrInput` via:
+//
+//	        AzureArcSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AzureArcSettingsPtrInput interface {
+	pulumi.Input
+
+	ToAzureArcSettingsPtrOutput() AzureArcSettingsPtrOutput
+	ToAzureArcSettingsPtrOutputWithContext(context.Context) AzureArcSettingsPtrOutput
+}
+
+type azureArcSettingsPtrType AzureArcSettingsArgs
+
+func AzureArcSettingsPtr(v *AzureArcSettingsArgs) AzureArcSettingsPtrInput {
+	return (*azureArcSettingsPtrType)(v)
+}
+
+func (*azureArcSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureArcSettings)(nil)).Elem()
+}
+
+func (i *azureArcSettingsPtrType) ToAzureArcSettingsPtrOutput() AzureArcSettingsPtrOutput {
+	return i.ToAzureArcSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *azureArcSettingsPtrType) ToAzureArcSettingsPtrOutputWithContext(ctx context.Context) AzureArcSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureArcSettingsPtrOutput)
+}
+
+// Azure arc settings for a business case.
+type AzureArcSettingsOutput struct{ *pulumi.OutputState }
+
+func (AzureArcSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureArcSettings)(nil)).Elem()
+}
+
+func (o AzureArcSettingsOutput) ToAzureArcSettingsOutput() AzureArcSettingsOutput {
+	return o
+}
+
+func (o AzureArcSettingsOutput) ToAzureArcSettingsOutputWithContext(ctx context.Context) AzureArcSettingsOutput {
+	return o
+}
+
+func (o AzureArcSettingsOutput) ToAzureArcSettingsPtrOutput() AzureArcSettingsPtrOutput {
+	return o.ToAzureArcSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o AzureArcSettingsOutput) ToAzureArcSettingsPtrOutputWithContext(ctx context.Context) AzureArcSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureArcSettings) *AzureArcSettings {
+		return &v
+	}).(AzureArcSettingsPtrOutput)
+}
+
+// AzureArc state indicates whether to include azure arc related costs in on-premises or not.
+func (o AzureArcSettingsOutput) AzureArcState() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureArcSettings) string { return v.AzureArcState }).(pulumi.StringOutput)
+}
+
+// Gets Azure arc labour cost percentage.
+func (o AzureArcSettingsOutput) LaborCostPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AzureArcSettings) *float64 { return v.LaborCostPercentage }).(pulumi.Float64PtrOutput)
+}
+
+// Management settings.
+func (o AzureArcSettingsOutput) ManagementSettings() AzureArcManagementSettingsPtrOutput {
+	return o.ApplyT(func(v AzureArcSettings) *AzureArcManagementSettings { return v.ManagementSettings }).(AzureArcManagementSettingsPtrOutput)
+}
+
+type AzureArcSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (AzureArcSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureArcSettings)(nil)).Elem()
+}
+
+func (o AzureArcSettingsPtrOutput) ToAzureArcSettingsPtrOutput() AzureArcSettingsPtrOutput {
+	return o
+}
+
+func (o AzureArcSettingsPtrOutput) ToAzureArcSettingsPtrOutputWithContext(ctx context.Context) AzureArcSettingsPtrOutput {
+	return o
+}
+
+func (o AzureArcSettingsPtrOutput) Elem() AzureArcSettingsOutput {
+	return o.ApplyT(func(v *AzureArcSettings) AzureArcSettings {
+		if v != nil {
+			return *v
+		}
+		var ret AzureArcSettings
+		return ret
+	}).(AzureArcSettingsOutput)
+}
+
+// AzureArc state indicates whether to include azure arc related costs in on-premises or not.
+func (o AzureArcSettingsPtrOutput) AzureArcState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureArcSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AzureArcState
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets Azure arc labour cost percentage.
+func (o AzureArcSettingsPtrOutput) LaborCostPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *AzureArcSettings) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.LaborCostPercentage
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Management settings.
+func (o AzureArcSettingsPtrOutput) ManagementSettings() AzureArcManagementSettingsPtrOutput {
+	return o.ApplyT(func(v *AzureArcSettings) *AzureArcManagementSettings {
+		if v == nil {
+			return nil
+		}
+		return v.ManagementSettings
+	}).(AzureArcManagementSettingsPtrOutput)
+}
+
+// Azure arc settings for a business case.
+type AzureArcSettingsResponse struct {
+	// AzureArc state indicates whether to include azure arc related costs in on-premises or not.
+	AzureArcState string `pulumi:"azureArcState"`
+	// Gets Azure arc labour cost percentage.
+	LaborCostPercentage *float64 `pulumi:"laborCostPercentage"`
+	// Management settings.
+	ManagementSettings *AzureArcManagementSettingsResponse `pulumi:"managementSettings"`
+}
+
+// Azure arc settings for a business case.
+type AzureArcSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (AzureArcSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureArcSettingsResponse)(nil)).Elem()
+}
+
+func (o AzureArcSettingsResponseOutput) ToAzureArcSettingsResponseOutput() AzureArcSettingsResponseOutput {
+	return o
+}
+
+func (o AzureArcSettingsResponseOutput) ToAzureArcSettingsResponseOutputWithContext(ctx context.Context) AzureArcSettingsResponseOutput {
+	return o
+}
+
+// AzureArc state indicates whether to include azure arc related costs in on-premises or not.
+func (o AzureArcSettingsResponseOutput) AzureArcState() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureArcSettingsResponse) string { return v.AzureArcState }).(pulumi.StringOutput)
+}
+
+// Gets Azure arc labour cost percentage.
+func (o AzureArcSettingsResponseOutput) LaborCostPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AzureArcSettingsResponse) *float64 { return v.LaborCostPercentage }).(pulumi.Float64PtrOutput)
+}
+
+// Management settings.
+func (o AzureArcSettingsResponseOutput) ManagementSettings() AzureArcManagementSettingsResponsePtrOutput {
+	return o.ApplyT(func(v AzureArcSettingsResponse) *AzureArcManagementSettingsResponse { return v.ManagementSettings }).(AzureArcManagementSettingsResponsePtrOutput)
+}
+
+type AzureArcSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AzureArcSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureArcSettingsResponse)(nil)).Elem()
+}
+
+func (o AzureArcSettingsResponsePtrOutput) ToAzureArcSettingsResponsePtrOutput() AzureArcSettingsResponsePtrOutput {
+	return o
+}
+
+func (o AzureArcSettingsResponsePtrOutput) ToAzureArcSettingsResponsePtrOutputWithContext(ctx context.Context) AzureArcSettingsResponsePtrOutput {
+	return o
+}
+
+func (o AzureArcSettingsResponsePtrOutput) Elem() AzureArcSettingsResponseOutput {
+	return o.ApplyT(func(v *AzureArcSettingsResponse) AzureArcSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AzureArcSettingsResponse
+		return ret
+	}).(AzureArcSettingsResponseOutput)
+}
+
+// AzureArc state indicates whether to include azure arc related costs in on-premises or not.
+func (o AzureArcSettingsResponsePtrOutput) AzureArcState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureArcSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AzureArcState
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets Azure arc labour cost percentage.
+func (o AzureArcSettingsResponsePtrOutput) LaborCostPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *AzureArcSettingsResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.LaborCostPercentage
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Management settings.
+func (o AzureArcSettingsResponsePtrOutput) ManagementSettings() AzureArcManagementSettingsResponsePtrOutput {
+	return o.ApplyT(func(v *AzureArcSettingsResponse) *AzureArcManagementSettingsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ManagementSettings
+	}).(AzureArcManagementSettingsResponsePtrOutput)
 }
 
 // Azure file share profile for hydration of application folders not mounted on
@@ -10452,7 +11398,7 @@ type DiskEncryptionSetResourceSettings struct {
 	// Gets or sets the target resource group name.
 	TargetResourceGroupName *string `pulumi:"targetResourceGroupName"`
 	// Gets or sets the target Resource name.
-	TargetResourceName string `pulumi:"targetResourceName"`
+	TargetResourceName *string `pulumi:"targetResourceName"`
 }
 
 // DiskEncryptionSetResourceSettingsInput is an input type that accepts DiskEncryptionSetResourceSettingsArgs and DiskEncryptionSetResourceSettingsOutput values.
@@ -10474,7 +11420,7 @@ type DiskEncryptionSetResourceSettingsArgs struct {
 	// Gets or sets the target resource group name.
 	TargetResourceGroupName pulumi.StringPtrInput `pulumi:"targetResourceGroupName"`
 	// Gets or sets the target Resource name.
-	TargetResourceName pulumi.StringInput `pulumi:"targetResourceName"`
+	TargetResourceName pulumi.StringPtrInput `pulumi:"targetResourceName"`
 }
 
 func (DiskEncryptionSetResourceSettingsArgs) ElementType() reflect.Type {
@@ -10567,8 +11513,8 @@ func (o DiskEncryptionSetResourceSettingsOutput) TargetResourceGroupName() pulum
 }
 
 // Gets or sets the target Resource name.
-func (o DiskEncryptionSetResourceSettingsOutput) TargetResourceName() pulumi.StringOutput {
-	return o.ApplyT(func(v DiskEncryptionSetResourceSettings) string { return v.TargetResourceName }).(pulumi.StringOutput)
+func (o DiskEncryptionSetResourceSettingsOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiskEncryptionSetResourceSettings) *string { return v.TargetResourceName }).(pulumi.StringPtrOutput)
 }
 
 type DiskEncryptionSetResourceSettingsPtrOutput struct{ *pulumi.OutputState }
@@ -10622,7 +11568,7 @@ func (o DiskEncryptionSetResourceSettingsPtrOutput) TargetResourceName() pulumi.
 		if v == nil {
 			return nil
 		}
-		return &v.TargetResourceName
+		return v.TargetResourceName
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -10634,7 +11580,7 @@ type DiskEncryptionSetResourceSettingsResponse struct {
 	// Gets or sets the target resource group name.
 	TargetResourceGroupName *string `pulumi:"targetResourceGroupName"`
 	// Gets or sets the target Resource name.
-	TargetResourceName string `pulumi:"targetResourceName"`
+	TargetResourceName *string `pulumi:"targetResourceName"`
 }
 
 // Defines the disk encryption set resource settings.
@@ -10664,8 +11610,8 @@ func (o DiskEncryptionSetResourceSettingsResponseOutput) TargetResourceGroupName
 }
 
 // Gets or sets the target Resource name.
-func (o DiskEncryptionSetResourceSettingsResponseOutput) TargetResourceName() pulumi.StringOutput {
-	return o.ApplyT(func(v DiskEncryptionSetResourceSettingsResponse) string { return v.TargetResourceName }).(pulumi.StringOutput)
+func (o DiskEncryptionSetResourceSettingsResponseOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiskEncryptionSetResourceSettingsResponse) *string { return v.TargetResourceName }).(pulumi.StringPtrOutput)
 }
 
 type DiskEncryptionSetResourceSettingsResponsePtrOutput struct{ *pulumi.OutputState }
@@ -10719,7 +11665,7 @@ func (o DiskEncryptionSetResourceSettingsResponsePtrOutput) TargetResourceName()
 		if v == nil {
 			return nil
 		}
-		return &v.TargetResourceName
+		return v.TargetResourceName
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -10962,7 +11908,7 @@ func (o EntityUptimeResponsePtrOutput) HoursPerDay() pulumi.IntPtrOutput {
 // Facility settings.
 type FacilitySettings struct {
 	// The facilities cost.
-	FacilitiesCost float64 `pulumi:"facilitiesCost"`
+	FacilitiesCostPerKwh *float64 `pulumi:"facilitiesCostPerKwh"`
 }
 
 // FacilitySettingsInput is an input type that accepts FacilitySettingsArgs and FacilitySettingsOutput values.
@@ -10979,7 +11925,7 @@ type FacilitySettingsInput interface {
 // Facility settings.
 type FacilitySettingsArgs struct {
 	// The facilities cost.
-	FacilitiesCost pulumi.Float64Input `pulumi:"facilitiesCost"`
+	FacilitiesCostPerKwh pulumi.Float64PtrInput `pulumi:"facilitiesCostPerKwh"`
 }
 
 func (FacilitySettingsArgs) ElementType() reflect.Type {
@@ -11061,8 +12007,8 @@ func (o FacilitySettingsOutput) ToFacilitySettingsPtrOutputWithContext(ctx conte
 }
 
 // The facilities cost.
-func (o FacilitySettingsOutput) FacilitiesCost() pulumi.Float64Output {
-	return o.ApplyT(func(v FacilitySettings) float64 { return v.FacilitiesCost }).(pulumi.Float64Output)
+func (o FacilitySettingsOutput) FacilitiesCostPerKwh() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v FacilitySettings) *float64 { return v.FacilitiesCostPerKwh }).(pulumi.Float64PtrOutput)
 }
 
 type FacilitySettingsPtrOutput struct{ *pulumi.OutputState }
@@ -11090,19 +12036,19 @@ func (o FacilitySettingsPtrOutput) Elem() FacilitySettingsOutput {
 }
 
 // The facilities cost.
-func (o FacilitySettingsPtrOutput) FacilitiesCost() pulumi.Float64PtrOutput {
+func (o FacilitySettingsPtrOutput) FacilitiesCostPerKwh() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *FacilitySettings) *float64 {
 		if v == nil {
 			return nil
 		}
-		return &v.FacilitiesCost
+		return v.FacilitiesCostPerKwh
 	}).(pulumi.Float64PtrOutput)
 }
 
 // Facility settings.
 type FacilitySettingsResponse struct {
 	// The facilities cost.
-	FacilitiesCost float64 `pulumi:"facilitiesCost"`
+	FacilitiesCostPerKwh *float64 `pulumi:"facilitiesCostPerKwh"`
 }
 
 // Facility settings.
@@ -11121,8 +12067,8 @@ func (o FacilitySettingsResponseOutput) ToFacilitySettingsResponseOutputWithCont
 }
 
 // The facilities cost.
-func (o FacilitySettingsResponseOutput) FacilitiesCost() pulumi.Float64Output {
-	return o.ApplyT(func(v FacilitySettingsResponse) float64 { return v.FacilitiesCost }).(pulumi.Float64Output)
+func (o FacilitySettingsResponseOutput) FacilitiesCostPerKwh() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v FacilitySettingsResponse) *float64 { return v.FacilitiesCostPerKwh }).(pulumi.Float64PtrOutput)
 }
 
 type FacilitySettingsResponsePtrOutput struct{ *pulumi.OutputState }
@@ -11150,12 +12096,12 @@ func (o FacilitySettingsResponsePtrOutput) Elem() FacilitySettingsResponseOutput
 }
 
 // The facilities cost.
-func (o FacilitySettingsResponsePtrOutput) FacilitiesCost() pulumi.Float64PtrOutput {
+func (o FacilitySettingsResponsePtrOutput) FacilitiesCostPerKwh() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *FacilitySettingsResponse) *float64 {
 		if v == nil {
 			return nil
 		}
-		return &v.FacilitiesCost
+		return v.FacilitiesCostPerKwh
 	}).(pulumi.Float64PtrOutput)
 }
 
@@ -11691,80 +12637,6 @@ func (o GmsaAuthenticationPropertiesResponsePtrOutput) GmsaUsername() pulumi.Str
 		}
 		return v.GmsaUsername
 	}).(pulumi.StringPtrOutput)
-}
-
-// Defines Private link service group connectivity.
-type GroupConnectivityInformationResponse struct {
-	CustomerVisibleFqdns        []string `pulumi:"customerVisibleFqdns"`
-	GroupId                     *string  `pulumi:"groupId"`
-	Id                          *string  `pulumi:"id"`
-	InternalFqdn                *string  `pulumi:"internalFqdn"`
-	MemberName                  *string  `pulumi:"memberName"`
-	PrivateLinkServiceArmRegion *string  `pulumi:"privateLinkServiceArmRegion"`
-	RedirectMapId               *string  `pulumi:"redirectMapId"`
-}
-
-// Defines Private link service group connectivity.
-type GroupConnectivityInformationResponseOutput struct{ *pulumi.OutputState }
-
-func (GroupConnectivityInformationResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GroupConnectivityInformationResponse)(nil)).Elem()
-}
-
-func (o GroupConnectivityInformationResponseOutput) ToGroupConnectivityInformationResponseOutput() GroupConnectivityInformationResponseOutput {
-	return o
-}
-
-func (o GroupConnectivityInformationResponseOutput) ToGroupConnectivityInformationResponseOutputWithContext(ctx context.Context) GroupConnectivityInformationResponseOutput {
-	return o
-}
-
-func (o GroupConnectivityInformationResponseOutput) CustomerVisibleFqdns() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GroupConnectivityInformationResponse) []string { return v.CustomerVisibleFqdns }).(pulumi.StringArrayOutput)
-}
-
-func (o GroupConnectivityInformationResponseOutput) GroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GroupConnectivityInformationResponse) *string { return v.GroupId }).(pulumi.StringPtrOutput)
-}
-
-func (o GroupConnectivityInformationResponseOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GroupConnectivityInformationResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-func (o GroupConnectivityInformationResponseOutput) InternalFqdn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GroupConnectivityInformationResponse) *string { return v.InternalFqdn }).(pulumi.StringPtrOutput)
-}
-
-func (o GroupConnectivityInformationResponseOutput) MemberName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GroupConnectivityInformationResponse) *string { return v.MemberName }).(pulumi.StringPtrOutput)
-}
-
-func (o GroupConnectivityInformationResponseOutput) PrivateLinkServiceArmRegion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GroupConnectivityInformationResponse) *string { return v.PrivateLinkServiceArmRegion }).(pulumi.StringPtrOutput)
-}
-
-func (o GroupConnectivityInformationResponseOutput) RedirectMapId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GroupConnectivityInformationResponse) *string { return v.RedirectMapId }).(pulumi.StringPtrOutput)
-}
-
-type GroupConnectivityInformationResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (GroupConnectivityInformationResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GroupConnectivityInformationResponse)(nil)).Elem()
-}
-
-func (o GroupConnectivityInformationResponseArrayOutput) ToGroupConnectivityInformationResponseArrayOutput() GroupConnectivityInformationResponseArrayOutput {
-	return o
-}
-
-func (o GroupConnectivityInformationResponseArrayOutput) ToGroupConnectivityInformationResponseArrayOutputWithContext(ctx context.Context) GroupConnectivityInformationResponseArrayOutput {
-	return o
-}
-
-func (o GroupConnectivityInformationResponseArrayOutput) Index(i pulumi.IntInput) GroupConnectivityInformationResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GroupConnectivityInformationResponse {
-		return vs[0].([]GroupConnectivityInformationResponse)[vs[1].(int)]
-	}).(GroupConnectivityInformationResponseOutput)
 }
 
 // Properties of group resource.
@@ -16458,70 +17330,6 @@ func (o InnerHealthErrorModelResponseArrayOutput) Index(i pulumi.IntInput) Inner
 	}).(InnerHealthErrorModelResponseOutput)
 }
 
-// Defines Private link IP configuration.
-type IpConfigurationResponse struct {
-	GroupId          *string `pulumi:"groupId"`
-	Id               *string `pulumi:"id"`
-	LinkIdentifier   *string `pulumi:"linkIdentifier"`
-	MemberName       *string `pulumi:"memberName"`
-	PrivateIpAddress *string `pulumi:"privateIpAddress"`
-}
-
-// Defines Private link IP configuration.
-type IpConfigurationResponseOutput struct{ *pulumi.OutputState }
-
-func (IpConfigurationResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IpConfigurationResponse)(nil)).Elem()
-}
-
-func (o IpConfigurationResponseOutput) ToIpConfigurationResponseOutput() IpConfigurationResponseOutput {
-	return o
-}
-
-func (o IpConfigurationResponseOutput) ToIpConfigurationResponseOutputWithContext(ctx context.Context) IpConfigurationResponseOutput {
-	return o
-}
-
-func (o IpConfigurationResponseOutput) GroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IpConfigurationResponse) *string { return v.GroupId }).(pulumi.StringPtrOutput)
-}
-
-func (o IpConfigurationResponseOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IpConfigurationResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-func (o IpConfigurationResponseOutput) LinkIdentifier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IpConfigurationResponse) *string { return v.LinkIdentifier }).(pulumi.StringPtrOutput)
-}
-
-func (o IpConfigurationResponseOutput) MemberName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IpConfigurationResponse) *string { return v.MemberName }).(pulumi.StringPtrOutput)
-}
-
-func (o IpConfigurationResponseOutput) PrivateIpAddress() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IpConfigurationResponse) *string { return v.PrivateIpAddress }).(pulumi.StringPtrOutput)
-}
-
-type IpConfigurationResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (IpConfigurationResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]IpConfigurationResponse)(nil)).Elem()
-}
-
-func (o IpConfigurationResponseArrayOutput) ToIpConfigurationResponseArrayOutput() IpConfigurationResponseArrayOutput {
-	return o
-}
-
-func (o IpConfigurationResponseArrayOutput) ToIpConfigurationResponseArrayOutputWithContext(ctx context.Context) IpConfigurationResponseArrayOutput {
-	return o
-}
-
-func (o IpConfigurationResponseArrayOutput) Index(i pulumi.IntInput) IpConfigurationResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IpConfigurationResponse {
-		return vs[0].([]IpConfigurationResponse)[vs[1].(int)]
-	}).(IpConfigurationResponseOutput)
-}
-
 // Defines the job status.
 type JobStatusResponse struct {
 	// Defines the job name.
@@ -16607,7 +17415,7 @@ type KeyVaultResourceSettings struct {
 	// Gets or sets the target resource group name.
 	TargetResourceGroupName *string `pulumi:"targetResourceGroupName"`
 	// Gets or sets the target Resource name.
-	TargetResourceName string `pulumi:"targetResourceName"`
+	TargetResourceName *string `pulumi:"targetResourceName"`
 }
 
 // KeyVaultResourceSettingsInput is an input type that accepts KeyVaultResourceSettingsArgs and KeyVaultResourceSettingsOutput values.
@@ -16629,7 +17437,7 @@ type KeyVaultResourceSettingsArgs struct {
 	// Gets or sets the target resource group name.
 	TargetResourceGroupName pulumi.StringPtrInput `pulumi:"targetResourceGroupName"`
 	// Gets or sets the target Resource name.
-	TargetResourceName pulumi.StringInput `pulumi:"targetResourceName"`
+	TargetResourceName pulumi.StringPtrInput `pulumi:"targetResourceName"`
 }
 
 func (KeyVaultResourceSettingsArgs) ElementType() reflect.Type {
@@ -16722,8 +17530,8 @@ func (o KeyVaultResourceSettingsOutput) TargetResourceGroupName() pulumi.StringP
 }
 
 // Gets or sets the target Resource name.
-func (o KeyVaultResourceSettingsOutput) TargetResourceName() pulumi.StringOutput {
-	return o.ApplyT(func(v KeyVaultResourceSettings) string { return v.TargetResourceName }).(pulumi.StringOutput)
+func (o KeyVaultResourceSettingsOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeyVaultResourceSettings) *string { return v.TargetResourceName }).(pulumi.StringPtrOutput)
 }
 
 type KeyVaultResourceSettingsPtrOutput struct{ *pulumi.OutputState }
@@ -16777,7 +17585,7 @@ func (o KeyVaultResourceSettingsPtrOutput) TargetResourceName() pulumi.StringPtr
 		if v == nil {
 			return nil
 		}
-		return &v.TargetResourceName
+		return v.TargetResourceName
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -16789,7 +17597,7 @@ type KeyVaultResourceSettingsResponse struct {
 	// Gets or sets the target resource group name.
 	TargetResourceGroupName *string `pulumi:"targetResourceGroupName"`
 	// Gets or sets the target Resource name.
-	TargetResourceName string `pulumi:"targetResourceName"`
+	TargetResourceName *string `pulumi:"targetResourceName"`
 }
 
 // Defines the key vault resource settings.
@@ -16819,8 +17627,8 @@ func (o KeyVaultResourceSettingsResponseOutput) TargetResourceGroupName() pulumi
 }
 
 // Gets or sets the target Resource name.
-func (o KeyVaultResourceSettingsResponseOutput) TargetResourceName() pulumi.StringOutput {
-	return o.ApplyT(func(v KeyVaultResourceSettingsResponse) string { return v.TargetResourceName }).(pulumi.StringOutput)
+func (o KeyVaultResourceSettingsResponseOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeyVaultResourceSettingsResponse) *string { return v.TargetResourceName }).(pulumi.StringPtrOutput)
 }
 
 type KeyVaultResourceSettingsResponsePtrOutput struct{ *pulumi.OutputState }
@@ -16874,7 +17682,7 @@ func (o KeyVaultResourceSettingsResponsePtrOutput) TargetResourceName() pulumi.S
 		if v == nil {
 			return nil
 		}
-		return &v.TargetResourceName
+		return v.TargetResourceName
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -18400,7 +19208,7 @@ type LoadBalancerResourceSettings struct {
 	// Gets or sets the target resource group name.
 	TargetResourceGroupName *string `pulumi:"targetResourceGroupName"`
 	// Gets or sets the target Resource name.
-	TargetResourceName string `pulumi:"targetResourceName"`
+	TargetResourceName *string `pulumi:"targetResourceName"`
 	// Gets or sets the csv list of zones common for all frontend IP configurations. Note this is given
 	//  precedence only if frontend IP configurations settings are not present.
 	Zones *string `pulumi:"zones"`
@@ -18433,7 +19241,7 @@ type LoadBalancerResourceSettingsArgs struct {
 	// Gets or sets the target resource group name.
 	TargetResourceGroupName pulumi.StringPtrInput `pulumi:"targetResourceGroupName"`
 	// Gets or sets the target Resource name.
-	TargetResourceName pulumi.StringInput `pulumi:"targetResourceName"`
+	TargetResourceName pulumi.StringPtrInput `pulumi:"targetResourceName"`
 	// Gets or sets the csv list of zones common for all frontend IP configurations. Note this is given
 	//  precedence only if frontend IP configurations settings are not present.
 	Zones pulumi.StringPtrInput `pulumi:"zones"`
@@ -18553,8 +19361,8 @@ func (o LoadBalancerResourceSettingsOutput) TargetResourceGroupName() pulumi.Str
 }
 
 // Gets or sets the target Resource name.
-func (o LoadBalancerResourceSettingsOutput) TargetResourceName() pulumi.StringOutput {
-	return o.ApplyT(func(v LoadBalancerResourceSettings) string { return v.TargetResourceName }).(pulumi.StringOutput)
+func (o LoadBalancerResourceSettingsOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerResourceSettings) *string { return v.TargetResourceName }).(pulumi.StringPtrOutput)
 }
 
 // Gets or sets the csv list of zones common for all frontend IP configurations. Note this is given
@@ -18655,7 +19463,7 @@ func (o LoadBalancerResourceSettingsPtrOutput) TargetResourceName() pulumi.Strin
 		if v == nil {
 			return nil
 		}
-		return &v.TargetResourceName
+		return v.TargetResourceName
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -18687,7 +19495,7 @@ type LoadBalancerResourceSettingsResponse struct {
 	// Gets or sets the target resource group name.
 	TargetResourceGroupName *string `pulumi:"targetResourceGroupName"`
 	// Gets or sets the target Resource name.
-	TargetResourceName string `pulumi:"targetResourceName"`
+	TargetResourceName *string `pulumi:"targetResourceName"`
 	// Gets or sets the csv list of zones common for all frontend IP configurations. Note this is given
 	//  precedence only if frontend IP configurations settings are not present.
 	Zones *string `pulumi:"zones"`
@@ -18744,8 +19552,8 @@ func (o LoadBalancerResourceSettingsResponseOutput) TargetResourceGroupName() pu
 }
 
 // Gets or sets the target Resource name.
-func (o LoadBalancerResourceSettingsResponseOutput) TargetResourceName() pulumi.StringOutput {
-	return o.ApplyT(func(v LoadBalancerResourceSettingsResponse) string { return v.TargetResourceName }).(pulumi.StringOutput)
+func (o LoadBalancerResourceSettingsResponseOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerResourceSettingsResponse) *string { return v.TargetResourceName }).(pulumi.StringPtrOutput)
 }
 
 // Gets or sets the csv list of zones common for all frontend IP configurations. Note this is given
@@ -18846,7 +19654,7 @@ func (o LoadBalancerResourceSettingsResponsePtrOutput) TargetResourceName() pulu
 		if v == nil {
 			return nil
 		}
-		return &v.TargetResourceName
+		return v.TargetResourceName
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -19203,8 +20011,6 @@ type ManagementSettings struct {
 	OtherManagementCostsSettings OtherManagementCostsSettings `pulumi:"otherManagementCostsSettings"`
 	// Third Party Management Settings.
 	ThirdPartyManagementSettings ThirdPartyManagementSettings `pulumi:"thirdPartyManagementSettings"`
-	// vSphere Management Settings.
-	VsphereManagementSettings VsphereManagementSettings `pulumi:"vsphereManagementSettings"`
 }
 
 // ManagementSettingsInput is an input type that accepts ManagementSettingsArgs and ManagementSettingsOutput values.
@@ -19226,8 +20032,6 @@ type ManagementSettingsArgs struct {
 	OtherManagementCostsSettings OtherManagementCostsSettingsInput `pulumi:"otherManagementCostsSettings"`
 	// Third Party Management Settings.
 	ThirdPartyManagementSettings ThirdPartyManagementSettingsInput `pulumi:"thirdPartyManagementSettings"`
-	// vSphere Management Settings.
-	VsphereManagementSettings VsphereManagementSettingsInput `pulumi:"vsphereManagementSettings"`
 }
 
 func (ManagementSettingsArgs) ElementType() reflect.Type {
@@ -19325,11 +20129,6 @@ func (o ManagementSettingsOutput) ThirdPartyManagementSettings() ThirdPartyManag
 	return o.ApplyT(func(v ManagementSettings) ThirdPartyManagementSettings { return v.ThirdPartyManagementSettings }).(ThirdPartyManagementSettingsOutput)
 }
 
-// vSphere Management Settings.
-func (o ManagementSettingsOutput) VsphereManagementSettings() VsphereManagementSettingsOutput {
-	return o.ApplyT(func(v ManagementSettings) VsphereManagementSettings { return v.VsphereManagementSettings }).(VsphereManagementSettingsOutput)
-}
-
 type ManagementSettingsPtrOutput struct{ *pulumi.OutputState }
 
 func (ManagementSettingsPtrOutput) ElementType() reflect.Type {
@@ -19384,16 +20183,6 @@ func (o ManagementSettingsPtrOutput) ThirdPartyManagementSettings() ThirdPartyMa
 	}).(ThirdPartyManagementSettingsPtrOutput)
 }
 
-// vSphere Management Settings.
-func (o ManagementSettingsPtrOutput) VsphereManagementSettings() VsphereManagementSettingsPtrOutput {
-	return o.ApplyT(func(v *ManagementSettings) *VsphereManagementSettings {
-		if v == nil {
-			return nil
-		}
-		return &v.VsphereManagementSettings
-	}).(VsphereManagementSettingsPtrOutput)
-}
-
 // Management settings.
 type ManagementSettingsResponse struct {
 	// HyperV Virtualization Management Settings.
@@ -19402,8 +20191,6 @@ type ManagementSettingsResponse struct {
 	OtherManagementCostsSettings OtherManagementCostsSettingsResponse `pulumi:"otherManagementCostsSettings"`
 	// Third Party Management Settings.
 	ThirdPartyManagementSettings ThirdPartyManagementSettingsResponse `pulumi:"thirdPartyManagementSettings"`
-	// vSphere Management Settings.
-	VsphereManagementSettings VsphereManagementSettingsResponse `pulumi:"vsphereManagementSettings"`
 }
 
 // Management settings.
@@ -19440,13 +20227,6 @@ func (o ManagementSettingsResponseOutput) ThirdPartyManagementSettings() ThirdPa
 	return o.ApplyT(func(v ManagementSettingsResponse) ThirdPartyManagementSettingsResponse {
 		return v.ThirdPartyManagementSettings
 	}).(ThirdPartyManagementSettingsResponseOutput)
-}
-
-// vSphere Management Settings.
-func (o ManagementSettingsResponseOutput) VsphereManagementSettings() VsphereManagementSettingsResponseOutput {
-	return o.ApplyT(func(v ManagementSettingsResponse) VsphereManagementSettingsResponse {
-		return v.VsphereManagementSettings
-	}).(VsphereManagementSettingsResponseOutput)
 }
 
 type ManagementSettingsResponsePtrOutput struct{ *pulumi.OutputState }
@@ -19501,16 +20281,6 @@ func (o ManagementSettingsResponsePtrOutput) ThirdPartyManagementSettings() Thir
 		}
 		return &v.ThirdPartyManagementSettings
 	}).(ThirdPartyManagementSettingsResponsePtrOutput)
-}
-
-// vSphere Management Settings.
-func (o ManagementSettingsResponsePtrOutput) VsphereManagementSettings() VsphereManagementSettingsResponsePtrOutput {
-	return o.ApplyT(func(v *ManagementSettingsResponse) *VsphereManagementSettingsResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.VsphereManagementSettings
-	}).(VsphereManagementSettingsResponsePtrOutput)
 }
 
 // Defines the properties for manual resolution.
@@ -20945,10 +21715,14 @@ func (o ModernizeProjectModelResponseSystemDataOutput) LastModifiedByType() pulu
 
 // Defines the move collection properties.
 type MoveCollectionProperties struct {
+	// Gets or sets the move region which indicates the region where the VM Regional to Zonal move will be conducted.
+	MoveRegion *string `pulumi:"moveRegion"`
+	// Defines the MoveType.
+	MoveType *string `pulumi:"moveType"`
 	// Gets or sets the source region.
-	SourceRegion string `pulumi:"sourceRegion"`
+	SourceRegion *string `pulumi:"sourceRegion"`
 	// Gets or sets the target region.
-	TargetRegion string `pulumi:"targetRegion"`
+	TargetRegion *string `pulumi:"targetRegion"`
 	// Gets or sets the version of move collection.
 	Version *string `pulumi:"version"`
 }
@@ -20966,10 +21740,14 @@ type MoveCollectionPropertiesInput interface {
 
 // Defines the move collection properties.
 type MoveCollectionPropertiesArgs struct {
+	// Gets or sets the move region which indicates the region where the VM Regional to Zonal move will be conducted.
+	MoveRegion pulumi.StringPtrInput `pulumi:"moveRegion"`
+	// Defines the MoveType.
+	MoveType pulumi.StringPtrInput `pulumi:"moveType"`
 	// Gets or sets the source region.
-	SourceRegion pulumi.StringInput `pulumi:"sourceRegion"`
+	SourceRegion pulumi.StringPtrInput `pulumi:"sourceRegion"`
 	// Gets or sets the target region.
-	TargetRegion pulumi.StringInput `pulumi:"targetRegion"`
+	TargetRegion pulumi.StringPtrInput `pulumi:"targetRegion"`
 	// Gets or sets the version of move collection.
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
@@ -21052,14 +21830,24 @@ func (o MoveCollectionPropertiesOutput) ToMoveCollectionPropertiesPtrOutputWithC
 	}).(MoveCollectionPropertiesPtrOutput)
 }
 
+// Gets or sets the move region which indicates the region where the VM Regional to Zonal move will be conducted.
+func (o MoveCollectionPropertiesOutput) MoveRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MoveCollectionProperties) *string { return v.MoveRegion }).(pulumi.StringPtrOutput)
+}
+
+// Defines the MoveType.
+func (o MoveCollectionPropertiesOutput) MoveType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MoveCollectionProperties) *string { return v.MoveType }).(pulumi.StringPtrOutput)
+}
+
 // Gets or sets the source region.
-func (o MoveCollectionPropertiesOutput) SourceRegion() pulumi.StringOutput {
-	return o.ApplyT(func(v MoveCollectionProperties) string { return v.SourceRegion }).(pulumi.StringOutput)
+func (o MoveCollectionPropertiesOutput) SourceRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MoveCollectionProperties) *string { return v.SourceRegion }).(pulumi.StringPtrOutput)
 }
 
 // Gets or sets the target region.
-func (o MoveCollectionPropertiesOutput) TargetRegion() pulumi.StringOutput {
-	return o.ApplyT(func(v MoveCollectionProperties) string { return v.TargetRegion }).(pulumi.StringOutput)
+func (o MoveCollectionPropertiesOutput) TargetRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MoveCollectionProperties) *string { return v.TargetRegion }).(pulumi.StringPtrOutput)
 }
 
 // Gets or sets the version of move collection.
@@ -21091,13 +21879,33 @@ func (o MoveCollectionPropertiesPtrOutput) Elem() MoveCollectionPropertiesOutput
 	}).(MoveCollectionPropertiesOutput)
 }
 
+// Gets or sets the move region which indicates the region where the VM Regional to Zonal move will be conducted.
+func (o MoveCollectionPropertiesPtrOutput) MoveRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MoveCollectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MoveRegion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Defines the MoveType.
+func (o MoveCollectionPropertiesPtrOutput) MoveType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MoveCollectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MoveType
+	}).(pulumi.StringPtrOutput)
+}
+
 // Gets or sets the source region.
 func (o MoveCollectionPropertiesPtrOutput) SourceRegion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MoveCollectionProperties) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.SourceRegion
+		return v.SourceRegion
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -21107,7 +21915,7 @@ func (o MoveCollectionPropertiesPtrOutput) TargetRegion() pulumi.StringPtrOutput
 		if v == nil {
 			return nil
 		}
-		return &v.TargetRegion
+		return v.TargetRegion
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -21125,12 +21933,16 @@ func (o MoveCollectionPropertiesPtrOutput) Version() pulumi.StringPtrOutput {
 type MoveCollectionPropertiesResponse struct {
 	// Defines the move collection errors.
 	Errors MoveCollectionPropertiesResponseErrors `pulumi:"errors"`
+	// Gets or sets the move region which indicates the region where the VM Regional to Zonal move will be conducted.
+	MoveRegion *string `pulumi:"moveRegion"`
+	// Defines the MoveType.
+	MoveType *string `pulumi:"moveType"`
 	// Defines the provisioning states.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Gets or sets the source region.
-	SourceRegion string `pulumi:"sourceRegion"`
+	SourceRegion *string `pulumi:"sourceRegion"`
 	// Gets or sets the target region.
-	TargetRegion string `pulumi:"targetRegion"`
+	TargetRegion *string `pulumi:"targetRegion"`
 	// Gets or sets the version of move collection.
 	Version *string `pulumi:"version"`
 }
@@ -21155,19 +21967,29 @@ func (o MoveCollectionPropertiesResponseOutput) Errors() MoveCollectionPropertie
 	return o.ApplyT(func(v MoveCollectionPropertiesResponse) MoveCollectionPropertiesResponseErrors { return v.Errors }).(MoveCollectionPropertiesResponseErrorsOutput)
 }
 
+// Gets or sets the move region which indicates the region where the VM Regional to Zonal move will be conducted.
+func (o MoveCollectionPropertiesResponseOutput) MoveRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MoveCollectionPropertiesResponse) *string { return v.MoveRegion }).(pulumi.StringPtrOutput)
+}
+
+// Defines the MoveType.
+func (o MoveCollectionPropertiesResponseOutput) MoveType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MoveCollectionPropertiesResponse) *string { return v.MoveType }).(pulumi.StringPtrOutput)
+}
+
 // Defines the provisioning states.
 func (o MoveCollectionPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v MoveCollectionPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
 // Gets or sets the source region.
-func (o MoveCollectionPropertiesResponseOutput) SourceRegion() pulumi.StringOutput {
-	return o.ApplyT(func(v MoveCollectionPropertiesResponse) string { return v.SourceRegion }).(pulumi.StringOutput)
+func (o MoveCollectionPropertiesResponseOutput) SourceRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MoveCollectionPropertiesResponse) *string { return v.SourceRegion }).(pulumi.StringPtrOutput)
 }
 
 // Gets or sets the target region.
-func (o MoveCollectionPropertiesResponseOutput) TargetRegion() pulumi.StringOutput {
-	return o.ApplyT(func(v MoveCollectionPropertiesResponse) string { return v.TargetRegion }).(pulumi.StringOutput)
+func (o MoveCollectionPropertiesResponseOutput) TargetRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MoveCollectionPropertiesResponse) *string { return v.TargetRegion }).(pulumi.StringPtrOutput)
 }
 
 // Gets or sets the version of move collection.
@@ -22024,7 +22846,7 @@ type NetworkInterfaceResourceSettings struct {
 	// Gets or sets the target resource group name.
 	TargetResourceGroupName *string `pulumi:"targetResourceGroupName"`
 	// Gets or sets the target Resource name.
-	TargetResourceName string `pulumi:"targetResourceName"`
+	TargetResourceName *string `pulumi:"targetResourceName"`
 }
 
 // NetworkInterfaceResourceSettingsInput is an input type that accepts NetworkInterfaceResourceSettingsArgs and NetworkInterfaceResourceSettingsOutput values.
@@ -22052,7 +22874,7 @@ type NetworkInterfaceResourceSettingsArgs struct {
 	// Gets or sets the target resource group name.
 	TargetResourceGroupName pulumi.StringPtrInput `pulumi:"targetResourceGroupName"`
 	// Gets or sets the target Resource name.
-	TargetResourceName pulumi.StringInput `pulumi:"targetResourceName"`
+	TargetResourceName pulumi.StringPtrInput `pulumi:"targetResourceName"`
 }
 
 func (NetworkInterfaceResourceSettingsArgs) ElementType() reflect.Type {
@@ -22162,8 +22984,8 @@ func (o NetworkInterfaceResourceSettingsOutput) TargetResourceGroupName() pulumi
 }
 
 // Gets or sets the target Resource name.
-func (o NetworkInterfaceResourceSettingsOutput) TargetResourceName() pulumi.StringOutput {
-	return o.ApplyT(func(v NetworkInterfaceResourceSettings) string { return v.TargetResourceName }).(pulumi.StringOutput)
+func (o NetworkInterfaceResourceSettingsOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkInterfaceResourceSettings) *string { return v.TargetResourceName }).(pulumi.StringPtrOutput)
 }
 
 type NetworkInterfaceResourceSettingsPtrOutput struct{ *pulumi.OutputState }
@@ -22247,7 +23069,7 @@ func (o NetworkInterfaceResourceSettingsPtrOutput) TargetResourceName() pulumi.S
 		if v == nil {
 			return nil
 		}
-		return &v.TargetResourceName
+		return v.TargetResourceName
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -22265,7 +23087,7 @@ type NetworkInterfaceResourceSettingsResponse struct {
 	// Gets or sets the target resource group name.
 	TargetResourceGroupName *string `pulumi:"targetResourceGroupName"`
 	// Gets or sets the target Resource name.
-	TargetResourceName string `pulumi:"targetResourceName"`
+	TargetResourceName *string `pulumi:"targetResourceName"`
 }
 
 // Defines the network interface resource settings.
@@ -22312,8 +23134,8 @@ func (o NetworkInterfaceResourceSettingsResponseOutput) TargetResourceGroupName(
 }
 
 // Gets or sets the target Resource name.
-func (o NetworkInterfaceResourceSettingsResponseOutput) TargetResourceName() pulumi.StringOutput {
-	return o.ApplyT(func(v NetworkInterfaceResourceSettingsResponse) string { return v.TargetResourceName }).(pulumi.StringOutput)
+func (o NetworkInterfaceResourceSettingsResponseOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkInterfaceResourceSettingsResponse) *string { return v.TargetResourceName }).(pulumi.StringPtrOutput)
 }
 
 type NetworkInterfaceResourceSettingsResponsePtrOutput struct{ *pulumi.OutputState }
@@ -22397,7 +23219,7 @@ func (o NetworkInterfaceResourceSettingsResponsePtrOutput) TargetResourceName() 
 		if v == nil {
 			return nil
 		}
-		return &v.TargetResourceName
+		return v.TargetResourceName
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -22413,7 +23235,7 @@ type NetworkSecurityGroupResourceSettings struct {
 	// Gets or sets the target resource group name.
 	TargetResourceGroupName *string `pulumi:"targetResourceGroupName"`
 	// Gets or sets the target Resource name.
-	TargetResourceName string `pulumi:"targetResourceName"`
+	TargetResourceName *string `pulumi:"targetResourceName"`
 }
 
 // NetworkSecurityGroupResourceSettingsInput is an input type that accepts NetworkSecurityGroupResourceSettingsArgs and NetworkSecurityGroupResourceSettingsOutput values.
@@ -22439,7 +23261,7 @@ type NetworkSecurityGroupResourceSettingsArgs struct {
 	// Gets or sets the target resource group name.
 	TargetResourceGroupName pulumi.StringPtrInput `pulumi:"targetResourceGroupName"`
 	// Gets or sets the target Resource name.
-	TargetResourceName pulumi.StringInput `pulumi:"targetResourceName"`
+	TargetResourceName pulumi.StringPtrInput `pulumi:"targetResourceName"`
 }
 
 func (NetworkSecurityGroupResourceSettingsArgs) ElementType() reflect.Type {
@@ -22542,8 +23364,8 @@ func (o NetworkSecurityGroupResourceSettingsOutput) TargetResourceGroupName() pu
 }
 
 // Gets or sets the target Resource name.
-func (o NetworkSecurityGroupResourceSettingsOutput) TargetResourceName() pulumi.StringOutput {
-	return o.ApplyT(func(v NetworkSecurityGroupResourceSettings) string { return v.TargetResourceName }).(pulumi.StringOutput)
+func (o NetworkSecurityGroupResourceSettingsOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkSecurityGroupResourceSettings) *string { return v.TargetResourceName }).(pulumi.StringPtrOutput)
 }
 
 type NetworkSecurityGroupResourceSettingsPtrOutput struct{ *pulumi.OutputState }
@@ -22617,7 +23439,7 @@ func (o NetworkSecurityGroupResourceSettingsPtrOutput) TargetResourceName() pulu
 		if v == nil {
 			return nil
 		}
-		return &v.TargetResourceName
+		return v.TargetResourceName
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -22633,7 +23455,7 @@ type NetworkSecurityGroupResourceSettingsResponse struct {
 	// Gets or sets the target resource group name.
 	TargetResourceGroupName *string `pulumi:"targetResourceGroupName"`
 	// Gets or sets the target Resource name.
-	TargetResourceName string `pulumi:"targetResourceName"`
+	TargetResourceName *string `pulumi:"targetResourceName"`
 }
 
 // Defines the NSG resource settings.
@@ -22673,8 +23495,8 @@ func (o NetworkSecurityGroupResourceSettingsResponseOutput) TargetResourceGroupN
 }
 
 // Gets or sets the target Resource name.
-func (o NetworkSecurityGroupResourceSettingsResponseOutput) TargetResourceName() pulumi.StringOutput {
-	return o.ApplyT(func(v NetworkSecurityGroupResourceSettingsResponse) string { return v.TargetResourceName }).(pulumi.StringOutput)
+func (o NetworkSecurityGroupResourceSettingsResponseOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkSecurityGroupResourceSettingsResponse) *string { return v.TargetResourceName }).(pulumi.StringPtrOutput)
 }
 
 type NetworkSecurityGroupResourceSettingsResponsePtrOutput struct{ *pulumi.OutputState }
@@ -22748,7 +23570,7 @@ func (o NetworkSecurityGroupResourceSettingsResponsePtrOutput) TargetResourceNam
 		if v == nil {
 			return nil
 		}
-		return &v.TargetResourceName
+		return v.TargetResourceName
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -25367,17 +26189,16 @@ func (o PrivateEndpointConnectionPropertiesOutput) PrivateLinkServiceConnectionS
 	}).(PrivateLinkServiceConnectionStatePtrOutput)
 }
 
-// Private endpoint connection properties.
+// Properties of a private endpoint connection.
 type PrivateEndpointConnectionPropertiesResponse struct {
-	// ARM id for the private endpoint resource corresponding to the connection.
 	PrivateEndpoint ResourceIdResponse `pulumi:"privateEndpoint"`
-	// State of the private endpoint connection.
+	// Gets the properties of the object.
 	PrivateLinkServiceConnectionState *PrivateLinkServiceConnectionStateResponse `pulumi:"privateLinkServiceConnectionState"`
-	// Indicates whether there is an ongoing operation on the private endpoint.
+	// Provisioning state.
 	ProvisioningState string `pulumi:"provisioningState"`
 }
 
-// Private endpoint connection properties.
+// Properties of a private endpoint connection.
 type PrivateEndpointConnectionPropertiesResponseOutput struct{ *pulumi.OutputState }
 
 func (PrivateEndpointConnectionPropertiesResponseOutput) ElementType() reflect.Type {
@@ -25392,81 +26213,47 @@ func (o PrivateEndpointConnectionPropertiesResponseOutput) ToPrivateEndpointConn
 	return o
 }
 
-// ARM id for the private endpoint resource corresponding to the connection.
 func (o PrivateEndpointConnectionPropertiesResponseOutput) PrivateEndpoint() ResourceIdResponseOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionPropertiesResponse) ResourceIdResponse { return v.PrivateEndpoint }).(ResourceIdResponseOutput)
 }
 
-// State of the private endpoint connection.
+// Gets the properties of the object.
 func (o PrivateEndpointConnectionPropertiesResponseOutput) PrivateLinkServiceConnectionState() PrivateLinkServiceConnectionStateResponsePtrOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionPropertiesResponse) *PrivateLinkServiceConnectionStateResponse {
 		return v.PrivateLinkServiceConnectionState
 	}).(PrivateLinkServiceConnectionStateResponsePtrOutput)
 }
 
-// Indicates whether there is an ongoing operation on the private endpoint.
+// Provisioning state.
 func (o PrivateEndpointConnectionPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Properties of a private endpoint connection proxy.
-type PrivateEndpointConnectionProxyPropertiesResponse struct {
-	// Defines Private endpoint additional details.
-	RemotePrivateEndpoint PrivateEndpointDetailsResponse `pulumi:"remotePrivateEndpoint"`
-	Status                string                         `pulumi:"status"`
-}
-
-// Properties of a private endpoint connection proxy.
-type PrivateEndpointConnectionProxyPropertiesResponseOutput struct{ *pulumi.OutputState }
-
-func (PrivateEndpointConnectionProxyPropertiesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateEndpointConnectionProxyPropertiesResponse)(nil)).Elem()
-}
-
-func (o PrivateEndpointConnectionProxyPropertiesResponseOutput) ToPrivateEndpointConnectionProxyPropertiesResponseOutput() PrivateEndpointConnectionProxyPropertiesResponseOutput {
-	return o
-}
-
-func (o PrivateEndpointConnectionProxyPropertiesResponseOutput) ToPrivateEndpointConnectionProxyPropertiesResponseOutputWithContext(ctx context.Context) PrivateEndpointConnectionProxyPropertiesResponseOutput {
-	return o
-}
-
-// Defines Private endpoint additional details.
-func (o PrivateEndpointConnectionProxyPropertiesResponseOutput) RemotePrivateEndpoint() PrivateEndpointDetailsResponseOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionProxyPropertiesResponse) PrivateEndpointDetailsResponse {
-		return v.RemotePrivateEndpoint
-	}).(PrivateEndpointDetailsResponseOutput)
-}
-
-func (o PrivateEndpointConnectionProxyPropertiesResponseOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionProxyPropertiesResponse) string { return v.Status }).(pulumi.StringOutput)
-}
-
-// A private endpoint connection for a project.
+// REST model used to encapsulate the user visible state of a PrivateEndpoint.
 type PrivateEndpointConnectionResponse struct {
-	// For optimistic concurrency control.
-	ETag *string `pulumi:"eTag"`
+	// Gets the tag for optimistic concurrency control.
+	ETag string `pulumi:"eTag"`
 	// The group ids for the private endpoint resource.
 	GroupIds []string `pulumi:"groupIds"`
-	// Path reference to this private endpoint endpoint connection. /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/privateEndpointConnections/{privateEndpointConnectionName}
+	// Relative URL to get this Sites.
 	Id string `pulumi:"id"`
-	// Name of the private endpoint endpoint connection.
+	// Gets the name of the resource.
 	Name string `pulumi:"name"`
 	// The private endpoint resource.
 	PrivateEndpoint *PrivateEndpointResponse `pulumi:"privateEndpoint"`
 	// A collection of information about the state of the connection between service consumer and provider.
 	PrivateLinkServiceConnectionState *PrivateLinkServiceConnectionStateResponse `pulumi:"privateLinkServiceConnectionState"`
-	// Properties of the private endpoint endpoint connection.
+	// Gets the properties of the object.
 	Properties PrivateEndpointConnectionPropertiesResponse `pulumi:"properties"`
 	// The provisioning state of the private endpoint connection resource.
 	ProvisioningState *string `pulumi:"provisioningState"`
 	// Metadata pertaining to creation and last modification of the resource.
-	SystemData *SystemDataResponse `pulumi:"systemData"`
-	// Type of the object = [Microsoft.Migrate/assessmentProjects/privateEndpointConnections].
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Gets the resource type.
 	Type string `pulumi:"type"`
 }
 
-// A private endpoint connection for a project.
+// REST model used to encapsulate the user visible state of a PrivateEndpoint.
 type PrivateEndpointConnectionResponseOutput struct{ *pulumi.OutputState }
 
 func (PrivateEndpointConnectionResponseOutput) ElementType() reflect.Type {
@@ -25481,9 +26268,9 @@ func (o PrivateEndpointConnectionResponseOutput) ToPrivateEndpointConnectionResp
 	return o
 }
 
-// For optimistic concurrency control.
-func (o PrivateEndpointConnectionResponseOutput) ETag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) *string { return v.ETag }).(pulumi.StringPtrOutput)
+// Gets the tag for optimistic concurrency control.
+func (o PrivateEndpointConnectionResponseOutput) ETag() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.ETag }).(pulumi.StringOutput)
 }
 
 // The group ids for the private endpoint resource.
@@ -25491,12 +26278,12 @@ func (o PrivateEndpointConnectionResponseOutput) GroupIds() pulumi.StringArrayOu
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) []string { return v.GroupIds }).(pulumi.StringArrayOutput)
 }
 
-// Path reference to this private endpoint endpoint connection. /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/privateEndpointConnections/{privateEndpointConnectionName}
+// Relative URL to get this Sites.
 func (o PrivateEndpointConnectionResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Name of the private endpoint endpoint connection.
+// Gets the name of the resource.
 func (o PrivateEndpointConnectionResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -25513,7 +26300,7 @@ func (o PrivateEndpointConnectionResponseOutput) PrivateLinkServiceConnectionSta
 	}).(PrivateLinkServiceConnectionStateResponsePtrOutput)
 }
 
-// Properties of the private endpoint endpoint connection.
+// Gets the properties of the object.
 func (o PrivateEndpointConnectionResponseOutput) Properties() PrivateEndpointConnectionPropertiesResponseOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) PrivateEndpointConnectionPropertiesResponse {
 		return v.Properties
@@ -25526,11 +26313,11 @@ func (o PrivateEndpointConnectionResponseOutput) ProvisioningState() pulumi.Stri
 }
 
 // Metadata pertaining to creation and last modification of the resource.
-func (o PrivateEndpointConnectionResponseOutput) SystemData() SystemDataResponsePtrOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) *SystemDataResponse { return v.SystemData }).(SystemDataResponsePtrOutput)
+func (o PrivateEndpointConnectionResponseOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Type of the object = [Microsoft.Migrate/assessmentProjects/privateEndpointConnections].
+// Gets the resource type.
 func (o PrivateEndpointConnectionResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -25553,56 +26340,6 @@ func (o PrivateEndpointConnectionResponseArrayOutput) Index(i pulumi.IntInput) P
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateEndpointConnectionResponse {
 		return vs[0].([]PrivateEndpointConnectionResponse)[vs[1].(int)]
 	}).(PrivateEndpointConnectionResponseOutput)
-}
-
-// Defines Private endpoint additional details.
-type PrivateEndpointDetailsResponse struct {
-	ConnectionDetails                   []IpConfigurationResponse              `pulumi:"connectionDetails"`
-	Id                                  *string                                `pulumi:"id"`
-	ManualPrivateLinkServiceConnections []PrivateLinkServiceConnectionResponse `pulumi:"manualPrivateLinkServiceConnections"`
-	PrivateLinkServiceConnections       []PrivateLinkServiceConnectionResponse `pulumi:"privateLinkServiceConnections"`
-	PrivateLinkServiceProxies           []PrivateLinkServiceProxyResponse      `pulumi:"privateLinkServiceProxies"`
-}
-
-// Defines Private endpoint additional details.
-type PrivateEndpointDetailsResponseOutput struct{ *pulumi.OutputState }
-
-func (PrivateEndpointDetailsResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateEndpointDetailsResponse)(nil)).Elem()
-}
-
-func (o PrivateEndpointDetailsResponseOutput) ToPrivateEndpointDetailsResponseOutput() PrivateEndpointDetailsResponseOutput {
-	return o
-}
-
-func (o PrivateEndpointDetailsResponseOutput) ToPrivateEndpointDetailsResponseOutputWithContext(ctx context.Context) PrivateEndpointDetailsResponseOutput {
-	return o
-}
-
-func (o PrivateEndpointDetailsResponseOutput) ConnectionDetails() IpConfigurationResponseArrayOutput {
-	return o.ApplyT(func(v PrivateEndpointDetailsResponse) []IpConfigurationResponse { return v.ConnectionDetails }).(IpConfigurationResponseArrayOutput)
-}
-
-func (o PrivateEndpointDetailsResponseOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateEndpointDetailsResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-func (o PrivateEndpointDetailsResponseOutput) ManualPrivateLinkServiceConnections() PrivateLinkServiceConnectionResponseArrayOutput {
-	return o.ApplyT(func(v PrivateEndpointDetailsResponse) []PrivateLinkServiceConnectionResponse {
-		return v.ManualPrivateLinkServiceConnections
-	}).(PrivateLinkServiceConnectionResponseArrayOutput)
-}
-
-func (o PrivateEndpointDetailsResponseOutput) PrivateLinkServiceConnections() PrivateLinkServiceConnectionResponseArrayOutput {
-	return o.ApplyT(func(v PrivateEndpointDetailsResponse) []PrivateLinkServiceConnectionResponse {
-		return v.PrivateLinkServiceConnections
-	}).(PrivateLinkServiceConnectionResponseArrayOutput)
-}
-
-func (o PrivateEndpointDetailsResponseOutput) PrivateLinkServiceProxies() PrivateLinkServiceProxyResponseArrayOutput {
-	return o.ApplyT(func(v PrivateEndpointDetailsResponse) []PrivateLinkServiceProxyResponse {
-		return v.PrivateLinkServiceProxies
-	}).(PrivateLinkServiceProxyResponseArrayOutput)
 }
 
 // The private endpoint resource.
@@ -25665,72 +26402,13 @@ func (o PrivateEndpointResponsePtrOutput) Id() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Defines Private link service connection.
-type PrivateLinkServiceConnectionResponse struct {
-	GroupIds       []string `pulumi:"groupIds"`
-	Id             *string  `pulumi:"id"`
-	Name           *string  `pulumi:"name"`
-	RequestMessage *string  `pulumi:"requestMessage"`
-}
-
-// Defines Private link service connection.
-type PrivateLinkServiceConnectionResponseOutput struct{ *pulumi.OutputState }
-
-func (PrivateLinkServiceConnectionResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateLinkServiceConnectionResponse)(nil)).Elem()
-}
-
-func (o PrivateLinkServiceConnectionResponseOutput) ToPrivateLinkServiceConnectionResponseOutput() PrivateLinkServiceConnectionResponseOutput {
-	return o
-}
-
-func (o PrivateLinkServiceConnectionResponseOutput) ToPrivateLinkServiceConnectionResponseOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionResponseOutput {
-	return o
-}
-
-func (o PrivateLinkServiceConnectionResponseOutput) GroupIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionResponse) []string { return v.GroupIds }).(pulumi.StringArrayOutput)
-}
-
-func (o PrivateLinkServiceConnectionResponseOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-func (o PrivateLinkServiceConnectionResponseOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-func (o PrivateLinkServiceConnectionResponseOutput) RequestMessage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionResponse) *string { return v.RequestMessage }).(pulumi.StringPtrOutput)
-}
-
-type PrivateLinkServiceConnectionResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (PrivateLinkServiceConnectionResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PrivateLinkServiceConnectionResponse)(nil)).Elem()
-}
-
-func (o PrivateLinkServiceConnectionResponseArrayOutput) ToPrivateLinkServiceConnectionResponseArrayOutput() PrivateLinkServiceConnectionResponseArrayOutput {
-	return o
-}
-
-func (o PrivateLinkServiceConnectionResponseArrayOutput) ToPrivateLinkServiceConnectionResponseArrayOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionResponseArrayOutput {
-	return o
-}
-
-func (o PrivateLinkServiceConnectionResponseArrayOutput) Index(i pulumi.IntInput) PrivateLinkServiceConnectionResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateLinkServiceConnectionResponse {
-		return vs[0].([]PrivateLinkServiceConnectionResponse)[vs[1].(int)]
-	}).(PrivateLinkServiceConnectionResponseOutput)
-}
-
-// A collection of information about the state of the connection between service consumer and provider.
+// Private endpoint connection state.
 type PrivateLinkServiceConnectionState struct {
-	// A message indicating if changes on the service provider require any updates on the consumer.
+	// Action required.
 	ActionsRequired *string `pulumi:"actionsRequired"`
-	// The reason for approval/rejection of the connection.
+	// Description of the object.
 	Description *string `pulumi:"description"`
-	// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+	// Private link connection state.
 	Status *string `pulumi:"status"`
 }
 
@@ -25745,13 +26423,13 @@ type PrivateLinkServiceConnectionStateInput interface {
 	ToPrivateLinkServiceConnectionStateOutputWithContext(context.Context) PrivateLinkServiceConnectionStateOutput
 }
 
-// A collection of information about the state of the connection between service consumer and provider.
+// Private endpoint connection state.
 type PrivateLinkServiceConnectionStateArgs struct {
-	// A message indicating if changes on the service provider require any updates on the consumer.
+	// Action required.
 	ActionsRequired pulumi.StringPtrInput `pulumi:"actionsRequired"`
-	// The reason for approval/rejection of the connection.
+	// Description of the object.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+	// Private link connection state.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 
@@ -25808,7 +26486,7 @@ func (i *privateLinkServiceConnectionStatePtrType) ToPrivateLinkServiceConnectio
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkServiceConnectionStatePtrOutput)
 }
 
-// A collection of information about the state of the connection between service consumer and provider.
+// Private endpoint connection state.
 type PrivateLinkServiceConnectionStateOutput struct{ *pulumi.OutputState }
 
 func (PrivateLinkServiceConnectionStateOutput) ElementType() reflect.Type {
@@ -25833,17 +26511,17 @@ func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionS
 	}).(PrivateLinkServiceConnectionStatePtrOutput)
 }
 
-// A message indicating if changes on the service provider require any updates on the consumer.
+// Action required.
 func (o PrivateLinkServiceConnectionStateOutput) ActionsRequired() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrivateLinkServiceConnectionState) *string { return v.ActionsRequired }).(pulumi.StringPtrOutput)
 }
 
-// The reason for approval/rejection of the connection.
+// Description of the object.
 func (o PrivateLinkServiceConnectionStateOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrivateLinkServiceConnectionState) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+// Private link connection state.
 func (o PrivateLinkServiceConnectionStateOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrivateLinkServiceConnectionState) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
@@ -25872,7 +26550,7 @@ func (o PrivateLinkServiceConnectionStatePtrOutput) Elem() PrivateLinkServiceCon
 	}).(PrivateLinkServiceConnectionStateOutput)
 }
 
-// A message indicating if changes on the service provider require any updates on the consumer.
+// Action required.
 func (o PrivateLinkServiceConnectionStatePtrOutput) ActionsRequired() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PrivateLinkServiceConnectionState) *string {
 		if v == nil {
@@ -25882,7 +26560,7 @@ func (o PrivateLinkServiceConnectionStatePtrOutput) ActionsRequired() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
-// The reason for approval/rejection of the connection.
+// Description of the object.
 func (o PrivateLinkServiceConnectionStatePtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PrivateLinkServiceConnectionState) *string {
 		if v == nil {
@@ -25892,7 +26570,7 @@ func (o PrivateLinkServiceConnectionStatePtrOutput) Description() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+// Private link connection state.
 func (o PrivateLinkServiceConnectionStatePtrOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PrivateLinkServiceConnectionState) *string {
 		if v == nil {
@@ -25902,17 +26580,17 @@ func (o PrivateLinkServiceConnectionStatePtrOutput) Status() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// State of a private endpoint connection.
+// Private endpoint connection state.
 type PrivateLinkServiceConnectionStateResponse struct {
-	// Actions required on the private endpoint connection.
+	// Action required.
 	ActionsRequired *string `pulumi:"actionsRequired"`
-	// Description of the private endpoint connection.
+	// Description of the object.
 	Description *string `pulumi:"description"`
-	// Connection status of the private endpoint connection.
+	// Private link connection state.
 	Status *string `pulumi:"status"`
 }
 
-// State of a private endpoint connection.
+// Private endpoint connection state.
 type PrivateLinkServiceConnectionStateResponseOutput struct{ *pulumi.OutputState }
 
 func (PrivateLinkServiceConnectionStateResponseOutput) ElementType() reflect.Type {
@@ -25927,17 +26605,17 @@ func (o PrivateLinkServiceConnectionStateResponseOutput) ToPrivateLinkServiceCon
 	return o
 }
 
-// Actions required on the private endpoint connection.
+// Action required.
 func (o PrivateLinkServiceConnectionStateResponseOutput) ActionsRequired() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.ActionsRequired }).(pulumi.StringPtrOutput)
 }
 
-// Description of the private endpoint connection.
+// Description of the object.
 func (o PrivateLinkServiceConnectionStateResponseOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Connection status of the private endpoint connection.
+// Private link connection state.
 func (o PrivateLinkServiceConnectionStateResponseOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
@@ -25966,7 +26644,7 @@ func (o PrivateLinkServiceConnectionStateResponsePtrOutput) Elem() PrivateLinkSe
 	}).(PrivateLinkServiceConnectionStateResponseOutput)
 }
 
-// Actions required on the private endpoint connection.
+// Action required.
 func (o PrivateLinkServiceConnectionStateResponsePtrOutput) ActionsRequired() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PrivateLinkServiceConnectionStateResponse) *string {
 		if v == nil {
@@ -25976,7 +26654,7 @@ func (o PrivateLinkServiceConnectionStateResponsePtrOutput) ActionsRequired() pu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Description of the private endpoint connection.
+// Description of the object.
 func (o PrivateLinkServiceConnectionStateResponsePtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PrivateLinkServiceConnectionStateResponse) *string {
 		if v == nil {
@@ -25986,7 +26664,7 @@ func (o PrivateLinkServiceConnectionStateResponsePtrOutput) Description() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
-// Connection status of the private endpoint connection.
+// Private link connection state.
 func (o PrivateLinkServiceConnectionStateResponsePtrOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PrivateLinkServiceConnectionStateResponse) *string {
 		if v == nil {
@@ -25994,73 +26672,6 @@ func (o PrivateLinkServiceConnectionStateResponsePtrOutput) Status() pulumi.Stri
 		}
 		return v.Status
 	}).(pulumi.StringPtrOutput)
-}
-
-// Defines Private link service proxy.
-type PrivateLinkServiceProxyResponse struct {
-	GroupConnectivityInformation []GroupConnectivityInformationResponse `pulumi:"groupConnectivityInformation"`
-	Id                           *string                                `pulumi:"id"`
-	// Defines resource ID of a private endpoint connection.
-	RemotePrivateEndpointConnection *ResourceIdResponse `pulumi:"remotePrivateEndpointConnection"`
-	// Private endpoint connection state.
-	RemotePrivateLinkServiceConnectionState *PrivateLinkServiceConnectionStateResponse `pulumi:"remotePrivateLinkServiceConnectionState"`
-}
-
-// Defines Private link service proxy.
-type PrivateLinkServiceProxyResponseOutput struct{ *pulumi.OutputState }
-
-func (PrivateLinkServiceProxyResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateLinkServiceProxyResponse)(nil)).Elem()
-}
-
-func (o PrivateLinkServiceProxyResponseOutput) ToPrivateLinkServiceProxyResponseOutput() PrivateLinkServiceProxyResponseOutput {
-	return o
-}
-
-func (o PrivateLinkServiceProxyResponseOutput) ToPrivateLinkServiceProxyResponseOutputWithContext(ctx context.Context) PrivateLinkServiceProxyResponseOutput {
-	return o
-}
-
-func (o PrivateLinkServiceProxyResponseOutput) GroupConnectivityInformation() GroupConnectivityInformationResponseArrayOutput {
-	return o.ApplyT(func(v PrivateLinkServiceProxyResponse) []GroupConnectivityInformationResponse {
-		return v.GroupConnectivityInformation
-	}).(GroupConnectivityInformationResponseArrayOutput)
-}
-
-func (o PrivateLinkServiceProxyResponseOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceProxyResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-// Defines resource ID of a private endpoint connection.
-func (o PrivateLinkServiceProxyResponseOutput) RemotePrivateEndpointConnection() ResourceIdResponsePtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceProxyResponse) *ResourceIdResponse { return v.RemotePrivateEndpointConnection }).(ResourceIdResponsePtrOutput)
-}
-
-// Private endpoint connection state.
-func (o PrivateLinkServiceProxyResponseOutput) RemotePrivateLinkServiceConnectionState() PrivateLinkServiceConnectionStateResponsePtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceProxyResponse) *PrivateLinkServiceConnectionStateResponse {
-		return v.RemotePrivateLinkServiceConnectionState
-	}).(PrivateLinkServiceConnectionStateResponsePtrOutput)
-}
-
-type PrivateLinkServiceProxyResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (PrivateLinkServiceProxyResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PrivateLinkServiceProxyResponse)(nil)).Elem()
-}
-
-func (o PrivateLinkServiceProxyResponseArrayOutput) ToPrivateLinkServiceProxyResponseArrayOutput() PrivateLinkServiceProxyResponseArrayOutput {
-	return o
-}
-
-func (o PrivateLinkServiceProxyResponseArrayOutput) ToPrivateLinkServiceProxyResponseArrayOutputWithContext(ctx context.Context) PrivateLinkServiceProxyResponseArrayOutput {
-	return o
-}
-
-func (o PrivateLinkServiceProxyResponseArrayOutput) Index(i pulumi.IntInput) PrivateLinkServiceProxyResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateLinkServiceProxyResponse {
-		return vs[0].([]PrivateLinkServiceProxyResponse)[vs[1].(int)]
-	}).(PrivateLinkServiceProxyResponseOutput)
 }
 
 // Properties of a project.
@@ -26489,7 +27100,7 @@ type PublicIPAddressResourceSettings struct {
 	// Gets or sets the target resource group name.
 	TargetResourceGroupName *string `pulumi:"targetResourceGroupName"`
 	// Gets or sets the target Resource name.
-	TargetResourceName string `pulumi:"targetResourceName"`
+	TargetResourceName *string `pulumi:"targetResourceName"`
 	// Gets or sets public IP zones.
 	Zones *string `pulumi:"zones"`
 }
@@ -26523,7 +27134,7 @@ type PublicIPAddressResourceSettingsArgs struct {
 	// Gets or sets the target resource group name.
 	TargetResourceGroupName pulumi.StringPtrInput `pulumi:"targetResourceGroupName"`
 	// Gets or sets the target Resource name.
-	TargetResourceName pulumi.StringInput `pulumi:"targetResourceName"`
+	TargetResourceName pulumi.StringPtrInput `pulumi:"targetResourceName"`
 	// Gets or sets public IP zones.
 	Zones pulumi.StringPtrInput `pulumi:"zones"`
 }
@@ -26643,8 +27254,8 @@ func (o PublicIPAddressResourceSettingsOutput) TargetResourceGroupName() pulumi.
 }
 
 // Gets or sets the target Resource name.
-func (o PublicIPAddressResourceSettingsOutput) TargetResourceName() pulumi.StringOutput {
-	return o.ApplyT(func(v PublicIPAddressResourceSettings) string { return v.TargetResourceName }).(pulumi.StringOutput)
+func (o PublicIPAddressResourceSettingsOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicIPAddressResourceSettings) *string { return v.TargetResourceName }).(pulumi.StringPtrOutput)
 }
 
 // Gets or sets public IP zones.
@@ -26753,7 +27364,7 @@ func (o PublicIPAddressResourceSettingsPtrOutput) TargetResourceName() pulumi.St
 		if v == nil {
 			return nil
 		}
-		return &v.TargetResourceName
+		return v.TargetResourceName
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -26785,7 +27396,7 @@ type PublicIPAddressResourceSettingsResponse struct {
 	// Gets or sets the target resource group name.
 	TargetResourceGroupName *string `pulumi:"targetResourceGroupName"`
 	// Gets or sets the target Resource name.
-	TargetResourceName string `pulumi:"targetResourceName"`
+	TargetResourceName *string `pulumi:"targetResourceName"`
 	// Gets or sets public IP zones.
 	Zones *string `pulumi:"zones"`
 }
@@ -26842,8 +27453,8 @@ func (o PublicIPAddressResourceSettingsResponseOutput) TargetResourceGroupName()
 }
 
 // Gets or sets the target Resource name.
-func (o PublicIPAddressResourceSettingsResponseOutput) TargetResourceName() pulumi.StringOutput {
-	return o.ApplyT(func(v PublicIPAddressResourceSettingsResponse) string { return v.TargetResourceName }).(pulumi.StringOutput)
+func (o PublicIPAddressResourceSettingsResponseOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicIPAddressResourceSettingsResponse) *string { return v.TargetResourceName }).(pulumi.StringPtrOutput)
 }
 
 // Gets or sets public IP zones.
@@ -26952,7 +27563,7 @@ func (o PublicIPAddressResourceSettingsResponsePtrOutput) TargetResourceName() p
 		if v == nil {
 			return nil
 		}
-		return &v.TargetResourceName
+		return v.TargetResourceName
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -27227,7 +27838,7 @@ type ResourceGroupResourceSettings struct {
 	// Gets or sets the target resource group name.
 	TargetResourceGroupName *string `pulumi:"targetResourceGroupName"`
 	// Gets or sets the target Resource name.
-	TargetResourceName string `pulumi:"targetResourceName"`
+	TargetResourceName *string `pulumi:"targetResourceName"`
 }
 
 // ResourceGroupResourceSettingsInput is an input type that accepts ResourceGroupResourceSettingsArgs and ResourceGroupResourceSettingsOutput values.
@@ -27249,7 +27860,7 @@ type ResourceGroupResourceSettingsArgs struct {
 	// Gets or sets the target resource group name.
 	TargetResourceGroupName pulumi.StringPtrInput `pulumi:"targetResourceGroupName"`
 	// Gets or sets the target Resource name.
-	TargetResourceName pulumi.StringInput `pulumi:"targetResourceName"`
+	TargetResourceName pulumi.StringPtrInput `pulumi:"targetResourceName"`
 }
 
 func (ResourceGroupResourceSettingsArgs) ElementType() reflect.Type {
@@ -27342,8 +27953,8 @@ func (o ResourceGroupResourceSettingsOutput) TargetResourceGroupName() pulumi.St
 }
 
 // Gets or sets the target Resource name.
-func (o ResourceGroupResourceSettingsOutput) TargetResourceName() pulumi.StringOutput {
-	return o.ApplyT(func(v ResourceGroupResourceSettings) string { return v.TargetResourceName }).(pulumi.StringOutput)
+func (o ResourceGroupResourceSettingsOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceGroupResourceSettings) *string { return v.TargetResourceName }).(pulumi.StringPtrOutput)
 }
 
 type ResourceGroupResourceSettingsPtrOutput struct{ *pulumi.OutputState }
@@ -27397,7 +28008,7 @@ func (o ResourceGroupResourceSettingsPtrOutput) TargetResourceName() pulumi.Stri
 		if v == nil {
 			return nil
 		}
-		return &v.TargetResourceName
+		return v.TargetResourceName
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -27409,7 +28020,7 @@ type ResourceGroupResourceSettingsResponse struct {
 	// Gets or sets the target resource group name.
 	TargetResourceGroupName *string `pulumi:"targetResourceGroupName"`
 	// Gets or sets the target Resource name.
-	TargetResourceName string `pulumi:"targetResourceName"`
+	TargetResourceName *string `pulumi:"targetResourceName"`
 }
 
 // Defines the resource group resource settings.
@@ -27439,8 +28050,8 @@ func (o ResourceGroupResourceSettingsResponseOutput) TargetResourceGroupName() p
 }
 
 // Gets or sets the target Resource name.
-func (o ResourceGroupResourceSettingsResponseOutput) TargetResourceName() pulumi.StringOutput {
-	return o.ApplyT(func(v ResourceGroupResourceSettingsResponse) string { return v.TargetResourceName }).(pulumi.StringOutput)
+func (o ResourceGroupResourceSettingsResponseOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceGroupResourceSettingsResponse) *string { return v.TargetResourceName }).(pulumi.StringPtrOutput)
 }
 
 type ResourceGroupResourceSettingsResponsePtrOutput struct{ *pulumi.OutputState }
@@ -27494,16 +28105,14 @@ func (o ResourceGroupResourceSettingsResponsePtrOutput) TargetResourceName() pul
 		if v == nil {
 			return nil
 		}
-		return &v.TargetResourceName
+		return v.TargetResourceName
 	}).(pulumi.StringPtrOutput)
 }
 
-// ARM id for a resource.
 type ResourceIdResponse struct {
 	Id string `pulumi:"id"`
 }
 
-// ARM id for a resource.
 type ResourceIdResponseOutput struct{ *pulumi.OutputState }
 
 func (ResourceIdResponseOutput) ElementType() reflect.Type {
@@ -27520,39 +28129,6 @@ func (o ResourceIdResponseOutput) ToResourceIdResponseOutputWithContext(ctx cont
 
 func (o ResourceIdResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceIdResponse) string { return v.Id }).(pulumi.StringOutput)
-}
-
-type ResourceIdResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ResourceIdResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ResourceIdResponse)(nil)).Elem()
-}
-
-func (o ResourceIdResponsePtrOutput) ToResourceIdResponsePtrOutput() ResourceIdResponsePtrOutput {
-	return o
-}
-
-func (o ResourceIdResponsePtrOutput) ToResourceIdResponsePtrOutputWithContext(ctx context.Context) ResourceIdResponsePtrOutput {
-	return o
-}
-
-func (o ResourceIdResponsePtrOutput) Elem() ResourceIdResponseOutput {
-	return o.ApplyT(func(v *ResourceIdResponse) ResourceIdResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ResourceIdResponse
-		return ret
-	}).(ResourceIdResponseOutput)
-}
-
-func (o ResourceIdResponsePtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceIdResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Id
-	}).(pulumi.StringPtrOutput)
 }
 
 type ResourceIdentity struct {
@@ -28957,6 +29533,8 @@ func (o ServersSolutionSummaryResponsePtrOutput) TestMigratedCount() pulumi.IntP
 
 // Business case settings.
 type Settings struct {
+	// Azure arc settings.
+	AzureArcSettings *AzureArcSettings `pulumi:"azureArcSettings"`
 	// Azure settings for a business case.
 	AzureSettings AzureSettings `pulumi:"azureSettings"`
 	// On-premise settings.
@@ -28987,6 +29565,8 @@ type SettingsInput interface {
 
 // Business case settings.
 type SettingsArgs struct {
+	// Azure arc settings.
+	AzureArcSettings AzureArcSettingsPtrInput `pulumi:"azureArcSettings"`
 	// Azure settings for a business case.
 	AzureSettings AzureSettingsInput `pulumi:"azureSettings"`
 	// On-premise settings.
@@ -29080,6 +29660,11 @@ func (o SettingsOutput) ToSettingsPtrOutputWithContext(ctx context.Context) Sett
 	}).(SettingsPtrOutput)
 }
 
+// Azure arc settings.
+func (o SettingsOutput) AzureArcSettings() AzureArcSettingsPtrOutput {
+	return o.ApplyT(func(v Settings) *AzureArcSettings { return v.AzureArcSettings }).(AzureArcSettingsPtrOutput)
+}
+
 // Azure settings for a business case.
 func (o SettingsOutput) AzureSettings() AzureSettingsOutput {
 	return o.ApplyT(func(v Settings) AzureSettings { return v.AzureSettings }).(AzureSettingsOutput)
@@ -29114,6 +29699,16 @@ func (o SettingsPtrOutput) Elem() SettingsOutput {
 	}).(SettingsOutput)
 }
 
+// Azure arc settings.
+func (o SettingsPtrOutput) AzureArcSettings() AzureArcSettingsPtrOutput {
+	return o.ApplyT(func(v *Settings) *AzureArcSettings {
+		if v == nil {
+			return nil
+		}
+		return v.AzureArcSettings
+	}).(AzureArcSettingsPtrOutput)
+}
+
 // Azure settings for a business case.
 func (o SettingsPtrOutput) AzureSettings() AzureSettingsPtrOutput {
 	return o.ApplyT(func(v *Settings) *AzureSettings {
@@ -29136,6 +29731,8 @@ func (o SettingsPtrOutput) OnPremiseSettings() OnPremiseSettingsPtrOutput {
 
 // Business case settings.
 type SettingsResponse struct {
+	// Azure arc settings.
+	AzureArcSettings *AzureArcSettingsResponse `pulumi:"azureArcSettings"`
 	// Azure settings for a business case.
 	AzureSettings AzureSettingsResponse `pulumi:"azureSettings"`
 	// On-premise settings.
@@ -29166,6 +29763,11 @@ func (o SettingsResponseOutput) ToSettingsResponseOutput() SettingsResponseOutpu
 
 func (o SettingsResponseOutput) ToSettingsResponseOutputWithContext(ctx context.Context) SettingsResponseOutput {
 	return o
+}
+
+// Azure arc settings.
+func (o SettingsResponseOutput) AzureArcSettings() AzureArcSettingsResponsePtrOutput {
+	return o.ApplyT(func(v SettingsResponse) *AzureArcSettingsResponse { return v.AzureArcSettings }).(AzureArcSettingsResponsePtrOutput)
 }
 
 // Azure settings for a business case.
@@ -29200,6 +29802,16 @@ func (o SettingsResponsePtrOutput) Elem() SettingsResponseOutput {
 		var ret SettingsResponse
 		return ret
 	}).(SettingsResponseOutput)
+}
+
+// Azure arc settings.
+func (o SettingsResponsePtrOutput) AzureArcSettings() AzureArcSettingsResponsePtrOutput {
+	return o.ApplyT(func(v *SettingsResponse) *AzureArcSettingsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.AzureArcSettings
+	}).(AzureArcSettingsResponsePtrOutput)
 }
 
 // Azure settings for a business case.
@@ -29797,66 +30409,6 @@ func (o SolutionPropertiesResponseOutput) Tool() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SolutionPropertiesResponse) *string { return v.Tool }).(pulumi.StringPtrOutput)
 }
 
-// The solution summary class.
-type SolutionSummaryResponse struct {
-	// Gets the Instance type.
-	InstanceType string `pulumi:"instanceType"`
-}
-
-// The solution summary class.
-type SolutionSummaryResponseOutput struct{ *pulumi.OutputState }
-
-func (SolutionSummaryResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SolutionSummaryResponse)(nil)).Elem()
-}
-
-func (o SolutionSummaryResponseOutput) ToSolutionSummaryResponseOutput() SolutionSummaryResponseOutput {
-	return o
-}
-
-func (o SolutionSummaryResponseOutput) ToSolutionSummaryResponseOutputWithContext(ctx context.Context) SolutionSummaryResponseOutput {
-	return o
-}
-
-// Gets the Instance type.
-func (o SolutionSummaryResponseOutput) InstanceType() pulumi.StringOutput {
-	return o.ApplyT(func(v SolutionSummaryResponse) string { return v.InstanceType }).(pulumi.StringOutput)
-}
-
-type SolutionSummaryResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (SolutionSummaryResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SolutionSummaryResponse)(nil)).Elem()
-}
-
-func (o SolutionSummaryResponsePtrOutput) ToSolutionSummaryResponsePtrOutput() SolutionSummaryResponsePtrOutput {
-	return o
-}
-
-func (o SolutionSummaryResponsePtrOutput) ToSolutionSummaryResponsePtrOutputWithContext(ctx context.Context) SolutionSummaryResponsePtrOutput {
-	return o
-}
-
-func (o SolutionSummaryResponsePtrOutput) Elem() SolutionSummaryResponseOutput {
-	return o.ApplyT(func(v *SolutionSummaryResponse) SolutionSummaryResponse {
-		if v != nil {
-			return *v
-		}
-		var ret SolutionSummaryResponse
-		return ret
-	}).(SolutionSummaryResponseOutput)
-}
-
-// Gets the Instance type.
-func (o SolutionSummaryResponsePtrOutput) InstanceType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SolutionSummaryResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.InstanceType
-	}).(pulumi.StringPtrOutput)
-}
-
 // Defines the Sql Database resource settings.
 type SqlDatabaseResourceSettings struct {
 	// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
@@ -29867,7 +30419,7 @@ type SqlDatabaseResourceSettings struct {
 	// Gets or sets the target resource group name.
 	TargetResourceGroupName *string `pulumi:"targetResourceGroupName"`
 	// Gets or sets the target Resource name.
-	TargetResourceName string `pulumi:"targetResourceName"`
+	TargetResourceName *string `pulumi:"targetResourceName"`
 	// Defines the zone redundant resource setting.
 	ZoneRedundant *string `pulumi:"zoneRedundant"`
 }
@@ -29893,7 +30445,7 @@ type SqlDatabaseResourceSettingsArgs struct {
 	// Gets or sets the target resource group name.
 	TargetResourceGroupName pulumi.StringPtrInput `pulumi:"targetResourceGroupName"`
 	// Gets or sets the target Resource name.
-	TargetResourceName pulumi.StringInput `pulumi:"targetResourceName"`
+	TargetResourceName pulumi.StringPtrInput `pulumi:"targetResourceName"`
 	// Defines the zone redundant resource setting.
 	ZoneRedundant pulumi.StringPtrInput `pulumi:"zoneRedundant"`
 }
@@ -29993,8 +30545,8 @@ func (o SqlDatabaseResourceSettingsOutput) TargetResourceGroupName() pulumi.Stri
 }
 
 // Gets or sets the target Resource name.
-func (o SqlDatabaseResourceSettingsOutput) TargetResourceName() pulumi.StringOutput {
-	return o.ApplyT(func(v SqlDatabaseResourceSettings) string { return v.TargetResourceName }).(pulumi.StringOutput)
+func (o SqlDatabaseResourceSettingsOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlDatabaseResourceSettings) *string { return v.TargetResourceName }).(pulumi.StringPtrOutput)
 }
 
 // Defines the zone redundant resource setting.
@@ -30063,7 +30615,7 @@ func (o SqlDatabaseResourceSettingsPtrOutput) TargetResourceName() pulumi.String
 		if v == nil {
 			return nil
 		}
-		return &v.TargetResourceName
+		return v.TargetResourceName
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -30087,7 +30639,7 @@ type SqlDatabaseResourceSettingsResponse struct {
 	// Gets or sets the target resource group name.
 	TargetResourceGroupName *string `pulumi:"targetResourceGroupName"`
 	// Gets or sets the target Resource name.
-	TargetResourceName string `pulumi:"targetResourceName"`
+	TargetResourceName *string `pulumi:"targetResourceName"`
 	// Defines the zone redundant resource setting.
 	ZoneRedundant *string `pulumi:"zoneRedundant"`
 }
@@ -30124,8 +30676,8 @@ func (o SqlDatabaseResourceSettingsResponseOutput) TargetResourceGroupName() pul
 }
 
 // Gets or sets the target Resource name.
-func (o SqlDatabaseResourceSettingsResponseOutput) TargetResourceName() pulumi.StringOutput {
-	return o.ApplyT(func(v SqlDatabaseResourceSettingsResponse) string { return v.TargetResourceName }).(pulumi.StringOutput)
+func (o SqlDatabaseResourceSettingsResponseOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlDatabaseResourceSettingsResponse) *string { return v.TargetResourceName }).(pulumi.StringPtrOutput)
 }
 
 // Defines the zone redundant resource setting.
@@ -30194,7 +30746,7 @@ func (o SqlDatabaseResourceSettingsResponsePtrOutput) TargetResourceName() pulum
 		if v == nil {
 			return nil
 		}
-		return &v.TargetResourceName
+		return v.TargetResourceName
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -30526,7 +31078,7 @@ type SqlElasticPoolResourceSettings struct {
 	// Gets or sets the target resource group name.
 	TargetResourceGroupName *string `pulumi:"targetResourceGroupName"`
 	// Gets or sets the target Resource name.
-	TargetResourceName string `pulumi:"targetResourceName"`
+	TargetResourceName *string `pulumi:"targetResourceName"`
 	// Defines the zone redundant resource setting.
 	ZoneRedundant *string `pulumi:"zoneRedundant"`
 }
@@ -30552,7 +31104,7 @@ type SqlElasticPoolResourceSettingsArgs struct {
 	// Gets or sets the target resource group name.
 	TargetResourceGroupName pulumi.StringPtrInput `pulumi:"targetResourceGroupName"`
 	// Gets or sets the target Resource name.
-	TargetResourceName pulumi.StringInput `pulumi:"targetResourceName"`
+	TargetResourceName pulumi.StringPtrInput `pulumi:"targetResourceName"`
 	// Defines the zone redundant resource setting.
 	ZoneRedundant pulumi.StringPtrInput `pulumi:"zoneRedundant"`
 }
@@ -30652,8 +31204,8 @@ func (o SqlElasticPoolResourceSettingsOutput) TargetResourceGroupName() pulumi.S
 }
 
 // Gets or sets the target Resource name.
-func (o SqlElasticPoolResourceSettingsOutput) TargetResourceName() pulumi.StringOutput {
-	return o.ApplyT(func(v SqlElasticPoolResourceSettings) string { return v.TargetResourceName }).(pulumi.StringOutput)
+func (o SqlElasticPoolResourceSettingsOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlElasticPoolResourceSettings) *string { return v.TargetResourceName }).(pulumi.StringPtrOutput)
 }
 
 // Defines the zone redundant resource setting.
@@ -30722,7 +31274,7 @@ func (o SqlElasticPoolResourceSettingsPtrOutput) TargetResourceName() pulumi.Str
 		if v == nil {
 			return nil
 		}
-		return &v.TargetResourceName
+		return v.TargetResourceName
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -30746,7 +31298,7 @@ type SqlElasticPoolResourceSettingsResponse struct {
 	// Gets or sets the target resource group name.
 	TargetResourceGroupName *string `pulumi:"targetResourceGroupName"`
 	// Gets or sets the target Resource name.
-	TargetResourceName string `pulumi:"targetResourceName"`
+	TargetResourceName *string `pulumi:"targetResourceName"`
 	// Defines the zone redundant resource setting.
 	ZoneRedundant *string `pulumi:"zoneRedundant"`
 }
@@ -30783,8 +31335,8 @@ func (o SqlElasticPoolResourceSettingsResponseOutput) TargetResourceGroupName() 
 }
 
 // Gets or sets the target Resource name.
-func (o SqlElasticPoolResourceSettingsResponseOutput) TargetResourceName() pulumi.StringOutput {
-	return o.ApplyT(func(v SqlElasticPoolResourceSettingsResponse) string { return v.TargetResourceName }).(pulumi.StringOutput)
+func (o SqlElasticPoolResourceSettingsResponseOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlElasticPoolResourceSettingsResponse) *string { return v.TargetResourceName }).(pulumi.StringPtrOutput)
 }
 
 // Defines the zone redundant resource setting.
@@ -30853,7 +31405,7 @@ func (o SqlElasticPoolResourceSettingsResponsePtrOutput) TargetResourceName() pu
 		if v == nil {
 			return nil
 		}
-		return &v.TargetResourceName
+		return v.TargetResourceName
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -31289,7 +31841,7 @@ type SqlServerResourceSettings struct {
 	// Gets or sets the target resource group name.
 	TargetResourceGroupName *string `pulumi:"targetResourceGroupName"`
 	// Gets or sets the target Resource name.
-	TargetResourceName string `pulumi:"targetResourceName"`
+	TargetResourceName *string `pulumi:"targetResourceName"`
 }
 
 // SqlServerResourceSettingsInput is an input type that accepts SqlServerResourceSettingsArgs and SqlServerResourceSettingsOutput values.
@@ -31311,7 +31863,7 @@ type SqlServerResourceSettingsArgs struct {
 	// Gets or sets the target resource group name.
 	TargetResourceGroupName pulumi.StringPtrInput `pulumi:"targetResourceGroupName"`
 	// Gets or sets the target Resource name.
-	TargetResourceName pulumi.StringInput `pulumi:"targetResourceName"`
+	TargetResourceName pulumi.StringPtrInput `pulumi:"targetResourceName"`
 }
 
 func (SqlServerResourceSettingsArgs) ElementType() reflect.Type {
@@ -31404,8 +31956,8 @@ func (o SqlServerResourceSettingsOutput) TargetResourceGroupName() pulumi.String
 }
 
 // Gets or sets the target Resource name.
-func (o SqlServerResourceSettingsOutput) TargetResourceName() pulumi.StringOutput {
-	return o.ApplyT(func(v SqlServerResourceSettings) string { return v.TargetResourceName }).(pulumi.StringOutput)
+func (o SqlServerResourceSettingsOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlServerResourceSettings) *string { return v.TargetResourceName }).(pulumi.StringPtrOutput)
 }
 
 type SqlServerResourceSettingsPtrOutput struct{ *pulumi.OutputState }
@@ -31459,7 +32011,7 @@ func (o SqlServerResourceSettingsPtrOutput) TargetResourceName() pulumi.StringPt
 		if v == nil {
 			return nil
 		}
-		return &v.TargetResourceName
+		return v.TargetResourceName
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -31471,7 +32023,7 @@ type SqlServerResourceSettingsResponse struct {
 	// Gets or sets the target resource group name.
 	TargetResourceGroupName *string `pulumi:"targetResourceGroupName"`
 	// Gets or sets the target Resource name.
-	TargetResourceName string `pulumi:"targetResourceName"`
+	TargetResourceName *string `pulumi:"targetResourceName"`
 }
 
 // Defines the SQL Server resource settings.
@@ -31501,8 +32053,8 @@ func (o SqlServerResourceSettingsResponseOutput) TargetResourceGroupName() pulum
 }
 
 // Gets or sets the target Resource name.
-func (o SqlServerResourceSettingsResponseOutput) TargetResourceName() pulumi.StringOutput {
-	return o.ApplyT(func(v SqlServerResourceSettingsResponse) string { return v.TargetResourceName }).(pulumi.StringOutput)
+func (o SqlServerResourceSettingsResponseOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlServerResourceSettingsResponse) *string { return v.TargetResourceName }).(pulumi.StringPtrOutput)
 }
 
 type SqlServerResourceSettingsResponsePtrOutput struct{ *pulumi.OutputState }
@@ -31556,7 +32108,7 @@ func (o SqlServerResourceSettingsResponsePtrOutput) TargetResourceName() pulumi.
 		if v == nil {
 			return nil
 		}
-		return &v.TargetResourceName
+		return v.TargetResourceName
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -32425,7 +32977,7 @@ type SystemDataResponse struct {
 	CreatedBy *string `pulumi:"createdBy"`
 	// The type of identity that created the resource.
 	CreatedByType *string `pulumi:"createdByType"`
-	// The timestamp of resource last modification (UTC)
+	// The type of identity that last modified the resource.
 	LastModifiedAt *string `pulumi:"lastModifiedAt"`
 	// The identity that last modified the resource.
 	LastModifiedBy *string `pulumi:"lastModifiedBy"`
@@ -32463,7 +33015,7 @@ func (o SystemDataResponseOutput) CreatedByType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
 }
 
-// The timestamp of resource last modification (UTC)
+// The type of identity that last modified the resource.
 func (o SystemDataResponseOutput) LastModifiedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
 }
@@ -32476,90 +33028,6 @@ func (o SystemDataResponseOutput) LastModifiedBy() pulumi.StringPtrOutput {
 // The type of identity that last modified the resource.
 func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
-}
-
-type SystemDataResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (SystemDataResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SystemDataResponse)(nil)).Elem()
-}
-
-func (o SystemDataResponsePtrOutput) ToSystemDataResponsePtrOutput() SystemDataResponsePtrOutput {
-	return o
-}
-
-func (o SystemDataResponsePtrOutput) ToSystemDataResponsePtrOutputWithContext(ctx context.Context) SystemDataResponsePtrOutput {
-	return o
-}
-
-func (o SystemDataResponsePtrOutput) Elem() SystemDataResponseOutput {
-	return o.ApplyT(func(v *SystemDataResponse) SystemDataResponse {
-		if v != nil {
-			return *v
-		}
-		var ret SystemDataResponse
-		return ret
-	}).(SystemDataResponseOutput)
-}
-
-// The timestamp of resource creation (UTC).
-func (o SystemDataResponsePtrOutput) CreatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SystemDataResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CreatedAt
-	}).(pulumi.StringPtrOutput)
-}
-
-// The identity that created the resource.
-func (o SystemDataResponsePtrOutput) CreatedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SystemDataResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CreatedBy
-	}).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that created the resource.
-func (o SystemDataResponsePtrOutput) CreatedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SystemDataResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CreatedByType
-	}).(pulumi.StringPtrOutput)
-}
-
-// The timestamp of resource last modification (UTC)
-func (o SystemDataResponsePtrOutput) LastModifiedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SystemDataResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LastModifiedAt
-	}).(pulumi.StringPtrOutput)
-}
-
-// The identity that last modified the resource.
-func (o SystemDataResponsePtrOutput) LastModifiedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SystemDataResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LastModifiedBy
-	}).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that last modified the resource.
-func (o SystemDataResponsePtrOutput) LastModifiedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SystemDataResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LastModifiedByType
-	}).(pulumi.StringPtrOutput)
 }
 
 // Storage profile for the directory on the target container.
@@ -33698,7 +34166,7 @@ type VirtualMachineResourceSettings struct {
 	// Gets or sets the target resource group name.
 	TargetResourceGroupName *string `pulumi:"targetResourceGroupName"`
 	// Gets or sets the target Resource name.
-	TargetResourceName string `pulumi:"targetResourceName"`
+	TargetResourceName *string `pulumi:"targetResourceName"`
 	// Gets or sets the target virtual machine size.
 	TargetVmSize *string `pulumi:"targetVmSize"`
 	// Gets or sets user-managed identities
@@ -33730,7 +34198,7 @@ type VirtualMachineResourceSettingsArgs struct {
 	// Gets or sets the target resource group name.
 	TargetResourceGroupName pulumi.StringPtrInput `pulumi:"targetResourceGroupName"`
 	// Gets or sets the target Resource name.
-	TargetResourceName pulumi.StringInput `pulumi:"targetResourceName"`
+	TargetResourceName pulumi.StringPtrInput `pulumi:"targetResourceName"`
 	// Gets or sets the target virtual machine size.
 	TargetVmSize pulumi.StringPtrInput `pulumi:"targetVmSize"`
 	// Gets or sets user-managed identities
@@ -33842,8 +34310,8 @@ func (o VirtualMachineResourceSettingsOutput) TargetResourceGroupName() pulumi.S
 }
 
 // Gets or sets the target Resource name.
-func (o VirtualMachineResourceSettingsOutput) TargetResourceName() pulumi.StringOutput {
-	return o.ApplyT(func(v VirtualMachineResourceSettings) string { return v.TargetResourceName }).(pulumi.StringOutput)
+func (o VirtualMachineResourceSettingsOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineResourceSettings) *string { return v.TargetResourceName }).(pulumi.StringPtrOutput)
 }
 
 // Gets or sets the target virtual machine size.
@@ -33937,7 +34405,7 @@ func (o VirtualMachineResourceSettingsPtrOutput) TargetResourceName() pulumi.Str
 		if v == nil {
 			return nil
 		}
-		return &v.TargetResourceName
+		return v.TargetResourceName
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -33975,7 +34443,7 @@ type VirtualMachineResourceSettingsResponse struct {
 	// Gets or sets the target resource group name.
 	TargetResourceGroupName *string `pulumi:"targetResourceGroupName"`
 	// Gets or sets the target Resource name.
-	TargetResourceName string `pulumi:"targetResourceName"`
+	TargetResourceName *string `pulumi:"targetResourceName"`
 	// Gets or sets the target virtual machine size.
 	TargetVmSize *string `pulumi:"targetVmSize"`
 	// Gets or sets user-managed identities
@@ -34024,8 +34492,8 @@ func (o VirtualMachineResourceSettingsResponseOutput) TargetResourceGroupName() 
 }
 
 // Gets or sets the target Resource name.
-func (o VirtualMachineResourceSettingsResponseOutput) TargetResourceName() pulumi.StringOutput {
-	return o.ApplyT(func(v VirtualMachineResourceSettingsResponse) string { return v.TargetResourceName }).(pulumi.StringOutput)
+func (o VirtualMachineResourceSettingsResponseOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineResourceSettingsResponse) *string { return v.TargetResourceName }).(pulumi.StringPtrOutput)
 }
 
 // Gets or sets the target virtual machine size.
@@ -34119,7 +34587,7 @@ func (o VirtualMachineResourceSettingsResponsePtrOutput) TargetResourceName() pu
 		if v == nil {
 			return nil
 		}
-		return &v.TargetResourceName
+		return v.TargetResourceName
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -34163,7 +34631,7 @@ type VirtualNetworkResourceSettings struct {
 	// Gets or sets the target resource group name.
 	TargetResourceGroupName *string `pulumi:"targetResourceGroupName"`
 	// Gets or sets the target Resource name.
-	TargetResourceName string `pulumi:"targetResourceName"`
+	TargetResourceName *string `pulumi:"targetResourceName"`
 }
 
 // VirtualNetworkResourceSettingsInput is an input type that accepts VirtualNetworkResourceSettingsArgs and VirtualNetworkResourceSettingsOutput values.
@@ -34197,7 +34665,7 @@ type VirtualNetworkResourceSettingsArgs struct {
 	// Gets or sets the target resource group name.
 	TargetResourceGroupName pulumi.StringPtrInput `pulumi:"targetResourceGroupName"`
 	// Gets or sets the target Resource name.
-	TargetResourceName pulumi.StringInput `pulumi:"targetResourceName"`
+	TargetResourceName pulumi.StringPtrInput `pulumi:"targetResourceName"`
 }
 
 func (VirtualNetworkResourceSettingsArgs) ElementType() reflect.Type {
@@ -34317,8 +34785,8 @@ func (o VirtualNetworkResourceSettingsOutput) TargetResourceGroupName() pulumi.S
 }
 
 // Gets or sets the target Resource name.
-func (o VirtualNetworkResourceSettingsOutput) TargetResourceName() pulumi.StringOutput {
-	return o.ApplyT(func(v VirtualNetworkResourceSettings) string { return v.TargetResourceName }).(pulumi.StringOutput)
+func (o VirtualNetworkResourceSettingsOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkResourceSettings) *string { return v.TargetResourceName }).(pulumi.StringPtrOutput)
 }
 
 type VirtualNetworkResourceSettingsPtrOutput struct{ *pulumi.OutputState }
@@ -34424,7 +34892,7 @@ func (o VirtualNetworkResourceSettingsPtrOutput) TargetResourceName() pulumi.Str
 		if v == nil {
 			return nil
 		}
-		return &v.TargetResourceName
+		return v.TargetResourceName
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -34448,7 +34916,7 @@ type VirtualNetworkResourceSettingsResponse struct {
 	// Gets or sets the target resource group name.
 	TargetResourceGroupName *string `pulumi:"targetResourceGroupName"`
 	// Gets or sets the target Resource name.
-	TargetResourceName string `pulumi:"targetResourceName"`
+	TargetResourceName *string `pulumi:"targetResourceName"`
 }
 
 // Defines the virtual network resource settings.
@@ -34505,8 +34973,8 @@ func (o VirtualNetworkResourceSettingsResponseOutput) TargetResourceGroupName() 
 }
 
 // Gets or sets the target Resource name.
-func (o VirtualNetworkResourceSettingsResponseOutput) TargetResourceName() pulumi.StringOutput {
-	return o.ApplyT(func(v VirtualNetworkResourceSettingsResponse) string { return v.TargetResourceName }).(pulumi.StringOutput)
+func (o VirtualNetworkResourceSettingsResponseOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkResourceSettingsResponse) *string { return v.TargetResourceName }).(pulumi.StringPtrOutput)
 }
 
 type VirtualNetworkResourceSettingsResponsePtrOutput struct{ *pulumi.OutputState }
@@ -34612,18 +35080,14 @@ func (o VirtualNetworkResourceSettingsResponsePtrOutput) TargetResourceName() pu
 		if v == nil {
 			return nil
 		}
-		return &v.TargetResourceName
+		return v.TargetResourceName
 	}).(pulumi.StringPtrOutput)
 }
 
 // Virtualization software settings.
 type VirtualizationSoftwareSettings struct {
-	// Licence and support list.
-	LicenseAndSupportList []VsphereLicense `pulumi:"licenseAndSupportList"`
-	// Number of physical cores per licence.
-	NumberOfPhysicalCoresPerLicense int `pulumi:"numberOfPhysicalCoresPerLicense"`
-	// Software Assurance cost.
-	SoftwareAssuranceCost float64 `pulumi:"softwareAssuranceCost"`
+	// VMware cloud foundation license cost.
+	VMwareCloudFoundationLicenseCost float64 `pulumi:"vMwareCloudFoundationLicenseCost"`
 }
 
 // VirtualizationSoftwareSettingsInput is an input type that accepts VirtualizationSoftwareSettingsArgs and VirtualizationSoftwareSettingsOutput values.
@@ -34639,12 +35103,8 @@ type VirtualizationSoftwareSettingsInput interface {
 
 // Virtualization software settings.
 type VirtualizationSoftwareSettingsArgs struct {
-	// Licence and support list.
-	LicenseAndSupportList VsphereLicenseArrayInput `pulumi:"licenseAndSupportList"`
-	// Number of physical cores per licence.
-	NumberOfPhysicalCoresPerLicense pulumi.IntInput `pulumi:"numberOfPhysicalCoresPerLicense"`
-	// Software Assurance cost.
-	SoftwareAssuranceCost pulumi.Float64Input `pulumi:"softwareAssuranceCost"`
+	// VMware cloud foundation license cost.
+	VMwareCloudFoundationLicenseCost pulumi.Float64Input `pulumi:"vMwareCloudFoundationLicenseCost"`
 }
 
 func (VirtualizationSoftwareSettingsArgs) ElementType() reflect.Type {
@@ -34725,19 +35185,9 @@ func (o VirtualizationSoftwareSettingsOutput) ToVirtualizationSoftwareSettingsPt
 	}).(VirtualizationSoftwareSettingsPtrOutput)
 }
 
-// Licence and support list.
-func (o VirtualizationSoftwareSettingsOutput) LicenseAndSupportList() VsphereLicenseArrayOutput {
-	return o.ApplyT(func(v VirtualizationSoftwareSettings) []VsphereLicense { return v.LicenseAndSupportList }).(VsphereLicenseArrayOutput)
-}
-
-// Number of physical cores per licence.
-func (o VirtualizationSoftwareSettingsOutput) NumberOfPhysicalCoresPerLicense() pulumi.IntOutput {
-	return o.ApplyT(func(v VirtualizationSoftwareSettings) int { return v.NumberOfPhysicalCoresPerLicense }).(pulumi.IntOutput)
-}
-
-// Software Assurance cost.
-func (o VirtualizationSoftwareSettingsOutput) SoftwareAssuranceCost() pulumi.Float64Output {
-	return o.ApplyT(func(v VirtualizationSoftwareSettings) float64 { return v.SoftwareAssuranceCost }).(pulumi.Float64Output)
+// VMware cloud foundation license cost.
+func (o VirtualizationSoftwareSettingsOutput) VMwareCloudFoundationLicenseCost() pulumi.Float64Output {
+	return o.ApplyT(func(v VirtualizationSoftwareSettings) float64 { return v.VMwareCloudFoundationLicenseCost }).(pulumi.Float64Output)
 }
 
 type VirtualizationSoftwareSettingsPtrOutput struct{ *pulumi.OutputState }
@@ -34764,44 +35214,20 @@ func (o VirtualizationSoftwareSettingsPtrOutput) Elem() VirtualizationSoftwareSe
 	}).(VirtualizationSoftwareSettingsOutput)
 }
 
-// Licence and support list.
-func (o VirtualizationSoftwareSettingsPtrOutput) LicenseAndSupportList() VsphereLicenseArrayOutput {
-	return o.ApplyT(func(v *VirtualizationSoftwareSettings) []VsphereLicense {
-		if v == nil {
-			return nil
-		}
-		return v.LicenseAndSupportList
-	}).(VsphereLicenseArrayOutput)
-}
-
-// Number of physical cores per licence.
-func (o VirtualizationSoftwareSettingsPtrOutput) NumberOfPhysicalCoresPerLicense() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *VirtualizationSoftwareSettings) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.NumberOfPhysicalCoresPerLicense
-	}).(pulumi.IntPtrOutput)
-}
-
-// Software Assurance cost.
-func (o VirtualizationSoftwareSettingsPtrOutput) SoftwareAssuranceCost() pulumi.Float64PtrOutput {
+// VMware cloud foundation license cost.
+func (o VirtualizationSoftwareSettingsPtrOutput) VMwareCloudFoundationLicenseCost() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *VirtualizationSoftwareSettings) *float64 {
 		if v == nil {
 			return nil
 		}
-		return &v.SoftwareAssuranceCost
+		return &v.VMwareCloudFoundationLicenseCost
 	}).(pulumi.Float64PtrOutput)
 }
 
 // Virtualization software settings.
 type VirtualizationSoftwareSettingsResponse struct {
-	// Licence and support list.
-	LicenseAndSupportList []VsphereLicenseResponse `pulumi:"licenseAndSupportList"`
-	// Number of physical cores per licence.
-	NumberOfPhysicalCoresPerLicense int `pulumi:"numberOfPhysicalCoresPerLicense"`
-	// Software Assurance cost.
-	SoftwareAssuranceCost float64 `pulumi:"softwareAssuranceCost"`
+	// VMware cloud foundation license cost.
+	VMwareCloudFoundationLicenseCost float64 `pulumi:"vMwareCloudFoundationLicenseCost"`
 }
 
 // Virtualization software settings.
@@ -34819,21 +35245,9 @@ func (o VirtualizationSoftwareSettingsResponseOutput) ToVirtualizationSoftwareSe
 	return o
 }
 
-// Licence and support list.
-func (o VirtualizationSoftwareSettingsResponseOutput) LicenseAndSupportList() VsphereLicenseResponseArrayOutput {
-	return o.ApplyT(func(v VirtualizationSoftwareSettingsResponse) []VsphereLicenseResponse {
-		return v.LicenseAndSupportList
-	}).(VsphereLicenseResponseArrayOutput)
-}
-
-// Number of physical cores per licence.
-func (o VirtualizationSoftwareSettingsResponseOutput) NumberOfPhysicalCoresPerLicense() pulumi.IntOutput {
-	return o.ApplyT(func(v VirtualizationSoftwareSettingsResponse) int { return v.NumberOfPhysicalCoresPerLicense }).(pulumi.IntOutput)
-}
-
-// Software Assurance cost.
-func (o VirtualizationSoftwareSettingsResponseOutput) SoftwareAssuranceCost() pulumi.Float64Output {
-	return o.ApplyT(func(v VirtualizationSoftwareSettingsResponse) float64 { return v.SoftwareAssuranceCost }).(pulumi.Float64Output)
+// VMware cloud foundation license cost.
+func (o VirtualizationSoftwareSettingsResponseOutput) VMwareCloudFoundationLicenseCost() pulumi.Float64Output {
+	return o.ApplyT(func(v VirtualizationSoftwareSettingsResponse) float64 { return v.VMwareCloudFoundationLicenseCost }).(pulumi.Float64Output)
 }
 
 type VirtualizationSoftwareSettingsResponsePtrOutput struct{ *pulumi.OutputState }
@@ -34860,33 +35274,13 @@ func (o VirtualizationSoftwareSettingsResponsePtrOutput) Elem() VirtualizationSo
 	}).(VirtualizationSoftwareSettingsResponseOutput)
 }
 
-// Licence and support list.
-func (o VirtualizationSoftwareSettingsResponsePtrOutput) LicenseAndSupportList() VsphereLicenseResponseArrayOutput {
-	return o.ApplyT(func(v *VirtualizationSoftwareSettingsResponse) []VsphereLicenseResponse {
-		if v == nil {
-			return nil
-		}
-		return v.LicenseAndSupportList
-	}).(VsphereLicenseResponseArrayOutput)
-}
-
-// Number of physical cores per licence.
-func (o VirtualizationSoftwareSettingsResponsePtrOutput) NumberOfPhysicalCoresPerLicense() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *VirtualizationSoftwareSettingsResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.NumberOfPhysicalCoresPerLicense
-	}).(pulumi.IntPtrOutput)
-}
-
-// Software Assurance cost.
-func (o VirtualizationSoftwareSettingsResponsePtrOutput) SoftwareAssuranceCost() pulumi.Float64PtrOutput {
+// VMware cloud foundation license cost.
+func (o VirtualizationSoftwareSettingsResponsePtrOutput) VMwareCloudFoundationLicenseCost() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *VirtualizationSoftwareSettingsResponse) *float64 {
 		if v == nil {
 			return nil
 		}
-		return &v.SoftwareAssuranceCost
+		return &v.VMwareCloudFoundationLicenseCost
 	}).(pulumi.Float64PtrOutput)
 }
 
@@ -35124,596 +35518,6 @@ func (o VmUptimeResponsePtrOutput) HoursPerDay() pulumi.Float64PtrOutput {
 		}
 		return v.HoursPerDay
 	}).(pulumi.Float64PtrOutput)
-}
-
-// Representation of a vsphere licence.
-type VsphereLicense struct {
-	// Basic support cost.
-	BasicSupportCost float64 `pulumi:"basicSupportCost"`
-	// Cost of a licence.
-	LicenseCost float64 `pulumi:"licenseCost"`
-	// VSphere licence type.
-	LicenseType string `pulumi:"licenseType"`
-	// Production support cost.
-	ProductionSupportCost float64 `pulumi:"productionSupportCost"`
-}
-
-// VsphereLicenseInput is an input type that accepts VsphereLicenseArgs and VsphereLicenseOutput values.
-// You can construct a concrete instance of `VsphereLicenseInput` via:
-//
-//	VsphereLicenseArgs{...}
-type VsphereLicenseInput interface {
-	pulumi.Input
-
-	ToVsphereLicenseOutput() VsphereLicenseOutput
-	ToVsphereLicenseOutputWithContext(context.Context) VsphereLicenseOutput
-}
-
-// Representation of a vsphere licence.
-type VsphereLicenseArgs struct {
-	// Basic support cost.
-	BasicSupportCost pulumi.Float64Input `pulumi:"basicSupportCost"`
-	// Cost of a licence.
-	LicenseCost pulumi.Float64Input `pulumi:"licenseCost"`
-	// VSphere licence type.
-	LicenseType pulumi.StringInput `pulumi:"licenseType"`
-	// Production support cost.
-	ProductionSupportCost pulumi.Float64Input `pulumi:"productionSupportCost"`
-}
-
-func (VsphereLicenseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*VsphereLicense)(nil)).Elem()
-}
-
-func (i VsphereLicenseArgs) ToVsphereLicenseOutput() VsphereLicenseOutput {
-	return i.ToVsphereLicenseOutputWithContext(context.Background())
-}
-
-func (i VsphereLicenseArgs) ToVsphereLicenseOutputWithContext(ctx context.Context) VsphereLicenseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VsphereLicenseOutput)
-}
-
-// VsphereLicenseArrayInput is an input type that accepts VsphereLicenseArray and VsphereLicenseArrayOutput values.
-// You can construct a concrete instance of `VsphereLicenseArrayInput` via:
-//
-//	VsphereLicenseArray{ VsphereLicenseArgs{...} }
-type VsphereLicenseArrayInput interface {
-	pulumi.Input
-
-	ToVsphereLicenseArrayOutput() VsphereLicenseArrayOutput
-	ToVsphereLicenseArrayOutputWithContext(context.Context) VsphereLicenseArrayOutput
-}
-
-type VsphereLicenseArray []VsphereLicenseInput
-
-func (VsphereLicenseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]VsphereLicense)(nil)).Elem()
-}
-
-func (i VsphereLicenseArray) ToVsphereLicenseArrayOutput() VsphereLicenseArrayOutput {
-	return i.ToVsphereLicenseArrayOutputWithContext(context.Background())
-}
-
-func (i VsphereLicenseArray) ToVsphereLicenseArrayOutputWithContext(ctx context.Context) VsphereLicenseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VsphereLicenseArrayOutput)
-}
-
-// Representation of a vsphere licence.
-type VsphereLicenseOutput struct{ *pulumi.OutputState }
-
-func (VsphereLicenseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VsphereLicense)(nil)).Elem()
-}
-
-func (o VsphereLicenseOutput) ToVsphereLicenseOutput() VsphereLicenseOutput {
-	return o
-}
-
-func (o VsphereLicenseOutput) ToVsphereLicenseOutputWithContext(ctx context.Context) VsphereLicenseOutput {
-	return o
-}
-
-// Basic support cost.
-func (o VsphereLicenseOutput) BasicSupportCost() pulumi.Float64Output {
-	return o.ApplyT(func(v VsphereLicense) float64 { return v.BasicSupportCost }).(pulumi.Float64Output)
-}
-
-// Cost of a licence.
-func (o VsphereLicenseOutput) LicenseCost() pulumi.Float64Output {
-	return o.ApplyT(func(v VsphereLicense) float64 { return v.LicenseCost }).(pulumi.Float64Output)
-}
-
-// VSphere licence type.
-func (o VsphereLicenseOutput) LicenseType() pulumi.StringOutput {
-	return o.ApplyT(func(v VsphereLicense) string { return v.LicenseType }).(pulumi.StringOutput)
-}
-
-// Production support cost.
-func (o VsphereLicenseOutput) ProductionSupportCost() pulumi.Float64Output {
-	return o.ApplyT(func(v VsphereLicense) float64 { return v.ProductionSupportCost }).(pulumi.Float64Output)
-}
-
-type VsphereLicenseArrayOutput struct{ *pulumi.OutputState }
-
-func (VsphereLicenseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]VsphereLicense)(nil)).Elem()
-}
-
-func (o VsphereLicenseArrayOutput) ToVsphereLicenseArrayOutput() VsphereLicenseArrayOutput {
-	return o
-}
-
-func (o VsphereLicenseArrayOutput) ToVsphereLicenseArrayOutputWithContext(ctx context.Context) VsphereLicenseArrayOutput {
-	return o
-}
-
-func (o VsphereLicenseArrayOutput) Index(i pulumi.IntInput) VsphereLicenseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VsphereLicense {
-		return vs[0].([]VsphereLicense)[vs[1].(int)]
-	}).(VsphereLicenseOutput)
-}
-
-// Representation of a vsphere licence.
-type VsphereLicenseResponse struct {
-	// Basic support cost.
-	BasicSupportCost float64 `pulumi:"basicSupportCost"`
-	// Cost of a licence.
-	LicenseCost float64 `pulumi:"licenseCost"`
-	// VSphere licence type.
-	LicenseType string `pulumi:"licenseType"`
-	// Production support cost.
-	ProductionSupportCost float64 `pulumi:"productionSupportCost"`
-}
-
-// Representation of a vsphere licence.
-type VsphereLicenseResponseOutput struct{ *pulumi.OutputState }
-
-func (VsphereLicenseResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VsphereLicenseResponse)(nil)).Elem()
-}
-
-func (o VsphereLicenseResponseOutput) ToVsphereLicenseResponseOutput() VsphereLicenseResponseOutput {
-	return o
-}
-
-func (o VsphereLicenseResponseOutput) ToVsphereLicenseResponseOutputWithContext(ctx context.Context) VsphereLicenseResponseOutput {
-	return o
-}
-
-// Basic support cost.
-func (o VsphereLicenseResponseOutput) BasicSupportCost() pulumi.Float64Output {
-	return o.ApplyT(func(v VsphereLicenseResponse) float64 { return v.BasicSupportCost }).(pulumi.Float64Output)
-}
-
-// Cost of a licence.
-func (o VsphereLicenseResponseOutput) LicenseCost() pulumi.Float64Output {
-	return o.ApplyT(func(v VsphereLicenseResponse) float64 { return v.LicenseCost }).(pulumi.Float64Output)
-}
-
-// VSphere licence type.
-func (o VsphereLicenseResponseOutput) LicenseType() pulumi.StringOutput {
-	return o.ApplyT(func(v VsphereLicenseResponse) string { return v.LicenseType }).(pulumi.StringOutput)
-}
-
-// Production support cost.
-func (o VsphereLicenseResponseOutput) ProductionSupportCost() pulumi.Float64Output {
-	return o.ApplyT(func(v VsphereLicenseResponse) float64 { return v.ProductionSupportCost }).(pulumi.Float64Output)
-}
-
-type VsphereLicenseResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (VsphereLicenseResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]VsphereLicenseResponse)(nil)).Elem()
-}
-
-func (o VsphereLicenseResponseArrayOutput) ToVsphereLicenseResponseArrayOutput() VsphereLicenseResponseArrayOutput {
-	return o
-}
-
-func (o VsphereLicenseResponseArrayOutput) ToVsphereLicenseResponseArrayOutputWithContext(ctx context.Context) VsphereLicenseResponseArrayOutput {
-	return o
-}
-
-func (o VsphereLicenseResponseArrayOutput) Index(i pulumi.IntInput) VsphereLicenseResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VsphereLicenseResponse {
-		return vs[0].([]VsphereLicenseResponse)[vs[1].(int)]
-	}).(VsphereLicenseResponseOutput)
-}
-
-// Representation of a vsphere management licence.
-type VsphereManagementLicense struct {
-	// Basic support cost.
-	BasicSupportCost float64 `pulumi:"basicSupportCost"`
-	// Cost of a licence.
-	LicenseCost float64 `pulumi:"licenseCost"`
-	// VSphere licence type.
-	LicenseType string `pulumi:"licenseType"`
-	// Production support cost.
-	ProductionSupportCost float64 `pulumi:"productionSupportCost"`
-}
-
-// VsphereManagementLicenseInput is an input type that accepts VsphereManagementLicenseArgs and VsphereManagementLicenseOutput values.
-// You can construct a concrete instance of `VsphereManagementLicenseInput` via:
-//
-//	VsphereManagementLicenseArgs{...}
-type VsphereManagementLicenseInput interface {
-	pulumi.Input
-
-	ToVsphereManagementLicenseOutput() VsphereManagementLicenseOutput
-	ToVsphereManagementLicenseOutputWithContext(context.Context) VsphereManagementLicenseOutput
-}
-
-// Representation of a vsphere management licence.
-type VsphereManagementLicenseArgs struct {
-	// Basic support cost.
-	BasicSupportCost pulumi.Float64Input `pulumi:"basicSupportCost"`
-	// Cost of a licence.
-	LicenseCost pulumi.Float64Input `pulumi:"licenseCost"`
-	// VSphere licence type.
-	LicenseType pulumi.StringInput `pulumi:"licenseType"`
-	// Production support cost.
-	ProductionSupportCost pulumi.Float64Input `pulumi:"productionSupportCost"`
-}
-
-func (VsphereManagementLicenseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*VsphereManagementLicense)(nil)).Elem()
-}
-
-func (i VsphereManagementLicenseArgs) ToVsphereManagementLicenseOutput() VsphereManagementLicenseOutput {
-	return i.ToVsphereManagementLicenseOutputWithContext(context.Background())
-}
-
-func (i VsphereManagementLicenseArgs) ToVsphereManagementLicenseOutputWithContext(ctx context.Context) VsphereManagementLicenseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VsphereManagementLicenseOutput)
-}
-
-// VsphereManagementLicenseArrayInput is an input type that accepts VsphereManagementLicenseArray and VsphereManagementLicenseArrayOutput values.
-// You can construct a concrete instance of `VsphereManagementLicenseArrayInput` via:
-//
-//	VsphereManagementLicenseArray{ VsphereManagementLicenseArgs{...} }
-type VsphereManagementLicenseArrayInput interface {
-	pulumi.Input
-
-	ToVsphereManagementLicenseArrayOutput() VsphereManagementLicenseArrayOutput
-	ToVsphereManagementLicenseArrayOutputWithContext(context.Context) VsphereManagementLicenseArrayOutput
-}
-
-type VsphereManagementLicenseArray []VsphereManagementLicenseInput
-
-func (VsphereManagementLicenseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]VsphereManagementLicense)(nil)).Elem()
-}
-
-func (i VsphereManagementLicenseArray) ToVsphereManagementLicenseArrayOutput() VsphereManagementLicenseArrayOutput {
-	return i.ToVsphereManagementLicenseArrayOutputWithContext(context.Background())
-}
-
-func (i VsphereManagementLicenseArray) ToVsphereManagementLicenseArrayOutputWithContext(ctx context.Context) VsphereManagementLicenseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VsphereManagementLicenseArrayOutput)
-}
-
-// Representation of a vsphere management licence.
-type VsphereManagementLicenseOutput struct{ *pulumi.OutputState }
-
-func (VsphereManagementLicenseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VsphereManagementLicense)(nil)).Elem()
-}
-
-func (o VsphereManagementLicenseOutput) ToVsphereManagementLicenseOutput() VsphereManagementLicenseOutput {
-	return o
-}
-
-func (o VsphereManagementLicenseOutput) ToVsphereManagementLicenseOutputWithContext(ctx context.Context) VsphereManagementLicenseOutput {
-	return o
-}
-
-// Basic support cost.
-func (o VsphereManagementLicenseOutput) BasicSupportCost() pulumi.Float64Output {
-	return o.ApplyT(func(v VsphereManagementLicense) float64 { return v.BasicSupportCost }).(pulumi.Float64Output)
-}
-
-// Cost of a licence.
-func (o VsphereManagementLicenseOutput) LicenseCost() pulumi.Float64Output {
-	return o.ApplyT(func(v VsphereManagementLicense) float64 { return v.LicenseCost }).(pulumi.Float64Output)
-}
-
-// VSphere licence type.
-func (o VsphereManagementLicenseOutput) LicenseType() pulumi.StringOutput {
-	return o.ApplyT(func(v VsphereManagementLicense) string { return v.LicenseType }).(pulumi.StringOutput)
-}
-
-// Production support cost.
-func (o VsphereManagementLicenseOutput) ProductionSupportCost() pulumi.Float64Output {
-	return o.ApplyT(func(v VsphereManagementLicense) float64 { return v.ProductionSupportCost }).(pulumi.Float64Output)
-}
-
-type VsphereManagementLicenseArrayOutput struct{ *pulumi.OutputState }
-
-func (VsphereManagementLicenseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]VsphereManagementLicense)(nil)).Elem()
-}
-
-func (o VsphereManagementLicenseArrayOutput) ToVsphereManagementLicenseArrayOutput() VsphereManagementLicenseArrayOutput {
-	return o
-}
-
-func (o VsphereManagementLicenseArrayOutput) ToVsphereManagementLicenseArrayOutputWithContext(ctx context.Context) VsphereManagementLicenseArrayOutput {
-	return o
-}
-
-func (o VsphereManagementLicenseArrayOutput) Index(i pulumi.IntInput) VsphereManagementLicenseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VsphereManagementLicense {
-		return vs[0].([]VsphereManagementLicense)[vs[1].(int)]
-	}).(VsphereManagementLicenseOutput)
-}
-
-// Representation of a vsphere management licence.
-type VsphereManagementLicenseResponse struct {
-	// Basic support cost.
-	BasicSupportCost float64 `pulumi:"basicSupportCost"`
-	// Cost of a licence.
-	LicenseCost float64 `pulumi:"licenseCost"`
-	// VSphere licence type.
-	LicenseType string `pulumi:"licenseType"`
-	// Production support cost.
-	ProductionSupportCost float64 `pulumi:"productionSupportCost"`
-}
-
-// Representation of a vsphere management licence.
-type VsphereManagementLicenseResponseOutput struct{ *pulumi.OutputState }
-
-func (VsphereManagementLicenseResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VsphereManagementLicenseResponse)(nil)).Elem()
-}
-
-func (o VsphereManagementLicenseResponseOutput) ToVsphereManagementLicenseResponseOutput() VsphereManagementLicenseResponseOutput {
-	return o
-}
-
-func (o VsphereManagementLicenseResponseOutput) ToVsphereManagementLicenseResponseOutputWithContext(ctx context.Context) VsphereManagementLicenseResponseOutput {
-	return o
-}
-
-// Basic support cost.
-func (o VsphereManagementLicenseResponseOutput) BasicSupportCost() pulumi.Float64Output {
-	return o.ApplyT(func(v VsphereManagementLicenseResponse) float64 { return v.BasicSupportCost }).(pulumi.Float64Output)
-}
-
-// Cost of a licence.
-func (o VsphereManagementLicenseResponseOutput) LicenseCost() pulumi.Float64Output {
-	return o.ApplyT(func(v VsphereManagementLicenseResponse) float64 { return v.LicenseCost }).(pulumi.Float64Output)
-}
-
-// VSphere licence type.
-func (o VsphereManagementLicenseResponseOutput) LicenseType() pulumi.StringOutput {
-	return o.ApplyT(func(v VsphereManagementLicenseResponse) string { return v.LicenseType }).(pulumi.StringOutput)
-}
-
-// Production support cost.
-func (o VsphereManagementLicenseResponseOutput) ProductionSupportCost() pulumi.Float64Output {
-	return o.ApplyT(func(v VsphereManagementLicenseResponse) float64 { return v.ProductionSupportCost }).(pulumi.Float64Output)
-}
-
-type VsphereManagementLicenseResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (VsphereManagementLicenseResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]VsphereManagementLicenseResponse)(nil)).Elem()
-}
-
-func (o VsphereManagementLicenseResponseArrayOutput) ToVsphereManagementLicenseResponseArrayOutput() VsphereManagementLicenseResponseArrayOutput {
-	return o
-}
-
-func (o VsphereManagementLicenseResponseArrayOutput) ToVsphereManagementLicenseResponseArrayOutputWithContext(ctx context.Context) VsphereManagementLicenseResponseArrayOutput {
-	return o
-}
-
-func (o VsphereManagementLicenseResponseArrayOutput) Index(i pulumi.IntInput) VsphereManagementLicenseResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VsphereManagementLicenseResponse {
-		return vs[0].([]VsphereManagementLicenseResponse)[vs[1].(int)]
-	}).(VsphereManagementLicenseResponseOutput)
-}
-
-// Vsphere management settings.
-type VsphereManagementSettings struct {
-	// Licence and support list.
-	LicenseAndSupportList []VsphereManagementLicense `pulumi:"licenseAndSupportList"`
-}
-
-// VsphereManagementSettingsInput is an input type that accepts VsphereManagementSettingsArgs and VsphereManagementSettingsOutput values.
-// You can construct a concrete instance of `VsphereManagementSettingsInput` via:
-//
-//	VsphereManagementSettingsArgs{...}
-type VsphereManagementSettingsInput interface {
-	pulumi.Input
-
-	ToVsphereManagementSettingsOutput() VsphereManagementSettingsOutput
-	ToVsphereManagementSettingsOutputWithContext(context.Context) VsphereManagementSettingsOutput
-}
-
-// Vsphere management settings.
-type VsphereManagementSettingsArgs struct {
-	// Licence and support list.
-	LicenseAndSupportList VsphereManagementLicenseArrayInput `pulumi:"licenseAndSupportList"`
-}
-
-func (VsphereManagementSettingsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*VsphereManagementSettings)(nil)).Elem()
-}
-
-func (i VsphereManagementSettingsArgs) ToVsphereManagementSettingsOutput() VsphereManagementSettingsOutput {
-	return i.ToVsphereManagementSettingsOutputWithContext(context.Background())
-}
-
-func (i VsphereManagementSettingsArgs) ToVsphereManagementSettingsOutputWithContext(ctx context.Context) VsphereManagementSettingsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VsphereManagementSettingsOutput)
-}
-
-func (i VsphereManagementSettingsArgs) ToVsphereManagementSettingsPtrOutput() VsphereManagementSettingsPtrOutput {
-	return i.ToVsphereManagementSettingsPtrOutputWithContext(context.Background())
-}
-
-func (i VsphereManagementSettingsArgs) ToVsphereManagementSettingsPtrOutputWithContext(ctx context.Context) VsphereManagementSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VsphereManagementSettingsOutput).ToVsphereManagementSettingsPtrOutputWithContext(ctx)
-}
-
-// VsphereManagementSettingsPtrInput is an input type that accepts VsphereManagementSettingsArgs, VsphereManagementSettingsPtr and VsphereManagementSettingsPtrOutput values.
-// You can construct a concrete instance of `VsphereManagementSettingsPtrInput` via:
-//
-//	        VsphereManagementSettingsArgs{...}
-//
-//	or:
-//
-//	        nil
-type VsphereManagementSettingsPtrInput interface {
-	pulumi.Input
-
-	ToVsphereManagementSettingsPtrOutput() VsphereManagementSettingsPtrOutput
-	ToVsphereManagementSettingsPtrOutputWithContext(context.Context) VsphereManagementSettingsPtrOutput
-}
-
-type vsphereManagementSettingsPtrType VsphereManagementSettingsArgs
-
-func VsphereManagementSettingsPtr(v *VsphereManagementSettingsArgs) VsphereManagementSettingsPtrInput {
-	return (*vsphereManagementSettingsPtrType)(v)
-}
-
-func (*vsphereManagementSettingsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**VsphereManagementSettings)(nil)).Elem()
-}
-
-func (i *vsphereManagementSettingsPtrType) ToVsphereManagementSettingsPtrOutput() VsphereManagementSettingsPtrOutput {
-	return i.ToVsphereManagementSettingsPtrOutputWithContext(context.Background())
-}
-
-func (i *vsphereManagementSettingsPtrType) ToVsphereManagementSettingsPtrOutputWithContext(ctx context.Context) VsphereManagementSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VsphereManagementSettingsPtrOutput)
-}
-
-// Vsphere management settings.
-type VsphereManagementSettingsOutput struct{ *pulumi.OutputState }
-
-func (VsphereManagementSettingsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VsphereManagementSettings)(nil)).Elem()
-}
-
-func (o VsphereManagementSettingsOutput) ToVsphereManagementSettingsOutput() VsphereManagementSettingsOutput {
-	return o
-}
-
-func (o VsphereManagementSettingsOutput) ToVsphereManagementSettingsOutputWithContext(ctx context.Context) VsphereManagementSettingsOutput {
-	return o
-}
-
-func (o VsphereManagementSettingsOutput) ToVsphereManagementSettingsPtrOutput() VsphereManagementSettingsPtrOutput {
-	return o.ToVsphereManagementSettingsPtrOutputWithContext(context.Background())
-}
-
-func (o VsphereManagementSettingsOutput) ToVsphereManagementSettingsPtrOutputWithContext(ctx context.Context) VsphereManagementSettingsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v VsphereManagementSettings) *VsphereManagementSettings {
-		return &v
-	}).(VsphereManagementSettingsPtrOutput)
-}
-
-// Licence and support list.
-func (o VsphereManagementSettingsOutput) LicenseAndSupportList() VsphereManagementLicenseArrayOutput {
-	return o.ApplyT(func(v VsphereManagementSettings) []VsphereManagementLicense { return v.LicenseAndSupportList }).(VsphereManagementLicenseArrayOutput)
-}
-
-type VsphereManagementSettingsPtrOutput struct{ *pulumi.OutputState }
-
-func (VsphereManagementSettingsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**VsphereManagementSettings)(nil)).Elem()
-}
-
-func (o VsphereManagementSettingsPtrOutput) ToVsphereManagementSettingsPtrOutput() VsphereManagementSettingsPtrOutput {
-	return o
-}
-
-func (o VsphereManagementSettingsPtrOutput) ToVsphereManagementSettingsPtrOutputWithContext(ctx context.Context) VsphereManagementSettingsPtrOutput {
-	return o
-}
-
-func (o VsphereManagementSettingsPtrOutput) Elem() VsphereManagementSettingsOutput {
-	return o.ApplyT(func(v *VsphereManagementSettings) VsphereManagementSettings {
-		if v != nil {
-			return *v
-		}
-		var ret VsphereManagementSettings
-		return ret
-	}).(VsphereManagementSettingsOutput)
-}
-
-// Licence and support list.
-func (o VsphereManagementSettingsPtrOutput) LicenseAndSupportList() VsphereManagementLicenseArrayOutput {
-	return o.ApplyT(func(v *VsphereManagementSettings) []VsphereManagementLicense {
-		if v == nil {
-			return nil
-		}
-		return v.LicenseAndSupportList
-	}).(VsphereManagementLicenseArrayOutput)
-}
-
-// Vsphere management settings.
-type VsphereManagementSettingsResponse struct {
-	// Licence and support list.
-	LicenseAndSupportList []VsphereManagementLicenseResponse `pulumi:"licenseAndSupportList"`
-}
-
-// Vsphere management settings.
-type VsphereManagementSettingsResponseOutput struct{ *pulumi.OutputState }
-
-func (VsphereManagementSettingsResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VsphereManagementSettingsResponse)(nil)).Elem()
-}
-
-func (o VsphereManagementSettingsResponseOutput) ToVsphereManagementSettingsResponseOutput() VsphereManagementSettingsResponseOutput {
-	return o
-}
-
-func (o VsphereManagementSettingsResponseOutput) ToVsphereManagementSettingsResponseOutputWithContext(ctx context.Context) VsphereManagementSettingsResponseOutput {
-	return o
-}
-
-// Licence and support list.
-func (o VsphereManagementSettingsResponseOutput) LicenseAndSupportList() VsphereManagementLicenseResponseArrayOutput {
-	return o.ApplyT(func(v VsphereManagementSettingsResponse) []VsphereManagementLicenseResponse {
-		return v.LicenseAndSupportList
-	}).(VsphereManagementLicenseResponseArrayOutput)
-}
-
-type VsphereManagementSettingsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (VsphereManagementSettingsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**VsphereManagementSettingsResponse)(nil)).Elem()
-}
-
-func (o VsphereManagementSettingsResponsePtrOutput) ToVsphereManagementSettingsResponsePtrOutput() VsphereManagementSettingsResponsePtrOutput {
-	return o
-}
-
-func (o VsphereManagementSettingsResponsePtrOutput) ToVsphereManagementSettingsResponsePtrOutputWithContext(ctx context.Context) VsphereManagementSettingsResponsePtrOutput {
-	return o
-}
-
-func (o VsphereManagementSettingsResponsePtrOutput) Elem() VsphereManagementSettingsResponseOutput {
-	return o.ApplyT(func(v *VsphereManagementSettingsResponse) VsphereManagementSettingsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret VsphereManagementSettingsResponse
-		return ret
-	}).(VsphereManagementSettingsResponseOutput)
-}
-
-// Licence and support list.
-func (o VsphereManagementSettingsResponsePtrOutput) LicenseAndSupportList() VsphereManagementLicenseResponseArrayOutput {
-	return o.ApplyT(func(v *VsphereManagementSettingsResponse) []VsphereManagementLicenseResponse {
-		if v == nil {
-			return nil
-		}
-		return v.LicenseAndSupportList
-	}).(VsphereManagementLicenseResponseArrayOutput)
 }
 
 // Class for web application configurations.
@@ -38111,6 +37915,24 @@ func init() {
 	pulumi.RegisterOutputType(AvailabilitySetResourceSettingsPtrOutput{})
 	pulumi.RegisterOutputType(AvailabilitySetResourceSettingsResponseOutput{})
 	pulumi.RegisterOutputType(AvailabilitySetResourceSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(AvsEstimatedExternalStorageResponseOutput{})
+	pulumi.RegisterOutputType(AvsEstimatedExternalStorageResponseArrayOutput{})
+	pulumi.RegisterOutputType(AvsEstimatedNetworkResponseOutput{})
+	pulumi.RegisterOutputType(AvsEstimatedNetworkResponseArrayOutput{})
+	pulumi.RegisterOutputType(AvsEstimatedNodeResponseOutput{})
+	pulumi.RegisterOutputType(AvsEstimatedNodeResponseArrayOutput{})
+	pulumi.RegisterOutputType(AzureArcManagementSettingsOutput{})
+	pulumi.RegisterOutputType(AzureArcManagementSettingsPtrOutput{})
+	pulumi.RegisterOutputType(AzureArcManagementSettingsResponseOutput{})
+	pulumi.RegisterOutputType(AzureArcManagementSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(AzureArcMonitoringSettingsOutput{})
+	pulumi.RegisterOutputType(AzureArcMonitoringSettingsPtrOutput{})
+	pulumi.RegisterOutputType(AzureArcMonitoringSettingsResponseOutput{})
+	pulumi.RegisterOutputType(AzureArcMonitoringSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(AzureArcSettingsOutput{})
+	pulumi.RegisterOutputType(AzureArcSettingsPtrOutput{})
+	pulumi.RegisterOutputType(AzureArcSettingsResponseOutput{})
+	pulumi.RegisterOutputType(AzureArcSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(AzureFileShareHydrationProfileOutput{})
 	pulumi.RegisterOutputType(AzureFileShareHydrationProfilePtrOutput{})
 	pulumi.RegisterOutputType(AzureFileShareHydrationProfileResponseOutput{})
@@ -38191,8 +38013,6 @@ func init() {
 	pulumi.RegisterOutputType(GmsaAuthenticationPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(GmsaAuthenticationPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(GmsaAuthenticationPropertiesResponsePtrOutput{})
-	pulumi.RegisterOutputType(GroupConnectivityInformationResponseOutput{})
-	pulumi.RegisterOutputType(GroupConnectivityInformationResponseArrayOutput{})
 	pulumi.RegisterOutputType(GroupPropertiesOutput{})
 	pulumi.RegisterOutputType(GroupPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(HealthErrorModelResponseOutput{})
@@ -38246,8 +38066,6 @@ func init() {
 	pulumi.RegisterOutputType(ImportCollectorPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(InnerHealthErrorModelResponseOutput{})
 	pulumi.RegisterOutputType(InnerHealthErrorModelResponseArrayOutput{})
-	pulumi.RegisterOutputType(IpConfigurationResponseOutput{})
-	pulumi.RegisterOutputType(IpConfigurationResponseArrayOutput{})
 	pulumi.RegisterOutputType(JobStatusResponseOutput{})
 	pulumi.RegisterOutputType(JobStatusResponsePtrOutput{})
 	pulumi.RegisterOutputType(KeyVaultResourceSettingsOutput{})
@@ -38381,20 +38199,14 @@ func init() {
 	pulumi.RegisterOutputType(PortMappingResponsePtrOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionPropertiesOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionPropertiesResponseOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointConnectionProxyPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseArrayOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointDetailsResponseOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointResponseOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointResponsePtrOutput{})
-	pulumi.RegisterOutputType(PrivateLinkServiceConnectionResponseOutput{})
-	pulumi.RegisterOutputType(PrivateLinkServiceConnectionResponseArrayOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStatePtrOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateResponseOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateResponsePtrOutput{})
-	pulumi.RegisterOutputType(PrivateLinkServiceProxyResponseOutput{})
-	pulumi.RegisterOutputType(PrivateLinkServiceProxyResponseArrayOutput{})
 	pulumi.RegisterOutputType(ProjectPropertiesOutput{})
 	pulumi.RegisterOutputType(ProjectPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(ProjectPropertiesResponseOutput{})
@@ -38414,7 +38226,6 @@ func init() {
 	pulumi.RegisterOutputType(ResourceGroupResourceSettingsResponseOutput{})
 	pulumi.RegisterOutputType(ResourceGroupResourceSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(ResourceIdResponseOutput{})
-	pulumi.RegisterOutputType(ResourceIdResponsePtrOutput{})
 	pulumi.RegisterOutputType(ResourceIdentityOutput{})
 	pulumi.RegisterOutputType(ResourceIdentityPtrOutput{})
 	pulumi.RegisterOutputType(ResourceIdentityResponseOutput{})
@@ -38449,8 +38260,6 @@ func init() {
 	pulumi.RegisterOutputType(SolutionPropertiesOutput{})
 	pulumi.RegisterOutputType(SolutionPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(SolutionPropertiesResponseOutput{})
-	pulumi.RegisterOutputType(SolutionSummaryResponseOutput{})
-	pulumi.RegisterOutputType(SolutionSummaryResponsePtrOutput{})
 	pulumi.RegisterOutputType(SqlDatabaseResourceSettingsOutput{})
 	pulumi.RegisterOutputType(SqlDatabaseResourceSettingsPtrOutput{})
 	pulumi.RegisterOutputType(SqlDatabaseResourceSettingsResponseOutput{})
@@ -38492,7 +38301,6 @@ func init() {
 	pulumi.RegisterOutputType(SubnetResourceSettingsResponseOutput{})
 	pulumi.RegisterOutputType(SubnetResourceSettingsResponseArrayOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
-	pulumi.RegisterOutputType(SystemDataResponsePtrOutput{})
 	pulumi.RegisterOutputType(TargetStorageProfileOutput{})
 	pulumi.RegisterOutputType(TargetStorageProfilePtrOutput{})
 	pulumi.RegisterOutputType(TargetStorageProfileResponseOutput{})
@@ -38525,18 +38333,6 @@ func init() {
 	pulumi.RegisterOutputType(VmUptimePtrOutput{})
 	pulumi.RegisterOutputType(VmUptimeResponseOutput{})
 	pulumi.RegisterOutputType(VmUptimeResponsePtrOutput{})
-	pulumi.RegisterOutputType(VsphereLicenseOutput{})
-	pulumi.RegisterOutputType(VsphereLicenseArrayOutput{})
-	pulumi.RegisterOutputType(VsphereLicenseResponseOutput{})
-	pulumi.RegisterOutputType(VsphereLicenseResponseArrayOutput{})
-	pulumi.RegisterOutputType(VsphereManagementLicenseOutput{})
-	pulumi.RegisterOutputType(VsphereManagementLicenseArrayOutput{})
-	pulumi.RegisterOutputType(VsphereManagementLicenseResponseOutput{})
-	pulumi.RegisterOutputType(VsphereManagementLicenseResponseArrayOutput{})
-	pulumi.RegisterOutputType(VsphereManagementSettingsOutput{})
-	pulumi.RegisterOutputType(VsphereManagementSettingsPtrOutput{})
-	pulumi.RegisterOutputType(VsphereManagementSettingsResponseOutput{})
-	pulumi.RegisterOutputType(VsphereManagementSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(WebApplicationConfigurationOutput{})
 	pulumi.RegisterOutputType(WebApplicationConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(WebApplicationConfigurationResponseOutput{})

@@ -12,9 +12,7 @@ import (
 )
 
 // Gets a bookmark relation.
-// Azure REST API version: 2023-06-01-preview.
-//
-// Other available API versions: 2019-01-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-12-01-preview, 2024-01-01-preview, 2024-04-01-preview, 2024-10-01-preview, 2025-01-01-preview.
+// Azure REST API version: 2025-01-01-preview.
 func LookupBookmarkRelation(ctx *pulumi.Context, args *LookupBookmarkRelationArgs, opts ...pulumi.InvokeOption) (*LookupBookmarkRelationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBookmarkRelationResult
@@ -38,6 +36,8 @@ type LookupBookmarkRelationArgs struct {
 
 // Represents a relation between two resources
 type LookupBookmarkRelationResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Etag of the azure resource
 	Etag *string `pulumi:"etag"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -95,6 +95,11 @@ func (o LookupBookmarkRelationResultOutput) ToLookupBookmarkRelationResultOutput
 
 func (o LookupBookmarkRelationResultOutput) ToLookupBookmarkRelationResultOutputWithContext(ctx context.Context) LookupBookmarkRelationResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupBookmarkRelationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBookmarkRelationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Etag of the azure resource

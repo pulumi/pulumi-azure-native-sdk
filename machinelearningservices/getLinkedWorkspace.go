@@ -34,6 +34,8 @@ type LookupLinkedWorkspaceArgs struct {
 
 // Linked workspace.
 type LookupLinkedWorkspaceResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// ResourceId of the link of the linked workspace.
 	Id string `pulumi:"id"`
 	// Friendly name of the linked workspace.
@@ -79,6 +81,11 @@ func (o LookupLinkedWorkspaceResultOutput) ToLookupLinkedWorkspaceResultOutput()
 
 func (o LookupLinkedWorkspaceResultOutput) ToLookupLinkedWorkspaceResultOutputWithContext(ctx context.Context) LookupLinkedWorkspaceResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupLinkedWorkspaceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLinkedWorkspaceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // ResourceId of the link of the linked workspace.

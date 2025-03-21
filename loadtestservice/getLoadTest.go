@@ -12,9 +12,7 @@ import (
 )
 
 // Get a LoadTestResource
-// Azure REST API version: 2022-12-01.
-//
-// Other available API versions: 2021-12-01-preview, 2023-12-01-preview.
+// Azure REST API version: 2023-12-01-preview.
 func LookupLoadTest(ctx *pulumi.Context, args *LookupLoadTestArgs, opts ...pulumi.InvokeOption) (*LookupLoadTestResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupLoadTestResult
@@ -34,6 +32,8 @@ type LookupLoadTestArgs struct {
 
 // LoadTest details.
 type LookupLoadTestResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource data plane URI.
 	DataPlaneURI string `pulumi:"dataPlaneURI"`
 	// Description of the resource.
@@ -91,6 +91,11 @@ func (o LookupLoadTestResultOutput) ToLookupLoadTestResultOutput() LookupLoadTes
 
 func (o LookupLoadTestResultOutput) ToLookupLoadTestResultOutputWithContext(ctx context.Context) LookupLoadTestResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupLoadTestResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLoadTestResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource data plane URI.

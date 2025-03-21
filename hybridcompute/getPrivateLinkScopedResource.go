@@ -34,6 +34,8 @@ type LookupPrivateLinkScopedResourceArgs struct {
 
 // A private link scoped resource
 type LookupPrivateLinkScopedResourceResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The resource id of the scoped Azure monitor resource.
@@ -81,6 +83,11 @@ func (o LookupPrivateLinkScopedResourceResultOutput) ToLookupPrivateLinkScopedRe
 
 func (o LookupPrivateLinkScopedResourceResultOutput) ToLookupPrivateLinkScopedResourceResultOutputWithContext(ctx context.Context) LookupPrivateLinkScopedResourceResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupPrivateLinkScopedResourceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPrivateLinkScopedResourceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

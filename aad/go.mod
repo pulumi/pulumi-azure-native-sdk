@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-azure-native-sdk/aad/v2
+module github.com/pulumi/pulumi-azure-native-sdk/aad/v3
 
 go 1.22
 

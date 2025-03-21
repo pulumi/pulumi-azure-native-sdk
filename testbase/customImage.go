@@ -13,10 +13,12 @@ import (
 )
 
 // The test base custom image resource.
-// Azure REST API version: 2023-11-01-preview.
+// Azure REST API version: 2023-11-01-preview. Prior API version in Azure Native 2.x: 2023-11-01-preview.
 type CustomImage struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The UTC timestamp when the custom image was published.
 	CreationTime pulumi.StringOutput `pulumi:"creationTime"`
 	// Image definition name.
@@ -181,6 +183,11 @@ func (o CustomImageOutput) ToCustomImageOutput() CustomImageOutput {
 
 func (o CustomImageOutput) ToCustomImageOutputWithContext(ctx context.Context) CustomImageOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o CustomImageOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomImage) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The UTC timestamp when the custom image was published.

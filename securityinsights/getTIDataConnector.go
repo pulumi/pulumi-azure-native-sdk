@@ -12,7 +12,7 @@ import (
 )
 
 // Gets a data connector.
-// Azure REST API version: 2023-02-01.
+// Azure REST API version: 2024-09-01.
 func LookupTIDataConnector(ctx *pulumi.Context, args *LookupTIDataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupTIDataConnectorResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTIDataConnectorResult
@@ -34,6 +34,8 @@ type LookupTIDataConnectorArgs struct {
 
 // Represents threat intelligence data connector.
 type LookupTIDataConnectorResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The available data types for the connector.
 	DataTypes *TIDataConnectorDataTypesResponse `pulumi:"dataTypes"`
 	// Etag of the azure resource
@@ -90,6 +92,11 @@ func (o LookupTIDataConnectorResultOutput) ToLookupTIDataConnectorResultOutput()
 
 func (o LookupTIDataConnectorResultOutput) ToLookupTIDataConnectorResultOutputWithContext(ctx context.Context) LookupTIDataConnectorResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupTIDataConnectorResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTIDataConnectorResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The available data types for the connector.

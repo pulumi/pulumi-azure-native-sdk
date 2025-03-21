@@ -13,10 +13,12 @@ import (
 )
 
 // Data Lake Analytics compute policy information.
-// Azure REST API version: 2019-11-01-preview. Prior API version in Azure Native 1.x: 2016-11-01.
+// Azure REST API version: 2019-11-01-preview. Prior API version in Azure Native 2.x: 2019-11-01-preview.
 type ComputePolicy struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The maximum degree of parallelism per job this user can use to submit jobs.
 	MaxDegreeOfParallelismPerJob pulumi.IntOutput `pulumi:"maxDegreeOfParallelismPerJob"`
 	// The minimum priority per job this user can use to submit jobs.
@@ -164,6 +166,11 @@ func (o ComputePolicyOutput) ToComputePolicyOutput() ComputePolicyOutput {
 
 func (o ComputePolicyOutput) ToComputePolicyOutputWithContext(ctx context.Context) ComputePolicyOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ComputePolicyOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ComputePolicy) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The maximum degree of parallelism per job this user can use to submit jobs.

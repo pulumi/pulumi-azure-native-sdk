@@ -13,12 +13,12 @@ import (
 )
 
 // Azure OpenAI Content Filters resource.
-// Azure REST API version: 2024-04-01-preview.
-//
-// Other available API versions: 2024-07-01-preview, 2024-10-01-preview.
+// Azure REST API version: 2025-01-01-preview. Prior API version in Azure Native 2.x: 2024-04-01-preview.
 type ConnectionRaiPolicy struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Azure OpenAI Content Filters properties.
@@ -57,6 +57,9 @@ func NewConnectionRaiPolicy(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001preview:ConnectionRaiPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250101preview:ConnectionRaiPolicy"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -97,6 +100,8 @@ type connectionRaiPolicyArgs struct {
 	ConnectionName string `pulumi:"connectionName"`
 	// Azure OpenAI Content Filters properties.
 	Properties RaiPolicyProperties `pulumi:"properties"`
+	// Api version used by proxy call
+	ProxyApiVersion *string `pulumi:"proxyApiVersion"`
 	// Name of the Rai Policy.
 	RaiPolicyName *string `pulumi:"raiPolicyName"`
 	// The name of the resource group. The name is case insensitive.
@@ -111,6 +116,8 @@ type ConnectionRaiPolicyArgs struct {
 	ConnectionName pulumi.StringInput
 	// Azure OpenAI Content Filters properties.
 	Properties RaiPolicyPropertiesInput
+	// Api version used by proxy call
+	ProxyApiVersion pulumi.StringPtrInput
 	// Name of the Rai Policy.
 	RaiPolicyName pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
@@ -154,6 +161,11 @@ func (o ConnectionRaiPolicyOutput) ToConnectionRaiPolicyOutput() ConnectionRaiPo
 
 func (o ConnectionRaiPolicyOutput) ToConnectionRaiPolicyOutputWithContext(ctx context.Context) ConnectionRaiPolicyOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ConnectionRaiPolicyOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConnectionRaiPolicy) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

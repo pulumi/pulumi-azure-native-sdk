@@ -12,9 +12,7 @@ import (
 )
 
 // Gets an installed packages by its id.
-// Azure REST API version: 2023-06-01-preview.
-//
-// Other available API versions: 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-11-01, 2023-12-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-09-01, 2024-10-01-preview, 2025-01-01-preview.
+// Azure REST API version: 2024-09-01.
 func LookupContentPackage(ctx *pulumi.Context, args *LookupContentPackageArgs, opts ...pulumi.InvokeOption) (*LookupContentPackageResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupContentPackageResult
@@ -38,12 +36,16 @@ type LookupContentPackageArgs struct {
 type LookupContentPackageResult struct {
 	// The author of the package
 	Author *MetadataAuthorResponse `pulumi:"author"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The categories of the package
 	Categories *MetadataCategoriesResponse `pulumi:"categories"`
-	// The package id
+	// The content id of the package
 	ContentId string `pulumi:"contentId"`
 	// The package kind
 	ContentKind string `pulumi:"contentKind"`
+	// Unique ID for the content. It should be generated based on the contentId, contentKind and the contentVersion of the package
+	ContentProductId string `pulumi:"contentProductId"`
 	// The version of the content schema.
 	ContentSchemaVersion *string `pulumi:"contentSchemaVersion"`
 	// The support tier of the package
@@ -60,6 +62,8 @@ type LookupContentPackageResult struct {
 	Icon *string `pulumi:"icon"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
+	// Flag indicates if this template is deprecated
+	IsDeprecated *string `pulumi:"isDeprecated"`
 	// Flag indicates if this package is among the featured list.
 	IsFeatured *string `pulumi:"isFeatured"`
 	// Flag indicates if this is a newly published package.
@@ -132,12 +136,17 @@ func (o LookupContentPackageResultOutput) Author() MetadataAuthorResponsePtrOutp
 	return o.ApplyT(func(v LookupContentPackageResult) *MetadataAuthorResponse { return v.Author }).(MetadataAuthorResponsePtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupContentPackageResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupContentPackageResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The categories of the package
 func (o LookupContentPackageResultOutput) Categories() MetadataCategoriesResponsePtrOutput {
 	return o.ApplyT(func(v LookupContentPackageResult) *MetadataCategoriesResponse { return v.Categories }).(MetadataCategoriesResponsePtrOutput)
 }
 
-// The package id
+// The content id of the package
 func (o LookupContentPackageResultOutput) ContentId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupContentPackageResult) string { return v.ContentId }).(pulumi.StringOutput)
 }
@@ -145,6 +154,11 @@ func (o LookupContentPackageResultOutput) ContentId() pulumi.StringOutput {
 // The package kind
 func (o LookupContentPackageResultOutput) ContentKind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupContentPackageResult) string { return v.ContentKind }).(pulumi.StringOutput)
+}
+
+// Unique ID for the content. It should be generated based on the contentId, contentKind and the contentVersion of the package
+func (o LookupContentPackageResultOutput) ContentProductId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupContentPackageResult) string { return v.ContentProductId }).(pulumi.StringOutput)
 }
 
 // The version of the content schema.
@@ -185,6 +199,11 @@ func (o LookupContentPackageResultOutput) Icon() pulumi.StringPtrOutput {
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupContentPackageResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupContentPackageResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Flag indicates if this template is deprecated
+func (o LookupContentPackageResultOutput) IsDeprecated() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupContentPackageResult) *string { return v.IsDeprecated }).(pulumi.StringPtrOutput)
 }
 
 // Flag indicates if this package is among the featured list.

@@ -13,10 +13,12 @@ import (
 )
 
 // Device Update account details.
-// Azure REST API version: 2023-07-01. Prior API version in Azure Native 1.x: 2020-03-01-preview.
+// Azure REST API version: 2023-07-01. Prior API version in Azure Native 2.x: 2023-07-01.
 type Account struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// CMK encryption at rest properties
 	Encryption EncryptionResponsePtrOutput `pulumi:"encryption"`
 	// API host name.
@@ -191,6 +193,11 @@ func (o AccountOutput) ToAccountOutput() AccountOutput {
 
 func (o AccountOutput) ToAccountOutputWithContext(ctx context.Context) AccountOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o AccountOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // CMK encryption at rest properties

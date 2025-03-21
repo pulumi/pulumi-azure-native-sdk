@@ -12,9 +12,7 @@ import (
 )
 
 // List all secrets of a HealthBot.
-// Azure REST API version: 2023-05-01.
-//
-// Other available API versions: 2024-02-01.
+// Azure REST API version: 2024-02-01.
 func ListBotSecrets(ctx *pulumi.Context, args *ListBotSecretsArgs, opts ...pulumi.InvokeOption) (*ListBotSecretsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListBotSecretsResult

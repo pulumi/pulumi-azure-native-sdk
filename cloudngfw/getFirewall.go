@@ -12,9 +12,7 @@ import (
 )
 
 // Get a FirewallResource
-// Azure REST API version: 2023-09-01.
-//
-// Other available API versions: 2022-08-29, 2022-08-29-preview, 2023-09-01-preview, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview.
+// Azure REST API version: 2025-02-06-preview.
 func LookupFirewall(ctx *pulumi.Context, args *LookupFirewallArgs, opts ...pulumi.InvokeOption) (*LookupFirewallResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFirewallResult
@@ -36,6 +34,8 @@ type LookupFirewallArgs struct {
 type LookupFirewallResult struct {
 	// Associated Rulestack
 	AssociatedRulestack *RulestackDetailsResponse `pulumi:"associatedRulestack"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// DNS settings for Firewall
 	DnsSettings DNSSettingsResponse `pulumi:"dnsSettings"`
 	// Frontend settings for Firewall
@@ -46,6 +46,8 @@ type LookupFirewallResult struct {
 	Identity *AzureResourceManagerManagedIdentityPropertiesResponse `pulumi:"identity"`
 	// Panorama Managed: Default is False. Default will be CloudSec managed
 	IsPanoramaManaged *string `pulumi:"isPanoramaManaged"`
+	// Strata Cloud Managed: Default is False. Default will be CloudSec managed
+	IsStrataCloudManaged *string `pulumi:"isStrataCloudManaged"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// Marketplace details
@@ -62,6 +64,8 @@ type LookupFirewallResult struct {
 	PlanData PlanDataResponse `pulumi:"planData"`
 	// Provisioning state of the resource.
 	ProvisioningState string `pulumi:"provisioningState"`
+	// Strata Cloud Manager Configuration, only applicable if Strata Cloud Manager is selected.
+	StrataCloudManagerConfig *StrataCloudManagerConfigResponse `pulumi:"strataCloudManagerConfig"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
@@ -110,6 +114,11 @@ func (o LookupFirewallResultOutput) AssociatedRulestack() RulestackDetailsRespon
 	return o.ApplyT(func(v LookupFirewallResult) *RulestackDetailsResponse { return v.AssociatedRulestack }).(RulestackDetailsResponsePtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupFirewallResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFirewallResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // DNS settings for Firewall
 func (o LookupFirewallResultOutput) DnsSettings() DNSSettingsResponseOutput {
 	return o.ApplyT(func(v LookupFirewallResult) DNSSettingsResponse { return v.DnsSettings }).(DNSSettingsResponseOutput)
@@ -133,6 +142,11 @@ func (o LookupFirewallResultOutput) Identity() AzureResourceManagerManagedIdenti
 // Panorama Managed: Default is False. Default will be CloudSec managed
 func (o LookupFirewallResultOutput) IsPanoramaManaged() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupFirewallResult) *string { return v.IsPanoramaManaged }).(pulumi.StringPtrOutput)
+}
+
+// Strata Cloud Managed: Default is False. Default will be CloudSec managed
+func (o LookupFirewallResultOutput) IsStrataCloudManaged() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupFirewallResult) *string { return v.IsStrataCloudManaged }).(pulumi.StringPtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -173,6 +187,11 @@ func (o LookupFirewallResultOutput) PlanData() PlanDataResponseOutput {
 // Provisioning state of the resource.
 func (o LookupFirewallResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFirewallResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Strata Cloud Manager Configuration, only applicable if Strata Cloud Manager is selected.
+func (o LookupFirewallResultOutput) StrataCloudManagerConfig() StrataCloudManagerConfigResponsePtrOutput {
+	return o.ApplyT(func(v LookupFirewallResult) *StrataCloudManagerConfigResponse { return v.StrataCloudManagerConfig }).(StrataCloudManagerConfigResponsePtrOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

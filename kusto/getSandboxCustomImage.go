@@ -12,9 +12,7 @@ import (
 )
 
 // Returns a sandbox custom image
-// Azure REST API version: 2023-08-15.
-//
-// Other available API versions: 2024-04-13.
+// Azure REST API version: 2024-04-13.
 func LookupSandboxCustomImage(ctx *pulumi.Context, args *LookupSandboxCustomImageArgs, opts ...pulumi.InvokeOption) (*LookupSandboxCustomImageResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSandboxCustomImageResult
@@ -36,12 +34,16 @@ type LookupSandboxCustomImageArgs struct {
 
 // Class representing a Kusto sandbox custom image.
 type LookupSandboxCustomImageResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// The base image name on which the custom image is built on top of. It can be one of the LanguageExtensionImageName (e.g.: 'Python3_10_8', 'Python3_10_8_DL') or the name of an existing custom image. Either this property or languageVersion should be specified.
+	BaseImageName *string `pulumi:"baseImageName"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The language name, for example Python.
 	Language string `pulumi:"language"`
-	// The version of the language.
-	LanguageVersion string `pulumi:"languageVersion"`
+	// The version of the language. Either this property or baseImageName should be specified.
+	LanguageVersion *string `pulumi:"languageVersion"`
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// The provisioned state of the resource.
@@ -89,6 +91,16 @@ func (o LookupSandboxCustomImageResultOutput) ToLookupSandboxCustomImageResultOu
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupSandboxCustomImageResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSandboxCustomImageResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// The base image name on which the custom image is built on top of. It can be one of the LanguageExtensionImageName (e.g.: 'Python3_10_8', 'Python3_10_8_DL') or the name of an existing custom image. Either this property or languageVersion should be specified.
+func (o LookupSandboxCustomImageResultOutput) BaseImageName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupSandboxCustomImageResult) *string { return v.BaseImageName }).(pulumi.StringPtrOutput)
+}
+
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupSandboxCustomImageResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSandboxCustomImageResult) string { return v.Id }).(pulumi.StringOutput)
@@ -99,9 +111,9 @@ func (o LookupSandboxCustomImageResultOutput) Language() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSandboxCustomImageResult) string { return v.Language }).(pulumi.StringOutput)
 }
 
-// The version of the language.
-func (o LookupSandboxCustomImageResultOutput) LanguageVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSandboxCustomImageResult) string { return v.LanguageVersion }).(pulumi.StringOutput)
+// The version of the language. Either this property or baseImageName should be specified.
+func (o LookupSandboxCustomImageResultOutput) LanguageVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupSandboxCustomImageResult) *string { return v.LanguageVersion }).(pulumi.StringPtrOutput)
 }
 
 // The name of the resource

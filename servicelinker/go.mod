@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-azure-native-sdk/servicelinker/v2
+module github.com/pulumi/pulumi-azure-native-sdk/servicelinker/v3
 
 go 1.22
 

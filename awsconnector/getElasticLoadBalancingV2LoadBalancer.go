@@ -32,6 +32,8 @@ type LookupElasticLoadBalancingV2LoadBalancerArgs struct {
 
 // A Microsoft.AwsConnector resource
 type LookupElasticLoadBalancingV2LoadBalancerResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -81,6 +83,11 @@ func (o LookupElasticLoadBalancingV2LoadBalancerResultOutput) ToLookupElasticLoa
 
 func (o LookupElasticLoadBalancingV2LoadBalancerResultOutput) ToLookupElasticLoadBalancingV2LoadBalancerResultOutputWithContext(ctx context.Context) LookupElasticLoadBalancingV2LoadBalancerResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupElasticLoadBalancingV2LoadBalancerResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupElasticLoadBalancingV2LoadBalancerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

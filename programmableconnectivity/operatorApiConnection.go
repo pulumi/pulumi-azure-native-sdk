@@ -13,7 +13,7 @@ import (
 )
 
 // A Programmable Connectivity Operator API Connection resource
-// Azure REST API version: 2024-01-15-preview.
+// Azure REST API version: 2024-01-15-preview. Prior API version in Azure Native 2.x: 2024-01-15-preview.
 type OperatorApiConnection struct {
 	pulumi.CustomResourceState
 
@@ -21,6 +21,8 @@ type OperatorApiConnection struct {
 	AccountType pulumi.StringOutput `pulumi:"accountType"`
 	// Application ID of the App Developer that is registered with the Operator in a specific country/region.
 	AppId pulumi.StringPtrOutput `pulumi:"appId"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The Network API for the current operator in the country/region provided in the linked Operator API Plan.
 	CamaraApiName pulumi.StringOutput `pulumi:"camaraApiName"`
 	// Details about the Application that would use the Operator's Network APIs.
@@ -202,6 +204,11 @@ func (o OperatorApiConnectionOutput) AccountType() pulumi.StringOutput {
 // Application ID of the App Developer that is registered with the Operator in a specific country/region.
 func (o OperatorApiConnectionOutput) AppId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OperatorApiConnection) pulumi.StringPtrOutput { return v.AppId }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o OperatorApiConnectionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *OperatorApiConnection) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The Network API for the current operator in the country/region provided in the linked Operator API Plan.

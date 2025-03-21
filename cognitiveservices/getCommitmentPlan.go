@@ -12,9 +12,7 @@ import (
 )
 
 // Gets the specified commitmentPlans associated with the Cognitive Services account.
-// Azure REST API version: 2023-05-01.
-//
-// Other available API versions: 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview, 2024-10-01.
+// Azure REST API version: 2024-10-01.
 func LookupCommitmentPlan(ctx *pulumi.Context, args *LookupCommitmentPlanArgs, opts ...pulumi.InvokeOption) (*LookupCommitmentPlanResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCommitmentPlanResult
@@ -36,6 +34,8 @@ type LookupCommitmentPlanArgs struct {
 
 // Cognitive Services account commitment plan.
 type LookupCommitmentPlanResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource Etag.
 	Etag string `pulumi:"etag"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -93,6 +93,11 @@ func (o LookupCommitmentPlanResultOutput) ToLookupCommitmentPlanResultOutput() L
 
 func (o LookupCommitmentPlanResultOutput) ToLookupCommitmentPlanResultOutputWithContext(ctx context.Context) LookupCommitmentPlanResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupCommitmentPlanResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCommitmentPlanResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource Etag.

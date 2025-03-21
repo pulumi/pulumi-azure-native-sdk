@@ -13,14 +13,14 @@ import (
 )
 
 // VpnSite Resource.
-// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2020-11-01.
-//
-// Other available API versions: 2018-07-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Azure REST API version: 2024-05-01. Prior API version in Azure Native 2.x: 2023-02-01.
 type VpnSite struct {
 	pulumi.CustomResourceState
 
 	// The AddressSpace that contains an array of IP address ranges.
 	AddressSpace AddressSpaceResponsePtrOutput `pulumi:"addressSpace"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The set of bgp properties.
 	BgpProperties BgpSettingsResponsePtrOutput `pulumi:"bgpProperties"`
 	// The device properties.
@@ -319,6 +319,11 @@ func (o VpnSiteOutput) ToVpnSiteOutputWithContext(ctx context.Context) VpnSiteOu
 // The AddressSpace that contains an array of IP address ranges.
 func (o VpnSiteOutput) AddressSpace() AddressSpaceResponsePtrOutput {
 	return o.ApplyT(func(v *VpnSite) AddressSpaceResponsePtrOutput { return v.AddressSpace }).(AddressSpaceResponsePtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o VpnSiteOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *VpnSite) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The set of bgp properties.

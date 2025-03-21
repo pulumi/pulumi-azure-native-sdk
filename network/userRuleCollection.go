@@ -13,14 +13,14 @@ import (
 )
 
 // Defines the user rule collection.
-// Azure REST API version: 2022-04-01-preview. Prior API version in Azure Native 1.x: 2021-02-01-preview.
-//
-// Other available API versions: 2021-02-01-preview, 2021-05-01-preview.
+// Azure REST API version: 2022-04-01-preview. Prior API version in Azure Native 2.x: 2022-04-01-preview.
 type UserRuleCollection struct {
 	pulumi.CustomResourceState
 
 	// Groups for configuration
 	AppliesToGroups NetworkManagerSecurityGroupItemResponseArrayOutput `pulumi:"appliesToGroups"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// A description of the user rule collection.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// A unique read-only string that changes whenever the resource is updated.
@@ -68,10 +68,19 @@ func NewUserRuleCollection(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:network/v20220401preview:UserRuleCollection"),
 		},
 		{
+			Type: pulumi.String("azure-native:network/v20240301:SecurityUserRuleCollection"),
+		},
+		{
 			Type: pulumi.String("azure-native:network/v20240301:UserRuleCollection"),
 		},
 		{
+			Type: pulumi.String("azure-native:network/v20240501:SecurityUserRuleCollection"),
+		},
+		{
 			Type: pulumi.String("azure-native:network/v20240501:UserRuleCollection"),
+		},
+		{
+			Type: pulumi.String("azure-native:network:SecurityUserRuleCollection"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -180,6 +189,11 @@ func (o UserRuleCollectionOutput) AppliesToGroups() NetworkManagerSecurityGroupI
 	return o.ApplyT(func(v *UserRuleCollection) NetworkManagerSecurityGroupItemResponseArrayOutput {
 		return v.AppliesToGroups
 	}).(NetworkManagerSecurityGroupItemResponseArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o UserRuleCollectionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *UserRuleCollection) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A description of the user rule collection.

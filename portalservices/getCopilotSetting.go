@@ -12,7 +12,7 @@ import (
 )
 
 // Get a CopilotSettingsResource
-// Azure REST API version: 2024-04-01-preview.
+// Azure REST API version: 2024-04-01.
 func LookupCopilotSetting(ctx *pulumi.Context, args *LookupCopilotSettingArgs, opts ...pulumi.InvokeOption) (*LookupCopilotSettingResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCopilotSettingResult
@@ -30,6 +30,8 @@ type LookupCopilotSettingArgs struct {
 type LookupCopilotSettingResult struct {
 	// Boolean indicating if role-based access control is enabled for copilot in this tenant.
 	AccessControlEnabled bool `pulumi:"accessControlEnabled"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The name of the resource
@@ -76,6 +78,11 @@ func (o LookupCopilotSettingResultOutput) ToLookupCopilotSettingResultOutputWith
 // Boolean indicating if role-based access control is enabled for copilot in this tenant.
 func (o LookupCopilotSettingResultOutput) AccessControlEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupCopilotSettingResult) bool { return v.AccessControlEnabled }).(pulumi.BoolOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupCopilotSettingResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCopilotSettingResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

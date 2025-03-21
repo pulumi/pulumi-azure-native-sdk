@@ -13,14 +13,14 @@ import (
 )
 
 // The NSP resource association resource
-// Azure REST API version: 2021-02-01-preview. Prior API version in Azure Native 1.x: 2021-02-01-preview.
-//
-// Other available API versions: 2023-07-01-preview, 2023-08-01-preview.
+// Azure REST API version: 2023-08-01-preview. Prior API version in Azure Native 2.x: 2021-02-01-preview.
 type NspAssociation struct {
 	pulumi.CustomResourceState
 
 	// Access mode on the association.
 	AccessMode pulumi.StringPtrOutput `pulumi:"accessMode"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Specifies if there are provisioning issues
 	HasProvisioningIssues pulumi.StringOutput `pulumi:"hasProvisioningIssues"`
 	// Resource location.
@@ -186,6 +186,11 @@ func (o NspAssociationOutput) ToNspAssociationOutputWithContext(ctx context.Cont
 // Access mode on the association.
 func (o NspAssociationOutput) AccessMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NspAssociation) pulumi.StringPtrOutput { return v.AccessMode }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o NspAssociationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *NspAssociation) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Specifies if there are provisioning issues

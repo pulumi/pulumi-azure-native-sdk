@@ -12,9 +12,7 @@ import (
 )
 
 // Retrieves a SQL Server Instance resource
-// Azure REST API version: 2023-01-15-preview.
-//
-// Other available API versions: 2024-01-01, 2024-05-01-preview.
+// Azure REST API version: 2024-01-01.
 func LookupSqlServerInstance(ctx *pulumi.Context, args *LookupSqlServerInstanceArgs, opts ...pulumi.InvokeOption) (*LookupSqlServerInstanceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSqlServerInstanceResult
@@ -34,6 +32,8 @@ type LookupSqlServerInstanceArgs struct {
 
 // A SqlServerInstance.
 type LookupSqlServerInstanceResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -83,6 +83,11 @@ func (o LookupSqlServerInstanceResultOutput) ToLookupSqlServerInstanceResultOutp
 
 func (o LookupSqlServerInstanceResultOutput) ToLookupSqlServerInstanceResultOutputWithContext(ctx context.Context) LookupSqlServerInstanceResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupSqlServerInstanceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSqlServerInstanceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

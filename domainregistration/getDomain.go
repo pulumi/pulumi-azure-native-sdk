@@ -12,9 +12,7 @@ import (
 )
 
 // Description for Get a domain.
-// Azure REST API version: 2022-09-01.
-//
-// Other available API versions: 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
+// Azure REST API version: 2024-04-01.
 func LookupDomain(ctx *pulumi.Context, args *LookupDomainArgs, opts ...pulumi.InvokeOption) (*LookupDomainResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDomainResult
@@ -37,6 +35,8 @@ type LookupDomainResult struct {
 	AuthCode *string `pulumi:"authCode"`
 	// <code>true</code> if the domain should be automatically renewed; otherwise, <code>false</code>.
 	AutoRenew *bool `pulumi:"autoRenew"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Domain creation timestamp.
 	CreatedTime string `pulumi:"createdTime"`
 	// Current DNS type
@@ -49,7 +49,7 @@ type LookupDomainResult struct {
 	ExpirationTime string `pulumi:"expirationTime"`
 	// Resource Id.
 	Id string `pulumi:"id"`
-	// Kind of resource.
+	// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
 	Kind *string `pulumi:"kind"`
 	// Timestamp when the domain was renewed last time.
 	LastRenewedTime string `pulumi:"lastRenewedTime"`
@@ -134,6 +134,11 @@ func (o LookupDomainResultOutput) AutoRenew() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupDomainResult) *bool { return v.AutoRenew }).(pulumi.BoolPtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupDomainResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDomainResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Domain creation timestamp.
 func (o LookupDomainResultOutput) CreatedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDomainResult) string { return v.CreatedTime }).(pulumi.StringOutput)
@@ -164,7 +169,7 @@ func (o LookupDomainResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDomainResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Kind of resource.
+// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
 func (o LookupDomainResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDomainResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }

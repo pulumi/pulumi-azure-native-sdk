@@ -12,10 +12,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Azure REST API version: 2020-05-01. Prior API version in Azure Native 1.x: 2020-05-01.
+// Azure REST API version: 2020-05-01. Prior API version in Azure Native 2.x: 2020-05-01.
 type PrivateLinkAssociation struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The pla name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The private link association properties.
@@ -126,6 +128,11 @@ func (o PrivateLinkAssociationOutput) ToPrivateLinkAssociationOutput() PrivateLi
 
 func (o PrivateLinkAssociationOutput) ToPrivateLinkAssociationOutputWithContext(ctx context.Context) PrivateLinkAssociationOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o PrivateLinkAssociationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrivateLinkAssociation) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The pla name.

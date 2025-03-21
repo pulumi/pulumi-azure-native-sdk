@@ -12,9 +12,7 @@ import (
 )
 
 // Get Sentinel onboarding state
-// Azure REST API version: 2023-02-01.
-//
-// Other available API versions: 2021-03-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-11-01, 2023-12-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-09-01, 2024-10-01-preview, 2025-01-01-preview.
+// Azure REST API version: 2024-09-01.
 func LookupSentinelOnboardingState(ctx *pulumi.Context, args *LookupSentinelOnboardingStateArgs, opts ...pulumi.InvokeOption) (*LookupSentinelOnboardingStateResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSentinelOnboardingStateResult
@@ -36,6 +34,8 @@ type LookupSentinelOnboardingStateArgs struct {
 
 // Sentinel onboarding state
 type LookupSentinelOnboardingStateResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Flag that indicates the status of the CMK setting
 	CustomerManagedKey *bool `pulumi:"customerManagedKey"`
 	// Etag of the azure resource
@@ -85,6 +85,11 @@ func (o LookupSentinelOnboardingStateResultOutput) ToLookupSentinelOnboardingSta
 
 func (o LookupSentinelOnboardingStateResultOutput) ToLookupSentinelOnboardingStateResultOutputWithContext(ctx context.Context) LookupSentinelOnboardingStateResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupSentinelOnboardingStateResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSentinelOnboardingStateResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Flag that indicates the status of the CMK setting

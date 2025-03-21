@@ -13,12 +13,12 @@ import (
 )
 
 // Static Site User Provided Function App ARM resource.
-// Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2020-12-01.
-//
-// Other available API versions: 2023-01-01, 2023-12-01, 2024-04-01.
+// Azure REST API version: 2024-04-01. Prior API version in Azure Native 2.x: 2022-09-01.
 type StaticSiteUserProvidedFunctionAppForStaticSite struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The date and time on which the function app was registered with the static site.
 	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
 	// The region of the function app registered with the static site
@@ -181,6 +181,11 @@ func (o StaticSiteUserProvidedFunctionAppForStaticSiteOutput) ToStaticSiteUserPr
 
 func (o StaticSiteUserProvidedFunctionAppForStaticSiteOutput) ToStaticSiteUserProvidedFunctionAppForStaticSiteOutputWithContext(ctx context.Context) StaticSiteUserProvidedFunctionAppForStaticSiteOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o StaticSiteUserProvidedFunctionAppForStaticSiteOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *StaticSiteUserProvidedFunctionAppForStaticSite) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The date and time on which the function app was registered with the static site.

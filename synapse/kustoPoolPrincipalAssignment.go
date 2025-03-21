@@ -13,12 +13,14 @@ import (
 )
 
 // Class representing a cluster principal assignment.
-// Azure REST API version: 2021-06-01-preview. Prior API version in Azure Native 1.x: 2021-04-01-preview.
+// Azure REST API version: 2021-06-01-preview. Prior API version in Azure Native 2.x: 2021-06-01-preview.
 type KustoPoolPrincipalAssignment struct {
 	pulumi.CustomResourceState
 
 	// The service principal object id in AAD (Azure active directory)
 	AadObjectId pulumi.StringOutput `pulumi:"aadObjectId"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The principal ID assigned to the cluster principal. It can be a user email, application ID, or security group name.
@@ -186,6 +188,11 @@ func (o KustoPoolPrincipalAssignmentOutput) ToKustoPoolPrincipalAssignmentOutput
 // The service principal object id in AAD (Azure active directory)
 func (o KustoPoolPrincipalAssignmentOutput) AadObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *KustoPoolPrincipalAssignment) pulumi.StringOutput { return v.AadObjectId }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o KustoPoolPrincipalAssignmentOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *KustoPoolPrincipalAssignment) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

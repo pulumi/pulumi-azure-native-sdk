@@ -13,12 +13,12 @@ import (
 )
 
 // The Managed Network resource
-// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2021-02-01-preview.
-//
-// Other available API versions: 2021-02-01-preview, 2021-05-01-preview, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-01-01-preview, 2024-03-01, 2024-05-01.
+// Azure REST API version: 2024-05-01. Prior API version in Azure Native 2.x: 2023-02-01.
 type NetworkManager struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// A description of the network manager.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// A unique read-only string that changes whenever the resource is updated.
@@ -50,9 +50,6 @@ func NewNetworkManager(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.NetworkManagerScopeAccesses == nil {
-		return nil, errors.New("invalid value for required argument 'NetworkManagerScopeAccesses'")
-	}
 	if args.NetworkManagerScopes == nil {
 		return nil, errors.New("invalid value for required argument 'NetworkManagerScopes'")
 	}
@@ -225,6 +222,11 @@ func (o NetworkManagerOutput) ToNetworkManagerOutput() NetworkManagerOutput {
 
 func (o NetworkManagerOutput) ToNetworkManagerOutputWithContext(ctx context.Context) NetworkManagerOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o NetworkManagerOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkManager) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A description of the network manager.

@@ -13,12 +13,12 @@ import (
 )
 
 // Definition of the webhook type.
-// Azure REST API version: 2015-10-31. Prior API version in Azure Native 1.x: 2015-10-31.
-//
-// Other available API versions: 2023-05-15-preview, 2024-10-23.
+// Azure REST API version: 2023-05-15-preview. Prior API version in Azure Native 2.x: 2015-10-31.
 type Webhook struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets or sets the creation time.
 	CreationTime pulumi.StringPtrOutput `pulumi:"creationTime"`
 	// Gets or sets the description.
@@ -41,7 +41,9 @@ type Webhook struct {
 	RunOn pulumi.StringPtrOutput `pulumi:"runOn"`
 	// Gets or sets the runbook the webhook is associated with.
 	Runbook RunbookAssociationPropertyResponsePtrOutput `pulumi:"runbook"`
-	// The type of the resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Gets or sets the webhook uri.
 	Uri pulumi.StringPtrOutput `pulumi:"uri"`
@@ -191,6 +193,11 @@ func (o WebhookOutput) ToWebhookOutputWithContext(ctx context.Context) WebhookOu
 	return o
 }
 
+// The Azure API version of the resource.
+func (o WebhookOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Webhook) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Gets or sets the creation time.
 func (o WebhookOutput) CreationTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Webhook) pulumi.StringPtrOutput { return v.CreationTime }).(pulumi.StringPtrOutput)
@@ -246,7 +253,12 @@ func (o WebhookOutput) Runbook() RunbookAssociationPropertyResponsePtrOutput {
 	return o.ApplyT(func(v *Webhook) RunbookAssociationPropertyResponsePtrOutput { return v.Runbook }).(RunbookAssociationPropertyResponsePtrOutput)
 }
 
-// The type of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o WebhookOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Webhook) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o WebhookOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Webhook) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

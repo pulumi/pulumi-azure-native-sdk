@@ -13,12 +13,14 @@ import (
 )
 
 // A formula for creating a VM, specifying an image base and other parameters
-// Azure REST API version: 2018-09-15. Prior API version in Azure Native 1.x: 2018-09-15.
+// Azure REST API version: 2018-09-15. Prior API version in Azure Native 2.x: 2018-09-15.
 type Formula struct {
 	pulumi.CustomResourceState
 
 	// The author of the formula.
 	Author pulumi.StringOutput `pulumi:"author"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The creation date of the formula.
 	CreationDate pulumi.StringOutput `pulumi:"creationDate"`
 	// The description of the formula.
@@ -186,6 +188,11 @@ func (o FormulaOutput) ToFormulaOutputWithContext(ctx context.Context) FormulaOu
 // The author of the formula.
 func (o FormulaOutput) Author() pulumi.StringOutput {
 	return o.ApplyT(func(v *Formula) pulumi.StringOutput { return v.Author }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o FormulaOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Formula) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The creation date of the formula.

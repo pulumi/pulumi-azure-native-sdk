@@ -34,6 +34,8 @@ type LookupTransformArgs struct {
 
 // A Transform encapsulates the rules or instructions for generating desired outputs from input media, such as by transcoding or by extracting insights. After the Transform is created, it can be applied to input media by creating Jobs.
 type LookupTransformResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The UTC date and time when the Transform was created, in 'YYYY-MM-DDThh:mm:ssZ' format.
 	Created string `pulumi:"created"`
 	// An optional verbose description of the Transform.
@@ -87,6 +89,11 @@ func (o LookupTransformResultOutput) ToLookupTransformResultOutput() LookupTrans
 
 func (o LookupTransformResultOutput) ToLookupTransformResultOutputWithContext(ctx context.Context) LookupTransformResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupTransformResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTransformResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The UTC date and time when the Transform was created, in 'YYYY-MM-DDThh:mm:ssZ' format.

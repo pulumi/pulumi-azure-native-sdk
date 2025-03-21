@@ -13,12 +13,12 @@ import (
 )
 
 // The policy set definition.
-// Azure REST API version: 2021-06-01. Prior API version in Azure Native 1.x: 2020-09-01.
-//
-// Other available API versions: 2019-06-01, 2023-04-01, 2024-05-01, 2025-01-01.
+// Azure REST API version: 2025-01-01. Prior API version in Azure Native 2.x: 2021-06-01.
 type PolicySetDefinitionAtManagementGroup struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The policy set definition description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The display name of the policy set definition.
@@ -33,12 +33,16 @@ type PolicySetDefinitionAtManagementGroup struct {
 	PolicyDefinitionGroups PolicyDefinitionGroupResponseArrayOutput `pulumi:"policyDefinitionGroups"`
 	// An array of policy definition references.
 	PolicyDefinitions PolicyDefinitionReferenceResponseArrayOutput `pulumi:"policyDefinitions"`
-	// The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
+	// The type of policy set definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
 	PolicyType pulumi.StringPtrOutput `pulumi:"policyType"`
 	// The system metadata relating to this resource.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource (Microsoft.Authorization/policySetDefinitions).
 	Type pulumi.StringOutput `pulumi:"type"`
+	// The policy set definition version in #.#.# format.
+	Version pulumi.StringPtrOutput `pulumi:"version"`
+	// A list of available versions for this policy set definition.
+	Versions pulumi.StringArrayOutput `pulumi:"versions"`
 }
 
 // NewPolicySetDefinitionAtManagementGroup registers a new resource with the given unique name, arguments, and options.
@@ -91,6 +95,9 @@ func NewPolicySetDefinitionAtManagementGroup(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:authorization/v20250101:PolicySetDefinitionAtManagementGroup"),
 		},
+		{
+			Type: pulumi.String("azure-native:authorization/v20250301:PolicySetDefinitionAtManagementGroup"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -142,8 +149,12 @@ type policySetDefinitionAtManagementGroupArgs struct {
 	PolicyDefinitions []PolicyDefinitionReference `pulumi:"policyDefinitions"`
 	// The name of the policy set definition to create.
 	PolicySetDefinitionName *string `pulumi:"policySetDefinitionName"`
-	// The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
+	// The type of policy set definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
 	PolicyType *string `pulumi:"policyType"`
+	// The policy set definition version in #.#.# format.
+	Version *string `pulumi:"version"`
+	// A list of available versions for this policy set definition.
+	Versions []string `pulumi:"versions"`
 }
 
 // The set of arguments for constructing a PolicySetDefinitionAtManagementGroup resource.
@@ -164,8 +175,12 @@ type PolicySetDefinitionAtManagementGroupArgs struct {
 	PolicyDefinitions PolicyDefinitionReferenceArrayInput
 	// The name of the policy set definition to create.
 	PolicySetDefinitionName pulumi.StringPtrInput
-	// The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
+	// The type of policy set definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
 	PolicyType pulumi.StringPtrInput
+	// The policy set definition version in #.#.# format.
+	Version pulumi.StringPtrInput
+	// A list of available versions for this policy set definition.
+	Versions pulumi.StringArrayInput
 }
 
 func (PolicySetDefinitionAtManagementGroupArgs) ElementType() reflect.Type {
@@ -203,6 +218,11 @@ func (o PolicySetDefinitionAtManagementGroupOutput) ToPolicySetDefinitionAtManag
 
 func (o PolicySetDefinitionAtManagementGroupOutput) ToPolicySetDefinitionAtManagementGroupOutputWithContext(ctx context.Context) PolicySetDefinitionAtManagementGroupOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o PolicySetDefinitionAtManagementGroupOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PolicySetDefinitionAtManagementGroup) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The policy set definition description.
@@ -246,7 +266,7 @@ func (o PolicySetDefinitionAtManagementGroupOutput) PolicyDefinitions() PolicyDe
 	}).(PolicyDefinitionReferenceResponseArrayOutput)
 }
 
-// The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
+// The type of policy set definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
 func (o PolicySetDefinitionAtManagementGroupOutput) PolicyType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PolicySetDefinitionAtManagementGroup) pulumi.StringPtrOutput { return v.PolicyType }).(pulumi.StringPtrOutput)
 }
@@ -259,6 +279,16 @@ func (o PolicySetDefinitionAtManagementGroupOutput) SystemData() SystemDataRespo
 // The type of the resource (Microsoft.Authorization/policySetDefinitions).
 func (o PolicySetDefinitionAtManagementGroupOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *PolicySetDefinitionAtManagementGroup) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// The policy set definition version in #.#.# format.
+func (o PolicySetDefinitionAtManagementGroupOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PolicySetDefinitionAtManagementGroup) pulumi.StringPtrOutput { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+// A list of available versions for this policy set definition.
+func (o PolicySetDefinitionAtManagementGroupOutput) Versions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PolicySetDefinitionAtManagementGroup) pulumi.StringArrayOutput { return v.Versions }).(pulumi.StringArrayOutput)
 }
 
 func init() {

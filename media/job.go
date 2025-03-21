@@ -13,10 +13,12 @@ import (
 )
 
 // A Job resource type. The progress and state can be obtained by polling a Job or subscribing to events using EventGrid.
-// Azure REST API version: 2022-07-01. Prior API version in Azure Native 1.x: 2020-05-01.
+// Azure REST API version: 2022-07-01. Prior API version in Azure Native 2.x: 2022-07-01.
 type Job struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Customer provided key, value pairs that will be returned in Job and JobOutput state events.
 	CorrelationData pulumi.StringMapOutput `pulumi:"correlationData"`
 	// The UTC date and time when the customer has created the Job, in 'YYYY-MM-DDThh:mm:ssZ' format.
@@ -204,6 +206,11 @@ func (o JobOutput) ToJobOutput() JobOutput {
 
 func (o JobOutput) ToJobOutputWithContext(ctx context.Context) JobOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o JobOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Customer provided key, value pairs that will be returned in Job and JobOutput state events.

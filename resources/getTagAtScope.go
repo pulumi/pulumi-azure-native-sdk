@@ -12,9 +12,7 @@ import (
 )
 
 // Wrapper resource for tags API requests and responses.
-// Azure REST API version: 2022-09-01.
-//
-// Other available API versions: 2023-07-01, 2024-03-01, 2024-07-01, 2024-11-01.
+// Azure REST API version: 2024-03-01.
 func LookupTagAtScope(ctx *pulumi.Context, args *LookupTagAtScopeArgs, opts ...pulumi.InvokeOption) (*LookupTagAtScopeResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTagAtScopeResult
@@ -32,6 +30,8 @@ type LookupTagAtScopeArgs struct {
 
 // Wrapper resource for tags API requests and responses.
 type LookupTagAtScopeResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The ID of the tags wrapper resource.
 	Id string `pulumi:"id"`
 	// The name of the tags wrapper resource.
@@ -73,6 +73,11 @@ func (o LookupTagAtScopeResultOutput) ToLookupTagAtScopeResultOutput() LookupTag
 
 func (o LookupTagAtScopeResultOutput) ToLookupTagAtScopeResultOutputWithContext(ctx context.Context) LookupTagAtScopeResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupTagAtScopeResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTagAtScopeResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The ID of the tags wrapper resource.

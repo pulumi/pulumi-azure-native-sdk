@@ -13,12 +13,14 @@ import (
 )
 
 // Access policies help define the authentication rules, and control access to specific video resources.
-// Azure REST API version: 2021-11-01-preview. Prior API version in Azure Native 1.x: 2021-05-01-preview.
+// Azure REST API version: 2021-11-01-preview. Prior API version in Azure Native 2.x: 2021-11-01-preview.
 type AccessPolicy struct {
 	pulumi.CustomResourceState
 
 	// Authentication method to be used when validating client API access.
 	Authentication JwtAuthenticationResponsePtrOutput `pulumi:"authentication"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Defines the access level granted by this policy.
@@ -150,6 +152,11 @@ func (o AccessPolicyOutput) ToAccessPolicyOutputWithContext(ctx context.Context)
 // Authentication method to be used when validating client API access.
 func (o AccessPolicyOutput) Authentication() JwtAuthenticationResponsePtrOutput {
 	return o.ApplyT(func(v *AccessPolicy) JwtAuthenticationResponsePtrOutput { return v.Authentication }).(JwtAuthenticationResponsePtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o AccessPolicyOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessPolicy) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

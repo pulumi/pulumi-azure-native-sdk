@@ -13,7 +13,7 @@ import (
 )
 
 // Peerings in a VirtualNetwork resource
-// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2018-04-01.
+// Azure REST API version: 2024-05-01.
 type VNetPeering struct {
 	pulumi.CustomResourceState
 
@@ -23,6 +23,8 @@ type VNetPeering struct {
 	AllowGatewayTransit pulumi.BoolPtrOutput `pulumi:"allowGatewayTransit"`
 	// Whether the VMs in the local virtual network space would be able to access the VMs in remote virtual network space.
 	AllowVirtualNetworkAccess pulumi.BoolPtrOutput `pulumi:"allowVirtualNetworkAccess"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The reference to the databricks virtual network address space.
 	DatabricksAddressSpace AddressSpaceResponsePtrOutput `pulumi:"databricksAddressSpace"`
 	//  The remote virtual network should be in the same region. See here to learn more (https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering).
@@ -64,46 +66,22 @@ func NewVNetPeering(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:databricks/v20180401:VNetPeering"),
 		},
 		{
-			Type: pulumi.String("azure-native:databricks/v20180401:vNetPeering"),
-		},
-		{
 			Type: pulumi.String("azure-native:databricks/v20210401preview:VNetPeering"),
-		},
-		{
-			Type: pulumi.String("azure-native:databricks/v20210401preview:vNetPeering"),
 		},
 		{
 			Type: pulumi.String("azure-native:databricks/v20220401preview:VNetPeering"),
 		},
 		{
-			Type: pulumi.String("azure-native:databricks/v20220401preview:vNetPeering"),
-		},
-		{
 			Type: pulumi.String("azure-native:databricks/v20230201:VNetPeering"),
-		},
-		{
-			Type: pulumi.String("azure-native:databricks/v20230201:vNetPeering"),
 		},
 		{
 			Type: pulumi.String("azure-native:databricks/v20230915preview:VNetPeering"),
 		},
 		{
-			Type: pulumi.String("azure-native:databricks/v20230915preview:vNetPeering"),
-		},
-		{
 			Type: pulumi.String("azure-native:databricks/v20240501:VNetPeering"),
 		},
 		{
-			Type: pulumi.String("azure-native:databricks/v20240501:vNetPeering"),
-		},
-		{
 			Type: pulumi.String("azure-native:databricks/v20240901preview:VNetPeering"),
-		},
-		{
-			Type: pulumi.String("azure-native:databricks/v20240901preview:vNetPeering"),
-		},
-		{
-			Type: pulumi.String("azure-native:databricks:vNetPeering"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -240,6 +218,11 @@ func (o VNetPeeringOutput) AllowGatewayTransit() pulumi.BoolPtrOutput {
 // Whether the VMs in the local virtual network space would be able to access the VMs in remote virtual network space.
 func (o VNetPeeringOutput) AllowVirtualNetworkAccess() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VNetPeering) pulumi.BoolPtrOutput { return v.AllowVirtualNetworkAccess }).(pulumi.BoolPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o VNetPeeringOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *VNetPeering) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The reference to the databricks virtual network address space.

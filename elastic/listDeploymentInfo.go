@@ -12,9 +12,7 @@ import (
 )
 
 // The properties of deployment in Elastic cloud corresponding to the Elastic monitor resource.
-// Azure REST API version: 2023-06-01.
-//
-// Other available API versions: 2023-06-15-preview, 2023-07-01-preview, 2023-10-01-preview, 2023-11-01-preview, 2024-01-01-preview, 2024-03-01, 2024-05-01-preview, 2024-06-15-preview, 2024-10-01-preview.
+// Azure REST API version: 2024-03-01.
 func ListDeploymentInfo(ctx *pulumi.Context, args *ListDeploymentInfoArgs, opts ...pulumi.InvokeOption) (*ListDeploymentInfoResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListDeploymentInfoResult
@@ -28,7 +26,7 @@ func ListDeploymentInfo(ctx *pulumi.Context, args *ListDeploymentInfoArgs, opts 
 type ListDeploymentInfoArgs struct {
 	// Monitor resource name
 	MonitorName string `pulumi:"monitorName"`
-	// The name of the resource group to which the Elastic resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -38,6 +36,8 @@ type ListDeploymentInfoResult struct {
 	DeploymentUrl string `pulumi:"deploymentUrl"`
 	// Disk capacity of the elasticsearch in Elastic cloud deployment.
 	DiskCapacity string `pulumi:"diskCapacity"`
+	// Elasticsearch endpoint in Elastic cloud deployment. This is either the aliased_endpoint if available, or the service_url otherwise.
+	ElasticsearchEndPoint string `pulumi:"elasticsearchEndPoint"`
 	// Marketplace SaaS Info of the resource.
 	MarketplaceSaasInfo MarketplaceSaaSInfoResponse `pulumi:"marketplaceSaasInfo"`
 	// RAM capacity of the elasticsearch in Elastic cloud deployment.
@@ -60,7 +60,7 @@ func ListDeploymentInfoOutput(ctx *pulumi.Context, args ListDeploymentInfoOutput
 type ListDeploymentInfoOutputArgs struct {
 	// Monitor resource name
 	MonitorName pulumi.StringInput `pulumi:"monitorName"`
-	// The name of the resource group to which the Elastic resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -91,6 +91,11 @@ func (o ListDeploymentInfoResultOutput) DeploymentUrl() pulumi.StringOutput {
 // Disk capacity of the elasticsearch in Elastic cloud deployment.
 func (o ListDeploymentInfoResultOutput) DiskCapacity() pulumi.StringOutput {
 	return o.ApplyT(func(v ListDeploymentInfoResult) string { return v.DiskCapacity }).(pulumi.StringOutput)
+}
+
+// Elasticsearch endpoint in Elastic cloud deployment. This is either the aliased_endpoint if available, or the service_url otherwise.
+func (o ListDeploymentInfoResultOutput) ElasticsearchEndPoint() pulumi.StringOutput {
+	return o.ApplyT(func(v ListDeploymentInfoResult) string { return v.ElasticsearchEndPoint }).(pulumi.StringOutput)
 }
 
 // Marketplace SaaS Info of the resource.

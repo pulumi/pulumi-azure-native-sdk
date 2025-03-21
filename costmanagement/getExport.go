@@ -12,9 +12,7 @@ import (
 )
 
 // The operation to get the export for the defined scope by export name.
-// Azure REST API version: 2023-03-01.
-//
-// Other available API versions: 2019-10-01, 2023-04-01-preview, 2023-07-01-preview, 2023-08-01, 2023-09-01, 2023-11-01, 2024-08-01.
+// Azure REST API version: 2024-08-01.
 func LookupExport(ctx *pulumi.Context, args *LookupExportArgs, opts ...pulumi.InvokeOption) (*LookupExportResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupExportResult
@@ -36,6 +34,8 @@ type LookupExportArgs struct {
 
 // An export resource.
 type LookupExportResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Has the definition for the export.
 	Definition ExportDefinitionResponse `pulumi:"definition"`
 	// Has delivery information for the export.
@@ -46,6 +46,10 @@ type LookupExportResult struct {
 	Format *string `pulumi:"format"`
 	// Resource Id.
 	Id string `pulumi:"id"`
+	// The managed identity associated with Export
+	Identity *SystemAssignedServiceIdentityResponse `pulumi:"identity"`
+	// The location of the Export's managed identity. Only required when utilizing managed identity.
+	Location *string `pulumi:"location"`
 	// Resource name.
 	Name string `pulumi:"name"`
 	// If the export has an active schedule, provides an estimate of the next run time.
@@ -97,6 +101,11 @@ func (o LookupExportResultOutput) ToLookupExportResultOutputWithContext(ctx cont
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupExportResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupExportResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Has the definition for the export.
 func (o LookupExportResultOutput) Definition() ExportDefinitionResponseOutput {
 	return o.ApplyT(func(v LookupExportResult) ExportDefinitionResponse { return v.Definition }).(ExportDefinitionResponseOutput)
@@ -120,6 +129,16 @@ func (o LookupExportResultOutput) Format() pulumi.StringPtrOutput {
 // Resource Id.
 func (o LookupExportResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExportResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The managed identity associated with Export
+func (o LookupExportResultOutput) Identity() SystemAssignedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupExportResult) *SystemAssignedServiceIdentityResponse { return v.Identity }).(SystemAssignedServiceIdentityResponsePtrOutput)
+}
+
+// The location of the Export's managed identity. Only required when utilizing managed identity.
+func (o LookupExportResultOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupExportResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
 // Resource name.

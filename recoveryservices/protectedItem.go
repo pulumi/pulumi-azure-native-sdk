@@ -13,12 +13,12 @@ import (
 )
 
 // Base class for backup items.
-// Azure REST API version: 2023-04-01. Prior API version in Azure Native 1.x: 2021-02-01.
-//
-// Other available API versions: 2023-06-01, 2023-08-01, 2024-01-01, 2024-02-01, 2024-04-01, 2024-04-30-preview, 2024-07-30-preview, 2024-10-01.
+// Azure REST API version: 2024-10-01. Prior API version in Azure Native 2.x: 2023-04-01.
 type ProtectedItem struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Optional ETag.
 	ETag pulumi.StringPtrOutput `pulumi:"eTag"`
 	// Resource location.
@@ -270,6 +270,11 @@ func (o ProtectedItemOutput) ToProtectedItemOutput() ProtectedItemOutput {
 
 func (o ProtectedItemOutput) ToProtectedItemOutputWithContext(ctx context.Context) ProtectedItemOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ProtectedItemOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProtectedItem) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Optional ETag.

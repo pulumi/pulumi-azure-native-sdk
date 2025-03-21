@@ -13,12 +13,14 @@ import (
 )
 
 // A Data Lake Analytics account object, containing all information associated with the named Data Lake Analytics account.
-// Azure REST API version: 2019-11-01-preview. Prior API version in Azure Native 1.x: 2016-11-01.
+// Azure REST API version: 2019-11-01-preview. Prior API version in Azure Native 2.x: 2019-11-01-preview.
 type Account struct {
 	pulumi.CustomResourceState
 
 	// The unique identifier associated with this Data Lake Analytics account.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The list of compute policies associated with this account.
 	ComputePolicies ComputePolicyResponseArrayOutput `pulumi:"computePolicies"`
 	// The account creation time.
@@ -283,6 +285,11 @@ func (o AccountOutput) ToAccountOutputWithContext(ctx context.Context) AccountOu
 // The unique identifier associated with this Data Lake Analytics account.
 func (o AccountOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o AccountOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The list of compute policies associated with this account.

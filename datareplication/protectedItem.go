@@ -13,10 +13,12 @@ import (
 )
 
 // Protected item model.
-// Azure REST API version: 2021-02-16-preview.
+// Azure REST API version: 2021-02-16-preview. Prior API version in Azure Native 2.x: 2021-02-16-preview.
 type ProtectedItem struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets or sets the name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Protected item model properties.
@@ -45,6 +47,9 @@ func NewProtectedItem(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:datareplication/v20210216preview:ProtectedItem"),
+		},
+		{
+			Type: pulumi.String("azure-native:datareplication/v20240901:ProtectedItem"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -138,6 +143,11 @@ func (o ProtectedItemOutput) ToProtectedItemOutput() ProtectedItemOutput {
 
 func (o ProtectedItemOutput) ToProtectedItemOutputWithContext(ctx context.Context) ProtectedItemOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ProtectedItemOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProtectedItem) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets the name of the resource.

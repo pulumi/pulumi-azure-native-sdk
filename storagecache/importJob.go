@@ -17,6 +17,8 @@ import (
 type ImportJob struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// A recent and frequently updated rate of total files, directories, and symlinks imported per second.
 	BlobsImportedPerSecond pulumi.Float64Output `pulumi:"blobsImportedPerSecond"`
 	// A recent and frequently updated rate of blobs walked per second.
@@ -81,16 +83,7 @@ func NewImportJob(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:storagecache/v20240301:ImportJob"),
 		},
 		{
-			Type: pulumi.String("azure-native:storagecache/v20240301:importJob"),
-		},
-		{
 			Type: pulumi.String("azure-native:storagecache/v20240701:ImportJob"),
-		},
-		{
-			Type: pulumi.String("azure-native:storagecache/v20240701:importJob"),
-		},
-		{
-			Type: pulumi.String("azure-native:storagecache:importJob"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -200,6 +193,11 @@ func (o ImportJobOutput) ToImportJobOutput() ImportJobOutput {
 
 func (o ImportJobOutput) ToImportJobOutputWithContext(ctx context.Context) ImportJobOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ImportJobOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ImportJob) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A recent and frequently updated rate of total files, directories, and symlinks imported per second.

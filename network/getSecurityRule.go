@@ -12,9 +12,7 @@ import (
 )
 
 // Get the specified network security rule.
-// Azure REST API version: 2023-02-01.
-//
-// Other available API versions: 2019-06-01, 2022-07-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Azure REST API version: 2024-05-01.
 func LookupSecurityRule(ctx *pulumi.Context, args *LookupSecurityRuleArgs, opts ...pulumi.InvokeOption) (*LookupSecurityRuleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSecurityRuleResult
@@ -38,6 +36,8 @@ type LookupSecurityRuleArgs struct {
 type LookupSecurityRuleResult struct {
 	// The network traffic is allowed or denied.
 	Access string `pulumi:"access"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// A description for this rule. Restricted to 140 chars.
 	Description *string `pulumi:"description"`
 	// The destination address prefix. CIDR or destination IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used.
@@ -118,6 +118,11 @@ func (o LookupSecurityRuleResultOutput) ToLookupSecurityRuleResultOutputWithCont
 // The network traffic is allowed or denied.
 func (o LookupSecurityRuleResultOutput) Access() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityRuleResult) string { return v.Access }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupSecurityRuleResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecurityRuleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A description for this rule. Restricted to 140 chars.

@@ -13,8 +13,6 @@ import (
 
 // Gets the access policy with the specified name in the specified environment.
 // Azure REST API version: 2020-05-15.
-//
-// Other available API versions: 2021-06-30-preview.
 func LookupAccessPolicy(ctx *pulumi.Context, args *LookupAccessPolicyArgs, opts ...pulumi.InvokeOption) (*LookupAccessPolicyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAccessPolicyResult
@@ -36,6 +34,8 @@ type LookupAccessPolicyArgs struct {
 
 // An access policy is used to grant users and applications access to the environment. Roles are assigned to service principals in Azure Active Directory. These roles define the actions the principal can perform through the Time Series Insights data plane APIs.
 type LookupAccessPolicyResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// An description of the access policy.
 	Description *string `pulumi:"description"`
 	// Resource Id
@@ -85,6 +85,11 @@ func (o LookupAccessPolicyResultOutput) ToLookupAccessPolicyResultOutput() Looku
 
 func (o LookupAccessPolicyResultOutput) ToLookupAccessPolicyResultOutputWithContext(ctx context.Context) LookupAccessPolicyResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupAccessPolicyResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccessPolicyResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // An description of the access policy.

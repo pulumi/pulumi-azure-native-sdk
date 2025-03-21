@@ -12,9 +12,7 @@ import (
 )
 
 // Returns an attached database configuration.
-// Azure REST API version: 2022-12-29.
-//
-// Other available API versions: 2023-05-02, 2023-08-15, 2024-04-13.
+// Azure REST API version: 2024-04-13.
 func LookupAttachedDatabaseConfiguration(ctx *pulumi.Context, args *LookupAttachedDatabaseConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupAttachedDatabaseConfigurationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAttachedDatabaseConfigurationResult
@@ -30,7 +28,7 @@ type LookupAttachedDatabaseConfigurationArgs struct {
 	AttachedDatabaseConfigurationName string `pulumi:"attachedDatabaseConfigurationName"`
 	// The name of the Kusto cluster.
 	ClusterName string `pulumi:"clusterName"`
-	// The name of the resource group containing the Kusto cluster.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -38,6 +36,8 @@ type LookupAttachedDatabaseConfigurationArgs struct {
 type LookupAttachedDatabaseConfigurationResult struct {
 	// The list of databases from the clusterResourceId which are currently attached to the cluster.
 	AttachedDatabaseNames []string `pulumi:"attachedDatabaseNames"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The resource id of the cluster where the databases you would like to attach reside.
 	ClusterResourceId string `pulumi:"clusterResourceId"`
 	// The name of the database which you would like to attach, use * if you want to follow all current and future databases.
@@ -76,7 +76,7 @@ type LookupAttachedDatabaseConfigurationOutputArgs struct {
 	AttachedDatabaseConfigurationName pulumi.StringInput `pulumi:"attachedDatabaseConfigurationName"`
 	// The name of the Kusto cluster.
 	ClusterName pulumi.StringInput `pulumi:"clusterName"`
-	// The name of the resource group containing the Kusto cluster.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -102,6 +102,11 @@ func (o LookupAttachedDatabaseConfigurationResultOutput) ToLookupAttachedDatabas
 // The list of databases from the clusterResourceId which are currently attached to the cluster.
 func (o LookupAttachedDatabaseConfigurationResultOutput) AttachedDatabaseNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupAttachedDatabaseConfigurationResult) []string { return v.AttachedDatabaseNames }).(pulumi.StringArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupAttachedDatabaseConfigurationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAttachedDatabaseConfigurationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The resource id of the cluster where the databases you would like to attach reside.

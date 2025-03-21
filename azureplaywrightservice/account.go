@@ -12,15 +12,17 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An account resource
-// Azure REST API version: 2023-10-01-preview.
-//
-// Other available API versions: 2024-02-01-preview, 2024-08-01-preview, 2024-12-01.
+// A Playwright service account resource.
+// Azure REST API version: 2024-12-01. Prior API version in Azure Native 2.x: 2023-10-01-preview.
 type Account struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The Playwright testing dashboard URI for the account resource.
 	DashboardUri pulumi.StringOutput `pulumi:"dashboardUri"`
+	// When enabled, this feature allows the workspace to use local auth (through service access token) for executing operations.
+	LocalAuth pulumi.StringPtrOutput `pulumi:"localAuth"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -51,11 +53,14 @@ func NewAccount(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
+	if args.LocalAuth == nil {
+		args.LocalAuth = pulumi.StringPtr("Disabled")
+	}
 	if args.RegionalAffinity == nil {
 		args.RegionalAffinity = pulumi.StringPtr("Enabled")
 	}
 	if args.Reporting == nil {
-		args.Reporting = pulumi.StringPtr("Disabled")
+		args.Reporting = pulumi.StringPtr("Enabled")
 	}
 	if args.ScalableExecution == nil {
 		args.ScalableExecution = pulumi.StringPtr("Enabled")
@@ -108,10 +113,12 @@ func (AccountState) ElementType() reflect.Type {
 }
 
 type accountArgs struct {
+	// Name of account.
+	AccountName *string `pulumi:"accountName"`
+	// When enabled, this feature allows the workspace to use local auth (through service access token) for executing operations.
+	LocalAuth *string `pulumi:"localAuth"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
-	// Name of account
-	Name *string `pulumi:"name"`
 	// This property sets the connection region for Playwright client workers to cloud-hosted browsers. If enabled, workers connect to browsers in the closest Azure region, ensuring lower latency. If disabled, workers connect to browsers in the Azure region in which the workspace was initially created.
 	RegionalAffinity *string `pulumi:"regionalAffinity"`
 	// When enabled, this feature allows the workspace to upload and display test results, including artifacts like traces and screenshots, in the Playwright portal. This enables faster and more efficient troubleshooting.
@@ -126,10 +133,12 @@ type accountArgs struct {
 
 // The set of arguments for constructing a Account resource.
 type AccountArgs struct {
+	// Name of account.
+	AccountName pulumi.StringPtrInput
+	// When enabled, this feature allows the workspace to use local auth (through service access token) for executing operations.
+	LocalAuth pulumi.StringPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
-	// Name of account
-	Name pulumi.StringPtrInput
 	// This property sets the connection region for Playwright client workers to cloud-hosted browsers. If enabled, workers connect to browsers in the closest Azure region, ensuring lower latency. If disabled, workers connect to browsers in the Azure region in which the workspace was initially created.
 	RegionalAffinity pulumi.StringPtrInput
 	// When enabled, this feature allows the workspace to upload and display test results, including artifacts like traces and screenshots, in the Playwright portal. This enables faster and more efficient troubleshooting.
@@ -179,9 +188,19 @@ func (o AccountOutput) ToAccountOutputWithContext(ctx context.Context) AccountOu
 	return o
 }
 
+// The Azure API version of the resource.
+func (o AccountOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The Playwright testing dashboard URI for the account resource.
 func (o AccountOutput) DashboardUri() pulumi.StringOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.DashboardUri }).(pulumi.StringOutput)
+}
+
+// When enabled, this feature allows the workspace to use local auth (through service access token) for executing operations.
+func (o AccountOutput) LocalAuth() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringPtrOutput { return v.LocalAuth }).(pulumi.StringPtrOutput)
 }
 
 // The geo-location where the resource lives

@@ -13,10 +13,12 @@ import (
 )
 
 // Policy model.
-// Azure REST API version: 2021-02-16-preview.
+// Azure REST API version: 2021-02-16-preview. Prior API version in Azure Native 2.x: 2021-02-16-preview.
 type Policy struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets or sets the name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Policy model properties.
@@ -45,6 +47,9 @@ func NewPolicy(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:datareplication/v20210216preview:Policy"),
+		},
+		{
+			Type: pulumi.String("azure-native:datareplication/v20240901:Policy"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -138,6 +143,11 @@ func (o PolicyOutput) ToPolicyOutput() PolicyOutput {
 
 func (o PolicyOutput) ToPolicyOutputWithContext(ctx context.Context) PolicyOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o PolicyOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets the name of the resource.

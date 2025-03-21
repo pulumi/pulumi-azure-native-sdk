@@ -13,10 +13,12 @@ import (
 )
 
 // Define the Server Instance resource.
-// Azure REST API version: 2023-10-01-preview.
+// Azure REST API version: 2023-10-01-preview. Prior API version in Azure Native 2.x: 2023-10-01-preview.
 type ServerInstance struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Configuration data for this server instance.
 	ConfigurationData ConfigurationDataResponseOutput `pulumi:"configurationData"`
 	// Defines the errors related to SAP Instance resource.
@@ -157,6 +159,11 @@ func (o ServerInstanceOutput) ToServerInstanceOutput() ServerInstanceOutput {
 
 func (o ServerInstanceOutput) ToServerInstanceOutputWithContext(ctx context.Context) ServerInstanceOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ServerInstanceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerInstance) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Configuration data for this server instance.

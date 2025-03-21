@@ -13,10 +13,12 @@ import (
 )
 
 // A Streaming Policy resource
-// Azure REST API version: 2023-01-01. Prior API version in Azure Native 1.x: 2020-05-01.
+// Azure REST API version: 2023-01-01. Prior API version in Azure Native 2.x: 2023-01-01.
 type StreamingPolicy struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Configuration of CommonEncryptionCbcs
 	CommonEncryptionCbcs CommonEncryptionCbcsResponsePtrOutput `pulumi:"commonEncryptionCbcs"`
 	// Configuration of CommonEncryptionCenc
@@ -183,6 +185,11 @@ func (o StreamingPolicyOutput) ToStreamingPolicyOutput() StreamingPolicyOutput {
 
 func (o StreamingPolicyOutput) ToStreamingPolicyOutputWithContext(ctx context.Context) StreamingPolicyOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o StreamingPolicyOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *StreamingPolicy) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Configuration of CommonEncryptionCbcs

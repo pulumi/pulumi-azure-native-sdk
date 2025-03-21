@@ -13,8 +13,6 @@ import (
 
 // Gets properties of a live event.
 // Azure REST API version: 2022-11-01.
-//
-// Other available API versions: 2018-06-01-preview, 2019-05-01-preview.
 func LookupLiveEvent(ctx *pulumi.Context, args *LookupLiveEventArgs, opts ...pulumi.InvokeOption) (*LookupLiveEventResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupLiveEventResult
@@ -36,6 +34,8 @@ type LookupLiveEventArgs struct {
 
 // The live event.
 type LookupLiveEventResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The creation time for the live event
 	Created string `pulumi:"created"`
 	// Live event cross site access policies.
@@ -111,6 +111,11 @@ func (o LookupLiveEventResultOutput) ToLookupLiveEventResultOutput() LookupLiveE
 
 func (o LookupLiveEventResultOutput) ToLookupLiveEventResultOutputWithContext(ctx context.Context) LookupLiveEventResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupLiveEventResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLiveEventResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The creation time for the live event

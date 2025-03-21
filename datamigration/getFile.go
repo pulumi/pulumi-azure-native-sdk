@@ -12,9 +12,7 @@ import (
 )
 
 // The files resource is a nested, proxy-only resource representing a file stored under the project resource. This method retrieves information about a file.
-// Azure REST API version: 2021-06-30.
-//
-// Other available API versions: 2022-03-30-preview, 2023-07-15-preview.
+// Azure REST API version: 2023-07-15-preview.
 func LookupFile(ctx *pulumi.Context, args *LookupFileArgs, opts ...pulumi.InvokeOption) (*LookupFileResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFileResult
@@ -38,6 +36,8 @@ type LookupFileArgs struct {
 
 // A file resource
 type LookupFileResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// HTTP strong entity tag value. This is ignored if submitted.
 	Etag *string `pulumi:"etag"`
 	// Resource ID.
@@ -89,6 +89,11 @@ func (o LookupFileResultOutput) ToLookupFileResultOutput() LookupFileResultOutpu
 
 func (o LookupFileResultOutput) ToLookupFileResultOutputWithContext(ctx context.Context) LookupFileResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupFileResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFileResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // HTTP strong entity tag value. This is ignored if submitted.

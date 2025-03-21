@@ -13,12 +13,14 @@ import (
 )
 
 // Network default admin rule.
-// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2021-02-01-preview.
+// Azure REST API version: 2024-05-01. Prior API version in Azure Native 2.x: 2023-02-01.
 type DefaultAdminRule struct {
 	pulumi.CustomResourceState
 
 	// Indicates the access allowed for this particular rule
 	Access pulumi.StringOutput `pulumi:"access"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// A description for this rule. Restricted to 140 chars.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The destination port ranges.
@@ -79,7 +81,13 @@ func NewDefaultAdminRule(ctx *pulumi.Context,
 	args.Kind = pulumi.String("Default")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:network/v20210201preview:AdminRule"),
+		},
+		{
 			Type: pulumi.String("azure-native:network/v20210201preview:DefaultAdminRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20210501preview:AdminRule"),
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20210501preview:DefaultAdminRule"),
@@ -106,34 +114,67 @@ func NewDefaultAdminRule(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:network/v20221101:DefaultAdminRule"),
 		},
 		{
+			Type: pulumi.String("azure-native:network/v20230201:AdminRule"),
+		},
+		{
 			Type: pulumi.String("azure-native:network/v20230201:DefaultAdminRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20230401:AdminRule"),
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20230401:DefaultAdminRule"),
 		},
 		{
+			Type: pulumi.String("azure-native:network/v20230501:AdminRule"),
+		},
+		{
 			Type: pulumi.String("azure-native:network/v20230501:DefaultAdminRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20230601:AdminRule"),
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20230601:DefaultAdminRule"),
 		},
 		{
+			Type: pulumi.String("azure-native:network/v20230901:AdminRule"),
+		},
+		{
 			Type: pulumi.String("azure-native:network/v20230901:DefaultAdminRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20231101:AdminRule"),
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20231101:DefaultAdminRule"),
 		},
 		{
+			Type: pulumi.String("azure-native:network/v20240101:AdminRule"),
+		},
+		{
 			Type: pulumi.String("azure-native:network/v20240101:DefaultAdminRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:network/v20240101preview:AdminRule"),
 		},
 		{
 			Type: pulumi.String("azure-native:network/v20240101preview:DefaultAdminRule"),
 		},
 		{
+			Type: pulumi.String("azure-native:network/v20240301:AdminRule"),
+		},
+		{
 			Type: pulumi.String("azure-native:network/v20240301:DefaultAdminRule"),
 		},
 		{
+			Type: pulumi.String("azure-native:network/v20240501:AdminRule"),
+		},
+		{
 			Type: pulumi.String("azure-native:network/v20240501:DefaultAdminRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:network:AdminRule"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -246,6 +287,11 @@ func (o DefaultAdminRuleOutput) ToDefaultAdminRuleOutputWithContext(ctx context.
 // Indicates the access allowed for this particular rule
 func (o DefaultAdminRuleOutput) Access() pulumi.StringOutput {
 	return o.ApplyT(func(v *DefaultAdminRule) pulumi.StringOutput { return v.Access }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o DefaultAdminRuleOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DefaultAdminRule) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A description for this rule. Restricted to 140 chars.

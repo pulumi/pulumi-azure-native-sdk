@@ -13,12 +13,12 @@ import (
 )
 
 // Tag-operation link details.
-// Azure REST API version: 2022-09-01-preview.
-//
-// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
+// Azure REST API version: 2022-09-01-preview. Prior API version in Azure Native 2.x: 2022-09-01-preview.
 type WorkspaceTagOperationLink struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Full resource Id of an API operation.
@@ -168,6 +168,11 @@ func (o WorkspaceTagOperationLinkOutput) ToWorkspaceTagOperationLinkOutput() Wor
 
 func (o WorkspaceTagOperationLinkOutput) ToWorkspaceTagOperationLinkOutputWithContext(ctx context.Context) WorkspaceTagOperationLinkOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o WorkspaceTagOperationLinkOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkspaceTagOperationLink) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

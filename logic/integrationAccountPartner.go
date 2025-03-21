@@ -13,12 +13,12 @@ import (
 )
 
 // The integration account partner.
-// Azure REST API version: 2019-05-01. Prior API version in Azure Native 1.x: 2019-05-01.
-//
-// Other available API versions: 2015-08-01-preview.
+// Azure REST API version: 2019-05-01. Prior API version in Azure Native 2.x: 2019-05-01.
 type IntegrationAccountPartner struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The changed time.
 	ChangedTime pulumi.StringOutput `pulumi:"changedTime"`
 	// The partner content.
@@ -64,6 +64,9 @@ func NewIntegrationAccountPartner(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:logic/v20160601:IntegrationAccountPartner"),
+		},
+		{
+			Type: pulumi.String("azure-native:logic/v20160601:Partner"),
 		},
 		{
 			Type: pulumi.String("azure-native:logic/v20180701preview:IntegrationAccountPartner"),
@@ -179,6 +182,11 @@ func (o IntegrationAccountPartnerOutput) ToIntegrationAccountPartnerOutput() Int
 
 func (o IntegrationAccountPartnerOutput) ToIntegrationAccountPartnerOutputWithContext(ctx context.Context) IntegrationAccountPartnerOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o IntegrationAccountPartnerOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *IntegrationAccountPartner) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The changed time.

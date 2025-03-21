@@ -34,6 +34,8 @@ type LookupTriggerArgs struct {
 
 // Trigger resource type.
 type LookupTriggerResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Etag identifies change in the resource.
 	Etag string `pulumi:"etag"`
 	// The resource identifier.
@@ -81,6 +83,11 @@ func (o LookupTriggerResultOutput) ToLookupTriggerResultOutput() LookupTriggerRe
 
 func (o LookupTriggerResultOutput) ToLookupTriggerResultOutputWithContext(ctx context.Context) LookupTriggerResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupTriggerResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTriggerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Etag identifies change in the resource.

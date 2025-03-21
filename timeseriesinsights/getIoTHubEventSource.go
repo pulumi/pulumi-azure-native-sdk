@@ -34,6 +34,8 @@ type LookupIoTHubEventSourceArgs struct {
 
 // An event source that receives its data from an Azure IoTHub.
 type LookupIoTHubEventSourceResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The name of the iot hub's consumer group that holds the partitions from which events will be read.
 	ConsumerGroupName string `pulumi:"consumerGroupName"`
 	// The time the resource was created.
@@ -102,6 +104,11 @@ func (o LookupIoTHubEventSourceResultOutput) ToLookupIoTHubEventSourceResultOutp
 
 func (o LookupIoTHubEventSourceResultOutput) ToLookupIoTHubEventSourceResultOutputWithContext(ctx context.Context) LookupIoTHubEventSourceResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupIoTHubEventSourceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIoTHubEventSourceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the iot hub's consumer group that holds the partitions from which events will be read.

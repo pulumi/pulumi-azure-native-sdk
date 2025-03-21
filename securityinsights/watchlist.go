@@ -13,13 +13,13 @@ import (
 )
 
 // Represents a Watchlist in Azure Security Insights.
-// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2021-03-01-preview.
-//
-// Other available API versions: 2019-01-01-preview, 2021-03-01-preview, 2021-04-01, 2021-10-01-preview, 2022-01-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-11-01, 2023-12-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-09-01, 2024-10-01-preview, 2025-01-01-preview.
+// Azure REST API version: 2024-09-01. Prior API version in Azure Native 2.x: 2023-02-01.
 type Watchlist struct {
 	pulumi.CustomResourceState
 
-	// The content type of the raw content. For now, only text/csv is valid
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// The content type of the raw content. Example : text/csv or text/tsv
 	ContentType pulumi.StringPtrOutput `pulumi:"contentType"`
 	// The time the watchlist was created
 	Created pulumi.StringPtrOutput `pulumi:"created"`
@@ -41,16 +41,18 @@ type Watchlist struct {
 	Labels pulumi.StringArrayOutput `pulumi:"labels"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The number of lines in a csv content to skip before the header
+	// The number of lines in a csv/tsv content to skip before the header
 	NumberOfLinesToSkip pulumi.IntPtrOutput `pulumi:"numberOfLinesToSkip"`
 	// The provider of the watchlist
 	Provider pulumi.StringOutput `pulumi:"provider"`
-	// The raw content that represents to watchlist items to create. Example : This line will be skipped
-	// header1,header2
-	// value1,value2
+	// Describes provisioning state
+	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// The raw content that represents to watchlist items to create. In case of csv/tsv content type, it's the content of the file that will parsed by the endpoint
 	RawContent pulumi.StringPtrOutput `pulumi:"rawContent"`
-	// The source of the watchlist
-	Source pulumi.StringOutput `pulumi:"source"`
+	// The filename of the watchlist, called 'source'
+	Source pulumi.StringPtrOutput `pulumi:"source"`
+	// The sourceType of the watchlist
+	SourceType pulumi.StringPtrOutput `pulumi:"sourceType"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The tenantId where the watchlist belongs to
@@ -89,9 +91,6 @@ func NewWatchlist(ctx *pulumi.Context,
 	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
-	}
-	if args.Source == nil {
-		return nil, errors.New("invalid value for required argument 'Source'")
 	}
 	if args.WorkspaceName == nil {
 		return nil, errors.New("invalid value for required argument 'WorkspaceName'")
@@ -205,6 +204,9 @@ func NewWatchlist(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20250101preview:Watchlist"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20250301:Watchlist"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -240,7 +242,7 @@ func (WatchlistState) ElementType() reflect.Type {
 }
 
 type watchlistArgs struct {
-	// The content type of the raw content. For now, only text/csv is valid
+	// The content type of the raw content. Example : text/csv or text/tsv
 	ContentType *string `pulumi:"contentType"`
 	// The time the watchlist was created
 	Created *string `pulumi:"created"`
@@ -258,18 +260,18 @@ type watchlistArgs struct {
 	ItemsSearchKey string `pulumi:"itemsSearchKey"`
 	// List of labels relevant to this watchlist
 	Labels []string `pulumi:"labels"`
-	// The number of lines in a csv content to skip before the header
+	// The number of lines in a csv/tsv content to skip before the header
 	NumberOfLinesToSkip *int `pulumi:"numberOfLinesToSkip"`
 	// The provider of the watchlist
 	Provider string `pulumi:"provider"`
-	// The raw content that represents to watchlist items to create. Example : This line will be skipped
-	// header1,header2
-	// value1,value2
+	// The raw content that represents to watchlist items to create. In case of csv/tsv content type, it's the content of the file that will parsed by the endpoint
 	RawContent *string `pulumi:"rawContent"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// The source of the watchlist
-	Source string `pulumi:"source"`
+	// The filename of the watchlist, called 'source'
+	Source *string `pulumi:"source"`
+	// The sourceType of the watchlist
+	SourceType *string `pulumi:"sourceType"`
 	// The tenantId where the watchlist belongs to
 	TenantId *string `pulumi:"tenantId"`
 	// The last time the watchlist was updated
@@ -290,7 +292,7 @@ type watchlistArgs struct {
 
 // The set of arguments for constructing a Watchlist resource.
 type WatchlistArgs struct {
-	// The content type of the raw content. For now, only text/csv is valid
+	// The content type of the raw content. Example : text/csv or text/tsv
 	ContentType pulumi.StringPtrInput
 	// The time the watchlist was created
 	Created pulumi.StringPtrInput
@@ -308,18 +310,18 @@ type WatchlistArgs struct {
 	ItemsSearchKey pulumi.StringInput
 	// List of labels relevant to this watchlist
 	Labels pulumi.StringArrayInput
-	// The number of lines in a csv content to skip before the header
+	// The number of lines in a csv/tsv content to skip before the header
 	NumberOfLinesToSkip pulumi.IntPtrInput
 	// The provider of the watchlist
 	Provider pulumi.StringInput
-	// The raw content that represents to watchlist items to create. Example : This line will be skipped
-	// header1,header2
-	// value1,value2
+	// The raw content that represents to watchlist items to create. In case of csv/tsv content type, it's the content of the file that will parsed by the endpoint
 	RawContent pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
-	// The source of the watchlist
-	Source pulumi.StringInput
+	// The filename of the watchlist, called 'source'
+	Source pulumi.StringPtrInput
+	// The sourceType of the watchlist
+	SourceType pulumi.StringPtrInput
 	// The tenantId where the watchlist belongs to
 	TenantId pulumi.StringPtrInput
 	// The last time the watchlist was updated
@@ -375,7 +377,12 @@ func (o WatchlistOutput) ToWatchlistOutputWithContext(ctx context.Context) Watch
 	return o
 }
 
-// The content type of the raw content. For now, only text/csv is valid
+// The Azure API version of the resource.
+func (o WatchlistOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Watchlist) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// The content type of the raw content. Example : text/csv or text/tsv
 func (o WatchlistOutput) ContentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Watchlist) pulumi.StringPtrOutput { return v.ContentType }).(pulumi.StringPtrOutput)
 }
@@ -430,7 +437,7 @@ func (o WatchlistOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Watchlist) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The number of lines in a csv content to skip before the header
+// The number of lines in a csv/tsv content to skip before the header
 func (o WatchlistOutput) NumberOfLinesToSkip() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Watchlist) pulumi.IntPtrOutput { return v.NumberOfLinesToSkip }).(pulumi.IntPtrOutput)
 }
@@ -440,16 +447,24 @@ func (o WatchlistOutput) Provider() pulumi.StringOutput {
 	return o.ApplyT(func(v *Watchlist) pulumi.StringOutput { return v.Provider }).(pulumi.StringOutput)
 }
 
-// The raw content that represents to watchlist items to create. Example : This line will be skipped
-// header1,header2
-// value1,value2
+// Describes provisioning state
+func (o WatchlistOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v *Watchlist) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The raw content that represents to watchlist items to create. In case of csv/tsv content type, it's the content of the file that will parsed by the endpoint
 func (o WatchlistOutput) RawContent() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Watchlist) pulumi.StringPtrOutput { return v.RawContent }).(pulumi.StringPtrOutput)
 }
 
-// The source of the watchlist
-func (o WatchlistOutput) Source() pulumi.StringOutput {
-	return o.ApplyT(func(v *Watchlist) pulumi.StringOutput { return v.Source }).(pulumi.StringOutput)
+// The filename of the watchlist, called 'source'
+func (o WatchlistOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Watchlist) pulumi.StringPtrOutput { return v.Source }).(pulumi.StringPtrOutput)
+}
+
+// The sourceType of the watchlist
+func (o WatchlistOutput) SourceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Watchlist) pulumi.StringPtrOutput { return v.SourceType }).(pulumi.StringPtrOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

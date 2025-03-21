@@ -32,6 +32,8 @@ type LookupPeeringArgs struct {
 
 // Peering is a logical representation of a set of connections to the Microsoft Cloud Edge at a location.
 type LookupPeeringResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The properties that define a direct peering.
 	Direct *PeeringPropertiesDirectResponse `pulumi:"direct"`
 	// The properties that define an exchange peering.
@@ -89,6 +91,11 @@ func (o LookupPeeringResultOutput) ToLookupPeeringResultOutput() LookupPeeringRe
 
 func (o LookupPeeringResultOutput) ToLookupPeeringResultOutputWithContext(ctx context.Context) LookupPeeringResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupPeeringResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPeeringResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The properties that define a direct peering.

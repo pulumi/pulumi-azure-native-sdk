@@ -13,10 +13,12 @@ import (
 )
 
 // Subscription feature registration details
-// Azure REST API version: 2021-07-01. Prior API version in Azure Native 1.x: 2021-07-01.
+// Azure REST API version: 2021-07-01. Prior API version in Azure Native 2.x: 2021-07-01.
 type SubscriptionFeatureRegistration struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Azure resource name.
 	Name       pulumi.StringOutput                                     `pulumi:"name"`
 	Properties SubscriptionFeatureRegistrationResponsePropertiesOutput `pulumi:"properties"`
@@ -129,6 +131,11 @@ func (o SubscriptionFeatureRegistrationOutput) ToSubscriptionFeatureRegistration
 
 func (o SubscriptionFeatureRegistrationOutput) ToSubscriptionFeatureRegistrationOutputWithContext(ctx context.Context) SubscriptionFeatureRegistrationOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o SubscriptionFeatureRegistrationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SubscriptionFeatureRegistration) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Azure resource name.

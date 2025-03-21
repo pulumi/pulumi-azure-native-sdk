@@ -38,6 +38,8 @@ type LookupBrokerAuthorizationArgs struct {
 type LookupBrokerAuthorizationResult struct {
 	// The list of authorization policies supported by the Authorization Resource.
 	AuthorizationPolicies AuthorizationConfigResponse `pulumi:"authorizationPolicies"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Extended Location
 	ExtendedLocation ExtendedLocationPropertyResponse `pulumi:"extendedLocation"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -110,6 +112,11 @@ func (o LookupBrokerAuthorizationResultOutput) ToLookupBrokerAuthorizationResult
 // The list of authorization policies supported by the Authorization Resource.
 func (o LookupBrokerAuthorizationResultOutput) AuthorizationPolicies() AuthorizationConfigResponseOutput {
 	return o.ApplyT(func(v LookupBrokerAuthorizationResult) AuthorizationConfigResponse { return v.AuthorizationPolicies }).(AuthorizationConfigResponseOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupBrokerAuthorizationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBrokerAuthorizationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Extended Location

@@ -13,9 +13,7 @@ import (
 
 // Provides the details of the backed up item. This is an asynchronous operation. To know the status of the operation,
 // call the GetItemOperationResult API.
-// Azure REST API version: 2023-04-01.
-//
-// Other available API versions: 2023-06-01, 2023-08-01, 2024-01-01, 2024-02-01, 2024-04-01, 2024-04-30-preview, 2024-07-30-preview, 2024-10-01.
+// Azure REST API version: 2024-10-01.
 func LookupProtectedItem(ctx *pulumi.Context, args *LookupProtectedItemArgs, opts ...pulumi.InvokeOption) (*LookupProtectedItemResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupProtectedItemResult
@@ -43,6 +41,8 @@ type LookupProtectedItemArgs struct {
 
 // Base class for backup items.
 type LookupProtectedItemResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Optional ETag.
 	ETag *string `pulumi:"eTag"`
 	// Resource Id represents the complete path to the resource.
@@ -100,6 +100,11 @@ func (o LookupProtectedItemResultOutput) ToLookupProtectedItemResultOutput() Loo
 
 func (o LookupProtectedItemResultOutput) ToLookupProtectedItemResultOutputWithContext(ctx context.Context) LookupProtectedItemResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupProtectedItemResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProtectedItemResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Optional ETag.

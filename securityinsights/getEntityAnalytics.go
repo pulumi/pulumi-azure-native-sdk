@@ -12,7 +12,7 @@ import (
 )
 
 // Gets a setting.
-// Azure REST API version: 2023-06-01-preview.
+// Azure REST API version: 2025-01-01-preview.
 func LookupEntityAnalytics(ctx *pulumi.Context, args *LookupEntityAnalyticsArgs, opts ...pulumi.InvokeOption) (*LookupEntityAnalyticsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupEntityAnalyticsResult
@@ -34,6 +34,8 @@ type LookupEntityAnalyticsArgs struct {
 
 // Settings with single toggle.
 type LookupEntityAnalyticsResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The relevant entity providers that are synced
 	EntityProviders []string `pulumi:"entityProviders"`
 	// Etag of the azure resource
@@ -86,6 +88,11 @@ func (o LookupEntityAnalyticsResultOutput) ToLookupEntityAnalyticsResultOutput()
 
 func (o LookupEntityAnalyticsResultOutput) ToLookupEntityAnalyticsResultOutputWithContext(ctx context.Context) LookupEntityAnalyticsResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupEntityAnalyticsResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEntityAnalyticsResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The relevant entity providers that are synced

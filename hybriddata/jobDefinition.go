@@ -13,10 +13,12 @@ import (
 )
 
 // Job Definition.
-// Azure REST API version: 2019-06-01. Prior API version in Azure Native 1.x: 2019-06-01.
+// Azure REST API version: 2019-06-01. Prior API version in Azure Native 2.x: 2019-06-01.
 type JobDefinition struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// List of customer secrets containing a key identifier and key value. The key identifier is a way for the specific data source to understand the key. Value contains customer secret encrypted by the encryptionKeys.
 	CustomerSecrets CustomerSecretResponseArrayOutput `pulumi:"customerSecrets"`
 	// A generic json used differently by each data service type.
@@ -204,6 +206,11 @@ func (o JobDefinitionOutput) ToJobDefinitionOutput() JobDefinitionOutput {
 
 func (o JobDefinitionOutput) ToJobDefinitionOutputWithContext(ctx context.Context) JobDefinitionOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o JobDefinitionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *JobDefinition) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // List of customer secrets containing a key identifier and key value. The key identifier is a way for the specific data source to understand the key. Value contains customer secret encrypted by the encryptionKeys.

@@ -13,9 +13,7 @@ import (
 )
 
 // A SQL Server availability group listener.
-// Azure REST API version: 2022-02-01. Prior API version in Azure Native 1.x: 2017-03-01-preview.
-//
-// Other available API versions: 2023-01-01-preview, 2023-10-01.
+// Azure REST API version: 2023-10-01. Prior API version in Azure Native 2.x: 2022-02-01.
 type AvailabilityGroupListener struct {
 	pulumi.CustomResourceState
 
@@ -23,6 +21,8 @@ type AvailabilityGroupListener struct {
 	AvailabilityGroupConfiguration AgConfigurationResponsePtrOutput `pulumi:"availabilityGroupConfiguration"`
 	// Name of the availability group.
 	AvailabilityGroupName pulumi.StringPtrOutput `pulumi:"availabilityGroupName"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Create a default availability group if it does not exist.
 	CreateDefaultAvailabilityGroupIfNotExist pulumi.BoolPtrOutput `pulumi:"createDefaultAvailabilityGroupIfNotExist"`
 	// List of load balancer configurations for an availability group listener.
@@ -203,6 +203,11 @@ func (o AvailabilityGroupListenerOutput) AvailabilityGroupConfiguration() AgConf
 // Name of the availability group.
 func (o AvailabilityGroupListenerOutput) AvailabilityGroupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AvailabilityGroupListener) pulumi.StringPtrOutput { return v.AvailabilityGroupName }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o AvailabilityGroupListenerOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *AvailabilityGroupListener) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Create a default availability group if it does not exist.

@@ -13,14 +13,14 @@ import (
 )
 
 // Linker of source and target resource
-// Azure REST API version: 2022-11-01-preview.
-//
-// Other available API versions: 2023-04-01-preview, 2024-04-01, 2024-07-01-preview.
+// Azure REST API version: 2024-04-01. Prior API version in Azure Native 2.x: 2022-11-01-preview.
 type Connector struct {
 	pulumi.CustomResourceState
 
 	// The authentication type.
 	AuthInfo pulumi.AnyOutput `pulumi:"authInfo"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The application client type
 	ClientType pulumi.StringPtrOutput `pulumi:"clientType"`
 	// The connection information consumed by applications, including secrets, connection strings.
@@ -200,6 +200,11 @@ func (o ConnectorOutput) ToConnectorOutputWithContext(ctx context.Context) Conne
 // The authentication type.
 func (o ConnectorOutput) AuthInfo() pulumi.AnyOutput {
 	return o.ApplyT(func(v *Connector) pulumi.AnyOutput { return v.AuthInfo }).(pulumi.AnyOutput)
+}
+
+// The Azure API version of the resource.
+func (o ConnectorOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connector) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The application client type

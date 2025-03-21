@@ -13,12 +13,12 @@ import (
 )
 
 // The Clouds resource definition.
-// Azure REST API version: 2022-05-21-preview. Prior API version in Azure Native 1.x: 2020-06-05-preview.
-//
-// Other available API versions: 2023-04-01-preview, 2023-10-07, 2024-06-01.
+// Azure REST API version: 2023-04-01-preview. Prior API version in Azure Native 2.x: 2022-05-21-preview.
 type Cloud struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Capacity of the cloud.
 	CloudCapacity CloudCapacityResponseOutput `pulumi:"cloudCapacity"`
 	// Name of the cloud in VMMServer.
@@ -184,6 +184,11 @@ func (o CloudOutput) ToCloudOutput() CloudOutput {
 
 func (o CloudOutput) ToCloudOutputWithContext(ctx context.Context) CloudOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o CloudOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cloud) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Capacity of the cloud.

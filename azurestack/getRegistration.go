@@ -13,8 +13,6 @@ import (
 
 // Returns the properties of an Azure Stack registration.
 // Azure REST API version: 2022-06-01.
-//
-// Other available API versions: 2020-06-01-preview.
 func LookupRegistration(ctx *pulumi.Context, args *LookupRegistrationArgs, opts ...pulumi.InvokeOption) (*LookupRegistrationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRegistrationResult
@@ -34,6 +32,8 @@ type LookupRegistrationArgs struct {
 
 // Registration information.
 type LookupRegistrationResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Specifies the billing mode for the Azure Stack registration.
 	BillingModel *string `pulumi:"billingModel"`
 	// The identifier of the registered Azure Stack.
@@ -87,6 +87,11 @@ func (o LookupRegistrationResultOutput) ToLookupRegistrationResultOutput() Looku
 
 func (o LookupRegistrationResultOutput) ToLookupRegistrationResultOutputWithContext(ctx context.Context) LookupRegistrationResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupRegistrationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegistrationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Specifies the billing mode for the Azure Stack registration.

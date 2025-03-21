@@ -13,8 +13,6 @@ import (
 
 // Get a LoadBalancer
 // Azure REST API version: 2024-03-01.
-//
-// Other available API versions: 2023-10-01-preview.
 func LookupLoadBalancer(ctx *pulumi.Context, args *LookupLoadBalancerArgs, opts ...pulumi.InvokeOption) (*LookupLoadBalancerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupLoadBalancerResult
@@ -38,6 +36,8 @@ type LookupLoadBalancerResult struct {
 	Addresses []string `pulumi:"addresses"`
 	// Advertise Mode
 	AdvertiseMode string `pulumi:"advertiseMode"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The list of BGP peers it should advertise to. Null or empty means to advertise to all peers.
 	BgpPeers []string `pulumi:"bgpPeers"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -97,6 +97,11 @@ func (o LookupLoadBalancerResultOutput) Addresses() pulumi.StringArrayOutput {
 // Advertise Mode
 func (o LookupLoadBalancerResultOutput) AdvertiseMode() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLoadBalancerResult) string { return v.AdvertiseMode }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupLoadBalancerResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLoadBalancerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The list of BGP peers it should advertise to. Null or empty means to advertise to all peers.

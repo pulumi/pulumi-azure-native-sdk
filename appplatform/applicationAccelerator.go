@@ -13,12 +13,12 @@ import (
 )
 
 // Application accelerator resource
-// Azure REST API version: 2023-05-01-preview.
-//
-// Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01, 2024-01-01-preview, 2024-05-01-preview.
+// Azure REST API version: 2024-01-01-preview. Prior API version in Azure Native 2.x: 2023-05-01-preview.
 type ApplicationAccelerator struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Application accelerator properties payload
@@ -170,6 +170,11 @@ func (o ApplicationAcceleratorOutput) ToApplicationAcceleratorOutput() Applicati
 
 func (o ApplicationAcceleratorOutput) ToApplicationAcceleratorOutputWithContext(ctx context.Context) ApplicationAcceleratorOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ApplicationAcceleratorOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApplicationAccelerator) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource.

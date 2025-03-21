@@ -12,9 +12,7 @@ import (
 )
 
 // Get the EmailService and its properties.
-// Azure REST API version: 2023-03-31.
-//
-// Other available API versions: 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2024-09-01-preview.
+// Azure REST API version: 2023-06-01-preview.
 func LookupEmailService(ctx *pulumi.Context, args *LookupEmailServiceArgs, opts ...pulumi.InvokeOption) (*LookupEmailServiceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupEmailServiceResult
@@ -34,6 +32,8 @@ type LookupEmailServiceArgs struct {
 
 // A class representing an EmailService resource.
 type LookupEmailServiceResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The location where the email service stores its data at rest.
 	DataLocation string `pulumi:"dataLocation"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -85,6 +85,11 @@ func (o LookupEmailServiceResultOutput) ToLookupEmailServiceResultOutput() Looku
 
 func (o LookupEmailServiceResultOutput) ToLookupEmailServiceResultOutputWithContext(ctx context.Context) LookupEmailServiceResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupEmailServiceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEmailServiceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The location where the email service stores its data at rest.

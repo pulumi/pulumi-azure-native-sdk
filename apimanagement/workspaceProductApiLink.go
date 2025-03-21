@@ -13,14 +13,14 @@ import (
 )
 
 // Product-API link details.
-// Azure REST API version: 2022-09-01-preview.
-//
-// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
+// Azure REST API version: 2022-09-01-preview. Prior API version in Azure Native 2.x: 2022-09-01-preview.
 type WorkspaceProductApiLink struct {
 	pulumi.CustomResourceState
 
 	// Full resource Id of an API.
 	ApiId pulumi.StringOutput `pulumi:"apiId"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -173,6 +173,11 @@ func (o WorkspaceProductApiLinkOutput) ToWorkspaceProductApiLinkOutputWithContex
 // Full resource Id of an API.
 func (o WorkspaceProductApiLinkOutput) ApiId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkspaceProductApiLink) pulumi.StringOutput { return v.ApiId }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o WorkspaceProductApiLinkOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkspaceProductApiLink) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

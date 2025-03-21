@@ -38,6 +38,8 @@ type LookupAssetResult struct {
 	AlternateId *string `pulumi:"alternateId"`
 	// The Asset ID.
 	AssetId string `pulumi:"assetId"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The name of the asset blob container.
 	Container *string `pulumi:"container"`
 	// The creation date of the Asset.
@@ -107,6 +109,11 @@ func (o LookupAssetResultOutput) AlternateId() pulumi.StringPtrOutput {
 // The Asset ID.
 func (o LookupAssetResultOutput) AssetId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAssetResult) string { return v.AssetId }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupAssetResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAssetResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the asset blob container.

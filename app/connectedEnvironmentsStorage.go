@@ -13,12 +13,12 @@ import (
 )
 
 // Storage resource for connectedEnvironment.
-// Azure REST API version: 2022-10-01.
-//
-// Other available API versions: 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview.
+// Azure REST API version: 2024-03-01. Prior API version in Azure Native 2.x: 2022-10-01.
 type ConnectedEnvironmentsStorage struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Storage properties
@@ -171,6 +171,11 @@ func (o ConnectedEnvironmentsStorageOutput) ToConnectedEnvironmentsStorageOutput
 
 func (o ConnectedEnvironmentsStorageOutput) ToConnectedEnvironmentsStorageOutputWithContext(ctx context.Context) ConnectedEnvironmentsStorageOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ConnectedEnvironmentsStorageOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConnectedEnvironmentsStorage) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

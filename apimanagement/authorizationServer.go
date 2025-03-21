@@ -13,9 +13,7 @@ import (
 )
 
 // External OAuth authorization server settings.
-// Azure REST API version: 2022-08-01. Prior API version in Azure Native 1.x: 2020-12-01.
-//
-// Other available API versions: 2016-10-10, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
+// Azure REST API version: 2022-09-01-preview. Prior API version in Azure Native 2.x: 2022-08-01.
 type AuthorizationServer struct {
 	pulumi.CustomResourceState
 
@@ -23,6 +21,8 @@ type AuthorizationServer struct {
 	AuthorizationEndpoint pulumi.StringOutput `pulumi:"authorizationEndpoint"`
 	// HTTP verbs supported by the authorization endpoint. GET must be always present. POST is optional.
 	AuthorizationMethods pulumi.StringArrayOutput `pulumi:"authorizationMethods"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Specifies the mechanism by which access token is passed to the API.
 	BearerTokenSendingMethods pulumi.StringArrayOutput `pulumi:"bearerTokenSendingMethods"`
 	// Method of authentication supported by the token endpoint of this authorization server. Possible values are Basic and/or Body. When Body is specified, client credentials and other parameters are passed within the request body in the application/x-www-form-urlencoded format.
@@ -326,6 +326,11 @@ func (o AuthorizationServerOutput) AuthorizationEndpoint() pulumi.StringOutput {
 // HTTP verbs supported by the authorization endpoint. GET must be always present. POST is optional.
 func (o AuthorizationServerOutput) AuthorizationMethods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AuthorizationServer) pulumi.StringArrayOutput { return v.AuthorizationMethods }).(pulumi.StringArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o AuthorizationServerOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthorizationServer) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Specifies the mechanism by which access token is passed to the API.

@@ -13,12 +13,15 @@ import (
 )
 
 // Represents an instance of a orchestrator.
-// Azure REST API version: 2021-03-15. Prior API version in Azure Native 1.x: 2021-03-15.
-//
-// Other available API versions: 2023-05-18-preview, 2023-06-27-preview.
+// Azure REST API version: 2023-06-27-preview. Prior API version in Azure Native 2.x: 2021-03-15.
 type DelegatedSubnetServiceDetails struct {
 	pulumi.CustomResourceState
 
+	// Defines prefix size of CIDR blocks allocated to nodes in VnetBlock Mode.
+	// Delegated subnet's prefix size should be smaller than this by a minimum of 3.
+	AllocationBlockPrefixSize pulumi.IntPtrOutput `pulumi:"allocationBlockPrefixSize"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Properties of the controller.
 	ControllerDetails ControllerDetailsResponsePtrOutput `pulumi:"controllerDetails"`
 	// Location of the resource.
@@ -95,6 +98,9 @@ func (DelegatedSubnetServiceDetailsState) ElementType() reflect.Type {
 }
 
 type delegatedSubnetServiceDetailsArgs struct {
+	// Defines prefix size of CIDR blocks allocated to nodes in VnetBlock Mode.
+	// Delegated subnet's prefix size should be smaller than this by a minimum of 3.
+	AllocationBlockPrefixSize *int `pulumi:"allocationBlockPrefixSize"`
 	// Properties of the controller.
 	ControllerDetails *ControllerDetailsType `pulumi:"controllerDetails"`
 	// Location of the resource.
@@ -111,6 +117,9 @@ type delegatedSubnetServiceDetailsArgs struct {
 
 // The set of arguments for constructing a DelegatedSubnetServiceDetails resource.
 type DelegatedSubnetServiceDetailsArgs struct {
+	// Defines prefix size of CIDR blocks allocated to nodes in VnetBlock Mode.
+	// Delegated subnet's prefix size should be smaller than this by a minimum of 3.
+	AllocationBlockPrefixSize pulumi.IntPtrInput
 	// Properties of the controller.
 	ControllerDetails ControllerDetailsTypePtrInput
 	// Location of the resource.
@@ -160,6 +169,17 @@ func (o DelegatedSubnetServiceDetailsOutput) ToDelegatedSubnetServiceDetailsOutp
 
 func (o DelegatedSubnetServiceDetailsOutput) ToDelegatedSubnetServiceDetailsOutputWithContext(ctx context.Context) DelegatedSubnetServiceDetailsOutput {
 	return o
+}
+
+// Defines prefix size of CIDR blocks allocated to nodes in VnetBlock Mode.
+// Delegated subnet's prefix size should be smaller than this by a minimum of 3.
+func (o DelegatedSubnetServiceDetailsOutput) AllocationBlockPrefixSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DelegatedSubnetServiceDetails) pulumi.IntPtrOutput { return v.AllocationBlockPrefixSize }).(pulumi.IntPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o DelegatedSubnetServiceDetailsOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DelegatedSubnetServiceDetails) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Properties of the controller.

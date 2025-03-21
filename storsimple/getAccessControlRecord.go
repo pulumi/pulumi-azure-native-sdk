@@ -34,6 +34,8 @@ type LookupAccessControlRecordArgs struct {
 
 // The access control record.
 type LookupAccessControlRecordResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The path ID that uniquely identifies the object.
 	Id string `pulumi:"id"`
 	// The iSCSI initiator name (IQN).
@@ -83,6 +85,11 @@ func (o LookupAccessControlRecordResultOutput) ToLookupAccessControlRecordResult
 
 func (o LookupAccessControlRecordResultOutput) ToLookupAccessControlRecordResultOutputWithContext(ctx context.Context) LookupAccessControlRecordResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupAccessControlRecordResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccessControlRecordResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The path ID that uniquely identifies the object.

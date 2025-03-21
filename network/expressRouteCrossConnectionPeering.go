@@ -13,14 +13,14 @@ import (
 )
 
 // Peering in an ExpressRoute Cross Connection resource.
-// Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2020-11-01.
-//
-// Other available API versions: 2019-08-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Azure REST API version: 2024-05-01. Prior API version in Azure Native 2.x: 2023-02-01.
 type ExpressRouteCrossConnectionPeering struct {
 	pulumi.CustomResourceState
 
 	// The Azure ASN.
 	AzureASN pulumi.IntOutput `pulumi:"azureASN"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The GatewayManager Etag.
@@ -333,6 +333,11 @@ func (o ExpressRouteCrossConnectionPeeringOutput) ToExpressRouteCrossConnectionP
 // The Azure ASN.
 func (o ExpressRouteCrossConnectionPeeringOutput) AzureASN() pulumi.IntOutput {
 	return o.ApplyT(func(v *ExpressRouteCrossConnectionPeering) pulumi.IntOutput { return v.AzureASN }).(pulumi.IntOutput)
+}
+
+// The Azure API version of the resource.
+func (o ExpressRouteCrossConnectionPeeringOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ExpressRouteCrossConnectionPeering) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A unique read-only string that changes whenever the resource is updated.

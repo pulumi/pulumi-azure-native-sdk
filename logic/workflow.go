@@ -13,9 +13,7 @@ import (
 )
 
 // The workflow type.
-// Azure REST API version: 2019-05-01. Prior API version in Azure Native 1.x: 2019-05-01.
-//
-// Other available API versions: 2015-02-01-preview, 2016-06-01, 2018-07-01-preview.
+// Azure REST API version: 2019-05-01. Prior API version in Azure Native 2.x: 2019-05-01.
 type Workflow struct {
 	pulumi.CustomResourceState
 
@@ -23,6 +21,8 @@ type Workflow struct {
 	AccessControl FlowAccessControlConfigurationResponsePtrOutput `pulumi:"accessControl"`
 	// Gets the access endpoint.
 	AccessEndpoint pulumi.StringOutput `pulumi:"accessEndpoint"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets the changed time.
 	ChangedTime pulumi.StringOutput `pulumi:"changedTime"`
 	// Gets the created time.
@@ -214,6 +214,11 @@ func (o WorkflowOutput) AccessControl() FlowAccessControlConfigurationResponsePt
 // Gets the access endpoint.
 func (o WorkflowOutput) AccessEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workflow) pulumi.StringOutput { return v.AccessEndpoint }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o WorkflowOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Workflow) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets the changed time.

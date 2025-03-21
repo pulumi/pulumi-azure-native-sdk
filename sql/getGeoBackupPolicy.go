@@ -13,8 +13,6 @@ import (
 
 // Gets a Geo backup policy for the given database resource.
 // Azure REST API version: 2021-11-01.
-//
-// Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview.
 func LookupGeoBackupPolicy(ctx *pulumi.Context, args *LookupGeoBackupPolicyArgs, opts ...pulumi.InvokeOption) (*LookupGeoBackupPolicyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGeoBackupPolicyResult
@@ -38,6 +36,8 @@ type LookupGeoBackupPolicyArgs struct {
 
 // A Geo backup policy.
 type LookupGeoBackupPolicyResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource ID.
 	Id string `pulumi:"id"`
 	// Kind of geo backup policy.  This is metadata used for the Azure portal experience.
@@ -91,6 +91,11 @@ func (o LookupGeoBackupPolicyResultOutput) ToLookupGeoBackupPolicyResultOutput()
 
 func (o LookupGeoBackupPolicyResultOutput) ToLookupGeoBackupPolicyResultOutputWithContext(ctx context.Context) LookupGeoBackupPolicyResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupGeoBackupPolicyResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGeoBackupPolicyResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource ID.

@@ -12,9 +12,7 @@ import (
 )
 
 // Gets the specified private endpoint connection on application gateway.
-// Azure REST API version: 2023-02-01.
-//
-// Other available API versions: 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Azure REST API version: 2024-05-01.
 func LookupApplicationGatewayPrivateEndpointConnection(ctx *pulumi.Context, args *LookupApplicationGatewayPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupApplicationGatewayPrivateEndpointConnectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupApplicationGatewayPrivateEndpointConnectionResult
@@ -36,6 +34,8 @@ type LookupApplicationGatewayPrivateEndpointConnectionArgs struct {
 
 // Private Endpoint connection on an application gateway.
 type LookupApplicationGatewayPrivateEndpointConnectionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag string `pulumi:"etag"`
 	// Resource ID.
@@ -99,6 +99,11 @@ func (o LookupApplicationGatewayPrivateEndpointConnectionResultOutput) ToLookupA
 
 func (o LookupApplicationGatewayPrivateEndpointConnectionResultOutput) ToLookupApplicationGatewayPrivateEndpointConnectionResultOutputWithContext(ctx context.Context) LookupApplicationGatewayPrivateEndpointConnectionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupApplicationGatewayPrivateEndpointConnectionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApplicationGatewayPrivateEndpointConnectionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A unique read-only string that changes whenever the resource is updated.

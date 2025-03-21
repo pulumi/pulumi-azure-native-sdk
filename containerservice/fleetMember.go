@@ -13,12 +13,12 @@ import (
 )
 
 // A member of the Fleet. It contains a reference to an existing Kubernetes cluster on Azure.
-// Azure REST API version: 2023-03-15-preview.
-//
-// Other available API versions: 2022-07-02-preview, 2023-06-15-preview, 2023-08-15-preview, 2023-10-15, 2024-02-02-preview, 2024-04-01, 2024-05-02-preview.
+// Azure REST API version: 2024-05-02-preview. Prior API version in Azure Native 2.x: 2023-03-15-preview.
 type FleetMember struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The ARM resource id of the cluster that joins the Fleet. Must be a valid Azure resource id. e.g.: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{clusterName}'.
 	ClusterResourceId pulumi.StringOutput `pulumi:"clusterResourceId"`
 	// If eTag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
@@ -178,6 +178,11 @@ func (o FleetMemberOutput) ToFleetMemberOutput() FleetMemberOutput {
 
 func (o FleetMemberOutput) ToFleetMemberOutputWithContext(ctx context.Context) FleetMemberOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o FleetMemberOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *FleetMember) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The ARM resource id of the cluster that joins the Fleet. Must be a valid Azure resource id. e.g.: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{clusterName}'.

@@ -13,10 +13,12 @@ import (
 )
 
 // DigitalTwinsInstance endpoint resource.
-// Azure REST API version: 2023-01-31. Prior API version in Azure Native 1.x: 2020-12-01.
+// Azure REST API version: 2023-01-31. Prior API version in Azure Native 2.x: 2023-01-31.
 type DigitalTwinsEndpoint struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Extension resource name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// DigitalTwinsInstance endpoint resource properties.
@@ -157,6 +159,11 @@ func (o DigitalTwinsEndpointOutput) ToDigitalTwinsEndpointOutput() DigitalTwinsE
 
 func (o DigitalTwinsEndpointOutput) ToDigitalTwinsEndpointOutputWithContext(ctx context.Context) DigitalTwinsEndpointOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o DigitalTwinsEndpointOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DigitalTwinsEndpoint) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Extension resource name.

@@ -13,8 +13,6 @@ import (
 
 // Gets a source control byt its identifier.
 // Azure REST API version: 2023-05-01-preview.
-//
-// Other available API versions: 2021-03-01-preview.
 func LookupSourceControl(ctx *pulumi.Context, args *LookupSourceControlArgs, opts ...pulumi.InvokeOption) (*LookupSourceControlResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSourceControlResult
@@ -36,6 +34,8 @@ type LookupSourceControlArgs struct {
 
 // Represents a SourceControl in Azure Security Insights.
 type LookupSourceControlResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Array of source control content types.
 	ContentTypes []string `pulumi:"contentTypes"`
 	// A description of the source control
@@ -99,6 +99,11 @@ func (o LookupSourceControlResultOutput) ToLookupSourceControlResultOutput() Loo
 
 func (o LookupSourceControlResultOutput) ToLookupSourceControlResultOutputWithContext(ctx context.Context) LookupSourceControlResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupSourceControlResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSourceControlResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Array of source control content types.

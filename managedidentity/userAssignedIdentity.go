@@ -13,12 +13,12 @@ import (
 )
 
 // Describes an identity resource.
-// Azure REST API version: 2023-01-31. Prior API version in Azure Native 1.x: 2018-11-30.
-//
-// Other available API versions: 2023-07-31-preview, 2024-11-30.
+// Azure REST API version: 2023-01-31. Prior API version in Azure Native 2.x: 2023-01-31.
 type UserAssignedIdentity struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The id of the app associated with the identity. This is a random generated UUID by MSI.
 	ClientId pulumi.StringOutput `pulumi:"clientId"`
 	// The geo-location where the resource lives
@@ -68,6 +68,9 @@ func NewUserAssignedIdentity(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:managedidentity/v20241130:UserAssignedIdentity"),
+		},
+		{
+			Type: pulumi.String("azure-native:managedidentity/v20250131preview:UserAssignedIdentity"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -161,6 +164,11 @@ func (o UserAssignedIdentityOutput) ToUserAssignedIdentityOutput() UserAssignedI
 
 func (o UserAssignedIdentityOutput) ToUserAssignedIdentityOutputWithContext(ctx context.Context) UserAssignedIdentityOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o UserAssignedIdentityOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *UserAssignedIdentity) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The id of the app associated with the identity. This is a random generated UUID by MSI.

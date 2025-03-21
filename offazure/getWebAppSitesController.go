@@ -12,9 +12,7 @@ import (
 )
 
 // Method to get a site.
-// Azure REST API version: 2023-06-06.
-//
-// Other available API versions: 2023-10-01-preview, 2024-05-01-preview.
+// Azure REST API version: 2023-10-01-preview.
 func LookupWebAppSitesController(ctx *pulumi.Context, args *LookupWebAppSitesControllerArgs, opts ...pulumi.InvokeOption) (*LookupWebAppSitesControllerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebAppSitesControllerResult
@@ -36,6 +34,8 @@ type LookupWebAppSitesControllerArgs struct {
 
 // WebApp site web model.
 type LookupWebAppSitesControllerResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets or sets the discovery scenario.
 	DiscoveryScenario *string `pulumi:"discoveryScenario"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -91,6 +91,11 @@ func (o LookupWebAppSitesControllerResultOutput) ToLookupWebAppSitesControllerRe
 
 func (o LookupWebAppSitesControllerResultOutput) ToLookupWebAppSitesControllerResultOutputWithContext(ctx context.Context) LookupWebAppSitesControllerResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupWebAppSitesControllerResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWebAppSitesControllerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets the discovery scenario.

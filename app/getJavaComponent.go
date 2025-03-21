@@ -12,9 +12,7 @@ import (
 )
 
 // Java Component.
-// Azure REST API version: 2023-11-02-preview.
-//
-// Other available API versions: 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview.
+// Azure REST API version: 2024-10-02-preview.
 func LookupJavaComponent(ctx *pulumi.Context, args *LookupJavaComponentArgs, opts ...pulumi.InvokeOption) (*LookupJavaComponentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupJavaComponentResult
@@ -36,18 +34,14 @@ type LookupJavaComponentArgs struct {
 
 // Java Component.
 type LookupJavaComponentResult struct {
-	// Type of the Java Component.
-	ComponentType *string `pulumi:"componentType"`
-	// List of Java Components configuration properties
-	Configurations []JavaComponentConfigurationPropertyResponse `pulumi:"configurations"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// Provisioning state of the Java Component.
-	ProvisioningState string `pulumi:"provisioningState"`
-	// List of Java Components that are bound to the Java component
-	ServiceBinds []JavaComponentServiceBindResponse `pulumi:"serviceBinds"`
+	// Java Component resource specific properties
+	Properties interface{} `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -91,19 +85,12 @@ func (o LookupJavaComponentResultOutput) ToLookupJavaComponentResultOutputWithCo
 	return o
 }
 
-// Type of the Java Component.
-func (o LookupJavaComponentResultOutput) ComponentType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupJavaComponentResult) *string { return v.ComponentType }).(pulumi.StringPtrOutput)
+// The Azure API version of the resource.
+func (o LookupJavaComponentResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupJavaComponentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
-// List of Java Components configuration properties
-func (o LookupJavaComponentResultOutput) Configurations() JavaComponentConfigurationPropertyResponseArrayOutput {
-	return o.ApplyT(func(v LookupJavaComponentResult) []JavaComponentConfigurationPropertyResponse {
-		return v.Configurations
-	}).(JavaComponentConfigurationPropertyResponseArrayOutput)
-}
-
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupJavaComponentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJavaComponentResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -113,14 +100,9 @@ func (o LookupJavaComponentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJavaComponentResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Provisioning state of the Java Component.
-func (o LookupJavaComponentResultOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupJavaComponentResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// List of Java Components that are bound to the Java component
-func (o LookupJavaComponentResultOutput) ServiceBinds() JavaComponentServiceBindResponseArrayOutput {
-	return o.ApplyT(func(v LookupJavaComponentResult) []JavaComponentServiceBindResponse { return v.ServiceBinds }).(JavaComponentServiceBindResponseArrayOutput)
+// Java Component resource specific properties
+func (o LookupJavaComponentResultOutput) Properties() pulumi.AnyOutput {
+	return o.ApplyT(func(v LookupJavaComponentResult) interface{} { return v.Properties }).(pulumi.AnyOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

@@ -13,12 +13,12 @@ import (
 )
 
 // Role management policy
-// Azure REST API version: 2020-10-01. Prior API version in Azure Native 1.x: 2020-10-01.
-//
-// Other available API versions: 2020-10-01-preview, 2024-02-01-preview, 2024-09-01-preview.
+// Azure REST API version: 2024-09-01-preview. Prior API version in Azure Native 2.x: 2020-10-01.
 type RoleManagementPolicyAssignment struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The readonly computed rule applied to the policy.
 	EffectiveRules pulumi.ArrayOutput `pulumi:"effectiveRules"`
 	// The role management policy name.
@@ -150,6 +150,11 @@ func (o RoleManagementPolicyAssignmentOutput) ToRoleManagementPolicyAssignmentOu
 
 func (o RoleManagementPolicyAssignmentOutput) ToRoleManagementPolicyAssignmentOutputWithContext(ctx context.Context) RoleManagementPolicyAssignmentOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o RoleManagementPolicyAssignmentOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *RoleManagementPolicyAssignment) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The readonly computed rule applied to the policy.

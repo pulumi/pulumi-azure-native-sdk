@@ -12,9 +12,7 @@ import (
 )
 
 // Retrieve the source control identified by source control name.
-// Azure REST API version: 2022-08-08.
-//
-// Other available API versions: 2023-05-15-preview, 2023-11-01, 2024-10-23.
+// Azure REST API version: 2023-11-01.
 func LookupSourceControl(ctx *pulumi.Context, args *LookupSourceControlArgs, opts ...pulumi.InvokeOption) (*LookupSourceControlResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSourceControlResult
@@ -38,6 +36,8 @@ type LookupSourceControlArgs struct {
 type LookupSourceControlResult struct {
 	// The auto sync of the source control. Default is false.
 	AutoSync *bool `pulumi:"autoSync"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The repo branch of the source control. Include branch as empty string for VsoTfvc.
 	Branch *string `pulumi:"branch"`
 	// The creation time.
@@ -102,6 +102,11 @@ func (o LookupSourceControlResultOutput) ToLookupSourceControlResultOutputWithCo
 // The auto sync of the source control. Default is false.
 func (o LookupSourceControlResultOutput) AutoSync() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupSourceControlResult) *bool { return v.AutoSync }).(pulumi.BoolPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupSourceControlResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSourceControlResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The repo branch of the source control. Include branch as empty string for VsoTfvc.

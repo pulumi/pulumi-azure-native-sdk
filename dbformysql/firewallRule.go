@@ -13,19 +13,19 @@ import (
 )
 
 // Represents a server firewall rule.
-// Azure REST API version: 2022-01-01. Prior API version in Azure Native 1.x: 2017-12-01.
-//
-// Other available API versions: 2017-12-01, 2023-06-01-preview, 2023-06-30, 2023-12-30.
+// Azure REST API version: 2023-12-30. Prior API version in Azure Native 2.x: 2022-01-01.
 type FirewallRule struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The end IP address of the server firewall rule. Must be IPv4 format.
 	EndIpAddress pulumi.StringOutput `pulumi:"endIpAddress"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The start IP address of the server firewall rule. Must be IPv4 format.
 	StartIpAddress pulumi.StringOutput `pulumi:"startIpAddress"`
-	// The system metadata relating to this resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -51,6 +51,9 @@ func NewFirewallRule(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'StartIpAddress'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:dbformysql/v20171201:FirewallRule"),
+		},
 		{
 			Type: pulumi.String("azure-native:dbformysql/v20200701preview:FirewallRule"),
 		},
@@ -176,6 +179,11 @@ func (o FirewallRuleOutput) ToFirewallRuleOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The Azure API version of the resource.
+func (o FirewallRuleOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *FirewallRule) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The end IP address of the server firewall rule. Must be IPv4 format.
 func (o FirewallRuleOutput) EndIpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallRule) pulumi.StringOutput { return v.EndIpAddress }).(pulumi.StringOutput)
@@ -191,7 +199,7 @@ func (o FirewallRuleOutput) StartIpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallRule) pulumi.StringOutput { return v.StartIpAddress }).(pulumi.StringOutput)
 }
 
-// The system metadata relating to this resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o FirewallRuleOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *FirewallRule) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

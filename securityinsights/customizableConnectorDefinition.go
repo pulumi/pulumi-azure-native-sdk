@@ -13,10 +13,12 @@ import (
 )
 
 // Connector definition for kind 'Customizable'.
-// Azure REST API version: 2023-07-01-preview.
+// Azure REST API version: 2024-09-01. Prior API version in Azure Native 2.x: 2023-07-01-preview.
 type CustomizableConnectorDefinition struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The UiConfig for 'Customizable' connector definition kind.
 	ConnectionsConfig CustomizableConnectionsConfigResponsePtrOutput `pulumi:"connectionsConfig"`
 	// The UiConfig for 'Customizable' connector definition kind.
@@ -88,6 +90,9 @@ func NewCustomizableConnectorDefinition(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20250101preview:CustomizableConnectorDefinition"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20250301:CustomizableConnectorDefinition"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -199,6 +204,11 @@ func (o CustomizableConnectorDefinitionOutput) ToCustomizableConnectorDefinition
 
 func (o CustomizableConnectorDefinitionOutput) ToCustomizableConnectorDefinitionOutputWithContext(ctx context.Context) CustomizableConnectorDefinitionOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o CustomizableConnectorDefinitionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomizableConnectorDefinition) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The UiConfig for 'Customizable' connector definition kind.

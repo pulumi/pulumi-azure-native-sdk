@@ -13,14 +13,14 @@ import (
 )
 
 // Type of the Storage Target.
-// Azure REST API version: 2023-05-01. Prior API version in Azure Native 1.x: 2021-03-01.
-//
-// Other available API versions: 2021-03-01, 2023-11-01-preview, 2024-03-01, 2024-07-01.
+// Azure REST API version: 2024-03-01. Prior API version in Azure Native 2.x: 2023-05-01.
 type StorageTarget struct {
 	pulumi.CustomResourceState
 
 	// The percentage of cache space allocated for this storage target
 	AllocationPercentage pulumi.IntOutput `pulumi:"allocationPercentage"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Properties when targetType is blobNfs.
 	BlobNfs BlobNfsTargetResponsePtrOutput `pulumi:"blobNfs"`
 	// Properties when targetType is clfs.
@@ -230,6 +230,11 @@ func (o StorageTargetOutput) ToStorageTargetOutputWithContext(ctx context.Contex
 // The percentage of cache space allocated for this storage target
 func (o StorageTargetOutput) AllocationPercentage() pulumi.IntOutput {
 	return o.ApplyT(func(v *StorageTarget) pulumi.IntOutput { return v.AllocationPercentage }).(pulumi.IntOutput)
+}
+
+// The Azure API version of the resource.
+func (o StorageTargetOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *StorageTarget) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Properties when targetType is blobNfs.

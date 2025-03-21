@@ -32,6 +32,8 @@ type LookupVirtualNetworkRetrieveArgs struct {
 
 // The virtualNetworks resource definition.
 type LookupVirtualNetworkRetrieveResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion  string                                   `pulumi:"azureApiVersion"`
 	ExtendedLocation *VirtualNetworksResponseExtendedLocation `pulumi:"extendedLocation"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
@@ -82,6 +84,11 @@ func (o LookupVirtualNetworkRetrieveResultOutput) ToLookupVirtualNetworkRetrieve
 
 func (o LookupVirtualNetworkRetrieveResultOutput) ToLookupVirtualNetworkRetrieveResultOutputWithContext(ctx context.Context) LookupVirtualNetworkRetrieveResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupVirtualNetworkRetrieveResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVirtualNetworkRetrieveResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 func (o LookupVirtualNetworkRetrieveResultOutput) ExtendedLocation() VirtualNetworksResponseExtendedLocationPtrOutput {

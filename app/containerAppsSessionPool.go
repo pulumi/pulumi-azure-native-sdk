@@ -13,12 +13,12 @@ import (
 )
 
 // Container App session pool.
-// Azure REST API version: 2024-02-02-preview.
-//
-// Other available API versions: 2024-08-02-preview, 2024-10-02-preview.
+// Azure REST API version: 2024-10-02-preview. Prior API version in Azure Native 2.x: 2024-02-02-preview.
 type ContainerAppsSessionPool struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The container type of the sessions.
 	ContainerType pulumi.StringPtrOutput `pulumi:"containerType"`
 	// The custom container configuration if the containerType is CustomContainer.
@@ -27,8 +27,12 @@ type ContainerAppsSessionPool struct {
 	DynamicPoolConfiguration DynamicPoolConfigurationResponsePtrOutput `pulumi:"dynamicPoolConfiguration"`
 	// Resource ID of the session pool's environment.
 	EnvironmentId pulumi.StringPtrOutput `pulumi:"environmentId"`
+	// Managed identities needed by a session pool to interact with other Azure services to not maintain any secrets or credentials in code.
+	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
+	// Optional settings for a Managed Identity that is assigned to the Session pool.
+	ManagedIdentitySettings ManagedIdentitySettingResponseArrayOutput `pulumi:"managedIdentitySettings"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The number of nodes the session pool is using.
@@ -116,8 +120,12 @@ type containerAppsSessionPoolArgs struct {
 	DynamicPoolConfiguration *DynamicPoolConfiguration `pulumi:"dynamicPoolConfiguration"`
 	// Resource ID of the session pool's environment.
 	EnvironmentId *string `pulumi:"environmentId"`
+	// Managed identities needed by a session pool to interact with other Azure services to not maintain any secrets or credentials in code.
+	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
+	// Optional settings for a Managed Identity that is assigned to the Session pool.
+	ManagedIdentitySettings []ManagedIdentitySetting `pulumi:"managedIdentitySettings"`
 	// The pool management type of the session pool.
 	PoolManagementType *string `pulumi:"poolManagementType"`
 	// The name of the resource group. The name is case insensitive.
@@ -144,8 +152,12 @@ type ContainerAppsSessionPoolArgs struct {
 	DynamicPoolConfiguration DynamicPoolConfigurationPtrInput
 	// Resource ID of the session pool's environment.
 	EnvironmentId pulumi.StringPtrInput
+	// Managed identities needed by a session pool to interact with other Azure services to not maintain any secrets or credentials in code.
+	Identity ManagedServiceIdentityPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
+	// Optional settings for a Managed Identity that is assigned to the Session pool.
+	ManagedIdentitySettings ManagedIdentitySettingArrayInput
 	// The pool management type of the session pool.
 	PoolManagementType pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
@@ -199,6 +211,11 @@ func (o ContainerAppsSessionPoolOutput) ToContainerAppsSessionPoolOutputWithCont
 	return o
 }
 
+// The Azure API version of the resource.
+func (o ContainerAppsSessionPoolOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ContainerAppsSessionPool) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The container type of the sessions.
 func (o ContainerAppsSessionPoolOutput) ContainerType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContainerAppsSessionPool) pulumi.StringPtrOutput { return v.ContainerType }).(pulumi.StringPtrOutput)
@@ -223,9 +240,21 @@ func (o ContainerAppsSessionPoolOutput) EnvironmentId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContainerAppsSessionPool) pulumi.StringPtrOutput { return v.EnvironmentId }).(pulumi.StringPtrOutput)
 }
 
+// Managed identities needed by a session pool to interact with other Azure services to not maintain any secrets or credentials in code.
+func (o ContainerAppsSessionPoolOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *ContainerAppsSessionPool) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
+}
+
 // The geo-location where the resource lives
 func (o ContainerAppsSessionPoolOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContainerAppsSessionPool) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// Optional settings for a Managed Identity that is assigned to the Session pool.
+func (o ContainerAppsSessionPoolOutput) ManagedIdentitySettings() ManagedIdentitySettingResponseArrayOutput {
+	return o.ApplyT(func(v *ContainerAppsSessionPool) ManagedIdentitySettingResponseArrayOutput {
+		return v.ManagedIdentitySettings
+	}).(ManagedIdentitySettingResponseArrayOutput)
 }
 
 // The name of the resource

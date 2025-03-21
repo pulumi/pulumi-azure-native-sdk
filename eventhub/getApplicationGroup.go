@@ -12,9 +12,7 @@ import (
 )
 
 // Gets an ApplicationGroup for a Namespace.
-// Azure REST API version: 2022-10-01-preview.
-//
-// Other available API versions: 2023-01-01-preview, 2024-01-01, 2024-05-01-preview.
+// Azure REST API version: 2024-01-01.
 func LookupApplicationGroup(ctx *pulumi.Context, args *LookupApplicationGroupArgs, opts ...pulumi.InvokeOption) (*LookupApplicationGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupApplicationGroupResult
@@ -36,6 +34,8 @@ type LookupApplicationGroupArgs struct {
 
 // The Application Group object
 type LookupApplicationGroupResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The Unique identifier for application group.Supports SAS(SASKeyName=KeyName) or AAD(AADAppID=Guid)
 	ClientAppGroupIdentifier string `pulumi:"clientAppGroupIdentifier"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -89,6 +89,11 @@ func (o LookupApplicationGroupResultOutput) ToLookupApplicationGroupResultOutput
 
 func (o LookupApplicationGroupResultOutput) ToLookupApplicationGroupResultOutputWithContext(ctx context.Context) LookupApplicationGroupResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupApplicationGroupResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApplicationGroupResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The Unique identifier for application group.Supports SAS(SASKeyName=KeyName) or AAD(AADAppID=Guid)

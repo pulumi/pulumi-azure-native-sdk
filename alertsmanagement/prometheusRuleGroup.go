@@ -13,10 +13,12 @@ import (
 )
 
 // The Prometheus rule group resource.
-// Azure REST API version: 2023-03-01.
+// Azure REST API version: 2023-03-01. Prior API version in Azure Native 2.x: 2023-03-01.
 type PrometheusRuleGroup struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Apply rule to data from a specific cluster.
 	ClusterName pulumi.StringPtrOutput `pulumi:"clusterName"`
 	// Rule group description.
@@ -180,6 +182,11 @@ func (o PrometheusRuleGroupOutput) ToPrometheusRuleGroupOutput() PrometheusRuleG
 
 func (o PrometheusRuleGroupOutput) ToPrometheusRuleGroupOutputWithContext(ctx context.Context) PrometheusRuleGroupOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o PrometheusRuleGroupOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrometheusRuleGroup) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Apply rule to data from a specific cluster.

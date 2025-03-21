@@ -12,9 +12,7 @@ import (
 )
 
 // Gets an Agent resource.
-// Azure REST API version: 2023-03-01.
-//
-// Other available API versions: 2023-07-01-preview, 2023-10-01, 2024-07-01.
+// Azure REST API version: 2024-07-01.
 func LookupAgent(ctx *pulumi.Context, args *LookupAgentArgs, opts ...pulumi.InvokeOption) (*LookupAgentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAgentResult
@@ -44,6 +42,8 @@ type LookupAgentResult struct {
 	ArcResourceId string `pulumi:"arcResourceId"`
 	// The VM UUID of the Hybrid Compute resource for the Agent.
 	ArcVmUuid string `pulumi:"arcVmUuid"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// A description for the Agent.
 	Description  *string                             `pulumi:"description"`
 	ErrorDetails AgentPropertiesResponseErrorDetails `pulumi:"errorDetails"`
@@ -61,10 +61,14 @@ type LookupAgentResult struct {
 	NumberOfCores float64 `pulumi:"numberOfCores"`
 	// The provisioning state of this resource.
 	ProvisioningState string `pulumi:"provisioningState"`
-	// Resource system metadata.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The agent's local time zone represented in Windows format.
+	TimeZone string `pulumi:"timeZone"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
+	// The WAN-link upload limit schedule that applies to any Job Run the agent executes. Data plane operations (migrating files) are affected. Control plane operations ensure seamless migration functionality and are not limited by this schedule. The schedule is interpreted with the agent's local time.
+	UploadLimitSchedule *UploadLimitScheduleResponse `pulumi:"uploadLimitSchedule"`
 	// Uptime of the Agent in seconds.
 	UptimeInSeconds float64 `pulumi:"uptimeInSeconds"`
 }
@@ -126,6 +130,11 @@ func (o LookupAgentResultOutput) ArcVmUuid() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAgentResult) string { return v.ArcVmUuid }).(pulumi.StringOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupAgentResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAgentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // A description for the Agent.
 func (o LookupAgentResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAgentResult) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -170,14 +179,24 @@ func (o LookupAgentResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAgentResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Resource system metadata.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupAgentResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupAgentResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The agent's local time zone represented in Windows format.
+func (o LookupAgentResultOutput) TimeZone() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAgentResult) string { return v.TimeZone }).(pulumi.StringOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupAgentResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAgentResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The WAN-link upload limit schedule that applies to any Job Run the agent executes. Data plane operations (migrating files) are affected. Control plane operations ensure seamless migration functionality and are not limited by this schedule. The schedule is interpreted with the agent's local time.
+func (o LookupAgentResultOutput) UploadLimitSchedule() UploadLimitScheduleResponsePtrOutput {
+	return o.ApplyT(func(v LookupAgentResult) *UploadLimitScheduleResponse { return v.UploadLimitSchedule }).(UploadLimitScheduleResponsePtrOutput)
 }
 
 // Uptime of the Agent in seconds.

@@ -13,12 +13,14 @@ import (
 )
 
 // The description of the Windows IoT Device Service.
-// Azure REST API version: 2019-06-01. Prior API version in Azure Native 1.x: 2019-06-01.
+// Azure REST API version: 2019-06-01. Prior API version in Azure Native 2.x: 2019-06-01.
 type Service struct {
 	pulumi.CustomResourceState
 
 	// Windows IoT Device Service OEM AAD domain
 	AdminDomainName pulumi.StringPtrOutput `pulumi:"adminDomainName"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Windows IoT Device Service ODM AAD domain
 	BillingDomainName pulumi.StringPtrOutput `pulumi:"billingDomainName"`
 	// The Etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal ETag convention.
@@ -169,6 +171,11 @@ func (o ServiceOutput) ToServiceOutputWithContext(ctx context.Context) ServiceOu
 // Windows IoT Device Service OEM AAD domain
 func (o ServiceOutput) AdminDomainName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringPtrOutput { return v.AdminDomainName }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o ServiceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Windows IoT Device Service ODM AAD domain

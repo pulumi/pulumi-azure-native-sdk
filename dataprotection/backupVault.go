@@ -13,12 +13,12 @@ import (
 )
 
 // Backup Vault Resource
-// Azure REST API version: 2023-01-01. Prior API version in Azure Native 1.x: 2021-01-01.
-//
-// Other available API versions: 2023-04-01-preview, 2023-05-01, 2023-06-01-preview, 2023-08-01-preview, 2023-11-01, 2023-12-01, 2024-02-01-preview, 2024-03-01, 2024-04-01, 2025-01-01.
+// Azure REST API version: 2025-01-01. Prior API version in Azure Native 2.x: 2023-01-01.
 type BackupVault struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Optional ETag.
 	ETag pulumi.StringPtrOutput `pulumi:"eTag"`
 	// Input Managed Identity Details
@@ -236,6 +236,11 @@ func (o BackupVaultOutput) ToBackupVaultOutput() BackupVaultOutput {
 
 func (o BackupVaultOutput) ToBackupVaultOutputWithContext(ctx context.Context) BackupVaultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o BackupVaultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackupVault) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Optional ETag.

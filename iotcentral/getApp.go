@@ -12,9 +12,7 @@ import (
 )
 
 // Get the metadata of an IoT Central application.
-// Azure REST API version: 2021-06-01.
-//
-// Other available API versions: 2021-11-01-preview.
+// Azure REST API version: 2021-11-01-preview.
 func LookupApp(ctx *pulumi.Context, args *LookupAppArgs, opts ...pulumi.InvokeOption) (*LookupAppResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAppResult
@@ -22,7 +20,7 @@ func LookupApp(ctx *pulumi.Context, args *LookupAppArgs, opts ...pulumi.InvokeOp
 	if err != nil {
 		return nil, err
 	}
-	return &rv, nil
+	return rv.Defaults(), nil
 }
 
 type LookupAppArgs struct {
@@ -36,30 +34,52 @@ type LookupAppArgs struct {
 type LookupAppResult struct {
 	// The ID of the application.
 	ApplicationId string `pulumi:"applicationId"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The display name of the application.
 	DisplayName *string `pulumi:"displayName"`
-	// The ARM resource identifier.
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The managed identities for the IoT Central application.
 	Identity *SystemAssignedServiceIdentityResponse `pulumi:"identity"`
-	// The resource location.
+	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
-	// The ARM resource name.
+	// The name of the resource
 	Name string `pulumi:"name"`
+	// Network Rule Set Properties of this IoT Central application.
+	NetworkRuleSets *NetworkRuleSetsResponse `pulumi:"networkRuleSets"`
+	// Private endpoint connections created on this IoT Central application.
+	PrivateEndpointConnections []PrivateEndpointConnectionResponse `pulumi:"privateEndpointConnections"`
+	// The provisioning state of the application.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Whether requests from the public network are allowed.
+	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// A valid instance SKU.
 	Sku AppSkuInfoResponse `pulumi:"sku"`
 	// The current state of the application.
 	State string `pulumi:"state"`
 	// The subdomain of the application.
 	Subdomain *string `pulumi:"subdomain"`
-	// The resource tags.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The ID of the application template, which is a blueprint that defines the characteristics and behaviors of an application. Optional; if not specified, defaults to a blank blueprint and allows the application to be defined from scratch.
 	Template *string `pulumi:"template"`
-	// The resource type.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
+// Defaults sets the appropriate defaults for LookupAppResult
+func (val *LookupAppResult) Defaults() *LookupAppResult {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.NetworkRuleSets = tmp.NetworkRuleSets.Defaults()
+
+	return &tmp
+}
 func LookupAppOutput(ctx *pulumi.Context, args LookupAppOutputArgs, opts ...pulumi.InvokeOption) LookupAppResultOutput {
 	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAppResultOutput, error) {
@@ -100,12 +120,17 @@ func (o LookupAppResultOutput) ApplicationId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAppResult) string { return v.ApplicationId }).(pulumi.StringOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupAppResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAppResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The display name of the application.
 func (o LookupAppResultOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAppResult) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// The ARM resource identifier.
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupAppResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAppResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -115,14 +140,34 @@ func (o LookupAppResultOutput) Identity() SystemAssignedServiceIdentityResponseP
 	return o.ApplyT(func(v LookupAppResult) *SystemAssignedServiceIdentityResponse { return v.Identity }).(SystemAssignedServiceIdentityResponsePtrOutput)
 }
 
-// The resource location.
+// The geo-location where the resource lives
 func (o LookupAppResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAppResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// The ARM resource name.
+// The name of the resource
 func (o LookupAppResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAppResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Network Rule Set Properties of this IoT Central application.
+func (o LookupAppResultOutput) NetworkRuleSets() NetworkRuleSetsResponsePtrOutput {
+	return o.ApplyT(func(v LookupAppResult) *NetworkRuleSetsResponse { return v.NetworkRuleSets }).(NetworkRuleSetsResponsePtrOutput)
+}
+
+// Private endpoint connections created on this IoT Central application.
+func (o LookupAppResultOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseArrayOutput {
+	return o.ApplyT(func(v LookupAppResult) []PrivateEndpointConnectionResponse { return v.PrivateEndpointConnections }).(PrivateEndpointConnectionResponseArrayOutput)
+}
+
+// The provisioning state of the application.
+func (o LookupAppResultOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAppResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Whether requests from the public network are allowed.
+func (o LookupAppResultOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAppResult) *string { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
 }
 
 // A valid instance SKU.
@@ -140,7 +185,12 @@ func (o LookupAppResultOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAppResult) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
 }
 
-// The resource tags.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupAppResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupAppResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// Resource tags.
 func (o LookupAppResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupAppResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
@@ -150,7 +200,7 @@ func (o LookupAppResultOutput) Template() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAppResult) *string { return v.Template }).(pulumi.StringPtrOutput)
 }
 
-// The resource type.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupAppResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAppResult) string { return v.Type }).(pulumi.StringOutput)
 }

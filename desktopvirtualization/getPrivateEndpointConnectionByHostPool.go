@@ -12,9 +12,7 @@ import (
 )
 
 // Get a private endpoint connection.
-// Azure REST API version: 2022-10-14-preview.
-//
-// Other available API versions: 2023-07-07-preview, 2023-09-05, 2023-10-04-preview, 2023-11-01-preview, 2024-01-16-preview, 2024-03-06-preview, 2024-04-03, 2024-04-08-preview, 2024-08-08-preview.
+// Azure REST API version: 2024-04-03.
 func LookupPrivateEndpointConnectionByHostPool(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionByHostPoolArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionByHostPoolResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivateEndpointConnectionByHostPoolResult
@@ -28,7 +26,7 @@ func LookupPrivateEndpointConnectionByHostPool(ctx *pulumi.Context, args *Lookup
 type LookupPrivateEndpointConnectionByHostPoolArgs struct {
 	// The name of the host pool within the specified resource group
 	HostPoolName string `pulumi:"hostPoolName"`
-	// The name of the private endpoint connection associated with the Azure resource
+	// The name of the private endpoint connection associated with the Azure resource.
 	PrivateEndpointConnectionName string `pulumi:"privateEndpointConnectionName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -36,17 +34,21 @@ type LookupPrivateEndpointConnectionByHostPoolArgs struct {
 
 // The Private Endpoint Connection resource.
 type LookupPrivateEndpointConnectionByHostPoolResult struct {
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// The group ids for the private endpoint resource.
+	GroupIds []string `pulumi:"groupIds"`
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// The resource of private end point.
+	// The private endpoint resource.
 	PrivateEndpoint *PrivateEndpointResponse `pulumi:"privateEndpoint"`
 	// A collection of information about the state of the connection between service consumer and provider.
 	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStateResponse `pulumi:"privateLinkServiceConnectionState"`
 	// The provisioning state of the private endpoint connection resource.
 	ProvisioningState string `pulumi:"provisioningState"`
-	// Metadata pertaining to creation and last modification of the resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
@@ -64,7 +66,7 @@ func LookupPrivateEndpointConnectionByHostPoolOutput(ctx *pulumi.Context, args L
 type LookupPrivateEndpointConnectionByHostPoolOutputArgs struct {
 	// The name of the host pool within the specified resource group
 	HostPoolName pulumi.StringInput `pulumi:"hostPoolName"`
-	// The name of the private endpoint connection associated with the Azure resource
+	// The name of the private endpoint connection associated with the Azure resource.
 	PrivateEndpointConnectionName pulumi.StringInput `pulumi:"privateEndpointConnectionName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
@@ -89,7 +91,17 @@ func (o LookupPrivateEndpointConnectionByHostPoolResultOutput) ToLookupPrivateEn
 	return o
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// The Azure API version of the resource.
+func (o LookupPrivateEndpointConnectionByHostPoolResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPrivateEndpointConnectionByHostPoolResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// The group ids for the private endpoint resource.
+func (o LookupPrivateEndpointConnectionByHostPoolResultOutput) GroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupPrivateEndpointConnectionByHostPoolResult) []string { return v.GroupIds }).(pulumi.StringArrayOutput)
+}
+
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupPrivateEndpointConnectionByHostPoolResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionByHostPoolResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -99,7 +111,7 @@ func (o LookupPrivateEndpointConnectionByHostPoolResultOutput) Name() pulumi.Str
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionByHostPoolResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The resource of private end point.
+// The private endpoint resource.
 func (o LookupPrivateEndpointConnectionByHostPoolResultOutput) PrivateEndpoint() PrivateEndpointResponsePtrOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionByHostPoolResult) *PrivateEndpointResponse {
 		return v.PrivateEndpoint
@@ -118,7 +130,7 @@ func (o LookupPrivateEndpointConnectionByHostPoolResultOutput) ProvisioningState
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionByHostPoolResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupPrivateEndpointConnectionByHostPoolResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionByHostPoolResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }

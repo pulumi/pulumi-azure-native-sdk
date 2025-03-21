@@ -12,13 +12,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Event Subscription
-// Azure REST API version: 2022-06-15. Prior API version in Azure Native 1.x: 2021-10-15-preview.
-//
-// Other available API versions: 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-02-15.
+// Event Subscription.
+// Azure REST API version: 2025-02-15. Prior API version in Azure Native 2.x: 2022-06-15.
 type DomainTopicEventSubscription struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.
 	// Uses Azure Event Grid's identity to acquire the authentication tokens being used during delivery / dead-lettering.
 	DeadLetterDestination StorageBlobDeadLetterDestinationResponsePtrOutput `pulumi:"deadLetterDestination"`
@@ -45,7 +45,7 @@ type DomainTopicEventSubscription struct {
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// The retry policy for events. This can be used to configure maximum number of delivery attempts and time to live for events.
 	RetryPolicy RetryPolicyResponsePtrOutput `pulumi:"retryPolicy"`
-	// The system metadata relating to Event Subscription resource.
+	// The system metadata relating to the Event Grid resource.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Name of the topic of the event subscription.
 	Topic pulumi.StringOutput `pulumi:"topic"`
@@ -151,7 +151,7 @@ type domainTopicEventSubscriptionArgs struct {
 	DomainName string `pulumi:"domainName"`
 	// The event delivery schema for the event subscription.
 	EventDeliverySchema *string `pulumi:"eventDeliverySchema"`
-	// Name of the event subscription to be created. Event subscription names must be between 3 and 100 characters in length and use alphanumeric letters only.
+	// Name of the event subscription to be created. Event subscription names must be between 3 and 64 characters in length and use alphanumeric letters only.
 	EventSubscriptionName *string `pulumi:"eventSubscriptionName"`
 	// Expiration time of the event subscription.
 	ExpirationTimeUtc *string `pulumi:"expirationTimeUtc"`
@@ -185,7 +185,7 @@ type DomainTopicEventSubscriptionArgs struct {
 	DomainName pulumi.StringInput
 	// The event delivery schema for the event subscription.
 	EventDeliverySchema pulumi.StringPtrInput
-	// Name of the event subscription to be created. Event subscription names must be between 3 and 100 characters in length and use alphanumeric letters only.
+	// Name of the event subscription to be created. Event subscription names must be between 3 and 64 characters in length and use alphanumeric letters only.
 	EventSubscriptionName pulumi.StringPtrInput
 	// Expiration time of the event subscription.
 	ExpirationTimeUtc pulumi.StringPtrInput
@@ -236,6 +236,11 @@ func (o DomainTopicEventSubscriptionOutput) ToDomainTopicEventSubscriptionOutput
 
 func (o DomainTopicEventSubscriptionOutput) ToDomainTopicEventSubscriptionOutputWithContext(ctx context.Context) DomainTopicEventSubscriptionOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o DomainTopicEventSubscriptionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DomainTopicEventSubscription) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.
@@ -303,7 +308,7 @@ func (o DomainTopicEventSubscriptionOutput) RetryPolicy() RetryPolicyResponsePtr
 	return o.ApplyT(func(v *DomainTopicEventSubscription) RetryPolicyResponsePtrOutput { return v.RetryPolicy }).(RetryPolicyResponsePtrOutput)
 }
 
-// The system metadata relating to Event Subscription resource.
+// The system metadata relating to the Event Grid resource.
 func (o DomainTopicEventSubscriptionOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *DomainTopicEventSubscription) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

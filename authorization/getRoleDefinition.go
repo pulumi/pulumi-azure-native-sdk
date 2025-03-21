@@ -34,6 +34,8 @@ type LookupRoleDefinitionArgs struct {
 type LookupRoleDefinitionResult struct {
 	// Role definition assignable scopes.
 	AssignableScopes []string `pulumi:"assignableScopes"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Id of the user who created the assignment
 	CreatedBy string `pulumi:"createdBy"`
 	// Time it was created
@@ -96,6 +98,11 @@ func (o LookupRoleDefinitionResultOutput) ToLookupRoleDefinitionResultOutputWith
 // Role definition assignable scopes.
 func (o LookupRoleDefinitionResultOutput) AssignableScopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupRoleDefinitionResult) []string { return v.AssignableScopes }).(pulumi.StringArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupRoleDefinitionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRoleDefinitionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Id of the user who created the assignment

@@ -13,9 +13,7 @@ import (
 )
 
 // Information about managed application.
-// Azure REST API version: 2021-07-01. Prior API version in Azure Native 1.x: 2019-07-01.
-//
-// Other available API versions: 2023-12-01-preview.
+// Azure REST API version: 2021-07-01. Prior API version in Azure Native 2.x: 2021-07-01.
 type Application struct {
 	pulumi.CustomResourceState
 
@@ -25,6 +23,8 @@ type Application struct {
 	Artifacts ApplicationArtifactResponseArrayOutput `pulumi:"artifacts"`
 	// The  read-only authorizations property that is retrieved from the application package.
 	Authorizations ApplicationAuthorizationResponseArrayOutput `pulumi:"authorizations"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The managed application billing details.
 	BillingDetails ApplicationBillingDetailsDefinitionResponseOutput `pulumi:"billingDetails"`
 	// The client entity that created the JIT request.
@@ -264,6 +264,11 @@ func (o ApplicationOutput) Artifacts() ApplicationArtifactResponseArrayOutput {
 // The  read-only authorizations property that is retrieved from the application package.
 func (o ApplicationOutput) Authorizations() ApplicationAuthorizationResponseArrayOutput {
 	return o.ApplyT(func(v *Application) ApplicationAuthorizationResponseArrayOutput { return v.Authorizations }).(ApplicationAuthorizationResponseArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o ApplicationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Application) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The managed application billing details.

@@ -13,10 +13,12 @@ import (
 )
 
 // Security operator under a given subscription and pricing
-// Azure REST API version: 2023-01-01-preview.
+// Azure REST API version: 2023-01-01-preview. Prior API version in Azure Native 2.x: 2023-01-01-preview.
 type SecurityOperator struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Identity for the resource.
 	Identity IdentityResponsePtrOutput `pulumi:"identity"`
 	// Resource name
@@ -123,6 +125,11 @@ func (o SecurityOperatorOutput) ToSecurityOperatorOutput() SecurityOperatorOutpu
 
 func (o SecurityOperatorOutput) ToSecurityOperatorOutputWithContext(ctx context.Context) SecurityOperatorOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o SecurityOperatorOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecurityOperator) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Identity for the resource.

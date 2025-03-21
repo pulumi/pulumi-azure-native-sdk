@@ -13,12 +13,12 @@ import (
 )
 
 // publisher resource.
-// Azure REST API version: 2023-09-01.
-//
-// Other available API versions: 2024-04-15.
+// Azure REST API version: 2024-04-15. Prior API version in Azure Native 2.x: 2023-09-01.
 type Publisher struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The managed identity of the publisher, if configured.
 	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
@@ -152,6 +152,11 @@ func (o PublisherOutput) ToPublisherOutput() PublisherOutput {
 
 func (o PublisherOutput) ToPublisherOutputWithContext(ctx context.Context) PublisherOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o PublisherOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Publisher) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The managed identity of the publisher, if configured.

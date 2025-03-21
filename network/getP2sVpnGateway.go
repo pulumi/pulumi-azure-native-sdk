@@ -12,9 +12,7 @@ import (
 )
 
 // Retrieves the details of a virtual wan p2s vpn gateway.
-// Azure REST API version: 2023-02-01.
-//
-// Other available API versions: 2019-07-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-05-01.
+// Azure REST API version: 2024-05-01.
 func LookupP2sVpnGateway(ctx *pulumi.Context, args *LookupP2sVpnGatewayArgs, opts ...pulumi.InvokeOption) (*LookupP2sVpnGatewayResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupP2sVpnGatewayResult
@@ -34,6 +32,8 @@ type LookupP2sVpnGatewayArgs struct {
 
 // P2SVpnGateway Resource.
 type LookupP2sVpnGatewayResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// List of all customer specified DNS servers IP addresses.
 	CustomDnsServers []string `pulumi:"customDnsServers"`
 	// A unique read-only string that changes whenever the resource is updated.
@@ -97,6 +97,11 @@ func (o LookupP2sVpnGatewayResultOutput) ToLookupP2sVpnGatewayResultOutput() Loo
 
 func (o LookupP2sVpnGatewayResultOutput) ToLookupP2sVpnGatewayResultOutputWithContext(ctx context.Context) LookupP2sVpnGatewayResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupP2sVpnGatewayResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupP2sVpnGatewayResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // List of all customer specified DNS servers IP addresses.

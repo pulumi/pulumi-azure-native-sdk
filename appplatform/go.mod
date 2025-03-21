@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-azure-native-sdk/appplatform/v2
+module github.com/pulumi/pulumi-azure-native-sdk/appplatform/v3
 
 go 1.22
 

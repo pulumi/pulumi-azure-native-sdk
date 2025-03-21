@@ -12,9 +12,7 @@ import (
 )
 
 // Gets information about a disk encryption set.
-// Azure REST API version: 2022-07-02.
-//
-// Other available API versions: 2023-01-02, 2023-04-02, 2023-10-02, 2024-03-02.
+// Azure REST API version: 2024-03-02.
 func LookupDiskEncryptionSet(ctx *pulumi.Context, args *LookupDiskEncryptionSetArgs, opts ...pulumi.InvokeOption) (*LookupDiskEncryptionSetResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDiskEncryptionSetResult
@@ -38,6 +36,8 @@ type LookupDiskEncryptionSetResult struct {
 	ActiveKey *KeyForDiskEncryptionSetResponse `pulumi:"activeKey"`
 	// The error that was encountered during auto-key rotation. If an error is present, then auto-key rotation will not be attempted until the error on this disk encryption set is fixed.
 	AutoKeyRotationError ApiErrorResponse `pulumi:"autoKeyRotationError"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The type of key used to encrypt the data of the disk.
 	EncryptionType *string `pulumi:"encryptionType"`
 	// Multi-tenant application client id to access key vault in a different tenant. Setting the value to 'None' will clear the property.
@@ -107,6 +107,11 @@ func (o LookupDiskEncryptionSetResultOutput) ActiveKey() KeyForDiskEncryptionSet
 // The error that was encountered during auto-key rotation. If an error is present, then auto-key rotation will not be attempted until the error on this disk encryption set is fixed.
 func (o LookupDiskEncryptionSetResultOutput) AutoKeyRotationError() ApiErrorResponseOutput {
 	return o.ApplyT(func(v LookupDiskEncryptionSetResult) ApiErrorResponse { return v.AutoKeyRotationError }).(ApiErrorResponseOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupDiskEncryptionSetResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDiskEncryptionSetResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The type of key used to encrypt the data of the disk.
